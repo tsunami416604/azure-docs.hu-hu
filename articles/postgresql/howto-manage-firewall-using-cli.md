@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cd96a4e8af5faab618f3302c423675b2dadca79a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a559b8c65ab57b0144b807a3b4cc1faa912d430
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710855"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422739"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Tűzfalszabályok létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón az Azure CLI használatával
 A kiszolgálói szintű tűzfalszabályok használatával felügyelhető egy adott IP-cím vagy IP-címtartomány Azure Database for PostgreSQL-kiszolgálóhoz való hozzáférése. A kényelmes Azure CLI-parancsok használatával létrehozhat, frissíthet, törölhet, listázhat és megjeleníthet tűzfalszabályok a kiszolgáló kezeléséhez. A Azure Database for PostgreSQL tűzfalszabályok áttekintését lásd: [Azure Database for PostgreSQL Server Firewall Rules](concepts-firewall-rules.md).
@@ -40,8 +40,8 @@ az postgres server firewall-rule list --resource-group myresourcegroup --server-
 ## <a name="create-firewall-rule"></a>Tűzfalszabály létrehozása
 Új tűzfalszabály létrehozásához a kiszolgálón futtassa az az [postgres Server Firewall-Rule Create](/cli/azure/postgres/server/firewall-rule) parancsot. 
 
-```
-To allow access to a singular IP address, provide the same address in the `--start-ip-address` and `--end-ip-address`, as in this example, replacing the IP shown here with your specific IP.
+
+Az egyes IP-címekhez való hozzáférés engedélyezéséhez adja meg ugyanazt a címet a `--start-ip-address` és a esetében, ahogy az ebben a példában az `--end-ip-address` itt látható IP-címet helyettesíti.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name AllowSingleIpAddress --start-ip-address 13.83.152.1 --end-ip-address 13.83.152.1
 ```
@@ -79,7 +79,7 @@ az postgres server firewall-rule delete --resource-group myresourcegroup --serve
 ```
 A művelet sikere esetén nincs kimenet. Hiba esetén a rendszer a hibaüzenet szövegét adja vissza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ehhez hasonlóan webböngészővel is [létrehozhat és kezelhet Azure Database for PostgreSQL tűzfalszabályok használatát a Azure Portal használatával](howto-manage-firewall-using-portal.md).
 - További információ a [Azure Database for PostgreSQL kiszolgálói tűzfalszabályok](concepts-firewall-rules.md)használatáról.
 - A kiszolgálóhoz való további biztonságos hozzáférés [Virtual Network szolgáltatási végpontok és szabályok létrehozásával és kezelésével az Azure CLI használatával](howto-manage-vnet-using-cli.md).

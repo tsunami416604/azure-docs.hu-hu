@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e583cedc04113615c50cc9906cbd11a99ff48683
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934922"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421719"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Keresési eredmények használata az Azure-ban Cognitive Search
 
 Ez a cikk azt ismerteti, hogyan kérhet le egy lekérdezési választ, amely a megfelelő dokumentumok teljes számával, a többoldalas eredményekkel, a rendezett eredményekkel és a találatok kiemelésével kapcsolatos feltételeket tartalmaz.
 
-A válasz struktúráját a lekérdezésben szereplő paraméterek határozzák meg: [keresési dokumentum](/rest/api/searchservice/Search-Documents) a REST API vagy a [DocumentSearchResult OSZTÁLYBAN](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) a .net SDK-ban.
+A válasz struktúráját a lekérdezésben szereplő paraméterek határozzák meg: [keresési dokumentum](/rest/api/searchservice/Search-Documents) a REST API vagy a [SearchResults OSZTÁLYBAN](/dotnet/api/azure.search.documents.models.searchresults-1) a .net SDK-ban.
 
 ## <a name="result-composition"></a>Eredmény összetétele
 
@@ -52,7 +52,7 @@ Ha más számú egyező dokumentumot szeretne visszaadni, adja hozzá `$top` `$s
 + Adja vissza a második készletet, kihagyva az első 15 értéket a következő 15: érték beszerzéséhez `$top=15&$skip=15` . Tegye meg ugyanezt a 15. harmadik készletnél: `$top=15&$skip=30`
 
 A többoldalas lekérdezések eredményei nem garantálják, hogy stabilak legyenek, ha az alapul szolgáló index változik. A lapozás megváltoztatja az `$skip` egyes lapok értékeit, de az egyes lekérdezések függetlenek, és az adatok aktuális nézetén működnek, mivel a lekérdezési időpontban már szerepel az indexben (vagyis nem áll rendelkezésre az eredmények gyorsítótárazása vagy pillanatképe, például egy általános célú adatbázisban található).
- 
+ 
 Az alábbi példa bemutatja, hogyan lehet ismétlődéseket kapni. Négy dokumentummal rendelkező index feltételezése:
 
 ```text
@@ -61,21 +61,21 @@ Az alábbi példa bemutatja, hogyan lehet ismétlődéseket kapni. Négy dokumen
 { "id": "3", "rating": 2 }
 { "id": "4", "rating": 1 }
 ```
- 
+ 
 Most tegyük fel, hogy az eredményeket a rendszer egy időben, a minősítés alapján rendezi. Ezt a lekérdezést kell végrehajtania az eredmények első oldalának beolvasásához: `$top=2&$skip=0&$orderby=rating desc` a következő eredmények előállításával:
 
 ```text
 { "id": "1", "rating": 5 }
 { "id": "2", "rating": 3 }
 ```
- 
+ 
 A szolgáltatásban tegyük fel, hogy egy ötödik dokumentum kerül a lekérdezési hívások közötti indexbe: `{ "id": "5", "rating": 4 }` .  Röviddel azután, hogy végrehajt egy lekérdezést a második lap beolvasásához: `$top=2&$skip=2&$orderby=rating desc` , és a következő eredményeket kapja:
 
 ```text
 { "id": "2", "rating": 3 }
 { "id": "3", "rating": 2 }
 ```
- 
+ 
 Figyelje meg, hogy a 2. dokumentum kétszer van beolvasva. Ennek az az oka, hogy az 5. dokumentum új minősítési értéke nagyobb, ezért rendezi a 2. dokumentum és az első oldalon landolás előtt. Habár ez a viselkedés váratlan lehet, jellemző, hogy a keresőmotor hogyan viselkedik.
 
 ## <a name="ordering-results"></a>Az eredmények rendezése
@@ -92,7 +92,7 @@ A keresési eredmények általános jelentőséggel bírnak, amely az azonos ere
 
 ### <a name="consistent-ordering"></a>Konzisztens sorrend
 
-Ha az eredmények rendezésében a Flex szerepel, érdemes lehet más lehetőségeket is megvizsgálni, ha az egységesség egy alkalmazásra vonatkozó követelmény. A legegyszerűbb módszer a mezőérték, például a minősítés vagy a dátum szerinti rendezés. Olyan esetekben, ahol egy adott mező, például egy minősítés vagy dátum alapján szeretne rendezni, explicit módon meghatározhat egy [ `$orderby` kifejezést](query-odata-filter-orderby-syntax.md), amely a **rendezhető**indexelt bármely mezőre alkalmazható.
+Ha az eredmények rendezésében a Flex szerepel, érdemes lehet más lehetőségeket is megvizsgálni, ha az egységesség egy alkalmazásra vonatkozó követelmény. A legegyszerűbb módszer a mezőérték, például a minősítés vagy a dátum szerinti rendezés. Olyan esetekben, ahol egy adott mező, például egy minősítés vagy dátum alapján szeretne rendezni, explicit módon meghatározhat egy [ `$orderby` kifejezést](query-odata-filter-orderby-syntax.md), amely a **rendezhető** indexelt bármely mezőre alkalmazható.
 
 Egy másik lehetőség [Egyéni pontozási profilt](index-add-scoring-profiles.md)használ. A pontozási profilok nagyobb mértékben szabályozzák a keresési eredményekben lévő elemek rangsorolását, és lehetővé teszi az egyes mezőkben található egyezések növelését. A további pontozási logika segíthet felülbírálni a replikák közötti kisebb különbségeket, mivel az egyes dokumentumokhoz tartozó keresési pontszámok egymástól eltérőek lehetnek. Az ehhez a megközelítéshez tartozó [rangsorolási algoritmust](index-ranking-similarity.md) ajánljuk.
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3c6bee570312009af5fbdf42a018ad2b387662d9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547418"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422297"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight-fürtök biztonságossá tétele és elkülönítése privát kapcsolattal (előzetes verzió)
 
@@ -29,9 +29,9 @@ Alapértelmezés szerint a HDInsight RP a nyilvános IP-címek használatával *
 
 Az alapértelmezett virtuális hálózati architektúrában használt alapszintű terheléselosztó automatikusan nyilvános NAT-t (hálózati címfordítást) biztosít a szükséges kimenő függőségek, például a HDInsight RP eléréséhez. Ha korlátozni szeretné a nyilvános internetre irányuló kimenő kapcsolatot, beállíthatja [a tűzfalat](./hdinsight-restrict-outbound-traffic.md), de ez nem követelmény.
 
-A `resourceProviderConnection` kimenő értékre való konfigurálás lehetővé teszi a fürtre jellemző erőforrások, például a Azure Data Lake Storage Gen2 vagy a külső metaadattárak elérését privát végpontok használatával. A HDInsight-fürt létrehozása előtt konfigurálnia kell a magánhálózati végpontokat és a DNS-bejegyzéseket. Javasoljuk, hogy hozza létre és adja meg az összes szükséges külső SQL-adatbázist, például az Apache Rangert, a Ambari, a Oozie és a kaptár metaadattárak a fürt létrehozása során.
+A `resourceProviderConnection` kimenő értékre való konfigurálás lehetővé teszi a fürtre jellemző erőforrások, például a Azure Data Lake Storage Gen2 vagy a külső metaadattárak elérését privát végpontok használatával. Ha saját végpontokat használ ezekre az erőforrásokra vonatkozóan, nem mandetory, de ha saját végpontokat kíván használni ezekhez az erőforrásokhoz, konfigurálnia kell a HDInsight-fürtöt létrehozó privát végpontokat és DNS-bejegyzéseket `before` . Javasoljuk, hogy hozza létre és adja meg az összes szükséges külső SQL-adatbázist, például az Apache Rangert, a Ambari, a Oozie és a kaptár metaadattárak a fürt létrehozási ideje alatt. A követelmény, hogy az összes erőforrásnak elérhetőnek kell lennie a fürt alhálózatán belülről, vagy a saját privát végpontján keresztül vagy más módon.
 
-A Azure Key Vaulthoz tartozó magánhálózati végpontok nem támogatottak. Ha Azure Key Vaultt használ a CMK-titkosításhoz, akkor a Azure Key Vault végpontnak elérhetőnek kell lennie a HDInsight alhálózaton belül a privát végpont nélkül.
+A Azure Key Vault magánhálózati végpontok használata nem támogatott. Ha Azure Key Vaultt használ a CMK-titkosításhoz, akkor a Azure Key Vault végpontnak elérhetőnek kell lennie a HDInsight alhálózaton belül a privát végpont nélkül.
 
 A következő ábra azt mutatja be, hogy milyen lehetséges HDInsight virtuális hálózati architektúra hasonlít a `resourceProviderConnection` kimenő értékre:
 
@@ -52,7 +52,7 @@ A fürt teljes tartománynevek használatával való eléréséhez használhatja
 
 ## <a name="enable-private-link"></a>Privát hivatkozás engedélyezése
 
-A privát hivatkozás, amely alapértelmezés szerint le van tiltva, széles körű hálózatkezelési ismereteket igényel a felhasználó által megadott útvonalak (UDR) és a tűzfalszabályok megfelelő beállításához a fürt létrehozása előtt. A fürthöz való privát hivatkozás csak akkor érhető el, ha a `resourceProviderConnection` Network tulajdonság az előző szakaszban leírtak szerint a *kimenő* értékre van állítva.
+A privát hivatkozás, amely alapértelmezés szerint le van tiltva, széles körű hálózatkezelési ismereteket igényel a felhasználó által megadott útvonalak (UDR) és a tűzfalszabályok megfelelő beállításához a fürt létrehozása előtt. Ha ezt a beállítást nem kötelező használni, de csak akkor érhető el, ha a `resourceProviderConnection` Network tulajdonság az előző szakaszban leírtak szerint a *kimenő* értékre van állítva.
 
 Ha `privateLink` az *engedélyezve* értékre van állítva, a rendszer belső [standard Load balancereket](../load-balancer/load-balancer-overview.md) (SLB-ket) hoz létre, és minden egyes SLB kiépít egy Azure Private link Service-t. A Private link Service lehetővé teszi, hogy a HDInsight-fürtöt privát végpontokból elérje.
 
@@ -64,11 +64,11 @@ A privát successgfull létrehozásához explicit módon [le kell tiltania a mag
 
 A következő ábrán egy példa látható a fürt létrehozása előtt szükséges hálózati konfigurációra. Ebben a példában az összes kimenő forgalom Azure Firewall UDR használatával van [kényszerítve](../firewall/forced-tunneling.md) , és a szükséges kimenő függőségeknek "engedélyezett"nek kell lenniük a tűzfalon a fürt létrehozása előtt. Enterprise Security Package-fürtök esetében a VNet-társítással a Azure Active Directory Domain Services hálózati kapcsolata is elérhető.
 
-:::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="HDInsight-architektúra diagramja kimenő erőforrás-szolgáltatói kapcsolatok használatával":::
+:::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="Privát kapcsolati környezet diagramja a fürt létrehozása előtt":::
 
 A hálózatkezelés beállítása után létrehozhat egy olyan fürtöt, amelyen engedélyezve van a kimenő erőforrás-szolgáltatói kapcsolat és a privát hivatkozás, ahogy az az alábbi ábrán is látható. Ebben a konfigurációban nincsenek nyilvános IP-címek és magánhálózati kapcsolati szolgáltatás az egyes standard Load balancerekhez.
 
-:::image type="content" source="media/hdinsight-private-link/after-cluster-creation.png" alt-text="HDInsight-architektúra diagramja kimenő erőforrás-szolgáltatói kapcsolatok használatával":::
+:::image type="content" source="media/hdinsight-private-link/after-cluster-creation.png" alt-text="Privát kapcsolati környezet ábrája a fürt létrehozása után":::
 
 ### <a name="access-a-private-cluster"></a>Hozzáférés egy privát fürthöz
 
@@ -84,7 +84,7 @@ Az Azure által felügyelt nyilvános DNS-zónában létrehozott privát hivatko
 
 Az alábbi képen egy példa látható a fürt olyan virtuális hálózatról való eléréséhez szükséges magánhálózati DNS-bejegyzésekre, amely nem független, vagy nem rendelkezik közvetlen vonallal a fürt terheléselosztó számára. Az Azure Private Zone használatával felülbírálhatja a `*.privatelink.azurehdinsight.net` teljes tartományneveket, és feloldható a saját privát végpontok IP-címeire.
 
-:::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="HDInsight-architektúra diagramja kimenő erőforrás-szolgáltatói kapcsolatok használatával":::
+:::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="Privát kapcsolati architektúra ábrája":::
 
 ## <a name="arm-template-properties"></a>ARM-sablon tulajdonságai
 
@@ -99,7 +99,7 @@ networkProperties: {
 
 A HDInsight nagyvállalati biztonsági funkcióival, beleértve a privát hivatkozásokat is, a [HDInsight Enterprise biztonsági sablon](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)című témakörben talál teljes sablont.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Enterprise Security Package az Azure HDInsight](enterprise-security-package.md)
 * [A vállalati biztonsági általános információk és irányelvek az Azure HDInsight](./domain-joined/general-guidelines.md)

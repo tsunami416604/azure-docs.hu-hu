@@ -1,76 +1,86 @@
 ---
-title: API-k hibakeresése kérelmek nyomkövetésének használatával az Azure API Management szolgáltatásban | Microsoft Docs
-description: Az oktatóanyag lépéseit követve megtudhatja, hogyan vizsgálhatja meg a kérések feldolgozásának lépéseit az Azure API Management szolgáltatásban.
+title: Oktatóanyag – API-k hibakeresése az Azure-ban API Management a kérelmek nyomon követésével
+description: Az oktatóanyag lépéseit követve engedélyezheti a nyomkövetést és a kérelmek feldolgozási lépéseit az Azure API Managementban.
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: cfowler
 editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a101de408b506fb5375b5f16c1deff4f67532d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75768527"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422001"
 ---
-# <a name="debug-your-apis-using-request-tracing"></a>API-k hibakeresése kérelmek nyomkövetésének használatával
+# <a name="tutorial-debug-your-apis-using-request-tracing"></a>Oktatóanyag: API-k hibakeresése kérelmek nyomkövetésének használatával
 
-Ez az oktatóanyag leírja, hogyan vizsgálhatja meg a kérések feldolgozását az API hibakeresésének és hibaelhárításának elősegítése érdekében. 
+Ez az oktatóanyag leírja, hogyan vizsgálja meg a kérelmek feldolgozását az Azure API Managementban az API-k hibakereséséhez és hibaelhárításához. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hívás nyomon követése
+> * Példa egy hívás nyomon követésére
+> * Kérelmek feldolgozási lépéseinek áttekintése
 
-![API-vizsgáló](media/api-management-howto-api-inspector/api-inspector001.PNG)
+:::image type="content" source="media/api-management-howto-api-inspector/api-inspector-001.png" alt-text="API-vizsgáló":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
 + Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
-+ Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
++ Hajtsa végre a következő oktatóanyagot: az [első API importálása és közzététele](import-and-publish.md).
+
+## <a name="verify-allow-tracing-setting"></a>Nyomkövetés engedélyezése beállítás ellenőrzése 
+
+Az API-hoz használt előfizetés **nyomkövetésének engedélyezése** beállítást engedélyezni kell. Ha a beépített összes előfizetést használja, az alapértelmezés szerint engedélyezve van. A portálon való ellenőrzéshez navigáljon a API Management-példányhoz, és válassza az **előfizetések** lehetőséget.
+
+   :::image type="content" source="media/api-management-howto-api-inspector/allow-tracing.png" alt-text="Előfizetés nyomkövetésének engedélyezése":::
 
 ## <a name="trace-a-call"></a>Hívás nyomon követése
 
-![API-nyomkövetés](media/api-management-howto-api-inspector/06-DebugYourAPIs-01-TraceCall.png)
-
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és navigáljon a API Management-példányhoz.
 1. Válassza az **API-k** lehetőséget.
-2. Kattintson a **Demo Conference API** elemre az API-k listájában.
-3. Váltson a **Teszt** lapra.
-4. Válassza a **GetSpeakers** műveletet.
-5. Győződjön meg róla, hogy egy **Ocp-Apim-Trace** elnevezésű HTTP-fejlécet is belefoglal, amely a **true** (igaz) értékre van állítva.
+1. Válassza ki a  **bemutató konferencia API** -t az API-listából.
+1. Kattintson a **Teszt** fülre.
+1. Válassza a **GetSpeakers** műveletet.
+1. Győződjön meg arról, hogy a HTTP-kérelem fejléce tartalmazza a **OCP-admin-Trace: true** értéket, valamint a **OCP-admin-előfizetés-kulcs** érvényes értékét. Ha nem, válassza a **+ fejléc hozzáadása** lehetőséget a fejléc hozzáadásához.
+1. Az API-hívás létrehozásához válassza a **Küldés** lehetőséget.
 
-   > [!NOTE]
-   > * Ha az Ocp-Apim-Subscription-Key nincs automatikusan kitöltve, akkor a fejlesztői portálon, a profiloldalon a kulcsok felfedésével szerezheti be.
-   > * Ahhoz, hogy nyomkövetést kapjon a OCP-APIM-Trace HTTP-fejléc használatakor, engedélyezni kell az előfizetési kulcs **nyomkövetési** beállítását. A **nyomkövetés engedélyezése** beállítás konfigurálásához a bal oldali menü **API Management** területén válassza az **előfizetések**lehetőséget.
-   >   ![Nyomkövetés engedélyezése a API Management-előfizetések ablaktáblán](media/api-management-howto-api-inspector/allowtracing.png)
+  :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="API-nyomkövetés konfigurálása":::
 
-6. Az API-hívás létrehozásához kattintson a **Küldés** gombra. 
-7. Várjon, amíg a hívás véget ér. 
-8. Lépjen az **API-konzol****Nyomkövetés** lapjára. A következő hivatkozások bármelyikére kattintva a részletes nyomkövetési információkra ugorhat: **bejövő**, **háttér**, **kimenő**.
+> [!TIP]
+> Ha a **OCP-APIM-előfizetés-Key** nincs automatikusan kitöltve a http-kérelemben, lekérheti azt a portálon. Válassza az **előfizetések** lehetőséget, majd nyissa meg a suscription tartozó helyi menüt ( **..**.). Válassza a **kulcsok megjelenítése/elrejtése** lehetőséget. Szükség esetén a kulcsok újragenerálása is megadható. Ezután adjon hozzá egy kulcsot a fejléchez.
 
-    A **bejövő** szakaszban láthatja az API Management által a hívótól fogadott eredeti kérést, valamint a kérésre alkalmazott összes szabályzatot, beleértve a 2. lépésben hozzáadott sebességkorlát- és fejlécbeállítás-szabályzatot.
+## <a name="review-trace-information"></a>Nyomkövetési adatok áttekintése
 
-    A **háttér** szakaszban az API Management által az API háttérmodulnak küldött kérések és a kapott válaszok láthatók.
+1. A hívás befejezése után a **http-válasz** **nyomkövetés** lapján lépjen a következőre:.
+1. A következő hivatkozások bármelyikét kiválasztva a részletes nyomkövetési információkra ugorhat: **bejövő** , **háttér** , **kimenő**.
 
-    A **kimenő** szakaszban a válaszra annak a hívónak való visszaküldését megelőzően alkalmazott szabályzatok láthatók.
+     :::image type="content" source="media/api-management-howto-api-inspector/response-trace.png" alt-text="Válasz nyomkövetésének áttekintése":::
+
+    * **Bejövő** – a hívótól kapott eredeti kérés API Management és a kérésre alkalmazott szabályzatok megjelenítése. Ha például hozzáadta a szabályzatokat az [oktatóanyagban: alakítsa át és óvja az API](transform-api.md)-t, itt jelennek meg.
+
+    * **Háttér** – MEGJELENÍTI az API-háttérnek és a kapott válasznak API Management küldött kéréseket.
+
+    * **Kimenő** – a válaszra alkalmazott házirendeket jeleníti meg a hívónak való visszaküldés előtt.
 
     > [!TIP]
     > Az egyes lépések a hívás az API Management által való fogadása óta eltelt időt is mutatják.
 
+1. Az **üzenet** lapon a **OCP-APIM-Trace-Location** fejléc az Azure Blob Storage-ban tárolt nyomkövetési adat helyét jeleníti meg. Ha szükséges, lépjen erre a helyre a nyomkövetés lekéréséhez.
+
+     :::image type="content" source="media/api-management-howto-api-inspector/response-message.png" alt-text="Nyomkövetési hely az Azure Storage-ban":::
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Hívás nyomon követése
+> * Példa egy hívás nyomon követésére
+> * Kérelmek feldolgozási lépéseinek áttekintése
 
 Folytassa a következő oktatóanyaggal:
 

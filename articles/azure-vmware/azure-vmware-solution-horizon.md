@@ -3,12 +3,12 @@ title: Horizont üzembe helyezése az Azure VMware-megoldáson
 description: Ismerje meg, hogyan helyezhet üzembe VMware horizontot az Azure VMware-megoldáson.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fb5e5b4c5f5da4c140f8d3575b963545f3a57db8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321350"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423103"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Horizont üzembe helyezése az Azure VMware-megoldáson 
 
@@ -128,6 +128,18 @@ Ugyanezek az alapelvek érvényesek, ha két Horizontos hüvelyt helyez üzembe 
 
 A horizont méretezési módszertana az Azure VMware-megoldásban futó gazdagépeken egyszerűbb, mint a helyi horizonton.  Ennek oka az, hogy az Azure VMware megoldás gazdagépe szabványosítva van.  A gazdagépek pontos méretezése segít meghatározni a VDI-követelmények támogatásához szükséges gazdagépek számát.  A szolgáltatás központi szerepet játszik az asztali költségek meghatározásában.
 
+### <a name="sizing-tables"></a>Táblázatok méretezése
+
+A táblázatok a VSI és a munkavégző munkaterhelések esetében az általános munkaterheléseket mutatják be.
+
+#### <a name="knowledge-worker-workloads"></a>Knowledge Worker-munkaterhelések
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="Általános VDI-profilok táblázata a VMware horizont for login VSI Knowledge Worker-munkaterhelésekhez" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
+
+#### <a name="power-worker-workloads"></a>Munkavégző munkaterhelések
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="Általános VDI-profilok táblázata a VMware Horizon-hez a bejelentkezési VSI-munkavégző munkaterhelések esetén" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
+
 ### <a name="azure-vmware-solution-host-instance"></a>Azure VMware Solution Host-példány
 
 * PowerEdge R640-kiszolgáló – DSS korlátozás
@@ -212,5 +224,5 @@ A standard telepítési architektúra alapján a horizont infrastruktúra virtu�
 
 Az infrastruktúra virtuálisgép \$ -díja havonta 0,36, a fenti példában szereplő 2 000-Desktop üzembe helyezés esetén. Ez a példa az USA keleti Azure-példányának 2020-es díjszabását használja. A díjszabás a régiótól, a kiválasztott beállításoktól és az Időzítéstől függően változhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni az Azure VMware-megoldással kapcsolatos VMware Horizontról, olvassa el a [VMware Horizon – gyakori kérdések](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)című témakört.

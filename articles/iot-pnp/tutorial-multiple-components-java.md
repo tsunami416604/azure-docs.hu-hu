@@ -1,18 +1,18 @@
 ---
-title: A IoT csatlakoztatása Plug and Play minta Java-összetevő-eszköz kódja a IoT Hubhoz | Microsoft Docs
-description: Hozzon létre és futtasson IoT Plug and Play minta Java-eszköz kódját, amely több összetevőt használ, és csatlakozik egy IoT hubhoz. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
+title: Oktatóanyag – a IoT csatlakoztatása Plug and Play minta Java-összetevő-eszköz kódja az Azure IoT Hubhoz | Microsoft Docs
+description: Oktatóanyag – IoT-Plug and Play-minta létrehozása és futtatása, amely több összetevőt használ, és egy IoT hubhoz csatlakozik. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: fce6477313cb7fb917c0fb81d03a73eec4714915
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 92732eee94a17aa59257ce2894775b2f881632d4
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046400"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421420"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-java"></a>Oktatóanyag: minta-IoT csatlakoztatása Plug and Play több összetevővel rendelkező eszköz alkalmazása IoT Hub (Java) szolgáltatáshoz
 
@@ -28,7 +28,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre IoT Plug and Play-e
 
 Az oktatóanyag Windows rendszeren történő elvégzéséhez telepítse a következő szoftvereket a helyi Windows-környezetbe:
 
-* Java SE Development Kit 8. A [Java hosszú távú Azure-és Azure stack-támogatásában](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)a **hosszú távú támogatás**alatt válassza a **Java 8**lehetőséget.
+* Java SE Development Kit 8. A [Java hosszú távú Azure-és Azure stack-támogatásában](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)a **hosszú távú támogatás** alatt válassza a **Java 8** lehetőséget.
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 
 ## <a name="download-the-code"></a>A kód letöltése
@@ -145,7 +145,7 @@ Az Azure IoT Explorer eszköz használatával a parancsok a két termosztát-ös
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt az összetevőkkel egy IoT hubhoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 

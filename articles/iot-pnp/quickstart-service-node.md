@@ -1,19 +1,19 @@
 ---
-title: Az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play-eszköz (Node.js) használata | Microsoft Docs
-description: A Node.js használatával csatlakozhat az Azure IoT-megoldáshoz csatlakoztatott IoT-Plug and Play-eszközhöz, és együttműködhet velük.
+title: Gyors útmutató – interakció az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play eszközzel (Node.js) | Microsoft Docs
+description: Gyors útmutató – a Node.js használatával csatlakozhat az Azure IoT-megoldáshoz csatlakoztatott IoT-Plug and Play-eszközhöz, és együttműködhet velük.
 author: elhorton
 ms.author: elhorton
 ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9a71a45f69f7a2bd2fbc198292526a6928e421a2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 814221997bc927cf411e531b523d693f3ef5854c
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736001"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421515"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Gyors útmutató: interakció a megoldáshoz csatlakoztatott IoT Plug and Play eszközzel (Node.js)
 
@@ -164,7 +164,7 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node.jsban, hog
 Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
 
 > [!NOTE]
-> Ezek a szolgáltatási minták a **beállításjegyzék** osztályt használják a **IoT hub szolgáltatás ügyfelének** . Ha többet szeretne megtudni az API-król, beleértve a digitális Twins API-t, tekintse meg a [szolgáltatás fejlesztői útmutatóját](concepts-developer-guide-service.md).
+> Ezek a szolgáltatási minták a **beállításjegyzék** osztályt használják a **IoT hub szolgáltatás ügyfelének**. Ha többet szeretne megtudni az API-król, beleértve a digitális Twins API-t, tekintse meg a [szolgáltatás fejlesztői útmutatóját](concepts-developer-guide-service.md).
 
 ### <a name="update-a-writable-property"></a>Írható tulajdonság frissítése
 
@@ -264,7 +264,7 @@ Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
     Response to method 'getMaxMinReport' sent successfully.
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play-eszköz egy IoT-megoldáshoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 

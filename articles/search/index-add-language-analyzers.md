@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: bda186f6bb45250763e439b77b4d3af988574401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: e763dbd15ea443ad3c8f6295b37999c748db7e6c
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935882"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422331"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Nyelvi elemzők hozzáadása karakterlánc-mezőkhöz Azure Cognitive Search indexben
 
@@ -79,18 +79,18 @@ További információ az index tulajdonságairól: [index létrehozása &#40;Azu
 |kínai (egyszerűsített)|zh-Hans. Microsoft|zh-Hans. Lucene|  
 |kínai (hagyományos)|zh-Hant. Microsoft|zh-Hant. Lucene|  
 |Horvát|HR. Microsoft||  
-|Cseh|cs. Microsoft|cs. Lucene|  
-|Dán|da. Microsoft|da. Lucene|  
+|cseh|cs. Microsoft|cs. Lucene|  
+|dán|da. Microsoft|da. Lucene|  
 |Holland|nl. Microsoft|nl. Lucene|  
 |Angol|en. Microsoft|en. Lucene|  
 |Észt|et. Microsoft||  
-|Finn|Fi. Microsoft|Fi. Lucene|  
+|finn|Fi. Microsoft|Fi. Lucene|  
 |Francia|fr. Microsoft|fr. Lucene|  
 |Gallego||Gl. Lucene|  
 |Német|de. Microsoft|de. Lucene|  
 |Görög|el. Microsoft|el. Lucene|  
 |gudzsaráti|Gu. Microsoft||  
-|Héber|ő. Microsoft||  
+|héber|ő. Microsoft||  
 |Hindi|Hi. Microsoft|Hi. Lucene|  
 |Magyar|hu. Microsoft|hu. Lucene|  
 |Izlandi|a. Microsoft||  
@@ -118,7 +118,7 @@ További információ az index tulajdonságairól: [index létrehozása &#40;Azu
 |Szlovák|sk. Microsoft||  
 |Szlovén|SL. Microsoft||  
 |Spanyol|es. Microsoft|es. Lucene|  
-|Svéd|Sv. Microsoft|Sv. Lucene|  
+|svéd|Sv. Microsoft|Sv. Lucene|  
 |tamil|ta. Microsoft||  
 |telugu|te. Microsoft||  
 |Thai|th. Microsoft|th. Lucene|  
@@ -133,4 +133,4 @@ További információ az index tulajdonságairól: [index létrehozása &#40;Azu
 
 + [Index létrehozása &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/create-index)  
 
-+ [AnalyzerName osztály](/dotnet/api/microsoft.azure.search.models.analyzername)
++ [LexicalAnalyzerName osztály](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername)

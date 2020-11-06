@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: af4797d7d7d7cb866674747ea8871bebb059207d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fd8fb2e40fa44c5aec3f14bfd586187c952df0d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031245"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422433"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Tudnivalók a Microsoft biztonsági kódok elemzéséről
 
@@ -39,7 +39,7 @@ A Microsoft biztonsági kód-elemzési eszközeinek az Azure DevOps-folyamathoz 
 
 ### <a name="clean-builds"></a>Tiszta buildek
 
-Az eszközök által jelentett kezdeti problémák kezelése után beállíthatja, hogy a bővítmény új problémák esetén is kibontsa a buildeket.A folyamatos integrációs buildek beállítása minden lekéréses kérelem esetében egyszerű.
+Az eszközök által jelentett kezdeti problémák kezelése után beállíthatja, hogy a bővítmény új problémák esetén is kibontsa a buildeket. A folyamatos integrációs buildek beállítása minden lekéréses kérelem esetében egyszerű.
 
 ### <a name="set-it-and-forget-it"></a>Beállítás és felejtsd el
 
@@ -73,7 +73,7 @@ A forráskódban tárolt jelszavak és egyéb titkos kódok jelentős problémá
 
 ### <a name="roslyn-analyzers"></a>-Elemzők
 
-A a a Microsoft fordítói szolgáltatásának integrált eszköze a felügyelt C# és a Visual Basic kód statikus elemzéséhez. További információkért lásd: a [-alapú elemzők](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer).
+A a a Microsoft fordítói szolgáltatásának integrált eszköze a felügyelt C# és a Visual Basic kód statikus elemzéséhez. További információkért lásd: a [-alapú elemzők](https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/security-warnings).
 
 ### <a name="tslint"></a>TSLint
 
@@ -104,7 +104,7 @@ Ezt a feladatot úgy is beállíthatja, hogy az adott eszközök vagy az összes
 >[!NOTE]
 >A tervezés szerint az egyes felépítési feladatok sikeresek lesznek, ha a feladat sikeresen befejeződik. Ez igaz, hogy az eszköz hibákat észlel-e, így az összes eszköz futtatásához a Build a befejezéshez is futtatható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Microsoft biztonsági kódok elemzésének bevezetésével és telepítésével kapcsolatos útmutatásért tekintse meg a bevezetési [és telepítési útmutatót](security-code-analysis-onboard.md).
 

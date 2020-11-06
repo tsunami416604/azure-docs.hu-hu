@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 5fb82c6098352076307f71eee022074a247e3cd9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: cf3c07f32f15ff176974219bd8143a1ea315c945
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629340"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423045"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Az üzletmenet folytonosságának áttekintése Azure Database for PostgreSQL – egyetlen kiszolgálóval
 
@@ -21,9 +21,14 @@ Ez az Áttekintés ismerteti azokat a képességeket, amelyeket a Azure Database
 
 Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreáll a zavaró esemény után – ez a helyreállítási idő célkitűzése (RTO). Meg kell ismernie a legutóbbi adatfrissítések (időintervallum) maximális mennyiségét is, ha az alkalmazás a zavaró esemény utáni helyreállítás során elveszíti az adatvesztést – ez a helyreállítási pont célkitűzése (RPO).
 
-A Azure Database for PostgreSQL olyan üzletmenet-folytonossági funkciókat biztosít, amelyek a Geo-redundáns biztonsági mentéseket is lehetővé teszi a Geo-visszaállítás megkezdésére és az olvasási replikák egy másik régióban történő üzembe helyezésére. Mindegyiknek különböző jellemzői vannak a helyreállítási időhöz és a lehetséges adatvesztéshez. A [geo-visszaállítás](concepts-backup.md) funkcióval egy új kiszolgáló jön létre, amely egy másik régióból replikált biztonsági mentési adatok használatával történik. A helyreállításhoz és helyreállításhoz szükséges teljes idő az adatbázis méretétől és a helyreállítható naplók mennyiségétől függ. A kiszolgáló létrehozásának teljes ideje néhány perctől néhány órára változhat. [Olvasási replikák](concepts-read-replicas.md)esetén az elsődleges tranzakciós naplók aszinkron módon lesznek továbbítva a replikára. Az elsődleges és a replika közötti késés a helyek közötti késéstől és a továbbítandó adatok mennyiségétől függ. Ha egy elsődleges hely meghibásodása, például a rendelkezésre állási zóna hibája, a replika előléptetése rövidebb RTO és adatvesztést biztosít. 
+A Azure Database for PostgreSQL olyan üzletmenet-folytonossági funkciókat biztosít, amelyek a Geo-redundáns biztonsági mentéseket is lehetővé teszi a Geo-visszaállítás megkezdésére és az olvasási replikák egy másik régióban történő üzembe helyezésére. Mindegyiknek különböző jellemzői vannak a helyreállítási időhöz és a lehetséges adatvesztéshez. A [geo-visszaállítás](concepts-backup.md) funkcióval egy új kiszolgáló jön létre, amely egy másik régióból replikált biztonsági mentési adatok használatával történik. A helyreállításhoz és helyreállításhoz szükséges teljes idő az adatbázis méretétől és a helyreállítható naplók mennyiségétől függ. A kiszolgáló létrehozásának teljes ideje néhány perctől néhány órára változhat. [Olvasási replikák](concepts-read-replicas.md)esetén az elsődleges tranzakciós naplók aszinkron módon lesznek továbbítva a replikára. Ha egy elsődleges adatbázis meghibásodása miatt egy zóna-vagy egy régió szintű hiba miatt nem sikerül átadni a replikát, rövidebb RTO és kevesebb adatvesztést biztosít.
 
-A következő táblázat összehasonlítja a RTO és a RPO egy tipikus forgatókönyvben:
+> [!NOTE]
+> Az elsődleges és a replika közötti késés a helyek közötti késéstől, a továbbított adatmennyiségtől, valamint az elsődleges kiszolgáló írási feladatának legfontosabb szintjétől függ. A nehéz írási feladatok jelentős késést okozhatnak. 
+>
+> Az olvasási replikák esetében használt replikáció aszinkron jellege miatt **nem ajánlott** magas rendelkezésre állású (ha) megoldásnak tekinteni, mivel a magasabb lemaradások magasabb RTO és RPO jelenthetnek. Csak olyan munkaterhelések esetén, ahol a késés a munkaterhelés csúcsán és a nem csúcsidőben is kisebb, akkor a replikák beolvasása alternatív megoldás lehet. Ellenkező esetben az olvasási replikák valódi olvasási méretezést biztosítanak a kész nagy számítási feladatokhoz és a (vész-helyreállítási) DR-forgatókönyvekhez.
+
+A következő táblázat összehasonlítja a RTO és a RPO **jellemző számítási feladatok** forgatókönyvét:
 
 | **Képesség** | **Basic** | **Általános célú** | **Memóriaoptimalizált** |
 | :------------: | :-------: | :-----------------: | :------------------: |
@@ -31,7 +36,7 @@ A következő táblázat összehasonlítja a RTO és a RPO egy tipikus forgatók
 | Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | Nem támogatott | RTO – változó <br/>RPO < 1 óra | RTO – változó <br/>RPO < 1 óra |
 | Olvasási replikák | RTO – perc * <br/>RPO < 5 perc * | RTO – perc * <br/>RPO < 5 perc *| RTO – perc * <br/>RPO < 5 perc *|
 
-\* Bizonyos esetekben a RTO és a RPO is sokkal magasabb lehet, többek között az elsődleges adatbázis számítási feladataitól és a régiók közötti késéstől függően. 
+ \* Bizonyos esetekben a RTO és a RPO **is sokkal magasabb** lehet, többek között a helyek közötti késéstől, a továbbítandó adatok mennyiségétől, valamint az elsődleges adatbázis-írási munkaterheléstól függően. 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Kiszolgáló helyreállítása felhasználói vagy alkalmazáshiba miatt
 
@@ -56,14 +61,14 @@ A Geo-visszaállítási szolgáltatás visszaállítja a kiszolgálót a Geo-red
 > A Geo-visszaállítás csak akkor lehetséges, ha a kiszolgálót geo-redundáns biztonsági mentési tárolóval kiépített. Ha szeretné, hogy a helyileg redundáns biztonsági mentést a meglévő kiszolgálókon, akkor a meglévő kiszolgáló pg_dump használatával egy memóriaképet kell használnia, és vissza kell állítania egy, a Geo-redundáns biztonsági mentéssel konfigurált, újonnan létrehozott kiszolgálóra.
 
 ## <a name="cross-region-read-replicas"></a>Régiók közötti olvasási replikák
-Az üzleti folytonosság és a vész-helyreállítás megtervezése érdekében a tartományok közötti olvasási replikákat is használhatja. Az olvasási replikák aszinkron módon frissülnek a PostgreSQL fizikai replikációs technológiájának használatával. További információk az olvasási replikák, az elérhető régiók és a feladatátvétel az [olvasási replikák fogalmai című cikkben](concepts-read-replicas.md)olvashatók. 
+Az üzleti folytonosság és a vész-helyreállítás megtervezése érdekében a tartományok közötti olvasási replikákat is használhatja. Az olvasási replikák aszinkron módon frissülnek a PostgreSQL fizikai replikációs technológiájának használatával, és az elsődlegest is késleltetheti. További információk az olvasási replikák, az elérhető régiók és a feladatátvétel az [olvasási replikák fogalmai című cikkben](concepts-read-replicas.md)olvashatók. 
 
 ## <a name="faq"></a>GYIK
 ### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>Hol tárolja Azure Database for PostgreSQL az ügyféladatokat?
 Alapértelmezés szerint a Azure Database for PostgreSQL nem helyezi át vagy nem tárolja az ügyféladatokat a-ben üzembe helyezett régióból. Az ügyfelek azonban igény szerint engedélyezhetik a [geo-redundáns biztonsági mentéseket](concepts-backup.md#backup-redundancy-options) , vagy létrehozhatnak [régiók közötti olvasási replikát](concepts-read-replicas.md#cross-region-replication) az adattároláshoz egy másik régióban.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a [Azure Database for PostgreSQL automatikus biztonsági mentéséről](concepts-backup.md). 
 - Ismerje meg, hogyan lehet visszaállítani [a Azure Portal](howto-restore-server-portal.md) vagy [Az Azure CLI](howto-restore-server-cli.md)használatával.
 - További információ a [Azure Database for PostgreSQL található olvasási replikáról](concepts-read-replicas.md).

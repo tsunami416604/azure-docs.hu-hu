@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a7bb5d58e0c11ef65a6839383f79d32def4fa67a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 9e5bb037b88b7c370e31d05c2d20fc6f558a8b39
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392095"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422195"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>ML modell üzembe helyezése az Azure SQL Edge-ben a ONNX használatával 
 
@@ -23,7 +23,34 @@ A három részből álló, az Azure SQL Edge-beli Iron Ore-szennyeződések elő
 1. Az Azure SQL Edge-példányban SQL Databasehoz való kapcsolódáshoz használja a Azure Data Studio.
 2. Az Iron Ore-szennyeződések előrejelzése az ONNX az Azure SQL Edge-ben.
 
-## <a name="connect-to-the-sql-database-in-the-azure-sql-edge-instance"></a>Kapcsolódás a SQL Databasehoz az Azure SQl Edge-példányban
+## <a name="key-components"></a>Kulcsfontosságú összetevők
+
+1. A megoldás alapértelmezett 500 ezredmásodpercet használ a peremhálózati hubhoz küldött üzenetek között. Ez módosítható a **program.cs** fájlban. 
+   ```json
+   TimeSpan messageDelay = configuration.GetValue("MessageDelay", TimeSpan.FromMilliseconds(500));
+   ```
+2. A megoldás egy üzenetet generált a következő attribútumokkal. Adja hozzá vagy távolítsa el az attribútumokat a követelmények szerint. 
+```json
+{
+    timestamp 
+    cur_Iron_Feed
+    cur_Silica_Feed 
+    cur_Starch_Flow 
+    cur_Amina_Flow 
+    cur_Ore_Pulp_pH
+    cur_Flotation_Column_01_Air_Flow
+    cur_Flotation_Column_02_Air_Flow
+    cur_Flotation_Column_03_Air_Flow
+    cur_Flotation_Column_04_Air_Flow
+    cur_Flotation_Column_01_Level
+    cur_Flotation_Column_02_Level
+    cur_Flotation_Column_03_Level
+    cur_Flotation_Column_04_Level
+    cur_Iron_Concentrate
+}
+```
+
+## <a name="connect-to-the-sql-database-in-the-azure-sql-edge-instance-to-train-deploy-and-test-the-ml-model"></a>Kapcsolódás az Azure SQL Edge-példány SQL Database az ML-modell betanításához, üzembe helyezéséhez és teszteléséhez
 
 1. Nyissa meg az Azure Data Studiót.
 
@@ -41,187 +68,10 @@ A három részből álló, az Azure SQL Edge-beli Iron Ore-szennyeződések elő
 
 3. Kattintson a **kapcsolat** gombra.
 
-4. A **fájl** szakaszban nyisson meg egy új jegyzetfüzetet, vagy használja a billentyűparancsot Alt + Windows + N. 
+4. A **fájl** szakaszban nyissa meg a **/deploymentscripts/MiningProcess_ONNX. jpynb** mappát abban a mappában, ahol a projektfájlok klónozása a gépen megtörtént.
 
 5. Állítsa a rendszermagot a Python 3 értékre.
 
-## <a name="predict-iron-ore-impurities-with-onnx"></a>Iron Ore-szennyeződések előrejelzése a ONNX
-
-Adja meg a következő Python-kódot a Azure Data Studio jegyzetfüzetben, és futtassa.
-
-1. Először telepítse és importálja a szükséges csomagokat.
-
-   ```python
-   !pip install azureml.core -q
-   !pip install azureml.train.automl -q
-   !pip install matplotlib -q
-   !pip install pyodbc -q
-   !pip install spicy -q
-   
-   import logging
-   from matplotlib import pyplot as plt
-   import numpy as np
-   import pandas as pd
-   import pyodbc
-   
-   from scipy import stats
-   from scipy.stats import skew #for some statistics
-   
-   import azureml.core
-   from azureml.core.experiment import Experiment
-   from azureml.core.workspace import Workspace
-   from azureml.train.automl import AutoMLConfig
-   from azureml.train.automl import constants
-   ```
-
-1. Adja meg az Azure AutoML-munkaterületet és a AutoML-kísérlet konfigurációját a regressziós kísérlethez.
-
-   ```python
-   ws = Workspace(subscription_id="<Azure Subscription ID>",
-                  resource_group="<resource group name>",
-                  workspace_name="<ML workspace name>")
-   # Choose a name for the experiment.
-   experiment_name = 'silic_percent2-Forecasting-onnx'
-   experiment = Experiment(ws, experiment_name)
-   ```
-
-1. Importálja az adatkészletet egy Panda-keretbe. A modell betanításához használja a betanítási adatkészletek minőségi előrejelzését a Kaggle-ből származó [adatbányászati folyamatban](https://www.kaggle.com/edumagalhaes/quality-prediction-in-a-mining-process) . Töltse le az adatfájlt, és mentse helyileg a fejlesztői gépen. Ezeknek az információknak a segítségével megjósolhatja, hogy mekkora a szennyeződés az érc-koncentrátumban.
-
-   ```python
-   df = pd.read_csv("<local path where you have saved the data file>",decimal=",",parse_dates=["date"],infer_datetime_format=True)
-   df = df.drop(['date'],axis=1)
-   df.describe()
-   ```
-
-1. Elemezheti az adatelemzést, hogy azonosítsa a torzítást. A folyamat során tekintse meg az adatkeretben található egyes oszlopok eloszlását és az elferdítés információit.
-
-   ```python
-   ## We can use a histogram chart to view the data distribution for the Dataset. In this example, we are looking at the histogram for the "% Silica Concentrate" 
-   ## and the "% Iron Feed". From the histogram, you'll notice the data distribution is skewed for most of the features in the dataset. 
-   
-   f, (ax1,ax2,ax3) = plt.subplots(1,3)
-   ax1.hist(df['% Iron Feed'], bins='auto')
-   #ax1.title = 'Iron Feed'
-   ax2.hist(df['% Silica Concentrate'], bins='auto')
-   #ax2.title = 'Silica Concentrate'
-   ax3.hist(df['% Silica Feed'], bins='auto')
-   #ax3.title = 'Silica Feed'
-   ```
-
-1. Vizsgálja meg és javítsa ki az adattorzítás szintjét.
-
-   ```python
-   ##Check data skewness with the skew or the kurtosis function in spicy.stats
-   ##Skewness using the spicy.stats skew function
-   for i in list(df):
-           print('Skew value for column "{0}" is: {1}'.format(i,skew(df[i])))
-   
-   #Fix the Skew using Box Cox Transform
-   from scipy.special import boxcox1p
-   for i in list(df):
-       if(abs(skew(df[i])) >= 0.20):
-           #print('found skew in column - {0}'.format(i))
-           df[i] = boxcox1p(df[i], 0.10)
-           print('Skew value for column "{0}" is: {1}'.format(i,skew(df[i])))
-   ```
-
-1. Az előrejelzési funkcióval más funkciók korrelációját is megvizsgálhatja. Ha a korreláció nem magas, távolítsa el ezeket a funkciókat.
-
-   ```python
-   silic_corr = df.corr()['% Silica Concentrate']
-   silic_corr = abs(silic_corr).sort_values()
-   drop_index= silic_corr.index[:8].tolist()
-   df = df.drop(drop_index, axis=1)
-   df.describe()
-   ```
-
-1. Indítsa el a AzureML kísérletet a legjobb algoritmus megkereséséhez és betanításához. Ebben az esetben az összes regressziós algoritmust teszteli, és a normalizált legfelső szintű, négyzetes hibával (NRMSE) rendelkező elsődleges metrikával dolgozik. További információt az [Azure ml-kísérletek elsődleges metrikája](../machine-learning/how-to-configure-auto-train.md#primary-metric)című témakörben talál. A következő kód az ML kísérlet helyi futtatását indítja el.
-
-   ```python
-   ## Define the X_train and the y_train data sets for the AutoML experiments. X_Train are the inputs or the features, while y_train is the outcome or the prediction result. 
-   
-   y_train = df['% Silica Concentrate']
-   x_train = df.iloc[:,0:-1]
-   automl_config = AutoMLConfig(task = 'regression',
-                                primary_metric = 'normalized_root_mean_squared_error',
-                                iteration_timeout_minutes = 60,
-                                iterations = 10,                        
-                                X = x_train, 
-                                y = y_train,
-                                featurization = 'off',
-                                enable_onnx_compatible_models=True)
-   
-   local_run = experiment.submit(automl_config, show_output = True)
-   best_run, onnx_mdl = local_run.get_output(return_onnx_model=True)
-   ```
-
-1. Töltse be a modellt az Azure SQL Edge-adatbázisban a helyi pontozáshoz.
-
-   ```python
-   ## Load the Model into a SQL Database.
-   ## Define the Connection string parameters. These connection strings will be used later also in the demo.
-   server = '<SQL Server IP address>'
-   username = 'sa' # SQL Server username
-   password = '<SQL Server password>'
-   database = 'IronOreSilicaPrediction'
-   db_connection_string = "Driver={ODBC Driver 17 for SQL Server};Server=" + server + ";Database=" + database + ";UID=" + username + ";PWD=" + password + ";"
-   conn = pyodbc.connect(db_connection_string, autocommit=True)
-   cursor = conn.cursor()
-   
-   # Insert the ONNX model into the models table
-   query = f"insert into models ([description], [data]) values ('Silica_Percentage_Predict_Regression_NRMSE_New1',?)"
-   model_bits = onnx_mdl.SerializeToString()
-   insert_params  = (pyodbc.Binary(model_bits))
-   cursor.execute(query, insert_params)
-   conn.commit()
-   cursor.close()
-   conn.close()
-   ```
-
-1. Végül az Azure SQL Edge-modell használatával a betanított modellel elvégezheti az előrejelzéseket.
-
-   ```python
-   ## Define the Connection string parameters. These connection strings will be used later also in the demo.
-   server = '<SQL Server IP address>'
-   username = 'sa' # SQL Server username
-   password = '<SQL Server password>'
-   database = 'IronOreSilicaPrediction'
-   db_connection_string = "Driver={ODBC Driver 17 for SQL Server};Server=" + server + ";Database=" + database + ";UID=" + username + ";PWD=" + password + ";"
-   conn = pyodbc.connect(db_connection_string, autocommit=True)
-   #cursor = conn.cursor()
-   query = \
-           f'declare @model varbinary(max) = (Select [data] from [dbo].[Models] where [id] = 1);' \
-           f' with d as ( SELECT  [timestamp] ,cast([cur_Iron_Feed] as real) [__Iron_Feed] ,cast([cur_Silica_Feed]  as real) [__Silica_Feed]' \
-           f',cast([cur_Starch_Flow] as real) [Starch_Flow],cast([cur_Amina_Flow] as real) [Amina_Flow]' \
-           f' ,cast([cur_Ore_Pulp_pH] as real) [Ore_Pulp_pH] ,cast([cur_Flotation_Column_01_Air_Flow] as real) [Flotation_Column_01_Air_Flow]' \
-           f' ,cast([cur_Flotation_Column_02_Air_Flow] as real) [Flotation_Column_02_Air_Flow]' \
-           f' ,cast([cur_Flotation_Column_03_Air_Flow] as real) [Flotation_Column_03_Air_Flow]' \
-           f' ,cast([cur_Flotation_Column_07_Air_Flow] as real) [Flotation_Column_07_Air_Flow]' \
-           f' ,cast([cur_Flotation_Column_04_Level] as real) [Flotation_Column_04_Level]' \
-           f' ,cast([cur_Flotation_Column_05_Level] as real) [Flotation_Column_05_Level]' \
-           f' ,cast([cur_Flotation_Column_06_Level] as real) [Flotation_Column_06_Level]' \
-           f' ,cast([cur_Flotation_Column_07_Level] as real) [Flotation_Column_07_Level]' \
-           f' ,cast([cur_Iron_Concentrate] as real) [__Iron_Concentrate]' \
-           f' FROM [dbo].[IronOreMeasurements1]' \
-           f' where timestamp between dateadd(hour,-1,getdate()) and getdate()) ' \
-           f' SELECT d.*, p.variable_out1' \
-           f' FROM PREDICT(MODEL = @model, DATA = d) WITH(variable_out1 numeric(25,17)) as p;' 
-     
-   df_result = pd.read_sql(query,conn)
-   df_result.describe()
-   ```
-
-1. A Python használatával hozzon létre egy diagramot a prediktív szilícium-százalékos arányban az Iron-hírcsatornán, a DateTime-on és a szilícium-hírcsatornán.
-
-   ```python
-   import plotly.graph_objects as go
-   fig = go.Figure()
-   fig.add_trace(go.Scatter(x=df_result['timestamp'],y=df_result['__Iron_Feed'],mode='lines+markers',name='Iron Feed',line=dict(color='firebrick', width=2)))
-   fig.add_trace(go.Scatter(x=df_result['timestamp'],y=df_result['__Silica_Feed'],mode='lines+markers',name='Silica Feed',line=dict(color='green', width=2)))
-   fig.add_trace(go.Scatter(x=df_result['timestamp'],y=df_result['variable_out1'],mode='lines+markers',name='Silica Percent',line=dict(color='royalblue', width=3)))
-   fig.update_layout(height= 600, width=1500,xaxis_title='Time')
-   fig.show()
-   ```
 
 ## <a name="next-steps"></a>További lépések
 

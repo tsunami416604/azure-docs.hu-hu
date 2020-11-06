@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 01b57526b15a806271d58b250f06a4372fe56b72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 544509a8c90c9273b748591509b1fa86510d71c3
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532261"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421736"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Az Azure Cognitive Searchban való szövegszerkesztés elemzői
 
@@ -48,10 +48,10 @@ Az alábbi lista ismerteti, hogy mely elemzők érhetők el az Azure Cognitive S
 | Kategória | Leírás |
 |----------|-------------|
 | [Standard Lucene analizátor](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Default (Alapértelmezett): Nincs szükség specifikációra vagy konfigurációra. Ez az általános célú elemző számos nyelvet és forgatókönyvet is végrehajt.|
-| Előre definiált elemzők | A szolgáltatásként való használatra szánt késztermékként kínált termék. <br/>Két típus létezik: speciális és nyelvi. Mi teszi őket "előre definiált" értékre, ha név szerint hivatkozik rájuk, konfiguráció vagy testreszabás nélkül. <br/><br/>A [speciális (nyelv – agnosztikus) elemzők](index-add-custom-analyzers.md#AnalyzerTable) akkor használatosak, ha a szöveges bemenetek speciális feldolgozást vagy minimális feldolgozást igényelnek. A nem nyelvi előre definiált elemzők közé tartozik a **Asciifolding**, a **kulcsszó**, a **minta**, az **egyszerű**, a **Leállítás**és a **szóközök**.<br/><br/>[Nyelvi elemzőket](index-add-language-analyzers.md) akkor kell használni, ha az egyes nyelvekhez széles körű nyelvi támogatásra van szükség. Az Azure Cognitive Search támogatja a 35 Lucene Language Analyzers és a 50 Microsoft Natural Language Processing-elemzőt. |
+| Előre definiált elemzők | A szolgáltatásként való használatra szánt késztermékként kínált termék. <br/>Két típus létezik: speciális és nyelvi. Mi teszi őket "előre definiált" értékre, ha név szerint hivatkozik rájuk, konfiguráció vagy testreszabás nélkül. <br/><br/>A [speciális (nyelv – agnosztikus) elemzők](index-add-custom-analyzers.md#AnalyzerTable) akkor használatosak, ha a szöveges bemenetek speciális feldolgozást vagy minimális feldolgozást igényelnek. A nem nyelvi előre definiált elemzők közé tartozik a **Asciifolding** , a **kulcsszó** , a **minta** , az **egyszerű** , a **Leállítás** és a **szóközök**.<br/><br/>[Nyelvi elemzőket](index-add-language-analyzers.md) akkor kell használni, ha az egyes nyelvekhez széles körű nyelvi támogatásra van szükség. Az Azure Cognitive Search támogatja a 35 Lucene Language Analyzers és a 50 Microsoft Natural Language Processing-elemzőt. |
 |[Egyéni elemzők](/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | A meglévő elemek kombinációjának felhasználó által definiált konfigurációját jelöli, amely egy tokenizer (kötelező) és opcionális szűrőket (char vagy token) tartalmaz.|
 
-Néhány előre definiált elemző, mint például a **minta** vagy a **Leállítás**, a konfigurációs beállítások korlátozott készletét támogatja. Ezen beállítások megadásához hatékonyan hozzon létre egy egyéni elemzőt, amely az előre definiált analizátorból és az [előre definiált Analyzer-referenciában](index-add-custom-analyzers.md#AnalyzerTable)dokumentált alternatív beállításokból áll. Ahogy az egyéni konfigurációk esetében is, adja meg az új konfigurációt egy névvel, például *myPatternAnalyzer* , hogy megkülönböztesse azt a Lucene Pattern analyzerből.
+Néhány előre definiált elemző, mint például a **minta** vagy a **Leállítás** , a konfigurációs beállítások korlátozott készletét támogatja. Ezen beállítások megadásához hatékonyan hozzon létre egy egyéni elemzőt, amely az előre definiált analizátorból és az [előre definiált Analyzer-referenciában](index-add-custom-analyzers.md#AnalyzerTable)dokumentált alternatív beállításokból áll. Ahogy az egyéni konfigurációk esetében is, adja meg az új konfigurációt egy névvel, például *myPatternAnalyzer* , hogy megkülönböztesse azt a Lucene Pattern analyzerből.
 
 ## <a name="how-to-specify-analyzers"></a>Elemzők meghatározása
 
@@ -317,7 +317,7 @@ Bármely, konfiguráció nélkül használt analizátor meg van adva egy mező d
 
 Ez a példa a Microsoft angol és francia elemzőit rendeli hozzá a Description (Leírás) mezőkhöz. Ez egy olyan kódrészlet, amely a [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) minta Hotels.cs fájljában a Hotel osztály használatával jön létre.
 
-Hívja meg az [analizátort](/dotnet/api/microsoft.azure.search.models.analyzer), adja meg az Azure Cognitive Search által támogatott [AnalyzerName](/dotnet/api/microsoft.azure.search.models.analyzername) -típust.
+Hívja meg a [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer), adja meg az Azure Cognitive Search által támogatott szöveges elemzőt biztosító [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) típusát.
 
 ```csharp
     public partial class Hotel
@@ -343,7 +343,7 @@ Hívja meg az [analizátort](/dotnet/api/microsoft.azure.search.models.analyzer)
 
 Ha testreszabásra vagy konfigurálásra van szükség, hozzá kell adnia egy Analyzer-szerkezetet egy indexhez. A Definiálás után hozzáadhatja a mező definícióját az előző példában bemutatott módon.
 
-Hozzon létre egy [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer) objektumot. További Példákért lásd: [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
+Hozzon létre egy [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) objektumot. További Példákért lásd: [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ```csharp
 {
@@ -365,7 +365,7 @@ Hozzon létre egy [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.cus
    serviceClient.Indexes.Create(definition);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + Tekintse át a [teljes szöveges keresés az Azure Cognitive Search-ban való működésének](search-lucene-query-architecture.md)részletes leírását. Ez a cikk példákat használ az olyan viselkedések magyarázatára, amelyek a felületen intuitív módon jelenhetnek meg.
 

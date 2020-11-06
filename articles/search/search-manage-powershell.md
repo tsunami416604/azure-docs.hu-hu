@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 9f189d1889f3ca3a3aa3234432452b1b3d696c04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7b672b7e2c3004eba4a38bd659965b7dee24db6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935092"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422484"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Cognitive Search szolgáltatás kezelése a PowerShell-lel
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Az Azure Cognitive Search létrehozásához és konfigurálásához Windows, Lin
 
 Alkalmanként a fenti listán *nem* szereplő feladatokkal kapcsolatos kérdéseket is fel kell kérni. Jelenleg nem használható az az **. Search** modul vagy a felügyeleti REST API a kiszolgálónév, régió vagy rétegek módosításához. A dedikált erőforrások a szolgáltatás létrehozásakor vannak lefoglalva. Ennek megfelelően a mögöttes hardver (hely vagy csomópont típusa) módosítása új szolgáltatást igényel. Hasonlóképpen nincsenek olyan eszközök vagy API-k, amelyek a tartalmak, például indexek továbbítására szolgálnak az egyik szolgáltatásból a másikba.
 
-A szolgáltatáson belül a tartalom létrehozása és kezelése [Search Service REST API](/rest/api/searchservice/) vagy [.net SDK](/dotnet/api/?term=microsoft.azure.search)-n keresztül történik. Noha nincsenek a tartalomhoz dedikált PowerShell-parancsok, olyan PowerShell-parancsfájlt írhat, amely REST vagy .NET API-kat hív meg indexek létrehozásához és betöltéséhez.
+A szolgáltatáson belül a tartalom létrehozása és kezelése [Search Service REST API](/rest/api/searchservice/) vagy [.net SDK](/dotnet/api/overview/azure/search.documents-readme)-n keresztül történik. Noha nincsenek a tartalomhoz dedikált PowerShell-parancsok, olyan PowerShell-parancsfájlt írhat, amely REST vagy .NET API-kat hív meg indexek létrehozásához és betöltéséhez.
 
 <a name="check-versions-and-load"></a>
 
@@ -90,7 +90,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 ## <a name="list-services-in-a-subscription"></a>Előfizetéshez tartozó szolgáltatások listázása
 
-A következő parancsok az [**az. Resources**](/powershell/module/az.resources/?view=azps-1.4.0#resources), az előfizetésben már üzembe helyezendő meglévő erőforrásokkal és szolgáltatásokkal kapcsolatos információkat adnak vissza. Ha nem tudja, hogy hány keresési szolgáltatás van már létrehozva, ezek a parancsok visszaküldik ezt az információt, és megmenti a portálon.
+A következő parancsok az [**az. Resources**](/powershell/module/az.resources), az előfizetésben már üzembe helyezendő meglévő erőforrásokkal és szolgáltatásokkal kapcsolatos információkat adnak vissza. Ha nem tudja, hogy hány keresési szolgáltatás van már létrehozva, ezek a parancsok visszaküldik ezt az információt, és megmenti a portálon.
 
 Az első parancs visszaadja az összes keresési szolgáltatást.
 
@@ -116,7 +116,7 @@ ResourceId        : /subscriptions/<alpha-numeric-subscription-ID>/resourceGroup
 
 ## <a name="import-azsearch"></a>Importálás az. Search
 
-Az [**az. Search**](/powershell/module/az.search/?view=azps-1.4.0#search) utasításai nem érhetők el, amíg be nem tölti a modult.
+Az [**az. Search**](/powershell/module/az.search) utasításai nem érhetők el, amíg be nem tölti a modult.
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Search
@@ -148,7 +148,7 @@ Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
 
 ## <a name="get-search-service-information"></a>Keresési szolgáltatás adatainak beolvasása
 
-Az **az. Search** importálása után, és ismeri a keresési szolgáltatást tartalmazó erőforráscsoportot, a [Get-AzSearchService](/powershell/module/az.search/get-azsearchservice?view=azps-1.4.0) futtatásával adja vissza a szolgáltatás definícióját, beleértve a nevet, a régiót, a szintet, valamint a replika és a partíciók számát.
+Az **az. Search** importálása után, és ismeri a keresési szolgáltatást tartalmazó erőforráscsoportot, a [Get-AzSearchService](/powershell/module/az.search/get-azsearchservice) futtatásával adja vissza a szolgáltatás definícióját, beleértve a nevet, a régiót, a szintet, valamint a replika és a partíciók számát.
 
 ```azurepowershell-interactive
 Get-AzSearchService -ResourceGroupName <resource-group-name>
@@ -170,7 +170,7 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 
 ## <a name="create-or-delete-a-service"></a>Szolgáltatás létrehozása vagy törlése
 
-A [**New-AzSearchService**](/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) [új keresési szolgáltatás létrehozásához](search-create-service-portal.md)használatos.
+A [**New-AzSearchService**](/powershell/module/az.search/new-azsearchadminkey) [új keresési szolgáltatás létrehozásához](search-create-service-portal.md)használatos.
 
 ```azurepowershell-interactive
 New-AzSearchService -ResourceGroupName "demo-westus" -Name "my-demo-searchapp" -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3
@@ -191,7 +191,7 @@ Tags
 
 ## <a name="regenerate-admin-keys"></a>Rendszergazdai kulcsok újragenerálása
 
-A [**New-AzSearchAdminKey**](/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) a felügyeleti [API-kulcsok](search-security-api-keys.md)átadására szolgál. A hitelesített hozzáféréshez a szolgáltatás két rendszergazdai kulcsot hoz létre. Minden kérelemhez kulcsokra van szükség. Mindkét rendszergazdai kulcs funkcionálisan egyenértékű, és teljes írási hozzáférést biztosít egy keresési szolgáltatáshoz bármilyen információ lekéréséhez, illetve bármely objektum létrehozásához és törléséhez. Két kulcs létezik, hogy a másikat cserélje le. 
+A [**New-AzSearchAdminKey**](/powershell/module/az.search/new-azsearchadminkey) a felügyeleti [API-kulcsok](search-security-api-keys.md)átadására szolgál. A hitelesített hozzáféréshez a szolgáltatás két rendszergazdai kulcsot hoz létre. Minden kérelemhez kulcsokra van szükség. Mindkét rendszergazdai kulcs funkcionálisan egyenértékű, és teljes írási hozzáférést biztosít egy keresési szolgáltatáshoz bármilyen információ lekéréséhez, illetve bármely objektum létrehozásához és törléséhez. Két kulcs létezik, hogy a másikat cserélje le. 
 
 Egyszerre csak egyszer lehet újradefiniálni, a `primary` vagy a `secondary` kulcsként megadva. A nem folytonos szolgáltatás esetében ne felejtse el frissíteni az összes állapotkódot, hogy másodlagos kulcsot használjon, miközben az elsődleges kulcsra mutat. Ne változtassa meg a kulcsokat, amíg a műveletek bekerülnek a repülésbe.
 
@@ -213,7 +213,7 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>Lekérdezési kulcsok létrehozása vagy törlése
 
-A [**New-AzSearchQueryKey**](/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) használatával lekérdezési [API-kulcsokat](search-security-api-keys.md) hozhat létre a csak olvasási hozzáféréshez az ügyfélalkalmazások és egy Azure Cognitive Search index között. A lekérdezési kulcsok egy adott indexre való hitelesítésre szolgálnak a keresési eredmények beolvasása céljából. A lekérdezési kulcsok nem biztosítanak csak olvasási hozzáférést a szolgáltatás más elemeihez, például az indexhez, az adatforráshoz vagy az indexelő.
+A [**New-AzSearchQueryKey**](/powershell/module/az.search/new-azsearchquerykey) használatával lekérdezési [API-kulcsokat](search-security-api-keys.md) hozhat létre a csak olvasási hozzáféréshez az ügyfélalkalmazások és egy Azure Cognitive Search index között. A lekérdezési kulcsok egy adott indexre való hitelesítésre szolgálnak a keresési eredmények beolvasása céljából. A lekérdezési kulcsok nem biztosítanak csak olvasási hozzáférést a szolgáltatás más elemeihez, például az indexhez, az adatforráshoz vagy az indexelő.
 
 Nem adhat meg kulcsot az Azure Cognitive Search használatához. Az API-kulcsokat a szolgáltatás hozza létre.
 
@@ -223,7 +223,7 @@ New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <sear
 
 ## <a name="scale-replicas-and-partitions"></a>Replikák és partíciók skálázása
 
-A [**set-AzSearchService**](/powershell/module/az.search/set-azsearchservice?view=azps-1.4.0) használatával [megnövelhető vagy csökkenthető a replikák és partíciók](search-capacity-planning.md) a szolgáltatásban lévő számlázható erőforrások újraigazítása érdekében. Egyre több replika vagy partíció járul hozzá a számlához, amely rögzített és változó díjakat is tartalmaz. Ha átmenetileg további feldolgozási teljesítményre van szüksége, növelheti a replikákat és a partíciókat a munkaterhelés kezeléséhez. Az áttekintő portál figyelés területén található csempék a lekérdezési késéssel, a másodpercenkénti lekérdezésekkel és a szabályozással kapcsolatban, és jelzi, hogy az aktuális kapacitás megfelelő-e.
+A [**set-AzSearchService**](/powershell/module/az.search/set-azsearchservice) használatával [megnövelhető vagy csökkenthető a replikák és partíciók](search-capacity-planning.md) a szolgáltatásban lévő számlázható erőforrások újraigazítása érdekében. Egyre több replika vagy partíció járul hozzá a számlához, amely rögzített és változó díjakat is tartalmaz. Ha átmenetileg további feldolgozási teljesítményre van szüksége, növelheti a replikákat és a partíciókat a munkaterhelés kezeléséhez. Az áttekintő portál figyelés területén található csempék a lekérdezési késéssel, a másodpercenkénti lekérdezésekkel és a szabályozással kapcsolatban, és jelzi, hogy az aktuális kapacitás megfelelő-e.
 
 Eltarthat egy darabig a reforrások hozzáadásához vagy eltávolításához is. A kapacitás módosítása a háttérben történik, ami lehetővé teszi a meglévő munkaterhelések folytatását. A beérkező kérésekhez további kapacitást kell használni, amint az készen áll, és nincs szükség további konfigurálásra. 
 
@@ -248,7 +248,7 @@ HostingMode       : Default
 Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozzon létre [egy indexet, és](search-what-is-an-index.md) [Kérdezzen le egy indexet](search-query-overview.md) a portál, a REST API-k vagy a .net SDK használatával.
 

@@ -1,7 +1,7 @@
 ---
 title: Az Azure Active Directory-alkalmazások kezelésének újdonságai
 description: Új és frissített dokumentáció a Azure Active Directory-alkalmazások kezeléséhez.
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,34 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: 569c111c392e6bbaf9a54d17dc6e88bc8d851dc6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 257057c4688fcf75651df4250c601eb1f1a2e8a3
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428018"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422603"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
 Üdvözli a Azure Active Directory Application Management dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. Az Application Management szolgáltatással kapcsolatos újdonságok megismeréséhez tekintse [meg a Azure Active Directory újdonságait](../fundamentals/whats-new.md)ismertető témakört.
+
+## <a name="october-2020"></a>2020. október
+
+### <a name="new-articles"></a>Új cikkek
+
+- [Azure Active Directory Application Management: Újdonságok](whats-new-docs.md)
+- [A OIDC-alapú egyszeri bejelentkezés ismertetése](configure-oidc-single-sign-on.md)
+- [Engedélyosztályozások konfigurálása](configure-permission-classifications.md)
+- [A csoportra vonatkozó adatokhoz hozzáférő alkalmazások csoportbeli tulajdonosi engedélyének konfigurálása](configure-user-consent-groups.md)
+- [Alkalmazás-hozzájárulási szabályzatok kezelése](manage-app-consent-policies.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [Problémák az SAML-alapú egyszeri bejelentkezés konfigurált alkalmazásaiba való bejelentkezéskor](application-sign-in-problem-federated-sso-gallery.md)
+- [Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor](application-proxy-connector-installation-problem.md)
+- [Alkalmazás-hitelesítés áthelyezése Active Directory összevonási szolgáltatások (AD FS)ról Azure Active Directoryra](migrate-adfs-apps-to-azure.md)
+- [A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása](configure-user-consent.md)
+
 
 ## <a name="september-2020"></a>2020. szeptember
 

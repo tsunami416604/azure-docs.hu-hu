@@ -1,18 +1,18 @@
 ---
-title: Általános IoT-Plug and Play modul összekötése | Microsoft Docs
-description: Használjon C# IoT Plug and Play az eszköz kódját egy általános modulban.
+title: Oktatóanyag – általános Azure IoT-Plug and Play modul összekötése | Microsoft Docs
+description: Oktatóanyag – példa C# IoT Plug and Play-eszköz kódjára egy általános modulban.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d425152f83821e1d157065370bd02e2d990ec876
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: dc86340026ec7b85afc9e5208ea8ef8c32d8bac6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426939"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421464"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Oktatóanyag: IoT Plug and Play modul összekötése (C#)
 
@@ -33,15 +33,15 @@ Az oktatóanyag Windows rendszeren történő elvégzéséhez telepítse a köve
 
 Az Azure IoT Explorer eszköz használatával vegyen fel egy **saját modul-eszköz** nevű új eszközt az IoT hub-ba.
 
-Vegyen fel egy **My-Module** nevű modult a **saját modul-eszközre**:
+Vegyen fel egy **My-Module** nevű modult a **saját modul-eszközre** :
 
 1. Az Azure IoT Explorer eszközében navigáljon a **saját modul-eszköz** eszközre.
 
-1. Válassza ki a **modul identitása**elemet, majd válassza a **+ Hozzáadás**lehetőséget.
+1. Válassza ki a **modul identitása** elemet, majd válassza a **+ Hozzáadás** lehetőséget.
 
-1. Adja meg a **saját modult** a modul identitásának neveként, majd válassza a **Mentés**lehetőséget.
+1. Adja meg a **saját modult** a modul identitásának neveként, majd válassza a **Mentés** lehetőséget.
 
-1. A modul identitások listájában válassza a **saját modul**lehetőséget. Ezután másolja ki az elsődleges kapcsolatok sztringjét. Az oktatóanyag későbbi részében ezt a modul-csatlakoztatási karakterláncot használja.
+1. A modul identitások listájában válassza a **saját modul** lehetőséget. Ezután másolja ki az elsődleges kapcsolatok sztringjét. Az oktatóanyag későbbi részében ezt a modul-csatlakoztatási karakterláncot használja.
 
 1. Válassza ki a **modul iker** fület, és figyelje meg, hogy nincsenek kívánt vagy jelentett tulajdonságok:
 
@@ -96,7 +96,7 @@ A minta projekt megnyitása és előkészítése:
 
 1. Nyissa meg a *Azure-IOT-SDK-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* projektfájlt a Visual Studio 2019-ben.
 
-1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
+1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés** elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
     | Name | Érték |
     | ---- | ----- |
@@ -171,7 +171,7 @@ A szolgáltatás SDK-k lehetővé teszik a csatlakoztatott IoT Plug and Play esz
 
 1. A Visual Studio egy másik példányában nyissa meg a *Azure-IOT-SDK-csharp\iot-hub\Samples\service\PnpServiceSamples\Thermostat\Thermostat.csproj* projektet.
 
-1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
+1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés** elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
     | Name | Érték |
     | ---- | ----- |

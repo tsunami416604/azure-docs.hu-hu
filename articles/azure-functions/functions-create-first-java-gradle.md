@@ -6,19 +6,19 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: a9592d848398c71bc573c073f0b712898f666640
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104869"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422807"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Függvények létrehozása és közzététele az Azure-ban a Java és a Gradle használatával
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és tehet közzé Java-függvények projektjét, hogy Azure Functions a Gradle parancssori eszközzel. Ha elkészült, a függvény kódja egy [kiszolgáló nélküli üzemeltetési](functions-scale.md#consumption-plan) csomagban fut az Azure-ban, és egy HTTP-kérelem indítja el. 
 
 > [!NOTE]
-> Ha a Gradle nem az Ön által előnyben részesített fejlesztői eszköz, tekintse meg a Java-fejlesztőknek készült hasonló oktatóanyagokat a [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), a [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) és a [vs Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)használatával.
+> Ha a Gradle nem az Ön által előnyben részesített fejlesztői eszköz, tekintse meg a Java-fejlesztőknek készült hasonló oktatóanyagokat a [Maven](./create-first-function-cli-java.md), a [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) és a [vs Code](./create-first-function-vs-code-java.md)használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -126,8 +126,8 @@ Ez létrehozza a következő erőforrásokat az Azure-ban a Build. gradle fájl 
 
 + Erőforráscsoport. Elnevezve a megadott _resourceGroup_ .
 + Storage-fiók. A függvények igénylik. A név véletlenszerűen jön létre a Storage-fióknév követelményei alapján.
-+ App Service terv. Kiszolgáló nélküli használati terv a megadott _appRegion_a Function alkalmazás üzemeltetéséhez. A név véletlenszerűen jön létre.
-+ Function alkalmazás. A functions alkalmazás a függvények üzembe helyezési és végrehajtási egysége. A név a _appName_, amely véletlenszerűen generált számmal van hozzáfűzve. 
++ App Service terv. Kiszolgáló nélküli használati terv a megadott _appRegion_ a Function alkalmazás üzemeltetéséhez. A név véletlenszerűen jön létre.
++ Function alkalmazás. A functions alkalmazás a függvények üzembe helyezési és végrehajtási egysége. A név a _appName_ , amely véletlenszerűen generált számmal van hozzáfűzve. 
 
 Az üzemelő példány a Project fájljait is becsomagolja, és az új Function alkalmazásba telepíti a [zip-telepítést](functions-deployment-technologies.md#zip-deploy), és engedélyezve van a csomagon belüli mód.
 
@@ -142,11 +142,11 @@ A függvény elindításához szükséges URL-címet a Azure Portalból kérheti
 
 1. Keresse meg a [Azure Portalt], jelentkezzen be, írja be a _appName_ az oldal tetején található **Keresés** mezőbe, majd nyomja le az ENTER billentyűt.
  
-1. A Function alkalmazásban válassza a **függvények**lehetőséget, válassza ki a függvényt, majd kattintson a jobb felső sarokban található **</> a függvény URL-címének beolvasása** lehetőségre. 
+1. A Function alkalmazásban válassza a **függvények** lehetőséget, válassza ki a függvényt, majd kattintson a jobb felső sarokban található **</> a függvény URL-címének beolvasása** lehetőségre. 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="A függvény URL-címének másolása az Azure portálról":::
 
-1. Válassza az **alapértelmezett (funkcióbillentyű)** lehetőséget, majd válassza a **Másolás**lehetőséget. 
+1. Válassza az **alapértelmezett (funkcióbillentyű)** lehetőséget, majd válassza a **Másolás** lehetőséget. 
 
 Mostantól a másolt URL-cím használatával is elérheti a függvényt.
 

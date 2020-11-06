@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 148310419ad4f760219003514dbc078b7c675be6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: b57d55e91918ba612ad42acd5e6059ae0dbd0090
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538787"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422450"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Az adatimportálás áttekintése – Azure Cognitive Search
 
@@ -35,7 +35,7 @@ Ez a megközelítés rugalmasabb a lekéréses modellnél, mivel dokumentumokat 
 Az alábbi API-kat használhatja egy vagy több dokumentum indexbe való betöltésére:
 
 + [Dokumentumok hozzáadása, frissítése vagy törlése (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction osztály](/dotnet/api/microsoft.azure.search.models.indexaction) vagy [indexBatch osztály](/dotnet/api/microsoft.azure.search.models.indexbatch) 
++ [IndexDocumentsAction osztály](/dotnet/api/azure.search.documents.models.indexdocumentsaction) vagy [IndexDocumentsBatch osztály](/dotnet/api/azure.search.documents.models.indexdocumentsbatch) 
 
 A portálon keresztül történő adatleküldéshez jelenleg nincsenek támogató eszközök.
 
@@ -63,7 +63,7 @@ A .NET SDK-ban csomagolja ki az adatait egy `IndexBatch` objektumba. Az egy `Ind
 
 Kétféleképpen [keresheti meg az indexet a REST API használatával](/rest/api/searchservice/Search-Documents). Az egyik lehetőség egy HTTP POST kérés kiadása azon a helyen, ahol a lekérdezési paraméterek vannak meghatározva a kéréstörzs JSON-objektumában. A másik lehetőség egy HTTP GET kérés kiadása azon a helyen, ahol a lekérdezési paraméterek vannak meghatározva a kérés URL-címén belül. A lekérdezési paraméterek méretének tekintetében a POST több [enyhe korlátozással](/rest/api/searchservice/Search-Documents) rendelkezik, mint a GET. Éppen ezért a POST használatát javasoljuk, hacsak nem állnak fenn olyan speciális körülmények, amelyek a GET használatát kényelmesebbé tennék.
 
-A POST és a GET esetében egyaránt meg kell adnia a *szolgáltatás nevét*, az *index nevét*és az *API-verziót* a kérelem URL-címében. 
+A POST és a GET esetében egyaránt meg kell adnia a *szolgáltatás nevét* , az *index nevét* és az *API-verziót* a kérelem URL-címében. 
 
 A GET esetében a lekérdezési paramétereket az URL-cím végén található *lekérdezési sztringben* kell megadni. Az URL-cím formátuma alább látható:
 
@@ -75,19 +75,18 @@ A POST formátuma ugyanaz, de a `api-version` lekérdezési karakterlánc param�
 
 ## <a name="pulling-data-into-an-index"></a>Adatok lekérése indexbe
 
-A lekéréses modell feltérképezi a támogatott adatforrást, majd automatikusan feltölti az adatokat az indexbe. Az Azure Cognitive Search-ban ez a képesség az *Indexelő*használatával valósul meg, jelenleg a következő platformokon érhető el:
+A lekéréses modell feltérképezi a támogatott adatforrást, majd automatikusan feltölti az adatokat az indexbe. Az Azure Cognitive Search-ban ez a képesség az *Indexelő* használatával valósul meg, jelenleg a következő platformokon érhető el:
 
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL Database, SQL felügyelt példány és SQL Server Azure-beli virtuális gépeken](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
-Az indexelők indexeket csatlakoztatnak az adatforrásokhoz (általában táblákhoz, nézetekhez vagy ezekkel egyenértékű struktúrákhoz), és leképezik a forrásmezőket a megfelelő mezőkre az indexben. A végrehajtás során a sorkészlet automatikusan át lesz alakítva JSON formátumba, és be lesz töltve a meghatározott indexbe. Minden indexelő támogatja az ütemezést, így meghatározhatja, hogy az adatok milyen gyakran legyenek frissítve. A legtöbb indexelő biztosít változáskövetési funkciókat, ha az adatforrás támogatja azokat. Az új dokumentumok felismerésén kívül az indexelők a meglévő dokumentumok módosításainak és a törléseinek nyomon követésével küszöbölik ki az aktív adatkezelés szükségességét az indexben. 
-
+Az indexelők indexeket csatlakoztatnak az adatforrásokhoz (általában táblákhoz, nézetekhez vagy ezekkel egyenértékű struktúrákhoz), és leképezik a forrásmezőket a megfelelő mezőkre az indexben. A végrehajtás során a sorkészlet automatikusan át lesz alakítva JSON formátumba, és be lesz töltve a meghatározott indexbe. Minden indexelő támogatja az ütemezést, így meghatározhatja, hogy az adatok milyen gyakran legyenek frissítve. A legtöbb indexelő biztosít változáskövetési funkciókat, ha az adatforrás támogatja azokat. Az új dokumentumok felismerésén kívül az indexelők a meglévő dokumentumok módosításainak és a törléseinek nyomon követésével küszöbölik ki az aktív adatkezelés szükségességét az indexben.
 
 ### <a name="how-to-pull-data-into-an-azure-cognitive-search-index"></a>Az Azure Cognitive Search indexbe történő adatkérés
 
-Az indexelő funkció az [Azure Portalon](search-import-data-portal.md), a [REST API](/rest/api/searchservice/Indexer-operations) és a [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperationsextensions) részeként van közzétéve. 
+Az indexelő funkció az [Azure Portalon](search-import-data-portal.md), a [REST API](/rest/api/searchservice/Indexer-operations) és a [.NET SDK](/dotnet/api/azure.search.documents.indexes.searchindexerclient) részeként van közzétéve.
 
 A portál használatának előnye, hogy az Azure Cognitive Search általában létrehoz egy alapértelmezett index-sémát az Ön számára a forrás-adatkészlet metaadatainak beolvasásával. A létrehozott indexet annak feldolgozásáig módosíthatja, azt követően azonban csak azok a sémamódosítások engedélyezettek, amelyekhez újraindexelés nem szükséges. Ha a végrehajtani kívánt módosítások közvetlen hatással vannak a sémára, újra kell építenie az indexet. 
 

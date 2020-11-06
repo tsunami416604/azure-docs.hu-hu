@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT-megoldáshoz (Python) kapcsolódó IoT Plug and Play-eszköz használata | Microsoft Docs
-description: A Python használatával csatlakozhat az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play-eszközhöz, és kommunikálhat velük.
+title: Gyors útmutató – az Azure IoT-megoldáshoz (Python) csatlakoztatott IoT Plug and Play-eszköz használata | Microsoft Docs
+description: Rövid útmutató – az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play eszköz csatlakoztatása és használata a Python használatával.
 author: elhorton
 ms.author: elhorton
 ms.date: 10/05/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ad5fa271e3abfaf0c7ee4884881262773a9ad485
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 681568c3aee88483c7f9c813529f0eb500a59e93
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741486"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421498"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-python"></a>Rövid útmutató: a megoldáshoz csatlakoztatott IoT Plug and Play eszköz (Python) használata
 
@@ -80,7 +80,7 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használunk a Pythonban, h
 1. Nyissa meg a *registry_manager_pnp_sample.* rajzfájl fájlt, és tekintse át a kódot. Ez a minta bemutatja, hogyan használhatja a **IoTHubRegistryManager** osztályt a IoT Plug and Play eszközével való interakcióhoz.
 
 > [!NOTE]
-> Ezek a szolgáltatási minták a **IoTHubRegistryManager** osztályt használják a **IoT hub szolgáltatás ügyfelétől** . Ha többet szeretne megtudni az API-król, beleértve a digitális Twins API-t, tekintse meg a [szolgáltatás fejlesztői útmutatóját](concepts-developer-guide-service.md).
+> Ezek a szolgáltatási minták a **IoTHubRegistryManager** osztályt használják a **IoT hub szolgáltatás ügyfelétől**. Ha többet szeretne megtudni az API-król, beleértve a digitális Twins API-t, tekintse meg a [szolgáltatás fejlesztői útmutatóját](concepts-developer-guide-service.md).
 
 ### <a name="get-the-device-twin"></a>Az eszköz dupla letöltése
 
@@ -175,7 +175,7 @@ Done generating
 {"tempReport": {"avgTemp": 34.2, "endTime": "09/07/2020 09:58:11", "maxTemp": 49, "minTemp": 10, "startTime": "09/07/2020 09:56:51"}}
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play-eszköz egy IoT-megoldáshoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 

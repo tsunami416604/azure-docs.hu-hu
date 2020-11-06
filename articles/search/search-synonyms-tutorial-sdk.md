@@ -7,31 +7,33 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 842d43c82875a1a8e5e45ba14f47ceb6eac26727
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b97b223ac180df7f8eb07ad8eaab66847f50776
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538806"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422994"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Példa: az Azure Cognitive Search szinonimáinak hozzáadása a C-ben #
 
 A szinonimák bővítik a lekérdezéseket azáltal, hogy találatként kezelik a bemeneti kifejezéssel szemantikailag egyenértékűnek tekintett kifejezéseket. Előfordulhat például, hogy azt szeretné, hogy a „kocsi” kifejezésre olyan dokumentumokat kapjon eredményül, amelyek az „autó” vagy a „jármű” kifejezéseket is tartalmazzák. 
 
-Az Azure Cognitive Searchban a szinonimák a *szinonimák*szerint vannak definiálva, a *megfeleltetési szabályok* alapján, amelyek egyenértékű feltételeket társítanak. Ez a példa a szinonimák meglévő indextel való hozzáadásának és használatának alapvető lépéseit ismerteti. Az alábbiak végrehajtásának módját ismerheti meg:
+Az Azure Cognitive Searchban a szinonimák a *szinonimák* szerint vannak definiálva, a *megfeleltetési szabályok* alapján, amelyek egyenértékű feltételeket társítanak. Ez a példa a szinonimák meglévő indextel való hozzáadásának és használatának alapvető lépéseit ismerteti.
+
+Ebben a példában a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
-> * Hozzon létre egy szinonima leképezést a  [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap) osztály használatával. 
-> * Adja meg a [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps) tulajdonságot olyan mezőknél, amelyeknek támogatnia kell a lekérdezés kiterjesztését szinonimák használatával.
+> * Hozzon létre egy szinonima leképezést a [SynonymMap osztály](/dotnet/api/azure.search.documents.indexes.models.synonymmap)használatával. 
+> * Adja meg a [SynonymMapsName tulajdonságot](/dotnet/api/azure.search.documents.indexes.models.searchfield.synonymmapnames) olyan mezőknél, amelyeknek támogatnia kell a lekérdezés kiterjesztését szinonimák használatával.
 
 A szinonimákat támogató mezőket a szokásos módon kérdezheti le. A szinonimák eléréséhez nincs szükség további lekérdezési szintaxisra.
 
 Több szinonimatérképet is létrehozhat, közzéteheti őket bármely index számára elérhető szolgáltatásszintű erőforrásként, majd hivatkozhat arra, amelyiket a mezőszinten használni kívánja. A lekérdezési időpontokban az Azure Cognitive Search egy szinonimás térképen keres, ha a lekérdezésben használt mezőkben meg van adva.
 
 > [!NOTE]
-> A szinonimák programozott módon hozhatók létre, de nem a portálon. Ha az Azure Portalon a szinonimák támogatása hasznos lenne az Ön számára, küldjön visszajelzést a [UserVoice](https://feedback.azure.com/forums/263029-azure-search) (Felhasználói vélemények) fórumon.
+> A szinonimák programozott módon hozhatók létre, de nem a portálon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,109 +41,105 @@ Az oktatóanyag az alábbi követelményekkel rendelkezik:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Cognitive Search szolgáltatás](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET-könyvtár](/dotnet/api/overview/azure/search)
-* [Az Azure Cognitive Search használata .NET-alkalmazásokból](./search-howto-dotnet-sdk.md)
+* [Azure.Search.Documents-csomag](https://www.nuget.org/packages/Azure.Search.Documents/)
+
+Ha nem ismeri a .NET-ügyfél függvénytárát, tekintse meg az [Azure Cognitive Search használata a .net-ben](search-howto-dotnet-sdk.md)című témakört.
+
+## <a name="sample-code"></a>Mintakód
+
+Az ebben a példában a [githubon](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms)használt minta alkalmazás teljes forráskódja megtalálható.
 
 ## <a name="overview"></a>Áttekintés
 
-Az „előtte és utána” lekérdezések a szinonimák előnyeit mutatják be. Ebben a példában olyan minta alkalmazást használunk, amely lekérdezéseket hajt végre, és az eredményeket egy minta indexen adja vissza. A mintaalkalmazás egy „hotels” nevű kisméretű indexet hoz létre, amely két dokumentummal van feltöltve. Az alkalmazás keresési lekérdezéseket futtat olyan kifejezésekkel, amelyek nem szerepelnek az indexben, engedélyezi a szinonimák szolgáltatást, majd ismét kiadja ugyanazokat a kereséseket. Az alábbi kód az általános folyamatot mutatja be.
+A szinonimák értékének megjelenítéséhez előtte és után lekérdezéseket kell használni. Ebben a példában egy minta alkalmazás végrehajtja a lekérdezéseket, és visszaadja az eredményeket egy minta "Hotels" indexben, amely két dokumentummal van feltöltve. Először az alkalmazás olyan kifejezéseket és kifejezéseket használó keresési lekérdezéseket hajt végre, amelyek nem szerepelnek az indexben. Másodszor, a kód lehetővé teszi a szinonimák szolgáltatást, majd újra kiad ugyanazokat a lekérdezéseket, ezúttal az eredményeket a szinonimák leképezésében szereplő találatok alapján adja vissza. 
+
+Az alábbi kód az általános folyamatot mutatja be.
 
 ```csharp
-  static void Main(string[] args)
-  {
-      SearchServiceClient serviceClient = CreateSearchServiceClient();
+static void Main(string[] args)
+{
+   SearchIndexClient indexClient = CreateSearchIndexClient();
 
-      Console.WriteLine("{0}", "Cleaning up resources...\n");
-      CleanupResources(serviceClient);
+   Console.WriteLine("Cleaning up resources...\n");
+   CleanupResources(indexClient);
 
-      Console.WriteLine("{0}", "Creating index...\n");
-      CreateHotelsIndex(serviceClient);
+   Console.WriteLine("Creating index...\n");
+   CreateHotelsIndex(indexClient);
 
-      ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
+   SearchClient searchClient = indexClient.GetSearchClient("hotels");
 
-      Console.WriteLine("{0}", "Uploading documents...\n");
-      UploadDocuments(indexClient);
+   Console.WriteLine("Uploading documents...\n");
+   UploadDocuments(searchClient);
 
-      ISearchIndexClient indexClientForQueries = CreateSearchIndexClient();
+   SearchClient searchClientForQueries = CreateSearchClientForQueries();
 
-      RunQueriesWithNonExistentTermsInIndex(indexClientForQueries);
+   RunQueriesWithNonExistentTermsInIndex(searchClientForQueries);
 
-      Console.WriteLine("{0}", "Adding synonyms...\n");
-      UploadSynonyms(serviceClient);
-      EnableSynonymsInHotelsIndex(serviceClient);
-      Thread.Sleep(10000); // Wait for the changes to propagate
+   Console.WriteLine("Adding synonyms...\n");
+   UploadSynonyms(indexClient);
 
-      RunQueriesWithNonExistentTermsInIndex(indexClientForQueries);
+   Console.WriteLine("Enabling synonyms in the test index...\n");
+   EnableSynonymsInHotelsIndexSafely(indexClient);
+   Thread.Sleep(10000); // Wait for the changes to propagate
 
-      Console.WriteLine("{0}", "Complete.  Press any key to end application...\n");
+   RunQueriesWithNonExistentTermsInIndex(searchClientForQueries);
 
-      Console.ReadKey();
-  }
+   Console.WriteLine("Complete.  Press any key to end application...\n");
+
+   Console.ReadKey();
+}
 ```
-A minta index létrehozásának és feltöltésének lépéseit az [Azure Cognitive Search .NET-alkalmazásokból való használatának](./search-howto-dotnet-sdk.md)ismertetése ismerteti.
 
 ## <a name="before-queries"></a>„Előtte” lekérdezések
 
 A `RunQueriesWithNonExistentTermsInIndex` parancsban olyan keresési lekérdezéseket adunk ki, mint „five star” (ötcsillagos), „internet”, valamint „economy AND hotel” (gazdaságos ÉS szálloda).
+
 ```csharp
 Console.WriteLine("Search the entire index for the phrase \"five star\":\n");
-results = indexClient.Documents.Search<Hotel>("\"five star\"", parameters);
+results = searchClient.Search<Hotel>("\"five star\"", searchOptions);
 WriteDocuments(results);
 
 Console.WriteLine("Search the entire index for the term 'internet':\n");
-results = indexClient.Documents.Search<Hotel>("internet", parameters);
+results = searchClient.Search<Hotel>("internet", searchOptions);
 WriteDocuments(results);
 
 Console.WriteLine("Search the entire index for the terms 'economy' AND 'hotel':\n");
-results = indexClient.Documents.Search<Hotel>("economy AND hotel", parameters);
+results = searchClient.Search<Hotel>("economy AND hotel", searchOptions);
 WriteDocuments(results);
 ```
-A két indexelt dokumentum közül egyik sem tartalmazza a kifejezéseket, ezért az első `RunQueriesWithNonExistentTermsInIndex` parancs a következő kimenetet eredményezi.
-```
-Search the entire index for the phrase "five star":
 
-no document matched
-
-Search the entire index for the term 'internet':
-
-no document matched
-
-Search the entire index for the terms 'economy' AND 'hotel':
-
-no document matched
-```
+A két indexelt dokumentum egyike sem tartalmazza a feltételt, ezért az elsőből a következő kimenetet vesszük fel `RunQueriesWithNonExistentTermsInIndex` :  **egyetlen dokumentum sincs egyeztetve**.
 
 ## <a name="enable-synonyms"></a>Szinonimák engedélyezése
 
-A szinonimák engedélyezése egy kétlépéses folyamat. Először meghatározzuk és feltöltjük a szinonimaszabályokat, majd mezőket konfigurálunk az alkalmazásukhoz. A folyamatot az `UploadSynonyms` és az `EnableSynonymsInHotelsIndex` vázolja.
+A "korábbi" lekérdezések futtatása után a mintakód engedélyezi a szinonimákat. A szinonimák engedélyezése egy kétlépéses folyamat. Először határozza meg és töltse fel a szinonima szabályait. Másodszor konfigurálja a mezőket a használatára. A folyamatot az `UploadSynonyms` és az `EnableSynonymsInHotelsIndex` vázolja.
 
 1. Adjon hozzá egy szinonimatérképet a keresőszolgáltatáshoz. Az `UploadSynonyms` parancsban négy szabályt határozunk meg a 'desc-synonymmap' szinonimatérképben, és feltöltjük őket a szolgáltatásba.
-   ```csharp
-    var synonymMap = new SynonymMap()
-    {
-        Name = "desc-synonymmap",
-        Format = "solr",
-        Synonyms = "hotel, motel\n
-                    internet,wifi\n
-                    five star=>luxury\n
-                    economy,inexpensive=>budget"
-    };
 
-    serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
+   ```csharp
+   private static void UploadSynonyms(SearchIndexClient indexClient)
+   {
+      var synonymMap = new SynonymMap("desc-synonymmap", "hotel, motel\ninternet,wifi\nfive star=>luxury\neconomy,inexpensive=>budget");
+
+      indexClient.CreateOrUpdateSynonymMap(synonymMap);
+   }
    ```
-   A szinonimatérképnek meg kell felelnie a nyílt forráskódú szabványos `solr` formátumnak. A formátumot az [Azure Cognitive Search szinonimái](search-synonyms.md) ismertetik a szakasz alatt `Apache Solr synonym format` .
 
-2. Konfiguráljon kereshető mezőket a szinonimatérkép indexdefinícióban történő használatához. Az `EnableSynonymsInHotelsIndex` parancsban engedélyezzük a szinonimákat a `category` és a `tags` mezőkben úgy, hogy a `synonymMaps` tulajdonságot az újonnan feltöltött szinonimatérkép nevére állítjuk.
+1. Konfiguráljon kereshető mezőket a szinonimatérkép indexdefinícióban történő használatához. Az `AddSynonymMapsToFields` parancsban engedélyezzük a szinonimákat a `category` és a `tags` mezőkben úgy, hogy a `SynonymMapNames` tulajdonságot az újonnan feltöltött szinonimatérkép nevére állítjuk.
+
    ```csharp
-   Index index = serviceClient.Indexes.Get("hotels");
-   index.Fields.First(f => f.Name == "category").SynonymMaps = new[] { "desc-synonymmap" };
-   index.Fields.First(f => f.Name == "tags").SynonymMaps = new[] { "desc-synonymmap" };
-
-   serviceClient.Indexes.CreateOrUpdate(index);
+   private static SearchIndex AddSynonymMapsToFields(SearchIndex index)
+   {
+      index.Fields.First(f => f.Name == "category").SynonymMapNames.Add("desc-synonymmap");
+      index.Fields.First(f => f.Name == "tags").SynonymMapNames.Add("desc-synonymmap");
+      return index;
+   }
    ```
-   Szinonimatérkép hozzáadásakor nem kell újraépíteni az indexet. A szolgáltatáshoz hozzáadhat egy szinonimatérképet, majd bármely indexben módosíthatja a meglévő mezőmeghatározásokat úgy, hogy azok az új szinonimatérképet használják. Az új attribútumok hozzáadása nincs hatással az index elérhetőségére. Ugyanez vonatkozik a szinonimák egy adott mező számára történő letiltására. A `synonymMaps` tulajdonságot egyszerűen átállíthatja egy üres listára.
+
+   Szinonimatérkép hozzáadásakor nem kell újraépíteni az indexet. A szolgáltatáshoz hozzáadhat egy szinonimatérképet, majd bármely indexben módosíthatja a meglévő mezőmeghatározásokat úgy, hogy azok az új szinonimatérképet használják. Az új attribútumok hozzáadása nincs hatással az index elérhetőségére. Ugyanez vonatkozik a szinonimák egy adott mező számára történő letiltására. A `SynonymMapNames` tulajdonságot egyszerűen átállíthatja egy üres listára.
+
    ```csharp
-   index.Fields.First(f => f.Name == "category").SynonymMaps = new List<string>();
+   index.Fields.First(f => f.Name == "category").SynonymMapNames.Add("desc-synonymmap");
    ```
 
 ## <a name="after-queries"></a>„Utána” lekérdezések
@@ -161,20 +159,18 @@ Search the entire index for the terms 'economy' AND 'hotel':
 
 Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ```
+
 Az első lekérdezés a `five star=>luxury` szabály alapján megtalálja a dokumentumot. A második lekérdezés kibővíti a keresést az `internet,wifi` használatával, a harmadik pedig a `hotel, motel` és az `economy,inexpensive=>budget` kifejezést is használja a dokumentumok megtalálásához.
 
 A szinonimák hozzáadásával teljesen megváltozik a keresési élmény. Ebben a példában az eredeti lekérdezések nem tudták visszaadni az értelmes eredményeket, még ha az index dokumentumai is relevánsak voltak. A szinonimák engedélyezésével úgy bővíthetjük ki az indexet, hogy a gyakran használt kifejezéseket is tartalmazza a benne található mögöttes adatok megváltoztatása nélkül.
-
-## <a name="sample-application-source-code"></a>Mintaalkalmazás forráskódja
-A jelen útmutatóban használt mintaalkalmazás teljes forráskódját a [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) webhelyén találja.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Egy példa után a leggyorsabb megoldás az Azure Cognitive Search szolgáltatást tartalmazó erőforráscsoport törlése. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Cognitive Search szolgáltatás áttekintés lapján található.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a példa a C#-kódban szereplő szinonimák funkciót mutatta be a leképezési szabályok létrehozásához és közzétételéhez, majd a szinonimák leképezésének meghívásához a lekérdezésen. További információt a [.NET SDK](/dotnet/api/microsoft.azure.search) és a [REST API](/rest/api/searchservice/) referencia-dokumentációjában találhat.
+Ez a példa a C#-kódban szereplő szinonimák funkciót mutatta be a leképezési szabályok létrehozásához és közzétételéhez, majd a szinonimák leképezésének meghívásához a lekérdezésen. További információt a [.NET SDK](/dotnet/api/overview/azure/search.documents-readme) és a [REST API](/rest/api/searchservice/) referencia-dokumentációjában találhat.
 
 > [!div class="nextstepaction"]
 > [Szinonimák használata az Azure-ban Cognitive Search](search-synonyms.md)

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 10/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: d045014cd92df084e4dd409012fdb668d312de1a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f9a5197b982958fe0a0ff21c4b442142beb38882
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442320"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422467"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Mi az az Azure Cognitive Search?
 
@@ -28,7 +28,7 @@ A keresési szolgáltatás építészeti szempontból a nem indexelt adatokat ta
 
 A keresési szolgáltatás két elsődleges munkaterhelése az *indexelés* és a *lekérdezés*.
 
-+ Az indexelés szöveget helyez el a keresési szolgáltatásba, és kereshetővé teszi. Belsőleg a bejövő szövegeket a rendszer tokenekre dolgozza fel, és a gyors vizsgálatok érdekében fordított indexekben tárolja őket. Az indexelés során lehetősége van arra, hogy a Microsofttól vagy az Ön által létrehozott egyéni szakemberektől előre definiált *kognitív képességeket*is felvehet. A későbbi elemzések és átalakítások olyan új információkat és struktúrákat eredményeznek, amelyek korábban nem léteztek, így nagy mennyiségű keresési és tudás-adatbányászati forgatókönyvet biztosítanak.
++ Az indexelés szöveget helyez el a keresési szolgáltatásba, és kereshetővé teszi. Belsőleg a bejövő szövegeket a rendszer tokenekre dolgozza fel, és a gyors vizsgálatok érdekében fordított indexekben tárolja őket. Az indexelés során lehetősége van arra, hogy a Microsofttól vagy az Ön által létrehozott egyéni szakemberektől előre definiált *kognitív képességeket* is felvehet. A későbbi elemzések és átalakítások olyan új információkat és struktúrákat eredményeznek, amelyek korábban nem léteztek, így nagy mennyiségű keresési és tudás-adatbányászati forgatókönyvet biztosítanak.
 
 + Ha egy indexet kereshető adatokkal tölt fel, az ügyfélalkalmazás lekérdezési kérelmeket küld egy keresési szolgáltatásnak, és kezeli a válaszokat. Az összes lekérdezés végrehajtása a szolgáltatásban létrehozott, saját és tárolt keresési index fölé esik. Az ügyfélalkalmazás esetében a keresési élmény az Azure Cognitive Search API-jai használatával van definiálva, és a következők lehetnek: relevancia finomhangolása, automatikus kiegészítés, szinonimák egyeztetése, zavaros megfeleltetés, minta egyeztetés, szűrés és rendezés.
 
@@ -78,7 +78,7 @@ A lekéréses modell a forrásokból származó adatokat lekéri az Azure-ból, 
 
 ### <a name="step-4-send-queries-and-handle-responses"></a>4. lépés: lekérdezések küldése és a válaszok kezelése
 
-Az indexek feltöltése után a [keresési lekérdezéseket](search-query-overview.md) a szolgáltatás végpontján [REST API](/rest/api/searchservice/Search-Documents) vagy a [.net SDK](/dotnet/api/microsoft.azure.search.idocumentsoperations)-val rendelkező egyszerű HTTP-kérelmek használatával teheti ki.
+Az indexek feltöltése után a [keresési lekérdezéseket](search-query-overview.md) a szolgáltatás végpontján [REST API](/rest/api/searchservice/Search-Documents) vagy a [.net SDK](/dotnet/api/azure.search.documents.searchclient.search)-val rendelkező egyszerű HTTP-kérelmek használatával teheti ki.
 
 Lépjen az [első keresőalkalmazás létrehozásához](tutorial-csharp-create-first-app.md) , majd terjesszen fel egy olyan weblapot, amely összegyűjti a felhasználói adatokat, és kezeli az eredményeket. Az [interaktív Rest](search-get-started-postman.md) -hívásokhoz vagy a Azure Portal beépített [keresési Explorerrel](search-explorer.md) is használhatja a meglévő indexek lekérdezéséhez.
 

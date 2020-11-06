@@ -1,5 +1,5 @@
 ---
-title: A IoT tárolása és elemzése a Time Series Insights használatával Plug and Play eszköz telemetria | Microsoft Docs
+title: Az Azure-IoT Plug and Play eszköz telemetria tárolásához és elemzéséhez használja a Time Series Insightst | Microsoft Docs
 description: Time Series Insights környezet beállítása és a IoT Hub csatlakoztatása a telemetria megtekintéséhez és elemzéséhez a IoT Plug and Play eszközökről.
 author: lyrana
 ms.author: lyhughes
@@ -7,12 +7,12 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 0d4c24ed771b4d112a448ceec0e9fc2f9e8ac359
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: aa99b9059fe8e3cd5b0dfe6f7e62bd02012fd144
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146379"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422263"
 ---
 # <a name="tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>Oktatóanyag: Time Series Insights Gen2 létrehozása és csatlakoztatása a IoT Plug and Play eszköz telemetria tárolásához, megjelenítéséhez és elemzéséhez
 
@@ -182,9 +182,9 @@ Ismételje meg a fenti lépéseket a második Termosztátnál.
 
 Térjen vissza a diagram panelre, és bontsa ki az eszköz flottáját és a TemperatureController. Kattintson a thermostat1 elemre, válassza ki a `Temperature` változót, majd kattintson a *Hozzáadás* gombra az érték ábrázolásához. Tegye ugyanezt a thermostat2.
 
-![Példány típusának módosítása](./media/tutorial-configure-tsi/charting-values.png)
+![Thermostat2-példány típusának módosítása](./media/tutorial-configure-tsi/charting-values.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a különböző diagram-beállítási lehetőségekről, beleértve az intervallumok méretezését és az Y tengely vezérlőelemeket, tekintse meg a [Azure Time Series Insights Explorer ](https://docs.microsoft.com/azure/time-series-insights/concepts-ux-panels) dokumentációját.
 

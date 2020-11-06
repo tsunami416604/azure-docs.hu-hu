@@ -9,18 +9,27 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: a60ca64113bb3f2700e9f521f65780dc8ffbcc54
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 44afcf6883298eb36cd1219e6d60a8444a487412
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307744"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423011"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referenciát tartalmazó oldalt.
 
 Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az ismert problémák listáját](resource-known-issues.md) .
+
+## <a name="2020-11-05"></a>2020-11-05
+
+### <a name="data-labeling-for-image-instance-segmentation-polygon-annotation-preview"></a>Adatcímkézés a képpéldányok szegmentálásához (sokszög-jegyzet) (előzetes verzió)
+
+A képpéldányok szegmentálása (sokszög-jegyzetek) a projekt típusa az adatfeliratokban mostantól elérhető, így a felhasználók a képeken lévő objektumok kontúrja körül is megrajzolják és jegyzetekkel láthatják el a sokszögeket. A felhasználók hozzá tudnak rendelni egy osztályt és egy sokszöget minden olyan objektumhoz, amely érdekes lehet egy adott rendszerképen belül.
+
+További információ a [rendszerkép-példányok szegmentálásának címkézéséről](how-to-label-images.md).
+
 
 ## <a name="2020-10-26"></a>2020-10-26
 
@@ -44,7 +53,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + A azureml-magyarázza-Model csomag hivatalosan elavult
   + **azureml-mlflow**
     + Feloldottunk egy hibát a mlflow. projects szolgáltatásban. a azureml-háttérrel való futtatásakor a rendszer nem megfelelően kezelte a véglegesítési állapotot.
-  + **azureml-pipeline-core**
+  + **azureml – folyamat – mag**
     + Támogatás hozzáadása a folyamat-ütemterv létrehozása, listázása és lekérése egy folyamat-végpont alapján.
     +  Javította PipelineData.as_dataset dokumentációját, amely érvénytelen használati példával bővült – a PipelineData.as_dataset helytelenül való használata mostantól egy ValueException dobását eredményezi
     + Módosította a HyperDriveStep-folyamatokat tartalmazó jegyzetfüzetet, hogy regisztrálja a legjobb modellt egy PipelineStep belül közvetlenül a HyperDriveStep futtatása után.
@@ -112,7 +121,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + javítsa a PyPI-csomagok leírását a azureml, a azureml-magyarázza-Model, a azureml-azureml-értelmezze és a tensorboard-
   + **azureml-train-automl-runtime**
     + a vizualizációs irányítópult el lett távolítva a azureml-azureml-értelmező csomagból, a magyarázatot használó ügyfél áthelyezve a-tolmácsolási csomagba, és elavult a azureml-alapú csomagok és jegyzetfüzetek továbbfejlesztett API-val
-  + **azureml – widgetek**
+  + **azureml-widgets**
     + a vizualizációs irányítópult el lett távolítva a azureml-azureml-értelmező csomagból, a magyarázatot használó ügyfél áthelyezve a-tolmácsolási csomagba, és elavult a azureml-alapú csomagok és jegyzetfüzetek továbbfejlesztett API-val
 
 ## <a name="2020-09-21"></a>2020-09-21
@@ -195,7 +204,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + Javítsa ki a Dataset.get_by_name hibát, amely a legújabb adatkészlet verziójának címkéit jeleníti meg, még akkor is, ha egy adott régebbi verziót beolvasott.
   + **azureml-interpret**
     + Hozzáadott valószínűségi kimenetek a pontozási magyarázatok alakításához a azureml-értelmezésben az eredeti magyarázat shap_values_output paramétere alapján.
-  + **azureml-pipeline-core**
+  + **azureml – folyamat – mag**
     + Javított `PipelineOutputAbstractDataset.register` dokumentáció.
   + **azureml-train-automl-client**
     + Frissített AutoML-függőségek: `scikit-learn` (most 0.22.1), `pandas` (most 0.25.1), `numpy` (most 1.18.2).
@@ -384,7 +393,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
   + **azureml-train-automl-runtime**
     + A több csomópontos, több GPU-val elosztott featurization korlátozott rendelkezésre állása a BERT-mel.
     + Az ADB-alapú automatizált gépi tanulási folyamatokban a nem kompatibilis csomagok esetében hozzáadott hibakezelés.
-  + **azureml – widgetek**
+  + **azureml-widgets**
     + A azureml-widgetek dokumentum-frissítései.
 
   
@@ -504,7 +513,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + Kis csípések a jegyzetfüzetekhez, a hibakeresés támogatásához
   + **azureml – opendatasets**
     + a azureml-opendatasets a azureml-adatelőkészítés 1.4.0 vagy újabb verziójára van szüksége. Figyelmeztetés hozzáadva, ha az alacsonyabb verzió észlelhető
-  + **azureml – folyamat – mag**
+  + **azureml-pipeline-core**
     + Ez a módosítás lehetővé teszi, hogy a felhasználó opcionális runconfig adjon meg a moduleVersion a modul meghívásakor. Publish_python_script.
     + A Node-fiók engedélyezése lehet egy ParallelRunStep a azureml. pipeline folyamatban. lépések
   + **azureml-pipeline-steps**
@@ -599,7 +608,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
   + **azureml-opendatasets**
     + Ha nem ad vissza értéket, a none értéket adja vissza.
     + Javítsa to_pandas_dataframe teljesítményét.
-  + **azureml-pipeline-core**
+  + **azureml – folyamat – mag**
     + Gyors javítás azon ParallelRunStep, ahol a YAML-be való betöltés megszakadt
     + A ParallelRunStep általánosan elérhetővé vált – azureml... a folyamat. a lépések elavult figyelmeztetéssel rendelkeznek, és a azureml. pipeline. Steps verzióra kerülnek. lépések – az új funkciók a következők: 1. Adatkészletek a PipelineParameter 2. Új paraméter: run_max_retry 3. Konfigurálható append_row kimeneti fájl neve
   + **azureml-pipeline-steps**
@@ -693,9 +702,9 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
   + **azureml-interpret**
     + A magyarázatok elérési útjának hossza korlátozott a Windows-korlát
     + Hibajavítás az adatutánozó-magyarázattal létrehozott, lineáris helyettesítő modell használatával készült ritka magyarázatokhoz.
-  + **azureml – opendatasets**
+  + **azureml-opendatasets**
     + A MNIST oszlopainak kijavítása karakterláncként van elemezve, amely csak int lehet.
-  + **azureml-pipeline-core**
+  + **azureml – folyamat – mag**
     + A ModuleStep beágyazott modul használatakor regenerate_outputs lehetőség engedélyezése.
   + **azureml-train-automl-client**
     + A AutoML elavult Tensorflow modelljei.
@@ -798,7 +807,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + Frissített azureml – a következő értelmezési értelmezést használja: Community 0,9. *
     + Kijavítva a probléma a ritka kiértékelési adattal rendelkező magyarázat letöltésével
     + A magyarázat objektum ritka formátumának támogatása a AutoML-ben
-  + **azureml – folyamat – mag**
+  + **azureml-pipeline-core**
     + A ComputeInstance támogatása a folyamatok számítási céljaként
   + **azureml-train-automl-client**
     + További telemetria bővült a betanítás utáni műveletek köré.
@@ -1978,7 +1987,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
     + A azureml. mlflow-t használó távoli futtatások továbbfejlesztett Erőforrás-kihasználtsága.
     + Javítottuk a azureml-mlflow csomag dokumentációját.
     + Kijavítva a probléma, amelyben a mlflow.log_artifacts ("my_dir") a "my_dir/artifact-paths" alatt az "összetevő-elérési utak" helyett az összetevők mentését tenné.
-  + **azureml – folyamat – mag**
+  + **azureml-pipeline-core**
     + Az összes folyamat lépéseihez hash_paths paraméter elavult, és a jövőben el lesz távolítva. A source_directory alapértelmezett tartalma kivonattal van elkészítve (kivéve a vagy a-ban felsorolt fájlokat `.amlignore` `.gitignore` )
     + A modul-és ModuleStep folyamatos fejlesztése a számítási típusra jellemző modulok támogatásához, a RunConfiguration-integráció előkészítéséhez és más, a számítási típus-specifikus modul-használat feloldásához a folyamatokban.
   + **azureml-pipeline-steps**
@@ -2116,6 +2125,6 @@ A [`PipelineEndpoint`](/python/api/azureml-pipeline-core/azureml.pipeline.core.p
   + Új naplófájlok megjelenítője
   + A műveletek lapon található kísérletekre, számításokra, modellekre, lemezképekre és központi telepítésekre mutató hivatkozások
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el az [Azure Machine Learning](overview-what-is-azure-ml.md) áttekintését.

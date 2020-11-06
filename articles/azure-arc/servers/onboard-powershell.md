@@ -1,22 +1,22 @@
 ---
 title: Hibrid gépek összekötése az Azure-ba a PowerShell használatával
-description: Ebből a cikkből megtudhatja, hogyan telepítheti az ügynököt, és hogyan csatlakoztatható egy gép az Azure-hoz az Azure arc-kompatibilis kiszolgálók használatával a PowerShell használatával.
+description: Ebből a cikkből megtudhatja, hogyan telepítheti az ügynököt, és hogyan csatlakoztatható egy gép az Azure-hoz az Azure arc-kompatibilis kiszolgálók használatával. Ezt a PowerShell használatával teheti meg.
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0755846ef02377edade98b69e478908a111ab247
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: f85e2564b2e5b194d306ef4bad2269982331a7d4
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901527"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422773"
 ---
-# <a name="connect-hybrid-machines-to-azure-using-powershell"></a>Hibrid gépek összekötése az Azure-ba a PowerShell használatával
+# <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>Hibrid gépek összekötése az Azure-ba a PowerShell használatával
 
-A környezetben egy vagy több Windows-vagy Linux-gépen engedélyezheti az Azure arc-kompatibilis kiszolgálókat, ha manuális lépéseket hajt végre. Vagy a [Connect-AzConnectedMachine PowerShell-](/powershell/module/az.connectedmachine/remove-azconnectedmachine) parancsmag használatával letöltheti a csatlakoztatott gépi ügynököt, telepítheti az ügynököt, és regisztrálhatja a gépet az Azure arc segítségével. A parancsmag letölti a Windows Agent Windows Installer csomagot a Microsoft letöltőközpontból, és a Linux-ügynök csomagját a Microsoft Package adattárból.
+Az Azure arc használatával engedélyezett kiszolgálók esetében manuális lépésekkel engedélyezheti azokat egy vagy több Windows-vagy Linux-gépen a környezetben. Azt is megteheti, hogy a [Connect-AzConnectedMachine PowerShell-](/powershell/module/az.connectedmachine/remove-azconnectedmachine) parancsmag használatával letölti a csatlakoztatott gépi ügynököt, telepíti az ügynököt, és regisztrálja a gépet az Azure arc segítségével. A parancsmag letölti a Windows-ügynök csomagját (Windows Installer) a Microsoft letöltőközpontból, valamint a Linux-ügynök csomagját a Microsoft Package adattárból.
 
 Ehhez a módszerhez rendszergazdai jogosultságokkal kell rendelkeznie a gépen az ügynök telepítéséhez és konfigurálásához. Linux rendszeren a legfelső szintű fiók, a Windows rendszeren pedig a helyi Rendszergazdák csoport tagja. Ez a folyamat interaktív módon vagy távolról is elvégezhető a Windows Serveren a [PowerShell távelérés](/powershell/scripting/learn/ps101/08-powershell-remoting)használatával.
 
-Mielőtt elkezdené, tekintse át az [előfeltételeket](agent-overview.md#prerequisites) , és győződjön meg arról, hogy az előfizetés és az erőforrások megfelelnek a követelményeknek. A támogatott régiókkal és az egyéb kapcsolódó megfontolásokkal kapcsolatos információkért lásd: [támogatott Azure-régiók](overview.md#supported-regions).
+Az első lépések előtt tekintse át az [előfeltételeket](agent-overview.md#prerequisites) , és ellenőrizze, hogy az előfizetés és az erőforrások megfelelnek-e a követelményeknek. A támogatott régiókkal és az egyéb kapcsolódó megfontolásokkal kapcsolatos információkért lásd: [támogatott Azure-régiók](overview.md#supported-regions).
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -24,13 +24,13 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 - Azure PowerShell tartalmazó gép. Útmutatásért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
 
-Mielőtt a Azure PowerShell használatával kezelhesse a virtuálisgép-bővítményeket az arc-kompatibilis kiszolgálók által felügyelt hibrid kiszolgálón, telepítenie kell a `Az.ConnectedMachine` modult. Futtassa a következő parancsot az ív használatára képes kiszolgálón:
+A PowerShell használatával kezelheti a virtuálisgép-bővítményeket az Azure arc-kompatibilis kiszolgálók által kezelt hibrid kiszolgálókon. A PowerShell használata előtt telepítse a `Az.ConnectedMachine` modult. Futtassa az alábbi parancsot a kiszolgálón, amelyen engedélyezve van az Azure arc:
 
 ```powershell
 Install-Module -Name Az.ConnectedMachine
 ```
 
-A telepítés befejeztével a következő üzenet jelenik meg:
+A telepítés befejezésekor a következő üzenet jelenik meg:
 
 `The installed extension ``Az.ConnectedMachine`` is experimental and not covered by customer support. Please use with discretion.`
 
@@ -54,11 +54,11 @@ A telepítés befejeztével a következő üzenet jelenik meg:
         Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
         ```
 
-Ha a telepítés befejezése után az ügynök nem indul el, ellenőrizze a naplókat a részletes hibaüzenetek megtekintéséhez. Windows on *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log* és Linux rendszeren a */var/opt/azcmagent/log/himds.log* címen.
+Ha a telepítés befejezése után az ügynök nem indul el, ellenőrizze a naplókat a részletes hibaüzenetek megtekintéséhez. Windows rendszeren keresse meg a következő fájlt: *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log*. Linux rendszeren keresse meg a következő fájlt: */var/opt/azcmagent/log/himds.log*.
 
-## <a name="install-and-connect-using-powershell-remoting"></a>Telepítés és kapcsolat a PowerShell-távelérés használatával
+## <a name="install-and-connect-by-using-powershell-remoting"></a>Telepítés és kapcsolat a PowerShell-távelérés használatával
 
-A következő lépések végrehajtásával konfigurálhat egy vagy több Windows-kiszolgálót az Azure arc-kompatibilis kiszolgálókkal. A távoli gépen engedélyezni kell a PowerShell távelérését. Használja a `Enable-PSRemoting` parancsmagot a PowerShell távelérésének engedélyezéséhez.
+Ebből a témakörből megtudhatja, hogyan konfigurálhat egy vagy több Windows-kiszolgálót az Azure arc használatával engedélyezett kiszolgálókkal. Engedélyeznie kell a PowerShell távelérést a távoli gépen. Ehhez az `Enable-PSRemoting` parancsmagot használhatja.
 
 1. Nyisson meg egy PowerShell-konzolt rendszergazdaként.
 
@@ -73,14 +73,14 @@ A következő lépések végrehajtásával konfigurálhat egy vagy több Windows
         Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
         ```
     
-    * Ha egyszerre több távoli gépen szeretné telepíteni a csatlakoztatott gépi ügynököt, adja hozzá a távoli gépek nevének vesszővel elválasztott listáját.
+    * Ha egyszerre több távoli gépen szeretné telepíteni a csatlakoztatott gépi ügynököt, vegyen fel egy listát a távoli gépek neveiről, amelyek mindegyike vesszővel elválasztva.
 
         ```azurepowershell
         $session = Connect-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
         Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
         ```
 
-    A következő példa egy egyetlen gépet célzó parancs eredményeit jeleníti meg:
+    Az alábbi példa egy adott gépet célzó parancs eredményét jeleníti meg:
     
     ```azurepowershell
     time="2020-08-07T13:13:25-07:00" level=info msg="Onboarding Machine. It usually takes a few minutes to complete. Sometimes it may take longer depending on network and server load status."
@@ -95,14 +95,14 @@ A következő lépések végrehajtásával konfigurálhat egy vagy több Windows
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Az Azure Arc csatlakozásának ellenőrzése
 
-Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis kiszolgálókhoz való csatlakozáshoz, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakozott-e. A gépet megtekintheti az [Azure Portalon](https://portal.azure.com).
+Miután telepítette és konfigurálta az ügynököt az Azure arc-kompatibilis kiszolgálókhoz való regisztráláshoz, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakozott-e. Megtekintheti a gépet a [Azure Portalban](https://portal.azure.com).
 
-![Sikeres kiszolgálói kapcsolatok](./media/onboard-portal/arc-for-servers-successful-onboard.png)
+![Képernyőkép a kiszolgálók irányítópultról, amely a kiszolgáló sikeres csatlakoztatását mutatja.](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A hibaelhárítási információ a [csatlakoztatott gép ügynökének hibaelhárítása című útmutatóban](troubleshoot-agent-onboard.md)található.
+* Ha szükséges, tekintse meg a [csatlakoztatott gép ügynökével kapcsolatos útmutatót](troubleshoot-agent-onboard.md).
 
-* Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-policy.md)és sok más további műveletet.
+* Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával. A virtuális gép [vendég konfigurációját](../../governance/policy/concepts/guest-configuration.md)használhatja, ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, és lehetővé teszi a figyelést a [Azure monitor virtuális gépekkel](../../azure-monitor/insights/vminsights-enable-policy.md).
 
-* További információ a [log Analytics-ügynökről](../../azure-monitor/platform/log-analytics-agent.md). A Windows és Linux rendszerhez készült Log Analytics ügynökre akkor van szükség, ha az operációs rendszer és a számítási feladatok figyelésére szolgáló adatokat szeretné összegyűjteni, az Automation-runbookok vagy-szolgáltatásokkal, például a Update Managementekkel, vagy más Azure-szolgáltatások, például a [Azure Security Center](../../security-center/security-center-introduction.md)használatával
+* További információ a [log Analytics-ügynökről](../../azure-monitor/platform/log-analytics-agent.md). A Windows és a Linux rendszerhez készült Log Analytics ügynökre akkor van szükség, ha az operációs rendszer és a számítási feladatok figyelésére szolgáló adatokat szeretné összegyűjteni, vagy a Azure Automation runbookok vagy más funkciókkal, például a Update Management használatával kívánja kezelni Ez az ügynök más Azure-szolgáltatások, például a [Azure Security Center](../../security-center/security-center-introduction.md)használatához is szükséges.

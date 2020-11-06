@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/05/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b88d42071beba0ddd5a5627cefbe50229b4d27eb
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f92864cea4332157b0bf8b171a9d88b34f79a5ac
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294268"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422110"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>Azure Database for PostgreSQL verziószámozási házirend
 
@@ -47,20 +47,20 @@ Az alábbi táblázat a PostgreSQL főverzióinak kivonulási részleteit tartal
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Funkciók](https://www.postgresql.org/docs/11/release-11.html) | 2019. július 24.  | November 9., 2023
 | [PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [Funkciók](https://www.postgresql.org/docs/12/release-12.html) | Szeptember 22., 2020  | November 14., 2024
 
-## <a name="retired-postgresql-engine-versions-not-supported-in-azure-postgresql"></a>Az Azure PostgreSQL-ben nem támogatott a visszavont PostgreSQL-motor verziói
+## <a name="retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql"></a>Nem támogatottak a Azure Database for PostgreSQL
 
 Ha folytatja a kivont verzió futtatását, a PostgreSQL-adatbázis egyes verziói esetében a következő korlátozásokat kell figyelembe vennie:
 - Mivel a Közösség nem szabadít fel semmilyen további hibajavítást vagy biztonsági javítást, a PostgreSQL-hez készült Azure nem javítja a kivont adatbázismotor esetleges hibáit vagy biztonsági problémáit, vagy egyéb esetekben biztonsági intézkedéseket hajt végre a kivont adatbázismotor tekintetében. Ennek eredményeképpen biztonsági réseket vagy más problémákat tapasztalhat. Az Azure azonban továbbra is rendszeres karbantartást és javítást végez a gazdagép, az operációs rendszer, a tárolók és a szolgáltatásokkal kapcsolatos egyéb összetevők számára.
-- Ha bármilyen, a PostgreSQL-adatbázissal kapcsolatban felmerülő támogatási probléma merül fel, akkor nem tudjuk támogatni a támogatást. Ilyen esetekben frissítenie kell az adatbázist ahhoz, hogy támogatást nyújtson Önnek.
+- Ha bármilyen támogatási probléma merülhet fel a PostgreSQL-adatbázissal kapcsolatban, előfordulhat, hogy nem tudunk támogatást nyújtani. Ilyen esetekben frissítenie kell az adatbázist ahhoz, hogy támogatást nyújtson Önnek.
 - Nem fog tudni új adatbázis-kiszolgálókat létrehozni a kivont verzióhoz. Ugyanakkor időponthoz kapcsolódó helyreállításokat is végrehajthat, és a meglévő kiszolgálókhoz olvasási replikákat hozhat létre.
 - A Azure Database for PostgreSQL által fejlesztett új szolgáltatási képességek csak a támogatott adatbázis-kiszolgáló verziók esetében érhetők el.
 - Az üzemidőre vonatkozó SLA-kat kizárólag Azure Database for PostgreSQL szolgáltatással kapcsolatos problémákra, és nem az adatbázismotor által okozott hibák okozta állásidőre alkalmazza a rendszer.  
-- A kivont adatbázis-verzióban azonosított súlyos adatbázis biztonsági rések esetén az Azure dönthet úgy, hogy automatikusan újabb verzióra frissíti az adatbázist.
+- Abban az esetben, ha a PostgreSQL adatbázismotor által a kivont adatbázis-verzióban azonosított biztonsági rés miatt a szolgáltatás súlyos fenyegetést jelent, az Azure dönthet úgy, hogy leállítja az adatbázis-kiszolgáló számítási csomópontját a szolgáltatás biztonságossá tételéhez. Ilyen esetben előfordulhat, hogy a kiszolgáló online állapotba helyezése előtt értesítést kap a kiszolgáló frissítéséről.
 
 ## <a name="postgresql-version-syntax"></a>PostgreSQL-verzió szintaxisa
 A PostgreSQL 10-es verziójának megkezdése előtt a [PostgreSQL verziószámozási házirendje](https://www.postgresql.org/support/versioning/) _jelentős_ verziófrissítést eredményezett, hogy az első _vagy_ a második szám növekszik. Például a 9,5 – 9,6 _fő_ verziófrissítésnek számít. A 10-es verziótól kezdve a rendszer csak az első szám változását tekinti jelentős verziófrissítésnek. Például a 10,0 – 10,1 egy _kisebb_ kiadású frissítés. A 10 – _11 verzió a főverzió frissítése_ .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Lásd: Azure Database for PostgreSQL – egy kiszolgáló által [támogatott verziók](./concepts-supported-versions.md)
 - Lásd: Azure Database for PostgreSQL – rugalmas kiszolgáló (előzetes [verzió) támogatott verziók](flexible-server/concepts-supported-versions.md)
 - További információ a főverziók verziófrissítésének végrehajtásáról: a [főverzió frissítéseinek](how-to-upgrade-using-dump-and-restore.md) dokumentációja.

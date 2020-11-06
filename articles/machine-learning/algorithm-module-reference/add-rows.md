@@ -1,7 +1,7 @@
 ---
 title: 'Sorok hozzáadása: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan összefűzheti a két adathalmazt a Azure Machine Learning sorok hozzáadása moduljának használatával.
+description: Megtudhatja, hogyan összefűzheti a két adathalmazt a Azure Machine Learning Designer sorok hozzáadása moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 353ecc89e242e1d17dd83436f83afe77cc8c84ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c2a74ee88e7161ab8dd1701ef4d105df67c0938
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898978"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421940"
 ---
 # <a name="add-rows-module"></a>Sorok hozzáadása modul
 
@@ -32,7 +32,7 @@ A sorok összefűzése olyan helyzetekben hasznos, mint például a következők
 
 Két adatkészletből származó sorok összefűzéséhez a soroknak pontosan ugyanazzal a sémával kell rendelkezniük. Ez azt jelenti, hogy ugyanaz a számú oszlop és ugyanolyan típusú adattípus szerepel az oszlopokban.
 
-1.  Húzza a **sorok hozzáadása** modult a folyamatba, és az **adatátalakítás**alatt találja.
+1.  Húzza a **sorok hozzáadása** modult a folyamatba, és az **adatátalakítás** alatt találja.
 
 2. Az adatkészletek csatlakoztatása a két bemeneti porthoz. A hozzáfűzni kívánt adatkészletet a második (jobb oldali) porthoz kell csatlakoztatni. 
   
@@ -40,6 +40,6 @@ Két adatkészletből származó sorok összefűzéséhez a soroknak pontosan ug
 
     Ha ugyanazt az adatkészletet adja hozzá a **sorok hozzáadása** modul mindkét bemenetéhez, a rendszer duplikálja az adatkészletet. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

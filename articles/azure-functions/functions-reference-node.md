@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 758e11a9c043fbd1238d1e3533a2d83804ec0b73
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 5b9ffdec83fb613b7df0b5a3227ca66c55e54fe9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043103"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422552"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -20,7 +20,7 @@ Express.js, Node.js vagy JavaScript-fejlesztőként, ha még nem ismeri a Azure 
 
 | Első lépések | Alapelvek| Interaktív tanulás |
 | -- | -- | -- | 
-| <ul><li>[Node.js függvény a Visual Studio Code használatával](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[Node.js függvény a Terminal/Command parancssorral](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Node.js függvény a Visual Studio Code használatával](./create-first-function-vs-code-node.md)</li><li>[Node.js függvény a Terminal/Command parancssorral](./create-first-function-cli-java.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript-függvény alapjai
 
@@ -107,7 +107,7 @@ A JavaScriptben a [kötések](functions-triggers-bindings.md) konfigurálva és 
 
 ### <a name="inputs"></a>Bevitelek
 A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger bemenete, a másik pedig a további bemenet. Az trigger és más bemeneti kötések (-kötések `direction === "in"` ) háromféle módon olvashatók be a függvényekben:
- - **_[Ajánlott]_ A függvénynek átadott paraméterek.** A függvénynek ugyanolyan sorrendben kell átadni őket, mint *function.js* . A `name` *function.json* elemben definiált tulajdonságnak nem kell megegyeznie a paraméter nevével, bár ennek a következőnek kell lennie:.
+ - **_[Ajánlott]_ A függvénynek átadott paraméterek.** A függvénynek ugyanolyan sorrendben kell átadni őket, mint *function.js*. A `name` *function.json* elemben definiált tulajdonságnak nem kell megegyeznie a paraméter nevével, bár ennek a következőnek kell lennie:.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -550,7 +550,7 @@ A függvényalkalmazás kétféleképpen telepíthet csomagokat:
 3. Nyissa meg a ( `D:\home\site\wwwroot` z) parancsot, majd húzza a package.jsfájlt a **wwwroot** mappába a lap felső részén.  
     Más módokon is feltölthet fájlokat a Function alkalmazásba. További információ: [Function app Files frissítése](functions-reference.md#fileupdate). 
 
-4. A package.jsfájl feltöltése után futtassa a `npm install` parancsot a **kudu távoli végrehajtási konzolon** .  
+4. A package.jsfájl feltöltése után futtassa a `npm install` parancsot a **kudu távoli végrehajtási konzolon**.  
     Ez a művelet letölti a package.jsfájlban jelzett csomagokat, és újraindítja a Function alkalmazást.
 
 ## <a name="environment-variables"></a>Környezeti változók
@@ -651,7 +651,7 @@ Az 1. x verzióban a beállítás `languageWorkers:node:arguments` nem fog műk�
 
 ## <a name="typescript"></a>TypeScript
 
-Ha a functions futtatókörnyezet 2. x verzióját célozza meg, a [Visual Studio Code](functions-create-first-function-vs-code.md) -hoz és a [Azure functions Core Tools](functions-run-local.md) -hoz egyaránt Azure functions is létrehozhat Function apps-alkalmazásokat olyan sablon használatával, amely támogatja az írógéppel Function app-projekteket. A sablon `package.json` olyan fájlokat hoz létre és `tsconfig.json` projektfájlok, amelyek megkönnyítik a JavaScript-függvények transpile, futtatását és közzétételét ezekkel az eszközökkel.
+Ha a functions futtatókörnyezet 2. x verzióját célozza meg, a [Visual Studio Code](./create-first-function-cli-typescript.md) -hoz és a [Azure functions Core Tools](functions-run-local.md) -hoz egyaránt Azure functions is létrehozhat Function apps-alkalmazásokat olyan sablon használatával, amely támogatja az írógéppel Function app-projekteket. A sablon `package.json` olyan fájlokat hoz létre és `tsconfig.json` projektfájlok, amelyek megkönnyítik a JavaScript-függvények transpile, futtatását és közzétételét ezekkel az eszközökkel.
 
 A létrehozott `.funcignore` fájl azt jelzi, hogy mely fájlok ki vannak zárva, amikor egy projekt közzé lett téve az Azure-ban.  
 
@@ -776,7 +776,7 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

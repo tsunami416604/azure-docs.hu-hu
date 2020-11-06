@@ -1,18 +1,18 @@
 ---
-title: A IoT csatlakoztatása Plug and Play minta C# összetevő-eszköz kódja a IoT Hubhoz | Microsoft Docs
-description: Hozzon létre és futtasson IoT Plug and Play minta C#-eszköz kódját, amely több összetevőt használ, és csatlakozik egy IoT hubhoz. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
+title: Oktatóanyag – a IoT csatlakoztatása Plug and Play minta C# összetevő-eszköz kódja az Azure IoT Hubhoz | Microsoft Docs
+description: Oktatóanyag – a IoT Plug and Play minta C#-eszköz kódjának létrehozása és futtatása, amely több összetevőt használ, és egy IoT hubhoz csatlakozik. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 72b85388bf80a6ed2b9617b606940c243c5711f1
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: f7a1aa85c4456bdcf7ed50e42382fc440618ec7d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945532"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421447"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>Oktatóanyag: IoT csatlakoztatása a Windows rendszeren futó több összetevőt használó Plug and Play IoT Hub (C#)
 
@@ -45,9 +45,9 @@ Ebben a rövid útmutatóban egy olyan minta hőmérséklet-vezérlő eszközt h
 
 1. Nyissa meg a *Azure-IOT-Samples-csharp\iot-hub\Samples\device\PnpDeviceSamples\TemperatureController\TemperatureController.csproj* projektfájlt a Visual Studio 2019-ben.
 
-1. A Visual Studióban navigáljon a **Project > TemperatureController tulajdonságok > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
+1. A Visual Studióban navigáljon a **Project > TemperatureController tulajdonságok > hibakeresés** elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Név | Érték |
+    | Name | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |

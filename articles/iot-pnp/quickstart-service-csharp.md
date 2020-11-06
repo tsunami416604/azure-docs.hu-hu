@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT-megoldáshoz (C#) csatlakoztatott IoT-Plug and Play eszköz használata | Microsoft Docs
-description: A C# használatával csatlakozhat egy IoT Plug and Play eszközhöz, amely az Azure IoT-megoldáshoz csatlakozik.
+title: Gyors útmutató – interakció az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play eszközzel (C#) | Microsoft Docs
+description: Rövid útmutató – a C# használatával csatlakozhat az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play-eszközhöz, és használhatja azt.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 09/21/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: ec38e0849b7f4c1a0ca98d75d4c6c82908c1e16e
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 018edea9a013df55b32ee22020be7226eab27319
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945376"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421549"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Gyors útmutató: a megoldáshoz csatlakoztatott IoT Plug and Play eszköz használata (C#)
 
@@ -46,9 +46,9 @@ Ebben a rövid útmutatóban egy C# nyelven írt minta termosztátot használ a 
 
 1. Nyissa meg a *Azure-IOT-Samples-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* projektfájlt a Visual Studio 2019-ben.
 
-1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
+1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés** elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Név | Érték |
+    | Name | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
@@ -64,16 +64,16 @@ Ebben a rövid útmutatóban egy C# nyelven írt minta termosztátot használ a 
 
 A [környezet beállítása a IoT Plug and Play rövid útmutatók és oktatóanyagok](set-up-environment.md) létrehozott két környezeti változót a minta konfigurálásához a IoT hub és az eszközhöz való kapcsolódáshoz:
 
-* **IOTHUB_CONNECTION_STRING**: a IoT hub-kapcsolatok karakterlánca korábban már jegyzett készített.
-* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
+* **IOTHUB_CONNECTION_STRING** : a IoT hub-kapcsolatok karakterlánca korábban már jegyzett készített.
+* **IOTHUB_DEVICE_ID** : `"my-pnp-device"` .
 
 Ebben a rövid útmutatóban egy minta IoT megoldást használ a C#-ban, hogy együttműködjön az imént beállított eszközzel.
 
 1. A Visual Studio egy másik példányában nyissa meg a *Azure-IOT-Samples-csharp\iot-hub\Samples\service\PnpServiceSamples\Thermostat\Thermostat.csproj* projektet.
 
-1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
+1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés** elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Név | Érték |
+    | Name | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | saját PnP-eszköz |
     | IOTHUB_CONNECTION_STRING | Az érték, amelyet a [környezet beállításakor](set-up-environment.md) jegyzett készített |

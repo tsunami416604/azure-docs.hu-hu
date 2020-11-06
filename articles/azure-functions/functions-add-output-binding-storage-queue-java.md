@@ -7,24 +7,24 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: faa4df8633c34b23703a3fe9fa405bad959ec894
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b4381c4acbea8a3b7d86d9c32aaf9cea24cf15fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167202"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422654"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>A Java-függvény csatlakoztatható az Azure Storage-hoz
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-Ez a cikk bemutatja, hogyan integrálhatja az előző rövid útmutató [cikkében](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser) létrehozott függvényt egy Azure Storage-üzenetsor használatával. Az ehhez a függvényhez hozzáadott kimeneti kötés egy HTTP-kérelemből adatokat ír a várólistában lévő üzenetbe.
+Ez a cikk bemutatja, hogyan integrálhatja az előző rövid útmutató [cikkében](./create-first-function-cli-java.md?tabs=bash,browser) létrehozott függvényt egy Azure Storage-üzenetsor használatával. Az ehhez a függvényhez hozzáadott kimeneti kötés egy HTTP-kérelemből adatokat ír a várólistában lévő üzenetbe.
 
 A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelyet a függvények a kötött szolgáltatás eléréséhez használnak. A kapcsolódás egyszerűbbé tételéhez használja a Function alkalmazással létrehozott Storage-fiókot. A fiókhoz való kapcsolódás már egy nevű alkalmazás-beállításban van tárolva `AzureWebJobsStorage` .  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk elkezdése előtt végezze el a [Java rövid útmutató 1. részében](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)ismertetett lépéseket.
+A cikk elkezdése előtt végezze el a [Java rövid útmutató 1. részében](./create-first-function-cli-java.md?tabs=bash,browser)ismertetett lépéseket.
 
 ## <a name="download-the-function-app-settings"></a>A függvény alkalmazás beállításainak letöltése
 

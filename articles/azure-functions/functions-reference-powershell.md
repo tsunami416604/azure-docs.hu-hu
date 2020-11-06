@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 796aca02e6f70da8f5b94f6bbdbd2fd1d535bd77
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108473"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422535"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -20,7 +20,7 @@ A PowerShell Azure-függvény (Function) egy PowerShell-parancsfájlként jeleni
 
 Más típusú függvényekhez hasonlóan a PowerShell-parancsfájlok is a fájlban meghatározott összes bemeneti kötés nevével egyező paramétereket fogadnak el `function.json` . Egy `TriggerMetadata` paraméter is át lett adva, amely további információkat tartalmaz a függvényt elindító triggerről.
 
-Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői referenciát](functions-reference.md). Az első PowerShell-függvény létrehozásához a [PowerShell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) functions rövid útmutatóját is be kell fejeznie.
+Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői referenciát](functions-reference.md). Az első PowerShell-függvény létrehozásához a [PowerShell](./create-first-function-vs-code-powershell.md) functions rövid útmutatóját is be kell fejeznie.
 
 ## <a name="folder-structure"></a>Mappa szerkezete
 
@@ -53,7 +53,7 @@ A projekt gyökerében található egy megosztott [`host.json`](functions-host-j
 
 Bizonyos kötések egy fájl jelenlétét igénylik `extensions.csproj` . A függvények futtatókörnyezetének [2. x vagy újabb](functions-versions.md) verziójában szükséges kötési kiterjesztések a fájlban vannak definiálva, a `extensions.csproj` mappában lévő tényleges függvénytár-fájlokkal `bin` . Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
 
-A PowerShell-függvény alkalmazásaiban megadhatja, hogy a `profile.ps1` rendszer mikor fusson, amikor egy Function-alkalmazás elindul (más néven a *[hidegindító kezdete](#cold-start)*). További információ: PowerShell- [profil](#powershell-profile).
+A PowerShell-függvény alkalmazásaiban megadhatja, hogy a `profile.ps1` rendszer mikor fusson, amikor egy Function-alkalmazás elindul (más néven a *[hidegindító kezdete](#cold-start)* ). További információ: PowerShell- [profil](#powershell-profile).
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>PowerShell-parancsfájl definiálása függvényként
 
@@ -418,11 +418,11 @@ A következő lépésekkel módosíthatja a Function alkalmazás által használ
 
 1. A [Azure Portal](https://portal.azure.com)tallózással keresse meg a Function alkalmazást.
 
-1. A **Beállítások**területen válassza a **konfiguráció**elemet. Az **általános beállítások** lapon keresse meg a **PowerShell verzióját**. 
+1. A **Beállítások** területen válassza a **konfiguráció** elemet. Az **általános beállítások** lapon keresse meg a **PowerShell verzióját**. 
 
     :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="Válassza ki a Function alkalmazás által használt PowerShell-verziót"::: 
 
-1. Válassza ki a kívánt **PowerShell Core-verziót** , és kattintson a **Mentés**gombra. Ha a függőben lévő újraindításra figyelmezteti, válassza a **Folytatás**lehetőséget. A Function alkalmazás újraindul a kiválasztott PowerShell-verzióra. 
+1. Válassza ki a kívánt **PowerShell Core-verziót** , és kattintson a **Mentés** gombra. Ha a függőben lévő újraindításra figyelmezteti, válassza a **Folytatás** lehetőséget. A Function alkalmazás újraindul a kiválasztott PowerShell-verzióra. 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -525,7 +525,7 @@ A PowerShell nyelvi feldolgozója általában számos modult használ. Ezek a mo
 A modulok aktuális listája a következő:
 
 * [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): az archívumok, például `.zip` , és mások használatához használt modul `.nupkg` .
-* **ThreadJob**: a PowerShell-feladatok API-k szálon alapuló implementációja.
+* **ThreadJob** : a PowerShell-feladatok API-k szálon alapuló implementációja.
 
 Alapértelmezés szerint a függvények a modulok legújabb verzióját használják. Egy adott modul verziójának használatához helyezze az adott verziót a `Modules` Function alkalmazás mappájába.
 

@@ -1,18 +1,18 @@
 ---
-title: IoT csatlakoztatása Plug and Play C-eszköz kódja a IoT Hubhoz | Microsoft Docs
-description: Hozzon létre és futtasson IoT Plug and Play minta C-eszköz kódját, amely több összetevőt használ, és csatlakozik egy IoT hubhoz. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
+title: Oktatóanyag – a IoT csatlakoztatása Plug and Play minta C-eszköz kódja az Azure IoT Hubhoz | Microsoft Docs
+description: Oktatóanyag – a IoT Plug and Play minta C-eszköz kódjának létrehozása és futtatása, amely több összetevőt használ, és egy IoT hubhoz csatlakozik. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e1a2a45d0f5743874ce0c0b20190d7d396094e43
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0bf0e45f6e9b088567dd48d3eb12ae979ba679e4
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046383"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421481"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-applications-running-on-linux-or-windows-to-iot-hub-c"></a>Oktatóanyag: IoT csatlakoztatása Plug and Play Linux vagy Windows rendszeren futó, több összetevőt használó eszköz-alkalmazás IoT Hub (C)
 
@@ -34,14 +34,14 @@ Ez az oktatóanyag feltételezi, hogy Ubuntu Linux használ. Az oktatóanyag lé
 
 Az oktatóanyag Linuxon való elvégzéséhez telepítse a következő szoftvereket a helyi linuxos környezetbe:
 
-Telepítse a **GCC**, a **git**, a **CMAK**és az összes szükséges függőséget a `apt-get` parancs használatával:
+Telepítse a **GCC** , a **git** , a **CMAK** és az összes szükséges függőséget a `apt-get` parancs használatával:
 
 ```sh
 sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Ellenőrizze, hogy a verziója `cmake` meghaladja-e a **2.8.12** , és hogy a **GCC** verziója meghaladja-e a **4.4.7**-t.
+Ellenőrizze, hogy a verziója `cmake` meghaladja-e a **2.8.12** , és hogy a **GCC** verziója meghaladja-e a **4.4.7** -t.
 
 ```sh
 cmake --version
@@ -79,8 +79,8 @@ A kódot a Visual Studióval vagy a parancssorból is létrehozhatja és futtath
 ### <a name="use-visual-studio"></a>A Visual Studio használata
 
 1. Nyissa meg a klónozott tárház gyökérkönyvtárát. Néhány másodperc elteltével a **CMAK** -támogatás a Visual Studióban csak a projekt futtatásához és hibakereséséhez szükséges.
-1. Ha a Visual Studio elkészült, a **Megoldáskezelőban**navigáljon a minta *iothub_client/Samples/PnP/pnp_temperature_controller/*.
-1. Kattintson a jobb gombbal a *pnp_temperature_controller. c* fájlra, majd válassza a **hibakeresési konfiguráció hozzáadása**elemet. Válassza az **alapértelmezett**lehetőséget.
+1. Ha a Visual Studio elkészült, a **Megoldáskezelőban** navigáljon a minta *iothub_client/Samples/PnP/pnp_temperature_controller/*.
+1. Kattintson a jobb gombbal a *pnp_temperature_controller. c* fájlra, majd válassza a **hibakeresési konfiguráció hozzáadása** elemet. Válassza az **alapértelmezett** lehetőséget.
 1. A Visual Studio megnyitja a *launch.vs.js* fájlt. Szerkessze a fájlt a következő kódrészletben látható módon a szükséges környezeti változók megadásához. A hatókör-azonosító és a beléptetési elsődleges kulcs tudomásul jutott, amikor befejezte a [környezet beállítását a IoT Plug and Play rövid útmutatók és oktatóanyagok](set-up-environment.md):
 
     ```json
@@ -104,7 +104,7 @@ A kódot a Visual Studióval vagy a parancssorból is létrehozhatja és futtath
     }
     ```
 
-1. Kattintson a jobb gombbal a *pnp_temperature_controller. c* fájlra, és válassza a **beállítás indítási elemként**lehetőséget.
+1. Kattintson a jobb gombbal a *pnp_temperature_controller. c* fájlra, és válassza a **beállítás indítási elemként** lehetőséget.
 1. A kód végrehajtásának nyomon követéséhez a Visual Studióban adjon hozzá egy töréspontot a `main` függvényhez a *pnp_temperature_controller. c* fájlban.
 1. Most már futtathatja és hibakereséssel is elvégezheti a mintát a **hibakeresési** menüből.
 
@@ -167,7 +167,7 @@ Ebben a példában a kód néhány segítő függvényt használ a */gyakori hib
 
 *pnp_device_client_ll* tartalmazza a IoT Plug and Play csatlakozási metódusát, amely a `model-id` paraméterrel együtt szerepel: `PnP_CreateDeviceClientLLHandle` .
 
-*pnp_protocol*: a IoT Plug and Play segítő függvényeket tartalmazza:
+*pnp_protocol* : a IoT Plug and Play segítő függvényeket tartalmazza:
 
 * `PnP_CreateReportedProperty`
 * `PnP_CreateReportedPropertyWithStatus`
@@ -292,7 +292,7 @@ A `main` függvény végül elpusztítja a különböző összetevőket, és bez
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt az összetevőkkel egy IoT hubhoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 

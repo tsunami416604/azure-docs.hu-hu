@@ -1,18 +1,18 @@
 ---
-title: A IoT csatlakoztatása Plug and Play minta Java-eszköz kódja a IoT Hubhoz | Microsoft Docs
-description: Hozzon létre és futtasson IoT Plug and Play minta-eszköz kódját, amely egy IoT hubhoz csatlakozik. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
+title: Gyors útmutató – a IoT csatlakoztatása Plug and Play minta Java-eszköz kódja az Azure IoT Hubhoz | Microsoft Docs
+description: Rövid útmutató – IoT Plug and Play minta-eszköz létrehozása és futtatása, amely egy IoT hubhoz csatlakozik. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6dfd63f92b8c420a3c5281ee2962b211b8779dd1
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 32e610cbd65aafecec9bafb35a78fb8f68279da5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045057"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421600"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-java"></a>Rövid útmutató: a Windows rendszeren futó IoT Plug and Play-eszköz csatlakoztatása IoT Hub (Java)
 
@@ -26,7 +26,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Plug and Pl
 
 A rövid útmutató Windows rendszeren történő elvégzéséhez telepítse a következő szoftvereket a helyi Windows-környezetbe:
 
-* Java SE Development Kit 8. A [Java hosszú távú Azure-és Azure stack-támogatásában](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)a **hosszú távú támogatás**alatt válassza a **Java 8**lehetőséget.
+* Java SE Development Kit 8. A [Java hosszú távú Azure-és Azure stack-támogatásában](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)a **hosszú távú támogatás** alatt válassza a **Java 8** lehetőséget.
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 
 ## <a name="download-the-code"></a>A kód letöltése
@@ -114,7 +114,7 @@ import com.google.gson.Gson;
 Date since = new Gson().fromJson(jsonRequest, Date.class);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt egy IoT hubhoz. Ha többet szeretne megtudni arról, hogyan hozhat létre olyan megoldást, amely együttműködik a IoT Plug and Play eszközökkel, tekintse meg a következőt:
 

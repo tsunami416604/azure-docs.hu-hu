@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: rkarlin
-ms.openlocfilehash: e90bdcfe22828d85ebeeb74314617fc6eac81385
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 28d64f5d9d845c2a14f0277799213501e1d68010
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094832"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421753"
 ---
 # <a name="quickstart-deploy-and-onboard-a-sensor"></a>Gyors útmutató: érzékelő üzembe helyezése és előkészítése
 
@@ -39,7 +39,7 @@ A bevezetési érzékelőkkel a következőket teheti:
 |------ | ----------- |
 | **Adja meg az érzékelő nevét** | Nevezze el az előkészíteni kívánt érzékelőt, és társítsa azt egy IoT Hubhoz vagy előfizetéshez.<br /><br />További információért lásd a bevezetési **érzékelők** című témakört.|
 |**Előfizetés és a véglegesített eszközök számának kiválasztása**|Válassza ki az előfizetést és az előfizetés által érintett eszközök számát. Adja meg a 1000-os növekmények számát.|
-| **Érzékelő-felügyeleti mód definiálása** | Itt adhatja meg, hogy a rendszer hol jelenítse meg az eszköz, a riasztás és az érzékelő által észlelt egyéb adatokat. Ezt a rendszer a definiált **érzékelő-kezelési mód** alapján határozza meg.<br /><br />**Helyileg felügyelt mód**: az érzékelő által észlelt információk az érzékelő konzolon jelennek meg. Az észlelési információk a helyszíni felügyeleti konzollal is megoszthatók, ha az érzékelő csatlakoztatva van hozzá.<br /><br />**Felhőalapú felügyelt mód**: az érzékelő által észlelt információk az érzékelő konzolon jelennek meg. Emellett a riasztási információk egy IoT Hub keresztül érkeznek, és más Azure-szolgáltatásokkal is megoszthatók, például az Azure Sentinel használatával.<br />További információért tekintse meg a bevezető **érzékelőt** . |
+| **Érzékelő-felügyeleti mód definiálása** | Itt adhatja meg, hogy a rendszer hol jelenítse meg az eszköz, a riasztás és az érzékelő által észlelt egyéb adatokat. Ezt a rendszer a definiált **érzékelő-kezelési mód** alapján határozza meg.<br /><br />**Helyileg felügyelt mód** : az érzékelő által észlelt információk az érzékelő konzolon jelennek meg. Az észlelési információk a helyszíni felügyeleti konzollal is megoszthatók, ha az érzékelő csatlakoztatva van hozzá.<br /><br />**Felhőalapú felügyelt mód** : az érzékelő által észlelt információk az érzékelő konzolon jelennek meg. Emellett a riasztási információk egy IoT Hub keresztül érkeznek, és más Azure-szolgáltatásokkal is megoszthatók, például az Azure Sentinel használatával.<br />További információért tekintse meg a bevezető **érzékelőt** . |
 | **Érzékelő aktiválási fájljának beolvasása** | A **helyileg felügyelt** érzékelők esetében egy aktiválási fájl használható az adott szenzoros aktiválási időszakok kezelésére.<br /><br />A **felhőben felügyelt** érzékelők esetében az érzékelő és a IoT hub közötti kapcsolat az aktiválási fájl. További információ: előkészítési **érzékelők**. |
 | **Aktiválási fájl feltöltése az érzékelőbe** | Az aktiválási fájlokat fel kell tölteni a vállalati érzékelőkbe. A Hálózatfigyelő és az érzékelő konzol funkciói nem lesznek elérhetők az aktiválási fájl feltöltése előtt. További információ: szenzor- **aktiválási fájlok feltöltése**. |
 | **Az érzékelő hálózati paramétereinek frissítése az aktiválás előtt** | Az érzékelő telepítésekor meghatározott paraméterek frissítése. További információ: **Error! A hivatkozás forrása nem található**.|
@@ -51,17 +51,17 @@ A bevezetési érzékelőkkel a következőket teheti:
 
 2. Válassza az első **lépések lehetőséget.**
 
-3. A **Hálózat felderítése** szakaszban válassza a **beállítás**lehetőséget.
+3. A **Hálózat felderítése** szakaszban válassza a **beállítás** lehetőséget.
 
    ![A IoT készült Azure Defender felderíti a hálózati nézetet](media/updates/image5.png)
 
 4. Válassza ki az érzékelő beszerzésének lehetőségét.
 
-   ![Azure Defender a IoT hálózati szektor nézetéhez](media/updates/image6.png)
+   ![Azure Defender a IoT hálózati érzékelő nézetéhez](media/updates/image6.png)
 
-  - **Előre konfigurált érzékelő vásárlása: a**Microsoft és a Arrow is partneri kapcsolattal rendelkezik az előre konfigurált érzékelők biztosításához. Előre konfigurált érzékelő megvásárlásához lépjen a következőre: <hardware.sales@arrow.com> . Az érzékelő a létesítmény számára lesz továbbítva. A legfrissebb verzió van telepítve.
+  - **Előre konfigurált érzékelő vásárlása: a** Microsoft és a Arrow is partneri kapcsolattal rendelkezik az előre konfigurált érzékelők biztosításához. Előre konfigurált érzékelő megvásárlásához lépjen a következőre: <hardware.sales@arrow.com> . Az érzékelő a létesítmény számára lesz továbbítva. A legfrissebb verzió van telepítve.
 
-  - **Saját készülék használata (ISO-telepítés)**: a megoldás hitelesített készülékeken fut. A Certified berendezés megvásárlásakor használja az [Azure Defender for IoT hardveres specifikációs útmutatóját](https://aka.ms/AzureDefenderforIoTBareMetalAppliance) .
+  - **Saját készülék használata (ISO-telepítés)** : a megoldás hitelesített készülékeken fut. A Certified berendezés megvásárlásakor használja az [Azure Defender for IoT hardveres specifikációs útmutatóját](https://aka.ms/AzureDefenderforIoTBareMetalAppliance) .
 
     - Válasszon egy verziót a **verzió kiválasztása** menüből.
 
@@ -95,7 +95,7 @@ Az érzékelőknek be kell jelentkezniük az Azure Defender for IoT portálra. A
 
 2. Válasszon egy előfizetést az előfizetés legördülő listából.
 3. A **véglegesített eszközök** mezőben adja meg az előfizetés által érintett eszközök számát. Ezt a számot újra meg kell adnia minden olyan érzékelőnél, amely ugyanahhoz az előfizetéshez van társítva.  Ha például az "A" előfizetés 6000-eszközökhöz van társítva, akkor az "A" előfizetéshez társított minden érzékelő esetében adja meg a 6000 értéket.   
-4. Válassza ki a szenzor-kezelési módot a **Cloud összekapcsolás** váltógomb használatával. Ha a váltógomb be van kapcsolva, az érzékelőt a **felhő felügyeli**. Ha a váltógomb ki van kapcsolva, a rendszer **helyileg felügyeli**az érzékelőt.
+4. Válassza ki a szenzor-kezelési módot a **Cloud összekapcsolás** váltógomb használatával. Ha a váltógomb be van kapcsolva, az érzékelőt a **felhő felügyeli**. Ha a váltógomb ki van kapcsolva, a rendszer **helyileg felügyeli** az érzékelőt.
 
 
 | Érzékelő-felügyeleti mód | Leírás                                                |
@@ -151,7 +151,7 @@ További információ az IoT-Hubokról: [Tudnivalók a IoT hubról](../iot-hub/a
 
 5. Hagyja jóvá a feltételeket és a kikötéseket.
 
-6. Válassza az **aktiválás**lehetőséget. Az érzékelő hálózati konfigurációs paraméterei a Szoftvertelepítés során vagy egy előre konfigurált érzékelő megvásárlásakor lettek definiálva. A következő paraméterek lettek definiálva:
+6. Válassza az **aktiválás** lehetőséget. Az érzékelő hálózati konfigurációs paraméterei a Szoftvertelepítés során vagy egy előre konfigurált érzékelő megvásárlásakor lettek definiálva. A következő paraméterek lettek definiálva:
    - IP-cím
    - DNS  
    - Alapértelmezett átjáró
@@ -166,10 +166,10 @@ További információ az IoT-Hubokról: [Tudnivalók a IoT hubról](../iot-hub/a
 
    ![A hálózat konfigurációjának szerkesztése nézet képernyőképe](media/updates/image13.png)
 
-8. Megjelenik a telepítés során meghatározott paraméterek. Egy lehetőség is rendelkezésre áll, amely meghatározza a proxyt. Szükség szerint frissítse a frissítést, és válassza a **Mentés**lehetőséget.
+8. Megjelenik a telepítés során meghatározott paraméterek. Egy lehetőség is rendelkezésre áll, amely meghatározza a proxyt. Szükség szerint frissítse a frissítést, és válassza a **Mentés** lehetőséget.
  
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan telepíthet és helyezhet üzembe érzékelőket. Ha többet szeretne megtudni az első lépésekről, tekintse meg a következő cikket:
 

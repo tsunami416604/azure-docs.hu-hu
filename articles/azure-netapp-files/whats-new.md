@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/30/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 56ae3ac1331ed054a1fb808ae06e990b67c06bae
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 3f13d997f73e9737b8770eec7e0742d50bf1abb8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932413"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421702"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>A Azure NetApp Files újdonságai
 
 Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókról és fejlesztésekről nyújt összefoglalót. 
+
+## <a name="november-2020"></a>November 2020
+
+* [Pillanatkép visszaállítása](azure-netapp-files-manage-snapshots.md#revert-a-volume-using-snapshot-revert)
+
+    A pillanatkép-visszavonási funkció lehetővé teszi, hogy gyorsan visszaállítson egy kötetet arra az állapotba, amely egy adott pillanatkép készítésekor megtörtént. A legtöbb esetben a kötetek visszafordítása sokkal gyorsabb, mint az egyes fájlok pillanatképből az aktív fájlrendszerbe való visszaállítása. Emellett a pillanatképek új kötetre való visszaállításához is nagyobb a terület.
 
 ## <a name="september-2020"></a>2020. szeptember
 
@@ -46,10 +52,10 @@ Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókró
 * Új [metrikák](azure-netapp-files-metrics.md):   
 
     * Új mennyiségi mérőszámok: 
-        * *Kötet lefoglalt mérete*: kötet kiépített mérete
+        * *Kötet lefoglalt mérete* : kötet kiépített mérete
     * Új készlet metrikái: 
-        * *Készlet lefoglalt mérete*: a készlet kiépített mérete 
-        * *A készlethez tartozó pillanatképek teljes mérete*: a készlet összes kötetének pillanatkép-méretének összege
+        * *Készlet lefoglalt mérete* : a készlet kiépített mérete 
+        * *A készlethez tartozó pillanatképek teljes mérete* : a készlet összes kötetének pillanatkép-méretének összege
 
 ## <a name="july-2020"></a>2020. július
 
@@ -83,6 +89,6 @@ Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókró
 
     Azure NetApp Files lehetővé teszi olyan további fiókok hozzáadását, amelyek emelt szintű jogosultságokat igényelnek a Azure NetApp Fileshoz való használatra létrehozott számítógépfiók számára. A megadott fiókok a fájl vagy mappa szintjén módosíthatják az NTFS-engedélyeket. Megadhat például egy nem Kiemelt szolgáltatásfiók-fiókot, amely az adatáttelepítés során az SMB-fájlmegosztás Azure NetApp Files-ben való áttelepítésére szolgál. A biztonsági mentési házirend felhasználói szolgáltatás jelenleg előzetes verzióban érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Mi az az Azure NetApp Files?](azure-netapp-files-introduction.md)
 * [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md) 

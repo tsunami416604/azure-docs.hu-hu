@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: a8c5b20f833ab09463e1ae8b5bd3825c7c23f85e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 75e6ebaea4c5ba883820d2309212b35fed128142
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394924"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422127"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge modulok és kapcsolatok beállítása
 
@@ -49,27 +49,30 @@ Most a IoT Edge modulban meg kell adnia a tároló hitelesítő adatait.
    Felhasználónév|Felhasználónév
    Jelszó|Jelszó
   
-## <a name="deploy-the-data-generator-module"></a>Az adatgenerátor modul üzembe helyezése
+## <a name="build-push-and-deploy-the-data-generator-module"></a>Az adatgenerátor modul létrehozása, leküldése és üzembe helyezése
 
-1. Az **automatikus eszközkezelés** területen az **IoT Edge** szakaszban kattintson az **eszköz azonosítója** elemre. Ebben az oktatóanyagban az azonosító, majd a set modules ( `IronOrePredictionDevice` **modulok beállítása** ) elemre.
-
-2.  A **modulok beállítása az eszközön** lapon a **IoT Edge modulok** szakaszban kattintson a **+ Hozzáadás** elemre, és válassza ki **IoT Edge modult**.
-
-3. Adjon meg egy érvényes nevet és rendszerkép-URI-t IoT Edge modulhoz.
-   A rendszerkép URI-ja megtalálható az oktatóanyag első részében létrehozott erőforráscsoport tároló-beállításjegyzékében. Válassza ki a **tárolók** szakaszt a **szolgáltatások** területen. Ebben az oktatóanyagban válassza ki a nevű tárat `silicaprediction` . Válassza ki a megfelelő címkét. A képuri formátuma a következőket eredményezi:
-
-   *a containerregistry* / bejelentkezési kiszolgálója *tárház neve* : *címke neve*
-
-   Ilyenek többek között:
-
+1. A [projektfájlok](https://github.com/microsoft/sqlsourabh/tree/main/SQLEdgeSamples/IoTEdgeSamples/IronOreSilica) klónozása a gépre.
+2. Nyissa meg a **IronOre_Silica_Predict. SLN** fájlt a Visual Studio 2019 használatával
+3. Frissítse a tároló beállításjegyzékének részleteit a **deployment.template.json** 
+   ```json
+   "registryCredentials":{
+        "RegistryName":{
+            "username":"",
+            "password":""
+            "address":""
+        }
+    }
    ```
-   ASEdemocontregistry.azurecr.io/silicaprediction:amd64
+4. A fájl **modules.js** frissítése a tároló-beállításjegyzék (vagy a modul adattára) megadásához
+   ```json
+   "image":{
+        "repository":"samplerepo.azurecr.io/ironoresilicapercent",
+        "tag":
+    }
    ```
-
-4. Hagyja meg az *Újraindítási házirendet* és a *kívánt állapot* mezőket a következőképpen:.
-
-5. Kattintson a **Hozzáadás** parancsra.
-
+5. A projekt végrehajtása hibakeresési vagy kiadási módban annak biztosításához, hogy a projekt problémák nélkül fusson 
+6. Küldje le a projektet a tároló-beállításjegyzékbe úgy, hogy a jobb gombbal a projekt nevére kattint, majd kiválasztja a **Build és a Leküldés IoT Edge modulokat**.
+7. Telepítse az adatgenerátor modult IoT Edge modulként a peremhálózati eszközre. 
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Az Azure SQL Edge-modul üzembe helyezése
 

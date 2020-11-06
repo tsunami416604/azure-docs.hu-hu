@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a668024db126c82f96756555aba513b77f7d7366
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89177091"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422960"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell-Azure Functions helyi hibakeresése
 
@@ -38,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-Ez a Function-alkalmazás a [PowerShell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)rövid útmutatójának elvégzéséhez hasonlóan fog megjelenni.
+Ez a Function-alkalmazás a [PowerShell](./create-first-function-vs-code-powershell.md)rövid útmutatójának elvégzéséhez hasonlóan fog megjelenni.
 
 A függvény kódja a `run.ps1` következő parancsfájlhoz hasonlóan néz ki:
 
@@ -95,10 +95,10 @@ A `Wait-Debugger` helyett a Visual Studio Code vagy a PowerShell-konzol használ
 A Visual Studio Code-ban a PowerShell-függvények hibakereséséhez a következőkre van szükség:
 
 * [PowerShell-bővítmény a Visual Studio Code-hoz](/powershell/scripting/components/vscode/using-vscode)
-* [Azure Functions-bővítmény a Visual Studio Code-hoz](functions-create-first-function-vs-code.md)
+* [Azure Functions-bővítmény a Visual Studio Code-hoz](./create-first-function-cli-powershell.md)
 * [PowerShell Core 6,2 vagy újabb](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-A függőségek telepítése után töltsön be egy meglévő PowerShell functions-projektet, vagy [hozza létre az első PowerShell functions projektet](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell).
+A függőségek telepítése után töltsön be egy meglévő PowerShell functions-projektet, vagy [hozza létre az első PowerShell functions projektet](./create-first-function-vs-code-powershell.md).
 
 >[!NOTE]
 > Ha a projekt nem rendelkezik a szükséges konfigurációs fájlokkal, a rendszer kéri, hogy adja hozzá őket.
@@ -109,9 +109,9 @@ A PowerShell Core a Windows PowerShell-lel párhuzamosan települ. Állítsa be 
 
 1. Nyomja meg az F1 billentyűt a parancs raklapjának megjelenítéséhez, majd keresse meg a következőt: `Session` .
 
-1. Válassza a **PowerShell: munkamenet menü megjelenítése**lehetőséget.
+1. Válassza a **PowerShell: munkamenet menü megjelenítése** lehetőséget.
 
-1. Ha az **aktuális munkamenet** nem a **PowerShell Core 6**, válassza **a váltás a következőre: PowerShell Core 6**.
+1. Ha az **aktuális munkamenet** nem a **PowerShell Core 6** , válassza **a váltás a következőre: PowerShell Core 6**.
 
 Ha meg van nyitva egy PowerShell-fájl, az ablak jobb alsó sarkában látható zöld színnel jelenik meg. Ha ezt a szöveget választja, a munkamenet menüt is megjeleníti. További információ: a [PowerShell verziójának kiválasztása a bővítménnyel való használatra](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension).
 
@@ -256,6 +256,6 @@ Ha a hibakeresés során nehézségekbe ütközik, ellenőrizze a következőket
 | A Visual Studio Code-ban az alapértelmezett terminálnak hozzá kell férnie func.exehoz. Győződjön meg arról, hogy nem használ olyan alapértelmezett terminált, amely nem rendelkezik telepített alapeszközökkel, például a Linux Windows alrendszerét (WSL).  | Állítsa be az alapértelmezett rendszerhéjt a Visual Studio Code-ban a PowerShell 7 (ajánlott) vagy a Windows PowerShell 5,1-es verzióra.|
   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a függvények a PowerShell használatával történő fejlesztéséről: [Azure functions PowerShell fejlesztői útmutató](functions-reference-powershell.md).

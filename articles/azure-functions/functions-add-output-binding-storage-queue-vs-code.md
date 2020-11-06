@@ -5,18 +5,18 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-js
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 4f4733a52d1d58cbec4413140a613a93c8074188
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b709981e199d63c32426381ba48665402de820ce
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91323413"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422705"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Functions összekötése az Azure Storage-ba a Visual Studio Code használatával
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-Ez a cikk bemutatja, hogyan használható a Visual Studio Code az előző rövid útmutató [cikkében](functions-create-first-function-vs-code.md) létrehozott függvény Azure Storage-ba való összekapcsolásához. Az ehhez a függvényhez hozzáadott kimeneti kötés adatokat ír a HTTP-kérelemből egy Azure üzenetsor-tárolási várólistán lévő üzenetbe. 
+Ez a cikk bemutatja, hogyan csatlakoztatható a Visual Studio Code az Azure Storage-hoz az előző rövid útmutató cikkében létrehozott függvényhez való kapcsolódáshoz. Az ehhez a függvényhez hozzáadott kimeneti kötés adatokat ír a HTTP-kérelemből egy Azure üzenetsor-tárolási várólistán lévő üzenetbe. 
 
 A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelyet a függvények a kötött szolgáltatás eléréséhez használnak. A könnyebb kezelhetőség érdekében használja a Function alkalmazással létrehozott Storage-fiókot. A fiókhoz való kapcsolódás már egy nevű alkalmazás-beállításban van tárolva `AzureWebJobsStorage` .  
 
@@ -32,7 +32,24 @@ A cikk elindítása előtt a következő követelményeknek kell megfelelnie:
 * [A .net Core parancssori felülete eszközök](/dotnet/core/tools/?tabs=netcore2x)telepítése.
 ::: zone-end
 
-* Hajtsa végre a [Visual Studio Code](functions-create-first-function-vs-code.md)rövid útmutatójának 1. részében ismertetett lépéseket. 
+::: zone pivot="programming-language-csharp"  
+* Hajtsa végre a [Visual Studio Code](create-first-function-vs-code-csharp.md)rövid útmutatójának 1. részében ismertetett lépéseket. 
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+* Hajtsa végre a [Visual Studio Code](create-first-function-vs-code-node.md)rövid útmutatójának 1. részében ismertetett lépéseket. 
+::: zone-end   
+::: zone pivot="programming-language-java"  
+* Hajtsa végre a [Visual Studio Code](create-first-function-vs-code-java.md)rövid útmutatójának 1. részében ismertetett lépéseket. 
+::: zone-end   
+::: zone pivot="programming-language-typescript"  
+* Hajtsa végre a [Visual Studio Code](create-first-function-vs-code-typescript.md)rövid útmutatójának 1. részében ismertetett lépéseket. 
+::: zone-end   
+::: zone pivot="programming-language-python"  
+* Hajtsa végre a [Visual Studio Code](create-first-function-vs-code-python.md)rövid útmutatójának 1. részében ismertetett lépéseket. 
+::: zone-end   
+::: zone pivot="programming-language-powershell"  
+* Hajtsa végre a [Visual Studio Code](create-first-function-vs-code-powershell.md)rövid útmutatójának 1. részében ismertetett lépéseket. 
+::: zone-end   
 
 Ez a cikk azt feltételezi, hogy már bejelentkezett az Azure-előfizetésbe a Visual Studio Code-ból. `Azure: Sign In`A parancs futtatásával a parancssorból is bejelentkezhet. 
 
@@ -161,11 +178,11 @@ A **rendszer létrehoz** egy új üzenetsor-várólistát a Storage-fiókban a f
 
 Hagyja ki ezt a szakaszt, ha már telepítette Azure Storage Explorer és csatlakoztatta azt az Azure-fiókjához.
 
-1. Futtassa a [Azure Storage Explorer] eszközt, válassza a bal oldali csatlakozási ikont, majd válassza a **fiók hozzáadása**lehetőséget.
+1. Futtassa a [Azure Storage Explorer] eszközt, válassza a bal oldali csatlakozási ikont, majd válassza a **fiók hozzáadása** lehetőséget.
 
     ![Azure-fiók hozzáadása a Microsoft Azure Storage Explorerhoz](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 
-1. A **kapcsolat** párbeszédpanelen válassza az **Azure-fiók hozzáadása**lehetőséget, válassza ki az **Azure-környezetet**, és válassza a **Bejelentkezés**lehetőséget. 
+1. A **kapcsolat** párbeszédpanelen válassza az **Azure-fiók hozzáadása** lehetőséget, válassza ki az **Azure-környezetet** , és válassza a **Bejelentkezés** lehetőséget. 
 
     ![Jelentkezzen be az Azure-fiókjába](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-connect-azure-account.png)
 
@@ -201,37 +218,46 @@ Itt az ideje, hogy újra közzé lehessen tenni a frissített Function alkalmaz�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az Azure-ban az *erőforrások* a Function apps, a functions, a Storage-fiókok és így tovább. *Erőforráscsoportokba*vannak csoportosítva, és a csoport törlésével törölheti a csoport összes elemét.
+Az Azure-ban az *erőforrások* a Function apps, a functions, a Storage-fiókok és így tovább. *Erőforráscsoportokba* vannak csoportosítva, és a csoport törlésével törölheti a csoport összes elemét.
 
 E rövid útmutatók elvégzéséhez erőforrásokat hozott létre. [Fiókjának állapotától](https://azure.microsoft.com/account/) és a [szolgáltatási díjszabástól](https://azure.microsoft.com/pricing/) függően lehetséges, hogy az erőforrások használata díjköteles. Ha már nincs szüksége ezekre az erőforrásokra, a következőképpen törölheti őket:
 
-[!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
+[!INCLUDE [functions-cleanup-resources-vs-code-inner.md](../../includes/functions-cleanup-resources-vs-code-inner.md)]
 
 ## <a name="next-steps"></a>További lépések
 
 Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. Most már többet is megtudhat a függvények a Visual Studio Code használatával történő fejlesztéséről:
 
 + [Azure Functions fejlesztése a Visual Studio Code használatával](functions-develop-vs-code.md)
+
++ [Azure functions eseményindítók és kötések](functions-triggers-bindings.md).
 ::: zone pivot="programming-language-csharp"  
 + [Példák a teljes körű függvények projektjeire a C#-ban](/samples/browse/?products=azure-functions&languages=csharp).
+
 + [Azure Functions C# – fejlesztői dokumentáció](functions-dotnet-class-library.md)  
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
 + [Példák a teljes körű függvények projektjeire a JavaScriptben](/samples/browse/?products=azure-functions&languages=javascript).
+
 + [Azure Functions JavaScript fejlesztői útmutató](functions-reference-node.md)  
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Példák a teljes körű függvények projektjeire a javában](/samples/browse/?products=azure-functions&languages=java).
+
++ [A Java fejlesztői útmutató Azure Functions](functions-reference-java.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
 + [Példák a teljes körű Function-projektekre az írógéppel](/samples/browse/?products=azure-functions&languages=typescript).
+
 + [Azure Functions írógéppel – fejlesztői útmutató](functions-reference-node.md#typescript)  
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 + [Példák a Pythonban elérhető teljes körű függvények projektjeire](/samples/browse/?products=azure-functions&languages=python).
+
 + [Azure Functions Python fejlesztői útmutató](functions-reference-python.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
 + [Példák a PowerShellben elérhető teljes függvények projektjeire](/samples/browse/?products=azure-functions&languages=azurepowershell).
+
 + [Azure Functions PowerShell fejlesztői útmutató](functions-reference-powershell.md) 
 ::: zone-end
-+ [Azure functions eseményindítók és kötések](functions-triggers-bindings.md).
-+ [Functions – díjszabási oldal](https://azure.microsoft.com/pricing/details/functions/)
-+ A [fogyasztási terv költségeinek becslése](functions-consumption-costs.md) .

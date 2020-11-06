@@ -1,18 +1,18 @@
 ---
-title: IoT csatlakoztatása Plug and Play C-eszköz kódja a IoT Hubhoz | Microsoft Docs
-description: Hozzon létre és futtasson IoT Plug and Play minta-eszköz kódját Linux vagy Windows rendszeren, amely egy IoT hubhoz csatlakozik. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
+title: Gyors útmutató – a IoT csatlakoztatása Plug and Play minta C-eszköz kódja az Azure IoT Hubba | Microsoft Docs
+description: Gyors útmutató – a IoT Plug and Play minta-eszköz kódjának létrehozása és futtatása Linux vagy Windows rendszeren, amely egy IoT hubhoz csatlakozik. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e490171fd533783aab9fd44798a9c81c55faf89f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d69eca10a3ee19919d7cd9e748486e30db95e749
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047930"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421668"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>Rövid útmutató: a Linuxon vagy Windowson futó IoT Plug and Play-eszköz csatlakoztatása IoT Hub (C)
 
@@ -34,14 +34,14 @@ Ez a rövid útmutató feltételezi, hogy a Ubuntu Linux használja. A rövid ú
 
 A gyors útmutató Linuxon való elvégzéséhez telepítse a következő szoftvereket a helyi linuxos környezetbe:
 
-Telepítse a **GCC**, a **git**, a **CMAK**és az összes szükséges függőséget a `apt-get` parancs használatával:
+Telepítse a **GCC** , a **git** , a **CMAK** és az összes szükséges függőséget a `apt-get` parancs használatával:
 
 ```sh
 sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Ellenőrizze, hogy a verziója `cmake` meghaladja-e a **2.8.12** , és hogy a **GCC** verziója meghaladja-e a **4.4.7**-t.
+Ellenőrizze, hogy a verziója `cmake` meghaladja-e a **2.8.12** , és hogy a **GCC** verziója meghaladja-e a **4.4.7** -t.
 
 ```sh
 cmake --version
@@ -154,7 +154,7 @@ A kód a plébános-függvénytárat használja az IoT hub-ból eljuttatott hasz
 #include "parson.h"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt egy IoT hubhoz. Ha többet szeretne megtudni arról, hogyan hozhat létre olyan megoldást, amely együttműködik a IoT Plug and Play eszközökkel, tekintse meg a következőt:
 

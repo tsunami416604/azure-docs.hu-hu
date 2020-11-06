@@ -5,12 +5,12 @@ ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
-ms.openlocfilehash: 362ff5cd59982c1d848ed59af8381090344f5c5e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1e623405faa89ff41eccdaa57578bc8ac94cd78c
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88642265"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422824"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Rövid útmutató: Azure Functions-erőforrások létrehozása és üzembe helyezése ARM-sablonból
 
@@ -38,7 +38,14 @@ Válasszon egyet az alábbi lapok közül, kövesse a hivatkozást, és fejezze 
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[Helyi functions-projekt létrehozása a Visual Studio Code-ban](functions-create-first-function-vs-code.md#create-an-azure-functions-project)
+Hozza létre a helyi functions projektet a kiválasztott nyelven a Visual Studio Code-ban:  
+
++ [C#](create-first-function-vs-code-csharp.md)
++ [Java](create-first-function-vs-code-java.md)
++ [JavaScript](create-first-function-vs-code-node.md)
++ [PowerShell](create-first-function-vs-code-powershell.md)
++ [Python](create-first-function-vs-code-python.md)
++ [TypeScript](create-first-function-vs-code-typescript.md)
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -46,7 +53,14 @@ Válasszon egyet az alábbi lapok közül, kövesse a hivatkozást, és fejezze 
 
 # <a name="command-line"></a>[Parancssor](#tab/command-line)
 
-[A helyi functions-projekt létrehozása a parancssorból](functions-create-first-azure-function-azure-cli.md#create-a-local-function-project)
+Hozza létre a helyi functions projektet a választott nyelven a parancssorból:
+
++ [C#](create-first-function-cli-csharp.md)
++ [Java](create-first-function-cli-java.md)
++ [JavaScript](create-first-function-cli-node.md)
++ [PowerShell](create-first-function-cli-powershell.md)
++ [Python](create-first-function-cli-python.md)
++ [TypeScript](create-first-function-cli-typescript.md)
 
 ---
 
@@ -109,15 +123,15 @@ A kimenetben másolja a HTTP-trigger URL-címét. Ezt az Azure-ban futó függv�
 
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
 
-1. A **Közzététel célhelyének**kiválasztása lapon válassza ki a **Azure functions használati tervet** a **meglévő kijelölése** lehetőséggel, majd válassza a **profil létrehozása**lehetőséget.
+1. A **Közzététel célhelyének** kiválasztása lapon válassza ki a **Azure functions használati tervet** a **meglévő kijelölése** lehetőséggel, majd válassza a **profil létrehozása** lehetőséget.
 
     :::image type="content" source="media/functions-create-first-function-arm/choose-publish-target-visual-studio.png" alt-text="Meglévő közzétételi cél kiválasztása":::
 
-1. Válassza ki az **előfizetést**, bontsa ki az erőforráscsoportot, válassza ki a Function alkalmazást, majd kattintson **az OK gombra**.
+1. Válassza ki az **előfizetést** , bontsa ki az erőforráscsoportot, válassza ki a Function alkalmazást, majd kattintson **az OK gombra**.
 
 1. A közzététel befejeződése után másolja a **webhely URL-címét**.
 
-    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="Meglévő közzétételi cél kiválasztása":::
+    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="A webhely URL-címének másolása a közzétételi összegzésből":::
 
 1. Fűzze hozzá az elérési utat `/api/<FUNCTION_NAME>?name=Functions` , ahol a a `<FUNCTION_NAME>` függvény neve. A HTTP-trigger függvényt meghívó URL-cím formátuma a következő:
 

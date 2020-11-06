@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 7ca290b7b7df9e4e03aec78b611361ba52942523
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: bead348e64fcee4cc5b790f975c9da5200ee796b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286679"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422399"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>A Speech CLI alapjai
 
@@ -142,6 +142,18 @@ sample_1    07baa2f8d9fd4fbcb9faea451ce05475    A sample wave file.
 sample_2    8f9b378f6d0b42f99522f1173492f013    Sample text synthesized.
 ```
 
+## <a name="synthesize-speech-to-a-file"></a>Beszéd készítése fájlba
+
+A következő parancs futtatásával módosíthatja a hangszórók kimenetét egy `.wav` fájlba.
+
+```bash
+spx synthesize --text "The speech synthesizer greets you!" --audio output greetings.wav
+```
+
+A Speech CLI a természetes nyelvet angol nyelven hozza létre a `greetings.wav` hangfájlba.
+A Windowsban a hangfájlt a beírásával is lejátszhatja `start greetings.wav` .
+
+
 ## <a name="batch-text-to-speech-synthesis"></a>Köteg szövege – beszéd szintézis
 
 A Batch szöveg-beszéd futtatásának legegyszerűbb módja egy új `.tsv` (tabulátorral tagolt) fájl létrehozása, és a parancs kihasználása a `--foreach` beszédfelismerési CLI-ben. Vegye figyelembe a következő fájlt `text_synthesis.tsv` :
@@ -180,6 +192,6 @@ Ezeket a mezőneveket a megfelelő argumentumokra írhatja felül a hívás köv
 spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.tsv
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Fejezze be a beszédfelismerési vagy [beszédfelismerési](get-started-text-to-speech.md?pivots=programmer-tool-spx) útmutatókat [a Speech CLI](get-started-speech-to-text.md?pivots=programmer-tool-spx) használatával.

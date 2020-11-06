@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ddf418c90857b5bb7eca97eb2c6943cc93fce9ab
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7f71cacee86edd5b3f054f0996893c2148c626eb
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518925"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422671"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -42,7 +42,7 @@ Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását,
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documents ügyféloldali kódtár](/dotnet/api/overview/azure/search.documents-readme) | Azure SDK for .NET | Az Azure SDK csapata által kiadott .NET ügyféloldali kódtár, amely a többi .NET-ügyfél kódtáraval való konzisztencia kialakítására szolgál. <br/><br/>A 11-es verzió a keresési REST API-Version = 2020-06-30 verziót célozza meg, de még nem támogatja a Knowledge Store-t, a térinformatikai típusokat vagy a [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder). <br/><br/>További információ: gyors útmutató  [: index létrehozása](search-get-started-dotnet.md) és [frissítés Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md). | Általánosan elérhető. </br> Telepítse a [Azure.Search.Documents csomagot](https://www.nuget.org/packages/Azure.Search.Documents/) a NuGet-ből. |
+| [Azure.Search.Documents ügyféloldali kódtár](/dotnet/api/overview/azure/search.documents-readme) | Azure SDK for .NET | Az Azure SDK csapata által kiadott .NET ügyféloldali kódtár, amely a többi .NET-ügyfél kódtáraval való konzisztencia kialakítására szolgál. <br/><br/>A 11-es verzió a keresési REST API-Version = 2020-06-30 verziót célozza meg, de még nem támogatja a tudásbázist vagy a térinformatikai típusokat. <br/><br/>További információ: gyors útmutató  [: index létrehozása](search-get-started-dotnet.md) és [frissítés Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md). | Általánosan elérhető. </br> Telepítse a [Azure.Search.Documents csomagot](https://www.nuget.org/packages/Azure.Search.Documents/) a NuGet-ből. |
 | [azure.search.documents ügyféloldali kódtár](/python/api/overview/azure/search-documents-readme)  | Azure SDK for Python| Az Azure SDK csapata által kiadott Python ügyféloldali kódtár, amely más Python-ügyfél-kódtárakkal való konzisztencia kialakítására szolgál. <br/><br/>A 11-es verzió célja a keresési REST API-verzió = 2020-06-30. | Általánosan elérhető. </br> Telepítse az [Azure-Search-Documents csomagot](https://pypi.org/project/azure-search-documents/) a PyPI webhelyről. |
 | [@azure/search-documents ügyféloldali kódtár](/javascript/api/overview/azure/search-documents-readme)  | Azure SDK for JavaScript | Az Azure SDK csapata által kiadott JavaScript ügyféloldali kódtár, amely az egyéb JavaScript-ügyfél-kódtárakkal való konzisztencia biztosítására szolgál. <br/><br/>A 11-es verzió célja a keresési REST API-verzió = 2020-06-30. | Általánosan elérhető. </br> Telepítse a [ @azure/search-documents csomagot](https://www.npmjs.com/package/@azure/search-documents) a NPM-ből. |
 

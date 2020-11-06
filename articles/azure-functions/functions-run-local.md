@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 17daef18d87c4b5c906694ab1394694b32b6b130
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 78c6e4dffb35980b73fbc09bdc07d55215e659ae
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164863"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422586"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -35,7 +35,7 @@ A Azure Functions Core Tools három verziója létezik. A használt verzió a he
 
 + [**3. x/2. x verzió**](#v2): [a Azure functions futtatókörnyezet 3. x vagy 2. x verzióját](functions-versions.md)támogatja. Ezek a verziók támogatják a Windows, a [MacOS](?tabs=macos#v2)és a [Linux](?tabs=linux#v2) [rendszert](?tabs=windows#v2), és platform-specifikus csomagkezelő vagy NPM használatával telepíthetők.
 
-+ **1. x verzió**: a Azure functions futtatókörnyezet 1. x verzióját támogatja. Az eszközök ezen verziója csak Windows rendszerű számítógépeken támogatott, és egy NPM- [csomagból](https://www.npmjs.com/package/azure-functions-core-tools)van telepítve.
++ **1. x verzió** : a Azure functions futtatókörnyezet 1. x verzióját támogatja. Az eszközök ezen verziója csak Windows rendszerű számítógépeken támogatott, és egy NPM- [csomagból](https://www.npmjs.com/package/azure-functions-core-tools)van telepítve.
 
 Egy adott számítógépen csak az alapvető eszközök egyetlen verzióját lehet telepíteni. Ha másként nincs jelezve, a cikkben szereplő példák a 3. x verzióra vonatkoznak.
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> A Java a Maven archetípus használatával hozza létre a helyi functions projektet, valamint az első HTTP által aktivált függvényt. A Java-projekt létrehozásához használja a következő parancsot: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . A Maven archetípusot használó példát a [parancssori](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)útmutatóban talál.  
+> A Java a Maven archetípus használatával hozza létre a helyi functions projektet, valamint az első HTTP által aktivált függvényt. A Java-projekt létrehozásához használja a következő parancsot: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . A Maven archetípusot használó példát a [parancssori](./create-first-function-cli-java.md)útmutatóban talál.  
 
 Amikor megadja a projekt nevét, létrejön egy új, a névvel ellátott mappa, amely inicializálva van. Ellenkező esetben az aktuális mappa inicializálása megtörtént.  
 A 3. x/2. x verzióban a parancs futtatásakor ki kell választania egy futtatókörnyezetet a projekthez. 
@@ -179,7 +179,7 @@ python
 powershell
 </pre>
 
-A fel/le nyílbillentyűk használatával válassza ki a nyelvet, majd nyomja le az ENTER billentyűt. Ha JavaScript-vagy írógéppel-függvények fejlesztését tervezi, válassza a **csomópont**lehetőséget, majd válassza ki a nyelvet. Az írógéppel [néhány további követelményt](functions-reference-node.md#typescript)is tartalmaz. 
+A fel/le nyílbillentyűk használatával válassza ki a nyelvet, majd nyomja le az ENTER billentyűt. Ha JavaScript-vagy írógéppel-függvények fejlesztését tervezi, válassza a **csomópont** lehetőséget, majd válassza ki a nyelvet. Az írógéppel [néhány további követelményt](functions-reference-node.md#typescript)is tartalmaz. 
 
 A kimenet a következő példához hasonlít egy JavaScript-projekthez:
 
@@ -247,13 +247,13 @@ Ha nincs beállítva érvényes tárolási kapcsolódási karakterlánc [`AzureW
 
 Még ha a fejlesztési Microsoft Azure Storage Emulator is használja, érdemes lehet egy tényleges tárolási kapcsolatban is tesztelni. Feltételezve, hogy már [létrehozott egy Storage-fiókot](../storage/common/storage-account-create.md), a következő módokon szerezhet be érvényes tárolási kapcsolatok karakterláncot:
 
-- A [Azure Portal]keresse meg és válassza ki a **Storage-fiókok**lehetőséget. 
+- A [Azure Portal]keresse meg és válassza ki a **Storage-fiókok** lehetőséget. 
   ![Válassza ki a Storage-fiókokat Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
-  Válassza ki a Storage-fiókját, válassza a **hozzáférési kulcsok** lehetőséget a **Beállítások**területen, majd másolja a **kapcsolati karakterlánc** egyik értékét.
+  Válassza ki a Storage-fiókját, válassza a **hozzáférési kulcsok** lehetőséget a **Beállítások** területen, majd másolja a **kapcsolati karakterlánc** egyik értékét.
   ![A Azure Portalból származó kapcsolatok karakterláncának másolása](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- Az Azure-fiókhoz való kapcsolódáshoz használjon [Azure Storage Explorer](https://storageexplorer.com/) . Az **Explorerben**bontsa ki az előfizetést, bontsa ki a **Storage-fiókok**elemet, válassza ki a Storage-fiókját, és másolja az elsődleges vagy másodlagos kapcsolatok karakterláncát.
+- Az Azure-fiókhoz való kapcsolódáshoz használjon [Azure Storage Explorer](https://storageexplorer.com/) . Az **Explorerben** bontsa ki az előfizetést, bontsa ki a **Storage-fiókok** elemet, válassza ki a Storage-fiókját, és másolja az elsődleges vagy másodlagos kapcsolatok karakterláncát.
 
   ![A Storage Explorerból származó kapcsolatok karakterláncának másolása](./media/functions-run-local/storage-explorer.png)
 
@@ -312,9 +312,9 @@ Ezeket a beállításokat a paranccsal is megadhatja a következő argumentumok 
 | Argumentum     | Leírás                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (2. x vagy újabb verzió.) Ugyanazokat a C#-szkripteket (. CSX) hozza létre, amelyek az 1. x verzióban és a portálon használatosak. |
-| **`--language`**, **`-l`**| A sablon programozási nyelve, például C#, F # vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 2. x vagy újabb verziókban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |
-| **`--name`**, **`-n`** | A függvény neve. |
-| **`--template`**, **`-t`** | A `func templates list` parancs használatával megtekintheti az elérhető sablonok teljes listáját az egyes támogatott nyelvekhez.   |
+| **`--language`** , **`-l`**| A sablon programozási nyelve, például C#, F # vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 2. x vagy újabb verziókban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |
+| **`--name`** , **`-n`** | A függvény neve. |
+| **`--template`** , **`-t`** | A `func templates list` parancs használatával megtekintheti az elérhető sablonok teljes listáját az egyes támogatott nyelvekhez.   |
 
 
 Ha például JavaScript HTTP-triggert szeretne létrehozni egyetlen parancsban, futtassa a következőt:
@@ -357,7 +357,7 @@ func start
 ```
 func start
 ```
-Ezt a parancsot [virtuális környezetben kell futtatni](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv).
+Ezt a parancsot [virtuális környezetben kell futtatni](./create-first-function-cli-python.md).
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -385,10 +385,10 @@ npm start
 | **`--language-worker`** | A nyelv feldolgozójának konfigurálásához szükséges argumentumok. Engedélyezheti például a nyelvi feldolgozó hibakeresését a [hibakeresési port és egyéb szükséges argumentumok](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)megadásával. Az 1. x verzió esetében nem támogatott. |
 | **`--cert`** | A titkos kulcsot tartalmazó. pfx-fájl elérési útja. Csak a alkalmazásban használatos `--useHttps` . Az 1. x verzió esetében nem támogatott. |
 | **`--password`** | A jelszó vagy egy olyan fájl, amely egy. pfx fájl jelszavát tartalmazza. Csak a alkalmazásban használatos `--cert` . Az 1. x verzió esetében nem támogatott. |
-| **`--port`**, **`-p`** | A figyelni kívánt helyi port. Alapértelmezett érték: 7071. |
+| **`--port`** , **`-p`** | A figyelni kívánt helyi port. Alapértelmezett érték: 7071. |
 | **`--pause-on-error`** | A folyamat bezárása előtt szüneteltesse a további adatokat. Csak akkor használható, ha egy integrált fejlesztői környezetből (IDE) indít alapszintű eszközöket.|
-| **`--script-root`**, **`--prefix`** | A futtatni vagy telepíteni kívánt Function alkalmazás gyökeréhez tartozó elérési út megadására szolgál. Ez olyan lefordított projektek esetében használatos, amelyek a projektfájlok almappában hozhatók elő. Ha például egy C#-beli függvénytár-projektet hoz létre, akkor a host.jsbe, local.settings.jsbe, és function.jsa fájlokon egy, a (z) elérési úttal rendelkező *gyökér* almappában jön létre `MyProject/bin/Debug/netstandard2.0` . Ebben az esetben állítsa az előtagot a következőre: `--script-root MyProject/bin/Debug/netstandard2.0` . Ez a Function alkalmazás gyökere, ha az Azure-ban fut. |
-| **`--timeout`**, **`-t`** | A függvények gazdagépének időtúllépése másodpercben. Alapértelmezett: 20 másodperc.|
+| **`--script-root`** , **`--prefix`** | A futtatni vagy telepíteni kívánt Function alkalmazás gyökeréhez tartozó elérési út megadására szolgál. Ez olyan lefordított projektek esetében használatos, amelyek a projektfájlok almappában hozhatók elő. Ha például egy C#-beli függvénytár-projektet hoz létre, akkor a host.jsbe, local.settings.jsbe, és function.jsa fájlokon egy, a (z) elérési úttal rendelkező *gyökér* almappában jön létre `MyProject/bin/Debug/netstandard2.0` . Ebben az esetben állítsa az előtagot a következőre: `--script-root MyProject/bin/Debug/netstandard2.0` . Ez a Function alkalmazás gyökere, ha az Azure-ban fut. |
+| **`--timeout`** , **`-t`** | A függvények gazdagépének időtúllépése másodpercben. Alapértelmezett: 20 másodperc.|
 | **`--useHttps`** | Kötés helyett a következőhöz: `https://localhost:{port}` `http://localhost:{port}` . Alapértelmezés szerint ez a beállítás megbízható tanúsítványt hoz létre a számítógépen.|
 
 A functions-gazdagép indításakor a HTTP-triggert függvények URL-címét adja meg:
@@ -488,10 +488,10 @@ Az 1. x verzióban a függvényt közvetlenül is meghívhatja `func run <Functi
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--content`**, **`-c`** | Beágyazott tartalom. |
-| **`--debug`**, **`-d`** | A függvény futtatása előtt csatoljon egy hibakeresőt a gazdagéphez.|
-| **`--timeout`**, **`-t`** | Várakozási idő (másodpercben), amíg a helyi függvények gazdagépe nem áll készen.|
-| **`--file`**, **`-f`** | A tartalomként használandó fájlnév.|
+| **`--content`** , **`-c`** | Beágyazott tartalom. |
+| **`--debug`** , **`-d`** | A függvény futtatása előtt csatoljon egy hibakeresőt a gazdagéphez.|
+| **`--timeout`** , **`-t`** | Várakozási idő (másodpercben), amíg a helyi függvények gazdagépe nem áll készen.|
+| **`--file`** , **`-f`** | A tartalomként használandó fájlnév.|
 | **`--no-interactive`** | A nem kéri a bevitelt. Automatizálási forgatókönyvek esetén hasznos.|
 
 Ha például egy HTTP-triggert használó függvényt szeretne meghívni, és tartalmat kell átadnia, futtassa a következő parancsot:
@@ -537,12 +537,12 @@ A következő közzétételi beállítások csak a 2. x vagy újabb verziókban 
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only`**, **`-o`** |  Csak a beállítások közzététele és a tartalom kihagyása. Az alapértelmezett érték a prompt. |
+| **`--publish-settings-only`** , **`-o`** |  Csak a beállítások közzététele és a tartalom kihagyása. Az alapértelmezett érték a prompt. |
 |**`--list-ignored-files`** | A közzététel során figyelmen kívül hagyott fájlok listáját jeleníti meg, amely a. funcignore fájlon alapul. |
 | **`--list-included-files`** | A közzétett fájlok listáját jeleníti meg, amely a. funcignore fájlon alapul. |
 | **`--nozip`** | Kikapcsolja az alapértelmezett `Run-From-Package` üzemmódot. |
 | **`--build-native-deps`** | Kihagyja a generálás. Wheels mappát a Python-függvények alkalmazásainak közzétételekor. |
-| **`--build`**, **`-b`** | Build műveletet hajt végre Linux-Function alkalmazás telepítésekor. A következőket fogadja el: `remote` és `local` . |
+| **`--build`** , **`-b`** | Build műveletet hajt végre Linux-Function alkalmazás telepítésekor. A következőket fogadja el: `remote` és `local` . |
 | **`--additional-packages`** | A natív függőségek kiépítésekor telepítendő csomagok listája. Például: `python3-dev libevent-dev`. |
 | **`--force`** | Bizonyos helyzetekben figyelmen kívül hagyhatja a közzététel előtti ellenőrzést. |
 | **`--csx`** | C# parancsfájl-(. CSX) projekt közzététele. |

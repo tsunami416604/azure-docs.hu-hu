@@ -1,0 +1,26 @@
+---
+title: Azure app Configuration REST API – engedélyezés
+description: Az Azure app Configuration REST API használatával történő engedélyezésre vonatkozó hivatkozási lapok
+author: lisaguthrie
+ms.author: lcozzens
+ms.service: azure-app-configuration
+ms.topic: reference
+ms.date: 08/17/2020
+ms.openlocfilehash: 54f9cfab1f49837a3765c978de6deeb9e5e7d644
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93424181"
+---
+# <a name="authorization"></a>Engedélyezés
+
+Az engedélyezés arra az eljárásra vonatkozik, amelyet a hívónak a kérelem elvégzése során alkalmazott engedélyek meghatározására használ. Több engedélyezési modell is létezik. A kérelemhez használt engedélyezési modell a használt [hitelesítési](./rest-api-authentication-index.md) módszertől függ. Az engedélyezési modellek az alábbiakban láthatók.
+
+## <a name="hmac"></a>HMAC
+
+Az HMAC-hitelesítéshez társított [engedélyezési modell](./rest-api-authorization-hmac.md) modellje csak olvasható vagy írható írásra osztja fel az engedélyeket. A részletekért tekintse meg a [HMAC-hitelesítés](./rest-api-authorization-hmac.md) oldalát.
+
+## <a name="azure-active-directory"></a>Azure Active Directory
+
+Az Azure Active Directory (Azure AD) hitelesítéshez társított [engedélyezési modell](./rest-api-authorization-azure-ad.md) az Azure RBAC használatával szabályozza az engedélyeket. A részletekért tekintse meg az [Azure ad-engedélyezési](./rest-api-authorization-azure-ad.md) oldalt.

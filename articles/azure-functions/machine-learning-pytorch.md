@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: gopalv
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: dd8de1b56927e158a181df952ce0dbeed140d6b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8891c29e5d8d06df6292d06ec06e5e57fb9880e7
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078656"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422841"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>Oktatóanyag: előre betanított rendszerkép-besorolási modell üzembe helyezése a PyTorch-vel való Azure Functions
 
@@ -109,13 +109,13 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
     > [!TIP]
     > Mivel a Function projekt egy adott futtatókörnyezethez van kötve, a projekt összes funkcióját ugyanazzal a nyelvvel kell írni.
 
-1. Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol az `--name` argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new` hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének, valamint egy *function.js*nevű konfigurációs fájlnak.
+1. Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol az `--name` argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new` hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének, valamint egy *function.js* nevű konfigurációs fájlnak.
 
     ```
     func new --name classify --template "HTTP trigger"
     ```
 
-    Ez a parancs létrehoz egy mappát, amely megfelel a függvény nevének, *besorolása*. Ebben a mappában két fájl található: az * \_ \_ init \_ \_ .* a (z), amely tartalmazza a függvény kódját, és *function.json*, amely leírja a függvény triggerét, valamint a bemeneti és kimeneti kötéseit. A fájlok tartalmával kapcsolatos részletekért lásd: [a fájl tartalmának vizsgálata](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#optional-examine-the-file-contents) a Python rövid útmutatójában.
+    Ez a parancs létrehoz egy mappát, amely megfelel a függvény nevének, *besorolása*. Ebben a mappában két fájl található: az *\_ \_ init \_ \_ .* a (z), amely tartalmazza a függvény kódját, és *function.json* , amely leírja a függvény triggerét, valamint a bemeneti és kimeneti kötéseit. A fájlok tartalmával kapcsolatos részletekért lásd: [a fájl tartalmának vizsgálata](./create-first-function-cli-python.md#optional-examine-the-file-contents) a Python rövid útmutatójában.
 
 
 ## <a name="run-the-function-locally"></a>A függvény helyi futtatása
@@ -128,7 +128,7 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
 
 1. Ha megjelenik a `classify` végpont a kimenetben, keresse meg az URL-címet ```http://localhost:7071/api/classify?name=Azure``` . A "Hello Azure!" üzenet meg kell jelennie a kimenetben.
 
-1. **Ctrl** - A gazdagép leállításához használja a CTRL**C** billentyűt.
+1. **Ctrl** - A gazdagép leállításához használja a CTRL **C** billentyűt.
 
 
 ## <a name="import-the-pytorch-model-and-add-helper-code"></a>A PyTorch-modell importálása és a segítő kód hozzáadása
@@ -160,7 +160,7 @@ Ha módosítani szeretné a `classify` függvényt, hogy a tartalmaik alapján o
 
     ---
 
-1. Ellenőrizze, hogy a *besorolási* mappa tartalmazza-e a *predict.py* és a *labels.txt*nevű fájlokat. Ha nem, ellenőrizze, hogy a parancsot futtatta-e a *Start* mappában.
+1. Ellenőrizze, hogy a *besorolási* mappa tartalmazza-e a *predict.py* és a *labels.txt* nevű fájlokat. Ha nem, ellenőrizze, hogy a parancsot futtatta-e a *Start* mappában.
 
 1. Nyissa meg a *Start/requirements.txt* egy szövegszerkesztőben, és adja hozzá a segítő kód által igényelt függőségeket, amelynek a következőhöz hasonlóan kell kinéznie:
 
@@ -172,7 +172,7 @@ Ha módosítani szeretné a `classify` függvényt, hogy a tartalmaik alapján o
     torchvision==0.6.0+cpu
     ```
 
-1. Mentse *requirements.txt*, majd futtassa a következő parancsot a *Start* mappából a függőségek telepítéséhez.
+1. Mentse *requirements.txt* , majd futtassa a következő parancsot a *Start* mappából a függőségek telepítéséhez.
 
 
     ```

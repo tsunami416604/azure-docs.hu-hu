@@ -5,24 +5,27 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: 0e9773e5c08f9d07f76a70bc4f899acf5004d3c2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708611"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421809"
 ---
 # <a name="logical-decoding"></a>Logikai dekódolás
  
+> [!NOTE]
+> A logikai dekódolás nyilvános előzetes verzióban érhető el Azure Database for PostgreSQL – egyetlen kiszolgálón.
+
 [A PostgreSQL-ben a logikai dekódolás](https://www.postgresql.org/docs/current/logicaldecoding.html) lehetővé teszi, hogy az adatváltozásokat továbbítsa a külső felhasználók számára. A logikai dekódolást az esemény-adatfolyamok és az adatváltozás-rögzítési forgatókönyvek esetében népszerűen használják.
 
-A logikai dekódolás egy kimeneti beépülő modullal alakítja át a postgres írási előtt álló naplóját (WAL) olvasható formátumba. Azure Database for PostgreSQL a kimeneti beépülő modulok [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) és pgoutput biztosít. a pgoutput a postgres által elérhetővé tette a postgres 10-es és újabb verzióiban.
+A logikai dekódolás egy kimeneti beépülő modullal alakítja át a postgres írási előtt álló naplóját (WAL) olvasható formátumba. Azure Database for PostgreSQL a kimeneti beépülő modulok [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) és pgoutput biztosít. a PostgreSQL a PostgreSQL 10-es és újabb verziójában elérhetővé tette a pgoutput.
 
 A postgres logikai dekódolás működésének áttekintését a [blogban](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421)találja. 
 
 > [!NOTE]
-> A logikai dekódolás nyilvános előzetes verzióban érhető el Azure Database for PostgreSQL – egyetlen kiszolgálón.
+> A PostgreSQL-közzétételt és-előfizetést használó logikai replikáció Azure Database for PostgreSQL-egyetlen kiszolgálóval nem támogatott.
 
 
 ## <a name="set-up-your-server"></a>A kiszolgáló beállítása 
@@ -39,25 +42,29 @@ A kiszolgálót újra kell indítani a paraméter módosítása után. Belsőleg
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
 1. Azure.replication_support beállítása a következőre: `logical` .
-   ```
+   ```azurecli-interactive
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ``` 
 
 2. A módosítás alkalmazásához indítsa újra a kiszolgálót.
-   ```
+   ```azurecli-interactive
    az postgres server restart --resource-group mygroup --name myserver
    ```
+3. Ha a postgres 9,5-es vagy 9,6-es verzióját futtatja, és a nyilvános hálózati hozzáférés szolgáltatást használja, vegye fel a tűzfalszabálybe annak az ügyfélnek a nyilvános IP-címét, ahonnan a logikai replikációt futtatni fogja. A tűzfalszabály nevének tartalmaznia kell **_replrule**. Például *test_replrule*. Új tűzfalszabály létrehozásához a kiszolgálón futtassa az az [postgres Server Firewall-Rule Create](/cli/azure/postgres/server/firewall-rule) parancsot. 
 
 ### <a name="using-azure-portal"></a>Az Azure Portal használata
 
-1. Az Azure-beli replikáció támogatását állítsa **logikai**értékre. Kattintson a **Mentés** gombra.
+1. Az Azure-beli replikáció támogatását állítsa **logikai** értékre. Válassza a **Mentés** lehetőséget.
 
    :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="Azure Database for PostgreSQL – replikálás – Azure-replikáció támogatása":::
 
-2. A módosítás alkalmazásához indítsa újra a kiszolgálót az **Igen**lehetőség kiválasztásával.
+2. A módosítás alkalmazásához indítsa újra a kiszolgálót az **Igen** lehetőség kiválasztásával.
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL – replikálás – Azure-replikáció támogatása":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL – replikálás – újraindítás megerősítése":::
 
+3. Ha a postgres 9,5-es vagy 9,6-es verzióját futtatja, és a nyilvános hálózati hozzáférés szolgáltatást használja, vegye fel a tűzfalszabálybe annak az ügyfélnek a nyilvános IP-címét, ahonnan a logikai replikációt futtatni fogja. A tűzfalszabály nevének tartalmaznia kell **_replrule**. Például *test_replrule*. Ezután kattintson a **Mentés** gombra.
+
+   :::image type="content" source="./media/concepts-logical/client-replrule-firewall.png" alt-text="Azure Database for PostgreSQL – replikálás – tűzfalszabály hozzáadása":::
 
 ## <a name="start-logical-decoding"></a>Logikai dekódolás elindítása
 
@@ -79,7 +86,7 @@ Az alábbi példában az SQL-felületet használjuk a wal2json beépülő modull
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. SQL-parancsok kiadása. Példa:
+2. SQL-parancsok kiadása. Ilyenek többek között:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,
@@ -162,7 +169,7 @@ SELECT pg_drop_replication_slot('test_slot');
 > Ha leállítja a logikai dekódolást, módosítsa azure.replication_support vissza a következőre: `replica` vagy `off` . A megőrzött WAL-részletek `logical` részletesebbek, és le kell tiltani, ha nincs használatban a logikai dekódolás. 
 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [logikai dekódolással kapcsolatos további információkért](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html)látogasson el a postgres dokumentációba.
 * Ha a logikai dekódolással kapcsolatban kérdése van, akkor elérheti a [csapatot](mailto:AskAzureDBforPostgreSQL@service.microsoft.com) .

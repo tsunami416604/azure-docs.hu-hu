@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 76c45e586ea7101015cb878d198cab73ed32498e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d83745db6c720a2fdc2260a07a4e3e66b1a0771d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018246"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422212"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Szoftver telepítése és erőforrások beállítása az oktatóanyaghoz
 
@@ -23,14 +23,16 @@ Ebben a háromrészes oktatóanyagban egy gépi tanulási modellt hoz létre, am
 ## <a name="prerequisites"></a>Előfeltételek
 
 1. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-2. Telepítse a [Python-3.6.8](https://www.python.org/downloads/release/python-368/).
-      * A Windows x86-x64 végrehajtható telepítő használata
-      * Adja hozzá `python.exe` a következőt a PATH környezeti változóhoz: letöltések/). A letöltést a "Tools for Visual Studio 2019" alatt találja.
-3. Telepítse [a Microsoft ODBC-illesztőt (17) a SQL Serverhoz](https://www.microsoft.com/download/details.aspx?id=56567).
-4. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/) telepítése
-5. Nyissa meg Azure Data Studio és konfigurálja a Pythont jegyzetfüzetekhez.Részletekért lásd: [a Python konfigurálása jegyzetfüzetekhez](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks). Ez a lépés több percet is igénybe vehet.
-6. Telepítse az [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020)legújabb verzióját. A következő szkriptek megkövetelik, hogy az AZ PowerShell legyen a legújabb verzió (3.5.0, Feb 2020).
-7. Töltse le a [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) és az [AMD/ARM Docker-lemezképfájlokat](https://www.docker.com/blog/multi-arch-images/) , amelyeket az oktatóanyagban használni fog.
+2. A Visual Studio 2019 telepítése a 
+      * Eszközök Azure IoT Edge
+      * .NET Core platformfüggetlen fejlesztés
+      * Tároló-fejlesztői eszközök
+3. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/) telepítése
+4. Nyissa meg Azure Data Studio és konfigurálja a Pythont jegyzetfüzetekhez. Részletekért lásd: [a Python konfigurálása jegyzetfüzetekhez](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks). Ez a lépés több percet is igénybe vehet.
+5. Telepítse az [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020)legújabb verzióját. A következő szkriptek megkövetelik, hogy az AZ PowerShell legyen a legújabb verzió (3.5.0, Feb 2020).
+6. Állítsa be a környezetet az IoT Edge megoldás hibakereséséhez, futtatásához és teszteléséhez az [Azure IoT EdgeHub dev Tool](https://pypi.org/project/iotedgehubdev/)telepítésével.
+7. A Docker telepítése.
+8. Töltse le az oktatóanyagban használni kívánt [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) -fájlt. 
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>Azure-erőforrások üzembe helyezése PowerShell-parancsfájl használatával
 
@@ -154,26 +156,7 @@ Az Azure SQL Edge-oktatóanyaghoz szükséges Azure-erőforrások üzembe helyez
    }
    ```
 
-10. Küldje le a ARM/AMD Docker-rendszerképeket a tároló-beállításjegyzékbe.
-
-    ```powershell
-    $containerRegistryCredentials = Get-AzContainerRegistryCredential -ResourceGroupName $ResourceGroup -Name $containerRegistryName
-    
-    $amddockerimageFile = Read-Host "Please Enter the location to the amd docker tar file:"
-    $armdockerimageFile = Read-Host "Please Enter the location to the arm docker tar file:"
-    $amddockertag = $containerRegistry.LoginServer + "/silicaprediction" + ":amd64"
-    $armdockertag = $containerRegistry.LoginServer + "/silicaprediction" + ":arm64"
-    
-    docker login $containerRegistry.LoginServer --username $containerRegistryCredentials.Username --password $containerRegistryCredentials.Password
-    
-    docker import $amddockerimageFile $amddockertag
-    docker push $amddockertag
-    
-    docker import $armdockerimageFile $armdockertag
-    docker push $armdockertag
-    ```
-
-11. Hozza létre a hálózati biztonsági csoportot az erőforráscsoporthoz.
+10. Hozza létre a hálózati biztonsági csoportot az erőforráscsoporthoz.
 
     ```powershell
     $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroup -Name $NetworkSecGroup 
@@ -193,7 +176,7 @@ Az Azure SQL Edge-oktatóanyaghoz szükséges Azure-erőforrások üzembe helyez
     }
     ```
 
-12. SQL Edge-sel rendelkező Azure-beli virtuális gép létrehozása. Ez a virtuális gép peremhálózati eszközként fog működni.
+11. SQL Edge-sel rendelkező Azure-beli virtuális gép létrehozása. Ez a virtuális gép peremhálózati eszközként fog működni.
 
     ```powershell
     $AzVM = Get-AzVM -ResourceGroupName $ResourceGroup -Name $EdgeDeviceId
@@ -226,7 +209,7 @@ Az Azure SQL Edge-oktatóanyaghoz szükséges Azure-erőforrások üzembe helyez
     }
     ```
 
-13. Hozzon létre egy IoT hubot az erőforráscsoporthoz.
+12. Hozzon létre egy IoT hubot az erőforráscsoporthoz.
 
     ```powershell
     $iotHub = Get-AzIotHub -ResourceGroupName $ResourceGroup -Name $IoTHubName
@@ -241,7 +224,7 @@ Az Azure SQL Edge-oktatóanyaghoz szükséges Azure-erőforrások üzembe helyez
     }
     ```
 
-14. Vegyen fel egy peremhálózati eszközt az IoT hubhoz. Ez a lépés csak az eszköz digitális identitását hozza létre.
+13. Vegyen fel egy peremhálózati eszközt az IoT hubhoz. Ez a lépés csak az eszköz digitális identitását hozza létre.
 
     ```powershell
     $deviceIdentity = Get-AzIotHubDevice -ResourceGroupName $ResourceGroup -IotHubName $IoTHubName -DeviceId $EdgeDeviceId
@@ -257,7 +240,7 @@ Az Azure SQL Edge-oktatóanyaghoz szükséges Azure-erőforrások üzembe helyez
     $deviceIdentity = Get-AzIotHubDevice -ResourceGroupName $ResourceGroup -IotHubName $IoTHubName -DeviceId $EdgeDeviceId
     ```
 
-15. Az eszköz elsődleges kapcsolatainak karakterláncának beolvasása. Erre később szükség lesz a virtuális gép számára. A következő parancs az Azure CLI-t használja az üzembe helyezésekhez.
+14. Az eszköz elsődleges kapcsolatainak karakterláncának beolvasása. Erre később szükség lesz a virtuális gép számára. A következő parancs az Azure CLI-t használja az üzembe helyezésekhez.
 
     ```powershell
     $deviceConnectionString = az iot hub device-identity show-connection-string --device-id $EdgeDeviceId --hub-name $IoTHubName --resource-group $ResourceGroup --subscription $SubscriptionName
@@ -265,19 +248,20 @@ Az Azure SQL Edge-oktatóanyaghoz szükséges Azure-erőforrások üzembe helyez
     $connString
     ```
 
-16. Frissítse a IoT Edge konfigurációs fájlban lévő kapcsolatok karakterláncát a peremhálózati eszközön. Az alábbi parancsok az Azure CLI-t használják az üzembe helyezésekhez.
+15. Frissítse a IoT Edge konfigurációs fájlban lévő kapcsolatok karakterláncát a peremhálózati eszközön. Az alábbi parancsok az Azure CLI-t használják az üzembe helyezésekhez.
 
     ```powershell
     $script = "/etc/iotedge/configedge.sh '" + $connString + "'"
     az vm run-command invoke -g $ResourceGroup -n $EdgeDeviceId  --command-id RunShellScript --script $script
     ```
 
-17. Hozzon létre egy Azure Machine Learning munkaterületet az erőforráscsoporthoz.
+16. Hozzon létre egy Azure Machine Learning munkaterületet az erőforráscsoporthoz.
 
     ```powershell
     az ml workspace create -w $MyWorkSpace -g $ResourceGroup
     ```
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="next-steps"></a>Következő lépések
 
 * [IoT Edge modulok és kapcsolatok beállítása](tutorial-set-up-iot-edge-modules.md)
