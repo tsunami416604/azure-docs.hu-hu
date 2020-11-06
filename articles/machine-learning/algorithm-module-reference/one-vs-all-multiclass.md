@@ -1,7 +1,7 @@
 ---
 title: One-vs-All Multiclass
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használható a Azure Machine Learning One-vs-All Multiclass modulja többosztályos besorolási modell létrehozásához a bináris besorolási modellek együttes használatával.
+description: Megtudhatja, hogyan használhatja a One-vs-All Multiclass modult a Azure Machine Learning Designerben a bináris besorolású modellek együttes létrehozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: dfe01e16b55325db03e4150a33ae5c4aa5822ae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f09a77043a552d8d7f09c2a6abcb78f89cbf8ee2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898496"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420682"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
@@ -40,7 +40,7 @@ A bináris modellt a One-vs-All Multiclass modulhoz kell kötni. Ezután betaní
 
 A modellek kombinálása esetén One-vs-All Multiclass több bináris besorolási modellt hoz létre, optimalizálja az egyes osztályok algoritmusát, majd egyesíti a modelleket. A modul ezeket a feladatokat akkor is elvégzi, ha a betanítási adatkészlet több osztállyal is rendelkezhet.
 
-1. Adja hozzá a One-vs-All Multiclass modult a folyamathoz a tervezőben. Ezt a modult a **besorolási** kategóriában, a **Machine learning-inicializálás**alatt találja.
+1. Adja hozzá a One-vs-All Multiclass modult a folyamathoz a tervezőben. Ezt a modult a **besorolási** kategóriában, a **Machine learning-inicializálás** alatt találja.
 
    Az One-vs-All Multiclass osztályozó nem rendelkezik saját konfigurálható paraméterekkel. A testreszabásokat a bemenetként megadott bináris besorolási modellben kell elvégezni.
 
@@ -59,6 +59,6 @@ A betanítás befejezése után a modellt használhatja a többosztályos előre
 Azt is megteheti, hogy átadja a nem betanított osztályozó [modellt a modell](cross-validate-model.md) átadására a címkével ellátott ellenőrzési adatkészlet alapján.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

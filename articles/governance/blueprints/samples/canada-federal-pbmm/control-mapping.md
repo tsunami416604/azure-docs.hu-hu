@@ -1,20 +1,20 @@
 ---
 title: Kanadai szövetségi PBMM terv minta vezérlők
 description: A kanadai szövetségi PBMM tervrajzi mintáinak leképezése. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 07/31/2020
+ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: c7b7df73d9fd553e9f733f37d7238e4c1c0afed5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 34c9b723b3c8a74b7a1f842e0144a826f55373ea
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929557"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420444"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>A Kanada szövetségi PBMM tervezetének vezérlési mintája
 
 A következő cikk azt ismerteti, hogyan történik az Azure-tervezetek kanadai szövetségi védett B, közepes integritású, közepes rendelkezésre állású (PBMM) tervrajza a Kanada szövetségi PBMM-vezérlőinek. További információ a vezérlőelemekről: [Kanada szövetségi PBMM](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html).
 
-A következő leképezések a **Kanada szövetségi PBMM** -vezérlői. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezt követően keresse meg és válassza ki az ** \[ előnézetet \] : az audit Canada Federal PBMM Controls** beépített Policy Initiative.
+A következő leképezések a **Kanada szövetségi PBMM** -vezérlői. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezt követően keresse meg és válassza ki az **\[ előnézetet \] : az audit Canada Federal PBMM Controls** beépített Policy Initiative.
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem egy-az-egyhez vagy egy teljes egyezés egy vezérlőelem és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md).
@@ -48,7 +48,7 @@ Az Azure [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../.
 
 A több eredetű erőforrás-megosztás (CORS) lehetővé teszi App Services-erőforrások kérését egy külső tartományból. A Microsoft azt javasolja, hogy csak a szükséges tartományokat engedélyezze az API-val, a funkcióval és a webalkalmazásokkal való interakcióhoz. Ez a terv egy [Azure Policy](../../../policy/overview.md) definíciót rendel hozzá, amely segít a CORS-erőforrások hozzáférési korlátozásának figyelésében Azure Security Centerban. A CORS-implementációk ismertetése segít ellenőrizni, hogy az információáramlási vezérlők implementálva vannak-e.
 
-- A CORS nem engedheti meg, hogy minden erőforrás hozzáférjen a webalkalmazáshoz
+- A CORS nem teszi lehetővé minden erőforrás számára a webalkalmazások elérését
 
 ## <a name="ac-5-separation-of-duties"></a>A feladatok AC-5 elkülönítése
 
@@ -56,10 +56,8 @@ Csak egy Azure-előfizetéshez tartozó tulajdonos nem engedélyez felügyeleti 
 
 - Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni
 - Az előfizetéshez egynél több tulajdonos rendelhető hozzá
-- A Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
-- A Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
-- Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
-- Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
+- Windows rendszerű gépek naplózása, amelyeknek a megadott tagjai vannak a rendszergazdák csoportban
+- A rendszergazdák csoport megadott tagjaiból hiányzó Windows-gépek naplózása
 
 ## <a name="ac-6-least-privilege"></a>Legalább AC-6 jogosultság
 
@@ -67,16 +65,14 @@ Az Azure [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../.
 
 - Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni
 - Az előfizetéshez egynél több tulajdonos rendelhető hozzá
-- A Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
-- A Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
-- Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
-- Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
+- Windows rendszerű gépek naplózása, amelyeknek a megadott tagjai vannak a rendszergazdák csoportban
+- A rendszergazdák csoport megadott tagjaiból hiányzó Windows-gépek naplózása
 
 ## <a name="ac-7-security-attributes"></a>AC-7 biztonsági attribútumok
 
 A Azure SQL Database speciális adatbiztonságának adatfelderítési és besorolási funkciója lehetővé teszi az adatbázisok bizalmas adatainak feltárását, osztályozását, címkézését és védelmét. Használatával áttekinthető az adatbázis besorolási állapota, valamint követhető a bizalmas adatokhoz való hozzáférés az adatbázison belül és azon kívül. A speciális adatok biztonsága segítséget nyújt a szervezete megfelelő biztonsági attribútumaival kapcsolatos információk biztosításához. Ez a terv [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá a speciális adatbiztonság az SQL Serveren való használatának figyeléséhez és érvényesítéséhez.
 
-- A speciális adatbiztonságot engedélyezni kell az SQL felügyelt példányain
+- A speciális adatbiztonságot engedélyezni kell a felügyelt SQL-példányon
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
 
@@ -84,20 +80,19 @@ A Azure SQL Database speciális adatbiztonságának adatfelderítési és besoro
 
 Ez a terv segít a távelérés figyelésében és vezérlésében azáltal, hogy [Azure Policy](../../../policy/overview.md) definíciók hozzárendelésével figyeli, hogy a Azure app Service alkalmazás távoli hibakeresése ki van-e kapcsolva. A terv emellett olyan szabályzat-definíciókat is hozzárendel, amelyek a jelszavak nélküli fiókok távoli kapcsolatait engedélyező linuxos virtuális gépeket naplózzák. Emellett a terv egy Azure Policy-definíciót rendel hozzá, amely segítséget nyújt a Storage-fiókok korlátozás nélküli elérésének figyelésében. Ezen mutatók monitorozásával biztosítható, hogy a távelérési módszerek megfeleljenek a biztonsági szabályzatnak.
 
-- \[Előzetes verzió \] : a Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik a távoli kapcsolatokat a jelszavak nélküli fiókoktól
-- \[Előzetes verzió \] : követelmények központi telepítése a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózásához
-- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
-- A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz
-- A távoli hibakeresést ki kell kapcsolni függvényalkalmazás
-- A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
+- A Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik a távoli kapcsolatokat jelszavak nélküli fiókokból
+- A Storage-fiókoknak korlátoznia kell a hálózati hozzáférést
+- A távoli hibakeresést ki kell kapcsolni API Apps
+- A távoli hibakeresést ki kell kapcsolni a Function apps szolgáltatásban
+- A távoli hibakeresést ki kell kapcsolni a webalkalmazásokhoz
 
 ## <a name="au-3-2-content-of-audit-records"></a>Az AU-3 (2) naplózási rekordok tartalma
 
 A Azure Monitor által gyűjtött adatok naplózása egy Log Analytics munkaterületen történik, amely lehetővé teszi a központi konfigurációt és a felügyeletet. Ez a terv segít biztosítani az események naplózását olyan [Azure Policy](../../../policy/overview.md) -definíciók kiosztásával, amelyek az log Analytics Agent Azure-beli virtuális gépeken való üzembe helyezését naplózzák és érvényesítik.
 
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes verzió \] : log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
+- Naplózás Log Analytics ügynök üzembe helyezése virtuálisgép-méretezési csoportokban – nincs listázva a virtuális gép rendszerképe (operációs rendszer)
+- Log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
 - \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
 
@@ -107,7 +102,7 @@ Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendeli hoz
 
 - Diagnosztikai beállítás naplózása
 - Az SQL Server naplózását engedélyezni kell
-- A speciális adatbiztonságot engedélyezni kell az SQL felügyelt példányain
+- A speciális adatbiztonságot engedélyezni kell a felügyelt SQL-példányon
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) audit felülvizsgálat, elemzés és jelentéskészítés | Központi áttekintés és elemzés
@@ -115,7 +110,7 @@ Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendeli hoz
 A Azure Monitor által összegyűjtött adatok naplózása egy Log Analytics munkaterületen történik, amely lehetővé teszi a központi jelentéskészítést és elemzést. Ez a terv segít biztosítani az események naplózását olyan [Azure Policy](../../../policy/overview.md) -definíciók kiosztásával, amelyek az log Analytics Agent Azure-beli virtuális gépeken való üzembe helyezését naplózzák és érvényesítik.
 
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
+- Naplózás Log Analytics ügynök üzembe helyezése virtuálisgép-méretezési csoportokban – nincs listázva a virtuális gép rendszerképe (operációs rendszer)
 - Log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
 - \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
@@ -126,14 +121,14 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 Ezek a szabályzat-definíciók a Log Analytics ügynök Azure-beli virtuális gépeken való üzembe helyezését és az egyéb Azure-erőforrástípusok naplózási beállításainak konfigurálását is kikényszerítik. Ezek a szabályzat-definíciók a diagnosztikai naplók konfigurációját is naplózzák, hogy betekintést nyújtsanak az Azure-erőforrásokon belül végrehajtott műveletekre. Emellett a naplózás és a speciális adatbiztonság is konfigurálva van az SQL-kiszolgálókon.
 
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- Log Analytics munkaterületének naplózása a virtuális gépen – jelentés 
+- Naplózás Log Analytics ügynök üzembe helyezése virtuálisgép-méretezési csoportokban – nincs listázva a virtuális gép rendszerképe (operációs rendszer)
+- Log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
 
 - \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
 - Diagnosztikai beállítás naplózása
 - Az SQL Server naplózását engedélyezni kell
-- A speciális adatbiztonságot engedélyezni kell az SQL felügyelt példányain
+- A speciális adatbiztonságot engedélyezni kell a felügyelt SQL-példányon
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
 - Naplózás üzembe helyezése SQL-kiszolgálókon
@@ -143,13 +138,13 @@ Ezek a szabályzat-definíciók a Log Analytics ügynök Azure-beli virtuális g
 
 A Azure Security Center adaptív alkalmazás-vezérlése intelligens, automatizált, teljes körű alkalmazás-engedélyezési lista megoldás, amely képes blokkolni vagy megakadályozni bizonyos szoftverek futtatását a virtuális gépeken. Az alkalmazás-vezérlőelem lehetővé teszi a jóváhagyott alkalmazások listáját a virtuális gépekhez. Ez a tervrajz olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít a virtuális gépek figyelésében, ahol az alkalmazás engedélyezési listája ajánlott, de még nincs konfigurálva.
 
-- Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
+- Biztonságos alkalmazások definiálására szolgáló adaptív alkalmazás-vezérlőelemeket engedélyezni kell a gépeken
 
 ## <a name="cm-11-user-installed-software"></a>CM – 11 User-Installed szoftver
 
 A Azure Security Center adaptív alkalmazás-vezérlése intelligens, automatizált, teljes körű alkalmazás-engedélyezési lista megoldás, amely képes blokkolni vagy megakadályozni bizonyos szoftverek futtatását a virtuális gépeken. Az alkalmazás-vezérlőelem segítségével érvényesítheti és figyelheti a szoftverkorlátozó házirendek megfelelőségét. Ez a tervrajz olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít a virtuális gépek figyelésében, ahol az alkalmazás engedélyezési listája ajánlott, de még nincs konfigurálva.
 
-- Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
+- Biztonságos alkalmazások definiálására szolgáló adaptív alkalmazás-vezérlőelemeket engedélyezni kell a gépeken
 
 ## <a name="cp-7-alternate-processing-site"></a>CP-7 alternatív feldolgozási hely
 
@@ -162,7 +157,7 @@ Azure Site Recovery replikálja a virtuális gépeken futó munkaterheléseket e
 Ez a terv segít a privilegizált hozzáférés korlátozásában és szabályozásában [Azure Policy](../../../policy/overview.md) definíciók hozzárendelésével olyan fiókokat naplózni, amelyek tulajdonosi és/vagy írási engedélyekkel nem rendelkeznek a többtényezős hitelesítés engedélyezésével. A többtényezős hitelesítés révén a fiókok biztonságban maradhatnak, még akkor is, ha az egyik hitelesítő adat biztonsága sérül. A többtényezős hitelesítés engedélyezése nélküli fiókok figyelésével azonosíthatja azokat a fiókokat, amelyek nagyobb valószínűséggel veszélyeztethetik.
 
 - Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
-- Az MFA-t engedélyezni kell az előfizetés írási engedélyekkel rendelkező fiókjaiban
+- Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában
 
 ## <a name="ia-5-authenticator-management"></a>IA-5 hitelesítő kezelése
 
@@ -170,8 +165,6 @@ Ez a terv azokat a [Azure Policy](../../../policy/overview.md) definíciókat re
 
 - Olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
 - Olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekhez jelszó nélküli fiók tartozik
-- Követelmények telepítése olyan linuxos virtuális gépek naplózására, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
-- Követelmények telepítése a jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózására
 
 ## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) hitelesítő kezelése | Password-Based hitelesítés
 
@@ -182,29 +175,24 @@ Ez a terv segítséget nyújt az erős jelszavak betartatásához olyan [Azure P
 - Olyan Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek legalább 1 napos jelszóval
 - Olyan Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyeken nincs engedélyezve a jelszó bonyolultsága beállítás
 - A Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
-- Az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózására vonatkozó követelmények telepítése
-- Követelmények telepítése a maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózásához 70 nap
-- Követelmények telepítése olyan Windows rendszerű virtuális gépek naplózására, amelyek nem rendelkeznek minimális jelszóval (1 nap)
-- A jelszó-bonyolultsági beállítással nem rendelkező Windows rendszerű virtuális gépek naplózási követelményeinek központi telepítése
-- Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakternél
 
 ## <a name="ia-8-100-identification-and-authentication-non-organizational-users--identity-and-credential-assurance-levels"></a>IA-8 (100) azonosítás és hitelesítés (nem szervezeti felhasználók) | Identitás-és hitelesítő adatok megbízhatósági szintjei
 
 Ez a terv segít a privilegizált hozzáférés korlátozásában és szabályozásában [Azure Policy](../../../policy/overview.md) definíciók hozzárendelésével olyan fiókokat naplózni, amelyek tulajdonosi és/vagy írási engedélyekkel nem rendelkeznek a többtényezős hitelesítés engedélyezésével. A többtényezős hitelesítés révén a fiókok biztonságban maradhatnak, még akkor is, ha az egyik hitelesítő adat biztonsága sérül. A többtényezős hitelesítés engedélyezése nélküli fiókok figyelésével azonosíthatja azokat a fiókokat, amelyek nagyobb valószínűséggel veszélyeztethetik.
 
 - Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
-- Az MFA-t engedélyezni kell az előfizetés írási engedélyekkel rendelkező fiókjaiban
+- Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 sebezhetőségi vizsgálat
 
 Ez a terv segítséget nyújt az információs rendszer biztonsági réseinak kezeléséhez olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek figyelik az operációs rendszer biztonsági réseit, az SQL biztonsági réseket és a virtuális gépek Azure Security Center-
 A Azure Security Center jelentéskészítési funkciókat biztosít, amelyekkel valós idejű betekintést nyerhet az üzembe helyezett Azure-erőforrások biztonsági állapotára. A terv emellett olyan szabályzat-definíciókat is hozzárendel, amelyek az SQL-kiszolgálókon a speciális adatbiztonságot auditálják és érvényesítik. A speciális adatbiztonság biztonsági rések felmérése és a komplex veszélyforrások elleni védelem lehetővé teszi, hogy jobban megértse a telepített erőforrások sebezhetőségeit.
 
-- A speciális adatbiztonságot engedélyezni kell az SQL felügyelt példányain
+- A speciális adatbiztonságot engedélyezni kell a felügyelt SQL-példányon
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
 - A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
-- A virtuális gépek biztonsági konfigurációjában lévő biztonsági réseket szervizelni kell
+- A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
 - Az SQL-adatbázisok biztonsági réseit szervizelni kell
 - A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
 
@@ -220,19 +208,19 @@ Ez a terv segít a Rendszerhatár kezelésében és szabályozásában azáltal,
 
 - Az adaptív hálózatokra vonatkozó kötési javaslatokat az internetre irányuló virtuális gépeken kell alkalmazni
 - Korlátozni kell az internet felé irányuló végponton keresztüli hozzáférést
-- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
+- A Storage-fiókoknak korlátoznia kell a hálózati hozzáférést
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) határ védelme | Hozzáférési pontok
 
 Az igény szerinti (JIT) virtuálisgép-hozzáférés lezárja az Azure-beli virtuális gépek felé irányuló bejövő adatforgalmat, így csökkentve a támadásokkal szembeni kitettséget, és így könnyű hozzáférést biztosít a virtuális gépekhez, ha szükséges. A JIT virtuális gép hozzáférése segít korlátozni az Azure-ban lévő erőforrások külső kapcsolatainak számát. Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít az igény szerinti hozzáférést támogató virtuális gépek figyelésében, de még nincs konfigurálva.
 
-- Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken
+- Azure DDoS Protection a standardot engedélyezni kell
 
 ## <a name="sc-7-4-boundary-protection--external-telecommunications-services"></a>SC-7 (4) határ védelme | Külső távközlési szolgáltatások
 
 Az igény szerinti (JIT) virtuálisgép-hozzáférés lezárja az Azure-beli virtuális gépek felé irányuló bejövő adatforgalmat, így csökkentve a támadásokkal szembeni kitettséget, és így könnyű hozzáférést biztosít a virtuális gépekhez, ha szükséges. A JIT virtuális gépekhez való hozzáférés a hozzáférési kérelmek és a jóváhagyási folyamatok megkönnyítésével segíti a forgalomra vonatkozó kivételek kezelését. Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít az igény szerinti hozzáférést támogató virtuális gépek figyelésében, de még nincs konfigurálva.
 
-- Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken
+- Azure DDoS Protection a standardot engedélyezni kell
 
 ## <a name="sc-8-1-transmission-confidentiality-and-integrity--cryptographic-or-alternate-physical-protection"></a>SC-8 (1) a továbbítás titkossága és integritása | Titkosítási vagy alternatív fizikai védelem
 
@@ -240,9 +228,8 @@ Ez a terv segít a továbbított adatok bizalmas és integritásának védelméb
 
 - Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
 - A nem biztonságos kommunikációs protokollokat használó Windows-webkiszolgálók naplózási eredményeinek megjelenítése
-- Követelmények telepítése a biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózásához
 - függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
-- Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
+- Csak a Redis-hez készült Azure cache biztonságos kapcsolatainak engedélyezése szükséges
 - A webalkalmazás csak HTTPS protokollon keresztül érhető el
 - Engedélyezni kell a tárfiókokba történő biztonságos átvitelt
 
@@ -250,7 +237,7 @@ Ez a terv segít a továbbított adatok bizalmas és integritásának védelméb
 
 Ebből a tervből megtudhatja, hogyan kényszerítheti ki a szabályzatot a titkosítási vezérlők használatára, hogy olyan [Azure Policy](../../../policy/overview.md) -definíciókat rendeljen hozzá, amelyek kikényszerítik az adott titkosítási vezérlőket, és naplózzák a gyenge titkosítási beállítások használatát. Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási konfigurációval rendelkezzenek-e, segítheti a javítási műveleteket, hogy az erőforrások konfigurálása az adatvédelmi szabályzatnak megfelelően történjen. Pontosabban, a tervhez hozzárendelt szabályzat-definíciók titkosítást igényelnek a Storage-fiókokhoz; transzparens adattitkosítás megkövetelése SQL-adatbázisokban; és naplózza a hiányzó titkosítást az SQL-adatbázisokon, a virtuális gépek lemezein és az Automation-fiók változóinak.
 
-- A speciális adatbiztonságot engedélyezni kell az SQL felügyelt példányain
+- A speciális adatbiztonságot engedélyezni kell a felügyelt SQL-példányon
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
 - Az SQL DB transzparens adattitkosításának üzembe helyezése
@@ -264,9 +251,9 @@ Ebből a tervből megtudhatja, hogyan kezelheti a rendszerhibákat a hiányzó r
 
 - Az operációsrendszer-rendszerkép automatikus javításának megkövetelése Virtual Machine Scale Sets
 - A virtuálisgép-méretezési csoportokra vonatkozó rendszerfrissítéseket telepíteni kell
-- A rendszerfrissítéseket telepíteni kell a virtuális gépekre
+- A rendszerfrissítéseket telepíteni kell a gépeken
 - A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
-- A virtuális gépek biztonsági konfigurációjában lévő biztonsági réseket szervizelni kell
+- A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
 - Az SQL-adatbázisok biztonsági réseit szervizelni kell
 - A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
 
@@ -290,11 +277,11 @@ Ez a terv segít az Endpoint Protection kezelésében, beleértve a kártékony 
 Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli naplózásával és érvényesítésével segíti a rendszerek figyelését. A szabályzatok a Log Analytics ügynök üzembe helyezését, valamint az SQL-adatbázisok, a Storage-fiókok és a hálózati erőforrások fokozott biztonsági beállításait naplózzák és érvényesítik. Ezek a képességek segítenek a rendellenes viselkedés és a támadási mutatók észlelésében, így elvégezheti a megfelelő lépéseket.
 
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes verzió \] : log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
+- Naplózás Log Analytics ügynök üzembe helyezése virtuálisgép-méretezési csoportokban – nincs listázva a virtuális gép rendszerképe (operációs rendszer)
+- Log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
 - \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
-- A speciális adatbiztonságot engedélyezni kell az SQL felügyelt példányain
+- A speciális adatbiztonságot engedélyezni kell a felügyelt SQL-példányon
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
 - Komplex veszélyforrások elleni védelem üzembe helyezése a Storage-fiókokon
@@ -305,7 +292,7 @@ Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli n
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Áttekintette a kanadai szövetségi PBMM terv mintájának vezérlési leképezését. A következő cikkekben megismerheti az áttekintést és a minta üzembe helyezésének módját:
 

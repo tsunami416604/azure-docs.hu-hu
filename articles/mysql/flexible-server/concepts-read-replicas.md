@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 6f3482bdc608d97e4adba5f99393e74f2e6c7cde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9d683f96f31d3b34ac311251f45456551148ca26
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795223"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420886"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Replikák olvasása Azure Database for MySQL – rugalmas kiszolgáló
 
@@ -61,7 +61,7 @@ Megtudhatja, hogyan [hozhat létre olvasási replikát a Azure Portalban](how-to
 
 ## <a name="connect-to-a-replica"></a>Kapcsolódás replikához
 
-A létrehozáskor a replika örökli a forráskiszolgáló csatlakozási módszerét. A replika kapcsolati metódusa nem módosítható. Ha például a forráskiszolgáló **privát hozzáféréssel rendelkezik (VNet-integráció)** , akkor a replika nem lehet **nyilvános hozzáférésben (engedélyezett IP-címek)** .
+A létrehozáskor a replika örökli a forráskiszolgáló csatlakozási módszerét. A replika kapcsolati metódusa nem módosítható. Ha például a forráskiszolgáló **privát hozzáféréssel rendelkezik (VNet-integráció)** , akkor a replika nem lehet **nyilvános hozzáférésben (engedélyezett IP-címek)**.
 
 A replika örökli a rendszergazdai fiókot a forráskiszolgálóról. A forráskiszolgáló összes felhasználói fiókja replikálódik az olvasási replikára. Csak olvasási replikához csatlakozhat a forráskiszolgálón elérhető felhasználói fiókok használatával.
 
@@ -117,6 +117,7 @@ Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, 
 | Használati eset | Korlátozás/megfontolás |
 |:-|:-|
 | Replika a kiszolgálón a következő zónával: redundáns HA engedélyezve | Nem támogatott |
+| Régiók közötti olvasási replikáció | Nem támogatott |
 | Díjszabás | A replika-kiszolgáló futtatásának díja azon a régión alapul, ahol a replika-kiszolgáló fut |
 | Forráskiszolgáló újraindítása | Ha olyan forráshoz hoz létre replikát, amely nem tartalmaz meglévő replikákat, a forrás először újraindul, hogy felkészüljön a replikálásra. Vegye figyelembe ezt a műveletet, és hajtsa végre ezeket a műveleteket egy leállási időszakban |
 | Új replikák | Az olvasási replika új Azure Database for MySQL rugalmas kiszolgálóként jön létre. Egy meglévő kiszolgálót nem lehet replikába készíteni. Egy másik olvasási replika replikája nem hozható létre. |
@@ -127,7 +128,7 @@ Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, 
 | Kiszolgálóparaméterek | Az adatszinkronizálás biztosítása és az esetleges adatvesztés vagy -sérülés elkerülése érdekében bizonyos kiszolgálóparaméterek zárolva vannak, hogy ne lehessen őket módosítani olvasási replikák használata során. <br> A következő kiszolgálói paraméterek a forrás-és a replika-kiszolgálókon is zárolva vannak:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> A [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) paraméter zárolva van a replika-kiszolgálókon. <br> A fenti paraméterek egyikének a forráskiszolgálón való frissítéséhez törölje a replika-kiszolgálókat, frissítse a paraméter értékét a forráson, majd hozza létre újra a replikákat. |
 | Egyéb | – Replika replikájának létrehozása nem támogatott. <br> A memóriában tárolt táblák miatt előfordulhat, hogy a replikák nem lesznek szinkronban. Ez a MySQL-replikációs technológia korlátozása. További információt a [MySQL dokumentációjában talál](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) . <br>– Győződjön meg arról, hogy a forráskiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a forrás-és a replikák között.<br>– A MySQL- [dokumentációban](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) megtekintheti a MySQL-replikációra vonatkozó korlátozások teljes listáját |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](how-to-read-replicas-portal.md)
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI használatával](how-to-read-replicas-cli.md)

@@ -1,7 +1,7 @@
 ---
 title: Átalakítás mutatóértékekké
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning konvertálható értékeit tartalmazó modult olyan oszlopok konvertálásához, amelyek kategorikus értékeket tartalmaznak a bináris kijelző oszlopaiba.
+description: A Azure Machine Learning Designerben az átalakítás kijelzői értékeit tartalmazó modul használatával alakítsa át a kategorikus oszlopokat bináris kijelzős oszlopokba.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81b3c113f46428327842c1555fdd1934e9ae8762
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79477663"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420852"
 ---
 # <a name="convert-to-indicator-values"></a>Átalakítás mutatóértékekké
 Ez a cikk a Azure Machine Learning Designer modulját ismerteti.
@@ -51,7 +51,7 @@ Tegyük fel, hogy van egy olyan pontszáma, amely azt jelzi, hogy egy kiszolgál
 | 10302     | Közepes        |
 | 10303     | Magas          |
 
-Ha a **konverziót jelző értékekre**alkalmazza, a tervező átalakítja a címkék egyetlen oszlopát több, logikai értékeket tartalmazó oszlopba:  
+Ha a **konverziót jelző értékekre** alkalmazza, a tervező átalakítja a címkék egyetlen oszlopát több, logikai értékeket tartalmazó oszlopba:  
 
 | Kiszolgáló azonosítója | Hiba pontszám – alacsony | Hiba pontszám – közepes | Hiba pontszám – magas |
 | --------- | ------------------- | ---------------------- | -------------------- |
@@ -71,8 +71,8 @@ Most már használhatja a három kijelző oszlopokat a Machine learning-modellek
 
 A modul két kimenetet ad vissza:
 
-- **Results adatkészlet**: az átalakított kijelző értékeit tartalmazó adatkészlet. A tisztításra kijelölt oszlopok is áthaladnak.
-- A **kijelző értékeinek átalakítása**: a kijelzőre való átalakításra használt adatátalakítás, amely menthető a munkaterületre, és később is alkalmazható az új adatokra.
+- **Results adatkészlet** : az átalakított kijelző értékeit tartalmazó adatkészlet. A tisztításra kijelölt oszlopok is áthaladnak.
+- A **kijelző értékeinek átalakítása** : a kijelzőre való átalakításra használt adatátalakítás, amely menthető a munkaterületre, és később is alkalmazható az új adatokra.
 
 ## <a name="apply-a-saved-indicator-values-operation-to-new-data"></a>Mentett kijelző értékeit tartalmazó művelet alkalmazása új adatokra
 
@@ -104,7 +104,7 @@ Ez a szakasz megvalósítási részleteket, tippeket és válaszokat tartalmaz a
 
 -   A mutatók oszlopaiba konvertálható oszlopok száma nincs korlátozva. Mivel azonban az értékek egyes oszlopai több kijelzőt is tartalmazhatnak, érdemes lehet csak néhány oszlopot konvertálni és áttekinteni.  
 
--   Ha az oszlop hiányzó értékeket tartalmaz, a rendszer külön jelző oszlopot hoz létre a hiányzó kategóriához, a következő névvel: * \<source column> -missing*  
+-   Ha az oszlop hiányzó értékeket tartalmaz, a rendszer külön jelző oszlopot hoz létre a hiányzó kategóriához, a következő névvel: *\<source column> -missing*  
 
 -   Ha a kijelző értékre konvertált oszlop számokat tartalmaz, akkor azokat kategorikusként kell megjelölni, mint bármely más szolgáltatás oszlopát. Miután ezt megtette, a rendszer diszkrét értékként kezeli a számokat. Ha például egy numerikus oszlop, amely 25 és 30 közötti értéket tartalmaz, egy új jelző oszlop jön létre minden egyes különálló értékhez:  
 

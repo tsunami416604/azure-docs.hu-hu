@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 11/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: da4dc3579630d641fcbc1d4321b56de0cc09d555
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0c4c296cb1454ed89eef102732533589b1c8ca0d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893577"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420959"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrikák Advisor – gyakori kérdések
 
@@ -88,7 +88,7 @@ Tegyük fel például, hogy az alábbi lekérdezést hozza létre napi metrika e
 
 Vegye figyelembe, hogy ezek a lekérdezések csak egyetlen időbélyegen adják vissza az adatokat, és tartalmazzák a metrikai tanácsadó által betöltött összes dimenzió kombinációt. 
 
-:::image type="content" source="media/query-result.png" alt-text="Üzenet, ha már létezik egy F0-erőforrás" lightbox="media/query-result.png":::
+:::image type="content" source="media/query-result.png" alt-text="Egy lekérdezés eredménye egy időbélyeg" lightbox="media/query-result.png":::
 
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>Hogyan észlelni a tüskéket & a dipsot rendellenességként?
@@ -104,6 +104,19 @@ Az "intelligens észlelés" képes megtanulni az Adatmintázatot, beleértve az 
 
 Ha az adatai általában meglehetősen instabilak, és nagy mértékben ingadoznak, és ha riasztást szeretne kapni, ha túl stabil, vagy akár egy vonalra vált, akkor a "változási küszöb" beállítás beállítható úgy, hogy az ilyen adatpontok észlelése túl kicsi legyen.
 A részletekért tekintse meg a [anomáliák észlelésének konfigurációit](how-tos/configure-metrics.md#anomaly-detection-methods) .
+
+### <a name="how-to-set-up-email-settings-and-enable-alerting-by-email"></a>E-mail-beállítások beállítása és a riasztások engedélyezése e-mailben?
+
+1.  Az előfizetés-rendszergazda vagy erőforráscsoport-rendszergazdai jogosultsággal rendelkező felhasználónak meg kell nyitnia a Azure Portalban létrehozott metrikai tanácsadói erőforrást, és ki kell választania a **hozzáférés-vezérlés (iam)** lapot. 
+2.  Válassza a **szerepkör-hozzárendelések hozzáadása** lehetőséget
+3.  Válasszon egy szerepkört **Cognitive Services metrikai tanácsadó rendszergazdájának** , válassza ki a fiókját az alábbi képen.
+4.  Kattintson a **Save (Mentés** ) gombra, és a rendszer sikeresen felvette a metrikák Advisor-erőforrás rendszergazdájaként. Vegye figyelembe, hogy a fenti műveleteket az előfizetés rendszergazdája vagy az erőforráscsoport rendszergazdája hajthatja végre. 
+
+:::image type="content" source="media/access-control.png" alt-text="Hozzáférés-vezérlés (IAM) menü oldal, a szerepkör-hozzárendelés hozzáadása lehetőséggel, majd egy olyan mező, amely hozzáférést rendel a kiválasztott felhasználóhoz Cognitive Services metrikai tanácsadói rendszergazda hozzáférési szerepkörével, majd a kiválasztott felhasználói felület Save (Mentés) gombjára kattintva megjelenítheti a felhasználók keresésének lépéseit, és adott szintű hozzáférési engedélyeket adhat hozzá." lightbox="media/access-control.png":::
+
+
+5.  Az engedélyek propagálásához akár egy percet is igénybe vehet. Ezután válassza ki a mérőszámok tanácsadó munkaterületét, majd a bal oldali navigációs panelen válassza az **e-mail beállítás** lehetőséget. Adja meg a szükséges elemeket, különösen az SMTP-hez kapcsolódó adatokat. 
+6.  Válassza a **Mentés** lehetőséget, majd az e-mail-konfigurációt. A közel valós idejű riasztásokhoz új hookokat hozhat létre, és előfizethet a metrikus rendellenességekre. 
 
 ## <a name="advanced-concepts"></a>Speciális fogalmak
 
@@ -127,7 +140,7 @@ A teljes összegtől kezdődően `Response latency` a mérőszámot a és a ért
 
 A metrikus tanácsadóban a felhasználók bármilyen elérési utat megadhatnak a hierarchikus topológia egyik csomópontjának a részletezéséhez vagy összesítéséhez. Pontosabban a hierarchikus topológia egy irányított aciklikus gráf, nem pedig fastruktúra. Az összes lehetséges dimenzió kombinációból álló teljes hierarchikus topológia a következőhöz hasonló: 
 
-:::image type="content" source="media/dimension-combinations-view.png" alt-text="Üzenet, ha már létezik egy F0-erőforrás" lightbox="media/dimension-combinations-view.png":::
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="hierarchikus topológiai diagram, amely több összekapcsolási csúcspontot és éleket tartalmaz, amelyek több, a (z), DC és M számú dimenzióval rendelkeznek, és a megfelelő számok 1-től 6-ig terjednek." lightbox="media/dimension-combinations-view.png":::
 
 Elméletileg, ha a dimenzióban eltérő értékek szerepelnek, a dimenziónak eltérő értékekkel kell rendelkezniük, `Service` `Ls` és a `Data center` `Ldc` dimenziónak `Machine` `Lm` eltérő értékekkel kell rendelkezniük, akkor `(Ls + 1) * (Ldc + 1) * (Lm + 1)` a hierarchikus topológiában lehetnek dimenzió-kombinációk. 
 

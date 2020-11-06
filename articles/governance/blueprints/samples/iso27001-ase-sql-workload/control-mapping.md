@@ -1,20 +1,20 @@
 ---
 title: ISO 27001-es bekészítés/SQL munkaterhelés-terv minta-vezérlők
 description: Az ISO 27001 App Service Environment/SQL Database munkaterhelés tervezetének vezérlése a Azure Policy és az Azure RBAC.
-ms.date: 07/13/2020
+ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: 662e5dce9c58cec3be36c3e492d7231ed0e83939
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 438f2af05e0c499e9f002b501b97e291705cee9a
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929319"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420410"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Az ISO 27001-es beosztási/SQL-számítási terv leképezésének vezérlése minta
 
 A következő cikk azt ismerteti, hogyan mutatja be az Azure az ISO 27001-es és az SQL-munkaterhelési terv mintáját az ISO 27001-vezérlőkhöz. További információ a vezérlőelemekről: [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 
-A következő leképezések az **ISO 27001:2013** -vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután megkeresheti és kiválaszthatja az ** \[ \] ISO 27001:2013-es auditot, és telepítheti a speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
+A következő leképezések az **ISO 27001:2013** -vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután megkeresheti és kiválaszthatja az **\[ \] ISO 27001:2013-es auditot, és telepítheti a speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem egy-az-egyhez vagy egy teljes egyezés egy vezérlőelem és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md).
@@ -37,8 +37,6 @@ Az Azure [SQL sebezhetőség-értékelő szolgáltatása](../../../../azure-sql/
 Az Azure Azure [szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../../../role-based-access-control/overview.md) valósít meg az Azure-erőforrásokhoz hozzáférő felhasználók kezeléséhez. Ez a terv az Azure-erőforrásokhoz való hozzáférés szabályozását teszi lehetővé a hét [Azure Policy](../../../policy/overview.md) definíció kiosztásával. Ezek a házirendek olyan erőforrástípusok és konfigurációk használatát naplózzák, amelyek lehetővé tehetik az erőforrásokhoz való hozzáférést.
 A szabályzatok megsértése miatti erőforrások megismerése segíthet az Azure-erőforrások elérését engedélyező, a jogosult felhasználókra korlátozódó kijavítási műveletek elvégzésében.
 
-- Előfeltételek telepítése a jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózásához
-- A jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózásának előfeltételei üzembe helyezése
 - Olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekhez jelszó nélküli fiók tartozik
 - A Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik a távoli kapcsolatokat jelszavak nélküli fiókokból
 - A Storage-fiókokat át kell telepíteni az új Azure Resource Manager erőforrásokra
@@ -65,7 +63,6 @@ Ez a terv három [Azure Policy](../../../policy/overview.md) definíciót rendel
 - Az MFA-t engedélyezni kell az előfizetésre vonatkozó olvasási engedéllyel rendelkező fiókokon
 - Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában
 - Olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
-- A passwd fájl engedélyeivel nem rendelkező linuxos virtuális gépek naplózásához szükséges előfeltételek központi telepítése 0644
 
 ## <a name="a925-review-of-user-access-rights"></a>A. 9.2.5-áttekintés a felhasználói hozzáférési jogosultságokról
 
@@ -100,11 +97,6 @@ Ez a terv segít kikényszeríteni az erős jelszavakat olyan 10 [Azure Policy](
 - Olyan Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek legalább 1 napos jelszóval
 - A Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
 - A korábbi 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése
-- A jelszó bonyolultsága beállítással nem rendelkező Windows rendszerű virtuális gépek naplózásához szükséges előfeltételek központi telepítése
-- A maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózási előfeltételeinek központi telepítése 70 nap
-- A minimális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózásához szükséges előfeltételek központi telepítése
-- Előfeltételek telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakternél
-- Előfeltételek telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>A. 10.1.1 szabályzat a titkosítási vezérlők használatára
 
@@ -114,7 +106,6 @@ Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási kon
 - függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
 - A webalkalmazás csak HTTPS protokollon keresztül érhető el
 - Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
-- A jelszavakat nem tároló Windows rendszerű virtuális gépek naplózásának előfeltételei a visszafejthető titkosítás használatával
 - A jelszavakat visszafejthető titkosítással nem tároló Windows rendszerű virtuális gépekről származó naplózási eredmények megjelenítése
 - A lemezes titkosítást a virtuális gépeken kell alkalmazni
 - Az Automation-fiók változóit titkosítani kell
@@ -193,7 +184,7 @@ A terv segítségével gondoskodhat arról, hogy az Azure-szolgáltatásokkal va
 - Csak a Redis-hez készült Azure cache biztonságos kapcsolatainak engedélyezése szükséges
 - Engedélyezni kell a tárfiókokba történő biztonságos átvitelt
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette az ISO 27001 App Service Environment/SQL Database munkaterhelés tervezetének vezérlési leképezését, az alábbi cikkekben megismerheti az architektúrát és a minta üzembe helyezésének módját:
 

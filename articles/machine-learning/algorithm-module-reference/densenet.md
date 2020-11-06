@@ -1,7 +1,7 @@
 ---
 title: DenseNet
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan hozhat létre képbesorolási modellt a DenseNet algoritmus használatával.
+description: Ismerje meg, hogy a Azure Machine Learning Designer DenseNet moduljának használatával hogyan hozhat létre képbesorolási modellt a DenseNet algoritmus használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d21c7443f6b30d0b7d6e8295c0c9b060a80d9a62
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536630"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421328"
 ---
 # <a name="densenet"></a>DenseNet
 
@@ -35,11 +35,11 @@ A DenseNet kapcsolatos további információkért tekintse meg a kutatási papí
 
 1.  Adja hozzá a **DenseNet** modult a folyamathoz a tervezőben.  
 
-2.  A **modell neve**mezőben adja meg egy adott DenseNet-struktúra nevét, és válasszon a támogatott DenseNet közül: "densenet121", "densenet161", "densenet169", "densenet201".
+2.  A **modell neve** mezőben adja meg egy adott DenseNet-struktúra nevét, és válasszon a támogatott DenseNet közül: "densenet121", "densenet161", "densenet169", "densenet201".
 
-3.  Az előre **betanított**beállításnál válassza ki, hogy a ImageNet-on előzetesen képzett modellt kíván-e használni. Ha be van jelölve, a modell finomhangolása a kiválasztott előre betanított modell alapján végezhető el. Ha nincs kiválasztva, a kiképzést elvégezheti a semmiből.
+3.  Az előre **betanított** beállításnál válassza ki, hogy a ImageNet-on előzetesen képzett modellt kíván-e használni. Ha be van jelölve, a modell finomhangolása a kiválasztott előre betanított modell alapján végezhető el. Ha nincs kiválasztva, a kiképzést elvégezheti a semmiből.
 
-4.  A **memória hatékonysága**beállításnál megadhatja, hogy az ellenőrzőpontot használja-e, ami sokkal nagyobb memória-hatékony, de lassabb. További információkért tekintse meg a kutatási papírt, a [DenseNets memória-hatékony megvalósítását](https://arxiv.org/pdf/1707.06990.pdf).
+4.  A **memória hatékonysága** beállításnál megadhatja, hogy az ellenőrzőpontot használja-e, ami sokkal nagyobb memória-hatékony, de lassabb. További információkért tekintse meg a kutatási papírt, a [DenseNets memória-hatékony megvalósítását](https://arxiv.org/pdf/1707.06990.pdf).
 
 5.  A **DenseNet** -modul, a képzés és az érvényesítési képadatkészlet-modul kimenetének csatlakoztatása a [Train Pytorch modellhez](train-pytorch-model.md). 
 
@@ -54,11 +54,11 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name (Név)             | Tartomány | Típus    | Alapértelmezett     | Leírás                              |
+| Name             | Tartomány | Típus    | Alapértelmezett     | Leírás                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
-| Modell neve       | Bármelyik   | Mód    | densenet201 | Egy bizonyos DenseNet-struktúra neve     |
-| Imagenet       | Bármelyik   | Logikai | Igaz        | Azt határozza meg, hogy az ImageNet-on előre betanított modellt használ-e |
-| Hatékony memória | Bármelyik   | Logikai | Hamis       | Az ellenőrzőpontok használata, amely sokkal nagyobb memória-hatékonyságot, de lassabb |
+| Modell neve       | Bármely   | Mód    | densenet201 | Egy bizonyos DenseNet-struktúra neve     |
+| Imagenet       | Bármely   | Logikai | Igaz        | Azt határozza meg, hogy az ImageNet-on előre betanított modellt használ-e |
+| Hatékony memória | Bármely   | Logikai | Hamis       | Az ellenőrzőpontok használata, amely sokkal nagyobb memória-hatékonyságot, de lassabb |
 
 ###  <a name="output"></a>Kimenet  
 
@@ -66,6 +66,6 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nem betanított modell | UntrainedModelDirectory | Egy képzetlen DenseNet-modell, amely csatlakoztatható a Pytorch-modellhez. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

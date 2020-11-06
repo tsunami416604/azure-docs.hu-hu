@@ -1,7 +1,7 @@
 ---
 title: 'Poisson-regresszió: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhat létre egy Poisson regressziós modellt a Poisson regressziós modullal.
+description: Megtudhatja, hogyan hozhat létre egy Poisson regressziós modellt a Azure Machine Learning Designer Poisson regressziós moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 91d6d15fc8855b49bece3a7ed903074e716b7ac4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2dfd8b3d919f9eeb3e183135ef543f417c878977
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319419"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420699"
 ---
 # <a name="poisson-regression"></a>Poisson-regresszió
 
@@ -103,6 +103,6 @@ A betanítás befejezése után:
 
 + Ha menteni szeretné a betanított modell pillanatképét, válassza ki a betanítási modult, majd váltson a **kimenet + naplók** lapra a jobb oldali panelen. Kattintson az ikonra az **adatkészlet regisztrálása** elemre.  A mentett modellt megtalálhatja modulként a modul fájában. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

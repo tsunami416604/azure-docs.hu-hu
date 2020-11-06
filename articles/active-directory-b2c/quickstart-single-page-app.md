@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db18c71b09cd9beb58799ad4fbcbc944061153fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6471d1b5a5ad2b8ba34080ae1220872fa0e2e232
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87921758"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421056"
 ---
-# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rövid útmutató: Bejelentkezés beállítása egyoldalas alkalmazáshoz az Azure Active Directory B2C használatával
+# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Gyors útmutató: egyoldalas alkalmazás bejelentkezésének beállítása Azure Active Directory B2C használatával
 
 A Azure Active Directory B2C (Azure AD B2C) biztosítja az alkalmazások, a vállalkozások és az ügyfelek védelmét a Felhőbeli identitások kezelésével. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati és vállalati fiókokon. Ebben a rövid útmutatóban egy egyoldalas alkalmazással és egy közösségi identitásszolgáltatóval fog bejelentkezni, és meghív egy, az Azure AD B2C által védett webes API-t.
 
@@ -29,20 +29,19 @@ A Azure Active Directory B2C (Azure AD B2C) biztosítja az alkalmazások, a vál
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Node.js](https://nodejs.org/en/download/)
 - Facebook-, Google-vagy Microsoft-beli közösségi fiók
-- Mintakód a GitHubról: [Active-Directory-B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+- Mintakód a GitHubról: [MS-Identity-B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)
 
-    [Letöltheti a zip-archívumot](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) vagy klónozást készíthet a tárházból:
+    [Letöltheti a zip-archívumot](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip) vagy klónozást készíthet a tárházból:
 
     ```console
-    git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+    git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
     ```
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 1. Indítsa el a kiszolgálót úgy, hogy futtatja a következő parancsokat a Node.js-parancssorban:
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
     npm install && npm update
     npm start
     ```
@@ -60,7 +59,7 @@ A Azure Active Directory B2C (Azure AD B2C) biztosítja az alkalmazások, a vál
 ## <a name="sign-in-using-your-account"></a>Bejelentkezés saját fiókkal
 
 1. A felhasználói út elindításához válassza a **Bejelentkezés** lehetőséget.
-1. A Azure AD B2C egy Fabrikam nevű fiktív cég bejelentkezési oldalát jeleníti meg a minta webalkalmazáshoz. Ha közösségi identitás-szolgáltatón keresztül szeretne regisztrálni, válassza ki a használni kívánt identitás-szolgáltató gombját.
+1. A Azure AD B2C egy "Fabrikam" nevű fiktív vállalat bejelentkezési oldalát jeleníti meg a minta webalkalmazáshoz. Ha közösségi identitás-szolgáltatón keresztül szeretne regisztrálni, válassza ki a használni kívánt identitás-szolgáltató gombját.
 
     ![Jelentkezzen be vagy regisztráljon az Identity Provider gombjait megjelenítő oldalra](./media/quickstart-single-page-app/sign-in-or-sign-up-spa.png)
 

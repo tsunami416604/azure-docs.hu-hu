@@ -1,18 +1,18 @@
 ---
-title: A IoT csatlakoztatása Plug and Play minta Python-összetevőhöz tartozó eszköz kódja a IoT Hubhoz | Microsoft Docs
-description: Hozzon létre és futtasson IoT Plug and Play minta Python-eszköz kódját, amely több összetevőt használ, és csatlakozik egy IoT hubhoz. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
+title: Oktatóanyag – a IoT Plug and Play minta Python-összetevőhöz tartozó eszköz kódjának csatlakoztatása az Azure IoT Hubhoz | Microsoft Docs
+description: Oktatóanyag – a IoT Plug and Play minta Python-eszköz kódjának létrehozása és futtatása, amely több összetevőt használ, és egy IoT hubhoz csatlakozik. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1b329206dcc41d8f7fcb3874da037f5b57142722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a4130688d479902f7836ae09c4006bb36fc16d2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613662"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421396"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-python"></a>Oktatóanyag: minta IoT csatlakoztatása Plug and Play több összetevőből álló eszköz alkalmazása IoT Hub (Python)
 
@@ -93,7 +93,7 @@ Nyissa meg a *temp_controller_with_thermostats.* a fájlt egy tetszőleges szerk
     - A meghívásával frissíti az összetevők olvasható tulajdonságait `patch_twin_reported_properties` .
 
     - A függvény használatával elindítja a parancsokra vonatkozó kérelmek figyelését `execute_command_listener` . A függvény egy figyelőt állít be a szolgáltatástól érkező parancsokhoz. A figyelő beállításakor a, a `method_name` `user_command_handler` és az opcionális `create_user_response_handler` paramétert adja meg.
-        - Az `method_name` határozza meg a parancs kérését. Ebben a példában a modell meghatározza a parancsok **újraindítását**és a **getMaxMinReport**.
+        - Az `method_name` határozza meg a parancs kérését. Ebben a példában a modell meghatározza a parancsok **újraindítását** és a **getMaxMinReport**.
         - A `user_command_handler` függvény határozza meg, hogy az eszköz mit tegyen, ha parancsot kap.
         - A `create_user_response_handler` függvény létrehoz egy választ, amelyet a rendszer a IoT hub számára fog elküldeni, ha a parancs végrehajtása sikeresen befejeződött. Ez a válasz a portálon tekinthető meg. Ha ez a függvény nincs megadva, a rendszer általános választ kap a szolgáltatásnak.
 
@@ -101,7 +101,7 @@ Nyissa meg a *temp_controller_with_thermostats.* a fájlt egy tetszőleges szerk
 
     - Megkezdi a telemetria küldését a használatával `send_telemetry` . A mintakód egy hurok használatával hívja meg a három telemetria küldési függvényt. Mindegyiket nyolc másodpercenként hívja meg
 
-    - Letiltja az összes figyelőt és feladatot, és a **q** vagy a **q**gomb megnyomásakor kilép a hurokból.
+    - Letiltja az összes figyelőt és feladatot, és a **q** vagy a **q** gomb megnyomásakor kilép a hurokból.
 
 [!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
 

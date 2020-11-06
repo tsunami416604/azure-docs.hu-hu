@@ -1,7 +1,7 @@
 ---
 title: 'Többosztályos neurális hálózat: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használható a többosztályos neurális hálózati modul a Azure Machine Learning egy olyan neurális hálózati modell létrehozásához, amely egy több értékkel rendelkező cél előrejelzésére használható.
+description: Ismerje meg, hogyan használható a többosztályos neurális hálózati modul a Azure Machine Learning Designerben a többosztályos értékeket tartalmazó cél előrejelzéséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 1b5ccc9deb3c11d847cd194992d7972f82a5c160
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4f7f8a7793f31ffbf2099cbfb314fc5097319f5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905292"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421260"
 ---
 # <a name="multiclass-neural-network-module"></a>Többosztályos neurális hálózati modul
 
@@ -40,17 +40,17 @@ Egy adott bemenethez tartozó hálózat kimenetének kiszámításához egy ért
 
 ## <a name="configure-multiclass-neural-network"></a>Többosztályos neurális hálózat konfigurálása
 
-1. Adja hozzá a **Többosztályos neurális hálózati** modult a folyamathoz a tervezőben. Ezt a modult a **besorolás** kategóriában, a **Machine learning**, az **inicializálás**lehetőség alatt találja.
+1. Adja hozzá a **Többosztályos neurális hálózati** modult a folyamathoz a tervezőben. Ezt a modult a **besorolás** kategóriában, a **Machine learning** , az **inicializálás** lehetőség alatt találja.
 
-2. **Oktatói mód létrehozása**: ezzel a beállítással adhatja meg, hogyan kívánja képezni a modellt:
+2. **Oktatói mód létrehozása** : ezzel a beállítással adhatja meg, hogyan kívánja képezni a modellt:
 
-    - **Egyetlen paraméter**: akkor válassza ezt a lehetőséget, ha már tudja, hogyan szeretné konfigurálni a modellt.
+    - **Egyetlen paraméter** : akkor válassza ezt a lehetőséget, ha már tudja, hogyan szeretné konfigurálni a modellt.
 
-    - **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.  
+    - **Paraméter tartománya** : akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.  
 
-3. **Rejtett réteg specifikációja**: válassza ki a létrehozandó hálózati architektúra típusát.
+3. **Rejtett réteg specifikációja** : válassza ki a létrehozandó hálózati architektúra típusát.
 
-    - **Teljes mértékben csatlakoztatott eset**: válassza ezt a lehetőséget, ha az alapértelmezett neurális hálózati architektúrát használó modellt szeretne létrehozni. A többosztályos neurális hálózati modellek esetében az alapértelmezett értékek a következők:
+    - **Teljes mértékben csatlakoztatott eset** : válassza ezt a lehetőséget, ha az alapértelmezett neurális hálózati architektúrát használó modellt szeretne létrehozni. A többosztályos neurális hálózati modellek esetében az alapértelmezett értékek a következők:
 
         - Egy rejtett réteg
         - A kimeneti réteg teljes mértékben csatlakozik a rejtett réteghez.
@@ -61,27 +61,27 @@ Egy adott bemenethez tartozó hálózat kimenetének kiszámításához egy ért
   
    
 
-5. **Rejtett csomópontok száma**: Ez a beállítás lehetővé teszi, hogy testreszabja a rejtett csomópontok számát az alapértelmezett architektúrában. Adja meg a rejtett csomópontok számát. Az alapértelmezett érték egy rejtett réteg, amely 100 csomóponttal rendelkezik.
+5. **Rejtett csomópontok száma** : Ez a beállítás lehetővé teszi, hogy testreszabja a rejtett csomópontok számát az alapértelmezett architektúrában. Adja meg a rejtett csomópontok számát. Az alapértelmezett érték egy rejtett réteg, amely 100 csomóponttal rendelkezik.
 
-6. **A tanulási arány**: az egyes iterációkban végrehajtott lépés méretének meghatározása a javítás előtt. A tanulási ráta nagyobb értéke miatt a modell gyorsabban konvergálhat, de a helyi minimumok túllépése is lehet.
+6. **A tanulási arány** : az egyes iterációkban végrehajtott lépés méretének meghatározása a javítás előtt. A tanulási ráta nagyobb értéke miatt a modell gyorsabban konvergálhat, de a helyi minimumok túllépése is lehet.
 
-7. **Tanulási Ismétlések száma**: Itt adhatja meg, hogy az algoritmus hány alkalommal dolgozza fel a betanítási eseteket.
+7. **Tanulási Ismétlések száma** : Itt adhatja meg, hogy az algoritmus hány alkalommal dolgozza fel a betanítási eseteket.
 
-8. **A kezdeti tanulási súlyok átmérő**: a betanítási folyamat elején határozza meg a csomópontok súlyozását.
+8. **A kezdeti tanulási súlyok átmérő** : a betanítási folyamat elején határozza meg a csomópontok súlyozását.
 
-9. **A lendület: az**előző iterációk csomópontjain való tanulás során alkalmazandó súlyozást határozza meg.
+9. **A lendület: az** előző iterációk csomópontjain való tanulás során alkalmazandó súlyozást határozza meg.
   
-11. **Példák a shuffle**-re: válassza ezt a lehetőséget az ismétlések közötti esetek rendezéséhez.
+11. **Példák a shuffle** -re: válassza ezt a lehetőséget az ismétlések közötti esetek rendezéséhez.
 
     Ha kijelöli ezt a beállítást, a rendszer a folyamat minden egyes futtatásakor pontosan ugyanabban a sorrendben dolgozza fel az eseteket.
 
-12. **Véletlenszerű számú mag**: adjon meg egy, a vetőmagként használandó értéket, ha meg szeretné győződni az azonos folyamaton futó futtatások közötti ismételhetőségről.
+12. **Véletlenszerű számú mag** : adjon meg egy, a vetőmagként használandó értéket, ha meg szeretné győződni az azonos folyamaton futó futtatások közötti ismételhetőségről.
 
 14. A modell betanítása:
 
-    + Ha az **oktatói módot** **egyetlen paraméterként**állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](train-model.md) modult.  
+    + Ha az **oktatói módot** **egyetlen paraméterként** állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](train-model.md) modult.  
   
-    + Ha az **oktatói mód** beállítása **paraméter-tartományra**van beállítva, csatlakoztasson egy címkézett adatkészletet, és a modell betanításához használja a [modell hiperparaméterek beállítása](tune-model-hyperparameters.md).  
+    + Ha az **oktatói mód** beállítása **paraméter-tartományra** van beállítva, csatlakoztasson egy címkézett adatkészletet, és a modell betanításához használja a [modell hiperparaméterek beállítása](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 
@@ -98,6 +98,6 @@ A betanítás befejezése után:
 
 - Ha menteni szeretné a betanított modell pillanatképét, válassza a **kimenetek** fület a **vonat modell** moduljának jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -1,7 +1,7 @@
 ---
 title: 'Kereszt-ellenőrzési modell: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning modell-ellenőrzési modulját a besorolási vagy regressziós modellekre vonatkozó becslések átállításához az adatparticionálással.
+description: A Azure Machine Learning Designerben használja a modell átállítása modult a besorolási vagy regressziós modellekhez tartozó paraméterek becslésének megadásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 63c61b12ad68a3add2e7b40ab0bec38d3c2835e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4099ecf6e6bcc6654391e54292878393fb22914
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898565"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421345"
 ---
 # <a name="cross-validate-model"></a>Modell keresztellenőrzése
 
 Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designerben az Cross validate Model modul. A többértékű *ellenőrzés* a gépi tanulásban gyakran használatos, és az adatkészletek változékonyságát, valamint az ezen adatokat használó modellek megbízhatóságát is felméri.  
 
-A modell keresztbe állítása modul a címkével ellátott adatkészlet bemenetét, valamint egy képzetlen besorolást vagy regressziós modellt használ. Az adatkészletet bizonyos számú részhalmazra osztja (*hajtogatás*), minden egyes foldon létrehoz egy modellt, majd a pontossági statisztikák készletét adja vissza az egyes hajtogatásoknak. Az összes hajtogatás pontossági statisztikájának összehasonlításával értelmezheti az adathalmaz minőségét. Ezután megtudhatja, hogy a modell érzékeny-e az adatváltozásokra.  
+A modell keresztbe állítása modul a címkével ellátott adatkészlet bemenetét, valamint egy képzetlen besorolást vagy regressziós modellt használ. Az adatkészletet bizonyos számú részhalmazra osztja ( *hajtogatás* ), minden egyes foldon létrehoz egy modellt, majd a pontossági statisztikák készletét adja vissza az egyes hajtogatásoknak. Az összes hajtogatás pontossági statisztikájának összehasonlításával értelmezheti az adathalmaz minőségét. Ezután megtudhatja, hogy a modell érzékeny-e az adatváltozásokra.  
 
 A Cross Validation Model az előre jelzett eredményeket és az adatkészlethez tartozó valószínűségeket is visszaadja, így az előrejelzések megbízhatóságát is kiértékelheti.  
 
@@ -30,7 +30,7 @@ A Cross Validation Model az előre jelzett eredményeket és az adatkészlethez 
 
    Az algoritmus alapértelmezett értéke 10, ha korábban még nem particionálta az adatkészletet. Ha az adatkészletet más számú bedobásra szeretné osztani, használhatja a [partíció és a minta](partition-and-sample.md) modult, és jelezheti, hogy hány hajtogatást használ.  
 
-2.  A modul az 1. hajtogatott adategységet az ellenőrzéshez használja. (Ezt néha a *Holdout Foldnak*is nevezik.) A modul a fennmaradó ráncokat használja a modell betanításához. 
+2.  A modul az 1. hajtogatott adategységet az ellenőrzéshez használja. (Ezt néha a *Holdout Foldnak* is nevezik.) A modul a fennmaradó ráncokat használja a modell betanításához. 
 
     Ha például öt betöltést hoz létre, a modul öt modellt hoz létre a kereszt-ellenőrzés során. A modul az egyes modelleket az adatmennyiségek négy egyötödét használva hajtja majd be. Teszteli az egyes modelleket a fennmaradó egy ötödik oldalon.  
 
@@ -68,7 +68,7 @@ Ebben a forgatókönyvben a modellt többek között a modell betanításával �
     > Nem kell betanítania a modellt, mert a kereszt-ellenőrzési modell automatikusan betanítja a modellt a kiértékelés részeként.  
 3.  A kereszt-ellenőrzési modell **adatkészletének** portjához csatlakoztasson bármely címkézett betanítási adatkészletet.  
 
-4.  A kereszt-ellenőrzési modell jobb oldali paneljén kattintson az **oszlop szerkesztése**elemre. Válassza ki azt az egyetlen oszlopot, amely tartalmazza a osztály címkéjét vagy a kiszámítható értéket. 
+4.  A kereszt-ellenőrzési modell jobb oldali paneljén kattintson az **oszlop szerkesztése** elemre. Válassza ki azt az egyetlen oszlopot, amely tartalmazza a osztály címkéjét vagy a kiszámítható értéket. 
 
 5. Állítsa be a **véletlenszerű mag** paraméter értékét, ha meg szeretné ismételni a több ellenőrzés eredményét egymást követő futtatásokban ugyanazon az adategységen.  
 
@@ -84,7 +84,7 @@ Az összes iteráció befejezése után a Cross validate Model a teljes adatkés
 
 A modul első kimenete tartalmazza az egyes sorokhoz tartozó forrásadatokat, valamint az előre jelzett értékeket és a kapcsolódó valószínűségeket. 
 
-Az eredmények megtekintéséhez a folyamaton kattintson a jobb gombbal a modell keresztre ellenőrzése modulra. Válassza ki a **pontozásos eredmények megjelenítése**elemet.
+Az eredmények megtekintéséhez a folyamaton kattintson a jobb gombbal a modell keresztre ellenőrzése modulra. Válassza ki a **pontozásos eredmények megjelenítése** elemet.
 
 | Új oszlop neve      | Leírás                              |
 | -------------------- | ---------------------------------------- |
@@ -98,7 +98,7 @@ A második jelentés hajtogatás szerint van csoportosítva. Ne feledje, hogy a 
 
 Ebben a jelentésben a kidobások index érték szerint, növekvő sorrendben vannak felsorolva.  Bármely más oszlop megrendeléséhez mentheti az eredményeket adatkészletként.
 
-Az eredmények megtekintéséhez a folyamaton kattintson a jobb gombbal a modell keresztre ellenőrzése modulra. Válassza ki **a kiértékelési eredmények megjelenítése kidobással**lehetőséget.
+Az eredmények megtekintéséhez a folyamaton kattintson a jobb gombbal a modell keresztre ellenőrzése modulra. Válassza ki **a kiértékelési eredmények megjelenítése kidobással** lehetőséget.
 
 
 |Oszlop neve| Leírás|
@@ -109,9 +109,9 @@ Az eredmények megtekintéséhez a folyamaton kattintson a jobb gombbal a modell
 
 A modul a következő metrikákat is tartalmazza a kiértékeléshez használt modell típusától függően: 
 
-+ **Besorolási modellek**: precizitás, visszahívás, F-pontszám, AUC, pontosság  
++ **Besorolási modellek** : precizitás, visszahívás, F-pontszám, AUC, pontosság  
 
-+ **Regressziós modellek**: abszolút hiba, legfelső szintű négyzetes hiba, relatív abszolút hiba, relatív négyzetes hiba és a meghatározási együttható
++ **Regressziós modellek** : abszolút hiba, legfelső szintű négyzetes hiba, relatív abszolút hiba, relatív négyzetes hiba és a meghatározási együttható
 
 
 ## <a name="technical-notes"></a>Technikai megjegyzések  
@@ -123,7 +123,7 @@ A modul a következő metrikákat is tartalmazza a kiértékeléshez használt m
 + Az adatkészletet nem kell kiosztani képzésre és tesztelési csoportokra, ha a modell pontosságának méréséhez kereszt-érvényesítést használ. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

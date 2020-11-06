@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9398fc9ee61bed41cd1e8c227fc4b4068e4b3e69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662256"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420529"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: Ha meglévő Bérlővel rendelkezik
 A Azure AD Connect használatának első lépései a legtöbb esetben feltételezik, hogy új Azure AD-bérlőt használ, és nincsenek felhasználók vagy más objektumok. Ha azonban egy Azure AD-Bérlővel lett elindítva, feltöltve a felhasználókkal és más objektumokkal, és most a kapcsolódást szeretné használni, akkor ez a témakör Önnek szól.
@@ -34,11 +34,11 @@ A helyszínen és a felhőben is kezelheti a felhasználókat. Ennek a konfigur�
 Ha olyan Azure AD-felhasználók felügyeletét kezdte meg, amelyek a helyszíni AD-ben is szerepelnek, és később a kapcsolódást szeretnék használni, akkor további szempontokat is figyelembe kell vennie.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Szinkronizálás meglévő felhasználókkal az Azure AD-ben
-A Azure AD Connect telepítésekor és a szinkronizálás megkezdése után az Azure AD Sync Service (az Azure AD-ben) minden új objektumon bekerül, és megpróbál megkeresni egy meglévő objektumot. Ehhez a folyamathoz három attribútumot kell használni: **userPrincipalName**, **ProxyAddresses**és **sourceAnchor** / **immutableID**. A **userPrincipalName** és a **ProxyAddresses** egyezését a rendszer **puha egyezésnek**nevezzük. A **sourceAnchor** való egyezés a **rögzített egyezés**. A **ProxyAddresses** attribútum csak az **SMTP:** értékkel rendelkező értéket használja, amely az elsődleges e-mail-cím, amelyet a rendszer a kiértékeléshez használ.
+A Azure AD Connect telepítésekor és a szinkronizálás megkezdése után az Azure AD Sync Service (az Azure AD-ben) minden új objektumon bekerül, és megpróbál megkeresni egy meglévő objektumot. Ehhez a folyamathoz három attribútumot kell használni: **userPrincipalName** , **ProxyAddresses** és **sourceAnchor** / **immutableID**. A **userPrincipalName** és a **ProxyAddresses** egyezését a rendszer **puha egyezésnek** nevezzük. A **sourceAnchor** való egyezés a **rögzített egyezés**. A **ProxyAddresses** attribútum csak az **SMTP:** értékkel rendelkező értéket használja, amely az elsődleges e-mail-cím, amelyet a rendszer a kiértékeléshez használ.
 
 A egyezés csak a kapcsolatból érkező új objektumok esetében lesz kiértékelve. Ha módosít egy meglévő objektumot, hogy az a fenti attribútumok bármelyikének megfelelő legyen, akkor egy hibaüzenet jelenik meg.
 
-Ha az Azure AD olyan objektumot talál, amelyben az attribútumok értékei megegyeznek egy olyan objektum esetében, amely a kapcsolatból származik, és már megtalálható az Azure AD-ben, akkor az Azure AD-beli objektumot a kapcsolat veszi át. A korábban felhőben felügyelt objektum a helyszínen felügyelt van megjelölve. Az Azure AD-ben a helyszíni AD értékkel rendelkező összes attribútum felülíródik a helyszíni értékkel. A kivétel az, amikor egy attribútumnak van egy **Null** értékű értéke a helyszínen. Ebben az esetben az Azure AD-beli érték marad, de továbbra is csak a helyszínen módosítható egy másikra.
+Ha az Azure AD olyan objektumot talál, amelyben az attribútumok értékei megegyeznek egy olyan objektum esetében, amely a kapcsolatból származik, és már megtalálható az Azure AD-ben, akkor az Azure AD-beli objektumot a kapcsolat veszi át. A korábban felhőben felügyelt objektum a helyszínen felügyelt van megjelölve. Az Azure AD-ben a helyszíni AD értékkel rendelkező összes attribútum felülíródik a helyszíni értékkel.
 
 > [!WARNING]
 > Mivel az Azure AD összes attribútumát felülírja a helyszíni érték, győződjön meg arról, hogy a helyszínen található a megfelelő adatközpont. Ha például csak a felügyelt e-mail-cím szerepel a Microsoft 365ban, és nem tartja naprakészen a helyszíni AD DSban, akkor az Azure AD-ban vagy Microsoft 365ban nem jelennek meg az AD DSban található értékek.
@@ -74,5 +74,5 @@ Néhány ügyfél csak felhőalapú megoldást indít az Azure AD-vel, és nem r
 
 Ha az egyetlen ok, amiért a helyszíni AD hozzáadását tervezi a LOBs (üzletági alkalmazások) támogatásához, érdemes lehet inkább az [Azure ad tartományi szolgáltatásokat](../../active-directory-domain-services/index.yml) használni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

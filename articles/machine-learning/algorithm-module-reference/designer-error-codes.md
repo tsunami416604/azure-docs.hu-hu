@@ -1,7 +1,7 @@
 ---
 title: A Designer modul hibáinak elhárítása
 titleSuffix: Azure Machine Learning
-description: A modul hibakódjának hibakeresése Azure Machine Learning Designerben
+description: Ismerje meg, hogyan olvashatja el és elháríthatja az automatizált modul hibakódját a Azure Machine Learning Designerben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323779"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420835"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>A tervezőhöz tartozó kivételek és hibakódok
 
@@ -357,7 +357,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 ## <a name="error-0018"></a>0018 hiba  
  Kivétel történik, ha a bemeneti adatkészlet érvénytelen.  
 
-**Megoldás:** Ez a hiba Azure Machine Learning több kontextusban is megjelenhet, így nincs egyetlen megoldás. Általánosságban a hiba azt jelzi, hogy a modulba bemenetként megadott adatok helytelen számú oszlopot tartalmaz, vagy az adattípus nem felel meg a modul követelményeinek. Például:  
+**Megoldás:** Ez a hiba Azure Machine Learning több kontextusban is megjelenhet, így nincs egyetlen megoldás. Általánosságban a hiba azt jelzi, hogy a modulba bemenetként megadott adatok helytelen számú oszlopot tartalmaz, vagy az adattípus nem felel meg a modul követelményeinek. Ilyenek többek között:  
 
 -   A modulhoz címke típusú oszlopra van szükség, de az oszlop nem jelölésként van megjelölve, vagy még nem jelölt ki felirat oszlopot.  
   
@@ -439,7 +439,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 ## <a name="error-0022"></a>0022 hiba  
  Kivétel történik, ha a bemeneti adatkészlet kiválasztott oszlopainak száma nem egyezik a várt számmal.  
 
- Ez a hiba Azure Machine Learning akkor fordulhat elő, ha az alárendelt modulnak vagy műveletnek adott számú oszlopot vagy bemenetet kell használnia, és túl kevés vagy túl sok oszlopot vagy bemenetet adott meg. Például:  
+ Ez a hiba Azure Machine Learning akkor fordulhat elő, ha az alárendelt modulnak vagy műveletnek adott számú oszlopot vagy bemenetet kell használnia, és túl kevés vagy túl sok oszlopot vagy bemenetet adott meg. Ilyenek többek között:  
 
 -   Egyetlen címkét tartalmazó oszlopot vagy kulcs oszlopot kell megadnia, és véletlenül több oszlopot is kiválasztott.  
   

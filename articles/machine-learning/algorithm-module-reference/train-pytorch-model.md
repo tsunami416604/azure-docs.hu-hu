@@ -1,7 +1,7 @@
 ---
 title: Pytorch-modell betanítása
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhatja ki a pytorch-modellt teljesen vagy Finetune.
+description: A Azure Machine Learning Designerben a Train Pytorch models modullal kitaníthatja a modelleket, vagy megkezdheti a meglévő modellek finomhangolását.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d88069f33995bdbe9dd479afe9a4e72ab9939b6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439097"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420665"
 ---
 # <a name="train-pytorch-model"></a>Pytorch-modell betanítása
 
@@ -24,12 +24,12 @@ Ez a cikk azt ismerteti, hogyan használható a **Pytorch Model** modul a Azure 
 
 1. Adja hozzá a [DenseNet](densenet.md) modult vagy a [ResNet](resnet.md) a folyamat piszkozatához a tervezőben.
 
-2. Adja hozzá a **Train Pytorch Model** modult a folyamathoz. Ez a modul a **modell betanítása** kategóriában található. Bontsa ki a **vonat**elemet, majd húzza a **vonat Pytorch modell** modult a folyamatba.
+2. Adja hozzá a **Train Pytorch Model** modult a folyamathoz. Ez a modul a **modell betanítása** kategóriában található. Bontsa ki a **vonat** elemet, majd húzza a **vonat Pytorch modell** modult a folyamatba.
 
    > [!NOTE]
    > A **Pytorch Model** modul a nagyméretű adatkészletek esetében jobb, ha **GPU** típusú számítási kapacitást futtat, ellenkező esetben a folyamat sikertelen lesz. A modul jobb oldali ablaktábláján kiválaszthatja a számítási lehetőséget, ha **más számítási célt használ**.
 
-3.  A bal oldali bemeneten csatoljon egy nem betanított modellt. Csatolja a betanítási adatkészletet és az érvényesítési adatkészletet a **Pytorch-modell**középső és jobb oldali bemenetéhez.
+3.  A bal oldali bemeneten csatoljon egy nem betanított modellt. Csatolja a betanítási adatkészletet és az érvényesítési adatkészletet a **Pytorch-modell** középső és jobb oldali bemenetéhez.
 
     A nem betanított modell esetében olyan pytorch modellnek kell lennie, mint a DenseNet; Ellenkező esetben a rendszer a "InvalidModelDirectoryError"-et fogja dobni.
 
@@ -37,17 +37,17 @@ Ez a cikk azt ismerteti, hogyan használható a **Pytorch Model** modul a Azure 
 
     A betanítási adatkészlet és az érvényesítési adatkészlet azonos címkével rendelkezik, ellenkező esetben a rendszer InvalidDatasetError fog dobni.
 
-4.  A **korszakok**esetében határozza meg, hogy hány alapértéket szeretne betanítani. A teljes adatkészlet minden alapkorszakban meg lesz ismételve, alapértelmezés szerint 5.
+4.  A **korszakok** esetében határozza meg, hogy hány alapértéket szeretne betanítani. A teljes adatkészlet minden alapkorszakban meg lesz ismételve, alapértelmezés szerint 5.
 
-5.  A **Batch-méret**beállításnál határozza meg, hogy hány példányt szeretne betanítani egy kötegbe, alapértelmezés szerint 16.
+5.  A **Batch-méret** beállításnál határozza meg, hogy hány példányt szeretne betanítani egy kötegbe, alapértelmezés szerint 16.
 
-6.  A **tanulási arány**mezőben határozza meg a *képzési arány*értékét. A tanulási arány értéke határozza meg a modell minden egyes tesztelésekor és javításakor használt lépés méretét.
+6.  A **tanulási arány** mezőben határozza meg a *képzési arány* értékét. A tanulási arány értéke határozza meg a modell minden egyes tesztelésekor és javításakor használt lépés méretét.
 
     A sebesség csökkentésével gyakrabban teszteli a modellt, és azzal a kockázattal jár, hogy egy helyi fennsíkon fog elakadni. A lépés elvégzésével megközelítheti a valódi minimumokat, és így gyorsabban is megoszthatja őket. Alapértelmezés szerint 0,001.
 
-7.  **Véletlenszerű vetőmag**esetén szükség esetén adjon meg egy egész számot, amelyet magként kíván használni. A magok használata ajánlott, ha biztosítani szeretné a kísérletek reprodukálhatóságát a futtatások között.
+7.  **Véletlenszerű vetőmag** esetén szükség esetén adjon meg egy egész számot, amelyet magként kíván használni. A magok használata ajánlott, ha biztosítani szeretné a kísérletek reprodukálhatóságát a futtatások között.
 
-8.  **Türelmi**idő esetén azt határozza meg, hogy hány alapértéket kell leállítani, ha az érvényesítési veszteség nem csökken egymás után. Alapértelmezés szerint 3.
+8.  **Türelmi** idő esetén azt határozza meg, hogy hány alapértéket kell leállítani, ha az érvényesítési veszteség nem csökken egymás után. Alapértelmezés szerint 3.
 
 9.  A folyamat elküldése. Ha az adatkészlet mérete nagyobb, akkor eltarthat egy darabig, és a GPU-számítás javasolt.
 
@@ -66,12 +66,12 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name (Név)          | Tartomány            | Típus    | Alapértelmezett | Leírás                              |
+| Name          | Tartomány            | Típus    | Alapértelmezett | Leírás                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Korszakok        | >0               | Egész szám | 5       | A címke vagy eredmény oszlopot tartalmazó oszlop kiválasztása |
 | Köteg mérete    | >0               | Egész szám | 16      | Egy kötegbe tartozó példányok számának betanítása   |
-| Tanulási sebesség | >= Double. Epszilon | Lebegőpontos értékek   | 0,001   | A sztochasztikus gradiens elsüllyedés optimalizálásának kezdeti tanulási díja. |
-| Véletlenszerű mag   | Bármelyik              | Egész szám | 1       | A modell által használt véletlenszerű számú generátor magja. |
+| Tanulási sebesség | >= Double. Epszilon | Float   | 0,001   | A sztochasztikus gradiens elsüllyedés optimalizálásának kezdeti tanulási díja. |
+| Véletlenszerű mag   | Bármely              | Egész szám | 1       | A modell által használt véletlenszerű számú generátor magja. |
 | Türelem      | >0               | Egész szám | 3       | Hány korszakot kell korán leállítani   |
 
 ###  <a name="outputs"></a>Kimenetek  
@@ -80,7 +80,7 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 | ------------- | -------------- | ------------- |
 | Betanított modell | ModelDirectory | Betanított modell |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

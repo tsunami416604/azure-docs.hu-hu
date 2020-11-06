@@ -1,6 +1,6 @@
 ---
 title: Algoritmusokra és modulokra vonatkozó referenciák
-description: A Azure Machine Learning Designerben elérhető modulok ismertetése
+description: Ismerje meg a saját gépi tanulási projektek létrehozásához használható Azure Machine Learning Designer modulokat.
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 9a2e21696409c320b89d1fed54fefad953b955e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 998f9ef7bddfd988dc0af8183fb9c000bf8c79e7
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886400"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421294"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Algoritmus & Azure Machine Learning Designer modul-hivatkozása
 
@@ -55,8 +55,8 @@ Az algoritmusok kiválasztásával kapcsolatos segítségért lásd:
 | Modell pontozása és kiértékelése | Mérje fel a betanított modell pontosságát. | [Átalakítás alkalmazása](apply-transformation.md) <br/> [Adatok hozzárendelése fürtökhöz](assign-data-to-clusters.md) <br/> [Modell keresztellenőrzése](cross-validate-model.md) <br/> [Modell értékelése](evaluate-model.md) <br/> [Képmodell pontozása](score-image-model.md) <br/> [Relevanciamodell](score-model.md) |
 | Python-nyelv | Kód írása és beágyazása modulba a Python és a folyamat integrálásához. | [Python-modell létrehozása](create-python-model.md) <br/> [Python-szkript futtatása](execute-python-script.md) |
 | R nyelv | Kód írása és beágyazása egy modulba az R és a folyamat integrálásához. | [R-szkript végrehajtása](execute-r-script.md) |
-| Szövegelemzés | Speciális számítási eszközöket biztosít a strukturált és strukturálatlan szöveggel való munkához. |  [Szó konvertálása vektorrá](convert-word-to-vector.md) <br/> [N-Gram-funkciók kinyerése szövegből](extract-n-gram-features-from-text.md) <br/> [Funkciókivonatolás](feature-hashing.md) <br/> [Szöveg előfeldolgozása](preprocess-text.md) <br/> [Rejtett Dirichlet-lefoglalás](latent-dirichlet-allocation.md) <br/> [Vowpal Wabbit modell pontozása](score-vowpal-wabbit-model.md) <br/> [Vowpal Wabbit modell betanítása](train-vowpal-wabbit-model.md)|
-| Számítógépes látástechnológia | Rendszerkép-adatok előfeldolgozása és rendszerkép-felismeréssel kapcsolatos modulok. |  [Képátalakítás alkalmazása](apply-image-transformation.md) <br/> [Átalakítás képkönyvtárrá](convert-to-image-directory.md) <br/> [Képátalakítás indítása](init-image-transformation.md) <br/> [Képkönyvtár felosztása](split-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
+| Text Analytics | Speciális számítási eszközöket biztosít a strukturált és strukturálatlan szöveggel való munkához. |  [Szó konvertálása vektorrá](convert-word-to-vector.md) <br/> [N-Gram-funkciók kinyerése szövegből](extract-n-gram-features-from-text.md) <br/> [Funkciókivonatolás](feature-hashing.md) <br/> [Szöveg előfeldolgozása](preprocess-text.md) <br/> [Rejtett Dirichlet-lefoglalás](latent-dirichlet-allocation.md) <br/> [Vowpal Wabbit modell pontozása](score-vowpal-wabbit-model.md) <br/> [Vowpal Wabbit modell betanítása](train-vowpal-wabbit-model.md)|
+| Computer Vision | Rendszerkép-adatok előfeldolgozása és rendszerkép-felismeréssel kapcsolatos modulok. |  [Képátalakítás alkalmazása](apply-image-transformation.md) <br/> [Átalakítás képkönyvtárrá](convert-to-image-directory.md) <br/> [Képátalakítás indítása](init-image-transformation.md) <br/> [Képkönyvtár felosztása](split-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
 | Ajánlás | Build-javaslatok modelljei. | [Ajánló értékelése](evaluate-recommender.md) <br/> [SVD-ajánló pontozása](score-svd-recommender.md) <br/> [Wide and Deep ajánló pontozása](score-wide-and-deep-recommender.md)<br/> [SVD-ajánló betanítása](train-SVD-recommender.md) <br/> [Wide and Deep ajánló betanítása](train-wide-and-deep-recommender.md)|
 | Rendellenességek észlelése | Hozzon létre anomáliák észlelési modelljeit. | [PCA-alapú rendellenesség-észlelés](pca-based-anomaly-detection.md) <br/> [Rendellenesség-észlelési modell betanítása](train-anomaly-detection-model.md) |
 
@@ -69,6 +69,6 @@ Ismerkedjen meg a [webszolgáltatások moduljaival](web-service-input-output.md)
 
 Ismerje meg, hogy milyen [hibaüzenetek és kivétel-kódok](designer-error-codes.md) merülhetnek fel a Azure Machine learning Designer moduljaival.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: modell létrehozása Designerben az automatikus árak előrejelzéséhez](../tutorial-designer-automobile-price-train-score.md)

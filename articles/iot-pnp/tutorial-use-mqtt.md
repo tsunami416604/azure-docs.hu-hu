@@ -1,20 +1,20 @@
 ---
-title: A MQTT használata IoT Plug and Play eszköz ügyfelének létrehozásához | Microsoft Docs
-description: A MQTT protokoll használatával hozzon létre egy IoT Plug and Play-eszköz ügyfelet az Azure IoT-eszköz SDK-k használata nélkül
+title: Oktatóanyag – Azure IoT-Plug and Play eszköz-ügyfél létrehozása a MQTT használatával | Microsoft Docs
+description: Oktatóanyag – a MQTT protokoll használata közvetlenül egy IoT Plug and Play-ügyfél létrehozásához az Azure IoT-eszköz SDK-k használata nélkül
 author: ericmitt
 ms.author: ericmitt
 ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d0ac0f000b6a096ae3de1f4f00a17b64f1948c1e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046281"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421379"
 ---
-# <a name="use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>A MQTT használata IoT Plug and Play eszköz ügyfelének fejlesztéséhez
+# <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Oktatóanyag – a MQTT használata IoT Plug and Play eszköz ügyfelének fejlesztéséhez
 
 Az Azure IoT-eszközök SDK-k egyikével kell felépíteni a IoT Plug and Play-eszköz ügyfeleit, ha ez egyáltalán lehetséges. Olyan forgatókönyvekben azonban, mint például a memóriában korlátozott eszköz használata, előfordulhat, hogy egy MQTT-függvénytárat kell használnia az IoT hub-vel való kommunikációhoz.
 
@@ -33,12 +33,12 @@ Az oktatóanyag Windows rendszeren történő elvégzéséhez telepítse a köve
 Az *Azure IoT Explorer* eszköz használatával hozzáadhat egy új eszközt a IoT hubhoz. Az IoT hub és az Azure IoT Explorer eszköz konfigurálásakor a [környezet beállítása a IoT-Plug and Play rövid útmutatók és oktatóanyagok számára](set-up-environment.md)készült:
 
 1. Indítsa el az **Azure IoT Explorer** eszközt.
-1. Az **IoT-hubok** lapon válassza az **eszközök megtekintése**ebben a központban lehetőséget.
-1. Az **eszközök** lapon válassza az **+ új**lehetőséget.
+1. Az **IoT-hubok** lapon válassza az **eszközök megtekintése** ebben a központban lehetőséget.
+1. Az **eszközök** lapon válassza az **+ új** lehetőséget.
 1. Hozzon létre egy *My-mqtt-Device* nevű eszközt, amely egy automatikusan létrehozott szimmetrikus kulcsot használ.
 1. Az **eszköz identitása** lapon bontsa ki a **kapcsolati sztring sas-tokenrel elemet**.
-1. Válassza ki a **szimmetrikus kulcsként**használandó **elsődleges kulcsot** , állítsa a lejárati időt 60 percre, majd válassza a **Létrehozás**lehetőséget.
-1. Másolja a generált **sas-jogkivonat kapcsolati karakterláncát**, ezt az értéket később az oktatóanyagban használja.
+1. Válassza ki a **szimmetrikus kulcsként** használandó **elsődleges kulcsot** , állítsa a lejárati időt 60 percre, majd válassza a **Létrehozás** lehetőséget.
+1. Másolja a generált **sas-jogkivonat kapcsolati karakterláncát** , ezt az értéket később az oktatóanyagban használja.
 
 ## <a name="clone-sample-repo"></a>A klónozott minta tárháza
 
@@ -80,7 +80,7 @@ Frissítse a kódot az IoT hub és az eszköz részletes adataival, mielőtt fel
 
 Ha a Visual Studióban szeretné megtekinteni a mintakódt, nyissa meg a *MQTTWin32. SLN* Solution fájlt a *IoTMQTTSample\src\Windows* mappában.
 
-**Megoldáskezelő**kattintson a jobb gombbal a **TelemetryMQTTWin32** projektre, és válassza a **beállítás indítási projektként**lehetőséget.
+**Megoldáskezelő** kattintson a jobb gombbal a **TelemetryMQTTWin32** projektre, és válassza a **beállítás indítási projektként** lehetőséget.
 
 A **TelemetryMQTTWin32** projektben nyissa meg a **MQTT_Mosquitto. cpp** forrásfájlt. Frissítse a kapcsolati adatok definícióit a korábban létrehozott eszköz adataival. Cserélje le a token sztring helyőrzőit a következőre:
 
@@ -96,7 +96,7 @@ Futtassa az alkalmazást (CTRL + F5), néhány másodperc elteltével a követke
 
 Az Azure IoT Explorerben láthatja, hogy az eszköz nem IoT Plug and Play eszköz:
 
-:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="MQTT-minta alkalmazás kimenete":::
+:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="Nem IoT Plug and Play eszköz az Azure IoT Explorerben":::
 
 ### <a name="make-the-device-an-iot-plug-and-play-device"></a>Az eszköz IoT Plug and Play eszközvé tétele
 
@@ -117,11 +117,11 @@ A minta újraépítése és futtatása.
 
 Az eszköz Twin csomag tartalmazza a modell AZONOSÍTÓját:
 
-:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="MQTT-minta alkalmazás kimenete":::
+:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="A modell AZONOSÍTÓjának megtekintése az Azure IoT Explorerben":::
 
 Most már megtekintheti a IoT Plug and Play összetevőjét:
 
-:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="MQTT-minta alkalmazás kimenete":::
+:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="Összetevők megtekintése az Azure IoT Explorerben":::
 
 Mostantól módosíthatja az eszköz kódját a modellben definiált telemetria, tulajdonságok és parancsok megvalósításához. Ha szeretné megtekinteni egy példát a termosztátos eszköz Mosquitto-függvénytár használatával történő megvalósítására, tekintse [meg a MQTT PnP használata az Azure IoTHub szolgáltatással a IOT SDK nélkül](https://github.com/Azure-Samples/IoTMQTTSample/tree/master/src/Windows/PnPMQTTWin32) a githubon.
 
@@ -138,7 +138,7 @@ A következő definíciók az eszköz által az IoT hub-ra való adatküldéshez
 
 A MQTT kapcsolatos további információkért tekintse meg az Azure IoT GitHub-tárház [MQTT-mintáit](https://github.com/Azure-Samples/IoTMQTTSample/) .
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan módosíthat egy MQTT-eszköz ügyfelet a IoT Plug and Play konvenciók követéséhez. A IoT Plug and Play további tudnivalókért lásd:
 

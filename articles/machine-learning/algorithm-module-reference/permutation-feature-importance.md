@@ -1,7 +1,7 @@
 ---
 title: 'A permutáció funkció fontossága: modul leírása'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a permutáció funkció fontossági modulját Azure Machine Learningban, hogy kiszámítsa a funkció változóinak fontossági sorrendjét a betanított modell és a tesztelési adatkészlet alapján.
+description: Ismerje meg, hogy miként használható a permutáció funkció fontossági modulja a tervezőben a szolgáltatás változóinak fontos pontjainak kiszámításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: bddd9a6825899f646a86ae274c539b54156667c5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8ae1e79922cc0f34e8b2d1f253fce5078df286d2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319406"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421243"
 ---
 # <a name="permutation-feature-importance"></a>A permutáció funkció fontossága
 
@@ -44,7 +44,7 @@ A szolgáltatási pontszámok létrehozása megköveteli, hogy már betanított 
 
      A Azure Machine Learning Designer a következő mérőszámokat támogatja, attól függően, hogy egy besorolási vagy regressziós modellt értékel-e:  
 
-    -   **Besorolás**
+    -   **Osztályozás**
 
         Pontosság, pontosság, visszahívás  
 
@@ -67,6 +67,6 @@ A modul által biztosított rangsorok gyakran eltérnek a [szűrésen alapuló f
 
 A különbség oka, hogy a permutáció funkció fontossága nem méri a szolgáltatás és a célérték közötti társítást. Ehelyett rögzíti, hogy az egyes szolgáltatások milyen mértékben befolyásolják a modell előrejelzéseit.
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

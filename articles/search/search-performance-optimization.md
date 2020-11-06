@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 362d5f2046ff4e9ba52dd2e73433cc39e80f7a50
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934956"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420597"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Az Azure-Cognitive Search teljesítményének méretezése
 
@@ -30,7 +30,7 @@ A nagyobb üzembe helyezési erőfeszítések elvégzése előtt győződjön me
 
 1. Kezdje a másodpercenkénti lekérdezések másodpercenkénti számát (QPS), majd fokozatosan növelje a teszt során végrehajtott számot, amíg a lekérdezés késése az előre definiált cél alá nem csökken. Ez egy fontos viszonyítási alap, amely segít a méretezés megtervezésében, mivel alkalmazása növekszik a használat során.
 
-1. Ahol csak lehet, használja újra a HTTP-kapcsolatokat. Ha az Azure Cognitive Search .NET SDK-t használja, ez azt jelenti, hogy fel kell használni egy példány-vagy [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) -példányt, és ha a REST API használja, akkor egyetlen HttpClient kell felhasználnia.
+1. Ahol csak lehet, használja újra a HTTP-kapcsolatokat. Ha az Azure Cognitive Search .NET SDK-t használja, ez azt jelenti, hogy fel kell használni egy példány-vagy [SearchClient](/dotnet/api/azure.search.documents.searchclient) -példányt, és ha a REST API használja, akkor egyetlen HttpClient kell felhasználnia.
 
 1. A lekérdezési kérések lényegének változása, hogy a Keresés az index különböző részein történjen. A változás azért fontos, mert ha folyamatosan hajtja végre ugyanazokat a keresési kéréseket, az adatgyorsítótárazás megkezdi, hogy a teljesítmény jobban nézzen ki, mint a több különböző lekérdezési készlet.
 
@@ -43,7 +43,7 @@ A tesztelési feladatok létrehozásakor az Azure Cognitive Search néhány jell
 + Az Azure Cognitive Search nem futtat indexelési feladatokat a háttérben. Ha a szolgáltatás párhuzamosan kezeli a lekérdezési és indexelési feladatokat, ezt vegye figyelembe az indexelési feladatok bevezetésével a lekérdezési tesztekben, vagy az indexelési feladatok futtatásának időpontjában való futási lehetőségek feltárásával.
 
 > [!Tip]
-> A valós lekérdezési terhelést a Load Testing Tools használatával szimulálhatja. Próbálja meg [betölteni az Azure DevOps,](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) vagy használja az alábbi [alternatívák](/azure/devops/test/load-test/overview?view=azure-devops#alternatives)egyikét.
+> A valós lekérdezési terhelést a Load Testing Tools használatával szimulálhatja. Próbálja meg [betölteni az Azure DevOps,](/azure/devops/test/load-test/get-started-simple-cloud-load-test) vagy használja az alábbi [alternatívák](/azure/devops/test/load-test/overview#alternatives)egyikét.
 
 ## <a name="scale-for-high-query-volume"></a>Méretezés nagy lekérdezési kötethez
 
@@ -119,7 +119,7 @@ Az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) lehet
 
    ![Szolgáltatások – régiók közötti, központi Traffic Manager][3]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az egyes díjszabási csomagokról és szolgáltatásokra vonatkozó korlátozásokról, tekintse meg a [szolgáltatási korlátok](search-limits-quotas-capacity.md)című témakört. A partíció-és replika-kombinációkkal kapcsolatos további tudnivalókért tekintse meg [a kapacitás megtervezése](search-capacity-planning.md) című témakört.
 

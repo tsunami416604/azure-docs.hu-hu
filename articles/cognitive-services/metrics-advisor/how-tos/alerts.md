@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: ab1c07bd7814afb054bb20b77bbc84c1ee9df017
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 30d8fdf99da7a4854db0985bed6256ecd6f7a366
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046791"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420920"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Útmutató: riasztások konfigurálása és értesítések beszerzése Hook használatával
 
@@ -28,7 +28,7 @@ A metrikai tanácsadó három különböző típusú hookot támogat: e-mail-hoo
 ### <a name="email-hook"></a>E-mail Hook
 
 > [!Note]
-> A metrikai tanácsadó erőforrás-rendszergazdáinak be kell állítania az e-mail-beállításokat, és be kell állítani az SMTP-hez kapcsolódó adatokat a metrikai TANÁCSADÓBA, mielőtt a rendszer elküldi a Az erőforráscsoport rendszergazdájának vagy az előfizetés rendszergazdájának legalább egy *Cognitive Services metrikai Advisor rendszergazdai* szerepkört kell rendelnie a metrikai tanácsadó erőforrás hozzáférés-vezérlés lapján. 
+> A metrikai tanácsadó erőforrás-rendszergazdáinak be kell állítania az e-mail-beállításokat, és be kell állítani az SMTP-hez kapcsolódó adatokat a metrikai TANÁCSADÓBA, mielőtt a rendszer elküldi a Az erőforráscsoport rendszergazdájának vagy az előfizetés rendszergazdájának legalább egy *Cognitive Services metrikai Advisor rendszergazdai* szerepkört kell rendelnie a metrikai tanácsadó erőforrás hozzáférés-vezérlés lapján. [További információ az e-mail beállítások konfigurálásáról](../faq.md#how-to-set-up-email-settings-and-enable-alerting-by-email).
 
 E-mail Hook létrehozásához a következő paraméterek érhetők el: 
 
@@ -41,7 +41,7 @@ Az e-mail-Hook az a csatorna, amellyel a rendszer az **e-mailben** megadott e-ma
 | Külső hivatkozás | Opcionális mező, amely lehetővé teszi a testreszabott átirányítást, például a hibaelhárítási megjegyzésekhez. |
 | Testreszabott anomáliák riasztási címe | A title sablon támogatja a,,,,,,, `${severity}` `${alertSettingName}` `${datafeedName}` `${metricName}` `${detectConfigName}` `${timestamp}` `${topDimension}` `${incidentCount}` , `${anomalyCount}`
 
-Miután rákattintott **az OK gombra**, a rendszer létrehoz egy e-mail-hookot. Bármelyik riasztási beállításban használhatja a anomáliák riasztások fogadására. 
+Miután rákattintott **az OK gombra** , a rendszer létrehoz egy e-mail-hookot. Bármelyik riasztási beállításban használhatja a anomáliák riasztások fogadására. 
 
 ### <a name="web-hook"></a>Webes Hook
 
@@ -86,17 +86,17 @@ Az Azure DevOps Hook létrehozásához hozzá kell adnia a következő informác
 ## <a name="add-or-edit-alert-settings"></a>Riasztási beállítások hozzáadása vagy szerkesztése
 
 A metrikák részletei lapon megkeresheti a **riasztási beállítások** szakaszt a metrikák részletei lap bal alsó sarkában. Felsorolja az összes olyan riasztási beállítást, amely a kiválasztott észlelési konfigurációra vonatkozik. Új észlelési konfiguráció létrehozásakor nincs riasztási beállítás, és a rendszer nem küld riasztásokat.  
-A riasztási beállítások módosításához használhatja a **Hozzáadás**, **Szerkesztés** és **Törlés** ikonokat is.
+A riasztási beállítások módosításához használhatja a **Hozzáadás** , **Szerkesztés** és **Törlés** ikonokat is.
 
-:::image type="content" source="../media/alerts/alert-setting.png" alt-text="webhook-létrehozási ablak.":::
+:::image type="content" source="../media/alerts/alert-setting.png" alt-text="Riasztási beállítások menüelem":::
 
 Kattintson a **Hozzáadás** vagy **Szerkesztés** gombra a riasztási beállítások hozzáadására vagy szerkesztésére szolgáló ablak beszerzéséhez.
 
-:::image type="content" source="../media/alerts/edit-alert.png" alt-text="webhook-létrehozási ablak.":::
+:::image type="content" source="../media/alerts/edit-alert.png" alt-text="Riasztási beállítások hozzáadása vagy szerkesztése":::
 
-**Riasztási beállítás neve**: a riasztási beállítás neve. Ekkor megjelenik a riasztás e-mail címe.
+**Riasztási beállítás neve** : a riasztási beállítás neve. Ekkor megjelenik a riasztás e-mail címe.
 
-**Hookok**: a riasztások küldésére szolgáló horgok listája.
+**Hookok** : a riasztások küldésére szolgáló horgok listája.
 
 A fenti képernyőképen feltüntetett szakasz egy észlelési konfiguráció beállításait tartalmazza. Különböző riasztási beállításokat adhat meg a különböző észlelési konfigurációkhoz. Válassza ki a cél konfigurációt az ablak harmadik legördülő listájának használatával. 
 
@@ -106,16 +106,16 @@ A következő egy észlelési konfiguráció szűrési beállításai.
 
 A (z) **riasztása** 4 lehetőséggel rendelkezik a rendellenességek szűréséhez:
 
-* Az **összes adatsorozat rendellenességei**: a riasztásban minden rendellenesség szerepelni fog.         
-* **Adatsorozat-csoportba tartozó rendellenességek**: adatsorozatok szűrése dimenzió értékek alapján. Meghatározott értékek beállítása egyes dimenziók esetében. Az anomáliák csak akkor lesznek felszámítva a riasztásban, ha az adatsorozat megfelel a megadott értéknek.       
-* **Anomáliák a kedvenc adatsorozatában**: csak a kedvencként megjelölt adatsorozat lesz belefoglalva a riasztásba.        |
-* Az **összes sorozat legfontosabb n-ban észlelt rendellenességek**: Ez a szűrő arra az esetre szól, ha csak az a sorozat szerepel, amelynek értéke a legfontosabb n. Visszatekintünk néhány időbélyeget, és megvizsgáljuk, hogy az időbélyegzőn belüli adatsorozat értéke felül van-e az első N. Ha a "Top n" szám nagyobb, mint a megadott szám, akkor a rendszer az anomáliát fogja tartalmazni egy riasztásban.        |
+* Az **összes adatsorozat rendellenességei** : a riasztásban minden rendellenesség szerepelni fog.         
+* **Adatsorozat-csoportba tartozó rendellenességek** : adatsorozatok szűrése dimenzió értékek alapján. Meghatározott értékek beállítása egyes dimenziók esetében. Az anomáliák csak akkor lesznek felszámítva a riasztásban, ha az adatsorozat megfelel a megadott értéknek.       
+* **Anomáliák a kedvenc adatsorozatában** : csak a kedvencként megjelölt adatsorozat lesz belefoglalva a riasztásba.        |
+* Az **összes sorozat legfontosabb n-ban észlelt rendellenességek** : Ez a szűrő arra az esetre szól, ha csak az a sorozat szerepel, amelynek értéke a legfontosabb n. Visszatekintünk néhány időbélyeget, és megvizsgáljuk, hogy az időbélyegzőn belüli adatsorozat értéke felül van-e az első N. Ha a "Top n" szám nagyobb, mint a megadott szám, akkor a rendszer az anomáliát fogja tartalmazni egy riasztásban.        |
 
 A **szűrő anomália lehetőség** egy további szűrő a következő beállításokkal:
 
 - **Súlyosság** : az anomália csak akkor jelenik meg, ha az anomália súlyossága a megadott tartományon belül van.
 - **Késleltetés** : a riasztások kiváltásakor ideiglenesen állítsa le a riasztásokat a következő N pontokban (időszak) lévő rendellenességeknél.
-    - **szundítás típusa** : Ha az **adatsorozat**értékre van állítva, akkor az elindított anomália csak az adatsorozatot jeleníti meg. A **metrika**esetében az egyik aktivált anomália a metrika összes adatsorát kikapcsolja.
+    - **szundítás típusa** : Ha az **adatsorozat** értékre van állítva, akkor az elindított anomália csak az adatsorozatot jeleníti meg. A **metrika** esetében az egyik aktivált anomália a metrika összes adatsorát kikapcsolja.
     - **késleltetési szám** : az a pontok száma (pont), amelynél a Szundi meghalad.
     - **Alaphelyzetbe állítás** : Ha bejelöli, az aktivált anomália csak a következő n egymást követő rendellenességeket fogja késleltetni. Ha a következő adatpontok egyike nem anomália, a rendszer visszaállítja a késleltetést ebből a pontból. Ha nincs kiválasztva, az egyik aktivált anomália a következő n pont (időszak) késleltetését választja, még akkor is, ha az egymást követő adatpontok nem rendellenességek.
 - **érték** (nem kötelező): szűrés érték alapján. A rendszer csak a feltételnek megfelelő pont értékeket fogja tartalmazni. Ha egy másik metrika megfelelő értékét használja, a két metrika dimenziójának nevének konzisztensnek kell lennie.
@@ -134,9 +134,9 @@ Az **operátor** választó az egyes szakaszok logikai kapcsolata, amely meghat�
 |ÉS     | Csak akkor küldjön riasztást, ha egy sorozat megfelel az egyes riasztási szakaszoknak, és az összes adatpont anomália. Ha a metrikák különböző dimenziós névvel rendelkeznek, a rendszer soha nem aktiválja a riasztást.         |
 |OR     | Küldje el a riasztást, ha legalább egy szakasz rendellenességeket tartalmaz.         |
 
-:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="webhook-létrehozási ablak.":::
+:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="Több riasztás beállítási szakaszának operátora":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Anomáliadetektálás beállítása visszajelzés használatával](anomaly-feedback.md)
 - [Incidens diagnosztizálása](diagnose-incident.md).

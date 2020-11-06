@@ -1,7 +1,7 @@
 ---
 title: 'Two-Class neurális hálózat: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning Two-Class neurális hálózati modulját egy olyan neurális hálózati modell létrehozásához, amely csak két értékkel rendelkező cél előrejelzésére használható.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning Two-Class neurális hálózati modulját bináris osztályozó létrehozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 2ad4fc575a6e9d07e4e24c2d570f68edbbea46c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9131a2439facef00cae818bffef38e536a40a2fd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907687"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421158"
 ---
 # <a name="two-class-neural-network-module"></a>Two-Class neurális hálózati modul
 
@@ -22,7 +22,7 @@ Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy olyan neurális hálózati modellt, amely egy olyan cél előrejelzésére használható, amely csak két értékkel rendelkezik.
 
-A neurális hálózatokat használó besorolás felügyelt tanulási módszer, ezért *címkézett adatkészletet*igényel, amely tartalmaz egy címke oszlopot. Használhatja például ezt a neurális hálózati modellt olyan bináris eredmények előrejelzéséhez, mint például az, hogy a betegnek van-e bizonyos betegsége, illetve hogy a gép valószínűleg meghiúsul-e egy adott időszakon belül.  
+A neurális hálózatokat használó besorolás felügyelt tanulási módszer, ezért *címkézett adatkészletet* igényel, amely tartalmaz egy címke oszlopot. Használhatja például ezt a neurális hálózati modellt olyan bináris eredmények előrejelzéséhez, mint például az, hogy a betegnek van-e bizonyos betegsége, illetve hogy a gép valószínűleg meghiúsul-e egy adott időszakon belül.  
 
 A modell meghatározása után betaníthatja azt úgy, hogy címkézett adatkészletet és a modellt bemenetként adja meg a [betanítási modellnek](./train-model.md). A betanított modell ezután felhasználható az új bemenetek értékeinek előrejelzésére.
 
@@ -38,17 +38,17 @@ Egy adott bemenethez tartozó hálózat kimenetének kiszámításához egy ért
   
 ## <a name="how-to-configure"></a>Konfigurálás
 
-1.  Adja hozzá a **kétosztályos neurális hálózati** modult a folyamathoz. Ezt a modult a **besorolás** kategóriában, a **Machine learning**, az **inicializálás**lehetőség alatt találja.  
+1.  Adja hozzá a **kétosztályos neurális hálózati** modult a folyamathoz. Ezt a modult a **besorolás** kategóriában, a **Machine learning** , az **inicializálás** lehetőség alatt találja.  
   
 2.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    -   **Egyetlen paraméter**: akkor válassza ezt a lehetőséget, ha már tudja, hogyan szeretné konfigurálni a modellt.
+    -   **Egyetlen paraméter** : akkor válassza ezt a lehetőséget, ha már tudja, hogyan szeretné konfigurálni a modellt.
 
-    -   **Paraméter tartománya**: Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.  
+    -   **Paraméter tartománya** : Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.  
 
-3.  A **rejtett réteg specifikációja**mezőben válassza ki a létrehozandó hálózati architektúra típusát.  
+3.  A **rejtett réteg specifikációja** mezőben válassza ki a létrehozandó hálózati architektúra típusát.  
   
-    -   **Teljes mértékben csatlakoztatott eset**: az alapértelmezett neurális hálózati architektúrát használja, amelyet a kétosztályos neurális hálózatok határoznak meg a következőképpen:
+    -   **Teljes mértékben csatlakoztatott eset** : az alapértelmezett neurális hálózati architektúrát használja, amelyet a kétosztályos neurális hálózatok határoznak meg a következőképpen:
   
         -   Egy rejtett réteggel rendelkezik.
   
@@ -60,25 +60,25 @@ Egy adott bemenethez tartozó hálózat kimenetének kiszámításához egy ért
   
         -   A csomópontok száma egyenlő az osztályok számával. Kétosztályos neurális hálózat esetén ez azt jelenti, hogy minden bemenetnek a kimeneti réteg két csomópontjának egyikéhez kell tartoznia.
 
-5.  A **tanulás arányának**meghatározásához adja meg az egyes iterációk során végrehajtott lépés méretét a javítás előtt. A tanulási ráta nagyobb értéke miatt a modell gyorsabban konvergálhat, de a helyi minimumok túllépése is lehet.
+5.  A **tanulás arányának** meghatározásához adja meg az egyes iterációk során végrehajtott lépés méretét a javítás előtt. A tanulási ráta nagyobb értéke miatt a modell gyorsabban konvergálhat, de a helyi minimumok túllépése is lehet.
 
-6.  A **tanulási ismétlések számának**megadásával adhatja meg, hogy az algoritmus hány alkalommal dolgozza fel a betanítási eseteket.
+6.  A **tanulási ismétlések számának** megadásával adhatja meg, hogy az algoritmus hány alkalommal dolgozza fel a betanítási eseteket.
 
-7.  **A kezdeti tanulási súlyok átmérőjének**megadásához a tanulási folyamat elején meg kell adni a csomópontok súlyozását.
+7.  **A kezdeti tanulási súlyok átmérőjének** megadásához a tanulási folyamat elején meg kell adni a csomópontok súlyozását.
 
-8.  **A lendülethez**meg kell határoznia az előző iterációk csomópontjain való tanulás során alkalmazandó súlyozást.  
+8.  **A lendülethez** meg kell határoznia az előző iterációk csomópontjain való tanulás során alkalmazandó súlyozást.  
 
 10. Válassza a **shuffle példák** lehetőséget az ismétlések közötti esetek rendezéséhez. Ha kijelöli ezt a beállítást, a rendszer a folyamat minden egyes futtatásakor pontosan ugyanabban a sorrendben dolgozza fel az eseteket.
   
-11. A **véletlenszerű számú magok**esetében adja meg a vetőmagként használandó értéket.
+11. A **véletlenszerű számú magok** esetében adja meg a vetőmagként használandó értéket.
   
      A magok értékének megadásával akkor lehet hasznos, ha biztosítani szeretné az egyazon folyamaton belüli futtatások ismétlődését.  Ellenkező esetben a rendszer egy rendszeróra-értéket használ a magokként, ami némileg eltérő eredményeket eredményezhet a folyamat minden egyes futtatásakor.
   
 13. Vegyen fel egy címkével ellátott adatkészletet a folyamatba, és tanítsa be a modellt:
 
-    + Ha az **oktatói módot** **egyetlen paraméterként**állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](train-model.md) modult.  
+    + Ha az **oktatói módot** **egyetlen paraméterként** állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](train-model.md) modult.  
   
-    + Ha az **oktatói mód** beállítása **paraméter-tartományra**van beállítva, csatlakoztasson egy címkézett adatkészletet, és a modell betanításához használja a [modell hiperparaméterek beállítása](tune-model-hyperparameters.md).  
+    + Ha az **oktatói mód** beállítása **paraméter-tartományra** van beállítva, csatlakoztasson egy címkézett adatkészletet, és a modell betanításához használja a [modell hiperparaméterek beállítása](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 
@@ -99,6 +99,6 @@ A betanítás befejezése után:
 + A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

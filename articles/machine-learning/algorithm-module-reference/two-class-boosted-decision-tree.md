@@ -1,7 +1,7 @@
 ---
 title: 'Two-Class megnövelt döntési fa: modulok referenciája'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning Two-Class növelt döntési famodult egy gépi tanulási modell létrehozásához, amely a megnövelt döntési fák algoritmusán alapul.
+description: Megtudhatja, hogyan hozhat létre bináris osztályozó használatával a tervező Two-Class növelt döntési fájának modulját.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
-ms.openlocfilehash: 833caa0cf264fb49d8b32255f429132cd888c6c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 568cd7b280b8fb65b5f75588a2832631361938dd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907727"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420614"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Two-Class megnövelt döntési fa modul
 
@@ -38,36 +38,36 @@ Ezt a modellt betaníthatja a [betanítási modell](././train-model.md)használa
   
 2.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.
   
-    + **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek adott készletét argumentumként.
+    + **Egyetlen paraméter** : ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek adott készletét argumentumként.
   
-    + **Paraméter tartománya**: Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.
+    + **Paraméter tartománya** : Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.
   
-3.  A **falevelek maximális számának**megadásához adja meg a fában létrehozható terminál-csomópontok (levelek) maximális számát.
+3.  A **falevelek maximális számának** megadásához adja meg a fában létrehozható terminál-csomópontok (levelek) maximális számát.
   
      Ennek az értéknek a növelésével lehetőség van a fa méretének növelésére és jobb pontosságra, ha a túlillesztés és a hosszú betanítási idő fennáll.
   
-4.  A **minták minimális száma a levél csomópontjainál**adja meg, hogy hány esetben szükséges a terminál csomópont (levél) létrehozása a fában.  
+4.  A **minták minimális száma a levél csomópontjainál** adja meg, hogy hány esetben szükséges a terminál csomópont (levél) létrehozása a fában.  
   
      Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét. Ha például az alapértelmezett érték 1, akkor akár egyetlen esetben is létrehozhat egy új szabályt. Ha az értéket 5-re emeli, a betanítási adatmennyiségnek legalább öt olyan esetet kellene tartalmaznia, amelyek megfelelnek ugyanazoknak a feltételeknek.
   
-5.  A **tanulási arány**mezőben adjon meg egy 0 és 1 közötti számot, amely meghatározza a lépés méretét a tanulás során.  
+5.  A **tanulási arány** mezőben adjon meg egy 0 és 1 közötti számot, amely meghatározza a lépés méretét a tanulás során.  
   
      A tanulási arány határozza meg, hogy a tanuló milyen gyorsan vagy lassabban konvergál az optimális megoldáson. Ha a lépés mérete túl nagy, lehet, hogy az optimális megoldást is lelövi. Ha a lépés mérete túl kicsi, a képzés továbbra is a legjobb megoldáshoz közeledik.
   
-6.  A **kiépített fák száma mezőben**adja meg az Ensemble-ben létrehozandó döntési fák teljes számát. További döntési fák létrehozásával lehetőség van jobb lefedettségre, de a képzési idő növekedni fog.
+6.  A **kiépített fák száma mezőben** adja meg az Ensemble-ben létrehozandó döntési fák teljes számát. További döntési fák létrehozásával lehetőség van jobb lefedettségre, de a képzési idő növekedni fog.
   
      Ez az érték a betanított modell megjelenítésekor megjelenő fák számát is szabályozza. Ha egyetlen fát szeretne megtekinteni vagy kinyomtatni, állítsa az értéket 1-re. Ha azonban így tesz, csak egy fát hoz létre (a kezdeti paraméterekkel rendelkező fát), és nem végez további iterációt.
   
-7.  A **véletlenszerű számú magok**esetében opcionálisan adjon meg egy nem negatív egész számot, amelyet véletlenszerű mag értékként kíván használni. A vetőmagok megadásával biztosítható az azonos adatokkal és paraméterekkel rendelkező futtatások közötti reprodukálhatóság.  
+7.  A **véletlenszerű számú magok** esetében opcionálisan adjon meg egy nem negatív egész számot, amelyet véletlenszerű mag értékként kíván használni. A vetőmagok megadásával biztosítható az azonos adatokkal és paraméterekkel rendelkező futtatások közötti reprodukálhatóság.  
   
      A véletlenszerű magok alapértelmezett értéke 0, ami azt jelenti, hogy a kezdeti mag értékét a rendszer órája szerzi be.  A véletlenszerű magok használatával végzett egymást követő futtatások különböző eredményekkel rendelkezhetnek.
   
 
 9. A modell betanítása:
 
-    + Ha az **oktatói módot** **egyetlen paraméterként**állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](train-model.md) modult.  
+    + Ha az **oktatói módot** **egyetlen paraméterként** állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](train-model.md) modult.  
   
-    + Ha az **oktatói mód** beállítása **paraméter-tartományra**van beállítva, csatlakoztasson egy címkézett adatkészletet, és a modell betanításához használja a [modell hiperparaméterek beállítása](tune-model-hyperparameters.md).  
+    + Ha az **oktatói mód** beállítása **paraméter-tartományra** van beállítva, csatlakoztasson egy címkézett adatkészletet, és a modell betanításához használja a [modell hiperparaméterek beállítása](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 
@@ -85,6 +85,6 @@ A betanítás befejezése után:
 
 + A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

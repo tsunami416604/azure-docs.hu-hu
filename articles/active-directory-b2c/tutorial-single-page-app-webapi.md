@@ -11,12 +11,12 @@ ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9fe1363ffc714754c1de333a77d36595ce4223e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442337"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421090"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: Node.js webes API-hoz való hozzáférés biztosítása egy egyoldalas alkalmazásból Azure AD B2C
 
@@ -56,11 +56,11 @@ Az egyoldalas alkalmazás konfigurálásakor a hatókör **hatókörében** lév
 
 Ha egy védett webes API-t szeretne meghívni egy másik alkalmazásból, meg kell adnia a webes API-nak az alkalmazáshoz szükséges engedélyeket.
 
-Az előfeltételként szolgáló oktatóanyagban létrehozott egy *webapp1*nevű webalkalmazást. Ebben az oktatóanyagban úgy konfigurálja az alkalmazást, hogy hívja meg az előző szakaszban létrehozott webes API-t ( *webapi1*).
+Az előfeltételként szolgáló oktatóanyagban létrehozott egy *spaapp1* nevű egyoldalas alkalmazást. Ebben az oktatóanyagban úgy konfigurálja az alkalmazást, hogy hívja meg az előző szakaszban létrehozott webes API-t ( *spaapp1* ).
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-Az egyoldalas webalkalmazás mostantól engedélyt kapott a védett webes API-ra a megadott hatókörökhöz. A felhasználók a Azure AD B2C használatával hitelesítik egyoldalas alkalmazást. Az egyoldalas alkalmazás az engedélyezési folyamat használatával fér hozzá a védett webes API-hoz a Azure AD B2C által visszaadott hozzáférési jogkivonattal.
+Az egyoldalas webalkalmazás mostantól engedélyt kapott a védett webes API-ra a megadott hatókörökhöz. A felhasználók a Azure AD B2C használatával hitelesítik egyoldalas alkalmazást. Az egyoldalas alkalmazás hozzáférési jogkivonatot szerez be Azure AD B2C a védett webes API eléréséhez.
 
 ## <a name="configure-the-sample"></a>A minta konfigurálása
 
@@ -137,7 +137,7 @@ Bár mindkét alkalmazás helyileg fut, amikor ezt az oktatóanyagot követi, ú
 
 ### <a name="run-the-nodejs-web-api"></a>A Node.js webes API futtatása
 
-1. Nyisson meg egy konzolablak ablakot, és váltson át a Node.js webes API-mintát tartalmazó könyvtárra. Példa:
+1. Nyisson meg egy konzolablak ablakot, és váltson át a Node.js webes API-mintát tartalmazó könyvtárra. Ilyenek többek között:
 
     ```console
     cd active-directory-b2c-javascript-nodejs-webapi
@@ -158,10 +158,10 @@ Bár mindkét alkalmazás helyileg fut, amikor ezt az oktatóanyagot követi, ú
 
 ### <a name="run-the-single-page-app"></a>Egy egyoldalas alkalmazás futtatása
 
-1. Nyisson meg egy másik konzolablak ablakát, és váltson át a JavaScript SPA-mintát tartalmazó könyvtárba. Példa:
+1. Nyisson meg egy másik konzolablak ablakát, és váltson át a JavaScript SPA-mintát tartalmazó könyvtárba. Ilyenek többek között:
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
+    cd ms-identity-b2c-javascript-spa
     ```
 
 1. Futtassa az alábbi parancsot:

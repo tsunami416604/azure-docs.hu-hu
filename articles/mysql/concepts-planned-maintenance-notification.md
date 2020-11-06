@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 754d693294235ff34c68f828235cca5bb2389a2b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c85624d9eced3130a1c7b99943095688beee62bd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544834"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93417588"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Tervezett karbantartási értesítések Azure Database for MySQL – egyetlen kiszolgálón
 
@@ -48,7 +48,7 @@ Megtekintheti a tervezett karbantartási értesítést Azure Portal vagy konfigu
 
 1. A [Azure Portal](https://portal.azure.com)válassza a **Service Health** lehetőséget.
 2. **Tervezett karbantartás** lap kiválasztása
-3. Válassza ki az **előfizetést** , * * régiót és **szolgáltatást** , amelyre vonatkozóan meg szeretné adni a tervezett karbantartási értesítést. 
+3. Válassza ki az **előfizetést** , a **régiót** és a **szolgáltatást** , amelynek a tervezett karbantartási értesítését ellenőriznie szeretné. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Tervezett karbantartási értesítés fogadása
 
@@ -76,7 +76,7 @@ Nem, az összes Azure-régió javítás alatt áll a telepítési Wise-ablak id�
 Egy átmeneti hiba (más néven átmeneti hiba) egy olyan hiba, amely magát a megoldást fogja megoldani. [Átmeneti hibák](./concepts-connectivity.md#transient-errors) merülhetnek fel a karbantartás során. Az események többségét a rendszer automatikusan csökkenti a 60 másodpercnél kisebb mértékben. Az átmeneti hibákat az [újrapróbálkozási logikával](./concepts-connectivity.md#handling-transient-errors)kell kezelni.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha bármilyen kérdése vagy javaslata van a Azure Database for MySQL használatáról, küldjön e-mailt a Azure Database for MySQL csapatának a következő címen: *AskAzureDBforMySQL@service.microsoft.com* .
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-on-metric.md) című témakörben tekintheti meg.

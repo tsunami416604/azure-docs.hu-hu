@@ -1,7 +1,7 @@
 ---
 title: N-Gram-funkciók kinyerése a szöveges modul hivatkozása alapján
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning N-Gram modult a szöveges adatok szabadkézi.
+description: Megtudhatja, hogyan használható a Azure Machine Learning Designer N-Gram-moduljának kinyerése a szöveges adatok szabadkézi.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: c21c63bdb64f7c15c049bfe4039ef47cea689922
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4d9c7c2cb7a0a86824a373f1b64044b6dcd6c20
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907970"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420801"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>N-Gram-funkciók kinyerése a szöveges modul hivatkozása alapján
 
@@ -44,15 +44,15 @@ A modul a következő forgatókönyveket támogatja egy n-Gram szótár használ
 
 1. A **súlyozási függvény** meghatározza, hogyan kell felépíteni a dokumentum-szolgáltatás vektort, és hogyan lehet kinyerni a szókincset a dokumentumokból
 
-    * **Bináris súlyozás**: egy bináris jelenléti értéket rendel a kinyert n-grammhoz. Az egyes n-grammok értéke 1, ha létezik a dokumentumban, és 0 másként.
+    * **Bináris súlyozás** : egy bináris jelenléti értéket rendel a kinyert n-grammhoz. Az egyes n-grammok értéke 1, ha létezik a dokumentumban, és 0 másként.
 
-    * **TF Weight**: egy kifejezési gyakoriság (TF) pontszámot rendel a kinyert n-grammhoz. Az egyes n-grammok értéke az előfordulás gyakorisága a dokumentumban.
+    * **TF Weight** : egy kifejezési gyakoriság (TF) pontszámot rendel a kinyert n-grammhoz. Az egyes n-grammok értéke az előfordulás gyakorisága a dokumentumban.
 
-    * Az **IDF súlyozása**: egy inverz dokumentum-gyakoriság (IDF) pontszámot rendel a kinyert n-grammhoz. Az egyes n-gramok értéke a corpus méretének a teljes corpusban való előfordulási gyakorisága alapján felosztott naplója.
+    * Az **IDF súlyozása** : egy inverz dokumentum-gyakoriság (IDF) pontszámot rendel a kinyert n-grammhoz. Az egyes n-gramok értéke a corpus méretének a teljes corpusban való előfordulási gyakorisága alapján felosztott naplója.
     
       `IDF = log of corpus_size / document_frequency`
  
-    *  **TF-IDF súlyozás**: a kinyert n-g értékhez egy kifejezés gyakorisága/inverz dokumentum gyakorisága (TF/IDF) pontszámot rendel. Az egyes n-grammok értéke a TF pontszám szorozva az IDF pontszámával.
+    *  **TF-IDF súlyozás** : a kinyert n-g értékhez egy kifejezés gyakorisága/inverz dokumentum gyakorisága (TF/IDF) pontszámot rendel. Az egyes n-grammok értéke a TF pontszám szorozva az IDF pontszámával.
 
 1. Megadhatja a **minimális szó hosszát** az n-Gram *egyetlen szavában* használható minimális számú betűvel.
 
@@ -79,11 +79,11 @@ A modul a következő forgatókönyveket támogatja egy n-Gram szótár használ
 
 1.  Adja hozzá az N-Gram-funkciók kibontása a szöveg-modulból a folyamatot, és kapcsolja össze azt az adatkészletet, amely az **adatkészlet** portjára feldolgozni kívánt szöveggel rendelkezik.
 
-1.  A Text ( **szöveg) oszlop** kiválasztásával válassza ki azt a szöveges oszlopot, amely a szabadkézi szöveget tartalmazza. Alapértelmezés szerint a modul a **String**típusú összes oszlopot kiválasztja. A legjobb eredmények érdekében egyszerre csak egyetlen oszlopot kell feldolgoznia.
+1.  A Text ( **szöveg) oszlop** kiválasztásával válassza ki azt a szöveges oszlopot, amely a szabadkézi szöveget tartalmazza. Alapértelmezés szerint a modul a **String** típusú összes oszlopot kiválasztja. A legjobb eredmények érdekében egyszerre csak egyetlen oszlopot kell feldolgoznia.
 
 1. Adja hozzá a korábban generált n-Gram-szótárt tartalmazó mentett adatkészletet, és kapcsolja össze a **bemeneti szókincs** portjával. Az **eredményként szolgáló szókincs** kimenetét is összeállíthatja az N-Gram-funkciók szöveges modulból való kinyeréséhez.
 
-1. **Szókincs mód**esetén a legördülő listából válassza a ReadOnly Update ( **írásvédett** frissítés) lehetőséget.
+1. **Szókincs mód** esetén a legördülő listából válassza a ReadOnly Update ( **írásvédett** frissítés) lehetőséget.
 
    A **readonly** kapcsoló a bemeneti szókincshez tartozó bemeneti corpusot jelöli. Az új szöveges adatkészletből (a bal oldali bemeneten) a számítástechnikai kifejezés gyakorisága helyett a bemeneti szókincs n-grammos súlyozását is alkalmazza a rendszer.
 
@@ -100,7 +100,7 @@ A modul a következő forgatókönyveket támogatja egy n-Gram szótár használ
 
 1.  Az **eredmény szókincs** kimenetének összekapcsolása a betanítási adatfolyam a pontozási adatfolyam **bevitt szókincsbe** .
 
-1.  A pontozási munkafolyamatban módosítsa az N-Gram-funkciók kibontása a szöveges modulból elemet, és állítsa a **szókincs mód** paraméterét **readonly**értékre. Hagyja meg az összes többiet.
+1.  A pontozási munkafolyamatban módosítsa az N-Gram-funkciók kibontása a szöveges modulból elemet, és állítsa a **szókincs mód** paraméterét **readonly** értékre. Hagyja meg az összes többiet.
 
 1.  A folyamat közzétételéhez mentse az **eredmény szókincsét** adatkészletként.
 
@@ -110,22 +110,22 @@ A modul a következő forgatókönyveket támogatja egy n-Gram szótár használ
 
 A Text modul N-Gram-funkcióinak kinyerése két típusú kimenetet hoz létre: 
 
-* **Eredmény-adatkészlet**: Ez a kimenet az elemzett szöveg összegzése, amely a kinyert n-grammtal együtt szerepel. A **text (szöveg) oszlopban** nem kiválasztott oszlopok a kimenetre lesznek átadva. Az elemzett szöveg minden egyes oszlopához a modul a következő oszlopokat hozza létre:
+* **Eredmény-adatkészlet** : Ez a kimenet az elemzett szöveg összegzése, amely a kinyert n-grammtal együtt szerepel. A **text (szöveg) oszlopban** nem kiválasztott oszlopok a kimenetre lesznek átadva. Az elemzett szöveg minden egyes oszlopához a modul a következő oszlopokat hozza létre:
 
-  * **N-Gram-előfordulások mátrixa**: a modul létrehoz egy oszlopot a teljes corpusban található minden n-grammhoz, és egy pontszámot ad hozzá az egyes oszlopokban az adott sorhoz tartozó n-gramm súlyozásának jelzéséhez. 
+  * **N-Gram-előfordulások mátrixa** : a modul létrehoz egy oszlopot a teljes corpusban található minden n-grammhoz, és egy pontszámot ad hozzá az egyes oszlopokban az adott sorhoz tartozó n-gramm súlyozásának jelzéséhez. 
 
-* **Eredmény szókincse**: a szókincs a tényleges n-grammos szótárt tartalmazza, valamint az elemzés részeként generált kifejezés gyakorisági pontszámait. Az adatkészletet a különböző bemenetekkel való újrafelhasználáshoz, vagy egy későbbi frissítéshez is mentheti. A szókincset a modellezéshez és pontozáshoz is felhasználhatja.
+* **Eredmény szókincse** : a szókincs a tényleges n-grammos szótárt tartalmazza, valamint az elemzés részeként generált kifejezés gyakorisági pontszámait. Az adatkészletet a különböző bemenetekkel való újrafelhasználáshoz, vagy egy későbbi frissítéshez is mentheti. A szókincset a modellezéshez és pontozáshoz is felhasználhatja.
 
 ### <a name="result-vocabulary"></a>Eredmény szókincse
 
 A szószedet tartalmazza az n-Gram-szótárt, amely az elemzés részeként generált kifejezés gyakorisági pontszámait tartalmazza. A DF és az IDF pontszámok a többi lehetőségtől függetlenül jönnek létre.
 
-+ **ID**: az egyes egyedi n-grammokhoz generált azonosító.
-+ **NGram**: az n-Gram. A szóközöket vagy más Word-elválasztó karaktereket az aláhúzás karakter váltja fel.
-+ **DF**: az n-gramm kifejezés gyakorisági pontszáma az eredeti corpusban.
-+ **IDF**: az eredeti Corpus n-grammjának inverz dokumentumának gyakorisági pontszáma.
++ **ID** : az egyes egyedi n-grammokhoz generált azonosító.
++ **NGram** : az n-Gram. A szóközöket vagy más Word-elválasztó karaktereket az aláhúzás karakter váltja fel.
++ **DF** : az n-gramm kifejezés gyakorisági pontszáma az eredeti corpusban.
++ **IDF** : az eredeti Corpus n-grammjának inverz dokumentumának gyakorisági pontszáma.
 
-Manuálisan frissítheti ezt az adatkészletet, de hibákat is bevezethet. Példa:
+Manuálisan frissítheti ezt az adatkészletet, de hibákat is bevezethet. Ilyenek többek között:
 
 * A rendszer hibát jelez, ha a modul ismétlődő sorokat talál a bemeneti szókincsben található ugyanazzal a kulccsal. Ügyeljen arra, hogy a szókincsben ne legyen két sor ugyanazzal a Szóval.
 * A szókincs-adatkészletek bemeneti sémájának pontosan egyeznie kell, beleértve az oszlopnevek és az oszlopok típusát is. 
@@ -135,6 +135,6 @@ Manuálisan frissítheti ezt az adatkészletet, de hibákat is bevezethet. Péld
 > [!Note]
 > Ne kapcsolja közvetlenül az adatkimenetet a Train Model modulhoz. A kiépítési modellbe való beetetés előtt távolítsa el a szabadszöveges oszlopokat. Ellenkező esetben a szabad szöveges oszlopok kategorikus funkciókként lesznek kezelve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

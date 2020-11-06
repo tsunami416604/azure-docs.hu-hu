@@ -11,16 +11,18 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 3a3eb77315953c3791e09c4326af7cc3e3231a69
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6daf2da5b5bac051ac110ff15ed2c44971300a30
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670046"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421039"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásban Azure AD B2C
 
-Ez az oktatóanyag azt mutatja be, hogyan használható a Azure Active Directory B2C (Azure AD B2C) egy egyoldalas alkalmazásban (SPA) lévő felhasználók regisztrálására és bejelentkezésére a OAuth 2,0 implicit engedélyezési folyamatával.
+Ez az oktatóanyag bemutatja, hogyan használható a Azure Active Directory B2C (Azure AD B2C) egy egyoldalas alkalmazásban (SPA) lévő felhasználók regisztrálására és bejelentkezésére a következők bármelyikével:
+* [OAuth 2,0 engedélyezési kód folyamatábrája](https://docs.microsoft.com/azure/active-directory-b2c/authorization-code-flow) ( [MSAL.js 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)használatával)
+* [OAuth 2,0 implicit engedélyezési folyamat](https://docs.microsoft.com/azure/active-directory-b2c/implicit-flow-single-page-application) ( [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)használatával)
 
 Ebben az oktatóanyagban az első egy kétrészes sorozatban:
 
@@ -39,7 +41,7 @@ A sorozat [következő oktatóanyaga](tutorial-single-page-app-webapi.md) a kód
 Az oktatóanyag lépéseinek folytatása előtt a következő Azure AD B2C erőforrásokra van szükség:
 
 * [Azure AD B2C bérlő](tutorial-create-tenant.md)
-* Az [alkalmazás regisztrálva](tutorial-register-spa.md) van a bérlőben (használjon implicit flow-beállításokat)
+* Az [alkalmazás regisztrálva](tutorial-register-spa.md) van a bérlőben
 * A bérlőn [létrehozott felhasználói folyamatok](tutorial-create-user-flows.md)
 
 Emellett a helyi fejlesztési környezetben a következőkre lesz szüksége:
@@ -49,30 +51,41 @@ Emellett a helyi fejlesztési környezetben a következőkre lesz szüksége:
 
 ## <a name="update-the-application"></a>Az alkalmazás frissítése
 
-Az előfeltételek részeként elvégzett második oktatóanyagban egy webalkalmazást regisztrált Azure AD B2Cban. Ebben az oktatóanyagban a kód mintával való kommunikáció engedélyezéséhez adjon hozzá egy válasz URL-címet (más néven átirányítási URI-t) az alkalmazás regisztrálásához.
+Az előfeltételek részeként elvégzett [második oktatóanyagban](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-spa) egy egyoldalas alkalmazást regisztrált Azure ad B2Cban. Ebben az oktatóanyagban a kód mintával való kommunikáció engedélyezéséhez adjon hozzá egy válasz URL-címet (más néven átirányítási URI-t) az alkalmazás regisztrálásához.
 
 Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatja az új egyesített **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
 
-#### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
+#### <a name="app-registrations-auth-code-flow"></a>[Alkalmazásregisztrációk (Auth-kód folyamatábrája)](#tab/app-reg-auth/)
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk** lehetőséget, válassza a **birtokolt alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
-1. A web területen válassza az **URI hozzáadása** hivatkozást, írja be a **következőt** : `http://localhost:6420` .
+1. Válassza a **Alkalmazásregisztrációk** lehetőséget, válassza a **birtokolt alkalmazások** fület, majd válassza ki a *spaapp1* alkalmazást.
+1. Az **egyoldalas alkalmazás** területen válassza az **URI hozzáadása** hivatkozást, majd írja be a értéket `http://localhost:6420` .
+1. Válassza a **Mentés** lehetőséget.
+1. Válassza az **Áttekintés** lehetőséget.
+1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra, amikor frissíti a kódot az egyoldalas webalkalmazásban.
+
+#### <a name="app-registrations-implicit-flow"></a>[Alkalmazásregisztrációk (implicit folyamat)](#tab/app-reg-implicit/)
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk** lehetőséget, válassza a **birtokolt alkalmazások** fület, majd válassza ki a *spaapp1* alkalmazást.
+1. Az **egyoldalas alkalmazás** területen válassza az **URI hozzáadása** hivatkozást, majd írja be a értéket `http://localhost:6420` .
 1. Az **implicit engedélyezés** területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek** jelölőnégyzetét, ha még nincs kiválasztva, majd válassza a **Mentés** lehetőséget.
 1. Válassza az **Áttekintés** lehetőséget.
 1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra, amikor frissíti a kódot az egyoldalas webalkalmazásban.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
-1. Válassza az **összes szolgáltatás** elemet a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C** .
-1. Válassza az **alkalmazások (örökölt)** lehetőséget, majd válassza ki a *webapp1* alkalmazást.
+1. Válassza az **összes szolgáltatás** elemet a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Válassza az **alkalmazások (örökölt)** lehetőséget, majd válassza ki a *spaapp1* alkalmazást.
 1. A **Válasz URL-cím** területen adja hozzá a címet `http://localhost:6420` .
 1. Válassza a **Mentés** lehetőséget.
-1. A Tulajdonságok lapon jegyezze fel az **alkalmazás azonosítóját** . Az alkalmazás-azonosítót egy későbbi lépésben kell használni, amikor frissíti a kódot az egyoldalas webalkalmazásban.
+1. A Tulajdonságok lapon jegyezze fel az **alkalmazás azonosítóját**. Az alkalmazás-azonosítót egy későbbi lépésben kell használni, amikor frissíti a kódot az egyoldalas webalkalmazásban.
 
 * * *
 
@@ -80,56 +93,114 @@ Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatj
 
 Ebben az oktatóanyagban egy, a GitHubról letöltött mintakód-mintát konfigurál a B2C-Bérlővel való együttműködéshez. A minta azt mutatja be, hogy egy egyoldalas alkalmazás hogyan használhatja a Azure AD B2C felhasználói regisztrációhoz és bejelentkezéshez, valamint egy védett webes API meghívásához (a sorozat következő oktatóanyagában engedélyezheti a webes API-t).
 
-[Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip), vagy a klónozza a GitHubon található mintát.
+* MSAL.js 2. x engedélyezési kód folyamatábrája:
 
-```
-git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
-```
+    [Zip-fájl letöltése](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip) vagy a minta klónozása a githubról:
+
+    ```
+    git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
+    ```
+* MSAL.js 1. x implicit folyamat mintája:
+
+    [Zip-fájl letöltése](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) vagy a minta klónozása a githubról:
+
+    ```
+    git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+    ```
 
 ## <a name="update-the-sample"></a>A minta frissítése
 
 Most, hogy beolvasta a mintát, frissítse a kódot a Azure AD B2C bérlői nevével és egy korábbi lépésben rögzített alkalmazás-AZONOSÍTÓval.
 
-1. Nyissa meg a *authConfig.js* fájlt a *JavaScriptSPA* mappában.
-1. Az `msalConfig` objektumban frissítse a következőket:
-    * `clientId` egy korábbi lépésben rögzített **alkalmazás-(ügyfél-) azonosítóval** rendelkező értékkel
-    * `authority` URI a Azure AD B2C bérlői nevével és az előfeltételek részeként létrehozott regisztrációs/bejelentkezési felhasználói folyamat nevével (például *B2C_1_signupsignin1* )
+#### <a name="auth-code-flow-sample"></a>[Auth kód flow-minta](#tab/config-auth/)
 
-    ```javascript
-    const msalConfig = {
-        auth: {
-          clientId: "00000000-0000-0000-0000-000000000000", // Replace this value with your Application (client) ID
-          authority: b2cPolicies.authorities.signUpSignIn.authority,
-          validateAuthority: false
+1. Nyissa meg az *authConfig.js* fájlt az *alkalmazás* mappájában.
+1. Az `msalConfig` objektumban keresse meg a hozzárendelést, `clientId` és cserélje le a korábbi lépésben rögzített **alkalmazás-(ügyfél-) azonosítóra** .
+1. Nyissa meg az `policies.js` fájlt.
+1. Keresse meg a bejegyzéseket a alatt, `names` és cserélje le a hozzárendelést a korábbi lépésben létrehozott felhasználói folyamatok nevére, például: `B2C_1_signupsignin1` .
+1. Keresse meg a bejegyzéseket a `authorities` és a megfelelő módon cserélje le a korábbi lépésben létrehozott felhasználói folyamatok nevére, például: `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>` .
+1. Keresse meg a hozzárendelést, és cserélje le a következőre: `authorityDomain` `<your-tenant-name>.b2clogin.com` .
+1. Nyissa meg az `apiConfig.js` fájlt.
+1. Keresse meg a hozzárendelést, `b2cScopes` és cserélje le az URL-címet a webes API-hoz létrehozott hatókör URL-címére, például: `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]` .
+1. Keresse meg a hozzárendelést, `webApi` és cserélje le az aktuális URL-címet arra az URL-címre, ahol a webes API-t telepítette a 4. lépésben, például: `webApi: http://localhost:5000/hello` .
+
+#### <a name="implicit-flow-sample"></a>[Implicit folyamat mintája](#tab/config-implicit/)
+
+1. Nyissa meg a *authConfig.js* fájlt a *JavaScriptSPA* mappában.
+1. Az `msalConfig` objektumban keresse meg a hozzárendelést, `clientId` és cserélje le a korábbi lépésben rögzített **alkalmazás-(ügyfél-) azonosítóra** .
+1. Nyissa meg az `policies.js` fájlt.
+1. Keresse meg a bejegyzéseket a alatt, `names` és cserélje le a hozzárendelést a korábbi lépésben létrehozott felhasználói folyamatok nevére, például: `B2C_1_signupsignin1` .
+1. Keresse meg a bejegyzéseket a `authorities` és a megfelelő módon cserélje le a korábbi lépésben létrehozott felhasználói folyamatok nevére, például: `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>` .
+1. Nyissa meg az `apiConfig.js` fájlt.
+1. Keresse meg a hozzárendelést, `b2cScopes` és cserélje le az URL-címet a webes API-hoz létrehozott hatókör URL-címére, például: `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]` .
+1. Keresse meg a hozzárendelést, `webApi` és cserélje le az aktuális URL-címet arra az URL-címre, ahol a webes API-t telepítette a 4. lépésben, például: `webApi: http://localhost:5000/hello` .
+
+* * *
+
+Az eredményül kapott kódnak az alábbihoz hasonlóan kell kinéznie:
+
+#### <a name="auth-code-flow-sample"></a>[Auth kód flow-minta](#tab/review-auth/)
+
+*authConfig.js* :
+
+```javascript
+const msalConfig = {
+  auth: {
+    clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902",
+    authority: b2cPolicies.authorities.signUpSignIn.authority,
+    knownAuthorities: [b2cPolicies.authorityDomain],
+  },
+  cache: {
+    cacheLocation: "localStorage",
+    storeAuthStateInCookie: true
+  }
+};
+
+const loginRequest = {
+  scopes: ["openid", "profile"],
+};
+
+const tokenRequest = {
+  scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
+};
+```
+
+*policies.js* :
+
+```javascript
+const b2cPolicies = {
+    names: {
+        signUpSignIn: "b2c_1_susi",
+        forgotPassword: "b2c_1_reset",
+        editProfile: "b2c_1_edit_profile"
+    },
+    authorities: {
+        signUpSignIn: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi",
         },
-        cache: {
-          cacheLocation: "localStorage",
-          storeAuthStateInCookie: true
+        forgotPassword: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset",
+        },
+        editProfile: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile"
         }
-    };
+    },
+    authorityDomain: "fabrikamb2c.b2clogin.com"
+}
+```
 
-    const loginRequest = {
-       scopes: ["openid", "profile"],
-    };
+*apiConfig.js* :
 
-    const tokenRequest = {
-      scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
-    };
-    ```
+```javascript
+const apiConfig = {
+  b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"],
+  webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
+};
+```
 
-1. Nyissa meg a *authConfig.js* fájlt a *JavaScriptSPA* mappában.
-1. Az `msalConfig` objektumban frissítse a következőket:
-    * `clientId`egy korábbi lépésben rögzített **alkalmazás-(ügyfél-) azonosítóval**
-    * `authority` URI a Azure AD B2C bérlői nevével és az előfeltételek részeként létrehozott regisztrációs/bejelentkezési felhasználói folyamat nevével (például *B2C_1_signupsignin1* )
-1. Nyissa meg a *policies.js* fájlt.
-1. Keresse meg a és a bejegyzéseket, `names` `authorities` és cserélje le őket a 2. lépésben létrehozott szabályzatok nevére. Cserélje le a helyére a `fabrikamb2c.onmicrosoft.com` Azure ad B2C bérlő nevét, például: `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>` .
-1. Nyissa meg a *apiConfig.js* fájlt.
-1. Keresse meg a hatókörök hozzárendelését, `b2cScopes` és cserélje le az URL-címet a webes API-hoz létrehozott hatókör URL-címére, például: `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]` .
-1. Keresse meg az API URL-címének hozzárendelését, `webApi` és cserélje le az aktuális URL-címet arra az URL-címre, ahol a webes API-t telepítette a 4. lépésben, például: `webApi: http://localhost:5000/hello` .
+#### <a name="implicit-flow-sample"></a>[Implicit folyamat mintája](#tab/review-implicit/)
 
-Az eredményül kapott kódnak a következőképpen kell kinéznie:
-
-### <a name="authconfigjs"></a>authConfig.js
+*authConfig.js* :
 
 ```javascript
 const msalConfig = {
@@ -152,7 +223,8 @@ const tokenRequest = {
   scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
 };
 ```
-### <a name="policiesjs"></a>policies.js
+
+*policies.js* :
 
 ```javascript
 const b2cPolicies = {
@@ -174,7 +246,8 @@ const b2cPolicies = {
     },
 }
 ```
-### <a name="apiconfigjs"></a>apiConfig.js
+
+*apiConfig.js* :
 
 ```javascript
 const apiConfig = {
@@ -183,13 +256,24 @@ const apiConfig = {
 };
 ```
 
+* * *
+
+
 ## <a name="run-the-sample"></a>Minta futtatása
 
-1. Nyisson meg egy konzolablak ablakát, és váltson a mintát tartalmazó könyvtárra. Például:
+1. Nyisson meg egy konzolablak ablakot, és navigáljon a mintát tartalmazó könyvtárhoz. 
 
-    ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
-    ```
+    - MSAL.js 2. x engedélyezési kód folyamatábrája:
+
+        ```console
+        cd ms-identity-b2c-javascript-spa
+        ```
+    - MSAL.js 1. x implicit flow minta esetén: 
+
+        ```console
+        cd active-directory-b2c-javascript-msal-singlepageapp
+        ```
+
 1. Futtassa az alábbi parancsot:
 
     ```console
@@ -216,13 +300,13 @@ Ez a minta alkalmazás támogatja a regisztrációt, a bejelentkezést és a jel
 
     Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket.
 
-    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="A helyileg futó egylapos alkalmazást megjelenítő webböngésző":::
+    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="Azure AD B2C felhasználói folyamat által megjelenített regisztrációs oldal":::
 
 1. A **Létrehozás** gombra kattintva helyi fiókot hozhat létre a Azure ad B2C könyvtárban.
 
 A **Létrehozás** gombra kattintva az alkalmazás megjeleníti a bejelentkezett felhasználó nevét.
 
-:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="A helyileg futó egylapos alkalmazást megjelenítő webböngésző":::
+:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="Webböngésző, amely egy egyoldalas alkalmazást mutat be a bejelentkezett felhasználóval":::
 
 Ha tesztelni szeretné a bejelentkezést, kattintson a **kijelentkezés** gombra, majd válassza a **Bejelentkezés** lehetőséget, és jelentkezzen be a regisztráció során megadott e-mail-címmel és jelszóval.
 
@@ -234,7 +318,7 @@ Ezen a ponton az alkalmazás továbbra is megpróbál kommunikálni a bemutató 
 
 A védett API engedélyezéséhez lépjen a sorozat következő oktatóanyagára (lásd a [következő lépések](#next-steps) szakaszt).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy egyoldalas alkalmazást konfigurált a Azure AD B2C-bérlő felhasználói folyamatával való együttműködéshez a regisztrálási és bejelentkezési képesség biztosításához. A következő lépéseket végezte el:
 

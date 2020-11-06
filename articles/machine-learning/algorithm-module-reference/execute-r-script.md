@@ -1,7 +1,7 @@
 ---
 title: 'R-szkript végrehajtása: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja az r-parancsfájl végrehajtása Azure Machine Learning az R-kód futtatásához.
+description: Megtudhatja, hogyan használhatja az R szkript végrehajtása modult a Azure Machine Learning Designerben egyéni R-kód futtatásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: 0a3dbb42e69978a8a4895f44b57cc3ca5353e799
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3e94172096daf5fd06549f8645d05b874948a917
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323738"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420818"
 ---
 # <a name="execute-r-script-module"></a>R-parancsfájl végrehajtása modul
 
@@ -503,6 +503,6 @@ Jelenleg a következő előre telepített R-csomagok érhetők el:
 | zeallot      | 0.1.0      | 
 | zoo          | 1.8-6      | 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

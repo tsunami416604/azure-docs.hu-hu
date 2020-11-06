@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca2190079cb97e37318bd1c6a32dfb2b9b309a8d
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f337a66f50338692508ab2e5b4b7d489c735aa20
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276951"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420486"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a cikk a Azure Active Directory (Azure AD) csatlakozási előfeltételeit és hardverkövetelmények leírását ismerteti.
@@ -42,8 +42,8 @@ A Azure AD Connect telepítése előtt néhány dolog szükséges.
 
 ### <a name="on-premises-active-directory"></a>Helyszíni Active Directory
 * A Active Directory séma verziószámának és az erdő működési szintjének Windows Server 2003 vagy újabb verziójúnak kell lennie. A tartományvezérlők bármilyen verziót futtathatnak, amíg a séma verziója és az erdő szintű követelmények teljesülnek.
-* Ha azt tervezi, hogy a szolgáltatás *jelszava visszaírási*használja, a tartományvezérlőknek Windows Server 2008 R2 vagy újabb rendszeren kell lenniük.
-* Az Azure AD által használt tartományvezérlőnek írhatónak kell lennie. Írásvédett tartományvezérlő használata *nem támogatott*, és a Azure ad Connect nem hajtja végre az írási átirányítást.
+* Ha azt tervezi, hogy a szolgáltatás *jelszava visszaírási* használja, a tartományvezérlőknek Windows Server 2012 vagy újabb rendszerre kell esniük.
+* Az Azure AD által használt tartományvezérlőnek írhatónak kell lennie. Írásvédett tartományvezérlő használata *nem támogatott* , és a Azure ad Connect nem hajtja végre az írási átirányítást.
 * A helyszíni erdők vagy tartományok használata "pontozott" (a név tartalmazza a "." pontot) A NetBIOS-nevek *nem támogatottak*.
 * Javasoljuk, hogy [engedélyezze a Active Directory Lomtárát](how-to-connect-sync-recycle-bin.md).
 
@@ -92,7 +92,7 @@ Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kriti
 * Ha a SQL Server eltérő telepítését használja, a következő követelmények érvényesek:
   * A Azure AD Connect a SQL Server összes verzióját támogatja a 2012-es verzióról (a legújabb szervizcsomaggal) a SQL Server 2019. A Azure SQL Database adatbázisként *nem támogatott* .
   * Kis-és nagybetűket nem megkülönböztető SQL-rendezést kell használnia. Ezeket a rendezéseket a \_ nevükben CI_ azonosítjuk. A CS_ által azonosított kis-és nagybetűket megkülönböztető rendezés használata \_ *nem támogatott*.
-  * SQL-példányon csak egy szinkronizálási motor tartozhat. Az SQL-példányok *nem támogatottak*a FIM/a következő szinkronizálással, az rsync vagy a Azure ad-Szinkronizálóval.
+  * SQL-példányon csak egy szinkronizálási motor tartozhat. Az SQL-példányok *nem támogatottak* a FIM/a következő szinkronizálással, az rsync vagy a Azure ad-Szinkronizálóval.
 
 ### <a name="accounts"></a>Fiókok
 * A szolgáltatással integrálni kívánt Azure AD-bérlőhöz Azure AD globális rendszergazdai fiókkal kell rendelkeznie. Ennek a fióknak *iskolai vagy szervezeti fióknak* kell lennie, és nem lehet *Microsoft-fiók*.
@@ -106,7 +106,7 @@ Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kriti
   * Ha a Microsoft Cloud-ot Németországban vagy a Microsoft Azure Government felhőben használja, Azure AD Connect tekintse meg az URL-címek [szinkronizálási szolgáltatás példányainak szempontjait](reference-connect-instances.md) ismertető témakört.
 * A Azure AD Connect (1.1.614.0 és újabb verzió) alapértelmezés szerint a TLS 1,2-et használja a szinkronizálási motor és az Azure AD közötti kommunikáció titkosításához. Ha a TLS 1,2 nem érhető el az alapul szolgáló operációs rendszeren, Azure AD Connect fokozatosan visszakerül a régebbi protokollokra (TLS 1,1 és TLS 1,0).
 * A 1.1.614.0 verzió előtt a Azure AD Connect alapértelmezés szerint a TLS 1,0-et használja a szinkronizálási motor és az Azure AD közötti kommunikáció titkosításához. A TLS 1,2-re való váltáshoz kövesse a [tls 1,2 engedélyezése a Azure ad Connect számára](#enable-tls-12-for-azure-ad-connect)című témakör lépéseit.
-* Ha kimenő proxyt használ az internethez való csatlakozáshoz, akkor a **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** fájl következő beállítását hozzá kell adni a telepítővarázsló számára, és Azure ad Connect a szinkronizálást, hogy csatlakozni tudjon az internethez és az Azure ad-hoz. Ezt a szöveget a fájl alján kell megadni. Ebben a kódban a * &lt; PROXYADDRESS &gt; * a tényleges proxy IP-címét vagy állomásnevét jelöli.
+* Ha kimenő proxyt használ az internethez való csatlakozáshoz, akkor a **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** fájl következő beállítását hozzá kell adni a telepítővarázsló számára, és Azure ad Connect a szinkronizálást, hogy csatlakozni tudjon az internethez és az Azure ad-hoz. Ezt a szöveget a fájl alján kell megadni. Ebben a kódban a *&lt; PROXYADDRESS &gt;* a tényleges proxy IP-címét vagy állomásnevét jelöli.
 
     ```
         <system.net>
@@ -180,9 +180,9 @@ Ha Azure AD Connectt használ AD FS vagy a webalkalmazás-proxy (WAP) üzembe he
   * Azon a számítógépen, amelyen a varázsló fut (ha a célszámítógép nem tartományhoz csatlakozik, vagy nem megbízható tartomány):
     * Egy emelt szintű PowerShell-parancssorablakban használja az parancsot `Set-Item.WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate` .
     * A Kiszolgálókezelőben:
-      * DMZ WAP-gazdagép hozzáadása számítógép-készlethez. A Kiszolgálókezelőben válassza a **kezelés**  >  **Hozzáadás kiszolgálók**elemet, majd használja a **DNS** lapot.
-      * A **Kiszolgálókezelő minden kiszolgáló** lapján kattintson a jobb gombbal a WAP-kiszolgálóra, majd válassza a **kezelés másként**lehetőséget. Adja meg a WAP-gép helyi (nem tartományi) hitelesítő adatait.
-      * A távoli PowerShell-kapcsolat ellenőrzéséhez a **Kiszolgálókezelő minden kiszolgáló** lapján kattintson a jobb gombbal a WAP-kiszolgálóra, és válassza a **Windows PowerShell**elemet. Egy távoli PowerShell-munkamenetnek nyitva kell lennie a távoli PowerShell-munkamenetek létrehozásához.
+      * DMZ WAP-gazdagép hozzáadása számítógép-készlethez. A Kiszolgálókezelőben válassza a **kezelés**  >  **Hozzáadás kiszolgálók** elemet, majd használja a **DNS** lapot.
+      * A **Kiszolgálókezelő minden kiszolgáló** lapján kattintson a jobb gombbal a WAP-kiszolgálóra, majd válassza a **kezelés másként** lehetőséget. Adja meg a WAP-gép helyi (nem tartományi) hitelesítő adatait.
+      * A távoli PowerShell-kapcsolat ellenőrzéséhez a **Kiszolgálókezelő minden kiszolgáló** lapján kattintson a jobb gombbal a WAP-kiszolgálóra, és válassza a **Windows PowerShell** elemet. Egy távoli PowerShell-munkamenetnek nyitva kell lennie a távoli PowerShell-munkamenetek létrehozásához.
 
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL-tanúsítványokra vonatkozó követelmények
 * Azt javasoljuk, hogy ugyanazt a TLS/SSL-tanúsítványt használja a AD FS farm összes csomópontján és az összes webalkalmazás-proxy kiszolgálón.
@@ -229,5 +229,5 @@ AD FS-vagy webalkalmazás-proxykiszolgálót futtató számítógépekre vonatko
 * Memória: 2 GB vagy magasabb
 * Azure-beli virtuális gép: a2 vagy újabb konfiguráció
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

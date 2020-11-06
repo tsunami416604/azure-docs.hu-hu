@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0ae6366acf270d762b1c15563bfec1b2eb2a1b8d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893403"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421073"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Metrikák és naplók figyelése a Linux diagnosztikai bővítmény használatával
 
@@ -70,10 +70,33 @@ Támogatott disztribúciók és verziók:
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Az **Azure Linux Agent 2.2.0-es vagy újabb verziója** . A legtöbb Azure-beli virtuális gép Linux-katalógusa tartalmaz 2.2.7 vagy újabb verziót. A futtatásával erősítse meg a `/usr/sbin/waagent -version` virtuális gépre telepített verziót. Ha a virtuális gép a vendég ügynök egy régebbi verzióját futtatja, a frissítéshez kövesse az [alábbi utasításokat](./update-linux-agent.md) .
+* Az **Azure Linux Agent 2.2.0-es vagy újabb verziója**. A legtöbb Azure-beli virtuális gép Linux-katalógusa tartalmaz 2.2.7 vagy újabb verziót. A futtatásával erősítse meg a `/usr/sbin/waagent -version` virtuális gépre telepített verziót. Ha a virtuális gép a vendég ügynök egy régebbi verzióját futtatja, a frissítéshez kövesse az [alábbi utasításokat](./update-linux-agent.md) .
 * **Azure CLI** -vel. [Állítsa be az Azure CLI](/cli/azure/install-azure-cli) -környezetet a gépen.
 * A wget parancs, ha még nem tette meg: Futtatás `sudo apt-get install wget` .
 * Meglévő Azure-előfizetés és meglévő általános célú Storage-fiók az adattároláshoz.  Az általános célú Storage-fiókok támogatják a Table Storage-t, amelyhez szükség van.  A blob Storage-fiók nem fog működni.
+* Python 2
+
+### <a name="python-requirement"></a>Python-követelmény
+
+A Linux diagnosztikai bővítményhez a Python 2 szükséges. Ha a virtuális gép olyan disztribúciót használ, amely alapértelmezés szerint nem tartalmazza a Python 2-et, akkor telepítenie kell azt. A következő minta parancsok a Python 2 különböző disztribúciókban való telepítését teszik ki.    
+
+ - Red Hat, CentOS, Oracle: `yum install -y python2`
+ - Ubuntu, Debian: `apt-get install -y python2`
+ - SUSE `zypper install -y python2`
+
+A python2 végrehajtható fájljának aliasnak kell lennie a *Pythonhoz*. Az alábbi két módszer használható az alias beállításához:
+
+1. Futtassa a következő parancsot a meglévő aliasok eltávolításához.
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. A következő parancs futtatásával hozza létre az aliast.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ### <a name="sample-installation"></a>Minta telepítése
 
@@ -175,7 +198,7 @@ Miután módosította a védett vagy a nyilvános beállításokat, telepítse �
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>Áttelepítés a bővítmény korábbi verzióiból
 
-A bővítmény legújabb verziója **3,0** . A **régi verziók (2. x) elavultak, és a 2018. július 31-ig vagy azt követően nem** tehetők közzé.
+A bővítmény legújabb verziója **3,0**. A **régi verziók (2. x) elavultak, és a 2018. július 31-ig vagy azt követően nem** tehetők közzé.
 
 > [!IMPORTANT]
 > Ez a bővítmény bevezeti a bővítmény konfigurációjának feltörésének változásait. Egy ilyen változás történt a bővítmény biztonságának javítása érdekében; Ennek eredményeképpen a 2. x verzióra visszamenőleges kompatibilitás nem tartható karban. Emellett a bővítmény közzétevője nem azonos a 2. x verzió közzétevője verziójával.
@@ -205,7 +228,7 @@ A konfigurációs adatok ezen készlete olyan bizalmas információkat tartalmaz
 }
 ```
 
-Name (Név) | Érték
+Name | Érték
 ---- | -----
 storageAccountName | Annak a Storage-fióknak a neve, amelybe az adatkiterjesztést írta.
 storageAccountEndPoint | választható A felhőt azonosító végpont, amelyben a Storage-fiók létezik. Ha ez a beállítás nem érhető el, a LAD alapértelmezett értéke az Azure nyilvános felhő `https://core.windows.net` . Ha Azure Germany-, Azure Government-vagy Azure China-beli Storage-fiókot szeretne használni, ennek megfelelően állítsa be ezt az értéket.
@@ -797,7 +820,7 @@ A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azu
 
 A EventHubs-végponton közzétett üzenetek felhasználásának megismeréséhez tekintse meg a vonatkozó [EventHubs dokumentációját](../../event-hubs/event-hubs-about.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Metrikai riasztások létrehozása [Azure monitorban](../../azure-monitor/platform/alerts-classic-portal.md) a begyűjtött mérőszámokhoz.
 * [Figyelési diagramok](../../azure-monitor/platform/data-platform.md) létrehozása a mérőszámokhoz.
