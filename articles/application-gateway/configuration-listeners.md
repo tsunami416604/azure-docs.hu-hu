@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: ef2ff8924cd8a92c5d2d2e5dd9da6bb74fad1a14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f68e8cbca65e7b970944f7ca5ef1952140cc6b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652991"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397640"
 ---
 # <a name="application-gateway-listener-configuration"></a>Application Gateway figyelő konfigurációja
 
@@ -20,13 +20,13 @@ ms.locfileid: "89652991"
 
 A figyelő olyan logikai entitás, amely a port, a protokoll, a gazdagép és az IP-cím használatával ellenőrzi a bejövő kapcsolati kérelmeket. A figyelő konfigurálásakor meg kell adnia azokat az értékeket, amelyek megfelelnek az átjárón bejövő kérelemben szereplő megfelelő értékeknek.
 
-Amikor az Azure Portal használatával hoz létre egy Application Gateway-t, a figyelőhöz tartozó protokoll és port választásával létrehoz egy alapértelmezett figyelőt is. Megadhatja, hogy engedélyezi-e a HTTP2 támogatását a figyelőn. Az Application Gateway létrehozása után szerkesztheti az alapértelmezett figyelő (*appGatewayHttpListener*) beállításait, vagy létrehozhat új figyelőket.
+Amikor az Azure Portal használatával hoz létre egy Application Gateway-t, a figyelőhöz tartozó protokoll és port választásával létrehoz egy alapértelmezett figyelőt is. Megadhatja, hogy engedélyezi-e a HTTP2 támogatását a figyelőn. Az Application Gateway létrehozása után szerkesztheti az alapértelmezett figyelő ( *appGatewayHttpListener* ) beállításait, vagy létrehozhat új figyelőket.
 
 ## <a name="listener-type"></a>Figyelő típusa
 
-Új figyelő létrehozásakor az [ *alapszintű* és a *többhelyes*beállítások](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners)közül választhat.
+Új figyelő létrehozásakor az [ *alapszintű* és a *többhelyes* beállítások](./application-gateway-components.md#types-of-listeners)közül választhat.
 
-- Ha azt szeretné, hogy minden kérelem (bármely tartományhoz) el legyen fogadva és továbbítva legyen a háttérbeli készletekbe, válassza az alapszintű lehetőséget. Útmutató az [Application Gateway alapszintű figyelővel való létrehozásához](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
+- Ha azt szeretné, hogy minden kérelem (bármely tartományhoz) el legyen fogadva és továbbítva legyen a háttérbeli készletekbe, válassza az alapszintű lehetőséget. Útmutató az [Application Gateway alapszintű figyelővel való létrehozásához](./quick-create-portal.md).
 
 - Ha a kérelmeket különböző háttér-készletekbe szeretné továbbítani a *állomásfejléc* vagy az állomásnevek alapján, válassza a többhelyes figyelő lehetőséget, ahol meg kell adnia a bejövő kérelemnek megfelelő állomásnevet is. Ennek az az oka, hogy Application Gateway a HTTP 1,1 állomásfejléc-ra támaszkodik, hogy egynél több webhelyet működtessen ugyanazon a nyilvános IP-címen és porton. További információ: [több webhely üzemeltetése Application Gateway használatával](multiple-site-overview.md).
 
@@ -42,7 +42,7 @@ Válassza ki azt az előtér-IP-címet, amelyet hozzá szeretne rendelni ehhez a
 
 ## <a name="front-end-port"></a>Előtér-port
 
-Válassza ki az előtér-portot. Válasszon ki egy meglévő portot, vagy hozzon létre egy újat. Válassza ki a [portok megengedett tartományának](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports)tetszőleges értékét. Nem csak a jól ismert portok, például a 80 és a 443, de a megfelelő egyéni portok is használhatók. Egy port használható nyilvános figyelők vagy magánjellegű figyelők számára.
+Válassza ki az előtér-portot. Válasszon ki egy meglévő portot, vagy hozzon létre egy újat. Válassza ki a [portok megengedett tartományának](./application-gateway-components.md#ports)tetszőleges értékét. Nem csak a jól ismert portok, például a 80 és a 443, de a megfelelő egyéni portok is használhatók. Egy port használható nyilvános figyelők vagy magánjellegű figyelők számára.
 
 ## <a name="protocol"></a>Protokoll
 
@@ -50,7 +50,7 @@ HTTP vagy HTTPS kiválasztása:
 
 - Ha a HTTP lehetőséget választja, az ügyfél és az Application Gateway közötti forgalom titkosítatlan.
 
-- Válassza a HTTPS lehetőséget, ha a [TLS-lezárást](features.md#secure-sockets-layer-ssltls-termination) vagy [a végpontok közötti TLS-titkosítást](https://docs.microsoft.com/azure/application-gateway/ssl-overview)szeretné használni. Az ügyfél és az Application Gateway közötti forgalom titkosítva van. A TLS-kapcsolatok pedig az Application gatewaynél leállnak. Ha a végpontok közötti TLS-titkosítást szeretné használni, a HTTPS beállítást kell választania, és konfigurálnia kell a **háttérrendszer http** -beállítását. Ez biztosítja, hogy a forgalom újra titkosítva legyen, amikor az Application Gateway-ből a háttérbe utazik.
+- Válassza a HTTPS lehetőséget, ha a [TLS-lezárást](features.md#secure-sockets-layer-ssltls-termination) vagy [a végpontok közötti TLS-titkosítást](./ssl-overview.md)szeretné használni. Az ügyfél és az Application Gateway közötti forgalom titkosítva van. A TLS-kapcsolatok pedig az Application gatewaynél leállnak. Ha a végpontok közötti TLS-titkosítást szeretné használni, a HTTPS beállítást kell választania, és konfigurálnia kell a **háttérrendszer http** -beállítását. Ez biztosítja, hogy a forgalom újra titkosítva legyen, amikor az Application Gateway-ből a háttérbe utazik.
 
 
 A TLS-megszakítás és a végpontok közötti TLS-titkosítás konfigurálásához hozzá kell adnia egy tanúsítványt a figyelőhöz, hogy az Application Gateway szimmetrikus kulcsot lehessen származtatni. Ezt a TLS protokoll specifikációja határozza meg. A szimmetrikus kulcs az átjárónak továbbított forgalom titkosítására és visszafejtésére szolgál. Az átjáró tanúsítványának személyes információcsere (PFX) formátumúnak kell lennie. Ez a formátum lehetővé teszi a titkos kulcs exportálását, amelyet az átjáró használ a forgalom titkosításához és visszafejtéséhez.
@@ -79,20 +79,20 @@ A WebSocket-támogatás alapértelmezés szerint engedélyezve van. A felhaszná
 
 ## <a name="custom-error-pages"></a>Egyéni hibalapok
 
-Egyéni hibát a globális szinten vagy a figyelő szintjén adhat meg. Azonban a Azure Portal globális szintű egyéni hibaüzenetek létrehozása jelenleg nem támogatott. Az 403-es webalkalmazási tűzfal hibája, vagy a figyelő szintjén a 502-es karbantartási oldal egyéni hibaüzenetet adhat meg. Meg kell adnia egy nyilvánosan elérhető blob URL-címet is az adott hibakódhoz. További információt az [egyéni Application Gateway-hibaoldalak létrehozását ismertető részben](https://docs.microsoft.com/azure/application-gateway/custom-error) talál.
+Egyéni hibát a globális szinten vagy a figyelő szintjén adhat meg. Azonban a Azure Portal globális szintű egyéni hibaüzenetek létrehozása jelenleg nem támogatott. Az 403-es webalkalmazási tűzfal hibája, vagy a figyelő szintjén a 502-es karbantartási oldal egyéni hibaüzenetet adhat meg. Meg kell adnia egy nyilvánosan elérhető blob URL-címet is az adott hibakódhoz. További információt az [egyéni Application Gateway-hibaoldalak létrehozását ismertető részben](./custom-error.md) talál.
 
-![Application Gateway hibakódok](https://docs.microsoft.com/azure/application-gateway/media/custom-error/ag-error-codes.png)
+![Application Gateway hibakódok](/azure/application-gateway/media/custom-error/ag-error-codes.png)
 
-A globális egyéni hiba lap konfigurálásához lásd: [Azure PowerShell konfiguráció](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration).
+A globális egyéni hiba lap konfigurálásához lásd: [Azure PowerShell konfiguráció](./custom-error.md#azure-powershell-configuration).
 
 ## <a name="tls-policy"></a>TLS-házirend
 
-Központosíthatja a TLS/SSL-tanúsítványok kezelését, és csökkentheti a háttér-kiszolgálófarm titkosítási és visszafejtési terhelését. A központosított TLS-kezelést is lehetővé teszi, hogy megadhat egy központi TLS-házirendet, amely megfelel a biztonsági követelményeknek. Kiválaszthatja az *alapértelmezett*, *előre definiált*vagy *Egyéni* TLS-házirendet.
+Központosíthatja a TLS/SSL-tanúsítványok kezelését, és csökkentheti a háttér-kiszolgálófarm titkosítási és visszafejtési terhelését. A központosított TLS-kezelést is lehetővé teszi, hogy megadhat egy központi TLS-házirendet, amely megfelel a biztonsági követelményeknek. Kiválaszthatja az *alapértelmezett* , *előre definiált* vagy *Egyéni* TLS-házirendet.
 
-A TLS-házirend konfigurálásával szabályozhatja a TLS protokoll verzióit. Az Application Gateway konfigurálható úgy, hogy a TLS-kézfogások minimális protokoll-verzióját használják a TLS 1.0, a TLS 1.1 és a TLS 1.2 használatával. Alapértelmezés szerint az SSL 2,0 és 3,0 le van tiltva, és nem konfigurálható. További információ: [Application Gateway TLS-házirend áttekintése](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
+A TLS-házirend konfigurálásával szabályozhatja a TLS protokoll verzióit. Az Application Gateway konfigurálható úgy, hogy a TLS-kézfogások minimális protokoll-verzióját használják a TLS 1.0, a TLS 1.1 és a TLS 1.2 használatával. Alapértelmezés szerint az SSL 2,0 és 3,0 le van tiltva, és nem konfigurálható. További információ: [Application Gateway TLS-házirend áttekintése](./application-gateway-ssl-policy-overview.md).
 
 A figyelő létrehozása után társítsa azt egy kérelem-útválasztási szabállyal. Ez a szabály határozza meg, hogy a figyelőre érkező kérések hogyan legyenek átirányítva a háttér felé.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ a kérelmek útválasztási szabályairól](configuration-request-routing-rules.md).

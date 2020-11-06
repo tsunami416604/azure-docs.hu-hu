@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: 7ccc83a61ac4ffe6e1bb6767a9c611bd3fcc0edf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52bc2a20be0d7113583b7f23cc569dbb9503d364
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88892779"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397246"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -28,9 +28,9 @@ Ezt a fajta útválasztást alkalmazásrétegbeli (OSI 7. réteg) terheléselosz
 >[!NOTE]
 > Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. Ha nagy teljesítményű, kis késleltetésű, 4. rétegbeli terheléselosztásra van szüksége, tekintse meg [a mi az Azure Load Balancer?](../load-balancer/load-balancer-overview.md) Ha globális DNS-terheléselosztást keres, tekintse meg a [Mi az Traffic Manager?](../traffic-manager/traffic-manager-overview.md) A végpontok közötti forgatókönyvek a megoldások kombinálásával is hasznosak lehetnek.
 >
-> Az Azure terheléselosztási lehetőségeinek összehasonlítását lásd: [Az Azure terheléselosztási lehetőségeinek áttekintése](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+> Az Azure terheléselosztási lehetőségeinek összehasonlítását lásd: [Az Azure terheléselosztási lehetőségeinek áttekintése](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Application Gateway szolgáltatásokkal kapcsolatos további tudnivalókért lásd az [Azure Application Gateway funkcióit](features.md)ismertető témakört.
 

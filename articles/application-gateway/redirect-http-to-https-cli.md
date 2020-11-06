@@ -8,16 +8,16 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 7dbfa877f634256c86166892a38d048a95e56baa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49fd6a939fc30671cf78984fdcba009666f6121e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331029"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397297"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Application Gateway létrehozása HTTP-vel HTTPS-átirányításhoz az Azure CLI használatával
 
-Az Azure CLI-vel létrehozhat egy, a TLS/SSL-lezáráshoz szükséges tanúsítvánnyal rendelkező [Application Gateway](overview.md) -t. Az útválasztási szabályok a HTTP-forgalom átirányítására szolgálnak az Application Gateway HTTPS-portjára. Ebben a példában létrehozunk egy virtuálisgép- [méretezési készletet](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) is az Application Gateway két virtuálisgép-példányát tartalmazó, a backend-készlethez.
+Az Azure CLI-vel létrehozhat egy, a TLS/SSL-lezáráshoz szükséges tanúsítvánnyal rendelkező [Application Gateway](overview.md) -t. Az útválasztási szabályok a HTTP-forgalom átirányítására szolgálnak az Application Gateway HTTPS-portjára. Ebben a példában létrehozunk egy virtuálisgép- [méretezési készletet](../virtual-machine-scale-sets/overview.md) is az Application Gateway két virtuálisgép-példányát tartalmazó, a backend-készlethez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -27,7 +27,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * Figyelő és átirányítási szabály hozzáadása
 * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -221,8 +221,6 @@ Ha önaláírt tanúsítványt használt, a biztonsági figyelmeztetés elfogad�
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/redirect-http-to-https-cli/application-gateway-nginxtest.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Application Gateway létrehozása belső átirányítás használatával az Azure CLI-vel](redirect-internal-site-cli.md)
-
-

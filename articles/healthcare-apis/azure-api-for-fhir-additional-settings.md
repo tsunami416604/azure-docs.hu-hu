@@ -8,12 +8,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/22/2019
-ms.openlocfilehash: 5de1d99442f307fc7850114915851f994258b537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9949ab4cfa42553e5a8d28244b8f621f09334d1
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87845901"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398164"
 ---
 # <a name="additional-settings-for-azure-api-for-fhir"></a>További beállítások a FHIR készült Azure API-hoz
 
@@ -29,7 +29,7 @@ További információ az alapértelmezett beállítások módosításáról: az 
 
 ## <a name="access-control"></a>Hozzáférés-vezérlés
 
-A FHIR készült Azure API csak a jogosult felhasználók számára engedélyezi a FHIR API elérését. A jogosultsággal rendelkező felhasználókat két különböző mechanizmuson keresztül állíthatja be. A hozzáférés-vezérlés konfigurálásának elsődleges és ajánlott módja az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/)használata, amely a **hozzáférés-vezérlés (iam)** panelen érhető el. Az Azure RBAC csak akkor működik, ha az előfizetéshez társított Azure Active Directory Bérlővel szeretné védeni az adatsíkok elérését. Ha másik bérlőt szeretne használni, a FHIR készült Azure API helyi FHIR-adatközpont-hozzáférés-vezérlési mechanizmust kínál. A konfigurációs beállítások nem annyira gazdagok, mint a helyi RBAC mechanizmus használatakor. Részletekért válasszon a következő lehetőségek közül:
+A FHIR készült Azure API csak a jogosult felhasználók számára engedélyezi a FHIR API elérését. A jogosultsággal rendelkező felhasználókat két különböző mechanizmuson keresztül állíthatja be. A hozzáférés-vezérlés konfigurálásának elsődleges és ajánlott módja az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/index.yml)használata, amely a **hozzáférés-vezérlés (iam)** panelen érhető el. Az Azure RBAC csak akkor működik, ha az előfizetéshez társított Azure Active Directory Bérlővel szeretné védeni az adatsíkok elérését. Ha másik bérlőt szeretne használni, a FHIR készült Azure API helyi FHIR-adatközpont-hozzáférés-vezérlési mechanizmust kínál. A konfigurációs beállítások nem annyira gazdagok, mint a helyi RBAC mechanizmus használatakor. Részletekért válasszon a következő lehetőségek közül:
 
 * [Azure-RBAC a FHIR-adatsíkon](configure-azure-rbac.md). Ez az előnyben részesített lehetőség, ha az előfizetéshez társított Azure Active Directory bérlőt használja.
 * [Helyi FHIR adatsíkok hozzáférés-vezérlése](configure-local-rbac.md). Ezt a lehetőséget csak akkor használja, ha külső Azure Active Directory bérlőt kell használnia az adatsík hozzáférés-vezérléséhez. 
@@ -40,7 +40,7 @@ Előfordulhat, hogy a telepítés részeként engedélyezni szeretné a diagnosz
 ## <a name="use-custom-headers-to-add-data-to-audit-logs"></a>Az egyéni fejlécek használata a naplókba való adathozzáadáshoz
 Előfordulhat, hogy a FHIR készült Azure API-ban további információkat szeretne szerepeltetni a naplófájlokban, amelyek a hívó rendszerből származnak. Ehhez az információhoz egyéni fejléceket is használhat.
 
-A különböző típusú információk rögzítéséhez egyéni fejléceket használhat. Példa:
+A különböző típusú információk rögzítéséhez egyéni fejléceket használhat. Ilyenek többek között:
 
 * Identitás-vagy engedélyezési információk
 * A hívó forrása
@@ -49,7 +49,7 @@ A különböző típusú információk rögzítéséhez egyéni fejléceket hasz
 
 Ha ezeket az adatnaplókat szeretné felvenni a naplókba, tekintse meg az [egyéni HTTP-fejlécek használata az adatgyűjtés naplózása a naplókhoz](use-custom-headers.md) útmutató című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a útmutatóban további beállításokat állíthat be a FHIR készült Azure API-hoz.
 

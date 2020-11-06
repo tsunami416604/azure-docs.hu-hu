@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d2a49c1ba90c35575116ed6cf1482683c45e0b5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76fea0c8b6f3c13c9f462ecbb72611c6659c65d0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595818"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397070"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Application Gateway létrehozása TLS-megszakítással az Azure CLI használatával
 
-Az Azure CLI-vel létrehozhat egy, a [TLS](ssl-overview.md)-leállításhoz szükséges tanúsítvánnyal rendelkező [Application Gateway](overview.md) -t. A háttér-kiszolgálók esetében használhat virtuálisgép- [méretezési készletet](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) . Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez.
+Az Azure CLI-vel létrehozhat egy, a [TLS](ssl-overview.md)-leállításhoz szükséges tanúsítvánnyal rendelkező [Application Gateway](overview.md) -t. A háttér-kiszolgálók esetében használhat virtuálisgép- [méretezési készletet](../virtual-machine-scale-sets/overview.md) . Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -28,7 +28,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha szeretné, az eljárást [Azure PowerShell](tutorial-ssl-powershell.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -180,6 +180,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmaz
 az group delete --name myResourceGroupAG --location eastus
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Több webhelyet üzemeltető alkalmazásátjáró létrehozása](./tutorial-multiple-sites-cli.md)

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
-ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e30a93f8270cfaf8910130cc1e2633bb80c2b8e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67659501"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397172"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Az Azure Application Gateway Resource Health áttekintése
 
@@ -61,4 +61,4 @@ A **csökkentett** állapotú állapot azt jelzi, hogy az átjáró a teljesítm
 
 ## <a name="next-steps"></a>További lépések
 
-A webalkalmazási tűzfal (WAF) Application Gateway hibaelhárításával kapcsolatos további információkért lásd: [webalkalmazási tűzfal (WAF) hibaelhárítása Az Azure Application Gatewayhoz](web-application-firewall-troubleshoot.md).
+A webalkalmazási tűzfal (WAF) Application Gateway hibaelhárításával kapcsolatos további információkért lásd: [webalkalmazási tűzfal (WAF) hibaelhárítása Az Azure Application Gatewayhoz](../web-application-firewall/ag/web-application-firewall-troubleshoot.md).

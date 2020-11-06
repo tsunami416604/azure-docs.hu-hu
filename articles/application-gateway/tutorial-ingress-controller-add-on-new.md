@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: a93ef47d4a7ecc136f66cf54a08f7ed23bec2cc0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 18c8aa0ff05dababc5a79c5c05b43ce9ebcbf9b4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427970"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397093"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Oktatóanyag: az új, Application Gateway példánnyal rendelkező új AK-fürthöz tartozó bejövő vezérlő bővítmény (előzetes verzió) engedélyezése
 
@@ -39,17 +39,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ha a parancssori felület helyi telepítését és használatát választja, az oktatóanyaghoz az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
-Regisztrálja az *AK-IngressApplicationGatewayAddon* funkció jelzőjét az az [Feature Register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) paranccsal az alábbi példában látható módon. Ezt csak egyszer kell elvégeznie előfizetés esetén, amíg a bővítmény még előzetes verzióban van.
+Regisztrálja az *AK-IngressApplicationGatewayAddon* funkció jelzőjét az az [Feature Register](/cli/azure/feature#az-feature-register) paranccsal az alábbi példában látható módon. Ezt csak egyszer kell elvégeznie előfizetés esetén, amíg a bővítmény még előzetes verzióban van.
 ```azurecli-interactive
 az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
 ```
 
-Az állapot megjelenítéséhez néhány percet is igénybe vehet `Registered` . A regisztrációs állapotot az az [Feature List](https://docs.microsoft.com/cli/azure/feature#az-feature-register) parancs használatával tekintheti meg:
+Az állapot megjelenítéséhez néhány percet is igénybe vehet `Registered` . A regisztrációs állapotot az az [Feature List](/cli/azure/feature#az-feature-register) parancs használatával tekintheti meg:
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
 ```
 
-Ha elkészült, frissítse a Microsoft. Tárolószolgáltatás erőforrás-szolgáltató regisztrációját az az [Provider Register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) paranccsal:
+Ha elkészült, frissítse a Microsoft. Tárolószolgáltatás erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider#az-provider-register) paranccsal:
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
@@ -64,7 +64,7 @@ az extension update --name aks-preview
 az extension list
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create)paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *canadacentral* helyen (régió): 
 
@@ -82,15 +82,15 @@ Most üzembe kell helyeznie egy új AK-fürtöt a AGIC-bővítmény engedélyez�
 > - Application Gateway WAF engedélyezése a portálon keresztül. 
 > - Először hozza létre a WAF_v2 Application Gateway példányt, majd kövesse a [AGIC-bővítmény meglévő AK-fürttel és meglévő Application Gateway-példánnyal való engedélyezésének](tutorial-ingress-controller-add-on-existing.md)utasításait. 
 
-A következő példában egy *myCluster* nevű új AK-fürtöt fog üzembe helyezni az [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) és a [felügyelt identitások](https://docs.microsoft.com/azure/aks/use-managed-identity)használatával. A AGIC-bővítmény engedélyezve lesz a létrehozott erőforráscsoport *myResourceGroup*. 
+A következő példában egy *myCluster* nevű új AK-fürtöt fog üzembe helyezni az [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) és a [felügyelt identitások](../aks/use-managed-identity.md)használatával. A AGIC-bővítmény engedélyezve lesz a létrehozott erőforráscsoport *myResourceGroup*. 
 
-Ha egy meglévő Application Gateway-példány megadása nélkül telepít egy új AK-fürtöt a AGIC-bővítménysel, akkor a rendszer egy Standard_v2 SKU Application Gateway példány automatikus létrehozását fogja jelenteni. Így megadhatja a Application Gateway példány nevét és alhálózatának címterület-területét is. Az Application Gateway-példány neve *myApplicationGateway*lesz, és az alhálózati címtartomány a jelenleg használt 10.2.0.0/16. Győződjön meg arról, hogy az ebben az oktatóanyagban az AK-előzetes bővítményt adta hozzá vagy frissítette. 
+Ha egy meglévő Application Gateway-példány megadása nélkül telepít egy új AK-fürtöt a AGIC-bővítménysel, akkor a rendszer egy Standard_v2 SKU Application Gateway példány automatikus létrehozását fogja jelenteni. Így megadhatja a Application Gateway példány nevét és alhálózatának címterület-területét is. Az Application Gateway-példány neve *myApplicationGateway* lesz, és az alhálózati címtartomány a jelenleg használt 10.2.0.0/16. Győződjön meg arról, hogy az ebben az oktatóanyagban az AK-előzetes bővítményt adta hozzá vagy frissítette. 
 
 ```azurecli-interactive
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
 ```
 
-A parancs további paramétereinek konfigurálásához `az aks create` tekintse meg [ezeket a hivatkozásokat](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
+A parancs további paramétereinek konfigurálásához `az aks create` tekintse meg [ezeket a hivatkozásokat](/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
 
 > [!NOTE]
 > A létrehozott AK-fürt megjelenik a létrehozott erőforráscsoport *myResourceGroup*. Az automatikusan létrehozott Application Gateway példány azonban a csomópont-erőforráscsoporthoz kerül, ahol az ügynök-készletek vannak. Alapértelmezés szerint a csomópont-erőforráscsoport neve *MC_resource-Group-name_cluster-name_location* , de módosítható. 
@@ -138,4 +138,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [További információ a AGIC-bővítmény letiltásáról](./ingress-controller-disable-addon.md)
-

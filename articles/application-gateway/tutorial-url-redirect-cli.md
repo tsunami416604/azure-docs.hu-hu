@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 66c725e8d6c28137db5c3220e0a6548714da0911
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da6d02e620c33610770c71f0c0e3ae68e70ee317
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88959562"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397044"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Oktatóanyag: Alkalmazásátjáró létrehozása URL-alapú átirányítással az Azure CLI használatával
 
-Az Azure CLI használatával [URL-alapú útválasztási szabályokat](tutorial-url-route-cli.md) konfigurálhat [alkalmazásátjárók](application-gateway-introduction.md) létrehozásakor. Ebben az oktatóanyagban háttérkészleteket hoz létre [virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használatával. Ezután URL-útválasztási szabályokat hoz létre, amelyek biztosítják a webes forgalom átirányítását a megfelelő háttérkészletekre.
+Az Azure CLI használatával [URL-alapú útválasztási szabályokat](tutorial-url-route-cli.md) konfigurálhat [alkalmazásátjárók](./overview.md) létrehozásakor. Ebben az oktatóanyagban háttérkészleteket hoz létre [virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/overview.md) használatával. Ezután URL-útválasztási szabályokat hoz létre, amelyek biztosítják a webes forgalom átirányítását a megfelelő háttérkészletekre.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -34,7 +34,7 @@ A következő példában a 8080-as és a 8081-es portról egyaránt érkezik web
 
 Igény szerint az oktatóanyag az [Azure PowerShell](tutorial-url-redirect-powershell.md) használatával is elvégezhető.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -42,7 +42,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal.
 
@@ -236,7 +236,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása
 
-Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A *myvmss1*, *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyeken az NGINX-et telepíti.
+Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A *myvmss1* , *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyeken az NGINX-et telepíti.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -318,4 +318,4 @@ az group delete --name myResourceGroupAG
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg részletesebben az alkalmazásátjárók lehetőségeit](application-gateway-introduction.md)
+> [Ismerje meg részletesebben az alkalmazásátjárók lehetőségeit](./overview.md)

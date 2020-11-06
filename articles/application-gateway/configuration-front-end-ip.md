@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: d6cfac7f0fb3939e57ce64f552556138ce9feacd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc5efd6ad478710ba839634a49f041211756af71
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652976"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397671"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>Application Gateway előtér-IP-cím konfigurálása
 
@@ -32,12 +32,12 @@ Nem szükséges egy nyilvános IP-cím egy olyan belső végponthoz, amely nem �
 
 Csak egy nyilvános IP-cím vagy egy magánhálózati IP-cím támogatott. Az előtérbeli IP-címet az Application Gateway létrehozásakor választhatja ki.
 
-- Nyilvános IP-cím esetén létrehozhat egy új nyilvános IP-címet, vagy használhat egy meglévő nyilvános IP-címet az Application Gateway szolgáltatással megegyező helyen. További információ: statikus vagy [dinamikus nyilvános IP-cím](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
+- Nyilvános IP-cím esetén létrehozhat egy új nyilvános IP-címet, vagy használhat egy meglévő nyilvános IP-címet az Application Gateway szolgáltatással megegyező helyen. További információ: statikus vagy [dinamikus nyilvános IP-cím](./application-gateway-components.md#static-versus-dynamic-public-ip-address).
 
-- Privát IP-cím esetén megadhat egy magánhálózati IP-címet abban az alhálózatban, amelyben az Application Gateway létrejött. Ha nem ad meg ilyet, a rendszer automatikusan kijelöl egy tetszőleges IP-címet az alhálózatból. A kiválasztott IP-cím típusa (statikus vagy dinamikus) később nem módosítható. További információ: [Application Gateway létrehozása belső terheléselosztó használatával](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
+- Privát IP-cím esetén megadhat egy magánhálózati IP-címet abban az alhálózatban, amelyben az Application Gateway létrejött. Ha nem ad meg ilyet, a rendszer automatikusan kijelöl egy tetszőleges IP-címet az alhálózatból. A kiválasztott IP-cím típusa (statikus vagy dinamikus) később nem módosítható. További információ: [Application Gateway létrehozása belső terheléselosztó használatával](./application-gateway-ilb-arm.md).
 
-Az előtér-IP-cím egy *figyelőhöz*van társítva, amely az ELŐTÉR-IP-címen érkező kérelmeket ellenőrzi.
+Az előtér-IP-cím egy *figyelőhöz* van társítva, amely az ELŐTÉR-IP-címen érkező kérelmeket ellenőrzi.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A figyelő konfigurációjának megismerése](configuration-listeners.md)

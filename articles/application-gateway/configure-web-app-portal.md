@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: victorh
-ms.openlocfilehash: df92e08e91761d77c606ccb5389eee7dc219c101
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a72f0106088d26eb2ff53456840c598c3d9619a7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323376"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397552"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>App Service konfigurálása Application Gateway
 
@@ -30,15 +30,15 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 - Application Gateway: hozzon létre egy Application Gateway-t a háttér-készlet célja nélkül. További információ [: gyors webes forgalom az Azure Application Gateway-Azure Portal](quick-create-portal.md)
 
-- App Service: Ha nem rendelkezik meglévő app Service-szolgáltatással, tekintse meg az [app Service dokumentációját](https://docs.microsoft.com/azure/app-service/).
+- App Service: Ha nem rendelkezik meglévő app Service-szolgáltatással, tekintse meg az [app Service dokumentációját](../app-service/index.yml).
 
 ## <a name="add-app-service-as-backend-pool"></a>App Service hozzáadása háttér-készletként
 
 1. A Azure Portal válassza ki az Application Gateway-t.
 
-2. A **háttér-készletek**területen válassza ki a háttér-készletet.
+2. A **háttér-készletek** területen válassza ki a háttér-készletet.
 
-4. A **cél típusa**területen válassza a **app Services**lehetőséget.
+4. A **cél típusa** területen válassza a **app Services** lehetőséget.
 
 5. A **cél** területen válassza ki a app Service.
 
@@ -46,23 +46,23 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
    
    > [!NOTE]
    > A legördülő lista csak azokat az alkalmazás-szolgáltatásokat tölti fel, amelyek ugyanabban az előfizetésben vannak, mint a Application Gateway. Ha olyan app Service-t szeretne használni, amely egy másik előfizetésben található, mint a Application Gateway, **app Services** akkor a **célok** legördülő menüben válassza az **IP-cím vagy állomásnév** lehetőséget, és adja meg a hostname (példa. azurewebsites.net) az App Service-ben.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="edit-http-settings-for-app-service"></a>App Service HTTP-beállításainak szerkesztése
 
-1. A **http-beállítások**területen válassza ki a meglévő http-beállítást.
+1. A **http-beállítások** területen válassza ki a meglévő http-beállítást.
 
-2. A **felülbírálás új állomásnévvel**területen válassza az **Igen**lehetőséget.
-3. Az **állomásnév felülbírálása**területen válassza **az állomásnév kiválasztása a háttérbeli célként**lehetőséget.
-4. Kattintson a **Mentés** gombra.
+2. A **felülbírálás új állomásnévvel** területen válassza az **Igen** lehetőséget.
+3. Az **állomásnév felülbírálása** területen válassza **az állomásnév kiválasztása a háttérbeli célként** lehetőséget.
+4. Válassza a **Mentés** lehetőséget.
 
-   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="App Service-háttérrendszer":::
+   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="Állomásnév kiválasztása a háttérbeli http-beállításokból":::
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>További konfiguráció az App Service relatív elérési útjára történő átirányítás esetén
 
 Amikor az App Service átirányítási választ küld az ügyfélnek, hogy átirányítsa a relatív elérési útjára (például egy átirányításról `contoso.azurewebsites.net/path1` `contoso.azurewebsites.net/path2` ), ugyanazt a gazdagépet használja a válaszának Location fejlécében, mint az Application gatewaytől kapott kérésben. Így az ügyfél a kérést közvetlenül az `contoso.azurewebsites.net/path2` Application Gateway () szolgáltatáson keresztül teszi elérhetővé `contoso.com/path2` . Az Application Gateway megkerülése nem kívánatos.
 
-Ha használja a használati esetet, vannak olyan helyzetek, amikor az App Service-nek át kell küldenie egy átirányítási választ az ügyfélnek, a [további lépéseket végrehajtva írja felül a hely fejlécét](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration).
+Ha használja a használati esetet, vannak olyan helyzetek, amikor az App Service-nek át kell küldenie egy átirányítási választ az ügyfélnek, a [további lépéseket végrehajtva írja felül a hely fejlécét](./troubleshoot-app-service-redirection-app-service-url.md#sample-configuration).
 
 ## <a name="restrict-access"></a>Hozzáférés korlátozása
 
@@ -70,6 +70,6 @@ A példákban telepített webalkalmazások nyilvános IP-címeket használnak, a
 
 A webalkalmazásokhoz való hozzáférés korlátozásának egyik módja a [Azure app Service statikus IP-korlátozások](../app-service/app-service-ip-restrictions.md)használata. Például korlátozhatja a webalkalmazást úgy, hogy az csak az Application gatewaytől kapjon forgalmat. Az App Service IP-korlátozási funkciója segítségével az Application Gateway VIP-t csak az elérési címmel listázhatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az App Service-ről és az Application Gateway további több-bérlős támogatásáról, tekintse meg a [több-bérlős szolgáltatás támogatása az Application gatewayrel](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)című témakört.
+Ha többet szeretne megtudni az App Service-ről és az Application Gateway további több-bérlős támogatásáról, tekintse meg a [több-bérlős szolgáltatás támogatása az Application gatewayrel](./application-gateway-web-app-overview.md)című témakört.

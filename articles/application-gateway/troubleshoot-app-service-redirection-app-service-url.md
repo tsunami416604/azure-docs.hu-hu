@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 676d7c2ad18327471c6e95f3cef26185fa49b78b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595944"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396889"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>A Application Gateway App Service problémáinak elhárítása
 
@@ -80,10 +80,10 @@ Az előző példában figyelje meg, hogy a válasz fejlécének 301-as állapotk
 
 ## <a name="solution-rewrite-the-location-header"></a>Megoldás: a hely fejlécének újraírása
 
-A Location (hely) fejlécben állítsa be az állomásnév nevét az Application Gateway tartománynevére. Ehhez hozzon létre egy [Újraírási szabályt](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) egy feltétellel, amely kiértékeli, hogy a válaszban található azurewebsites.net tartalmaz-e. Emellett olyan műveletet is végre kell hajtania, amely újraírja a Location fejlécet, hogy az Application Gateway állomásneve legyen. További információ: a [Location fejléc újraírásának](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)útmutatója.
+A Location (hely) fejlécben állítsa be az állomásnév nevét az Application Gateway tartománynevére. Ehhez hozzon létre egy [Újraírási szabályt](./rewrite-http-headers.md) egy feltétellel, amely kiértékeli, hogy a válaszban található azurewebsites.net tartalmaz-e. Emellett olyan műveletet is végre kell hajtania, amely újraírja a Location fejlécet, hogy az Application Gateway állomásneve legyen. További információ: a [Location fejléc újraírásának](./rewrite-http-headers.md#modify-a-redirection-url)útmutatója.
 
 > [!NOTE]
-> A HTTP-fejléc újraírásának támogatása csak a Application Gateway [Standard_v2 és WAF_V2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) esetében érhető el. Ha v1 SKU-t használ, javasoljuk, hogy [telepítse a v1-ről v2-re](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2). A v2 SKU-hoz elérhető újraírást és egyéb [speciális képességeket](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) kívánja használni.
+> A HTTP-fejléc újraírásának támogatása csak a Application Gateway [Standard_v2 és WAF_V2 SKU](./application-gateway-autoscaling-zone-redundant.md) esetében érhető el. Ha v1 SKU-t használ, javasoljuk, hogy [telepítse a v1-ről v2-re](./migrate-v1-v2.md). A v2 SKU-hoz elérhető újraírást és egyéb [speciális képességeket](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku) kívánja használni.
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternatív megoldás: Egyéni tartománynév használata
 
@@ -93,7 +93,7 @@ Az App Service mostantól átirányítja az átirányítást (ha van ilyen) ugya
 
 Egy egyéni tartománynak kell lennie, és a következő eljárást kell követnie:
 
-- Regisztrálja a tartományt az App Service egyéni tartomány listájában. Az App Service teljes tartománynevére mutató CNAME-t kell megadnia az egyéni tartományban. További információ: [meglévő egyéni DNS-név leképezése Azure app Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
+- Regisztrálja a tartományt az App Service egyéni tartomány listájában. Az App Service teljes tartománynevére mutató CNAME-t kell megadnia az egyéni tartományban. További információ: [meglévő egyéni DNS-név leképezése Azure app Service](//azure/app-service/app-service-web-tutorial-custom-domain).
 
     ![App Service – egyéni tartomány listája](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
@@ -142,6 +142,6 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
   X-Powered-By: ASP.NET
   ```
-  ## <a name="next-steps"></a>Következő lépések
+  ## <a name="next-steps"></a>További lépések
 
 Ha a fenti lépések nem oldották meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).

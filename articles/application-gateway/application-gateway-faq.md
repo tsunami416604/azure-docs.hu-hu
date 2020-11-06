@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 492041e39cf3e7be256bc783afc82fc756e17bf4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791545"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397790"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -21,7 +21,7 @@ ms.locfileid: "92791545"
 
 Az alábbi gyakori kérdések az Azure Application Gateway.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-application-gateway"></a>Mi az Application Gateway?
 
@@ -29,7 +29,7 @@ Az Azure Application Gateway egy Application Delivery Controller (ADC) szolgált
 
 ### <a name="what-features-does-application-gateway-support"></a>Milyen funkciókat támogat a Application Gateway?
 
-Application Gateway támogatja az automatikus skálázást, a TLS-kiszervezést és a végpontok közötti TLS-t, a webalkalmazási tűzfalat (WAF), a cookie-alapú munkamenet-affinitást, az URL-elérésiút-alapú útválasztást, a többhelyes üzemeltetést és más funkciókat. A támogatott szolgáltatások teljes listájáért lásd: [Bevezetés a Application Gatewayba](application-gateway-introduction.md).
+Application Gateway támogatja az automatikus skálázást, a TLS-kiszervezést és a végpontok közötti TLS-t, a webalkalmazási tűzfalat (WAF), a cookie-alapú munkamenet-affinitást, az URL-elérésiút-alapú útválasztást, a többhelyes üzemeltetést és más funkciókat. A támogatott szolgáltatások teljes listájáért lásd: [Bevezetés a Application Gatewayba](./overview.md).
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>Miben különböznek Application Gateway és Azure Load Balancer?
 
@@ -41,17 +41,17 @@ A Application Gateway támogatja a HTTP, a HTTPS, a HTTP/2 és a WebSocket haszn
 
 ### <a name="how-does-application-gateway-support-http2"></a>Hogyan támogatja a Application Gateway a HTTP/2-t?
 
-Lásd: [http/2 támogatás](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support).
+Lásd: [http/2 támogatás](./configuration-listeners.md#http2-support).
 
 ### <a name="what-resources-are-supported-as-part-of-a-backend-pool"></a>Milyen erőforrások támogatottak a háttérbeli készlet részeként?
 
-Lásd: [támogatott háttérbeli erőforrások](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pools).
+Lásd: [támogatott háttérbeli erőforrások](./application-gateway-components.md#backend-pools).
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>Milyen régiókban Application Gateway elérhető?
 
 A Application Gateway v1 (standard és WAF) a globális Azure minden régiójában elérhető. Az [Azure China 21Vianet](https://www.azure.cn/) és [Azure Government](https://azure.microsoft.com/overview/clouds/government/)is elérhető.
 
-A Application Gateway v2 (Standard_v2 és WAF_v2) rendelkezésre állása: [Application Gateway v2 támogatott régiói](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#supported-regions)
+A Application Gateway v2 (Standard_v2 és WAF_v2) rendelkezésre állása: [Application Gateway v2 támogatott régiói](./application-gateway-autoscaling-zone-redundant.md#supported-regions)
 
 ### <a name="is-this-deployment-dedicated-for-my-subscription-or-is-it-shared-across-customers"></a>Ez az üzembe helyezés a saját előfizetéshez van hozzárendelve, vagy megosztották az ügyfelek között?
 
@@ -59,11 +59,11 @@ Application Gateway egy dedikált üzembe helyezés a virtuális hálózaton.
 
 ### <a name="does-application-gateway-support-http-to-https-redirection"></a>Támogatja a Application Gateway a HTTP és a HTTPS közötti átirányítást?
 
-Az átirányítás támogatott. Lásd: [Application Gateway átirányítás áttekintése](application-gateway-redirect-overview.md).
+Az átirányítás támogatott. Lásd: [Application Gateway átirányítás áttekintése](./redirect-overview.md).
 
 ### <a name="in-what-order-are-listeners-processed"></a>Milyen sorrendben dolgozza fel a figyelőket?
 
-Tekintse meg a [figyelő feldolgozásának sorrendjét](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-listeners).
+Tekintse meg a [figyelő feldolgozásának sorrendjét](./configuration-listeners.md#order-of-processing-listeners).
 
 ### <a name="where-do-i-find-the-application-gateway-ip-and-dns"></a>Hol találom a Application Gateway IP-címet és a DNS-t?
 
@@ -97,7 +97,7 @@ Az Application Gateway csak egy nyilvános IP-címet támogat.
 
 ### <a name="how-large-should-i-make-my-subnet-for-application-gateway"></a>Milyen nagy legyen az alhálózat a Application Gateway?
 
-Lásd [Application Gateway alhálózat méretével kapcsolatos szempontokat](https://docs.microsoft.com/azure/application-gateway/configuration-overview#size-of-the-subnet).
+Lásd [Application Gateway alhálózat méretével kapcsolatos szempontokat](./configuration-infrastructure.md#size-of-the-subnet).
 
 ### <a name="can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>Telepíthetek több Application Gateway erőforrást egyetlen alhálózatra?
 
@@ -111,7 +111,7 @@ Igen, de csak bizonyos forgatókönyvek. További információ: [Application Gat
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Támogatja a Application Gateway az x által továbbított fejléceket?
 
-Igen. Tekintse [meg a kérelem módosításait](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request).
+Igen. Tekintse [meg a kérelem módosításait](./how-application-gateway-works.md#modifications-to-the-request).
 
 ### <a name="how-long-does-it-take-to-deploy-an-application-gateway-will-my-application-gateway-work-while-its-being-updated"></a>Mennyi ideig tart az Application Gateway üzembe helyezése? Működik az Application Gateway a frissítés közben?
 
@@ -138,7 +138,7 @@ Nem. A Application Gateway v2 még nem támogatja az NTLM-hitelesítéssel rende
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>A Application Gateway affinitás cookie támogatja a SameSite attribútumot?
 Igen, a [Chromium böngésző](https://www.chromium.org/Home) [V80 frissítése](https://chromiumdash.appspot.com/schedule) a SameSite attribútum nélküli http-cookie-kra vonatkozó mandátumot vezetett be SameSite = LAX néven. Ez azt jelenti, hogy a böngésző nem fogja elküldeni a Application Gateway affinitási cookie-t harmadik féltől származó környezetben. 
 
-Ennek a forgatókönyvnek a támogatásához Application Gateway beinjektál egy *ApplicationGatewayAffinityCORS* nevű másik cookie-t a meglévő *ApplicationGatewayAffinity* -cookie mellett.  Ezek a cookie-k hasonlóak, de a *ApplicationGatewayAffinityCORS* -cookie két további attribútummal bővült: *SameSite = none; Biztonságos* . Ezek az attribútumok olyan Sticky-munkameneteket tartanak fenn, amelyek az átszármazási kérelmek esetében is érvényesek További információt a [cookie-alapú affinitás című szakaszban](configuration-http-settings.md#cookie-based-affinity) talál.
+Ennek a forgatókönyvnek a támogatásához Application Gateway beinjektál egy *ApplicationGatewayAffinityCORS* nevű másik cookie-t a meglévő *ApplicationGatewayAffinity* -cookie mellett.  Ezek a cookie-k hasonlóak, de a *ApplicationGatewayAffinityCORS* -cookie két további attribútummal bővült: *SameSite = none; Biztonságos*. Ezek az attribútumok olyan Sticky-munkameneteket tartanak fenn, amelyek az átszármazási kérelmek esetében is érvényesek További információt a [cookie-alapú affinitás című szakaszban](configuration-http-settings.md#cookie-based-affinity) talál.
 
 ## <a name="performance"></a>Teljesítmény
 
@@ -172,7 +172,7 @@ Igen.
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Application Gateway mindig virtuális hálózatban van üzembe helyezve?
 
-Igen. A Application Gateway mindig egy virtuális hálózati alhálózaton van üzembe helyezve. Ez az alhálózat csak Application Gateway-t tartalmazhat. További információ: [virtuális hálózati és alhálózati követelmények](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet).
+Igen. A Application Gateway mindig egy virtuális hálózati alhálózaton van üzembe helyezve. Ez az alhálózat csak Application Gateway-t tartalmazhat. További információ: [virtuális hálózati és alhálózati követelmények](./configuration-infrastructure.md#virtual-network-and-dedicated-subnet).
 
 ### <a name="can-application-gateway-communicate-with-instances-outside-of-its-virtual-network-or-outside-of-its-subscription"></a>Képes Application Gateway kommunikálni a virtuális hálózatán kívüli példányokkal vagy az előfizetésén kívül?
 
@@ -184,15 +184,15 @@ Nem. Az alhálózaton azonban más Application Gateway-átjárókat is telepíth
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Támogatottak-e a hálózati biztonsági csoportok az Application Gateway alhálózaton?
 
-Lásd: [hálózati biztonsági csoportok a Application Gateway alhálózatban](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#network-security-groups).
+Lásd: [hálózati biztonsági csoportok a Application Gateway alhálózatban](./configuration-infrastructure.md#network-security-groups).
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>Támogatja az Application Gateway alhálózata a felhasználó által megadott útvonalakat?
 
-Tekintse [meg a Application Gateway alhálózat által támogatott, felhasználó által megadott útvonalakat](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes).
+Tekintse [meg a Application Gateway alhálózat által támogatott, felhasználó által megadott útvonalakat](./configuration-infrastructure.md#supported-user-defined-routes).
 
 ### <a name="are-service-endpoint-policies-supported-in-the-application-gateway-subnet"></a>Támogatottak-e a Application Gateway alhálózat szolgáltatás-végponti házirendek?
 
-Nem. A Storage-fiókok [szolgáltatási végponti házirendjei](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview) nem támogatottak Application Gateway alhálózatban, és a konfigurálásával letiltja az Azure-infrastruktúra forgalmát.
+Nem. A Storage-fiókok [szolgáltatási végponti házirendjei](../virtual-network/virtual-network-service-endpoint-policies-overview.md) nem támogatottak Application Gateway alhálózatban, és a konfigurálásával letiltja az Azure-infrastruktúra forgalmát.
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Milyen korlátozások vonatkoznak a Application Gatewayra? Növelhetim ezeket a korlátokat?
 
@@ -220,7 +220,7 @@ Nem.
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>Hogyan történik az útválasztási szabályok feldolgozása Application Gateway?
 
-Lásd [a feldolgozási szabályok sorrendjét](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-rules).
+Lásd [a feldolgozási szabályok sorrendjét](./configuration-request-routing-rules.md#order-of-processing-rules).
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Az egyéni mintavételek esetében Mit jelent a gazdagép mező?
 
@@ -228,7 +228,7 @@ A gazdagép mező azt a nevet adja meg, amelyet a mintavétel elküldéséhez a 
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Engedélyezhető Application Gateway csak néhány forrás IP-cím eléréséhez?
 
-Igen. Lásd: [adott forrás IP-címekhez való hozzáférés korlátozása](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#allow-access-to-a-few-source-ips).
+Igen. Lásd: [adott forrás IP-címekhez való hozzáférés korlátozása](./configuration-infrastructure.md#allow-access-to-a-few-source-ips).
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Használhatom ugyanazt a portot mind a nyilvános, mind a privát figyelőkhöz?
 
@@ -247,7 +247,7 @@ A Application Gateway v2 jelenleg nem támogatja csak a magánhálózati IP-mód
 Ha azonban csak privát IP-címmel szeretné használni a Application Gateway v2-t, kövesse az alábbi eljárást:
 1. Nyilvános és privát előtér-IP-címmel rendelkező Application Gateway létrehozása
 2. Ne hozzon létre figyelőket a nyilvános előtérbeli IP-címhez. A Application Gateway nem fogja figyelni a nyilvános IP-cím forgalmát, ha a rendszer nem hoz létre figyelőket.
-3. Hozzon létre és csatoljon egy [hálózati biztonsági csoportot](https://docs.microsoft.com/azure/virtual-network/security-overview) a Application Gateway alhálózat számára a következő konfigurációval a prioritás sorrendjében:
+3. Hozzon létre és csatoljon egy [hálózati biztonsági csoportot](../virtual-network/network-security-groups-overview.md) a Application Gateway alhálózat számára a következő konfigurációval a prioritás sorrendjében:
     
     a. Engedélyezi a forrásból származó forgalmat a **GatewayManager** szolgáltatás címkéjének és céljának, mint a **65200-65535** **-as** portot. Ez a porttartomány az Azure-infrastruktúra kommunikációja esetén szükséges. Ezek a portok tanúsítvány-hitelesítéssel vannak védve (zárolva). A külső entitások, beleértve az átjáró felhasználói rendszergazdáit, nem indíthatnak módosításokat a végpontokon a megfelelő tanúsítványok nélkül.
     
@@ -337,7 +337,7 @@ Igen, a Application Gateway v2 SKU támogatja a Key Vault. További információ
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Hogyan konfigurálja a HTTPS-figyelőket a következőhöz:. com és .net-helyek? 
 
-Több tartományalapú (gazdagép-alapú) útválasztáshoz létrehozhat többhelyes figyelőket, beállíthat HTTPS protokollt használó figyelőket, és társíthatja a figyelőket az útválasztási szabályokhoz. További információ: [több webhely üzemeltetése Application Gateway használatával](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
+Több tartományalapú (gazdagép-alapú) útválasztáshoz létrehozhat többhelyes figyelőket, beállíthat HTTPS protokollt használó figyelőket, és társíthatja a figyelőket az útválasztási szabályokhoz. További információ: [több webhely üzemeltetése Application Gateway használatával](./multiple-site-overview.md).
 
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>Használhatok speciális karaktereket a saját. pfx fájl jelszavában?
 
@@ -350,7 +350,7 @@ A hitelesítésszolgáltató (CA) böngésző tagjai a közelmúltban közzétet
 * [1649951-es hiba](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
 * [1650910-es hiba](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
 
-Az iparág megfelelőségi követelményeinek megfelelően a CA-szállítók elkezdték visszavonni a nem megfelelő CAs-t és a megfelelő hitelesítésszolgáltatókat, amelyekhez az ügyfeleknek újra ki kell állítani a tanúsítványokat.A Microsoft szorosan együttműködik ezekkel a szállítókkal, hogy csökkentse az Azure-szolgáltatásokkal kapcsolatos lehetséges hatásokat, **azonban a "saját tanúsítvány használata" (BYOC) forgatókönyvekben használt saját tanúsítványok vagy tanúsítványok továbbra is a váratlanul visszavont állapottal rendelkeznek** .
+Az iparág megfelelőségi követelményeinek megfelelően a CA-szállítók elkezdték visszavonni a nem megfelelő CAs-t és a megfelelő hitelesítésszolgáltatókat, amelyekhez az ügyfeleknek újra ki kell állítani a tanúsítványokat.A Microsoft szorosan együttműködik ezekkel a szállítókkal, hogy csökkentse az Azure-szolgáltatásokkal kapcsolatos lehetséges hatásokat, **azonban a "saját tanúsítvány használata" (BYOC) forgatókönyvekben használt saját tanúsítványok vagy tanúsítványok továbbra is a váratlanul visszavont állapottal rendelkeznek**.
 
 Annak ellenőrzése, hogy az alkalmazás által használt tanúsítványok vissza lettek-e vonva a [DigiCert bejelentésére](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) és a [tanúsítvány-visszavonási nyomon követésre](https://misissued.com/#revoked). Ha visszavonták a tanúsítványokat, vagy visszavonják őket, új tanúsítványokat kell kérnie az alkalmazásokban használt HITELESÍTÉSSZOLGÁLTATÓI gyártótól. Ha el szeretné kerülni az alkalmazás rendelkezésre állását, mert a tanúsítványok váratlanul visszavonják a tanúsítványokat, vagy egy visszavont tanúsítvány frissítését, tekintse meg az Azure Updates-bejegyzéseket az BYOC-t támogató különféle Azure-szolgáltatások szervizelési hivatkozásaira vonatkozóan: https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
@@ -365,7 +365,7 @@ Ha egy visszavont nemzetközi árumegállapodások vagy által kiállított tan�
 Ha el szeretné kerülni az alkalmazás megszakítását a probléma miatt, vagy egy visszavont HITELESÍTÉSSZOLGÁLTATÓ újbóli kibocsátását, a következő műveleteket kell végrehajtania: 
 
 1.  A tanúsítványok újbóli kiállításához forduljon a tanúsítványhoz
-2.  Az újrakiadást követően frissítse tanúsítványait az Azure Application Gateway/WAF a teljes [megbízhatósági lánctal](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (levél, köztes, főtanúsítvány). Ha a tanúsítványt használja, a figyelőn vagy a Application Gateway HTTP-beállításain az alábbi lépéseket követve frissítse a tanúsítványokat, és tekintse meg a további információkat tartalmazó dokumentáció hivatkozásait.
+2.  Az újrakiadást követően frissítse tanúsítványait az Azure Application Gateway/WAF a teljes [megbízhatósági lánctal](/windows/win32/seccrypto/certificate-chains) (levél, köztes, főtanúsítvány). Ha a tanúsítványt használja, a figyelőn vagy a Application Gateway HTTP-beállításain az alábbi lépéseket követve frissítse a tanúsítványokat, és tekintse meg a további információkat tartalmazó dokumentáció hivatkozásait.
 3.  Frissítse a háttérbeli alkalmazás-kiszolgálókat az újból kiállított tanúsítvány használatára. Az Ön által használt háttér-kiszolgálótól függően a tanúsítvány frissítési lépései eltérőek lehetnek. Keresse meg a gyártótól származó dokumentációt.
 
 A figyelőben lévő tanúsítvány frissítése:
@@ -374,14 +374,14 @@ A figyelőben lévő tanúsítvány frissítése:
 2.  A tanúsítványhoz társított figyelő beállításainak megnyitása
 3.  Kattintson a "kijelölt tanúsítvány megújítása vagy szerkesztése" lehetőségre.
 4.  Töltse fel az új PFX-tanúsítványt a jelszóval, és kattintson a Mentés gombra.
-5.  Nyissa meg a webhelyét, és ellenőrizze, hogy a hely a várt módon működik-e további információkért, és ellenőrizze [a dokumentációt](https://docs.microsoft.com/azure/application-gateway/renew-certificates).
+5.  Nyissa meg a webhelyét, és ellenőrizze, hogy a hely a várt módon működik-e további információkért, és ellenőrizze [a dokumentációt](./renew-certificates.md).
 
 Ha a Application Gateway figyelőben lévő Azure-kulcstartóból származó tanúsítványokra hivatkozik, javasoljuk, hogy végezze el a következő lépéseket a gyors módosításhoz:
 
 1.  A [Azure Portal](https://portal.azure.com/)navigáljon az Azure-beli kulcstartó-beállításokhoz, amelyek a Application Gatewayhoz vannak társítva
-2.  A kiállított tanúsítvány hozzáadása/importálása a tárolóban. Az útmutatóval kapcsolatos további információkért tekintse meg [a dokumentációt](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal) .
+2.  A kiállított tanúsítvány hozzáadása/importálása a tárolóban. Az útmutatóval kapcsolatos további információkért tekintse meg [a dokumentációt](../key-vault/certificates/quick-create-portal.md) .
 3.  A tanúsítvány importálása után navigáljon a Application Gateway figyelő beállításaihoz, és a "tanúsítvány kiválasztása a Key Vault" alatt kattintson a "tanúsítvány" legördülő listára, és válassza ki a legutóbb hozzáadott tanúsítványt.
-4.  Kattintson a Save (Mentés) gombra a Application Gateway TLS-leállításával kapcsolatos további információkért Key Vault tanúsítványokkal kapcsolatban, [itt](https://docs.microsoft.com/azure/application-gateway/key-vault-certs)tájékozódhat.
+4.  Kattintson a Save (Mentés) gombra a Application Gateway TLS-leállításával kapcsolatos további információkért Key Vault tanúsítványokkal kapcsolatban, [itt](./key-vault-certs.md)tájékozódhat.
 
 
 A tanúsítvány frissítése a HTTP-beállításokban:
@@ -391,7 +391,7 @@ Ha a Application Gateway/WAF szolgáltatás v1-es verzióját használja, akkor 
 2.  A tanúsítványhoz társított HTTP-beállítások megnyitása
 3.  Kattintson a tanúsítvány hozzáadása gombra, és töltse fel a kiállított tanúsítványt, és kattintson a Save (Mentés) gombra.
 4.  A régi tanúsítvány később is eltávolítható, ha a "..." gombra kattint. a régi tanúsítvány melletti beállítások gombra, és válassza a Törlés lehetőséget, majd kattintson a Mentés gombra.
-További információkért tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers).
+További információkért tekintse meg a [dokumentációt](./end-to-end-ssl-portal.md#add-authenticationtrusted-root-certificates-of-back-end-servers).
 
 Ha a Application Gateway/WAF szolgáltatás v2 SKU-át használja, nem kell feltöltenie az új tanúsítványt a HTTP-beállításokba, mivel a v2 SKU a "megbízható főtanúsítványok" szolgáltatást használja, és itt nem kell műveletet végrehajtania.
 
@@ -454,7 +454,7 @@ A portálon, az Application Gateway menü paneljén válassza a **műveletnapló
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Megadhatok riasztásokat a Application Gateway?
 
-Igen. Application Gateway a riasztások a metrikák használatára vannak konfigurálva. További információ: [Application Gateway mérőszámok](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics) és [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Igen. Application Gateway a riasztások a metrikák használatára vannak konfigurálva. További információ: [Application Gateway mérőszámok](./application-gateway-metrics.md) és [Riasztási értesítések fogadása](../azure-monitor/platform/alerts-overview.md).
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Hogyan elemezni Application Gateway forgalmi statisztikáit?
 
@@ -477,6 +477,6 @@ Igen. Ha a konfiguráció megfelel a következő forgatókönyvnek, nem jelenik 
 
 Nem, Application Gateway nem tárolja az ügyféladatokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

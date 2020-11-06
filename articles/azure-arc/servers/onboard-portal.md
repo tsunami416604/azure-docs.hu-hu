@@ -1,14 +1,14 @@
 ---
 title: Hibrid gépek összekötése az Azure-ba a Azure Portal
 description: Ebből a cikkből megtudhatja, hogyan telepítheti az ügynököt, és hogyan csatlakoztathatók a gépek az Azure-ba az Azure arc-kompatibilis kiszolgálók használatával a Azure Portal.
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8769a3b76172bc6508b7c52eda359695c01eaa4b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ca3c08acdef1b2a1f7c3774f5755967d472c93ed
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370151"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398028"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Hibrid gépek összekötése az Azure-ba a Azure Portal
 
@@ -18,7 +18,7 @@ Ehhez a módszerhez rendszergazdai jogosultságokkal kell rendelkeznie a gépen 
 
 Mielőtt elkezdené, tekintse át az [előfeltételeket](agent-overview.md#prerequisites) , és győződjön meg arról, hogy az előfizetés és az erőforrások megfelelnek a követelményeknek. A támogatott régiókkal és az egyéb kapcsolódó megfontolásokkal kapcsolatos információkért lásd: [támogatott Azure-régiók](overview.md#supported-regions).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>A telepítési parancsfájl létrehozása a Azure Portal
 
@@ -28,7 +28,7 @@ A letöltés és telepítés automatizálására szolgáló parancsfájl, valami
 
 1. A **kiszolgálók – Azure arc** lapon válassza a **Hozzáadás** lehetőséget a bal felső sarokban.
 
-1. A **módszer kiválasztása** lapon jelölje be a **kiszolgálók hozzáadása interaktív parancsfájl** csempével lehetőséget, majd válassza a **parancsfájl létrehozása**lehetőséget.
+1. A **módszer kiválasztása** lapon jelölje be a **kiszolgálók hozzáadása interaktív parancsfájl** csempével lehetőséget, majd válassza a **parancsfájl létrehozása** lehetőséget.
 
 1. A **parancsfájl létrehozása** lapon válassza ki azt az előfizetést és erőforráscsoportot, ahol a gépet az Azure-ban szeretné felügyelni. Válasszon ki egy Azure-helyet, ahol a rendszer a számítógép metaadatait tárolja. Ez a hely lehet azonos vagy eltérő, mint az erőforráscsoport helye.
 
@@ -46,13 +46,13 @@ A letöltés és telepítés automatizálására szolgáló parancsfájl, valami
 
 1. Válassza **a tovább lehetőséget: parancsfájl letöltése és futtatása**.
 
-1. A **letöltési és futtatási parancsfájl** lapon tekintse át az összegzési információkat, majd kattintson a **Letöltés**gombra. Ha továbbra is módosításokat kell végeznie, válassza az **előző**lehetőséget.
+1. A **letöltési és futtatási parancsfájl** lapon tekintse át az összegzési információkat, majd kattintson a **Letöltés** gombra. Ha továbbra is módosításokat kell végeznie, válassza az **előző** lehetőséget.
 
 ## <a name="install-and-validate-the-agent-on-windows"></a>Az ügynök telepítése és ellenőrzése Windows rendszeren
 
 ### <a name="install-manually"></a>Manuális telepítés
 
-A csatlakoztatott gépi ügynököt manuálisan is telepítheti a Windows Installer csomag *AzureConnectedMachineAgent.msi*futtatásával. A [Windows agent Windows Installer csomag](https://aka.ms/AzureConnectedMachineAgent) legújabb verzióját a Microsoft letöltőközpontból töltheti le.
+A csatlakoztatott gépi ügynököt manuálisan is telepítheti a Windows Installer csomag *AzureConnectedMachineAgent.msi* futtatásával. A [Windows agent Windows Installer csomag](https://aka.ms/AzureConnectedMachineAgent) legújabb verzióját a Microsoft letöltőközpontból töltheti le.
 
 >[!NOTE]
 >* Az ügynök telepítéséhez vagy eltávolításához *rendszergazdai* jogosultságokkal kell rendelkeznie.
@@ -74,7 +74,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
     ```
 
-    Ha a telepítés befejezése után az ügynök nem indul el, ellenőrizze a naplókat a részletes hibaüzenetek megtekintéséhez. A *%ProgramData%\AzureConnectedMachineAgent\log*a naplózási könyvtár.
+    Ha a telepítés befejezése után az ügynök nem indul el, ellenőrizze a naplókat a részletes hibaüzenetek megtekintéséhez. A *%ProgramData%\AzureConnectedMachineAgent\log* a naplózási könyvtár.
 
 2. Ha a gépnek proxykiszolgálón keresztül kell kommunikálnia, a proxykiszolgáló környezeti változó beállításához futtassa a következő parancsot:
 
@@ -107,15 +107,15 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 
 1. Váltson arra a mappára vagy megosztásra, amelyre a parancsfájlt másolta, majd futtassa azt a kiszolgálón a parancsfájl futtatásával `./OnboardingScript.ps1` .
 
-Ha a telepítés befejezése után az ügynök nem indul el, ellenőrizze a naplókat a részletes hibaüzenetek megtekintéséhez. A *%ProgramData%\AzureConnectedMachineAgent\log*a naplózási könyvtár.
+Ha a telepítés befejezése után az ügynök nem indul el, ellenőrizze a naplókat a részletes hibaüzenetek megtekintéséhez. A *%ProgramData%\AzureConnectedMachineAgent\log* a naplózási könyvtár.
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>Az ügynök telepítése és ellenőrzése Linuxon
 
 A Linux rendszerhez csatlakoztatott számítógép-ügynök a terjesztés előnyben részesített csomag formátumban van megadva (. RPM vagy. DEB), amely a Microsoft [Package adattárában](https://packages.microsoft.com/)található. A [rendszerhéj-parancsfájl `Install_linux_azcmagent.sh` köteg](https://aka.ms/azcmagent) a következő műveleteket hajtja végre:
 
-- Úgy konfigurálja a gazdagépet, hogy letöltse az ügynök csomagját a packages.microsoft.com.
-- Telepíti a hibrid erőforrás-szolgáltatói csomagot.
-- A gép regisztrálása az Azure Arcmal
+* Úgy konfigurálja a gazdagépet, hogy letöltse az ügynök csomagját a packages.microsoft.com.
+
+* Telepíti a hibrid erőforrás-szolgáltatói csomagot.
 
 Igény szerint az ügynököt a (z) paraméterrel is konfigurálhatja a proxy adataival `--proxy "{proxy-url}:{proxy-port}"` .
 
@@ -131,15 +131,30 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh
 ```
 
-A következő parancsok futtatásával töltheti le és telepítheti az ügynököt, beleértve azt a paramétert is, hogy `--proxy` az ügynököt a proxykiszolgálón keresztüli kommunikációra konfigurálja.
+1. A következő parancsok futtatásával töltheti le és telepítheti az ügynököt, beleértve azt a paramétert is, hogy `--proxy` az ügynököt a proxykiszolgálón keresztüli kommunikációra konfigurálja.
 
-```bash
-# Download the installation package.
-wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
+    ```bash
+    # Download the installation package.
+    wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 
-# Install the connected machine agent. 
-bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
-```
+    # Install the connected machine agent.
+    bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
+    ```
+
+2. Az ügynököt a telepítése után konfigurálnia kell az Azure Arc szolgáltatással való kommunikációhoz a következő parancs futtatásával:
+
+    ```bash
+    azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --cloud "cloudName"
+    if [ $? = 0 ]; then echo "\033[33mTo view your onboarded server(s), navigate to https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.HybridCompute%2Fmachines\033[m"; fi
+    ```
+
+### <a name="install-with-the-scripted-method"></a>Telepítés parancsfájl-metódussal
+
+1. Jelentkezzen be a kiszolgálóra egy rendszergazdai jogosultságokkal rendelkező fiókkal.
+
+1. Váltson arra a mappára vagy megosztásra, amelyre a parancsfájlt másolta, majd futtassa azt a kiszolgálón a parancsfájl futtatásával `./OnboardingScript.sh` .
+
+Ha a telepítés befejezése után az ügynök nem indul el, ellenőrizze a naplókat a részletes hibaüzenetek megtekintéséhez. A naplózási könyvtár a *var/opt/azcmagent/log*.
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Az Azure Arc csatlakozásának ellenőrzése
 
@@ -147,7 +162,7 @@ Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis
 
 ![Sikeres kiszolgálói kapcsolatok](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A hibaelhárítási információ a [csatlakoztatott gép ügynökének hibaelhárítása című útmutatóban](troubleshoot-agent-onboard.md)található.
 

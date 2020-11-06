@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: e35569a1dc5ce7c1cb2889ac3e2ca8f60f8ccd42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47891dfa7fc0c9b30ccdbf2ed7710125eb36e4a3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808196"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397807"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Végpontok közötti TLS konfigurálása a Application Gateway és a PowerShell használatával
 
@@ -20,21 +20,21 @@ ms.locfileid: "84808196"
 
 Az Azure Application Gateway támogatja a forgalom végpontok közötti titkosítását. Application Gateway leállítja a TLS/SSL-kapcsolatokat az Application Gateway-ben. Az átjáró Ezután alkalmazza az útválasztási szabályokat a forgalomra, majd újratitkosítja a csomagot, és a megadott útválasztási szabályok alapján továbbítja a csomagot a megfelelő háttér-kiszolgálóra. A webkiszolgáló esetleges válasza ugyanilyen módon jut el a végfelhasználóhoz.
 
-Application Gateway támogatja az egyéni TLS-beállítások definiálását. Emellett a következő protokoll-verziók letiltását is támogatja: **TLS 1.0**, **TLS 1.1**és **TLS 1.2**, valamint a használandó titkosítási csomagok meghatározása és a preferencia sorrendje. A konfigurálható TLS-beállításokkal kapcsolatos további tudnivalókért tekintse meg a [TLS-házirend áttekintése](application-gateway-SSL-policy-overview.md)című témakört.
+Application Gateway támogatja az egyéni TLS-beállítások definiálását. Emellett a következő protokoll-verziók letiltását is támogatja: **TLS 1.0** , **TLS 1.1** és **TLS 1.2** , valamint a használandó titkosítási csomagok meghatározása és a preferencia sorrendje. A konfigurálható TLS-beállításokkal kapcsolatos további tudnivalókért tekintse meg a [TLS-házirend áttekintése](application-gateway-SSL-policy-overview.md)című témakört.
 
 > [!NOTE]
 > Az SSL 2,0 és az SSL 3,0 alapértelmezés szerint le van tiltva, ezért nem engedélyezhető. Nem biztonságosnak minősülnek, és nem használhatók Application Gateway.
 
 ![esettanulmány képe][scenario]
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 Ebből a forgatókönyvből megtudhatja, hogyan hozhat létre egy Application Gateway-t a végpontok közötti TLS és a PowerShell használatával.
 
 Ez a forgatókönyv a következőket teszi:
 
-* Hozzon létre egy **appgw-RG**nevű erőforráscsoportot.
-* Hozzon létre egy **appgwvnet** nevű virtuális hálózatot a **10.0.0.0/16**címtartomány megadásával.
+* Hozzon létre egy **appgw-RG** nevű erőforráscsoportot.
+* Hozzon létre egy **appgwvnet** nevű virtuális hálózatot a **10.0.0.0/16** címtartomány megadásával.
 * Hozzon létre két alhálózatot, amelyek neve **appgwsubnet** és **appsubnet**.
 * Hozzon létre egy kisméretű Application Gatewayt, amely támogatja a TLS protokoll verzióit és a titkosítási csomagokat korlátozó végpontok közötti TLS-titkosítást.
 
@@ -202,7 +202,7 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Konfigurálja az Application Gateway példányméretét. A rendelkezésre álló méretek **standard \_ kisméretű**, standard szintű ** \_ közepes**és **standard \_ méretűek**.  A kapacitáshoz az elérhető értékek **1** – **10**.
+10. Konfigurálja az Application Gateway példányméretét. A rendelkezésre álló méretek **standard \_ kisméretű** , standard szintű **\_ közepes** és **standard \_ méretűek**.  A kapacitáshoz az elérhető értékek **1** – **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -219,7 +219,7 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
     - **TLSV1_1**
     - **TLSV1_2**
     
-    A következő példa a protokoll minimális verzióját állítja be **TLSv1_2re** , és engedélyezi a **TLS- \_ ECDHE \_ ECDSA \_ \_ AES \_ 128 \_ GCM \_ sha256**, **TLS \_ ECDHE \_ ECDSA és \_ \_ AES \_ 256 \_ GCM \_ SHA384**, valamint ** \_ a TLS RSA és \_ \_ AES \_ 128 \_ GCM \_ sha256** .
+    A következő példa a protokoll minimális verzióját állítja be **TLSv1_2re** , és engedélyezi a **TLS- \_ ECDHE \_ ECDSA \_ \_ AES \_ 128 \_ GCM \_ sha256** , **TLS \_ ECDHE \_ ECDSA és \_ \_ AES \_ 256 \_ GCM \_ SHA384** , valamint **\_ a TLS RSA és \_ \_ AES \_ 128 \_ GCM \_ sha256** .
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -312,7 +312,7 @@ Az előző lépések végigvezetik a teljes körű TLS-alkalmazás létrehozás�
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Adja meg a TLS-házirendet. A következő példában a **TLS 1.0** és a **TLS 1.1** le van tiltva, és a titkosító csomagok **TLS \_ ECDHE \_ ECDSA \_ \_ AES \_ 128 \_ GCM \_ sha256**, **TLS \_ ECDHE \_ ECDSA és \_ \_ AES \_ 256 \_ GCM \_ SHA384**, valamint a **TLS RSA és \_ \_ az \_ AES \_ 128 \_ GCM \_ sha256** az egyetlen megengedett.
+2. Adja meg a TLS-házirendet. A következő példában a **TLS 1.0** és a **TLS 1.1** le van tiltva, és a titkosító csomagok **TLS \_ ECDHE \_ ECDSA \_ \_ AES \_ 128 \_ GCM \_ sha256** , **TLS \_ ECDHE \_ ECDSA és \_ \_ AES \_ 256 \_ GCM \_ SHA384** , valamint a **TLS RSA és \_ \_ az \_ AES \_ 128 \_ GCM \_ sha256** az egyetlen megengedett.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
@@ -359,6 +359,6 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a webalkalmazások biztonságának a webalkalmazási tűzfallal való megkeményedéséről Application Gatewayon keresztül: [webalkalmazási tűzfal – áttekintés](application-gateway-webapplicationfirewall-overview.md).
+További információ a webalkalmazások biztonságának a webalkalmazási tűzfallal való megkeményedéséről Application Gatewayon keresztül: [webalkalmazási tűzfal – áttekintés](../web-application-firewall/ag/ag-overview.md).
 
 [scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png

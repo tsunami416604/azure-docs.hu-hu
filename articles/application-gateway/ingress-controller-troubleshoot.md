@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: cbb62509472d6f86ba30e13c95ce2c2bfd343765
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: d6bcb9125cdfc07eb249353cb85b40a22d3e468c
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168188"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397365"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>A bejövő adatkezelővel kapcsolatos gyakori kérdések és problémák elhárítása
 
@@ -132,7 +132,7 @@ A Application Gateway beáramló vezérlő (AGIC) folyamatosan figyeli a követk
 
 
 A következőnek kell megfelelnie ahhoz, hogy a AGIC a várt módon működjön:
-  1. Az ak-nak egy vagy több kifogástalan állapotú **hüvelyrel**kell rendelkeznie.
+  1. Az ak-nak egy vagy több kifogástalan állapotú **hüvelyrel** kell rendelkeznie.
      Győződjön meg róla, hogy [Cloud Shell](https://shell.azure.com/) `kubectl get pods -o wide --show-labels` , ha rendelkezik egy Pod `apsnetapp` -val, a kimenet a következőhöz hasonló lehet:
      ```bash
      delyan@Azure:~$ kubectl get pods -o wide --show-labels
@@ -141,7 +141,7 @@ A következőnek kell megfelelnie ahhoz, hogy a AGIC a várt módon működjön:
      aspnetapp              1/1     Running   0          17h   10.0.0.6    aks-agentpool-35064155-1   <none>           <none>            app=aspnetapp
      ```
 
-  2. Egy vagy több **szolgáltatás**, amely a fenti hüvelyre hivatkozik a megfelelő `selector` címkék használatával.
+  2. Egy vagy több **szolgáltatás** , amely a fenti hüvelyre hivatkozik a megfelelő `selector` címkék használatával.
      [Cloud Shell](https://shell.azure.com/) ellenőrzése a következővel:`kubectl get services -o wide`
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
@@ -150,7 +150,7 @@ A következőnek kell megfelelnie ahhoz, hogy a AGIC a várt módon működjön:
      aspnetapp           ClusterIP   10.2.63.254    <none>        80/TCP    17h   app=aspnetapp   <none>     
      ```
 
-  3. **Bejövő**, jegyzetekkel ellátott `kubernetes.io/ingress.class: azure/application-gateway` , a fenti szolgáltatásra hivatkozó hivatkozás a [Cloud Shell](https://shell.azure.com/) a következővel: `kubectl get ingress -o wide --show-labels`
+  3. **Bejövő** , jegyzetekkel ellátott `kubernetes.io/ingress.class: azure/application-gateway` , a fenti szolgáltatásra hivatkozó hivatkozás a [Cloud Shell](https://shell.azure.com/) a következővel: `kubectl get ingress -o wide --show-labels`
      ```bash
      delyan@Azure:~$ kubectl get ingress -o wide --show-labels
 
@@ -243,7 +243,7 @@ A Kubernetes-Közösség 9 naplózási szintet létesített a [kubectl](https://
 |  5        | Átadott objektumok naplója; az ARM-re alkalmazott megtisztított JSON-konfiguráció megjelenítése |
 
 
-A részletességi szintek a `verbosityLevel` [Helm-config. YAML](#sample-helm-config-file) fájlban lévő változón keresztül állíthatók be. Növelje a részletességi szintet, hogy `5` lekérje a JSON-konfigurációt az [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-nek:
+A részletességi szintek a `verbosityLevel` [Helm-config. YAML](#sample-helm-config-file) fájlban lévő változón keresztül állíthatók be. Növelje a részletességi szintet, hogy `5` lekérje a JSON-konfigurációt az [ARM](../azure-resource-manager/management/overview.md)-nek:
   - Vegyen fel `verbosityLevel: 5` egy sorba saját maga is a [Helm-config. YAML](#sample-helm-config-file) és telepítse újra
   - naplók beolvasása a `kubectl logs <pod-name>`
 
@@ -300,4 +300,3 @@ rbac:
 aksClusterConfiguration:
     apiServerAddress: <aks-api-server-address>
 ```
-

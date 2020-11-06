@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: de580d8f94292ae65769c696aa232f5b660bf414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84806754"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396940"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Azure Application Gateway önaláírt tanúsítvány létrehozása egyéni legfelső szintű HITELESÍTÉSSZOLGÁLTATÓval
 
@@ -133,7 +133,7 @@ A webkiszolgálón konfigurálja a TLS-t a fabrikam. CRT és fabrikam. Key fájl
 
 A tanúsítvány importálásával és kiszolgálói tanúsítványként való feltöltésével kapcsolatos útmutatásért lásd [: útmutató: importált tanúsítványok telepítése egy webkiszolgálón a Windows server 2003-ben](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
 
-A TLS-kötési utasításokért lásd: [az SSL beállítása az IIS 7 rendszeren](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
+A TLS-kötési utasításokért lásd: [az SSL beállítása az IIS 7 rendszeren](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
 
 ### <a name="apache"></a>Apache
 
@@ -273,4 +273,3 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 ## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Application Gateway SSL\TLS kapcsolatban, tekintse meg a következőt: [a TLS-megszakítás áttekintése és a végpontok közötti TLS és a Application Gateway](ssl-overview.md).
-

@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 8763c07ee91f228f63880c2be16497a7a78c6453
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9606bfe8b4719ed4ab3c51fc177f331b754f7a1
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595272"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397056"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Alkalmazásátjáró létrehozása URL-útvonalon alapuló átirányítással az Azure PowerShell használatával
 
-Az Azure PowerShell használatával [URL-alapú útválasztási szabályokat](application-gateway-url-route-overview.md) konfigurálhat az [alkalmazásátjárók](application-gateway-introduction.md) létrehozásakor. Ebben a cikkben a  [virtuálisgép-méretezési](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)csoportok használatával hoz létre háttér-készleteket. Ezután URL-útválasztási szabályokat hoz létre, amelyek biztosítják a webes forgalom átirányítását a megfelelő háttérkészletekre.
+Az Azure PowerShell használatával [URL-alapú útválasztási szabályokat](./url-route-overview.md) konfigurálhat az [alkalmazásátjárók](./overview.md) létrehozásakor. Ebben a cikkben a  [virtuálisgép-méretezési](../virtual-machine-scale-sets/overview.md)csoportok használatával hoz létre háttér-készleteket. Ezután URL-útválasztási szabályokat hoz létre, amelyek biztosítják a webes forgalom átirányítását a megfelelő háttérkészletekre.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -31,7 +31,7 @@ A következő példában a 8080-as és a 8081-es portról egyaránt érkezik web
 
 Ha szeretné, ezt az eljárást az [Azure CLI](tutorial-url-redirect-cli.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -390,7 +390,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása
 
-Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A *myvmss1*, *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyekre az IIS-t telepíti. Az IP-beállítások konfigurálásakor hozzárendeli a méretezési csoportot a háttérkészlethez.
+Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A *myvmss1* , *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyekre az IIS-t telepíti. Az IP-beállítások konfigurálásakor hozzárendeli a méretezési csoportot a háttérkészlethez.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -515,7 +515,7 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Applicat
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg részletesebben az alkalmazásátjárók lehetőségeit](application-gateway-introduction.md)
+> [Ismerje meg részletesebben az alkalmazásátjárók lehetőségeit](./overview.md)

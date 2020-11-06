@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8f015085baa8fffa6f208e9d8dd749e397c76c3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85125463"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397433"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>AK-hüvelyek autoskálázása Application Gateway metrikák (bétaverzió) használatával
 
@@ -23,7 +23,7 @@ Az alábbi oktatóanyagban azt ismertetjük, hogyan használható a Application 
 A következő két összetevőt fogjuk használni:
 
 * [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) – A metrika-adapter használatával tesz elérhetővé Application Gateway metrikákat a metrikai kiszolgálón. Az Azure Kubernetes metrika-adapter egy nyílt forráskódú projekt az Azure-ban, amely a Application Gateway beáramló vezérlőhöz hasonlóan működik. 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) – A HPA használatával Application Gateway metrikákat használhat, és megcélozhatja a skálázási üzembe helyezést.
+* [`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) – A HPA használatával Application Gateway metrikákat használhat, és megcélozhatja a skálázási üzembe helyezést.
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Az Azure Kubernetes metrikus adapter beállítása
 
@@ -92,7 +92,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 ## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Az új metrika használata az üzemelő példány vertikális felskálázásához
 
-Miután elérhetővé tettük `appgw-request-count-metric` a metrika-kiszolgálót, készen állunk a [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) cél üzembe helyezésének vertikális felskálázására.
+Miután elérhetővé tettük `appgw-request-count-metric` a metrika-kiszolgálót, készen állunk a [`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) cél üzembe helyezésének vertikális felskálázására.
 
 A következő példában egy minta üzembe helyezést fogunk megcélozni `aspnet` . A hüvelyek felskálázása akkor történik `appgw-request-count-metric` , amikor a > 200/Pod akár Max `10` .
 

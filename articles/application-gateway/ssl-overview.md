@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 3d714b579bebb096745a47410da3f8f458e27161
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723299"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396923"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>A TLS-lezárás és a végpontok közötti TLS áttekintése Application Gateway
 
@@ -51,10 +51,10 @@ Az Application Gateway a következő típusú tanúsítványokat támogatja:
 - Helyettesítő tanúsítvány: Ez a tanúsítvány a *. site.com alapján tetszőleges számú altartományt támogat, ahol az altartománya lecseréli a *-t. Ez azonban nem támogatja a site.com, így ha a felhasználók a "www" beírása nélkül férnek hozzá a webhelyhez, a helyettesítő karakteres tanúsítvány nem fedi le azt.
 - Self-Signed tanúsítványok: az ügyféloldali böngészők nem bíznak meg ezekkel a tanúsítványokkal, és figyelmeztetik a felhasználót, hogy a virtuális szolgáltatás tanúsítványa nem része egy megbízhatósági láncnak. Az önaláírt tanúsítványok olyan tesztelési és környezeti környezetekben használhatók, ahol a rendszergazdák vezérelhetik az ügyfeleket, és biztonságosan kihagyhatják a böngésző biztonsági riasztásait. Az éles munkaterhelések soha nem használhatnak önaláírt tanúsítványokat.
 
-További információ: [a TLS-lezárás konfigurálása az Application Gateway használatával](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+További információ: [a TLS-lezárás konfigurálása az Application Gateway használatával](./create-ssl-portal.md).
 
 ### <a name="size-of-the-certificate"></a>A tanúsítvány mérete
-A [Application Gateway korlátozások](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) szakaszban találja a maximálisan támogatott TLS/SSL-tanúsítvány méretét.
+A [Application Gateway korlátozások](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits) szakaszban találja a maximálisan támogatott TLS/SSL-tanúsítvány méretét.
 
 ## <a name="end-to-end-tls-encryption"></a>Végpontok közötti TLS-titkosítás
 
@@ -62,7 +62,7 @@ Előfordulhat, hogy nem szeretne titkosítatlan kommunikációt használni a há
 
 A végpontok közötti TLS lehetővé teszi a bizalmas adatok titkosítását és biztonságos továbbítását a háttérbe, miközben Application Gateway 7. rétegbeli terheléselosztási funkcióit használja. Ezen funkciók közé tartozik a cookie-alapú munkamenet-affinitás, az URL-alapú útválasztás, a helyek alapján történő Útválasztás támogatása, az X-* fejlécek újraírása vagy behelyezésének lehetősége.
 
-Ha végpontok közötti TLS kommunikációs móddal van konfigurálva, Application Gateway leállítja a TLS-munkameneteket az átjárón, és visszafejti a felhasználói forgalmat. Ezután alkalmazza a konfigurált szabályokat, hogy kiválassza a megfelelő háttérkészletpéldányt, ahová irányítható a forgalom. Application Gateway ezután kezdeményez egy új TLS-kapcsolódást a háttér-kiszolgálóval, majd újratitkosítja az adataikat a háttér-kiszolgáló nyilvánoskulcs-tanúsítványával, mielőtt továbbítja a kérést a háttérbe. A webkiszolgáló esetleges válasza ugyanilyen módon jut el a végfelhasználóhoz. A végpontok közötti TLS engedélyezése a [háttérbeli http-beállítás](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) protokoll-beállításának HTTPS-re való beállításával történik, amelyet a rendszer a háttérbeli készletre alkalmaz.
+Ha végpontok közötti TLS kommunikációs móddal van konfigurálva, Application Gateway leállítja a TLS-munkameneteket az átjárón, és visszafejti a felhasználói forgalmat. Ezután alkalmazza a konfigurált szabályokat, hogy kiválassza a megfelelő háttérkészletpéldányt, ahová irányítható a forgalom. Application Gateway ezután kezdeményez egy új TLS-kapcsolódást a háttér-kiszolgálóval, majd újratitkosítja az adataikat a háttér-kiszolgáló nyilvánoskulcs-tanúsítványával, mielőtt továbbítja a kérést a háttérbe. A webkiszolgáló esetleges válasza ugyanilyen módon jut el a végfelhasználóhoz. A végpontok közötti TLS engedélyezése a [háttérbeli http-beállítás](./configuration-overview.md#http-settings) protokoll-beállításának HTTPS-re való beállításával történik, amelyet a rendszer a háttérbeli készletre alkalmaz.
 
 A Application Gateway és a WAF v1 SKU esetében a TLS-házirend a felületi és a háttérbeli forgalomra is érvényes. Az előtérben Application Gateway kiszolgálóként működik, és érvényesíti a szabályzatot. A háttérben Application Gateway ügyfélként viselkedik, és a TLS-kézfogás során a protokoll/titkosítási adatokat küldi el.
 
@@ -124,7 +124,7 @@ Az alábbi táblázatok a v1 és v2 SKU közötti különbségeket ismertetik a 
 ### <a name="frontend-tls-connection-client-to-application-gateway"></a>Előtér-TLS-kapcsolatok (ügyfél – Application Gateway)
 
 ---
-Forgatókönyv | v1 | v2 |
+Használati eset | v1 | v2 |
 | --- | --- | --- |
 | Ha az ügyfél megadja a SNI fejlécét, és az összes többhelyes figyelő engedélyezve van a "SNI megkövetelése" jelzővel | Adja vissza a megfelelő tanúsítványt, és ha a hely nem létezik (a server_name alapján), a kapcsolat alaphelyzetbe áll. | Ha elérhető, a megfelelő tanúsítványt adja vissza, ha van, akkor a visszaadja az első konfigurált HTTPS-figyelő tanúsítványát (a sorrendben).|
 | Ha az ügyfél nem ad meg SNI-fejlécet, és ha az összes többhelyes fejléc engedélyezve van a "SNI megkövetelése" értékkel | A kapcsolatok alaphelyzetbe állítása | Az első konfigurált HTTPS-figyelő tanúsítványát adja vissza (a sorrendben).
@@ -135,7 +135,7 @@ Forgatókönyv | v1 | v2 |
 #### <a name="for-probe-traffic"></a>Mintavételi forgalom esetén
 
 ---
-Forgatókönyv | v1 | v2 |
+Használati eset | v1 | v2 |
 | --- | --- | --- |
 | SNI (server_name) fejléc a TLS-kézfogás során FQDN-ként | Állítsa be FQDN-ként a háttér-készletből. Az [RFC 6066](https://tools.ietf.org/html/rfc6066)-es verzióban a SNI állomásnév nem engedélyezi a literális IPv4-és IPv6-címeket. <br> **Megjegyzés:** A háttér-készlet teljes tartománynevének a DNS-t kell feloldania a háttér-kiszolgáló IP-címére (nyilvános vagy privát) | A SNI fejléce (server_name) a HTTP-beállításokhoz csatolt egyéni mintavétel állomásneve (ha be van állítva), más néven a HTTP-beállításokban említett állomásnév, ellenkező esetben a háttér-készletben említett teljes tartománynév. A sorrend sorrendje egyéni mintavételi > HTTP-beállítások > háttér-készlet. <br> **Megjegyzés:** Ha a HTTP-beállításokban és az egyéni mintavételben konfigurált állomásnevek eltérnek, akkor a prioritás szerint a SNI az egyéni mintavétel állomásneveként lesz beállítva.
 | Ha a háttér-készlet címe IP-cím (v1), vagy ha az egyéni mintavételi állomásnév IP-címként van konfigurálva (v2) | A SNI (server_name) nem állítható be. <br> **Megjegyzés:** Ebben az esetben a háttér-kiszolgálónak képesnek kell lennie egy alapértelmezett/tartalék tanúsítvány visszaadására, és ezt engedélyezni kell a hitelesítési tanúsítvány alatt a HTTP-beállítások között. Ha nincs beállítva alapértelmezett/tartalék tanúsítvány a háttér-kiszolgálón, és a SNI várható, a kiszolgáló alaphelyzetbe állíthatja a kapcsolódást, és mintavételi hibákhoz vezethet. | A korábban említett elsőbbségi sorrendben, ha az IP-címe állomásnév, akkor a SNI nem lesz beállítva [RFC 6066](https://tools.ietf.org/html/rfc6066)-ként. <br> **Megjegyzés:** A SNI szintén nem állítható be v2-mintavétel esetén, ha nincs beállítva egyéni mintavétel, és nincs beállítva állomásnév a HTTP-beállítások vagy a háttér-készlet számára. |
@@ -146,12 +146,12 @@ Forgatókönyv | v1 | v2 |
 #### <a name="for-live-traffic"></a>Élő forgalom esetén
 
 ---
-Forgatókönyv | v1 | v2 |
+Használati eset | v1 | v2 |
 | --- | --- | --- |
 | SNI (server_name) fejléc a TLS-kézfogás során FQDN-ként | Állítsa be FQDN-ként a háttér-készletből. Az [RFC 6066](https://tools.ietf.org/html/rfc6066)-es verzióban a SNI állomásnév nem engedélyezi a literális IPv4-és IPv6-címeket. <br> **Megjegyzés:** A háttér-készlet teljes tartománynevének a DNS-t kell feloldania a háttér-kiszolgáló IP-címére (nyilvános vagy privát) | A SNI fejléce (server_name) a HTTP-beállítások állomásnévként van beállítva, ellenkező esetben, ha a *PickHostnameFromBackendAddress* beállítás van kiválasztva, vagy ha nincs megadva állomásnév, akkor a rendszer a háttérrendszer-készlet KONFIGURÁCIÓJÁNAK teljes tartománynevét adja meg.
 | Ha a háttérbeli készlet címe IP-cím vagy állomásnév nincs beállítva a HTTP-beállításokban | A SNI nem állítható be [RFC 6066](https://tools.ietf.org/html/rfc6066) -ként, ha a háttérbeli készlet bejegyzése nem teljes tartománynév | A SNI az ügyféltől származó bemeneti FQDN állomásnévként lesz beállítva, és a háttér-tanúsítvány CN-nek egyeznie kell ezzel az állomásnévvel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A végpontok közötti TLS-vel kapcsolatos ismeretek megismerése után nyissa meg a végpontok közötti TLS-t a [Application Gateway és a PowerShell használatával](application-gateway-end-to-end-ssl-powershell.md) , és hozzon létre egy Application Gatewayt a végpontok közötti TLS használatával.
 

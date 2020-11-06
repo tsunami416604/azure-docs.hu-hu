@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: 121ddcc013fbeef29c6d22cfbd273cfd3b8d3d98
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558943"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398215"
 ---
 # <a name="configure-private-link"></a>Privát hivatkozás konfigurálása
 
@@ -30,7 +30,7 @@ A privát végpontok létrehozása előtt néhány Azure-erőforrást létre kel
 - Azure API for FHIR – a FHIR-erőforrás, amelyet privát végpont mögé szeretne helyezni.
 - Virtual Network – az a VNet, amelyhez az ügyfélszolgáltatás és a magánhálózati végpont csatlakozni fog.
 
-További információkért tekintse meg a [privát hivatkozás dokumentációját](https://docs.microsoft.com/azure/private-link/).
+További információkért tekintse meg a [privát hivatkozás dokumentációját](../private-link/index.yml).
 
 ## <a name="disable-public-network-access"></a>Nyilvános hálózati hozzáférés letiltása
 
@@ -40,7 +40,7 @@ A FHIR-erőforráshoz tartozó privát végpontok létrehozása nem tiltja le au
 
 ## <a name="create-private-endpoint"></a>Privát végpont létrehozása
 
-Privát végpont létrehozásához a FHIR-erőforráshoz tartozó RBAC-engedélyekkel rendelkező fejlesztő használhatja a Azure Portal, [Azure PowerShell](https://docs.microsoft.com/azure/private-link/create-private-endpoint-powershell)vagy az [Azure CLI](https://docs.microsoft.com/azure/private-link/create-private-endpoint-cli)-t. Ez a cikk végigvezeti a Azure Portal használatának lépésein. A Azure Portal használata ajánlott, mert automatizálja az saját DNS zóna létrehozását és konfigurálását. További részletekért tekintse meg a [privát hivatkozás Gyorskonfigurálás útmutatóit](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal) .
+Privát végpont létrehozásához a FHIR-erőforráshoz tartozó RBAC-engedélyekkel rendelkező fejlesztő használhatja a Azure Portal, [Azure PowerShell](../private-link/create-private-endpoint-powershell.md)vagy az [Azure CLI](../private-link/create-private-endpoint-cli.md)-t. Ez a cikk végigvezeti a Azure Portal használatának lépésein. A Azure Portal használata ajánlott, mert automatizálja az saját DNS zóna létrehozását és konfigurálását. További részletekért tekintse meg a [privát hivatkozás Gyorskonfigurálás útmutatóit](../private-link/create-private-endpoint-portal.md) .
 
 Egy privát végpontot kétféleképpen lehet létrehozni. Az automatikus jóváhagyási folyamat lehetővé teszi egy olyan felhasználó számára, aki RBAC engedéllyel rendelkezik a FHIR-erőforráshoz, hogy jóváhagyás nélkül hozzon létre egy privát végpontot. A manuális jóváhagyási folyamat lehetővé teszi, hogy a felhasználó a FHIR-erőforrásra vonatkozó engedély nélkül kérjen egy privát végpontot, amelyet a FHIR-erőforrás tulajdonosainak jóvá kell hagyniuk.
 

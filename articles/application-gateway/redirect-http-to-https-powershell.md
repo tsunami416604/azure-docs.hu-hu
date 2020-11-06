@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: c4d1d16d07aaf92a0bc3cc365ac094893fc41c79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86eaa645cd6a81b9180d1241695240a71aa8202d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446516"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397263"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>HTTP-alapú Application Gateway létrehozása a HTTPS-átirányítás Azure PowerShell használatával
 
-A Azure PowerShell használatával létrehozhat egy, a TLS/SSL-lezáráshoz szükséges tanúsítvánnyal rendelkező [Application Gateway](overview.md) -t. Az útválasztási szabályok a HTTP-forgalom átirányítására szolgálnak az Application Gateway HTTPS-portjára. Ebben a példában létrehozunk egy virtuálisgép- [méretezési készletet](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) is az Application Gateway két virtuálisgép-példányát tartalmazó, a backend-készlethez. 
+A Azure PowerShell használatával létrehozhat egy, a TLS/SSL-lezáráshoz szükséges tanúsítvánnyal rendelkező [Application Gateway](overview.md) -t. Az útválasztási szabályok a HTTP-forgalom átirányítására szolgálnak az Application Gateway HTTPS-portjára. Ebben a példában létrehozunk egy virtuálisgép- [méretezési készletet](../virtual-machine-scale-sets/overview.md) is az Application Gateway két virtuálisgép-példányát tartalmazó, a backend-készlethez. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -26,7 +26,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * Figyelő és átirányítási szabály hozzáadása
 * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -34,7 +34,7 @@ Ehhez az oktatóanyaghoz a Azure PowerShell modul 1.0.0-es vagy újabb verziój�
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Éles használatra a megbízható szolgáltató által aláírt érvényes tanúsítványt kell importálnia. Ebben az oktatóanyagban egy önaláírt tanúsítványt hoz létre a [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) parancsmaggal. Az [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) parancsmagot a visszaadott ujjlenyomattal futtatva egy PFX-fájlt exportálhat a tanúsítványból.
+Éles használatra a megbízható szolgáltató által aláírt érvényes tanúsítványt kell importálnia. Ebben az oktatóanyagban egy önaláírt tanúsítványt hoz létre a [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) parancsmaggal. Az [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) parancsmagot a visszaadott ujjlenyomattal futtatva egy PFX-fájlt exportálhat a tanúsítványból.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -331,6 +331,6 @@ Ha önaláírt tanúsítványt használt, a biztonsági figyelmeztetés elfogad�
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [HTTP-fejlécek és URL-cím újraírása Application Gateway](rewrite-http-headers-url.md)

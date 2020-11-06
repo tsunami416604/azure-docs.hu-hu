@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 02d1d78dae4f02ac53d535f6c404b15f8d98f008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 548bda36ed2b167c159d32a575b63ecbf10b16dd
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563743"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397569"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Az Azure Application Gateway munkamenet-affinitással kapcsolatos problémák elhárítása
 
@@ -40,9 +40,9 @@ Időnként előfordulhat, hogy a munkamenet-affinitási probléma akkor fordul e
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/).
 
-2. A **bal oldali navigációs** panelen kattintson a **minden erőforrás**elemre. Kattintson az Application Gateway nevére a minden erőforrás panelen. Ha a kiválasztott előfizetés már rendelkezik több erőforrással is, megadhatja az Application Gateway nevét a **szűrés név szerint..** . mezőbe.
+2. A **bal oldali navigációs** panelen kattintson a **minden erőforrás** elemre. Kattintson az Application Gateway nevére a minden erőforrás panelen. Ha a kiválasztott előfizetés már rendelkezik több erőforrással is, megadhatja az Application Gateway nevét a **szűrés név szerint..** . mezőbe.
 
-3. A **Beállítások**területen válassza a **http-beállítások** lapot.
+3. A **Beállítások** területen válassza a **http-beállítások** lapot.
 
    ![A képernyőképen a kiválasztott H t P-beállításokkal rendelkező beállítások láthatók.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-1.png)
 
@@ -52,9 +52,9 @@ Időnként előfordulhat, hogy a munkamenet-affinitási probléma akkor fordul e
 
 
 
-Azt is megteheti, hogy a "**CookieBasedAffinity**" értéke "**backendHttpSettingsCollection**" értékre *van állítva*az alábbi módszerek egyikével:
+Azt is megteheti, hogy a " **CookieBasedAffinity** " értéke " **backendHttpSettingsCollection** " értékre *van állítva* az alábbi módszerek egyikével:
 
-- A [Get-AzApplicationGatewayBackendHttpSetting](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting) futtatása a PowerShellben
+- A [Get-AzApplicationGatewayBackendHttpSetting](/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting) futtatása a PowerShellben
 - A JSON-fájl áttekintése a Azure Resource Manager sablon használatával
 
 ```
@@ -80,10 +80,10 @@ Engedélyezte a cookie-alapú affinitás beállítását, amikor a Application G
 A probléma azonosításához kövesse az alábbi utasításokat:
 
 1. Vegyen fel egy web Debugger nyomkövetést az "ügyfélre", amely a Application Gateway mögött található alkalmazáshoz csatlakozik (ebben a példában a hegedűst használjuk).
-    **Tipp** Ha nem tudja, hogyan használhatja a hegedűst, ellenőrizze a "**hálózati forgalom összegyűjtését és a web Debugger használatával történő elemzését**" lehetőséget a lap alján.
+    **Tipp** Ha nem tudja, hogyan használhatja a hegedűst, ellenőrizze a " **hálózati forgalom összegyűjtését és a web Debugger használatával történő elemzését** " lehetőséget a lap alján.
 
-2. Ellenőrizze és elemezze a munkamenetek naplóit annak megállapításához, hogy az ügyfél által biztosított cookie-k rendelkeznek-e a ARRAffinity részleteivel. Ha nem találja a ARRAffinity részleteit (például "**ARRAffinity =** *ARRAffinityValue*") a cookie-készleten belül, az azt jelenti, hogy az ügyfél nem válaszol az arra szolgáló cookie-val, amelyet a Application Gateway biztosít.
-    Példa:
+2. Ellenőrizze és elemezze a munkamenetek naplóit annak megállapításához, hogy az ügyfél által biztosított cookie-k rendelkeznek-e a ARRAffinity részleteivel. Ha nem találja a ARRAffinity részleteit (például " **ARRAffinity =** *ARRAffinityValue* ") a cookie-készleten belül, az azt jelenti, hogy az ügyfél nem válaszol az arra szolgáló cookie-val, amelyet a Application Gateway biztosít.
+    Ilyenek többek között:
 
     ![Képernyőfelvétel: a munkamenet-napló egyetlen bejegyzéssel van kiemelve.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
@@ -109,11 +109,11 @@ A Application Gateway naplók összegyűjtéséhez kövesse az alábbi utasítá
 
 Naplózás engedélyezése az Azure Portalon
 
-1. A [Azure Portal](https://portal.azure.com/)keresse meg az erőforrást, majd kattintson a **diagnosztikai naplók**elemre.
+1. A [Azure Portal](https://portal.azure.com/)keresse meg az erőforrást, majd kattintson a **diagnosztikai naplók** elemre.
 
    Application Gateway esetében három napló érhető el: hozzáférési napló, Teljesítménynapló, tűzfal napló
 
-2. Az adatok gyűjtésének megkezdéséhez kattintson **a diagnosztika bekapcsolása**elemre.
+2. Az adatok gyűjtésének megkezdéséhez kattintson **a diagnosztika bekapcsolása** elemre.
 
    ![A képernyőképen egy olyan Application Gateway látható, amelyen diagnosztikai naplók vannak kiválasztva.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
 
@@ -121,7 +121,7 @@ Naplózás engedélyezése az Azure Portalon
 
    ![Képernyőfelvétel: a diagnosztikai beállítások ablaktábla, amelyen Log Analytics a konfigurálás van kiválasztva.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-6.png)
 
-4. Erősítse meg a beállításokat, majd kattintson a **Mentés**gombra.
+4. Erősítse meg a beállításokat, majd kattintson a **Mentés** gombra.
 
    ![Képernyőfelvétel: a diagnosztikai beállítások ablaktábla a kiválasztott mentéssel.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-7.png)
 
@@ -131,7 +131,7 @@ Naplózás engedélyezése az Azure Portalon
 
    ![A képernyőfelvételen a kiválasztott diagnosztikai naplók FIGYELÉSe látható.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
 
-2. A jobb oldalon válassza a "**ApplicationGatewayAccessLog**" elemet a legördülő listában a **naplózási kategóriák területen.**  
+2. A jobb oldalon válassza a " **ApplicationGatewayAccessLog** " elemet a legördülő listában a **naplózási kategóriák területen.**  
 
    ![A képernyőképen a naplók legördülő listája látható a kijelölt ApplicationGatewayAccessLog.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
 
@@ -141,19 +141,19 @@ Naplózás engedélyezése az Azure Portalon
 
 5. Győződjön meg a következő adatfájlokról:
 
-- **Ügyfélip**– ez az ügyfél IP-címe a csatlakozó ügyfélről.
+- **Ügyfélip** – ez az ügyfél IP-címe a csatlakozó ügyfélről.
 - **ClientPort** – ez a forrás port a kéréshez kapcsolódó ügyfélről.
 - **RequestQuery** – ez a célkiszolgáló azt jelzi, hogy a kérés érkezett.
-- **Kiszolgáló által átirányított**: a kérelem fogadására szolgáló háttérbeli készlet.
-- **X-AzureApplicationGateway-log-ID**: a kérelemhez használt korrelációs azonosító. Felhasználható a háttér-kiszolgálók forgalmával kapcsolatos problémák elhárítására. Például: X-AzureApplicationGateway-CACHE-HIT = 0&SERVER-ROUTEd = 10.0.2.4.
+- **Kiszolgáló által átirányított** : a kérelem fogadására szolgáló háttérbeli készlet.
+- **X-AzureApplicationGateway-log-ID** : a kérelemhez használt korrelációs azonosító. Felhasználható a háttér-kiszolgálók forgalmával kapcsolatos problémák elhárítására. Például: X-AzureApplicationGateway-CACHE-HIT = 0&SERVER-ROUTEd = 10.0.2.4.
 
-  - **Server-status**: a háttérből Application Gateway fogadott http-válasz kódja.
+  - **Server-status** : a háttérből Application Gateway fogadott http-válasz kódja.
 
   ![Képernyőfelvétel: a kiszolgáló állapota egyszerű szövegben, többnyire kitakarva, a clientPort és a kiszolgáló által irányított Kiemelt értékkel.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
 
 Ha két elem jelenik meg ugyanabból a Ügyfélip és ügyfél-portból, és ugyanarra a háttér-kiszolgálóra érkezik, az azt jelenti, hogy a Application Gateway megfelelően van konfigurálva.
 
-Ha két elem jelenik meg ugyanabból a Ügyfélip és az ügyfél-portból, és a rendszer elküldi őket a különböző háttér-kiszolgálókra, az azt jelenti, hogy a kérés a háttér-kiszolgálók között található, válassza az "**alkalmazás cookie-alapú affinitás használata, de a háttér-kiszolgálók között még mindig pattogás**" lehetőséget, hogy hárítsa el.
+Ha két elem jelenik meg ugyanabból a Ügyfélip és az ügyfél-portból, és a rendszer elküldi őket a különböző háttér-kiszolgálókra, az azt jelenti, hogy a kérés a háttér-kiszolgálók között található, válassza az " **alkalmazás cookie-alapú affinitás használata, de a háttér-kiszolgálók között még mindig pattogás** " lehetőséget, hogy hárítsa el.
 
 ### <a name="use-web-debugger-to-capture-and-analyze-the-http-or-https-traffics"></a>A HTTP-vagy HTTPS-forgalom rögzítése és elemzése a webes hibakereső használatával
 
@@ -174,7 +174,7 @@ Használja az Ön által választott webes hibakeresőt. Ebben a példában a he
 
     ![Képernyőfelvétel: a Hegedűs webes hibakeresője a rögzítési mutató kiemelésével.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. Legvalószínűbb, hogy a rendszer visszafejti a https-forgalmat, és engedélyezheti a https-titkosítást a **Tools**  >  **Hegedűs beállításainak**kiválasztásával, és a " **https-forgalom visszafejtése**" jelölőnégyzet bejelölésével.
+4. Legvalószínűbb, hogy a rendszer visszafejti a https-forgalmat, és engedélyezheti a https-titkosítást a **Tools**  >  **Hegedűs beállításainak** kiválasztásával, és a " **https-forgalom visszafejtése** " jelölőnégyzet bejelölésével.
 
     ![A képernyőképen a megjelenő, H T T P-vel rendelkező Hegedűs lehetőségei láthatók, és visszafejti a kiválasztott HTTPS-forgalmat](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
@@ -190,7 +190,7 @@ Használja az Ön által választott webes hibakeresőt. Ebben a példában a he
 
     Példák:
 
-- **Példa:** Megtalálhatja azt a munkamenet-naplót, amelyet a kérelem elküld az ügyféltől, és a Application Gateway nyilvános IP-címére kerül, a részletek megtekintéséhez kattintson erre a naplóra.  A jobb oldalon az alsó mezőben lévő adat a Application Gateway, amelyet a rendszer az ügyfélnek ad vissza. Válassza a "RAW" fület, és állapítsa meg, hogy az ügyfél kap-e "**Set-Cookie: ARRAffinity =** *ARRAffinityValue*". Ha nincs cookie, a munkamenet-affinitás nincs beállítva, vagy a Application Gateway nem alkalmazza a cookie-t az ügyfélre.
+- **Példa:** Megtalálhatja azt a munkamenet-naplót, amelyet a kérelem elküld az ügyféltől, és a Application Gateway nyilvános IP-címére kerül, a részletek megtekintéséhez kattintson erre a naplóra.  A jobb oldalon az alsó mezőben lévő adat a Application Gateway, amelyet a rendszer az ügyfélnek ad vissza. Válassza a "RAW" fület, és állapítsa meg, hogy az ügyfél kap-e " **Set-Cookie: ARRAffinity =** *ARRAffinityValue* ". Ha nincs cookie, a munkamenet-affinitás nincs beállítva, vagy a Application Gateway nem alkalmazza a cookie-t az ügyfélre.
 
    > [!NOTE]
    > Ez a ARRAffinity érték a cookie-azonosító, amelyet az ügyfél egy adott háttér-kiszolgálónak való elküldésekor Application Gateway állít be.
@@ -206,6 +206,6 @@ Használja az Ön által választott webes hibakeresőt. Ebben a példában a he
 
  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a fenti lépések nem oldják meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).

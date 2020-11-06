@@ -9,16 +9,16 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
-ms.openlocfilehash: cdb73670996341e9219230bb277e087009266f32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b362a81fc9b533fe00987a74d7e25dbba61a2589
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87846020"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398249"
 ---
 # <a name="azure-active-directory-identity-configuration-for-azure-api-for-fhir"></a>Az Azure API FHIR-hez Azure Active Directory identitás-konfigurációja
 
-Az egészségügyi információkkal való munka során fontos, hogy az adat biztonságban legyen, és a jogosulatlan felhasználók vagy alkalmazások ne férhessenek hozzájuk. Az adatbiztonság biztosításához a FHIR-kiszolgálók a [OAuth 2,0](https://oauth.net/2/) -et használják. A [FHIR készült Azure API](https://azure.microsoft.com/services/azure-api-for-fhir/) a [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)használatával van védve, amely egy példa egy OAuth 2,0-es identitás-szolgáltatóra. Ez a cikk áttekintést nyújt a FHIR-kiszolgáló hitelesítéséről, valamint a jogkivonat beszerzéséhez szükséges lépésekről a FHIR-kiszolgálóhoz való hozzáféréshez. Habár ezek a lépések minden FHIR-kiszolgálóra és bármely identitás-szolgáltatóra érvényesek lesznek, az Azure API-t a FHIR-ként, a FHIR-kiszolgálóként és az Azure AD-t is megtekintjük ebben a cikkben.
+Az egészségügyi információkkal való munka során fontos, hogy az adat biztonságban legyen, és a jogosulatlan felhasználók vagy alkalmazások ne férhessenek hozzájuk. Az adatbiztonság biztosításához a FHIR-kiszolgálók a [OAuth 2,0](https://oauth.net/2/) -et használják. A [FHIR készült Azure API](https://azure.microsoft.com/services/azure-api-for-fhir/) a [Azure Active Directory](../active-directory/index.yml)használatával van védve, amely egy példa egy OAuth 2,0-es identitás-szolgáltatóra. Ez a cikk áttekintést nyújt a FHIR-kiszolgáló hitelesítéséről, valamint a jogkivonat beszerzéséhez szükséges lépésekről a FHIR-kiszolgálóhoz való hozzáféréshez. Habár ezek a lépések minden FHIR-kiszolgálóra és bármely identitás-szolgáltatóra érvényesek lesznek, az Azure API-t a FHIR-ként, a FHIR-kiszolgálóként és az Azure AD-t is megtekintjük ebben a cikkben.
 
 ## <a name="access-control-overview"></a>A hozzáférés-vezérlés áttekintése
 
@@ -26,12 +26,12 @@ Ahhoz, hogy egy ügyfélalkalmazás hozzáférhessen az Azure API-hoz a FHIR-hez
 
 A jogkivonatok beszerzésének számos módja van, de a FHIR készült Azure API nem gondoskodik arról, hogy a jogkivonat Hogyan szerezhető be, amíg a megfelelő jogcímekkel rendelkező, megfelelően aláírt jogkivonat. 
 
-Ha például az [engedélyezési programkódot](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) használja, a FHIR-kiszolgálóhoz való hozzáférés az alábbi négy lépésből áll:
+Ha például az [engedélyezési programkódot](../active-directory/azuread-dev/v1-protocols-oauth-code.md) használja, a FHIR-kiszolgálóhoz való hozzáférés az alábbi négy lépésből áll:
 
 ![FHIR-hitelesítés](media/azure-ad-hcapi/fhir-authorization.png)
 
-1. Az ügyfél kérelmet küld az `/authorize` Azure ad-végpontnak. Az Azure AD átirányítja az ügyfelet egy bejelentkezési oldalra, ahol a felhasználó a megfelelő hitelesítő adatokkal (például felhasználónévvel és jelszóval vagy kétfaktoros hitelesítéssel) végzi a hitelesítést. Tekintse meg [az engedélyezési kód beszerzésének](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#request-an-authorization-code)részleteit. A sikeres hitelesítés után a rendszer egy *engedélyezési kódot* ad vissza az ügyfélnek. Az Azure AD csak azt engedélyezi, hogy ez az engedélyezési kód az ügyfélalkalmazás regisztrálásakor megadott regisztrált válasz URL-címére legyen visszaadva (lásd alább).
-1. Az ügyfélalkalmazás az Azure AD végpontján egy *hozzáférési jogkivonat* engedélyezési kódját cseréli ki `/token` . Token kérelmezése esetén előfordulhat, hogy az ügyfélalkalmazás meg kell adnia egy ügyfél-titkot (az alkalmazások jelszava). Tekintse meg a [hozzáférési token beszerzésének](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#use-the-authorization-code-to-request-an-access-token)részleteit.
+1. Az ügyfél kérelmet küld az `/authorize` Azure ad-végpontnak. Az Azure AD átirányítja az ügyfelet egy bejelentkezési oldalra, ahol a felhasználó a megfelelő hitelesítő adatokkal (például felhasználónévvel és jelszóval vagy kétfaktoros hitelesítéssel) végzi a hitelesítést. Tekintse meg [az engedélyezési kód beszerzésének](../active-directory/azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)részleteit. A sikeres hitelesítés után a rendszer egy *engedélyezési kódot* ad vissza az ügyfélnek. Az Azure AD csak azt engedélyezi, hogy ez az engedélyezési kód az ügyfélalkalmazás regisztrálásakor megadott regisztrált válasz URL-címére legyen visszaadva (lásd alább).
+1. Az ügyfélalkalmazás az Azure AD végpontján egy *hozzáférési jogkivonat* engedélyezési kódját cseréli ki `/token` . Token kérelmezése esetén előfordulhat, hogy az ügyfélalkalmazás meg kell adnia egy ügyfél-titkot (az alkalmazások jelszava). Tekintse meg a [hozzáférési token beszerzésének](../active-directory/azuread-dev/v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)részleteit.
 1. Az ügyfél egy kérést küld a FHIR készült Azure API-nak, például az `GET /Patient` összes beteg kereséséhez. A kérelem elkészítésekor a hozzáférési tokent egy HTTP-kérelem fejlécében tartalmazza, például `Authorization: Bearer eyJ0e...` `eyJ0e...` a a Base64 kódolású hozzáférési tokent jelképezi.
 1. A FHIR készült Azure API ellenőrzi, hogy a jogkivonat tartalmazza-e a megfelelő jogcímeket (a jogkivonatban található tulajdonságokat). Ha minden befejeződik, a rendszer végrehajtja a kérést, és egy FHIR-csomagot ad vissza az ügyfélnek.
 
@@ -89,7 +89,7 @@ A jogkivonat dekódolása és ellenőrzése olyan eszközökkel végezhető, min
 
 ## <a name="obtaining-an-access-token"></a>Hozzáférési jogkivonat beszerzése
 
-A fentiekben leírtak szerint számos módon szerezhet be tokent az Azure AD-ből. Ezeket részletesen ismertetik az [Azure ad fejlesztői dokumentációjában](https://docs.microsoft.com/azure/active-directory/develop/).
+A fentiekben leírtak szerint számos módon szerezhet be tokent az Azure AD-ből. Ezeket részletesen ismertetik az [Azure ad fejlesztői dokumentációjában](../active-directory/develop/index.yml).
 
 Az Azure AD két különböző verziójú OAuth 2,0-végpontot tartalmaz, amelyek a és a néven is ismertek `v1.0` `v2.0` . Mindkét verzió OAuth 2,0-végpont, a `v1.0` és a `v2.0` megjelölések pedig az Azure ad által a standard megvalósításával kapcsolatos különbségeket ismertetik. 
 
@@ -98,15 +98,15 @@ FHIR-kiszolgáló használatakor a `v1.0` vagy a `v2.0` végpontokat is használ
 Az Azure AD dokumentációjának megfelelő fejezetei a következők:
 
 * `v1.0` végpont
-    * [Engedélyezési kód folyamata](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code).
-    * [Ügyfél-hitelesítő adatok folyamata](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow).
+    * [Engedélyezési kód folyamata](../active-directory/azuread-dev/v1-protocols-oauth-code.md).
+    * [Ügyfél-hitelesítő adatok folyamata](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md).
 * `v2.0` végpont
-    * [Engedélyezési kód folyamata](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow).
-    * [Ügyfél-hitelesítő adatok folyamata](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow).
+    * [Engedélyezési kód folyamata](../active-directory/develop/v2-oauth2-auth-code-flow.md).
+    * [Ügyfél-hitelesítő adatok folyamata](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md).
 
 A token beszerzéséhez más változatok is tartoznak (például a flow nevében). A részletekért olvassa el az Azure AD dokumentációját. Ha a FHIR készült Azure API-t használja, az [Azure CLI](get-healthcare-apis-access-token-cli.md)-vel egy hozzáférési token (hibakeresési célú) beszerzésére is van néhány parancsikon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan biztosíthatja az Azure API-hoz való hozzáférés biztosítását az Azure AD-vel való FHIR. Ha meg szeretné tudni, hogyan helyezheti üzembe az Azure API FHIR-példányát, folytassa az üzembe helyezési útmutatóval.
 

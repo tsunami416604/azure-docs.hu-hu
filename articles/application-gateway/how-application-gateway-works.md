@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: d33ec829e490ae45d38d33f5784126a71ae2d0aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9166125fac28f43a93cbee2875b91bee986b1400
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506553"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397467"
 ---
 # <a name="how-an-application-gateway-works"></a>Az Application Gateway működése
 
@@ -32,7 +32,7 @@ Ez a cikk azt ismerteti, hogyan fogadja el az Application Gateway a bejövő ké
 
 Az Azure Application Gateway belső alkalmazás-terheléselosztóként vagy internetkapcsolattal rendelkező alkalmazás-terheléselosztóként is használható. Az internetre irányuló Application Gateway nyilvános IP-címeket használ. Az internetre irányuló Application Gateway DNS-neve nyilvánosan feloldható a nyilvános IP-címére. Ennek eredményeképpen az internetre irányuló Application Gateway átjárók átirányítják az ügyfeleket az internethez.
 
-A belső alkalmazás-átjárók csak privát IP-címeket használnak. Ha egyéni vagy [saját DNS zónát](https://docs.microsoft.com/azure/dns/private-dns-overview)használ, a tartománynévnek belsőleg feloldhatónak kell lennie a Application Gateway magánhálózati IP-címére. Ezért a belső terheléselosztó csak olyan ügyfelektől érkező kéréseket tud irányítani, akiknek hozzáférése van egy virtuális hálózathoz az Application Gateway számára.
+A belső alkalmazás-átjárók csak privát IP-címeket használnak. Ha egyéni vagy [saját DNS zónát](../dns/private-dns-overview.md)használ, a tartománynévnek belsőleg feloldhatónak kell lennie a Application Gateway magánhálózati IP-címére. Ezért a belső terheléselosztó csak olyan ügyfelektől érkező kéréseket tud irányítani, akiknek hozzáférése van egy virtuális hálózathoz az Application Gateway számára.
 
 ## <a name="how-an-application-gateway-routes-a-request"></a>Egy kérelem átirányítása az Application Gateway számára
 
@@ -52,9 +52,9 @@ Amikor egy Application Gateway elküldi az eredeti kérést a háttér-kiszolgá
 
  >[!NOTE]
 >Ha a háttér-készlet:
-> - **Nyilvános végpont**, az Application Gateway a előtér nyilvános IP-címét használja a kiszolgáló eléréséhez. Ha nincs egy előtér nyilvános IP-címe, a rendszer az egyiket a kimenő külső kapcsolathoz rendeli hozzá.
-> - **Belsőleg feloldható teljes tartománynevet vagy magánhálózati IP-címet tartalmaz**, az Application Gateway a kérést a háttér-kiszolgálóra irányítja a példány magánhálózati IP-címeinek használatával.
-> - **Külső végpontot vagy külsőleg feloldható teljes tartománynevet tartalmaz**, az Application Gateway a háttérben lévő nyilvános IP-cím használatával irányítja a kérést a háttér-kiszolgálónak. A DNS-feloldás egy magánhálózati DNS-zónán vagy egyéni DNS-kiszolgálón alapul, ha konfigurálva van, vagy az alapértelmezett Azure által biztosított DNS-t használja. Ha nincs egy előtér nyilvános IP-címe, a rendszer az egyiket a kimenő külső kapcsolathoz rendeli hozzá.
+> - **Nyilvános végpont** , az Application Gateway a előtér nyilvános IP-címét használja a kiszolgáló eléréséhez. Ha nincs egy előtér nyilvános IP-címe, a rendszer az egyiket a kimenő külső kapcsolathoz rendeli hozzá.
+> - **Belsőleg feloldható teljes tartománynevet vagy magánhálózati IP-címet tartalmaz** , az Application Gateway a kérést a háttér-kiszolgálóra irányítja a példány magánhálózati IP-címeinek használatával.
+> - **Külső végpontot vagy külsőleg feloldható teljes tartománynevet tartalmaz** , az Application Gateway a háttérben lévő nyilvános IP-cím használatával irányítja a kérést a háttér-kiszolgálónak. A DNS-feloldás egy magánhálózati DNS-zónán vagy egyéni DNS-kiszolgálón alapul, ha konfigurálva van, vagy az alapértelmezett Azure által biztosított DNS-t használja. Ha nincs egy előtér nyilvános IP-címe, a rendszer az egyiket a kimenő külső kapcsolathoz rendeli hozzá.
 
 ### <a name="modifications-to-the-request"></a>A kérelem módosításai
 

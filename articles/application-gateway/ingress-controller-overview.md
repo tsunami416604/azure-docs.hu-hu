@@ -7,17 +7,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: c1bd41587e4f56fb0a7f3eb8285d301751f558d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26f53a8f93d4d51ec8f8fd91051496a46670f432
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84668100"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397348"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Mi az Application Gateway beáramló vezérlő?
 A Application Gateway beáramlási vezérlő (AGIC) egy Kubernetes-alkalmazás, amely lehetővé teszi, hogy az [Azure Kubernetes Service (ak)](https://azure.microsoft.com/services/kubernetes-service/) ügyfelei kihasználják az azure natív [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7 Load-balancert a felhőalapú szoftverek interneten való elérhetővé tételéhez. A AGIC figyeli az üzemeltetett Kubernetes-fürtöt, és folyamatosan frissíti egy Application Gateway, hogy a kiválasztott szolgáltatások elérhetők legyenek az internethez.
 
-A bejövő vezérlő a saját Pod-on fut az ügyfél AK-ban. A AGIC a Kubernetes-erőforrások egy részhalmazát figyeli a változásokhoz. Az AK-fürt állapota Application Gateway meghatározott konfigurációra van lefordítva, és a [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)alkalmazásra lett alkalmazva.
+A bejövő vezérlő a saját Pod-on fut az ügyfél AK-ban. A AGIC a Kubernetes-erőforrások egy részhalmazát figyeli a változásokhoz. Az AK-fürt állapota Application Gateway meghatározott konfigurációra van lefordítva, és a [Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md)alkalmazásra lett alkalmazva.
 
 ## <a name="benefits-of-application-gateway-ingress-controller"></a>A Application Gateway beáramlási vezérlő előnyei
 A AGIC segít kiküszöbölni, hogy szükség van-e egy másik terheléselosztó/nyilvános IP-cím létrehozására az AK-fürt előtt, és elkerüli a több ugrást a DataPath, mielőtt a kérelmek elérnék az AK-fürtöt. A Application Gateway a saját saját IP-címével beszél a hüvelyekről, és nem igényli a NodePort vagy a KubeProxy szolgáltatás használatát. Ez az üzembe helyezések jobb teljesítményét is lehetővé teszi.
@@ -77,4 +77,3 @@ A következő táblázatok rendezik, hogy jelenleg milyen forgatókönyvek támo
 - [**Ak Add-On rozsdaövezetek rehabilitálása üzembe helyezése**](tutorial-ingress-controller-add-on-existing.md): telepítse a AGIC bővítményt egy AK-fürtön egy meglévő Application Gateway.
 - [**Helm Greenfield üzembe helyezése**](ingress-controller-install-new.md): telepítse a AGIC-t a Helm, az új AK-fürt és az új Application Gateway az üres-pala infrastruktúrán keresztül.
 - [**Helm rozsdaövezetek rehabilitálása üzembe helyezése**](ingress-controller-install-existing.md): AGIC üzembe helyezése egy meglévő AK-fürtön és Application Gateway.
-

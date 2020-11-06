@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee286540d4fd740c5e7c1f8bd693fddd625eeae2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308224"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398147"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Oktatóanyag: eszközre vonatkozó adatfogadás az Azure IoT Hub
 
@@ -23,7 +23,7 @@ Az Azure IoT-összekötő a FHIR * számára lehetővé teszi, hogy az orvosi es
 
 - Aktív Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Azure API FHIR-erőforráshoz legalább egy Azure IoT-összekötővel a FHIR – [Azure IoT-összekötő üzembe helyezése a FHIR-ben (előzetes verzió) a Azure Portal](iot-fhir-portal-quickstart.md)
-- Azure IoT Hub-erőforrás valós vagy szimulált eszközhöz csatlakoztatva – [IoT hub létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)
+- Azure IoT Hub-erőforrás valós vagy szimulált eszközhöz csatlakoztatva – [IoT hub létrehozása a Azure Portal használatával](../iot-hub/quickstart-send-telemetry-dotnet.md)
 
 > [!TIP]
 > Ha Azure IoT Hub szimulált eszköz alkalmazást használ, a különböző támogatott nyelvek és rendszerek közül választhat.
@@ -36,22 +36,22 @@ A FHIR készült Azure IoT-összekötő egy Azure Event hub-példányt használ 
 
 ## <a name="connect-azure-iot-hub-with-the-azure-iot-connector-for-fhir-preview"></a>Az Azure IoT Hub összekötése a FHIR készült Azure IoT-összekötővel (előzetes verzió)
 
-Az Azure IoT Hub támogatja az [üzenet-útválasztás](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) nevű szolgáltatást, amely lehetővé teszi az eszközre vonatkozó adatküldés lehetőségét különböző Azure-szolgáltatások, például az Event hub, a Storage-fiók és a Service Bus számára. A FHIR készült Azure IoT Connector ezt a funkciót használja az Azure-IoT Hub az Event hub-végpontba való kapcsolódáshoz és az eszköz adatainak küldéséhez.
+Az Azure IoT Hub támogatja az [üzenet-útválasztás](../iot-hub/iot-hub-devguide-messages-d2c.md) nevű szolgáltatást, amely lehetővé teszi az eszközre vonatkozó adatküldés lehetőségét különböző Azure-szolgáltatások, például az Event hub, a Storage-fiók és a Service Bus számára. A FHIR készült Azure IoT Connector ezt a funkciót használja az Azure-IoT Hub az Event hub-végpontba való kapcsolódáshoz és az eszköz adatainak küldéséhez.
 
 > [!NOTE] 
-> Jelenleg csak a PowerShell vagy a CLI parancs használható az üzenet- [Útválasztás létrehozásához](https://docs.microsoft.com/azure/iot-hub/tutorial-routing) , mert az FHIR Event hub-hoz készült Azure IoT Connector nem az ügyfél-előfizetésen fut, ezért nem lesz látható a Azure Portalon keresztül. Bár ha a PowerShell vagy a parancssori felület használatával hozzáadja az üzenet-útválasztási objektumokat, azok láthatók lesznek a Azure Portalon, és ott is kezelhetők.
+> Jelenleg csak a PowerShell vagy a CLI parancs használható az üzenet- [Útválasztás létrehozásához](../iot-hub/tutorial-routing.md) , mert az FHIR Event hub-hoz készült Azure IoT Connector nem az ügyfél-előfizetésen fut, ezért nem lesz látható a Azure Portalon keresztül. Bár ha a PowerShell vagy a parancssori felület használatával hozzáadja az üzenet-útválasztási objektumokat, azok láthatók lesznek a Azure Portalon, és ott is kezelhetők.
 
 Az üzenetek útválasztásának beállítása két lépésből áll.
 
 ### <a name="add-an-endpoint"></a>Végpont hozzáadása
-Ez a lépés egy olyan végpontot határoz meg, amelybe a IoT Hub átirányítja az adattovábbítást. Hozza létre ezt a végpontot az [Add-AzIotHubRoutingEndpoint](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) PowerShell [-paranccsal vagy az IOT hub Routing-Endpoint Create](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?#az-iot-hub-routing-endpoint-create) CLI parancs használatával a beállítás alapján.
+Ez a lépés egy olyan végpontot határoz meg, amelybe a IoT Hub átirányítja az adattovábbítást. Hozza létre ezt a végpontot az [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) PowerShell [-paranccsal vagy az IOT hub Routing-Endpoint Create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create) CLI parancs használatával a beállítás alapján.
 
 Itt látható a végpont létrehozásához a paranccsal használandó paraméterek listája:
 
 |PowerShell-paraméter|CLI-paraméter|Leírás|
 |---|---|---|
 |ResourceGroupName|resource-group|Az IoT Hub erőforrás erőforráscsoport-neve.|
-|Név|hub neve|A IoT Hub erőforrás neve.|
+|Name|hub neve|A IoT Hub erőforrás neve.|
 |Végpontneve|végpont neve|Használjon olyan nevet, amelyet hozzá szeretne rendelni a létrehozandó végponthoz.|
 |EndpointType|végpont típusa|Annak a végpontnak a típusa, amelyhez IoT Hub csatlakoznia kell. Használja a "EventHub" konstans értékét a PowerShell és a "EventHub" számára a CLI-hez.|
 |EndpointResourceGroup|végpont – erőforrás-csoport|Erőforráscsoport neve az Azure IoT-összekötőhöz a FHIR Azure API-hoz a FHIR-erőforráshoz. Ezt az értéket a FHIR készült Azure API áttekintés lapján érheti el.|
@@ -59,14 +59,14 @@ Itt látható a végpont létrehozásához a paranccsal használandó paraméter
 |ConnectionString|connection-string|A FHIR készült Azure IoT-összekötőhöz tartozó kapcsolódási karakterlánc. Használja az előző lépésben beszerzett értéket.|
 
 ### <a name="add-a-message-route"></a>Üzenet útvonalának hozzáadása
-Ez a lépés egy üzenet útvonalát határozza meg a fent létrehozott végpont használatával. Hozzon létre egy útvonalat az [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell-paranccsal vagy [az IOT hub Route Create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI parancs használatával a beállítás alapján.
+Ez a lépés egy üzenet útvonalát határozza meg a fent létrehozott végpont használatával. Hozzon létre egy útvonalat az [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell-paranccsal vagy [az IOT hub Route Create](/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI parancs használatával a beállítás alapján.
 
 Az üzenet útvonalának hozzáadásához a paranccsal használható paramétereket a következő lista tartalmazza:
 
 |PowerShell-paraméter|CLI-paraméter|Leírás|
 |---|---|---|
 |ResourceGroupName|g|Az IoT Hub erőforrás erőforráscsoport-neve.|
-|Név|hub neve|A IoT Hub erőforrás neve.|
+|Name|hub neve|A IoT Hub erőforrás neve.|
 |Végpontneve|végpont neve|A fent létrehozott végpont neve.|
 |Z|útvonal neve|A létrehozandó üzenet-útvonalhoz hozzárendelni kívánt név.|
 |Forrás|forrás típusa|A végpontnak küldendő adattípusok. Használja a "DeviceMessages" konstans értékét a PowerShell és a "DeviceMessages" számára a CLI-hez.|

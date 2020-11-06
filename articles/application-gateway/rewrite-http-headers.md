@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e8eb79d519e2f7bfbf006b852f0c5294976b727
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85248683"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397150"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>HTTP-fejlécek újraírása Application Gateway
 
@@ -22,7 +22,7 @@ A HTTP-fejlécek lehetővé teszik, hogy az ügyfél és a kiszolgáló további
 
 Az Application Gateway lehetővé teszi HTTP-kérelmek és -válaszok fejlécének hozzáadását, eltávolítását vagy frissítését, miközben a kérelem- és válaszcsomagok az ügyfél és a háttérkészlet között mozognak. Ezenkívül lehetővé teszi feltételek megadását, hogy a megadott fejlécek átírására csak ezen feltételek teljesülése esetén legyen lehetőség.
 
-A Application Gateway számos [kiszolgálói változót](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) is támogat, amelyek segítenek a kérelmekkel és a válaszokkal kapcsolatos további információk tárolásában. Így könnyebben hozhat létre hatékony Újraírási szabályokat.
+A Application Gateway számos [kiszolgálói változót](#server-variables) is támogat, amelyek segítenek a kérelmekkel és a válaszokkal kapcsolatos további információk tárolásában. Így könnyebben hozhat létre hatékony Újraírási szabályokat.
 
 > [!NOTE]
 >
@@ -49,14 +49,14 @@ Feltételt használhat egy adott változó jelenlétének kiértékeléséhez, h
 Az Újraírási műveletek segítségével megadhatja az újraírni kívánt kérelem és válasz fejléceit, valamint a fejlécek új értékét. Létrehozhat egy új fejlécet, módosíthatja egy meglévő fejléc értékét, vagy törölhet egy meglévő fejlécet is. Az új fejléc vagy egy meglévő fejléc értéke az alábbi típusú értékekre állítható be:
 
 - Szöveg.
-- Kérelem fejléce A kérelem fejlécének megadásához a következő szintaxist kell használnia: {http_req_*headerName*}.
-- Válaszfejléc. A válasz fejlécének megadásához a következő szintaxist kell használnia: {http_resp_*headerName*}.
-- Kiszolgálói változó. A kiszolgálói változó megadásához a {var_*serverVariable*} szintaxist kell használnia.
+- Kérelem fejléce A kérelem fejlécének megadásához a következő szintaxist kell használnia: {http_req_ *headerName* }.
+- Válaszfejléc. A válasz fejlécének megadásához a következő szintaxist kell használnia: {http_resp_ *headerName* }.
+- Kiszolgálói változó. A kiszolgálói változó megadásához a {var_ *serverVariable* } szintaxist kell használnia.
 - A szöveg, a kérelem fejléce, a válasz fejléce és a kiszolgálói változó kombinációja.
 
 ## <a name="server-variables"></a>Kiszolgálói változók
 
-A Application Gateway kiszolgálói változók használatával tárolja a kiszolgálóval kapcsolatos hasznos információkat, az ügyféllel létesített kapcsolatokat és a jelenlegi kérést a kapcsolatban. A tárolt információk közé tartoznak például az ügyfél IP-címe és a webböngésző típusa. A kiszolgálói változók dinamikusan változnak, például új lap betöltésekor vagy űrlap közzétételekor. Ezeket a változókat használhatja az Újraírási feltételek kiértékeléséhez és a fejlécek újraírásához. Ha a kiszolgálói változók értékét szeretné használni a fejlécek újraírásához, ezeket a változókat a {var_*serverVariable*} szintaxisban kell megadnia.
+A Application Gateway kiszolgálói változók használatával tárolja a kiszolgálóval kapcsolatos hasznos információkat, az ügyféllel létesített kapcsolatokat és a jelenlegi kérést a kapcsolatban. A tárolt információk közé tartoznak például az ügyfél IP-címe és a webböngésző típusa. A kiszolgálói változók dinamikusan változnak, például új lap betöltésekor vagy űrlap közzétételekor. Ezeket a változókat használhatja az Újraírási feltételek kiértékeléséhez és a fejlécek újraírásához. Ha a kiszolgálói változók értékét szeretné használni a fejlécek újraírásához, ezeket a változókat a {var_ *serverVariable* } szintaxisban kell megadnia.
 
 Az Application Gateway a következő kiszolgálói változókat támogatja:
 
@@ -70,7 +70,7 @@ Az Application Gateway a következő kiszolgálói változókat támogatja:
 | client_tcp_rtt             | Az ügyfél TCP-kapcsolataival kapcsolatos információk. Az TCP_INFO socket beállítást támogató rendszereken érhető el. |
 | client_user                | A HTTP-hitelesítés használatakor a rendszer a hitelesítéshez megadott felhasználónevet adja meg. |
 | gazda                       | A sorrend sorrendjében: az állomásnév a kérelem sorából, az állomásnév a gazdagép-kérelem fejléce mezőből, vagy egy kérelemnek megfelelő kiszolgálónév. Példa: a kérelemben a *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* gazdagép értéke *contoso.com* lesz. |
-| cookie_*neve*              | A *név* cookie.                                            |
+| cookie_ *neve*              | A *név* cookie.                                            |
 | http_method                | Az URL-kérelem elvégzéséhez használt metódus. Például: GET vagy POST. |
 | http_status                | A munkamenet állapota. Például: 200, 400 vagy 403.                       |
 | http_version               | A kérelem protokollja. Általában HTTP/1.0, HTTP/1.1 vagy HTTP/2.0. |
@@ -91,25 +91,25 @@ A HTTP-fejléc újraírásának konfigurálásához el kell végeznie ezeket a l
 
 1. Hozza létre a HTTP-fejléc újraírásához szükséges objektumokat:
 
-   - **Újraírási művelet**: a kérelem és a kérelem fejlécének azon mezőinek megadására szolgál, amelyeket át szeretne írni, valamint a fejlécek új értékét. Egy vagy több Újraírási feltétel is társítható egy Újraírási művelettel.
+   - **Újraírási művelet** : a kérelem és a kérelem fejlécének azon mezőinek megadására szolgál, amelyeket át szeretne írni, valamint a fejlécek új értékét. Egy vagy több Újraírási feltétel is társítható egy Újraírási művelettel.
 
-   - **Újraírási feltétel**: opcionális konfiguráció. Az Újraírási feltételek kiértékelik a HTTP (S) kérelmek és válaszok tartalmát. Az újraírás művelet akkor fordul elő, ha a HTTP (S) kérelem vagy válasz megfelel az Újraírási feltételnek.
+   - **Újraírási feltétel** : opcionális konfiguráció. Az Újraírási feltételek kiértékelik a HTTP (S) kérelmek és válaszok tartalmát. Az újraírás művelet akkor fordul elő, ha a HTTP (S) kérelem vagy válasz megfelel az Újraírási feltételnek.
 
      Ha egynél több feltételt társít egy művelethez, a művelet csak akkor lép fel, ha az összes feltétel teljesül. Más szóval a művelet logikai és művelet.
 
-   - **Újraírási szabály**: több Újraírási művelet/Újraírási feltétel kombinációt tartalmaz.
+   - **Újraírási szabály** : több Újraírási művelet/Újraírási feltétel kombinációt tartalmaz.
 
-   - **Szabály sorrendje**: segít meghatározni, hogy az Újraírási szabályok hogyan legyenek végrehajtva. Ez a konfiguráció akkor hasznos, ha több Újraírási szabály található egy Újraírási készletben. Az alacsonyabb szabálykészlet-értékkel rendelkező Újraírási szabály először fut. Ha ugyanezt a szabályt két Újraírási szabályhoz rendeli hozzá, a végrehajtás sorrendje nem determinisztikus.
+   - **Szabály sorrendje** : segít meghatározni, hogy az Újraírási szabályok hogyan legyenek végrehajtva. Ez a konfiguráció akkor hasznos, ha több Újraírási szabály található egy Újraírási készletben. Az alacsonyabb szabálykészlet-értékkel rendelkező Újraírási szabály először fut. Ha ugyanezt a szabályt két Újraírási szabályhoz rendeli hozzá, a végrehajtás sorrendje nem determinisztikus.
 
-   - **Újraírási készlet**: több Újraírási szabályt tartalmaz, amelyek egy kérelem-útválasztási szabályhoz lesznek társítva.
+   - **Újraírási készlet** : több Újraírási szabályt tartalmaz, amelyek egy kérelem-útválasztási szabályhoz lesznek társítva.
 
-2. Csatolja az Újraírási készletet (*rewriteRuleSet*) egy útválasztási szabályhoz. Az Újraírási konfiguráció a forrás figyelőhöz van csatolva az útválasztási szabály segítségével. Alapszintű útválasztási szabály használata esetén a fejléc-Újraírási konfiguráció egy forrás-figyelőhöz van társítva, és a globális fejléc újraírása. Elérésiút-alapú útválasztási szabály használata esetén a fejléc-Újraírási konfiguráció az URL-cím elérési útja alapján van definiálva. Ebben az esetben csak a hely adott elérési útja területére vonatkozik.
+2. Csatolja az Újraírási készletet ( *rewriteRuleSet* ) egy útválasztási szabályhoz. Az Újraírási konfiguráció a forrás figyelőhöz van csatolva az útválasztási szabály segítségével. Alapszintű útválasztási szabály használata esetén a fejléc-Újraírási konfiguráció egy forrás-figyelőhöz van társítva, és a globális fejléc újraírása. Elérésiút-alapú útválasztási szabály használata esetén a fejléc-Újraírási konfiguráció az URL-cím elérési útja alapján van definiálva. Ebben az esetben csak a hely adott elérési útja területére vonatkozik.
    > [!NOTE]
    > URL-újraírás módosítja a fejléceket; nem változtatja meg az elérési út URL-címét.
 
 Több, a HTTP-fejléc Újraírási készletét is létrehozhatja, és az egyes újraírásokat több figyelőre alkalmazhatja. De csak egy Újraírási készletet alkalmazhat egy adott figyelőre.
 
-## <a name="common-scenarios"></a>Gyakori helyzetek
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
 Íme néhány gyakori forgatókönyv a fejléc újraírásának használatához.
 
@@ -168,5 +168,5 @@ Kiértékelheti a HTTP-kérések vagy a válasz fejléceit egy fejléc vagy kisz
 
 A HTTP-fejlécek újraírásának megismeréséhez tekintse meg a következő témakört:
 
-- [HTTP-fejlécek átírása az Azure Portal használatával](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+- [HTTP-fejlécek átírása az Azure Portal használatával](./rewrite-http-headers-portal.md)
 - [HTTP-fejlécek újraírása Azure PowerShell használatával](add-http-header-rewrite-rule-powershell.md)

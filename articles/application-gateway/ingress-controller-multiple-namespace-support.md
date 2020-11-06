@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cffc15974bf5a016a4584f5c5f3dcc8a185c9824
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85556167"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397331"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Több névtér támogatásának engedélyezése egy AK-fürtön Application Gateway bejövő adatkezelővel
 
@@ -35,7 +35,7 @@ Az üzembe helyezést követően több névteret is megfigyelheti, a AGIC a köv
   - az összes elérhető névtér bejövő erőforrásainak listázása
   - Szűrés a bejövő erőforrásokhoz megjegyzésekkel `kubernetes.io/ingress.class: azure/application-gateway`
   - kombinált [Application Gateway konfigurációjának](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744) összeállítása
-  - a konfiguráció alkalmazása a társított Application Gateway a [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) használatával
+  - a konfiguráció alkalmazása a társított Application Gateway a [ARM](../azure-resource-manager/management/overview.md) használatával
 
 ## <a name="conflicting-configurations"></a>Ütköző konfigurációk
 Több névteres bemenő [erőforrás](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource) is UTASÍTHATJA a AGIC, hogy ütköző konfigurációkat hozzon létre egyetlen Application Gateway számára. (Két ingresses, amely ugyanazt a tartományt igényli a példányhoz.)
@@ -90,7 +90,7 @@ Annak ellenére, hogy a bejövő erőforrások felé irányuló forgalmat a rend
   - HTTP-beállítások: `bp-production-contoso-web-service-80-80-websocket-ingress`
   - Állapot mintavétele: `pb-production-contoso-web-service-80-websocket-ingress`
 
-Vegye figyelembe, hogy a *figyelő* és az *útválasztási szabály*kivételével a létrehozott Application Gateway erőforrások közé tartozik annak a névtérnek () a neve, amelyhez létre lettek `production` hozva.
+Vegye figyelembe, hogy a *figyelő* és az *útválasztási szabály* kivételével a létrehozott Application Gateway erőforrások közé tartozik annak a névtérnek () a neve, amelyhez létre lettek `production` hozva.
 
 Ha a két bejövő erőforrás be van vezetve az AK-fürtbe különböző időpontokban, valószínű, hogy a AGIC, amikor újrakonfigurálja Application Gateway és átirányítja a forgalmat a rendszerből `namespace-B` `namespace-A` .
 
@@ -99,7 +99,7 @@ Ha például először adta hozzá a `staging` -t, a AGIC úgy konfigurálja App
 ## <a name="restrict-access-to-namespaces"></a>Névterek elérésének korlátozása
 Alapértelmezés szerint a AGIC a megadott névtéren belüli jegyzett bejövő forgalom alapján konfigurálja Application Gateway. Ha korlátozni szeretné ezt a viselkedést, a következő lehetőségek közül választhat:
   - korlátozza a névtereket, ha explicit módon definiálja a névtereket, a AGIC a `watchNamespace` [Helm-config](#sample-helm-config-file) YAML kulcsán keresztül kell megfigyelnie. YAML
-  - a [szerepkörök és RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) használata a AGIC meghatározott névterekre való korlátozásához
+  - a [szerepkörök és RoleBinding](../aks/azure-ad-rbac.md) használata a AGIC meghatározott névterekre való korlátozásához
 
 ## <a name="sample-helm-config-file"></a>Példa Helm konfigurációs fájlra
 
@@ -155,4 +155,3 @@ Alapértelmezés szerint a AGIC a megadott névtéren belüli jegyzett bejövő 
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
 ```
-

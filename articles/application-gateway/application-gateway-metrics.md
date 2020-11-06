@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: absha
-ms.openlocfilehash: ce349a0539986d88f689c53fc2099877df8030bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c072e7c1339a2217a3c167be3237029bd71429c2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87424392"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397739"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway metrikái
 
-A Application Gateway a metrikák nevű adatpontokat teszi közzé a Application Gateway és a háttérbeli példányok teljesítményének [Azure Monitoréhez](https://docs.microsoft.com/azure/azure-monitor/overview) . Ezek a mérőszámok az idősorozat-adatok rendezett készletében lévő numerikus értékek, amelyek egy adott időpontban írják le az Application Gateway bizonyos aspektusait. Ha a Application Gatewayon átáramló kérések, a rendszer a 60 másodperces intervallumban méri és továbbítja a metrikákat. Ha nincsenek átáramló kérelmek a Application Gatewayon, vagy egy metrika nem rendelkezik adatokkal, a rendszer nem jelenti a metrikát. További információ: [Azure monitor mérőszámok](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+A Application Gateway a metrikák nevű adatpontokat teszi közzé a Application Gateway és a háttérbeli példányok teljesítményének [Azure Monitoréhez](../azure-monitor/overview.md) . Ezek a mérőszámok az idősorozat-adatok rendezett készletében lévő numerikus értékek, amelyek egy adott időpontban írják le az Application Gateway bizonyos aspektusait. Ha a Application Gatewayon átáramló kérések, a rendszer a 60 másodperces intervallumban méri és továbbítja a metrikákat. Ha nincsenek átáramló kérelmek a Application Gatewayon, vagy egy metrika nem rendelkezik adatokkal, a rendszer nem jelenti a metrikát. További információ: [Azure monitor mérőszámok](../azure-monitor/platform/data-platform-metrics.md).
 
 ## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Application Gateway v2 SKU által támogatott metrikák
 
@@ -40,7 +40,7 @@ Application Gateway számos beépített időzítési metrikát biztosít a kére
 
   A háttér-kiszolgálóval létesített kapcsolat létrehozásának és a válasz fejlécének első bájtjának fogadása közötti időtartam. 
 
-  Ez megközelíti a háttérbeli *kapcsolódási idő*összegét, a kérés által a háttér eléréséhez szükséges időt a Application Gatewaytól, a háttérbeli alkalmazás által a válaszadáshoz szükséges időt (a kiszolgáló által a tartalom előállítására irányuló, esetleg beolvasott adatbázis-lekérdezéseket), valamint a válasz első bájtja által a háttérből való Application Gateway eléréséhez szükséges időt.
+  Ez megközelíti a háttérbeli *kapcsolódási idő* összegét, a kérés által a háttér eléréséhez szükséges időt a Application Gatewaytól, a háttérbeli alkalmazás által a válaszadáshoz szükséges időt (a kiszolgáló által a tartalom előállítására irányuló, esetleg beolvasott adatbázis-lekérdezéseket), valamint a válasz első bájtja által a háttérből való Application Gateway eléréséhez szükséges időt.
 
 - **Háttérbeli utolsó bájt válaszideje**
 
@@ -52,7 +52,7 @@ Application Gateway számos beépített időzítési metrikát biztosít a kére
 
   A kérelem fogadásához, feldolgozásához és az elküldött válaszhoz szükséges átlagos idő. 
 
-  Ez az az időtartam, amikor a Application Gateway megkapja a HTTP-kérelem első bájtját arra az időre, amikor az utolsó válasz bájtot elküldték az ügyfélnek. Ebbe beletartozik a Application Gateway által végrehajtott feldolgozási idő, a *háttérbeli utolsó bájt válaszideje*, a Application Gateway által az összes válasz és az *ügyfél RTT*elküldéséhez szükséges idő.
+  Ez az az időtartam, amikor a Application Gateway megkapja a HTTP-kérelem első bájtját arra az időre, amikor az utolsó válasz bájtot elküldték az ügyfélnek. Ebbe beletartozik a Application Gateway által végrehajtott feldolgozási idő, a *háttérbeli utolsó bájt válaszideje* , a Application Gateway által az összes válasz és az *ügyfél RTT* elküldéséhez szükséges idő.
 
 - **Ügyfél-RTT**
 
@@ -62,7 +62,7 @@ Application Gateway számos beépített időzítési metrikát biztosít a kére
 
 Ezek a metrikák határozzák meg, hogy a megfigyelt lassulás az ügyfél hálózata, a Application Gateway teljesítmény, a háttérrendszer és a háttérrendszer-kiszolgáló TCP stack-telítettsége, a háttérbeli alkalmazás teljesítménye vagy nagyméretű fájlméret miatt történjen-e.
 
-Ha például van egy tüske a *háttérbeli első bájtban* , de a *háttérbeli kapcsolódási idő* trend stabil, akkor arra utalhat, hogy az Application Gateway a háttérbeli késést és a kapcsolat létesítéséhez szükséges időt eredményezi, és a csúcsot a háttérbeli alkalmazás válaszideje miatt megnövekszik. Másfelől, ha a *háttérbeli első bájtban* megadott tüske a *háttérbeli csatlakozási idő*egy megfelelő csúcsához van társítva, akkor azt is lekövetkeztetheti, hogy a Application Gateway és a háttérrendszer-kiszolgáló, illetve a háttérrendszer-kiszolgáló TCP-vereme közötti hálózat telített. 
+Ha például van egy tüske a *háttérbeli első bájtban* , de a *háttérbeli kapcsolódási idő* trend stabil, akkor arra utalhat, hogy az Application Gateway a háttérbeli késést és a kapcsolat létesítéséhez szükséges időt eredményezi, és a csúcsot a háttérbeli alkalmazás válaszideje miatt megnövekszik. Másfelől, ha a *háttérbeli első bájtban* megadott tüske a *háttérbeli csatlakozási idő* egy megfelelő csúcsához van társítva, akkor azt is lekövetkeztetheti, hogy a Application Gateway és a háttérrendszer-kiszolgáló, illetve a háttérrendszer-kiszolgáló TCP-vereme közötti hálózat telített. 
 
 Ha egy tüske látható a *háttérbeli utolsó bájtban* , de a *háttérbeli első bájt válaszideje* stabil, akkor azt is lekövetkeztetheti, hogy a nyárs egy nagyobb fájl kérése miatt van.
 
@@ -194,7 +194,7 @@ Application Gateway esetén a következő metrikák érhetők el:
 
 ## <a name="metrics-visualization"></a>Metrikák vizualizációja
 
-Tallózással keresse meg az Application Gatewayt a **figyelés** kiválasztása **mérőszámok**területen. Az elérhető értékeket a **METRIKÁK** legördülő listában találja.
+Tallózással keresse meg az Application Gatewayt a **figyelés** kiválasztása **mérőszámok** területen. Az elérhető értékeket a **METRIKÁK** legördülő listában találja.
 
 Az alábbi képen egy példa látható három mérőszámmal az elmúlt 30 percben:
 
@@ -214,11 +214,11 @@ Az alábbi példa végigvezeti egy olyan riasztási szabály létrehozásán, am
 
 2. A **szabály hozzáadása** lapon töltse ki a nevet, a feltételt és az értesítési szakaszt, majd kattintson **az OK gombra**.
 
-   * A **feltétel** -választóban válasszon ki egyet a következő négy érték közül: **nagyobb**, mint, **nagyobb vagy egyenlő**, **kisebb**, mint, vagy **kisebb vagy egyenlő**.
+   * A **feltétel** -választóban válasszon ki egyet a következő négy érték közül: **nagyobb** , mint, **nagyobb vagy egyenlő** , **kisebb** , mint, vagy **kisebb vagy egyenlő**.
 
    * Az **időszak** -választóban válasszon ki egy pontot öt perc és hat óra között.
 
-   * Ha az **e-mail-tulajdonosok, a közreműködők és az olvasók**lehetőséget választja, az e-mailek az adott erőforráshoz hozzáférő felhasználók alapján dinamikusak lehetnek. Ellenkező esetben a **további rendszergazdai e-mailek (ek)** mezőben megadhatja a felhasználók vesszővel elválasztott listáját.
+   * Ha az **e-mail-tulajdonosok, a közreműködők és az olvasók** lehetőséget választja, az e-mailek az adott erőforráshoz hozzáférő felhasználók alapján dinamikusak lehetnek. Ellenkező esetben a **további rendszergazdai e-mailek (ek)** mezőben megadhatja a felhasználók vesszővel elválasztott listáját.
 
    ![Szabály hozzáadása lap][7]
 
@@ -230,7 +230,7 @@ A riasztások listája a metrikai riasztás létrehozása után jelenik meg. Át
 
 ![Riasztások és szabályok listája][9]
 
-A riasztási értesítésekről további információt a [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)című témakörben talál.
+A riasztási értesítésekről további információt a [Riasztási értesítések fogadása](../azure-monitor/platform/alerts-overview.md)című témakörben talál.
 
 Ha többet szeretne megtudni a webhookokról, és arról, hogyan használhatja őket riasztásokkal, látogasson el [a webhook konfigurálása Azure metrikai riasztásra](../azure-monitor/platform/alerts-webhooks.md)című témakörben.
 

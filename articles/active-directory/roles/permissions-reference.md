@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d55e7f29c9ecefa7cfcf98ef890d9982b044ef30
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6dd88f6e8eb2ce95c1aa68c63f3d14a14e079d19
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378822"
+ms.locfileid: "93396515"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -80,7 +80,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók egyes felhasználók számá
 Az emelt [szintű hitelesítés rendszergazdai](#privileged-authentication-administrator) szerepköre jogosult az ismételt regisztrációra és a többtényezős hitelesítésre az összes felhasználó számára.
 
 > [!IMPORTANT]
-> Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
+> Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Ilyenek többek között:
 >
 >* Az alkalmazás regisztrálása és a vállalati alkalmazások tulajdonosai, akik kezelhetik a saját alkalmazások hitelesítő adatait. Ezek az alkalmazások jogosultsági szintű engedélyekkel rendelkezhetnek az Azure AD-ben, és másutt nem kapják meg a hitelesítési rendszergazdákat. Ezen az elérési úton a hitelesítési rendszergazda feltételezheti az alkalmazás tulajdonosának identitását, majd az alkalmazás hitelesítő adatainak frissítésével továbbra is feltételezheti a Kiemelt alkalmazások identitását.
 >* Az Azure-előfizetések tulajdonosai, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz vagy az Azure-beli kritikus konfigurációhoz.
@@ -90,7 +90,7 @@ Az emelt [szintű hitelesítés rendszergazdai](#privileged-authentication-admin
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps-rendszergazda](#azure-devops-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók kezelhetik az Azure DevOps-szabályzatot, hogy az új Azure DevOps-szervezet létrehozása konfigurálható felhasználók vagy csoportok számára legyen korlátozva. Az ebben a szerepkörben lévő felhasználók bármely olyan Azure DevOps-szervezeten keresztül kezelhetik ezt a szabályzatot, amely a vállalat Azure AD-szervezetét is támogatja.
+Az ezzel a szerepkörrel rendelkező felhasználók kezelhetik az Azure DevOps-szabályzatot, hogy az új Azure DevOps-szervezet létrehozása konfigurálható felhasználók vagy csoportok számára legyen korlátozva. A szerepkör felhasználói a vállalat Azure AD-szervezete által támogatott bármely Azure DevOps-szervezeten keresztül kezelhetik ezt a szabályzatot. Ez a szerepkör nem biztosít más Azure DevOps-specifikus engedélyeket (például a Project Collection-rendszergazdákat) a vállalat Azure AD-szervezete által támogatott bármely Azure DevOps-szervezeten belül.
 
 Az összes Enterprise Azure DevOps-szabályzatot a felhasználók kezelhetik a szerepkörben.
 
@@ -260,7 +260,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók módosíthatják a jelszavak
 * Jelentések olvasója
 
 > [!IMPORTANT]
-> Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azokat a személyeket, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belül és kívül is kritikus konfigurációhoz. A felhasználó jelszavának módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
+> Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azokat a személyeket, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belül és kívül is kritikus konfigurációhoz. A felhasználó jelszavának módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Ilyenek többek között:
 >
 >- Az alkalmazás regisztrálása és a vállalati alkalmazások tulajdonosai, akik kezelhetik a saját alkalmazások hitelesítő adatait. Ezek az alkalmazások jogosultsági szintű engedélyekkel rendelkezhetnek az Azure AD-ben, és máshol nem biztosítanak ügyfélszolgálati rendszergazdának. Ezen az elérési úton egy ügyfélszolgálati rendszergazda képes lehet feltételezni az alkalmazás tulajdonosának identitását, majd az alkalmazás hitelesítő adatainak frissítésével tovább feltételezni egy emelt szintű alkalmazás identitását.
 >- Azure-előfizetések tulajdonosai, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz vagy az Azure-beli kritikus konfigurációhoz.
@@ -500,7 +500,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók létrehozhatnak felhasznál�
 | Csak olyan felhasználóknál, akik nem rendszergazdák vagy a következő korlátozott rendszergazdai szerepkörök valamelyikében vannak:<ul><li>Directory-olvasók<li>Csoportok rendszergazdája<li>Vendég meghívója<li>Segélyszolgálat rendszergazdája<li>Üzenetközpont-olvasó<li>Jelszó-rendszergazda<li>Jelentések olvasója<li>Felhasználói rendszergazda|<p>Törlés és visszaállítás</p><p>Letiltás és engedélyezés</p><p>Frissítési tokenek érvénytelenítése</p><p>Az összes felhasználói tulajdonság kezelése, beleértve az egyszerű felhasználónevet</p><p>Új jelszó létrehozása</p><p>Eszköz kulcsainak frissítése</p>|
 
 > [!IMPORTANT]
-> Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azokat a személyeket, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belül és kívül is kritikus konfigurációhoz. A felhasználó jelszavának módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
+> Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azokat a személyeket, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belül és kívül is kritikus konfigurációhoz. A felhasználó jelszavának módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Ilyenek többek között:
 >
 >- Az alkalmazás regisztrálása és a vállalati alkalmazások tulajdonosai, akik kezelhetik a saját alkalmazások hitelesítő adatait. Ezek az alkalmazások jogosultsági szintű engedélyekkel rendelkezhetnek az Azure AD-ben, és máshol nem kapnak felhasználói rendszergazdákat. Ezen az elérési úton a felhasználói rendszergazda feltételezheti az alkalmazás tulajdonosának identitását, majd az alkalmazáshoz tartozó hitelesítő adatok frissítésével továbbra is feltételezheti a Kiemelt alkalmazások identitását.
 >- Az Azure-előfizetések tulajdonosai, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz vagy az Azure-beli kritikus konfigurációhoz.
@@ -1999,7 +1999,7 @@ Korlátozott vendég felhasználó | Nem látható, mert nem használható | NA
 Felhasználó | Nem látható, mert nem használható | NA
 Munkahelyi eszközök csatlakoztatása | Elavult | [Elavult szerepkörök dokumentációja](permissions-reference.md#deprecated-roles)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni arról, hogyan rendeljen hozzá egy felhasználót egy Azure-előfizetés rendszergazdájához, olvassa el az [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) című témakört.
 * Ha többet szeretne megtudni a Microsoft Azure erőforrás-hozzáférés szabályozásáról, tekintse meg [a különböző szerepkörök megismerése](../../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.

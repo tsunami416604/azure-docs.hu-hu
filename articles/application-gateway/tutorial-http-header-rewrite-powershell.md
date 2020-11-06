@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: e18288dbc2a09c7e9dd5b0c0e96dfd04ec192596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595903"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396855"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Application Gateway létrehozása és a HTTP-fejlécek újraírása
 
-Az új automatikus [skálázás és a Zone-redundáns Application Gateway SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) létrehozásakor az Azure PowerShell használatával KONFIGURÁLHATÓK a [HTTP-kérések és a válaszok fejlécének újraírására szolgáló szabályok](rewrite-http-headers.md) .
+Az új automatikus [skálázás és a Zone-redundáns Application Gateway SKU](./application-gateway-autoscaling-zone-redundant.md) létrehozásakor az Azure PowerShell használatával KONFIGURÁLHATÓK a [HTTP-kérések és a válaszok fejlécének újraírására szolgáló szabályok](rewrite-http-headers.md) .
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -28,11 +28,11 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * Application Gateway létrehozása
 * Az alkalmazásátjáró tesztelése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a cikkhez Azure PowerShell helyileg kell futtatnia. Az az modul Version 1.0.0 vagy újabb verziójának telepítve kell lennie. Futtassa `Import-Module Az` a parancsot, majd `Get-Module Az` Keresse meg a verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
+Ehhez a cikkhez Azure PowerShell helyileg kell futtatnia. Az az modul Version 1.0.0 vagy újabb verziójának telepítve kell lennie. Futtassa `Import-Module Az` a parancsot, majd `Get-Module Az` Keresse meg a verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -107,11 +107,11 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 
 Konfigurálja a HTTP-fejlécek újraírásához szükséges új objektumokat:
 
-- **RequestHeaderConfiguration**: ezzel az objektummal megadhatja az újraírni kívánt kérelem fejlécének mezőit, valamint azt az új értéket, amelyet az eredeti fejléceknek újra kell írnia.
-- **ResponseHeaderConfiguration**: ezzel az objektummal megadhatja az újraírni kívánt válasz fejléc-mezőket, valamint azt az új értéket, amelyet az eredeti fejléceknek újra kell írnia.
-- **ActionSet**: ez az objektum tartalmazza a fent megadott kérelem és válasz fejlécek konfigurációit. 
-- **RewriteRule**: ez az objektum tartalmazza a fent megadott összes *actionSets* . 
-- **RewriteRuleSet**– ez az objektum tartalmazza az összes *rewriteRules* , és csatolni kell egy kérelem útválasztási szabályához – alapszintű vagy elérésiút-alapú.
+- **RequestHeaderConfiguration** : ezzel az objektummal megadhatja az újraírni kívánt kérelem fejlécének mezőit, valamint azt az új értéket, amelyet az eredeti fejléceknek újra kell írnia.
+- **ResponseHeaderConfiguration** : ezzel az objektummal megadhatja az újraírni kívánt válasz fejléc-mezőket, valamint azt az új értéket, amelyet az eredeti fejléceknek újra kell írnia.
+- **ActionSet** : ez az objektum tartalmazza a fent megadott kérelem és válasz fejlécek konfigurációit. 
+- **RewriteRule** : ez az objektum tartalmazza a fent megadott összes *actionSets* . 
+- **RewriteRuleSet** – ez az objektum tartalmazza az összes *rewriteRules* , és csatolni kell egy kérelem útválasztási szabályához – alapszintű vagy elérésiút-alapú.
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"
@@ -171,6 +171,6 @@ Először vizsgálja meg az Application Gateway használatával létrehozott er�
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-powershell.md)

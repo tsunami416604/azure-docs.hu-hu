@@ -7,18 +7,18 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: 2850f831100533908d55c4aab372338e07b3807f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3fe4118a8ecf4479732ba4073b342d3ec9f941b8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042490"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398198"
 ---
 # <a name="configure-database-settings"></a>Adatbázis-beállítások konfigurálása 
 
 Az Azure API for FHIR az adatbázis használatával tárolja az adattárolási adatbázist. Az alapul szolgáló adatbázis teljesítménye attól függ, hogy a szolgáltatás üzembe helyezése vagy a szolgáltatás üzembe helyezése után hány kérési egység (RU) van kiválasztva.
 
-A FHIR készült Azure API a Cosmos DB (lásd a [kérelmek egységeit Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/request-units)) az alapul szolgáló adatbázis teljesítményének beállításakor. 
+A FHIR készült Azure API a Cosmos DB (lásd a [kérelmek egységeit Azure Cosmos db](../cosmos-db/request-units.md)) az alapul szolgáló adatbázis teljesítményének beállításakor. 
 
 Az átviteli sebességet úgy kell kiépíteni, hogy mindig elegendő rendszererőforrás álljon rendelkezésre az adatbázishoz. Az alkalmazástól függően hány RUs szükséges a végrehajtott műveletekhez. A műveletek az egyszerű olvasás és írások között összetettebb lekérdezésekre is terjedhetnek. 
 
@@ -36,7 +36,7 @@ Ha az adatbázis átviteli sebessége nagyobb, mint 10 000 RU/s, vagy ha az adat
 
 ![Konfiguráció Cosmos DB](media/database/database-settings.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan frissítheti a FHIR készült Azure API-t. Az ügyfél által felügyelt kulcsok adatbázis-beállításként való konfigurálásának megismeréséhez:
 

@@ -7,15 +7,15 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 3af2705fedbb9c19d4f128e8e997d3fa73f8b5a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7806cf9518090539ba540a9a522af1aae2691f0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84807971"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397416"
 ---
 # <a name="enable-cookie-based-affinity-with-an-application-gateway"></a>Cookie-alapú affinitás engedélyezése Application Gateway
-Az [Azure Application Gateway dokumentációjában](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#http-settings)leírtaknak megfelelően Application Gateway támogatja a cookie-alapú affinitást, ami azt jelenti, hogy a felhasználói munkamenetből egy adott kiszolgálóra irányuló, a feldolgozásra irányuló további forgalmat is átirányíthatja.
+Az [Azure Application Gateway dokumentációjában](./application-gateway-components.md#http-settings)leírtaknak megfelelően Application Gateway támogatja a cookie-alapú affinitást, ami azt jelenti, hogy a felhasználói munkamenetből egy adott kiszolgálóra irányuló, a feldolgozásra irányuló további forgalmat is átirányíthatja.
 
 ## <a name="example"></a>Példa
 ```yaml

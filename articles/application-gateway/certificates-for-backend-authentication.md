@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 69d388b12e564b307cd117c3a86ae960dabaa937
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 874e554063f64ddefce99a223678d64b2e0774c3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362712"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397722"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Tanúsítványok létrehozása a háttér Azure Application Gateway való engedélyezéséhez
 
@@ -35,7 +35,7 @@ A Application Gateway v1 SKU-ban a háttérbeli példányok engedélyezéséhez 
 
 A TLS/SSL-tanúsítványból exportálja a nyilvános kulcsú. cer fájlt (ne a titkos kulcsot). Az alábbi lépések segítségével exportálhatja a. cer fájlt a Base-64 kódolású X. 509 fájlba (. CER) formátum a tanúsítványhoz:
 
-1. A .cer fájl tanúsítványból történő beszerzéséhez nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. Keresse meg a tanúsítványt, amely jellemzően a "Certificates-current User\Personal\Certificates" elemben található, és kattintson a jobb gombbal. Kattintson a **Minden feladat**, majd az **Exportálás** elemre. Megnyílik a **Tanúsítványexportáló varázsló**. Ha nem találja a tanúsítványt a jelenlegi User\Personal\Certificates alatt, előfordulhat, hogy véletlenül megnyitotta a "tanúsítványok – helyi számítógép" kifejezést, és nem a "tanúsítványok – aktuális felhasználó" beállítást. Ha a Tanúsítványkezelőt a jelenlegi felhasználói hatókörben szeretné megnyitni a PowerShell használatával, írja be a *certmgr* a konzol ablakba.
+1. A .cer fájl tanúsítványból történő beszerzéséhez nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. Keresse meg a tanúsítványt, amely jellemzően a "Certificates-current User\Personal\Certificates" elemben található, és kattintson a jobb gombbal. Kattintson a **Minden feladat** , majd az **Exportálás** elemre. Megnyílik a **Tanúsítványexportáló varázsló**. Ha nem találja a tanúsítványt a jelenlegi User\Personal\Certificates alatt, előfordulhat, hogy véletlenül megnyitotta a "tanúsítványok – helyi számítógép" kifejezést, és nem a "tanúsítványok – aktuális felhasználó" beállítást. Ha a Tanúsítványkezelőt a jelenlegi felhasználói hatókörben szeretné megnyitni a PowerShell használatával, írja be a *certmgr* a konzol ablakba.
 
    ![Képernyőfelvétel: a Tanúsítványkezelő a kiválasztott tanúsítványokkal, valamint az összes feladattal rendelkező környezetfüggő menü, majd a kijelöltek exportálása.](./media/certificates-for-backend-authentication/export.png)
 
@@ -51,7 +51,7 @@ A TLS/SSL-tanúsítványból exportálja a nyilvános kulcsú. cer fájlt (ne a 
 
    ![Base-64 kódolású](./media/certificates-for-backend-authentication/base64.png)
 
-5. A **fájl exportálásához** **tallózással keresse** meg azt a helyet, ahová exportálni kívánja a tanúsítványt. A **Fájlnév** mezőben nevezze el a tanúsítványfájlt. Ezután kattintson a **tovább**gombra.
+5. A **fájl exportálásához** **tallózással keresse** meg azt a helyet, ahová exportálni kívánja a tanúsítványt. A **Fájlnév** mezőben nevezze el a tanúsítványfájlt. Ezután kattintson a **tovább** gombra.
 
    ![Képernyőfelvétel: a tanúsítvány-Exportálás varázsló, amelyen az exportálandó fájlt meg kell adni.](./media/certificates-for-backend-authentication/browse.png)
 
@@ -89,7 +89,7 @@ Az alábbi lépések segítségével exportálhatja a tanúsítványhoz tartozó
 
    ![tanúsítvány részletei](./media/certificates-for-backend-authentication/certdetails.png)
 
-4. Válassza ki a főtanúsítványt, és kattintson a **Tanúsítvány megtekintése**elemre.
+4. Válassza ki a főtanúsítványt, és kattintson a **Tanúsítvány megtekintése** elemre.
 
    ![tanúsítvány elérési útja](./media/certificates-for-backend-authentication/rootcert.png)
 
@@ -103,7 +103,6 @@ Az alábbi lépések segítségével exportálhatja a tanúsítványhoz tartozó
 
 6. Ekkor kibontotta a főtanúsítvány részleteit a háttér-tanúsítványból. Ekkor megjelenik a **Tanúsítvány exportálása varázsló**. Ezután használja a fentiekben említett 2-9 lépéseket a **hitelesítési tanúsítvány exportálása a háttér-tanúsítványból (a v1 SKU** -hoz) című szakaszban, hogy exportálja a megbízható főtanúsítványt az alap-64 kódolású X. 509 (. CER) formátum.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most már rendelkezik a hitelesítési tanúsítvánnyal/megbízható főtanúsítvánnyal a Base-64 kódolású X. 509 (. CER) formátum. Ezt hozzáadhatja az Application gatewayhez, így a háttér-kiszolgálók végpontok közötti TLS-titkosítást biztosíthatnak. Lásd: a [végpontok közötti TLS konfigurálása a Application Gateway és a PowerShell használatával](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
-
+Most már rendelkezik a hitelesítési tanúsítvánnyal/megbízható főtanúsítvánnyal a Base-64 kódolású X. 509 (. CER) formátum. Ezt hozzáadhatja az Application gatewayhez, így a háttér-kiszolgálók végpontok közötti TLS-titkosítást biztosíthatnak. Lásd: a [végpontok közötti TLS konfigurálása a Application Gateway és a PowerShell használatával](./application-gateway-end-to-end-ssl-powershell.md).

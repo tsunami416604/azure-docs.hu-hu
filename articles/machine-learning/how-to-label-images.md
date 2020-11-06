@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: ff8ade938433e09c6b9ff9deffe64d8294d96b8c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0d0f344e60edfc83c8ac4f79ad18520307b790e3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325553"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396625"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben 
 
@@ -127,12 +127,34 @@ Az aktuális rendszerkép *összes* határoló mezőjének törléséhez válass
 
 Miután létrehozta a képekhez tartozó határoló mezőket, válassza a **Submit (Küldés** ) lehetőséget a munka mentéséhez, vagy a folyamatban lévő munka nem lesz mentve.
 
+## <a name="tag-images-and-specify-polygons-for-image-segmentation"></a>Képek címkézése és sokszögek megadása a képek szegmentálásához 
+
+Ha a projekt "példány szegmentálása (sokszög)" típusú, akkor meg kell adnia egy vagy több sokszöget a képen, és minden egyes sokszögre alkalmaznia kell egy címkét. A képekhez több határoló sokszög is tartozhat, amelyek mindegyike egyetlen címkével rendelkezik. A **részletes utasítások megtekintésével** megállapíthatja, hogy a projektben több korlátot használó sokszög van-e használatban.
+
+1. Válassza ki a létrehozni kívánt sokszög címkéjét.
+1. Válassza a **sokszög-régió rajzolása** eszköz ![ Rajzolás sokszög-régió eszközét ](./media/how-to-label-images/polygon-tool.png) , vagy válassza a "P" lehetőséget.
+3. Kattintson a sokszög minden pontjára.  Az alakzat befejezése után kattintson duplán a befejezéshez.
+
+    :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="Sokszögek létrehozása a Cat és a Dog számára":::
+
+A sokszög törléséhez kattintson a sokszög mellett megjelenő X alakú célra a létrehozás után.
+
+Ha módosítani szeretné egy sokszög címkéjét, válassza a **régió áthelyezése** eszközt, kattintson a sokszögre, és válassza ki a megfelelő címkét.
+
+Szerkesztheti a meglévő sokszögeket is. A **zárolás/zárolás feloldása** eszköz ![ zárolási/feloldási régiói eszköz ](./media/how-to-label-images/lock-bounding-boxes-tool.png) vagy az "L" a viselkedést is bekapcsolja. Ha a régiók zárolva vannak, csak egy új sokszög alakját vagy helyét lehet megváltoztatni.
+
+A meglévő sokszögek módosításához használja a **sokszög pontok hozzáadása vagy eltávolítása** eszköz ![ régiók manipuláció eszközét ](./media/how-to-label-images/add-remove-points-tool.png) vagy az "U" lehetőséget. Kattintson a sokszögre egy pont hozzáadásához vagy eltávolításához. Ha nem tudja szerkeszteni a régiót, valószínűleg a **zárolási/zárolási régiók** eszközt is kikapcsolta.
+
+Az aktuális rendszerkép *összes* sokszögének törléséhez válassza a **minden régió törlése** eszköz ![ régiók törlése eszközét ](./media/how-to-label-images/delete-regions-tool.png) .
+
+Miután létrehozta a képekhez tartozó sokszögeket, válassza a **Submit (Küldés** ) lehetőséget a munka mentéséhez, vagy a folyamatban lévő munka nem lesz mentve.
+
 ## <a name="finish-up"></a>Befejező lépések
 
 Ha címkézett adatok oldalát küldi el, az Azure új címkézetlen adatok hozzárendelését teszi elérhetővé egy munkahelyi várólistából. Ha nem áll rendelkezésre több címkézetlen információ, egy üzenet jelenik meg, amely a portál kezdőlapjára mutató hivatkozással együtt.
 
 Ha végzett a címkézéssel, válassza ki a nevét a címkézési portál jobb felső sarkában, majd válassza a **kijelentkezés lehetőséget.** Ha nem jelentkezik ki, az Azure-ban az idő kimarad, és az adatait egy másik Labeler rendeli hozzá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg a [képbesorolási modellek betanítását az Azure-ban](./tutorial-train-models-with-aml.md)

@@ -7,20 +7,20 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: 20a665eefbb73f062f1f036e17b16da891a43eef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652985"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397535"
 ---
 # <a name="application-gateway-request-routing-rules"></a>Application Gateway kérelmek útválasztási szabályai
 
-Amikor az Azure Portal használatával hoz létre Application Gateway-t, létrehoz egy alapértelmezett szabályt (*rule1*). Ez a szabály az alapértelmezett háttér-készlettel (*appGatewayBackendPool*) és az alapértelmezett HÁTTÉRbeli http-beállításokkal (*appGatewayBackendHttpSettings*) köti össze az alapértelmezett figyelőt (*appGatewayHttpListener*). Az átjáró létrehozása után szerkesztheti az alapértelmezett szabály beállításait, vagy létrehozhat új szabályokat is.
+Amikor az Azure Portal használatával hoz létre Application Gateway-t, létrehoz egy alapértelmezett szabályt ( *rule1* ). Ez a szabály az alapértelmezett háttér-készlettel ( *appGatewayBackendPool* ) és az alapértelmezett HÁTTÉRbeli http-beállításokkal ( *appGatewayBackendHttpSettings* ) köti össze az alapértelmezett figyelőt ( *appGatewayHttpListener* ). Az átjáró létrehozása után szerkesztheti az alapértelmezett szabály beállításait, vagy létrehozhat új szabályokat is.
 
 ## <a name="rule-type"></a>Szabály típusa
 
-Szabály létrehozásakor az [ *alapszintű* és az *elérési út alapján*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules)kell választania.
+Szabály létrehozásakor az [ *alapszintű* és az *elérési út alapján*](./application-gateway-components.md#request-routing-rules)kell választania.
 
 - Válassza az alapszintű lehetőséget, ha szeretné továbbítani az összes kérelmet a társított figyelőn (például: *blog <i></i> . contoso.com/ \* )* egyetlen háttér-készletre.
 - Válassza az elérésiút-alapú lehetőséget, ha az adott URL-címről érkező kérelmeket adott háttérbeli készletekre szeretné irányítani. Az elérésiút-minta csak az URL elérési útjára lesz alkalmazva, nem pedig a lekérdezési paraméterekre.
@@ -51,13 +51,13 @@ Elérésiút-alapú szabály esetén adjon hozzá több háttérbeli HTTP-beáll
 
 ## <a name="redirection-setting"></a>Átirányítás beállítása
 
-Ha az átirányítás alapszintű szabályhoz van konfigurálva, a rendszer a társított figyelő összes kérelmét átirányítja a célhelyre. Ez *globális* átirányítás. Ha az átirányítás egy elérésiút-alapú szabályhoz van konfigurálva, akkor a rendszer csak egy adott hely területén lévő kérelmeket irányítja át. Ilyenek például a */cart/ \* *által jegyzett bevásárlókosár-területek. Ez az *elérésiút-alapú* átirányítás.
+Ha az átirányítás alapszintű szabályhoz van konfigurálva, a rendszer a társított figyelő összes kérelmét átirányítja a célhelyre. Ez *globális* átirányítás. Ha az átirányítás egy elérésiút-alapú szabályhoz van konfigurálva, akkor a rendszer csak egy adott hely területén lévő kérelmeket irányítja át. Ilyenek például a */cart/ \** által jegyzett bevásárlókosár-területek. Ez az *elérésiút-alapú* átirányítás.
 
 További információ az átirányításokról: [Application Gateway átirányítások áttekintése](redirect-overview.md).
 
 ### <a name="redirection-type"></a>Átirányítás típusa
 
-Válassza ki a szükséges átirányítás típusát: *Permanent (301)*, *ideiglenes (307*), *Found (302)*, vagy *más (303)*.
+Válassza ki a szükséges átirányítás típusát: *Permanent (301)* , *ideiglenes (307* ), *Found (302)* , vagy *más (303)*.
 
 ### <a name="redirection-target"></a>Átirányítás célja
 
@@ -87,12 +87,12 @@ További információ az átirányítással kapcsolatban:
 Az Újraírási szabályok használatával a HTTP (S) kérések és válaszok fejléceit, valamint az URL-cím és a lekérdezési karakterlánc paramétereit is hozzáadhatja, eltávolíthatja vagy frissítheti, mivel a kérelmek és válaszok csomagjai az Application Gateway segítségével az ügyfél és a háttérbeli készletek között mozognak.
 
 A fejlécek és URL-paraméterek statikus értékekre vagy más fejlécekre és kiszolgálói változókra állíthatók be. Ez segíti a fontos használati eseteket, például az ügyfél IP-címeinek kinyerését, a háttér bizalmas adatainak eltávolítását, a nagyobb biztonság hozzáadását stb.
-További információkért lásd:
+További információ:
 
  - [HTTP-fejlécek és URL-címek átírása – áttekintés](rewrite-http-headers-url.md)
  - [HTTP-fejléc újraírásának konfigurálása](rewrite-http-headers-portal.md)
  - [URL-cím újraírásának konfigurálása](rewrite-url-portal.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További tudnivalók a HTTP-beállításokról](configuration-http-settings.md)

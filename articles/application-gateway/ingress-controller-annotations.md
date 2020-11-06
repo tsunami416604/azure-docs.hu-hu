@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f570f9f18f9c9d484a9bc9c1a5c64d42dbdc714
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80335829"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397450"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Jegyzetek Application Gateway bejövő adatkezelőhöz 
 
@@ -72,7 +72,7 @@ A fenti példában egy megjegyzéssel ellátott bejövő erőforrás van defini�
 
 ## <a name="tls-redirect"></a>TLS-átirányítás
 
-A [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) konfigurálható a http-URL-címek automatikus átirányítására a https-partnerek számára. Ha ez a jegyzet jelen van, és a TLS megfelelően van konfigurálva, a Kubernetes bejövő vezérlő egy [útválasztási szabályt hoz létre egy átirányítási konfigurációval](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) , és alkalmazza a módosításokat a Application Gateway. A létrehozott átirányítás HTTP lesz `301 Moved Permanently` .
+A [Application Gateway](./redirect-overview.md) konfigurálható a http-URL-címek automatikus átirányítására a https-partnerek számára. Ha ez a jegyzet jelen van, és a TLS megfelelően van konfigurálva, a Kubernetes bejövő vezérlő egy [útválasztási szabályt hoz létre egy átirányítási konfigurációval](./redirect-http-to-https-portal.md#add-a-routing-rule-with-a-redirection-configuration) , és alkalmazza a módosításokat a Application Gateway. A létrehozott átirányítás HTTP lesz `301 Moved Permanently` .
 
 ### <a name="usage"></a>Használat
 

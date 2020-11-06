@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898b0d00fcad99a1059e01ad54ce13d192f1227f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336530"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398011"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Régiók közötti Load Balancer (előzetes verzió)
 
@@ -36,7 +36,7 @@ Az Azure standard Load Balancer támogatja a régiók közötti terheléseloszt�
 
 > [!IMPORTANT]
 > A régiók közötti terheléselosztó jelenleg előzetes verzióban érhető el, és nem általánosan elérhető.  A régiók közötti terheléselosztó előzetes verziójához való hozzáféréshez vegye fel a kapcsolatot a következővel: [crossregionlb@microsoft.com](mailto:crossregionlb@microsoft.com) . </br> </br>
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A régiók közötti terheléselosztás a regionális standard Load Balancer esetében is ugyanazokat az előnyöket kínálja, mint a nagy teljesítmény és a kis késleltetés. 
 
@@ -45,7 +45,7 @@ A régiók közötti terheléselosztó előtérbeli IP-konfigurációja statikus
 :::image type="content" source="./media/cross-region-overview/cross-region-load-balancer.png" alt-text="Régiók közötti Load Balancer diagramja" border="true":::
 
 > [!NOTE]
-> A helyi terheléselosztási szabály betöltéséhez használt háttér-portnak meg kell egyeznie a regionális standard Load Balancer terheléselosztási szabályának/bejövő NAT-szabályának előtérbeli portjával. 
+> A régiók közötti terheléselosztó terheléselosztási szabályának háttér-portjának meg kell egyeznie a regionális standard Load Balancer terheléselosztási szabályának/bejövő NAT-szabályának előtérbeli portjával. 
 
 ### <a name="regional-redundancy"></a>Regionális redundancia
 
@@ -55,7 +55,7 @@ Ha az egyik régió meghibásodik, a rendszer átirányítja a forgalmat a legk�
 
 A régiók közötti terheléselosztó állapotának vizsgálata 20 másodpercenként adatokat gyűjt a rendelkezésre állásról. Ha egy regionális terheléselosztó a rendelkezésre állását 0-ra, a régiók közötti terheléselosztó a hibát fogja felderíteni. A regionális terheléselosztó ezt követően kikerül a rotációból. 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Régiók közötti Load Balancer diagramja" border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="A globális régió forgalmi nézetének ábrája." border="true":::
 
 ### <a name="ultra-low-latency"></a>Rendkívül alacsony késés
 
@@ -147,7 +147,7 @@ A régiók közötti terheléselosztó a megfelelő regionális terheléseloszt�
 A régión kívüli terheléselosztó a standard Load Balancer [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) -át osztja meg.
 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md) című témakört.
 - További információ a [Azure Load Balancerról](load-balancer-overview.md).

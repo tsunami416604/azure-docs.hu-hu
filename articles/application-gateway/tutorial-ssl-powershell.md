@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 67d22535f44d4d1b39b6c305fa0670d2d08be0c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bd57344f0bd7f3b97c523f9378a5820c1a90a84
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595801"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396566"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Application Gateway létrehozása TLS-megszakítással Azure PowerShell használatával
 
-A Azure PowerShell használatával létrehozhat egy [Application Gateway](overview.md) -tanúsítványt a [TLS/SSL-lezáráshoz](ssl-overview.md) , amely a háttér-kiszolgálók [virtuálisgép-méretezési csoportját](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használja. Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez. 
+A Azure PowerShell használatával létrehozhat egy [Application Gateway](overview.md) -tanúsítványt a [TLS/SSL-lezáráshoz](ssl-overview.md) , amely a háttér-kiszolgálók [virtuálisgép-méretezési csoportját](../virtual-machine-scale-sets/overview.md) használja. Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -27,7 +27,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * Alkalmazásátjáró létrehozása a tanúsítvánnyal
 * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -35,7 +35,7 @@ Ehhez a cikkhez az Azure PowerShell-modul 1.0.0-es vagy újabb verziójára van 
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Éles környezetben importálnia kell egy megbízható szolgáltató által aláírt érvényes tanúsítványt. Ebben a cikkben egy önaláírt tanúsítványt hoz létre a [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate)használatával. Az [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) parancsmagot a visszaadott ujjlenyomattal futtatva egy PFX-fájlt exportálhat a tanúsítványból.
+Éles környezetben importálnia kell egy megbízható szolgáltató által aláírt érvényes tanúsítványt. Ebben a cikkben egy önaláírt tanúsítványt hoz létre a [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate)használatával. Az [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) parancsmagot a visszaadott ujjlenyomattal futtatva egy PFX-fájlt exportálhat a tanúsítványból.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -296,6 +296,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Applicat
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Több webhelyet üzemeltető alkalmazásátjáró létrehozása](./tutorial-multiple-sites-powershell.md)

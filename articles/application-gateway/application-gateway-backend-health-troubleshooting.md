@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8acf1b025a5943773821c8ab78de6288eb6bec2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132041"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397898"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>A Application Gateway háttérbeli állapotával kapcsolatos problémák elhárítása
 ==================================================
@@ -24,7 +24,7 @@ Alapértelmezés szerint az Azure Application Gateway mintavételek háttér-kis
 
 ### <a name="how-to-check-backend-health"></a>A háttér állapotának ellenõrzése
 
-A háttérbeli készlet állapotának ellenőrzését a Azure Portal **háttér állapota** lapján végezheti el. A [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0), a [CLI](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health)vagy a [REST API](https://docs.microsoft.com/rest/api/application-gateway/applicationgateways/backendhealth)is használható.
+A háttérbeli készlet állapotának ellenőrzését a Azure Portal **háttér állapota** lapján végezheti el. A [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0), a [CLI](/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health)vagy a [REST API](/rest/api/application-gateway/applicationgateways/backendhealth)is használható.
 
 Az alábbi módszerek bármelyikével lekért állapot a következők egyike lehet:
 
@@ -91,7 +91,7 @@ A **részletek** oszlopban megjelenő üzenet részletesebb információkat nyú
 
 **OK:** Miután Application Gateway elküld egy HTTP (S) mintavételi kérelmet a háttér-kiszolgálónak, megvárja a háttér-kiszolgáló válaszát egy konfigurált időszakra. Ha a háttérrendszer-kiszolgáló nem válaszol a beállított időtartamon belül (az időtúllépési érték), akkor azt a rendszer nem megfelelőként jelöli meg, amíg újra nem válaszol a beállított időtúllépési időszakon belül.
 
-**Megoldás:** Győződjön meg arról, hogy a háttér-kiszolgáló vagy az alkalmazás miért nem válaszol a beállított időkorláton belül, és tekintse meg az alkalmazás függőségeit is. Például megtudhatja, hogy az adatbázis rendelkezik-e olyan problémával, amely a válasz késleltetését kiváltó lehet. Ha ismeri az alkalmazás viselkedését, és csak az időtúllépési érték után válaszol, növelje az időtúllépési értéket az egyéni mintavételi beállítások alapján. Az időtúllépési érték módosításához egyéni mintavétel szükséges. Az egyéni mintavétel konfigurálásával kapcsolatos információkért [tekintse meg a dokumentációs oldalt](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal).
+**Megoldás:** Győződjön meg arról, hogy a háttér-kiszolgáló vagy az alkalmazás miért nem válaszol a beállított időkorláton belül, és tekintse meg az alkalmazás függőségeit is. Például megtudhatja, hogy az adatbázis rendelkezik-e olyan problémával, amely a válasz késleltetését kiváltó lehet. Ha ismeri az alkalmazás viselkedését, és csak az időtúllépési érték után válaszol, növelje az időtúllépési értéket az egyéni mintavételi beállítások alapján. Az időtúllépési érték módosításához egyéni mintavétel szükséges. Az egyéni mintavétel konfigurálásával kapcsolatos információkért [tekintse meg a dokumentációs oldalt](./application-gateway-create-probe-portal.md).
 
 Az időtúllépési érték növeléséhez kövesse az alábbi lépéseket:
 
@@ -105,7 +105,7 @@ Az időtúllépési érték növeléséhez kövesse az alábbi lépéseket:
 
 #### <a name="dns-resolution-error"></a>DNS-feloldási hiba
 
-**Üzenet:** A Application Gateway nem tudott mintavételt létrehozni ehhez a háttérhöz. Ez általában akkor fordul elő, ha a háttérrendszer teljes tartományneve nem lett megfelelően megadva. 
+**Üzenet:** A Application Gateway nem tudott mintavételt létrehozni ehhez a háttérhöz. Ez általában akkor fordul elő, ha a háttérrendszer teljes tartományneve nem lett megfelelően megadva. 
 
 **OK:** Ha a háttér-készlet IP-cím/FQDN vagy App Service típusú, Application Gateway a tartománynévrendszer (DNS) (egyéni vagy Azure alapértelmezett) által megadott teljes tartománynév IP-címére lesz feloldva, és megpróbál csatlakozni a kiszolgálóhoz a HTTP-beállításokban említett TCP-porton. Ha azonban ez az üzenet jelenik meg, azt javasolja, hogy Application Gateway nem tudta sikeresen feloldani a megadott teljes tartománynév IP-címét.
 
@@ -119,7 +119,7 @@ Az időtúllépési érték növeléséhez kövesse az alábbi lépéseket:
 
 1.  Ha az Azure alapértelmezett DNS-t használja, egyeztessen a tartománynév-regisztrálóval arról, hogy megfelelő-e A rekord vagy CNAME rekord leképezése.
 
-1.  Ha a tartomány magán-vagy belső, próbálja meg feloldani az azonos virtuális hálózatban lévő virtuális gépről. Ha meg tudja oldani, indítsa újra Application Gateway és ellenőrizze újra. Application Gateway újraindításához [le kell állítania](https://docs.microsoft.com/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0) és [el kell indítania](https://docs.microsoft.com/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0) a kapcsolódó erőforrásokban leírt PowerShell-parancsokat.
+1.  Ha a tartomány magán-vagy belső, próbálja meg feloldani az azonos virtuális hálózatban lévő virtuális gépről. Ha meg tudja oldani, indítsa újra Application Gateway és ellenőrizze újra. Application Gateway újraindításához [le kell állítania](/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0) és [el kell indítania](/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0) a kapcsolódó erőforrásokban leírt PowerShell-parancsokat.
 
 #### <a name="tcp-connect-error"></a>TCP-csatlakozási hiba
 
@@ -138,7 +138,7 @@ Győződjön meg arról is, hogy a NSG/UDR/tűzfal blokkolja-e a háttér IP-cí
 
 1.  Ha a helyi gépről nem tud kapcsolatot létesíteni a porttal, akkor:
 
-    a.  Keresse meg a háttér-kiszolgáló hálózati adapterének és alhálózatának hálózati biztonsági csoport (NSG) beállításait, valamint azt, hogy engedélyezett-e a bejövő kapcsolatok a konfigurált porton. Ha nem, hozzon létre egy új szabályt a kapcsolatok engedélyezéséhez. A NSG-szabályok létrehozásával kapcsolatos további információkért [tekintse meg a dokumentációs oldalt](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic#create-security-rules).
+    a.  Keresse meg a háttér-kiszolgáló hálózati adapterének és alhálózatának hálózati biztonsági csoport (NSG) beállításait, valamint azt, hogy engedélyezett-e a bejövő kapcsolatok a konfigurált porton. Ha nem, hozzon létre egy új szabályt a kapcsolatok engedélyezéséhez. A NSG-szabályok létrehozásával kapcsolatos további információkért [tekintse meg a dokumentációs oldalt](../virtual-network/tutorial-filter-network-traffic.md#create-security-rules).
 
     b.  Győződjön meg arról, hogy a Application Gateway alhálózat NSG beállításai engedélyezik-e a kimenő nyilvános és magánhálózati forgalmat, így a kapcsolatok elhelyezhetők. A NSG-szabályok létrehozásával kapcsolatos további információkért tekintse meg a 3a. lépésben megadott dokumentum oldalát.
     ```azurepowershell
@@ -157,7 +157,7 @@ Győződjön meg arról is, hogy a NSG/UDR/tűzfal blokkolja-e a háttér IP-cí
 
     a.  Nyisson meg egy parancssort (Win + R- \> cmd), írja be a parancsot `netstat` , majd válassza az ENTER billentyűt.
 
-    b.  Győződjön meg arról, hogy a kiszolgáló figyeli-e a konfigurált portot. Például:
+    b.  Győződjön meg arról, hogy a kiszolgáló figyeli-e a konfigurált portot. Ilyenek többek között:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -185,13 +185,13 @@ Győződjön meg arról is, hogy a NSG/UDR/tűzfal blokkolja-e a háttér IP-cí
 
 Vagy ha úgy gondolja, hogy a válasz legitim, és azt szeretné, hogy a Application Gateway a többi állapotkódot is Kifogástalan állapotba fogadja, létrehozhat egy egyéni mintavételt. Ez a megközelítés olyan helyzetekben hasznos, amikor a háttérbeli webhelynek hitelesítést kell használnia. Mivel a mintavételi kérelmek nem rendelkeznek felhasználói hitelesítő adatokkal, sikertelenek lesznek, és a háttér-kiszolgáló HTTP 401 állapotkódot ad vissza.
 
-Egyéni mintavétel létrehozásához kövesse [az alábbi lépéseket](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal).
+Egyéni mintavétel létrehozásához kövesse [az alábbi lépéseket](./application-gateway-create-probe-portal.md).
 
 #### <a name="http-response-body-mismatch"></a>HTTP-válasz törzsének eltérése
 
 **Üzenet:** A háttérbeli \' s http-válasz törzse nem felelt meg a mintavételi beállításnak. A kapott válasz törzse nem tartalmaz {string}.
 
-**OK:** Egyéni mintavétel létrehozásakor lehetősége van a háttér-kiszolgáló megfelelő állapotának megjelölésére a válasz törzsében szereplő karakterláncok egyeztetésével. Beállíthatja például, hogy Application Gateway fogadja el a "jogosulatlan" karakterláncot az egyeztetéshez. Ha a háttér-kiszolgáló válasza a mintavételi kérelemhez nem **engedélyezett**karakterláncot tartalmaz, akkor kifogástalanként lesz megjelölve. Ellenkező esetben ez az üzenet nem megfelelőként lesz megjelölve.
+**OK:** Egyéni mintavétel létrehozásakor lehetősége van a háttér-kiszolgáló megfelelő állapotának megjelölésére a válasz törzsében szereplő karakterláncok egyeztetésével. Beállíthatja például, hogy Application Gateway fogadja el a "jogosulatlan" karakterláncot az egyeztetéshez. Ha a háttér-kiszolgáló válasza a mintavételi kérelemhez nem **engedélyezett** karakterláncot tartalmaz, akkor kifogástalanként lesz megjelölve. Ellenkező esetben ez az üzenet nem megfelelőként lesz megjelölve.
 
 **Megoldás:** A probléma megoldásához kövesse az alábbi lépéseket:
 
@@ -201,7 +201,7 @@ Egyéni mintavétel létrehozásához kövesse [az alábbi lépéseket](https://
 
 1.  Ha nem egyeznek, módosítsa a mintavételi konfigurációt úgy, hogy az a megfelelő karakterlánc-értéket fogadja el.
 
-További információ a [Application Gateway mintavétel egyeztetéséről](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching).
+További információ a [Application Gateway mintavétel egyeztetéséről](./application-gateway-probe-overview.md#probe-matching).
 
 >[!NOTE]
 > A TLS-hez kapcsolódó hibaüzenetek esetében a SNI viselkedésének és a v1 és v2 SKU közötti különbségek megismeréséhez tekintse meg a [TLS – áttekintés](ssl-overview.md) lapot.
@@ -218,13 +218,13 @@ A TLS/SSL-tanúsítvány megbízhatósága érdekében a háttér-kiszolgáló t
 
 1.  Jelentkezzen be arra a gépre, amelyen az alkalmazás üzemeltetve van.
 
-1.  Válassza a Win + R lehetőséget, vagy kattintson a jobb gombbal a **Start** gombra, majd válassza a **Futtatás**lehetőséget.
+1.  Válassza a Win + R lehetőséget, vagy kattintson a jobb gombbal a **Start** gombra, majd válassza a **Futtatás** lehetőséget.
 
 1.  Adja meg `certmgr.msc` és válassza az ENTER billentyűt. A Tanúsítványkezelőt a **Start** menüben is megkeresheti.
 
 1.  Keresse meg a tanúsítványt, általában a-ben `\Certificates - Current User\\Personal\\Certificates\` , majd nyissa meg.
 
-1.  Válassza ki a főtanúsítványt, majd válassza a **Tanúsítvány megtekintése**lehetőséget.
+1.  Válassza ki a főtanúsítványt, majd válassza a **Tanúsítvány megtekintése** lehetőséget.
 
 1.  A tanúsítvány tulajdonságai között válassza a **részletek** lapot.
 
@@ -232,13 +232,13 @@ A TLS/SSL-tanúsítvány megbízhatósága érdekében a háttér-kiszolgáló t
 
 1.  Nyissa meg a Application Gateway HTTP- **Beállítások** lapot a Azure Portal.
 
-1. Nyissa meg a HTTP-beállításokat, válassza a **tanúsítvány hozzáadása**lehetőséget, és keresse meg az imént mentett tanúsítványfájl-fájlt.
+1. Nyissa meg a HTTP-beállításokat, válassza a **tanúsítvány hozzáadása** lehetőséget, és keresse meg az imént mentett tanúsítványfájl-fájlt.
 
 1. A HTTP-beállítások mentéséhez kattintson a **Mentés** gombra.
 
 Azt is megteheti, hogy a főtanúsítványt egy ügyfélgépről exportálja, ha a böngészőből közvetlenül fér hozzá a kiszolgálóhoz (Application Gateway megkerülése), és a főtanúsítványt a böngészőből exportálja.
 
-További információ a megbízható főtanúsítványok kibontásáról és feltöltéséről a Application Gatewayban: [megbízható főtanúsítvány exportálása (v2 SKU)](https://docs.microsoft.com/azure/application-gateway/certificates-for-backend-authentication#export-trusted-root-certificate-for-v2-sku).
+További információ a megbízható főtanúsítványok kibontásáról és feltöltéséről a Application Gatewayban: [megbízható főtanúsítvány exportálása (v2 SKU)](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku).
 
 #### <a name="trusted-root-certificate-mismatch"></a>Nem megfelelő a megbízható főtanúsítvány
 
@@ -253,11 +253,11 @@ A Application Gateway HTTP-beállításokba feltöltött tanúsítványnak meg k
 
 Az előző módszer 1-11. lépéseit követve töltse fel a megfelelő megbízható főtanúsítványt Application Gatewayra.
 
-További információ a megbízható főtanúsítványok kibontásáról és feltöltéséről a Application Gatewayban: [megbízható főtanúsítvány exportálása (v2 SKU)](https://docs.microsoft.com/azure/application-gateway/certificates-for-backend-authentication#export-trusted-root-certificate-for-v2-sku).
+További információ a megbízható főtanúsítványok kibontásáról és feltöltéséről a Application Gatewayban: [megbízható főtanúsítvány exportálása (v2 SKU)](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku).
 > [!NOTE]
 > Ez a hiba akkor is megjelenhet, ha a háttér-kiszolgáló nem cseréli ki a tanúsítvány teljes láncát, beleértve a > köztes (ha alkalmazható), a TLS-kézfogás során > levélben szereplő gyökeret. Annak ellenőrzéséhez, hogy az OpenSSL-parancsokat bármely ügyfélről felhasználhatja, és a Application Gateway mintavétel konfigurált beállításaival csatlakozhat a háttér-kiszolgálóhoz.
 
-Például:
+Ilyenek többek között:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -292,7 +292,7 @@ Ha a HTTP-beállításokhoz egyéni mintavétel van társítva, a SNI az egyéni
 
 Ha a **kiválasztott állomásnév a háttérbeli címről** beállítás van megadva a http-beállításokban, a háttérbeli címkészlet érvényes teljes tartománynevet kell tartalmaznia.
 
-Ha ezt a hibaüzenetet kapja, a háttér-tanúsítvány CN-je nem egyezik meg az egyéni mintavételben vagy a HTTP-beállításokban konfigurált állomásnévvel (ha a kiválasztó **állomásnév a háttérbeli http-beállítások közül** ki van jelölve). Ha alapértelmezett mintavételt használ, az állomásnév **127.0.0.1**-ként lesz beállítva. Ha ez nem a kívánt érték, hozzon létre egy egyéni mintavételt, és társítsa a HTTP-beállításokhoz.
+Ha ezt a hibaüzenetet kapja, a háttér-tanúsítvány CN-je nem egyezik meg az egyéni mintavételben vagy a HTTP-beállításokban konfigurált állomásnévvel (ha a kiválasztó **állomásnév a háttérbeli http-beállítások közül** ki van jelölve). Ha alapértelmezett mintavételt használ, az állomásnév **127.0.0.1** -ként lesz beállítva. Ha ez nem a kívánt érték, hozzon létre egy egyéni mintavételt, és társítsa a HTTP-beállításokhoz.
 
 **Megoldás:**
 
@@ -302,7 +302,7 @@ Windows esetén:
 
 1.  Jelentkezzen be arra a gépre, amelyen az alkalmazás üzemeltetve van.
 
-1.  Válassza a Win + R lehetőséget, vagy kattintson a jobb gombbal a **Start** gombra, és válassza a **Futtatás**lehetőséget.
+1.  Válassza a Win + R lehetőséget, vagy kattintson a jobb gombbal a **Start** gombra, és válassza a **Futtatás** lehetőséget.
 
 1.  Adja meg a **certmgr. msc parancsot** , majd kattintson az ENTER gombra. A Tanúsítványkezelőt a **Start** menüben is megkeresheti.
 
@@ -331,9 +331,9 @@ Linux rendszerhez OpenSSL használatával:
 
 1.  Nyissa meg Application Gateway HTTP-beállításait a portálon.
 
-1.  Válassza ki a lejárt tanúsítványt tartalmazó beállítást, válassza a **tanúsítvány hozzáadása**lehetőséget, és nyissa meg az új tanúsítványfájl.
+1.  Válassza ki a lejárt tanúsítványt tartalmazó beállítást, válassza a **tanúsítvány hozzáadása** lehetőséget, és nyissa meg az új tanúsítványfájl.
 
-1.  Távolítsa el a régi tanúsítványt a tanúsítvány melletti **delete (Törlés** ) ikon használatával, majd válassza a **Mentés**lehetőséget.
+1.  Távolítsa el a régi tanúsítványt a tanúsítvány melletti **delete (Törlés** ) ikon használatával, majd válassza a **Mentés** lehetőséget.
 
 #### <a name="certificate-verification-failed"></a>A tanúsítvány ellenőrzése nem sikerült
 
@@ -359,7 +359,7 @@ Ez a viselkedés a következő okok közül egyet vagy többet okozhat:
 
 **Megoldás:**
 
-1.  Győződjön meg arról, hogy a NSG blokkolja-e az **internetről**a 65503-65534-as (v1 SKU) vagy a 65200-65535 (v2 SKU) portokhoz való hozzáférést:
+1.  Győződjön meg arról, hogy a NSG blokkolja-e az **internetről** a 65503-65534-as (v1 SKU) vagy a 65200-65535 (v2 SKU) portokhoz való hozzáférést:
 
     a.  Az Application Gateway **Áttekintés** lapon válassza a **Virtual Network/alhálózat** hivatkozást.
 
@@ -367,21 +367,21 @@ Ez a viselkedés a következő okok közül egyet vagy többet okozhat:
 
     c.  Győződjön meg arról, hogy van-e NSG konfigurálva.
 
-    d.  Ha be van állítva egy NSG, keresse meg a NSG-erőforrást a **Keresés** lapon vagy az **összes erőforrás**területen.
+    d.  Ha be van állítva egy NSG, keresse meg a NSG-erőforrást a **Keresés** lapon vagy az **összes erőforrás** területen.
 
     e.  A **Bejövő szabályok** szakaszban adjon hozzá egy bejövő szabályt, amely lehetővé teszi, hogy a 65503-65534 **-as célport** -tartomány v1 SKU vagy 65200-65535 v2 SKU legyen a **forrásként** , vagy az **Internet**.
 
-    f.  Válassza a **Mentés** lehetőséget, és ellenőrizze, hogy a háttér állapota Kifogástalan-e. Azt is megteheti, hogy a [PowerShell vagy a parancssori](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)felület használatával végezhető el.
+    f.  Válassza a **Mentés** lehetőséget, és ellenőrizze, hogy a háttér állapota Kifogástalan-e. Azt is megteheti, hogy a [PowerShell vagy a parancssori](../virtual-network/manage-network-security-group.md)felület használatával végezhető el.
 
-1.  Győződjön meg arról, hogy a UDR rendelkezik-e alapértelmezett útvonallal (0.0.0.0/0), és a következő ugrás nincs beállítva **internetként**:
+1.  Győződjön meg arról, hogy a UDR rendelkezik-e alapértelmezett útvonallal (0.0.0.0/0), és a következő ugrás nincs beállítva **internetként** :
     
     a.  Az alhálózat meghatározásához kövesse az 1a és az 1b lépést.
 
-    b.  Győződjön meg arról, hogy van-e konfigurált UDR. Ha van, keresse meg az erőforrást a keresősáv vagy az **összes erőforrás**területen.
+    b.  Győződjön meg arról, hogy van-e konfigurált UDR. Ha van, keresse meg az erőforrást a keresősáv vagy az **összes erőforrás** területen.
 
-    c.  Győződjön meg arról, hogy vannak-e alapértelmezett útvonalak (0.0.0.0/0) a következő ugrással, amely nincs beállítva **internetként**. Ha a beállítás **virtuális készülék** vagy **Virtual Network átjáró**, meg kell győződnie arról, hogy a virtuális berendezés vagy a helyszíni eszköz a csomag módosítása nélkül képes az internetre irányítani a csomagot.
+    c.  Győződjön meg arról, hogy vannak-e alapértelmezett útvonalak (0.0.0.0/0) a következő ugrással, amely nincs beállítva **internetként**. Ha a beállítás **virtuális készülék** vagy **Virtual Network átjáró** , meg kell győződnie arról, hogy a virtuális berendezés vagy a helyszíni eszköz a csomag módosítása nélkül képes az internetre irányítani a csomagot.
 
-    d.  Ellenkező esetben módosítsa a következő ugrást az **internetre**, válassza a **Mentés**lehetőséget, és ellenőrizze a háttér állapotát.
+    d.  Ellenkező esetben módosítsa a következő ugrást az **internetre** , válassza a **Mentés** lehetőséget, és ellenőrizze a háttér állapotát.
 
 1.  A virtuális hálózat ExpressRoute/VPN-kapcsolata által meghirdetett alapértelmezett útvonal BGP-en keresztül:
 
@@ -393,9 +393,9 @@ Ez a viselkedés a következő okok közül egyet vagy többet okozhat:
 
 1.  Ha a virtuális hálózaton konfigurálva van egy egyéni DNS-kiszolgáló, ellenőrizze, hogy a kiszolgáló (vagy kiszolgálók) képes-e a nyilvános tartományok feloldására. Előfordulhat, hogy a nyilvános tartománynevek feloldásához olyan helyzetekben van szükség, amikor a Application Gatewaynak olyan külső tartományokhoz kell csatlakozniuk, mint például az OCSP-kiszolgálók, vagy ellenőriznie kell a tanúsítvány visszavonási állapotát.
 
-1.  Annak ellenőrzéséhez, hogy a Application Gateway állapota Kifogástalan-e, nyissa meg a portál **Resource Health** lehetőségét, és ellenőrizze, hogy az állapot **kifogástalan**-e. Ha **sérült** vagy **csökkentett teljesítményű** állapotot lát, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/options/).
+1.  Annak ellenőrzéséhez, hogy a Application Gateway állapota Kifogástalan-e, nyissa meg a portál **Resource Health** lehetőségét, és ellenőrizze, hogy az állapot **kifogástalan** -e. Ha **sérült** vagy **csökkentett teljesítményű** állapotot lát, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/options/).
 
 <a name="next-steps"></a>További lépések
 ----------
 
-További információ a [Application Gateway diagnosztika és naplózás](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics).
+További információ a [Application Gateway diagnosztika és naplózás](./application-gateway-diagnostics.md).

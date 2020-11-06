@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f29b31b09c2532c336ef2a2d574fab5e000b3e4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e410218117aa0d21167b6d615a3835aeec470e7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595879"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397110"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Webes forgalom kezelése alkalmazásátjáróval az Azure PowerShell használatával
 
-Az alkalmazásátjáró kezeli az Ön által fenntartott kiszolgálókra irányuló webes forgalmat, és védelmet biztosít ahhoz. Az Azure PowerShell használatával létrehozhat egy [alkalmazásátjárót](overview.md), amely egy [virtuálisgép-méretezési csoportot](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használ háttérkiszolgálókként a webes forgalom kezelésére. Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez.
+Az alkalmazásátjáró kezeli az Ön által fenntartott kiszolgálókra irányuló webes forgalmat, és védelmet biztosít ahhoz. Az Azure PowerShell használatával létrehozhat egy [alkalmazásátjárót](overview.md), amely egy [virtuálisgép-méretezési csoportot](../virtual-machine-scale-sets/overview.md) használ háttérkiszolgálókként a webes forgalom kezelésére. Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -27,7 +27,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha szeretné, ezt az eljárást az [Azure CLI](tutorial-manage-web-traffic-cli.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -255,6 +255,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Applicat
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Webes forgalom korlátozása webalkalmazási tűzfallal](./tutorial-restrict-web-traffic-powershell.md)
+[Webes forgalom korlátozása webalkalmazási tűzfallal](../web-application-firewall/ag/tutorial-restrict-web-traffic-powershell.md)

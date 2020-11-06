@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04d8a77cd051823559aba42d5dfc1418e6343ecc
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84807142"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397382"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Application Gateway beáramlási vezérlő (AGIC) telepítése új Application Gateway használatával
 
@@ -30,7 +30,7 @@ Másik lehetőségként indítsa el Cloud Shell a Azure Portal a következő iko
 
 A [Azure Cloud Shell](https://shell.azure.com/) már rendelkezik az összes szükséges eszközzel. Ha másik környezetet szeretne használni, győződjön meg arról, hogy telepítve vannak a következő parancssori eszközök:
 
-* `az` – Azure CLI: [telepítési utasítások](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* `az` – Azure CLI: [telepítési utasítások](/cli/azure/install-azure-cli?view=azure-cli-latest)
 * `kubectl` -Kubernetes parancssori eszköz: [telepítési utasítások](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 * `helm` -Kubernetes csomagkezelő: [telepítési utasítások](https://github.com/helm/helm/releases/latest)
 * `jq` -parancssori JSON-processzor: [telepítési utasítások](https://stedolan.github.io/jq/download/)
@@ -38,9 +38,9 @@ A [Azure Cloud Shell](https://shell.azure.com/) már rendelkezik az összes szü
 
 ## <a name="create-an-identity"></a>Identitás létrehozása
 
-Az alábbi lépéseket követve hozzon létre egy Azure Active Directory (HRE) [egyszerű szolgáltatásnév-objektumot](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object). Jegyezze fel a `appId` , `password` , és `objectId` értékeket – ezeket az alábbi lépésekben fogjuk használni.
+Az alábbi lépéseket követve hozzon létre egy Azure Active Directory (HRE) [egyszerű szolgáltatásnév-objektumot](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object). Jegyezze fel a `appId` , `password` , és `objectId` értékeket – ezeket az alábbi lépésekben fogjuk használni.
 
-1. AD egyszerű szolgáltatás létrehozása ([További információ a RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)):
+1. AD egyszerű szolgáltatás létrehozása ([További információ a RBAC](../role-based-access-control/overview.md)):
     ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
@@ -71,11 +71,11 @@ Az alábbi lépéseket követve hozzon létre egy Azure Active Directory (HRE) [
 ## <a name="deploy-components"></a>Összetevők üzembe helyezése
 Ez a lépés a következő összetevőket adja hozzá az előfizetéséhez:
 
-- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-- [Application Gateway](https://docs.microsoft.com/azure/application-gateway/overview) v2
-- [Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) 2 [alhálózattal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [Nyilvános IP-cím](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
-- [Felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), amelyet a [HRE Pod Identity](https://github.com/Azure/aad-pod-identity/blob/master/README.md) használ majd
+- [Azure Kubernetes Service](../aks/intro-kubernetes.md)
+- [Application Gateway](./overview.md) v2
+- [Virtual Network](../virtual-network/virtual-networks-overview.md) 2 [alhálózattal](../virtual-network/virtual-networks-overview.md)
+- [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md)
+- [Felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md), amelyet a [HRE Pod Identity](https://github.com/Azure/aad-pod-identity/blob/master/README.md) használ majd
 
 1. Töltse le a Azure Resource Manager sablont, és szükség szerint módosítsa a sablont.
     ```bash
@@ -111,7 +111,7 @@ Az előző szakaszban ismertetett utasítások alapján létrehozunk és konfigu
 ### <a name="setup-kubernetes-credentials"></a>Kubernetes hitelesítő adatainak beállítása
 A következő lépésekhez szükség van a Setup [kubectl](https://kubectl.docs.kubernetes.io/) parancsra, amelyet az új Kubernetes-fürthöz való kapcsolódáshoz fogunk használni. [Cloud Shell](https://shell.azure.com/) `kubectl` már telepítve van. A `az` Kubernetes hitelesítő adatainak beszerzéséhez a CLI-t fogjuk használni.
 
-Hitelesítő adatok beolvasása az újonnan üzembe helyezett AK-hoz ([További információ](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)):
+Hitelesítő adatok beolvasása az újonnan üzembe helyezett AK-hoz ([További információ](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)):
 ```azurecli
 # use the deployment-outputs.json created after deployment to get the cluster name and resource group name
 aksClusterName=$(jq -r ".aksClusterName.value" deployment-outputs.json)
@@ -121,7 +121,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 ```
 
 ### <a name="install-aad-pod-identity"></a>A HRE Pod-identitás telepítése
-  Azure Active Directory Pod Identity jogkivonat-alapú hozzáférést biztosít [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)számára.
+  Azure Active Directory Pod Identity jogkivonat-alapú hozzáférést biztosít [Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md)számára.
 
   A [HRE Pod Identity](https://github.com/Azure/aad-pod-identity) a következő összetevőket fogja hozzáadni a Kubernetes-fürthöz:
    * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity` , `AzureAssignedIdentity` , `AzureIdentityBinding`
@@ -144,9 +144,9 @@ A HRE Pod Identity telepítése a fürtre:
      ```
 
 ### <a name="install-helm"></a>A Helm telepítése
-A [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a Kubernetes csomagkezelő. A csomag telepítéséhez a következőt fogjuk használni `application-gateway-kubernetes-ingress` :
+A [Helm](../aks/kubernetes-helm.md) a Kubernetes csomagkezelő. A csomag telepítéséhez a következőt fogjuk használni `application-gateway-kubernetes-ingress` :
 
-1. Telepítse a [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) -t, és futtassa a következő parancsot a Helm-csomag hozzáadásához `application-gateway-kubernetes-ingress` :
+1. Telepítse a [Helm](../aks/kubernetes-helm.md) -t, és futtassa a következő parancsot a Helm-csomag hozzáadásához `application-gateway-kubernetes-ingress` :
 
     - *RBAC engedélyezve* AK-fürt
 

@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 37e76f54b9c4fe38c891f7cee7bc443d1b0b20f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a73208ef7014c1f21c78485fc613a26ce3bfc76
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596073"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397161"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Webes forgalom irányítása URL-cím alapján az Azure PowerShell használatával
 
-Az Azure PowerShell használatával konfigurálhatja a webes forgalom adott, skálázható kiszolgálókészletre való irányítását az alkalmazás eléréséhez használt URL-cím alapján. Ebben a cikkben egy [Azure-Application Gateway](application-gateway-introduction.md) hoz létre három háttér-készlettel [Virtual Machine Scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)használatával. Mindegyik háttérkészlet egy adott célhoz használható, például: gyakori adatok, képek, videók.  A forgalom különböző készletekhez való irányítása lehetővé teszi, hogy az ügyfelei akkor és azt az információt kapják meg, amelyre szükségük van.
+Az Azure PowerShell használatával konfigurálhatja a webes forgalom adott, skálázható kiszolgálókészletre való irányítását az alkalmazás eléréséhez használt URL-cím alapján. Ebben a cikkben egy [Azure-Application Gateway](./overview.md) hoz létre három háttér-készlettel [Virtual Machine Scale sets](../virtual-machine-scale-sets/overview.md)használatával. Mindegyik háttérkészlet egy adott célhoz használható, például: gyakori adatok, képek, videók.  A forgalom különböző készletekhez való irányítása lehetővé teszi, hogy az ügyfelei akkor és azt az információt kapják meg, amelyre szükségük van.
 
-A forgalom irányításának engedélyezéséhez figyelőkhöz hozzárendelt [útválasztási szabályokat](application-gateway-url-route-overview.md) fog létrehozni, amelyek adott portokat figyelnek annak érdekében, hogy a webes forgalom a készlet megfelelő kiszolgálójára érkezzen meg.
+A forgalom irányításának engedélyezéséhez figyelőkhöz hozzárendelt [útválasztási szabályokat](./url-route-overview.md) fog létrehozni, amelyek adott portokat figyelnek annak érdekében, hogy a webes forgalom a készlet megfelelő kiszolgálójára érkezzen meg.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -31,7 +31,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha szeretné, ezt az eljárást az [Azure CLI](tutorial-url-route-cli.md) vagy a [Azure Portal](create-url-route-portal.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -185,7 +185,7 @@ Ezen a ponton egy olyan Application Gateway található, amely figyeli a 80-es p
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>Kép- és videó-háttérkészletek és port hozzáadása
 
-Adja hozzá a *imagesBackendPool* és a *videoBackendPool* nevű backend-készleteket az Application Gateway[Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool). Adja hozzá a készletek előtérbeli portját a [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport)használatával. Küldje el az Application Gateway módosításait a [set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway)használatával.
+Adja hozzá a *imagesBackendPool* és a *videoBackendPool* nevű backend-készleteket az Application Gateway [Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool). Adja hozzá a készletek előtérbeli portját a [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport)használatával. Küldje el az Application Gateway módosításait a [set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway)használatával.
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -312,7 +312,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása
 
-Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A *myvmss1*, *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Az IP-beállítások konfigurálásakor hozzárendeli a méretezési csoportot a háttérkészlethez.
+Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A *myvmss1* , *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Az IP-beállítások konfigurálásakor hozzárendeli a méretezési csoportot a háttérkészlethez.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -437,6 +437,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Applicat
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Forgalom átirányítása URL-cím alapján](./tutorial-url-redirect-powershell.md)

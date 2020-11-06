@@ -7,16 +7,16 @@ ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8bf19052c11301412a299c31a2cd73ed2f9ffc7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 312f052671036d8153dd19fcf4e559e825fd8464
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079897"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396991"
 ---
 # <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>Webalkalmazási tűzfal (WAF) egyéni szabályainak létrehozása a Azure PowerShell
 
-Ez a szkript létrehoz egy Application Gateway webalkalmazási tűzfalat, amely egyéni szabályokat használ. Az egyéni szabály blokkolja a forgalmat, ha a kérelem fejléce User-Agent *evilbot*tartalmaz.
+Ez a szkript létrehoz egy Application Gateway webalkalmazási tűzfalat, amely egyéni szabályokat használ. Az egyéni szabály blokkolja a forgalmat, ha a kérelem fejléce User-Agent *evilbot* tartalmaz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -70,6 +70,6 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az egyéni WAF-szabályokról: [webalkalmazási tűzfal egyéni szabályai](../custom-waf-rules-overview.md)
+- További információ az egyéni WAF-szabályokról: [webalkalmazási tűzfal egyéni szabályai](../../web-application-firewall/ag/custom-waf-rules-overview.md)
 - Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 - Az alkalmazásátjárókkal használható további PowerShell-példaszkripteket [Az Application Gateway dokumentációjában](../powershell-samples.md) találhat.

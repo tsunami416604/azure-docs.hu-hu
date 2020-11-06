@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: a80e0f1b62257fdbce6598c9cc4088701cc2ae9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13a05089ae6365bb5d279105f8c010278bd0adb8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983611"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396005"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>A Data Factory díjszabásának ismertetése példákon keresztül
 
@@ -48,7 +48,7 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 | Folyamat beolvasása | 1 olvasási/írási entitás |
 | Folyamat futtatása | 2 tevékenység fut (1 a trigger futtatásához, 1 a tevékenység futtatásához) |
 | Adatok másolása feltételezés: végrehajtási idő = 10 perc | 10 \* 4 Azure Integration Runtime (alapértelmezett DIU-beállítás = 4) az adatintegrációs egységekkel és a másolási teljesítmény optimalizálásával kapcsolatos további információkért tekintse meg [ezt a cikket.](copy-activity-performance.md) |
-| Figyelő folyamat feltételezése: csak 1 Futtatás történt | 2 figyelési futtatási rekordok újrapróbálva (1 a folyamat futtatásához, 1 a tevékenység futtatásához) |
+| Figyelő folyamat feltételezése: csak 1 Futtatás történt | 2 a figyelő futtatási rekordjainak beolvasása (1 a folyamat futtatásához, 1 a tevékenység futtatásához) |
 
 **Forgatókönyvek teljes díjszabása: $0,16811**
 
@@ -79,7 +79,7 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 | Folyamat beolvasása | 1 olvasási/írási entitás |
 | Folyamat futtatása | 3 tevékenység fut (1 a trigger futtatásához, 2 a tevékenység-futtatásokhoz) |
 | Adatok másolása feltételezés: végrehajtási idő = 10 perc | 10 \* 4 Azure Integration Runtime (alapértelmezett DIU-beállítás = 4) az adatintegrációs egységekkel és a másolási teljesítmény optimalizálásával kapcsolatos további információkért tekintse meg [ezt a cikket.](copy-activity-performance.md) |
-| Figyelő folyamat feltételezése: csak 1 Futtatás történt | 3 a folyamatban lévő rekordok figyelése újrapróbálkozott (1 a folyamat futtatásához, 2 a tevékenység futtatásához) |
+| Figyelő folyamat feltételezése: csak 1 Futtatás történt | 3 a felügyeleti futtatási rekordok beolvasása (1 a folyamat futtatásához, 2 a tevékenység futtatásához) |
 | Databricks tevékenység végrehajtása – feltételezés: végrehajtási idő = 10 perc | 10 perc külső folyamat tevékenységének végrehajtása |
 
 **Forgatókönyvek teljes díjszabása: $0,16916**
@@ -113,7 +113,7 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 | Folyamat beolvasása | 1 olvasási/írási entitás |
 | Folyamat futtatása | 4 tevékenység fut (1 a trigger futtatásához, 3 a tevékenység futtatásához) |
 | Adatok másolása feltételezés: végrehajtási idő = 10 perc | 10 \* 4 Azure Integration Runtime (alapértelmezett DIU-beállítás = 4) az adatintegrációs egységekkel és a másolási teljesítmény optimalizálásával kapcsolatos további információkért tekintse meg [ezt a cikket.](copy-activity-performance.md) |
-| Figyelő folyamat feltételezése: csak 1 Futtatás történt | 4 figyelési futtatási rekordok újrapróbálva (1 a folyamat futtatásához, 3 a tevékenység futtatásához) |
+| Figyelő folyamat feltételezése: csak 1 Futtatás történt | 4 a figyelő futtatási rekordjainak beolvasása (1 a folyamat futtatásához, 3 a tevékenység futtatásához) |
 | Keresési tevékenység végrehajtási feltételezése: végrehajtási idő = 1 perc | 1 perc folyamat tevékenységének végrehajtása |
 | Databricks tevékenység végrehajtása – feltételezés: végrehajtási idő = 10 perc | 10 perc külső folyamat tevékenységének végrehajtása |
 
@@ -160,7 +160,7 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 | Folyamat beolvasása | 1 olvasási/írási entitás |
 | Folyamat futtatása | 2 tevékenység fut (1 a trigger futtatásához, 1 a tevékenység futtatásához) |
 | Adatáramlási feltételezések: végrehajtási idő = 10 perc + 10 perc TTL | 10 16%-os \* általános számítási és TTL-es mag |
-| Figyelő folyamat feltételezése: csak 1 Futtatás történt | 2 figyelési futtatási rekordok újrapróbálva (1 a folyamat futtatásához, 1 a tevékenység futtatásához) |
+| Figyelő folyamat feltételezése: csak 1 Futtatás történt | 2 a figyelő futtatási rekordjainak beolvasása (1 a folyamat futtatásához, 1 a tevékenység futtatásához) |
 
 **Forgatókönyvek teljes díjszabása: $1,4631**
 
@@ -189,7 +189,7 @@ Ebben az esetben törölni kívánja az eredeti fájlokat az Azure Blob Storageo
 | Folyamat futtatása | 6 tevékenység fut (2 a trigger futtatásához, 4 a tevékenység futtatásához) |
 | Végrehajtási törlési tevékenység: minden végrehajtási idő = 5 perc. Az első folyamat törlési tevékenységének végrehajtása 10:00 órától UTC és 10:05 között van. A második folyamat törlési tevékenységének végrehajtása 10:02-tól UTC-ig 10:07 AM UTC-re esik.|A felügyelt VNET összesen 7 perces folyamat-végrehajtási művelet. A folyamat tevékenysége legfeljebb 50 egyidejűséget támogat a felügyelt VNET. |
 | Adatok másolása feltételezés: minden végrehajtási idő = 10 perc. Az első adatcsatorna másolási végrehajtása 10:06 órától UTC, 10:15 AM UTC. A második folyamat törlési tevékenységének végrehajtása 10:08-tól UTC-ig 10:17 AM UTC-re esik. | 10 * 4 Azure Integration Runtime (alapértelmezett DIU-beállítás = 4) az adatintegrációs egységekkel és a másolási teljesítmény optimalizálásával kapcsolatos további információkért tekintse meg [ezt a cikket.](copy-activity-performance.md) |
-| Figyelő folyamat feltételezése: csak 2 Futtatás történt | 6 figyelési futtatási rekordok újrapróbálva (2 a folyamat futtatásához, 4 a tevékenység futtatásához) |
+| Figyelő folyamat feltételezése: csak 2 Futtatás történt | 6 figyelési futtatási rekordok beolvasva (2 a folyamat futtatásához, 4 a tevékenység futtatásához) |
 
 
 **Forgatókönyvek teljes díjszabása: $0,45523**
@@ -211,7 +211,7 @@ K: Ha több mint 50 folyamatot kívánok futtatni, akkor ezeket a tevékenysége
 
 A: legfeljebb 50 egyidejű folyamatra vonatkozó művelet engedélyezett.  A 51th folyamata tevékenység várólistára kerül, amíg meg nem nyit egy "szabad tárolóhelyet". Ugyanaz, mint a külső tevékenység. Legfeljebb 800 egyidejű külső tevékenység lesz engedélyezett.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megértette Azure Data Factory díjszabását, megkezdheti!
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 1445d1418bde6d5d15e365c59ceb56e7661faccb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13441899eeb5ca2b7c60977ab2858fe40a398d1a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088070"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397858"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Egyéni mintavétel létrehozása az Azure Application Gateway (klasszikus) szolgáltatáshoz a PowerShell használatával
 
@@ -147,7 +147,7 @@ A konfigurációs paraméterek a következők:
 | **Gazdagép** és **elérési út** | Teljes URL-cím elérési útja, amelyet az Application Gateway hív meg a példány állapotának meghatározásához. Ha például van egy webhely http: \/ /contoso.com/, akkor az egyéni mintavétel konfigurálható a "http: \/ /contoso.com/Path/custompath.htm" értékre a mintavételi ellenőrzésekhez, hogy sikeres legyen a http-válasz.|
 | **Intervallum** | A mintavételi időköz ellenőrzésének beállítása másodpercben.|
 | **Időtúllépés** | Meghatározza a mintavétel időtúllépését a HTTP-válaszok esetében.|
-| **UnhealthyThreshold** | A háttérbeli példány *sérültként*való megjelöléséhez szükséges sikertelen http-válaszok száma.|
+| **UnhealthyThreshold** | A háttérbeli példány *sérültként* való megjelöléséhez szükséges sikertelen http-válaszok száma.|
 
 A mintavétel neve a konfigurációban hivatkozik \<BackendHttpSettings\> arra, hogy melyik háttér-készlet használja az egyéni mintavételi beállításokat.
 
@@ -200,7 +200,6 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>További lépések
 
-Ha Transport Layer Security (TLS), korábbi nevén SSL (SSL) kiszervezést szeretne konfigurálni, tekintse meg [az Application Gateway konfigurálása TLS-alapú kiszervezéshez](application-gateway-ssl.md)című témakört.
+Ha Transport Layer Security (TLS), korábbi nevén SSL (SSL) kiszervezést szeretne konfigurálni, tekintse meg [az Application Gateway konfigurálása TLS-alapú kiszervezéshez](./tutorial-ssl-powershell.md)című témakört.
 
-Ha konfigurálni szeretne egy ILB-vel használni kívánt Application Gateway-t: [Application Gateway létrehozása belső terheléselosztóval (ILB)](application-gateway-ilb.md).
-
+Ha konfigurálni szeretne egy ILB-vel használni kívánt Application Gateway-t: [Application Gateway létrehozása belső terheléselosztóval (ILB)](./application-gateway-ilb-arm.md).

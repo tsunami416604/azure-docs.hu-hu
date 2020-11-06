@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ed4bc60fbffbfbc553d41d7f7d44709551b620dc
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: a09563e787573f3cb3dd510229822a0b0fbcb6c9
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280331"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395886"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -31,11 +31,11 @@ A jelenlegi Control Plant API-verzió a _**2020-10-31**_.
 A vezérlő sík API-k használata:
 * Az API-kat közvetlenül hívhatja a [vezérlési sík hencegő mappájában](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)található legújabb hencegés hivatkozásával. Ez a tárház a használatot bemutató példákat is tartalmaz.
 * Jelenleg a vezérlési API-k számára érhető el az SDK-ban...
-  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([hivatkozás [automatikusan generált]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([forrás](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([hivatkozás [automatikusan generált]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) ([forrás](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
-  - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([forrás](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
-  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([forrás](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
-  - [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([forrás](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
+  - [**.Net (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ( [hivatkozás [automatikusan generált]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ( [forrás](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
+  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ( [hivatkozás [automatikusan generált]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) ( [forrás](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
+  - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ( [forrás](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
+  - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ( [forrás](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
+  - [**Go**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ( [forrás](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
 
 A vezérlési sík API-kat a [Azure Portal](https://portal.azure.com) és a [CLI](how-to-use-cli.md)használatával is használhatja az Azure digitális ikrekkel való interakcióval.
 
@@ -57,17 +57,18 @@ Az adatsík API-k használata:
    - a csomagot a NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)fájlból tekintheti meg és adhatja hozzá. 
    - megtekintheti az [SDK-referenciák dokumentációját](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
    - megtalálhatja az SDK-forrást, beleértve a példákat tartalmazó mappát is a GitHubban: az [Azure IoT Digital Twins ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - a részletes információkat és használati példákat a jelen cikk [.net (C#) SDK (adatsíkja)](#net-c-sdk-data-plane) című szakaszában tekintheti meg.
-* Használhatja a **Java** SDK-t. A Java SDK használata...
+   - a részletes információkat és használati példákat a jelen cikk [*.net (C#) SDK (adatsíkja)*](#net-c-sdk-data-plane) című szakaszában tekintheti meg.
+* Használhatja a **Java SDK** -t. A Java SDK használata...
    - a csomagot a Mavenből tekintheti meg és telepítheti: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)
-   - megtekintheti az [SDK-referenciák dokumentációját](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview)
+   - megtekintheti az [SDK-referenciák dokumentációját](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable)
    - Az SDK-forrást a GitHubon találja: az [Azure IoT Digital Twins ügyféloldali kódtára a Javához](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
-* Használhatja a **JavaScript** SDK-t. A JavaScript SDK használata...
-   - a csomagot a NPM-ből tekintheti meg és telepítheti: [Azure Azure digitális Twins ügyféloldali kódtár a javascripthez](https://www.npmjs.com/package/@azure/digital-twins-core).
-   - megtekintheti az [SDK-referenciák dokumentációját](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest).
+* Használhatja a **JavaScript SDK** -t. A JavaScript SDK használata...
+   - a csomagot a NPM-ből tekintheti meg és telepítheti: [Azure Azure Digital Twins Core ügyféloldali kódtár a javascripthez](https://www.npmjs.com/package/@azure/digital-twins-core).
+   - megtekintheti az [SDK-referenciák dokumentációját](/javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest&preserve-view=true).
    - Az SDK-forrást a GitHubon találja: [Azure Azure Digital Twins Core ügyféloldali kódtár a javascripthez](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
-* Használhatja a **Python** SDK-t. A Python SDK használata...
-   - megtekintheti és telepítheti a csomagot: az [Azure Azure Digital Twins Core ügyféloldali kódtára a Pythonhoz](https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/).
+* Használhatja a **PYTHON SDK** -t. A Python SDK használata...
+   - a csomagot a PyPi-ből tekintheti meg és telepítheti: az [Azure Azure Digital Twins Core ügyféloldali kódtára a Pythonhoz](https://pypi.org/project/azure-digitaltwins-core/).
+   - megtekintheti az [SDK-referenciák dokumentációját](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true).
    - Az SDK forrását a GitHubon találja: az [Azure Azure Digital Twins Core ügyféloldali kódtára a Pythonhoz](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * Az autorest használatával egy másik nyelvhez is létrehozhat SDK-t. Kövesse az útmutató [*: egyéni SDK-k létrehozása az Azure digitális ikrekhez az autorest használatával*](how-to-create-custom-sdks.md)című témakör utasításait.
 
@@ -300,7 +301,7 @@ A portál kezdőlapján keresse meg az Azure Digital Twins-példányát, és adj
 
 Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg, hogyan használható az API-k egy Azure digitális Twins-példány és-hitelesítés beállításához:
 * [*Útmutató: példány és hitelesítés beállítása*](how-to-set-up-instance-cli.md)

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 3109ada2c905a9f11169a462284d22b9e9604494
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808241"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397926"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>A TLS-házirend verziói és a titkosítási csomagok konfigurálása Application Gateway
 
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-tls-policy"></a>Meglévő Application Gateway frissítése előre definiált TLS-házirenddel
 
-Egyéni TLS-házirend beállításához adja meg a következő paramétereket: **PolicyType**, **MinProtocolVersion**, **CipherSuite**és **ApplicationGateway**. Egy előre definiált TLS-házirend beállításához adja meg a következő paramétereket: **PolicyType**, **PolicyName**és **ApplicationGateway**. Ha más paramétereket próbál átadni, hibaüzenet jelenik meg a Application Gateway létrehozásakor vagy frissítésekor.
+Egyéni TLS-házirend beállításához adja meg a következő paramétereket: **PolicyType** , **MinProtocolVersion** , **CipherSuite** és **ApplicationGateway**. Egy előre definiált TLS-házirend beállításához adja meg a következő paramétereket: **PolicyType** , **PolicyName** és **ApplicationGateway**. Ha más paramétereket próbál átadni, hibaüzenet jelenik meg a Application Gateway létrehozásakor vagy frissítésekor.
 
 A következő példában az egyéni házirendhez és az előre definiált házirendhez is vannak kódok. A használni kívánt szabályzat megjegyzésének visszaírása.
 
@@ -217,4 +217,4 @@ $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 
 ## <a name="next-steps"></a>További lépések
 
-A HTTP-forgalom HTTPS-végpontra való átirányításának megismeréséhez látogasson el [Application Gateway átirányítási áttekintésre](application-gateway-redirect-overview.md) .
+A HTTP-forgalom HTTPS-végpontra való átirányításának megismeréséhez látogasson el [Application Gateway átirányítási áttekintésre](./redirect-overview.md) .

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6bc5761f4e629a90dacf06cd7503ca86a5448fe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d0a130830c8b03fd1f47086b9a997f6fc3df9a4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595862"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396957"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Webes forgalom kezelése Application Gatewayjel az Azure CLI segítségével
 
-Az alkalmazásátjáró kezeli az Ön által fenntartott kiszolgálókra irányuló webes forgalmat, és védelmet biztosít ahhoz. Az Azure CLI használatával olyan [Application Gateway](overview.md) hozható létre, amely a háttér-kiszolgálók [virtuálisgép-méretezési csoportját](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használja. Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz. A méretezési csoport az Application Gateway alapértelmezett backend-készletéhez lesz hozzáadva.
+Az alkalmazásátjáró kezeli az Ön által fenntartott kiszolgálókra irányuló webes forgalmat, és védelmet biztosít ahhoz. Az Azure CLI használatával olyan [Application Gateway](overview.md) hozható létre, amely a háttér-kiszolgálók [virtuálisgép-méretezési csoportját](../virtual-machine-scale-sets/overview.md) használja. Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz. A méretezési csoport az Application Gateway alapértelmezett backend-készletéhez lesz hozzáadva.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -27,7 +27,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha szeretné, az eljárást [Azure PowerShell](tutorial-manage-web-traffic-powershell.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -153,6 +153,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmaz
 az group delete --name myResourceGroupAG --location eastus
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Webes forgalom korlátozása webalkalmazási tűzfallal](./tutorial-restrict-web-traffic-cli.md)
+[Webes forgalom korlátozása webalkalmazási tűzfallal](../web-application-firewall/ag/tutorial-restrict-web-traffic-cli.md)

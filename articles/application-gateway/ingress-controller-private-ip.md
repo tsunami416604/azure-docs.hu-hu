@@ -7,19 +7,19 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 33b70ba8ab7ffef90c42f53e58a2d27e619862f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8be37ed1da0da4da3db43ef4c1cd01ed962f24ed
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84806798"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397308"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>Magánhálózati IP használata belső útválasztáshoz egy bejövő végpont esetében 
 
 Ez a funkció lehetővé teszi, hogy a bejövő végpontot a `Virtual Network` privát IP-cím használatával tegye elérhetővé.
 
 ## <a name="pre-requisites"></a>Előfeltételek  
-Application Gateway [magánhálózati IP-konfigurációval](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip)
+Application Gateway [magánhálózati IP-konfigurációval](./configure-application-gateway-with-private-frontend-ip.md)
 
 A vezérlőt kétféleképpen lehet úgy konfigurálni, hogy magánhálózati IP-címet használjon a bejövő forgalom számára.
 
@@ -66,4 +66,4 @@ appgw:
 A AGIC pánikba kerül és összeomlik, ha `usePrivateIP: true` nincs hozzárendelve magánhálózati IP-cím.
 
 > [!NOTE]
-> Application Gateway v2 SKU-nak nyilvános IP-címet kell megadnia. Ha a Application Gateway magánjellegűnek kell lennie, csatolja a [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) -t a Application Gateway alhálózatához a forgalom korlátozása érdekében.
+> Application Gateway v2 SKU-nak nyilvános IP-címet kell megadnia. Ha a Application Gateway magánjellegűnek kell lennie, csatolja a [`Network Security Group`](../virtual-network/network-security-groups-overview.md) -t a Application Gateway alhálózatához a forgalom korlátozása érdekében.

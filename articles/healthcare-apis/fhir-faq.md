@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 20bf72c55a5b6d76a3b214f0a679e28da81e41e2
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 66ea8692fd3d93b8de9740e145404a8db50ebfdf
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558567"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398096"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>A FHIR készült Azure API-val kapcsolatos gyakori kérdések
 
@@ -52,7 +52,7 @@ Ha szeretné megtekinteni, hogy mi történik a FHIR készült Azure API-ban, te
 
 ### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>Mely régiókban érhetők el az Azure API a FHIR számára?
 
-Jelenleg általánosan elérhető a nyilvános és a kormányzati szolgáltatás a [különböző földrajzi régiókban](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia). A Microsoft Government Cloud Services szolgáltatással kapcsolatos információkért tekintse meg az [Azure-szolgáltatásokat a FedRAMP](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope).
+Jelenleg általánosan elérhető a nyilvános és a kormányzati szolgáltatás a [különböző földrajzi régiókban](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia). A Microsoft Government Cloud Services szolgáltatással kapcsolatos információkért tekintse meg az [Azure-szolgáltatásokat a FedRAMP](../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
 
 ### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Hol láthatom, hogy mi történik a FHIR készült Azure API-ban?
 
@@ -97,17 +97,17 @@ Néhány példa erre:
 
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>Mi az alapértelmezett rendezés, ha erőforrásokat keres az Azure API FHIR?
 
-A rendezést a legutóbb frissített dátum szerint támogatjuk: _sort = _lastUpdated. A támogatott keresési paraméterekkel kapcsolatos további információkért tekintse meg a [támogatott funkciók lapot](https://docs.microsoft.com/azure/healthcare-apis/fhir-features-supported#search).
+A rendezést a legutóbb frissített dátum szerint támogatjuk: _sort = _lastUpdated. A támogatott keresési paraméterekkel kapcsolatos további információkért tekintse meg a [támogatott funkciók lapot](./fhir-features-supported.md#search).
 
 ### <a name="how-does-export-work"></a>Hogyan működik $export?
 
-$export a FHIR-specifikáció része: https://hl7.org/fhir/uv/bulkdata/export/index.html . Ha a FHIR szolgáltatás egy felügyelt identitással és egy Storage-fiókkal van konfigurálva, és ha a felügyelt identitás hozzáfér ehhez a Storage-fiókhoz, akkor egyszerűen hívja meg a $exportt a FHIR API-ban, és az összes FHIR-erőforrás exportálva lesz a Storage-fiókba. További információkért tekintse [meg a $exportról szóló cikket](https://docs.microsoft.com/azure/healthcare-apis/export-data).
+$export a FHIR-specifikáció része: https://hl7.org/fhir/uv/bulkdata/export/index.html . Ha a FHIR szolgáltatás egy felügyelt identitással és egy Storage-fiókkal van konfigurálva, és ha a felügyelt identitás hozzáfér ehhez a Storage-fiókhoz, akkor egyszerűen hívja meg a $exportt a FHIR API-ban, és az összes FHIR-erőforrás exportálva lesz a Storage-fiókba. További információkért tekintse [meg a $exportról szóló cikket](./export-data.md).
 
 ## <a name="using-azure-api-for-fhir"></a>Az Azure API használata a FHIR-hez
 
 ### <a name="how-do-i-enable-log-analytics-for-azure-api-for-fhir"></a>Hogyan engedélyezi a log Analytics szolgáltatást az Azure API-hoz a FHIR számára?
 
-Engedélyezjük a diagnosztikai naplózást, és lehetővé tesszük a lekérdezések lekérdezésének áttekintését. A naplók és a lekérdezési lekérdezések engedélyezésével kapcsolatos részletekért tekintse meg [ezt a szakaszt](https://docs.microsoft.com/azure/healthcare-apis/enable-diagnostic-logging). Ha további információkat szeretne felvenni a naplókba, tekintse meg az [egyéni HTTP-fejlécek használatát](https://docs.microsoft.com/azure/healthcare-apis/use-custom-headers)ismertető témakört.
+Engedélyezjük a diagnosztikai naplózást, és lehetővé tesszük a lekérdezések lekérdezésének áttekintését. A naplók és a lekérdezési lekérdezések engedélyezésével kapcsolatos részletekért tekintse meg [ezt a szakaszt](./enable-diagnostic-logging.md). Ha további információkat szeretne felvenni a naplókba, tekintse meg az [egyéni HTTP-fejlécek használatát](./use-custom-headers.md)ismertető témakört.
 
 ### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>Hol láthatok néhány példát a FHIR készült Azure API használatára a munkafolyamaton belül?
 
@@ -121,7 +121,7 @@ Van egy, az [architektúrát használó GitHub-oldal](https://github.com/microso
 
 ### <a name="is-there-a-way-to-encrypt-my-data-using-my-personal-key-not-a-default-key"></a>Van mód arra, hogy az adataimat a személyes kulcsom alapján titkosítsa, nem alapértelmezett kulcs?
 
-Igen, az Azure API for FHIR lehetővé teszi az ügyfél által felügyelt kulcsok konfigurálását, a Cosmos DB támogatásának kihasználásával. Az adatok személyes kulccsal történő titkosításával kapcsolatos további információkért tekintse meg [ezt a szakaszt](https://docs.microsoft.com/azure/healthcare-apis/customer-managed-key).
+Igen, az Azure API for FHIR lehetővé teszi az ügyfél által felügyelt kulcsok konfigurálását, a Cosmos DB támogatásának kihasználásával. Az adatok személyes kulccsal történő titkosításával kapcsolatos további információkért tekintse meg [ezt a szakaszt](./customer-managed-key.md).
 
 ## <a name="azure-api-for-fhir-preview-features"></a>Azure API a FHIR-hez: előzetes funkciók
 

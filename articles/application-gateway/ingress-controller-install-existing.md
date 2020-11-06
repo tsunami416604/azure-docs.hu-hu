@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c11de2f1bc4143281d2859de7a38268932b13fba
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84807105"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397399"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Application Gateway beáramlási vezérlő (AGIC) telepítése meglévő Application Gateway használatával
 
@@ -29,8 +29,8 @@ A AGIC figyeli a Kubernetes [bejövő](https://kubernetes.io/docs/concepts/servi
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a dokumentum azt feltételezi, hogy már telepítve van a következő eszközök és infrastruktúra:
-- [AK](https://azure.microsoft.com/services/kubernetes-service/) , [speciális hálózatkezelés](https://docs.microsoft.com/azure/aks/configure-azure-cni) engedélyezve
-- [Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant) ugyanabban a virtuális hálózatban, mint AK
+- [AK](https://azure.microsoft.com/services/kubernetes-service/) , [speciális hálózatkezelés](../aks/configure-azure-cni.md) engedélyezve
+- [Application Gateway v2](./tutorial-autoscale-ps.md) ugyanabban a virtuális hálózatban, mint AK
 - [HRE Pod-identitás](https://github.com/Azure/aad-pod-identity) telepítve az AK-fürtön
 - [Cloud Shell](https://shell.azure.com/) az Azure rendszerhéj-környezet, amely parancssori felülettel, `az` `kubectl` és `helm` telepítve van. Ezek az eszközök az alábbi parancsokhoz szükségesek.
 
@@ -41,10 +41,10 @@ A AGIC telepítése előtt __készítsen biztonsági másolatot a Application Ga
 A letöltött zip-fájl JSON-sablonokkal, bash-és PowerShell-parancsfájlokkal is rendelkezik, amelyekkel visszaállíthatók az alkalmazás-átjárók, amelyek szükségesek lesznek
 
 ## <a name="install-helm"></a>A Helm telepítése
-A [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a Kubernetes csomagkezelő. A csomag telepítéséhez használni fogjuk `application-gateway-kubernetes-ingress` .
+A [Helm](../aks/kubernetes-helm.md) a Kubernetes csomagkezelő. A csomag telepítéséhez használni fogjuk `application-gateway-kubernetes-ingress` .
 [Cloud Shell](https://shell.azure.com/) használata a Helm telepítéséhez:
 
-1. Telepítse a [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) -t, és futtassa a következő parancsot a Helm-csomag hozzáadásához `application-gateway-kubernetes-ingress` :
+1. Telepítse a [Helm](../aks/kubernetes-helm.md) -t, és futtassa a következő parancsot a Helm-csomag hozzáadásához `application-gateway-kubernetes-ingress` :
 
     - *RBAC engedélyezve* AK-fürt
 
@@ -72,7 +72,7 @@ A AGIC a Kubernetes API-kiszolgálóval és a Azure Resource Manager kommunikál
 
 ## <a name="set-up-aad-pod-identity"></a>A HRE Pod-identitás beállítása
 
-A [HRE Pod Identity](https://github.com/Azure/aad-pod-identity) egy, a AGIC-hoz hasonló vezérlő, amely szintén az AK-on fut. A Kubernetes-hüvelyek Azure Active Directory identitásait köti össze. A Kubernetes Pod-ban lévő alkalmazás identitásának megléte szükséges ahhoz, hogy kommunikálni tudjon más Azure-összetevőkkel. Ebben az esetben szükség van a AGIC Pod engedélyezésére a HTTP-kérések [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-re való elvégzéséhez.
+A [HRE Pod Identity](https://github.com/Azure/aad-pod-identity) egy, a AGIC-hoz hasonló vezérlő, amely szintén az AK-on fut. A Kubernetes-hüvelyek Azure Active Directory identitásait köti össze. A Kubernetes Pod-ban lévő alkalmazás identitásának megléte szükséges ahhoz, hogy kommunikálni tudjon más Azure-összetevőkkel. Ebben az esetben szükség van a AGIC Pod engedélyezésére a HTTP-kérések [ARM](../azure-resource-manager/management/overview.md)-re való elvégzéséhez.
 
 A [HRE Pod Identity telepítési utasításait](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra) követve adja hozzá ezt az összetevőt az AK-hoz.
 
@@ -323,7 +323,7 @@ AGIC engedélyek kiterjesztése a rel:
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Meglévő AGIC-telepítés engedélyezése
-Tegyük fel, hogy már van egy működő AK-beli, Application Gateway és konfigurált AGIC a fürtben. A rendszer beérkező adatokat biztosít a számára, `prod.contosor.com` és sikeresen kiszolgálja az AK-ból érkező adatforgalmat. Hozzá szeretnénk adni a `staging.contoso.com` meglévő Application Gatewayhoz, de azt egy [virtuális gépen](https://azure.microsoft.com/services/virtual-machines/)kell üzemeltetni. Újra felhasználjuk a meglévő Application Gateway, és manuálisan konfiguráljuk a figyelő és a háttér-készleteket `staging.contoso.com` . De a Application Gateway konfiguráció manuális csípése (a [portálon](https://portal.azure.com), az [ARM API](https://docs.microsoft.com/rest/api/resources/) -kon vagy a [Terraform](https://www.terraform.io/)-on keresztül) ütközne a teljes tulajdonú AGIC. Röviddel a módosítások alkalmazása után a AGIC felülírja vagy törli őket.
+Tegyük fel, hogy már van egy működő AK-beli, Application Gateway és konfigurált AGIC a fürtben. A rendszer beérkező adatokat biztosít a számára, `prod.contosor.com` és sikeresen kiszolgálja az AK-ból érkező adatforgalmat. Hozzá szeretnénk adni a `staging.contoso.com` meglévő Application Gatewayhoz, de azt egy [virtuális gépen](https://azure.microsoft.com/services/virtual-machines/)kell üzemeltetni. Újra felhasználjuk a meglévő Application Gateway, és manuálisan konfiguráljuk a figyelő és a háttér-készleteket `staging.contoso.com` . De a Application Gateway konfiguráció manuális csípése (a [portálon](https://portal.azure.com), az [ARM API](/rest/api/resources/) -kon vagy a [Terraform](https://www.terraform.io/)-on keresztül) ütközne a teljes tulajdonú AGIC. Röviddel a módosítások alkalmazása után a AGIC felülírja vagy törli őket.
 
 A AGIC megtilthatja, hogy a konfiguráció egy részhalmaza módosítható legyen.
 
