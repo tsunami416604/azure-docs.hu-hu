@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
-ms.openlocfilehash: 285c3bf37e9d6de042cb028745fc8b094d34c3a1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 39c0556350482e171234a3ff9dce0c16ed88d110
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284409"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93406646"
 ---
 Egy Azure Functionsban felmerülő hibák a következő eredetek bármelyike esetén származhatnak:
 
@@ -23,15 +23,15 @@ Az adatvesztés és a kihagyott üzenetek elvesztésének elkerülése érdekéb
 - [Az Application Insights engedélyezése](../articles/azure-functions/functions-monitoring.md)
 - [Strukturált hibakezelés használata](#use-structured-error-handling)
 - [Idempotencia tervezése](../articles/azure-functions/functions-idempotent.md)
-- [Újrapróbálkozási szabályzatok implementálása](#retry-policies) (ha szükséges)
+- [Újrapróbálkozási szabályzatok implementálása](#retry-policies-preview) (ha szükséges)
 
 ### <a name="use-structured-error-handling"></a>Strukturált hibakezelés használata
 
 A rögzítési és naplózási hibák kritikus fontosságúak az alkalmazás állapotának monitorozásához. A függvények kódjának legfelső szintjén szerepelnie kell egy try/catch blokknak. A Catch blokkban a hibák rögzítése és naplózása végezhető el.
 
-## <a name="retry-policies"></a>Újrapróbálkozási szabályzatok
+## <a name="retry-policies-preview"></a>Újrapróbálkozási szabályzatok (előzetes verzió)
 
-Az újrapróbálkozási szabályzat bármely függvényben definiálható a Function alkalmazás bármely trigger-típusához.  Az újrapróbálkozási szabályzat Újrafuttatja a függvényt, amíg a végrehajtás nem sikerült, vagy amíg az újrapróbálkozások maximális száma megtörténik.  Az újrapróbálkozási szabályzatok meghatározhatók az alkalmazás összes funkciója vagy az egyes függvények esetében.  Alapértelmezés szerint a Function alkalmazás nem próbálkozik újra az üzenetekkel (az [eseményindító-forrásra vonatkozó újrapróbálkozási szabályzattal rendelkező eseményindítók esetében](#trigger-specific-retry-support)).  Az újrapróbálkozási szabályzat kiértékelése akkor történik meg, amikor egy végrehajtás nem kezelt kivételt eredményez.  Ajánlott eljárásként az összes kivételt el kell fogni a kódban, és újra kell dobnia azokat a hibákat, amelyek újrapróbálkozást eredményeznek.  Event Hubs és Azure Cosmos DB ellenőrzőpontok nem írhatók, amíg a végrehajtás újrapróbálkozási házirendje be nem fejeződik, azaz a partíción lévő előrehaladás szünetel, amíg az aktuális köteg be nem fejeződik.
+Az újrapróbálkozási szabályzat bármely függvényben definiálható a Function alkalmazás bármely trigger-típusához.  Az újrapróbálkozási szabályzat Újrafuttatja a függvényt, amíg a végrehajtás nem sikerült, vagy amíg az újrapróbálkozások maximális száma megtörténik.  Az újrapróbálkozási szabályzatok meghatározhatók az alkalmazás összes funkciója vagy az egyes függvények esetében.  Alapértelmezés szerint a Function alkalmazás nem próbálkozik újra az üzenetekkel (az [eseményindító-forrásra vonatkozó újrapróbálkozási szabályzattal rendelkező eseményindítók esetében](#using-retry-support-on-top-of-trigger-resilience)).  Az újrapróbálkozási szabályzat kiértékelése akkor történik meg, amikor egy végrehajtás nem kezelt kivételt eredményez.  Ajánlott eljárásként az összes kivételt el kell fogni a kódban, és újra kell dobnia azokat a hibákat, amelyek az újrapróbálkozást eredményezik.  Event Hubs és Azure Cosmos DB ellenőrzőpontok nem írhatók, amíg a végrehajtás újrapróbálkozási házirendje be nem fejeződik, azaz a partíción lévő előrehaladás szünetel, amíg az aktuális köteg be nem fejeződik.
 
 ### <a name="retry-policy-options"></a>Újrapróbálkozási szabályzat beállításai
 
@@ -57,6 +57,8 @@ Egy adott függvény újrapróbálkozási szabályzata is meghatározható.  A F
 #### <a name="fixed-delay-retry"></a>Rögzített késleltetés – újrapróbálkozás
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+Az újrapróbálkozások megkövetelik a [Microsoft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23 NuGet-csomagot.
 
 ```csharp
 [FunctionName("EventHubTrigger")]
@@ -152,6 +154,8 @@ Itt látható az újrapróbálkozási szabályzat a fájl *function.jsjában* :
 #### <a name="exponential-backoff-retry"></a>Exponenciális leállítási újrapróbálkozás
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+Az újrapróbálkozások megkövetelik a [Microsoft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23 NuGet-csomagot.
 
 ```csharp
 [FunctionName("EventHubTrigger")]
@@ -255,12 +259,27 @@ Itt látható az újrapróbálkozási szabályzat a fájl *function.jsjában* :
 |minimumInterval|n/a|A stratégia használatának minimális újrapróbálkozási késleltetése `exponentialBackoff` .|
 |maximumInterval|n/a|A stratégia használatának maximális újrapróbálkozási késleltetése `exponentialBackoff` .| 
 
-## <a name="trigger-specific-retry-support"></a>Trigger-specifikus újrapróbálkozás támogatása
+### <a name="retry-limitations-during-preview"></a>Újrapróbálkozási korlátozások az előzetes verzióban
 
-Egyes eseményindítók az eseményindító forrásában újrapróbálkozásokat biztosítanak.  Ezek a trigger-újrapróbálkozások a Function app Host újrapróbálkozási házirendjének kiegészítéseként vagy helyettesítő módon is használhatók.  Ha meghatározott számú újrapróbálkozásra van szükség, a trigger-specifikus újrapróbálkozási szabályzatot kell használnia az általános gazdagép újrapróbálkozási házirendjében.  A következő eseményindítók támogatják az újrapróbálkozásokat az eseményindító forrásaként:
+- A .NET-projektek esetében előfordulhat, hogy manuálisan kell lekérnie a [Microsoft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23 verzióját.
+- A használati tervben előfordulhat, hogy az alkalmazás nullára van lebontva, miközben újra próbálkozik a várólistában lévő utolsó üzenetekkel.
+- A használati tervben az alkalmazás az újrapróbálkozások végrehajtása közben is méretezhető.  A legjobb eredmény érdekében válasszon egy újrapróbálkozási időközt <= 00:01:00 és <= 5 újrapróbálkozást.
+
+## <a name="using-retry-support-on-top-of-trigger-resilience"></a>Az újrapróbálkozások támogatásának használata az aktiválási rugalmasság felső részén
+
+A Function app újrapróbálkozási házirendje független a trigger által biztosított újrapróbálkozások vagy rugalmasságtól.  A függvény újrapróbálkozási házirendje csak a triggerre épülő, rugalmas újrapróbálkozást eredményezi.  Például, ha a Azure Service Bust használja, az alapértelmezett várólistáknál az üzenet kézbesítési száma 10.  Az alapértelmezett kézbesítési szám azt jelenti, hogy egy üzenetsor-üzenet 10 megkísérelt kézbesítése után Service Bus kézbesíteni fogja az üzenetet.  Megadhat egy újrapróbálkozási házirendet egy olyan függvényhez, amely Service Bus-triggerrel rendelkezik, de az újrapróbálkozások a Service Bus kézbesítési kísérletek felső részén fognak működni.  
+
+Ha például az alapértelmezett Service Bus kézbesítési szám 10 értéket használta, és a függvény újrapróbálkozási házirendjét definiálta 5.  Az üzenet először a desort, a Service Bus-kézbesítési fiókot pedig 1-re növeli.  Ha minden végrehajtás meghiúsult, öt kísérlet történt az üzenet kiváltására, akkor az üzenet elhagyva lesz megjelölve.  Service Bus azonnal újravárólistára helyezi az üzenetet, elindítja a függvényt, és megnöveli a kézbesítések darabszámát 2 értékre.  Végül, az 50-es végleges próbálkozások után (10 Service Bus-kézbesítés * öt functions-próbálkozás/kézbesítés) az üzenet elhagyható, és elindít egy kézbesítetlen levelet a Service Bus szolgáltatásban.
+
+> [!WARNING]
+> Nem ajánlott beállítani egy trigger kézbesítési számlálóját, például Service Bus Queues 1 értékre, ami azt jelenti, hogy az üzenetet azonnal leküldi a rendszer egy függvény újrapróbálkozási ciklusa után.  Ennek az az oka, hogy az eseményindítók rugalmasságot biztosítanak az újrapróbálkozásokkal, míg a függvény újrapróbálkozási házirendje a legjobb megoldás, és kevesebb, mint az újrapróbálkozások kívánt teljes száma.
+
+### <a name="triggers-with-additional-resiliency-or-retries"></a>További rugalmasságot vagy újrapróbálkozást kiváltó eseményindítók
+
+A következő eseményindítók támogatják az újrapróbálkozásokat az eseményindító forrásaként:
 
 * [Azure Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)
-* [Azure üzenetsor-tároló](../articles/azure-functions/functions-bindings-storage-queue.md)
+* [Azure Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (Üzenetsor/témakör)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Alapértelmezés szerint ezek az eseményindítók legfeljebb ötször kérik újra a kérelmeket. Az ötödik újrapróbálkozás után az Azure üzenetsor-tároló és a Azure Service Bus trigger üzenetet ír a méreg- [várólistába](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages).
+Alapértelmezés szerint a legtöbb eseményindító legfeljebb öt alkalommal próbálkozik újra. Az ötödik újrapróbálkozás után az Azure üzenetsor-tárolóban is megjelenik egy üzenet a [méreg-várólistába](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages).  Az alapértelmezett Service Bus üzenetsor és témakör-házirend 10 próbálkozás után üzenetet fog írni egy [kézbesítetlen levelek várólistára](../articles/service-bus-messaging/service-bus-dead-letter-queues.md) .
