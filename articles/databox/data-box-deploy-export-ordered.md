@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 1e0a11ef72698d749349cce8dd7eff73e5284a86
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b514cce8128dc0b17b5cebf8f2dc42e2c4dd8c8e
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122466"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336972"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Oktatóanyag: Azure Data Box exportálási sorrendjének létrehozása (előzetes verzió)
 
@@ -58,29 +58,29 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
 2. Válassza az **+ Erőforrás létrehozása** lehetőséget, és keressen rá az *Azure Data Box* kifejezésre. Válassza az **Azure Data Box** lehetőséget.
 
-   ![Erőforrás létrehozása](media/data-box-deploy-export-ordered/azure-data-box-export-00b.png)
+   ![Erőforrás létrehozása](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-resource.png)
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
-   ![Azure Data Box létrehozása](media/data-box-deploy-export-ordered/azure-data-box-export-00c.png)
+   ![Azure Data Box erőforrás létrehozása](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-data-box-resource.png)
 
 4. Ellenőrizze, hogy a Azure Data Box szolgáltatás elérhető-e a régiójában. Adja meg vagy válassza ki a következő információkat, majd válassza az **Alkalmaz** lehetőséget.
 
     |Beállítás  |Érték  |
     |---------|---------|
-    |Átvitel típusa     | Válassza **az Exportálás az Azure-ba**lehetőséget.        |
+    |Átvitel típusa     | Válassza **az Exportálás az Azure-ba** lehetőséget.        |
     |Előfizetés     | Válasszon egy EA-, CSP- vagy Azure Sponsorship-előfizetést a Data Box szolgáltatáshoz. <br> Az előfizetés az Ön számlázási fiókjához lesz társítva.       |
     |Erőforráscsoport     |    Válasszon ki egy meglévő erőforráscsoportot. <br> Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója.         |
     |Forrás Azure-régió    |    Válassza ki azt az Azure-régiót, ahol az adatai jelenleg vannak.         |
     |Rendeltetési ország     |     Válassza ki azt az országot, ahová az eszközt el szeretné szállítani.        |
 
-   ![Válassza ki a Data Box beállításait](media/data-box-deploy-export-ordered/azure-data-box-export-01.png)
+   ![Válassza ki a Data Box beállításait](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-box-settings.png)
 
 5. Válassza a **Data Box** lehetőséget. Egy megrendelés maximális felhasználható kapacitása 80 TB. Nagyobb mennyiségű adat esetén több rendelést is létrehozhat.
 
-   ![Data Box kapacitás kiválasztása](media/data-box-deploy-export-ordered/azure-data-box-export-02b.png)
+   ![Data Box kapacitás kiválasztása](media/data-box-deploy-export-ordered/azure-data-box-export-order-capacity.png)
 
-6. A **sorrend**mezőben határozza meg az **alapszintű** rendelés részleteit. Adja meg vagy válassza ki a következő információkat, majd válassza a **Tovább** lehetőséget.
+6. A **sorrend** mezőben határozza meg az **alapszintű** rendelés részleteit. Adja meg vagy válassza ki a következő információkat, majd válassza a **Tovább** lehetőséget.
 
     |Beállítás  |Érték  |
     |---------|---------|
@@ -88,21 +88,21 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
     |Erőforráscsoport | A korábban kiválasztott erőforráscsoport. |
     |Exportálási rendelés neve     |  Adjon meg egy rövid nevet a megrendelés nyomon követéséhez. <br> A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.      |
 
-    ![Exportálási sorrend alapjai](media/data-box-deploy-export-ordered/azure-data-box-export-03.png)
+    ![Exportálási sorrend alapjai](media/data-box-deploy-export-ordered/azure-data-box-export-order-storage-account-export-type.png)
 
     Kattintson a Tovább gombra: a folytatáshoz válassza ki az **adatkijelölést** .
 
-7. Az **adatkijelölés**területen válassza a **Storage-fiók hozzáadása és az Exportálás típusa**lehetőséget.
+7. Az **adatkijelölés** területen válassza a **Storage-fiók hozzáadása és az Exportálás típusa** lehetőséget.
 
-    ![Storage-fiók és exportálási típus hozzáadása](media/data-box-deploy-export-ordered/azure-data-box-export-03b.png)
+    ![Storage-fiók és exportálási típus hozzáadása](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics.png)
 
-8. Az **Exportálás kiválasztása beállításnál**adja meg az exportálási beállítás részleteit. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Hozzáadás**lehetőséget.
+8. Az **Exportálás kiválasztása beállításnál** adja meg az exportálási beállítás részleteit. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Hozzáadás** lehetőséget.
 
     |Beállítás  |Érték  |
     |---------|---------|
     |Tárfiók     | Az Azure Storage-fiók, ahonnan exportálni kívánja az adatait. |
-    |Exportálás típusa     | Meghatározza az **összes objektumból** exportálandó adatok típusát és az **XML-fájl használatát**.<ul><li> **Minden objektum** – azt adja meg, hogy a feladatsor az **átvitel beállításaitól**függően az összes értéket exportálja.</li><li> **XML-fájl használata** – olyan XML-fájlt ad meg, amely a Storage-fiókból exportálandó blobok és/vagy fájlok elérési útját és előtagokat tartalmazza. Az XML-fájlnak a kiválasztott Storage-fiók tárolójában kell lennie, és a fájlmegosztás lehetőség választása jelenleg nem támogatott. A fájlnak nem üres. XML formátumú fájlnak kell lennie.</li></ul>        |
-    |Átvitel beállításai     |  Meghatározza az adatátviteli beállításokat az **összes kijelölése**, **az összes blob**és az **összes fájl**közül. <ul><li> **Az összes kijelölése** – megadja, hogy a rendszer minden blobot és Azure-fájlt exportál. Ha olyan Storage-fiókot használ, amely csak a blobokat támogatja (Blob Storage fiók), a **minden fájl** lehetőség nem lesz kiválasztható.</li><li> **Minden blob** – azt adja meg, hogy csak a blokk-és a Blobok legyenek exportálva.</li><li> **Minden fájl** – azt adja meg, hogy minden fájl exportálva legyen, kivéve a blobokat. Az Ön által létrehozott Storage-fiók típusa (GPv1 és GPv2, Premium Storage vagy blob Storage) meghatározza az exportálható adattípusokat. További információ: [támogatott Storage-fiókok exportáláshoz](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
+    |Exportálás típusa     | Meghatározza az **összes objektumból** exportálandó adatok típusát és az **XML-fájl használatát**.<ul><li> **Minden objektum** – azt adja meg, hogy a feladatsor az **átvitel beállításaitól** függően az összes értéket exportálja.</li><li> **XML-fájl használata** – olyan XML-fájlt ad meg, amely a Storage-fiókból exportálandó blobok és/vagy fájlok elérési útját és előtagokat tartalmazza. Az XML-fájlnak a kiválasztott Storage-fiók tárolójában kell lennie, és a fájlmegosztás lehetőség választása jelenleg nem támogatott. A fájlnak nem üres. XML formátumú fájlnak kell lennie.</li></ul>        |
+    |Átvitel beállításai     |  Meghatározza az adatátviteli beállításokat az **összes kijelölése** , **az összes blob** és az **összes fájl** közül. <ul><li> **Az összes kijelölése** – megadja, hogy a rendszer minden blobot és Azure-fájlt exportál. Ha olyan Storage-fiókot használ, amely csak a blobokat támogatja (Blob Storage fiók), a **minden fájl** lehetőség nem lesz kiválasztható.</li><li> **Minden blob** – azt adja meg, hogy csak a blokk-és a Blobok legyenek exportálva.</li><li> **Minden fájl** – azt adja meg, hogy minden fájl exportálva legyen, kivéve a blobokat. Az Ön által létrehozott Storage-fiók típusa (GPv1 és GPv2, Premium Storage vagy blob Storage) meghatározza az exportálható adattípusokat. További információ: [támogatott Storage-fiókok exportáláshoz](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
     |Részletes napló belefoglalása     | Azt jelzi, hogy szeretne-e részletes naplófájlt használni, amely tartalmazza az összes sikeresen exportált fájl listáját.        |
 
     > [!NOTE]
@@ -111,82 +111,85 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
     Ha szeretné megtudni, hogyan adhat hozzá XML-fájlt egy tárolóhoz, olvassa el az [Exportálás az XML-fájllal](data-box-deploy-export-ordered.md#export-order-using-xml-file)című témakört.
 
-   ![Exportálási beállítás kiválasztása](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+   ![Exportálási beállítás kiválasztása](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
    Az XML-bemenet példájának megtekintéséhez lásd: [minta XML-bemenet](data-box-deploy-export-ordered.md#sample-xml-file)
 
-9. Az **Adatválasztás**területen tekintse át a beállításokat, és válassza a **tovább: biztonsági>**.
+9. Az **Adatválasztás** területen tekintse át a beállításokat, és válassza a **tovább: biztonsági>**.
 
-   ![Kapcsolattartási adatok](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+   ![Exportálási sorrend, az adatkijelölés](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-selection.png)
 
-1. Ha a **Biztonság**területen engedélyezni szeretné a szoftveres kettős titkosítást, válassza **a dupla titkosítás engedélyezése lehetőséget a rendeléshez**. 
+10. Ha a **Biztonság** területen engedélyezni szeretné a szoftveres kettős titkosítást, válassza **a dupla titkosítás engedélyezése lehetőséget a rendeléshez**. 
 
-   A szoftveres titkosítás a Data Box lévő adatok AES-256 bites titkosításán felül történik.
+    A szoftveres titkosítás a Data Box lévő adatok AES-256 bites titkosításán felül történik.
 
-   > [!NOTE]
-   > Ha engedélyezi ezt a beállítást, megteheti, hogy a rendelés feldolgozása és az Adatmásolás tovább tart. Ez a beállítás a megrendelés létrehozása után nem módosítható.
+   
+    > [!NOTE]
+    > Ha engedélyezi ezt a beállítást, megteheti, hogy a rendelés feldolgozása és az Adatmásolás tovább tart. Ez a beállítás a megrendelés létrehozása után nem módosítható.
 
-   ![Adatmező importálásának biztonsági képernyője, dupla titkosítás](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+    ![Adatmező importálásának biztonsági képernyője, dupla titkosítás](media/data-box-deploy-export-ordered/azure-data-box-export-order-security-double-encryption.png)
 
-   A folytatáshoz válassza a **tovább lehetőséget: kapcsolattartási adatok** .
+    A folytatáshoz válassza a **tovább lehetőséget: kapcsolattartási adatok** .
 
-10. A **kapcsolattartási**adatok területen válassza a **+ szállítási címek hozzáadása** lehetőséget a szállítási információk megadásához.
+11. A **kapcsolattartási** adatok területen válassza a **+ szállítási címek hozzáadása** lehetőséget a szállítási információk megadásához.
 
-    ![Szállítási címek hozzáadása](media/data-box-deploy-export-ordered/azure-data-box-export-06.png)
+    ![Szállítási címek hozzáadása](media/data-box-deploy-export-ordered/azure-data-box-export-order-add-shipping-address.png)
 
-11. A **szállítási cím hozzáadása**területen adja meg a vállalat vezetéknevét, nevét és postacímét, valamint egy érvényes telefonszámot. Válassza az **Érvényesítés** lehetőséget. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről.
+12. A **szállítási cím hozzáadása** területen adja meg a vállalat vezetéknevét, nevét és postacímét, valamint egy érvényes telefonszámot. Válassza az **Érvényesítés** lehetőséget. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről.
 
-    ![Szállítási címek ellenőrzése](media/data-box-deploy-export-ordered/azure-data-box-export-07.png)
+    ![Szállítási címek ellenőrzése](media/data-box-deploy-export-ordered/azure-data-box-export-order-validate-shipping-address.png)
 
     Ha olyan régiót rendel, amelyben az önfelügyelt szállítás elérhető, ezt a lehetőséget választhatja. Az önfelügyelt szállítással kapcsolatos további információkért lásd: [saját üzemeltetésű szállítás használata](data-box-portal-customer-managed-shipping.md).
 
-12. Válassza a **szállítási címek hozzáadása** lehetőséget a szállítási adatok sikeres ellenőrzése után.
+13. Válassza a **szállítási címek hozzáadása** lehetőséget a szállítási adatok sikeres ellenőrzése után.
 
-13. A **kapcsolattartási adatok**területen tekintse át a szállítási címet és az e-mail-címét. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre.
+14. A **kapcsolattartási adatok** területen tekintse át a szállítási címet és az e-mail-címét. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre.
 
     Javasoljuk a csoportos e-mail-cím használatát, hogy az értesítéseket a rendszergazda távollétében is kézhez kaphassa.
 
-    ![Rendelés részletei](media/data-box-deploy-export-ordered/azure-data-box-export-09.png)
+    ![Kapcsolattartási adatok](media/data-box-deploy-export-ordered/azure-data-box-export-order-contact-details.png)
 
-14. Kattintson a **Next (tovább) gombra: Review + Order>**. El kell fogadnia a feltételeket és a kikötéseket a rendelés létrehozásával folytatva.
+15. Kattintson a **Next (tovább) gombra: Review + Order>**. El kell fogadnia a feltételeket és a kikötéseket a rendelés létrehozásával folytatva.
 
-15. Válassza a **Megrendelés** lehetőséget. A megrendelés létrehozása néhány percet vesz igénybe.
+16. Válassza a **Megrendelés** lehetőséget. A megrendelés létrehozása néhány percet vesz igénybe.
 
-    ![Véglegesítő sorrend](media/data-box-deploy-export-ordered/azure-data-box-export-10.png)
+    ![Véglegesítő sorrend](media/data-box-deploy-export-ordered/azure-data-box-select-export-order-commit-order.png)
 
 ## <a name="export-order-using-xml-file"></a>Exportálási sorrend XML-fájl használatával
 
-Ha **az XML-fájl használata**lehetőséget választja, megadhatja az exportálni kívánt tárolókat és blobokat (oldalt és blokkokat). Az XML formázásához a [minta XML-fájl táblázatának](#sample-xml-file) specifikációit kell követnie. Az alábbi lépések bemutatják, hogyan lehet XML-fájlt használni az adatai exportálásához:
+Ha **az XML-fájl használata** lehetőséget választja, megadhatja az exportálni kívánt tárolókat és blobokat (oldalt és blokkokat). Az XML formázásához a [minta XML-fájl táblázatának](#sample-xml-file) specifikációit kell követnie. Az alábbi lépések bemutatják, hogyan lehet XML-fájlt használni az adatai exportálásához:
 
-1. Az **Exportálás típusa**beállításnál válassza az **XML-fájl használata**lehetőséget. Ezt az XML-fájlt adja meg az exportálni kívánt blobok és Azure-fájlok megadásához. Az XML-fájl hozzáadásához jelölje be az **XML-fájl kiválasztásához kattintson ide**.
-     ![Képernyőfelvétel: válassza az Exportálás lehetőséget a kattintson ide az X M L fájl kiválasztásához.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
+1. Az **Exportálás típusa** beállításnál válassza az **XML-fájl használata** lehetőséget. Ezt az XML-fájlt adja meg az exportálni kívánt blobok és Azure-fájlok megadásához. Az XML-fájl hozzáadásához jelölje be az **XML-fájl kiválasztásához kattintson ide**.
+
+     ![Exportálási lehetőség kiválasztása, XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-select-xml-option.png)
 
 2. A tároló létrehozásához kattintson a **+ tároló** elemre.
-    ![Képernyőfelvétel a tárolók szakaszról.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
+
+    ![Exportálási beállítás, tárolók](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-containers-option.png)
 
 3. Az **új tároló** lapon, amely a Azure Portal jobb oldalán jelenik meg, adja meg a tároló nevét. A névnek kisebbnek kell lennie, és tartalmazhat számokat és kötőjeleket (-). Ezután válassza ki a **nyilvános hozzáférési szintet** a legördülő listából. Javasoljuk, hogy a **magánjellegű (névtelen hozzáférés)** beállítással megakadályozza, hogy mások hozzáférjenek az adatokhoz. A tárolók hozzáférési szintjeivel kapcsolatos további információkért lásd: [tárolók hozzáférési engedélyei](../storage/blobs/anonymous-read-access-configure.md#set-the-public-access-level-for-a-container).
 
-   ![Képernyőkép az új tároló lapról, amely a privát (nincs névtelen hozzáférés) beállítást jelöli.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
+   ![Válassza az Exportálás lehetőséget, majd az új tároló beállításai elemet.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-container-settings.png)
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
-   ![Képernyőkép az új tároló lapról a Create (létrehozás) lehetőséggel.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
+   ![Válassza az Exportálás lehetőséget, majd hozzon létre új tárolót.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-create-container.png)
 
    Ha a tároló létrehozása sikeresen megtörtént, a következő üzenet jelenik meg:
 
-   ![Képernyőkép a következő üzenetről: "a Storage tároló sikeresen létrehozva".](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
+   ![A tároló sikeresen létrehozva](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-container-success.png)
 
 5. Válassza ki a létrehozott tárolót, és kattintson rá duplán.
 
-   ![Képernyőkép a tárolók szakaszról a saját Private test Container-tárolóval.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
+   ![Tároló részleteinek megtekintése](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-view-container-details.png)
 
 6. Ha duplán kattint a tárolóra, megjelenik a tároló tulajdonságai nézet. Most csatolnia kell (vagy meg kell keresnie) az XML-fájlt, amely tartalmazza az exportálni kívánt blobok és/vagy Azure-fájlok listáját. Válassza a **Feltöltés** lehetőséget.
 
-   ![Képernyőkép a blob feltöltése párbeszédpanelről, a feltöltési lehetőséggel.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
+   ![BLOB feltöltése a tárolóba](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-blob-to-container.png)
 
 7. Sikeresen felvette az XML-fájlt a tárolóba. Csak az ebben az XML-ben megadott blobok és Azure-fájlok lesznek exportálva.
 
-   ![A sorrend varázsló képernyőképe a következő: biztonsági lehetőség neve.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
+   ![A tárolóhoz hozzáadott XML-fájl](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-added-to-container.png)
 
 ## <a name="track-the-order"></a>A megrendelés nyomon követése
 
@@ -194,11 +197,11 @@ Miután elküldte a megrendelését, annak állapotát az Azure Portalon követh
 
 Az eszköz előkészítésének befejezésekor a rendszer az adatok másolását a kiválasztott Storage-fiókoktól kezdi. A portálon látható, hogy az **Adatmásolás állapota folyamatban** állapotú.
 
-![Data Box a feldolgozott exportálási sorrend](media/data-box-deploy-export-ordered/azure-data-box-export-15b.png)
+![Data Box exportálási sorrend, az Adatmásolás folyamatban](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-in-progress.png)
 
 Data Box adatok másolása a forrás Storage-fiók (ok) ból. Az Adatmásolás befejezése után Data Box zárolva van, és a portálon megjelenik a sorrend a **Másolás befejeződött** állapotban.
 
-![Data Box az adatmásolások exportálása befejeződött](media/data-box-deploy-export-ordered/azure-data-box-export-15c.png)
+![Data Box exportálási sorrend, az Adatmásolás befejeződött](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-complete.png)
 
 Ha az eszköz nem érhető el, értesítést fog kapni. Ha van elérhető eszköz, a Microsoft kiválaszt egyet a szállításhoz, és előkészíti a csomagot. Az eszköz előkészítése során a következő műveletek végezhetők el:
 
@@ -208,11 +211,11 @@ Ha az eszköz nem érhető el, értesítést fog kapni. Ha van elérhető eszkö
 
 A Microsoft ezután előkészíti és elküldi az eszközt egy regionális szolgáltatón keresztül. Az eszköz feladását követően Ön megkapja a fuvarlevélszámot. A portál a **Feladva** állapotot mutatja.
 
-![Data Box exportálási sorrend elküldve](media/data-box-deploy-export-ordered/azure-data-box-export-16.png)
+![Data Box exportálási sorrend elküldve](media/data-box-deploy-export-ordered/azure-data-box-export-order-dispatched.png)
 
 Ha az önfelügyelt szállítás be van jelölve, e-mailben értesítést fog kapni a következő lépésekről, amikor az eszköz készen áll az adatközpontból való kiválasztásra. Az önfelügyelt szállítással kapcsolatos további információkért lásd: [saját üzemeltetésű szállítás](data-box-portal-customer-managed-shipping.md).
 
-![Az önfelügyelt szállítás készen áll a felvételre](media/data-box-deploy-export-ordered/azure-data-box-export-17.png)
+![Az önfelügyelt szállítás készen áll a felvételre](media/data-box-deploy-export-ordered/azure-data-box-export-order-ready-for-pickup.png)
 
 ## <a name="cancel-the-order"></a>A rendelés lemondása
 
@@ -228,7 +231,7 @@ Az alábbi XML-ben egy példa látható a blob-nevekre, a blob-előtagokra, vala
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-   <!-- BlobList/prefix/Container list for Blob storage for export  -->
+   <!-- BlobList/prefix/Container list for Blob storage for export  -->
    <BlobList>
       <BlobPath>/8tbpageblob/8tbpageblob/8tbpageblob</BlobPath>
       <BlobPathPrefix>/blockblob4dot75tbdata/</BlobPathPrefix>
@@ -237,7 +240,7 @@ Az alábbi XML-ben egy példa látható a blob-nevekre, a blob-előtagokra, vala
       <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
       <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
    </BlobList>
-   <!-- FileList/prefix/Share list for Azure File storage for export  -->
+   <!-- FileList/prefix/Share list for Azure File storage for export  -->
    <AzureFileList>
       <FilePathPrefix>/64mbfiles/</FilePathPrefix>
       <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>
@@ -345,7 +348,7 @@ The following xml shows an example of the copy log when the export has errors:
 </CopyLog>
 ``` -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 

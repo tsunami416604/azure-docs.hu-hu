@@ -1,105 +1,140 @@
 ---
-title: A DHCP létrehozása és kezelése
-description: Ez a cikk bemutatja, hogyan kezelheti a DHCP-t az Azure VMware megoldásban.
-ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: cb74ed4474cc14081e59142f2f60915fccd47559
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+title: DHCP kezelése Azure VMware-megoldáshoz
+description: Ismerje meg, hogyan hozhat létre és kezelhet DHCP-t az Azure VMware-megoldás privát felhője számára.
+ms.topic: how-to
+ms.date: 11/09/2020
+ms.openlocfilehash: 9143a8544fe1b98262c3e990ccdf56f5d5f65957
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461056"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335953"
 ---
-# <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>A DHCP létrehozása és kezelése az Azure VMware-megoldásban
+# <a name="manage-dhcp-for-azure-vmware-solution"></a>DHCP kezelése Azure VMware-megoldáshoz
 
-A NSX-T lehetővé teszi a DHCP konfigurálását a saját felhőhöz. Ha a NSX-T használatával futtatja a DHCP-kiszolgálót, tekintse meg a [DHCP-kiszolgáló létrehozása](#create-dhcp-server)című témakört. Ellenkező esetben, ha harmadik féltől származó külső DHCP-kiszolgálóval rendelkezik a hálózaton, tekintse meg a [DHCP-továbbító szolgáltatás létrehozása](#create-dhcp-relay-service)című témakört.
+A privát felhőalapú környezetekben futó alkalmazások és munkaterhelések DHCP-szolgáltatásokat igényelnek az IP-címek hozzárendeléseihez.  Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet DHCP-t az Azure VMware-megoldásban kétféleképpen:
 
-## <a name="create-dhcp-server"></a>DHCP-kiszolgáló létrehozása
+- Ha a NSX-T használatával futtatja a DHCP-kiszolgálót, [létre kell hoznia egy DHCP-kiszolgálót és egy](#create-a-dhcp-server) [továbbítót az adott kiszolgálóra](#create-dhcp-relay-service). A DHCP-kiszolgáló létrehozásakor hozzá kell adnia egy hálózati szegmenst is, és meg kell adnia a DHCP IP-címtartományt.   
 
-A következő lépésekkel konfigurálhatja a DHCP-kiszolgálót a NSX-T-n.
+- Ha harmadik féltől származó külső DHCP-kiszolgálót használ a hálózaton, [létre kell hoznia a DHCP-továbbító szolgáltatást](#create-dhcp-relay-service). Ha egy DHCP-kiszolgálóhoz hoz létre továbbítót, függetlenül attól, hogy a NSX-T vagy egy külső gyártót használ a DHCP-kiszolgáló üzemeltetéséhez, meg kell adnia a DHCP IP-címtartományt.
 
-1. A NSX Managerben navigáljon a **hálózatkezelés** lapra, és válassza a **DHCP**lehetőséget. 
-1. Válassza a **kiszolgáló hozzáadása** lehetőséget, majd adja meg a kiszolgáló nevét és IP-címét. 
-1. Válassza a **Mentés** lehetőséget.
+>[!IMPORTANT]
+>A DHCP nem működik a VMware HCX L2 stretch Network virtuális gépei (VM-EK) esetében, ha a DHCP-kiszolgáló a helyszíni adatközpontban található.  Alapértelmezés szerint a NSX letiltja az összes DHCP-kérést az L2 stretch bejárásával. A megoldáshoz tekintse [meg a DHCP-kérelmek küldése](#send-dhcp-requests-to-the-on-premises-dhcp-server) a helyszíni DHCP-kiszolgáló eljáráshoz című témakört.
 
-:::image type="content" source="./media/manage-dhcp/dhcp-server-settings.png" alt-text="DHCP-kiszolgáló hozzáadása" border="true":::
 
-### <a name="connect-dhcp-server-to-the-tier-1-gateway"></a>A DHCP-kiszolgáló összekötése az 1. rétegbeli átjáróval.
+## <a name="create-a-dhcp-server"></a>DHCP-kiszolgáló létrehozása
 
-1. Válassza ki az **1. szintű átjárókat**, az átjárót a listából, majd válassza a **Szerkesztés**lehetőséget.
+Ha a NSX-T használatával szeretné üzemeltetni a DHCP-kiszolgálót, hozzon létre egy DHCP-kiszolgálót. Ezután vegyen fel egy hálózati szegmenst, és adja meg a DHCP IP-címtartományt.
 
-   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="DHCP-kiszolgáló hozzáadása" border="true":::
+1. A NSX-T Managerben válassza a **hálózati**  >  **DHCP** lehetőséget, majd válassza a **kiszolgáló hozzáadása** elemet.
+
+1. Válassza a **DHCP** lehetőséget a **kiszolgáló típusa mezőben** , adja meg a kiszolgáló nevét és IP-címét, majd kattintson a **Mentés** gombra.
+
+   :::image type="content" source="./media/manage-dhcp/dhcp-server-settings.png" alt-text="DHCP-kiszolgáló hozzáadása" border="true":::
+
+1. Válassza az **1. rétegbeli átjárók** lehetőséget, válassza ki a függőleges három pontot az 1. rétegbeli átjárón, majd válassza a **Szerkesztés** lehetőséget.
+
+   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="Válassza ki a használni kívánt átjárót" border="true":::
 
 1. Alhálózat hozzáadásához válassza a **nincs IP-foglalási csoport** lehetőséget.
 
-   :::image type="content" source="./media/manage-dhcp/add-subnet.png" alt-text="DHCP-kiszolgáló hozzáadása" border="true":::
+   :::image type="content" source="./media/manage-dhcp/add-subnet.png" alt-text="alhálózat hozzáadása" border="true":::
 
-1. A **típushoz**válassza a **DHCP helyi kiszolgáló** lehetőséget. 
-1. Válassza a **DHCP-kiszolgáló** **alapértelmezett DHCP** lehetőséget, majd kattintson a **Mentés**gombra.
+1. A **Típus mezőben** válassza a **DHCP helyi kiszolgáló** lehetőséget. 
+   
+1. A **DHCP-kiszolgáló** esetében válassza az **alapértelmezett DHCP** lehetőséget, majd kattintson a **Mentés** gombra.
 
-
-1. Az **1. rétegbeli átjáró** ablakban válassza a **Mentés**lehetőséget. 
-1. A befejezéshez kattintson a **Szerkesztés Bezárás** gombra.
+1. Válassza a **Mentés** újra, majd a **Szerkesztés Bezárás** lehetőséget.
 
 ### <a name="add-a-network-segment"></a>Hálózati szegmens hozzáadása
 
-A DHCP-kiszolgáló létrehozása után hozzá kell adnia egy hálózati szegmenst.
+[!INCLUDE [add-network-segment-steps](includes/add-network-segment-steps.md)]
 
-1. A NSX-T területen válassza a **hálózatkezelés** fület, majd válassza a **szegmensek** lehetőséget a **kapcsolat**alatt. 
-1. Válassza a **szegmens hozzáadása** lehetőséget, és nevezze el a szegmenst és a kapcsolódást az 1. rétegbeli átjáróhoz. 
-1. Válassza az **alhálózatok beállítása** lehetőséget az új alhálózat konfigurálásához. 
-
-   :::image type="content" source="./media/manage-dhcp/add-segment.png" alt-text="DHCP-kiszolgáló hozzáadása" border="true":::
-
-1. Az **alhálózatok beállítása** ablakban válassza az **alhálózat hozzáadása**elemet. 
-1. Adja meg az átjáró IP-címét és a DHCP-tartományt, majd válassza a **Hozzáadás** , majd az **alkalmaz** lehetőséget.
-
-1. Válassza a **Mentés** lehetőséget az új hálózati szegmens hozzáadásához.
 
 ## <a name="create-dhcp-relay-service"></a>DHCP-továbbító szolgáltatás létrehozása
 
-1. Válassza a **hálózatkezelés** fület, majd az **IP-kezelés**területen válassza a **DHCP**lehetőséget. 
-1. Válassza a **kiszolgáló hozzáadása**lehetőséget. 
-1. Válassza a DHCP-továbbító lehetőséget a **kiszolgáló típusa** mezőben, majd adja meg a továbbító kiszolgáló kiszolgálójának nevét és IP-címét. 
-1. Válassza a **Mentés** lehetőséget.
+Ha harmadik féltől származó külső DHCP-kiszolgálót szeretne használni, létre kell hoznia egy DHCP-továbbító szolgáltatást. A DHCP IP-címtartományt is megadja a NSX-T kezelőjében. 
 
-   :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP-kiszolgáló hozzáadása" border="true":::
+1. A NSX-T Managerben válassza a **hálózati**  >  **DHCP** lehetőséget, majd válassza a **kiszolgáló hozzáadása** elemet.
 
-1. Válassza ki az **1. rétegbeli átjárókat** a **kapcsolat**alatt. 
-1. Válassza ki a függőleges három pontot az 1. rétegbeli átjárón, és válassza a **Szerkesztés**lehetőséget.
+1. Válassza a **DHCP-továbbító** lehetőséget a **kiszolgáló típusa** mezőben, adja meg a kiszolgáló nevét és IP-címét, majd kattintson a **Mentés** gombra.
 
-   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway-relay.png" alt-text="DHCP-kiszolgáló hozzáadása" border="true":::
+   :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP-továbbító szolgáltatás létrehozása" border="true":::
+
+1. Válassza az **1. rétegbeli átjárók** lehetőséget, válassza ki a függőleges három pontot az 1. rétegbeli átjárón, majd válassza a **Szerkesztés** lehetőséget.
+
+   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway-relay.png" alt-text="1. szintű átjáró szerkesztése" border="true":::
 
 1. Az IP-címek kiosztásának definiálásához válassza a **nincs IP-foglalási készlet** lehetőséget.
 
-   :::image type="content" source="./media/manage-dhcp/edit-ip-address-allocation.png" alt-text="DHCP-kiszolgáló hozzáadása" border="true":::
+   :::image type="content" source="./media/manage-dhcp/edit-ip-address-allocation.png" alt-text="IP-címek kiosztásának szerkesztése" border="true":::
 
-1. Válassza a **DHCP-továbbító kiszolgáló** lehetőséget a **típushoz**.
-1. Válassza ki a DHCP Relay-kiszolgálót a **DHCP-továbbítóhoz**. 
-1. Válassza a **Mentés** lehetőséget.
+1. A **Típus mezőben** válassza a **DHCP-kiszolgáló** lehetőséget. 
+   
+1. A **DHCP-kiszolgáló** esetében válassza a **DHCP-továbbító** lehetőséget, majd kattintson a **Mentés** gombra.
+
+1. Válassza a **Mentés** újra, majd a **Szerkesztés Bezárás** lehetőséget.
 
 
-## <a name="specify-a-dhcp-range-ip-on-a-segment"></a>DHCP-tartomány IP-címének meghatározása egy szegmensen
+## <a name="specify-the-dhcp-ip-address-range"></a>A DHCP IP-címtartomány meghatározása
 
-> [!NOTE]
-> Ez a konfiguráció szükséges a DHCP-továbbítási funkciók megvalósításához a DHCP-ügyfél szegmensén. 
+1. A NSX-T Managerben válassza a **hálózati**  >  **szegmensek** lehetőséget. 
+   
+1. Válassza ki a szegmens neve függőleges három pontját, és válassza a **Szerkesztés** lehetőséget.
+   
+1. Válassza az **alhálózatok beállítása** lehetőséget az alhálózat DHCP IP-címének megadásához. 
+   
+   :::image type="content" source="./media/manage-dhcp/network-segments.png" alt-text="hálózati szegmensek" border="true":::
+      
+1. Szükség esetén módosítsa az átjáró IP-címét, majd adja meg a DHCP-tartomány IP-címét. 
+      
+   :::image type="content" source="./media/manage-dhcp/edit-subnet.png" alt-text="alhálózatok szerkesztése" border="true":::
+      
+1. Válassza az **alkalmaz** , majd a **Mentés** lehetőséget. A szegmenshez hozzá van rendelve egy DHCP-kiszolgáló készlet.
+      
+   :::image type="content" source="./media/manage-dhcp/assigned-to-segment.png" alt-text="A szegmenshez hozzárendelt DHCP-kiszolgáló készlete" border="true":::
 
-1. A **kapcsolat**területen válassza a **szegmensek**lehetőséget. 
-1. Válassza ki a függőleges ellipsziseket, és válassza a **Szerkesztés**lehetőséget. 
 
-   >[!TIP]
-   >Ha új szegmenst szeretne felvenni, válassza a **szegmens hozzáadása**elemet.
+## <a name="send-dhcp-requests-to-the-on-premises-dhcp-server"></a>DHCP-kérések küldése a helyszíni DHCP-kiszolgálónak
 
-1. Adja meg a szegmens részleteit. 
-1. Válassza ki az **alhálózatok beállítása** az alhálózat hozzáadásához vagy módosításához területen található értéket.
+Ha az Azure VMware Megoldásbeli virtuális gépekről DHCP-kéréseket szeretne küldeni az L2 kiterjesztett szegmensen a helyszíni DHCP-kiszolgálóra, létre kell hoznia egy biztonsági szegmens profilt. 
 
-   :::image type="content" source="./media/manage-dhcp/network-segments.png" alt-text="DHCP-kiszolgáló hozzáadása" border="true":::
+1. Jelentkezzen be a helyszíni vCenter, és a Home ( **Kezdőlap** ) területen válassza a **HCX** lehetőséget.
 
-1. Válassza ki a függőleges ellipsziseket, és válassza a **Szerkesztés**lehetőséget. Ha új alhálózatot kell létrehoznia, válassza az **alhálózat hozzáadása** lehetőséget az átjáró létrehozásához és a DHCP-tartomány konfigurálásához. 
-1. Adja meg az IP-készlet tartományát, és válassza az **alkalmaz**, majd a **Mentés** lehetőséget.
+1. Válassza a **hálózati bővítmény** lehetőséget a **szolgáltatások** területen.
 
-   :::image type="content" source="./media/manage-dhcp/edit-subnet.png" alt-text="DHCP-kiszolgáló hozzáadása" border="true":::
+1. Válassza ki azt a hálózati bővítményt, amelyet támogatni kíván az Azure VMware-megoldásból a helyszíni rendszerre irányuló DHCP-kérések támogatásához. 
 
-   A szegmenshez hozzá van rendelve egy DHCP-kiszolgáló készlet.
+1. Jegyezze fel a célként megadott hálózatnév nevét.  
 
-   :::image type="content" source="./media/manage-dhcp/assigned-to-segment.png" alt-text="DHCP-kiszolgáló hozzáadása" border="true":::
+   :::image type="content" source="media/manage-dhcp/hcx-find-destination-network.png" alt-text="Képernyőkép a VMware vSphere-ügyfél hálózati bővítményeiről" lightbox="media/manage-dhcp/hcx-find-destination-network.png":::
+
+1. Az Azure VMware megoldás NSX-T kezelőjében válassza a **hálózati**  >  **szegmensek**  >  **szegmens profilok** lehetőséget. 
+
+1. Válassza a **szegmens profil hozzáadása** , majd a **szegmens biztonság** lehetőséget.
+
+   :::image type="content" source="media/manage-dhcp/add-segment-profile.png" alt-text="A szegmens profil hozzáadása a NSX-T-ben – képernyőkép" lightbox="media/manage-dhcp/add-segment-profile.png":::
+
+1. Adjon meg egy nevet és egy címkét, majd állítsa be a **BPDU szűrő** kapcsolót a be értékre, és az összes DHCP-váltás kikapcsolva értékre.
+
+   :::image type="content" source="media/manage-dhcp/add-segment-profile-bpdu-filter-dhcp-options.png" alt-text="A BPDU szűrő bekapcsolását és a DHCP-váltást ábrázoló képernyőkép" lightbox="media/manage-dhcp/add-segment-profile-bpdu-filter-dhcp-options.png":::
+
+1. Távolítsa el az összes MAC-címet, ha van ilyen, a **BPDU szűrő engedélyezési listájában**.  Kattintson a **Mentés** gombra.
+
+   :::image type="content" source="media/manage-dhcp/add-segment-profile-bpdu-filter-allow-list.png" alt-text="A BPDU szűrő engedélyezési listán szereplő MAC-címeket bemutató képernyőkép":::
+
+1. A **hálózati**  >  **szegmensek**  >  **szegmensek** területen, a keresés területen adja meg a definíciós hálózat nevét.
+
+   :::image type="content" source="media/manage-dhcp/networking-segments-search.png" alt-text="Képernyőfelvétel a hálózatkezelés > szegmensek szűrő mezőről":::
+
+1. Válassza ki a szegmens neve függőleges három pontját, és válassza a **Szerkesztés** lehetőséget.
+
+   :::image type="content" source="media/manage-dhcp/edit-network-segment.png" alt-text="A szegmens szerkesztési gombjának képernyőképe" lightbox="media/manage-dhcp/edit-network-segment.png":::
+
+1. Módosítsa a **szegmensek biztonságát** a korábban létrehozott szegmens-profilra.
+
+   :::image type="content" source="media/manage-dhcp/edit-segment-security.png" alt-text="A szegmens biztonsága mező képernyőképe" lightbox="media/manage-dhcp/edit-segment-security.png":::
+
+## <a name="next-steps"></a>További lépések
+
+További információ a [gazdagép-karbantartásról és az életciklus-kezelésről](concepts-private-clouds-clusters.md#host-maintenance-and-lifecycle-management).

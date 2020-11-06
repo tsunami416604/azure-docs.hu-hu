@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 7/21/2020
 ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bbd31bf47c7ce7ae75a6934da0ea769698ef187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812abe141f8130a198178668dc4f212f373d9bcd
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565107"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334941"
 ---
-# <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Ügyfél-adattárolás az ausztráliai és új-zélandi ügyfelek számára Azure Active Directory
+# <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Ügyfél-adattárolás az ausztráliai és új-zélandi ügyfelek számára Azure Active Directory 
 
 A Azure Active Directory (Azure AD) a Microsoft Online szolgáltatásra való feliratkozáskor megadott ország alapján tárolja az ügyféladatokat a földrajzi helyen. A Microsoft Online Services Microsoft 365 és az Azure-t is tartalmazza. 
 
 További információ az Azure AD és más Microsoft-szolgáltatások adatairól: hol találhatók az [adatok?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) című rész a Microsoft adatvédelmi központban.
 
-2020. február 26-án a Microsoft megkezdte az Azure AD vásárlói adatainak tárolását az új bérlők számára az ausztráliai vagy új-zélandi számlázási címen az ausztrál adatközpontokon belül. 2020. május 1. és 2020. között a Microsoft olyan meglévő bérlőket telepít át, akik az ausztráliai vagy új-zélandi számlázási címekkel rendelkeznek, és nem igényelnek felhasználói beavatkozást. Az áttelepítési folyamat nem jár leállással az ügyfelek számára, és az áttelepítés során nem befolyásolja a bérlő funkcióit.
+2020. február 26-án a Microsoft megkezdte az Azure AD vásárlói adatainak tárolását az új bérlők számára az ausztráliai vagy új-zélandi számlázási címen az ausztrál adatközpontokon belül. A Microsoft a 2020-es és a 2021-es március 31. között megjelenő meglévő bérlőket az ausztráliai vagy új-zélandi számlázási címen keresztül telepíti át az ausztrál adatközpontok számára, anélkül, hogy az ügyfél beavatkozására lenne szükség. Az áttelepítési folyamat nem jár leállással az ügyfelek számára, és az áttelepítés során nem befolyásolja a bérlő funkcióit.
 
 Emellett bizonyos Azure AD-funkciók még nem támogatják az ügyféladatok tárolását Ausztráliában. Tekintse meg az [Azure ad-beli adatleképezést](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9)az egyes szolgáltatásokkal kapcsolatos információkért. A Microsoft Azure Multi-Factor Authentication például tárolja az ügyféladatokat az Egyesült Államokban, és globálisan dolgozza fel azokat. Lásd: az [Azure multi-Factor Authentication adattárolási és ügyféladatok](../authentication/concept-mfa-data-residency.md).
 

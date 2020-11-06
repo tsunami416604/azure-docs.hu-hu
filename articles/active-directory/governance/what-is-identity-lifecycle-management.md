@@ -11,14 +11,14 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6aa94c58dfb051eadc0059aa556383260a00b10
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0d54e1127207f0593f8d345b266d7db6e92b5c0d
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135333"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335400"
 ---
-# <a name="what-is-identity-lifecycle-management"></a>Mi az Identity Lifecycle Management?
+# <a name="what-is-identity-lifecycle-management"></a>Mi az az identitáséletciklus-felügyelet?
 
 Az identitások szabályozása révén a szervezetek a termelékenység egyensúlyát érhetik el – milyen gyorsan férhet hozzá egy személy a szükséges erőforrásokhoz, például ha a szervezethez csatlakoznak? És biztonság – Hogyan változnak a hozzáférésük az idő múlásával, például az adott személy foglalkoztatási állapotának változásai miatt?
 
@@ -67,10 +67,10 @@ Az Azure AD jelenleg a következő funkciókat biztosítja:
 * A felhasználók a tulajdonságok alapján, [dinamikus csoportok](../external-identities/use-dynamic-groups.md#what-are-dynamic-groups) használatával automatikusan hozzárendelhetők csoportokba, és igény szerint csoportokhoz, csapatokhoz, Azure ad-szerepkörökhöz, Azure-erőforrás-szerepkörökhöz és SharePoint Online-webhelyekhez is hozzárendelhetők, a [jogosultságok kezelése](entitlement-management-scenarios.md) és a [Privileged Identity Management](../privileged-identity-management/pim-configure.md)
 * A felhasználók frissítései automatikusan elküldhetők több alkalmazásba az alkalmazások [kiépítés](what-is-app-provisioning.md) használatával
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
-- [A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében](/azure/active-directory/governance/entitlement-management-external-users.md)
+- [A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében](/azure/active-directory/governance/entitlement-management-external-users)
 - [Mi az a HR-alapú kiépítés?](what-is-hr-driven-provisioning.md)
-- [Mi az App kiépítés?](what-is-app-provisioning.md)
-- [Mi az Inter-Directory kiépítés?](what-is-inter-directory-provisioning.md)
+- [Mi az az alkalmazás-üzembehelyezés?](what-is-app-provisioning.md)
+- [Mi az a címtárak közötti üzembe helyezés?](what-is-inter-directory-provisioning.md)

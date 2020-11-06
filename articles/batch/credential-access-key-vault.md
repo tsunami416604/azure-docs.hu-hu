@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan férhet hozzá programozott módon a hitelesít
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71e647c05a84c70fe61a66458801bf7390dcb653
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 25cb05374fc0667306e2b1004b3cd237413b4409
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913211"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337491"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>A Key Vault biztonságos elérése a Batch használatával
 
@@ -67,7 +67,7 @@ Az alkalmazás URL-címei nem fontosak, mivel csak Key Vault-hozzáféréshez ha
 
 ## <a name="grant-rights-to-key-vault"></a>Jogosultságok megadása Key Vault
 
-Az előző lépésben létrehozott egyszerű szolgáltatásnév jogosult a titkok beolvasására Key Vaultból. Az engedélyek a [Azure Portalon](/key-vault/general/assign-access-policy-portal.md) vagy az alábbi PowerShell-parancson keresztül adhatók meg.
+Az előző lépésben létrehozott egyszerű szolgáltatásnév jogosult a titkok beolvasására Key Vaultból. Az engedélyek a [Azure Portalon](/azure/key-vault/general/assign-access-policy-portal) vagy az alábbi PowerShell-parancson keresztül adhatók meg.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -108,7 +108,7 @@ $adminPassword=Get-AzureKeyVaultSecret -VaultName BatchVault -Name batchAdminPas
 
 Ezek a parancsfájlban használandó hitelesítő adatok.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Key Vaultról](../key-vault/general/overview.md).
 - Tekintse át a [Batch Azure biztonsági alaptervét](security-baseline.md).

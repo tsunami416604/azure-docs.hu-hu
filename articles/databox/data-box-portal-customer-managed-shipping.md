@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: b09176ad8cb93d7710975b67de619b4f58eaa2f0
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 9643e62f085888808b95698d068c5e383fb8d539
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951910"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337967"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>A Azure Portal Azure Data Box önfelügyelt szállítás használata
 
@@ -35,29 +35,31 @@ Az önfelügyelt szállítás a [Azure Data Box megrendelése](data-box-deploy-o
 
 Data Box rendelés elhelyezésekor kiválaszthatja az önállóan felügyelt szállítási lehetőséget.
 
-1. A Azure Data Boxi sorrendben a **kapcsolattartási adatok**területen válassza a **+ szállítási címek hozzáadása**elemet.
-   ![Önállóan felügyelt szállítás](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+1. A Azure Data Boxi sorrendben a **kapcsolattartási adatok** területen válassza a **+ szállítási címek hozzáadása** elemet.
+ 
+   ![Saját üzemeltetésű szállítás, szállítási címek hozzáadása](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. A szállítási típus kiválasztásakor válassza az **önfelügyelt szállítási** lehetőséget. Ez a beállítás csak akkor érhető el, ha az előfeltételek szakaszban leírtak szerint támogatott régióban van.
 
 3. Miután megadta a szállítási címet, ellenőriznie kell, és el kell végeznie a rendelést.
-   ![Önállóan felügyelt szállítás 2](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+
+   ![Önfelügyelt szállítás, ellenőrzés és hozzáadási címek](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Ha az eszköz elkészült, és e-mailben értesítést kap, beütemezhet egy felvételt.
 
-   A Azure Data Boxi sorrendben válassza az **Áttekintés** , majd a **felvételi ütemterv**lehetőséget.
+   A Azure Data Boxi sorrendben válassza az **Áttekintés** , majd a **felvételi ütemterv** lehetőséget.
 
-   ![Data Box-eszköz megrendelése a felvételi szolgáltatáshoz](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-01.png)
+   ![Data Box sorrend, felvételi lehetőség beosztása](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-01.png)
 
-5. Kövesse az Azure-ba való **felvétel menetrendje**című témakör utasításait.
+5. Kövesse az Azure-ba való **felvétel menetrendje** című témakör utasításait.
 
    Az engedélyezési kód beszerzése előtt e-mailben kell [adbops@microsoft.com](mailto:adbops@microsoft.com) megadnia az eszköz felvételét a régió adatközpontjában.
 
-   ![Csomagfelvétel ütemezése](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-email-01.png)
+   ![Az Azure-utasítások felvételének ütemterve](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-email-01.png)
 
 6. Miután ütemezte az eszköz felvételét, megtekintheti az eszköz engedélyezési kódját az Azure-beli **Ütemezés ütemezése** lapon.
 
-   ![Az engedélyezési kód megtekintése](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
+   ![Az eszköz engedélyezési kódjának megtekintése](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
    Jegyezze fel ezt az **engedélyezési kódot**. A biztonsági követelményeknek megfelelően a picking ütemezésének időpontjában be kell mutatni annak a személynek a nevét, aki megérkezik a felvételre.
 
@@ -67,7 +69,7 @@ Data Box rendelés elhelyezésekor kiválaszthatja az önállóan felügyelt sz�
 
 7. A megrendelés automatikusan a **kiválasztott** állapotba kerül, amint az eszközt az adatközpontból felvette.
 
-    ![Szállítás alatt](media\data-box-portal-customer-managed-shipping\data-box-portal-picked-up-boxed-01.png)
+    ![Megrendelés a kiválasztott állapotban](media\data-box-portal-customer-managed-shipping\data-box-portal-picked-up-boxed-01.png)
 
 8. Az eszköz beléptetése után másolja az adatait a webhelyére Data Box. Az Adatmásolás befejezése után előkészítheti a Data Box szállítását. További információ: [szállításra való előkészítés](data-box-deploy-picked-up.md#prepare-to-ship).
 
@@ -76,13 +78,13 @@ Data Box rendelés elhelyezésekor kiválaszthatja az önállóan felügyelt sz�
    > [!NOTE]
    > Ne ossza meg az engedélyezési kódot e-mailben. Ezt csak az adatközpontban lehet ellenőrizni a legördülő listából.
 
-9. Ha a legördülő listáról kapott egy időpontot, a rendelésnek **készen** kell állnia az Azure-adatközpont állapotának fogadására a Azure Portal. Az eszköz visszaadásához kövesse az **ütemezett legördülő lista** utasításait.
+9. Ha a drop off utasításhoz kapott egy időpontot, a rendelésnek készen kell állnia az **Azure-adatközpont állapotának fogadására** a Azure Portal. Az eszköz visszaadásához kövesse az **ütemezett legördülő lista** utasításait.
 
-   ![A 2. engedélyezési kód megtekintése](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+   ![Az eszköz kidobására vonatkozó utasítások](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
 
 10. Az azonosító és az engedélyezési kód ellenőrzése után a rendszer eldobta az eszközt az adatközpontban, a megrendelés állapotát meg kell **kapnia**.
 
-    ![A fogadás befejeződött](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-01.png)
+    ![Egy megkapott állapotú rendelés](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-01.png)
 
 11. Az eszköz fogadása után az Adatmásolás folytatódni fog. A másolás befejezésekor a rendelés elkészült.
 

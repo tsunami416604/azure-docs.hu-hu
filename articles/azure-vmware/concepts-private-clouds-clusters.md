@@ -3,12 +3,12 @@ title: Fogalmak – privát felhők és fürtök
 description: Ismerje meg az Azure VMware Solution szoftver által meghatározott adatközpontok és vSphere-fürtök főbb képességeit.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: b261eb0517e9890d9bccf12f2e5748626f4c1ff9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: daa712a722ca3252a49e4f54e0cc9e42de4ffc73
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791018"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337321"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás – saját felhő és fürt – fogalmak
 
@@ -52,9 +52,9 @@ Az Azure VMware-megoldás saját felhőalapú fürtjében használt VMware-szoft
 
 | Szoftverek              |    Verzió   |
 | :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6,7 U2    | 
-| ESXi                  |    6,7 U2    | 
-| vSAN                  |    6,7 U2    |
+| VCSA/vSphere/ESXi |    6,7 U3    | 
+| ESXi                  |    6,7 U3    | 
+| vSAN                  |    6,7 U3    |
 | NSX – T                 |      2.5     |
 
 A privát felhőben lévő összes új fürt esetében a szoftver verziója megegyezik a jelenleg futó verzióval. Egy előfizetéshez tartozó új privát felhő esetén a szoftveres verem legújabb verziója lesz telepítve.
@@ -74,7 +74,7 @@ A Microsoft felelős a NSX-T készülékek életciklus-kezelésért, például a
 
 A Private Cloud vCenter és a NSX-T konfigurációk óránkénti biztonsági mentési ütemtervtel rendelkeznek.  A biztonsági mentések három napig tartanak. Ha biztonsági másolatból kell visszaállítani, nyisson meg egy [támogatási kérést](https://rc.portal.azure.com/#create/Microsoft.Support) a Azure Portal a visszaállítás kéréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépés a [Hálózatkezelés és az összekapcsolási fogalmak](concepts-networking.md)megismerése.
 

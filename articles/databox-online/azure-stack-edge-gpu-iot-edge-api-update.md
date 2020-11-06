@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 10/26/2020
 ms.author: alkohli
-ms.openlocfilehash: a86c4c9c32f78cda1b5183a8651783fdcbb20e85
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 4b54f75b7d90e4b3a0a11d2ecdc676bb48eeee99
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754742"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335682"
 ---
 # <a name="iot-edge-role-management-changes-for-your-azure-stack-edge"></a>A Azure Stack Edge szerepkör-felügyeleti módosításai IoT Edge
 
@@ -41,7 +41,7 @@ Ha IoT Edge szerepkör-kezelést API-n keresztül hajtja végre, használja az �
 
 #### <a name="current-http-request"></a>Jelenlegi HTTP-kérelem 
 
-- Az API-hívások a következő URI-n történnek: [https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01](https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01)
+- Az API-hívások a következő URI-n történnek: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01 "
 
 - A kérelem törzse a következőképpen néz ki:
 
@@ -86,7 +86,7 @@ Ha IoT Edge szerepkör-kezelést API-n keresztül hajtja végre, használja az �
 
 #### <a name="upcoming-http-request"></a>Közelgő HTTP-kérelem 
 
-- A Kubernetes szerepkörhöz tartozó API-hívások a következő URI-n érhetők el: [https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1?api-version=2020-12-01](https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1?api-version=2020-12-01)
+- A Kubernetes szerepkörhöz tartozó API-hívások a következő URI-n lesznek elvégezve: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1?api-version=2020-12-01 "
 
     A kérelem törzse a következőképpen néz ki:
 
@@ -110,7 +110,7 @@ Ha IoT Edge szerepkör-kezelést API-n keresztül hajtja végre, használja az �
     }
     ```
 
-- Az IoT Edge addon API-hívásai a következő URI-n érhetők el: [https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01](https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01)
+- Az IoT Edge addon API-hívásai a következő URI-n találhatók: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01 "
 
 
     A kérelem törzse a következőképpen néz ki:
@@ -156,7 +156,7 @@ Ha IoT Edge szerepkör-kezelést API-n keresztül hajtja végre, használja az �
 
 #### <a name="current-http-response"></a>Aktuális http-válasz
 
-- Az API-hívások a következő URI-n történnek: [https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01](https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01)
+- Az API-hívások a következő URI-val lesznek elvégezve: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01 "
 
 
 - A válasz törzse a következőképpen néz ki:
@@ -192,7 +192,7 @@ Ha IoT Edge szerepkör-kezelést API-n keresztül hajtja végre, használja az �
 
 #### <a name="upcoming-http-response"></a>Közelgő http-válasz
 
-- Az API-hívások a következő URI-n történnek: [https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01](https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01)
+- Az API-hívások a következő URI-val lesznek elvégezve: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01 "
 - A válasz törzse a következőképpen néz ki: 
 
     ```json
@@ -228,11 +228,11 @@ Ha IoT Edge szerepkör-kezelést API-n keresztül hajtja végre, használja az �
 
 ### <a name="current"></a>Aktuális
 
-Az API-hívások a következő URI-n történnek: [https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01](https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01)
+Az API-hívások a következő URI-val lesznek elvégezve: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01 "
 
 ### <a name="upcoming"></a>Közelgő
 
-Az API-hívások a következő URI-n történnek: [https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01](https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01)
+Az API-hívások a következő URI-val lesznek elvégezve: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01 "
 
 
 ## <a name="sdk-usage"></a>SDK-használat
@@ -321,7 +321,7 @@ Nem. A konfigurált szolgáltatások a januári 2021-es eszköz frissítésének
 IoT Edge a Kubernetes szerepkörhöz tartozó addon. Ez azt jelenti, hogy meg kell győződnie arról, hogy a Kubernetes először van konfigurálva, majd végrehajtja a IoT Edge konfigurációját.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Útmutató a [frissítések alkalmazásához](azure-stack-edge-gpu-install-update.md).
 

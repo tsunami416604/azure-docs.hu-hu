@@ -8,12 +8,12 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 30eb19e418292e74989be81d94ed684c917f6971
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a78aec8c18f3b89629bbf696de3a097397ac59bc
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088635"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337916"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Elosztott nyomkövetés használata az Azure Spring Cloud használatával
 
@@ -28,14 +28,18 @@ Az eljárások követéséhez olyan Steeltoe-alkalmazásra van szüksége, amely
 
 ## <a name="dependencies"></a>Függőségek
 
-A következő NuGet-csomagok telepítése
+A Steeltoe 2.4.4 adja hozzá a következő NuGet-csomagokat:
 
 * [Steeltoe. Management. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
 * [Steeltoe. Management. ExporterCore](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/)
 
+A Steeltoe 3.0.0 esetében adja hozzá a következő NuGet-csomagot:
+
+* [Steeltoe. Management. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
+
 ## <a name="update-startupcs"></a>Startup.cs frissítése
 
-1. A `ConfigureServices` metódusban hívja meg a `AddDistributedTracing` és `AddZipkinExporter` metódusokat.
+1. A Steeltoe 2.4.4 esetében hívja `AddDistributedTracing` meg `AddZipkinExporter` a metódust, és a `ConfigureServices` metódust.
 
    ```csharp
    public void ConfigureServices(IServiceCollection services)
@@ -45,14 +49,29 @@ A következő NuGet-csomagok telepítése
    }
    ```
 
-1. A `Configure` metódusban hívja meg a `UseTracingExporter` metódust.
+   A Steeltoe 3.0.0 esetében hívja `AddDistributedTracing` meg a `ConfigureServices` metódust.
+
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddDistributedTracing(Configuration, builder => builder.UseZipkinWithTraceOptions(services));
+   }
+   ```
+
+1. A Steeltoe 2.4.4 esetében hívja `UseTracingExporter` meg a `Configure` metódust.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
         app.UseTracingExporter();
    }
    ```
+
+   A Steeltoe 3.0.0 esetében nincs szükség módosításra a `Configure` metódusban.
 
 ## <a name="update-configuration"></a>Konfiguráció frissítése
 
@@ -60,7 +79,7 @@ Adja hozzá a következő beállításokat a konfigurációs forráshoz, amelyet
 
 1. A `management.tracing.alwaysSample` paramétert állítsa igaz értékre.
 
-2. Ha látni szeretné az Eureka-kiszolgáló, a konfigurációs kiszolgáló és a felhasználói alkalmazások között eljuttatott nyomkövetési felölelt, állítsa a `management.tracing.egressIgnorePattern` következőre: "/API/v2/spans |/v2/apps/.* /permissions |/Eureka/.*| /oauth/.*".
+2. Ha látni szeretné az Eureka-kiszolgáló, a konfigurációs kiszolgáló és a felhasználói alkalmazások között eljuttatott nyomkövetési felölelt, állítsa a `management.tracing.egressIgnorePattern` következőre: "/API/v2/spans |/v2/apps/. */permissions |/Eureka/.* | /oauth/.*".
 
 A *appsettings.json* például a következő tulajdonságokat fogja tartalmazni:
  
@@ -136,7 +155,7 @@ Ha már létrehozott és telepített egy alkalmazást, módosíthatja a mintavé
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
 1. Lépjen a Azure Portal Azure Spring Cloud Service oldalára.
-1. A **figyelés** lapon válassza az **elosztott nyomkövetés**lehetőséget.
+1. A **figyelés** lapon válassza az **elosztott nyomkövetés** lehetőséget.
 1. Válassza a **beállítás szerkesztése** lehetőséget egy új beállítás szerkesztéséhez vagy hozzáadásához.
 1. Hozzon létre egy új Application Insights lekérdezést, vagy válasszon ki egy meglévőt.
 1. Válassza ki a figyelni kívánt naplózási kategóriát, és adja meg a megőrzési időt napokban.
@@ -144,11 +163,11 @@ Ha már létrehozott és telepített egy alkalmazást, módosíthatja a mintavé
 
 ## <a name="view-the-application-map"></a>Az alkalmazás-hozzárendelés megtekintése
 
-Térjen vissza az **elosztott nyomkövetés** lapra, és válassza az **alkalmazás-hozzárendelés megtekintése**lehetőséget. Tekintse át az alkalmazás és a figyelési beállítások vizuális megjelenítését. Az alkalmazás-hozzárendelés használatának megismeréséhez tekintse meg az [Application Map: elosztott alkalmazások osztályozása](../azure-monitor/app/app-map.md)című témakört.
+Térjen vissza az **elosztott nyomkövetés** lapra, és válassza az **alkalmazás-hozzárendelés megtekintése** lehetőséget. Tekintse át az alkalmazás és a figyelési beállítások vizuális megjelenítését. Az alkalmazás-hozzárendelés használatának megismeréséhez tekintse meg az [Application Map: elosztott alkalmazások osztályozása](../azure-monitor/app/app-map.md)című témakört.
 
 ## <a name="use-search"></a>Keresés használata
 
-Más konkrét telemetria-elemek lekérdezéséhez használja a Search függvényt. Az **elosztott nyomkövetés** lapon válassza a **Keresés**lehetőséget. További információ a keresési funkció használatáról: [Keresés használata Application Insightsban](../azure-monitor/app/diagnostic-search.md).
+Más konkrét telemetria-elemek lekérdezéséhez használja a Search függvényt. Az **elosztott nyomkövetés** lapon válassza a **Keresés** lehetőséget. További információ a keresési funkció használatáról: [Keresés használata Application Insightsban](../azure-monitor/app/diagnostic-search.md).
 
 ## <a name="use-application-insights"></a>Application Insights használata
 
@@ -157,9 +176,9 @@ A Application Insights az Application Map és a Search függvény mellett biztos
 ## <a name="disable-application-insights"></a>Application Insights letiltása
 
 1. Lépjen a Azure Portal Azure Spring Cloud Service oldalára.
-1. A **figyelés**lapon válassza az **elosztott nyomkövetés**lehetőséget.
+1. A **figyelés** lapon válassza az **elosztott nyomkövetés** lehetőséget.
 1. Application Insights letiltásához válassza a **Letiltás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan engedélyezheti és értelmezheti az elosztott nyomkövetést az Azure Spring Cloud-ban. Az alkalmazásokhoz való kötési szolgáltatásokkal kapcsolatos további tudnivalókért lásd: [Azure Cosmos db adatbázis kötése egy Azure Spring Cloud-alkalmazáshoz](spring-cloud-tutorial-bind-cosmos.md).

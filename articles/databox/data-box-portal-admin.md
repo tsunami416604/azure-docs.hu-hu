@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 978d1de158f93b06d08ff93605405573000b6b6e
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7d2734d386f1e49e2227058b148ee6b591d14a42
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123715"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336424"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>A Azure Portal használatával felügyelheti Azure Data Box és Azure Data Box Heavy
 
@@ -34,11 +34,11 @@ A rendelés visszavonásához kövesse az alábbi lépéseket.
 
 1.  Lépjen az **Áttekintés > Megszakítás** menüpontra.
 
-    ![Rendelés visszavonása 1](media/data-box-portal-admin/cancel-order1.png)
+    ![Parancs megszakítása egy rendelés áttekintés lapján](media/data-box-portal-admin/portal-admin-cancel-command.png)
 
 2.  Adja meg a rendelés visszavonásának okát.  
 
-    ![Rendelés visszavonása 2](media/data-box-portal-admin/cancel-order2.png)
+    ![Megrendelés megszakítása párbeszédpanel](media/data-box-portal-admin/portal-admin-cancel-order-dbox.png)
 
 3.  Miután visszavonta a rendelést, a portálon a rendelés állapota frissül a **Megszakítva** állapotra.
 
@@ -53,9 +53,9 @@ Az importálási sorrend klónozásához hajtsa végre az alábbi lépéseket.
 
 1.  Lépjen az **Áttekintés > Klónozás** menüpontra. 
 
-    ![Rendelés klónozása 1](media/data-box-portal-admin/clone-order1.png)
+    ![Klónozási parancs egy rendelés áttekintés lapján](media/data-box-portal-admin/portal-admin-clone-command.png)
 
-2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás** lehetőségre.
+2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás** gombra.
 
 A klón létrehozása néhány percet vesz igénybe, és a portálon megjelenik az új rendelés.
 
@@ -70,7 +70,7 @@ Csak a teljesített vagy visszavont rendeléseket törölheti. A rendelések tö
 
 2. Kattintson a törölni kívánt rendelésre, és lépjen az **Áttekintés** felületre. A parancssoron kattintson a **Törlés** elemre.
 
-    ![Data Box-rendelés törlése 1](media/data-box-portal-admin/delete-order1.png)
+    ![Parancs törlése az Áttekintés lapon egy rendeléshez](media/data-box-portal-admin/portal-admin-delete-command.png)
 
 3. Ha a rendszer kéri, írja be a rendelés nevét a rendelés törlésének megerősítéséhez. Kattintson a **Törlés** gombra.
 
@@ -82,11 +82,11 @@ A fuvarlevélcímkék letöltéséhez kövesse az alábbi lépéseket.
 
 1.  Lépjen az **Áttekintés > Levélcímke letöltése** menüpontra. Ez a lehetőség csak az eszköz kézbesítését követően érhető el. 
 
-    ![Fuvarlevélcímke letöltése](media/data-box-portal-admin/download-shipping-label.png)
+    ![Fuvarlevélcímke letöltése](media/data-box-portal-admin/portal-admin-download-shipping-label.png)
 
 2.  Ezzel letölti a következő fuvarlevélcímkét a visszaküldéshez. Mentse a címkét, és nyomtassa ki. Illessze be a címkét a Clear hüvelybe az eszközön. Győződjön meg arról, hogy a címke jól látható. Távolítsa el a matricákat, amelyek az előző szállítás során kerültek az eszközre.
 
-    ![Példa a fuvarlevélcímkére](media/data-box-portal-admin/example-shipping-label.png)
+    ![Példa a fuvarlevélcímkére](media/data-box-portal-admin/portal-admin-example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>Szállítási cím szerkesztése
 
@@ -96,11 +96,11 @@ A rendelés szerkesztéséhez kövesse az alábbi lépéseket.
 
 1. Lépjen a **Rendelés részletei > Szállítási cím szerkesztése** menüpontra.
 
-    ![Szállítási cím szerkesztése 1](media/data-box-portal-admin/edit-shipping-address1.png)
+    ![A szállítási címek parancs szerkesztése a Rendelés részletei között](media/data-box-portal-admin/portal-admin-edit-shipping-address-command.png)
 
 2. Szerkesztheti és érvényesítheti a szállítási címet, majd mentheti a változásokat.
 
-    ![Szállítási cím szerkesztése 2](media/data-box-portal-admin/edit-shipping-address2.png)
+    ![Szállítási címek szerkesztése párbeszédpanel](media/data-box-portal-admin/portal-admin-edit-shipping-address-dbox.png)
 
 ## <a name="edit-notification-details"></a>Értesítési adatok szerkesztése
 
@@ -110,11 +110,11 @@ Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 
 1. Lépjen a **Rendelés részletei > Értesítési adatok szerkesztése** menüpontra.
 
-    ![Értesítési adatok szerkesztése 1](media/data-box-portal-admin/edit-notification-details1.png)
+    ![Értesítés részleteinek szerkesztése parancs a sorrend részletei között](media/data-box-portal-admin/portal-admin-edit-notification-details-command.png)
 
 2. Itt szerkesztheti az értesítési adatokat, majd mentheti a változásokat.
  
-    ![Értesítési adatok szerkesztése 2](media/data-box-portal-admin/edit-notification-details2.png)
+    ![Értesítés részleteinek szerkesztése párbeszédpanel](media/data-box-portal-admin/portal-admin-edit-notification-details-dbox.png)
 
 
 ## <a name="download-order-history"></a>Rendelés előzményeinek letöltése
@@ -125,7 +125,7 @@ A rendelési előzmények letöltéséhez kövesse az alábbi lépéseket.
 
 1. A Data Box-rendelésben lépjen az **Áttekintés** lapra. Ellenőrizze, hogy a rendelés befejeződött-e. Ha a rendelés végrehajtása és az eszközök adatainak törlése befejeződött, lépjen a **Rendelés részletei** területre. Elérhető a **Rendelés előzményeinek letöltése** lehetőség.
 
-    ![Rendelés előzményeinek letöltése](media/data-box-portal-admin/download-order-history-1.png)
+    ![Rendelés előzményeinek letöltése](media/data-box-portal-admin/portal-admin-download-order-history.png)
 
 2. Kattintson a **Rendelés előzményeinek letöltése** elemre. A letöltött előzmények között a futárcégek nyomkövetési naplóinak rekordjai találhatóak. A Data Box Heavy két csomópontjának megfelelő naplófájlok két csoportba kerülnek. A napló aljára görgetve a következő hivatkozásokat láthatja:
     
@@ -198,11 +198,11 @@ A rendelési előzmények letöltéséhez kövesse az alábbi lépéseket.
 
     Ezután a tárfiókba lépve megtekintheti a másolási naplókat.
 
-![Naplók a tárfiókokban](media/data-box-portal-admin/logs-in-storage-acct-2.png)
+   ![A Storage-fiók másolási naplói](media/data-box-portal-admin/portal-admin-storage-account-copy-logs.png)
 
-Emellett a felügyeleti naplók láncát, azaz az auditnaplókat és a darabjegyzékfájlokat is megtekintheti.
+   Megtekintheti a felügyeleti naplók láncát is, amely tartalmazza a naplókat és az ANYAGJEGYZÉK-fájlokat.
 
-![Naplófájlok a 2. Storage-fiókban](media/data-box-portal-admin/logs-in-storage-acct-1.png)
+   ![Tárolási fiókhoz tartozó felügyeleti naplók lánca](media/data-box-portal-admin/portal-admin-storage-account-chain-of-custody-logs.png)
 
 ## <a name="view-order-status"></a>Rendelés állapotának megtekintése
 
@@ -225,7 +225,7 @@ Az importálási rendelés állapotait itt találja.
 |Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek a másolás során. <br> Tekintse át a másolási naplókat az Azure Portalon megadott útvonalon. [A másolási naplókra vonatkozó példákat a feltöltés hibával fejeződött](./data-box-logs.md#upload-completed-with-errors)be.   |
 |Figyelmeztetésekkel fejeződött be| Az Adatmásolás befejeződött, de az adatai módosultak. Az adatfájl-vagy blob-nevek módosításával kijavított nem kritikus blob-vagy fájlnév-hibák történtek. <br> Tekintse át a másolási naplókat az Azure Portalon megadott útvonalon. Jegyezze fel az adataiban történt módosításokat. Tekintse át [a naplók másolására vonatkozó példákat, ha a feltöltés figyelmeztetésekkel fejeződött](./data-box-logs.md#upload-completed-with-warnings)be.   |
 |Megszakítva            |A rendelés vissza lett vonva. <br> Vagy visszavonta a rendelést, vagy hiba történt, és a szolgáltatás vonta vissza. Ha a rendelés nem hajtható végre 90 napon belül, akkor a rendszer visszavonja azt, és e-mailben értesíti Önt.     |
-|A feleslegessé vált elemek eltávolítása | Az eszközlemezeken található összes adat törölve lesz. Az eszköz adatainak törlése akkor fejeződik be, amikor a rendelés előzményei letölthetővé válnak az Azure Portalon.|
+|A fölöslegessé vált elemek eltávolítása | Az eszközlemezeken található összes adat törölve lesz. Az eszköz adatainak törlése akkor fejeződik be, amikor a rendelés előzményei letölthetővé válnak az Azure Portalon.|
 
 ### <a name="statuses-for-export-order"></a>Az exportálási sorrend állapota
 
@@ -246,7 +246,7 @@ Az exportálási rendelés állapota.
 |Szállítás alatt     |A visszaküldött csomagot a szállítmányozó átvette és ellenőrizte.         |
 |Megérkezett     | Az eszközt átvették és ellenőrizték az Azure-adatközpontban. <br> A rendszer ellenőrzi a szállítást.      |
 |Befejeződött           |A megrendelés befejeződött.     |
-|A feleslegessé vált elemek eltávolítása | Az eszközlemezeken található összes adat törölve lesz. Az eszköz adatainak törlése akkor fejeződik be, amikor a rendelés előzményei letölthetővé válnak az Azure Portalon.|
+|A fölöslegessé vált elemek eltávolítása | Az eszközlemezeken található összes adat törölve lesz. Az eszköz adatainak törlése akkor fejeződik be, amikor a rendelés előzményei letölthetővé válnak az Azure Portalon.|
 
 > [!NOTE]
 > Ha a másolási feladatot az Azure Storage-fiókokból származó adatoknak a Data Boxba való betöltéséhez hibák vagy figyelmeztetések egészítik ki, az eszköz továbbra is hajókon marad. A rendszer csak a másolási hiba esetén leállítja a sorrendet, és az eszköz kiszállítása nem történik meg.
@@ -265,6 +265,6 @@ Ha önfelügyelt szállítást használ, akkor a másolás befejeződése után 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan lehet [elhárítani a Data Box és Data Box Heavy problémákat](data-box-troubleshoot.md).

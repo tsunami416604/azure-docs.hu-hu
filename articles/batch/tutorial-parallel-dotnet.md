@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 8c8dcd01c7e97f77e994d021e39ce6a5e591ff9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ea68b8a6cf26db2e4ba440140cfa900cebbb4aa
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537582"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335655"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a .NET API használatával
 
@@ -35,7 +35,7 @@ Ebben az oktatóanyagban MP4-médiafájlokat konvertál párhuzamosan MP3 formá
 
 * Egy Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat.
 
-* [Az FFmpeg 4.3.1 Windows 64 bites verziója](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip) (. zip). Töltse le a .zip-fájlt a helyi számítógépére. Ebben az oktatóanyagban csak a zip-fájlra van szükség. A fájlt nem kell sem kibontania, sem helyileg telepítenie.
+* [Az FFmpeg 4.3.1 Windows 64 bites verziója](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-10-01-essentials_build.7z) (. zip). Töltse le a .zip-fájlt a helyi számítógépére. Ebben az oktatóanyagban csak a zip-fájlra van szükség. A fájlt nem kell sem kibontania, sem helyileg telepítenie.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -45,9 +45,9 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Adja hozzá az Azure Portal segítségével az ffmpeg-et a Batch-fiókjához [alkalmazáscsomagként](batch-application-packages.md). Az alkalmazáscsomagok segítenek a tevékenységalkalmazások kezelésében, valamint a készlet számítási csomópontjain való üzembe helyezésükben. 
 
-1. A Azure Portal kattintson a **További szolgáltatások**  >  **Batch-fiókok**elemre, majd kattintson a Batch-fiókja nevére.
-3. Kattintson az **alkalmazások**  >  **Hozzáadás**gombra.
-4. Az **alkalmazás azonosítója** mezőben adja meg az *FFmpeg*értéket, valamint a *4.3.1*csomag verzióját. Válassza ki a korábban letöltött ffmpeg zip-fájlt, és kattintson az **OK** gombra. Ezzel hozzáadta az ffmpeg alkalmazáscsomagját a Batch-fiókjához.
+1. A Azure Portal kattintson a **További szolgáltatások**  >  **Batch-fiókok** elemre, majd kattintson a Batch-fiókja nevére.
+3. Kattintson az **alkalmazások**  >  **Hozzáadás** gombra.
+4. Az **alkalmazás azonosítója** mezőben adja meg az *FFmpeg* értéket, valamint a *4.3.1* csomag verzióját. Válassza ki a korábban letöltött ffmpeg zip-fájlt, és kattintson az **OK** gombra. Ezzel hozzáadta az ffmpeg alkalmazáscsomagját a Batch-fiókjához.
 
 ![Alkalmazáscsomag hozzáadása](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -91,7 +91,7 @@ const string appPackageVersion = "4.3.1";
 
 Hozza létre és futtassa az alkalmazást a Visual Studióban vagy a parancssorban a `dotnet build` és a `dotnet run` paranccsal. Az alkalmazás futtatása után tekintse át a kódot annak megismerése érdekében, hogy mit csinálnak az alkalmazás egyes részei. Ha például a Visual Studióban:
 
-* Kattintson a jobb gombbal a megoldásra Megoldáskezelő majd kattintson a **megoldás létrehozása**lehetőségre. 
+* Kattintson a jobb gombbal a megoldásra Megoldáskezelő majd kattintson a **megoldás létrehozása** lehetőségre. 
 
 * Erősítse meg a NuGet-csomagok visszaállítását, ha a rendszer erre kéri. Ha hiányzó csomagokat kell letöltenie, győződjön meg arról, hogy a [NuGet-csomagkezelő](https://docs.nuget.org/consume/installing-nuget) telepítve van.
 
@@ -118,13 +118,13 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-A készlet, a számítási csomópontok, a feladat és a tevékenységek figyeléséhez lépjen az Azure Portalon a Batch-fiókjába. Ha például meg szeretné tekinteni a készletben lévő számítási csomópontok Heat térképét, kattintson a **készletek**  >  *WinFFmpegPool*elemre.
+A készlet, a számítási csomópontok, a feladat és a tevékenységek figyeléséhez lépjen az Azure Portalon a Batch-fiókjába. Ha például meg szeretné tekinteni a készletben lévő számítási csomópontok Heat térképét, kattintson a **készletek**  >  *WinFFmpegPool* elemre.
 
 A tevékenységek futásakor a hőtérkép az alábbihoz hasonló:
 
 ![Készlet hőtérképe](./media/tutorial-parallel-dotnet/pool.png)
 
-A jellemző végrehajtási idő körülbelül **10 perc**, ha az alapértelmezett konfigurációban futtatja az alkalmazást. A készlet létrehozása veszi igénybe a legtöbb időt.
+A jellemző végrehajtási idő körülbelül **10 perc** , ha az alapértelmezett konfigurációban futtatja az alkalmazást. A készlet létrehozása veszi igénybe a legtöbb időt.
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 

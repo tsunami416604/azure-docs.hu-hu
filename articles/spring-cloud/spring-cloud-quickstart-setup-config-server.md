@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 2f6051277f1ddb89e67ce8013c78571a2a7314b7
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 55e47b09ac4a6256a125a75c8a0f856e867e7c0e
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089128"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337787"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Gyors útmutató: az Azure Spring Cloud konfigurációs kiszolgáló beállítása
 
@@ -53,7 +53,7 @@ Az Azure Spring Cloud config Server az elosztott rendszerek központi konfigurá
 
 Az alábbi eljárással állítható be a konfigurációs kiszolgáló a Azure Portal használatával a [Piggymetrics-minta](spring-cloud-quickstart-sample-app-introduction.md)telepítéséhez.
 
-1. Lépjen a szolgáltatás **áttekintése** lapra, és válassza a **konfigurációs kiszolgáló**lehetőséget.
+1. Lépjen a szolgáltatás **áttekintése** lapra, és válassza a **konfigurációs kiszolgáló** lehetőséget.
 
 2. Az **alapértelmezett adattár** szakaszban állítsa be az **URI** -t "" értékre https://github.com/Azure-Samples/piggymetrics-config .
 
@@ -70,11 +70,35 @@ Az alábbi eljárás az Azure CLI használatával állítja be a konfigurációs
 ```azurecli
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/piggymetrics-config
 ```
-
 ---
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Az Azure Spring Cloud config Server hibaelhárítása
+
+Az alábbi eljárás a konfigurációs kiszolgáló beállításainak hibakeresését ismerteti.
+
+1. A Azure Portal lépjen a szolgáltatás **áttekintése** lapra, és válassza a **naplók** lehetőséget. 
+1. Válassza a **lekérdezések** lehetőséget, és **jelenítse meg a "hiba" vagy "kivétel" kifejezést tartalmazó alkalmazás-naplókat**. 
+1. Kattintson a **Futtatás** elemre. 
+1. Ha a következő hibaüzenetet találja: **Java. lang. illegalStateException** a naplókban, ez azt jelzi, hogy a Spring Cloud Service nem találja a tulajdonságokat a konfigurációs kiszolgálóról.
+
+    [![Asc-portál – lekérdezés ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) futtatása](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
+
+1. Nyissa meg a szolgáltatás **áttekintése** lapot.
+1. Válassza a **Problémák diagnosztizálása és megoldása** lehetőséget. 
+1. Válassza a **konfigurációs kiszolgáló** detektor lehetőséget.
+
+    [![Asc-portál – ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) problémák diagnosztizálása](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
+
+3. Kattintson a **konfigurációs kiszolgáló állapotának ellenõrzése** lehetőségre.
+
+    [![Asc-portál Genie ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
+
+4. Kattintson a **konfigurációs kiszolgáló állapota** lehetőségre a detektor további részleteinek megtekintéséhez.
+
+    [![Asc-portál állapotának állapota ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
+
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban olyan Azure-erőforrásokat hozott létre, amelyek továbbra is felhalmozzák a díjakat, ha az előfizetésben maradnak. Ha nem szeretne továbblépni a következő rövid útmutatóra, tekintse meg az [erőforrások tisztítása](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)című témakört. Ellenkező esetben folytassa a következő rövid útmutatóval:
 

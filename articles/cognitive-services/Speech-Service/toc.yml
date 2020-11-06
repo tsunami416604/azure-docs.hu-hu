@@ -419,8 +419,6 @@
                   href: 'http://aka.ms/speech/va-samples'
                 - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
                   href: faq-voice-assistants.md
-                - name: Beszéd SDK
-                  href: speech-sdk.md
                 - name: Custom Commands – Inaktív adatok titkosítása
                   href: custom-commands-encryption-of-data-at-rest.md
         - name: Direct Line Speech

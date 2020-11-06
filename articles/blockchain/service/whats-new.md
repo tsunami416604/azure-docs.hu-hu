@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Blockchain szolgáltatás újdonságait, péld
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: 47e0da5a729519f2af3c5b2a2fd3e0f7485624cf
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 6a3113a2d28e704b188d701da13493ecd8263cab
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948459"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335026"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Újdonságok az Azure Blockchain szolgáltatásban?
 
@@ -27,7 +27,7 @@ Az Azure Blockchain szolgáltatás folyamatosan fejleszti a fejlesztéseket. A l
 
 ### <a name="version-upgrades"></a>Verziófrissítések
 
-- A kvórum verziója a 2.6.0-re frissül. A 2.6.0-es verzióban aláírt privát tranzakciókat is küldhet. A privát tranzakciók küldésével kapcsolatos további információkért tekintse meg a [KVÓRUM API dokumentációját](https://docs.goquorum.com/en/latest/Getting%20Started/api/).
+- A kvórum verziója a 2.6.0-re frissül. A 2.6.0-es verzióban aláírt privát tranzakciókat is küldhet. A privát tranzakciók küldésével kapcsolatos további információkért tekintse meg a [KVÓRUM API dokumentációját](https://docs.goquorum.consensys.net/en/latest/Reference/APIs/ContractExtensionAPIs/#apis).
 - A Tessera verziója a 0.10.5-re frissül.
 
 ### <a name="contract-size-and-transaction-size-increased-to-128-kb"></a>A szerződés mérete és a tranzakció mérete 128 KB-ra nőtt
@@ -69,7 +69,7 @@ Két fázis segít optimalizálni az olyan forgatókönyveket, amelyekben egy ta
 A kvórum v 2.6.0-ben az *ETH. estimateGas* függvény meghívása anélkül, hogy a további *érték* paraméter megadása miatt a *metódus kezelője összeomlott* . A kvórum csapatának értesítése megtörtént, és a javítás várhatóan július 2020. A javítás elérhetővé tételéhez a következő megkerülő megoldásokat használhatja:
 
 - Kerülje az *ETH. estimateGas* használatát, mivel ez hatással lehet a teljesítményre. További információ az ETH. estimateGas teljesítménnyel kapcsolatos problémákról: az [ETH meghívása. a estimateGas függvény csökkenti a teljesítményt](#calling-ethestimategas-function-reduces-performance). Adja meg a gáz értékét minden egyes tranzakcióhoz. A legtöbb kódtár az ETH. estimateGas-t hívja meg, ha nincs megadva olyan gáz értéke, amely a kvórum v 2.6.0 összeomlását okozza.
-- Ha az *ETH. estimateGas*meghívására van szüksége, a kvórum csapata azt javasolja, hogy megkerülő megoldásként adja át a további paraméter *értékét* *0* -ként.
+- Ha az *ETH. estimateGas* meghívására van szüksége, a kvórum csapata azt javasolja, hogy megkerülő megoldásként adja át a további paraméter *értékét* *0* -ként.
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>A bányászat leáll, ha kevesebb mint négy érvényesítő csomópont
 
@@ -119,7 +119,7 @@ Ha nagy mennyiségű privát tranzakciót küld, használja a *standard* szintet
 
 Az *ETH. estimateGas* függvény többszöri meghívása csökkenti a tranzakciók másodpercenkénti számát. Az összes tranzakció beküldéséhez ne használjon *ETH. estimateGas* függvényt. Az *ETH. estimateGas* függvény a memória-igényes.
 
-Ha lehetséges, használjon egy konzervatív gáz értéket a tranzakciók elküldéséhez, és csökkentse az *ETH. estimateGas*használatát.
+Ha lehetséges, használjon egy konzervatív gáz értéket a tranzakciók elküldéséhez, és csökkentse az *ETH. estimateGas* használatát.
 
 ### <a name="unbounded-loops-in-smart-contracts-reduces-performance"></a>Az intelligens szerződések nem kötött hurkoi csökkentik a teljesítményt
 
@@ -127,5 +127,5 @@ Kerülje a nem kötött hurkokat az intelligens szerződésekben, mivel azok cs�
 
 - [A nem kötött hurkok elkerülése](https://blog.b9lab.com/getting-loopy-with-solidity-1d51794622ad )
 - [Az intelligens szerződéssel kapcsolatos ajánlott biztonsági eljárások](https://github.com/ConsenSys/smart-contract-best-practices)
-- [A kvórum által biztosított intelligens szerződési irányelvek](http://docs.goquorum.com/en/latest/Security/Framework/Decentralized%20Application/Smart%20Contracts%20Security/)
+- [A kvórum által biztosított intelligens szerződési irányelvek](https://docs.goquorum.consensys.net/en/stable/Concepts/Security/Framework/DecentralizedApplication/SmartContractsSecurity/)
 - [Irányelvek a szilárdtestek által biztosított gázárak és hurkok esetében](https://solidity.readthedocs.io/en/develop/security-considerations.html#gas-limit-and-loops)

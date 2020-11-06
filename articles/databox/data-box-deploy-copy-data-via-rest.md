@@ -9,16 +9,16 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 17fa361fa4cef194d910d08d4a0afe075b119109
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742519"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337593"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Oktatóanyag: REST API-k használata adatok másolásához Azure Data Box blob Storage-ba  
 
-Ez az oktatóanyag a REST API-kon keresztül *http* -vagy *https*-kapcsolaton keresztüli Azure Data Box blob Storage-hoz való kapcsolódás eljárásait ismerteti. A csatlakozás után az Data Box blob Storage-ba való másolásához szükséges lépések, valamint a Data Box a szállításra való előkészítésének lépései is le vannak írva.
+Ez az oktatóanyag a REST API-kon keresztül *http* -vagy *https* -kapcsolaton keresztüli Azure Data Box blob Storage-hoz való kapcsolódás eljárásait ismerteti. A csatlakozás után az Data Box blob Storage-ba való másolásához szükséges lépések, valamint a Data Box a szállításra való előkészítésének lépései is le vannak írva.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -42,12 +42,12 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 ## <a name="connect-via-http-or-https"></a>Kapcsolat http-n vagy HTTPS-en keresztül
 
-Data Box blob Storage-hoz *http* -vagy *https*-kapcsolaton keresztül is csatlakozhat.
+Data Box blob Storage-hoz *http* -vagy *https* -kapcsolaton keresztül is csatlakozhat.
 
 * A *https* a Data Box blob Storage-hoz való kapcsolódás biztonságos és ajánlott módja.
 * A *http* -t megbízható hálózatokhoz való csatlakozáskor használja a rendszer.
 
-A csatlakozás lépései eltérőek, amikor *http* -vagy *https*-kapcsolaton keresztül csatlakozik Data Box blob Storage-hoz.
+A csatlakozás lépései eltérőek, amikor *http* -vagy *https* -kapcsolaton keresztül csatlakozik Data Box blob Storage-hoz.
 
 ## <a name="connect-via-http"></a>Kapcsolat http-n keresztül
 
@@ -85,7 +85,7 @@ A tanúsítvány letöltéséhez használja a Azure Portal.
 
 1. Jelentkezzen be az Azure Portalra.
 2. Lépjen a Data Box sorrendbe, és keresse meg az **általános > eszköz adatait**.
-3. Az **eszköz hitelesítő adatai**területen nyissa meg az eszköz **API-hozzáférését** . Kattintson a **Letöltés**gombra. Ez a művelet letölt egy ** \<your order name> . cer** tanúsítványfájl-fájlt. **Mentse** ezt a fájlt. Ezt a tanúsítványt azon az ügyfélen vagy gazdaszámítógépen kell telepíteni, amelyet az eszközhöz való kapcsolódáshoz használni fog.
+3. Az **eszköz hitelesítő adatai** területen nyissa meg az eszköz **API-hozzáférését** . Kattintson a **Letöltés** gombra. Ez a művelet letölt egy **\<your order name> . cer** tanúsítványfájl-fájlt. **Mentse** ezt a fájlt. Ezt a tanúsítványt azon az ügyfélen vagy gazdaszámítógépen kell telepíteni, amelyet az eszközhöz való kapcsolódáshoz használni fog.
 
     ![Tanúsítvány letöltése Azure Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
 
@@ -108,18 +108,18 @@ A következő lépésekkel importálhatja a `.cer` fájlt egy Windows-vagy Linux
 
 #### <a name="use-windows-server-ui"></a>A Windows Server felhasználói felületének használata
 
-1. Kattintson a jobb gombbal a `.cer` fájlra, majd válassza a **tanúsítvány telepítése**lehetőséget. Ez a művelet elindítja a tanúsítvány importálása varázslót.
-2. Az **áruház helye**területen válassza a **helyi számítógép**lehetőséget, majd kattintson a **tovább**gombra.
+1. Kattintson a jobb gombbal a `.cer` fájlra, majd válassza a **tanúsítvány telepítése** lehetőséget. Ez a művelet elindítja a tanúsítvány importálása varázslót.
+2. Az **áruház helye** területen válassza a **helyi számítógép** lehetőséget, majd kattintson a **tovább** gombra.
 
-    ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
+    ![Tanúsítvány importálása varázsló, Windows Server](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3. Jelölje be **az összes tanúsítvány tárolása a következő tárolóban**jelölőnégyzetet, majd kattintson a **Tallózás**gombra. Navigáljon a távoli gazdagép legfelső szintű tárolójához, majd kattintson a **tovább**gombra.
+3. Jelölje be **az összes tanúsítvány tárolása a következő tárolóban** jelölőnégyzetet, majd kattintson a **Tallózás** gombra. Navigáljon a távoli gazdagép legfelső szintű tárolójához, majd kattintson a **tovább** gombra.
 
-    ![Tanúsítvány importálása a PowerShell 2 használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![Tanúsítvány importálása varázsló, tanúsítványtároló](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4. Kattintson a **Finish** (Befejezés) gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt.
 
-    ![Tanúsítvány importálása a PowerShell 3 használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![Tanúsítvány importálása varázsló, importálás befejezése](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Linux rendszer használata
 
@@ -139,11 +139,11 @@ A részletekért olvassa el a disztribúcióra vonatkozó dokumentációt.
 
 ### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Eszköz IP-címének és blob szolgáltatásbeli végpontjának hozzáadása 
 
-[Ha *http*-kapcsolaton keresztül csatlakozik, kövesse ugyanezen lépéseket az eszköz IP-címének és a blob-szolgáltatás végpontjának hozzáadásához](#add-device-ip-address-and-blob-service-endpoint).
+[Ha *http* -kapcsolaton keresztül csatlakozik, kövesse ugyanezen lépéseket az eszköz IP-címének és a blob-szolgáltatás végpontjának hozzáadásához](#add-device-ip-address-and-blob-service-endpoint).
 
 ### <a name="configure-partner-software-and-verify-connection"></a>A partner szoftver konfigurálása és a kapcsolat ellenőrzése
 
-Kövesse a lépéseket a [ *http*-kapcsolaton keresztül használt partneri szoftverek konfigurálásához](#verify-connection-and-configure-partner-software). Az egyetlen különbség, hogy a *http használata beállítás* nincs bejelölve.
+Kövesse a lépéseket a [ *http* -kapcsolaton keresztül használt partneri szoftverek konfigurálásához](#verify-connection-and-configure-partner-software). Az egyetlen különbség, hogy a *http használata beállítás* nincs bejelölve.
 
 ## <a name="copy-data-to-data-box"></a>Adatok másolása a Data Boxra
 
@@ -171,9 +171,9 @@ Első lépésként hozzon létre egy tárolót, mivel a Blobok mindig egy tárol
 
 1. Nyissa meg a Storage Explorert.
 2. A bal oldali ablaktáblán bontsa ki azt a Storage-fiókot, amelyen létre kívánja hozni a BLOB-tárolót.
-3. Kattintson a jobb gombbal a **blob-tárolók**elemre, majd a helyi menüben válassza a **blob-tároló létrehozása**lehetőséget.
+3. Kattintson a jobb gombbal a **blob-tárolók** elemre, majd a helyi menüben válassza a **blob-tároló létrehozása** lehetőséget.
 
-   ![BLOB-tárolók létrehozása helyi menü](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
+   ![BLOB-tárolók helyi menü, blob-tároló létrehozása](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
 4. A **blob-tárolók** mappa alatt egy szövegmező jelenik meg. Adja meg a blobtároló nevét. Tekintse meg a [tároló létrehozása és az engedélyek beállítása](../storage/blobs/storage-quickstart-blobs-dotnet.md) a blob-tárolók elnevezésére vonatkozó szabályokra és korlátozásokra vonatkozó információkat.
 5. Nyomja le az **ENTER** billentyűt, amikor elkészült a blob-tároló létrehozásához, vagy az **ESC billentyűt** a megszakításhoz. A blob-tároló sikeres létrehozása után a rendszer a kiválasztott Storage-fiók **blob containers** mappájában jelenik meg.
@@ -200,7 +200,7 @@ azcopy \
 AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
 ```
 
-Cserélje le a `<key>` billentyűt a fiók kulcsára. A fiók kulcsának beszerzéséhez a Azure Portal nyissa meg a Storage-fiókját. Lépjen a **beállítások > hozzáférési kulcsok**elemre, válasszon ki egy kulcsot, és illessze be a AzCopy parancsba.
+Cserélje le a `<key>` billentyűt a fiók kulcsára. A fiók kulcsának beszerzéséhez a Azure Portal nyissa meg a Storage-fiókját. Lépjen a **beállítások > hozzáférési kulcsok** elemre, válasszon ki egy kulcsot, és illessze be a AzCopy parancsba.
 
 Ha a célként megadott tároló nem létezik, az AzCopy létrehozza, majd feltölti a fájlt a tárolóba. Frissítse a forrás elérési útját az adatkönyvtárra, és cserélje le a `data-box-storage-account-name` célhely URL-címére a Data Box társított Storage-fiók nevével.
 

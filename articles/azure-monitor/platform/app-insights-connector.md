@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e426962310417fdca56ea2f7d45a6ea820d41981
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449420"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335876"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector felügyeleti megoldás (elavult)
 
@@ -57,9 +57,9 @@ A legtöbb más Log Analytics-megoldástól eltérően az ügynökök nem gyűjt
 
 ## <a name="configuration"></a>Konfiguráció
 
-1. Engedélyezze a Azure Web Apps Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) -en, vagy használja az [Solutions Gallery log Analytics-megoldások hozzáadása](../insights/solutions.md)című témakörben leírt eljárást.
+1. Engedélyezze a Azure Web Apps Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) -en, vagy használja az [Solutions Gallery log Analytics-megoldások hozzáadása](../insights/solutions.md)című témakörben leírt eljárást.
 2. Keresse fel az [Azure Portalt](https://portal.azure.com). Application Insights megnyitásához válassza **az összes szolgáltatás** elemet. Ezután keressen rá Application Insights. 
-3. Az **előfizetések**területen válasszon ki egy Application Insights erőforrásokkal rendelkező előfizetést, majd a **név**területen válasszon ki egy vagy több alkalmazást.
+3. Az **előfizetések** területen válasszon ki egy Application Insights erőforrásokkal rendelkező előfizetést, majd a **név** területen válasszon ki egy vagy több alkalmazást.
 4. Kattintson a **Mentés** gombra.
 
 Körülbelül 30 perc alatt az adatok elérhetővé válnak, és a Application Insights csempe frissül az adatokkal, például a következő képpel:
@@ -133,9 +133,9 @@ A perspektíva összetevői a keresési lekérdezéstől függően frissülnek. 
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>Kimutatás egy alkalmazáshoz a Azure Portal
 
-A Application Insights Connector-lapok úgy lettek kialakítva, hogy a *Azure Portal használatakor*a kiválasztott Application Insights alkalmazáshoz lehessen eldönteni. A megoldás magas szintű figyelési platformként használható, amely segít az alkalmazások hibakeresésében. Ha valamelyik csatlakoztatott alkalmazásban potenciális probléma jelenik meg, akkor Log Analytics kereshet, vagy közvetlenül a Application Insights alkalmazáshoz is elvégezhető.
+A Application Insights Connector-lapok úgy lettek kialakítva, hogy a *Azure Portal használatakor* a kiválasztott Application Insights alkalmazáshoz lehessen eldönteni. A megoldás magas szintű figyelési platformként használható, amely segít az alkalmazások hibakeresésében. Ha valamelyik csatlakoztatott alkalmazásban potenciális probléma jelenik meg, akkor Log Analytics kereshet, vagy közvetlenül a Application Insights alkalmazáshoz is elvégezhető.
 
-A kimutatáshoz kattintson az egyes sorok végén megjelenő három pontra (**...**), majd válassza a **Megnyitás Application Insightsban**lehetőséget.
+A kimutatáshoz kattintson az egyes sorok végén megjelenő három pontra ( **...** ), majd válassza a **Megnyitás Application Insightsban** lehetőséget.
 
 >[!NOTE]
 >A **megnyitás Application Insightsban** nem érhető el a Azure Portal.
@@ -252,7 +252,7 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | RequestName | GET/POST + URL-cím alapja |
 | RequestDuration | A kérelem időtartamának ideje (másodpercben) |
 | URL-cím | A kérelem URL-címe nem tartalmazza a gazdagépet |
-| Gazda | Webkiszolgáló-gazdagép |
+| Gazdagép | Webkiszolgáló-gazdagép |
 | URLBase | A kérelem teljes URL-címe |
 | ApplicationProtocol | Az alkalmazás által használt protokoll típusa |
 | RequestCount | 100/(mintavételi sebesség). Például: 4 = &gt; 25% |
@@ -316,7 +316,7 @@ Lekérheti az alkalmazások listáját is, ha egy napló lekérdezést használ:
 ApplicationInsights | summarize by ApplicationName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Application Insights-alkalmazások részletes adatainak megtekintéséhez használja a [log Search kifejezést](../log-query/log-query-overview.md) .
 

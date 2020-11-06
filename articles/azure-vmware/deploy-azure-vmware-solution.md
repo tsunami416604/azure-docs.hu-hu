@@ -3,13 +3,13 @@ title: Azure VMware-megoldás üzembe helyezése és konfigurálása
 description: Megtudhatja, hogyan használhatja a tervezési szakaszban összegyűjtött információkat az Azure VMware-megoldás saját felhőbe történő üzembe helyezéséhez.
 ms.topic: tutorial
 ms.author: tredavis
-ms.date: 10/02/2020
-ms.openlocfilehash: 0839048c2d0ad5944566a48f54cca07a4daeb754
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 11/09/2020
+ms.openlocfilehash: 264ad99b21150f391c367eba2da31f0d08f4ab08
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152030"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336335"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware-megoldás üzembe helyezése és konfigurálása
 
@@ -59,7 +59,7 @@ A Jump Box abban a virtuális hálózaton található, ahol az Azure VMware mego
 
 Az érvényben lévő útvonalak listájában az Azure VMware-megoldás üzembe helyezésének részeként létrehozott hálózatokat kell látnia. [A jelen cikk korábbi](#deploy-azure-vmware-solution) részében [ `/22` megadott hálózatról](production-ready-deployment-steps.md#ip-address-segment) származó több hálózat is megjelenik.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Az Azure VMware-megoldás Jump Box létrehozása" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Az Azure VMware-megoldásból az Azure-ba hirdetett hálózati útvonalak ellenőrzése Virtual Network" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
 Ebben a példában az üzembe helyezés során a 10.74.72.0/22 hálózat bemenete a/24 hálózatot eredményezi.  Ha valami hasonlót lát, csatlakozhat a vCenter-hez az Azure VMware megoldásban.
 
@@ -67,7 +67,7 @@ Ebben a példában az üzembe helyezés során a 10.74.72.0/22 hálózat bemenet
 
 Jelentkezzen be az előző lépésben létrehozott Jump Box-ba. Miután bejelentkezett, nyisson meg egy webböngészőt, és lépjen be, és jelentkezzen be a vCenter és a NSX-T felügyeleti konzolon.  
 
-A Azure Portal azonosíthatja a vCenter, valamint a NSX-T felügyeleti konzol IP-címeit és hitelesítő adatait.  Válassza ki saját felhőjét, majd az **Áttekintés** nézetben válassza az **identitás > alapértelmezett**lehetőséget. 
+A Azure Portal azonosíthatja a vCenter, valamint a NSX-T felügyeleti konzol IP-címeit és hitelesítő adatait.  Válassza ki saját felhőjét, majd az **Áttekintés** nézetben válassza az **identitás > alapértelmezett** lehetőséget. 
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Hálózati szegmens létrehozása Azure VMware-megoldással
 
@@ -97,10 +97,10 @@ Mivel a DNS szükséges, azonosítsa a használni kívánt DNS-kiszolgálót.
 
 Ha azt tervezi, hogy DHCP-T használ a NSX-T szegmens (ek) n, folytassa ezt a szakaszt. Ellenkező esetben ugorjon a [virtuális gép hozzáadása elemre a NSX-T hálózati szegmens](#add-a-vm-on-the-nsx-t-network-segment) szakaszban.  
 
-Most, hogy létrehozta a NSX-T hálózati szegmenst, a következő módokon végezheti el az alábbiak EGYIKét:
+Most, hogy létrehozta a NSX-T hálózati szegmenst, két módon hozhat létre és kezelhet DHCP-T az Azure VMware megoldásban:
 
-* Használja a NSX-T DHCP-kiszolgálóként a létrehozott szegmens (ek) hez. Ehhez a beállításhoz [létre kell hoznia egy DHCP-kiszolgálót a NSX-T-ben](manage-dhcp.md#create-dhcp-server) , és [továbbítania kell](manage-dhcp.md#create-dhcp-relay-service)erre a kiszolgálóra.
-* DHCP-kérések továbbítása a NSX-T szegmensből a környezetében máshol található DHCP-kiszolgálóra. Ehhez a beállításhoz [csak a továbbítási konfigurációt kell végrehajtani](manage-dhcp.md#create-dhcp-relay-service).
+* Ha a NSX-T használatával futtatja a DHCP-kiszolgálót, [létre kell hoznia egy DHCP-kiszolgálót és egy](manage-dhcp.md#create-a-dhcp-server) [továbbítót az adott kiszolgálóra](manage-dhcp.md#create-dhcp-relay-service). 
+* Ha harmadik féltől származó külső DHCP-kiszolgálót használ a hálózaton, [létre kell hoznia a DHCP-továbbító szolgáltatást](manage-dhcp.md#create-dhcp-relay-service).  Ehhez a beállításhoz [csak a továbbítási konfigurációt kell végrehajtani](manage-dhcp.md#create-dhcp-relay-service).
 
 
 ## <a name="add-a-vm-on-the-nsx-t-network-segment"></a>Virtuális gép felvétele a NSX-T hálózati szegmensbe
@@ -127,7 +127,7 @@ Jelentkezzen be az előző lépésben létrehozott virtuális gépre, és ellen�
 >[!IMPORTANT]
 >Ezen a ponton az Azure VMware-megoldás működik, és sikeresen létesített kapcsolatot az Azure Virtual Network és az internet között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő szakaszban az Azure VMware-megoldást a helyszíni hálózathoz a ExpressRoute-on keresztül kapcsolhatja össze.
 > [!div class="nextstepaction"]

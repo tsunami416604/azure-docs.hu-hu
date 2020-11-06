@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 538a650c6063422f89c8ed3d1753981a293693b7
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87924753"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94338086"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>A Data Box Disk felügyelete az Azure Portal használatával
 
@@ -29,15 +29,15 @@ A rendelés visszavonásához kövesse az alábbi lépéseket.
 
 1.  Lépjen az **Áttekintés > Megszakítás** menüpontra. 
 
-    ![Rendelés visszavonása 1](media/data-box-portal-ui-admin/cancel-order1.png)
+    ![Parancs megszakítása egy rendelés áttekintés lapján](media/data-box-portal-ui-admin/portal-ui-admin-cancel-command.png)
 
 2.  Adja meg a rendelés visszavonásának okát.  
 
-    ![Rendelés visszavonása 2](media/data-box-portal-ui-admin/cancel-order2.png)
+    ![Megrendelés megszakításának oka](media/data-box-portal-ui-admin/portal-ui-admin-cancel-order-reason.png)
 
 3.  Miután visszavonta a rendelést, a portálon a rendelés állapota frissül a **Megszakítva** állapotra.
 
-    ![Rendelés visszavonása 3](media/data-box-portal-ui-admin/cancel-order3.png)
+    ![Megszakított sorrend](media/data-box-portal-ui-admin/portal-ui-admin-canceled-order.png)
 
 A rendelések visszavonásakor nem kap értesítő e-mailt.
 
@@ -49,13 +49,13 @@ A rendelések klónozásához kövesse az alábbi lépéseket.
 
 1.  Lépjen az **Áttekintés > Klónozás** menüpontra. 
 
-    ![Rendelés klónozása 1](media/data-box-portal-ui-admin/clone-order1.png)
+    ![Klónozási parancs egy rendelés áttekintés lapján](media/data-box-portal-ui-admin/portal-ui-admin-clone-command.png)
 
-2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás** lehetőségre.    
+2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás** gombra.    
 
 A klón létrehozása néhány percet vesz igénybe, és a portálon megjelenik az új rendelés.
 
-[![Klónozási sorrend 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![Klónozott sorrend](media/data-box-portal-ui-admin/portal-ui-admin-cloned-order.png)](media/data-box-portal-ui-admin/portal-ui-admin-cloned-order.png#lightbox) 
 
 ## <a name="delete-order"></a>Rendelés törlése
 
@@ -65,15 +65,15 @@ Csak a teljesített vagy visszavont rendeléseket törölheti. A rendelések tö
 
 1. Lépjen a **Minden erőforrás** menüpontra. Keresse meg a rendelést.
 
-    ![Data Box Disk-rendelések keresése](media/data-box-portal-ui-admin/search-data-box-disk-orders.png)
+    ![Keresési megrendelések](media/data-box-portal-ui-admin/portal-ui-admin-search-data-box-disk-orders.png)
 
 2. Kattintson a törölni kívánt rendelésre, és lépjen az **Áttekintés** felületre. A parancssoron kattintson a **Törlés** elemre.
 
-    ![Data Box Disk-rendelés törlése 1](media/data-box-portal-ui-admin/delete-order1.png)
+    ![Megrendelés törlése](media/data-box-portal-ui-admin/portal-ui-admin-delete-command.png)
 
 3. Ha a rendszer kéri, írja be a rendelés nevét a rendelés törlésének megerősítéséhez. Kattintson a **Törlés** gombra.
 
-     ![Data Box Disk-rendelés törlése 2](media/data-box-portal-ui-admin/delete-order2.png)
+     ![Megrendelés törlésének megerősítése](media/data-box-portal-ui-admin/portal-ui-admin-confirm-deletion.png)
 
 
 ## <a name="download-shipping-label"></a>Fuvarlevélcímke letöltése
@@ -83,11 +83,11 @@ Ha a meghajtókkal szállított fuvarlevélcímke elveszett vagy nem találja, l
 A fuvarlevélcímkék letöltéséhez kövesse az alábbi lépéseket.
 1.  Lépjen az **Áttekintés > Levélcímke letöltése** menüpontra. Ez a lehetőség csak a meghajtó kézbesítését követően érhető el. 
 
-    ![Fuvarlevélcímke letöltése](media/data-box-portal-ui-admin/download-shipping-label.png)
+    ![Fuvarlevélcímke letöltése](media/data-box-portal-ui-admin/portal-ui-admin-download-shipping-label.png)
 
 2.  Ezzel letölti a következő fuvarlevélcímkét a visszaküldéshez. Mentse a címkét, majd nyomtassa ki, és tüntesse fel a visszaküldött csomagon.
 
-    ![Példa a fuvarlevélcímkére](media/data-box-portal-ui-admin/example-shipping-label.png)
+    ![Példa a fuvarlevélcímkére](media/data-box-portal-ui-admin/portal-ui-admin-example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>Szállítási cím szerkesztése
 
@@ -97,11 +97,11 @@ A rendelés szerkesztéséhez kövesse az alábbi lépéseket.
 
 1. Lépjen a **Rendelés részletei > Szállítási cím szerkesztése** menüpontra.
 
-    ![Szállítási cím szerkesztése 1](media/data-box-portal-ui-admin/edit-shipping-address1.png)
+    ![A szállítási címek parancs szerkesztése a Rendelés részletei között](media/data-box-portal-ui-admin/portal-ui-admin-edit-shipping-address-command.png)
 
 2. Itt szerkesztheti a szállítási címet, majd mentheti a változásokat.
 
-    ![Szállítási cím szerkesztése 2](media/data-box-portal-ui-admin/edit-shipping-address2.png)
+    ![Szállítási címek szerkesztése párbeszédpanel](media/data-box-portal-ui-admin/portal-ui-admin-edit-shipping-address-dbox.png)
 
 ## <a name="edit-notification-details"></a>Értesítési adatok szerkesztése
 
@@ -111,11 +111,11 @@ Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 
 1. Lépjen a **Rendelés részletei > Értesítési adatok szerkesztése** menüpontra.
 
-    ![Értesítési adatok szerkesztése 1](media/data-box-portal-ui-admin/edit-notification-details1.png)
+    ![Értesítés részleteinek szerkesztése parancs a sorrend részletei között](media/data-box-portal-ui-admin/portal-ui-admin-edit-notification-details-command.png)
 
 2. Itt szerkesztheti az értesítési adatokat, majd mentheti a változásokat.
  
-    ![Értesítési adatok szerkesztése 2](media/data-box-portal-ui-admin/edit-notification-details2.png)
+    ![Értesítés részleteinek szerkesztése párbeszédpanel](media/data-box-portal-ui-admin/portal-ui-admin-edit-notification-details-dbox.png)
 
 ## <a name="view-order-status"></a>Rendelés állapotának megtekintése
 
@@ -128,12 +128,12 @@ Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 |Szállítás alatt     |A visszaküldött csomagot a futár átvette. <br> A szállítás az Azure-adatközpontban való fogadása után automatikusan feltölti az Azure-ba.         |
 |Megérkezett     | A meghajtókat átvették az Azure-adatközpontban. Az adatok másolása hamarosan megkezdődik.        |
 |Adatok átmásolva     |Az adatok másolása folyamatban van.<br> Várjon, amíg az adatok másolása befejeződik.         |
-|Befejezve       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
-|Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek. <br> Tekintse át a feltöltési naplókat az **áttekintésben**megadott elérési út használatával. További információt a [feltöltési hibák naplóinak letöltése](data-box-disk-troubleshoot-upload.md#download-logs)című témakörben olvashat.   |
+|Befejeződött       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
+|Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek. <br> Tekintse át a feltöltési naplókat az **áttekintésben** megadott elérési út használatával. További információt a [feltöltési hibák naplóinak letöltése](data-box-disk-troubleshoot-upload.md#download-logs)című témakörben olvashat.   |
 |Megszakítva            |A rendelés vissza lett vonva. <br> Vagy visszavonta a rendelést, vagy hiba történt, és a szolgáltatás vonta vissza.     |
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [a Data Box Disk-hibák elhárításának](data-box-disk-troubleshoot.md) módját.

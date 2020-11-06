@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: f946a657b5129f773319d73fb428fe0108bac20f
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 52772519cc3b9aebc42175e812ad47ae54b529e9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123562"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336681"
 ---
 # <a name="what-is-azure-data-box"></a>Mi az az Azure Data Box?
 
@@ -90,12 +90,12 @@ A Data Box a következő összetevőket tartalmazza:
 
 * **Data Box eszköz** – Egy fizikai eszköz, amely elsődleges tárolást biztosít, kezeli a felhőalapú tárolóval történő kommunikációt, és segít biztosítani az eszközön tárolt adatok biztonságát és titkosságát. A Data Box eszköz 80 TB hasznos tárolókapacitással rendelkezik. 
 
-    ![A Data Box elöl- és hátulnézete](media/data-box-overview/data-box-combined3.png)
+    ![A Data Box elöl- és hátulnézete](media/data-box-overview/data-box-combined.png)
 
     
 * **Data Box szolgáltatás** – Az Azure Portal bővítménye, amely lehetővé teszi a Data Box eszközök kezelését egy webes felületről, amelyet eltérő földrajzi helyekről is elérhet. A Data Box szolgáltatással elvégezheti a Data Box eszköz napi adminisztrálását. A szolgáltatásban végrehajtható feladatok a rendelések létrehozását és kezelését, a riasztások megtekintését és kezelését, valamint a megosztások kezelését foglalják magukban.  
 
-    ![A Data Box szolgáltatás az Azure Portalon](media/data-box-overview/data-box-service1.png)
+    ![A Data Box szolgáltatás az Azure Portalon](media/data-box-overview/data-box-service.png)
 
     További információt [a Data Box szolgáltatás a Data Box eszköz felügyeletére történő használatát](data-box-portal-ui-admin.md) ismertető cikkben talál.
 
@@ -149,7 +149,7 @@ A Data Box a szolgáltatás üzembe helyezése, az adott ország/régió, valami
 - **Cél Storage-fiókok** – az adattárolást tároló fiókok az összes Azure-régióban elérhetők, ahol a szolgáltatás elérhető.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [Data Box rendszerkövetelményeinek](data-box-system-requirements.md) áttekintése.
 - A [Data Box korlátjainak](data-box-limits.md) értelmezése.

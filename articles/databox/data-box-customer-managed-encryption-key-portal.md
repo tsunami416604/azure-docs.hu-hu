@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 31147d534109e0d74d33d102075c69eeb703496e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40b777342c2c565efc5b40d361a259c98eae693c
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739935"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337706"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box
 
@@ -47,7 +47,7 @@ Az ügyfél által felügyelt kulcs konfigurálása a Azure Data Box esetében n
 
     ![Data Box sorrend áttekintő panelje](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-1.png)
 
-2. Lépjen a **beállítások > titkosítás menüpontra**. A **titkosítás típusa**területen kiválaszthatja, hogyan szeretné védelemmel ellátni az eszköz zárolási kulcsát. Alapértelmezés szerint a rendszer egy Microsoft által felügyelt kulcsot használ az eszköz feloldási jelszavának biztosításához. 
+2. Lépjen a **beállítások > titkosítás menüpontra**. A **titkosítás típusa** területen kiválaszthatja, hogyan szeretné védelemmel ellátni az eszköz zárolási kulcsát. Alapértelmezés szerint a rendszer egy Microsoft által felügyelt kulcsot használ az eszköz feloldási jelszavának biztosításához. 
 
     ![Titkosítási lehetőség kiválasztása](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-2.png)
 
@@ -55,44 +55,44 @@ Az ügyfél által felügyelt kulcs konfigurálása a Azure Data Box esetében n
 
     ![Ügyfél által felügyelt kulcs kiválasztása](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-3.png)
 
-5. Az előfizetést a Azure Key Vault panelen a **kulcs kiválasztásával** automatikusan kitölti a rendszer. A **Key Vault**esetében választhat egy meglévő kulcstartót a legördülő listából.
+4. Az előfizetést a Azure Key Vault panelen a **kulcs kiválasztásával** automatikusan kitölti a rendszer. A **Key Vault** esetében választhat egy meglévő kulcstartót a legördülő listából.
 
-    ![Új Azure Key Vault létrehozása](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-31.png)
+    ![Meglévő Azure Key Vault kiválasztása](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-3-a.png)
 
-    Új kulcstartó létrehozásához az **új létrehozása** lehetőséget is választhatja. A **Key Vault létrehozása**panelen adja meg az erőforráscsoportot és a kulcstároló nevét. Győződjön meg arról, hogy a helyreállítható **törlési** és törlési **védelem** engedélyezve van. Fogadja el az összes többi alapértelmezett beállítást. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
+    Új kulcstartó létrehozásához az **új létrehozása** lehetőséget is választhatja. A **Key Vault létrehozása** panelen adja meg az erőforráscsoportot és a kulcstároló nevét. Győződjön meg arról, hogy a helyreállítható **törlési** és törlési **védelem** engedélyezve van. Fogadja el az összes többi alapértelmezett beállítást. Válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
-    ![Új Azure Key Vault létrehozása 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
+    ![Azure Key Vault áttekintése és létrehozása](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
-7. Tekintse át a kulcstartóhoz tartozó információkat, és válassza a **Létrehozás**lehetőséget. Várjon pár percet, amíg a Key Vault létrehozása befejeződik.
+5. Tekintse át a kulcstartóhoz tartozó információkat, és válassza a **Létrehozás** lehetőséget. Várjon pár percet, amíg a Key Vault létrehozása befejeződik.
 
-    ![Azure Key Vault létrehozása](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
+    ![Azure Key Vault létrehozása a beállításokkal](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
 
-8. A **válasszon kulcsot Azure Key Vault közül**választhat egy kulcsot a meglévő kulcstartóban.
+6. A **válasszon kulcsot Azure Key Vault közül** választhat egy kulcsot a meglévő kulcstartóban.
 
-    ![Új kulcs létrehozása Azure Key Vault 3](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
+    ![Válassza ki a kulcsot Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
 
-9. Ha új kulcsot szeretne létrehozni, válassza az **új létrehozása** elemet a kulcs létrehozásához. Az RSA-kulcs mérete 2048 vagy nagyobb lehet.
+7. Ha új kulcsot szeretne létrehozni, válassza az **új létrehozása** elemet a kulcs létrehozásához. Az RSA-kulcs mérete 2048 vagy nagyobb lehet.
 
-    ![Új kulcs létrehozása Azure Key Vault 4](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
+    ![Új kulcs létrehozása Azure Key Vaultban](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6-a.png)
 
-10. Adja meg a kulcs nevét, fogadja el a többi alapértelmezett értéket, majd válassza a **Létrehozás**lehetőséget. 
+8. Adja meg a kulcs nevét, fogadja el a többi alapértelmezett értéket, majd válassza a **Létrehozás** lehetőséget.
 
-    ![Új kulcs létrehozása](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
+    ![Új kulcs neve](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
 
 
-11. Értesítést kap arról, hogy a Key vaultban létrejön egy kulcs. Válassza ki a **verziót** , majd válassza a **kiválasztás**lehetőséget.
+9. Értesítést kap arról, hogy a Key vaultban létrejön egy kulcs. Válassza ki a **verziót** , majd válassza a **kiválasztás** lehetőséget.
 
-    ![A Key vaultban létrehozott új kulcs](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8.png)
+    ![Új kulcs verziójának kiválasztása](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8.png)
 
-12. A **titkosítás típusa** ablaktáblán látható a Key Vault és az ügyfél által felügyelt kulcshoz kiválasztott kulcs.
+10. A **titkosítás típusa** ablaktáblán látható a Key Vault és az ügyfél által felügyelt kulcshoz kiválasztott kulcs.
 
     ![Kulcs és kulcstartó az ügyfél által felügyelt kulcshoz](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-9.png)
 
-13. Mentse a kulcsot. 
+11. Mentse a kulcsot. 
 
     ![Ügyfél által felügyelt kulcs mentése](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-10.png)
 
-    A kulcs URL-címe a **titkosítás típusa**alatt jelenik meg.
+    A kulcs URL-címe a **titkosítás típusa** alatt jelenik meg.
 
     ![Ügyfél által felügyelt kulcs URL-címe](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-11.png)
 
@@ -114,6 +114,6 @@ Ha az ügyfél által felügyelt kulccsal kapcsolatos hibákat kap, a hibaelhár
 | Általános hiba  | A hitelesítő kulcs beolvasása sikertelen.| Ez egy általános hiba. A hiba megoldásához forduljon a Microsoft ügyfélszolgálatahoz, és határozza meg a következő lépéseket.|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az Azure Key Vault](../key-vault/general/overview.md)?

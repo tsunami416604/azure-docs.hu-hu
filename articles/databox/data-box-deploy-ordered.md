@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 400c5bd4dd31daaf826ed63ada75266d4ab3099c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a73005580c9b7ddeae17e3e0490aa586bd9b0fbb
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313216"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335797"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -89,7 +89,7 @@ You have logged in. Now let us find all the subscriptions to which you have acce
 
 **A Azure Data Box CLI bővítmény telepítése**
 
-A Azure Data Box CLI-parancsok használata előtt telepítenie kell a bővítményt. Az Azure CLI-bővítmények hozzáférést biztosítanak azokhoz a kísérleti és kiadás előtti parancsokhoz, amelyek az alap CLI-vel még nincsenek szállítva. További információ a bővítményekről: [bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
+A Azure Data Box CLI-parancsok használata előtt telepítenie kell a bővítményt. Az Azure CLI-bővítmények hozzáférést biztosítanak azokhoz a kísérleti és kiadás előtti parancsokhoz, amelyek az alap CLI-vel még nincsenek szállítva. További információ a bővítményekről: [Bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
 
 A Azure Data Box-bővítmény telepítéséhez futtassa a következő `az extension add --name databox` parancsot:
 
@@ -123,7 +123,7 @@ Ha a bővítmény telepítése sikeresen megtörtént, a következő kimenet jel
 
 Az Azure által üzemeltetett interaktív rendszerhéj-környezetet [Azure Cloud Shell](https://shell.azure.com/)használhatja a BÖNGÉSZŐBEN a CLI-parancsok futtatásához. Azure Cloud Shell támogatja a bash vagy a Windows PowerShellt az Azure-szolgáltatásokkal. Az Azure CLI előre telepítve és konfigurálva van a fiókjával való használatra. Kattintson a Cloud Shell gombra a Azure Portal jobb felső részén található menüben:
 
-![Cloud Shell](../storage/common/media/storage-quickstart-create-account/cloud-shell-menu.png)
+![Cloud Shell menü kijelölése](../storage/common/media/storage-quickstart-create-account/cloud-shell-menu.png)
 
 A gomb egy interaktív felületet indít el, amelyet a jelen útmutatóban ismertetett lépések futtatására használhat.
 
@@ -215,11 +215,11 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 1. Microsoft Azure hitelesítő adatai használatával jelentkezzen be ezen az URL-címen: [https://portal.azure.com](https://portal.azure.com).
 2. Válassza az **+ Erőforrás létrehozása** lehetőséget, és keressen rá az *Azure Data Box* kifejezésre. Válassza az **Azure Data Box** lehetőséget.
 
-   ![Képernyőkép az új szakaszról Azure Data Box a keresőmezőbe.](media/data-box-deploy-ordered/select-data-box-import-02.png)
+   ![Képernyőkép az új szakaszról Azure Data Box a keresőmezőbe](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
-   ![Képernyőkép az Azure Data Box szakaszról, a Create (létrehozás) lehetőséggel.](media/data-box-deploy-ordered/select-data-box-import-03.png)
+   ![Képernyőkép az Azure Data Box szakasz létrehozási lehetőségével](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. Ellenőrizze, hogy a Data Box szolgáltatás elérhető-e a régióban. Adja meg vagy válassza ki a következő információkat, majd válassza az **Alkalmaz** lehetőséget.
 
@@ -231,11 +231,11 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
     |Forrásország/-régió    |    Válassza ki azt az országot vagy régiót, ahol az adatok jelenleg találhatók.         |
     |Azure-beli célrégió     |     Válassza ki azt az Azure-régiót, ahova át szeretné vinni az adatokat. <br> További információt a [regionális elérhetőséget](data-box-overview.md#region-availability) tárgyaló témakörben talál.            |
 
-    [![Azure Data Box importálási sorrend](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
+    [![Azure Data Box importálási sorrend elindítása](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
 
 5. Válassza a **Data Box** lehetőséget. Egy megrendelés maximális felhasználható kapacitása 80 TB. Nagyobb mennyiségű adat esetén több rendelést is létrehozhat.
 
-    ![Képernyőkép a választható adatméretekről: Data Box Disk 40 terabájt, Data Box 100 terabájt, Data Box Heavy, 1000 terabájt, és küldje el a saját lemezeit 1 terabájt.](media/data-box-deploy-ordered/select-data-box-import-05.png)
+    ![Elérhető adatméretek: Data Box Disk, 40 terabájt; Data Box, 100 terabájt; Data Box Heavy, 1000 terabájt; Saját lemezek küldése, 1 terabájt](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
 6. A **sorrendben** válassza az **alapok** lapot. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Tovább: adatok célhelye>** elemet.
 
@@ -245,7 +245,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
     |Erőforráscsoport    | A korábban kiválasztott erőforráscsoport. |
     |Importálási rendelés neve | Adjon meg egy rövid nevet a megrendelés nyomon követéséhez. <br> A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.    |
 
-    ![Képernyőkép a varázsló alapjairól, amely a megfelelő információkkal bővült.](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![Data Box importálási sorrend varázsló, alapbeállítások képernyő, a megfelelő információkkal kitöltve](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
     Alapértelmezés szerint az eszköz zárolásának feloldására szolgáló jelszó Microsoft által felügyelt kulccsal van titkosítva. A megrendelés befejezése után hozzáadhat egy ügyfél által felügyelt kulcsot. Az ügyfél által felügyelt kulcs lehetővé teszi, hogy az Azure Key Vault-kulcsból saját kulcsot használjon az eszköz feloldási jelszavának a megvédése érdekében. További információ: [az ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box](data-box-customer-managed-encryption-key-portal.md).
 
@@ -253,7 +253,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
     Ha a Storage- **fiók (ok)** tároló célhelyként használja, a következő képernyőkép jelenik meg:
 
-    ![Azure Data Box adatcélhely](media/data-box-deploy-ordered/select-data-box-import-07.png)
+    ![Data Box importálási sorrend varázsló, az adatcélhely képernyő, és a Storage-fiókok kijelölve](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
     A megadott Azure-régió alapján válasszon ki egy vagy több tárfiókot a meglévő tárfiókok szűrt listájából. A Data Box legfeljebb 10 tárfiókkal köthető össze. Létrehozhat egy új **Általános célú v1** , **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is.
 
@@ -265,7 +265,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
     |---------|---------|
     |Erőforráscsoportok     | Hozzon létre új erőforráscsoportokat, ha felügyelt lemezeket szeretne létrehozni helyszíni VHD-kből. Meglévő erőforráscsoportot csak akkor használhat, ha az erőforráscsoportot korábban hozták létre a felügyelt lemez Data Box szolgáltatás általi Data Box rendelésének létrehozásakor. <br> Adjon meg több erőforráscsoportot, pontosvesszővel elválasztva. Legfeljebb 10 erőforráscsoport használata támogatott.|
 
-    ![Képernyőfelvétel: a varázsló adat célja lépését bemutató képernyőkép a megfelelő információval kitöltve.](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![Data Box importálási sorrend varázsló, az adatcél képernyő, és a Managed Disks kiválasztva](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     A felügyelt lemezekhez megadott tárfiókot előkészítési tárfiókként használja a rendszer. A Data Box szolgáltatás lapblobként tölti fel a VHD-ket az előkészítési tárfiókba, majd felügyelt lemezekké konvertálja, és áthelyezi az erőforráscsoportba. További információ: [Az Azure-ba történő adatfeltöltés ellenőrzése](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
    > [!NOTE]
@@ -277,23 +277,23 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
     A **biztonsági** képernyőn megjelenő összes beállítás nem kötelező. Ha nem módosítja a beállításokat, az alapértelmezett beállítások lesznek érvényesek.
 
-    ![Data Box importálási sorrend biztonsági képernyője](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
+    ![A Data Box importálási sorrend varázsló biztonsági képernyője](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
 
-1. Ha nem szeretné, hogy a rendszer által generált jelszavakat Azure Data Box alapértelmezetten használja, bontsa ki **a saját jelszó** használata lehetőséget.
+8. Ha nem szeretné, hogy a rendszer által generált jelszavakat Azure Data Box alapértelmezetten használja, bontsa ki **a saját jelszó** használata lehetőséget.
 
    A rendszer által létrehozott jelszavak biztonságosak, és csak akkor ajánlott, ha a szervezet más nem igényel.
 
-   ![A saját jelszó beállításainak kibontása Data Box importálási sorrendhez](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
+   ![A saját jelszavas beállítások kibontása Data Box importálási sorrend biztonsági képernyőjén](media/data-box-deploy-ordered/select-data-box-import-security-02.png)
 
    - Ha saját jelszavát szeretné használni az új eszközhöz, az **eszköz jelszavának beállításával** válassza a **saját jelszó használata** lehetőséget, és írjon be egy jelszót, amely megfelel a biztonsági követelményeknek.
    
-     ![Biztonsági képernyő Data Box importáláshoz, a saját eszköz jelszavának használatára vonatkozó beállítások](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
+     ![A saját eszköz jelszavának használatának lehetőségei a Data Box importálási sorrendjének biztonsági képernyőjén](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
    - Saját jelszavak használata megosztásokhoz:
 
      1. A **jelszavak megosztása** beállításnál válassza a **saját jelszavak használata** lehetőséget, majd **válassza a megosztások jelszavait**.
      
-        ![Biztonsági képernyő Data Box importáláshoz, a saját megosztási jelszavak használatára vonatkozó beállítások](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+        ![A saját megosztási jelszavainak használatára vonatkozó beállítások a Data Box importálási sorrendjének biztonsági képernyőjén](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
      1. A sorrendben adja meg az egyes Storage-fiókok jelszavát. A jelszót a rendszer a Storage-fiók összes megosztásán használni fogja.
      
@@ -303,9 +303,9 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
        A **Biztonság** képernyőn **megtekintheti vagy módosíthatja a jelszavakat** a jelszavak módosításához.
 
-1. Ha a **biztonságban** engedélyezni szeretné a szoftveres kettős titkosítást, bontsa ki a **kettős titkosítás (a biztonságos környezetek esetében)** elemet, és válassza **a rendeléshez a dupla titkosítás engedélyezése** lehetőséget.
+9. Ha a **biztonságban** engedélyezni szeretné a szoftveres kettős titkosítást, bontsa ki a **kettős titkosítás (a biztonságos környezetek esetében)** elemet, és válassza **a rendeléshez a dupla titkosítás engedélyezése** lehetőséget.
 
-   ![Biztonsági képernyő Data Box importáláshoz, szoftveres titkosítás engedélyezése Data Box-rendeléshez](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
+   ![A szoftveres titkosítás engedélyezésének lehetőségei a Data Box importálási sorrendjének biztonsági képernyőjén](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
    A szoftveres titkosítás a Data Box lévő adatok AES-256 bites titkosításán felül történik.
 
@@ -314,29 +314,29 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
    A folytatáshoz válassza a **tovább lehetőséget: kapcsolattartási adatok** .
 
-8. A **kapcsolattartási adatok** területen válassza a **+ szállítási címek hozzáadása** elemet.
+10. A **kapcsolattartási adatok** területen válassza a **+ szállítási címek hozzáadása** elemet.
 
-    ![Képernyőfelvétel: a varázsló kapcsolattartási adatokkal kapcsolatos lépése, amely a szállítási címek hozzáadása lehetőséggel jelenik meg.](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![A kapcsolattartási adatok képernyőn adja meg a szállítási címeket a Azure Data Box importálási sorrendjéhez](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
-9. A **Szállítási cím** területen adja meg a vezeték- és utónevét, a vállalata nevét és postai címét, valamint egy érvényes telefonszámot. Válassza a **Cím ellenőrzése** lehetőséget. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről.
+11. A **szállítási cím mezőben** adja meg az utónév és a vezetéknév nevét, a vállalat nevét és postai címeit, valamint egy érvényes telefonszámot. Ezután válassza a **címek ellenőrzése** lehetőséget. A szolgáltatás a címen ellenőrzi a szolgáltatás elérhetőségét. Ha a szolgáltatás elérhető a szállítási címen, értesítést kap ennek a hatásnak.
 
-   ![Képernyőkép a szállítási címek hozzáadása párbeszédpanelről, amelyen a szállítás lehetőség és a szállítási címek hozzáadása lehetőség látható.](media/data-box-deploy-ordered/select-data-box-import-10.png)
+     ![Szállítási címek hozzáadása párbeszédpanel, és a szállítási címek hozzáadása lehetőség használatával](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
-   Ha az önfelügyelt szállítást választotta, a megrendelés sikeres elhelyezése után e-mailben értesítést fog kapni. Az önfelügyelt szállítással kapcsolatos további információkért lásd: [saját üzemeltetésű szállítás használata](data-box-portal-customer-managed-shipping.md).
+    Ha az önfelügyelt szállítást választotta, a megrendelés sikeres elhelyezése után e-mailben értesítést fog kapni. Az önfelügyelt szállítással kapcsolatos további információkért lásd: [saját üzemeltetésű szállítás használata](data-box-portal-customer-managed-shipping.md).
 
-10. Válassza a **szállítási címek hozzáadása** lehetőséget a szállítási adatok sikeres ellenőrzése után. Vissza fog térni a **kapcsolattartási adatok** lapra.
+12. Válassza a **szállítási címek hozzáadása** lehetőséget a szállítási adatok sikeres ellenőrzése után. Vissza fog térni a **kapcsolattartási adatok** lapra.
 
-11. Miután visszatért a **kapcsolattartási adatokhoz** , adjon hozzá egy vagy több e-mail-címet. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre.
+13. Miután visszatért a **kapcsolattartási adatokhoz** , adjon hozzá egy vagy több e-mail-címet. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre.
 
     Javasoljuk a csoportos e-mail-cím használatát, hogy az értesítéseket a rendszergazda távollétében is kézhez kaphassa.
 
-    ![Képernyőkép az e-mail szakaszról a megrendelés varázsló kapcsolattartási adatok lépésében, az E-mail szövegmezővel és a Next: Review és Order lehetőséggel.](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![E-mail szakasz a kapcsolattartási adatokhoz a megrendelés varázslóban](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
 12. Tekintse át a **felülvizsgálati** és a megrendeléssel kapcsolatos információkat a rendeléssel, kapcsolatfelvételsel, értesítéssel és adatvédelmi feltételekkel kapcsolatban. Jelölje ki az adatvédelmi feltételek elfogadásához tartozó jelölőnégyzetet.
 
 13. Válassza a **Megrendelés** lehetőséget. A megrendelés létrehozása néhány percet vesz igénybe.
 
-    ![A sorrend varázsló képernyőképe, amely a felülvizsgálati és a rendelési lépést, valamint a sorrendet mutatja.](media/data-box-deploy-ordered/select-data-box-import-11.png)
+    ![A megrendelés varázsló áttekintése és sorrendje képernyője](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -526,11 +526,11 @@ Ha nem áll rendelkezésre eszköz, értesítést fog kapni. Ha van elérhető e
 
 Az eszköz előkészítésének befejeztével a portálon a megrendelés **Feldolgozott** állapotban jelenik meg.
 
-![Data Box rendelés feldolgozva](media/data-box-overview/data-box-order-status-processed.png)
+![A feldolgozott Data Box sorrend](media/data-box-overview/data-box-order-status-processed.png)
 
 A Microsoft ezután előkészíti, majd feladja a csomagot egy regionális fuvarozónál. Az eszköz feladását követően Ön megkapja a fuvarlevélszámot. A portál a **Feladva** állapotot mutatja.
 
-![Data Box rendelés feladva](media/data-box-overview/data-box-order-status-dispatched.png)
+![Az elküldött Data Box sorrend](media/data-box-overview/data-box-order-status-dispatched.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -838,7 +838,7 @@ PS C:\Windows>
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a Azure Data Box cikkeket, például a következőket:
 

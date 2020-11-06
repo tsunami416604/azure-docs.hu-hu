@@ -1,16 +1,16 @@
 ---
-title: Oktatóanyag – NSX-T hálózati szegmens létrehozása az Azure VMware-megoldásban
-description: Ismerje meg, hogyan hozhatja létre a virtuális gépekhez használt NSX-T hálózati szegmenseket a vCenter-ben
+title: Oktatóanyag – NSX-T hálózati szegmens hozzáadása az Azure VMware-megoldásban
+description: Megtudhatja, hogyan hozhat létre NSX-T hálózati szegmenst a virtuális gépekhez a vCenter-ben.
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: f88f186d2af10bcc114d64920a3ac489ef7be54f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 11/09/2020
+ms.openlocfilehash: 8ecb37a42e2986bd1c6261b8fe6c23382323b31d
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367669"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335048"
 ---
-# <a name="tutorial-create-an-nsx-t-network-segment-in-azure-vmware-solution"></a>Oktatóanyag: NSX-T hálózati szegmens létrehozása az Azure VMware-megoldásban
+# <a name="tutorial-add-a-network-segment-in-azure-vmware-solution"></a>Oktatóanyag: hálózati szegmens hozzáadása az Azure VMware megoldásban 
 
 A vCenter-ben létrehozott virtuális gépek (VM-EK) az NSX-T-ben létrehozott hálózati szegmensekre kerülnek, és a vCenter láthatók.
 
@@ -23,60 +23,22 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy, a vCenter és a NSX-T kezelő felügyeleti felületek elérését biztosító Azure VMware-megoldás saját felhővel. További információt a [hálózatkezelés konfigurálása](tutorial-configure-networking.md) oktatóanyagban talál.
+Egy Azure VMware-megoldás saját felhője, amely hozzáféréssel rendelkezik a vCenter és a NSX-T Manager felületekhez. További információt a [hálózatkezelés konfigurálása](tutorial-configure-networking.md) oktatóanyagban talál.
 
-## <a name="provision-a-network-segment-in-nsx-t"></a>Hálózati szegmens kiépítése a NSX-T-ben
+## <a name="add-a-network-segment"></a>Hálózati szegmens hozzáadása
 
-1. A privát felhő vCenter válassza a **SDDC-Datacenter > hálózatok** lehetőséget, és figyelje meg, hogy még nincsenek hálózatok.
+[!INCLUDE [add-network-segment-steps](includes/add-network-segment-steps.md)]
 
-   :::image type="content" source="media/nsxt/vcenter-without-ls01.png" alt-text="A privát felhő vCenter válassza a SDDC-Datacenter > Networks lehetőséget, és vegye figyelembe, hogy még nincsenek hálózatok.":::
+## <a name="next-steps"></a>További lépések
 
-1. A privát felhőhöz tartozó NSX-T Managerben válassza a **hálózatkezelés**lehetőséget.
+Ebben az oktatóanyagban létrehozott egy NSX-T hálózati szegmenst, amelyet a vCenter-ben lévő virtuális gépekhez használhat. 
 
-   :::image type="content" source="media/nsxt/nsxt-network-overview.png" alt-text="A privát felhő vCenter válassza a SDDC-Datacenter > Networks lehetőséget, és vegye figyelembe, hogy még nincsenek hálózatok.":::
+A következő ismereteket sajátította el: 
 
-1. Válassza a **szegmensek**lehetőséget.
+- [DHCP létrehozása és kezelése az Azure VMware-megoldáshoz](manage-dhcp.md)
+- [Tartalom-függvénytár létrehozása virtuális gépek üzembe helyezéséhez az Azure VMware-megoldásban](deploy-vm-content-library.md) 
+- [Helyszíni helyi környezetek saját felhőhöz](tutorial-expressroute-global-reach-private-cloud.md)
 
-   :::image type="content" source="media/nsxt/nsxt-select-segments.png" alt-text="A privát felhő vCenter válassza a SDDC-Datacenter > Networks lehetőséget, és vegye figyelembe, hogy még nincsenek hálózatok.":::
-
-1. A NSX-T szegmensek – Áttekintés lapon válassza a **szegmens hozzáadása**elemet. Három szegmens jön létre a saját felhőalapú kiépítés részeként, és nem használható virtuális gépekhez.  Ehhez a célhoz új hálózati szegmenst kell hozzáadnia.
-
-   :::image type="content" source="media/nsxt/nsxt-segments-overview.png" alt-text="A privát felhő vCenter válassza a SDDC-Datacenter > Networks lehetőséget, és vegye figyelembe, hogy még nincsenek hálózatok.":::
-
-1. Nevezze el a szegmenst, válassza ki az előre konfigurált Tier1-átjárót (TNTxx-T1) **csatlakoztatott átjáróként**, hagyja meg a **típust** rugalmasként, válassza az előre konfigurált átfedéses **átviteli zónát** (TNTxx-overlay-TZ), majd válassza az alhálózatok beállítása lehetőséget. Az ebben a szakaszban szereplő összes egyéb beállítás, valamint a **portok** és **szegmensek profiljai** az alapértelmezett konfigurációban maradhatnak.
-
-   :::image type="content" source="media/nsxt/nsxt-create-segment-specs.png" alt-text="A privát felhő vCenter válassza a SDDC-Datacenter > Networks lehetőséget, és vegye figyelembe, hogy még nincsenek hálózatok.":::
-
-1. Állítsa be az átjáró IP-címét az új szegmenshez, majd válassza a **Hozzáadás**lehetőséget. Az Ön által használt IP-címnek egy nem átfedésben lévő RFC1918 kell lennie, amely biztosítja, hogy az új szegmensben lévő virtuális gépekhez is csatlakozhat.
-
-   :::image type="content" source="media/nsxt/nsxt-create-segment-gateway.png" alt-text="A privát felhő vCenter válassza a SDDC-Datacenter > Networks lehetőséget, és vegye figyelembe, hogy még nincsenek hálózatok.":::
-
-1. Alkalmazza az új hálózati szegmenst az **alkalmaz** gombra kattintva, majd mentse a **konfigurációt mentéssel.**
-
-   :::image type="content" source="media/nsxt/nsxt-create-segment-apply.png" alt-text="A privát felhő vCenter válassza a SDDC-Datacenter > Networks lehetőséget, és vegye figyelembe, hogy még nincsenek hálózatok.":::
-
-   :::image type="content" source="media/nsxt/nsxt-create-segment-save.png" alt-text="A privát felhő vCenter válassza a SDDC-Datacenter > Networks lehetőséget, és vegye figyelembe, hogy még nincsenek hálózatok.":::
-
-1. Ekkor létrejött az új hálózati szegmens, és a **nem**lehetőség kiválasztásával elutasítja a szegmens konfigurálásának folytatását.
-
-   :::image type="content" source="media/nsxt/nsxt-create-segment-continue-no.png" alt-text="A privát felhő vCenter válassza a SDDC-Datacenter > Networks lehetőséget, és vegye figyelembe, hogy még nincsenek hálózatok.":::
-
-1. Erősítse meg az új hálózati szegmenst a NSX-T-ben a **hálózatkezelés > szegmensek** lehetőség kiválasztásával és az új szegmens megjelenítésével (ebben az esetben "ls01").
-
-   :::image type="content" source="media/nsxt/nsxt-new-segment-overview-2.png" alt-text="A privát felhő vCenter válassza a SDDC-Datacenter > Networks lehetőséget, és vegye figyelembe, hogy még nincsenek hálózatok.":::
-
-1. Erősítse meg, hogy az új hálózati szegmens megtalálható a vCenter-ben: válassza a **hálózatkezelés > SDDC-Datacenter** lehetőséget, és figyelje meg, hogy az új szegmens szerepel-e a listán (ebben az esetben "ls01").
-
-   :::image type="content" source="media/nsxt/vcenter-with-ls01-2.png" alt-text="A privát felhő vCenter válassza a SDDC-Datacenter > Networks lehetőséget, és vegye figyelembe, hogy még nincsenek hálózatok.":::
-
-## <a name="next-steps"></a>Következő lépések
-
-Ebben az oktatóanyagban létrehozta a virtuális gépekhez használt NSX-T hálózati szegmenseket a vCenter-ben. Mostantól [létrehozhat egy tartalomkezelőt a virtuális gépek Azure VMware-megoldásban való üzembe helyezéséhez](deploy-vm-content-library.md). Az oktatóanyagban létrehozott hálózaton is üzembe helyezhet egy virtuális gépet.
-
-Ha nem, folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre ExpressRoute-Global Reach a privát felhőhöz egy Azure VMware-megoldásban.
-
-> [!div class="nextstepaction"]
-> [Helyszíni helyi környezetek saját felhőhöz](tutorial-expressroute-global-reach-private-cloud.md)
 
 <!-- LINKS - external-->
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 83afdf7e9dc50e50d747db99cd8439d75e6f7804
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 27372207df66b4198bd9c785ecc099fa88cbe548
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167814"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335694"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Hibaelhárítás: nem sikerült törölni a virtuális hálózatot az Azure-ban
 
@@ -31,10 +31,11 @@ Előfordulhat, hogy hibaüzeneteket kap, amikor Microsoft Azure-ben próbál meg
 
 1. [Győződjön meg arról, hogy a virtuális hálózati átjáró fut-e a virtuális hálózaton](#check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network).
 2. [Győződjön meg arról, hogy fut-e az Application Gateway a virtuális hálózaton](#check-whether-an-application-gateway-is-running-in-the-virtual-network).
-3. [Győződjön meg arról, hogy a Azure Active Directory tartományi szolgáltatás engedélyezve van-e a virtuális hálózaton](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network).
-4. [Győződjön meg arról, hogy a virtuális hálózat más erőforráshoz van csatlakoztatva](#check-whether-the-virtual-network-is-connected-to-other-resource).
-5. [Győződjön meg arról, hogy a virtuális gép továbbra is fut-e a virtuális hálózaton](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network).
-6. [Győződjön meg arról, hogy a virtuális hálózat beragadt-e az áttelepítés során](#check-whether-the-virtual-network-is-stuck-in-migration).
+3. [Győződjön meg arról, hogy az Azure Container instances még léteznek a virtuális hálózaton](#check-whether-azure-container-instances-still-exist-in-the-virtual-network).
+4. [Győződjön meg arról, hogy a Azure Active Directory tartományi szolgáltatás engedélyezve van-e a virtuális hálózaton](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network).
+5. [Győződjön meg arról, hogy a virtuális hálózat más erőforráshoz van csatlakoztatva](#check-whether-the-virtual-network-is-connected-to-other-resource).
+6. [Győződjön meg arról, hogy a virtuális gép továbbra is fut-e a virtuális hálózaton](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network).
+7. [Győződjön meg arról, hogy a virtuális hálózat beragadt-e az áttelepítés során](#check-whether-the-virtual-network-is-stuck-in-migration).
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
@@ -59,6 +60,19 @@ Nyissa meg a virtuális hálózat **Áttekintés** lapját. Keresse meg az Appli
 ![Képernyőkép a Azure Portal virtuális hálózatához csatlakoztatott eszközök listájáról. Az Application Gateway ki van emelve a listában.](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 Ha van egy Application Gateway, el kell távolítania a virtuális hálózat törlése előtt.
+
+### <a name="check-whether-azure-container-instances-still-exist-in-the-virtual-network"></a>Győződjön meg arról, hogy az Azure Container instances még léteznek a virtuális hálózaton
+
+1. A Azure Portal nyissa meg az erőforráscsoport **Áttekintés** lapját.
+1. Az erőforráscsoport erőforrásai listájának fejlécében válassza a **rejtett típusok megjelenítése** lehetőséget. Alapértelmezés szerint a hálózati profil típusa rejtett a Azure Portal.
+1. Válassza ki a tároló csoportokhoz kapcsolódó hálózati profilt.
+1. Válassza a **Törlés** elemet.
+
+   ![Képernyőkép a rejtett hálózati profilok listájáról.](media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png)
+
+1. Törölje újra az alhálózatot vagy a virtuális hálózatot.
+
+Ha ezek a lépések nem oldják meg a problémát, használja ezeket az [Azure CLI-parancsokat](https://docs.microsoft.com/azure/container-instances/container-instances-vnet#clean-up-resources) az erőforrások törléséhez. 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>Annak megállapítása, hogy a Azure Active Directory tartományi szolgáltatás engedélyezve van-e a virtuális hálózaton
 

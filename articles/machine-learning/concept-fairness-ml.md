@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 3f051d9fc1599c0877e1e8a58935d09d224ce22b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 459cb1f7ea6c756b8cf6eba70af5ebabe76cc8b0
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88689677"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335758"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>A gépi tanulási modellek tisztaságának enyhítése (előzetes verzió)
 
 Ismerje meg, hogy a gépi tanulás és a [Fairlearn](https://fairlearn.github.io/) nyílt forráskódú Python-csomag Hogyan csökkentheti a gépi tanulási modellek tisztességes problémáit. Ha nem tesz erőfeszítéseket a tisztességgel kapcsolatos problémák megismerésére és a tisztességes értékelésre a gépi tanulási modellek létrehozásakor, létrehozhat olyan modelleket, amelyek tisztességtelen eredményeket hoznak létre.
 
-A Fairlearn nyílt forráskódú csomagra vonatkozó [felhasználói útmutató](https://fairlearn.github.io/user_guide/index.html) következő összefoglalása leírja, hogyan használhatja azt a kiépített AI-rendszerek tisztaságának értékeléséhez.  A nyílt forráskódú Fairlearn-csomag olyan lehetőségeket is kínál, amelyek segítenek enyhíteni vagy csökkenteni a megfigyelt tisztességgel kapcsolatos problémákat.  Tekintse meg az útmutató és a [minta jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) , amelyek lehetővé teszik a mesterséges intelligencia [-](how-to-machine-learning-fairness-aml.md) rendszerek értékelését az Azure Machine Learningon való képzés során.
+A Fairlearn nyílt forráskódú csomagra vonatkozó [felhasználói útmutató](https://fairlearn.github.io/master/user_guide/index.html) következő összefoglalása leírja, hogyan használhatja azt a kiépített AI-rendszerek tisztaságának értékeléséhez.  A nyílt forráskódú Fairlearn-csomag olyan lehetőségeket is kínál, amelyek segítenek enyhíteni vagy csökkenteni a megfigyelt tisztességgel kapcsolatos problémákat.  Tekintse meg az útmutató és a [minta jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) , amelyek lehetővé teszik a mesterséges intelligencia [-](how-to-machine-learning-fairness-aml.md) rendszerek értékelését az Azure Machine Learningon való képzés során.
 
 
 ## <a name="what-is-fairness-in-machine-learning-models"></a>Mi a tisztességes a gépi tanulási modellekben?
@@ -51,7 +51,7 @@ Ezek az összetevők együtt lehetővé teszik az adatszakértők és az üzleti
 
 ## <a name="assess-fairness-in-machine-learning-models"></a>A tisztességesség értékelése a gépi tanulási modellekben
 
-A Fairlearn nyílt forráskódú csomagjában a méltányosság fogalma a **csoport méltányosság**néven ismert megközelítése, amely megkérdezi, hogy mely személyeknek van kockázata az ártalmak felderítésére? A kapcsolódó csoportok, más néven alpopulációk, **bizalmas szolgáltatásokkal** vagy bizalmas attribútumokkal vannak meghatározva. Az érzékeny funkciók a Fairlearn nyílt forráskódú csomagjában, vektorként vagy nevű mátrixként lesznek átadva  `sensitive_features` . A kifejezés azt sugallja, hogy a rendszertervezőnek érzékenynek kell lennie ezekre a funkciókra a csoport tisztességének értékelésekor. 
+A Fairlearn nyílt forráskódú csomagjában a méltányosság fogalma a **csoport méltányosság** néven ismert megközelítése, amely megkérdezi, hogy mely személyeknek van kockázata az ártalmak felderítésére? A kapcsolódó csoportok, más néven alpopulációk, **bizalmas szolgáltatásokkal** vagy bizalmas attribútumokkal vannak meghatározva. Az érzékeny funkciók a Fairlearn nyílt forráskódú csomagjában, vektorként vagy nevű mátrixként lesznek átadva  `sensitive_features` . A kifejezés azt sugallja, hogy a rendszertervezőnek érzékenynek kell lennie ezekre a funkciókra a csoport tisztességének értékelésekor. 
 
 Egy dolog, ami szem előtt tartja, hogy ezek a funkciók tartalmaznak-e adatvédelmi következményeket a magánjellegű adatok miatt. A "bizalmas" szó azonban nem jelenti azt, hogy ezek a funkciók nem használhatók előrejelzések készítésére.
 
@@ -83,7 +83,7 @@ A Fairlearn nyílt forráskódú csomag számos, a méltánytalanság enyhítés
 
 A Fairlearn nyílt forráskódú csomagja a következő típusú paritásos korlátozásokat támogatja: 
 
-|Paritásos megkötés  | Cél  |Gépi tanulási feladat  |
+|Paritásos megkötés  | Rendeltetés  |Gépi tanulási feladat  |
 |---------|---------|---------|
 |Demográfiai paritás     |  A foglalási károsodások enyhítése | Bináris besorolás, regresszió |
 |Equaled odds  | Kiosztási és szolgáltatásminőség-károsodások diagnosztizálása | Bináris besorolás        |
@@ -108,6 +108,6 @@ A Fairlearn nyílt forráskódú csomag utófeldolgozó biztosít, és csökkent
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan használhatja a különböző összetevőket a Fairlearn [GitHub](https://github.com/fairlearn/fairlearn/), [felhasználói útmutató](https://fairlearn.github.io/user_guide/index.html), [példák](https://fairlearn.github.io/auto_examples/)és [minta jegyzetfüzetek](https://github.com/fairlearn/fairlearn/tree/master/notebooks)használatával történő ellenőrzésével.
+- Megtudhatja, hogyan használhatja a különböző összetevőket a Fairlearn [GitHub](https://github.com/fairlearn/fairlearn/), [felhasználói útmutató](https://fairlearn.github.io/master/user_guide/index.html), [példák](https://fairlearn.github.io/master/auto_examples/)és [minta jegyzetfüzetek](https://github.com/fairlearn/fairlearn/tree/master/notebooks)használatával történő ellenőrzésével.
 - Megtudhatja, [Hogyan](how-to-machine-learning-fairness-aml.md) engedélyezheti Azure Machine learning gépi tanulási modelljeinek méltányos értékelését.
 - Tekintse meg a [minta-jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) a Azure Machine learning a tisztesség értékelésére szolgáló forgatókönyvekben. 

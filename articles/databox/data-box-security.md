@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00b6fab2aeebeeb0f39e07a0751e02cefd195b28
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565756"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337344"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Az Azure Data Box biztonsági és adatvédelmi szolgáltatásai
 
@@ -32,11 +32,11 @@ A Microsoft Azure Data Box megoldást négy, egymással együttműködő fő ös
 
 A következő ábra az adatok folyamatát mutatja a helyszíni és az Azure közötti Azure Data Box megoldáson keresztül, valamint a különböző biztonsági funkciókat, amelyeket az adatok a megoldáson keresztül áramlanak. Ez a folyamat a Data Box importálási sorrendje.
 
-![Data Box importálás biztonsága](media/data-box-security/data-box-security-2.png)
+![Data Box importálás biztonsága](media/data-box-security/data-box-security-import.png)
 
 A következő diagram a Data Box exportálási sorrendjét mutatja.
 
-![Data Box biztonsági exportálás](media/data-box-security/data-box-security-3.png)
+![Data Box biztonsági exportálás](media/data-box-security/data-box-security-export.png)
 
 Mivel az adatforgalom ezen a megoldáson keresztül zajlik, a rendszer naplózza az eseményeket, és létrehozza a naplókat. További információért keresse fel a következőt:
 
@@ -90,7 +90,7 @@ Az Azure Data Box a szolgáltatás alábbi főbb példányaiban gyűjt és jelen
   - Utca, házszám
   - City
   - Irányítószám
-  - Állam
+  - Állapot
   - Ország/tartomány/régió
   - Szállítmányozó fiókszáma
   - Szállítmány nyomkövetési száma
@@ -114,7 +114,7 @@ A Data Box szolgáltatásra a következő biztonsági irányelvek vonatkoznak:
 |[2. szintű FIPS 140-2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | Adatvédelem         |
 |A függelék, ATA-meghajtók esetében a [NIST SP 800 – 88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Adattisztítás         |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [Data Box használatára vonatkozó előfeltételek](data-box-system-requirements.md) áttekintése.
 - A [Data Box korlátjainak](data-box-limits.md) értelmezése.

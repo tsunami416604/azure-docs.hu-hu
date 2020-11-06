@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1b42e9ea06d13271c277ff254b41f10a1ff07e14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2e07a54e20e6e60214b2905cf9321120484503eb
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790610"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337644"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,7 +99,7 @@ Az `CREATE AUDIT` Azure Blob Storage-ba való naplózás szintaxisának főbb el
 - Új szintaxissal `TO URL` megadható az Azure Blob Storage-tároló URL-címe, ahol a `.xel` fájlok el vannak helyezve.
 - A szintaxis `TO FILE` nem támogatott, mert az SQL felügyelt példánya nem fér hozzá a Windows-fájlmegosztást.
 
-További információkért lásd: 
+További információ: 
 
 - [KISZOLGÁLÓ NAPLÓZÁSÁNAK LÉTREHOZÁSA](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -158,6 +158,8 @@ A felügyelt SQL-példány nem fér hozzá a fájlokhoz, így a titkosítási sz
 
     - VÉGREHAJTÁS FELHASZNÁLÓKÉNT
     - VÉGREHAJTÁS BEJELENTKEZÉSKÉNT
+
+  - Felhasználó megszemélyesítése a végrehajtás mint utasítással a felhasználót közvetlenül az Azure AD-kiszolgáló rendszerbiztonsági tagjához (login) kell leképezni. Azok a felhasználók, akik az Azure AD-kiszolgáló résztvevői számára leképezett Azure AD-csoportok tagjai, nem lehetnek hatékonyan megszemélyesítve a EXECUTE AS utasítással, még akkor is, ha a hívó jogosult a megszemélyesítő engedélyekre a megadott felhasználónévn.
 
 - Az adatbázis-Exportálás/Importálás a bacpac-fájlok használatával támogatott az SQL felügyelt példányában található Azure AD-felhasználók számára a [SSMS v 18.4 vagy újabb](/sql/ssms/download-sql-server-management-studio-ssms), vagy a [SQLPackage.exe](/sql/tools/sqlpackage-download)használatával.
   - Az adatbázis-bacpac fájl a következő konfigurációkat támogatja: 
@@ -300,6 +302,7 @@ További információ: [Alter Database](/sql/t-sql/statements/alter-database-tra
   - A riasztások még nem támogatottak.
   - A proxyk nem támogatottak.
 - Az Eseménynapló nem támogatott.
+- A felhasználónak közvetlenül hozzá kell rendelnie az Azure AD-kiszolgáló rendszerbiztonsági feladatait (login) az SQL Agent-feladatok létrehozásához, módosításához vagy végrehajtásához. Azok a felhasználók, akik nem közvetlenül vannak leképezve, például olyan Azure AD-csoportba tartozó felhasználók, amelyek az SQL Agent-feladatok létrehozásához, módosításához vagy végrehajtásához szükséges jogosultságokkal rendelkeznek, nem tudják hatékonyan végrehajtani ezeket a műveleteket. Ennek oka a felügyelt példány megszemélyesítése és a [végrehajtás korlátozásként](#logins-and-users)történik.
 
 A következő SQL Agent-funkciók jelenleg nem támogatottak:
 
@@ -545,7 +548,7 @@ A felügyelt SQL-példányok következő MSDB-sémáinak a megfelelő előre def
 
 Az SQL felügyelt példánya részletes információkat helyez el a hibák naplóiban. A hibanapló számos belső rendszereseményt naplóz. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [SQL felügyelt példány – sp_readmierrorlog](/archive/blogs/sqlcat/azure-sql-db-managed-instance-sp_readmierrorlog) vagy [SQL felügyelt példányok bővítménye (előzetes verzió)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data studiohoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példány?](sql-managed-instance-paas-overview.md)
 - A szolgáltatások és összehasonlítások listájáért lásd: az [Azure SQL felügyelt példány funkcióinak összehasonlítása](../database/features-comparison.md).

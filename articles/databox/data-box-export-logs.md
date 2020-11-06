@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 01eb35a60a6d51b5742d8fedd2ee0631aa86c924
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3a915ac8de83a5e183660ec4a3d05044eafff4a9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147944"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337508"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>A Azure Data Box nyomon követése és eseménynaplózása, valamint Azure Data Box Heavy exportálási megrendelések
 
@@ -52,9 +52,9 @@ További információ az Azure-RBAC használatáról: ajánlott [eljárások az 
 
 Ha Data Box exportálási sorrendet helyez el, lehetősége van a részletes napló gyűjteményének engedélyezésére. Itt látható a részletes naplót engedélyező megrendelési képernyő:
 
-![Exportálási beállítás kiválasztása](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+![Exportálási beállítás kiválasztása](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-Ha bejelöli a **részletes napló belefoglalása** lehetőséget, akkor a rendszer részletes naplófájlt hoz létre az adatok Azure Storage-fiókból való másolása során. Ez a napló az összes sikeresen exportált fájl listáját tartalmazza.      
+Ha bejelöli a **részletes napló belefoglalása** lehetőséget, akkor a rendszer részletes naplófájlt hoz létre az adatok Azure Storage-fiókból való másolása során. Ez a napló az összes sikeresen exportált fájl listáját tartalmazza.
 
 Az exportálási sorrendtel kapcsolatos további információkért lásd: [exportálási sorrend létrehozása Data boxhoz](data-box-deploy-export-ordered.md)
 
@@ -246,13 +246,13 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Rendelés előzményeinek letöltése
 
-A rendelési előzmények a Azure Portalban érhetők el. Ha a megrendelés befejeződött, és az eszköz tisztítása (a lemezekről történő adattörlés) befejeződött, lépjen az eszköz sorrendjébe, és navigáljon a **Rendelés részletei**elemre. Elérhető a **Rendelés előzményeinek letöltése** lehetőség. További információ: a [rendelési előzmények letöltése](data-box-portal-admin.md#download-order-history).
+A rendelési előzmények a Azure Portalban érhetők el. Ha a megrendelés befejeződött, és az eszköz tisztítása (a lemezekről történő adattörlés) befejeződött, lépjen az eszköz sorrendjébe, és navigáljon a **Rendelés részletei** elemre. Elérhető a **Rendelés előzményeinek letöltése** lehetőség. További információ: a [rendelési előzmények letöltése](data-box-portal-admin.md#download-order-history).
 
 Ha a sorrendet az előzmények között görgeti, a következőt látja:
 
 - Az eszköz hordozófrekvencia-követési adatai.
 - Események *SecureErase* -tevékenységgel. Ezek az események a lemezen tárolt adattörlésnek felelnek meg.
-- Data Box a napló hivatkozásait. A naplók elérési *útjait, a* *másolási naplókat*és az *Anyagjegyzék* -fájlokat mutatjuk be.
+- Data Box a napló hivatkozásait. A naplók elérési *útjait, a* *másolási naplókat* és az *Anyagjegyzék* -fájlokat mutatjuk be.
 
 Az alábbi példa az Azure Portal:
 
@@ -303,6 +303,6 @@ Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogy miként lehet [elhárítani a Data Box és Data Box Heavy kapcsolatos problémákat](data-box-troubleshoot.md).

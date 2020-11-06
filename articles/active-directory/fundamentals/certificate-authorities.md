@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cc92c8bfb7dd9cb0328820009828ed0dd22e2a1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b0ab8eac97a6b02377d38653a990a2f0d5ff81ba
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339461"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334958"
 ---
 # <a name="certificate-authorities-used-by-azure-active-directory"></a>Azure Active Directory által használt hitelesítésszolgáltatók
 
@@ -45,10 +45,10 @@ A különböző szolgáltatások különböző gyökér-vagy köztes hitelesít�
 
 | Kiállító és közbenső HITELESÍTÉSSZOLGÁLTATÓ| Sorozatszám| Kiállítás dátuma lejárati dátuma| SHA1 ujjlenyomat| URI |
 | - | - | - | - | - | 
-| Microsoft Azure TLS kiállító CA 01| 0aafa6c5ca63c45141 ea3be1f7c75317| Július 29., 2020<br>2024. június 27.| 2f2877c5d778c31e0f29c 7e371df5471bd673173| [AIA](https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2001%20-%20xsign.crt)<br>[CDP](https://www.microsoft.com/pkiops/crl/Microsoft%20Azure%20TL%20Issuing%20CA%2001.crl)|
+| Microsoft Azure TLS kiállító CA 01| 0aafa6c5ca63c45141 ea3be1f7c75317| Július 29., 2020<br>2024. június 27.| 2f2877c5d778c31e0f29c 7e371df5471bd673173| [AIA](https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2001%20-%20xsign.crt)<br>[CDP](https://www.microsoft.com/pkiops/crl/Microsoft%20Azure%20TLS%20Issuing%20CA%2001.crl)|
 |Microsoft Azure TLS kiállító CA 02| 0c6ae97cced59983 8690a00a9ea53214| Július 29., 2020<br>2024. június 27.| e7eea674ca718e3befd 90858e09f8372ad0ae2aa| [AIA](https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2002%20-%20xsign.crt)<br>[CDP](https://www.microsoft.com/pkiops/crl/Microsoft%20Azure%20TLS%20Issuing%20CA%2002.crl) |
 | Microsoft Azure TLS kiállító CA 05| 0d7bede97d8209967a 52631b8bdd18bd| Július 29., 2020<br>2024. június 27.| 6c3af02e7f269aa73a fd0eff2a88a4a1f04ed1e5| [AIA](https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2005%20-%20xsign.crt)<br>[CDP](https://www.microsoft.com/pkiops/crl/Microsoft%20Azure%20TLS%20Issuing%20CA%2005.crl) |
-| Microsoft Azure TLS kiállító HITELESÍTÉSSZOLGÁLTATÓ 06| 02e79171fb8021e93fe 2d983834c50c0| Július 29., 2020<br>2024. június 27.| 30e01761ab97e59a06b 41ef20af6f2de7ef4f7b0| [AIA](https://www.microsoft.com/pkiops/certs/Microsoft%20zure%20TLS%20Issuing%20CA%2006%20-%20xsign.crt)<br>[CDP](https://www.microsoft.com/pkiops/crl/Microsoft%20Azure%20TLS%20Issuing%20CA%2006.crl) |
+| Microsoft Azure TLS kiállító HITELESÍTÉSSZOLGÁLTATÓ 06| 02e79171fb8021e93fe 2d983834c50c0| Július 29., 2020<br>2024. június 27.| 30e01761ab97e59a06b 41ef20af6f2de7ef4f7b0| [AIA](https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2006.cer)<br>[CDP](https://www.microsoft.com/pkiops/crl/Microsoft%20Azure%20TLS%20Issuing%20CA%2006.crl) |
 
 
  ### <a name="baltimore-cybertrust-root"></a>Baltimore CyberTrust-gyökér
@@ -62,8 +62,8 @@ A különböző szolgáltatások különböző gyökér-vagy köztes hitelesít�
 
 | Kiállító és közbenső HITELESÍTÉSSZOLGÁLTATÓ| Sorozatszám| Kiállítás dátuma lejárati dátuma| SHA1 ujjlenyomat| URI |
 | - | - | - | - | - | 
-| Microsoft RSA TLS CA 01| 703d7a8f0ebf55aaa 59f98eaf4a206004eb2516a| 2020. július 21.<br>2024. október 8.| 417e225037fbfaa4f9 5761d5ae729e1aea7e3a42| [AIA](https://www.microsoft.com/pki/mscorp/Microsoft%20RSA%20TLS%20CA%2001.crt)<br>[CDP](https://mscrl.microsoft.com/pki/mscorp/crl/Microsoft%20RSA%20TLS%20CA%2001.crl)<br>[OCSP](https://ocsp.msocsp.com/) |
-| Microsoft RSA TLS CA 02| b0c2d2d13cdd56cdaa 6ab6e2c04440be4a429c75| 2020. július 21.<br>2024. május 20.| 54d9d20239080c32316ed 9ff980a48988f4adf2d| [AIA](https://www.microsoft.com/pki/mscorp/Microsoft%20RSA%20TLS%20CA%2002.crt)<br>[CDP](https://mscrl.microsoft.com/pki/mscorp/crl/Microsoft%20RSA%20TLS%20CA%2002.crl)<br>[OCSP](https://ocsp.msocsp.com/) |
+| Microsoft RSA TLS CA 01| 703d7a8f0ebf55aaa 59f98eaf4a206004eb2516a| 2020. július 21.<br>2024. október 8.| 417e225037fbfaa4f9 5761d5ae729e1aea7e3a42| [AIA](https://www.microsoft.com/pki/mscorp/Microsoft%20RSA%20TLS%20CA%2001.crt)<br>[CDP](https://mscrl.microsoft.com/pki/mscorp/crl/Microsoft%20RSA%20TLS%20CA%2001.crl)<br>[OCSP](http://ocsp.msocsp.com/) |
+| Microsoft RSA TLS CA 02| b0c2d2d13cdd56cdaa 6ab6e2c04440be4a429c75| 2020. július 21.<br>2024. május 20.| 54d9d20239080c32316ed 9ff980a48988f4adf2d| [AIA](https://www.microsoft.com/pki/mscorp/Microsoft%20RSA%20TLS%20CA%2002.crt)<br>[CDP](https://mscrl.microsoft.com/pki/mscorp/crl/Microsoft%20RSA%20TLS%20CA%2002.crl)<br>[OCSP](http://ocsp.msocsp.com/) |
 
 
  ### <a name="digicert-global-root-ca"></a>DigiCert globális legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ

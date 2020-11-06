@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: cfe1b66662d73c18934ef9ecc884adee79493eb6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e223b5ae072a323ad56ed396c06580fea9b8b7ab
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92641000"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335247"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy Node-webalkalmazásban az Auth Code flow használatával
 
@@ -44,7 +44,7 @@ Ez a rövid útmutató a Microsoft hitelesítési függvénytárát használja N
 > 1. Válassza az [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lehetőséget.
 > 1. Válassza az **új regisztráció** lehetőséget.
 > 1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
-> 1. A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban** .
+> 1. A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 > 1. Állítsa be az **átirányítási URI** értékét a következőre: `http://localhost:3000/redirect` .
 > 1. Válassza a **Regisztráció** lehetőséget. 
 > 1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
@@ -66,7 +66,7 @@ Ez a rövid útmutató a Microsoft hitelesítési függvénytárát használja N
 > #### <a name="step-3-configure-your-node-app"></a>3. lépés: a Node-alkalmazás konfigurálása
 >
 > Bontsa ki a projektet, és nyissa meg az *MS-Identity-Node-Main* mappát, majd nyissa meg a *index.js* fájlt.
-> Állítsa be az `clientID` **alkalmazást az alkalmazás (ügyfél) azonosítójával** .
+> Állítsa be az `clientID` **alkalmazást az alkalmazás (ügyfél) azonosítójával**.
 > Állítsa be az `clientSecret` értéket az **ügyfél titkának** **értékével** .
 >
 >```javascript
@@ -138,7 +138,7 @@ A MSAL-csomópont könyvtára aláírja a felhasználókat, és a Microsoft Iden
 npm install @azure/msal-node
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hitelesítés hozzáadása meglévő webalkalmazáshoz – GitHub-mintakód >](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/auth-code/readme.md)
+> [Hitelesítés hozzáadása meglévő webalkalmazáshoz – GitHub-mintakód >](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/auth-code)

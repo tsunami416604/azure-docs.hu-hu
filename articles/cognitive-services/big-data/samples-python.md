@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: caf492c2cd3940fd7f37e2a4462c8376a127f393
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a4fe2492433aa793d1a7e4be41c5f93043848a5
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86189815"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337865"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>Python-minták Cognitive Services Big-adatmennyiséghez
 
@@ -33,7 +33,7 @@ A cikkben szereplő minták ezeket a Cognitive Services használják:
 1. Miután létrehozott egy új jegyzetfüzetet a Azure Databricksban, másolja az alábbi **megosztott kódot** , és illessze be egy új cellába a jegyzetfüzetbe.
 1. Válasszon egy szolgáltatási mintát, és másolja be a vágólapra a jegyzetfüzet második új cellájába.
 1. Cserélje le a szolgáltatás előfizetési kulcsának helyőrzőit a saját kulcsára.
-1. Kattintson a Futtatás gombra (háromszög ikon) a cella jobb felső sarkában, majd válassza a **cella futtatása**lehetőséget.
+1. Kattintson a Futtatás gombra (háromszög ikon) a cella jobb felső sarkában, majd válassza a **cella futtatása** lehetőséget.
 1. A cella alatti táblázat eredményeinek megtekintése.
 
 ## <a name="shared-code"></a>Megosztott kód
@@ -78,16 +78,16 @@ sentiment = (TextSentiment()
     .setLanguageCol("language"))
 
 # Show the results of your text query in a table format
-display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("score").alias("sentiment")))
+display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("sentiment").alias("sentiment")))
 ```
 
 ### <a name="expected-result"></a>Várt eredmény
 
 | szöveg                                      | hangulatelemzés                                             |
 |:------------------------------------------|:------------------------------------------------------|
-| Boldog vagyok, ma, a napsütötte!           | 0.9789592027664185                                    |
-| Ez a Rush Hour-forgalom csalódott vagyok. | 0.023795604705810547                                  |
-| A sparkon nem rossz a kognitív szolgáltatások  | 0.8888956308364868                                    |
+| Boldog vagyok, ma, a napsütötte!           | pozitív                                              |
+| Ez a Rush Hour-forgalom csalódott vagyok. | negatív                                              |
+| A sparkon nem rossz a kognitív szolgáltatások  | pozitív                                              |
 
 ## <a name="computer-vision-sample"></a>Computer Vision minta
 
@@ -245,7 +245,7 @@ display(anamoly_detector.transform(df).select("timestamp", "value", "anomalies.i
 
 ### <a name="expected-result"></a>Várt eredmény
 
-| időbélyeg            |   érték | isAnomaly   |
+| időbélyeg            |   value | isAnomaly   |
 |:---------------------|--------:|:------------|
 | 1972-01-01T00:00:00Z |     826 | Hamis       |
 | 1972-02-01T00:00:00Z |     799 | Hamis       |

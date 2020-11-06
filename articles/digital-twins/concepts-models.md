@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: fecadf3cd6fd0d654315038680b9aa3fa2b71782
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 12eed6aeccffe854810e9c2ddc8a5c4e59b8c312
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913908"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337933"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
 
@@ -35,7 +35,7 @@ Az Azure Digital Twins a **DTDL _2-es verzióját_** használja. A DTDL ezen ver
 
 ## <a name="elements-of-a-model"></a>A modell elemei
 
-A modell definícióján belül a legfelső szintű kódrészlet egy **illesztőfelület** . Ez magában foglalja a teljes modellt, a modell többi része pedig az illesztőfelületen belül van definiálva. 
+A modell definícióján belül a legfelső szintű kódrészlet egy **illesztőfelület**. Ez magában foglalja a teljes modellt, a modell többi része pedig az illesztőfelületen belül van definiálva. 
 
 A DTDL-modell illesztőfelülete nulla, egy vagy több műveletet is tartalmazhat a következő mezők közül:
 * **Tulajdonság** – a tulajdonságok olyan adatmezők, amelyek egy entitás állapotát jelölik (például a tulajdonságok számos objektumorientált programozási nyelven). A tulajdonságok biztonsági mentést végeznek, és bármikor olvashatók.
@@ -141,7 +141,7 @@ A modell mezői a következők:
 | Mező | Leírás |
 | --- | --- |
 | `@id` | A modell azonosítója. Formátumúnak kell lennie `dtmi:<domain>:<unique model identifier>;<model version number>` . |
-| `@type` | A leírt információ típusát azonosítja. Illesztőfelület esetén a típus *illesztőfelület* . |
+| `@type` | A leírt információ típusát azonosítja. Illesztőfelület esetén a típus *illesztőfelület*. |
 | `@context` | Beállítja a JSON-dokumentum [kontextusát](https://niem.github.io/json/reference/json-ld/context/) . A modelleknek használatban kell lenniük `dtmi:dtdl:context;2` . |
 | `displayName` | választható Lehetővé teszi, hogy a modell felhasználóbarát nevet adjon, ha szükséges. |
 | `contents` | Az összes többi illesztőfelület-adattal ide kerül, mint az attribútumok definícióinak tömbje. Minden attribútumnak `@type` ( *tulajdonság* , *telemetria* , *parancs* , *kapcsolat* vagy *összetevő* ) meg kell adnia az általa leírt illesztőfelület-információk, majd a tényleges attribútumot definiáló tulajdonságok készletét (például egy `name` `schema` *tulajdonság* definiálását). |
@@ -228,13 +228,19 @@ A kiterjesztési felület nem változtathatja meg a szülő felületek definíci
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="converting-industry-standard-models"></a>Iparági szabványoknak megfelelő modellek konvertálása
+## <a name="integrating-with-industry-standard-models"></a>Integrálás az iparági szabványnak megfelelő modellekkel
 
-Ha olyan Azure Digital Ikreken kívüli modellekkel rendelkezik, amelyek egy iparági szabványon (például RDF-en vagy bagoly-n) alapulnak, akkor a DTDL-be kell **alakítania** őket az Azure Digital Twins használatával. A DTDL verziója ezután a modell igazságának forrása lesz az Azure digitális Ikrekben.
+Az iparági szabványokon alapuló modellek használata vagy a standard ontológia-képviselet (például RDF vagy bagoly) használata gazdag kiindulási pontot biztosít az Azure digitális Twins-modelljeinek tervezésekor. Az iparági modellek használata a szabványosítás és az információmegosztás terén is segít.
 
-A folyamatról további információt az [*iparági szabványnak megfelelő modellek átalakítása*](how-to-convert-models.md)című témakörben talál.
+Az Azure Digital Twins szolgáltatással való használathoz a modellnek a JSON-LD-alapú [**digitális Twins Definition Language (DTDL) nyelven**](concepts-models.md)kell szerepelnie. Ebből kifolyólag ez a cikk bemutatja, hogyan jelentheti az iparági szabványnak megfelelő modelleket a DTDL-ben, és integrálhatja a meglévő iparági fogalmakat DTDL szemantikaokkal, hogy az Azure digitális Twins használhassa őket. A DTDL modell ezután az igazság forrásaként szolgál a modellhez az Azure Digital Twins-n belül.
 
-## <a name="next-steps"></a>Következő lépések
+Az iparági szabványnak megfelelő modellek a DTDL való integrálásának két fő útja van:
+* Ha még nem hozza létre a modelleket, megtervezheti azokat a **meglévő Starter DTDL-ontológiákat** , amelyek az iparágra jellemző nyelvet tartalmaznak.
+* Ha már rendelkezik egy iparági szabványon alapuló meglévő modellel, a **DTDL konvertálnia kell őket** , hogy az Azure digitális Twins-ba kerüljön.
+
+A két folyamattal kapcsolatos további információkért lásd [*: útmutató: az iparági szabványnak megfelelő modellek integrálása*](how-to-integrate-models.md).
+
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg, hogyan kezelhetők a modellek a DigitalTwinModels API-kkal:
 * [*Útmutató: egyéni modellek kezelése*](how-to-manage-model.md)

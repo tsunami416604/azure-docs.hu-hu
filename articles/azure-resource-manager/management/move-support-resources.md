@@ -3,12 +3,12 @@ title: Művelet támogatásának áthelyezése erőforrástípus szerint
 description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 675f7bb11ed98dd17e8f4ee4a0197d05128af851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d5875287c7af905579397164029ef0504d6b9dc
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627108"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337950"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet-támogatás áthelyezése az erőforrásokhoz
 
@@ -1433,7 +1433,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | privatednszones / virtualnetworklinks | Igen | Igen |
 > | privatednszonesinternal | Nem | Nem |
 > | privateendpointredirectmaps | Nem | Nem |
-> | privateendpoints | Igen | Igen |
+> | privateendpoints | Nem | Nem |
 > | privatelinkservices | Nem | Nem |
 > | nyilvános IP | Igen – alapszintű SKU<br>Igen – szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
 > | publicipprefixes | Igen | Igen |
@@ -2057,7 +2057,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 

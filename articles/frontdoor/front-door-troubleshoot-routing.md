@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: dbce9019e33c07dd4faa91ffd490eba4d313c675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e810a31fab4457e47329e37f54b16e6f488c9da
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630610"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337627"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Gyakori útválasztási problémák elhárítása
 
@@ -103,5 +103,26 @@ A tünet több lehetséges oka is lehet:
             * Az *elfogadott protokollok* a http és a HTTPS. A *továbbítási protokoll* http. A kérelem egyeztetése nem fog működni, mivel a HTTPS egy engedélyezett protokoll, és ha egy kérelem HTTPS-ként jelentkezett be, a bejárati ajtó HTTPS-kapcsolaton keresztül próbálkozik a továbbítással.
 
             * Az *elfogadott protokollok* a http. A *továbbítási protokoll* vagy egyeztetési kérelem vagy http.
-
     - Az *URL-cím újraírása* alapértelmezés szerint le van tiltva. Ez a mező csak akkor használható, ha le szeretné szűkíteni az elérhetővé tenni kívánt háttérrendszer-erőforrások hatókörét. Ha le van tiltva, a bejárati ajtó továbbítja ugyanazt a kérési útvonalat, amelyet a rendszer kap. Ezt a mezőt helytelenül lehet beállítani. Tehát amikor a bevezető ajtó olyan erőforrást kér a háttérből, amely nem érhető el, egy HTTP 404 állapotkódot ad vissza.
+
+## <a name="request-to-frontend-host-name-returns-411-status-code"></a>A előtér-állomásnévre irányuló kérelem a 411-as állapotkódot adja vissza.
+
+### <a name="symptom"></a>Hibajelenség
+
+Létrehozta a bejárati ajtót, és konfigurált egy előtér-gazdagépet, egy háttér-készletet legalább egy háttérrel, valamint egy útválasztási szabályt, amely összekapcsolja a frontend-gazdagépet a háttér-készlettel. Úgy tűnik, hogy a tartalom nem érhető el a konfigurált előtér-gazdagépre irányuló kérelem küldésekor, mert a rendszer HTTP 411 állapotkódot ad vissza.
+
+Az ezekre a kérelmekre adott válaszok a válasz törzsében is tartalmazhatnak egy HTML-hibaüzenetet, amely tartalmaz egy magyarázó utasítást is. Például: `HTTP Error 411. The request must be chunked or have a content length`
+
+### <a name="cause"></a>Ok
+
+Ennek a tünetnek több lehetséges oka van; az általános ok azonban az, hogy a HTTP-kérelem nem teljes mértékben RFC-kompatibilis. 
+
+A meg nem felelés példája egy `POST` `Content-Length` vagy több `Transfer-Encoding` fejléc (például a használata) nélkül elküldhető kérelem `curl -X POST https://example-front-door.domain.com` . Ez a kérelem nem felel meg a 7230- [as számú RFC-dokumentumban](https://tools.ietf.org/html/rfc7230#section-3.3.2) meghatározott követelményeknek, és a bejárati ajtó egy http 411-választal le lesz tiltva.
+
+Ez a viselkedés elkülönül a bejárati WAF funkciótól. Jelenleg nem lehet letiltani ezt a viselkedést. Az összes HTTP-kérelemnek meg kell felelnie a követelményeknek, még akkor is, ha a WAF funkció nincs használatban.
+
+### <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
+
+- Győződjön meg arról, hogy a kérések megfelelnek a szükséges RFC-k követelményeinek.
+
+- Jegyezze fel a kérelemre adott válaszként visszaadott HTML-üzenetek törzsét, mivel azok gyakran pontosan elmagyarázzák, *hogy* a kérése nem megfelelő.

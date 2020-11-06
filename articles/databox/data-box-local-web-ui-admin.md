@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f4f9f65b562b01466aec69cd541ea77f443f803
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f5bcb5c42661c375372d4d0b17571d784152dd5f
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127524"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337287"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A helyi webes felhasználói felület használata a Data Box és Data Box Heavy felügyeletéhez
 
@@ -35,7 +35,7 @@ A cikk az alábbi oktatóanyagokat tartalmazza:
 
 Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rendszernaplókból. A Microsoft támogatási szolgálata a csomag segítségével hárítja el a problémát. Támogatási csomag létrehozásához hajtsa végre a következő lépéseket:
 
-1. A helyi webes KEZELŐFELÜLETen lépjen a **Kapcsolatfelvétel az ügyfélszolgálattal** lehetőségre, és válassza a **támogatási csomag létrehozása**lehetőséget.
+1. A helyi webes KEZELŐFELÜLETen lépjen a **Kapcsolatfelvétel az ügyfélszolgálattal** lehetőségre, és válassza a **támogatási csomag létrehozása** lehetőséget.
 
     ![Támogatási csomag létrehozása – 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -43,7 +43,7 @@ Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rend
 
     ![Támogatási csomag létrehozása – 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. A támogatási csomag létrehozásának befejezése után válassza a **támogatási csomag letöltése**lehetőséget.
+3. A támogatási csomag létrehozásának befejezése után válassza a **támogatási csomag letöltése** lehetőséget.
 
     ![Támogatási csomag létrehozása – 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
@@ -58,7 +58,7 @@ Az eszközt a helyi webes felhasználói felület használatával állíthatja l
 Az eszköz leállításához hajtsa végre az alábbi lépéseket.
 
 1. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
-2. Válassza a **Leállítás**lehetőséget.
+2. Válassza a **Leállítás** lehetőséget.
 
     ![A Data Box leállítása – 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
@@ -71,7 +71,7 @@ Az eszköz leállítását követően az előlapon található bekapcsoló gombb
 A Data Box újraindításához hajtsa végre az alábbi lépéseket.
 
 1. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
-2. Válassza az **Újraindítás**lehetőséget.
+2. Válassza az **Újraindítás** lehetőséget.
 
     ![A Data Box újraindítása – 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
@@ -85,7 +85,7 @@ Az AJ vagy a manifest-fájlok tartalmazzák a Data Box vagy Data Box Heavyba má
 
 Mielőtt elkezdené, kövesse az alábbi lépéseket az importálási sorrendhez tartozó AJ-vagy manifest-fájlok letöltéséhez:
 
-1. Nyissa meg az eszköz helyi webes FELÜLETét. Ellenőrizze, hogy az eszköz befejezte-e a **szállításra való előkészítés** lépést. Az eszköz előkészítésének befejezése után az eszköz állapota a **szállításra kész**állapotban jelenik meg.
+1. Nyissa meg az eszköz helyi webes FELÜLETét. Ellenőrizze, hogy az eszköz befejezte-e a **szállításra való előkészítés** lépést. Az eszköz előkészítésének befejezése után az eszköz állapota a **szállításra kész** állapotban jelenik meg.
 
     ![Az eszköz szállításra kész](media/data-box-local-web-ui-admin/prepare-to-ship-3.png)
 
@@ -177,7 +177,7 @@ Határozottan javasoljuk, hogy csak akkor tiltsa le az ellenőrző létrehozás�
     ![Ellenőrzőösszeg letiltása](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. Tiltsa le az ellenőrzőösszeg-érvényesítést a **Disable** (Letiltás) paranccsal.
-3. Kattintson az **Alkalmaz** gombra.
+3. Válassza az **Alkalmaz** lehetőséget.
 
 > [!NOTE]
 > Az ellenőrzőösszeg-számítás kihagyása beállítás csak akkor érhető el, ha a Azure Data Box fel van oldva. Ez a beállítás nem jelenik meg, ha az eszköz zárolva van.
@@ -190,7 +190,7 @@ Az SMB-aláírással kapcsolatos további információkért lásd: [a kiszolgál
 
 Az SMB-aláírás engedélyezése az Azure-eszközön:
 
-1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások**lehetőséget.
+1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások** lehetőséget.
 
     ![Beállítások megnyitása](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
@@ -198,9 +198,9 @@ Az SMB-aláírás engedélyezése az Azure-eszközön:
 
     ![SMB-aláírás engedélyezése](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
 
-3. Kattintson az **Alkalmaz** gombra.
+3. Válassza az **Alkalmaz** lehetőséget.
 4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
-5. Válassza az **Újraindítás**lehetőséget.
+5. Válassza az **Újraindítás** lehetőséget.
 
 ## <a name="enable-backup-operator-privileges"></a>Biztonsági mentési operátori jogosultságok engedélyezése
 
@@ -210,9 +210,9 @@ További információ: Backup Operators in [Active Directory Security groups](/w
 
 Biztonsági mentési operátori jogosultságok engedélyezése az Azure-eszközön:
 
-1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások**lehetőséget.
+1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások** lehetőséget.
 
-   ![Data Box beállítások megnyitása](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+   ![Data Box beállítások megnyitása – 1](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Engedélyezés** Biztonsági mentési operátori jogosultságok.
 
@@ -220,7 +220,7 @@ Biztonsági mentési operátori jogosultságok engedélyezése az Azure-eszköz�
 
 3. **Válassza az alkalmaz lehetőséget**.
 4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
-5. Válassza az **Újraindítás**lehetőséget.
+5. Válassza az **Újraindítás** lehetőséget.
 
 ## <a name="enable-acls-for-azure-files"></a>ACL-ek engedélyezése Azure Fileshoz
 
@@ -233,17 +233,17 @@ A fájlok metaadatait a rendszer alapértelmezés szerint átadja, amikor a felh
 
 Az ACL-ek átvitelének engedélyezése az Azure Files szolgáltatásban:
 
-1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások**lehetőséget.
+1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások** lehetőséget.
 
-    ![Data Box beállítások megnyitása](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Data Box beállítások megnyitása – 2](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Engedélyezés** Az Azure Files hozzáférés-vezérlési listái.
 
      ![ACL-ek engedélyezése az Azure Files szolgáltatáshoz](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
   
-3. Kattintson az **Alkalmaz** gombra.
+3. Válassza az **Alkalmaz** lehetőséget.
 4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
-5. Válassza az **Újraindítás**lehetőséget.
+5. Válassza az **Újraindítás** lehetőséget.
 
 ## <a name="enable-tls-11"></a>TLS 1,1 engedélyezése
 
@@ -253,18 +253,18 @@ A TLS-vel kapcsolatos további információkért lásd: [Azure Data Box Gateway 
 
 A TLS 1,1 engedélyezése az Azure-eszközön:
 
-1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások**lehetőséget.
+1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások** lehetőséget.
 
-    ![Data Box beállítások megnyitása](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Data Box beállítások megnyitása – 3](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Engedélyezés** TLS 1,1.
 
     ![TLS 1,1 engedélyezése](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
 
-3. Kattintson az **Alkalmaz** gombra.
+3. Válassza az **Alkalmaz** lehetőséget.
 4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
-5. Válassza az **Újraindítás**lehetőséget.
+5. Válassza az **Újraindítás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [kezelheti a Data Box és Data Box Heavy a Azure Portalon keresztül](data-box-portal-admin.md).

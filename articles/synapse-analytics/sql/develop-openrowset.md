@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e7713239391b49663328a7a058f8f6fd5b444335
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b08e834233e1ce12392d940cb0ccc0bef7e96158
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341331"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337746"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -261,12 +261,12 @@ A Parquet-fájlok minden oszlop típusának leírását tartalmazzák. A követk
 | BINÁRIS |UTF8 |varchar \* (UTF8-rendezés) |
 | BINÁRIS |KARAKTERLÁNC |varchar \* (UTF8-rendezés) |
 | BINÁRIS |ENUM|varchar \* (UTF8-rendezés) |
-| BINÁRIS |UUID |uniqueidentifier |
+| FIXED_LEN_BYTE_ARRAY |UUID |uniqueidentifier |
 | BINÁRIS |DECIMÁLIS |tizedes tört |
-| BINÁRIS |JSON |varchar (max) \* (UTF8-rendezés) |
-| BINÁRIS |BSON |varbinary (max.) |
+| BINÁRIS |JSON |varchar (8000) \* (UTF8-rendezés) |
+| BINÁRIS |BSON | Nem támogatott |
 | FIXED_LEN_BYTE_ARRAY |DECIMÁLIS |tizedes tört |
-| BYTE_ARRAY |IDŐKÖZ |varchar (max), szabványosított formátumba szerializálva |
+| BYTE_ARRAY |IDŐKÖZ | Nem támogatott |
 | INT32 |INT (8, igaz) |smallint |
 | INT32 |INT (16, igaz) |smallint |
 | INT32 |INT (32, true) |int |
@@ -279,10 +279,10 @@ A Parquet-fájlok minden oszlop típusának leírását tartalmazzák. A követk
 | INT64 |INT (64, true) |bigint |
 | INT64 |INT (64, hamis) |decimális (20, 0) |
 | INT64 |DECIMÁLIS |tizedes tört |
-| INT64 |IDŐ (MICROS/NANOS) |time |
-|INT64 |IDŐBÉLYEG (MILLIS/MICROES/NANOS) |datetime2 |
-|[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |LISTÁJÁT |varchar (max), JSON-ba szerializálva |
-|[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|Térkép|varchar (max), JSON-ba szerializálva |
+| INT64 |IDŐ (MICROS) |az időpontok (NANOs) nem támogatottak |
+|INT64 |IDŐBÉLYEG (MALOM/MICROS) |datetime2 – az IDŐBÉLYEG (NANOs) nem támogatott |
+|[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |LISTÁJÁT |varchar (8000), szerializálva JSON-ban |
+|[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|Térkép|varchar (8000), szerializálva JSON-ban |
 
 ## <a name="examples"></a>Példák
 
