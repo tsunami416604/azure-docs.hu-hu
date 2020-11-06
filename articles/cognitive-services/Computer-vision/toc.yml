@@ -161,6 +161,8 @@
           href: spatial-analysis-zone-line-placement.md
         - name: Kamera elhelyezése
           href: spatial-analysis-camera-placement.md
+    - name: Cognitive Services-tárolók – dokumentáció
+      href: ../containers/index.yml
 - name: Útmutatók
   items:
     - name: A Computer Vision API meghívása

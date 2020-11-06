@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a38c4bb18e16a814b626a6941d626b66311cd8ea
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5d14068f6be4717f74e4917d6fccf1082cd0efd3
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329526"
+ms.locfileid: "94331758"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Mely régiók érhetők el?
 
-[!INCLUDE [region](bastion-regions-include.md)]
+[!INCLUDE [Azure Bastion region availability](bastion-regions-include.md)]
 
-### <a name="do-i-need-a-public-ip-on-my-virtual-machine"></a><a name="publicip"></a>Szükségem van nyilvános IP-címekre a virtuális gépen?
+### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>Szükségem van egy nyilvános IP-címre a virtuális gépen az Azure-alapú megerősített kapcsolaton keresztül?
 
-Amikor az Azure Bastion használatával csatlakozik egy virtuális géphez, nincs szüksége nyilvános IP-címekre azon az Azure-beli virtuális gépen, amelyhez csatlakozik. A megerősített szolgáltatás megnyitja az RDP/SSH-munkamenetet/kapcsolatot a virtuális géppel a virtuális gép magánhálózati IP-címén a virtuális hálózaton belül.
+Nem. Amikor az Azure Bastion használatával csatlakozik egy virtuális géphez, nincs szüksége nyilvános IP-címekre azon az Azure-beli virtuális gépen, amelyhez csatlakozik. A megerősített szolgáltatás megnyitja az RDP/SSH-munkamenetet/kapcsolatot a virtuális géppel a virtuális gép magánhálózati IP-címén a virtuális hálózaton belül.
 
 ### <a name="is-ipv6-supported"></a>Támogatott-e az IPv6?
 
@@ -29,11 +29,11 @@ Az IPv6 jelenleg nem támogatott. Az Azure Bastion csak az IPv4-t támogatja.
 
 ### <a name="do-i-need-an-rdp-or-ssh-client"></a><a name="rdpssh"></a>Szükség van RDP-vagy SSH-ügyfélre?
 
-Nincs szüksége RDP-vagy SSH-ügyfélre az RDP/SSH eléréséhez az Azure Portal Azure-beli virtuális gépén. A [Azure Portal](https://portal.azure.com) segítségével közvetlenül a böngészőben érheti el az RDP/SSH-hozzáférést a virtuális géphez.
+Nem. Nincs szüksége RDP-vagy SSH-ügyfélre az RDP/SSH eléréséhez az Azure Portal Azure-beli virtuális gépén. A [Azure Portal](https://portal.azure.com) segítségével közvetlenül a böngészőben érheti el az RDP/SSH-hozzáférést a virtuális géphez.
 
 ### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>Szükségem van egy, az Azure-beli virtuális gépen futó ügynökre?
 
-Nem kell ügynököt vagy szoftvert telepítenie a böngészőjébe vagy az Azure-beli virtuális gépre. A megerősített szolgáltatás ügynök nélküli, és nem igényel további szoftvereket RDP/SSH-hoz.
+Nem. Nem kell ügynököt vagy szoftvert telepítenie a böngészőjébe vagy az Azure-beli virtuális gépre. A megerősített szolgáltatás ügynök nélküli, és nem igényel további szoftvert RDP/SSH-hoz.
 
 ### <a name="how-many-concurrent-rdp-and-ssh-sessions-does-each-azure-bastion-support"></a><a name="limits"></a>Hány egyidejű RDP-és SSH-munkamenetet támogat az Azure-alapú megerősített szolgáltatás?
 
@@ -43,7 +43,7 @@ Az RDP és az SSH egy használaton alapuló protokoll. A munkamenetek magas kiha
 
 ### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>Milyen funkciók támogatottak egy RDP-munkamenetben?
 
-Jelenleg csak a szövegek másolása és beillesztése támogatott. Az olyan funkciók, mint a fájlmásolás, nem támogatottak. Ossza meg velünk az új funkciókkal kapcsolatos visszajelzéseit az [Azure Bastion visszajelzési oldalán](https://feedback.azure.com/forums/217313-networking?category_id=367303).
+Jelenleg csak a szövegek másolása és beillesztése támogatott. A funkciók (például a fájlmásolás) nem támogatottak. Nyugodtan megoszthatja az új funkciókkal kapcsolatos visszajelzéseit az [Azure Bastion visszajelzési oldalán](https://feedback.azure.com/forums/217313-networking?category_id=367303).
 
 ### <a name="does-bastion-hardening-work-with-aadj-vm-extension-joined-vms"></a><a name="aadj"></a>A Bastion általi megerősítés a AADJ virtuálisgép-bővítményhez csatlakoztatott virtuális gépekkel is működik?
 
@@ -70,15 +70,17 @@ A kapcsolatok létrehozásához a következő szerepkörök szükségesek:
 További tájékoztatás a [díjszabási lapon](https://aka.ms/BastionHostPricing) olvasható.
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Szükséges-e az Azure Bastion RDS CAL adminisztratív célokra az Azure által üzemeltetett virtuális gépeken?
+
 Nem, a Windows Server rendszerű virtuális gépekhez az Azure Bastion-hez való hozzáféréshez nincs szükség [RDS CALra](https://www.microsoft.com/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) , ha kizárólag adminisztratív célokra használják.
 
-### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Milyen billentyűzetkiosztások támogatottak a megerősített távoli munkamenet során?
+### <a name="which-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Mely billentyűzetkiosztások támogatottak a megerősített távoli munkamenet során?
 
 Az Azure Bastion jelenleg a virtuális gépen belüli en-us-QWERTY billentyűzet-elrendezést támogatja.  A billentyűzet egyéb területi beállításainak támogatása folyamatban van.
 
 ### <a name="is-user-defined-routing-udr-supported-on-an-azure-bastion-subnet"></a><a name="udr"></a>Támogatott-e a felhasználó által megadott útválasztás (UDR) egy Azure-alapú megerősített alhálózaton?
 
 Nem. Az UDR nem támogatott Azure-beli megerősített alhálózaton.
+
 Azokban az esetekben, amelyekben az Azure Bastion és a Azure Firewall/Network Virtual Appliance (NVA) is szerepel ugyanabban a virtuális hálózatban, nem kell kényszeríteni az Azure-beli megerősített alhálózatról érkező forgalmat, hogy Azure Firewall, mert az Azure-és a virtuális gépek közötti kommunikáció privát. További információ: [Azure Firewall mögötti virtuális gépek elérése a Bastion-vel](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
 
 ### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>Miért kapok "a munkamenet lejárt" hibaüzenetet, mielőtt megkezdődik a megerősített munkamenet?
@@ -87,8 +89,8 @@ A munkamenetet csak a Azure Portal kezdeményezheti. Jelentkezzen be a Azure Por
 
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>Hogyan kezeli az üzembe helyezési hibákat?
 
-Tekintse át a hibaüzeneteket, és szükség szerint [küldjön egy támogatási kérést a Azure Portal](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . Az üzembe helyezési hibák az [Azure-előfizetések korlátozásait, kvótáit és megkötéseit](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)okozhatják. Az ügyfelek az előfizetések által engedélyezett nyilvános IP-címek számának korlátozásával járhatnak, ami miatt az Azure Bastion üzembe helyezése sikertelen lesz.
+Tekintse át a hibaüzeneteket, és szükség szerint [küldjön egy támogatási kérést a Azure Portal](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . Az üzembe helyezési hibák az [Azure-előfizetések korlátozásait, kvótáit és megkötéseit](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)okozhatják. Az ügyfelek az előfizetések által engedélyezett nyilvános IP-címek számának korlátozásával járhatnak, ami miatt az Azure Bastion üzembe helyezése sikertelen lesz.
 
-### <a name="how-do-i-incorporate-azure-bastion-in-my-dr-plan"></a><a name="dr"></a>Hogyan az Azure Bastion-t a saját DR-tervében?
+### <a name="how-do-i-incorporate-azure-bastion-in-my-disaster-recovery-plan"></a><a name="dr"></a>Hogyan beépíteni az Azure Bastion-t a vész-helyreállítási tervbe?
 
-Mivel az Azure Bastion egy Azure-régióhoz van társítva, és az virtuális hálózatok-ben vagy a virtuális hálózatok-ben van üzembe helyezve, Ön felelős az Azure Bastion vész-helyreállítási (DR) hely VNet való üzembe helyezésében. Ha egy Azure-régió meghibásodása esetén feladatátvételi műveletet hajt végre a virtuális gépek számára, akkor a DR régióban üzembe helyezett Azure-beli megerősített gazdagép használatával csatlakozhat a DR régióban üzembe helyezett virtuális gépekhez.
+Az Azure Bastion üzembe helyezése a virtuális hálózatok-ben vagy a virtuális hálózatok-ben történik, és egy Azure-régióhoz van társítva. Ön felelős azért, hogy az Azure Bastion-t egy vész-helyreállítási (DR) hely VNet telepítse. Az Azure-régió meghibásodása esetén végezzen feladatátvételi műveletet a virtuális gépek számára a DR régióban. Ezután használja a DR régióban üzembe helyezett Azure Bastion-gazdagépet a már üzembe helyezett virtuális gépekhez való kapcsolódáshoz.

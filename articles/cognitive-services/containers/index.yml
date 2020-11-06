@@ -1,0 +1,90 @@
+### YamlMime:Landing
+title: Azure Cognitive Services-tárolók
+summary: Az Azure Cognitive Services több tárolót kínál a mesterséges intelligencia helyszíni használatához. A tárolókkal közelebb hozhatja a Cognitive Servicest az adatokhoz a megfelelőség, a biztonság és egyéb működtetési szempontok teljesítése érdekében.
+metadata:
+  title: Azure Cognitive Services-tárolók
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: aahill
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.topic: landing-page
+  ms.date: 10/27/2020
+  ms.author: aahi
+  ms.openlocfilehash: 28eb8450201280e58e24dd5ad9b8826165b614c3
+  ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93328076"
+landingContent:
+- title: Tudnivalók a Cognitive Services-tárolókról
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Mik azok a Cognitive Services-tárolók?
+      url: ../cognitive-services-container-support.md
+    - text: Gyakori kérdések
+      url: container-faq.md
+    - text: Tárolórendszerképek címkéi
+      url: container-image-tags.md
+- title: Tárolóreceptek
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Tároló-újrahasznosítási recept
+      url: container-reuse-recipe.md
+    - text: Üzembe helyezés az Azure Container Instancesben
+      url: azure-container-instance-recipe.md
+    - text: Üzembe helyezés a Kubernetesben
+      url: azure-kubernetes-recipe.md
+    - text: Üzembe helyezés a Docker Compose-zal
+      url: azure-kubernetes-recipe.md
+- title: Vision-tárolók
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../computer-vision/computer-vision-how-to-install-containers.md
+      text: Read OCR
+    - url: ../computer-vision/spatial-analysis-container.md
+      text: Térbeli elemzés
+    - url: ../face/face-how-to-install-containers.md
+      text: Arcfelismerés
+    - url: ../form-recognizer/form-recognizer-container-howto.md
+      text: Form Recognizer
+- title: Nyelvtárolók
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+      text: Hangulatelemzés
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
+      text: Kulcskifejezések kinyerése
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
+      text: Szöveg nyelvének felismerése
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare
+      text: Egészségügyi Text Analytics
+    - url: ../luis/luis-container-howto.md
+      text: LUIS-tároló
+- title: Speech-tárolók
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../speech-service/speech-container-howto.md?tabs=stt
+      text: Diktálás
+    - url: ../speech-service/speech-container-howto.md?tabs=cstt
+      text: Egyéni diktálás
+    - url: ../speech-service/speech-container-howto.md?tabs=tts
+      text: Szövegfelolvasás
+    - url: ../speech-service/speech-container-howto.md?tabs=ctts
+      text: Egyéni szövegfelolvasás
+    - url: ../speech-service/speech-container-howto.md?tabs=ntts
+      text: Neurális szövegfelolvasás
+    - url: ../speech-service/speech-container-howto.md?tabs=lid
+      text: Beszéd nyelvének felismerése
+- title: Döntéstároló
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../anomaly-detector/anomaly-detector-container-howto.md
+      text: Anomáliadetektor

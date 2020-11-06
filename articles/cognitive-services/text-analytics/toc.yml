@@ -80,6 +80,8 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Kubernetes Service (AKS) használata
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+        - name: Cognitive Services-tárolók – dokumentáció
+          href: ../containers/index.yml
     - name: Migrálás az API 3. verziójára
       href: migration-guide.md
 - name: Referencia

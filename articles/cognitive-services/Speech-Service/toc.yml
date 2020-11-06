@@ -39,8 +39,6 @@
           href: how-to-automatic-language-detection.md
         - name: Kötegelt átírási API használata
           href: batch-transcription.md
-        - name: Kiejtés kiértékelése
-          href: how-to-pronunciation-assessment.md
     - name: Oktatóanyagok
       items:
         - name: Blobtárolóban tárolt beszéd felismerése
@@ -530,6 +528,8 @@
           href: deploy-speech-on-container-instances.md
         - name: Tárolók – GYIK
           href: speech-container-faq.md
+        - name: Cognitive Services-tárolók – dokumentáció
+          href: ../containers/index.yml
 - name: Eszközök
   items:
     - name: A Speech Devices dokumentációja
