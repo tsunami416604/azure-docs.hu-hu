@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 56aad5ce9045ca205221ba0c56d1ea75f8f3610a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55f7b64c9ade91bb2923161d60568e3ea14ee034
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850495"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353482"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés myPolicies konfigurálása
 
@@ -62,11 +62,11 @@ Az Azure AD-vel való automatikus myPolicies konfigurálásához hozzá kell adn
 
 **Ha myPolicies szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -74,7 +74,7 @@ Az Azure AD-vel való automatikus myPolicies konfigurálásához hozzá kell adn
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **myPolicies**kifejezést, válassza az **myPolicies** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **myPolicies** kifejezést, válassza az **myPolicies** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![myPolicies az eredmények listájában](common/search-new-app.png)
 
@@ -91,7 +91,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **myPolicies**lehetőséget.
+2. Az alkalmazások listában válassza a **myPolicies** lehetőséget.
 
     ![Az myPolicies hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -106,17 +106,17 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg `https://<myPoliciesCustomDomain>.mypolicies.com/scim` a **bérlői URL-címet** , ahol a a `<myPoliciesCustomDomain>` myPolicies egyéni tartománya. Az URL-címről lekérheti a myPolicies-ügyfél tartományát.
 Példa: `<demo0-qa>` . mypolicies.com.
 
-6. A **titkos jogkivonat**mezőben adja meg a korábban lekért jogkivonat-értéket. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a myPolicies. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a myPolicies-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+6. A **titkos jogkivonat** mezőben adja meg a korábban lekért jogkivonat-értéket. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a myPolicies. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a myPolicies-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 8. Kattintson a **Mentés** gombra.
 
-9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a myPolicies**lehetőséget.
+9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a myPolicies** lehetőséget.
 
     :::image type="content" source="media/mypolicies-provisioning-tutorial/usermapping.png" alt-text="Képernyőfelvétel a leképezésekről szakasz. A név alatt szinkronizálja Azure Active Directory felhasználókat a customappsso." border="false":::
 
@@ -155,14 +155,14 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 ## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-* a myPolicies mindig **felhasználónevet**, **e-mail-címet** és **externalId**kell megadni.
+* a myPolicies mindig **felhasználónevet** , **e-mail-címet** és **externalId** kell megadni.
 * a myPolicies nem támogatja a felhasználói attribútumok rögzített törlését.
 
 ## <a name="change-log"></a>Változási napló
 
 * 09/15/2020 – az "ország" attribútum támogatása a felhasználók számára.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

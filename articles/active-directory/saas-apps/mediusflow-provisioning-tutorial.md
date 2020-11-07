@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: e5b008dd3d3a9d2422cca1fe00329543ed6d362f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1b603dc4c31cb608a0840da78a2e987b3edd3c1e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517144"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353594"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés MediusFlow konfigurálása
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. Mentse a konfigurációt.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról, amely a negyedik integrációs lépést mutatja. A konfiguráció mentése gomb ki van emelve." border="false":::
 
-5. Válassza a felhasználó kiépítés lehetőséget, majd kattintson **az OK**gombra.
+5. Válassza a felhasználó kiépítés lehetőséget, majd kattintson **az OK** gombra.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról, amely az ötödik integrációs lépést mutatja. A felhasználó kiépítés használata és az OK gomb kiemelve." border="false":::
 
-6. Kattintson a **titkos kulcs előállítása**elemre. Másolja és mentse ezt az értéket. Ez az érték a MediusFLow alkalmazás **üzembe** helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal.
+6. Kattintson a **titkos kulcs előállítása** elemre. Másolja és mentse ezt az értéket. Ez az érték a MediusFLow alkalmazás **üzembe** helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzol felhasználó-üzembe helyezési konfiguráció lapján. A titkos kulcs és a másolás gombok ki vannak emelve." border="false":::
 
 7. Kattintson **az OK gombra**.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról, amely arról tájékoztat, hogy a felhasználóknak az OK gombra kell kattintaniuk egy új titkos kulcs létrehozásához. Az OK gomb ki van emelve." border="false":::
 
-8. Ahhoz, hogy a felhasználók a szerepkörök, a vállalatok és egyéb általános konfigurációk előre definiált készletével importálva legyenek a MediusFlow-ben, először konfigurálnia kell. Először adja hozzá a konfigurációt az **Új konfiguráció hozzáadása**lehetőségre kattintva.
+8. Ahhoz, hogy a felhasználók a szerepkörök, a vállalatok és egyéb általános konfigurációk előre definiált készletével importálva legyenek a MediusFlow-ben, először konfigurálnia kell. Először adja hozzá a konfigurációt az **Új konfiguráció hozzáadása** lehetőségre kattintva.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzol felhasználó-üzembe helyezési konfiguráció lapján. Az új konfiguráció hozzáadása gomb ki van emelve." border="false":::
 
 9. Adja meg a felhasználók alapértelmezett beállításait. Ebben a nézetben az alapértelmezett attribútumot lehet beállítani. Ha a normál beállítások rendben vannak, elég, ha csak egy érvényes vállalat nevét adja meg. Mivel ezek a konfigurációs beállítások beolvasása a Mediusflow-ből történik, először konfigurálni kell őket. További információt a jelen cikk **Előfeltételek** című szakaszában talál.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="Képernyőkép a MediusFlow új konfigurációs ablakának hozzáadásáról. Számos beállítás látható, beleértve a területi beállításokat, a szűrőket és a felhasználói szerepköröket." border="false":::
 
 10. A felhasználói konfiguráció mentéséhez kattintson a **Save (Mentés** ) gombra.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzol felhasználó-üzembe helyezési konfiguráció lapján. A Mentés gomb ki van emelve." border="false":::
 
 11. A felhasználó kiépítési hivatkozásának beszerzéséhez kattintson az **scim másolása hivatkozásra**. Másolja és mentse ezt az értéket. Ez az érték a MediusFLow alkalmazás **kiépítés** lapjának **bérlői URL-címe** mezőjében szerepel a Azure Portal.
  
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzol felhasználó-üzembe helyezési konfiguráció lapján. A másolás S C I M hivatkozás gomb ki van emelve." border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>3. lépés MediusFlow hozzáadása az Azure AD Application Galleryből
 
@@ -114,7 +114,7 @@ Vegyen fel MediusFlow az Azure AD-alkalmazás-katalógusból a MediusFlow való 
 
 Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) leírt hatókörszűrőt használhatja. 
 
-* Felhasználók és csoportok MediusFlow való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
+* Felhasználók és csoportok MediusFlow való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
 
 * Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, akkor azt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel hozzá az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
@@ -129,7 +129,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **MediusFlow**lehetőséget.
+2. Az alkalmazások listában válassza a **MediusFlow** lehetőséget.
 
     ![Az MediusFlow hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -141,7 +141,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a bérlő URL **-címében**korábban LEKÉRT bérlői URL-cím értékét. Adja meg a titkos jogkivonat értékét, amely korábban a **titkos jogkivonatban**lett lekérve. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a MediusFlow. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a MediusFlow-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a bérlő URL **-címében** korábban LEKÉRT bérlői URL-cím értékét. Adja meg a titkos jogkivonat értékét, amely korábban a **titkos jogkivonatban** lett lekérve. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a MediusFlow. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a MediusFlow-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
       ![Képernyőfelvétel: a rendszergazdai hitelesítő adatok párbeszédpanel, ahol megadhatja a bérlő U R L-t és a titkos jogkivonatot.](./media/mediusflow-provisioning-tutorial/provisioning.png)
 
@@ -151,7 +151,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a MediusFlow**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a MediusFlow** lehetőséget.
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő MediusFlow. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a MediusFlow felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy a MediusFlow API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -168,7 +168,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
 
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a MediusFlow**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a MediusFlow** lehetőséget.
 
 11. Tekintse át az Azure AD-ből szinkronizált MediusFlow az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a MediusFlow tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -201,7 +201,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

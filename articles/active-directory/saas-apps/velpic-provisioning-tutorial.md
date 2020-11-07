@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: fbed4b888c48a518d9f10a91ff0494aa7bdc1843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdd4fb96a42d154ccd8b508950283978ddf58ef4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532364"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354903"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Velpic konfigurálása
 
@@ -66,7 +66,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Velpic felhasználói fiók létesí
 
     ![Velpic kiépítés](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címet&Velpic titkos jogkivonatát** . (Ezek az értékek a Velpic-fiókban találhatók: **kezelés**  >  **Integráció**  >  **Beépülő modul**  >  **Scim**)
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címet&Velpic titkos jogkivonatát** . (Ezek az értékek a Velpic-fiókban találhatók: **kezelés**  >  **Integráció**  >  **Beépülő modul**  >  **Scim** )
 
     ![Engedélyezési értékek](./media/velpic-provisioning-tutorial/Velpic2.png)
 
@@ -76,7 +76,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Velpic felhasználói fiók létesí
 
 8. Kattintson a **Mentés** gombra.
 
-9. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Velpic**lehetőséget.
+9. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Velpic** lehetőséget.
 
 10. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Velpic-be szinkronizálandó felhasználói attribútumokat. Vegye figyelembe, hogy a **megfelelő** tulajdonságokként kiválasztott attribútumok a Velpic felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
@@ -88,7 +88,7 @@ Ezzel elindítja a felhasználók és csoportok szakaszban Velpic rendelt felhas
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1a7c2634f4dc06e3c988a48c7ca15294160759e2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 6ef4558cc0cbbacb372fc4a4c2b52859517a2635
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520727"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353483"
 ---
 # <a name="tutorial-configure-robin-for-automatic-user-provisioning"></a>Oktatóanyag: a Robin konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
@@ -50,7 +50,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 ## <a name="set-up-robin-for-provisioning"></a>A vörösbegy beállítása a kiépítés számára
 
-1. Jelentkezzen be a [Robin felügyeleti konzolra](https://dashboard.robinpowered.com/login). Navigáljon a **> integrációk kezelése > SCIM > kezelése**elemre.
+1. Jelentkezzen be a [Robin felügyeleti konzolra](https://dashboard.robinpowered.com/login). Navigáljon a **> integrációk kezelése > SCIM > kezelése** elemre.
 
     ![Robin powered felügyeleti konzol](media/robin-provisioning-tutorial/robin-admin.png)
 
@@ -68,11 +68,11 @@ Mielőtt a Robint konfigurálja az Azure AD-vel való automatikus felhasználói
 
 **A következő lépések végrehajtásával adhat hozzá Robint az Azure AD Application Gallery-ből:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -80,7 +80,7 @@ Mielőtt a Robint konfigurálja az Azure AD-vel való automatikus felhasználói
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Robin**kifejezést, válassza a **Robin** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Robin** kifejezést, válassza a **Robin** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Robin az eredmények listájában](common/search-new-app.png)
 
@@ -97,7 +97,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Robin**elemet.
+2. Az alkalmazások listában válassza a **Robin** elemet.
 
     ![A Robin powered hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -113,13 +113,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory-felhasználók szinkronizálása a robinhoz**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory-felhasználók szinkronizálása a robinhoz** lehetőséget.
 
     ![Robin powered User-hozzárendelések](media/robin-provisioning-tutorial/robin-user-mapping.png)
 
@@ -127,7 +127,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Robin powered felhasználói attribútumok](media/robin-provisioning-tutorial/robin-user-attribute-mapping.png)
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Robin**elemhez lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Robin** elemhez lehetőséget.
 
     ![Robin powered Group-leképezések](media/robin-provisioning-tutorial/robin-group-mapping.png)
 
@@ -155,7 +155,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 2f8cafc0ec94e9254d42bf6718e796a256d128d4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 13ae960f5d259314f00f8f09b2999a36c0919bc5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92445681"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353713"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználói kiépítés automatikus kihasználásának beállítása
 
@@ -53,11 +53,11 @@ Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése el�
 
     ![Hám felügyeleti konzol](media/harness-provisioning-tutorial/admin.png)
 
-1. Válassza az **API-kulcsok**elemet.
+1. Válassza az **API-kulcsok** elemet.
 
     ![Hám API-kulcsok hivatkozása](media/harness-provisioning-tutorial/apikeys.png)
 
-1. Válassza az **API-kulcs hozzáadása**lehetőséget. 
+1. Válassza az **API-kulcs hozzáadása** lehetőséget. 
 
     ![Hám API-kulcs hozzáadása hivatkozás](media/harness-provisioning-tutorial/addkey.png)
 
@@ -78,11 +78,11 @@ Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése el�
 
 Az Azure AD-vel való automatikus felhasználó-kiépítés előtt az Azure AD-alkalmazás-katalógusban fel kell vennie a hevedert a felügyelt SaaS-alkalmazások listájára.
 
-1. A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget.
 
     ![A "Azure Active Directory" gomb](common/select-azuread.png)
 
-1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
+1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 
     ![A "minden alkalmazás" hivatkozás](common/enterprise-applications.png)
 
@@ -90,7 +90,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés előtt az Azure AD-a
 
     ![Az "új alkalmazás" gomb](common/add-new-app.png)
 
-1. A keresőmezőbe írja be a **hám**kifejezést, válassza ki a **hám** elemet az eredmények listájában, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. A keresőmezőbe írja be a **hám** kifejezést, válassza ki a **hám** elemet az eredmények listájában, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Hám az eredmények listájában](common/search-new-app.png)
 
@@ -106,23 +106,23 @@ Ez a szakasz végigvezeti az Azure AD üzembe helyezési szolgáltatás konfigur
 
 Az Azure AD-ben az automatikus felhasználó-kiépítés konfigurálásához tegye a következőket:
 
-1. A [Azure Portal](https://portal.azure.com)válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-1. Az alkalmazások listában válassza a **hám**elemet.
+1. Az alkalmazások listában válassza a **hám** elemet.
 
     ![A hám hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-1. Válassza a **kiépítés**lehetőséget.
+1. Válassza a **kiépítés** lehetőséget.
 
     ![A kiépítés gomb](common/provisioning.png)
 
-1. A **létesítési mód** legördülő listában válassza az **automatikus**lehetőséget.
+1. A **létesítési mód** legördülő listában válassza az **automatikus** lehetőséget.
 
     ![A "kiépítési mód" legördülő lista](common/provisioning-automatic.png)
 
-1. A **rendszergazdai hitelesítő adatok**területen tegye a következőket:
+1. A **rendszergazdai hitelesítő adatok** területen tegye a következőket:
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
  
@@ -136,33 +136,33 @@ Az Azure AD-ben az automatikus felhasználó-kiépítés konfigurálásához teg
 
 1. Válassza a **Mentés** lehetőséget.
 
-1. A **leképezések**területen válassza **a szinkronizálás Azure Active Directory felhasználók**számára lehetőséget.
+1. A **leképezések** területen válassza **a szinkronizálás Azure Active Directory felhasználók** számára lehetőséget.
 
     ![A "Azure Active Directory felhasználók szinkronizálása a következővel" hivatkozás használata](media/harness-provisioning-tutorial/usermappings.png)
 
-1. Az **attribútum-hozzárendelések**területen tekintse át az Azure ad-ből a hám-re szinkronizált felhasználói attribútumokat. Az *egyezőként* kiválasztott attribútumok a frissítési műveletek során a biztonsági öv felhasználói fiókjainak egyeztetésére szolgálnak. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
+1. Az **attribútum-hozzárendelések** területen tekintse át az Azure ad-ből a hám-re szinkronizált felhasználói attribútumokat. Az *egyezőként* kiválasztott attribútumok a frissítési műveletek során a biztonsági öv felhasználói fiókjainak egyeztetésére szolgálnak. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
 
     ![Felhasználói "attribútum-hozzárendelések" panel](media/harness-provisioning-tutorial/userattributes.png)
 
-1. A **leképezések**területen válassza **a Azure Active Directory csoportok szinkronizálása**lehetőséget.
+1. A **leképezések** területen válassza **a Azure Active Directory csoportok szinkronizálása** lehetőséget.
 
     ![A "Azure Active Directory csoportok szinkronizálása a kihasználható" hivatkozásra](media/harness-provisioning-tutorial/groupmappings.png)
 
-1. Az **attribútumok hozzárendelése**területen tekintse át az Azure ad-ből a hám-re szinkronizált csoportok attribútumait. Az *egyeztetési* tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használt hám csoportjaival egyeznek meg. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
+1. Az **attribútumok hozzárendelése** területen tekintse át az Azure ad-ből a hám-re szinkronizált csoportok attribútumait. Az *egyeztetési* tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használt hám csoportjaival egyeznek meg. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
 
     !["Attribútum-hozzárendelések" ablaktábla](media/harness-provisioning-tutorial/groupattributes.png)
 
 1. A hatóköri szűrők konfigurálásához tekintse meg [az attribútum-alapú alkalmazások kiépítés hatókör-szűrőkkel](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)című témakört.
 
-1. A **Beállítások**alatt engedélyezze az Azure ad kiépítési szolgáltatást a hám számára, és állítsa be a **kiépítési állapotot** **a be**értékre.
+1. A **Beállítások** alatt engedélyezze az Azure ad kiépítési szolgáltatást a hám számára, és állítsa be a **kiépítési állapotot** **a be** értékre.
 
     ![A kiépítési állapot kapcsolója "bekapcsolva" értékre vált](common/provisioning-toggle-on.png)
 
-1. A **Beállítások**területen a **hatókör** legördülő listában válassza ki, hogyan szeretné szinkronizálni a kiépíteni kívánt felhasználókat vagy csoportokat.
+1. A **Beállítások** területen a **hatókör** legördülő listában válassza ki, hogyan szeretné szinkronizálni a kiépíteni kívánt felhasználókat vagy csoportokat.
 
     ![Átadási hatókör](common/provisioning-scope.png)
 
-1. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget.
+1. Ha készen áll a létesítésre, válassza a **Mentés** lehetőséget.
 
     ![A kiépítési mentés gomb](common/provisioning-configuration-save.png)
 
@@ -170,7 +170,7 @@ Ez a művelet elindítja a kiépített felhasználók vagy csoportok kezdeti szi
 
 További információ az Azure AD-kiépítési naplók olvasásához: [jelentés a felhasználói fiókok automatikus üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséről.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

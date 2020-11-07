@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 98f92a6b0169c573b97788c7ffaf76255796cfa6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2792d5cc65e08a23a333deebdb24c0fd869446c3
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278923"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352897"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés RFPIO konfigurálása
 
@@ -52,11 +52,11 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 Az Azure AD-vel való automatikus RFPIO konfigurálása előtt engedélyeznie kell a SCIM-létesítést a RFPIO-on.
 
-1.  Jelentkezzen be a RFPIO felügyeleti konzolra. A felügyeleti konzol bal alsó részén kattintson a **bérlő**elemre.
+1.  Jelentkezzen be a RFPIO felügyeleti konzolra. A felügyeleti konzol bal alsó részén kattintson a **bérlő** elemre.
 
     ![RFPIO felügyeleti konzol](media/rfpio-provisioning-tutorial/aadtest0.png)
 
-2.  Kattintson a **szervezeti beállítások**elemre.
+2.  Kattintson a **szervezeti beállítások** elemre.
     
     ![RFPIO-rendszergazda](media/rfpio-provisioning-tutorial/aadtest.png)
 
@@ -64,7 +64,7 @@ Az Azure AD-vel való automatikus RFPIO konfigurálása előtt engedélyeznie ke
 
     ![RFPIO-SCIM hozzáadása](media/rfpio-provisioning-tutorial/scim.png)
 
-4.  Győződjön meg arról, hogy az **automatikus felhasználó-kiépítés** engedélyezve van. Kattintson a **scim API-jogkivonat előállítása**elemre.
+4.  Győződjön meg arról, hogy az **automatikus felhasználó-kiépítés** engedélyezve van. Kattintson a **scim API-jogkivonat előállítása** elemre.
 
     ![Képernyőkép az S C I M szakaszról, az S C I M, a P I TOKEN.](media/rfpio-provisioning-tutorial/generate.png)
 
@@ -78,11 +78,11 @@ Az Azure AD-vel való automatikus RFPIO konfigurálásához hozzá kell adnia a 
 
 **Ha RFPIO szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -90,7 +90,7 @@ Az Azure AD-vel való automatikus RFPIO konfigurálásához hozzá kell adnia a 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **RFPIO**kifejezést, válassza az **RFPIO** elemet az eredmények panelen, majd kattintson a    **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **RFPIO** kifejezést, válassza az **RFPIO** elemet az eredmények panelen, majd kattintson a    **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![RFPIO az eredmények listájában](common/search-new-app.png)
 
@@ -107,7 +107,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **RFPIO**lehetőséget.
+2. Az alkalmazások listában válassza a **RFPIO** lehetőséget.
 
     ![Az RFPIO hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -119,17 +119,17 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` meg a **bérlői URL-címet**. Egy példa a értékre `https://Azure-test1.rfpio.com/rfpserver/scim/v2` . Adja meg a **scim API-jogkivonat** értékét, amely korábban a **titkos jogkivonatban**lett lekérve. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a RFPIO. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a RFPIO-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` meg a **bérlői URL-címet**. Egy példa a értékre `https://Azure-test1.rfpio.com/rfpserver/scim/v2` . Adja meg a **scim API-jogkivonat** értékét, amely korábban a **titkos jogkivonatban** lett lekérve. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a RFPIO. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a RFPIO-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a RFPIO**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a RFPIO** lehetőséget.
 
     ![RFPIO felhasználói leképezések](media/rfpio-provisioning-tutorial/usermapping.png)
 
@@ -159,7 +159,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * A RFPIO jelenleg nem támogatja a csoportok üzembe helyezését.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a6f5526b01588649d1e094036241d616a8392949
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f95d7ae38ece2a2ad939d2b3c829aed2c676d0f7
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996489"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354002"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
@@ -48,6 +48,8 @@ A Premium Storage szolgáltatással rendelkező virtuális gépek esetében Azur
 
 Azure Disk Encryption nem érhető el a [2. generációs virtuális gépeken](../generation-2.md#generation-1-vs-generation-2-capabilities) és a [Lsv2 sorozatú virtuális gépeken](../lsv2-series.md). További kivételeket a [Azure Disk Encryption: nem támogatott forgatókönyvek](disk-encryption-linux.md#unsupported-scenarios)című témakörben talál.
 
+A Azure Disk Encryption nem érhető el a virtuálisgép-rendszerképeken Temp Disks (DV4, Dsv4, Ev4 és Esv4) nélküli virtuális gépeken.  Lásd: Azure-beli [virtuális gépek mérete helyi ideiglenes lemez nélkül](../azure-vms-no-temp-disk.md).
+
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
 A Azure Disk Encryption az [Azure által támogatott Linux-disztribúciók](endorsed-distros.md)egy részhalmazán támogatott, amely az összes Linux-kiszolgáló lehetséges disztribúciójának részhalmaza.
@@ -56,7 +58,7 @@ A Azure Disk Encryption az [Azure által támogatott Linux-disztribúciók](endo
 
 Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a Azure Disk Encryption; a támogatottak közül csak a következő disztribúciók és verziók támogatják a Azure Disk Encryption:
 
-| Publisher | Ajánlat | SKU | URN | Titkosításhoz támogatott kötet típusa |
+| Publisher | Ajánlat | Termékváltozat | URN | Titkosításhoz támogatott kötet típusa |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18,04 – LTS | Canonical: UbuntuServer: 18.04-LTS: legújabb | Operációs rendszer és az adatlemez |
 | Canonical | Ubuntu 18.04 | 18,04 – NAPONTA – LTS | Canonical: UbuntuServer: 18.04-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
@@ -142,7 +144,7 @@ Az alábbi táblázat az Azure Disk Encryption dokumentációjában használt á
 | PowerShell-parancsmagok | További információ: [Azure PowerShell parancsmagok](/powershell/azure/). |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató – linuxos virtuális gép létrehozása és titkosítása az Azure CLI-vel ](disk-encryption-cli-quickstart.md)
 - [Rövid útmutató – linuxos virtuális gép létrehozása és titkosítása az Azure PowerShell-lel](disk-encryption-powershell-quickstart.md)

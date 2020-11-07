@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/03/2019
-ms.openlocfilehash: a07fccc79c34509d9d5b7073b1c28b3f60fe8f61
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 10/30/2020
+ms.openlocfilehash: fef949e9285264ef46fbaed05a4385a15b27e65e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123693"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354468"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Oktatóanyag: telefonhívások elemzése a Stream Analytics és az eredmények megjelenítése Power BI irányítópulton
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Mielőtt elkezdené, hajtsa végre a következő műveleteket:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+* Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 * Töltse le a [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) telefonhívás-eseménykészítő alkalmazást a Microsoft letöltőközpontjából, vagy szerezze be a forráskódot a [GitHubról](https://aka.ms/azure-stream-analytics-telcogenerator).
 * Szüksége lesz egy Power BI-fiókra.
 
@@ -43,7 +43,7 @@ Mielőtt a Stream Analytics elemezni tudná a csaló hívások adatstreamjét, e
 
 Eseményközpont létrehozásához, majd az adatok az eseményközpontba küldéséhez hajtsa végre az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Válassza **az erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **Event Hubs** lehetőséget.
 
    ![Azure Event hub létrehozása a portálon](media/stream-analytics-manage-job/find-event-hub-resource.png)
@@ -51,17 +51,18 @@ Eseményközpont létrehozásához, majd az adatok az eseményközpontba küldé
 
    |**Beállítás**  |**Ajánlott érték** |**Leírás**  |
    |---------|---------|---------|
-   |Name     | myEventHubsNS        |  Az eseményközpont névterének azonosítására szolgáló egyedi név.       |
+   |Név     | asaTutorialEventHub        |  Az eseményközpont névterének azonosítására szolgáló egyedi név.       |
    |Előfizetés     |   \<Your subscription\>      |   Válasszon ki egy Azure-előfizetést, ahol létre kívánja hozni az eseményközpontot.      |
    |Erőforráscsoport     |   MyASADemoRG      |  Válassza az **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét.       |
    |Hely     |   USA 2. nyugati régiója      |    Az a hely, ahol az eseményközpont-névtér üzembe helyezhető.     |
 
-4. A többi beállításnál hagyja meg az alapértelmezett beállításokat, majd válassza a **Létrehozás** parancsot.
+4. A többi beállításnál használja az alapértelmezett beállításokat, majd válassza a **felülvizsgálat + létrehozás** lehetőséget. Ezután válassza a **Létrehozás** lehetőséget a telepítés elindításához.
 
    ![Event hub-névtér létrehozása Azure Portalban](media/stream-analytics-manage-job/create-event-hub-namespace.png)
 
-5. Ha a névtér üzembe helyezése befejeződött, lépjen a **Minden erőforrás** területre > keresse meg a *myEventHubsNS* elemet az Azure-erőforrások listájában. Válassza ki a *myEventHubsNS* elemet a megnyitásához.
-6. Ezután válassza az **+Eseményközpont** lehetőséget, és a **Név** mezőbe írja be a *MyEventHub* vagy egy Ön által választott nevet. A többi beállításnál hagyja meg az alapértelmezett beállításokat, majd válassza a **Létrehozás** parancsot. Várjon, amíg az üzembe helyezés sikeresen befejeződik.
+5. Ha a névtér befejezte a telepítést, lépjen a **minden erőforrás** elemre, és keresse meg a *asaTutorialEventHub* az Azure-erőforrások listájában. A megnyitásához válassza a *asaTutorialEventHub* lehetőséget.
+
+6. Ezután válassza a **+ Event hub** lehetőséget, és adjon meg egy **nevet** az Event hub számára. Állítsa a **partíciók darabszámát** *2* értékre.  A többi beállításnál használja az alapértelmezett beállításokat, majd válassza a **Létrehozás** lehetőséget. Várjon, amíg az üzembe helyezés sikeresen befejeződik.
 
    ![Event hub-konfiguráció a Azure Portal](media/stream-analytics-manage-job/create-event-hub-portal.png)
 
@@ -69,13 +70,13 @@ Eseményközpont létrehozásához, majd az adatok az eseményközpontba küldé
 
 Mielőtt egy alkalmazás adatokat küldhet az Azure Event Hubsnak, az eseményközpontnak szüksége van egy szabályzatra megfelelő hozzáférést biztosít. A hozzáférési szabályzat egy kapcsolati sztringet hoz létre, amelyben megtalálhatók az engedélyezési információk.
 
-1. Navigáljon az előző lépésben létrehozott MyEventHub *. A **Beállítások** területen válassza a **Megosztott elérési szabályzatok** , majd a **+Hozzáadás** elemet.
+1. Navigáljon az előző lépésben létrehozott *MyEventHub*. A **Beállítások** területen válassza a **Megosztott elérési szabályzatok** , majd a **+Hozzáadás** elemet.
 
 2. Adja a szabályzatnak a **MyPolicy** nevet, és ellenőrizze, hogy **Kezelés** lehetőség be van-e jelölve. Ezután válassza a **Létrehozás** elemet.
 
    ![Eseményközpont megosztott elérési házirendjének létrehozása](media/stream-analytics-manage-job/create-event-hub-access-policy.png)
 
-3. A szabályzat létrehozása után válassza ki a szabályzatot a megnyitásához, és keresse meg a **Kapcsolati sztring – elsődleges kulcs** elemet. Kattintson a kapcsolati sztring melletti **másolás** gombra.
+3. A szabályzat létrehozása után kattintson a házirend nevére a szabályzat megnyitásához. Keresse meg a **kapcsolatok karakterláncát – elsődleges kulcs**. A kapcsolódási karakterlánc mellett kattintson a **Másolás** gombra.
 
    ![A megosztott elérési szabályzat kapcsolati sztringjének mentése](media/stream-analytics-manage-job/save-connection-string.png)
 
@@ -85,14 +86,14 @@ Mielőtt egy alkalmazás adatokat küldhet az Azure Event Hubsnak, az eseményk�
 
    `Endpoint=sb://<Your event hub namespace>.servicebus.windows.net/;SharedAccessKeyName=<Your shared access policy name>;SharedAccessKey=<generated key>;EntityPath=<Your event hub name>`
 
-   Figyelje meg, hogy a kapcsolati sztring több, pontosvesszővel elválasztott kulcs–érték párt tartalmaz: **Endpoint** , **SharedAccessKeyName** , **SharedAccessKey** és **EntityPath** .
+   Figyelje meg, hogy a kapcsolati sztring több, pontosvesszővel elválasztott kulcs–érték párt tartalmaz: **Endpoint** , **SharedAccessKeyName** , **SharedAccessKey** és **EntityPath**.
 
 ## <a name="start-the-event-generator-application"></a>Az eseménylétrehozó alkalmazás elindítása
 
 A TelcoGenerator alkalmazást úgy kell beállítania az indítása előtt, hogy a korábban beállított Azure Event Hubs-eseményközpontnak küldjön adatokat.
 
 1. Bontsa ki a [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) fájl tartalmát.
-2. Nyissa meg a `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` fájlt egy tetszőleges szövegszerkesztőben (Több .config fájl található, ezért győződjön meg róla, hogy a megfelelőt nyitja meg.)
+2. Nyissa meg a `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` fájlt egy tetszőleges szövegszerkesztőben (több. config fájl található, ezért győződjön meg arról, hogy a megfelelőt nyitja meg.)
 
 3. Frissítse a konfigurációs fájl `<appSettings>` elemét az alábbi részletekkel:
 
@@ -128,9 +129,9 @@ Most, hogy már rendelkezik a hívási események streamjével, létrehozhat egy
 
 1. Stream Analytics-feladat létrehozásához lépjen az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza **az erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **stream Analytics feladatot** .
+2. Válassza az **erőforrás létrehozása** lehetőséget, és keresse meg **stream Analytics feladatot**. Válassza a **stream Analytics feladatok** csempét, és válassza a * létrehozás * * lehetőséget.
 
-3. Adja meg az alábbi értékeket az **Új Stream Analytics-feladat** ablaktáblán:
+3. Töltse ki az **új stream Analytics feladatok** űrlapot a következő értékekkel:
 
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
@@ -149,17 +150,17 @@ Most, hogy már rendelkezik a hívási események streamjével, létrehozhat egy
 
 A következő lépés egy bemeneti forrás megadása, amelyből a feladat be tudja olvasni az adatokat az előző szakaszban létrehozott eseményközpontot használva.
 
-1. Az Azure Portalon nyissa meg a **Minden erőforrás** panelt, és keresse meg az *ASATutorial* Stream Analytics-feladatot.
+1. A Azure Portal nyissa meg a **minden erőforrás** lapot, és keresse meg a *ASATutorial* stream Analytics feladatot.
 
-2. A Stream Analytics feladatpanelének **Feladattopológia** szakaszában válassza a **Bemenetek** lehetőséget.
+2. A Stream Analytics-feladathoz tartozó **feladatok topológiája** szakaszban válassza a **bemenetek** lehetőséget.
 
-3. Válassza a **+ Streambemenet hozzáadása** , majd az **Eseményközpont** lehetőséget. Adja meg az alábbi értékeket a panelen:
+3. Válassza a **+ Streambemenet hozzáadása** , majd az **Eseményközpont** lehetőséget. Töltse ki a bemeneti űrlapot a következő értékekkel:
 
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
    |Bemeneti alias     |  CallStream       |  Adjon meg egy rövid nevet a bemenet azonosításához. A bemeneti alias csak alfanumerikus karaktereket, kötőjeleket és aláhúzásjeleket tartalmazhat, és 3–63 karakter hosszúságúnak kell lennie.       |
    |Előfizetés    |   \<Your subscription\>      |   Jelölje ki azt az Azure-előfizetést, ahol létrehozta az eseményközpontot. Az eseményközpont ugyanabban az előfizetésben, mint a Stream Analytics-feladat, vagy egy másikban is.       |
-   |Eseményközpont-névtér    |  myEventHubsNS       |  Válassza ki az előző szakaszban létrehozott eseményközpont-névteret. Az aktuális előfizetésben elérhető összes eseményközpont-névtér megjelenik a legördülő listában.       |
+   |Eseményközpont-névtér    |  asaTutorialEventHub       |  Válassza ki az előző szakaszban létrehozott eseményközpont-névteret. Az aktuális előfizetésben elérhető összes eseményközpont-névtér megjelenik a legördülő listában.       |
    |Eseményközpont neve    |   MyEventHub      |  Válassza ki az előző szakaszban létrehozott eseményközpontot. Az aktuális előfizetésben elérhető összes eseményközpont megjelenik a legördülő listában.       |
    |Eseményközpont szabályzatának neve   |  MyPolicy       |  Válassza ki az előző lépésben létrehozott megosztott elérési házirendet. Az aktuális előfizetésben elérhető összes eseményközpont-szabályzat megjelenik a legördülő listában.       |
 
@@ -169,23 +170,29 @@ A következő lépés egy bemeneti forrás megadása, amelyből a feladat be tud
 
 ## <a name="configure-job-output"></a>Feladatkimenet konfigurálása
 
-Az utolsó lépés egy kimeneti fogadó megadása a feladatnak, ahová az átalakított adatokat írhatja. Ebben az oktatóanyagban kimeneti adatokat hoz létre és vizualizál a Power BI használatával.
+Az utolsó lépés egy kimeneti fogadó definiálása, ahol a feladatok írhatják az átalakított adatokat. Ebben az oktatóanyagban kimeneti adatokat hoz létre és vizualizál a Power BI használatával.
 
-1. Az Azure Portalon nyissa meg a **Minden erőforrás** panelt, majd az *ASATutorial* Stream Analytics-feladatot.
+1. A Azure Portal nyissa meg az **összes erőforrást** , és válassza ki a *ASATutorial* stream Analytics feladatot.
 
-2. A Stream Analytics-feladat panel **Feladattopológia** szakaszában válassza a **Kimenetek** lehetőséget.
+2. A Stream Analytics feladatok **feladatok topológiája** szakaszában válassza a **kimenetek** lehetőséget.
 
-3. Válassza a **+**  >  **Power bi** hozzáadása elemet. Töltse ki az űrlapot a következő értékekkel, majd válassza az **Engedélyezés** lehetőséget:
+3. Válassza a **+**  >  **Power bi** hozzáadása elemet. Ezután válassza az **Engedélyezés** lehetőséget, és kövesse az utasításokat a Power bi hitelesítéséhez.
+
+:::image type="content" source="media/stream-analytics-manage-job/authorize-power-bi.png" alt-text="Power BI engedélyezése gomb":::
+
+4. Töltse ki a kimenet űrlapot a következő részletekkel, majd válassza a **Mentés** lehetőséget:
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
    |Kimeneti alias  |  MyPBIoutput  |
+   |Csoport munkaterülete| Saját munkaterület |
    |Adatkészlet neve  |   ASAdataset  |
    |Tábla neve |  ASATable  |
+   | Hitelesítési módszer | Felhasználói jogkivonat |
 
    ![Stream Analytics kimenet konfigurálása](media/stream-analytics-manage-job/configure-stream-analytics-output.png)
 
-4. Miután kiválasztotta az **Engedélyezés** lehetőséget, megjelenik egy előugró ablak, ahol meg kell adnia a hitelesítő adatait a Power BI-fiókja hitelesítéséhez. A sikeres hitelesítés után válassza a **Mentés** lehetőséget a beállítások mentéséhez. A felügyelt identitás használatához lásd: [a felügyelt identitás használata a Azure stream Analytics-feladatok hitelesítéséhez Power bi](powerbi-output-managed-identity.md).
+   Ez az oktatóanyag a *felhasználói jogkivonat* hitelesítési módját használja. A felügyelt identitás használatához lásd: [a felügyelt identitás használata a Azure stream Analytics-feladatok hitelesítéséhez Power bi](powerbi-output-managed-identity.md).
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Lekérdezés meghatározása a bemeneti adatok elemzéséhez
 
@@ -195,7 +202,7 @@ Ebben a példában a csaló hívásokat ugyanaz a felhasználó indítja eltér�
 
 1. A Azure Portal nyissa meg a **minden erőforrás** panelt, és navigáljon a korábban létrehozott **ASATutorial** stream Analytics feladatokhoz.
 
-2. A Stream Analytics-feladat panel **Feladattopológia** szakaszában válassza a **Lekérdezés** lehetőséget. A lekérdezési ablak felsorolja a feladathoz konfigurált bemeneteket és kimeneteket, és a segítségével létrehozhat egy lekérdezést a bemeneti stream átalakításához.
+2. A Stream Analyticsi feladatokhoz tartozó **feladatok topológiája** szakaszban válassza a **lekérdezés** lehetőséget. A lekérdezési ablak felsorolja a feladathoz konfigurált bemeneteket és kimeneteket, és lehetővé teszi, hogy lekérdezést hozzon létre a bemeneti adatfolyam átalakításához.
 
 3. Cserélje le a szerkesztőben lévő lekérdezést az alábbi lekérdezésre, amely önillesztést hajt végre 5 másodpercnyi hívási adatonként:
 
@@ -220,25 +227,17 @@ Ebben a példában a csaló hívásokat ugyanaz a felhasználó indítja eltér�
 
 ## <a name="test-your-query"></a>A lekérdezés tesztelése
 
-A lekérdezésszerkesztőben létrehozott lekérdezéseket mintaadatokkal tesztelheti. A lekérdezés teszteléséhez hajtsa végre az alábbi lépéseket:
+A lekérdezéseket a lekérdezés-szerkesztőből is tesztelheti. A lekérdezés teszteléséhez hajtsa végre az alábbi lépéseket:
 
 1. Győződjön meg róla, hogy TelcoGenerator alkalmazás fut, és telefonhívás-rekordokat készít.
 
-2. A **Lekérdezés** panelen válassza ki a *CallStream* bemenet melletti pontokat, majd válassza a **Mintaadatok bemenetből** lehetőséget.
-
-3. Állítsa a **Percek** beállítást 3 értékre, majd válassza az **OK** lehetőséget. A rendszer három percnyi adatmintát vesz a bemeneti streamből, és jelzi, amikor a mintaadatok készen állnak. A mintavételezés állapotát az értesítési sávon tekintheti meg.
-
-   A rendszer ideiglenesen tárolja a mintaadatokat, amelyek akkor érhetők el, amikor meg van nyitva a lekérdezési ablak. Ha bezárja a lekérdezési ablakot, a mintaadatok elvesznek, és új mintaadatkészletet kell létrehoznia, ha tesztet kíván végrehajtani. Alternatív megoldásként használhat a [GitHubról](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) származó, mintaadatokat tartalmazó JSON-fájlt, majd feltöltheti ezt a JSON-fájlt, hogy a benne lévő mintaadatokat használja a *CallStream* bemenethez.
-
-   ![A Stream Analytics bemeneti adatok mintájának vizualizációja](media/stream-analytics-manage-job/sample-input-data-asa.png)
-
-4. A lekérdezés teszteléséhez válassza a **Teszt** elemet. A következő eredményeknek kell megjelennie:
+2. A lekérdezés teszteléséhez válassza a **Teszt** elemet. A következő eredményeknek kell megjelennie:
 
    ![Stream Analytics lekérdezési teszt kimenete](media/stream-analytics-manage-job/sample-test-output-restuls.png)
 
 ## <a name="start-the-job-and-visualize-output"></a>A feladat elindítása és a kimenet vizualizációja
 
-1. A feladat indításához lépjen a feladat **Áttekintés** paneljére, és válassza az **Indítás** lehetőséget.
+1. A feladatok elindításához navigáljon a feladatok **áttekintéséhez** , és válassza az **Indítás** lehetőséget.
 
 2. Válassza a **Most** beállítást a feladatkimenet kezdési idejeként, majd válassza az **Indítás** lehetőséget. A feladat állapotát az értesítési sávban tekintheti meg.
 
@@ -246,7 +245,7 @@ A lekérdezésszerkesztőben létrehozott lekérdezéseket mintaadatokkal teszte
 
 4. A Power BI-munkaterületen válassza a **+ Létrehozás** lehetőséget egy új, *Fraudulent Calls* nevű irányítópult létrehozásához.
 
-5. Válassza a **Csempe felvétele** lehetőséget az ablak tetején. Ezután válassza az **Egyedi folyamatos átviteli adatok** , majd a **Tovább** lehetőséget. A **Saját adatkészletek** területen válassza az **ASAdataset** elemet. Válassza a **kártya** lehetőséget a **vizualizáció típusa** legördülő listából, és adjon meg **hamis hívásokat** a **mezőkhöz** . Kattintson a **Tovább** gombra, és nevezze el a csempét, majd kattintson az **Alkalmaz** elemre a csempe létrehozásához.
+5. Az ablak tetején válassza a **Szerkesztés** lehetőséget, és **adja hozzá a csempét**. Ezután válassza az **Egyedi folyamatos átviteli adatok** , majd a **Tovább** lehetőséget. A **Saját adatkészletek** területen válassza az **ASAdataset** elemet. Válassza a **kártya** lehetőséget a **vizualizáció típusa** legördülő listából, és adjon meg **hamis hívásokat** a **mezőkhöz**. Kattintson a **Tovább** gombra, és nevezze el a csempét, majd kattintson az **Alkalmaz** elemre a csempe létrehozásához.
 
    ![Irányítópult-csempék létrehozása Power BI](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
 
@@ -273,7 +272,7 @@ Miután az alkalmazás fut a böngészőjében, az alábbi lépések végrehajt�
 
 3. Végül illessze be az **EmbedUrl** értéket a megfelelő szövegmezőbe, és válassza az **Irányítópult beágyazása** lehetőséget. Az irányítópult most már megtekinthető egy webalkalmazásba beágyazva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy Stream Analytics-feladatot, elemezte a bejövő adatokat, és megjelenítette az eredményeket egy Power BI-irányítópulton. A Stream Analytics-feladatokról a következő oktatóanyagban talál további információt:
 

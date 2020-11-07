@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2f694c5a089245a29aaf0e493542fc7f4fce46f7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5cdc36c20cbba148bb68bda700f5fdccbc593caf
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675444"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352999"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>Oktatóanyag: a SolarWinds Service Desk (korábban Samanage) konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
@@ -24,16 +24,16 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a SolarWinds Servic
 
 ## <a name="migrate-to-the-new-solarwinds-service-desk-application"></a>Migrálás az új SolarWinds Service Desk-alkalmazásba
 
-Ha már rendelkezik a SolarWinds Service Desktel való integrációval, tekintse meg a következő, a közelgő változásokról szóló szakaszt. Ha első alkalommal állítja be a SolarWinds-szolgáltatást, kihagyhatja ezt a szakaszt, és áthelyezheti a **támogatott funkciókra** .
+Ha már rendelkezik a SolarWinds Service Desktel való integrációval, tekintse meg a következő, a közelgő változásokról szóló szakaszt. Ha első alkalommal állítja be a SolarWinds-szolgáltatást, kihagyhatja ezt a szakaszt, és áthelyezheti a **támogatott funkciókra**.
 
 #### <a name="whats-changing"></a>Mi változik?
 
-* Változások az Azure AD-oldalon: a felhasználók Samange való kiépítésének engedélyezési módszere történelmileg **Egyszerű hitelesítés** . Hamarosan látni fogja, hogy az engedélyezési módszer **hosszú élettartamú titkos jogkivonatra** változott.
+* Változások az Azure AD-oldalon: a felhasználók Samange való kiépítésének engedélyezési módszere történelmileg **Egyszerű hitelesítés**. Hamarosan látni fogja, hogy az engedélyezési módszer **hosszú élettartamú titkos jogkivonatra** változott.
 
 
 #### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Mit kell tennem a meglévő egyéni integráció új alkalmazásba való átállításához?
 
-Ha rendelkezik egy meglévő SolarWinds-szolgáltatással, amely érvényes rendszergazdai hitelesítő adatokkal rendelkezik, **nincs szükség beavatkozásra** . A rendszer automatikusan áttelepíti az ügyfeleket az új alkalmazásba. Ez a folyamat teljesen a színfalak mögött történik. Ha a meglévő hitelesítő adatok lejárnak, vagy ha újra engedélyezni szeretné az alkalmazáshoz való hozzáférést, hosszú élettartamú titkos jogkivonatot kell létrehoznia. Új jogkivonat létrehozásához tekintse meg a jelen cikk 2. lépését.
+Ha rendelkezik egy meglévő SolarWinds-szolgáltatással, amely érvényes rendszergazdai hitelesítő adatokkal rendelkezik, **nincs szükség beavatkozásra**. A rendszer automatikusan áttelepíti az ügyfeleket az új alkalmazásba. Ez a folyamat teljesen a színfalak mögött történik. Ha a meglévő hitelesítő adatok lejárnak, vagy ha újra engedélyezni szeretné az alkalmazáshoz való hozzáférést, hosszú élettartamú titkos jogkivonatot kell létrehoznia. Új jogkivonat létrehozásához tekintse meg a jelen cikk 2. lépését.
 
 
 #### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Honnan tudhatom meg, hogy az alkalmazás migrálása megtörtént-e? 
@@ -100,7 +100,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőfelvétel: a kiépítési mód beállítása automatikus.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://api.samanage.com` meg a **bérlői URL-címet** .  Adja meg a titkos jogkivonat értékét, amely korábban a **titkos jogkivonatban** lett lekérve. Válassza a **kapcsolat tesztelése** lehetőséget, hogy az Azure ad képes legyen csatlakozni a SolarWinds Service Desk szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a SolarWinds Service Desk-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://api.samanage.com` meg a **bérlői URL-címet**.  Adja meg a titkos jogkivonat értékét, amely korábban a **titkos jogkivonatban** lett lekérve. Válassza a **kapcsolat tesztelése** lehetőséget, hogy az Azure ad képes legyen csatlakozni a SolarWinds Service Desk szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a SolarWinds Service Desk-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Képernyőfelvétel: a kiválasztott tesztelési gomb megjelenítése.](./media/samanage-provisioning-tutorial/provisioning.png)
 
@@ -156,7 +156,7 @@ Ha bejelöli a **minden felhasználó és csoport szinkronizálása** lehetősé
 * 09/14/2020 – a vállalat nevét két SaaS-oktatóanyagban módosította a Samanage-ről a SolarWinds Service deskre (korábban Samanage) https://github.com/ravitmorales .
 * 04/22/2020 – frissített engedélyezési módszer az alapszintű hitelesítésből a hosszú élettartamú titkos jogkivonatba.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 

@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: ec0ffdcf86e67a7126a3100c1e20b6e5c3474e35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 51dcc0585117d2e3db97046a25a4fbae6cff0112
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "78252883"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94341084"
 ---
 Ismerkedés a Bing Custom Search a Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Bing Custom Search API lehetővé teszi, hogy testreszabott, ad-ingyenes keresési élményeket hozzon létre az Ön számára fontos témakörökhöz. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py)található.
 
 A Pythonhoz készült Bing Custom Search ügyféloldali kódtára a következőre használható:
 * Keresési eredmények keresése a weben a Bing Custom Search-példányból.
 
-[Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch)  |  [Csomag (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[Dokumentáció](/python/api/azure-cognitiveservices-search-customsearch/?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch)  |  [Csomag (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 
 ## <a name="prerequisites"></a>Előfeltételek

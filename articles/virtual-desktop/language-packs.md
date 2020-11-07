@@ -3,15 +3,15 @@ title: Nyelvi csomagok telepítése Windows 10 rendszerű virtuális gépekre a 
 description: Windows 10 rendszerű, többmunkamenetes virtuális gépek nyelvi csomagjainak telepítése a Windows Virtual Desktopban.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 11/06/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10d79d08e3f6ed422f0354074ebc6e0acc125553
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90084209"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354036"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Nyelvi csomagok hozzáadása Windows 10 több munkamenetes rendszerképhez
 
@@ -43,6 +43,11 @@ Több nyelv hozzáadásához a következő dolgokra van szükség a Windows 10-e
      - Beérkezett alkalmazások ISO:
         - [Windows 10, 1903-es vagy 1909-es bejövő alkalmazások ISO-verziója](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
         - [Windows 10, 2004-es verziójú beérkezett alkalmazások ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
+        - [Windows 10, 20H2 beérkezett fájlok alkalmazásának ISO-verziója](https://software-download.microsoft.com/download/pr/19041.508.200905-1327.vb_release_svc_prod1_amd64fre_InboxApps.iso)
+     
+     - Ha a Windows 10 2004-es vagy 20H2-es verzióját használja, az új nyelvek letöltéséhez használhatja a helyi Experience Pack (LXP) ISO-ket. A [Windows 10 nyelveinek hozzáadásával](/windows-hardware/manufacture/desktop/language-packs-known-issue) kapcsolatban a következő témakörben talál információt: ismert problémák annak megállapításához, hogy le kell-e tölteni a 9b vagy a 9C verziót:
+        - [Windows 10, 2004 verzió vagy 20H2 **9b** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
+        - [Windows 10, 2004 verzió vagy 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY) 
 
 - Egy Azure Files megosztás vagy fájlmegosztás egy Windows fájlkiszolgáló virtuális gépen
 
@@ -59,7 +64,7 @@ A nyelvi csomagok és FODs, valamint a beérkezett fájlok mappáinak tárházá
 
 3. Nyissa meg a Language Pack ISO-t, és másolja a tartalmat a **LocalExperiencePacks** és az **x64 \\ Langpacks** mappából, majd illessze be a tartalmat a fájlmegosztásba.
 
-4. Nyissa meg az Franciaország-beli **ISO-fájlt**, másolja ki az összes tartalmát, majd illessze be a fájlmegosztást.
+4. Nyissa meg az Franciaország-beli **ISO-fájlt** , másolja ki az összes tartalmát, majd illessze be a fájlmegosztást.
 5. Nyissa meg a beérkezett fájlok **amd64fre** mappáját, és másolja a tárházban lévő tartalmat az előkészített Beérkezett üzenetek mappájába.
 
      >[!NOTE]
@@ -252,7 +257,7 @@ Set-WinUserLanguageList $LanguageList -force
 
 Miután a felhasználó módosítja a nyelvi beállításokat, ki kell jelentkeznie a Windows rendszerű virtuális asztali munkamenetből, és újra be kell jelentkeznie a módosítások érvénybe léptetéséhez. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha kíváncsi a nyelvi csomagok ismert problémáira, tekintse meg [a nyelvi csomagok hozzáadása a Windows 10 1803-es és újabb verzióiban: ismert problémák](/windows-hardware/manufacture/desktop/language-packs-known-issue)című témakört.
 
