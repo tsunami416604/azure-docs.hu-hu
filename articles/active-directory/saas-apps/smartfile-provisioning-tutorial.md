@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 3f480cb0d478ca60555fa15849d5fcbed6cda684
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fca18a58ccb8d4e2f10b5db606ad01a97c2d5bac
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91286114"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359928"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés SmartFile konfigurálása
 
@@ -68,11 +68,11 @@ Az Azure AD-vel való automatikus SmartFile konfigurálásához hozzá kell adni
 
 **Ha SmartFile szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -80,7 +80,7 @@ Az Azure AD-vel való automatikus SmartFile konfigurálásához hozzá kell adni
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **SmartFile**kifejezést, válassza az **SmartFile** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **SmartFile** kifejezést, válassza az **SmartFile** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![SmartFile az eredmények listájában](common/search-new-app.png)
 
@@ -97,7 +97,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **SmartFile**lehetőséget.
+2. Az alkalmazások listában válassza a **SmartFile** lehetőséget.
 
     ![Az SmartFile hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -109,17 +109,17 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5.  A **rendszergazdai hitelesítő adatok** szakaszban adja `https://<SmartFile sitename>.smartfile.com/ftp/scim` meg a **bérlői URL-címet**. Egy példa így néz ki `https://demo1test.smartfile.com/ftp/scim` . Adja meg a **titkos jogkivonatban**korábban lekért **tulajdonosi jogkivonat** -értéket (termék: ProductPassword). Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a SmartFile. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a SmartFile-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5.  A **rendszergazdai hitelesítő adatok** szakaszban adja `https://<SmartFile sitename>.smartfile.com/ftp/scim` meg a **bérlői URL-címet**. Egy példa így néz ki `https://demo1test.smartfile.com/ftp/scim` . Adja meg a **titkos jogkivonatban** korábban lekért **tulajdonosi jogkivonat** -értéket (termék: ProductPassword). Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a SmartFile. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a SmartFile-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a SmartFile**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a SmartFile** lehetőséget.
 
     ![SmartFile felhasználói leképezések](media/smartfile-provisioning-tutorial/usermapping.png)
 
@@ -127,7 +127,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![SmartFile felhasználói attribútumai](media/smartfile-provisioning-tutorial/userattribute.png)
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a SmartFile**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a SmartFile** lehetőséget.
 
     ![SmartFile csoport-hozzárendelések](media/smartfile-provisioning-tutorial/groupmapping.png)
 
@@ -157,7 +157,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 * A SmartFile csak a rögzített törléseket támogatja. 
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

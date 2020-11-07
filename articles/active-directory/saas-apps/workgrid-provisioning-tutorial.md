@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: f5f7ed8a905aad873ecfc878979ac32af1e21730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee656f147bd27ff782121f088a239a7337d81075
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312243"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359765"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Workgrid konfigurálása
 
@@ -52,11 +52,11 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 Az Azure AD-vel való automatikus Workgrid konfigurálása előtt engedélyeznie kell a SCIM-létesítést a Workgrid-on.
 
-1. Jelentkezzen be a Workgrid-be. Navigáljon a **felhasználók > a felhasználó üzembe**helyezése.
+1. Jelentkezzen be a Workgrid-be. Navigáljon a **felhasználók > a felhasználó üzembe** helyezése.
 
     ![Képernyőkép a Workgrid U I és a felhasználók és a felhasználók üzembe helyezési lehetőségeiről.](media/Workgrid-provisioning-tutorial/user.png)
 
-2. A **FIÓKKEZELÉS API**alatt kattintson a **hitelesítő adatok létrehozása**elemre.
+2. A **FIÓKKEZELÉS API** alatt kattintson a **hitelesítő adatok létrehozása** elemre.
 
     ![Képernyőkép a fiók kezeléséről a P I szakasz a hitelesítő adatok létrehozása lehetőséggel.](media/Workgrid-provisioning-tutorial/scim.png)
 
@@ -71,11 +71,11 @@ Az Azure AD-vel való automatikus Workgrid konfigurálásához hozzá kell adnia
 
 **Ha Workgrid szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Az Azure AD-vel való automatikus Workgrid konfigurálásához hozzá kell adnia
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Workgrid**kifejezést, válassza az **Workgrid** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Workgrid** kifejezést, válassza az **Workgrid** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Workgrid az eredmények listájában](common/search-new-app.png)
 
@@ -100,7 +100,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Workgrid**lehetőséget.
+2. Az alkalmazások listában válassza a **Workgrid** lehetőséget.
 
     ![Az Workgrid hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -116,13 +116,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Workgrid**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Workgrid** lehetőséget.
 
     ![A leképezések szakasz képernyőképe a Azure Active Directory felhasználók szinkronizálása a Workgrid lehetőségre.](media/Workgrid-provisioning-tutorial/usermapping.png)
 
@@ -156,7 +156,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Workgrid-on végrehajtott összes műveletet ismertetik. További információ: [a felhasználó kiépítési állapotának ellenõrzése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók kiépítés](../app-provisioning/check-status-user-account-provisioning.md)során.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

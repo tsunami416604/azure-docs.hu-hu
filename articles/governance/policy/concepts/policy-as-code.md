@@ -1,16 +1,16 @@
 ---
-title: Azure Policy tervezése kód-munkafolyamatként
+title: Azure Policy tervezése kódmunkafolyamatokként
 description: Megtudhatja, hogyan tervezhet munkafolyamatokat a Azure Policy-definíciók kódként való üzembe helyezéséhez és az erőforrások automatikus ellenőrzéséhez.
 ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2be6c0770098d50abbb9695e04b3f53c073de9ae
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 74d2097e4db4442e6e65f30541864fb554f7379d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320612"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359680"
 ---
-# <a name="design-azure-policy-as-code-workflows"></a>Azure Policy tervezése kód-munkafolyamatként
+# <a name="design-azure-policy-as-code-workflows"></a>Azure Policy tervezése kódmunkafolyamatokként
 
 Ahogy halad a felhő irányításával, érdemes áttérnie az egyes szabályzat-definíciók manuális felügyeletére a Azure Portal vagy a különböző SDK-k segítségével, hogy a vállalatnál könnyebben kezelhető és ismételhető legyen. A felhőben a rendszerek nagy léptékű kezelésének egyik meghatározó megközelítése a következő:
 
@@ -38,8 +38,6 @@ Ilyen fájlformátumok például a [Azure Policy GitHub](https://github.com/Azur
 
 - Házirend-definíció: [címke hozzáadása az erőforrásokhoz](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - Kezdeményezési definíció: [Számlázási címkék](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
-
-Emellett tekintse át a [Azure Policy-erőforrások exportálása](../how-to/export-resources.md) lehetőséget, hogy a meglévő definíciókat és hozzárendeléseket beolvassa a forráskód-kezelési környezet [githubba](https://www.github.com).
 
 ## <a name="workflow-overview"></a>A munkafolyamat áttekintése
 
@@ -73,6 +71,8 @@ A szabályzat-definíciók JSON használatával jönnek létre, és a forrás ve
 ```
 
 Új szabályzat hozzáadásakor vagy egy meglévő frissítésekor a munkafolyamatnak automatikusan frissítenie kell a házirend-definíciót az Azure-ban. Az új vagy frissített szabályzat-definíció tesztelése egy későbbi lépésben történik.
+
+Emellett tekintse át a [Azure Policy-erőforrások exportálása](../how-to/export-resources.md) lehetőséget, hogy a meglévő definíciókat és hozzárendeléseket beolvassa a forráskód-kezelési környezet [githubba](https://www.github.com).
 
 ### <a name="create-and-update-initiative-definitions"></a>Kezdeményezési definíciók létrehozása és frissítése
 
@@ -141,7 +141,7 @@ Ezekben az esetekben az alkalmazás vagy az infrastruktúra üzembe helyezését
 
 Ez a cikk a kód Azure Policy általános munkafolyamatát ismerteti, valamint azt is, hogy a szabályzatok kiértékelése más üzembe helyezési munkafolyamatok része legyen. Ezt a munkafolyamatot bármely olyan környezetben felhasználhatja, amely támogatja a parancsfájlokon alapuló lépéseket és az automatizálást az eseményindítók alapján. A jelen munkafolyamat GitHubon való használatáról szóló oktatóanyagért lásd [: oktatóanyag: Azure Policy implementálása kódként a GitHub](../tutorials/policy-as-code-github.md)használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A szabályzat- [definíciós struktúra](./definition-structure.md)megismerése.
 - A szabályzat- [hozzárendelési struktúra](./assignment-structure.md)megismerése.

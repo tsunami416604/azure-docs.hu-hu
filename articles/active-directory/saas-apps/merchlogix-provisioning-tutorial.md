@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: 9be2205ad0664d58c7a2ef0c07481b1c7aa02402
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d0a52f06a751fba57a00615e2d57485ff740d04
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273347"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359697"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés MerchLogix konfigurálása
 
@@ -43,7 +43,7 @@ Az Azure AD-vel való automatikus MerchLogix konfigurálása előtt hozzá kell 
 
     ![A Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**  >  **minden alkalmazás**elemhez.
+2. Navigáljon a **vállalati alkalmazások**  >  **minden alkalmazás** elemhez.
 
     ![A vállalati alkalmazások szakasz][2]
 
@@ -51,9 +51,9 @@ Az Azure AD-vel való automatikus MerchLogix konfigurálása előtt hozzá kell 
 
     ![Az új alkalmazás gomb][3]
 
-4. A keresőmezőbe írja be a **MerchLogix**kifejezést.
+4. A keresőmezőbe írja be a **MerchLogix** kifejezést.
 
-5. Az eredmények panelen válassza a **MerchLogix**lehetőséget, majd a **Hozzáadás** gombra kattintva adja hozzá a MerchLogix az SaaS-alkalmazások listájához.
+5. Az eredmények panelen válassza a **MerchLogix** lehetőséget, majd a **Hozzáadás** gombra kattintva adja hozzá a MerchLogix az SaaS-alkalmazások listájához.
 
     ![Képernyőkép a Hozzáadás a hasábról szakaszban a név megadása szövegmezővel.][4]
 
@@ -80,7 +80,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 ### <a name="to-configure-automatic-user-provisioning-for-merchlogix-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a MerchLogix az Azure AD-ben:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg **Azure Active Directory > vállalati alkalmazások > minden alkalmazás**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** lehetőséget.
 
 2. Az SaaS-alkalmazások listájából válassza a MerchLogix lehetőséget.
 
@@ -98,15 +98,15 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 6. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen csatlakozni a MerchLogix. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a MerchLogix-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
 8. Kattintson a **Mentés** gombra.
 
-9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a MerchLogix**lehetőséget.
+9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a MerchLogix** lehetőséget.
 
 10. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található MerchLogix. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a MerchLogix felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-11. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a MerchLogix**lehetőséget.
+11. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a MerchLogix** lehetőséget.
 
 12. Tekintse át az Azure AD-ből szinkronizált MerchLogix az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a MerchLogix tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -118,7 +118,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

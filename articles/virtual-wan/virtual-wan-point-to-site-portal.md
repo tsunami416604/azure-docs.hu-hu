@@ -7,18 +7,18 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 10/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3d03d0267ff4fb16042d5cc2016e87139b88281a
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 645d5beb19b738e2269c0ec9e5b84fb140c7deb8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056582"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359501"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Oktatóanyag: felhasználói VPN-kapcsolat létrehozása az Azure Virtual WAN használatával
 
 Ez az oktatóanyag bemutatja, hogyan kapcsolódhat a Virtual WAN használatával az Azure-ban lévő erőforrásaihoz IPsec/IKE (IKEv2) vagy OpenVPN VPN-kapcsolaton keresztül. Ehhez a kapcsolattípushoz konfigurálni kell egy ügyfelet az ügyfélszámítógépen. A virtuális WAN-ról további információt a [virtuális WAN áttekintése](virtual-wan-about.md) című témakörben talál.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * WAN létrehozása
@@ -32,7 +32,9 @@ Az oktatóanyag a következőket ismerteti:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [Before beginning](../../includes/virtual-wan-before-include.md)]
+A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
+
+[!INCLUDE [Before you begin](../../includes/virtual-wan-before-include.md)]
 
 ## <a name="create-a-virtual-wan"></a><a name="wan"></a>Virtuális WAN létrehozása
 
@@ -80,7 +82,7 @@ Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGrou
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A virtuális WAN-ról további információt a következő témakörben talál:
 

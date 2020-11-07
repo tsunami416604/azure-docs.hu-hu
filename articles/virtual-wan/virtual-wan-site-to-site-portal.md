@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 8a25ead5983e56f56ba0daea23c2775b3332fb8b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7ba0f1b6f37da923e389964b99a02295dc3d6050
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057909"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359527"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Oktatóanyag: Helyek közötti kapcsolat létrehozása az Azure Virtual WAN használatával
 
@@ -41,13 +41,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
-* Rendelkezik egy virtuális hálózattal, amelyhez csatlakozni szeretne. Győződjön meg arról, hogy a helyszíni hálózatok egyik alhálózata sem fedi át azokat a virtuális hálózatokat, amelyekhez csatlakozni szeretne. Ha virtuális hálózatot szeretne létrehozni a Azure Portalban, tekintse meg a rövid [útmutatót.](../virtual-network/quick-create-portal.md)
-
-* A virtuális hálózat nem rendelkezik virtuális hálózati átjárókkal. Ha a virtuális hálózat átjáróval rendelkezik (VPN vagy ExpressRoute), akkor el kell távolítania az összes átjárót. Ehhez a konfigurációhoz az szükséges, hogy a virtuális hálózatok a virtuális WAN hub-átjáróhoz legyenek csatlakoztatva.
-
-* Igényeljen egy IP-címtartományt az elosztó régiójában. A hub egy virtuális WAN által létrehozott és használt virtuális hálózat. Az hubhoz megadott címtartomány nem fedi át a meglévő virtuális hálózatait, amelyhez csatlakozik. Emellett nem lehet átfedésben azokkal a címtartományokkal sem, amelyekhez a helyszínen csatlakozik. Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtartományok körét, akkor egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek.
-
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [Before you begin](../../includes/virtual-wan-before-include.md)]
 
 ## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>Virtuális WAN létrehozása
 
@@ -80,7 +74,7 @@ Ebben a lépésben a VPN-helyet csatlakoztatja a hubhoz.
 A VPN-eszköz konfigurációjának használatával konfigurálhatja a helyszíni VPN-eszközöket.
 
 1. A virtuális WAN lapján kattintson az **Áttekintés** elemre.
-2. A **hub->VPNSite** lap tetején kattintson a **VPN-konfiguráció letöltése**elemre. Az Azure létrehoz egy Storage-fiókot a "Microsoft-Network-[Location]" erőforráscsoporthoz, ahol a hely a WAN helye. Miután a konfigurációt alkalmazta a VPN-eszközökre, törölheti ezt a tárfiókot.
+2. A **hub->VPNSite** lap tetején kattintson a **VPN-konfiguráció letöltése** elemre. Az Azure létrehoz egy Storage-fiókot a "Microsoft-Network-[Location]" erőforráscsoporthoz, ahol a hely a WAN helye. Miután a konfigurációt alkalmazta a VPN-eszközökre, törölheti ezt a tárfiókot.
 3. Miután befejeződött a fájl létrehozása, a hivatkozásra kattintva letöltheti.
 4. Alkalmazza a konfigurációt a helyszíni VPN-eszközre.
 
@@ -229,7 +223,7 @@ Amennyiben útmutatásra van szüksége az eszköz konfigurálásához, használ
 
 ## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>A VPN-átjáró konfigurálása
 
-A VPN-átjáró beállításait bármikor megtekintheti és konfigurálhatja a **Megtekintés/konfigurálás**lehetőség kiválasztásával.
+A VPN-átjáró beállításait bármikor megtekintheti és konfigurálhatja a **Megtekintés/konfigurálás** lehetőség kiválasztásával.
 
 :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="Képernyőfelvétel: a &quot;VPN (helyek közötti)&quot; oldal, amely a &quot;View/configure&quot; műveletre mutató nyilat mutat." lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
 
@@ -240,7 +234,7 @@ A **VPN Gateway szerkesztése** lapon a következő beállításokat tekintheti 
 * Alapértelmezett BGP IP-cím VPN Gateway (az Azure által hozzárendelt)
 * Egyéni BGP IP-cím konfigurációs beállítása: Ez a mező az APIPA (automatikus magánhálózati IP-címzés) számára van fenntartva. Az Azure támogatja a BGP IP-címet a 169.254.21. * és a 169.254.22. * tartományokban. Az Azure elfogadja a BGP-kapcsolatokat ezekben a tartományokban, de az alapértelmezett BGP-IP-címmel fogja tárcsázni a kapcsolatot.
 
-   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Képernyőfelvétel: a &quot;VPN (helyek közötti)&quot; oldal, amely a &quot;View/configure&quot; műveletre mutató nyilat mutat." lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Konfiguráció megtekintése" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
 
@@ -250,7 +244,7 @@ Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGrou
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A virtuális WAN-ról további információt a következő témakörben talál:
 

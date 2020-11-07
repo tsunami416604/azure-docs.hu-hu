@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: e908c8d19a4640995c536580b6584558212ada3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 458b527194c1123e266bd6abedf25de18e0cee09
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361571"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359357"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Oktatóanyag: a LinkedIn Sales Navigator konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -78,7 +78,7 @@ Az első lépés a LinkedIn hozzáférési jogkivonatának beolvasása. Ha Ön v
 
     ![A képernyőképen az S C I M telepítő lapja látható.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
-5. Kattintson a **jogkivonat előállítása**elemre. A hozzáférési jogkivonat megjelenítéséhez a **hozzáférési jogkivonat** mezőben kell megjelennie.
+5. Kattintson a **jogkivonat előállítása** elemre. A hozzáférési jogkivonat megjelenítéséhez a **hozzáférési jogkivonat** mezőben kell megjelennie.
 
 6. Mentse a hozzáférési jogkivonatot a vágólapra vagy a számítógépre, mielőtt elhagyja a lapot.
 

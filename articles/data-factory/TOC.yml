@@ -203,6 +203,8 @@
       href: concepts-roles-permissions.md
     - name: Elnevezési szabályok
       href: naming-rules.md
+    - name: Adatredundancia
+      href: concepts-data-redundancy.md
 - name: Útmutatók
   items:
     - name: Szerző

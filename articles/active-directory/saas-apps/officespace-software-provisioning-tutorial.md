@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/02/2019
 ms.author: Zhchia
-ms.openlocfilehash: fe48cef0fb235d217f95012e81d7daf501928300
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fc67d649e3a7cd094eb2c3d633244077abcab308
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518568"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359923"
 ---
 # <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>Oktatóanyag: OfficeSpace-szoftver konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -50,7 +50,7 @@ Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése el�
 
 ## <a name="set-up-officespace-software-for-provisioning"></a>OfficeSpace szoftver beállítása a kiépítés számára
 
-1. Jelentkezzen be a [OfficeSpace Software felügyeleti konzolján](https://support.officespacesoftware.com/hc). Navigáljon a **beállítások > összekötők**elemre.
+1. Jelentkezzen be a [OfficeSpace Software felügyeleti konzolján](https://support.officespacesoftware.com/hc). Navigáljon a **beállítások > összekötők** elemre.
 
     ![OfficeSpace szoftveres felügyeleti konzol](media/officespace-software-provisioning-tutorial/settings.png)
 
@@ -68,11 +68,11 @@ Mielőtt OfficeSpace szoftvert szeretne konfigurálni az Azure AD-vel való auto
 
 **A következő lépések végrehajtásával adhat hozzá OfficeSpace szoftvert az Azure AD-alkalmazás-katalógusból:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -80,7 +80,7 @@ Mielőtt OfficeSpace szoftvert szeretne konfigurálni az Azure AD-vel való auto
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **OfficeSpace szoftvert**, válassza ki a **OfficeSpace szoftvert** az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **OfficeSpace szoftvert** , válassza ki a **OfficeSpace szoftvert** az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![OfficeSpace szoftver az eredmények listájában](common/search-new-app.png)
 
@@ -145,7 +145,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

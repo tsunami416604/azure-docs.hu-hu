@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 2899121db4b6a3f202be4860e2e4f43027cdef7c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 2dd1b51c6bcdbc531661d9ecf45d3d0282eb5b45
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348765"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358847"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Az Azure Firewall naplóinak és metrikáinak monitorozása
 
@@ -50,74 +50,55 @@ A diagnosztikai naplózás bekapcsolása után eltarthat néhány percig, amíg 
 8. Válassza ki előfizetését.
 9. Válassza a **Mentés** lehetőséget.
 
-## <a name="enable-logging-with-powershell"></a>Naplózás engedélyezése a PowerShell-lel
+## <a name="enable-diagnostic-logging-by-using-powershell"></a>Diagnosztikai naplózás engedélyezése a PowerShell használatával
 
 A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manager-erőforráshoz. A diagnosztikai naplózást engedélyezni kell a naplókban elérhető adatok gyűjtésének megkezdéséhez.
 
-A diagnosztikai naplózás engedélyezéséhez kövesse az alábbi lépéseket:
+A következő lépésekkel engedélyezheti a diagnosztikai naplózást a PowerShell használatával:
 
-1. Jegyezze fel azon Storage-fiók erőforrás-azonosítóját, ahol a naplóadatokat tárolja. Ez az érték az alábbi formátumú: */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\>*.
+1. Jegyezze fel Log Analytics munkaterület erőforrás-AZONOSÍTÓját, ahol a rendszer a napló adatait tárolja. Ez az érték a következő: `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>` .
 
-   Az előfizetés bármilyen tárfiókját használhatja. Ezeket az információkat az Azure Portalon találhatja meg. Az információk az erőforrás **Tulajdonság** lapján érhetők el.
+   Az előfizetésben bármilyen munkaterületet használhat. Ezeket az információkat az Azure Portalon találhatja meg. Az információ az erőforrás- **Tulajdonságok** lapon található.
 
-2. Jegyezze fel azon tűzfal erőforrás-azonosítóját, amelyhez engedélyezve van a naplózás. Ez az érték az alábbi formátumú: */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Network/azureFirewalls/ \<Firewall name\>*.
+2. Jegyezze fel azon tűzfal erőforrás-azonosítóját, amelyhez engedélyezve van a naplózás. Ez az érték a következő: `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` .
 
    Ezeket az információkat a portálon találhatja meg.
 
-3. Engedélyezze a diagnosztikai naplózást az alábbi PowerShell-parancsmaggal:
+3. A következő PowerShell-parancsmag használatával engedélyezze a diagnosztikai naplózást az összes naplóhoz és metrikához:
 
-    ```powershell
-    Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name> `
-   -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> `
-   -Enabled $true     
-    ```
+   ```powershell
+   $diagSettings = @{
+      Name = 'toLogAnalytics'
+      ResourceId = '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
+      WorkspaceId = '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
+      Enabled = $true
+   }
+   Set-AzDiagnosticSetting  @diagSettings 
+   ```
 
-> [!TIP]
->A diagnosztikai naplókhoz nincs szükség külön Storage-fiókra. A Storage hozzáférés- és teljesítménynaplózásra való használata szolgáltatási díjjal jár.
-
-## <a name="enable-diagnostic-logging-by-using-azure-cli"></a>Diagnosztikai naplózás engedélyezése az Azure CLI használatával
+## <a name="enable-diagnostic-logging-by-using-the-azure-cli"></a>Diagnosztikai naplózás engedélyezése az Azure CLI használatával
 
 A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manager-erőforráshoz. A diagnosztikai naplózást engedélyezni kell a naplókban elérhető adatok gyűjtésének megkezdéséhez.
 
-[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+Az Azure CLI-vel történő diagnosztikai naplózás engedélyezéséhez kövesse az alábbi lépéseket:
 
-### <a name="enable-diagnostic-logging"></a>Diagnosztikai naplózás engedélyezése
+1. Jegyezze fel Log Analytics munkaterület erőforrás-AZONOSÍTÓját, ahol a rendszer a napló adatait tárolja. Ez az érték a következő: `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` .
 
-A diagnosztikai naplózás engedélyezéséhez használja a következő parancsokat.
+   Az előfizetésben bármilyen munkaterületet használhat. Ezeket az információkat az Azure Portalon találhatja meg. Az információ az erőforrás- **Tulajdonságok** lapon található.
 
-1. Futtassa az az [monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) parancsot a diagnosztikai naplózás engedélyezéséhez:
+2. Jegyezze fel azon tűzfal erőforrás-azonosítóját, amelyhez engedélyezve van a naplózás. Ez az érték a következő: `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` .
 
-   ```azurecli
-   az monitor diagnostic-settings create –name AzureFirewallApplicationRule \
-     --resource Firewall07 --storage-account MyStorageAccount
+   Ezeket az információkat a portálon találhatja meg.
+
+3. A következő Azure CLI-paranccsal engedélyezheti a diagnosztikai naplózást az összes naplóhoz és metrikához:
+
+   ```azurecli-interactive
+   az monitor diagnostic-settings create -n 'toLogAnalytics'
+      --resource '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
+      --workspace '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
+      --logs '[{\"category\":\"AzureFirewallApplicationRule\",\"Enabled\":true}, {\"category\":\"AzureFirewallNetworkRule\",\"Enabled\":true}, {\"category\":\"AzureFirewallDnsProxy\",\"Enabled\":true}]' 
+      --metrics '[{\"category\": \"AllMetrics\",\"enabled\": true}]'
    ```
-
-   Futtassa az az [monitor diagnosztikai-Settings List](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_list) parancsot az erőforrás diagnosztikai beállításainak megtekintéséhez:
-
-   ```azurecli
-   az monitor diagnostic-settings list --resource Firewall07
-   ```
-
-   Használja az az [monitor Diagnostics-Settings show](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_show) (az adott erőforrás aktív diagnosztikai beállításainak megtekintése):
-
-   ```azurecli
-   az monitor diagnostic-settings show --name AzureFirewallApplicationRule --resource Firewall07
-   ```
-
-1. A beállítások frissítéséhez futtassa az az [monitor Diagnostics-Settings Update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) parancsot.
-
-   ```azurecli
-   az monitor diagnostic-settings update --name AzureFirewallApplicationRule --resource Firewall07 --set retentionPolicy.days=365
-   ```
-
-   A diagnosztikai beállítások törléséhez használja az az [monitor Diagnostics-Settings delete](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_delete) parancsot.
-
-   ```azurecli
-   az monitor diagnostic-settings delete --name AzureFirewallApplicationRule --resource Firewall07
-   ```
-
-> [!TIP]
->A diagnosztikai naplókhoz nincs szükség külön Storage-fiókra. A Storage hozzáférés- és teljesítménynaplózásra való használata szolgáltatási díjjal jár.
 
 ## <a name="view-and-analyze-the-activity-log"></a>A tevékenységnapló megtekintése és elemzése
 
@@ -133,6 +114,8 @@ A tevékenységnaplók adatainak megtekintéséhez és elemzéséhez használja 
 
 Azure Firewall log Analytics-példákat lásd: [Azure Firewall log Analytics-minták](log-analytics-samples.md).
 
+[Azure Firewall munkafüzet](firewall-workbook.md) rugalmas vásznon biztosít Azure Firewall adatelemzéshez. A szolgáltatással gazdag vizuális jelentéseket hozhat létre a Azure Portalon belül. Több, az Azure-ban üzembe helyezett tűzfalra koppinthat, és egységesített interaktív élményekben egyesítheti azokat.
+
 A Storage-fiókjához is csatlakozhat, és lekérheti a hozzáférés- és teljesítménynaplók JSON-naplóbejegyzéseit. A letöltött JSON-fájlokat átalakíthatja CSV-fájlokká, és ezeket megtekintheti az Excelben, Power BI-ban vagy bármely más adatvizualizációs eszközben.
 
 > [!TIP]
@@ -141,8 +124,10 @@ A Storage-fiókjához is csatlakozhat, és lekérheti a hozzáférés- és telje
 ## <a name="view-metrics"></a>Metrikák megtekintése
 Tallózással keresse meg az Azure Firewallt a **figyelés** **kiválasztása lapon**. Az elérhető értékeket a **METRIKÁK** legördülő listában találja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy beállította a tűzfalat a naplók összegyűjtésére, az adatok megtekintéséhez Azure Monitor naplókat is megtekintheti.
+
+[Naplók figyelése Azure Firewall munkafüzet használatával](firewall-workbook.md)
 
 [Hálózati figyelési megoldások Azure Monitor naplókban](../azure-monitor/insights/azure-networking-analytics.md)

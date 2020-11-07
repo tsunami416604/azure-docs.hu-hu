@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: e306c65735d8a5682cd90a1ce28fceec7d045c4d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b8b6383c7808fd6c298d7776fc10572631bc6ddc
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519758"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359561"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler konfigurálása az automatikus felhasználó-kiépítés számára
 
@@ -43,11 +43,11 @@ Mielőtt konfigurálja az Zscaler-t az Azure AD-vel való automatikus felhaszná
 
 Az alábbi lépéseket követve adhat hozzá Zscaler egyet a piactéren.
 
-1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs ablaktáblán válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory ikon](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -55,7 +55,7 @@ Az alábbi lépéseket követve adhat hozzá Zscaler egyet a piactéren.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Zscaler egyet** , és válassza ki az **Zscaler egyet** az eredmény panelen. Az alkalmazás hozzáadásához válassza a **Hozzáadás**lehetőséget.
+4. A keresőmezőbe írja be a **Zscaler egyet** , és válassza ki az **Zscaler egyet** az eredmény panelen. Az alkalmazás hozzáadásához válassza a **Hozzáadás** lehetőséget.
 
     ![Zscaler egyet az eredmények listájában](common/search-new-app.png)
 
@@ -80,7 +80,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Automatikus felhasználó-kiépítés konfigurálása az Azure AD-ben az egyik Zscaler
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Zscaler egyet**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza ki a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Zscaler egyet**.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -98,7 +98,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címet** és a **titkos tokent** tartalmazó mezőket a Zscaler egy fiókkal, a 6. lépésben leírtak szerint.
 
-6. A bérlői URL-cím és a titkos jogkivonat beszerzéséhez nyissa meg a **felügyeleti**  >  **hitelesítési beállításokat** a Zscaler egy portál felhasználói felületén. A **Hitelesítés típusa**területen válassza az **SAML**lehetőséget.
+6. A bérlői URL-cím és a titkos jogkivonat beszerzéséhez nyissa meg a **felügyeleti**  >  **hitelesítési beállításokat** a Zscaler egy portál felhasználói felületén. A **Hitelesítés típusa** területen válassza az **SAML** lehetőséget.
 
     ![Zscaler egy hitelesítési beállítást](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
@@ -106,7 +106,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
     ![Zscaler egy SAML konfigurálása](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
-    b. Válassza az **SCIM-Based kiépítés engedélyezése** lehetőséget az **alap URL-cím** és a **tulajdonosi jogkivonat**beállításainak beszerzéséhez. Ezután mentse a beállításokat. Másolja az **alap URL-címet** a **bérlő URL-címére** a Azure Portal. Másolja a **tulajdonosi jogkivonat** -beállítást a Azure Portal **titkos jogkivonatára** .
+    b. Válassza az **SCIM-Based kiépítés engedélyezése** lehetőséget az **alap URL-cím** és a **tulajdonosi jogkivonat** beállításainak beszerzéséhez. Ezután mentse a beállításokat. Másolja az **alap URL-címet** a **bérlő URL-címére** a Azure Portal. Másolja a **tulajdonosi jogkivonat** -beállítást a Azure Portal **titkos jogkivonatára** .
 
 7. Miután kitöltötte az 5. lépésben látható mezőket, válassza a **kapcsolat tesztelése** lehetőséget, és győződjön meg róla, hogy az Azure ad képes csatlakozni a Zscaler. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Zscaler egy fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
@@ -122,7 +122,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
     ![Zscaler egy felhasználói szinkronizálással](./media/zscaler-one-provisioning-tutorial/user-mappings.png)
 
-11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútumok leképezése** szakasz Zscaler. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler lévő felhasználói fiókok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások mentéséhez válassza a **Mentés**lehetőséget.
+11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútumok leképezése** szakasz Zscaler. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler lévő felhasználói fiókok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások mentéséhez válassza a **Mentés** lehetőséget.
 
     ![Zscaler egy megfelelő felhasználói attribútumot](./media/zscaler-one-provisioning-tutorial/user-attribute-mappings.png)
 
@@ -130,21 +130,21 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
     ![Zscaler egy csoport szinkronizálása](./media/zscaler-one-provisioning-tutorial/group-mappings.png)
 
-13. Tekintse át az Azure AD-ból szinkronizált Zscaler az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler egyikében a frissítési műveletekhez használatosak. A módosítások mentéséhez válassza a **Mentés**lehetőséget.
+13. Tekintse át az Azure AD-ból szinkronizált Zscaler az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler egyikében a frissítési műveletekhez használatosak. A módosítások mentéséhez válassza a **Mentés** lehetőséget.
 
     ![Zscaler egy egyező csoport attribútumai](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
 
 14. A hatóköri szűrők konfigurálásához kövesse a hatókör- [szűrő oktatóanyagának](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)utasításait.
 
-15. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást az Zscaler, a **Beállítások** szakaszban állítsa be a **kiépítési állapotot** **a**következőre:.
+15. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást az Zscaler, a **Beállítások** szakaszban állítsa be a **kiépítési állapotot** **a** következőre:.
 
     ![Zscaler egy kiépítési állapottal](./media/zscaler-one-provisioning-tutorial/provisioning-status.png)
 
-16. Adja meg a Zscaler kiépíteni kívánt felhasználókat vagy csoportokat. A **Beállítások** szakaszban válassza ki a **hatókörben**használni kívánt értékeket.
+16. Adja meg a Zscaler kiépíteni kívánt felhasználókat vagy csoportokat. A **Beállítások** szakaszban válassza ki a **hatókörben** használni kívánt értékeket.
 
     ![Zscaler egy hatókörrel](./media/zscaler-one-provisioning-tutorial/scoping.png)
 
-17. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget.
+17. Ha készen áll a létesítésre, válassza a **Mentés** lehetőséget.
 
     ![Zscaler egy mentést](./media/zscaler-one-provisioning-tutorial/save-provisioning.png)
 
@@ -154,7 +154,7 @@ A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat 
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

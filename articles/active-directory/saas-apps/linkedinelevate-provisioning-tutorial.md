@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: 429ccacea8eb4fd66336543615b11179af3e9276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e972475530ad36a188f73990bb9eca35748c36c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361580"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358949"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Oktatóanyag: a LinkedIn jogosultságszint-emelésének beállítása a felhasználók automatikus üzembe helyezéséhez
 
@@ -77,7 +77,7 @@ Az első lépés a LinkedIn hozzáférési jogkivonatának beolvasása. Ha Ön v
 
     ![A képernyőképen az S C I M telepítő lapja látható.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
 
-5. Kattintson a **jogkivonat előállítása**elemre. A hozzáférési jogkivonat megjelenítéséhez a **hozzáférési jogkivonat** mezőben kell megjelennie.
+5. Kattintson a **jogkivonat előállítása** elemre. A hozzáférési jogkivonat megjelenítéséhez a **hozzáférési jogkivonat** mezőben kell megjelennie.
 
 6. Mentse a hozzáférési jogkivonatot a vágólapra vagy a számítógépre, mielőtt elhagyja a lapot.
 

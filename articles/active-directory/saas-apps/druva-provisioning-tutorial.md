@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 9163c64370e0718d6b9acf37bb7a9fc28c936948
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5579a9d96828caa1453547e7c2e11b8f0d717d2a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851152"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359306"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Druva konfigurálása
 
@@ -52,21 +52,21 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 Az Azure AD-vel való automatikus Druva konfigurálása előtt engedélyeznie kell a SCIM-létesítést a Druva-on.
 
-1. Jelentkezzen be a [Druva felügyeleti konzolra](https://console.druva.com). Navigáljon a **Druva > inSync**elemre.
+1. Jelentkezzen be a [Druva felügyeleti konzolra](https://console.druva.com). Navigáljon a **Druva > inSync** elemre.
 
     ![Druva felügyeleti konzol](media/druva-provisioning-tutorial/menubar.png)
 
-2. Navigáljon **Manage**a  >  **központi telepítések**  >  **felhasználóinak**kezeléséhez.
+2. Navigáljon **Manage** a  >  **központi telepítések**  >  **felhasználóinak** kezeléséhez.
 
     :::image type="content" source="media/druva-provisioning-tutorial/manage.png" alt-text="Képernyőkép a Druva felügyeleti konzolról. A kezelés ki van jelölve, és a kezelés menü látható. Ebben a menüben a központi telepítések területen a felhasználók ki vannak emelve." border="false":::
 
-3.  Navigáljon a **Beállítások**elemre. Kattintson a **jogkivonat előállítása**elemre.
+3.  Navigáljon a **Beállítások** elemre. Kattintson a **jogkivonat előállítása** elemre.
 
-    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Képernyőkép a Druva felügyeleti konzolról. A kezelés ki van jelölve, és a kezelés menü látható. Ebben a menüben a központi telepítések területen a felhasználók ki vannak emelve." border="false":::
+    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Képernyőkép a Druva felügyeleti konzolján található oldalról. A beállítások elem ki van jelölve, és a beállítások lap meg van nyitva. A jogkivonat előállítása gomb ki van emelve." border="false":::
 
 4.  Másolja az **Auth-jogkivonat** értékét. Ez az érték a Druva alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal.
     
-    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Képernyőkép a Druva felügyeleti konzolról. A kezelés ki van jelölve, és a kezelés menü látható. Ebben a menüben a központi telepítések területen a felhasználók ki vannak emelve." border="false":::
+    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Képernyőfelvétel a jogkivonat létrehozása lapról a Druva felügyeleti konzolon. Az Auth token értékének másolásához a másolási tokent tartalmazó hivatkozás is elérhető." border="false":::
 
 ## <a name="add-druva-from-the-gallery"></a>Druva hozzáadása a gyűjteményből
 
@@ -74,11 +74,11 @@ Az Azure AD-vel való automatikus Druva konfigurálásához hozzá kell adnia a 
 
 **Ha Druva szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -86,7 +86,7 @@ Az Azure AD-vel való automatikus Druva konfigurálásához hozzá kell adnia a 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Druva**kifejezést, válassza az **Druva** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Druva** kifejezést, válassza az **Druva** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Druva az eredmények listájában](common/search-new-app.png)
 
@@ -103,7 +103,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Druva**lehetőséget.
+2. Az alkalmazások listában válassza a **Druva** lehetőséget.
 
     ![Az Druva hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -119,13 +119,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és válassza az **e-mail-értesítés küldése hiba**esetén lehetőséget.
+6. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és válassza az **e-mail-értesítés küldése hiba** esetén lehetőséget.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Druva**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Druva** lehetőséget.
 
     ![Druva felhasználói leképezések](media/druva-provisioning-tutorial/usermapping.png)
 
@@ -156,7 +156,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 * A Druva kötelező attribútumként kell eltöltenie az **e-maileket** . 
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

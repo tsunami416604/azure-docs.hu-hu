@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, frissítés letöltése, legújabb, elérhető, telepítés, törzs, nyomon követés
-ms.openlocfilehash: e3f8233d208e2a45c1af9a52a76b6064b15bfe4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ac0598d893617f341b9e1fd4d45c0c3e3f3c619
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277584"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359595"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>Az Azure Kinect Body Tracking SDK letöltése
 
@@ -41,7 +41,7 @@ Verzió       | Letöltés
 
 Jelenleg az egyetlen támogatott disztribúció az Ubuntu 18,04. További terjesztések támogatásának kéréséhez tekintse meg [ezt a lapot](https://aka.ms/azurekinectfeedback).
 
-Először konfigurálnia kell a [Microsoft Package repositoryját](https://packages.microsoft.com/), az [itt](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software)található utasításokat követve.
+Először konfigurálnia kell a [Microsoft Package repositoryját](https://packages.microsoft.com/), az [itt](/windows-server/administration/linux-package-repository-for-microsoft-software)található utasításokat követve.
 
 A `libk4abt<major>.<minor>-dev` csomag tartalmazza a felépíteni kívánt fejléceket és CMAK-fájlokat `libk4abt` .
 A `libk4abt<major>.<minor>` csomag tartalmazza a végrehajtható fájlok futtatásához szükséges megosztott objektumokat, valamint `libk4abt` a példa megjelenítőjét.

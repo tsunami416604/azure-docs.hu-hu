@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 7db9ac0eb624c2732295639d65e0311fcf459f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b23c95ef0005c8246feb8dc32e4a07a0ae19b72f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934928"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359544"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Magas rendelkezésre állási fogalmak Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -43,7 +43,7 @@ A magas rendelkezésre állási konfiguráció állapotát folyamatosan figyelik
 
 A PostgreSQL-ügyfélalkalmazások az adatbázis-kiszolgáló neve alapján csatlakoznak az elsődleges kiszolgálóhoz. Az alkalmazás olvasásait a rendszer közvetlenül az elsődleges kiszolgálóról kézbesíti, míg a commit és az írásokat csak akkor erősíti meg az alkalmazás, ha az adatokat az elsődleges kiszolgálón és a készenléti replikán is megőrzi. Ennek a további kerekítési követelménynek köszönhetően az alkalmazások emelt szintű késést várhatnak az írások és a véglegesítés során. A portálon ellenőrizheti a magas rendelkezésre állás állapotát.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="zóna redundáns magas rendelkezésre állása"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="zóna redundáns magas rendelkezésre állása – állandósult állapot"::: 
 
 1. Az ügyfelek a rugalmas kiszolgálóhoz csatlakoznak, és írási műveleteket hajtanak végre.
 2. A módosításokat a rendszer a készenléti helyre replikálja.
@@ -64,7 +64,7 @@ Más, felhasználó által kezdeményezett műveletek, például a méretezési 
 
 A nem tervezett leállások közé tartozik például a szoftveres hibák vagy az infrastruktúra-összetevők meghibásodása, ami hatással van az adatbázis elérhetőségére. Ha a figyelési rendszer észleli a kiszolgáló elérhetőségét, a készenléti replikára történő replikáció megszakad, és a készenléti replika aktiválva lesz az elsődleges adatbázis-kiszolgálóként. Az ügyfelek ugyanazzal a kapcsolati karakterlánccal csatlakozhatnak az adatbázis-kiszolgálóhoz, és folytatják a műveleteiket. A teljes feladatátvételi idő várhatóan 60 120s lesz. Azonban attól függően, hogy az elsődleges adatbázis-kiszolgáló milyen tevékenységgel rendelkezik a feladatátvétel során, például a nagy tranzakciókat és a helyreállítási időt, a feladatátvétel hosszabb időt vehet igénybe.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="zóna redundáns magas rendelkezésre állása"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="zóna redundáns magas rendelkezésre állása – feladatátvétel"::: 
 
 1. Az elsődleges adatbázis-kiszolgáló nem érhető el, és az ügyfelek elvesztik az adatbázis-kapcsolatot. 
 2. A készenléti kiszolgáló úgy van aktiválva, hogy az új elsődleges kiszolgáló legyen. Az ügyfél ugyanazzal a kapcsolati karakterlánccal csatlakozik az új elsődleges kiszolgálóhoz. Ha az ügyfélalkalmazás ugyanabban a zónában van, mint az elsődleges adatbázis-kiszolgáló, csökkenti a késést, és javítja a teljesítményt.
@@ -113,7 +113,9 @@ A magas rendelkezésre állású rugalmas kiszolgálók esetében a rendszer val
 
 -   A tervezett események, például a számítások méretezése és a tároló méretezése először a készenléti replikán történik meg, majd az elsődleges kiszolgálón. A szolgáltatás feladatátvétele nem történik meg. 
 
-## <a name="next-steps"></a>Következő lépések
+-  Ha a logikai dekódolás vagy a logikai replikáció egy HA konfigurált rugalmas kiszolgálóval van konfigurálva, a készenléti kiszolgáló feladatátvétele esetén a rendszer nem másolja át a logikai replikációs tárolóhelyeket a készenléti kiszolgálóra.  
+
+## <a name="next-steps"></a>További lépések
 
 -   Az [üzletmenet folytonosságának](./concepts-business-continuity.md) megismerése
 -   Ismerje meg, hogyan [kezelheti a magas rendelkezésre állást](./how-to-manage-high-availability-portal.md)

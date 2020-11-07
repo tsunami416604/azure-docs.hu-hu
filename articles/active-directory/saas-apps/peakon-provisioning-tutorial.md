@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 06fca39b1170d36f22040ccf48eb02f948e47e41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fc5045643c9baf67b61d45188c8a2b6ccbc5c23
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304670"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359816"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Peakon konfigurálása
 
@@ -50,19 +50,19 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 ## <a name="set-up-peakon-for-provisioning"></a>Peakon beállítása a kiépítés számára
 
-1.  Jelentkezzen be a [Peakon felügyeleti konzolra](https://app.Peakon.com/login). Kattintson a **Konfigurálás**elemre. 
+1.  Jelentkezzen be a [Peakon felügyeleti konzolra](https://app.Peakon.com/login). Kattintson a **Konfigurálás** elemre. 
 
     ![Peakon felügyeleti konzol](media/Peakon-provisioning-tutorial/Peakon-admin-configuration.png)
 
-2.  Válassza az **integrációk**lehetőséget.
+2.  Válassza az **integrációk** lehetőséget.
     
     ![Képernyőkép a konfigurációs beállításokról a kinevezett integrációs lehetőséggel.](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
 
-3.  Az **alkalmazottak üzembe**helyezésének engedélyezése.
+3.  Az **alkalmazottak üzembe** helyezésének engedélyezése.
 
     ![Képernyőkép az alkalmazott kiépítési szakaszáról az engedélyezés lehetőség kiválasztásával.](media/Peakon-provisioning-tutorial/peakon05.png)
 
-4.  Másolja a **SCIM 2,0 URL-cím** és a **OAuth tulajdonosi jogkivonat**értékeit. Ezek az értékek a Peakon alkalmazás kiépítés lapjának **bérlő URL-címe** és **titkos jogkivonat** mezőjében lesznek megadva a Azure Portal.
+4.  Másolja a **SCIM 2,0 URL-cím** és a **OAuth tulajdonosi jogkivonat** értékeit. Ezek az értékek a Peakon alkalmazás kiépítés lapjának **bérlő URL-címe** és **titkos jogkivonat** mezőjében lesznek megadva a Azure Portal.
 
     ![Peakon-létrehozási jogkivonat](media/Peakon-provisioning-tutorial/peakon04.png)
 
@@ -70,11 +70,11 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 Az Azure AD-vel való automatikus Peakon konfigurálásához hozzá kell adnia a Peakon az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -82,7 +82,7 @@ Az Azure AD-vel való automatikus Peakon konfigurálásához hozzá kell adnia a
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Peakon**kifejezést, válassza az **Peakon** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Peakon** kifejezést, válassza az **Peakon** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Peakon az eredmények listájában](common/search-new-app.png)
 
@@ -99,7 +99,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Peakon**lehetőséget.
+2. Az alkalmazások listában válassza a **Peakon** lehetőséget.
 
     ![Az Peakon hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -115,13 +115,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 8. Kattintson a **Mentés** gombra.
 
-9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Peakon**lehetőséget.
+9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Peakon** lehetőséget.
 
     ![Peakon felhasználói leképezések](media/Peakon-provisioning-tutorial/Peakon-user-mappings.png)
 
@@ -145,7 +145,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * A Peakon összes egyéni felhasználói attribútumát ki kell terjeszteni a Peakon egyéni SCIM felhasználói kiterjesztéséről `urn:ietf:params:scim:schemas:extension:peakon:2.0:User` .
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

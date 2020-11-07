@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 636bb4c3340f13046706bf887119108b86b6a660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01c3f6429d2a5c8443ac128d763033dc8c53cbc7
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850876"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359408"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Oktatóanyag: Flock konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -52,17 +52,17 @@ Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése el�
 
 Az Azure AD-vel való automatikus felhasználó-kiépítés előtt engedélyeznie kell a SCIM-létesítést az Flock-ben.
 
-1. Jelentkezzen be a [nyájba](https://web.flock.com/?). Kattintson a **Beállítások ikonra**  >  **a csapat kezelése**elemre.
+1. Jelentkezzen be a [nyájba](https://web.flock.com/?). Kattintson a **Beállítások ikonra**  >  **a csapat kezelése** elemre.
 
     :::image type="content" source="media/flock-provisioning-tutorial/icon.png" alt-text="Képernyőfelvétel a Flock webhelyéről. A beállítások ikon ki van emelve, és a helyi menü látható. Ebben a menüben a csapat kezelése kiemelve." border="false":::
 
-2. Válassza **az Auth és a kiépítés**lehetőséget.
+2. Válassza **az Auth és a kiépítés** lehetőséget.
 
-    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Képernyőfelvétel a Flock webhelyéről. A beállítások ikon ki van emelve, és a helyi menü látható. Ebben a menüben a csapat kezelése kiemelve." border="false":::
+    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Képernyőkép a Flock webhelyén lévő menüről. Az Auth és a kiépítési elemek ki vannak emelve." border="false":::
 
 3. Másolja az **API-tokent**. Ezeket az értékeket a rendszer a Flock-alkalmazás létesítés lapjának **titkos jogkivonat** mezőjébe írja be a Azure Portal.
 
-    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Képernyőfelvétel a Flock webhelyéről. A beállítások ikon ki van emelve, és a helyi menü látható. Ebben a menüben a csapat kezelése kiemelve." border="false":::
+    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Képernyőfelvétel a Flock webhelyén található kiépítés lapról. A P I token alatt egy érték van kiemelve. A jogkivonat mellett egy másolási jogkivonat gomb." border="false":::
 
 
 ## <a name="add-flock--from-the-gallery"></a>Flock hozzáadása a gyűjteményből
@@ -71,11 +71,11 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés esetén a Flock az A
 
 **Az Azure AD-alkalmazás-katalógusból származó Flock hozzáadásához hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés esetén a Flock az A
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Flock**kifejezést, válassza a **Flock** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Flock** kifejezést, válassza a **Flock** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Flock az eredmények listájában](common/search-new-app.png)
 
@@ -100,7 +100,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Flock**elemet.
+2. Az alkalmazások listában válassza a **Flock** elemet.
 
     ![A Flock hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -116,13 +116,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a nyájhoz**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a nyájhoz** lehetőséget.
 
     ![Flock-felhasználók leképezései](media/flock-provisioning-tutorial/usermapping.png)
 
@@ -150,7 +150,7 @@ A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehal
 
 
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: a3c2567cf1799bca5750e90fbe5d89f6da952ff5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 79fa480e0cca590446a0251f43c45b2e04c97cd5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514891"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359340"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Smartsheet konfigurálása
 
@@ -51,11 +51,11 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 Az Azure AD-vel való automatikus Smartsheet konfigurálása előtt engedélyeznie kell a SCIM-létesítést a Smartsheet-on.
 
-1. Jelentkezzen be **rendszergazdaként** a **[Smartsheet-portálon](https://app.smartsheet.com/b/home)** , és navigáljon a **fiók rendszergazdája**elemre.
+1. Jelentkezzen be **rendszergazdaként** a **[Smartsheet-portálon](https://app.smartsheet.com/b/home)** , és navigáljon a **fiók rendszergazdája** elemre.
 
     ![Smartsheet-fiók rendszergazdája](media/smartsheet-provisioning-tutorial/smartsheet-accountadmin.png)
 
-2. Lépjen a **biztonsági vezérlők > felhasználó automatikus kiépítés > szerkesztés**gombra.
+2. Lépjen a **biztonsági vezérlők > felhasználó automatikus kiépítés > szerkesztés** gombra.
 
     ![Smartsheet biztonsági vezérlők](media/smartsheet-provisioning-tutorial/smartsheet-securitycontrols.png)
 
@@ -67,11 +67,11 @@ Az Azure AD-vel való automatikus Smartsheet konfigurálása előtt engedélyezn
 
     ![Smartsheet aktiválása tartomány](media/smartsheet-provisioning-tutorial/smartsheet-activatedomain.png)
 
-5. Az **alkalmazásokhoz és az integrációhoz**való navigálással létrehozhatja az automatikus felhasználó-kiépítés az Azure ad-vel való konfigurálásához szükséges **titkos jogkivonatot** .
+5. Az **alkalmazásokhoz és az integrációhoz** való navigálással létrehozhatja az automatikus felhasználó-kiépítés az Azure ad-vel való konfigurálásához szükséges **titkos jogkivonatot** .
 
     ![Képernyőkép a Smartsheet-adminisztrátor oldalról, a felhasználó avatárja és az alkalmazások & integrációk lehetőség.](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
 
-6. Válassza az **API-hozzáférés**lehetőséget. Kattintson az **új hozzáférési jogkivonat előállítása**elemre.
+6. Válassza az **API-hozzáférés** lehetőséget. Kattintson az **új hozzáférési jogkivonat előállítása** elemre.
 
     ![Képernyőkép a személyes beállítások párbeszédpanelről, amely az API-hozzáféréssel rendelkezik, és új hozzáférési jogkivonat-beállításokat hoz végre.](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
@@ -91,7 +91,7 @@ Vegyen fel Smartsheet az Azure AD-alkalmazás-katalógusból a Smartsheet való 
 
 Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) leírt hatókörszűrőt használhatja. 
 
-* Felhasználók és csoportok Smartsheet való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
+* Felhasználók és csoportok Smartsheet való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
 
 * A Smartsheet és az Azure AD közötti felhasználói szerepkör-hozzárendelések paritásának biztosítása érdekében ajánlott ugyanazokat a szerepkör-hozzárendeléseket használni, amelyek a teljes Smartsheet-felhasználók listájában fel vannak töltve. A felhasználói lista Smartsheet való lekéréséhez navigáljon a **fiók rendszergazdája > a felhasználói felügyelet > további műveletek > a felhasználói lista letöltése (CSV)** elemre.
 
@@ -111,7 +111,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Smartsheet**lehetőséget.
+2. Az alkalmazások listában válassza a **Smartsheet** lehetőséget.
 
     ![Az Smartsheet hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -127,13 +127,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Smartsheet**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Smartsheet** lehetőséget.
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található Smartsheet. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Smartsheet felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -189,7 +189,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 
 * 06/16/2020 – a felhasználók számára a "Cost Center", a "Division", a "Manager" és a "Department" nagyvállalati szintű bővítmények támogatása.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

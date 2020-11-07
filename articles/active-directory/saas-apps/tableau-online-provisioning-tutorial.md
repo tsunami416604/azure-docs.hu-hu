@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fa28b299a33f5386edc6ce14c523d2c332b0767b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a42790e079985b003776b381c74f837b0ba619b1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520504"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359204"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználói üzembe helyezéshez a tabló online beállítása
 
@@ -41,11 +41,11 @@ Mielőtt beállítja a tabló online-t az Azure AD-vel való automatikus felhasz
 
 Az alábbi lépéseket követve adhat hozzá online tablót a piactéren.
 
-1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs ablaktáblán válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory ikon](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Az alábbi lépéseket követve adhat hozzá online tablót a piactéren.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **tabló online** kifejezést, majd válassza a **tabló online** lehetőséget az eredmények panelen. Az alkalmazás hozzáadásához válassza a **Hozzáadás**lehetőséget.
+4. A keresőmezőbe írja be a **tabló online** kifejezést, majd válassza a **tabló online** lehetőséget az eredmények panelen. Az alkalmazás hozzáadásához válassza a **Hozzáadás** lehetőséget.
 
     ![Tabló online az eredmények listájában](common/search-new-app.png)
 
@@ -78,11 +78,11 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
 ### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Automatikus felhasználó-kiépítés beállítása a Tablóhoz az Azure AD-ben
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **tabló online**lehetőséget.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **tabló online** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **tabló online**lehetőséget.
+2. Az alkalmazások listában válassza a **tabló online** lehetőséget.
 
     ![A tabló online hivatkozása az alkalmazások listájában](common/all-applications.png)
 
@@ -127,33 +127,33 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
 9. Válassza a **Mentés** lehetőséget.
 
-10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók a tablóhoz**lehetőséget.
+10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók a tablóhoz** lehetőséget.
 
     ![A tabló online felhasználói szinkronizálása](./media/tableau-online-provisioning-tutorial/UserMappings.png)
 
-11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelések** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a tabló online felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások mentéséhez válassza a **Mentés**lehetőséget.
+11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelések** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a tabló online felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások mentéséhez válassza a **Mentés** lehetőséget.
 
     ![Tabló online – egyező felhasználói attribútumok](./media/tableau-online-provisioning-tutorial/attribute.png)
 
-12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a tablóhoz**lehetőséget.
+12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a tablóhoz** lehetőséget.
 
     ![Tabló online csoport szinkronizálása](./media/tableau-online-provisioning-tutorial/GroupMappings.png)
 
-13. Tekintse át az Azure AD-ből szinkronizált csoportosítási attribútumokat az **attribútum-hozzárendelések** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a tabló online felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások mentéséhez válassza a **Mentés**lehetőséget.
+13. Tekintse át az Azure AD-ből szinkronizált csoportosítási attribútumokat az **attribútum-hozzárendelések** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a tabló online felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások mentéséhez válassza a **Mentés** lehetőséget.
 
     ![Tabló online egyeztetési csoport attribútumai](./media/tableau-online-provisioning-tutorial/GroupAttributeMapping.png)
 
 14. A hatóköri szűrők konfigurálásához kövesse a hatókör- [szűrő oktatóanyagának](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)utasításait.
 
-15. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a tabló online számára, a **Beállítások** szakaszban módosítsa a **kiépítési állapot** beállítást **a**következőre:.
+15. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a tabló online számára, a **Beállítások** szakaszban módosítsa a **kiépítési állapot** beállítást **a** következőre:.
 
     ![Tabló online kiépítési állapot](./media/tableau-online-provisioning-tutorial/ProvisioningStatus.png)
 
-16. Adja meg azokat a felhasználókat és csoportokat, amelyeket a tabló online-hoz szeretne kiépíteni. A **Beállítások** szakaszban válassza ki a **hatókörben**használni kívánt értékeket.
+16. Adja meg azokat a felhasználókat és csoportokat, amelyeket a tabló online-hoz szeretne kiépíteni. A **Beállítások** szakaszban válassza ki a **hatókörben** használni kívánt értékeket.
 
     ![Tabló online hatóköre](./media/tableau-online-provisioning-tutorial/ScopeSync.png)
 
-17. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget.
+17. Ha készen áll a létesítésre, válassza a **Mentés** lehetőséget.
 
     ![Tabló online mentés](./media/tableau-online-provisioning-tutorial/SaveProvisioning.png)
 
@@ -166,7 +166,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos információkért l
 ## <a name="change-log"></a>Változási napló
 * 09/30/2020 – a "authSetting" attribútum támogatása a felhasználók számára.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

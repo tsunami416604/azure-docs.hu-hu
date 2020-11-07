@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.topic: overview
 ms.date: 06/26/2019
 keywords: Azure, Kinect, áttekintés, fejlesztői készlet, DK, eszköz, mélység, Body Tracking, beszédfelismerés, kognitív szolgáltatások, SDK-k, SDK, belső vezérlőprogram
-ms.openlocfilehash: 6b3215ba6761521214ebffa2a100c5a1a030ab4c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d188d37c0247aebb16f51b4404da81d469136468
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85277964"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359653"
 ---
 # <a name="about-azure-kinect-dk"></a>Az Azure Kinect DK bemutatása
 
@@ -86,7 +86,7 @@ A Speech SDK lehetővé teszi az Azure-hoz csatlakoztatott Speech Services haszn
 >[!NOTE]
 >Az Azure Kinect DK nem rendelkezik hangszórókkal.
 
-További részleteket és információkat a [Speech Service dokumentációjában](https://docs.microsoft.com/azure/cognitive-services/speech-service/)találhat.
+További részleteket és információkat a [Speech Service dokumentációjában](../cognitive-services/speech-service/index.yml)találhat.
 
 ## <a name="vision-services"></a>Látási szolgáltatások
 

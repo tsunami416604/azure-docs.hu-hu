@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: Zhchia
-ms.openlocfilehash: 786e99cec4999eef0af92fe2be18bcf0e48ed379
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 31631209a16024e4414cc19bca37166332b427de
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518993"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359224"
 ---
 # <a name="tutorial-configure-miro-for-automatic-user-provisioning"></a>Oktatóanyag: a Miro konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
@@ -58,11 +58,11 @@ Mielőtt a Mirot konfigurálja az Azure AD-vel való automatikus felhasználói 
 
 **A Miro Azure AD-alkalmazás-katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -70,7 +70,7 @@ Mielőtt a Mirot konfigurálja az Azure AD-vel való automatikus felhasználói 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Miro**kifejezést, válassza ki a **Miro** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Miro** kifejezést, válassza ki a **Miro** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Miro az eredmények listájában](common/search-new-app.png)
 
@@ -90,7 +90,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Miro**elemet.
+2. Az alkalmazások listában válassza a **Miro** elemet.
 
     ![A Miro hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -106,7 +106,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
@@ -120,7 +120,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![A Miro felhasználói attribútumai](media/miro-provisioning-tutorial/userattributes.png)
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a miroba**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a miroba** lehetőséget.
 
     ![Miro csoport leképezései](media/miro-provisioning-tutorial/groupmappings.png)
 
@@ -150,7 +150,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * A Miro SCIM-végpontja nem teszi lehetővé a csoportok **létrehozási** és **törlési** műveleteit. Csak a csoport **frissítési** műveletét támogatja.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 98cca99ab0e088bbae047fa64ec52429e531dfed
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 086f79239fd4f6b01f4b76d1385598bac52bb471
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096078"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358969"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés AlertMedia konfigurálása
 
@@ -95,9 +95,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
     ![Kiépítés lap automatikus](common/provisioning-automatic.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a AlertMedia **bérlői URL-címét** az alábbiak egyikének megfelelően.
-      * (nincs egyéni tartomány) https://docs.gitlab.com/ee/api/scim.html
+      * (nincs egyéni tartomány) https://dashboard.alertmedia.com/api/scim/v3
 
-      * (egyéni tartomány) https://developer.github.com/v3/scim/
+      * (egyéni tartomány) https://subdomain.alertmedia.com/api/scim/v3
 
       Adja meg a **titkos tokent** a 2. lépésben korábban lekért módon. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a AlertMedia. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a AlertMedia-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
@@ -175,7 +175,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 2. A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) találhat további információt.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

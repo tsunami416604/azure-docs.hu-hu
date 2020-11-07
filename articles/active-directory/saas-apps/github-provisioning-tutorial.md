@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: Zhchia
-ms.openlocfilehash: b9b7a82d611743f2ba76e20f47670771e2e38904
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f1600dfc5705ca97f16e8966a796b54fc556d216
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448962"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359262"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Oktatóanyag: a GitHub konfigurálása automatikus felhasználói üzembe helyezéshez
 
@@ -67,11 +67,11 @@ Ez a szakasz végigvezeti az Azure AD-nek a GitHub felhasználói fiók létesí
 
 5. A **Rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés** elemre. A művelet megnyit egy GitHub-engedélyezési párbeszédpanelt egy új böngészőablakban. Ügyeljen arra, hogy a hozzáférés engedélyezéséhez jóvá kell hagynia a jóváhagyást. Kövesse az [itt](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)ismertetett útmutatást.
 
-6. Az új ablakban jelentkezzen be a GitHubba a rendszergazdai fiókjával. Az eredményül kapott hitelesítés párbeszédpanelen válassza ki azt a GitHub-csoportot, amely számára engedélyezni szeretné a kiépítés beállítást, majd válassza az **Engedélyezés**lehetőséget. Miután végzett, lépjen vissza az Azure Portalra az átadás konfigurációjának befejezéséhez.
+6. Az új ablakban jelentkezzen be a GitHubba a rendszergazdai fiókjával. Az eredményül kapott hitelesítés párbeszédpanelen válassza ki azt a GitHub-csoportot, amely számára engedélyezni szeretné a kiépítés beállítást, majd válassza az **Engedélyezés** lehetőséget. Miután végzett, lépjen vissza az Azure Portalra az átadás konfigurációjának befejezéséhez.
 
     ![A képernyőfelvételen a GitHub bejelentkezési oldala látható.](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. A Azure Portal írja be a **bérlői URL-címet** , majd kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a GitHub-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a GitHub-fiókja rendszergazdai jogosultságokkal rendelkezik, és a **bérlői URL-cím** helyesen van megadva, majd próbálja megismételni az "engedélyezés" lépést (a **bérlői URL-cím** a szabály `https://api.github.com/scim/v2/organizations/<Organization_name>` szerint megtalálhatja a szervezeteket a GitHub-fiókjában: **Settings**  >  **Organizations**).
+7. A Azure Portal írja be a **bérlői URL-címet** , majd kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a GitHub-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a GitHub-fiókja rendszergazdai jogosultságokkal rendelkezik, és a **bérlői URL-cím** helyesen van megadva, majd próbálja megismételni az "engedélyezés" lépést (a **bérlői URL-cím** a szabály `https://api.github.com/scim/v2/organizations/<Organization_name>` szerint megtalálhatja a szervezeteket a GitHub-fiókjában: **Settings**  >  **Organizations** ).
 
     ![Képernyőfelvétel: a GitHubon a szervezetek lapja látható.](./media/github-provisioning-tutorial/GitHub3.png)
 
@@ -79,7 +79,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a GitHub felhasználói fiók létesí
 
 9. Kattintson a **Mentés** gombra.
 
-10. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a githubra**lehetőséget.
+10. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a githubra** lehetőséget.
 
 11. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a githubra szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a GitHub felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
@@ -91,7 +91,7 @@ Ez a művelet elindítja a felhasználók és csoportok szakaszban a GitHubhoz r
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

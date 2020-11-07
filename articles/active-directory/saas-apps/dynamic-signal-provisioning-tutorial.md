@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9ebb0927f9721c5c35ee0d83a108efd72732958b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 263a67fd8fba2c336d1ed4d91475386a8ae175dd
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851220"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359017"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Oktatóanyag: dinamikus jel beállítása a felhasználók automatikus üzembe helyezéséhez
 
@@ -41,11 +41,11 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés előtt dinamikus jel
 
 **Ha dinamikus jelet szeretne hozzáadni az Azure AD Application Galleryből, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés előtt dinamikus jel
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **dinamikus jelet**, válassza ki a **dinamikus** jelet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **dinamikus jelet** , válassza ki a **dinamikus** jelet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Dinamikus jel az eredmények listájában](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **dinamikus jel**lehetőséget.
+2. Az alkalmazások listában válassza a **dinamikus jel** lehetőséget.
 
     ![A dinamikus jel hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -98,25 +98,25 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a dinamikus jel fiókjának **bérlői URL-címét** és **titkos jogkivonatát** a 6. lépésben leírtak szerint.
 
-6. A dinamikus jel felügyeleti konzolon navigáljon a **rendszergazda > Advanced > API**elemre.
+6. A dinamikus jel felügyeleti konzolon navigáljon a **rendszergazda > Advanced > API** elemre.
 
     :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-1.png" alt-text="Képernyőkép a dinamikus jel felügyeleti konzolról. A speciális elem a felügyeleti menüben van kiemelve. A Speciális menü is látható, egy P kiemelve." border="false":::
 
-    Másolja a **scim API URL-címét** a **bérlői URL**-címre. Kattintson az **új jogkivonat létrehozása** lehetőségre egy **tulajdonosi jogkivonat** létrehozásához és az érték **titkos jogkivonatba**való másolásához.
+    Másolja a **scim API URL-címét** a **bérlői URL** -címre. Kattintson az **új jogkivonat létrehozása** lehetőségre egy **tulajdonosi jogkivonat** létrehozásához és az érték **titkos jogkivonatba** való másolásához.
 
-    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="Képernyőkép a dinamikus jel felügyeleti konzolról. A speciális elem a felügyeleti menüben van kiemelve. A Speciális menü is látható, egy P kiemelve." border="false":::
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="Képernyőfelvétel a tokenek lapról: S C I M A P I U R L, új jogkivonat létrehozása és a tulajdonosi jogkivonat kiemelése, valamint egy helyőrző a tulajdonosi jogkivonat mezőben." border="false":::
 
 7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak a dinamikus jellé. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a dinamikus jel fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 9. Kattintson a **Mentés** gombra.
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása dinamikus jellé**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása dinamikus jellé** lehetőséget.
 
     ![Dinamikus jelek felhasználói leképezései](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
 
@@ -147,7 +147,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * A dinamikus jel nem támogatja az állandó felhasználók törlését az Azure AD-ből. Ha véglegesen szeretné törölni a felhasználót a dinamikus jelek között, a műveletet a dinamikus jel felügyeleti konzoljának felhasználói felületén kell elvégezni. 
 * A dinamikus jel jelenleg nem támogatja a csoportokat.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

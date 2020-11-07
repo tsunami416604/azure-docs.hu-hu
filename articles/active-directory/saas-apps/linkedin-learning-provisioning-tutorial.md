@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: f9f8694395be493aa0a58f482eb93ef82c5febc3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1a0ec8393e3c5ea40cb53fc101040441a5ca15bb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458523"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359034"
 ---
 # <a name="tutorial-configure-linkedin-learning-for-automatic-user-provisioning"></a>Oktatóanyag: a LinkedIn learning beállítása a felhasználók automatikus kiépítési felállításához
 
@@ -49,11 +49,11 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 3. Határozza meg, hogy az [Azure ad és a LinkedIn learning milyen adatleképezést szeretne leképezni](../app-provisioning/customize-application-attributes.md). 
 
 ## <a name="step-2-configure-linkedin-learning-to-support-provisioning-with-azure-ad"></a>2. lépés A LinkedIn learning konfigurálása az Azure AD-vel való kiépítés támogatásához
-1. Jelentkezzen be a [LinkedIn learning-beállításokba](https://www.linkedin.com/learning-admin/settings/global). Válassza a **scim beállítása** lehetőséget, majd válassza az **új scim-konfiguráció hozzáadása**lehetőséget.
+1. Jelentkezzen be a [LinkedIn learning-beállításokba](https://www.linkedin.com/learning-admin/settings/global). Válassza a **scim beállítása** lehetőséget, majd válassza az **új scim-konfiguráció hozzáadása** lehetőséget.
 
    ![SCIM-telepítő konfigurációja](./media/linkedin-learning-provisioning-tutorial/learning-scim-settings.png)
 
-2. Adja meg a konfiguráció nevét, és állítsa be a **licencek automatikus hozzárendelését** a következőre:. Ezután kattintson a **jogkivonat előállítása**elemre.
+2. Adja meg a konfiguráció nevét, és állítsa be a **licencek automatikus hozzárendelését** a következőre:. Ezután kattintson a **jogkivonat előállítása** elemre.
 
    ![SCIM-konfiguráció neve](./media/linkedin-learning-provisioning-tutorial/learning-scim-configuration.png)
 
@@ -71,7 +71,7 @@ A LinkedIn learning szolgáltatással való kiépítés kezelésének megkezdés
 
 Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) leírt hatókörszűrőt használhatja. 
 
-* Amikor felhasználókat és csoportokat rendel a LinkedIn learninghez, ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
+* Amikor felhasználókat és csoportokat rendel a LinkedIn learninghez, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
 
 * Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
@@ -86,7 +86,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **LinkedIn learning**elemet.
+2. Az alkalmazások listában válassza a **LinkedIn learning** elemet.
 
     ![A LinkedIn learning hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -98,7 +98,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://api.linkedin.com/scim` meg a **bérlői URL-címet**. Adja meg a korábban a **titkos tokenben**lekért hozzáférési jogkivonat értékét. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a LinkedIn learning szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a LinkedIn learning-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://api.linkedin.com/scim` meg a **bérlői URL-címet**. Adja meg a korábban a **titkos tokenben** lekért hozzáférési jogkivonat értékét. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a LinkedIn learning szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a LinkedIn learning-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Képernyőfelvétel: a rendszergazdai hitelesítő adatok párbeszédpanel, ahol megadhatja a bérlő U R L-t és a titkos jogkivonatot.](./media/linkedin-learning-provisioning-tutorial/provisioning.png)
 
@@ -108,7 +108,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók kiépítése**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók kiépítése** lehetőséget.
 
 9. Tekintse át az Azure AD-ból a LinkedIn learninghez szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a LinkedIn learning-beli felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy megváltoztatja a [megfelelő cél attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy a LINKEDIN learning API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -125,7 +125,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
 
-10. A **leképezések** szakaszban válassza ki a **Azure Active Directory csoportok kiépítése**lehetőséget.
+10. A **leképezések** szakaszban válassza ki a **Azure Active Directory csoportok kiépítése** lehetőséget.
 
 11. Tekintse át az Azure AD-ból a LinkedIn learninghez szinkronizált csoport attribútumait az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a LinkedIn learning szolgáltatásban a frissítési műveletekhez tartozó csoportok egyeztetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -158,7 +158,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.  
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

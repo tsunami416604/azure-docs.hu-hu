@@ -1,14 +1,14 @@
 ---
 title: Virtuálisgép-bővítmény engedélyezése Azure PowerShell használatával
 description: Ez a cikk bemutatja, hogyan telepíthet virtuálisgép-bővítményeket hibrid felhőalapú környezetekben futó Azure arc-kompatibilis kiszolgálókra Azure PowerShell használatával.
-ms.date: 10/23/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: d2408f75c7b6d81ba297de6dcdb85a712cd8908f
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 5ed9db23cd19814ff05c2f142f51cea869f2c2d4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495441"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359068"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Azure virtuálisgép-bővítmények engedélyezése Azure PowerShell használatával
 
@@ -45,6 +45,37 @@ PS C:\> $Setting = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
 PS C:\> New-AzConnectedMachineExtension -Name custom -ResourceGroupName myResourceGroup -MachineName myMachineName -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Setting -ExtensionType CustomScriptExtension
 ```
 
+### <a name="key-vault-vm-extension-preview"></a>Key Vault VM-bővítmény (előzetes verzió)
+
+> [!WARNING]
+> A PowerShell-ügyfelek gyakran felvesznek `\` `"` a settings.jsba, amelynek hatására a akvvm_service hibát jelez: `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
+
+Az alábbi példa engedélyezi a Key Vault virtuálisgép-bővítményt (előzetes verzió) egy arc-kompatibilis kiszolgálón:
+
+```powershell
+# Build settings
+    $settings = @{
+      secretsManagementSettings = @{
+       observedCertificates = @{
+        "observedCert1"
+       }
+      certificateStoreLocation = "myMachineName" # For Linux use "/var/lib/waagent/Microsoft.Azure.KeyVault.Store/"
+      certificateStore = "myCertificateStoreName"
+      pollingIntervalInS = "pollingInterval"
+      }
+    authenticationLocationSettings = @{
+     msiEndpoint = "http://localhost:40342/metadata/identity"
+     }
+    }
+
+    $resourceGroup = "resourceGroupName"
+    $machineName = "myMachineName"
+    $location = "regionName"
+
+    # Start the deployment
+    New-AzConnectedMachineExtension -ResourceGroupName $resourceGRoup -Location $location -MachineName $machineName -Name "KeyVaultForWindows or KeyVaultforLinux" -Publisher "Microsoft.Azure.KeyVault" -ExtensionType "KeyVaultforWindows or KeyVaultforLinux" -Setting (ConvertTo-Json $settings)
+```
+
 ## <a name="list-extensions-installed"></a>Telepített bővítmények listája
 
 Az ív használatára képes kiszolgálón található virtuálisgép-bővítmények listájának lekéréséhez használja a [Get-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/get-azconnectedmachineextension) a `-MachineName` és a `-ResourceGroupName` paramétereket.
@@ -69,7 +100,7 @@ Ha például el szeretné távolítani a linuxos Log Analytics virtuálisgép-b�
 Remove-AzConnectedMachineExtension -MachineName myMachineName -ResourceGroupName myResourceGroup -Name OmsAgentforLinux
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A virtuálisgép-bővítményeket az [Azure CLI](manage-vm-extensions-cli.md)-vel, a [Azure Portal](manage-vm-extensions-portal.md)vagy [Azure Resource Manager sablonokból](manage-vm-extensions-template.md)is üzembe helyezheti, kezelheti és távolíthatja el.
 

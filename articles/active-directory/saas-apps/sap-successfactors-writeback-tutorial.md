@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 52c71e06b33ef29c2ef0628d651c7f72e41b87ff
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671889"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358813"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Oktatóanyag: az attribútumok az Azure AD-ből az SAP SuccessFactors való visszaírásának konfigurálása
 Ennek az oktatóanyagnak a célja, hogy megjelenjenek az Azure AD-ből származó, az SAP SuccessFactors Employee Central-re vonatkozó írási és olvasási műveletek lépései. 
@@ -144,7 +144,7 @@ Az SAP-SuccessFactors a *listára* konfigurálható beállítások állíthatók
    > [!div class="mx-imgBorder"]
    > ![E-mail-adatok beolvasása](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. Az e **-mail-típus** részletei lapon jegyezze fel a mezőhöz társított lista nevét. Alapértelmezés szerint ez a **ecEmailType** . Ez azonban eltérő lehet a bérlőben. 
+1. Az e **-mail-típus** részletei lapon jegyezze fel a mezőhöz társított lista nevét. Alapértelmezés szerint ez a **ecEmailType**. Ez azonban eltérő lehet a bérlőben. 
 
    > [!div class="mx-imgBorder"]
    > ![E-mail lista azonosítása](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
@@ -154,14 +154,14 @@ Az SAP-SuccessFactors a *listára* konfigurálható beállítások állíthatók
    > [!div class="mx-imgBorder"]
    > ![Telefonos adatok beolvasása](./media/sap-successfactors-inbound-provisioning/get-phone-info.png)
 
-1. A **telefon típusa** Részletek lapon jegyezze fel a mezőhöz társított lista nevét. Alapértelmezés szerint ez a **ecPhoneType** . Ez azonban eltérő lehet a bérlőben. 
+1. A **telefon típusa** Részletek lapon jegyezze fel a mezőhöz társított lista nevét. Alapértelmezés szerint ez a **ecPhoneType**. Ez azonban eltérő lehet a bérlőben. 
 
    > [!div class="mx-imgBorder"]
    > ![Telefonos lista azonosítása](./media/sap-successfactors-inbound-provisioning/identify-phone-picklist.png)
 
 ### <a name="retrieve-constant-value-for-emailtype"></a>EmailType állandó értékének beolvasása
 
-1. A SuccessFactors felügyeleti központban keresse meg és nyissa meg a *listás centert* . 
+1. A SuccessFactors felügyeleti központban keresse meg és nyissa meg a *listás centert*. 
 1. Használja az előző szakaszban rögzített e-mail-lista nevét (pl. ecEmailType) az e-mail lista megkereséséhez. 
 
    > [!div class="mx-imgBorder"]
@@ -187,7 +187,7 @@ Az SAP-SuccessFactors a *listára* konfigurálható beállítások állíthatók
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>PhoneType állandó értékének beolvasása
 
-1. A SuccessFactors felügyeleti központban keresse meg és nyissa meg a *listás centert* . 
+1. A SuccessFactors felügyeleti központban keresse meg és nyissa meg a *listás centert*. 
 1. Használja az előző szakaszban rögzített telefonos választási lista nevét a telefonos lista megkereséséhez. 
 
    > [!div class="mx-imgBorder"]
@@ -325,7 +325,7 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a** következőre:.
 
 1. Válassza a **hatókör** elemet. Az alábbi lehetőségek közül választhat: 
-   * **Minden felhasználó és csoport szinkronizálása** : akkor válassza ezt a lehetőséget, ha az Azure ad-ből az összes felhasználóhoz tartozó leképezett attribútumokat szeretné a SuccessFactors- **Mappings** re írni  ->  **Source Object Scope** . 
+   * **Minden felhasználó és csoport szinkronizálása** : akkor válassza ezt a lehetőséget, ha az Azure ad-ből az összes felhasználóhoz tartozó leképezett attribútumokat szeretné a SuccessFactors- **Mappings** re írni  ->  **Source Object Scope**. 
    * **Csak a hozzárendelt felhasználók és csoportok szinkronizálása** : akkor válassza ezt a lehetőséget, ha **csak a felhasználók**  ->  **Manage**  ->  **és csoportok** kezelése menüpontban az alkalmazáshoz hozzárendelt felhasználókra vonatkozó leképezett attribútumok írhatók vissza. Ezeket a felhasználókat a **hozzárendelések**  ->  **forrás objektum hatókörében** meghatározott hatóköri szabályok is vonatkoznak.
 
    > [!div class="mx-imgBorder"]
@@ -349,7 +349,7 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 
 Tekintse meg az SAP SuccessFactors integrációs útmutatójának [visszaírási-forgatókönyvek című szakaszát](../app-provisioning/sap-successfactors-integration-reference.md#writeback-scenarios) . 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure AD és az SAP SuccessFactors integrációs dokumentációjának részletes bemutatása](../app-provisioning/sap-successfactors-integration-reference.md)
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)

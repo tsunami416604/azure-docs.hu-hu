@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, Sensor, SDK, Visual Studio 2017, Visual Studio 2019, nuget
-ms.openlocfilehash: b0395118481cbaecd5ad0b6a3a6b3e89cc29dfaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd71f0d327b8c828cc9ddac5810757cccdffbcea
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277308"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359612"
 ---
 # <a name="add-azure-kinect-library-to-your-visual-studio-project"></a>Azure Kinect Library hozzáadása a Visual Studio-projekthez
 
@@ -22,7 +22,7 @@ Ez a cikk végigvezeti az Azure Kinect NuGet-csomag Visual Studio-projekthez val
 
 Az Azure Kinect NuGet-csomag telepítése:
 
-1. A NuGet-csomagok a Visual Studióban történő telepítésével kapcsolatos részletes utasításokat a következő rövid útmutatóban találja [: csomag telepítése és használata a Visual Studióban](https://docs.microsoft.com/nuget/quickstart/install-and-use-a-package-in-visual-studio).
+1. A NuGet-csomagok a Visual Studióban történő telepítésével kapcsolatos részletes utasításokat a következő rövid útmutatóban találja [: csomag telepítése és használata a Visual Studióban](/nuget/quickstart/install-and-use-a-package-in-visual-studio).
 2. A csomag hozzáadásához a csomagkezelő felhasználói felületén kattintson a jobb gombbal a hivatkozások elemre, és válassza a NuGet-csomagok kezelése Megoldáskezelő lehetőségre.
 3. Válassza a [nuget.org](https://www.nuget.org) lehetőséget a csomag forrásaként, válassza a Tallózás fület, és keressen rá `Microsoft.Azure.Kinect.Sensor` .
 4. Válassza ki a csomagot a listából, és telepítse.

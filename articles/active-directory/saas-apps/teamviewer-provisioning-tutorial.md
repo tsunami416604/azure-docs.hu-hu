@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: a2113130cdfb41152b03e87606b757a3fa61793f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5f26746cbe88a01503c1d6c481a9a938a660c05a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521118"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359323"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Oktatóanyag: a TeamViewer konfigurálása automatikus felhasználói üzembe helyezéshez
 
@@ -46,11 +46,11 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="step-2-configure-teamviewer-to-support-provisioning-with-azure-ad"></a>2. lépés A TeamViewer konfigurálása az Azure AD-vel való kiépítés támogatására
 
-1. Jelentkezzen be a [TeamViewer felügyeleti konzolba](https://login.teamviewer.com). Navigáljon a **Profil szerkesztése**elemre.
+1. Jelentkezzen be a [TeamViewer felügyeleti konzolba](https://login.teamviewer.com). Navigáljon a **Profil szerkesztése** elemre.
 
     ![TeamViewer felügyeleti konzol](./media/teamviewer-provisioning-tutorial/admin.png)
 
-2.  Navigáljon az **alkalmazásokhoz**. Kattintson a **parancsfájl-jogkivonat létrehozása**lehetőségre.
+2.  Navigáljon az **alkalmazásokhoz**. Kattintson a **parancsfájl-jogkivonat létrehozása** lehetőségre.
 
     ![TeamViewer-létrehozási jogkivonat](./media/teamviewer-provisioning-tutorial/createtoken.png)
 
@@ -70,7 +70,7 @@ A TeamViewer az Azure AD Application Galleryben való hozzáadásával megkezdhe
 
 Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) leírt hatókörszűrőt használhatja. 
 
-* Amikor felhasználókat és csoportokat rendel a TeamViewerhez, ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
+* Amikor felhasználókat és csoportokat rendel a TeamViewerhez, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
 
 * Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
@@ -85,7 +85,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **TeamViewer**elemet.
+2. Az alkalmazások listában válassza a **TeamViewer** elemet.
 
     ![A TeamViewer hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -97,7 +97,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `ttps://webapi.teamviewer.com/scim/v2` **sátor URL-címe** mezőt, és adja meg a **titkos jogkivonatban**korábban létrehozott parancsfájl-tokent. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a teamviewerhez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a TeamViewer-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `ttps://webapi.teamviewer.com/scim/v2` **sátor URL-címe** mezőt, és adja meg a **titkos jogkivonatban** korábban létrehozott parancsfájl-tokent. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a teamviewerhez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a TeamViewer-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Képernyőfelvétel: a rendszergazdai hitelesítő adatok párbeszédpanel, ahol megadhatja a bérlő U R L-t és a titkos jogkivonatot.](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
@@ -107,7 +107,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a teamviewerhez**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a teamviewerhez** lehetőséget.
 
 9. Tekintse át az Azure AD-ból a TeamViewerbe szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a TeamViewer felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy a TeamViewer API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -140,7 +140,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 * A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 * Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

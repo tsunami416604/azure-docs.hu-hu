@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a20b6509973c7dc7e54d2e4f702175ad61e88da8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 579d0e334b4e60815b3a5efc877833ab75a3375d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532500"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358932"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mező-hozzárendelések és átalakítások az Azure Cognitive Search indexelő használatával
 
@@ -28,7 +28,7 @@ Bizonyos helyzetekben hasznosak lehetnek a mezők leképezése:
 * Az adatforrás egy nevű mezővel rendelkezik `_id` , de az Azure Cognitive Search nem engedélyezi a mezőneveket, amely aláhúzással kezdődik. A mezők leképezése lehetővé teszi egy mező tényleges átnevezését.
 * Az indexben több mezőt is fel szeretne tölteni ugyanabból az adatforrásból származó adatokból. Előfordulhat például, hogy különböző elemzőket szeretne alkalmazni ezekre a mezőkre.
 * Egynél több adatforrásból származó adatokkal szeretné feltölteni az index mezőt, és az egyes adatforrások különböző mezőneveket használnak.
-* Az adatai Base64 kódolása vagy dekódolása szükséges. A mező-hozzárendelések több **leképezési funkciót**is támogatnak, beleértve a Base64 kódoláshoz és a dekódoláshoz használható függvényeket.
+* Az adatai Base64 kódolása vagy dekódolása szükséges. A mező-hozzárendelések több **leképezési funkciót** is támogatnak, beleértve a Base64 kódoláshoz és a dekódoláshoz használható függvényeket.
 
 > [!NOTE]
 > Az indexelő mezőkhöz tartozó leképezések egyszerű módot biztosítanak az adatmezők index mezőibe történő leképezésére, és némi képességgel rendelkeznek a könnyű adatátalakításra. Az összetettebb adatfeldolgozáshoz szükség lehet az előzetes feldolgozásra, hogy egy olyan űrlapra alakítsa át, amely az indexelést eredményezi. Lehetséges, hogy az egyik lehetőség a [Azure Data Factory](../data-factory/index.yml).
@@ -81,7 +81,7 @@ A forrás mező több mező-hozzárendelésre is hivatkozhat. Az alábbi példa 
 
 ## <a name="map-fields-using-the-net-sdk"></a>Mezők leképezése a .NET SDK használatával
 
-A [FieldMapping](/dotnet/api/microsoft.azure.search.models.fieldmapping) osztály segítségével definiálhatja a mezők leképezéseit a .net SDK-ban, amely tartalmazza a tulajdonságokat, valamint a `SourceFieldName` `TargetFieldName` választható `MappingFunction` hivatkozást.
+A [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) osztály segítségével definiálhatja a mezők leképezéseit a .net SDK-ban, amely tartalmazza a tulajdonságokat, valamint a `SourceFieldName` `TargetFieldName` választható `MappingFunction` hivatkozást.
 
 Az indexelő létrehozásakor vagy később a tulajdonság közvetlen beállításával megadhatja a mezők leképezését `Indexer.FieldMappings` .
 
@@ -215,7 +215,7 @@ A következő táblázat a karakterlánc különböző Base64 kódolásait hason
 | Base64 kitöltéssel | `MDA+MDA/MDA=` | URL-alapú biztonságos karakterek használata és kitöltés eltávolítása | Szabványos Base64-karakterek használata és kitöltés hozzáadása |
 | Base64 kitöltés nélkül | `MDA+MDA/MDA` | URL-alapú biztonságos karakterek használata | Szabványos Base64-karakterek használata |
 | URL – biztonságos Base64 kitöltéssel | `MDA-MDA_MDA=` | Kitöltés eltávolítása | Kitöltés hozzáadása |
-| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | Nincsenek | Nincsenek |
+| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | Nincs | Nincs |
 
 <a name="extractTokenAtPositionFunction"></a>
 

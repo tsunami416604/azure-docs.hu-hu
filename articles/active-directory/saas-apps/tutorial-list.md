@@ -6,18 +6,18 @@ author: jeevansd
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 8eeddecbec31ec1bfa73cf956deb4c50809c50e7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fc94abdfbf5263a559c71d8321a8df7a8c6965a1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521946"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359850"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához
 
@@ -119,6 +119,6 @@ További oktatóanyagokat a bal oldali tartalomjegyzékben talál.
 | ![embléma – két Zscaler](./media/tutorial-list/active-directory-saas-zscaler-two-tutorial.png)| [Zscaler Two](zscaler-two-tutorial.md)|  
 | ![embléma – Zscaler ZSCloud](./media/tutorial-list/active-directory-saas-zscaler-zscloud-tutorial.png)| [Zscaler ZSCloud](zscaler-zscloud-tutorial.md)|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az alkalmazások kezeléséről: [Mi az az Application Management](../manage-apps/what-is-application-management.md).

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 8fdb89e4e85e18e00179b894f2587bcf4127dc22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d2a6f01e891a7fb1c14cde552d66679e474139
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255851"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359170"
 ---
 # <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Proxyclick konfigurálása
 
@@ -41,11 +41,11 @@ Az Azure AD-vel való automatikus Proxyclick konfigurálása előtt hozzá kell 
 
 **Ha Proxyclick szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Az Azure AD-vel való automatikus Proxyclick konfigurálása előtt hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Proxyclick**kifejezést, válassza az **Proxyclick** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Proxyclick** kifejezést, válassza az **Proxyclick** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Proxyclick az eredmények listájában](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Proxyclick**lehetőséget.
+2. Az alkalmazások listában válassza a **Proxyclick** lehetőséget.
 
     ![Az Proxyclick hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -106,17 +106,17 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Proxyclick piactér](media/proxyclick-provisioning-tutorial/proxyclick02.png)
 
-    Válassza az **Azure ad**lehetőséget. Kattintson a **Telepítés most**lehetőségre.
+    Válassza az **Azure ad** lehetőséget. Kattintson a **Telepítés most** lehetőségre.
 
     ![Proxyclick az Azure AD-ben](media/proxyclick-provisioning-tutorial/proxyclick03.png)
 
     ![Proxyclick telepítése](media/proxyclick-provisioning-tutorial/proxyclick04.png)
 
-    Válassza a **felhasználó kiépítése** lehetőséget, majd kattintson az **integráció elindítása**elemre. 
+    Válassza a **felhasználó kiépítése** lehetőséget, majd kattintson az **integráció elindítása** elemre. 
 
     ![Proxyclick-felhasználó kiépítés](media/proxyclick-provisioning-tutorial/proxyclick05.png)
 
-    A megfelelő beállítások konfigurációs felhasználói felületének most megjelenik a **Beállítások**  >  **integrációja**területen. Válassza a **Beállítások** lehetőséget az **Azure ad (felhasználó kiépítés)** területen.
+    A megfelelő beállítások konfigurációs felhasználói felületének most megjelenik a **Beállítások**  >  **integrációja** területen. Válassza a **Beállítások** lehetőséget az **Azure ad (felhasználó kiépítés)** területen.
 
     ![Proxyclick létrehozása](media/proxyclick-provisioning-tutorial/proxyclick06.png)
 
@@ -128,13 +128,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 9. Kattintson a **Mentés** gombra.
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Proxyclick**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Proxyclick** lehetőséget.
 
     ![Proxyclick felhasználói leképezések](media/proxyclick-provisioning-tutorial/Proxyclick-user-mappings.png)
 
@@ -165,7 +165,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * A Proxyclick használatához az **e-mailek** és a **felhasználónevek** értékének azonosnak kell lennie. Bármelyik attribútum frissítései módosítják a másik értéket.
 * A Proxyclick nem támogatja a csoportok üzembe helyezését.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

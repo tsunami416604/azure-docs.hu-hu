@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: a1428a92857f48920c86ed7a3f0719fa42b38b24
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c65fddcc90b25f70759fb038a72dad0facfa99a9
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072033"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359731"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Oktatóanyag: az visszaírási attribútum konfigurálása az Azure AD-ből munkanapokra
 Ennek az oktatóanyagnak a célja, hogy megmutassa az attribútumok Azure AD-ből munkanapokra történő visszaírási elvégzendő lépéseket. A munkanap visszaírási kiépítési alkalmazás támogatja az értékek hozzárendelését a következő munkanap-attribútumokhoz:
@@ -54,15 +54,15 @@ Kövesse ezeket az utasításokat a felhasználói e-mail-címek és felhasznál
 
 1. Nyissa meg a következőt: <https://portal.azure.com>.
 
-2. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
+2. A Azure Portal keresse meg és válassza a **Azure Active Directory** lehetőséget.
 
-3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
+3. Válassza a **vállalati alkalmazások** , majd **az összes alkalmazás** lehetőséget.
 
-4. Válassza az **alkalmazás hozzáadása**lehetőséget, majd válassza az **összes** kategóriát.
+4. Válassza az **alkalmazás hozzáadása** lehetőséget, majd válassza az **összes** kategóriát.
 
-5. Keresse meg a **munkanap visszaírási**, és adja hozzá az alkalmazást a katalógusból.
+5. Keresse meg a **munkanap visszaírási** , és adja hozzá az alkalmazást a katalógusból.
 
-6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés**lehetőséget.
+6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
 
 7. Módosítsa a **kiépítési** **módot** **automatikusra**.
 
@@ -82,7 +82,7 @@ Kövesse ezeket az utasításokat a felhasználói e-mail-címek és felhasznál
 
 Ebben a szakaszban azt fogja beállítani, hogy a visszaírási-attribútumok hogyan áramlanak az Azure AD-től a munkanapokig. 
 
-1. A **hozzárendelések**alatt a kiépítés lapon kattintson a megfeleltetés nevére.
+1. A **hozzárendelések** alatt a kiépítés lapon kattintson a megfeleltetés nevére.
 
 2. A **forrásoldali objektum hatóköre** mezőben opcionálisan szűrheti, hogy az Azure Active Directory mely felhasználói készleteknek kell szerepelniük a visszaírási. Az alapértelmezett hatókör a "minden felhasználó az Azure AD-ben".
 
@@ -142,9 +142,9 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 > [!TIP]
 > Alapértelmezés szerint a kiépítési szolgáltatás bekapcsolásakor a rendszer kiépítési műveleteket kezdeményez a hatókörben lévő összes felhasználó számára. Ha hibák léptek fel a leképezési vagy a munkanapokon tárolt adatokkal kapcsolatban, a kiépítési feladat meghiúsulhat, és a karanténba helyezési állapotba kerülhet. Ennek elkerüléséhez ajánlott eljárásként Azt javasoljuk, hogy a **forrás objektum hatókör** -szűrőjét konfigurálja, és tesztelje az attribútumok hozzárendeléseit néhány tesztelési felhasználóval, mielőtt elindítja a teljes szinkronizálást az összes felhasználó számára. Miután meggyőződött arról, hogy a leképezések működnek, és megadja a kívánt eredményeket, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
 
-1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
+1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a** következőre:.
 
-1. A **hatókör** legördülő menüben válassza a **minden felhasználó és csoport szinkronizálása**lehetőséget. Ha ezt a lehetőséget választja, a visszaírási-alkalmazás az Azure ad-ból minden felhasználóhoz tartozó leképezett attribútumokat ír a munkanapokra, a **társítási**szabályok  ->  **hatókörében**meghatározott hatóköri szabályok alapján. 
+1. A **hatókör** legördülő menüben válassza a **minden felhasználó és csoport szinkronizálása** lehetőséget. Ha ezt a lehetőséget választja, a visszaírási-alkalmazás az Azure ad-ból minden felhasználóhoz tartozó leképezett attribútumokat ír a munkanapokra, a **társítási** szabályok  ->  **hatókörében** meghatározott hatóköri szabályok alapján. 
 
    > [!div class="mx-imgBorder"]
    > ![Visszaírási hatókörének kiválasztása](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
