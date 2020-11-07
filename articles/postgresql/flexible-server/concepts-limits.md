@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 30c2da4ac750375c66b92cdca552e1a51a8dbc40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1405bce6761b6702146418296cb7b47bb9124ee
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940401"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357181"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Korlátok Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -73,12 +73,14 @@ A PostgreSQL-kapcsolatok, akár tétlenek is, körülbelül 10 MB memóriát fog
 - A tűzfalszabályok nem támogatottak a VNET, hanem hálózati biztonsági csoportokat is használhatnak.
 - A nyilvános hozzáférésű adatbázis-kiszolgálók csatlakozhatnak a nyilvános internethez, például a szolgáltatáson keresztül `postgres_fdw` , és ez a hozzáférés nem korlátozható. A VNET-alapú kiszolgálók korlátozott kimenő hozzáférést biztosíthatnak a hálózati biztonsági csoportokkal.
 
-### <a name="high-availability"></a>Magas rendelkezésre állás
+### <a name="high-availability-ha"></a>Magas rendelkezésre állás (HA)
 
 - Zone-Redundant HA jelenleg nem támogatott a betört kiszolgálók esetében.
 - Az adatbázis-kiszolgáló IP-címe akkor változik meg, ha a kiszolgáló átadja a HA készenléti állapotot. Győződjön meg arról, hogy a kiszolgáló IP-címe helyett a DNS-rekordot használja.
+- Ha a logikai replikáció egy HA konfigurált rugalmas kiszolgálóval van konfigurálva, a készenléti kiszolgáló feladatátvétele esetén a rendszer nem másolja át a logikai replikációs tárolóhelyeket a készenléti kiszolgálóra. 
+- HA további korlátozásokat kíván, tekintse meg a [fogalmak – ha dokumentációs](concepts-high-availability.md) oldalt.
 
-### <a name="availability-zones"></a>Rendelkezésre állási zónák
+### <a name="availability-zones"></a>Rendelkezésreállási zónák
 
 - A kiszolgálók egy másik rendelkezésre állási zónába történő manuális áthelyezése jelenleg nem támogatott.
 - A HA készenléti kiszolgáló rendelkezésre állási zónája nem állítható be manuálisan.
@@ -116,7 +118,7 @@ A PostgreSQL-kapcsolatok, akár tétlenek is, körülbelül 10 MB memóriát fog
 * Az olvasási replikák még nem támogatottak. Ha olvasási replikára van szüksége, javasoljuk, hogy használja az [egyetlen kiszolgáló](../overview-single-server.md) lehetőséget.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A számítási és tárolási lehetőségek elérhetővé tételének](concepts-compute-storage.md) ismertetése
 - További információ a [PostgreSQL-adatbázisok támogatott verzióiról](concepts-supported-versions.md)

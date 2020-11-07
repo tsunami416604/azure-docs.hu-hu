@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d3aafe93c92a1c756358dfb60a2ca976036d8b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 204cdc689d5a117df428bb314a81a35081f7b13c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273688"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357640"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés BlueJeans konfigurálása
 
@@ -42,11 +42,11 @@ Az Azure AD-vel való automatikus BlueJeans konfigurálása előtt hozzá kell a
 
 **Ha BlueJeans szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -54,7 +54,7 @@ Az Azure AD-vel való automatikus BlueJeans konfigurálása előtt hozzá kell a
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **BlueJeans**kifejezést, válassza az **BlueJeans** elemet az eredmények panelen, majd válassza a **Hozzáadás** gombot az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **BlueJeans** kifejezést, válassza az **BlueJeans** elemet az eredmények panelen, majd válassza a **Hozzáadás** gombot az alkalmazás hozzáadásához.
 
     ![BlueJeans az eredmények listájában](common/search-new-app.png)
 
@@ -81,11 +81,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a BlueJeans az Azure AD-ben:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **BlueJeans**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **BlueJeans** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **BlueJeans**lehetőséget.
+2. Az alkalmazások listában válassza a **BlueJeans** lehetőséget.
 
     ![Az BlueJeans hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -97,7 +97,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![A kiépítési mód és a rendszergazdai hitelesítő adatok című rész képernyőképe.](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a BlueJeans-fiókjának **rendszergazdai felhasználónevét**és **rendszergazdai jelszavát** . Ilyen értékek például a következők:
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a BlueJeans-fiókjának **rendszergazdai felhasználónevét** és **rendszergazdai jelszavát** . Ilyen értékek például a következők:
 
    * A **rendszergazdai Felhasználónév** mezőben töltse ki a rendszergazdai fiók felhasználónevét a BlueJeans-bérlőn. Példa: admin@contoso.com.
 
@@ -107,13 +107,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a rendszergazdai hitelesítő adatokról című szakaszban, az elnevezett kapcsolatok tesztelése lehetőséggel.](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
 
-7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Képernyőkép az értesítő e-mailek szövegmezőről.](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
 8. Kattintson a **Mentés** gombra.
 
-9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a BlueJeans**lehetőséget.
+9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a BlueJeans** lehetőséget.
 
     ![A leképezések szakasz képernyőképe a Azure Active Directory felhasználók szinkronizálása a BlueJeans lehetőségre kiemelve.](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
 
@@ -143,7 +143,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * A Bluejeans nem engedélyezi a 30 karakternél hosszabb felhasználóneveket.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

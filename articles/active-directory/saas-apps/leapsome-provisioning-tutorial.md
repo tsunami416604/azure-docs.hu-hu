@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: jeedes
-ms.openlocfilehash: e08c748dec6d21e1ff5d848257c65aa3f8f5aa63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0165e5191a8cd499b42c14704fdf4f0d79b3f6b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299998"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358541"
 ---
 # <a name="tutorial-configure-leapsome-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Leapsome konfigurálása
 
@@ -52,11 +52,11 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 ## <a name="setup-leapsome-for-provisioning"></a>Leapsome beállítása a kiépítés számára
 
-1. Jelentkezzen be a [Leapsome felügyeleti konzolra](https://www.Leapsome.com/app/#/login). Navigáljon a **beállítások > a rendszergazdai beállítások**elemre.
+1. Jelentkezzen be a [Leapsome felügyeleti konzolra](https://www.Leapsome.com/app/#/login). Navigáljon a **beállítások > a rendszergazdai beállítások** elemre.
 
     ![Leapsome felügyeleti konzol](media/Leapsome-provisioning-tutorial/leapsome-admin-console.png)
 
-2.  Navigáljon az **integrációk > scim a felhasználók üzembe**helyezése.
+2.  Navigáljon az **integrációk > scim a felhasználók üzembe** helyezése.
 
     ![Leapsome-SCIM hozzáadása](media/Leapsome-provisioning-tutorial/leapsome-add-scim.png)
 
@@ -70,11 +70,11 @@ Az Azure AD-vel való automatikus Leapsome konfigurálása előtt hozzá kell ad
 
 **Ha Leapsome szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -82,7 +82,7 @@ Az Azure AD-vel való automatikus Leapsome konfigurálása előtt hozzá kell ad
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Leapsome**kifejezést, válassza az **Leapsome** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Leapsome** kifejezést, válassza az **Leapsome** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Leapsome az eredmények listájában](common/search-new-app.png)
 
@@ -99,7 +99,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Leapsome**lehetőséget.
+2. Az alkalmazások listában válassza a **Leapsome** lehetőséget.
 
     ![Az Leapsome hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -115,13 +115,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Leapsome**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Leapsome** lehetőséget.
 
     ![Leapsome felhasználói leképezések](media/Leapsome-provisioning-tutorial/Leapsome-user-mappings.png)
 
@@ -129,7 +129,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Leapsome felhasználói attribútumai](media/Leapsome-provisioning-tutorial/Leapsome-user-attributes.png)
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Leapsome**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Leapsome** lehetőséget.
 
     ![Leapsome csoport-hozzárendelések](media/Leapsome-provisioning-tutorial/Leapsome-group-mappings.png)
 
@@ -160,7 +160,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * A Leapsome egyedi **felhasználónévre** van szükség.
 * A Leapsome csak a munkahelyi e-mail-címek mentését engedélyezi.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

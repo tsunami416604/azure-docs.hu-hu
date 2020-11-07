@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 45a1ae281a8a1acb1cfd12efe500f5a623033ef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da6e1a8ba31f8f4991bde4803191598a015a68b3
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850039"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358439"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Oktatóanyag: az Oracle Fusion ERP konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -54,13 +54,13 @@ Mielőtt beállítja az Oracle Fusion ERP-t az Azure AD-vel való automatikus fe
 
 1. Jelentkezzen be az [Oracle Fusion ERP felügyeleti konzolba](https://cloud.oracle.com/sign-in)
 
-2. Kattintson a bal felső sarokban található navigátorra. Az **eszközök**területen válassza a **biztonsági konzol**lehetőséget.
+2. Kattintson a bal felső sarokban található navigátorra. Az **eszközök** területen válassza a **biztonsági konzol** lehetőséget.
 
     :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/login.png" alt-text="Képernyőkép az Oracle Fusion E R P felügyeleti konzoljának navigátor oldaláról. Az eszközök és a biztonsági konzol ki van emelve." border="false":::
 
 3. Navigáljon a **felhasználókhoz**.
     
-    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user.png" alt-text="Képernyőkép az Oracle Fusion E R P felügyeleti konzoljának navigátor oldaláról. Az eszközök és a biztonsági konzol ki van emelve." border="false":::
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user.png" alt-text="Képernyőkép az Oracle Fusion E R P felügyeleti konzolján található panelről. A Users (felhasználók) elemek ki vannak emelve." border="false":::
 
 4. Mentse a rendszergazdai felhasználói fiók felhasználónevét és jelszavát, amelyet az Oracle Fusion ERP felügyeleti konzolba való bejelentkezéshez fog használni. Ezeket az értékeket az Oracle Fusion ERP-alkalmazás üzembe helyezés lapjának **rendszergazdai Felhasználónév** és **jelszó** mezőiben kell megadni a Azure Portal.
 
@@ -70,11 +70,11 @@ Ha az Oracle Fusion ERP-t az Azure AD-vel való automatikus felhasználói üzem
 
 **Az Oracle Fusion ERP az Azure AD Application Galleryből való hozzáadásához hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -82,7 +82,7 @@ Ha az Oracle Fusion ERP-t az Azure AD-vel való automatikus felhasználói üzem
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az **Oracle Fusion ERP**kifejezést, majd az eredmények panelen válassza az **Oracle Fusion ERP** elemet.
+4. A keresőmezőbe írja be az **Oracle Fusion ERP** kifejezést, majd az eredmények panelen válassza az **Oracle Fusion ERP** elemet.
 
     ![Oracle Fusion ERP az eredmények listájában](common/search-new-app.png)
 
@@ -102,7 +102,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza az **Oracle Fusion ERP**elemet.
+2. Az alkalmazások listában válassza az **Oracle Fusion ERP** elemet.
 
     ![Az Oracle Fusion ERP hivatkozása az alkalmazások listájában](common/all-applications.png)
 
@@ -116,21 +116,21 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` meg a **bérlői URL-címet**. Adja meg a rendszergazda **felhasználónevét** és jelszavát a korábban lekért rendszergazdai Felhasználónév és **jelszó** mezőkben. Kattintson az Azure AD és az Oracle Fusion ERP közötti **kapcsolat tesztelése** elemre. 
 
-    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Képernyőkép az Oracle Fusion E R P felügyeleti konzoljának navigátor oldaláról. Az eszközök és a biztonsági konzol ki van emelve." border="false":::
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="A rendszergazdai hitelesítő adatok szakasz képernyőképe. Az U R L, a rendszergazdai Felhasználónév és a rendszergazdai jelszó megadására vonatkozó tesztelési kapcsolatok gomb és mezők láthatók." border="false":::
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása az Oracle Fusion ERP**-be lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása az Oracle Fusion ERP** -be lehetőséget.
 
-    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Képernyőkép az Oracle Fusion E R P felügyeleti konzoljának navigátor oldaláról. Az eszközök és a biztonsági konzol ki van emelve." border="false":::
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Képernyőfelvétel a leképezésekről szakasz. A név területen szinkronizálja Azure Active Directory felhasználókat az Oracle Fusion E R P-vel." border="false":::
 
 9. Tekintse át az Azure AD-ból az Oracle Fusion ERP-be szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok az Oracle Fusion ERP felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Képernyőkép az Oracle Fusion E R P felügyeleti konzoljának navigátor oldaláról. Az eszközök és a biztonsági konzol ki van emelve." border="false":::
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Képernyőkép az attribútum-hozzárendelések lapról. A táblázat felsorolja Azure Active Directory és az Oracle Fusion E R P attribútumait, valamint a megfeleltetések sorrendjét." border="false":::
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása Oracle Fusion ERP-** re lehetőséget.
 
@@ -164,7 +164,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 * Az Oracle Fusion ERP nem támogatja a csoportok üzembe helyezését.
 * Az Oracle Fusion ERP szerepkörei az Azure AD-ben csoportokba vannak rendelve. Ahhoz, hogy szerepköröket rendeljen a felhasználókhoz az Azure AD-ből származó Oracle Fusion ERP-ben, hozzá kell rendelnie a felhasználókat az Oracle Fusion ERP szerepkörei után elnevezett kívánt Azure AD-csoportokhoz.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

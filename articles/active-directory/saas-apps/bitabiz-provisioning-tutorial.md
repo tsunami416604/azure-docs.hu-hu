@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: f87a2347890f8d17e3901c6d8fc168c1d96c7661
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d17d4dd88e29440304989b8c37eaa81125d1812
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849339"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357555"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés BitaBIZ konfigurálása
 
@@ -52,15 +52,15 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 Az Azure AD-vel való automatikus BitaBIZ konfigurálása előtt engedélyeznie kell a SCIM-létesítést a BitaBIZ-on.
 
-1. Jelentkezzen be a [BitaBIZ felügyeleti konzolra](https://www.bitabiz.com/login?lang=en). Kattintson a **telepítési rendszergazda**elemre.
+1. Jelentkezzen be a [BitaBIZ felügyeleti konzolra](https://www.bitabiz.com/login?lang=en). Kattintson a **telepítési rendszergazda** elemre.
 
     :::image type="content" source="media/bitabiz-provisioning-tutorial/setup-admin.png" alt-text="Képernyőkép a BitaBIZ felügyeleti konzolról, a telepítési rendszergazda kiemelve." border="false":::
 
-2.  Navigáljon az **integráció**elemre.
+2.  Navigáljon az **integráció** elemre.
 
-    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="Képernyőkép a BitaBIZ felügyeleti konzolról, a telepítési rendszergazda kiemelve." border="false":::
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="Képernyőkép a BitaBIZ felügyeleti konzolról, az integráció kiemelve." border="false":::
 
-2.  Navigáljon **Microsoft Azure ad üzembe**helyezéshez.  Válassza az **engedélyezve** lehetőséget az automatikus felhasználó-kiépítés lehetőségnél. Másolja az **scim kiépítési végpont URL-címének** és a  **tulajdonosi jogkivonat**értékeit. Ezek az értékek a bérlői URL-cím és a titkos jogkivonat mezőiben lesznek megadva a BitaBIZ alkalmazás kiépítés lapján a Azure Portal.
+2.  Navigáljon **Microsoft Azure ad üzembe** helyezéshez.  Válassza az **engedélyezve** lehetőséget az automatikus felhasználó-kiépítés lehetőségnél. Másolja az **scim kiépítési végpont URL-címének** és a  **tulajdonosi jogkivonat** értékeit. Ezek az értékek a bérlői URL-cím és a titkos jogkivonat mezőiben lesznek megadva a BitaBIZ alkalmazás kiépítés lapján a Azure Portal.
 
     ![BitaBIZ-SCIM hozzáadása](media/bitabiz-provisioning-tutorial/authentication.png)
 
@@ -71,11 +71,11 @@ Az Azure AD-vel való automatikus BitaBIZ konfigurálásához hozzá kell adnia 
 
 **Ha BitaBIZ szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Az Azure AD-vel való automatikus BitaBIZ konfigurálásához hozzá kell adnia 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **BitaBIZ**kifejezést, válassza az **BitaBIZ** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **BitaBIZ** kifejezést, válassza az **BitaBIZ** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![BitaBIZ az eredmények listájában](common/search-new-app.png)
 
@@ -100,7 +100,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **BitaBIZ**lehetőséget.
+2. Az alkalmazások listában válassza a **BitaBIZ** lehetőséget.
 
     ![Az BitaBIZ hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -116,13 +116,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a BitaBIZ**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a BitaBIZ** lehetőséget.
 
     ![BitaBIZ felhasználói leképezések](media/bitabiz-provisioning-tutorial/usermapping.png)
 
@@ -151,10 +151,10 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 ## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-* A BitaBIZ a **Felhasználónév**, az **E-mail**, a **firstName** és a **lastName** kötelező attribútumként való használatát igényli. 
+* A BitaBIZ a **Felhasználónév** , az **E-mail** , a **firstName** és a **lastName** kötelező attribútumként való használatát igényli. 
 * A BitaBIZ jelenleg nem támogatja a rögzített törléseket.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

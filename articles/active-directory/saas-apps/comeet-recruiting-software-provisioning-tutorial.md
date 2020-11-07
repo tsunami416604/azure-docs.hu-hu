@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 37a446d721b7353c647d7d7e26de79e7038d1a3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 288d1e6cec8ddcf7d4afe5a35f28a022c2a7be10
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299981"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357062"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus kiépítés céljából történő toborzásának konfigurálása
 
@@ -41,11 +41,11 @@ Az Azure AD-vel való automatikus felhasználó-kiépítési szoftver bevezetés
 
 **A következő lépésekkel adhatja hozzá a szoftvereket az Azure AD Application Galleryből:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítési szoftver bevezetés
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a következőt: **munkatársak toborzása szoftver**, válassza a **munkatársak toborzása** az eredmények panelen lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a következőt: **munkatársak toborzása szoftver** , válassza a **munkatársak toborzása** az eredmények panelen lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![A szoftverek toborzása az eredmények listájában](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **szoftver felvétele**lehetőséget.
+2. Az alkalmazások listában válassza a **szoftver felvétele** lehetőséget.
 
     ![Az alkalmazások listáján szereplő szoftver-toborzási hivatkozás](common/all-applications.png)
 
@@ -98,7 +98,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címét** és **titkos jogkivonatát** , amely a 6. lépésben leírtak szerint tartalmazza a szoftver fiókjának felvételét.
 
-6. A [szoftveres felügyeleti konzol](https://app.comeet.co/)összeadásával kapcsolatban navigáljon a  **> beállítások > a hitelesítés > Microsoft Azure**elemre, és másolja a **vállalati érték titkos tokenjét** az Azure ad **titkos jogkivonat** mezőjébe.
+6. A [szoftveres felügyeleti konzol](https://app.comeet.co/)összeadásával kapcsolatban navigáljon a  **> beállítások > a hitelesítés > Microsoft Azure** elemre, és másolja a **vállalati érték titkos tokenjét** az Azure ad **titkos jogkivonat** mezőjébe.
 
     ![A szoftverek kiépítési feltoborzásának összetartása](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
@@ -106,13 +106,13 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Jogkivonat](common/provisioning-testconnection-token.png)
 
-8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 9. Kattintson a **Mentés** gombra.
 
-10. A **leképezések** szakaszban válassza az **Azure Active Directory a felhasználók szinkronizálása**lehetőséget.
+10. A **leképezések** szakaszban válassza az **Azure Active Directory a felhasználók szinkronizálása** lehetőséget.
 
     ![A szoftveres felhasználói leképezések toborzása](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
@@ -142,7 +142,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * A munkatársak toborzása jelenleg nem támogatja a csoportokat.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

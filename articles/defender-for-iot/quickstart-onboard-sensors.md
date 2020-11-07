@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: rkarlin
-ms.openlocfilehash: 28d64f5d9d845c2a14f0277799213501e1d68010
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: dafa2f231581ee7e7fa7a59a9c9320f6f2a67038
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421753"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357684"
 ---
 # <a name="quickstart-deploy-and-onboard-a-sensor"></a>Gyors útmutató: érzékelő üzembe helyezése és előkészítése
 
@@ -42,7 +42,7 @@ A bevezetési érzékelőkkel a következőket teheti:
 | **Érzékelő-felügyeleti mód definiálása** | Itt adhatja meg, hogy a rendszer hol jelenítse meg az eszköz, a riasztás és az érzékelő által észlelt egyéb adatokat. Ezt a rendszer a definiált **érzékelő-kezelési mód** alapján határozza meg.<br /><br />**Helyileg felügyelt mód** : az érzékelő által észlelt információk az érzékelő konzolon jelennek meg. Az észlelési információk a helyszíni felügyeleti konzollal is megoszthatók, ha az érzékelő csatlakoztatva van hozzá.<br /><br />**Felhőalapú felügyelt mód** : az érzékelő által észlelt információk az érzékelő konzolon jelennek meg. Emellett a riasztási információk egy IoT Hub keresztül érkeznek, és más Azure-szolgáltatásokkal is megoszthatók, például az Azure Sentinel használatával.<br />További információért tekintse meg a bevezető **érzékelőt** . |
 | **Érzékelő aktiválási fájljának beolvasása** | A **helyileg felügyelt** érzékelők esetében egy aktiválási fájl használható az adott szenzoros aktiválási időszakok kezelésére.<br /><br />A **felhőben felügyelt** érzékelők esetében az érzékelő és a IoT hub közötti kapcsolat az aktiválási fájl. További információ: előkészítési **érzékelők**. |
 | **Aktiválási fájl feltöltése az érzékelőbe** | Az aktiválási fájlokat fel kell tölteni a vállalati érzékelőkbe. A Hálózatfigyelő és az érzékelő konzol funkciói nem lesznek elérhetők az aktiválási fájl feltöltése előtt. További információ: szenzor- **aktiválási fájlok feltöltése**. |
-| **Az érzékelő hálózati paramétereinek frissítése az aktiválás előtt** | Az érzékelő telepítésekor meghatározott paraméterek frissítése. További információ: **Error! A hivatkozás forrása nem található**.|
+| **Az érzékelő hálózati paramétereinek frissítése az aktiválás előtt** | Az érzékelő telepítésekor meghatározott paraméterek frissítése. További információ: szenzor- **aktiválási fájlok feltöltése**.|
 
 
 **Érzékelő üzembe helyezése:**

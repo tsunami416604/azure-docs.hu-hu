@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4b77208ca7869288ac13e28c6535b1b3972aa22c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: f50c8d612ca088c97754b1eb90ed049113e33c6e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928744"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358264"
 ---
 # <a name="tutorial-configure-blogin-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés BlogIn konfigurálása
 
@@ -52,7 +52,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 A **BlogIn** felhasználói kiépítés konfigurálásához jelentkezzen be a BlogIn-fiókjába, és kövesse az alábbi lépéseket:
 
-1. Navigáljon a **Beállítások**  >  **felhasználói hitelesítés**  >  **configure SSO & felhasználó kiépítés** .
+1. Navigáljon a **Beállítások**  >  **felhasználói hitelesítés**  >  **configure SSO & felhasználó kiépítés**.
 2. Váltson a **felhasználók üzembe** helyezése lapra, és módosítsa a felhasználó kiépítési állapotát **a** következőre:.
 3. Kattintson a **módosítások mentése** gombra. Az első mentéskor a rendszer létrehoz egy **titkos (tulajdonosi) jogkivonatot** .
 4. Az **alapszintű (bérlői) URL-cím** és a **titkos (tulajdonos) token** értékeinek másolása. Ezek az értékek a bérlői URL-cím és a titkos jogkivonat mezőiben lesznek megadva a BlogIn alkalmazás kiépítés lapján a Azure Portal.

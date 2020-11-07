@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: Zhchia
-ms.openlocfilehash: 43f5b96c7029da6b49bc9df40d92fbd250145715
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e79f21300325c6b451dd564bf2c69830f003f55c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326014"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357861"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>Oktatóanyag: prioritási mátrix konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -67,11 +67,11 @@ Mielőtt beállítja a prioritási mátrixot az Azure AD-vel való automatikus f
 
 Az Azure AD-vel való automatikus felhasználó-kiépítés prioritási mátrixának konfigurálásához hozzá kell adnia egy prioritási mátrixot az Azure AD-alkalmazás-katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -79,7 +79,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés prioritási mátrix�
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **prioritási mátrix**kifejezést, majd az eredmények panelen válassza a **prioritási mátrix** lehetőséget. 
+4. A keresőmezőbe írja be a **prioritási mátrix** kifejezést, majd az eredmények panelen válassza a **prioritási mátrix** lehetőséget. 
 
     ![Prioritási mátrix az eredmények listájában](common/search-new-app.png)
 
@@ -108,7 +108,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **prioritási mátrix**elemet.
+2. Az alkalmazások listában válassza a **prioritási mátrix** elemet.
 
     ![A prioritási mátrix hivatkozása az alkalmazások listájában](common/all-applications.png)
 
@@ -120,17 +120,17 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://sync.appfluence.com/scim/v2/` meg a **bérlői URL-címet**. Adja meg a beolvasott és a korábban mentett értéket a **titkos jogkivonat**prioritási mátrixában. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak a prioritási mátrixhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Priority Matrix-fiók rendelkezik rendszergazdai jogosultságokkal, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://sync.appfluence.com/scim/v2/` meg a **bérlői URL-címet**. Adja meg a beolvasott és a korábban mentett értéket a **titkos jogkivonat** prioritási mátrixában. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak a prioritási mátrixhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Priority Matrix-fiók rendelkezik rendszergazdai jogosultságokkal, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása prioritási mátrixba**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása prioritási mátrixba** lehetőséget.
 
     ![Prioritási mátrix felhasználói leképezései](media/priority-matrix-provisioning-tutorial/usermappings.png)
 
@@ -156,7 +156,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

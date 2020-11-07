@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c02a2658325fdd88ef1052937edc3b84c4545872
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 78f228a5e188bc930a9e7484f4c982ba746331dd
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91296837"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357776"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault kulcsok, titkok és tanúsítványok áttekintése
 
@@ -45,10 +46,10 @@ Titkos kulcsok|/secrets|Támogatott|Nem támogatott
 Tanúsítványok|/certificates|Támogatott|Nem támogatott
 Tárfiókkulcsok|/storageaccount|Támogatott|Nem támogatott
 |||
-- **Titkosítási kulcsok**: több kulcs típust és algoritmust is támogat, valamint lehetővé teszi a szoftveres védelemmel ellátott és HSM által védett kulcsok használatát. További információ: [a kulcsok ismertetése](../keys/about-keys.md).
-- **Titkok**: biztonságos tárhelyet biztosít a titkos kulcsokhoz, például jelszavakhoz és adatbázis-kapcsolatok karakterláncokhoz. További információ: [About Secrets](../secrets/about-secrets.md).
-- **Tanúsítványok**: a kulcsokra és titkokra épülő tanúsítványokat támogatja, és egy automatikus megújítási funkciót ad hozzá. További információ: [Tudnivalók a tanúsítványokról](../certificates/about-certificates.md).
-- **Azure Storage-fiókok kulcsai**: felügyelheti az Azure Storage-fiók kulcsait. Belsőleg Key Vault a kulcsokat egy Azure Storage-fiókkal listázhatja (szinkronizálhatja), és rendszeresen újragenerálhatja (elforgathatja) a kulcsokat. További információ: [a Storage-fiók kulcsainak kezelése a Key Vault](../secrets/overview-storage-keys.md).
+- **Titkosítási kulcsok** : több kulcs típust és algoritmust is támogat, valamint lehetővé teszi a szoftveres védelemmel ellátott és HSM által védett kulcsok használatát. További információ: [a kulcsok ismertetése](../keys/about-keys.md).
+- **Titkok** : biztonságos tárhelyet biztosít a titkos kulcsokhoz, például jelszavakhoz és adatbázis-kapcsolatok karakterláncokhoz. További információ: [About Secrets](../secrets/about-secrets.md).
+- **Tanúsítványok** : a kulcsokra és titkokra épülő tanúsítványokat támogatja, és egy automatikus megújítási funkciót ad hozzá. További információ: [Tudnivalók a tanúsítványokról](../certificates/about-certificates.md).
+- **Azure Storage-fiókok kulcsai** : felügyelheti az Azure Storage-fiók kulcsait. Belsőleg Key Vault a kulcsokat egy Azure Storage-fiókkal listázhatja (szinkronizálhatja), és rendszeresen újragenerálhatja (elforgathatja) a kulcsokat. További információ: [a Storage-fiók kulcsainak kezelése a Key Vault](../secrets/overview-storage-keys.md).
 
 További általános információk a Key Vaultről: [about Azure Key Vault](overview.md). További információ a felügyelt HSM-készletekről: mi a [Azure Key Vault Managed HSM?](../managed-hsm/overview.md)
 
@@ -80,9 +81,9 @@ További információ: [hitelesítés, kérések és válaszok](authentication-r
 
 Az objektumazonosító a következő általános formátumú (a tároló típusától függően):  
 
-- Tárolók **esetén**:`https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
+- Tárolók **esetén** :`https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-- **Felügyelt HSM-készletek esetén**: `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
+- **Felügyelt HSM-készletek esetén** : `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
 
 > [!NOTE]
 > Lásd: [objektumtípus támogatása](#object-types) az egyes típusú objektumok által támogatott objektumtípusok számára.

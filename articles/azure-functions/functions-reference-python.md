@@ -2,14 +2,14 @@
 title: Python fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használatával
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3d459f4249c65f2d09f9d8df6e7958adf852a2ea
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: cc99a8c10ecefc063fdb89c61bdaeb0e686b1a82
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346315"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358048"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -69,72 +69,70 @@ A függvények alapértelmezett viselkedését megváltoztathatja, ha a és a tu
 A Python functions projekt javasolt mappastruktúrát a következő példához hasonlóan néz ki:
 
 ```
- __app__
- | - my_first_function
+ <project_root>/
+ | - .venv/
+ | - .vscode/
+ | - my_first_function/
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - my_second_function
+ | - my_second_function/
  | | - __init__.py
  | | - function.json
- | - shared_code
+ | - shared_code/
+ | | - __init__.py
  | | - my_first_helper_function.py
  | | - my_second_helper_function.py
+ | - tests/
+ | | - test_my_second_function.py
+ | - .funcignore
  | - host.json
+ | - local.settings.json
  | - requirements.txt
  | - Dockerfile
- tests
 ```
-A fő projekt mappája ( \_ \_ alkalmazás \_ \_ ) a következő fájlokat tartalmazza:
+A fő projekt mappája (<project_root>) a következő fájlokat tartalmazza:
 
 * *local.settings.json* : az Alkalmazásbeállítások és a kapcsolódási karakterláncok helyi futtatásakor való tárolásához használatos. Ez a fájl nem jelenik meg az Azure-ban. További információ: [Local. Settings. file](functions-run-local.md#local-settings-file).
-* *requirements.txt* : azon csomagok listáját tartalmazza, amelyeket a rendszeren az Azure-ba való közzétételkor telepít.
+* *requirements.txt* : azon Python-csomagok listáját tartalmazza, amelyeket a rendszeren az Azure-ba való közzétételkor telepít.
 * *host.json* : olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function alkalmazás összes funkcióját érintik. Ez a fájl közzé van téve az Azure-ban. Nem minden beállítás támogatott a helyi futtatásakor. További információ: [host.json](functions-host-json.md).
-* *. funcignore* : (nem kötelező) deklarálja azokat a fájlokat, amelyek nem tudnak közzétenni az Azure-ban.
+* *. vscode/* : (nem kötelező) a tároló vscode konfigurációját tartalmazza. További információ: VSCode- [beállítás](https://code.visualstudio.com/docs/getstarted/settings).
+* *. venv/* : (nem kötelező) a helyi fejlesztés által használt Python virtuális környezetet tartalmaz.
 * *Docker* : (nem kötelező) a projekt [Egyéni tárolóban](functions-create-function-linux-custom-image.md)történő közzétételekor használatos.
+* *tesztek/* : (nem kötelező) a Function alkalmazás tesztelési eseteit tartalmazza.
+* *. funcignore* : (nem kötelező) deklarálja azokat a fájlokat, amelyek nem tudnak közzétenni az Azure-ban. Ez a fájl általában a `.vscode/` szerkesztői beállítások figyelmen kívül hagyása, `.venv/` a helyi Python virtuális környezet figyelmen kívül hagyása, `tests/` a tesztelési esetek figyelmen kívül hagyása és `local.settings.json` a helyi Alkalmazásbeállítások közzétételének megakadályozása érdekében.
 
 Minden függvényhez tartozik a saját kód fájlja és a kötési konfigurációs fájl (function.js).
 
-Ha a projektet egy Azure-beli Function alkalmazásba helyezi üzembe, a fő projekt ( *\_ \_ alkalmazás \_ \_* ) mappájának teljes tartalmát bele kell foglalni a csomagba, de nem maga a mappa. Javasoljuk, hogy a teszteket a Project mappától eltérő mappában tartsa karban, ebben a példában `tests` . Így a tesztelési kód üzembe helyezése az alkalmazással megtartható. További információ: [Unit Testing (egység tesztelése](#unit-testing)).
+Amikor az Azure-beli Function alkalmazásba helyezi üzembe a projektet, a főprojekt ( *<project_root>* ) mappájának teljes tartalmát bele kell foglalni a csomagba, de nem maga a mappa, ami azt jelenti, hogy a `host.json` csomag gyökerében kell lennie. Javasoljuk, hogy a teszteket egy olyan mappában tartsa, amely más függvényekkel együtt, ebben a példában `tests/` . További információ: [Unit Testing (egység tesztelése](#unit-testing)).
 
 ## <a name="import-behavior"></a>Importálási viselkedés
 
-A függvény kódjában lévő modulokat explicit relatív és abszolút referenciák használatával is importálhatja. A fent látható mappa szerkezete alapján a következő importálások működnek a Function file *\_ \_ app \_ \_ My \_ első \_ függvényében: \\ _ \_ init \_ \_ .* a (z)
+A függvények kódjában az abszolút és a relatív hivatkozásokkal is importálhatja a modulokat. A fent látható mappa szerkezete alapján a következő importálások működnek a függvény fájljában *<project_root> My az \_ első \_ függvényt \\ _ \_ init \_ \_ .* a:
 
 ```python
-from . import example #(explicit relative)
+from shared_code import my_first_helper_function #(absolute)
 ```
 
 ```python
-from ..shared_code import my_first_helper_function #(explicit relative)
+import shared_code.my_second_helper_function #(absolute)
 ```
 
 ```python
-from __app__ import shared_code #(absolute)
+from . import example #(relative)
+```
+
+> [!NOTE]
+>  A *shared_codenak/* mappának tartalmaznia kell egy \_ \_ init \_ \_ . rajzfájl fájlt, hogy az abszolút importálási szintaxis használatakor Python-csomagként legyen megjelölve.
+
+A következő \_ \_ alkalmazás \_ \_ -Importálás és a legfelső szintű relatív importálás elavult, mivel a statikus típus-ellenőrző nem támogatja, és a Python-tesztelési keretrendszerek nem támogatják a következőket:
+
+```python
+from __app__.shared_code import my_first_helper_function #(deprecated __app__ import)
 ```
 
 ```python
-import __app__.shared_code #(absolute)
-```
-
-A következő importálások *nem működnek* ugyanazon a fájlon belül:
-
-```python
-import example
-```
-
-```python
-from example import some_helper_code
-```
-
-```python
-import shared_code
-```
-
-A megosztott kódokat az *\_ \_ alkalmazás \_ \_* egy külön mappájába kell megőrizni. A *megosztott \_ kód* mappában található modulok hivatkozásait a következő szintaxissal végezheti el:
-
-```python
-from __app__.shared_code import my_first_helper_function
+from ..shared_code import my_first_helper_function #(deprecated beyond top-level relative import)
 ```
 
 ## <a name="triggers-and-inputs"></a>Eseményindítók és bemenetek
@@ -319,7 +317,7 @@ Az alapértelmezett konfigurációk a legtöbb Azure Functions alkalmazáshoz me
 |Function alkalmazás jellemzői| <ul><li>Az alkalmazásnak számos egyidejű hívást kell kezelnie.</li> <li> Az alkalmazás nagy mennyiségű I/O-eseményt dolgoz fel, például hálózati hívásokat és lemezes olvasási/írási műveleteket.</li> </ul>| <ul><li>Az alkalmazás hosszú ideig futó számításokat végez, például a képek átméretezését.</li> <li>Az alkalmazás adatátalakítást végez.</li> </ul> |
 |Példák| <ul><li>Webes API-k</li><ul> | <ul><li>Adatfeldolgozás</li><li> Gépi tanulás – következtetés</li><ul>|
 
- 
+
 > [!NOTE]
 >  A valós működéshez kapcsolódó számítási feladatok leggyakrabban az I/O-és a CPU-kötések kombinációját jelentik, javasoljuk, hogy a munkaterhelést a reális üzemi terhelések alatt profilba hozza.
 
@@ -539,12 +537,14 @@ Ne felejtse el lecserélni a `<APP_NAME>` Function alkalmazás nevét az Azure-b
 
 A Pythonban írt függvények a standard szintű tesztelési keretrendszerek használatával más Python-kódokhoz hasonlóan is vizsgálhatók. A legtöbb kötés esetében lehetséges, hogy létrehoz egy modell típusú bemeneti objektumot úgy, hogy létrehoz egy megfelelő osztály egy példányát a `azure.functions` csomagból. Mivel a [`azure.functions`](https://pypi.org/project/azure-functions/) csomag nem érhető el azonnal, ne felejtse el telepíteni a `requirements.txt` fájlt a fenti [csomagkezelő](#package-management) című szakaszban leírtak szerint.
 
-Például a következő egy HTTP által aktivált függvény mintájának tesztelése:
+A következő példa egy HTTP által aktivált függvény tesztelését végzi el *my_second_function* :
+
+Először létre kell hoznia *<project_root>/my_second_function/function.js* fájlt, és a függvényt http-triggerként kell meghatároznia.
 
 ```json
 {
   "scriptFile": "__init__.py",
-  "entryPoint": "my_function",
+  "entryPoint": "main",
   "bindings": [
     {
       "authLevel": "function",
@@ -565,106 +565,72 @@ Például a következő egy HTTP által aktivált függvény mintájának teszte
 }
 ```
 
+Most a *my_second_function* és a *shared_code. My _second_helper_function* is megvalósítható.
+
 ```python
-# __app__/HttpTrigger/__init__.py
+# <project_root>/my_second_function/__init__.py
 import azure.functions as func
 import logging
 
-def my_function(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
+# Use absolute import to resolve shared_code modules
+from shared_code import my_second_helper_function
 
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
+# Define an http trigger which accepts ?value=<int> query parameter
+# Double the value and return the result in HttpResponse
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Executing my_second_function.')
 
-    if name:
-        return func.HttpResponse(f"Hello {name}")
-    else:
-        return func.HttpResponse(
-             "Please pass a name on the query string or in the request body",
-             status_code=400
-        )
+    initial_value: int = int(req.params.get('value'))
+    doubled_value: int = my_second_helper_function.double(initial_value)
+
+    return func.HttpResponse(
+      body=f"{initial_value} * 2 = {doubled_value}",
+      status_code=200
+    )
 ```
 
 ```python
-# tests/test_httptrigger.py
+# <project_root>/shared_code/__init__.py
+# Empty __init__.py file marks shared_code folder as a Python package
+```
+
+```python
+# <project_root>/shared_code/my_second_helper_function.py
+
+def double(value: int) -> int:
+  return value * 2
+```
+
+Megkezdheti a http-trigger tesztelési eseteinek írását.
+
+```python
+# <project_root>/tests/test_my_second_function.py
 import unittest
 
 import azure.functions as func
-from __app__.HttpTrigger import my_function
+from my_second_function import main
 
 class TestFunction(unittest.TestCase):
-    def test_my_function(self):
+    def test_my_second_function(self):
         # Construct a mock HTTP request.
         req = func.HttpRequest(
             method='GET',
             body=None,
-            url='/api/HttpTrigger',
-            params={'name': 'Test'})
+            url='/api/my_second_function',
+            params={'value': '21'})
 
         # Call the function.
-        resp = my_function(req)
+        resp = main(req)
 
         # Check the output.
         self.assertEqual(
             resp.get_body(),
-            b'Hello Test',
+            b'21 * 2 = 42',
         )
 ```
 
-Íme egy másik példa, amely egy üzenetsor által aktivált függvényt mutat be:
+A `.venv` Python virtuális környezetében telepítse a kedvenc Python-tesztelési keretrendszerét (például `pip install pytest` ). `pytest tests`A teszt eredményének ellenőrzéséhez egyszerűen futtassa a parancsot.
 
-```json
-{
-  "scriptFile": "__init__.py",
-  "entryPoint": "my_function",
-  "bindings": [
-    {
-      "name": "msg",
-      "type": "queueTrigger",
-      "direction": "in",
-      "queueName": "python-queue-items",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-
-```python
-# __app__/QueueTrigger/__init__.py
-import azure.functions as func
-
-def my_function(msg: func.QueueMessage) -> str:
-    return f'msg body: {msg.get_body().decode()}'
-```
-
-```python
-# tests/test_queuetrigger.py
-import unittest
-
-import azure.functions as func
-from __app__.QueueTrigger import my_function
-
-class TestFunction(unittest.TestCase):
-    def test_my_function(self):
-        # Construct a mock Queue message.
-        req = func.QueueMessage(
-            body=b'test')
-
-        # Call the function.
-        resp = my_function(req)
-
-        # Check the output.
-        self.assertEqual(
-            resp,
-            'msg body: test',
-        )
-```
 ## <a name="temporary-files"></a>Ideiglenes fájlok
 
 A `tempfile.gettempdir()` metódus egy ideiglenes mappát ad vissza, amely Linux rendszeren `/tmp` . Az alkalmazás ezt a könyvtárat használhatja a függvények által a végrehajtás során létrehozott és használt ideiglenes fájlok tárolására.
@@ -746,7 +712,7 @@ A következő lista a gyakori problémákkal kapcsolatos hibaelhárítási útmu
 
 Az összes ismert probléma és szolgáltatás kérését a [GitHub-problémák](https://github.com/Azure/azure-functions-python-worker/issues) listája követheti nyomon. Ha probléma lép fel, és a GitHubon nem találja a problémát, nyisson meg egy új problémát, és adja meg a probléma részletes leírását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

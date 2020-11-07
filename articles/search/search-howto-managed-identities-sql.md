@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 49493f47c7178a15e37a54a70dd066690057caba
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519571"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358422"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Indexelő-kapcsolatok beállítása Azure SQL Database felügyelt identitás használatával
 
@@ -81,7 +81,7 @@ Az alábbi lépések végrehajtásával rendelje hozzá a keresési szolgáltat�
 Ebben a lépésben az Azure Cognitive Search-szolgáltatás engedélyt ad az adatok olvasására a SQL Server.
 
 1. A Azure Portal navigáljon az Azure SQL Server oldalára.
-2. **Hozzáférés-vezérlés kiválasztása (iam)**
+2. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
 3. Válassza a **Hozzáadás** lehetőséget, majd **adja hozzá a szerepkör-hozzárendelést**
 
     ![Szerepkör-hozzárendelés hozzáadása](./media/search-managed-identities/add-role-assignment-sql-server.png "Szerepkör-hozzárendelés hozzáadása")
@@ -94,7 +94,7 @@ Ebben a lépésben az Azure Cognitive Search-szolgáltatás engedélyt ad az ada
 
 ### <a name="5---create-the-data-source"></a>5 – az adatforrás létrehozása
 
-A [REST API](/rest/api/searchservice/create-data-source), Azure Portal és a [.net SDK](/dotnet/api/microsoft.azure.search.models.datasource) támogatja a felügyelt identitás-kapcsolatok karakterláncát. Az alábbi példa bemutatja, hogyan hozhat létre egy adatforrást egy Azure SQL Database adatainak indexeléséhez a [REST API](/rest/api/searchservice/create-data-source) és egy felügyelt identitás-kapcsolódási karakterlánc használatával. A felügyelt identitás-kapcsolatok karakterlánc-formátuma megegyezik a REST API, a .NET SDK és a Azure Portal esetében.
+A [REST API](/rest/api/searchservice/create-data-source), Azure Portal és a [.net SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) támogatja a felügyelt identitás-kapcsolatok karakterláncát. Az alábbi példa bemutatja, hogyan hozhat létre egy adatforrást egy Azure SQL Database adatainak indexeléséhez a [REST API](/rest/api/searchservice/create-data-source) és egy felügyelt identitás-kapcsolódási karakterlánc használatával. A felügyelt identitás-kapcsolatok karakterlánc-formátuma megegyezik a REST API, a .NET SDK és a Azure Portal esetében.
 
 Amikor a [REST API](/rest/api/searchservice/create-data-source)használatával hoz létre adatforrást, az adatforrásnak a következő szükséges tulajdonságokkal kell rendelkeznie:
 
@@ -103,7 +103,7 @@ Amikor a [REST API](/rest/api/searchservice/create-data-source)használatával h
 * **hitelesítő adatok**
     * Ha felügyelt identitást használ a hitelesítéshez, a **hitelesítő adatok** formátuma különbözik, mint ha nem használ egy összekeveredéses identitást. Itt meg kell adnia egy kezdeti katalógus vagy adatbázis nevét, valamint egy olyan ResourceId, amely nem rendelkezik fiók-kulccsal vagy jelszóval. A ResourceId tartalmaznia kell a Azure SQL Database előfizetés-AZONOSÍTÓját, SQL Database erőforrás-csoportját és az SQL-adatbázis nevét. 
     * Felügyelt identitás-kapcsolatok karakterláncának formátuma:
-        * *Kezdeti katalógus | Adatbázis =**adatbázis neve**; ResourceId =/Subscriptions/**az előfizetés-azonosítóját****az/resourceGroups//Providers/Microsoft.SQL/Servers/** a**SQL Server neve**/; Kapcsolat időtúllépése = a**kapcsolat időtúllépési hossza**;*
+        * *Kezdeti katalógus | Adatbázis = **adatbázis neve** ; ResourceId =/Subscriptions/ **az előfizetés-azonosítóját****az/resourceGroups//Providers/Microsoft.SQL/Servers/** a **SQL Server neve** /; Kapcsolat időtúllépése = a **kapcsolat időtúllépési hossza** ;*
 * a **Container (tároló** ) megadja az indexelni kívánt tábla vagy nézet nevét.
 
 Példa Azure SQL adatforrás-objektum létrehozására a [REST API](/rest/api/searchservice/create-data-source)használatával:

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 135b780f547ddd8e979899898b9971c4dcf89cee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4e115de4f86baba9559730d94f45ab7b17cc4379
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514707"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357963"
 ---
 # <a name="tutorial-configure-spaceiq-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés SpaceIQ konfigurálása
 
@@ -54,11 +54,11 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
     ![SpaceIQ felügyeleti konzol](media/spaceiq-provisioning-tutorial/admin.png)
 
-2.  A **Beállítások** lapon válassza a **harmadik féltől származó integrációk**lehetőséget.
+2.  A **Beállítások** lapon válassza a **harmadik féltől származó integrációk** lehetőséget.
 
     ![SpaceIQ-SCIM hozzáadása](media/spaceiq-provisioning-tutorial/thirdparty.png)
 
-3.  Navigáljon a **kiépítés és az egyszeri bejelentkezés** lapra. Keresse meg az **Azure** csempét. Kattintson az **aktiválás**gombra.
+3.  Navigáljon a **kiépítés és az egyszeri bejelentkezés** lapra. Keresse meg az **Azure** csempét. Kattintson az **aktiválás** gombra.
 
     ![SpaceIQ kiépítés és SSO](media/spaceiq-provisioning-tutorial/provisioning.png)
 
@@ -74,11 +74,11 @@ Az Azure AD-vel való automatikus SpaceIQ konfigurálása előtt hozzá kell adn
 
 **Ha SpaceIQ szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -86,7 +86,7 @@ Az Azure AD-vel való automatikus SpaceIQ konfigurálása előtt hozzá kell adn
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **SpaceIQ**kifejezést, válassza az **SpaceIQ** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **SpaceIQ** kifejezést, válassza az **SpaceIQ** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![SpaceIQ az eredmények listájában](common/search-new-app.png)
 
@@ -103,7 +103,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **SpaceIQ**lehetőséget.
+2. Az alkalmazások listában válassza a **SpaceIQ** lehetőséget.
 
     ![Az SpaceIQ hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -119,13 +119,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a SpaceIQ**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a SpaceIQ** lehetőséget.
 
     ![SpaceIQ felhasználói leképezések](media/spaceiq-provisioning-tutorial/usermapping.png)
 
@@ -151,7 +151,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

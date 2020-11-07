@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, belső vezérlőprogram, frissítés, helyreállítás
-ms.openlocfilehash: ecfa4a18592d3bc70e3b7cdd66ff6464a54e560d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71557798a584635356cc47fd7c4a0309df4d018a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030684"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356226"
 ---
 # <a name="update-azure-kinect-dk-firmware"></a>Az Azure Kinect DK belső vezérlőprogram frissítése
 
@@ -82,9 +82,9 @@ A belső vezérlőprogram frissítései több okból is sikertelenek lehetnek. H
 
 3. Ha az összes kötél meghibásodik, kövesse a [helyreállítási](https://support.microsoft.com/help/4494277/reset-azure-kinect-dk) lépéseket a gyári belső vezérlőprogram visszaállításához, majd próbálkozzon újra.
 
-További problémák: [Microsoft támogatási lapok](https://aka.ms/kinectsupport)
+További problémák: [Microsoft támogatási lapok](./index.yml)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 >[Azure Kinect belső vezérlőprogram eszköz](azure-kinect-firmware-tool.md)

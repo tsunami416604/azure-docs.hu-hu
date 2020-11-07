@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: 005bfd4b7e7d062640a79896ccd3d7f76e3d6fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b789bf01a043b167d6740f09df935d9b683c48f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447207"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357759"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>A Linux-alapú HDInsight-fürtök operációsrendszer-javítási ütemtervének konfigurálása
 
@@ -64,7 +64,7 @@ A `install-updates-schedule-reboots` parancsfájl két numerikus paramétert fog
 
 | Paraméter | Elfogadott értékek | Definíció |
 | --- | --- | --- |
-| Telepítendő frissítések típusa | 0, 1 vagy 2 | A 0 érték csak a kernel frissítéseit telepíti. Az 1 érték minden frissítést telepít, és a 2 csak a kernel + biztonsági frissítéseket telepíti. Ha nincs megadva paraméter, az alapértelmezett érték a 0. |
+| Telepítendő frissítések típusa | 0, 1 vagy 2 | A 0 érték csak a kernel frissítéseit telepíti. Az 1 érték a kernel + biztonsági frissítéseket telepíti, és 2 telepíti az összes frissítést. Ha nincs megadva paraméter, az alapértelmezett érték a 0. |
 | Végrehajtandó újraindítás típusa | 0, 1 vagy 2 | A 0 érték letiltja az újraindítást. Az 1 érték lehetővé teszi az ütemezett újraindítást, a 2 pedig lehetővé teszi az azonnali újraindítást. Ha nincs megadva paraméter, az alapértelmezett érték a 0. A felhasználónak módosítania kell az 1. bemeneti paramétert a 2. paraméterre. |
 
 > [!NOTE]
@@ -73,7 +73,7 @@ A `install-updates-schedule-reboots` parancsfájl két numerikus paramétert fog
 > [!NOTE]
 > Az ütemezett újraindítási lehetőség a javított fürtcsomópontok automatikus működés közbeni újraindítását teszi elérhetővé 12 – 24 óra alatt, és figyelembe veszi a magas rendelkezésre állás, a frissítési tartomány és a tartalék tartomány szempontjait. Az ütemezett újraindítás nem szakítja meg a futó munkaterheléseket, de a csomópontok átmeneti állapotában is eltarthat, ha a csomópontok nem érhetők el, ami hosszabb feldolgozási időt vesz igénybe. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A parancsfájl-műveletek használatával kapcsolatos konkrét lépésekért tekintse meg a [Linux-alapú HDInsight-fürtök testre szabása parancsfájl-művelettel](hdinsight-hadoop-customize-cluster-linux.md)című szakaszt a következő részekben:
 

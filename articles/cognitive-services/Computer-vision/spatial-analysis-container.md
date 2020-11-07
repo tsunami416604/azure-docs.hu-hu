@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: d84867dbe51b9c6689ecdac2bc80585a88da66b4
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496128"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357113"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
 
@@ -24,7 +24,7 @@ A térbeli elemzési tároló lehetővé teszi a valós idejű adatfolyam-videó
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
     * A térbeli elemzési tároló futtatásához a létrehozott erőforrás kulcsára és végpontra lesz szüksége. Később a kulcsot és a végpontot fogja használni.
 
 
@@ -97,7 +97,7 @@ A térbeli elemzés a Azure Stack Edge számítási funkcióit használja egy AI
 * Az eszköz eléréséhez a PowerShell 5,0-es vagy újabb verzióját futtató Windows rendszerű ügyfélrendszer van.  
 * Kubernetes-fürt üzembe helyezéséhez konfigurálnia kell az Azure Stack Edge-eszközt a [Azure Portal](https://portal.azure.com/) **helyi felhasználói felületén** : 
   1. Engedélyezze a számítási funkciót az Azure Stack Edge-eszközön. A számítás engedélyezéséhez nyissa meg az eszköz webes felületének **számítás** lapját. 
-  2. Válassza ki a számításhoz engedélyezni kívánt hálózati adaptert, majd kattintson az **Engedélyezés**gombra. Ezzel létrehoz egy virtuális kapcsolót az eszközön az adott hálózati adapteren.
+  2. Válassza ki a számításhoz engedélyezni kívánt hálózati adaptert, majd kattintson az **Engedélyezés** gombra. Ezzel létrehoz egy virtuális kapcsolót az eszközön az adott hálózati adapteren.
   3. Hagyja üresen a Kubernetes teszt csomópontjának IP-címeit és a Kubernetes külső szolgáltatások IP-címeit.
   4. Kattintson az **Alkalmaz** gombra. A művelet két percet is igénybe vehet. 
 
@@ -105,13 +105,13 @@ A térbeli elemzés a Azure Stack Edge számítási funkcióit használja egy AI
 
 ### <a name="set-up-an-edge-compute-role-and-create-an-iot-hub-resource"></a>Peremhálózati számítási szerepkör beállítása és IoT Hub erőforrás létrehozása
 
-A [Azure Portal](https://portal.azure.com/)navigáljon az Azure stack Edge-erőforráshoz. Az **Áttekintés** oldalon vagy a navigációs listában kattintson a peremhálózati számítási első **lépések** gombra. Az **Edge-számítás konfigurálása**   csempén kattintson a **Konfigurálás**elemre. 
+A [Azure Portal](https://portal.azure.com/)navigáljon az Azure stack Edge-erőforráshoz. Az **Áttekintés** oldalon vagy a navigációs listában kattintson a peremhálózati számítási első **lépések** gombra. Az  **Edge-számítás konfigurálása**   csempén kattintson a **Konfigurálás** elemre. 
 
 ![Hivatkozás](media/spatial-analysis/configure-edge-compute-tile.png)
 
 Az **Edge-számítás konfigurálása**   lapon válasszon ki egy meglévő IoT hub, vagy hozzon létre egy újat. Alapértelmezés szerint a rendszer egy standard (S1) árképzési szintet használ egy IoT Hub erőforrás létrehozásához. Ha ingyenes szintű IoT Hub erőforrást szeretne használni, hozzon létre egyet, majd jelölje ki. A IoT Hub erőforrás ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ. 
 
-Kattintson a **Létrehozás** lehetőségre. A IoT Hub erőforrás létrehozása néhány percet is igénybe vehet. A IoT Hub erőforrás létrejötte után a rendszer frissíti az **Edge számítási csempe beállítása** frissítést az új konfiguráció megjelenítéséhez. Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza a **konfiguráció megtekintése** lehetőséget a **számítás konfigurálása**   csempén.
+Kattintson a **Létrehozás** gombra. A IoT Hub erőforrás létrehozása néhány percet is igénybe vehet. A IoT Hub erőforrás létrejötte után a rendszer frissíti az **Edge számítási csempe beállítása** frissítést az új konfiguráció megjelenítéséhez. Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza a **konfiguráció megtekintése** lehetőséget a **számítás konfigurálása**   csempén.
 
 Amikor a peremhálózati eszközön beállította a peremhálózat számítási szerepkört, két eszközt hoz létre: egy IoT eszközt és egy IoT Edge eszközt. Mindkét eszköz megtekinthető a IoT Hub erőforrásban. A Azure IoT Edge futtatókörnyezet már fut a IoT Edge eszközön.            
 
@@ -289,7 +289,7 @@ sudo apt-get update
 A 1.0.9 kiadásának telepítése:
 
 ```bash
-sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.8*
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
 A következő lépésként regisztrálja a gazdagépet IoT Edge eszközként a IoT Hub-példányban egy [kapcsolatok karakterlánc](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal)használatával.
@@ -354,7 +354,7 @@ Ez a parancs elindítja az üzemelő példányt. Az üzembe helyezés állapotá
 
 ## <a name="validate-that-the-deployment-is-successful"></a>A telepítés sikerességének ellenőrzése
 
-Több módon is ellenőrizheti, hogy a tároló fut-e. Keresse meg a *futásidejű állapotot* az Azure IoT hub-példányban található térbeli elemzési modul **IoT Edge moduljának beállításainál** a Azure Portal. Ellenőrizze, hogy a *futásidejű állapot* **kívánt értéke** és a **jelentett érték** *fut*-e.
+Több módon is ellenőrizheti, hogy a tároló fut-e. Keresse meg a *futásidejű állapotot* az Azure IoT hub-példányban található térbeli elemzési modul **IoT Edge moduljának beállításainál** a Azure Portal. Ellenőrizze, hogy a *futásidejű állapot* **kívánt értéke** és a **jelentett érték** *fut* -e.
 
 ![Példa a központi telepítés ellenőrzésére](./media/spatial-analysis/deployment-verification.png)
 
@@ -381,7 +381,7 @@ Térbeli elemzést is használhat rögzített vagy élő videóval. A rögzítet
     1. A **letiltani** **kívánt biztonságos átvitel** módosítása
     2. A **Blobok nyilvános hozzáférésének engedélyezése** **engedélyezve**
 
-Navigáljon a **tároló** szakaszhoz, vagy hozzon létre egy új tárolót, vagy használjon egy meglévőt. Ezután töltse fel a videofájlokat a tárolóba. Bontsa ki a fájl beállításait a feltöltött fájlhoz, és válassza az **sas előállítása**lehetőséget. Ügyeljen arra, hogy a **lejárati dátum** elég hosszú legyen a tesztelési időszak lefedéséhez. Az **engedélyezett protokollok** beállítása *http* -re (a*https* nem támogatott).
+Navigáljon a **tároló** szakaszhoz, vagy hozzon létre egy új tárolót, vagy használjon egy meglévőt. Ezután töltse fel a videofájlokat a tárolóba. Bontsa ki a fájl beállításait a feltöltött fájlhoz, és válassza az **sas előállítása** lehetőséget. Ügyeljen arra, hogy a **lejárati dátum** elég hosszú legyen a tesztelési időszak lefedéséhez. Az **engedélyezett protokollok** beállítása *http* -re (a *https* nem támogatott).
 
 Kattintson a **sas-jogkivonat és URL-cím előállítása** elemre, és másolja a blob sas URL-címét. Cserélje le a `https` - `http` t, és tesztelje az URL-címet egy olyan böngészőben, amely támogatja a videolejátszás használatát.
 
@@ -427,7 +427,7 @@ Ebben a cikkben megtanulta a térbeli elemzési tároló letöltésére, telepí
 * A Container images szolgáltatás IoT-modulként fut Azure IoT Edgeban.
 * A tároló konfigurálása és üzembe helyezése a gazdagépen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Felhasználók üzembe helyezése webes alkalmazásokban](spatial-analysis-web-app.md)
 * [Térbeli elemzési műveletek konfigurálása](spatial-analysis-operations.md)

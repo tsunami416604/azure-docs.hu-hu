@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: d82aca50ce57a09697d389197bf2b102bb5df457
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1f82cab1172e7293e2a5910d35280eefb30ed49e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456336"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357453"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: a Cerner központi beállítása a felhasználók automatikus üzembe helyezéséhez
 
@@ -92,7 +92,7 @@ Ahhoz, hogy felhasználói fiókokat lehessen kiépíteni a Cerner Central szolg
 
    ![A cerner központi üzembe helyezése](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
-9. Adja meg a következő mezőket a **rendszergazdai hitelesítő adatok**területen:
+9. Adja meg a következő mezőket a **rendszergazdai hitelesítő adatok** területen:
 
    * A **bérlői URL-cím** mezőben adjon meg egy URL-címet az alábbi formátumban, és cserélje le a "user-névsor-REALM-id" karakterláncot a #4 lépésben beszerzett tartományi azonosítóra.
 
@@ -100,7 +100,7 @@ Ahhoz, hogy felhasználói fiókokat lehessen kiépíteni a Cerner Central szolg
     > 
     > Éles https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-   * A **titkos jogkivonat** mezőben adja meg a #3 lépésben létrehozott OAuth tulajdonosi jogkivonatot, majd kattintson a **kapcsolat tesztelése**elemre.
+   * A **titkos jogkivonat** mezőben adja meg a #3 lépésben létrehozott OAuth tulajdonosi jogkivonatot, majd kattintson a **kapcsolat tesztelése** elemre.
 
    * A portál upperright oldalán a sikeres értesítés jelenik meg.
 
@@ -118,7 +118,7 @@ Ezzel elindítja a felhasználók és csoportok szakaszban a Cerner Centralhoz r
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Cerner Central: személyazonossági adatok közzététele az Azure AD-vel](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Oktatóanyag: a Cerner Central konfigurálása egyszeri bejelentkezéshez Azure Active Directory](cernercentral-tutorial.md)

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: 9445004170fb06a3d563982da51f89535464e328
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: bdbda77c45e3b1f1533326483ee19aa8ff4af515
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927991"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358337"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Oktatóanyag: a globális továbbító identitás-szinkronizálásának konfigurálása a felhasználók automatikus kiépítéséhez
 
@@ -87,7 +87,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Kiépítés lap automatikus](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a globális továbbító identitás-szinkronizálási **bérlői URL-címét** . Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a globális Relay Identity Sync szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a globális Relay Identity Sync-fiók rendelkezik rendszergazdai engedélyekkel, és a probléma megoldásához lépjen kapcsolatba a globális továbbító képviselőjével.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a globális továbbító identitás-szinkronizálási **bérlői URL-címét**. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a globális Relay Identity Sync szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a globális Relay Identity Sync-fiók rendelkezik rendszergazdai engedélyekkel, és a probléma megoldásához lépjen kapcsolatba a globális továbbító képviselőjével.
 
     ![Engedélyezés gomb](media/global-relay-identity-sync-provisioning-tutorial/authorization.png)
 

@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: ec39a6d106973808e26b7c06dce8b3054af490ff
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427385"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357912"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémák az SAML-alapú egyszeri bejelentkezés konfigurált alkalmazásaiba való bejelentkezéskor
 Az alábbi bejelentkezési problémák elhárítása érdekében javasoljuk, hogy a következő lépésekkel jobban diagnosztizálja és automatizálja a megoldási lépéseket:
@@ -119,7 +119,7 @@ Az Application objektum sérült, és az Azure AD nem ismeri fel az alkalmazásh
 
 Új tanúsítvány törléséhez és létrehozásához kövesse az alábbi lépéseket:
 1. Az SAML-alapú SSO konfigurációs képernyőjén válassza az **új tanúsítvány létrehozása** az **SAML aláíró tanúsítvány** szakaszban lehetőséget.
-1. Válassza ki a lejárati dátumot, majd kattintson a **Mentés**gombra.
+1. Válassza ki a lejárati dátumot, majd kattintson a **Mentés** gombra.
 1. Ellenőrizze, **hogy az új tanúsítvány aktív** -e az aktív tanúsítvány felülbírálásához. Ezután kattintson a panel tetején a **Mentés** gombra, és fogadja el a helyettesítő tanúsítvány aktiválását.
 1. Az **SAML aláíró tanúsítvány** szakaszban kattintson az **Eltávolítás** gombra a fel nem **használt** tanúsítvány eltávolításához.
 
@@ -146,6 +146,23 @@ Amikor az alkalmazás hozzá lett adva nem katalógusbeli alkalmazásként, az A
 Törölje az alkalmazáshoz konfigurált nem használt válasz URL-címeket.
 
 Az SAML-alapú SSO-konfiguráció lapon a **Válasz URL-címe (a fogyasztói szolgáltatás URL-címe)** szakaszban törölje a rendszer által létrehozott nem használt vagy alapértelmezett válasz URL-címeket. Például: `https://127.0.0.1:444/applications/default.aspx`.
+
+
+## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>Az a hitelesítési módszer, amellyel a szolgáltatás által hitelesített felhasználó nem felel meg a kért hitelesítési módszernek
+`Error: AADSTS75011 Authentication method by which the user authenticated with the service doesn't match requested authentication method 'AuthnContextClassRef'. `
+
+**Lehetséges ok**
+
+Az `RequestedAuthnContext` SAML-kérelemben található. Ez azt jelenti, hogy az alkalmazásnak meg kell várnia a `AuthnContext` által megadott értéket `AuthnContextClassRef` . A felhasználó azonban már az alkalmazáshoz való hozzáférés előtt már hitelesített, és a `AuthnContext` korábbi hitelesítéshez használt (hitelesítési módszer) eltér a kérttől. Például összevont felhasználók férhetnek hozzá a MyApps-hoz és a WIA-hez. A `AuthnContextClassRef` lesz `urn:federation:authentication:windows` . A HRE nem végez friss hitelesítési kérelmet, és a identitásszolgáltató (ADFS vagy bármely más összevonási szolgáltatás ebben az esetben) által átadott hitelesítési környezetet fogja használni. Ezért az alkalmazástól eltérő kérések nem egyeznek meg `urn:federation:authentication:windows` . Egy másik forgatókönyv, ha többtényezős használatban volt: `'X509, MultiFactor` .
+
+**Resolution** (Osztás)
+
+
+`RequestedAuthnContext` egy nem kötelezően megadandó érték. Ha lehetséges, kérdezze meg az alkalmazást, ha az eltávolításra kerül.
+
+Egy másik lehetőség, hogy megbizonyosodjon róla, hogy `RequestedAuthnContext` tiszteletben kell maradnia. Ez egy friss hitelesítés igénylésével történik. Ezzel az SAML-kérelem feldolgozásakor friss hitelesítés történik, és a rendszer tiszteletben tartja a betartását `AuthnContext` . Ha friss hitelesítést szeretne kérni, a legtöbb SAML-kérelem tartalmazza az értéket `forceAuthn="true"` . 
+
+
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Probléma az alkalmazásnak eljuttatott SAML-jogcímek testreszabásakor
 Ha meg szeretné tudni, hogyan szabhatja testre az alkalmazásnak eljuttatott SAML-attribútumokat, tekintse meg a [jogcímek leképezése a Azure Active Directory](../develop/active-directory-claims-mapping.md)

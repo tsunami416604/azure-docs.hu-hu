@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2dfb113f4c82dfea422a7c2be1c5fb07ffd60e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329261"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358167"
 ---
 # <a name="public-ip-addresses"></a>Nyilvános IP-címek
 
@@ -37,7 +37,9 @@ Az Azure Resource Manager szolgáltatásban a [nyilvános IP-cím](virtual-netwo
 
 A nyilvános IP-címek IPv4- vagy IPv6-címekkel jönnek létre. 
 
-## <a name="sku"></a>SKU
+## <a name="sku"></a>Termékváltozat
+
+Az SKU frissítésével kapcsolatos további tudnivalókért tekintse meg a [nyilvános IP-cím frissítését](../virtual-network/virtual-network-public-ip-address-upgrade.md)ismertető témakört.
 
 A nyilvános IP-címek a következő termékváltozatok valamelyikével jönnek létre:
 
@@ -91,9 +93,9 @@ Az IP-címet a rendszer a nyilvános IP-cím erőforráshoz való hozzárendelé
 
 Az IP-cím akkor szabadul fel, ha leállítja (vagy törli) az erőforrást.  
 
-Például egy nyilvános IP-erőforrást az **a erőforrás egy**nevű erőforrása bocsát ki. Az **a erőforrás** egy másik IP-címet kap az indításkor, ha a nyilvános IP-erőforrás újra van rendelve.
+Például egy nyilvános IP-erőforrást az **a erőforrás egy** nevű erőforrása bocsát ki. Az **a erőforrás** egy másik IP-címet kap az indításkor, ha a nyilvános IP-erőforrás újra van rendelve.
 
-Az IP-cím akkor jelenik meg, ha a kiosztási módszer **statikusról** **dinamikusra**változik. Annak biztosítása érdekében, hogy a kapcsolódó erőforrás IP-címe azonos maradjon, állítsa a kiosztási módszert explicit módon **statikusra**. A rendszer azonnal kioszt egy statikus IP-címet.
+Az IP-cím akkor jelenik meg, ha a kiosztási módszer **statikusról** **dinamikusra** változik. Annak biztosítása érdekében, hogy a kapcsolódó erőforrás IP-címe azonos maradjon, állítsa a kiosztási módszert explicit módon **statikusra**. A rendszer azonnal kioszt egy statikus IP-címet.
 
 > [!NOTE]
 > Akkor sem adhatja meg a nyilvános IP-cím erőforráshoz rendelt konkrét IP-címet, ha a kiosztási módszert **statikusra** állítja. Ehelyett az Azure az elérhető IP-címek készletéből foglalja le az IP-címet azon az Azure-helyen, ahol az erőforrást létrehozták.
@@ -135,7 +137,7 @@ Ha egy másik nyilvános IP-re való áttérés szükséges, frissítse a CNAME 
 
 A DNS-rekordhoz [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) vagy külső DNS-szolgáltatót is használhat. 
 
-## <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
+## <a name="virtual-machines"></a>Virtuális gépek
 
 A nyilvános IP-címet társíthatja [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rendszerű virtuális géphez, ha hozzárendeli a **hálózati adapteréhez**. 
 
@@ -160,7 +162,7 @@ A távoli hálózattal való kommunikáció engedélyezéséhez egy nyilvános I
 
 ## <a name="application-gateways"></a>Alkalmazásátjárók
 
-A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json), ha hozzárendeli az átjáró **előtér**-konfigurációjához. 
+A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json), ha hozzárendeli az átjáró **előtér** -konfigurációjához. 
 
 * Rendeljen egy **dinamikus** alapszintű nyilvános IP-címet egy Application Gateway v1 kezelőfelületi konfigurációhoz. 
 * Rendeljen **statikus** szabványos SKU-címeket egy v2 előtér-konfigurációhoz.
@@ -194,7 +196,7 @@ A korlátok régiónként és előfizetésenként értendőek. [Vegye fel a kapc
 
 A nyilvános IP-címek kapcsán névleges díjak merülhetnek fel. Ha többet szeretne megtudni az Azure-ban használt IP-címek díjszabásáról, tekintse át az [IP-címek díjszabását](https://azure.microsoft.com/pricing/details/ip-addresses) ismertető oldalt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ [Az Azure-beli magánhálózati IP-címekről](private-ip-addresses.md)
 * [Statikus nyilvános IP-címmel rendelkező virtuális gép telepítése az Azure Portal használatával](virtual-network-deploy-static-pip-arm-portal.md)
 

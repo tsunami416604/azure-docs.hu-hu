@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan engedélyezheti a InfiniBand az Azure HPC virtu
 author: vermagit
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 08/01/2020
+ms.date: 11/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b5f4cbd2fc09b2c42c232eafd63edb1217e4dacb
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 264cfd98e69ad7bdd2fb8d5f9f98eb1eb1fd8f6c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996307"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358354"
 ---
 # <a name="enable-infiniband"></a>Infiniband engedélyezése
 
@@ -60,11 +60,11 @@ Windows rendszeren töltse le és telepítse a [Windows-illesztőprogramok MELLA
 Ha MPI-feladatok futtatását tervezi, általában nincs szükség IPoIB. Az MPI-könyvtár az IB-kommunikációhoz tartozó műveletek felületet fogja használni (kivéve, ha explicit módon használja az MPI-könyvtár TCP/IP-csatornáját). Ha azonban olyan alkalmazással rendelkezik, amely a TCP/IP protokollt használja a kommunikációhoz, és az IB-t szeretné futtatni, a IPoIB-t az IB felületen keresztül használhatja. A következő parancsokkal (RHEL/CentOS) engedélyezheti az IP-címek InfiniBand való használatát.
 
 ```bash
-sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
+sudo sed -i -e 's/# OS.EnableRDMA=n/OS.EnableRDMA=y/g' /etc/waagent.conf
 sudo systemctl restart waagent
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a különböző [támogatott MPI-könyvtárak](setup-mpi.md) telepítéséről és az optimális konfigurációról a virtuális gépeken.
 - Tekintse át a [HB-sorozat áttekintését](hb-series-overview.md) és a [HC-sorozat áttekintését](hc-series-overview.md) , amelyből megismerheti a számítási feladatok optimális konfigurálását a teljesítmény és a méretezhetőség érdekében.

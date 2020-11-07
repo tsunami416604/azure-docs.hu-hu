@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b88e618da3f8a23c0517aaeb251e54bf559fc468
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848959"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358473"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés konfigurálása
 
@@ -52,15 +52,15 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 Az Azure AD-vel való automatikus felhasználó-kiépítés konfigurálása előtt be kell szereznie néhány kiépítési információt a sablonból.
 
-1. Jelentkezzen be a megadható [felügyeleti konzolra](https://dialpadbeta.com/login) , és válassza a **rendszergazdai beállítások**lehetőséget. Győződjön meg arról, hogy a **vállalatom** ki van választva a legördülő listából. Navigáljon a **hitelesítés > API-kulcsok**elemre.
+1. Jelentkezzen be a megadható [felügyeleti konzolra](https://dialpadbeta.com/login) , és válassza a **rendszergazdai beállítások** lehetőséget. Győződjön meg arról, hogy a **vállalatom** ki van választva a legördülő listából. Navigáljon a **hitelesítés > API-kulcsok** elemre.
 
     :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad01.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
 
 2. Új kulcs létrehozásához kattintson **a kulcs hozzáadása** és a titkos token tulajdonságainak konfigurálása elemre.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Képernyőkép a P I Keys oldalról a megadott felügyeleti konzolon. A kulcs hozzáadása kiemelve." border="false":::
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Képernyőkép a P I kulcs szerkesztése oldalról a kihelyezett felügyeleti konzolon. A Mentés gomb ki van emelve." border="false":::
 
 3. Kattintson a **kattintson ide az érték megjelenítése** gombra a legutóbb létrehozott API-kulcshoz, és másolja a megjelenő értéket. Ez az érték a Azure Portalban a kiépítés lapjának **titkos jogkivonat** mezőjében lesz megadva. 
 
@@ -72,11 +72,11 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés konfigurálásához 
 
 **Az Azure AD-alkalmazás-katalógusból az alábbi lépéseket követve adhatja hozzá a-t:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -84,24 +84,24 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés konfigurálásához 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A **keresőmezőbe írja be**a megjelenő kifejezést **, válassza az eredmények panelen a** kiválasztva lehetőséget.
+4. A **keresőmezőbe írja be** a megjelenő kifejezést **, válassza az eredmények panelen a** kiválasztva lehetőséget.
     ![Az eredmények listájában](common/search-new-app.png)
 
 5. Nyissa meg az alábbi **URL-címet** egy külön böngészőben. 
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Képernyőkép egy oldalról, amely az alkalmazással kapcsolatos információkat jeleníti meg. Az U R L alatt egy címek szerepelnek a listáról, és ki van emelve." border="false":::
 
-6. A jobb felső sarokban válassza a **bejelentkezés > az online kapcsolat használata**lehetőséget.
+6. A jobb felső sarokban válassza a **bejelentkezés > az online kapcsolat használata** lehetőséget.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Képernyőkép a megtalált webhelyről. A bejelentkezés kiemelve, a bejelentkezés lap pedig meg van nyitva. A kapcsolaton kívüli online használata is kiemelve." border="false":::
 
 7. Mivel a OpenIDConnect egy alkalmazás, a Microsoft munkahelyi fiókjával való bejelentkezéshez válassza a megfelelő lehetőséget.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Képernyőkép a megkezdés meghívása oldalról a megjelenő webhelyen. A bejelentkező Office 365 gomb ki van emelve." border="false":::
 
 8. Sikeres hitelesítés után fogadja el a jóváhagyást kérő lapot. Az alkalmazás ezután automatikusan hozzáadódik a bérlőhöz, és a rendszer átirányítja a felhasználói fiókhoz.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Képernyőfelvétel: a Microsoft hitelesítési lapja, amely azt jelzi, hogy az adott alkalmazás hozzáférést kért bizonyos adattípusokhoz. Az elfogadás gomb ki van emelve." border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Az automatikus felhasználó-kiépítés beállítása a kiosztott értékre
 
@@ -113,7 +113,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások **listában válassza a**kiválasztva lehetőséget.
+2. Az alkalmazások **listában válassza a** kiválasztva lehetőséget.
 
     ![Az alkalmazások listájában található, az alkalmazáshoz tartozó hivatkozás](common/all-applications.png)
 
@@ -129,13 +129,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók számára**lehetőséget.
+8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók számára** lehetőséget.
 
     ![Felhasználói hozzárendelések](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
 
@@ -163,7 +163,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 ##  <a name="connector-limitations"></a>Összekötő korlátozásai
 * A (z) rendszer nem támogatja a csoport-átnevezni még ma. Ez azt jelenti, hogy az Azure AD-beli csoportok **DisplayName** -beli módosításait nem frissíti a rendszer, és az a következő módon jelenik meg:.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

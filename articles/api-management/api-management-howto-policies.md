@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 3886f82180728bc6f454b1a49b5551bc4831869e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 37ac6369790ed526fd923819558863ae84432aed
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070894"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358116"
 ---
 # <a name="policies-in-azure-api-management"></a>Az Azure API Management szabályzatai
 
@@ -38,7 +38,7 @@ Az engedélyezett utasításokra kattintva a rendszer hozzáadja a megfelelő XM
 > 
 > 
 
-A konfiguráció a,, és rendszerre van osztva `inbound` `backend` `outbound` `on-error` . A megadott házirend-utasítások sorozata egy kérelem és egy válasz megadásával hajtható végre.
+A konfiguráció a,, és rendszerre van osztva `inbound` `backend` `outbound` `on-error` . A rendszer a megadott házirend-utasítások sorozatát hajtja végre egy kérelem és egy válasz megadásához.
 
 ```xml
 <policies>
@@ -68,7 +68,7 @@ A házirendek konfigurálásával kapcsolatos információkért lásd: [háziren
 
 A szabályzatokra vonatkozó utasítások és azok beállításainak teljes listájáért tekintse meg a [házirend-referenciát](./api-management-policies.md) .
 
-## <a name="policy-samples"></a>Házirend-minták
+## <a name="policy-samples"></a>Szabályzatminták
 
 További [példákat a](./policy-reference.md) szabályzatok című témakörben talál.
 
@@ -113,13 +113,13 @@ Ha korlátozni szeretné a bejövő kérelmeket, és csak a 1.2.3.4 IP-címérő
 </ip-filter>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a házirendek használatáról:
 
 + [API-k átalakítása](transform-api.md)
 + Házirend- [hivatkozás](./api-management-policies.md) a szabályzat-utasítások és azok beállításainak teljes listájához
-+ [Házirend-minták](./policy-reference.md)   
++ [Szabályzatminták](./policy-reference.md)   
 
 [Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md

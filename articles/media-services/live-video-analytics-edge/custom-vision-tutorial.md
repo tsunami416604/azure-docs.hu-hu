@@ -3,12 +3,13 @@ title: Élő videó elemzése a IoT Edge és az Azure élő videó-elemzésével
 description: Ismerje meg, hogyan használható az Azure Custom Vision egy olyan tárolós modell kiépítéséhez, amely képes észlelni egy játék-teherautót, és hogyan használhatja az Azure Live Video Analytics AI-bővíthetőségi funkcióját Azure IoT Edge a modellnek az élő videó streamből való észlelésére.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 52678d66bd4a91c9308a3cc48fbf784e89a5cfe8
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+zone_pivot_groups: ams-lva-edge-programming-languages
+ms.openlocfilehash: 685aab603b2589a97b4c80ef0f8c5860617f1147
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171504"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358262"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Oktatóanyag: élő videó elemzése élő videó-elemzéssel IoT Edge és az Azure-on Custom Vision
 
@@ -16,7 +17,13 @@ Ebből az oktatóanyagból megtudhatja, hogyan használható az Azure [Custom Vi
 
 Bemutatjuk, hogyan lehet egyesíteni az Custom Vision hatékonyságát, hogy egy számítógépes jövőkép-modellt építsen és tanítson egy pár kép feltöltésével és címkézésével. Nincs szüksége az adatelemzés, a gépi tanulás vagy a mesterséges intelligencia ismeretére. Emellett megismerheti az élő videók elemzésének képességeit is, így egyszerűen üzembe helyezhet egy egyéni modellt tárolóként a peremhálózat szélén, és elemezheti a szimulált élő videó-hírcsatornát.
 
-Ez az oktatóanyag egy Azure-beli virtuális gépet (VM) használ IoT Edge eszközként, és a C# nyelven írt mintakód alapján működik. Az oktatóanyagban szereplő információk az [észlelési és a kibocsátási események](detect-motion-emit-events-quickstart.md) gyors üzembe helyezésére épülnek.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [header](includes/custom-vision-tutorial/csharp/header.md)]
+::: zone-end
+
+::: zone pivot="programming-language-python"
+[!INCLUDE [header](includes/custom-vision-tutorial/python/header.md)]
+::: zone-end
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -29,7 +36,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="suggested-pre-reading"></a>Javasolt előzetes olvasás
+## <a name="suggested-pre-reading"></a>Javasolt előzetes olvasás  
 
 A Kezdés előtt olvassa el a következő cikkeket:
 
@@ -44,21 +51,18 @@ A Kezdés előtt olvassa el a következő cikkeket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag előfeltételei a következők:
 
-* [Visual Studio Code](https://code.visualstudio.com/) a fejlesztői gépen az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) és [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) -bővítménnyel.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/custom-vision-tutorial/csharp/prerequisites.md)]
+::: zone-end
 
-    > [!TIP]
-    > Előfordulhat, hogy a rendszer a Docker telepítését kéri. Hagyja figyelmen kívül ezt a kérést.
-* [.Net Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.201-windows-x64-installer) a fejlesztői gépen.
-* Győződjön meg arról, hogy rendelkezik az alábbiakkal:
-    
-    * [Az Azure-erőforrások beállítása](detect-motion-emit-events-quickstart.md#set-up-azure-resources)
-    * [A fejlesztési környezet beállítása](detect-motion-emit-events-quickstart.md#set-up-your-development-environment)
-
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/custom-vision-tutorial/python/prerequisites.md)]
+::: zone-end
 ## <a name="review-the-sample-video"></a>A minta videó áttekintése
 
-Ez az oktatóanyag egy, az élő stream szimulálása érdekében egy [Toy Car-következtetést tartalmazó videót](https://lvamedia.blob.core.windows.net/public/t2.mkv) használ. Megvizsgálhatja a videót egy alkalmazással, például a [VLC Media Player](https://www.videolan.org/vlc/)használatával. Válassza a **CTRL + N billentyűkombinációt**, majd illesszen be egy hivatkozást a [Toy Car következtetési videóra](https://lvamedia.blob.core.windows.net/public/t2.mkv) a lejátszás megkezdéséhez. A videó megtekintésekor vegye figyelembe, hogy a videóban megjelenik a 36-Second marker an Toy Truck. Az egyéni modell ki lett tanítva, hogy észlelje az adott Toy Truck-t. Ebben az oktatóanyagban élő videó-elemzéseket fog használni a IoT Edgeon az ilyen játékszer teherautók észleléséhez és a társított következtetési események közzétételéhez a IoT Edge hubhoz.
+
+Ez az oktatóanyag egy, az élő stream szimulálása érdekében egy [Toy Car-következtetést tartalmazó videót](https://lvamedia.blob.core.windows.net/public/t2.mkv) használ. Megvizsgálhatja a videót egy alkalmazással, például a [VLC Media Player](https://www.videolan.org/vlc/)használatával. Válassza a **CTRL + N billentyűkombinációt** , majd illesszen be egy hivatkozást a [Toy Car következtetési videóra](https://lvamedia.blob.core.windows.net/public/t2.mkv) a lejátszás megkezdéséhez. A videó megtekintésekor vegye figyelembe, hogy a videóban megjelenik a 36-Second marker an Toy Truck. Az egyéni modell ki lett tanítva, hogy észlelje az adott Toy Truck-t. Ebben az oktatóanyagban élő videó-elemzéseket fog használni a IoT Edgeon az ilyen játékszer teherautók észleléséhez és a társított következtetési események közzétételéhez a IoT Edge hubhoz.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -69,7 +73,7 @@ Ez az ábra az oktatóanyagban szereplő jelek folyamatát mutatja be. Az [Edge-
 
 A HTTP-bővítmény csomópont egy proxy szerepét játssza le. A képkockákat a megadott képtípusra konvertálja. Ezt követően továbbítja a képet a REST-ben egy másik Edge-modulba, amely egy HTTP-végpont mögötti AI-modellt futtat. Ebben a példában az Edge-modul a Custom Vision használatával létrehozott Toy Truck detektor modell. A HTTP-bővítmény processzor-csomópontja összegyűjti az észlelés eredményeit, és közzéteszi az eseményeket az [Azure IoT hub](media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket az [IoT Edge hubhoz](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
-## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Custom Vision játék-észlelési modell létrehozása és üzembe helyezése
+## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Custom Vision Toy Detection-modell létrehozása és üzembe helyezése 
 
 Ahogy a neve Custom Vision sugallja, használhatja a saját egyéni objektum-Kiderítő vagy a Felhőbeli besorolás létrehozásához. Egyszerű, könnyen használható és intuitív kezelőfelületet biztosít a felhőben vagy az Edge-n keresztül üzembe helyezhető Custom Vision modellek kiépítéséhez.
 
@@ -83,7 +87,33 @@ További megjegyzések:
 A művelet befejezése után exportálhatja a modellt egy Docker-tárolóba a **teljesítmény** lap **Exportálás** gombjával. Győződjön meg arról, hogy a Linux lehetőséget választja a tároló platform típusaként. Ez az a platform, amelyen a tároló futni fog. A tárolót letöltő gép lehet Windows vagy Linux. Az alábbi utasítások a Windows rendszerű gépre letöltött tároló fájlon alapulnak.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="A Custom Vision áttekintését bemutató diagram."   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
+> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Képernyő, amely a kijelölt Docker jeleníti meg.":::
+ 
+1. Egy zip-fájllal kell letöltenie a nevű helyi gépre `<projectname>.DockerFile.Linux.zip` . 
+1. Ellenőrizze, hogy telepítve van-e a Docker. Ha nem, telepítse a [Docker](https://docs.docker.com/get-docker/) -t a Windows asztalára.
+1. Csomagolja ki a letöltött fájlt egy tetszőleges helyre. A parancssor használatával lépjen a kibontott mappa könyvtárába.
+    
+    Futtassa az alábbi parancsot:
+    
+    1. `docker build -t cvtruck` 
+    
+        Ez a parancs sok csomagot tölt le, létrehozza a Docker-rendszerképet, és címkézi azt `cvtruck:latest` .
+    
+        > [!NOTE]
+        > Ha a művelet sikeres, a következő üzeneteknek kell megjelennie: `Successfully built <docker image id>` és `Successfully tagged cvtruck:latest` . Ha a Build parancs sikertelen, próbálkozzon újra. Néha a függőségi csomagok nem töltik le az első körül.
+    1. `docker  image ls`
+
+        Ez a parancs ellenőrzi, hogy az új rendszerkép a helyi beállításjegyzékben található-e.
+    1. `docker run -p 127.0.0.1:80:80 -d cvtruck`
+    
+        A parancsnak közzé kell tennie a Docker számára elérhető portot (80) a helyi gép portjára (80).
+    1. `docker container ls`
+    
+        Ez a parancs ellenőrzi a port-hozzárendeléseket, és ha a Docker-tároló sikeresen fut a gépen. A kimenetnek a következőhöz hasonlónak kell lennie:
+
+        ```
+        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
+        8b7505398367        cvtruck             "/bin/sh -c 'python …"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
         ```
       1. `curl -X POST http://127.0.0.1:80/image -F imageData=@<path to any image file that has the toy delivery truck in it>`
             
@@ -97,20 +127,15 @@ A művelet befejezése után exportálhatja a modellt egy Docker-tárolóba a **
 
 ## <a name="examine-the-sample-files"></a>A mintaadatok vizsgálata
 
-1. A Visual Studio Code-ban keresse meg az src/Edge lehetőséget. A létrehozott. env fájlt a telepítési sablonok néhány fájlja tartalmazza.
 
-    A központi telepítési sablon a peremhálózati eszköz központi telepítési jegyzékére hivatkozik néhány helyőrző értékkel. A. env fájl ezen változók értékeit tartalmazhatja.
-1. Ezután keresse meg a src/Cloud-to-Device-Console-app mappát. Itt láthatja a appsettings.jsa létrehozott fájlon, néhány további fájllal együtt:
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/csharp/examine-sample-files.md)]
+::: zone-end
 
-    * C2D-Console-app. csproj: Ez a Project fájl a Visual Studio Code-hoz.
-    * operations.jsbekapcsolva: Ez a fájl felsorolja azokat a különböző műveleteket, amelyeket futtatni kíván a program.
-    * Program.cs: a minta programkódja:
+::: zone pivot="programming-language-python"
+[!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/python/examine-sample-files.md)]
+::: zone-end
 
-        * Betölti az alkalmazás beállításait.
-        * Meghívja az élő videó-elemzést IoT Edge modul közvetlen metódusait a topológia létrehozásához, a gráf létrehozásához és a gráf aktiválásához.
-        * Szünetelteti a diagram kimenetének vizsgálatát a **terminál** ablakban, valamint az IoT hub számára a **kimeneti** ablakban elküldett eseményeket.
-        * Inaktiválja a Graph-példányt, törli a Graph-példányt, és törli a Graph-topológiát.
-        
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>Az üzembe helyezési jegyzék előállítása és üzembe helyezése
 
 1. A Visual Studio Code-ban lépjen a src/Cloud-to-Device-Console-app/operations.jselemre.
@@ -121,10 +146,10 @@ A művelet befejezése után exportálhatja a modellt egy Docker-tárolóba a **
     1. Adja hozzá a következőt a paraméterek tömb elejéhez: `{"name": "inferencingUrl","value": "http://cv:80/image"},`
     1. Módosítsa a `rtspUrl` paraméter értékét a következőre: `"rtsp://rtspsim:554/media/t2.mkv"` .
 1. A területen `GraphTopologyDelete` Győződjön meg róla `"name": "InferencingWithHttpExtension"` .
-1. Kattintson a jobb gombbal a fájlhoz tartozó src/Edge/deployment.customvision.template.jselemre, és válassza a **IoT Edge üzembe helyezési jegyzék előállítása**lehetőséget.
+1. Kattintson a jobb gombbal a fájlhoz tartozó src/Edge/deployment.customvision.template.jselemre, és válassza a **IoT Edge üzembe helyezési jegyzék előállítása** lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="A Custom Vision áttekintését bemutató diagram.":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="A IoT Edge üzembe helyezési jegyzék létrehozását bemutató képernyőkép.":::
   
     Ehhez a művelethez létre kell hoznia egy jegyzékfájlt a deployment.customvision.amd64.jsnevű src/Edge/config mappában.
 1. Nyissa meg a src/Edge/deployment.customvision.template.jsfájlt, és keresse meg a `registryCredentials` JSON-blokkot. Ebben a blokkban megtalálja az Azure Container Registry-t, valamint annak felhasználónevét és jelszavát.
@@ -146,11 +171,11 @@ A művelet befejezése után exportálhatja a modellt egy Docker-tárolóba a **
 1. Állítsa be a IoT Hub a kapcsolódási karakterláncot a bal alsó sarokban található **Azure IOT hub** panel melletti **További műveletek** ikonra kattintva. A karakterláncot a appsettings.jsfájlból másolhatja. (Íme egy másik ajánlott módszer, amellyel biztosíthatja, hogy a megfelelő IoT hub legyen konfigurálva a Visual Studio Code-ban a [Select IoT hub parancs](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)használatával.)
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="A Custom Vision áttekintését bemutató diagram.":::
-1. Ezután kattintson a jobb gombbal az src/Edge/config/deployment.customvision.amd64.jselemre, majd válassza a **központi telepítés létrehozása egyetlen eszközhöz**lehetőséget.
+    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Képernyőkép, amely a set IoT Hub a kapcsolatok karakterláncát mutatja.":::
+1. Ezután kattintson a jobb gombbal az src/Edge/config/deployment.customvision.amd64.jselemre, majd válassza a **központi telepítés létrehozása egyetlen eszközhöz** lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="A Custom Vision áttekintését bemutató diagram.":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Képernyőkép, amely egy eszköz létrehozási példányának létrehozását mutatja be.":::
 1. Ezután meg kell adnia egy IoT Hub eszköz kiválasztását. Válassza ki a **LVA-Sample-Device** elemet a legördülő listából.
 1. Körülbelül 30 másodperc alatt frissítse az Azure IoT hubot a bal alsó szakaszban. A peremhálózati eszköznek a következő telepített modulokkal kell rendelkeznie:
 
@@ -160,24 +185,55 @@ A művelet befejezése után exportálhatja a modellt egy Docker-tárolóba a **
 
 ## <a name="prepare-for-monitoring-events"></a>Felkészülés a figyelési eseményekre
 
-Kattintson a jobb gombbal az élő videó elemzési eszközre, és válassza a **figyelés beépített esemény végpontjának elindítása**lehetőséget. Erre a lépésre szüksége lesz a Visual Studio Code **kimeneti** ablakának IoT hub eseményeinek figyeléséhez.
+Kattintson a jobb gombbal az élő videó elemzési eszközre, és válassza a **figyelés beépített esemény végpontjának elindítása** lehetőséget. Erre a lépésre szüksége lesz a Visual Studio Code **kimeneti** ablakának IoT hub eseményeinek figyeléséhez.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="A Custom Vision áttekintését bemutató diagram.":::
+> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="A beépített esemény végpontját bemutató képernyőkép.":::
 
 ## <a name="run-the-sample-program"></a>A minta program futtatása
 
 Ha megnyitja az oktatóanyaghoz tartozó Graph-topológiát egy böngészőben, látni fogja, hogy a értéke a következőre `inferencingUrl` lett beállítva: `http://cv:80/image` . Ez a beállítás azt jelenti, hogy a következtetési kiszolgáló az élő videóban a játék-teherautók észlelése után az eredményeket fogja visszaadni.
 
-1. A Visual Studio Code-ban nyissa meg a **kiterjesztések** lapot (vagy válassza a **CTRL + SHIFT + X**billentyűkombinációt), és keresse meg az Azure IoT hub.
-1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
+1. A Visual Studio Code-ban nyissa meg a **kiterjesztések** lapot (vagy válassza a **CTRL + SHIFT + X** billentyűkombinációt), és keresse meg az Azure IoT hub.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai** lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="A Custom Vision áttekintését bemutató diagram.":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="A bővítmény beállításait megjelenítő képernyőkép.":::
 1. Keresés és engedélyezés a **részletes üzenet megjelenítése**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="A Custom Vision áttekintését bemutató diagram."
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="A részletes üzenetet bemutató képernyőkép.":::
+1. A hibakeresési munkamenet indításához válassza az **F5** billentyűt. A **terminál** ablakban láthatók a kinyomtatott üzenetek.
+1. A kód operations.jsa közvetlen metódusok hívásával indul el `GraphTopologyList` `GraphInstanceList` . Ha az előző rövid útmutatók befejezése után törölte az erőforrásokat, akkor ez a folyamat üres listát ad vissza, majd szünetelteti. A folytatáshoz válassza az **ENTER** billentyűt.
+    
+   A **terminál** ablak a közvetlen metódusok következő készletét jeleníti meg:
+    
+   * `GraphTopologySet`Az előzőt használó hívás `topologyUrl` .
+   * A `GraphInstanceSet` következő törzset használó hívás:
+        
+   ```
+        {
+          "@apiVersion": "1.0",
+          "name": "Sample-Graph-1",
+          "properties": {
+            "topologyName": "CustomVisionWithHttpExtension",
+            "description": "Sample graph description",
+            "parameters": [
+              { 
+                "name": "inferencingUrl",
+                "value": "http://cv:80/image"
+              },
+              {
+                "name": "rtspUrl",
+                "value": "rtsp://rtspsim:554/media/t2.mkv"
+              },
+              {
+                "name": "rtspUserName",
+                "value": "testuser"
+              },
+              {
+                "name": "rtspPassword",
+                "value": "testpassword"
               }
             ]
           }
@@ -330,7 +386,7 @@ Jegyezze fel a következő információkat az előző üzenetekben:
 
 Ha más oktatóanyagokat vagy gyors útmutatókat szeretne kipróbálni, tartsa be a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 

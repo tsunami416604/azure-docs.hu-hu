@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 8350ebc92575911991ca772229912941f2af10e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c428997cfba8871a29d9bfe0df0a6920a1d22f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851288"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357589"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés 4me konfigurálása
 
@@ -41,11 +41,11 @@ Az Azure AD-vel való automatikus 4me konfigurálása előtt hozzá kell adnia a
 
 **Ha 4me szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Az Azure AD-vel való automatikus 4me konfigurálása előtt hozzá kell adnia a
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **4me**kifejezést, válassza az **4me** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **4me** kifejezést, válassza az **4me** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![4me az eredmények listájában](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **4me**lehetőséget.
+2. Az alkalmazások listában válassza a **4me** lehetőséget.
 
     ![Az 4me hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -98,7 +98,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 5. A 4me **-fiók bérlői URL-címének** és **titkos jogkivonatának** lekéréséhez kövesse az útmutatót a 6. lépésben leírtak szerint.
 
-6. Jelentkezzen be a 4me felügyeleti konzolra. Navigáljon a **Beállítások**elemre.
+6. Jelentkezzen be a 4me felügyeleti konzolra. Navigáljon a **Beállítások** elemre.
 
     ![4me-beállítások](media/4me-provisioning-tutorial/4me01.png)
 
@@ -114,23 +114,23 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 9. Kattintson a **Mentés** gombra.
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a 4me**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a 4me** lehetőséget.
 
     :::image type="content" source="media/4me-provisioning-tutorial/4me-user-mapping.png" alt-text="Képernyőfelvétel a leképezések lapról. A név alatt szinkronizálja Azure Active Directory felhasználókat a FourMe." border="false":::
     
 11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található 4me. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a 4me felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Győződjön meg arról, hogy a [4me támogatja a szűrést](https://developer.4me.com/v1/scim/users/) a kiválasztott egyező attribútumon. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Képernyőfelvétel a leképezések lapról. A név alatt szinkronizálja Azure Active Directory felhasználókat a FourMe." border="false":::
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Képernyőkép az attribútum-hozzárendelések lapról. A táblázat felsorolja Azure Active Directory attribútumokat, a megfelelő FourMe-attribútumokat és a megfelelő állapotot." border="false":::
     
-12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a 4me**lehetőséget.
+12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a 4me** lehetőséget.
 
-    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Képernyőfelvétel a leképezések lapról. A név alatt szinkronizálja Azure Active Directory felhasználókat a FourMe." border="false":::
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Képernyőfelvétel a leképezések lapról. A név alatt szinkronizálja Azure Active Directory csoportok FourMe." border="false":::
     
 13. Tekintse át az Azure AD-ből szinkronizált 4me az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a 4me tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -160,7 +160,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * a 4me által generált titkos jogkivonatok egy hónap lejárati dátummal rendelkeznek a létrehozásból.
 * a 4me nem támogatja a **törlési** műveleteket.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

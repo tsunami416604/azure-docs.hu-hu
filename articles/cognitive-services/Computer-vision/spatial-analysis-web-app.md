@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3bc03cf03f8a8e0f2a222ca1089618eaade9485d
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 24d4dd4d0caa49b9514bf19f707ea87b0b071a79
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496067"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357096"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Útmutató: webes alkalmazások leltározása
 
@@ -64,6 +64,8 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>A tároló üzembe helyezése Azure IoT Edge számítógépen a gazdaszámítógépen
 
 Telepítse a térbeli elemzési tárolót IoT-modulként a gazdaszámítógépen az Azure CLI használatával. Az üzembe helyezési folyamathoz egy telepítési jegyzékfájl szükséges, amely az üzemelő példányhoz szükséges tárolókat, változókat és konfigurációkat ismerteti. Megtalálhatja a [Azure stack Edge-specifikus telepítési jegyzékfájlt](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) , valamint egy [nem Azure stack Edge-specifikus telepítési jegyzéket](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) a githubon, amely tartalmazza a *térbeli elemzési* tároló alapszintű üzembe helyezési konfigurációját. 
+
+Azt is megteheti, hogy a Visual Studio Code-hoz készült Azure IoT-bővítményekkel műveleteket hajt végre az IoT hub használatával. További információért nyissa meg a [Visual Studio Code Azure IoT Edge-modulok üzembe helyezése című](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode) témakört.
 
 > [!NOTE] 
 > A *térbeli analízis – a-Graf* és a *térbeli analízis – diagnosztikai* tárolók nem kötelezőek. Dönthet úgy, hogy eltávolítja őket a fájl *DeploymentManifest.js* . További információ: [telemetria és hibaelhárítási](./spatial-analysis-logging.md) cikk. A githubon lévő fájlokra két minta *DeploymentManifest.js* található [Azure stack Edge-eszközök](https://go.microsoft.com/fwlink/?linkid=2142179) vagy más [asztali gépek](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) számára
@@ -170,7 +172,7 @@ docker tag rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0 [desired local
 docker push [desired local image name]
 ```
 
-A tároló telepítéséhez hozzon létre egy új Azure-Web App for Containers, és töltse ki a szükséges paramétereket. Ezután lépjen a **Docker** lapra, és válassza az **egyetlen tároló**lehetőséget, majd **Azure Container Registry**. Használja Azure Container Registry-példányát, ahol a fenti képet leküldte.
+A tároló telepítéséhez hozzon létre egy új Azure-Web App for Containers, és töltse ki a szükséges paramétereket. Ezután lépjen a **Docker** lapra, és válassza az **egyetlen tároló** lehetőséget, majd **Azure Container Registry**. Használja Azure Container Registry-példányát, ahol a fenti képet leküldte.
 
 ![Adja meg a rendszerkép részleteit](./media/spatial-analysis/solution-app-create-screen.png)
 
@@ -178,12 +180,12 @@ A fenti paraméterek megadása után kattintson a **felülvizsgálat + létrehoz
 
 ### <a name="configure-the-app"></a>Az alkalmazás konfigurálása 
 
-Várjon, amíg a telepítés befejeződik, és navigáljon az erőforráshoz a Azure Portal. Nyissa meg a **konfigurációs** szakaszt, és adja hozzá az alábbi két **Alkalmazásbeállítások**közül.
+Várjon, amíg a telepítés befejeződik, és navigáljon az erőforráshoz a Azure Portal. Nyissa meg a **konfigurációs** szakaszt, és adja hozzá az alábbi két **Alkalmazásbeállítások** közül.
 
 * `EventHubConsumerGroup` – Az Azure-IoT Hub lévő fogyasztói csoport karakterláncának neve, létrehozhat egy új fogyasztói csoportot a IoT Hub, vagy használhatja az alapértelmezett csoportot. 
 * `IotHubConnectionString`– Az Azure-IoT Hub kapcsolódási karakterlánca, amely az Azure IoT Hub erőforrás-konfigurálási paramétereinek kulcsok részéből kérhető le. ![](./media/spatial-analysis/solution-app-config-page.png)
 
-A 2 beállítás hozzáadása után kattintson a **Mentés**gombra. Ezután kattintson a **hitelesítés/engedélyezés** elemre a bal oldali navigációs menüben, és frissítse a kívánt hitelesítési szinttel. Az Azure Active Director (Azure AD) Express használatát javasoljuk. 
+A 2 beállítás hozzáadása után kattintson a **Mentés** gombra. Ezután kattintson a **hitelesítés/engedélyezés** elemre a bal oldali navigációs menüben, és frissítse a kívánt hitelesítési szinttel. Az Azure Active Director (Azure AD) Express használatát javasoljuk. 
 
 ### <a name="test-the-app"></a>Az alkalmazás tesztelése
 
@@ -191,7 +193,10 @@ Nyissa meg az Azure-webalkalmazást, és ellenőrizze, hogy a telepítés sikere
 
 ![Az üzemelő példány tesztelése](./media/spatial-analysis/solution-app-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="get-the-personcount-source-code"></a>A PersonCount forráskódjának beolvasása
+Ha szeretné megtekinteni vagy módosítani az alkalmazás forráskódját, megkeresheti azt [a githubon](https://github.com/Azure-Samples/cognitive-services-spatial-analysis).
+
+## <a name="next-steps"></a>További lépések
 
 * [Térbeli elemzési műveletek konfigurálása](./spatial-analysis-operations.md)
 * [Naplózás és hibaelhárítás](spatial-analysis-logging.md)

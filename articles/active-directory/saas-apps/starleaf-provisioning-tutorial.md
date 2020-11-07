@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: bf75c4fe2053483b94c5f645816422909645854a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07c476c0de644ac63c577d466f4691b5cf415334
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285969"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357934"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés StarLeaf konfigurálása
 
@@ -68,11 +68,11 @@ Az Azure AD-vel való automatikus StarLeaf konfigurálásához hozzá kell adnia
 
 **Ha StarLeaf szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -80,7 +80,7 @@ Az Azure AD-vel való automatikus StarLeaf konfigurálásához hozzá kell adnia
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **StarLeaf**kifejezést, majd az eredmények panelen kattintson a **StarLeaf** elemre.
+4. A keresőmezőbe írja be a **StarLeaf** kifejezést, majd az eredmények panelen kattintson a **StarLeaf** elemre.
     ![StarLeaf az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-automatic-user-provisioning-to-starleaf"></a>Automatikus felhasználó-kiépítés beállítása a StarLeaf
@@ -91,7 +91,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **StarLeaf**lehetőséget.
+2. Az alkalmazások listában válassza a **StarLeaf** lehetőséget.
 
     ![Az StarLeaf hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -113,7 +113,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a StarLeaf**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a StarLeaf** lehetőséget.
 
     ![Képernyőfelvétel a leképezésekről szakasz a Azure Active Directory felhasználók szinkronizálása a StarLeaf lehetőségre.](media/starleaf-provisioning-tutorial/usermapping.png)
 
@@ -146,7 +146,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * A StarLeaf jelenleg nem támogatja a csoportok üzembe helyezését. 
 * A StarLeaf használatához az **e-mailek** és a **felhasználónevek** értékének azonosnak kell lennie.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

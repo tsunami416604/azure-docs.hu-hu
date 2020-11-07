@@ -1,14 +1,14 @@
 ---
 title: Virtuálisgép-bővítmények kezelése az Azure arc-kompatibilis kiszolgálókkal
 description: Az Azure arc-kompatibilis kiszolgálók kezelhetik azokat a virtuálisgép-bővítmények központi telepítését, amelyek a telepítés utáni konfigurálást és az automatizálási feladatokat nem Azure-beli virtuális gépekkel is rendelkeznek.
-ms.date: 10/19/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9865761fd3e5897ee3f01cd3d6ca620d5ea2f4b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7682f6c8631bbaf2310d501d7cee6aecb2311226
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460886"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358031"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Virtuálisgép-bővítmények kezelése az Azure arc használatára képes kiszolgálókon
 
@@ -33,6 +33,8 @@ Az Azure arc-kompatibilis kiszolgálók virtuálisgép-bővítmények támogatá
 
 - Parancsfájlokat tölthet le és futtathat a hibrid csatlakoztatott gépeken az egyéni szkriptek bővítmény használatával. Ez a bővítmény az üzembe helyezési konfiguráció, a Szoftvertelepítés vagy bármely egyéb konfigurációs vagy felügyeleti feladat után hasznos.
 
+- [Azure Key Vault](../../key-vault/general/overview.md)tárolt tanúsítványok automatikus frissítése.
+
 ## <a name="availability"></a>Rendelkezésre állás
 
 A VM-bővítmény funkció csak a [támogatott régiók](overview.md#supported-regions)listájában érhető el. Győződjön meg arról, hogy a számítógépe ezen régiók egyikében található.
@@ -47,10 +49,12 @@ Ebben a kiadásban a következő virtuálisgép-bővítményeket támogatjuk a W
 |DSC |Windows |Microsoft. PowerShell|[Windows PowerShell DSC-bővítmény](../../virtual-machines/extensions/dsc-windows.md)|
 |Log Analytics-ügynök |Windows |Microsoft. EnterpriseCloud. monitoring |[Log Analytics virtuálisgép-bővítmény a Windowshoz](../../virtual-machines/extensions/oms-windows.md)|
 |Microsoft függőségi ügynök | Windows |Microsoft.Compute | [Függőségi ügynök virtuálisgép-bővítménye Windows rendszerhez](../../virtual-machines/extensions/agent-dependency-windows.md)|
+|Key Vault | Windows | Microsoft.Compute | [A Windows rendszerhez készült virtuálisgép-bővítmény Key Vault](../../virtual-machines/extensions/key-vault-windows.md) |
 |CustomScript|Linux |Microsoft. Azure. Extension |[Linux Custom script Extension 2. verzió](../../virtual-machines/extensions/custom-script-linux.md) |
 |DSC |Linux |Microsoft. OSTCExtensions |[PowerShell DSC-bővítmény Linux rendszerhez](../../virtual-machines/extensions/dsc-linux.md) |
 |Log Analytics-ügynök |Linux |Microsoft. EnterpriseCloud. monitoring |[A Linux rendszerhez készült virtuálisgép-bővítmény Log Analytics](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft függőségi ügynök | Linux |Microsoft.Compute | [Függőségi ügynök linuxos virtuálisgép-bővítménye](../../virtual-machines/extensions/agent-dependency-linux.md) |
+|Key Vault | Linux | Microsoft.Compute | [A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault](../../virtual-machines/extensions/key-vault-linux.md) |
 
 Ha többet szeretne megtudni az Azure-beli csatlakoztatott gépi ügynök csomagról és a bővítmény ügynök összetevőjéről, tekintse meg az [ügynök áttekintése](agent-overview.md#agent-component-details)című témakört.
 
@@ -63,7 +67,29 @@ Ez a funkció az előfizetés alábbi Azure-erőforrás-szolgáltatói függ:
 
 Ha még nincsenek regisztrálva, kövesse az [Azure Resource Providers regisztrálása](agent-overview.md#register-azure-resource-providers)című témakör lépéseit.
 
+### <a name="log-analytics-vm-extension"></a>Log Analytics virtuálisgép-bővítmény
+
 A Linux rendszerhez készült Log Analytics Agent virtuálisgép-bővítményhez a Python 2. x verziója szükséges a célszámítógépen.
+
+### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM-bővítmény (előzetes verzió)
+
+A Key Vault virtuálisgép-bővítmény (előzetes verzió) nem támogatja a következő Linux operációs rendszereket:
+
+- CentOS Linux 7 (x64)
+- Red Hat Enterprise Linux (RHEL) 7 (x64)
+- Amazon Linux 2 (x64)
+
+A Key Vault virtuálisgép-bővítmény (előzetes verzió) üzembe helyezése csak a következő használatával támogatott:
+
+- Azure CLI
+- A Azure PowerShell
+- Azure Resource Manager-sablon
+
+A bővítmény telepítése előtt a következőket kell elvégeznie:
+
+1. [Hozzon létre egy tárolót és egy tanúsítványt](../../key-vault/certificates/quick-create-portal.md) (önaláírt vagy importált).
+
+2. Adja meg az Azure arc számára engedélyezett kiszolgáló hozzáférését a tanúsítvány titkos kódjához. Ha a [RBAC előzetes](../../key-vault/general/rbac-guide.md)verzióját használja, keresse meg az Azure arc-erőforrás nevét, és rendelje hozzá a **Key Vault Secrets User (előzetes verzió)** szerepkört. Ha [Key Vault hozzáférési szabályzatot](../../key-vault/general/assign-access-policy-portal.md)használ, rendeljen titkos **Get** engedélyeket az Azure arc-erőforrás rendszerhez rendelt identitásához.
 
 ### <a name="connected-machine-agent"></a>Csatlakoztatott számítógép ügynöke
 
@@ -75,4 +101,4 @@ Ha a gépet a szükséges ügynök verziójára szeretné frissíteni, tekintse 
 
 ## <a name="next-steps"></a>További lépések
 
-A virtuálisgép-bővítmények üzembe helyezése, kezelése és eltávolítása az [Azure CLI](manage-vm-extensions-cli.md), a [PowerShell](manage-vm-extensions-powershell.md), a [Azure Portal](manage-vm-extensions-portal.md)vagy [Azure Resource Manager sablonok](manage-vm-extensions-template.md)használatával végezhető el.
+Virtuálisgép-bővítményeket telepíthet, kezelhet és eltávolíthat az [Azure CLI](manage-vm-extensions-cli.md), [Azure PowerShell](manage-vm-extensions-powershell.md), [Azure Portal](manage-vm-extensions-portal.md)vagy [Azure Resource Manager sablonok](manage-vm-extensions-template.md)használatával.

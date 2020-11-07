@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: dde22fe9997e41d6d17fba94e6b9523d82c7b910
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e22738f1fff813e5a928b76f8049e810847fe548
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456823"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358150"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus üzembe helyezésének beállítása
 
@@ -97,7 +97,7 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés** elemre egy új böngészőablakban a Box bejelentkezési párbeszédpanel megnyitásához.
 
-6. A **belépés a Box** -ba lapon adja meg a szükséges hitelesítő adatokat, majd kattintson az **Engedélyezés**gombra. 
+6. A **belépés a Box** -ba lapon adja meg a szükséges hitelesítő adatokat, majd kattintson az **Engedélyezés** gombra. 
    
     ![Képernyőkép a bejelentkezéshez, hogy hozzáférést biztosítson a Box képernyőhöz, amely megjeleníti az e-mailek és a jelszó bejegyzését, valamint az Engedélyezés gombot.](./media/box-userprovisioning-tutorial/IC769546.png "Automatikus felhasználó-kiépítés engedélyezése")
 
@@ -128,7 +128,7 @@ A Box-bérlőben a szinkronizált felhasználók a **felügyelt felhasználók**
 ![Integrációs állapot](./media/box-userprovisioning-tutorial/IC769556.png "Integrációs állapot")
 
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

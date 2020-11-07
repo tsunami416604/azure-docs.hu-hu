@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: d92db526e0fa3f3f8898ac2ea264d0b8f37be071
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e0b98f15e03552f27cdd1c9683bdd7e74a1c02df
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458319"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358689"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés LucidChart konfigurálása
 
@@ -47,15 +47,15 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="step-2-configure-lucidchart-to-support-provisioning-with-azure-ad"></a>2. lépés LucidChart konfigurálása az Azure AD-vel való kiépítés támogatásához
 
-1. Jelentkezzen be a [LucidChart felügyeleti konzolba](https://www.lucidchart.com). Navigáljon a **Team > alkalmazás-integráció**elemre.
+1. Jelentkezzen be a [LucidChart felügyeleti konzolba](https://www.lucidchart.com). Navigáljon a **Team > alkalmazás-integráció** elemre.
 
       :::image type="content" source="./media/lucidchart-provisioning-tutorial/team1.png" alt-text="Képernyőkép a LucidChart felügyeleti konzolról. A csapat menü ki van emelve és meg van nyitva. A rendszergazda területen az alkalmazás integrációja ki van emelve." border="false":::
 
 2. Navigáljon a **scim**.
 
-      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Képernyőkép a LucidChart felügyeleti konzolról. A csapat menü ki van emelve és meg van nyitva. A rendszergazda területen az alkalmazás integrációja ki van emelve." border="false":::
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Képernyőkép a LucidChart felügyeleti konzolról. Egy nagy S C I M gombon belül a C I M szöveg ki van emelve, és az engedélyezett szalagcím látható." border="false":::
 
-3. Görgessen le a **tulajdonosi jogkivonat** és a **LucidChart alap URL-címének**megtekintéséhez. Másolja és mentse a **tulajdonosi jogkivonatot**. Ez az érték a LucidChart alkalmazás üzembe helyezés lapjának **titkos jogkivonat** * mezőjében jelenik meg a Azure Portal. 
+3. Görgessen le a **tulajdonosi jogkivonat** és a **LucidChart alap URL-címének** megtekintéséhez. Másolja és mentse a **tulajdonosi jogkivonatot**. Ez az érték a LucidChart alkalmazás üzembe helyezés lapjának **titkos jogkivonat** * mezőjében jelenik meg a Azure Portal. 
 
       ![LucidChart token](./media/lucidchart-provisioning-tutorial/token.png)
 
@@ -67,7 +67,7 @@ Vegyen fel LucidChart az Azure AD-alkalmazás-katalógusból a LucidChart való 
 
 Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) leírt hatókörszűrőt használhatja. 
 
-* Felhasználók és csoportok LucidChart való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
+* Felhasználók és csoportok LucidChart való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
 
 * Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
@@ -82,7 +82,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **LucidChart**lehetőséget.
+2. Az alkalmazások listában válassza a **LucidChart** lehetőséget.
 
     ![Az LucidChart hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -104,7 +104,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a LucidChart**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a LucidChart** lehetőséget.
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő LucidChart. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a LucidChart felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy a LucidChart API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -123,7 +123,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
    |urn: IETF: params: scim: sémák: bővítmény: LucidChart: 1.0: felhasználó: canEdit|Logikai|
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a LucidChart**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a LucidChart** lehetőséget.
 
 11. Tekintse át az Azure AD-ből szinkronizált LucidChart az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a LucidChart tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -160,7 +160,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 * 04/30/2020 – a vállalati bővítmény attribútum és az egyéni "CanEdit" attribútum támogatása a felhasználók számára.
 * 06/15/2020 – a felhasználók ideiglenes törlése engedélyezve van (az [aktív](https://tools.ietf.org/html/rfc7643) attribútum támogatása).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

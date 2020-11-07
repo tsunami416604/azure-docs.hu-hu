@@ -4,17 +4,18 @@ description: Az Azure Managed HSM egy felhőalapú szolgáltatás, amely védi a
 services: key-vault
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: managed-hsm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/15/2020
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: d2d5d6ad23f5e6a2cac2dc97904154d5912573b0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 95feeebf009cae22cf3952df80596c12e75cbe4b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787924"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357572"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Mi az Azure Key Vault Managed HSM (előzetes verzió)?
 
@@ -49,6 +50,6 @@ Azure Key Vault felügyelt HSM egy teljes körűen felügyelt, magas rendelkezé
 
 - HSM-védelemmel ellátott kulcsok generálása a helyszíni HSM-ben és biztonságos importálása a felügyelt HSM-be
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Útmutató [: felügyelt HSM kiépítése és aktiválása az Azure CLI használatával](quick-create-cli.md) a felügyelt HSM létrehozásához és aktiválásához
 - [Ajánlott eljárások a Azure Key Vault Managed HSM használatával](best-practices.md)

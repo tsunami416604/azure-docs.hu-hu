@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: f6bb119e5e82ce642722d0f739177fc1e4c06c25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10ad06041e8136b5661b1b1ff487cd4d3b0f5153
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255728"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358405"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Signagelive konfigurálása
 
@@ -60,11 +60,11 @@ Az Azure AD-vel való automatikus Signagelive konfigurálásához hozzá kell ad
 
 **Ha Signagelive szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -72,7 +72,7 @@ Az Azure AD-vel való automatikus Signagelive konfigurálásához hozzá kell ad
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Signagelive**kifejezést, válassza az **Signagelive** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Signagelive** kifejezést, válassza az **Signagelive** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Signagelive az eredmények listájában](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Signagelive**lehetőséget.
+2. Az alkalmazások listában válassza a **Signagelive** lehetőséget.
 
     ![Az Signagelive hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -104,13 +104,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 5. A rendszergazdai hitelesítő adatok szakaszban adja ` https://samlapi.signagelive.com/scim/v2` meg a **bérlői URL-címet**. A **titkos jogkivonat** mezőben adja meg a mérnöki fejlesztési csapat által megadott **tulajdonosi jogkivonat** értékét. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Signagelive. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Signagelive-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Signagelive**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Signagelive** lehetőséget.
 
     ![A leképezések szakasz képernyőképe a Azure Active Directory felhasználók szinkronizálása a Signagelive lehetőségre.](media/signagelive-provisioning-tutorial/usermapping.png)
 
@@ -118,7 +118,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőfelvétel: az attribútum-hozzárendelések szakasz, amelyen hét leképezés látható.](media/signagelive-provisioning-tutorial/userattribute.png)
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoport szinkronizálása a Signagelive**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoport szinkronizálása a Signagelive** lehetőséget.
 
     ![A leképezések szakasz képernyőképe a Azure Active Directory csoport szinkronizálása a Signagelive lehetőségre.](media/signagelive-provisioning-tutorial/groupmapping.png)
 
@@ -144,7 +144,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Signagelive-on végrehajtott összes műveletet ismertetik. További információ: [a felhasználó kiépítési állapotának ellenõrzése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók kiépítés](../app-provisioning/check-status-user-account-provisioning.md)során.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

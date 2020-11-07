@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: eaf54b7f7336619d03ce0fb6ea7fa032d0fcdff7
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 528ab93d1cf47d64338ef186a120695681f48e55
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319171"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357215"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés 15Five konfigurálása
 
@@ -56,17 +56,17 @@ Az Azure AD-vel való automatikus 15Five konfigurálása előtt engedélyeznie k
 
     :::image type="content" source="media/15five-provisioning-tutorial/integration.png" alt-text="Képernyőkép a 15Five felügyeleti konzolról. Az integrációk a menü funkciók területén jelennek meg, és a funkciók és az integrációk is ki vannak emelve." border="false":::
 
-2.  Kattintson a **SCIM 2,0**elemre.
+2.  Kattintson a **SCIM 2,0** elemre.
 
-    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="Képernyőkép a 15Five felügyeleti konzolról. Az integrációk a menü funkciók területén jelennek meg, és a funkciók és az integrációk is ki vannak emelve." border="false":::
+    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="Képernyőkép az integrációk lapról a 15Five felügyeleti konzolon. Az eszköz alatt, a C I M 2,0 van kiemelve." border="false":::
 
 3.  Navigáljon a **scim-integráció > OAuth-token létrehozásához**.
 
-    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="Képernyőkép a 15Five felügyeleti konzolról. Az integrációk a menü funkciók területén jelennek meg, és a funkciók és az integrációk is ki vannak emelve." border="false":::
+    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="Képernyőkép a 15Five felügyeleti konzoljának S C I M integrációs oldaláról. A OAuth jogkivonat előállítása ki van emelve." border="false":::
 
-4.  Másolja a **SCIM 2,0 alap URL-cím** és a **hozzáférési jogkivonat**értékeit. Ez az érték a **bérlői URL-cím** és a **titkos jogkivonat** mezőben jelenik meg a 15Five alkalmazás kiépítés lapján a Azure Portalban.
+4.  Másolja a **SCIM 2,0 alap URL-cím** és a **hozzáférési jogkivonat** értékeit. Ez az érték a **bérlői URL-cím** és a **titkos jogkivonat** mezőben jelenik meg a 15Five alkalmazás kiépítés lapján a Azure Portalban.
     
-    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="Képernyőkép a 15Five felügyeleti konzolról. Az integrációk a menü funkciók területén jelennek meg, és a funkciók és az integrációk is ki vannak emelve." border="false":::
+    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="Képernyőfelvétel az S C I M integrációs oldaláról. A jogkivonat táblában a S C I M 2,0 alapszintű U R L és a hozzáférési jogkivonat melletti értékek ki vannak emelve." border="false":::
 
 ## <a name="step-3-add-15five-from-the-azure-ad-application-gallery"></a>3. lépés 15Five hozzáadása az Azure AD Application Galleryből
 
@@ -76,7 +76,7 @@ Vegyen fel 15Five az Azure AD-alkalmazás-katalógusból a 15Five való kiépít
 
 Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) leírt hatókörszűrőt használhatja. 
 
-* Felhasználók és csoportok 15Five való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
+* Felhasználók és csoportok 15Five való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
 
 * Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -90,7 +90,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **15Five**lehetőséget.
+2. Az alkalmazások listában válassza a **15Five** lehetőséget.
 
     ![Az 15Five hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -106,13 +106,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a 15Five**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a 15Five** lehetőséget.
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található 15Five. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a 15Five felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -131,7 +131,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |urn: IETF: params: scim: sémák: kiterjesztés: 15Five: 2.0: felhasználó: hely|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: 15Five: 2.0: felhasználó: startDate|Sztring|
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a 15Five**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a 15Five** lehetőséget.
 
 11. Tekintse át az Azure AD-ből szinkronizált 15Five az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a 15Five tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -172,7 +172,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 
 * 06/16/2020 – a vállalati bővítmény "Manager" attribútumának és egyéni attribútumának "location" és "Start date" támogatása a felhasználók számára.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

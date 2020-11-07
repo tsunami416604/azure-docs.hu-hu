@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 081f073fa4933d67604173d2169a7abdc3ac7c3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403568"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358392"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Nagyméretű adathalmazok indexelése az Azure-ban Cognitive Search
 
@@ -27,7 +27,7 @@ A következő részekben ismertetjük a nagy mennyiségű, a leküldéses API-va
 
 ## <a name="use-the-push-api"></a>A leküldéses API használata
 
-Amikor a [dokumentumok hozzáadása REST API](/rest/api/searchservice/addupdate-or-delete-documents) vagy az [index metódus](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index)használatával küldi el az információkat egy indexbe, számos fontos szempontot figyelembe kell venni az indexelési sebesség hatására. Ezeket a tényezőket az alábbi szakaszban ismertetjük, és a szolgáltatás kapacitásának beállítása a kód optimalizálására.
+Ha a [dokumentumok hozzáadása REST API](/rest/api/searchservice/addupdate-or-delete-documents) vagy a [IndexDocuments metódus](/dotnet/api/azure.search.documents.searchclient.indexdocuments)használatával küldi el az információkat egy indexbe, több fontos szempontot is figyelembe kell vennie az indexelés sebességének hatására. Ezeket a tényezőket az alábbi szakaszban ismertetjük, és a szolgáltatás kapacitásának beállítása a kód optimalizálására.
 
 A leküldéses modell indexelését bemutató további információkat és kódokat a következő témakörben talál [: oktatóanyag: az indexelési sebesség optimalizálása](tutorial-optimize-indexing-push-api.md).
 
@@ -45,14 +45,14 @@ Ha elégedett a szintjével, a következő lépés lehet a partíciók számána
 
 ### <a name="review-index-schema"></a>Index-séma áttekintése
 
-Az index sémája fontos szerepet játszik az adatindexelésben. Minél több mező van, és a további megadott tulajdonságok (például *kereshető*, *sokrétű*vagy *szűrhető*) mind hozzájárulnak az indexelési idő növeléséhez. Általánosságban elmondható, hogy csak olyan mezőket kell létrehoznia és megadnia, amelyekhez ténylegesen szüksége van a keresési indexben.
+Az index sémája fontos szerepet játszik az adatindexelésben. Minél több mező van, és a további megadott tulajdonságok (például *kereshető* , *sokrétű* vagy *szűrhető* ) mind hozzájárulnak az indexelési idő növeléséhez. Általánosságban elmondható, hogy csak olyan mezőket kell létrehoznia és megadnia, amelyekhez ténylegesen szüksége van a keresési indexben.
 
 > [!NOTE]
 > A dokumentumok méretének megőrzéséhez ne adjon hozzá nem lekérdezhető adatmennyiséget egy indexhez. A képek és más bináris adatfájlok nem kereshetők közvetlenül, és nem tárolhatók az indexben. A nem lekérdezhető adatmennyiség keresési eredményekbe való integrálásához meg kell adnia egy nem kereshető mezőt, amely az erőforrás URL-hivatkozását tárolja.
 
 ### <a name="check-the-batch-size"></a>A köteg méretének keresése
 
-A nagyobb adatkészletek indexelésének egyik legegyszerűbb mechanizmusa több dokumentum vagy rekord küldése egyetlen kérelembe. Ha a teljes adattartalom 16 MB alatti, a kérések legfeljebb 1000 dokumentumot kezelhetnek tömeges feltöltési műveletekben. Ezek a korlátozások érvényesek, függetlenül attól, hogy a [dokumentumok hozzáadása REST API](/rest/api/searchservice/addupdate-or-delete-documents) vagy a .net SDK [index metódusát](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index) használja-e. Mindkét API esetében a 1000-es dokumentumokat az egyes kérések törzsébe csomagoljuk.
+A nagyobb adatkészletek indexelésének egyik legegyszerűbb mechanizmusa több dokumentum vagy rekord küldése egyetlen kérelembe. Ha a teljes adattartalom 16 MB alatti, a kérések legfeljebb 1000 dokumentumot kezelhetnek tömeges feltöltési műveletekben. Ezek a korlátozások érvényesek, függetlenül attól, hogy az [Add documents REST API](/rest/api/searchservice/addupdate-or-delete-documents) vagy a [IndexDocuments metódust](/dotnet/api/azure.search.documents.searchclient.indexdocuments) használja a .net SDK-ban. Mindkét API esetében a 1000-es dokumentumokat az egyes kérések törzsébe csomagoljuk.
 
 A batchs használatával a dokumentumok indexelése jelentősen javítja az indexelési teljesítményt. Az adathalmazok optimális méretének meghatározása az indexelési sebesség optimalizálásának egyik fő összetevője. Az optimális batch-méretet befolyásoló két elsődleges tényező a következők:
 
@@ -142,7 +142,7 @@ Az indexek esetében a feldolgozási kapacitás lazán a keresési szolgáltatá
 
 1. A [Azure Portal](https://portal.azure.com)keresési szolgáltatás irányítópultjának **Áttekintés** lapján tekintse meg a **díjszabási szintet** annak megerősítéséhez, hogy képes-e párhuzamos indexelést fogadni. Az alapszintű és a standard csomag több replikát is kínál.
 
-2. Több indexelő is futtatható párhuzamosan a szolgáltatásban található keresési egységek számaként. A **Beállítások**  >  **méretezése**elemnél növelje a párhuzamos feldolgozáshoz szükséges [replikákat](search-capacity-planning.md) vagy partíciókat: egy további replikát vagy partíciót az egyes indexelő munkaterhelésekhez. Hagyjon elegendő számot a meglévő lekérdezési kötethez. Az indexeléshez szükséges lekérdezési számítási feladatok feláldozása nem jó kompromisszum.
+2. Több indexelő is futtatható párhuzamosan a szolgáltatásban található keresési egységek számaként. A **Beállítások**  >  **méretezése** elemnél növelje a párhuzamos feldolgozáshoz szükséges [replikákat](search-capacity-planning.md) vagy partíciókat: egy további replikát vagy partíciót az egyes indexelő munkaterhelésekhez. Hagyjon elegendő számot a meglévő lekérdezési kötethez. Az indexeléshez szükséges lekérdezési számítási feladatok feláldozása nem jó kompromisszum.
 
 3. Az Azure Cognitive Search indexelő által elérhetővé tett szinten több tárolóba terjesztheti az adattárat. Ez több tábla lehet Azure SQL Database, több tároló az Azure Blob Storage-ban vagy több gyűjtemény is. Definiáljon egy adatforrás-objektumot minden táblához vagy tárolóhoz.
 

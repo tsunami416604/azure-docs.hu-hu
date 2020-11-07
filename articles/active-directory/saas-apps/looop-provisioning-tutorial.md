@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 2f3657feb5a68600e4eb2d7bcaa4891a398c2682
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 889972f7d94ab960354982275d45bdc5d5726d6e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850693"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356824"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Looop konfigurálása
 
@@ -53,13 +53,13 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 Az Azure AD-vel való automatikus Looop konfigurálása előtt le kell kérnie néhány kiépítési információt a Looop-ből.
 
-1. Jelentkezzen be a [Looop felügyeleti konzolra](https://app.looop.co/#/login) , és válassza a **fiók**lehetőséget. A **Fiókbeállítások** területen válassza a **hitelesítés**lehetőséget.
+1. Jelentkezzen be a [Looop felügyeleti konzolra](https://app.looop.co/#/login) , és válassza a **fiók** lehetőséget. A **Fiókbeállítások** területen válassza a **hitelesítés** lehetőséget.
 
     :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Képernyőkép a Looop felügyeleti konzolról. A fiók lap ki van emelve és meg van nyitva. A Fiókbeállítások területen a hitelesítés ki van emelve." border="false":::
 
 2. Hozzon létre egy új tokent a **scim-integráció** **elemre kattintva.**
 
-    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Képernyőkép a Looop felügyeleti konzolról. A fiók lap ki van emelve és meg van nyitva. A Fiókbeállítások területen a hitelesítés ki van emelve." border="false":::
+    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Képernyőkép a Looop felügyeleti konzolján található oldal C I M-integrációs szakaszáról. A jogkivonat alaphelyzetbe állítása gomb ki van emelve." border="false":::
 
 3. Másolja a **scim-végpontot** és a **tokent**. Ezek az értékek a **bérlői URL-cím** és a **titkos jogkivonat** mezőiben lesznek megadva a Looop alkalmazás kiépítés lapján a Azure Portal. 
 
@@ -69,11 +69,11 @@ Az Azure AD-vel való automatikus Looop konfigurálása előtt le kell kérnie n
 
 Az Azure AD-vel való automatikus Looop konfigurálásához hozzá kell adnia a Looop az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -81,7 +81,7 @@ Az Azure AD-vel való automatikus Looop konfigurálásához hozzá kell adnia a 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Looop**kifejezést, majd az eredmények panelen kattintson a **Looop** elemre. 
+4. A keresőmezőbe írja be a **Looop** kifejezést, majd az eredmények panelen kattintson a **Looop** elemre. 
 
     ![Looop az eredmények listájában](common/search-new-app.png)
 
@@ -107,7 +107,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Looop**lehetőséget.
+2. Az alkalmazások listában válassza a **Looop** lehetőséget.
 
     ![Az Looop hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -119,17 +119,17 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://<organisation_domain>.looop.co/scim/v2` meg a **bérlői URL-címet**. Például: `https://demo.looop.co/scim/v2`. Adja meg a beolvasott és a korábban mentett értéket a **titkos token**Looop. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Looop. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Looop-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://<organisation_domain>.looop.co/scim/v2` meg a **bérlői URL-címet**. Például: `https://demo.looop.co/scim/v2`. Adja meg a beolvasott és a korábban mentett értéket a **titkos token** Looop. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Looop. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Looop-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Looop**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Looop** lehetőséget.
 
     ![Looop felhasználói leképezések](media/looop-provisioning-tutorial/usermappings.png)
 
@@ -137,7 +137,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Looop felhasználói attribútumai](media/looop-provisioning-tutorial/userattributes.png)
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a meta Networks-összekötőhöz**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a meta Networks-összekötőhöz** lehetőséget.
 
     ![Looop csoport-hozzárendelések](media/looop-provisioning-tutorial/groupmappings.png)
 
@@ -163,7 +163,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

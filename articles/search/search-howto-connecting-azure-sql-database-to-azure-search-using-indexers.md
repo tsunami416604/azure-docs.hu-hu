@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04e4801c26b0ac8ef91af0b028d9dc2bb9a3cd1c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530561"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358626"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL-tartalomhoz való kapcsolódás és indexelés Azure Cognitive Search indexelő használatával
 
@@ -39,10 +39,10 @@ Egyetlen indexelő csak egyetlen táblát vagy nézetet használhat, de több in
 Beállíthatja és konfigurálhatja az Azure SQL indexelő a használatával:
 
 * Adatimportálás varázsló a [Azure Portal](https://portal.azure.com)
-* Azure Cognitive Search [.net SDK](/dotnet/api/microsoft.azure.search.models.indexer)
+* Azure Cognitive Search [.net SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 * Azure Cognitive Search [REST API](/rest/api/searchservice/indexer-operations)
 
-Ebben a cikkben a REST API az **Indexelő** és az **adatforrások**létrehozásához használjuk.
+Ebben a cikkben a REST API az **Indexelő** és az **adatforrások** létrehozásához használjuk.
 
 ## <a name="when-to-use-azure-sql-indexer"></a>Mikor kell használni az Azure SQL indexelő
 Az adatokhoz kapcsolódó számos tényezőtől függően előfordulhat, hogy az Azure SQL indexelő használata nem megfelelő. Ha az adatai megfelelnek az alábbi követelményeknek, használhatja az Azure SQL indexelő.
@@ -176,7 +176,7 @@ Az indexelő-ütemtervek definiálásával kapcsolatos további információkér
 Az Azure Cognitive Search **növekményes indexeléssel** kerülhető el, hogy ne kelljen újraindexelni a teljes táblázatot vagy nézetet minden alkalommal, amikor egy indexelő fut. Az Azure Cognitive Search kétféle változás-észlelési szabályzatot biztosít a növekményes indexelés támogatásához. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>Integrált SQL Change Tracking házirend
-Ha az SQL-adatbázis támogatja a [változások követését](/sql/relational-databases/track-changes/about-change-tracking-sql-server), javasoljuk, hogy az **SQL integrált Change Tracking házirendjét**használja. Ez a leghatékonyabb szabályzat. Emellett lehetővé teszi az Azure Cognitive Search számára a Törölt sorok azonosítását anélkül, hogy explicit "Soft Delete" oszlopot kellene hozzáadnia a táblához.
+Ha az SQL-adatbázis támogatja a [változások követését](/sql/relational-databases/track-changes/about-change-tracking-sql-server), javasoljuk, hogy az **SQL integrált Change Tracking házirendjét** használja. Ez a leghatékonyabb szabályzat. Emellett lehetővé teszi az Azure Cognitive Search számára a Törölt sorok azonosítását anélkül, hogy explicit "Soft Delete" oszlopot kellene hozzáadnia a táblához.
 
 #### <a name="requirements"></a>Követelmények 
 
@@ -327,13 +327,13 @@ A **softDeleteMarkerValue** karakterláncnak kell lennie – a tényleges érté
 | idő adattípusúra, datetime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, EDM. String | |
 | uniqueidentifer |Edm.String | |
 | földrajz |Edm.GeographyPoint |Csak a SRID 4326 (amely az alapértelmezett) típusú földrajzi példányok támogatottak |
-| ROWVERSION |N.A. |A sorcsoport oszlopai nem tárolhatók a keresési indexben, de használhatók a változások követéséhez |
-| idő, TimeSpan, bináris, varbinary, rendszerkép, XML, geometria, CLR-beli típusok |N.A. |Nem támogatott |
+| ROWVERSION |N/A |A sorcsoport oszlopai nem tárolhatók a keresési indexben, de használhatók a változások követéséhez |
+| idő, TimeSpan, bináris, varbinary, rendszerkép, XML, geometria, CLR-beli típusok |N/A |Nem támogatott |
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 Az SQL indexelő számos konfigurációs beállítást tesz elérhetővé:
 
-| Beállítás | Adattípus | Cél | Alapértelmezett érték |
+| Beállítás | Adattípus | Rendeltetés | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | queryTimeout |sztring |Az SQL-lekérdezés végrehajtásának időtúllépését állítja be |5 perc ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |logikai |Azt eredményezi, hogy a magas vízjelzési házirend által használt SQL-lekérdezés kihagyja a ORDER BY záradékot. Lásd: [magas vízjelek szabályzata](#HighWaterMarkPolicy) |hamis |

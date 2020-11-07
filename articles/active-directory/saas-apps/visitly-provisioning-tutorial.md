@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 15031a3e139265410179baa13db9ed3f1b41cf17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff3f3ab65df2d801b7c962de7cce645e9fc00b30
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88531803"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358609"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználói üzembe helyezéshez való felkeresés konfigurálása
 
@@ -52,7 +52,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 Az Azure AD-vel való automatikus felhasználó-kiépítés előtt érdemes engedélyezni a rendszert a tartományok közötti Identitáskezelés (SCIM) üzembe helyezéséhez a látogatás során.
 
-1. A [látogatáshoz](https://app.visitly.io/login)jelentkezzen be. Válassza az **integrációk**  >  **gazdagép-szinkronizálás**lehetőséget.
+1. A [látogatáshoz](https://app.visitly.io/login)jelentkezzen be. Válassza az **integrációk**  >  **gazdagép-szinkronizálás** lehetőséget.
 
     ![Gazdagép szinkronizálása](media/Visitly-provisioning-tutorial/login.png)
 
@@ -71,11 +71,11 @@ Az Azure AD-vel való automatikus felhasználói kiépítés meglátogatásának
 
 Az Azure AD Application Galleryből való felkereséshez kövesse az alábbi lépéseket.
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali navigációs ablaktábláján válassza a **Azure Active Directory**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)bal oldali navigációs ablaktábláján válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Az Azure AD Application Galleryből való felkereséshez kövesse az alábbi lé
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A **keresőmezőbe írja be a felkeresett**elemet, válassza a **látogatás** lehetőséget az eredmények panelen, majd válassza a **Hozzáadás** lehetőséget az alkalmazás hozzáadásához.
+4. A **keresőmezőbe írja be a felkeresett** elemet, válassza a **látogatás** lehetőséget az eredmények panelen, majd válassza a **Hozzáadás** lehetőséget az alkalmazás hozzáadásához.
 
     ![Látogatás az eredmények listájában](common/search-new-app.png)
 
@@ -96,11 +96,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Automatikus felhasználó-kiépítés konfigurálása az Azure AD-ben való felkereséshez
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 
     ![Minden alkalmazás](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **látogatás**lehetőséget.
+2. Az alkalmazások listában válassza a **látogatás** lehetőséget.
 
     ![A felkeresett hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -112,7 +112,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![A kiépítési mód beállítása automatikus](common/provisioning-automatic.png)
 
-5. A rendszergazdai hitelesítő adatok szakaszban adja meg a `https://api.visitly.io/v1/usersync/SCIM` **bérlői URL-címben** és a **titkos jogkivonatban**korábban lekért és az **API-kulcs** értékeit. Válassza a **kapcsolat tesztelése** lehetőséget, hogy az Azure ad képes legyen a látogatásra. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a felkeresett fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A rendszergazdai hitelesítő adatok szakaszban adja meg a `https://api.visitly.io/v1/usersync/SCIM` **bérlői URL-címben** és a **titkos jogkivonatban** korábban lekért és az **API-kulcs** értékeit. Válassza a **kapcsolat tesztelése** lehetőséget, hogy az Azure ad képes legyen a látogatásra. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a felkeresett fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -120,9 +120,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő e-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
-8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók látogatása**lehetőséget.
+8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók látogatása** lehetőséget.
 
     ![Felkeresett felhasználói leképezések](media/visitly-provisioning-tutorial/usermapping.png)
 
@@ -140,7 +140,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Átadási hatókör](common/provisioning-scope.png)
 
-13. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget.
+13. Ha készen áll a létesítésre, válassza a **Mentés** lehetőséget.
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
@@ -152,7 +152,7 @@ A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehal
 
 A látogatás nem támogatja a merevlemezek törlését. Minden, ami csak a törlést törli.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

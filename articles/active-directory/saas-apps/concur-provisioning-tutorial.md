@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 65db3bcbad905626a47b617c3c34935ec5cd0e88
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: edb21287b30f8ba77d6312ec6b456e20aa260598
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455420"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358211"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés megadásának beállítása
 
@@ -58,11 +58,11 @@ Ahhoz, hogy az alkalmazások engedélyezve legyenek a költségfelosztási szolg
 
 Az egyetértő tanácsadók vagy az ügyfél rendszergazdájának létre kell hoznia egy külön webszolgáltatás-rendszergazdai profilt, és az ügyfél rendszergazdájának ezt a profilt kell használnia a webszolgáltatások rendszergazdai funkcióihoz (például az alkalmazások engedélyezéséhez). Ezeket a profilokat el kell különíteni az ügyfél-rendszergazda napi T&E rendszergazdai profiljától (a T&E rendszergazdai profilnak nincs hozzárendelve a WSAdmin szerepköre).
 
-Amikor létrehozza az alkalmazás engedélyezéséhez használandó profilt, adja meg az ügyfél-rendszergazda nevét a felhasználói profil mezőiben. Ez tulajdonosi jogosultságot rendel a profilhoz. Egy vagy több profil létrehozása után az ügyfélnek be kell jelentkeznie ezzel a profillal, ha rákattint az "*Engedélyezés*" gombra a webszolgáltatások menüjében lévő partneri alkalmazáshoz.
+Amikor létrehozza az alkalmazás engedélyezéséhez használandó profilt, adja meg az ügyfél-rendszergazda nevét a felhasználói profil mezőiben. Ez tulajdonosi jogosultságot rendel a profilhoz. Egy vagy több profil létrehozása után az ügyfélnek be kell jelentkeznie ezzel a profillal, ha rákattint az " *Engedélyezés* " gombra a webszolgáltatások menüjében lévő partneri alkalmazáshoz.
 
 A következő okok miatt ez a művelet nem hajtható végre a normál T&E felügyelethez használt profillal.
 
-* Az ügyfélnek olyannak kell lennie, amely az alkalmazás engedélyezése után megjelenő párbeszéd ablak "*Igen*" gombjára kattint. Ezzel a beállítással visszaigazolhatja, hogy az ügyfél hajlandó-e hozzáférni az adateléréshez, így Ön vagy a partner nem kattinthat erre az Igen gombra.
+* Az ügyfélnek olyannak kell lennie, amely az alkalmazás engedélyezése után megjelenő párbeszéd ablak " *Igen* " gombjára kattint. Ezzel a beállítással visszaigazolhatja, hogy az ügyfél hajlandó-e hozzáférni az adateléréshez, így Ön vagy a partner nem kattinthat erre az Igen gombra.
 
 * Ha a T&E rendszergazdai profillal rendelkező alkalmazást engedélyező ügyfél-rendszergazda elhagyja a vállalatot (ami a profil inaktiválását eredményezi), az adott profil használatával engedélyezett alkalmazások mindaddig nem működnek, amíg az alkalmazás nem engedélyezett egy másik aktív WS felügyeleti profillal. Ezért érdemes különálló WS rendszergazdai profilokat létrehozni.
 
@@ -72,15 +72,15 @@ A következő okok miatt ez a művelet nem hajtható végre a normál T&E felüg
 
 1. Jelentkezzen be a **egyetértő** bérlőbe.
 
-2. Az **Adminisztráció** menüben válassza a **webszolgáltatások**lehetőséget.
+2. Az **Adminisztráció** menüben válassza a **webszolgáltatások** lehetőséget.
    
     ![A bérlő egyetért](./media/concur-provisioning-tutorial/IC721729.png "A bérlő egyetért")
 
-3. A bal oldalon a **webszolgáltatások** ablaktáblán válassza a **partner alkalmazás engedélyezése**lehetőséget.
+3. A bal oldalon a **webszolgáltatások** ablaktáblán válassza a **partner alkalmazás engedélyezése** lehetőséget.
    
     ![Partneri alkalmazás engedélyezése](./media/concur-provisioning-tutorial/ic721730.png "Partneri alkalmazás engedélyezése")
 
-4. Az **alkalmazás engedélyezése** listából válassza a **Azure Active Directory**lehetőséget, majd kattintson az **Engedélyezés**gombra.
+4. Az **alkalmazás engedélyezése** listából válassza a **Azure Active Directory** lehetőséget, majd kattintson az **Engedélyezés** gombra.
    
     ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
@@ -116,7 +116,7 @@ A következő okok miatt ez a művelet nem hajtható végre a normál T&E felüg
 
 Most már létrehozhat egy teszt fiókot is. Várjon akár 20 percet, és ellenőrizze, hogy a fiók szinkronizálása megtörtént-e.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

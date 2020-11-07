@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, rögzítés, érzékelő, SDK, hozzáférés, mélység, videó, kamera, IMU, mozgás, érzékelő, hang, mikrofon, Matroska, Sensor SDK, letöltés, törzs, nyomon követés, támogatás
-ms.openlocfilehash: 61d29284bc2ed9e574e8a19561f19ad6f4259908
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbfe9c52a46cbf7058e6d5ca91008f1f289bfd2
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277614"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357045"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Az Azure Kinect támogatási lehetőségei és erőforrásai
 
@@ -32,9 +32,9 @@ Az Azure Kinect támogatásának több módja is van.
 
 ### <a name="microsoft-qa"></a>Microsoft Q&A
 
-A Microsoft mérnököktől, az Azure legértékesebb szakemberektől (MVP), illetve a szakértői Közösségtől érkező technikai kérdésekkel kapcsolatos gyors és megbízható válaszokért forduljon hozzánk a [Microsoft Q&a](https://aka.ms/azureqa), az Azure előnyben részesített céljaként a közösségi támogatáshoz.
+A Microsoft mérnököktől, az Azure legértékesebb szakemberektől (MVP), illetve a szakértői Közösségtől érkező technikai kérdésekkel kapcsolatos gyors és megbízható válaszokért forduljon hozzánk a [Microsoft Q&a](/answers/products/azure), az Azure előnyben részesített céljaként a közösségi támogatáshoz.
 
-- [Microsoft Q&a for Azure Kinect](https://docs.microsoft.com/answers/topics/azure-kinect-dk.html), ahol kérdéseket tehet fel vagy kereshet a meglévő kérdések között.
+- [Microsoft Q&a for Azure Kinect](/answers/topics/azure-kinect-dk.html), ahol kérdéseket tehet fel vagy kereshet a meglévő kérdések között.
 
 ### <a name="development-azure-kinect-on-azure"></a>Azure Kinect fejlesztése az Azure-ban
 
@@ -50,7 +50,7 @@ A helyszíni Sensor SDK-val és a Body Tracking SDK-val kapcsolatos technikai t�
 
 ### <a name="azure-kinect-dk-device"></a>Azure Kinect DK-eszköz
 
-Mielőtt felveszi a kapcsolatot a hardver támogatásával, győződjön meg arról, hogy az Azure Kinect DK beállítása és frissítése megtörtént. Ha tesztelni szeretné, hogy az eszköz működik-e, használja az [Azure Kinect Viewert](azure-kinect-viewer.md). Tudjon meg többet az [Azure Kinect DK súgójának](https://aka.ms/kinectsupport) oldaláról.
+Mielőtt felveszi a kapcsolatot a hardver támogatásával, győződjön meg arról, hogy az Azure Kinect DK beállítása és frissítése megtörtént. Ha tesztelni szeretné, hogy az eszköz működik-e, használja az [Azure Kinect Viewert](azure-kinect-viewer.md). Tudjon meg többet az [Azure Kinect DK súgójának](./index.yml) oldaláról.
 Érdemes lehet megtekinteni az [ismert problémákat és a hibaelhárítást](troubleshooting.md)is.
 
 [Segítség kérése](https://support.microsoft.com/supportforbusiness/productselection?sapId=f77b1b95-721e-43a0-2db8-b01e81a3f813) az eszköz vagy az érzékelő funkcióinak, a belső vezérlőprogram frissítéseinek és a vásárlási lehetőségeknek.

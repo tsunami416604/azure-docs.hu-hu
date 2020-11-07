@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 6ab23183fa42b87dad68da1d7ef9b1a2f6145750
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1b992150f6013fd597a3e56b243bd6236289b710
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514792"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357997"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>Oktatóanyag: Soloinsight-CloudGate SSO konfigurálása automatikus felhasználó-kiépítés esetén
 
@@ -54,11 +54,11 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
     ![Egyszeri bejelentkezési felügyeleti konzol Soloinsight-CloudGate](media/soloinsight-cloudgate-sso-provisioning-tutorial/admin.png)
 
-2.  Válassza az **általános**lehetőséget.
+2.  Válassza az **általános** lehetőséget.
 
     ![SSO Soloinsight-CloudGate SCIM hozzáadása](media/soloinsight-cloudgate-sso-provisioning-tutorial/config.png)
 
-3.  Görgessen le a lap végéig a **bérlői URL-cím** és a **titkos jogkivonat**lekéréséhez. Másolja a **titkos jogkivonatot**. Ez az érték jelenik meg a titkos jogkivonat mezőben a Soloinsight-CloudGate SSO-alkalmazás létesítés lapján a Azure Portalban.
+3.  Görgessen le a lap végéig a **bérlői URL-cím** és a **titkos jogkivonat** lekéréséhez. Másolja a **titkos jogkivonatot**. Ez az érték jelenik meg a titkos jogkivonat mezőben a Soloinsight-CloudGate SSO-alkalmazás létesítés lapján a Azure Portalban.
 
     ![Egyszeri bejelentkezés Soloinsight-CloudGate jogkivonat létrehozása](media/soloinsight-cloudgate-sso-provisioning-tutorial/token.png)
 
@@ -68,11 +68,11 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés előtt Soloinsight-C
 
 **Ha Soloinsight-CloudGate SSO-t szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -80,7 +80,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés előtt Soloinsight-C
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a következőt: **Soloinsight-CLOUDGATE SSO**, válassza a **SOLOINSIGHT-CloudGate SSO** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a következőt: **Soloinsight-CLOUDGATE SSO** , válassza a **SOLOINSIGHT-CloudGate SSO** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![SSO Soloinsight-CloudGate az eredmények listájában](common/search-new-app.png)
 
@@ -97,7 +97,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza az **Soloinsight-CLOUDGATE SSO**elemet.
+2. Az alkalmazások listában válassza az **Soloinsight-CLOUDGATE SSO** elemet.
 
     ![Az Soloinsight-CloudGate SSO hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -113,13 +113,13 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók Soloinsight-CloudGate egyszeri bejelentkezés**lehetőséget.
+8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók Soloinsight-CloudGate egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezéses felhasználói leképezések Soloinsight-CloudGate](media/soloinsight-cloudgate-sso-provisioning-tutorial/usermappings.png)
 
@@ -153,7 +153,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

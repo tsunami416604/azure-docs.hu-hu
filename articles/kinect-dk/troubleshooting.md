@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: hibaelhárítás, frissítés, hiba, Kinect, visszajelzés, helyreállítás, naplózás, tippek
-ms.openlocfilehash: 2db7b17ffc8b6595107dbc52fae719aa9f2d15db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9711968de061956a945fca183444dd6ebde4ca9c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277608"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356382"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure-beli Kinect ismert problémák és hibaelhárítás
 
-Ez az oldal ismert problémákat és hibaelhárítási tippeket tartalmaz a Sensor SDK és az Azure Kinect DK használata esetén. Lásd még a terméktámogatási [lapokat](https://aka.ms/kinectsupport) a termék hardver-specifikus problémáira.
+Ez az oldal ismert problémákat és hibaelhárítási tippeket tartalmaz a Sensor SDK és az Azure Kinect DK használata esetén. Lásd még a terméktámogatási [lapokat](./index.yml) a termék hardver-specifikus problémáira.
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -144,7 +144,7 @@ Ha nem, akkor hajtsa végre a [gyári beállítások visszaállítását](https:
 
 Ha az eszköz nem sorolja fel az Eszközkezelőt, annak oka az lehet, hogy a rendszer nem támogatott USB3-vezérlőhöz csatlakozik. 
 
-Az Azure Kinect DK a **Windows, az Intel**, a **Texas Instruments (ti)** és a **Renesas** az *egyetlen támogatott gazdagép-vezérlő*. Az Azure Kinect SDK a Windows-platformokon egy egyesített tároló-AZONOSÍTÓra támaszkodik, és az USB 2,0-es és 3,0-es eszközökön is át kell terjednie, hogy az SDK megtalálja az ugyanazon az eszközön fizikailag található mélység-, szín-és hangeszközöket. Linux rendszeren több gazdagép-vezérlő is támogatott, mivel ez a platform a tároló-AZONOSÍTÓnál kevesebbet, az eszköz sorozatszámait pedig többet használ. 
+Az Azure Kinect DK a **Windows, az Intel** , a **Texas Instruments (ti)** és a **Renesas** az *egyetlen támogatott gazdagép-vezérlő*. Az Azure Kinect SDK a Windows-platformokon egy egyesített tároló-AZONOSÍTÓra támaszkodik, és az USB 2,0-es és 3,0-es eszközökön is át kell terjednie, hogy az SDK megtalálja az ugyanazon az eszközön fizikailag található mélység-, szín-és hangeszközöket. Linux rendszeren több gazdagép-vezérlő is támogatott, mivel ez a platform a tároló-AZONOSÍTÓnál kevesebbet, az eszköz sorozatszámait pedig többet használ. 
 
 Az USB-állomásvezérlő témája még bonyolultabbá válik, ha egy számítógépen egynél több állomásvezérlő van telepítve. Ha a gazdagép-vezérlők vegyesen működnek, a felhasználók olyan problémákat tapasztalhatnak, amelyekben bizonyos portok nem működnek megfelelően, és más nem működik. Attól függően, hogy a portok hogyan vannak vezetékesek az esethez, az összes, az Azure Kinect szolgáltatással kapcsolatban felmerülő portot látni lehet
 

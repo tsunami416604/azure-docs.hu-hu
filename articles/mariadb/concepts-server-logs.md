@@ -5,29 +5,31 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/6/2020
+ms.openlocfilehash: 2f9c4cc5bac27e4734c9aabe7895002a045d583d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81272083"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357011"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Lassú lekérdezési naplók a Azure Database for MariaDB
 Azure Database for MariaDB a lassú lekérdezési napló elérhető a felhasználók számára. A tranzakciónaplóhoz való hozzáférés nem támogatott. A lassú lekérdezési napló használatával azonosíthatók a hibaelhárítási teljesítménybeli szűk keresztmetszetek.
 
 A lassú lekérdezési naplóval kapcsolatos további információkért tekintse meg a [lassú lekérdezési napló](https://mariadb.com/kb/en/library/slow-query-log-overview/)MariaDB dokumentációját.
 
+Ha a [lekérdezési tároló](concepts-query-store.md) engedélyezve van a kiszolgálón, láthatja a lekérdezéseket, például a " `CALL mysql.az_procedure_collect_wait_stats (900, 30);` " a lassú lekérdezések naplójában. Ez a viselkedés várható, mivel a lekérdezési tároló szolgáltatás statisztikai adatokat gyűjt a lekérdezésekről. 
+
 ## <a name="configure-slow-query-logging"></a>Lassú lekérdezések naplózásának konfigurálása
 Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. Az engedélyezéséhez állítsa be értékre a következőre: `slow_query_log` . Ez a Azure Portal vagy az Azure CLI használatával engedélyezhető. 
 
 Az egyéb paraméterek a következők:
 
-- **long_query_time**: Ha a lekérdezés a lekérdezés naplózása long_query_time (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
-- **log_slow_admin_statements**: Ha a on olyan felügyeleti utasítások is szerepelnek, mint például a ALTER_TABLE és a ANALYZE_TABLE a slow_query_logba írt utasításokban.
-- **log_queries_not_using_indexes**: meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e a slow_query_log
-- **log_throttle_queries_not_using_indexes**: Ez a paraméter korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, amikor a log_queries_not_using_indexes be van állítva.
-- **log_output**: Ha a "fájl", lehetővé teszi a lassú lekérdezési napló írását a helyi kiszolgáló tárterületére és a diagnosztikai naplók Azure Monitorére. Ha „Nincs”, a lassú lekérdezési napló csak az Azure Monitor Diagnostics Logsban lesz rögzítve. 
+- **long_query_time** : Ha a lekérdezés a lekérdezés naplózása long_query_time (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
+- **log_slow_admin_statements** : Ha a on olyan felügyeleti utasítások is szerepelnek, mint például a ALTER_TABLE és a ANALYZE_TABLE a slow_query_logba írt utasításokban.
+- **log_queries_not_using_indexes** : meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e a slow_query_log
+- **log_throttle_queries_not_using_indexes** : Ez a paraméter korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, amikor a log_queries_not_using_indexes be van állítva.
+- **log_output** : Ha a "fájl", lehetővé teszi a lassú lekérdezési napló írását a helyi kiszolgáló tárterületére és a diagnosztikai naplók Azure Monitorére. Ha „Nincs”, a lassú lekérdezési napló csak az Azure Monitor Diagnostics Logsban lesz rögzítve. 
 
 > [!IMPORTANT]
 > Ha a táblák nincsenek indexelve, a `log_queries_not_using_indexes` és a `log_throttle_queries_not_using_indexes` Paraméterek beállítása hatással lehet a MariaDB teljesítményre, mivel a nem indexelt táblákon futó összes lekérdezés a lassú lekérdezési naplóba kerül.<br><br>
@@ -141,6 +143,6 @@ Ha a lassú lekérdezési naplók a diagnosztikai naplókon keresztül Azure Mon
     | where query_time_d > 10
     ```    
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Lassú lekérdezési naplók konfigurálása a Azure Portal](howto-configure-server-logs-portal.md)
 - [Lassú lekérdezések naplóinak konfigurálása az Azure CLI-ből](howto-configure-server-logs-cli.md)

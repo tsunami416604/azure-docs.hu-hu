@@ -3,12 +3,12 @@ title: IPSec-alagút létrehozása az Azure VMware-megoldásba
 description: Megtudhatja, hogyan hozhat létre virtuális WAN-hubot IPSec-alagút létrehozásához az Azure VMware-megoldásokban.
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: 74cc31abf432954008cbb20bf64825d199732dab
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 63318b9fdd0de5e0ce102fafe332f40f595f38f1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951128"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357844"
 ---
 # <a name="create-an-ipsec-tunnel-into-azure-vmware-solution"></a>IPSec-alagút létrehozása az Azure VMware-megoldásba
 
@@ -26,9 +26,9 @@ A helyek közötti VPN-alagút létrehozásához létre kell hoznia egy nyilván
 
 ## <a name="create-a-virtual-wan-hub"></a>Virtuális WAN-központ létrehozása
 
-1. A Azure Portal keressen rá a **virtuális WAN**-ra. Válassza a **+Hozzáadás** lehetőséget. Megnyílik a WAN létrehozása lap.  
+1. A Azure Portal keressen rá a **virtuális WAN** -ra. Válassza a **+Hozzáadás** lehetőséget. Megnyílik a WAN létrehozása lap.  
 
-2. Adja meg a szükséges mezőket a **WAN létrehozása** lapon, majd válassza a **felülvizsgálat + létrehozás**elemet.
+2. Adja meg a szükséges mezőket a **WAN létrehozása** lapon, majd válassza a **felülvizsgálat + létrehozás** elemet.
    
    | Mező | Érték |
    | --- | --- |
@@ -36,12 +36,12 @@ A helyek közötti VPN-alagút létrehozásához létre kell hoznia egy nyilván
    | **Erőforráscsoport** | A virtuális WAN egy globális erőforrás, és nem korlátozódik egy adott régióra.  |
    | **Erőforráscsoport helye** | A virtuális WAN-központ létrehozásához meg kell adnia az erőforráscsoport helyét.  |
    | **Név** |   |
-   | **Típus** | Válassza a **Standard (normál**) lehetőséget, amely több, mint a VPN Gateway-forgalmat is lehetővé teszi.  |
+   | **Típus** | Válassza a **Standard (normál** ) lehetőséget, amely több, mint a VPN Gateway-forgalmat is lehetővé teszi.  |
 
 
     :::image type="content" source="media/create-ipsec-tunnel/create-wan.png" alt-text="Hozzon létre WAN-t.":::
 
-3. A Azure Portal válassza ki az előző lépésben létrehozott virtuális WAN-t, válassza a **virtuális központ létrehozása**elemet, adja meg a szükséges mezőket, majd válassza a **Tovább: helyről a helyre**lehetőséget. 
+3. A Azure Portal válassza ki az előző lépésben létrehozott virtuális WAN-t, válassza a **virtuális központ létrehozása** elemet, adja meg a szükséges mezőket, majd válassza a **Tovább: helyről a helyre** lehetőséget. 
 
    | Mező | Érték |
    | --- | --- |
@@ -49,7 +49,7 @@ A helyek közötti VPN-alagút létrehozásához létre kell hoznia egy nyilván
    | **Név** |    |
    | **Központ titkos címtartománya** | Adja meg az alhálózatot a következő használatával: `/24` (minimum).  |
 
-    :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="Hozzon létre WAN-t.":::
+    :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="Virtuális központ létrehozása.":::
 
 4. A **helyek közötti** lapon adja meg a helyek közötti átjárót úgy, hogy az összesített átviteli sebességet az **átjáró skálázási egységei** legördülő menüből állítja be. 
 
@@ -67,12 +67,12 @@ A helyek közötti VPN-alagút létrehozásához létre kell hoznia egy nyilván
 
 1. A Azure Portal **legutóbbi erőforrásaiban** válassza ki az előző szakaszban létrehozott virtuális WAN-t.
 
-2. A virtuális központ **áttekintésében** válassza a **kapcsolati**  >  **VPN (helyek közötti)** lehetőséget, majd válassza az **új VPN-hely létrehozása**lehetőséget.
+2. A virtuális központ **áttekintésében** válassza a **kapcsolati**  >  **VPN (helyek közötti)** lehetőséget, majd válassza az **új VPN-hely létrehozása** lehetőséget.
 
 
-    :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics.png" alt-text="Hozzon létre WAN-t.":::  
+    :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics.png" alt-text="Hozzon létre VPN-helyet.":::  
  
-3. Az **alapvető beállítások** lapon adja meg a kötelező mezőket, majd válassza a **Tovább: hivatkozások**elemet. 
+3. Az **alapvető beállítások** lapon adja meg a kötelező mezőket, majd válassza a **Tovább: hivatkozások** elemet. 
 
    | Mező | Érték |
    | --- | --- |
@@ -83,24 +83,24 @@ A helyek közötti VPN-alagút létrehozásához létre kell hoznia egy nyilván
    | **Magánhálózati címterület**  | Adja meg a helyszíni CIDR blokkot.  A rendszer az összes, a helyszíni alagúton keresztüli forgalom irányítására használatos.  A CIDR blokkra csak akkor van szükség, ha nem engedélyezi a BGP-t. |
    | **Csatlakozás a következőhöz:** |   |
 
-4. A **hivatkozások** lapon töltse ki a kötelező mezőket, és válassza a **felülvizsgálat + létrehozás**elemet. A hivatkozások és a szolgáltatók nevének megadásával megkülönböztetni a csomópontok részeként esetlegesen létrehozott átjárók számát. A BGP és az autonóm System number (ASN) egyedinek kell lennie a szervezeten belül.
+4. A **hivatkozások** lapon töltse ki a kötelező mezőket, és válassza a **felülvizsgálat + létrehozás** elemet. A hivatkozások és a szolgáltatók nevének megadásával megkülönböztetni a csomópontok részeként esetlegesen létrehozott átjárók számát. A BGP és az autonóm System number (ASN) egyedinek kell lennie a szervezeten belül.
  
 ## <a name="optional-defining-a-vpn-site-for-policy-based-vpn-site-to-site-tunnels"></a>Választható VPN-hely meghatározása házirend-alapú VPN-helyek közötti alagutakhoz
 
 Ez a szakasz csak a házirend-alapú VPN-ek esetében érvényes. A házirend-alapú (vagy statikus, útválasztás-alapú) VPN-beállításokat a legtöbb esetben a helyszíni VPN-eszköz képességei vezérlik. Szükségük van a helyszíni és az Azure VMware megoldási hálózatokra. Azure-beli virtuális WAN-központtal rendelkező Azure VMware-megoldás esetén *egyetlen* hálózat sem választható ki. Ehelyett meg kell adnia az összes releváns helyi és Azure VMware-megoldás virtuális WAN hub-tartományát. Ezek a hub-tartományok a házirend alap VPN-alagút helyszíni végpontjának titkosítási tartományának megadására szolgálnak. Az Azure VMware megoldás oldalának csak a házirend-alapú forgalom kiválasztó jelzőjének engedélyezésére van szükség. 
 
-1. A Azure Portal lépjen a virtuális WAN-központ webhelyére; a **kapcsolat**területen válassza a **VPN (hely helye)** lehetőséget.
+1. A Azure Portal lépjen a virtuális WAN-központ webhelyére; a **kapcsolat** területen válassza a **VPN (hely helye)** lehetőséget.
 
-2. Válassza ki a VPN-hely nevét, majd a jobb szélen lévő három pontot (...). Ezután válassza **a VPN módosítása szakaszt erre a hubhoz**.
+2. Válassza ki a VPN-hely nevét, majd a jobb szélen lévő három pontot (...). Ezután válassza **a VPN-kapcsolat szerkesztése ehhez a hubhoz** lehetőséget.
  
-    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="Hozzon létre WAN-t." lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
+    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="VPN-kapcsolat szerkesztése ehhez a hubhoz." lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
 
-3. Szerkessze a VPN-hely és a központ közötti kapcsolatot, majd kattintson a **Mentés**gombra.
-   - Internet Protocol biztonság (IPSec), válassza az **Egyéni**lehetőséget.
+3. Szerkessze a VPN-hely és a központ közötti kapcsolatot, majd kattintson a **Mentés** gombra.
+   - Internet Protocol biztonság (IPSec), válassza az **Egyéni** lehetőséget.
    - Házirend alapú forgalom-választó használata, válassza az **Engedélyezés** lehetőséget.
    - Az **1** . és az **IKE 2. fázis (IPSec)** adatainak megadása. 
  
-    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="Hozzon létre WAN-t."::: 
+    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="VPN-kapcsolat szerkesztése"::: 
  
     A házirend-alapú titkosítási tartomány részét képező forgalmi választók vagy alhálózatok a következők:
     
@@ -114,22 +114,22 @@ Ez a szakasz csak a házirend-alapú VPN-ek esetében érvényes. A házirend-al
  
     Csak akkor engedélyezze az **alapértelmezett útválasztást** , ha tűzfalat telepít a központba, és ez a következő ugrás az adott alagúton keresztüli kapcsolatokhoz.
 
-    Kattintson a **Csatlakozás** gombra. A kapcsolat állapota képernyő megjeleníti az alagút létrehozási állapotát.
+    Válassza a **Kapcsolódás** lehetőséget. A kapcsolat állapota képernyő megjeleníti az alagút létrehozási állapotát.
 
 2. Nyissa meg a virtuális WAN áttekintést. Nyissa meg a VPN-hely lapot, és töltse le a VPN-konfigurációs fájlt a helyszíni végpontra való alkalmazásához.  
 
 3. Most az Azure VMware-megoldás ExpressRoute a virtuális WAN-hubhoz fogjuk feljavítani. (Ehhez a lépéshez először létre kell hozza a saját felhőjét.)
 
-    Nyissa meg az Azure VMware Solution Private Cloud **kapcsolati** szakaszát. A **ExpressRoute** lapon válassza a **+ engedélyezési kulcs kérése**lehetőséget. Nevezze el, majd válassza a **Létrehozás**lehetőséget. (A kulcs létrehozásához körülbelül 30 másodperc is eltelhet.) Másolja a ExpressRoute-azonosítót és az engedélyezési kulcsot. 
+    Nyissa meg az Azure VMware Solution Private Cloud **kapcsolati** szakaszát. A **ExpressRoute** lapon válassza a **+ engedélyezési kulcs kérése** lehetőséget. Nevezze el, majd válassza a **Létrehozás** lehetőséget. (A kulcs létrehozásához körülbelül 30 másodperc is eltelhet.) Másolja a ExpressRoute-azonosítót és az engedélyezési kulcsot. 
 
-    :::image type="content" source="media/create-ipsec-tunnel/express-route-connectivity.png" alt-text="Hozzon létre WAN-t.":::
+    :::image type="content" source="media/create-ipsec-tunnel/express-route-connectivity.png" alt-text="Az expressz útvonal-azonosító és az engedélyezési kulcs másolása.":::
 
     > [!NOTE]
     > Az engedélyezési kulcs némi idő elteltével eltűnik, ezért másolja azt, amint megjelenik.
 
-4. Ezután összekapcsoljuk az Azure VMware-megoldást és a VPN-átjárót a virtuális WAN-központban. A Azure Portal nyissa meg a korábban létrehozott virtuális WAN-t. Válassza ki a létrehozott virtuális WAN-hubot, majd a bal oldali panelen válassza a **ExpressRoute** lehetőséget. Válassza a **+ engedélyezési kulcs beváltása**elemet.
+4. Ezután összekapcsoljuk az Azure VMware-megoldást és a VPN-átjárót a virtuális WAN-központban. A Azure Portal nyissa meg a korábban létrehozott virtuális WAN-t. Válassza ki a létrehozott virtuális WAN-hubot, majd a bal oldali panelen válassza a **ExpressRoute** lehetőséget. Válassza a **+ engedélyezési kulcs beváltása** elemet.
 
-    :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="Hozzon létre WAN-t.":::
+    :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="Az engedélyezési kulcs beváltása.":::
 
     Illessze be az engedélyezési kulcsot az engedélyezési kulcs mezőbe és a ExpressRoute AZONOSÍTÓját a **társ-áramkör URI** mezőjébe. Győződjön meg arról, hogy **a ExpressRoute áramkör automatikus hozzárendelése a központhoz beállítás van** kiválasztva. A hivatkozás létrehozásához válassza a **Hozzáadás** lehetőséget. 
 

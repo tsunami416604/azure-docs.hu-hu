@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: f5b14ecf061e8f0c53dc1387d1581bc780d190b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 789dafc61c89515f4b2ef64933262252d1232f16
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850881"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357028"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Figma konfigurálása
 
@@ -57,29 +57,29 @@ Az Azure AD-vel való automatikus Figma konfigurálása előtt le kell kérnie n
 
 2. Lépjen az **általános > frissítési napló beállításai elemre**.
 
-    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Képernyőkép a Figma felügyeleti konzolról. A D scim-teszt nevű bérlő látható. A bérlő mellett egy fogaskerék ikon van kiemelve." border="false":::
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="A Figma felügyeleti konzol általános lapjának képernyőképe. A bejelentkezés és kiépítés alatt a frissítési napló beállításai elem ki van emelve." border="false":::
 
 3. Másolja a **bérlő azonosítóját**. Ezt az értéket fogja használni a SCIM-végpont URL-címének megadásához **a Figma** alkalmazás létesítés lapján a Azure Portal.
 
-    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Képernyőkép a Figma felügyeleti konzolról. A D scim-teszt nevű bérlő látható. A bérlő mellett egy fogaskerék ikon van kiemelve." border="false":::
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Képernyőkép a Figma felügyeleti konzoljának S L S O szakaszáról. A bérlői azonosító címkéje és a másolást kiemelő szomszédos hivatkozás." border="false":::
 
-4. Görgessen le, és kattintson az **API-jogkivonat előállítása**elemre.
+4. Görgessen le, és kattintson az **API-jogkivonat előállítása** elemre.
 
-    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Képernyőkép a Figma felügyeleti konzolról. A D scim-teszt nevű bérlő látható. A bérlő mellett egy fogaskerék ikon van kiemelve." border="false":::
+    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Képernyőkép a Figma felügyeleti konzoljának S C I M kiépítési szakaszáról. A P I token létrehozásakor megjelenő hivatkozás ki van emelve." border="false":::
 
 5. Másolja az  **API-jogkivonat** értékét. Ez az érték a Figma alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal. 
 
-    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Képernyőkép a Figma felügyeleti konzolról. A D scim-teszt nevű bérlő látható. A bérlő mellett egy fogaskerék ikon van kiemelve." border="false":::
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Képernyőkép a Figma felügyeleti konzolján található oldalról. A P I token kiépítés alatt a jogkivonat helyőrzője ki van emelve." border="false":::
 
 ## <a name="add-figma-from-the-gallery"></a>Figma hozzáadása a gyűjteményből
 
 Az Azure AD-vel való automatikus Figma konfigurálásához hozzá kell adnia a Figma az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -87,7 +87,7 @@ Az Azure AD-vel való automatikus Figma konfigurálásához hozzá kell adnia a 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Figma**kifejezést, válassza az **Figma** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Figma** kifejezést, válassza az **Figma** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Figma az eredmények listájában](common/search-new-app.png)
 
@@ -104,7 +104,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Figma**lehetőséget.
+2. Az alkalmazások listában válassza a **Figma** lehetőséget.
 
     ![Az Figma hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -120,13 +120,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 9. Kattintson a **Mentés** gombra.
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Figma**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Figma** lehetőséget.
 
     ![Figma felhasználói leképezések](media/Figma-provisioning-tutorial/figma05.png)
 
@@ -152,7 +152,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

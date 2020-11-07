@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/15/2019
 ms.author: Zhchia
-ms.openlocfilehash: cf71246caef377fb607a9ca7a765ec9ca5999744
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c984beff630ef90ea33a13e2fef1bca0189c2314
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285933"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357939"
 ---
 # <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Storegate konfigurálása
 
@@ -53,7 +53,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 Az Azure AD-vel való automatikus Storegate konfigurálása előtt le kell kérnie néhány kiépítési információt a Storegate-ből.
 
-1. Jelentkezzen be a [Storegate felügyeleti konzolra](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) , és navigáljon a beállításokhoz a jobb felső sarokban található felhasználó ikonra kattintva, és válassza a **Fiókbeállítások**lehetőséget.
+1. Jelentkezzen be a [Storegate felügyeleti konzolra](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) , és navigáljon a beállításokhoz a jobb felső sarokban található felhasználó ikonra kattintva, és válassza a **Fiókbeállítások** lehetőséget.
 
     ![Storegate-SCIM hozzáadása](media/storegate-provisioning-tutorial/admin.png)
 
@@ -71,11 +71,11 @@ Az Azure AD-vel való automatikus Storegate konfigurálása előtt le kell kérn
 
 Az Azure AD-vel való automatikus Storegate konfigurálásához hozzá kell adnia a Storegate az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Az Azure AD-vel való automatikus Storegate konfigurálásához hozzá kell adni
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Storegate**kifejezést, majd az eredmények panelen kattintson a **Storegate** elemre. 
+4. A keresőmezőbe írja be a **Storegate** kifejezést, majd az eredmények panelen kattintson a **Storegate** elemre. 
 
     ![Storegate az eredmények listájában](common/search-new-app.png)
 
@@ -91,11 +91,11 @@ Az Azure AD-vel való automatikus Storegate konfigurálásához hozzá kell adni
 
     ![Storegate OIDC hozzáadása](media/storegate-provisioning-tutorial/signup.png)
 
-6.  Jelentkezzen be a [Storegate felügyeleti konzolra](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) , és navigáljon a beállításokhoz a jobb felső sarokban található felhasználó ikonra kattintva, és válassza a **Fiókbeállítások**lehetőséget.
+6.  Jelentkezzen be a [Storegate felügyeleti konzolra](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) , és navigáljon a beállításokhoz a jobb felső sarokban található felhasználó ikonra kattintva, és válassza a **Fiókbeállítások** lehetőséget.
 
     ![Storegate bejelentkezés](media/storegate-provisioning-tutorial/admin.png)
 
-7. A beállítások között navigáljon a **csapat > beállítások** elemre, majd kattintson az egyszeri bejelentkezési szakaszban a váltás váltógomb lehetőségre, Ezzel elindítja a belefoglalt adatforgalmat. Kattintson az **aktiválás**gombra.
+7. A beállítások között navigáljon a **csapat > beállítások** elemre, majd kattintson az egyszeri bejelentkezési szakaszban a váltás váltógomb lehetőségre, Ezzel elindítja a belefoglalt adatforgalmat. Kattintson az **aktiválás** gombra.
 
     ![Storegate csapat](media/storegate-provisioning-tutorial/team.png)
 
@@ -124,7 +124,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Storegate**lehetőséget.
+2. Az alkalmazások listában válassza a **Storegate** lehetőséget.
 
     ![Az Storegate hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -136,17 +136,17 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://dialpad.com/scim` meg a **bérlői URL-címet**. Adja meg a beolvasott és a korábban mentett értéket a **titkos token**Storegate. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Storegate. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Storegate-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://dialpad.com/scim` meg a **bérlői URL-címet**. Adja meg a beolvasott és a korábban mentett értéket a **titkos token** Storegate. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Storegate. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Storegate-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Storegate**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Storegate** lehetőséget.
 
     ![Storegate felhasználói leképezések](media/storegate-provisioning-tutorial/usermappings.png)
 
@@ -172,7 +172,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

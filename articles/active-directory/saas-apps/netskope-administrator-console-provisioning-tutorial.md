@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5e71566ea7cd2e8953c84d58128e3380a782ba40
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 46766a7439185714648572f3f1b9d51ef96abba6
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516715"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357470"
 ---
 # <a name="tutorial-configure-netskope-user-authentication-for-automatic-user-provisioning"></a>Oktatóanyag: Netskope felhasználói hitelesítés konfigurálása automatikus felhasználó-kiépítés esetén
 
@@ -50,11 +50,11 @@ Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése el�
 
 ## <a name="set-up-netskope-user-authentication-for-provisioning"></a>Netskope felhasználói hitelesítés beállítása a kiépítés számára
 
-1. Jelentkezzen be a [Netskope felhasználói hitelesítés felügyeleti konzolra](https://netskope.goskope.com/). Navigáljon a **kezdőlap > beállítások**elemre.
+1. Jelentkezzen be a [Netskope felhasználói hitelesítés felügyeleti konzolra](https://netskope.goskope.com/). Navigáljon a **kezdőlap > beállítások** elemre.
 
     ![Netskope felhasználói hitelesítés felügyeleti konzolja](media/netskope-administrator-console-provisioning-tutorial/admin.png)
 
-2.  Navigáljon az **eszközökhöz**. Az **eszközök** menüben navigáljon a **Directory-eszközök > scim-integráció**elemre.
+2.  Navigáljon az **eszközökhöz**. Az **eszközök** menüben navigáljon a **Directory-eszközök > scim-integráció** elemre.
 
     ![Netskope felhasználói hitelesítési eszközök](media/netskope-administrator-console-provisioning-tutorial/tools.png)
 
@@ -76,11 +76,11 @@ Az Azure AD-vel való automatikus Netskope felhasználói hitelesítés konfigur
 
 **Az Azure AD Netskope való felhasználói hitelesítés hozzáadásához hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -88,7 +88,7 @@ Az Azure AD-vel való automatikus Netskope felhasználói hitelesítés konfigur
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Netskope felhasználói hitelesítés**elemet, válassza az **Netskope felhasználói hitelesítés** lehetőséget az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Netskope felhasználói hitelesítés** elemet, válassza az **Netskope felhasználói hitelesítés** lehetőséget az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Netskope felhasználói hitelesítés az eredmények listájában](common/search-new-app.png)
 
@@ -108,7 +108,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Netskope felhasználói hitelesítés**lehetőséget.
+2. Az alkalmazások listában válassza a **Netskope felhasználói hitelesítés** lehetőséget.
 
     ![Az Netskope felhasználói hitelesítés hivatkozása az alkalmazások listájában](common/all-applications.png)
 
@@ -120,17 +120,17 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **scim-kiszolgáló URL-címét** , amely korábban a **bérlői URL**-címben lett lekérve. Adja meg a **titkos jogkivonatban**korábban lekért **jogkivonat** -értéket. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a Netskope felhasználói hitelesítéshez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Netskope felhasználói hitelesítési fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **scim-kiszolgáló URL-címét** , amely korábban a **bérlői URL** -címben lett lekérve. Adja meg a **titkos jogkivonatban** korábban lekért **jogkivonat** -értéket. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a Netskope felhasználói hitelesítéshez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Netskope felhasználói hitelesítési fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók Netskope a felhasználói hitelesítés**lehetőséget.
+8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók Netskope a felhasználói hitelesítés** lehetőséget.
 
     ![Netskope felhasználói hitelesítés felhasználói leképezései](media/netskope-administrator-console-provisioning-tutorial/usermappings.png)
 
@@ -164,7 +164,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

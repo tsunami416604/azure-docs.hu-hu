@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5ecb4d249c8c2167ec61740eb9515fd1937230b0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a93e2a88201f32ed99698f2bfbab631c81ed8b35
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519741"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357708"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler privát hozzáférésének (ZPA) konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -50,7 +50,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 ## <a name="set-up-zscaler-private-access-zpa-for-provisioning"></a>A Zscaler privát hozzáférésének (ZPA) beállítása a kiépítés számára
 
-1. Jelentkezzen be a [Zscaler Private Access (ZPA) felügyeleti konzolra](https://admin.private.zscaler.com/). Navigáljon az **adminisztráció > identitásszolgáltató-konfiguráció**elemre.
+1. Jelentkezzen be a [Zscaler Private Access (ZPA) felügyeleti konzolra](https://admin.private.zscaler.com/). Navigáljon az **adminisztráció > identitásszolgáltató-konfiguráció** elemre.
 
     ![Zscaler magánhálózati hozzáférés (ZPA) felügyeleti konzol](media/zscaler-private-access-provisioning-tutorial/idpconfig.png)
 
@@ -58,7 +58,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
     ![Zscaler privát hozzáférés (ZPA) SCIM hozzáadása](media/zscaler-private-access-provisioning-tutorial/plusicon.png)
 
-3. A identitásszolgáltató hozzáadásához kövesse a **identitásszolgáltató-konfiguráció hozzáadása** varázslót. Hagyja meg az **egyszeri bejelentkezés** mezőt a **felhasználó**értékre. Adjon meg egy **nevet** , és válassza ki a **tartományokat** a legördülő listából. A tovább **gombra** kattintva navigáljon a következő ablakra.
+3. A identitásszolgáltató hozzáadásához kövesse a **identitásszolgáltató-konfiguráció hozzáadása** varázslót. Hagyja meg az **egyszeri bejelentkezés** mezőt a **felhasználó** értékre. Adjon meg egy **nevet** , és válassza ki a **tartományokat** a legördülő listából. A tovább **gombra** kattintva navigáljon a következő ablakra.
 
     ![Zscaler privát hozzáférés (ZPA) identitásszolgáltató hozzáadása](media/zscaler-private-access-provisioning-tutorial/addidp.png)
 
@@ -70,7 +70,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
     ![Zscaler privát hozzáférés (ZPA) – tanúsítvány feltöltése](media/zscaler-private-access-provisioning-tutorial/uploadfile.png)
 
-6.  Görgessen le az **egyszeri bejelentkezési URL-cím** és a **IDENTITÁSSZOLGÁLTATÓ-entitás azonosítójának**megadásához.
+6.  Görgessen le az **egyszeri bejelentkezési URL-cím** és a **IDENTITÁSSZOLGÁLTATÓ-entitás azonosítójának** megadásához.
 
     ![Zscaler privát hozzáférés (ZPA) identitásszolgáltató azonosítója](media/zscaler-private-access-provisioning-tutorial/idpid.png)
 
@@ -78,7 +78,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
     ![Zscaler privát hozzáférés (ZPA) jogkivonat létrehozása](media/zscaler-private-access-provisioning-tutorial/token.png)
 
-8.  A **bérlői URL-cím** megkereséséhez navigáljon az **Adminisztráció > identitásszolgáltató-konfiguráció**elemre. Kattintson a lapon látható, újonnan hozzáadott identitásszolgáltató-konfiguráció nevére.
+8.  A **bérlői URL-cím** megkereséséhez navigáljon az **Adminisztráció > identitásszolgáltató-konfiguráció** elemre. Kattintson a lapon látható, újonnan hozzáadott identitásszolgáltató-konfiguráció nevére.
 
     ![Zscaler magánhálózati hozzáférés (ZPA) identitásszolgáltató neve](media/zscaler-private-access-provisioning-tutorial/idpname.png)
 
@@ -93,11 +93,11 @@ Mielőtt konfigurálja a Zscaler privát hozzáférését (ZPA) az Azure AD-vel 
 
 **A következő lépésekkel adhatja hozzá a Zscaler privát hozzáférését (ZPA) az Azure AD Application Galleryből:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -105,7 +105,7 @@ Mielőtt konfigurálja a Zscaler privát hozzáférését (ZPA) az Azure AD-vel 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Zscaler privát elérését (ZPA)**, válassza az **Zscaler privát elérését (ZPA)** az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Zscaler privát elérését (ZPA)** , válassza az **Zscaler privát elérését (ZPA)** az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Zscaler privát hozzáférése (ZPA) az eredmények listájában](common/search-new-app.png)
 
@@ -137,11 +137,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címben**korábban lekért **scim-szolgáltatói végpont** értékét. Adja meg a **titkos jogkivonatban**korábban lekért **tulajdonosi jogkivonat** értékét. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a Zscaler privát eléréséhez (ZPA). Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Zscaler magánhálózati hozzáférési (ZPA) fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címben** korábban lekért **scim-szolgáltatói végpont** értékét. Adja meg a **titkos jogkivonatban** korábban lekért **tulajdonosi jogkivonat** értékét. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a Zscaler privát eléréséhez (ZPA). Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Zscaler magánhálózati hozzáférési (ZPA) fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
@@ -181,7 +181,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

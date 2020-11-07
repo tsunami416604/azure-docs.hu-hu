@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 78ba57d485f9842ad8531ce22a2b932aa1a1d28b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b4bfa7e9bf457d79c6c4a0b5255bce4fe36dff4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850421"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358677"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Foodee konfigurálása
 
@@ -57,13 +57,13 @@ Mielőtt az Azure AD-vel konfigurálja az automatikus felhasználó-kiépítés 
 
     :::image type="content" source="media/Foodee-provisioning-tutorial/tenant.png" alt-text="Képernyőkép a Foodee Enterprise Portal főmenüjéről. A menüben látható a bérlői azonosító helyőrzője." border="false":::
 
-1. Az **Enterprise Portal**területen válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **Enterprise Portal** területen válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![A Foodee Enterprise Portal bal oldali menü](media/Foodee-provisioning-tutorial/scim.png)
 
 1. Másolja az értéket az **API-jogkivonat** mezőbe későbbi használatra. A Foodee alkalmazás **üzembe** helyezés lapjának **titkos jogkivonat** mezőjébe írja be a Azure Portal.
 
-    :::image type="content" source="media/Foodee-provisioning-tutorial/token.png" alt-text="Képernyőkép a Foodee Enterprise Portal főmenüjéről. A menüben látható a bérlői azonosító helyőrzője." border="false":::
+    :::image type="content" source="media/Foodee-provisioning-tutorial/token.png" alt-text="Képernyőkép a Foodee Enterprise portálon található oldalról. A P I token értéke kiemelve." border="false":::
 
 ## <a name="add-foodee-from-the-gallery"></a>Foodee hozzáadása a gyűjteményből
 
@@ -71,11 +71,11 @@ Az Azure AD-vel történő automatikus Foodee konfigurálásához az Azure ad Fo
 
 Az Azure AD Foodee hozzáadásához tegye a következőket:
 
-1. A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget.
 
     ![Az Azure Active Directory parancs](common/select-azuread.png)
 
-1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
+1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Az Azure AD Foodee hozzáadásához tegye a következőket:
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-1. A keresőmezőbe írja be a **Foodee**kifejezést, válassza az **Foodee** elemet az eredmények ablaktábláján, majd válassza a **Hozzáadás** lehetőséget az alkalmazás hozzáadásához.
+1. A keresőmezőbe írja be a **Foodee** kifejezést, válassza az **Foodee** elemet az eredmények ablaktábláján, majd válassza a **Hozzáadás** lehetőséget az alkalmazás hozzáadásához.
 
     ![Foodee az eredmények listájában](common/search-new-app.png)
 
@@ -96,11 +96,11 @@ Ebben a szakaszban az Azure AD-kiépítési szolgáltatást úgy konfigurálja, 
 
 Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a következő módon:
 
-1. A [Azure Portal](https://portal.azure.com)válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-1. Az **alkalmazások** listában válassza a **Foodee**lehetőséget.
+1. Az **alkalmazások** listában válassza a **Foodee** lehetőséget.
 
     ![Az Foodee hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -108,17 +108,17 @@ Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a k�
 
     ![Képernyőkép a felügyeleti lehetőségek kezeléséről a kiépítési lehetőséggel.](common/provisioning.png)
 
-1. A **létesítési mód** legördülő listában válassza az **automatikus**lehetőséget.
+1. A **létesítési mód** legördülő listában válassza az **automatikus** lehetőséget.
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-1. A **rendszergazdai hitelesítő adatok**területen tegye a következőket:
+1. A **rendszergazdai hitelesítő adatok** területen tegye a következőket:
 
    a. A **bérlői URL-cím** mezőben adja meg a korábban lekért **https: \/ /concierge.Food.ee/scim/v2** értéket.
 
    b. A **titkos jogkivonat** mezőben adja meg a korábban lekért **API-jogkivonat** értékét.
    
-   c. A **kapcsolat tesztelése**lehetőségre kattintva biztosíthatja, hogy az Azure ad csatlakozhasson a Foodee. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Foodee-fiókja rendszergazdai jogosultságokkal rendelkezik, majd próbálkozzon újra.
+   c. A **kapcsolat tesztelése** lehetőségre kattintva biztosíthatja, hogy az Azure ad csatlakozhasson a Foodee. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Foodee-fiókja rendszergazdai jogosultságokkal rendelkezik, majd próbálkozzon újra.
 
     ![A kapcsolat tesztelése hivatkozás](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -126,29 +126,29 @@ Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a k�
 
     ![Az értesítő E-mail szövegmező](common/provisioning-notification-email.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
-1. A **leképezések**területen válassza **a Azure Active Directory felhasználók szinkronizálása a Foodee**lehetőséget.
+1. A **leképezések** területen válassza **a Azure Active Directory felhasználók szinkronizálása a Foodee** lehetőséget.
 
-    :::image type="content" source="media/Foodee-provisioning-tutorial/usermapping.png" alt-text="Képernyőkép a Foodee Enterprise Portal főmenüjéről. A menüben látható a bérlői azonosító helyőrzője." border="false":::
+    :::image type="content" source="media/Foodee-provisioning-tutorial/usermapping.png" alt-text="Képernyőfelvétel a leképezésekről szakasz. A név alatt szinkronizálja Azure Active Directory felhasználókat a Foodee." border="false":::
 
-1. Az **attribútumok hozzárendelése**területen tekintse át az Azure ad-ből a Foodee-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Foodee *felhasználói fiókjainak* a frissítési műveletekhez való megfeleltetésére szolgálnak. 
+1. Az **attribútumok hozzárendelése** területen tekintse át az Azure ad-ből a Foodee-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Foodee *felhasználói fiókjainak* a frissítési műveletekhez való megfeleltetésére szolgálnak. 
 
-    :::image type="content" source="media/Foodee-provisioning-tutorial/userattribute.png" alt-text="Képernyőkép a Foodee Enterprise Portal főmenüjéről. A menüben látható a bérlői azonosító helyőrzője." border="false":::
+    :::image type="content" source="media/Foodee-provisioning-tutorial/userattribute.png" alt-text="Képernyőkép az attribútum-hozzárendelések lapról. A táblázat felsorolja a Azure Active Directory és a Foodee attribútumokat, valamint a megfeleltetések sorrendjét." border="false":::
 
-1. A módosítások elvégzéséhez válassza a **Mentés**lehetőséget.
-1. A **leképezések**területen válassza **a Azure Active Directory csoportok szinkronizálása a Foodee**lehetőséget.
+1. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
+1. A **leképezések** területen válassza **a Azure Active Directory csoportok szinkronizálása a Foodee** lehetőséget.
 
-    :::image type="content" source="media/Foodee-provisioning-tutorial/groupmapping.png" alt-text="Képernyőkép a Foodee Enterprise Portal főmenüjéről. A menüben látható a bérlői azonosító helyőrzője." border="false":::
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupmapping.png" alt-text="Képernyőfelvétel a leképezésekről szakasz. A név alatt szinkronizálja Azure Active Directory csoportok Foodee." border="false":::
 
-1. Az **attribútumok hozzárendelése**területen tekintse át az Azure ad-ből a Foodee-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Foodee tartozó *csoportfiókok* egyeztetésére szolgálnak a frissítési műveletekhez.
+1. Az **attribútumok hozzárendelése** területen tekintse át az Azure ad-ből a Foodee-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Foodee tartozó *csoportfiókok* egyeztetésére szolgálnak a frissítési műveletekhez.
 
-    :::image type="content" source="media/Foodee-provisioning-tutorial/groupattribute.png" alt-text="Képernyőkép a Foodee Enterprise Portal főmenüjéről. A menüben látható a bérlői azonosító helyőrzője." border="false":::
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupattribute.png" alt-text="Képernyőkép az attribútum-hozzárendelések lapról. A táblázat felsorolja Azure Active Directory attribútumokat, a Foodee attribútumokat és a megfeleltetések sorrendjét." border="false":::
 
-1. A módosítások elvégzéséhez válassza a **Mentés**lehetőséget.
+1. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
 1. Adja meg a hatóköri szűrőket. Ha szeretné megtudni, hogyan tekintheti meg a [hatóköri szűrő oktatóanyagát](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md), olvassa el a következő témakört:.
 
-1. Az Azure AD-kiépítési szolgáltatás Foodee való engedélyezéséhez a **Beállítások** szakaszban módosítsa a **kiépítési állapotot** **a**következőre:.
+1. Az Azure AD-kiépítési szolgáltatás Foodee való engedélyezéséhez a **Beállítások** szakaszban módosítsa a **kiépítési állapotot** **a** következőre:.
 
     ![A kiépítési állapot kapcsolója](common/provisioning-toggle-on.png)
 
@@ -156,7 +156,7 @@ Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a k�
 
     ![A kiépítési hatókör legördülő listája](common/provisioning-scope.png)
 
-1. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget.
+1. Ha készen áll a létesítésre, válassza a **Mentés** lehetőséget.
 
     ![A kiépítési konfiguráció mentése gomb](common/provisioning-configuration-save.png)
 
@@ -164,7 +164,7 @@ Az előző művelet elindítja a **hatókör** legördülő listában definiált
 
 A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésére mutató hivatkozásokat. A jelentés az Azure AD-kiépítési szolgáltatás által a Foodee-on végrehajtott összes műveletet ismerteti. További információ: [a felhasználó kiépítési állapotának ellenõrzése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók kiépítés](../app-provisioning/check-status-user-account-provisioning.md)során.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

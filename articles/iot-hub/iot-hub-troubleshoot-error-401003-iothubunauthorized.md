@@ -6,17 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: troubleshooting
-ms.date: 01/30/2020
+ms.date: 11/06/2020
 ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: af057750e81086bf691b87057da97af3de19cd3b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8fb891d5a47203c9905a7def9d04199d24327f70
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909641"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357249"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -42,7 +42,7 @@ A következő hibaüzenetek egyikével sikertelen IoT Hub kérelmek:
 
 ### <a name="cause-1"></a>1\. ok
 
-A MQTT esetében egyes SDK-k az IoT Hub-t használják, hogy kiállítsák a leválasztást, amikor az SAS-token lejár a frissítéshez. Tehát: 
+A MQTT esetében egyes SDK-k az IoT Hub-t használják, hogy kiállítsák a leválasztást, amikor az SAS-token lejár a frissítéshez. Tehát:
 
 1. Az SAS-token lejár
 1. IoT Hub észleli a lejáratot, és leválasztja az eszközt a **401003 IoTHubUnauthorized**
@@ -58,9 +58,11 @@ A IoT Hub nem tudta hitelesíteni az Auth fejlécét, szabályát vagy kulcsát.
 
 ### <a name="solution-1"></a>1\. megoldás
 
-Nincs szükség beavatkozásra, ha az IoT SDK-t használja az eszköz kapcsolati karakterláncával való kapcsolathoz. A IoT SDK újragenerálta az új tokent az SAS-jogkivonat lejáratának újrakapcsolódásához. 
+Nincs szükség beavatkozásra, ha az IoT SDK-t használja az eszköz kapcsolati karakterláncával való kapcsolathoz. A IoT SDK újragenerálta az új tokent az SAS-jogkivonat lejáratának újrakapcsolódásához.
 
-Ha a hibák mennyisége aggodalomra ad okot, váltson a C SDK-ra, amely megújítja az SAS-jogkivonatot a lejárat előtt. Emellett a AMQP az SAS-jogkivonat a kapcsolat leválasztása nélkül is frissíthető.
+Az alapértelmezett jogkivonat élettartama 60 perc az SDK-k között. egyes SDK-k esetében azonban a jogkivonat élettartama és a jogkivonat megújítási küszöbértéke konfigurálható. Emellett az eszköz leválasztása és a jogkivonat-megújítások újracsatlakozása során létrehozott hibák eltérnek az egyes SDK-kal. Ha többet szeretne megtudni arról, hogy miként állapítható meg, hogy az eszköz milyen SDK-t használ a naplókban, tekintse meg az [MQTT-eszköz leválasztásának viselkedését az Azure IoT SDK](iot-hub-troubleshoot-connectivity.md#mqtt-device-disconnect-behavior-with-azure-iot-sdks)-k használatával
+
+Ha az eszközök fejlesztői számára a hibák mennyisége aggodalomra ad okot, váltson át a C SDK-ra, amely megújítja az SAS-jogkivonatot a lejárat előtt. A AMQP esetében az SAS-token leválasztás nélkül is frissíthető.
 
 ### <a name="solution-2"></a>2\. megoldás
 
@@ -72,7 +74,7 @@ Ha a hibák mennyisége aggodalomra ad okot, váltson a C SDK-ra, amely megújí
 - Az engedélyezési hitelesítő adat jól formázott a használt protokollhoz. További információ: [a IoT hub hozzáférésének szabályozása](iot-hub-devguide-security.md).
 - A használt engedélyezési szabály jogosult a kért műveletre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ahhoz, hogy könnyebben IoT Hub a hitelesítés, javasoljuk, hogy az [Azure IoT SDK](iot-hub-devguide-sdks.md)-kat használja.
 - A IoT Hub használatával történő hitelesítés részletes ismertetését lásd: [a IoT hub hozzáférésének szabályozása](iot-hub-devguide-security.md).

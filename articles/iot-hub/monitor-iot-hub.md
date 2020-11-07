@@ -5,13 +5,13 @@ author: robinsh
 ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
-ms.date: 10/22/2020
-ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/06/2020
+ms.openlocfilehash: dc239843c4ed597949b4ba00c44ec84fc70741a8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128879"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357606"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Az Azure IoT Hub figyelése
 
@@ -65,13 +65,13 @@ Azure Portal a IoT hub bal oldali paneljén a **figyelés** elemre kattintva, ma
 
 Az alábbi képernyőfelvételen egy diagnosztikai beállítás látható az erőforrás-napló típusának *kapcsolódási műveleteinek* és minden platform metrikájának egy log Analytics munkaterületre történő átirányításához.
 
-:::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="Alapértelmezett metrikai diagramok az IoT hub – áttekintés oldalon.":::
+:::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="Az IoT hub diagnosztikai beállítások panelje.":::
 
 A diagnosztikai beállításoknak a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes folyamatért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák összegyűjtéséhez az Azure-ban](/azure/azure-monitor/platform/diagnostic-settings) . Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer milyen típusú naplókat gyűjtsön. Az Azure IoT Hub kategóriái a [monitoring azure IoT hub adathivatkozása alatt találhatók az erőforrás-naplók](monitor-iot-hub-reference.md#resource-logs)területen.
 
 Ha más helyszínekre IoT Hub a platform metrikáit, vegye figyelembe a következőket:
 
-- A következő platform-mérőszámok nem exportálhatók a diagnosztikai beállítások használatával: *csatlakoztatott eszközök (előzetes verzió)* és *összes eszköz (előzetes verzió)* .
+- A következő platform-mérőszámok nem exportálhatók a diagnosztikai beállítások használatával: *csatlakoztatott eszközök (előzetes verzió)* és *összes eszköz (előzetes verzió)*.
 
 - A többdimenziós metrikák, például bizonyos [útválasztási mérőszámok](monitor-iot-hub-reference.md#routing-metrics)jelenleg egy dimenzió értékekben összesítve összesített, egydimenziós mérőszámként lesznek exportálva. További részletekért lásd: [platform metrikáinak exportálása más helyszínekre](/azure/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations).
 
@@ -81,7 +81,7 @@ Az Azure IoT Hub mérőszámait más Azure-szolgáltatásokból származó metri
 
 Azure Portal a IoT hub bal oldali paneljén a **figyelés** elemre kattintva kiválaszthatja a **metrikákat** a metrikák Explorer hatókörön belül, alapértelmezés szerint az IoT hub által kibocsátott platform mérőszámokra:
 
-:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="Alapértelmezett metrikai diagramok az IoT hub – áttekintés oldalon.":::
+:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="Metrikák Explorer lapja egy IoT hubhoz.":::
 
 Az Azure IoT Hub gyűjtött platform-metrikák listáját az [Azure Monitoring IoT hub adathivatkozása című témakör metrikái](monitor-iot-hub-reference.md#metrics)című részében tekintheti meg. Az összes Azure-szolgáltatáshoz összegyűjtött platform-metrikák listáját a [Azure monitor támogatott mérőszámai](/azure/azure-monitor/platform/metrics-supported)című témakörben tekintheti meg.
 
@@ -97,7 +97,7 @@ Az adatok Azure Monitor naplókba való továbbításához létre kell hoznia eg
 
 Azure Portal a IoT hub bal oldali paneljén **Monitoring** található **naplók** lehetőség kiválasztásával elvégezheti log Analytics lekérdezések hatókörét, alapértelmezés szerint az IoT hub Azure monitor naplóiban gyűjtött naplókhoz és metrikához.
 
-:::image type="content" source="media/monitor-iot-hub/logs-portal.png" alt-text="Alapértelmezett metrikai diagramok az IoT hub – áttekintés oldalon.":::
+:::image type="content" source="media/monitor-iot-hub/logs-portal.png" alt-text="Az IoT hub naplóinak lapja.":::
 
 A Azure Monitor naplók és a Log Analytics által lekérdezhető táblák listáját a következő témakörben találhatja meg: [Azure monitor logs Tables in the monitoring Azure IoT hub adathivatkozás](monitor-iot-hub-reference.md#azure-monitor-logs-tables).
 
@@ -107,7 +107,7 @@ A [műveletnapló](/azure/azure-monitor/platform/activity-log) egy Azure-beli pl
 
 Amikor útválasztást IoT Hub a platform metrikáit Azure Monitor naplókba, vegye figyelembe a következőket:
 
-- A következő platform-mérőszámok nem exportálhatók a diagnosztikai beállítások használatával: *csatlakoztatott eszközök (előzetes verzió)* és *összes eszköz (előzetes verzió)* .
+- A következő platform-mérőszámok nem exportálhatók a diagnosztikai beállítások használatával: *csatlakoztatott eszközök (előzetes verzió)* és *összes eszköz (előzetes verzió)*.
 
 - A többdimenziós metrikák, például bizonyos [útválasztási mérőszámok](monitor-iot-hub-reference.md#routing-metrics)jelenleg egy dimenzió értékekben összesítve összesített, egydimenziós mérőszámként lesznek exportálva. További részletekért lásd: [platform metrikáinak exportálása más helyszínekre](/azure/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations).
 
@@ -133,7 +133,7 @@ A következő táblázat a különböző Azure IoT SDK-k által használt SDK-ne
 | com. microsoft. Azure. iothub. Service. SDK | Java Service SDK |
 | com. microsoft. Azure. SDK. IOT. IOT-Device-Client | Java-eszköz SDK |
 | com. microsoft. Azure. SDK. IOT. IOT-Service-Client | Java Service SDK |
-| C# | Beágyazott C |
+| C | Beágyazott C |
 | C + (OSSimplified = Azure RTOS) | Azure RTOS |
 
 Ha IoT Hub erőforrás-naplókon végez lekérdezéseket, kinyerheti az SDK Version tulajdonságát. A következő lekérdezés például kinyeri az SDK Version tulajdonságát (és az eszköz AZONOSÍTÓját) a kapcsolatok műveletek által visszaadott tulajdonságokból. Ez a két tulajdonság a művelet időpontjával és annak az IoT hub erőforrás-azonosítójával együtt íródik, amelyhez az eszköz csatlakozik.
@@ -292,7 +292,15 @@ Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek ta
 
 A platform metrikái alapján létrehozott riasztási szabályok létrehozásakor vegye figyelembe, hogy a darabszámban összegyűjtött IoT Hub platform metrikák esetében előfordulhat, hogy egyes összesítések nem lesznek elérhetők vagy használhatók. További információ: [támogatott összesítések a monitoring Azure IoT hub adatreferenciában](monitor-iot-hub-reference.md#supported-aggregations).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="monitor-per-device-disconnects-with-event-grid"></a>Az eszközön lévő leválasztások figyelése Event Grid
+
+A Azure Monitor metrikát, *csatlakoztatott eszközöket* biztosít, amelyekkel figyelheti a IoT hubhoz csatlakoztatott eszközök számát, és riasztást indíthat, ha a csatlakoztatott eszközök száma a küszöbérték alá csökken. Habár ez bizonyos helyzetekben elegendő lehet, [Azure Event Grid](/azure/event-grid/) egy kis késésű, eszközönkénti figyelési megoldást biztosít, amellyel nyomon követheti az eszközök kapcsolatait a kritikus fontosságú eszközök és infrastruktúra számára.
+
+A Event Grid segítségével előfizethet a IoT Hub [ **DeviceConnected** és a **DeviceDisconnected** eseményekre](iot-hub-event-grid.md#event-types) a riasztások elindításához és az eszköz kapcsolódási állapotának figyeléséhez. A Event Grid sokkal alacsonyabb az esemény késése, mint Azure Monitor, és a csatlakoztatott eszközök teljes száma helyett a figyelést eszközönkénti alapon végezheti el. Ezek a tényezők Event Grid az előnyben részesített módszert a kritikus fontosságú eszközök és infrastruktúra kapcsolatainak figyelésére. Javasoljuk, hogy a Event Grid használatával figyelje az eszközök kapcsolatait éles környezetekben.
+
+További információ a Event Grid és Azure Monitor eszközök kapcsolatának figyeléséről: az [Azure IoT hub figyelése, diagnosztizálása és megoldásainak leválasztása](iot-hub-troubleshoot-connectivity.md).
+
+## <a name="next-steps"></a>További lépések
 
 - A [szolgáltatásnév] által létrehozott mérőszámok, naplók és egyéb fontos értékek hivatkozását lásd: az [Azure IoT hub adatreferenciájának figyelése](monitor-iot-hub-reference.md) .
 

@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 197b7ff0a6c613a019007ba507d678b619c9afd4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015483"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358592"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása az Azure AD-beli felhasználók üzembe helyezéséhez
 Ennek az oktatóanyagnak a célja, hogy megmutassa a munkavégző adatok munkanapokból Azure Active Directoryba való kiépítéséhez szükséges lépéseket. 
@@ -93,15 +93,15 @@ A következő szakaszok ismertetik a felhasználók kiépítésének a munkahely
 
 1. Nyissa meg a következőt: <https://portal.azure.com>.
 
-2. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
+2. A Azure Portal keresse meg és válassza a **Azure Active Directory** lehetőséget.
 
-3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
+3. Válassza a **vállalati alkalmazások** , majd **az összes alkalmazás** lehetőséget.
 
-4. Válassza az **alkalmazás hozzáadása**lehetőséget, majd válassza az **összes** kategóriát.
+4. Válassza az **alkalmazás hozzáadása** lehetőséget, majd válassza az **összes** kategóriát.
 
-5. Keresse meg a **munkanapokat az Azure ad-beli felhasználói kiépítési**feladatokhoz, és adja hozzá az alkalmazást a katalógusból.
+5. Keresse meg a **munkanapokat az Azure ad-beli felhasználói kiépítési** feladatokhoz, és adja hozzá az alkalmazást a katalógusból.
 
-6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés**lehetőséget.
+6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
 
 7. Módosítsa a **kiépítési** **módot** **automatikusra**.
 
@@ -134,7 +134,7 @@ A következő szakaszok ismertetik a felhasználók kiépítésének a munkahely
 
 Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan áramlanak a munkanapokból a csak felhőalapú felhasználók Azure Active Directory.
 
-1. A **hozzárendelések**alatt a kiépítés lapon kattintson a **munkatársak szinkronizálása az Azure ad-be**lehetőségre.
+1. A **hozzárendelések** alatt a kiépítés lapon kattintson a **munkatársak szinkronizálása az Azure ad-be** lehetőségre.
 
 2. A **forrás objektum hatóköre** mezőben kiválaszthatja, hogy a munkanapokon mely felhasználóknak kell szerepelniük az Azure ad-be való kiépítés hatókörében az attribútumok alapján létrehozott szűrők definiálásával. Az alapértelmezett hatókör a "minden felhasználó a munkanapokon". Példa szűrők:
 
@@ -193,7 +193,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 > [!TIP]
 > Alapértelmezés szerint a kiépítési szolgáltatás bekapcsolásakor a rendszer kiépítési műveleteket kezdeményez a hatókörben lévő összes felhasználó számára. Ha hibák léptek fel a leképezési vagy a munkanapokon tárolt adatokkal kapcsolatban, a kiépítési feladat meghiúsulhat, és a karanténba helyezési állapotba kerülhet. Ennek elkerüléséhez ajánlott eljárásként Azt javasoljuk, hogy a **forrás objektum hatókör** -szűrőjét konfigurálja, és tesztelje az attribútumok hozzárendeléseit néhány tesztelési felhasználóval, mielőtt elindítja a teljes szinkronizálást az összes felhasználó számára. Miután meggyőződött arról, hogy a leképezések működnek, és megadja a kívánt eredményeket, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
 
-1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
+1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a** következőre:.
 
 2. Kattintson a **Mentés** gombra.
 
@@ -206,7 +206,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
    > [!div class="mx-imgBorder"]
    > ![Kiépítés folyamatjelző sáv](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További információ a bejövő kiépítés támogatott munkanapokhoz tartozó attribútumairól](../app-provisioning/workday-attribute-reference.md)
 * [Tudnivalók a munkanap visszaírási konfigurálásáról](workday-writeback-tutorial.md)
