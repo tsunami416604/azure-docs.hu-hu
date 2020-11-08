@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea153b1927a337be29c2eb69e2417cc250abf5e8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086439"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366051"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Szabályozási problémák kezelése (429 – "túl sok kérés" hiba) a Azure Logic Apps
 
@@ -35,23 +35,23 @@ Ha ezen a szinten szeretné megkeresni a szabályozási eseményeket, tekintse m
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. A logikai alkalmazás menü **figyelés**területén válassza a **metrikák**lehetőséget.
+1. A logikai alkalmazás menü **figyelés** területén válassza a **metrikák** lehetőséget.
 
-1. A **diagram címe**területen válassza a **metrika hozzáadása** lehetőséget, hogy egy újabb mérőszámot adjon hozzá a meglévőhöz.
+1. A **diagram címe** területen válassza a **metrika hozzáadása** lehetőséget, hogy egy újabb mérőszámot adjon hozzá a meglévőhöz.
 
-1. Az első metrika sávban a **metrika** listából válassza a **művelet által szabályozott események**elemet. A második metrika sávban, a **metrika** listából válassza ki az **aktiválási szabályozott események**elemet.
+1. Az első metrika sávban a **metrika** listából válassza a **művelet által szabályozott események** elemet. A második metrika sávban, a **metrika** listából válassza ki az **aktiválási szabályozott események** elemet.
 
 A szabályozás ezen a szinten való kezeléséhez a következő lehetőségek közül választhat:
 
 * Korlátozza az egyszerre futtatható logikai alkalmazás-példányok számát.
 
-  Alapértelmezés szerint, ha a logikai alkalmazás trigger-feltétele többször is teljesül egyszerre, a logikai alkalmazás több trigger-példánya egyidejűleg vagy *párhuzamosan*fut. Ez a viselkedés azt jelenti, hogy minden eseményindító-példány az előző munkafolyamat-példány futásának befejeződése előtt következik be.
+  Alapértelmezés szerint, ha a logikai alkalmazás trigger-feltétele többször is teljesül egyszerre, a logikai alkalmazás több trigger-példánya egyidejűleg vagy *párhuzamosan* fut. Ez a viselkedés azt jelenti, hogy minden eseményindító-példány az előző munkafolyamat-példány futásának befejeződése előtt következik be.
 
   Habár a párhuzamosan futtatható trigger-példányok alapértelmezett száma [korlátlan](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits), ezt a számot korlátozhatja [az trigger párhuzamossági beállításának bekapcsolásával](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency), és szükség esetén az alapértelmezett értéktől eltérő korlátot is megadhat.
 
 * Magas átviteli sebességű üzemmód engedélyezése.
 
-  A logikai alkalmazások [alapértelmezett korlátja a legfeljebb 5 perces időszakra futtatható műveletek száma](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Ha ezt a korlátot a műveletek maximális számához szeretné emelni, kapcsolja be a [nagy átviteli sebességet](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode) a logikai alkalmazásban.
+  A logikai alkalmazások [alapértelmezett korlátja a legfeljebb 5 perces időszakra futtatható műveletek száma](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Ha ezt a korlátot a műveletek maximális számához szeretné emelni, kapcsolja be a [nagy átviteli sebességet](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode) a logikai alkalmazásban.
 
 * Tiltsa le a tömb leválasztását ("felosztás bekapcsolva") az eseményindítók viselkedését.
 
@@ -59,7 +59,7 @@ A szabályozás ezen a szinten való kezeléséhez a következő lehetőségek k
 
 * Újrabontási műveletek kisebb logikai alkalmazásokba.
 
-  Ahogy azt korábban említettük, egy logikai alkalmazás a [műveletek alapértelmezett számú műveletére korlátozódik, amely 5 percen belül futtatható](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Bár a [magas átviteli üzemmód](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)engedélyezésével növelheti ezt a korlátot, érdemes megfontolnia, hogy a logikai alkalmazás műveleteit kisebb logikai alkalmazásokba szeretné-e bontani, hogy az egyes logikai alkalmazásokban futó műveletek száma a határérték alatt maradjon. Így csökkentheti a terhelést egy logikai alkalmazás-erőforrás terhére, és elosztja a terhelést több logikai alkalmazás között. Ez a megoldás hatékonyabban működik a nagyméretű adatkészleteket kezelő műveleteknél, vagy olyan sok párhuzamosan futó műveletet, hurkos iterációt vagy műveleteket hajt végre az egyes hurok-ismétléseken belül, amelyek túllépik a művelet végrehajtási korlátját.
+  Ahogy azt korábban említettük, egy logikai alkalmazás a [műveletek alapértelmezett számú műveletére korlátozódik, amely 5 percen belül futtatható](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Bár a [magas átviteli üzemmód](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode)engedélyezésével növelheti ezt a korlátot, érdemes megfontolnia, hogy a logikai alkalmazás műveleteit kisebb logikai alkalmazásokba szeretné-e bontani, hogy az egyes logikai alkalmazásokban futó műveletek száma a határérték alatt maradjon. Így csökkentheti a terhelést egy logikai alkalmazás-erőforrás terhére, és elosztja a terhelést több logikai alkalmazás között. Ez a megoldás hatékonyabban működik a nagyméretű adatkészleteket kezelő műveleteknél, vagy olyan sok párhuzamosan futó műveletet, hurkos iterációt vagy műveleteket hajt végre az egyes hurok-ismétléseken belül, amelyek túllépik a művelet végrehajtási korlátját.
 
   Ez a logikai alkalmazás például elvégzi az összes munkát egy SQL Server-adatbázis tábláinak beolvasásához és az egyes táblák sorainak lekéréséhez. Az **minden** hurok párhuzamosan megismétli az egyes táblákat, így a **sorok beolvasása** művelet az egyes táblák sorait adja vissza. A táblákban tárolt adatmennyiség alapján ezek a műveletek túllépik a művelet végrehajtásának korlátját.
 
@@ -135,7 +135,7 @@ A szabályozás ezen a szinten való kezeléséhez a következő lehetőségek k
 
 Amíg egy összekötő saját szabályozási korláttal rendelkezik, az összekötő által meghívott cél szolgáltatás vagy rendszer is rendelkezhet szabályozási korlátokkal. Előfordulhat például, hogy a Microsoft Exchange Server egyes API-jai szigorúbb szabályozási korlátokkal rendelkeznek, mint az Office 365 Outlook Connector.
 
-Alapértelmezés szerint a logikai alkalmazás példányai és az ezekben a példányokban lévő hurkok vagy ágak *párhuzamosan*futnak. Ez azt jelenti, hogy több példány is meghívhatja ugyanazt a végpontot egyidejűleg. Az egyes példányok nem ismerik a másik létezését, ezért a sikertelen műveletek újrapróbálkozására tett kísérletek olyan [versenyfeltételeket](https://en.wikipedia.org/wiki/Race_condition) hozhatnak létre, amelyben több hívás próbálkozik egyszerre, de a sikeres végrehajtáshoz a hívásoknak meg kell érkezniük a célkiszolgálón vagy a rendszeren a szabályozás megkezdése előtt.
+Alapértelmezés szerint a logikai alkalmazás példányai és az ezekben a példányokban lévő hurkok vagy ágak *párhuzamosan* futnak. Ez azt jelenti, hogy több példány is meghívhatja ugyanazt a végpontot egyidejűleg. Az egyes példányok nem ismerik a másik létezését, ezért a sikertelen műveletek újrapróbálkozására tett kísérletek olyan [versenyfeltételeket](https://en.wikipedia.org/wiki/Race_condition) hozhatnak létre, amelyben több hívás próbálkozik egyszerre, de a sikeres végrehajtáshoz a hívásoknak meg kell érkezniük a célkiszolgálón vagy a rendszeren a szabályozás megkezdése előtt.
 
 Tegyük fel például, hogy rendelkezik egy 100 elemet tartalmazó tömbvel. Az "for each" ciklushoz a tömbben kell megismételni a tömböt, és be kell kapcsolni a hurok egyidejűségének vezérlőjét, hogy a párhuzamos iterációk száma 20 vagy a [jelenlegi alapértelmezett korláton](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits)legyen korlátozva. Ezen a hurokon belül egy művelet beszúr egy elemet a tömbből egy SQL Server-adatbázisba, amely másodpercenként csak 15 hívást tesz lehetővé. Ez a forgatókönyv sávszélesség-szabályozást eredményez, mert az újrapróbálkozások száma, és soha nem fog futni.
 

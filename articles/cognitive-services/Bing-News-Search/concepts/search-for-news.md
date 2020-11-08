@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1e14f13d0e9fba407a983fb182d25c77593e4d3c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fbe8f9f4c5354d5a1b68909fcb65597e8c03dfb8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098399"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367165"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Hírek keresése a Bing News Search API
 
@@ -32,7 +32,7 @@ Noha a Bing News Search API elsődlegesen megkeresi és visszaadja a kapcsolód�
 
 Ha biztosít egy olyan keresőmezőt, ahol a felhasználók megadhatják a keresőkifejezést, a [Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) használatával kényelmesebbé teheti a felhasználói élményt. Az API javasolt lekérdezési sztringeket ad vissza a részleges keresőkifejezések alapján, miközben a felhasználó gépel.
 
-Miután a felhasználó megadja a keresőkifejezést, kódolja azt URL-címként a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) lekérdezési paraméter beállítása előtt. Ha például a felhasználó a *sailing dinghies* (kis vitorlások) kifejezésre keres, állítsa a `q` beállítást `sailing+dinghies` vagy `sailing%20dinghies` értékre.
+Miután a felhasználó megadja a keresőkifejezést, kódolja azt URL-címként a [q](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) lekérdezési paraméter beállítása előtt. Ha például a felhasználó a *sailing dinghies* (kis vitorlások) kifejezésre keres, állítsa a `q` beállítást `sailing+dinghies` vagy `sailing%20dinghies` értékre.
 
 ## <a name="get-general-news"></a>Általános hírek beszerzése
 
@@ -50,13 +50,13 @@ Host: api.cognitive.microsoft.com
 
 Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosítót, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához.
 
-Ha egy konkrét tartományban található híreket szeretne lekérni, használja a [site:](https://msdn.microsoft.com/library/ff795613.aspx) lekérdezési operátort.
+Ha egy konkrét tartományban található híreket szeretne lekérni, használja a [site:](/previous-versions/bing/search/ff795613(v=msdn.10)) lekérdezési operátort.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-A következő JSON-minta az előző lekérdezésre adott választ jeleníti meg. A Bing Search API-k [használati és megjelenítési követelményeinek](../useanddisplayrequirements.md) részeként az egyes híreket a válaszban megadott sorrendben kell megjeleníteni. Ha a cikk fürtözött cikkekkel rendelkezik, akkor jeleznie kell, hogy a kapcsolódó cikkek léteznek, és kérelem alapján jelenítik meg őket.
+A következő JSON-minta az előző lekérdezésre adott választ jeleníti meg. A Bing Search API-k [használati és megjelenítési követelményeinek](../../bing-web-search/use-display-requirements.md) részeként az egyes híreket a válaszban megadott sorrendben kell megjeleníteni. Ha a cikk fürtözött cikkekkel rendelkezik, akkor jeleznie kell, hogy a kapcsolódó cikkek léteznek, és kérelem alapján jelenítik meg őket.
 
 ```json
 {
@@ -104,9 +104,9 @@ A következő JSON-minta az előző lekérdezésre adott választ jeleníti meg.
 }
 ```
 
-A [news](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#news) válasz listázza a cikkeket, amelyeket a Bing a lekérdezéshez kapcsolódónak ítélt. A `totalEstimatedMatches` mező az összes megtekinthető cikk becsült számát adja meg. További információért a cikkek lapozásáról olvassa el a [hírek lapozását](../paging-news.md) ismertető cikket.
+A [news](/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#news) válasz listázza a cikkeket, amelyeket a Bing a lekérdezéshez kapcsolódónak ítélt. A `totalEstimatedMatches` mező az összes megtekinthető cikk becsült számát adja meg. További információért a cikkek lapozásáról olvassa el a [hírek lapozását](../../bing-web-search/paging-search-results.md) ismertető cikket.
 
-A lista minden [cikke](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#newsarticle) tartalmazza a cikk nevét, leírását és a cikket tartalmazó eredeti webhely URL-címét. Ha a cikk tartalmaz képet, az objektum tartalmazza a kép miniatűrjét. Használja a `name` és az `url` mezőket egy hivatkozás létrehozásához, amely átirányítja a felhasználót a cikkhez az eredeti webhelyen. Ha a cikk tartalmaz képet, tegye a képet kattinthatóvá az `url` használatával. Ügyeljen arra, hogy megjelenítse a cikk forrását a `provider` használatával.
+A lista minden [cikke](/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#newsarticle) tartalmazza a cikk nevét, leírását és a cikket tartalmazó eredeti webhely URL-címét. Ha a cikk tartalmaz képet, az objektum tartalmazza a kép miniatűrjét. Használja a `name` és az `url` mezőket egy hivatkozás létrehozásához, amely átirányítja a felhasználót a cikkhez az eredeti webhelyen. Ha a cikk tartalmaz képet, tegye a képet kattinthatóvá az `url` használatával. Ügyeljen arra, hogy megjelenítse a cikk forrását a `provider` használatával.
 
 Ha a Bing meg tudja határozni a cikk kategóriáját, a cikk tartalmazza a `category` mezőt.
 
@@ -140,7 +140,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-A [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) lekérdezési paraméter használatával adja meg a lekérendő cikkek kategóriáját. A lehetséges megadható hírkategóriák listájáért tekintse meg a [Hírkategóriák piac szerint](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-categories-by-market) című részt.
+A [category](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) lekérdezési paraméter használatával adja meg a lekérendő cikkek kategóriáját. A lehetséges megadható hírkategóriák listájáért tekintse meg a [Hírkategóriák piac szerint](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-categories-by-market) című részt.
 
 A hírek kategóriák szerinti lekérésére adott válasz majdnem ugyanolyan, mint az általános hírek lekérésénél. A cikkek azonban mind a megadott kategóriába tartoznak.
 
@@ -158,11 +158,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-A [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) lekérdezési paramétert ne használja.
+A [category](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) lekérdezési paramétert ne használja.
 
 A fő hírek lekérésére adott válasz majdnem ugyanolyan, mint a legfrissebb hírek lekérésénél. Ha a cikk egy vezércikk, a `headline` mező **true** értékre van állítva.
 
-Alapértelmezés szerint a válasz legfeljebb 12 vezércikket tartalmaz. A visszaadandó vezércikkek számának módosításához adja meg a [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount) lekérdezési paramétert. A válasz hírkategóriánként legfeljebb négy olyan cikket is tartalmaz, amely nem vezércikk.
+Alapértelmezés szerint a válasz legfeljebb 12 vezércikket tartalmaz. A visszaadandó vezércikkek számának módosításához adja meg a [headlineCount](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount) lekérdezési paramétert. A válasz hírkategóriánként legfeljebb négy olyan cikket is tartalmaz, amely nem vezércikk.
 
 A válasz a fürtöket egy cikknek veszi. Mivel egy fürtbe számos cikk tartozhat, a válasz kategóriánként 12-nél több vezércikket és négynél több nem vezércikket is tartalmazhat.
 
@@ -184,7 +184,7 @@ Host: api.cognitive.microsoft.com
 > [!NOTE]
 > A Népszerű témakörök csak az amerikai (en-US) és a kínai (zh-CN) piacon érhetők el.
 
-Az alábbi JSON az előző kérésre adott választ mutatja. Minden népszerű hír tartalmaz egy kapcsolódó képet, egy friss hírek jelzőt és egy URL-címet, amely a cikkhez tartozó Bing keresési eredményekre mutat. Használja a `webSearchUrl` mezőben lévő URL-címet a felhasználó a Bing keresési eredményeinek oldalára való átirányításához. Használhatja a lekérdezési szöveget is a [Web Search API](../../bing-web-search/search-the-web.md) meghívásához és a találatok megjelenítéséhez.
+Az alábbi JSON az előző kérésre adott választ mutatja. Minden népszerű hír tartalmaz egy kapcsolódó képet, egy friss hírek jelzőt és egy URL-címet, amely a cikkhez tartozó Bing keresési eredményekre mutat. Használja a `webSearchUrl` mezőben lévő URL-címet a felhasználó a Bing keresési eredményeinek oldalára való átirányításához. Használhatja a lekérdezési szöveget is a [Web Search API](../../bing-web-search/overview.md) meghívásához és a találatok megjelenítéséhez.
 
 ```json
 {
@@ -228,7 +228,7 @@ Az alábbi JSON az előző kérésre adott választ mutatja. Minden népszerű h
 
 ## <a name="getting-related-news"></a>Kapcsolódó hírek lekérése
 
-Ha egyéb cikkek is kapcsolódnak egy hírhez, a hír tartalmazhatja a [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle-clusteredarticles) mezőt. Az alábbiakban egy fürtözött cikkekkel rendelkező cikk látható.
+Ha egyéb cikkek is kapcsolódnak egy hírhez, a hír tartalmazhatja a [clusteredArticles](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle-clusteredarticles) mezőt. Az alábbiakban egy fürtözött cikkekkel rendelkező cikk látható.
 
 ```json
     {
@@ -266,7 +266,7 @@ Ha egyéb cikkek is kapcsolódnak egy hírhez, a hír tartalmazhatja a [clustere
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Lapok átBing News Search eredményeinek megjelenítése](../paging-news.md)
+> [Lapok átBing News Search eredményeinek megjelenítése](../../bing-web-search/paging-search-results.md)

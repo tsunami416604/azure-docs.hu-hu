@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 1a4fe2492433aa793d1a7e4be41c5f93043848a5
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 590ddef27315f37719da5b28c68b6c402371e986
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337865"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363255"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>Python-minták Cognitive Services Big-adatmennyiséghez
 
@@ -56,7 +56,7 @@ assert service_key != "ADD_YOUR_SUBSCRIPION_KEY"
 
 ## <a name="text-analytics-sample"></a>Text Analytics minta
 
-A [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) szolgáltatás számos algoritmust biztosít az intelligens adatok szövegből való kinyeréséhez. Megtalálhatja például az adott bemeneti szöveg hangulatát. A szolgáltatás 0,0 és 1,0 közötti pontszámot ad vissza, ahol az alacsony pontszámok negatív hangulatot és magas pontszámot jeleznek a pozitív hangulat alapján.  Ez a példa három egyszerű mondatot használ, és visszaadja az egyes minták hangulatát.
+A [text Analytics](../text-analytics/index.yml) szolgáltatás számos algoritmust biztosít az intelligens adatok szövegből való kinyeréséhez. Megtalálhatja például az adott bemeneti szöveg hangulatát. A szolgáltatás 0,0 és 1,0 közötti pontszámot ad vissza, ahol az alacsony pontszámok negatív hangulatot és magas pontszámot jeleznek a pozitív hangulat alapján.  Ez a példa három egyszerű mondatot használ, és visszaadja az egyes minták hangulatát.
 
 ```python
 from pyspark.sql.functions import col
@@ -91,7 +91,7 @@ display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("sent
 
 ## <a name="computer-vision-sample"></a>Computer Vision minta
 
-[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) a lemezképek elemzésével azonosíthatja a struktúrát, például az arcokat, az objektumokat és a természetes nyelvi leírásokat. Ebben a példában a képek listáját címkézjük. A címkék egyszavas leírások a képen látható dolgokról, például a felismerhető objektumokról, a személyekről, a díszletekről és a műveletekről.
+[Computer Vision](../computer-vision/index.yml) a lemezképek elemzésével azonosíthatja a struktúrát, például az arcokat, az objektumokat és a természetes nyelvi leírásokat. Ebben a példában a képek listáját címkézjük. A címkék egyszavas leírások a képen látható dolgokról, például a felismerhető objektumokról, a személyekről, a díszletekről és a műveletekről.
 
 ```python
 
@@ -126,7 +126,7 @@ display(analysis.transform(df).select("image", "analysis_results.description.tag
 
 ## <a name="bing-image-search-sample"></a>Bing Image Search minta
 
-[Bing Image Search](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) megkeresi a weben a felhasználó természetes nyelvi lekérdezéséhez kapcsolódó rendszerképek lekéréséhez. Ebben a példában egy szöveges lekérdezést használunk, amely idézőjelekkel rendelkező képeket keres. A lekérdezéshez kapcsolódó fényképeket tartalmazó kép URL-címeinek listáját adja vissza.
+[Bing Image Search](../bing-image-search/overview.md) megkeresi a weben a felhasználó természetes nyelvi lekérdezéséhez kapcsolódó rendszerképek lekéréséhez. Ebben a példában egy szöveges lekérdezést használunk, amely idézőjelekkel rendelkező képeket keres. A lekérdezéshez kapcsolódó fényképeket tartalmazó kép URL-címeinek listáját adja vissza.
 
 ```python
 from pyspark.ml import PipelineModel
@@ -171,7 +171,7 @@ display(pipeline.transform(bingParameters))
 
 
 ## <a name="speech-to-text-sample"></a>Beszéd – szöveg minta
-A [beszédfelismerési](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text) szolgáltatás szöveggé alakítja át a hanganyagot vagy a beszélt hangon lévő fájlokat. Ebben a példában két hangfájlt teszünk át. Az első fájl könnyen értelmezhető, a második pedig nagyobb kihívást jelent.
+A [beszédfelismerési](../speech-service/index-speech-to-text.yml) szolgáltatás szöveggé alakítja át a hanganyagot vagy a beszélt hangon lévő fájlokat. Ebben a példában két hangfájlt teszünk át. Az első fájl könnyen értelmezhető, a második pedig nagyobb kihívást jelent.
 
 ```python
 
@@ -205,7 +205,7 @@ display(speech_to_text.transform(df).select("url", "text.DisplayText"))
 
 ## <a name="anomaly-detector-sample"></a>Rendellenesség-érzékelő minta
 
-Az [anomália detektor](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) kiválóan használható a szabálytalanságok észlelésére az idősorozat-adataiban. Ebben a példában a szolgáltatást használjuk a teljes idősorozatban található anomáliák keresésére.
+Az [anomália detektor](../anomaly-detector/index.yml) kiválóan használható a szabálytalanságok észlelésére az idősorozat-adataiban. Ebben a példában a szolgáltatást használjuk a teljes idősorozatban található anomáliák keresésére.
 
 ```python
 from pyspark.sql.functions import lit

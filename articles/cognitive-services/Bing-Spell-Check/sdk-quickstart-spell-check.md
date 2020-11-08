@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3304cc36c37a548eabd3aa6ddc32255f3d09dffb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b2df7bab9bceaefae5793e4802eba6a6aa218e96
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083728"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364802"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Gyors útmutató: helyesírás-ellenőrzés a C Bing Spell Check SDK-val #
 
@@ -104,10 +104,10 @@ Ha hozzá szeretné adni a Bing Spell Check SDK-t a projekthez, válassza a **Nu
 
 Hozza létre és futtassa a projektet. Ha a Visual studiót használja, nyomja le az **F5** billentyűt a fájl hibakereséséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorials/spellcheck.md)
 
 - [Mi a Bing Spell Check API?](overview.md)
-- [Bing Spell Check C# SDK-útmutató](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [Bing Spell Check C# SDK-útmutató](/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)

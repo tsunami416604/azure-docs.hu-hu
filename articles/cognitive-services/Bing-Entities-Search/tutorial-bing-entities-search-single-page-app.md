@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 7fa09ee40ca646be6ee104c7b2d4428c92934337
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084629"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366533"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 A Bing Entity Search API-val *entitásokról* és *helyekről* kereshet információkat a weben. Egy adott lekérdezésben kérheti a helyeket, az entitásokat vagy mindkettőt. A helyek és entitások definícióját az alábbiakban találja.
 
@@ -57,7 +57,7 @@ Az oktatóanyag részeként összeállított alkalmazás a következők bemutat�
 
 Az oktatóanyag oldala teljesen önálló; nem használ semmilyen külső keretrendszert, stíluslapot vagy képfájlt. Egyedül széles körben támogatott JavaScript nyelvi funkciókat használ, és az összes nagyobb webböngésző aktuális verziójával kompatibilis.
 
-Ebben az oktatóanyagban a forráskódnak csak egyes részeit fogjuk megtárgyalni. A teljes forráskód elérhető [egy külön oldalon](tutorial-bing-entities-search-single-page-app-source.md). Másolja a forráskódot egy szövegszerkesztőbe, és mentse `bing.html` néven.
+Ebben az oktatóanyagban a forráskódnak csak egyes részeit fogjuk megtárgyalni. A teljes forráskód elérhető [egy külön oldalon](). Másolja a forráskódot egy szövegszerkesztőbe, és mentse `bing.html` néven.
 
 > [!NOTE]
 > Ez az oktatóanyag nagyrészt hasonlít az [egyoldalas Bing Web Search alkalmazás oktatóanyagához](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), de csak az entitásokra vonatkozó keresési eredményekkel foglalkozik.
@@ -405,7 +405,7 @@ A hibák kezelése a `renderErrorMessage()` meghívásával történik a hibáva
 
 ## <a name="displaying-search-results"></a>Keresési eredmények megjelenítése
 
-A Bing Entity Search API számára [adott sorrendben kell megjelenítenie az eredményeket](use-display-requirements.md). Mivel az API két különböző választ adhat vissza, nem elég, ha a JSON-válasz legfelső szintjén `Entities` vagy `Places` gyűjteményén keresztül ismétli meg ezeket az eredményeket. (Ha csak egy típusú eredményt szeretne megkapni, használja a `responseFilter` lekérdezési paramétert.)
+A Bing Entity Search API számára [adott sorrendben kell megjelenítenie az eredményeket](../bing-web-search/use-display-requirements.md). Mivel az API két különböző választ adhat vissza, nem elég, ha a JSON-válasz legfelső szintjén `Entities` vagy `Places` gyűjteményén keresztül ismétli meg ezeket az eredményeket. (Ha csak egy típusú eredményt szeretne megkapni, használja a `responseFilter` lekérdezési paramétert.)
 
 Ehelyett a `rankingResponse` gyűjteményt használjuk a keresési eredményeknél a megjelenített eredmények rendezéséhez. Ez az objektum az `Entitiess` és/vagy a `Places` gyűjtemények elemeire mutat.
 
@@ -561,7 +561,7 @@ cors-proxy-server
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Bing Entity Search API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

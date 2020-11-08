@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-java
-ms.openlocfilehash: 4d1e178d5ed8ea00c277a6c15c63746c66a0a298
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 263d3e9020c749dd42981f70ce7787252443853b
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100167"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364496"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Java és a Bing News Search használatával REST API
 
@@ -33,7 +33,7 @@ A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-se
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Java fejlesztői készlet (JDK) 7 vagy 8](https://aka.ms/azure-jdks).
+* A [Java fejlesztői készlet (JDK) 7 vagy 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 * A [Gson könyvtár](https://github.com/google/gson).
 
 
@@ -229,7 +229,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

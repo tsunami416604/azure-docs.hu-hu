@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: e4a652b146286965c68154bd362525861158ecb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44e81286ffa5930b802df3b3bfe657091175f391
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704378"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363633"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: a fő kifejezések kinyerése Text Analytics használatával
 
@@ -23,7 +23,7 @@ A [Key Phrase Extraction API](https://westus2.dev.cognitive.microsoft.com/docs/s
 
 Ez a funkció akkor hasznos, ha szeretné gyorsan azonosítani a dokumentum gyűjtemény fő témáit. Például „Az étel finom, a személyzet nagyszerű volt” bemeneti szövegre a szolgáltatás visszaadja a fő kulcsszavakat: „étel” és „nagyszerű személyzet”.
 
-További információ: [támogatott nyelvek](../text-analytics-supported-languages.md).
+További információt a [támogatott nyelvek](../language-support.md) ismertetésében talál.
 
 > [!TIP]
 > A Text Analytics egy Linux-alapú Docker-tároló rendszerképet is biztosít a fő kifejezés kinyeréséhez, így az adatokhoz [az Text Analytics tárolót is telepítheti és futtathatja](text-analytics-how-to-install-containers.md) .
@@ -159,7 +159,7 @@ Itt látható egy példa a fő kifejezés kinyerésének eredményére a v 3.1-e
 ```
 Ahogy azt a feljegyezte, az elemző megkeresi és elveti a nem alapvető szavakat, és megtartja a mondat tárgyát vagy tárgyát képező egyszeres kifejezéseket vagy kifejezéseket.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta a kulcsfontosságú kifejezések kinyeréséhez szükséges fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
 
@@ -173,7 +173,7 @@ Ebben a cikkben megtanulta a kulcsfontosságú kifejezések kinyeréséhez szük
  [Text Analytics áttekintése –](../overview.md) [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
  [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/text-analytics-sdk.md)

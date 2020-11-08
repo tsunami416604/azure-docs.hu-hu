@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6bf00d8b5327ddd539190b6e990c7edb35c876f7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b02ccea396fc65f9ecfe1d59e953da7440e87951
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018389"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363643"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Ajánlott eljárások az anomália-detektor API használatához
 
@@ -52,7 +52,7 @@ Az alábbi érték ugyanaz az adathalmaz, amely a Batch anomália észlelését 
 
 ## <a name="data-preparation"></a>Adatok előkészítése
 
-Az anomália detektor API egy JSON-kérelem objektumba formázott idősorozat-adathalmazokat fogad el. Az idősorozatok tetszőleges számú, egymást követő sorrendben rögzített számadatok lehetnek. Az API-k teljesítményének növelése érdekében elküldheti az idősoros adat Windows-adatait a rendellenesség-érzékelő API-végpontjának. Az elküldhető adatpontok minimális száma 12, a maximális érték 8640 pont. A [részletesség](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) határozza meg, hogy az adatai milyen arányban kerülnek mintavételre. 
+Az anomália detektor API egy JSON-kérelem objektumba formázott idősorozat-adathalmazokat fogad el. Az idősorozatok tetszőleges számú, egymást követő sorrendben rögzített számadatok lehetnek. Az API-k teljesítményének növelése érdekében elküldheti az idősoros adat Windows-adatait a rendellenesség-érzékelő API-végpontjának. Az elküldhető adatpontok minimális száma 12, a maximális érték 8640 pont. A [részletesség](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) határozza meg, hogy az adatai milyen arányban kerülnek mintavételre. 
 
 Az anomália-detektor API-nak elküldett adatpontoknak érvényes, egyezményes világidő (UTC) időbélyegzővel és numerikus értékkel kell rendelkezniük. 
 
@@ -101,7 +101,7 @@ A legjobb eredmények érdekében 4 `period` értékű adatpontot adjon meg, és
 
 Ha a folyamatos átviteli adatokat rövid időn belül (például másodpercben vagy percben) mintavétel útján adja meg, az ajánlott számú adatpont elküldésével meghaladhatja a rendellenesség-érzékelő API megengedett maximális számát (8640 adatpont). Ha az adatok stabil szezonális mintát mutatnak, érdemes lehet az idősorozat-adatok egy mintáját egy nagyobb időintervallumban, például órákban elküldeni. Az ilyen módon mintavételezéssel az API-válaszidő is javítható. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi az az Anomaly Detector API?](../overview.md)
 * [Gyors útmutató: az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](../quickstarts/detect-data-anomalies-csharp.md)

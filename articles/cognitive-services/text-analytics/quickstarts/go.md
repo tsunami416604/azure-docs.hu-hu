@@ -10,17 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3b922dca46b575abc428aa6e76fb920ffc13d6b0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 06f37404db1c07a97aa1bb2d6b7ca88485dc31a5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86028007"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365181"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Rövid útmutató: A Text Analytics Cognitive Services meghívása a Go használatával 
 <a name="HOLTop"></a>
 
-Ebből a cikkből megtudhatja, hogyan [derítheti](#Detect)fel [text Analytics](//go.microsoft.com/fwlink/?LinkID=759711)a nyelveket, [elemezheti](#SentimentAnalysis)a véleményeket, [kinyerheti a kulcsfontosságú kifejezéseket](#KeyPhraseExtraction), és hogyan [azonosíthatja a csatolt entitásokat](#Entities) az  
+Ebből a cikkből megtudhatja, hogyan [észlelheti a nyelvet](#Detect), [elemezhet hangulatot](#SentimentAnalysis), [nyerhet ki kulcskifejezéseket](#KeyPhraseExtraction) és [azonosíthat társított entitásokat](#Entities) a [Text Analytics API-kkal](//go.microsoft.com/fwlink/?LinkID=759711) a Go használatával.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -33,7 +33,7 @@ Ebből a cikkből megtudhatja, hogyan [derítheti](#Detect)fel [text Analytics]
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Nyelv felismerése
+## <a name="detect-language"></a>Nyelvfelismerés
 
 A Language Detection API a [Detect Language metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) használatával felismeri a szöveges dokumentumok nyelvét.
 
@@ -442,7 +442,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="identify-entities"></a>Entitások azonosítása
 
-Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az [entitások](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" típusa `location` , míg a wikipedia-ra mutató hivatkozás `https://en.wikipedia.org/wiki/United_States` .  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
+Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az [entitások](../how-tos/text-analytics-how-to-entity-linking.md) szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" típusa `location` , míg a wikipedia-ra mutató hivatkozás `https://en.wikipedia.org/wiki/United_States` .  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
 1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.
 1. Adja hozzá az alábbi kódot.

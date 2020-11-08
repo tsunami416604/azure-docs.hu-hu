@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 0a94c66eb51298db226ceec5da5c86666576052a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a65ff28a38e42e05844063a330c0325f16b2247
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87850491"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363289"
 ---
 # <a name="recipe-intelligent-art-exploration-with-the-cognitive-services-for-big-data"></a>Recept: intelligens Art-kutatás a Big-adatCognitive Servicesokkal
 
@@ -24,7 +24,7 @@ Ebben a példában a Big adatokhoz tartozó Cognitive Services fogjuk használni
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Computer Vision és Cognitive Search előfizetési kulcsának kell lennie. A Computer Visionre való előfizetéshez és a kulcs beszerzéséhez kövesse az [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című témakör utasításait.
+* Computer Vision és Cognitive Search előfizetési kulcsának kell lennie. A Computer Visionre való előfizetéshez és a kulcs beszerzéséhez kövesse az [Cognitive Services fiók létrehozása](../../cognitive-services-apis-create-account.md) című témakör utasításait.
   > [!NOTE]
   > A díjszabással kapcsolatos információkért lásd: [Azure Cognitive Search](https://azure.microsoft.com/services/search/#pricing).
 
@@ -115,7 +115,6 @@ url = 'https://{}.search.windows.net/indexes/{}/docs/search?api-version=2019-05-
 requests.post(url, json={"search": "Glass"}, headers = {"api-key": AZURE_SEARCH_KEY}).json()
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan használhatja a [Cognitive Services for Big-adatmennyiséget a anomáliák észlelése](anomaly-detection.md)érdekében.
-

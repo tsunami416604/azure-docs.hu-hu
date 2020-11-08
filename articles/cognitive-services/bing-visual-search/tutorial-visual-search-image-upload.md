@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
-ms.openlocfilehash: 8ecea9dce3509e064d9244a8b725add21747a03e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0afee57eaaa0708ebde2a2aeaced76f008ebd9f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102204"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366128"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Oktatóanyag: lemezképek feltöltése a Bing Visual Search APIba
 
@@ -477,7 +477,7 @@ function addDivContent(div, tag, json) {
 
 ## <a name="display-insights-for-different-actions"></a>Információk megjelenítése különböző műveletekhez
 
-A következő függvények a különböző műveletekkel kapcsolatos bepillantást jelenítik meg. A függvények vagy egy olyan kattintható képet vagy kattintható hivatkozást tartalmaznak, amely egy, a képpel kapcsolatos további információval ellátott weblapra küld. Ezt a lapot vagy a Bing.com, vagy a rendszerkép eredeti webhelye tárolja. Ebben az alkalmazásban nem jelenik meg az összes adatelemzési üzenet. A betekintéshez elérhető összes mező megtekintéséhez tekintse meg a [képek – Visual Search](https://aka.ms/bingvisualsearchreferencedoc) referenciát.
+A következő függvények a különböző műveletekkel kapcsolatos bepillantást jelenítik meg. A függvények vagy egy olyan kattintható képet vagy kattintható hivatkozást tartalmaznak, amely egy, a képpel kapcsolatos további információval ellátott weblapra küld. Ezt a lapot vagy a Bing.com, vagy a rendszerkép eredeti webhelye tárolja. Ebben az alkalmazásban nem jelenik meg az összes adatelemzési üzenet. A betekintéshez elérhető összes mező megtekintéséhez tekintse meg a [képek – Visual Search](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) referenciát.
 
 > [!NOTE]
 > A lapon meg kell adni legalább egy betekintési információt. További információkért tekintse [meg a BING Search API használati és megjelenítési követelményeit](../bing-web-search/use-display-requirements.md) .
@@ -776,7 +776,7 @@ Adja hozzá a következő `<style>` szakaszt a `<head>` címkéhez a weblap elre
         </style>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 >[!div class="nextstepaction"]
 > [Oktatóanyag: hasonló rendszerképek keresése az előző keresésekben a ImageInsightsToken használatával](./tutorial-visual-search-insights-token.md)

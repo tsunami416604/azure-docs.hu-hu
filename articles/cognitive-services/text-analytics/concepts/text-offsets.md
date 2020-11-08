@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: 14fd7c2b034077d818d1a1224d3c4c12a7fc07bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c587bb042601b947b71658bf790e9acdfbdbf742
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855643"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363782"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Szöveg eltolása a Text Analytics API kimenetében
 
@@ -34,9 +34,9 @@ Ha az eltolásokat az API válasza adja vissza, például [elnevezett entitások
 
 ## <a name="extracting-substrings-from-text-with-offsets"></a>Alsztringek kibontása a szövegből eltolásokkal
 
-Az eltolások problémákat okozhatnak a karakteres alsztring metódusok használatakor, például a .NET [alsztring ()](https://docs.microsoft.com/dotnet/api/system.string.substring?view=netframework-4.8) metódust. Az egyik probléma az, hogy az eltolás egy alkarakterlánc-metódus befejezését eredményezheti egy többkarakteres Graféma-kódolás közepén, a végpont helyett.
+Az eltolások problémákat okozhatnak a karakteres alsztring metódusok használatakor, például a .NET [alsztring ()](/dotnet/api/system.string.substring?view=netframework-4.8) metódust. Az egyik probléma az, hogy az eltolás egy alkarakterlánc-metódus befejezését eredményezheti egy többkarakteres Graféma-kódolás közepén, a végpont helyett.
 
-A .NET-ben érdemes lehet a [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) osztályt használni, amely lehetővé teszi, hogy egy karakterláncot használjon szöveges elemekként, nem pedig az egyes karakteres objektumokat. Az előnyben részesített szoftveres környezetben is megkeresheti a Graféma-elosztó kódtárait. 
+A .NET-ben érdemes lehet a [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) osztályt használni, amely lehetővé teszi, hogy egy karakterláncot használjon szöveges elemekként, nem pedig az egyes karakteres objektumokat. Az előnyben részesített szoftveres környezetben is megkeresheti a Graféma-elosztó kódtárait. 
 
 A Text Analytics API ezeket a szöveges elemeket is visszaadja az egyszerűség kedvéért.
 
@@ -53,7 +53,7 @@ Ha a `stringIndexType` kért programozási környezet megfelel a szükségesnek,
 ## <a name="see-also"></a>Lásd még
 
 * [A Text Analytics áttekintése](../overview.md)
-* [Hangulatelemzés](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Hangulat elemzése](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Entitások felismerése](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Nyelv felismerése](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Nyelvfelismerés](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Nyelvi felismerés](../how-tos/text-analytics-how-to-language-detection.md)

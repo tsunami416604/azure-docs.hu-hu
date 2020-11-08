@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 79bbdd109d005b7c6de293aebf50433fb7ea1d91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c3908c81e7d89efe3da90f9707023cb7c184795
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291652"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365007"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Külső & közösségi tartalom a Text Analytics kognitív szolgáltatáshoz
 
@@ -31,11 +31,11 @@ ms.locfileid: "87291652"
 
 + [A logikai alkalmazásban SQL Server adataival (TechNet blog) kapcsolatos érzelmek elemzése](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx)
 
-+ [Érzelmek elemzése a Dynamics 365 CRM Online-ban (MSDN blog)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
++ [Érzelmek elemzése a Dynamics 365 CRM Online-ban (MSDN blog)](/archive/blogs/geoffreyinnis/sentiment-analysis-in-usd-with-cognitive-services-text-analytics) 
 
 + Power BI blog: a Facebook-üzenetekből származó legfontosabb kifejezések kinyerése: [1. rész](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) és [2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487) . rész
 
-+ [Azonosítsa az Yammer-csoport megjegyzéseit az MS flow-val (Microsoft technikai Közösség)](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
++ [Azonosítsa az Yammer-csoport megjegyzéseit az MS flow-val (Microsoft technikai Közösség)](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
 
 
 

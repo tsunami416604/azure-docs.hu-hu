@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: személyre szabott, Azure személyre szabott, gépi tanulás
-ms.openlocfilehash: ae17b799c2b222525db53d5bb8e0afdbbcf19975
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777241"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363901"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -29,7 +29,7 @@ A Kezdés előtt nyugodtan kipróbálhatja a [személyre szabást az interaktív
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Hogyan választja ki a személyre szabott tartalmi elemet?
 
-A személyre szabás a **megerősítő tanulás** segítségével kiválasztja a legjobb elemet (_művelet_) a kollektív viselkedés és a jutalom pontszámok alapján az összes felhasználó számára. A műveletek a tartalmi elemek, például hírek, adott mozgóképek vagy termékek.
+A személyre szabás a **megerősítő tanulás** segítségével kiválasztja a legjobb elemet ( _művelet_ ) a kollektív viselkedés és a jutalom pontszámok alapján az összes felhasználó számára. A műveletek a tartalmi elemek, például hírek, adott mozgóképek vagy termékek.
 
 A **rangsorban** hívja meg a műveleti elemet, valamint a művelet funkcióit és a környezeti funkciókat, hogy kiválassza a felső műveleti elemet:
 
@@ -57,7 +57,7 @@ A személyre szabott megerősítő tanulás segítségével kiválaszthatja az e
 
 ## <a name="when-to-use-personalizer"></a>Mikor kell használni a személyre szabott
 
-A személyre szabási [API](https://go.microsoft.com/fwlink/?linkid=2092082) -t minden **alkalommal meg kell** hívni, amikor az alkalmazás tartalmat jelenít meg. Ez az **esemény egy esemény-** _azonosítóval_megjegyezve.
+A személyre szabási [API](https://go.microsoft.com/fwlink/?linkid=2092082) -t minden **alkalommal meg kell** hívni, amikor az alkalmazás tartalmat jelenít meg. Ez az **esemény egy esemény-** _azonosítóval_ megjegyezve.
 
 A személyre szabott **jutalmazási** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) valós időben hívható meg, vagy késleltethető, hogy jobban illeszkedjen az infrastruktúrához. Az üzleti igények alapján határozza meg a jutalom pontszámát. A jutalom pontszáma 0 és 1 között van. Ez lehet egyetlen érték, például 1, jó, 0 vagy rossz, vagy egy szám, amelyet egy, az üzleti célok és mérőszámok alapján létrehozott algoritmus állít elő.
 
@@ -66,7 +66,7 @@ A személyre szabott **jutalmazási** [API](https://westus2.dev.cognitive.micros
 A személyre szabott tartalom használata:
 
 * Korlátozott számú elemet tartalmaz (legfeljebb ~ 50), amelyből kiválaszthatja a következőt:. Ha nagyobb listával rendelkezik, az [ajánlási motor használatával](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) csökkentse a listát 50 elemre.
-* A rangsorolni kívánt tartalmat leíró információkkal rendelkezik: a _funkciók és a_ _környezet funkcióival_kapcsolatos műveletek.
+* A rangsorolni kívánt tartalmat leíró információkkal rendelkezik: a _funkciók és a_ _környezet funkcióival_ kapcsolatos műveletek.
 * Legalább ~ 1k/nap tartalommal kapcsolatos eseményt biztosít a személyre szabáshoz. Ha a személyre szabott nem kapja meg a minimálisan szükséges forgalmat, a szolgáltatás továbbra is megtarthatja az egyetlen legmegfelelőbb tartalmi elemet.
 
 Mivel a személyre szabott, közel valós időben a személyre szabott adatokat használ, a szolgáltatás nem a következő:
@@ -79,7 +79,7 @@ Mivel a személyre szabott, közel valós időben a személyre szabott adatokat 
 1. [Tervezze](concepts-features.md) meg és tervezze meg a tartalmat, a **_műveleteket_** és a **_környezetet_**. Határozza meg **_a jutalmas pontszámhoz_** tartozó jutalmazási algoritmust.
 1. Az Ön által létrehozott minden [személyre szabott erőforrás](how-to-settings.md) egy tanulási ciklusnak tekintendő. A hurok az adott tartalomhoz vagy felhasználói élményhez tartozó rang és jutalmazási hívásokat is megkapja.
 
-    |Erőforrás típusa| Cél|
+    |Erőforrás típusa| Rendeltetés|
     |--|--|
     |[Gyakornoki mód](concept-apprentice-mode.md) `E0`|A személyre szabott modell betanítása anélkül, hogy ez hatással lenne a meglévő alkalmazásra, majd telepítse az online tanulási viselkedést éles környezetbe|
     |Standard `S0`|Online tanulási viselkedés éles környezetben|
@@ -87,7 +87,7 @@ Mivel a személyre szabott, közel valós időben a személyre szabott adatokat 
 
 1. Személyre szabás hozzáadása az alkalmazáshoz, webhelyhez vagy rendszeren:
     1. Az alkalmazásban, a webhelyen vagy a rendszeren testreszabhatja a személyre szabási **hívást,** hogy meghatározza a legjobb, egyetlen _tartalmi_ elemet, mielőtt a tartalom megjelenik a felhasználó számára.
-    1. Jelenítse meg a legjobb, egyetlen _tartalmi_ tételt, amely a visszaadott _jutalom műveleti azonosítója_a felhasználónak.
+    1. Jelenítse meg a legjobb, egyetlen _tartalmi_ tételt, amely a visszaadott _jutalom műveleti azonosítója_ a felhasználónak.
     1. Az _üzleti logikát_ alkalmazva gyűjtheti össze a felhasználó működésével kapcsolatos információkat a **jutalom** pontszámának meghatározásához, például:
 
     |Működés|Számított jutalom pontszáma|
@@ -105,7 +105,7 @@ Mivel a személyre szabott, közel valós időben a személyre szabott adatokat 
 
 A C#, a JavaScript és a Python gyors útmutatókat kínál. Minden rövid útmutató úgy lett kialakítva, hogy megtanítsa az alapvető tervezési mintákat, és kevesebb mint 10 perc alatt futtatja a kódot. 
 
-* [Rövid útmutató: a személyre szabott ügyféloldali kódtár használata](sdk-learning-loop.md)
+* [Rövid útmutató: a személyre szabott ügyféloldali kódtár használata](./quickstart-personalizer-sdk.md)
 
 A személyre szabott szolgáltatás használatának megkezdése után próbálja ki az oktatóanyagokat, és Ismerje meg, hogyan használhatja a személyre szabott szolgáltatásokat webalkalmazásokban, csevegési robotok vagy egy Azure notebook használatával.
 
@@ -115,13 +115,13 @@ A személyre szabott szolgáltatás használatának megkezdése után próbálja
 
 ## <a name="reference"></a>Referencia 
 
-* [Személyre szabott C# kódon SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [Személyre szabott C# kódon SDK](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
 * [Személyre szabású go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
-* [Személyre szabott JavaScript SDK](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
-* [Személyre szabott Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [Személyre szabott JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
+* [Személyre szabott Python SDK](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
 * [REST API-k](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > A [megszemélyesítő működése](how-personalizer-works.md) 

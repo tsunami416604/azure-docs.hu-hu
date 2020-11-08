@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a MEVISIO | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és MEVISIO között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Mevisio | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Mevisio között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 11/05/2020
 ms.author: jeedes
-ms.openlocfilehash: a38331549f6a201d6b3b67f30bccf49fa31c39ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: bf85e28a096e1eb0de429a12def4a350971a315a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522648"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363799"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mevisio"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a MEVISIO
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mevisio"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Mevisio
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a MEVISIO a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az MEVISIO-t az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Mevisio a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Mevisio-t az Azure AD-vel, a következőket teheti:
 
-* A MEVISIO-hez hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a MEVISIO az Azure AD-fiókjával.
+* A Mevisio-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Mevisio az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -31,47 +31,47 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a MEVISIO a Azure 
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* MEVISIO egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Mevisio egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A MEVISIO támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
-* A MEVISIO **csak időben támogatja a** felhasználók kiépítési folyamatát
+* A Mevisio támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
+* A Mevisio **csak időben támogatja a** felhasználók kiépítési folyamatát
 
 
-## <a name="adding-mevisio-from-the-gallery"></a>MEVISIO hozzáadása a gyűjteményből
+## <a name="adding-mevisio-from-the-gallery"></a>Mevisio hozzáadása a gyűjteményből
 
-A MEVISIO Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a MEVISIO a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Mevisio Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Mevisio a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **MEVISIO** kifejezést a keresőmezőbe.
-1. Válassza ki a **MEVISIO** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Mevisio** kifejezést a keresőmezőbe.
+1. Válassza ki a **Mevisio** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-sso-for-mevisio"></a>Azure AD SSO konfigurálása és tesztelése a MEVISIO-hez
+## <a name="configure-and-test-azure-ad-sso-for-mevisio"></a>Azure AD SSO konfigurálása és tesztelése a Mevisio-hez
 
-Konfigurálja és tesztelje az Azure AD SSO-t a MEVISIO a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a MEVISIO-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Mevisio a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Mevisio-ben.
 
-Az Azure AD SSO és a MEVISIO konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
+Az Azure AD SSO és a Mevisio konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. **[MEVISIO SSO konfigurálása](#configure-mevisio-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre MEVISIO-teszt felhasználót](#create-mevisio-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-MEVISIO rendelkezik.
+    1. **[Hozzon létre Mevisio-teszt felhasználót](#create-mevisio-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Mevisio rendelkezik.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A Azure Portal **MEVISIO** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A Azure Portal **Mevisio** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -87,15 +87,15 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.mevisio.com/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a MEVISIO ügyfélszolgálati [csapatához](mailto:support@mevisio.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a Mevisio ügyfélszolgálati [csapatához](mailto:support@mevisio.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A MEVISIO alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
+1. A Mevisio alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/default-attributes.png)
 
-1. A fentiek mellett a MEVISIO alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
+1. A fentiek mellett a Mevisio alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name |  Forrás attribútum|
+    | Név |  Forrás attribútum|
     | ------------- | --------- |
     | firstName | User. givenName |
     | lastName | felhasználó. vezetéknév |
@@ -107,33 +107,33 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a MEVISIO.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Mevisio.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **MEVISIO**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Mevisio** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-mevisio-sso"></a>MEVISIO SSO konfigurálása
+## <a name="configure-mevisio-sso"></a>Mevisio SSO konfigurálása
 
-Az egyszeri bejelentkezés **MEVISIO** -oldalon való konfigurálásához el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [MEVISIO támogatási csapatának](mailto:support@mevisio.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az egyszeri bejelentkezés **Mevisio** -oldalon való konfigurálásához el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [Mevisio támogatási csapatának](mailto:support@mevisio.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-### <a name="create-mevisio-test-user"></a>MEVISIO-tesztelési felhasználó létrehozása
+### <a name="create-mevisio-test-user"></a>Mevisio-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a MEVISIO-ben. A MEVISIO támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a MEVISIO-ben, a rendszer egy újat hoz létre a hitelesítés után.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Mevisio-ben. A Mevisio támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Mevisio-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
@@ -141,16 +141,16 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 #### <a name="sp-initiated"></a>Az SP inicializálva:
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a MEVISIO bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a Mevisio bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
 
-* Lépjen közvetlenül a MEVISIO bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
+* Lépjen közvetlenül a Mevisio bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
 #### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a MEVISIO, amelyhez be szeretné állítani az egyszeri bejelentkezést 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a Mevisio, amelyhez be szeretné állítani az egyszeri bejelentkezést 
 
-A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a MEVISIO csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a MEVISIO, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a Mevisio csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a Mevisio, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A MEVISIO konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
+A Mevisio konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

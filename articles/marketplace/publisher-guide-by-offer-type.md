@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
-ms.openlocfilehash: 0d22e10a71c3eee2026f55a73074ba02c68c2b78
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: a2b41ac32f8c887d7a8ffd33d51baebaa0e2482e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146177"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366485"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Közzétételi útmutató ajánlattípusok szerint
 
@@ -30,9 +30,8 @@ A következő táblázat a partner Center kereskedelmi Piactéri ajánlatának t
 
 | **Ajánlat típusa**    | **Leírás**  |
 | :------------------- | :-------------------|
-| [Azure-alkalmazás: **felügyelt alkalmazás**](marketplace-managed-apps.md) | Használja az Azure-alkalmazást: felügyelt alkalmazási ajánlat típusa, ha a következő feltételek szükségesek: <br> <ul> <li>Az ügyfél előfizetésen alapuló megoldását egy virtuális gép vagy egy teljes IaaS-alapú megoldás használatával helyezheti üzembe. </li> <li>Ön vagy az ügyfele megköveteli, hogy a megoldást egy partner felügyelje. </li> <ul> |
-| [Azure-alkalmazás: **megoldás sablonja**](marketplace-solution-templates.md) | Az Azure-alkalmazás: megoldás-sablon típusú ajánlat típusa akkor használható, ha a megoldás további üzembe helyezést és konfigurációs automatizálást igényel egy virtuális gépen kívül. A megoldási sablonok számos különböző Azure-erőforrást alkalmazhatnak, többek között a virtuális gépeket is beleértve.  |
-  | [**Azure-tároló**](marketplace-containers.md) | Használja az Azure Container ajánlat típusát, ha a megoldás egy Kubernetes-alapú Azure Container Service-ben kiépített Docker-tároló-rendszerkép. |
+| [**Azure-alkalmazás**](plan-azure-application-offer.md) | Kétféle Azure-alkalmazási csomag létezik: _megoldás sablon_ és _felügyelt alkalmazás_. Mindkét díjcsomag támogatja a megoldás üzembe helyezésének és konfigurálásának automatizálását egyetlen virtuális gépen (VM) túl. Automatizálhatja több erőforrás, többek között a virtuális gépek, a Hálózatkezelés és a tárolási erőforrások megadásának folyamatát összetett megoldások, például IaaS-megoldások biztosítása érdekében. Mindkét projekttípus számos különböző Azure-erőforrást alkalmazhat, beleértve a virtuális gépeket, de nem korlátozódik rájuk.<ul><li>A **megoldási sablonok** az egyik fő módszer a megoldás közzétételére a kereskedelmi piactéren. A megoldási sablonok csomagjai nem vonhatók le a kereskedelmi piactéren, de használhatók a kereskedelmi Piactéren keresztül számlázott fizetős virtuális gépek üzembe helyezésére. Használja a megoldás sablonjának típusát, ha az ügyfél felügyeli a megoldást, és a tranzakciók számlázása egy másik csomagon keresztül történik.</li><br><li>A **felügyelt alkalmazási** csomagok segítségével egyszerűen hozhat létre és biztosíthat teljes körűen felügyelt, kulcsrakész alkalmazásokat ügyfelei számára. Ugyanazokkal a képességekkel rendelkeznek, mint a megoldási sablonok, és néhány fő különbség:</li><ul><li> Az erőforrások üzembe helyezése egy erőforráscsoporthoz történik, és az alkalmazás közzétevője felügyeli. Az erőforráscsoport az ügyfél előfizetésében található meg, de a közzétevő bérlőjének egy identitása rendelkezik hozzáféréssel az erőforráscsoporthoz.</li><li>Közzétevőként meg kell adnia a megoldás folyamatos támogatásának költségeit, és a tranzakciók a kereskedelmi Piactéren keresztül támogatottak.</li></ul>Használja a felügyelt alkalmazáscsomag típusát, ha Ön vagy az ügyfél megköveteli, hogy a megoldást egy partner felügyelje, vagy egy előfizetésen alapuló megoldást helyezzen üzembe.</ul> |
+| [**Azure-tároló**](marketplace-containers.md) | Használja az Azure Container ajánlat típusát, ha a megoldás egy Kubernetes-alapú Azure Container Service-ben kiépített Docker-tároló-rendszerkép. |
 | [**Azure-beli virtuális gép**](marketplace-virtual-machines.md) | Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát. |
 | [**Tanácsadási szolgáltatás**](consulting-services.md) | A tanácsadási szolgáltatások segítségével az ügyfeleket összekapcsolhatja a szolgáltatásokkal az Azure, a Dynamics 365 vagy a Power Suite szolgáltatások használatának támogatásához és bővítéséhez.|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | Közzéteheti a Dynamics 365 Business Central, a Dynamics 365 Customer engagement, a Power apps és a Finance és az Operations alkalmazások szolgáltatásait felépítő AppSource-ajánlatokat.|
@@ -42,7 +41,7 @@ A következő táblázat a partner Center kereskedelmi Piactéri ajánlatának t
 | [**Szolgáltatásként szolgáló szoftver**](plan-saas-offer.md) | A szolgáltatott szoftver (SaaS) ajánlat típusa lehetővé teszi az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldásait. Az SaaS-ajánlatok egyszeri bejelentkezési követelményeivel kapcsolatos információkért lásd: [Az Azure ad és a transactd SaaS-ajánlatok a kereskedelmi piactéren](azure-ad-saas.md). |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az ajánlat kiválasztásának és konfigurációjának véglegesítéséhez tekintse át a megfelelő cikkben szereplő támogathatósági követelményeket.
 - Tekintse át az egyes online áruházak közzétételi mintáit, példákat arra, hogy a megoldás hogyan mutasson az ajánlat típusára és a konfigurációra.

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f22213bf192b12e046bab12346e5d5d83fb36b96
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523978"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364275"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2 – v3 Migrálás
 
@@ -37,7 +37,7 @@ A dokumentum vége hasznos hivatkozásokat tartalmaz, amelyekről további infor
 * Átbetűzés – átbetűzés metódus lett hozzáadva az API-hoz. Ez a metódus a szavakat és a mondatokat egy parancsfájlban konvertálja (például Arab) egy másik parancsfájlba (például Latin betűs).
 * Nyelvek – az új "languages" metódus JSON formátumú nyelvi információkat biztosít a "Translate", a "Dictionary" és a "átbetűzés" metódusokkal való használathoz.
 * Új fordítás – új képességek lettek hozzáadva a "Translate" metódushoz, amely a v2 API különböző funkcióit külön módszerként támogatja. Ilyen például a TranslateArray.
-* A Speak metódus – a szöveg és a Beszédfelismerés funkció már nem támogatott a Microsoft Translatorben. A beszédfelismerési funkció a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)-ben érhető el.
+* A Speak metódus – a szöveg és a Beszédfelismerés funkció már nem támogatott a Microsoft Translatorben. A beszédfelismerési funkció a [Microsoft Speech Service](../speech-service/text-to-speech.md)-ben érhető el.
 
 A v2 és v3 metódusok következő listája a v2-vel kapott funkciókat biztosító v3 metódusokat és API-kat azonosítja.
 
@@ -47,8 +47,8 @@ A v2 és v3 metódusok következő listája a v2-vel kapott funkciókat biztosí
 | `TranslateArray`      | [Fordítása](reference/v3-0-translate.md)        |
 | `GetLanguageNames`      | [Nyelvek](reference/v3-0-languages.md)         |
 | `GetLanguagesForTranslate`     | [Nyelvek](reference/v3-0-languages.md)       |
-| `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `GetLanguagesForSpeak`      | [Microsoft Speech Service](../speech-service/language-support.md#text-to-speech)         |
+| `Speak`     | [Microsoft Speech Service](../speech-service/text-to-speech.md)          |
 | `Detect`     | [Kinyomoz](reference/v3-0-detect.md)         |
 | `DetectArray`     | [Kinyomoz](reference/v3-0-detect.md)         |
 | `AddTranslation`     | A szolgáltatás már nem támogatott       |

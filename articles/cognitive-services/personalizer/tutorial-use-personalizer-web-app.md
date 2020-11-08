@@ -6,12 +6,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e06d191573219df44631f6ffaee86f895166de57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c004887e3883ae711974b544510dff16a98d4ef9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777258"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363918"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Oktatóanyag: személyre szabás hozzáadása egy .NET-webalkalmazáshoz
 
@@ -158,7 +158,7 @@ A webalkalmazás személyre szabott lehetőséget használ a legjobb megoldás k
 * olyan funkciókkal **, mint** a `taste` és a`spiceLevel`
 * a **környezeti** funkciók, például `time` a nap, `taste` a felhasználó és a böngésző felhasználói ügynökének adatai, valamint a környezeti funkciók
 * **kizárni kívánt műveletek** (például Juice)
-* **Napszállta**, amely eltér a Rank API-k minden egyes hívásakor.
+* **Napszállta** , amely eltér a Rank API-k minden egyes hívásakor.
 
 ## <a name="personalizer-model-features-in-a-web-app"></a>Személyre szabott modell funkciói egy webalkalmazásban
 
@@ -216,7 +216,7 @@ Telepítse a következő szoftvereket:
 
 * [.Net core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.1) – a minta háttér-kiszolgáló a .net Core-t használja
 * [Node.js](https://nodejs.org/) – az ügyfél/előtér-végpont az alkalmazástól függ
-* [Visual studio 2019](https://visualstudio.microsoft.com/vs/)vagy [a .net Core parancssori felülete](https://docs.microsoft.com/dotnet/core/tools/) – használja a Visual Studio 2019 fejlesztői környezetét, vagy a a .net Core parancssori felülete az alkalmazás létrehozásához és futtatásához
+* [Visual studio 2019](https://visualstudio.microsoft.com/vs/)vagy [a .net Core parancssori felülete](/dotnet/core/tools/) – használja a Visual Studio 2019 fejlesztői környezetét, vagy a a .net Core parancssori felülete az alkalmazás létrehozásához és futtatásához
 
 ### <a name="set-up-the-sample"></a>A minta beállítása
 1. Az Azure személyre szabott minták tárházának klónozása.
@@ -235,7 +235,7 @@ Telepítse a következő szoftvereket:
 
 1. A Azure Portal a `Endpoint` kulcsok és a végpontok lapon keresse meg a és a vagy a (vagy a `Key1` `Key2` működni fog). **Keys and Endpoints** Ezek a saját `PersonalizerServiceEndpoint` és a `PersonalizerApiKey` .
 1. Töltse ki a `PersonalizerServiceEndpoint` **appsettings.js**.
-1. A `PersonalizerApiKey` következő módszerek egyikével konfigurálja az [alkalmazásként](https://docs.microsoft.com/aspnet/core/security/app-secrets) megjelenő titkot:
+1. A `PersonalizerApiKey` következő módszerek egyikével konfigurálja az [alkalmazásként](/aspnet/core/security/app-secrets) megjelenő titkot:
 
     * Ha a a .NET Core parancssori felülete használja, használhatja az `dotnet user-secrets set "PersonalizerApiKey" "<API Key>"` parancsot.
     * Ha a Visual studiót használja, kattintson a jobb gombbal a projektre, és válassza a **felhasználói titkok kezelése** menüpontot a személyre szabott kulcsok konfigurálásához. Ezzel a Visual Studio megnyit egy fájlt, `secrets.json` ahol a kulcsokat a következőképpen adhatja hozzá:
@@ -294,7 +294,7 @@ Ez egy tipikus .NET-webalkalmazás, amely egy ügyfélalkalmazás, és a kazán-
 
 ### <a name="create-personalizer-client"></a>Személyre szabott ügyfél létrehozása
 
-A kiszolgáló **Startup.cs**a személyre szabott végpontot és kulcsot használja a személyre szabott ügyfél létrehozásához. Az ügyfélalkalmazás nem kell kommunikálni a személyre szabással ebben az alkalmazásban ahelyett, hogy az SDK-hívásokat erre a kiszolgálóra támaszkodik.
+A kiszolgáló **Startup.cs** a személyre szabott végpontot és kulcsot használja a személyre szabott ügyfél létrehozásához. Az ügyfélalkalmazás nem kell kommunikálni a személyre szabással ebben az alkalmazásban ahelyett, hogy az SDK-hívásokat erre a kiszolgálóra támaszkodik.
 
 A webkiszolgáló .NET indítási kódja a következő:
 
@@ -340,7 +340,7 @@ namespace HttpRequestFeaturesExample
 
 ### <a name="select-best-action"></a>A legjobb művelet kiválasztása
 
-A kiszolgáló **PersonalizerController.cs**a **GENERATERANK** -kiszolgáló API ÖSSZEGZI a Range API meghívásának előkészítését
+A kiszolgáló **PersonalizerController.cs** a **GENERATERANK** -kiszolgáló API ÖSSZEGZI a Range API meghívásának előkészítését
 
 * Új létrehozása `eventId` a rangsor hívásához
 * A műveletek listájának beolvasása
@@ -517,7 +517,7 @@ A személyre eljuttatott JSON, amely mindkét műveletet (funkciókat) és az ak
 
 A Rank API a kiválasztott legjobb műveleti **rewardActionId** adja vissza a kiszolgálónak.
 
-Jelenítse meg a **rewardActionId**-ben visszaadott műveletet.
+Jelenítse meg a **rewardActionId** -ben visszaadott műveletet.
 
 ```json
 {

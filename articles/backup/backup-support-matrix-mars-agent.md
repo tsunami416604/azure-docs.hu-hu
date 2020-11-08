@@ -3,12 +3,12 @@ title: A MARS-ügynök támogatási mátrixa
 description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt futtató gépek biztonsági mentésének Azure Backup támogatását foglalja össze.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 53034d058e0cd2e1623acc6629da0a694b35e60b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 26a47c2648d1307d2e7da2b25455f3f036cbf32d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173530"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363238"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -46,7 +46,7 @@ Ha a MARS-ügynököt használja az adatok biztonsági mentésére, az ügynök 
 Méret |  A gyorsítótár mappában lévő szabad területnek legalább 5 – 10%-ának kell lennie a biztonsági mentési adatai teljes méretének.
 Hely | A gyorsítótár mappájának helyileg kell lennie a biztonsági mentés alatt álló gépen, és online állapotban kell lennie. A gyorsítótár mappája nem lehet hálózati megosztáson, cserélhető adathordozón vagy offline köteten.
 Mappa | A gyorsítótár mappája nem titkosítható deduplikált köteten, vagy egy tömörített mappában, amely ritka, vagy újraelemzési ponttal rendelkezik.
-Hely változásai | A gyorsítótár helyét úgy módosíthatja, hogy leállítja a biztonsági mentési motort ( `net stop bengine` ), és átmásolja a gyorsítótár mappát egy új meghajtóra. (Győződjön meg arról, hogy az új meghajtó elegendő lemezterülettel rendelkezik.) Ezután frissítsen két beállításjegyzékbeli bejegyzést a **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** és **config/CloudBackupProvider/ScratchLocation**) elemre az új helyre, és indítsa újra a motort.
+Hely változásai | A gyorsítótár helyét úgy módosíthatja, hogy leállítja a biztonsági mentési motort ( `net stop bengine` ), és átmásolja a gyorsítótár mappát egy új meghajtóra. (Győződjön meg arról, hogy az új meghajtó elegendő lemezterülettel rendelkezik.) Ezután frissítsen két beállításjegyzékbeli bejegyzést a **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** ( **config/ScratchLocation** és **config/CloudBackupProvider/ScratchLocation** ) elemre az új helyre, és indítsa újra a motort.
 
 ## <a name="networking-and-access-support"></a>Hálózatkezelés és hozzáférés támogatása
 
@@ -67,11 +67,11 @@ A MARS-ügynöknek hozzá kell férnie az alábbi URL-címekhez:
 
 A fentiekben felsorolt URL-címek és IP-címek elérése a HTTPS protokollt használja a 443-es porton.
 
-Ha az Azure-beli virtuális gépekről a MARS-ügynök használatával készít biztonsági másolatot a fájlokról és mappákról, az Azure Virtual Network-t is konfigurálni kell, hogy engedélyezze a hozzáférést. Ha hálózati biztonsági csoportokat (NSG) használ, használja a *AzureBackup* szolgáltatás címkéjét, hogy engedélyezze a kimenő hozzáférést Azure Backuphoz. A Azure Backup címkén kívül az Azure AD-hoz (*AzureActiveDirectory*) és az Azure Storage-hoz (*Storage*) hasonló [NSG szabályok](../virtual-network/network-security-groups-overview.md#service-tags) létrehozásával is engedélyeznie kell a csatlakozást a hitelesítéshez és az adatátvitelhez. A következő lépések azt ismertetik, hogyan hozható létre szabály a Azure Backup címke számára:
+Ha az Azure-beli virtuális gépekről a MARS-ügynök használatával készít biztonsági másolatot a fájlokról és mappákról, az Azure Virtual Network-t is konfigurálni kell, hogy engedélyezze a hozzáférést. Ha hálózati biztonsági csoportokat (NSG) használ, használja a *AzureBackup* szolgáltatás címkéjét, hogy engedélyezze a kimenő hozzáférést Azure Backuphoz. A Azure Backup címkén kívül az Azure AD-hoz ( *AzureActiveDirectory* ) és az Azure Storage-hoz ( *Storage* ) hasonló [NSG szabályok](../virtual-network/network-security-groups-overview.md#service-tags) létrehozásával is engedélyeznie kell a csatlakozást a hitelesítéshez és az adatátvitelhez. A következő lépések azt ismertetik, hogyan hozható létre szabály a Azure Backup címke számára:
 
-1. A **minden szolgáltatás**területen lépjen a **hálózati biztonsági csoportok** elemre, és válassza ki a hálózati biztonsági csoportot.
-2. A **Beállítások**területen válassza a **kimenő biztonsági szabályok** lehetőséget.
-3. Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](../virtual-network/manage-network-security-group.md#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup*értékre van állítva.
+1. A **minden szolgáltatás** területen lépjen a **hálózati biztonsági csoportok** elemre, és válassza ki a hálózati biztonsági csoportot.
+2. A **Beállítások** területen válassza a **kimenő biztonsági szabályok** lehetőséget.
+3. Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](../virtual-network/manage-network-security-group.md#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup* értékre van állítva.
 4. Válassza a **Hozzáadás** lehetőséget az újonnan létrehozott kimenő biztonsági szabály mentéséhez.
 
 Hasonlóképpen NSG kimenő biztonsági szabályokat hozhat létre az Azure Storage és az Azure AD számára. A szolgáltatás címkével kapcsolatos további információkért tekintse meg [ezt a cikket](../virtual-network/service-tags-overview.md).
@@ -111,7 +111,7 @@ További információ a [Azure Backup magánhálózati végpontokról](private-e
 
 ### <a name="throttling-support"></a>Szabályozás támogatása
 
-**Szolgáltatás** | **Részletek**
+**Funkció** | **Részletek**
 --- | ---
 Sávszélesség-vezérlés | Támogatott. A MARS-ügynökben a sávszélesség módosításához használja a **Tulajdonságok módosítása** lehetőséget.
 Hálózati sávszélesség-szabályozás | Nem érhető el a Windows Server 2008 R2, a Windows Server 2008 SP2 vagy a Windows 7 rendszerű biztonsági másolattal rendelkező gépekhez.
@@ -169,6 +169,17 @@ Windows Server 2008 SP2| 1 700 GB
 Windows 8 vagy újabb| 54 400 GB
 Windows 7| 1 700 GB
 
+### <a name="minimum-retention-limits"></a>Minimális megőrzési korlátok
+
+A következő minimális megőrzési időtartamok állíthatók be a különböző helyreállítási pontokhoz:
+
+|Helyreállítási pont |Időtartam  |
+|---------|---------|
+|Napi helyreállítási pont    |   7 nap      |
+|Heti helyreállítási pont     |    4 hét     |
+|Havi helyreállítási pont    |   3 hónap      |
+|Éves helyreállítási pont  |      1 év   |
+
 ### <a name="other-limitations"></a>Egyéb korlátozások
 
 - A MARS nem támogatja több azonos nevű gép védelmét egyetlen tárolóban.
@@ -218,7 +229,7 @@ Azure Backup [azonnali visszaállítási](backup-instant-restore-capability.md) 
 
 A biztonsági mentések nem állíthatók vissza olyan célszámítógépre, amely az operációs rendszer korábbi verzióját futtatja. Például egy Windows 7 rendszerű számítógépről készített biztonsági mentés visszaállítható a Windows 8 vagy újabb verzióra. A Windows 8 rendszert futtató számítógépekről azonban nem lehet visszaállítani a Windows 7 rendszert futtató számítógépeken.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [a Mars-ügynököt használó biztonsági mentési architektúráról](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Ismerje meg, hogy mi támogatott [a Mars-ügynök MABS vagy DPM-kiszolgálón való futtatásakor](backup-support-matrix-mabs-dpm.md).

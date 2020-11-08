@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: d1405bce6761b6702146418296cb7b47bb9124ee
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f270ac736bb5dbc429dc8659cc88e63d0b51a523
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357181"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366638"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Korlátok Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -78,7 +78,7 @@ A PostgreSQL-kapcsolatok, akár tétlenek is, körülbelül 10 MB memóriát fog
 - Zone-Redundant HA jelenleg nem támogatott a betört kiszolgálók esetében.
 - Az adatbázis-kiszolgáló IP-címe akkor változik meg, ha a kiszolgáló átadja a HA készenléti állapotot. Győződjön meg arról, hogy a kiszolgáló IP-címe helyett a DNS-rekordot használja.
 - Ha a logikai replikáció egy HA konfigurált rugalmas kiszolgálóval van konfigurálva, a készenléti kiszolgáló feladatátvétele esetén a rendszer nem másolja át a logikai replikációs tárolóhelyeket a készenléti kiszolgálóra. 
-- HA további korlátozásokat kíván, tekintse meg a [fogalmak – ha dokumentációs](concepts-high-availability.md) oldalt.
+- További információ a zónáról – redundáns HA a korlátozásokat is beleértve, tekintse meg a [fogalmak – ha dokumentációs](concepts-high-availability.md) oldalt.
 
 ### <a name="availability-zones"></a>Rendelkezésreállási zónák
 

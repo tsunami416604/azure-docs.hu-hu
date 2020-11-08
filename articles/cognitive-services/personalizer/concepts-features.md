@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edd1549ddabef0ae1ba37150ad75a371ac6e6d85
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132772"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365516"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>A funkciók a műveletekkel és környezettel kapcsolatos információk
 
 A személyre szabott szolgáltatás úgy működik, hogy megtanítja, hogy az alkalmazás hogyan jelenjen meg a felhasználók számára egy adott kontextusban.
 
-A személyre szabott **funkciók**az **aktuális környezettel** kapcsolatos információkat használják, és kiválasztják a legjobb **műveletet**. A funkciók az összes olyan információt képviselik, amelyet úgy gondol, hogy a személyre szabhatja a magasabb szintű jutalmakat. A funkciók lehetnek általánosak vagy egy elemre jellemzőek. 
+A személyre szabott **funkciók** az **aktuális környezettel** kapcsolatos információkat használják, és kiválasztják a legjobb **műveletet**. A funkciók az összes olyan információt képviselik, amelyet úgy gondol, hogy a személyre szabhatja a magasabb szintű jutalmakat. A funkciók lehetnek általánosak vagy egy elemre jellemzőek. 
 
 Előfordulhat például, hogy a következő **funkcióval** rendelkezik:
 
@@ -41,8 +41,8 @@ A személyre szabás a sztring, a numerikus és a logikai típusok funkcióit t�
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>A szolgáltatás típusának kiválasztása a személyre szabás Machine Learningét érinti
 
-* **Karakterláncok**: karakterlánc-típusok esetén a kulcs és érték minden kombinációja új súlyozást hoz létre a személyre szabott gépi tanulási modellben. 
-* **Numerikus**értékek: numerikus értékeket kell használnia, ha a számnak arányosan kell érintenie a személyre szabási eredményt. Ez a forgatókönyv függ. Egy egyszerűsített példában például a kiskereskedelmi élmény személyre szabása esetén a NumberOfPetsOwned olyan funkció lehet, amely numerikus, ha 2 vagy 3 személyre szabottan szeretné, hogy a megszemélyesítési eredmények kétszer vagy háromszor legyenek felhasználva, mint 1 kisállat. A numerikus egységeken alapuló, de ha a jelentés nem lineáris – például az életkor, a hőmérséklet vagy a személy magassága – a legjobb karakterláncként kódolva, és a szolgáltatás minősége általában tartományok használatával javítható. Például a kor kódolása "Age": "0-5", "Age": "6-10" stb.
+* **Karakterláncok** : karakterlánc-típusok esetén a kulcs és érték minden kombinációja új súlyozást hoz létre a személyre szabott gépi tanulási modellben. 
+* **Numerikus** értékek: numerikus értékeket kell használnia, ha a számnak arányosan kell érintenie a személyre szabási eredményt. Ez a forgatókönyv függ. Egy egyszerűsített példában például a kiskereskedelmi élmény személyre szabása esetén a NumberOfPetsOwned olyan funkció lehet, amely numerikus, ha 2 vagy 3 személyre szabottan szeretné, hogy a megszemélyesítési eredmények kétszer vagy háromszor legyenek felhasználva, mint 1 kisállat. A numerikus egységeken alapuló, de ha a jelentés nem lineáris – például az életkor, a hőmérséklet vagy a személy magassága – a legjobb karakterláncként kódolva, és a szolgáltatás minősége általában tartományok használatával javítható. Például a kor kódolása "Age": "0-5", "Age": "6-10" stb.
 * A "false" értékkel ellátott **logikai** értékek úgy vannak megadva, mintha egyáltalán nem küldték el őket.
 
 A nem jelen lévő funkciókat ki kell hagyni a kérelemből. Kerülje a funkciók NULL értékkel történő küldését, mert az a modell betanításakor a meglévőként és a "NULL" értékkel lesz feldolgozva.
@@ -115,7 +115,7 @@ Vegye fontolóra a funkciók küldését a személyre szabási rangsor API-ra, a
 
 * A személyre szabáshoz elegendő funkció áll rendelkezésre. Minél pontosabban célozza meg a tartalmat, annál több szolgáltatásra van szükség.
 
-* Számos különféle *sűrűségű*funkció létezik. A szolgáltatás *sűrű* , ha sok elem van csoportosítva néhány gyűjtőn. Több ezer videó például "Long" (5 percnél hosszabb) és "Short" (5 percnél hosszabb) besorolású lehet. Ez egy *nagyon sűrű* funkció. Másfelől ugyanezen ezer elemnek egy "title" nevű attribútummal is rendelkezhet, amely szinte soha nem lesz ugyanaz az érték az egyik elemből a másikba. Ez egy nagyon nem sűrű vagy *ritka* funkció.  
+* Számos különféle *sűrűségű* funkció létezik. A szolgáltatás *sűrű* , ha sok elem van csoportosítva néhány gyűjtőn. Több ezer videó például "Long" (5 percnél hosszabb) és "Short" (5 percnél hosszabb) besorolású lehet. Ez egy *nagyon sűrű* funkció. Másfelől ugyanezen ezer elemnek egy "title" nevű attribútummal is rendelkezhet, amely szinte soha nem lesz ugyanaz az érték az egyik elemből a másikba. Ez egy nagyon nem sűrű vagy *ritka* funkció.  
 
 A nagy sűrűségű funkciókkal a személyre szabott kikövetkeztethető az egyik elemről a másikra. Ha azonban csak néhány funkció van, és túl sűrű, a személyre szabott felhasználó megpróbál pontosan megcélozni a tartalmat, és csak néhány gyűjtő közül választhat.
 
@@ -152,10 +152,10 @@ Például:
 
 Számos más [Azure-Cognitive Services](https://www.microsoft.com/cognitive-services)is használhat, például:
 
-* [Entitáskapcsolás](../entitylinking/home.md)
+* [Entitáskapcsolás](../text-analytics/index.yml)
 * [Text Analytics](../text-analytics/overview.md)
-* [Érzelem](../emotion/home.md)
-* [Computer Vision](../computer-vision/home.md)
+* [Érzelem](../face/overview.md)
+* [Computer Vision](../computer-vision/overview.md)
 
 ## <a name="actions-represent-a-list-of-options"></a>A műveletek a lehetőségek listáját jelölik
 
@@ -179,7 +179,7 @@ A Rank API-nak küldött műveletek attól függnek, hogy mit próbál személyr
 
 Néhány példa:
 
-|Cél|Művelet|
+|Rendeltetés|Művelet|
 |--|--|
 |Személyre szabhatja, hogy mely cikkek legyenek kiemelve a hírek webhelyén.|Minden művelet egy lehetséges újságcikk.|
 |Optimalizálja az ad-elhelyezést egy webhelyen.|Minden művelet elrendezést vagy szabályokat tartalmaz a hirdetések elrendezésének létrehozásához (például felül, a jobb oldalon, a kis képeken és a nagyméretű képeken).|
@@ -205,7 +205,7 @@ A műveletekből származó funkciók általában tartalomkezelő rendszerekből
 
 Bizonyos esetekben vannak olyan műveletek, amelyeket nem kíván megjeleníteni a felhasználók számára. A legjobb módszer arra, hogy megakadályozza, hogy egy művelet a legfelső szintnek legyen rangsorolva, és ne foglalja bele a rangsor API-ba az első helyen.
 
-Bizonyos esetekben csak később határozható meg az üzleti logikában, ha egy Range API-hívást eredményező _művelet_ jelenik meg egy felhasználó számára. Ezekben az esetekben _inaktív eseményeket_kell használnia.
+Bizonyos esetekben csak később határozható meg az üzleti logikában, ha egy Range API-hívást eredményező _művelet_ jelenik meg egy felhasználó számára. Ezekben az esetekben _inaktív eseményeket_ kell használnia.
 
 ## <a name="json-format-for-actions"></a>Műveletek JSON-formátuma
 
@@ -322,4 +322,4 @@ A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tu
 
 ## <a name="next-steps"></a>További lépések
 
-[Megerősítő tanulás](concepts-reinforcement-learning.md) 
+[Megerősítő tanulás](concepts-reinforcement-learning.md)

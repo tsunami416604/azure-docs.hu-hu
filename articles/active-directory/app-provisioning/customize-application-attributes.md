@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: cac7b169232bb43ba1b1893b59dac81ce4c39c49
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 2f21e4f41814b47d8e630df72c255886ac2af53b
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233883"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364292"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -110,7 +110,7 @@ Az attribútumok listájának testreszabását támogató alkalmazások és rend
 - Munkanapokat Active Directory/munkanapokat Azure Active Directory
 - SuccessFactors Active Directory/SuccessFactors-re Azure Active Directory
 - Azure Active Directory (az[Azure AD Graph API alapértelmezett attribútumai](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) és az egyéni címtárszolgáltatás-bővítmények támogatottak)
-- Az [SCIM 2,0](https://tools.ietf.org/html/rfc7643)-et támogató alkalmazások, ahol az [alapsémában](https://tools.ietf.org/html/rfc7643) definiált attribútumokat fel kell venni
+- A [SCIM 2,0](https://tools.ietf.org/html/rfc7643) -et támogató alkalmazások
 - Ha Azure Active Directory visszaírási a munkanap vagy a SuccessFactors számára, a rendszer támogatja a támogatott attribútumok (XPATH és JSONPath) releváns metaadatainak frissítését, de nem támogatott az alapértelmezett sémán kívüli új munkanapokat vagy SuccessFactors-attribútumokat hozzáadni.
 
 
@@ -146,7 +146,7 @@ A SCIM alkalmazások esetében az attribútum nevének az alábbi példában lá
 
 Ezek az utasítások csak a SCIM-kompatibilis alkalmazásokra vonatkoznak. Az olyan alkalmazások, mint a ServiceNow és a Salesforce, nem integráltak az Azure AD-vel a SCIM használatával, ezért nem igénylik ezt az adott névteret egyéni attribútumok hozzáadásakor.
 
-Az egyéni attribútumok nem lehetnek hivatkozási attribútumok vagy többértékű attribútumok. Az egyéni többértékű bővítmény attribútumai jelenleg csak a katalógusban lévő alkalmazásokhoz támogatottak.  
+Az egyéni attribútumok nem lehetnek hivatkozási attribútumok, többértékű vagy összetett típusú attribútumok. Az egyéni többértékű és összetett típusú kiterjesztési attribútumok jelenleg csak a katalógusban lévő alkalmazásokhoz támogatottak.  
  
 **Példa kiterjesztési attribútummal rendelkező felhasználó ábrázolására:**
 
@@ -318,7 +318,7 @@ Ha ezt a beállítást választja, a kiépítési szolgáltatás futása közben
 - A szerepkör attribútumot általában egy kifejezéssel kell leképezni, nem közvetlen hozzárendelést. A szerepkör-hozzárendeléssel kapcsolatos további részletekért lásd a fenti szakaszt. 
 - Noha letilthatja a csoportokat a leképezésekről, a felhasználók letiltása nem támogatott. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A felhasználók üzembe helyezésének és megszüntetésének automatizálása az SaaS-alkalmazásokban](user-provisioning.md)
 - [Kifejezések írása attribútum-leképezésekhez](functions-for-customizing-application-data.md)

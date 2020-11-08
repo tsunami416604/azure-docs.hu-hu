@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 905ae56ab8d64f7342c4ee6b9f25d188c907710d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c0453fa99376cb6a5dba1e427cdc0deccb3e03de
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084187"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367046"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Mi a Bing Spell Check API?
 
@@ -26,7 +26,7 @@ ms.locfileid: "93084187"
 
 A Bing Spell Check API lehetővé teszi a szöveg kontextusbeli nyelvtanának és helyesírás-ellenőrzésének elvégzését. Habár a legtöbb helyesírás-ellenőrző szótár alapú szabálykészlet alapján használható, a Bing helyesírás-ellenőrzője a gépi tanulást és a statisztikai gépi fordítást használja a pontos és a kontextusbeli javítások biztosításához. 
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 | Funkció | Leírás |
 |---------|---------|
@@ -43,10 +43,10 @@ A Bing Spell Check API könnyen hívható bármely programozási nyelvről, amel
 2. Küldjön egy kérést a Bing Web Search API-ra.
 3. A JSON-válasz elemzése
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Először is próbálja ki a Bing Spell Check Search API [interaktív bemutatóját](https://azure.microsoft.com/services/cognitive-services/spell-check/) , és tekintse meg, hogyan ellenőrizhetők a különböző szövegek.
 
 Amikor kész meghívni az API-t, hozzon létre egy [Cognitive Services API-fiókot](../../cognitive-services/cognitive-services-apis-create-account.md). Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/free/cognitive-services/).
 
-A többi elérhető API-k megismeréséhez látogasson el a [BING Search API hub oldalára](../bing-web-search/search-the-web.md) is.
+A többi elérhető API-k megismeréséhez látogasson el a [BING Search API hub oldalára](../bing-web-search/overview.md) is.

@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019, devx-track-java
-ms.openlocfilehash: 6c3c613f8733c8f786d121ab33b09afab244b09e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 26ddbf4cf97f5b9161be8b6b4ac3c31f801e82a3
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90532273"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365159"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Gyors útmutató: az Azure Text Analytics kognitív szolgáltatás meghívása a Java használatával
 <a name="HOLTop"></a>
 
-Ebből a cikkből megtudhatja, hogyan [derítheti](#Detect)fel a nyelvet, [elemezheti a véleményét](#SentimentAnalysis), [kinyerheti a legfontosabb kifejezéseket](#KeyPhraseExtraction), és hogyan [azonosíthatja a társított entitásokat](#Entities) a [text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711)  
+Ebből a cikkből megtudhatja, hogyan [észlelheti a nyelvet](#Detect), [elemezhet hangulatot](#SentimentAnalysis), [nyerhet ki kulcskifejezéseket](#KeyPhraseExtraction) és [azonosíthat társított entitásokat](#Entities) a [Text Analytics API-kkal](//go.microsoft.com/fwlink/?LinkID=759711) a Java használatával.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -33,9 +33,9 @@ A regisztráció során létrejött [végponttal és hozzáférési kulccsal](..
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Nyelv felismerése
+## <a name="detect-language"></a>Nyelvfelismerés
 
-A Nyelvfelismerés API észleli a szöveges dokumentum nyelvét az [észlelési nyelv módszer](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)használatával.
+A Language Detection API a [Detect Language metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) használatával felismeri a szöveges dokumentumok nyelvét.
 
 1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy nevű osztályt `DetectLanguage.java` .
 1. Adja hozzá az alábbi kódot az osztályhoz.
@@ -553,7 +553,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="identify-entities"></a>Entitások azonosítása
 
-Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az [entitások](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" típusa `location` , míg a wikipedia-ra mutató hivatkozás `https://en.wikipedia.org/wiki/United_States` .  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
+Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az [entitások](../how-tos/text-analytics-how-to-entity-linking.md) szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" típusa `location` , míg a wikipedia-ra mutató hivatkozás `https://en.wikipedia.org/wiki/United_States` .  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
 1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy osztályt a neve alatt `GetEntities.java` .
 1. Adja hozzá az alábbi kódot az osztályhoz.

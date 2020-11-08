@@ -12,18 +12,18 @@ ms.date: 11/02/2020
 ms.author: aahi
 keywords: szöveg-adatbányászat, érzelmek elemzése, szöveges elemzés
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289700"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365295"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
 A Text Analytics API egy felhőalapú szolgáltatás, amely természetes nyelvi feldolgozási (NLP) funkciókat biztosít a szöveg-és szöveges elemzésekhez, például a következőkhöz: érzelmek elemzése, közvélemény-kutatás, kulcsfontosságú kifejezés kinyerése, nyelvfelismerés és elnevezett entitások felismerése.
 
-Az API az [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)része, amely a felhőben a gépi tanulási és AI-algoritmusok gyűjteménye a fejlesztési projektekhez. Ezeket a szolgáltatásokat a [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)vagy az [ügyféloldali kódtár](quickstarts/text-analytics-sdk.md)használatával is használhatja.
+Az API az [Azure Cognitive Services](../index.yml)része, amely a felhőben a gépi tanulási és AI-algoritmusok gyűjteménye a fejlesztési projektekhez. Ezeket a szolgáltatásokat a [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)vagy az [ügyféloldali kódtár](quickstarts/text-analytics-sdk.md)használatával is használhatja.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
@@ -73,18 +73,18 @@ Elkezdheti használni a Text Analytics API a folyamatokban, még akkor is, ha ne
 
 * Minimális programozás szükséges:
     * [Adatok kinyerése az Excelben a Text Analytics és a Power automatizálás használatával](tutorials/extract-excel-information.md)
-    * [A Text Analytics API és az MS flow használatával azonosíthatja a Yammer-csoportba tartozó megjegyzések hangulatát](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [A Text Analytics API és az MS flow használatával azonosíthatja a Yammer-csoportba tartozó megjegyzések hangulatát](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
     * [Power BI integrálása a Text Analytics APIekkel az ügyfelek visszajelzésének elemzéséhez](tutorials/tutorial-power-bi-key-phrases.md)
 * Ajánlott programozási élmény:
-    * [Streamelési adatok hangulatelemzése az Azure Databricks használatával](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
-    * [Hozzon létre egy lombik-alkalmazást a szöveg fordításához, a hangulat elemzéséhez és a beszédfelismerés hangszintéziséhez](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Streamelési adatok hangulatelemzése az Azure Databricks használatával](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Hozzon létre egy lombik-alkalmazást a szöveg fordításához, a hangulat elemzéséhez és a beszédfelismerés hangszintéziséhez](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
 
 
 <a name="supported-languages"></a>
 
 ## <a name="supported-languages"></a>Támogatott nyelvek
 
-Ez a szakasz egy külön cikkbe lett áthelyezve a jobb átláthatóság érdekében. A tartalomhoz [a Text Analytics API támogatott nyelveket](text-analytics-supported-languages.md) tekintheti meg.
+Ez a szakasz egy külön cikkbe lett áthelyezve a jobb átláthatóság érdekében. A tartalomhoz [a Text Analytics API támogatott nyelveket](./language-support.md) tekintheti meg.
 
 <a name="data-limits"></a>
 
@@ -94,9 +94,9 @@ A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. Továb
 
 ## <a name="unicode-encoding"></a>Unicode-kódolás
 
-A Text Analytics API Unicode-kódolást használ a szövegek megjelenítéséhez és a karakterszámok számításához. A kérések elküldhetők UTF-8- és UTF-16-kódolással is, amelyek között nincs számottevő különbség a karakterek számában. A rendszer a Unicode-kódpontokat használja a karakterszám heurisztikus számításához. A két mennyiség a Text Analytics adatkorlátai szempontjából egyenértékű. Ha [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) a karakterek számának beolvasására használja, ugyanazt a módszert használja az adatméret mérésére.
+A Text Analytics API Unicode-kódolást használ a szövegek megjelenítéséhez és a karakterszámok számításához. A kérések elküldhetők UTF-8- és UTF-16-kódolással is, amelyek között nincs számottevő különbség a karakterek számában. A rendszer a Unicode-kódpontokat használja a karakterszám heurisztikus számításához. A két mennyiség a Text Analytics adatkorlátai szempontjából egyenértékű. Ha [`StringInfo.LengthInTextElements`](/dotnet/api/system.globalization.stringinfo.lengthintextelements) a karakterek számának beolvasására használja, ugyanazt a módszert használja az adatméret mérésére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Hozzon létre egy Azure-erőforrást](../cognitive-services-apis-create-account.md) az Text Analytics számára az alkalmazások kulcsának és végpontjának beszerzéséhez.
 
@@ -104,6 +104,6 @@ A Text Analytics API Unicode-kódolást használ a szövegek megjelenítéséhez
 
 + Az új kiadásokkal és szolgáltatásokkal kapcsolatos információkért tekintse [meg a Text Analytics API újdonságait](whats-new.md) .
 
-+ A Azure Databricks használatával mélyebben kihasználhatja ezt az [érzelmi elemzést ismertető oktatóanyagot](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services) .
++ A Azure Databricks használatával mélyebben kihasználhatja ezt az [érzelmi elemzést ismertető oktatóanyagot](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services) .
 
 + Tekintse meg a blogbejegyzések listáját, valamint további videókat arról, hogyan használhatja a Text Analytics APIt a [külső & közösségi tartalom oldalán](text-analytics-resource-external-community.md)található egyéb eszközökkel és technológiákkal.

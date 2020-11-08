@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 905dde6932afb440c34bcccb563bfda98f23eb7c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88258281"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363833"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Az Text Analytics API vonatkozó adatforgalmi és díjszabási korlátok
 <a name="data-limits"></a>
@@ -31,7 +31,7 @@ Ebből a cikkből megtudhatja, hogy mekkora a mérete, és milyen arányban kül
 
 | Korlát | Érték |
 |------------------------|---------------|
-| Az egyes dokumentumok maximális mérete | 5 120 karakter a [StringInfo. LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)alapján mérve. Az állapot-tároló Text Analytics is vonatkozik. |
+| Az egyes dokumentumok maximális mérete | 5 120 karakter a [StringInfo. LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)alapján mérve. Az állapot-tároló Text Analytics is vonatkozik. |
 | Teljes kérés maximális mérete | 1 MB. Az állapot-tároló Text Analytics is vonatkozik. |
 
 Az egyetlen kérelemben elküldhető dokumentumok maximális száma a használt API-verziótól és szolgáltatástól függ.
@@ -41,7 +41,7 @@ Az egyetlen kérelemben elküldhető dokumentumok maximális száma a használt 
 A következő korlátok módosultak az API v3-as verziójában. Az alábbi korlátok túllépése a HTTP 400 hibakódot eredményezi.
 
 
-| Szolgáltatás | Dokumentumok maximális száma kérelem szerint | 
+| Funkció | Dokumentumok maximális száma kérelem szerint | 
 |----------|-----------|
 | Nyelvfelismerés | 1000 |
 | Hangulatelemzés | 10 |
@@ -51,7 +51,7 @@ A következő korlátok módosultak az API v3-as verziójában. Az alábbi korl�
 | Text Analytics az állapotfigyelő tárolóhoz | 1000 |
 #### <a name="version-2"></a>[2-es verzió](#tab/version-2)
 
-| Szolgáltatás | Dokumentumok maximális száma kérelem szerint | 
+| Funkció | Dokumentumok maximális száma kérelem szerint | 
 |----------|-----------|
 | Nyelvfelismerés | 1000 |
 | Hangulatelemzés | 1000 |

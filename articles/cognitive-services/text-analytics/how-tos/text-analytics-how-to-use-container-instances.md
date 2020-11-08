@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: f7dbb79e2d9009b00b21d4c12663d8e6c855a4c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be43d04672dcefe368eb4052b4d1a929e25327ab
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88243751"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366859"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Text Analytics tároló üzembe helyezése Azure Container Instances
 
@@ -23,7 +23,7 @@ Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [text Analytics][ins
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés használata. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services), mielőtt hozzákezd.
+* Azure-előfizetés használata. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services).
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
@@ -41,16 +41,16 @@ Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [text Analytics][ins
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-#### <a name="text-analytics-for-health"></a>[Text Analytics állapota](#tab/health)
+#### <a name="text-analytics-for-health"></a>[Egészségügyi Text Analytics](#tab/health)
 
 [!INCLUDE [Verify the health container instance](../includes/verify-health-container.md)]
 
 ***
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 * További [Cognitive Services tárolók](../../cognitive-services-container-support.md) használata
-* A [text Analytics csatlakoztatott szolgáltatás](../vs-text-connected-service.md) használata
+* A [text Analytics csatlakoztatott szolgáltatás](../index.yml) használata
 
 [install-and-run-containers]: ./text-analytics-how-to-install-containers.md
 [container-instances]: https://docs.microsoft.com/azure/container-instances

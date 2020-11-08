@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 25750f690129439f0f614724a2bb62b596f322ea
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b290539bf6424895a9685c1e4cdb53d8fb8cfb41
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084986"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365907"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Keresési kérelmek küldése a Bing Entity Search APInak
 
@@ -40,18 +40,18 @@ Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítóna
 
 ## <a name="specifying-query-parameters-and-headers"></a>A lekérési paraméterek és fejlécek meghatározása
 
-A kérelemnek tartalmaznia kell a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) lekérdezési paramétert, amely a felhasználó keresési kifejezését adja meg. A kérelemnek tartalmaznia kell egy [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) lekérdezési paramétert is, amely azonosítja a piacot, ahonnan eredményeket szeretne kapni. Az opcionális lekérdezési paraméterek listáját lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) ismertető cikkben. Minden lekérdezési paraméternek URL-kódolásúnak kell lennie.  
+A kérelemnek tartalmaznia kell a [q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) lekérdezési paramétert, amely a felhasználó keresési kifejezését adja meg. A kérelemnek tartalmaznia kell egy [mkt](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) lekérdezési paramétert is, amely azonosítja a piacot, ahonnan eredményeket szeretne kapni. Az opcionális lekérdezési paraméterek listáját lásd a [lekérdezési paramétereket](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) ismertető cikkben. Minden lekérdezési paraméternek URL-kódolásúnak kell lennie.  
   
-A kérelemnek tartalmaznia kell az [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey) fejlécet. Nem kötelező, de javasolt a következő fejlécek megadása is:  
+A kérelemnek tartalmaznia kell az [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey) fejlécet. Nem kötelező, de javasolt a következő fejlécek megadása is:  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
--   [X-MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
+-   [X-MSEdge-ClientID](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
+-   [X-MSEdge-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
 
 Az ügyfél IP-címe és helye fontos a helyfüggő tartalmak visszaadása szempontjából.  
 
-Az összes kérelem- és válaszfejléc listáját lásd a [Fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) cikkben.
+Az összes kérelem- és válaszfejléc listáját lásd a [Fejlécek](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) cikkben.
 
 ## <a name="the-request"></a>A kérelem
 
@@ -71,7 +71,7 @@ Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-
 
 ## <a name="the-response"></a>A válasz
 
-Az alábbiakban az előző kérelemre adott válasz látható. A példában a Bing-specifikus válaszfejlécek is láthatók. A válaszobjektumra vonatkozó további információért lásd: [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse).
+Az alábbiakban az előző kérelemre adott válasz látható. A példában a Bing-specifikus válaszfejlécek is láthatók. A válaszobjektumra vonatkozó további információért lásd: [SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse).
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -137,7 +137,7 @@ BingAPIs-Market: en-US
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Entitások keresése a Bing Entity API-val](search-for-entities.md)
-* [A Bing API használatának és megjelenítési követelményei](../use-display-requirements.md)
+* [A Bing API használatának és megjelenítési követelményei](../../bing-web-search/use-display-requirements.md)

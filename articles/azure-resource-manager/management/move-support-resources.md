@@ -2,13 +2,13 @@
 title: Művelet támogatásának áthelyezése erőforrástípus szerint
 description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 7d5875287c7af905579397164029ef0504d6b9dc
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.date: 11/06/2020
+ms.openlocfilehash: 5b71c991136533096604c8a35af7989a227b6d2a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337950"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364229"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet-támogatás áthelyezése az erőforrásokhoz
 
@@ -792,7 +792,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | datafactories | Igen | Igen |
-> | datafactoryschema | Nem | Nem |
 > | előállítók | Igen | Igen |
 
 ## <a name="microsoftdatalake"></a>Microsoft. DataLake

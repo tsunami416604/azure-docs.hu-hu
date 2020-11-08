@@ -10,22 +10,27 @@ tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
-ms.date: 04/13/2018
+ms.date: 11/06/2020
 ms.author: daberry
-ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79bc043a991404a3ee9da954b9639bf1a41f2c51
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509358"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365873"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>A virtuális gépek Azure-beli telepítése, újraindítása vagy átméretezése során jelentkező foglalási hibák elhárítása
 
 Ha virtuális gépet (VM) hoz létre, indítsa újra a leállított (felszabadított) virtuális gépeket, vagy átméretezi a virtuális gépet, Microsoft Azure a számítási erőforrásokat lefoglalja az előfizetéséhez. Folyamatosan fejlesztünk további infrastruktúrát és szolgáltatásokat annak érdekében, hogy mindig minden virtuálisgép-típus elérhető legyen az ügyfelek igényeinek kielégítése érdekében. Alkalmanként azonban előfordulhat, hogy az erőforrás-lefoglalási hibák miatt az Azure-szolgáltatások igény szerinti növekedése az egyes régiókban nem tapasztalt növekedést eredményezett. Ez a probléma akkor fordulhat elő, ha virtuális gépeket próbál létrehozni vagy elindítani egy régióban, miközben a virtuális gépek a következő hibakódot és üzenetet jelenítik meg:
 
-**Hibakód**: AllocationFailed vagy ZonalAllocationFailed
+**Hibakód** : AllocationFailed vagy ZonalAllocationFailed
 
-**Hibaüzenet**: "a foglalás nem sikerült. Nem áll rendelkezésre elegendő kapacitás a kért VM-mérethez ebben a régióban. További információ a foglalás sikerességének valószínűségéről a https: \/ /aka.MS/Allocation-Guidance címen
+**Hibaüzenet** : "a foglalás nem sikerült. Nem áll rendelkezésre elegendő kapacitás a kért VM-mérethez ebben a régióban. További információ a foglalás sikerességének valószínűségéről a https: \/ /aka.MS/Allocation-Guidance címen
+
+> [!NOTE]
+> Ha hibaelhárítást végez egy virtuálisgép-méretezési csoport (VMSS) esetében, a folyamat megegyezik a szabványos virtuális géppel. A probléma megoldásához kövesse az ebben a cikkben szereplő utasításokat.
+> 
+>**Hibaüzenet** : "a foglalás nem sikerült. Ha olyan virtuálisgép-méretezési csoportba próbál hozzáadni egy új virtuális gépet, amely egyetlen elhelyezési csoporttal rendelkezik, vagy ha egy virtuálisgép-méretezési csoportban egy meglévő virtuális gépet egy különálló elhelyezési csoporttal szeretne frissíteni vagy átméretezni, vegye figyelembe, hogy az ilyen foglalás egyetlen fürtre van korlátozva, és lehetséges, hogy a fürt kapacitása kívül van. További információ a foglalás sikerességének valószínűségéről a http: \/ /aka.MS/Allocation-Guidance címen.
 
 Ez a cikk ismerteti a gyakori lefoglalási hibák okait, és javaslatot tesz a lehetséges jogorvoslatokra.
 

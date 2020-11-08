@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
-ms.openlocfilehash: ae987a4239f478162e1e1f251e0d6607d63e02c5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019749"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363714"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomáliadetektor-tárolók konfigurálása
 
@@ -27,14 +27,14 @@ Ez a tároló a következő konfigurációs beállításokat tartalmaz:
 
 |Kötelező|Beállítás|Rendeltetés|
 |--|--|--|
-|Yes|[ApiKey](#apikey-configuration-setting)|A számlázási információk nyomon követésére szolgál.|
-|No|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi az [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetria támogatásának hozzáadását a tárolóhoz.|
-|Yes|[Számlázás](#billing-configuration-setting)|Meghatározza a szolgáltatási erőforrás végpontjának URI-JÁT az Azure-ban.|
-|Yes|[EULA](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
-|No|[Fluentd](#fluentd-settings)|Írási napló és opcionálisan metrikus adatok egy Fluent-kiszolgáló számára.|
-|No|[Http-proxy](#http-proxy-credentials-settings)|HTTP-proxy konfigurálása kimenő kérések készítéséhez.|
-|No|[Logging](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
-|No|[Tartók](#mount-settings)|Adatok olvasása és írása a gazdagépről a tárolóba és a tárolóból a gazdagépre.|
+|Igen|[ApiKey](#apikey-configuration-setting)|A számlázási információk nyomon követésére szolgál.|
+|Nem|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi az [Azure Application Insights](/azure/application-insights) telemetria támogatásának hozzáadását a tárolóhoz.|
+|Igen|[Számlázás](#billing-configuration-setting)|Meghatározza a szolgáltatási erőforrás végpontjának URI-JÁT az Azure-ban.|
+|Igen|[EULA](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
+|Nem|[Fluentd](#fluentd-settings)|Írási napló és opcionálisan metrikus adatok egy Fluent-kiszolgáló számára.|
+|Nem|[Http-proxy](#http-proxy-credentials-settings)|HTTP-proxy konfigurálása kimenő kérések készítéséhez.|
+|Nem|[Logging](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
+|Nem|[Tartók](#mount-settings)|Adatok olvasása és írása a gazdagépről a tárolóba és a tárolóból a gazdagépre.|
 
 > [!IMPORTANT]
 > A [`ApiKey`](#apikey-configuration-setting) , a [`Billing`](#billing-configuration-setting) és a [`Eula`](#eula-setting) beállítások együtt használhatók, és mindhárom esetben érvényes értékeket kell megadnia, máskülönben a tároló nem indul el. A tárolók létrehozásához szükséges konfigurációs beállításokkal kapcsolatos további információkért lásd: [számlázás](anomaly-detector-container-howto.md#billing).
@@ -97,8 +97,8 @@ A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs ren
 
 Az alábbi példák a konfigurációs beállítások segítségével szemléltetik a parancsok írását és használatát `docker run` .  A rendszer futtatása után a tároló továbbra is futni fog, amíg [le nem állítja](anomaly-detector-container-howto.md#stop-the-container) .
 
-* **Vonal-folytatási karakter**: a következő szakaszban lévő Docker-parancsok a hátsó perjelet használják `\` , mint a bash-rendszerhéj vonalának folytatási karaktere. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján. Például a Windows vonal folytatási karaktere egy kalap `^` . Cserélje le a vissza perjelet a kalapra. 
-* **Argumentumok sorrendje**: ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
+* **Vonal-folytatási karakter** : a következő szakaszban lévő Docker-parancsok a hátsó perjelet használják `\` , mint a bash-rendszerhéj vonalának folytatási karaktere. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján. Például a Windows vonal folytatási karaktere egy kalap `^` . Cserélje le a vissza perjelet a kalapra. 
+* **Argumentumok sorrendje** : ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
 
 Cserélje le a zárójelben lévő értéket a `{}` saját értékeire:
 
@@ -137,7 +137,7 @@ A következő Docker-példák az anomália detektor tárolóhoz tartoznak.
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Rendellenesség-Kiderítő tároló üzembe helyezése Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)
 * [További információ az anomália-érzékelő API szolgáltatásáról](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 58ce4d7593b23807f4b31e3e71cbfdcd873b1fcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3249ba2089c3d9650aa46f665353ad392d0e773
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253496"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365567"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>A jutalom pontszámai a személyre szabás sikerességét jelzik
 
-A jutalmazási pontszám azt jelzi, hogy a felhasználó személyre szabása milyen mértékben [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response). A jutalom pontszám értékét az üzleti logikája határozza meg, a felhasználói viselkedés megfigyelése alapján.
+A jutalmazási pontszám azt jelzi, hogy a felhasználó személyre szabása milyen mértékben [RewardActionID](/rest/api/cognitiveservices/personalizer/rank/rank#response). A jutalom pontszám értékét az üzleti logikája határozza meg, a felhasználói viselkedés megfigyelése alapján.
 
 A személyre szabott gépi tanulási modelljeit a jutalmak kiértékelésével teheti meg.
 
@@ -22,11 +22,11 @@ Megtudhatja, [Hogyan](how-to-settings.md#configure-rewards-for-the-feedback-loop
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Jutalmazási pontszám küldése a személyre szabáshoz a jutalmazási API használatával
 
-A jutalmakat a [jutalmazási API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward)-nak kell elküldeni a személyre. A jutalom általában 0 és 1 közötti szám. Bizonyos helyzetekben lehetséges negatív jutalom a-1 értékkel, és csak akkor használható, ha a megerősítő tanulást (RL) tapasztalta. A személyre szabottan a modell a lehető legmagasabb összegű jutalmak eléréséhez biztosít időt.
+A jutalmakat a [jutalmazási API](/rest/api/cognitiveservices/personalizer/events/reward)-nak kell elküldeni a személyre. A jutalom általában 0 és 1 közötti szám. Bizonyos helyzetekben lehetséges negatív jutalom a-1 értékkel, és csak akkor használható, ha a megerősítő tanulást (RL) tapasztalta. A személyre szabottan a modell a lehető legmagasabb összegű jutalmak eléréséhez biztosít időt.
 
 A rendszer a felhasználó viselkedésének megtörténte után elküldje a jutalmakat, ami lehet nappal később. A személyre szabott maximális idő megvárja, amíg az esemény nem minősül jutalomnak, vagy az alapértelmezett jutalom a Azure Portal a [jutalom várakozási idejére](#reward-wait-time) van konfigurálva.
 
-Ha az eseményre vonatkozó jutalom pontszáma nem érkezett meg a **jutalmazási várakozási időn**belül, akkor az **alapértelmezett jutalom** lesz alkalmazva. Az **[alapértelmezett jutalom](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** általában nullára van konfigurálva.
+Ha az eseményre vonatkozó jutalom pontszáma nem érkezett meg a **jutalmazási várakozási időn** belül, akkor az **alapértelmezett jutalom** lesz alkalmazva. Az **[alapértelmezett jutalom](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** általában nullára van konfigurálva.
 
 
 ## <a name="behaviors-and-data-to-consider-for-rewards"></a>A jutalmak alapján megfontolandó viselkedések és adatkezelési szempontok
@@ -72,24 +72,24 @@ A jutalmazási API-t ugyanazzal az AZONOSÍTÓJÚ eseménnyel is meghívhatja, k
 
 Összesítési értékek:
 
-*  **Először is**: fogadja el az esemény első jutalmazási pontszámát, és elveti a többiet.
-* **Sum**: a Napszállta összegyűjtött összes jutalmat begyűjti, és együtt adja hozzá őket.
+*  **Először is** : fogadja el az esemény első jutalmazási pontszámát, és elveti a többiet.
+* **Sum** : a Napszállta összegyűjtött összes jutalmat begyűjti, és együtt adja hozzá őket.
 
-A **jutalmazási várakozási idő**után kapott összes nyereményt elvetettük, és nincs hatással a modellek betanítására.
+A **jutalmazási várakozási idő** után kapott összes nyereményt elvetettük, és nincs hatással a modellek betanítására.
 
 A jutalmazási pontszámok hozzáadásával a végső jutalom a várt pontszám-tartományon kívül esik. Ez a szolgáltatás nem fog működni.
 
 ## <a name="best-practices-for-calculating-reward-score"></a>Ajánlott eljárások a jutalmazási pontszám kiszámításához
 
-* **Tekintse át a sikeres személyre szabáshoz szükséges valós mutatókat**: a kattintások szempontjából könnyen átgondolható, de a jó jutalom az, hogy mit szeretne elérni a felhasználók számára, ahelyett, *hogy el*szeretné *érni* a felhasználókat.  Előfordulhat például, hogy a kattintásokra való jutalom a clickbait-tartalom kiválasztásához vezethet.
+* **Tekintse át a sikeres személyre szabáshoz szükséges valós mutatókat** : a kattintások szempontjából könnyen átgondolható, de a jó jutalom az, hogy mit szeretne elérni a felhasználók számára, ahelyett, *hogy el* szeretné *érni* a felhasználókat.  Előfordulhat például, hogy a kattintásokra való jutalom a clickbait-tartalom kiválasztásához vezethet.
 
-* **Jutalom pontszáma a személyre szabás kihasználása érdekében**: egy film javaslatának személyre szabása remélhetőleg azt eredményezi, hogy a felhasználó megnézi a filmet, és magas minősítést ad neki. Mivel a film minősítése valószínűleg sok dologtól függ (az eljáró minőségtől, a felhasználó hangulatának minőségétől), ez nem jó jutalom a *személyre szabáshoz* . A film első néhány percét megtekintő felhasználó a személyre szabás hatékonyságának jobb jele lehet, ha pedig az 5 perc után 1 jutalmat küld, a jobb jel lesz.
+* **Jutalom pontszáma a személyre szabás kihasználása érdekében** : egy film javaslatának személyre szabása remélhetőleg azt eredményezi, hogy a felhasználó megnézi a filmet, és magas minősítést ad neki. Mivel a film minősítése valószínűleg sok dologtól függ (az eljáró minőségtől, a felhasználó hangulatának minőségétől), ez nem jó jutalom a *személyre szabáshoz* . A film első néhány percét megtekintő felhasználó a személyre szabás hatékonyságának jobb jele lehet, ha pedig az 5 perc után 1 jutalmat küld, a jobb jel lesz.
 
-* A **jutalmak csak a RewardActionID vonatkoznak**: a személyre szabott jutalom a RewardActionID-ben megadott művelet hatékonyságát értelmezi. Ha úgy dönt, hogy más műveleteket is megjelenít, és a felhasználó rákattint rájuk, a jutalomnak nulla értékűnek kell lennie.
+* A **jutalmak csak a RewardActionID vonatkoznak** : a személyre szabott jutalom a RewardActionID-ben megadott művelet hatékonyságát értelmezi. Ha úgy dönt, hogy más műveleteket is megjelenít, és a felhasználó rákattint rájuk, a jutalomnak nulla értékűnek kell lennie.
 
-* A nem **szándékolt következmények megfontolása**: hozzon létre jutalmazási funkciókat, amelyek az [etikai és a felelősségteljes használat](ethics-responsible-use.md)érdekében vezetnek a felelős eredményekhez.
+* A nem **szándékolt következmények megfontolása** : hozzon létre jutalmazási funkciókat, amelyek az [etikai és a felelősségteljes használat](ethics-responsible-use.md)érdekében vezetnek a felelős eredményekhez.
 
-* **Növekményes jutalmak használata**: a kisebb felhasználói viselkedésmódokkal kapcsolatos részleges jutalmak hozzáadásával a személyre szabott előnyökkel lehet elérni a jobb jutalmakat. Ez a növekményes jutalom lehetővé teszi az algoritmus számára, hogy megismerje, hogy minél közelebb kerüljön a felhasználóhoz a végső kívánt viselkedésben.
+* **Növekményes jutalmak használata** : a kisebb felhasználói viselkedésmódokkal kapcsolatos részleges jutalmak hozzáadásával a személyre szabott előnyökkel lehet elérni a jobb jutalmakat. Ez a növekményes jutalom lehetővé teszi az algoritmus számára, hogy megismerje, hogy minél közelebb kerüljön a felhasználóhoz a végső kívánt viselkedésben.
     * Ha a filmek listáját jeleníti meg, ha a felhasználó az elsőre mutat a további információk megtekintéséhez, akkor megtudhatja, hogy az egyes felhasználók bevonása történt. A viselkedés a 0,1 értékű jutalmazási pontszámmal számítható fel.
     * Ha a felhasználó megnyitotta a lapot, és kilépett, a jutalom pontszáma 0,2 lehet.
 
@@ -107,7 +107,7 @@ A jobb eredmények érdekében kövesse ezeket az ajánlásokat.
 
 * Ne válasszon olyan időtartamot, amely rövidebb, mint a visszajelzés kéréséhez szükséges idő. Ha például egy adott jutalom egy felhasználónál 1 perces videó megtekintése után következik be, a kísérlet hosszának legalább kétszeresnak kell lennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Megerősítő tanulás](concepts-reinforcement-learning.md)
 * [A Rank API kipróbálása](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)

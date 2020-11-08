@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: f24c9c372ff91db5836a62ac2d08b569434ff253
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 4fbac2c2d77d838ac7fc4f3caaa73983633c3e03
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761579"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366050"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Gyors útmutató: egyéni modell összeállítása, üzembe helyezése és használata fordításhoz
 
@@ -22,14 +22,14 @@ Ez a cikk részletes útmutatást nyújt a fordítási rendszer egyéni fordít�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Az [Egyéni Translator](https://portal.customtranslator.azure.ai) portál használatához szüksége lesz egy [Microsoft-fiók](https://signup.live.com) vagy [Azure ad-fiókra](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (az Azure-ban üzemeltetett szervezeti fiókra) a bejelentkezéshez.
+1. Az [Egyéni Translator](https://portal.customtranslator.azure.ai) portál használatához szüksége lesz egy [Microsoft-fiók](https://signup.live.com) vagy [Azure ad-fiókra](../../../active-directory/fundamentals/active-directory-whatis.md) (az Azure-ban üzemeltetett szervezeti fiókra) a bejelentkezéshez.
 
-2. Előfizetés a Translator Text API a Azure Portal keresztül. Az egyéni fordítóban a munkaterülethez társítandó Translator Text API előfizetési kulcsra lesz szüksége. Tekintse [meg, hogyan regisztrálhat a Translator Text APIra](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
+2. Előfizetés a Translator Text API a Azure Portal keresztül. Az egyéni fordítóban a munkaterülethez társítandó Translator Text API előfizetési kulcsra lesz szüksége. Tekintse [meg, hogyan regisztrálhat a Translator Text APIra](../translator-how-to-signup.md).
 
 3. Ha mindkét fentivel rendelkezik, jelentkezzen be az  [Egyéni Translator](https://portal.customtranslator.azure.ai) portálra munkaterületek, projektek, fájlok feltöltése és modellek létrehozása/üzembe helyezése létrehozásához.
 
 >[!Note]
->Az egyéni fordító nem támogatja munkaterületek létrehozását olyan Translator Text API erőforráshoz, amely az [engedélyezett VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)belül lett létrehozva.
+>Az egyéni fordító nem támogatja munkaterületek létrehozását olyan Translator Text API erőforráshoz, amely az [engedélyezett VNET](../../../api-management/api-management-using-with-vnet.md)belül lett létrehozva.
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
@@ -92,8 +92,8 @@ Egy üzembe helyezett modell egy projekten belüli kicseréléséhez kattintson 
 
 ## <a name="use-a-deployed-model"></a>Üzembe helyezett modell használata
 
-Az üzembe helyezett modellek a Microsoft Translator [text API v3-as verzióján keresztül érhetők el a Kategóriakód megadásával](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). A Translator Text APIról további információt az [API-referenciát](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) ismertető weblapon találhat.
+Az üzembe helyezett modellek a Microsoft Translator [text API v3-as verzióján keresztül érhetők el a Kategóriakód megadásával](../reference/v3-0-translate.md?tabs=curl). A Translator Text APIról további információt az [API-referenciát](../reference/v3-0-reference.md) ismertető weblapon találhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan navigálhat a [Custom Translator munkaterületen, és hogyan kezelheti a projektjeit](workspace-and-project.md).

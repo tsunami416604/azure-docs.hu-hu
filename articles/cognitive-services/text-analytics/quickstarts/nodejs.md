@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 00026066c90520f59700c7c5ddc33557099b3e8a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 912434f20d00d276bde23803f4560ebd528872d9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91309013"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365125"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: Node.js használata a Text Analytics kognitív szolgáltatás meghívásához  
 <a name="HOLTop"></a>
 
-Ebből a cikkből megtudhatja, hogyan [derítheti fel a nyelveket](#Detect), [elemezheti](#SentimentAnalysis)a véleményeket, [kinyerheti a kulcsfontosságú kifejezéseket](#KeyPhraseExtraction), és [azonosíthatja a társított entitásokat](#Entities) a Node.JS [text Analytics](//go.microsoft.com/fwlink/?LinkID=759711)  
+Ebből a cikkből megtudhatja, hogyan [észlelheti a nyelvet](#Detect), [elemezhet hangulatot](#SentimentAnalysis), [nyerhet ki kulcskifejezéseket](#KeyPhraseExtraction) és [azonosíthat társított entitásokat](#Entities) a [Text Analytics API-kkal](//go.microsoft.com/fwlink/?LinkID=759711) a Node.JS használatával.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -31,7 +31,7 @@ Ebből a cikkből megtudhatja, hogyan [derítheti fel a nyelveket](#Detect), [el
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Nyelv felismerése
+## <a name="detect-language"></a>Nyelvfelismerés
 
 A Language Detection API a [Detect Language metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) használatával felismeri a szöveges dokumentumok nyelvét.
 
@@ -366,7 +366,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="identify-linked-entities"></a>Társított entitások azonosítása
 
-Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az [entitások](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" típusa `location` , míg a wikipedia-ra mutató hivatkozás `https://en.wikipedia.org/wiki/United_States` .  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
+Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az [entitások](../how-tos/text-analytics-how-to-entity-linking.md) szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" típusa `location` , míg a wikipedia-ra mutató hivatkozás `https://en.wikipedia.org/wiki/United_States` .  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
 1. Hozzon létre egy új Node.JS projektet a kedvenc IDE vagy egy mappában az asztalon.
 1. Adja hozzá az alább megadott kódot egy új `.js` fájlhoz.

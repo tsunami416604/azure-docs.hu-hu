@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 444b76a594e768face892462da12a1cbb35a5106
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 37239f9c7857a8e72bb293cfa3caeb429962a542
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324683"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363340"
 ---
 # <a name="getting-started"></a>Első lépések
 
@@ -31,7 +31,7 @@ A Big Cognitive Services használatához először létre kell hoznia egy kognit
 
 ### <a name="cloud-services"></a>Felhőszolgáltatások
 
-A felhőalapú Cognitive Services az Azure-ban üzemeltetett intelligens algoritmusok. Ezek a szolgáltatások a képzés nélkül is használatra készen állnak, csak internetkapcsolatra van szükség. A Azure Portal vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)használatával [hozhat létre kognitív szolgáltatást](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows) .
+A felhőalapú Cognitive Services az Azure-ban üzemeltetett intelligens algoritmusok. Ezek a szolgáltatások a képzés nélkül is használatra készen állnak, csak internetkapcsolatra van szükség. A Azure Portal vagy az [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)használatával [hozhat létre kognitív szolgáltatást](../cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows) .
 
 ### <a name="containerized-services-optional"></a>Tároló szolgáltatások (nem kötelező)
 
@@ -45,7 +45,7 @@ Ha az alkalmazás vagy a munkaterhelés nagyméretű adatkészleteket használ, 
 
 * **Magas skálázhatóság** : a tároló szolgáltatások nem rendelkeznek a "díjszabási korlátokkal", és a felhasználó által felügyelt számítógépeken futnak. Így a Cognitive Services méretezés nélkül is méretezhető, így sokkal nagyobb számítási feladatokat kezelhet.
 
-Kövesse [ezt az útmutatót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis) egy tárolós kognitív szolgáltatás létrehozásához.
+Kövesse [ezt az útmutatót](../cognitive-services-container-support.md?tabs=luis) egy tárolós kognitív szolgáltatás létrehozásához.
 
 ## <a name="create-an-apache-spark-cluster"></a>Apache Spark-fürt létrehozása
 
@@ -55,8 +55,8 @@ Kövesse [ezt az útmutatót](https://docs.microsoft.com/azure/cognitive-service
 
 A Azure Databricks egy Apache Spark-alapú elemzési platform, amely egy kattintással beállítható, áramvonalas munkafolyamatokkal és interaktív munkaterülettel rendelkezik. Gyakran használják az adatszakértők, a mérnökök és az üzleti elemzők közötti együttműködésre. Ha a Big adatCognitive Servicest szeretné használni a Azure Databrickson, kövesse az alábbi lépéseket:
 
-1. [Azure Databricks-munkaterület létrehozása](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
-1. [Spark-fürt létrehozása a Databricks használatával](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
+1. [Azure Databricks-munkaterület létrehozása](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
+1. [Spark-fürt létrehozása a Databricks használatával](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
 1. Nagy mennyiségű adatCognitive Services telepítése
     * Új könyvtár létrehozása a databricks-munkaterületen  
        <img src="media/create-library.png" alt="Create library" width="50%"/>
@@ -69,8 +69,8 @@ A Azure Databricks egy Apache Spark-alapú elemzési platform, amely egy kattint
 
 A szinapszis Analytics használatával Spark-fürtöt is létrehozhat. Az Azure szinapszis Analytics egyesíti a vállalati adattárházat és a big data elemzéseket. Lehetővé teszi, hogy a feltételek alapján lekérdezzen egy kiszolgáló nélküli igény szerinti vagy kiépített erőforrást a skálán. A szinapszis Analytics használatának megkezdéséhez kövesse az alábbi lépéseket:
 
-1. [Hozzon létre egy szinapszis-munkaterületet (előzetes verzió)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
-1. [Hozzon létre egy új kiszolgáló nélküli Apache Spark készletet (előzetes verzió) a Azure Portal használatával](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
+1. [Hozzon létre egy szinapszis-munkaterületet (előzetes verzió)](../../synapse-analytics/quickstart-create-workspace.md).
+1. [Hozzon létre egy új kiszolgáló nélküli Apache Spark készletet (előzetes verzió) a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
 
 A szinapszis Analyticsben alapértelmezés szerint a Cognitive Services Big default típusú adatmennyiség van telepítve.
 
@@ -80,9 +80,9 @@ Ha tárolón alapuló Cognitive Services használ, a Spark mellett a tárolók e
 
 Az Azure Kubernetes szolgáltatás megkezdéséhez kövesse az alábbi lépéseket:
 
-1. [Azure Kubernetes Service (ak) fürt üzembe helyezése a Azure Portal használatával](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
+1. [Azure Kubernetes Service (ak) fürt üzembe helyezése a Azure Portal használatával](../../aks/kubernetes-walkthrough-portal.md)
 1. [A Apache Spark 2.4.0 Helm-diagram telepítése](https://hub.helm.sh/charts/microsoft/spark)
-1. [Kognitív szolgáltatás tárolójának telepítése a Helm használatával](https://docs.microsoft.com/azure/cognitive-services/computer-vision/deploy-computer-vision-on-premises)
+1. [Kognitív szolgáltatás tárolójának telepítése a Helm használatával](../computer-vision/deploy-computer-vision-on-premises.md)
 
 ## <a name="try-a-sample"></a>Minta kipróbálása
 
@@ -98,7 +98,7 @@ Először is létrehozhatunk egy jegyzetfüzetet Azure Databricks. Más Spark-f�
 
     <img src="media/databricks-notebook-details.jpg" alt="New notebook details" width="50%"/>
 
-    Kattintson a **Létrehozás** gombra.
+    Válassza a **Létrehozás** lehetőséget.
 
 1. Illessze be ezt a kódrészletet az új jegyzetfüzetbe.
 
@@ -142,7 +142,7 @@ display(results.select("text", col("sentiment")[0].getItem("score").alias("senti
 | Ez a Rush Hour-forgalom csalódott vagyok. |   0,0237956 |
 | A sparkon nem rossz a kognitív szolgáltatások  |   0,888896  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid Python-példák](samples-python.md)
 - [Rövid Scala-példák](samples-scala.md)

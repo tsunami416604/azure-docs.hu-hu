@@ -9,32 +9,32 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 55555d81eb531ae5a4d946fa3f661796b3294897
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85961234"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365499"
 ---
 # <a name="what-is-custom-translator"></a>Mi a Custom Translator?
 
 Az [Egyéni Translator](https://portal.customtranslator.azure.ai) a Microsoft Translator Service egyik funkciója, amely lehetővé teszi a fordító vállalatok, az alkalmazások fejlesztői és a nyelvi szolgáltatók számára a testreszabott neurális gépi fordítási (NMT-) rendszerek készítését. A testreszabott fordítási rendszerek zökkenőmentesen integrálva vannak a meglévő alkalmazásokkal, munkafolyamatokkal és webhelyekkel. A [Custom Translator](https://portal.customtranslator.azure.ai/) hasonló funkciókat kínál a [Microsoft Translator hub](https://hub.microsofttranslator.com/) számára a statisztikai gépi fordításhoz (SMT), de kizárólag neurális gépi fordítási (NMT) rendszerekhez.
 
-Az [Egyéni fordítóval](https://portal.customtranslator.azure.ai) létrehozott fordítási rendszerek ugyanazon a felhőalapú, [biztonságos](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), nagy teljesítményű, rugalmasan MÉRETEZHETŐ Microsoft Translator [text API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)-as verzión keresztül érhetők el, amely naponta több milliárd fordítást biztosít.
+Az [Egyéni fordítóval](https://portal.customtranslator.azure.ai) létrehozott fordítási rendszerek ugyanazon a felhőalapú, [biztonságos](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), nagy teljesítményű, rugalmasan MÉRETEZHETŐ Microsoft Translator [text API v3](../reference/v3-0-translate.md?tabs=curl)-as verzión keresztül érhetők el, amely naponta több milliárd fordítást biztosít.
 
-Az egyéni Translator több mint három tucat nyelvet támogat, és közvetlenül a NMT elérhető nyelvekhez nyújt térképeket. A teljes listát lásd:  [Microsoft Translator languages](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
+Az egyéni Translator több mint három tucat nyelvet támogat, és közvetlenül a NMT elérhető nyelvekhez nyújt térképeket. A teljes listát lásd:  [Microsoft Translator languages](../language-support.md#customization).
 
 ## <a name="features"></a>Szolgáltatások
 
 Az egyéni Translator különböző funkciókat biztosít az egyéni fordítási rendszerek létrehozásához, majd ezt követően azt is elérheti.
 
-|Szolgáltatás  |Leírás  |
+|Funkció  |Leírás  |
 |---------|---------|
 |[A neurális gépi fordítási technológia kihasználása](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Fejlessze a fordítást az egyéni fordító által biztosított neurális gépi fordítással (NMT).       |
 |[Az üzleti terminológiát ismerő rendszerek létrehozása](what-are-parallel-documents.md)     |  A párhuzamos dokumentumok segítségével testre szabhatja és felépítheti a fordítási rendszereket, és megismerheti a saját üzleti és iparági terminológiáját.       |
 |[Modellek készítése szótár használatával](what-is-dictionary.md)     |   Ha nem rendelkezik betanítási adatkészlettel, a modelleket csak a szótárakból álló adattal lehet betanítani.       |
 |[Együttműködés másokkal](how-to-manage-settings.md#share-your-workspace)     |   Együttműködik a csapatával, és megoszthatja a munkáját a különböző személyekkel.     |
-|[Hozzáférés az egyéni fordítási modellhez](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Az egyéni fordítási modellt a meglévő alkalmazások/programok a Microsoft Translator Text API v3 segítségével érhetik el.       |
+|[Hozzáférés az egyéni fordítási modellhez](../reference/v3-0-translate.md?tabs=curl)     |  Az egyéni fordítási modellt a meglévő alkalmazások/programok a Microsoft Translator Text API v3 segítségével érhetik el.       |
 
 ## <a name="get-better-translations"></a>Jobb fordítások
 

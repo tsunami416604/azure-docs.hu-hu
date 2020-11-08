@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
 ms.date: 07/17/2020
-ms.openlocfilehash: 5e3606ac04d5023e28bc2304aba79a8211c58881
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a62c7dc8238b642aeaa59a7b470266378832e26e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87133078"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363884"
 ---
 # <a name="whats-new-in-personalizer"></a>A személyre szabás újdonságai
 
@@ -31,7 +31,7 @@ Ismerje meg a szolgáltatás újdonságait. Ezek az elemek tartalmazhatnak kiboc
 
 ### <a name="may-2020---build-conference"></a>Május 2020 – Build konferencia
 
-A **nyilvános előzetes**verzióban a következők érhetők el:
+A **nyilvános előzetes** verzióban a következők érhetők el:
 
  * Tanulói [mód](concept-apprentice-mode.md) tanulási viselkedésként.
 
@@ -62,5 +62,5 @@ A Build 2019 konferencián a következő előzetes funkciók jelentek meg:
 
 ## <a name="next-steps"></a>További lépések
 
-* [Gyors útmutató: visszajelzési hurok létrehozása a C-ben #](csharp-quickstart-commandline-feedback-loop.md)
+* [Gyors útmutató: visszajelzési hurok létrehozása a C-ben #](./quickstart-personalizer-sdk.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [Az interaktív bemutató használata](https://personalizationdemo.azurewebsites.net/)

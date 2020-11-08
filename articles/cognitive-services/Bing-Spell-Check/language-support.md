@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 2b4e4eb84cecf2f68c50f0a40630cc2e6f34554f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38bf38f47e4430c847e54bd89f6bf3cd7be50527
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084206"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367080"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>A Bing Spell Check API nyelvi és területi támogatása
 
@@ -26,7 +26,7 @@ ms.locfileid: "93084206"
 
 Ezeket a nyelveket a Bing Spell Check API támogatja (csak a `spell` módban).
 
-Kérjük, vegye figyelembe, hogy ha más nyelvet szeretne dolgozni `en-US` , a `mkt` t be kell állítani, `Accept-Language` vagy vagy be kell állítani, `setLang` mivel [Spell Check API v7-hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Kérjük, vegye figyelembe, hogy ha más nyelvet szeretne dolgozni `en-US` , a `mkt` t be kell állítani, `Accept-Language` vagy vagy be kell állítani, `setLang` mivel [Spell Check API v7-hivatkozás](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
@@ -73,5 +73,5 @@ Kérjük, vegye figyelembe, hogy ha más nyelvet szeretne dolgozni `en-US` , a `
 
 ## <a name="see-also"></a>Lásd még
 
-- [A Cognitive Services dokumentációjának oldala](https://docs.microsoft.com/azure/cognitive-services/)
+- [A Cognitive Services dokumentációjának oldala](../index.yml)
 - [A Cognitive Services termékoldala](https://azure.microsoft.com/services/cognitive-services/)

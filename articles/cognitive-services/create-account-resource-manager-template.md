@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: d88d613b6edfc6b08d08410cdc7cf481d973512d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9ca92bf81acd72260d89404051f941b317ee3e1d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91349012"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363391"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Rövid útmutató: Cognitive Services-erőforrás létrehozása ARM-sablonnal
 
@@ -45,7 +45,7 @@ Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://
 :::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json":::
 
 A sablonban egyetlen Azure-erőforrás van definiálva:
-* [Microsoft. CognitiveServices/fiókok](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts): Cognitive Services erőforrást hoz létre.
+* [Microsoft. CognitiveServices/fiókok](/azure/templates/microsoft.cognitiveservices/accounts): Cognitive Services erőforrást hoz létre.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -60,7 +60,7 @@ A sablonban egyetlen Azure-erőforrás van definiálva:
     |Érték  |Leírás  |
     |---------|---------|
     | **Előfizetés** | Válasszon ki egy Azure-előfizetést. |
-    | **Erőforráscsoport** | Válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK**gombra. |
+    | **Erőforráscsoport** | Válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra. |
     | **Régió** | Válasszon régiót.  Például: **USA keleti** régiója |
     | **Kognitív szolgáltatás neve** | A helyére írja be az erőforrás egyedi nevét. A telepítés érvényesítése után a következő szakaszban kell megadnia a nevet. |
     | **Hely** | Cserélje le a helyére a fent használt régiót. |
@@ -68,14 +68,14 @@ A sablonban egyetlen Azure-erőforrás van definiálva:
 
     :::image type="content" source="media/arm-template/universal-key-portal-template.png" alt-text="Erőforrás-létrehozási képernyő.":::
 
-3. Válassza az **Áttekintés + létrehozás**, majd a **Létrehozás** lehetőséget. Miután az erőforrás sikeresen befejezte az üzembe helyezést, ki lesz emelve a **Ugrás erőforrásra** gomb.
+3. Válassza az **Áttekintés + létrehozás** , majd a **Létrehozás** lehetőséget. Miután az erőforrás sikeresen befejezte az üzembe helyezést, ki lesz emelve a **Ugrás erőforrásra** gomb.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
 > [!NOTE]
-> `az deployment group` a létrehozáshoz az Azure CLI 2,6-es vagy újabb verziójára lesz szükség. A verzió típusának megjelenítéséhez `az --version` . További információkért tekintse meg a [dokumentációt](https://docs.microsoft.com/cli/azure/deployment/group).
+> `az deployment group` a létrehozáshoz az Azure CLI 2,6-es vagy újabb verziójára lesz szükség. A verzió típusának megjelenítéséhez `az --version` . További információkért tekintse meg a [dokumentációt](/cli/azure/deployment/group).
 
-Futtassa a következő szkriptet az Azure parancssori felületének (CLI) használatával a [helyi gépen](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), vagy egy böngészőben a **TRY IT (kipróbálás** ) gombbal. Adja meg az új erőforráscsoport nevét és helyét (például `centralus` ), az ARM-sablont pedig Cognitive Services erőforrás üzembe helyezésére fogja használni. Jegyezze fel a használni kívánt nevet. Ezt később fogja használni a telepítés ellenőrzéséhez.
+Futtassa a következő szkriptet az Azure parancssori felületének (CLI) használatával a [helyi gépen](/cli/azure/install-azure-cli?view=azure-cli-latest), vagy egy böngészőben a **TRY IT (kipróbálás** ) gombbal. Adja meg az új erőforráscsoport nevét és helyét (például `centralus` ), az ARM-sablont pedig Cognitive Services erőforrás üzembe helyezésére fogja használni. Jegyezze fel a használni kívánt nevet. Ezt később fogja használni a telepítés ellenőrzéséhez.
 
 
 ```azurecli-interactive
@@ -140,6 +140,6 @@ az group delete --name $resourceGroupName
 ## <a name="next-steps"></a>További lépések
 
 * [Kérelmek hitelesítése az Azure Cognitive Services](authentication.md)
-* [Mi az Azure Cognitive Services?](Welcome.md)
+* [Mi az Azure Cognitive Services?](./what-are-cognitive-services.md)
 * [Természetes nyelvi támogatás](language-support.md)
 * [Docker-tárolók támogatása](cognitive-services-container-support.md)

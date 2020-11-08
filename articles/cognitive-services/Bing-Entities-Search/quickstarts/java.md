@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 0e31563b6a6e397f679042e441fd60348445de51
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fe448fff6a8b1e56969b67e6f94237eb889db2e7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084833"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365771"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API Javával
 
@@ -221,10 +221,10 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás készítése](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Mi a Bing Entity Search API?](../overview.md)
-* [Bing Entity Search API hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Bing Entity Search API hivatkozás](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

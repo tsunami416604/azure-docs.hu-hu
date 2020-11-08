@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e3e0ae444e2b3b6ac195a83653baf4b71bac6644
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173953"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363867"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Útmutató: a Text Analytics for Health használata (előzetes verzió)
 
@@ -32,7 +32,7 @@ A Text Analytics for Health egy olyan tárolós szolgáltatás, amely a struktur
 
 Az állapot-tároló Text Analyticsa jelenleg elnevezett entitások felismerése, kapcsolat kibontása, entitások kivonása és az angol nyelvű szöveghez kapcsolódó entitások összekapcsolása a saját fejlesztési környezetében, amely megfelel az adott biztonsági és adatirányítási követelményeknek.
 
-#### <a name="named-entity-recognition"></a>[Megnevezett entitások felismerése](#tab/ner)
+#### <a name="named-entity-recognition"></a>[Elnevezett entitások felismerése](#tab/ner)
 
 A nevesített entitások felismerése észleli a strukturálatlan szövegben említett szavakat és kifejezéseket, amelyek egy vagy több szemantikai típushoz társíthatók, például a diagnosztika, a gyógyszer neve, a tünet/aláírás vagy az életkor.
 
@@ -84,7 +84,7 @@ Töltse ki és küldje el a [Cognitive Services tárolók kérelem űrlapját](h
 Több módon is telepítheti és futtathatja a tárolót. 
 
 - A [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) használatával hozzon létre egy Text Analytics-erőforrást, és a Docker használatával szerezze be a tárolót.
-- Az erőforrás-telepítési tároló konfigurációjának automatizálásához használja az alábbi PowerShell-és [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -parancsfájlokat.
+- Az erőforrás-telepítési tároló konfigurációjának automatizálásához használja az alábbi PowerShell-és [Azure CLI](/cli/azure/?view=azure-cli-latest) -parancsfájlokat.
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>A tároló telepítése az Azure Web App for Containers használatával
 
@@ -124,7 +124,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 Az üzembe helyezést az Azure Container instance (ACI) használatával is egyszerűbbé teheti. Az ACI egy olyan erőforrás, amely lehetővé teszi a Docker-tárolók igény szerinti futtatását egy felügyelt, kiszolgáló nélküli Azure-környezetben. 
 
 Lásd: a [Azure Container instances használata](text-analytics-how-to-use-container-instances.md) az ACI-erőforrások Azure Portal használatával történő üzembe helyezésének lépéseihez. Az Azure CLI-vel az alábbi PowerShell-szkriptet is használhatja, amely egy ACI-t hoz létre az előfizetésében a tároló képe alapján.  Várjon, amíg a szkript befejeződik (körülbelül 25-30 perc) az első kérés elküldése előtt.  Az ACI-erőforrások maximális számának korlátozása miatt ne jelölje be ezt a beállítást, ha várhatóan több mint 5 nagy dokumentumot (körülbelül 5000 karaktert) kíván elküldeni.
-A rendelkezésre állással kapcsolatos információkért tekintse meg az [ACI regionális támogatási](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability) cikkét. 
+A rendelkezésre állással kapcsolatos információkért tekintse meg az [ACI regionális támogatási](../../../container-instances/container-instances-region-availability.md) cikkét. 
 
 > [!NOTE] 
 > Azure Container Instances nem tartalmaz HTTPS-támogatást a beépített tartományokhoz. Ha HTTPS-re van szüksége, manuálisan kell konfigurálnia, beleértve a tanúsítvány létrehozását és a tartomány regisztrálását. Ezt az alábbi, NGINX-mel kapcsolatos utasításokat követve teheti meg.
@@ -399,7 +399,7 @@ A tagadás észlelésének használatakor bizonyos esetekben egyetlen tagadási 
 
 ### <a name="relation-extraction-output"></a>A kapcsolatok kinyerésének kimenete
 
-A kapcsolat extrakciós kimenete a kapcsolat *forrására* és *CÉLJÁra*vonatkozó URI-hivatkozásokat tartalmaz. A társított szerepkörrel rendelkező entitások `ENTITY` hozzá vannak rendelve a `target` mezőhöz. A társított szerepkörrel rendelkező entitások `ATTRIBUTE` hozzá vannak rendelve a `source` mezőhöz. A rövidítések kapcsolata kétirányú `source` és `target` mezőket tartalmaz, és a következőre lesz `bidirectional` beállítva: `true` . 
+A kapcsolat extrakciós kimenete a kapcsolat *forrására* és *CÉLJÁra* vonatkozó URI-hivatkozásokat tartalmaz. A társított szerepkörrel rendelkező entitások `ENTITY` hozzá vannak rendelve a `target` mezőhöz. A társított szerepkörrel rendelkező entitások `ATTRIBUTE` hozzá vannak rendelve a `source` mezőhöz. A rövidítések kapcsolata kétirányú `source` és `target` mezőket tartalmaz, és a következőre lesz `bidirectional` beállítva: `true` . 
 
 ```json
 "relations": [

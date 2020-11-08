@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 8665e27b6b7c43bce7d749d9bfe0a2f815a0f46d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ecf3ad43b46d491d5f15270790251a0bc4e882e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051100"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365363"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Tintaadatok küldése az Ink Recognizer API-nak 
 
@@ -64,7 +64,7 @@ A tinta-felismerő API egy elemzési választ ad vissza a szabadkézi tartalomb�
 
 ## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>A tinta-felismerő API által felismert alakzatok
 
-A kézírás-felismerő API képes azonosítani a leggyakrabban használt alakzatokat a megjegyzésekben. Az alábbi képen néhány alapvető példa látható. Az API által felismert alakzatok és egyéb szabadkézi tartalmak teljes listáját az [API-referenciát ismertető cikkben](https://go.microsoft.com/fwlink/?linkid=2089907)találja. 
+A kézírás-felismerő API képes azonosítani a leggyakrabban használt alakzatokat a megjegyzésekben. Az alábbi képen néhány alapvető példa látható. Az API által felismert alakzatok és egyéb szabadkézi tartalmak teljes listáját az [API-referenciát ismertető cikkben](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)találja. 
 
 ![A tinta-felismerő API által felismert alakzatok listája](../media/shapes.png)
 
@@ -84,12 +84,12 @@ Az elismerési eredmények előzetesen információt adnak a szabadkézi ecsetvo
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>A tinta-felismerő API integrálása Windows-tintával
 
-A [Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) olyan eszközöket és technológiákat biztosít, amelyekkel számos különböző eszközön engedélyezhető a digitális és a többkirályos élmény. A tinta-felismerő API-val kombinálhatja a Windows tinta platformot a digitális tollvonásokat megjelenítő és értelmező alkalmazások létrehozásához.
+A [Windows Ink](/windows/uwp/design/input/pen-and-stylus-interactions) olyan eszközöket és technológiákat biztosít, amelyekkel számos különböző eszközön engedélyezhető a digitális és a többkirályos élmény. A tinta-felismerő API-val kombinálhatja a Windows tinta platformot a digitális tollvonásokat megjelenítő és értelmező alkalmazások létrehozásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi az Ink Recognizer API?](../overview.md)
-* [Kézírás-felismerő REST API referenciája](https://go.microsoft.com/fwlink/?linkid=2089907)
+* [Kézírás-felismerő REST API referenciája](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 * Digitális tinta ecsetvonás-adatok küldésének megkezdése a használatával:
     * [C#](../quickstarts/csharp.md)

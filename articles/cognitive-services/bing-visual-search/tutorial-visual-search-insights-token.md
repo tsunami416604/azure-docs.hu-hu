@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: acb32e2fe3dae45cc4a95cea1b9fa4ea01d576c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f68618c4387bc5105914eccc4e6149650119fd0f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102179"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366077"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>Oktatóanyag: hasonló rendszerképek keresése az előző keresésekben képelemzési jogkivonat használatával
 
@@ -44,7 +44,7 @@ Az oktatóanyag teljes forráskódja a [githubon](https://github.com/Azure-Sampl
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>A ImageInsightsToken beolvasása az Bing Image Search ügyféloldali könyvtárából
 
-Ez az alkalmazás `ImageInsightsToken` a [Bing Image Search ügyfél-függvénytáron](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)keresztül kapott beszerzést használja. Egy új C# Console-alkalmazásban hozzon létre egy ügyfelet az API-nak a használatával történő meghívásához `ImageSearchClient()` . Ezután használja a `SearchAsync()` lekérdezést:
+Ez az alkalmazás `ImageInsightsToken` a [Bing Image Search ügyfél-függvénytáron](../bing-image-search/quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)keresztül kapott beszerzést használja. Egy új C# Console-alkalmazásban hozzon létre egy ügyfelet az API-nak a használatával történő meghívásához `ImageSearchClient()` . Ezután használja a `SearchAsync()` lekérdezést:
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
@@ -129,7 +129,7 @@ A tényleges képurl-címek műveleti típusokból való lekéréséhez olyan le
     }
 ```
 
-További információk ezekről az adattípusokról: [Képek – Visual Search](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch).
+További információk ezekről az adattípusokról: [Képek – Visual Search](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch).
 
 ## <a name="returned-urls"></a>Visszaadott URL-címek
 
@@ -147,7 +147,7 @@ A teljes alkalmazás a következő URL-címeket adja vissza:
 
 Ahogy az a fentiekben is látható, a `TopicResults` és a `ImageResults` típusok a kapcsolódó képek lekérdezéseit tartalmazzák. A Bing keresési eredményeire mutató URL-címek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](tutorial-bing-visual-search-single-page-app.md)

@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 564af32b724c8b4883cd27d01813e246e5fa4901
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fe9511df5fb290853dbd6cb8d39fed4e289fca4d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100201"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366417"
 ---
 # <a name="news-search-api-upgrade-guide"></a>News Search API-frissítési útmutató
 
@@ -75,24 +75,24 @@ Blokkolva|InvalidRequest. Blocked
 
 ### <a name="object-changes"></a>Objektum változásai
 
-- Hozzáadta a `contractualRules` mezőt a [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) objektumhoz. A `contractualRules` mező tartalmazza a követni kívánt szabályok listáját (például cikk-hozzárendelés). A használata helyett a megadott hozzárendelést kell alkalmaznia `contractualRules` `provider` . A cikk `contractualRules` csak akkor szerepel, ha a [Web Search API](../bing-web-search/search-the-web.md) -válasz hírekre adott választ tartalmaz.
+- Hozzáadta a `contractualRules` mezőt a [NewsArticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) objektumhoz. A `contractualRules` mező tartalmazza a követni kívánt szabályok listáját (például cikk-hozzárendelés). A használata helyett a megadott hozzárendelést kell alkalmaznia `contractualRules` `provider` . A cikk `contractualRules` csak akkor szerepel, ha a [Web Search API](../bing-web-search/overview.md) -válasz hírekre adott választ tartalmaz.
 
 ## <a name="non-breaking-changes"></a>Nem törhető változások
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 
-- A termékek olyan lehetséges értékként lettek hozzáadva, mint a [Kategória](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) lekérdezési paraméterének beállítása. Tekintse meg [a kategóriákat piacok alapján](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
+- A termékek olyan lehetséges értékként lettek hozzáadva, mint a [Kategória](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) lekérdezési paraméterének beállítása. Tekintse meg [a kategóriákat piacok alapján](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
 
-- Hozzáadta a [sortby](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) lekérdezési paramétert, amely a legutóbb megjelenő dátum szerint rendezve jeleníti meg a trendi témákat.
+- Hozzáadta a [sortby](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) lekérdezési paramétert, amely a legutóbb megjelenő dátum szerint rendezve jeleníti meg a trendi témákat.
 
-- A lekérdezési paraméter [óta](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) hozzáadott egy, a Bing által a megadott UNIX-időbélyeggel vagy azt követően felderített trendek témakört.
+- A lekérdezési paraméter [óta](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) hozzáadott egy, a Bing által a megadott UNIX-időbélyeggel vagy azt követően felderített trendek témakört.
 
 ### <a name="object-changes"></a>Objektum változásai
 
-- Hozzáadta a `mentions` mezőt a [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) objektumhoz. A `mentions` mező a cikkben található entitások (személyek vagy helyek) listáját tartalmazza.
+- Hozzáadta a `mentions` mezőt a [NewsArticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) objektumhoz. A `mentions` mező a cikkben található entitások (személyek vagy helyek) listáját tartalmazza.
 
-- Hozzáadta a `video` mezőt a [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) objektumhoz. A `video` mező a újságcikkhez kapcsolódó videót tartalmaz. A videó \<iframe\> beágyazható vagy mozgó miniatűr is lehet.
+- Hozzáadta a `video` mezőt a [NewsArticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) objektumhoz. A `video` mező a újságcikkhez kapcsolódó videót tartalmaz. A videó \<iframe\> beágyazható vagy mozgó miniatűr is lehet.
 
-- Hozzáadta a `sort` mezőt a [News](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) objektumhoz. A `sort` mező a cikkek rendezési sorrendjét jeleníti meg. A cikkek például a relevancia (alapértelmezett) vagy a dátum szerint vannak rendezve.
+- Hozzáadta a `sort` mezőt a [News](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) objektumhoz. A `sort` mező a cikkek rendezési sorrendjét jeleníti meg. A cikkek például a relevancia (alapértelmezett) vagy a dátum szerint vannak rendezve.
 
-- Hozzáadta a [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) objektumot, amely meghatározza a rendezési sorrendet. A `isSelected` mező jelzi, hogy a válasz a rendezési sorrendet használta-e. Ha az **értéke igaz** , a válasz a rendezési sorrendet használta. Ha a `isSelected` értéke **false (hamis** ), a mezőben szereplő URL-cím használatával `url` más rendezési sorrendet is igényelhet.
+- Hozzáadta a [SortValue](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) objektumot, amely meghatározza a rendezési sorrendet. A `isSelected` mező jelzi, hogy a válasz a rendezési sorrendet használta-e. Ha az **értéke igaz** , a válasz a rendezési sorrendet használta. Ha a `isSelected` értéke **false (hamis** ), a mezőben szereplő URL-cím használatával `url` más rendezési sorrendet is igényelhet.

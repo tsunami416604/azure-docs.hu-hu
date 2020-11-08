@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: d55ff4ed8717a449628e94a940c0896d31818da2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0187a5d2be6b2f93897fc358e26ad095e5a70f7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101935"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364581"
 ---
 # <a name="what-is-bing-autosuggest"></a>Mi a Bing Autosuggest?
 
@@ -36,7 +36,7 @@ Ha az alkalmazás a Bing Search API-k bármelyikére küld lekérdezéseket, a B
 
 A Bing Autosuggest API egy REST-alapú webszolgáltatás, amely bármilyen programozási nyelvről meghívható, amely HTTP-kéréseket tesz elérhetővé, és értelmezi a JSON-t.
 
-1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/free/cognitive-services/).
+1. Hozzon létre egy [Cognitive Services API-fiókot](../cognitive-services-apis-create-account.md), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/free/cognitive-services/).
 2. Kérés küldése erre az API-ra minden alkalommal, amikor egy felhasználó új karaktert kér az alkalmazás keresési mezőjében.
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
@@ -48,15 +48,15 @@ A következő példa egy legördülő keresőmezőt mutat be a Bing Autosuggest 
 
 Ha a felhasználó egy javaslatot választ ki a legördülő listából, a segítségével megkezdheti a keresést a Bing Search API-k valamelyikével, vagy közvetlenül a Bing Search Results oldalára léphet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Annak érdekében, hogy gyorsan nekiláthasson az első kérés létrehozásának, olvassa el az [első lekérdezés létrehozását bemutató](quickstarts/csharp.md) cikket.
 
-Ismerkedjen meg a [Bing Autosuggest API 7-es verziójának](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) referenciájával. A referencia olyan végpontok, fejlécek és lekérdezési paraméterek listáját tartalmazza, amelyekkel a javasolt lekérdezési kifejezéseket és a válaszobjektumok definícióit kérheti le.
+Ismerkedjen meg a [Bing Autosuggest API 7-es verziójának](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) referenciájával. A referencia olyan végpontok, fejlécek és lekérdezési paraméterek listáját tartalmazza, amelyekkel a javasolt lekérdezési kifejezéseket és a válaszobjektumok definícióit kérheti le.
 
-A többi elérhető API-k megismeréséhez látogasson el a [BING Search API hub oldalára](../bing-web-search/search-the-web.md) .
+A többi elérhető API-k megismeréséhez látogasson el a [BING Search API hub oldalára](../bing-web-search/overview.md) .
 
 
-Megtudhatja, hogyan keresheti meg a weben a [Bing Web Search API](../bing-web-search/search-the-web.md)segítségével, és hogyan böngészhet a többi[Bing Search API-k](../bing-web-search/index.yml).
+Megtudhatja, hogyan keresheti meg a weben a [Bing Web Search API](../bing-web-search/overview.md)segítségével, és hogyan böngészhet a többi[Bing Search API-k](../bing-web-search/index.yml).
 
-Mindenképpen olvassa el a [Bing használati és megjelenítési előírásait,](./useanddisplayrequirements.md) hogy ne szegje meg a keresési eredmények használatának szabályait.
+Mindenképpen olvassa el a [Bing használati és megjelenítési előírásait,](../bing-web-search/use-display-requirements.md) hogy ne szegje meg a keresési eredmények használatának szabályait.

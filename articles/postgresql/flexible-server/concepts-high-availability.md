@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b23c95ef0005c8246feb8dc32e4a07a0ae19b72f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c0d9b6042ae695caa73d926653f237b756bf4971
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359544"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366723"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Magas rendelkezésre állási fogalmak Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -101,17 +101,17 @@ A magas rendelkezésre állású rugalmas kiszolgálók esetében a rendszer val
 -   A magas rendelkezésre állás csak olyan régiókban támogatott, ahol több zóna is elérhető.
 -   Egy másik rendelkezésre állási zónához való szinkron replikálás miatt az alkalmazások megemelt írási és végrehajtási késéssel rendelkezhetnek.
 
--   A készenléti replika nem használható csak olvasható lekérdezésekhez.
+-   A készenléti replika nem használható olvasási lekérdezésekhez.
 
--   Az elsődleges kiszolgálón a feladatátvétel időpontjában végzett tevékenységtől függően akár két percet is igénybe vehet, amíg a feladatátvétel be nem fejeződik.
+-   Az elsődleges kiszolgáló munkaterheléstől és tevékenységtől függően a feladatátvételi folyamat 120 másodpercnél hosszabb időt is igénybe vehet.
 
--   A statikus paraméterek kiválasztására szolgáló elsődleges adatbázis-kiszolgáló újraindítása szintén újraindítja a készenléti replikát.
+-   Az elsődleges adatbázis-kiszolgáló újraindítása szintén újraindítja a készenléti replikát. 
 
 -   További olvasási replikák konfigurálása nem támogatott.
 
 -   Az ügyfél által kezdeményezett felügyeleti feladatok konfigurálása nem ütemezhető a felügyelt karbantartási időszak alatt.
 
--   A tervezett események, például a számítások méretezése és a tároló méretezése először a készenléti replikán történik meg, majd az elsődleges kiszolgálón. A szolgáltatás feladatátvétele nem történik meg. 
+-   A tervezett események, például a számítások méretezése és a tároló méretezése először a készenléti replikán történik meg, majd az elsődleges kiszolgálón. A kiszolgáló nem végez feladatátvételt ezen tervezett műveletekhez. 
 
 -  Ha a logikai dekódolás vagy a logikai replikáció egy HA konfigurált rugalmas kiszolgálóval van konfigurálva, a készenléti kiszolgáló feladatátvétele esetén a rendszer nem másolja át a logikai replikációs tárolóhelyeket a készenléti kiszolgálóra.  
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 18b980a868173b1fa721f9fc0986d7e1efb203af
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 89bbb16f96d06d1861dabdf89cf690e69c10735c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348916"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364479"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Megosztott rendszerkép-galériák hibaelhárítása Az Azure-ban
 
@@ -153,7 +153,7 @@ Ha problémát észlel a megosztott rendszerkép-katalógusokon, rendszerkép-de
 
 *A "galleryImageVersion. properties. storageProfile. <diskImage \> . Source.id" tulajdonság módosítása nem engedélyezett.*  
 **OK** : a létrehozás után a katalógus rendszerképének verziószáma nem módosítható.  
-**Áthidaló megoldás** : Győződjön meg arról, hogy a forrás-azonosító megegyezik a már meglévő forrás-azonosítóval, vagy módosítsa a rendszerkép verziószámát.
+**Áthidaló megoldás** : Győződjön meg arról, hogy a forrás azonosítója megegyezik a már létező forrás-azonosítóval, módosítsa a rendszerkép verziószámát, vagy törölje az aktuális rendszerkép verzióját, és próbálkozzon újra.
 
 *A rendszer duplikált LUN-számokat észlelt a bemeneti adatlemezeken. A LUN számának egyedinek kell lennie az egyes adatlemezek esetében.*  
 **OK** : a lemezkép verziójának lemezes és/vagy lemezes Pillanatképek használatával történő létrehozásakor két vagy több lemez vagy lemez pillanatképe azonos LUN-számokkal rendelkezik.  
@@ -323,6 +323,6 @@ A **--Expand ReplicationStatus** jelzővel ellenőrizze, hogy befejeződött-e a
 Az [Azure korlátai és kvótái](../azure-resource-manager/management/azure-subscription-service-limits.md) az összes megosztott képkatalógusra, a képdefinícióra és a rendszerkép verzió-erőforrásaira érvényesek. Győződjön meg arról, hogy az előfizetések korlátain belül van. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [megosztott képtárakról](./linux/shared-image-galleries.md).

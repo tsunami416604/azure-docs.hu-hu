@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 4546ef03c82f19d188a71a86f6964ca87c0f834e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c47aa803774343b39efeabe3452f1b256cc64c0d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90524963"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363272"
 ---
 # <a name="quick-examples"></a>Gyors példák
 
@@ -33,7 +33,7 @@ A minták ezeket a Cognitive Services használják:
 1. Miután létrehozott egy új jegyzetfüzetet a Azure Databricksban, másolja az alábbi **megosztott kódot** , és illessze be egy új cellába a jegyzetfüzetbe.
 1. Válasszon egy szolgáltatási mintát, és másolja be a vágólapra a jegyzetfüzet második új cellájába.
 1. Cserélje le a szolgáltatás előfizetési kulcsának helyőrzőit a saját kulcsára.
-1. Kattintson a Futtatás gombra (háromszög ikon) a cella jobb felső sarkában, majd válassza a **cella futtatása**lehetőséget.
+1. Kattintson a Futtatás gombra (háromszög ikon) a cella jobb felső sarkában, majd válassza a **cella futtatása** lehetőséget.
 1. A cella alatti táblázat eredményeinek megtekintése.
 
 ## <a name="shared-code"></a>Megosztott kód
@@ -49,7 +49,7 @@ val location = "eastus"
 
 ## <a name="text-analytics"></a>Szövegelemzés
 
-A [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) szolgáltatás számos algoritmust biztosít az intelligens adatok szövegből való kinyeréséhez. Megtalálhatja például az adott bemeneti szöveg hangulatát. A szolgáltatás egy pontszámot ad vissza `0.0` , és `1.0` ahol az alacsony pontszámok értéke negatív, a magas pontszámot pedig pozitív hangulatra utal.  Az alábbi minta három egyszerű mondatot használ, és az egyes értékekhez tartozó hangulati pontszámot adja vissza.
+A [text Analytics](../text-analytics/index.yml) szolgáltatás számos algoritmust biztosít az intelligens adatok szövegből való kinyeréséhez. Megtalálhatja például az adott bemeneti szöveg hangulatát. A szolgáltatás egy pontszámot ad vissza `0.0` , és `1.0` ahol az alacsony pontszámok értéke negatív, a magas pontszámot pedig pozitív hangulatra utal.  Az alábbi minta három egyszerű mondatot használ, és az egyes értékekhez tartozó hangulati pontszámot adja vissza.
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -81,7 +81,7 @@ display(sentiment.transform(df).select(col("text"), col("sentiment")(0).getItem(
 
 ## <a name="computer-vision"></a>Számítógépes látástechnológia
 
-[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) a lemezképek elemzésével azonosíthatja a struktúrát, például az arcokat, az objektumokat és a természetes nyelvi leírásokat.
+[Computer Vision](../computer-vision/index.yml) a lemezképek elemzésével azonosíthatja a struktúrát, például az arcokat, az objektumokat és a természetes nyelvi leírásokat.
 Ebben a példában a képek listáját címkézjük. A címkék egyszavas leírások a képen látható dolgokról, például a felismerhető objektumokról, a személyekről, a díszletekről és a műveletekről.
 
 ```scala
@@ -118,7 +118,7 @@ display(analysis.transform(df).select(col("image"), col("results").getItem("tags
 
 ## <a name="bing-image-search"></a>Bing – Képkeresés
 
-[Bing Image Search](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) megkeresi a weben a felhasználó természetes nyelvi lekérdezéséhez kapcsolódó rendszerképek lekéréséhez. Ebben a példában egy szöveges lekérdezést használunk, amely idézőjelekkel rendelkező képeket keres. A lekérdezéshez kapcsolódó fényképeket tartalmazó kép URL-címeinek listáját adja vissza.
+[Bing Image Search](../bing-image-search/overview.md) megkeresi a weben a felhasználó természetes nyelvi lekérdezéséhez kapcsolódó rendszerképek lekéréséhez. Ebben a példában egy szöveges lekérdezést használunk, amely idézőjelekkel rendelkező képeket keres. A lekérdezéshez kapcsolódó fényképeket tartalmazó kép URL-címeinek listáját adja vissza.
 
 
 ```scala
@@ -163,7 +163,7 @@ display(pipeline.fit(df).transform(df))
 
 ## <a name="speech-to-text"></a>Speech-to-Text
 
-A [beszédfelismerési](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text) szolgáltatás szöveggé alakítja át a hanganyagot vagy a beszélt hangon lévő fájlokat. Ebben a példában két hangfájlt teszünk át. Az első fájl könnyen értelmezhető, a második pedig nagyobb kihívást jelent.
+A [beszédfelismerési](../speech-service/index-speech-to-text.yml) szolgáltatás szöveggé alakítja át a hanganyagot vagy a beszélt hangon lévő fájlokat. Ebben a példában két hangfájlt teszünk át. Az első fájl könnyen értelmezhető, a második pedig nagyobb kihívást jelent.
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -196,7 +196,7 @@ display(speechToText.transform(df).select(col("url"), col("text").getItem("Displ
 
 ## <a name="anomaly-detector"></a>Anomáliadetektor
 
-Az [anomália detektor](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) kiválóan használható a szabálytalanságok észlelésére az idősorozat-adataiban. Ebben a példában a szolgáltatást használjuk a teljes idősorozatban található anomáliák keresésére.
+Az [anomália detektor](../anomaly-detector/index.yml) kiválóan használható a szabálytalanságok észlelésére az idősorozat-adataiban. Ebben a példában a szolgáltatást használjuk a teljes idősorozatban található anomáliák keresésére.
 
 ```scala
 import org.apache.spark.sql.functions.{col, lit}
@@ -237,7 +237,7 @@ display(anamolyDetector.transform(df).select("timestamp", "value", "anomalies.is
 
 ### <a name="expected-result"></a>Várt eredmény
 
-| időbélyeg            |   érték | isAnomaly   |
+| időbélyeg            |   value | isAnomaly   |
 |:---------------------|--------:|:------------|
 | 1972-01-01T00:00:00Z |     826 | Hamis       |
 | 1972-02-01T00:00:00Z |     799 | Hamis       |

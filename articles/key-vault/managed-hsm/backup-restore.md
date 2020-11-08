@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 3d999375d746bb359acdccf9bf48f8b77d509776
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e051a36b3c91fadc0c3b602cb4ba8e3dbcff1294
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000777"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367131"
 ---
 # <a name="full-backup-and-restore"></a>Teljes biztonsági mentés és visszaállítás
 
@@ -23,7 +23,7 @@ ms.locfileid: "91000777"
 
 A felügyelt HSM támogatja a HSM teljes tartalmának teljes biztonsági mentését, beleértve az összes kulcsot, verziót, attribútumot, címkét és szerepkör-hozzárendelést. A biztonsági mentés a HSM biztonsági tartományához társított titkosítási kulcsokkal van titkosítva.
 
-A Backup egy adatsík-művelet. A biztonsági mentési műveletet kezdeményező hívónak rendelkeznie kell engedéllyel a dataAction **Microsoft. kulcstartó/managedHsm/Backup/Start/művelet**végrehajtásához.
+A Backup egy adatsík-művelet. A biztonsági mentési műveletet kezdeményező hívónak rendelkeznie kell engedéllyel a dataAction **Microsoft. kulcstartó/managedHsm/Backup/Start/művelet** végrehajtásához.
 
 Csak a következő beépített szerepkörök jogosultak teljes biztonsági mentés végrehajtására:
 - Felügyelt HSM-rendszergazda
@@ -52,6 +52,10 @@ end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
 
 skey=$(az storage account keys list --query '[0].value' -o tsv --account-name mhsmdemobackup --subscription a1ba9aaa-b7f6-4a33-b038-6e64553a6c7b)
 
+# Create a container
+
+az storage container create --account-name  mhsmdemobackup --name mhsmdemobackupcontainer  --account-key $skey
+
 # Generate a container sas token
 
 sas=$(az storage container generate-sas -n mhsmdemobackupcontainer --account-name mhsmdemobackup --permissions crdw --expiry $end --account-key $skey -o tsv --subscription a1ba9aaa-b7f6-4a33-b038-6e64553a6c7b)
@@ -68,7 +72,7 @@ A teljes visszaállítással teljesen visszaállíthatja a HSM tartalmát egy ko
 > [!IMPORTANT]
 > A teljes visszaállítás nagyon romboló és zavaró művelet. Ezért a művelet elvégzése előtt az elmúlt 30 percben kötelező befejezni a teljes biztonsági mentést `restore` .
 
-A Restore egy adatsík-művelet. A visszaállítási művelet elindításához engedéllyel kell rendelkeznie a **Microsoft. kulcstartó/managedHsm/Restore/Start/Action**dataAction végrehajtásához. A forrás HSM, ahol a biztonsági mentés létrejött, és a cél HSM- **nek** , ahol a visszaállítást el kell végrehajtani, ugyanazzal a biztonsági tartománnyal kell rendelkeznie. További információ [a felügyelt HSM biztonsági tartományáról](security-domain.md).
+A Restore egy adatsík-művelet. A visszaállítási művelet elindításához engedéllyel kell rendelkeznie a **Microsoft. kulcstartó/managedHsm/Restore/Start/Action** dataAction végrehajtásához. A forrás HSM, ahol a biztonsági mentés létrejött, és a cél HSM- **nek** , ahol a visszaállítást el kell végrehajtani, ugyanazzal a biztonsági tartománnyal kell rendelkeznie. További információ [a felügyelt HSM biztonsági tartományáról](security-domain.md).
 
 Teljes visszaállítás végrehajtásához a következő információkat kell megadnia:
 - HSM neve vagy URL-címe
@@ -99,6 +103,6 @@ sas=$(az storage container generate-sas -n mhsmdemobackupcontainer --account-nam
 az keyvault restore start --hsm-name mhsmdemo2 --storage-account-name mhsmdemobackup --blob-container-name mhsmdemobackupcontainer --storage-container-SAS-token $sas --backup-folder mhsm-mhsmdemo-2020083120161860
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Lásd: [felügyelt HSM kezelése az Azure CLI használatával](key-management.md).
 - További információ a [felügyelt HSM biztonsági tartományról](security-domain.md)
