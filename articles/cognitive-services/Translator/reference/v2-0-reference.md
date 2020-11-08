@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd0dbe5912b7c4df3c666c648dbf9a92d5398cf1
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83588615"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369511"
 ---
 # <a name="translator-v20"></a>Translator v 2.0
 
@@ -25,7 +25,7 @@ ms.locfileid: "83588615"
 A fordító 2. verziója zökkenőmentesen integrálható az alkalmazásaiba, webhelyeire, eszközeibe és egyéb megoldásaiba a többnyelvű felhasználói élmény biztosítása érdekében. Az iparági szabványoknak megfelelően bármilyen hardveres platformon, bármely operációs rendszeren használhatja a nyelvi fordítást és más nyelvekkel kapcsolatos feladatokat, például a szöveg nyelvének észlelését és a beszéd szövegét. További információ: [Translator](../translator-info-overview.md).
 
 ## <a name="getting-started"></a>Első lépések
-A fordítóhoz való hozzáféréshez [regisztrálnia kell a Microsoft Azurera](../translator-text-how-to-signup.md).
+A fordítóhoz való hozzáféréshez [regisztrálnia kell a Microsoft Azurera](../translator-how-to-signup.md).
 
 ## <a name="authentication"></a>Hitelesítés 
 A fordítónak szóló összes híváshoz előfizetési kulcs szükséges a hitelesítéshez. Az API három hitelesítési módszert támogat:
@@ -607,11 +607,11 @@ Az `TranslateOptions` objektum a következő listában szereplő értékeket tar
 
 * `Category`: A fordítás kategóriáját (tartományát) tartalmazó karakterlánc. A mező alapértelmezett értéke: `general`.
 * `ContentType`: Az egyetlen támogatott lehetőség, és az alapértelmezett érték a `text/plain` .
-* `IncludeMultipleMTAlternatives`: Logikai jelző, amely azt határozza meg, hogy az MT motorból egynél több alternatíva legyen-e visszaadva. Az érvényes értékek: `true` és (kis-és nagybetűk megkülönböztetése `false` ). Az alapértelmezett érték az `false` , amely csak egy alternatív értéket ad vissza. Ha úgy állítja be a jelzőt, hogy `true` lehetővé tegye a mesterséges alternatívák létrehozását, az együttműködésen alapuló fordítási keretrendszer (CTF) teljes körű integrálását. A szolgáltatás lehetővé teszi alternatívák visszaadását olyan mondatokhoz, amelyek nem rendelkeznek fordítással a CTF-ben a dekóder *n*-legjobb listájáról származó mesterséges alternatívák hozzáadásával.
+* `IncludeMultipleMTAlternatives`: Logikai jelző, amely azt határozza meg, hogy az MT motorból egynél több alternatíva legyen-e visszaadva. Az érvényes értékek: `true` és (kis-és nagybetűk megkülönböztetése `false` ). Az alapértelmezett érték az `false` , amely csak egy alternatív értéket ad vissza. Ha úgy állítja be a jelzőt, hogy `true` lehetővé tegye a mesterséges alternatívák létrehozását, az együttműködésen alapuló fordítási keretrendszer (CTF) teljes körű integrálását. A szolgáltatás lehetővé teszi alternatívák visszaadását olyan mondatokhoz, amelyek nem rendelkeznek fordítással a CTF-ben a dekóder *n* -legjobb listájáról származó mesterséges alternatívák hozzáadásával.
     - Értékelés. A minősítések a következőképpen lesznek alkalmazva: 
          - A legjobb automatikus fordítás 5-ös minősítéssel rendelkezik.
        - A CTF-alternatívák a felülvizsgáló tekintélyét tükrözik. Ezek a-10 és + 10 közé esnek.
-       - Az automatikusan generált (*n*-Best) fordítási alternatívák a 0 minősítéssel rendelkeznek, és a megfelelési fok 100.
+       - Az automatikusan generált ( *n* -Best) fordítási alternatívák a 0 minősítéssel rendelkeznek, és a megfelelési fok 100.
     - Alternatívák száma. A visszaadott alternatívák száma lehet olyan magas, mint a mezőben megadott érték `maxTranslations` , de alacsonyabb lehet.
     - Nyelvi párok Ez a funkció nem érhető el az egyszerűsített kínai és a hagyományos kínai nyelv közötti fordításhoz mindkét irányban. A Microsoft Translator által támogatott összes többi nyelvi pár számára elérhető.
 * `State`: A kérés és a válasz összekapcsolását segítő felhasználói állapot. A válaszban ugyanazt a tartalmat adja vissza a rendszer.
@@ -719,11 +719,11 @@ A kérelem törzsének formátuma a következő:
 * `Options`Választható. Egy `Options` objektum, amely a következő értékeket tartalmazza. Ezek mind opcionálisak, és alapértelmezés szerint a leggyakoribb beállítások. A megadott elemeknek betűrendes sorrendben kell szerepelniük.
     - `Category`: A fordítás kategóriáját (tartományát) tartalmazó karakterlánc. A mező alapértelmezett értéke: `general`.
     - `ContentType`: Az egyetlen támogatott lehetőség, és az alapértelmezett érték a `text/plain` .
-    - `IncludeMultipleMTAlternatives`: Logikai jelző, amely azt határozza meg, hogy az MT motorból egynél több alternatíva legyen-e visszaadva. Az érvényes értékek: `true` és (kis-és nagybetűk megkülönböztetése `false` ). Az alapértelmezett érték az `false` , amely csak egy alternatív értéket ad vissza. Ha a jelzőt úgy állítja be, hogy lehetővé tegye a `true` mesterséges alternatívák létrehozását a fordításban, teljes mértékben integrálva az együttműködő fordítási keretrendszerrel (CTF). A funkció lehetővé teszi olyan mondatok alternatíváinak visszaadását, amelyek nem rendelkeznek alternatívákkal a CTF-ben a dekóder *n*-legjobb listájából származó mesterséges alternatívák hozzáadásával.
+    - `IncludeMultipleMTAlternatives`: Logikai jelző, amely azt határozza meg, hogy az MT motorból egynél több alternatíva legyen-e visszaadva. Az érvényes értékek: `true` és (kis-és nagybetűk megkülönböztetése `false` ). Az alapértelmezett érték az `false` , amely csak egy alternatív értéket ad vissza. Ha a jelzőt úgy állítja be, hogy lehetővé tegye a `true` mesterséges alternatívák létrehozását a fordításban, teljes mértékben integrálva az együttműködő fordítási keretrendszerrel (CTF). A funkció lehetővé teszi olyan mondatok alternatíváinak visszaadását, amelyek nem rendelkeznek alternatívákkal a CTF-ben a dekóder *n* -legjobb listájából származó mesterséges alternatívák hozzáadásával.
         - A minősítések minősítését a következőhöz hasonlóan kell alkalmazni:
           - A legjobb automatikus fordítás 5-ös minősítéssel rendelkezik.
           - A CTF-alternatívák a felülvizsgáló tekintélyét tükrözik. Ezek a-10 és + 10 közé esnek.
-          - Az automatikusan generált (*n*-Best) fordítási alternatívák a 0 minősítéssel rendelkeznek, és a megfelelési fok 100.
+          - Az automatikusan generált ( *n* -Best) fordítási alternatívák a 0 minősítéssel rendelkeznek, és a megfelelési fok 100.
         - Alternatívák száma. A visszaadott alternatívák száma lehet olyan magas, mint a mezőben megadott érték `maxTranslations` , de alacsonyabb lehet.
         - Nyelvi párok Ez a funkció nem érhető el az egyszerűsített kínai és a hagyományos kínai nyelv közötti fordításhoz mindkét irányban. A Microsoft Translator által támogatott összes többi nyelvi pár számára elérhető.
 * `State`: A kérés és a válasz összekapcsolását segítő felhasználói állapot. A válaszban ugyanazt a tartalmat adja vissza a rendszer.
@@ -804,5 +804,3 @@ Válasz tartalmának típusa: Application/XML
 
 > [!div class="nextstepaction"]
 > [Migrálás a Translator v3-be](../migrate-to-v3.md)
-
-

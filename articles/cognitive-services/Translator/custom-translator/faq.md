@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 06caafe75682a2375a8023787f9905ca1e8117c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f3d8131635fae55fd8dc2fd2649ae5dda1e62ae
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88507229"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368236"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Egyéni Translator – gyakori kérdések
 
@@ -41,7 +41,7 @@ Az üzemelő példány általában kevesebb mint egy órát vesz igénybe.
 
 ## <a name="how-do-you-access-a-deployed-system"></a>Hogyan férhet hozzá egy telepített rendszerhez?
 
-A központilag telepített rendszerek a Kategóriakód megadásával érhetők el a Microsoft Translator Text API v3 segítségével. A Translator Text APIról további információt az [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) weblapján találhat.
+A központilag telepített rendszerek a Kategóriakód megadásával érhetők el a Microsoft Translator Text API v3 segítségével. A Translator Text APIról további információt az [API-referenciák](../reference/v3-0-reference.md) weblapján találhat.
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Hogyan kihagyhatja az igazítást és a mondatot, ha az adataim már a mondattal összhangban vannak?
 

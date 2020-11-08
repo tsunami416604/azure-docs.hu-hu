@@ -9,17 +9,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: swmachan
-ms.openlocfilehash: d8713d20503dc788175a408f5ec652505090396e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1765aaed3c0562da13c539845bfe19f6f85ed4ef
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510827"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369018"
 ---
 # <a name="what-are-trainings-and-models"></a>Mik azok a tréningek és modellek?
 
 A modell a rendszer, amely egy adott nyelvi pár fordítását biztosítja.
-A sikeres képzés eredménye egy modell. A modellek betanításakor három kölcsönösen kizárható dokumentum típusa szükséges: képzés, hangolás és tesztelés. A szótári dokumentum típusa is megadható. Tekintse meg a [mondatok igazítását](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences).
+A sikeres képzés eredménye egy modell. A modellek betanításakor három kölcsönösen kizárható dokumentum típusa szükséges: képzés, hangolás és tesztelés. A szótári dokumentum típusa is megadható. Tekintse meg a [mondatok igazítását](./sentence-alignment.md#suggested-minimum-number-of-sentences).
 
 Ha a képzések kiszolgálása során csak képzési információk szerepelnek, akkor az egyéni fordító automatikusan összeállítja a hangolási és tesztelési adatfeldolgozást. A mondatok véletlenszerű részhalmazát fogja használni a betanítási dokumentumokból, és kizárja ezeket a mondatokat a betanítási adatokból.
 

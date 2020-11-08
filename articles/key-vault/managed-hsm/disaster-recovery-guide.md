@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 7dbb7b3fdc15c0a9d502fbe9a0d12d084f9ddf29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08c1b415ac075429a9bc89098233fffb8c25b710
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760393"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369256"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Felügyelt HSM vész-helyreállítás
 
@@ -48,7 +48,7 @@ Felügyelt HSM-erőforrás létrehozásához a következő bemeneteket kell mega
 - Az Azure-beli hely.
 - A kezdeti rendszergazdák listája.
 
-Az alábbi példa egy **ContosoMHSM**nevű HSM-et hoz létre az **USA 2. keleti** régiójában található erőforráscsoport- **ContosoResourceGroup**, amely az **aktuálisan bejelentkezett felhasználó** , mint az egyetlen rendszergazda.
+Az alábbi példa egy **ContosoMHSM** nevű HSM-et hoz létre az **USA 2. keleti** régiójában található erőforráscsoport- **ContosoResourceGroup** , amely az **aktuálisan bejelentkezett felhasználó** , mint az egyetlen rendszergazda.
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
@@ -60,8 +60,8 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 
 A parancs kimenete a létrehozott felügyelt HSM tulajdonságait jeleníti meg. A két legfontosabb tulajdonság:
 
-* **név**: a példában a név ContosoMHSM. Ezt a nevet fogja használni a többi Key Vault parancshoz.
-* **hsmUri**: a PÉLDÁBAN az URI a következő: " https://contosohsm.managedhsm.azure.net ." A HSM-et a REST API használó alkalmazásoknak ezt az URI-t kell használniuk.
+* **név** : a példában a név ContosoMHSM. Ezt a nevet fogja használni a többi Key Vault parancshoz.
+* **hsmUri** : a PÉLDÁBAN az URI a következő: " https://contosohsm.managedhsm.azure.net ." A HSM-et a REST API használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Az Azure-fiókja már jogosult bármilyen művelet végrehajtására ezen a felügyelt HSM-ben. Még senki más nem rendelkezik jogosultsággal.
 
@@ -86,7 +86,7 @@ A `az keyvault security-domain upload` parancs a következő műveleteket hajtja
 - Hozzon létre egy biztonsági tartományi feltöltési blobot, amely az előző lépésben letöltött biztonsági tartományi Exchange-kulccsal lett titkosítva, majd
 - Töltse fel a biztonsági tartomány feltöltési blobját a HSM-be a biztonsági tartomány helyreállításának befejezéséhez
 
-Az alábbi példában a biztonsági tartományt használjuk a **ContosoMHSM**, a megfelelő titkos kulcsok közül 2, és fel kell tölteni a **ContosoMHSM2**-be, amely egy biztonsági tartomány fogadására vár. 
+Az alábbi példában a biztonsági tartományt használjuk a **ContosoMHSM** , a megfelelő titkos kulcsok közül 2, és fel kell tölteni a **ContosoMHSM2** -be, amely egy biztonsági tartomány fogadására vár. 
 
 ```azurecli-interactive
 az keyvault security-domain upload --hsm-name ContosoMHSM2 --sd-exchange-key ContosoMHSM-SDE.cer --sd-file ContosoMHSM-SD.json --sd-wrapping-keys cert_0.key cert_1.key
@@ -102,11 +102,12 @@ HSM biztonsági mentés létrehozásához a következőkre lesz szüksége
 - Egy Storage-fiók, amelyben a biztonsági mentés tárolva lesz
 - Az ebben a Storage-fiókban található blob Storage-tároló, amelyben a biztonsági mentési folyamat létrehoz egy új mappát a titkosított biztonsági mentés tárolásához.
 
-A `az keyvault backup` következő példában szereplő Storage-fiókhoz tartozó **mhsmbackupcontainer**használja a HSM biztonsági mentésre szolgáló parancsot a **ContosoBackup** tároló-tárolóban. Létrehozunk egy 30 percen belül lejáró SAS-jogkivonatot, és a felügyelt HSM-nek kell megírnia a biztonsági mentést.
+A `az keyvault backup` következő példában szereplő Storage-fiókhoz tartozó **mhsmbackupcontainer** használja a HSM biztonsági mentésre szolgáló parancsot a **ContosoBackup** tároló-tárolóban. Létrehozunk egy 30 percen belül lejáró SAS-jogkivonatot, és a felügyelt HSM-nek kell megírnia a biztonsági mentést.
 
 ```azurecli-interactive
 end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
 skey=$(az storage account keys list --query '[0].value' -o tsv --account-name ContosoBackup)
+az storage container create --account-name  mhsmdemobackup --name mhsmbackupcontainer  --account-key $skey
 sas=$(az storage container generate-sas -n mhsmbackupcontainer --account-name ContosoBackup --permissions crdw --expiry $end --account-key $skey -o tsv)
 az keyvault backup start --hsm-name ContosoMHSM2 --storage-account-name ContosoBackup --blob-container-name mhsmdemobackupcontainer --storage-container-SAS-token $sas
 

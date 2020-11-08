@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 0033f4919e4e4e5e56e4057e00c393ae7be1ca44
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d5caa9b4168307bb27022b59415e43b37f30bf67
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090562"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367386"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Üzemeltetett felhasználói felület konfigurálása
 
@@ -54,7 +54,7 @@ A webalkalmazásokhoz tartozó üzemeltetett felhasználói felület konfigurál
 
 6. A **további konfigurációk** területen adja meg a megfelelő értékeket az alkalmazáshoz. Ezek a beállítások nem kötelezőek. Ha szeretné megtekinteni, hogy milyen hatással van a alkalmazásra vagy eltávolításra, tekintse meg a jobb oldali előnézet ablaktáblát. Az elérhető konfigurációs lehetőségek a következők:  
 
-7. Adja meg a keresési előfizetés kulcsát, vagy válasszon egyet a legördülő listából. A legördülő lista az Azure-fiók előfizetéséhez tartozó kulcsokkal van feltöltve. Lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).  
+7. Adja meg a keresési előfizetés kulcsát, vagy válasszon egyet a legördülő listából. A legördülő lista az Azure-fiók előfizetéséhez tartozó kulcsokkal van feltöltve. Lásd: [Cognitive Services API-fiók](../cognitive-services-apis-create-account.md).  
 
 8. Ha engedélyezte az automatikus kiegészítést, adja meg az automatikus javaslat előfizetési kulcsát, vagy válasszon egyet a legördülő listából. A legördülő lista az Azure-fiók előfizetéséhez tartozó kulcsokkal van feltöltve. Az egyéni automatikus kiegészítéshez egy adott előfizetési szintet kell megadni, lásd a [díjszabást](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
 
@@ -82,7 +82,7 @@ Az üzemeltetett felhasználói felületet a következő módokon használhatja:
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Szükség szerint adja hozzá a következő lekérdezési paramétereket az URL-címhez. További információ ezekről a paraméterekről: [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) -hivatkozás.
+  > Szükség szerint adja hozzá a következő lekérdezési paramétereket az URL-címhez. További információ ezekről a paraméterekről: [Custom Search API](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) -hivatkozás.
   >
   > - q
   > - mkt
@@ -150,7 +150,7 @@ A következő konfigurációk csak akkor érvényesek, ha a futtatott felhaszná
 - Embléma URL-címe
 - Faviicon URL-címe  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Díszítő jelölők használata szövegkiemeléshez](../bing-web-search/hit-highlighting.md)
-- [Weboldalak lapozása](./page-webpages.md)
+- [Weboldalak lapozása](../bing-web-search/paging-search-results.md)

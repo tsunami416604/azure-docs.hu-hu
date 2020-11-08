@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: dba43c9e9b214a1ad077a2a15bdf014e057bb04e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cde7e677bd0121954b01cf9bb8defe45111a5b2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869881"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369188"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Természetes nyelvi támogatás az Azure Cognitive Services
 
@@ -33,37 +33,37 @@ Ezek a Cognitive Services nyelvtől függetlenek, és nem rendelkeznek az emberi
 * [Computer Vision](./computer-vision/language-support.md)
 * [Form Recognizer (előzetes verzió)](./form-recognizer/language-support.md)
 * [Ink Recognizer (előzetes verzió)](./ink-recognizer/language-support.md)
-* [Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/language-identification-model#guidelines-and-limitations)
+* [Video Indexer](../media-services/video-indexer/language-identification-model.md#guidelines-and-limitations)
 
 ## <a name="language"></a>Nyelv
 
 * [Modern olvasó](./immersive-reader/language-support.md)
-* [Language Understanding (LUIS)](./luis/luis-supported-languages.md)
-* [QnA Maker](./qnamaker/overview/languages-supported.md)
-* [Text Analytics](./text-analytics/text-analytics-supported-languages.md)
-* [Fordító](./translator/languages.md)
+* [Language Understanding (LUIS)](./luis/luis-language-support.md)
+* [QnA Maker](./qnamaker/overview/language-support.md)
+* [Text Analytics](./text-analytics/language-support.md)
+* [Fordító](./translator/language-support.md)
 
 ## <a name="speech"></a>Beszéd
 
-* [Beszédfelismerési szolgáltatás: beszéd – szöveg](./speech-service/supported-languages.md#speech-to-text)
-* [Beszédfelismerési szolgáltatás: szövegről beszédre](./speech-service/supported-languages.md#text-to-speech)
-* [Beszédfelismerési szolgáltatás: beszéd fordítása](./speech-service/supported-languages.md#speech-translation)
+* [Beszédfelismerési szolgáltatás: beszéd – szöveg](./speech-service/language-support.md#speech-to-text)
+* [Beszédfelismerési szolgáltatás: szövegről beszédre](./speech-service/language-support.md#text-to-speech)
+* [Beszédfelismerési szolgáltatás: beszéd fordítása](./speech-service/language-support.md#speech-translation)
 
 ## <a name="search"></a>Keresés
 
-* [Bing – Egyéni keresés](./bing-custom-search/supported-countries-markets.md)
-* [Bing – Képkeresés](./bing-image-search/supported-countries-markets.md)
-* [Bing – Hírkeresés](./bing-news-search/supported-countries-markets.md)
-* [Bing Autosuggest](./Bing-Autosuggest/bing-autosuggest-supported-languages.md)
-* [Bing – Helyesírás-ellenőrzés](./bing-spell-check/bing-spell-check-supported-languages.md)
-* [Bing vizuális keresés](./bing-visual-search/supported-countries-markets.md)
-* [Bing Web Search](./bing-web-search/supported-countries-markets.md)
+* [Bing – Egyéni keresés](./bing-custom-search/language-support.md)
+* [Bing – Képkeresés](./bing-image-search/language-support.md)
+* [Bing – Hírkeresés](./bing-news-search/language-support.md)
+* [Bing Autosuggest](./bing-autosuggest/language-support.md)
+* [Bing – Helyesírás-ellenőrzés](./bing-spell-check/language-support.md)
+* [Bing vizuális keresés](./bing-visual-search/language-support.md)
+* [Bing Web Search](./bing-web-search/language-support.md)
 
 ## <a name="decision"></a>Döntés
 
-* [Content Moderator](./content-moderator/text-moderation-api-languages.md)
+* [Content Moderator](./content-moderator/language-support.md)
 
 ## <a name="see-also"></a>Lásd még
 
-* [Mi a Cognitive Services?](welcome.md)
+* [Mi a Cognitive Services?](./what-are-cognitive-services.md)
 * [Fiók létrehozása](cognitive-services-apis-create-account.md)

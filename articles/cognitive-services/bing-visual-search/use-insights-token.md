@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6f4068ece2b08937188397317844a126a9699aee
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ed2c8b4b6dae8713d3ce1c6755c559cda9a9dfb8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102105"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368882"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Elemzések lekérése a rendszerképekről
 
@@ -262,7 +262,7 @@ namespace VisualSearchInsightsToken
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
-* A kód fordításához és futtatásához a [JDK 7-es vagy 8-as](https://aka.ms/azure-jdks) verziójának kell futnia. Ha kedvence van, akkor használhat egy Java IDE, de a szövegszerkesztővel is elegendő.
+* A kód fordításához és futtatásához a [JDK 7-es vagy 8-as](/azure/developer/java/fundamentals/java-jdk-long-term-support) verziójának kell futnia. Ha kedvence van, akkor használhat egy Java IDE, de a szövegszerkesztővel is elegendő.
 
 
 ## <a name="run-the-java-application"></a>A Java-alkalmazás futtatása
@@ -531,9 +531,9 @@ if __name__ == '__main__':
     main()
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Visual Search egyoldalas Webalkalmazás létrehozása](tutorial-bing-visual-search-single-page-app.md)  
 [Mi az a Bing Visual Search API?](overview.md)  
 [A Cognitive Services kipróbálása](https://aka.ms/bingvisualsearchtryforfree)  
-[Képek – Visual Search](https://aka.ms/bingvisualsearchreferencedoc)
+[Képek – Visual Search](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)

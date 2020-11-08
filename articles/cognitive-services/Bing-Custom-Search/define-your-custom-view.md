@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 57edc16f4396e0fe71380d4f51fa9e0dcca1ef03
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 52819caeb833eb475c8ea2c476ef5ba27681a50c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090817"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367556"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>A Bing Custom Search-élmény konfigurálása
 
@@ -79,16 +79,16 @@ Miután hozzáadta a webes szeleteket az **aktív** listához, a Bing Custom Sea
 
 ## <a name="search-for-images-and-videos"></a>Képek és videók keresése
 
-A webes tartalomhoz hasonló képeket és videókat kereshet a [Bing custom Image Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) vagy a [BING Custom Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)használatával. Ezeket az eredményeket az [üzemeltetett felhasználói felület](hosted-ui.md)vagy az API-k segítségével jelenítheti meg. 
+A webes tartalomhoz hasonló képeket és videókat kereshet a [Bing custom Image Search API](/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) vagy a [BING Custom Video Search API](/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)használatával. Ezeket az eredményeket az [üzemeltetett felhasználói felület](hosted-ui.md)vagy az API-k segítségével jelenítheti meg. 
 
-Ezek az API-k a nem egyéni [Bing Image Search](../Bing-Image-Search/overview.md) és [Bing Video Search](../Bing-Video-Search/search-the-web.md) API-kra hasonlítanak, de a teljes weben kereshetnek, és nem igénylik a `customConfig` lekérdezési paramétert. A képek és videók kezelésével kapcsolatos további információkért tekintse meg ezeket a dokumentációs készleteket. 
+Ezek az API-k a nem egyéni [Bing Image Search](../Bing-Image-Search/overview.md) és [Bing Video Search](../bing-video-search/overview.md) API-kra hasonlítanak, de a teljes weben kereshetnek, és nem igénylik a `customConfig` lekérdezési paramétert. A képek és videók kezelésével kapcsolatos további információkért tekintse meg ezeket a dokumentációs készleteket. 
 
 ## <a name="test-your-search-instance-with-the-preview-pane"></a>A keresési példány tesztelése a betekintő ablaktáblával
 
 A keresési példány teszteléséhez használja a portál jobb oldalán található előnézet ablaktáblát a keresési lekérdezések elküldéséhez, és tekintse meg az eredményeket. 
 
 1. A keresőmező alatt válassza a **saját példány** lehetőséget. A keresési élmény eredményeit összehasonlíthatja a Bing-be a **Bing** lehetőség kiválasztásával. 
-2. Válassza ki a biztonságos keresési szűrőt és a keresendő piacot (lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
+2. Válassza ki a biztonságos keresési szűrőt és a keresendő piacot (lásd a [lekérdezési paramétereket](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
 3. Írjon be egy lekérdezést, és nyomja le az ENTER billentyűt, vagy kattintson a keresés ikonra az aktuális konfiguráció eredményeinek megtekintéséhez. A kívánt keresési típus módosításához kattintson a **web** , a **képek** vagy a **videó** lehetőségre a megfelelő eredmények eléréséhez. 
 
 <a name="adjustrank"></a>
@@ -160,9 +160,9 @@ Ha a megfelelő szinten előfizetett az egyéni keresésre (lásd a [díjszabás
 - A szám növelése és lefokozása két rangsorolási beállításként.
 - Az egyes egyéni keresési példányok esetében az elvégezhető PIN-kódok maximális száma a 200-ra korlátozódik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni keresés meghívása](./search-your-custom-view.md)
 - [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)
 - [Díszítő jelölők használata szövegkiemeléshez](../bing-web-search/hit-highlighting.md)
-- [Weboldalak lapozása](./page-webpages.md)
+- [Weboldalak lapozása](../bing-web-search/paging-search-results.md)

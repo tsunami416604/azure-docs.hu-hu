@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 9dcbfa8234aea2c558df107fc919dc74f7b4f39a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b012da0b2aea4a50002e9adbc0876396ddd4b5e7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324501"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368729"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Részletes olvasó erőforrás létrehozása és Azure Active Directory hitelesítés konfigurálása
 
@@ -29,7 +29,7 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
 
 ## <a name="set-up-powershell-environment"></a>PowerShell-környezet beállítása
 
-1. Először nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Győződjön meg arról, hogy Cloud Shell a PowerShell értékre van állítva a bal felső sarokban, vagy írja be a következőt: `pwsh` .
+1. Először nyissa meg a [Azure Cloud Shell](../../cloud-shell/overview.md). Győződjön meg arról, hogy Cloud Shell a PowerShell értékre van állítva a bal felső sarokban, vagy írja be a következőt: `pwsh` .
 
 1. Másolja és illessze be a következő kódrészletet a rendszerhéjba.
 
@@ -189,14 +189,10 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
     }
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse meg a [Node.js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) rövid útmutatót, amelyből megtudhatja, hogy mit tehet a magától az olvasói SDK-val a Node.js használatával
 * Tekintse meg az [Android-oktatóanyagot](./tutorial-android.md) , amelyből megtudhatja, hogy mi a teendő a Java vagy a Kotlin for Android használatával.
 * Tekintse meg az [iOS-oktatóanyagot](./tutorial-ios.md) , amelyből megtudhatja, hogy mit tehet a gyors iOS-es verzióban
 * Tekintse meg a [Python-oktatóanyagot](./tutorial-python.md) , amelyből megtudhatja, hogy mit tehet a részletes olvasó SDK-val a Python használatával
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
-
-
-
-

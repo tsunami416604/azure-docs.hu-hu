@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: db3836e6171d187539b8615efcb5ab782c368020
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a78f74b4aadd26af141ed84ca99a092693f56af5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88752391"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369562"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Rövid útmutató: az első statikus webalkalmazás felépítése
 
@@ -33,78 +33,78 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverz
 
 Ezután nyissa meg a Visual Studio Code-ot, és nyissa meg a **fájl > megnyitása mappát** , ahol megnyithatja azt a tárházat, amelyet az imént klónozott a gépre a szerkesztőben.
 
-## <a name="create-a-static-web-app"></a>Statikus Webalkalmazás létrehozása
+## <a name="create-a-static-web-app"></a>Statikus webalkalmazás létrehozása
 
 1. Az Azure-bővítmények ablak megnyitásához a Visual Studio Code-ban kattintson a Tevékenység sávon az Azure-emblémára.
 
     :::image type="content" source="media/getting-started/extension-azure-logo.png" alt-text="Azure-embléma":::
 
     > [!NOTE]
-    > Be kell jelentkeznie az Azure-ba és a GitHubra. Ha még nincs bejelentkezve az Azure-ba és a GitHubra a Visual Studio Code-ból, a bővítmény arra fogja kérni, hogy a létrehozás folyamata során mindkét szolgáltatásba jelentkezzen be.
+    > Be kell jelentkeznie az Azure-ba és a GitHubra. Ha még nincs bejelentkezve az Azure-ba és a GitHubra a Visual Studio Code-ban, a bővítmény arra fogja kérni, hogy a létrehozás folyamata során jelentkezzen be mindkét szolgáltatásba.
 
-1. Vigye az egeret a _Static Web Apps_ címke fölé, és kattintson a **plusz jelre**.
+1. Vigye az egeret a _Static Web Apps_ címke fölé, és kattintson a **pluszjelre**.
 
-    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="Azure-embléma":::
+    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="Alkalmazás neve":::
 
 1. A szájpadlás parancs a szerkesztő tetején nyílik meg, és rákérdez az alkalmazás nevének megadására.
 
-    Írja be **az én-First-static-Web-App** értéket, és nyomja le az **ENTER**billentyűt.
+    Adja meg a **my-first-static-web-app** nevet, és nyomja le az **Enter** billentyűt.
 
-    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Azure-embléma":::
+    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Statikus webalkalmazás létrehozása":::
 
-1. Válassza ki a **fő** ágat, majd nyomja le az **ENTER**billentyűt.
+1. Válassza ki a **fő** ágat, majd nyomja le az **ENTER** billentyűt.
 
-    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="Azure-embléma":::
+    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="Ág neve":::
 
-1. Válassza ki az **/** alkalmazás kódjának helyét, majd nyomja le az **ENTER**billentyűt.
+1. Válassza ki az **/** alkalmazás kódjának helyét, majd nyomja le az **ENTER** billentyűt.
 
-    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Azure-embléma":::
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Alkalmazáskód helye":::
 
-1. A bővítmény az API helyét keresi az alkalmazásban. Ez a cikk nem valósít meg API-t.
+1. A bővítmény az API helyét keresi az alkalmazásban. Ez a cikk nem tartalmaz API-megvalósítást.
 
     Válassza a **Kihagyás most** lehetőséget, és nyomja le az **Enter** billentyűt.
 
-    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="Azure-embléma":::
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="Az API helye":::
 
 1. Válassza ki azt a helyet, ahol a fájlok elkészülhetnek az alkalmazásbeli üzemeléshez.
 
     # <a name="no-framework"></a>[Nincs keretrendszer](#tab/vanilla-javascript)
 
-    Törölje a mezőt, majd nyomja le az **ENTER**billentyűt.
+    Törölje a mezőt, majd nyomja le az **ENTER** billentyűt.
 
-    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="Azure-embléma":::
+    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="Alkalmazás fájljainak elérési útja":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    Írja be a **dist/szögletes-Basic** értéket, majd nyomja le az **ENTER**billentyűt.
+    Írja be a **dist/szögletes-Basic** értéket, majd nyomja le az **ENTER** billentyűt.
 
-    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Azure-embléma":::
+    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Angular-alkalmazásfájlok útvonala":::
 
     # <a name="react"></a>[React](#tab/react)
 
     Írja be a **build** szót, majd nyomja le az **Enter** billentyűt.
 
-    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="Azure-embléma":::
+    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="React-alkalmazásfájlok útvonala":::
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
     Írja be a **dist** szót, majd nyomja le az **Enter** billentyűt.
 
-    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Azure-embléma":::
+    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Vue-alkalmazásfájlok útvonala":::
 
     ---
 
 1. Válassza ki a legközelebbi helyet, és nyomja le az **Enter** billentyűt.
 
-    :::image type="content" source="media/getting-started/extension-location.png" alt-text="Azure-embléma":::
+    :::image type="content" source="media/getting-started/extension-location.png" alt-text="Erőforrás helye":::
 
 1. Az alkalmazás létrehozása után megerősítő értesítés jelenik meg a Visual Studio Code-ban.
 
-    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="Azure-embléma":::
+    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="Létrehozás megerősítése":::
 
-1. A Visual Studio Code Explorer ablakában térjen vissza a _statikus Web Apps_ szakaszra, majd kattintson a jobb gombbal az **éles** környezetben, és válassza a **Megnyitás a portálon** lehetőséget a Azure Portal alkalmazás megtekintéséhez.
+1. A Visual Studio Code Explorer ablakban navigáljon az előfizetés nevét tartalmazó csomóponthoz, és bontsa ki azt. Vegye figyelembe, hogy a telepítés befejezéséhez néhány percet is igénybe vehet. Ezután térjen vissza a statikus Web Apps szakaszra, és válassza ki az alkalmazás nevét, majd kattintson a jobb gombbal az én-első-static-Web-App elemre, és válassza a Megnyitás a portálon lehetőséget az alkalmazás megjelenítéséhez a Azure Portal.
 
-    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Azure-embléma":::
+    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Azure Portal megnyitása":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
@@ -112,9 +112,9 @@ Ezután nyissa meg a Visual Studio Code-ot, és nyissa meg a **fájl > megnyitá
 
 Ha nem folytatja az alkalmazás használatát, törölheti az Azure statikus Web Apps példányát a bővítmény használatával.
 
-A Visual Studio Code Explorer ablakban térjen vissza a _statikus Web Apps_ szakaszhoz, és kattintson a jobb gombbal a **My-First-static-Web-App** elemre, és válassza a **Törlés**lehetőséget.
+A Visual Studio Code Explorer ablakban térjen vissza a _statikus Web Apps_ szakaszhoz, és kattintson a jobb gombbal a **My-First-static-Web-App** elemre, és válassza a **Törlés** lehetőséget.
 
-:::image type="content" source="media/getting-started/extension-delete.png" alt-text="Azure-embléma":::
+:::image type="content" source="media/getting-started/extension-delete.png" alt-text="Alkalmazás törlése":::
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
-ms.openlocfilehash: 331b2ffde8d034ba94f5b1adcae5efa223f57594
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e8a8b843345d21d38c11789b09003a4b82f768f5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095118"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369494"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Keresési lekérdezések küldése a Bing Visual Search API
 
@@ -28,7 +28,7 @@ Ez a cikk a Bing Visual Search API küldött kérések paramétereit és attrib�
 
 A képekkel kapcsolatos elemzések háromféleképpen szerezhetők be:
 
-- Egy olyan elemzési tokent használ, amelyet egy korábbi hívásban lévő rendszerképből kap az [Bing Image Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) -végpontok egyikére.
+- Egy olyan elemzési tokent használ, amelyet egy korábbi hívásban lévő rendszerképből kap az [Bing Image Search API](/rest/api/cognitiveservices/bing-images-api-v7-reference) -végpontok egyikére.
 - Egy rendszerkép URL-címének elküldése.
 - Rendszerkép feltöltése (bináris formátumban).
 
@@ -78,7 +78,7 @@ A kérelmeket csak HTTP POST kérelemként lehet elküldeni.
 
 Az alábbiakban azok a lekérdezési paraméterek láthatók, amelyeket a kérelemnek meg kell adnia. Legalább a `mkt` lekérdezési paramétert kell tartalmaznia:
 
-| Name | Érték | Típus | Kötelező |
+| Név | Érték | Típus | Kötelező |
 | --- | --- | --- | --- |
 | <a name="cc"></a>cc  | Egy kétkarakteres országkód, amely a találatok helyét jelöli.<br /><br /> Ha beállítja ezt a paramétert, az [Accept-Language](#acceptlanguage) fejlécet is meg kell adnia. A Bing a nyelvek listájának első támogatott nyelvét használja, és kombinálja azt a megadott országkóddal, hogy meghatározza a piacot, ahonnan vissza fogja adni az eredményeket. Ha a nyelvek listája nem tartalmaz támogatott nyelvet, a Bing megkeresi a kérelmet támogató legközelebbi nyelvet és piacot. Másik lehetőségként a megadott piac helyett egy összesített vagy alapértelmezett piacot is használhat az eredmények megszerzéséhez.<br /><br /> Csak akkor használja ezt lekérdezési paramétert és az `Accept-Language` lekérdezési paramétert, ha több nyelvet ad meg, ellenkező esetben az `mkt` és a `setLang` paramétereket használja.<br /><br /> Ez a paraméter és az [](#mkt)mkt&mdash; lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt. | Sztring | Nem       |
 | <a name="mkt"></a>mkt   | A piac, ahonnan az eredmények származnak. <br /><br /> **Megjegyzés:** Ha ismert, mindig a piacot kell megadnia. Ha megadja a piacot, azzal elősegíti, hogy a Bing a kérelmet továbbítva megfelelő, optimális választ adjon vissza.<br /><br /> Ez a paraméter és a [](#cc)cc&mdash; lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt. | Sztring | Igen      |

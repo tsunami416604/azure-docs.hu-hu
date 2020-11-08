@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 52efd103bf510e7cca8a1e4a1d682948b498d64c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b0cac94ac3a0c8dff24cf154e4dd7ab7ddf4dd9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084850"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368423"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API C használatával #
 
@@ -43,7 +43,7 @@ Bár ez az alkalmazás C# nyelven íródott, az API egy REST-alapú webszolgált
 
 1. Hozzon létre egy új C# konzolos megoldást a Visual Studióban. 
 1. Adja hozzá a [Newtonsoft.Jst a](https://www.nuget.org/packages/Newtonsoft.Json/) NuGet-csomaghoz.
-    1. Kattintson a jobb gombbal a projektre **megoldáskezelő** .
+    1. Kattintson a jobb gombbal a projektre **megoldáskezelő**.
     2. Válassza a **NuGet-csomagok kezelése** lehetőséget.
     3. Keresse meg és válassza ki a *Newtonsoft.Js* , majd telepítse a csomagot.
 1. Ezután adja hozzá a következő névtereket a fő kódhoz:
@@ -179,10 +179,10 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás készítése](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Mi a Bing Entity Search API?](../overview.md )
-* [Bing Entity Search API hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Bing Entity Search API hivatkozás](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

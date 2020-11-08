@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metang
-ms.openlocfilehash: 73084f5116083b190b6fa31e504ffc5e8f6f39f6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: d8ee6b2344f0c953233195a693e774e410a8a8ea
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636493"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368202"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Oktatóanyag: hozzon létre egy iOS-alkalmazást, amely egy fényképből származó tartalommal (Swift) indít el egy lebilincselő olvasót
 
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
-A [Computer Vision Cognitive Services Read API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) észleli a képek szöveges tartalmát a Microsoft legújabb felismerési modelljeivel, és átalakítja a azonosított szöveget egy géppel olvasható karakteres adatfolyamba.
+A [Computer Vision Cognitive Services Read API](../computer-vision/concept-recognizing-text.md) észleli a képek szöveges tartalmát a Microsoft legújabb felismerési modelljeivel, és átalakítja a azonosított szöveget egy géppel olvasható karakteres adatfolyamba.
 
 Ebben az oktatóanyagban egy iOS-alkalmazást hoz létre a semmiből, és integrálja az olvasási API-t, valamint a magával ragadó olvasót az olvasói SDK használatával. Ebben az oktatóanyagban egy teljes körű működő minta érhető [el.](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)
 
@@ -97,6 +97,6 @@ Az alkalmazáson belül készítsen vagy töltsön fel egy fényképet a "fényk
 
 ![Modern olvasó](./media/ios/picture-to-immersive-reader-ipad.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg az [olvasói SDK-referenciát](./reference.md)

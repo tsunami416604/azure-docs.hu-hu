@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator Service, szöveg lefordítása, átbetűzés-szöveg, nyelvfelismerés
-ms.openlocfilehash: 8250141c2baa92478c5929a300ec7b17b8ed7131
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322511"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369528"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Gyors útmutató: a fordító használatának első lépései
 
@@ -105,7 +105,7 @@ Ha a Translator szolgáltatást a REST használatával hívja meg, meg kell győ
   <th>Leírás</th>
   <tr>
     <td>Hitelesítési fejléc (ek)</td>
-    <td><em>Kötelező kérelem fejléce</em><br/><code>Ocp-Apim-Subscription-Key</code><br/><br/><em>A kötelező kérelem fejléce Cognitive Services erőforrás használata esetén. Nem kötelező, ha fordítói erőforrást használ.</em><br/><code>Ocp-Apim-Subscription-Region</code><br/><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
+    <td><em>Kötelező kérelem fejléce</em><br/><code>Ocp-Apim-Subscription-Key</code><br/><br/><em>A kötelező kérelem fejléce Cognitive Services erőforrás használata esetén. Nem kötelező, ha fordítói erőforrást használ.</em><br/><code>Ocp-Apim-Subscription-Region</code><br/><br/>Tekintse <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -123,7 +123,7 @@ Ha a Translator szolgáltatást a REST használatával hívja meg, meg kell győ
 
 ## <a name="keys-and-endpoints"></a>Keys and endpoints (Kulcsok és végpontok)
 
-Az ezen a lapon található minták az egyszerűség kedvéért nehezen kódolt kulcsokat és végpontokat használnak. Ne felejtse el **eltávolítani a kulcsot a kódból, ha elkészült** , és **Soha ne tegye közzé nyilvánosan**. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) cikkben talál.
+Az ezen a lapon található minták az egyszerűség kedvéért nehezen kódolt kulcsokat és végpontokat használnak. Ne felejtse el **eltávolítani a kulcsot a kódból, ha elkészült** , és **Soha ne tegye közzé nyilvánosan**. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../cognitive-services-security.md) cikkben talál.
 
 ## <a name="translate-text"></a>Szöveg lefordítása 
 
@@ -686,7 +686,7 @@ Sikeres hívás után a következő választ kell megjelennie:
 
 ### <a name="detect-source-language-without-translation"></a>Forrás nyelvének észlelése fordítás nélkül
 
-A fordító szolgáltatás használatával a fordítás végrehajtása nélkül is észlelhető a forrás szöveg nyelve. Ehhez a végpontot kell használnia [`/detect`](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) . 
+A fordító szolgáltatás használatával a fordítás végrehajtása nélkül is észlelhető a forrás szöveg nyelve. Ehhez a végpontot kell használnia [`/detect`](./reference/v3-0-detect.md) . 
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -2670,7 +2670,7 @@ Sikeres hívás után a következő választ kell látnia. További információ
 
 Ha kapcsolati problémákat tapasztal, előfordulhat, hogy az SSL-tanúsítványa lejárt. A probléma megoldásához telepítse a [DigiCertGlobalRootG2. CRT](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt) -t a privát áruházba. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg, hogy az API hogyan számolja a karaktereket](character-counts.md)
 * [A fordítás testreszabása és javítása](customization.md)

@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: cad20f589bb5a6d3e73481081d9fe532381ab647
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fd1d9e708a5f1a500440f20c2947ddfe4bc7460
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827396"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368916"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Gyors útmutató: Cognitive Services-erőforrás létrehozása a Azure Portal használatával
 
@@ -64,9 +64,9 @@ Az Azure Cognitive Services a REST API-kkal rendelkező felhőalapú szolgáltat
     | [Ink Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    | [Bing – Helyesírás-ellenőrzés](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [Fordító](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Autosuggest](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
 
-    ***
+    **_
 
-3. A **Létrehozás** lapon adja meg a következő információkat:
+3. A _ *create* * lapon adja meg a következő információkat:
 
     #### <a name="multi-service-resource"></a>[Több szolgáltatásból álló erőforrás](#tab/multiservice)
 
@@ -80,7 +80,7 @@ Az Azure Cognitive Services a REST API-kkal rendelkező felhőalapú szolgáltat
 
     ![Több szolgáltatás erőforrás-erőforrás-létrehozási képernyője](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    Kattintson a **Létrehozás** lehetőségre.
+    Kattintson a **Létrehozás** gombra.
 
     #### <a name="single-service-resource"></a>[Egy szolgáltatásból származó erőforrás](#tab/singleservice)
 
@@ -94,15 +94,15 @@ Az Azure Cognitive Services a REST API-kkal rendelkező felhőalapú szolgáltat
 
     ![Egy szolgáltatásbeli erőforrás-létrehozási képernyő](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    Kattintson a **Létrehozás** lehetőségre.
+    Kattintson a **Létrehozás** gombra.
 
-    ***
+    **_
 
 [!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>Az erőforrás kulcsainak beolvasása
 
-1. Az erőforrás sikeres üzembe helyezése után kattintson az **Ugrás az erőforráshoz** lehetőségre a **következő lépések**alatt.
+1. Az erőforrás sikeres üzembe helyezése után kattintson az _ *Ugrás erőforrás* * elemre a **következő lépések** alatt.
 
     ![Cognitive Services keresése](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
@@ -123,7 +123,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 ## <a name="see-also"></a>Lásd még
 
 * [Kérelmek hitelesítése az Azure Cognitive Services](authentication.md)
-* [Mi az Azure Cognitive Services?](Welcome.md)
+* [Mi az Azure Cognitive Services?](./what-are-cognitive-services.md)
 * [Új erőforrás létrehozása az Azure felügyeleti ügyféloldali kódtár használatával](.\cognitive-services-apis-create-account-client-library.md)
 * [Természetes nyelvi támogatás](language-support.md)
 * [Docker-tárolók támogatása](cognitive-services-container-support.md)

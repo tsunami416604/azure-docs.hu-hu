@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 02baea817f2647f056131aa654afb129549a1e4e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aba990914ea193a7246a24b1502522f6144a0a9c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080974"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367590"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Egyéni automatikus kiegészítési élmény konfigurálása
 
@@ -65,7 +65,7 @@ Ha Bing-javaslatokat is tartalmaz, hozzáadhat egy listát a keresési lekérdez
 
 ## <a name="enabling-autosuggest-in-hosted-ui"></a>Automatikus kiegészítés engedélyezése a futtatott felhasználói felületen
 
-Az üzemeltetett felhasználói felület lekérdezési karakterláncára vonatkozó javaslatok engedélyezéséhez kattintson a **futtatott felhasználói felület** lehetőségre. Görgessen le a **további konfigurációs** szakaszhoz. A **webes keresés** területen válassza **a be** lehetőséget az automatikus kiegészítés **engedélyezéséhez** . Az automatikus kiegészítés engedélyezéséhez ki kell választania egy olyan elrendezést, amely tartalmaz egy keresőmezőt.
+Az üzemeltetett felhasználói felület lekérdezési karakterláncára vonatkozó javaslatok engedélyezéséhez kattintson a **futtatott felhasználói felület** lehetőségre. Görgessen le a **további konfigurációs** szakaszhoz. A **webes keresés** területen válassza **a be** lehetőséget az automatikus kiegészítés **engedélyezéséhez**. Az automatikus kiegészítés engedélyezéséhez ki kell választania egy olyan elrendezést, amely tartalmaz egy keresőmezőt.
 
 
 ## <a name="calling-the-autosuggest-api"></a>Az automatikus javaslat API meghívása
@@ -91,8 +91,8 @@ Minden javaslat tartalmaz egy `displayText` és egy `query` mezőt. A `displayTe
 Ha a felhasználó egy javasolt lekérdezési karakterláncot választ a legördülő listából, használja a lekérdezési karakterláncot a `query` mezőben a [Bing Custom Search API](overview.md)hívásakor.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Egyéni javaslatok lekérése](./get-custom-suggestions.md)
+- [Egyéni javaslatok lekérése]()
 - [Egyéni példány keresése](./search-your-custom-view.md)
 - [Egyéni tárolt felhasználói felület konfigurálása és felhasználása](./hosted-ui.md)

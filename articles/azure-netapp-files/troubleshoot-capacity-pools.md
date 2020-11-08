@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: ff1899fbc89ab4a78bf793a133a7aa9a8f03dd2a
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337559"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369239"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Kapacitáskészletekkel kapcsolatos hibák elhárítása
 
@@ -34,6 +34,10 @@ Ez a cikk azokat a problémákat ismerteti, amelyekkel a kapacitási készletek 
 | A kötet létrehozása vagy módosítása a `Requested throughput not available` következő hibával meghiúsul: | A kötetek rendelkezésre álló átviteli sebességét a kapacitási készlet mérete és a szolgáltatási szint határozza meg. Ha nem rendelkezik elegendő átviteli sebességgel, növelje a készlet méretét, vagy módosítsa a meglévő kötet átviteli sebességét. | 
 
 ## <a name="issues-moving-a-capacity-pool"></a>Kapacitási készlet áthelyezésével kapcsolatos problémák 
+
+> [!IMPORTANT] 
+> A mennyiségi nyilvános előzetes regisztráció [szolgáltatási szintjének dinamikus módosítása](dynamic-change-volume-service-level.md) további értesítésig tart.
+
 |     Hibafeltétel    |     Feloldás    |
 |-|-|
 | A kötetek kapacitási készletének módosítása nem engedélyezett. | Lehet, hogy még nem engedélyezte ezt a funkciót. <br> A kötetek egy másik kapacitási készletbe való áthelyezésének funkciója jelenleg előzetes verzióban érhető el. Ha első alkalommal használja ezt a szolgáltatást, először regisztrálnia kell a funkciót, és be kell állítania a szolgáltatást `-FeatureName ANFTierChange` . Tekintse meg a [kötetek szolgáltatási szintjének dinamikus módosítása](dynamic-change-volume-service-level.md)című témakörben található regisztráció lépéseit. |

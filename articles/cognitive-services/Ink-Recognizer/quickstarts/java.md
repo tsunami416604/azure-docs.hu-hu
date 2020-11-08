@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-java
-ms.openlocfilehash: b73f5013fdbef34344ece672bacff90db9bac60b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dea46a07a7357be6079c52634be8ea2ff79cc8f3
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89051576"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369120"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Gyors útmutató: Digitális tinta felismerése a kézírás-felismerő REST API és Javával
 
@@ -94,7 +94,7 @@ Futtassa az alkalmazást. A sikeres válaszokat JSON formátumban adja vissza a 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST API-referencia](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 
 Ha szeretné megtudni, hogyan működik a Ink-felismerési API egy digitális, a GitHubon futó alkalmazásban, tekintse meg az alábbi példákat a GitHubon:

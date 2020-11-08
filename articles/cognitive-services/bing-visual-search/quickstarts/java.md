@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.custom: devx-track-java
 ms.author: scottwhi
-ms.openlocfilehash: f33b5f5274fcaf8f64f898e2b7aebe8a27470033
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7ad674b9326f3e55d8e17f738fd68faf26bd1c9a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086533"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368117"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Gyors útmutató: képelemzések lekérése a Bing Visual Search REST API és a Java használatával
 
@@ -29,7 +29,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Visual Search AP
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Java fejlesztői készlet (JDK) 7 vagy 8](https://aka.ms/azure-jdks)
+* A [Java fejlesztői készlet (JDK) 7 vagy 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * A [Gson Java-könyvtára](https://github.com/google/gson)
 * [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
 
@@ -133,7 +133,7 @@ public static String prettify(String json_text) {
     System.out.println(prettify(json));
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)

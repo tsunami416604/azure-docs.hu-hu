@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e556ca2051fd75eb9bf6411c5479e63554606d48
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757027"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368338"
 ---
 # <a name="how-to-manage-settings"></a>Beállítások kezelése
 
@@ -33,7 +33,7 @@ A modellek betanításához vagy üzembe helyezéséhez a munkaterülethez társ
 
 Ha nem rendelkezik előfizetéssel, kövesse az alábbi lépéseket:
 
-1. Előfizetés fordítói erőforrás létrehozásához. A Translator- [regisztrációra](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup) való feliratkozáshoz és a fordítói kulcs beszerzéséhez kövesse az alábbi lépéseket.
+1. Előfizetés fordítói erőforrás létrehozásához. A Translator- [regisztrációra](../translator-how-to-signup.md) való feliratkozáshoz és a fordítói kulcs beszerzéséhez kövesse az alábbi lépéseket.
 2. Jegyezze fel a fordítói előfizetés kulcsát. A Key1 vagy a Key2 egyike elfogadható.
 3. Váltson vissza az egyéni Translator portálra.
 
@@ -52,7 +52,7 @@ Ha nem rendelkezik előfizetéssel, kövesse az alábbi lépéseket:
     ![Új munkaterület létrehozása párbeszédpanel](media/how-to/create-new-workspace-dialog.png)
 
 >[!Note]
->Az egyéni fordító nem támogatja munkaterületek létrehozását Translator Text API erőforráshoz (más néven Az [engedélyezett VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)belül létrehozott Azure-előfizetési kulcs).
+>Az egyéni fordító nem támogatja munkaterületek létrehozását Translator Text API erőforráshoz (más néven Az [engedélyezett VNET](../../../api-management/api-management-using-with-vnet.md)belül létrehozott Azure-előfizetési kulcs).
 
 ### <a name="modify-existing-key"></a>Meglévő kulcs módosítása
 
@@ -115,6 +115,6 @@ Az első létrehozott munkaterület alapértelmezés szerint rögzített. Amikor
 
     ![Munkaterület rögzítése](media/how-to/how-to-pin-workspace.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [, hogyan hozhat létre munkaterületet és projekteket](workspace-and-project.md)

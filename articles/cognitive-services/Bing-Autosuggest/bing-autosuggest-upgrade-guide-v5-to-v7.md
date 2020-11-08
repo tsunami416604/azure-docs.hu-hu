@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: c4b02ef7bc833a7f5ab41e0203836637613244e0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9e887d8f7579a90e7d4e8d54dcf28e1256269063
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101986"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368457"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Automatikus javasolt API-frissítési útmutató
 
@@ -73,7 +73,7 @@ ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
 InsufficientScope|InsufficientAuthorization
 Blokkolva|InvalidRequest. Blocked
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Követelmények használata és megjelenítése](./UseAndDisplayRequirements.md)
+> [Követelmények használata és megjelenítése](../bing-web-search/use-display-requirements.md)

@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83590638"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368814"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services egyéni tartománynevei
 
-Az Azure Cognitive Services a [Azure Portal](https://portal.azure.com), a [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)használatával létrehozott összes erőforráshoz egyéni tartományneveket használhat. A regionális végpontok eltérően, amelyek egy adott Azure-régióban lévő összes ügyfél esetében közösek, az egyéni altartományok nevei egyediek az erőforrás számára. Az egyéni altartományok neve szükséges az olyan funkciók engedélyezéséhez, mint a Azure Active Directory (Azure AD) a hitelesítéshez.
+Az Azure Cognitive Services a [Azure Portal](https://portal.azure.com), a [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)vagy az [Azure CLI](/cli/azure/install-azure-cli)használatával létrehozott összes erőforráshoz egyéni tartományneveket használhat. A regionális végpontok eltérően, amelyek egy adott Azure-régióban lévő összes ügyfél esetében közösek, az egyéni altartományok nevei egyediek az erőforrás számára. Az egyéni altartományok neve szükséges az olyan funkciók engedélyezéséhez, mint a Azure Active Directory (Azure AD) a hitelesítéshez.
 
 ## <a name="how-does-this-impact-existing-resources"></a>Hogyan befolyásolja ez a meglévő erőforrásokat?
 
@@ -27,7 +27,7 @@ A 2019. július 1. előtt létrehozott erőforrások Cognitive Services a társ�
 Ha egy meglévő erőforrást szeretne áttelepíteni az egyéni altartománynevek kihasználása érdekében, hogy az Azure AD-hez hasonló szolgáltatásokat lehessen engedélyezni, kövesse az alábbi utasításokat:
 
 1. Jelentkezzen be a Azure Portalba, és keresse meg azt a Cognitive Services-erőforrást, amelyhez hozzá szeretné adni az egyéni altartomány nevét.
-2. Az **Áttekintés** panelen keresse meg és válassza ki az **Egyéni tartománynév előállítása**lehetőséget.
+2. Az **Áttekintés** panelen keresse meg és válassza ki az **Egyéni tartománynév előállítása** lehetőséget.
 3. Ekkor megnyílik egy panel, amely útmutatást ad az erőforrás egyedi egyéni altartományának létrehozásához.
    > [!WARNING]
    > Miután létrehozta az egyéni altartomány nevét, **nem** módosítható.
@@ -98,5 +98,5 @@ Igen. Az Azure Cognitive Services erőforrásaival használható regionális vé
 
 ## <a name="see-also"></a>Lásd még
 
-* [Mi a Cognitive Services?](Welcome.md)
+* [Mi a Cognitive Services?](./what-are-cognitive-services.md)
 * [Hitelesítés](authentication.md)

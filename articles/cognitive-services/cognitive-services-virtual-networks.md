@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: d320fcd0b7f9666da39dd1208efd9cdec04ad6b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f79cfce514b81c5829ee7791c18e24d3bc6563b5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843141"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369375"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Az Azure Cognitive Services virtuális hálózatainak konfigurálása
 
@@ -79,11 +79,11 @@ Cognitive Services erőforrások alapértelmezett hálózati hozzáférési szab
 
 1. Lépjen a védeni kívánt Cognitive Services erőforráshoz.
 
-1. Válassza ki a **virtuális hálózat**nevű **erőforrás-kezelési** menüt.
+1. Válassza ki a **virtuális hálózat** nevű **erőforrás-kezelési** menüt.
 
    ![Virtuális hálózat lehetőség](media/vnet/virtual-network-blade.png)
 
-1. Ha alapértelmezés szerint szeretné megtagadni a hozzáférést, válassza a **kijelölt hálózatokból**való hozzáférés engedélyezése lehetőséget. Ha a **kiválasztott hálózatok** esetében egyedül a konfigurált **virtuális hálózatok** vagy **címtartományok** nincsenek társítva, akkor az összes hozzáférés ténylegesen meg lesz tagadva. Ha minden hozzáférés meg van tagadva, a Cognitive Services erőforrást felhasználó kérelmek nem engedélyezettek. A Azure Portal, Azure PowerShell vagy az Azure CLI továbbra is használható a Cognitive Services erőforrás konfigurálásához.
+1. Ha alapértelmezés szerint szeretné megtagadni a hozzáférést, válassza a **kijelölt hálózatokból** való hozzáférés engedélyezése lehetőséget. Ha a **kiválasztott hálózatok** esetében egyedül a konfigurált **virtuális hálózatok** vagy **címtartományok** nincsenek társítva, akkor az összes hozzáférés ténylegesen meg lesz tagadva. Ha minden hozzáférés meg van tagadva, a Cognitive Services erőforrást felhasználó kérelmek nem engedélyezettek. A Azure Portal, Azure PowerShell vagy az Azure CLI továbbra is használható a Cognitive Services erőforrás konfigurálásához.
 1. Ha minden hálózatról engedélyezni szeretné a forgalmat, engedélyezze a hozzáférést az **Összes hálózatnak**.
 
    ![Virtuális hálózatok – megtagadás](media/vnet/virtual-network-deny.png)
@@ -92,7 +92,7 @@ Cognitive Services erőforrások alapértelmezett hálózati hozzáférési szab
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. Telepítse a [Azure PowerShellt](/powershell/azure/install-az-ps) , és [Jelentkezzen](/powershell/azure/authenticate-azureps)be, vagy válassza a **kipróbálás**lehetőséget.
+1. Telepítse a [Azure PowerShellt](/powershell/azure/install-az-ps) , és [Jelentkezzen](/powershell/azure/authenticate-azureps)be, vagy válassza a **kipróbálás** lehetőséget.
 
 1. Megjeleníti a Cognitive Services erőforrás alapértelmezett szabályának állapotát.
 
@@ -128,7 +128,7 @@ Cognitive Services erőforrások alapértelmezett hálózati hozzáférési szab
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli) -t, és [Jelentkezzen](/cli/azure/authenticate-azure-cli)be, vagy válassza a **kipróbálás**lehetőséget.
+1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli) -t, és [Jelentkezzen](/cli/azure/authenticate-azure-cli)be, vagy válassza a **kipróbálás** lehetőséget.
 
 1. Megjeleníti a Cognitive Services erőforrás alapértelmezett szabályának állapotát.
 
@@ -154,7 +154,7 @@ Cognitive Services erőforrások alapértelmezett hálózati hozzáférési szab
         --default-action Allow
     ```
 
-***
+**_
 
 ## <a name="grant-access-from-a-virtual-network"></a>Hozzáférés biztosítása egy virtuális hálózattól
 
@@ -166,7 +166,7 @@ Minden Cognitive Services erőforrás legfeljebb 100 virtuális hálózati szab�
 
 ### <a name="required-permissions"></a>Szükséges engedélyek
 
-Ha egy virtuális hálózati szabályt Cognitive Services erőforrásra kíván alkalmazni, a felhasználónak rendelkeznie kell a megfelelő engedélyekkel az alhálózatok hozzáadásához. A szükséges engedély az alapértelmezett *közreműködő* szerepkör vagy a *Cognitive Services közreműködő* szerepkör. A szükséges engedélyek hozzáadhatók egyéni szerepkör-definícióhoz is.
+Ha egy virtuális hálózati szabályt Cognitive Services erőforrásra kíván alkalmazni, a felhasználónak rendelkeznie kell a megfelelő engedélyekkel az alhálózatok hozzáadásához. A szükséges engedély az alapértelmezett _Contributor * szerepkör vagy a *Cognitive Services közreműködő* szerepkör. A szükséges engedélyek hozzáadhatók egyéni szerepkör-definícióhoz is.
 
 Cognitive Services erőforrás és a hozzáférést kapott virtuális hálózatok különböző előfizetésekben lehetnek, beleértve az olyan előfizetéseket, amelyek egy másik Azure AD-bérlő részét képezik.
 
@@ -181,23 +181,23 @@ Cognitive Services erőforrások virtuális hálózati szabályait a Azure Porta
 
 1. Lépjen a védeni kívánt Cognitive Services erőforráshoz.
 
-1. Válassza ki a **virtuális hálózat**nevű **erőforrás-kezelési** menüt.
+1. Válassza ki a **virtuális hálózat** nevű **erőforrás-kezelési** menüt.
 
-1. Győződjön meg arról, hogy a **kijelölt hálózatokból**való hozzáférés engedélyezését választotta.
+1. Győződjön meg arról, hogy a **kijelölt hálózatokból** való hozzáférés engedélyezését választotta.
 
-1. Egy meglévő hálózati szabállyal rendelkező virtuális hálózathoz való hozzáférés biztosításához a **virtuális hálózatok**területen válassza a **meglévő virtuális hálózat hozzáadása**elemet.
+1. Egy meglévő hálózati szabállyal rendelkező virtuális hálózathoz való hozzáférés biztosításához a **virtuális hálózatok** területen válassza a **meglévő virtuális hálózat hozzáadása** elemet.
 
    ![Meglévő vNet hozzáadása](media/vnet/virtual-network-add-existing.png)
 
-1. Válassza ki a **virtuális hálózatok** és **alhálózatok** beállításait, majd válassza az **Engedélyezés**lehetőséget.
+1. Válassza ki a **virtuális hálózatok** és **alhálózatok** beállításait, majd válassza az **Engedélyezés** lehetőséget.
 
    ![Meglévő vNet-részletek hozzáadása](media/vnet/virtual-network-add-existing-details.png)
 
-1. Új virtuális hálózat létrehozásához és az IT-hozzáférés biztosításához válassza az **új virtuális hálózat hozzáadása**elemet.
+1. Új virtuális hálózat létrehozásához és az IT-hozzáférés biztosításához válassza az **új virtuális hálózat hozzáadása** elemet.
 
    ![Új vNet hozzáadása](media/vnet/virtual-network-add-new.png)
 
-1. Adja meg az új virtuális hálózat létrehozásához szükséges adatokat, majd válassza a **Létrehozás**lehetőséget.
+1. Adja meg az új virtuális hálózat létrehozásához szükséges adatokat, majd válassza a **Létrehozás** lehetőséget.
 
    ![VNet létrehozása](media/vnet/virtual-network-create.png)
 
@@ -206,7 +206,7 @@ Cognitive Services erőforrások virtuális hálózati szabályait a Azure Porta
     >
     > Jelenleg csak az ugyanahhoz a Azure Active Directory bérlőhöz tartozó virtuális hálózatok jelennek meg a szabályok létrehozásakor. Egy másik bérlőhöz tartozó virtuális hálózatban lévő alhálózathoz való hozzáférés biztosításához használja a PowerShell, a CLI vagy a REST API-kat.
 
-1. Virtuális hálózat vagy alhálózat szabályának eltávolításához válassza a **...** lehetőséget a virtuális hálózat vagy alhálózat helyi menüjének megnyitásához, majd válassza az **Eltávolítás**lehetőséget.
+1. Virtuális hálózat vagy alhálózat szabályának eltávolításához válassza a **...** lehetőséget a virtuális hálózat vagy alhálózat helyi menüjének megnyitásához, majd válassza az **Eltávolítás** lehetőséget.
 
    ![VNet eltávolítása](media/vnet/virtual-network-remove.png)
 
@@ -214,7 +214,7 @@ Cognitive Services erőforrások virtuális hálózati szabályait a Azure Porta
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. Telepítse a [Azure PowerShellt](/powershell/azure/install-az-ps) , és [Jelentkezzen](/powershell/azure/authenticate-azureps)be, vagy válassza a **kipróbálás**lehetőséget.
+1. Telepítse a [Azure PowerShellt](/powershell/azure/install-az-ps) , és [Jelentkezzen](/powershell/azure/authenticate-azureps)be, vagy válassza a **kipróbálás** lehetőséget.
 
 1. Virtuális hálózati szabályok listázása.
 
@@ -274,7 +274,7 @@ Cognitive Services erőforrások virtuális hálózati szabályait a Azure Porta
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli) -t, és [Jelentkezzen](/cli/azure/authenticate-azure-cli)be, vagy válassza a **kipróbálás**lehetőséget.
+1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli) -t, és [Jelentkezzen](/cli/azure/authenticate-azure-cli)be, vagy válassza a **kipróbálás** lehetőséget.
 
 1. Virtuális hálózati szabályok listázása.
 
@@ -322,10 +322,10 @@ Cognitive Services erőforrások virtuális hálózati szabályait a Azure Porta
         --subnet $subnetid
     ```
 
-***
+**_
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
+> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) _ * deny * * értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Hozzáférés biztosítása internetes IP-címtartományról
 
@@ -357,9 +357,9 @@ A Azure Portal, a PowerShell vagy az Azure CLI segítségével kezelheti Cogniti
 
 1. Lépjen a védeni kívánt Cognitive Services erőforráshoz.
 
-1. Válassza ki a **virtuális hálózat**nevű **erőforrás-kezelési** menüt.
+1. Válassza ki a **virtuális hálózat** nevű **erőforrás-kezelési** menüt.
 
-1. Győződjön meg arról, hogy a **kijelölt hálózatokból**való hozzáférés engedélyezését választotta.
+1. Győződjön meg arról, hogy a **kijelölt hálózatokból** való hozzáférés engedélyezését választotta.
 
 1. Ha hozzáférést szeretne biztosítani egy internetes IP-tartományhoz, adja meg az IP-címet vagy címtartományt ( [CIDR formátumban](https://tools.ietf.org/html/rfc4632)) a **tűzfal**  >  **címtartomány alatt**. Csak érvényes nyilvános IP-címet (nem fenntartott) fogad el a rendszer.
 
@@ -373,7 +373,7 @@ A Azure Portal, a PowerShell vagy az Azure CLI segítségével kezelheti Cogniti
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. Telepítse a [Azure PowerShellt](/powershell/azure/install-az-ps) , és [Jelentkezzen](/powershell/azure/authenticate-azureps)be, vagy válassza a **kipróbálás**lehetőséget.
+1. Telepítse a [Azure PowerShellt](/powershell/azure/install-az-ps) , és [Jelentkezzen](/powershell/azure/authenticate-azureps)be, vagy válassza a **kipróbálás** lehetőséget.
 
 1. IP-hálózati szabályok listázása.
 
@@ -431,7 +431,7 @@ A Azure Portal, a PowerShell vagy az Azure CLI segítségével kezelheti Cogniti
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli) -t, és [Jelentkezzen](/cli/azure/authenticate-azure-cli)be, vagy válassza a **kipróbálás**lehetőséget.
+1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli) -t, és [Jelentkezzen](/cli/azure/authenticate-azure-cli)be, vagy válassza a **kipróbálás** lehetőséget.
 
 1. IP-hálózati szabályok listázása.
 
@@ -472,10 +472,10 @@ A Azure Portal, a PowerShell vagy az Azure CLI segítségével kezelheti Cogniti
         --ip-address "16.17.18.0/24"
     ```
 
-***
+**_
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
+> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) _ * deny * * értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
 
 ## <a name="use-private-endpoints"></a>Privát végpontok használata
 
@@ -497,7 +497,7 @@ A magánhálózati végpontok olyan alhálózatokban hozhatók létre, amelyek [
 
 Ha a VNet egy Cognitive Services-erőforráshoz hoz létre privát végpontot, a rendszer jóváhagyásra vonatkozó kérést küld a Cognitive Services erőforrás-tulajdonosnak. Ha a privát végpont létrehozását kérő felhasználó az erőforrás tulajdonosa is, akkor a rendszer ezt a jóváhagyási kérést automatikusan jóváhagyja.
 
-Cognitive Services erőforrás-tulajdonosok kezelhetik a belefoglalt kérelmeket és a privát végpontokat a [Azure Portal](https://portal.azure.com)Cognitive Services erőforrásának "*privát végpontok*" lapján.
+Cognitive Services erőforrás-tulajdonosok kezelhetik a belefoglalt kérelmeket és a privát végpontokat a [Azure Portal](https://portal.azure.com)Cognitive Services erőforrásának " *privát végpontok* " lapján.
 
 ### <a name="private-endpoints"></a>Privát végpontok
 
@@ -519,7 +519,7 @@ Ha privát végpontokat használ a beszédfelismerési szolgáltatással, egyén
 
 ### <a name="dns-changes-for-private-endpoints"></a>A magánhálózati végpontok DNS-módosításai
 
-Privát végpont létrehozásakor a rendszer a Cognitive Services erőforráshoz tartozó DNS CNAME erőforrásrekordot a "*privatelink*" előtaggal rendelkező altartományban lévő aliasra frissíti. Alapértelmezés szerint a "*privatelink*" altartománynak megfelelő [privát DNS-zónát](../dns/private-dns-overview.md)is létrehozunk, a DNS a saját végpontokhoz tartozó erőforrásrekordokat.
+Privát végpont létrehozásakor a rendszer a Cognitive Services erőforráshoz tartozó DNS CNAME erőforrásrekordot a " *privatelink* " előtaggal rendelkező altartományban lévő aliasra frissíti. Alapértelmezés szerint a " *privatelink* " altartománynak megfelelő [privát DNS-zónát](../dns/private-dns-overview.md)is létrehozunk, a DNS a saját végpontokhoz tartozó erőforrásrekordokat.
 
 Ha a végponti URL-címet a VNet kívülről a privát végpontra oldja fel, a rendszer a Cognitive Services erőforrás nyilvános végpontját oldja fel. A privát végpontot futtató VNet feloldva a végpont URL-címe feloldódik a magánhálózati végpont IP-címére.
 
@@ -532,14 +532,14 @@ Ha a hálózaton egyéni DNS-kiszolgálót használ, az ügyfeleknek képesnek k
 
 A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konfigurálásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Azure virtuális hálózatokon található erőforrások névfeloldása](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-* [A magánhálózati végpontok DNS-konfigurációja](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+* [Azure virtuális hálózatokon található erőforrások névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+* [A magánhálózati végpontok DNS-konfigurációja](../private-link/private-endpoint-overview.md#dns-configuration)
 
 ### <a name="pricing"></a>Díjszabás
 
 A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása](https://azure.microsoft.com/pricing/details/private-link).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ismerkedjen meg a különböző [Azure-Cognitive Servicesokkal](welcome.md)
+* Ismerkedjen meg a különböző [Azure-Cognitive Servicesokkal](./what-are-cognitive-services.md)
 * További információ az [Azure Virtual Network Service-végpontokról](../virtual-network/virtual-network-service-endpoints-overview.md)

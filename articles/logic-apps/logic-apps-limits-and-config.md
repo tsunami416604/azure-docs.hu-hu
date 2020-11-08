@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 7248c82882d32ae0eb225a9ec4c3b48dff3b9fcb
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.date: 11/06/2020
+ms.openlocfilehash: 7532366d533aa957525235511a1f29649d6f8828
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360037"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369210"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -137,13 +137,57 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 
 | Név | Korlát | Jegyzetek |
 | ---- | ----- | ----- |
-| Művelet: végrehajtások száma 5 percenként | 100 000 az alapértelmezett korlát, de a 300 000 a maximális korlát. | Az alapértelmezett korlát módosításához tekintse [meg a logikai alkalmazás futtatása nagy teljesítményű módban](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), amely előzetes verzióban érhető el. Vagy a számítási feladatok több logikai alkalmazásban is eloszthatók a szükséges módon. |
+| Művelet: végrehajtások száma 5 percenként | 100 000 az alapértelmezett korlát, de a 300 000 a maximális korlát. | Ha az alapértelmezett korlátot a logikai alkalmazás maximális értékére szeretné emelni, tekintse meg az előzetes verzióban elérhető, [magas átviteli sebességű módban történő futtatást](#run-high-throughput-mode). Vagy [a számítási feladatok több logikai alkalmazásban is eloszthatók a](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) szükséges módon. |
 | Művelet: egyidejű kimenő hívások | ~2.500 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
 | Futásidejű végpont: egyidejű bejövő hívások | ~ 1 000 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
 | Futásidejű végpont: olvasási hívások/5 perc  | 60.000 | Ez a korlát a logikai alkalmazás futtatási előzményeiből származó nyers bemenetek és kimenetek lekérésére irányuló hívásokra vonatkozik. Szükség szerint több alkalmazásban is terjesztheti a munkaterhelést. |
 | Futásidejű végpont: hívások hívása 5 percenként | 45.000 | Szükség szerint több alkalmazáson is terjesztheti a számítási feladatokat. |
 | Tartalom átviteli sebessége 5 percenként | 600 MB | Szükség szerint több alkalmazáson is terjesztheti a számítási feladatokat. |
 ||||
+
+<a name="run-high-throughput-mode"></a>
+
+#### <a name="run-in-high-throughput-mode"></a>Futtatás nagy teljesítményű módban
+
+Egyetlen logikai alkalmazás definíciójában az 5 percenként végrehajtandó műveletek száma [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)rendelkezik. Ha az alapértelmezett korlátot a logikai alkalmazás maximális értékére szeretné emelni, engedélyezheti a magas átviteli sebességet, amely előzetes verzióban érhető el. Vagy [a számítási feladatok több logikai alkalmazásban is eloszthatók a](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) szükséges módon.
+
+1. A Azure Portal a logikai alkalmazás menüjének **Beállítások** területén válassza a **munkafolyamat-beállítások** elemet.
+
+1. A **Futásidejű beállítások**  >  **magas átviteli sebesség** területén módosítsa a beállítást **a** következőre:.
+
+   ![Képernyőfelvétel: a Azure Portal logikai alkalmazás menüjének "munkafolyamat-beállítások" és "nagy teljesítmény" beállítása "on" értékre van állítva.](./media/logic-apps-limits-and-config/run-high-throughput-mode.png)
+
+Ha ezt a beállítást egy ARM-sablonban szeretné engedélyezni a logikai alkalmazás üzembe helyezéséhez, a `properties` logikai alkalmazás erőforrás-definíciójának objektumában adja hozzá az objektumot a következő `runtimeConfiguration` `operationOptions` tulajdonsággal `OptimizedForHighThroughput` :
+
+```json
+{
+   <template-properties>
+   "resources": [
+      // Start logic app resource definition
+      {
+         "properties": {
+            <logic-app-resource-definition-properties>,
+            <logic-app-workflow-definition>,
+            <more-logic-app-resource-definition-properties>,
+            "runtimeConfiguration": {
+               "operationOptions": "OptimizedForHighThroughput"
+            }
+         },
+         "name": "[parameters('LogicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('LogicAppLocation')]",
+         "tags": {},
+         "apiVersion": "2016-06-01",
+         "dependsOn": [
+         ]
+      }
+      // End logic app resource definition
+   ],
+   "outputs": {}
+}
+```
+
+A logikai alkalmazás erőforrás-definíciójának részletes ismertetését az [Áttekintés: a Azure Logic apps üzembe helyezésének automatizálása Azure Resource Manager sablonok segítségével](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)című témakörben talál.
 
 ### <a name="integration-service-environment-ise"></a>Integrációs szolgáltatási környezet (ISE)
 
@@ -260,7 +304,7 @@ Az egyes Azure-előfizetések az alábbi integrációs fiókra korlátozzák:
 
   | ISE SKU | Integrációs fiók korlátai |
   |---------|----------------------------|
-  | **Prémium** | 20 teljes [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) fiók, beleértve az ingyenes egy standard fiókot is. Ingyenes vagy alapszintű fiókok használata nem engedélyezett. |
+  | **Prémium szintű** | 20 teljes [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) fiók, beleértve az ingyenes egy standard fiókot is. Ingyenes vagy alapszintű fiókok használata nem engedélyezett. |
   | **Fejlesztő** | 20 összesen – [ingyenes](../logic-apps/logic-apps-pricing.md#integration-accounts) (legfeljebb 1 fiók) és [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) kombinált, vagy az összes standard fiók. Nem engedélyezett alapszintű fiók. A [fejlesztői SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) -t a kísérletezéshez, fejlesztéshez és teszteléshez használhatja, az éles környezetben való teszteléshez azonban nem. |
   |||
 
@@ -484,7 +528,7 @@ Ez a szakasz a Azure Logic Apps szolgáltatás és a felügyelt összekötők ki
 | USA-beli államigazgatás – Virginia | 13.72.54.205, 52.227.138.30, 52.227.152.44 | 52.127.42.128 - 52.127.42.143, 52.227.143.61, 52.227.162.91 |
 ||||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [hozhatja létre első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * Tudnivalók a [gyakori példákról és forgatókönyvekről](../logic-apps/logic-apps-examples-and-scenarios.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: ceaa04fdf8776d4fab1db4cfb1b3df4298f28de9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f14ac72443dedc8e33e607a82b2145c7ebf95ad2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152277"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368780"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services biztonság
 
@@ -60,7 +60,7 @@ Megőrzött környezeti változó létrehozása és kiosztása a megadott érté
 setx ENVIRONMENT_VARIABLE_KEY="value"
 ```
 
-A **parancssor**új példányában olvassa el a környezeti változót.
+A **parancssor** új példányában olvassa el a környezeti változót.
 
 ```CMD
 :: Prints the env var value
@@ -76,7 +76,7 @@ Megőrzött környezeti változó létrehozása és kiosztása a megadott érté
 [System.Environment]::SetEnvironmentVariable('ENVIRONMENT_VARIABLE_KEY', 'value', 'User')
 ```
 
-A **Windows PowerShell**új példányában olvassa el a környezeti változót.
+A **Windows PowerShell** új példányában olvassa el a környezeti változót.
 
 ```powershell
 # Prints the env var value
@@ -92,7 +92,7 @@ Megőrzött környezeti változó létrehozása és kiosztása a megadott érté
 echo export ENVIRONMENT_VARIABLE_KEY="value" >> /etc/environment && source /etc/environment
 ```
 
-A **bash**új példányában olvassa el a környezeti változót.
+A **bash** új példányában olvassa el a környezeti változót.
 
 ```Bash
 # Prints the env var value
@@ -201,17 +201,17 @@ NSString* value =
 
 Ügyfélszéf érhető el ehhez a kognitív szolgáltatáshoz:
 
-* Translator
+* Fordító
 
 A következő szolgáltatások esetében a Microsoft Engineers nem fér hozzá a E0-szinten található összes ügyfél-adatszolgáltatáshoz: 
 
 * Language Understanding
-* Face
+* Arcfelismerés
 * Tartalommoderátor
 * Personalizer
 
 > [!IMPORTANT]
-> Az **űrlap-felismerő**esetében a Microsoft Engineers nem fér hozzá a 2020. július 10. után létrehozott erőforrásokhoz.
+> Az **űrlap-felismerő** esetében a Microsoft Engineers nem fér hozzá a 2020. július 10. után létrehozott erőforrásokhoz.
 
 Ha a E0 SKU használatára van lehetősége, töltse ki és küldje el ezt a [kérési űrlapot](https://aka.ms/cogsvc-cmk). Körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a E0 SKU-val a LUIS-t, létre kell hoznia egy új erőforrást a Azure Portal, és a E0 kell választania az árképzési szinten. A felhasználók nem fognak tudni frissíteni a F0 az új E0 SKU-ra.
 
@@ -220,7 +220,7 @@ A beszédfelismerési szolgáltatás jelenleg nem támogatja a Ügyfélszéf. A 
 > [!IMPORTANT]
 > A Microsoft **nem** használja fel az ügyféladatokat, hogy javítsa a beszédfelismerési modelljeit. Emellett, ha a végpont-naplózás le van tiltva, és nem használ testreszabást, akkor a rendszer nem tárolja az ügyféladatokat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ismerkedjen meg a különböző [Cognitive Servicesokkal](welcome.md)
+* Ismerkedjen meg a különböző [Cognitive Servicesokkal](./what-are-cognitive-services.md)
 * További információ a [Cognitive Services Virtual Networks](cognitive-services-virtual-networks.md) szolgáltatásról

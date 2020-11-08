@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: 8ef5d8e049ac4a779d5139945bf1073f38eb434c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0982f89d59f2ef9a282a46a93b98801b9df00a40
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017658"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368712"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: az adatátviteli rendellenességek észlelése Azure Databricks használatával
 
@@ -47,7 +47,7 @@ Ha még nem rendelkezik [Azure-előfizetéssel](https://azure.microsoft.com/free
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy [Azure Event Hubs névtér](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) és Event hub.
+- Egy [Azure Event Hubs névtér](../../../event-hubs/event-hubs-create.md) és Event hub.
 
 - A Event Hubs névtér eléréséhez használt [kapcsolati karakterlánc](../../../event-hubs/event-hubs-get-connection-string.md) . A kapcsolódási karakterláncnak hasonló formátumúnak kell lennie a következőhöz:
 
@@ -61,11 +61,11 @@ A névtér és az Event hub létrehozásával kapcsolatos információkért teki
 
 Ebben a szakaszban egy Azure Databricks munkaterületet hoz létre a [Azure Portal](https://portal.azure.com/)használatával.
 
-1. A Azure Portal válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Azure Databricks**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Azure Databricks** lehetőséget.
 
     ![Azure Databricks a portálon](../media/tutorials/azure-databricks-on-portal.png "Databricks Azure Portal")
 
-3. A **Azure Databricks szolgáltatás**területen adja meg a következő értékeket egy Databricks-munkaterület létrehozásához:
+3. A **Azure Databricks szolgáltatás** területen adja meg a következő értékeket egy Databricks-munkaterület létrehozásához:
 
 
     |Tulajdonság  |Leírás  |
@@ -74,7 +74,7 @@ Ebben a szakaszban egy Azure Databricks munkaterületet hoz létre a [Azure Port
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
     |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport olyan tároló, amely egy adott Azure-megoldás kapcsolódó erőforrásait tartalmazza. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../../azure-resource-manager/management/overview.md). |
     |**Hely**     | Válassza ki az **USA 2. keleti** régióját vagy egy másik elérhető régiót. Tekintse meg a [régiók számára elérhető Azure-szolgáltatások](https://azure.microsoft.com/regions/services/) elérhetőségét.        |
-    |**Tarifacsomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. Ne válassza a **próbaverzió**lehetőséget. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
+    |**Tarifacsomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. Ne válassza a **próbaverzió** lehetőséget. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
     Kattintson a **Létrehozás** gombra.
 
@@ -84,7 +84,7 @@ Ebben a szakaszban egy Azure Databricks munkaterületet hoz létre a [Azure Port
 
 1. Az Azure Portalon lépjen a létrehozott Databricks-munkaterülethez, majd válassza a **Munkaterület indítása** elemet.
 
-2. A rendszer átirányítja a Azure Databricks portálra. A portálon válassza az **új fürt**lehetőséget.
+2. A rendszer átirányítja a Azure Databricks portálra. A portálon válassza az **új fürt** lehetőséget.
 
     ![Databricks az Azure-ban](../media/tutorials/databricks-on-azure.png "Databricks az Azure-ban")
 
@@ -98,7 +98,7 @@ Ebben a szakaszban egy Azure Databricks munkaterületet hoz létre a [Azure Port
    * Ehhez a cikkhez hozzon létre egy **5,2** futtatókörnyezettel rendelkező fürtöt. Ne válassza a **5,3** futtatókörnyezetet.
    * Győződjön meg arról, hogy a **megszakítás \_ \_ perc inaktivitás után** jelölőnégyzet be van jelölve. Adja meg a fürt megszakításához szükséges időtartamot (percben), ha a fürt nincs használatban.
 
-     Válassza a **fürt létrehozása**lehetőséget.
+     Válassza a **fürt létrehozása** lehetőséget.
 4. A fürt létrehozása több percet vesz igénybe. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
 ## <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
@@ -123,25 +123,25 @@ Mentse a Twitter-alkalmazáshoz lekért értékeket. Az oktatóanyag későbbi r
 
 Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitter API-k segítségével. Ezenkívül az [Apache Spark Event Hubs-összekötő](https://github.com/Azure/azure-event-hubs-spark) segítségével adatokat olvashat be és írhat az Azure Event Hubsba. Ha az API-kat a fürt részeként kívánja használni, adja hozzá azokat kódtárként az Azure Databrickshez, majd társítsa a Spark-fürthöz. Az alábbi utasítások azt mutatják be, hogyan adhatók hozzá a kódtárak a **megosztott** mappához a munkaterületen.
 
-1. Az Azure Databricks-munkaterületen válassza a **Munkaterület** lehetőséget, majd kattintson a jobb gombbal a **Megosztott** elemre. A helyi menüben válassza a könyvtár **létrehozása**lehetőséget  >  **Library**.
+1. Az Azure Databricks-munkaterületen válassza a **Munkaterület** lehetőséget, majd kattintson a jobb gombbal a **Megosztott** elemre. A helyi menüben válassza a könyvtár **létrehozása** lehetőséget  >  **Library**.
 
    ![Kódtár hozzáadása párbeszédpanel](../media/tutorials/databricks-add-library-option.png "Kódtár hozzáadása párbeszédpanel")
 
-2. Az új könyvtár lapon a **forrás** kiválasztásához válassza a **Maven**lehetőséget. A **koordináták**mezőben adja meg a hozzáadni kívánt csomag koordinátáit. Az oktatóanyagban használt kódtárak Maven-koordinátái a következők:
+2. Az új könyvtár lapon a **forrás** kiválasztásához válassza a **Maven** lehetőséget. A **koordináták** mezőben adja meg a hozzáadni kívánt csomag koordinátáit. Az oktatóanyagban használt kódtárak Maven-koordinátái a következők:
 
    * Spark Event Hubs-összekötő – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Twitter API – `org.twitter4j:twitter4j-core:4.0.7`
 
      ![Maven-koordináták megadása](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "Maven-koordináták megadása")
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
 4. Válassza ki a mappát, amelyhez hozzáadta a kódtárat, majd válassza ki a kódtár nevét.
 
     ![Válassza ki a hozzáadni kívánt tárat](../media/tutorials/select-library.png "Válassza ki a hozzáadni kívánt tárat")
 
 5. Ha nincs fürt a könyvtár lapon, válassza a **fürtök** lehetőséget, és futtassa a létrehozott fürtöt. Várjon, amíg az állapot megjelenik a "Running", majd térjen vissza a könyvtár lapra.
-A könyvtár lapon válassza ki azt a fürtöt, ahol a könyvtárat használni szeretné, majd válassza a **telepítés**lehetőséget. Miután sikeresen hozzárendelte a kódtárat a fürthöz, az állapot azonnal **települ**.
+A könyvtár lapon válassza ki azt a fürtöt, ahol a könyvtárat használni szeretné, majd válassza a **telepítés** lehetőséget. Miután sikeresen hozzárendelte a kódtárat a fürthöz, az állapot azonnal **települ**.
 
     ![Függvénytár telepítése fürtre](../media/tutorials/databricks-library-attached.png "Függvénytár telepítése fürtre")
 
@@ -151,11 +151,11 @@ A könyvtár lapon válassza ki azt a fürtöt, ahol a könyvtárat használni s
 
 Ebben az oktatóanyagban az [Azure Cognitive Services anomália-érzékelő API](../overview.md) -k használatával futtathatja a anomáliák észlelését egy közel valós idejű tweetek streamen. Az API-k használata előtt létre kell hoznia egy rendellenesség-Kiderítő erőforrást az Azure-ban, és be kell szereznie egy hozzáférési kulcsot az anomália detektor API-k használatához
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
 
-3. Az Azure Marketplace területen válassza az **AI + Machine learning**az  >  **összes**  >  **Cognitive Services – több**  >  **anomália-detektor**elemet. Vagy használhatja ezt a [hivatkozást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) , ha közvetlenül a **Létrehozás** párbeszédpanelt nyitja meg.
+3. Az Azure Marketplace területen válassza az **AI + Machine learning** az  >  **összes**  >  **Cognitive Services – több**  >  **anomália-detektor** elemet. Vagy használhatja ezt a [hivatkozást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) , ha közvetlenül a **Létrehozás** párbeszédpanelt nyitja meg.
 
     ![Rendellenesség-Kiderítő erőforrás létrehozása](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "Rendellenesség-Kiderítő erőforrás létrehozása")
 
@@ -170,13 +170,13 @@ Ebben az oktatóanyagban az [Azure Cognitive Services anomália-érzékelő API]
     |Erőforráscsoport     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne kijelölni.        |
 
 
-     Kattintson a **Létrehozás** gombra.
+     Válassza a **Létrehozás** lehetőséget.
 
-5. Az erőforrás létrehozása után az **Áttekintés** lapon másolja és mentse a **végpont** URL-címét a képernyőképen látható módon. Ezután válassza a **hozzáférési kulcsok megjelenítése**lehetőséget.
+5. Az erőforrás létrehozása után az **Áttekintés** lapon másolja és mentse a **végpont** URL-címét a képernyőképen látható módon. Ezután válassza a **hozzáférési kulcsok megjelenítése** lehetőséget.
 
     ![Hozzáférési kulcsok megjelenítése](../media/tutorials/cognitive-services-get-access-keys.png "Hozzáférési kulcsok megjelenítése")
 
-6. A **kulcsok**területen válassza a másolás ikont a használni kívánt kulcshoz. Mentse a hozzáférési kulcsot.
+6. A **kulcsok** területen válassza a másolás ikont a használni kívánt kulcshoz. Mentse a hozzáférési kulcsot.
 
     ![Hozzáférési kulcsok másolása](../media/tutorials/cognitive-services-copy-access-keys.png "Hozzáférési kulcsok másolása")
 
@@ -187,7 +187,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen 
 - **SendTweetsToEventHub** – Előállítói jegyzetfüzet a tweetek beszerzésére a Twitterről, majd azok streamelésére az Event Hubsnak.
 - **AnalyzeTweetsFromEventHub** – egy fogyasztói jegyzetfüzet, amellyel beolvashatja a tweeteket Event Hubs és futtathatja a anomáliák észlelését.
 
-1. A Azure Databricks munkaterületen válassza a **munkaterület** lehetőséget a bal oldali ablaktáblán. A **Munkaterület** legördülő menüjében válassza a **Létrehozás**, majd a **Jegyzetfüzet** elemet.
+1. A Azure Databricks munkaterületen válassza a **munkaterület** lehetőséget a bal oldali ablaktáblán. A **Munkaterület** legördülő menüjében válassza a **Létrehozás** , majd a **Jegyzetfüzet** elemet.
 
     ![Jegyzetfüzet létrehozása a Databricks-ben](../media/tutorials/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
@@ -195,7 +195,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen 
 
     ![Jegyzetfüzet részletei](../media/tutorials/databricks-notebook-details.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
-    Kattintson a **Létrehozás** gombra.
+    Válassza a **Létrehozás** lehetőséget.
 
 3. Az **AnalyzeTweetsFromEventHub** jegyzetfüzet létrehozásához ismételje meg ezeket a lépéseket.
 
@@ -684,13 +684,13 @@ Habár ebben az oktatóanyagban a részletesség óránként történik, bármik
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez a Azure Databricks munkaterületen válassza a **fürtök** lehetőséget a bal oldali ablaktáblán. A leállítani kívánt fürtnél vigye az egérmutatót a **műveletek** **oszlopban található három** pont fölé, majd válassza a Leállítás ikont, majd válassza a **megerősítés**lehetőséget.
+Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez a Azure Databricks munkaterületen válassza a **fürtök** lehetőséget a bal oldali ablaktáblán. A leállítani kívánt fürtnél vigye az egérmutatót a **műveletek** **oszlopban található három** pont fölé, majd válassza a Leállítás ikont, majd válassza a **megerősítés** lehetőséget.
 
 ![Databricks-fürt leállítása](../media/tutorials/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
 Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítás \_ \_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan használhatja az Azure Databricks szolgáltatást az adatok Azure Event Hubsra való streamelésére, és hogyan olvashatja valós időben a streamelt adatokat az Event Hubsról. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hívhatja meg a rendellenesség-Kiderítő API-t, és hogyan jeleníthet meg rendellenességeket Power BI
 

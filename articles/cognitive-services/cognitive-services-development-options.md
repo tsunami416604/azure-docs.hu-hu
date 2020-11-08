@@ -8,14 +8,14 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 05d3ca7cf532b739b943e2a87d5ab29ae66cabd7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4eaa33778287bfcda45547c24e6abe0606b6baa7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548571"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368797"
 ---
-# <a name="cognitive-services-development-options"></a>Cognitive Services fejlesztési lehetőségek
+# <a name="cognitive-services-development-options"></a>Cognitive Services – fejlesztési lehetőségek
 
 Ez a dokumentum áttekintést nyújt a fejlesztési és üzembe helyezési lehetőségekről az Azure Cognitive Services használatának megkezdése érdekében.
 
@@ -69,7 +69,7 @@ Ha többet szeretne megtudni a Cognitive Services Big-adatainak megismerésérő
 
 ### <a name="azure-functions-and-azure-service-web-jobs"></a>Azure Functions-és Azure-szolgáltatások webes feladatai
 
-[Azure functions](https://docs.microsoft.com/azure/azure-functions/) és [Azure app Service webes feladatok](https://docs.microsoft.com/azure/app-service/) egyaránt biztosítanak a fejlesztők számára tervezett és az [Azure app Services](https://docs.microsoft.com/azure/app-service/)-ra épülő, első szintű integrációs szolgáltatásokat. Ezek a termékek kiszolgáló nélküli infrastruktúrát biztosítanak a kód írásához. Ebben a kódban a szolgáltatásainkat az ügyféloldali kódtárak és a REST API-k használatával hívhatja. 
+[Azure functions](../azure-functions/index.yml) és [Azure app Service webes feladatok](../app-service/index.yml) egyaránt biztosítanak a fejlesztők számára tervezett és az [Azure app Services](../app-service/index.yml)-ra épülő, első szintű integrációs szolgáltatásokat. Ezek a termékek kiszolgáló nélküli infrastruktúrát biztosítanak a kód írásához. Ebben a kódban a szolgáltatásainkat az ügyféloldali kódtárak és a REST API-k használatával hívhatja. 
 
 * **Célként megadott felhasználó (k)** : fejlesztők és adatszakértők
 * **Előnyök** : kiszolgáló nélküli számítási szolgáltatás, amely lehetővé teszi az esemény által aktivált kód futtatását. 
@@ -78,7 +78,7 @@ Ha többet szeretne megtudni a Cognitive Services Big-adatainak megismerésérő
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps 
 
-[Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/) ugyanazokat a munkafolyamat-tervezőket és összekötőket használja, mint a Power automatizálás, de fejlettebb és felügyelhető, beleértve a Visual Studióval és a DevOps való integrációt. A kibővített automatizálással egyszerűen integrálható a kognitív szolgáltatások erőforrásaiba olyan szolgáltatás-specifikus összekötők használatával, amelyek proxyt vagy burkolót biztosítanak az API-k körül. Ezek ugyanazok az összekötők, mint a Power automatizáló szolgáltatásban elérhetők. 
+[Azure Logic apps](../logic-apps/index.yml) ugyanazokat a munkafolyamat-tervezőket és összekötőket használja, mint a Power automatizálás, de fejlettebb és felügyelhető, beleértve a Visual Studióval és a DevOps való integrációt. A kibővített automatizálással egyszerűen integrálható a kognitív szolgáltatások erőforrásaiba olyan szolgáltatás-specifikus összekötők használatával, amelyek proxyt vagy burkolót biztosítanak az API-k körül. Ezek ugyanazok az összekötők, mint a Power automatizáló szolgáltatásban elérhetők. 
 
 * **Cél felhasználó (k)** : fejlesztők, integrátorok, informatikai szakemberek, DevOps
 * **Előnyök** : tervező-első (deklaratív) fejlesztési modell, amely speciális lehetőségeket és integrációt biztosít egy alacsony kódú megoldásban
@@ -87,7 +87,7 @@ Ha többet szeretne megtudni a Cognitive Services Big-adatainak megismerésérő
 
 ### <a name="power-automate"></a>Power Automate 
 
-A Power [platform](https://docs.microsoft.com/power-platform/) automatizálási szolgáltatása lehetővé teszi az alkalmazások és szolgáltatások közötti automatizált munkafolyamatok létrehozását kód írása nélkül. Több összekötőt is kínálunk, amelyekkel könnyen dolgozhat a Cognitive Services-erőforrással a Power automatizáló megoldásban. A Power automatizálás Logic Appsra épül. 
+A Power [platform](/power-platform/) automatizálási szolgáltatása lehetővé teszi az alkalmazások és szolgáltatások közötti automatizált munkafolyamatok létrehozását kód írása nélkül. Több összekötőt is kínálunk, amelyekkel könnyen dolgozhat a Cognitive Services-erőforrással a Power automatizáló megoldásban. A Power automatizálás Logic Appsra épül. 
 
 * **Célként megadott felhasználó (k)** : üzleti felhasználók (elemzők) és SharePoint-rendszergazdák
 * **Előnyök** : automatizálja az ismétlődő manuális feladatokat egyszerűen az egérkattintások rögzítésével, a billentyűleütések és a beillesztési lépések az asztalról való másolásával.
@@ -96,7 +96,7 @@ A Power [platform](https://docs.microsoft.com/power-platform/) automatizálási 
 
 ### <a name="ai-builder"></a>AI Builder 
 
-A [AI Builder](https://docs.microsoft.com/ai-builder/overview) egy Microsoft Power platform-képesség, amellyel javítható az üzleti teljesítmény a folyamatok automatizálásával és az eredmények előrejelzésével. Az AI-szerkesztő egy pont-és kattintásos élményt nyújt a mesterséges intelligenciának a megoldásaihoz. Számos kognitív szolgáltatás, például az űrlap-felismerő, a Text Analytics és az Computer Vision közvetlenül integráltak itt, és nem kell saját Cognitive Services létrehoznia. 
+A [AI Builder](/ai-builder/overview) egy Microsoft Power platform-képesség, amellyel javítható az üzleti teljesítmény a folyamatok automatizálásával és az eredmények előrejelzésével. Az AI-szerkesztő egy pont-és kattintásos élményt nyújt a mesterséges intelligenciának a megoldásaihoz. Számos kognitív szolgáltatás, például az űrlap-felismerő, a Text Analytics és az Computer Vision közvetlenül integráltak itt, és nem kell saját Cognitive Services létrehoznia. 
 
 * **Célként megadott felhasználó (k)** : üzleti felhasználók (elemzők) és SharePoint-rendszergazdák
 * **Előnyök** : egy kulcsrakész megoldás, amely egy pont-és kattintásos élményt nyújt a mesterséges intelligenciához. Nincs szükség kódolási vagy adatelemzési szaktudásra.
@@ -124,30 +124,30 @@ A modellek betanításához és konfigurálásához használt eszközök külön
 
 | Pillér | Szolgáltatás | Testreszabási felhasználói felület | Első lépések |
 |--------|---------|------------------|------------|
-| Látás | Custom Vision | https://www.customvision.ai/ | [Gyors útmutató](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/quickstarts/image-classification?pivots=programming-language-csharp) | 
-| Látás | Form Recognizer | Minta címkéző eszköz | [Gyors útmutató](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool?tabs=v2-0) |
-| Döntés | Tartalommoderátor | https://contentmoderator.cognitive.microsoft.com/dashboard | [Gyors útmutató](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/human-in-the-loop) |
-| Döntés | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [Gyors útmutató](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/quickstarts/web-portal) |
-| Döntés | Personalizer | A felhasználói felület elérhető a Azure Portal személyre szabott erőforrása alatt. | [Gyors útmutató](https://docs.microsoft.com/azure/cognitive-services/personalizer/quickstart-personalizer-sdk) |
+| Látás | Custom Vision | https://www.customvision.ai/ | [Gyors útmutató](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
+| Látás | Form Recognizer | Minta címkéző eszköz | [Gyors útmutató](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
+| Döntés | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [Gyors útmutató](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
+| Döntés | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [Gyors útmutató](./metrics-advisor/quickstarts/web-portal.md) |
+| Döntés | Personalizer | A felhasználói felület elérhető a Azure Portal személyre szabott erőforrása alatt. | [Gyors útmutató](./personalizer/quickstart-personalizer-sdk.md) |
 | Nyelv | Language Understanding (LUIS) | https://www.luis.ai/ | |
-| Nyelv | QnA Maker | https://www.qnamaker.ai/ | [Gyors útmutató](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base) |
-| Nyelv | Translator/Custom Translator | https://portal.customtranslator.azure.ai/ | [Gyors útmutató](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model) |
-| Speech | Custom Commands | https://speech.microsoft.com/ | [Gyors útmutató](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands) |
-| Speech | Custom Speech | https://speech.microsoft.com/ | [Gyors útmutató](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-speech) |
-| Speech | Egyéni hang | https://speech.microsoft.com/ | [Gyors útmutató](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice) |  
+| Nyelv | QnA Maker | https://www.qnamaker.ai/ | [Gyors útmutató](./qnamaker/quickstarts/create-publish-knowledge-base.md) |
+| Nyelv | Translator/Custom Translator | https://portal.customtranslator.azure.ai/ | [Gyors útmutató](./translator/custom-translator/quickstart-build-deploy-custom-model.md) |
+| Beszéd | Custom Commands | https://speech.microsoft.com/ | [Gyors útmutató](./speech-service/custom-commands.md) |
+| Beszéd | Custom Speech | https://speech.microsoft.com/ | [Gyors útmutató](./speech-service/how-to-custom-speech.md) |
+| Beszéd | Egyéni hang | https://speech.microsoft.com/ | [Gyors útmutató](./speech-service/how-to-custom-voice.md) |  
 
 ### <a name="continuous-integration-and-delivery-with-devops-and-github-actions"></a>Folyamatos integráció és kézbesítés DevOps-és GitHub-műveletekkel
 
 Language Understanding és a beszédfelismerési szolgáltatás folyamatos integrációs és folyamatos üzembe helyezési megoldásokat kínál, amelyeket az Azure DevOps és a GitHub-műveletek működtetnek. Ezek az eszközök az egyéni modellek automatizált betanítási, tesztelési és kiadási felügyeletére használhatók. 
 
-* [CI/CD a Custom Speechhez](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-* [CI/CD – LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-devops-automation)
+* [CI/CD a Custom Speechhez](./speech-service/how-to-custom-speech-continuous-integration-continuous-deployment.md)
+* [CI/CD – LUIS](./luis/luis-concept-devops-automation.md)
 
 ## <a name="on-prem-containers"></a>Helyszíni tárolók 
 
 A Cognitive Servicesek többsége tárolókban is üzembe helyezhető helyszíni hozzáférés és használat céljából. Ezen tárolók használatával rugalmasan Cognitive Services a megfelelőségi, biztonsági vagy egyéb működési okokból az adataihoz. Cognitive Services tárolók teljes listájáért tekintse [meg a Cognitive Services helyszíni tárolói](./cognitive-services-container-support.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 <!--
 * Learn more about low code development options for Cognitive Services -->
-* [Cognitive Services-erőforrás létrehozása és a létrehozás megkezdése](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Clinux)
+* [Cognitive Services-erőforrás létrehozása és a létrehozás megkezdése](./cognitive-services-apis-create-account.md?tabs=multiservice%252clinux)

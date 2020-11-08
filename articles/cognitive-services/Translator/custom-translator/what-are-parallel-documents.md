@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ce9f7e922b9a168205ea1d193830dd654691998a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6477432636db9592d9b0d9c1f90f5eee7d6e00db
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510810"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369001"
 ---
 # <a name="what-are-parallel-documents"></a>Mik azok a párhuzamos dokumentumok?
 
@@ -23,7 +23,7 @@ Nem számít, hogy melyik nyelven van megjelölve a "forrás", és hogy melyik n
 
 ## <a name="requirements"></a>Követelmények
 
-A rendszer betanításához legalább 10 000 egyedi, egymásra igazított párhuzamos mondatra lesz szüksége. Ez a korlátozás egy biztonsági háló, amely biztosítja, hogy a párhuzamos mondatok elég egyedi szókincset tartalmazzanak a fordítási modell sikeres betanításához. Ajánlott eljárásként a fordítási rendszer minőségének javításához folyamatosan vegyen fel több párhuzamos tartalmat és újratanítást. Tekintse meg a [mondatok igazítását](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment).
+A rendszer betanításához legalább 10 000 egyedi, egymásra igazított párhuzamos mondatra lesz szüksége. Ez a korlátozás egy biztonsági háló, amely biztosítja, hogy a párhuzamos mondatok elég egyedi szókincset tartalmazzanak a fordítási modell sikeres betanításához. Ajánlott eljárásként a fordítási rendszer minőségének javításához folyamatosan vegyen fel több párhuzamos tartalmat és újratanítást. Tekintse meg a [mondatok igazítását](./sentence-alignment.md).
 
 A Microsoft megköveteli, hogy az egyéni fordítónak feltöltött dokumentumok ne sértsék harmadik fél szerzői jogi vagy szellemi tulajdonságait. További információkért tekintse meg a használati [feltételeket](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
 A dokumentum a portál használatával történő feltöltése nem módosítja a szellemi tulajdon tulajdonjogát a dokumentumban.
@@ -44,6 +44,6 @@ A feltöltött dokumentumok magánjellegűek az egyes munkaterületeken, és tet
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan használhat [szótárt](what-is-dictionary.md) az egyéni fordítóban.

@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8d49d9b9d29116d95173c1daf5133622c3694de6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95cb4aa5827190abf125669f2423c808cf8c92a5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523995"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368933"
 ---
 # <a name="customize-your-text-translations"></a>A szöveges fordítások testreszabása
 
 Az egyéni Translator a Translator Service funkciója, amely lehetővé teszi, hogy a felhasználók testre szabják a Microsoft Translator speciális neurális gépi fordítását a fordítók fordításakor (csak a 3. verzióban).
 
-A funkció a beszédfelismerési fordítás testreszabására is használható [Cognitive Services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/)használata esetén.
+A funkció a beszédfelismerési fordítás testreszabására is használható [Cognitive Services Speech](../speech-service/index.yml)használata esetén.
 
 ## <a name="custom-translator"></a>Custom Translator
 
@@ -37,7 +37,7 @@ A testreszabott rendszer ezután a Translator paraméter használatával, a ford
 
 A megfelelő típusú és mennyiségű betanítási adat miatt nem ritka, hogy 5 és 10 közötti nyereséget vár, vagy akár több BLEU-pontot is a fordítási minőséghez egyéni Translator használatával.
 
-Az elérhető adatok alapján történő Testreszabás különböző szintjeiről további részleteket az [Egyéni Translator felhasználói útmutatójában](https://aka.ms/CustomTranslatorDocs)találhat.
+Az elérhető adatok alapján történő Testreszabás különböző szintjeiről további részleteket az [Egyéni Translator felhasználói útmutatójában](./custom-translator/overview.md)találhat.
 
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator hub
@@ -47,7 +47,7 @@ Az elérhető adatok alapján történő Testreszabás különböző szintjeirő
 
 ## <a name="custom-translator-versus-hub"></a>Egyéni fordító és hub
 
-| Szolgáltatás | Hub | Custom Translator |
+| Funkció | Hub | Custom Translator |
 | ------- | :-: | :---------------: |
 |Testreszabási funkció állapota    | Általános elérhetőség    | Általános elérhetőség |
 | Szöveges API-verzió    | Csak v2    | Csak v3 |
@@ -64,4 +64,4 @@ Az elérhető adatok alapján történő Testreszabás különböző szintjeirő
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Testreszabott nyelvi rendszer beállítása egyéni Translator használatával](https://aka.ms/CustomTranslatorDocs)
+> [Testreszabott nyelvi rendszer beállítása egyéni Translator használatával](./custom-translator/overview.md)

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 449d57579b802191434cda3e63e103e5f3ef4bc5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 64c449bdefe6fb067a7c0e26b155b58b6f00c399
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220873"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368285"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Központi munkaterület és projektek áttelepíthetők az egyéni Fordítóba
 
@@ -27,7 +27,7 @@ Ezeket a műveleteket az áttelepítés során hajtja végre a rendszer:
 * A központi képzésből áttelepített BLEU-pontszám a modell TrainingDetails oldalán található a "Bleu pontszám az MT hub-ban" című szakaszban.
 
 > [!Note] 
-> A sikeres képzés érdekében a Custom Translator legalább 10 000 egyedi kinyert mondatot igényel. Az egyéni fordító nem végezheti el a [javasolt minimálisnál](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)kevesebb tanítást.
+> A sikeres képzés érdekében a Custom Translator legalább 10 000 egyedi kinyert mondatot igényel. Az egyéni fordító nem végezheti el a [javasolt minimálisnál](./sentence-alignment.md#suggested-minimum-number-of-sentences)kevesebb tanítást.
 
 ## <a name="find-custom-translator-workspace-id"></a>Egyéni Translator-munkaterület AZONOSÍTÓjának keresése
 
@@ -122,7 +122,7 @@ Ha részletesebb áttelepítési jelentést szeretne készíteni a projektekről
 * Az egyéni fordítóban még nem elérhető nyelvi párokkal rendelkező rendszerek csak az adathozzáféréshez és az egyéni Translator használatával történő telepítéshez lesznek elérhetők. Ezek a projektek "nem érhető el" jelöléssel jelennek meg a projektek lapon. Mivel az egyéni fordítókkal új nyelvi párokat engedélyezünk, a projektek betanításra és üzembe helyezésre lesznek aktívak. 
 * Egy projekt a központból az egyéni Fordítóba való áttelepítése nem befolyásolja a hub betanításait vagy projektjeit. A Migrálás során nem törölünk projekteket vagy dokumentumokat, és nem távolítjuk el a modelleket.
 * Projektenként csak egyszer lehet áttelepíteni. Ha egy projekt áttelepítését kell megismételni, vegye fel velünk a kapcsolatot.
-* Az egyéni fordító támogatja a NMT nyelvét az angoltól és angolra. [Tekintse meg a támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). A hub nem igényel alapmodelleket, ezért több ezer nyelvet támogat. Áttelepítheti a nem támogatott nyelvi párokat, de csak a dokumentumok és a projekt-definíciók áttelepítését fogjuk elvégezni. Az új modellt nem lehet majd betanítani. Emellett ezek a dokumentumok és projektek inaktívként jelennek meg, így jelezve, hogy jelenleg nem használhatók. Ha támogatást adnak a projektekhez és/vagy dokumentumokhoz, az aktív és a betanítható lesz.
+* Az egyéni fordító támogatja a NMT nyelvét az angoltól és angolra. [Tekintse meg a támogatott nyelvek teljes listáját](../language-support.md#customization). A hub nem igényel alapmodelleket, ezért több ezer nyelvet támogat. Áttelepítheti a nem támogatott nyelvi párokat, de csak a dokumentumok és a projekt-definíciók áttelepítését fogjuk elvégezni. Az új modellt nem lehet majd betanítani. Emellett ezek a dokumentumok és projektek inaktívként jelennek meg, így jelezve, hogy jelenleg nem használhatók. Ha támogatást adnak a projektekhez és/vagy dokumentumokhoz, az aktív és a betanítható lesz.
 * Az egyéni Translator jelenleg nem támogatja az egynyelvű betanítási adatgyűjtést. A nem támogatott nyelvi párokhoz hasonlóan áttelepítheti az egynyelvű dokumentumokat, de inaktívként jeleníti meg őket, amíg az egynyelvű adatbevitel nem támogatott.
 * Az egyéni fordítónak 10k Parallel mondatokra van szüksége a betanításhoz. A Microsoft hub kisebb adathalmazon is betanítható. Ha olyan betanítást telepít át, amely nem felel meg ennek a követelménynek, nem lesz betanítva.
 
@@ -130,7 +130,7 @@ Ha részletesebb áttelepítési jelentést szeretne készíteni a projektekről
 
 Ez a táblázat a Microsoft Translator hub és az egyéni fordító funkcióit hasonlítja össze.
 
-| Szolgáltatás | Hub | Custom Translator |
+| Funkció | Hub | Custom Translator |
 | ------- | :-: | :---------------: |
 | Testreszabási funkció állapota    | Általános elérhetőség    | Általános elérhetőség |
 | Szöveges API-verzió    | 2. verzió     | V3  |
@@ -143,7 +143,7 @@ Ez a táblázat a Microsoft Translator hub és az egyéni fordító funkcióit h
 
 Ha Ön olyan Közösség vagy szervezet, amely a fordító új nyelvi rendszerének létrehozására dolgozik, további információkért tekintse meg a [custommt@microsoft.com](mailto:custommt@microsoft.com) következőt:.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Modell betanítása](how-to-train-model.md).
-- Az üzembe helyezett egyéni fordítási modell használatának megkezdése [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)-n keresztül.
+- Az üzembe helyezett egyéni fordítási modell használatának megkezdése [Translator v3](../reference/v3-0-translate.md?tabs=curl)-n keresztül.
