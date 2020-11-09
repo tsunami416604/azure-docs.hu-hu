@@ -2,14 +2,14 @@
 title: Konfigurációs beállítások – Azure Monitor Application Insights Java
 description: Azure Monitor Application Insights Java konfigurációs lehetőségei
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 11/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 7165afd77e3f60af5e00b92c1063247325897f9f
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 6edb77ec21b4f82f8398312fdff24aa5ea207771
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331906"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381031"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure Monitor Application Insights Java konfigurációs lehetőségei
 
@@ -48,7 +48,7 @@ Ha relatív elérési utat ad meg, a rendszer a helyen található könyvtárhoz
 
 ## <a name="connection-string"></a>Kapcsolati sztring
 
-Erre szükség van. A Application Insights erőforrásban található a kapcsolatok karakterlánca:
+A kapcsolatok karakterláncának megadása kötelező. A Application Insights erőforrásban található a kapcsolatok karakterlánca:
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights a kapcsolatok karakterlánca":::
 
@@ -105,7 +105,7 @@ A mintavétel függvényként van elvégezve a műveleti AZONOSÍTÓban (más n�
 
 Ha például 10%-ra állítja be a mintavételezést, akkor csak a tranzakciók 10%-át fogja látni, de ezek mindegyike a teljes végpontok közötti tranzakció részleteit tartalmazza.
 
-Az alábbi példa bemutatja, hogyan állíthatja be a mintavételezést úgy, hogy az **összes tranzakció körülbelül 1/3** legyen – ügyeljen arra, hogy a használati esetnek megfelelő mintavételi sebességet állítsa be:
+Az alábbi példa bemutatja, hogyan állíthatja be a mintavételezést úgy, hogy az **összes tranzakció körülbelül 1/3** legyen, és ügyeljen arra, hogy a használati esetnek megfelelő mintavételi sebességet állítsa be:
 
 ```json
 {
@@ -169,7 +169,7 @@ Ha egyéni dimenziókat szeretne hozzáadni az összes telemetria:
 
 ## <a name="telemetry-processors-preview"></a>Telemetria processzorok (előzetes verzió)
 
-Ez egy előzetes verziójú szolgáltatás.
+Ez a funkció előzetes verzióban érhető el.
 
 Lehetővé teszi olyan szabályok konfigurálását, amelyek a kérelemre, a függőségre és a nyomkövetési telemetria lesznek alkalmazva, például:
  * Bizalmas adatok maszkolása
@@ -178,9 +178,9 @@ Lehetővé teszi olyan szabályok konfigurálását, amelyek a kérelemre, a fü
 
 További információkért tekintse meg a [telemetria-feldolgozó](./java-standalone-telemetry-processors.md) dokumentációját.
 
-## <a name="auto-collected-logging"></a>Automatikusan összegyűjtött naplózás
+## <a name="autocollected-logging"></a>Az újragyűjtött naplózás
 
-A Log4j, a Logback és a Java. util. Logging automatikusan lett kialakítva, és ezekkel a naplózási keretrendszerekkel végrehajtott naplózás automatikusan begyűjtve lesz.
+A Log4j, a Logback és a Java. util. Logging automatikusan lett kialakítva, és ezekkel a naplózási keretrendszerekkel végezhető el az automatikus begyűjtése.
 
 Alapértelmezés szerint a naplózás csak akkor kerül begyűjtésre, ha a naplózást a `INFO` szinten vagy felett hajtják végre.
 
@@ -213,13 +213,16 @@ Ezek az érvényes `level` értékek, amelyeket megadhat a `applicationinsights.
 | NYOMKÖVETÉS (vagy legfinomabb) | NYOMKÖVETÉSI  | NYOMKÖVETÉSI   | LEGJOBB  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automatikusan összegyűjtött mérőműszer-metrikák (beleértve a Spring boot indítószerkezet metrikáit)
+## <a name="autocollected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Újragyűjtött mikrométer metrikái (beleértve a Spring boot indítószerkezet metrikáit)
 
-Ha az alkalmazás a [mikrométert](https://micrometer.io)használja, akkor a rendszer automatikusan begyűjti a Mikrométer globális beállításjegyzékbe küldendő metrikákat.
+Ha az alkalmazás a [mikrométert](https://micrometer.io)használja, akkor a Mikrométerek globális beállításjegyzékbe eljuttatott mérőszámok az autocollect.
 
-Továbbá, ha az alkalmazás a [Spring boot indítószerkezetet](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)használja, akkor a rugós rendszerindítási indítószerkezet által konfigurált mérőszámokat is automatikusan begyűjti a rendszer.
+Továbbá, ha az alkalmazás a [Spring boot-indítószerkezetet](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)használja, akkor a rugós rendszerindítási indítószerkezet által konfigurált metrikák is újra lesznek gyűjtve.
 
-A Mikrométer metrikáinak automatikus gyűjtésének letiltása (beleértve a Spring boot-indítószerkezet metrikáit):
+A Mikrométer metrikáinak (például a Spring boot-működtető metrikáinak) letiltásához:
+
+> [!NOTE]
+> Az egyéni metrikák számlázása külön történik, és további költségek is megadhatók. Ügyeljen rá, hogy ellenőrizze a részletes [díjszabási információkat](https://azure.microsoft.com/pricing/details/monitor/). A Mikrométer és a Spring indítószerkezet metrikáinak letiltásához adja hozzá az alábbi konfigurációt a konfigurációs fájlhoz.
 
 ```json
 {
@@ -279,7 +282,7 @@ Ha az alkalmazás tűzfal mögött található, és nem tud közvetlenül kapcso
 
 Az "öndiagnosztika" a Application Insights Java 3,0 belső naplózására utal.
 
-Ez hasznos lehet a Application Insights saját maga által felmerülő problémák felderítésére és diagnosztizálására.
+Ez a funkció hasznos lehet a Application Insights saját maga által felmerülő problémák felderítésében és diagnosztizálásában.
 
 Alapértelmezés szerint a Application Insights Java 3,0 `INFO` a fájlra `applicationinsights.log` és a-konzolra is, a következő konfigurációnak megfelelően:
 

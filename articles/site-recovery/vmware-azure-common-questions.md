@@ -3,18 +3,18 @@ title: Gyakori kérdések a VMware vész-helyreállítással kapcsolatban Azure 
 description: Választ kaphat a helyszíni VMware virtuális gépek Azure-ba való vész-helyreállításával kapcsolatos gyakori kérdésekre Azure Site Recovery használatával.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 421a96255e7dbbec723122fb3920dcc27da72670
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8f292e7f624b80e8e13514a714c5759d88fbe57c
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359798"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379990"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések VMware-ből az Azure-ba történő replikációról
 
 Ez a cikk a helyszíni VMware virtuális gépek (VM-EK) Azure-ba történő vész-helyreállításának telepítésekor felmerülő gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-do-i-need-for-vmware-vm-disaster-recovery"></a>Mire van szükség a VMware virtuális gépek vész-helyreállításához?
 
@@ -46,7 +46,7 @@ Bármely olyan alkalmazást vagy munkaterhelést replikálhat, amely a [repliká
 
 Igen, a Microsoft frissítési garanciával rendelkező ügyfelei [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) használatával menthetik a licencelési költségeket az Azure-ba migrált Windows Server-gépekre, illetve az Azure-t a vész-helyreállításra.
 
-## <a name="security"></a>Biztonság
+## <a name="security"></a>Biztonsági őr
 
 ### <a name="what-access-to-vmware-servers-does-site-recovery-need"></a>Milyen Site Recovery szükséges a VMware-kiszolgálókhoz való hozzáférés?
 
@@ -106,7 +106,7 @@ Minden replikálni kívánt virtuális gépen telepítse a szolgáltatást több
 Site Recovery a helyszíni VMware virtuális gépeket és fizikai kiszolgálókat replikálja a felügyelt lemezekre az Azure-ban.
 
 - A Site Recovery Process Server a replikációs naplókat a célként megadott régióban lévő cache Storage-fiókba írja.
-- Ezek a naplók a **asrseeddisk**előtaggal rendelkező Azure által felügyelt lemezeken helyreállítási pontok létrehozására szolgálnak.
+- Ezek a naplók a **asrseeddisk** előtaggal rendelkező Azure által felügyelt lemezeken helyreállítási pontok létrehozására szolgálnak.
 - Feladatátvétel esetén a kiválasztott helyreállítási pont egy új célként felügyelt lemez létrehozására szolgál. Ez a felügyelt lemez az Azure-beli virtuális géphez van csatlakoztatva.
 - A korábban a Storage-fiókba replikált virtuális gépek (2019 márciusa előtt) nem érintettek.
 
@@ -153,7 +153,7 @@ Az offline replikáció nem támogatott. Kérje ezt a szolgáltatást a [visszaj
 
 ### <a name="what-is-asrseeddisk"></a>Mi az a asrseeddisk?
 
-Minden forrásoldali lemez esetében az Azure-ban egy felügyelt lemezre történik az adatreplikálás. Ez a lemez rendelkezik a **asrseeddisk**előtaggal. Tárolja a forrás lemez másolatát és a helyreállítási pontok összes pillanatképét.
+Minden forrásoldali lemez esetében az Azure-ban egy felügyelt lemezre történik az adatreplikálás. Ez a lemez rendelkezik a **asrseeddisk** előtaggal. Tárolja a forrás lemez másolatát és a helyreállítási pontok összes pillanatképét.
 
 ### <a name="can-i-exclude-disks-from-replication"></a>Ki lehet zárni a lemezeket a replikációból?
 
@@ -176,7 +176,7 @@ Az Azure-ba történő VMware-replikáláshoz módosíthatja a forrásként hasz
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>Áttelepíthetem a helyszíni gépeket egy új vCenter Serverra anélkül, hogy ez hatással lenne a folyamatos replikációra?
 
-Nem. A VMware-vCenter vagy-áttelepítés változása hatással van a folyamatos replikációra. Állítsa be Site Recovery az új vCenter Server, és engedélyezze újra a számítógépek replikálását.
+Tekintse át a gépek új vCenter való [átirányítására vonatkozó útmutatást](vmware-azure-manage-vcenter.md#migrate-all-vms-to-a-new-server) .
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>Replikálható egy olyan gyorsítótárba vagy célként megadott Storage-fiókba, amelyen be van állítva a virtuális hálózat (Azure tűzfallal)?
 
@@ -202,7 +202,7 @@ Site Recovery az N-4 támogatási modellt követi. [További](./service-updates-
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Szükség van-e az egyes verziófrissítésekhez szükséges forrásoldali gépek újraindítására?
 
-Az újraindítás ajánlott, de nem kötelező az egyes verziófrissítésekhez. [További információk](./service-updates-how-to.md#reboot-after-mobility-service-upgrade).
+Az újraindítás ajánlott, de nem kötelező az egyes verziófrissítésekhez. [További információ](./service-updates-how-to.md#reboot-after-mobility-service-upgrade).
 
 ## <a name="configuration-server"></a>Konfigurációs kiszolgáló
 
@@ -258,11 +258,11 @@ Javasoljuk, hogy rendszeresen ütemezett biztonsági mentést készítsen a konf
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>A konfigurációs kiszolgáló beállításakor a MySQL-t manuálisan lehet letölteni és telepíteni?
 
-Igen. Töltse le a MySQL-t, és helyezze el a C:\Temp\ASRSetup mappában. Ezután telepítse manuálisan. A konfigurációs kiszolgáló virtuális gépe beállítása és a használati feltételek elfogadása után a MySQL a **letöltés és telepítés**során **már telepítettként** jelenik meg.
+Igen. Töltse le a MySQL-t, és helyezze el a C:\Temp\ASRSetup mappában. Ezután telepítse manuálisan. A konfigurációs kiszolgáló virtuális gépe beállítása és a használati feltételek elfogadása után a MySQL a **letöltés és telepítés** során **már telepítettként** jelenik meg.
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>El tudom kerülni a MySQL letöltését, de Site Recovery telepíteni?
 
-Igen. Töltse le a MySQL-telepítőt, és helyezze a C:\Temp\ASRSetup mappába. A konfigurációs kiszolgáló virtuális gép beállításakor fogadja el a feltételeket, és válassza a **letöltés és telepítés**lehetőséget. A portál a MySQL telepítéséhez hozzáadott telepítőt fogja használni.
+Igen. Töltse le a MySQL-telepítőt, és helyezze a C:\Temp\ASRSetup mappába. A konfigurációs kiszolgáló virtuális gép beállításakor fogadja el a feltételeket, és válassza a **letöltés és telepítés** lehetőséget. A portál a MySQL telepítéséhez hozzáadott telepítőt fogja használni.
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Használhatom a konfigurációs kiszolgáló virtuális gépet bármilyen más számára?
 
@@ -286,7 +286,7 @@ Igen, de vegye figyelembe, hogy a fizikai gép csak a VMware virtuális gépeken
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Honnan tölthetők le a tároló regisztrációs kulcsai?
 
-A Recovery Services-tárolóban válassza a **konfigurációs kiszolgálók** lehetőséget **site Recovery infrastruktúra**  >  **kezelése**elemnél. Ezután a **kiszolgálók**területen válassza a **regisztrációs kulcs letöltése** lehetőséget a tár hitelesítő adatainak fájljának letöltéséhez.
+A Recovery Services-tárolóban válassza a **konfigurációs kiszolgálók** lehetőséget **site Recovery infrastruktúra**  >  **kezelése** elemnél. Ezután a **kiszolgálók** területen válassza a **regisztrációs kulcs letöltése** lehetőséget a tár hitelesítő adatainak fájljának letöltéséhez.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Használható egyetlen konfigurációs kiszolgáló a több vCenter-példány védeleméhez?
 
@@ -330,7 +330,7 @@ A VMware-ből az Azure-ba a legrégebbi helyreállítási pont 72 óra lehet.
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Hogyan Azure-beli virtuális gépeket a feladatátvételt követően?
 
-A feladatátvételt követően az Azure-beli virtuális gépek biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en vagy Azure-ExpressRoute keresztül érhetők el. A csatlakozáshoz több dolgot kell előkészítenie. [További információk](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+A feladatátvételt követően az Azure-beli virtuális gépek biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en vagy Azure-ExpressRoute keresztül érhetők el. A csatlakozáshoz több dolgot kell előkészítenie. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 ### <a name="is-failed-over-data-resilient"></a>A feladatátvételi feladathoz képest rugalmas?
 
@@ -342,7 +342,7 @@ A [feladatátvétel](site-recovery-failover.md) nem automatikus. A feladatátvé
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Visszatérhetek egy másik helyre?
 
-Igen. Ha a feladatátvételt az Azure-ba hajtja végre, visszatérhet egy másik helyre, ha az eredeti nem érhető el. [További információk](concepts-types-of-failback.md#alternate-location-recovery-alr).
+Igen. Ha a feladatátvételt az Azure-ba hajtja végre, visszatérhet egy másik helyre, ha az eredeti nem érhető el. [További információ](concepts-types-of-failback.md#alternate-location-recovery-alr).
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-with-private-peering-to-fail-back"></a>Miért van szükségem VPN-vagy ExpressRoute-kapcsolatra a feladat-visszavétel érdekében?
 
@@ -353,13 +353,13 @@ Ha az Azure-ból végez feladatátvételt, az Azure-ból származó adatok vissz
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>Beállítható a replikáció parancsfájlok futtatásával?
 
-Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhatja Site Recovery munkafolyamatokat. [További információk](vmware-azure-disaster-recovery-powershell.md).
+Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhatja Site Recovery munkafolyamatokat. [További információ](vmware-azure-disaster-recovery-powershell.md).
 
 ## <a name="performance-and-capacity"></a>Teljesítmény és kapacitás
 
 ### <a name="can-i-throttle-replication-bandwidth"></a>Szabályozható a replikálási sávszélesség?
 
-Igen. [További információk](site-recovery-plan-capacity-vmware.md).
+Igen. [További információ](site-recovery-plan-capacity-vmware.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

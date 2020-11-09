@@ -11,23 +11,23 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6c328c681874ba171eab1341a16cf059e359feea
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 20501d0993cc4566a79d6e916d801911606bea35
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076278"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380449"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>A rangsor használata Bing Web Search API eredmények megjelenítéséhez  
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Minden keresési válasz tartalmaz egy [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) választ, amely megadja, hogy a keresési eredményeket hogyan kell megjeleníteni. A rangsorolási válaszok egy hagyományos keresési eredmények oldalának fővonali tartalma és oldalsáv-tartalma eredményei. Ha nem jeleníti meg az eredményeket hagyományos fővonal-és oldalsáv-formátumban, meg kell adnia a fővonali tartalmat, mint az oldalsáv tartalma.  
+Minden keresési válasz tartalmaz egy [RankingResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) választ, amely megadja, hogy a keresési eredményeket hogyan kell megjeleníteni. A rangsorolási válaszok egy hagyományos keresési eredmények oldalának fővonali tartalma és oldalsáv-tartalma eredményei. Ha nem jeleníti meg az eredményeket hagyományos fővonal-és oldalsáv-formátumban, meg kell adnia a fővonali tartalmat, mint az oldalsáv tartalma.  
 
-Az egyes csoportokon (fővonalon vagy oldalsávon) belül az [Items](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) Array azonosítja azt a sorrendet, amelyben a tartalomnak szerepelnie kell. Az egyes elemek a következő két módszert biztosítják az eredmény azonosítására a válaszon belül.  
+Az egyes csoportokon (fővonalon vagy oldalsávon) belül az [Items](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) Array azonosítja azt a sorrendet, amelyben a tartalomnak szerepelnie kell. Az egyes elemek a következő két módszert biztosítják az eredmény azonosítására a válaszon belül.  
 
 -   `answerType` és `resultIndex` – a `answerType` mező azonosítja a választ (például a weboldalt vagy híreket), és `resultIndex` a válaszon belül azonosítja az eredményeket (például egy újságcikket). Az index nulla alapú.  
 
@@ -35,11 +35,11 @@ Az egyes csoportokon (fővonalon vagy oldalsávon) belül az [Items](https://doc
 
 Az azonosító használata egyszerűbb, mert csak a válasz AZONOSÍTÓjának vagy az egyik eredményének kell megegyeznie. Ha egy válasz objektum tartalmaz egy `id` mezőt, a válasz összes eredményét együtt jeleníti meg. Ha például az `News` objektum tartalmazza a `id` mezőt, az összes újságcikk együtt jelenjen meg. Ha az `News` objektum nem tartalmazza a `id` mezőt, akkor minden újságcikk tartalmaz egy mezőt, `id` és a rangsorolási válasz összekeveri a híreket más válaszok eredményeivel.  
 
-A és a használata `answerType` `resultIndex` valamivel bonyolultabb. A segítségével `answerType` azonosíthatja a megjelenítendő eredményeket tartalmazó választ. Ezután a `resultIndex` Válasz eredményei alapján indexelheti az eredményt, hogy megjelenjen az eredmény. (Az `answerType` érték a mező neve a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) objektumban.) Ha azt szeretné, hogy a válasz összes eredménye együtt jelenjen meg, a rangsorolási válasz elem nem tartalmazza a `resultIndex` mezőt.  
+A és a használata `answerType` `resultIndex` valamivel bonyolultabb. A segítségével `answerType` azonosíthatja a megjelenítendő eredményeket tartalmazó választ. Ezután a `resultIndex` Válasz eredményei alapján indexelheti az eredményt, hogy megjelenjen az eredmény. (Az `answerType` érték a mező neve a [SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) objektumban.) Ha azt szeretné, hogy a válasz összes eredménye együtt jelenjen meg, a rangsorolási válasz elem nem tartalmazza a `resultIndex` mezőt.  
 
 ## <a name="ranking-response-example"></a>Rangsorolási válasz példája
 
-A következő példa egy [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)mutat be. Mivel a webes válasz nem tartalmaz `id` mezőt, a rangsorolás alapján egyenként jeleníti meg az összes weblapot (minden weblap tartalmaz egy `id` mezőt). Mivel a képek, videók és a kapcsolódó keresések választ adnak a `id` mezőre, az egyes válaszok eredményét a rangsorolás alapján fogja megjeleníteni.
+A következő példa egy [RankingResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)mutat be. Mivel a webes válasz nem tartalmaz `id` mezőt, a rangsorolás alapján egyenként jeleníti meg az összes weblapot (minden weblap tartalmaz egy `id` mezőt). Mivel a képek, videók és a kapcsolódó keresések választ adnak a `id` mezőre, az egyes válaszok eredményét a rangsorolás alapján fogja megjeleníteni.
 
 ```json
 {  

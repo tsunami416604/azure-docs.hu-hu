@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 1b750554ec231cddd0403c89a33f2af4349ff188
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b6d9ec0760cc8d95f712cfc7a5478de1a99465ef
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098995"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379871"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas Video Search-alkalmazás
 
@@ -47,7 +47,7 @@ Az oktatóanyag részeként összeállított alkalmazás a következők bemutat�
 
 Az oktatóanyag oldala teljesen önálló; nem használ semmilyen külső keretrendszert, stíluslapot vagy képfájlt. Egyedül széles körben támogatott JavaScript nyelvi funkciókat használ, és az összes nagyobb webböngésző aktuális verziójával kompatibilis.
 
-Ebben az oktatóanyagban a forráskódnak csak egyes részeit fogjuk megtárgyalni. A teljes [forráskód itt érhető el](tutorial-bing-video-search-single-page-app-source.md). A példa futtatásához másolja a forráskódot egy szövegszerkesztőbe, és mentse el `bing.html` néven.
+Ebben az oktatóanyagban a forráskódnak csak egyes részeit fogjuk megtárgyalni. A teljes [forráskód itt érhető el](). A példa futtatásához másolja a forráskódot egy szövegszerkesztőbe, és mentse el `bing.html` néven.
 
 ## <a name="app-components"></a>Alkalmazás-összetevők
 Mint minden egyoldalas webalkalmazás, ez az oktatóalkalmazás is három részből áll:

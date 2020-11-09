@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 68cde1be5f1a1cb0e8757f3143cac9363c6d9ddd
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5759cd80278d20ee383fbe5922e43d250babe09f
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376017"
+ms.locfileid: "94380674"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -117,7 +117,7 @@ A jobb felső sarokban kattintson a **Mentés és a betanítás** lehetőségre 
 
 ## <a name="test-the-knowledge-base"></a>A Tudásbázis tesztelése
 
-# <a name="qnamaker-v1"></a>[QnAMaker v1](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
 
 1. A QnA Maker portál jobb felső részén válassza a **tesztelés** lehetőséget, hogy a módosítások érvénybe léptetése megtörténjen.
 2. Írjon be egy példát egy felhasználói lekérdezésre a szövegmezőben.
@@ -130,7 +130,7 @@ A jobb felső sarokban kattintson a **Mentés és a betanítás** lehetőségre 
 
 4. Kattintson ismét a **test** **(teszt)** elemre a teszt panel bezárásához.
 
-# <a name="qnamaker-v2-preview"></a>[QnAMaker v2 (előzetes verzió)](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
 
 1. A QnA Maker portál jobb felső részén válassza a **tesztelés** lehetőséget, hogy a módosítások érvénybe léptetése megtörténjen.
 2. Írjon be egy példát egy felhasználói lekérdezésre a szövegmezőben.

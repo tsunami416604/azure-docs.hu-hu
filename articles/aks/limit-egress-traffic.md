@@ -4,15 +4,14 @@ description: Ismerje meg, hogy mely portokra és címekre van szükség a kimen�
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 06/29/2020
-ms.custom: fasttrack-edit, devx-track-azurecli
+ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: dcc015b9ff4cb9b980c7163f526eafbe5cd36119
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900484"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380211"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -39,7 +38,7 @@ _ Az IP-címek függőségei nem HTTP/S forgalomra vonatkoznak (TCP-és UDP-forg
 * Az FQDN HTTP-/HTTPS-végpontok a tűzfal eszközén helyezhetők el.
 * A helyettesítő HTTP/HTTPS-végpontok olyan függőségek, amelyek számos minősítőtől függően eltérőek lehetnek az AK-fürttől.
 * Az AK egy belépésvezérlés használatával adja hozzá a teljes tartománynevet környezeti változóként a Kube-rendszer és a forgalomirányító-rendszer területen lévő összes központi telepítéshez, amely biztosítja, hogy a csomópontok és az API-kiszolgáló közötti összes rendszerkommunikáció az API-kiszolgáló teljes tartománynevét használja, nem az API-kiszolgáló IP-címét. 
-* Ha van olyan alkalmazás vagy megoldás, amelynek az API-kiszolgálóval kell kommunikálnia, **további** hálózati szabályt kell hozzáadnia, hogy engedélyezze a *TCP-kommunikációt az API-kiszolgáló IP-címének 443-es portján* .
+* Ha van olyan alkalmazás vagy megoldás, amelynek az API-kiszolgálóval kell kommunikálnia, **további** hálózati szabályt kell hozzáadnia, hogy engedélyezze a *TCP-kommunikációt az API-kiszolgáló IP-címének 443-es portján*.
 * Ritka esetekben, ha van karbantartási művelet, az API-kiszolgáló IP-címe változhat. Az API-kiszolgáló IP-címét megváltoztató tervezett karbantartási műveletek mindig előre lesznek továbbítva.
 
 
@@ -63,7 +62,6 @@ A következő teljes tartománynév/alkalmazás szabályok szükségesek:
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | A Node <-> API-kiszolgáló kommunikációja szükséges. Cserélje le *\<location\>* a helyére azt a régiót, ahol az AK-fürtöt üzembe helyezi. |
 | **`mcr.microsoft.com`**          | **`HTTPS:443`** | Lemezképek eléréséhez szükséges a Microsoft Container Registryban (MCR). Ez a beállításjegyzék tartalmazza az első féltől származó lemezképeket és diagramokat (például coreDNS stb.). Ezek a lemezképek a fürt megfelelő létrehozásához és működéséhez szükségesek, beleértve a méretezési és frissítési műveleteket is.  |
-| **`*.cdn.mscr.io`**              | **`HTTPS:443`** | Az Azure Content Delivery Network (CDN) által támogatott MCR tároláshoz szükséges. |
 | **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Az Azure Content Delivery Network (CDN) által támogatott MCR tároláshoz szükséges. |
 | **`management.azure.com`**       | **`HTTPS:443`** | Az Azure API-ra vonatkozó Kubernetes-műveletekhez szükséges. |
 | **`login.microsoftonline.com`**  | **`HTTPS:443`** | Azure Active Directory hitelesítéshez szükséges. |
@@ -92,7 +90,6 @@ A következő teljes tartománynév/alkalmazás szabályok szükségesek:
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | A Node <-> API-kiszolgáló kommunikációja szükséges. Cserélje le *\<location\>* a helyére azt a régiót, ahol az AK-fürtöt üzembe helyezi. |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | A Node <-> API-kiszolgáló kommunikációja szükséges. Cserélje le *\<location\>* a helyére azt a régiót, ahol az AK-fürtöt üzembe helyezi. |
 | **`mcr.microsoft.com`**                        | **`HTTPS:443`** | Lemezképek eléréséhez szükséges a Microsoft Container Registryban (MCR). Ez a beállításjegyzék tartalmazza az első féltől származó lemezképeket és diagramokat (például coreDNS stb.). Ezek a lemezképek a fürt megfelelő létrehozásához és működéséhez szükségesek, beleértve a méretezési és frissítési műveleteket is. |
-| **`*.cdn.mscr.io`**                            | **`HTTPS:443`** | Az Azure Content Delivery Network (CDN) által támogatott MCR tároláshoz szükséges. |
 | **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Az Azure Content Delivery Network (CDN) által támogatott MCR tároláshoz szükséges. |
 | **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | Az Azure API-ra vonatkozó Kubernetes-műveletekhez szükséges. |
 | **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | Azure Active Directory hitelesítéshez szükséges. |
@@ -119,7 +116,6 @@ A következő teljes tartománynév/alkalmazás szabályok szükségesek:
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | A Node <-> API-kiszolgáló kommunikációja szükséges. Cserélje le *\<location\>* a helyére azt a régiót, ahol az AK-fürtöt üzembe helyezi.|
 | **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | Lemezképek eléréséhez szükséges a Microsoft Container Registryban (MCR). Ez a beállításjegyzék tartalmazza az első féltől származó lemezképeket és diagramokat (például coreDNS stb.). Ezek a lemezképek a fürt megfelelő létrehozásához és működéséhez szükségesek, beleértve a méretezési és frissítési műveleteket is. |
-| **`*.cdn.mscr.io`**                                     | **`HTTPS:443`** | Az Azure Content Delivery Network (CDN) által támogatott MCR tároláshoz szükséges. |
 | **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Az Azure Content Delivery Network (CDN) által támogatott MCR tároláshoz szükséges. |
 | **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | Az Azure API-ra vonatkozó Kubernetes-műveletekhez szükséges. |
 | **`login.microsoftonline.us`**                          | **`HTTPS:443`** | Azure Active Directory hitelesítéshez szükséges. |
@@ -765,7 +761,7 @@ Ekkor meg kell jelennie az AK-szavazati alkalmazásnak. Ebben a példában a tű
 ![A képernyőképen az a K-S szavazási alkalmazás jelenik meg, amely a macskák, a kutyák és az alaphelyzetek, valamint az összesítések gombjaival rendelkezik](media/limit-egress-traffic/aks-vote.png)
 
 
-### <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az Azure-erőforrások tisztításához törölje az AK-erőforráscsoport törlését.
 

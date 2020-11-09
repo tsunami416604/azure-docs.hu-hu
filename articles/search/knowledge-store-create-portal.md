@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/30/2020
-ms.openlocfilehash: 75cacf0dc899f47d55c44e5262b23bae73bfa7ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df6da5ce1dcd5213b3e54abe54c087bfdd8480c5
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88924367"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379973"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search Knowledge Store létrehozása a Azure Portal
 
@@ -21,7 +21,7 @@ A Knowledge Store az Azure Cognitive Search szolgáltatása, amely egy tartalom-
 
 Egy folyamat nem strukturált szöveg-és képtartalomot fogad el, alkalmazza a mesterséges intelligenciát Cognitive Services (például OCR és természetes nyelvi feldolgozás), és az új struktúrákat és információkat ad vissza, amelyek korábban nem léteztek. A folyamat által létrehozott fizikai összetevők egyike egy [Tudásbázis](knowledge-store-concept-intro.md), amelyet az eszközökön keresztül érhet el, és elemezheti a tartalmakat.
 
-Ebben a rövid útmutatóban a szolgáltatásait és adatait az Azure-felhőben egyesítve hozhat létre egy tudásbázist. Ha minden megtörtént, a portálon futtathatja az **adatimportálás** varázslót, hogy az összeset együtt kell lekérnie. A végeredmény az eredeti szöveges tartalom, valamint a mesterséges intelligenciával létrehozott tartalom, amelyet a portálon ([Storage Explorer](knowledge-store-view-storage-explorer.md)) tekinthet meg.
+Ebben a rövid útmutatóban a szolgáltatásait és adatait az Azure-felhőben egyesítve hozhat létre egy tudásbázist. Ha minden megtörtént, a portálon futtathatja az **adatimportálás** varázslót, hogy az összeset együtt kell lekérnie. A végeredmény az eredeti szöveges tartalom, valamint a mesterséges intelligenciával létrehozott tartalom, amelyet megtekintheti a portálon ([Storage Explorer](knowledge-store-view-storage-explorer.md)).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,7 +46,7 @@ A következő lépésekben hozzon létre egy BLOB-tárolót az Azure Storage-ban
 
    + Válassza ki a **StorageV2 (általános célú v2)** fiók típusát.
 
-1. Nyissa meg a blob Services lapjait, és hozzon létre egy " *Hotel-Reviews*" nevű tárolót.
+1. Nyissa meg a blob Services lapjait, és hozzon létre egy " *Hotel-Reviews* " nevű tárolót.
 
 1. Kattintson a **Feltöltés** gombra.
 
@@ -70,15 +70,15 @@ Most már készen áll az **adatimportálás** varázsló áthelyezésére.
 
 ### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
 
-1. A **Kapcsolódás az adataihoz**lapon válassza az **Azure Blob Storage**lehetőséget, majd válassza ki a létrehozott fiókot és tárolót. 
+1. A **Kapcsolódás az adataihoz** lapon válassza az **Azure Blob Storage** lehetőséget, majd válassza ki a létrehozott fiókot és tárolót. 
 
-1. A **név**mezőbe írja be a következőt: `hotel-reviews-ds` .
+1. A **név** mezőbe írja be a következőt: `hotel-reviews-ds` .
 
-1. **Elemzési mód**esetén válassza a **tagolt szöveg**lehetőséget, majd jelölje be az **első sor fejléce** jelölőnégyzetet. Győződjön meg arról, hogy az elválasztó **karakter** egy vessző (,).
+1. **Elemzési mód** esetén válassza a **tagolt szöveg** lehetőséget, majd jelölje be az **első sor fejléce** jelölőnégyzetet. Győződjön meg arról, hogy az elválasztó **karakter** egy vessző (,).
 
-1. A **kapcsolati karakterláncban**illessze be az Azure Storage **hozzáférési kulcsok** lapjáról másolt kapcsolati karakterláncot.
+1. A **kapcsolati karakterláncban** illessze be az Azure Storage **hozzáférési kulcsok** lapjáról másolt kapcsolati karakterláncot.
 
-1. A **tárolók**mezőben adja meg az adattárolási blob-tároló nevét.
+1. A **tárolók** mezőben adja meg az adattárolási blob-tároló nevét.
 
     Az oldalnak az alábbi képernyőképhez hasonlóan kell kinéznie.
 
@@ -90,18 +90,18 @@ Most már készen áll az **adatimportálás** varázsló áthelyezésére.
 
 A varázsló lépésében egy készségkészlet hoz létre a kognitív képességek gazdagítása révén. A forrásadatok több nyelven is különböző felhasználói felülvizsgálatokból állnak. Az ehhez az adatkészlethez kapcsolódó készségek közé tartozik a fő kifejezés kinyerése, a hangulat észlelése és a szöveg fordítása. Egy későbbi lépésben ezeket a bővítéseket az Azure Tables (Tudásbázisban) a Knowledge Store-ba fogjuk felépíteni.
 
-1. Bontsa ki a **csatolás Cognitive Services**elemet. Alapértelmezés szerint az **ingyenes (korlátozott alkoholtartalom-növelés)** beállítás van kiválasztva. Ezt az erőforrást akkor használhatja, ha a HotelReviews-Free.csvban lévő rekordok száma 19, és ez az ingyenes erőforrás naponta legfeljebb 20 tranzakciót tesz lehetővé.
+1. Bontsa ki a **csatolás Cognitive Services** elemet. Alapértelmezés szerint az **ingyenes (korlátozott alkoholtartalom-növelés)** beállítás van kiválasztva. Ezt az erőforrást akkor használhatja, ha a HotelReviews-Free.csvban lévő rekordok száma 19, és ez az ingyenes erőforrás naponta legfeljebb 20 tranzakciót tesz lehetővé.
 
-1. Bontsa ki a bővítések **hozzáadása**elemet.
+1. Bontsa ki a bővítések **hozzáadása** elemet.
 
-1. A **készségkészlet neve**mezőbe írja be a következőt: `hotel-reviews-ss` .
+1. A **készségkészlet neve** mezőbe írja be a következőt: `hotel-reviews-ss` .
 
-1. A **forrásadatok mezőben**válassza a **reviews_text**lehetőséget.
+1. A **forrásadatok mezőben** válassza a **reviews_text** lehetőséget.
 
-1. A **dúsítás részletességi szintjének**kiválasztásához válassza a **lapok (5000 karakteres tömbök) elemet.**
+1. A **dúsítás részletességi szintjének** kiválasztásához válassza a **lapok (5000 karakteres tömbök) elemet.**
 
 1. Válassza ki ezeket a kognitív képességeket:
-    + **Kulcsszókeresés**
+    + **A legfontosabb kifejezések kinyerése**
     + **Szöveg lefordítása**
     + **Érzelmek észlelése**
 
@@ -109,7 +109,7 @@ A varázsló lépésében egy készségkészlet hoz létre a kognitív képessé
 
 1. Bontsa ki a bővítések **mentése a Knowledge Store-** ba lehetőséget.
 
-1. Válassza ki ezeket az **Azure Table-kivetítéseket**:
+1. Válassza ki ezeket az **Azure Table-kivetítéseket** :
     + **Dokumentumok**
     + **Oldalak**
     + **Legfontosabb kifejezések**
@@ -126,7 +126,7 @@ A varázsló lépésében egy készségkészlet hoz létre a kognitív képessé
 
 Ebben a varázslóban a választható teljes szöveges keresési lekérdezések indexét kell konfigurálnia. A varázsló felveszi az adatforrást a mezők és adattípusok lekötésére. Csak ki kell választania a kívánt viselkedés attribútumait. A lekérdezhető **attribútum például** lehetővé teszi, hogy a Search szolgáltatás a mező értékét visszaállítsa, miközben a **kereshetőség** lehetővé teszi a teljes szöveges keresést a mezőben.
 
-1. Az **index neve**mezőbe írja be a következőt: `hotel-reviews-idx` .
+1. Az **index neve** mezőbe írja be a következőt: `hotel-reviews-idx` .
 
 1. Attribútumok esetében fogadja el az alapértelmezett beállításokat **Retrievable** : lekérdezhető és **kereshető** a folyamat által létrehozott új mezőkhöz.
 
@@ -140,19 +140,19 @@ Ebben a varázslóban a választható teljes szöveges keresési lekérdezések 
 
 A varázsló lépésében olyan indexelő fog konfigurálni, amely összefogja az adatforrást, a készségkészlet és a varázsló előző lépéseiben megadott indexet.
 
-1. A **név**mezőbe írja be a következőt: `hotel-reviews-idxr` .
+1. A **név** mezőbe írja be a következőt: `hotel-reviews-idxr` .
 
-1. Az **ütemterv** **beállításnál**tartsa meg az alapértelmezett értéket.
+1. Az **ütemterv** **beállításnál** tartsa meg az alapértelmezett értéket.
 
 1. Az indexelő futtatásához kattintson a **Submit (elküldés** ) gombra. Az adatgyűjtés, az indexelés, a kognitív képességek alkalmazása mindez ebben a lépésben történik.
 
 ## <a name="monitor-status"></a>Figyelő állapota
 
-A kognitív képességek indexelése hosszabb időt vesz igénybe, mint a szokásos szöveges indexelés. A varázslónak meg kell nyitnia az indexelő listát az Áttekintés oldalon, hogy nyomon követhesse a folyamat előrehaladását. Az önnavigációhoz lépjen az Áttekintés lapra, és kattintson az **Indexelő**elemre.
+A kognitív képességek indexelése hosszabb időt vesz igénybe, mint a szokásos szöveges indexelés. A varázslónak meg kell nyitnia az indexelő listát az Áttekintés oldalon, hogy nyomon követhesse a folyamat előrehaladását. Az önnavigációhoz lépjen az Áttekintés lapra, és kattintson az **Indexelő** elemre.
 
 A Azure Portal az értesítési tevékenység naplóját is figyelheti egy kattintható **Azure Cognitive Search értesítési** állapot hivatkozására. A végrehajtás több percet is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy bővítette az adatait a Cognitive Services segítségével, és kivetítette az eredményeket egy tudásbázisba, Storage Explorer vagy Power BI használatával tárja fel a dúsított adatkészletet.
 

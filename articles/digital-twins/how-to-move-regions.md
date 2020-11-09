@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: cb532098cda290654d6bdebe9cec2edab8ccbf99
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 6393b0b8d794345fded95718a2581ae9b929ad49
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355787"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381150"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure digitális Twins-példány áthelyezése egy másik Azure-régióba
 
@@ -120,7 +120,7 @@ A következő lépés a példány áthelyezésének befejezése egy új példán
 
 ### <a name="create-a-new-instance"></a>Új példány létrehozása
 
-Először hozzon létre egy új Azure Digital Twins-példányt a megcélzott régióban. Kövesse a [példány és a hitelesítés beállítása](how-to-set-up-instance-portal.md)című témakör lépéseit. Tartsa szem előtt az alábbi mutatókat:
+Először hozzon létre egy új Azure Digital Twins-példányt a megcélzott régióban. Kövesse a [útmutató: példány és hitelesítés beállítása](how-to-set-up-instance-portal.md)című témakör lépéseit. Tartsa szem előtt az alábbi mutatókat:
 
 * Megtarthatja az új példány nevét is, *Ha* egy másik erőforráscsoporthoz van. Ha ugyanazt az erőforráscsoportot kell használnia, amely az eredeti példányt tartalmazza, akkor az új példánynak saját nevet kell adnia.
 * Ha a rendszer kéri, adja meg az új célhelyet.

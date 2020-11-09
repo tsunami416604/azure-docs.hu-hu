@@ -1,6 +1,6 @@
 ---
 title: Kiszolgáló nélküli SQL-készlettel feldolgozott adatfeldolgozás
-description: Ez a dokumentum azt ismerteti, hogyan történik az adatfeldolgozások kiszámítása az Azure Storage-ban kiszolgáló nélküli SQL-készlettel történő lekérdezéskor.
+description: Ez a dokumentum azt ismerteti, hogyan számítja ki az adatfeldolgozási mennyiség kiszámításakor a rendszer az adattárban lévő adatlekérdezéseket.
 services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,76 +9,82 @@ ms.subservice: sql
 ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 06eb02aa3dd4d5fc8bd3605dac480d5afa52d5fa
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: a108e5fdd30c21cdb7771e3f683dad22773653a4
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424221"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381201"
 ---
-# <a name="data-processed-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Kiszolgáló nélküli SQL-készlettel feldolgozott adatfeldolgozás az Azure szinapszis Analyticsben
+# <a name="data-processed-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics kiszolgáló nélküli SQL-készlet használatával feldolgozott adatai
 
-A feldolgozott adatmennyiség a lekérdezés végrehajtása során ideiglenesen a rendszeren tárolt adatmennyiség, amely a következőkből áll:
+A *feldolgozott* adatmennyiség a rendszer által ideiglenesen a lekérdezés futtatása közben tárolt adatmennyiség. A feldolgozott adatmennyiség a következő mennyiségekből áll:
 
-- A tárterületről beolvasott adatok mennyisége – ide tartoznak a következők:
-  - Az adatgyűjtés során olvasott adatmennyiség
-  - A metaadatok olvasásakor olvasott adatok mennyisége (metaadatokat (például a Parkettaot tartalmazó fájlformátumok)
-- Adatok mennyisége közbenső eredményekben – a csomópontok között továbbított adatok a lekérdezés végrehajtása során, beleértve a végpontra irányuló adatátvitelt tömörítetlen formátumban. 
-- A Storage-ba írt adat mennyisége – ha a CETAS-t használja az eredményhalmaz tárterületre való exportálásához, a rendszer kiírja a felszámított bájtok és a CETAS kiválasztása részében feldolgozott adatmennyiséget.
+- A tárterületről beolvasott adatok mennyisége. Ez az összeg a következőket tartalmazza:
+  - Az adatgyűjtés során beolvasott adatolvasások.
+  - Adatok olvasása a metaadatok olvasása közben (metaadatokat, például a parketta-t tartalmazó fájlformátumok esetében).
+- A közbenső eredményekben lévő adatmennyiség. Ezeket az adatátvitelt a rendszer a csomópontok között a lekérdezés futtatása közben továbbítja. Ez magában foglalja a végpontra irányuló adatátvitelt tömörítetlen formátumban. 
+- A tárterületre írt adatmennyiség. Ha a CETAS-t használja az eredményhalmaz tárolóba való exportálásához, akkor a rendszer a CETAS kiválasztása résznél a feldolgozott adatmennyiséget adja hozzá a feldolgozott adatmennyiséghez.
 
-A fájlok a tárolóból való olvasása igen optimalizált, és a következőket használja:
+A fájlok a tárterületről való olvasása igen optimalizált. A folyamat a következőket használja:
 
-- Előre beolvasás – ami kis terhelést eredményezhet a beolvasott adat mennyiségéhez képest. Ha egy lekérdezés teljes fájlt olvas, nem lesz terhelés. Ha a fájlok részben olvashatók, például az első N lekérdezésekben, egy kicsit több adat lesz beolvasva.
-- Optimalizált CSV-elemző – ha PARSER_VERSION = "2.0"-t használ a CSV-fájlok olvasásához, akkor a tárterületről beolvasott adatok valamivel nagyobb mennyiségű adatmennyiséget eredményeznek.  Az optimalizált CSV-elemző párhuzamosan, azonos méretű adattömbökben olvassa be a fájlokat. Nincs garancia arra, hogy az adattömbök teljes sorokat fogja tartalmazni. Az összes sor elemzésének biztosítása érdekében a rendszer a szomszédos adattömbök kis töredékeit is beolvassa, és egy kis mennyiségű terhelést ad hozzá.
+- A beolvasás, amely némi terhelést eredményezhet az olvasott adatmennyiséghez képest. Ha egy lekérdezés teljes fájlt olvas, akkor nincs terhelés. Ha a fájlok részben olvashatók, például az első N lekérdezésekben, akkor egy kicsit több adat is olvasható a beolvasás használatával.
+- Egy optimalizált vesszővel tagolt (CSV) elemző. Ha PARSER_VERSION = "2.0"-t használ a CSV-fájlok olvasásához, akkor a tárterületről beolvasott adatok mennyisége némileg megnő. Az optimalizált CSV-elemző párhuzamosan olvassa be a fájlokat, az azonos méretű adattömbökben. Az adattömbök nem feltétlenül tartalmaznak egész sort. Az összes sor elemzésének biztosítása érdekében az optimalizált CSV-elemző a szomszédos adattömbök kis töredékeit is beolvassa. Ez a folyamat kis mennyiségű terhelést eredményez.
 
 ## <a name="statistics"></a>Statisztika
 
-A kiszolgáló nélküli SQL Pool lekérdezés-optimalizáló a statisztikára támaszkodik az optimális lekérdezés-végrehajtási tervek létrehozásához. A statisztikákat manuálisan is létrehozhatja, vagy a kiszolgáló nélküli SQL-készlet automatikusan létrehozza őket. Mindkét esetben a statisztikák egy külön lekérdezés végrehajtásával jönnek létre, amely egy adott oszlopot ad vissza a megadott mintavételi arányban. Ez a lekérdezés a feldolgozott adatmennyiséggel rendelkezik.
+A kiszolgáló nélküli SQL Pool lekérdezés-optimalizáló a statisztikára támaszkodik az optimális lekérdezés-végrehajtási tervek létrehozásához. A statisztikákat manuálisan is létrehozhatja. Ellenkező esetben a kiszolgáló nélküli SQL-készlet automatikusan létrehozza azokat. Mindkét esetben a statisztikák egy külön lekérdezés futtatásával jönnek létre, amely egy megadott mintavételi arányban ad vissza egy adott oszlopot. Ez a lekérdezés a feldolgozott adatmennyiséggel rendelkezik.
 
-Ha ugyanezt vagy bármely olyan lekérdezést futtat, amely kihasználja a létrehozott statisztikai adatokat, a statisztikákat a rendszer újból felhasználja, ha lehetséges, és a statisztikák létrehozásakor nem lesz feldolgozva további adat.
+Ha ugyanazt vagy bármely olyan lekérdezést futtat, amely kihasználhatja a létrehozott statisztikai adatokat, akkor a statisztikákat a rendszer újból felhasználja, ha lehetséges. Nincs további feldolgozott adat a statisztikák létrehozásához.
 
-A Parquet oszlop statisztikáinak létrehozásakor a rendszer csak a megfelelő oszlopot olvassa a fájlokból. A CSV-oszlopok statisztikáinak létrehozása a teljes fájlok olvasását és elemzését eredményezi.
+Amikor statisztikákat hoznak létre egy Parquet oszlophoz, csak a megfelelő oszlop olvasható a fájlokból. Egy CSV-oszlop statisztikáinak létrehozásakor a teljes fájlok beolvasása és elemzése történik.
 
 ## <a name="rounding"></a>Kerekítés
 
-A feldolgozott adatmennyiséget a rendszer a lekérdezéssel megnövelt MB-ra kerekíti, legalább 10 MB adatfeldolgozással.
+A feldolgozott adatmennyiséget a rendszer a legközelebbi MB/s értékre kerekíti. Minden lekérdezés legalább 10 MB feldolgozott adatmennyiséget tartalmaz.
 
-## <a name="what-is-not-included-in-data-processed"></a>Mit nem tartalmaz a feldolgozott adatfeldolgozás
+## <a name="what-data-processed-doesnt-include"></a>A feldolgozott adatfeldolgozási szolgáltatás nem tartalmazza
 
-- Kiszolgálói szintű metaadatok (például bejelentkezések, szerepkörök, kiszolgálói szintű hitelesítő adatok)
-- A végpontban létrehozott adatbázisok csak metaadatokat tartalmaznak (például felhasználók, szerepkörök, sémák, nézetek, beágyazott TVFs, tárolt eljárások, adatbázis-hatókörű hitelesítő adatok, külső adatforrások, külső fájlformátumok, külső táblák)
-  - Ha séma-következtetést használ, a rendszer beolvassa a fájlok töredékeit az oszlopnevek és az adattípusok kikövetkeztetés céljából.
-- DDL-utasítások a LÉTREHOZÁSi statisztikák kivételével, mivel a megadott minta százaléka alapján dolgozza fel az adatokat a tárolóból
-- Csak metaadat-lekérdezések
+- Kiszolgálói szintű metaadatok (például bejelentkezések, szerepkörök és kiszolgálói szintű hitelesítő adatok).
+- A végpontban létrehozott adatbázisok. Ezek az adatbázisok csak metaadatokat tartalmaznak (például felhasználók, szerepkörök, sémák, nézetek, beágyazott tábla értékű függvények [TVFs], tárolt eljárások, adatbázis-hatókörű hitelesítő adatok, külső adatforrások, külső fájlformátumok és külső táblák).
+  - Ha séma-következtetést használ, akkor a rendszer beolvassa a fájlok töredékeit az oszlopnevek és az adattípusok kikövetkeztetve, és a feldolgozott adatmennyiséghez hozzáadja az olvasott adatmennyiséget.
+- Adatdefiníciós nyelvi (DDL) utasítások, kivéve a CREATE STATISTICS utasítást, mert a megadott minta százalék alapján dolgozza fel az adatokat a tárolóból.
+- Csak metaadat-lekérdezések.
 
-## <a name="reduce-amount-of-data-processed"></a>A feldolgozott adatmennyiség csökkentése
+## <a name="reducing-the-amount-of-data-processed"></a>A feldolgozott adatmennyiség csökkentése
 
-Optimalizálhatja a feldolgozott adatmennyiséget, és jobb teljesítményt érhet el, ha particionálja és átalakítja az adatait egy tömörített, oszlopos formátumba, például a parketta használatára.
+Optimalizálhatja a feldolgozott adatmennyiséget, és javíthatja a teljesítményt, ha particionálja és átalakítja az adatait egy tömörített, oszlop alapú formátumba, például a parketta használatára.
 
 ## <a name="examples"></a>Példák
 
-Tegyük fel, hogy két táblázat létezik, amelyek mindegyike azonos adattal rendelkezik öt egyenlő méretű oszlopban:
+Képzelje el a három táblázatot.
 
-- population_csv a tábla 5 TB CSV-fájllal támogatott
-- population_parquet 1 TB-os parketta-fájlokkal támogatott tábla – ez a tábla kisebb, mint az előző, mivel a parketta tömörített adatmennyiséget tartalmaz
-- very_small_csv 100 KB-os CSV-fájlokkal támogatott tábla
+- A population_csv táblát 5 TB-os CSV-fájl támogatja. A fájlok öt egyenlő méretű oszlopba vannak rendezve.
+- A population_parquet tábla ugyanazokkal az értékekkel rendelkezik, mint a population_csv táblázat. A biztonsági mentés 1 TB-os parketta-fájlokból áll. Ez a tábla kisebb, mint az előző, mert az adattömörítési formátuma egy parketta.
+- A very_small_csv táblát 100 KB-os CSV-fájl támogatja.
 
-**Lekérdezés #1** : válassza a Sum (populáció) elemet a population_csv
+**1. lekérdezés** : a Sum (populáció) kiválasztása population_csv
 
-Ez a lekérdezés teljes fájlokat olvas és elemez a populáció oszlop értékeinek lekéréséhez. A csomópontok feldolgozzák ennek a táblának a töredékeit, és az egyes töredékek sokasága a csomópontok között lesz átadva, és a végső összeg a végpontra kerül át. Ez a lekérdezés 5 TB adatmennyiséget és kisebb terhelést fog feldolgozni a töredékek összegének átadásához.
+Ez a lekérdezés teljes fájlokat olvas és elemez a sokaság oszlop értékeinek lekéréséhez. A csomópontok feldolgozzák ennek a táblának a töredékeit, és az egyes töredékek populációs összegét a rendszer a csomópontok között továbbítja. A végső összeg a végpontra kerül. 
 
-**Lekérdezés #2** : válassza a Sum (populáció) elemet a population_parquet
+Ez a lekérdezés 5 TB-nyi adat feldolgozását és kis mennyiségű terhelést dolgoz fel a töredékek összegének átadásához.
 
-A tömörített és oszlopos formátumok (például a parketta) lekérdezése kevesebb adatolvasást eredményez, mint az előző lekérdezésben, mivel a kiszolgáló nélküli SQL-készlet egyetlen tömörített oszlopot fog olvasni a teljes fájl helyett. Ebben az esetben a 0,2 TB beolvasható (öt egyenlő méretű oszlop, 0,2 TB). A csomópontok feldolgozzák ennek a táblának a töredékeit, és az egyes töredékek sokasága a csomópontok között lesz átadva, és a végső összeg a végpontra kerül át. Ez a lekérdezés 0,2 TB-ot és egy kisebb terhelést fog feldolgozni a töredékek összegének átadásához.
+**2. lekérdezés** : válassza a Sum (populáció) elemet population_parquet
 
-**Lekérdezés #3** : select * from population_parquet
+Ha tömörített és oszlopos formátumokat (például a Parquet) kérdez le, a rendszer kevesebb adatmennyiséget olvas be, mint az 1. lekérdezésben. Ez az eredmény jelenik meg, mert a kiszolgáló nélküli SQL-készlet egyetlen tömörített oszlopot olvas a teljes fájl helyett. Ebben az esetben a 0,2 TB olvasható. (Öt egyenlő méretű oszlop 0,2 TB.) A csomópontok feldolgozzák ennek a táblának a töredékeit, és az egyes töredékek populációs összegét a rendszer a csomópontok között továbbítja. A végső összeg a végpontra kerül. 
 
-Ez a lekérdezés beolvassa az összes oszlopot, és az összes adatátvitelt tömörítetlen formátumban továbbítja. Ha a tömörítési formátum 5:1, akkor a 6 TB-ot fogja feldolgozni, mivel az 1 TB + 5 TB-os, tömörítetlen adatok átvitelét fogja olvasni.
+Ez a lekérdezés 0,2 TB-ot és kis mennyiségű terhelést dolgoz fel a töredékek összegének átadásához.
 
-**Lekérdezés #4** : válassza a Count (*) elemet a very_small_csv
+**3. lekérdezés** : select * from population_parquet
 
-A lekérdezés teljes fájlokat olvas. A tábla tárolási fájljainak teljes mérete 100 KB. A csomópontok feldolgozzák ennek a táblának a töredékeit, az egyes töredékek összegét a rendszer a csomópontok között továbbítja, és a végső összeg a végpontra kerül. Ez a lekérdezés valamivel több mint 100 KB adatmennyiséget fog feldolgozni. A lekérdezésben feldolgozott adatmennyiség 10 MB-ra lesz kerekítve a [kerekítés](#rounding)során.
+Ez a lekérdezés beolvassa az összes oszlopot, és az összes adatokat tömörítetlen formátumban továbbítja. Ha a tömörítési formátum 5:1, akkor a lekérdezés 6 TB-ot dolgoz fel, mert 1 TB-ot olvas, és 5 TB tömörítetlen adatokat továbbít.
 
-## <a name="next-steps"></a>További lépések
+**4. lekérdezés** : válassza a Count (*) elemet very_small_csv
 
-Ha szeretné megtudni, hogyan optimalizálhatja a teljesítmény-lekérdezéseket, tekintse meg a [kiszolgáló nélküli SQL-készlet ajánlott eljárásait](best-practices-sql-on-demand.md).
+Ez a lekérdezés teljes fájlokat olvas be. A tábla tárolási fájljainak teljes mérete 100 KB. A csomópontok feldolgozzák ennek a táblának a töredékeit, és az egyes töredékek összegét a csomópontok között továbbítjuk. A végső összeg a végpontra kerül. 
+
+Ez a lekérdezés valamivel több mint 100 KB adatmennyiséget dolgoz fel. A lekérdezésben feldolgozott adatmennyiség 10 MB-ra van kerekítve, a jelen cikk [kerekítési](#rounding) szakaszában megadott módon.
+
+## <a name="next-steps"></a>Következő lépések
+
+A teljesítményre vonatkozó lekérdezések optimalizálásával kapcsolatos további információkért lásd: [ajánlott eljárások kiszolgáló nélküli SQL-készlethez](best-practices-sql-on-demand.md).

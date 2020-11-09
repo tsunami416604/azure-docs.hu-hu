@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti Azure Functions a C# használatáv
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 19edfaf7998632ed1ebb48ff4ad36468669732ae
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 51a7ffe72f8597fbaa11eae12585ebde8bb83153
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167746"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380963"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# – fejlesztői dokumentáció
 
@@ -58,7 +58,7 @@ A projekt létrehozásakor a következő példához hasonló mappastruktúrát j
 Ez a könyvtár az Azure-beli Function alkalmazás üzembe helyezése. A functions futtatókörnyezet [2. x verziójában](functions-versions.md) szükséges kötési bővítmények a [projekthez NuGet csomagokként lesznek hozzáadva](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> A létrehozási folyamat létrehoz egy *function.js* az egyes függvények fájljában. Ezt * afunction.jsa* fájlon nem közvetlenül kell szerkeszteni. Nem módosíthatja a kötési konfigurációt, vagy letilthatja a függvényt a fájl szerkesztésével. A függvények letiltásával kapcsolatos további információkért lásd a [függvények letiltását](disable-function.md)ismertető témakört.
+> A létrehozási folyamat létrehoz egy *function.js* az egyes függvények fájljában. Ezt *afunction.jsa* fájlon nem közvetlenül kell szerkeszteni. Nem módosíthatja a kötési konfigurációt, vagy letilthatja a függvényt a fájl szerkesztésével. A függvények letiltásával kapcsolatos további információkért lásd a [függvények letiltását](disable-function.md)ismertető témakört.
 
 
 ## <a name="methods-recognized-as-functions"></a>Függvényekként felismert metódusok
@@ -139,7 +139,7 @@ A létrehozási folyamat létrehoz egy *function.js* fájlt a Build mappában ta
 
 Ennek a fájlnak a célja, hogy információt szolgáltasson a méretezési vezérlő számára [a használati tervre vonatkozó döntések skálázásához](functions-scale.md#how-the-consumption-and-premium-plans-work). Emiatt a fájl csak trigger-információkkal, nem bemeneti vagy kimeneti kötésekkel rendelkezik.
 
-A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdonságot, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function.jsa* konfiguráción. Például:
+A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdonságot, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function.jsa* konfiguráción. Bemutatunk egy példát:
 
 ```json
 {
@@ -313,7 +313,7 @@ public static class CancellationTokenExample
 
 ## <a name="logging"></a>Naplózás
 
-A függvény kódjában a kimenetet a Application Insights nyomkövetésként megjelenő naplókba írhatja. A naplókba való írás ajánlott módja, ha egy [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)típusú paramétert tartalmaz, amely általában a neve `log` . A függvények futtatásához használt futtatókörnyezet 1. x verziója `TraceWriter` , amely Application Insights is ír, de nem támogatja a strukturált naplózást. Ne használja a paranccsal `Console.Write` írni a naplókat, mert a Application Insights nem rögzíti ezeket az adatfájlokat. 
+A függvény kódjában a kimenetet a Application Insights nyomkövetésként megjelenő naplókba írhatja. A naplókba való írás ajánlott módja, ha egy [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)típusú paramétert tartalmaz, amely általában a neve `log` . A függvények futtatásához használt futtatókörnyezet 1. x verziója `TraceWriter` , amely Application Insights is ír, de nem támogatja a strukturált naplózást. Ne használja a `Console.Write` naplók írásához, mivel ezeket az adatApplication Insights nem rögzíti. 
 
 ### <a name="ilogger"></a>ILogger
 
@@ -615,7 +615,7 @@ A [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Mic
 
 ### <a name="multiple-attribute-example"></a>Több attribútum – példa
 
-Az előző példában beolvassa a Function alkalmazás fő Storage-fiókjának (azaz) az alkalmazás beállítását `AzureWebJobsStorage` . A Storage-fiókhoz a [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hozzáadásával és az attribútum tömbbe való átadásával adhat meg egyéni alkalmazás-beállítást `BindAsync<T>()` . Használjon `Binder` paramétert, nem `IBinder` .  Példa:
+Az előző példában beolvassa a Function alkalmazás fő Storage-fiókjának (azaz) az alkalmazás beállítását `AzureWebJobsStorage` . A Storage-fiókhoz a [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hozzáadásával és az attribútum tömbbe való átadásával adhat meg egyéni alkalmazás-beállítást `BindAsync<T>()` . Használjon `Binder` paramétert, nem `IBinder` .  Például:
 
 ```cs
 public static class IBinderExampleMultipleAttributes
@@ -644,7 +644,7 @@ public static class IBinderExampleMultipleAttributes
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)

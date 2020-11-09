@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/03/2019
 ms.author: aahi
-ms.openlocfilehash: 15a2d3b433236d74f3fa3d09e38071bacae02508
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5bd5ff0e49b125277255ec8e5c216583d75043a0
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078832"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381133"
 ---
 # <a name="autosuggest-bing-search-terms-in-your-application"></a>Bing-keresési kifejezések automatikus kiegészítése az alkalmazásban
 
@@ -26,9 +26,9 @@ ms.locfileid: "93078832"
 
 Ha biztosít egy olyan keresőmezőt, ahol a felhasználók megadhatják a keresőkifejezést, a [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) használatával kényelmesebbé teheti a felhasználói élményt. Az API javasolt lekérdezési sztringeket ad vissza a részleges keresőkifejezések alapján, miközben a felhasználó gépel.
 
-Miután a felhasználó beírja a keresési kifejezést, a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query) lekérdezési paraméter beállítása előtt kódolni kell az URL-címet. Ha például a felhasználó a *sailing dinghies* (kis vitorlások) kifejezésre keres, állítsa a `q` beállítást `sailing+dinghies` vagy `sailing%20dinghies` értékre.
+Miután a felhasználó beírja a keresési kifejezést, a [q](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query) lekérdezési paraméter beállítása előtt kódolni kell az URL-címet. Ha például a felhasználó a *sailing dinghies* (kis vitorlások) kifejezésre keres, állítsa a `q` beállítást `sailing+dinghies` vagy `sailing%20dinghies` értékre.
 
-Ha a lekérdezési kifejezés helyesírási hibát tartalmaz, a keresési válasz egy [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#querycontext) objektumot tartalmaz. Az objektum az eredeti és a javított helyesírást is mutatja, amelyet a Bing a keresés során használt.
+Ha a lekérdezési kifejezés helyesírási hibát tartalmaz, a keresési válasz egy [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#querycontext) objektumot tartalmaz. Az objektum az eredeti és a javított helyesírást is mutatja, amelyet a Bing a keresés során használt.
 
 ```json
 "queryContext": {
@@ -48,4 +48,4 @@ Ezekkel az adatokkal engedélyezheti, hogy a felhasználó tudja, hogy módosít
 
 ## <a name="see-also"></a>Lásd még  
 
-* [Bing Web Search API referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
+* [Bing Web Search API referenciája](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

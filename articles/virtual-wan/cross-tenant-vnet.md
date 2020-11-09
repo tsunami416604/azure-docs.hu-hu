@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 875fd40fea315269f7fe72032942c40551a6b144
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c49a85c71c9b877be7e143f5caf27dc307fe0c12
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078969"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381269"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Több-bérlős virtuális hálózatok összekötése egy virtuális WAN-hubhoz
 
@@ -54,7 +54,7 @@ Ahhoz, hogy a fölérendelt előfizetés a virtuális központtal módosítható
 1. Ezután adja hozzá a távoli bérlői előfizetést és a szülő bérlői előfizetést a PowerShell aktuális munkamenetéhez. Futtassa az alábbi parancsot. Ha bejelentkezett a szülőbe, csak a távoli bérlőhöz tartozó parancsot kell futtatnia.
 
    ```azurepowershell-interactive
-   Add-AzAccount "xxxxx-b34a-4df9-9451-4402dcaecc5b"
+   Add-AzAccount -SubscriptionId "xxxxx-b34a-4df9-9451-4402dcaecc5b"
    ```
 
 1. Ellenőrizze, hogy a szerepkör-hozzárendelés sikeres-e, ha bejelentkezik Azure PowerShell a szülő hitelesítő adataival, és futtatja a következő parancsot:

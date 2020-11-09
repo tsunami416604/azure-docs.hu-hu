@@ -2,15 +2,15 @@
 title: Azure Automation Update Management engedélyezése az Automation-fiókból
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Update Management Automation-fiókból.
 services: automation
-ms.date: 11/04/2020
+ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 6f14516f36975d84256f9bb1bd3b4949dbf80448
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b97e1e61401697204f79004e4678e6f2286f4a98
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348831"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380538"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Az Update Management engedélyezése Automation-fiókból
 
@@ -49,7 +49,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="enable-non-azure-vms"></a>Nem Azure-beli virtuális gépek engedélyezése
 
-Az Azure-ban nem szereplő gépeket manuálisan kell hozzáadni.
+Az Azure-on kívül üzemeltetett gépek vagy kiszolgálók esetében, beleértve az Azure arc-kompatibilis kiszolgálókon regisztráltkat is, a következő lépésekkel engedélyezheti azokat a Update Management.  
 
 1. Az Automation-fiókban válassza **a frissítés kezelése lehetőséget az** **Update Management** alatt.
 

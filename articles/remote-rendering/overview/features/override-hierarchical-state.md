@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb120a533e4d11b34bb9712bf0164cec5a7728ce
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 29c89d8d3d2ae194ff48b762bc686feefdd3a528
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207733"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381002"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchikus állapot felülbírálása
 
@@ -28,26 +28,26 @@ Tegyük fel például, hogy egy autó modelljét szeretné átadni, és a belső
 
 A felülbírálható állapotok rögzített halmaza:
 
-* **`Hidden`**: A jelenet gráfban található megfelelő rácsvonalak rejtettek vagy láthatók.
-* **`Tint color`**: Egy megjelenített objektum színezhető színezhető az egyedi színárnyalat és a színárnyalat súlyozásával. Az alábbi képen egy kerék peremének színárnyalata látható.
+* **`Hidden`** : A jelenet gráfban található megfelelő rácsvonalak rejtettek vagy láthatók.
+* **`Tint color`** : Egy megjelenített objektum színezhető színezhető az egyedi színárnyalat és a színárnyalat súlyozásával. Az alábbi képen egy kerék peremének színárnyalata látható.
   
   ![Objektum zöldre kapcsolásához használt színárnyalat](./media/color-tint.png)
 
-* **`See-through`**: A geometria félig transzparens módon jelenik meg, például egy objektum belső részeinek megjelenítéséhez. Az alábbi képen látható, hogy a teljes autó a látható módon jelenik meg, kivéve a piros fék vastagságát:
+* **`See-through`** : A geometria félig transzparens módon jelenik meg, például egy objektum belső részeinek megjelenítéséhez. Az alábbi képen látható, hogy a teljes autó a látható módon jelenik meg, kivéve a piros fék vastagságát:
 
   ![A kijelölt objektumok transzparensvé tételéhez használt, áttekinthető mód](./media/see-through.png)
 
   > [!IMPORTANT]
   > A megtekintési effektus csak akkor működik, ha a *TileBasedComposition* [renderelési módot](../../concepts/rendering-modes.md) használja.
 
-* **`Selected`**: A geometria egy [kijelölési körvonalsal](outlines.md)jelenik meg.
+* **`Selected`** : A geometria egy [kijelölési körvonalsal](outlines.md)jelenik meg.
 
   ![Kijelölt rész kiemelésére szolgáló tagolási beállítás](./media/selection-outline.png)
 
-* **`DisableCollision`**: A geometria mentesül a [térbeli lekérdezések](spatial-queries.md)alól. A **`Hidden`** jelző nem befolyásolja az ütközési állapot jelzőjét, így a két jelzőt gyakran együtt kell beállítani.
+* **`DisableCollision`** : A geometria mentesül a [térbeli lekérdezések](spatial-queries.md)alól. A **`Hidden`** jelző nem befolyásolja az ütközési állapot jelzőjét, így a két jelzőt gyakran együtt kell beállítani.
 
-* **`UseCutPlaneFilterMask`**: A kivágási sík kijelölésének vezérléséhez használjon egyéni szűrő bitet. Ez a jelző határozza meg, hogy az egyes szűrő maszkot kell-e használni vagy örökölni a szülőtől. A szűrő Bite maszkja maga a tulajdonságon keresztül van beállítva `CutPlaneFilterMask` . A szűrés működésével kapcsolatos részletes információkért tekintse meg a [szelektív kivágású síkok című bekezdést](cut-planes.md#selective-cut-planes).
-![Szelektív kivágott síkok](./media/selective-cut-planes.png)
+* **`UseCutPlaneFilterMask`** : A kivágási sík kijelölésének vezérléséhez használjon egyéni szűrő bitet. Ez a jelző határozza meg, hogy az egyes szűrő maszkot kell-e használni vagy örökölni a szülőtől. A szűrő Bite maszkja maga a tulajdonságon keresztül van beállítva `CutPlaneFilterMask` . A szűrés működésével kapcsolatos részletes információkért tekintse meg a [szelektív kivágású síkok című bekezdést](cut-planes.md#selective-cut-planes). Tekintse meg a következő példát, ahol csak a gumiabroncs és a RIM kerül kivágásra, miközben a jelenet többi része érintetlen marad.
+![Szelektív kivágott síkok](./media/selective-cut-planes-hierarchical-override.png)
 
 
 > [!TIP]
@@ -101,7 +101,7 @@ A `tint color` felülbírálás némileg különleges abban az állapotban, hogy
 
 Maga egy példánya `HierarchicalStateOverrideComponent` nem ad hozzá sok futásidejű terhelést. Azonban mindig érdemes megtartani az aktív összetevők számát. Ha például olyan kiválasztási rendszer megvalósítását tervezi, amely kiemeli a kiválasztott objektumot, akkor azt javasoljuk, hogy törölje az összetevőt a kiemelés eltávolításakor. Az összetevők és a semleges funkciók megtartása gyorsan felvehető.
 
-Az átlátszó renderelés több számítási feladatot tesz lehetővé a kiszolgáló GPU-nál a normál megjelenítésnél. Ha a Scene gráf nagy része átváltott, és a geometria számos rétege *látható, akkor*a teljesítmény szűk keresztmetszetet eredményezhet. Ugyanez érvényes a [kijelölési körvonalakkal](../../overview/features/outlines.md#performance)rendelkező objektumok esetében is.
+Az átlátszó renderelés több számítási feladatot tesz lehetővé a kiszolgáló GPU-nál a normál megjelenítésnél. Ha a Scene gráf nagy része átváltott, és a geometria számos rétege *látható, akkor* a teljesítmény szűk keresztmetszetet eredményezhet. Ugyanez érvényes a [kijelölési körvonalakkal](../../overview/features/outlines.md#performance)rendelkező objektumok esetében is.
 
 ## <a name="api-documentation"></a>API-dokumentáció
 

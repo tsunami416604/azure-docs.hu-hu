@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d7a143f99eca73e0620e24ac5d93141ddb7d99e6
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a0ad14481673f0061fb0170e60869109c87a6829
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215960"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379786"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C jogkivonatok áttekintése
 
@@ -76,7 +76,7 @@ A következő tulajdonságok a Azure AD B2C által kibocsátott [biztonsági jog
 
 - **Frissítési jogkivonat élettartama (nap)** – az a maximális időtartam, ameddig egy frissítési jogkivonat felhasználható új hozzáférési vagy azonosító jogkivonat beszerzésére. Az időszak az új frissítési token beszerzését is magában foglalja, ha az alkalmazása megkapta a `offline_access` hatókört. Az alapértelmezett érték 14 nap. A minimális (inkluzív) egy nap. A maximális érték 90 nap.
 
-- A **token csúszó ablakának élettartama (nap)** – az adott időszak lejárta után a felhasználónak újra hitelesítenie kell magát, az alkalmazás által beszerzett legutóbbi frissítési jogkivonat érvényességi idejétől függetlenül. Csak akkor adható meg, ha a kapcsoló **korlátos**értékre van állítva. Nagyobbnak vagy egyenlőnek kell lennie a **frissítési jogkivonat élettartama (nap)** értékével. Ha a kapcsoló nem **kötöttre**van beállítva, nem adhat meg konkrét értéket. Az alapértelmezett érték 90 nap. A minimális (inkluzív) egy nap. A maximális érték 365 nap.
+- A **token csúszó ablakának élettartama (nap)** – az adott időszak lejárta után a felhasználónak újra hitelesítenie kell magát, az alkalmazás által beszerzett legutóbbi frissítési jogkivonat érvényességi idejétől függetlenül. Csak akkor adható meg, ha a kapcsoló **korlátos** értékre van állítva. Nagyobbnak vagy egyenlőnek kell lennie a **frissítési jogkivonat élettartama (nap)** értékével. Ha a kapcsoló nem **kötöttre** van beállítva, nem adhat meg konkrét értéket. Az alapértelmezett érték 90 nap. A minimális (inkluzív) egy nap. A maximális érték 365 nap.
 
 A következő használati esetek engedélyezettek a következő tulajdonságok használatával:
 
@@ -91,7 +91,7 @@ A [jogkivonatok kompatibilitásának kezeléséhez](configure-tokens.md)a követ
 
 - **Kiállítói (ISS) jogcím** – ez a tulajdonság azonosítja a jogkivonatot kiállító Azure ad B2C bérlőt. Az alapértelmezett érték `https://<domain>/{B2C tenant GUID}/v2.0/`. Az érték a `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` Azure ad B2C bérlő és a jogkivonat-kérelemben használt felhasználói folyamat azonosítóit tartalmazza. Ha az alkalmazásnak vagy a könyvtárnak Azure AD B2Cnak kell lennie az [OpenID Connect Discovery 1,0 specifikációjának](https://openid.net/specs/openid-connect-discovery-1_0.html)megfelelőnek, ezt az értéket kell használnia.
 
-- **Tulajdonos (Sub) jogcím** – ez a tulajdonság azonosítja azt az entitást, amelyhez a jogkivonat adatokat érvényesít. Az alapértelmezett érték a **ObjectId**, amely a `sub` jogkivonatban lévő jogcímet a felhasználó objektum-azonosítójával tölti fel. A **nem támogatott** érték csak a visszamenőleges kompatibilitás érdekében adható meg. Javasoljuk, hogy a **ObjectId** -re váltson, amint tudja.
+- **Tulajdonos (Sub) jogcím** – ez a tulajdonság azonosítja azt az entitást, amelyhez a jogkivonat adatokat érvényesít. Az alapértelmezett érték a **ObjectId** , amely a `sub` jogkivonatban lévő jogcímet a felhasználó objektum-azonosítójával tölti fel. A **nem támogatott** érték csak a visszamenőleges kompatibilitás érdekében adható meg. Javasoljuk, hogy a **ObjectId** -re váltson, amint tudja.
 
 - **Házirend-azonosítót jelölő jogcím** – ez a tulajdonság azonosítja azt a jogcím-típust, amelybe a jogkivonat-kérelemben használt házirend neve fel van töltve. Az alapértelmezett érték `tfp`. A értéke `acr` csak a visszamenőleges kompatibilitás érdekében van megadva.
 
@@ -107,7 +107,7 @@ A jogkivonatok érvényesítéséhez az alkalmazásnak ellenőriznie kell a jogk
 
 ### <a name="validate-signature"></a>Aláírás ellenőrzése
 
-A JWT három szegmenst, egy *fejlécet*, egy *törzset*és egy *aláírást*tartalmaznak. Az aláírási szegmens használatával ellenőrizheti a jogkivonat hitelességét, hogy az alkalmazás megbízható legyen. Azure AD B2C tokenek az iparági szabványnak megfelelő aszimmetrikus titkosítási algoritmusok, például az RSA 256 használatával vannak aláírva.
+A JWT három szegmenst, egy *fejlécet* , egy *törzset* és egy *aláírást* tartalmaznak. Az aláírási szegmens használatával ellenőrizheti a jogkivonat hitelességét, hogy az alkalmazás megbízható legyen. Azure AD B2C tokenek az iparági szabványnak megfelelő aszimmetrikus titkosítási algoritmusok, például az RSA 256 használatával vannak aláírva.
 
 A jogkivonat fejléce a jogkivonat aláírásához használt kulcs-és titkosítási módszerről tartalmaz információkat:
 
@@ -121,7 +121,7 @@ A jogkivonat fejléce a jogkivonat aláírásához használt kulcs-és titkosít
 
 A **ALG** jogcím értéke a jogkivonat aláírásához használt algoritmus. A **Kid** jogcím értéke a jogkivonat aláírásához használt nyilvános kulcs. Azure AD B2C bármikor aláírhat egy jogkivonatot egy nyilvános titkos kulcspár egyik készletének használatával. A Azure AD B2C rendszeresen elforgatja a kulcsok lehetséges készletét. Az alkalmazást úgy kell megírni, hogy ezeket a kulcsfontosságú módosításokat automatikusan kezeljék. Az Azure AD B2C által használt nyilvános kulcsok frissítéseinek ellenőrzéséhez szükséges ésszerű gyakoriság 24 óránként. A nem várt legfontosabb változások kezeléséhez az alkalmazást úgy kell megírni, hogy újra lekérje a nyilvános kulcsokat, ha nem várt értékű **gyerek** értéket kap.
 
-Azure AD B2C OpenID Connect metaadat-végponttal rendelkezik. Ennek a végpontnak a használatával az alkalmazások a Azure AD B2Cról kérhetnek le adatokat. Ezek az adatok a végpontokat, a jogkivonat tartalmát és a jogkivonat-aláíró kulcsokat tartalmazzák. Az Azure AD B2C-bérlő minden házirendhez tartalmaz egy JSON-metaadatokat tartalmazó dokumentumot. A metaadat-dokumentum egy JSON-objektum, amely számos hasznos információt tartalmaz. A metaadatok **jwks_uri**tartalmaznak, amely a jogkivonatok aláírásához használt nyilvános kulcsok helyét adja meg. Ez a hely itt érhető el, de érdemes dinamikusan beolvasni a helyet a metaadatokat tartalmazó dokumentum és az elemzési **jwks_uri**használatával:
+Azure AD B2C OpenID Connect metaadat-végponttal rendelkezik. Ennek a végpontnak a használatával az alkalmazások a Azure AD B2Cról kérhetnek le adatokat. Ezek az adatok a végpontokat, a jogkivonat tartalmát és a jogkivonat-aláíró kulcsokat tartalmazzák. Az Azure AD B2C-bérlő minden házirendhez tartalmaz egy JSON-metaadatokat tartalmazó dokumentumot. A metaadat-dokumentum egy JSON-objektum, amely számos hasznos információt tartalmaz. A metaadatok **jwks_uri** tartalmaznak, amely a jogkivonatok aláírásához használt nyilvános kulcsok helyét adja meg. Ez a hely itt érhető el, de érdemes dinamikusan beolvasni a helyet a metaadatokat tartalmazó dokumentum és az elemzési **jwks_uri** használatával:
 
 ```
 https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/discovery/v2.0/keys
@@ -134,7 +134,7 @@ A `B2C_1_signupsignin1` bérlői házirend metaadat-dokumentuma a `contoso.onmic
 https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/v2.0/.well-known/openid-configuration
 ```
 
-Ha meg szeretné határozni, hogy melyik házirendet használták a jogkivonat aláírására (és hová kell megadnia a metaadatokat), két lehetőség közül választhat. Először is a szabályzat neve szerepel a `acr` jogkivonatban található jogcímben. A jogcímeket a JWT törzse alapján elemezheti Base-64 kódolással a törzsben, és deszerializálhatja az eredményül kapott JSON-karakterláncot. A jogcím a jogkivonat kiküldésére `acr` használt szabályzat neve. A másik lehetőség az, hogy a szabályzatot a paraméter értékeként kódolja a `state` kérelem kiadása után, majd dekódolja annak meghatározásához, hogy melyik házirendet használta. Bármelyik metódus érvényes.
+Ha meg szeretné határozni, hogy melyik házirendet használták a jogkivonat aláírására (és hová kell megadnia a metaadatokat), két lehetőség közül választhat. Először is a szabályzat neve szerepel a `tfp` tokenben (alapértelmezett) vagy `acr` jogcímben (konfiguráltként). A jogcímeket a JWT törzse alapján elemezheti Base-64 kódolással a törzsben, és deszerializálhatja az eredményül kapott JSON-karakterláncot. A vagy a jogcím a jogkivonat kiküldésére `tfp` `acr` használt szabályzat neve. A másik lehetőség az, hogy a szabályzatot a paraméter értékeként kódolja a `state` kérelem kiadása után, majd dekódolja annak meghatározásához, hogy melyik házirendet használta. Bármelyik metódus érvényes.
 
 Az aláírás-ellenőrzés végrehajtásának leírása kívül esik a dokumentum hatókörén. Számos nyílt forráskódú kódtár használható a jogkivonat érvényesítéséhez.
 

@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: ea9cd9cf064b9c07016bc5e166cc4ec4c041b146
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5c0bed04fccfba1ac06a54d5ddba9033ef05761b
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078543"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380708"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>A dekorációs jelölők használata a szöveg kiemeléséhez
 
@@ -39,7 +39,7 @@ Az eredménynek a felhasználói felületen való megjelenítése előtt cserél
 
 ## <a name="marker-formatting"></a>Jelölő formázása
 
-A Bing lehetővé teszi, hogy Unicode-karaktereket vagy HTML-címkéket jelölőként használjon. A használni kívánt jelölők megadásához adja meg a [Szövegformátum](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) lekérdezési paramétert: 
+A Bing lehetővé teszi, hogy Unicode-karaktereket vagy HTML-címkéket jelölőként használjon. A használni kívánt jelölők megadásához adja meg a [Szövegformátum](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) lekérdezési paramétert: 
 
 | Érték             | Marker                       |
 |-------------------|------------------------------|

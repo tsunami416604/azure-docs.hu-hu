@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9131dbff9b732ecfc7f6edb62b42959abcc17da8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c6b6aea6a3b0856b3db345e20b87d2a12ad055e1
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078679"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380330"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>A konzol alkalmazás keresési ügyfelének létrehozása C-ben #
 
@@ -64,7 +64,7 @@ Ez az oktatóanyag a `System.Web` szerelvényre támaszkodik. Adjon hozzá egy h
 
 - A **megoldáskezelő** kattintson a jobb gombbal a **hivatkozások** elemre, és válassza a **hivatkozás hozzáadása..** . lehetőséget.
 - Válassza a **szerelvények > Framework** elemet, majd görgessen le, és jelölje be a **System. Web**
-- Kattintson **az OK gombra**
+- Válassza az **OK** gombot.
 
 ## <a name="add-some-necessary-using-statements"></a>Néhány szükséges utasítás hozzáadása
 
@@ -77,7 +77,7 @@ using System.Net.Http;
 
 ## <a name="ask-the-user-for-a-query"></a>Kérje meg a felhasználót a lekérdezésre
 
-**Megoldáskezelő** nyissa meg a **program.cs** . A `Main()` metódus frissítése:
+**Megoldáskezelő** nyissa meg a **program.cs**. A `Main()` metódus frissítése:
 
 ```csharp
 static void Main()
@@ -228,7 +228,7 @@ Mielőtt bemutatjuk, hogyan jeleníti meg az eredményeket rangsorolt sorrendben
 }
 ```
 
-A `rankingResponse` JSON-objektum ([dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) a keresési eredmények megfelelő megjelenítési sorrendjét ismerteti. A következő, rangsorolt csoportok közül egyet vagy többet tartalmaz:
+A `rankingResponse` JSON-objektum ([dokumentáció](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) a keresési eredmények megfelelő megjelenítési sorrendjét ismerteti. A következő, rangsorolt csoportok közül egyet vagy többet tartalmaz:
 
 - `pole`: A keresési eredmények a legjobban látható kezelést kapják meg (például a fővonalon és az oldalsávon).
 - `mainline`: A fővonalon megjelenítendő keresési eredmények.

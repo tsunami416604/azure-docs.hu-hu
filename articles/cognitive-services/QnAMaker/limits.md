@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: c61c550e9a09d0f0708e8f1dbc63e76b329a8166
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375618"
+ms.locfileid: "94380901"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker Tudásbázis korlátai és határai
 
@@ -96,14 +96,14 @@ A Tudásbázis tartalmának általános korlátai:
 
 ## <a name="create-knowledge-base-call-limits"></a>Tudásbázisbeli hívási korlátok létrehozása:
 Ezek az egyes Create Tudásbázis-műveletek korlátai. Ehhez kattintson a *Tudásbázis létrehozása* vagy a CreateKnowledgeBase API meghívása elemre.
-* Válaszoló alternatív kérdések maximális száma: 300
+* Az alternatív kérdések javasolt maximális száma egy adott válaszban: 300
 * URL-címek maximális száma: 10
 * Fájlok maximális száma: 10
 
 ## <a name="update-knowledge-base-call-limits"></a>A Tudásbázis hívási korlátainak frissítése
 Ezek a frissítési műveletek korlátainak felelnek meg; a UpdateKnowledgeBase API *mentése és betanítása* vagy meghívása elemre kattintva.
 * Az egyes források nevének hossza: 300
-* A hozzáadott vagy törölt alternatív kérdések maximális száma: 300
+* A hozzáadott vagy törölt alternatív kérdések ajánlott maximális száma: 300
 * A hozzáadott vagy törölt metaadat-mezők maximális száma: 10
 * A frissíthető URL-címek maximális száma: 5
 

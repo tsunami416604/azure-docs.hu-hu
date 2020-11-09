@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights Java
 description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz programkód módosítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 31ee3c4a2dbf6f6832c0228e70aa079b5f028bc4
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 2459f80746d95234701319bbb5142c8e540890d3
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331923"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379769"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>A Java Code unapplication monitoring Azure monitor Application Insights
 
@@ -82,7 +82,7 @@ A `applicationinsights.json` fájlban emellett a következőket is konfigurálha
 * Mintavételezés
 * JMX metrikák
 * Egyéni dimenziók
-* Telemetria processzorok
+* Telemetriai feldolgozók
 * Automatikusan összegyűjtött naplózás
 * Automatikusan összegyűjtött mérőműszer-metrikák (beleértve a Spring boot indítószerkezet metrikáit)
 * Szívverés
@@ -133,7 +133,7 @@ További részletek: [konfigurációs beállítások](./java-standalone-config.m
 
 A 3.0-s célunk, hogy az egyéni telemetria standard API-k használatával küldje el.
 
-Támogatjuk a mikrométert, a OpenTelemetry API-t és a népszerű naplózási keretrendszereket. Application Insights a Java 3,0 automatikusan rögzíti a telemetria, és az összes automatikusan összegyűjtött telemetria együtt összekapcsolja azokat.
+Támogatjuk a mikrométert, a OpenTelemetry API-t és a népszerű naplózási keretrendszereket. Application Insights a Java 3,0 automatikusan rögzíti a telemetria, és összekapcsolja azt az összes automatikusan összegyűjtött telemetria együtt.
 
 ### <a name="supported-custom-telemetry"></a>Támogatott egyéni telemetria
 

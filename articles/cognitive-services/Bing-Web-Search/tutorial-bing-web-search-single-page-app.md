@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 010b65a170d05fb0d2cc55e7519fd27df8b751e1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c47a4fbf51b14d9a13237f77c75dbf2839fb5f80
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095441"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381286"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Web Search API használatával
 
@@ -36,7 +36,7 @@ Ez a mintaalkalmazás a következőkre képes:
 > * Előfizetési kulcsok kezelése
 > * Hibakezelés
 
-Az alkalmazás használatához szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search API-k mellé.
+Az alkalmazás használatához szükség van egy [Azure Cognitive Services-fiókra](../cognitive-services-apis-create-account.md) a Bing Search API-k mellé.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -86,7 +86,7 @@ Az `index.html` tartalmaz egy űrlapot, amelyen a felhasználók keresést vége
 
 ## <a name="query-options"></a>Lekérdezés beállításai
 
-A HTML-űrlap lekérdezési beállításokat tartalmaz, amelyek a [Bing Web Search API 7-es verziójában](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) lekérdezési paraméterekre lesznek leképezve. Az alábbi táblázat részletesen bemutatja, hogyan szűrhetik a felhasználók a keresési eredményeket a mintaalkalmazással:
+A HTML-űrlap lekérdezési beállításokat tartalmaz, amelyek a [Bing Web Search API 7-es verziójában](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) lekérdezési paraméterekre lesznek leképezve. Az alábbi táblázat részletesen bemutatja, hogyan szűrhetik a felhasználók a keresési eredményeket a mintaalkalmazással:
 
 | Paraméter | Leírás |
 |-----------|-------------|
@@ -99,7 +99,7 @@ A HTML-űrlap lekérdezési beállításokat tartalmaz, amelyek a [Bing Web Sear
 | `offset` | Rejtett mező. Az első keresési eredmény eltolása a kérésben a lapozás elősegítéséhez. Minden új kérésnél `0` értékre van visszaállítva. |
 
 > [!NOTE]
-> A Bing Web Search API további lekérdezési paraméterekkel támogatja a keresési eredmények finomítását. Ez a minta csak néhányat használ. Az elérhető paraméterek teljes listáját a [Bing Web Search API 7-es verzió – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) című dokumentumban találja meg.
+> A Bing Web Search API további lekérdezési paraméterekkel támogatja a keresési eredmények finomítását. Ez a minta csak néhányat használ. Az elérhető paraméterek teljes listáját a [Bing Web Search API 7-es verzió – referencia](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) című dokumentumban találja meg.
 
 Ezeket a beállításokat a `bingSearchOptions()` függvény konvertálja át a Bing Search API által megkövetelt formátumra.
 
@@ -303,7 +303,7 @@ A hibák a `renderErrorMessage()` meghívásával vannak kezelve. Ha a válasz m
 
 ## <a name="display-search-results"></a>Keresési eredmények megjelenítése
 
-A Bing Web Search API által visszaadott eredményekre [felhasználási és megjelenítési követelmények](useanddisplayrequirements.md) érvényesek. Mivel egy választ többféle eredménytípust tartalmazhat, nem elég a legfelső szintű `WebPages` gyűjteményen végiglépkedni. A mintaalkalmazás a `RankingResponse` függvényt használja az eredmények kívánt módon való rendezésére.
+A Bing Web Search API által visszaadott eredményekre [felhasználási és megjelenítési követelmények](./use-display-requirements.md) érvényesek. Mivel egy választ többféle eredménytípust tartalmazhat, nem elég a legfelső szintű `WebPages` gyűjteményen végiglépkedni. A mintaalkalmazás a `RankingResponse` függvényt használja az eredmények kívánt módon való rendezésére.
 
 > [!NOTE]
 > Ha egyetlen eredménytípust szeretne kapni, használhatja a `responseFilter` lekérdezési paramétert, vagy megfontolhatja egy másik Bing Search-végpont, például a Bing Image Search használatát.
