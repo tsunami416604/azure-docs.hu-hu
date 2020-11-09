@@ -59,19 +59,19 @@
 - name: Referencia
   items:
     - name: Bing News Search API 7-es verzió
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference
     - name: Bing News Search API 5-ös verzió
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference'
+      href: /rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference
     - name: SDK-k
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-dotnet
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-java-stable
         - name: Python
           href: /python/api/azure-cognitiveservices-search-newssearch/?view=azure-python
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-newssearch/?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-newssearch/?view=azure-node-latest
         - name: Indítás
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch'
     - name: Követelmények használata és megjelenítése
@@ -100,6 +100,6 @@
     - name: Nyelvi támogatás
       href: language-support.md
     - name: Bing News Search API – elemzés
-      href: bing-news-stats.md
+      href: ../bing-web-search/bing-web-stats.md
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

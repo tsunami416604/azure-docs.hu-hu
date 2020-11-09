@@ -35,11 +35,11 @@
 - name: Referencia
   items:
     - name: REST API-referencia
-      href: 'https://go.microsoft.com/fwlink/?linkid=2089907'
+      href: /rest/api/cognitiveservices/inkrecognizer/inkrecognizer
     - name: PowerShell
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: /powershell/module/azurerm.cognitiveservices/
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: Nyelvi támogatás
       href: language-support.md
     - name: Régiók

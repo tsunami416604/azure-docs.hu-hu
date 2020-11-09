@@ -64,6 +64,8 @@
           href: cdn-create-endpoint-how-to.md
         - name: Kezelés az Azure PowerShell-lel
           href: cdn-manage-powershell.md
+        - name: Gyökértartomány vagy Apex-tartomány előkészítése
+          href: onboard-apex-domain.md
         - name: Hozzáférés korlátozása ország vagy régió szerint
           href: cdn-restrict-access-by-country.md
         - name: A teljesítmény javítása a fájlok tömörítésével

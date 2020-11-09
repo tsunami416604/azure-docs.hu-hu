@@ -72,6 +72,8 @@
           href: concepts-api-management.md
         - name: Küllős modell
           href: concepts-hub-and-spoke.md
+        - name: Azure Security Center
+          href: azure-security-integration.md
         - name: Azure Backup Server
           items:
             - name: A Backup Server beállítása

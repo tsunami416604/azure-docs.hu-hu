@@ -1,9 +1,9 @@
 - name: A Beszélőfelismerés dokumentációja
-  href: Home.md
+  href: ../speech-service/speaker-recognition-overview.md
 - name: Áttekintés
   items:
     - name: Tudnivalók a Beszélőfelismerésről
-      href: Home.md
+      href: ../speech-service/speaker-recognition-overview.md
 - name: Referencia
   items:
     - name: API-hivatkozás
