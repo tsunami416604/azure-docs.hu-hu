@@ -5,15 +5,15 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: ab78ac41be2f900d84e82c21e566f5250b2afd18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2530f817bf20af40ab2913df9f16e7d1974ef3
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777391"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375454"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Oktatóanyag: GYIK-bot létrehozása Azure Bot Service
-Hozzon létre egy GYIK-robotot a QnA Maker és az Azure [bot Service](https://azure.microsoft.com/en-us/services/bot-service/) kód nélkül.
+Hozzon létre egy GYIK-robotot a QnA Maker és az Azure [bot Service](https://azure.microsoft.com/services/bot-service/) kód nélkül.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -28,7 +28,15 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Egy Tudásbázis [létrehozásához kövesse a rövid](../Quickstarts/create-publish-knowledge-base.md) útmutató lépéseit. Miután a Tudásbázis sikeresen közzé lett téve, az alábbi oldalra fog érkezni.
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
 ![A sikeres közzététel képernyőképe](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint.png)
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+![A felügyelt sikeres közzététel képernyőképe](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint-managed.png)
+
+---
 
 ## <a name="create-a-bot"></a>Robot létrehozása
 
@@ -39,9 +47,18 @@ A közzététel után létrehozhat egy robotot a **közzétételi lapról:**
 
 Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műveleteket végrehajtania a robottal. Már konfigurálva van a Tudásbázisban való együttműködésre, és a Tudásbázis minden jövőbeli módosításával működik. Minden alkalommal, amikor közzétesz egy tudásbázist, az ahhoz kapcsolódó összes robot automatikusan frissül.
 
-1. A QnA Maker portál **Közzététel** lapján válassza a **robot létrehozása**lehetőséget. Ez a gomb csak azután jelenik meg, hogy közzétette a tudásbázist.
+1. A QnA Maker portál **Közzététel** lapján válassza a **robot létrehozása** lehetőséget. Ez a gomb csak azután jelenik meg, hogy közzétette a tudásbázist.
+
+     # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
 
     ![A robot létrehozásának képernyőképe](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
+
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+    ![Képernyőkép a robot által felügyelt előzetes verzió létrehozásáról](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page-managed.png)
+
+    ---
+    
 
 1. Megnyílik egy új böngésző lap a Azure Portal számára a Azure Bot Service létrehozási oldalával. Konfigurálja az Azure bot Service-t. A robot és a QnA Maker megoszthatják a Web App Service-csomagot, de nem oszthatják meg a webalkalmazást. Ez azt jelenti, hogy a robot **alkalmazásának neve** nem lehet a QnA Maker szolgáltatás alkalmazásának neve.
 
@@ -55,8 +72,8 @@ Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műv
 
 
 1. A robot létrehozása után nyissa meg a **bot Service** -erőforrást.
-1. A **bot Management**alatt válassza **a tesztelés webes csevegésben**lehetőséget.
-1. Írja be a következőt a csevegési **üzenetbe**:
+1. A **bot Management** alatt válassza **a tesztelés webes csevegésben** lehetőséget.
+1. Írja be a következőt a csevegési **üzenetbe** :
 
     `Azure services?`
 

@@ -4,13 +4,13 @@ description: A QnA Maker meta-korlátozásokkal rendelkezik a Tudásbázis és a
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 02/14/2020
-ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: c61c550e9a09d0f0708e8f1dbc63e76b329a8166
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776255"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375618"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker Tudásbázis korlátai és határai
 
@@ -51,6 +51,9 @@ A fájlnevek nem tartalmazhatják a következő karaktereket:
 
 A kinyerhető fájlok maximális száma és a maximális fájlméret a **[QnA Maker díjszabási szintjétől](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** függ.
 
+> [!NOTE]
+> QnA Maker felügyelt (előzetes verzió) egy ingyenes szolgáltatás, amely korlátozás nélkül használható a felvehető források számával. Az átviteli sebesség jelenleg 10 tranzakció/másodperc, a felügyeleti API-k és az előrejelzési API-k esetében is korlátozott.
+
 ### <a name="maximum-number-of-deep-links-from-url"></a>Az URL-címekről származó mély hivatkozások maximális száma
 
 A QnAs egy URL-lapról való kinyeréséhez feltérképezhető mély hivatkozások maximális száma **20**.
@@ -71,7 +74,7 @@ A metaadatok mezőinek maximális száma a Tudásbázisban az Azure- **[Cognitiv
 
 A metaadatok nevének és értékének hosszát és elfogadható karaktereit a következő táblázat tartalmazza.
 
-|Elem|Engedélyezett karakterek|Regex-minta egyezése|Karakterek maximális száma|
+|Item|Engedélyezett karakterek|Regex-minta egyezése|Karakterek maximális száma|
 |--|--|--|--|
 |Név (kulcs)|Lehetővé teszi<br>alfanumerikus karakterek (betűk és számjegyek)<br>`_` aláhúzásjellel<br> Nem tartalmazhat szóközt.|`^[a-zA-Z0-9_]+$`|100|
 |Érték|Mindent lehetővé tesz, kivéve<br>`:` kettőspont<br>`|` (függőleges cső)<br>Csak egy érték engedélyezett.|`^[^:|]+$`|500|

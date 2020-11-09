@@ -4,13 +4,13 @@ description: Az aktív tanulási javaslatok lehetővé teszik a Tudásbázis min
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: e8cdb1d471ceef2aef790c426424b9224faac5ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 707f4c098eacb0b72a7e12ebf79f9389b91095cc
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777037"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376519"
 ---
 # <a name="active-learning-suggestions"></a>Aktív tanulási javaslatok
 
@@ -37,10 +37,18 @@ Ha kérdése van a QnA Maker portálon, tekintse át és fogadja el ezeket a jav
 
 ## <a name="turn-on-active-learning"></a>Az aktív tanulás bekapcsolása
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
 Alapértelmezés szerint az aktív tanulás **ki van kapcsolva**.
 Az aktív tanulás használatához:
 * [Be kell kapcsolnia az aktív tanulást](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions) , hogy QnA Maker a Tudásbázisban alternatív kérdéseket gyűjtsön.
 * A javasolt alternatív kérdések megtekintéséhez a szerkesztési lapon [használja a megtekintési beállításokat](../How-To/improve-knowledge-base.md#view-suggested-questions) .
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+Alapértelmezés **szerint az Active** learning QnA Maker felügyelt (előzetes verzió). A javasolt alternatív kérdések megtekintéséhez a szerkesztési lapon [használja a megtekintési beállításokat](../How-To/improve-knowledge-base.md#view-suggested-questions) .
+
+---
 
 ## <a name="how-qna-makers-implicit-feedback-works"></a>QnA Maker implicit visszajelzésének működése
 

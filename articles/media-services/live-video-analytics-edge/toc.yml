@@ -95,6 +95,8 @@
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: Üzembe helyezés az Azure Stack Edge-en
       href: deploy-azure-stack-edge-how-to.md
+    - name: Új jelátjáró konfigurálása
+      href: configure-signal-gate-how-to.md
     - name: Hibaelhárítás
       href: troubleshoot-how-to.md
 - name: Referencia

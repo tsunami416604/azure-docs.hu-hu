@@ -4,28 +4,27 @@ description: Az erőforrások konfigurálásának ismertetése.
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 02/21/2020
-ms.openlocfilehash: 1d54b912d2177a3ccd0cf34d57fc0358af653199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/9/2020
+ms.openlocfilehash: eac930971cab041fbf398da1ac5f8a055412832d
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776714"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376859"
 ---
 # <a name="service-configuration"></a>Szolgáltatáskonfiguráció
 
-A QnA Maker számos Azure-erőforrást (szolgáltatást) használ, beleértve a Cognitive Search, a App Service, a App Service-csomagot és a Application Insights.
-
-Az QnA Maker által támogatott beállítások minden testreszabása alább látható.
+QnA Maker minden verziója az Azure-erőforrások (szolgáltatások) egy másik készletét használja. Ez a cikk a szolgáltatások támogatott testreszabásait ismerteti. 
 
 ## <a name="app-service"></a>App Service
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
 A QnA Maker a App Service használatával biztosítja a [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)által használt lekérdezési futtatókörnyezetet.
 
+Ezek a beállítások a App Service Azure Portal érhetők el. A beállítások a **Beállítások** , majd a **konfiguráció** lehetőség kiválasztásával érhetők el.
 
-Ezek a beállítások a App Service Azure Portal érhetők el. A beállítások a **Beállítások**, majd a **konfiguráció**lehetőség kiválasztásával érhetők el.
-
-Az egyes beállításokat az Alkalmazásbeállítások listáján keresztül is megadhatja, vagy a **Speciális szerkesztés**lehetőség kiválasztásával több beállítást is módosíthat.
+Az egyes beállításokat az Alkalmazásbeállítások listáján keresztül is megadhatja, vagy a **Speciális szerkesztés** lehetőség kiválasztásával több beállítást is módosíthat.
 
 |Erőforrás|Beállítás|
 |--|--|
@@ -36,9 +35,13 @@ Az egyes beállításokat az Alkalmazásbeállítások listáján keresztül is 
 |UserAppInsightsKey|Csevegési napló és telemetria|
 |UserAppInsightsName|Csevegési napló és telemetria|
 
-Megtudhatja [, hogyan adhatja hozzá a Cognitive Search szolgáltatást](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) a szolgáltatáshoz.
-
 A módosítások végrehajtása után **újra kell indítania** a szolgáltatást a Azure Portal **Áttekintés** lapjáról.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+App Service testreszabások nem vonatkoznak a QnA Maker felügyelt (előzetes verzió) elemre.
+
+---
 
 ## <a name="qna-maker-service"></a>QnA Maker szolgáltatás
 
@@ -46,13 +49,37 @@ A QnA Maker szolgáltatás olyan konfigurációt biztosít az alábbi felhaszná
 
 Ismerje meg [, hogyan adhat közreműködőket](./how-to/collaborate-knowledge-base.md) a szolgáltatáshoz.
 
-## <a name="application-insights"></a>Application Insights
+## <a name="change-azure-cognitive-search"></a>Azure-Cognitive Search módosítása
 
-Application Insights nem rendelkezik a QnA Makerra vonatkozó konfigurációs beállításokkal.
+Megtudhatja [, hogyan módosíthatja a](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) QnA Maker szolgáltatáshoz kapcsolódó Cognitive Search szolgáltatást.
+
+## <a name="change-default-answer"></a>Alapértelmezett válasz módosítása
+
+Megtudhatja [, hogyan módosíthatja az alapértelmezett válaszok szövegét](How-To/change-default-answer.md). 
+
+## <a name="telemetry"></a>Telemetria
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
+A Application Insights a QnA Maker GA telemetria figyelésére használható. Nincsenek QnA Makerra vonatkozó konfigurációs beállítások.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+Ismerje meg [, hogyan adhat hozzá telemetria a QnA Maker felügyelt (előzetes verzió) szolgáltatáshoz](How-To/get-analytics-knowledge-base.md). 
+
+---
 
 ## <a name="app-service-plan"></a>App Service Plan (App Service-csomag)
 
+# <a name="qnamaker-ga-stable-release"></a>[QnAMaker GA (stabil kiadás)](#tab/v1)
+
 App Service a csomag nem rendelkezik a QnA Makerra vonatkozó konfigurációs beállításokkal.
+
+# <a name="qnamaker-managed-preview-release"></a>[QnAMaker által felügyelt (előzetes verzió)](#tab/v2)
+
+A App Service-csomag nem használatos QnA Maker felügyelt (előzetes verzió).
+
+---
 
 ## <a name="next-steps"></a>Következő lépések
 

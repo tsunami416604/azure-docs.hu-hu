@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan tervezze meg QnA Maker alkalmazását. Ismerje 
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/2/2020
-ms.openlocfilehash: 84e4d6907c9036503f43cd607b54577fd3d97444
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 0be2fecfad4d2a2b829266fa1d9574bcc4c50eee
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776935"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376677"
 ---
 # <a name="plan-your-qna-maker-app"></a>A QnA Maker alkalmazás megtervezése
 
@@ -20,13 +20,23 @@ A QnA Maker alkalmazás megtervezéséhez ismernie kell, hogy QnA Maker hogyan m
 
 A QnA Makertel létrehozott összes [Azure-erőforrásnak](azure-resources.md#resource-purposes) konkrét célja van. Minden erőforrás saját célra, korlátokra és [díjszabási szintjére](azure-resources.md#pricing-tier-considerations)vonatkozik. Fontos megérteni ezeknek az erőforrásoknak a funkcióját, hogy ezt a tudást a tervezési folyamatba lehessen használni.
 
-| Erőforrás | Cél |
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
+| Erőforrás | Rendeltetés |
 |--|--|
 | Erőforrás [QnA Maker](azure-resources.md#qna-maker-resource) | Szerzői műveletek és lekérdezések előrejelzése |
 | Erőforrás [Cognitive Search](azure-resources.md#cognitive-search-resource) | Adattárolás és keresés |
 | [Erőforrás-és alkalmazáscsomag-szolgáltatási erőforrás app Service](azure-resources.md#app-service-and-app-service-plan) | Előrejelzési végpont lekérdezése |
 | Erőforrás [Application Insights](azure-resources.md#application-insights) | Lekérdezés-előrejelzési telemetria |
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+| Erőforrás | Rendeltetés |
+|--|--|
+| Erőforrás [QnA Maker](azure-resources.md#qna-maker-resource) | Szerzői műveletek, lekérdezés-előrejelzési végpont és telemetria|
+| Erőforrás [Cognitive Search](azure-resources.md#cognitive-search-resource) | Adattárolás és keresés |
+
+---
 ### <a name="resource-planning"></a>Erőforrás-tervezés
 
 Az `F0` egyes erőforrások ingyenes szintje működik, és a szerzői és a lekérdezési előrejelzési élményt is lehetővé teszi. Ezt a szintet használhatja a szerzői műveletek és a lekérdezések előrejelzésének megismeréséhez. Éles vagy élő forgatókönyvre való áttéréskor újra kell értékelnie az erőforrás-kijelölést.
@@ -65,9 +75,22 @@ A Tudásbázis közvetlenül a QnA Maker erőforráshoz kötődik. Tartalmazza a
 
 ### <a name="language-considerations"></a>Nyelvi megfontolások
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
 A QnA Maker erőforráson létrehozott első Tudásbázis az erőforrás nyelvét állítja be. Egy QnA Maker erőforráshoz csak egy nyelv tartozhat.
 
 A QnA Maker erőforrásokat nyelv szerint strukturálhatja, vagy a [fordító](../../translator/translator-info-overview.md) segítségével más nyelvről is módosíthatja a lekérdezéseket a Tudásbázis nyelvén, mielőtt elküldené a lekérdezést a lekérdezés előrejelzési végpontjának.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+Mostantól különböző nyelveken található tudásbázisok is megadhatók ugyanazon QnA Maker erőforráson belül. Az első Tudásbázis létrehozásakor kiválaszthatja, hogy az erőforrást egyetlen nyelven vagy több nyelven szeretné-e használni a tudásbázishoz.
+
+![QnA Maker felügyelt (előzetes verzió) – többnyelvű Tudásbázis kiválasztása](../media/concept-plan-your-knowledge-base/qnamaker-v2-select-multilanguage-knowledge-base.png)
+
+> [!NOTE]
+> Ha a nyelvi beállításokat egy Tudásbázisban engedélyezi, a QnA Maker erőforrásban nem hozhat létre számos tudásbázist. A [nyelvi beállításokra vonatkozó korlátozásokkal kapcsolatos további részletekért](./azure-resources.md).
+
+---
 
 ### <a name="ingest-data-sources"></a>Adatforrások betöltése
 
@@ -87,7 +110,7 @@ A csatolt lemezképeknek elérhetőnek kell lenniük egy nyilvános URL-címről
 
 ### <a name="bot-personality"></a>Bot-személyiség
 
-Adjon hozzá egy robot-személyiséget a tudásbázishoz a [Chit-Chat](../how-to/chit-chat-knowledge-base.md)használatával. Ez a személyiség egy bizonyos társalgási hangon, például a *Professional* és a *Friendly*szolgáltatásban elérhető válaszokat tartalmaz. Ez a Chit-Chat olyan társalgási készletként van megadva, amelynek teljes hozzáférése van a hozzáadáshoz, szerkesztéshez és eltávolításhoz.
+Adjon hozzá egy robot-személyiséget a tudásbázishoz a [Chit-Chat](../how-to/chit-chat-knowledge-base.md)használatával. Ez a személyiség egy bizonyos társalgási hangon, például a *Professional* és a *Friendly* szolgáltatásban elérhető válaszokat tartalmaz. Ez a Chit-Chat olyan társalgási készletként van megadva, amelynek teljes hozzáférése van a hozzáadáshoz, szerkesztéshez és eltávolításhoz.
 
 A bot-személyiség akkor javasolt, ha a robot a tudásbázishoz csatlakozik. Kiválaszthatja, hogy a saját Tudásbázisban használja a Chit-Chat szolgáltatást, még akkor is, ha más szolgáltatásokhoz is csatlakozik, de érdemes áttekintenie, hogyan kommunikál a bot szolgáltatás, ha ez a megfelelő építészeti kialakítás a használathoz.
 
@@ -129,7 +152,7 @@ A QnA Maker az _aktív tanulással_ fejleszti a tudásbázist, ha alternatív k�
 
 ### <a name="providing-a-default-answer"></a>Alapértelmezett válasz megadása
 
-Ha a Tudásbázis nem talál választ, az _alapértelmezett választ_adja vissza. Ez a válasz konfigurálható a QnA Maker portál **Beállítások** lapján vagy az [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)-kon.
+Ha a Tudásbázis nem talál választ, az _alapértelmezett választ_ adja vissza. Ez a válasz konfigurálható a QnA Maker portál **Beállítások** lapján vagy az [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)-kon.
 
 Ez az alapértelmezett válasz eltér az Azure bot alapértelmezett válaszával. Az Azure bot alapértelmezett válaszát a Azure Portal a konfigurációs beállítások részeként konfigurálhatja. Ha a pontszám küszöbértéke nem teljesül, a függvény visszaadja.
 
@@ -152,7 +175,15 @@ A pontszám több tényező alapján is változhat:
 
 ### <a name="service-updates"></a>Szolgáltatási hírek
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
 Alkalmazza a [legújabb futtatókörnyezeti frissítéseket](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) a szolgáltatás frissítéseinek automatikus kezelésére.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+QnA Maker felügyelt (előzetes verzió) esetén a futtatókörnyezetet maga a QnA Maker szolgáltatás kezeli. Így a szolgáltatás frissítései nem alkalmazhatók.
+
+---
 
 ### <a name="scaling-throughput-and-resiliency"></a>Skálázás, átviteli sebesség és rugalmasság
 
@@ -160,7 +191,16 @@ A skálázást, az átviteli sebességet és a rugalmasságot az [Azure-erőforr
 
 ### <a name="analytics-with-application-insights"></a>Analitika Application Insights
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
 A Tudásbázis összes lekérdezését Application Insights tárolja. A mérőszámok megismeréséhez használja a [legfontosabb lekérdezéseket](../how-to/get-analytics-knowledge-base.md) .
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+A felügyelt központi telepítésben a telemetria a [Azure monitor szolgáltatáson](https://docs.microsoft.com/azure/azure-monitor/)keresztül érhető el. A mérőszámok megismeréséhez használja a [legfontosabb lekérdezéseket](../how-to/get-analytics-knowledge-base.md) .
+
+
+---
 
 ## <a name="development-lifecycle"></a>Fejlesztési életciklus
 
@@ -177,7 +217,7 @@ Minden pár tartalmazhatja a következőket:
 
 ### <a name="devops-development"></a>DevOps-fejlesztés
 
-Az DevOps-folyamatba beszúrandó Tudásbázis létrehozásához a tudásbázist a [Batch-tesztelés](../quickstarts/batch-testing.md)során el kell különíteni.
+A DevOps-folyamatba beszúrandó Tudásbázis létrehozásához a tudásbázist a [Batch-tesztelés](../quickstarts/batch-testing.md)során el kell különíteni.
 
 A Tudásbázis megosztja a Cognitive Search indexet az QnA Maker erőforrás minden más tudásbázisával. Amíg a Tudásbázis el van különítve a partícióval, az index megosztása a közzétett tudásbázishoz képest különbséget eredményezhet a pontszámban.
 

@@ -50,13 +50,13 @@
   items:
     - name: Rövid útmutatók
       items:
-        - name: Synapse-munkaterület létrehozása az Azure Portal használatával
+        - name: Munkaterület létrehozása az Azure Portal használatával
           href: quickstart-create-workspace.md
           displayName: quickstart
-        - name: Az Azure parancssori felület használata. Synapse-munkaterület létrehozása az Azure CLI-vel
+        - name: Munkaterület létrehozása az Azure CLI használatával
           href: quickstart-create-workspace-cli.md
           displayName: quickstart
-        - name: Az Azure parancssori felület használata. Synapse-munkaterület létrehozása az Azure PowerShell-lel
+        - name: Munkaterület létrehozása az Azure PowerShell használatával
           href: quickstart-create-workspace-powershell.md
           displayName: quickstart
         - name: Üzembe helyezés sablon használatával
@@ -338,6 +338,12 @@
               displayname: 'workload, management'
     - name: Útmutatók
       items:
+        - name: Biztonsági mentés és visszaállítás
+          items:
+            - name: Visszaállítási pontok létrehozása
+              href: ./backuprestore/sqlpool-create-restore-point.md
+            - name: Synapse SQL-készlet visszaállítása
+              href: ./backuprestore/restore-sql-pool.md
         - name: Kezelés és monitorozás
           items:
             - name: A 2. generációs gyorsítótár monitorozása

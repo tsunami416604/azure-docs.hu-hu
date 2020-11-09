@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
-ms.openlocfilehash: 568cd7b280b8fb65b5f75588a2832631361938dd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 810878956a89b6e7400be99692cf43925d1cd134
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420614"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375912"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Two-Class megnövelt döntési fa modul
 
@@ -56,7 +56,7 @@ Ezt a modellt betaníthatja a [betanítási modell](././train-model.md)használa
   
 6.  A **kiépített fák száma mezőben** adja meg az Ensemble-ben létrehozandó döntési fák teljes számát. További döntési fák létrehozásával lehetőség van jobb lefedettségre, de a képzési idő növekedni fog.
   
-     Ez az érték a betanított modell megjelenítésekor megjelenő fák számát is szabályozza. Ha egyetlen fát szeretne megtekinteni vagy kinyomtatni, állítsa az értéket 1-re. Ha azonban így tesz, csak egy fát hoz létre (a kezdeti paraméterekkel rendelkező fát), és nem végez további iterációt.
+     Ha az értéket 1-re állítja, a rendszer csak egy fát állít elő (a kezdeti paraméterekkel rendelkező fát), és nem végez további iterációt.
   
 7.  A **véletlenszerű számú magok** esetében opcionálisan adjon meg egy nem negatív egész számot, amelyet véletlenszerű mag értékként kíván használni. A vetőmagok megadásával biztosítható az azonos adatokkal és paraméterekkel rendelkező futtatások közötti reprodukálhatóság.  
   
@@ -85,6 +85,6 @@ A betanítás befejezése után:
 
 + A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

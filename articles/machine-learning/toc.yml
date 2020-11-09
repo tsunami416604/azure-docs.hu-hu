@@ -399,6 +399,9 @@
         - name: Távoli számítógépcélok használata
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
+        - name: Automatizált gépi tanulás használata a Databricksszel
+          displayName: automl
+          href: how-to-configure-databricks-automl-environment.md
         - name: Előrejelzési modellek automatikus betanítása
           displayName: time series
           href: how-to-auto-train-forecast.md

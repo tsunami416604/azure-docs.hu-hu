@@ -70,6 +70,8 @@
           href: ../fundamentals/active-directory-whatis.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Tartománynevek kezelése
           href: domains-manage.md
+        - name: Az altartományok felügyeletének igazolása
+          href: domains-verify-custom-subdomain.md
         - name: Könyvtár törlése
           href: directory-delete-howto.md
         - name: Több címtár

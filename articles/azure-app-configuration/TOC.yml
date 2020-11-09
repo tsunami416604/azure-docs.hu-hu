@@ -140,8 +140,6 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
         - name: Azure SDK for JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-        - name: REST API
-          href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: Funkciókezelés
       items:
         - name: .NET Core-kódtár
@@ -156,6 +154,52 @@
           href: /powershell/module/az.appconfiguration/
         - name: Terraform
           href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
+    - name: REST API
+      items:
+        - name: Áttekintés
+          href: rest-api.md
+        - name: További források
+          items:
+            - name: Kulcsok
+              href: ./rest-api-keys.md
+            - name: Kulcs-értékek
+              href: ./rest-api-key-value.md
+            - name: Címkék
+              href: ./rest-api-labels.md
+            - name: Zárolások
+              href: ./rest-api-locks.md
+            - name: Változatok
+              href: ./rest-api-revisions.md
+        - name: Protokoll
+          items:
+            - name: Hitelesítés
+              href: ./rest-api-authentication-index.md
+              items:
+                - name: Hitelesítés Azure Active Directory-fiókkal
+                  href: rest-api-authentication-azure-ad.md
+                - name: HMAC-hitelesítés
+                  href: rest-api-authentication-hmac.md
+            - name: Engedélyezés
+              href: ./rest-api-authorization-index.md
+              items:
+                - name: Azure Active Directory-engedélyezés
+                  href: rest-api-authorization-azure-ad.md
+                - name: HMAC-engedélyezés
+                  href: rest-api-authorization-hmac.md
+            - name: Konzisztenciamodell
+              href: ./rest-api-consistency.md
+            - name: Gyakori fejlécek
+              href: ./rest-api-headers.md
+            - name: Throttling
+              href: ./rest-api-throttling.md
+            - name: Verziókezelés
+              href: ./rest-api-versioning.md
+        - name: Fejlesztés
+          items:
+            - name: Fiddler
+              href: ./rest-api-fiddler.md
+            - name: Postman
+              href: ./rest-api-postman.md
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

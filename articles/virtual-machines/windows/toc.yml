@@ -36,18 +36,20 @@
       href: tutorial-virtual-network.md
     - name: 9 – Virtuális gépek biztonsági mentése
       href: tutorial-backup-vms.md
-    - name: 10 – Virtuális gépek kezelése
+    - name: 10 – Vészhelyreállítás engedélyezése
+      href: tutorial-disaster-recovery.md
+    - name: 11 – Virtuális gépek kezelése
       displayName: scope policy RBAC lock tag
       href: tutorial-govern-resources.md
-    - name: 11 – Virtuális gépek nyomon követése és frissítése
+    - name: 12 – Virtuális gépek nyomon követése és frissítése
       href: tutorial-config-management.md
-    - name: 12 – Virtuális gépek monitorozása
+    - name: 13 – Virtuális gépek monitorozása
       href: tutorial-monitor.md
-    - name: 13 – Virtuális gépek biztonságának kezelése
+    - name: 14 – Virtuális gépek biztonságának kezelése
       href: tutorial-azure-security.md
-    - name: 14 - SQL-\IIS-\.NET-verem telepítése
+    - name: 15 – SQL-\IIS-\.NET-verem telepítése
       href: tutorial-iis-sql.md
-    - name: 15 – Webkiszolgáló védelme SSL-lel
+    - name: 16 – Webkiszolgáló védelme SSL-lel
       href: tutorial-secure-web-server.md
 - name: Példák
   items:
@@ -270,7 +272,7 @@
         - name: Fenntartott példányok
           items:
             - name: Előre fizetés virtuális gépekért
-              href: prepay-reserved-vm-instances.md
+              href: ../prepay-reserved-vm-instances.md
             - name: Előre fizetés dedikált gazdagépekért
               href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Mi az az Azure Reservations?

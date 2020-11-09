@@ -4,19 +4,21 @@ description: A QnA Maker Tudásbázis tesztelése egy iterációs folyamat fonto
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 05ae359182ac3d9c3f4cc17d7675a3f2fefa0bff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 21984a03947e4f9f60e705955cb1be3b2df8933c
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776833"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376145"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>A Tudásbázis tesztelése QnA Maker
 
 A QnA Maker Tudásbázis tesztelése egy iterációs folyamat fontos részét képezi, amellyel javítható a visszaadott válaszok pontossága. A tudásbázist egy bővített csevegési felületen keresztül tesztelheti, amely lehetővé teszi a szerkesztést is.
 
 ## <a name="interactively-test-in-qna-maker-portal"></a>Interaktív tesztelés QnA Maker portálon
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
 
 1. A Tudásbázisban a saját **Tudásbázis** lapján megjelenő név kiválasztásával férhet hozzá.
 1. A teszt kivetítése panel eléréséhez válassza a **tesztelés** lehetőséget az alkalmazás felső paneljén.
@@ -37,21 +39,21 @@ A teszt eredményének részleteit a vizsgálat panelen tekintheti meg.
 
 1.  Nyissa meg a teszt kivetítése panelt, **és válassza a vizsgálat lehetőséget** a válasz további részleteinek megtekintéséhez.
 
-    ![Válaszok vizsgálata](../media/qnamaker-how-to-test-kb/inspect.png)
+    ![Válaszok vizsgálata](../media/qnamaker-how-to-test-knowledge-bases/inspect.png)
 
 2.  Megjelenik a vizsgálat panel. A panel tartalmazza a leggyakoribb pontozási szándékot, valamint az azonosított entitásokat. A panel a kiválasztott kifejezés eredményét jeleníti meg.
 
 ### <a name="correct-the-top-scoring-answer"></a>A legfontosabb pontozásos válasz javítása
 
-Ha a felső pontozási válasz helytelen, válassza ki a megfelelő választ a listából, és válassza a **Mentés és a betanítás**lehetőséget.
+Ha a felső pontozási válasz helytelen, válassza ki a megfelelő választ a listából, és válassza a **Mentés és a betanítás** lehetőséget.
 
-![A legfontosabb pontozásos válasz javítása](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![A legfontosabb pontozásos válasz javítása](../media/qnamaker-how-to-test-knowledge-bases/choose-answer.png)
 
 ### <a name="add-alternate-questions"></a>Alternatív kérdések hozzáadása
 
-Adott válaszhoz hozzáadhat alternatív űrlapokat is. Írja be a helyettesítő válaszokat a szövegmezőbe, majd kattintson az ENTER gombra a hozzáadásához. A frissítések mentéséhez válassza a **Mentés és a betanítás** lehetőséget.
+Adott válaszhoz hozzáadhat alternatív űrlapokat is. Írja be a helyettesítő válaszokat a szövegmezőbe, és válassza az ENTER billentyűt a hozzáadásához. A frissítések mentéséhez válassza a **Mentés és a betanítás** lehetőséget.
 
-![Alternatív kérdések hozzáadása](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
+![Alternatív kérdések hozzáadása](../media/qnamaker-how-to-test-knowledge-bases/add-alternate-question.png)
 
 ### <a name="add-a-new-answer"></a>Új válasz hozzáadása
 
@@ -64,11 +66,62 @@ Válassza a **Mentés és a tanítás** lehetőséget a válasz megőrzéséhez.
 > [!NOTE]
 > A Tudásbázis összes módosítása csak a **Mentés és a betanítás** gomb megnyomása után menthető.
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+1. A Tudásbázisban a saját **Tudásbázis** lapján megjelenő név kiválasztásával férhet hozzá.
+1. A teszt kivetítése panel eléréséhez válassza a **tesztelés** lehetőséget az alkalmazás felső paneljén. 
+1. Ekkor megjelenik egy jelölőnégyzet a felső **megjelenített rövid válaszon** , amely alapértelmezés szerint ki van választva. Ezzel a beállítással engedélyezheti a MRC-alapú válaszadási tartomány észlelését a tesztelési panelen. 
+1. Írjon be egy lekérdezést a szövegmezőbe, majd válassza az ENTER billentyűt. 
+1. Minden lekérdezés esetében, ha van egy pontos válasz/rövid válasz a válasz áthaladásakor, majd a legjobb egyezéssel rendelkező válasz áthaladását, amely a Tudásbázisban szerepel, a lekérdezéshez is rövid választ fog adni.
+    ![Felügyelt engedélyezett teszt panel](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
+1. Ha kijelöli a **rövid válasz megjelenítése** lehetőséget, akkor a rendszer csak a Tudásbázis legjobb egyezésű válaszát adja vissza válaszként.
+
+### <a name="clear-test-panel"></a>Teszt panel törlése
+
+Ha törölni szeretné az összes megadott tesztelési lekérdezést és azok eredményeit a tesztelési konzolról, válassza az **Indítás** lehetőséget a teszt panel bal felső sarkában.
+
+### <a name="close-test-panel"></a>A teszt panel lezárása
+
+A teszt panel bezárásához kattintson újra a **teszt** gombra. Amíg a teszt panel meg van nyitva, nem szerkesztheti a Tudásbázis tartalmát.
+
+### <a name="inspect-score"></a>Pontszám vizsgálata
+
+A teszt eredményének részleteit a vizsgálat panelen tekintheti meg.
+
+1.  Nyissa meg a teszt kivetítése panelt, **és válassza a vizsgálat lehetőséget** a válasz további részleteinek megtekintéséhez.
+
+    ![A válaszok előzetes verziójának vizsgálata](../media/qnamaker-how-to-test-knowledge-bases/inspect-with-managed.png)
+
+2.  Megjelenik a vizsgálat panel. A panel tartalmazza a leggyakoribb pontozási szándékot, valamint az azonosított entitásokat. A panel a kiválasztott kifejezés eredményét jeleníti meg.
+3. A panelen látható a válasz áthaladási pontszáma, valamint az észlelt válaszok száma.
+
+### <a name="correct-the-top-scoring-answer"></a>A legfontosabb pontozásos válasz javítása
+
+Ha a felső pontozási válasz helytelen, válassza ki a megfelelő választ a listából, és válassza a **Mentés és a betanítás** lehetőséget.
+
+![A legfontosabb pontozási válasz előzetes verziójának javítása](../media/qnamaker-how-to-test-knowledge-bases/choose-answer-managed.png)
+
+### <a name="add-alternate-questions"></a>Alternatív kérdések hozzáadása
+
+Adott válaszhoz hozzáadhat alternatív űrlapokat is. Írja be a helyettesítő válaszokat a szövegmezőbe, és válassza az ENTER billentyűt a hozzáadásához. A frissítések mentéséhez válassza a **Mentés és a betanítás** lehetőséget.
+
+![Alternatív kérdések hozzáadása – előzetes verzió](../media/qnamaker-how-to-test-knowledge-bases/add-alternate-question-with-managed.png)
+
+### <a name="add-a-new-answer"></a>Új válasz hozzáadása
+
+Új választ adhat hozzá, ha a meglévő válaszok bármelyike helytelen, vagy a válasz nem létezik a Tudásbázisban (nem található megfelelő egyezés a KB-ban).
+
+A válaszok lista alján található szövegmezővel adjon meg egy új választ, és az ENTER billentyű lenyomásával adja hozzá.
+
+Válassza a **Mentés és a tanítás** lehetőséget a válasz megőrzéséhez. Mostantól új kérdés-válasz pár lett hozzáadva a tudásbázishoz.
+
+---
+
 ### <a name="test-the-published-knowledge-base"></a>A közzétett Tudásbázis tesztelése
 
 A Tudásbázis közzétett verzióját tesztelheti a teszt ablaktáblán. Miután közzétette a KB-ot, válassza ki a **közzétett tudásbázist** , és küldjön egy lekérdezést a közzétett Tudásbázis eredményeinek lekéréséhez.
 
-![Tesztelés egy közzétett TUDÁSBÁZISban](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![Tesztelés egy közzétett TUDÁSBÁZISban](../media/qnamaker-how-to-test-knowledge-bases/test-against-published-knowledge-base.png)
 
 ## <a name="batch-test-with-tool"></a>Batch-teszt eszközzel
 
@@ -98,7 +151,7 @@ A Batch Testing eszközt a következő esetekben használhatja:
     * Nyelv – az angol nyelv
 1. Adja meg a `Multi-turn batch test quickstart` Tudásbázis nevét.
 
-1. A **4. lépésben**konfigurálja a beállításokat a következő táblázattal:
+1. A **4. lépésben** konfigurálja a beállításokat a következő táblázattal:
 
     |Beállítás|Érték|
     |--|--|
@@ -107,7 +160,7 @@ A Batch Testing eszközt a következő esetekben használhatja:
     |**+ Fájl hozzáadása**|Válassza ki a letöltött `.docx` fájl listáját az előfeltételek között.|
     |**Csevegés**|**Professional** kiválasztása|
 
-1. Az **5. lépésben**válassza **a saját kb létrehozása**lehetőséget.
+1. Az **5. lépésben** válassza **a saját kb létrehozása** lehetőséget.
 
     A létrehozási folyamat befejeződése után a portálon megjelenik a szerkeszthető Tudásbázis.
 
@@ -130,11 +183,11 @@ A Batch test eszköz használatához hozzon létre egy nevű fájlt `batch-test-
 |--|--|--|
 |Tudásbázis-azonosító|A Tudásbázis-azonosító a közzétételi oldalon található. Egy adott szolgáltatásban egyszerre több tudásbázist is kipróbálhat egyetlen fájlban, ha különböző Tudásbázis-azonosítókat használ egyetlen fájlban.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 karakterből álló karakterlánc `POST` ) |
 |Kérdés|A felhasználó által megadott kérdés szövege. 1 000 karakter max.|`How do I sign out?`|
-|Metaadatcímkék|választható|`topic:power` a _kulcsot használja: Value_ Format|
+|Metaadatcímkék|választható|`topic:power` a `key:value` formátumot használja|
 |Felső paraméter|választható|`25`|
 |Várt válasz azonosítója|választható|`13`|
 
-Ebben a Tudásbázisban vegyen fel 3 sort csak a 2 szükséges oszlopból a fájlba. Az első oszlop a Tudásbázis-azonosító, a második oszlop pedig a következő kérdéseket tartalmazza:
+Ebben a Tudásbázisban vegyen fel három sort csak a két szükséges oszlop közül a fájlhoz. Az első oszlop a Tudásbázis-azonosító, a második oszlop pedig a következő kérdéseket tartalmazza:
 
 |2. oszlop – kérdések|
 |--|
@@ -144,7 +197,7 @@ Ebben a Tudásbázisban vegyen fel 3 sort csak a 2 szükséges oszlopból a fáj
 
 Ezek a kérdések a Tudásbázis pontos szövege, és a 100 értéket kell visszaadni a megbízhatósági pontszámnak.
 
-Ezután vegyen fel néhány kérdést, amely hasonló a kérdésekhez, de nem pontosan ugyanaz, mint 3 további sorban, ugyanazzal a Tudásbázis-AZONOSÍTÓval:
+Ezután vegyen fel néhány kérdést, amely hasonló a kérdésekhez, de nem pontosan ugyanaz, mint három sorban, ugyanazzal a Tudásbázis-AZONOSÍTÓval:
 
 |2. oszlop – kérdések|
 |--|
@@ -176,7 +229,7 @@ A teszt befejeződött, és létrehozza a `out.tsv` fájlt:
 
 A Tudásbázis-azonosítót a `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` biztonsági rendszer váltotta fel. A saját batch-teszt esetében az oszlop megjeleníti a Tudásbázis AZONOSÍTÓját.
 
-A megbízhatósági pontszám teszt kimenete, a 4. oszlopban látható, hogy az első 3 kérdés a várt 100 pontszámot adta vissza, mivel minden kérdés pontosan ugyanaz, mint a Tudásbázisban. Az utolsó 3 kérdés, amelynek új szövege a kérdés, a 100 nem ad vissza megbízhatósági pontszámként. Ahhoz, hogy a teszthez és a felhasználókhoz is növelje a pontszámot, további alternatív kérdéseket kell felvennie a tudásbázisba.
+A megbízhatósági pontszám teszt kimenete a negyedik oszlopban azt mutatja, hogy az első három kérdés a várt 100 pontszámot adta vissza, mivel minden kérdés pontosan ugyanaz, mint a Tudásbázisban. Az utolsó három kérdés, amelynek új szövege a kérdés, a 100 nem ad vissza megbízhatósági pontszámként. Ahhoz, hogy a teszthez és a felhasználókhoz is növelje a pontszámot, további alternatív kérdéseket kell felvennie a tudásbázisba.
 
 ### <a name="testing-with-the-optional-fields"></a>Tesztelés a választható mezőkkel
 
@@ -192,7 +245,7 @@ A következő diagram segítségével megismerheti, hogyan keresheti meg a vála
 
 |Oszlop száma|Nem kötelező oszlop|Az adatok tárolási helye|
 |--|--|--|
-|3|metaadatok|Meglévő Tudásbázis exportálása a meglévő _kulcshoz: érték_ párok.|
+|3|metaadatok|Létező Tudásbázis exportálása meglévő párok számára `key:value` .|
 |4|top|Az alapértelmezett érték a `25` javasolt.|
 |5|Kérdés-és Levelesláda-készlet azonosítója|A meglévő Tudásbázis exportálása az azonosító értékekhez. Azt is figyelje meg, hogy az azonosítók a kimeneti fájlban lettek visszaadva.|
 
@@ -210,7 +263,7 @@ A következő diagram segítségével megismerheti, hogyan keresheti meg a vála
     > [!TIP]
     > Az egyes készletekhez tartozó metaadatok és QnA-azonosítók megtekintéséhez exportálja a tudásbázist. Válassza a **Beállítások** lapot, majd válassza az **Exportálás** `.xls` fájlként lehetőséget. Keresse meg ezt a letöltött fájlt, és nyissa meg az Excel-áttekintés a metaadatokhoz és az AZONOSÍTÓhoz.
 
-1. Válassza a **Mentés és a betanítás**lehetőséget, majd válassza ki a **közzétételi** lapot, majd kattintson a **Közzététel** gombra. Ezek a műveletek a Batch-teszt számára elérhetővé teszik a módosítást. Töltse le a tudásbázist a **Beállítások** lapról.
+1. Válassza a **Mentés és a betanítás** lehetőséget, majd válassza ki a **közzétételi** lapot, majd kattintson a **Közzététel** gombra. Ezek a műveletek a Batch-teszt számára elérhetővé teszik a módosítást. Töltse le a tudásbázist a **Beállítások** lapról.
 
     A letöltött fájl formátuma megfelelő a metaadatokhoz, valamint a helyes kérdés-és válaszfájl-AZONOSÍTÓhoz. Használja ezeket a mezőket a következő szakaszban
 
@@ -225,7 +278,7 @@ A Batch tesztelésének két fő forgatókönyve van:
 
 A következő eljárás azt feltételezi, hogy az a forgatókönyv a csevegési naplók feldolgozására
 
-1. Hozzon létre egy új batch-tesztelési fájlt, amely tartalmazza a választható adatértékeket `batch-test-data-2.tsv` . Adja hozzá a 6 sort az eredeti batch test bemeneti fájljához, majd adja hozzá a metaadatokat, a felső és a QnA pár azonosítót az egyes sorokhoz.
+1. Hozzon létre egy új batch-tesztelési fájlt, amely tartalmazza a választható adatértékeket `batch-test-data-2.tsv` . Adja hozzá a hat sort az eredeti batch test bemeneti fájljához, majd adja hozzá a metaadatokat, a felső és a QnA pár azonosítót az egyes sorokhoz.
 
     Ha szimulálni szeretné az új szövegnek a tudásbázisból való ellenőrzésének automatikus folyamatát, állítsa az egyes oszlopok metaadatait ugyanarra az értékre: `topic:power` .
 
@@ -241,7 +294,7 @@ A következő eljárás azt feltételezi, hogy az a forgatókönyv a csevegési 
 
 Ez a teszt kimeneti fájl egy automatizált folyamatos tesztelési folyamat részeként elemezhető.
 
-Az adott teszt kimenetét a következőként kell értelmezni: az egyes sorok metaadatokkal vannak szűrve, és mivel az egyes sorok nem egyeznek a tudásbázisban található metaadatokkal, az alapértelmezett válasz a nem egyező sorokhoz ("nem található megfelelő egyezés a KB-ban"). Azok a sorok, amelyek megfelelnek a egyezésnek, a QnA AZONOSÍTÓját és pontszámát adja vissza.
+Az adott teszt kimenetét a következőként kell értelmezni: az egyes sorok metaadatokkal vannak szűrve, és mivel az egyes sorok nem egyeznek a tudásbázisban található metaadatokkal, az alapértelmezett válasz a nem egyező sorokhoz ("nem található megfelelő egyezés a KB-ban"). A megegyező sorok a QnA-azonosítót és a pontszámot adtak vissza.
 
 Az összes sor helytelen címkét adott vissza, mert egyetlen sor sem felelt meg a válasz AZONOSÍTÓjának.
 
@@ -253,7 +306,7 @@ Ezekkel az eredményekkel láthatja, hogy csevegési naplót szeretne készíten
 
 A teszteléshez jó ötlet volt a meta-adattal való szűrés? Igen és nem. A tesztelési rendszernek létre kell hoznia minden egyes meta-adatpárokhoz tartozó tesztelési fájlt, valamint egy olyan tesztet, amely nem tartalmaz meta-adatpárokat.
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja a Tudásbázis tesztelését, törölje a Batch file eszközt és a tesztelési fájlokat.
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ccae831498c8c10895387b78c07e4f8ddc228be1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf8eb144ab23d45e57ee8d52f06363ea37b600ec
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87026560"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375278"
 ---
 # <a name="protected-web-api---move-to-production"></a>Védett webes API – áttérés éles környezetbe
 
@@ -25,20 +25,13 @@ Most, hogy már tudja, hogyan védhető meg a webes API-k, a következőképpen 
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Útmutató az alsóbb rétegbeli API-k meghívásához.
+Megtudhatja, hogyan hívhat meg egy alsóbb rétegbeli API-t a következő [forgatókönyvben: webes API-t meghívó](scenario-web-api-call-api-overview.md)webes API.
 
-> [!div class="nextstepaction"]
-> [Forgatókönyv – a webes API-hívások alsóbb rétegbeli API-k](scenario-web-api-call-api-overview.md)
 
-További információ az oktatóanyagokról és a mintákról.
+Ismerkedjen meg a GitHubon található oktatóanyagokkal és mintákkal:
 
-> [!div class="nextstepaction"]
-> [Védett API meghívása démon használatával](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
-
-> [!div class="nextstepaction"]
-> [ASP.NET Core webes API-oktatóanyag](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
-
-> [!div class="nextstepaction"]
-> [ASP.NET web API-minta](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
+- [Védett API meghívása démon használatával](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
+- [ASP.NET Core webes API-oktatóanyag](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
+- [ASP.NET web API-minta](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)

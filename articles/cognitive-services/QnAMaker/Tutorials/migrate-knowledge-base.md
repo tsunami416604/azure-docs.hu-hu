@@ -4,13 +4,13 @@ description: A Tudásbázis áttelepítéséhez az egyik Tudásbázisból kell e
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
-ms.date: 03/25/2020
-ms.openlocfilehash: 9ba5f1d3d240867a8f6da52b9666c500c5b6446e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 78e22a9ec150435c1bc83873a2fcf0a00560c0c1
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777371"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375958"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Tudásbázis migrálása export-import használatával
 
@@ -22,6 +22,9 @@ Az áttelepítés egy új Tudásbázis létrehozásának folyamata egy meglévő
 
 A Tudásbázis áttelepítéséhez egy meglévő Tudásbázisból kell exportálni, majd importálni egy másikba.
 
+> [!NOTE]
+> A meglévő Tudásbázis új QnA Maker felügyelt (előzetes verzió) áttelepítéséhez kövesse az alábbi utasításokat.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Mielőtt elkezdené, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/) .
@@ -31,7 +34,7 @@ A Tudásbázis áttelepítéséhez egy meglévő Tudásbázisból kell exportál
 1. Jelentkezzen be [QnA Maker portálra](https://qnamaker.ai).
 1. Válassza ki az áttelepíteni kívánt forrás-tudásbázist.
 
-1. A **Beállítások** lapon válassza a **Tudásbázis exportálása** lehetőséget egy. TSV fájl letöltéséhez, amely a forrásként szolgáló Tudásbázis – kérdések, válaszok, metaadatok, követő kérések és a kinyert adatforrások nevét tartalmazza.
+1. A **Beállítások** lapon válassza a **Tudásbázis exportálása** lehetőséget egy. TSV fájl letöltéséhez, amely a forrásként szolgáló Tudásbázis – kérdések, válaszok, metaadatok, követő kérések és a kinyert adatforrások nevét tartalmazza. A kérdésekkel és válaszokkal exportált QnA-azonosítók egy adott QnA-pár frissítésére használhatók a [frissítési API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)használatával. Egy adott QnA pár QnA-azonosítója változatlan marad a több exportálási művelet során.
 
 1. Válassza a **Tudásbázis létrehozása** lehetőséget a felső menüben, majd hozzon létre egy _üres_ tudásbázist. Üres, mert a létrehozásakor nem lesz URL-cím vagy fájl hozzáadása. Ezeket a rendszer az importálási lépés során adja hozzá a létrehozás után.
 
@@ -39,9 +42,9 @@ A Tudásbázis áttelepítéséhez egy meglévő Tudásbázisból kell exportál
 
     Ne válassza a 4. lépésből származó semmit, mert ezek az értékek felül lesznek írva a fájl importálásakor.
 
-1. Az 5. lépésben válassza a **Létrehozás**elemet.
+1. Az 5. lépésben válassza a **Létrehozás** elemet.
 
-1. Ebben az új Tudásbázisban nyissa meg a **Beállítások** lapot, és válassza a **Tudásbázis importálása**lehetőséget. Ezzel importálja a kérdéseket, a válaszokat, a metaadatokat, a követő utasításokat, és megőrzi a kinyert adatforrások nevét.
+1. Ebben az új Tudásbázisban nyissa meg a **Beállítások** lapot, és válassza a **Tudásbázis importálása** lehetőséget. Ezzel importálja a kérdéseket, a válaszokat, a metaadatokat, a követő utasításokat, és megőrzi a kinyert adatforrások nevét. Az **új Tudásbázisban létrehozott QnA pároknak ugyanazzal a QnA-azonosítóval kell rendelkezniük, mint az exportált fájlban**. Ez segít a Tudásbázis pontos replikájának létrehozásában.
 
    > [!div class="mx-imgBorder"]
    > [![Tudásbázis importálása](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)

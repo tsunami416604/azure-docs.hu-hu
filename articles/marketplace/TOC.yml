@@ -81,12 +81,36 @@
       href: publisher-guide-by-offer-type.md
     - name: Azure-alkalmazásajánlatok
       items:
-        - name: Megoldássablon-ajánlat megtervezése
-          href: marketplace-solution-templates.md
-        - name: Felügyelt alkalmazást kínáló ajánlat megtervezése
-          href: marketplace-managed-apps.md
+        - name: Azure-alkalmazásajánlatok megtervezése
+          items:
+            - name: Azure-alkalmazásajánlat megtervezése
+              href: plan-azure-application-offer.md
+            - name: Megoldássablon megtervezése
+              href: plan-azure-app-solution-template.md
+            - name: Felügyelt alkalmazás megtervezése
+              href: plan-azure-app-managed-app.md
         - name: Azure-alkalmazásajánlat létrehozása és közzététele
-          href: partner-center-portal/create-new-azure-apps-offer.md
+          items:
+            - name: Azure-alkalmazásajánlat létrehozása
+              href: create-new-azure-apps-offer.md
+            - name: Azure-alkalmazásajánlat tulajdonságainak konfigurálása
+              href: create-new-azure-apps-offer-properties.md
+            - name: Azure-alkalmazásajánlatok listájának konfigurálása
+              href: create-new-azure-apps-offer-listing.md
+            - name: Előzetes verzió célközönségének hozzáadása
+              href: create-new-azure-apps-offer-preview.md
+            - name: Technikai részletek hozzáadása
+              href: create-new-azure-apps-offer-technical.md
+            - name: Csomagok létrehozása
+              href: create-new-azure-apps-offer-plans.md
+            - name: Megoldássablon-csomag létrehozása
+              href: create-new-azure-apps-offer-solution.md
+            - name: Felügyeltalkalmazás-csomag létrehozása
+              href: create-new-azure-apps-offer-managed.md
+            - name: Azure-alkalmazásajánlat tesztelése és közzététele
+              href: create-new-azure-apps-offer-test-publish.md
+        - name: Azure-alkalmazásajánlat értékesítése
+          href: create-new-azure-apps-offer-marketing.md
         - name: Azure-alkalmazások forgalmi díjas számlázása
           href: partner-center-portal/azure-app-metered-billing.md
         - name: Értékelési visszajelzések kezelése

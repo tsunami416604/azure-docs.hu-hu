@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 5976b70825ac2854e67ddad968752fc87d9e8cea
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 85ff3bed2a648f852c311fefa8513622c2a48285
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377139"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376536"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Az Azure és a ITSM-eszközök összekapcsolhatók a biztonságos exportálás használatával
 
@@ -72,7 +72,7 @@ Az alábbi lépéseket követve regisztrálja az alkalmazást az Azure AD-ben:
 3. Adja **meg** az **alkalmazás azonosítójának URI** azonosítóját.
 
    [![Képernyőkép az I D-alkalmazás U R I értékének beállításáról.](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox)
-4. Válassza a **Save** (Mentés) lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 ## <a name="create-a-secure-webhook-action-group"></a>Biztonságos webhook-műveleti csoport létrehozása
 
@@ -117,7 +117,7 @@ Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
 
 ### <a name="configure-the-servicenow-connection"></a>A ServiceNow-kapcsolatok konfigurálása
 
-1. használja a <https:// <instance name> . Service-Now.com/API/sn_em_connector/em/inbound_event?Source=azuremonitor hivatkozást a biztonságos exportálás definíciójának URI-ja>.
+1. használja a https://(példány neve). Service-Now. com/API/sn_em_connector/em/inbound_event? Source = azuremonitor a biztonságos exportálás definíciójának URI-JÁT.
 
 2. Kövesse az utasításokat a verziónak megfelelően:
    * [Párizs](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)

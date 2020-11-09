@@ -618,8 +618,6 @@
                 - name: Webalkalmazások
                   displayname: java
                   href: app/java-get-started.md
-                - name: Docker-alkalmazások
-                  href: app/docker.md
                 - name: Nyomkövetési naplók
                   href: app/java-trace-logs.md
                 - name: Unix-metrikák
@@ -692,12 +690,14 @@
               href: app/kubernetes-codeless.md
             - name: Különálló – bármely környezet
               items:
-                - name: Java (előzetes verzió)
+                - name: Java
                   items:
                     - name: Áttekintés
                       href: app/java-in-process-agent.md
                     - name: Beállítási lehetőségek
                       href: app/java-standalone-config.md
+                    - name: Telemetriai feldolgozók
+                      href: app/java-standalone-telemetry-processors.md
                     - name: JVM-argumentumok beállítása
                       href: app/java-standalone-arguments.md
             - name: Helyszíni kiszolgálók
@@ -1344,10 +1344,6 @@
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights Connector
           href: platform/app-insights-connector.md
-        - name: AKS-hez készült Application Insights – kód nélküli
-          href: app/kubernetes.md
-        - name: Docker-alkalmazások monitorozása
-          href: app/docker.md
         - name: OMS-portál elavulása
           href: platform/oms-portal-transition.md
         - name: Lemezmetrikák elavulása

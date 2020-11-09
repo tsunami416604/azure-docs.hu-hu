@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: b6a914df9ed277625d3706465fe335e128aeced1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b5b171941a3da42d2f5b385303c51285ff793599
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545157"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376774"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Kiszolgálói paraméterek a Azure Database for MySQL
 
@@ -31,7 +31,7 @@ Az alábbi részekben tájékozódhat a számos gyakran frissített kiszolgáló
 
 ### <a name="thread-pools"></a>Szálak készletei
 
-A MySQL hagyományosan egy szálat rendel minden ügyfélkapcsolathoz. Mivel az egyidejű felhasználók száma növekszik, a teljesítmény megfelelő csökkenést eredményez. Számos aktív szál jelentős hatással lehet a teljesítményre, mert a környezet nagyobb mértékű váltással, a szálak tartalmával és a CPU-gyorsítótárak helytelen területi beállításával jár.
+A MySQL hagyományosan egy szálat rendel minden ügyfélkapcsolathoz. Mivel az egyidejű felhasználók száma növekszik, a rendszer a megfelelő mennyiségű csökkenést eredményezi. Számos aktív szál jelentős hatással lehet a teljesítményre, mert a környezet nagyobb mértékű váltással, a szálak tartalmával és a CPU-gyorsítótárak helytelen területi beállításával jár.
 
 A kiszolgálóoldali szolgáltatást és a kapcsolatok készletezését elkülönítő szál-készletek, a teljesítmény maximalizálása a munkaszál dinamikus készletének bevezetésével, amely a kiszolgálón futó aktív szálak számának korlátozására és a szálak forgalmának minimalizálására használható. Ezzel biztosítható, hogy a kapcsolatok kitörése ne okozza a kiszolgáló számára az erőforrások kifogyása vagy a memória-meghibásodás miatti összeomlás. A szál-készletek a rövid lekérdezésekhez és a nagy CPU-igényű számítási feladatokhoz, például OLTP számítási feladatokhoz használhatók.
 
@@ -57,7 +57,7 @@ A rövid lekérdezések teljesítményével kapcsolatos problémák javítása �
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-Azure Database for MySQL a bináris naplók mindig engedélyezve vannak (azaz `log_bin` be van állítva). Ha triggereket szeretne használni, akkor ehhez hasonló hibaüzenetet kap, *Ha nem rendelkezik a felügyelői jogosultsággal, és engedélyezve van a bináris naplózás (a kevésbé biztonságos `log_bin_trust_function_creators` változót érdemes használni)* . 
+Azure Database for MySQL a bináris naplók mindig engedélyezve vannak (azaz `log_bin` be van állítva). Ha triggereket szeretne használni, akkor ehhez hasonló hibaüzenetet kap, *Ha nem rendelkezik a felügyelői jogosultsággal, és engedélyezve van a bináris naplózás (a kevésbé biztonságos `log_bin_trust_function_creators` változót érdemes használni)*. 
 
 A bináris naplózási formátum mindig **sor** , és a kiszolgálóval létesített összes kapcsolat **mindig** sor alapú bináris naplózást használ. A sor-alapú bináris naplózással nem léteznek biztonsági problémák, és a bináris naplózás nem törhető le, így a biztonságos beállítás értéke [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) **true (igaz** ) lehet.
 
@@ -108,7 +108,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 A MySQL a tábla létrehozása során megadott konfiguráció alapján különböző tablespaces-ban tárolja a InnoDB táblát. A [System tablespace](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) a InnoDB adatszótárának tárolóhelye. A [file-by-Table tablespace](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) egyetlen InnoDB-táblához tartalmaz adatmennyiséget és indexeket, és a fájlrendszerben tárolja a saját adatfájljában. Ezt a viselkedést a `innodb_file_per_table` Server paraméter vezérli. A `innodb_file_per_table` beállítás `OFF` hatására a InnoDB táblákat hozhat létre a System tablespaceben. Ellenkező esetben a InnoDB táblákat hoz létre a fájl-/táblázatos tablespaces-ben.
 
-A Azure Database for MySQL a legnagyobb **1 TB** -ot támogatja egyetlen adatfájlban. Ha az adatbázis mérete meghaladja az 1 TB-ot, hozzon létre egy táblázatot [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablespace-ban. Ha 1 TB-nál nagyobb méretű tábla van, akkor a partíciós táblát kell használnia.
+A Azure Database for MySQL a legnagyobb, **4 TB** -os, egyetlen adatfájlban támogatott. Ha az adatbázis mérete meghaladja a 4 TB-ot, hozzon létre egy táblázatot [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablespace-ban. Ha 4 TB-nál nagyobb méretű tábla van, használja a partíciós táblát.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -215,7 +215,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 ### <a name="innodb_strict_mode"></a>innodb_strict_mode
 
-Ha a "sor mérete túl nagy (> 8126)" hasonló hibaüzenetet kap, érdemes kikapcsolni a paramétert **innodb_strict_mode** . A (z) **innodb_strict_mode** kiszolgáló paramétert nem lehet globálisan módosítani a kiszolgáló szintjén, mert ha a sor adatmérete nagyobb, mint 8k, az adatokat a rendszer a lehetséges adatvesztéshez vezető hiba nélkül csonkolja. Azt javasoljuk, hogy módosítsa a sémát úgy, hogy az illeszkedjen az oldal méretének korlátozásához. 
+Ha a "sor mérete túl nagy (> 8126)" hasonló hibaüzenetet kap, érdemes kikapcsolni a paramétert **innodb_strict_mode**. A (z) **innodb_strict_mode** kiszolgáló paramétert nem lehet globálisan módosítani a kiszolgáló szintjén, mert ha a sor adatmérete nagyobb, mint 8k, az adatokat a rendszer a lehetséges adatvesztéshez vezető hiba nélkül csonkolja. Azt javasoljuk, hogy módosítsa a sémát úgy, hogy az illeszkedjen az oldal méretének korlátozásához. 
 
 Ez a paraméter a használatával állítható be a munkamenet szintjén `init_connect` . Ha **innodb_strict_modet** szeretne beállítani a munkamenet szintjén, a [beállítás paraméter nem jelenik](./howto-server-parameters.md#setting-parameters-not-listed)meg.
 

@@ -120,6 +120,8 @@
           href: customize-branding.md
         - name: A „Bejelentkezve szeretne maradni?” üzenet konfigurálása
           href: keep-me-signed-in.md
+        - name: A bérlőazonosító megkeresése
+          href: active-directory-how-to-find-tenant.md
         - name: Azure-előfizetés társítása
           href: active-directory-how-subscriptions-associated-directory.md
         - name: Saját adatvédelmi információk hozzáadása

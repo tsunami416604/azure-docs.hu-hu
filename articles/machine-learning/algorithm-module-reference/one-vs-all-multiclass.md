@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: f09a77043a552d8d7f09c2a6abcb78f89cbf8ee2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 23077d7d6b476bcca0812dcff8660376568f7dd9
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420682"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376332"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
@@ -26,7 +26,7 @@ Ez a modul olyan modellek létrehozásához hasznos, amelyek három vagy több l
 
 Egyes besorolási algoritmusok lehetővé teszik a kettőnél több osztály használatát a kialakítás alapján. Mások a lehetséges eredményeket két érték (bináris vagy kétosztályos modell) egyikére korlátozzák. A többosztályos besorolási feladatokhoz azonban még a bináris besorolási algoritmusokat is át lehet igazítani különböző stratégiákkal. 
 
-Ez a modul megvalósítja az egy-és az összes módszert, amelyben a több kimeneti osztályhoz létrehoznak egy bináris modellt. A modul az egyes osztályokhoz tartozó bináris modellek mindegyikét kivizsgálja a komplement (a modell minden más osztálya) alapján, mintha bináris besorolási probléma lenne. A modul ezután végrehajtja az előrejelzést a bináris besorolások futtatásával, és a legmagasabb szintű megbízhatósági pontszám alapján kiválaszthatja az előrejelzést.  
+Ez a modul megvalósítja az egy-és az összes módszert, amelyben a több kimeneti osztályhoz létrehoznak egy bináris modellt. A modul az egyes osztályokhoz tartozó bináris modellek mindegyikét kivizsgálja a komplement (a modell minden más osztálya) alapján, mintha bináris besorolási probléma lenne. A számítási hatékonyság mellett (csak az `n_classes` osztályozók szükségesek), ennek a megközelítésnek az egyik előnye az értelmezése. Mivel az egyes osztályokat csak egy és egy osztályozó képviseli, lehetséges, hogy az osztályra vonatkozó ismereteket a hozzá tartozó osztályozó vizsgálatával lehet megtenni. Ez a többosztályos besorolás leggyakrabban használt stratégiája, és az alapértelmezett választási lehetőség. A modul ezután végrehajtja az előrejelzést a bináris besorolások futtatásával, és a legmagasabb szintű megbízhatósági pontszám alapján kiválaszthatja az előrejelzést. 
 
 Lényegében a modul az egyes modellek együttesét hozza létre, majd egyesíti az eredményeket, hogy egyetlen modellt hozzon létre, amely minden osztályt előre jelez. Bármely bináris osztályozó használható az egy-és az összes modell alapjaként.  
 
@@ -59,6 +59,6 @@ A betanítás befejezése után a modellt használhatja a többosztályos előre
 Azt is megteheti, hogy átadja a nem betanított osztályozó [modellt a modell](cross-validate-model.md) átadására a címkével ellátott ellenőrzési adatkészlet alapján.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

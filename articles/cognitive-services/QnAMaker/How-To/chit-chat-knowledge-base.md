@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d5c47d3e3e9485c3a6de8f93782c654fb34a516
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1208d95a282ca6e236d9d6be8013f51dead90d13
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330638"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376658"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Chit-csevegés hozzáadása egy tudásbázishoz
 
@@ -60,14 +60,22 @@ A Tudásbázis létrehozása során a forrás URL-címek és fájlok hozzáadás
 ## <a name="add-chit-chat-to-an-existing-kb"></a>Chit-csevegés hozzáadása meglévő KB-hoz
 Válassza ki a KB-ot, és navigáljon a **Beállítások** lapra. A megfelelő **. TSV** formátumú összes Chit-Chat-adatkészletre mutató hivatkozás. Töltse le a kívánt személyiséget, majd töltse fel a fájlt forrásként. A fájl letöltésekor és feltöltésekor ügyeljen rá, hogy ne szerkessze a formátumot vagy a metaadatokat.
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
 ![Chit-csevegés hozzáadása meglévő TUDÁSBÁZIShoz](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+![Csevegés hozzáadása meglévő TUDÁSBÁZIS előzetes kiadásához](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset-v2.png)
+
+---
 
 ## <a name="edit-your-chit-chat-questions-and-answers"></a>A Chit-csevegéssel kapcsolatos kérdések és válaszok szerkesztése
 Ha szerkeszti a KB-ot, egy új forrást fog látni a Chit-Chat számára a kiválasztott személyiség alapján. Mostantól bármilyen más forráshoz hasonlóan hozzáadhat megváltoztatott kérdéseket vagy szerkesztheti a válaszokat is.
 
 ![A Chit-Chat QnAs szerkesztése](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
-A metaadatok megtekintéséhez válassza az eszköztár **beállítások megtekintése** elemét, majd válassza a **metaadatok megjelenítése**lehetőséget.
+A metaadatok megtekintéséhez válassza az eszköztár **beállítások megtekintése** elemét, majd válassza a **metaadatok megjelenítése** lehetőséget.
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>További Chit-csevegési kérdések és válaszok hozzáadása
 Hozzáadhat egy olyan új QnA-párt, amely nem szerepel az előre definiált adatkészletben. Győződjön meg arról, hogy nem duplikál olyan QnA párt, amely már szerepel a Chit-Chat készletben. Új Chit-Chat-QnA hozzáadásakor a rendszer bekerül a **szerkesztői** forrásba. Annak érdekében, hogy a Ranger megértse, hogy ez a Chit-Chat, adja hozzá a "Vezércikk: chitchat" metaadat-kulcs/érték párokat, ahogy az alábbi képen látható:

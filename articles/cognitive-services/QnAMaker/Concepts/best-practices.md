@@ -4,13 +4,13 @@ description: Az ajánlott eljárások segítségével javíthatja tudásbázisá
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777020"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376757"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker Tudásbázis ajánlott eljárásai
 
@@ -116,11 +116,17 @@ A [másodlagos kérdések](../How-To/edit-knowledge-base.md) javítják a felhas
 A [metaadatok](../How-To/edit-knowledge-base.md) lehetővé teszik, hogy az ügyfélalkalmazás tudja, hogy nem fogadja el az összes választ, hanem a metaadat-címkék alapján leszűkíti a felhasználói lekérdezés eredményét. A Tudásbázis válasza a metaadatok címkéje alapján is eltérhet, még akkor is, ha a lekérdezés ugyanaz. Ha például a *"hol van a parkolóban található"* , akkor lehet, hogy más válasz van, ha az éttermi ág helye eltérő – vagyis a metaadatok *helye: Seattle* és *Location: Redmond*.
 
 ### <a name="use-synonyms"></a>Szinonimák használata
-Míg az angol nyelv szinonimái is vannak, a kis-és nagybetűk megkülönböztetése az [Alters API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) -n keresztül a különböző űrlapokat használó kulcsszavak szinonimáinak hozzáadását is lehetővé teheti. A szinonimákat a szolgáltatás szintjén adja hozzá a rendszer, és a szolgáltatás minden tudásbázisa megosztja a QnA Maker.
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+Míg az angol nyelv szinonimái is vannak, a kis-és nagybetűk megkülönböztetése az [Alters API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) használatával a különböző űrlapokat használó kulcsszavak szinonimáinak hozzáadását is lehetővé teheti. A szinonimákat a szolgáltatás szintjén adja hozzá a rendszer, és a **szolgáltatás minden tudásbázisa megosztja** a QnA Maker.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+Míg az angol nyelv szinonimái is vannak, a kis-és nagybetűk megkülönböztetése az [Alters API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) használatával a különböző űrlapokat használó kulcsszavak szinonimáinak hozzáadását is lehetővé teheti. QnA Maker felügyelt (előzetes verzió) szinonimái **hozzáadódnak a tudásbázishoz**.
 
 |Eredeti szó|Szinonimák|
 |--|--|
 |venni|beszerzés<br>NET – banki szolgáltatások<br>nettó banki|
+
+---
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Különböző szavak használata a kérdések megkülönböztetéséhez
 A QnA Maker rangsorolási algoritmusa, amely egy, a Tudásbázisban kérdéssel rendelkező felhasználói lekérdezésnek felel meg, akkor a legjobban működik, ha az egyes kérdések eltérő igényt mutatnak. A kérdések között megjelenő szó ismétlődése csökkenti annak a valószínűségét, hogy a megfelelő válasz van kiválasztva egy adott felhasználói lekérdezéshez ezekkel a szavakkal.
@@ -132,7 +138,7 @@ Előfordulhat például, hogy két különálló QnAs rendelkezik a következő 
 |Hol található a parkoló *helye*|
 |Hol található az ATM *helye*|
 
-Mivel ez a két QnAs nagyon hasonló szavakkal van megfogalmazva, ez a hasonlóság nagyon hasonló pontszámokat okozhat számos olyan felhasználói lekérdezés esetében, amelyek  *"hol van a `<x>` hely"*. Ehelyett próbálja meg egyértelműen megkülönböztetni a lekérdezéseket, például  *a "hol van a parkolóban"* és *"hol van az ATM"*, a "location" kifejezéssel, amely a KB-ban sok kérdésben lehet.
+Mivel ez a két QnAs nagyon hasonló szavakkal van megfogalmazva, ez a hasonlóság nagyon hasonló pontszámokat okozhat számos olyan felhasználói lekérdezés esetében, amelyek  *"hol van a `<x>` hely"*. Ehelyett próbálja meg egyértelműen megkülönböztetni a lekérdezéseket, például  *a "hol van a parkolóban"* és *"hol van az ATM"* , a "location" kifejezéssel, amely a KB-ban sok kérdésben lehet.
 
 ## <a name="collaborate"></a>Együttműködés
 QnA Maker lehetővé teszi a felhasználók számára, hogy a Tudásbázisban [működjenek együtt](../How-to/collaborate-knowledge-base.md) . A tudásbázisok eléréséhez a felhasználóknak hozzá kell férniük az Azure QnA Maker erőforráscsoporthoz. Előfordulhat, hogy néhány szervezet szeretné kiszervezni a Tudásbázis szerkesztését és karbantartását, és továbbra is képes lesz biztosítani az Azure-erőforrásokhoz való hozzáférést. Ez a szerkesztő-jóváhagyó modell két azonos [QnA Maker-szolgáltatásnak](../How-to/set-up-qnamaker-service-azure.md) a különböző előfizetésekben való beállításával és a szerkesztési tesztelési ciklus egyikének kiválasztásával valósítható meg. A tesztelés befejezése után a Tudásbázis tartalma [importálási és exportálási](../Tutorials/migrate-knowledge-base.md) folyamattal kerül át a jóváhagyó QnA Maker szolgáltatásához, amely végül közzéteszi a tudásbázist, és frissíti a végpontot.
