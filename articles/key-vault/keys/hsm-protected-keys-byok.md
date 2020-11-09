@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 1869ec9b617a7451ec42fa9d092ea3bb5834f9e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe7a8a3df535d05c3c834d3e2fbba5f7df5d6fcd
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585474"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372244"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM-védelemmel ellátott kulcsok importálása a Key Vaultba (BYOK)
 
@@ -63,7 +63,8 @@ A következő táblázat a BYOK használatának előfeltételeit sorolja fel Azu
 |Fortanix|Gyártó<br/>HSM szolgáltatásként|<ul><li>Self-Defending kulcskezelő szolgáltatás (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS-kulcsok exportálása a BYOK a felhőalapú szolgáltatók számára – Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Gyártó|Az összes LiquidSecurity-HSM a<ul><li>Belső vezérlőprogram verziója 2.0.4 vagy újabb</li><li>Belső vezérlőprogram 3,2-es vagy újabb verziója</li></ul>|[Marvell BYOK eszköz és dokumentáció](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Enterprise Key Management System)|Több HSM-márka és-modell, beleértve a következőket is<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>[Részletekért lásd a Cryptomathic-webhelyet](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK eszköz és dokumentáció](https://www.cryptomathic.com/azurebyok)|
-
+|Securosys SA|Gyártó, HSM szolgáltatásként|Primus HSM-család, Securosys felhők HSM|[Primus BYOK eszköz és dokumentáció](https://www.securosys.com/primus-azure-byok)|
+||||
 
 
 ## <a name="supported-key-types"></a>Támogatott kulcstípusok
@@ -119,7 +120,7 @@ Vigye át a BYOK-fájlt a csatlakoztatott számítógépre.
 > [!NOTE] 
 > Az RSA 1 024 bites kulcsok importálása nem támogatott. Jelenleg egy elliptikus görbe (EC) kulcs importálása nem támogatott.
 > 
-> **Ismert probléma**: a Luna HSM-ből származó RSA 4k-cél kulcsának importálása csak a belső vezérlőprogram 7.4.0 vagy újabb verziója esetén támogatott.
+> **Ismert probléma** : a Luna HSM-ből származó RSA 4k-cél kulcsának importálása csak a belső vezérlőprogram 7.4.0 vagy újabb verziója esetén támogatott.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>4. lépés: a kulcs átvitele Azure Key Vaultre
 

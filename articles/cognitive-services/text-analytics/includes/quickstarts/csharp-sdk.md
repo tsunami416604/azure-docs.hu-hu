@@ -9,26 +9,26 @@ ms.topic: include
 ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: b5249850a572090a32b0d3515cbeaec9bfb112ae
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b8c7e419c9497e8111530e62bd9117581da7141a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977811"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371801"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
 
-a [v 3.1 dokumentációja](https://docs.microsoft.com/dotnet/api/azure.ai.textanalytics?view=azure-dotnet-previews&preserve-view=true)  |  [v 3.1 függvénytár-forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v 3.1 csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.1)  |  [v 3.1 minta](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+a [v 3.1 dokumentációja](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-previews)  |  [v 3.1 függvénytár-forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v 3.1 csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.1)  |  [v 3.1 minta](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
-a [v3-referenciák dokumentációja](https://aka.ms/azsdk-net-textanalytics-ref-docs)  |  [v3 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v3 csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [v3 minta](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+a [v3-referenciák dokumentációja](/dotnet/api/azure.ai.textanalytics)  |  [v3 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v3 csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [v3 minta](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-[v2 dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics)  |  [v2 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  [v2 csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [v2 minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[v2 dokumentáció](/dotnet/api/overview/azure/cognitiveservices/client/textanalytics)  |  [v2 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  [v2 csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [v2 minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
@@ -36,7 +36,7 @@ a [v3-referenciák dokumentációja](https://aka.ms/azsdk-net-textanalytics-ref-
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * A [Visual Studio ide](https://visualstudio.microsoft.com/vs/)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" hozzon létre egy Text Analytics erőforrást, "  target="_blank"> és hozzon létre egy Text Analytics-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez.  Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" hozzon létre egy Text Analytics erőforrást, "  target="_blank"> és hozzon létre egy Text Analytics-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez.  Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Text Analytics APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
@@ -48,11 +48,11 @@ Hozzon létre egy új .NET Core Console-alkalmazást a Visual Studio IDE haszná
 
 # <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
 
-Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése**lehetőséget. A megnyíló csomagkezelő területen válassza a **Tallózás** lehetőséget, és keresse meg a következőt: `Azure.AI.TextAnalytics` . Jelölje be a **prerelase belefoglalása** jelölőnégyzetet, majd válassza a verzió `5.1.0-beta.1` , majd a **telepítés**lehetőséget. Használhatja a [Package Manager konzolt](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
+Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése** lehetőséget. A megnyíló csomagkezelő területen válassza a **Tallózás** lehetőséget, és keresse meg a következőt: `Azure.AI.TextAnalytics` . Jelölje be a **prerelase belefoglalása** jelölőnégyzetet, majd válassza a verzió `5.1.0-beta.1` , majd a **telepítés** lehetőséget. Használhatja a [Package Manager konzolt](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
 
 # <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
-Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése**lehetőséget. A megnyíló csomagkezelő területen válassza a **Tallózás** lehetőséget, és keresse meg a következőt: `Azure.AI.TextAnalytics` . Válassza `5.0.0` a verzió, majd a **telepítés**lehetőséget. Használhatja a [Package Manager konzolt](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
+Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése** lehetőséget. A megnyíló csomagkezelő területen válassza a **Tallózás** lehetőséget, és keresse meg a következőt: `Azure.AI.TextAnalytics` . Válassza `5.0.0` a verzió, majd a **telepítés** lehetőséget. Használhatja a [Package Manager konzolt](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
 
 
 > [!TIP]
@@ -60,7 +60,7 @@ Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldá
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése**lehetőséget. A megnyíló csomagkezelő lapon válassza a **Tallózás** lehetőséget, és keresse meg a következőt: `Microsoft.Azure.CognitiveServices.Language.TextAnalytics` . Kattintson rá, majd **telepítse**a következőt:. Használhatja a [Package Manager konzolt](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
+Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése** lehetőséget. A megnyíló csomagkezelő lapon válassza a **Tallózás** lehetőséget, és keresse meg a következőt: `Microsoft.Azure.CognitiveServices.Language.TextAnalytics` . Kattintson rá, majd **telepítse** a következőt:. Használhatja a [Package Manager konzolt](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
 
 > [!TIP]
 > Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/samples/TextAnalytics/synchronous/Program.cs), amely a jelen rövid útmutatóban szereplő példákat tartalmazza. 
@@ -177,7 +177,7 @@ Ha a szolgáltatás verzióját használja `3.x` , egy opcionális példánnyal 
 * [Hangulatelemzés](#sentiment-analysis)
 * [Vélemény bányászata](#opinion-mining)
 * [Nyelvfelismerés](#language-detection)
-* [Megnevezett entitások felismerése](#named-entity-recognition-ner)
+* [Elnevezett entitások felismerése](#named-entity-recognition-ner)
 * [Entitás összekapcsolása](#entity-linking)
 * [Kulcskifejezések kinyerése](#key-phrase-extraction)
 
@@ -205,7 +205,7 @@ Hozzon létre egy új `ApiKeyServiceClientCredentials` osztályt a hitelesítő 
 
 [!code-csharp[Client class](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=clientClass)]
 
-Hozzon létre egy metódust a [TextAnalyticsClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclient) objektum létrehozásához a végponttal és egy, `ApiKeyServiceClientCredentials` a kulcsot tartalmazó objektumot.
+Hozzon létre egy metódust a [TextAnalyticsClient](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclient) objektum létrehozásához a végponttal és egy, `ApiKeyServiceClientCredentials` a kulcsot tartalmazó objektumot.
 
 [!code-csharp[Client authentication](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=authentication)]
 
@@ -461,7 +461,7 @@ Document sentiment: Positive
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-Hozzon létre egy nevű új függvényt `SentimentAnalysisExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a [hangulat ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.sentiment) függvényt. A visszaadott [SentimentResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.sentimentresult) objektum a `Score` sikeres és a ha nem értéket fogja tartalmazni `errorMessage` . 
+Hozzon létre egy nevű új függvényt `SentimentAnalysisExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a [hangulat ()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.sentiment) függvényt. A visszaadott [SentimentResult](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.sentimentresult) objektum a `Score` sikeres és a ha nem értéket fogja tartalmazni `errorMessage` . 
 
 Ha a 0 érték közel van, akkor a negatív, míg az 1. ponthoz közeledő pontszám pozitív érzést jelez.
 
@@ -525,7 +525,7 @@ Language:
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-Hozzon létre egy nevű új függvényt `languageDetectionExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a  [DetectLanguage ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.detectlanguage#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_DetectLanguage_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) függvényt. Ha a [LanguageResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.languageresult) `DetectedLanguages` sikeres, és ha nem, a visszaadott LanguageResult objektum tartalmazza az észlelt nyelvek listáját `errorMessage` . Nyomtassa ki az első visszaadott nyelvet.
+Hozzon létre egy nevű új függvényt `languageDetectionExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a  [DetectLanguage ()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.detectlanguage#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_DetectLanguage_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) függvényt. Ha a [LanguageResult](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.languageresult) `DetectedLanguages` sikeres, és ha nem, a visszaadott LanguageResult objektum tartalmazza az észlelt nyelvek listáját `errorMessage` . Nyomtassa ki az első visszaadott nyelvet.
 
 > [!Tip]
 > Bizonyos esetekben nehéz lehet nyelveket egyértelműsítse a bemenet alapján. A `countryHint` paraméter segítségével megadhatja a kétbetűs ország/régió kódját. Alapértelmezés szerint az API az "USA"-t használja alapértelmezett countryHintként, hogy eltávolítsa ezt a paramétert úgy, hogy ezt az értéket üres sztringre állítja `countryHint = ""` .
@@ -806,7 +806,7 @@ Linked Entities:
 > [!NOTE]
 > Az 2,1-es verzióban az entitások összekapcsolása szerepel a megjelenő válaszban.
 
-Hozzon létre egy nevű új függvényt `RecognizeEntitiesExample()` , amely a korábban létrehozott ügyfelet veszi fel, és hívja meg az [entitások ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.entities#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_Entities_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) függvényt. Ismételje meg az eredményeket. A visszaadott [EntitiesResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.entitiesresult) objektum az észlelt entitások listáját fogja tartalmazni, `Entities` Ha az sikeres, és `errorMessage` Ha nem. Minden észlelt entitás esetében nyomtassa ki a típusát, altípusát, a wikipedia nevét (ha vannak), valamint az eredeti szöveg helyét.
+Hozzon létre egy nevű új függvényt `RecognizeEntitiesExample()` , amely a korábban létrehozott ügyfelet veszi fel, és hívja meg az [entitások ()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.entities#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_Entities_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) függvényt. Ismételje meg az eredményeket. A visszaadott [EntitiesResult](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.entitiesresult) objektum az észlelt entitások listáját fogja tartalmazni, `Entities` Ha az sikeres, és `errorMessage` Ha nem. Minden észlelt entitás esetében nyomtassa ki a típusát, altípusát, a wikipedia nevét (ha vannak), valamint az eredeti szöveg helyét.
 
 [!code-csharp[Entity Recognition example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=entityRecognition)]
 
@@ -871,7 +871,7 @@ Key phrases:
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-Hozzon létre egy nevű új függvényt `KeyPhraseExtractionExample()` , amely a korábban létrehozott ügyfelet veszi fel, és hívja meg a [()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) függvényt. Az eredmény tartalmazza az észlelt kulcsfontosságú kifejezések listáját, `KeyPhrases` Ha az sikeres volt, és `errorMessage` Ha nem, akkor. Minden észlelt kulcs kifejezésének nyomtatása.
+Hozzon létre egy nevű új függvényt `KeyPhraseExtractionExample()` , amely a korábban létrehozott ügyfelet veszi fel, és hívja meg a [()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) függvényt. Az eredmény tartalmazza az észlelt kulcsfontosságú kifejezések listáját, `KeyPhrases` Ha az sikeres volt, és `errorMessage` Ha nem, akkor. Minden észlelt kulcs kifejezésének nyomtatása.
 
 [!code-csharp[Key phrase extraction example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=keyPhraseExtraction)]
 

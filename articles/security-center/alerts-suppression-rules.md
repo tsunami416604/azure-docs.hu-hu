@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 50426e0b0920e89cf83dc5a81c515b06c06c09c5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b954d6ed29074aa9261611f0d1bb79b5917d03f2
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342093"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372659"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Riasztások letiltása az Azure Defenderből
 
@@ -23,10 +23,10 @@ Ez az oldal azt ismerteti, hogyan használhatja a riasztások letiltási szabál
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Előnézet|
+|Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Árképzési|Ingyenes<br>(A legtöbb biztonsági riasztás csak az Azure Defenderrel érhető el)|
 |Szükséges szerepkörök és engedélyek:|A **biztonsági rendszergazda** és a **tulajdonos** létrehozhat/törölhet szabályokat.<br>A **biztonsági olvasó** és az **olvasó** megtekintheti a szabályokat.|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -60,11 +60,11 @@ Szabály létrehozása közvetlenül a Azure Portalban:
 
 1. A Security Center biztonsági riasztásokat tartalmazó oldalán:
 
-    - Keresse meg azt a riasztást, amelyet nem szeretne többé látni, majd a riasztás három pont (...) menüjéből válassza az **elnyomási szabály létrehozása**elemet:
+    - Keresse meg azt a riasztást, amelyet nem szeretne többé látni, majd a riasztás három pont (...) menüjéből válassza az **elnyomási szabály létrehozása** elemet:
 
         [![* * Elnyomási szabály létrehozása * * beállítás](media/alerts-suppression-rules/auto-dismiss-future-option.png)](media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox)
 
-    - Vagy válassza a **mellőzési szabályok** hivatkozást az oldal tetején, és a letiltási szabályok lapon válassza az **új tiltási szabály létrehozása**elemet:
+    - Vagy válassza a **mellőzési szabályok** hivatkozást az oldal tetején, és a letiltási szabályok lapon válassza az **új tiltási szabály létrehozása** elemet:
 
         ![Új letiltási szabály létrehozása * * gomb](media/alerts-suppression-rules/create-new-suppression-rule.png)
 
@@ -94,8 +94,8 @@ A létrehozott szabályok szerkesztéséhez használja a letiltási szabályok l
 
     [![Mellőzési szabályok listája](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
-1. Egyetlen szabály szerkesztéséhez nyissa meg a szabályhoz tartozó három pontot (...), és válassza a **Szerkesztés**lehetőséget.
-1. Végezze el a szükséges módosításokat, majd válassza az **alkalmaz**lehetőséget. 
+1. Egyetlen szabály szerkesztéséhez nyissa meg a szabályhoz tartozó három pontot (...), és válassza a **Szerkesztés** lehetőséget.
+1. Végezze el a szükséges módosításokat, majd válassza az **alkalmaz** lehetőséget. 
 
 ## <a name="delete-a-suppression-rule"></a>Mellőzési szabály törlése
 
@@ -103,8 +103,8 @@ Egy vagy több létrehozott szabály törléséhez használja a letiltási szab�
 
 1. A Security Center biztonsági riasztásai lapon válassza a **letiltási szabályok** hivatkozást az oldal tetején.
 1. Megnyílik a letiltási szabályok lap, amely a kijelölt előfizetésekre vonatkozó összes szabályt megjeleníti.
-1. Egyetlen szabály törléséhez nyissa meg a szabály három pontot (...), majd válassza a **Törlés**lehetőséget.
-1. Több szabály törléséhez jelölje be a törölni kívánt szabályok jelölőnégyzetét, majd válassza a **Törlés**lehetőséget.
+1. Egyetlen szabály törléséhez nyissa meg a szabály három pontot (...), majd válassza a **Törlés** lehetőséget.
+1. Több szabály törléséhez jelölje be a törölni kívánt szabályok jelölőnégyzetét, majd válassza a **Törlés** lehetőséget.
     ![Egy vagy több elnyomási szabály törlése](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
 ## <a name="view-suppressed-alerts"></a>Letiltott riasztások megtekintése
@@ -127,9 +127,9 @@ A riasztások letiltási szabályait a Security Center REST API segítségével 
 
 A REST API a következő letiltási szabályokra vonatkozó HTTP-metódusok:
 
-- **Put**: letiltási szabály létrehozása vagy frissítése egy adott előfizetésben.
+- **Put** : letiltási szabály létrehozása vagy frissítése egy adott előfizetésben.
 
-- **Beolvasás**:
+- **Beolvasás** :
 
     - Egy adott előfizetéshez konfigurált összes szabály listázása. Ez a metódus a vonatkozó szabályok tömbjét adja vissza.
 
@@ -137,12 +137,12 @@ A REST API a következő letiltási szabályokra vonatkozó HTTP-metódusok:
 
     - Egy letiltási szabály hatásának szimulálása még a tervezési fázisban. Ez a hívás azonosítja, hogy a meglévő riasztások közül melyik lett elvetve, ha a szabály aktív volt.
 
-- **Törlés**: töröl egy meglévő szabályt (de nem módosítja az általa már elvetett riasztások állapotát).
+- **Törlés** : töröl egy meglévő szabályt (de nem módosítja az általa már elvetett riasztások állapotát).
 
 A részletekért és a használati példákért tekintse meg az [API dokumentációját](/rest/api/securitycenter/). 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk az Azure Security Center letiltási szabályait ismerteti, amelyek automatikusan elmulasztják a nemkívánatos riasztásokat.
 

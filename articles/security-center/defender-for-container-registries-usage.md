@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a1357f263c450605025b6f1e9b7bdea47d0d4f58
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2471a19cf795d969644cb92e23b7a2926f2ee1a9
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289226"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372608"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>A biztonsági rések vizsgálatához használja az Azure Defender for Container nyilvántartót
 
@@ -114,6 +114,9 @@ A Azure Resource Manager-alapú Azure Container Registry tárolt rendszerképek 
 
 ## <a name="disable-specific-findings-preview"></a>Meghatározott eredmények letiltása (előzetes verzió)
 
+> [!NOTE]
+> [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
+
 Ha a szervezetnek figyelmen kívül kell hagynia egy megállapítást, és nem javítja azt, akkor letilthatja. A letiltott eredmények nem befolyásolják a biztonságos pontszámot, vagy nem eredményeznek nemkívánatos zajt.
 
 Ha a keresés megfelel a letiltási szabályokban definiált feltételeknek, az nem jelenik meg az eredmények listájában. A tipikus forgatókönyvek a következők:
@@ -153,7 +156,7 @@ Szabály létrehozása:
     1. A szabály megtekintéséhez vagy törléséhez válassza a három pontot ("...").
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure Defenderről](azure-defender.md)

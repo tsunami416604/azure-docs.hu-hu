@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bfb1c0180b50ca95cb2f1fbff62469e63ab5f19d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 3a2de9b167fcbe9dc603d33fd816e70d5c3705e5
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428108"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372778"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS-fiókok összekötése Azure Security Center
 
@@ -39,7 +39,7 @@ Az alábbi képernyőképen megtekintheti az AWS-fiókokat Security Center átte
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Előnézet|
+|Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
 |Szükséges szerepkörök és engedélyek:|A kapcsolódó Azure-előfizetéshez tartozó **tulajdonos** vagy **közreműködő**|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
@@ -70,18 +70,18 @@ Az AWS-ben kétféleképpen engedélyezhető a Security Center hitelesítése:
 - **AWS-felhasználó a Security Centerhoz** – kevésbé biztonságos megoldás, ha nincs iam engedélyezve
 
 #### <a name="create-an-iam-role-for-security-center"></a>IAM szerepkör létrehozása a Security Centerhoz
-1. A Amazon Web Services-konzol **biztonság, identitás & megfelelőség**területén válassza a **iam**lehetőséget.
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján":::
+1. A Amazon Web Services-konzol **biztonság, identitás & megfelelőség** területén válassza a **iam** lehetőséget.
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="AWS-szolgáltatások":::
 
 1. Válassza a **szerepkörök** lehetőséget, és **hozzon létre egy szerepkört**.
 1. Válasszon **másik AWS-fiókot**.
 1. Adja meg a következő részleteket:
 
-    - **Fiókazonosító** – adja meg a Microsoft-fiók azonosítóját (**158177204117**), ahogyan az a Security Center AWS-összekötő lapján látható.
+    - **Fiókazonosító** – adja meg a Microsoft-fiók azonosítóját ( **158177204117** ), ahogyan az a Security Center AWS-összekötő lapján látható.
     - **Külső azonosító megkövetelése** – ki kell választani
     - **Külső azonosító** – adja meg az előfizetés azonosítóját, ahogyan az az AWS-összekötő oldalán látható Security Center 
 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** gombot.
 1. Az **engedélyezési házirendek csatolása** szakaszban válassza ki a következő házirendeket:
 
     - SecurityAudit
@@ -89,25 +89,25 @@ Az AWS-ben kétféleképpen engedélyezhető a Security Center hitelesítése:
     - AWSSecurityHubReadOnlyAccess
 
 1. Opcionálisan hozzáadhat címkéket. A Címkék hozzáadása a felhasználóhoz nem befolyásolja a kapcsolódást.
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** gombot.
 
 1. A szerepkörök listában válassza ki a létrehozott szerepkört.
 
 1. Mentse az Amazon-erőforrás nevét (ARN) később. 
 
 #### <a name="create-an-aws-user-for-security-center"></a>AWS-felhasználó létrehozása Security Centerhoz 
-1. Nyissa meg a **felhasználók** lapot, és válassza a **felhasználó hozzáadása**elemet.
+1. Nyissa meg a **felhasználók** lapot, és válassza a **felhasználó hozzáadása** elemet.
 1. A **részletek** lépésben adjon meg Security Center felhasználónevet, és győződjön meg arról, hogy az AWS hozzáférési típushoz a **programozott hozzáférés** lehetőséget választotta. 
-1. Válassza a **következő engedélyek**lehetőséget.
+1. Válassza a **következő engedélyek** lehetőséget.
 1. Válassza a **meglévő szabályzatok közvetlen csatolása** lehetőséget, és alkalmazza a következő házirendeket:
     - SecurityAudit
     - AmazonSSMAutomationRole
     - AWSSecurityHubReadOnlyAccess
     
 1. Kattintson a **Tovább gombra: címkék**. Opcionálisan hozzáadhat címkéket. A Címkék hozzáadása a felhasználóhoz nem befolyásolja a kapcsolódást.
-1. Válassza az **Áttekintés**lehetőséget.
+1. Válassza az **Áttekintés** lehetőséget.
 1. Mentse az automatikusan generált **hozzáférési kulcs azonosítóját** és a **titkos elérési kulcs** CSV-fájlját később.
-1. Tekintse át az összegzést, és kattintson a **felhasználó létrehozása**lehetőségre.
+1. Tekintse át az összegzést, és kattintson a **felhasználó létrehozása** lehetőségre.
 
 
 ### <a name="step-3-configure-the-ssm-agent"></a>3. lépés Az SSM-ügynök konfigurálása
@@ -128,20 +128,20 @@ Az AWS Systems Manager szükséges a feladatok AWS-erőforrásokon keresztüli a
 
 ### <a name="step-5-connect-aws-to-security-center"></a>5. lépés Az AWS összekötése Security Center
 
-1. A Security Center menüjében válassza a **több Felhőbeli összekötők**lehetőséget.
-1. Válassza az **AWS-fiók hozzáadása**lehetőséget.
-    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján":::
+1. A Security Center menüjében válassza a **több Felhőbeli összekötők** lehetőséget.
+1. Válassza az **AWS-fiók hozzáadása** lehetőséget.
+    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="AWS-fiók hozzáadása gomb a Security Center multi Cloud Connectors oldalán":::
 1. Adja meg a beállításokat az **AWS-hitelesítés** lapon:
     1. Adja meg az összekötő **megjelenítendő nevét** .
     1. Győződjön meg arról, hogy az előfizetés helyes. Ez az előfizetés tartalmazza az összekötő és az AWS Security hub javaslatait.
     1. A 2. lépésben kiválasztott hitelesítési lehetőségtől függően [. Security Center hitelesítésének beállítása AWS-ben](#step-2-set-up-authentication-for-security-center-in-aws):
         - Válassza a  **szerepkör** bejelölése és az ARN beillesztése a [következőre: iam szerepkör létrehozása a Security Centerhoz](#create-an-iam-role-for-security-center)lehetőséget.
-            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján":::
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Az ARN-fájl beillesztése az AWS-kapcsolatok varázsló megfelelő mezőjébe az Azure Portalon":::
 
             OR
 
         - Válassza ki a **hitelesítő adatokat** , majd illessze be a **hozzáférési kulcsot** és a **titkos kulcsot** az [AWS-felhasználó létrehozása a Security Centerhoz](#create-an-aws-user-for-security-center)című. csv fájlból.
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** gombot.
 1. Adja meg a beállításokat az **Azure arc konfiguráció** lapján:
 
     Security Center felveszi a csatlakoztatott AWS-fiókban lévő EC2-példányokat, és az SSM-t használja az Azure-ív bevezetéséhez. 
@@ -168,7 +168,7 @@ Ha az összekötő létrehozása sikeres volt, és az AWS biztonsági központ m
 - Az ASC szolgáltatás 6 óránként megvizsgálja az új AWS EC2-példányokat, és a konfigurációnak megfelelően bekészíti őket.
 - Az AWS CIS standard a Security Center szabályozási megfelelőségi irányítópultján jelenik meg.
 - Ha a biztonsági központ házirendje engedélyezve van, a javaslatok a Security Center Portálon és a megfelelőségi megfelelőségi irányítópulton 5-10 perccel a bevezetést követően jelennek meg.
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="AWS-erőforrások és javaslatok Security Center ajánlásai oldalon":::
 
 
 
@@ -178,7 +178,7 @@ A fentiekben leírtaknak megfelelően a Azure Security Center biztonsági javasl
 
 Ha az erőforrás típusa szerint szeretné megtekinteni az összes aktív javaslatot az erőforrásokhoz, használja a Security Center eszköz leltározási lapját, és szűrje az AWS-erőforrástípus, amelyben érdekli:
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján"::: 
+:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="A tárgyieszköz-leltár oldal erőforrástípus-szűrője, amely az AWS-beállításokat jeleníti meg"::: 
 
 
 ## <a name="aws-in-security-center-faq"></a>AWS Security Center – gyakori kérdések

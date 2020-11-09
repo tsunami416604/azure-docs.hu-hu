@@ -7,14 +7,14 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 347d5ac9de164f2e96340df71fd3b1b908e607c1
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532550"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372744"
 ---
-# <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Erőforrások kizárása a javaslatokból és a biztonságos pontszámból
+# <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Erőforrás kivonása egy javaslatból és biztonsági pontszámból
 
 Minden biztonsági csapat alapvető prioritása annak biztosítása, hogy az elemzők a szervezet számára fontos feladatokra és incidensekre összpontosítsanak. A Security Center számos funkcióval rendelkezik a leginkább rangsorolt információk testreszabásához, és gondoskodik arról, hogy a biztonságos pontszám a szervezet biztonsági döntéseinek érvényes áttekintése legyen. A kivételt képező erőforrások egy ilyen szolgáltatás.
 
@@ -30,7 +30,7 @@ Az erőforrás nem alkalmazhatóként jelenik meg, és az OK "kivételként" jel
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Előnézet|
+|Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Árképzési|Ez egy prémium szintű Azure Policy-képesség, amely az Azure Defender-ügyfelek számára ingyenes, díjmentesen használható. Más felhasználók esetében a jövőben a díjak is vonatkozhatnak.|
 |Szükséges szerepkörök és engedélyek:|**Előfizetés tulajdonosának** vagy **szabályzatának közreműködője** a kivétel létrehozásához<br>Szabály létrehozásához engedélyekre van szükség a házirendek szerkesztéséhez Azure Policy.<br>További információ az [Azure RBAC engedélyeiről Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
@@ -45,7 +45,7 @@ Az erőforrás nem alkalmazhatóként jelenik meg, és az OK "kivételként" jel
 
     Megnyílik a kivétel létrehozása panel.
 
-    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Kivételi lehetőség létrehozása a helyi menüből":::
+    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Kivétel panel létrehozása":::
 
 1. Adja meg a feltételeket, és válasszon egy olyan feltételt, amely miatt az erőforrást mentesíteni kell:
     - **Enyhített** – ez a probléma nem vonatkozik az erőforrásra, mert egy másik eszköz vagy folyamat kezelte, mint a javasolt
@@ -56,11 +56,11 @@ Az erőforrás nem alkalmazhatóként jelenik meg, és az OK "kivételként" jel
     - Az erőforrás a javaslat részletei lap **nem alkalmazható** lapján jelenik meg.
     - A javaslat részletei oldal tetején található információs szalag a mentesített erőforrások számát sorolja fel:
         
-        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Kivételi lehetőség létrehozása a helyi menüből":::
+        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Mentesített erőforrások száma":::
 
 1. A mentesített erőforrások áttekintéséhez nyissa meg a **nem alkalmazható** lapot.
 
-    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Kivételi lehetőség létrehozása a helyi menüből":::
+    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Kivétel módosítása":::
 
     Az egyes kivételek okát a táblázat tartalmazza (1).
 
@@ -73,12 +73,12 @@ A kivételi szabályok az Azure Policy használatával hoznak létre kivételt a
 
 Azure Policy segítségével nyomon követheti az összes kivételt a **kivételek** oldalán:
 
-:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Kivételi lehetőség létrehozása a helyi menüből":::
+:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Azure Policy kivételének lapja":::
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan mentesített egy erőforrást egy javaslatból, hogy az ne befolyásolja a biztonságos pontszámot. A biztonságos pontszámról további információt a következő témakörben talál:
 
-- [Biztonságos pontszám Azure Security Center](secure-score-security-controls.md)
+- [Biztonsági pontszám az Azure Security Centerben](secure-score-security-controls.md)

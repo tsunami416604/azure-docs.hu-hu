@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 7301f6bbb33c3eedff2e8c41edeaacb3df66d4c2
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 220f9fffd6c0f9b959230964a9ec79f4e209bd54
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342025"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372543"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Az SQL-hez készült Azure Defender bemutatása
 
@@ -23,10 +23,10 @@ Az SQL-hez készült Azure Defender két Azure Defender-csomagot tartalmaz, amel
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|**Azure Defender az Azure SQL Database-kiszolgálókhoz** – általánosan elérhető (GA)<br>**Azure Defender a gépeken futó SQL-kiszolgálókon** – előzetes verzió|
+|Kiadás állapota:|**Azure Defender az Azure SQL Database-kiszolgálókhoz** – általánosan elérhető (GA)<br>**Azure Defender a gépeken futó SQL-kiszolgálókon** – előzetes verzió<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Árképzési|Az **Azure Defender for SQL** -t alkotó két csomag számlázása [a díjszabási oldalon](security-center-pricing.md) látható módon történik|
 |Védett SQL-verziók:|Azure SQL Database <br>Felügyelt Azure SQL-példány<br>Azure Synapse Analytics (korábban SQL DW)<br>SQL Server (az összes támogatott verzió)|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>Mire használható az Azure Defender az SQL-védelemhez?
@@ -62,7 +62,7 @@ A riasztások tartalmazzák az azokat kiváltó incidens részleteit, valamint a
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta az SQL-hez készült Azure Defendert.
 

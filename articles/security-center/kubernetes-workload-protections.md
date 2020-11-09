@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 38c5df6a05d327e0b057501846e70d1f3c6c4896
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ed9c3c86336a7b0a2fe989cbe9bd0dd825c5575b
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091151"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372625"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>A Kubernetes számítási feladatok védelme
 
@@ -35,7 +35,7 @@ Security Center több tároló biztonsági funkciót kínál, ha engedélyezi az
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Előnézet|
+|Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|Egy hozzárendelés szerkesztéséhez a **tulajdonos** vagy a **biztonsági rendszergazda**<br>**Olvasó** a javaslatok megtekintéséhez|
 |Támogatott fürtök:|Kubernetes v 1.14 (vagy újabb) szükséges<br>Nincs PodSecurityPolicy-erőforrás (régi PSP-modell) a fürtökön<br>A Windows-csomópontok nem támogatottak|
@@ -56,23 +56,54 @@ Azure Security Center tartalmaz olyan javaslatokat, amelyek akkor érhetők el, 
         > [!TIP]
         > A javaslat öt különböző biztonsági vezérlőben szerepel, és nem számít, hogy melyiket választotta ki a következő lépésben.
 
-    1. A biztonsági vezérlők bármelyikén válassza ki a javaslatot azon erőforrások megtekintéséhez, amelyekre telepíteni tudja a hozzáadást, majd válassza a **szervizelés**lehetőséget. 
+    1. A biztonsági vezérlők bármelyikén válassza ki a javaslatot azon erőforrások megtekintéséhez, amelyekre telepíteni tudja a hozzáadást, majd válassza a **szervizelés** lehetőséget. 
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="A (z) * * Azure Policy bővítmény Kubernetes telepítéséhez és engedélyezéséhez a fürtökön * *" lehetőséget.
+        :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="A (z) * * Azure Policy bővítmény Kubernetes való telepítéséhez és engedélyezéséhez telepíteni és engedélyezni kell a fürtökön * *":::
+
+1. A bővítmény telepítése után körülbelül 30 perccel a Security Center megjeleníti a fürtök állapotát a következő javaslatok esetében, amelyek mindegyike a megfelelő biztonsági vezérlőben látható:
+
+    > [!TIP]
+    > Bizonyos javaslatok olyan paraméterekkel rendelkeznek, amelyeket az Azure Policy használatával kell testreszabni a hatékony használat érdekében. Ahhoz például, hogy az ajánlati **tároló lemezképeit csak megbízható beállításjegyzékből lehessen telepíteni** , meg kell határoznia a megbízható beállításjegyzéket.
+    > 
+    > Ha nem adja meg a konfigurációt igénylő javaslatok szükséges paramétereit, a munkaterhelések nem kifogástalan állapotú jelennek meg.
+
+    | Javaslat neve                                                         | Biztonsági ellenőrzés                         | Konfiguráció szükséges |
+    |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
+    | A tároló CPU-és memória-korlátozásait kényszeríteni kell                          | Alkalmazások elleni védelem a DDoS-támadásokkal szemben | Nem                     |
+    | Az emelt szintű tárolókat el kell kerülni                                     | Hozzáférés és engedélyek kezelése            | Nem                     |
+    | Nem módosítható (csak olvasható) rendszerindító fájlrendszert kell kikényszeríteni a tárolók számára     | Hozzáférés és engedélyek kezelése            | Nem                     |
+    | A jogosultság-eszkalációs tárolót el kell kerülni                       | Hozzáférés és engedélyek kezelése            | Nem                     |
+    | A tárolók futtatását root felhasználóként el kell kerülni                           | Hozzáférés és engedélyek kezelése            | Nem                     |
+    | A bizalmas gazdagépek névtereit megosztó tárolókat el kell kerülni              | Hozzáférés és engedélyek kezelése            | Nem                     |
+    | A minimálisan privilegizált Linux-funkciókat kell kikényszeríteni a tárolók számára       | Hozzáférés és engedélyek kezelése            | **Igen**                |
+    | A pod HostPath mennyiségi csatlakoztatások használatát egy ismert listára kell korlátozni    | Hozzáférés és engedélyek kezelése            | **Igen**                |
+    | A tárolóknak csak az engedélyezett portok figyelésére kell figyelniük                              | Jogosulatlan hálózati hozzáférés korlátozása     | **Igen**                |
+    | A szolgáltatásoknak csak a megengedett portok figyelésére kell figyelniük                                | Jogosulatlan hálózati hozzáférés korlátozása     | **Igen**                |
+    | A gazdagép hálózatkezelésének és portjainak használatát korlátozni kell                     | Jogosulatlan hálózati hozzáférés korlátozása     | **Igen**                |
+    | A tárolók AppArmor-profiljának felülbírálását vagy letiltását korlátozni kell | Biztonsági konfigurációk javítása        | **Igen**                |
+    | A tároló lemezképeit csak a megbízható kibocsátásiegység-forgalmi jegyzékből kell telepíteni            | Biztonsági rések szervizelése                | **Igen**                |
+
+
+1. A paraméterekkel rendelkező ajánlásokat a következő paraméterekkel kell megadni:
+
+    1. A Security Center menüjében válassza a **biztonsági szabályzat** elemet.
+    1. Válassza ki az adott előfizetést.
+    1. Az **Security Center alapértelmezett házirend** szakaszban válassza a **hatályos házirend megtekintése** lehetőséget.
+    1. Válassza az "ASC alapértelmezett" lehetőséget.
     1. Nyissa meg a **Parameters (paraméterek** ) fület, és szükség szerint módosítsa az értékeket.
-    1. Válassza a **felülvizsgálat + mentés**lehetőséget.
-    1. Válassza a **Mentés** lehetőséget.
+    1. Válassza a **felülvizsgálat + mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 
 1. A javaslatok bármelyikének érvénybe léptetéséhez 
 
-    1. Nyissa meg a javaslat részletei lapot, és válassza a **Megtagadás**lehetőséget:
+    1. Nyissa meg a javaslat részletei lapot, és válassza a **Megtagadás** lehetőséget:
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="A (z) * * Azure Policy bővítmény Kubernetes telepítéséhez és engedélyezéséhez a fürtökön * *":::
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure Policy paraméter megtagadási beállítása":::
 
         Ekkor megnyílik a panel, amelyen be kell állítania a hatókört. 
 
-    1. A hatókör beállítása után válassza a **módosítás megtagadásra**lehetőséget.
+    1. A hatókör beállítása után válassza a **módosítás megtagadásra** lehetőséget.
 
 1. Annak megtekintéséhez, hogy mely javaslatok vonatkoznak a fürtökre:
 
@@ -80,9 +111,9 @@ Azure Security Center tartalmaz olyan javaslatokat, amelyek akkor érhetők el, 
 
     1. Válasszon ki egy fürtöt a vizsgálathoz, és tekintse át a rendelkezésre álló elérhető javaslatokat. 
 
-1. Ha a munkaterhelés-védelmi készletből származó javaslatot tekint meg, látni fogja, hogy a fürttel együtt hány érintett hüvely ("Kubernetes Components") szerepel. Az adott hüvelyek listájához jelölje ki a fürtöt, majd válassza a **művelet elvégzése**lehetőséget.
+1. Ha a munkaterhelés-védelmi készletből származó javaslatot tekint meg, látni fogja, hogy a fürttel együtt hány érintett hüvely ("Kubernetes Components") szerepel. Az adott hüvelyek listájához jelölje ki a fürtöt, majd válassza a **művelet elvégzése** lehetőséget.
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="A (z) * * Azure Policy bővítmény Kubernetes telepítéséhez és engedélyezéséhez a fürtökön * *"::: 
+    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="Az érintett hüvelyek megtekintése K8s javaslathoz"::: 
 
 1. A kényszerítés teszteléséhez használja az alábbi két Kubernetes üzemelő példányt:
 
@@ -204,7 +235,7 @@ spec:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja a Kubernetes munkaterhelés-védelmet. 
 

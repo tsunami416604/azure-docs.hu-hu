@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39486b076f9284436207f823ea48fddc98bb48a0
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320625"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372846"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>HSM-védelemmel ellátott kulcsok importálása a felügyelt HSM-be (BYOK)
 
@@ -67,6 +67,9 @@ Ha további információt szeretne a bejelentkezési lehetőségekről a CLI-n k
 |Fortanix|Gyártó<br/>HSM szolgáltatásként|<ul><li>Self-Defending kulcskezelő szolgáltatás (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS-kulcsok exportálása a BYOK a felhőalapú szolgáltatók számára – Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Gyártó|Az összes LiquidSecurity-HSM a<ul><li>Belső vezérlőprogram verziója 2.0.4 vagy újabb</li><li>Belső vezérlőprogram 3,2-es vagy újabb verziója</li></ul>|[Marvell BYOK eszköz és dokumentáció](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Enterprise Key Management System)|Több HSM-márka és-modell, beleértve a következőket is<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>[Részletekért lásd a Cryptomathic-webhelyet](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK eszköz és dokumentáció](https://www.cryptomathic.com/azurebyok)|
+|Securosys SA|Gyártó, HSM szolgáltatásként|Primus HSM-család, Securosys felhők HSM|[Primus BYOK eszköz és dokumentáció](https://www.securosys.com/primus-azure-byok)|
+||||
+
 
 ## <a name="supported-key-types"></a>Támogatott kulcstípusok
 
@@ -124,7 +127,7 @@ Vigye át a BYOK-fájlt a csatlakoztatott számítógépre.
 > [!NOTE] 
 > Az RSA 1 024 bites kulcsok importálása nem támogatott. Jelenleg egy elliptikus görbe (EC) kulcs importálása nem támogatott.
 >
-> **Ismert probléma**: a Luna HSM-ből származó RSA 4k-cél kulcsának importálása csak a belső vezérlőprogram 7.4.0 vagy újabb verziója esetén támogatott.
+> **Ismert probléma** : a Luna HSM-ből származó RSA 4k-cél kulcsának importálása csak a belső vezérlőprogram 7.4.0 vagy újabb verziója esetén támogatott.
 
 ### <a name="step-4-transfer-your-key-to-managed-hsm"></a>4. lépés: a kulcs átvitele a felügyelt HSM-be
 
@@ -136,7 +139,7 @@ az keyvault key import --hsm-name ContosoKeyVaultHSM --name ContosoFirstHSMkey -
 
 Ha a feltöltés sikeres, az Azure CLI megjeleníti az importált kulcs tulajdonságait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezt a HSM-védelemmel ellátott kulcsot már használhatja a felügyelt HSM-ben. További információkért tekintse meg [ezt az árat és a szolgáltatás összehasonlítását](https://azure.microsoft.com/pricing/details/key-vault/).
 

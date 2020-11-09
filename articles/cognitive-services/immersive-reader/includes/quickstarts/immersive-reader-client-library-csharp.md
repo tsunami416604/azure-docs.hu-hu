@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1c7587a4434a84c6934179393baa5ae684f9b1fd
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116713"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371934"
 ---
 A teljes körűen kialakított [olvasó](https://www.onenote.com/learningtools) egy kipróbált eljárás, amely az új olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségeket, például a diszlexiat is javítja. Az alkalmazásokban magával ragadó olvasóval elkülönítheti a szöveget a fókusz növeléséhez, képeket jeleníthet meg a gyakran használt szavakhoz, kiemelheti a beszéd részeit, beolvashatja a kijelölt szöveget hangosan, lefordíthatja a szavakat és kifejezéseket valós időben, és így tovább.
 
@@ -42,7 +42,7 @@ Hozzon létre egy új projektet a Visual Studióban a ASP.NET Core webalkalmazá
 
 ### <a name="configure-authentication-values"></a>Hitelesítési értékek konfigurálása
 
-Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **felhasználói titkok kezelése**lehetőséget. Ekkor megnyílik egy _secrets.js_nevű fájl. Ezt a fájlt a verziókövetés nem ellenőrzi. További információ [itt](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true). Cserélje le asecrets.jstartalmát a következőre, és adja _ meg_ a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
+Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **felhasználói titkok kezelése** lehetőséget. Ekkor megnyílik egy _secrets.js_ nevű fájl. Ezt a fájlt a verziókövetés nem ellenőrzi. További információ [itt](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1). Cserélje le asecrets.jstartalmát a következőre, és adja _meg_ a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
 
 ```json
 {
@@ -65,7 +65,7 @@ Nyissa meg a NuGet csomagkezelő konzolt a **Tools-> NuGet csomagkezelő-> Packa
 
 ### <a name="update-the-controller-to-acquire-the-token"></a>A vezérlő frissítése a jogkivonat beszerzéséhez 
 
-Nyissa meg a _Controllers\HomeController.cs_, és adja hozzá a következő kódot a fájl elején található _using_ utasítások után.
+Nyissa meg a _Controllers\HomeController.cs_ , és adja hozzá a következő kódot a fájl elején található _using_ utasítások után.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -218,9 +218,9 @@ Figyelje meg, hogy az összes szöveg **lang** attribútummal rendelkezik, amely
 
 ## <a name="add-javascript-to-handle-launching-immersive-reader"></a>JavaScript hozzáadása a lebilincselő olvasó elindításához
 
-A részletes olvasó függvénytár olyan funkciókat biztosít, mint például a magával ragadó olvasó elindítása és a magára ejtő olvasó gombok megjelenítése. További információ [itt](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference).
+A részletes olvasó függvénytár olyan funkciókat biztosít, mint például a magával ragadó olvasó elindítása és a magára ejtő olvasó gombok megjelenítése. További információ [itt](../../reference.md).
 
-A _Views\Home\Index.cshtml_alján adja hozzá a következő kódot:
+A _Views\Home\Index.cshtml_ alján adja hozzá a következő kódot:
 
 ```html
 @section Scripts
@@ -292,7 +292,7 @@ A _Views\Home\Index.cshtml_alján adja hozzá a következő kódot:
 
 ## <a name="build-and-run-the-app"></a>Készítsen buildet és futtassa az alkalmazást
 
-A menüsávban válassza a **hibakeresés > a hibakeresés elindítása**lehetőséget, vagy nyomja le az **F5** billentyűt az alkalmazás elindításához.
+A menüsávban válassza a **hibakeresés > a hibakeresés elindítása** lehetőséget, vagy nyomja le az **F5** billentyűt az alkalmazás elindításához.
 
 A böngészőben a következőknek kell megjelennie:
 

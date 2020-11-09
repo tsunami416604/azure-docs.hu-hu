@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
 ms.custom: devx-track-js
-ms.openlocfilehash: 376ad893bf6fee36543e691fe50f369d8a43142c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b970b099d87148d169b2be3b7e72d32c159f5046
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018463"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371762"
 ---
 Ismerkedjen meg az anomáliák Kiderítő ügyféloldali kódtáraval a JavaScripthez. Az alábbi lépéseket követve telepítheti a csomagot a szolgáltatás által biztosított algoritmusok használatával. Az anomália-detektor szolgáltatás lehetővé teszi, hogy az idősoros adataiban az adatsorozatok adatait automatikusan a legjobb illeszkedő modellekkel találja, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől.
 
@@ -72,11 +72,11 @@ Az alkalmazás `package.json` fájlja a függőségekkel lesz frissítve.
 
 ## <a name="object-model"></a>Objektummodell
 
-A rendellenesség-Kiderítő ügyfél egy [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél a [entireDetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--)vagy a [LastDetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-)használatával egy teljes adatkészlet esetében elvégezheti a anomáliák észlelését. A [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) metódus észleli azokat a pontokat, amelyek egy trend változásait jelzik. 
+A rendellenesség-Kiderítő ügyfél egy [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél a [entireDetect ()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--)vagy a [LastDetect ()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-)használatával egy teljes adatkészlet esetében elvégezheti a anomáliák észlelését. A [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) metódus észleli azokat a pontokat, amelyek egy trend változásait jelzik. 
 
-Az idősorozat-információk küldése a [kérelem](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest) objektumában lévő [pontok](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) sorozata. Az `Request` objektum olyan tulajdonságokat tartalmaz, amelyek leírják az adatok (például a[részletesség](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest#granularity) ) és az anomáliák észlelésének paramétereit. 
+Az idősorozat-információk küldése a [kérelem](/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest) objektumában lévő [pontok](/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) sorozata. Az `Request` objektum olyan tulajdonságokat tartalmaz, amelyek leírják az adatok (például a[részletesség](/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest#granularity) ) és az anomáliák észlelésének paramétereit. 
 
-Az anomália-detektor válasza egy [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest), [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest)vagy [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) objektum a használt metódustól függően. 
+Az anomália-detektor válasza egy [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest), [EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest)vagy [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) objektum a használt metódustól függően. 
 
 ## <a name="code-examples"></a>Kódpéldák 
 
@@ -90,32 +90,32 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a 
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Hozza létre a [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) objektumot a végponttal és a hitelesítő adatokkal.
+Hozza létre a [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) objektumot a végponttal és a hitelesítő adatokkal.
 
 [!code-javascript[Authentication](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=authentication)]
 
 ## <a name="load-time-series-data-from-a-file"></a>Adatsorozat-adatok betöltése fájlból
 
 A rövid útmutatóhoz tartozó példa adatainak letöltése a [githubról](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/AnomalyDetector/request-data.csv):
-1. A böngészőben kattintson a jobb gombbal a **RAW**elemre.
-2. Kattintson **a hivatkozás mentése másként**elemre.
+1. A böngészőben kattintson a jobb gombbal a **RAW** elemre.
+2. Kattintson **a hivatkozás mentése másként** elemre.
 3. Mentse a fájlt egy. csv-fájlként az alkalmazás könyvtárába.
 
 Ez az idősoros adat. csv-fájlként van formázva, és a rendszer elküldi a rendellenesség-Kiderítő API-nak.
 
-Olvassa el az adatfájlt a CSV-parse Library `readFileSync()` metódusával, és elemezze a fájlt a következővel: `parse()` . Az egyes sorok esetében leküldheti az időbélyeget tartalmazó [pont](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) objektumot és a numerikus értéket.
+Olvassa el az adatfájlt a CSV-parse Library `readFileSync()` metódusával, és elemezze a fájlt a következővel: `parse()` . Az egyes sorok esetében leküldheti az időbélyeget tartalmazó [pont](/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) objektumot és a numerikus értéket.
 
 [!code-javascript[Read the data file](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=readFile)]
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>A teljes adathalmazban észlelt rendellenességek észlelése 
 
-Hívja meg az API-t, hogy a teljes idősorozaton keresztül észlelje a rendellenességeket az ügyfél [entireDetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--msrest-requestoptionsbase-) metódusával. Tárolja a visszaadott [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) objektumot. Ismételje meg a válasz `isAnomaly` listáját, és nyomtassa ki bármelyik érték indexét `true` . Ezek az értékek a rendellenes adatpontok indexének felelnek meg, ha vannak ilyenek.
+Hívja meg az API-t, hogy a teljes idősorozaton keresztül észlelje a rendellenességeket az ügyfél [entireDetect ()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--msrest-requestoptionsbase-) metódusával. Tárolja a visszaadott [EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) objektumot. Ismételje meg a válasz `isAnomaly` listáját, és nyomtassa ki bármelyik érték indexét `true` . Ezek az értékek a rendellenes adatpontok indexének felelnek meg, ha vannak ilyenek.
 
 [!code-javascript[Batch detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=batchCall)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>A legutóbbi adatpont anomália állapotának észlelése
 
-A rendellenesség-Kiderítő API meghívásával megállapíthatja, hogy a legutóbbi adatpontja anomália-e az ügyfél [lastDetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) metódusának használatával, és tárolja a visszaadott [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) objektumot. A válasz `isAnomaly` értéke egy olyan logikai érték, amely megadja az adott pont anomáliának állapotát.  
+A rendellenesség-Kiderítő API meghívásával megállapíthatja, hogy a legutóbbi adatpontja anomália-e az ügyfél [lastDetect ()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) metódusának használatával, és tárolja a visszaadott [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) objektumot. A válasz `isAnomaly` értéke egy olyan logikai érték, amely megadja az adott pont anomáliának állapotát.  
 
 [!code-javascript[Last point detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=lastDetection)]
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: memildin
-ms.openlocfilehash: f98927e71a675cc6264c413ba07b3cf689b91560
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3cc64d2721f73da36fdc4fce009cccb5fdfd6b6b
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784286"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372693"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások - – referencia-útmutató
 
@@ -456,8 +456,10 @@ A Security Center támogatott kill Chain-leképezések a következő táblázatb
 | **Hatás**              | Az események hatására elsősorban a rendszer, a szolgáltatás vagy a hálózat rendelkezésre állásának vagy integritásának közvetlen csökkentését kísérli meg. többek között az üzleti vagy működési folyamatokat befolyásoló adatmanipulációk. Ez gyakran olyan technikákra vonatkozik, mint a ransomware, az adatkezelés, az adatmanipuláció és mások.                                                                                                                                                                                                                                                                                                     |
 |                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |  |
 
+> [!NOTE]
+> Előzetes verzióban elérhető riasztások esetén: [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A riasztásokkal kapcsolatos további tudnivalókért tekintse meg a következőket:
 
 - [Biztonsági riasztások az Azure Security Centerben](security-center-alerts-overview.md)

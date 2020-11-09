@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: fa7d252246ed37160ba2a5cfcd90557df1375bc3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4f83500e539ff5254db290d156dfcf50ea60de14
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461532"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372557"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender a gépeken futó SQL-kiszolgálókon 
 
@@ -30,7 +30,7 @@ A riasztások akkor jelennek meg, ha gyanús adatbázis-tevékenységek, potenci
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Előnézet|
+|Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Árképzési|A **gépeken futó Azure Defender szolgáltatás** számlázása [a díjszabási oldalon](security-center-pricing.md) látható módon történik.|
 |Védett SQL-verziók:|Azure SQL Server (a Microsoft támogatási szolgálata által érintett összes verzió)|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
@@ -53,7 +53,7 @@ A fentiek mindegyikét alább találja.
 
 - **Helyszíni SQL Server** – ha a SQL Server Azure arc nélküli helyszíni Windows-gépen üzemel, két lehetőség közül választhat az Azure-hoz való csatlakozáshoz:
     
-    - Az **Azure arc üzembe helyezése** – bármely Windows-gépet összekapcsolhat Security Centerhoz. Az Azure arc azonban mélyebb integrációt tesz lehetővé az *összes* Azure-környezetben. Ha beállítja az Azure-ívet, a portálon megjelenik a **SQL Server – Azure arc** oldal, és a biztonsági riasztások az oldal dedikált **Biztonság** lapján jelennek meg. Ezért az első és ajánlott lehetőség az [Azure arc beállítása a gazdagépen](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) , és kövesse az Azure-beli **SQL Server vonatkozó**utasításokat.
+    - Az **Azure arc üzembe helyezése** – bármely Windows-gépet összekapcsolhat Security Centerhoz. Az Azure arc azonban mélyebb integrációt tesz lehetővé az *összes* Azure-környezetben. Ha beállítja az Azure-ívet, a portálon megjelenik a **SQL Server – Azure arc** oldal, és a biztonsági riasztások az oldal dedikált **Biztonság** lapján jelennek meg. Ezért az első és ajánlott lehetőség az [Azure arc beállítása a gazdagépen](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) , és kövesse az Azure-beli **SQL Server vonatkozó** utasításokat.
         
     - **A Windows rendszerű gép összekapcsolása az Azure arc nélkül** – ha úgy dönt, hogy a Windows-gépen futó SQL Servert az Azure arc használata nélkül kívánja összekapcsolni, kövesse a Windows rendszerű [gépek összekapcsolása a Azure monitor](../azure-monitor/platform/agent-windows.md).
 
@@ -64,7 +64,7 @@ A fentiek mindegyikét alább találja.
 
     - Ha **Azure Security Center alapértelmezett munkaterületét** használja ("alapértelmezettmunkaterület-[előfizetési azonosító]-[régió]"), válassza ki a megfelelő **előfizetést**.
 
-    - Ha **nem alapértelmezett munkaterületet**használ, válassza ki a megfelelő **munkaterületet** (ha szükséges, adja meg a munkaterület nevét a szűrőben):
+    - Ha **nem alapértelmezett munkaterületet** használ, válassza ki a megfelelő **munkaterületet** (ha szükséges, adja meg a munkaterület nevét a szűrőben):
 
         ![A nem alapértelmezett munkaterület megkeresése cím szerint](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
@@ -97,7 +97,7 @@ A sebezhetőségi felmérés eredményei közvetlenül a Security Center tekinth
 
     Megjelenik a javaslat részletes nézete.
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="A biztonsági rések felmérésének eredményeit a gépeken lévő SQL-kiszolgálókon szervizelni kell (előzetes verzió)":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="A javaslat részletes nézete":::
 
 1. További részleteket a következő részletezésben talál:
 
@@ -105,7 +105,7 @@ A sebezhetőségi felmérés eredményei közvetlenül a Security Center tekinth
 
     * Az adott SQL-adatbázis által csoportosított biztonsági rések áttekintéséhez válassza ki az Önt érdeklő adatbázist.
 
-    Az egyes nézetekben a biztonsági ellenőrzések **Súlyosság**szerint rendezve jelennek meg. Egy adott biztonsági vizsgálatra kattintva megtekintheti a részleteket tartalmazó ablaktáblát **, amely** **leírja, hogyan**javíthatja, és egyéb kapcsolódó információkat, például a **hatást** vagy a **teljesítménytesztet**.
+    Az egyes nézetekben a biztonsági ellenőrzések **Súlyosság** szerint rendezve jelennek meg. Egy adott biztonsági vizsgálatra kattintva megtekintheti a részleteket tartalmazó ablaktáblát **, amely** **leírja, hogyan** javíthatja, és egyéb kapcsolódó információkat, például a **hatást** vagy a **teljesítménytesztet**.
 
 ## <a name="azure-defender-for-sql-alerts"></a>SQL-alapú Azure Defender-riasztások
 A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják az SQL-gépek eléréséhez vagy kiaknázásához. Ezek az események riasztásokat indíthatnak a riasztások [SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) szakaszában a riasztások hivatkozása lapon](alerts-reference.md#alerts-sql-db-and-warehouse).

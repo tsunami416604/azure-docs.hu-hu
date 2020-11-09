@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 8896ed3eed291e6ec18c45df60e6079ada769b28
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 3a597b6454b3fb738ca192fa7750ca94fdb873ab
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993333"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372795"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 
@@ -21,14 +21,14 @@ A Red Hat Enterprise Linux-(RHEL-) lemezképek az Azure-ban az utólagos elszám
 >[!NOTE]
 > A RHEL BYOS Gold-lemezképek az Azure nyilvános (kereskedelmi) és Azure Government felhőkben érhetők el. Nem érhetők el az Azure China-ban vagy az Azure Blackforest-felhőkben.
 
-## <a name="important-points-to-consider"></a>Megfontolandó fontos szempontok
+## <a name="important-points-to-consider"></a>Fontos tudnivalók
 
 - Az ebben a programban megadott Red Hat Gold images az Azure Marketplace-en elérhető RHEL-RHEL hasonló, éles használatra kész képeket tartalmaz.
 - A rendszerképek az Azure-ban [Red Hat Enterprise Linux lemezképekben](./redhat-images.md)ismertetett aktuális szabályzatokat követik.
 - A rendszerképekből létrehozott virtuális gépekre a szabványos támogatási szabályzatok vonatkoznak.
 - A Red Hat Gold images-ről kiépített virtuális gépek nem teljesítik a RHEL utólagos elszámolású lemezképekhez kapcsolódó RHEL díjakat.
 - A lemezképek nem jogosultak. A Red Hat Subscription-Manager használatával regisztrálnia és előfizethet a virtuális gépekre, hogy közvetlenül a Red hat-ból kapja meg a frissítéseket.
-- A Linux-lemezképek esetében jelenleg nem lehet dinamikusan váltani a BYOS és az utólagos elszámolású számlázási modellek között. A számlázási modell átváltásához újra kell telepítenie a virtuális gépet a megfelelő lemezképből.
+- Az utólagos elszámolású lemezképekről a [Azure Hybrid Benefit](../../linux/azure-hybrid-benefit-linux.md)használatával válthat a BYOS. A Linux-lemezképek esetében azonban nem lehet átváltani egy kezdetben üzembe helyezett BYOS az utólagos elszámolású számlázási modellre. Ahhoz, hogy a számlázási modellt a BYOS-ból utólagos elszámolásra szeretné váltani, újra kell telepítenie a virtuális gépet a megfelelő lemezképből.
 
 >[!NOTE]
 > A 2. generációs RHEL BYOS-lemezképek jelenleg nem érhetők el a Piactéri ajánlaton keresztül. Ha a 2. generációs RHEL BYOS-rendszerképre van szüksége, látogasson el a Cloud Access Irányítópultra a Red Hat előfizetés-kezelésben. További információt a [Red Hat dokumentációjában](https://access.redhat.com/articles/4847681)talál.
@@ -93,7 +93,7 @@ Az alábbi utasítások végigvezetik a RHEL virtuális gép kezdeti üzembe hel
     ```
 
     >[!NOTE]
-    >Ezeket a feltételeket csak egyszer kell elfogadni az *Azure-előfizetések, a RENDSZERKÉP SKU-száma*alapján.
+    >Ezeket a feltételeket csak egyszer kell elfogadni az *Azure-előfizetések, a RENDSZERKÉP SKU-száma* alapján.
 
 1. Választható Ellenőrizze a virtuális gép telepítését a következő paranccsal:
 
@@ -208,7 +208,7 @@ A Azure Disk Encryption alkalmazására vonatkozó lépésekért lásd: [Azure D
 
 - Ha az Automation használatával helyez üzembe virtuális gépeket a RHEL BYOS-lemezképből, meg kell adnia a minta parancsaiban láthatóhoz hasonló csomag-paramétereket. Ha például a Terraform-t használja, megadhatja a terv információit egy [csomag blokkban](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Red Hat Cloud Access további információi a [Red Hat nyilvános felhő dokumentációjában](https://access.redhat.com/public-cloud) találhatók
 - A Felhőbeli hozzáférés részletes útmutatóját és a program részleteit a [Red Hat Cloud Access dokumentációjában](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)találja.

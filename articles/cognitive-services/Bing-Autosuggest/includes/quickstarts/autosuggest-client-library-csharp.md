@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: a6ae9d8975c36e7ffa8e3eadf880b4685390c5fc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9d6d65ea7255528146b144c4bfa35e98b10b4055
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88246067"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371686"
 ---
 Ismerkedjen meg a .NET-hez készült Bing Autosuggest ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 
 A .NET-hez készült Bing Autosuggest ügyféloldali kódtár használatával keresési javaslatokat kaphat a részleges lekérdezési karakterláncok alapján.
 
-[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/)  |  [Mintakód](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
+[Dokumentáció](/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/)  |  [Mintakód](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ A .NET-hez készült Bing Autosuggest ügyféloldali kódtár használatával ke
 ## <a name="create-environment-variables"></a>Környezeti változók létrehozása
 
 >[!NOTE]
-> Az 2019. július 1. után létrehozott erőforrás-végpontok az alábbi egyéni altartomány-formátumot használják. További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains).
+> Az 2019. július 1. után létrehozott erőforrás-végpontok az alábbi egyéni altartomány-formátumot használják. További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../../../cognitive-services-custom-subdomains.md).
 
 Ha a kulcsot és a végpontot a létrehozott erőforrás alapján hozza létre, hozzon létre két környezeti változót a hitelesítéshez:
 <!-- replace the below variable names with the names expected in the code sample.-->
@@ -148,10 +148,10 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 ### <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE]
-> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) nevű Bing AutoSuggest kulcshoz, `AUTOSUGGEST_SUBSCRIPTION_KEY` és egy nevet a végponthoz `AUTOSUGGEST_ENDPOINT` .
+> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a (z) nevű Bing AutoSuggest kulcshoz, `AUTOSUGGEST_SUBSCRIPTION_KEY` és egy nevet a végponthoz `AUTOSUGGEST_ENDPOINT` .
 
 
-Egy új aszinkron módszerrel hozza létre az ügyfelet a végponttal és a kulccsal. Hozzon létre egy [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials?view=azure-dotnet) objektumot a kulccsal, és használja a végpontján egy [AutosuggestClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient?view=azure-dotnet) objektum létrehozásához.
+Egy új aszinkron módszerrel hozza létre az ügyfelet a végponttal és a kulccsal. Hozzon létre egy [ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials?view=azure-dotnet) objektumot a kulccsal, és használja a végpontján egy [AutosuggestClient](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient?view=azure-dotnet) objektum létrehozásához.
 
 ```csharp
 async static Task RunQuickstart()
@@ -167,7 +167,7 @@ async static Task RunQuickstart()
 
 ### <a name="send-an-autosuggest-request"></a>Automatikus kiegészítési kérelem küldése
 
-Ugyanebben a metódusban az ügyfél [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) metódusával küldhet lekérdezést a bingnek. Ezután ismételje meg a [javaslatok](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) válaszát, és nyomtassa ki az első javaslatot.
+Ugyanebben a metódusban az ügyfél [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) metódusával küldhet lekérdezést a bingnek. Ezután ismételje meg a [javaslatok](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) válaszát, és nyomtassa ki az első javaslatot.
 
 ```csharp
 var result = await client.AutoSuggestMethodAsync("xb");
@@ -193,7 +193,7 @@ else
 }
 ```
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccsal.
 
@@ -201,7 +201,7 @@ Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccs
 dotnet run
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek:
 
@@ -213,7 +213,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 > [!div class="nextstepaction"]
 > [Bing Autosuggest-oktatóanyag](../../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Mi a Bing Autosuggest?](../../get-suggested-search-terms.md)
-- [Bing Autosuggest DotNet-hivatkozás](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)
+- [Bing Autosuggest DotNet-hivatkozás](/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)

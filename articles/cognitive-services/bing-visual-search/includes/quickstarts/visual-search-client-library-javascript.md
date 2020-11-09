@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: be06154c95b14443024c6f163c955769f5b05d07
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a87a5f7208e4966b6afba0b939be42726ca20365
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376382"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371968"
 ---
 Ezzel a rövid útmutatóval megkezdheti a rendszerképek elemzését a Bing Visual Search szolgáltatásból a JavaScript ügyféloldali kódtár használatával. Habár a Bing Visual Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js)található. 
 
-[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest&preserve-view=true)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[Dokumentáció](/javascript/api/@azure/cognitiveservices-visualsearch/?preserve-view=true&view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

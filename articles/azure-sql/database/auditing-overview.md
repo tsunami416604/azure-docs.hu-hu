@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 9339ac86595a1edbbd996e410d416074680695ed
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340036"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372727"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>A Azure SQL Database és az Azure szinapszis Analytics naplózása
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ SQL Database naplózást a következőre használhatja:
 - Jelentések **elemzése** . Azonosíthatja a gyanús eseményeket, a szokatlan tevékenységeket és a trendeket.
 
 > [!IMPORTANT]
-> Azure SQL Database naplózás a rendelkezésre állásra és a teljesítményre van optimalizálva. A nagyon magas tevékenység Azure SQL Database vagy az Azure szinapszis lehetővé teszi, hogy a műveletek folytatódnak, és előfordulhat, hogy nem rögzítik a naplózott eseményeket.
+> A Azure SQL Database és az Azure szinapszis naplózása a rendelkezésre állásra és a teljesítményre van optimalizálva. A nagyon magas tevékenység vagy a nagy hálózati terhelés, a Azure SQL Database és az Azure szinapszis lehetővé teszi, hogy a műveletek folytatódnak, és előfordulhat, hogy nem rögzítik a naplózott eseményeket.
 
 ### <a name="auditing-limitations"></a>Naplózási korlátozások
 

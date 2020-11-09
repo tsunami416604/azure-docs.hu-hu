@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: 4ec75931a335170a8262cc480f43a0f22db0b79b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: e7e1567a487dc6cadc94a42f02c597ff0e02665b
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342195"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372761"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>A szabályzatok megfelelőségi irányítópultján lévő szabványok testreszabása
 
@@ -27,7 +27,7 @@ Azure Security Center folyamatosan összehasonlítja az erőforrások konfigurá
 
 ## <a name="overview-of-compliance-packages"></a>A megfelelőségi csomagok áttekintése
 
-Az iparági szabványok, a szabályozási szabványok és a referenciaértékek a Security Center *megfelelőségi csomagokként*jelennek meg.  Minden csomag egy Azure Policyban definiált kezdeményezés. Ha szeretné megtekinteni a megfelelőségi adatok hozzárendelését az irányítópulton, vegyen fel egy megfelelőségi csomagot a felügyeleti csoportba vagy előfizetésbe a **biztonsági házirend** lapon. (További információ a [biztonsági házirendek](tutorial-security-policy.md)használatáról Azure Policy és kezdeményezésekről.)
+Az iparági szabványok, a szabályozási szabványok és a referenciaértékek a Security Center *megfelelőségi csomagokként* jelennek meg.  Minden csomag egy Azure Policyban definiált kezdeményezés. Ha szeretné megtekinteni a megfelelőségi adatok hozzárendelését az irányítópulton, vegyen fel egy megfelelőségi csomagot a felügyeleti csoportba vagy előfizetésbe a **biztonsági házirend** lapon. (További információ a [biztonsági házirendek](tutorial-security-policy.md)használatáról Azure Policy és kezdeményezésekről.)
 
 Ha a kiválasztott hatókörhöz standard vagy teljesítménytesztet állított be, akkor az a hatókörhöz rendeli a kezdeményezést, és a szabvány a megfelelőségi irányítópulton jelenik meg, amely az értékelésként hozzárendelt összes megfelelőségi adattal rendelkezik. Az összegző jelentéseket az előkészített szabványok bármelyikére is letöltheti.
 
@@ -41,7 +41,7 @@ A Microsoft emellett saját maga is nyomon követi a szabályozási szabványoka
 
 Olyan szabványokat adhat hozzá, mint például a NIST SP 800-53 R4, a SWIFT CSP CSCF-v2020, az Egyesült Királyság hivatalos és az Egyesült királyságbeli NHS, Kanada szövetségi PBMM és az Azure CIS 1.1.0 (új) – az Azure CIS 1.1.0 teljesebb körű bemutatása. 
 
-Emellett a közös megfelelőségi keretrendszereken alapuló, a Microsoft által készített, az Azure-ra vonatkozó biztonsági és megfelelőségi irányelvek is hozzáadhatók az **Azure**-hoz. (További[információ az Azure biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).)
+Emellett a közös megfelelőségi keretrendszereken alapuló, a Microsoft által készített, az Azure-ra vonatkozó biztonsági és megfelelőségi irányelvek is hozzáadhatók az **Azure** -hoz. (További[információ az Azure biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).)
 
 Az irányítópulton további szabványok is támogatottak lesznek, amint azok elérhetővé válnak. 
 
@@ -55,19 +55,20 @@ A következő lépések azt ismertetik, hogyan adhat hozzá egy csomagot a megfe
 
 1. A Security Center oldalsávján válassza a **jogszabályi megfelelőség** lehetőséget a megfelelőségi irányítópult megnyitásához. Itt láthatja az aktuálisan kijelölt előfizetésekhez jelenleg hozzárendelt megfelelőségi szabványokat.   
 
-1. A lap tetején válassza a **megfelelőségi szabályzatok kezelése**lehetőséget. Megjelenik a házirend-kezelés lap.
+1. A lap tetején válassza a **megfelelőségi szabályzatok kezelése** lehetőséget. Megjelenik a házirend-kezelés lap.
 
 1. Válassza ki azt az előfizetést vagy felügyeleti csoportot, amelyhez felügyelni kívánja a szabályozási megfelelőségi állapotot. 
 
     > [!TIP]
     > Azt javasoljuk, hogy válassza ki a legmagasabb hatókört, amelyre a standard érvényes, hogy a megfelelőségi adatokat összesítsék és nyomon kövessék az összes beágyazott erőforrás esetében. 
 
-1. A szervezethez kapcsolódó szabványok hozzáadásához kattintson a **további szabványok hozzáadása**lehetőségre. 
+1. A szervezethez kapcsolódó szabványok hozzáadásához kattintson a **további szabványok hozzáadása** lehetőségre. 
 
 1. A **jogszabályi megfelelőségi szabványok hozzáadása** lapon bármely elérhető szabványhoz kereshet csomagokat. A rendelkezésre álló szabványok némelyike:
 
     - **Azure-biztonsági teljesítményteszt**
     - **NIST SP 800-53 R4**
+    - **NIST SP 800 171 R2**
     - **SWIFT CSP CSCF – v2020**
     - **UKO és egyesült királysági NHS**
     - **Kanadai PBMM**
@@ -78,7 +79,7 @@ A következő lépések azt ismertetik, hogyan adhat hozzá egy csomagot a megfe
 
 1. A Security Center oldalsávján válassza a **szabályozás megfelelősége** ismét lehetőséget a megfelelőségi irányítópultra való visszatéréshez.
     * Az új szabvány megjelenik az iparági & szabályozási szabványainak listájában. 
-    * Ha hozzáadta az **Azure CIS 1.1.0-t (új)**, az Azure CIS 1.1.0 megfelelőségének eredeti *statikus* nézete is továbbra is fennáll. Előfordulhat, hogy a későbbiekben automatikusan el lesz távolítva.
+    * Ha hozzáadta az **Azure CIS 1.1.0-t (új)** , az Azure CIS 1.1.0 megfelelőségének eredeti *statikus* nézete is továbbra is fennáll. Előfordulhat, hogy a későbbiekben automatikusan el lesz távolítva.
 
     > [!NOTE]
     > A megfelelőségi irányítópulton néhány órát is igénybe vehet, hogy egy újonnan hozzáadott szabvány megjelenjen.
@@ -92,7 +93,7 @@ Ha a megadott szabályozási szabványok bármelyike nem felel meg a szervezete 
 
 Standard eltávolítása:
 
-1. A Security Center menüjében válassza a **biztonsági szabályzat**elemet.
+1. A Security Center menüjében válassza a **biztonsági szabályzat** elemet.
 
 1. Válassza ki a megfelelő előfizetést, amelyből el kívánja távolítani a standardot.
 
@@ -103,14 +104,14 @@ Standard eltávolítása:
 
     :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Szabályozási szabvány eltávolítása a szabályozási megfelelőségi irányítópultról Azure Security Center":::
 
-1. Az eltávolítani kívánt szabványhoz válassza a **Letiltás**lehetőséget. Megjelenik egy megerősítő ablak.
+1. Az eltávolítani kívánt szabványhoz válassza a **Letiltás** lehetőséget. Megjelenik egy megerősítő ablak.
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Szabályozási szabvány eltávolítása a szabályozási megfelelőségi irányítópultról Azure Security Center":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Erősítse meg, hogy valóban el kívánja távolítani a kiválasztott szabályozási szabványt":::
 
 1. Válassza az **Igen** lehetőséget. A standard el lesz távolítva. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan **adhat hozzá megfelelőségi csomagokat** a megfelelőség további szabványokkal való figyeléséhez. 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 6de06e4ab9a302517a09b34de56c1b5535b245a9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 375dff1dacc949dd4373bbf26908feb504750224
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357810"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372341"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -31,7 +31,13 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 > Ha hat hónapnál régebbi elemeket keres, az archívumban találhatja meg a [Azure Security Center újdonságait](release-notes-archive.md).
 
 
-## <a name="november-2020"></a>November 2020
+## <a name="november-2020"></a>2020. november
+
+A novemberi frissítések a következők:
+
+- [29 előzetes javaslat hozzáadva az Azure biztonsági teljesítményteszt lefedettségének növeléséhez](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+- [NIST SP 800 171 R2 hozzáadva a Security Center szabályozási megfelelőségi irányítópulthoz](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
+
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 előzetes javaslat hozzáadva az Azure biztonsági teljesítményteszt lefedettségének növeléséhez
 
@@ -61,10 +67,21 @@ Kapcsolódó hivatkozások:
 - [További információ a Azure Database for PostgreSQL](../postgresql/overview.md)
 
 
+### <a name="nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard"></a>NIST SP 800 171 R2 hozzáadva a Security Center szabályozási megfelelőségi irányítópulthoz
+
+A NIST SP 800-171 R2 standard mostantól beépített kezdeményezésként használható Azure Security Center szabályozási megfelelőségi irányítópultján való használatra. A vezérlők leképezéseit a [NIST SP 800-171 R2 szabályozási megfelelőség beépített kezdeményezésének részletes ismertetése](../governance/policy/samples/nist-sp-800-171-r2.md)ismerteti. 
+
+A standard előfizetésekre való alkalmazásához és a megfelelőségi állapot folyamatos figyeléséhez használja a [szabványoknak a szabályozási megfelelőségi irányítópulton való testreszabásával](update-regulatory-compliance-packages.md)kapcsolatos utasításokat.
+
+:::image type="content" source="media/release-notes/nist-sp-800-171-r2-standard.png" alt-text="A NIST SP 800 171 R2 Standard Security Center szabályozási megfelelőségi irányítópultján":::
+
+További információ erről a megfelelőségi szabványról: [NIST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final).
+
 
 
 ## <a name="october-2020"></a>2020. október
 
+Az októberi frissítések a következők:
 - [Biztonsági rések felmérése helyszíni és többfelhős gépekhez (előzetes verzió)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
 - [Azure Firewall javaslat hozzáadva (előzetes verzió)](#azure-firewall-recommendation-added-preview)
 - [Az illetékes IP-tartományokat a gyors javítással frissített Kubernetes Services-javaslatban kell meghatározni.](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)

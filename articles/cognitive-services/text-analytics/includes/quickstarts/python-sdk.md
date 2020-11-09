@@ -5,26 +5,26 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: f0e4c8b832b17ee97b6e97aaf94640aaad7aa8db
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2913daf3dbe066eed8207ef4438e48e58992179c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977813"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371723"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
 
-a [v 3.1 dokumentációja](https://docs.microsoft.com/python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true)  |  [v 3.1 függvénytár-forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics)  |  [v 3.1 csomag (PiPy)](https://pypi.org/project/azure-ai-textanalytics/)  |  [v 3.1 minta](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+a [v 3.1 dokumentációja](/python/api/azure-ai-textanalytics/azure.ai.textanalytics?preserve-view=true&view=azure-python-preview)  |  [v 3.1 függvénytár-forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics)  |  [v 3.1 csomag (PiPy)](https://pypi.org/project/azure-ai-textanalytics/)  |  [v 3.1 minta](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
-a [v3-referenciák dokumentációja](https://aka.ms/azsdk-python-textanalytics-ref-docs)  |  [v3 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics)  |  [v3 csomag (PiPy)](https://pypi.org/project/azure-ai-textanalytics/)  |  [v3 minta](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+a [v3-referenciák dokumentációja](/python/api/azure-ai-textanalytics/azure.ai.textanalytics)  |  [v3 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics)  |  [v3 csomag (PiPy)](https://pypi.org/project/azure-ai-textanalytics/)  |  [v3 minta](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-[v2 dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics)  |  [v2 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics)  |  [v2 csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/)  |  [v2 minta](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[v2 dokumentáció](/python/api/overview/azure/cognitiveservices/textanalytics)  |  [v2 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics)  |  [v2 csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/)  |  [v2 minta](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ---
 
@@ -32,7 +32,7 @@ a [v3-referenciák dokumentációja](https://aka.ms/azsdk-python-textanalytics-r
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" hozzon létre egy Text Analytics erőforrást, "  target="_blank"> és hozzon létre egy Text Analytics-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" hozzon létre egy Text Analytics erőforrást, "  target="_blank"> és hozzon létre egy Text Analytics-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Text Analytics APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
@@ -103,7 +103,7 @@ A válasz objektum az egyes dokumentumok elemzett adatait tartalmazó lista.
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-Az Text Analytics-ügyfél egy [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient) objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél számos módszert biztosít a szöveg elemzéséhez, egyetlen sztringként vagy kötegként. 
+Az Text Analytics-ügyfél egy [TextAnalyticsClient](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient) objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél számos módszert biztosít a szöveg elemzéséhez, egyetlen sztringként vagy kötegként. 
 
 A rendszer az API-nak elküldi a szöveget, `documents` amely a `dictionary` `id` `text` használt módszertől függően a, a és az attribútumok kombinációját tartalmazó objektumokat tartalmazza `language` . Az `text` attribútum tárolja a forrásban elemezni kívánt szöveget `language` , és a `id` értéke bármilyen lehet. 
 
@@ -392,7 +392,7 @@ Negative=0.02
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-Hitelesítse az ügyfél objektumát, és hívja meg a [hangulat ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt. Ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a hangulat pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
+Hitelesítse az ügyfél objektumát, és hívja meg a [hangulat ()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt. Ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a hangulat pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
 
 [!code-python[sentiment analysis](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=sentimentAnalysis)]
 
@@ -463,7 +463,7 @@ Language:  French
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-A korábban létrehozott ügyfél használatával hívja meg [detect_language ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) , és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az első visszaadott nyelvet.
+A korábban létrehozott ügyfél használatával hívja meg [detect_language ()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) , és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az első visszaadott nyelvet.
 
 [!code-python[language detection](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=languageDetection)]
 
@@ -763,7 +763,7 @@ Linked Entities:
 > [!NOTE]
 > Az 2,1-es verzióban az entitások összekapcsolása szerepel a megjelenő válaszban.
 
-A korábban létrehozott ügyfél használatával hívja meg az [entitások ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a benne található entitásokat.
+A korábban létrehozott ügyfél használatával hívja meg az [entitások ()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a benne található entitásokat.
 
 [!code-python[Entity recognition](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=entityRecognition)]
 
@@ -880,7 +880,7 @@ key_phrase_extraction_example(client)
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-A korábban létrehozott ügyfél használatával hívja meg a [key_phrases ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az abban található fő kifejezéseket.
+A korábban létrehozott ügyfél használatával hívja meg a [key_phrases ()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az abban található fő kifejezéseket.
 
 [!code-python[key phrase extraction](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=keyPhrases)]
 
@@ -906,4 +906,4 @@ Document ID: 4
                 fútbol
 ```
 
---- 
+---
