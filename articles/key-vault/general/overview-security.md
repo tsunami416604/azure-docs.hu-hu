@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc08df7390285f9b6e4701bb1ca5c4227b19f1da
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739690"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445030"
 ---
 # <a name="azure-key-vault-security"></a>Az Azure Key Vault biztonsága
 
@@ -25,7 +25,7 @@ A Azure Key Vault használatával védi a felhőben a titkosítási kulcsokat é
 Amikor kulcstartót hoz létre egy Azure-előfizetésben, az automatikusan társítva lesz az előfizetés Azure AD-bérlője számára. Az Azure AD-nek hitelesítenie kell azokat a személyeket, akik tartalmat próbálnak kezelni vagy beolvasni a tárból.
 
 - A hitelesítés létrehozza a hívó identitását.
-- Az engedélyezés meghatározza a hívó által végrehajtható műveleteket. A Key Vaultban történő engedélyezés a [szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md) (RBAC) és a Azure Key Vault hozzáférési házirendek kombinációját használja.
+- Az engedélyezés meghatározza a hívó által végrehajtható műveleteket. A Key Vaultban történő engedélyezés az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) és a Azure Key Vault hozzáférési házirendek kombinációját használja.
 
 ### <a name="access-model-overview"></a>Hozzáférési modell áttekintése
 
@@ -34,7 +34,7 @@ A tárolók elérése két felületen vagy síkon történik. Ezek a síkok a fe
 - A *felügyeleti síkon* a Key Vault felügyeli, és a tárolók létrehozásához és törléséhez használt felület. A Key Vault tulajdonságait is beolvashatja, és kezelheti a hozzáférési házirendeket.
 - Az *adatsíkok* lehetővé teszik a kulcstartóban tárolt adatmennyiség használatát. Kulcsok, titkos kódok és tanúsítványok hozzáadására, törlésére és módosítására is lehetőség van.
 
-Ha a kulcstartót bármelyik síkon szeretné elérni, az összes hívót (felhasználót vagy alkalmazást) hitelesíteni és engedélyezni kell. Mindkét síkon Azure Active Directoryt (Azure AD) használ a hitelesítéshez. Az engedélyezéshez a felügyeleti sík szerepköralapú hozzáférés-vezérlést (RBAC) használ, és az adatsík egy Key Vault hozzáférési házirendet használ.
+Ha a kulcstartót bármelyik síkon szeretné elérni, az összes hívót (felhasználót vagy alkalmazást) hitelesíteni és engedélyezni kell. Mindkét síkon Azure Active Directoryt (Azure AD) használ a hitelesítéshez. Az engedélyezéshez a felügyeleti sík Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ, és az adatsík egy Key Vault hozzáférési házirendet használ.
 
 A mindkét síkon történő hitelesítéshez használt egyetlen mechanizmus modellje számos előnnyel jár:
 
@@ -46,11 +46,11 @@ A mindkét síkon történő hitelesítéshez használt egyetlen mechanizmus mod
 
 Amikor létrehoz egy kulcstartót egy erőforráscsoporthoz, az Azure AD használatával kezelheti a hozzáférést. A felhasználók vagy csoportok számára engedélyezheti az erőforráscsoport kulcstárolóinak kezelését. A megfelelő Azure-szerepkörök hozzárendelésével megadhatja a hozzáférést egy adott hatóköri szinten. Ahhoz, hogy hozzáférést biztosítson egy felhasználónak a kulcstartók kezeléséhez, egy előre meghatározott `key vault Contributor` szerepkört kell hozzárendelni a felhasználóhoz egy adott hatókörben. Az Azure-szerepkörökhöz a következő hatóköröket lehet hozzárendelni:
 
-- **Előfizetés**: az előfizetés szintjén hozzárendelt Azure-szerepkörök az adott előfizetésen belüli összes erőforráscsoport és erőforrásra érvényesek.
-- **Erőforráscsoport**: az erőforráscsoport szintjén hozzárendelt Azure-szerepkör az adott erőforráscsoport összes erőforrására vonatkozik.
-- **Adott**erőforrás: egy adott erőforráshoz hozzárendelt Azure-szerepkör az adott erőforrásra vonatkozik. Ebben az esetben az erőforrás egy adott kulcstartó.
+- **Előfizetés** : az előfizetés szintjén hozzárendelt Azure-szerepkörök az adott előfizetésen belüli összes erőforráscsoport és erőforrásra érvényesek.
+- **Erőforráscsoport** : az erőforráscsoport szintjén hozzárendelt Azure-szerepkör az adott erőforráscsoport összes erőforrására vonatkozik.
+- **Adott** erőforrás: egy adott erőforráshoz hozzárendelt Azure-szerepkör az adott erőforrásra vonatkozik. Ebben az esetben az erőforrás egy adott kulcstartó.
 
-Számos előre definiált szerepkör létezik. Ha egy előre meghatározott szerepkör nem felel meg az igényeinek, megadhatja saját szerepkörét. További információt a [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)című témakörben talál.
+Számos előre definiált szerepkör létezik. Ha egy előre meghatározott szerepkör nem felel meg az igényeinek, megadhatja saját szerepkörét. További információt az [Azure RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)című témakörben talál.
 
 > [!IMPORTANT]
 > Ha a felhasználó rendelkezik `Contributor` engedéllyel egy kulcstartó felügyeleti síkon, a felhasználó hozzáférést biztosíthat az adatsíkon az Key Vault hozzáférési szabályzat beállításával. Szigorúan szabályozhatja, `Contributor` hogy kik rendelkeznek szerepkör-hozzáféréssel a kulcstartóhoz. Győződjön meg arról, hogy csak a jogosult személyek férhetnek hozzá és kezelhetik a kulcstartókat, kulcsokat, titkos kulcsokat és tanúsítványokat.
@@ -79,7 +79,7 @@ További információ a [Azure Key Vault virtuális hálózati szolgáltatási v
 
 *   A Key Vault előtér (adatsík) egy több-bérlős kiszolgáló. Ez azt jelenti, hogy a különböző ügyfelektől származó kulcstartók ugyanazt a nyilvános IP-címet tudják megosztani. Az elkülönítés érdekében minden HTTP-kérelem hitelesítése és engedélyezése más kérelmektől függetlenül történik.
 *   A biztonsági rések jelentésére a TLS régebbi verzióit is meghatározhatja, de mivel a nyilvános IP-cím meg van osztva, nem lehetséges, hogy a Key Vault szolgáltatás csapata letiltsa a TLS régi verzióit az egyes kulcstartók esetében a szállítási szinten.
-*   A HTTPS protokoll lehetővé teszi, hogy az ügyfél részt vegyen a TLS-egyeztetésben. Az **ügyfelek kihasználhatják a TLS legújabb verzióját**, és amikor az ügyfél ezt teszi, a teljes kapcsolatok a megfelelő szintű védelmet fogják használni. Az a tény, hogy Key Vault továbbra is támogatja a régebbi TLS-verziókat, nem rontja a kapcsolatok biztonságát újabb TLS-verziók használatával.
+*   A HTTPS protokoll lehetővé teszi, hogy az ügyfél részt vegyen a TLS-egyeztetésben. Az **ügyfelek kihasználhatják a TLS legújabb verzióját** , és amikor az ügyfél ezt teszi, a teljes kapcsolatok a megfelelő szintű védelmet fogják használni. Az a tény, hogy Key Vault továbbra is támogatja a régebbi TLS-verziókat, nem rontja a kapcsolatok biztonságát újabb TLS-verziók használatával.
 *   A TLS protokoll ismert biztonsági rései ellenére nincs olyan ismert támadás, amely lehetővé tenné egy rosszindulatú ügynök számára, hogy kinyerje a kulcstartóból származó adatokat, amikor a támadó a biztonsági réseket tartalmazó TLS-verzióval létesített kapcsolatokat kezdeményez. A támadónak továbbra is hitelesítenie és hitelesítenie kell magát, és mindaddig, amíg a megbízható ügyfelek mindig csatlakoznak a legutóbbi TLS-verziókhoz, nincs mód arra, hogy a hitelesítő adatokat kiszivárgott a korábbi TLS-verziók biztonsági rései miatt.
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
@@ -91,4 +91,4 @@ A Storage-fiókok biztonságos kezelésével kapcsolatos javaslatért tekintse �
 ## <a name="next-steps"></a>Következő lépések
 
 - [Virtuális hálózati szolgáltatás végpontjai Azure Key Vault](overview-vnet-service-endpoints.md)
-- [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)
+- [Azure RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)

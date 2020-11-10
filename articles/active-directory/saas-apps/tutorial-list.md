@@ -12,18 +12,18 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: fc94abdfbf5263a559c71d8321a8df7a8c6965a1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 19889c05447db05cc20c8f46e97bd8d16ff43bdf
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359850"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445659"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához
 
 A felhőalapú [szoftveres (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) alkalmazások Azure Active Directorysal való integrálásának elősegítése érdekében olyan oktatóanyagokat fejlesztettünk ki, amelyek végigvezetik a konfiguráción.
 
-Az Azure AD-be előre integrált SaaS-alkalmazások listáját a [Active Directory piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)tekintheti meg.
+Az Azure AD-be előre integrált SaaS-alkalmazások listáját a [Active Directory piactéren](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps)tekintheti meg.
 
 Az [Application Network portál](../azuread-dev/howto-app-gallery-listing.md) használatával igényeljen egy [scim](../app-provisioning/use-scim-to-provision-users-and-groups.md) -kompatibilis alkalmazást a katalógusba az automatikus kiépítés vagy egy SAML-/OIDC-kompatibilis alkalmazás hozzáadásához a katalógusba az SSO-hoz.
 

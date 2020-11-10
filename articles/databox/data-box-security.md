@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 00b6fab2aeebeeb0f39e07a0751e02cefd195b28
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f9330f99a0473aa38da2fcbb8ae0624a37746613
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337344"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444758"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Az Azure Data Box biztonsági és adatvédelmi szolgáltatásai
 
@@ -106,7 +106,7 @@ További információkért lásd a Microsoft szabályzatát a [biztonsági és a
 
 A Data Box szolgáltatásra a következő biztonsági irányelvek vonatkoznak: 
 
-|Irányelv   |Leírás   |
+|Irányelv   |Description   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Víz és por elleni védelem         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Ellenállás a kedvezőtlen szállítási körülményeknek          |

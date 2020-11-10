@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f7f9acd18da57bd83e688249600b8468cc4ebbe5
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286224"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445557"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault – hitelesítési alapok
 
@@ -45,9 +45,9 @@ Az alábbi dokumentációs hivatkozásokat követve megismerheti, hogyan regiszt
 * Felhasználó regisztrálása Azure Active Directory [hivatkozásban](../../active-directory/fundamentals/add-users-azure-active-directory.md)
 * Alkalmazás regisztrálása Azure Active Directory [hivatkozásban](../../active-directory/develop/quickstart-register-app.md)
 
-## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>A rendszerbiztonsági tag szerepkör kiosztása Azure Active Directory
+## <a name="assign-your-security-principal-a-role"></a>Rendszerbiztonsági tag szerepkör kiosztása
 
-A Azure Active Directory szerepköralapú hozzáférés-vezérlést (RBAC) használ a rendszerbiztonsági tag engedélyeinek kiosztásához. Ezeket az engedélyeket szerepkör-hozzárendeléseknek nevezzük.
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével engedélyeket rendelhet a rendszerbiztonsági tagokhoz. Ezeket az engedélyeket szerepkör-hozzárendeléseknek nevezzük.
 
 A Key Vault esetében ezek a szerepkör-hozzárendelések határozzák meg a rendszerbiztonsági tag hozzáférési szintjét a Key Vault felügyeleti síkjával (más néven a vezérlési síkon). Ezek a szerepkör-hozzárendelések nem biztosítanak közvetlen hozzáférést az adatsíkok titkos kulcsaihoz, de hozzáférést biztosítanak a Key Vault tulajdonságainak kezeléséhez. Például egy **olvasó szerepkörhöz** rendelt felhasználó vagy alkalmazás nem módosítható a Key Vault tűzfalbeállítások módosításával, míg a **közreműködő szerepkörhöz** rendelt felhasználó vagy alkalmazás módosításokat végezhet. Egyik szerepkör sem lesz közvetlen hozzáférése a titkokkal, kulcsokkal és tanúsítványokkal kapcsolatos műveletekhez, például az értékek létrehozásához vagy lekéréséhez, amíg hozzá nem fér a Key Vault adatsíkjával. Ezt a következő lépésben tárgyaljuk.
 
@@ -57,7 +57,7 @@ A Key Vault esetében ezek a szerepkör-hozzárendelések határozzák meg a ren
 >[!NOTE]
 > Ha Azure Active Directory bérlői szinten rendel hozzá egy szerepkör-hozzárendelést egy felhasználóhoz, ez az engedély a hozzárendelés hatókörén belül minden előfizetésre, erőforrás-csoportra és erőforrásra kiterjed. Ahhoz, hogy a legkevesebb jogosultsággal rendelkező rendszerbiztonsági tag legyen, részletesebben is elvégezheti ezt a szerepkör-hozzárendelést. Például hozzárendelhet egy felhasználót egy olvasói szerepkörhöz az előfizetés szintjén, és egy tulajdonosi szerepkört egyetlen kulcstartóhoz. Az előfizetés, az erőforráscsoport vagy a kulcstartó identitás-hozzáférés-kezelés (IAM) beállításainak megadásával részletesebben is elvégezheti a szerepkör-hozzárendelést.
 
-* További információ a Azure Active Directory roles [hivatkozásról](../../role-based-access-control/built-in-roles.md)
+* További információ az Azure roles [linkről](../../role-based-access-control/built-in-roles.md)
 * További információ a szerepkör [-hozzárendelések hozzárendeléséről](../../role-based-access-control/role-assignments-portal.md) vagy eltávolításáról
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>Key Vault-hozzáférési szabályzatok konfigurálása a rendszerbiztonsági tag számára
@@ -91,7 +91,7 @@ A Key vaultban tárolt kulcsok, titkos kódok és tanúsítványok műveletekhez
 A Key Vault-hozzáférési házirendek biztosítják a felhasználók és az alkalmazások számára, hogy adatsík-műveleteket végezzenek a kulcstartón.
 
 > [!NOTE]
-> Ez a hozzáférési modell nem kompatibilis a Key Vault-RBAC (2. lehetőség) az alábbiakban dokumentált módon. Ki kell választania egyet. Ha a Key Vault hozzáférési szabályzat fülére kattint, lehetősége lesz a kijelölés elvégzésére.
+> Ez a hozzáférési modell nem kompatibilis az Azure RBAC a Key vaulthoz (2. lehetőség) az alábbiakban dokumentált módon. Ki kell választania egyet. Ha a Key Vault hozzáférési szabályzat fülére kattint, lehetősége lesz a kijelölés elvégzésére.
 
 A klasszikus hozzáférési szabályzatok részletesek, ami azt jelenti, hogy engedélyezheti vagy megtagadhatja, hogy az egyes felhasználók vagy alkalmazások képesek legyenek egyéni műveleteket végezni a kulcstartón belül. Íme, néhány példa:
 
@@ -104,25 +104,25 @@ A klasszikus hozzáférési szabályzatok azonban nem engedélyezik a felhaszná
 > [!IMPORTANT]
 > A klasszikus kulcstartó-hozzáférési házirendek és Azure Active Directory szerepkör-hozzárendelések egymástól függetlenek. A rendszerbiztonsági tag "közreműködő" szerepkörének előfizetési szinten való kiosztása nem teszi lehetővé automatikusan, hogy a rendszerbiztonsági tag az előfizetés hatókörén belül minden kulcstartón adatsík-műveleteket végezzen. A rendszerbiztonsági tag számára továbbra is meg kell adni, vagy hozzáférési szabályzatot kell megadni az adatsík-műveletek végrehajtásához.
 
-### <a name="data-plane-access-option-2--key-vault-rbac-preview"></a>Adatsík hozzáférési lehetőség 2: Key Vault RBAC (előzetes verzió)
+### <a name="data-plane-access-option-2--azure-rbac-for-key-vault-preview"></a>Adatsík hozzáférési lehetőség 2: Azure RBAC for Key Vault (előzetes verzió)
 
-A Key Vault adatsíkjával való hozzáférés engedélyezésének új módja a Key-Vault szerepköralapú hozzáférés-vezérlés (RBAC).
+A Key Vault adatsíkjával való hozzáférés engedélyezésének új módja az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata a Key vaulthoz.
 
 > [!NOTE]
 > Ez a hozzáférési modell nem kompatibilis a fentiekben bemutatott Key Vault klasszikus hozzáférési szabályzatokkal. Ki kell választania egyet. Ha a Key Vault hozzáférési szabályzat fülére kattint, lehetősége lesz a kijelölés elvégzésére.
 
 Key Vault a szerepkör-hozzárendelések olyan Azure beépített szerepkör-hozzárendelések, amelyek a kulcsok, titkos kódok és tanúsítványok eléréséhez szükséges engedélyek közös készleteit foglalják magukban. Ez az engedélyezési modell olyan további képességeket is lehetővé tesz, amelyek nem érhetők el a klasszikus kulcstartó-hozzáférési házirend modelljében.
 
-* A RBAC engedélyek méretezhetők úgy, hogy lehetővé teszik a felhasználók számára, hogy az előfizetéshez, az erőforráscsoporthoz vagy az egyes kulcstartók szintjén rendelik hozzá ezeket a szerepköröket. A felhasználók a RBAC-hozzárendelés hatókörén belül minden kulcstárolóhoz hozzáférhetnek az adatsíkon. Így nem kell egyéni hozzáférési szabályzatot rendelni felhasználónként/alkalmazásként a Key vaultban.
+* Az Azure RBAC-engedélyek méretezhetők úgy, hogy lehetővé teszik a felhasználók számára, hogy az előfizetéshez, az erőforráscsoporthoz vagy az egyes kulcstartók szintjén rendelik hozzá ezeket a szerepköröket. A felhasználók az Azure RBAC-hozzárendelés hatókörén belül minden kulcstartóhoz hozzáférhetnek az adatsíkon. Így nem kell egyéni hozzáférési szabályzatot rendelni felhasználónként/alkalmazásként a Key vaultban.
 
-* A RBAC engedélyei Privileged Identity Management vagy PIM-kompatibilisek. Ez lehetővé teszi az igény szerinti hozzáférés-vezérlés konfigurálását olyan Kiemelt szerepkörökhöz, mint a Key Vault rendszergazda. Ez a legjobb biztonsági gyakorlat, és a legkevesebb jogosultságot követi a kulcstartók folyamatos hozzáférésének megszüntetésével.
+* Az Azure RBAC engedélyei Privileged Identity Management vagy PIM-kompatibilisek. Ez lehetővé teszi az igény szerinti hozzáférés-vezérlés konfigurálását olyan Kiemelt szerepkörökhöz, mint a Key Vault rendszergazda. Ez a legjobb biztonsági gyakorlat, és a legkevesebb jogosultságot követi a kulcstartók folyamatos hozzáférésének megszüntetésével.
 
-* A RBAC engedélyek kompatibilisek az objektumokkal kapcsolatos részletes engedélyekkel, így korlátozhatja, hogy a felhasználók csak néhány kulcstároló-objektumon végezzenek műveleteket. Ez lehetővé teszi, hogy több alkalmazás egyetlen kulcstartót osszon meg, miközben továbbra is elkülöníti az alkalmazások közötti hozzáférést.
+* Az Azure RBAC-engedélyek kompatibilisek az objektumokkal kapcsolatos részletes engedélyekkel, így korlátozhatja, hogy a felhasználók csak a Key Vault-objektumokon végezzenek műveleteket. Ez lehetővé teszi, hogy több alkalmazás egyetlen kulcstartót osszon meg, miközben továbbra is elkülöníti az alkalmazások közötti hozzáférést.
 
-Key Vault RBAC kapcsolatos további tudnivalókért tekintse meg a következő dokumentumokat:
+Ha többet szeretne megtudni a Key Vault Azure RBAC, tekintse meg a következő dokumentumokat:
 
-* Azure Key Vault RBAC [hivatkozás](./secure-your-key-vault.md#management-plane-and-azure-rbac)
-* Azure Key Vault RBAC-szerepkörök (előzetes verzió) [hivatkozása](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
+* Azure-RBAC Key Vault- [hivatkozáshoz](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+* Az Azure RBAC for Key Vault roles (előzetes verzió) [hivatkozása](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
 
 ## <a name="configure-key-vault-firewall"></a>Key Vault tűzfal konfigurálása
 

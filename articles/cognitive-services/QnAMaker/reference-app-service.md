@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: eac930971cab041fbf398da1ac5f8a055412832d
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: d2095919d6f6be482390250fd8d0ee20e9015237
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376859"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444860"
 ---
 # <a name="service-configuration"></a>Szolgáltatáskonfiguráció
 
@@ -20,7 +20,7 @@ QnA Maker minden verziója az Azure-erőforrások (szolgáltatások) egy másik 
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
 
-A QnA Maker a App Service használatával biztosítja a [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)által használt lekérdezési futtatókörnyezetet.
+A QnA Maker a App Service használatával biztosítja a [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime/generateanswer)által használt lekérdezési futtatókörnyezetet.
 
 Ezek a beállítások a App Service Azure Portal érhetők el. A beállítások a **Beállítások** , majd a **konfiguráció** lehetőség kiválasztásával érhetők el.
 
@@ -81,6 +81,6 @@ A App Service-csomag nem használatos QnA Maker felügyelt (előzetes verzió).
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a tudásbázisba importálni kívánt dokumentumok és URL-címek [formátumáról](reference-document-format-guidelines.md) .

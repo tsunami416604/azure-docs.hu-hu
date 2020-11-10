@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a1aff57c2823b111251c99cb3dbcdea0fd90ad2c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 48078ed06e36a33b10ee2d761a249159d14c6220
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425949"
+ms.locfileid: "94444503"
 ---
 # <a name="blob-versioning"></a>BLOB verziószámozása
 
@@ -38,7 +38,7 @@ A verzió rögzíti egy blob állapotát egy adott időpontban. Ha a blob verzi�
 
 Ha olyan blobot hoz létre, amelyen engedélyezve van a verziószámozás, az új blob a blob aktuális verziója (vagy az alap blob). Ha ezt követően módosítja a blobot, az Azure Storage egy olyan verziót hoz létre, amely rögzíti a blob állapotát a módosítás előtt. A módosított blob lesz az új aktuális verzió. Minden alkalommal létrejön egy új verzió, amikor módosítja a blobot.
 
-A Blobok korlátlan számú verziót tartalmazhatnak. A Blobok listázási műveleteinek késése azonban nagy számú verziónál nagyobb lehet. A Microsoft a Blobok kevesebb mint 1000 verzióját javasolja. Az életciklus-kezelési szolgáltatással automatikusan törölheti a régi verziókat. Az életciklus-kezeléssel kapcsolatos további információkért lásd: [a költségek optimalizálása az Azure Blob Storage hozzáférési szintjeinek automatizálásával](storage-lifecycle-management-concepts.md).
+Ha a Blobok egy része nagy számú verziót használ, növelheti a Blobok listázási műveleteinek késését. A Microsoft a Blobok kevesebb mint 1000 verzióját javasolja. Az életciklus-kezelési szolgáltatással automatikusan törölheti a régi verziókat. Az életciklus-kezeléssel kapcsolatos további információkért lásd: [a költségek optimalizálása az Azure Blob Storage hozzáférési szintjeinek automatizálásával](storage-lifecycle-management-concepts.md).
 
 Ha olyan blobot töröl, amelyen engedélyezve van a verziószámozás, az Azure Storage egy olyan verziót hoz létre, amely rögzíti a blob állapotát a törlés előtt. Ezután törli a blob aktuális verzióját, de a blob verziója továbbra is fennmarad, így szükség esetén újra létrehozható. 
 

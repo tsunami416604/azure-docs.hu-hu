@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f6953f145621e11506a009fa59d67a5f40508a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90fc356929a9ea5713a8d359dfaa83286017b8f8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539571"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445438"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Frissítés az Azure Cognitive Search .NET SDK 11-es verziójára
 
@@ -49,7 +49,7 @@ Ha lehetséges, az alábbi táblázat a két verzió közötti ügyféloldali k�
 |---------------------|------------------------------|------------------------------|
 | A lekérdezésekhez és az indexek feltöltéséhez használt ügyfél. | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
 | Indexekhez, elemzőekhez, szinonimák megfeleltetéséhez használt ügyfél | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
-| Az indexelő, az adatforrások és a szakértelmével által használt ügyfél | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**új**)](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
+| Az indexelő, az adatforrások és a szakértelmével által használt ügyfél | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient ( **új** )](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
 > `SearchIndexClient` mindkét verzióban létezik, de különböző dolgokat támogat. A 10-es verzióban `SearchIndexClient` Indexek és egyéb objektumok hozhatók létre. A 11-es verzióban a `SearchIndexClient` meglévő indexekkel működik. A kód frissítésekor a félreértések elkerülése érdekében figyelembe kell venni, hogy milyen sorrendben frissülnek az ügyfelek hivatkozásai. A [frissítéshez szükséges lépések](#UpgradeSteps) végrehajtásával csökkentheti a karakterlánc-helyettesítési problémákat.
@@ -170,6 +170,24 @@ A következő lépések végrehajtásával kezdheti meg a kód áttelepítését
 
 1. Új ügyfél-referenciák hozzáadása az indexelő szolgáltatással kapcsolatos objektumokhoz. Ha indexelő, adatforrásokat vagy szakértelmével használ, módosítsa az ügyfél [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)mutató hivatkozásait. Ez az ügyfél a 11-es verzióban új, és nincs előzménye.
 
+1. Gyűjtemények újralátogatása. Az új SDK-ban az összes lista csak olvasható, hogy elkerülje az alsóbb rétegbeli problémákat, ha a lista null értékeket tartalmaz. A kód módosításával elemeket adhat hozzá egy listához. Ha például karakterláncokat szeretne hozzárendelni egy Select tulajdonsághoz, ezeket a következőképpen adja hozzá:
+
+   ```csharp
+   var options = new SearchOptions
+    {
+       SearchMode = SearchMode.All,
+       IncludeTotalCount = true
+    };
+
+    // Select fields to return in results.
+    options.Select.Add("HotelName");
+    options.Select.Add("Description");
+    options.Select.Add("Tags");
+    options.Select.Add("Rooms");
+    options.Select.Add("Rating");
+    options.Select.Add("LastRenovationDate");
+   ```
+
 1. A lekérdezésekhez és az adatimportáláshoz tartozó ügyfél-referenciák frissítése. A [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) példányait [SearchClient](/dotnet/api/azure.search.documents.searchclient)értékre kell módosítani. A félreértések elkerülése érdekében győződjön meg arról, hogy a következő lépéshez való továbblépés előtt minden példányt elkapjon.
 
 1. Az ügyfél-referenciák frissítése index, indexelő, szinonimák leképezése és elemző objektumok számára. A [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) példányait [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient)értékre kell módosítani. 
@@ -192,7 +210,7 @@ A szolgáltatási verziók frissítései esetében, ahol a Code Changes in 11-es
 
 + A null értékek [rendezett eredményei](search-query-odata-orderby.md) módosultak ebben a verzióban, és először Null érték jelenik meg, ha a rendezés `asc` és az utolsó, ha a rendezés `desc` . Ha kódot írt a null értékek rendezésének kezeléséhez, tekintse át és távolítsa el ezt a kódot, ha már nincs rá szükség.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Azure.Search.Documents-csomag](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [Példák a GitHubon](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)

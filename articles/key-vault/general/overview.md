@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 856c5f106f164a98b60fdb3eeda31d6099d5b7bd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5025c4ad81433b6eb18f5beded860625791ffce5
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932005"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445098"
 ---
 # <a name="about-azure-key-vault"></a>Információk az Azure Key Vaultról
 
@@ -39,7 +39,7 @@ Az alkalmazások az URI-k használatával biztonságosan érhetik el a szükség
 
 A kulcstartóhoz való hozzáférés előtt a hívónak (felhasználónak vagy alkalmazásnak) megfelelő hitelesítésre és engedélyezésre van szüksége. A hitelesítés a hívó azonosítását szolgálja, az engedélyezés pedig meghatározza, milyen műveletek elvégzésére jogosult.
 
-A hitelesítés az Azure Active Directory használatával történik. Az engedélyezés szerepköralapú hozzáférés-vezérléssel (RBAC) vagy Key Vault hozzáférési szabályzattal történhet. Az RBAC a tárolók kezeléséhez használható, a kulcstartó hozzáférési szabályzatát pedig a tárolóban található adatokhoz való hozzáféréskor használja a rendszer.
+A hitelesítés az Azure Active Directory használatával történik. Az engedélyezés az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) vagy Key Vault hozzáférési szabályzat használatával végezhető el. Az Azure RBAC a tárolók kezelésével és a kulcstartó-hozzáférési szabályzattal való együttműködéshez használatos, amikor egy tárban tárolt adathozzáférésre próbál hozzáférni.
 
 Az Azure Key Vaultok szoftveres védelemmel vagy a Azure Key Vault Premium csomaggal, hardveres biztonsági modulok (HSM-EK) által védettek lehetnek. A szoftveres védelemmel ellátott kulcsokat, titkokat és tanúsítványokat az Azure biztosítja az iparági szabványnak megfelelő algoritmusok és a kulcsok hosszának biztosításával.  Olyan helyzetekben, ahol további garanciára van szükség, a HSM olyan kulcsokat importálhat vagy generálhat, amelyek soha nem hagyják el a HSM-határt. A Azure Key Vault nCipher HSM használ, amelyek a Federal Information Processing Standards (FIPS) 140-2 2. szint ellenőrzése alatt állnak. A nCipher-eszközök segítségével áthelyezhet egy kulcsot a HSM-ből Azure Key Vaultba.
 
@@ -76,7 +76,7 @@ Az Azure-beli Biztonságos tár Key Vault a következő forgatókönyvek egyszer
 
 A Key Vault integrálható tárfiókokkal, eseményközpontokkal és a naplóelemzéssel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-certificates.md)
 - [Rövid útmutató: Azure Key Vault-kulcstartó létrehozása a parancssori felülettel](../secrets/quick-create-cli.md)

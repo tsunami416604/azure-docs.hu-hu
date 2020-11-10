@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 585f5998eb953c8ed90a47922d76f32897c0f915
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 91a3a0c2ae066fde55892af90a3d666a3c1221a3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285830"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445489"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a kulcstartóhoz
 
@@ -26,7 +26,7 @@ További információ a Key Vaultről: [About Azure Key Vault](overview.md); a K
 
 A kulcstartóhoz való hozzáférést két interfész szabályozza: a **felügyeleti síkon** és az **adatsíkon**. A felügyeleti síkon a Key Vault saját maga felügyeli. Az ebben a síkban található műveletek közé tartozik a kulcstartók létrehozása és törlése, Key Vault tulajdonságok beolvasása és a hozzáférési házirendek frissítése. Az adatsíkon a Key vaultban tárolt adatmennyiséggel dolgozik. Kulcsok, titkos kódok és tanúsítványok hozzáadására, törlésére és módosítására is lehetőség van.
 
-Mindkét síkon [Azure Active Directoryt (Azure ad)](../../active-directory/fundamentals/active-directory-whatis.md) használ a hitelesítéshez. Az engedélyezéshez a felügyeleti sík [Azure szerepköralapú hozzáférés-vezérlést (RBAC)](../../role-based-access-control/overview.md) használ, és az adatsík egy [Key Vault hozzáférési házirendet](./assign-access-policy-portal.md) és [Azure-RBAC használ Key Vault adatsík-műveletekhez (előzetes verzió)](./rbac-guide.md).
+Mindkét síkon [Azure Active Directoryt (Azure ad)](../../active-directory/fundamentals/active-directory-whatis.md) használ a hitelesítéshez. Az engedélyezéshez a felügyeleti sík [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../role-based-access-control/overview.md) használ, és az adatsík egy [Key Vault hozzáférési házirendet](./assign-access-policy-portal.md) és az [Azure-RBAC használja Key Vault adatsík-műveletekhez (előzetes verzió)](./rbac-guide.md).
 
 A kulcstartók bármelyik síkon való eléréséhez minden hívónak (felhasználónak vagy alkalmazásnak) megfelelő hitelesítéssel és engedélyezéssel kell rendelkeznie. A hitelesítés létrehozza a hívó identitását. Az engedélyezés meghatározza, hogy a hívó milyen műveleteket hajthat végre. A Key Vault-alapú hitelesítés az [Azure Active Directory (Azure ad)](../../active-directory/fundamentals/active-directory-whatis.md)szolgáltatással együtt működik, amely az adott **rendszerbiztonsági tag** identitásának hitelesítéséhez felelős.
 
@@ -58,7 +58,7 @@ A mindkét síkon történő hitelesítéshez használt egyetlen mechanizmus mod
 
 ## <a name="resource-endpoints"></a>Erőforrás-végpontok
 
-Az alkalmazások végpontokon keresztül férnek hozzá a síkokhoz. A két sík hozzáférés-vezérlése egymástól függetlenül működik. Ahhoz, hogy egy alkalmazás hozzáférjen a kulcsok használatához a kulcstartóban, Key Vault hozzáférési szabályzattal vagy Azure RBAC (előzetes verzió) biztosíthatja az adatsíkok elérését. Ahhoz, hogy a felhasználó olvasási hozzáférést biztosítson Key Vault tulajdonságokhoz és címkékhez, de nem fér hozzá az adatokhoz (kulcsok, titkok vagy tanúsítványok), a felügyeleti sík hozzáférést biztosít a RBAC.
+Az alkalmazások végpontokon keresztül férnek hozzá a síkokhoz. A két sík hozzáférés-vezérlése egymástól függetlenül működik. Ahhoz, hogy egy alkalmazás hozzáférjen a kulcsok használatához a kulcstartóban, Key Vault hozzáférési szabályzattal vagy Azure RBAC (előzetes verzió) biztosíthatja az adatsíkok elérését. Ahhoz, hogy a felhasználó olvasási hozzáférést biztosítson Key Vault tulajdonságokhoz és címkékhez, de nem fér hozzá az adatokhoz (kulcsokhoz, titkokhoz vagy tanúsítványokhoz), a felügyeleti sík hozzáférést biztosít az Azure RBAC.
 
 A következő táblázat a felügyeleti és adatsíkok végpontját mutatja be.
 
@@ -111,7 +111,7 @@ Ha az Azure-szerepköröket egy Azure AD-rendszerbiztonsági tag számára rende
 
 Az Azure RBAC-engedélyek a tár-hozzáférési házirendekkel való használatának fő előnyei a központosított hozzáférés-vezérlés kezelése és a [Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)integrációja. A Privileged Identity Management időalapú és jóváhagyási alapú szerepkör-aktiválást biztosít az Ön számára fontos erőforrásokra vonatkozó túlzott, szükségtelen vagy nem használt hozzáférési engedélyek kockázatának csökkentése érdekében.
 
-További információ a RBAC-vel Key Vault adatsíkon: [kulcsok, tanúsítványok és titkos kódok Key Vault Azure szerepköralapú hozzáférés-vezérléssel (előzetes verzió)](rbac-guide.md)
+További információ az Azure RBAC Key Vault adatsíkon [Key Vault: kulcsok, tanúsítványok és titkos kódok az Azure szerepköralapú hozzáférés-vezérléssel (előzetes verzió)](rbac-guide.md)
 
 ## <a name="firewalls-and-virtual-networks"></a>Tűzfalak és virtuális hálózatok
 
@@ -205,7 +205,7 @@ Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli for
 - [Azure RBAC-vel](../../role-based-access-control/overview.md)
 - [Privát kapcsolat](../../private-link/private-link-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hitelesítés az Azure Key Vaulttal](authentication.md)
 

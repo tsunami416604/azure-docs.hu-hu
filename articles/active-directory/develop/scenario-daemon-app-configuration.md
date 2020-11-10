@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8e065651a5527c0ab425614197ce128325454942
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24e3841abc9c397ab307e55405bdcc208815570e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257673"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444163"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása
 
@@ -26,7 +26,7 @@ Megtudhatja, hogyan konfigurálhatja a webes API-kat meghívó Daemon-alkalmazá
 
 Ezek a Microsoft-kódtárak támogatják a Daemon-alkalmazásokat:
 
-  MSAL-könyvtár | Leírás
+  MSAL-könyvtár | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatott a Daemon-alkalmazások létrehozásához. (A UWP, a Xamarin. iOS és az Xamarin. Android nem támogatott, mert ezek a platformok nyilvános ügyfélalkalmazások létrehozásához használatosak.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Démon-alkalmazások támogatása a Pythonban.
@@ -34,7 +34,7 @@ Ezek a Microsoft-kódtárak támogatják a Daemon-alkalmazásokat:
 
 ## <a name="configure-the-authority"></a>A szolgáltató konfigurálása
 
-A Daemon-alkalmazások a delegált engedélyek helyett alkalmazás-engedélyeket használnak. Ezért a támogatott fióktípus nem lehet fiók bármilyen szervezeti címtárban vagy személyes Microsoft-fiók (például Skype, Xbox, Outlook.com). Nincs olyan bérlői rendszergazda, aki beleegyezik a Microsoft személyes fiókjához tartozó Daemon-alkalmazásba. A szervezetem vagy a fiókjaim *fiókjait* *minden szervezetnél*ki kell választania.
+A Daemon-alkalmazások a delegált engedélyek helyett alkalmazás-engedélyeket használnak. Ezért a támogatott fióktípus nem lehet fiók bármilyen szervezeti címtárban vagy személyes Microsoft-fiók (például Skype, Xbox, Outlook.com). Nincs olyan bérlői rendszergazda, aki beleegyezik a Microsoft személyes fiókjához tartozó Daemon-alkalmazásba. A szervezetem vagy a fiókjaim *fiókjait* *minden szervezetnél* ki kell választania.
 
 Így az alkalmazás konfigurációjában megadott szolgáltatónak Bérlőnek kell lennie (a bérlő AZONOSÍTÓját vagy a szervezethez társított tartománynevet kell megadnia).
 
@@ -348,21 +348,18 @@ ConfidentialClientApplication cca =
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](./scenario-daemon-acquire-token.md?tabs=dotnet)
+Ebben a forgatókönyvben a következő cikkre léphet, amely [az alkalmazáshoz tartozó jogkivonatot szerzi](./scenario-daemon-acquire-token.md?tabs=dotnet)be.
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](./scenario-daemon-acquire-token.md?tabs=python)
+Ebben a forgatókönyvben a következő cikkre léphet, amely [az alkalmazáshoz tartozó jogkivonatot szerzi](./scenario-daemon-acquire-token.md?tabs=python)be.
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](./scenario-daemon-acquire-token.md?tabs=java)
+Ebben a forgatókönyvben a következő cikkre léphet, amely [az alkalmazáshoz tartozó jogkivonatot szerzi](./scenario-daemon-acquire-token.md?tabs=java)be.
 
 ---

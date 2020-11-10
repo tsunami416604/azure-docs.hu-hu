@@ -3,14 +3,14 @@ title: A Azure Automation Change Tracking és a leltár áttekintése
 description: Ez a cikk ismerteti a Change Tracking és a leltár szolgáltatást, amely segít azonosítani a szoftvereket és a Microsoft szolgáltatásbeli módosításokat a környezetben.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/26/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 39caa60196eca1afb7df1b0acbecddb557796fc3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b5390e4b3dc6d77390c3fca6323cbd52544c638a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130340"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445421"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
@@ -61,6 +61,16 @@ A Change Tracking és a leltár nem támogatja, vagy a következő korlátozáso
 A Change Tracking és a leltár minden olyan operációs rendszeren támogatott, amely megfelel Log Analytics ügynök követelményeinek. A Log Analytics ügynök által jelenleg támogatott Windows és Linux operációsrendszer-verziók listáját a [támogatott operációs rendszerek](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) című részben tekintheti meg.
 
 A TLS 1,2-hez szükséges ügyfél-követelmények megismeréséhez lásd: [tls 1,2 kényszerítés Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+
+### <a name="python-requirement"></a>Python-követelmény
+
+A Change Tracking és a leltár csak a Python2 támogatja. Ha a gép olyan disztribúciót használ, amely alapértelmezés szerint nem tartalmazza a Python 2-et, akkor telepítenie kell azt. A következő minta parancsok a Python 2 különböző disztribúciókban való telepítését teszik ki.
+
+- Red Hat, CentOS, Oracle: `yum install -y python2`
+- Ubuntu, Debian: `apt-get install -y python2`
+- SUSE `zypper install -y python2`
+
+A python2 végrehajtható fájljának aliasnak kell lennie a *Pythonhoz*.
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
@@ -119,7 +129,7 @@ A Change Tracking és a leltár lehetővé teszi a Windows-beállításkulcsok v
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | A Wavemapper, a wave1 és a Wave2, a MSACM. imaadpcm, a. msadpcm, a. msgsm610 és a vidc társított 32 bites illesztőprogramokat figyeli. Hasonló a **system.ini** fájl [Drivers] szakaszához.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | A Wavemapper, a wave1 és a Wave2, a MSACM. imaadpcm, a. msadpcm, a. msgsm610 és a vidc társított 32 bites illesztőprogramokat figyeli a 64 bites számítógépeken futó 32 bites alkalmazásokhoz. Hasonló a **system.ini** fájl [Drivers] szakaszához.
 > |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Az ismert vagy leggyakrabban használt rendszerdll-fájlok listáját figyeli. A figyelés megakadályozza, hogy a felhasználók a rendszer DLL-fájljainak eldobásával kihasználják a gyenge alkalmazásspecifikus címtárbeli engedélyeket.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | A Windows rendszerhez készült interaktív bejelentkezési támogatási modellben figyeli azon csomagok listáját, amelyekről értesítéseket kaphat a **winlogon.exeról** .
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | A Windows rendszerhez készült interaktív bejelentkezési támogatási modellben figyeli azon csomagok listáját, amelyekről értesítéseket kaphat a **winlogon.exeról**.
 
 ## <a name="recursion-support"></a>Rekurzió támogatása
 
@@ -127,7 +137,7 @@ A Change Tracking és a leltár támogatja a rekurziót, ami lehetővé teszi he
 
 - Több fájl nyomon követéséhez helyettesítő karakterek szükségesek.
 
-- A helyettesítő karaktereket csak a fájl elérési útjának utolsó szegmensében használhatja, például **c:\mappa \\ file** _ vagy _ */etc/* . conf * *.
+- A helyettesítő karaktereket csak a fájl elérési útjának utolsó szegmensében használhatja, például **c:\mappa \\ file** _ vagy _ */etc/*. conf * *.
 
 - Ha egy környezeti változónak érvénytelen az elérési útja, az érvényesítés sikeres lesz, de az elérési út meghiúsul.
 
@@ -175,7 +185,7 @@ A teljesítmény optimalizálása érdekében a Log Analytics ügynök csak a v�
 
 Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid környezet konfigurációs állapotának változásairól riasztást küld. Számos hasznos művelet aktiválható a riasztásokra adott válaszként. Például az Azure functions, az Automation runbookok, a webhookok és a hasonló műveletek. A **c:\Windows\System32\drivers\etc\hosts** -fájl változásainak riasztása egy adott gépen a riasztások helyes alkalmazása Change Tracking és leltározási adatként. Számos további forgatókönyv is létezik a riasztásokhoz, beleértve a következő táblázatban definiált lekérdezési forgatókönyveket is.
 
-|Lekérdezés  |Leírás  |
+|Lekérdezés  |Description  |
 |---------|---------|
 |Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "files" és a FileSystemPath a "c: \\ Windows \\ System32 \\ Drivers \\ " kifejezést tartalmazza|A rendszerkritikus fájlok változásainak nyomon követésére használható.|
 |Konfigurációváltozás <br>&#124;, hogy a FieldsChanged tartalmazza-e a "FileContentChecksum" és a FileSystemPath = = "c: \\ Windows system32 illesztőprogramok, illetve a \\ \\ \\ \\ gazdagépek"|Hasznos a legfontosabb konfigurációs fájlok módosításainak nyomon követéséhez.|
@@ -186,7 +196,7 @@ Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid kö
 |Konfigurációváltozás <br>&#124;, ahol a RegistryKey = = @ "HKEY_LOCAL_MACHINE \\ Software \\ Microsoft \\ Windows \\ CurrentVersion \\ QualityCompat"| Hasznos a kritikus vírusvédelmi kulcsok változásainak nyomon követéséhez.|
 |Konfigurációváltozás <br>&#124;, ahol a RegistryKey a következőt tartalmazza: @ "HKEY_LOCAL_MACHINE \\ System \\ CurrentControlSet \\ Services \\ SharedAccess \\ Parameters \\ FirewallPolicy"| Hasznos a tűzfalbeállítások változásainak nyomon követéséhez.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Automation-fiókból való engedélyezéssel kapcsolatban lásd: [change Tracking és leltár engedélyezése Automation-fiókból](enable-from-automation-account.md).
 

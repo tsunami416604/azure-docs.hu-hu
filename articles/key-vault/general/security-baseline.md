@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 48a822adc34019ca2f6a39aa70211cae7fbf6030
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 1abbabd3c231a70ca473c4b64e9a8c75d2119c89
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289885"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445523"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>A Key Vault Azure-os biztonsági alapkonfigurációja
 
@@ -344,7 +344,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
-**Útmutató** : nem alkalmazható; A Azure Key Vault nem rendelkezik az alapértelmezett jelszavakkal, mivel a hitelesítés Active Directory és a szerepköralapú hozzáférés-vezérléssel biztosított.
+**Útmutató** : nem alkalmazható; Azure Key Vault nem rendelkezik az alapértelmezett jelszavakkal, mivel a hitelesítés Active Directory és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) által biztosított.
 
 
 **Azure Security Center figyelés** : nem alkalmazható
@@ -445,7 +445,7 @@ Mi a hely feltétele Azure Active Directory feltételes hozzáférésben?: https
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
-**Útmutató** : a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerként az Azure-erőforrások, például a Key Vault számára. Ez lehetővé teszi a szerepköralapú hozzáférés-vezérlés (RBAC) számára a bizalmas erőforrások felügyeletét.
+**Útmutató** : a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerként az Azure-erőforrások, például a Key Vault számára. Ez lehetővé teszi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) számára a bizalmas erőforrások felügyeletét.
 
  
 
@@ -1303,7 +1303,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Felelősség** : megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági Alaptervekről](../../security/benchmarks/security-baselines-overview.md)

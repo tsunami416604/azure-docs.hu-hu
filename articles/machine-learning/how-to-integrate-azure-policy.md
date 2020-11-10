@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 47a97bb8fbe52d3dde84afd77997b179a5c9248d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 22901c4e8409fc4846c1566a57b2679f4fa92396
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325500"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444560"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Azure Machine Learning naplózása és kezelése Azure Policy használatával
 
@@ -42,11 +42,11 @@ A házirendeket [Azure PowerShell](../governance/policy/assign-policy-powershell
 
 ## <a name="workspaces-encryption-with-customer-managed-key"></a>Munkaterületek titkosítása az ügyfél által felügyelt kulccsal
 
-Meghatározza, hogy a munkaterületeket egy ügyfél által felügyelt kulccsal (CMK) kell-e titkosítani, vagy Microsoft által felügyelt kulccsal kell titkosítani a metrikákat és a metaadatokat. A CMK használatával kapcsolatos további információkért tekintse meg a vállalati biztonsági cikk [Azure Cosmos db](concept-enterprise-security.md#azure-cosmos-db) című szakaszát.
+Meghatározza, hogy a munkaterületeket egy ügyfél által felügyelt kulccsal kell-e titkosítani, vagy egy Microsoft által felügyelt kulccsal a metrikák és a metaadatok titkosításához. Az ügyfél által felügyelt kulcs használatával kapcsolatos további információkért tekintse meg az adattitkosítási cikk [Azure Cosmos db](concept-data-encryption.md#azure-cosmos-db) szakaszát.
 
-A szabályzat konfigurálásához állítsa be a Effect paramétert a __naplózás__ vagy a __Megtagadás__ értékre. Ha __naplózásra__ van BEÁLLÍTVA, CMK nélküli munkaterületeket hozhat létre, és a tevékenység naplójában létrejön egy figyelmeztetési esemény.
+A szabályzat konfigurálásához állítsa be a Effect paramétert a __naplózás__ vagy a __Megtagadás__ értékre. Ha a __naplózás__ beállítás be van állítva, akkor az ügyfél által felügyelt kulcs nélkül hozhat létre munkaterületeket, és a rendszer figyelmeztetési eseményt hoz létre a tevékenység naplójában.
 
-Ha a szabályzatot a __Megtagadás__ értékre állítja, akkor nem hozhat létre munkaterületet, hacsak nem ad meg CMK. A CMK nélküli munkaterületek létrehozására tett kísérlet a következőhöz hasonló hibaüzenetet eredményez, `Resource 'clustername' was disallowed by policy` és hibát hoz létre a tevékenység naplójában. Ennek a hibának a részeként a rendszer a szabályzat azonosítóját is visszaadja.
+Ha a házirend a __Megtagadás__ értékre van állítva, akkor nem hozhat létre munkaterületet, ha az ügyfél által felügyelt kulcsot ad meg. Az ügyfél által felügyelt kulcs nélküli munkaterületek létrehozására tett kísérlet a következőhöz hasonló hibaüzenetet eredményez, `Resource 'clustername' was disallowed by policy` és hibát hoz létre a tevékenység naplójában. Ennek a hibának a részeként a rendszer a szabályzat azonosítóját is visszaadja.
 
 ## <a name="workspaces-should-use-private-link"></a>A munkaterületeknek privát hivatkozást kell használniuk
 
@@ -54,7 +54,7 @@ Azt szabályozza, hogy a munkaterületeknek az Azure privát hivatkozását kell
 
 A szabályzat konfigurálásához állítsa be a Effect paramétert a __naplózás__ értékre. Ha privát hivatkozás nélkül hoz létre munkaterületet, a rendszer figyelmeztető eseményt hoz létre a tevékenység naplójában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Policy dokumentációja](../governance/policy/overview.md)
 * [Beépített szabályzatok a Azure Machine Learninghoz](policy-reference.md)

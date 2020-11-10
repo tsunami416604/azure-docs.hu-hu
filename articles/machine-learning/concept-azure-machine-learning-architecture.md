@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c96263b5d40d4f6a4904a6da3d40ad98ac81f030
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f17cdd42c892f6c0d218875cf304846937ba58d7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322304"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444834"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -33,7 +33,7 @@ A munkaterület a következő központi hely:
 * Tárolja a Azure Machine Learning használatakor létrehozott eszközöket, beleértve a következőket:
   * [Környezetek](#environments)
   * [Kísérletek](#experiments)
-  * [Folyamatok](#ml-pipelines)
+  * [Pipelines](#ml-pipelines)
   * [Adatkészletek](#datasets-and-datastores)
   * [Modellek](#models)
   * [Végpontok](#endpoints)
@@ -46,6 +46,19 @@ A munkaterület más Azure-erőforrásokat is tartalmaz, amelyeket a munkaterül
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): a számítási célok és a munkaterület által igényelt egyéb bizalmas információk által használt titkokat tárolja.
 
 A munkaterületeket másokkal is megoszthatja.
+
+### <a name="create-workspace"></a>Munkaterület létrehozása
+
+A következő ábra a munkaterület létrehozása munkafolyamatot mutatja be.
+
+* Jelentkezzen be az Azure AD-be az egyik támogatott Azure Machine Learning ügyfélről (Azure CLI, Python SDK, Azure Portal), és kérje meg a megfelelő Azure Resource Manager tokent.
+* A munkaterületet a Azure Resource Manager meghívásával hozhatja létre. 
+* Azure Resource Manager a munkaterület kiépítéséhez kapcsolatba lép a Azure Machine Learning erőforrás-szolgáltatóval.
+* Ha nem ad meg meglévő erőforrásokat, a rendszer további szükséges erőforrásokat hoz létre az előfizetésében.
+
+A munkaterületekhez (például az Azure Kubernetes szolgáltatáshoz vagy virtuális gépekhez) csatlakoztatott egyéb számítási célokat igény szerint is kiépítheti.
+
+[![Munkaterület-munkafolyamat létrehozása](media/concept-azure-machine-learning-architecture/create-workspace.png)](media/concept-azure-machine-learning-architecture/create-workspace.png#lightbox)
 
 ## <a name="computes"></a>Kiszámítja
 
@@ -114,6 +127,10 @@ Példa a futtatási konfigurációkra: [képzések futtatásának konfigurálás
 
 Amikor elküld egy futtatást, Azure Machine Learning tömöríti azt a könyvtárat, amely a parancsfájlt zip-fájlként tartalmazza, és elküldi a számítási célnak. Ekkor a rendszer kibontja a zip-fájlt, és ott futtatja a parancsfájlt. Azure Machine Learning a zip-fájlt pillanatképként tárolja a futtatási rekord részeként. Bárki, aki hozzáféréssel rendelkezik a munkaterülethez, böngészhet egy futtatási rekordot, és letöltheti a pillanatképet.
 
+Az alábbi ábrán a kód pillanatkép-munkafolyamata látható.
+
+[![Kód pillanatkép-munkafolyamata](media/concept-azure-machine-learning-architecture/code-snapshot.png)](media/concept-azure-machine-learning-architecture/code-snapshot.png#lightbox)
+
 ### <a name="logging"></a>Naplózás
 
 Azure Machine Learning automatikusan naplózza a szabványos futtatási metrikákat. [A PYTHON SDK használatával azonban tetszőleges mérőszámokat is naplózhat](how-to-track-experiments.md).
@@ -129,6 +146,31 @@ Több módon is megtekintheti a naplókat: valós időben figyelheti a futtatás
 Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a rendszer a tárház adatait a futtatási előzményekben tárolja. Ez a parancsfájl-futtatási konfiguráció vagy a ML-folyamat használatával elküldött futtatásokkal működik. Az SDK-ból vagy Machine Learning parancssori felületről küldött futtatások esetén is működik.
 
 További információ: git- [integráció Azure Machine Learninghoz](concept-train-model-git-integration.md).
+
+### <a name="training-workflow"></a>Betanítási munkafolyamat
+
+Amikor kísérletet futtat egy modell betanítására, a következő lépések történnek. Ezeket az alábbi betanítási munkafolyamat-diagram szemlélteti:
+
+* A Azure Machine Learning a rendszer az előző szakaszban mentett kód pillanatképéhez tartozó pillanatkép-AZONOSÍTÓval hívja meg.
+* Azure Machine Learning létrehoz egy futtatási azonosítót (nem kötelező) és egy Machine Learning szolgáltatási jogkivonatot, amelyet később a számítási célok, például a Machine Learning Compute/virtuális gépek használják a Machine Learning szolgáltatással való kommunikációhoz.
+* Kiválaszthat egy felügyelt számítási célt (például Machine Learning Compute) vagy egy nem felügyelt számítási célt (például virtuális gépeket) a betanítási feladatok futtatásához. Mindkét forgatókönyv esetén az alábbi adatfolyamatok érhetők el:
+   * Virtuális gépek/HDInsight, a Microsoft-előfizetés egyik kulcstartójában elérhető SSH hitelesítő adatokkal. Azure Machine Learning a következő számítási célra futtatja a felügyeleti kódot:
+
+   1. Előkészíti a környezetet. (A Docker lehetőséget biztosít a virtuális gépek és a helyi számítógépek számára. A következő lépésekből megtudhatja, hogyan működik a kísérletek futtatása a Docker-tárolókban Machine Learning Compute.)
+   1. Letölti a kódot.
+   1. Beállítja a környezeti változókat és a konfigurációkat.
+   1. Futtatja a felhasználói parancsfájlokat (az előző szakaszban említett kód-pillanatképet).
+
+   * Machine Learning Compute, amely egy munkaterület által felügyelt identitáson keresztül érhető el.
+Mivel Machine Learning Compute felügyelt számítási cél (azaz a Microsoft felügyeli), a Microsoft-előfizetése alatt fut.
+
+   1. Ha szükséges, a távoli Docker-konstrukció indult el.
+   1. A felügyeleti kód a felhasználó Azure Files megosztására íródik.
+   1. A tároló egy kezdeti paranccsal indult el. Ez a felügyeleti kód az előző lépésben leírtak szerint.
+
+* A futtatást követően lekérdezheti a futtatott és a metrikákat. Az alábbi folyamatábrán ez a lépés akkor következik be, amikor a betanítási cél a futtatási metrikákat a Cosmos DB-adatbázisban lévő tárterületről Azure Machine Learningra írja vissza. Az ügyfelek hívhatják Azure Machine Learning. Machine Learning a Cosmos DB-adatbázisból lekéri a metrikákat, majd visszaküldi azokat az ügyfélnek.
+
+[![Betanítási munkafolyamat](media/concept-azure-machine-learning-architecture/training-and-metrics.png)](media/concept-azure-machine-learning-architecture/training-and-metrics.png#lightbox)
 
 ## <a name="models"></a>Modellek
 
@@ -178,9 +220,21 @@ A végpontok a modell példányai egy olyan webszolgáltatásba, amely a felhőb
 
 A modell webszolgáltatásként való telepítésekor a végpont Azure Container Instances, Azure Kubernetes Service-ben vagy FPGA-ben is üzembe helyezhető. A szolgáltatást a modellből, a parancsfájlból és a társított fájlokból hozza létre. Ezek egy alap tároló-rendszerképbe kerülnek, amely a modell végrehajtási környezetét tartalmazza. A rendszerkép egy elosztott terhelésű, HTTP-végponttal rendelkezik, amely a webszolgáltatásnak küldött pontozási kérelmeket fogadja.
 
-A webszolgáltatások figyeléséhez Application Insights telemetria vagy Model telemetria is engedélyezheti. A telemetria-adatbázis csak Ön számára érhető el.  A rendszer a Application Insights és a Storage-fiók példányaiban tárolja.
+A webszolgáltatások figyeléséhez Application Insights telemetria vagy Model telemetria is engedélyezheti. A telemetria-adatbázis csak Ön számára érhető el.  A rendszer a Application Insights és a Storage-fiók példányaiban tárolja. Ha engedélyezte az automatikus skálázást, az Azure automatikusan méretezi az üzembe helyezést.
 
-Ha engedélyezte az automatikus skálázást, az Azure automatikusan méretezi az üzembe helyezést.
+Az alábbi ábrán egy webszolgáltatási végpontként üzembe helyezett modell következtetési munkafolyamata látható:
+
+A részletek a következők:
+
+* A felhasználó egy olyan ügyfél használatával regisztrálja a modellt, mint a Azure Machine Learning SDK-t.
+* A felhasználó létrehoz egy rendszerképet egy modell, egy pontszám-fájl és más modell függőségei használatával.
+* A Docker-rendszerkép létrehozása és tárolása Azure Container Registryban történik.
+* A webszolgáltatás üzembe helyezése a számítási célra (Container Instances/ak) történik az előző lépésben létrehozott rendszerkép használatával.
+* A pontozási kérés részleteit Application Insights tárolja a rendszer, amely a felhasználó előfizetésében található.
+* A telemetria a Microsoft/Azure-előfizetésre is leküldve.
+
+[![Következtetési munkafolyamat](media/concept-azure-machine-learning-architecture/inferencing.png)](media/concept-azure-machine-learning-architecture/inferencing.png#lightbox)
+
 
 Egy modell webszolgáltatásként való üzembe helyezésére példa: [lemezkép besorolási modell telepítése Azure Container Instancesban](tutorial-deploy-models-with-aml.md).
 
@@ -239,7 +293,7 @@ A Studióban a Azure Machine Learning részét képező interaktív eszközök i
 + Az automatizáláshoz használja a [Azure Machine learning CLI](./reference-azure-machine-learning-cli.md) -t.
 + A [számos Modelles megoldás-gyorsító](https://aka.ms/many-models) (előzetes verzió) a Azure Machine Learningra épít, és lehetővé teszi több száz vagy akár több ezer gépi tanulási modell betanítását, üzemeltetését és felügyeletét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Machine Learning megkezdéséhez tekintse meg a következőt:
 

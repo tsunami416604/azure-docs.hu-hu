@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 3fdc9a9f99b239f68022067a5aedbc7e6e0d12a4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7423114d2da23207dfcc1a329675b8c902b1f320
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287508"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445540"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Hitelesítés az Azure Key Vaulttal
 
@@ -62,7 +62,7 @@ Key Vault két külön engedélyezési szinttel működik:
 
     Key Vault jelenleg támogatja a [közreműködő](../../role-based-access-control/built-in-roles.md#key-vault-contributor) szerepkört, amely lehetővé teszi a felügyeleti műveleteket Key Vault erőforrásokon. Számos más szerepkör jelenleg előzetes verzióban érhető el. Egyéni szerepköröket is létrehozhat az [Azure Custom roles](../../role-based-access-control/custom-roles.md)című témakörben leírtak szerint.
 
-    A szerepkörökkel kapcsolatos általános információkért lásd: [Mi az Azure Role-Based Access Control (RBAC)?](../../role-based-access-control/overview.md)
+    A szerepkörökkel kapcsolatos általános információkért lásd: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md).
 
 
 > [!IMPORTANT]
@@ -125,4 +125,4 @@ Az alábbi táblázat különböző cikkekre mutat, amelyek bemutatják, hogyan 
 - [Key Vault hozzáférési szabályzat hibaelhárítása](troubleshooting-access-issues.md)
 - [Key Vault REST API hibakódok](rest-error-codes.md)
 - [Key Vault fejlesztői útmutató](developers-guide.md)
-- [Mi az Azure Role-Based Access Control (RBAC)?](../../role-based-access-control/overview.md)
+- [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md)

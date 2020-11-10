@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 707b6d0f8a5fa3cff89339b9b0465d96b5369a34
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 596de459b888bb9973aca1c7d72f2f9e24c966eb
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287600"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445132"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -79,7 +79,7 @@ Az alkalmazásokban való Key Vault hitelesítésével kapcsolatos oktatóanyago
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Kulcsok, tanúsítványok és titkos kódok kezelése
 
-A kulcsok, titkok és tanúsítványok elérését az adatsík vezérli. Az adatsík hozzáférés-vezérlése a helyi tároló hozzáférési házirendjei vagy a RBAC (előzetes verzió) használatával végezhető el.
+A kulcsok, titkok és tanúsítványok elérését az adatsík vezérli. Az adatsík hozzáférés-vezérlése a helyi tár hozzáférési szabályzatai vagy az Azure RBAC (előzetes verzió) használatával végezhető el.
 
 **Kulcsok API-k és SDK-k**
 
@@ -104,7 +104,7 @@ A kulcsok, titkok és tanúsítványok elérését az adatsík vezérli. Az adat
 
 Lásd: [ügyféloldali kódtárak](client-libraries.md) telepítési csomagok és forráskódok számára.
 
-További információ a Key Vault adatsík biztonságáról: [Key Vault adatsíkon és hozzáférési szabályzatok](./secure-your-key-vault.md#data-plane-and-access-policies) és [Key Vault adatsík és RBAC (előzetes verzió)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview)
+További információ a Key Vault adatsík biztonságáról: [Key Vault adatsíkon és hozzáférési szabályzatok](./secure-your-key-vault.md#data-plane-and-access-policies) és [Key Vault Adatsík és az Azure RBAC (előzetes verzió)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview)
 
 ### <a name="code-examples"></a>Kódpéldák
 

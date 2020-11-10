@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: caaa4499cbed1dce1a858c33a9488650649a5a44
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: dda0e3d6739e94df4ce5910938c164e3db336bce
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042915"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445574"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT-Plug and Play modellek használata IoT-megoldásokban
 
@@ -121,7 +121,7 @@ A megoldások a [modell tárházát](concepts-model-repository.md) használhatj�
 
 Miután azonosította a modell AZONOSÍTÓját egy új eszköz kapcsolataihoz, kövesse az alábbi lépéseket:
 
-1. Kérje le a modell definícióját a modell-adattárból a modell AZONOSÍTÓjának használatával. További információ: [Get models (modellek beolvasása](/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)).
+1. Kérje le a modell definícióját a modell-adattárból a modell AZONOSÍTÓjának használatával. További információ: [eszköz modell tárháza](concepts-model-repository.md).
 
 1. A csatlakoztatott eszköz modell-definíciójának használatával enumerálhatja az eszköz képességeit.
 
@@ -139,7 +139,7 @@ Miután azonosította a modell AZONOSÍTÓját egy új eszköz kapcsolataihoz, k
 
 1. Az eszköz enumerálási képességeinek használatával lehetővé teheti a felhasználók számára [az eszköz interakcióját](quickstart-service-node.md).  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan integrálhatja a IoT Plug and Play modelleket egy IoT-megoldásba, néhány javasolt következő lépés:
 

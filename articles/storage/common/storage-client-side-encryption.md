@@ -5,17 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4e8623ecb351fa99a437de70a9b74a70fb6228cd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5f2d3ba12fa65beb7156e056c23e44b028cbb520
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151151"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445064"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Titkosítás és Azure Key Vault Client-Side Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -223,7 +223,7 @@ BlobClient clientSideEncryptionBlob = plaintextBlob.WithClientSideEncryptionOpti
 ```
 
 # <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
-Hozzon létre egy **BlobEncryptionPolicy** objektumot, és állítsa be a kérési beállítások között (API-ban vagy ügyféloldali szinten a **DefaultRequestOptions**használatával). Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
+Hozzon létre egy **BlobEncryptionPolicy** objektumot, és állítsa be a kérési beállítások között (API-ban vagy ügyféloldali szinten a **DefaultRequestOptions** használatával). Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
 
 ```csharp
 // Create the IKey used for encryption.
@@ -292,7 +292,7 @@ ClientSideEncryptionOptions encryptionOptions;
 QueueClient clientSideEncryptionQueue = plaintextQueue.WithClientSideEncryptionOptions(encryptionOptions);
 ```
 
-Egyes felhasználók olyan várólistákkal rendelkezhetnek, amelyekben nem sikerült az összes fogadott üzenet visszafejtése, és a kulcsnak vagy a feloldónak el kell dobnia. Ebben az esetben a fenti példa utolsó sora jelenik meg, és a fogadott üzenetek egyike sem lesz elérhető. Ezekben a forgatókönyvekben az alosztály **QueueClientSideEncryptionOptions** használhatók az ügyfelek titkosítási lehetőségeinek biztosításához. Olyan Event **DecryptionFailed** tesz elérhetővé, amely akkor aktiválódik, amikor egy üzenetsor-üzenetet nem lehet visszafejteni, amíg legalább egy hívást felvettek az eseményre. Az önálló sikertelen üzenetek így kezelhetők, és a rendszer kiszűri a **ReceiveMessages**által visszaadott utolsó **QueueMessage []** .
+Egyes felhasználók olyan várólistákkal rendelkezhetnek, amelyekben nem sikerült az összes fogadott üzenet visszafejtése, és a kulcsnak vagy a feloldónak el kell dobnia. Ebben az esetben a fenti példa utolsó sora jelenik meg, és a fogadott üzenetek egyike sem lesz elérhető. Ezekben a forgatókönyvekben az alosztály **QueueClientSideEncryptionOptions** használhatók az ügyfelek titkosítási lehetőségeinek biztosításához. Olyan Event **DecryptionFailed** tesz elérhetővé, amely akkor aktiválódik, amikor egy üzenetsor-üzenetet nem lehet visszafejteni, amíg legalább egy hívást felvettek az eseményre. Az önálló sikertelen üzenetek így kezelhetők, és a rendszer kiszűri a **ReceiveMessages** által visszaadott utolsó **QueueMessage []** .
 
 ```csharp
 // Create your encryption options using the sub-class.
@@ -324,7 +324,7 @@ Debug.Assert(messages.Length == 4)
 ```
 
 # <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
-Hozzon létre egy **QueueEncryptionPolicy** objektumot, és állítsa be a kérési beállítások között (API-ban vagy ügyféloldali szinten a **DefaultRequestOptions**használatával). Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
+Hozzon létre egy **QueueEncryptionPolicy** objektumot, és állítsa be a kérési beállítások között (API-ban vagy ügyféloldali szinten a **DefaultRequestOptions** használatával). Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
 
 ```csharp
 // Create the IKey used for encryption.
@@ -344,7 +344,7 @@ Hozzon létre egy **QueueEncryptionPolicy** objektumot, és állítsa be a kér�
 ---
 
 ### <a name="table-service-encryption-v11-only"></a>Table service titkosítás (csak v11)
-A titkosítási szabályzat létrehozása és a kérési beállítások megadása mellett meg kell adnia egy **EncryptionResolver** a **TableRequestOptions**-ben, vagy az entitáson a [EncryptProperty] attribútumot kell beállítania.
+A titkosítási szabályzat létrehozása és a kérési beállítások megadása mellett meg kell adnia egy **EncryptionResolver** a **TableRequestOptions** -ben, vagy az entitáson a [EncryptProperty] attribútumot kell beállítania.
 
 #### <a name="using-the-resolver"></a>A feloldó használata
 
@@ -383,7 +383,7 @@ A titkosítási szabályzat létrehozása és a kérési beállítások megadás
 ```
 
 #### <a name="using-attributes"></a>Attribútumok használata
-Ahogy fent említettük, ha az entitás TableEntity valósít meg, akkor a tulajdonságok a [EncryptProperty] attribútummal is megadhatók a **EncryptionResolver**megadása helyett.
+Ahogy fent említettük, ha az entitás TableEntity valósít meg, akkor a tulajdonságok a [EncryptProperty] attribútummal is megadhatók a **EncryptionResolver** megadása helyett.
 
 ```csharp
 [EncryptProperty]
@@ -393,7 +393,7 @@ Ahogy fent említettük, ha az entitás TableEntity valósít meg, akkor a tulaj
 ## <a name="encryption-and-performance"></a>Titkosítás és teljesítmény
 Vegye figyelembe, hogy a tárolási adatokat a rendszer további teljesítménybeli terhelést eredményez. A tartalmi kulcsot és a IV-t elő kell állítani, a tartalmat titkosítani kell, és további metaadatokat kell formázni és feltölteni. Ez a terhelés a titkosított adatmennyiségtől függően eltérő lesz. Javasoljuk, hogy az ügyfelek mindig tesztelje az alkalmazásaikat a fejlesztés során.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Oktatóanyag: Blobok titkosítása és visszafejtése Microsoft Azure Storage használatával Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 * Töltse le az [Azure Storage ügyféloldali kódtárat a .net NuGet-csomaghoz](https://www.nuget.org/packages/WindowsAzure.Storage)
 * A Azure Key Vault NuGet [Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [Client](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)és [Extensions](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) csomagok letöltése  

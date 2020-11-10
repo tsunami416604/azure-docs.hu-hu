@@ -8,17 +8,17 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 6a3916a41635a1c76bddbb092294f6d362fc6050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1e6f4e16e3eda8519913a9e2ae14f7cc909bf61
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924711"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445455"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Az Azure Cognitive Search alkoholtartalom-növelési folyamatának pénzmosás-képessége
 
 > [!IMPORTANT] 
-> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Jelenleg nincs .NET SDK-támogatás.
+> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Jelenleg nincs .NET SDK-támogatás.
 
 A **pénzmosás** -képesség lehetővé teszi, hogy az AI-bővítést egy egyéni [Azure Machine learning](../machine-learning/overview-what-is-azure-ml.md) (pénzmosás) modellel bővítse. A pénzmosás-modell betanítása [és üzembe helyezése](../machine-learning/concept-azure-machine-learning-architecture.md#workspace)után a **pénzmosás** -képesség a mesterséges intelligenciát integrálja.
 
@@ -58,9 +58,9 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk. A haszn
 
 A szükséges pénzmosás-paraméterek attól függnek, hogy a pénzmosás szolgáltatás milyen hitelesítést használ, ha van ilyen. A pénzmosás-szolgáltatások három hitelesítési lehetőséget biztosítanak:
 
-* [Kulcs alapú hitelesítés](../machine-learning/concept-enterprise-security.md#authentication-for-web-service-deployment). A rendszer statikus kulcsot biztosít a pénzmosás-készségekből származó pontozási kérelmek hitelesítéséhez
+* [Kulcs alapú hitelesítés](../machine-learning/how-to-authenticate-web-service.md#key-based-authentication). A rendszer statikus kulcsot biztosít a pénzmosás-készségekből származó pontozási kérelmek hitelesítéséhez
   * _URI_ és _kulcs_ paraméterek használata
-* [Jogkivonat-alapú hitelesítés](../machine-learning/concept-enterprise-security.md#authentication). A pénzmosás szolgáltatás a [jogkivonat-alapú hitelesítés használatával van üzembe helyezve](../machine-learning/how-to-deploy-azure-kubernetes-service.md#authentication-with-tokens). Az Azure Cognitive Search szolgáltatás [felügyelt identitása](../active-directory/managed-identities-azure-resources/overview.md) megkapja az [olvasó szerepkört](../machine-learning/how-to-assign-roles.md) a pénzmosás szolgáltatás munkaterületén. A pénzmosás-képesség ezután az Azure Cognitive Search szolgáltatás felügyelt identitásával hitelesíti a pénzmosás szolgáltatást, és nincs szükség statikus kulcsokra.
+* [Jogkivonat-alapú hitelesítés](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication). A pénzmosás szolgáltatás a [jogkivonat-alapú hitelesítés használatával van üzembe helyezve](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication). Az Azure Cognitive Search szolgáltatás [felügyelt identitása](../active-directory/managed-identities-azure-resources/overview.md) megkapja az [olvasó szerepkört](../machine-learning/how-to-assign-roles.md) a pénzmosás szolgáltatás munkaterületén. A pénzmosás-képesség ezután az Azure Cognitive Search szolgáltatás felügyelt identitásával hitelesíti a pénzmosás szolgáltatást, és nincs szükség statikus kulcsokra.
   * Használja a _resourceId_ paramétert.
   * Ha az Azure Cognitive Search szolgáltatás egy másik régióban található a pénzmosás munkaterületen, akkor a _régió_ paraméterrel állíthatja be azt a régiót, amelyet a pénzmosás szolgáltatás üzembe helyezett
 * Nincs hitelesítés. A pénzmosás szolgáltatás használatához nincs szükség hitelesítésre

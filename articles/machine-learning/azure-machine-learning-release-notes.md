@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 44afcf6883298eb36cd1219e6d60a8444a487412
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5054451b181223d3d6deece6812358cfd08b1e30
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423011"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445081"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -83,7 +83,7 @@ További információ a [rendszerkép-példányok szegmentálásának címkézé
   + **azureml-train-core**
     + TensorFlow 2,3 kurátori környezet hozzáadása
     + A parancs tulajdonságának futtatása a futtatási konfigurációban, amely lehetővé teszi a felhasználók számára a parancs küldését parancsfájl & argumentumok helyett.
-  + **azureml-widgets**
+  + **azureml – widgetek**
     + A parancsfájl futtatására szolgáló widget újratervezett felülete.
 
 
@@ -113,7 +113,7 @@ További információ a [rendszerkép-példányok szegmentálásának címkézé
     + a vizualizációs irányítópult el lett távolítva a azureml-azureml-értelmező csomagból, a magyarázatot használó ügyfél áthelyezve a-tolmácsolási csomagba, és elavult a azureml-alapú csomagok és jegyzetfüzetek továbbfejlesztett API-val
     + azureml – a csomag frissítése, hogy az értelmezhető közösségi 0.15.0 függ
     + javítsa a PyPI-csomagok leírását a azureml, a azureml-magyarázza-Model, a azureml-azureml-értelmezze és a tensorboard-
-  + **azureml – folyamat – mag**
+  + **azureml-pipeline-core**
     +  Rögzített folyamattal kapcsolatos probléma, ha `OutputFileDatasetConfig` a rendszer nem válaszol, ha a `register_on_complete` `name` paramétert egy már létező adatkészlet neveként beállított paraméterrel hívja meg.
   + **azureml-pipeline-steps**
     + Elavult databricks-jegyzetfüzetek eltávolítva.
@@ -204,7 +204,7 @@ További információ a [rendszerkép-példányok szegmentálásának címkézé
     + Javítsa ki a Dataset.get_by_name hibát, amely a legújabb adatkészlet verziójának címkéit jeleníti meg, még akkor is, ha egy adott régebbi verziót beolvasott.
   + **azureml-interpret**
     + Hozzáadott valószínűségi kimenetek a pontozási magyarázatok alakításához a azureml-értelmezésben az eredeti magyarázat shap_values_output paramétere alapján.
-  + **azureml – folyamat – mag**
+  + **azureml-pipeline-core**
     + Javított `PipelineOutputAbstractDataset.register` dokumentáció.
   + **azureml-train-automl-client**
     + Frissített AutoML-függőségek: `scikit-learn` (most 0.22.1), `pandas` (most 0.25.1), `numpy` (most 1.18.2).
@@ -742,7 +742,7 @@ Mostantól közvetlenül a Azure Machine Learning Studio webes felületén belü
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
     
-| Webalapú eszköz  |     Leírás  |
+| Webalapú eszköz  |     Description  |
 |---|---|
 | Azure ML Studio notebookok   |     A notebook-fájlok első, osztályon belüli létrehozása és az Azure ML Python SDK-ban elérhető összes művelet támogatása. | 
 
@@ -1084,7 +1084,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
 
 + **Új funkciók**
   + Adatkészlet: vegyen fel két lehetőséget `on_error` , és ha a `out_of_range_datetime` (z `to_pandas_dataframe` ) értéke sikertelen, akkor a rendszer nem tölti be őket a következővel `None`
-  + Munkaterület: hozzáadta a `hbi_workspace` jelölőt a bizalmas adatokkal rendelkező munkaterületekhez, amelyek lehetővé teszik a további titkosítást, és letiltja a speciális diagnosztikát a munkaterületeken. Emellett a saját kulcsok létrehozásához is támogatást biztosítunk a társított Cosmos DB példányhoz, ha a és a paramétereket megadja a `cmk_keyvault` `resource_cmk_uri` munkaterület létrehozásakor, amely létrehoz egy Cosmos db példányt az előfizetésben a munkaterület kiépítése során. [Itt olvashat bővebben.](./concept-enterprise-security.md#azure-cosmos-db)
+  + Munkaterület: hozzáadta a `hbi_workspace` jelölőt a bizalmas adatokkal rendelkező munkaterületekhez, amelyek lehetővé teszik a további titkosítást, és letiltja a speciális diagnosztikát a munkaterületeken. Emellett a saját kulcsok létrehozásához is támogatást biztosítunk a társított Cosmos DB példányhoz, ha a és a paramétereket megadja a `cmk_keyvault` `resource_cmk_uri` munkaterület létrehozásakor, amely létrehoz egy Cosmos db példányt az előfizetésben a munkaterület kiépítése során. [Itt olvashat bővebben.](./concept-data-encryption.md#azure-cosmos-db)
 
 + **Hibajavítások és javítások**
   + **azureml-automl-runtime**
@@ -1254,7 +1254,7 @@ A studióból betaníthatja, tesztelheti, üzembe helyezheti és kezelheti Azure
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
 
-| Webalapú eszköz | Leírás | 
+| Webalapú eszköz | Description | 
 |-|-|-|
 | Notebook VM (előzetes verzió) | Teljes körűen felügyelt felhőalapú munkaállomás | 
 | [Automatikus gépi tanulás](tutorial-first-experiment-automated-ml.md) (előzetes verzió) | Nincs programkód a gépi tanulási modellek fejlesztésének automatizálásához | 
@@ -1913,7 +1913,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
     + A távoli futtatások erőforrás-kihasználtságának javítása a azureml. mlflow használatával.
     + Javítsa a azureml-mlflow csomag dokumentációját
     + A javítási hiba, ahol a mlflow.log_artifacts ("my_dir") az összetevők mentését a "my_dir/<ereklyét-paths>" helyett "<-összetevő – elérési utak>"
-  + **azureml – opendatasets**
+  + **azureml-opendatasets**
     + A `pyarrow` `opendatasets` régi verziók (<0.14.0) rögzítése az újonnan bevezetett memória-probléma miatt.
     + Helyezze át a azureml-opendatasets-azureml-opendatasets.
     + Lehetővé teszi, hogy a nyitott adatkészlet-osztályok regisztrálva legyenek Azure Machine Learning munkaterületre, és zökkenőmentesen hasznosítsa a pénzmosás-adatkészlet képességeit.

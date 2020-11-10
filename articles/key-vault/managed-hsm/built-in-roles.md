@@ -8,20 +8,20 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6b39c1d6fe2e84055e7c94dde076514d04a24f36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5ecd8f13a3255a565168f62f358a6a38e3cbab4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000765"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445217"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Felügyelt HSM helyi RBAC beépített szerepkörei
 
-A felügyelt HSM helyi RBAC számos beépített szerepkörrel rendelkezik, amelyeket hozzárendelhet a felhasználókhoz, a egyszerű szolgáltatásokhoz, a csoportokhoz és a felügyelt identitásokhoz. Ahhoz, hogy egy rendszerbiztonsági tag műveletet hajtson végre, hozzá kell rendelnie őket egy olyan szerepkörhöz, amely engedélyt ad nekik a művelet végrehajtásához. Ezek a szerepkörök és műveletek csak az adatsík-műveletekre vonatkozó engedélyek kezelését teszik lehetővé. Az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)használatával kezelheti a FELÜGYELt HSM-erőforráshoz tartozó vezérlési sík engedélyeit (például egy új felügyelt HSM létrehozása vagy frissítése, áthelyezése, törlése).
+A felügyelt HSM helyi RBAC számos beépített szerepkörrel rendelkezik, amelyeket hozzárendelhet a felhasználókhoz, a egyszerű szolgáltatásokhoz, a csoportokhoz és a felügyelt identitásokhoz. Ahhoz, hogy egy rendszerbiztonsági tag műveletet hajtson végre, hozzá kell rendelnie őket egy olyan szerepkörhöz, amely engedélyt ad nekik a művelet végrehajtásához. Ezek a szerepkörök és műveletek csak az adatsík-műveletekre vonatkozó engedélyek kezelését teszik lehetővé. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)használatával kezelheti a FELÜGYELt HSM-erőforráshoz tartozó vezérlési sík engedélyeit (például új felügyelt HSM létrehozása vagy frissítése, áthelyezése, törlése).
 
 ## <a name="built-in-roles"></a>Beépített szerepkörök
 
-|Szerepkör neve|Leírás|ID (Azonosító)|
+|Szerepkör neve|Description|ID (Azonosító)|
 |---|---|---|
 |Felügyelt HSM-rendszergazda| Teljes hozzáférést biztosít az összes adat-művelethez.|a290e904-7015-4bba-90c8-60543313cdb4|
 |Felügyelt HSM titkosítási igazgató| Teljes hozzáférést biztosít az összes kulcsfontosságú felügyeleti és kulcs titkosítási művelethez|515eb02d-2335-4d2d-92f2-b1cbdf9c3778|
@@ -44,7 +44,7 @@ A felügyelt HSM helyi RBAC számos beépített szerepkörrel rendelkezik, amely
 /securitydomain/upload/action|<center>X</center>||||||
 /securitydomain/upload/read|<center>X</center>||||||
 /securitydomain/transferkey/read|<center>X</center>||||||
-|**Kulcskezelés**|
+|**Kulcskezelő**|
 |/keys/read/action|<center>X</center>|<center>X</center>|<center>X</center>||<center>X</center>||<center>X</center>|
 |/keys/write/action|<center>X</center>|<center>X</center>|<center>X</center>||||
 |/keys/create|<center>X</center>|<center>X</center>|<center>X</center>||||
@@ -77,5 +77,5 @@ A felügyelt HSM helyi RBAC számos beépített szerepkörrel rendelkezik, amely
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)áttekintését.
+- Tekintse át az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)áttekintését.
 - A [felügyelt HSM szerepkör-kezelésről](role-management.md) szóló oktatóanyag megtekintése

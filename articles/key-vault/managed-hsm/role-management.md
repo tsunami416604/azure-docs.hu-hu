@@ -8,19 +8,19 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 370be4501a113403a9b1db14571f5a021ac15517
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 78d4d9a8b5023731530c5e348f5c9ba72815d410
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149112"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445642"
 ---
 # <a name="managed-hsm-role-management"></a>A Managed HSM szerepkörkezelése
 
 > [!NOTE]
-> Key Vault két típusú erőforrást támogat: a tárolókat és a felügyelt HSM. Ez a cikk a **felügyelt HSM**-ről szól. Ha szeretné megismerni a tárolók kezelését, tekintse meg [a Key Vault kezelése az Azure CLI használatával](../general/manage-with-cli2.md)című témakört.
+> Key Vault két típusú erőforrást támogat: a tárolókat és a felügyelt HSM. Ez a cikk a **felügyelt HSM** -ről szól. Ha szeretné megismerni a tárolók kezelését, tekintse meg [a Key Vault kezelése az Azure CLI használatával](../general/manage-with-cli2.md)című témakört.
 
-A Managed HSM áttekintését lásd: [Mi a felügyelt HSM?](overview.md). Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+A Managed HSM áttekintését lásd: [Mi a felügyelt HSM?](overview.md). Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Ez a cikk bemutatja, hogyan kezelheti a felügyelt HSM-adatsíkok szerepköreit. A felügyelt HSM hozzáférés-vezérlési modelljével kapcsolatos további tudnivalókért lásd: [felügyelt HSM hozzáférés-vezérlése](access-control.md).
 
@@ -60,7 +60,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 ### <a name="assign-role-for-a-specific-key"></a>Szerepkör társítása egy adott kulcshoz
 
-A `az keyvault role assignment create` parancs használatával rendeljen hozzá egy **felügyelt HSM kriptográfiai** vezető szerepkört a felhasználóhoz az egyszerű felhasználónév **Felhasználó2 \@ contoso.com** egy **myrsakey**nevű adott kulcshoz.
+A `az keyvault role assignment create` parancs használatával rendeljen hozzá egy **felügyelt HSM kriptográfiai** vezető szerepkört a felhasználóhoz az egyszerű felhasználónév **Felhasználó2 \@ contoso.com** egy **myrsakey** nevű adott kulcshoz.
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey
@@ -97,7 +97,7 @@ az keyvault role assignment list --hsm-name ContosoMHSM --assignee user2@contoso
 
 ## <a name="delete-a-role-assignment"></a>Szerepkör-hozzárendelés törlése
 
-A `az keyvault role assignment delete` paranccsal törölheti a **felügyelt HSM kriptográfiai főigazgatói** szerepkört, amely a **myrsakey2** ** \@ contoso.com felhasználói Felhasználó2** van hozzárendelve.
+A `az keyvault role assignment delete` paranccsal törölheti a **felügyelt HSM kriptográfiai főigazgatói** szerepkört, amely a **myrsakey2** **\@ contoso.com felhasználói Felhasználó2** van hozzárendelve.
 
 ```azurecli-interactive
 az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey2
@@ -111,9 +111,9 @@ az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Cr
 az keyvault role definition list --hsm-name ContosoMHSM
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Tekintse át az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)áttekintését.
+- Tekintse át az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)áttekintését.
 - A [felügyelt HSM szerepkör-kezelésről](role-management.md) szóló oktatóanyag megtekintése
 - További információ a [felügyelt HSM hozzáférés-vezérlési modelljéről](access-control.md)
 - A [felügyelt HSM helyi RBAC összes beépített szerepkörének](built-in-roles.md) megjelenítése

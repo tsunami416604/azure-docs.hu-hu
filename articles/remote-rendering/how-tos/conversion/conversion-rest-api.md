@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 341d24e73c9e07bb3155535d98a88145643c1692
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 889a70005f1cbabaad525147b4661ea04886138a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201783"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445608"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>A modellátalakító REST API használata
 
@@ -26,7 +26,7 @@ Tekintse meg az [elérhető régiók listáját](../../reference/regions.md) az 
 
 Az összes kérelemhez meg kell adni ezeket a fejléceket:
 
-- Az **engedélyezési** fejlécben szerepelnie kell a "tulajdonos [*token*]" értéknek, ahol a [*token*] egy [szolgáltatás-hozzáférési jogkivonat](../tokens.md).
+- Az **engedélyezési** fejlécben szerepelnie kell a "tulajdonos [ *token* ]" értéknek, ahol a [ *token* ] egy [szolgáltatás-hozzáférési jogkivonat](../tokens.md).
 
 ### <a name="common-response-headers"></a>Gyakori válaszok fejlécei
 
@@ -47,7 +47,7 @@ Az Azure-beli távoli renderelési fióknak hozzáféréssel kell rendelkeznie a
 
 | Végpont | Metódus |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/Conversions/Create | POST |
+| /v1/accounts/ **accountID** /Conversions/Create | POST |
 
 Egy JSON-dokumentumba csomagolt, folyamatban lévő konverzió AZONOSÍTÓját adja vissza. A mező neve "conversionId".
 
@@ -79,13 +79,13 @@ Ha az ARR-fiók nincs csatolva a Storage-fiókhoz, ez a REST-felület lehetővé
 
 | Végpont | Metódus |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/Conversions/createWithSharedAccessSignature | POST |
+| /v1/accounts/ **accountID** /Conversions/createWithSharedAccessSignature | POST |
 
 Egy JSON-dokumentumba csomagolt, folyamatban lévő konverzió AZONOSÍTÓját adja vissza. A mező neve: `conversionId` .
 
 #### <a name="request-body"></a>A kérés törzse
 
-A kérés törzse megegyezik a fenti REST-hívás létrehozásakor, de a bemenet és a kimenet *közös hozzáférésű aláírási (SAS) jogkivonatokat*tartalmaz. Ezek a tokenek hozzáférést biztosítanak a Storage-fiókhoz a bemenet olvasásához és az átalakítás eredményének megírásához.
+A kérés törzse megegyezik a fenti REST-hívás létrehozásakor, de a bemenet és a kimenet *közös hozzáférésű aláírási (SAS) jogkivonatokat* tartalmaz. Ezek a tokenek hozzáférést biztosítanak a Storage-fiókhoz a bemenet olvasásához és az átalakítás eredményének megírásához.
 
 > [!NOTE]
 > Ezek az SAS URI-tokenek a lekérdezési karakterláncok, nem pedig a teljes URI-azonosítók. 
@@ -120,7 +120,7 @@ A fenti REST-hívások egyikével megkezdett folyamatos konverzió állapota a k
 
 | Végpont | Metódus |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/Conversions/**conversionId** | GET |
+| /v1/accounts/ **accountID** /Conversions/ **conversionId** | GET |
 
 Egy "status" mezőt tartalmazó JSON-dokumentumot ad vissza, amely a következő értékekkel rendelkezhet:
 
@@ -131,7 +131,22 @@ Egy "status" mezőt tartalmazó JSON-dokumentumot ad vissza, amely a következő
 
 Ha az állapot "hiba", akkor egy további "hiba" mező jelenik meg, amely tartalmaz egy "üzenet" almezőt, amely tartalmazza a hiba adatait. A kimeneti tárolóba további naplók lesznek feltöltve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="list-conversions"></a>Konverziók listázása
+
+A fiók összes konverziójának megjelenítéséhez használja a következő felületet:
+
+| Végpont | Metódus |
+|-----------|:-----------|
+| /v1/accounts/ **accountID** /Conversions? Skiptoken = **skiptoken** | GET |
+
+| Paraméter | Kötelező |
+|-----------|:-----------|
+| accountID | Yes |
+| skiptoken | No |
+
+Egy olyan JSON-dokumentumot ad vissza, amely a konverziók tömbjét és azok részleteit tartalmazza. A lekérdezés egyszerre legfeljebb 50 konverziót ad vissza. Abban az esetben, ha több konverzióra van szükség, a válasz egy **nextLink** -tulajdonságot tartalmaz, amely tartalmazza a skipToken, amely a következő eredmények beolvasására kérdezhető le.
+
+## <a name="next-steps"></a>További lépések
 
 - [Modellek átalakítása az Azure Blob Storage használatával](blob-storage.md)
 - [Modell átalakítása](model-conversion.md)

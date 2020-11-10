@@ -2,13 +2,13 @@
 title: Az Azure arc-kompatibilis kiszolgálók ügynökének újdonságai
 description: Ebben a cikkben az Azure arc használatára képes kiszolgálók ügynökének kibocsátási megjegyzései szerepelnek. Számos összefoglaló probléma esetén további részletekre mutató hivatkozásokat talál.
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: 5322a92bfc67d9f80c2271a3ef9b5626455e9ad7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908165"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445285"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Az Azure arc-kompatibilis kiszolgálók ügynökének újdonságai
 
@@ -17,6 +17,21 @@ Az Azure arc-kompatibilis kiszolgálókhoz csatlakoztatott gépi ügynök folyam
 - A legújabb kiadások
 - Ismert problémák
 - Hibajavítások
+
+## <a name="november-2020"></a>2020. november
+
+### <a name="fixed"></a>Rögzített méretű lemez
+
+Kijavítva a probléma, hogy a proxy konfigurációja elvész az RPM-alapú disztribúciók frissítése után.
+
+## <a name="october-2020"></a>2020. október
+
+### <a name="fixed"></a>Rögzített méretű lemez
+
+- Rögzített proxy-parancsfájl a másodlagos GC-démoni egység fájlok helyének kezeléséhez.
+- GuestConfig-ügynök megbízhatóságának változásai.
+- US Gov Virginia régió GuestConfig-ügynökének támogatása.
+- A GuestConfig-ügynök bővítménye a hibák esetén részletesebben részletezi a jelentés üzeneteit.
 
 ## <a name="september-2020"></a>2020. szeptember
 
@@ -58,6 +73,6 @@ Verzió: 0,11
 
 Ha a Linux-ügynök régebbi verzióját használja, és a proxykiszolgáló használatára konfigurálta, akkor a frissítés után újra kell konfigurálnia a proxykiszolgáló-beállítást. Ehhez futtassa a parancsot `sudo azcmagent_proxy add http://proxyserver.local:83` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az arc-kompatibilis kiszolgálók több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gép ügynökének áttekintése című témakört](agent-overview.md) a követelmények megismeréséhez, az ügynök műszaki részleteihez és a telepítési módszerekhez.

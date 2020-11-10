@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 29c89d8d3d2ae194ff48b762bc686feefdd3a528
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 851a87885ac765c829e8c2be9fd1205e22906ca9
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381002"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445154"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchikus állapot felülbírálása
 
@@ -24,7 +24,7 @@ Tegyük fel például, hogy egy autó modelljét szeretné átadni, és a belső
 * Az első összetevő a modell legfelső szintű csomópontjára van rendelve, és a teljes autó transzparens megjelenítését kapcsolja be.
 * A második összetevő a motor gyökérszintű csomópontjára van hozzárendelve, és ismét felülbírálja az állapotot, ha explicit módon kikapcsolja a megtekintési módot.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A felülbírálható állapotok rögzített halmaza:
 
@@ -39,6 +39,13 @@ A felülbírálható állapotok rögzített halmaza:
 
   > [!IMPORTANT]
   > A megtekintési effektus csak akkor működik, ha a *TileBasedComposition* [renderelési módot](../../concepts/rendering-modes.md) használja.
+
+* **`Shell`** : A geometriát átlátszó, de telített rendszerhéjként jeleníti meg a rendszer. Ez a mód lehetővé teszi a jelenet nem fontos részeinek kifakulását, miközben továbbra is megőrzi az alakzat és a relatív pozicionálás érzését. A rendszerhéj megjelenítésének módosításához használja a [ShellRenderingSettings](shell-effect.md) állapotot. Tekintse meg a következő rendszerképet, amely az autós modell esetében teljes mértékben héj által megjelenített, a kék források kivételével:
+
+  ![Adott objektumok kihalványítására szolgáló rendszerhéj-mód](./media/shell.png)
+
+  > [!IMPORTANT]
+  > A rendszerhéj hatása csak akkor működik, ha a *TileBasedComposition* [renderelési módot](../../concepts/rendering-modes.md) használja.
 
 * **`Selected`** : A geometria egy [kijelölési körvonalsal](outlines.md)jelenik meg.
 
@@ -101,14 +108,14 @@ A `tint color` felülbírálás némileg különleges abban az állapotban, hogy
 
 Maga egy példánya `HierarchicalStateOverrideComponent` nem ad hozzá sok futásidejű terhelést. Azonban mindig érdemes megtartani az aktív összetevők számát. Ha például olyan kiválasztási rendszer megvalósítását tervezi, amely kiemeli a kiválasztott objektumot, akkor azt javasoljuk, hogy törölje az összetevőt a kiemelés eltávolításakor. Az összetevők és a semleges funkciók megtartása gyorsan felvehető.
 
-Az átlátszó renderelés több számítási feladatot tesz lehetővé a kiszolgáló GPU-nál a normál megjelenítésnél. Ha a Scene gráf nagy része átváltott, és a geometria számos rétege *látható, akkor* a teljesítmény szűk keresztmetszetet eredményezhet. Ugyanez érvényes a [kijelölési körvonalakkal](../../overview/features/outlines.md#performance)rendelkező objektumok esetében is.
+Az átlátszó renderelés több számítási feladatot tesz lehetővé a kiszolgáló GPU-nál a normál megjelenítésnél. Ha a Scene gráf nagy része átváltott, és a geometria számos rétege *látható, akkor* a teljesítmény szűk keresztmetszetet eredményezhet. Ugyanez érvényes a [kiválasztási](../../overview/features/outlines.md#performance) és a [rendszerhéj-renderelési](../../overview/features/shell-effect.md#performance) objektumok esetében is. 
 
 ## <a name="api-documentation"></a>API-dokumentáció
 
 * [C# HierarchicalStateOverrideComponent osztály](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
 * [C++ HierarchicalStateOverrideComponent osztály](/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerteti](../../overview/features/outlines.md)
 * [Renderelési módok](../../concepts/rendering-modes.md)

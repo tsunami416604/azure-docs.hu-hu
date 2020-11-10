@@ -1,6 +1,6 @@
 ---
 title: Biztonságos hozzáférés felügyelt HSM-Azure Key Vault felügyelt HSM-hez
-description: Ismerje meg, hogyan biztosíthat biztonságos hozzáférést a felügyelt HSM-hez az Azure RBAC és a helyi felügyelt HSM-RBAC
+description: Ismerje meg, hogyan biztosíthat biztonságos hozzáférést a felügyelt HSM-hez az Azure RBAC és a felügyelt HSM helyi RBAC használatával
 services: key-vault
 author: amitbapat
 tags: azure-resource-manager
@@ -9,18 +9,18 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 18ffa0f878effda8888200c13ab312851aaebdcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99918d039052c9913400b85ac3caa4a1a5481155
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000781"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445319"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>Biztonságos hozzáférés a felügyelt HSM
 
 Azure Key Vault felügyelt HSM egy olyan felhőalapú szolgáltatás, amely védelmet biztosít a titkosítási kulcsoknak. Mivel ezek az adatok bizalmasak és üzleti szempontból kritikus fontosságúak, biztonságos hozzáférést kell biztosítani a felügyelt HSM ahhoz, hogy csak a jogosult alkalmazások és felhasználók férhessenek hozzá. Ez a cikk áttekintést nyújt a felügyelt HSM hozzáférés-vezérlési modelljéről. Ismerteti a hitelesítést és az engedélyezést, valamint ismerteti a felügyelt HSM való hozzáférés biztonságossá tételét.
 
-Ez az oktatóanyag egy egyszerű példát mutat be, amely bemutatja, hogyan lehet elkülöníteni a feladatokat és a hozzáférés-vezérlést az Azure RBAC és a helyi felügyelt HSM RBAC használatával. A felügyelt HSM hozzáférés-vezérlési modelljének megismeréséhez lásd: [felügyelt HSM hozzáférés-vezérlése](access-control.md) .
+Ez az oktatóanyag egy egyszerű példát mutat be, amely bemutatja, hogyan lehet elkülöníteni a feladatokat és a hozzáférés-vezérlést az Azure RBAC és a felügyelt HSM helyi RBAC használatával. A felügyelt HSM hozzáférés-vezérlési modelljének megismeréséhez lásd: [felügyelt HSM hozzáférés-vezérlése](access-control.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,9 +48,9 @@ Ebben a példában egy olyan alkalmazást fejlesztünk, amely egy RSA 2 048 bite
 
 A következő szerepköröket azonosította az alkalmazás felügyeletével, üzembe helyezésével és auditálásával kapcsolatban:
 
-- **Biztonsági csapat**: a KSH (a biztonsági tisztviselő) vagy hasonló közreműködők irodájában dolgozó személyzet. A biztonsági csapat feladata a kulcsok megfelelő megóvása. Az adattitkosításhoz használt RSA-vagy EK-kulcsok az aláíráshoz, valamint az RSA-vagy AES-kulcsok.
-- **Fejlesztők és operátorok**: az alkalmazást fejlesztő és az Azure-ban üzembe helyezett munkatársak. A csapat tagjai nem tartoznak a biztonsági személyzetbe. Nem férhetnek hozzá a bizalmas adatokhoz, például az RSA-kulcsokhoz. Csak az általuk telepített alkalmazások férhetnek hozzá ehhez a bizalmas adatokhoz.
-- **Könyvvizsgálók**: Ez a szerepkör olyan közreműködők számára szól, akik nem tagjai a fejlesztési vagy általános informatikai munkatársainak. A biztonsági szabványoknak való megfelelés biztosítása érdekében áttekintik a tanúsítványok, kulcsok és titkok használatát és karbantartását.
+- **Biztonsági csapat** : a KSH (a biztonsági tisztviselő) vagy hasonló közreműködők irodájában dolgozó személyzet. A biztonsági csapat feladata a kulcsok megfelelő megóvása. Az adattitkosításhoz használt RSA-vagy EK-kulcsok az aláíráshoz, valamint az RSA-vagy AES-kulcsok.
+- **Fejlesztők és operátorok** : az alkalmazást fejlesztő és az Azure-ban üzembe helyezett munkatársak. A csapat tagjai nem tartoznak a biztonsági személyzetbe. Nem férhetnek hozzá a bizalmas adatokhoz, például az RSA-kulcsokhoz. Csak az általuk telepített alkalmazások férhetnek hozzá ehhez a bizalmas adatokhoz.
+- **Könyvvizsgálók** : Ez a szerepkör olyan közreműködők számára szól, akik nem tagjai a fejlesztési vagy általános informatikai munkatársainak. A biztonsági szabványoknak való megfelelés biztosítása érdekében áttekintik a tanúsítványok, kulcsok és titkok használatát és karbantartását.
 
 Van egy másik szerepkör, amely az alkalmazás hatókörén kívül esik: az előfizetés (vagy erőforráscsoport) rendszergazdája. Az előfizetés-rendszergazda beállítja a kezdeti hozzáférési engedélyeket a biztonsági csapat számára. Hozzáférést biztosítanak a biztonsági csapathoz egy olyan erőforráscsoport használatával, amely az alkalmazás által igényelt erőforrásokkal rendelkezik.
 
@@ -79,10 +79,10 @@ A következő táblázat összefoglalja a csoportokra és erőforrásokra vonatk
 | Szerepkör | Felügyeleti sík szerepkör | Adatsík szerepkör |
 | --- | --- | --- |
 | Biztonsági csapat | Felügyelt HSM-közreműködő | Felügyelt HSM-rendszergazda |
-| Fejlesztők és üzemeltetők | Nincs | Nincs |
-| Ellenőrök | Nincs | Felügyelt HSM titkosítási auditor |
-| Az alkalmazás által használt virtuális gép felügyelt azonosítása| Nincs | Felügyelt HSM kriptográfiai felhasználó |
-| Az alkalmazás által használt Storage-fiók felügyelt identitása| Nincs| Felügyelt HSM szolgáltatás titkosítása |
+| Fejlesztők és üzemeltetők | Nincsenek | Nincsenek |
+| Ellenőrök | Nincsenek | Felügyelt HSM titkosítási auditor |
+| Az alkalmazás által használt virtuális gép felügyelt azonosítása| Nincsenek | Felügyelt HSM kriptográfiai felhasználó |
+| Az alkalmazás által használt Storage-fiók felügyelt identitása| Nincsenek| Felügyelt HSM szolgáltatás titkosítása |
 
 A három csapat szerepkörhöz a felügyelt HSM-engedélyek mellett más erőforrásokhoz is hozzá kell férnie. A virtuális gépek (vagy a Azure App Service Web Apps funkciójának üzembe helyezéséhez) a fejlesztőknek és a kezelőknek `Contributor` hozzá kell férniük az ilyen típusú erőforrásokhoz. A könyvvizsgálóknak olvasási hozzáféréssel kell rendelkezniük ahhoz a Storage-fiókhoz, amelyben a felügyelt HSM-naplókat tárolják.
 

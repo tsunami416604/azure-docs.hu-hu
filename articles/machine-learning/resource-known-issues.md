@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
-ms.date: 10/02/2020
-ms.openlocfilehash: b49e7ab7f3412177ee9eafad8d1a68525e054421
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 46763bddd0f173ccf73edc54e5f2688d3bf6efc0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314755"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445391"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás az Azure Machine Learningben
 
@@ -258,7 +258,20 @@ Az adatdrift figyelőkkel kapcsolatos korlátozások és ismert problémák:
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Designer
 
-* **Hosszú számítási előkészítési idő:**
+### <a name="dataset-visualization-in-the-designer"></a>Adatkészlet vizualizációja a Designerben
+
+Miután regisztrált egy adatkészletet az **adatkészletek** eszköz lapján vagy az SDK-val, megkeresheti azt a lista **adatkészletek** kategóriája alatt a tervező vászonra.
+
+Ha azonban a vászonra húzza az adatkészletet, és láthatóvá válik, előfordulhat, hogy az alábbi okok némelyike miatt nem tud megjeleníteni:
+
+- Jelenleg csak táblázatos adatkészletet jeleníthet meg a tervezőben. Ha a tervezőn kívüli adatkészletet regisztrál, nem jelenítheti meg a tervező vásznon.
+- Az adatkészletet a Virtual Network (VNet) tárolja. Ha szeretné megjeleníteni, engedélyeznie kell a munkaterület felügyelt identitását az adattárban.
+    1. Lépjen a kapcsolódó adattárra, és kattintson a **hitelesítő** adatok frissítése 
+     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="frissítési hitelesítő adatok frissítése"::: elemre.
+    1. Válassza az **Igen** lehetőséget a munkaterület felügyelt identitásának engedélyezéséhez.
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Munkaterület által felügyelt identitás engedélyezése":::
+
+### <a name="long-compute-preparation-time"></a>Hosszú számítási előkészítési idő
 
 Előfordulhat, hogy néhány perc vagy még ennél is több van, amikor először csatlakozik vagy létrehoz egy számítási célt. 
 
@@ -269,7 +282,7 @@ import time
 time.sleep(600)
 ```
 
-* **Valós idejű végpontok naplója:**
+### <a name="log-for-real-time-endpoints"></a>Valós idejű végpontok naplózása
 
 A valós idejű végpontok naplófájljai a vásárlói adatmennyiség. A valós idejű végpontok hibaelhárításához a következő kódot használhatja a naplók engedélyezéséhez. 
 
@@ -488,7 +501,7 @@ Ha a Azure Machine Learning számítási fürt a csomópont állapotának átmé
 
 [!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További hibaelhárítási cikkek a Azure Machine Learning:
 

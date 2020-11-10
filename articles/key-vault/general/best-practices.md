@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4a522e58677e2c71cb52ad7e04b288622ad62d91
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3d959cccd4fbce24e36b1ed62bc6bf417af23c82
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287328"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445506"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Ajánlott eljárások a Key Vault használatához
 
@@ -24,7 +24,7 @@ ms.locfileid: "93287328"
 A Azure Key Vault egy felhőalapú szolgáltatás, amely védelmet biztosít a titkosítási kulcsok és a titkok, például a tanúsítványok, a kapcsolatok karakterláncai és a jelszavak számára. Mivel ezek az adatok érzékenyek és üzleti szempontból kritikus fontosságúak, a kulcstartóhoz való hozzáférést csak a jogosult alkalmazások és felhasználók engedélyezésével kell biztosítani. Ez a [cikk](secure-your-key-vault.md) a Key Vault hozzáférési modell áttekintését tartalmazza. Ismerteti a hitelesítést és az engedélyezést, valamint ismerteti a kulcstartók hozzáférésének biztonságossá tételét.
 
 A tárolóhoz való hozzáférés szabályozása során a következő javaslatok érhetők el:
-1. Az előfizetés, az erőforráscsoport és a kulcstartók (RBAC) hozzáférésének zárolása
+1. Az előfizetés, az erőforráscsoport és a kulcstartók (Azure RBAC) hozzáférésének zárolása
 2. Hozzáférési szabályzatok létrehozása minden tárolóhoz
 3. A minimális jogosultság-hozzáférési tag használata hozzáférés biztosításához
 4. A tűzfal és a [VNET szolgáltatás-végpontok](overview-vnet-service-endpoints.md) bekapcsolása

@@ -2,13 +2,13 @@
 title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg a VMware virtuális gépek felmérésének támogatásával Azure Migrate kiszolgáló értékelésével.
 ms.topic: conceptual
-ms.date: 06/08/2020
-ms.openlocfilehash: 8b119b56e7e4c7fac74c57cc5c48fb44f91a7ee6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 11/10/2020
+ms.openlocfilehash: 6e033bdf0f1492d6cbb4c41192cca8206816917d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345431"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444945"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -66,14 +66,14 @@ A gépek felderítése mellett a kiszolgálók értékelése a gépeken futó al
 
 **Támogatás** | **Részletek**
 --- | ---
-**Támogatott gépek** | Az alkalmazások felderítése jelenleg csak a VMware virtuális gépek esetében támogatott. Az egyes Azure Migrate készülékekről akár 10000 VMware virtuális gépre telepített alkalmazásokat is felfedezhet.
-**Operációs rendszerek** | Az App-Discovery az összes Windows-és Linux-verziót futtató virtuális gépek esetében támogatott.
+**Támogatott gépek** | Jelenleg csak a VMware virtuális gépek esetében támogatott. Az egyes Azure Migrate készülékekről akár 10000 VMware virtuális gépre telepített alkalmazásokat is felfedezhet.
+**Operációs rendszerek** | Az összes Windows-és Linux-verziót futtató virtuális gépek támogatása.
 **VIRTUÁLIS gépekre vonatkozó követelmények** | A VMware-eszközöket olyan virtuális gépeken kell telepíteni és futtatni, amelyeken alkalmazásokat kíván felderíteni. <br/><br/> A VMware-eszközök verziójának későbbinek kell lennie, mint 10.2.0.<br/><br/> A virtuális gépeknek telepítve kell lennie a PowerShell 2,0-es vagy újabb verziójával.
-**Felderítés** | Az alkalmazás felderítése ügynök nélkül történik. A számítógép vendég hitelesítő adatait használja, és távolról fér hozzá a gépekhez a WMI-és SSH-hívásokkal.
+**Felderítés** | A virtuális gépen telepített alkalmazásokkal kapcsolatos információkat a rendszer a virtuális gépre telepített VMware-eszközök használatával gyűjti össze a vCenter Server. A készülék az vSphere API-k használatával gyűjti össze az alkalmazás adatait a vCenter Serverból. Az alkalmazás felderítése ügynök nélkül történik. Semmi nincs telepítve a virtuális gépekre, és a készülék nem csatlakozik közvetlenül a virtuális gépekhez. A WMI/SSH engedélyezése és elérhetőnek kell lennie a virtuális gépeken.
 **vCenter** | Az értékeléshez használt vCenter Server írásvédett fióknak **Virtual Machines** vendég műveletekhez szükséges jogosultságokat kell biztosítania  >  **Guest Operations** , hogy együttműködjön a virtuális géppel az alkalmazások felderítése érdekében.
 **VM-hozzáférés** | Az alkalmazás-felderítésnek helyi felhasználói fiókra van szüksége a virtuális gépen az alkalmazások felderítéséhez.<br/><br/> Azure Migrate jelenleg egyetlen hitelesítő adat használatát támogatja az összes Windows-kiszolgálón, és egy hitelesítő adatot az összes Linux-kiszolgáló számára.<br/><br/> Létrehoz egy vendég felhasználói fiókot a Windows rendszerű virtuális gépekhez, valamint egy normál/normál felhasználói fiókot (nem sudo hozzáférés) az összes Linux rendszerű virtuális géphez.
 **Port-hozzáférés** | Az Azure Migrate készüléknek képesnek kell lennie csatlakozni az 443-es TCP-porthoz az ESXi-gazdagépeken futó, a virtuális gépeket futtató, és az alkalmazásokat felderítő A vCenter Server ESXI gazdagép-kapcsolódást ad vissza, amely az alkalmazás adatait tartalmazó fájlt tölti le.
-**Korlátok** | Az App-Discovery esetében akár 10000 virtuális gépet is felderítheti az egyes Azure Migrate berendezéseken.
+
 
 
 ## <a name="dependency-analysis-requirements-agentless"></a>Függőségi elemzési követelmények (ügynök nélküli)
@@ -82,17 +82,15 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 
 **Követelmény** | **Részletek**
 --- | --- 
-**Üzembe helyezés előtt** | Rendelkeznie kell egy Azure Migrate-projekttel, és a kiszolgáló-értékelési eszközzel hozzáadva a projekthez.<br/><br/>  A függőségi vizualizációt egy Azure Migrate berendezés beállítása után telepítheti a helyszíni VMware-gépek felderítése érdekében.<br/><br/> [Ismerje meg, hogyan](create-manage-projects.md) hozhat létre egy projektet első alkalommal.<br/> [Megtudhatja, hogyan](how-to-assess.md) adhat hozzá egy értékelési eszközt egy meglévő projekthez.<br/> [Ismerje meg, hogyan](how-to-set-up-appliance-vmware.md) állíthatja be a Azure Migrate berendezést a VMWare virtuális gépek kiértékeléséhez.
 **Támogatott gépek** | Jelenleg csak a VMware virtuális gépek esetében támogatott.
-**Windows rendszerű virtuális gépek** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bites).<br/>Microsoft Windows Server 2008 (32 bites). Győződjön meg arról, hogy a PowerShell telepítve van.
-**hitelesítő adatok vCenter Server** | A függőségi vizualizációhoz egy vCenter Server fiókra van szükség, amely csak olvasási hozzáféréssel rendelkezik, és Virtual Machines > vendég műveletekhez engedélyezett jogosultságokkal rendelkezik.
-**Windowsos VM-engedélyek** |  A függőségek elemzéséhez a Azure Migrate készüléknek tartományi rendszergazdai fiókra vagy helyi rendszergazdai fiókra van szüksége a Windows rendszerű virtuális gépek eléréséhez.
-**Linux rendszerű virtuális gépek** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.<br/> 11 és újabb SUSE Linux Enterprise Server
-**Linux-fiók** | A függőségek elemzéséhez Linux rendszerű gépeken a Azure Migrate készüléknek szüksége van egy root felhasználói fiókra<br/><br/> Másik lehetőségként a felhasználói fióknak szüksége van ezekre az engedélyekre a/bin/netstat és a/bin/ls fájlokra: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE. A következő parancsokkal állíthatja be ezeket a képességeket: <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/netstat
-**Szükséges ügynökök** | Nem szükséges ügynök az elemezni kívánt gépeken.
-**VMware-eszközök** | Az elemezni kívánt virtuális gépeken telepíteni és futtatni kell a VMware-eszközöket (a 10,2-nál újabb).
-**PowerShell** | A Windows rendszerű virtuális gépeken telepíteni kell a PowerShell 2,0-es vagy újabb verzióját.
-**Port-hozzáférés** | Az elemezni kívánt virtuális gépeket futtató ESXi-gazdagépeken a Azure Migrate készüléknek képesnek kell lennie csatlakozni a 443-es TCP-porthoz.
+**Windows rendszerű virtuális gépek** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bites).<br/>Microsoft Windows Server 2008 (32 bites). 
+**Linux rendszerű virtuális gépek** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.<br/> SUSE Linux Enterprise Server 11 és újabb verziók.
+**VIRTUÁLIS gépekre vonatkozó követelmények** | Az elemezni kívánt virtuális gépeken telepíteni és futtatni kell a VMware-eszközöket (a 10.2.0 később).<br/><br/> A virtuális gépeknek telepítve kell lennie a PowerShell 2,0-es vagy újabb verziójával.
+**Felderítési módszer** |  A virtuális gépek közötti függőségi információkat a rendszer a virtuális gépre telepített VMware-eszközök használatával gyűjti össze a vCenter Server. A készülék a vSphere API-k használatával gyűjti össze az adatokat a vCenter Server. A felderítés ügynök nélküli. Semmi nincs telepítve a virtuális gépen, és a készülék nem csatlakozik közvetlenül a virtuális gépekhez. A WMI/SSH engedélyezése és elérhetőnek kell lennie a virtuális gépeken.
+**vCenter-fiók** | A Azure Migrate által az értékelési igényekhez használt írásvédett fióknak engedélyezve kell lennie **Virtual Machines > vendég műveleteihez**.
+**Windowsos VM-engedélyek** |  Egy fiók (helyi rendszergazda vagy tartomány) helyi rendszergazdai engedélyekkel a virtuális gépeken.
+**Linux-fiók** | A root felhasználói fiók vagy egy, a/bin/netstat-és/bin/ls-fájlokra vonatkozó engedélyekkel rendelkező fiók: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE.<br/><br/> A következő parancsokkal állíthatja be ezeket a képességeket: <br/><br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/ls<br/><br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/netstat
+**Port-hozzáférés** | A Azure Migrate készüléknek képesnek kell lennie csatlakozni az 443-es TCP-porthoz azon ESXI-gazdagépeken, amelyeken a felderíteni kívánt függőségek futnak. A vCenter Server ESXI gazdagép-kapcsolódást ad vissza a függőségi adatokat tartalmazó fájl letöltéséhez.
 
 
 ## <a name="dependency-analysis-requirements-agent-based"></a>Függőségi elemzési követelmények (ügynök-alapú)
@@ -113,7 +111,7 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 **Azure Government** | Az ügynök-alapú függőség elemzése nem támogatott.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tekintse át](best-practices-assessment.md) az értékelések létrehozásával kapcsolatos ajánlott eljárásokat.
 - [Felkészülés a VMware](./tutorial-discover-vmware.md) -értékelésre.

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3fda153d4c48ced17d1a9ba5f060b435b161542e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 524b34c48146dc9e6102ed8d20ff8d1076706ba7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127637"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444962"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Azure Stream Analytics-feladatok tesztelése a portálon
 
@@ -29,7 +29,7 @@ Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átv
 
 3. A Stream Analytics-feladatok lap **feladatok topológiájának** fejlécében válassza a **lekérdezés** lehetőséget a lekérdezés-szerkesztő ablak megnyitásához. 
 
-4. Ha szeretné megtekinteni a bejövő események mintáját, válassza a bevitel fájl ikont, és a minta eseményei automatikusan megjelennek a **bemeneti előnézetben** .
+4. Ha szeretné megtekinteni a bejövő események mintáját, válassza a bevitel fájl ikont, és a minta eseményei automatikusan megjelennek a **bemeneti előnézetben**.
 
    a. A rendszer automatikusan észleli az adataihoz tartozó szerializálási típust, ha a JSON-vagy CSV-fájlja. A legördülő menüben lévő lehetőség módosításával manuálisan is módosíthatja a JSON-t, a CSV-t és a AVRO.
     
@@ -81,7 +81,7 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
 
    ![Képernyőfelvétel: a minta feltöltésének beírása lehetőség.](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-5. Töltse fel a helyi fájlt a lekérdezés teszteléséhez. Csak a JSON-, CSV-vagy AVRO-formátumokkal tölthet fel fájlokat. Válassza az **OK** lehetőséget.
+5. Töltse fel a helyi fájlt a lekérdezés teszteléséhez. Csak a JSON-, CSV-vagy AVRO-formátumokkal tölthet fel fájlokat. Kattintson az **OK** gombra.
 
    ![Képernyőfelvétel: a mintaadatok feltöltése párbeszédpanel, ahol kiválaszthat egy fájlt.](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
@@ -112,7 +112,20 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
 
 5.  A gépi tanulás nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+1.  Ha ezt a hibaüzenetet kapja: "hálózati kapcsolati hiba történt az eredmények beolvasása során. Ellenőrizze a hálózat és a tűzfal beállításait. ", kövesse az alábbi lépéseket:
+
+  * A szolgáltatással létesített kapcsolatok ellenőrzését a böngészőben nyithatja meg [https://queryruntime.azurestreamanalytics.com/api/home/index](https://queryruntime.azurestreamanalytics.com/api/home/index) . Ha nem tudja megnyitni ezt a hivatkozást, frissítse a tűzfalbeállítások beállításait.
+  
+2. Ha ezt a hibaüzenetet kapja: "a kérelem mérete túl nagy. Csökkentse a bemeneti adatok méretét, és próbálkozzon újra. ", kövesse az alábbi lépéseket:
+
+  * Csökkentse a bemeneti méretet – tesztelje a lekérdezést kisebb méretű fájllal vagy kisebb időtartománnyal.
+  * A lekérdezés méretének csökkentése – a lekérdezés kijelölésének teszteléséhez válassza ki a lekérdezés egy részét, majd kattintson a **kijelölt lekérdezés tesztelése** elemre.
+
+
+## <a name="next-steps"></a>További lépések
 * [IoT-megoldás létrehozása stream Analytics használatával](./stream-analytics-build-an-iot-solution-using-stream-analytics.md): ez az oktatóanyag bemutatja, hogyan hozhat létre egy teljes körű megoldást egy olyan adatgenerátorral, amely egy autópályadíj-kezelőn keresztül szimulálja a forgalmat.
 
 * [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)
