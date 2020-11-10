@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 9/22/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 8eb74d13c15be619512376da326a94876563f898
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: bc67c3433c939be39453c954ada1171dc210b692
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761625"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425576"
 ---
 A beszédet szöveggé alakíthatja a Swift és Objective-C beszédfelismerési SDK használatával.
 
@@ -27,7 +27,4 @@ A [Cognitive Services SPEECH SDK](https://github.com/Azure-Samples/cognitive-ser
 * [Beszéd gyors felismerése iOS rendszeren](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios/from-microphone)
 * [További minták az iOS-hez készült Objective-C-hez](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios)
 
-Az [Objective-C-referenciához online SPEECH SDK-](https://docs.microsoft.com/objectivec/cognitive-services/speech/)t is biztosítunk.
-
-
-
+Az [Objective-C-referenciához online SPEECH SDK-](/objectivec/cognitive-services/speech/)t is biztosítunk.

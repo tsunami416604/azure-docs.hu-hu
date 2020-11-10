@@ -9,19 +9,19 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: c4f6124227f5dd5c7735d300f71d5ae7d0c06b3a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f559c87a5c3285bf966f9389d623b2262e93cbca
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975773"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425813"
 ---
 # <a name="client-application-registration"></a>Ügyfélalkalmazás regisztrálása
 Az előző oktatóanyagban üzembe helyezte és beállította az Azure API-t a FHIR-hez. Most, hogy már rendelkezik a FHIR-hez készült Azure API-val, regisztrálni fogjuk egy nyilvános ügyfélalkalmazás-alkalmazást. További részletekért és hibaelhárításért tekintse át a [nyilvános ügyfélalkalmazás teljes regisztrációját](register-public-azure-ad-client-app.md) ismertető útmutatót, de az alábbi oktatóanyag fő lépéseit ismertetjük.
 
 1. Navigáljon Azure Active Directory
 1. Válassza az **alkalmazás regisztrálása**  -->  **új regisztráció** lehetőséget
-1. Nevezze el az alkalmazást és se
+1. Adja meg az alkalmazás nevét
 1. Válassza a **nyilvános ügyfél/natív (mobil & asztali)** lehetőséget, és állítsa be az átirányítási URI-t https://www.getpostman.com/oauth2/callback .
 
    :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="Képernyőkép az alkalmazás regisztrálása panelről, valamint egy példa alkalmazás neve és átirányítási URL-címe.":::
@@ -30,31 +30,31 @@ Az előző oktatóanyagban üzembe helyezte és beállította az Azure API-t a F
 
 Az ügyfélalkalmazás regisztrálása után másolja az alkalmazás (ügyfél) AZONOSÍTÓját és a bérlő AZONOSÍTÓját az Áttekintés lapról. Ezt a két értéket később kell megadnia az ügyfélhez való hozzáféréskor.
 
-:::image type="content" source="media/tutorial-web-app/client-id-tenant-id.png" alt-text="Képernyőkép az alkalmazás regisztrálása panelről, valamint egy példa alkalmazás neve és átirányítási URL-címe.":::
+:::image type="content" source="media/tutorial-web-app/client-id-tenant-id.png" alt-text="Képernyőkép az ügyfélalkalmazás beállításai panelről, az alkalmazás és a könyvtár azonosítóinak kiemelve.":::
 
 ### <a name="connect-with-web-app"></a>Kapcsolódjon a webalkalmazáshoz
 
 Ha [megírta a webalkalmazást](tutorial-web-app-write-web-app.md) a FHIR készült Azure API-hoz való kapcsolódáshoz, akkor a megfelelő hitelesítési beállításokat is be kell állítania. 
 
-1. A bal oldali menüben kattintson a **kezelés**elemre, majd válassza a **hitelesítés**lehetőséget. 
+1. A bal oldali menüben kattintson a **kezelés** elemre, majd válassza a **hitelesítés** lehetőséget. 
 
-1. Új platform-konfiguráció hozzáadásához válassza a **web**lehetőséget.
+1. Új platform-konfiguráció hozzáadásához válassza a **web** lehetőséget.
 
 1. Állítsa be az átirányítási URI-t a felkészülés során, amikor létrehozza a webalkalmazást az oktatóanyag negyedik részében. Ehhez vegye fel `https://\<WEB-APP-NAME>.azurewebsites.net` az átirányítási URI-listára. Ha egy másik nevet választ a [webalkalmazás írásának](tutorial-web-app-write-web-app.md)lépése során, akkor vissza kell térnie, és frissítenie kell ezt.
 
 1. Jelölje be a **hozzáférési jogkivonat** és az **azonosító token** jelölőnégyzetet.
 
-   :::image type="content" source="media/tutorial-web-app/web-app-authentication.png" alt-text="Képernyőkép az alkalmazás regisztrálása panelről, valamint egy példa alkalmazás neve és átirányítási URL-címe.":::
+   :::image type="content" source="media/tutorial-web-app/web-app-authentication.png" alt-text="Képernyőkép az alkalmazás-hitelesítési beállítások panelről, a Kiemelt platform hozzáadásának lépéseivel.":::
 
 ## <a name="add-api-permissions"></a>API-engedélyek hozzáadása
 
 Most, hogy beállította a megfelelő hitelesítést, állítsa be az API-engedélyeket:
 
-1. Válassza az **API-engedélyek** lehetőséget, majd kattintson **az engedély hozzáadása**lehetőségre.
-1. A **saját szervezet által használt API**-k területen keressen rá az Azure Healthcare API-k kifejezésre.
-1. Válassza a **user_impersonation** lehetőséget, majd kattintson az **engedélyek hozzáadása**lehetőségre.
+1. Válassza az **API-engedélyek** lehetőséget, majd kattintson **az engedély hozzáadása** lehetőségre.
+1. A **saját szervezet által használt API** -k területen keressen rá az Azure Healthcare API-k kifejezésre.
+1. Válassza a **user_impersonation** lehetőséget, majd kattintson az **engedélyek hozzáadása** lehetőségre.
 
-:::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="Képernyőkép az alkalmazás regisztrálása panelről, valamint egy példa alkalmazás neve és átirányítási URL-címe.":::
+:::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="Képernyőkép az API-engedélyek hozzáadása panelről, amely a Kiemelt API-engedélyek hozzáadásának lépéseit írja le.":::
 
 ## <a name="next-steps"></a>Következő lépések
 Most már rendelkezik egy nyilvános ügyfélalkalmazás. A következő oktatóanyagban bemutatjuk a tesztelést és az alkalmazáshoz való hozzáférést a Poster használatával.

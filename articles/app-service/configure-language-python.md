@@ -2,15 +2,15 @@
 title: Linux Python-alkalmazások konfigurálása
 description: Megtudhatja, hogyan konfigurálhatja a webalkalmazásokat futtató Python-tárolót a Azure Portal és az Azure CLI használatával.
 ms.topic: quickstart
-ms.date: 10/06/2020
+ms.date: 11/06/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 935baef209811146d0b60f4fc02986818fd103a7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9e0e9098959231d4283608e8191081ae2df6737a
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743792"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425915"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -26,7 +26,7 @@ A konfiguráláshoz használhatja a [Azure Portal](https://portal.azure.com) vag
 
 - **Azure CLI** : két lehetőség közül választhat.
 
-    - Futtassa a parancsokat a [Azure Cloud Shellban](../cloud-shell/overview.md), amelyet a kód blokk jobb felső sarkában található **TRY IT (kipróbálás** ) gombra kattintva nyithat meg.
+    - Futtassa a parancsokat a [Azure Cloud Shell](../cloud-shell/overview.md).
     - Futtassa a parancsokat helyileg az [Azure CLI](/cli/azure/install-azure-cli)legújabb verziójának telepítésével, majd jelentkezzen be az Azure-ba az [az login](/cli/azure/reference-index#az-login)használatával.
     
 > [!NOTE]
@@ -40,7 +40,7 @@ A konfiguráláshoz használhatja a [Azure Portal](https://portal.azure.com) vag
 
     -  Az aktuális Python-verzió megjelenítése az [az WebApp config show paranccsal](/cli/azure/webapp/config#az_webapp_config_show):
     
-        ```azurecli-interactive
+        ```azurecli
         az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
         ```
         
@@ -48,13 +48,13 @@ A konfiguráláshoz használhatja a [Azure Portal](https://portal.azure.com) vag
     
     - A Python verziójának beállítása az [WebApp config set](/cli/azure/webapp/config#az_webapp_config_set)
         
-        ```azurecli-interactive
+        ```azurecli
         az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
         ```
     
     - A Azure App Service által támogatott összes Python-verzió megjelenítése az az [WebApp List-Runtimes](/cli/azure/webapp#az_webapp_list_runtimes)paranccsal:
     
-        ```azurecli-interactive
+        ```azurecli
         az webapp list-runtimes --linux | grep PYTHON
         ```
     
@@ -68,8 +68,8 @@ A Python nem támogatott verzióját a saját tároló rendszerképének létreh
 App Service a Oryx nevű Build-rendszer a következő lépéseket hajtja végre az alkalmazás git vagy zip-csomagok használatával történő telepítésekor:
 
 1. Ha ezt a beállítást adja meg, futtasson egyéni, előkészítő parancsfájlt `PRE_BUILD_COMMAND` .
-1. Futtassa a `pip install -r requirements.txt` parancsot. A *requirements.txt* fájlnak jelen kell lennie a projekt gyökérkönyvtárában. Ellenkező esetben a fordítási folyamat a következő hibát jelenti: "nem található a setup.py vagy a requirements.txt; Nem fut a pip telepítése. "
-1. Ha a *Manage.py* a tárház gyökerében található (Django-alkalmazást jelez), futtassa a *Manage.py collectstatic* . Ha azonban ez a `DISABLE_COLLECTSTATIC` beállítás `true` , ez a lépés kimarad.
+1. A `pip install -r requirements.txt` parancs futtatása. A *requirements.txt* fájlnak jelen kell lennie a projekt gyökérkönyvtárában. Ellenkező esetben a fordítási folyamat a következő hibát jelenti: "nem található a setup.py vagy a requirements.txt; Nem fut a pip telepítése. "
+1. Ha a *Manage.py* a tárház gyökerében található (Django-alkalmazást jelez), futtassa a *Manage.py collectstatic*. Ha azonban ez a `DISABLE_COLLECTSTATIC` beállítás `true` , ez a lépés kimarad.
 1. Ha a beállítás megadja az egyéni létrehozás utáni parancsfájlt, `POST_BUILD_COMMAND`
 
 Alapértelmezés szerint a `PRE_BUILD_COMMAND` , a `POST_BUILD_COMMAND` és a `DISABLE_COLLECTSTATIC` Beállítások üresek. 
@@ -81,6 +81,8 @@ Alapértelmezés szerint a `PRE_BUILD_COMMAND` , a `POST_BUILD_COMMAND` és a `D
 - A létrehozás utáni parancsok futtatásához állítsa a `POST_BUILD_COMMAND` beállítást úgy, hogy a a `echo Post-build command` projekt gyökeréhez képest egy parancsot (például) vagy egy parancsfájl elérési útját (például) tartalmazza `scripts/postbuild.sh` . Minden parancsnak relatív elérési utakat kell használnia a projekt gyökérkönyvtárához.
 
 A Build Automation testreszabásával kapcsolatos további beállításokért lásd: [Oryx-konfiguráció](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md). 
+
+A build és a központi telepítési naplók eléréséhez lásd: [hozzáférés a központi telepítési naplókhoz](#access-deployment-logs).
 
 A Python-alkalmazások Linux rendszeren való futtatásával és a App Serviceával kapcsolatos további információkért lásd: [how Oryx észleli és létrehozza a Python-alkalmazásokat](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md).
 
@@ -164,9 +166,13 @@ Ha a fő alkalmazásmodul egy másik fájlban található, használjon másik ne
 
 ### <a name="default-behavior"></a>Alapértelmezett viselkedés
 
-Ha az App Service nem talál egyéni parancsot, vagy Django-, illetve Flask-alkalmazást, akkor egy alapértelmezett csak olvasható alkalmazást futtat, amely az _opt/defaultsite_ mappában található. Az alapértelmezett alkalmazás a következőképpen jelenik meg:
+Ha a App Service nem talál egyéni parancsot, egy Django-alkalmazást vagy egy lombik-alkalmazást, akkor egy alapértelmezett írásvédett alkalmazást futtat, amely az _opt/defaultsite_ mappában található, és az alábbi képen látható.
 
-![Alapértelmezett App Service a Linux webhelyen](media/configure-language-python/default-python-app.png)
+Ha központilag telepítette a kódot, és továbbra is az alapértelmezett alkalmazást látja, tekintse [meg a hibaelhárítás – alkalmazás nem jelenik meg](#app-doesnt-appear).
+
+[![Alapértelmezett App Service a Linux webhelyen](media/configure-language-python/default-python-app.png)](#app-doesnt-appear)
+
+Ha az alapértelmezett alkalmazás helyett egy telepített alkalmazást szeretne látni, tekintse [meg a hibaelhárítás – alkalmazás nem jelenik meg](#app-doesnt-appear).
 
 ## <a name="customize-startup-command"></a>Indítási parancs testreszabása
 
@@ -182,7 +188,7 @@ Indítási parancs vagy parancsfájl megadásához:
 
 - **Azure CLI** : használja az az [WebApp config set](/cli/azure/webapp/config#az_webapp_config_set) parancsot a `--startup-file` paraméterrel az indítási parancs vagy fájl beállításához:
 
-    ```azurecli-interactive
+    ```azurecli
     az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
     ```
         
@@ -213,7 +219,7 @@ App Service figyelmen kívül hagyja az egyéni indítási parancsok vagy fájlo
 
     További információ: Gunicorn- [naplózás](https://docs.gunicorn.org/en/stable/settings.html#logging) (docs.gunicorn.org).
     
-- **Egyéni lombik főmodulja** : alapértelmezés szerint a app Service feltételezi, hogy a lombik-alkalmazás fő modulja a *application.py* vagy a *app.py* . Ha a fő modul más nevet használ, testre kell szabnia az indítási parancsot. Például YF van egy olyan lombik-alkalmazás, amelynek a fő modulja *Hello.py* , és az abban a fájlban található lombik alkalmazás-objektum neve `myapp` , a parancs a következő:
+- **Egyéni lombik főmodulja** : alapértelmezés szerint a app Service feltételezi, hogy a lombik-alkalmazás fő modulja a *application.py* vagy a *app.py*. Ha a fő modul más nevet használ, testre kell szabnia az indítási parancsot. Például YF van egy olyan lombik-alkalmazás, amelynek a fő modulja *Hello.py* , és az abban a fájlban található lombik alkalmazás-objektum neve `myapp` , a parancs a következő:
 
     ```bash
     gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -258,33 +264,81 @@ A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabvány
 
 A naplók a Azure Portalon keresztüli eléréséhez válassza a **figyelés**  >  **napló stream** lehetőséget az alkalmazás bal oldali menüjében.
 
+## <a name="access-deployment-logs"></a>Központi telepítési naplók elérése
+
+A kód központi telepítésekor a App Service végrehajtja a [Build Automation testreszabása](#customize-build-automation)című szakaszban ismertetett fordítási folyamatot. Mivel a Build a saját tárolójában fut, a Build-naplókat az alkalmazás diagnosztikai naplóitól függetlenül tárolja a rendszer.
+
+A telepítési naplók eléréséhez kövesse az alábbi lépéseket:
+
+1. A webalkalmazás Azure Portal a bal oldali menüben válassza a **központi** telepítési  >  **központ (előzetes verzió)** lehetőséget.
+1. A **naplók** lapon válassza ki a legutóbbi végrehajtáshoz tartozó **véglegesítő azonosítót** .
+1. A megjelenő **napló részletei** lapon válassza a **naplók megjelenítése...** hivatkozást, amely a "Futtatás Oryx Build..." mellett jelenik meg.
+
+Ezekben a naplókban olyan problémákat hozhat létre, mint például a helytelen függőségek a *requirements.txtban* , és az előre vagy post-Build parancsfájlokban előforduló hibák is megjelennek. A hibák akkor is megjelennek, ha a követelmények fájlja nem pontosan *requirements.txt* , vagy nem jelenik meg a projekt gyökérkönyvtárában.
+
 ## <a name="open-ssh-session-in-browser"></a>SSH-munkamenet megnyitása böngészőben
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
+Ha sikeresen csatlakozott az SSH-munkamenethez, az ablak alján található "SSH-kapcsolat létrejött" üzenet jelenik meg. Ha olyan hibák jelennek meg, mint például a "SSH_CONNECTION_CLOSED" vagy egy üzenet, amely a tároló újraindítását eredményezi, akkor hiba lehet az alkalmazás-tároló indításának megakadályozása. A lehetséges problémák kivizsgálásához szükséges lépésekért lásd: [Hibaelhárítás](#troubleshooting) .
+
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-- **Saját alkalmazáskódjának telepítése után megjelenik az alapértelmezett alkalmazás.** Az alapértelmezett alkalmazás jelenik meg, mert vagy nem telepítette az alkalmazás kódját App Servicere, vagy App Service nem találta meg az alkalmazás kódját, és nem futtatta az alapértelmezett alkalmazást.
+Általánosságban elmondható, hogy a hibaelhárítás első lépése a App Service diagnosztika használata:
+
+1. A webalkalmazás Azure Portal a bal oldali menüben válassza a **diagnosztizálás és problémák megoldása** lehetőséget.
+1. Válassza ki **a rendelkezésre állást és a teljesítményt**.
+1. Vizsgálja meg az **alkalmazás naplói** , a **tároló összeomlása** és a **tárolókkal kapcsolatos problémák** lehetőségeit, ahol a leggyakoribb problémák jelennek meg.
+
+Ezután vizsgálja meg a [telepítési naplókat](#access-deployment-logs) és az [alkalmazás naplófájljait](#access-diagnostic-logs) is a hibaüzenetek esetében. Ezek a naplók gyakran azonosítják az alkalmazások központi telepítésének vagy az alkalmazások indításának megakadályozására szolgáló konkrét problémákat. A Build sikertelen lehet például, ha a *requirements.txt* fájljának helytelen a neve, vagy nincs jelen a projekt gyökérkönyvtárában.
+
+A következő szakaszokban további útmutatást talál az adott problémákkal kapcsolatban.
+
+- [Az alkalmazás nem jelenik meg – az alapértelmezett alkalmazás megjelenítése](#app-doesnt-appear)
+- [Az alkalmazás nem jelenik meg – a "szolgáltatás nem érhető el" üzenet](#service-unavailable)
+- [Nem található setup.py vagy requirements.txt](#could-not-find-setuppy-or-requirementstxt)
+- [A jelszó nem jelenik meg az SSH-munkamenetben, ha be van írva](#other-issues)
+- [Úgy tűnik, hogy az SSH-munkamenetben lévő parancsok ki lesznek vágva](#other-issues)
+- [A statikus eszközök nem jelennek meg a Django alkalmazásban](#other-issues)
+- [Végzetes SSL-kapcsolat szükséges](#other-issues)
+
+#### <a name="app-doesnt-appear"></a>Az alkalmazás nem jelenik meg
+
+- **Saját alkalmazáskódjának telepítése után megjelenik az alapértelmezett alkalmazás.** Az [alapértelmezett alkalmazás](#default-behavior) jelenik meg, mert vagy nem telepítette az alkalmazás kódját app Servicere, vagy app Service nem találta meg az alkalmazás kódját, és nem futtatta az alapértelmezett alkalmazást.
 
     - Indítsa újra az App Service-t, várjon 15-20 másodpercet, és ellenőrizze újra az alkalmazást.
     
-    - Bizonyosodjon meg róla, hogy az App Service Linux- és nem Windows-alapú példányát használja. Az Azure CLI parancssori felületről futtassa az `az webapp show --resource-group <resource-group-name> --name <app-name> --query kind` parancsot, a `<resource-group-name>` és az `<app-service-name>` helyőrzőket megfelelően behelyettesítve. Az `app,linux` kimenetet kell látnia, máskülönben hozza újra létre az App Service szolgáltatást, és válassza a linuxos verziót.
+    - Bizonyosodjon meg róla, hogy az App Service Linux- és nem Windows-alapú példányát használja. Az Azure CLI parancssori felületről futtassa az `az webapp show --resource-group <resource-group-name> --name <app-name> --query kind` parancsot, a `<resource-group-name>` és az `<app-name>` helyőrzőket megfelelően behelyettesítve. Az `app,linux` kimenetet kell látnia, máskülönben hozza újra létre az App Service szolgáltatást, és válassza a linuxos verziót.
     
-    - SSH- vagy a Kudu konzol használatával közvetlenül csatlakozzon az App Service-hez, és győződjön meg arról, hogy a fájlok léteznek a *site/wwwroot* könyvtárban. Ha a fájlok nem léteznek, tekintse át a telepítési folyamatot, és telepítse újra az alkalmazást.
+    - Az [SSH](#open-ssh-session-in-browser) használatával csatlakozzon közvetlenül a app Service tárolóhoz, és ellenőrizze, hogy a fájlok léteznek-e a *site/wwwroot* alatt. Ha a fájlok nem léteznek, kövesse az alábbi lépéseket:
+      1. Hozzon létre egy nevű alkalmazás `SCM_DO_BUILD_DURING_DEPLOYMENT` -beállítást az 1 értékkel, telepítse újra a kódot, várjon néhány percet, majd próbálja meg újra elérni az alkalmazást. Az Alkalmazásbeállítások létrehozásával kapcsolatos további információkért lásd: [app Service alkalmazás konfigurálása a Azure Portalban](configure-common.md).
+      1. Tekintse át a telepítési folyamatot, [ellenőrizze a központi telepítési naplókat](#access-deployment-logs), javítsa ki a hibákat, és telepítse újra az alkalmazást.
     
     - Ha a fájlok léteznek, az App Service nem tudta azonosítani az adott indítási fájlt. Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#customize-startup-command).
 
-- **A böngészőben megjelenik „A szolgáltatás nem érhető el” üzenet.** A böngésző az App Service válaszára vára túllépte az időkorlátot, ami azt jelzi, hogy az App Service elindította a Gunicorn-kiszolgálót, de az alkalmazás kódját meghatározó argumentumok helytelenek.
+- <a name="service-unavailable"></a>**A "szolgáltatás nem érhető el" üzenet jelenik meg a böngészőben.** A böngésző túllépte az időkorlátot, miközben a App Servicetól érkező választ várt, ami azt jelzi, hogy App Service elindította a Gunicorn-kiszolgálót, de maga az alkalmazás nem indult el. Ez az állapot azt jelezheti, hogy a Gunicorn argumentumok helytelenek, vagy ha hiba van az alkalmazás kódjában.
 
     - Frissítse a böngészőt, különösen akkor, ha az App Service-csomag legalacsonyabb tarifacsomagját használja. Az ingyenes szolgáltatásszintek használatakor például az alkalmazás lassabban indul, és csak a böngésző frissítése után fog ismét reagálni.
 
     - Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#customize-startup-command).
 
-    - Ellenőrizze, hogy van-e hibaüzenet a [naplózási adatfolyamban](#access-diagnostic-logs) .
+    - Ellenőrizze az [alkalmazás naplójának adatfolyamát](#access-diagnostic-logs) bármilyen hibaüzenet esetén. A naplók az alkalmazás kódjában előforduló hibákat jelenítik meg.
+
+#### <a name="could-not-find-setuppy-or-requirementstxt"></a>Nem található setup.py vagy requirements.txt
 
 - **A log stream a következőt jeleníti meg: "nem található Setup.py vagy requirements.txt; Nem fut a pip telepítése. "** : a Oryx-létrehozási folyamat nem találta a *requirements.txt* fájlt.
 
-    - Az SSH vagy a kudu-konzol használatával csatlakozzon közvetlenül a App Servicehoz, és ellenőrizze, hogy a *requirements.txt* létezik-e közvetlenül a *site/wwwroot* alatt. Ha nem létezik, tegye meg a fájlt a tárházban, és tartalmazza a központi telepítés részét képező helyet. Ha egy különálló mappában van, helyezze át a gyökerébe.
+    - Csatlakozzon az [SSH](#open-ssh-session-in-browser) -n keresztül a Web App-tárolóhoz, és ellenőrizze, hogy a *requirements.txt* neve helyesen van-e, és létezik-e közvetlenül a *site/wwwroot* alatt. Ha nem létezik, tegye meg a fájlt a tárházban, és tartalmazza a központi telepítés részét képező helyet. Ha egy különálló mappában van, helyezze át a gyökerébe.
+
+#### <a name="other-issues"></a>Egyéb problémák
+
+- A jelszó **nem jelenik meg az SSH-munkamenetben, ha** a típus: biztonsági okokból az SSH-munkamenet megtartja a beírt jelszót. A karakterek rögzítése folyamatban van, ezért a szokásos módon írja be a jelszót, majd nyomja le az **ENTER** billentyűt a kész gombra.
+
+- **Úgy tűnik, hogy az SSH-munkamenetben lévő parancsok le lesznek vágva** : Előfordulhat, hogy a szerkesztő nem lehet sortörési parancs, de a megfelelő futtatást is el kell végezni.
+
+- A **statikus eszközök nem jelennek meg a Django alkalmazásban** : Győződjön meg arról, hogy engedélyezte a [whitenoise modult](http://whitenoise.evans.io/en/stable/django.html) .
+
+- **A "végzetes SSL-kapcsolat szükséges" üzenet jelenik meg** : Ellenőrizze, hogy az alkalmazásból milyen felhasználóneveket és jelszavakat lehet elérni az erőforrásokhoz (például adatbázisokhoz).
 
 ## <a name="next-steps"></a>Következő lépések
 

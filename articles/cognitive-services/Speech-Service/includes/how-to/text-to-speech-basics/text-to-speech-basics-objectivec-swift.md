@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 9/22/2020
 ms.author: v-demjoh
-ms.openlocfilehash: e2551952b2d70199b73ac7972a6a6934aa34dd2a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 213d2a0e6f5c156ee0592a1f1389e1fd6e569b29
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91332534"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425240"
 ---
 A beszédet a Swift és a Objective-C nyelvhez készült Speech SDK használatával szintetizálhatja szövegből.
 
@@ -27,4 +27,4 @@ A [Cognitive Services SPEECH SDK](https://github.com/Azure-Samples/cognitive-ser
 * [Beszédfelismerési beszéd a Swift-ben iOS rendszeren](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios/text-to-speech)
 * [További minták az iOS-hez készült Objective-C-hez](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios)
 
-Az [Objective-C-referenciához online SPEECH SDK-](https://docs.microsoft.com/objectivec/cognitive-services/speech/)t is biztosítunk.
+Az [Objective-C-referenciához online SPEECH SDK-](/objectivec/cognitive-services/speech/)t is biztosítunk.

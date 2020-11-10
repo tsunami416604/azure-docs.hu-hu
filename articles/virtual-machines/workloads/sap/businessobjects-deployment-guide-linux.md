@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 7253e257f9d721c09f2e041c1473a9d81d09a321
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1f15a3b4d8f51ec79fffce09bc006942d08096a6
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094390"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427462"
 ---
-# <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>SAP BusinessObjects BI platform üzembe helyezési útmutató Linux rendszerhez az Azure-ban
+# <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>SAP BusinessObjects BI platformtelepítési útmutató Linuxhoz az Azure-on
 
 Ez a cikk az SAP BOBI platform Linux rendszeren való üzembe helyezésének stratégiáját ismerteti. Ebben a példában két, prémium SSD Managed Disks rendelkező virtuális gép van konfigurálva a telepítési könyvtáraként. A Azure Database for MySQL a CMS-adatbázishoz használatos, és a file repository-kiszolgáló Azure NetApp Files a két kiszolgáló között van megosztva. Az alapértelmezett tomcat Java-webalkalmazás és BI platform alkalmazás mindkét virtuális gépen együtt települ. A felhasználói kérések terheléselosztásához a rendszer olyan Application Gateway használ, amely natív TLS/SSL-kiszervezési képességekkel rendelkezik.
 
@@ -36,7 +36,7 @@ Ebben a példában a termék verziója és a fájlrendszer elrendezése van hasz
 - Azure Database for MySQL (verzió: 8.0.15)
 - MySQL C API-összekötő – libmysqlclient (verzió: 6.1.11)
 
-| Fájlrendszer        | Leírás                                                                                                               | Méret (GB)             | Tulajdonos  | Group  | Storage                    |
+| Fájlrendszer        | Description                                                                                                               | Méret (GB)             | Tulajdonos  | Csoport  | Tárolás                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | Az SAP BOBI-példány, az alapértelmezett tomcat-webalkalmazás és az adatbázis-illesztőprogramok telepítéséhez használt fájlrendszer (ha szükséges) | SAP-Méretezési irányelvek | bl1adm | sapsys | Felügyelt prémium lemez – SSD |
 | /usr/sap/frsinput  | A csatlakoztatási könyvtár a megosztott fájlok között minden olyan BOBI-gazdagépen megtalálható, amelyet bemeneti adattárként fog használni.  | Üzleti igények         | bl1adm | sapsys | Azure NetApp Files         |
@@ -113,7 +113,7 @@ Az SAP BOBI platform file adattár-kiszolgáló Azure NetApp Files létrehozása
 
 Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
-**[A]**: a lépés az összes gazdagépre vonatkozik.
+**[A]** : a lépés az összes gazdagépre vonatkozik.
 
 ### <a name="format-and-mount-sap-file-system"></a>SAP fájlrendszer formázása és csatlakoztatása
 
@@ -212,7 +212,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
    >
    > Ügyeljen arra, hogy az NFS-tartományt a/etc/idmapd.conf-ben állítsa be a virtuális gépen, hogy az megfeleljen az alapértelmezett tartományi konfigurációnak Azure NetApp Files: **defaultv4iddomain.com**. Ha az NFS-ügyfél (azaz a virtuális gép) és az NFS-kiszolgáló (például az Azure NetApp-konfiguráció) közötti eltérés nem egyezik, akkor a virtuális gépekre csatlakoztatott Azure NetApp-köteteken található fájlok engedélyei nem lesznek láthatók.
 
-   Ellenőrizze `nfs4_disable_idmapping` . Értékeként az **Y**értéknek kell lennie. A-t tartalmazó könyvtár-struktúra létrehozásához `nfs4_disable_idmapping` hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.
+   Ellenőrizze `nfs4_disable_idmapping` . Értékeként az **Y** értéknek kell lennie. A-t tartalmazó könyvtár-struktúra létrehozásához `nfs4_disable_idmapping` hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.
 
    ```bash
    # Check nfs4_disable_idmapping
@@ -274,7 +274,7 @@ Az irányelvek csak akkor alkalmazhatók, ha a MySQL-hez készült Azure DB-t ha
 
 ### <a name="create-an-azure-database-for-mysql"></a>Azure-adatbázis létrehozása a MySQL-hez
 
-Jelentkezzen be Azure Portal, és kövesse a [Azure Database for MySQL rövid útmutatójában](../../../mysql/quickstart-create-mysql-server-database-using-azure-portal.md#create-an-azure-database-for-mysql-server)említett lépéseket. Néhány szempont a Azure Database for MySQL kiépítés közben:
+Jelentkezzen be Azure Portal, és kövesse a [Azure Database for MySQL rövid útmutatójában](../../../mysql/quickstart-create-mysql-server-database-using-azure-portal.md)említett lépéseket. Néhány szempont a Azure Database for MySQL kiépítés közben:
 
 1. Válassza ki ugyanazt a régiót, Azure Database for MySQL ahol az SAP BI platformon futó alkalmazás-kiszolgálók futnak.
 
@@ -286,7 +286,7 @@ Jelentkezzen be Azure Portal, és kövesse a [Azure Database for MySQL rövid ú
 
 5. Alapértelmezés szerint a **megőrzési időszak biztonsági mentése** hét nap, de opcionálisan akár 35 napig is [beállítható](../../../mysql/howto-restore-server-portal.md#set-backup-configuration) .
 
-6. A Azure Database for MySQL biztonsági mentései alapértelmezés szerint helyileg redundánsak, így ha a kiszolgáló biztonsági mentését a Geo-redundáns tárolóban szeretné használni, válassza a **földrajzilag redundáns** **lehetőséget a biztonsági mentési redundancia lehetőségei**közül.
+6. A Azure Database for MySQL biztonsági mentései alapértelmezés szerint helyileg redundánsak, így ha a kiszolgáló biztonsági mentését a Geo-redundáns tárolóban szeretné használni, válassza a **földrajzilag redundáns** **lehetőséget a biztonsági mentési redundancia lehetőségei** közül.
 
 > [!NOTE]
 > A [biztonsági mentési redundancia beállításainak](../../../mysql/concepts-backup.md#backup-redundancy-options) módosítása a kiszolgáló létrehozása után nem támogatott.
@@ -297,8 +297,8 @@ Alapértelmezés szerint a létrehozott kiszolgáló tűzfallal védett, és nem
 
 1. Lépjen a Azure Portal kiszolgáló erőforrásai elemre, és válassza ki a kiszolgáló erőforrásának bal oldali menüjének **kapcsolatbiztonsági** elemét.
 2. Válassza az **Igen** lehetőséget az **Azure-szolgáltatásokhoz való hozzáférés engedélyezéséhez**.
-3. A VNET-szabályok területen válassza a **meglévő virtuális hálózat hozzáadása**elemet. Válassza ki a virtuális hálózatot és az SAP BI platform Application Server alhálózatát. Emellett hozzáférést kell biztosítania a Jump Box-hoz vagy más kiszolgálókhoz, ahonnan a [MySQL Workbench](../../../mysql/connect-workbench.md) -t a Azure Database for MySQLhoz lehet kötni. A MySQL Workbench a CMS és a naplózási adatbázis létrehozásához használatos
-4. A virtuális hálózatok hozzáadása után válassza a **Mentés**lehetőséget.
+3. A VNET-szabályok területen válassza a **meglévő virtuális hálózat hozzáadása** elemet. Válassza ki a virtuális hálózatot és az SAP BI platform Application Server alhálózatát. Emellett hozzáférést kell biztosítania a Jump Box-hoz vagy más kiszolgálókhoz, ahonnan a [MySQL Workbench](../../../mysql/connect-workbench.md) -t a Azure Database for MySQLhoz lehet kötni. A MySQL Workbench a CMS és a naplózási adatbázis létrehozásához használatos
+4. A virtuális hálózatok hozzáadása után válassza a **Mentés** lehetőséget.
 
 ### <a name="create-cms-and-audit-database"></a>CMS-és naplózási adatbázis létrehozása
 
@@ -395,15 +395,15 @@ Ahhoz, hogy az SAP BOBI Application Server hozzáférhessen az adatbázishoz, ad
 
 Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
-**[A]**: a lépés az összes gazdagépre vonatkozik.
+**[A]** : a lépés az összes gazdagépre vonatkozik.
 
 1. **[A]** a Linux-íz (SLES vagy RHEL) alapján be kell állítania a rendszermag paramétereit, és telepítenie kell a szükséges kódtárakat. Tekintse meg a UNIX rendszerhez készült [Business Intelligence platform telepítési útmutatójának](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US) **rendszerkövetelmények** című szakaszát.
 
 2. **[A]** ellenőrizze, hogy a számítógép időzónája helyesen van-e beállítva. A telepítési útmutató [további UNIX-és Linux-követelmények című szakasza tartalmaz további](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html) információt.
 
-3. **[A]** hozzon létre egy felhasználói fiókot (**BL1**adm) és csoportot (sapsys), amely alatt a szoftver háttérben futó folyamatai futnak. Ezzel a fiókkal hajthatja végre a telepítést, és futtathatja a szoftvert. A fiók nem követeli meg a gyökérszintű jogosultságokat.
+3. **[A]** hozzon létre egy felhasználói fiókot ( **BL1** adm) és csoportot (sapsys), amely alatt a szoftver háttérben futó folyamatai futnak. Ezzel a fiókkal hajthatja végre a telepítést, és futtathatja a szoftvert. A fiók nem követeli meg a gyökérszintű jogosultságokat.
 
-4. **[A]** állítsa be a felhasználói fiók (**BL1**adm) környezetét egy támogatott UTF-8 területi beállítás használatára, és győződjön meg arról, hogy a konzol szoftvere támogatja az UTF-8 karakterkészleteket. Annak biztosítása érdekében, hogy az operációs rendszer a megfelelő területi beállítást használja, állítsa a LC_ALL és a LANG környezeti változót a kívánt területi beállításra (**BL1**adm) felhasználói környezetében.
+4. **[A]** állítsa be a felhasználói fiók ( **BL1** adm) környezetét egy támogatott UTF-8 területi beállítás használatára, és győződjön meg arról, hogy a konzol szoftvere támogatja az UTF-8 karakterkészleteket. Annak biztosítása érdekében, hogy az operációs rendszer a megfelelő területi beállítást használja, állítsa a LC_ALL és a LANG környezeti változót a kívánt területi beállításra ( **BL1** adm) felhasználói környezetében.
 
    ```bash
    # This configuration is for bash shell. If you are using any other shell for sidadm, kindly set environment variable accordingly.
@@ -413,7 +413,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
    export LC_ALL=en_US.utf8
    ```
 
-5. **[A]** felhasználói fiók konfigurálása (**BL1**adm).
+5. **[A]** felhasználói fiók konfigurálása ( **BL1** adm).
 
    ```bash
    # Set ulimit for bl1adm to unlimited
@@ -445,7 +445,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
 ## <a name="installation"></a>Telepítés
 
-A felhasználói fiók **BL1**tartozó területi beállításának keresése a kiszolgálón
+A felhasználói fiók **BL1** tartozó területi beállításának keresése a kiszolgálón
 
 ```bash
 bl1adm@azusbosl1:~> locale
@@ -453,7 +453,7 @@ LANG=en_US.utf8
 LC_ALL=en_US.utf8
 ```
 
-Navigáljon az SAP BusinessObjects BI platform adathordozóra, és futtassa az alábbi parancsot az **BL1**adm-felhasználóval
+Navigáljon az SAP BusinessObjects BI platform adathordozóra, és futtassa az alábbi parancsot az **BL1** adm-felhasználóval
 
 ```bash
 ./setup.sh -InstallDir /usr/sap/BL1
@@ -465,7 +465,7 @@ Kövesse az [SAP Bobi platform](https://help.sap.com/viewer/product/SAP_BUSINESS
 
 - A **telepítés típusának kiválasztása** képernyőn válassza a **teljes** telepítés az első kiszolgálón (azusbosl1) lehetőséget a többi kiszolgáló (azusbosl2) beállításnál válassza az **Egyéni/Kibontás** lehetőséget, amely kibővíti a meglévő Bobi-telepítést.
 
-- Az **alapértelmezett vagy a meglévő adatbázis kiválasztása** képernyőn válassza a **meglévő adatbázis konfigurálása**lehetőséget, amely felszólítja a CMS és a naplózási adatbázis kiválasztására. Válassza a **MySQL** lehetőséget a CMS-adatbázis típusa és a naplózási adatbázis típusa beállításnál.
+- Az **alapértelmezett vagy a meglévő adatbázis kiválasztása** képernyőn válassza a **meglévő adatbázis konfigurálása** lehetőséget, amely felszólítja a CMS és a naplózási adatbázis kiválasztására. Válassza a **MySQL** lehetőséget a CMS-adatbázis típusa és a naplózási adatbázis típusa beállításnál.
 
   Ha a telepítés során nem kívánja konfigurálni a naplózást, válassza a nincs naplózási adatbázis lehetőséget is.
 
@@ -475,7 +475,7 @@ Kövesse az [SAP Bobi platform](https://help.sap.com/viewer/product/SAP_BUSINESS
   
   ![SAP BOBI üzembe helyezése Linux-CMS-adatbázison](media/businessobjects-deployment-guide/businessobjects-deployment-linux-sql-cms.png)
 
-- Választható Adja meg a naplózási adatbázis adatait a **naplózási adattár konfigurálása adatbázis – MySQL**című témakörben. Példa bemenet a Linux-telepítés naplózási adatbázisával kapcsolatos információkhoz.
+- Választható Adja meg a naplózási adatbázis adatait a **naplózási adattár konfigurálása adatbázis – MySQL** című témakörben. Példa bemenet a Linux-telepítés naplózási adatbázisával kapcsolatos információkhoz.
 
   ![SAP BOBI üzembe helyezés Linux rendszeren – naplózási adatbázis](media/businessobjects-deployment-guide/businessobjects-deployment-linux-sql-audit.png)
 
@@ -557,7 +557,7 @@ A biztonsági mentési folyamat részeként a rendszer pillanatképet készít, 
 
 #### <a name="backup--restore-for-file-repository-server"></a>Backup & Restore for File adattár-kiszolgáló
 
-**Azure NetApp Files**létrehozhat egy igény szerinti pillanatképeket, és automatikus pillanatképet ütemezhet a pillanatkép-házirendek használatával. A pillanatkép-másolatok a ANF-kötet időponthoz tartozó másolatát adják meg. További információ: a [Pillanatképek kezelése Azure NetApp Files használatával](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md).
+**Azure NetApp Files** létrehozhat egy igény szerinti pillanatképeket, és automatikus pillanatképet ütemezhet a pillanatkép-házirendek használatával. A pillanatkép-másolatok a ANF-kötet időponthoz tartozó másolatát adják meg. További információ: a [Pillanatképek kezelése Azure NetApp Files használatával](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md).
 
 **Azure Files** Backup a natív [Azure Backup](../../../backup/backup-overview.md) szolgáltatással van integrálva, amely központosítja a biztonsági mentési és visszaállítási funkciót a virtuális gépek biztonsági mentésével és egyszerűbbé teszi a művelet működését. További információ: Azure- [fájlmegosztás biztonsági mentése](../../../backup/azure-file-share-backup-overview.md) és [Gyakori kérdések – biztonsági mentés Azure Files](../../../backup/backup-azure-files-faq.md).
 

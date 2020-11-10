@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bca960100ee0c9d7e2a779dc86030fc59949dca5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e3503a9eef5c11db35684ca61fb1ee39525a465d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055970"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427598"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Objektumok replikálásának konfigurálása a blokkos blobokhoz
 
@@ -52,8 +52,8 @@ A Azure Portal a fiók konfigurálása után automatikusan létrehozza a szabál
 Ha a Azure Portal replikációs szabályzatot szeretne létrehozni, kövesse az alábbi lépéseket:
 
 1. Navigáljon a forrás Storage-fiókhoz a Azure Portal.
-1. A **blob Service**területen válassza az **objektum-replikáció**elemet.
-1. Válassza a **replikációs szabályok beállítása**lehetőséget.
+1. A **blob Service** területen válassza az **objektum-replikáció** elemet.
+1. Válassza a **replikációs szabályok beállítása** lehetőséget.
 1. Válassza ki a cél előfizetést és a Storage-fiókot.
 1. A **Container Pairs (tároló párok** ) szakaszban válasszon ki egy forrásoldali tárolót a forrás fiókból, valamint egy célhelyet a célhelyről. Replikációs házirendben legfeljebb 10 tároló pár hozható létre.
 
@@ -65,19 +65,19 @@ Ha a Azure Portal replikációs szabályzatot szeretne létrehozni, kövesse az 
 
     Az alábbi képen olyan szűrők láthatók, amelyek korlátozzák, hogy mely Blobok legyenek átmásolva egy replikációs szabály részeként.
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="A replikációs szabály szűrőinek megjelenítését bemutató képernyőkép":::
 
 1. Alapértelmezés szerint a másolási hatókör úgy van beállítva, hogy csak az új objektumokat másolja. Ha a tárolóban lévő összes objektumot át szeretné másolni, vagy egyéni dátumból és időpontból szeretné másolni az objektumokat, válassza a **módosítás** hivatkozást, és konfigurálja a tároló pár másolási hatókörét.
 
     Az alábbi képen egy egyéni másolási hatókör látható, amely az objektumokat egy adott dátumtól és időponttól kezdve másolja.
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="Az objektumok replikálásának egyéni másolási hatókörét bemutató képernyőkép":::
 
 1. Válassza a **Mentés és az alkalmaz** lehetőséget a replikációs házirend létrehozásához és az adatreplikálás megkezdéséhez.
 
 Az objektumok replikálásának konfigurálása után a Azure Portal megjeleníti a replikációs házirendet és a szabályokat, ahogy az az alábbi képen is látható.
 
-:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
+:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="A Azure Portal objektum-replikációs házirendjét ábrázoló képernyőfelvétel":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -244,7 +244,7 @@ A következő táblázat összefoglalja, hogy mely értékeket kell használni a
 
 | Ha létrehoz egy JSON-fájlt ehhez a fiókhoz... | Állítsa be a szabályzat AZONOSÍTÓját és a szabály azonosítóit erre az értékre... |
 |-|-|
-| Cél fiók | A sztring *alapértelmezett*értéke. Az Azure Storage létrehozza a szabályzat AZONOSÍTÓját és a szabály azonosítóit. |
+| Cél fiók | A sztring *alapértelmezett* értéke. Az Azure Storage létrehozza a szabályzat AZONOSÍTÓját és a szabály azonosítóit. |
 | Forrásoldali fiók | A házirend-azonosító és a szabály-azonosítók azon értékei, amelyeket a rendszer a célkiszolgálón a JSON-fájlként megadott szabályzat letöltésekor adott vissza. |
 
 Az alábbi példa egy replikációs házirendet definiál a célszámítógépen egyetlen olyan szabállyal, amely megfelel a *b* előtagnak, és beállítja a replikálni kívánt Blobok minimális létrehozási idejét. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
@@ -281,19 +281,19 @@ A következő lépésekkel konfigurálhatja az objektumok replikálását a cél
     A replikációs házirendet definiáló JSON-fájlok létrehozásának egyszerű módja, ha először létrehoz egy tesztelési replikációs házirendet a Azure Portal két Storage-fiókja között. Ezután letöltheti a replikációs szabályokat, és szükség szerint módosíthatja a JSON-fájlt.
 
 1. A Azure Portalban navigáljon a cél fiókhoz tartozó **objektum-replikációs** beállításokhoz.
-1. Válassza a **replikációs szabályok feltöltése**lehetőséget.
+1. Válassza a **replikációs szabályok feltöltése** lehetőséget.
 1. Töltse fel a JSON-fájlt. A Azure Portal megjeleníti a létrehozandó szabályzatot és szabályokat, ahogy az az alábbi képen is látható.
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Képernyőfelvétel egy JSON-fájl feltöltéséről a replikációs házirend meghatározásához":::
 
 1. Válassza a **feltöltés** lehetőséget a replikációs házirend létrehozásához a cél fiókon.
 
 Ezután letöltheti azt a házirend-definíciót tartalmazó JSON-fájlt, amelyet megadhat egy másik felhasználónak a forrásoldali fiók konfigurálásához. A JSON-fájl letöltéséhez kövesse az alábbi lépéseket:
 
 1. A Azure Portalban navigáljon a cél fiókhoz tartozó **objektum-replikációs** beállításokhoz.
-1. Kattintson a letölteni kívánt szabályzat melletti **további** gombra, majd válassza a **szabályok letöltése**lehetőséget a következő képen látható módon.
+1. Kattintson a letölteni kívánt szabályzat melletti **további** gombra, majd válassza a **szabályok letöltése** lehetőséget a következő képen látható módon.
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="A replikációs szabályok JSON-fájlba való letöltését bemutató képernyőkép":::
 
 1. Mentse a JSON-fájlt a helyi számítógépre, és ossza meg egy másik felhasználóval, hogy konfigurálja a házirendet a forrás fiókon.
 
@@ -330,7 +330,7 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 Ha meg szeretné írni a cél fiók replikációs szabályzatának definícióját az Azure CLI-ből származó JSON-fájlra, hívja meg az az [Storage Account vagy a-Policy show](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_show) parancsot és a kimenetet egy fájlba.
 
-A következő példa egy *policy.js*nevű JSON-fájlba írja a házirend-definíciót. Ne felejtse el lecserélni az értékeket a szögletes zárójelben, a fájl elérési útját pedig a saját értékeire:
+A következő példa egy *policy.js* nevű JSON-fájlba írja a házirend-definíciót. Ne felejtse el lecserélni az értékeket a szögletes zárójelben, a fájl elérési útját pedig a saját értékeire:
 
 ```azurecli
 az storage account or-policy show \
@@ -361,7 +361,7 @@ Az alábbi lépéseket követve ellenőrizheti egy blob replikálási állapotá
 1. Keresse meg azt a tárolót, amely tartalmazza a forrás blobot.
 1. Válassza ki a blobot a tulajdonságainak megjelenítéséhez. Ha a blob replikációja sikeresen megtörtént, az **objektum-replikálás** szakaszban láthatja, hogy az állapot be van-e *fejezni*. A rendszer a replikációs házirend AZONOSÍTÓját és a tároló objektum-replikálását szabályozó szabály AZONOSÍTÓját is felsorolja.
 
-:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="A forrás fiókban található blob replikálási állapotát bemutató képernyőfelvétel":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -392,6 +392,12 @@ az storage blob show \
 
 ---
 
+Ha a forrás fiókban található blob replikációs állapota hibát jelez, akkor vizsgálja meg a következő lehetséges okokat:
+
+- Győződjön meg arról, hogy az objektum-replikációs házirend konfigurálva van a célhelyen.
+- Ellenőrizze, hogy a cél tároló még létezik-e.
+- Ha a forrás blob egy ügyfél által megadott kulccsal lett titkosítva egy írási művelet részeként, akkor az objektum replikálása sikertelen lesz. Az ügyfél által biztosított kulcsokkal kapcsolatos további információkért lásd: [titkosítási kulcs megadása a blob Storage-hoz való kérelemben](encryption-customer-provided-keys.md).
+
 ## <a name="remove-a-replication-policy"></a>Replikációs házirend eltávolítása
 
 A replikációs házirend és a hozzá tartozó szabályok eltávolításához használja a Azure Portal, a PowerShell vagy a parancssori felületet.
@@ -401,9 +407,9 @@ A replikációs házirend és a hozzá tartozó szabályok eltávolításához h
 Ha el szeretné távolítani egy replikációs házirendet a Azure Portalban, kövesse az alábbi lépéseket:
 
 1. Navigáljon a forrás Storage-fiókhoz a Azure Portal.
-1. A **Beállítások**területen válassza az **objektum replikálása**elemet.
+1. A **Beállítások** területen válassza az **objektum replikálása** elemet.
 1. Kattintson a házirend neve melletti **további** gombra.
-1. Válassza a **szabályok törlése**lehetőséget.
+1. Válassza a **szabályok törlése** lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

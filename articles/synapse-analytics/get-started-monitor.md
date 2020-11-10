@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 10/15/2020
-ms.openlocfilehash: 924ac3a58a005b84cbf87f833e97862e26a5b8e0
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 2970bb58bb73d52c75729b00a8209a9c576d4ec0
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363357"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427411"
 ---
 # <a name="monitor-your-synapse-workspace"></a>A szinapszis-munkaterület figyelése
 
@@ -31,8 +31,7 @@ Nyissa meg a szinapszis Studio alkalmazást, és navigáljon a **figyelő** köz
 ## <a name="integration"></a>Integráció
 
 1. Navigáljon az **integrációs > folyamathoz**. Ebben a nézetben láthatja, hogy a folyamat minden alkalommal fut a munkaterületen. 
-1. Keresse meg az előző lépésben futtatott folyamatot, és kattintson a **folyamatának nevére**.
-1. Most láthatja, hogyan futnak az egyes tevékenységek a folyamaton belül.
+1. Keresse meg az előző lépésben futtatott folyamatot, és kattintson a **folyamatának nevére** a részletek megtekintéséhez.
 1. A szinapszis Studio felső részén található **navigációs sáv** lehetőségre kattintva az előző nézethez való visszatéréshez kattintson a **minden folyamat futtatása** elemre.
 
 ## <a name="apache-spark-activities"></a>Apache Spark tevékenységek
@@ -49,7 +48,7 @@ Nyissa meg a szinapszis Studio alkalmazást, és navigáljon a **figyelő** köz
 1. Keresse meg az adott SQL-kérelmet, és vigye az egérmutatót az adott elemre. Ha a hover, megjelenik egy SQL-parancsfájl ikon.
 1. Kattintson az SQL-parancsfájl ikonra az SQL-kérelem teljes szövegének megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a Knowledge centerrel](get-started-knowledge-center.md)

@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: b500a3777ee24d6615022dae2571d021bd0d675a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 33f5314c80dc33dbec50dc21a71f4cb507979e12
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201171"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427428"
 ---
 # <a name="limitations"></a>Korlátozások
 
@@ -18,20 +18,21 @@ Számos szolgáltatás mérete, száma vagy egyéb korlátai vannak.
 
 ## <a name="azure-frontend"></a>Azure-előtérbeli felület
 
-* AzureFrontend-példányok összesen: 16.
-* AzureSession-példányok összesen AzureFrontend: 16.
+A következő korlátozások vonatkoznak a frontend API-ra (C++ és C#):
+* [AzureFrontend](/dotnet/api/microsoft.azure.remoterendering.azurefrontend) -példányok összesen: 16.
+* [AzureSession](/dotnet/api/microsoft.azure.remoterendering.azuresession) -példányok összesen [AzureFrontend](/dotnet/api/microsoft.azure.remoterendering.azurefrontend): 16.
 
 ## <a name="objects"></a>Objektumokat
 
-* Egyetlen típus összes engedélyezett objektuma (entitás, CutPlaneComponent stb.): 16 777 215.
+* Egyetlen típus összes engedélyezett objektuma ([entitás](../concepts/entities.md), [CutPlaneComponent](../overview/features/cut-planes.md)stb.): 16 777 215.
 * Engedélyezett aktív kivágott síkok összesen: 8.
 
 ## <a name="geometry"></a>Geometria
 
-* **Animáció:** Az animációk csak a game Objects egyes átalakításait animálják. A kinyúzási vagy Vertex-animációkkal rendelkező csontváz-animációk nem támogatottak. A forrásként szolgáló fájlból származó animációs zeneszámok nem őrződnek meg. Ehelyett az objektum-átalakítási animációkat az ügyfél kódjának kell megadnia.
+* **Animáció:** Az animációk csak a [game Objects](../concepts/entities.md)egyes átalakításait animálják. A kinyúzási vagy Vertex-animációkkal rendelkező csontváz-animációk nem támogatottak. A forrásként szolgáló fájlból származó animációs zeneszámok nem őrződnek meg. Ehelyett az objektum-átalakítási animációkat az ügyfél kódjának kell megadnia.
 * **Egyéni shaderek:** Az egyéni shaderek készítése nem támogatott. Csak beépített [színanyagokat](../overview/features/color-materials.md) vagy [pbr-anyagokat](../overview/features/pbr-materials.md) lehet használni.
 * Az adategységben lévő **különböző anyagok maximális száma** : 65 535. További információ az anyagok automatikus számának csökkentéséről: az [anyag-ismétlődési](../how-tos/conversion/configure-model-conversion.md#material-de-duplication) fejezet.
-* **Egyetlen textúra maximális mérete**: 16 384 x 16 384. Az átalakítási folyamat a nagyobb forrású textúrák méretét is csökkenti.
+* **Egyetlen textúra maximális mérete** : 16 384 x 16 384. Az átalakítási folyamat a nagyobb forrású textúrák méretét is csökkenti.
 
 ### <a name="overall-number-of-polygons"></a>Sokszögek összesített száma
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/07/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: bb78a60b911823da96c52a104a3e06ecfc634da6
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a8a34a483390e12ba49123e26d2071d3aa667c89
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210880"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425296"
 ---
 Ebben a rövid útmutatóban megtudhatja, milyen alapszintű tervezési mintákat Speaker Recognition a Speech SDK használatával, beleértve a következőket:
 
@@ -43,7 +43,7 @@ Emellett a cél környezettől függően a következők egyikét használja:
 
 # <a name="script"></a>[parancsfájl](#tab/script)
 
-Töltse le és csomagolja ki a <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span> </a> *microsoft.cognitiveservices.speech.sdk.bundle.js* -fájlhoz készült Speech SDK-t, és helyezze el a HTML-fájl számára elérhető mappába.
+Töltse le és csomagolja ki a <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span></a> *microsoft.cognitiveservices.speech.sdk.bundle.js* -fájlhoz készült Speech SDK-t, és helyezze el a HTML-fájl számára elérhető mappába.
 
 ```html
 <script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
@@ -84,11 +84,11 @@ Adja hozzá a következő Helper függvényt a hangfájlok adatfolyamként való
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="helpers":::
 
-Ebben a függvényben a [AudioInputStream. createPushStream](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioinputstream?view=azure-node-latest&preserve-view=true#createpushstream-audiostreamformat-) és a [AudioConfig. fromStreamInput](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true#fromstreaminput-audioinputstream---pullaudioinputstreamcallback-) metódus használatával hozhat létre [AudioConfig](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) objektumot. Ez az `AudioConfig` objektum egy hangadatfolyamot képvisel. `AudioConfig`A következő feladatok során több objektumot fog használni.
+Ebben a függvényben a [AudioInputStream. createPushStream](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioinputstream?preserve-view=true&view=azure-node-latest#createpushstream-audiostreamformat-) és a [AudioConfig. fromStreamInput](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?preserve-view=true&view=azure-node-latest#fromstreaminput-audioinputstream---pullaudioinputstreamcallback-) metódus használatával hozhat létre [AudioConfig](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?preserve-view=true&view=azure-node-latest) objektumot. Ez az `AudioConfig` objektum egy hangadatfolyamot képvisel. `AudioConfig`A következő feladatok során több objektumot fog használni.
 
 ## <a name="text-dependent-verification"></a>Szövegtől függő ellenőrzés
 
-Speaker Verification az a szabály, amely megerősíti, hogy egy beszélő ismert vagy **regisztrált** hangra illeszkedik. Az első **lépés a** hangprofil beléptetése, hogy a szolgáltatásnak van-e összehasonlítani a jövőbeli hangmintákkal. Ebben a példában egy **szövegtől függő** stratégia használatával regisztrálja a profilt, amelyhez a regisztrációhoz és ellenőrzéshez egy adott jelszó szükséges. A támogatott hozzáférési kódok listáját a [dokumentációs](https://docs.microsoft.com/rest/api/speakerrecognition/) dokumentációban tekintheti meg.
+Speaker Verification az a szabály, amely megerősíti, hogy egy beszélő ismert vagy **regisztrált** hangra illeszkedik. Az első **lépés a** hangprofil beléptetése, hogy a szolgáltatásnak van-e összehasonlítani a jövőbeli hangmintákkal. Ebben a példában egy **szövegtől függő** stratégia használatával regisztrálja a profilt, amelyhez a regisztrációhoz és ellenőrzéshez egy adott jelszó szükséges. A támogatott hozzáférési kódok listáját a [dokumentációs](/rest/api/speakerrecognition/) dokumentációban tekintheti meg.
 
 ### <a name="textdependentverification-function"></a>TextDependentVerification függvény
 
@@ -96,7 +96,7 @@ Először hozza létre a `TextDependentVerification` függvényt.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_dependent_verification":::
 
-Ez a függvény létrehoz egy [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) objektumot a [VoiceProfileClient. createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) metódussal. Vegye figyelembe, hogy háromféle [típus](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofiletype?view=azure-node-latest&preserve-view=true) létezik `VoiceProfile` :
+Ez a függvény létrehoz egy [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?preserve-view=true&view=azure-node-latest) objektumot a [VoiceProfileClient. createProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) metódussal. Vegye figyelembe, hogy háromféle [típus](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofiletype?preserve-view=true&view=azure-node-latest) létezik `VoiceProfile` :
 
 - TextIndependentIdentification
 - TextDependentVerification
@@ -104,7 +104,7 @@ Ez a függvény létrehoz egy [VoiceProfile](https://docs.microsoft.com/javascri
 
 Ebben az esetben a következőnek kell megfelelnie: `VoiceProfileType.TextDependentVerification` `VoiceProfileClient.createProfileAsync` .
 
-Ezután hívja meg a következő két segítő függvényt, amelyeket meg fog határozni `AddEnrollmentsToTextDependentProfile` `SpeakerVerify` . Végül hívja meg a [VoiceProfileClient. deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) parancsot a profil eltávolításához.
+Ezután hívja meg a következő két segítő függvényt, amelyeket meg fog határozni `AddEnrollmentsToTextDependentProfile` `SpeakerVerify` . Végül hívja meg a [VoiceProfileClient. deleteProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) parancsot a profil eltávolításához.
 
 ### <a name="addenrollmentstotextdependentprofile-function"></a>AddEnrollmentsToTextDependentProfile függvény
 
@@ -112,7 +112,7 @@ Adja meg a következő függvényt a hangprofil regisztrálásához.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="add_enrollments_dependent":::
 
-Ebben a függvényben meghívja a `GetAudioConfigFromFile` korábban definiált függvényt, hogy objektumokat hozzon létre `AudioConfig` a hangmintákból. Ezek a hangminták olyan hozzáférési kódot tartalmaznak, mint például a "saját hangom My Passport, ellenőrzés". Ezután regisztrálja ezeket a hangmintákat a [VoiceProfileClient. enrollProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) metódus használatával.
+Ebben a függvényben meghívja a `GetAudioConfigFromFile` korábban definiált függvényt, hogy objektumokat hozzon létre `AudioConfig` a hangmintákból. Ezek a hangminták olyan hozzáférési kódot tartalmaznak, mint például a "saját hangom My Passport, ellenőrzés". Ezután regisztrálja ezeket a hangmintákat a [VoiceProfileClient. enrollProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) metódus használatával.
 
 ### <a name="speakerverify-function"></a>SpeakerVerify függvény
 
@@ -120,9 +120,9 @@ Adja meg `SpeakerVerify` a következőt:
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="speaker_verify":::
 
-Ebben a függvényben létrehoz egy [SpeakerVerificationModel](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest&preserve-view=true) objektumot a [SpeakerVerificationModel. FromProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest&preserve-view=true#fromprofile-voiceprofile-) metódussal, amely a korábban létrehozott [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) objektumot adja meg.
+Ebben a függvényben létrehoz egy [SpeakerVerificationModel](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?preserve-view=true&view=azure-node-latest) objektumot a [SpeakerVerificationModel. FromProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?preserve-view=true&view=azure-node-latest#fromprofile-voiceprofile-) metódussal, amely a korábban létrehozott [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?preserve-view=true&view=azure-node-latest) objektumot adja meg.
 
-Ezután hívja meg a [SpeechRecognizer. recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) metódust egy olyan hangminta érvényesítéséhez, amely ugyanazt a hozzáférési kódot tartalmazza, mint a korábban regisztrált hangminták. `SpeechRecognizer.recognizeOnceAsync` egy [SpeakerRecognitionResult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest&preserve-view=true) objektumot ad vissza, amelynek `score` a tulajdonsága egy, a 0,0-1.0-tól származó hasonlósági pontszámot tartalmaz. Az `SpeakerRecognitionResult` objektum egy `reason` [ResultReason](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/resultreason?view=azure-node-latest&preserve-view=true)típusú tulajdonságot is tartalmaz. Ha az ellenőrzés sikeres volt, a `reason` tulajdonságnak értékkel kell rendelkeznie `RecognizedSpeaker` .
+Ezután hívja meg a [SpeechRecognizer. recognizeOnceAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?preserve-view=true&view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) metódust egy olyan hangminta érvényesítéséhez, amely ugyanazt a hozzáférési kódot tartalmazza, mint a korábban regisztrált hangminták. `SpeechRecognizer.recognizeOnceAsync` egy [SpeakerRecognitionResult](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?preserve-view=true&view=azure-node-latest) objektumot ad vissza, amelynek `score` a tulajdonsága egy, a 0,0-1.0-tól származó hasonlósági pontszámot tartalmaz. Az `SpeakerRecognitionResult` objektum egy `reason` [ResultReason](/javascript/api/microsoft-cognitiveservices-speech-sdk/resultreason?preserve-view=true&view=azure-node-latest)típusú tulajdonságot is tartalmaz. Ha az ellenőrzés sikeres volt, a `reason` tulajdonságnak értékkel kell rendelkeznie `RecognizedSpeaker` .
 
 ## <a name="text-independent-verification"></a>Szövegtől független ellenőrzés
 
@@ -137,11 +137,11 @@ Először hozza létre a `TextIndependentVerification` függvényt.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_independent_verification":::
 
-A `TextDependentVerification` függvényhez hasonlóan ez a függvény létrehoz egy [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) objektumot a [VoiceProfileClient. createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) metódussal.
+A `TextDependentVerification` függvényhez hasonlóan ez a függvény létrehoz egy [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?preserve-view=true&view=azure-node-latest) objektumot a [VoiceProfileClient. createProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) metódussal.
 
 Ebben az esetben a következőnek kell megfelelnie: `VoiceProfileType.TextIndependentVerification` `createProfileAsync` .
 
-Ezután hívja meg a következő két segítő függvényt: `AddEnrollmentsToTextIndependentProfile` , amelyet a Next (tovább) és a (z `SpeakerVerify` ) már definiált. Végül hívja meg a [VoiceProfileClient. deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) parancsot a profil eltávolításához.
+Ezután hívja meg a következő két segítő függvényt: `AddEnrollmentsToTextIndependentProfile` , amelyet a Next (tovább) és a (z `SpeakerVerify` ) már definiált. Végül hívja meg a [VoiceProfileClient. deleteProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) parancsot a profil eltávolításához.
 
 ### <a name="addenrollmentstotextindependentprofile"></a>AddEnrollmentsToTextIndependentProfile
 
@@ -149,11 +149,11 @@ Adja meg a következő függvényt a hangprofil regisztrálásához.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="add_enrollments_independent":::
 
-Ebben a függvényben meghívja a `GetAudioConfigFromFile` korábban definiált függvényt, hogy objektumokat hozzon létre `AudioConfig` a hangmintákból. Ezután regisztrálja ezeket a hangmintákat a [VoiceProfileClient. enrollProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) metódus használatával.
+Ebben a függvényben meghívja a `GetAudioConfigFromFile` korábban definiált függvényt, hogy objektumokat hozzon létre `AudioConfig` a hangmintákból. Ezután regisztrálja ezeket a hangmintákat a [VoiceProfileClient. enrollProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) metódus használatával.
 
 ## <a name="speaker-identification"></a>Beszélőazonosítás
 
-A Speaker Identification segítségével megállapítható, hogy **ki** beszél a regisztrált hangok adott csoportjából. A folyamat hasonló a **szövegtől független ellenőrzéshez**, és a fő különbség, hogy egyszerre több hangprofillal is képes ellenőrizni, nem pedig egyetlen profilon.
+A Speaker Identification segítségével megállapítható, hogy **ki** beszél a regisztrált hangok adott csoportjából. A folyamat hasonló a **szövegtől független ellenőrzéshez** , és a fő különbség, hogy egyszerre több hangprofillal is képes ellenőrizni, nem pedig egyetlen profilon.
 
 ### <a name="textindependentidentification-function"></a>TextIndependentIdentification függvény
 
@@ -161,11 +161,11 @@ Először hozza létre a `TextIndependentIdentification` függvényt.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_independent_indentification":::
 
-A `TextDependentVerification` és a `TextIndependentVerification` függvényekhez hasonlóan ez a függvény létrehoz egy [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) objektumot a [VoiceProfileClient. createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) metódussal.
+A `TextDependentVerification` és a `TextIndependentVerification` függvényekhez hasonlóan ez a függvény létrehoz egy [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?preserve-view=true&view=azure-node-latest) objektumot a [VoiceProfileClient. createProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) metódussal.
 
 Ebben az esetben a következőnek kell megfelelnie: `VoiceProfileType.TextIndependentIdentification` `VoiceProfileClient.createProfileAsync` .
 
-Ezután hívja meg a következő két segítő függvényt: `AddEnrollmentsToTextIndependentProfile` , amelyet már definiált, és `SpeakerIdentify` amelynél a Next (tovább) értéket fogja meghatározni. Végül hívja meg a [VoiceProfileClient. deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) parancsot a profil eltávolításához.
+Ezután hívja meg a következő két segítő függvényt: `AddEnrollmentsToTextIndependentProfile` , amelyet már definiált, és `SpeakerIdentify` amelynél a Next (tovább) értéket fogja meghatározni. Végül hívja meg a [VoiceProfileClient. deleteProfileAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) parancsot a profil eltávolításához.
 
 ### <a name="speakeridentify-function"></a>SpeakerIdentify függvény
 
@@ -173,10 +173,10 @@ Adja meg a `SpeakerIdentify` függvényt az alábbiak szerint.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="speaker_identify":::
 
-Ebben a függvényben létrehoz egy [SpeakerIdentificationModel](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest&preserve-view=true) objektumot a [SpeakerIdentificationModel. fromProfiles](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest&preserve-view=true#fromprofiles-voiceprofile---) metódussal, amely a korábban létrehozott [VoiceProfile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) objektumot adja meg.
+Ebben a függvényben létrehoz egy [SpeakerIdentificationModel](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?preserve-view=true&view=azure-node-latest) objektumot a [SpeakerIdentificationModel. fromProfiles](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?preserve-view=true&view=azure-node-latest#fromprofiles-voiceprofile---) metódussal, amely a korábban létrehozott [VoiceProfile](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?preserve-view=true&view=azure-node-latest) objektumot adja meg.
 
-Ezután hívja meg a [SpeechRecognizer. recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) metódust, és adjon meg egy hangmintát.
-`SpeechRecognizer.recognizeOnceAsync` megpróbálja azonosítani a hangminta hangját a `VoiceProfile` létrehozásához használt objektumok alapján `SpeakerIdentificationModel` . Egy [SpeakerRecognitionResult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest&preserve-view=true) objektumot ad vissza, amelynek a `profileId` tulajdonsága azonosítja a megfeleltetést `VoiceProfile` , ha van ilyen, míg a `score` tulajdonság egy hasonlósági pontszámot tartalmaz a 0,0-1.0-tól kezdve.
+Ezután hívja meg a [SpeechRecognizer. recognizeOnceAsync](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?preserve-view=true&view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) metódust, és adjon meg egy hangmintát.
+`SpeechRecognizer.recognizeOnceAsync` megpróbálja azonosítani a hangminta hangját a `VoiceProfile` létrehozásához használt objektumok alapján `SpeakerIdentificationModel` . Egy [SpeakerRecognitionResult](/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?preserve-view=true&view=azure-node-latest) objektumot ad vissza, amelynek a `profileId` tulajdonsága azonosítja a megfeleltetést `VoiceProfile` , ha van ilyen, míg a `score` tulajdonság egy hasonlósági pontszámot tartalmaz a 0,0-1.0-tól kezdve.
 
 ## <a name="main-function"></a>Fő függvény
 
@@ -184,4 +184,4 @@ Végül adja meg a `main` függvényt az alábbiak szerint.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="main":::
 
-Ez a függvény létrehoz egy [VoiceProfileClient](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true) objektumot, amely Hangprofilok létrehozására, regisztrálására és törlésére szolgál. Ezután meghívja a korábban definiált függvényeket.
+Ez a függvény létrehoz egy [VoiceProfileClient](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?preserve-view=true&view=azure-node-latest) objektumot, amely Hangprofilok létrehozására, regisztrálására és törlésére szolgál. Ezután meghívja a korábban definiált függvényeket.

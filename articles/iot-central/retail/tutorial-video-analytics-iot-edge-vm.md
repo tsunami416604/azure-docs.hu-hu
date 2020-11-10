@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: aa4ddfc773e2226fe155b563c237f1c533d52311
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 23173432db9364f25901e6e9b285d390c6a63a34
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127028"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426545"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Oktatóanyag: IoT Edge-példány létrehozása videó-elemzéshez (linuxos virtuális gép)
 
@@ -27,7 +27,7 @@ IoT Edge ezek a szolgáltatások közvetlenül futnak a platformfüggetlen IoT-e
 
 Ez az oktatóanyag bemutatja, hogyan készítheti elő IoT Edge-eszközét egy Azure-beli virtuális gépen. A IoT Edge példány futtatja az élő videó elemzési modulokat, amelyeket az Azure IoT Central video Analytics-Object és a Motion Detection alkalmazás sablonja használ.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Azure-beli virtuális gép létrehozása a telepített Azure IoT Edge futtatókörnyezettel
 > * Készítse elő a IoT Edge telepítést az élő videó elemzési moduljának üzemeltetéséhez, és kapcsolódjon a IoT Central
@@ -48,14 +48,14 @@ A következő táblázatban található információk segítségével fejezze be
 
 | Mező | Érték |
 | ----- | ----- |
-| Előfizetés | Válassza ki az Azure-előfizetését. |
+| Előfizetés | Válassza ki Azure-előfizetését. |
 | Erőforráscsoport | *LVA – RG* – az előző oktatóanyagban létrehozott erőforráscsoport. |
 | Régió       | *USA keleti régiója* |
 | DNS-címke előtagja | Válasszon egyedi DNS-előtagot a virtuális géphez. |
 | Rendszergazdai Felhasználónév | *AzureUser* |
 | Rendszergazdai jelszó | Adjon meg egy jelszót. Jegyezze fel a jelszót a *scratchpad.txt* fájlban, amelyet később használni fog. |
 | Hatókör-azonosító | A **Hatókör-azonosító** , amelyet az előző oktatóanyag *scratchpad.txt* fájljában adott meg, az átjáró-eszköz hozzáadásakor. |
-| Eszközazonosító | *LVA-Gateway-001* – az előző oktatóanyagban létrehozott átjáró eszköz. |
+| Eszközazonosító | *Gateway-001* – az előző oktatóanyagban létrehozott átjáró eszköz. |
 | Eszköz kulcsa | Az eszköz elsődleges kulcsa az átjáró eszköz hozzáadásakor az előző oktatóanyag *scratchpad.txt* fájljában található. |
 | IOT központi alkalmazás-gazdagép | Az **alkalmazás URL-címe** , amelyet az előző oktatóanyag *scratchpad.txt* fájljában jegyzett készített. Például: *Traders.azureiotcentral.com*. |
 | IOT központi alkalmazás API-tokenje | Az operátor API-tokenje az előző oktatóanyagban feljegyzést készített. |
@@ -64,11 +64,11 @@ A következő táblázatban található információk segítségével fejezze be
 | Ubuntu operációs rendszer verziója | *18,04 – LTS* |
 | Hely | *[resourceGroup (). location]* |
 
-Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az ellenőrzés befejezésekor válassza a **Létrehozás**lehetőséget. A telepítés befejezéséhez általában három percet vesz igénybe. Az üzembe helyezés befejezésekor navigáljon a Azure Portal **LVA-RG** erőforráscsoporthoz.
+Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az ellenőrzés befejezésekor válassza a **Létrehozás** lehetőséget. A telepítés befejezéséhez általában három percet vesz igénybe. Az üzembe helyezés befejezésekor navigáljon a Azure Portal **LVA-RG** erőforráscsoporthoz.
 
 ## <a name="ensure-the-iot-edge-runtime-loads-the-modules"></a>Győződjön meg arról, hogy a IoT Edge futtatókörnyezet betölti a modulokat
 
-A Azure Portal navigáljon a **LVA-RG** erőforráscsoporthoz, és válassza ki a virtuális gépet. Ezután a **támogatás + hibaelhárítás** szakaszban válassza a **Serial Console**lehetőséget.
+A Azure Portal navigáljon a **LVA-RG** erőforráscsoporthoz, és válassza ki a virtuális gépet. Ezután a **támogatás + hibaelhárítás** szakaszban válassza a **Serial Console** lehetőséget.
 
 Az **ENTER** billentyű lenyomásával kérheti le `login:` . A virtuális gép létrehozásakor használt felhasználónévvel és jelszóval válassza a *azureuser* -t.
 
@@ -117,7 +117,7 @@ A Docker-tárolók listázásához használja az alábbi parancsot:
 sudo docker ps
 ```
 
-A lista egy **LIVE555**nevű tárolót tartalmaz.
+A lista egy **LIVE555** nevű tárolót tartalmaz.
 
 ## <a name="next-steps"></a>Következő lépések
 

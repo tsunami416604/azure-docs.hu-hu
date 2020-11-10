@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 5759cd80278d20ee383fbe5922e43d250babe09f
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b22c73b3f0626b9938608e88c3382e3f5e8d97fc
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380674"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427479"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -135,13 +135,12 @@ A jobb felső sarokban kattintson a **Mentés és a betanítás** lehetőségre 
 1. A QnA Maker portál jobb felső részén válassza a **tesztelés** lehetőséget, hogy a módosítások érvénybe léptetése megtörténjen.
 2. Írjon be egy példát egy felhasználói lekérdezésre a szövegmezőben.
 
-    `How many Azure services are used by a knowledge base?`
+    `whats the size of the touchscreen`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/enable-short-answer.png" alt-text="Képernyőkép a csevegés felhasználói felületéről párbeszédpanel, amely a kérdést mutatja: hány oldal lesz a kiskorú Passport? és a válasz: csak a 36-es lapokat tartalmazó Passport-füzet jelenik meg a kiskorúak számára.":::
+3. Ha engedélyezi a MRC szolgáltatást a Tudásbázisban, a **rövid válasz megjelenítése** lehetőség kiválasztásával pontos választ fog látni, ha van ilyen, valamint a teszt ablaktáblán a válasz szövegrész is. 
 
-3. Ha engedélyezi a MRC szolgáltatást a Tudásbázisban, a **rövid válasz engedélyezése (kísérleti)** lehetőség kiválasztásával egy pontos választ is látni fog, ha elérhető, valamint a teszt ablaktáblán a válasz szövegrészt. 
-
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/enable-short-answer-checked.png" alt-text="Képernyőkép a csevegés felhasználói felületéről párbeszédpanel, amely a kérdést mutatja: hány oldal lesz a kiskorú Passport? és a válasz: 36. egy sorba, majd egy második sor, amely a következőt adja meg: csak az 36-es lapokat tartalmazó Passport-füzet jelenik meg a kiskorúak számára.":::
+    ![Felügyelt engedélyezett teszt panel](../media/conversational-context/test-pane-with-managed.png)
+    
 
 4. Válassza a vizsgálat lehetőséget a válasz részletesebb vizsgálatához. A test (teszt) ablak segítségével tesztelheti a Tudásbázis módosításait, mielőtt közzéteszi a tudásbázist. 
 5. Kattintson ismét a **test** **(teszt)** elemre a teszt panel bezárásához.

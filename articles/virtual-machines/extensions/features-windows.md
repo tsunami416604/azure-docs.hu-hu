@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 00cb63f63ffb1f2e10a276cfdeee9c5e8e1022de
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977374"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427377"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
@@ -61,7 +61,7 @@ A lehető legjobb élmény biztosítása érdekében az ügynöknek minimális v
 A Windows vendég ügynök több operációs rendszeren fut, de a kiterjesztések keretrendszere korláttal rendelkezik a bővítmények számára. További információkért tekintse meg [ezt a cikket](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 ).
 
-Egyes bővítmények nem támogatottak az összes operációs rendszeren, és a *51-es hibakódot (nem támogatott operációs rendszert*) bocsátják ki. Az egyes bővítmények dokumentációjában tájékozódhat a támogatásról.
+Egyes bővítmények nem támogatottak az összes operációs rendszeren, és a *51-es hibakódot (nem támogatott operációs rendszert* ) bocsátják ki. Az egyes bővítmények dokumentációjában tájékozódhat a támogatásról.
 
 #### <a name="network-access"></a>Hálózati hozzáférés
 
@@ -92,7 +92,7 @@ A következő módszerek használhatók a bővítmények egy meglévő virtuáli
 
 ### <a name="powershell"></a>PowerShell
 
-Több PowerShell-parancs létezik az egyes bővítmények futtatásához. A lista megtekintéséhez használja a [Get-Command](/powershell/module/microsoft.powershell.core/get-command) és a Filter on *bővítményt*:
+Több PowerShell-parancs létezik az egyes bővítmények futtatásához. A lista megtekintéséhez használja a [Get-Command](/powershell/module/microsoft.powershell.core/get-command) és a Filter on *bővítményt* :
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -142,7 +142,7 @@ A `Set-AzVMExtension` parancs használatával bármely virtuálisgép-bővítmé
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók egy meglévő virtuális gépre. Válassza ki a virtuális gépet a portálon, válassza a **bővítmények**, majd a **Hozzáadás**lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait.
+A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók egy meglévő virtuális gépre. Válassza ki a virtuális gépet a portálon, válassza a **bővítmények** , majd a **Hozzáadás** lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait.
 
 Az alábbi példa a Microsoft antimalware bővítmény telepítését mutatja be a Azure Portalról:
 
@@ -286,7 +286,7 @@ Microsoft.Compute     CustomScriptExtension                1.9
 
 #### <a name="agent-updates"></a>Ügynök frissítései
 
-A Windows vendég ügynök csak a *bővítmények kezelési kódját*tartalmazza, a *Windows-kiépítési kód* külön. Eltávolíthatja a Windows vendég ügynököt. Az ablakos vendég ügynök automatikus frissítése nem tiltható le.
+A Windows vendég ügynök csak a *bővítmények kezelési kódját* tartalmazza, a *Windows-kiépítési kód* külön. Eltávolíthatja a Windows vendég ügynököt. Az ablakos vendég ügynök automatikus frissítése nem tiltható le.
 
 A *bővítmények kezelésére szolgáló kód* felelős az Azure-hálóval való kommunikációért, valamint a virtuálisgép-bővítmények műveleteinek, például a telepítés, a jelentéskészítési állapot, az egyes bővítmények frissítésének és eltávolításának kezeléséért. A frissítések biztonsági javításokat, hibajavításokat és továbbfejlesztett funkciókat tartalmaznak a *bővítmények kezelési kódjához*.
 
@@ -294,7 +294,7 @@ A futtatott verziót a [telepített Windows-ügynök észlelése](agent-windows.
 
 #### <a name="extension-updates"></a>Bővítmények frissítései
 
-Ha elérhető egy bővítmény frissítése, a Windows vendég ügynök letölti és frissíti a bővítményt. Az automatikus bővítmény frissítései lehetnek *kisebbek* vagy *gyorsjavítások*. A bővítmények kiépítésekor engedélyezheti vagy letilthatja a bővítmények *másodlagos* frissítéseit. Az alábbi példa bemutatja, hogyan lehet automatikusan frissíteni a alverziókat egy Resource Manager-sablonban a *autoUpgradeMinorVersion ": true"*:
+Ha elérhető egy bővítmény frissítése, a Windows vendég ügynök letölti és frissíti a bővítményt. Az automatikus bővítmény frissítései lehetnek *kisebbek* vagy *gyorsjavítások*. A bővítmények kiépítésekor engedélyezheti vagy letilthatja a bővítmények *másodlagos* frissítéseit. Az alábbi példa bemutatja, hogyan lehet automatikusan frissíteni a alverziókat egy Resource Manager-sablonban a *autoUpgradeMinorVersion ": true"* :
 
 ```json
     "properties": {
@@ -322,7 +322,7 @@ A virtuálisgép-modellből megtekintheti, hogy a bővítmény a "autoUpgradeMin
  $vm.Extensions
 ```
 
-A következő példa kimenete azt mutatja, hogy a *autoUpgradeMinorVersion* értéke *true (igaz*):
+A következő példa kimenete azt mutatja, hogy a *autoUpgradeMinorVersion* értéke *true (igaz* ):
 
 ```powershell
 ForceUpdateTag              :
@@ -336,7 +336,7 @@ AutoUpgradeMinorVersion     : True
 
 Ha meg szeretné tekinteni, hogy mikor történt frissítés a bővítményre, tekintse át az ügynök naplóit a virtuális gépen a következő címen: *C:\WindowsAzure\Logs\WaAppAgent.log*
 
-A következő példában a virtuális gépnek *Microsoft. számítási. CustomScriptExtension 1,8* telepítve van. A *1,9*-es verzióhoz elérhető gyorsjavítás:
+A következő példában a virtuális gépnek *Microsoft. számítási. CustomScriptExtension 1,8* telepítve van. A *1,9* -es verzióhoz elérhető gyorsjavítás:
 
 ```powershell
 [INFO]  Getting plugin locations for plugin 'Microsoft.Compute.CustomScriptExtension'. Current Version: '1.8', Requested Version: '1.9'
@@ -345,7 +345,7 @@ A következő példában a virtuális gépnek *Microsoft. számítási. CustomSc
 
 ## <a name="agent-permissions"></a>Ügynök engedélyei
 
-A feladatok végrehajtásához az ügynöknek *helyi rendszerként*kell futnia.
+A feladatok végrehajtásához az ügynöknek *helyi rendszerként* kell futnia.
 
 ## <a name="troubleshoot-vm-extensions"></a>Virtuálisgép-bővítmények hibáinak megoldása
 
@@ -355,7 +355,7 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 1. A Windows vendég ügynök naplójának vizsgálatához tekintse meg a tevékenységet, amikor a bővítményt kiépítte a *C:\WindowsAzure\Logs\WaAppAgent.log* -ben
 
-2. A *C:\WindowsAzure\Logs\Plugins \<extensionName> * kapcsolatos további részletekért olvassa el a tényleges kiterjesztési naplókat
+2. A *C:\WindowsAzure\Logs\Plugins \\ <extensionName>* kapcsolatos további részletekért olvassa el a tényleges kiterjesztési naplókat
 
 3. Tekintse meg a bővítmények specifikus dokumentációjának hibaelhárítási szakaszt a hibakódok, ismert problémák stb. esetében.
 
@@ -403,7 +403,7 @@ Extensions[0]           :
     Message             : Finished executing command
 ```
 
-A bővítmény végrehajtási állapota a Azure Portalban is megtalálható. Egy bővítmény állapotának megtekintéséhez válassza ki a virtuális gépet, válassza a **bővítmények**lehetőséget, majd válassza ki a kívánt kiterjesztést.
+A bővítmény végrehajtási állapota a Azure Portalban is megtalálható. Egy bővítmény állapotának megtekintéséhez válassza ki a virtuális gépet, válassza a **bővítmények** lehetőséget, majd válassza ki a kívánt kiterjesztést.
 
 ### <a name="rerun-vm-extensions"></a>VM-bővítmények újrafuttatása
 
@@ -416,9 +416,9 @@ Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "
 A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 
 1. Válasszon ki egy virtuális gépet.
-2. Válassza a **bővítmények**lehetőséget.
+2. Válassza a **bővítmények** lehetőséget.
 3. Válassza ki a kívánt kiterjesztést.
-4. Válassza az **Eltávolítás**lehetőséget.
+4. Válassza az **Eltávolítás** lehetőséget.
 
 ## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
 | Kiterjesztés neve | Description | További információ |

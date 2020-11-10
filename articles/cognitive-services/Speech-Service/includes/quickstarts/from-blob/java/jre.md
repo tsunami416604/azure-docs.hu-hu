@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: trbye
-ms.openlocfilehash: 2a8deaa76c02e86c9304c2221c0617041ae2e138
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1b0f0fdbed20b8ab9a48b3156faf176e8ecfc44b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376530"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425552"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -18,7 +18,7 @@ Az első lépések előtt ügyeljen a következőre:
 > [!div class="checklist"]
 > * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
 > * [Azure Speech-erőforrás létrehozása](../../../../overview.md#try-the-speech-service-for-free)
-> * [Forrásfájl feltöltése Azure-blobba](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Forrásfájl feltöltése Azure-blobba](../../../../../../storage/blobs/storage-quickstart-blobs-portal.md)
 
 
 ## <a name="open-your-project-in-eclipse"></a>A projekt megnyitása az Eclipse-ben
@@ -83,6 +83,6 @@ Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzés
 
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

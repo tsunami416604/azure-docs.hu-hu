@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 08/07/2020
+ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7cef6252a99430f0d62d8f976510f0a723badc1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d828a0c3eb2582a833ee8ad07bdf4f18002c9dca
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91654458"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427195"
 ---
 ## <a name="trusted-microsoft-services"></a>Megbízható Microsoft-szolgáltatások
 Ha engedélyezi a **megbízható Microsoft-szolgáltatások számára a tűzfalbeállítások megkerülésének engedélyezése** beállítást, a következő szolgáltatások kapnak hozzáférést a Event Hubs erőforrásaihoz.
@@ -22,3 +22,5 @@ Ha engedélyezi a **megbízható Microsoft-szolgáltatások számára a tűzfalb
 | --------------- | ------------------------- | 
 | Azure Event Grid | Lehetővé teszi, hogy a Azure Event Grid eseményeket küldjön az esemény-huboknak a Event Hubs-névtérben. A következő lépéseket is végre kell hajtania: <ul><li>A rendszer által hozzárendelt identitás engedélyezése egy témakörhöz vagy tartományhoz</li><li>Az identitás hozzáadása az Azure Event Hubs adatfeladói szerepkörhöz a Event Hubs névtérben</li><li>Ezt követően állítsa be azt az esemény-előfizetést, amely az Event hub-t használja végpontként a rendszer által hozzárendelt identitás használatára.</li></ul> <p>További információ: [esemény kézbesítése felügyelt identitással](../articles/event-grid/managed-service-identity.md)</p>|
 | Azure Monitor (diagnosztikai beállítások) | Lehetővé teszi a Azure Monitor számára diagnosztikai információk küldését az Event Hubs névterében lévő Event hubokba. |
+| Azure Stream Analytics | Lehetővé teszi, hogy egy Azure Stream Analytics feladatból beolvassa az adatokat ([input](../articles/stream-analytics/stream-analytics-add-inputs.md)), vagy adatokat írjon ([output](../articles/stream-analytics/event-hubs-output.md)) az Event Hubs névtérbe. |
+| Azure IoT Hub | Lehetővé teszi, hogy a IoT Hub üzeneteket küldjön az Event hub-névtérbe. A következő lépéseket is végre kell hajtania: <ul><li>A rendszer által hozzárendelt identitás engedélyezése az IoT hub számára</li><li>Adja hozzá az identitást az Azure Event Hubs adatfeladói szerepkörhöz a Event Hubs névtérben.</li><li>Ezután konfigurálja a IoT Hub, amely az Event hub-t használja egyéni végpontként az identitás-alapú hitelesítés használatához.</li></ul>

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: d3c0ba55541baf3f31952b82a2fa357b48a5f1a9
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 9c5e57f2eb3c38a7df23052a4b3d33bc5a9675fc
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148354"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425932"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>A felhasználók és az entitások viselkedésének elemzésével (UEBA) kapcsolatos fejlett veszélyforrások azonosítása az Azure Sentinelben
 
@@ -30,7 +30,7 @@ ms.locfileid: "93148354"
 >    - Nyugat-Európa régiója
 >    - Ausztráliai földrajzi hely
 >
-> - Az összes többi földrajzi és régió esetében ezek a funkciók továbbra is a **nyilvános előzetes** verzióban maradnak, és szolgáltatói szerződés nélkül biztosítva vannak. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> - Az összes többi földrajzi és régió esetében ezek a funkciók a jelenleg **előzetes** verzióban maradnak. Tekintse meg a kiegészítő [**használati feltételeket a Microsoft Azure**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verziókra vonatkozó további jogi feltételekhez, amelyek olyan Azure-szolgáltatásokra vonatkoznak, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelent meg általánosan elérhetővé.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Mi a felhasználói és az entitások viselkedésének elemzése (UEBA)?
 
@@ -56,13 +56,15 @@ A Gartner UEBA-megoldásokhoz készült paradigma ihlette az Azure Sentinel "kü
 
 - **Elemzés:** A különböző gépi tanulási (ML-) algoritmusok használatával az Azure Sentinel rendellenes tevékenységeket azonosít, és egyértelműen és tömör módon mutatja be a kontextust a kontextus-gazdagítás formájában, néhány példa alább látható.
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="Entitás viselkedésének elemzési architektúrája" (igaz) érték egy azonosított rendellenességet jelez:
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="Viselkedés-elemzések kívül – megközelítés":::
+
+Az Azure Sentinel olyan összetevőket mutat be, amelyek segítenek a biztonsági elemzők számára, hogy egyértelmű képet kapjanak a rendellenes tevékenységekről a kontextusban, valamint a felhasználó alapkonfigurációjának profiljához képest. A felhasználó (vagy egy gazdagép vagy egy címe) által végrehajtott műveleteket a rendszer kontextus szerint értékeli ki, ahol a "true" (igaz) érték egy azonosított rendellenességet jelez:
 - földrajzi helyeken, eszközökön és környezeteken keresztül.
 - az idő-és gyakorisági horizontokon (a felhasználó saját előzményeihez képest).
 - a társak viselkedéséhez képest.
 - a szervezet viselkedéséhez képest.
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="Entitás viselkedésének elemzési architektúrája":::
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="Entitás környezete":::
 
 
 ### <a name="scoring"></a>Pontozás
@@ -118,7 +120,7 @@ Az entitások lapjai három részből állnak:
 
 ### <a name="the-timeline"></a>Az idősor
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="Entitás viselkedésének elemzési architektúrája":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="Entitás lapok idővonala":::
 
 Az idősor az entitások oldalának az Azure Sentinelben való viselkedésének elemzéséhez való hozzájárulásának jelentős részét képezi. Egy olyan történetet mutat be az entitásokkal kapcsolatos eseményekről, amelyek segítenek megérteni az entitás tevékenységeit egy adott időszakon belül.
 
@@ -146,7 +148,7 @@ Az entitás-elemzések a Microsoft biztonsági kutatói által meghatározott le
 
 Az entitások lapjai több használati forgatókönyv részét képezik, és az incidensek kezelése, a vizsgálati gráf, a könyvjelzők vagy közvetlenül **az entitás-** keresési oldalon, az Azure Sentinel főmenüjében is elérhetők.
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Entitás viselkedésének elemzési architektúrája":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Entitás lap használati esetei":::
 
 
 ## <a name="data-schema"></a>Adatséma
@@ -195,7 +197,7 @@ A felhasználói társak metaadatai fontos kontextust biztosítanak a fenyegeté
 
 Az Azure Sentinel kiszámítja és rangsorolja a felhasználó társait a felhasználó Azure AD biztonsági csoportjának tagsága, levelezési listája és satöbbi alapján, valamint a 1-20-as számú társat a **UserPeerAnalytics** táblában tárolja. Az alábbi képernyőképen látható a UserPeerAnalytics tábla sémája, és a felhasználó Kendall Collins első nyolc rangsorolt társa jelenik meg. Az Azure Sentinel a *Frequency-inverz Document Frequency* (TF-IDF) algoritmust használja a besorolás kiszámításához: minél kisebb a csoport, annál nagyobb a súly. 
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="Entitás viselkedésének elemzési architektúrája":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="Képernyőfelvétel a felhasználói társak metaadat-táblájáról":::
 
 A felhasználói társak metaadatainak megjelenítéséhez használhatja az Azure Sentinel GitHub-adattárában elérhető [Jupyter notebookot](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) . A jegyzetfüzet használatával kapcsolatos részletes utasításokért tekintse meg az [interaktív elemzés – felhasználói biztonsági metaadatokat](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) tartalmazó jegyzetfüzetet.
 
@@ -203,9 +205,9 @@ A felhasználói társak metaadatainak megjelenítéséhez használhatja az Azur
 
 Az engedélyek elemzése segít meghatározni, hogy egy támadó milyen hatással lehet egy szervezeti eszköz veszélyeztetése. Ez a hatás az objektum "Blast RADIUS" néven is ismert. A biztonsági elemzők ezeket az információkat a nyomozások és az incidensek kezelésének rangsorolására használhatják.
 
-Az Azure Sentinel meghatározza az adott felhasználó által az Azure-erőforrásokhoz biztosított közvetlen és tranzitív hozzáférési jogokat az Azure-előfizetések kiértékelésével, amelyet a felhasználó közvetlenül vagy csoportokon vagy egyszerű szolgáltatásokon keresztül érhet el. Ezt az információt, valamint a felhasználó Azure AD biztonsági csoportjának tagságának teljes listáját a **UserAccessAnalytics** táblában tárolja a rendszer. Az alábbi képernyőképen egy minta sor látható az Alex Johnson felhasználója számára a UserAccessAnalytics táblában. A **forrásoldali entitás** a felhasználói vagy egyszerű szolgáltatásnév, a **célként megadott entitás** pedig az az erőforrás, amelyhez a forrás entitás hozzáfér. A **hozzáférési szint** és a **hozzáférési típus** értékei a célként megadott entitás hozzáférés-vezérlési modelljétől függenek. Láthatja, hogy Alex közreműködői hozzáféréssel rendelkezik az Azure-előfizetés *contoso Hotels-bérlőhöz* . Az előfizetés hozzáférés-vezérlési modellje RBAC.   
+Az Azure Sentinel meghatározza az adott felhasználó által az Azure-erőforrásokhoz biztosított közvetlen és tranzitív hozzáférési jogokat az Azure-előfizetések kiértékelésével, amelyet a felhasználó közvetlenül vagy csoportokon vagy egyszerű szolgáltatásokon keresztül érhet el. Ezt az információt, valamint a felhasználó Azure AD biztonsági csoportjának tagságának teljes listáját a **UserAccessAnalytics** táblában tárolja a rendszer. Az alábbi képernyőképen egy minta sor látható az Alex Johnson felhasználója számára a UserAccessAnalytics táblában. A **forrásoldali entitás** a felhasználói vagy egyszerű szolgáltatásnév, a **célként megadott entitás** pedig az az erőforrás, amelyhez a forrás entitás hozzáfér. A **hozzáférési szint** és a **hozzáférési típus** értékei a célként megadott entitás hozzáférés-vezérlési modelljétől függenek. Láthatja, hogy Alex közreműködői hozzáféréssel rendelkezik az Azure-előfizetés *contoso Hotels-bérlőhöz*. Az előfizetés hozzáférés-vezérlési modellje RBAC.   
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Entitás viselkedésének elemzési architektúrája":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Képernyőfelvétel a felhasználói hozzáférés elemzési táblázatáról":::
 
 A [Jupyter notebookot](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) (a fent említett jegyzetfüzetet) az Azure Sentinel GitHub-adattárból is használhatja az engedélyek elemzési adatainak megjelenítéséhez. A jegyzetfüzet használatával kapcsolatos részletes utasításokért tekintse meg az [interaktív elemzés – felhasználói biztonsági metaadatokat](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) tartalmazó jegyzetfüzetet.
 

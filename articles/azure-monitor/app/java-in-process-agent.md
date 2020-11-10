@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights Java
 description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz programkód módosítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 2459f80746d95234701319bbb5142c8e540890d3
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: f7cda0f9389f0b628aca82dd6c65acba140e739b
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379769"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426833"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>A Java Code unapplication monitoring Azure monitor Application Insights
 
@@ -16,7 +16,7 @@ A Java kód nélküli alkalmazások figyelése az egyszerűségről szól – a 
 
  A Java-ügynök bármilyen környezetben működik, és lehetővé teszi a Java-alkalmazások figyelését. Más szóval, függetlenül attól, hogy a Java-alkalmazásait virtuális gépeken, a helyszínen, az AK-ban, Windowson, Linuxon futtatja, a Java 3,0-ügynök fogja figyelni az alkalmazást.
 
-Az Application Insights Java SDK-nak az alkalmazáshoz való hozzáadása már nem szükséges, mivel az 3,0-ügynök a kérelmeket, a függőségeket és a naplókat saját maga gyűjti.
+Az Application Insights Java SDK hozzáadása az alkalmazáshoz már nem szükséges, mivel az 3,0-ügynök automatikusan gyűjti a kérelmeket, a függőségeket és a naplókat.
 
 Továbbra is küldhet egyéni telemetria az alkalmazásból. Az 3,0-ügynök nyomon követheti és korrelálhatja azt az összes automatikusan összegyűjtött telemetria együtt.
 
@@ -82,7 +82,7 @@ A `applicationinsights.json` fájlban emellett a következőket is konfigurálha
 * Mintavételezés
 * JMX metrikák
 * Egyéni dimenziók
-* Telemetriai feldolgozók
+* Telemetria processzorok (előzetes verzió)
 * Automatikusan összegyűjtött naplózás
 * Automatikusan összegyűjtött mérőműszer-metrikák (beleértve a Spring boot indítószerkezet metrikáit)
 * Szívverés
@@ -91,7 +91,7 @@ A `applicationinsights.json` fájlban emellett a következőket is konfigurálha
 
 További részletek: [konfigurációs beállítások](./java-standalone-config.md) .
 
-## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Az újragyűjtött kérelmek, függőségek, naplók és metrikák
+## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>Automatikusan összegyűjtött kérelmek, függőségek, naplók és metrikák
 
 ### <a name="requests"></a>Kérelmek
 
@@ -141,13 +141,13 @@ Az alábbi táblázat a jelenleg támogatott egyéni telemetria-típusokat jelen
 
 |                     | Mikrométer | Log4j, logback, JUL | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Egyéni események**   |            |                     |  Igen    |
-| **Egyéni metrikák**  |  Igen       |                     |  Igen    |
-| **Függőségek**    |            |                     |  Igen    |
-| **Kivételek**      |            |  Igen                |  Igen    |
-| **Lapok nézetei**      |            |                     |  Igen    |
-| **Kérelmek**        |            |                     |  Igen    |
-| **Hívásláncok**          |            |  Igen                |  Igen    |
+| **Egyéni események**   |            |                     |  Yes    |
+| **Egyéni metrikák**  |  Igen       |                     |  Yes    |
+| **Függőségek**    |            |                     |  Yes    |
+| **Kivételek**      |            |  Igen                |  Yes    |
+| **Lapok nézetei**      |            |                     |  Yes    |
+| **Kérelmek**        |            |                     |  Yes    |
+| **Hívásláncok**          |            |  Igen                |  Yes    |
 
 Jelenleg nem tervezzük Application Insights 3,0-es SDK kiadását.
 

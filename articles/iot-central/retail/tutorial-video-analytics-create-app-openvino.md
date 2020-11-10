@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: e16342b4b46a189a5a5c4c0554fb2d870c9cdcac
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: af967c58cdeb2c750178141193a711a66af7477c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877186"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426741"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>Oktatóanyag: video Analytics-objektumok és mozgásészlelési alkalmazások létrehozása az Azure IoT Centralban (OpenVINO &trade; )
 
@@ -109,10 +109,10 @@ Ez az oktatóanyag konfigurálja a megoldást arra, hogy a OpenVINO &trade; modu
 
 ### <a name="replace-the-manifest"></a>A jegyzékfájl cseréje
 
-Az **LVA Edge-átjáró** lapon válassza a **+ jegyzékfájl cseréje**lehetőséget.
+Az **LVA Edge Gateway v2** lapon válassza a **+ jegyzékfájl cseréje** lehetőséget.
 
 :::image type="content" source="./media/tutorial-video-analytics-create-app-openvino/replace-manifest.png" alt-text="Jegyzékfájl cseréje":::
 
-Navigáljon a *LVA* mappára, és válassza ki a korábban szerkesztett *deployment.openvino.amd64.jsa* jegyzékfájlban. Válassza a **Feltöltés** lehetőséget. Az ellenőrzés befejezésekor válassza a **replace (csere**) lehetőséget.
+Navigáljon a *LVA* mappára, és válassza ki a korábban szerkesztett *deployment.openvino.amd64.jsa* jegyzékfájlban. Válassza a **Feltöltés** lehetőséget. Az ellenőrzés befejezésekor válassza a **replace (csere** ) lehetőséget.
 
 [!INCLUDE [iot-central-video-analytics-part4](../../../includes/iot-central-video-analytics-part4.md)]

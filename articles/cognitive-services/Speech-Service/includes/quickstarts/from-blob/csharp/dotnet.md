@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 05cf63f741e287112ace76a5249ae2ca8d01f34f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b0e8b38f4760bf9e9adf8d26dfd6b7a15c904eab
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376557"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425025"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -19,7 +19,7 @@ Az első lépések előtt ügyeljen a következőre:
 > [!div class="checklist"]
 > * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programmming-language-csharp)
 > * [Azure Speech-erőforrás létrehozása](../../../../overview.md#try-the-speech-service-for-free)
-> * [Forrásfájl feltöltése Azure-blobba](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Forrásfájl feltöltése Azure-blobba](../../../../../../storage/blobs/storage-quickstart-blobs-portal.md)
 
 ## <a name="open-your-project-in-visual-studio"></a>A projekt megnyitása a Visual Studióban
 
@@ -32,7 +32,7 @@ Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visu
 
 1. A Megoldáskezelő kattintson a jobb gombbal a **HelloWorld** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget a NuGet csomagkezelő megjelenítéséhez.
 1. A jobb felső sarokban keresse meg a **csomag forrása** legördülő listát, és ellenőrizze, hogy be van-e **`nuget.org`** jelölve.
-1. A bal felső sarokban válassza a **Tallózás**lehetőséget.
+1. A bal felső sarokban válassza a **Tallózás** lehetőséget.
 1. A keresőmezőbe írja be a következőt: *newtonsoft.js* be, majd válassza az **ENTER billentyűt**.
 1. A keresési eredmények közül válassza ki a [**Newtonsoft.Jsa**](https://www.nuget.org/packages/Newtonsoft.Json) csomagban, majd válassza a **telepítés** lehetőséget a legújabb stabil verzió telepítéséhez.
 1. A telepítés elindításához fogadja el az összes szerződést és licencet.
@@ -552,10 +552,10 @@ namespace BatchClient
 
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build**  >  **megoldás**létrehozása lehetőséget.
-2. **Indítsa** el az alkalmazást – a menüsávban **válassza a hibakeresés**  >  **indítása** vagy az **F5**billentyűt.
+1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build**  >  **megoldás** létrehozása lehetőséget.
+2. **Indítsa** el az alkalmazást – a menüsávban **válassza a hibakeresés**  >  **indítása** vagy az **F5** billentyűt.
 3. **Felismerés elindítása** – felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

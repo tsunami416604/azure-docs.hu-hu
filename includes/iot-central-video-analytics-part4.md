@@ -8,88 +8,50 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 164f5803b6e9e62447423735e98f6e4c36c73f13
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: de916fcbe0623185821e2f5da15a8f9cf71dfd4e
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877189"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426777"
 ---
-### <a name="add-relationships"></a>Kapcsolatok hozzáadása
-
-Az **LVA Edge Gateway** -eszköz sablonjában, a **modulok/LVA Edge-átjáró modul**alatt válassza a **kapcsolatok**lehetőséget. Válassza a **+ kapcsolat hozzáadása** lehetőséget, és adja hozzá a következő két kapcsolatot:
-
-|Megjelenítendő név               |Name (Név)          |Cél |
-|-------------------------- |------------- |------ |
-|LVA Edge mozgásérzékelő   |Alapértelmezett használata   |LVA Edge mozgásérzékelő eszköz |
-|LVA Edge-objektum detektora   |Alapértelmezett használata   |LVA Edge Object detektor eszköz |
-
-Kattintson a **Mentés** gombra.
-
-:::image type="content" source="media/iot-central-video-analytics-part4/relationships.png" alt-text="Kapcsolatok hozzáadása":::
-
-### <a name="add-views"></a>Nézetek hozzáadása
-
-Az **LVA Edge Gateway** eszköz sablonja nem tartalmaz nézet-definíciókat.
-
-Nézet hozzáadása az eszköz sablonhoz:
-
-1. Az **LVA Edge Gateway** -eszköz sablonjában navigáljon a **nézetek** elemre, és válassza ki az **eszköz megjelenítését** tartalmazó csempét.
-
-1. A nézet neveként adja meg az *LVA Edge-átjáró eszközét* .
-
-1. Adja hozzá a következő csempéket a nézethez:
-
-    * Az **eszköz adatai** tulajdonságokkal rendelkező csempék: **eszköz modell**, **gyártó**, **operációs rendszer**, **processzor architektúrája**, **szoftver verziója**, **teljes memória**és **teljes tárterület**.
-    * Egy vonalas diagram a **szabad memóriával** és a **rendszer szívverési** telemetria értékeivel.
-    * Egy esemény-előzmény csempe a következő eseményekkel: **kamera létrehozása**, **kamera törlése**, **modul újraindítása**, modul **elindítva**, **modul leállítva**.
-    * Egy 2x1 utolsó ismert érték csempe, amely a **IoT Central ügyfél állapotának** telemetria mutatja.
-    * Egy 2x1 utolsó ismert érték csempe, amely a **modul állapotának** telemetria mutatja.
-    * Egy 1x1 utolsó ismert érték csempe, amely a **rendszer szívverésének** telemetria jeleníti meg.
-    * Egy 1x1 utolsó ismert érték csempe, amely a **csatlakoztatott kamerák** telemetria jeleníti meg.
-
-    :::image type="content" source="media/iot-central-video-analytics-part4/gateway-dashboard.png" alt-text="Kapcsolatok hozzáadása":::
-
-1. Kattintson a **Mentés** gombra.
-
 ### <a name="publish-the-device-template"></a>Az eszközsablon közzététele
 
 Ahhoz, hogy hozzá lehessen adni egy eszközt az alkalmazáshoz, közzé kell tennie az eszköz sablonját:
 
-1. Az **LVA Edge Gateway** -eszköz sablonjában válassza a **Közzététel**lehetőséget.
+1. Az **LVA Edge Gateway v2** -eszköz sablonjában válassza a **Közzététel** lehetőséget.
 
-1. Az **eszköz sablonjának közzététele az alkalmazás** lapon válassza a **Közzététel**lehetőséget.
+1. Az **eszköz sablonjának közzététele az alkalmazás** lapon válassza a **Közzététel** lehetőséget.
 
-Az **LVA Edge-átjáró** mostantól eszköz típusaként használható az alkalmazás **eszközök** lapján.
+Az **LVA Edge Gateway v2** mostantól eszköz típusaként használható az alkalmazás **eszközök** lapján.
 
-## <a name="add-a-gateway-device"></a>Átjáró-eszköz hozzáadása
+## <a name="migrate-the-gateway-device"></a>Átjáró eszköz migrálása
 
-**LVA Edge Gateway** -eszköz hozzáadása az alkalmazáshoz:
+A meglévő **Gateway-001-** eszköz az **LVA Edge Gateway** -eszköz sablonját használja. Az új üzembe helyezési jegyzékfájl használatához telepítse át az eszközt az új eszköz sablonba:
 
-1. Navigáljon az **eszközök** lapra, és válassza ki az **LVA Edge Gateway** -eszköz sablonját.
+Az **átjáró-001** eszköz áttelepíthető:
 
-1. Válassza a **+ Új** lehetőséget.
+1. Navigáljon az **eszközök** lapra, és válassza ki az **átjáró-001** eszközt, hogy kiemelje azt a listában.
 
-1. Az **új eszköz létrehozása** párbeszédpanelen módosítsa az eszköz nevét a *LVA Gateway 001*értékre, és módosítsa az eszköz azonosítóját a *LVA-Gateway-001*értékre.
+1. Válassza a **Migrate** (Migrálás) lehetőséget. Ha az **áttelepítési** ikon nem látható, válassza a **...** lehetőséget a további beállítások megjelenítéséhez.
 
-    > [!NOTE]
-    > Az eszköz AZONOSÍTÓjának egyedinek kell lennie az alkalmazásban.
+    :::image type="content" source="media/iot-central-video-analytics-part4/migrate-device.png" alt-text="Az átjáró eszköz migrálása egy új verzióra":::
 
-1. Kattintson a **Létrehozás** gombra.
+1. Az **áttelepítés** párbeszédpanelen válassza az **LVA Edge Gateway v2** elemet, majd kattintson az **áttelepítés** elemre.
 
-Az eszköz állapota **regisztrálva**van.
+Néhány másodperc elteltével az áttelepítés befejeződik. Az eszköz mostantól az **LVA Edge Gateway v2** -eszköz sablonját használja a testreszabott telepítési jegyzékfájl használatával.
 
 ### <a name="get-the-device-credentials"></a>Az eszköz hitelesítő adatainak beolvasása
 
 Szüksége lesz a hitelesítő adatokra, amelyek lehetővé teszik az eszköz számára a IoT Central alkalmazáshoz való kapcsolódást. Az eszköz hitelesítő adatainak lekérése:
 
-1. Az **eszközök** lapon válassza ki a létrehozott **LVA-Gateway-001** eszközt.
+1. Az **eszközök** lapon válassza ki az **átjáró-001** eszközt.
 
-1. Kattintson a **Csatlakozás** gombra.
+1. Válassza a **Kapcsolódás** lehetőséget.
 
-1. Az **eszköz csatlakoztatása** lapon jegyezze fel az **azonosító hatókörének** *scratchpad.txt* fájlját, az **eszköz azonosítóját**és az eszköz **elsődleges kulcsát**. Ezeket az értékeket később használhatja.
+1. Az **eszköz csatlakoztatása** lapon jegyezze fel az **azonosító hatókörének** *scratchpad.txt* fájlját, az **eszköz azonosítóját** és az eszköz **elsődleges kulcsát**. Ezeket az értékeket később használhatja.
 
-1. Győződjön meg arról, hogy a kapcsolati módszer a **közös hozzáférési aláírásra**van beállítva.
+1. Győződjön meg arról, hogy a kapcsolati módszer a **közös hozzáférési aláírásra** van beállítva.
 
 1. Válassza a **Bezárás** lehetőséget.
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/09/2020
 ms.author: v-jawe
-ms.openlocfilehash: 029cb1e59876eb01c609ef8b7ba0412ed35a2a1b
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 8a877e1773431053c5ad7344209076cb868a0ee3
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940743"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425241"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan alakíthat át szöveget beszédre a Speech Service és a cURL használatával.
 
@@ -26,7 +26,7 @@ A parancssorban futtassa a következő parancsot. A következő értékeket kell
 - A Speech Service-régió.
 
 Előfordulhat, hogy módosítani szeretné a következő értékeket is.
-- A `X-Microsoft-OutputFormat` fejléc értéke, amely a hangkimenet formátumát vezérli. A támogatott hangkimeneti formátumok listáját a [szöveg-beszéd REST API referenciában](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs)találja.
+- A `X-Microsoft-OutputFormat` fejléc értéke, amely a hangkimenet formátumát vezérli. A támogatott hangkimeneti formátumok listáját a [szöveg-beszéd REST API referenciában](../../../rest-text-to-speech.md#audio-outputs)találja.
 - A kimeneti hang. A beszédfelismerési végponthoz elérhető hangok listájának megtekintéséhez tekintse meg a következő szakaszt.
 - A kimeneti fájl. Ebben a példában a kiszolgáló válaszát egy nevű fájlba irányítjuk `output.wav` .
 

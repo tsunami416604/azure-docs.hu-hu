@@ -3,12 +3,12 @@ title: PowerShell-függvény létrehozása a Visual Studio Code-Azure Functions 
 description: Ismerje meg, hogyan hozhat létre PowerShell-függvényeket, és hogyan teheti közzé a helyi projektet a Azure Functions kiszolgáló nélküli üzemeltetésére a Visual Studio Code Azure Functions bővítménnyel.
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 585339f87c89b0fa5a0f50dbef155b0dcffda68e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 73c2de36d3696356289c72d08c29c3870dc91601
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425034"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427394"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>Rövid útmutató: PowerShell-függvény létrehozása az Azure-ban a Visual Studio Code használatával
 
@@ -31,7 +31,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következő kö
 
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ Mind a [.net core 3,1](https://www.microsoft.com/net/download) , mind a [.net Core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.2)  
++ Mind a [.net core 3,1](https://www.microsoft.com/net/download) , mind a [.net Core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.1)  
 
 + [Visual Studio Code](https://code.visualstudio.com/) az egyik [támogatott platformon](https://code.visualstudio.com/docs/supporting/requirements#_platforms).    
 
@@ -78,7 +78,7 @@ Miután meggyőződött róla, hogy a függvény megfelelően fut a helyi szám�
 
 [!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio Code segítéségével létrehozott egy egyszerű, HTTP-eseményindítóval aktivált függvényt tartalmazó függvényalkalmazást. A következő cikkben kibonthatja ezt a függvényt egy kimeneti kötés hozzáadásával. Ez a kötés a HTTP-kérelemből írja be a karakterláncot egy Azure Queue Storage-várólistában lévő üzenetbe. 
 

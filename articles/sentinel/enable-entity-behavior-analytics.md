@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2020
 ms.author: yelevin
-ms.openlocfilehash: b769703f7e7054571a3b65a021c0123d8ae07078
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 140228a65be166bc172e81267c4449b49621e02c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148235"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425779"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>A felhasználó és az entitás viselkedés-elemzésének (UEBA) engedélyezése az Azure Sentinelben 
 
 > [!IMPORTANT]
 >
-> - A UEBA szolgáltatás mostantól **általánosan elérhető** a következő Azure Sentinel földrajzi területeken és régiókban:
+> - A UEBA-és entitás-lapok szolgáltatásai mostantól **általánosan elérhetők** a következő Azure Sentinel földrajzi területeken és régiókban:
 >    - Földrajz Egyesült Államok
 >    - Nyugat-Európa régiója
 >    - Ausztráliai földrajzi hely
 >
-> - Ez a szolgáltatás minden más földrajzi helyen és régióban továbbra is a **nyilvános előzetes** verzióban érhető el, és szolgáltatói szerződés nélkül van megadva. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> - Az összes többi földrajzi és régió esetében ezek a funkciók a jelenleg **előzetes** verzióban maradnak. Tekintse meg a kiegészítő [használati feltételeket a Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verziókra vonatkozó további jogi feltételekhez, amelyek olyan Azure-szolgáltatásokra vonatkoznak, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelent meg általánosan elérhetővé.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
