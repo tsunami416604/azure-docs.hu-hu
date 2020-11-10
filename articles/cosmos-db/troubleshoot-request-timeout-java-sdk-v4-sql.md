@@ -8,12 +8,12 @@ ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 442d6638e88462b1dc87e9321dc631fe0a4f3a10
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a805300ac62d0627c9b06188c9764a6887947afe
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340079"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411286"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Az Azure Cosmos DB Java v4 SDK-kérelmek időtúllépési kivételeinek diagnosztizálása és megoldása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,6 +22,9 @@ A HTTP 408 hiba akkor fordul elő, ha az SDK nem tudta befejezni a kérelmet az 
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 Az alábbi lista a kérelmek időtúllépési kivételeinek ismert okait és megoldásait tartalmazza.
+
+### <a name="existing-issues"></a>Meglévő problémák
+Ha úgy látja, hogy a kérések hosszabb ideig tartanak, vagy gyakrabban jelentkeznek az időzítéssel, frissítse a Java v4 SDK-t a legújabb verzióra. Megjegyzés: javasoljuk, hogy a 4.7.0 és újabb verziót használja. További részletekért tekintse meg a [Java v4 SDK kibocsátási megjegyzéseit](sql-api-sdk-java-v4.md) .
 
 ### <a name="high-cpu-utilization"></a>Magas CPU-kihasználtság
 A leggyakoribb eset a processzor magas kihasználtsága. Az optimális késés érdekében a CPU-használatnak nagyjából 40%-nak kell lennie. A maximális (nem átlagos) CPU-kihasználtság figyeléséhez használja a 10 másodperces értéket. A CPU-tüskék gyakoribbak a több partíciós lekérdezések esetében, ahol több kapcsolat is lehetséges egyetlen lekérdezéshez.

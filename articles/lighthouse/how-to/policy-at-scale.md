@@ -1,14 +1,14 @@
 ---
 title: Azure Policy üzembe helyezése a delegált előfizetések számára nagy léptékben
 description: Ismerje meg, hogy az Azure Lighthouse hogyan helyezheti üzembe a házirend-definíciót és a házirend-hozzárendelést több bérlő között.
-ms.date: 08/12/2020
+ms.date: 11/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 27d32a68c1a3806e514533efbae581aa97bc6d0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5af938c61ad3e42e36360a15c6011b54fa1e823d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167283"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412068"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Policy üzembe helyezése a delegált előfizetések számára nagy léptékben
 
@@ -64,7 +64,7 @@ New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -
                      -Verbose                  
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült, távolítsa el az üzemelő példány által létrehozott házirend-definíciót és hozzárendelést.
 
@@ -91,7 +91,11 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+> [!NOTE]
+> Míg a házirendek több bérlőn is üzembe helyezhetők, jelenleg nem tekintheti meg a nem megfelelő erőforrások [megfelelőségi adatait](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) ezekben a bérlők között.
+
+## <a name="next-steps"></a>További lépések
 
 - A [Azure Policy](../../governance/policy/index.yml)megismerése.
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
+- Megtudhatja, hogyan [telepíthet olyan házirendet, amely szervizelhető](deploy-policy-remediation.md) egy delegált előfizetésen belül.

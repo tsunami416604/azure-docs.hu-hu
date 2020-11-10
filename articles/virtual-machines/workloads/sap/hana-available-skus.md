@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6911128cfbaa87229a09bcea0d655c6110c2d208
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08872b95c4cff3c261a545f117cc4e6bf24e15a5
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259781"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411473"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>Rendelkezésre álló SKU-a HANA nagyméretű példányaihoz
 
@@ -48,41 +48,41 @@ Az elérhető Azure-beli nagyméretű példányok listája, például a követke
 
 
 
-| SAP HANA tanúsított | Modell | Teljes memória | Memória DRAM | Memória Optane | Storage | Rendelkezésre állás |
+| SAP HANA tanúsított | Modellezés | Teljes memória | Memória DRAM | Memória Optane | Storage | Rendelkezésre állás |
 | --- | --- | --- | --- | --- | --- | --- |
-| IGEN <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2185), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2265) | SAP HANA az Azure S96<br /> – 2 x Intel® Xeon® processzor E7 – 8890 v4 <br /> 48 CPU-magok és 96 CPU-szálak |  768 GB | 768 GB | --- | 3,0 TB | Elérhető |
-| IGEN <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2186), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2269) | SAP HANA az Azure S224<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak |  3,0 TB | 3,0 TB | --- | 6,3 TB | Elérhető |
-| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2297) | SAP HANA az Azure S224m<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak |  6,0 TB | 6,0 TB | --- | 10,5 TB | Elérhető |
-| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2381) | SAP HANA az Azure S224om<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak | 6,0 TB |  3,0 TB |  3,0 TB | 10,5 TB | Elérhető |
-| NO | SAP HANA az Azure S224oo<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak | 4,5 TB |  1,5 TB |  3,0 TB | 8,4 TB | Elérhető |
-| NO | SAP HANA az Azure S224ooo<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak | 7,5 TB |  1,5 TB |  6,0 TB | 12,7 TB | Elérhető |
-| NO | SAP HANA az Azure S224oom<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak | 9,0 TB |  3,0 TB |  6,0 TB | 14,8 TB | Elérhető |
-| IGEN <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1983), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2268) | SAP HANA az Azure S384<br /> – 8 x Intel® Xeon® processzor E7 – 8890 v4<br /> 192 CPU-magok és 384 CPU-szálak |  4,0 TB | 4,0 TB | --- | 16 TB | Elérhető |
-| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2080) | SAP HANA az Azure S384m<br /> – 8 x Intel® Xeon® processzor E7 – 8890 v4<br /> 192 CPU-magok és 384 CPU-szálak |  6,0 TB | 6,0 TB | --- | 18 TB |  Elérhető  |
-| IGEN <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1984), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2267) | SAP HANA az Azure S384xm<br /> – 8 x Intel® Xeon® processzor E7 – 8890 v4<br /> 192 CPU-magok és 384 CPU-szálak |  8,0 TB | 8,0 TB | --- | 28 TB | Elérhető |
-| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2378) | SAP HANA az Azure S448<br /> – 8 x Intel® Xeon® Platinum 8276 processzor <br /> 224 CPU-magok és 448 CPU-szálak | 6,0 TB |  6,0 TB |  --- | 10,5 TB | Elérhető (csak Rev 4 esetén) |
-| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2377) | SAP HANA az Azure S448m<br /> – 8 x Intel® Xeon® Platinum 8276 processzor <br /> 224 CPU-magok és 448 CPU-szálak | 12,0 TB |  12,0 TB |  --- | 18,9 TB | Elérhető (csak Rev 4 esetén) |
-| NO | SAP HANA az Azure S448oo<br /> – 8 x Intel® Xeon® Platinum 8276 processzor <br /> 224 CPU-magok és 448 CPU-szálak | 9,0 TB |  3,0 TB |  6,0 TB | 14,8 TB  | Elérhető (csak Rev 4 esetén) |
-| NO | SAP HANA az Azure S448om<br /> – 8 x Intel® Xeon® Platinum 8276 processzor <br /> 224 CPU-magok és 448 CPU-szálak | 12,0 TB |  6,0 TB |  6,0 TB | 18,9 TB  | Elérhető (csak Rev 4 esetén) |
-| NO | SAP HANA az Azure S448ooo<br /> – 8 x Intel® Xeon® Platinum 8276 processzor <br /> 224 CPU-magok és 448 CPU-szálak | 15,0 TB |  3,0 TB |  12,0 TB | 23,2 TB  | Elérhető (csak Rev 4 esetén) |
-| NO | SAP HANA az Azure S448oom<br /> – 8 x Intel® Xeon® Platinum 8276 processzor <br /> 224 CPU-magok és 448 CPU-szálak | 18,0 TB |  6,0 TB |  12,0 TB | 27,4 TB  | Elérhető (csak Rev 4 esetén) |
-| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2049) | SAP HANA az Azure S576m<br /> – 12 x Intel® Xeon® processzor E7 – 8890 v4<br /> 288 CPU-magok és 576 CPU-szálak |  12,0 TB | 12,0 TB | --- | 28 TB | Elérhető (csak Rev 4 esetén) |
-| NO | SAP HANA az Azure S576xm<br /> – 12 x Intel® Xeon® processzor E7 – 8890 v4<br /> 288 CPU-magok és 576 CPU-szálak |  18,0 TB | 18.0 | --- |  41 TB | Elérhető |
-| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2380) | SAP HANA az Azure S672<br /> – 12 x Intel® Xeon® Platinum 8276 processzor <br /> 336 CPU-magok és 672 CPU-szálak | 9,0 TB |  9,0 TB |  --- | 14,7 TB | Elérhető (csak Rev 4 esetén) |
-| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2379) | SAP HANA az Azure S672m<br /> – 12 x Intel® Xeon® Platinum 8276 processzor <br /> 336 CPU-magok és 672 CPU-szálak | 18,0 TB |  18,0 TB |  --- | 27,4 TB | Elérhető (csak Rev 4 esetén) |
-| NO | SAP HANA az Azure S672oo<br /> – 12 x Intel® Xeon® Platinum 8276 processzor <br /> 336 CPU-magok és 672 CPU-szálak | 13,5 TB |  4,5 TB |  9,0 TB | 21,1 TB  | Elérhető (csak Rev 4 esetén) |
-| NO | SAP HANA az Azure S672om<br /> – 12 x Intel® Xeon® Platinum 8276 processzor <br /> 336 CPU-magok és 672 CPU-szálak | 18,0 TB |  9,0 TB |  9,0 TB | 27,4 TB  | Elérhető (csak Rev 4 esetén) |
-| NO | SAP HANA az Azure S672ooo<br /> – 12 x Intel® Xeon® Platinum 8276 processzor <br /> 336 CPU-magok és 672 CPU-szálak | 22,5 TB |  4,5 TB |  18,0 TB | 33,7 TB  | Elérhető (csak Rev 4 esetén) |
-| NO | SAP HANA az Azure S672oom<br /> – 12 x Intel® Xeon® Platinum 8276 processzor <br /> 336 CPU-magok és 672 CPU-szálak | 27,0 TB |  9,0 TB |  18,0 TB | 40,0 TB  | Elérhető (csak Rev 4 esetén) |
-| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1985) | SAP HANA az Azure S768m<br /> – 16 x Intel® Xeon® processzor E7 – 8890 v4<br /> 384 CPU-magok és 768 CPU-szálak |  16,0 TB | 16,0 TB | -- | 36 TB | Elérhető |
-| NO | SAP HANA az Azure S768xm<br /> – 16 x Intel® Xeon® processzor E7 – 8890 v4<br /> 384 CPU-magok és 768 CPU-szálak |  24,0 TB | 24,0 TB | --- | 56 TB | Elérhető |
-|  IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2376)  | SAP HANA az Azure S896<br /> – 16 x Intel® Xeon® Platinum 8276 processzor <br /> 448 CPU-magok és 896 CPU-szálak | 12,0 TB |  12,0 TB |  --- | 18,9 TB | Elérhető (csak Rev 4 esetén) |
-| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2328) | SAP HANA az Azure S896m<br /> – 16 x Intel® Xeon® Platinum 8276 processzor <br /> 448 CPU-magok és 896 CPU-szálak | 24,0 TB | 24,0 TB | -- | 35,8 TB | Elérhető |
-| NO | SAP HANA az Azure S896oo<br /> – 16 x Intel® Xeon® Platinum 8276 processzor <br /> 448 CPU-magok és 896 CPU-szálak | 18,0 TB |  6,0 TB |  12,0 TB | 27,4 TB  | Elérhető (csak Rev 4 esetén) |
-| NO | SAP HANA az Azure S896om<br /> – 16 x Intel® Xeon® Platinum 8276 processzor <br /> 448 CPU-magok és 896 CPU-szálak | 24,0 TB |  12,0 TB |  12,0 TB | 35,8 TB  | Elérhető (csak Rev 4 esetén) |
-| NO | SAP HANA az Azure S896ooo<br /> – 16 x Intel® Xeon® Platinum 8276 processzor <br /> 448 CPU-magok és 896 CPU-szálak | 30,0 TB |  6,0 TB |  24,0 TB | 44,3 TB  | Elérhető (csak Rev 4 esetén) |
-| NO | SAP HANA az Azure S896oom<br /> – 16 x Intel® Xeon® Platinum 8276 processzor <br /> 448 CPU-magok és 896 CPU-szálak | 36,0 TB |  12,0 TB |  24,0 TB | 52,7 TB  | Elérhető (csak Rev 4 esetén) |
-| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1986) | SAP HANA az Azure S960m<br /> – 20 x Intel® Xeon® processzor E7 – 8890 v4<br /> 480 CPU-magok és 960 CPU-szálak |  20,0 TB | 20,0 TB | -- | 46 TB | Elérhető (csak Rev 4 esetén) |
+| IGEN <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2185), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2265) | SAP HANA az Azure S96<br /> – 2 x Intel® Xeon® processzor E7 – 8890 v4 <br /> 48 CPU-magok és 96 CPU-szálak |  768 GB | 768 GB | --- | 3,0 TB | Elérhető |
+| IGEN <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2186), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2269) | SAP HANA az Azure S224<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak |  3,0 TB | 3,0 TB | --- | 6,3 TB | Elérhető |
+| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2297) | SAP HANA az Azure S224m<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak |  6,0 TB | 6,0 TB | --- | 10,5 TB | Elérhető |
+| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2381) | SAP HANA az Azure S224om<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak | 6,0 TB |  3,0 TB |  3,0 TB | 10,5 TB | Elérhető |
+| NO | SAP HANA az Azure S224oo<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak | 4,5 TB |  1,5 TB |  3,0 TB | 8,4 TB | Elérhető |
+| NO | SAP HANA az Azure S224ooo<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak | 7,5 TB |  1,5 TB |  6,0 TB | 12,7 TB | Elérhető |
+| NO | SAP HANA az Azure S224oom<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak | 9,0 TB |  3,0 TB |  6,0 TB | 14,8 TB | Elérhető |
+| IGEN <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1983), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2268) | SAP HANA az Azure S384<br /> – 8 x Intel® Xeon® processzor E7 – 8890 v4<br /> 192 CPU-magok és 384 CPU-szálak |  4,0 TB | 4,0 TB | --- | 16 TB | Elérhető |
+| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2080) | SAP HANA az Azure S384m<br /> – 8 x Intel® Xeon® processzor E7 – 8890 v4<br /> 192 CPU-magok és 384 CPU-szálak |  6,0 TB | 6,0 TB | --- | 18 TB |  Elérhető  |
+| IGEN <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1984), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2267) | SAP HANA az Azure S384xm<br /> – 8 x Intel® Xeon® processzor E7 – 8890 v4<br /> 192 CPU-magok és 384 CPU-szálak |  8,0 TB | 8,0 TB | --- | 22 TB | Elérhető |
+| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2378) | SAP HANA az Azure S448<br /> – 8 x Intel® Xeon® Platinum 8276 processzor <br /> 224 CPU-magok és 448 CPU-szálak | 6,0 TB |  6,0 TB |  --- | 10,5 TB | Elérhető (csak Rev 4 esetén) |
+| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2377) | SAP HANA az Azure S448m<br /> – 8 x Intel® Xeon® Platinum 8276 processzor <br /> 224 CPU-magok és 448 CPU-szálak | 12,0 TB |  12,0 TB |  --- | 18,9 TB | Elérhető (csak Rev 4 esetén) |
+| NO | SAP HANA az Azure S448oo<br /> – 8 x Intel® Xeon® Platinum 8276 processzor <br /> 224 CPU-magok és 448 CPU-szálak | 9,0 TB |  3,0 TB |  6,0 TB | 14,8 TB  | Elérhető (csak Rev 4 esetén) |
+| NO | SAP HANA az Azure S448om<br /> – 8 x Intel® Xeon® Platinum 8276 processzor <br /> 224 CPU-magok és 448 CPU-szálak | 12,0 TB |  6,0 TB |  6,0 TB | 18,9 TB  | Elérhető (csak Rev 4 esetén) |
+| NO | SAP HANA az Azure S448ooo<br /> – 8 x Intel® Xeon® Platinum 8276 processzor <br /> 224 CPU-magok és 448 CPU-szálak | 15,0 TB |  3,0 TB |  12,0 TB | 23,2 TB  | Elérhető (csak Rev 4 esetén) |
+| NO | SAP HANA az Azure S448oom<br /> – 8 x Intel® Xeon® Platinum 8276 processzor <br /> 224 CPU-magok és 448 CPU-szálak | 18,0 TB |  6,0 TB |  12,0 TB | 27,4 TB  | Elérhető (csak Rev 4 esetén) |
+| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2049) | SAP HANA az Azure S576m<br /> – 12 x Intel® Xeon® processzor E7 – 8890 v4<br /> 288 CPU-magok és 576 CPU-szálak |  12,0 TB | 12,0 TB | --- | 28 TB | Elérhető (csak Rev 4 esetén) |
+| NO | SAP HANA az Azure S576xm<br /> – 12 x Intel® Xeon® processzor E7 – 8890 v4<br /> 288 CPU-magok és 576 CPU-szálak |  18,0 TB | 18.0 | --- |  41 TB | Elérhető |
+| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2380) | SAP HANA az Azure S672<br /> – 12 x Intel® Xeon® Platinum 8276 processzor <br /> 336 CPU-magok és 672 CPU-szálak | 9,0 TB |  9,0 TB |  --- | 14,7 TB | Elérhető (csak Rev 4 esetén) |
+| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2379) | SAP HANA az Azure S672m<br /> – 12 x Intel® Xeon® Platinum 8276 processzor <br /> 336 CPU-magok és 672 CPU-szálak | 18,0 TB |  18,0 TB |  --- | 27,4 TB | Elérhető (csak Rev 4 esetén) |
+| NO | SAP HANA az Azure S672oo<br /> – 12 x Intel® Xeon® Platinum 8276 processzor <br /> 336 CPU-magok és 672 CPU-szálak | 13,5 TB |  4,5 TB |  9,0 TB | 21,1 TB  | Elérhető (csak Rev 4 esetén) |
+| NO | SAP HANA az Azure S672om<br /> – 12 x Intel® Xeon® Platinum 8276 processzor <br /> 336 CPU-magok és 672 CPU-szálak | 18,0 TB |  9,0 TB |  9,0 TB | 27,4 TB  | Elérhető (csak Rev 4 esetén) |
+| NO | SAP HANA az Azure S672ooo<br /> – 12 x Intel® Xeon® Platinum 8276 processzor <br /> 336 CPU-magok és 672 CPU-szálak | 22,5 TB |  4,5 TB |  18,0 TB | 33,7 TB  | Elérhető (csak Rev 4 esetén) |
+| NO | SAP HANA az Azure S672oom<br /> – 12 x Intel® Xeon® Platinum 8276 processzor <br /> 336 CPU-magok és 672 CPU-szálak | 27,0 TB |  9,0 TB |  18,0 TB | 40,0 TB  | Elérhető (csak Rev 4 esetén) |
+| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1985) | SAP HANA az Azure S768m<br /> – 16 x Intel® Xeon® processzor E7 – 8890 v4<br /> 384 CPU-magok és 768 CPU-szálak |  16,0 TB | 16,0 TB | -- | 36 TB | Elérhető |
+| NO | SAP HANA az Azure S768xm<br /> – 16 x Intel® Xeon® processzor E7 – 8890 v4<br /> 384 CPU-magok és 768 CPU-szálak |  24,0 TB | 24,0 TB | --- | 56 TB | Elérhető |
+|  IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2376)  | SAP HANA az Azure S896<br /> – 16 x Intel® Xeon® Platinum 8276 processzor <br /> 448 CPU-magok és 896 CPU-szálak | 12,0 TB |  12,0 TB |  --- | 18,9 TB | Elérhető (csak Rev 4 esetén) |
+| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2328) | SAP HANA az Azure S896m<br /> – 16 x Intel® Xeon® Platinum 8276 processzor <br /> 448 CPU-magok és 896 CPU-szálak | 24,0 TB | 24,0 TB | -- | 35,8 TB | Elérhető |
+| NO | SAP HANA az Azure S896oo<br /> – 16 x Intel® Xeon® Platinum 8276 processzor <br /> 448 CPU-magok és 896 CPU-szálak | 18,0 TB |  6,0 TB |  12,0 TB | 27,4 TB  | Elérhető (csak Rev 4 esetén) |
+| NO | SAP HANA az Azure S896om<br /> – 16 x Intel® Xeon® Platinum 8276 processzor <br /> 448 CPU-magok és 896 CPU-szálak | 24,0 TB |  12,0 TB |  12,0 TB | 35,8 TB  | Elérhető (csak Rev 4 esetén) |
+| NO | SAP HANA az Azure S896ooo<br /> – 16 x Intel® Xeon® Platinum 8276 processzor <br /> 448 CPU-magok és 896 CPU-szálak | 30,0 TB |  6,0 TB |  24,0 TB | 44,3 TB  | Elérhető (csak Rev 4 esetén) |
+| NO | SAP HANA az Azure S896oom<br /> – 16 x Intel® Xeon® Platinum 8276 processzor <br /> 448 CPU-magok és 896 CPU-szálak | 36,0 TB |  12,0 TB |  24,0 TB | 52,7 TB  | Elérhető (csak Rev 4 esetén) |
+| IGEN <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1986) | SAP HANA az Azure S960m<br /> – 20 x Intel® Xeon® processzor E7 – 8890 v4<br /> 480 CPU-magok és 960 CPU-szálak |  20,0 TB | 20,0 TB | -- | 46 TB | Elérhető (csak Rev 4 esetén) |
 
 
 - CPU-magok = a kiszolgálói egység processzorai összegének nem Hyper-threaded CPU-magok összessége.
@@ -104,9 +104,9 @@ A hardver két különböző osztálya osztható fel a SKU-ba:
 
 Egy teljes HANA nagyméretű példány bélyegzője nem kizárólagos módon van lefoglalva egyetlen ügyfél&#39;s használatára. Ez a tény az Azure-ban üzembe helyezett hálózati hálón keresztül csatlakoztatott számítási és tárolási erőforrások állványára vonatkozik. A HANA nagyméretű példány-infrastruktúrája, például az Azure, &quot; a következő három szinten helyez üzembe különböző, egymástól elkülönített bérlőket &quot; :
 
-- **Hálózat**: a HANA nagyméretű példány bélyegzőn belüli virtuális hálózatok elkülönítése.
-- **Tárterület**: elkülönítés a tároló virtuális gépei között, amelyekhez tárolási kötetek vannak rendelve, és elkülönítik a tárolási köteteket a bérlők között.
-- **Számítás**: kiszolgálói egységek dedikált hozzárendelése egyetlen bérlőhöz. A kiszolgálói egységek nem rendelkeznek kemény vagy lágy particionálással. Egyetlen kiszolgáló vagy gazda egység megosztása a bérlők között. 
+- **Hálózat** : a HANA nagyméretű példány bélyegzőn belüli virtuális hálózatok elkülönítése.
+- **Tárterület** : elkülönítés a tároló virtuális gépei között, amelyekhez tárolási kötetek vannak rendelve, és elkülönítik a tárolási köteteket a bérlők között.
+- **Számítás** : kiszolgálói egységek dedikált hozzárendelése egyetlen bérlőhöz. A kiszolgálói egységek nem rendelkeznek kemény vagy lágy particionálással. Egyetlen kiszolgáló vagy gazda egység megosztása a bérlők között. 
 
 A HANA nagyméretű példány-egységek különböző bérlők közötti központi telepítései nem láthatók egymás számára. A különböző bérlők által üzembe helyezett HANA nagyméretű példányok nem tudnak közvetlenül kommunikálni egymással a HANA nagyméretű példány-bélyegző szintjén. Az egyik bérlőn belüli HANA Large instances egységek csak a HANA nagyméretű példány-bélyegző szintjén tudnak kommunikálni egymással.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397249"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412782"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Inaktív adatok titkosítása az Azure-ban
 
@@ -48,7 +48,7 @@ A inaktív adatok titkosítása adatvédelmet biztosít a tárolt adatok számá
 
 A inaktív adatok titkosítása úgy lett kialakítva, hogy a támadók ne férhessenek hozzá a titkosítatlan adatokhoz, mivel a lemezeken titkosítva vannak az adatok. Ha egy támadó titkosított adattal rendelkező merevlemezt szerez be, de nem a titkosítási kulcsokat, a támadónak le kell győznie a titkosítást az információk olvasásához. Ez a támadás sokkal összetettebb és erőforrás-felhasználást igényel, mint a titkosítatlan adatok merevlemezen való elérése. Emiatt a inaktív adatok titkosítása erősen ajánlott, és nagy prioritású követelmény számos szervezet számára.
 
-A munkahelyen történő titkosításhoz a szervezetnek adatirányítási és megfelelőségi erőfeszítésekre is szüksége lehet. Az iparági és kormányzati rendeletek, például a HIPAA, a PCI és a FedRAMP, az adatvédelem és a titkosítási követelményekkel kapcsolatos konkrét óvintézkedéseket határoznak meg. A inaktív adatok titkosítása egy kötelező mérték, amely megfelel ezeknek a szabályozásoknak. További információ a Microsoft FIPS 140-2-hitelesítéssel kapcsolatos megközelítéséről: [Federal Information Processing standard (FIPS) kiadvány 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2).
+A munkahelyen történő titkosításhoz a szervezetnek adatirányítási és megfelelőségi erőfeszítésekre is szüksége lehet. Az iparági és kormányzati rendeletek, például a HIPAA, a PCI és a FedRAMP, az adatvédelem és a titkosítási követelményekkel kapcsolatos konkrét óvintézkedéseket határoznak meg. A inaktív adatok titkosítása egy kötelező mérték, amely megfelel ezeknek a szabályozásoknak. További információ a Microsoft FIPS 140-2-hitelesítéssel kapcsolatos megközelítéséről: [Federal Information Processing standard (FIPS) kiadvány 140-2](/microsoft-365/compliance/offering-fips-140-2).
 
 A megfelelőségi és szabályozási követelmények teljesítése mellett a inaktív titkosítás a védelem részletes védelmét is biztosítja. A Microsoft Azure megfelelő platformot biztosít a szolgáltatások, az alkalmazások és az adatkezeléshez. Emellett átfogó lehetőséget és fizikai biztonságot, adathozzáférés-vezérlést és auditálást is biztosít. Azonban fontos, hogy további "átfedésben" biztonsági intézkedéseket adjanak abban az esetben, ha az egyik másik biztonsági intézkedés meghibásodik, és a titkosítás inaktív állapotban van.
 
@@ -115,28 +115,28 @@ Microsoft Azure szolgáltatások a REST-modellekben egy vagy több titkosítást
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Az Azure-alapú infrastruktúra-szolgáltatás (IaaS) funkcióit használó bármely ügyfél a IaaS-alapú virtuális gépek és Azure Disk Encryption lemezek számára is lehetővé teheti a titkosítást. Az Azure Disk Encryption szolgáltatással kapcsolatos további információkért tekintse meg a [Azure Disk Encryption dokumentációját](../azure-security-disk-encryption-overview.md).
+Az Azure-alapú infrastruktúra-szolgáltatás (IaaS) funkcióit használó bármely ügyfél a IaaS-alapú virtuális gépek és Azure Disk Encryption lemezek számára is lehetővé teheti a titkosítást. Az Azure Disk Encryption szolgáltatással kapcsolatos további információkért tekintse meg a [Azure Disk Encryption dokumentációját](./azure-disk-encryption-vms-vmss.md).
 
 #### <a name="azure-storage"></a>Azure Storage tárterület
 
 Az összes Azure Storage-szolgáltatás (blob Storage, üzenetsor-tárolás, Table Storage és Azure Files) támogatja a kiszolgálóoldali titkosítást a nyugalmi állapotban; néhány szolgáltatás emellett az ügyfél által felügyelt kulcsokat és az ügyféloldali titkosítást is támogatja.
 
-- Kiszolgálóoldali: minden Azure Storage-szolgáltatás alapértelmezés szerint a szolgáltatás által felügyelt kulcsok használatával engedélyezi a kiszolgálóoldali titkosítást, amely transzparens az alkalmazás számára. További információ: [Azure Storage Service encryption for](../../storage/common/storage-service-encryption.md)inaktív adatok. Az Azure Blob Storage és a Azure Files támogatja az RSA 2048 bites ügyfél által felügyelt kulcsokat Azure Key Vault. További információ: [Storage Service encryption ügyfél által felügyelt kulcsok használata Azure Key Vaultban](../../storage/common/storage-encryption-keys-portal.md).
+- Kiszolgálóoldali: minden Azure Storage-szolgáltatás alapértelmezés szerint a szolgáltatás által felügyelt kulcsok használatával engedélyezi a kiszolgálóoldali titkosítást, amely transzparens az alkalmazás számára. További információ: [Azure Storage Service encryption for](../../storage/common/storage-service-encryption.md)inaktív adatok. Az Azure Blob Storage és a Azure Files támogatja az RSA 2048 bites ügyfél által felügyelt kulcsokat Azure Key Vault. További információ: [Storage Service encryption ügyfél által felügyelt kulcsok használata Azure Key Vaultban](../../storage/common/customer-managed-keys-configure-key-vault.md).
 - Ügyféloldali: az Azure-Blobok,-táblák és-várólisták támogatják az ügyféloldali titkosítást. Az ügyféloldali titkosítás használatakor az ügyfelek titkosítják az adataikat, és feltöltik az adataikat titkosított blobként. A kulcskezelőt az ügyfél végzi. További információ: [ügyféloldali titkosítás és Azure Key Vault Microsoft Azure Storagehoz](../../storage/common/storage-client-side-encryption.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
 A Azure SQL Database jelenleg a Microsoft által felügyelt szolgáltatás-és ügyféloldali titkosítási helyzetekben támogatja a REST titkosítást.
 
-A kiszolgálói titkosítás támogatását jelenleg a transzparens adattitkosítás nevű SQL-szolgáltatás nyújtja. Ha egy Azure SQL Database ügyfél lehetővé teszi, hogy a rendszer automatikusan létrehozza és felügyeli a TDE kulcsot. A inaktív adatok titkosítása az adatbázis és a kiszolgáló szintjén is engedélyezhető. A 2017. júniusi [transzparens adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) alapértelmezés szerint engedélyezve van az újonnan létrehozott adatbázisokon. Azure SQL Database támogatja az RSA 2048-bites ügyfél által felügyelt kulcsokat Azure Key Vault. További információ: [transzparens adattitkosítás bring your own Key támogatással a Azure SQL Database és az Adattárházhoz](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current).
+A kiszolgálói titkosítás támogatását jelenleg a transzparens adattitkosítás nevű SQL-szolgáltatás nyújtja. Ha egy Azure SQL Database ügyfél lehetővé teszi, hogy a rendszer automatikusan létrehozza és felügyeli a TDE kulcsot. A inaktív adatok titkosítása az adatbázis és a kiszolgáló szintjén is engedélyezhető. A 2017. júniusi [transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) alapértelmezés szerint engedélyezve van az újonnan létrehozott adatbázisokon. Azure SQL Database támogatja az RSA 2048-bites ügyfél által felügyelt kulcsokat Azure Key Vault. További információ: [transzparens adattitkosítás bring your own Key támogatással a Azure SQL Database és az Adattárházhoz](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current).
 
-A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always encrypted](https://msdn.microsoft.com/library/mt163865.aspx) funkción keresztül. A Always Encrypted az ügyfél által létrehozott és tárolt kulcsot használja. Az ügyfelek a főkulcsot egy Windows tanúsítványtárolóban, Azure Key Vaultban vagy egy helyi hardveres biztonsági modulban tárolhatják. A SQL Server Management Studio használatával az SQL-felhasználók kiválaszthatják, hogy milyen kulcsot szeretnének használni az oszlop titkosításához.
+A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkción keresztül. A Always Encrypted az ügyfél által létrehozott és tárolt kulcsot használja. Az ügyfelek a főkulcsot egy Windows tanúsítványtárolóban, Azure Key Vaultban vagy egy helyi hardveres biztonsági modulban tárolhatják. A SQL Server Management Studio használatával az SQL-felhasználók kiválaszthatják, hogy milyen kulcsot szeretnének használni az oszlop titkosításához.
 
 ## <a name="conclusion"></a>Összegzés
 
 Az Azure-szolgáltatásokon belül tárolt ügyféladatok védelme kiemelkedő fontosságú a Microsoft számára. Az összes Azure-beli üzemeltetett szolgáltatás elkötelezett amellett, hogy titkosítást biztosítson a REST-beállításokban. Az Azure-szolgáltatások a szolgáltatás által felügyelt kulcsokat, az ügyfél által felügyelt kulcsokat vagy az ügyféloldali titkosítást támogatják. Az Azure-szolgáltatások széles körben javítják a titkosítást a REST rendelkezésre állása során, és az új lehetőségek az előzetes verzióra és az általános elérhetőségre vannak tervezve a következő hónapokban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A szolgáltatás által felügyelt kulcsokkal és az ügyfél által felügyelt kulcsokkal kapcsolatos további tudnivalókért tekintse meg az [adattitkosítási modelleket](encryption-models.md) .
 - Ismerje meg, hogyan használja az Azure a [kettős titkosítást](double-encryption.md) az adattitkosítással kapcsolatos fenyegetések enyhítésére.

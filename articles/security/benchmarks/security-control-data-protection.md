@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e2144a61d83f6c7dece8f34232031192b51cde8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395991"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412697"
 ---
 # <a name="security-control-data-protection"></a>Biztonság-ellenőrzés: Adatvédelem
 
@@ -26,7 +26,7 @@ Az adatvédelmi javaslatok a titkosítással, a hozzáférés-vezérlési listá
 
 A címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését.
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
@@ -36,11 +36,11 @@ A címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgo
 
 Különálló előfizetések és felügyeleti csoportok használatával különítse el az elkülönítést az egyes biztonsági tartományok, például a környezeti típus és az adatérzékenység szintjén. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével szabályozhatja. 
 
-- [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../../governance/management-groups/create-management-group-portal.md)
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: a bizalmas adatok jogosulatlan átvitelének figyelése és letiltása
 
@@ -52,7 +52,7 @@ Egy külső gyártótól származó megoldást használhat fel az Azure Marketpl
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és védelmet nyújt az ügyfelek adatvesztése és a kitettség ellen. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-- [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../fundamentals/protection-customer-data.md)
 
 ## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
@@ -64,7 +64,7 @@ Titkosítsa az összes bizalmas információt az átvitel során. Győződjön m
 
 Kövesse Azure Security Center a inaktív adatok titkosítására és az átvitel közbeni titkosításra vonatkozó ajánlásokat, ahol lehetséges.
 
-- [A titkosítás ismertetése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [A titkosítás ismertetése az Azure-ban](../fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 ## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
 
@@ -78,11 +78,11 @@ A bizalmas adatok Microsoft 365 dokumentumokon belüli azonosításához haszná
 
 Az Azure SQL Information Protection használatával segítheti a Azure SQL Database tárolt információk besorolását és címkézését.
 
-- [Az Azure SQL-adatfelderítés megvalósítása](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Az Azure SQL-adatfelderítés megvalósítása](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-- [A Azure Information Protection megvalósítása](https://docs.microsoft.com/azure/information-protection/deployment-roadmap)
+- [A Azure Information Protection megvalósítása](/azure/information-protection/deployment-roadmap)
 
-- [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../fundamentals/protection-customer-data.md)
 
 ## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
@@ -92,7 +92,7 @@ Az Azure SQL Information Protection használatával segítheti a Azure SQL Datab
 
 Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával szabályozhatja az adat-és erőforrásokhoz való hozzáférést, máskülönben a szolgáltatás-specifikus hozzáférés-vezérlési módszereket is használhatja.
 
-- [Az Azure RBAC konfigurálása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Az Azure RBAC konfigurálása](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
 
@@ -104,19 +104,19 @@ Ha a megfelelőség szükséges a számítási erőforrásokon, hozzon létre eg
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-- [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../fundamentals/protection-customer-data.md)
 
 ## <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: bizalmas adatok titkosítása a nyugalmi állapotban
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 4,8 | 14,8 | Ügyfél |
+| 4.8 | 14,8 | Ügyfél |
 
 Az összes Azure-erőforráson használja a titkosítást. A Microsoft azt javasolja, hogy az Azure kezelje a titkosítási kulcsokat, azonban lehetőség van arra, hogy a saját kulcsait bizonyos példányokban kezelje. 
 
-- [A inaktív adatok titkosításának megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [A inaktív adatok titkosításának megismerése az Azure-ban](../fundamentals/encryption-atrest.md)
 
-- [Az ügyfél által felügyelt titkosítási kulcsok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+- [Az ügyfél által felügyelt titkosítási kulcsok konfigurálása](../../storage/common/customer-managed-keys-configure-key-vault.md)
 
 ## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 
@@ -126,9 +126,9 @@ Az összes Azure-erőforráson használja a titkosítást. A Microsoft azt javas
 
 A Azure Monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amikor a módosítások a kritikus Azure-erőforrásokra vonatkoznak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../azure-monitor/platform/alerts-activity-log.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a következő biztonsági szabályozást:  [sebezhetőségek kezelése](security-control-vulnerability-management.md)

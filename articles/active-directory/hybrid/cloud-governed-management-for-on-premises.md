@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f717e14e5abe62aafffdeef841889ea2458fa8b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369794"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413445"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Hogyan biztosítja az Azure AD a felhőben szabályozott felügyeletet a helyszíni számítási feladatokhoz
 
@@ -39,7 +39,7 @@ Ez a tanulmány a Microsoft hibrid IDaaS vonatkozó stratégiáját ismerteti, �
 
 ## <a name="the-azure-ad-approach-to-cloud-governed-identity-management"></a>Az Azure AD megközelítése a felhőben szabályozott Identitáskezelés kezeléséhez
 
-A szervezeteknek a felhőbe való áttéréshez olyan biztosítékokra van szükségük, amelyek a teljes környezetük felett vannak, és nagyobb biztonságot és nagyobb láthatóságot biztosítanak a tevékenységek, az automatizálás és az proaktív betekintések révén. "A**felhőben szabályozott felügyelet**" azt ismerteti, hogyan kezelik és szabályozzák a szervezetek a felhasználókat, az alkalmazásokat, a csoportokat és az eszközöket a felhőből.
+A szervezeteknek a felhőbe való áttéréshez olyan biztosítékokra van szükségük, amelyek a teljes környezetük felett vannak, és nagyobb biztonságot és nagyobb láthatóságot biztosítanak a tevékenységek, az automatizálás és az proaktív betekintések révén. "A **felhőben szabályozott felügyelet** " azt ismerteti, hogyan kezelik és szabályozzák a szervezetek a felhasználókat, az alkalmazásokat, a csoportokat és az eszközöket a felhőből.
 
 Ebben a modern világban a szervezeteknek az SaaS-alkalmazások elterjedése, valamint az együttműködés és a külső identitások egyre növekvő szerepe miatt nagy léptékű hatékony felügyeletet kell biztosítaniuk. A felhő új kockázati környezete azt jelenti, hogy a szervezetnek rugalmasabbnak kell lennie – egy rosszindulatú személy, aki feltört egy Felhőbeli felhasználót, hatással lehet a Felhőbeli és a helyszíni alkalmazásokra.
 
@@ -77,7 +77,7 @@ A vállalatok közötti együttműködés egyre inkább a szervezeten kívüli s
 
 Az Azure AD lehetővé teszi, hogy a felhasználók igény szerint [automatikusan hozzon létre fiókokat az ad-ben](../external-identities/hybrid-cloud-to-on-premises.md) , így az üzleti vendégek hozzáférhetnek a helyszíni ad-integrált alkalmazásokhoz anélkül, hogy más jelszót kellene megadniuk. A szervezetek beállíthatja [a többtényezős hitelesítési (MFA) házirendeket a vendég felhasználói számára](../external-identities/conditional-access.md), így az MFA-ellenőrzéseket az alkalmazásproxy-hitelesítés során végezheti el. A felhőalapú B2B-felhasználók által végzett [hozzáférési felülvizsgálatok](../governance/manage-guest-access-with-access-reviews.md) a helyszíni felhasználókra is érvényesek. Ha például a Felhőbeli felhasználót az életciklus-kezelési szabályzatok segítségével törli, a helyszíni felhasználó is törlődik.
 
-**Active Directory-fiókok hitelesítő adatainak kezelése** Az Azure AD önkiszolgáló jelszó-visszaállítási szolgáltatása lehetővé teszi, hogy a jelszavak újbóli hitelesítése és a jelszavak alaphelyzetbe állítása érdekében a [rendszer a helyi Active Directoryba írt](../authentication/concept-sspr-writeback.md)módosított jelszavakat használja. A jelszó-visszaállítási folyamat a helyszíni Active Directory jelszóházirend használatát is lehetővé teszi: amikor egy felhasználó visszaállítja a jelszavát, ellenőrzi, hogy az megfelel-e a helyszíni Active Directory házirendnek, mielőtt véglegesíti azt az adott könyvtárba. Az önkiszolgáló jelszó-visszaállítási [telepítési terv](https://aka.ms/deploymentplans/sspr) az ajánlott eljárásokat ismerteti az önkiszolgáló jelszó-visszaállítást a felhasználóknak webes és Windows-integrált felületen keresztül.
+**Active Directory-fiókok hitelesítő adatainak kezelése** Az Azure AD önkiszolgáló jelszó-visszaállítási szolgáltatása lehetővé teszi, hogy a jelszavak újbóli hitelesítése és a jelszavak alaphelyzetbe állítása érdekében a [rendszer a helyi Active Directoryba írt](../authentication/concept-sspr-writeback.md)módosított jelszavakat használja. A jelszó-visszaállítási folyamat a helyszíni Active Directory jelszóházirend használatát is lehetővé teszi: amikor egy felhasználó visszaállítja a jelszavát, ellenőrzi, hogy az megfelel-e a helyszíni Active Directory házirendnek, mielőtt véglegesíti azt az adott könyvtárba. Az önkiszolgáló jelszó-visszaállítási [telepítési terv](../authentication/howto-sspr-deployment.md) az ajánlott eljárásokat ismerteti az önkiszolgáló jelszó-visszaállítást a felhasználóknak webes és Windows-integrált felületen keresztül.
 
 ![Azure AD-SSPR architektúrája](media/cloud-governed-management-for-on-premises/image3.png)
 
@@ -97,7 +97,7 @@ Az összevont alkalmazások identitás-szolgáltatóként való áttelepítésé
 
 * Az [alkalmazások áttelepítése a Azure Active Directoryre](https://aka.ms/migrateapps/whitepaper), amely az áttelepítés előnyeit mutatja be, és leírja, hogyan tervezze meg az áttelepítést négy jól tagolt fázisban: felderítés, besorolás, áttelepítés és folyamatos felügyelet. Útmutatást kaphat arról, hogyan gondolhatja át a folyamatot, és hogyan bontják le a projektet könnyen felhasználható darabokra. A dokumentum teljes egészében olyan fontos erőforrásokra mutató hivatkozásokat talál, amelyek segítenek az Ön számára.
 
-* A megoldási útmutató az [alkalmazás hitelesítésének Active Directory összevonási szolgáltatások (AD FS)ról Azure Active Directory való áttelepítéséről](https://aka.ms/migrateapps/adfssolutionguide) részletesebben ismerteti az alkalmazás-áttelepítési projekt tervezésének és végrehajtásának négy fázisát. Ebből az útmutatóból megtudhatja, hogyan alkalmazhatja ezeket a fázisokat az alkalmazások Active Directory összevonási szolgáltatások (AD FS) (AD FS) Azure AD-be való áthelyezésének konkrét céljára.
+* A megoldási útmutató az [alkalmazás hitelesítésének Active Directory összevonási szolgáltatások (AD FS)ról Azure Active Directory való áttelepítéséről](../manage-apps/migrate-adfs-apps-to-azure.md) részletesebben ismerteti az alkalmazás-áttelepítési projekt tervezésének és végrehajtásának négy fázisát. Ebből az útmutatóból megtudhatja, hogyan alkalmazhatja ezeket a fázisokat az alkalmazások Active Directory összevonási szolgáltatások (AD FS) (AD FS) Azure AD-be való áthelyezésének konkrét céljára.
 
 * A [Active Directory összevonási szolgáltatások (AD FS) Migrálás készültségi parancsfájlja](https://aka.ms/migrateapps/adfstools) futtatható a meglévő helyszíni Active Directory összevonási szolgáltatások (AD FS) (AD FS) kiszolgálókon az Azure ad-ba való áttelepítéshez használható alkalmazások készültségének meghatározásához.
 
@@ -111,10 +111,10 @@ A szervezetek az olyan technológiákon keresztül automatizálják a hozzáfér
 
 ## <a name="future-directions"></a>Jövőbeli irányok
 
-A hibrid környezetekben a Microsoft stratégiája az olyan üzemelő példányok engedélyezése, amelyekben a **felhő az identitás vezérlő síkja**, valamint a helyszíni címtárak és más Identity rendszerek, például a Active Directory és más helyszíni alkalmazások, amelyek célja a felhasználók hozzáférésének kiépítése. Ez a stratégia továbbra is biztosítja a jogosultságokat, az identitásokat és a hozzáférést a rájuk támaszkodó alkalmazásokban és munkaterhelésekben. Ezen a helyen a szervezetek teljes egészében képesek lesznek a végfelhasználók termelékenységét a felhőből elvinni.
+A hibrid környezetekben a Microsoft stratégiája az olyan üzemelő példányok engedélyezése, amelyekben a **felhő az identitás vezérlő síkja** , valamint a helyszíni címtárak és más Identity rendszerek, például a Active Directory és más helyszíni alkalmazások, amelyek célja a felhasználók hozzáférésének kiépítése. Ez a stratégia továbbra is biztosítja a jogosultságokat, az identitásokat és a hozzáférést a rájuk támaszkodó alkalmazásokban és munkaterhelésekben. Ezen a helyen a szervezetek teljes egészében képesek lesznek a végfelhasználók termelékenységét a felhőből elvinni.
 
 ![Azure AD-architektúra](media/cloud-governed-management-for-on-premises/image6.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az utazás megkezdéséről: az Azure AD üzembehelyezési csomagjai, amely a következő címen található: <https://aka.ms/deploymentplans> . Teljes körű útmutatást nyújtanak Azure Active Directory (Azure AD) képességeinek üzembe helyezéséhez. Az egyes tervek ismertetik az Azure AD-képességek sikeres kiépítéséhez szükséges üzleti értékeket, tervezési szempontokat, kialakítási és üzemeltetési eljárásokat. A Microsoft folyamatosan frissíti az üzembe helyezési terveket az ügyfelek üzembe helyezésével és más visszajelzésekkel kapcsolatos ajánlott eljárásokkal, amikor új képességeket adunk a felhőből az Azure AD-vel való felügyelethez.

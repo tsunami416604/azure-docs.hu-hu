@@ -16,12 +16,12 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9411c22183620f883b4d2819eb3078e49837e578
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016078"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413190"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect szinkronizálási szolgáltatás: Az Azure Active Directoryval szinkronizált attribútumok
 Ez a témakör a Azure AD Connect Sync által szinkronizált attribútumokat sorolja fel.  
@@ -52,7 +52,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | userPrincipalName |X |Az UPN a felhasználó bejelentkezési azonosítója. A legtöbb esetben ugyanaz, mint a [mail] érték. |
 
 ## <a name="exchange-online"></a>Exchange Online
-| Attribútum neve | Felhasználó | Kapcsolattartó | Group | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | asszisztens |X |X | | |
@@ -175,7 +175,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| Attribútum neve | Felhasználó | Kapcsolattartó | Group | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | authOrig |X |X |X | |
@@ -257,7 +257,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | wWWHomePage |X |X | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>Csapatok és Skype vállalati online verzió
-| Attribútum neve | Felhasználó | Kapcsolattartó | Group | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | c |X |X | | |
@@ -305,7 +305,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| Attribútum neve | Felhasználó | Kapcsolattartó | Group | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | CN |X | |X |Köznapi név vagy alias. Leggyakrabban a [mail] érték előtagja. |
@@ -320,7 +320,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | userPrincipalName |X | | |Ez az egyszerű felhasználónév a felhasználó bejelentkezési azonosítója. A legtöbb esetben ugyanaz, mint a [mail] érték. |
 
 ## <a name="intune"></a>Intune
-| Attribútum neve | Felhasználó | Kapcsolattartó | Group | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | c |X |X | | |
@@ -338,7 +338,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | userPrincipalName |X | | |Az UPN a felhasználó bejelentkezési azonosítója. A legtöbb esetben ugyanaz, mint a [mail] érték. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| Attribútum neve | Felhasználó | Kapcsolattartó | Group | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | c |X |X | | |
@@ -373,11 +373,11 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 Ez a csoport az általános számítási feladatokhoz vagy alkalmazásokhoz szükséges minimális attribútumként használt attribútumok halmaza. Használható olyan munkaterheléshez, amely nem szerepel egy másik szakaszban vagy nem Microsoft-alkalmazásban. A következőkhöz explicit módon kell használni:
 
 * Yammer (csak felhasználó használatos)
-* [Hibrid vállalatközi (B2B) intézményközi együttműködési forgatókönyvek, például a SharePoint](https://go.microsoft.com/fwlink/?LinkId=747036)
+* [Hibrid vállalatközi (B2B) intézményközi együttműködési forgatókönyvek, például a SharePoint](/sharepoint/create-b2b-extranet)
 
 Ez a csoport olyan attribútumok összessége, amelyek akkor használhatók, ha az Azure AD-címtárat nem használják a Microsoft 365, a Dynamics vagy az Intune támogatásához. Az alapattribútumok kis készlete van. Vegye figyelembe, hogy az egyszeri bejelentkezés vagy bizonyos külső alkalmazások üzembe helyezéséhez az itt ismertetett attribútumok mellett az attribútumok szinkronizálásának konfigurálására is szükség van. Az alkalmazásra vonatkozó követelményeket a [SaaS-alkalmazás oktatóanyaga](../saas-apps/tutorial-list.md) ismerteti minden alkalmazáshoz.
 
-| Attribútum neve | Felhasználó | Kapcsolattartó | Group | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | CN |X | |X | |
@@ -420,9 +420,9 @@ A **felhasználóhoz** tartozó attribútumok a többi kiválasztott alkalmazás
 | msDS-KeyCredentialLink |X |Ha a felhasználó regisztrálva van a vállalati Windows Hello-ben. | 
 
 ## <a name="exchange-hybrid-writeback"></a>Hibrid Exchange-visszaírási
-Ezek az attribútumok visszakerülnek az Azure AD-ből a helyszíni Active Directoryba, ha engedélyezi az **Exchange Hybrid**engedélyezését. Az Exchange-verziótól függően kevesebb attribútum is szinkronizálható.
+Ezek az attribútumok visszakerülnek az Azure AD-ből a helyszíni Active Directoryba, ha engedélyezi az **Exchange Hybrid** engedélyezését. Az Exchange-verziótól függően kevesebb attribútum is szinkronizálható.
 
-| Attribútum neve (helyszíni AD) | Attribútum neve (felhasználói felület összekapcsolása) | Felhasználó | Kapcsolattartó | Group | Megjegyzés |
+| Attribútum neve (helyszíni AD) | Attribútum neve (felhasználói felület összekapcsolása) | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| MS-DS-External-Directory-Object-ID |X | | |Az Azure AD cloudAnchor származtatva. Ez az attribútum az Exchange 2016 és a Windows Server 2016 AD újdonsága. |
 | msExchArchiveStatus| MS-árfolyam-ArchiveStatus |X | | |Online Archive: lehetővé teszi, hogy az ügyfelek archiválják az e-maileket. |
@@ -435,7 +435,7 @@ Ezek az attribútumok visszakerülnek az Azure AD-ből a helyszíni Active Direc
 | publicDelegates| MS-árfolyam-nyilvános delegált  |X | | |Lehetővé teszi, hogy az Exchange Online-postaláda SendOnBehalfTo jogokat biztosítson a helyszíni Exchange-postaládával rendelkező felhasználók számára. Ehhez Azure AD Connect build 1.1.552.0 vagy későbbi verzió szükséges. |
 
 ## <a name="exchange-mail-public-folder"></a>Exchange-levelezés nyilvános mappája
-Ezek az attribútumok szinkronizálva vannak a helyszíni Active Directory az Azure AD-be, amikor engedélyezi az **Exchange-levelezés nyilvános mappájának**engedélyezését.
+Ezek az attribútumok szinkronizálva vannak a helyszíni Active Directory az Azure AD-be, amikor engedélyezi az **Exchange-levelezés nyilvános mappájának** engedélyezését.
 
 | Attribútum neve | PublicFolder | Megjegyzés |
 | --- | :---:| --- |
@@ -468,9 +468,9 @@ Az eszközök objektumai a Active Directoryban jönnek létre. Ezek az objektumo
 
 ## <a name="notes"></a>Jegyzetek
 * Alternatív azonosító használata esetén a userPrincipalName helyszíni attribútuma szinkronizálva lesz az Azure AD attribútum onPremisesUserPrincipalName. A másodlagos azonosító attribútum, például a levelezés, szinkronizálva van az Azure AD-attribútum userPrincipalName.
-* A fenti listában az objektumtípus **felhasználója** az **InetOrgPerson**objektumra is érvényes.
+* A fenti listában az objektumtípus **felhasználója** az **InetOrgPerson** objektumra is érvényes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

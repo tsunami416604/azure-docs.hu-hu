@@ -3,14 +3,14 @@ title: Azure-előfizetési korlátok és kvóták
 description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, kvótáinak és megkötéseinek listáját jeleníti meg. Ez a cikk a korlátok növelésével és a maximális értékekkel kapcsolatos tudnivalókat tartalmazza.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: f18bd4589ea995696175fa23300432793f0f5974
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: b95c056a8885998c3ca5b5c62cb13049c3a8c66d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950244"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412931"
 ---
-# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései
+# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései
 
 Ez a dokumentum felsorolja a leggyakoribb Microsoft Azure-korlátozásokat, amelyeket más néven kvótának is nevezünk.
 
@@ -21,7 +21,7 @@ További információ az Azure díjszabásáról: az [Azure díjszabásának át
 > [!NOTE]
 > Egyes szolgáltatások állítható korlátokkal rendelkeznek.
 >
-> Ha egy szolgáltatás nem rendelkezik állítható korlátokkal, a következő táblázatok a fejléc **korlátját**használják. Ezekben az esetekben az alapértelmezett és a maximális korlátok azonosak.
+> Ha egy szolgáltatás nem rendelkezik állítható korlátokkal, a következő táblázatok a fejléc **korlátját** használják. Ezekben az esetekben az alapértelmezett és a maximális korlátok azonosak.
 >
 > Ha a korlát módosítható, a táblák tartalmazzák az **alapértelmezett korlátot** és a **maximális korlátot** . A határérték az alapértelmezett korlát fölé állítható, de nem a maximális korlát fölé.
 >
@@ -96,7 +96,7 @@ A díjszabási szintek határozzák meg a keresési szolgáltatás kapacitását
 
 * Az **ingyenes** , több-bérlős szolgáltatás, amelyet más Azure-előfizetők is megosztanak, kiértékelésre és kisméretű fejlesztési projektekre tervezték.
 * Az **alapszintű** eszközök dedikált számítástechnikai erőforrásokat biztosítanak az éles számítási feladatokhoz kisebb méretekben, és legfeljebb három replikával rendelkeznek a nagy rendelkezésre állású lekérdezési feladatokhoz.
-* A **standard**, amely az S1, az S2, az S3 és az S3 nagy sűrűségű, nagyobb üzemi számítási feladatokhoz is tartozik. A standard szinten több szint is létezik, így kiválaszthatja a munkaterhelés-profilhoz legjobban illő erőforrás-konfigurációt.
+* A **standard** , amely az S1, az S2, az S3 és az S3 nagy sűrűségű, nagyobb üzemi számítási feladatokhoz is tartozik. A standard szinten több szint is létezik, így kiválaszthatja a munkaterhelés-profilhoz legjobban illő erőforrás-konfigurációt.
 
 **Korlát/előfizetés**
 
@@ -285,7 +285,11 @@ A Media Services v2 (örökölt) határértékekre vonatkozó korlátokat lásd:
 
 ### <a name="virtual-network-gateway-limits"></a>Virtual Network átjáró korlátai
 
-[!INCLUDE [virtual-wan-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+[!INCLUDE [virtual-network-gateway-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+
+### <a name="nat-gateway-limits"></a>NAT-átjáró korlátai
+
+[!INCLUDE [nat-gateway-limits](../../../includes/azure-nat-gateway-limits.md)]
 
 ### <a name="virtual-wan-limits"></a>Virtuális WAN-korlátok
 

@@ -1,34 +1,38 @@
 ---
-title: Diagnosztika beállítása
+title: Diagnosztikai naplók engedélyezése és lekérdezése
 titleSuffix: Azure Digital Twins
-description: 'Lásd: a naplózás engedélyezése a diagnosztikai beállításokkal.'
+description: 'Lásd: a naplózás engedélyezése a diagnosztikai beállításokkal, valamint a naplók azonnali megtekintésének lekérdezése.'
 author: baanders
 ms.author: baanders
-ms.date: 7/28/2020
+ms.date: 11/9/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 11a7b4876c773922d4b0ed28f7047912b738ee6a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0d775ffa1ce063c01fc6762d77201e5a4caaad87
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091735"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411751"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins hibaelhárítása: diagnosztika naplózása
 
-Az Azure Digital Twins a szolgáltatási példány [metrikáit](troubleshoot-metrics.md) gyűjti, amelyek információkat biztosítanak az erőforrások állapotáról. Ezeket a mérőszámokat felhasználhatja az Azure Digital Twins szolgáltatás általános állapotának felmérésére és a hozzájuk kapcsolódó erőforrásokra. Ezek a felhasználók felé irányuló statisztikák segítenek megtekinteni, hogy mi történik az Azure-beli digitális Ikrekben, és segítsen a problémák kiváltó okának elemzésében anélkül, hogy kapcsolatba kellene lépnie az Azure ügyfélszolgálatával.
+Az Azure Digital Twins a szolgáltatáshoz tartozó naplókat gyűjthet a teljesítmény, a hozzáférés és az egyéb adatok figyeléséhez. Ezekkel a naplókkal megismerheti, hogy mi történik az Azure Digital Twins-példányban, és hogyan végezheti el a problémák kiváltó okait anélkül, hogy kapcsolatba kellene lépnie az Azure ügyfélszolgálatával.
 
-Ez a cikk bemutatja, hogyan kapcsolhatja be a **diagnosztikai naplózást** a metrikák adataihoz az Azure Digital Twins-példányból. Ezeket a naplókat használhatja a szolgáltatással kapcsolatos problémák elhárításához, valamint a diagnosztikai beállítások konfigurálásához, hogy az Azure Digital Twins-metrikákat különböző célhelyekre küldje. Ezekről a beállításokról további információt a [*diagnosztikai beállítások létrehozása a platform-naplók és a metrikák különböző célhelyekre való küldéséhez*](../azure-monitor/platform/diagnostic-settings.md)című cikkből kaphat.
+Ez a cikk bemutatja, hogyan [**konfigurálhatja a diagnosztikai beállításokat**](#turn-on-diagnostic-settings) a [Azure Portalban](https://portal.azure.com) a naplók Azure Digital Twins-példányból való gyűjtésének megkezdéséhez. Megadhatja azt is, hogy a naplók hol legyenek tárolva (például Log Analytics vagy egy tetszőleges Storage-fiók).
 
-## <a name="turn-on-diagnostic-settings-with-the-azure-portal"></a>Diagnosztikai beállítások bekapcsolása a Azure Portal
+Ez a cikk az Azure Digital Twins által gyűjtött összes [naplózási kategóriát](#log-categories) és [naplózási sémát](#log-schemas) is tartalmazza.
 
-Az alábbi módon engedélyezheti az Azure Digital Twins-példány diagnosztikai beállításait:
+A naplók beállítása után [**lekérdezheti a naplókat**](#view-and-query-logs) az egyéni elemzések gyors összegyűjtéséhez.
+
+## <a name="turn-on-diagnostic-settings"></a>Diagnosztikai beállítások bekapcsolása 
+
+A diagnosztikai beállítások bekapcsolásával megkezdheti a naplók gyűjtését az Azure Digital Twins-példányon. Azt a célhelyet is kiválaszthatja, ahová az exportált naplókat tárolni szeretné. Itt megtudhatja, hogyan engedélyezheti az Azure Digital Twins-példány diagnosztikai beállításait.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az Azure Digital Twins-példányhoz. A nevét a portál keresési sávjába írja be. 
 
 2. Válassza a menüből a **diagnosztikai beállítások** elemet, majd **adja hozzá a diagnosztikai** beállításokat.
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="A diagnosztikai beállítások lapot és a hozzáadni kívánt gombot ábrázoló képernyőkép":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="A diagnosztikai beállítások lapot és a hozzáadni kívánt gombot ábrázoló képernyőkép" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
 
 3. Az alábbi lapon adja meg a következő értékeket:
      * **Diagnosztikai beállítás neve** : adjon meg egy nevet a diagnosztikai beállításoknak.
@@ -39,7 +43,7 @@ Az alábbi módon engedélyezheti az Azure Digital Twins-példány diagnosztikai
         - QueryOperation
         - AllMetrics
         
-        További információ ezekről a beállításokról: [*Kategória részletei*](#category-details) szakasz.
+        Ezekről a kategóriákról és a bennük található információkról további részleteket az alábbi [*log categoriess*](#log-categories) szakaszban talál.
      * **Célhely részletei** : válassza ki, hová szeretné elküldeni a naplókat. A három lehetőség bármely kombinációját kiválaszthatja:
         - Küldés a Log Analyticsnek
         - Archiválás tárfiókba
@@ -49,13 +53,15 @@ Az alábbi módon engedélyezheti az Azure Digital Twins-példány diagnosztikai
     
 4. Mentse az új beállításokat. 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="A diagnosztikai beállítások lapot és a hozzáadni kívánt gombot ábrázoló képernyőkép":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Képernyőfelvétel: a diagnosztikai beállítások oldal, ahol a felhasználó kitöltötte a diagnosztikai beállítások nevét, és a kategória részletei és a célhely részletei jelölőnégyzettel rendelkezik. A Mentés gomb ki van emelve." lightbox="media/troubleshoot-diagnostics/diagnostic-settings-details.png":::
 
 Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezután a naplók megjelennek a konfigurált célhelyen a példány **diagnosztikai beállítások** lapján. 
 
-## <a name="category-details"></a>Kategória részletei
+A diagnosztikai beállításokkal és a telepítési lehetőségekkel kapcsolatos további információkért látogasson el a [*diagnosztikai beállítások létrehozása lehetőségre a platform-naplók és-metrikák különböző célhelyekre küldéséhez*](../azure-monitor/platform/diagnostic-settings.md).
 
-A diagnosztikai beállítások beállításakor a **Kategória részletei** szakaszban kiválaszthatja a naplózási kategóriák részleteit.
+## <a name="log-categories"></a>Naplók kategóriái
+
+Az alábbiakban további információkat talál az Azure Digital Twins által gyűjtött naplók kategóriái.
 
 | Naplókategória | Leírás |
 | --- | --- |
@@ -108,7 +114,7 @@ Az API-naplók mező-és tulajdonság-leírása itt található.
 
 | Mező neve | Adattípus | Leírás |
 |-----|------|-------------|
-| `Time` | DateTime | Az esemény bekövetkezett dátuma és időpontja (UTC) |
+| `Time` | Dátum/idő | Az esemény bekövetkezett dátuma és időpontja (UTC) |
 | `ResourceID` | Sztring | Annak az erőforrásnak a Azure Resource Manager erőforrás-azonosítója, amelyben az esemény lezajlott |
 | `OperationName` | Sztring  | Az esemény során végrehajtandó művelet típusa |
 | `OperationVersion` | Sztring | Az esemény során használt API-verzió |
@@ -194,7 +200,7 @@ Ez a naplók sémája `ADTEventRoutesOperation` . Ezek a kivételekre és az Azu
 
 |Mező neve | Adattípus | Leírás |
 |-----|------|-------------|
-| `Time` | DateTime | Az esemény bekövetkezett dátuma és időpontja (UTC) |
+| `Time` | Dátum/idő | Az esemény bekövetkezett dátuma és időpontja (UTC) |
 | `ResourceId` | Sztring | Annak az erőforrásnak a Azure Resource Manager erőforrás-azonosítója, amelyben az esemény lezajlott |
 | `OperationName` | Sztring  | Az esemény során végrehajtandó művelet típusa |
 | `Category` | Sztring | A kibocsátott erőforrás típusa |
@@ -223,7 +229,35 @@ Az alábbi példa JSON-törzseket mutat be az ilyen típusú naplókhoz.
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="view-and-query-logs"></a>Naplók megtekintése és lekérdezése
+
+A cikk korábbi szakaszaiban konfigurálta a naplók típusát a tárolási helyük tárolásához és megadásához.
+
+A naplók használatával kapcsolatos problémák megoldásához és elemzések létrehozásához létrehozhat **Egyéni lekérdezéseket**. A kezdéshez igénybe veheti a szolgáltatás által biztosított néhány példa lekérdezés előnyeit is, amelyek az ügyfelek által a példánnyal kapcsolatos gyakori kérdésekkel foglalkoznak.
+
+Itt megtudhatja, hogyan kérdezheti le a példányhoz tartozó naplókat.
+
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az Azure Digital Twins-példányhoz. A nevét a portál keresési sávjába írja be. 
+
+2. A napló lekérdezési oldalának megnyitásához válassza a menü **naplók** elemét. A lap egy *lekérdezések* nevű ablakra nyílik meg.
+
+    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Az Azure Digital Twins-példány naplók lapját ábrázoló képernyőkép. Egy lekérdezési ablak jelenik meg, amely a különböző naplózási beállítások (például a DigitalTwin API késése és a modell API-késés) utáni előre összekészített lekérdezéseket jeleníti meg." lightbox="media/troubleshoot-diagnostics/logs.png":::
+
+    Ezek a különböző naplókhoz írt, előre összeépített példák. A lekérdezések egyikét kiválasztva betöltheti azt a lekérdezés-Szerkesztőbe, és futtathatja, hogy megtekintse a példányhoz tartozó naplókat.
+
+    A *lekérdezési ablakot úgy* is lezárhatja, hogy semmit nem kell futtatnia anélkül, hogy közvetlenül a lekérdezés-szerkesztő lapra ugorjon, ahol egyéni lekérdezési kódokat írhat vagy szerkeszthet.
+
+3. A *lekérdezések* ablakból való kilépés után megjelenik a fő lekérdezés-szerkesztő oldal. Itt megtekintheti és szerkesztheti a példaként szolgáló lekérdezések szövegét, vagy megírhatja a saját lekérdezéseit a semmiből.
+    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Az Azure Digital Twins-példány naplók lapját ábrázoló képernyőkép. A lekérdezési ablak eltűnik, és helyette a különböző naplók listája, egy szerkesztési ablaktábla, amely a szerkeszthető lekérdezési kódokat és a lekérdezési előzményeket megjelenítő ablaktáblát jeleníti meg." lightbox="media/troubleshoot-diagnostics/logs-query.png":::
+
+    A bal oldali panelen 
+    - A *Tables (táblák* ) lapon láthatók azok a különböző Azure digitális Twins- [naplózási kategóriák](#log-categories) , amelyek a lekérdezésekben használhatók. 
+    - A *lekérdezések* lapon a szerkesztőbe betölthető példákat tartalmazó lekérdezések láthatók.
+    - A *szűrő* lapon testreszabhatja a lekérdezés által visszaadott adatok szűrt nézetét.
+
+A naplózási lekérdezésekkel és azok írásával kapcsolatos részletesebb információkért tekintse meg a [*Azure monitorban található naplók áttekintését*](../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="next-steps"></a>További lépések
 
 * A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [*adatok gyűjtése és felhasználása az Azure-erőforrásokból*](../azure-monitor/platform/platform-logs-overview.md).
 * További információ az Azure digitális Twins metrikáinak használatáról [*: a metrikák megtekintése Azure Monitorsal*](troubleshoot-metrics.md).

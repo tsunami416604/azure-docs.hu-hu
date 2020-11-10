@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a26228b33a7d90df558de2ecdf4686910e606a54
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80811105"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413292"
 ---
 # <a name="azure-network-security-overview"></a>Az Azure hálózati biztonság áttekintése
 
@@ -63,7 +63,7 @@ Az Azure számos különböző típusú hálózati hozzáférés-vezérlést tá
 A biztonságos üzembe helyezéshez valamilyen mérték szükséges a hálózati hozzáférés-vezérléshez. A hálózati hozzáférés-vezérlés célja, hogy korlátozza a virtuális gépek kommunikációját a szükséges rendszerekkel. Más kommunikációs kísérletek le vannak tiltva.
 
 > [!NOTE]
-> A tárolási tűzfalak az [Azure Storage biztonsági áttekintése című](storage-overview.md) cikkben találhatók.
+> A tárolási tűzfalak az [Azure Storage biztonsági áttekintése című](../../storage/blobs/security-recommendations.md) cikkben találhatók.
 
 #### <a name="network-security-rules-nsgs"></a>Hálózati biztonsági szabályok (NSG)
 
@@ -77,11 +77,11 @@ A NSG nem biztosítanak alkalmazás-rétegbeli ellenőrzést vagy hitelesített 
 
 További információ:
 
-* [Hálózati biztonsági csoportok](../../virtual-network/security-overview.md)
+* [Hálózati biztonsági csoportok](../../virtual-network/network-security-groups-overview.md)
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC – a virtuális gép elérési ideje
 
-Az [Azure Security Center](../../security-center/security-center-intro.md) kezelheti a virtuális gépek NSG, és zárolhatja a virtuális géphez való hozzáférést, amíg a felhasználó a megfelelő szerepköralapú hozzáférés-vezérlési [RBAC](/azure/role-based-access-control/overview) engedélyeket kér. Ha a felhasználó sikeresen engedélyezte az ASC-t, a módosításokat végez a NSG, hogy engedélyezze a hozzáférést a kiválasztott portokhoz a megadott időpontig. Ha az idő lejár, a rendszer visszaállítja a NSG az előző biztonságos állapotba.
+Az [Azure Security Center](../../security-center/security-center-introduction.md) kezelheti a virtuális gépek NSG, és zárolhatja a virtuális géphez való hozzáférést, amíg a felhasználó a megfelelő szerepköralapú hozzáférés-vezérlési [RBAC](../../role-based-access-control/overview.md) engedélyeket kér. Ha a felhasználó sikeresen engedélyezte az ASC-t, a módosításokat végez a NSG, hogy engedélyezze a hozzáférést a kiválasztott portokhoz a megadott időpontig. Ha az idő lejár, a rendszer visszaállítja a NSG az előző biztonságos állapotba.
 
 További információ:
 
@@ -141,7 +141,7 @@ Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltat�
 
 További információ:
 
-* [Azure Firewall áttekintése](/azure/firewall/overview)
+* [Azure Firewall áttekintése](../../firewall/overview.md)
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>A távoli hozzáférés és a létesítmények közötti kapcsolatok biztonságossá tétele
 
@@ -202,7 +202,7 @@ Számos virtuális hálózatot használhat az üzemelő példányokhoz. Ennek sz
 
 Az egyik lehetőség az, hogy az egyik virtuális hálózaton lévő szolgáltatásokhoz kapcsolódjon egy másik virtuális hálózat szolgáltatásaihoz, az interneten keresztül "visszakapcsolva". A kapcsolódás egy virtuális hálózaton kezdődik, az interneten keresztül történik, majd visszatér a célként megadott virtuális hálózatra. Ez a beállítás lehetővé teszi az internetes kommunikációban rejlő biztonsági problémákhoz való kapcsolódást.
 
-Jobb megoldás lehet egy helyek közötti VPN létrehozása, amely két virtuális hálózat között csatlakozik. Ez a módszer ugyanazt az [IPSec Tunnel Mode](https://technet.microsoft.com/library/cc786385.aspx) protokollt használja, mint a fent említett, telephelyek közötti VPN-kapcsolat.
+Jobb megoldás lehet egy helyek közötti VPN létrehozása, amely két virtuális hálózat között csatlakozik. Ez a módszer ugyanazt az [IPSec Tunnel Mode](/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) protokollt használja, mint a fent említett, telephelyek közötti VPN-kapcsolat.
 
 Ennek a megközelítésnek az az előnye, hogy a VPN-kapcsolat az Azure hálózati hálón keresztül lett létrehozva az interneten keresztüli csatlakozás helyett. Ez egy további biztonsági réteget biztosít, amely az interneten keresztül csatlakozó helyek közötti VPN-kapcsolatokhoz hasonlít.
 
@@ -237,7 +237,7 @@ Az Azure Application Gateway HTTP-alapú terheléselosztást biztosít a webalap
 
 További információ:
 
-* [Az Application Gateway áttekintése](/azure/application-gateway/application-gateway-introduction)
+* [Az Application Gateway áttekintése](../../application-gateway/overview.md)
 
 ### <a name="network-level-load-balancing"></a>Hálózati szintű terheléselosztás
 
@@ -252,8 +252,8 @@ A hálózati szintű terheléselosztás előnyeit az Azure-ban Azure Load Balanc
 
 További információ:
 
-* [Internetkapcsolattal rendelkező terheléselosztó több virtuális gép vagy szolgáltatás között](/azure/load-balancer/load-balancer-internet-overview)
-* [A belső Load Balancer áttekintése](/azure/load-balancer/load-balancer-internal-overview)
+* [Internetkapcsolattal rendelkező terheléselosztó több virtuális gép vagy szolgáltatás között](../../load-balancer/load-balancer-overview.md)
+* [A belső Load Balancer áttekintése](../../load-balancer/load-balancer-overview.md)
 
 ### <a name="global-load-balancing"></a>Globális terheléselosztás
 
@@ -381,7 +381,7 @@ A Security Center segítségével optimalizálhatja és figyelheti a hálózati 
 
 További információ:
 
-* [Az Azure Security Center bemutatása](../../security-center/security-center-intro.md)
+* [Az Azure Security Center bemutatása](../../security-center/security-center-introduction.md)
 
 ### <a name="virtual-network-tap"></a>Virtual Network KOPPINTson
 

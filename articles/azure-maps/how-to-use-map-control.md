@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 21fd5f5c94b56f2f63d0e90d9982edd60a2d95d6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: db7006c01f59e8a11872d99b3a16f24f65ef7588
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895443"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413377"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Az Azure Maps-térképvezérlő használata
 
@@ -75,7 +75,7 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
     </style>
    ```
 
-4. A lap törzsében adjon hozzá egy elemet, `<div>` és adjon neki egy `id` **myMap** .
+4. A lap törzsében adjon hozzá egy elemet, `<div>` és adjon neki egy `id` **myMap**.
 
    ```HTML
     <body onload="InitMap()">
@@ -99,8 +99,8 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
                     authType: 'subscriptionKey',
                     subscriptionKey: '<Your Azure Maps Key>'
                 }
-            }
-        });
+            });
+       }
     </script>
     ```
 
@@ -120,8 +120,8 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
                     aadAppId: '<Your AAD App Id>',
                     aadTenant: '<Your AAD Tenant Id>'
                 }
-            }
-        });
+            });
+        }
     </script>
    ```
 
@@ -261,7 +261,7 @@ Ha JavaScript-keretrendszer használatával fejleszt, a következő nyílt forr�
 - [Azure Maps reagáló összetevő](https://github.com/WiredSolutions/react-azure-maps) – a Azure Maps vezérlőre reagáló burkoló.
 - [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – egy Azure Maps összetevő a Vue alkalmazáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet egy térképet:
 

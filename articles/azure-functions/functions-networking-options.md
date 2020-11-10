@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897075"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413088"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -117,6 +117,9 @@ A virtuális hálózati eseményindítókat a következő Azure CLI-parancs hasz
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
 
+> [!TIP]
+> Előfordulhat, hogy a virtuális hálózati eseményindítók engedélyezése hatással lehet az alkalmazás teljesítményére, mivel a App Service-csomag példányainak figyelniük kell az eseményindítókat a skálázási időpontok meghatározásához. Ez a hatás valószínűleg nagyon kicsi.
+
 A virtuális hálózati eseményindítók a functions futtatókörnyezet 2. x vagy újabb verziójában támogatottak. A következő nem HTTP típusú triggerek támogatottak:
 
 | Kiterjesztés | Minimális verzió |
@@ -163,7 +166,7 @@ A következő API-k lehetővé teszik a regionális virtuális hálózati integr
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a hálózatkezelésről és a Azure Functions:
 

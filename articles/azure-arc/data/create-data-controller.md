@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372293"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413224"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Az Azure arc-adatkezelő létrehozása
 
@@ -36,7 +36,8 @@ Jelenleg a Kubernetes-szolgáltatások és-disztribúciók támogatott listája 
 - Nyílt forráskódú, általában a kubeadm használatával üzembe helyezett fölérendelt Kubernetes
 
 > [!IMPORTANT]
-> * A Kubernetes minimális támogatott verziója: v 1.14.
+> * A Kubernetes minimális támogatott verziója v 1.17.
+> * A OCP minimális támogatott verziója 4,3.
 > * A [kapcsolati követelményekből](connectivity.md) megtudhatja, milyen kapcsolatra van szükség a környezet és az Azure között.
 > * Tekintse meg a [tárolási konfigurációs útmutatót](storage-configuration.md) , amelyből megtudhatja, hogyan konfigurálhatja az állandó tárterületet.
 > * Ha az Azure Kubernetes szolgáltatást használja, a fürt feldolgozói csomópontjának virtuálisgép-méretének legalább **Standard_D8s_v3nak** kell lennie, és **prémium szintű lemezeket** kell használnia. A fürt nem terjedhet több rendelkezésre állási zónára. 
@@ -45,7 +46,7 @@ Jelenleg a Kubernetes-szolgáltatások és-disztribúciók támogatott listája 
 > [!NOTE]
 > Ha a Red Hat OpenShift Container platformot használja az Azure-ban, a legújabb elérhető verziót ajánlott használni.
 
-A választott lehetőségtől függően bizonyos eszközökre lesz _szükség_, de ajánlott az [összes ügyféleszközök telepítése](./install-client-tools.md) , mielőtt megkezdené az Azure arc-adatkezelő létrehozását.
+A választott lehetőségtől függően bizonyos eszközökre lesz _szükség_ , de ajánlott az [összes ügyféleszközök telepítése](./install-client-tools.md) , mielőtt megkezdené az Azure arc-adatkezelő létrehozását.
 
 A létrehozási folyamat során a választott lehetőségtől függetlenül a következő információkat kell megadnia:
 
@@ -58,7 +59,7 @@ A létrehozási folyamat során a választott lehetőségtől függetlenül a k�
 - **Azure-erőforráscsoport neve** – annak az erőforráscsoportnak a neve, amelyhez az Azure-beli adatkezelő erőforrást létre kívánja hozni.
 - **Azure Location** – az Azure-beli hely, ahol az adatkezelő erőforrás-metaadatai az Azure-ban lesznek tárolva. Az elérhető régiók listájáért lásd: [Azure globális infrastruktúra/termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Több lehetőség is létezik az Azure arc-adatkezelő létrehozásához:
 

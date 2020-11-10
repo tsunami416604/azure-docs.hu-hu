@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ba0cbbccd1f4a9bc8ff8a4895e238c9150c9b17
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82837634"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413071"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Gyakori kérdések az Azure-webalkalmazási tűzfalról az Azure bejárati szolgáltatásában
 
@@ -64,7 +64,7 @@ Jelenleg a ModSec CRS 2.2.9, a CRS 3,0 és a CRS 3,1 szabályok csak a WAF Appli
 
 ## <a name="is-ddos-protection-integrated-with-front-door"></a>A DDoS Protection integrálva van a bejárati ajtóval? 
 
-Az Azure-beli hálózati éleken globálisan elosztott Azure bejárati ajtó képes felvenni és földrajzilag elkülöníteni a nagy mennyiségű támadásokat. Létrehozhat egyéni WAF szabályzatot, amellyel automatikusan blokkolhatja és korlátozhatja az ismert aláírásokkal rendelkező http (s) támadásokat. További részletekként engedélyezheti DDoS Protection szabványt azon a VNet, amelyen a háttérrendszer üzembe lett helyezve. Azure DDoS Protection standard ügyfeleink további kedvezményeket kapnak, például a költséghatékonyságot, az SLA-garanciát és a DDoS gyors reagálású csapat szakembereinek hozzáférését a támadás során felmerülő azonnali segítségért.
+Az Azure-beli hálózati éleken globálisan elosztott Azure bejárati ajtó képes felvenni és földrajzilag elkülöníteni a nagy mennyiségű támadásokat. Létrehozhat egyéni WAF szabályzatot, amellyel automatikusan blokkolhatja és korlátozhatja az ismert aláírásokkal rendelkező http (s) támadásokat. További részletekként engedélyezheti DDoS Protection szabványt azon a VNet, amelyen a háttérrendszer üzembe lett helyezve. Azure DDoS Protection standard ügyfeleink további kedvezményeket kapnak, például a költséghatékonyságot, az SLA-garanciát és a DDoS gyors reagálású csapat szakembereinek hozzáférését a támadás során felmerülő azonnali segítségért. További információ: [DDoS Protection on bejárati ajtó](../../frontdoor/front-door-ddos.md).
 
 ## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>Miért van szükség további kérelmekre a díjszabási korlátozási szabályhoz konfigurált küszöbérték felett a háttérrendszer-kiszolgáló felé?
 

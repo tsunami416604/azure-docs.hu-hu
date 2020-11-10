@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/22/2020
 ms.author: aahi
 keywords: helyszíni, Docker, tároló, Kubernetes
-ms.openlocfilehash: a59d9fb4fb15b361259a705a024b9bea975e8072
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 56d88b9223a80ea9981e8830cac44bac7c6edb3b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368848"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413037"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-tárolók
 
@@ -58,7 +58,7 @@ Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosít
 
 | Szolgáltatás | Támogatott árképzési szintek | Tároló | Leírás |
 |--|--|--|--|
-| [Anomália detektor][ad-containers] | F0, S0 | **Anomália – detektor** ( [rendszerkép](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a gépi tanulással figyelje és azonosítsa a rendellenességeket.<br>[Hozzáférés kérése][request-access] |
+| [Anomália detektor][ad-containers] | F0, S0 | **Anomália – detektor** ( [rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-decision-anomaly-detector))  | A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a gépi tanulással figyelje és azonosítsa a rendellenességeket.<br>[Hozzáférés kérése][request-access] |
 | [Computer Vision][cv-containers] | F0, S1 | **Olvasás** OCR ( [rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Az olvasási OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ az API-k [olvasása dokumentációban](./computer-vision/concept-recognizing-text.md)található.<br>[Hozzáférés kérése][request-access] |
 | [Face][fa-containers] | F0, S0 | **Face** | Észleli az emberi arcokat a képekben, és azonosítja az attribútumokat, beleértve az arc-tereptárgyak (például az orr és a szemek), a nemek, az életkor és más, a géppel előre jelzett arc-funkciókat. Az észlelésen kívül a Face utasítással megtekintheti, hogy két arc vagy különböző kép azonos-e a megbízhatósági pontszám használatával, vagy összehasonlítja az arcokat egy adatbázissal, hogy megtudja, hasonló vagy azonos arc létezik-e. A hasonló arcok csoportokba rendezésére is képes, közös vizualizációs jellemzőkkel. |
 | [Űrlap-felismerő][fr-containers] | F0, S0 | **Form Recognizer** | Az űrlap ismerete a gépi tanulási technológiákat alkalmazza a kulcs-érték párok és táblák űrlapokból való azonosításához és kinyeréséhez. |
@@ -80,10 +80,10 @@ Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosít
 
 Emellett egyes tárolók támogatják a Cognitive Services [**all-in-One ajánlati**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) erőforrás-kulcsokat. Egyetlen Cognitive Services is létrehozhat egy teljes körű erőforrást, és ugyanazt a számlázási kulcsot használhatja a támogatott szolgáltatások között a következő szolgáltatásokhoz:
 
-* Számítógépes látástechnológia
-* Arcfelismerés
+* Computer Vision
+* Face
 * LUIS
-* Szövegelemzés
+* Text Analytics
 
 ## <a name="container-availability-in-azure-cognitive-services"></a>Tároló rendelkezésre állása az Azure-ban Cognitive Services
 

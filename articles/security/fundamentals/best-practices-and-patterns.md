@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4a3b2afd8b1a5ffdbb1fe0db1c3e345a9c99154
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73889857"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412612"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Az Azure biztonsági bevált eljárásai és mintái
 
@@ -28,8 +28,8 @@ Az alábbi cikkek a felhőalapú megoldások Azure használatával történő te
 
 Az ajánlott eljárások az informatikai szakemberek számára készült erőforrások. Ilyenek lehetnek a biztonságos Azure-megoldások készítésére és üzembe helyezésére szolgáló tervezők, építészek, fejlesztők és tesztelők.
 
-* [Azure-beli határbiztonság – ajánlott eljárások](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
-* [Azure-beli adatbázis-biztonság – ajánlott eljárások](database-best-practices.md)
+* [Azure-beli határbiztonság – ajánlott eljárások](./network-best-practices.md#adopt-a-zero-trust-approach)
+* [Azure-beli adatbázis-biztonság – ajánlott eljárások](../../azure-sql/database/security-best-practice.md)
 * [Az Azure adatbiztonsági és titkosítási ajánlott eljárásai](data-encryption-best-practices.md)
 * [Az Azure-beli identitáskezelés és hozzáférés-vezérlés ajánlott biztonsági eljárásai](identity-management-best-practices.md)
 * [Ajánlott Azure-beli hálózatbiztonsági eljárások](network-best-practices.md)
@@ -38,7 +38,7 @@ Az ajánlott eljárások az informatikai szakemberek számára készült erőfor
 * [Az Azure Service Fabric ajánlott biztonsági eljárásai](service-fabric-best-practices.md)
 * [Azure-beli virtuális gépek biztonsága – ajánlott eljárások](iaas.md)
 * [Biztonságos hibrid hálózati architektúra megvalósítása az Azure-ban](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
-* [Eszközök internetes hálózatának biztonsága – ajánlott eljárások](iot-best-practices.md)
+* [Eszközök internetes hálózatának biztonsága – ajánlott eljárások](../../iot-fundamentals/iot-security-best-practices.md)
 * [PaaS-adatbázisok védelme az Azure-ban](paas-applications-using-sql.md)
 * [PaaS web- és mobilalkalmazások védelme az Azure App Service használatával](paas-applications-using-app-services.md)
 * [PaaS web- és mobilalkalmazások védelme az Azure Storage használatával](paas-applications-using-storage.md)

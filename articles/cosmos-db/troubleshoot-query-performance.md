@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 3979e5e904eb54db9566eb014f7e455ebaceaff0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 012e155737b9251827c668b3a9cacbbe8d59ae77
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087179"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411354"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Az Azure Cosmos DB használatakor felmerülő lekérdezési hibák elhárítása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -488,9 +488,10 @@ A párhuzamos lekérdezések több partíció párhuzamos lekérdezésével műk
 
 A lekérdezések az eredmények előzetes beolvasására lettek kialakítva, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javítására nyújt segítséget. A MaxBufferedItemCount beállítása korlátozza az előre beolvasott eredmények számát. Ha ezt az értéket a visszaadott várt számú eredmény (vagy egy magasabb szám) értékre állítja, a lekérdezés a lehető legtöbb előnyt érheti el az előzetes beolvasáskor. Ha a-1 értéket adja meg, a rendszer automatikusan meghatározza a pufferbe kerülő elemek számát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő cikkekből megtudhatja, hogyan méri a lekérdezéseket, és hogyan végezhet végrehajtási statisztikát a lekérdezések finomhangolásához, és így tovább:
 
 * [SQL-lekérdezés végrehajtási metrikáinak lekérése a .NET SDK használatával](profile-sql-api-query.md)
 * [A lekérdezési teljesítmény finomhangolása az Azure Cosmos DB-vel](./sql-api-query-metrics.md)
 * [Teljesítménnyel kapcsolatos tippek .NET SDK-hoz](performance-tips.md)
+* [Teljesítménnyel kapcsolatos tippek a Java v4 SDK-hoz](performance-tips-java-sdk-v4-sql.md)

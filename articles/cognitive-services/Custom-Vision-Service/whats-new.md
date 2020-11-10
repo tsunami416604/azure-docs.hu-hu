@@ -10,16 +10,31 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: a87e76d4a726f7a01b96d602e7f41d60409dae56
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 030b09dae9db11fb14defecde3d14e949b9e6748
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521492"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412731"
 ---
 # <a name="whats-new-in-custom-vision"></a>A Custom Vision újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk lehetnek. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.
+
+
+## <a name="october-2020"></a>2020. október 
+
+### <a name="custom-base-model"></a>Egyéni alapmodell
+
+- Egyes alkalmazások nagy mennyiségű közös képzési adattal rendelkeznek, de a modelljeiket külön kell finomítani; Ez jobb teljesítményt eredményez a különböző forrásokból származó rendszerképeknél kisebb eltérésekkel. Ebben az esetben az első modellt a szokásos módon, nagy mennyiségű betanítási adattal is betaníthatja. Ezután hívja meg a **TrainProject** -t az 3,4 nyilvános előzetes API-ban, a kérés törzsében a _CustomBaseModelInfo_ használatával, hogy az első fázisban betanított modellt használja az alsóbb rétegbeli projektek alapmodellje. Ha a forrás-és az alárendelt célként megadott projekt hasonló rendszerképeket tartalmaz, akkor jobb teljesítményt várhat. 
+
+### <a name="new-domain-information"></a>Új tartományi információk
+
+- A Custom Vision 3,4 nyilvános előzetes verziójú API **GetDomains** által visszaadott tartományi információk mostantól támogatott exportálható platformokat, a modell architektúrájának rövid leírását, valamint a kompakt tartományokhoz tartozó modell méretét is tartalmazzák.
+
+### <a name="training-divergence-feedback"></a>Az eltérési visszajelzések betanítása
+
+- A Custom Vision Custom Vision 3,4 nyilvános előzetes API mostantól visszaadja a **TrainingErrorDetails** a **GetIteration** -hívásból. A sikertelen iterációk során ez azt mutatja, hogy a hibát a betanítási eltérés okozta-e, amely több és jobb minőségű betanítási adattal is orvosolható.
 
 ## <a name="july-2020"></a>2020. július
 

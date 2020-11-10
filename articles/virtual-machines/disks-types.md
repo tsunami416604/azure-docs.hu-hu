@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 7f274827e646ea0a7c0fd103983cfc566d699228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a6b6196888aedfd6aa60c9395ff27611907661a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596767"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413159"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen típusú lemezek érhetőek el az Azure-ban?
 
@@ -59,6 +59,8 @@ Az ultra-lemezek főbb képességei a következők:
 |256     |76 800         |2000         |
 |512     |153 600         |2000         |
 |1024 – 65536 (az ebben a tartományban lévő méretek 1 TiB-onként növekednek)     |160 000         |2000         |
+
+Az ultra-lemezek úgy lettek kialakítva, hogy az idő 99,99%-ában az előző táblázatban ismertetett ezredmásodperces késéseket és célként megadott IOPS és átviteli sebességet biztosítson.
 
 ### <a name="ga-scope-and-limitations"></a>A GA hatóköre és korlátai
 
@@ -122,15 +124,15 @@ A felügyelt lemezek használatakor az alábbi számlázási szempontokat kell f
 - Kimenő adatforgalom
 - Tranzakciók száma
 
-**Felügyelt lemez mérete**: a felügyelt lemezek számlázása a kiosztott méret alapján történik. Az Azure leképezi a kiosztott méretet (felfelé kerekítve) a legközelebbi felajánlott lemez méretére. A felkínált lemezterület részleteiért tekintse meg az előző táblázatokat. Minden lemez egy támogatott kiosztott lemezre mutat, és ennek megfelelően történik a számlázás. Ha például egy 200 GiB-standard SSD kiépített, az a E15 (256 GiB) lemez méretére vonatkozó ajánlatot képezi le. A kiosztott lemezek számlázása óránként, a tárolási ajánlat havi díja alapján történik. Ha például kiépített egy E10 lemezt, és 20 óra elteltével törölte azt, akkor a E10-ajánlat díja 20 óra. Ez a lemezre írt tényleges adatok mennyiségétől függetlenül.
+**Felügyelt lemez mérete** : a felügyelt lemezek számlázása a kiosztott méret alapján történik. Az Azure leképezi a kiosztott méretet (felfelé kerekítve) a legközelebbi felajánlott lemez méretére. A felkínált lemezterület részleteiért tekintse meg az előző táblázatokat. Minden lemez egy támogatott kiosztott lemezre mutat, és ennek megfelelően történik a számlázás. Ha például egy 200 GiB-standard SSD kiépített, az a E15 (256 GiB) lemez méretére vonatkozó ajánlatot képezi le. A kiosztott lemezek számlázása óránként, a tárolási ajánlat havi díja alapján történik. Ha például kiépített egy E10 lemezt, és 20 óra elteltével törölte azt, akkor a E10-ajánlat díja 20 óra. Ez a lemezre írt tényleges adatok mennyiségétől függetlenül.
 
-**Pillanatképek**: a pillanatképek számlázása a felhasznált méret alapján történik. Ha például létrehoz egy pillanatképet egy felügyelt lemezről, amely 64 GiB kiosztott kapacitással rendelkezik, és a tényleges felhasznált adatok mérete 10 GiB, a pillanatkép számlázása csak a 10 GiB felhasznált adatméretre történik.
+**Pillanatképek** : a pillanatképek számlázása a felhasznált méret alapján történik. Ha például létrehoz egy pillanatképet egy felügyelt lemezről, amely 64 GiB kiosztott kapacitással rendelkezik, és a tényleges felhasznált adatok mérete 10 GiB, a pillanatkép számlázása csak a 10 GiB felhasznált adatméretre történik.
 
 A pillanatképekkel kapcsolatos további információkért tekintse meg a [felügyelt lemez – áttekintés](managed-disks-overview.md)című témakör a pillanatképek című szakaszát.
 
-**Kimenő**adatforgalom: a [kimenő](https://azure.microsoft.com/pricing/details/bandwidth/) adatforgalom (az Azure-adatközpontok által kiváltott adatok) a sávszélesség-használatért kell fizetnie.
+**Kimenő** adatforgalom: a [kimenő](https://azure.microsoft.com/pricing/details/bandwidth/) adatforgalom (az Azure-adatközpontok által kiváltott adatok) a sávszélesség-használatért kell fizetnie.
 
-**Tranzakciók**: a standard szintű felügyelt lemezeken végrehajtott tranzakciók száma. A standard SSD-k esetében minden I/O-művelet a 256 KiB-nál kisebb vagy azzal egyenlő, egyetlen I/O-műveletnek számít. A 256 KiB-nál nagyobb teljesítményű i/O-műveletek a 256 KiB-os méretnél több I/O-műveletnek számítanak. A standard HDD-k esetében minden egyes IO-művelet egyetlen tranzakciónak tekintendő, az I/O-mérettől függetlenül.
+**Tranzakciók** : a standard szintű felügyelt lemezeken végrehajtott tranzakciók száma. A standard SSD-k esetében minden I/O-művelet a 256 KiB-nál kisebb vagy azzal egyenlő, egyetlen I/O-műveletnek számít. A 256 KiB-nál nagyobb teljesítményű i/O-műveletek a 256 KiB-os méretnél több I/O-műveletnek számítanak. A standard HDD-k esetében minden egyes IO-művelet egyetlen tranzakciónak tekintendő, az I/O-mérettől függetlenül.
 
 A Managed Disks díjszabásáról, beleértve a tranzakciós költségeket is, tekintse meg a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks).
 
@@ -147,6 +149,6 @@ Az ultra Disk díjszabásáról az [Azure Disks díjszabását ismertető oldalo
 
 A lemezes foglalás az a lehetőség, hogy a lemezes tárterületet egy évig előre, kedvezményes áron vásárolja meg, ami csökkenti a teljes költségeket. A lemezes foglalások megvásárlásakor kiválaszthat egy adott lemezes SKU-t egy adott régióban, például a 10 P30 (1TiB) prémium SSD-ket az USA 2. keleti régiójában egy éves időszakra. A foglalási élmény a fenntartott virtuális gépek (VM) példányaihoz hasonló. A megtakarítások maximalizálása érdekében a virtuális gépek és a lemezek foglalása is megtehető. Az Azure-lemezek foglalása egyéves kötelezettségvállalási tervet biztosít a P30 (1TiB) prémium SSD-SKU-k számára a P80 (32 TiB) és az összes éles régióban. A fenntartott lemezek díjszabásával kapcsolatos további információkért lásd az [Azure Disks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A kezdéshez tekintse meg [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/) .

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 399c078481fb205221a683e44f74b4d70c383cbe
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7fd52376e6b2d435e3ac6a60243f85ab34e59381
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096563"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412928"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB-hez készült Azure Cosmos DB API (3.6-os verzió): támogatott funkciók és szintaxis
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -148,7 +148,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 |$currentOp|    Nem|
 |$listLocalSessions    |Nem|
 |$listSessions    |Nem|
-|$graphLookup    |Nem|
+|$graphLookup    |Igen|
 
 ### <a name="boolean-expressions"></a>Logikai kifejezések
 
@@ -338,7 +338,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 |Bináris adatértékek    |Igen|    
 |ObjectId    |Igen    |
 |Logikai    |Igen    |
-|Dátum    |Igen    |
+|Date    |Igen    |
 |Null    |Igen    |
 |32 bites egész szám (int)    |Igen    |
 |Timestamp    |Igen    |
@@ -594,7 +594,7 @@ Az Azure Cosmos DB támogatja az automatikus, kiszolgálóoldali horizontális s
 
 A Azure Cosmos DB még nem támogatja a kiszolgálóoldali munkamenet-parancsokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ: [Mongo 3,6 version features](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: da17122de8db41b6ba9ae9597d52bc3e1d8d0062
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c1200121d1c768a3fdddd7749184d7f8b5c98a96
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962394"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413105"
 ---
 # <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Előzetes verzió: Azure Hybrid Benefit – hogyan vonatkozik Linux Virtual Machines
 
@@ -25,7 +25,7 @@ A Azure Hybrid Benefit lehetővé teszi a helyszíni Red Hat Enterprise Linux (R
 
 > [!IMPORTANT]
 > A Linux rendszerű virtuális gépek Azure Hybrid Benefit jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="benefit-description"></a>Juttatás leírása
 
@@ -57,7 +57,7 @@ Ebben a fázisban az [alábbi](https://aka.ms/ahb-linux-form)űrlap kitöltésé
 1.    Regisztráció a [Red Hat Cloud Access programba](https://aka.ms/rhel-cloud-access)
 1.    Engedélyezze az Azure-előfizetését a Felhőbeli hozzáféréshez, és engedélyezze azokat a virtuális gépeket tartalmazó előfizetéseket, amelyekhez a kedvezményt használni szeretné
 1.    A meglévő virtuális gépek előnyének alkalmazása a Azure Portal vagy az Azure CLI használatával
-1.    Az előnyt élvező virtuális gépek regisztrálása külön frissítési forrással
+1.    Nem kötelező, regisztrálja az előnyben részesített virtuális gépeket egy külön frissítési forrással (a kapcsolt virtuális gépek [RHUI](../workloads/redhat/redhat-rhui.md) vagy RHSM keresztül regisztrálhatók)
 
 ### <a name="suse-customers"></a>SUSE-ügyfelek
 
@@ -147,13 +147,14 @@ A: nem. A virtuális gépen futó disztribúcióval nem egyező típusú licenc 
 
 Válasz: eltarthat egy ideig, amíg a Red Hat Cloud Access-előfizetés regisztrálása a Red Hat-ról az Azure-ra terjed. Ha továbbra is látni szeretné a hibát egy munkanap után, forduljon a Microsoft támogatási szolgálatához.
 
-## <a name="common-errors"></a>Gyakori hibák
-Ez a szakasz a gyakori hibák listáját és a mérséklési lépéseket tartalmazza.
+## <a name="common-issues"></a>Gyakori problémák
+Ez a szakasz az észlelt gyakori problémák listáját és a mérséklési lépéseket tartalmazza.
 
 | Hiba | Kockázatcsökkentés |
 | ----- | ---------- |
 | "Az előfizetés nincs regisztrálva a Azure Hybrid Benefit Linux-előnézetéhez. Részletes útmutatásért tekintse meg a https://aka.ms/ahb-linux következőt: " | Töltse ki az űrlapot https://aka.ms/ahb-linux-form , és regisztráljon a Azure Hybrid Benefit Linux előzetes verziójára.
 | "A műveletet nem lehetett befejezni, mert a rekordok azt mutatják, hogy az Azure-előfizetésében nem sikerült engedélyezni a Red Hat Cloud Access használatát..." | Ahhoz, hogy a juttatást a RHEL virtuális gépekkel használhassa, először regisztrálnia kell az Azure-előfizetését a Red Hat Cloud Access használatával. Tekintse meg ezt a hivatkozást, ha többet szeretne megtudni arról, hogyan regisztrálhat Azure-előfizetéseket a Red Hat Cloud Accesshez
+|"A Azure Hybrid Benefit lehetősége nem jelenik meg a portálon" | Ez egy ismert probléma a megosztott képkatalógusból, pillanatképekről vagy rögzített TB-lemezképekről létrehozott RHEL és SLES virtuális gépek esetében. Ebben az esetben használja az "[Engedélyezés és letiltás az Azure CLI-ben](#enable-and-disable-the-benefit-in-the-azure-cli)" című szakaszban ISMERTETett CLI-lépéseket. A AHB állapotának megtekintéséhez használja a parancsot ` az vm get-instance-view -g MyResourceGroup -n MyVm` .|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Első lépésként tekintse meg az előzetes verziót [az űrlap](https://aka.ms/ahb-linux-form)kitöltésével.

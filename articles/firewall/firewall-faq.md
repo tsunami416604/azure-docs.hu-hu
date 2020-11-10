@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b94b71993285a61042be3c6cd9e4708315fab9f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88611177"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413003"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – gyakori kérdések
 
@@ -40,9 +40,9 @@ Azure Firewall támogatja a szabályokat és a szabályok gyűjteményeit. A sza
 
 Háromféle típusú szabálygyűjtemény létezik:
 
-* *Alkalmazási szabályok*: olyan teljes tartománynevek (FQDN-EK) konfigurálása, amelyek egy alhálózatból érhetők el.
-* *Hálózati szabályok*: a forrás-, protokoll-, célport-és célcím-szabályokat tartalmazó szabályok konfigurálása.
-* *NAT-szabályok*: KONFIGURÁLJA a DNAT szabályokat a bejövő internetkapcsolatok engedélyezéséhez.
+* *Alkalmazási szabályok* : olyan teljes tartománynevek (FQDN-EK) konfigurálása, amelyek egy alhálózatból érhetők el.
+* *Hálózati szabályok* : a forrás-, protokoll-, célport-és célcím-szabályokat tartalmazó szabályok konfigurálása.
+* *NAT-szabályok* : KONFIGURÁLJA a DNAT szabályokat a bejövő internetkapcsolatok engedélyezéséhez.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Támogatja Azure Firewall a bejövő forgalom szűrését?
 
@@ -139,9 +139,9 @@ Nem. A NAT-szabályok implicit módon hozzáadnak egy megfelelő hálózati szab
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Hogyan működnek a helyettesítő karakterek egy alkalmazás-szabályban célként megadott FQDN-ben?
 
-A helyettesítő karakterek használata jelenleg csak a teljes tartománynév bal oldalán lehetséges. Például: ***. contoso.com** és ***contoso.com**.
+A helyettesítő karakterek használata jelenleg csak a teljes tartománynév bal oldalán lehetséges. Például: * *_. contoso.com_* és * *_contoso.com_*.
 
-Ha a ***. contoso.com**konfigurálja, akkor a *anyvalue*. contoso.com, de nem contoso.com (a tartomány csúcspontja) használatát teszi lehetővé. Ha engedélyezni szeretné a tartomány csúcspontját, explicit módon konfigurálnia kell célként megadott FQDN-ként.
+Ha a * *_. contoso.com_* konfigurálja, akkor a *anyvalue*. contoso.com, de nem contoso.com (a tartomány csúcspontja) használatát teszi lehetővé. Ha engedélyezni szeretné a tartomány csúcspontját, explicit módon konfigurálnia kell célként megadott FQDN-ként.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>Mit jelent a *kiépítési állapot: nem sikerült* ?
 
@@ -205,7 +205,7 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>A TCP ping és hasonló eszközök miért tudnak sikeresen csatlakozni a célként megadott FQDN-hez, még akkor is, ha nincs Azure Firewall szabály, amely engedélyezi ezt a forgalmat?
 
-A TCP-pingelés valójában nem csatlakozik a célként megadott FQDN-hez. Ez azért történik, mert Azure Firewall transzparens proxyja az 80/443-as porton figyeli a kimenő forgalmat. A TCP-ping kapcsolatot létesít a tűzfallal, amely ezután eldobja a csomagot, és naplózza a kapcsolatot. Ez a viselkedés nem befolyásolja a biztonságot. A félreértések elkerülése érdekében azonban vizsgáljuk a viselkedés lehetséges változásait.
+A TCP-pingelés valójában nem csatlakozik a célként megadott FQDN-hez. Ez azért történik, mert Azure Firewall transzparens proxyja az 80/443-as porton figyeli a kimenő forgalmat. A TCP-ping kapcsolatot létesít a tűzfallal, amely ezután eldobja a csomagot. Ez a viselkedés nem befolyásolja a biztonságot. A félreértések elkerülése érdekében azonban vizsgáljuk a viselkedés lehetséges változásait.
 
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Az IP-csoportok által támogatott IP-címek száma korlátozott?
 

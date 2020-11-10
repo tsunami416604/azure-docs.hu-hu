@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dc931c461988daf9ff6fb2f954b52fa58ce94af
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 795f5ede382e561ee810e54e1f8897c5d806e8b8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369777"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412374"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Négy lépés egy erős identitás-alaprendszer számára a Azure Active Directory
 
@@ -83,7 +83,7 @@ A modern vállalatoknál az IT-részlegek gyakran nem ismerik az összes olyan f
 
 [Microsoft Cloud app Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) segítségével azonosíthatja azokat a hasznos alkalmazásokat, amelyek népszerűek a felhasználók számára, és hozzáadhatja őket a vállalati alkalmazások katalógusához, így a felhasználók az egyszeri bejelentkezést és a feltételes hozzáférést is igénybe vehetik.
 
-<em>"**Cloud app Security** segít biztosítani, hogy a felhasználók a felhő-és SaaS-alkalmazásaikat megfelelően használják, olyan módon, amely támogatja a Accenture védelmére szolgáló alapvető biztonsági házirendeket."</em> --- [John Blasi, ügyvezető igazgató, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>" **Cloud app Security** segít biztosítani, hogy a felhasználók a felhő-és SaaS-alkalmazásaikat megfelelően használják, olyan módon, amely támogatja a Accenture védelmére szolgáló alapvető biztonsági házirendeket."</em> --- [John Blasi, ügyvezető igazgató, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 Az árnyék észlelése mellett a MCAS is meghatározhatja az alkalmazások kockázati szintjét, megakadályozhatja a vállalati adatokhoz való jogosulatlan hozzáférést, az esetleges adatszivárgást és az alkalmazásokban rejlő egyéb biztonsági kockázatokat.
 
@@ -147,7 +147,7 @@ Hasonlóképpen, az [önkiszolgáló jelszó-kezelési jelentés](../authenticat
 
 ### <a name="self-service-app-management"></a>Önkiszolgáló alkalmazások kezelése
 
-Ahhoz, hogy a felhasználók saját maguk is felfedezzék az alkalmazásokat a hozzáférési paneljéről, engedélyeznie kell az [önkiszolgáló alkalmazásokhoz való hozzáférést](../manage-apps/access-panel-manage-self-service-access.md) minden olyan alkalmazáshoz, amelyet engedélyezni kíván a felhasználók számára az önfelderítéshez és a hozzáférés kéréséhez. Az önkiszolgáló alkalmazás-hozzáférés lehetővé teszi a felhasználók számára az alkalmazások önfelderítését, és opcionálisan lehetővé teszi, hogy az üzleti csoport jóváhagyja az alkalmazásokhoz való hozzáférést. Lehetővé teheti az üzleti csoport számára, hogy a hozzáférési panelektől közvetlenül az [alkalmazásokban a jelszó Single-Signhoz](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) rendelt hitelesítő adatokat felügyelje.
+Ahhoz, hogy a felhasználók saját maguk is felfedezzék az alkalmazásokat a hozzáférési paneljéről, engedélyeznie kell az [önkiszolgáló alkalmazásokhoz való hozzáférést](../manage-apps/access-panel-manage-self-service-access.md) minden olyan alkalmazáshoz, amelyet engedélyezni kíván a felhasználók számára az önfelderítéshez és a hozzáférés kéréséhez. Az önkiszolgáló alkalmazás-hozzáférés lehetővé teszi a felhasználók számára az alkalmazások önfelderítését, és opcionálisan lehetővé teszi, hogy az üzleti csoport jóváhagyja az alkalmazásokhoz való hozzáférést. Lehetővé teheti az üzleti csoport számára, hogy a hozzáférési panelektől közvetlenül az [alkalmazásokban a jelszó Single-Signhoz](../manage-apps/troubleshoot-password-based-sso.md#automatically-capture-sign-in-fields-for-an-app) rendelt hitelesítő adatokat felügyelje.
 
 ### <a name="self-service-group-management"></a>Önkiszolgáló csoportkezelés
 
@@ -212,7 +212,7 @@ Az árnyék felfedése mellett a [Microsoft Cloud app Security](/cloud-app-secur
 
 *"A Cloud App Security gyorsan észlelheti a rendellenességeket, és műveleteket végezhet."* --- [Eric LePenske, vezető menedzser, információbiztonság, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A hibrid identitási megoldások megvalósításának számos aspektusa van, de ez a négy lépésből álló ellenőrzőlista segít egy olyan identitás-infrastruktúra gyors megvalósításában, amely lehetővé teszi a felhasználók számára, hogy hatékonyabbá és biztonságosabbá tegyék a felhasználókat.
 
@@ -229,7 +229,7 @@ Javasoljuk, hogy az alábbi ellenőrzőlistát nyomtassa ki a szervezete egy szi
 
 ### <a name="today"></a>Today
 
-|Bejelentkezett?|Elem|
+|Bejelentkezett?|Item|
 |:-|:-|
 ||A kísérleti önkiszolgáló jelszó-visszaállítás (SSPR) egy csoport számára|
 ||Hibrid összetevők monitorozása Azure AD Connect Health használatával|
@@ -239,7 +239,7 @@ Javasoljuk, hogy az alábbi ellenőrzőlistát nyomtassa ki a szervezete egy szi
 
 ### <a name="next-two-weeks"></a>Következő két hét
 
-|Bejelentkezett?|Elem|
+|Bejelentkezett?|Item|
 |:-|:-|
 ||Alkalmazás elérhetővé tétele a felhasználók számára|
 ||Azure AD-kiépítés kipróbálása a választható SaaS-alkalmazásokhoz|
@@ -249,7 +249,7 @@ Javasoljuk, hogy az alábbi ellenőrzőlistát nyomtassa ki a szervezete egy szi
 
 ### <a name="next-month"></a>Következő hónap
 
-|Bejelentkezett?|Elem|
+|Bejelentkezett?|Item|
 |:-|:-|
 ||Az alkalmazások használatának figyelése az adatok átvezetéséhez|
 ||Biztonságos távoli hozzáférés az alkalmazásokhoz|
@@ -258,15 +258,15 @@ Javasoljuk, hogy az alábbi ellenőrzőlistát nyomtassa ki a szervezete egy szi
 
 ### <a name="next-three-months"></a>Következő három hónap
 
-|Bejelentkezett?|Elem|
+|Bejelentkezett?|Item|
 |:-|:-|
 ||Önkiszolgáló alkalmazások felügyeletének engedélyezése|
 ||Önkiszolgáló csoportok felügyeletének engedélyezése|
 ||Az alkalmazások használatának figyelése az adatok átvezetéséhez|
 ||A támogatási hívások illesztőprogramjainak ismertetése|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan növelheti a biztonságos testhelyzetet a Azure Active Directory képességeivel, és ez az öt lépésből álló ellenőrzőlista – [öt lépés az identitás-infrastruktúra biztonságossá](https://aka.ms/securitysteps)tételéhez.
+Ismerje meg, hogyan növelheti a biztonságos testhelyzetet a Azure Active Directory képességeivel, és ez az öt lépésből álló ellenőrzőlista – [öt lépés az identitás-infrastruktúra biztonságossá](../../security/fundamentals/steps-secure-identity.md)tételéhez.
 
-Ismerje meg, hogy az Azure AD Identity funkciói hogyan segíthetnek a felhőbe irányított felügyeletre való áttérésben azáltal, hogy olyan megoldásokat és képességeket biztosítanak, amelyek lehetővé teszik, hogy a szervezetek gyorsan fogadjanak el és helyezzen át több személyazonosság-kezelést a hagyományos helyi rendszerekről az Azure AD-be, hogy az [Azure ad hogyan biztosít felhőalapú felügyeletet](https://aka.ms/cloudgoverned)a helyszíni számítási feladatokhoz.
+Ismerje meg, hogy az Azure AD Identity funkciói hogyan segíthetnek a felhőbe irányított felügyeletre való áttérésben azáltal, hogy olyan megoldásokat és képességeket biztosítanak, amelyek lehetővé teszik, hogy a szervezetek gyorsan fogadjanak el és helyezzen át több személyazonosság-kezelést a hagyományos helyi rendszerekről az Azure AD-be, hogy az [Azure ad hogyan biztosít felhőalapú felügyeletet](./cloud-governed-management-for-on-premises.md)a helyszíni számítási feladatokhoz.

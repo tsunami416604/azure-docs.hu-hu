@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eeda43b972e30c573743c8c59f75cfae61d7ee85
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441188"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413144"
 ---
 Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
 
@@ -34,6 +34,7 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
 |USA déli középső régiója    |Csak egyetlen virtuális gép (a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok nem támogatottak)|
 |USA-beli államigazgatás – Arizona     |Csak egyetlen virtuális gép (a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok nem támogatottak)|
 |USA-beli államigazgatás – Virginia     |Csak egyetlen virtuális gép (a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok nem támogatottak)|
+|USA-beli államigazgatás – Texas     |Csak egyetlen virtuális gép (a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok nem támogatottak)|
 |USA nyugati régiója     |Csak egyetlen virtuális gép (a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok nem támogatottak)        |
 |Ausztrália középső régiója    |Csak egyetlen virtuális gép (a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok nem támogatottak)|
 |Kelet-Ausztrália     |Három rendelkezésre állási zóna         |
