@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119215"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443313"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó Daemon-alkalmazás – jogkivonat beszerzése
 
@@ -57,7 +57,7 @@ Az ügyfél hitelesítő adataihoz használt hatókörnek mindig az erőforrás-
 
 > [!IMPORTANT]
 > Ha a MSAL hozzáférési jogkivonatot kér egy olyan erőforráshoz, amely 1,0 hozzáférési tokent fogad el, akkor az Azure AD a kért hatókörből elemezi a kívánt célközönséget, ha az utolsó perjel előtt mindent megtesz, és erőforrás-azonosítóként használja azt.
-> Tehát ha például Azure SQL Database (**https: \/ /Database.Windows.net**), az erőforrás egy olyan célközönséget vár, amely perjeltel végződik (Azure SQL Database esetén `https://database.windows.net/` ), akkor a hatókörét kell kérnie `https://database.windows.net//.default` . (Jegyezze fel a dupla perjelet.) Lásd még: MSAL.NET probléma [#747: az erőforrás URL-címének záró perjele ki van hagyva, ami SQL-hitelesítési hibát okozott](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Tehát ha például Azure SQL Database ( **https: \/ /Database.Windows.net** ), az erőforrás egy olyan célközönséget vár, amely perjeltel végződik (Azure SQL Database esetén `https://database.windows.net/` ), akkor a hatókörét kell kérnie `https://database.windows.net//.default` . (Jegyezze fel a dupla perjelet.) Lásd még: MSAL.NET probléma [#747: az erőforrás URL-címének záró perjele ki van hagyva, ami SQL-hitelesítési hibát okozott](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
@@ -202,7 +202,7 @@ További információkért tekintse meg a protokoll dokumentációját: [Microso
 
 ## <a name="application-token-cache"></a>Alkalmazás-jogkivonat gyorsítótára
 
-A MSAL.NET-ben `AcquireTokenForClient` az alkalmazás-jogkivonat gyorsítótárát használja. (Az összes többi AcquireToken*XX* -módszer a felhasználói jogkivonat gyorsítótárát használja.) `AcquireTokenSilent` A hívás előtt ne telefonáljon `AcquireTokenForClient` , mert `AcquireTokenSilent` a a *felhasználói* jogkivonat gyorsítótárát használja. `AcquireTokenForClient` ellenőrzi az *alkalmazás* -jogkivonat gyorsítótárát, és frissíti azt.
+A MSAL.NET-ben `AcquireTokenForClient` az alkalmazás-jogkivonat gyorsítótárát használja. (Az összes többi AcquireToken *XX* -módszer a felhasználói jogkivonat gyorsítótárát használja.) `AcquireTokenSilent` A hívás előtt ne telefonáljon `AcquireTokenForClient` , mert `AcquireTokenSilent` a a *felhasználói* jogkivonat gyorsítótárát használja. `AcquireTokenForClient` ellenőrzi az *alkalmazás* -jogkivonat gyorsítótárát, és frissíti azt.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -229,21 +229,18 @@ Content: {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [Daemon-alkalmazás – webes API meghívása](./scenario-daemon-call-api.md?tabs=dotnet)
+A forgatókönyvben a következő cikkre léphet, amely [egy webes API](./scenario-daemon-call-api.md?tabs=dotnet)-t hív meg.
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Daemon-alkalmazás – webes API meghívása](./scenario-daemon-call-api.md?tabs=python)
+A forgatókönyvben a következő cikkre léphet, amely [egy webes API](./scenario-daemon-call-api.md?tabs=python)-t hív meg.
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Daemon-alkalmazás – webes API meghívása](./scenario-daemon-call-api.md?tabs=java)
+A forgatókönyvben a következő cikkre léphet, amely [egy webes API](./scenario-daemon-call-api.md?tabs=java)-t hív meg.
 
 ---

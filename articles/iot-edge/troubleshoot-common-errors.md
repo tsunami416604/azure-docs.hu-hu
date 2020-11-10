@@ -4,19 +4,19 @@ description: Ez a cikk a IoT Edge-megoldások telepítésekor észlelt gyakori p
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98ee865a3ddf6c26ffe9cb77767f3872b42018d8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82783746"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442361"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -153,11 +153,11 @@ Ha nem szükséges a IoT Edge eszköz átjáróként való használata, akkor el
 
 Az Azure Portalon:
 
-1. Navigáljon az IoT hubhoz, és válassza a **IoT Edge**lehetőséget.
+1. Navigáljon az IoT hubhoz, és válassza a **IoT Edge** lehetőséget.
 
 2. Válassza ki a frissíteni kívánt IoT Edge eszközt.
 
-3. Válassza a **modulok beállítása**lehetőséget.
+3. Válassza a **modulok beállítása** lehetőséget.
 
 4. Válassza a **futtatókörnyezet beállításait**.
 
@@ -221,8 +221,8 @@ Ha ezt a hibát látja, akkor a virtuális gép DNS-nevének konfigurálásával
 
    ![A virtuális gép DNS-nevének konfigurálása](./media/troubleshoot/configure-dns.png)
 
-3. Adjon meg egy értéket a **DNS-név címkéhez** , majd válassza a **Mentés**lehetőséget.
-4. Másolja az új DNS-nevet, amelynek formátuma legyen ** \<DNSnamelabel\> . \<vmlocation\> cloudapp.azure.com**.
+3. Adjon meg egy értéket a **DNS-név címkéhez** , majd válassza a **Mentés** lehetőséget.
+4. Másolja az új DNS-nevet, amelynek formátuma legyen **\<DNSnamelabel\> . \<vmlocation\> cloudapp.azure.com**.
 5. A virtuális gépen belül a következő paranccsal állíthatja be a IoT Edge futtatókörnyezetet a DNS-névvel:
 
    * Linux rendszeren:
@@ -272,11 +272,11 @@ A IoT Edge futtatókörnyezet részét képező IoT Edge hub alapértelmezés sz
 
 **Felbontás**
 
-Az IoT Edge hub esetében állítsa be a **OptimizeForPerformance** környezeti változót **hamis**értékre. A környezeti változók két módon állíthatók be:
+Az IoT Edge hub esetében állítsa be a **OptimizeForPerformance** környezeti változót **hamis** értékre. A környezeti változók két módon állíthatók be:
 
 Az Azure Portalon:
 
-A IoT hub válassza ki a IoT Edge eszközt, majd az eszköz adatai lapon válassza a **modulok**  >  **futtatókörnyezet-beállítások**megadása lehetőséget. Hozzon létre egy környezeti változót a *OptimizeForPerformance* nevű IoT Edge hub-modulhoz, amely *hamis*értékre van beállítva.
+A IoT hub válassza ki a IoT Edge eszközt, majd az eszköz adatai lapon válassza a **modulok**  >  **futtatókörnyezet-beállítások** megadása lehetőséget. Hozzon létre egy környezeti változót a *OptimizeForPerformance* nevű IoT Edge hub-modulhoz, amely *hamis* értékre van beállítva.
 
 ![A OptimizeForPerformance hamis értékre van állítva](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -331,6 +331,25 @@ Ha az automatikus központi telepítés egy eszközt céloz meg, akkor az egy ad
 Eszközökön csak egyféle telepítési mechanizmust használhat, automatikus központi telepítéssel vagy egyedi eszközök telepítésével. Ha több automatikus központi telepítéssel is rendelkezik egy eszközhöz, megváltoztathatja a prioritási vagy a cél leírását, hogy a megfelelő egy adott eszközre vonatkozzon. Az eszköz két példányát is frissítheti, ha már nem egyezik az automatikus központi telepítés céljának leírásával.
 
 További információ: [IoT Edge automatikus központi telepítésének ismertetése egyetlen eszközön vagy nagy méretekben](module-deployment-monitoring.md).
+
+<!-- <1.2> -->
+::: moniker range=">=iotedge-2020-11"
+
+## <a name="iot-edge-behind-a-gateway-cannot-perform-http-requests-and-start-edgeagent-module"></a>Az átjáró mögötti IoT Edge nem végezhet HTTP-kéréseket, és nem indítja el a edgeAgent modult
+
+**Megfigyelt viselkedés:**
+
+A IoT Edge démon érvényes konfigurációs fájllal aktív, de nem tudja elindítani a edgeAgent modult. A parancs `iotedge list` üres listát ad vissza. A IoT Edge démon naplózza a jelentést `Could not perform HTTP request` .
+
+**Alapvető ok:**
+
+Az átjáró mögött található eszközök a `parent_hostname` config. YAML fájl mezőjében megadott szülő IoT Edge eszközről kapják meg a modul rendszerképeit. IoT Edge A `Could not perform HTTP request` hiba azt jelenti, hogy az alárendelt eszköz nem tudja elérni a szülő eszközét http-n keresztül.
+
+**Felbontás**
+
+Győződjön meg arról, hogy a szülő IoT Edge eszköz fogadhat bejövő kéréseket a gyermek IoT Edge eszközről. Nyissa meg a hálózati forgalmat a 443-es és a 6617-es porton a gyermek eszközről érkező kérelmek esetében.
+
+:::moniker-end
 
 ## <a name="next-steps"></a>További lépések
 

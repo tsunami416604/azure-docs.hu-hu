@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 70e3185257c7c70d74fdc8492cf0a2b4970c03b1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305472"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442055"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -34,7 +34,7 @@ További információ: [alkalmazások központi telepítése Azure Resource Mana
 
 * Egyes esetekben támogatási jegyet kell megnyitni. Ezek a forgatókönyvek a következők:
 
-    * __Privát hivatkozás engedélyezve munkaterülete ügyfél által felügyelt kulccsal (CMK)__
+    * __Private Link-kompatibilis, felhasználó által felügyelt kulccsal rendelkező munkaterület__
     * __Azure Container Registry a virtuális hálózat mögötti munkaterülethez__
 
     További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
@@ -170,7 +170,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy munkaterületet három be�
 > [!IMPORTANT]
 > Miután létrehozta a munkaterületet, nem módosíthatja a bizalmas adatok, a titkosítás, a kulcstároló-azonosító vagy a kulcs-azonosítók beállításait. Az értékek módosításához új munkaterületet kell létrehoznia az új értékekkel.
 
-További információ: [titkosítás a REST](concept-enterprise-security.md#encryption-at-rest)-ben.
+További információ: [titkosítás a REST](concept-data-encryption.md#encryption-at-rest)-ben.
 
 > [!IMPORTANT]
 > A sablon használata előtt néhány speciális követelménynek meg kell felelnie az előfizetésnek:
@@ -252,7 +252,7 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-Ügyfél által felügyelt kulcs használatakor Azure Machine Learning létrehoz egy másodlagos erőforráscsoportot, amely tartalmazza a Cosmos DB példányt. További információ: [titkosítás a REST-Cosmos DBon](concept-enterprise-security.md#encryption-at-rest).
+Ügyfél által felügyelt kulcs használatakor Azure Machine Learning létrehoz egy másodlagos erőforráscsoportot, amely tartalmazza a Cosmos DB példányt. További információ: [titkosítás a REST-Cosmos DBon](concept-data-encryption.md#encryption-at-rest).
 
 Az adatai számára további konfigurációt adhat meg, ha a **confidential_data** paramétert True ( **igaz** ) értékre állítja. Ezzel a következő műveleteket hajtja végre:
 
@@ -264,7 +264,7 @@ Az adatai számára további konfigurációt adhat meg, ha a **confidential_data
     > [!IMPORTANT]
     > Miután létrehozta a munkaterületet, nem módosíthatja a bizalmas adatok, a titkosítás, a kulcstároló-azonosító vagy a kulcs-azonosítók beállításait. Az értékek módosításához új munkaterületet kell létrehoznia az új értékekkel.
 
-  További információ: [titkosítás a REST](concept-enterprise-security.md#encryption-at-rest)-ben.
+  További információ: [titkosítás a REST](concept-data-encryption.md#encryption-at-rest)-ben.
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>Munkaterület üzembe helyezése virtuális hálózat mögött
 
@@ -679,7 +679,7 @@ Egy másik munkaterületet és privát végpontot tartalmazó virtuális hálóz
     az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../azure-resource-manager/templates/deploy-rest.md).
 * [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/09/2020
-ms.openlocfilehash: 7f62aade114613261a22a818ab47e096eb16084b
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 62621a36955808ec3f2c796681fe660e6e8524bc
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427972"
+ms.locfileid: "94443381"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -27,9 +27,10 @@ Azure Monitor biztosítja, hogy az összes adatok és mentett lekérdezések a M
 
 Az ügyfél által felügyelt kulcsfontosságú képességet dedikált Log Analytics fürtökön továbbítjuk. Lehetővé teszi, hogy az adatai a [Kulcstároló](#customer-lockbox-preview) -vezérlővel védve legyenek, és a vezérlő segítségével bármikor visszavonhatja az adataihoz való hozzáférést. Az elmúlt 14 napban betöltött adatok a hatékony lekérdezési motor működéséhez a gyors gyorsítótárban (SSD-alapú) is megmaradnak. Ezek az [adat a Microsoft](#key-revocation)kulcsaival is titkosítva van, függetlenül az ügyfél által felügyelt kulcs konfigurációjától Dolgozunk arra, hogy a 2021-es első felében Customer-Managed kulccsal titkosított SSD-adatmennyiséget lehessen titkosítani.
 
-Annak ellenőrzéséhez, hogy rendelkezésre áll-e a szükséges kapacitás a dedikált fürt kiépítéséhez a régióban, az előfizetést előzetesen engedélyezni kell. A Customer-Managed kulcs konfigurációjának megkezdése előtt használja Microsoft-kapcsolattartóját, vagy nyissa meg a támogatási kérést, hogy az előfizetése engedélyezve legyen.
-
 A [log Analytics-fürtök díjszabási modellje](./manage-cost-storage.md#log-analytics-dedicated-clusters) a 1000 GB/nap szinten kezdődő kapacitási foglalásokat használja.
+
+> [!IMPORTANT]
+> Az ideiglenes kapacitás megkötése miatt a fürt létrehozása előtt előzetes regisztrációra van szükség. A névjegyek a Microsofthoz, vagy a támogatási kérelem megnyitása a feliratkozási azonosítók regisztrálásához.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Customer-Managed kulcs működése Azure Monitor
 
@@ -63,11 +64,11 @@ A következő szabályok érvényesek:
 
 ## <a name="customer-managed-key-provisioning-procedure"></a>Customer-Managed kulcs kiépítési eljárása
 
-1. Előfizetés engedélyezése – a képesség dedikált Log Analytics-fürtökön érkezik. Annak ellenőrzéséhez, hogy rendelkezik-e a szükséges kapacitással a régiójában, az előfizetést előzetesen engedélyezni kell. Az előfizetését a Microsoft-névjegy használatával kérheti le.
-2. Azure Key Vault létrehozása és a kulcs tárolása
-3. Fürt létrehozása
-4. Engedélyek megadása a Key Vault számára
-5. Log Analytics-munkaterületek összekapcsolása
+1. Előfizetés regisztrálása a fürt létrehozásának engedélyezéséhez
+1. Azure Key Vault létrehozása és a kulcs tárolása
+1. Fürt létrehozása
+1. Engedélyek megadása a Key Vault számára
+1. Log Analytics-munkaterületek összekapcsolása
 
 Customer-Managed kulcs konfigurálása nem támogatott a Azure Portal és a kiépítés a [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/), a [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics) vagy a [Rest](https://docs.microsoft.com/rest/api/loganalytics/) -kérelmek használatával történik.
 
@@ -149,7 +150,6 @@ Sikertelen művelet
 
 > [!IMPORTANT]
 > Customer-Managed kulcsfontosságú képesség a regionális. A Azure Key Vault, a fürtnek és a csatolt Log Analytics-munkaterületnek ugyanabban a régióban kell lennie, de különböző előfizetésekben lehet.
-> Annak ellenőrzéséhez, hogy rendelkezésre áll-e a szükséges kapacitás a dedikált fürt kiépítéséhez a régióban, az előfizetést előzetesen engedélyezni kell. A kulcs konfigurációjának megCustomer-Managed kezdése előtt használja a Microsoft-kapcsolattartóját, vagy nyissa meg a támogatási kérést az előfizetés beszerzéséhez. 
 
 ### <a name="storing-encryption-key-kek"></a>Titkosítási kulcs (KEK) tárolása
 
@@ -200,6 +200,25 @@ az monitor log-analytics cluster update --name "cluster-name" --resource-group "
 
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
+```
+
+```rst
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "keyVaultProperties": {
+      "keyVaultUri": "https://key-vault-name.vault.azure.net",
+      "kyName": "key-name",
+      "keyVersion": "current-version"
+  },
+  "sku": {
+    "name": "CapacityReservation",
+    "capacity": 1000
+  }
+}
 ```
 
 **Válasz**
@@ -288,6 +307,11 @@ Ha saját tárolót (BYOS) használ, és összekapcsolja azt a munkaterülettel,
 
 Storage-fiók összekapcsolása *a* munkaterülethez – a *mentett keresési* lekérdezések a Storage-fiókba lesznek mentve. 
 
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
@@ -314,6 +338,11 @@ A konfiguráció után a rendszer minden új *mentett keresési* lekérdezést m
 **BYOS konfigurálása a log-riasztási lekérdezésekhez**
 
 Storage-fiók csatolása a munkaterülethez tartozó *riasztásokhoz* – a *log-riasztási* lekérdezések mentése a Storage-fiókba történik. 
+
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"

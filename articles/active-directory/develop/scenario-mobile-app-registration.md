@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e0f1cc446b6b957b17153dd538922d2b9acd891f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35c1ffb370a158acc91e2378119055337e28580d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442734"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443092"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Webes API-kat meghívó mobileszközök regisztrálása
 
@@ -44,7 +44,7 @@ További információ: [forgatókönyvek és támogatott hitelesítési folyamat
 
 ### <a name="interactive-authentication"></a>Interaktív hitelesítés
 
-Ha interaktív hitelesítést használó mobil alkalmazást hoz létre, a legkritikusabb regisztrációs lépés az átirányítási URI. A hitelesítés panelen beállíthatja az interaktív hitelesítést a [platform konfigurációján **Authentication** ](https://aka.ms/MobileAppReg)keresztül.
+Ha interaktív hitelesítést használó mobil alkalmazást hoz létre, a legkritikusabb regisztrációs lépés az átirányítási URI. A hitelesítés panelen beállíthatja az interaktív hitelesítést a [platform konfigurációján **Authentication**](https://aka.ms/MobileAppReg)keresztül.
 
 Ez a felhasználói élmény lehetővé teszi, hogy az alkalmazás egyszeri bejelentkezést (SSO) kapjon Microsoft Authenticator (és az Androidon Intune Céges portál). Emellett az eszköz-felügyeleti házirendeket is támogatni fogja.
 
@@ -54,15 +54,15 @@ Az alkalmazás regisztrációs portálján elérhető egy előzetes verzió, ame
 
    ![A hitelesítés panel, ahol új felhasználói élményt választhat](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-2. Válassza **a platform hozzáadása**lehetőséget.
+2. Válassza **a platform hozzáadása** lehetőséget.
 
    ![Platform hozzáadása](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
-3. Ha a platformok listája támogatott, válassza az **iOS**lehetőséget.
+3. Ha a platformok listája támogatott, válassza az **iOS** lehetőséget.
 
    ![Mobileszköz kiválasztása](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-4. Adja meg a köteg AZONOSÍTÓját, majd válassza a **regisztráció**lehetőséget.
+4. Adja meg a köteg AZONOSÍTÓját, majd válassza a **regisztráció** lehetőséget.
 
    ![Adja meg a köteg AZONOSÍTÓját](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
@@ -72,16 +72,16 @@ A lépések elvégzése után az átirányítási URI-t az alábbi képen látha
 
 Ha manuálisan szeretné konfigurálni az átirányítási URI-t, ezt az alkalmazás jegyzékfájlján keresztül teheti meg. A jegyzékfájl ajánlott formátuma a következő:
 
-- **iOS**: `msauth.<BUNDLE_ID>://auth`
+- **iOS** : `msauth.<BUNDLE_ID>://auth`
   - Adja meg például a következőt: `msauth.com.yourcompany.appName://auth`
-- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- **Android** : `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Az Android-aláírási kivonatot a kulcstartó parancs használatával hozhatja ki a kiadási kulccsal vagy a hibakeresési kulccsal.
 
 ### <a name="username-password-authentication"></a>Felhasználónév – jelszó-hitelesítés
 
 Ha az alkalmazás csak a Felhasználónév-jelszó típusú hitelesítést használja, nem kell regisztrálnia az alkalmazáshoz tartozó átirányítási URI-t. Ez a folyamat egy, a Microsoft Identity platform 2,0-es végpontján elvégezhető oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.
 
-Az alkalmazást azonban nyilvános ügyfélalkalmazásként kell azonosítania. Ehhez indítsa el az alkalmazás **hitelesítési** szakaszát. A **Speciális beállítások** alszakasz **alapértelmezett ügyfél típusa** részében, az **alkalmazás nyilvános ügyfélként való kezelésére**szolgáló kérdésnél válassza az **Igen**lehetőséget.
+Az alkalmazást azonban nyilvános ügyfélalkalmazásként kell azonosítania. Ehhez indítsa el az alkalmazás **hitelesítési** szakaszát. A **Speciális beállítások** alszakasz **alapértelmezett ügyfél típusa** részében, az **alkalmazás nyilvános ügyfélként való kezelésére** szolgáló kérdésnél válassza az **Igen** lehetőséget.
 
 ## <a name="api-permissions"></a>API-engedélyek
 
@@ -89,7 +89,6 @@ A Mobile Applications a bejelentkezett felhasználó nevében hívja meg az API-
 
 Az engedélyek statikus regisztrálásával lehetővé teszi, hogy a rendszergazdák egyszerűen jóváhagyják az alkalmazást. A statikus regisztráció ajánlott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Kódkonfiguráció](scenario-mobile-app-configuration.md)
+Lépjen be a következő cikkbe ebben a forgatókönyvben, az [alkalmazás kódjának konfigurációjában](scenario-mobile-app-configuration.md).

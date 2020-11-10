@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: b514cce8128dc0b17b5cebf8f2dc42e2c4dd8c8e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: ad8a5a23361e721fd5d8d55d3555f51def94e768
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336972"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442021"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Oktatóanyag: Azure Data Box exportálási sorrendjének létrehozása (előzetes verzió)
 
@@ -60,7 +60,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
    ![Erőforrás létrehozása](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-resource.png)
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 
    ![Azure Data Box erőforrás létrehozása](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-data-box-resource.png)
 
@@ -102,7 +102,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
     |---------|---------|
     |Tárfiók     | Az Azure Storage-fiók, ahonnan exportálni kívánja az adatait. |
     |Exportálás típusa     | Meghatározza az **összes objektumból** exportálandó adatok típusát és az **XML-fájl használatát**.<ul><li> **Minden objektum** – azt adja meg, hogy a feladatsor az **átvitel beállításaitól** függően az összes értéket exportálja.</li><li> **XML-fájl használata** – olyan XML-fájlt ad meg, amely a Storage-fiókból exportálandó blobok és/vagy fájlok elérési útját és előtagokat tartalmazza. Az XML-fájlnak a kiválasztott Storage-fiók tárolójában kell lennie, és a fájlmegosztás lehetőség választása jelenleg nem támogatott. A fájlnak nem üres. XML formátumú fájlnak kell lennie.</li></ul>        |
-    |Átvitel beállításai     |  Meghatározza az adatátviteli beállításokat az **összes kijelölése** , **az összes blob** és az **összes fájl** közül. <ul><li> **Az összes kijelölése** – megadja, hogy a rendszer minden blobot és Azure-fájlt exportál. Ha olyan Storage-fiókot használ, amely csak a blobokat támogatja (Blob Storage fiók), a **minden fájl** lehetőség nem lesz kiválasztható.</li><li> **Minden blob** – azt adja meg, hogy csak a blokk-és a Blobok legyenek exportálva.</li><li> **Minden fájl** – azt adja meg, hogy minden fájl exportálva legyen, kivéve a blobokat. Az Ön által létrehozott Storage-fiók típusa (GPv1 és GPv2, Premium Storage vagy blob Storage) meghatározza az exportálható adattípusokat. További információ: [támogatott Storage-fiókok exportáláshoz](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
+    |Átvitel beállításai     |  Meghatározza az adatátviteli beállításokat az **összes kijelölése** , **az összes blob** és az **összes fájl** közül. <ul><li> **Az összes kijelölése** – megadja, hogy az összes blob és Azure Files exportálva van-e. Ha olyan Storage-fiókot használ, amely csak a blobokat támogatja (Blob Storage fiók), a **minden fájl** lehetőség nem lesz kiválasztható.</li><li> **Minden blob** – azt adja meg, hogy csak a blokk-és a Blobok legyenek exportálva.</li><li> **Minden fájl** – azt adja meg, hogy minden fájl exportálva legyen, kivéve a blobokat. Az Ön által létrehozott Storage-fiók típusa (GPv1 és GPv2, Premium Storage vagy blob Storage) meghatározza az exportálható adattípusokat. További információ: [támogatott Storage-fiókok exportáláshoz](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
     |Részletes napló belefoglalása     | Azt jelzi, hogy szeretne-e részletes naplófájlt használni, amely tartalmazza az összes sikeresen exportált fájl listáját.        |
 
     > [!NOTE]
@@ -171,7 +171,7 @@ Ha **az XML-fájl használata** lehetőséget választja, megadhatja az exportá
 
    ![Válassza az Exportálás lehetőséget, majd az új tároló beállításai elemet.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-container-settings.png)
 
-4. Válassza a **Létrehozás** lehetőséget.
+4. Kattintson a **Létrehozás** gombra.
 
    ![Válassza az Exportálás lehetőséget, majd hozzon létre új tárolót.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-create-container.png)
 
@@ -183,11 +183,11 @@ Ha **az XML-fájl használata** lehetőséget választja, megadhatja az exportá
 
    ![Tároló részleteinek megtekintése](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-view-container-details.png)
 
-6. Ha duplán kattint a tárolóra, megjelenik a tároló tulajdonságai nézet. Most csatolnia kell (vagy meg kell keresnie) az XML-fájlt, amely tartalmazza az exportálni kívánt blobok és/vagy Azure-fájlok listáját. Válassza a **Feltöltés** lehetőséget.
+6. Ha duplán kattint a tárolóra, megjelenik a tároló tulajdonságai nézet. Most csatolnia kell (vagy meg kell keresnie) az XML-fájlt, amely tartalmazza az exportálni kívánt blobok és/vagy Azure Files listáját. Válassza a **Feltöltés** lehetőséget.
 
    ![BLOB feltöltése a tárolóba](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-blob-to-container.png)
 
-7. Sikeresen felvette az XML-fájlt a tárolóba. Csak az ebben az XML-ben megadott blobok és Azure-fájlok lesznek exportálva.
+7. Sikeresen felvette az XML-fájlt a tárolóba. A rendszer csak az ebben az XML-ben megadott blobokat és Azure Files exportálja.
 
    ![A tárolóhoz hozzáadott XML-fájl](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-added-to-container.png)
 
@@ -227,7 +227,7 @@ Egy megszakított megrendelés törléséhez lépjen az **Áttekintés** elemre,
 
 ## <a name="sample-xml-file"></a>Minta XML-fájl
 
-Az alábbi XML-ben egy példa látható a blob-nevekre, a blob-előtagokra, valamint az exportálási sorrend által használt XML-formátumban található Azure-fájlokra az **XML-fájl használata** lehetőség kiválasztásakor:
+Az alábbi XML-ben egy példa látható a Blobok nevére, a blob előtagjaira és a Azure Files az exportálási sorrendet az **XML-fájl használata** lehetőség kiválasztásakor használt XML-formátumban.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -259,7 +259,7 @@ Néhány fontos pont az XML-fájlokra vonatkozóan:
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Leírás |
+   | Szelektor | BLOB elérési útja | Description |
    | --- | --- | --- |
    | Ezzel kezdődik |/ |A Storage-fiókban lévő összes blob exportálása |
    | Ezzel kezdődik |/$root/ |A gyökér tárolóban lévő összes blob exportálása |

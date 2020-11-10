@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e8ae0463633940ba3192815af6a07a6356901044
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 47427f8d3690218060fd1e6221b1b089c68d6e1d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426986"
+ms.locfileid: "94441834"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>A Storage-fiók kulcsainak kezelése a Key Vault és az Azure CLI használatával
 
@@ -34,11 +34,11 @@ Javasoljuk, hogy az Azure Storage-integrációt Azure Active Directory (Azure AD
 
 Az Azure AD lehetővé teszi az ügyfélalkalmazás hitelesítését alkalmazás vagy felhasználói identitás használatával a Storage-fiók hitelesítő adatai helyett. Azure AD-beli [felügyelt identitást](../../active-directory/managed-identities-azure-resources/index.yml) használhat az Azure-ban való futtatáskor. A felügyelt identitások nem szükségesek az ügyfél-hitelesítéshez és a hitelesítő adatok tárolásához a vagy az alkalmazásban.
 
-Az Azure AD szerepköralapú hozzáférés-vezérlést (RBAC) használ az engedélyezés kezelésére, amelyet a Key Vault is támogat.
+Az Azure AD az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával kezeli az engedélyezést, amelyet a Key Vault is támogat.
 
 ## <a name="service-principal-application-id"></a>Egyszerű szolgáltatásnév alkalmazásának azonosítója
 
-Az Azure AD-bérlő minden regisztrált alkalmazást biztosít egy [egyszerű szolgáltatással](../../active-directory/develop/developer-glossary.md#service-principal-object). Az egyszerű szolgáltatásnév a RBAC-on keresztül más Azure-erőforrásokhoz való hozzáférés engedélyezési beállítása során használt alkalmazás-AZONOSÍTÓként szolgál.
+Az Azure AD-bérlő minden regisztrált alkalmazást biztosít egy [egyszerű szolgáltatással](../../active-directory/develop/developer-glossary.md#service-principal-object). Az egyszerű szolgáltatás az alkalmazás-AZONOSÍTÓként szolgál, amelyet az engedélyezési beállítások az Azure RBAC-n keresztül való hozzáféréshez használhatnak más Azure-erőforrásokhoz.
 
 A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőben előre regisztrálva van. A Key Vault minden Azure-felhőben ugyanazzal az alkalmazás-AZONOSÍTÓval van regisztrálva.
 
@@ -145,7 +145,7 @@ Most már használhatja az az kulcstartó [Storage sas-definition show](/cli/azu
 az keyvault storage sas-definition show --id https://<YourKeyVaultName>.vault.azure.net/storage/<YourStorageAccountName>/sas/<YourSASDefinitionName>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [kulcsokról, a titkokról és a tanúsítványokról](/rest/api/keyvault/).
 - Tekintse át a [Azure Key Vault csapat blogján](/archive/blogs/kv/)található cikkeket.

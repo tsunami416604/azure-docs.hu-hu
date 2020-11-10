@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 815b1789c54d1ce505c16dc89e199d451ae9a588
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 846c47017ba2887c287dd080c44c46b372660d0e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396127"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443602"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó webalkalmazás: webes API meghívása
 
@@ -29,7 +29,7 @@ A védett webes API-k meghívása a választott nyelvtől és keretrendszertől 
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A *Microsoft. Identity. Web*használatakor három felhasználási lehetőség áll rendelkezésre az API meghívásához:
+A *Microsoft. Identity. Web* használatakor három felhasználási lehetőség áll rendelkezésre az API meghívásához:
 
 - [1. lehetőség: a Microsoft Graph meghívása az Microsoft Graph SDK-val](#option-1-call-microsoft-graph-with-the-sdk)
 - [2. lehetőség: alárendelt webes API meghívása a segítő osztállyal](#option-2-call-a-downstream-web-api-with-the-helper-class)
@@ -197,7 +197,6 @@ def graphcall():
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Átállás éles üzemre](scenario-web-app-call-api-production.md)
+Az ebben a forgatókönyvben lévő következő cikkre való áttéréssel váltson [éles környezetbe](scenario-web-app-call-api-production.md).

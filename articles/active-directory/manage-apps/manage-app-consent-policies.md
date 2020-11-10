@@ -12,18 +12,18 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: edcfa19ed93733c4d6b060ebcb5ff179708195aa
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 07637a8be49fb2449c5c92c1a1ea4b2c7ace9a8d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486922"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442259"
 ---
 # <a name="manage-app-consent-policies"></a>Alkalmazás-hozzájárulási szabályzatok kezelése
 
 Az Azure AD PowerShell használatával megtekintheti és kezelheti az alkalmazás-engedélyezési szabályzatokat.
 
-Az alkalmazás-engedélyezési szabályzat egy vagy több "include", illetve nulla vagy több "kizárás" típusú készletből áll. Ahhoz, hogy egy esemény egy alkalmazás-engedélyezési szabályzatban legyen felszámítva, meg kell egyeznie *legalább* egy "belefoglalt" feltételsel, és nem *lehet több "kizárás"* feltételt beállítani.
+Az alkalmazás-engedélyezési szabályzat egy vagy több "include", illetve nulla vagy több "kizárás" típusú készletből áll. Ahhoz, hogy egy esemény figyelembe legyen véve egy alkalmazás-engedélyezési szabályzatban, meg kell egyeznie *legalább* egy "belefoglalt" feltételsel, és *nem egyezhet meg a "* kizárások" állapottal.
 
 Mindegyik feltétel több feltételből áll. Ahhoz, hogy egy esemény megfeleljen egy adott feltételnek, a feltételben megadott *összes* feltételnek teljesülnie kell.
 
@@ -130,10 +130,10 @@ Miután létrehozta az alkalmazáshoz való beleegyezett szabályzatot, [engedé
 
 Az alábbi táblázat az alkalmazás-engedélyezési házirendek támogatott feltételeinek listáját tartalmazza.
 
-| Condition (Állapot) | Leírás|
+| Condition (Állapot) | Description|
 |:---------------|:----------|
 | PermissionClassification | Az engedélyek [besorolása](configure-permission-classifications.md) a megadott engedélyhez, vagy az "all", hogy egyezzen az engedélyek besorolásával (beleértve a nem besorolt engedélyeket is). Az alapértelmezett érték az "all". |
-| PermissionType | A megadott engedély engedélyezési típusa. Használja az "alkalmazás" jogosultságot az alkalmazás engedélyeihez (például az alkalmazás szerepköreihez) vagy a delegált engedélyekhez. <br><br>**Megjegyzés**: a "delegatedUserConsentable" érték olyan delegált engedélyeket jelöl, amelyeket nem konfiguráltak az API-közzétevő a rendszergazdai hozzájárulás megköveteléséhez – ez az érték a beépített engedélyezési házirendekben használható, de nem használható egyéni engedélyek megadására szolgáló szabályzatokban. Kötelező. |
+| PermissionType | A megadott engedély engedélyezési típusa. Használja az "alkalmazás" jogosultságot az alkalmazás engedélyeihez (például az alkalmazás szerepköreihez) vagy a delegált engedélyekhez. <br><br>**Megjegyzés** : a "delegatedUserConsentable" érték olyan delegált engedélyeket jelöl, amelyeket nem konfiguráltak az API-közzétevő a rendszergazdai hozzájárulás megköveteléséhez – ez az érték a beépített engedélyezési házirendekben használható, de nem használható egyéni engedélyek megadására szolgáló szabályzatokban. Kötelező. |
 | ResourceApplication | Az erőforrás-alkalmazás **AppID** (például az API-t), amelyhez engedély van megadva, vagy bármely erőforrás-alkalmazással vagy API-val való egyeztetéshez. Az alapértelmezett érték az "any". |
 | Engedélyek | A megfelelő engedélyekhez tartozó engedélyezési azonosítók listája, vagy egy olyan lista, amely egyetlen "all" értékkel rendelkezik, hogy minden engedélyhez illeszkedjen. Az alapértelmezett érték az "all". <ul><li>A delegált engedélyek azonosítói az API ServicePrincipal objektumának **OAuth2Permissions** tulajdonságában találhatók.</li><li>Az alkalmazás engedélyeinek azonosítói az API ServicePrincipal objektumának **AppRoles** tulajdonságában találhatók.</li></ol> |
 | ClientApplicationIds | Azon **AppID** -értékek listája, amelyek megfelelnek az ügyfél-alkalmazásoknak, vagy egy olyan lista, amely egyetlen "all" értékkel rendelkezik az ügyfélalkalmazás egyeztetéséhez. Az alapértelmezett érték az "all". |
@@ -141,7 +141,7 @@ Az alábbi táblázat az alkalmazás-engedélyezési házirendek támogatott fel
 | ClientApplicationPublisherIds | Az ügyfélalkalmazás [ellenőrzött közzétevői](../develop/publisher-verification-overview.md) számára készült Microsoft Partner Network (MPN) azonosítók listája, vagy egyetlen "all" értékű lista, amely az ügyfélalkalmazások bármelyik közzétevőtől való egyeztetésére használható. Az alapértelmezett érték az "all". |
 | ClientApplicationsFromVerifiedPublisherOnly | A beállítás értéke `$true` csak az [ellenőrzött közzétevővel](../develop/publisher-verification-overview.md)rendelkező ügyfélalkalmazások egyeztetése. Úgy állítsa be, `$false` hogy minden ügyfélalkalmazás egyezzen, még akkor is, ha nem rendelkezik ellenőrzött közzétevővel. Az alapértelmezett szint a `$false`. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók:
 

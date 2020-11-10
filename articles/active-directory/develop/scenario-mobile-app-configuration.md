@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 43cb891ad63a23353437082f7cb1b1e45f146e5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204218"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444061"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Webes API-kat meghívó mobil alkalmazás konfigurálása
 
@@ -27,7 +27,7 @@ Az alkalmazás létrehozása után megtudhatja, hogyan konfigurálhatja a kódot
 
 A következő Microsoft Authentication Library-(MSAL-) típusok támogatják a Mobile Apps szolgáltatást.
 
-MSAL | Leírás
+MSAL | Description
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Hordozható alkalmazások fejlesztéséhez használatos. A MSAL.NET a következő platformokat támogatja a Mobile-alkalmazások létrehozásához: Univerzális Windows-platform (UWP), Xamarin. iOS és Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Natív iOS-alkalmazások fejlesztésére szolgál Objective-C vagy SWIFT használatával.
@@ -148,9 +148,9 @@ További információ: [UWP-specifikus megfontolások a MSAL.net](msal-net-uwp-c
 
 Az Android és az iOS rendszeren a brókerek a következőket teszik lehetővé:
 
-- **Egyszeri bejelentkezés (SSO)**: használhat egyszeri bejelentkezést az Azure Active Directory (Azure ad) szolgáltatásban regisztrált eszközökhöz. Ha SSO-t használ, a felhasználóknak nem kell bejelentkezniük minden alkalmazásba.
-- **Eszköz azonosítása**: Ez a beállítás engedélyezi az Azure ad-eszközökhöz kapcsolódó feltételes hozzáférési szabályzatokat. A hitelesítési folyamat az eszköznek a munkahelyhez való csatlakozásakor létrehozott tanúsítványát használja.
-- **Alkalmazás-azonosítás ellenőrzése**: amikor egy alkalmazás meghívja a közvetítőt, átadja az átirányítási URL-címét. Ezután a közvetítő ellenőrzi.
+- **Egyszeri bejelentkezés (SSO)** : használhat egyszeri bejelentkezést az Azure Active Directory (Azure ad) szolgáltatásban regisztrált eszközökhöz. Ha SSO-t használ, a felhasználóknak nem kell bejelentkezniük minden alkalmazásba.
+- **Eszköz azonosítása** : Ez a beállítás engedélyezi az Azure ad-eszközökhöz kapcsolódó feltételes hozzáférési szabályzatokat. A hitelesítési folyamat az eszköznek a munkahelyhez való csatlakozásakor létrehozott tanúsítványát használja.
+- **Alkalmazás-azonosítás ellenőrzése** : amikor egy alkalmazás meghívja a közvetítőt, átadja az átirányítási URL-címét. Ezután a közvetítő ellenőrzi.
 
 ### <a name="enable-the-broker-on-xamarin"></a>A közvetítő engedélyezése a Xamarin
 
@@ -218,7 +218,7 @@ Az objektum ablakának beállításához kövesse az alábbi lépéseket:
 
     `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker."`
 
-1. A hívásban használja a következőt: `AcquireTokenInteractive` `.WithParentActivityOrWindow(App.RootViewController)` . Adja át a hivatkozást a használni kívánt objektum-ablakra. Íme egy példa:
+1. A hívásban használja a következőt: `AcquireTokenInteractive` `.WithParentActivityOrWindow(App.RootViewController)` . Adja át a hivatkozást a használni kívánt objektum-ablakra. Bemutatunk egy példát:
 
     Az `App.cs` szkriptben:
     ```csharp
@@ -365,7 +365,6 @@ A Hozzáadás `LSApplicationQueriesSchemes` gombra kattintva engedélyezheti a M
 
 A Broker Android rendszeren való engedélyezésével kapcsolatos információkért lásd: [Xamarin. Android](msal-net-use-brokers-with-xamarin-apps.md#brokered-authentication-for-android), felügyelt hitelesítés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Token beszerzése](scenario-mobile-acquire-token.md)
+Ebben a forgatókönyvben a [token beszerzésével](scenario-mobile-acquire-token.md)léphet be a következő cikkbe.

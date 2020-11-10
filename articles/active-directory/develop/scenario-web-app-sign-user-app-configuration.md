@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ea0312cd8129fce342f94cfab5701d1773aca309
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dad7b0563fd1ca0dbf60403bc6172e7616e278b2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728335"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443653"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Felhasználók számára bejelentkező webalkalmazás: kód konfigurálása
 
@@ -27,7 +27,7 @@ Megtudhatja, hogyan konfigurálhatja a webalkalmazáshoz tartozó kódot, amely 
 <!-- This section can be in an include for web app and web APIs -->
 A webalkalmazások (és webes API-k) elleni védelemhez használt kódtárak a következők:
 
-| Platform | Kódtár | Leírás |
+| Platform | Kódtár | Description |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_NET.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Model Extensions for .NET azt javasolja, hogy a .net-keretrendszerben és a .NET Core-ban is fusson a DLL-fájlok összessége. Egy ASP.NET vagy ASP.NET Core webalkalmazásból a jogkivonat-érvényesítést a **TokenValidationParameters** osztály használatával (különösen bizonyos partneri forgatókönyvekben) lehet szabályozni. A gyakorlatban a bonyolultság a [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) könyvtárban van beágyazva. |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java-webalkalmazások támogatása |
@@ -245,7 +245,7 @@ A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával t
      }).AddMicrosoftIdentityUI();
     ```
 
-3. A `Configure` *Startup.cs*metódusában engedélyezze a hitelesítést a következő hívásával: `app.UseAuthentication();`
+3. A `Configure` *Startup.cs* metódusában engedélyezze a hitelesítést a következő hívásával: `app.UseAuthentication();`
 
    ```c#
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -259,7 +259,7 @@ A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával t
    ```
 
 A fenti kódban:
-- A `AddMicrosoftIdentityWebAppAuthentication` kiterjesztési módszer a **Microsoft. Identity. webban**van definiálva. Ez
+- A `AddMicrosoftIdentityWebAppAuthentication` kiterjesztési módszer a **Microsoft. Identity. webban** van definiálva. Ez
   - Hozzáadja a hitelesítési szolgáltatást.
   - A konfigurációs fájl olvasásához szükséges beállításokat konfigurálja (itt az "AzureAD" szakaszból)
   - Az OpenID Connect beállításainak konfigurálása, hogy a szolgáltató a Microsoft Identity platform végpontja legyen.
@@ -270,7 +270,7 @@ A fenti kódban:
 
 - `AddMicrosoftIdentityWebAppAuthentication` más paraméterekkel rendelkezik a speciális forgatókönyvekhez. Az OpenID Connect middleware-események nyomon követése például segíthet a webalkalmazások hibakeresésében, ha a hitelesítés nem működik. Ha a nem kötelező paramétert állítja be, akkor `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` megmutathatja, hogyan dolgozza fel az információkat a ASP.net Core köztes middleware-készlet, mivel a http-válaszból a felhasználó identitására kerül `HttpContext.User` .
 
-- A `AddMicrosoftIdentityUI` kiterjesztési módszer a **Microsoft. Identity. Web. UI fájlon**belül van definiálva. Egy alapértelmezett vezérlőt biztosít a bejelentkezés és a kijelentkezés kezeléséhez.
+- A `AddMicrosoftIdentityUI` kiterjesztési módszer a **Microsoft. Identity. Web. UI fájlon** belül van definiálva. Egy alapértelmezett vezérlőt biztosít a bejelentkezés és a kijelentkezés kezeléséhez.
 
 További információ arról, hogy a Microsoft. Identity. Web segítségével hogyan hozhat létre webalkalmazásokat a következőben: <https://aka.ms/ms-id-web/webapp>
 
@@ -338,28 +338,24 @@ Session(app)
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkben megtudhatja, hogyan aktiválhatja a bejelentkezést és a kijelentkezést.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-> [!div class="nextstepaction"]
-> [Be- és kijelentkezés](./scenario-web-app-sign-user-sign-in.md?tabs=aspnetcore)
+Lépjen be a következő cikkbe ebben a forgatókönyvben, [majd jelentkezzen be, és jelentkezzen ki](./scenario-web-app-sign-user-sign-in.md?tabs=aspnetcore).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-> [!div class="nextstepaction"]
-> [Be- és kijelentkezés](./scenario-web-app-sign-user-sign-in.md?tabs=aspnet)
+Lépjen be a következő cikkbe ebben a forgatókönyvben, [majd jelentkezzen be, és jelentkezzen ki](./scenario-web-app-sign-user-sign-in.md?tabs=aspnet).
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Be- és kijelentkezés](./scenario-web-app-sign-user-sign-in.md?tabs=java)
+Lépjen be a következő cikkbe ebben a forgatókönyvben, [majd jelentkezzen be, és jelentkezzen ki](./scenario-web-app-sign-user-sign-in.md?tabs=java).
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Be- és kijelentkezés](./scenario-web-app-sign-user-sign-in.md?tabs=python)
+Lépjen be a következő cikkbe ebben a forgatókönyvben, [majd jelentkezzen be, és jelentkezzen ki](./scenario-web-app-sign-user-sign-in.md?tabs=python).
 
 ---

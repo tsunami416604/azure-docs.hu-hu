@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c0b009d6d53a117aa11d0629fb649b2dd55559af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 790580160ec236d1923dc28b9990d2675c253b44
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438194"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442684"
 ---
 # <a name="a-web-api-that-calls-web-apis-app-registration"></a>Webes API-kat meghívó webes API: alkalmazás regisztrálása
 
@@ -30,7 +30,6 @@ Mivel a webalkalmazás most meghívja a webes API-kat, a szolgáltatás bizalmas
 
 A Web Apps hívja az API-kat azon felhasználók nevében, akik számára a tulajdonosi jogkivonat érkezett. A webalkalmazásoknak delegált engedélyeket kell kérniük. További információ: a [webes API eléréséhez szükséges engedélyek hozzáadása](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Webes API-kat meghívó webes API: kód konfigurálása](scenario-web-api-call-api-app-configuration.md)
+Lépjen be a következő cikkbe ebben a forgatókönyvben, az [alkalmazás kódjának konfigurációjában](scenario-web-api-call-api-app-configuration.md).

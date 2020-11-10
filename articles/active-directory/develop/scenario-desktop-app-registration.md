@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b71c78f484eef0fc4d9c34a2f218a177dbffa0a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 787380dbf6f739d4b88f18a836da2146b06024c3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257510"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443143"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Webes API-kat meghívó asztali alkalmazás: alkalmazás regisztrálása
 
@@ -48,8 +48,8 @@ Az asztali alkalmazásokban használandó átirányítási URI-k a használni k�
 - Ha az alkalmazás kizárólag integrált Windows-hitelesítést vagy felhasználónevet és jelszót használ, nem kell regisztrálnia az alkalmazás átirányítási URI-JÁT. Ezek a folyamatok a Microsoft Identity platform 2.0-s végpontján keresztül egy oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.
 - Ha meg szeretné különböztetni az [eszköz kódját](scenario-desktop-acquire-token.md#device-code-flow), az [integrált Windows-hitelesítést](scenario-desktop-acquire-token.md#integrated-windows-authentication), valamint a bizalmas ügyfélalkalmazás által használt [felhasználónevet és jelszót](scenario-desktop-acquire-token.md#username-and-password) egy olyan ügyfél-hitelesítő adat használatával, amely a [Daemon-alkalmazásokban](scenario-daemon-overview.md)használatos, és amelyekhez nincs szükség átirányítási URI-ra, akkor azt nyilvános ügyfélalkalmazásként kell konfigurálnia. A konfiguráció elérése:
 
-    1. A [Azure Portal](https://portal.azure.com)válassza ki az alkalmazást **Alkalmazásregisztrációkban**, majd válassza a **hitelesítés**lehetőséget.
-    1. A **Speciális beállítások**  >  **alapértelmezett ügyfél típusa**  >  **nyilvános ügyfélként kezeli az alkalmazást**, és válassza az **Igen**lehetőséget.
+    1. A [Azure Portal](https://portal.azure.com)válassza ki az alkalmazást **Alkalmazásregisztrációkban** , majd válassza a **hitelesítés** lehetőséget.
+    1. A **Speciális beállítások**  >  **alapértelmezett ügyfél típusa**  >  **nyilvános ügyfélként kezeli az alkalmazást** , és válassza az **Igen** lehetőséget.
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Nyilvános ügyfél beállításainak engedélyezése a Azure Portal hitelesítés paneljén":::
 
@@ -57,7 +57,6 @@ Az asztali alkalmazásokban használandó átirányítási URI-k a használni k�
 
 Asztali alkalmazások hívás API-kat a bejelentkezett felhasználó számára. Delegált engedélyeket kell kérniük. Nem igényelhetnek alkalmazás-engedélyeket, amelyek csak Daemon- [alkalmazásokban](scenario-daemon-overview.md)vannak kezelve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Asztali alkalmazás: alkalmazás konfigurációja](scenario-desktop-app-configuration.md)
+Lépjen be a következő cikkbe ebben a forgatókönyvben, az [alkalmazás kódjának konfigurációjában](scenario-desktop-app-configuration.md).

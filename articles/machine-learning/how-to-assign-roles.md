@@ -9,18 +9,28 @@ ms.topic: conceptual
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
-ms.date: 07/24/2020
-ms.custom: how-to, seodec18, devx-track-azurecli
-ms.openlocfilehash: aa84d7cce09b370ab35ef67029f4dbe2ca29cabb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
+ms.openlocfilehash: dd8eff01cd52f8d80eb56f3a1ebe924763c8b70c
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320852"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441699"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterülethez való hozzáférés kezelése
 
-Ebből a cikkből megtudhatja, hogyan kezelheti az Azure Machine Learning-munkaterülethez való hozzáférést. Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésére szolgál. A Azure Active Directory lévő felhasználók meghatározott szerepköröket kapnak, amelyek hozzáférést biztosítanak az erőforrásokhoz. Az Azure beépített szerepköröket és egyéni szerepkörök létrehozását is lehetővé teszi.
+Ebből a cikkből megtudhatja, hogyan kezelheti a hozzáférés (Engedélyezés) Azure Machine Learning munkaterületre. Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésére szolgál, például új erőforrások létrehozására vagy a meglévők használatára. A Azure Active Directoryban (Azure AD) lévő felhasználók meghatározott szerepköröket kapnak, amelyek hozzáférést biztosítanak az erőforrásokhoz. Az Azure beépített szerepköröket és egyéni szerepkörök létrehozását is lehetővé teszi.
+
+> [!TIP]
+> Ez a cikk a Azure Machine Learningre összpontosít, és az Azure ML-re támaszkodó egyes szolgáltatások biztosítják a saját RBAC-beállításait. A cikkben szereplő információk alapján például beállíthatja, hogy kik küldhetnek pontozási kérelmeket webszolgáltatásként üzembe helyezett modellbe az Azure Kubernetes szolgáltatásban. Az Azure Kubernetes szolgáltatás azonban saját Azure RBAC-szerepköröket is biztosít. A szolgáltatással kapcsolatos olyan RBAC, amelyek hasznosak lehetnek a Azure Machine Learninghoz, tekintse meg az alábbi hivatkozásokat:
+>
+> * [Az Azure Kubernetes-fürt erőforrásaihoz való hozzáférés szabályozása](../aks/azure-ad-rbac.md)
+> * [Az Azure RBAC használata az Kubernetes-hitelesítéshez](../aks/manage-azure-rbac.md)
+> * [Az Azure RBAC használata a Blobok eléréséhez](/storage/common/storage-auth-aad-rbac-portal.md)
+
+> [!WARNING]
+> Egyes szerepkörök alkalmazása a Azure Machine Learning Studióban korlátozhatja a felhasználói felület funkcióit más felhasználók számára. Ha például egy felhasználó szerepköre nem képes számítási példányt létrehozni, a számítási példány létrehozásának lehetősége nem lesz elérhető a Studióban. Ez a viselkedés várható, és megakadályozza, hogy a felhasználó megkísérelje a hozzáférés-megtagadási hibát visszaadó műveleteket.
 
 ## <a name="default-roles"></a>Alapértelmezett szerepkörök
 
@@ -36,7 +46,7 @@ Az Azure Machine Learning-munkaterület egy Azure-erőforrás. A többi Azure-er
 > [!IMPORTANT]
 > A szerepkör-hozzáférés az Azure több szintjére is kiterjed. Előfordulhat például, hogy valaki tulajdonosi hozzáféréssel rendelkezik a munkaterülethez, és nem rendelkezik tulajdonosi hozzáféréssel a munkaterületet tartalmazó erőforráscsoporthoz. További információt az [Azure RBAC működéséről](../role-based-access-control/overview.md#how-azure-rbac-works)szóló témakörben talál.
 
-Az adott beépített szerepkörökkel kapcsolatos további információkért lásd: [Az Azure beépített szerepkörei](../role-based-access-control/built-in-roles.md).
+Jelenleg nincsenek a Azure Machine Learningra jellemző további beépített szerepkörök. A beépített szerepkörökkel kapcsolatos további információkért tekintse meg az [Azure beépített szerepkörei](../role-based-access-control/built-in-roles.md)című témakört.
 
 ## <a name="manage-workspace-access"></a>Munkaterület-hozzáférés kezelése
 
@@ -45,7 +55,7 @@ Ha Ön a munkaterület tulajdonosa, szerepköröket adhat hozzá és távolítha
 - [PowerShell](../role-based-access-control/role-assignments-powershell.md)
 - [Azure CLI](../role-based-access-control/role-assignments-cli.md)
 - [REST API](../role-based-access-control/role-assignments-rest.md)
-- [Azure Resource Manager sablonok](../role-based-access-control/role-assignments-template.md)
+- [Azure Resource Manager-sablonok](../role-based-access-control/role-assignments-template.md)
 
 Ha telepítette a [Azure Machine learning CLI](reference-azure-machine-learning-cli.md)-t, a parancssori felület parancsaival rendelhet hozzá szerepköröket a felhasználókhoz:
 
@@ -61,27 +71,6 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 > [!NOTE]
 > "az ml Workspace Share" parancs nem működik összevont fiók esetén Azure Active Directory B2B-vel. A parancs helyett használja az Azure UI Portalt.
-
-
-## <a name="azure-machine-learning-operations"></a>Azure Machine Learning műveletek
-
-Számos művelethez és feladathoz Azure Machine Learning beépített műveleteket. A teljes listát lásd: az [Azure erőforrás-szolgáltató műveletei](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices).
-
-## <a name="mlflow-operations-in-azure-machine-learning"></a>MLflow műveletek az Azure Machine learningben
-
-Ez a táblázat azt az engedélyezési hatókört ismerteti, amelyet hozzá kell adni a MLflow műveletek végrehajtásához létrehozott egyéni szerepkör műveleteihez.
-
-| MLflow művelet | Hatókör |
-| --- | --- |
-| A munkaterület-követési tárolóban található összes kísérlet felsorolása azonosító alapján, a kísérlet név alapján történő beszerzése | Microsoft. MachineLearningServices/munkaterületek/kísérletek/olvasás |
-| Hozzon létre egy kísérletet egy névvel, adjon meg egy címkét egy kísérleten, állítsa vissza a törlésre kijelölt kísérletet.| Microsoft. MachineLearningServices/munkaterületek/kísérletek/írás | 
-| Kísérlet törlése | Microsoft. MachineLearningServices/munkaterületek/kísérletek/törlés |
-| Futtasson egy futtatási és kapcsolódó adatokat és metaadatokat, és szerezzen be egy listát az adott futtatáshoz tartozó megadott metrika összes értékéről, és sorolja fel a futtatások listáját. | Microsoft. MachineLearningServices/munkaterületek/kísérletek/futtatások/olvasás |
-| Hozzon létre egy új futtatást egy kísérleten belül, törölje a futtatásokat, a törölt futtatások visszaállítását, a jelenlegi Futtatás alatt lévő naplózási mérőszámokat, a Run címkéit, a címkék törlését a futtatáskor, a naplófájlok (kulcs-érték párok) futtatásához | Microsoft. MachineLearningServices/munkaterületek/kísérletek/Futtatás/írás |
-| A regisztrált modell neve alapján beolvashatja a beállításjegyzék összes regisztrált modelljét, megkeresheti a regisztrált modelleket, az egyes kérelmek fázisának legújabb modelljeit, beszerezhet egy regisztrált modell verzióját, a keresési modell verzióit, az URI-t, ahol a modell verziójának összetevőit tárolja a rendszer, a kísérletek azonosítóinak keresése | Microsoft. MachineLearningServices/munkaterületek/modellek/olvasás |
-| Új regisztrált modell létrehozása, a regisztrált modell nevének/leírásának frissítése, a meglévő regisztrált modell átnevezése, a modell új verziójának létrehozása, a modell verziójának leírásának frissítése, a regisztrált modell átváltása az egyik fázisra | Microsoft. MachineLearningServices/munkaterületek/modellek/írás |
-| Regisztrált modell törlése az összes verziójával együtt, a regisztrált modellek adott verzióinak törlése | Microsoft. MachineLearningServices/munkaterületek/modellek/törlés |
-
 
 ## <a name="create-custom-role"></a>Egyéni szerepkör létrehozása
 
@@ -135,12 +124,44 @@ Az üzembe helyezés után ez a szerepkör elérhetővé válik a megadott munka
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-További információ az egyéni szerepkörökről: [Egyéni Azure-szerepkörök](../role-based-access-control/custom-roles.md). Az egyéni szerepkörökkel használható műveletekkel (műveletekkel és nem műveletekkel) kapcsolatos további információkért lásd: [erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices).
+További információ az egyéni szerepkörökről: [Egyéni Azure-szerepkörök](../role-based-access-control/custom-roles.md). 
 
-## <a name="frequently-asked-questions"></a>Gyakori kérdések
+### <a name="azure-machine-learning-operations"></a>Azure Machine Learning műveletek
 
+Az egyéni szerepkörökkel használható műveletekkel (műveletekkel és nem műveletekkel) kapcsolatos további információkért lásd: [erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices). A következő Azure CLI-parancsot is használhatja a műveletek listázásához:
 
-### <a name="q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service"></a>K. Milyen engedélyek szükségesek néhány gyakori forgatókönyv végrehajtásához a Azure Machine Learning szolgáltatásban?
+```azurecli-interactive
+az provider operation show –n Microsoft.MachineLearningServices
+```
+
+## <a name="list-custom-roles"></a>Egyéni szerepkörök listázása
+
+Az Azure CLI-ben futtassa a következő parancsot:
+
+```azurecli-interactive
+az role definition list --subscription <sub-id> --custom-role-only true
+```
+
+Egy adott egyéni szerepkör szerepkör-definíciójának megtekintéséhez használja az alábbi Azure CLI-parancsot. Az értéknek `<role-name>` a fenti parancs által visszaadott formátumban kell szerepelnie:
+
+```azurecli-interactive
+az role definition list -n <role-name> --subscription <sub-id>
+```
+
+## <a name="update-a-custom-role"></a>Egyéni szerepkörök frissítése
+
+Az Azure CLI-ben futtassa a következő parancsot:
+
+```azurecli-interactive
+az role definition update --role-definition update_def.json --subscription <sub-id>
+```
+
+Az új szerepkör-definíció teljes hatókörére vonatkozó engedélyekkel kell rendelkeznie. Ha például az új szerepkör hatóköre három előfizetésben található, akkor mindhárom előfizetéshez engedélyekkel kell rendelkeznie. 
+
+> [!NOTE]
+> A szerepkör frissítései 15 percet is igénybe vehetnek, hogy az adott hatókörben lévő összes szerepkör-hozzárendelésre érvényesek legyenek.
+
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
 A következő táblázat a Azure Machine Learning tevékenységek összegzését, valamint a minimális hatókörön belüli végrehajtáshoz szükséges engedélyeket tartalmazza. Ha például egy tevékenység a munkaterület hatókörével (4. oszlop) végezhető el, akkor az ezzel az engedéllyel rendelkező összes magasabb hatókör automatikusan is működni fog:
 
@@ -163,319 +184,290 @@ A következő táblázat a Azure Machine Learning tevékenységek összegzését
 > [!TIP]
 > Ha a munkaterület első alkalommal történő létrehozásakor hiba lép fel, győződjön meg arról, hogy a szerepköre engedélyezi `Microsoft.MachineLearningServices/register/action` . Ez a művelet lehetővé teszi, hogy regisztrálja az Azure Machine Learning erőforrás-szolgáltatót az Azure-előfizetésében.
 
-### <a name="q-are-we-publishing-azure-built-in-roles-for-the-machine-learning-service"></a>K. Az Azure beépített szerepköreit tesszük közzé a Machine Learning szolgáltatáshoz?
+### <a name="user-assigned-managed-identity-with-azure-ml-compute-cluster"></a>Felhasználó által hozzárendelt felügyelt identitás az Azure ML számítási fürttel
 
-Jelenleg nem tesszük közzé az [Azure beépített szerepköreit](../role-based-access-control/built-in-roles.md) a Machine learning szolgáltatáshoz. Nem lehet frissíteni egy beépített szerepkört a közzététel után, és az ügyfél-forgatókönyvek és a visszajelzések alapján továbbra is megerősítjük a szerepkör-definíciókat. 
+Ha egy felhasználóhoz rendelt identitást szeretne hozzárendelni egy Azure Machine Learning számítási fürthöz, írási engedéllyel kell rendelkeznie a számítási és a [felügyelt identitás-kezelő szerepkör](../role-based-access-control/built-in-roles.md#managed-identity-operator)létrehozásához. A felügyelt identitásokkal rendelkező Azure RBAC kapcsolatos további információkért olvassa el a [felhasználó által hozzárendelt identitás kezelése](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) című témakört.
+
+### <a name="mlflow-operations"></a>MLflow-műveletek
+
+A MLflow-műveletek a Azure Machine Learning munkaterületen való végrehajtásához használja az egyéni szerepkör következő hatóköreit:
+
+| MLflow művelet | Hatókör |
+| --- | --- |
+| A munkaterület-követési tárolóban található összes kísérlet felsorolása azonosító alapján, a kísérlet név alapján történő beszerzése | `Microsoft.MachineLearningServices/workspaces/experiments/read` |
+| Hozzon létre egy kísérletet egy névvel, adjon meg egy címkét egy kísérleten, állítsa vissza a törlésre kijelölt kísérletet.| `Microsoft.MachineLearningServices/workspaces/experiments/write` | 
+| Kísérlet törlése | `Microsoft.MachineLearningServices/workspaces/experiments/delete` |
+| Futtasson egy futtatási és kapcsolódó adatokat és metaadatokat, és szerezzen be egy listát az adott futtatáshoz tartozó megadott metrika összes értékéről, és sorolja fel a futtatások listáját. | `Microsoft.MachineLearningServices/workspaces/experiments/runs/read` |
+| Hozzon létre egy új futtatást egy kísérleten belül, törölje a futtatásokat, a törölt futtatások visszaállítását, a jelenlegi Futtatás alatt lévő naplózási mérőszámokat, a Run címkéit, a címkék törlését a futtatáskor, a naplófájlok (kulcs-érték párok) futtatásához | `Microsoft.MachineLearningServices/workspaces/experiments/runs/write` |
+| A regisztrált modell neve alapján beolvashatja a beállításjegyzék összes regisztrált modelljét, megkeresheti a regisztrált modelleket, az egyes kérelmek fázisának legújabb modelljeit, beszerezhet egy regisztrált modell verzióját, a keresési modell verzióit, az URI-t, ahol a modell verziójának összetevőit tárolja a rendszer, a kísérletek azonosítóinak keresése | `Microsoft.MachineLearningServices/workspaces/models/read` |
+| Új regisztrált modell létrehozása, a regisztrált modell nevének/leírásának frissítése, a meglévő regisztrált modell átnevezése, a modell új verziójának létrehozása, a modell verziójának leírásának frissítése, a regisztrált modell átváltása az egyik fázisra | `Microsoft.MachineLearningServices/workspaces/models/write` |
+| Regisztrált modell törlése az összes verziójával együtt, a regisztrált modellek adott verzióinak törlése | `Microsoft.MachineLearningServices/workspaces/models/delete` |
 
 <a id="customroles"></a>
 
-### <a name="q-are-there-some-custom-role-templates-for-the-most-common-scenarios-in-machine-learning-service"></a>K. Létezik-e egyéni szerepkörű sablon a Machine Learning szolgáltatás leggyakoribb forgatókönyvei számára?
+## <a name="example-custom-roles"></a>Példa egyéni szerepkörökre
 
-Igen, íme néhány gyakori forgatókönyv az egyéni javasolt szerepkör-definíciókkal együtt, amelyeket a saját egyéni szerepköreinek definiálására használhat alapszintű:
+### <a name="data-scientist"></a>Adattudós
 
-* __Adattudós egyéni__ : lehetővé teszi, hogy az adattudós a munkaterületen belül minden műveletet elvégezzen, **kivéve** a következőket:
+Lehetővé teszi, hogy az adattudós a munkaterületen belül minden műveletet elvégezzen, **kivéve** a következőket:
 
-    * Számítás létrehozása
-    * Modellek üzembe helyezése üzemi AK-fürtön
-    * Folyamat-végpont üzembe helyezése éles környezetben
+* Számítás létrehozása
+* Modellek üzembe helyezése üzemi AK-fürtön
+* Folyamat-végpont üzembe helyezése éles környezetben
 
-    `data_scientist_custom_role.json` :
-    ```json
-    {
-        "Name": "Data Scientist Custom",
-        "IsCustom": true,
-        "Description": "Can run experiment but can't create or delete compute or deploy production endpoints.",
-        "Actions": [
-            "Microsoft.MachineLearningServices/workspaces/*/read",
-            "Microsoft.MachineLearningServices/workspaces/*/action",
-            "Microsoft.MachineLearningServices/workspaces/*/delete",
-            "Microsoft.MachineLearningServices/workspaces/*/write"
-        ],
-        "NotActions": [
-            "Microsoft.MachineLearningServices/workspaces/delete",
-            "Microsoft.MachineLearningServices/workspaces/write",
-            "Microsoft.MachineLearningServices/workspaces/computes/*/write",
-            "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
-            "Microsoft.Authorization/*",
-            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
-            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
-            "Microsoft.MachineLearningServices/workspaces/services/aks/write",
-            "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
-            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
-        ],
-        "AssignableScopes": [
-            "/subscriptions/<subscription_id>"
-        ]
-    }
-    ```
+`data_scientist_custom_role.json` :
+```json
+{
+    "Name": "Data Scientist Custom",
+    "IsCustom": true,
+    "Description": "Can run experiment but can't create or delete compute or deploy production endpoints.",
+    "Actions": [
+        "Microsoft.MachineLearningServices/workspaces/*/read",
+        "Microsoft.MachineLearningServices/workspaces/*/action",
+        "Microsoft.MachineLearningServices/workspaces/*/delete",
+        "Microsoft.MachineLearningServices/workspaces/*/write"
+    ],
+    "NotActions": [
+        "Microsoft.MachineLearningServices/workspaces/delete",
+        "Microsoft.MachineLearningServices/workspaces/write",
+        "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+        "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
+        "Microsoft.Authorization/*",
+        "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+        "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+        "Microsoft.MachineLearningServices/workspaces/services/aks/write",
+        "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
+        "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
+    ],
+    "AssignableScopes": [
+        "/subscriptions/<subscription_id>"
+    ]
+}
+```
 
-* __Adattudós által korlátozott egyéni__ : a korlátozott szerepkör-definíciók nem helyettesítő karakterek az engedélyezett műveletekben. A munkaterületen belül minden műveletet elvégezhet, **kivéve** a következőket:
+### <a name="data-scientist-restricted"></a>Adattudós korlátozott
 
-    * Számítás létrehozása
-    * Modellek üzembe helyezése üzemi AK-fürtön
-    * Folyamat-végpont üzembe helyezése éles környezetben
+Egy korlátozott szerepkör-definíció a helyettesítő karakterek nélkül az engedélyezett műveletekben. A munkaterületen belül minden műveletet elvégezhet, **kivéve** a következőket:
 
-    `data_scientist_restricted_custom_role.json` :
-    ```json
-    {
-        "Name": "Data Scientist Restricted Custom",
-        "IsCustom": true,
-        "Description": "Can run experiment but can't create or delete compute or deploy production endpoints",
-        "Actions": [
-            "Microsoft.MachineLearningServices/workspaces/*/read",
-            "Microsoft.MachineLearningServices/workspaces/computes/start/action",
-            "Microsoft.MachineLearningServices/workspaces/computes/stop/action",
-            "Microsoft.MachineLearningServices/workspaces/computes/restart/action",
-            "Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action",
-            "Microsoft.MachineLearningServices/workspaces/notebooks/storage/read",
-            "Microsoft.MachineLearningServices/workspaces/notebooks/storage/write",
-            "Microsoft.MachineLearningServices/workspaces/notebooks/storage/delete",
-            "Microsoft.MachineLearningServices/workspaces/notebooks/samples/read",
-            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
-            "Microsoft.MachineLearningServices/workspaces/experiments/write",
-            "Microsoft.MachineLearningServices/workspaces/experiments/runs/submit/action",
-            "Microsoft.MachineLearningServices/workspaces/pipelinedrafts/write",
-            "Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write",
-            "Microsoft.MachineLearningServices/workspaces/metadata/artifacts/write",
-            "Microsoft.MachineLearningServices/workspaces/environments/write",
-            "Microsoft.MachineLearningServices/workspaces/models/write",
-            "Microsoft.MachineLearningServices/workspaces/modules/write",
-            "Microsoft.MachineLearningServices/workspaces/datasets/registered/write", 
-            "Microsoft.MachineLearningServices/workspaces/datasets/registered/delete",
-            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/write",
-            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/delete",
-            "Microsoft.MachineLearningServices/workspaces/computes/listNodes/action",
-            "Microsoft.MachineLearningServices/workspaces/environments/build/action"
-        ],
-        "NotActions": [
-            "Microsoft.MachineLearningServices/workspaces/computes/write",
-            "Microsoft.MachineLearningServices/workspaces/write",
-            "Microsoft.MachineLearningServices/workspaces/computes/delete",
-            "Microsoft.MachineLearningServices/workspaces/delete",
-            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
-            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
-            "Microsoft.Authorization/*",
-            "Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/read",
-            "Microsoft.MachineLearningServices/workspaces/datasets/registered/preview/read",
-            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/profile/read",
-            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/preview/read",
-            "Microsoft.MachineLearningServices/workspaces/datasets/registered/schema/read",    
-            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/schema/read",
-            "Microsoft.MachineLearningServices/workspaces/datastores/write",
-            "Microsoft.MachineLearningServices/workspaces/datastores/delete"
-        ],
-        "AssignableScopes": [
-            "/subscriptions/<subscription_id>"
-        ]
-    }
-    ```
+* Számítás létrehozása
+* Modellek üzembe helyezése üzemi AK-fürtön
+* Folyamat-végpont üzembe helyezése éles környezetben
+
+`data_scientist_restricted_custom_role.json` :
+```json
+{
+    "Name": "Data Scientist Restricted Custom",
+    "IsCustom": true,
+    "Description": "Can run experiment but can't create or delete compute or deploy production endpoints",
+    "Actions": [
+        "Microsoft.MachineLearningServices/workspaces/*/read",
+        "Microsoft.MachineLearningServices/workspaces/computes/start/action",
+        "Microsoft.MachineLearningServices/workspaces/computes/stop/action",
+        "Microsoft.MachineLearningServices/workspaces/computes/restart/action",
+        "Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action",
+        "Microsoft.MachineLearningServices/workspaces/notebooks/storage/read",
+        "Microsoft.MachineLearningServices/workspaces/notebooks/storage/write",
+        "Microsoft.MachineLearningServices/workspaces/notebooks/storage/delete",
+        "Microsoft.MachineLearningServices/workspaces/notebooks/samples/read",
+        "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+        "Microsoft.MachineLearningServices/workspaces/experiments/write",
+        "Microsoft.MachineLearningServices/workspaces/experiments/runs/submit/action",
+        "Microsoft.MachineLearningServices/workspaces/pipelinedrafts/write",
+        "Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write",
+        "Microsoft.MachineLearningServices/workspaces/metadata/artifacts/write",
+        "Microsoft.MachineLearningServices/workspaces/environments/write",
+        "Microsoft.MachineLearningServices/workspaces/models/write",
+        "Microsoft.MachineLearningServices/workspaces/modules/write",
+        "Microsoft.MachineLearningServices/workspaces/datasets/registered/write", 
+        "Microsoft.MachineLearningServices/workspaces/datasets/registered/delete",
+        "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/write",
+        "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/delete",
+        "Microsoft.MachineLearningServices/workspaces/computes/listNodes/action",
+        "Microsoft.MachineLearningServices/workspaces/environments/build/action"
+    ],
+    "NotActions": [
+        "Microsoft.MachineLearningServices/workspaces/computes/write",
+        "Microsoft.MachineLearningServices/workspaces/write",
+        "Microsoft.MachineLearningServices/workspaces/computes/delete",
+        "Microsoft.MachineLearningServices/workspaces/delete",
+        "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+        "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+        "Microsoft.Authorization/*",
+        "Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/read",
+        "Microsoft.MachineLearningServices/workspaces/datasets/registered/preview/read",
+        "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/profile/read",
+        "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/preview/read",
+        "Microsoft.MachineLearningServices/workspaces/datasets/registered/schema/read",    
+        "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/schema/read",
+        "Microsoft.MachineLearningServices/workspaces/datastores/write",
+        "Microsoft.MachineLearningServices/workspaces/datastores/delete"
+    ],
+    "AssignableScopes": [
+        "/subscriptions/<subscription_id>"
+    ]
+}
+```
      
-* __Egyéni MLflow adattudós__ : lehetővé teszi, hogy az adattudós az összes támogatott MLflow AzureML-műveletet hajtsa végre, **kivéve** a következőket:
+### <a name="mlflow-data-scientist"></a>MLflow adattudós
 
-   * Számítás létrehozása
-   * Modellek üzembe helyezése üzemi AK-fürtön
-   * Folyamat-végpont üzembe helyezése éles környezetben
+Lehetővé teszi, hogy az adattudós az összes MLflow-AzureML támogatott műveletet hajtson végre, **kivéve** a következőket:
 
-   `mlflow_data_scientist_custom_role.json` :
-   ```json
-   {
-        "Name": "MLFlow Data Scientist Custom",
-        "IsCustom": true,
-        "Description": "Can perform azureml mlflow integrated functionalities that includes mlflow tracking, projects, model registry",
-        "Actions": [
-            "Microsoft.MachineLearningServices/workspaces/experiments/read",
-            "Microsoft.MachineLearningServices/workspaces/experiments/write",
-            "Microsoft.MachineLearningServices/workspaces/experiments/delete",
-            "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
-            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
-            "Microsoft.MachineLearningServices/workspaces/models/read",
-            "Microsoft.MachineLearningServices/workspaces/models/write",
-            "Microsoft.MachineLearningServices/workspaces/models/delete"
-        ],
-        "NotActions": [
-            "Microsoft.MachineLearningServices/workspaces/delete",
-            "Microsoft.MachineLearningServices/workspaces/write",
-            "Microsoft.MachineLearningServices/workspaces/computes/*/write",
-            "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
-            "Microsoft.Authorization/*",
-            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
-            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
-            "Microsoft.MachineLearningServices/workspaces/services/aks/write",
-            "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
-            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
-        ],
-     "AssignableScopes": [
-            "/subscriptions/<subscription_id>"
-        ]
-    }
-    ```   
+* Számítás létrehozása
+* Modellek üzembe helyezése üzemi AK-fürtön
+* Folyamat-végpont üzembe helyezése éles környezetben
 
-* __Egyéni MLOps__ : lehetővé teszi, hogy egy szerepkört rendeljen egy egyszerű szolgáltatáshoz, és ezzel automatizálja az MLOps-folyamatokat. Például egy már közzétett folyamaton való futtatáshoz:
+`mlflow_data_scientist_custom_role.json` :
+```json
+{
+    "Name": "MLFlow Data Scientist Custom",
+    "IsCustom": true,
+    "Description": "Can perform azureml mlflow integrated functionalities that includes mlflow tracking, projects, model registry",
+    "Actions": [
+        "Microsoft.MachineLearningServices/workspaces/experiments/read",
+        "Microsoft.MachineLearningServices/workspaces/experiments/write",
+        "Microsoft.MachineLearningServices/workspaces/experiments/delete",
+        "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
+        "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+        "Microsoft.MachineLearningServices/workspaces/models/read",
+        "Microsoft.MachineLearningServices/workspaces/models/write",
+        "Microsoft.MachineLearningServices/workspaces/models/delete"
+    ],
+    "NotActions": [
+        "Microsoft.MachineLearningServices/workspaces/delete",
+        "Microsoft.MachineLearningServices/workspaces/write",
+        "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+        "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
+        "Microsoft.Authorization/*",
+        "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+        "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+        "Microsoft.MachineLearningServices/workspaces/services/aks/write",
+        "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
+        "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
+    ],
+    "AssignableScopes": [
+        "/subscriptions/<subscription_id>"
+    ]
+}
+```   
 
-    `mlops_custom_role.json` :
-    ```json
-    {
-        "Name": "MLOps Custom",
-        "IsCustom": true,
-        "Description": "Can run pipelines against a published pipeline endpoint",
-        "Actions": [
-            "Microsoft.MachineLearningServices/workspaces/read",
-            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/read",
-            "Microsoft.MachineLearningServices/workspaces/metadata/artifacts/read",
-            "Microsoft.MachineLearningServices/workspaces/metadata/snapshots/read",
-            "Microsoft.MachineLearningServices/workspaces/environments/read",    
-            "Microsoft.MachineLearningServices/workspaces/metadata/secrets/read",
-            "Microsoft.MachineLearningServices/workspaces/modules/read",
-            "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
-            "Microsoft.MachineLearningServices/workspaces/datasets/registered/read",
-            "Microsoft.MachineLearningServices/workspaces/datastores/read",
-            "Microsoft.MachineLearningServices/workspaces/environments/write",
-            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
-            "Microsoft.MachineLearningServices/workspaces/metadata/artifacts/write",
-            "Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write",
-            "Microsoft.MachineLearningServices/workspaces/environments/build/action",
-            "Microsoft.MachineLearningServices/workspaces/experiments/runs/submit/action"
-        ],
-        "NotActions": [
-            "Microsoft.MachineLearningServices/workspaces/computes/write",
-            "Microsoft.MachineLearningServices/workspaces/write",
-            "Microsoft.MachineLearningServices/workspaces/computes/delete",
-            "Microsoft.MachineLearningServices/workspaces/delete",
-            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
-            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
-            "Microsoft.Authorization/*"
-        ],
-        "AssignableScopes": [
-            "/subscriptions/<subscription_id>"
-        ]
-    }
-    ```
+### <a name="mlops"></a>MLOps
 
-* __Munkaterület rendszergazdája__ : lehetővé teszi az összes művelet végrehajtását egy munkaterület hatókörén belül, **kivéve** a következőket:
+Lehetővé teszi egy szerepkör hozzárendelését egy egyszerű szolgáltatáshoz, és a segítségével automatizálhatja a MLOps-folyamatokat. Például egy már közzétett folyamaton való futtatáshoz:
 
-    * Új munkaterület létrehozása
-    * Előfizetés vagy munkaterület szintű kvóták kiosztása
+`mlops_custom_role.json` :
+```json
+{
+    "Name": "MLOps Custom",
+    "IsCustom": true,
+    "Description": "Can run pipelines against a published pipeline endpoint",
+    "Actions": [
+        "Microsoft.MachineLearningServices/workspaces/read",
+        "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/read",
+        "Microsoft.MachineLearningServices/workspaces/metadata/artifacts/read",
+        "Microsoft.MachineLearningServices/workspaces/metadata/snapshots/read",
+        "Microsoft.MachineLearningServices/workspaces/environments/read",    
+        "Microsoft.MachineLearningServices/workspaces/metadata/secrets/read",
+        "Microsoft.MachineLearningServices/workspaces/modules/read",
+        "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
+        "Microsoft.MachineLearningServices/workspaces/datasets/registered/read",
+        "Microsoft.MachineLearningServices/workspaces/datastores/read",
+        "Microsoft.MachineLearningServices/workspaces/environments/write",
+        "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+        "Microsoft.MachineLearningServices/workspaces/metadata/artifacts/write",
+        "Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write",
+        "Microsoft.MachineLearningServices/workspaces/environments/build/action",
+        "Microsoft.MachineLearningServices/workspaces/experiments/runs/submit/action"
+    ],
+    "NotActions": [
+        "Microsoft.MachineLearningServices/workspaces/computes/write",
+        "Microsoft.MachineLearningServices/workspaces/write",
+        "Microsoft.MachineLearningServices/workspaces/computes/delete",
+        "Microsoft.MachineLearningServices/workspaces/delete",
+        "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+        "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+        "Microsoft.Authorization/*"
+    ],
+    "AssignableScopes": [
+        "/subscriptions/<subscription_id>"
+    ]
+}
+```
 
-    A munkaterület rendszergazdája szintén nem tud új szerepkört létrehozni. A meglévő beépített vagy egyéni szerepköröket csak a munkaterület hatókörén belül lehet hozzárendelni:
+### <a name="workspace-admin"></a>Munkaterület rendszergazdája
 
-    `workspace_admin_custom_role.json` :
-    ```json
-    {
-        "Name": "Workspace Admin Custom",
-        "IsCustom": true,
-        "Description": "Can perform all operations except quota management and upgrades",
-        "Actions": [
-            "Microsoft.MachineLearningServices/workspaces/*/read",
-            "Microsoft.MachineLearningServices/workspaces/*/action",
-            "Microsoft.MachineLearningServices/workspaces/*/write",
-            "Microsoft.MachineLearningServices/workspaces/*/delete",
-            "Microsoft.Authorization/roleAssignments/*"
-        ],
-        "NotActions": [
-            "Microsoft.MachineLearningServices/workspaces/write"
-        ],
-        "AssignableScopes": [
-            "/subscriptions/<subscription_id>"
-        ]
-    }
-    ```
+Lehetővé teszi az összes művelet végrehajtását egy munkaterület hatókörén belül, **kivéve** a következőket:
+
+* Új munkaterület létrehozása
+* Előfizetés vagy munkaterület szintű kvóták kiosztása
+
+A munkaterület rendszergazdája szintén nem tud új szerepkört létrehozni. A meglévő beépített vagy egyéni szerepköröket csak a munkaterület hatókörén belül lehet hozzárendelni:
+
+`workspace_admin_custom_role.json` :
+```json
+{
+    "Name": "Workspace Admin Custom",
+    "IsCustom": true,
+    "Description": "Can perform all operations except quota management and upgrades",
+    "Actions": [
+        "Microsoft.MachineLearningServices/workspaces/*/read",
+        "Microsoft.MachineLearningServices/workspaces/*/action",
+        "Microsoft.MachineLearningServices/workspaces/*/write",
+        "Microsoft.MachineLearningServices/workspaces/*/delete",
+        "Microsoft.Authorization/roleAssignments/*"
+    ],
+    "NotActions": [
+        "Microsoft.MachineLearningServices/workspaces/write"
+    ],
+    "AssignableScopes": [
+        "/subscriptions/<subscription_id>"
+    ]
+}
+```
 
 <a name="labeler"></a>
-* __Egyéni Labeler__ : lehetővé teszi, hogy csak az adat címkézésére szolgáló szerepkört definiáljon:
+### <a name="data-labeler"></a>Az adatlabeler
 
-    `labeler_custom_role.json` :
-    ```json
-    {
-        "Name": "Labeler Custom",
-        "IsCustom": true,
-        "Description": "Can label data for Labeling",
-        "Actions": [
-            "Microsoft.MachineLearningServices/workspaces/read",
-            "Microsoft.MachineLearningServices/workspaces/labeling/projects/read",
-            "Microsoft.MachineLearningServices/workspaces/labeling/labels/write"
-        ],
-        "NotActions": [
-            "Microsoft.MachineLearningServices/workspaces/labeling/projects/summary/read"
-        ],
-        "AssignableScopes": [
-            "/subscriptions/<subscription_id>"
-        ]
-    }
-    ```
+Lehetővé teszi, hogy csak az adat címkézésére szolgáló szerepkört definiáljon:
 
-### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>K. Hogyan a saját előfizetés összes egyéni szerepkörét listázom?
-
-Futtassa az alábbi parancsot az Azure CLI-ben.
-
-```azurecli-interactive
-az role definition list --subscription <sub-id> --custom-role-only true
+`labeler_custom_role.json` :
+```json
+{
+    "Name": "Labeler Custom",
+    "IsCustom": true,
+    "Description": "Can label data for Labeling",
+    "Actions": [
+        "Microsoft.MachineLearningServices/workspaces/read",
+        "Microsoft.MachineLearningServices/workspaces/labeling/projects/read",
+        "Microsoft.MachineLearningServices/workspaces/labeling/labels/write"
+    ],
+    "NotActions": [
+        "Microsoft.MachineLearningServices/workspaces/labeling/projects/summary/read"
+    ],
+    "AssignableScopes": [
+        "/subscriptions/<subscription_id>"
+    ]
+}
 ```
 
-### <a name="q-how-do-i-find-the-operations-supported-by-the-machine-learning-service"></a>K. Hogyan megkeresni a Machine Learning szolgáltatás által támogatott műveleteket?
-
-Futtassa az alábbi parancsot az Azure CLI-ben.
-
-```azurecli-interactive
-az provider operation show –n Microsoft.MachineLearningServices
-```
-
-Ezek az [erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)listájában is megtalálhatók.
-
-
-### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>K. Melyek az Azure RBAC használatának gyakori megtartása?
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Íme néhány tudnivaló az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata során:
 
-- Ha az Azure-ban hoz létre egy erőforrást, mondjuk egy munkaterületet, nem közvetlenül a munkaterület tulajdonosa. A szerepkör örökölt a legmagasabb hatókörű szerepkörtől, amelyet az adott előfizetésben engedélyez. Például ha Ön hálózati rendszergazda, és rendelkezett a Machine Learning munkaterület létrehozásához szükséges engedélyekkel, akkor a hálózati rendszergazda szerepkört a munkaterülethez kell rendelni, nem pedig a tulajdonosi szerepkörhöz.
+- Ha az Azure-ban hoz létre egy erőforrást, például egy munkaterületet, akkor Ön nem közvetlenül az erőforrás tulajdonosa. A szerepkör örökölt a legmagasabb hatókörű szerepkörből, amelyet az adott előfizetésben engedélyez. Például ha Ön hálózati rendszergazda, és rendelkezik a Machine Learning munkaterület létrehozásához szükséges engedélyekkel, akkor a hálózati rendszergazda szerepkört a munkaterülethez kell rendelni, nem a tulajdonosi szerepkörhöz.
+
+- Ha kvótát szeretne végrehajtani egy munkaterületen, előfizetési szintű engedélyekre van szükség. Ez azt jelenti, hogy az előfizetési szint kvótájának vagy a munkaterületnek a felügyelt számítási erőforrásokra vonatkozó kvótájának beállítása csak akkor fordulhat elő, ha az előfizetés hatókörében írási engedélyekkel rendelkezik.
+
 - Ha két szerepkör-hozzárendelés van ugyanahhoz a Azure Active Directory-felhasználóhoz, amely ütközik a műveletek és a tevékenységek ütköző részeivel, akkor előfordulhat, hogy az egyik szerepkörtől való kizárásban felsorolt műveletek nem lépnek érvénybe, ha egy másik szerepkör Műveleteiként is szerepelnek. Ha többet szeretne megtudni arról, hogy az Azure hogyan elemzi a szerepkör-hozzárendeléseket, olvassa el, [hogyan határozza meg, hogy a felhasználó rendelkezik-e erőforrás-hozzáféréssel az Azure RBAC](../role-based-access-control/overview.md#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
+
 - A számítási erőforrások VNet való üzembe helyezéséhez explicit módon rendelkeznie kell a következő műveletekhez szükséges engedélyekkel:
-    - "Microsoft. Network/virtualNetworks/JOIN/Action" a VNet-erőforráson.
-    - "Microsoft. Network/virtualNetworks/subnet/JOIN/Action" az alhálózati erőforráson.
+    - `Microsoft.Network/virtualNetworks/join/action` a VNet erőforráson.
+    - `Microsoft.Network/virtualNetworks/subnet/join/action` az alhálózati erőforráson.
     
     A hálózatkezeléssel rendelkező Azure RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](../role-based-access-control/built-in-roles.md#networking).
 
-- Időnként akár 1 óráig is eltarthat, amíg az új szerepkör-hozzárendelések érvénybe lépnek a gyorsítótárban tárolt engedélyekkel szemben a veremben.
+- Időnként akár 1 órát is igénybe vehet, amíg az új szerepkör-hozzárendelések érvénybe lépnek a gyorsítótárban tárolt engedélyekkel szemben a veremben.
 
-### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>K. Milyen engedélyek szükségesek egy felhasználó által hozzárendelt felügyelt identitás használatához a Amlcompute-fürtökkel?
-
-Ahhoz, hogy egy felhasználóhoz hozzárendelt identitást rendeljen a Amlcompute-fürtökhöz, az egyiknek írási engedéllyel kell rendelkeznie a számítási és [felügyelt identitás-kezelői szerepkör](../role-based-access-control/built-in-roles.md#managed-identity-operator)létrehozásához. A felügyelt identitásokkal rendelkező Azure RBAC kapcsolatos további információkért olvassa el a [felhasználó által hozzárendelt identitás kezelése](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) című témakört.
-
-
-### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>K. Támogatjuk a szerepköralapú hozzáférés-vezérlést a Studio portálon?
-
-Azure Machine Learning Studio támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC). 
-
-> [!IMPORTANT]
-> Miután hozzárendelt egy adott engedélyekkel rendelkező egyéni szerepkört a munkaterületen lévő adattudóshoz, a megfelelő műveletek (például a számítási gomb hozzáadása) automatikusan el lesznek rejtve a felhasználók elől. Az elemek elrejtésével megakadályozhatja, hogy a rendszer ne észlelje az olyan vezérlőket, amelyek a használat során jogosulatlan hozzáférési értesítést adnak vissza a szolgáltatástól.
-
-### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>K. Hogyan megkeresni az előfizetésben szereplő szerepkörhöz tartozó szerepkör-definíciót?
-
-Futtassa az alábbi parancsot az Azure CLI-ben. Az értéknek `<role-name>` a fenti parancs által visszaadott formátumban kell lennie.
-
-```azurecli-interactive
-az role definition list -n <role-name> --subscription <sub-id>
-```
-
-### <a name="q-how-do-i-update-a-role-definition"></a>K. Hogyan frissíteni a szerepkör-definíciót?
-
-Futtassa az alábbi parancsot az Azure CLI-ben.
-
-```azurecli-interactive
-az role definition update --role-definition update_def.json --subscription <sub-id>
-```
-
-Az új szerepkör-definíció teljes hatókörére vonatkozó engedélyekkel kell rendelkeznie. Ha például az új szerepkör hatóköre három előfizetésben található, akkor mindhárom előfizetéshez engedélyekkel kell rendelkeznie. 
-
-> [!NOTE]
-> A szerepkör frissítései 15 percet is igénybe vehetnek, hogy az adott hatókörben lévő összes szerepkör-hozzárendelésre érvényesek legyenek.
-
-
-### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>K. Milyen engedélyekre van szükség a kvóta-műveletek végrehajtásához egy munkaterületen? 
-
-Az előfizetési szintű engedélyekre van szükség a munkaterületen található kvóta-alapú műveletek elvégzéséhez. Ez azt jelenti, hogy az előfizetési szint kvótájának vagy a munkaterületnek a felügyelt számítási erőforrásokra vonatkozó kvótájának beállítása csak akkor fordulhat elő, ha az előfizetés hatókörében írási engedélyekkel rendelkezik. 
-
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Vállalati biztonság áttekintése](concept-enterprise-security.md)
 - [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md)

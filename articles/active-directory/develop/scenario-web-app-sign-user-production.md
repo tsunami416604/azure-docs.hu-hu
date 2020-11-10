@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 47a45b52ac10a44b6efd54c41b3fec1e61a47a35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f438567851204a1a284955bede1525505712f4b7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82181630"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442378"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Felhasználók számára bejelentkező webalkalmazás: áthelyezés éles környezetbe
 
@@ -24,9 +24,7 @@ Most, hogy tudja, hogyan szerezhet be jogkivonatot webes API-k hívására, megt
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>További lépések
-
-### <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 > [!NOTE]
 > Amikor a felhasználók első alkalommal jelentkeznek be a webalkalmazásba, hozzá kell járulniuk. Egyes szervezeteknél azonban a felhasználók a következőhöz hasonló üzenetet tekinthetnek meg:
@@ -35,28 +33,17 @@ Most, hogy tudja, hogyan szerezhet be jogkivonatot webes API-k hívására, megt
 >
 > Ennek az az oka, hogy a bérlői rendszergazdája **letiltotta** a felhasználók beleegyező jogosultságát. Ebben az esetben kapcsolatba kell lépnie a bérlői rendszergazdákkal, hogy az alkalmazás által igényelt hatókörökhöz rendszergazdai jogosultságot adjanak.
 
-### <a name="same-site"></a>Ugyanazon a helyen
+## <a name="same-site"></a>Ugyanazon a helyen
 
-Győződjön meg arról, hogy megértette a Chrome böngésző új verzióival kapcsolatos lehetséges problémákat
-
-> [!div class="nextstepaction"]
-> [A SameSite-cookie-változások kezelése a Chrome böngészőben](howto-handle-samesite-cookie-changes-chrome-browser.md)
+Győződjön meg arról, hogy a Chrome böngésző új verzióival kapcsolatos lehetséges problémákat tapasztalja: [hogyan kezelheti a SameSite-cookie-változásokat a Chrome böngészőben](howto-handle-samesite-cookie-changes-chrome-browser.md).
 
 A Microsoft. Identity. Web NuGet csomag kezeli a leggyakoribb SameSite problémákat.
-
-### <a name="scenario-for-calling-web-apis"></a>Forgatókönyv a webes API-k meghívásához
-
-Miután a webalkalmazás bejelentkezett a felhasználókba, a webes API-kat hívhat a bejelentkezett felhasználók nevében. A webes API-k hívása a webalkalmazásból a következő forgatókönyv objektuma:
-
-> [!div class="nextstepaction"]
-> [Webes API-kat hívó webalkalmazás](scenario-web-app-call-api-overview.md)
 
 ## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Deep Dive: ASP.NET Core webalkalmazás-oktatóanyag
 
 További információ a felhasználók bejelentkezésének egyéb módjairól a ASP.NET Core oktatóanyagban: 
 
-> [!div class="nextstepaction"]
-> [A webalkalmazások bejelentkezhetnek a felhasználókba, és meghívhatják az API-kat a Microsoft Identity platform for Developers szolgáltatással](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+[A webalkalmazások bejelentkezhetnek a felhasználókba, és meghívhatják az API-kat a Microsoft Identity platform for Developers szolgáltatással](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)
 
 Ez a progresszív oktatóanyag éles használatra kész kóddal rendelkezik a webalkalmazásokhoz, többek között a bejelentkezéshez a következő fiókokkal:
 
@@ -70,5 +57,8 @@ Ez a progresszív oktatóanyag éles használatra kész kóddal rendelkezik a we
 
 További információ a Java-webalkalmazásról ebből a mintából a GitHubon: 
 
-> [!div class="nextstepaction"]
-> [Egy Java-webalkalmazás, amely a Microsoft Identity platformmal és a hívások Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+[Egy Java-webalkalmazás, amely a Microsoft Identity platformmal és a hívások Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+
+## <a name="next-steps"></a>Következő lépések
+
+Miután a webalkalmazás bejelentkezett a felhasználókba, a webes API-kat hívhat a bejelentkezett felhasználók nevében. A webes API-k hívása a webalkalmazásból a következő forgatókönyv objektuma: [webalkalmazás, amely webes API-kat hív](scenario-web-app-call-api-overview.md)meg.

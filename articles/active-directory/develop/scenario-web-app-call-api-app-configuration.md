@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c8d68a17b3b991b88e02cf056dcb46da2debfa71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b24b95423adb271b8a4016430e7d2b381c386cd2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403194"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443755"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webalkalmazás: kód konfigurálása
 
@@ -32,7 +32,7 @@ A [felhasználói forgatókönyvekben bejelentkező webalkalmazás](scenario-web
 
 A Microsoft Authentication Library (MSAL) következő kódtárai támogatják a webes alkalmazások engedélyezési kódjának áramlását:
 
-| MSAL-könyvtár | Leírás |
+| MSAL-könyvtár | Description |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatása. A Univerzális Windows-platform (UWP), a Xamarin. iOS és a Xamarin. Android nem támogatott, mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozására használhatók. <br/><br/>ASP.NET Core webalkalmazások és webes API-k esetében a MSAL.NET a [Microsoft. Identity. Web](https://aka.ms/ms-identity-web)nevű magasabb szintű könyvtárban van beágyazva. |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> Pythonhoz készült MSAL | Python-webalkalmazások támogatása. |
@@ -99,7 +99,7 @@ A *Microsoft. Identity. Web* számos módszert kínál a tanúsítványok leír�
 
 ## <a name="startupcs"></a>Startup.cs
 
-A webalkalmazásnak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-hoz. Ezt úgy adhatja meg, hogy a sort a következő után adja hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` . Ez a sor teszi elérhetővé a `ITokenAcquisition` vezérlő és az oldal műveleteiben használható szolgáltatást. A következő két lehetőség esetében azonban egyszerűen megteheti. Ki kell választania egy jogkivonat-gyorsítótár implementációját is, például `.AddInMemoryTokenCaches()` a *Startup.cs*-ben:
+A webalkalmazásnak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-hoz. Ezt úgy adhatja meg, hogy a sort a következő után adja hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` . Ez a sor teszi elérhetővé a `ITokenAcquisition` vezérlő és az oldal műveleteiben használható szolgáltatást. A következő két lehetőség esetében azonban egyszerűen megteheti. Ki kell választania egy jogkivonat-gyorsítótár implementációját is, például `.AddInMemoryTokenCaches()` a *Startup.cs* -ben:
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -515,9 +515,8 @@ def _build_msal_app(cache=None):
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezen a ponton, amikor a felhasználó bejelentkezik, a rendszer a jogkivonat-gyorsítótárban tárolja a tokent. Lássuk, hogyan használják majd a webalkalmazás más részeiben.
 
-> [!div class="nextstepaction"]
-> [Webes API-kat meghívó webalkalmazás: fiókok eltávolítása a gyorsítótárból a globális kijelentkezéskor](scenario-web-app-call-api-sign-in.md)
+[Fiókok eltávolítása a gyorsítótárból a globális kijelentkezéskor](scenario-web-app-call-api-sign-in.md)

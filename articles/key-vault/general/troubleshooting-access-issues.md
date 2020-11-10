@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1437ef8675d0ddc96eb7fc641b3663b66c3ea11b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f9bbf6e9d1d932f7225807613b789821c1462932
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285234"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441851"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Az Azure Key Vault hozzáférési szabályzatával kapcsolatos problémák elhárítása
 
@@ -53,7 +53,7 @@ Az alkalmazásnak szüksége van legalább egy, a Key vaulthoz hozzárendelt ide
 
 Jelenleg Key Vault az újratelepítéskor a rendszer törli az összes hozzáférési házirendet a Key Vault, és azokat a ARM-sablon hozzáférési házirendjével helyettesíti. Nincs növekményes beállítás Key Vault hozzáférési házirendekhez. A hozzáférési szabályzatok Key Vaultban való megőrzéséhez olvassa el a meglévő hozzáférési szabályzatokat a Key Vault, és töltse ki az ARM-sablont ezekkel a szabályzatokkal a hozzáférési kimaradások elkerülése érdekében.
 
-Egy másik lehetőség, amely segíthet ehhez a forgatókönyvhöz, hogy RBAC-szerepköröket használjon a hozzáférési házirendek alternatívájaként. A RBAC segítségével újra üzembe helyezheti a kulcstartót anélkül, hogy újra megadta a szabályzatot. Ebben a megoldásban [itt](./rbac-guide.md)találhat további tudnivalókat.
+Egy másik lehetőség, amely segíthet ehhez a forgatókönyvhöz, hogy az Azure RBAC és a szerepköröket használja a hozzáférési házirendek alternatívájaként. Az Azure RBAC segítségével újra telepítheti a kulcstartót anélkül, hogy újra meg kellene adnia a szabályzatot. Ebben a megoldásban [itt](./rbac-guide.md)találhat további tudnivalókat.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>A következő típusú hibák ajánlott hibaelhárítási lépései
 

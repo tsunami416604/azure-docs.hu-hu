@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 181cae525845e7cae5e8f6f178b01ee33999b8b5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9b55c4873c4d7ee430e7d9ce84d2782a37e522ae
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312490"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442140"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 
@@ -72,7 +72,7 @@ A Azure Machine Learning munkaterület a következő Azure-szolgáltatásokra va
 | ---- | ---- |
 | **Azure-erőforráscsoport** | `-g <resource-group-name>`
 | **Azure Storage-fiók** | `--storage-account <service-id>` |
-| **Azure-Application Insights** | `--application-insights <service-id>` |
+| **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
@@ -177,7 +177,7 @@ A Microsoft által a munkaterületen gyűjtött adatok korlátozásához haszná
 > [!IMPORTANT]
 > A magas üzleti hatás kiválasztása csak munkaterületek létrehozásakor végezhető el. Ez a beállítás a munkaterület létrehozása után nem módosítható.
 
-Az ügyfél által felügyelt kulcsokkal és a nagy üzleti hatásokkal foglalkozó munkaterülettel kapcsolatos további információkért tekintse meg a [vállalati biztonsági Azure Machine learning](concept-enterprise-security.md#encryption-at-rest).
+Az ügyfél által felügyelt kulcsokkal és a nagy üzleti hatásokkal foglalkozó munkaterülettel kapcsolatos további információkért tekintse meg a [vállalati biztonsági Azure Machine learning](concept-data-encryption.md#encryption-at-rest).
 
 ### <a name="use-existing-resources"></a>Meglévő erőforrások használata
 
@@ -410,6 +410,6 @@ A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Regis
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A gépi tanuláshoz készült Azure CLI bővítménnyel kapcsolatos további információkért tekintse meg az az [ml](/cli/azure/ext/azure-cli-ml/ml?preserve-view=true&view=azure-cli-latest) dokumentációt.

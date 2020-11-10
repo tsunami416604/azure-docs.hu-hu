@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 70ddc2191cc06a1bede87adc5940e0f7dea63384
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 853ab82ab40cc7ebee1c74feaf6aad87adf39ece
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257537"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443109"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Forgatókönyv: webes API-kat meghívó mobil alkalmazás
 
@@ -40,10 +40,10 @@ A mobil alkalmazások esetében elengedhetetlen a személyre szabott, zökkenőm
 
 A Mobile apps szempontjai:
 
-- A **felhasználói élmény kulcsfontosságú**: lehetővé teszi, hogy a felhasználók a bejelentkezés előtt lássák az alkalmazás értékét. Csak a szükséges engedélyeket kérje.
-- **Az összes felhasználói konfiguráció támogatása**: sok mobil üzleti felhasználónak be kell tartania a feltételes hozzáférési házirendeket és az eszköz-megfelelőségi szabályzatokat. Ügyeljen arra, hogy támogassa ezeket a kulcsfontosságú forgatókönyveket.
-- **Egyszeri bejelentkezés (SSO) implementálása**: a MSAL és a Microsoft Identity platform használatával engedélyezheti az egyszeri bejelentkezést az eszköz böngészőjében vagy Microsoft Authenticator (és az Androidon is Intune céges portál).
-- **Megosztott eszköz mód implementálása**: lehetővé teszi, hogy alkalmazása megosztott eszközökön, például kórházakban, a gyártásban, a kereskedelemben és a pénzügyben is használható legyen. [További információ a megosztott eszköz üzemmódjának támogatásáról](msal-shared-devices.md).
+- A **felhasználói élmény kulcsfontosságú** : lehetővé teszi, hogy a felhasználók a bejelentkezés előtt lássák az alkalmazás értékét. Csak a szükséges engedélyeket kérje.
+- **Az összes felhasználói konfiguráció támogatása** : sok mobil üzleti felhasználónak be kell tartania a feltételes hozzáférési házirendeket és az eszköz-megfelelőségi szabályzatokat. Ügyeljen arra, hogy támogassa ezeket a kulcsfontosságú forgatókönyveket.
+- **Egyszeri bejelentkezés (SSO) implementálása** : a MSAL és a Microsoft Identity platform használatával engedélyezheti az egyszeri bejelentkezést az eszköz böngészőjében vagy Microsoft Authenticator (és az Androidon is Intune céges portál).
+- **Megosztott eszköz mód implementálása** : lehetővé teszi, hogy alkalmazása megosztott eszközökön, például kórházakban, a gyártásban, a kereskedelemben és a pénzügyben is használható legyen. [További információ a megosztott eszköz üzemmódjának támogatásáról](msal-shared-devices.md).
 
 ## <a name="specifics"></a>Sajátosságai
 
@@ -57,7 +57,6 @@ Vegye figyelembe a következő szempontokat, amikor a Microsoft Identity platfor
 
 [!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Alkalmazásregisztráció](scenario-mobile-app-registration.md)
+Lépjen tovább a forgatókönyv következő cikkére, amely az [alkalmazás regisztrálását](scenario-mobile-app-registration.md)ismerteti.

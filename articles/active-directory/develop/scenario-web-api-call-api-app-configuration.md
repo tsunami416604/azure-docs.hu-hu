@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 993e1a513fae726e00a29c4b9927a0a039572f74
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4a888c3ad771e4a7edbd7110ba584050fe68e810
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365935"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443789"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webes API: kód konfigurálása
 
@@ -88,7 +88,7 @@ A Microsoft. Identity. Web számos módszert kínál a tanúsítványok leírás
 
 ## <a name="startupcs"></a>Startup.cs
 
-A webes API-nak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-hoz. Ezt úgy adhatja meg, hogy a sort a következő után adja hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` . Ez a sor teszi elérhetővé a `ITokenAcquisition` szolgáltatást, amelyet a vezérlő/lapok műveleteihez használhat. Azonban ahogy a következő két felsorolásjelen is látható, még egyszerűbben is megteheti. Ki kell választania egy jogkivonat-gyorsítótár implementációját is, például `.AddInMemoryTokenCaches()` a *Startup.cs*-ben:
+A webes API-nak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-hoz. Ezt úgy adhatja meg, hogy a sort a következő után adja hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` . Ez a sor teszi elérhetővé a `ITokenAcquisition` szolgáltatást, amelyet a vezérlő/lapok műveleteihez használhat. Azonban ahogy a következő két felsorolásjelen is látható, még egyszerűbben is megteheti. Ki kell választania egy jogkivonat-gyorsítótár implementációját is, például `.AddInMemoryTokenCaches()` a *Startup.cs* -ben:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -254,7 +254,6 @@ Megtekintheti az OBO flow megvalósításának példáját is [Node.js és Azure
 
 További információ az OBO protokollról: [Microsoft Identity platform és OAuth 2,0 on-Half-of flow](./v2-oauth2-on-behalf-of-flow.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Webes API-kat meghívó webes API: az alkalmazás jogkivonatának beszerzése](scenario-web-api-call-api-acquire-token.md)
+Ebben a forgatókönyvben a következő cikkre léphet, amely [az alkalmazáshoz tartozó jogkivonatot szerzi](scenario-web-api-call-api-acquire-token.md)be.

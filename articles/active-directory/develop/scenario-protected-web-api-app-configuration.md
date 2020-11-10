@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 613ba527c8f86257dd271d3cc9e43c97fc475068
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfbfb1ff5b6cb9c711d987608226c51822dfc935
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257452"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442956"
 ---
 # <a name="protected-web-api-code-configuration"></a>Védett webes API: kód konfigurálása
 
@@ -55,7 +55,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> Az ügyfélalkalmazás a tulajdonosi jogkivonatot a *webes API*-hoz készült Microsoft Identity platform-végpontra kéri. A webes API az egyetlen alkalmazás, amelynek ellenőriznie kell a jogkivonatot, és meg kell tekintenie a benne található jogcímeket. Az ügyfélalkalmazások soha nem próbálják meg megvizsgálni a jogkivonatokban lévő jogcímeket.
+> Az ügyfélalkalmazás a tulajdonosi jogkivonatot a *webes API* -hoz készült Microsoft Identity platform-végpontra kéri. A webes API az egyetlen alkalmazás, amelynek ellenőriznie kell a jogkivonatot, és meg kell tekintenie a benne található jogcímeket. Az ügyfélalkalmazások soha nem próbálják meg megvizsgálni a jogkivonatokban lévő jogcímeket.
 >
 > A jövőben a webes API-nak szüksége lehet a jogkivonat titkosítására. Ez a követelmény megakadályozza a hozzáférési jogkivonatokat megtekintő ügyfélalkalmazások hozzáférését.
 
@@ -119,7 +119,7 @@ A _Microsoft. Identity. Web_ biztosítja a ASP.net Core, a köztes hitelesítés
 
 #### <a name="using-microsoftidentityweb-templates"></a>A Microsoft. Identity. Web sablonok használata
 
-A Microsoft. Identity. Web Project sablonok használatával létrehozhat egy teljesen új webes API-t. További részletek: [Microsoft. Identity. Web-Web API Project sablon](https://aka.ms/ms-id-web/webapi-project-templates)
+A Microsoft. Identity. Web Project sablonok használatával létrehozhat egy teljesen új webes API-t. Részletekért lásd: [Microsoft. Identity. Web-Web API-projekt sablonja](https://aka.ms/ms-id-web/webapi-project-templates).
 
 #### <a name="starting-from-an-existing-aspnet-core-31-application"></a>Egy meglévő ASP.NET Core 3,1-alkalmazástól kezdve
 
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- A ASP.NET Core-sablonok jelenleg olyan Azure Active Directory (Azure AD) webes API-kat hoznak létre, amelyek a szervezeten vagy szervezeten belül jelentkeznek be a felhasználókba. Személyes fiókkal nem jelentkezhetnek be a felhasználókba. A sablonokat azonban a Microsoft Identity platform végpontjának használatára módosíthatja a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) helyett a *Startup.cs*:
+ A ASP.NET Core-sablonok jelenleg olyan Azure Active Directory (Azure AD) webes API-kat hoznak létre, amelyek a szervezeten vagy szervezeten belül jelentkeznek be a felhasználókba. Személyes fiókkal nem jelentkezhetnek be a felhasználókba. A sablonokat azonban a Microsoft Identity platform végpontjának használatára módosíthatja a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) helyett a *Startup.cs* :
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -170,7 +170,7 @@ services.AddControllers();
 ```
 
 > [!NOTE]
-> Ha a Microsoft. Identity. Web-t használja, és nem állítja be a `Audience` *appsettings.json*értékre, a rendszer a következőt használja:
+> Ha a Microsoft. Identity. Web-t használja, és nem állítja be a `Audience` *appsettings.json* értékre, a rendszer a következőt használja:
 > -  `$"{ClientId}"` Ha a [hozzáférési jogkivonat elfogadott verzióját](scenario-protected-web-api-app-registration.md#accepted-token-version) `2` vagy Azure ad B2C webes API-k számára állította be.
 > - `$"api://{ClientId}` minden más esetben (1.0-s [hozzáférési jogkivonatok](access-tokens.md)esetén).
 > Részletekért lásd: Microsoft. Identity. Web [forrás kódja](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
@@ -195,7 +195,7 @@ Az érvényesítési lépések a [Microsoft IdentityModel Extensions for .net](h
 
 Ez a táblázat a validatorokat ismerteti:
 
-| Validator | Leírás |
+| Validator | Description |
 |---------|---------|
 | **ValidateAudience** | Gondoskodik arról, hogy a jogkivonat az alkalmazáshoz legyen hitelesítve, amely érvényesíti a jogkivonatot. |
 | **ValidateIssuer** | Gondoskodik arról, hogy a tokent egy megbízható STS bocsátotta ki, ami azt jelenti, hogy a jogkivonatot megbízhatónak minősíti. |
@@ -210,7 +210,7 @@ A validatorok a **TokenValidationParameters** osztály tulajdonságaival vannak 
 
 A legtöbb esetben nem kell módosítania a paramétereket. Azok az alkalmazások, amelyek nem önálló bérlők, kivételek. Ezek a webalkalmazások elfogadják a felhasználókat bármely szervezettől vagy személyes Microsoft-fiókból. Ebben az esetben a kiállítókat érvényesíteni kell. A Microsoft. Identity. web is gondoskodik a kibocsátó érvényesítéséről. Részletekért lásd: Microsoft. Identity. Web [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs).
 
-Ha a jogkivonat-ellenőrzési paramétereket testre szeretné szabni a ASP.NET Coreban, használja a következő kódrészletet a *Startup.cs*:
+Ha a jogkivonat-ellenőrzési paramétereket testre szeretné szabni a ASP.NET Coreban, használja a következő kódrészletet a *Startup.cs* :
 
 ```c#
 services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -240,7 +240,6 @@ A bejövő hozzáférési jogkivonatokat is ellenőrizheti Azure Functionsban. I
 - Node.js: [Azure-Samples/MS-Identity-NodeJS-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)
 - Python: [Azure-Samples/MS-Identity-Python-webapi-azurefunctions)](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Hatókörök és alkalmazás-szerepkörök ellenőrzése a kódban](scenario-protected-web-api-verification-scope-app-roles.md)
+Az ebben a forgatókönyvben lévő következő cikkre való áttéréskor [ellenőrizze a kódban a hatóköröket és az alkalmazás-szerepköröket](scenario-protected-web-api-verification-scope-app-roles.md).

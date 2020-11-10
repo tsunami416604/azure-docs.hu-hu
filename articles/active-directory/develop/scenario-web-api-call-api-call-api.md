@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9212e99ae317a3abec4bebfc7fb131c6774f8e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8eb737752741dc55da24ad6b605b081053b8a11
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396195"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443701"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webes API-kat meghívó webes API: az API meghívása
 
@@ -26,7 +26,7 @@ A jogkivonat meghívása után meghívhat egy védett webes API-t. Általában a
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A *Microsoft. Identity. Web*használatakor három felhasználási forgatókönyv áll rendelkezésre:
+A *Microsoft. Identity. Web* használatakor három felhasználási forgatókönyv áll rendelkezésre:
 
 - [1. lehetőség: a Microsoft Graph meghívása az Microsoft Graph SDK-val](#option-1-call-microsoft-graph-with-the-sdk)
 - [2. lehetőség: alárendelt webes API meghívása a segítő osztállyal](#option-2-call-a-downstream-web-api-with-the-helper-class)
@@ -117,7 +117,7 @@ A `CallWebApiForUserAsync` metódus olyan általános felülbírálásokat is ta
 
 #### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>3. lehetőség: alárendelt webes API meghívása a segítő osztály nélkül
 
-Ha úgy döntött, hogy a tokent manuálisan szerzi be a `ITokenAcquisition` szolgáltatás használatával, most a tokent kell használnia. Ebben az esetben a következő kód továbbra is a webes API-kat meghívó webes API-kon megjelenő példa kódját mutatja be [: az alkalmazáshoz tartozó jogkivonat beszerzése](scenario-web-api-call-api-acquire-token.md). A kódot az API-vezérlők műveleteiben hívják meg. Egy *ToDoList*nevű alsóbb RÉTEGbeli API-t hív meg.
+Ha úgy döntött, hogy a tokent manuálisan szerzi be a `ITokenAcquisition` szolgáltatás használatával, most a tokent kell használnia. Ebben az esetben a következő kód továbbra is a webes API-kat meghívó webes API-kon megjelenő példa kódját mutatja be [: az alkalmazáshoz tartozó jogkivonat beszerzése](scenario-web-api-call-api-acquire-token.md). A kódot az API-vezérlők műveleteiben hívják meg. Egy *ToDoList* nevű alsóbb RÉTEGbeli API-t hív meg.
 
  Miután megszerezte a tokent, használja tulajdonosi jogkivonatként az alsóbb rétegbeli API meghívásához.
 
@@ -162,7 +162,6 @@ A folyamatot bemutató minta a MSAL Python-val még nem érhető el.
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Webes API-kat meghívó webes API: áthelyezés éles környezetbe](scenario-web-api-call-api-production.md)
+Az ebben a forgatókönyvben lévő következő cikkre való áttéréssel váltson [éles környezetbe](scenario-web-api-call-api-production.md).

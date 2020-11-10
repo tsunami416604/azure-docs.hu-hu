@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7cad0592c5c4c0487f582ce5405c275b94b7bd0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83771740"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444027"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Webes API meghívása Mobile-alkalmazásból
 
@@ -119,9 +119,9 @@ task.resume()
 
 Ha többször is meg kell hívnia ugyanazt az API-t, vagy ha több API-t kell meghívnia, akkor az alkalmazás létrehozásakor vegye figyelembe a következő témákat:
 
-- **Növekményes beleegyezett**: a Microsoft Identity platform lehetővé teszi az alkalmazások számára, hogy felhasználói hozzájárulásukat kapjanak, ha nem az összes indításkor szükséges engedélyekkel rendelkeznek. Minden alkalommal, amikor az alkalmazás készen áll egy API meghívására, csak a szükséges hatóköröket kell kérnie.
+- **Növekményes beleegyezett** : a Microsoft Identity platform lehetővé teszi az alkalmazások számára, hogy felhasználói hozzájárulásukat kapjanak, ha nem az összes indításkor szükséges engedélyekkel rendelkeznek. Minden alkalommal, amikor az alkalmazás készen áll egy API meghívására, csak a szükséges hatóköröket kell kérnie.
 
-- **Feltételes hozzáférés**: Ha több API-kérést hajt végre, akkor előfordulhat, hogy bizonyos helyzetekben további feltételes hozzáférési követelményeknek kell megfelelnie. A követelmények ily módon növekednek, ha az első kérelem nem rendelkezik feltételes hozzáférési házirendekkel, és az alkalmazás egy feltételes hozzáférést igénylő új API csendes elérését kísérli meg. A probléma kezeléséhez ügyeljen arra, hogy a csendes kérelmekkel kapcsolatos hibákat észlelje, és készüljön fel egy interaktív kérelem elvégzésére.  További információ: [útmutató a feltételes hozzáféréshez](../azuread-dev/conditional-access-dev-guide.md).
+- **Feltételes hozzáférés** : Ha több API-kérést hajt végre, akkor előfordulhat, hogy bizonyos helyzetekben további feltételes hozzáférési követelményeknek kell megfelelnie. A követelmények ily módon növekednek, ha az első kérelem nem rendelkezik feltételes hozzáférési házirendekkel, és az alkalmazás egy feltételes hozzáférést igénylő új API csendes elérését kísérli meg. A probléma kezeléséhez ügyeljen arra, hogy a csendes kérelmekkel kapcsolatos hibákat észlelje, és készüljön fel egy interaktív kérelem elvégzésére.  További információ: [útmutató a feltételes hozzáféréshez](../azuread-dev/conditional-access-dev-guide.md).
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Több API meghívása növekményes beleegyezettés és feltételes hozzáférés használatával
 
@@ -159,5 +159,4 @@ catch(MsalUiRequiredException ex)
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Átállás éles üzemre](scenario-mobile-production.md)
+Az ebben a forgatókönyvben lévő következő cikkre való áttéréssel váltson [éles környezetbe](scenario-mobile-production.md).

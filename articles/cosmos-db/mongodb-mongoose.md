@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: eab24c317513382afdd452843bc09e845ca90452
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8958699ae279d2613f8dbadca802ee2137407e75
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096495"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442396"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js mongúz-alkalmazás összekötése Azure Cosmos DB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -82,7 +82,7 @@ Az adatbázis létrehozása után a nevet az `COSMOSDB_DBNAME` alábbi környeze
     ```JavaScript
    # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
 
-   COSMODDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
+   COSMOSDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
    COSMOSDB_PASSWORD = "<Azure Cosmos account password, this is one of the keys specified in your account>"
    COSMOSDB_DBNAME = "<Azure Cosmos database name>"
    COSMOSDB_HOST= "<Azure Cosmos Host name>"
@@ -93,7 +93,7 @@ Az adatbázis létrehozása után a nevet az `COSMOSDB_DBNAME` alábbi környeze
     ```JavaScript
    mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
-        user: process.env.COSMODDB_USER,
+        user: process.env.COSMOSDB_USER,
         password: process.env.COSMOSDB_PASSWORD
       },
     useNewUrlParser: true,
@@ -198,7 +198,7 @@ Ez a szakasz ismerteti, hogyan érheti el ezt Azure Cosmos DB API-MongoDB. Ez a 
 
 1. Most, hogy bekerül a Azure Portalba, két, Cosmos DBban létrehozott gyűjteményt láthat.
 
-   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js oktatóanyag – a Azure Portal képernyőképe, amely bemutatja, hogyan hozhat létre egy adatbázist a Adatkezelő egy Azure Cosmos DB-fiókhoz, a mongúz csomópont-modullal való használathoz":::
+   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js oktatóanyag – képernyőkép a Azure Portalről, amely egy Azure Cosmos DB fiókot jelenít meg, és több gyűjtemény neve van kiemelve – csomópont-adatbázis":::
 
 1. Végül olvassa el Cosmos DB adatait. Mivel az alapértelmezett Mongoose működési modellt használjuk, az olvasások megegyeznek bármely más Mongoose olvasással.
 
@@ -303,7 +303,7 @@ Itt létrehozunk egy alapszintű objektummodellt, meghatározunk egy megkülönb
 
 1. Ha most visszatér az Azure Portalra, láthatja, hogy egyetlen gyűjteménye van ```alldata``` néven, amelyben a „Family” (Család) és a „VacationDestinations” (Nyaralási úti célok) adatai is szerepelnek.
 
-   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js oktatóanyag – a Azure Portal képernyőképe, amely bemutatja, hogyan hozhat létre egy adatbázist a Adatkezelő egy Azure Cosmos DB-fiókhoz, a mongúz csomópont-modullal való használathoz":::
+   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js oktatóanyag – képernyőkép a Azure Portalról, amely egy Azure Cosmos DB fiókot jelenít meg a kiválasztott gyűjtemény neve – csomópont-adatbázis":::
 
 1. Azt is észreveheti, hogy minden objektum rendelkezik egy másik, ```__type``` nevű attribútummal, amely segít megkülönböztetni a két különböző objektummodellt.
 
@@ -317,11 +317,11 @@ Itt létrehozunk egy alapszintű objektummodellt, meghatározunk egy megkülönb
 
 Amint láthatja, a Mongoose diszkriminátorok könnyen használhatók. Tehát ha olyan alkalmazással rendelkezik, amely a mongúz keretrendszert használja, ez az oktatóanyag lehetővé teszi, hogy az Azure Cosmos API-ját MongoDB, anélkül, hogy túl sok módosításra lenne szükség.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.
