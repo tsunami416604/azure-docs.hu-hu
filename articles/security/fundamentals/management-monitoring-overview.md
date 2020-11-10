@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e74b540610d3b6520f4c8e25ca2df7bf628706f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395770"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410334"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure biztonsági felügyeletének és figyelésének áttekintése
 Ez a cikk áttekintést nyújt az Azure által biztosított biztonsági szolgáltatásokról és szolgáltatásokról az Azure Cloud Services és a Virtual Machines felügyeletének és figyelésének támogatásához.
@@ -48,8 +48,8 @@ További információ:
 
 * [Kártevőirtó megoldások telepítése Azure-beli virtuális gépeken](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Microsoft antimalware az Azure Cloud Services és Virtual Machines](antimalware.md)
-* [A Trend Micro Deep Security telepítése és konfigurálása Windows rendszerű virtuális gépen](/azure/virtual-machines/windows/classic/install-trend)
-* [Symantec-Endpoint Protection telepítése és konfigurálása Windowsos virtuális gépen](/azure/virtual-machines/windows/classic/install-symantec)
+* [A Trend Micro Deep Security telepítése és konfigurálása Windows rendszerű virtuális gépen](../../virtual-machines/extensions/trend.md)
+* [Symantec-Endpoint Protection telepítése és konfigurálása Windowsos virtuális gépen](../../virtual-machines/extensions/symantec.md)
 * [Új antimalware-beállítások az Azure-Virtual Machines védelméhez](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
@@ -61,7 +61,7 @@ Multi-Factor Authentication segít megőrizni az adathozzáférést és az alkal
 További információ:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Mi az az Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
+* [Mi az az Azure Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
 * [Az Azure Multi-Factor Authentication működése](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
@@ -112,7 +112,7 @@ Az értesítések és az ajánlott szervizelés biztosításával a személyazon
 
 További információ:
 
-* [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
+* [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 * [9. csatorna: Azure AD-és identitás-megjelenítés: Identity Protection előnézet](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
@@ -129,8 +129,8 @@ A Security Center segítségével optimalizálhatja és figyelheti az Azure-erő
 
 További információ:
 
-* [Az Azure Security Center bemutatása](../../security-center/security-center-intro.md)
-* [Javítsa a biztonságos pontszámot Azure Security Center](../../security-center/security-center-secure-score.md)
+* [Az Azure Security Center bemutatása](../../security-center/security-center-introduction.md)
+* [Javítsa a biztonságos pontszámot Azure Security Center](../../security-center/secure-score-security-controls.md)
 
 ## <a name="intelligent-security-graph"></a>Intelligens biztonsági gráf
 

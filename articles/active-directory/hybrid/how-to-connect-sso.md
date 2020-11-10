@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7baa851943db3e8c691b50c2cb5446a2adbbccc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5e50b9e5dc683eb30452dbb96d82c9f66de93763
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457991"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408005"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Közvetlen egyszeri bejelentkezés az Azure Active Directoryba
 
@@ -65,9 +65,9 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N/A
 |Windows 8.1|Igen\*|Igen\*\*\*|Igen|Igen\*\*\*|N/A
-|Windows 8|Igen\*|N/A|Igen|Igen\*\*\*|N/A
-|Windows 7|Igen\*|N/A|Igen|Igen\*\*\*|N/A
-|Windows Server 2012 R2 vagy újabb|igen\*\*|N/A|Igen|Igen\*\*\*|N/A
+|Windows 8|Igen\*|N.A.|Igen|Igen\*\*\*|N/A
+|Windows 7|Igen\*|N.A.|Igen|Igen\*\*\*|N/A
+|Windows Server 2012 R2 vagy újabb|igen\*\*|N.A.|Igen|Igen\*\*\*|N/A
 |Mac OS X|N.A.|N.A.|Igen\*\*\*|Igen\*\*\*|Igen\*\*\*
 
 
@@ -85,7 +85,7 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 ## <a name="next-steps"></a>További lépések
 
 - [**Gyorskonfigurálás**](how-to-connect-sso-quick-start.md) – az Azure ad zökkenőmentes egyszeri bejelentkezésének megkezdése és futtatása.
-- [**Üzembe helyezési terv**](https://aka.ms/deploymentplans/sso) – lépésenkénti üzembe helyezési terv.
+- [**Üzembe helyezési terv**](../manage-apps/plan-sso-deployment.md) – lépésenkénti üzembe helyezési terv.
 - [**Technikai**](how-to-connect-sso-how-it-works.md) részletes útmutató – a funkció működésének megismerése.
 - [**Gyakori kérdések**](how-to-connect-sso-faq.md) – válaszok a gyakori kérdésekre.
 - [**Hibaelhárítás**](tshoot-connect-sso.md) – megismerheti a szolgáltatással kapcsolatos gyakori problémák megoldását.

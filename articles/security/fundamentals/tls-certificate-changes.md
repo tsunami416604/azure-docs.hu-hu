@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 93c2f847678292a1d38eff540a813b591c255ef0
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dbc426144678f5bd7382b0961bf9bc3f5339b97a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043205"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409807"
 ---
 # <a name="azure-tls-certificate-changes"></a>Az Azure TLS-tanúsítvány változásai  
 
@@ -22,12 +22,12 @@ A Microsoft frissíti az Azure-szolgáltatásokat, hogy TLS-tanúsítványokat h
 
 ## <a name="when-will-this-change-happen"></a>Mikor fog történni ez a változás?
 
-- A [Azure Active Directory](/azure/active-directory) (Azure ad) szolgáltatások a 2020. július 7-én kezdték el ezt az áttérést.
+- A [Azure Active Directory](../../active-directory/index.yml) (Azure ad) szolgáltatások a 2020. július 7-én kezdték el ezt az áttérést.
 - Minden újonnan létrehozott Azure TLS/SSL-végpont frissített tanúsítványokat tartalmaz az új legfelső szintű hitelesítésszolgáltatókhoz.
 - A meglévő Azure-végpontok a 2020. augusztus 13-án kezdődő fázisokban lesznek áttérni.
-- Az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub) és a [DPS](/azure/iot-dps/) továbbra is a Baltimore CYBERTRUST legfelső szintű hitelesítésszolgáltatóján marad, de a köztes hitelesítésszolgáltatók is megváltoznak. [További részletekért kattintson ide](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
-- Az [Azure Storage](/azure/storage) továbbra is a Baltimore CyberTrust legfelső szintű hitelesítésszolgáltatóján marad, de a köztes hitelesítésszolgáltatók is megváltoznak. [További részletekért kattintson ide](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
-- A [Redis-hez készült Azure cache](/azure/azure-cache-for-redis) a Baltimore CyberTrust legfelső szintű hitelesítésszolgáltatón marad, de a köztes hitelesítésszolgáltatók is megváltoznak. [További részletekért kattintson ide](../../azure-cache-for-redis/cache-whats-new.md).
+- Az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub) és a [DPS](../../iot-dps/index.yml) továbbra is a Baltimore CYBERTRUST legfelső szintű hitelesítésszolgáltatóján marad, de a köztes hitelesítésszolgáltatók is megváltoznak. [További részletekért kattintson ide](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
+- Az [Azure Storage](../../storage/index.yml) továbbra is a Baltimore CyberTrust legfelső szintű hitelesítésszolgáltatóján marad, de a köztes hitelesítésszolgáltatók is megváltoznak. [További részletekért kattintson ide](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
+- A [Redis-hez készült Azure cache](../../azure-cache-for-redis/index.yml) a Baltimore CyberTrust legfelső szintű hitelesítésszolgáltatón marad, de a köztes hitelesítésszolgáltatók is megváltoznak. [További részletekért kattintson ide](../../azure-cache-for-redis/cache-whats-new.md).
 > [!IMPORTANT]
 > Előfordulhat, hogy az ügyfeleknek frissíteniük kell az alkalmazás (oka) t a módosítás után, hogy meggátolják a kapcsolódási hibákat az Azure-szolgáltatásokhoz való kapcsolódási kísérlet során.
 
@@ -85,6 +85,6 @@ Az alábbi módokon derítheti fel, hogy az alkalmazás érintett-e:
     - http://ocsp&#46; msocsp&#46;com
     - http://www&#46; Microsoft&#46;com/pkiops
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további kérdése van, vegye fel velünk a kapcsolatot a [támogatási szolgálattal](https://azure.microsoft.com/support/options/).

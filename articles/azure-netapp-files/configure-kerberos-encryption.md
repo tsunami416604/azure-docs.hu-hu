@@ -12,22 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: f4b485e79bfa89fe293c99fc4e84fc8c0729396a
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 1ffbcc24a2ee386be1a8ce50b55375d5bd458df1
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331889"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410096"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>A NFSv 4.1 Kerberos-titkosítás konfigurálása Azure NetApp Fileshoz
 
 Azure NetApp Files támogatja az NFS-ügyfél titkosítását Kerberos-módban (krb5, krb5i és krb5p) AES-256 titkosítással. Ez a cikk a NFSv 4.1-es kötet Kerberos-titkosítással való használatához szükséges konfigurációkat ismerteti.
-
-## <a name="considerations"></a>Megfontolandó szempontok
-
-* NFSv 4.1 a Kerberos titkosítási kötetek jelenleg nem támogatják a Azure Active Directory Domain Services (AADDS). 
 
 ## <a name="requirements"></a>Követelmények
 

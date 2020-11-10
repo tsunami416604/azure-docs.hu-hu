@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 452b1a33520309ae696ab318c034f0186c993fdc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e74994847608b7fb59a1bf507691f02cf02b714a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91402922"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408889"
 ---
 # <a name="security-control-v2-endpoint-security"></a>Biztonsági vezérlő v2: Endpoint Security
 
@@ -34,9 +34,9 @@ A Microsoft Defender komplex veszélyforrások elleni védelem a nagyvállalati 
 
 - [Microsoft Defender ATP szolgáltatás a nem Windows rendszerű kiszolgálókhoz](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -60,11 +60,11 @@ A Microsoft antimalware for Azure Cloud Services a Windows rendszerű virtuális
 
 - [A Microsoft antimalware konfigurálása Cloud Services és Virtual Machines](../fundamentals/antimalware.md)
 
-- [Támogatott Endpoint Protection-megoldások](https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows#supported-endpoint-protection-solutions-)
+- [Támogatott Endpoint Protection-megoldások](../../security-center/security-center-services.md?tabs=features-windows#supported-endpoint-protection-solutions-)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -86,9 +86,9 @@ Kövesse az Azure Security Center: "számítási alkalmazások" című témakör
 
 - [A Microsoft antimalware telepítése Azure Cloud Services és Virtual Machines](../fundamentals/antimalware.md)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security)
 

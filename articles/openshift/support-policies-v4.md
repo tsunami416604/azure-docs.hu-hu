@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: f496d0f38452fa7cf64bc9eef370bd0b2116cfa5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe703b9589dcd49298ac45d5a14032ca7e556bfd
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049961"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408406"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift-támogatási szabályzat
 
@@ -30,6 +30,7 @@ Az Azure Red Hat OpenShift 4 fürtök bizonyos konfigurációi befolyásolhatjá
 * Minden fürt virtuális gépnek közvetlen kimenő internet-hozzáféréssel kell rendelkeznie, legalább a Azure Resource Manager (ARM) és a Service Logging (Genf) végpontokhoz.  A HTTPS-proxyk egyetlen formája sem támogatott.
 * Ne módosítsa a fürt virtuális hálózatának DNS-konfigurációját. Az alapértelmezett Azure DNS feloldót kell használni.
 * Semmilyen módon ne bírálja felül a fürt MachineConfig-objektumait (például a kubelet konfigurációját).
+* Ne állítson be unsupportedConfigOverrides-beállításokat. Ezen beállítások megadása megakadályozza az alverziók frissítését.
 * Az Azure Red Hat OpenShift szolgáltatás privát kapcsolati szolgáltatáson keresztül fér hozzá a fürthöz.  Ne távolítsa el vagy módosítsa a szolgáltatás elérését.
 * A nem RHCOS számítási csomópontok nem támogatottak. Nem használhat például RHEL számítási csomópontot.
 

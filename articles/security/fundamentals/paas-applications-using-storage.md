@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: fa23637500755f43bb380a9f20cbe3acc7c3a394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 402fc1b0b436e7e2061cb2e1a922a75c82ac5235
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87925804"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408056"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez az Azure Storage használatával
 Ebben a cikkben az Azure Storage ajánlott biztonsági eljárásainak gyűjteményét tárgyaljuk, amelyekkel biztosítható a platform-szolgáltatásként szolgáló webes és mobil alkalmazások védelme. Ezek az ajánlott eljárások az Azure tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
 
 Az Azure lehetővé teszi a tárolók üzembe helyezését és használatát a helyszínen nem könnyen elérhető módon. Az Azure Storage segítségével viszonylag kevés erőfeszítéssel érheti el a méretezhetőséget és a rendelkezésre állást. Nem csak az Azure Storage a Windows és a Linux Azure Virtual Machines alapja, hanem a nagyméretű elosztott alkalmazások támogatása is.
 
-Az Azure Storage a következő négy szolgáltatást biztosítja: blob Storage, Table Storage, üzenetsor Storage és file Storage. További információ: [Bevezetés a Microsoft Azure Storageba](/azure/storage/common/storage-introduction).
+Az Azure Storage a következő négy szolgáltatást biztosítja: blob Storage, Table Storage, üzenetsor Storage és file Storage. További információ: [Bevezetés a Microsoft Azure Storageba](../../storage/common/storage-introduction.md).
 
-Az [Azure Storage biztonsági útmutatója](/azure/storage/common/storage-security-guide) nagyszerű információforrás az Azure Storage szolgáltatással és biztonsággal kapcsolatos részletes információkhoz. Az ajánlott eljárásokról szóló cikk a biztonsági útmutatóban található néhány fogalmat, valamint a biztonsági útmutatóra, valamint más forrásokra mutató hivatkozásokat tartalmaz.
+Az [Azure Storage biztonsági útmutatója](../../storage/blobs/security-recommendations.md) nagyszerű információforrás az Azure Storage szolgáltatással és biztonsággal kapcsolatos részletes információkhoz. Az ajánlott eljárásokról szóló cikk a biztonsági útmutatóban található néhány fogalmat, valamint a biztonsági útmutatóra, valamint más forrásokra mutató hivatkozásokat tartalmaz.
 
 Ez a cikk az alábbi ajánlott eljárásokat tárgyalja:
 
@@ -53,10 +53,10 @@ Továbbra is szükség van egy olyan módszerre, amely hozzáférést biztosít 
 
 Az SAS lehetővé teszi a tartalmak megosztását, ahogyan azt a Storage-fiók kulcsainak megadása nélkül szeretné megosztani. Az alkalmazásban az SAS-t mindig biztonságos módon oszthatja meg a Storage-fiók kulcsainak veszélyeztetése nélkül.
 
-További információ a közös hozzáférésű aláírásról: a [közös hozzáférésű aláírások használata](/azure/storage/common/storage-dotnet-shared-access-signature-part-1). 
+További információ a közös hozzáférésű aláírásról: a [közös hozzáférésű aláírások használata](../../storage/common/storage-sas-overview.md). 
 
 ## <a name="use-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés alkalmazása
-A hozzáférés kezelésének egy másik módja az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](/azure/role-based-access-control/overview)használata. A RBAC-mel arra összpontosít, hogy az alkalmazottaknak szükségük van a rájuk vonatkozó pontos engedélyek megadására, és a minimális jogosultsági szintű biztonsági alapelveket figyelembe véve. Túl sok engedély teheti ki a fiókot a támadók számára. A túl kevés engedély azt jelenti, hogy az alkalmazottak nem tudják hatékonyan elvégezni a munkájukat. A RBAC segít a probléma megoldásában azáltal, hogy részletes hozzáférés-kezelést nyújt az Azure-hoz. Ez olyan szervezetek számára fontos, akik biztonsági házirendeket kívánnak kikényszeríteni az adateléréshez.
+A hozzáférés kezelésének egy másik módja az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)használata. A RBAC-mel arra összpontosít, hogy az alkalmazottaknak szükségük van a rájuk vonatkozó pontos engedélyek megadására, és a minimális jogosultsági szintű biztonsági alapelveket figyelembe véve. Túl sok engedély teheti ki a fiókot a támadók számára. A túl kevés engedély azt jelenti, hogy az alkalmazottak nem tudják hatékonyan elvégezni a munkájukat. A RBAC segít a probléma megoldásában azáltal, hogy részletes hozzáférés-kezelést nyújt az Azure-hoz. Ez olyan szervezetek számára fontos, akik biztonsági házirendeket kívánnak kikényszeríteni az adateléréshez.
 
 Az Azure-ban az Azure beépített szerepkörei segítségével jogosultságokat rendelhet a felhasználókhoz. Használja például a Storage-fiók közreműködője olyan felhőalapú operátorok esetében, amelyeknek a Storage-fiókokat és a klasszikus Storage-fiók közreműködői szerepkörét kell kezelnie a klasszikus Storage-fiókok kezeléséhez. Azon felhőalapú operátorok esetében, amelyeknek virtuális gépeket kell kezelnie, de nem az a virtuális hálózat vagy a Storage-fiók, amelyhez csatlakoznak, a virtuális gép közreműködői szerepkörhöz adhatók hozzá.
 
@@ -64,21 +64,21 @@ Azok a szervezetek, amelyek nem kényszerítik ki az adathozzáférés-vezérlé
 
 További információ a RBAC:
 
-- [Hozzáférés kezelése az RBAC és az Azure Portal használatával](/azure/role-based-access-control/role-assignments-portal)
-- [Beépített Azure-szerepkörök](/azure/role-based-access-control/built-in-roles)
-- [Azure Storage – biztonsági útmutató](/azure/storage/common/storage-security-guide) 
+- [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
+- [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md)
+- [Azure Storage – biztonsági útmutató](../../storage/blobs/security-recommendations.md) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Ügyféloldali titkosítás használata nagy értékű adathoz
 Az ügyféloldali titkosítás lehetővé teszi, hogy programozott módon titkosítsa az adatok átvitelét az Azure Storage-ba való feltöltés előtt, és programozott módon visszafejtse az adatoknak a beolvasása során. Ez az átvitel során az adatok titkosítását is lehetővé teszi, de az inaktív adatok titkosítását is biztosítja. Az ügyféloldali titkosítás a legbiztonságosabb módszer az adattitkosításhoz, de megköveteli, hogy programozott módosításokat hajtson végre az alkalmazásban, és a kulcsfontosságú felügyeleti folyamatokat helyezze üzembe.
 
-Az ügyféloldali titkosítás azt is lehetővé teszi, hogy a titkosítási kulcsok egyetlen vezérléssel rendelkezzenek. Saját titkosítási kulcsokat is létrehozhat és kezelhet. Egy Burkológörbe-technikát használ, amelyben az Azure Storage ügyféloldali kódtára létrehoz egy titkosító kulcsot (CEK), amelyet a rendszer a kulcs titkosítási kulcs (KEK) használatával csomagolt be (titkosított). A KEK-et egy kulcs-azonosító azonosítja, és lehet egy aszimmetrikus kulcspár vagy egy szimmetrikus kulcs, és kezelhető helyileg, vagy [Azure Key Vault](/azure/key-vault/key-vault-overview)tárolható.
+Az ügyféloldali titkosítás azt is lehetővé teszi, hogy a titkosítási kulcsok egyetlen vezérléssel rendelkezzenek. Saját titkosítási kulcsokat is létrehozhat és kezelhet. Egy Burkológörbe-technikát használ, amelyben az Azure Storage ügyféloldali kódtára létrehoz egy titkosító kulcsot (CEK), amelyet a rendszer a kulcs titkosítási kulcs (KEK) használatával csomagolt be (titkosított). A KEK-et egy kulcs-azonosító azonosítja, és lehet egy aszimmetrikus kulcspár vagy egy szimmetrikus kulcs, és kezelhető helyileg, vagy [Azure Key Vault](../../key-vault/general/overview.md)tárolható.
 
-Az ügyféloldali titkosítás a Java és a .NET Storage ügyféloldali kódtáraba van beépítve. Lásd: [ügyféloldali titkosítás és Azure Key Vault a Microsoft Azure Storage](/azure/storage/common/storage-client-side-encryption) az ügyfélalkalmazások adatainak titkosításához, valamint a saját titkosítási kulcsok létrehozásához és kezeléséhez.
+Az ügyféloldali titkosítás a Java és a .NET Storage ügyféloldali kódtáraba van beépítve. Lásd: [ügyféloldali titkosítás és Azure Key Vault a Microsoft Azure Storage](../../storage/common/storage-client-side-encryption.md) az ügyfélalkalmazások adatainak titkosításához, valamint a saját titkosítási kulcsok létrehozásához és kezeléséhez.
 
 ## <a name="enable-storage-service-encryption-for-data-at-rest"></a>Storage Service Encryption engedélyezése a nyugalmi állapotban lévő adatokhoz
-Ha a file Storage [Storage Service encryption](/azure/storage/common/storage-service-encryption) engedélyezve van, az adatai automatikusan titkosítva vannak az AES-256 titkosítás használatával. A Microsoft kezeli az összes titkosítási, visszafejtési és kulcskezelő kezelést. Ez a funkció LRS és GRS redundancia-típusok esetén érhető el.
+Ha a file Storage [Storage Service encryption](../../storage/common/storage-service-encryption.md) engedélyezve van, az adatai automatikusan titkosítva vannak az AES-256 titkosítás használatával. A Microsoft kezeli az összes titkosítási, visszafejtési és kulcskezelő kezelést. Ez a funkció LRS és GRS redundancia-típusok esetén érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk az Azure Storage ajánlott biztonsági eljárásainak gyűjteményét mutatta be a Pásti web-és Mobile-alkalmazások biztonságossá tételéhez. További információ a Pásti-telepítések biztonságossá tételéről:
 

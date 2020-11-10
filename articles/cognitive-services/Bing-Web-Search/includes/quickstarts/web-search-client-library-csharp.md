@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9dbed0de3cf6cc911111825a75430d0c616f4dc4
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d391586ade9e9a58344f9b1666802a453770152a
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217595"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386618"
 ---
 Az Bing Web Search ügyféloldali kódtár megkönnyíti a C#-alkalmazásba való Bing Web Search integrálását. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 
@@ -36,7 +36,7 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 > [!TIP]
 > Szerezze be a legújabb kódot Visual Studio-megoldásként a [githubról](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-Az első lépés egy új konzolprojekt létrehozása. Ha segítségre van szüksége egy konzol-projekt beállításához, tekintse [meg a „Helló világ!” alkalmazás – az első programját (C# programozási útmutató)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
+Az első lépés egy új konzolprojekt létrehozása. Ha segítségre van szüksége egy konzol-projekt beállításához, tekintse [meg a „Helló világ!” alkalmazás – az első programját (C# programozási útmutató)](/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
 
 A [Web Search SDK-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) a követezőket is telepíti:
 
@@ -218,7 +218,7 @@ static async Task Main(string[] args)
 }
 ```
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alkalmazást.
 
@@ -416,12 +416,11 @@ Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segít
 
 3. Futtassa az alkalmazást.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót az alkalmazás kódjából.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
-                                    

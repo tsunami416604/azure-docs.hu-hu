@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1bc1d455e5597e86a3d5c8d1690fa2daa9097865
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 13e08d2c273b242a902203abf0879fd11fbdf801
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94341063"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386654"
 ---
 Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Python-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
 
@@ -177,7 +177,7 @@ Most, hogy elvégezte az első hívását a Bing Web Search APIra, nézzük meg 
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>A Bing által visszaadott eredmények számának korlátozása
 
-Ez a példa a `count` és a paramétereket használja az `offset` SDK [ `search` metódusának](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)használatával visszaadott eredmények számának korlátozására. Az első eredményhez tartozó `name` és `url` értékét a rendszer megjeleníti.
+Ez a példa a `count` és a paramétereket használja az `offset` SDK [ `search` metódusának](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)használatával visszaadott eredmények számának korlátozására. Az első eredményhez tartozó `name` és `url` értékét a rendszer megjeleníti.
 
 1. Adja hozzá ezt a kódot a Python-projekthez:
 
@@ -266,7 +266,7 @@ Ez a példa a `response_filter` és a paramétereket használja a `freshness` ke
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>A biztonságos keresés, a válaszszám és az előléptetés szűrő használata
 
-Ez a példa a `answer_count` , a és a paramétereket használja a `promote` `safe_search` keresési eredmények szűrésére az SDK [ `search` metódusának](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)használatával. A kód megjeleníti az első eredmény `name` és `url` értékét.
+Ez a példa a `answer_count` , a és a paramétereket használja a `promote` `safe_search` keresési eredmények szűrésére az SDK [ `search` metódusának](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)használatával. A kód megjeleníti az első eredmény `name` és `url` értékét.
 
 1. Adja hozzá ezt a kódot a Python-projekthez:
 
@@ -309,7 +309,7 @@ Ez a példa a `answer_count` , a és a paramétereket használja a `promote` `sa
 
 1. Futtassa a programot.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót a program kódjából és inaktiválni a virtuális környezetet.
 

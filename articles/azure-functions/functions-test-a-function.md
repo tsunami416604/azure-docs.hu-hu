@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 8ff70c14310dd81a051ac27c1d6d59bb3d1deb7b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ff64d5c17174f8e1e67111ebca9ccf050deb2f26
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677600"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409654"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Kódtesztelési stratégiák az Azure Functions szolgáltatásban
 
@@ -37,8 +37,8 @@ Az alábbi példa azt ismerteti, hogyan hozhat létre C# Function alkalmazást a
 A környezet beállításához hozzon létre egy Function és test alkalmazást. A következő lépések segítséget nyújtanak a tesztek támogatásához szükséges alkalmazások és függvények létrehozásában:
 
 1. [Hozzon létre egy új functions-alkalmazást](./functions-create-first-azure-function.md) , és nevezze el a **függvényeket**
-2. [Hozzon létre egy http-függvényt a sablonból](./functions-create-first-azure-function.md) , és nevezze el **MyHttpTrigger** .
-3. [Hozzon létre egy időzítő függvényt a sablonból](./functions-create-scheduled-function.md) , és nevezze el **MyTimerTrigger** .
+2. [Hozzon létre egy http-függvényt a sablonból](./functions-create-first-azure-function.md) , és nevezze el **MyHttpTrigger**.
+3. [Hozzon létre egy időzítő függvényt a sablonból](./functions-create-scheduled-function.md) , és nevezze el **MyTimerTrigger**.
 4. [Hozzon létre egy XUnit teszt alkalmazást](https://xunit.github.io/docs/getting-started-dotnet-core) a megoldásban, és nevezze el a **functions.** tests nevet.
 5. A NuGet használata a tesztelési alkalmazásból a [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) -re mutató hivatkozás hozzáadásához
 6. [Hivatkozzon a *functions* alkalmazásra](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *functions. tesztek* alkalmazásban.
@@ -251,7 +251,7 @@ Az ebben az osztályban megvalósított tagok a következők:
 
 - **Timer_should_log_message** : Ez a teszt létrehoz egy példányt, `ListLogger` és átadja egy időzítő függvénynek. A függvény futtatása után a rendszer ellenőrzi, hogy a napló be van-e jelölve, hogy a várt üzenet megtalálható legyen.
 
-Ha a tesztek során szeretné elérni az alkalmazás beállításait, használhatja a [System. environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
+Ha a tesztek során szeretné elérni az alkalmazás beállításait, a függvénybe [beillesztheti egy](./functions-dotnet-dependency-injection.md) `IConfiguration` példány kigúnyolt környezeti változó értékeit.
 
 ### <a name="run-tests"></a>Tesztek futtatása
 
@@ -315,7 +315,7 @@ module.exports = {
 
 Ez a modul implementálja a `IsPastDue` tulajdonságot, hogy az egy hamis időzítő példány legyen. Az időzítő konfigurációk, például a NCRONTAB-kifejezések nem szükségesek itt, mivel a teszt-hám egyszerűen hívja meg a függvényt közvetlenül az eredmény teszteléséhez.
 
-Ezután a VS Code functions bővítmény használatával [hozzon létre egy új JavaScript http-függvényt](/azure/developer/javascript/tutorial-vscode-serverless-node-01) , és nevezze el *HttpTrigger* . A függvény létrehozása után adjon hozzá egy új fájlt a **index.test.js** nevű mappában, és adja hozzá a következő kódot:
+Ezután a VS Code functions bővítmény használatával [hozzon létre egy új JavaScript http-függvényt](/azure/developer/javascript/tutorial-vscode-serverless-node-01) , és nevezze el *HttpTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt a **index.test.js** nevű mappában, és adja hozzá a következő kódot:
 
 ```javascript
 const httpFunction = require('./index');
@@ -336,7 +336,7 @@ test('Http trigger should return known text', async () => {
 
 A sablonból a HTTP-függvény egy "Hello" karakterláncot ad vissza, amely a lekérdezési karakterláncban megadott névvel van összefűzve. Ez a teszt egy kérelem hamis példányát hozza létre, és átadja a HTTP-függvénynek. A teszt ellenőrzi, hogy a rendszer egyszer hívja-e a *log* metódust, és a visszaadott szöveg "Hello Bill".
 
-Ezután a VS Code functions bővítmény használatával hozzon létre egy új JavaScript-időzítő függvényt, és nevezze el *TimerTrigger* . A függvény létrehozása után adjon hozzá egy új fájlt a **index.test.js** nevű mappában, és adja hozzá a következő kódot:
+Ezután a VS Code functions bővítmény használatával hozzon létre egy új JavaScript-időzítő függvényt, és nevezze el *TimerTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt a **index.test.js** nevű mappában, és adja hozzá a következő kódot:
 
 ```javascript
 const timerFunction = require('./index');
@@ -381,7 +381,7 @@ A tesztek hibakereséséhez adja hozzá a következő konfigurációt a *launch.
 
 Ezután állítson be egy töréspontot a tesztben, és nyomja le az **F5** billentyűt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan írhat automatizált teszteket a függvények számára, folytassa ezeket az erőforrásokat:
 

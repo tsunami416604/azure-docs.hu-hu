@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87b9e4a3ca7151b3666928b00add175eddeea050
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82127770"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409382"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Tartomány kiválasztása Custom Vision projekthez
 
@@ -23,7 +23,7 @@ A Custom Vision projekt Beállítások paneljén kiválaszthatja a projekt tarto
 
 ## <a name="image-classification"></a>Képbesorolás
 
-|Tartomány|Cél|
+|Tartomány|Rendeltetés|
 |---|---|
 |__Általános__| A képbesorolási feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt.|
 |__Élelmiszer__|Az ételek fényképeihez optimalizált, ahogy azt egy étterem menüjében láthatja. Ha egyéni gyümölcsökből vagy zöldségekből származó fényképeket szeretne osztályozni, használja az élelmiszer-tartományt.|
@@ -33,7 +33,7 @@ A Custom Vision projekt Beállítások paneljén kiválaszthatja a projekt tarto
 
 ## <a name="object-detection"></a>Objektumészlelés
 
-|Tartomány|Cél|
+|Tartomány|Rendeltetés|
 |---|---|
 |__Általános__| Az objektum-észlelési feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt.|
 |__Embléma__|A képeken található márka emblémák keresésére optimalizált.|
@@ -42,27 +42,15 @@ A Custom Vision projekt Beállítások paneljén kiválaszthatja a projekt tarto
 
 ## <a name="compact-domains"></a>Kompakt tartományok
 
-A kompakt tartományok által generált modellek helyileg is futtathatók. A modell teljesítménye a kiválasztott tartománytól függ. Az alábbi táblázatban bejelentjük a modell méretét és következtetéseit az Intel Desktop CPU-ban és az NVidia GPU \[ 1-ben \] . 
+A kompakt tartományok által generált modellek helyileg is futtathatók. A Custom Vision 3,4 nyilvános előzetes verzió API-ban a GetDomains API meghívásával lekérheti a kompakt tartományokhoz tartozó exportálható platformok listáját.
 
-> [!NOTE]
-> Ezek a számok nem tartalmazzák az előfeldolgozást és a utófeldolgozó időt.
+A modell teljesítménye a kiválasztott tartománytól függ. Az alábbi táblázatban bejelentjük a modell méretét és következtetéseit az Intel Desktop CPU-ban és az NVidia GPU \[ 1-ben \] . Ezek a számok nem tartalmazzák az előfeldolgozást és a utófeldolgozó időt.
 
 |Feladat|Tartomány|Modell mérete|CPU-következtetési idő|GPU-következtetési idő|
 |---|---|---|---|---|
 |Osztályozás|General (compact) (Általános (kompakt))|5 MB|13 MS|5 MS|
 |Objektumészlelés|General (compact) (Általános (kompakt))|45 MB|35 MS|5 MS|
 |Objektumészlelés|Általános (Compact) [S1]|14 MB|27 MS|7 MS|
-
-## <a name="vaidk-vision-ai-dev-kit"></a>VAIDK (jövőkép AI fejlesztői csomag)
-
-Ha egy kompakt tartomány van kiválasztva, akkor az "exportálási képességek" beállítás lehetővé teszi az "alapplatformok" és a "jövőkép AI fejlesztői csomag" megkülönböztetését.
-
-Az _exportálási képességek_ területen a két lehetőség a következők:
-
-- Alapszintű platformok (Tensorflow, CoreML, ONNX stb.)
-- A jövőkép AI fejlesztői csomagja.
-
-Az _általános_ _, a_ _tereptárgyak_és a _kiskereskedelmi_ célokra szolgáló, de nem az _élelmiszer_ -kompakt tartományok a képbesoroláshoz való kiválasztásakor nem érhetők el az _általános (Compact)_ és az _általános (Compact) [S1]_ objektumok észleléséhez.
 
 >[!NOTE]
 >Az objektumok észleléséhez szükséges __általános (Compact)__ tartomány speciális utófeldolgozó logikát igényel. A részletekért tekintse meg az exportált zip-csomagban található példaként szolgáló parancsfájlt. Ha a utófeldolgozó logikát nem használó modellre van szüksége, használja az __általános (Compact) [S1]__.

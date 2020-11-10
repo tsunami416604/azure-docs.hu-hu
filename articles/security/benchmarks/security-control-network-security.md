@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b74baebd964ee43658f74e0050dff838e29f9b8a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82193122"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409059"
 ---
 # <a name="security-control-network-security"></a>Biztonsági ellenőrzés: hálózati biztonság
 
@@ -28,15 +28,15 @@ Győződjön meg arról, hogy az összes Virtual Network alhálózati üzemelő 
 
 Ha konkrét használati esettel rendelkezik, a követelmények teljesítése Azure Firewall megvalósításával lehetséges.
 
-- [Virtual Network szolgáltatási végpontok ismertetése](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+- [Virtual Network szolgáltatási végpontok ismertetése](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-- [Az Azure privát hivatkozásának megismerése](https://docs.microsoft.com/azure/private-link/private-link-overview)
+- [Az Azure privát hivatkozásának megismerése](../../private-link/private-link-overview.md)
 
-- [Virtual Network létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Virtual Network létrehozása](../../virtual-network/quick-create-portal.md)
 
-- [Biztonsági konfigurációval rendelkező NSG létrehozása](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Biztonsági konfigurációval rendelkező NSG létrehozása](../../virtual-network/tutorial-filter-network-traffic.md)
 
-- [Azure Firewall üzembe helyezése és konfigurálása](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Azure Firewall üzembe helyezése és konfigurálása](../../firewall/tutorial-firewall-deploy-portal.md)
 
 ## <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
 
@@ -46,11 +46,11 @@ Ha konkrét használati esettel rendelkezik, a követelmények teljesítése Azu
 
 Az Azure-ban a hálózati erőforrások biztonságossá tételéhez használja a Azure Security Centert, és kövesse a hálózati védelmi javaslatok című témakört. Engedélyezze a NSG folyamat naplóit, és küldje el a naplókat egy Storage-fiókba a forgalom naplózása érdekében. NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
-- [A NSG folyamat naplófájljainak engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [A NSG folyamat naplófájljainak engedélyezése](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [A Traffic Analytics engedélyezése és használata](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [A Traffic Analytics engedélyezése és használata](../../network-watcher/traffic-analytics.md)
 
-- [A Azure Security Center által biztosított hálózati biztonság ismertetése](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [A Azure Security Center által biztosított hálózati biztonság ismertetése](../../security-center/security-center-network-recommendations.md)
 
 ## <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
 
@@ -60,7 +60,7 @@ Az Azure-ban a hálózati erőforrások biztonságossá tételéhez használja a
 
 Telepítse az Azure webalkalmazási tűzfalat (WAF) a kritikus webalkalmazások előtt a bejövő forgalom további ellenőrzéséhez. Diagnosztikai beállítás engedélyezése a WAF és a naplók betöltéséhez egy Storage-fiókba, az Event hub-ba vagy a Log Analytics-munkaterületre.
 
-- [Az Azure WAF üzembe helyezése](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+- [Az Azure WAF üzembe helyezése](../../web-application-firewall/ag/create-waf-policy-ag.md)
 
 ## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártékony IP-címekkel folytatott kommunikáció megtagadása
 
@@ -76,15 +76,15 @@ A NSG konfigurálásához használja a Azure Security Center igény szerinti há
 
 Azure Security Center adaptív hálózati korlátozással olyan NSG-konfigurációkat javasolhat, amelyek a portok és a forrás IP-címeket korlátozzák a tényleges forgalom és a veszélyforrások felderítése alapján.
 
-- [A DDoS Protection konfigurálása](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [A DDoS Protection konfigurálása](../../virtual-network/manage-ddos-protection.md)
 
-- [Azure Firewall üzembe helyezése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Azure Firewall üzembe helyezése](../../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../../security-center/azure-defender.md)
 
-- [Azure Security Center adaptív hálózat megerősítésének ismertetése](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+- [Azure Security Center adaptív hálózat megerősítésének ismertetése](../../security-center/security-center-adaptive-network-hardening.md)
 
-- [Azure Security Center az időponthoz tartozó hálózati Access Control ismertetése](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+- [Azure Security Center az időponthoz tartozó hálózati Access Control ismertetése](../../security-center/security-center-just-in-time.md)
 
 ## <a name="15-record-network-packets"></a>1,5: hálózati csomagok rögzítése
 
@@ -94,7 +94,7 @@ Azure Security Center adaptív hálózati korlátozással olyan NSG-konfiguráci
 
 Network Watcher csomagok rögzítésének engedélyezése a rendellenes tevékenységek kivizsgálásához.
 
-- [A Network Watcher engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [A Network Watcher engedélyezése](../../network-watcher/network-watcher-create.md)
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati alapú behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
@@ -108,9 +108,9 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 - [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-- [Azure Firewall üzembe helyezése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Azure Firewall üzembe helyezése](../../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Riasztások konfigurálása Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+- [Riasztások konfigurálása Azure Firewall](../../firewall/threat-intel.md)
 
 ## <a name="17-manage-traffic-to-web-applications"></a>1,7: webalkalmazások forgalmának kezelése
 
@@ -120,11 +120,11 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 Az Azure Application Gateway üzembe helyezése a megbízható tanúsítványok számára engedélyezett HTTPS/TLS-alapú webalkalmazásokhoz.
 
-- [Application Gateway üzembe helyezése](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+- [Application Gateway üzembe helyezése](../../application-gateway/quick-create-portal.md)
 
-- [A Application Gateway konfigurálása a HTTPS használatára](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+- [A Application Gateway konfigurálása a HTTPS használatára](../../application-gateway/create-ssl-portal.md)
 
-- [A 7. rétegbeli terheléselosztás és az Azure-webalkalmazás-átjárók ismertetése](https://docs.microsoft.com/azure/application-gateway/overview)
+- [A 7. rétegbeli terheléselosztás és az Azure-webalkalmazás-átjárók ismertetése](../../application-gateway/overview.md)
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: a hálózati biztonsági szabályok bonyolultságának és adminisztratív terhelésének csökkentése
 
@@ -136,9 +136,9 @@ A hálózati biztonsági csoportokon vagy Azure Firewall a hálózati hozzáfér
 
 Emellett az alkalmazás biztonsági csoportjaival is egyszerűsítheti az összetett biztonsági konfigurációt. Az alkalmazásbiztonsági csoportokkal az alkalmazás struktúrájának természetes bővítményeként konfigurálhatja a hálózati biztonságot, így csoportosíthatja a virtuális gépeket, és ezen csoportok alapján meghatározhatja a hálózati biztonsági szabályokat.
 
-- [A szolgáltatási címkék megismerése és használata](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [A szolgáltatási címkék megismerése és használata](../../virtual-network/service-tags-overview.md)
 
-- [Az alkalmazás biztonsági csoportjai megismerése és használata](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
+- [Az alkalmazás biztonsági csoportjai megismerése és használata](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
@@ -150,11 +150,11 @@ A hálózati erőforrások szabványos biztonsági konfigurációinak definiál�
 
 Az Azure-tervrajzok segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, például az Azure Resources Manager-sablonokat, a RBAC-vezérlőket és a házirendeket egyetlen terv definíciójában. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el.
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy minták a hálózatkezeléshez](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+- [Azure Policy minták a hálózatkezeléshez](../../governance/policy/samples/built-in-policies.md#network)
 
-- [Azure Blueprint létrehozása](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [Azure Blueprint létrehozása](../../governance/blueprints/create-blueprint-portal.md)
 
 ## <a name="110-document-traffic-configuration-rules"></a>1,10: a dokumentum forgalmának konfigurációs szabályai
 
@@ -168,11 +168,11 @@ A címkézéshez kapcsolódó beépített Azure Policy definíciók bármelyiké
 
 A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon.
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
 
-- [Virtual Network létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Virtual Network létrehozása](../../virtual-network/quick-create-portal.md)
 
-- [NSG létrehozása biztonsági konfigurációval](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [NSG létrehozása biztonsági konfigurációval](../../virtual-network/tutorial-filter-network-traffic.md)
 
 ## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: automatikus eszközök használata a hálózati erőforrások konfigurációjának figyelésére és a változások észlelésére
 
@@ -182,9 +182,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 Az Azure-tevékenység naplójának használatával figyelheti az erőforrás-konfigurációkat, és felderítheti az Azure-erőforrások módosításait. Hozzon létre riasztásokat a Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus erőforrások változásai megváltoznak.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/platform/alerts-activity-log.md)
 
 ## <a name="next-steps"></a>További lépések
 

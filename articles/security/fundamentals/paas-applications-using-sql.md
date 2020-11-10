@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: a02b2157209b5f47ac7ffbde4e15f3e7df1c258b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 278812754c636d434bf579c0408832f1e99d3445
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462530"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408073"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Ajánlott eljárások a Pásti-adatbázisok biztonságossá tételéhez az Azure-ban
 
@@ -40,7 +40,7 @@ Azure SQL Database konfigurálható két hitelesítési típus egyikének haszn�
 
 - **Azure Active Directory hitelesítés** a Azure Active Directory által felügyelt identitásokat használ, és a felügyelt és integrált tartományok esetében támogatott. Azure Active Directory hitelesítés használatához létre kell hoznia egy másik, "Azure AD admin" nevű kiszolgálói rendszergazdát, amely jogosult az Azure AD-felhasználók és-csoportok felügyeletére. Ez a rendszergazda a normál kiszolgálói rendszergazdák által elvégezhető összes műveletet is végrehajthatja.
 
-[Azure Active Directory a hitelesítés](../../active-directory/develop/authentication-scenarios.md) a Azure SQL Database és az Azure szinapszis Analytics szolgáltatáshoz való kapcsolódás mechanizmusa az Azure Active Directory (ad) identitások használatával. Az Azure AD alternatívát biztosít a SQL Server hitelesítéshez, így leállíthatja a felhasználói identitások elterjedését az adatbázis-kiszolgálók között. Az Azure AD-hitelesítés segítségével központilag kezelheti az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásait egy központi helyen. A központi azonosítófelügyelettel egyetlen helyen kezelheti az adatbázis-felhasználókat, így leegyszerűsítheti az engedélykezelést.  
+[Azure Active Directory a hitelesítés](../../active-directory/develop/authentication-vs-authorization.md) a Azure SQL Database és az Azure szinapszis Analytics szolgáltatáshoz való kapcsolódás mechanizmusa az Azure Active Directory (ad) identitások használatával. Az Azure AD alternatívát biztosít a SQL Server hitelesítéshez, így leállíthatja a felhasználói identitások elterjedését az adatbázis-kiszolgálók között. Az Azure AD-hitelesítés segítségével központilag kezelheti az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásait egy központi helyen. A központi azonosítófelügyelettel egyetlen helyen kezelheti az adatbázis-felhasználókat, így leegyszerűsítheti az engedélykezelést.  
 
 ### <a name="benefits-of-using-azure-ad-instead-of-sql-authentication"></a>Az Azure AD használatának előnyei az SQL-hitelesítés helyett
 
@@ -50,7 +50,7 @@ Azure SQL Database konfigurálható két hitelesítési típus egyikének haszn�
 - A a tárolt adatbázis-felhasználók használatával hitelesíti az identitásokat az adatbázis szintjén.
 - Támogatja a jogkivonat-alapú hitelesítést a SQL Databasehoz csatlakozó alkalmazások esetében.
 - Támogatja a tartományi összevonást a Active Directory összevonási szolgáltatások (AD FS) (ADFS) vagy a natív felhasználói/jelszó-hitelesítéssel egy helyi Azure AD-hoz tartományi szinkronizálás nélkül.
-- Támogatja a [multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication)Active Directory univerzális hitelesítést használó SQL Server Management Studiookhoz való kapcsolódást. A számos egyszerű ellenőrzési lehetőségnek (telefonhívás, SMS, intelligens kártya PIN-kóddal vagy mobilalkalmazásos értesítés) köszönhetően az MFA erős hitelesítést kínál. További információ: az [univerzális hitelesítés SQL Database és az Azure szinapszis Analytics használatával](../../azure-sql/database/authentication-mfa-ssms-overview.md).
+- Támogatja a [multi-Factor Authentication (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md)Active Directory univerzális hitelesítést használó SQL Server Management Studiookhoz való kapcsolódást. A számos egyszerű ellenőrzési lehetőségnek (telefonhívás, SMS, intelligens kártya PIN-kóddal vagy mobilalkalmazásos értesítés) köszönhetően az MFA erős hitelesítést kínál. További információ: az [univerzális hitelesítés SQL Database és az Azure szinapszis Analytics használatával](../../azure-sql/database/authentication-mfa-ssms-overview.md).
 
 Az Azure AD-hitelesítéssel kapcsolatos további információkért lásd:
 
@@ -84,7 +84,7 @@ Szelektív adathoz is használható az alkalmazás szintjének titkosítása. Az
 
 Az adatbázis biztonságossá tételéhez további óvintézkedéseket is használhat, például a biztonságos rendszer megtervezését, a bizalmas eszközök titkosítását és a tűzfal létrehozását az adatbázis-kiszolgálók köré.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk a SQL Database és az Azure szinapszis Analytics biztonsági eljárásainak egy gyűjteményét mutatta be, amelyekkel biztosíthatja a Pásti web-és Mobile-alkalmazások védelmét. További információ a Pásti-telepítések biztonságossá tételéről:
 

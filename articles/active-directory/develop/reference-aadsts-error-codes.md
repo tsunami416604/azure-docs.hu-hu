@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2020
+ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4bd738197c84d7dce36f087d170f61a55d8e9f32
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 59ed397f3bd54a324f8fa375a3ea870860c31142
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241327"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410929"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és -engedélyezési hibakódok
 
@@ -74,7 +74,7 @@ A `error` mezőnek több lehetséges értéke van – tekintse át a protokoll d
 ## <a name="lookup-current-error-code-information"></a>Aktuális hibakód információinak keresése
 A hibakódok és az üzenetek változhatnak.  A legfrissebb információkért tekintse meg az [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) oldalt a AADSTS-hibák leírásának, javításának és néhány javasolt megkerülő megoldás megkereséséhez.  
 
-Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16000" hibakódot kapta, keressen rá a [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "16000" kifejezésre.  Közvetlenül egy adott hibához is kapcsolódhat, ha hozzáadja a hibakódot az URL-címhez: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000) .
+Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "50058" kifejezésre.  Közvetlenül egy adott hibához is kapcsolódhat, ha hozzáadja a hibakódot az URL-címhez: [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058) .
 
 ## <a name="aadsts-error-codes"></a>AADSTS-hibakódok
 
@@ -323,6 +323,6 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS7000114| A (z) "appIdentifier" alkalmazás nem jogosult az alkalmazáshoz tartozó hívásokra.|
 | AADSTS7500529 | A "SAMLId-GUID" érték nem érvényes SAML-azonosító – az Azure AD ezt az attribútumot használja a visszaadott válasz InResponseTo attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például a id6c1c178c166d486687be4aaf5e482730 érvényes azonosító. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Kérdése van, vagy nem találja, amit keres? Hozzon létre egy GitHub-problémát, vagy tekintse meg a [fejlesztők támogatási és támogatási lehetőségeit](./developer-support-help-options.md) , amelyekkel megismerheti a Súgó és támogatás egyéb lehetőségeit.

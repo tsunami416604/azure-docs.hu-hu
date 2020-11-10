@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 10/16/2020
-ms.openlocfilehash: 51fd8b8427dd8214e22fa59e50b26bb9db237946
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 749807349fd83f9639461fd4ddd9ab771d108119
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322049"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410555"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Állapotalapú vagy állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban az Azure Logic Apps (előzetes verzió) bővítményével
 
@@ -66,7 +66,7 @@ A Azure Logic Apps (előzetes verzió) bővítmény számos aktuális és továb
 
 ## <a name="stateful-versus-stateless-logic-apps"></a>Állapot-nyilvántartó és állapot nélküli logikai alkalmazások
 
-* *Nyilvántartó*
+* *Állapotalapú*
 
   Állapot-nyilvántartó logikai alkalmazások létrehozása, ha meg kell őriznie, ellenőriznie vagy hivatkoznia kell az előző eseményekről. Ezek a logikai alkalmazások megőrzik az egyes műveletek bemenetét és kimenetét, valamint a külső tárolóban lévő munkafolyamat-állapotokat, így az egyes futtatások befejeződése után a Futtatás részletei és előzményei is megtekinthetők. Az állapot-nyilvántartó logikai alkalmazások nagy rugalmasságot biztosítanak, ha az kimaradások történnek. A szolgáltatások és a rendszerek visszaállítása után a megszakított logikai alkalmazás újraépítése a mentett állapotból történik, és a logikai alkalmazások újbóli futtatása a befejezéshez. Az állapot-nyilvántartó munkafolyamatok akár egy évig is futhatnak.
 
@@ -109,8 +109,6 @@ Ebben a nyilvános előzetes verzióban ezek a képességek nem érhetők el, va
   A korábban megadott eseményindítók kivételével az *állapot-nyilvántartó* munkafolyamatok a [felügyelt összekötők](../connectors/apis-list.md#managed-api-connectors)eseményindítóit és műveleteit is használhatják, amelyek az Azure-ban üzembe helyezhetők, és natív módon futnak a Logic apps futtatókörnyezettel. Azonban az *állapot nélküli* munkafolyamatok jelenleg csak a felügyelt összekötők *műveleteit* támogatják, az eseményindítók nem. Bár az Azure-ban engedélyezheti az összekötőket az állapot nélküli munkafolyamatokhoz, a tervező nem jeleníti meg a kiválasztható felügyelt összekötő-eseményindítókat.
 
 * Az új **Logic app (előzetes verzió)** típusú erőforrástípus csak [prémium vagy app Service üzemeltetési csomagra](#publish-azure) telepíthető az Azure-ban vagy egy [Docker-tárolóban](#deploy-docker), és nem [integrációs szolgáltatási környezetekben (ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). A **felhasználási** üzemeltetési csomagok nem támogatottak, és nem érhetők el az erőforrástípus üzembe helyezéséhez.
-
-* A Azure Portal nem hozhat létre új logikai alkalmazásokat az új **logikai alkalmazás (előzetes verzió)** típusú erőforrással. Ezeket a logikai alkalmazásokat csak a Visual Studio Code-ban lehet létrehozni. Ha azonban a Logic apps alkalmazást a Visual Studio Code-ból az Azure-ba telepíti, akkor [új munkafolyamatokat adhat hozzá a logikai alkalmazásokhoz](#add-workflows).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -530,7 +528,7 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
    | **Megszakítva** | A Futtatás leállt vagy nem fejeződik be külső problémák miatt, például rendszerleállás vagy elévült Azure-előfizetés. |
    | **Megszakítva** | A Futtatás elindítva és elindítva, de lemondási kérelem érkezett. |
    | **Sikertelen** | A Futtatás során legalább egy művelet sikertelen volt. A munkafolyamatban nem történt további művelet, amely a hiba kezelésére lett beállítva. |
-   | **Futó** | A Futtatás aktiválva lett, és folyamatban van, de ez az állapot a [művelet korlátai](logic-apps-limits-and-config.md) vagy a [jelenlegi díjszabási csomag](https://azure.microsoft.com/pricing/details/logic-apps/)miatt szabályozott Futtatás esetén is megjelenhet. <p><p>**Tipp** : Ha [diagnosztikai naplózást](monitor-logic-apps-log-analytics.md)állít be, a megjelenő összes szabályozási eseményről információt kaphat. |
+   | **Fut** | A Futtatás aktiválva lett, és folyamatban van, de ez az állapot a [művelet korlátai](logic-apps-limits-and-config.md) vagy a [jelenlegi díjszabási csomag](https://azure.microsoft.com/pricing/details/logic-apps/)miatt szabályozott Futtatás esetén is megjelenhet. <p><p>**Tipp** : Ha [diagnosztikai naplózást](monitor-logic-apps-log-analytics.md)állít be, a megjelenő összes szabályozási eseményről információt kaphat. |
    | **Sikeres** | A Futtatás sikerült. Ha bármilyen művelet meghiúsult, a munkafolyamat egy későbbi művelete ezt a hibát kezelte. |
    | **Időtúllépés** | A Futtatás időtúllépés miatt meghaladta az időkorlátot, mert a jelenlegi időtartam túllépte a futtatási időtartam határértékét, amelyet a [ **futtatási Előzmények megőrzése nap** beállításban](logic-apps-limits-and-config.md#run-duration-retention-limits)szabályoz. A Futtatás időtartamát a Futtatás kezdő időpontja és a futtatási időtartam korlátja alapján számítjuk ki a kezdési időpontnál. <p><p>**Megjegyzés** : Ha a Futtatás időtartama szintén meghaladja az aktuális *futtatási előzmények megőrzési korlátját* is, amelyet a futtatási [ **Előzmények megőrzésének napja** beállítás](logic-apps-limits-and-config.md#run-duration-retention-limits)is szabályoz, a futtatást a rendszer a napi törlési feladatokból törli a futtatási előzményekből. Függetlenül attól, hogy a futási idő ki vagy fejeződik be, a megőrzési időszakot a rendszer mindig a Futtatás kezdési ideje és az *aktuális* megőrzési korlát használatával számítja ki. Tehát ha csökkenti a repülés közbeni futás időtartamának korlátját, a Futtatás időtúllépést eredményez. A Futtatás azonban marad, vagy törlődik a futtatási előzmények alapján, attól függően, hogy a Futtatás időtartama túllépte-e a megőrzési korlátot. |
    | **Várakozó** | A Futtatás nem indult el vagy szüneteltetve van, például egy olyan korábbi munkafolyamat-példány miatt, amely még fut. |
@@ -551,7 +549,7 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
    | Megszakítva | ![A "megszakított" művelet állapotának ikonja][aborted-icon] | A művelet a külső problémák miatt leállt vagy nem zárult, például rendszerleállás vagy elévült Azure-előfizetés. |
    | Lemondva | ![A "megszakított" művelet állapotának ikonja][cancelled-icon] | A művelet futása megszakadt, de lemondási kérelmet kapott. |
    | Sikertelen | ![A "sikertelen" művelet állapotának ikonja][failed-icon] | A művelet sikertelen volt. |
-   | Futó | ![A "futó" művelet állapotának ikonja][running-icon] | A művelet jelenleg fut. |
+   | Fut | ![A "futó" művelet állapotának ikonja][running-icon] | A művelet jelenleg fut. |
    | Kimarad | ![A "kihagyott" művelet állapotának ikonja][skipped-icon] | A rendszer kihagyta a műveletet, mert a közvetlenül megelőző művelet meghiúsult. Egy művelet olyan `runAfter` feltétellel rendelkezik, amely megköveteli, hogy az előző művelet sikeresen befejeződik az aktuális művelet futtatása előtt. |
    | Sikeres | ![A "sikeres" művelet állapotának ikonja][succeeded-icon] | A művelet sikeresen befejeződött. |
    | Az újrapróbálkozások sikeresek voltak | !["Sikeres újrapróbálkozások" művelet ikonja][succeeded-with-retries-icon] | A művelet sikeresen befejeződött, de csak egy vagy több újrapróbálkozás után. Az újrapróbálkozási előzmények áttekintéséhez a futtatási előzmények részletei nézetben válassza ki ezt a műveletet, így megtekintheti a bemeneteket és a kimeneteket. |
@@ -774,12 +772,7 @@ A Visual Studio Code-ban az összes telepített Logic apps megtekinthető az Azu
 
 ## <a name="find-and-manage-deployed-logic-apps-in-the-portal"></a>Üzembe helyezett logikai alkalmazások keresése és kezelése a portálon
 
-A Azure Portal az Azure-előfizetésében lévő összes telepített Logic apps megtekinthető, függetlenül attól, hogy az eredeti **Logic apps** erőforrástípus vagy a **logikai alkalmazás (előzetes verzió)** típusú erőforrástípus. Az egyes erőforrástípusok jelenleg külön kategóriákként vannak rendszerezve és kezelve az Azure-ban.
-
-> [!NOTE]
-> A nyilvános előzetes verzióban csak a telepített **Logic app-(előzetes verziójú)** erőforrásokat tekintheti meg a Azure Portalban, nem hozhat létre új **logikai alkalmazás-(előzetes verziójú)** erőforrásokat. Ezeket a logikai alkalmazásokat csak a Visual Studio Code-ban lehet létrehozni. Ehhez az erőforrás-típushoz azonban [hozzáadhat munkafolyamatokat](#add-workflows) a logikai alkalmazások üzembe helyezéséhez.
-
-Az alábbi lépéseket követve megkeresheti a **Logic app (előzetes verzió)** típusú erőforrásokkal rendelkező logikai alkalmazásokat:
+A Azure Portal az Azure-előfizetésében lévő összes telepített Logic apps megtekinthető, függetlenül attól, hogy az eredeti **Logic apps** erőforrástípus vagy a **logikai alkalmazás (előzetes verzió)** típusú erőforrástípus. Az egyes erőforrástípusok jelenleg külön kategóriákként vannak rendszerezve és kezelve az Azure-ban. Az alábbi lépéseket követve megkeresheti a **Logic app (előzetes verzió)** típusú erőforrásokkal rendelkező logikai alkalmazásokat:
 
 1. A Azure Portal keresőmezőbe írja be a kifejezést `logic app preview` . Amikor megjelenik az eredmények listája, a **szolgáltatások** területen válassza a **logikai alkalmazás (előzetes verzió)** lehetőséget.
 
@@ -1022,7 +1015,7 @@ Bár a [Azure Logic apps számos meglévő korlátja](../logic-apps/logic-apps-l
 
   * A kód futtatásának korlátja öt másodperc és 15 másodperc közötti értékre nő.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Örömmel vesszük a véleményét a nyilvános előzetes verzióval kapcsolatos tapasztalatairól!
 

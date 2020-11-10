@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f95d7ae38ece2a2ad939d2b3c829aed2c676d0f7
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 7079f0b1060be1a260b41e07b9d9299bab57127f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354002"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410810"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
@@ -75,6 +75,7 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 | RedHat | RHEL 7,2 | 7.2 | RedHat: RHEL: 7.2: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 6,8 | 6.8 | RedHat: RHEL: 6.8: legújabb | Adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 6,7 | 6.7 | RedHat: RHEL: 6.7: legújabb | Adatlemez (lásd az alábbi megjegyzést) |
+| OpenLogic | CentOS 7,8 | 7,8 | OpenLogic: CentOS: 7_8: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7,7 | 7.7 | OpenLogic: CentOS: 7.7: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7,7 | 7 – LVM | OpenLogic: CentOS: 7-LVM: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7,6 | 7.6 | OpenLogic: CentOS: 7.6: legújabb | Operációs rendszer és az adatlemez |

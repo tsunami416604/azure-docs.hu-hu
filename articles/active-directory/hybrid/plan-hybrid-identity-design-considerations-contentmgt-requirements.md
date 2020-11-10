@@ -16,15 +16,15 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57990fda7475b95bd6582fa5a495ac8d24aa55d5
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "64918441"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408532"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>A Hybrid Identity megoldás tartalomkezelési követelményeinek meghatározása
-A vállalat tartalomkezelési követelményeinek megismerése közvetlenül befolyásolhatja a hibrid identitási megoldás használatára vonatkozó döntését. Több eszköz elterjedése és a felhasználók képességeinek a saját eszközei ([BYOD](https://aka.ms/byodcg)) révén a vállalatnak meg kell őriznie a saját adatait, de a felhasználónak is érintetlenül kell tartania a felhasználói adatok védelmét. Általában, ha egy felhasználó saját eszközével rendelkezik, több hitelesítő adat is tartozhat, amely az általuk használt alkalmazásnak megfelelően váltakozik majd. Fontos megkülönböztetni, hogy milyen tartalmak lettek létrehozva a személyes hitelesítő adatokkal, illetve a vállalati hitelesítő adatok használatával létrehozott tartalommal. A személyazonossági megoldásnak képesnek kell lennie a felhőalapú szolgáltatásokkal való interakcióra, hogy zökkenőmentes felhasználói élményt nyújtson a végfelhasználók számára, miközben gondoskodik az adatok védelméről, és növelheti az adatszivárgás elleni védelmet. 
+A vállalat tartalomkezelési követelményeinek megismerése közvetlenül befolyásolhatja a hibrid identitási megoldás használatára vonatkozó döntését. Több eszköz elterjedése és a felhasználók képességeinek a saját eszközei ([BYOD](/mem/intune/fundamentals/byod-technology-decisions)) révén a vállalatnak meg kell őriznie a saját adatait, de a felhasználónak is érintetlenül kell tartania a felhasználói adatok védelmét. Általában, ha egy felhasználó saját eszközével rendelkezik, több hitelesítő adat is tartozhat, amely az általuk használt alkalmazásnak megfelelően váltakozik majd. Fontos megkülönböztetni, hogy milyen tartalmak lettek létrehozva a személyes hitelesítő adatokkal, illetve a vállalati hitelesítő adatok használatával létrehozott tartalommal. A személyazonossági megoldásnak képesnek kell lennie a felhőalapú szolgáltatásokkal való interakcióra, hogy zökkenőmentes felhasználói élményt nyújtson a végfelhasználók számára, miközben gondoskodik az adatok védelméről, és növelheti az adatszivárgás elleni védelmet. 
 
 Az Ön személyazonossági megoldását különböző technikai szabályozások használják, amelyek az alábbi ábrán látható módon biztosítanak tartalomkezelést:
 
@@ -69,4 +69,3 @@ A hibrid identitás megoldás megtervezése során győződjön meg arról, hogy
 
 ## <a name="see-also"></a>Lásd még:
 [Tervezési szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
-

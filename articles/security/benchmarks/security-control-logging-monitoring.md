@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 82114164d70eae71678e70ff2bdb7ea44a54d4cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e88976bfbf5d033d6f5dc2318a6383e01ceb791d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076301"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409076"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Biztonsági ellenőrzés: naplózás és figyelés
 
@@ -26,9 +26,9 @@ A biztonsági naplózás és a monitorozás az Azure-szolgáltatások naplófáj
 
 A Microsoft az Azure-erőforrások időforrásait is fenntartja, azonban lehetősége van a számítási erőforrások időszinkronizálási beállításainak kezelésére.
 
-- [Az időszinkronizálás konfigurálása az Azure Windows számítási erőforrásaihoz](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+- [Az időszinkronizálás konfigurálása az Azure Windows számítási erőforrásaihoz](../../virtual-machines/windows/time-sync.md)
 
-- [Az időszinkronizálás konfigurálása az Azure Linux számítási erőforrásaihoz](https://docs.microsoft.com/azure/virtual-machines/linux/time-sync)
+- [Az időszinkronizálás konfigurálása az Azure Linux számítási erőforrásaihoz](../../virtual-machines/linux/time-sync.md)
 
 ## <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
@@ -40,11 +40,11 @@ Naplók betöltése Azure Monitor használatával a végponti eszközök, a hál
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et. 
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
 
-- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md)
 
 - [Ismerkedés a Azure Monitor és a harmadik féltől származó SIEM-integrációval](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -56,9 +56,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 Az Azure-erőforrások diagnosztikai beállításainak engedélyezése a naplózási, biztonsági és diagnosztikai naplókhoz való hozzáféréshez. A automatikusan elérhető tevékenység-naplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célcím és más hasznos elemek.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../../azure-monitor/platform/platform-logs-overview.md)
 
 ## <a name="24-collect-security-logs-from-operating-systems"></a>2,4: biztonsági naplók gyűjtése az operációs rendszerekből
 
@@ -68,21 +68,21 @@ Az Azure-erőforrások diagnosztikai beállításainak engedélyezése a naplóz
 
 Ha a számítási erőforrás a Microsoft tulajdonában van, akkor a Microsoft feladata a figyelése. Ha a számítási erőforrás a szervezet tulajdonában van, akkor az Ön felelőssége, hogy figyelje. A Azure Security Center az operációs rendszer figyelésére használható. Az operációs rendszer Security Center által összegyűjtött adatok közé tartozik az operációs rendszer típusa és verziója, az operációs rendszer (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó. A Log Analytics ügynök az összeomlási memóriaképek fájljait is gyűjti.
 
-- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md)
 
-- [Az Azure Security Center adatgyűjtés ismertetése](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)
+- [Az Azure Security Center adatgyűjtés ismertetése](../../security-center/security-center-enable-data-collection.md)
 
 ## <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 2,5 | 6.4 | Ügyfél |
+| 2.5 | 6.4 | Ügyfél |
 
 Azure Monitor belül állítsa be a Log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi szabályainak megfelelően. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-- [Az adatmegőrzési időszak módosítása Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Az adatmegőrzési időszak módosítása Log Analytics](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 ## <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
 
@@ -94,11 +94,11 @@ Elemezheti és figyelheti a rendellenes viselkedésre és a rendszeres eredmény
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik fél SIEM-nek. 
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
 
-- [Log Analytics munkaterület ismertetése](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+- [Log Analytics munkaterület ismertetése](../../azure-monitor/log-query/get-started-portal.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../../azure-monitor/log-query/get-started-queries.md)
 
 ## <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: riasztások engedélyezése rendellenes tevékenységekhez
 
@@ -110,11 +110,11 @@ A biztonsági naplókban és eseményekben talált rendellenes tevékenységekke
 
 Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfeldolgozást az Azure Sentinel szolgáltatásban.
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
 
-- [Riasztások kezelése Azure Security Centerban](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+- [Riasztások kezelése Azure Security Centerban](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../../azure-monitor/learn/tutorial-response.md)
 
 ## <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
 
@@ -128,7 +128,7 @@ Az Azure-Virtual Machines és Cloud Services a kártevők elleni események gyű
 
 - [A Microsoft antimalware konfigurálása a Cloud Serviceshoz](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
 
-- [A Microsoft antimalware megismerése](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+- [A Microsoft antimalware megismerése](../fundamentals/antimalware.md)
 
 ## <a name="29-enable-dns-query-logging"></a>2,9: DNS-lekérdezések naplózásának engedélyezése
 
@@ -146,11 +146,11 @@ Egy harmadik féltől származó megoldás implementálása az Azure Marketplace
 
 A folyamat-létrehozási esemény és a parancssori mező naplózásához használja a Microsoft monitoring agentet az összes támogatott Azure Windows-beli virtuális gépen.   A támogatott Azure Linux rendszerű virtuális gépek esetében a konzol naplózását manuálisan is konfigurálhatja a csomópontok alapján, és a syslog használatával tárolhatja az adattárakat.  Emellett a Azure Monitor Log Analytics munkaterülete segítségével tekintheti át a naplókat, és lekérdezéseket hajthat végre az Azure Virtual Machines szolgáltatásból naplózott adatokon. 
 
-- [Adatgyűjtés az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+- [Adatgyűjtés az Azure Security Centerben](../../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../../azure-monitor/log-query/get-started-queries.md)
 
-- [Rendszernapló-adatforrások az Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-syslog)
+- [Rendszernapló-adatforrások az Azure Monitorban](../../azure-monitor/platform/data-sources-syslog.md)
 
 
 ## <a name="next-steps"></a>További lépések

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 3723345b10524b2063b3ec8fe43608f49b5b279b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 042a3edf8efe080064a3c41fd55975a40bf47e5e
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87375300"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386546"
 ---
 Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Java-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
 
@@ -24,7 +24,7 @@ Szeretné most rögtön megtekinteni a kódot? A [Javához készült Bing Search
 
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
-* [JDK 7 vagy 8](https://aka.ms/azure-jdks)
+* [JDK 7 vagy 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * Az [Apache Maven](https://maven.apache.org/download.cgi) vagy a kedvenc buildelést automatizáló eszköze
 * Egy előfizetői azonosító
 
@@ -284,7 +284,7 @@ Az utolsó lépés a program futtatása.
 mvn compile exec:java
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót a program kódjából.
 
@@ -295,4 +295,4 @@ Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői az
 
 ## <a name="see-also"></a>Lásd még
 
-* [Azure Java SDK-referencia](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)
+* [Azure Java SDK-referencia](/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)

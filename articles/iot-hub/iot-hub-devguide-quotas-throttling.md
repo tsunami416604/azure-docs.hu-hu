@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 72aff2a2761d3aae695968bd5b4b9d07eab1697f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a5b20efbf804c2ea1097f905da1cfd62727ff15
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547690"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410691"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -69,7 +69,7 @@ A következő táblázat a kényszerített szabályozásokat mutatja be. Az ért
 
    Végül, ha a hasznos adatok mérete 156KB és 160 KB között van, akkor az adott egységen belüli egységenként csak 1 hívást lehet megtenni, mielőtt eléri a 160 KB/s/s értéket.
 
-*  A *feladatok eszköz műveleteihez (a Twin, a Direct metódus meghívása)* az S2-es szinten 50/mp/egység csak akkor érvényes, ha a metódusokat feladatok használatával indítja el. Ha közvetlenül hívja meg a közvetlen metódusokat, a rendszer az eredeti sávszélesség-szabályozási korlátot (az S2 esetében) alkalmazza.
+*  A *feladatok eszköz műveleteihez (a Twin, a Direct metódus meghívása)* az S3. szinten a 50/mp/Unit művelet csak akkor érvényes, ha a metódusokat feladatok használatával indítja el. Ha közvetlenül hívja meg a közvetlen metódusokat, a rendszer az eredeti sávszélesség-szabályozási korlátot (az S3 esetében) alkalmazza.
 
 *  A **kvóta** a központba naponta küldendő üzenetek összesített *száma.* A hub kvótájának korlátját a [IoT hub díjszabási oldalán](https://azure.microsoft.com/pricing/details/iot-hub/)található **üzenetek teljes száma** oszlopban tekintheti meg.
 
@@ -132,11 +132,11 @@ Több IoT Hub egység is befolyásolja a szabályozást a korábban leírtak sze
 
 Ha a művelet késése váratlan növekedést lát, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 IoT Hub szabályozási viselkedés részletes ismertetését a következő blogbejegyzésben találja: [IoT hub szabályozás és Ön](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/).
 
 A IoT Hub Fejlesztői útmutatóban szereplő további témakörök a következők:
 
 * [IoT Hub-végpontok](iot-hub-devguide-endpoints.md)
-* [Figyelő IoT Hub](monitor-iot-hub.md)
+* [Az IoT Hub monitorozása](monitor-iot-hub.md)

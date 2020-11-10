@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: f4b8b4b56693023ede2ccf8ae7eeac7ed5e16824
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216861"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409569"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>NFS-ügyfél konfigurálása az Azure NetApp Fileshoz
 
@@ -75,7 +75,10 @@ Az ebben a szakaszban szereplő példák a következő tartománynevet és IP-c�
     Például: 
 
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
-
+    
+    Győződjön meg arról, hogy `default_realm` a a megadott tartományra van beállítva `/etc/krb5.conf` .  Ha nem, adja hozzá a `[libdefaults]` fájl szakaszához a következő példában látható módon:
+    
+    `default_realm = CONTOSO.COM`
 
 7. Az összes NFS-szolgáltatás újraindítása:  
  
@@ -199,7 +202,7 @@ Az ebben a szakaszban szereplő példák a következő tartománynevet és IP-c�
 
 5. Az Ubuntu 18,04 alapértelmezés szerint chrony használ. A konfigurációs irányelvek az [Ubuntu Bionic-ben: a Chrony használata az NTP konfigurálásához](https://ubuntu.com/blog/ubuntu-bionic-using-chrony-to-configure-ntp).
 
-6. Csatlakozzon a Active Directory-tartományhoz:   
+6. Csatlakozzon a Active Directory tartományhoz:   
  
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou="OU=$YOUROU"`
  
@@ -234,7 +237,7 @@ Az alábbi példa az AD LDAP-kiszolgálót az Ubuntu LDAP-ügyfélről kérdezi 
 `hari1:*:1237:1237:hari1:/home/hari1:/bin/bash`   
 
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 * [NFS-kötet létrehozása az Azure NetApp Files számára](azure-netapp-files-create-volumes.md)
 * [Kettős protokollú kötet létrehozása a Azure NetApp Fileshoz](create-volumes-dual-protocol.md)

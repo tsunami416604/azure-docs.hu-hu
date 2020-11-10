@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b1cbbd620cf2de8d875927f5745e91fcf608c5
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80549209"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410045"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Az Azure-ban elérhető biztonsági szolgáltatások és technológiák
 
@@ -33,22 +33,22 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 ## <a name="general-azure-security"></a>Általános Azure-biztonság
 |Szolgáltatás|Leírás|
 |--------|--------|
-|[Azure &nbsp; Security &nbsp; Center](/azure/security-center/security-center-intro)| Felhőalapú munkaterhelés-védelmi megoldás, amely biztonsági felügyeletet és komplex veszélyforrások elleni védelmet biztosít a hibrid Felhőbeli munkaterhelések között.|
-|[Azure Key Vault](/azure/key-vault/key-vault-overview)| Biztonságos titkos kulcsok tárolása a jelszavakhoz, a kapcsolati karakterláncokhoz és az alkalmazások működésének megőrzéséhez szükséges egyéb információkhoz. |
-|[Naplók Azure Monitor](/azure/log-analytics/log-analytics-overview)|Egy figyelési szolgáltatás, amely telemetria és más adatokat gyűjt, valamint egy lekérdezési nyelvet és analitikai motort biztosít az alkalmazások és erőforrások működési elemzéséhez. Önállóan vagy más szolgáltatásokkal, például Security Center használható. |
-|[Azure dev/test Labs](/azure/lab-services/devtest-lab-overview)|Egy olyan szolgáltatás, amely segít a fejlesztőknek és a tesztelőknek gyorsan létrehozni az Azure-beli környezeteket, miközben minimalizálja a hulladékot és szabályozza a költségeket.  |
+|[Azure &nbsp; Security &nbsp; Center](../../security-center/security-center-introduction.md)| Felhőalapú munkaterhelés-védelmi megoldás, amely biztonsági felügyeletet és komplex veszélyforrások elleni védelmet biztosít a hibrid Felhőbeli munkaterhelések között.|
+|[Azure Key Vault](../../key-vault/general/overview.md)| Biztonságos titkos kulcsok tárolása a jelszavakhoz, a kapcsolati karakterláncokhoz és az alkalmazások működésének megőrzéséhez szükséges egyéb információkhoz. |
+|[Azure Monitor-naplók](../../azure-monitor/log-query/log-query-overview.md)|Egy figyelési szolgáltatás, amely telemetria és más adatokat gyűjt, valamint egy lekérdezési nyelvet és analitikai motort biztosít az alkalmazások és erőforrások működési elemzéséhez. Önállóan vagy más szolgáltatásokkal, például Security Center használható. |
+|[Azure dev/test Labs](../../devtest-labs/devtest-lab-overview.md)|Egy olyan szolgáltatás, amely segít a fejlesztőknek és a tesztelőknek gyorsan létrehozni az Azure-beli környezeteket, miközben minimalizálja a hulladékot és szabályozza a költségeket.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 
 ## <a name="storage-security"></a>Tárbiztonság
 |Szolgáltatás|Leírás|
 |------|--------|
-| [Azure &nbsp; Storage &nbsp; szolgáltatás &nbsp; titkosítása](/azure/storage/common/storage-service-encryption)|Egy biztonsági funkció, amely automatikusan titkosítja az adatait az Azure Storage-ban.   |
-|[StorSimple titkosított hibrid tárolás](/azure/storsimple/storsimple-ova-overview)| Integrált tárolási megoldás, amely a helyszíni eszközök és az Azure Cloud Storage közötti tárolási feladatokat kezeli.|
-|[Azure Client-Side titkosítás](/azure/storage/common/storage-client-side-encryption)| Ügyféloldali titkosítási megoldás, amely az Azure Storage-ba való feltöltés előtt titkosítja az ügyfélalkalmazások adatain belüli adattitkosítást. a letöltése közben visszafejti az adatvesztést is. |
-| [Azure Storage – közös hozzáférésű aláírások](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)|A közös hozzáférésű aláírások delegált hozzáférést biztosítanak a Storage-fiók erőforrásaihoz.  |
-|[Azure Storage-fiók kulcsainak](/azure/storage/common/storage-create-storage-account)| Hozzáférés-vezérlési módszer az Azure Storage-hoz, amelyet a rendszer a Storage-fiók elérésekor hitelesítésre használ. |
-|[Azure-fájlmegosztás SMB 3,0 titkosítással](/azure/storage/files/storage-files-introduction)|Olyan hálózati biztonsági technológia, amely lehetővé teszi az automatikus hálózati titkosítást a Server Message Block (SMB) fájlmegosztás protokollja számára. |
+| [Azure &nbsp; Storage &nbsp; szolgáltatás &nbsp; titkosítása](../../storage/common/storage-service-encryption.md)|Egy biztonsági funkció, amely automatikusan titkosítja az adatait az Azure Storage-ban.   |
+|[StorSimple titkosított hibrid tárolás](../../storsimple/storsimple-ova-overview.md)| Integrált tárolási megoldás, amely a helyszíni eszközök és az Azure Cloud Storage közötti tárolási feladatokat kezeli.|
+|[Azure Client-Side titkosítás](../../storage/common/storage-client-side-encryption.md)| Ügyféloldali titkosítási megoldás, amely az Azure Storage-ba való feltöltés előtt titkosítja az ügyfélalkalmazások adatain belüli adattitkosítást. a letöltése közben visszafejti az adatvesztést is. |
+| [Azure Storage – közös hozzáférésű aláírások](../../storage/common/storage-sas-overview.md)|A közös hozzáférésű aláírások delegált hozzáférést biztosítanak a Storage-fiók erőforrásaihoz.  |
+|[Azure Storage-fiók kulcsainak](../../storage/common/storage-account-create.md)| Hozzáférés-vezérlési módszer az Azure Storage-hoz, amelyet a rendszer a Storage-fiók elérésekor hitelesítésre használ. |
+|[Azure-fájlmegosztás SMB 3,0 titkosítással](../../storage/files/storage-files-introduction.md)|Olyan hálózati biztonsági technológia, amely lehetővé teszi az automatikus hálózati titkosítást a Server Message Block (SMB) fájlmegosztás protokollja számára. |
 |[Azure Storage Analytics](/rest/api/storageservices/Storage-Analytics)| Naplózási és metrikai technológia a Storage-fiókban lévő adatokhoz. |
 
 <!------>
@@ -56,40 +56,40 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 ## <a name="database-security"></a>Adatbázis-biztonság
 |Szolgáltatás|Leírás|
 |------|--------|
-| [Azure &nbsp; SQL &nbsp; tűzfal](/azure/sql-database/sql-database-firewall-configure)|Egy hálózati hozzáférés-vezérlési funkció, amely védelmet biztosít a hálózati alapú támadásokkal szemben az adatbázison. |
-|[Azure &nbsp; SQL &nbsp; Cell &nbsp; szintű titkosítás](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| Adatbázis-biztonsági technológia, amely részletességi szinten biztosítja a titkosítást.  |
-| [Azure &nbsp; SQL- &nbsp; kapcsolatok titkosítása](/azure/sql-database/sql-database-control-access)|A biztonság garantálása érdekében az SQL Database IP-cím alapján történő kapcsolatkorlátozást érvényesítő tűzfalszabályokkal, a felhasználói identitás igazolását megkövetelő hitelesítési mechanizmusokkal, illetve csak bizonyos műveletek és adatok elérését lehetővé tévő engedélyezési mechanizmusokkal vezérli a hozzáférést. |
+| [Azure &nbsp; SQL &nbsp; tűzfal](../../azure-sql/database/firewall-configure.md)|Egy hálózati hozzáférés-vezérlési funkció, amely védelmet biztosít a hálózati alapú támadásokkal szemben az adatbázison. |
+|[Azure &nbsp; SQL &nbsp; Cell &nbsp; szintű titkosítás](/archive/blogs/sqlsecurity/recommendations-for-using-cell-level-encryption-in-azure-sql-database)| Adatbázis-biztonsági technológia, amely részletességi szinten biztosítja a titkosítást.  |
+| [Azure &nbsp; SQL- &nbsp; kapcsolatok titkosítása](../../azure-sql/database/logins-create-manage.md)|A biztonság garantálása érdekében az SQL Database IP-cím alapján történő kapcsolatkorlátozást érvényesítő tűzfalszabályokkal, a felhasználói identitás igazolását megkövetelő hitelesítési mechanizmusokkal, illetve csak bizonyos műveletek és adatok elérését lehetővé tévő engedélyezési mechanizmusokkal vezérli a hozzáférést. |
 | [Az Azure SQL Always encryption](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Védi a bizalmas adatokat, például a hitelkártya-számokat vagy a nemzeti azonosító számokat (például az Egyesült államokbeli társadalombiztosítási számokat), Azure SQL Database vagy SQL Server adatbázisokban tárolva.  |
 | [Azure &nbsp; SQL &nbsp; transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Adatbázis-biztonsági szolgáltatás, amely egy teljes adatbázis tárterületét titkosítja. |
-| [Azure SQL Database naplózás](/azure/sql-database/sql-database-auditing)|Adatbázis-naplózási funkció, amely nyomon követi az adatbázis-eseményeket, és az Azure Storage-fiókban lévő naplóba írja azokat.  |
+| [Azure SQL Database naplózás](../../azure-sql/database/auditing-overview.md)|Adatbázis-naplózási funkció, amely nyomon követi az adatbázis-eseményeket, és az Azure Storage-fiókban lévő naplóba írja azokat.  |
 
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 |Szolgáltatás|Leírás|
 |------|--------|
-| [Azure &nbsp; - &nbsp; beli szerepköralapú &nbsp; Access Control](/azure/active-directory/role-based-access-control-configure)|Hozzáférés-vezérlési funkció, amely lehetővé teszi, hogy a felhasználók csak azokat az erőforrásokat férhessenek hozzá, amelyekre a szervezeten belüli szerepköreik alapján van szükségük.  |
-| [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)|Egy felhőalapú hitelesítési tárház, amely több-bérlős, felhőalapú címtárat és több Identitáskezelés-kezelő szolgáltatást támogat az Azure-on belül.  |
-| [Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview)|Identitáskezelés-kezelő szolgáltatás, amely lehetővé teszi, hogy az ügyfelek regisztráljanak, jelentkezzenek be és kezeljenek profilokat Azure-alapú alkalmazások használatakor.   |
-| [Azure Active Directory tartományi szolgáltatások](/azure/active-directory-domain-services/overview)| A Active Directory tartományi szolgáltatások felhőalapú és felügyelt verziója. |
-| [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)| A biztonságos információkhoz való hozzáférés engedélyezése előtt a hitelesítés és ellenőrzés számos különböző formáját alkalmazó biztonsági rendelkezés. |
+| [Azure &nbsp; - &nbsp; beli szerepköralapú &nbsp; Access Control](../../role-based-access-control/role-assignments-portal.md)|Hozzáférés-vezérlési funkció, amely lehetővé teszi, hogy a felhasználók csak azokat az erőforrásokat férhessenek hozzá, amelyekre a szervezeten belüli szerepköreik alapján van szükségük.  |
+| [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|Egy felhőalapú hitelesítési tárház, amely több-bérlős, felhőalapú címtárat és több Identitáskezelés-kezelő szolgáltatást támogat az Azure-on belül.  |
+| [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|Identitáskezelés-kezelő szolgáltatás, amely lehetővé teszi, hogy az ügyfelek regisztráljanak, jelentkezzenek be és kezeljenek profilokat Azure-alapú alkalmazások használatakor.   |
+| [Azure Active Directory tartományi szolgáltatások](../../active-directory-domain-services/overview.md)| A Active Directory tartományi szolgáltatások felhőalapú és felügyelt verziója. |
+| [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| A biztonságos információkhoz való hozzáférés engedélyezése előtt a hitelesítés és ellenőrzés számos különböző formáját alkalmazó biztonsági rendelkezés. |
 
 ## <a name="backup-and-disaster-recovery"></a>Biztonsági mentés és vész-helyreállítás
 |Szolgáltatás|Leírás|
 |------|--------|
-| [Azure &nbsp; Backup](/azure/backup/backup-introduction-to-azure-backup)| Azure-alapú szolgáltatás, amely az Azure-felhőben tárolt adatbiztonsági mentésére és helyreállítására szolgál. |
-| [Azure &nbsp; site &nbsp; Recovery](/azure/site-recovery/site-recovery-overview)|Egy online szolgáltatás, amely a fizikai és virtuális gépeken futó munkaterheléseket replikálja egy elsődleges helyről egy másodlagos helyre, hogy a meghibásodás után engedélyezze a szolgáltatások helyreállítását. |
+| [Azure &nbsp; Backup](../../backup/backup-overview.md)| Azure-alapú szolgáltatás, amely az Azure-felhőben tárolt adatbiztonsági mentésére és helyreállítására szolgál. |
+| [Azure &nbsp; site &nbsp; Recovery](../../site-recovery/site-recovery-overview.md)|Egy online szolgáltatás, amely a fizikai és virtuális gépeken futó munkaterheléseket replikálja egy elsődleges helyről egy másodlagos helyre, hogy a meghibásodás után engedélyezze a szolgáltatások helyreállítását. |
 
 ## <a name="networking"></a>Hálózat
 |Szolgáltatás|Leírás|
 |------|--------|
-| [Hálózati &nbsp; biztonsági &nbsp; csoportok](/azure/virtual-network/virtual-networks-nsg)| Egy 5 rekordos hálózati hozzáférés-vezérlési funkció, amely lehetővé teszi vagy megtagadja a döntéseket.  |
-| [Azure VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| VPN-végpontként használt hálózati eszköz, amely lehetővé teszi a létesítmények közötti hozzáférést az Azure-beli virtuális hálózatokhoz.  |
-| [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction)|Egy speciális webalkalmazás-terheléselosztó, amely URL-cím alapján irányítható át, és SSL-kiürítést hajt végre. |
-|[Webalkalmazási tűzfal](/azure/frontdoor/waf-overview) (WAF)|A Application Gateway szolgáltatása, amely a webalkalmazások központosított védelmét nyújtja a gyakori biztonsági rések és sebezhetőségek ellen|
-| [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)|TCP/UDP-alkalmazás hálózati terheléselosztó. |
-| [Azure ExpressRoute](/azure/expressroute/expressroute-introduction)| Dedikált WAN-kapcsolat a helyszíni hálózatok és az Azure-beli virtuális hálózatok között. |
-| [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview)| Globális DNS-terheléselosztó.|
-| [Azure-alkalmazásproxy](/azure/active-directory/active-directory-application-proxy-get-started)| A helyszíni környezetben üzemeltetett webalkalmazások távoli elérésének biztonságossá tételéhez használt hitelesítő kezelőfelület. |
-|[Azure Firewall](/azure/firewall/overview)|Felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure Virtual Network-erőforrásait.|
-|[Azure DDoS Protection](/azure/virtual-network/ddos-protection-overview)|Az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva védelmet nyújt a DDoS-támadásokkal szemben.|
-|[Virtual Network szolgáltatási végpontok](/azure/virtual-network/virtual-network-service-endpoints-overview)|Közvetlen kapcsolaton keresztül kiterjesztheti a virtuális hálózat privát címterület-területét és a VNet identitását az Azure-szolgáltatásokra.|
+| [Hálózati &nbsp; biztonsági &nbsp; csoportok](../../virtual-network/virtual-network-vnet-plan-design-arm.md)| Egy 5 rekordos hálózati hozzáférés-vezérlési funkció, amely lehetővé teszi vagy megtagadja a döntéseket.  |
+| [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)| VPN-végpontként használt hálózati eszköz, amely lehetővé teszi a létesítmények közötti hozzáférést az Azure-beli virtuális hálózatokhoz.  |
+| [Azure Application Gateway](../../application-gateway/overview.md)|Egy speciális webalkalmazás-terheléselosztó, amely URL-cím alapján irányítható át, és SSL-kiürítést hajt végre. |
+|[Webalkalmazási tűzfal](../../web-application-firewall/afds/afds-overview.md) (WAF)|A Application Gateway szolgáltatása, amely a webalkalmazások központosított védelmét nyújtja a gyakori biztonsági rések és sebezhetőségek ellen|
+| [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)|TCP/UDP-alkalmazás hálózati terheléselosztó. |
+| [Azure ExpressRoute](../../expressroute/expressroute-introduction.md)| Dedikált WAN-kapcsolat a helyszíni hálózatok és az Azure-beli virtuális hálózatok között. |
+| [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)| Globális DNS-terheléselosztó.|
+| [Azure-alkalmazásproxy](../../active-directory/manage-apps/application-proxy.md)| A helyszíni környezetben üzemeltetett webalkalmazások távoli elérésének biztonságossá tételéhez használt hitelesítő kezelőfelület. |
+|[Azure Firewall](../../firewall/overview.md)|Felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure Virtual Network-erőforrásait.|
+|[Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)|Az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva védelmet nyújt a DDoS-támadásokkal szemben.|
+|[Virtual Network szolgáltatási végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)|Közvetlen kapcsolaton keresztül kiterjesztheti a virtuális hálózat privát címterület-területét és a VNet identitását az Azure-szolgáltatásokra.|

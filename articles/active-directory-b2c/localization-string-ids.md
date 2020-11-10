@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f75fbf286741fcc122332574332a30ad7fa23644
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 45357092784bd9c8821a81b07ce3c381c4ce7989
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096198"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410504"
 ---
 # <a name="localization-string-ids"></a>Honosítási sztringazonosítók
 
@@ -33,7 +33,7 @@ A következő azonosítókat használják egy `api.signuporsignin` , a és az [�
 | **logonIdentifier_email** | E-mail-cím |
 | **requiredField_email** | Adja meg az e-mail-címét |
 | **invalid_email** | Adjon meg egy érvényes e-mail-címet |
-| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' '*+/=? ^ _ \` { \| } ~-] + @ [a-Za-z0-9-] + (?: \\ . [ a-zA-Z0-9-] +)*$ |
+| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' *+/=? ^ _ \` { \| } ~-] + @ [a-Za-z0-9-] + (?: \\ . [ a-zA-Z0-9-] +)*$ |
 | **local_intro_username** | Jelentkezzen be a felhasználónevével |
 | **logonIdentifier_username** | Felhasználónév |
 | **requiredField_username** | Adja meg a felhasználónevét |
@@ -87,6 +87,7 @@ Az alábbi példa a Facebook-identitás szolgáltatóját az Arab nyelvre honos�
 | ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | Helytelen a jelszó. |
+| **UserMessageIfPasswordExpired**| A jelszó lejárt.|
 | **UserMessageIfClaimsPrincipalDoesNotExist** | Úgy tűnik, hogy nem találja a fiókját. |
 | **UserMessageIfOldPasswordUsed** | Úgy tűnik, hogy régi jelszót használt. |
 | **DefaultMessage** | Érvénytelen felhasználónév vagy jelszó. |
@@ -122,6 +123,7 @@ Az alábbi példa a Facebook-identitás szolgáltatóját az Arab nyelvre honos�
     <LocalizedString ElementType="UxElement" StringId="email_pattern">^[a-zA-Z0-9.!#$%&amp;’'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$</LocalizedString>
     <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Your password is incorrect.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfPasswordExpired">Your password has expired.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfOldPasswordUsed">Looks like you used an old password.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="DefaultMessage">Invalid username or password.</LocalizedString>
@@ -149,7 +151,7 @@ A következő a tartalom-definíció azonosítóját `api.localaccountsignup` , 
 | **verifying_blurb** | Várjon, amíg feldolgozzuk az adatokat. |
 | **button_cancel** | Mégse |
 | **ver_fail_no_retry** | Túl sok helytelen kísérlet történt. Próbálkozzon újra később. |
-| **hónap** | Hónap |
+| **hónap** | Month (hónap) |
 | **ver_success_msg** | Az E-mail cím ellenőrizve. Most már folytathatja. |
 | **hónapok** | Január, február, március, április, május, június, július, augusztus, szeptember, október, november, december |
 | **ver_fail_server** | Nem sikerül ellenőrizni az e-mail-címét. Adjon meg egy érvényes e-mail-címet, és próbálkozzon újra. |
@@ -263,7 +265,7 @@ A következő azonosítók a tartalom-definíció azonosítóját `api.phonefact
 | **invalid_code** | Adja meg a kapott 6 számjegyű kódot |
 | **button_cancel** | Mégse |
 | **local_number_input_placeholder_text** | Telefonszám |
-| **button_retry** | Retry |
+| **button_retry** | Ismét |
 | **alternative_text** | Nincs telefonom |
 | **intro_phone_p** | A következő számok szerepelnek a rekordban. Válassza ki azt a számot, amelyet telefonon használhat a hitelesítéshez. |
 | **intro_phone** | A következő számú rekordot vesszük igénybe. A rendszer telefonon hitelesíti Önt. |

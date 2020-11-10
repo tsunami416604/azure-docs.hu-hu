@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4f3e8540902809f951a441aa2fe8d00026c44d82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee28cbffd6f047b4991d29781e0b131a44c7dfae
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81408596"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409178"
 ---
 # <a name="security-control-data-recovery"></a>Biztonsági ellenőrzés: Adathelyreállítás
 
@@ -26,7 +26,7 @@ Győződjön meg arról, hogy a rendszeradatok, a konfigurációk és a titkos k
 
 Engedélyezze Azure Backup és konfigurálja a biztonsági mentési forrást (Azure-beli virtuális gépek, SQL Server vagy fájlmegosztás), valamint a kívánt gyakoriságot és megőrzési időt.
 
-- [A Azure Backup engedélyezése](https://docs.microsoft.com/azure/backup/)
+- [A Azure Backup engedélyezése](../../backup/index.yml)
 
 ## <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: teljes rendszerbiztonsági mentés és biztonsági másolat készítése bármely ügyfél által felügyelt kulcsról
 
@@ -36,9 +36,9 @@ Engedélyezze Azure Backup és konfigurálja a biztonsági mentési forrást (Az
 
 Engedélyezze Azure Backup és a célként megadott virtuális gép (ek) et, valamint a kívánt gyakoriságot és megőrzési időt. Ügyfél által felügyelt kulcsok biztonsági mentése Azure Key Vaulton belül.
 
-- [A Azure Backup engedélyezése](https://docs.microsoft.com/azure/backup/)
+- [A Azure Backup engedélyezése](../../backup/index.yml)
 
-- [Key Vault-kulcsok biztonsági mentése az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 ## <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: az összes biztonsági másolat ellenőrzése, beleértve az ügyfél által felügyelt kulcsokat
 
@@ -48,9 +48,9 @@ Engedélyezze Azure Backup és a célként megadott virtuális gép (ek) et, val
 
 Győződjön meg arról, hogy a Azure Backupon belül rendszeresen végezhető el az adatok visszaállítása a tartalomban. A biztonsági másolatok által felügyelt kulcsok visszaállításának tesztelése.
 
-- [Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm)
+- [Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Key Vault-kulcsok visszaállítása az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 ## <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
@@ -62,11 +62,11 @@ Helyszíni biztonsági mentéshez az inaktív állapotú adatokat védő titkos�
 
 A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekében engedélyezze Soft-Delete és törölje a védelmet a Key Vaultban.  Ha az Azure Storage-t használja a biztonsági másolatok tárolásához, a Soft delete lehetővé teszi az adatok mentését és helyreállítását a Blobok vagy blob-Pillanatképek törlésekor. 
 
-- [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Az Azure RBAC ismertetése](../../role-based-access-control/overview.md)
 
-- [A Soft-Delete engedélyezése és a védelem kiürítése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [A Soft-Delete engedélyezése és a védelem kiürítése Key Vault](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Az Azure Storage-blobok helyreállítható törlése](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Az Azure Storage-blobok helyreállítható törlése](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 
 ## <a name="next-steps"></a>További lépések

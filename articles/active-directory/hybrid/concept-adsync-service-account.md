@@ -15,12 +15,12 @@ ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dddfb8426b769c06cb5b7494431b7eee34dbf9e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144728"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410895"
 ---
 # <a name="adsync-service-account"></a>ADSync-szolgáltatásfiók
 Azure AD Connect egy helyszíni szolgáltatást telepít, amely összehangolja Active Directory és Azure Active Directory közötti szinkronizálást.  A Microsoft Azure AD Sync synchronization Service (ADSync) a helyszíni környezetben futó kiszolgálón fut.  A szolgáltatás hitelesítő adatai alapértelmezés szerint az expressz telepítésekben vannak beállítva, de testreszabhatók a szervezeti biztonsági követelmények teljesítéséhez.  Ezek a hitelesítő adatok nem használhatók a helyszíni erdőkhöz vagy Azure Active Directoryhoz való kapcsolódáshoz.
@@ -61,7 +61,7 @@ Nem található a AdSync szolgáltatás titkosítási kulcsa, és a rendszer új
 
 A probléma elhárítása: Microsoft Azure AD szinkronizálási titkosítási kulcsok elérhetetlenné válnak, ha módosulnak a AdSync szolgáltatás bejelentkezési hitelesítő adatai.  Ha a hitelesítő adatok módosultak, a Services alkalmazással állítsa vissza a bejelentkezési fiókot az eredetileg konfigurált értékre (pl. NT SERVICE\AdSync), és indítsa újra a szolgáltatást.  Ez azonnal visszaállítja a AdSync szolgáltatás helyes működését.
 
-További információért tekintse meg a következő [cikket](https://go.microsoft.com/fwlink/?linkid=2086764) .
+További információért tekintse meg a következő [cikket](./whatis-hybrid-identity.md) .
 
 ### <a name="example-2"></a>2\. példa
 
@@ -69,7 +69,7 @@ A szolgáltatás nem indult el, mert nem sikerült csatlakozni a helyi adatbázi
 
 A probléma elhárítása: az Microsoft Azure AD Sync szolgáltatás elveszti az engedélyt a helyi adatbázis-szolgáltató elérésére, ha a AdSync szolgáltatás bejelentkezési hitelesítő adatai módosulnak.  Ha a hitelesítő adatok módosultak, használja a Services alkalmazást, hogy a bejelentkezési fiókot visszaállítsa az eredetileg konfigurált értékre (pl. NT SERVICE\AdSync), és indítsa újra a szolgáltatást.  Ez azonnal visszaállítja a AdSync szolgáltatás helyes működését.
 
-További információért tekintse meg a következő [cikket](https://go.microsoft.com/fwlink/?linkid=2086764) .
+További információért tekintse meg a következő [cikket](./whatis-hybrid-identity.md) .
 
 További részletek a szolgáltató a következő hibaüzeneteket adta vissza:
  

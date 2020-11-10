@@ -16,23 +16,23 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db5dbef2b57fb89b33ea116d0373184cdade0ac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 261ab5d0f039705a2566b7c28ff4c06778bb661a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85356763"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410538"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Az Azure AD Connect szinkronizálási szolgáltatás jellemzői
 
 Azure AD Connect szinkronizálási funkciója két összetevőből áll:
 
-* A **Azure ad Connect Sync**nevű helyszíni összetevő, más néven a **szinkronizálási motor**.
+* A **Azure ad Connect Sync** nevű helyszíni összetevő, más néven a **szinkronizálási motor**.
 * Az Azure AD-ben (más néven **Azure ad Connect Sync Service** ) található szolgáltatás
 
 Ez a témakör azt ismerteti, hogyan működik a **Azure ad Connect szinkronizálási szolgáltatásának** következő funkciói, és hogyan konfigurálhatja őket a Windows PowerShell használatával.
 
-Ezeket a beállításokat a [Windows PowerShell Azure Active Directory modulja](https://aka.ms/aadposh)konfigurálja. Töltse le és telepítse a Azure AD Connecttól függetlenül. A jelen témakörben ismertetett parancsmagok bevezetése a [2016 márciusi kiadásban történt (build 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Ha nem rendelkezik a jelen témakörben ismertetett parancsmagokkal, vagy nem ugyanazt az eredményt hozza létre, akkor győződjön meg arról, hogy a legújabb verziót futtatja.
+Ezeket a beállításokat a [Windows PowerShell Azure Active Directory modulja](/previous-versions/azure/jj151815(v=azure.100))konfigurálja. Töltse le és telepítse a Azure AD Connecttól függetlenül. A jelen témakörben ismertetett parancsmagok bevezetése a [2016 márciusi kiadásban történt (build 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Ha nem rendelkezik a jelen témakörben ismertetett parancsmagokkal, vagy nem ugyanazt az eredményt hozza létre, akkor győződjön meg arról, hogy a legújabb verziót futtatja.
 
 Az Azure AD-címtár konfigurációjának megtekintéséhez futtassa a következőt: `Get-MsolDirSyncFeatures` .  
 ![Get-MsolDirSyncFeatures eredmény](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)

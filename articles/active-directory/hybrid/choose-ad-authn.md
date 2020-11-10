@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: d5de8da548c2e141eb921aa4f95e82f7199ae1f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e8310d5941916ed3e4a9d7c66af96779be8f939
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602370"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410283"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz
 
@@ -175,8 +175,8 @@ Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az eg
 |Megfontolandó|Jelszó-kivonat szinkronizálása + zökkenőmentes SSO|Átmenő hitelesítés + zökkenőmentes egyszeri bejelentkezés|Összevonás az AD FS rendszerrel|
 |:-----|:-----|:-----|:-----|
 |Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni|
-|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|Nincs|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
-|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|Nincs|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
+|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|Nincsenek|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
+|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|Nincsenek|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
 |Van TLS/SSL-tanúsítványra vonatkozó követelmény?|Nem|Nem|Igen|
 |Van állapot-figyelési megoldás?|Nem szükséges|A [Azure Active Directory felügyeleti központ](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) által megadott ügynök állapota|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |A felhasználók egyszeri bejelentkezést kapnak a felhőalapú erőforrásokhoz a vállalati hálózaton belüli tartományhoz csatlakoztatott eszközökről?|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen|
@@ -215,10 +215,10 @@ Ez a cikk a felhőalapú alkalmazásokhoz való hozzáférés támogatásához a
 
 Vegye figyelembe az egyes hitelesítési módszereket. A megoldás üzembe helyezésének erőfeszítése, valamint a bejelentkezési folyamat felhasználói tapasztalata az üzleti igények kielégítése érdekében? Értékelje ki, hogy a szervezetnek szüksége van-e az egyes hitelesítési módszerek speciális forgatókönyvekre és üzletmenet-folytonossági szolgáltatásaira. Végezetül értékelje ki az egyes hitelesítési módszerek szempontjait. Ezek közül bármelyiket meggátolja az Ön döntésének megvalósításában?
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Napjaink világában a fenyegetések napi 24 órában jelennek meg, és bárhonnan érkeznek. Implementálja a megfelelő hitelesítési módszert, és csökkenti a biztonsági kockázatokat, és gondoskodik az identitások védelméről.
 
 [Ismerkedjen](../fundamentals/active-directory-whatis.md) meg az Azure ad-vel, és telepítse a megfelelő hitelesítési megoldást a szervezet számára.
 
-Ha úgy gondolja, hogy összevontról felhőbe történő áttelepítést végez, további információ [a bejelentkezési módszer módosításáról](../../active-directory/hybrid/plan-connect-user-signin.md). Az áttelepítés megtervezéséhez és megvalósításához használja ezeket a projekt-telepítési terveket, vagy vegye fontolóra az új [szakaszos](../../active-directory/hybrid/how-to-connect-staged-rollout.md) [bevezetési](https://aka.ms/deploymentplans) funkciót, amellyel áttelepítheti az összevont felhasználókat a felhőalapú hitelesítés használatával egy szakaszos megközelítésben.
+Ha úgy gondolja, hogy összevontról felhőbe történő áttelepítést végez, további információ [a bejelentkezési módszer módosításáról](../../active-directory/hybrid/plan-connect-user-signin.md). Az áttelepítés megtervezéséhez és megvalósításához használja ezeket a projekt-telepítési terveket, vagy vegye fontolóra az új [szakaszos](../../active-directory/hybrid/how-to-connect-staged-rollout.md) [bevezetési](../fundamentals/active-directory-deployment-plans.md) funkciót, amellyel áttelepítheti az összevont felhasználókat a felhőalapú hitelesítés használatával egy szakaszos megközelítésben.

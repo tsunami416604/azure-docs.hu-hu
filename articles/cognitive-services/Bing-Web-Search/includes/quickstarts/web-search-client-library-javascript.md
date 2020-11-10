@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 20eaf6e6a9f0eee15e6ad6a5bd8f23bf8531545c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1b0fa12aa00165ad4ddd02d36383b41bdf74f4d8
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376435"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386588"
 ---
 Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Node.js alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 
@@ -96,7 +96,7 @@ webSearchApiClient.web.search('seahawks').then((result) => {
 
 Az utolsó lépés a program futtatása.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót a program kódjából.
 
@@ -107,4 +107,4 @@ Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői az
 
 ## <a name="see-also"></a>Lásd még
 
-* [Azure Node SDK-referencia](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-websearch/)
+* [Azure Node SDK-referencia](/javascript/api/@azure/cognitiveservices-websearch/)

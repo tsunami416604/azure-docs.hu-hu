@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b25e65914ce603b4a969eda7fd7c048704e466
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81461650"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410011"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárásai
 Az alkalmazások Azure-ban való üzembe helyezése gyors, egyszerű és költséghatékony. Mielőtt üzembe helyezné a Felhőbeli alkalmazást éles környezetben, tekintse át az alkalmazásban található biztonságos fürtök megvalósításához szükséges alapvető és ajánlott eljárások listáját.
@@ -132,7 +132,7 @@ A tanúsítványnak meg kell felelnie az alábbi követelményeknek az SSL/TLS-t
 -   A tanúsítvány tulajdonosának nevének meg kell egyeznie a felhőalapú szolgáltatás eléréséhez használt tartománynévvel.
 
     - Szerezze be a felhőalapú szolgáltatás eléréséhez használandó egyéni tartománynevet.
-    - Tanúsítvány kérése egy HITELESÍTÉSSZOLGÁLTATÓTÓL a szolgáltatás egyéni tartománynevének megfelelő tulajdonos nevével. Ha például az Egyéni tartománynév a __contoso__**. com**, a hitelesítésszolgáltatótól származó tanúsítványnak a tulajdonos neve **. contoso.com** vagy a __www__**. contoso.com**nevet kell tartalmaznia.
+    - Tanúsítvány kérése egy HITELESÍTÉSSZOLGÁLTATÓTÓL a szolgáltatás egyéni tartománynevének megfelelő tulajdonos nevével. Ha például az Egyéni tartománynév a __contoso__**. com** , a hitelesítésszolgáltatótól származó tanúsítványnak a tulajdonos neve **. contoso.com** vagy a __www__**. contoso.com** nevet kell tartalmaznia.
 
     >[!NOTE]
     >Nem szerezhet be SSL/TLS-tanúsítványt a HITELESÍTÉSSZOLGÁLTATÓTÓL a __cloudapp__**.net** -tartományhoz.
@@ -178,6 +178,6 @@ Az Azure Service Fabric két hozzáférés-vezérlési típust támogat a Servic
 
 ## <a name="next-steps"></a>További lépések
 
-- [Service Fabric biztonsági ellenőrzőlista](service-fabric-checklist.md)
+- [Service Fabric biztonsági ellenőrzőlista](../../service-fabric/service-fabric-best-practices-security.md)
 - Állítsa be Service Fabric [fejlesztési környezetét](../../service-fabric/service-fabric-get-started.md).
 - További információ a [Service Fabric támogatási lehetőségeiről](../../service-fabric/service-fabric-support.md).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b2e54545fb79120a3f9d66067da267df3b151b3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3812cef9b90a15870733441c9e830daf32e0b18
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322121"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408940"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Security Control v2: biztonsági mentés és helyreállítás
 
@@ -32,13 +32,13 @@ A magasabb szintű védelem érdekében engedélyezheti a Geo-redundáns tárol�
 
 - [Nagyvállalati szintű üzletmenet-folytonosság és vészhelyreállítás](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
-- [A Azure Backup engedélyezése](/azure/backup/)
+- [A Azure Backup engedélyezése](../../backup/index.yml)
 
-- [A régiók közötti visszaállítás engedélyezése](/azure/backup/backup-azure-arm-restore-vms#cross-region-restore)
+- [A régiók közötti visszaállítás engedélyezése](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Szabályzat és szabványok](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 
@@ -60,17 +60,17 @@ Az Azure Backup-t használó helyszíni biztonsági másolatok esetén a rendsze
 
 A biztonsági másolatok és az ügyfelek által felügyelt kulcsok elleni védelem érdekében Azure Backup, Azure Key Vault vagy más erőforrások szerepköralapú hozzáférés-vezérlését használhatja. Emellett speciális biztonsági funkciók is engedélyezhetők az MFA megköveteléséhez, mielőtt a biztonsági másolatok módosíthatók vagy törölhetők.
 
-- [A Azure Backup biztonsági funkcióinak áttekintése](/azure/backup/security-overview)
+- [A Azure Backup biztonsági funkcióinak áttekintése](../../backup/security-overview.md)
 
-- [Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal](/azure/backup/encryption-at-rest-with-cmk) 
+- [Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal](../../backup/encryption-at-rest-with-cmk.md) 
 
-- [Key Vault kulcsok biztonsági mentése az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-- [Biztonsági funkciók a hibrid biztonsági mentések elleni védelemhez](/azure/backup/backup-azure-security-feature#prevent-attacks)
+- [Biztonsági funkciók a hibrid biztonsági mentések elleni védelemhez](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -86,13 +86,13 @@ A biztonsági másolatok és az ügyfelek által felügyelt kulcsok elleni véde
 
 Rendszeres időközönként végezze el a biztonsági mentés adatvisszaállítását. Győződjön meg arról, hogy visszaállíthatja az ügyfél által felügyelt kulcsok biztonsági mentését.
 
-- [Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](/azure/backup/backup-azure-restore-files-from-vm)
+- [Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Key Vault kulcsok visszaállítása az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Incidens előkészítése](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -106,15 +106,14 @@ Rendszeres időközönként végezze el a biztonsági mentés adatvisszaállít�
 
 Győződjön meg arról, hogy rendelkezik olyan mértékekkel, amelyek megakadályozzák a kulcsok elvesztését és helyreállítását. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekében engedélyezze a Azure Key Vault a védelem lágy törlését és kiürítését.  
 
-- [A védelem lágy törlésének és kiürítésének engedélyezése a Key Vaultban](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [A védelem lágy törlésének és kiürítésének engedélyezése a Key Vaultban](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [Incidens előkészítése](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
 - [Adatbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-data-security)
-

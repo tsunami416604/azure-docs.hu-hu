@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa2025fa31ac960eb6c61d03bafd582de4f0e55c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533903"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410577"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 
@@ -86,11 +86,11 @@ A Azure Active Directory további képességei a következők:
 
 - Az Azure AD lehetővé teszi az SSO bejelentkezést a SaaS-alkalmazások számára a futtatási helyüktől függetlenül. Egyes alkalmazások az Azure AD-vel összevontan működnek, mások jelszavas egyszeri bejelentkezést használnak. Az összevont alkalmazások támogatják a felhasználók üzembe helyezését és a [jelszavas](https://www.techopedia.com/definition/31415/password-vault)tárat is.
 
-- Az [Azure Storage](https://azure.microsoft.com/services/storage/)-ban tárolt adatokhoz való hozzáférést hitelesítés védi. Mindegyik Storage-fiókhoz tartozik egy elsődleges kulcs (a[Storage-fiók kulcsa](../../storage/common/storage-create-storage-account.md)vagy a sak), valamint egy másodlagos titkos kulcs (a közös hozzáférési aláírás vagy SAS).
+- Az [Azure Storage](https://azure.microsoft.com/services/storage/)-ban tárolt adatokhoz való hozzáférést hitelesítés védi. Mindegyik Storage-fiókhoz tartozik egy elsődleges kulcs (a[Storage-fiók kulcsa](../../storage/common/storage-account-create.md)vagy a sak), valamint egy másodlagos titkos kulcs (a közös hozzáférési aláírás vagy SAS).
 
-- Az Azure AD a helyszíni címtárakkal [Active Directory összevonási szolgáltatások (AD FS)](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md), szinkronizálást és replikációt biztosító szolgáltatáson keresztül biztosítja az identitást.
+- Az Azure AD a helyszíni címtárakkal [Active Directory összevonási szolgáltatások (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs), szinkronizálást és replikációt biztosító szolgáltatáson keresztül biztosítja az identitást.
 
-- Az [Azure multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) a többtényezős hitelesítési szolgáltatás, amely megköveteli, hogy a felhasználók a bejelentkezéseket a Mobile App, a telefonhívás vagy a szöveges üzenet használatával ellenőrizzék. Az Azure AD segítségével az Azure Multi-Factor Authentication-kiszolgálóval biztonságossá teheti a helyszíni erőforrásokat, valamint egyéni alkalmazásokat és címtárakat is használhat az SDK használatával.
+- Az [Azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) a többtényezős hitelesítési szolgáltatás, amely megköveteli, hogy a felhasználók a bejelentkezéseket a Mobile App, a telefonhívás vagy a szöveges üzenet használatával ellenőrizzék. Az Azure AD segítségével az Azure Multi-Factor Authentication-kiszolgálóval biztonságossá teheti a helyszíni erőforrásokat, valamint egyéni alkalmazásokat és címtárakat is használhat az SDK használatával.
 
 - A [Azure ad Domain Services](https://azure.microsoft.com/services/active-directory-ds/) tartományvezérlők üzembe helyezése nélkül csatlakoztathatja az Azure-beli virtuális gépeket egy Active Directory tartományhoz. A vállalati Active Directory hitelesítő adataival bejelentkezhet ezekre a virtuális gépekre, és a Csoportházirend használatával felügyelheti a tartományhoz csatlakoztatott virtuális gépeket az összes Azure-beli virtuális gép biztonsági alapkonfigurációjának érvényesítéséhez.
 
@@ -119,7 +119,7 @@ A Microsoft Azure különböző felhőalapú számítástechnikai szolgáltatás
 
 ### <a name="dedicated-hosts"></a>Dedikált gazdagépek
 
-Az előző szakaszban ismertetett elkülönített gazdagépeken kívül az Azure dedikált gazdagépeket is biztosít. A dedikált gazdagépek az Azure-ban olyan szolgáltatás, amely egy vagy több virtuális gép üzemeltetésére képes fizikai kiszolgálókat biztosít, és amelyek egyetlen Azure-előfizetéshez vannak hozzárendelve. A dedikált gazdagépek hardveres elkülönítést biztosítanak a fizikai kiszolgáló szintjén. Más virtuális gépek nem lesznek elhelyezve a gazdagépeken. A dedikált gazdagépek ugyanabban az adatközpontban vannak üzembe helyezve, és ugyanazon a hálózaton és a mögöttes tárolási infrastruktúrán osztoznak, mint más, nem elkülönített gazdagépek. További információ: az [Azure dedikált gazdagépek](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)részletes áttekintése.
+Az előző szakaszban ismertetett elkülönített gazdagépeken kívül az Azure dedikált gazdagépeket is biztosít. A dedikált gazdagépek az Azure-ban olyan szolgáltatás, amely egy vagy több virtuális gép üzemeltetésére képes fizikai kiszolgálókat biztosít, és amelyek egyetlen Azure-előfizetéshez vannak hozzárendelve. A dedikált gazdagépek hardveres elkülönítést biztosítanak a fizikai kiszolgáló szintjén. Más virtuális gépek nem lesznek elhelyezve a gazdagépeken. A dedikált gazdagépek ugyanabban az adatközpontban vannak üzembe helyezve, és ugyanazon a hálózaton és a mögöttes tárolási infrastruktúrán osztoznak, mint más, nem elkülönített gazdagépek. További információ: az [Azure dedikált gazdagépek](../../virtual-machines/dedicated-hosts.md)részletes áttekintése.
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V & root VM & vendég virtuális gépek között
 
@@ -194,7 +194,7 @@ Ezért az Azure Storage külön hardveren fut, és nincs hálózati kapcsolat az
 
 ![Elkülönítés a Storage hozzáférés-vezérlésével](./media/isolation-choices/azure-isolation-fig9.png)
 
-**Az Azure Storage-beli adattárolók (beleértve a táblákat is) hozzáférését** egy [sas (közös hozzáférési aláírás)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) jogkivonattal szabályozhatja, amely hatókörön belüli hozzáférést biztosít. Az SAS egy lekérdezési sablon (URL) használatával jön létre, amely a [sak (a Storage-fiók kulcsával)](https://msdn.microsoft.com/library/azure/ee460785.aspx)van aláírva. Az [aláírt URL-cím](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) megadható egy másik folyamatnak (azaz delegált), amely kitöltheti a lekérdezés részleteit, és elvégezheti a tárolási szolgáltatás kérését. Az SAS lehetővé teszi, hogy időalapú hozzáférést biztosítson az ügyfelek számára a Storage-fiók titkos kulcsának felfedése nélkül.
+**Az Azure Storage-beli adattárolók (beleértve a táblákat is) hozzáférését** egy [sas (közös hozzáférési aláírás)](../../storage/common/storage-sas-overview.md) jogkivonattal szabályozhatja, amely hatókörön belüli hozzáférést biztosít. Az SAS egy lekérdezési sablon (URL) használatával jön létre, amely a [sak (a Storage-fiók kulcsával)](/previous-versions/azure/reference/ee460785(v=azure.100))van aláírva. Az [aláírt URL-cím](../../storage/common/storage-sas-overview.md) megadható egy másik folyamatnak (azaz delegált), amely kitöltheti a lekérdezés részleteit, és elvégezheti a tárolási szolgáltatás kérését. Az SAS lehetővé teszi, hogy időalapú hozzáférést biztosítson az ügyfelek számára a Storage-fiók titkos kulcsának felfedése nélkül.
 
 Az SAS azt jelenti, hogy az ügyfél korlátozott engedélyeket biztosíthat a Storage-fiókban lévő objektumoknak egy adott időtartamra és egy megadott engedélyekkel. Ezeket a korlátozott engedélyeket a fiók hozzáférési kulcsainak megosztása nélkül biztosíthatjuk.
 
@@ -225,13 +225,13 @@ Számos szervezet esetében az [adattitkosítás](isolation-choices.md) az adato
 
 - [Storage Service encryption](../../storage/blobs/security-recommendations.md) lehetővé teszi, hogy a Storage szolgáltatás automatikusan titkosítsa az adattitkosítást az Azure Storage-ba való íráskor.
 - Az [ügyféloldali titkosítás](../../storage/blobs/security-recommendations.md) emellett biztosítja a titkosítás nyugalmi funkcióját is.
-- [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) lehetővé teszi a IaaS virtuális gépek által használt operációsrendszer-lemezek és adatlemezek titkosítását.
+- [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) lehetővé teszi a IaaS virtuális gépek által használt operációsrendszer-lemezek és adatlemezek titkosítását.
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) virtuális gépekhez (VM) segít a szervezeti biztonsági és megfelelőségi követelmények megoldásában azáltal, hogy titkosítja a virtuálisgép-lemezeket (beleértve a rendszerindító és az adatlemezeket is) a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)által felügyelt kulcsokkal és szabályzatokkal.
+[Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) virtuális gépekhez (VM) segít a szervezeti biztonsági és megfelelőségi követelmények megoldásában azáltal, hogy titkosítja a virtuálisgép-lemezeket (beleértve a rendszerindító és az adatlemezeket is) a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)által felügyelt kulcsokkal és szabályzatokkal.
 
-A Windows rendszerhez készült lemez-titkosítási megoldás a [Microsoft BitLocker meghajtótitkosításon](https://technet.microsoft.com/library/cc732774.aspx)alapul, és a Linux-megoldás a [dm-crypt-](https://en.wikipedia.org/wiki/Dm-crypt)alapú.
+A Windows rendszerhez készült lemez-titkosítási megoldás a [Microsoft BitLocker meghajtótitkosításon](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11))alapul, és a Linux-megoldás a [dm-crypt-](https://en.wikipedia.org/wiki/Dm-crypt)alapú.
 
 A megoldás a következő forgatókönyveket támogatja a IaaS virtuális gépekhez, amikor azok engedélyezve vannak Microsoft Azureban:
 
@@ -243,7 +243,7 @@ A megoldás a következő forgatókönyveket támogatja a IaaS virtuális gépek
 - A titkosítás engedélyezése a Windows ügyfél operációs rendszerét futtató IaaS virtuális gépeken
 - A kötetek titkosításának engedélyezése csatlakoztatási útvonalakkal
 - A titkosítás engedélyezése a lemezes csíkozással (RAID) konfigurált Linux rendszerű virtuális gépeken a [mdadm](https://en.wikipedia.org/wiki/Mdadm) használatával
-- A Linux rendszerű virtuális gépek titkosításának engedélyezése az adatlemezek [LVM (Logic Volume Manager)](https://msdn.microsoft.com/library/windows/desktop/bb540532) használatával
+- A Linux rendszerű virtuális gépek titkosításának engedélyezése az adatlemezek [LVM (Logic Volume Manager)](/windows/win32/fileio/about-volume-management) használatával
 - A titkosítás engedélyezése a tárolóhelyek használatával konfigurált Windows rendszerű virtuális gépeken
 - Az összes Azure-beli nyilvános régió támogatott
 

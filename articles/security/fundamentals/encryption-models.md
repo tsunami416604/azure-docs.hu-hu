@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 7b92c84234432320aa08017a15fbf8a5a4630eb3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a00dc5beb2bde02f71b40f6eb374502136c37c67
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019732"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410487"
 ---
 # <a name="data-encryption-models"></a>Adattitkosítási modellek
 
@@ -91,7 +91,7 @@ A szolgáltatás által felügyelt kulcsokkal rendelkező kiszolgálóoldali tit
 
 Olyan esetekben, amikor a követelmény az inaktív adatok titkosítása és a titkosítási kulcsok használata, a felhasználók a Key Vault felügyelt kulcsaival használhatják a kiszolgálóoldali titkosítást. Egyes szolgáltatások csak a legfelső szintű kulcs titkosítási kulcsát tárolhatják Azure Key Vaultban, és a titkosított adattitkosítási kulcsot egy belső helyen tárolják, amely közelebb áll az adatforgalomhoz. Ebben az esetben az ügyfelek saját kulcsaikat hozhatnak Key Vault (BYOK – Bring Your Own Key), vagy újakat generálnak, és a kívánt erőforrások titkosítására használhatják őket. Amíg az erőforrás-szolgáltató végrehajtja a titkosítási és a visszafejtési műveleteket, a konfigurált kulcs titkosítási kulcsát használja az összes titkosítási művelet legfelső szintű kulcsaként.
 
-A kulcs titkosítási kulcsainak elvesztése adatvesztést jelent. Emiatt a kulcsokat nem szabad törölni. A kulcsok létrehozásakor vagy elforgatásakor biztonsági mentést kell készíteni. A helyreállítható [törlést](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) engedélyezni kell minden olyan tárolón, amely a kulcs titkosítási kulcsait tárolja. A kulcs törlése helyett állítsa a beállítást hamis értékre, vagy állítsa be a lejárati dátumot.
+A kulcs titkosítási kulcsainak elvesztése adatvesztést jelent. Emiatt a kulcsokat nem szabad törölni. A kulcsok létrehozásakor vagy elforgatásakor biztonsági mentést kell készíteni. A helyreállítható [törlést](../../key-vault/general/soft-delete-overview.md) engedélyezni kell minden olyan tárolón, amely a kulcs titkosítási kulcsait tárolja. A kulcs törlése helyett állítsa a beállítást hamis értékre, vagy állítsa be a lejárati dátumot.
 
 ### <a name="key-access"></a>Kulcs elérése
 
@@ -149,7 +149,7 @@ Az egyes titkosítási modelleket támogató Azure-szolgáltatások:
 | Azure Cognitive Search           | Igen                | Igen                | -                  |
 | Azure Cognitive Services         | Igen                | Igen                | -                  |
 | Azure Machine Learning           | Igen                | Igen                | -                  |
-| Azure Machine Learning Studio (klasszikus) | Yes         | Előzetes verzió, RSA 2048 bites | -               |
+| Azure Machine Learning Studio (klasszikus) | Igen         | Előzetes verzió, RSA 2048 bites | -               |
 | Content Moderator                | Igen                | Igen                | -                  |
 | Face                             | Igen                | Igen                | -                  |
 | Language Understanding           | Igen                | Igen                | -                  |
@@ -157,14 +157,14 @@ Az egyes titkosítási modelleket támogató Azure-szolgáltatások:
 | QnA Maker                        | Igen                | Igen                | -                  |
 | Beszédszolgáltatások                  | Igen                | Igen                | -                  |
 | Translator Text                  | Igen                | Igen                | -                  |
-| Power BI                         | Yes                | Igen, RSA 4096-bit  | -                  |
+| Power BI                         | Igen                | Igen, RSA 4096-bit  | -                  |
 | **Elemzés**                    |                    |                    |                    |
-| Azure Stream Analytics           | Yes                | N.A.\*              | -                  |
+| Azure Stream Analytics           | Igen                | N/A\*              | -                  |
 | Event Hubs                       | Igen                | Igen                | -                  |
 | Függvények                        | Igen                | Igen                | -                  |
 | Azure Analysis Services          | Igen                | -                  | -                  |
-| Azure Data Catalog               | Yes                | -                  | -                  |
-| Azure HDInsight                  | Yes                | Mind                | -                  |
+| Azure Data Catalog               | Igen                | -                  | -                  |
+| Azure HDInsight                  | Igen                | Mind                | -                  |
 | Azure Monitor Application Insights | Igen                | Igen                | -                  |
 | Azure Monitor Log Analytics      | Igen                | Igen                | -                  |
 | Azure Data Explorer              | Igen                | Igen                | -                  |
@@ -178,41 +178,41 @@ Az egyes titkosítási modelleket támogató Azure-szolgáltatások:
 | Virtual Machines                 | Igen                | Igen                | -                  |
 | Virtuálisgép-méretezési csoport        | Igen                | Igen                | -                  |
 | SAP HANA                         | Igen                | Igen                | -                  |
-| App Service                      | Yes                | igen\*\*            | -                  |
-| Automation                       | Yes                | igen\*\*            | -                  |
-| Azure Functions                  | Yes                | igen\*\*            | -                  |
-| Azure Portal                     | Yes                | igen\*\*            | -                  |
+| App Service                      | Igen                | igen\*\*            | -                  |
+| Automation                       | Igen                | igen\*\*            | -                  |
+| Azure Functions                  | Igen                | igen\*\*            | -                  |
+| Azure Portal                     | Igen                | igen\*\*            | -                  |
 | Logic Apps                       | Igen                | Igen                | -                  |
-| Azure által felügyelt alkalmazások       | Yes                | igen\*\*            | -                  |
+| Azure által felügyelt alkalmazások       | Igen                | igen\*\*            | -                  |
 | Service Bus                      | Igen                | Igen                | -                  |
 | Site Recovery                    | Igen                | Igen                | -                  |
 | **Adatbázisok**                    |                    |                    |                    |
 | SQL Server on Virtual Machines   | Igen                | Igen                | Igen                |
-| Azure SQL Database               | Igen                | Igen, RSA 3072-bit  | Yes                |
-| MariaDB Azure SQL Database   | Yes                | -                  | -                  |
+| Azure SQL Database               | Igen                | Igen, RSA 3072-bit  | Igen                |
+| MariaDB Azure SQL Database   | Igen                | -                  | -                  |
 | MySQL-Azure SQL Database     | Igen                | Igen                | -                  |
 | Azure SQL Database PostgreSQL-hez | Igen               | Igen                | -                  |
-| Azure Synapse Analytics          | Yes                | Igen, RSA 3072-bit  | -                  |
-| SQL Server Stretch Database      | Yes                | Igen, RSA 3072-bit  | Yes                |
+| Azure Synapse Analytics          | Igen                | Igen, RSA 3072-bit  | -                  |
+| SQL Server Stretch Database      | Igen                | Igen, RSA 3072-bit  | Igen                |
 | Table Storage                    | Igen                | Igen                | Igen                |
 | Azure Cosmos DB                  | Igen                | Igen                | -                  |
 | Azure Databricks                 | Igen                | Igen                | -                  |
-| Azure Database Migration Service | Yes                | N.A.\*              | -                  |
+| Azure Database Migration Service | Igen                | N/A\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Igen                | -                  | Igen                |
 | Azure Repos                      | Igen                | -                  | Igen                |
 | **Identitás**                     |                    |                    |                    |
-| Azure Active Directory           | Yes                | -                  | -                  |
+| Azure Active Directory           | Igen                | -                  | -                  |
 | Azure Active Directory tartományi szolgáltatások | Igen          | Igen                | -                  |
 | **Integráció**                  |                    |                    |                    |
 | Service Bus                      | Igen                | Igen                | Igen                |
-| Event Grid                       | Yes                | -                  | -                  |
-| API Management                   | Yes                | -                  | -                  |
+| Event Grid                       | Igen                | -                  | -                  |
+| API Management                   | Igen                | -                  | -                  |
 | **IoT szolgáltatások**                 |                    |                    |                    |
 | IoT Hub                          | Igen                | Igen                | Igen                |
 | IoT Hub Device Provisioning      | Igen                | Igen                | -                  |
 | **Felügyelet és cégirányítás**    |                    |                    |                    |
-| Azure Site Recovery              | Yes                | -                  | -                  |
+| Azure Site Recovery              | Igen                | -                  | -                  |
 | Azure Migrate                    | Igen                | Igen                | -                  |
 | **Média**                        |                    |                    |                    |
 | Media Services                   | Igen                | -                  | Igen                |
@@ -229,8 +229,8 @@ Az egyes titkosítási modelleket támogató Azure-szolgáltatások:
 | Fájl Premium Storage             | Igen                | Igen                | -                  |
 | File Sync                         | Igen                | Igen                | -                  |
 | Queue Storage                    | Igen                | Igen                | Igen                |
-| Avere vFXT                       | Yes                | -                  | -                  |
-| Azure Cache for Redis            | Yes                | N.A.\*              | -                  |
+| Avere vFXT                       | Igen                | -                  | -                  |
+| Azure Cache for Redis            | Igen                | N/A\*              | -                  |
 | Azure NetApp Files               | Igen                | Igen                | -                  |
 | Archive Storage                  | Igen                | Igen                | -                  |
 | StorSimple                       | Igen                | Igen                | Igen                |
@@ -242,7 +242,7 @@ Az egyes titkosítási modelleket támogató Azure-szolgáltatások:
 
 \*\* Ez a szolgáltatás támogatja az adattárolást a saját Key Vaultban, a Storage-fiókban vagy más olyan adatmegőrzési szolgáltatásban, amely már támogatja a Server-Side titkosítást Customer-Managed kulccsal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [, hogyan használják a titkosítást az Azure-ban](encryption-overview.md).
 - Ismerje meg, hogyan használja az Azure a [kettős titkosítást](double-encryption.md) az adattitkosítással kapcsolatos fenyegetések enyhítésére.

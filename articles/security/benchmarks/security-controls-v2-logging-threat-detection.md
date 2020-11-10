@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b26979f424798bacf6b40d43e5ab603844f595c3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360853"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408702"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Security Control v2: naplózás és fenyegetések észlelése
 
@@ -30,7 +30,7 @@ Használja a Azure Security Center beépített veszélyforrások észlelésére 
 
 Emellett az Azure Sentinel használatával elemzési szabályokat hozhat létre, amelyek a környezetében meghatározott feltételeknek megfelelő veszélyforrásokat vadásznak. A szabályok a feltételek teljesülése esetén eredményeznek incidenseket, így az egyes incidensek megvizsgálható. Az Azure Sentinel a fenyegetések észlelési képességének növelése érdekében importálhatja a harmadik féltől származó veszélyforrások felderítését is. 
 
-- [Fenyegetésvédelem az Azure Security Centerben](../../security-center/threat-protection.md)
+- [Fenyegetésvédelem az Azure Security Centerben](../../security-center/azure-defender.md)
 
 - [Azure Security Center biztonsági riasztások referenciája](../../security-center/alerts-reference.md)
 
@@ -73,7 +73,7 @@ Azure Security Center riasztást is beállíthat bizonyos gyanús tevékenysége
 
 - [Az Azure Identity Protection engedélyezése](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Fenyegetésvédelem az Azure Security Centerben](../../security-center/threat-protection.md)
+- [Fenyegetésvédelem az Azure Security Centerben](../../security-center/azure-defender.md)
 
 **Felelősség** : ügyfél
 
@@ -230,4 +230,3 @@ Az Azure-on belüli erőforrások által generált összes napló biztosítja az
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
-

@@ -1,27 +1,27 @@
 ---
 title: Azure IoT Hub Operations monitoring (elavult) | Microsoft Docs
 description: Az Azure IoT Hub Operations monitoring használatával valós időben figyelheti a IoT hub műveleteinek állapotát.
-author: nberdy
-manager: briz
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.author: nberdy
+ms.author: robinsh
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 559dac0f37daf612404fca839e9918e97077029e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538493"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408124"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub Operations monitoring (elavult)
 
 A IoT Hub Operations monitoring lehetővé teszi, hogy valós időben figyelje a IoT hub műveleteinek állapotát. IoT Hub az eseményeket több különböző kategóriába tartozó műveletben követi nyomon. Ha egy vagy több kategóriából szeretne eseményeket küldeni, az IoT hub egy végpontjának feldolgozására is választhatja. A hibák figyelése és az adatmintázatok alapján összetettebb feldolgozás is beállítható.
 
 >[!NOTE]
->**Az IoT hub Operations monitoring elavult, és a rendszer eltávolította a IoT hubból a 2019. március 10-én** . A IoT Hub működésének és állapotának figyeléséhez tekintse meg a [IoT hub figyelése](monitor-iot-hub.md)című témakört. Az elavult idővonalról további információt az [Azure IoT-megoldások monitorozása Azure monitor és Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)című témakörben talál.
+>**Az IoT hub Operations monitoring elavult, és a rendszer eltávolította a IoT hubból a 2019. március 10-én**. A IoT Hub működésének és állapotának figyeléséhez tekintse meg a [IoT hub figyelése](monitor-iot-hub.md)című témakört. Az elavult idővonalról további információt az [Azure IoT-megoldások monitorozása Azure monitor és Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)című témakörben talál.
 
 A IoT Hub hat kategóriába tartozó eseményt figyeli:
 
@@ -265,10 +265,10 @@ class Program
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A IoT Hub képességeinek további megismeréséhez lásd:
+A IoT Hub figyelésének Azure Monitor való további megismeréséhez lásd:
 
-* [IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
+* [Az IoT Hub monitorozása](monitor-iot-hub.md)
 
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/quickstart-linux.md)
+* [Áttelepítés IoT Hub Operations monitoringból a Azure Monitorba](iot-hub-migrate-to-diagnostics-settings.md)

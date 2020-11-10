@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219893859d05eb419bc862484a9083abf8c26db7
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89276184"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409297"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Hibrid identitási megfontolások a Azure Government felhőhöz
 
@@ -36,7 +36,7 @@ Az alábbi információk az átmenő hitelesítés és a Azure Government felhő
 Az átmenő hitelesítési ügynök üzembe helyezése előtt ellenőrizze, hogy létezik-e tűzfal a kiszolgálók és az Azure AD között. Ha a tűzfal vagy a proxy lehetővé teszi a DNS-blokkolt vagy biztonságos programok használatát, adja hozzá a következő kapcsolatokat.
 
 > [!NOTE]
-> Az alábbi útmutató az [Azure ad Application proxy-összekötő](https://aka.ms/whyappproxy) Azure Government környezetekben történő telepítésére is vonatkozik.
+> Az alábbi útmutató az [Azure ad Application proxy-összekötő](../manage-apps/what-is-application-proxy.md) Azure Government környezetekben történő telepítésére is vonatkozik.
 
 |URL-cím |Használatuk módja|
 |-----|-----|
@@ -86,9 +86,9 @@ Az intranetes zóna házirend-beállításának engedélyezéséhez **parancsfá
 
 A Mozilla Firefox nem használ automatikusan Kerberos-hitelesítést. Az alábbi lépéseket követve minden felhasználónak manuálisan hozzá kell adnia az Azure AD URL-címét a Firefox-beállításaihoz:
 
-1. Futtassa a Firefox programot, és írja be a **about: config**parancsot   a címsorba. Zárja be az esetlegesen megjelenő értesítéseket.
+1. Futtassa a Firefox programot, és írja be a **about: config** parancsot   a címsorba. Zárja be az esetlegesen megjelenő értesítéseket.
 1. Keressen rá a **Network. Negotiate – auth. megbízható – URI-** k   beállításra. Ez a beállítás felsorolja a Firefox által a Kerberos-hitelesítéshez megbízhatóként használt helyeket.
-1. Kattintson a jobb gombbal a preferencia nevére, majd válassza a **módosítás**menüpontot.
+1. Kattintson a jobb gombbal a preferencia nevére, majd válassza a **módosítás** menüpontot.
 1. Írja be `https://autologon.microsoft.us` a mezőt a mezőbe.
 1. Kattintson **az OK gombra**   , majd nyissa meg újra a böngészőt.
 
@@ -100,7 +100,7 @@ Ha felülbírálta a környezetben lévő  `AuthNegotiateDelegateAllowlist` �
 
 Ha felülbírálta a környezetben lévő  `AuthNegotiateDelegateWhitelist`   vagy `AuthServerWhitelist`   házirend-beállításokat, ügyeljen arra, hogy hozzáadja az Azure ad URL-címét `https://autologon.microsoft.us` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Átmenő hitelesítés](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)
 - [Egyszeri bejelentkezés](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22ce3941b00903be8532caaa36a9ce55e2f2c6f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86229363"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409790"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure Virtual Machines biztonsági áttekintése
 Ez a cikk áttekintést nyújt a virtuális gépekkel használható alapvető Azure-beli biztonsági funkciókról.
@@ -51,11 +51,11 @@ Tudjon meg többet az Azure-hoz készült [Microsoft antimalware](antimalware.md
 További információ az antimalware szoftverről a virtuális gépek védelméhez:
 
 * [Kártevőirtó megoldások telepítése Azure-beli virtuális gépeken](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [A Trend Micro Deep Security telepítése és konfigurálása Windows rendszerű virtuális gépen](/azure/virtual-machines/windows/classic/install-trend)
-* [Symantec-Endpoint Protection telepítése és konfigurálása Windowsos virtuális gépen](/azure/virtual-machines/windows/classic/install-symantec)
+* [A Trend Micro Deep Security telepítése és konfigurálása Windows rendszerű virtuális gépen](../../virtual-machines/extensions/trend.md)
+* [Symantec-Endpoint Protection telepítése és konfigurálása Windowsos virtuális gépen](../../virtual-machines/extensions/symantec.md)
 * [Biztonsági megoldások az Azure piactéren](https://azure.microsoft.com/marketplace/?term=security)
 
-A fokozottan hatékony védelem érdekében érdemes lehet a [Windows Defender komplex veszélyforrások elleni védelmet](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)használni. A Windows Defender ATP-vel a következőket kapja:
+A fokozottan hatékony védelem érdekében érdemes lehet a [Windows Defender komplex veszélyforrások elleni védelmet](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)használni. A Windows Defender ATP-vel a következőket kapja:
 
 * [Támadási felület csökkentése](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [Következő generációs védelem](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
@@ -75,22 +75,22 @@ További információ:
 
 A kulcsfontosságú biztonság javítása növelheti a titkosítást és a hitelesítési védelmet. A kritikus fontosságú titkok és kulcsok felügyeletét és biztonságát leegyszerűsítheti, ha Azure Key Vault tárolja őket.
 
-A Key Vault lehetővé teszi, hogy a kulcsokat hardveres biztonsági modulokban (HSM) tárolja, amely a FIPS 140-2 2. szintű szabványokhoz van hitelesítve. A biztonsági mentéshez vagy [transzparens adattitkosításhoz](https://msdn.microsoft.com/library/bb934049.aspx) használt SQL Server titkosítási kulcsainak mindegyike Key Vault tárolható az alkalmazásokból származó kulcsokkal vagy titkos kulcsok használatával. Az engedélyeket és a védett elemek elérését [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)kezelik.
+A Key Vault lehetővé teszi, hogy a kulcsokat hardveres biztonsági modulokban (HSM) tárolja, amely a FIPS 140-2 2. szintű szabványokhoz van hitelesítve. A biztonsági mentéshez vagy [transzparens adattitkosításhoz](/sql/relational-databases/security/encryption/transparent-data-encryption) használt SQL Server titkosítási kulcsainak mindegyike Key Vault tárolható az alkalmazásokból származó kulcsokkal vagy titkos kulcsok használatával. Az engedélyeket és a védett elemek elérését [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)kezelik.
 
 További információ:
 
-* [Mi az Azure Key Vault?](/azure/key-vault/key-vault-overview)
-* [Azure Key Vault blog](https://blogs.technet.microsoft.com/kv/)
+* [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
+* [Azure Key Vault blog](/archive/blogs/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Virtuális gép lemezének titkosítása
 
-A Azure Disk Encryption egy új képesség a Windows és a Linux rendszerű virtuális gépek lemezének titkosítására. Azure Disk Encryption a Windows iparági szabványnak megfelelő [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) -szolgáltatását és a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) FUNKCIÓJÁT használja az operációs rendszer és az adatlemezek mennyiségi titkosításának biztosításához.
+A Azure Disk Encryption egy új képesség a Windows és a Linux rendszerű virtuális gépek lemezének titkosítására. Azure Disk Encryption a Windows iparági szabványnak megfelelő [BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) -szolgáltatását és a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) FUNKCIÓJÁT használja az operációs rendszer és az adatlemezek mennyiségi titkosításának biztosításához.
 
 A megoldás integrálva van Azure Key Vault a Key Vault-előfizetésben lévő lemezes titkosítási kulcsok és titkos kódok szabályozásához és kezeléséhez. Biztosítja, hogy a virtuálisgép-lemezeken lévő összes adatok titkosítva legyenek az Azure Storage-ban.
 
 További információ:
 
-* [IaaS virtuális gépek Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview)
+* [IaaS virtuális gépek Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md)
 * [Rövid útmutató: Windows IaaS virtuális gép titkosítása az Azure PowerShell használatával](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>Virtuális gép biztonsági mentése
@@ -99,8 +99,8 @@ A Azure Backup méretezhető megoldás, amely segít az alkalmazásadatok nulla 
 
 További információ:
 
-* [Mi az az Azure Backup?](/azure/backup/backup-introduction-to-azure-backup)
-* [Azure Backup szolgáltatás – gyakori kérdések](/azure/backup/backup-azure-backup-faq)
+* [Mi az az Azure Backup?](../../backup/backup-overview.md)
+* [Azure Backup szolgáltatás – gyakori kérdések](../../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
@@ -108,17 +108,17 @@ A szervezet BCDR-stratégiájának fontos részét képezi, hogyan tarthatja nap
 
 Site Recovery:
 
-* **Egyszerűsíti a BCDR stratégiát: a**site Recovery megkönnyíti a több üzleti számítási feladat és alkalmazás replikálásának, feladatátvételének és helyreállításának kezelését egyetlen helyről. Site Recovery összehangolja a replikációt és a feladatátvételt, de nem veszi fel az alkalmazásadatok adatait, vagy nem rendelkezik vele kapcsolatos információkkal.
-* **Rugalmas replikációt biztosít**: site Recovery használatával replikálhatja a Hyper-V virtuális gépeken, a VMWare virtuális gépeken és a Windows/Linux rendszerű fizikai kiszolgálókon futó számítási feladatokat.
-* **Támogatja a feladatátvételt és a helyreállítást**: a site Recovery teszt feladatátvételeket biztosít a vész-helyreállítási gyakorlatok támogatásához anélkül, hogy ez hatással lenne az éles környezetekre. Nulla adatvesztéssel járó tervezett feladatátvételeket is futtathat várt leállások esetére, illetve (a replikáció gyakoriságától függően) minimális adatvesztéssel járó nem tervezett feladatátvételeket a váratlan vészhelyzetek esetére. A feladatátvétel után visszatérhet az elsődleges helyekhez. A Site Recovery olyan helyreállítási terveket biztosít, amelyek parancsfájlokat és Azure Automation-munkafüzeteket tartalmazhatnak, így testre szabhatja a többrétegű alkalmazások feladatátvételét és helyreállítását.
-* **Másodlagos adatközpontok**kihagyása: replikálhat egy másodlagos helyszíni helyre vagy az Azure-ba. Ha az Azure-t használja a vész-helyreállítási célhelyként, a másodlagos hely fenntartásának költségeit és összetettségét kizárja. A replikált adattárolók tárolása az Azure Storage szolgáltatásban történik.
-* **Integrálható a meglévő BCDR-technológiákkal**: site Recovery partnereket más alkalmazásokkal, BCDR funkciókkal. A Site Recovery segítségével például megvédheti a vállalati munkaterhelések SQL Server háttérrendszer-végpontját. Ez magában foglalja a rendelkezésre állási csoportok feladatátvételének kezeléséhez szükséges SQL Server natív támogatását.
+* **Egyszerűsíti a BCDR stratégiát: a** site Recovery megkönnyíti a több üzleti számítási feladat és alkalmazás replikálásának, feladatátvételének és helyreállításának kezelését egyetlen helyről. Site Recovery összehangolja a replikációt és a feladatátvételt, de nem veszi fel az alkalmazásadatok adatait, vagy nem rendelkezik vele kapcsolatos információkkal.
+* **Rugalmas replikációt biztosít** : site Recovery használatával replikálhatja a Hyper-V virtuális gépeken, a VMWare virtuális gépeken és a Windows/Linux rendszerű fizikai kiszolgálókon futó számítási feladatokat.
+* **Támogatja a feladatátvételt és a helyreállítást** : a site Recovery teszt feladatátvételeket biztosít a vész-helyreállítási gyakorlatok támogatásához anélkül, hogy ez hatással lenne az éles környezetekre. Nulla adatvesztéssel járó tervezett feladatátvételeket is futtathat várt leállások esetére, illetve (a replikáció gyakoriságától függően) minimális adatvesztéssel járó nem tervezett feladatátvételeket a váratlan vészhelyzetek esetére. A feladatátvétel után visszatérhet az elsődleges helyekhez. A Site Recovery olyan helyreállítási terveket biztosít, amelyek parancsfájlokat és Azure Automation-munkafüzeteket tartalmazhatnak, így testre szabhatja a többrétegű alkalmazások feladatátvételét és helyreállítását.
+* **Másodlagos adatközpontok** kihagyása: replikálhat egy másodlagos helyszíni helyre vagy az Azure-ba. Ha az Azure-t használja a vész-helyreállítási célhelyként, a másodlagos hely fenntartásának költségeit és összetettségét kizárja. A replikált adattárolók tárolása az Azure Storage szolgáltatásban történik.
+* **Integrálható a meglévő BCDR-technológiákkal** : site Recovery partnereket más alkalmazásokkal, BCDR funkciókkal. A Site Recovery segítségével például megvédheti a vállalati munkaterhelések SQL Server háttérrendszer-végpontját. Ez magában foglalja a rendelkezésre állási csoportok feladatátvételének kezeléséhez szükséges SQL Server natív támogatását.
 
 További információ:
 
-* [Mi az Azure Site Recovery?](/azure/site-recovery/site-recovery-overview)
-* [Hogy működik az Azure Site Recovery?](/azure/site-recovery/site-recovery-components)
-* [Milyen számítási feladatokat véd a Azure Site Recovery?](/azure/site-recovery/site-recovery-workload)
+* [Mi az Azure Site Recovery?](../../site-recovery/site-recovery-overview.md)
+* [Hogy működik az Azure Site Recovery?](/azure/security/fundamentals/azure-to-azure-architecture)
+* [Milyen számítási feladatokat véd a Azure Site Recovery?](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Virtuális hálózat
 
@@ -129,7 +129,7 @@ Az Azure-beli virtuális hálózatok a fizikai Azure hálózati hálóra épül�
 További információ:
 
 * [Az Azure hálózati biztonság áttekintése](network-overview.md)
-* [Virtual Network áttekintése](/azure/virtual-network/virtual-networks-overview)
+* [Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
 * [Hálózati funkciók és partnerkapcsolatok nagyvállalati forgatókönyvekhez](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>Biztonsági házirendek kezelése és jelentéskészítés
@@ -138,14 +138,14 @@ Az Azure Security Center lehetővé teszi a fenyegetések megelőzését, észle
 
 A Security Center segítségével optimalizálhatja és figyelheti a virtuális gépek biztonságát:
 
-* [Biztonsági javaslatok](/azure/security-center/security-center-recommendations) nyújtása a virtuális gépekhez. A javaslatok közé tartoznak például a rendszerfrissítések alkalmazása, az ACL-végpontok konfigurálása, az antimalware engedélyezése, a hálózati biztonsági csoportok engedélyezése és a lemez titkosításának alkalmazása.
+* [Biztonsági javaslatok](../../security-center/security-center-recommendations.md) nyújtása a virtuális gépekhez. A javaslatok közé tartoznak például a rendszerfrissítések alkalmazása, az ACL-végpontok konfigurálása, az antimalware engedélyezése, a hálózati biztonsági csoportok engedélyezése és a lemez titkosításának alkalmazása.
 * A virtuális gépek állapotának figyelése.
 
 További információ:
 
-* [Az Azure Security Center bemutatása](/azure/security-center/security-center-intro)
-* [Azure Security Center gyakori kérdések](/azure/security-center/security-center-faq)
-* [Azure Security Center tervezés és műveletek](/azure/security-center/security-center-planning-and-operations-guide)
+* [Az Azure Security Center bemutatása](../../security-center/security-center-introduction.md)
+* [Azure Security Center gyakori kérdések](../../security-center/faq-general.md)
+* [Azure Security Center tervezés és műveletek](../../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>Megfelelőség
 

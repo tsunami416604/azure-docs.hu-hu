@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 43974258008e3813a368ab31891251db15060aff
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4fa5ba935e77055936b2abc4faab49b5d10cb5c0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127059"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410062"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -42,13 +42,13 @@ Az ebben a dokumentumban ismertetett javaslatok az Azure AD-bérlő identitás-b
 ![Identitás biztonságos pontszáma](./media/steps-secure-identity/azure-ad-sec-steps0.png)
 
 > [!NOTE]
-> Az itt ismertetett funkciók közül számos prémium szintű Azure AD előfizetés szükséges, míg néhány ingyenes. További információért tekintse át a [Azure Active Directory díjszabását](https://azure.microsoft.com/pricing/details/active-directory/) és az [Azure ad üzembe helyezési ellenőrzőlistáját](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2) .
+> Az itt ismertetett funkciók közül számos prémium szintű Azure AD előfizetés szükséges, míg néhány ingyenes. További információért tekintse át a [Azure Active Directory díjszabását](https://azure.microsoft.com/pricing/details/active-directory/) és az [Azure ad üzembe helyezési ellenőrzőlistáját](../../active-directory/fundamentals/active-directory-deployment-checklist-p2.md) .
 
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Előkészületek: a rendszerjogosultságú fiókok MFA-val való ellátása
 
 Mielőtt elkezdené ezt a feladatlistát, győződjön meg róla, hogy az ellenőrzőlista elolvasása közben nem sérül. Először gondoskodnia kell a Kiemelt jogosultságú fiókok biztonságáról.
 
-A Kiemelt fiókok felügyeletét befogadó támadók óriási károkat okozhatnak, ezért fontos, hogy először megvédje ezeket a fiókokat. [Azure multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) engedélyezése és megkövetelése a szervezetben lévő összes rendszergazda számára az [Azure ad-beli biztonsági beállítások](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) vagy a [feltételes hozzáférés](../../active-directory/conditional-access/plan-conditional-access.md)használatával. Ha még nem implementálta az MFA-t, tegye meg most! Ez fontos.
+A Kiemelt fiókok felügyeletét befogadó támadók óriási károkat okozhatnak, ezért fontos, hogy először megvédje ezeket a fiókokat. [Azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) engedélyezése és megkövetelése a szervezetben lévő összes rendszergazda számára az [Azure ad-beli biztonsági beállítások](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) vagy a [feltételes hozzáférés](../../active-directory/conditional-access/plan-conditional-access.md)használatával. Ha még nem implementálta az MFA-t, tegye meg most! Ez fontos.
 
 Minden készlet? Ismerkedjen meg az ellenőrzőlista első lépéseivel.
 
@@ -59,7 +59,7 @@ A legtöbb nagyvállalati biztonsági rést egy olyan fiók okozta, amely a jels
 
 ### <a name="make-sure-your-organization-uses-strong-authentication"></a>Győződjön meg arról, hogy a szervezet erős hitelesítést használ
 
-A kitalált jelszavak gyakorisága, az adathalászás, a kártevő szoftverrel való ellopás vagy az újbóli használat miatt kritikus fontosságú a jelszó visszaállítása valamilyen erős hitelesítő adat használatával – további információ az [Azure multi-Factor Authenticationról](../../active-directory/authentication/multi-factor-authentication.md).
+A kitalált jelszavak gyakorisága, az adathalászás, a kártevő szoftverrel való ellopás vagy az újbóli használat miatt kritikus fontosságú a jelszó visszaállítása valamilyen erős hitelesítő adat használatával – további információ az [Azure multi-Factor Authenticationról](../../active-directory/authentication/concept-mfa-howitworks.md).
 
 Az Identitáskezelés alapvető szintjének egyszerű engedélyezéséhez használhatja az egykattintásos engedélyezést az [Azure ad biztonsági alapértelmezett beállításaival](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md). A biztonsági alapértékek az Azure MFA-t a bérlő összes felhasználója számára kikényszerítik, és blokkolja a régi protokolloktól a bérlőre kiterjedő bejelentkezéseket.
 
@@ -75,14 +75,14 @@ A Microsoft a következő modern jelszóházirend [bevezetését](https://pages.
 2. Letilthatja a lejárati szabályokat, amelyek segítségével a felhasználók könnyen kitalálják a jelszavakat, például a **Spring2019!**
 3. Tiltsa le a karakter-összeállítási követelményeket, és akadályozza meg, hogy a felhasználók gyakran megtámadott jelszavakat válasszanak, mivel a felhasználók kiszámítható karakteres helyettesítéseket választhatnak a jelszavakban.
 
-A PowerShell használatával [megakadályozhatja, hogy a jelszavak lejárjanak](../../active-directory/authentication/concept-sspr-policy.md) a felhasználók számára, ha közvetlenül az Azure ad-ben hoz létre identitásokat. A hibrid szervezeteknek a [tartományi csoportházirend-beállítások](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) vagy a [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy)használatával kell alkalmazniuk ezeket a házirendeket.
+A PowerShell használatával [megakadályozhatja, hogy a jelszavak lejárjanak](../../active-directory/authentication/concept-sspr-policy.md) a felhasználók számára, ha közvetlenül az Azure ad-ben hoz létre identitásokat. A hibrid szervezeteknek a [tartományi csoportházirend-beállítások](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) vagy a [Windows PowerShell](/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy)használatával kell alkalmazniuk ezeket a házirendeket.
 
 ### <a name="protect-against-leaked-credentials-and-add-resilience-against-outages"></a>A kiszivárgott hitelesítő adatokkal szembeni védelem és az kimaradások elleni rugalmasság biztosítása
 
 Ha a szervezet hibrid identitási megoldást használ átmenő hitelesítéssel vagy összevonással, akkor a jelszó-kivonatolási szinkronizálást a következő két okból kell engedélyeznie:
 
-* A [kiszivárgott hitelesítő adatokkal rendelkező felhasználók](../../active-directory/reports-monitoring/concept-risk-events.md) az Azure ad-ben figyelmeztetnek a Felhasználónév és a jelszó párokra, amelyek elérhetők a "Dark web"-ben. A rendszer az adathalászat, a kártevők és a jelszavak újbóli felhasználását a későbbiekben megsértő külső webhelyeken végezheti el. A Microsoft megkeresi ezeket a kiszivárgott hitelesítő adatokat, és tájékoztatja Önt a jelentésben, ha megfelelnek a szervezet hitelesítő adatainak, de csak akkor, ha [engedélyezi a jelszó-kivonatok szinkronizálását](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
-* Helyszíni leállás esetén (például egy ransomware támadás esetében) a [jelszó-kivonatolási szinkronizálás használatával](choose-ad-authn.md)átválthat a Felhőbeli hitelesítés használatára. Ez a biztonsági mentési hitelesítési módszer lehetővé teszi, hogy továbbra is hozzáférjen a hitelesítéshez konfigurált alkalmazások Azure Active Directory, például a Microsoft 365hoz. Ebben az esetben az informatikai részlegnek nem kell személyes e-mail-fiókokat használnia az adatmegosztáshoz, amíg a helyszíni leállás megoldódik.
+* A [kiszivárgott hitelesítő adatokkal rendelkező felhasználók](../../active-directory/identity-protection/overview-identity-protection.md) az Azure ad-ben figyelmeztetnek a Felhasználónév és a jelszó párokra, amelyek elérhetők a "Dark web"-ben. A rendszer az adathalászat, a kártevők és a jelszavak újbóli felhasználását a későbbiekben megsértő külső webhelyeken végezheti el. A Microsoft megkeresi ezeket a kiszivárgott hitelesítő adatokat, és tájékoztatja Önt a jelentésben, ha megfelelnek a szervezet hitelesítő adatainak, de csak akkor, ha [engedélyezi a jelszó-kivonatok szinkronizálását](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
+* Helyszíni leállás esetén (például egy ransomware támadás esetében) a [jelszó-kivonatolási szinkronizálás használatával](../../active-directory/hybrid/choose-ad-authn.md)átválthat a Felhőbeli hitelesítés használatára. Ez a biztonsági mentési hitelesítési módszer lehetővé teszi, hogy továbbra is hozzáférjen a hitelesítéshez konfigurált alkalmazások Azure Active Directory, például a Microsoft 365hoz. Ebben az esetben az informatikai részlegnek nem kell személyes e-mail-fiókokat használnia az adatmegosztáshoz, amíg a helyszíni leállás megoldódik.
 
 További információ a [jelszó-kivonatolási szinkronizálás](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) működéséről.
 
@@ -91,11 +91,11 @@ További információ a [jelszó-kivonatolási szinkronizálás](../../active-di
 
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>AD FS extranetes intelligens zárolás implementálása
 
-Szervezetek, amelyek az [Azure ad Smart zárolási](../../active-directory/authentication/concept-sspr-howitworks.md)szolgáltatásból közvetlenül az Azure ad-be való hitelesítéshez konfigurálják az alkalmazásokat. Ha AD FSt használ a Windows Server 2012R2, implementálja AD FS [extranet zárolásának védelmét](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Ha AD FSt használ a Windows Server 2016-ben, az [extranetes intelligens zárolást](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)implementálja. AD FS az intelligens extranetes zárolás védelmet biztosít a találgatásos támadásokkal szemben, amelyek célja AD FS, miközben megakadályozza a felhasználók kizárását Active Directory.
+Szervezetek, amelyek az [Azure ad Smart zárolási](../../active-directory/authentication/concept-sspr-howitworks.md)szolgáltatásból közvetlenül az Azure ad-be való hitelesítéshez konfigurálják az alkalmazásokat. Ha AD FSt használ a Windows Server 2012R2, implementálja AD FS [extranet zárolásának védelmét](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Ha AD FSt használ a Windows Server 2016-ben, az [extranetes intelligens zárolást](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)implementálja. AD FS az intelligens extranetes zárolás védelmet biztosít a találgatásos támadásokkal szemben, amelyek célja AD FS, miközben megakadályozza a felhasználók kizárását Active Directory.
 
 ### <a name="take-advantage-of-intrinsically-secure-easier-to-use-credentials"></a>Használja ki a belsőleg biztonságos és könnyebben használható hitelesítő adatokat
 
-A [Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)használatával a jelszavakat erős, kétfaktoros hitelesítéssel helyettesítheti a számítógépeken és mobileszközökön. Ez a hitelesítés olyan új felhasználói hitelesítő adatokból áll, amely biztonságosan kötődik az eszközhöz, és biometrikus vagy PIN-kódot használ.
+A [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification)használatával a jelszavakat erős, kétfaktoros hitelesítéssel helyettesítheti a számítógépeken és mobileszközökön. Ez a hitelesítés olyan új felhasználói hitelesítő adatokból áll, amely biztonságosan kötődik az eszközhöz, és biometrikus vagy PIN-kódot használ.
 
 ## <a name="step-2---reduce-your-attack-surface"></a>2. lépés – a támadási felület csökkentése
 
@@ -105,8 +105,8 @@ A jelszó megtörése miatt a szervezet támadási felületének minimalizálás
 
 A saját örökölt módszereiket használó alkalmazások az Azure AD-vel való hitelesítéshez és a vállalati adatszolgáltatásokhoz való hozzáféréshez egy másik veszélyforrást jelentenek. Az örökölt hitelesítést használó alkalmazások például a következők: POP3, IMAP4 vagy SMTP-ügyfelek. Az örökölt hitelesítési alkalmazások a felhasználó nevében hitelesítik magukat, és megakadályozzák, hogy az Azure AD speciális biztonsági értékeléseket végezzen. Az alternatív, modern hitelesítés csökkenti a biztonsági kockázatokat, mivel ez támogatja a többtényezős hitelesítést és a feltételes hozzáférést. A következő három műveletet javasoljuk:
 
-1. [Az örökölt hitelesítés letiltása, ha AD FS használ](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
-2. [A SharePoint Online és az Exchange Online beállítása modern hitelesítés használatára](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md).
+1. [Az örökölt hitelesítés letiltása, ha AD FS használ](/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
+2. [A SharePoint Online és az Exchange Online beállítása modern hitelesítés használatára](../../active-directory/conditional-access/block-legacy-authentication.md).
 3. Ha prémium szintű Azure AD rendelkezik, használja a feltételes hozzáférési szabályzatokat az [örökölt hitelesítés blokkolására](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md), ellenkező esetben használja az [Azure ad biztonsági alapértelmezéseit](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Érvénytelen hitelesítési belépési pontok blokkolása
@@ -143,13 +143,13 @@ A Azure Active Directory számos képességgel rendelkezik, amelyek automatikusa
 
 ### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>A felhasználói kockázatokra vonatkozó biztonsági házirend megvalósítása Azure AD Identity Protection használatával
 
-A felhasználói kockázat azt jelzi, hogy a felhasználó identitása sérült, és a felhasználó identitásával kapcsolatos [felhasználói kockázati észlelések](../../active-directory/identity-protection/overview.md) alapján számítja ki a rendszer. A felhasználói kockázati házirend egy feltételes hozzáférési szabályzat, amely kiértékeli a kockázati szintet egy adott felhasználó vagy csoport számára. Az alacsony, közepes és magas kockázati szintű szabályok alapján a szabályzat beállítható úgy, hogy blokkolja a hozzáférést, vagy a többtényezős hitelesítés használatával biztonságos jelszó megváltoztatására van szükség. A Microsoft javaslata a nagy kockázatú felhasználók biztonságos jelszavas módosításának megkövetelése.
+A felhasználói kockázat azt jelzi, hogy a felhasználó identitása sérült, és a felhasználó identitásával kapcsolatos [felhasználói kockázati észlelések](../../active-directory/identity-protection/overview-identity-protection.md) alapján számítja ki a rendszer. A felhasználói kockázati házirend egy feltételes hozzáférési szabályzat, amely kiértékeli a kockázati szintet egy adott felhasználó vagy csoport számára. Az alacsony, közepes és magas kockázati szintű szabályok alapján a szabályzat beállítható úgy, hogy blokkolja a hozzáférést, vagy a többtényezős hitelesítés használatával biztonságos jelszó megváltoztatására van szükség. A Microsoft javaslata a nagy kockázatú felhasználók biztonságos jelszavas módosításának megkövetelése.
 
 ![Képernyőfelvétel: a felhasználó által kiválasztva a kockázatra megjelölt felhasználók.](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
 ### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>A bejelentkezési kockázati szabályzat megvalósítása Azure AD Identity Protection használatával
 
-A bejelentkezési kockázat annak a valószínűsége, hogy a fiók tulajdonosa nem az identitás használatával próbál bejelentkezni. A [bejelentkezési kockázati szabályzat](../../active-directory/identity-protection/overview.md) egy feltételes hozzáférési szabályzat, amely kiértékeli a kockázati szintet egy adott felhasználó vagy csoport számára. A kockázati szint (magas/közepes/alacsony) alapján a szabályzat beállítható úgy, hogy blokkolja a hozzáférést vagy kényszerítse a többtényezős hitelesítést. Győződjön meg arról, hogy a többtényezős hitelesítést közepes vagy annál nagyobb kockázatú bejelentkezésekre kényszeríti.
+A bejelentkezési kockázat annak a valószínűsége, hogy a fiók tulajdonosa nem az identitás használatával próbál bejelentkezni. A [bejelentkezési kockázati szabályzat](../../active-directory/identity-protection/overview-identity-protection.md) egy feltételes hozzáférési szabályzat, amely kiértékeli a kockázati szintet egy adott felhasználó vagy csoport számára. A kockázati szint (magas/közepes/alacsony) alapján a szabályzat beállítható úgy, hogy blokkolja a hozzáférést vagy kényszerítse a többtényezős hitelesítést. Győződjön meg arról, hogy a többtényezős hitelesítést közepes vagy annál nagyobb kockázatú bejelentkezésekre kényszeríti.
 
 ![Bejelentkezés névtelen IP-címekről](./media/steps-secure-identity/azure-ad-sec-steps2.png)
 
@@ -169,7 +169,7 @@ A [Azure ad Connect Health figyelése AD FS](../../active-directory/hybrid/how-t
 
 ### <a name="monitor-azure-ad-identity-protection-events"></a>Azure AD Identity Protection események figyelése
 
-A [Azure ad Identity Protection](../../active-directory/identity-protection/overview.md) egy értesítési, figyelési és jelentéskészítési eszköz, amellyel észlelhetők a szervezet identitásait érintő lehetséges sebezhetőségek. Észleli a kockázati észleléseket, például a kiszivárgott hitelesítő adatokat, a lehetetlen utazást és a fertőzött eszközökről érkező bejelentkezéseket, a névtelen IP-címeket, a gyanús tevékenységhez tartozó IP-címeket és az ismeretlen helyeket. Az értesítési riasztások lehetővé teszik a veszélyeztetett felhasználók és/vagy heti kivonatoló e-mailek fogadását.
+A [Azure ad Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) egy értesítési, figyelési és jelentéskészítési eszköz, amellyel észlelhetők a szervezet identitásait érintő lehetséges sebezhetőségek. Észleli a kockázati észleléseket, például a kiszivárgott hitelesítő adatokat, a lehetetlen utazást és a fertőzött eszközökről érkező bejelentkezéseket, a névtelen IP-címeket, a gyanús tevékenységhez tartozó IP-címeket és az ismeretlen helyeket. Az értesítési riasztások lehetővé teszik a veszélyeztetett felhasználók és/vagy heti kivonatoló e-mailek fogadását.
 
 Azure AD Identity Protection két fontos jelentést biztosít a napi figyeléshez:
 1. A kockázatos bejelentkezési jelentések felszínre kerülnek a felhasználói bejelentkezési tevékenységek, amelyeket meg kell vizsgálnia. Előfordulhat, hogy a legitim tulajdonos nem végezte el a bejelentkezést.
@@ -179,9 +179,9 @@ Azure AD Identity Protection két fontos jelentést biztosít a napi figyeléshe
 
 ### <a name="audit-apps-and-consented-permissions"></a>Az alkalmazások és a beleegyezett engedélyek naplózása
 
-A felhasználók bejelentkezhetnek egy olyan feltört webhelyre vagy alkalmazásba, amely hozzáférést szerez a profiljuk adataihoz és a felhasználói adatokhoz, például az e-mailekhez. Egy rosszindulatú színész használhatja a kapott engedélyekkel, hogy Titkosítsa a postaláda tartalmát, és megszerezze a váltságdíjat a postaláda-információk visszaszerzéséhez. A [rendszergazdáknak át kell tekinteniük és ellenőrizniük kell](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) a felhasználók által megadott engedélyeket, vagy le kell tiltaniuk, hogy a felhasználók alapértelmezés szerint megadják a hozzájárulásukat.
+A felhasználók bejelentkezhetnek egy olyan feltört webhelyre vagy alkalmazásba, amely hozzáférést szerez a profiljuk adataihoz és a felhasználói adatokhoz, például az e-mailekhez. Egy rosszindulatú színész használhatja a kapott engedélyekkel, hogy Titkosítsa a postaláda tartalmát, és megszerezze a váltságdíjat a postaláda-információk visszaszerzéséhez. A [rendszergazdáknak át kell tekinteniük és ellenőrizniük kell](/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) a felhasználók által megadott engedélyeket, vagy le kell tiltaniuk, hogy a felhasználók alapértelmezés szerint megadják a hozzájárulásukat.
 
-A felhasználók által megadott engedélyek naplózása mellett a [kockázatos vagy nemkívánatos OAuth alkalmazásokat is megtalálhatja](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth) prémium környezetekben.
+A felhasználók által megadott engedélyek naplózása mellett a [kockázatos vagy nemkívánatos OAuth alkalmazásokat is megtalálhatja](/cloud-app-security/investigate-risky-oauth) prémium környezetekben.
 
 ## <a name="step-5---enable-end-user-self-service"></a>5. lépés – a végfelhasználói önkiszolgáló engedélyezése
 
@@ -189,7 +189,7 @@ Amennyire csak lehet, érdemes egyensúlyba állítani a biztonságot a hatékon
 
 ### <a name="implement-self-service-password-reset"></a>Önkiszolgáló jelszó-visszaállítás implementálása
 
-Az Azure AD önkiszolgáló [jelszó-visszaállítási szolgáltatása (SSPR)](../../active-directory/authentication/quickstart-sspr.md) egyszerű módszert kínál a rendszergazdáknak arra, hogy az ügyfélszolgálat vagy a rendszergazda beavatkozása nélkül visszaállítsák vagy feloldják a jelszavukat vagy fiókjaikat. A rendszer részletes jelentéseket tartalmaz, amelyek nyomon követik, hogy a felhasználók hogyan állíthatják alaphelyzetbe a jelszavukat, valamint az értesítéseket, amelyek a visszaélés vagy a visszaélés ellen figyelmeztetnek
+Az Azure AD önkiszolgáló [jelszó-visszaállítási szolgáltatása (SSPR)](../../active-directory/authentication/tutorial-enable-sspr.md) egyszerű módszert kínál a rendszergazdáknak arra, hogy az ügyfélszolgálat vagy a rendszergazda beavatkozása nélkül visszaállítsák vagy feloldják a jelszavukat vagy fiókjaikat. A rendszer részletes jelentéseket tartalmaz, amelyek nyomon követik, hogy a felhasználók hogyan állíthatják alaphelyzetbe a jelszavukat, valamint az értesítéseket, amelyek a visszaélés vagy a visszaélés ellen figyelmeztetnek
 
 ### <a name="implement-self-service-group-and-application-access"></a>Önkiszolgáló csoport és alkalmazás-hozzáférés megvalósítása
 
@@ -211,8 +211,8 @@ A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez az ö
 
 Nagyra értékeljük, hogy milyen komolyan vesszük a személyazonossági biztonságot, és reméljük, hogy ez a dokumentum hasznos útiterv a szervezete számára biztonságosabb testhelyzethez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha segítségre van szüksége a javaslatok megtervezéséhez és üzembe helyezéséhez, tekintse meg az [Azure ad projekt üzembe helyezési terveit](https://aka.ms/deploymentplans) .
+Ha segítségre van szüksége a javaslatok megtervezéséhez és üzembe helyezéséhez, tekintse meg az [Azure ad projekt üzembe helyezési terveit](../../active-directory/fundamentals/active-directory-deployment-plans.md) .
 
 Ha biztos benne, hogy mindezek a lépések befejeződik, használja a Microsoft [Identity Secure pontszámát](../../active-directory/fundamentals/identity-secure-score.md), amely naprakészen tartja a [legújabb ajánlott eljárásokat](identity-management-best-practices.md) és biztonsági fenyegetéseket.

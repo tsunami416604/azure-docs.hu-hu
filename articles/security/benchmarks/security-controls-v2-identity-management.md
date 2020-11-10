@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e7447d03fc231d8d96b71c7d944a380c10add0d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b21bea924ee8eaed37246ce55feaf8243e3e7d4
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757936"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408737"
 ---
 # <a name="security-control-v2-identity-management"></a>Security Control v2: Identitáskezelés
 
@@ -39,13 +39,13 @@ Megjegyzés: az Azure AD támogatja a külső identitás-szolgáltatókat, amely
 
 - [Azure AD-bérlők definiálása](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
 
-- [Külső identitás-szolgáltatók használata alkalmazáshoz](/azure/active-directory/b2b/identity-providers)
+- [Külső identitás-szolgáltatók használata alkalmazáshoz](../../active-directory/external-identities/identity-providers.md)
 
 - [Mi az Active Directory biztonságos pontszáma az Azure AD-ben](../../active-directory/fundamentals/identity-secure-score.md)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Identitás-és kulcskezelő](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
@@ -59,7 +59,7 @@ Megjegyzés: az Azure AD támogatja a külső identitás-szolgáltatókat, amely
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| IM-2 | N.A. | AC-2, AC-3, IA-2, IA-4, IA-9 |
+| IM-2 | N/A | AC-2, AC-3, IA-2, IA-4, IA-9 |
 
 A nem emberi fiókok, például a szolgáltatások vagy az automatizálás esetében az Azure által felügyelt identitások használata helyett az erőforrások eléréséhez és a kód végrehajtásához hatékonyabb emberi fiókot kell létrehoznia. Az Azure által felügyelt identitások hitelesítése az Azure AD-hitelesítést támogató Azure-szolgáltatásokban és-erőforrásokban történik. A hitelesítés az előre meghatározott hozzáférés-engedélyezési szabályokon keresztül engedélyezett, a forráskódban vagy a konfigurációs fájlokban lévő, nehezen kódolt hitelesítő adatok elkerülésével. 
 
@@ -75,9 +75,9 @@ A felügyelt identitásokat nem támogató szolgáltatások esetében az Azure A
 
 Azure Key Vault használata rendszerbiztonsági tag regisztrálásához: hitelesítés # engedélyezés-a-Security-Principal-to-Access-Key-Vault
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Identitás-és kulcskezelő](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -95,9 +95,9 @@ Az Azure AD egyszeri bejelentkezés (SSO) használatával felügyelheti és bizt
 
 - [Alkalmazás egyszeri bejelentkezésének megismerése az Azure AD-vel](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -130,9 +130,9 @@ Megjegyzés: a jelszó-hitelesítő adatokon alapuló hitelesítés csak a néps
 
 - [Helytelen jelszavak eltávolítása az Azure AD jelszavas védelemmel](../../active-directory/authentication/concept-password-ban-bad.md)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -163,13 +163,13 @@ Az Azure komplex veszélyforrások elleni védelem (ATP) olyan biztonsági megol
 
 - [Tevékenység-jelentések naplózása az Azure AD-ben](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [Az Azure AD kockázatos bejelentkezések megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Az Azure AD kockázatos bejelentkezések megtekintése](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](../../security-center/security-center-identity-access.md)
 
-- [Riasztások Azure Security Center veszélyforrások elleni védelmi moduljában](/azure/security-center/alerts-reference)
+- [Riasztások Azure Security Center veszélyforrások elleni védelmi moduljában](../../security-center/alerts-reference.md)
 
 - [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -177,9 +177,9 @@ Az Azure komplex veszélyforrások elleni védelem (ATP) olyan biztonsági megol
 
 - [Azure Advanced Threat Protection](/azure-advanced-threat-protection/what-is-atp)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alkalmazásbiztonság és DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -189,7 +189,7 @@ Az Azure komplex veszélyforrások elleni védelem (ATP) olyan biztonsági megol
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| IM-6 | N.A. | AC-2, AC-3 |
+| IM-6 | N/A | AC-2, AC-3 |
 
 Az Azure AD feltételes hozzáférés használatával részletesebb hozzáférés-vezérlést használhat a felhasználó által definiált feltételek alapján, például bizonyos IP-címtartományok felhasználói bejelentkezésének megkövetelése az MFA használatára. A részletes hitelesítési munkamenetek kezelése az Azure AD feltételes hozzáférési szabályzatán keresztül is felhasználható a különböző használati esetekben. 
 
@@ -199,9 +199,9 @@ Az Azure AD feltételes hozzáférés használatával részletesebb hozzáféré
 
 - [A hitelesítési munkamenetek kezelésének konfigurálása feltételes hozzáféréssel](../../active-directory/conditional-access/howto-conditional-access-session-lifetime.md)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Identitás-és kulcskezelő](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -225,9 +225,9 @@ A GitHub esetében a natív titkos keresési funkcióval azonosíthatók a kódo
 
 - [GitHub-titkos vizsgálat](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alkalmazásbiztonság és DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -249,9 +249,9 @@ Azt is megteheti, Microsoft Cloud App Security egy felhőalapú hozzáférés-ve
 
 - [Microsoft Cloud App Security ajánlott eljárások](/cloud-app-security/best-practices)
 
-**Felelősség**: ügyfél
+**Felelősség** : ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
