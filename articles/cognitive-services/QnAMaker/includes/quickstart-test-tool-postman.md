@@ -4,16 +4,16 @@ description: fájlbefoglalás
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: fabd79829425147667c46f686a1ec1ceb6a29b00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: fa497b69b067d5556f11effdb52505895ecc3bdd
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87132889"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386494"
 ---
 Ez a Poster-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
@@ -29,13 +29,15 @@ Ez a Poster-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott
 
 ## <a name="set-up-postman-for-requests"></a>Poster beállítása a kérelmekhez
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
 Ez a rövid útmutató ugyanazokat a beállításokat használja, mint a Poster **post** -kérelem, majd úgy konfigurálja, hogy a rendszer a szolgáltatásnak a lekérdezéshez szükséges JSON-t küldje a szolgáltatásnak.
 
 Ezzel az eljárással konfigurálhatja a Poster-t, majd beolvashatja az összes további szakaszt a POST Body JSON konfigurálásához.
 
 1. A Tudásbázis **Beállítások** lapján kattintson a **poster (beküldés** ) fülre, és tekintse meg a Tudásbázisból a válasz létrehozásához használt konfigurációt. Másolja a következő adatokat a Poster-ban való használatra.
 
-    |Név|Beállítás|Cél és érték|
+    |Name|Beállítás|Cél és érték|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Ez az URL-cím HTTP-metódusa és útvonala.|
     |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Ez az URL-cím gazdagépe. Fűzze össze a gazdagépet, és tegye az értékeket a teljes generateAnswer URL-cím beszerzéséhez.|
@@ -44,6 +46,25 @@ Ezzel az eljárással konfigurálhatja a Poster-t, majd beolvashatja az összes 
     ||`{"question":"<Your question>"}`|A POST kérelem törzse JSON-objektumként. Ez az érték a következő szakaszban módosul, attól függően, hogy mit kell tennie a lekérdezésnek.|
 
 1. Nyissa meg a Poster-t, és hozzon létre egy új alapszintű **post** -kérelmet a közzétett Tudásbázis-beállításokkal. A következő szakaszban megváltoztathatja a POST Body JSON-t, hogy megváltoztassa a lekérdezést a Tudásbázisban.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+Ez a rövid útmutató ugyanazokat a beállításokat használja, mint a Poster **post** -kérelem, majd úgy konfigurálja, hogy a rendszer a szolgáltatásnak a lekérdezéshez szükséges JSON-t küldje a szolgáltatásnak.
+
+Ezzel az eljárással konfigurálhatja a Poster-t, majd beolvashatja az összes további szakaszt a POST Body JSON konfigurálásához.
+
+1. A Tudásbázis **Beállítások** lapján kattintson a **poster (beküldés** ) fülre, és tekintse meg a Tudásbázisból a válasz létrehozásához használt konfigurációt. Másolja a következő adatokat a Poster-ban való használatra.
+
+    |Name|Beállítás|Cél és érték|
+    |--|--|--|
+    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Ez az URL-cím HTTP-metódusa és útvonala.|
+    |`Host`|`https://YOUR-RESOURCE_NAME.cognitiveservices.azure.com/qnamaker`|Ez az URL-cím gazdagépe. Fűzze össze a gazdagépet, és tegye az értékeket a teljes generateAnswer URL-cím beszerzéséhez.|
+    |`Ocp-Apim-Subscription-Key`|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|Az a fejléc értéke, amely engedélyezi a kérést. |
+    |`Content-type`|`application/json`|A tartalom fejlécének értéke.|
+    ||`{"question":"<Your question>"}`|A POST kérelem törzse JSON-objektumként. Ez az érték a következő szakaszban módosul, attól függően, hogy mit kell tennie a lekérdezésnek.|
+
+1. Nyissa meg a Poster-t, és hozzon létre egy új alapszintű **post** -kérelmet a közzétett Tudásbázis-beállításokkal. A következő szakaszban megváltoztathatja a POST Body JSON-t, hogy megváltoztassa a lekérdezést a Tudásbázisban.
+---
 
 ## <a name="use-metadata-to-filter-answer"></a>A válasz szűrése metaadatok használatával
 

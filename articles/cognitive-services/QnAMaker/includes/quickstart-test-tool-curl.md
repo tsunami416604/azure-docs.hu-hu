@@ -4,16 +4,16 @@ description: fájlbefoglalás
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: a078455b7630046a83a9ae1c896d0fc44bf8efad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: cbabfc1ae0c54c4ef20d3c689506e486bf4b6a66
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87132890"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386640"
 ---
 Ez a cURL-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
@@ -34,9 +34,17 @@ A metaadatokon alapuló válaszhoz használja az előző gyors lekérdezési tud
 1. A Tudásbázis **Beállítások** lapján válassza a **curl** fület egy példaként szolgáló curl-parancs megjelenítéséhez, amelyet a rendszer a Tudásbázisból kapott válasz létrehozásához használ.
 1. Másolja a parancsot egy szerkeszthető környezetbe (például szövegfájlba), így szerkesztheti a parancsot. Szerkessze a kérdés értékét a következőképpen, hogy a metaadatok a `service:qna_maker` QnA párokhoz szűrőként legyenek felhasználva.
 
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+    
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H   "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
+    ```
+    ---
 
     A kérdés csak egyetlen szó, `size` amely a két QnA párok bármelyikét visszaállíthatja. A `strictFilters` tömb arra utasítja a választ, hogy csak a `qna_maker` válaszokat csökkentse.
 
@@ -89,9 +97,15 @@ Debug: {Enable:true}
 
 1. Szerkessze a cURL parancsot úgy, hogy tartalmazza a hibakeresési tulajdonságot a további információk megtekintéséhez.
 
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
+    ```
+    ---
 
 1. A válasz tartalmazza a válaszra vonatkozó információkat. A következő JSON-kimenetben néhány hibakeresési részlet lecserélve a rövid időpontra.
 
@@ -194,11 +208,16 @@ isTest:true
 ```
 
 A cURL parancs így néz ki:
-
+# <a name="qna-maker-ga"></a>[QnA Maker GA](#tab/v1)
 ```bash
 curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
 ```
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+```bash
+curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
+```
 
+---
 A JSON-válasz ugyanazt a sémát használja, mint a közzétett Tudásbázis-lekérdezés.
 
 > [!NOTE]
@@ -207,10 +226,17 @@ A JSON-válasz ugyanazt a sémát használja, mint a közzétett Tudásbázis-le
 ## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>A cURL használata a Chit-csevegési válaszok lekérdezéséhez
 
 1. A cURL-kompatibilis terminálon használjon egy, a felhasználótól származó bot-beszélgetés-befejezési utasítást, például `Thank you` a kérdést. Nincsenek beállítva más tulajdonságok.
+    
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'thank you'}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'thank you'}"
+    ```
+    ---
 
 1. Futtassa a cURL parancsot, és fogadja a JSON-választ, beleértve a pontszámot és a választ.
 
@@ -302,9 +328,15 @@ A válaszhoz minimális küszöbértéket is igényelhet. Ha a küszöbérték n
 
 1. Adja hozzá a `threshold` (z) tulajdonságot, hogy válaszoljon a `size` 80%-os vagy annál nagyobb küszöbértékre. A Tudásbázis nem találja a választ, mert a kérdés pontszáma 71%. Az eredmény a Tudásbázis létrehozásakor megadott alapértelmezett választ adja vissza.
 
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
+    ```
+    ---
 
 1. Futtassa a cURL parancsot, és fogadja a JSON-választ.
 
@@ -328,10 +360,16 @@ A válaszhoz minimális küszöbértéket is igényelhet. Ha a küszöbérték n
     QnA Maker egy pontszámot adott vissza `0` , ami nem jelent megbízhatóságot. Emellett az alapértelmezett választ is visszaadja.
 
 1. Módosítsa a küszöbértéket 60%-ra, és kérje újra a lekérdezést:
-
+    
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
+    ```
+    ---
 
     A visszaadott JSON megtalálta a választ.
 
