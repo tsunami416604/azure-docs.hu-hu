@@ -40,6 +40,8 @@
       href: front-door-backend-pool.md
     - name: Gyorsítótárazás a bejárati ajtóval
       href: front-door-caching.md
+    - name: DDoS elleni védelem
+      href: front-door-ddos.md
     - name: Front Door – GYIK
       href: front-door-faq.md
     - name: Geoszűrés

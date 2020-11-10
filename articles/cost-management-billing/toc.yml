@@ -120,6 +120,8 @@
           href: understand/subscription-transfer.md
         - name: Előfizetések átadása partnerek között (előzetes verzió)
           href: manage/azure-plan-subscription-transfer-partners.md
+        - name: Első lépések a nagyvállalati szerződéses Azure Portalon
+          href: manage/ea-portal-get-started.md
 - name: Útmutatók
   items:
     - name: Azure Cost Management + Billing konfigurálása
@@ -200,8 +202,6 @@
               href: manage/cancel-azure-subscription.md
         - name: Nagyvállalati szerződéses előfizetések kezelése
           items:
-            - name: Első lépések a nagyvállalati szerződéses Azure Portalon
-              href: manage/ea-portal-get-started.md
             - name: Nagyvállalati szerződéses szerepkörök az Azure-ban
               href: manage/understand-ea-roles.md
             - name: A nagyvállalati szerződéses Azure Portal adminisztrációja
