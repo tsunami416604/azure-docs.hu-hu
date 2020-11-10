@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: f2a934702a650ece3d3d50b2eedaa99f65b2eacc
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 3fcf63932db0ad9abe5d99c2e4bf084b0acc750c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93144994"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427871"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Pont – hely VPN-kapcsolat konfigurálása VNet natív Azure tanúsítványalapú hitelesítéssel: Azure Portal
 
@@ -72,11 +72,11 @@ Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fo
 
 A tanúsítványokat az Azure a virtuális hálózathoz pont–hely VPN-kapcsolaton keresztül csatlakozó ügyfelek hitelesítésére használja. Amint beszerzett egy főtanúsítványt, a nyilvánoskulcs-adatait [feltölti](#uploadfile) az Azure-ba. Az Azure a főtanúsítványt ettől kezdve „megbízhatónak” tekinti a virtuális hálózathoz pont–hely kapcsolaton keresztüli csatlakozás esetén. Létrehoz ügyféltanúsítványokat is a megbízható főtanúsítványból, majd telepíti őket az összes ügyfélszámítógépeken. Az ügyféltanúsítványt a rendszer az ügyfél hitelesítésére használja, amikor az a VNethez próbál csatlakozni. 
 
-### <a name="1-root-certificate"></a><a name="getcer"></a>1. főtanúsítvány
+### <a name="generate-a-root-certificate"></a><a name="getcer"></a>Főtanúsítvány létrehozása
 
 [!INCLUDE [root-certificate](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
-### <a name="2-client-certificate"></a><a name="generateclientcert"></a>2. ügyféltanúsítvány
+### <a name="generate-client-certificates"></a><a name="generateclientcert"></a>Ügyféltanúsítványok előállítása
 
 [!INCLUDE [generate-client-cert](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
@@ -84,46 +84,46 @@ A tanúsítványokat az Azure a virtuális hálózathoz pont–hely VPN-kapcsola
 
 Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont–hely VPN-kapcsolattal csatlakozó ügyfelek ebből a tartományból kapnak dinamikusan IP-címet. Olyan magánhálózati IP-címtartományt használjon, amely nincs átfedésben azzal a helyszíni hellyel, amelyről csatlakozik, vagy azzal a virtuális hálózattal, amelyhez csatlakozik. Ha több protokollt konfigurál, és az SSTP a protokollok egyike, akkor a konfigurált címkészlet egyenlően oszlik meg a konfigurált protokollok között.
 
-1. Miután létrehozta a virtuális hálózati átjárót, navigáljon a virtuális hálózati átjáró lapjának **Beállítások** részéhez. A **Beállítások** szakaszban válassza a **pont – hely konfiguráció** lehetőséget. Válassza a **Konfigurálás most** lehetőséget a konfigurációs lap megnyitásához.
+1. Miután létrehozta a virtuális hálózati átjárót, navigáljon a virtuális hálózati átjáró lapjának **Beállítások** részéhez. A **Beállítások** területen válassza a **pont – hely konfiguráció** lehetőséget. Válassza a **Konfigurálás most** lehetőséget a konfigurációs lap megnyitásához.
 
-   ![Pont–hely lap](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-configure.png "Pont – hely konfigurálás most")
-2. A **pont – hely konfiguráció** lapon többféle beállítást is beállíthat. Ha nem látja az alagút típusát vagy a hitelesítés típusát ezen a lapon, az átjáró az alapszintű SKU-t használja. Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést. Ha ezeket a beállításokat szeretné használni, törölnie kell, majd újra létre kell hoznia az átjárót egy másik átjáró-SKU használatával.
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configure-now.png" alt-text="Pont – hely konfiguráció lap" lightbox="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configure-now.png":::
+1. A **pont – hely konfiguráció** lapon többféle beállítást is beállíthat. Ha nem látja az alagút típusát vagy a hitelesítés típusát ezen a lapon, az átjáró az alapszintű SKU-t használja. Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést. Ha ezeket a beállításokat szeretné használni, törölnie kell, majd újra létre kell hoznia az átjárót egy másik átjáró-SKU használatával.
 
-   [![Pont – hely konfiguráció lap](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/certificate-settings-address.png "címkészlet meghatározása")](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/certificate-settings-expanded.png#lightbox)
-3. A **címkészlet** mezőben adja meg a használni kívánt magánhálózati IP-címtartományt. A VPN-ügyfelek dinamikusan kapnak egy IP-címet a megadott tartományból. A minimális alhálózati maszk 29 bites aktív/passzív és 28 bites az aktív/aktív konfigurációhoz.
-4. Váltson a következő szakaszra az alagút típusának konfigurálásához.
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/address-pool.png" alt-text="Címkészlet meghatározása" lightbox="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/address-pool.png":::
+1. A **címkészlet** mezőben adja meg a használni kívánt magánhálózati IP-címtartományt. A VPN-ügyfelek dinamikusan kapnak egy IP-címet a megadott tartományból. A minimális alhálózati maszk 29 bites aktív/passzív és 28 bites az aktív/aktív konfigurációhoz.
+1. Ugorjon a következő szakaszra az alagút típusának konfigurálásához.
 
 ## <a name="5-configure-tunnel-type"></a><a name="tunneltype"></a>5. alagút típusának konfigurálása
 
-Kiválaszthatja az alagút típusát. Az alagút beállításai az OpenVPN, az SSTP és a IKEv2.
+Válassza ki az alagút típusát. Az alagút beállításai az OpenVPN, az SSTP és a IKEv2.
 
 * Az Android- és Linux-alapú strongSwan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz.
 * A Windows-ügyfelek először a IKEv2 próbálják meg, és ha ez nem sikerül, a rendszer az SSTP-re esik vissza.
 * Az OpenVPN-ügyfél használatával kapcsolódhat az OpenVPN-alagút típusához.
 
-![Alagúttípus](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunnel.png "alagút típusának megadása")
+:::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunnel-ike.png" alt-text="Alagúttípus":::
 
 ## <a name="6-configure-authentication-type"></a><a name="authenticationtype"></a>6. a hitelesítés típusának konfigurálása
 
 A **Hitelesítés típusa** beállításnál válassza az **Azure-tanúsítvány** lehetőséget.
 
-  ![Hitelesítés típusa](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authentication-type.png "hitelesítés típusának megadása")
+:::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/azure-certificate.png" alt-text="Hitelesítés típusa":::
 
 ## <a name="7-upload-the-root-certificate-public-certificate-data"></a><a name="uploadfile"></a>7. Töltse fel a főtanúsítvány nyilvános tanúsítványának adatkészletét
 
 További megbízható főtanúsítványokat is feltölthet (legfeljebb 20-at). Miután feltöltötte a nyilvános tanúsítványadatokat, az Azure felhasználhatja azon ügyfelek hitelesítéséhez, amelyeken telepítve lett egy, a megbízható főtanúsítványból létrehozott ügyféltanúsítvány. Töltse fel a főtanúsítvány nyilvánoskulcs-adatait az Azure-ba.
 
 1. A tanúsítványokat a rendszer hozzáadja a **Főtanúsítvány** szakasz **Pont–hely konfiguráció** lapjához.
-2. Győződjön meg arról, hogy Base-64 kódolású X.509 (.cer) fájlként exportálta a főtanúsítványt. Ebben a formátumban kell exportálnia a tanúsítványt, hogy szövegszerkesztővel meg tudja azt nyitni.
-3. Nyissa megy a tanúsítványt egy szövegszerkesztővel, például a Jegyzettömbbel. A tanúsítványadatok másolásakor a szöveget egy folyamatos sorként másolja kocsivissza vagy új sor nélkül. A kocsivisszák és az új sorok megjelenítéséhez lehet, hogy módosítania kell a nézetet a szövegszerkesztőben a „Szimbólum megjelenítése/Minden karakter megjelenítése” beállításra. Csak a következő szakaszt másolja egy folyamatos sorként:
+1. Győződjön meg arról, hogy Base-64 kódolású X.509 (.cer) fájlként exportálta a főtanúsítványt. Ebben a formátumban kell exportálnia a tanúsítványt, hogy szövegszerkesztővel meg tudja azt nyitni.
+1. Nyissa megy a tanúsítványt egy szövegszerkesztővel, például a Jegyzettömbbel. A tanúsítványadatok másolásakor a szöveget egy folyamatos sorként másolja kocsivissza vagy új sor nélkül. A kocsivisszák és az új sorok megjelenítéséhez lehet, hogy módosítania kell a nézetet a szövegszerkesztőben a „Szimbólum megjelenítése/Minden karakter megjelenítése” beállításra. Csak a következő szakaszt másolja egy folyamatos sorként:
 
-   ![Tanúsítvány-adatértékek](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png "főtanúsítvány-adatbázis másolása")
-4. Illessze be a tanúsítványadatokat a **Nyilvános tanúsítványadatok** mezőbe. **Nevezze** el a tanúsítványt, majd kattintson a **Mentés** gombra. Legfeljebb 20 megbízható főtanúsítványt adhat hozzá.
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png" alt-text="Tanúsítvány-adatértékek" border="false":::
+1. Illessze be a tanúsítványadatokat a **Nyilvános tanúsítványadatok** mezőbe. **Nevezze** el a tanúsítványt, majd kattintson a **Mentés** gombra. Legfeljebb 20 megbízható főtanúsítványt adhat hozzá.
 
-   ![Tanúsítványfájl beillesztése](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png "Tanúsítványfájl beillesztése")
-5. Válassza a **Mentés** lehetőséget az oldal tetején az összes konfigurációs beállítás mentéséhez.
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png" alt-text="Tanúsítványfájl beillesztése" border="false":::
+1. Válassza a **Mentés** lehetőséget az oldal tetején az összes konfigurációs beállítás mentéséhez.
 
-   ![Konfiguráció mentése](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png "konfiguráció mentése")
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png" alt-text="Konfiguráció mentése" border="false":::
 
 ## <a name="8-install-an-exported-client-certificate"></a><a name="installclientcert"></a>8. exportált ügyféltanúsítvány telepítése
 
@@ -151,7 +151,7 @@ A hálózat párbeszédpanelen keresse meg a használni kívánt ügyféloldali 
 
 Részletes utasításokért lásd: [install-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) . Ha nem sikerül a csatlakozás, ellenőrizze, hogy a virtuális hálózati átjáró nem alapszintű SKU-t használ-e. A Mac-ügyfelek nem támogatják az alapszintű SKU-t.
 
-  ![Mac-kapcsolat](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png "Kapcsolódás")
+:::image type="content" source="./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png" alt-text="Mac VPN-ügyfél kapcsolata" border="false":::
 
 ## <a name="to-verify-your-connection"></a><a name="verify"></a>A kapcsolat ellenőrzése
 
@@ -194,8 +194,8 @@ Az Azure-ra legfeljebb 20 megbízható főtanúsítványt tölthet fel .cer fáj
 ### <a name="to-remove-a-trusted-root-certificate"></a>Megbízható főtanúsítvány eltávolítása
 
 1. A megbízható főtanúsítvány eltávolításához lépjen a virtuális hálózati átjáróhoz tartozó **Pont–hely konfiguráció** lapra.
-2. Keresse meg az eltávolítani kívánt tanúsítványt a lap **Főtanúsítvány** szakaszában.
-3. Válassza ki a tanúsítvány melletti három pontot, majd válassza az Eltávolítás lehetőséget.
+1. Keresse meg az eltávolítani kívánt tanúsítványt a lap **Főtanúsítvány** szakaszában.
+1. Válassza ki a tanúsítvány melletti három pontot, majd válassza az Eltávolítás lehetőséget.
 
 ## <a name="to-revoke-a-client-certificate"></a><a name="revokeclient"></a>Ügyféltanúsítvány visszavonása
 
@@ -208,12 +208,12 @@ A szokásos gyakorlat az, hogy a főtanúsítvánnyal kezelik a hozzáférést a
 Az ügyféltanúsítványok visszavonásához vegye fel az ujjlenyomatot a visszavont tanúsítványok listájára.
 
 1. Kérje le az ügyféltanúsítvány ujjlenyomatát. További információkat [a tanúsítványok ujjlenyomatának lekérését ismertető útmutatóban](https://msdn.microsoft.com/library/ms734695.aspx) találhat.
-2. Másolja át az adatokat egy szövegszerkesztőbe, és távolítsa el az összes szóközt, hogy egy folyamatos sztringet kapjon.
-3. Lépjen a virtuális hálózati átjáró **Pont–hely konfiguráció** lapjára. Ez ugyanaz a lap, amelyet a [megbízható főtanúsítvány feltöltéséhez](#uploadfile) használt.
-4. A **Visszavont tanúsítványok** szakaszban adjon egy rövid nevet a tanúsítványnak (ennek nem kell megegyeznie a tanúsítvány köznapi nevével).
-5. Másolja ki és illessze be az ujjlenyomat sztringjét az **Ujjlenyomat** mezőbe.
-6. A rendszer ellenőrzi az ujjlenyomatot, és automatikusan hozzáadja a visszavont tanúsítványok listájához. A képernyőn megjelenik egy üzenet, amely szerint a lista frissítése folyamatban van. 
-7. A frissítés befejezését követően a tanúsítvány már nem használható csatlakozáshoz. Azok az ügyfelek, akik ezzel a tanúsítvánnyal próbálnak csatlakozni, egy üzenetet kapnak majd arról, hogy a tanúsítvány már nem érvényes.
+1. Másolja át az adatokat egy szövegszerkesztőbe, és távolítsa el az összes szóközt, hogy egy folyamatos sztringet kapjon.
+1. Lépjen a virtuális hálózati átjáró **Pont–hely konfiguráció** lapjára. Ez ugyanaz a lap, amelyet a [megbízható főtanúsítvány feltöltéséhez](#uploadfile) használt.
+1. A **Visszavont tanúsítványok** szakaszban adjon egy rövid nevet a tanúsítványnak (ennek nem kell megegyeznie a tanúsítvány köznapi nevével).
+1. Másolja ki és illessze be az ujjlenyomat sztringjét az **Ujjlenyomat** mezőbe.
+1. A rendszer ellenőrzi az ujjlenyomatot, és automatikusan hozzáadja a visszavont tanúsítványok listájához. A képernyőn megjelenik egy üzenet, amely szerint a lista frissítése folyamatban van. 
+1. A frissítés befejezését követően a tanúsítvány már nem használható csatlakozáshoz. Azok az ügyfelek, akik ezzel a tanúsítvánnyal próbálnak csatlakozni, egy üzenetet kapnak majd arról, hogy a tanúsítvány már nem érvényes.
 
 ## <a name="point-to-site-faq"></a><a name="faq"></a>Pont–hely kapcsolatok – gyakori kérdések
 

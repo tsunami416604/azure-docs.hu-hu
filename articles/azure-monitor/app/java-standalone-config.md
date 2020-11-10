@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights Java konfigurációs lehetőség
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6edb77ec21b4f82f8398312fdff24aa5ea207771
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b703a708af564b9dafc8c1409333a2cfed6d2653
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381031"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427700"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure Monitor Application Insights Java konfigurációs lehetőségei
 
@@ -178,9 +178,9 @@ Lehetővé teszi olyan szabályok konfigurálását, amelyek a kérelemre, a fü
 
 További információkért tekintse meg a [telemetria-feldolgozó](./java-standalone-telemetry-processors.md) dokumentációját.
 
-## <a name="autocollected-logging"></a>Az újragyűjtött naplózás
+## <a name="auto-collected-logging"></a>Automatikusan összegyűjtött naplózás
 
-A Log4j, a Logback és a Java. util. Logging automatikusan lett kialakítva, és ezekkel a naplózási keretrendszerekkel végezhető el az automatikus begyűjtése.
+A Log4j, a Logback és a Java. util. Logging automatikusan lett kialakítva, és ezekkel a naplózási keretrendszerekkel végrehajtott naplózás automatikusan begyűjtve lesz.
 
 Alapértelmezés szerint a naplózás csak akkor kerül begyűjtésre, ha a naplózást a `INFO` szinten vagy felett hajtják végre.
 
@@ -213,13 +213,13 @@ Ezek az érvényes `level` értékek, amelyeket megadhat a `applicationinsights.
 | NYOMKÖVETÉS (vagy legfinomabb) | NYOMKÖVETÉSI  | NYOMKÖVETÉSI   | LEGJOBB  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="autocollected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Újragyűjtött mikrométer metrikái (beleértve a Spring boot indítószerkezet metrikáit)
+## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automatikusan összegyűjtött mérőműszer-metrikák (beleértve a Spring boot indítószerkezet metrikáit)
 
-Ha az alkalmazás a [mikrométert](https://micrometer.io)használja, akkor a Mikrométerek globális beállításjegyzékbe eljuttatott mérőszámok az autocollect.
+Ha az alkalmazás a [mikrométert](https://micrometer.io)használja, akkor a rendszer automatikusan begyűjti a Mikrométer globális beállításjegyzékbe küldendő metrikákat.
 
-Továbbá, ha az alkalmazás a [Spring boot-indítószerkezetet](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)használja, akkor a rugós rendszerindítási indítószerkezet által konfigurált metrikák is újra lesznek gyűjtve.
+Továbbá, ha az alkalmazás a [Spring boot indítószerkezetet](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)használja, akkor a rugós rendszerindítási indítószerkezet által konfigurált mérőszámokat is automatikusan begyűjti a rendszer.
 
-A Mikrométer metrikáinak (például a Spring boot-működtető metrikáinak) letiltásához:
+A Mikrométer metrikáinak automatikus gyűjtésének letiltása (beleértve a Spring boot-indítószerkezet metrikáit):
 
 > [!NOTE]
 > Az egyéni metrikák számlázása külön történik, és további költségek is megadhatók. Ügyeljen rá, hogy ellenőrizze a részletes [díjszabási információkat](https://azure.microsoft.com/pricing/details/monitor/). A Mikrométer és a Spring indítószerkezet metrikáinak letiltásához adja hozzá az alábbi konfigurációt a konfigurációs fájlhoz.

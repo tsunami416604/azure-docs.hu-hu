@@ -3,12 +3,12 @@ title: Az architektúra áttekintése
 description: Áttekintést nyújt a Azure Backup szolgáltatás által használt architektúráról, összetevőkről és folyamatokról.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f5d4c881244ddae41ba4c706812bd7b8274a374e
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 288b073c20b93bf1802f34f5dcd17b12430bb279
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173273"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427734"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
@@ -22,11 +22,11 @@ Azure Backup biztonsági másolatot készít az adatokról, a gépi állapotról
 
 Több módszer használatával biztonsági mentést készíthet a gépekről és az adatairól:
 
-- Helyszíni **gépek biztonsági mentése**:
+- Helyszíni **gépek biztonsági mentése** :
   - A helyszíni Windows-gépek biztonsági mentését közvetlenül az Azure-ba végezheti a Azure Backup Microsoft Azure Recovery Services (MARS) ügynök használatával. A Linux rendszerű gépek nem támogatottak.
   - A helyszíni gépek biztonsági mentését a System Center Data Protection Manager (DPM) vagy a Microsoft Azure Backup Server (MABS) szolgáltatással végezheti el. Ezután biztonsági mentést készíthet a Backup-kiszolgálóról egy Recovery Services-tárolóra az Azure-ban.
 
-- **Azure-beli virtuális gépek biztonsági mentése**:
+- **Azure-beli virtuális gépek biztonsági mentése** :
   - Az Azure-beli virtuális gépek biztonsági mentését közvetlenül is elvégezheti. Azure Backup telepít egy biztonsági mentési bővítményt a virtuális gépen futó Azure VM-ügynökre. Ez a bővítmény biztonsági mentést készít a teljes virtuális gépről.
   - A MARS-ügynök futtatásával biztonsági mentést készíthet az Azure-beli virtuális gépen lévő adott fájlokról és mappákról.
   - Az Azure-beli virtuális gépekről biztonsági mentést készíthet az Azure-ban futó MABS, és biztonsági mentést készíthet a MABS egy Recovery Services-tárolóra.
@@ -35,7 +35,7 @@ További információ a biztonsági mentésről [és a](backup-overview.md) [tá
 
 ## <a name="where-is-data-backed-up"></a>Hol történik a biztonsági másolat készítése?
 
-Azure Backup tárolja a biztonsági másolatokban tárolt adattárakat – Recovery Services-tárolókban és Backup-tárolókban. A tároló egy olyan online tárolási entitás az Azure-ban, amely az adattároláshoz, például biztonsági másolatok, helyreállítási pontok és biztonsági mentési szabályzatok tárolására szolgál.
+A Azure Backup tárolja a biztonsági másolatban tárolt adattárakat – Recovery Services tárolók és mentési tárolók. A tároló egy olyan online tárolási entitás az Azure-ban, amely az adattároláshoz, például biztonsági másolatok, helyreállítási pontok és biztonsági mentési szabályzatok tárolására szolgál.
 
 A tárolók a következő funkciókkal rendelkeznek:
 
@@ -43,9 +43,9 @@ A tárolók a következő funkciókkal rendelkeznek:
 - Megfigyelheti a tárolóban lévő biztonsági másolati elemeket, beleértve az Azure-beli virtuális gépeket és a helyszíni gépeket is.
 - A tár hozzáférését az [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)kezelheti.
 - Megadhatja, hogyan replikálja a rendszer a tárolóban lévő adattárakat:
-  - **Helyileg redundáns tárolás (LRS)**: az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információk](../storage/common/storage-redundancy.md#locally-redundant-storage).
-  - **Geo-redundáns tárolás (GRS)**: az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információk](../storage/common/storage-redundancy.md#geo-redundant-storage).
-  - **Zone-redundáns tárolás (ZRS)**: a [rendelkezésre állási zónákban](../availability-zones/az-overview.md#availability-zones)replikálja az adatait, így garantálva az adattárolást és a rugalmasságot ugyanabban a régióban. [További információ](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - **Helyileg redundáns tárolás (LRS)** : az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információ](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Geo-redundáns tárolás (GRS)** : az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információ](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - **Zone-redundáns tárolás (ZRS)** : a [rendelkezésre állási zónákban](../availability-zones/az-overview.md#availability-zones)replikálja az adatait, így garantálva az adattárolást és a rugalmasságot ugyanabban a régióban. [További információ](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Recovery Services tárolók alapértelmezés szerint a GRS használják.
 
 Recovery Services-tárolók a következő további funkciókkal rendelkeznek:
@@ -87,8 +87,8 @@ A tárterület-használat, a helyreállítási időre vonatkozó célkitűzés (
 
 - Az A adatforrás 10 tárolási blokkból (a1-A10) áll, amelyekről havonta készül biztonsági másolat.
 - Az A2, az A3, az A4 és az A9 módosul az első hónapban, az A5 pedig a következő hónapban.
-- A különbözeti biztonsági mentések esetén a második hónapban az a2, a3, a4 és A9 blokkokat biztonsági másolat készül. A harmadik hónapban a módosított A5 blokkal együtt biztonsági másolat készül ugyanezekről a blokkokról. A következő teljes biztonsági mentésig minden alkalommal készül biztonsági másolat a módosított blokkokról.
-- A növekményes biztonsági mentések esetén a második hónapban az a2, a3, a4 és A9 blokkokat a rendszer módosítottként jelöli meg, és áthelyezi őket. A harmadik hónapban csak az A5 módosított blokk van megjelölve és továbbítva.
+- A különbözeti biztonsági mentések esetén a második hónapban az a2, a3, a4 és A9 blokkokat biztonsági mentéssel készítettük. A harmadik hónapban a módosított A5 blokkal együtt biztonsági másolat készül ugyanezekről a blokkokról. A következő teljes biztonsági mentésig minden alkalommal készül biztonsági másolat a módosított blokkokról.
+- A növekményes biztonsági másolatok esetén a második hónapban az a2, a3, a4 és A9 blokkokat a rendszer módosítottként jelöli meg, és áthelyezi őket. A harmadik hónapban csak az A5 módosított blokk van megjelölve és továbbítva.
 
 ![A biztonsági mentési módszerek összehasonlítását bemutató kép](./media/backup-architecture/backup-method-comparison.png)
 
@@ -96,12 +96,12 @@ A tárterület-használat, a helyreállítási időre vonatkozó célkitűzés (
 
 A következő táblázat összefoglalja a különböző típusú biztonsági másolatok támogatott funkcióit:
 
-**Szolgáltatás** | **Fájlok és mappák közvetlen biztonsági mentése (a MARS-ügynök használatával)** | **Azure-beli virtuális gép biztonsági mentése** | **Gépek vagy alkalmazások DPM/MABS**
+**Jellemző** | **Fájlok és mappák közvetlen biztonsági mentése (a MARS-ügynök használatával)** | **Azure-beli virtuális gép biztonsági mentése** | **Gépek vagy alkalmazások DPM/MABS**
 --- | --- | --- | ---
-Biztonsági mentés a tárba | ![Igen][green] | ![Igen][green] | ![Igen][green]
-Biztonsági mentés DPM-vagy MABS-lemezre, majd az Azure-ba | | | ![Igen][green]
-A biztonsági mentéshez továbbított adatok tömörítése | ![Igen][green] | Az adatátvitelkor nem használ tömörítést. A tárterület kis mértékben van kiemelve, de a helyreállítás gyorsabb.  | ![Igen][green]
-Növekményes biztonsági mentés futtatása |![Igen][green] |![Igen][green] |![Igen][green]
+Biztonsági mentés a tárba | ![Igen][green] | ![Igen][green] | ![Yes][green]
+Biztonsági mentés DPM-vagy MABS-lemezre, majd az Azure-ba | | | ![Yes][green]
+A biztonsági mentéshez továbbított adatok tömörítése | ![Yes][green] | Az adatátvitelkor nem használ tömörítést. A tárterület kis mértékben van kiemelve, de a helyreállítás gyorsabb.  | ![Yes][green]
+Növekményes biztonsági mentés futtatása |![Igen][green] |![Igen][green] |![Yes][green]
 Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/> Csak a helyszínen üzembe helyezett DPM-/MABS-kiszolgálók esetében.
 
 ![Tábla kulcsa](./media/backup-architecture/table-key.png)
@@ -123,6 +123,12 @@ Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/
 - A "havi", "éves" biztonsági mentési pontok megőrzését hosszú távú megőrzésnek (LTR) nevezzük.
 - Tároló létrehozásakor a rendszer létrehoz egy "DefaultPolicy", és az erőforrások biztonsági mentésére is használható.
 - A biztonsági mentési szabályzat megőrzési időszakában bekövetkezett változások visszamenőlegesen lesznek alkalmazva az összes korábbi helyreállítási pontra az újakon kívül.
+
+### <a name="impact-of-policy-change-on-recovery-points"></a>A helyreállítási pontok házirend-módosításának következményei
+
+- **A megőrzési időtartam nagyobb/csökkent:** A megőrzési időtartam megváltozásakor a rendszer az új megőrzési időtartamot is alkalmazza a meglévő helyreállítási pontokra. Ennek eredményeképpen a helyreállítási pontok némelyike törlődik. Ha a megőrzési időtartam megnövekszik, a meglévő helyreállítási pontok nagyobb adatmegőrzéssel fognak rendelkezni.
+- **Naponta módosítva:** Ha az ütemezett biztonsági mentések napi rendszerességgel változnak, a rendszer a meglévő napi helyreállítási pontokat takarítja meg.
+- **Hetente és naponta módosítva:** A meglévő heti biztonsági mentések a jelenlegi adatmegőrzési szabályzatnak megfelelően hátralévő napok száma alapján lesznek megőrizve.
 
 ### <a name="additional-reference"></a>További referenciák
 
@@ -204,7 +210,7 @@ A lemezes tárolással és a virtuális gépek rendelkezésre álló típusaival
 
 Az Azure-beli virtuális gépek biztonsági mentését a Premium Storage és a Azure Backup használatával végezheti el:
 
-- A Premium Storage *-alapú*virtuális gépek biztonsági mentésének folyamata során a Backup szolgáltatás ideiglenes átmeneti helyet hoz létre a AzureBackup néven, a Storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével.
+- A Premium Storage *-alapú* virtuális gépek biztonsági mentésének folyamata során a Backup szolgáltatás ideiglenes átmeneti helyet hoz létre a AzureBackup néven, a Storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével.
 - Győződjön meg arról, hogy a Premium Storage-fiók elegendő szabad hellyel rendelkezik az ideiglenes előkészítési hely számára. További információ: [a prémium szintű oldal blob Storage-fiókok méretezhetőségi célpontjai](../storage/blobs/scalability-targets-premium-page-blobs.md). Ne módosítsa az átmeneti helyet.
 - A biztonsági mentési feladatok befejezése után a rendszer törli az előkészítési helyet.
 - Az előkészítési helyhez használt tárolási díj konzisztens a [Premium Storage díjszabásával](../virtual-machines/disks-types.md#billing).

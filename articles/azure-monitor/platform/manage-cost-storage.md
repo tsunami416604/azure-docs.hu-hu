@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 6a14ef6f75d5939501c6bd8ca84620a7a5619a54
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 04c532ceb5f40e9a5b7fa5fd5b75f60182f54580
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369063"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427785"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -50,11 +50,11 @@ Log Analytics dedikált fürtök egyetlen felügyelt Azure Adatkezelő-fürtbe t
 
 A fürt kapacitásának foglalási szintje programozott módon van konfigurálva a Azure Resource Manager használatával a (z `Capacity` ) paraméterrel `Sku` . A a `Capacity` GB egységben van megadva, és 1000 GB/nap vagy több értékkel rendelkezhet a 100 GB/nap növekményekben. Ezt [Azure monitor ügyfél által felügyelt kulcs](customer-managed-keys.md#create-cluster)részletezi. Ha a fürtnek 2000 GB/nap feletti foglalásra van szüksége, lépjen kapcsolatba velünk a következő címen: [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
-A fürtön két számlázási mód van használatban. Ezeket a paraméter megadhatja a `billingType` [fürt konfigurálásakor](customer-managed-keys.md#cmk-management). A két mód a következők: 
+A fürtön két számlázási mód van használatban. Ezeket a paraméter megadhatja a `billingType` [fürt konfigurálásakor](customer-managed-keys.md#customer-managed-key-operations). A két mód a következők: 
 
-1. **Fürt**: ebben az esetben (ez az alapértelmezett beállítás) a betöltött adatmennyiség számlázása a fürt szintjén történik. A rendszer összesíti a fürthöz társított egyes munkaterületekről betöltött adatmennyiségeket a fürt napi számlájának kiszámításához. Vegye figyelembe, hogy a [Azure Security Center](../../security-center/index.yml) -tól származó csomópont-hozzárendelések a munkaterület szintjén lesznek alkalmazva az összesített adatoknak a fürt összes munkaterülete közötti összesítése előtt. 
+1. **Fürt** : ebben az esetben (ez az alapértelmezett beállítás) a betöltött adatmennyiség számlázása a fürt szintjén történik. A rendszer összesíti a fürthöz társított egyes munkaterületekről betöltött adatmennyiségeket a fürt napi számlájának kiszámításához. Vegye figyelembe, hogy a [Azure Security Center](../../security-center/index.yml) -tól származó csomópont-hozzárendelések a munkaterület szintjén lesznek alkalmazva az összesített adatoknak a fürt összes munkaterülete közötti összesítése előtt. 
 
-2. **Munkaterületek**: a fürt kapacitás-foglalási költségei arányosak a fürtben lévő munkaterületekhez (az egyes munkaterületek esetében a [Azure Security Center](../../security-center/index.yml) az egyes munkaterületek esetében a csomópontok közötti foglalások elszámolása után). Ha egy adott munkaterületre betöltött teljes adatmennyiség kevesebb, mint a kapacitás foglalása, akkor az egyes munkaterületek díjait a rendszer a GB-os kapacitású foglalási díjszabás alapján számlázza, és a kapacitás foglalásának fel nem használt részét számlázza a fürt erőforrásának. Ha a napi munkaterületre betöltött teljes adatmennyiség meghaladja a kapacitás foglalását, akkor az egyes munkaterületek számlázása a kapacitás foglalásának töredékét határozza meg a napi betöltött adat töredéke alapján, valamint az egyes munkaterületek a kapacitás foglalása felett lévő betöltött adat töredékének megfelelően. A fürterőforrás nem számít fel díjat, ha a napi munkaterületre betöltött teljes adatmennyiség meghaladja a kapacitás foglalását.
+2. **Munkaterületek** : a fürt kapacitás-foglalási költségei arányosak a fürtben lévő munkaterületekhez (az egyes munkaterületek esetében a [Azure Security Center](../../security-center/index.yml) az egyes munkaterületek esetében a csomópontok közötti foglalások elszámolása után). Ha egy adott munkaterületre betöltött teljes adatmennyiség kevesebb, mint a kapacitás foglalása, akkor az egyes munkaterületek díjait a rendszer a GB-os kapacitású foglalási díjszabás alapján számlázza, és a kapacitás foglalásának fel nem használt részét számlázza a fürt erőforrásának. Ha a napi munkaterületre betöltött teljes adatmennyiség meghaladja a kapacitás foglalását, akkor az egyes munkaterületek számlázása a kapacitás foglalásának töredékét határozza meg a napi betöltött adat töredéke alapján, valamint az egyes munkaterületek a kapacitás foglalása felett lévő betöltött adat töredékének megfelelően. A fürterőforrás nem számít fel díjat, ha a napi munkaterületre betöltött teljes adatmennyiség meghaladja a kapacitás foglalását.
 
 A fürt számlázási beállításaiban az adatmegőrzési díj a munkaterületen történik. Vegye figyelembe, hogy a fürt számlázása a fürt létrehozásakor kezdődik, függetlenül attól, hogy a munkaterületek hozzá lettek-e rendelve a fürthöz. Azt is vegye figyelembe, hogy a fürthöz társított munkaterületek már nem rendelkeznek díjszabási csomaggal.
 
@@ -90,15 +90,15 @@ A munkaterület Log Analytics díjszabási szintjének módosításához
 
 2. Tekintse át az egyes díjszabási szintek becsült költségeit. Ez a becslés az elmúlt 31 nap használaton alapul, ezért ez a költségbecslés az utolsó 31 napra támaszkodik, amely jellemző a szokásos használatra. Az alábbi példában láthatja, hogy az elmúlt 31 nap adatmintái alapján ez a munkaterület a 100 GB/nap kapacitás foglalási szintjéhez képest (#1) alacsonyabb, mint az utólagos elszámolású csomagnál (#2).  
 
-    ![Árképzési szintek](media/manage-cost-storage/pricing-tier-estimated-costs.png)
+    ![Tarifacsomagok](media/manage-cost-storage/pricing-tier-estimated-costs.png)
 
-3. A becsült költségeknek az utolsó 31 nap használaton alapuló áttekintése után, ha úgy dönt, hogy megváltoztatja az árképzési szintet, kattintson a **kiválasztás**elemre.  
+3. A becsült költségeknek az utolsó 31 nap használaton alapuló áttekintése után, ha úgy dönt, hogy megváltoztatja az árképzési szintet, kattintson a **kiválasztás** elemre.  
 
 [Az árképzési szintet Azure Resource Manager használatával is beállíthatja](../samples/resource-manager-workspace.md) a `sku` ( `pricingTier` Azure Resource Manager sablonban) paraméterrel. 
 
 ## <a name="legacy-pricing-tiers"></a>Örökölt tarifacsomagok
 
-Azok az előfizetések, amelyek Log Analytics munkaterülettel vagy Application Insights-erőforrással rendelkeztek, 2018. április 2. előtt, vagy egy, a 2019. február 1. előtt elindított Nagyvállalati Szerződéshoz kapcsolódnak, továbbra is hozzáférhetnek a korábbi díjszabási szintek használatához: **ingyenes**, **különálló (GB-onként)** és **/node (OMS)**.  Az ingyenes díjszabási szinten lévő munkaterületek napi adatfeldolgozása a 500 MB-ra korlátozódik (kivéve a [Azure Security Center](../../security-center/index.yml)által gyűjtött biztonsági adattípusokat), és az adatmegőrzés legfeljebb 7 napig tart. Az ingyenes díjszabási csomag kizárólag értékelési célokra szolgál. Az önálló vagy a csomópontok díjszabási szintjein lévő munkaterületek esetében a felhasználó által konfigurálható megőrzési idő 30 – 730 nap.
+Azok az előfizetések, amelyek Log Analytics munkaterülettel vagy Application Insights-erőforrással rendelkeztek, 2018. április 2. előtt, vagy egy, a 2019. február 1. előtt elindított Nagyvállalati Szerződéshoz kapcsolódnak, továbbra is hozzáférhetnek a korábbi díjszabási szintek használatához: **ingyenes** , **különálló (GB-onként)** és **/node (OMS)**.  Az ingyenes díjszabási szinten lévő munkaterületek napi adatfeldolgozása a 500 MB-ra korlátozódik (kivéve a [Azure Security Center](../../security-center/index.yml)által gyűjtött biztonsági adattípusokat), és az adatmegőrzés legfeljebb 7 napig tart. Az ingyenes díjszabási csomag kizárólag értékelési célokra szolgál. Az önálló vagy a csomópontok díjszabási szintjein lévő munkaterületek esetében a felhasználó által konfigurálható megőrzési idő 30 – 730 nap.
 
 Az önálló árképzési szinten történő használatért a betöltött adatmennyiséget számoljuk fel. A jelentés a **log Analytics** szolgáltatásban szerepel, és a mérőszám neve "adatelemzés". 
 
@@ -210,7 +210,7 @@ Beállíthatja a napi korlátot, és korlátozhatja a napi betöltést a munkate
 
 Minden munkaterület napi korlátja a nap egy másik óráján érvényes. Az alaphelyzetbe állítási óra a **napi korlát** oldalon látható (lásd alább). Ez az átállítási óra nem konfigurálható. 
 
-A napi korlát elérésekor a számlázható adattípusok gyűjteménye a nap hátralevő részében leáll. A napi korlát alkalmazásával járó késés azt jelenti, hogy a kupakot nem alkalmazzák pontosan a megadott napi korlát szintjén. A kijelölt Log Analytics munkaterülethez tartozó oldal tetején megjelenik egy figyelmeztető szalagcím, és a **LogManagement** kategóriában a *művelet* táblába egy műveleti esemény érkezik. Az adatgyűjtés a *napi korlát*alatt megadott alaphelyzetbe állítás időpontját követően fog folytatódni. Javasoljuk, hogy a műveleti esemény alapján határozzon meg egy riasztási szabályt, amely úgy van konfigurálva, hogy értesítést kapjon a napi adatkorlát elérésekor. 
+A napi korlát elérésekor a számlázható adattípusok gyűjteménye a nap hátralevő részében leáll. A napi korlát alkalmazásával járó késés azt jelenti, hogy a kupakot nem alkalmazzák pontosan a megadott napi korlát szintjén. A kijelölt Log Analytics munkaterülethez tartozó oldal tetején megjelenik egy figyelmeztető szalagcím, és a **LogManagement** kategóriában a *művelet* táblába egy műveleti esemény érkezik. Az adatgyűjtés a *napi korlát* alatt megadott alaphelyzetbe állítás időpontját követően fog folytatódni. Javasoljuk, hogy a műveleti esemény alapján határozzon meg egy riasztási szabályt, amely úgy van konfigurálva, hogy értesítést kapjon a napi adatkorlát elérésekor. 
 
 > [!NOTE]
 > A napi korlát nem tudja leállítani az adatgyűjtést a megadott Cap-szintnek megfelelően, és néhány felesleges adatmennyiség várható, különösen akkor, ha a munkaterület nagy mennyiségű adattal rendelkezik.  
@@ -393,7 +393,7 @@ find where TimeGenerated > ago(24h) project _IsBillable, Computer
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Adatmennyiség Azure-erőforrás, erőforráscsoport vagy előfizetés alapján
 
-Az Azure-ban üzemeltetett csomópontokból származó adatok esetén a __számítógépeken__tárolt adatok **mérete** megszerezhető, a _ResourceId [tulajdonságot](./log-standard-columns.md#_resourceid)használva, amely az erőforrás teljes elérési útját biztosítja:
+Az Azure-ban üzemeltetett csomópontokból származó adatok esetén a __számítógépeken__ tárolt adatok **mérete** megszerezhető, a _ResourceId [tulajdonságot](./log-standard-columns.md#_resourceid)használva, amely az erőforrás teljes elérési útját biztosítja:
 
 ```kusto
 find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
@@ -401,7 +401,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by BillableDataBytes nulls last
 ```
 
-Az Azure-ban üzemeltetett csomópontokból származó adatok esetében az __Azure-előfizetések által__beolvasott adatok **mérete** megszerezhető, és az előfizetés azonosítója a tulajdonság a következő `_ResourceId` :
+Az Azure-ban üzemeltetett csomópontokból származó adatok esetében az __Azure-előfizetések által__ beolvasott adatok **mérete** megszerezhető, és az előfizetés azonosítója a tulajdonság a következő `_ResourceId` :
 
 ```kusto
 find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
@@ -432,7 +432,7 @@ Azt is megteheti `_ResourceId` , hogy a teljes mértékben, ha szükséges, a
 > Ezekben a `find` lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](../log-query/query-optimization.md#query-performance-pane) végrehajtáshoz. Ha nincs szüksége az eredményekre az előfizetés, a erőforrás-csoport vagy az erőforrás neve alapján, akkor a lekérdezés a használati adatok típusát adja meg.
 
 > [!WARNING]
-> A használati adattípus egyes mezői, miközben még mindig a séma része, elavultak, és az értékek már nem lesznek feltöltve. Ezek a **számítógépek** , valamint a betöltéssel kapcsolatos mezők (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** és **AverageProcessingTimeMs**).
+> A használati adattípus egyes mezői, miközben még mindig a séma része, elavultak, és az értékek már nem lesznek feltöltve. Ezek a **számítógépek** , valamint a betöltéssel kapcsolatos mezők ( **TotalBatches** , **BatchesWithinSla** , **BatchesOutsideSla** , **BatchesCapped** és **AverageProcessingTimeMs** ).
 
 
 ### <a name="querying-for-common-data-types"></a>Gyakori adattípusok lekérdezése
@@ -601,7 +601,7 @@ Ha riasztást szeretne kapni, ha az elmúlt 24 órában betöltött számlázhat
 - A **Riasztási feltételek** résznél az alábbiakat adja meg:
    - A **Jel neve** legyen **Egyéni naplókeresés**
    - **Lekérdezés keresése** a következőre: `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Ha másikat szeretne 
-   - A **Riasztási logika****alapja legyen az ** *eredmények száma*, a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték **: *0*
+   - A **Riasztási logika****alapja legyen az** *eredmények száma* , a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték** : *0*
    - *1440* perces **időtartam** , a **riasztások gyakorisága** minden *1440* percre, naponta egyszer fut.
 - **Határozza meg a riasztás részleteit** az alábbiak megadásával:
    - Az *50 GB-nál nagyobb számlázható adatmennyiség 24 órán belüli* **neve**

@@ -7,12 +7,12 @@ ms.date: 11/09/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: b619b258084b457621ad1a5650aaf621df9677a7
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 021628b92f1068743b097a455306df742f308f86
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376502"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427683"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Rövid útmutató: a Tudásbázis és a REST használata a Tudásbázis kezeléséhez
 
@@ -412,10 +412,10 @@ A válasz állapota 204, és nincs találat. A `-v` parancssori paraméter haszn
 
 ---
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
-* [Szerzői műveletek](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) Dokumentáció
-* [Futtatókörnyezet](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/) Dokumentáció
+* [Szerzői műveletek](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) Dokumentáció
+* [Futtatókörnyezet](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime) Dokumentáció
 * [BASH-parancsfájlok minta a cURL használatával](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
 
 ## <a name="next-steps"></a>Következő lépések

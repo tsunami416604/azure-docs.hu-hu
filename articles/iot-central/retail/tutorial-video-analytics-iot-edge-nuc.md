@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: b74c7c3e9678c89edbe90d648520b9526c8fb569
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e2e97b857f648390ec017a529115b23c4f17a68d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748653"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427989"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Oktatóanyag: IoT Edge-példány létrehozása a video analyticshez (Intel NUC)
 
@@ -117,9 +117,9 @@ Konfigurálja IoT Edge a IoT Central alkalmazás regisztrálásához és a hozz�
 
 1. A helyére írja be az `{scope_id}` **azonosító hatókört** , amelyet az előző oktatóanyag *scratchpad.txt* fájljában jegyzett készített.
 
-1. Cserélje le az `{registration_id}` *LVA-Gateway-001* , az előző oktatóanyagban létrehozott eszközt.
+1. Cserélje le az `{registration_id}` *átjáró-001* , az előző oktatóanyagban létrehozott eszközt.
 
-1. A helyére írja `{symmetric_key}` be az **LVA-Gateway-001** eszköz **elsődleges kulcsát** , és jegyezze fel az előző oktatóanyag *scratchpad.txt* fájljában.
+1. A helyére írja `{symmetric_key}` be az **átjáró-001** eszköz **elsődleges kulcsát** , és jegyezze fel az előző oktatóanyag *scratchpad.txt* fájljában.
 
 1. Futtassa a következő parancsot a IoT Edge démon újraindításához:
 

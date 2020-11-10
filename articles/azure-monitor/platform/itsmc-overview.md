@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: c34cd8e399a005f5eadb3751fb0575f6ecfc27ed
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 90a5f0f84c72895a8450a42260b07f6dbea15e37
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380878"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94428027"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -28,6 +28,9 @@ A ITSMC a következő ITSM-eszközökkel támogatja a kapcsolatokat:
 -   System Center Service Manager
 -   Megjelenő
 -   Cherwell
+
+   >[!NOTE]
+> Az 1 – Oct-2020 Cherwell és az Azure-riasztással rendelkező ITSM-integrációk már nem lesznek engedélyezve az új ügyfelek számára. Az új ITSM-kapcsolatok nem lesznek támogatottak. A meglévő ITSM-kapcsolatok támogatottak lesznek.
 
 A ITSMC a következőket teheti:
 
@@ -150,7 +153,8 @@ Munkaelemek létrehozásához kövesse az alábbi eljárást:
 
    ![A ITSM-jegy ablakát megjelenítő képernyőkép.](media/itsmc-overview/itsm-action-configuration.png)
    
-   * Ha a munkaelem legördülő menüben a "esemény" lehetőséget választja: Ha a választógombok kiválasztásakor a különböző munkaelemek **létrehozása** lehetőséget választja, minden riasztás új munkaelemet fog létrehozni. Ha a választógombok kiválasztásakor az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása lehetőséget választja, minden konfigurációs elemnek saját munkaeleme lesz. 
+   * Ha a munkaelem legördülő menüben a "esemény" lehetőséget választja: Ha a választógombok kiválasztásakor a különböző munkaelemek **létrehozása** lehetőséget választja, minden riasztás új munkaelemet fog létrehozni. Ha a választógombok kiválasztásakor az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása lehetőséget választja, minden konfigurációs elemnek saját munkaeleme lesz.
+   ![A ITSM-jegy ablakát megjelenítő képernyőkép.](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. Kattintson az **OK** gombra.
 
@@ -249,7 +253,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Tervezett befejezési dátum
 - Munka kezdő dátuma
 - Munka befejezési dátuma
-- Leírás
+- Description
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow incidens kimeneti adatkészlete
@@ -296,7 +300,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | PlannedEndDate_t  |   Tervezett befejezési dátum |
 | WorkStartDate_t  | Tényleges kezdési dátum |
 | WorkEndDate_t | Tényleges befejezési dátum|
-| Description_s | Leírás |
+| Description_s | Description |
 | Computer  | Konfigurációs tétel |
 
 

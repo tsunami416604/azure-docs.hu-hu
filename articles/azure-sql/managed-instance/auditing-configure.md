@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 8d067d30220c76de5617aab2c42365351888d744
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 393fceaa91600ab143912bb3af38c349f29f770a
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780019"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427938"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Ismerkedés az Azure SQL felügyelt példányok naplózásával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -118,7 +118,7 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
         GO
         ```
 
-        Folytassa [a kiszolgáló naplózási specifikációjának vagy adatbázis-naplózási specifikációjának létrehozásával](#createspec).
+     1. Folytassa [a kiszolgáló naplózási specifikációjának vagy adatbázis-naplózási specifikációjának létrehozásával](#createspec).
 
    - <a id="blobssms"></a>BLOB Storage konfigurálása a naplókhoz a SQL Server Management Studio 18 (előzetes verzió) használatával:
 
@@ -234,15 +234,15 @@ Az Azure SQL felügyelt példányaiban és SQL Serverban található adatbáziso
 - Az Azure SQL felügyelt példányain a naplózás a kiszolgáló szintjén működik, és a `.xel` naplófájlokat az Azure Blob Storage-ban tárolja.
 - SQL Server a naplózás a kiszolgáló szintjén működik, de az eseményeket a fájlrendszer/Windows eseménynaplókban tárolja.
 
-A felügyelt példányok XEvent-naplózása támogatja az Azure Blob Storage-célokat. A fájl-és Windows-naplók **nem támogatottak** .
+A felügyelt példányok XEvent-naplózása támogatja az Azure Blob Storage-célokat. A fájl-és Windows-naplók **nem támogatottak**.
 
 Az `CREATE AUDIT` Azure Blob Storage-ba való naplózás szintaxisának főbb eltérései a következők:
 
 - A rendszer új szintaxist `TO URL` biztosít, és lehetővé teszi az Azure Blob Storage-tároló URL-címének megadását, ahol a `.xel` fájlok el vannak helyezve.
 - A rendszer új szintaxist `TO EXTERNAL MONITOR` biztosít a Event Hubs és Azure monitor naplózási célok engedélyezéséhez.
 - A szintaxis `TO FILE` **nem támogatott** , mert az Azure SQL felügyelt példánya nem fér hozzá a Windows-fájlmegosztást.
-- A Leállítás beállítás **nem támogatott** .
-- `queue_delay` a 0 érték **nem támogatott** .
+- A Leállítás beállítás **nem támogatott**.
+- `queue_delay` a 0 érték **nem támogatott**.
 
 ## <a name="next-steps"></a>Következő lépések
 

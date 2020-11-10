@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 54d5fdf1f6bc905482186475302901c46de0d285
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 19d464f0148572f30ecd0c3ab1dcee7bd0315b87
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380126"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427802"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -58,7 +58,7 @@ Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja
 ## <a name="data-completeness"></a>Az adatteljesség
 Az adatexportálás továbbra is újra próbálkozik az adatok küldésével akár 30 percig, ha a cél nem érhető el. Ha a 30 perc elteltével sem érhető el, akkor a rendszer elveti az adatvesztést, amíg a célhely elérhetővé nem válik.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Költség
 Az adatexportálási szolgáltatáshoz jelenleg nem számítunk fel további díjakat. Az adatexportálás díjszabása a jövőben lesz bejelentve, és a számlázás megkezdése előtt megjelenő értesítés. Ha úgy dönt, hogy az adatexportálást a felmondási időszak után is használja, akkor a díjszabást a vonatkozó díjak alapján számítjuk fel.
 
 ## <a name="export-destinations"></a>Célhelyek exportálása
@@ -77,8 +77,9 @@ Log Analytics adatexportálás írási blobokat írhat a nem módosítható tár
 ### <a name="event-hub"></a>Eseményközpont
 A rendszer közel valós időben küldi el az adatait az Event hub számára, mivel Azure Monitor. A rendszer minden olyan adattípushoz létrehoz egy Event hub *-* t, amelyet a név és a tábla neve után exportál. Például a *SecurityEvent* tábla egy *am-SecurityEvent* nevű Event hub számára fog eljuttatni. Ha azt szeretné, hogy az exportált adatai egy adott esemény központhoz jussanak, vagy ha olyan névvel rendelkezik, amely meghaladja az 47 karakteres korlátot, akkor megadhatja a saját Event hub-nevét, és exportálhatja a megadott táblák összes adatait.
 
-Az exportált adatok mennyisége gyakran növekszik az idő múlásával, és az Event hub-méretezést növelni kell a nagyobb adatátviteli sebesség kezelésére, valamint a szabályozás és az adatkésés elkerülésére. A Event Hubs automatikus feltöltési funkciójának használatával automatikusan méretezheti és növelheti az átviteli egységek számát, és megfelel a használati igényeknek. A részletekért lásd: az [Azure Event Hubs átviteli egységek automatikus vertikális felskálázása](../../event-hubs/event-hubs-auto-inflate.md) .
-
+Szempontok:
+1. Az "alapszintű" Event hub SKU támogatja a kisebb méretű események [korlátját](https://docs.microsoft.com/azure/event-hubs/event-hubs-quotas#basic-vs-standard-tiers) , és a munkaterület egyes naplói túllépik azt, és el is lehet dobni. Javasoljuk, hogy a "standard" vagy a "dedikált" Event hub legyen az Exportálás célhelye.
+2. Az exportált adatok mennyisége gyakran növekszik az idő múlásával, és az Event hub-méretezést növelni kell a nagyobb adatátviteli sebesség kezelésére, valamint a szabályozás és az adatkésés elkerülésére. A Event Hubs automatikus feltöltési funkciójának használatával automatikusan méretezheti és növelheti az átviteli egységek számát, és megfelel a használati igényeknek. A részletekért lásd: az [Azure Event Hubs átviteli egységek automatikus vertikális felskálázása](../../event-hubs/event-hubs-auto-inflate.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 A következő előfeltételek szükségesek, amelyeket a Log Analytics adatexportálás konfigurálása előtt kell végrehajtani.
