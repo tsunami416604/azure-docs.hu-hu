@@ -8,21 +8,21 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 11/10/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85d392323b24df3cede196d2c68f05c9522b2293
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfaef4460df040ecc9b055fba83d33a3b687b200
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458297"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505376"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
 Video Indexer összevonja a Microsoft által kínált különböző hang-és video mesterséges intelligencia (AI) technológiákat egy integrált szolgáltatásba, ami egyszerűbbé teszi a fejlesztést. Az API-k úgy lettek kialakítva, hogy lehetővé tegyék a fejlesztők számára a Media AI-technológiák felhasználását anélkül, hogy aggódniuk kellene a Felhőbeli platformok méretezésével, globális elérhetőségével, rendelkezésre állásával Az API-val fájlokat tölthet fel, részletes videó-elemzéseket kaphat, beolvashatja a beágyazható betekintést és a lejátszó widgetek URL-címeit.
 
-A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. Fizetős megoldásként létrehozhat egy Video Indexer fiókot, amely az [Azure-előfizetéshez és egy Azure Media Services-fiókhoz csatlakozik](connect-to-azure.md). Ön az indexelt perceket és az Azure Media Services-fiókkal kapcsolatos díjakat fizeti ki.
+A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. Fizetős megoldásként létrehozhat egy Video Indexer fiókot, amely az [Azure-előfizetéshez és egy Azure Media Services-fiókhoz csatlakozik](connect-to-azure.md). Az indexelt percek megfizetése után további információért lásd a [Media Services díjszabását](https://azure.microsoft.com/pricing/details/media-services/).
 
 Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Indexer API](https://api-portal.videoindexer.ai/) előnyeit.
 
@@ -45,7 +45,7 @@ Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Index
     > [!NOTE]
     > Az új felhasználók automatikusan feliratkoznak az Engedélyezési API-ra.
     
-    Az előfizetés után megtalálhatja az előfizetését a **termékek**  ->  **engedélyezése**lehetőség alatt. Az előfizetés lapon megtalálhatja az elsődleges és a másodlagos kulcsot. A kulcsok védelmet igényelnek. Csak a kiszolgálókód használhatja a kulcsokat. Nem lesznek elérhetők az ügyféloldali oldalon (. js,. html stb.).
+    Az előfizetés után megtalálhatja az előfizetését a **termékek**  ->  **engedélyezése** lehetőség alatt. Az előfizetés lapon megtalálhatja az elsődleges és a másodlagos kulcsot. A kulcsok védelmet igényelnek. Csak a kiszolgálókód használhatja a kulcsokat. Nem lesznek elérhetők az ügyféloldali oldalon (. js,. html stb.).
 
     ![Előfizetés és kulcsok a Video Indexer fejlesztői portálon](./media/video-indexer-use-apis/video-indexer-api03.png)
 
@@ -62,9 +62,9 @@ A Műveleti API-ba irányuló összes hívást társítani kell egy hozzáféré
 - Fiók szintje: a fiók szintű hozzáférési tokenek lehetővé teszik, hogy a **fiók** szintjén vagy a **videó** szintjén hajtson végre műveleteket. Például a videó feltöltése, az összes videó listázása, a videó-felismerések beolvasása és így tovább.
 - Videó szintje: a videó szintű hozzáférési tokenek lehetővé teszik a műveletek végrehajtását egy adott **videón**. Például lekérheti a videós ismereteket, letöltheti a feliratokat, lekérheti a widgeteket és így tovább.
 
-Megadhatja, hogy ezek a tokenek csak olvashatók-e, vagy hogy a **allowEdit = TRUE/FALSE érték**megadásával engedélyezzék-e a szerkesztést.
+Megadhatja, hogy ezek a tokenek csak olvashatók-e, vagy hogy a **allowEdit = TRUE/FALSE érték** megadásával engedélyezzék-e a szerkesztést.
 
-A kiszolgálók közötti legtöbb forgatókönyv esetén valószínűleg ugyanazt a **fiókot** fogja használni, mivel a **fiók** -és a **videó** -műveleteket is magában foglalja. Ha azonban úgy tervezi, hogy az ügyféloldali hívásokat Video Indexer (például a JavaScriptből) szeretné használni, akkor a **videó** -hozzáférési token használatával megakadályozhatja, hogy az ügyfelek hozzáférjenek a teljes fiókhoz. Ez azt is indokolja, hogy amikor Video Indexer-ügyfél-kódot ágyaz be az ügyfélbe (például a **beolvasások beolvasása widget** vagy a **Player widget beszerzése**), meg kell adnia egy **videó** -hozzáférési jogkivonatot.
+A kiszolgálók közötti legtöbb forgatókönyv esetén valószínűleg ugyanazt a **fiókot** fogja használni, mivel a **fiók** -és a **videó** -műveleteket is magában foglalja. Ha azonban úgy tervezi, hogy az ügyféloldali hívásokat Video Indexer (például a JavaScriptből) szeretné használni, akkor a **videó** -hozzáférési token használatával megakadályozhatja, hogy az ügyfelek hozzáférjenek a teljes fiókhoz. Ez azt is indokolja, hogy amikor Video Indexer-ügyfél-kódot ágyaz be az ügyfélbe (például a **beolvasások beolvasása widget** vagy a **Player widget beszerzése** ), meg kell adnia egy **videó** -hozzáférési jogkivonatot.
 
 A művelet leegyszerűsítése érdekében használhatja az **Engedélyezési** API **GetAccounts** parancsát, ha a fiókjait a felhasználói jogkivonat beszerzése előtt szeretné lekérni. Lekérheti az érvényes jogkivonattal rendelkező fiókokat is, így nem kell még egy hívással fiókjogkivonatot lekérnie.
 
@@ -76,7 +76,7 @@ Készen áll az API-val való integráció megkezdésére. Itt megtalálhatja [a
 
 A Fiókazonosító paraméterre minden műveleti API-híváshoz szükség van. A fiókazonosító egy GUID, és az alábbi módokon szerezhető be:
 
-* A fiókazonosító lekérése a **Video Indexer webhelyen**:
+* A fiókazonosító lekérése a **Video Indexer webhelyen** :
 
     1. Nyissa meg a [Video Indexer](https://www.videoindexer.ai/) webhelyét, és jelentkezzen be.
     2. Lépjen a **Settings** (Beállítások) lapra.
@@ -103,9 +103,9 @@ A Fiókazonosító paraméterre minden műveleti API-híváshoz szükség van. A
 
 Ebben a részben a Video Indexer API használatára vonatkozó javaslatokat talál.
 
-- Ha egy videó feltöltését tervezi, azt javasoljuk, hogy helyezze el a fájlt egy nyilvános hálózati helyen (például OneDrive). Kérje le a videóra mutatkozó hivatkozást, és adja meg az URL-címet a feltöltendő fájl paramétereként.
+- Ha egy videó feltöltését tervezi, azt javasoljuk, hogy a fájlt egy nyilvános hálózati helyen (például egy Azure Blob Storage-fiókban) helyezze el. Kérje le a videóra mutatkozó hivatkozást, és adja meg az URL-címet a feltöltendő fájl paramétereként.
 
-    A Video Indexer számára megadott URL-címnek egy médiafájlra (audió- vagy videófájlra) kell mutatnia. A OneDrive által létrehozott hivatkozások egy része a fájlt tartalmazó HTML-lapra mutat. Az URL-cím egyszerű ellenőrzése a böngészőbe való beillesztés – ha a fájl letöltése megkezdődik, valószínűleg egy jó URL-cím. Ha a böngésző megjelenít valamilyen vizualizációt, valószínűleg nem egy fájlra, hanem egy HTML-lapra mutató hivatkozás.
+    A Video Indexer számára megadott URL-címnek egy médiafájlra (audió- vagy videófájlra) kell mutatnia. Az URL-cím (vagy SAS URL-cím) egyszerű ellenőrzése, hogy egy böngészőben illessze be a fájlt, ha a fájl a lejátszást vagy a letöltést indítja el, valószínűleg jó URL-cím lesz. Ha a böngésző megjelenít valamilyen vizualizációt, valószínűleg nem egy fájlra, hanem egy HTML-lapra mutató hivatkozás.
 
 - Amikor meghívja az adott videóhoz tartozó videóelemzéseket lekérő API-t, részletes JSON-kimenetet kap a válasz tartalmaként. [A visszaadott JSON-ról ebben a témakörben találhat részleteket](video-indexer-output-json-v2.md).
 
@@ -215,5 +215,5 @@ Debug.WriteLine(playerWidgetLink);
 ## <a name="next-steps"></a>Következő lépések
 
 - [A kimeneti JSON részleteinek vizsgálata](video-indexer-output-json-v2.md)
-- Tekintse meg a videó feltöltésének és indexelésének fontos aspektusát bemutató [mintakód](https://github.com/Azure-Samples/media-services-video-indexer) használatát. Az wil kód követésével jól szemlélteti, hogyan használható az API az alapszintű funkciókhoz. Olvassa el a beágyazott megjegyzéseket, és figyelje meg az ajánlott eljárásokkal kapcsolatos tanácsokat.
+- Tekintse meg a videó feltöltésének és indexelésének fontos aspektusát bemutató [mintakód](https://github.com/Azure-Samples/media-services-video-indexer) használatát. A kód követésével jól megtudhatja, hogyan használhatja API-ját alapszintű funkciókhoz. Olvassa el a beágyazott megjegyzéseket, és figyelje meg az ajánlott eljárásokkal kapcsolatos tanácsokat.
 

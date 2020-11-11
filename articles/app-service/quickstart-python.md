@@ -2,16 +2,16 @@
 title: 'Gyors útmutató: Python-alkalmazás létrehozása'
 description: Ismerkedjen meg Azure App Service az első Python-alkalmazás üzembe helyezésével a App Service Linux-tárolójában.
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: c77465997f74d0f279080a68fd317af0d161127a
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b32977ac1c8cfe0c461bcd1628c08a0ca215ba93
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357521"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506192"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -64,7 +64,7 @@ Ez a parancs egy böngészőt nyit meg a hitelesítő adatok összegyűjtéséhe
 
 Miután bejelentkezett, futtathatja az Azure-parancsokat az Azure CLI-vel, hogy az előfizetésében lévő erőforrásokkal működjön.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
+Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="clone-the-sample"></a>A minta klónozása
 
@@ -96,7 +96,7 @@ cd python-docs-hello-django
 
 A minta olyan keretrendszer-specifikus kódot tartalmaz, amelyet az alkalmazás indításakor Azure App Service felismeri. További információ: [tároló indítási folyamata](configure-language-python.md#container-startup-process).
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
+Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
@@ -146,7 +146,7 @@ A minta olyan keretrendszer-specifikus kódot tartalmaz, amelyet az alkalmazás 
 1. A terminál ablakban a **CTRL** C billentyűkombináció lenyomásával + **C** lépjen ki a fejlesztői kiszolgálóról.
 ::: zone-end
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
+Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="deploy-the-sample"></a>A minta üzembe helyezése
 
@@ -167,13 +167,13 @@ A parancs végrehajtása több percet is igénybe vehet. A futtatása közben ü
 
 ![Példa az az WebApp up parancs kimenetére](./media/quickstart-python/az-webapp-up-output.png)
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
+Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp).
 
 [!include [az webapp up command note](../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
-Tallózással keresse meg az üzembe helyezett alkalmazást a böngészőben az URL-címen `http://<app-name>.azurewebsites.net` . Az alkalmazás első indításakor eltarthat néhány percet.
+Tallózással keresse meg az üzembe helyezett alkalmazást a böngészőben az URL-címen `http://<app-name>.azurewebsites.net` . Az alkalmazás elindításához akár egy-két percet is igénybe vehet, így ha megjelenik egy alapértelmezett alkalmazás lap, várjon egy percet, és frissítse a böngészőt.
 
 A Python-mintakód egy beépített rendszerképpel futtatja App Service Linux-tárolóját.
 
@@ -181,7 +181,7 @@ A Python-mintakód egy beépített rendszerképpel futtatja App Service Linux-t�
 
 **Gratulálunk!** A Python-alkalmazás üzembe helyezése App Service.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
+Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="redeploy-updates"></a>Frissítések újratelepítése
 
@@ -218,7 +218,7 @@ Az üzembe helyezés befejezése után váltson vissza a böngészőablakra, és
 
 ![Frissített minta Python-alkalmazás futtatása az Azure-ban](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
+Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp).
 
 > [!TIP]
 > A Visual Studio Code hatékony bővítményeket biztosít a Python és a Azure App Service számára, ami leegyszerűsíti a Python-webalkalmazások App Serviceba való üzembe helyezésének folyamatát. További információ: [Python-alkalmazások üzembe helyezése a Visual Studio Code-ból App Service](/azure/python/tutorial-deploy-app-service-on-linux-01).
@@ -241,7 +241,7 @@ A naplófájlokat a böngészőből is megtekintheti a következő címen: `http
 
 Ha bármikor le szeretné állítani a naplózási adatfolyamot, nyomja le a **CTRL** + **C** billentyűkombinációt a terminálon.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
+Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
@@ -259,7 +259,7 @@ Az alkalmazás kiválasztása megnyitja az **Áttekintés** lapot, ahol olyan al
 
 A App Service menü különböző lapokat biztosít az alkalmazás konfigurálásához.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
+Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -275,7 +275,7 @@ A parancs az *. Azure/config* fájlban gyorsítótárazott erőforráscsoport-ne
 
 Az `--no-wait` argumentum lehetővé teszi, hogy a parancs visszaadja a műveletet a művelet befejeződése előtt.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
+Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6ffa7bb07ddb42946acdcef6ee3b7f2aa804f774
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f3ed5f3940a9b02701ad2f3c779b791e128e288c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324299"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506345"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>Rövid útmutató: dedikált SQL-készlet létrehozása a szinapszis Studio használatával
 
@@ -75,6 +75,8 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
     > Vegye figyelembe, hogy a dedikált SQL-készletek által használható nevekre vonatkozó korlátozások érvényesek. A nevek nem tartalmazhatnak speciális karaktereket, csak 15 karakterből állhatnak, és nem tartalmazhatnak fenntartott szavakat, és egyedinek kell lenniük a munkaterületen.
 
 4. A következő lapon a **További beállítások** területen válassza a **nincs** lehetőséget, ha az SQL-készletet szeretné kiépíteni az információk nélkül. Az alapértelmezett rendezést hagyja kiválasztva.
+
+    Ha vissza szeretné állítani a dedikált SQL-készletet egy visszaállítási pontról, válassza a **visszaállítási pont** lehetőséget. További információ a visszaállítás végrehajtásáról [: útmutató: meglévő DEDIKÁLT SQL-készlet visszaállítása](backuprestore/restore-sql-pool.md)
 
     ![SQL-készlet folyamat létrehozása – további beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-studio-25.png)
 

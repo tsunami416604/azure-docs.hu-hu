@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0d02532f39d676772e5ee5d6414b802faffba7c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899717"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505937"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Virtuális gépek üzembe helyezése a Azure Stack Edge Pro GPU-eszközön sablonok használatával
 
@@ -79,7 +79,7 @@ Konfigurálja ezeket az előfeltételeket olyan erőforrások létrehozásához,
 Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat, például a Storage-fiókot, a lemezt, a felügyelt lemezt.
 
 > [!IMPORTANT]
-> Az összes erőforrás ugyanabban a helyen jön létre, mint az eszköz, és a hely a **DBELocal**értékre van állítva.
+> Az összes erőforrás ugyanabban a helyen jön létre, mint az eszköz, és a hely a **DBELocal** értékre van állítva.
 
 ```powershell
 New-AzureRmResourceGroup -Name <Resource group name> -Location DBELocal
@@ -149,7 +149,7 @@ Egy tipikus környezetben a DNS-t úgy kell konfigurálni, hogy az összes Stora
 
 ### <a name="optional-install-certificates"></a>Választható Tanúsítványok telepítése
 
-Ugorja át ezt a lépést, ha Storage Explorer *http*-n keresztül fog kapcsolatot létesíteni. Ha *https*-t használ, akkor telepítenie kell a megfelelő tanúsítványokat a Storage Explorer. Ebben az esetben telepítse a blob Endpoint-tanúsítványt. További információ: tanúsítványok létrehozása és feltöltése a [tanúsítványok kezelése](azure-stack-edge-j-series-manage-certificates.md)szolgáltatásban. 
+Ugorja át ezt a lépést, ha Storage Explorer *http* -n keresztül fog kapcsolatot létesíteni. Ha *https* -t használ, akkor telepítenie kell a megfelelő tanúsítványokat a Storage Explorer. Ebben az esetben telepítse a blob Endpoint-tanúsítványt. További információ: tanúsítványok létrehozása és feltöltése a [tanúsítványok kezelése](azure-stack-edge-j-series-manage-certificates.md)szolgáltatásban. 
 
 ### <a name="create-and-upload-a-vhd"></a>Virtuális merevlemez létrehozása és feltöltése
 
@@ -159,11 +159,11 @@ Másolja a korábbi lépésekben létrehozott helyi Storage-fiókban a lapok blo
 
 ### <a name="use-storage-explorer-for-upload"></a>Feltöltés Storage Explorer használata
 
-1. Nyissa meg a Storage Explorert. Válassza a **Szerkesztés** lehetőséget, és győződjön meg arról, hogy az alkalmazás a **Target Azure stack API**-kra van beállítva.
+1. Nyissa meg a Storage Explorert. Válassza a **Szerkesztés** lehetőséget, és győződjön meg arról, hogy az alkalmazás a **Target Azure stack API** -kra van beállítva.
 
     ![Cél beállítása Azure Stack API-kra](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/set-target-apis-1.png)
 
-2. Telepítse az ügyféltanúsítványt PEM formátumban. Válassza az **> SSL-tanúsítványok szerkesztése > tanúsítványok importálása**lehetőséget. Mutasson az ügyféltanúsítványt.
+2. Telepítse az ügyféltanúsítványt PEM formátumban. Válassza az **> SSL-tanúsítványok szerkesztése > tanúsítványok importálása** lehetőséget. Mutasson az ügyféltanúsítványt.
 
     ![BLOB Storage-végpont tanúsítványának importálása](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/import-blob-storage-endpoint-certificate-1.png)
 
@@ -181,27 +181,27 @@ Másolja a korábbi lépésekben létrehozott helyi Storage-fiókban a lapok blo
 
     ![Újraindítás Storage Explorer](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/restart-storage-explorer-1.png)
 
-4. A bal oldali ablaktáblán kattintson a jobb gombbal a **Storage-fiókok** elemre, és válassza a **Kapcsolódás az Azure Storage-hoz**lehetőséget. 
+4. A bal oldali ablaktáblán kattintson a jobb gombbal a **Storage-fiókok** elemre, és válassza a **Kapcsolódás az Azure Storage-hoz** lehetőséget. 
 
     ![Kapcsolódás az Azure Storage-hoz 1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. Válassza a **Tárfióknév és -kulcs használata** lehetőséget. Kattintson a **Tovább** gombra.
+5. Válassza a **Tárfióknév és -kulcs használata** lehetőséget. Válassza a **Tovább** gombot.
 
     ![Kapcsolódás az Azure Storage-hoz 2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. A **kapcsolat neve és kulcsa mezőben**adja **meg a megjelenítendő nevet**, a **Storage-fiók nevét**, az Azure Storage- **fiók kulcsát**. Válassza a **másik** tárolási tartomány lehetőséget, majd adja meg a `<device name>.<DNS domain>` kapcsolatok karakterláncát. Ha nem telepített tanúsítványt a Storage Explorerban, ellenőrizze a **use http** beállítást. Kattintson a **Tovább** gombra.
+6. A **kapcsolat neve és kulcsa mezőben** adja **meg a megjelenítendő nevet** , a **Storage-fiók nevét** , az Azure Storage- **fiók kulcsát**. Válassza a **másik** tárolási tartomány lehetőséget, majd adja meg a `<device name>.<DNS domain>` kapcsolatok karakterláncát. Ha nem telepített tanúsítványt a Storage Explorerban, ellenőrizze a **use http** beállítást. Válassza a **Tovább** gombot.
 
     ![Kapcsolat a névvel és a kulccsal](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
-7. Tekintse át a **kapcsolat összegzését** , és válassza a **Csatlakoztatás**lehetőséget.
+7. Tekintse át a **kapcsolat összegzését** , és válassza a **Csatlakoztatás** lehetőséget.
 
-8. A Storage-fiók megjelenik a bal oldali ablaktáblán. Válassza ki és bontsa ki a Storage-fiókot. Válassza a **blob-tárolók**lehetőséget, kattintson a jobb gombbal, majd válassza a **blob-tároló létrehozása**lehetőséget. Adja meg a blob-tároló nevét.
+8. A Storage-fiók megjelenik a bal oldali ablaktáblán. Válassza ki és bontsa ki a Storage-fiókot. Válassza a **blob-tárolók** lehetőséget, kattintson a jobb gombbal, majd válassza a **blob-tároló létrehozása** lehetőséget. Adja meg a blob-tároló nevét.
 
-9. Válassza ki az imént létrehozott tárolót, és a jobb oldali ablaktáblában válassza a **feltöltés > a fájlok feltöltése**lehetőséget. 
+9. Válassza ki az imént létrehozott tárolót, és a jobb oldali ablaktáblában válassza a **feltöltés > a fájlok feltöltése** lehetőséget. 
 
     ![1. VHD-fájl feltöltése](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-1.png)
 
-10. Tallózással keresse meg a fájlt, és mutasson arra a virtuális merevlemezre, amelyet fel szeretne tölteni a **kiválasztott fájlokban**. Válassza ki a **blob típusát** **lap blobként** , és válassza a **feltöltés**lehetőséget.
+10. Tallózással keresse meg a fájlt, és mutasson arra a virtuális merevlemezre, amelyet fel szeretne tölteni a **kiválasztott fájlokban**. Válassza ki a **blob típusát** **lap blobként** , és válassza a **feltöltés** lehetőséget.
 
     ![A 2. VHD-fájl feltöltése](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-2.png)
 
@@ -402,7 +402,7 @@ A sablon üzembe helyezése `CreateImageAndVnet.json` . Ez a sablon telepíti a 
 
 ### <a name="edit-parameters-file-to-create-vm"></a>Paraméterek szerkesztése virtuális gép létrehozásához
  
-Virtuális gép létrehozásához használja a `CreateVM.parameters.json` paramétert. A következő paramétereket veszi igénybe.
+Virtuális gép létrehozásához használja a `CreateVM.parameters.json` paraméterfájlt. A következő paramétereket veszi igénybe.
     
 ```json
 "vmName": {
@@ -441,7 +441,7 @@ Rendelje hozzá a megfelelő paramétereket a `CreateVM.parameters.json` Azure s
 
 1. Adjon meg egy egyedi nevet, a hálózati csatoló nevét és az ipconfig nevet. 
 1. Adja meg a felhasználónevet, a jelszót és a virtuális gép támogatott méretét.
-1. Adja meg ugyanazt a nevet a **VnetName**, a **SubnetName**és a **imagename** számára a paraméterekben megadott módon `CreateImageAndVnet.parameters.json` . Ha például a VnetName, a subnetName és a ImageName a **vnet1**, a **subnet1**és a **image1**értéket adta meg, akkor ezeket az értékeket is megtarthatja a sablon paramétereinek megfelelően.
+1. Adja meg ugyanazt a nevet a **VnetName** , a **SubnetName** és a **imagename** számára a paraméterekben megadott módon `CreateImageAndVnet.parameters.json` . Ha például a VnetName, a subnetName és a ImageName a **vnet1** , a **subnet1** és a **image1** értéket adta meg, akkor ezeket az értékeket is megtarthatja a sablon paramétereinek megfelelően.
 1. Most szüksége lesz egy statikus IP-címére, amelyet a fent definiált alhálózati hálózaton lévő virtuális géphez szeretne rendelni. Cserélje le a **privateipaddress tulajdonságot** erre a címnek a paraméter fájljában. Ha azt szeretné, hogy a virtuális gép IP-címet kapjon a helyi DHCP-kiszolgálóról, hagyja `privateIPAddress` üresen az értéket.  
     
     ```json
@@ -550,7 +550,8 @@ Telepítse a virtuális gép létrehozási sablonját `CreateVM.json` . Ez a sab
         
         PS C:\07-30-2020>
     ```   
-A parancsot aszinkron módon is futtathatja a `New-AzureRmResourceGroupDeployment` `–AsJob` paraméterrel. Íme egy minta kimenet, amikor a parancsmag a háttérben fut. Ezután lekérdezheti a parancsmag használatával létrehozott feladatok állapotát `Get-Job` .
+
+    A parancsot aszinkron módon is futtathatja a `New-AzureRmResourceGroupDeployment` `–AsJob` paraméterrel. Íme egy minta kimenet, amikor a parancsmag a háttérben fut. Ezután lekérdezheti a parancsmag használatával létrehozott feladatok állapotát `Get-Job` .
 
     ```powershell   
     PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
@@ -568,7 +569,6 @@ A parancsot aszinkron módon is futtathatja a `New-AzureRmResourceGroupDeploymen
      
     Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
     --     ----            -------------   -----         -----------     --------             -------
-    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
     ```
 
 7. Ellenőrizze, hogy a virtuális gép üzembe helyezése sikeres volt-e. Futtassa az alábbi parancsot:
@@ -615,7 +615,7 @@ On the client used to access your Azure Stack Edge Pro device, set up a global v
 
 ### On Windows client 
 
-`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
+`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
 
 ### On Linux client
 

@@ -37,6 +37,10 @@
           href: test-drive-technical-configuration.md
         - name: Az Azure Resource Manager tesztverziója
           href: azure-resource-manager-test-drive.md
+        - name: A szolgáltatott tesztverzió részletes konfigurációja
+          href: test-drive-hosted-detailed-config.md
+        - name: Az Azure-előfizetés beállítása szolgáltatott tesztverziókhoz
+          href: test-drive-azure-subscription-setup.md
     - name: Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
       href: azure-partner-customer-usage-attribution.md
     - name: Piaci bevezetési beállítások
@@ -270,15 +274,15 @@
     - name: A kereskedelmi piactér elemzése
       href: partner-center-portal/analytics.md
     - name: Összegzés irányítópult
-      href: partner-center-portal/summary-dashboard.md
+      href: summary-dashboard.md
     - name: Rendelések irányítópult
-      href: partner-center-portal/orders-dashboard.md
+      href: orders-dashboard.md
     - name: Használat irányítópult
-      href: partner-center-portal/usage-dashboard.md
-    - name: Ügyfél irányítópult
-      href: partner-center-portal/customer-dashboard.md
+      href: usage-dashboard.md
+    - name: Ügyfelek irányítópultja
+      href: customer-dashboard.md
     - name: Marketplace Insights irányítópult
-      href: partner-center-portal/insights-dashboard.md
+      href: insights-dashboard.md
     - name: Letöltések irányítópult
       href: partner-center-portal/downloads-dashboard.md
     - name: Értékelések és vélemények irányítópult

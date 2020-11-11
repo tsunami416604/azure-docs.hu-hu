@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eb17b8286ce994146c1fa9867cd8131a909c8ace
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146688"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504390"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On rendelkezésre állási csoport SQL Server Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,7 +42,7 @@ A redundancia és a magas rendelkezésre állás növeléséhez a SQL Server vir
 A rendelkezésre állási csoport olyan erőforrások csoportosítása, amelyek úgy vannak konfigurálva, hogy ne legyenek két tartomány ugyanabban a rendelkezésre állási zónában. Ezzel megelőzhető, hogy a csoportba tartozó erőforrások több erőforrásra is hatással legyenek az üzembe helyezés során. 
 
 
-## <a name="connectivity"></a>Kapcsolatok 
+## <a name="connectivity"></a>Kapcsolat 
 
 A hagyományos helyszíni telepítés során az ügyfelek a virtuális hálózat neve (VNN) használatával csatlakoznak a rendelkezésre állási csoport figyelője számára, és a figyelő a rendelkezésre állási csoportban lévő megfelelő SQL Server replikához irányítja a forgalmat. Azonban további követelmény, hogy az Azure-hálózaton keresztül irányítsa a forgalmat. 
 
@@ -72,27 +72,26 @@ Első lépésként tekintse meg [a DNN-figyelő konfigurálása](availability-gr
 
 A rendelkezésre állási csoportok több lehetőség közül választhatnak az Azure-beli virtuális gépeken való SQL Server, amelyek némelyike több automatizálással rendelkezik, mint a többi. 
 
-Az alábbi táblázat az elérhető lehetőségek összehasonlítását tartalmazza: 
+Az alábbi táblázat az elérhető lehetőségek összehasonlítását tartalmazza:
 
-| |**[Azure Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)**|**[Gyorsindítás sablonok](availability-group-quickstart-template-configure.md)**|**[Kézi](availability-group-manually-configure-prerequisites-tutorial.md)** | 
-|---------|---------|---------|--------- |---------|
+| | Azure Portal | Azure CLI/PowerShell | Gyorsindítás sablonok | Kézi |
+|---------|---------|---------|---------|---------|
 |**SQL Server-verzió** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server-kiadás** |Enterprise |Enterprise |Enterprise |Enterprise, standard|
-|**Windows Server-verzió**| 2016 + | 2016 + | 2016 + | Mind| 
+|**Windows Server-verzió**| 2016 + | 2016 + | 2016 + | Mind|
 |**Létrehozza a fürtöt**|Igen|Igen | Igen |Nem|
 |**Létrehozza a rendelkezésre állási csoportot** |Igen |Nem|Nem|Nem|
 |**A figyelő és a Load Balancer egymástól függetlenül jön létre** |Nem|Nem|Nem|Igen|
 |**Lehetséges DNN-figyelőt létrehozni ezzel a módszerrel?**|Nem|Nem|Nem|Igen|
-|**WSFC kvórum konfiguráció** n|Felhőbeli tanúsító|Felhőbeli tanúsító|Felhőbeli tanúsító|Mind|
+|**WSFC kvórum konfigurálása**|Felhőbeli tanúsító|Felhőbeli tanúsító|Felhőbeli tanúsító|Mind|
 |**DR több régióban** |Nem|Nem|Nem|Igen|
-|**Többalhálózat támogatása** |Igen|Igen|Igen|Igen|
-|**Meglévő AD támogatása**|Igen|Igen|Igen|Igen|
-|**DR többzónás, ugyanabban a régióban**|Igen|Igen|Igen|Igen|
+|**Többalhálózat támogatása** |Igen|Igen|Igen|Yes|
+|**Meglévő AD támogatása**|Igen|Igen|Igen|Yes|
+|**DR többzónás, ugyanabban a régióban**|Igen|Igen|Igen|Yes|
 |**AD-t nem tartalmazó elosztott AG**|Nem|Nem|Nem|Igen|
 |**Fürt nélküli elosztott AG** |Nem|Nem|Nem|Igen|
-||||||
 
-
+További információ: [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [Gyorsindítás sablonok](availability-group-quickstart-template-configure.md)és [manuális](availability-group-manually-configure-prerequisites-tutorial.md).
 
 ## <a name="considerations"></a>Megfontolandó szempontok 
 

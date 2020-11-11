@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: f6b845ec92a4d0d5365ec0615064bfbc238fd1ba
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 348721304970a5d1d697ecf546a8c5039e81afc1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279712"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506107"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -79,7 +79,7 @@ Ez a parancs egy böngészőt nyit meg a hitelesítő adatok összegyűjtéséhe
 
 Miután bejelentkezett, futtathatja az Azure-parancsokat az Azure CLI-vel, hogy az előfizetésében lévő erőforrásokkal működjön.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 ## <a name="clone-or-download-the-sample-app"></a>A minta alkalmazás klónozása vagy letöltése
 
@@ -116,7 +116,7 @@ A minta úgy is módosul, hogy éles környezetben fusson, például App Service
 
 A termelési beállítások a Django konfigurálására szolgálnak az éles környezetben való futtatásra, és nem kifejezetten App Service. További információ: [Django Deployment ellenőrzőlista](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/). Tekintse meg az Azure-beli [Django üzemi beállításait](configure-language-python.md#production-settings-for-django-apps) is, ha néhány módosítással kapcsolatos információkat talál.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 ## <a name="create-postgres-database-in-azure"></a>Postgres-adatbázis létrehozása az Azure-ban
 
@@ -159,7 +159,7 @@ A parancs befejeződése után egy olyan JSON-objektumot ad vissza, amely külö
 > [!TIP]
 > `-l <location-name>`, az egyik [Azure-régióhoz](https://azure.microsoft.com/global-infrastructure/regions/)is beállítható. Az előfizetéshez elérhető régiókat a paranccsal érheti el [`az account list-locations`](/cli/azure/account#az-account-list-locations) . Éles alkalmazások esetében ugyanazon a helyen helyezze el az adatbázist és az alkalmazást.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 ## <a name="deploy-the-code-to-azure-app-service"></a>A kód üzembe helyezése Azure App Service
 
@@ -194,7 +194,7 @@ Sikeres telepítés esetén a parancs a következő példához hasonló JSON-kim
 
 ![Példa az WebApp up Command output](./media/tutorial-python-postgresql-app/az-webapp-up-output.png)
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 ### <a name="configure-environment-variables-to-connect-the-database"></a>Környezeti változók konfigurálása az adatbázishoz való kapcsolódáshoz
 
@@ -214,7 +214,7 @@ az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNA
 
 A Python-kódban ezeket a beállításokat környezeti változókként, például a következő utasításokkal érheti el `os.environ.get('DBHOST')` . További információ: [hozzáférés környezeti változókhoz](configure-language-python.md#access-environment-variables).
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 ### <a name="run-django-database-migrations"></a>Django adatbázis-áttelepítések futtatása
 
@@ -255,7 +255,7 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
 
 1. Ha hibaüzenet jelenik meg, hogy az adatbázis zárolva van, ellenőrizze, hogy az előző szakaszban futtatta-e a `az webapp settings` parancsot. Ezen beállítások nélkül az áttelepíthető parancs nem tud kommunikálni az adatbázissal, ami a hibát eredményezi.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
     
 ### <a name="create-a-poll-question-in-the-app"></a>Lekérdezési kérdés létrehozása az alkalmazásban
 
@@ -271,7 +271,7 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
 
 **Gratulálunk!** Egy Python Django-webalkalmazást futtat Azure App Service Linux rendszeren, aktív postgres-adatbázissal.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 > [!NOTE]
 > App Service észleli a Django-projektet úgy, hogy minden almappában megkeres egy *WSGI.py* -fájlt, amely `manage.py startproject` alapértelmezés szerint létrehoz. Amikor App Service megkeresi a fájlt, betölti a Django-webalkalmazást. További információ: a [beépített Python-rendszerkép konfigurálása](configure-language-python.md).
@@ -353,7 +353,7 @@ Tesztelje az alkalmazást helyileg a következő lépésekkel:
 
 Helyileg futtatva az alkalmazás egy helyi Sqlite3-adatbázist használ, és nem zavarja az éles adatbázisát. Igény szerint helyi PostgreSQL-adatbázist is használhat az éles környezet jobb szimulálása érdekében.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 ### <a name="update-the-app"></a>Az alkalmazás frissítése
 
@@ -375,7 +375,7 @@ Futtassa újra a fejlesztői kiszolgálót, `python manage.py runserver` és tes
 
 Állítsa le újra a Django webkiszolgálót a **CTRL C billentyűkombinációval** + **C**.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 ### <a name="redeploy-the-code-to-azure"></a>A kód újbóli üzembe helyezése az Azure-ban
 
@@ -387,7 +387,7 @@ az webapp up
 
 Ez a parancs a *. Azure/config* fájlban gyorsítótárazott paramétereket használja. Mivel App Service észleli, hogy az alkalmazás már létezik, csak újra telepíti a kódot.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 ### <a name="rerun-migrations-in-azure"></a>Migrálás újrafuttatása az Azure-ban
 
@@ -404,13 +404,13 @@ source /antenv/bin/activate
 python manage.py migrate
 ```
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 ### <a name="review-app-in-production"></a>Alkalmazás áttekintése éles környezetben
 
 Keresse meg `http://<app-name>.azurewebsites.net` és tesztelje újra az alkalmazást éles környezetben. (Mivel csak az adatbázis mező hosszát módosította, a módosítás csak akkor észlelhető, ha egy kérdés létrehozásakor megpróbál hosszabb választ adni.)
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 ## <a name="stream-diagnostic-logs"></a>Diagnosztikai naplók streamelése
 
@@ -426,7 +426,7 @@ Ha nem jelennek meg azonnal a konzolnaplófájlok, ellenőrizze ismét 30 másod
 
 Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CTRL C billentyűt** + **C**.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 > [!NOTE]
 > A naplófájlokat a böngészőből is megtekintheti a következő címen: `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
@@ -447,7 +447,7 @@ Alapértelmezés szerint a portál az alkalmazás **Áttekintés** oldalát jele
 
 ![A Python Django-alkalmazás kezelése a Azure Portal áttekintés lapján](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -461,7 +461,7 @@ A parancs az *. Azure/config* fájlban gyorsítótárazott erőforráscsoport-ne
 
 Az összes erőforrás törlése hosszabb időt is igénybe vehet. Az `--no-wait` argumentum lehetővé teszi, hogy a parancs azonnal visszalépjen.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
+Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
 ## <a name="next-steps"></a>Következő lépések
 

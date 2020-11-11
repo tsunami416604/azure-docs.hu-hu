@@ -2,20 +2,20 @@
 title: fájlbefoglalás
 description: fájlbefoglalás
 services: azure-communication-services
-author: matthewrobertson
-manager: nimag
+author: tomaschladek
+manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
-ms.author: marobert
-ms.openlocfilehash: 5c9066f369183de3b4cfe19cc5635e8f1b4a94a2
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.author: tchladek
+ms.openlocfilehash: 50819e8746860e72feda194915f75c4630677d0c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779300"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506268"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,16 +27,16 @@ ms.locfileid: "91779300"
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `UserAccessTokensQuickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `AccessTokensQuickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
 
 ```console
-dotnet new console -o UserAccessTokensQuickstart
+dotnet new console -o AccessTokensQuickstart
 ```
 
 Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába, és használja az `dotnet build` parancsot az alkalmazás fordításához.
 
 ```console
-cd UserAccessTokensQuickstart
+cd AccessTokensQuickstart
 dotnet build
 ```
 
@@ -62,22 +62,19 @@ A kezdéshez használja a következő kódot:
 using System;
 using Azure.Communication.Administration;
 
-namespace UserAccessTokensQuickstart
+namespace AccessTokensQuickstart
 {
     class Program
     {
         static async System.Threading.Tasks.Task Main(string[] args)
         {
-            Console.WriteLine("Azure Communication Services - User Access Tokens Quickstart");
+            Console.WriteLine("Azure Communication Services - Access Tokens Quickstart");
 
             // Quickstart code goes here
         }
     }
 }
 ```
-
-[!INCLUDE [User Access Tokens Object Model](user-access-tokens-object-model.md)]
-
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 Inicializáljon egy- `CommunicationIdentityClient` t a saját kapcsolatok karakterláncával. Az alábbi kód egy nevű környezeti változóból kérdezi le az erőforráshoz tartozó kapcsolatok karakterláncát `COMMUNICATION_SERVICES_CONNECTION_STRING` . Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../create-communication-resource.md#store-your-connection-string).
@@ -91,47 +88,57 @@ string ConnectionString = Environment.GetEnvironmentVariable("COMMUNICATION_SERV
 var client = new CommunicationIdentityClient(ConnectionString);
 ```
 
-## <a name="create-a-user"></a>Felhasználó létrehozása
+## <a name="create-an-identity"></a>Identitás létrehozása
 
-Az Azure kommunikációs szolgáltatások egy egyszerűsített identitási könyvtárat tartanak fenn. A `createUser` metódus használatával hozzon létre egy új bejegyzést a címtárban egyedi értékkel `Id` . Az alkalmazás felhasználóinak és a kommunikációs szolgáltatások által generált identitások (például az alkalmazás-kiszolgáló adatbázisában való tárolás) közötti leképezést kell fenntartani.
+Az Azure kommunikációs szolgáltatások egy egyszerűsített identitási könyvtárat tartanak fenn. A `createUser` metódus használatával hozzon létre egy új bejegyzést a címtárban egyedi értékkel `Id` . Tárolja a kapott identitást az alkalmazás felhasználóinak való leképezéssel. Például úgy, hogy az alkalmazás-kiszolgáló adatbázisában tárolja őket. Az identitást később kell megadni a hozzáférési tokenek kiküldéséhez.
 
 ```csharp
-var userResponse = await client.CreateUserAsync();
-var user = userResponse.Value;
-Console.WriteLine($"\nCreated a user with ID: {user.Id}");
+var identityResponse = await client.CreateUserAsync();
+var identity = identityResponse.Value;
+Console.WriteLine($"\nCreated an identity with ID: {identity.Id}");
 ```
 
-## <a name="issue-user-access-tokens"></a>Felhasználói hozzáférési tokenek kiadása
+## <a name="issue-identity-access-tokens"></a>Identitás-hozzáférési tokenek kiadása
 
-A `issueToken` metódus használatával kiállíthatja a kommunikációs szolgáltatások felhasználójának hozzáférési jogkivonatát. Ha nem adja meg a választható `user` paramétert, a rendszer új felhasználót hoz létre, és visszaadja a tokent.
+A `issueToken` metódus használatával kiállíthat egy hozzáférési jogkivonatot a már meglévő kommunikációs szolgáltatások identitásához. A paraméter olyan `scopes` primitívek készletét határozza meg, amelyek engedélyezik ezt a hozzáférési jogkivonatot. Tekintse meg a [támogatott műveletek listáját](../../concepts/authentication.md). A paraméter új példánya az `communicationUser` Azure kommunikációs szolgáltatás identitásának karakterlánc-ábrázolása alapján hozható létre.
 
 ```csharp
-// Issue an access token with the "voip" scope for a new user
-var tokenResponse = await client.IssueTokenAsync(user, scopes: new [] { CommunicationTokenScope.VoIP });
+// Issue an access token with the "voip" scope for an identity
+var tokenResponse = await client.IssueTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
 var token =  tokenResponse.Value.Token;
 var expiresOn = tokenResponse.Value.ExpiresOn;
-Console.WriteLine($"\nIssued a token with 'voip' scope that expires at {expiresOn}:");
+Console.WriteLine($"\nIssued an access token with 'voip' scope that expires at {expiresOn}:");
 Console.WriteLine(token);
 ```
 
-A felhasználói hozzáférési tokenek olyan rövid élettartamú hitelesítő adatok, amelyeket újra kell adni ahhoz, hogy a felhasználók megakadályozzák a szolgáltatás megszakadását. A `expiresOn` Response tulajdonság a jogkivonat élettartamát jelzi.
+A hozzáférési jogkivonatok olyan rövid élettartamú hitelesítő adatok, amelyeket újra kell adni. Ha ezt nem teszi meg, az alkalmazás felhasználói élményének megszakadását okozhatja. A `expiresOn` Response tulajdonság a hozzáférési jogkivonat élettartamát jelzi. 
 
-## <a name="revoke-user-access-tokens"></a>Felhasználói hozzáférési tokenek visszavonása
+## <a name="refresh-access-tokens"></a>Hozzáférési jogkivonatok frissítése
 
-Bizonyos esetekben előfordulhat, hogy explicit módon vissza kell vonnia a felhasználói hozzáférési jogkivonatokat, például amikor egy felhasználó módosítja a szolgáltatásban való hitelesítéshez használt jelszót. Ez a funkció az Azure kommunikációs szolgáltatások felügyeleti ügyféloldali könyvtárán keresztül érhető el.
+Hozzáférési jogkivonat frissítéséhez használja az objektumot az `CommunicationUser` újrakibocsátáshoz:
 
 ```csharp  
-await client.RevokeTokensAsync(user);
-Console.WriteLine($"\nSuccessfully revoked all tokens for user with ID: {user.Id}");
+// Value existingIdentity represents identity of Azure Communication Services stored during identity creation
+identity = new CommunicationUser(existingIdentity);
+tokenResponse = await client.IssueTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
 ```
 
-## <a name="delete-a-user"></a>Felhasználó törlése
+## <a name="revoke-access-tokens"></a>Hozzáférési tokenek visszavonása
 
-Az identitások törlése visszavonja az összes aktív jogkivonatot, és megakadályozza, hogy az identitások számára további jogkivonatokat bocsásson ki. Emellett eltávolítja a felhasználóhoz társított összes megőrzött tartalmat is.
+Bizonyos esetekben explicit módon visszavonhatja a hozzáférési jogkivonatokat. Például amikor egy alkalmazás felhasználója megváltoztatja a szolgáltatásban való hitelesítéshez használt jelszót. `RevokeTokensAsync`A metódus érvényteleníti az összes aktív hozzáférési jogkivonatot, amelyet az identitáshoz adtak ki.
+
+```csharp  
+await client.RevokeTokensAsync(identity);
+Console.WriteLine($"\nSuccessfully revoked all access tokens for identity with ID: {identity.Id}");
+```
+
+## <a name="delete-an-identity"></a>Identitás törlése
+
+Az identitás törlése visszavonja az összes aktív hozzáférési jogkivonatot, és megakadályozza, hogy hozzáférési jogkivonatokat bocsásson ki az identitásokhoz. Emellett eltávolítja az identitáshoz társított összes megőrzött tartalmat is.
 
 ```csharp
-await client.DeleteUserAsync(user);
-Console.WriteLine($"\nDeleted the user with ID: {user.Id}");
+await client.DeleteUserAsync(identity);
+Console.WriteLine($"\nDeleted the identity with ID: {identity.Id}");
 ```
 
 ## <a name="run-the-code"></a>A kód futtatása

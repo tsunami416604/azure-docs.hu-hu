@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 41bbac2032c69861790b806e914827183f83844b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 448707ab84ccca03dc0572d2ebed1b4bd1b6325f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396073"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505291"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
 
@@ -163,11 +163,11 @@ A Visual Studióban hozzon létre egy "Hello-World" nevű ASP.NET Core webalkalm
    ```csharp
    public static IHostBuilder CreateHostBuilder(string[] args) =>
                Host.CreateDefaultBuilder(args)
+                   .UseAzureSpringCloudService()
                    .ConfigureWebHostDefaults(webBuilder =>
                    {
                        webBuilder.UseStartup<Startup>();
-                   })
-                   .UseAzureSpringCloudService();
+                   });
    ```
 
 4. A *Startup.cs* fájlban adjon hozzá egy olyan `using` direktívát és kódot, amely a `ConfigureServices` és metódusok végén a Steeltoe szolgáltatás felderítését használja `Configure` :
@@ -506,7 +506,7 @@ Az előző lépésekben olyan Azure-erőforrásokat hozott létre, amelyek tová
 az group delete --name <your resource group name; for example: hellospring-1558400876966-rg> --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

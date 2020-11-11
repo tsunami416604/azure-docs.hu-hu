@@ -2,15 +2,15 @@
 title: Sablon létrehozása és üzembe helyezése – spec
 description: Megtudhatja, hogyan hozhat létre egy sablont az ARM-sablon alapján. Ezután telepítse a SPECT egy erőforráscsoporthoz az előfizetésében.
 author: tfitzmac
-ms.date: 10/02/2020
+ms.date: 11/10/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: e1bd2f3da8204cf5947d0cf423cd57b023674608
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 96ef5796aac1d0ee02e6bbafc40b7d3bcdea4e2f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728777"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506362"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Gyors útmutató: sablon létrehozása és üzembe helyezése specifikáció (előzetes verzió)
 
@@ -27,7 +27,7 @@ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingye
 
 ## <a name="create-template-spec"></a>Sablon létrehozása – spec
 
-A sablon spec a **Microsoft. Resources/templateSpecs**nevű erőforrástípus. A sablon specifikációjának létrehozásához használhatja a Azure PowerShell, az Azure CLI vagy egy ARM-sablont. Minden lehetőségnél szüksége van egy ARM-sablonra, amely a sablon specifikációjának megfelelően van csomagolva.
+A sablon spec a **Microsoft. Resources/templateSpecs** nevű erőforrástípus. A sablon specifikációjának létrehozásához használhatja a Azure PowerShell, az Azure CLI vagy egy ARM-sablont. Minden lehetőségnél szüksége van egy ARM-sablonra, amely a sablon specifikációjának megfelelően van csomagolva.
 
 A PowerShell és a CLI használatával az ARM-sablon a parancs paraméterként lesz átadva. A ARM-sablonnal a sablon specifikációja a sablonon belül, a spec-definícióban van beágyazva.
 
@@ -35,7 +35,7 @@ Ezek a beállítások alább láthatók.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Ha a PowerShell-lel hoz létre egy sablont, a helyi sablont is átadhatja. Másolja a következő sablont, és mentse helyileg egy **azuredeploy.js**nevű fájlba. Ez a rövid útmutató feltételezi, hogy mentett egy elérési útra **c:\Templates\azuredeploy.js** , de bármilyen elérési utat használhat.
+1. Ha a PowerShell-lel hoz létre egy sablont, a helyi sablont is átadhatja. Másolja a következő sablont, és mentse helyileg egy **azuredeploy.js** nevű fájlba. Ez a rövid útmutató feltételezi, hogy mentett egy elérési útra **c:\Templates\azuredeploy.js** , de bármilyen elérési utat használhat.
 
     :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
 
@@ -47,7 +47,7 @@ Ezek a beállítások alább láthatók.
       -Location westus2
     ```
 
-1. Ezután hozza létre a sablon specifikációját az erőforráscsoporthoz. Adja meg az új sablont a **storageSpec**név alapján.
+1. Ezután hozza létre a sablon specifikációját az erőforráscsoporthoz. Adja meg az új sablont a **storageSpec** név alapján.
 
     ```azurepowershell
     New-AzTemplateSpec `
@@ -60,7 +60,7 @@ Ezek a beállítások alább láthatók.
 
 # <a name="cli"></a>[Parancssori felület](#tab/azure-cli)
 
-1. Ha a CLI-vel hoz létre egy sablont, akkor átadhat egy helyi sablont. Másolja a következő sablont, és mentse helyileg egy **azuredeploy.js**nevű fájlba. Ez a rövid útmutató feltételezi, hogy mentett egy elérési útra **c:\Templates\azuredeploy.js** , de bármilyen elérési utat használhat.
+1. Ha a CLI-vel hoz létre egy sablont, akkor átadhat egy helyi sablont. Másolja a következő sablont, és mentse helyileg egy **azuredeploy.js** nevű fájlba. Ez a rövid útmutató feltételezi, hogy mentett egy elérési útra **c:\Templates\azuredeploy.js** , de bármilyen elérési utat használhat.
 
     :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
 
@@ -72,7 +72,7 @@ Ezek a beállítások alább láthatók.
       --location westus2
     ```
 
-1. Ezután hozza létre a sablon specifikációját az erőforráscsoporthoz. Adja meg az új sablont a **storageSpec**név alapján.
+1. Ezután hozza létre a sablon specifikációját az erőforráscsoporthoz. Adja meg az új sablont a **storageSpec** név alapján.
 
     ```azurecli
     az ts create \
@@ -88,7 +88,7 @@ Ezek a beállítások alább láthatók.
 1. Amikor ARM-sablont használ a sablon specifikációjának létrehozásához, a sablon be van ágyazva az erőforrás-definícióba. Másolja a következő sablont, és mentse helyileg **azuredeploy.jsként**. Ez a rövid útmutató feltételezi, hogy mentett egy elérési útra **c:\Templates\azuredeploy.js** , de bármilyen elérési utat használhat.
 
     > [!NOTE]
-    > A beágyazott sablonban minden bal oldali szögletes zárójelet egy második bal oldali szögletes zárójeltel kell megszökni. `[[`A helyett használja `[` .
+    > A beágyazott sablonban az összes [sablon kifejezését](template-expressions.md) egy második bal oldali szögletes zárójeltel kell megszökni. `"[[`A helyett használja `"[` . A JSON-tömbök továbbra is egyetlen bal oldali szögletes zárójelet használnak.
 
     ```json
     {
@@ -278,7 +278,7 @@ Most már üzembe helyezheti a sablon specifikációját. A sablon specifikáci�
 
 # <a name="arm-template"></a>[ARM-sablon](#tab/azure-resource-manager)
 
-1. Másolja a következő sablont, és mentse helyileg egy **storage.js**nevű fájlba.
+1. Másolja a következő sablont, és mentse helyileg egy **storage.js** nevű fájlba.
 
     ```json
        {
@@ -352,6 +352,6 @@ Az ebben a rövid útmutatóban üzembe helyezett erőforrás törléséhez tör
 
 1. A felső menüben válassza az Erőforráscsoport törlése lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretne többet megtudni arról, hogyan hozható létre csatolt sablonokat tartalmazó sablon-specifikáció, tekintse meg a [csatolt sablon specifikációjának létrehozása](template-specs-create-linked.md)című témakört.

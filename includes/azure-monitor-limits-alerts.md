@@ -5,15 +5,15 @@ services: azure-monitor
 author: rboucher
 tags: azure-service-management
 ms.topic: include
-ms.date: 08/11/2020
+ms.date: 10/01/2020
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 332841d4ee4791cb8da1620aa292b05bbde74955
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33d701fe8dc19b3deaa05cf6f10643bdb1059aa1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88162757"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505740"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
@@ -23,7 +23,3 @@ ms.locfileid: "88162757"
 | Naplóriasztások | 512 aktív riasztási szabályok/előfizetés. 200 aktív riasztási szabályok/erőforrás. | Telefonos támogatás |
 | Műveletcsoportok |2 000 műveleti csoport/előfizetés. | Telefonos támogatás |
 | Riasztási szabályok és műveleti szabályok leírásának hossza| Naplók keresése riasztások 4096 karakter<br/>Minden egyéb 2048 karakter | Ugyanaz, mint az alapértelmezett |
-| Az autoskálázás beállításai |100/régió/előfizetés. | Ugyanaz, mint az alapértelmezett |
-| Autoskálázási profilok |20 profil/autoskálázási beállítás. | Ugyanaz, mint az alapértelmezett |
-
-

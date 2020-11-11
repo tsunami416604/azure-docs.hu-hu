@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 33b8d3f62ef45c6078f10535c6376f611472f5a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7599a0c7b48bdc371d851ec20282af82e77783bf
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441748"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505308"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Virtual Desktop grafikusprocesszor-gyorsításának (GPU-gyorsításának) konfigurálása
 
@@ -21,9 +21,12 @@ A Windows virtuális asztal támogatja a GPU-gyorsított renderelést és kódol
 
 Az ebben a cikkben található utasítások alapján hozzon létre egy GPU-ra optimalizált Azure-beli virtuális gépet, adja hozzá a gazdagéphez, és konfigurálja úgy, hogy GPU-gyorsítást használjon a rendereléshez és a kódoláshoz. Ez a cikk azt feltételezi, hogy már van konfigurálva a Windows rendszerű virtuális asztali bérlő.
 
-## <a name="select-a-gpu-optimized-azure-virtual-machine-size"></a>A GPU-ra optimalizált Azure-beli virtuális gép méretének kiválasztása
+## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>A megfelelő GPU-ra optimalizált Azure-beli virtuális gépek méretének kiválasztása
 
-Az Azure számos GPU-val [optimalizált virtuálisgép-méretet](/azure/virtual-machines/windows/sizes-gpu)kínál. A gazdagép-készlet megfelelő választása számos tényezőtől függ, többek között az alkalmazás számítási feladataitól, a felhasználói élmény kívánt minőségétől és a költséghatékonyságtól. Általánosságban elmondható, hogy a nagyobb és jobban használható GPU-k jobb felhasználói élményt nyújtanak egy adott felhasználói sűrűségben.
+Válasszon egy Azure-beli [NV-sorozat](/azure/virtual-machines/nv-series), [NVv3-sorozat](/azure/virtual-machines/nvv3-series)vagy [NVv4-sorozatú](/azure/virtual-machines/nvv4-series) VM-méretet. Ezek az alkalmazás-és asztali virtualizálás számára vannak kialakítva, és lehetővé teszik az alkalmazások és a Windows felhasználói felületének a GPU gyorsítását. A gazdagép-készlet megfelelő választása számos tényezőtől függ, többek között az alkalmazás számítási feladataitól, a felhasználói élmény kívánt minőségétől és a költséghatékonyságtól. Általánosságban elmondható, hogy a nagyobb és nagyobb kapacitású GPU-k jobb felhasználói élményt nyújtanak egy adott felhasználói sűrűségben, míg a kisebb és a többtényezős GPU-méretek részletesebben szabályozzák a költségeket és a minőséget.
+
+>[!NOTE]
+>Az Azure NC-, NCv2-, NCv3-, ND-és NDv2-sorozatú virtuális gépek általában nem megfelelőek a Windows rendszerű virtuális asztali munkamenet-gazdagépek számára. Ezek a virtuális gépek speciális, nagy teljesítményű számítási és gépi tanulási eszközökhöz vannak szabva, például NVIDIA CUDA-mel. Az NVIDIA GPU-k általános alkalmazás-és asztali gyorsításához NVIDIA GRID licencelés szükséges; ezt az Azure az ajánlott virtuálisgép-méretekhez nyújtja, de az NC/ND sorozatú virtuális gépekhez külön kell elrendezni.
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Címkészlet létrehozása, a virtuális gép üzembe helyezése és az alkalmazás csoportjának konfigurálása
 
@@ -40,7 +43,7 @@ Az új címkészlet létrehozásakor is konfigurálnia kell egy alkalmazás-csop
 
 Ahhoz, hogy kihasználhassa az Azure N sorozatú virtuális gépek GPU-képességeit a Windows Virtual Desktopban, telepítenie kell a megfelelő grafikus illesztőprogramokat. A [támogatott operációs rendszerek és illesztőprogramok](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) utasításait követve telepítse a megfelelő grafikus gyártótól származó illesztőprogramokat manuálisan vagy Azure virtuálisgép-bővítmény használatával.
 
-Csak az Azure által terjesztett illesztőprogramok támogatottak a Windows rendszerű virtuális asztali gépeken. Emellett az NVIDIA GPU-val rendelkező Azure-beli virtuális gépek esetében csak az [NVIDIA Grid-illesztőprogramok](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) támogatottak a Windows Virtual Desktopban.
+Csak az Azure által terjesztett illesztőprogramok támogatottak a Windows rendszerű virtuális asztali gépeken. Az NVIDIA GPU-val rendelkező Azure NV sorozatú virtuális gépek esetében csak az [NVIDIA Grid-illesztőprogramok](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers), és nem az NVIDIA Tesla-(CUDA-) illesztőprogramok támogatják az általános célú alkalmazások és asztali számítógépek GPU-gyorsítását.
 
 Az illesztőprogram telepítése után szükség van egy virtuális gép újraindítására. A fenti utasításokban található ellenőrzési lépések segítségével ellenőrizze, hogy a grafikus illesztőprogramok telepítése sikeres volt-e.
 
@@ -63,7 +66,7 @@ Távoli asztal kódolja az alkalmazások és az asztali számítógépek által 
 1. Válassza a házirend a **H. 264/AVC hardveres kódolás beállítása Távoli asztal kapcsolatok számára** lehetőséget, és állítsa be ezt a házirendet **úgy,** hogy engedélyezze az AVC/H. 264 hardveres kódolást a távoli munkamenetben.
 
     >[!NOTE]
-    >A Windows Server 2016-ben állítsa be a beállítást, hogy a rendszer mindig az **AVC hardveres kódolást** **próbálja**meg használni.
+    >A Windows Server 2016-ben állítsa be a beállítást, hogy a rendszer mindig az **AVC hardveres kódolást** **próbálja** meg használni.
 
 2. Most, hogy a csoportházirendek szerkesztése megtörtént, kényszerítse a csoportházirend frissítését. Nyissa meg a parancssort és írja be a következőt:
 
@@ -97,7 +100,7 @@ Annak ellenőrzéséhez, hogy az alkalmazások a GPU-t használják a renderelé
 Annak ellenőrzése, hogy a Távoli asztal GPU-gyorsított kódolást használ-e:
 
 1. Kapcsolódjon a virtuális gép asztalához a Windows Virtual Desktop ügyfélprogram használatával.
-2. Indítsa el a Eseménynapló, és nyissa meg a következő csomópontot: az **alkalmazások és a szolgáltatások naplózzák**a  >  **Microsoft**  >  **Windows**  >  **RemoteDesktopServices-RdpCoreCDV**  >  **Operational**
+2. Indítsa el a Eseménynapló, és nyissa meg a következő csomópontot: az **alkalmazások és a szolgáltatások naplózzák** a  >  **Microsoft**  >  **Windows**  >  **RemoteDesktopServices-RdpCoreCDV**  >  **Operational**
 3. Annak megállapításához, hogy a GPU-gyorsított kódolás használatban van-e, keresse meg a 170-es AZONOSÍTÓJÚ eseményt. Ha a "AVC hardveres kódoló engedélyezve: 1" látható, akkor a rendszer GPU-kódolást használ.
 
 ## <a name="verify-fullscreen-video-encoding"></a>Teljes képernyős videó kódolásának ellenőrzése
@@ -105,7 +108,7 @@ Annak ellenőrzése, hogy a Távoli asztal GPU-gyorsított kódolást használ-e
 Annak ellenőrzése, hogy Távoli asztal a teljes képernyős videó kódolását használja-e:
 
 1. Kapcsolódjon a virtuális gép asztalához a Windows Virtual Desktop ügyfélprogram használatával.
-2. Indítsa el a Eseménynapló, és nyissa meg a következő csomópontot: az **alkalmazások és a szolgáltatások naplózzák**a  >  **Microsoft**  >  **Windows**  >  **RemoteDesktopServices-RdpCoreCDV**  >  **Operational**
+2. Indítsa el a Eseménynapló, és nyissa meg a következő csomópontot: az **alkalmazások és a szolgáltatások naplózzák** a  >  **Microsoft**  >  **Windows**  >  **RemoteDesktopServices-RdpCoreCDV**  >  **Operational**
 3. Annak megállapításához, hogy a teljes videó kódolása használatban van-e, keresse meg a 162-es AZONOSÍTÓJÚ eseményt. Ha a "AVC elérhető: 1 kezdeti profil: 2048" jelenik meg, akkor az AVC 444 használatos.
 
 ## <a name="next-steps"></a>Következő lépések

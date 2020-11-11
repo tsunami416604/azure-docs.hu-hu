@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a064b2b2d0bad5fc8ded9a59b66d84a361facec9
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650289"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504339"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-rugalmas kiszolgáló korlátozásai (előzetes verzió)
 
@@ -23,9 +23,9 @@ Ez a cikk a Azure Database for MySQL rugalmas kiszolgálói szolgáltatás korl�
 ## <a name="server-parameters"></a>Kiszolgálóparaméterek
 
 > [!NOTE]
-> Ha a (z) és a (z) kiszolgáló paramétereinek minimális/maximális értékeit keresi `max_connections` `innodb_buffer_pool_size` , akkor ez az információ a kiszolgálói paraméterekre vonatkozó fogalmakat is áthelyezte <!-- **[server parameters](./concepts-server-parameters.md)** --> cikket.
+> Ha a (z) és a (z) kiszolgáló paramétereinek minimális/maximális értékeit keresi `max_connections` `innodb_buffer_pool_size` , akkor ezek az adatok a kiszolgálói paraméterek fogalmakat [kiszolgáló paraméterei](./concepts-server-parameters.md) című cikkbe kerültek.
 
-Azure Database for MySQL támogatja a kiszolgálói paraméterek értékének finomhangolását. Néhány paraméter minimális és maximális értéke (pl. `max_connections`, `join_buffer_size` , `query_cache_size` ) a számítási és a kiszolgáló számítási mérete határozza meg. Tekintse meg a kiszolgálói paraméterekkel kapcsolatos fogalmakat <!-- [server parameters](./concepts-server-parameters.md)--> További információ ezekről a korlátozásokról.
+Azure Database for MySQL támogatja a kiszolgálói paraméterek értékének finomhangolását. Néhány paraméter minimális és maximális értéke (pl. `max_connections`, `join_buffer_size` , `query_cache_size` ) a számítási és a kiszolgáló számítási mérete határozza meg. A korlátokkal kapcsolatos további információkért tekintse meg a [kiszolgálói paramétereket](./concepts-server-parameters.md) .
 
 A szolgáltatás nem támogatja a jelszavakat, például a "validate_password" és a "caching_sha2_password".
 
@@ -67,7 +67,7 @@ A következők nem támogatottak:
 - Ezt a konfigurációt csak a kiszolgáló létrehozása során lehet beállítani.
 - A feltört számítási szint nem támogatja.
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 - A kapcsolódási módszer nem módosítható a kiszolgáló létrehozása után. Ha a kiszolgáló *magánhálózati hozzáféréssel (VNet-integrációval)* jön létre, a létrehozás után nem módosítható *nyilvános hozzáférésre (engedélyezett IP-címekre)* , és fordítva
 - A TLS/SSL alapértelmezés szerint engedélyezve van, és nem tiltható le.
 - A kiszolgáló által támogatott minimális TLS-verzió a TLS 1.2. További információért tekintse meg a [Kapcsolódás a TLS/SSL használatával](./how-to-connect-tls-ssl.md) című témakört.

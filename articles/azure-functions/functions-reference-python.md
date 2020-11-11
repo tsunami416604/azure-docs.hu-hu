@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: cc99a8c10ecefc063fdb89c61bdaeb0e686b1a82
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ce8abf439c44e06134113dd562ebadc62b803a28
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358048"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506073"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -312,10 +312,10 @@ A teljesítmény javítására szolgáló kulcs azt mutatja be, hogy az alkalmaz
 
 Az alapértelmezett konfigurációk a legtöbb Azure Functions alkalmazáshoz megfelelőek. Az alkalmazások teljesítményének növelését azonban a munkaterhelés-profilon alapuló konfigurációk alkalmazásával növelheti. Első lépésként ismernie kell a futtatott számítási feladatok típusát.
 
-|&nbsp;| I/O-kötésű munkaterhelés | PROCESSZORral kötött munkaterhelés |
+| | I/O-kötésű munkaterhelés | PROCESSZORral kötött munkaterhelés |
 |--| -- | -- |
-|Function alkalmazás jellemzői| <ul><li>Az alkalmazásnak számos egyidejű hívást kell kezelnie.</li> <li> Az alkalmazás nagy mennyiségű I/O-eseményt dolgoz fel, például hálózati hívásokat és lemezes olvasási/írási műveleteket.</li> </ul>| <ul><li>Az alkalmazás hosszú ideig futó számításokat végez, például a képek átméretezését.</li> <li>Az alkalmazás adatátalakítást végez.</li> </ul> |
-|Példák| <ul><li>Webes API-k</li><ul> | <ul><li>Adatfeldolgozás</li><li> Gépi tanulás – következtetés</li><ul>|
+|**Function alkalmazás jellemzői**| <ul><li>Az alkalmazásnak számos egyidejű hívást kell kezelnie.</li> <li> Az alkalmazás nagy mennyiségű I/O-eseményt dolgoz fel, például hálózati hívásokat és lemezes olvasási/írási műveleteket.</li> </ul>| <ul><li>Az alkalmazás hosszú ideig futó számításokat végez, például a képek átméretezését.</li> <li>Az alkalmazás adatátalakítást végez.</li> </ul> |
+|**Példák**| <ul><li>Webes API-k</li><ul> | <ul><li>Adatfeldolgozás</li><li> Gépi tanulás – következtetés</li><ul>|
 
 
 > [!NOTE]
@@ -385,7 +385,7 @@ A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a 
 
 Ha egy függvény hívási környezetét szeretné lekérni a végrehajtás során, adja [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) meg az argumentumot az aláírásában.
 
-Például:
+Ilyenek többek között:
 
 ```python
 import azure.functions
@@ -712,7 +712,7 @@ A következő lista a gyakori problémákkal kapcsolatos hibaelhárítási útmu
 
 Az összes ismert probléma és szolgáltatás kérését a [GitHub-problémák](https://github.com/Azure/azure-functions-python-worker/issues) listája követheti nyomon. Ha probléma lép fel, és a GitHubon nem találja a problémát, nyisson meg egy új problémát, és adja meg a probléma részletes leírását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

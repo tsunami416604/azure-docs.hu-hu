@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: efba69372f46c9b8a7f2857e37b34ec8c88654a0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1a9d5fe69cd9d853d0bf8ec971f31518bbf47c9a
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546279"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504696"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache a Redis az Azure Private linkkel (nyilvános előzetes verzió)
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy virtuális hálózatot és egy Azure cache-t a Redis-példányhoz egy privát végponttal a Azure Portal használatával. Azt is megtudhatja, hogyan adhat hozzá privát végpontot egy meglévő Azure cache-hez a Redis-példányhoz.
@@ -56,7 +56,7 @@ Ebben a szakaszban létrehoz egy új Azure cache-t a Redis-példányhoz egy priv
 
 7. Az alhálózat **neve** alatt kattintson az **alapértelmezett** elemre az alhálózat tulajdonságainak szerkesztéséhez.
 
-8. Az **alhálózat szerkesztése** ablaktáblán adja meg az **alhálózat nevét** , valamint az **alhálózati címtartományt** . Az alhálózat címtartományének CIDR-jelöléssel kell rendelkeznie (például 192.168.1.0/24). Ennek a virtuális hálózat címterület részét kell tartalmaznia.
+8. Az **alhálózat szerkesztése** ablaktáblán adja meg az **alhálózat nevét** , valamint az **alhálózati címtartományt**. Az alhálózat címtartományének CIDR-jelöléssel kell rendelkeznie (például 192.168.1.0/24). Ennek a virtuális hálózat címterület részét kell tartalmaznia.
 
 9. Válassza a **Mentés** lehetőséget.
 
@@ -69,9 +69,9 @@ Gyorsítótár-példány létrehozásához kövesse az alábbi lépéseket.
 
 1. Lépjen vissza a Azure Portal kezdőlapjára, vagy nyissa meg a Sidebar menüt, majd válassza az **erőforrás létrehozása** lehetőséget. 
    
-1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára** .
+1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára**.
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Válassza az erőforrás létrehozása lehetőséget.":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Válassza ki az Azure cache-t a Redis.":::
    
 1. Az **új Redis cache** lapon adja meg az új gyorsítótár beállításait.
    
@@ -89,9 +89,9 @@ Gyorsítótár-példány létrehozásához kövesse az alábbi lépéseket.
 
 1. A privát végpont létrehozásához kattintson a **Hozzáadás** gombra.
 
-    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="Válassza az erőforrás létrehozása lehetőséget.":::
+    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="A hálózatkezelés területen adjon hozzá egy privát végpontot.":::
 
-1. A **magánhálózati végpont létrehozása** lapon konfigurálja a magánhálózati végpont beállításait az utolsó szakaszban létrehozott virtuális hálózattal és alhálózattal, és kattintson az **OK gombra** . 
+1. A **magánhálózati végpont létrehozása** lapon konfigurálja a magánhálózati végpont beállításait az utolsó szakaszban létrehozott virtuális hálózattal és alhálózattal, és kattintson az **OK gombra**. 
 
 1. Válassza a **Next (speciális** ) lapot, vagy kattintson a lap alján található **Tovább: speciális** gombra.
 
@@ -99,12 +99,11 @@ Gyorsítótár-példány létrehozásához kövesse az alábbi lépéseket.
 
 1. A Premium cache-példány **speciális** lapján konfigurálja a nem TLS port, a fürtözés és az adatmegőrzés beállításait.
 
-
 1. Válassza a **Next: Tags (tovább** ) lapot, vagy kattintson a **Next: Tags (tovább** ) gombra a lap alján.
 
 1. Szükség esetén a **címkék** lapon adja meg a nevet és az értéket, ha az erőforrást kategorizálni szeretné. 
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
 
 1. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás** lehetőséget.
 
@@ -156,7 +155,7 @@ Virtuális hálózat létrehozásához kövesse az alábbi lépéseket.
 
 7. Az alhálózat **neve** alatt kattintson az **alapértelmezett** elemre az alhálózat tulajdonságainak szerkesztéséhez.
 
-8. Az **alhálózat szerkesztése** ablaktáblán adja meg az **alhálózat nevét** , valamint az **alhálózati címtartományt** . Az alhálózat címtartományének CIDR-jelöléssel kell rendelkeznie (például 192.168.1.0/24). Ennek a virtuális hálózat címterület részét kell tartalmaznia.
+8. Az **alhálózat szerkesztése** ablaktáblán adja meg az **alhálózat nevét** , valamint az **alhálózati címtartományt**. Az alhálózat címtartományének CIDR-jelöléssel kell rendelkeznie (például 192.168.1.0/24). Ennek a virtuális hálózat címterület részét kell tartalmaznia.
 
 9. Válassza a **Mentés** lehetőséget.
 
@@ -170,7 +169,7 @@ Privát végpont létrehozásához kövesse az alábbi lépéseket.
 
 1. A Azure Portal keresse meg az **Azure cache-t a Redis** , majd nyomja le az ENTER billentyűt, vagy válassza ki a keresési javaslatok közül.
 
-    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Válassza az erőforrás létrehozása lehetőséget.":::
+    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Keresse meg az Azure cache-t a Redis.":::
 
 2. Válassza ki azt a gyorsítótár-példányt, amelyhez privát végpontot szeretne hozzáadni.
 
@@ -178,7 +177,7 @@ Privát végpont létrehozásához kövesse az alábbi lépéseket.
 
 4. Kattintson a **privát végpont** gombra a privát végpont létrehozásához.
 
-    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Válassza az erőforrás létrehozása lehetőséget.":::
+    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Adja hozzá a privát végpontot.":::
 
 5. A **magánhálózati végpont létrehozása lapon** konfigurálja a saját végpontjának beállításait.
 
@@ -201,11 +200,41 @@ Privát végpont létrehozásához kövesse az alábbi lépéseket.
 
 11. Szükség esetén a **címkék** lapon adja meg a nevet és az értéket, ha az erőforrást kategorizálni szeretné.
 
-12. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** lapon az Azure ellenőrzi a konfigurációt.
+12. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** lapon az Azure ellenőrzi a konfigurációt.
 
 13. Ha megjelenik az **átadott zöld érvényesítés** üzenet, válassza a **Létrehozás** lehetőséget.
 
+## <a name="faq"></a>GYIK
+
+### <a name="why-cant-i-connect-to-a-private-endpoint"></a>Miért nem tudok csatlakozni egy privát végponthoz?
+Ha a gyorsítótár már VNet befecskendezett gyorsítótár, a magánhálózati végpontok nem használhatók a gyorsítótár-példánnyal. Ha a gyorsítótár-példány nem támogatott funkciót használ (alább látható), nem fog tudni csatlakozni a saját végpont-példányához. A gyorsítótár-példányokat továbbá július 27. után is létre kell hozni privát végpontok használatára.
+
+### <a name="what-features-are-not-supported-with-private-endpoints"></a>Milyen funkciók nem támogatottak a privát végpontok esetében?
+Geo-replikáció, tűzfalszabályok, portál-konzol támogatása, fürtözött gyorsítótárban több végpont, a tűzfalszabályok megőrzése és a zóna redundancia. 
+
+### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-from-public-network-access"></a>Hogyan változtathatom meg a privát végpontot, hogy le legyen tiltva a nyilvános hálózati hozzáférés?
+`publicNetworkAccess`Alapértelmezés szerint van egy jelző `Enabled` . Ennek a jelzőnek a célja, hogy lehetővé tegye a nyilvános és a privát végpontok hozzáférését a gyorsítótárhoz, ha az értéke `Enabled` . Ha a értékre `Disabled` van állítva, akkor csak a privát végpontok hozzáférését engedélyezi. Az értéket a `Disabled` következő javítási kérelemmel állíthatja be.
+```http
+PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
+{    "properties": {
+       "publicNetworkAccess":"Disabled"
+   }
+}
+```
+
+### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Engedélyezve vannak-e a hálózati biztonsági csoportok (NSG) a privát végpontokhoz?
+Nem, a magánhálózati végpontok esetében le vannak tiltva. Ha azonban más erőforrások is vannak az alhálózaton, akkor a NSG kényszerítés is érvényes lesz ezekre az erőforrásokra.
+
+### <a name="how-can-i-connect-to-a-clustered-cache"></a>Hogyan lehet csatlakozni egy fürtözött gyorsítótárhoz?
+`publicNetworkAccess` be kell állítani, hogy `Disabled` csak egy privát végponti kapcsolatok legyenek.
+
+### <a name="since-my-private-endpoint-instance-is-not-in-my-vnet-how-is-it-associated-with-my-vnet"></a>Mivel a saját végpontom nem a saját VNet, hogyan van társítva a VNet?
+Csak a VNet van csatolva. Mivel nem szerepel a VNet, a NSG-szabályokat nem szükséges módosítani a függő végpontok esetében.
+
+### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>Hogyan telepíthetem át a VNet befecskendezett gyorsítótárát egy privát végponti gyorsítótárba?
+Törölnie kell a VNet Beinjektált gyorsítótárát, és létre kell hoznia egy új, privát végponttal rendelkező gyorsítótár-példányt.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni az Azure Private linkről, tekintse meg az [Azure Private link dokumentációját](../private-link/private-link-overview.md).
+* Ha többet szeretne megtudni az Azure Private linkről, tekintse meg az [Azure Private link dokumentációját](../private-link/private-link-overview.md).
+* A gyorsítótár-példány különböző hálózati elkülönítési lehetőségeinek összehasonlításához tekintse meg az [Azure cache Redis hálózati elkülönítési lehetőségek dokumentációját](cache-network-isolation.md).

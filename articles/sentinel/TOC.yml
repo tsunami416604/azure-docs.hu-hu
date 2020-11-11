@@ -199,6 +199,8 @@
           href: bookmarks.md
         - name: Veszélyforrás-keresés élő streammel
           href: livestream.md
+        - name: Veszélyforrás-keresési lekérdezések kezelése REST-API-val
+          href: hunting-with-rest-api.md
     - name: Az Azure Sentinel eltávolítása
       href: offboard.md
 - name: Referencia (új!)

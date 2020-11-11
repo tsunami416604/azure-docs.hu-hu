@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c9dcb2fa8be22c21cc2b005cce1bf8bb1c614381
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324277"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505070"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>Rövid útmutató: dedikált SQL-készlet (előzetes verzió) létrehozása a Azure Portal használatával
 
@@ -59,6 +59,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
 3. Válassza a **Tovább: További beállítások** lehetőséget.
 4. Válassza a **nincs** lehetőséget a dedikált SQL-készlet adat nélküli kiépítéséhez. Hagyja bejelölve az alapértelmezett rendezést.
+
+    Ha vissza szeretné állítani a dedikált SQL-készletet egy visszaállítási pontról, válassza a **visszaállítási pont** lehetőséget. További információ a visszaállítás végrehajtásáról [: útmutató: meglévő DEDIKÁLT SQL-készlet visszaállítása](backuprestore/restore-sql-pool.md)
+
 ![dedikált SQL-készlet folyamat létrehozása – további beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
 5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.

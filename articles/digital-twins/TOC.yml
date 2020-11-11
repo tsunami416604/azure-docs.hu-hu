@@ -111,7 +111,7 @@
       items:
         - name: Metrikák megtekintése az Azure Monitorban
           href: troubleshoot-metrics.md
-        - name: Diagnosztikai naplók engedélyezése
+        - name: Diagnosztikai naplók engedélyezése és lekérdezése
           href: troubleshoot-diagnostics.md
         - name: Riasztások engedélyezése
           href: troubleshoot-alerts.md

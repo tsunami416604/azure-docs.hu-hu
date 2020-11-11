@@ -24,6 +24,8 @@
       href: howto-add-update-pull-secret.md
     - name: DNS-továbbítás konfigurálása Azure Red Hat OpenShift 4-fürthöz
       href: dns-forwarding.md
+    - name: Az Azure Red Hat OpenShift 4 beépített tárolóregisztrációs adatbázisának konfigurálása
+      href: built-in-container-registry.md
     - name: Azure Active Directory-hitelesítés konfigurálása Azure Red Hat OpenShift 4-fürthöz
       items:
         - name: Az Azure Active Directory-fiókon alapuló hitelesítés konfigurálása (CLI)
@@ -44,6 +46,10 @@
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
             - name: Az Azure Monitor letiltása az Azure Red Hat OpenShift 3.11-ben lévő tárolókhoz (előzetes verzió)
               href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: Az Open Liberty/WebSphere Liberty megnyitása egy Azure Red Hat OpenShift 4-fürtön
+      items:
+        - name: Open Liberty-/WebSphere Liberty-alkalmazás üzembe helyezése Azure Red Hat OpenShift 4-fürtökön
+          href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11
       items:
         - name: Az Azure Red Hat OpenShift fejlesztői környezetének beállítása az Azure Red Hat OpenShift 3.11-hez

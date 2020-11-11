@@ -3,15 +3,15 @@ title: Microsoft Teams a Windows rendszerű virtuális asztalon – Azure
 description: A Microsoft Teams használata a Windows rendszerű virtuális asztali gépeken.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cae40b9aeed4058ab2082a1d1360558c1c656e1d
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 101b3a05591a7815ba28756bb5b07e855b64e769
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131768"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505546"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
@@ -32,7 +32,6 @@ Ahhoz, hogy a Microsoft Teams szolgáltatást használhassa a Windows rendszerű
 - [Készítse elő a hálózatát](/microsoftteams/prepare-network/) a Microsoft Teams szolgáltatásban.
 - Telepítse a [Windows asztali ügyfelet](connect-windows-7-10.md) egy Windows 10 vagy Windows 10 IoT Enterprise rendszerű eszközre, amely megfelel a Microsoft Teams [Windows rendszerű számítógépekre vonatkozó hardverkövetelmények](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Csatlakozhat egy Windows 10 rendszerű többmunkamenetes vagy Windows 10 Enterprise rendszerű virtuális géphez (VM).
-- [Töltse le](https://www.microsoft.com/microsoft-365/microsoft-teams/download-app) és telepítse a Teams Desktop alkalmazást a gazdagépen a számítógépenkénti telepítés használatával. A Microsoft Teams-hez készült média-optimalizáláshoz a Teams Desktop-alkalmazás 1.3.00.4461 vagy újabb verziója szükséges.
 
 ## <a name="install-the-teams-desktop-app"></a>A Teams asztali alkalmazás telepítése
 
@@ -42,7 +41,8 @@ Ebből a szakaszból megtudhatja, hogyan telepítheti a Teams Desktop alkalmazá
 
 A csapatok számára a média optimalizálásának engedélyezéséhez állítsa be a következő beállításkulcsot a gazdagépen:
 
-1. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams**.
+1. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams**. Ha még nem létezik, hozza létre a csapatok kulcsát.
+
 2. Hozza létre a következő értéket a csapatok kulcsához:
 
 | Név             | Típus   | Az adatértékek/értékek  |
@@ -51,7 +51,7 @@ A csapatok számára a média optimalizálásának engedélyezéséhez állítsa
 
 ### <a name="install-the-teams-websocket-service"></a>A Teams WebSocket szolgáltatás telepítése
 
-Telepítse a legújabb [WebSocket szolgáltatást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) a virtuálisgép-lemezképen. Ha telepítési hibába ütközik, telepítse a [legújabb Microsoft Visual C++ újraterjeszthető](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) csomagot, és próbálkozzon újra.
+Telepítse a legújabb [Távoli asztal WebRTC-átirányító szolgáltatást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) a virtuálisgép-lemezképen. Ha telepítési hibába ütközik, telepítse a [legújabb Microsoft Visual C++ újraterjeszthető](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) csomagot, és próbálkozzon újra.
 
 #### <a name="latest-websocket-service-versions"></a>A WebSocket szolgáltatás legújabb verziói
 
@@ -94,7 +94,7 @@ A Teams Desktop alkalmazást számítógépenként vagy felhasználónkénti tel
 
         Ezzel a csapatokat a programfájlok (x86) mappába telepíti egy 32 bites operációs rendszeren, valamint egy 64 bites operációs rendszer Program Files mappájába. Ezen a ponton az arany-rendszerkép beállítása befejeződött. A nem állandó telepítésekhez a csapatok számítógépenkénti telepítése szükséges.
 
-        A csapatok telepítésekor két jelzőt lehet beállítani, a **ALLUSER = 1** és a **AllUsers = 1**. Fontos megérteni a paraméterek közötti különbséget. A **ALLUSER = 1** paraméter csak VDI-környezetekben használatos a számítógépenkénti telepítés megadásához. A **AllUsers = 1** paraméter nem VDI-és VDI-környezetekben is használható. Ha beállítja ezt a paramétert, a Teams Machine-Wide telepítőjének megjelenik a Vezérlőpult program és szolgáltatások paneljén, valamint a Windows beállításaiban található alkalmazások & szolgáltatásokban. A számítógépen rendszergazdai hitelesítő adatokkal rendelkező felhasználók is eltávolíthatják a csapatokat.
+        A csapatok telepítésekor két jelzőt lehet beállítani, a **ALLUSER = 1** és a **AllUsers = 1**. Fontos megérteni a paraméterek közötti különbséget. A **ALLUSER = 1** paraméter csak VDI-környezetekben használatos a számítógépenkénti telepítés megadásához. A **AllUsers = 1** paraméter nem VDI-és VDI-környezetekben is használható. Ha beállítja ezt a paramétert, a **teams Machine-Wide telepítőjének** megjelenik a Vezérlőpult program és szolgáltatások paneljén, valamint a Windows beállításaiban található alkalmazások & szolgáltatásokban. A számítógépen rendszergazdai hitelesítő adatokkal rendelkező felhasználók is eltávolíthatják a csapatokat.
 
         > [!NOTE]
         > A felhasználók és a rendszergazdák jelenleg nem tudják letiltani a csapatok automatikus indítását a bejelentkezés során.
@@ -114,14 +114,19 @@ A Teams Desktop alkalmazást számítógépenként vagy felhasználónkénti tel
 
 A WebSocket szolgáltatás és a csapatok asztali alkalmazás telepítése után kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a csapatok média-optimalizációja be van-e töltve:
 
-1. Válassza ki a felhasználói profil rendszerképét, majd válassza a **Névjegy**elemet.
-2. Válassza a **verzió**elemet.
+1. Lépjen ki, és indítsa újra a Teams alkalmazást.
 
-      Ha a média-optimalizálás be van töltve, a szalagcím megjeleníti a **WVD média optimalizált beállításait**. Ha a szalagcímben a **WVD adathordozó nincs csatlakoztatva**, lépjen ki a csapatok alkalmazásból, és próbálkozzon újra.
+2. Válassza ki a felhasználói profil rendszerképét, majd válassza a **Névjegy** elemet.
 
-3. Válassza ki a felhasználói profil rendszerképét, majd válassza a **Beállítások**lehetőséget.
+3. Válassza a **verzió** elemet.
 
-      Ha a média-optimalizálás betöltődik, a helyileg elérhető hangeszközök és fényképezőgépek enumerálása az eszköz menüjében történik. Ha a menüben a **távoli hang**látható, lépjen ki a csapatok alkalmazásból, és próbálkozzon újra. Ha az eszközök továbbra sem jelennek meg a menüben, ellenőrizze az adatvédelmi beállításokat a helyi számítógépen. Győződjön meg arról, hogy a **Beállítások**  >  **adatvédelmi**  >  **alkalmazás engedélyei** területen **be van kapcsolva**az **alkalmazások a mikrofonhoz való hozzáférésének engedélyezése** beállítás. Válassza le a távoli munkamenetet, majd csatlakoztassa újra, és keresse meg újra a hang-és video-eszközöket. A hívásokhoz és az értekezletekhez a videóval való csatlakozáshoz engedélyt kell adnia az alkalmazások számára a kamerához való hozzáféréshez is.
+      Ha a média-optimalizálás be van töltve, a szalagcím megjeleníti a **WVD média optimalizált beállításait**. Ha a szalagcímben a **WVD adathordozó nincs csatlakoztatva** , lépjen ki a csapatok alkalmazásból, és próbálkozzon újra.
+
+4. Válassza ki a felhasználói profil rendszerképét, majd válassza a **Beállítások** lehetőséget.
+
+      Ha a média-optimalizálás betöltődik, a helyileg elérhető hangeszközök és fényképezőgépek enumerálása az eszköz menüjében történik. Ha a menüben a **távoli hang** látható, lépjen ki a csapatok alkalmazásból, és próbálkozzon újra. Ha az eszközök továbbra sem jelennek meg a menüben, ellenőrizze az adatvédelmi beállításokat a helyi számítógépen. Győződjön meg arról, hogy a **Beállítások**  >  **adatvédelmi**  >  **alkalmazás engedélyei** területen **be van kapcsolva** az **alkalmazások a mikrofonhoz való hozzáférésének engedélyezése** beállítás. Válassza le a távoli munkamenetet, majd csatlakoztassa újra, és keresse meg újra a hang-és video-eszközöket. A hívásokhoz és az értekezletekhez a videóval való csatlakozáshoz engedélyt kell adnia az alkalmazások számára a kamerához való hozzáféréshez is.
+
+      Ha az optimalizálás nem töltődik be, távolítsa el, majd telepítse újra a csapatokat, és ellenőrizze újra.
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
@@ -152,7 +157,7 @@ Küldjön visszajelzést a Microsoft Teams szolgáltatáshoz a Windows Virtual D
 
 Ha a Windows rendszerű virtuális asztali környezetben problémák merülnek fel a csapatok asztali alkalmazásával kapcsolatban, Gyűjtse össze az ügyfél naplóit a gazdagép virtuális gépen található **% AppData% \Microsoft\Teams\logs.txt** alatt.
 
-Ha a hívásokkal és értekezletekkel kapcsolatos problémákba ütközik, Gyűjtse össze a csapat webes ügyfél naplóit a **CTRL**  +  **ALT**  +  **SHIFT**  +  **1**billentyűkombinációval. A naplókat a rendszer a **%USERPROFILE%\Downloads\MSTeams diagnosztikai naplóba DATE_TIME.txt** fogja írni a gazda virtuális gépen.
+Ha a hívásokkal és értekezletekkel kapcsolatos problémákba ütközik, Gyűjtse össze a csapat webes ügyfél naplóit a **CTRL**  +  **ALT**  +  **SHIFT**  +  **1** billentyűkombinációval. A naplókat a rendszer a **%USERPROFILE%\Downloads\MSTeams diagnosztikai naplóba DATE_TIME.txt** fogja írni a gazda virtuális gépen.
 
 ## <a name="contact-microsoft-teams-support"></a>Kapcsolatfelvétel a Microsoft Teams ügyfélszolgálatával
 

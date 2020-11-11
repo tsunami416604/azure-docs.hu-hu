@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: c4873bded750186f072dd39ddcb8d78941848586
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 870a55e5bc2701df5c03e142522e8490612b2917
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289377"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506056"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>A privát kapcsolatok konfigurációs problémáinak diagnosztizálása az Azure Key Vaultban
 
@@ -142,21 +142,29 @@ Ez a szakasz tanulási célokra szolgál. Ha a Key Vault nem rendelkezik jóváh
 
 Windows:
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  52.168.109.101
-    Aliases:  fabrikam.vault.azure.net
-              data-prod-eus.vaultcore.azure.net
-              data-prod-eus-region.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  52.168.109.101
+Aliases:  fabrikam.vault.azure.net
+          data-prod-eus.vaultcore.azure.net
+          data-prod-eus-region.vaultcore.azure.net
+```
 
 Linux:
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
-    data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
-    data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```output
+fabrikam.vault.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
+data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
+data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```
 
 Láthatja, hogy a név feloldása egy nyilvános IP-címre történik, és nincs `privatelink` alias. Az aliast később ismertetjük, ezért ne aggódjon.
 
@@ -168,23 +176,24 @@ Ha a kulcstartó egy vagy több magánhálózati végponti kapcsolattal rendelke
 
 Windows:
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  52.168.109.101
-    Aliases:  fabrikam.vault.azure.net
-              fabrikam.privatelink.vaultcore.azure.net
-              data-prod-eus.vaultcore.azure.net
-              data-prod-eus-region.vaultcore.azure.net
-
+Nem mérvadó Válasz: címe: 52.168.109.101 aliasok: fabrikam.vault.azure.net fabrikam.privatelink.vaultcore.azure.net data-prod-eus.vaultcore.azure.net data-prod-eus-region.vaultcore.azure.net
+```
 Linux:
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
-    fabrikam.privatelink.vaultcore.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
-    data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
-    data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```output
+fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
+fabrikam.privatelink.vaultcore.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
+data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
+data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```
 
 Az előző forgatókönyvből származó jelentős különbség az, hogy van egy új alias az értékkel `{vaultname}.privatelink.vaultcore.azure.net` . Ez azt jelenti, hogy a Key Vault-adatsík készen áll arra, hogy fogadja a privát hivatkozások kéréseit.
 
@@ -198,19 +207,27 @@ Ha a kulcstartó egy vagy több magánhálózati végponti kapcsolattal rendelke
 
 Windows:
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  10.1.2.3
-    Aliases:  fabrikam.vault.azure.net
-              fabrikam.privatelink.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  10.1.2.3
+Aliases:  fabrikam.vault.azure.net
+          fabrikam.privatelink.vaultcore.azure.net
+```
 
 Linux:
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
-    fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
+```output
+fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
+fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
+```
 
 Két jelentős különbség van. Először a név feloldja a magánhálózati IP-címet. Ennek a cikknek a [megfelelő szakaszában](#find-the-key-vault-private-ip-address-in-the-virtual-network) található IP-címnek kell lennie. Másodszor, nincs más alias a következő után `privatelink` . Ez azért történik, mert a Virtual Network DNS-kiszolgálók *feltartóztatják* az aliasok láncát, és közvetlenül a név alapján adják vissza a magánhálózati IP-címet `fabrikam.privatelink.vaultcore.azure.net` . Ez a bejegyzés tulajdonképpen egy `A` saját DNS zónában lévő rekord. További tudnivalókat a következő témakörben talál:.
 
@@ -227,7 +244,7 @@ Ha a DNS-feloldás nem működik az előző szakaszban leírtak szerint, előfor
 
 Az Azure-előfizetéshez a következő pontos névvel rendelkező [saját DNS zóna](../../dns/private-dns-privatednszone.md) -erőforrásnak kell tartoznia:
 
-    privatelink.vaultcore.azure.net
+`privatelink.vaultcore.azure.net`
 
 Az erőforrás jelenlétének ellenőrzéséhez nyissa meg a portál előfizetés lapját, és a bal oldali menüben válassza az "erőforrások" lehetőséget. Az erőforrás nevének kötelezőnek kell lennie `privatelink.vaultcore.azure.net` , és az erőforrástípus **saját DNS zónának** kell lennie.
 
@@ -282,37 +299,48 @@ A Key Vault biztosítja a `/healthstatus` végpontot, amely a diagnosztika haszn
 
 Windows (PowerShell):
 
-    PS C:\> $(Invoke-WebRequest -UseBasicParsing -Uri https://fabrikam.vault.azure.net/healthstatus).Headers
+```powershell
+PS C:\> $(Invoke-WebRequest -UseBasicParsing -Uri https://fabrikam.vault.azure.net/healthstatus).Headers
+```
 
-    Key                           Value
-    ---                           -----
-    Pragma                        no-cache
-    x-ms-request-id               3729ddde-eb6d-4060-af2b-aac08661d2ec
-    x-ms-keyvault-service-version 1.2.27.0
-    x-ms-keyvault-network-info    addr=10.4.5.6;act_addr_fam=InterNetworkV6;
-    Strict-Transport-Security     max-age=31536000;includeSubDomains
-    Content-Length                4
-    Cache-Control                 no-cache
-    Content-Type                  application/json; charset=utf-8
+```output
+Key                           Value
+---                           -----
+Pragma                        no-cache
+x-ms-request-id               3729ddde-eb6d-4060-af2b-aac08661d2ec
+x-ms-keyvault-service-version 1.2.27.0
+x-ms-keyvault-network-info    addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+Strict-Transport-Security     max-age=31536000;includeSubDomains
+Content-Length                4
+Cache-Control                 no-cache
+Content-Type                  application/json; charset=utf-8
+```
 
 A Linux vagy a Windows 10-es legújabb verziója, amely a következőket tartalmazza `curl` :
 
-    joe@MyUbuntu:~$ curl -i https://fabrikam.vault.azure.net/healthstatus
-    HTTP/1.1 200 OK
-    Cache-Control: no-cache
-    Pragma: no-cache
-    Content-Type: application/json; charset=utf-8
-    x-ms-request-id: 6c090c46-0a1c-48ab-b740-3442ce17e75e
-    x-ms-keyvault-service-version: 1.2.27.0
-    x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
-    Strict-Transport-Security: max-age=31536000;includeSubDomains
-    Content-Length: 4
+```console
+joe@MyUbuntu:~$ curl -i https://fabrikam.vault.azure.net/healthstatus
+```
+
+```output
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Pragma: no-cache
+Content-Type: application/json; charset=utf-8
+x-ms-request-id: 6c090c46-0a1c-48ab-b740-3442ce17e75e
+x-ms-keyvault-service-version: 1.2.27.0
+x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+Strict-Transport-Security: max-age=31536000;includeSubDomains
+Content-Length: 4
+```
 
 Ha nem az ehhez hasonló kimenetet kap, vagy ha hálózati hibát észlel, az azt jelenti, hogy a kulcstartó nem érhető el a megadott állomásnévn keresztül ( `fabrikam.vault.azure.net` a példában). Az állomásnév nem oldja meg a megfelelő IP-címet, vagy kapcsolódási problémája van a szállítási rétegben. Ennek oka lehet az útválasztási problémák, a csomagok leállítása és egyéb okok. További vizsgálatot kell végeznie.
 
 A válasznak tartalmaznia kell a fejlécet `x-ms-keyvault-network-info` :
 
-    x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+```console
+x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+```
 
 A `addr` `x-ms-keyvault-network-info` fejlécben lévő mező a kérelem FORRÁSÁNAK IP-címét jeleníti meg. Ez az IP-cím a következők egyike lehet:
 
@@ -330,11 +358,15 @@ A `addr` `x-ms-keyvault-network-info` fejlécben lévő mező a kérelem FORRÁS
 
 Ha telepítette a PowerShell legújabb verzióját, `-SkipCertificateCheck` a használatával kihagyhatja a https-tanúsítványok ellenőrzését, majd közvetlenül a [kulcstartó IP-címét](#find-the-key-vault-private-ip-address-in-the-virtual-network) is megcélozhatja:
 
-    PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
+```powershell
+PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
+```
 
 Ha használja `curl` , ugyanezt az argumentummal is megteheti `-k` :
 
-    joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
+```console
+joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
+```
 
 A válaszoknak meg kell egyezniük az előző szakasztal, ami azt jelenti, hogy tartalmaznia kell a `x-ms-keyvault-network-info` fejlécet ugyanazzal az értékkel. A `/healthstatus` végpont nem érdekli, ha a Key Vault-állomásnevet vagy IP-címet használja.
 

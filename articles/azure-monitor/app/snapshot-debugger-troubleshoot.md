@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bb2ac221169cea84205d087cbe0aadfd035d22db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49a4ab0315dad539a594a20e53eae9fd2890e551
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760512"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504968"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> A Application Insights Snapshot Debugger engedélyezésével vagy a pillanatképek megtekintésével kapcsolatos problémák elhárítása
 Ha engedélyezte Application Insights Snapshot Debugger az alkalmazáshoz, de nem tekinti meg a kivételekhez tartozó pillanatképeket, a következő útmutatást használhatja a hibák megoldásához:. Számos különböző oka lehet annak, hogy a pillanatképek létrehozása nem történt meg. A pillanatkép állapotának ellenőrzését futtatva azonosíthatja a lehetséges gyakori okok némelyikét.
@@ -57,22 +57,24 @@ A beállítás megadásához nyissa meg web.config fájlt, és keresse meg a Sys
 > Ha a targetFramework értéke 4,7 vagy újabb, akkor a Windows meghatározza az elérhető protokollokat. Azure App Service a TLS 1,2 elérhető. Ha azonban saját virtuális gépet használ, lehetséges, hogy engedélyeznie kell a TLS 1,2-et az operációs rendszerben.
 
 ## <a name="preview-versions-of-net-core"></a>A .NET Core előzetes verziói
-Ha az alkalmazás a .NET Core előzetes verzióját használja, és Snapshot Debugger a portál [Application Insights paneljén](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) keresztül volt engedélyezve, akkor előfordulhat, hogy Snapshot Debugger nem indul el. Kövesse az [Snapshot Debugger engedélyezése más környezetekhez](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) című témakör utasításait, hogy a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) ***NuGet-csomagot*** az alkalmazással együtt, a [Application Insights panelen](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)is engedélyezze.
+Ha az alkalmazás a .NET Core előzetes verzióját használja, és Snapshot Debugger a portál [Application Insights paneljén](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) keresztül volt engedélyezve, akkor előfordulhat, hogy Snapshot Debugger nem indul el. Kövesse az [Snapshot Debugger engedélyezése más környezetekhez](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) című részben található utasításokat, és vegye fel a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet **-** csomagot az alkalmazással együtt, hogy az a [Application Insights panelen](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)is engedélyezve legyen.
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Frissítés a NuGet csomag legújabb verziójára
 
 Ha Snapshot Debugger engedélyezte a [portálon a Application Insights ablaktáblán](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), akkor az alkalmazásnak már a legújabb NuGet-csomagot kell futtatnia. Ha a Snapshot Debugger a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomaggal együtt engedélyezte, a Visual Studio NuGet csomagkezelő segítségével ellenőrizze, hogy a Microsoft. ApplicationInsights. snapshotcollector nugetcsomag legújabb verzióját használja-e.
 
+A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjegyzéseket](./snapshot-collector-release-notes.md).
+
 ## <a name="check-the-uploader-logs"></a>A feltöltő naplók keresése
 
 A pillanatkép létrehozása után létrejön egy minidump-fájl (. dmp) a lemezen. Egy külön feltöltő folyamat létrehozza a minidump-fájlt, és feltölti azt a kapcsolódó PDBs együtt, hogy Application Insights Snapshot Debugger tárterületet. Miután a minidump sikeresen feltöltötte, a rendszer törli a lemezről. A feltöltő folyamat naplófájljai a lemezen maradnak. App Service-környezetben ezeket a naplókat a alkalmazásban találja `D:\Home\LogFiles` . A naplófájlok megkereséséhez használja a App Service kudu felügyeleti webhelyét.
 
 1. Nyissa meg a App Service alkalmazást a Azure Portalban.
-2. Kattintson a **speciális eszközök**elemre, vagy keressen rá a **kudu**.
-3. Kattintson az **Ugrás**gombra.
-4. A **hibakeresési konzol** legördülő listájában válassza a **cmd**elemet.
-5. Kattintson a **LogFiles**elemre.
+2. Kattintson a _ * speciális eszközök * * lehetőségre, vagy keressen rá a **kudu**.
+3. Kattintson az **Ugrás** gombra.
+4. A **hibakeresési konzol** legördülő listájában válassza a **cmd** elemet.
+5. Kattintson a **LogFiles** elemre.
 
 Legalább egy olyan fájlt meg kell jelennie, amelynek a neve a `Uploader_` vagy `SnapshotUploader_` a `.log` kiterjesztéssel kezdődik. Kattintson a megfelelő ikonra a naplófájlok letöltéséhez vagy a böngészőben való megnyitásához.
 A fájlnév egy egyedi utótagot tartalmaz, amely a App Service példányt azonosítja. Ha a App Service-példány több gépen üzemel, külön naplófájlok vannak az egyes gépekhez. Ha a feltöltő új minidump-fájlt észlel, azt a rendszer rögzíti a naplófájlban. Íme egy példa egy sikeres pillanatképre és feltöltésre:

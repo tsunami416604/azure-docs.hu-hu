@@ -100,7 +100,7 @@
   items:
     - name: Hibaelhárítás
       items:
-        - name: Segítségkérés üzembehelyezési vagy kiépítési hibákhoz
+        - name: Támogatási kérés megnyitása a sikertelen üzembe helyezésekhez
           href: fix-deployment-provisioning-failures.md
     - name: GYIK
       href: faq.md

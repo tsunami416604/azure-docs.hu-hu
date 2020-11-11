@@ -13,12 +13,14 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: f7073fbf39344fe39e179d55a5a8f395a6ba6240
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+- fasttrack-edit
+- iot
+ms.openlocfilehash: b179bb3566cc19b8033a56348db34cd1f05cee10
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357386"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506396"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Az Azure IoT Hub-vel való kapcsolat figyelése, diagnosztizálása és hibakeresése
 
@@ -160,6 +162,11 @@ A IoT-megoldások fejlesztője vagy kezelője számára fontos tisztában lennie
 
 Ha az Event hub használatával figyeli az eszközök kapcsolatait, győződjön meg arról, hogy az SAS-jogkivonat megújítása miatt kiszűri az időszakos leválasztásokat. például azáltal, hogy nem indít el műveleteket a leválasztások alapján, feltéve, hogy a leválasztási eseményt egy adott időtartományon belül egy csatlakozási esemény követi.
 
+> [!NOTE]
+> A IoT Hub eszközön csak egy aktív MQTT-kapcsolatok támogatottak. Az azonos eszköz AZONOSÍTÓjának nevében az új MQTT-kapcsolatok IoT Hub a meglévő kapcsolatok eldobásához.
+>
+> 400027 a ConnectionForcefullyClosedOnNewConnection bekerül IoT Hub naplókba
+
 ## <a name="i-tried-the-steps-but-they-didnt-work"></a>Megpróbáltam a lépéseket, de nem működnek
 
 Ha az előző lépések nem segítettek, próbálkozzon a következő lépésekkel:
@@ -174,7 +181,7 @@ Ha az előző lépések nem segítettek, próbálkozzon a következő lépésekk
 
 Ha segítségre van szüksége mindenki számára, az alábbi visszajelzések szakaszban hagyja meg a megjegyzéseit, ha az útmutató nem segít Önnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az átmeneti problémák megoldásával kapcsolatos további tudnivalókért lásd: az [átmeneti hibák kezelésének](/azure/architecture/best-practices/transient-faults)ismertetése.
 

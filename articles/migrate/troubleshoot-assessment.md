@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: d5e8305fb80e6869bf604108aaa0e4d8e36cab8e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4da0f40c25d322953fea968396ef33924877c2e1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314745"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505223"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
@@ -23,10 +23,10 @@ Ez a cikk segítséget nyújt az értékeléssel és a függőségi vizualizáci
 
 Javítsa ki az értékelés készültségi problémáit az alábbiak szerint:
 
-**Probléma** | **Javítás**
+**Probléma** | **Javítsa ki**
 --- | ---
 Nem támogatott rendszerindítási típus | Az Azure nem támogatja az EFI rendszerindítási típussal rendelkező virtuális gépeket. Javasoljuk, hogy az áttelepítés futtatása előtt alakítsa át a rendszerindítási típust BIOS-ra. <br/><br/>Az ilyen virtuális gépek áttelepítésének kezeléséhez Azure Migrate kiszolgáló áttelepítését használhatja. Az áttelepítés során a rendszer a virtuális gép rendszerindítási típusát a BIOS-ba konvertálja.
-Feltételesen támogatott Windows operációs rendszer | Az operációs rendszer elérte a támogatás befejezési dátumát, és az [Azure-támogatáshoz](/troubleshoot/azure/virtual-machines/server-software-support)egyéni támogatási szerződés (CSA) szükséges. Az Azure-ba való Migrálás előtt érdemes lehet frissíteni.
+Feltételesen támogatott Windows operációs rendszer | Az operációs rendszer elérte a támogatás befejezési dátumát, és az [Azure-támogatáshoz](/troubleshoot/azure/virtual-machines/server-software-support)egyéni támogatási szerződés (CSA) szükséges. Az Azure-ba való Migrálás előtt érdemes lehet frissíteni. [Tekintse át]() az Azure-ba való áttelepítéshez [Windows Server 2003 rendszerű gépek előkészítésével](prepare-windows-server-2003-migration.md) kapcsolatos információkat.
 Nem támogatott Windows operációs rendszer | Az Azure csak a [kiválasztott Windows operációsrendszer-verziókat](/troubleshoot/azure/virtual-machines/server-software-support)támogatja. Érdemes lehet frissíteni a gépet az Azure-ba való áttelepítés előtt.
 Feltételesen támogatott Linux operációs rendszer | Az Azure csak a [kiválasztott LINUXOS operációsrendszer-verziókat](../virtual-machines/linux/endorsed-distros.md)támogatja. Érdemes lehet frissíteni a gépet az Azure-ba való áttelepítés előtt. [További részletekért tekintse](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) meg a következőt is:.
 Nem támogatott Linux operációs rendszer | Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációs rendszer támogatását. Javasoljuk, hogy az Azure-ba való Migrálás előtt frissítsen egy [támogatott Linux-verzióra](../virtual-machines/linux/endorsed-distros.md) .
@@ -48,7 +48,7 @@ Belső hiba miatt nem sikerült meghatározni a virtuális gép alkalmasságát 
 Belső hiba miatt nem sikerült meghatározni egy vagy több lemez alkalmasságát | Próbálja meg létrehozni a csoport új értékelését.
 Belső hiba miatt nem sikerült meghatározni egy vagy több hálózati adapter megfelelőségét | Próbálja meg létrehozni a csoport új értékelését.
 Nem található virtuálisgép-méret az ajánlat pénzneme számára fenntartott példányhoz | A gép nem megfelelőként van megjelölve, mert a virtuális gép mérete nem található az RI, az ajánlat és a pénznem kiválasztott kombinációjára vonatkozóan. Szerkessze az értékelési tulajdonságokat az érvényes kombinációk kiválasztásához és az értékelés újraszámításához. 
-Feltételesen kész Internet Protocol | Csak az Azure VMware Solution (AVS) értékelésekre alkalmazható. Az AVS nem támogatja az IPv6-alapú internetes címek tényezőjét.Ha a számítógépet IPv6-kapcsolattal észleli, forduljon az AVS-csapathoz a szervizeléssel kapcsolatos útmutatásért.
+Feltételesen kész Internet Protocol | Csak az Azure VMware Solution (AVS) értékelésekre alkalmazható. Az AVS nem támogatja az IPv6-alapú internetes címek tényezőjét. Ha a számítógépet IPv6-kapcsolattal észleli, forduljon az AVS-csapathoz a szervizeléssel kapcsolatos útmutatásért.
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Javasolt áttelepítési eszköz az importálási alapú AVS-felmérésben ismeretlenként megjelölve
 
@@ -83,7 +83,7 @@ Ha szeretné megmutatni, hogy ez milyen hatással lehet a javaslatokra, vessünk
 
 A helyszíni virtuális gép négy maggal és nyolc GB memóriával rendelkezik, 50%-os CPU-kihasználtsággal és 50%-os memória-kihasználtsággal, valamint a 1,3 megadott kényelmi tényezővel.
 
--  Ha az értékelés **a helyszínen**történik, az Azure-beli VM-SKU négy maggal és 8 GB memóriát ajánlott.
+-  Ha az értékelés **a helyszínen** történik, az Azure-beli VM-SKU négy maggal és 8 GB memóriát ajánlott.
 - Ha az értékelés teljesítmény-alapú, a processzor és a memória tényleges kihasználtsága (50%-a 4 mag * 1,3 = 2,6 magok, valamint a 8 GB-os memória * 50%-a * 1,3 = 5,3-GB memória), ajánlott a négy mag (a legközelebbi támogatott alapszám) és a nyolc GB memória (a legközelebbi támogatott memória mérete) szerinti legolcsóbb VM SKU.
 - [További](concepts-assessment-calculation.md#types-of-assessments) információ az értékelés méretezéséről.
 
@@ -91,8 +91,8 @@ A helyszíni virtuális gép négy maggal és nyolc GB memóriával rendelkezik,
 
 Azure Migrate kiszolgáló értékelése az értékelés típusától függően nagyobb lemezt javasolhat.
 - A kiszolgáló értékelése során a lemez méretezése két értékelési tulajdonságtól függ: a méretezési feltételektől és a tárolási típustól.
-- Ha a méretezési feltételek **teljesítmény-alapúak**, és a tároló típusa **automatikus**, a rendszer a lemez IOPS és átviteli értékeit veszi figyelembe a céllemez típusának (standard HDD, standard SSD vagy prémium) azonosításakor. Ezt követően a lemezből származó SKU-t ajánlott használni, és a javaslat a helyszíni lemez méretére vonatkozó követelményeket is figyelembe veszi.
-- Ha a méretezési feltétel **teljesítmény-alapú**, és a tárolási típus **prémium**, az Azure-ban prémium szintű lemezes SKU-t ajánlott használni a helyszíni lemez IOPS, átviteli sebessége és mérete alapján. Ugyanazt a logikát kell használni a lemez méretezéséhez, ha a méretezési feltételek **a helyszínen** vannak, és a tárolási típus **standard HDD**, **standard SSD**vagy **prémium**.
+- Ha a méretezési feltételek **teljesítmény-alapúak** , és a tároló típusa **automatikus** , a rendszer a lemez IOPS és átviteli értékeit veszi figyelembe a céllemez típusának (standard HDD, standard SSD vagy prémium) azonosításakor. Ezt követően a lemezből származó SKU-t ajánlott használni, és a javaslat a helyszíni lemez méretére vonatkozó követelményeket is figyelembe veszi.
+- Ha a méretezési feltétel **teljesítmény-alapú** , és a tárolási típus **prémium** , az Azure-ban prémium szintű lemezes SKU-t ajánlott használni a helyszíni lemez IOPS, átviteli sebessége és mérete alapján. Ugyanazt a logikát kell használni a lemez méretezéséhez, ha a méretezési feltételek **a helyszínen** vannak, és a tárolási típus **standard HDD** , **standard SSD** vagy **prémium**.
 
 Ha például egy helyszíni lemez 32 GB memóriával rendelkezik, de a lemez összesített olvasási és írási IOPS értéke 800 IOPS, a Server Assessment a prémium szintű lemezt javasolja (a magasabb IOPS-követelmények miatt), majd javaslatot tesz a szükséges IOPS és-méretet támogató lemezes SKU-ra. Ebben a példában a legjobb megoldást a P15-ös változat (256 GB, 1100 IOPS) adja. Bár a helyszíni lemez által igényelt méret 32 GB volt, a Server Assessment a helyszíni lemez magas IOPS követelménye miatt nagyobb lemezt javasol.
 
@@ -126,7 +126,7 @@ Azure Migrate a kiszolgáló értékelése jelenleg csak Windows rendszerű gép
 A Server Assessment folyamatosan gyűjti a helyszíni gépek teljesítményadatait, és ezek alapján tesz javaslatot az Azure-beli virtuálisgép- és lemez-termékváltozatra. [Ismerje meg](concepts-assessment-calculation.md#calculate-sizing-performance-based) a teljesítmény-alapú adatok gyűjtésének módját.
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Miért van az értékelésem arra utaló figyelmeztetést mutat, hogy a fenntartott példányok érvénytelen kombinációjával lett létrehozva, a virtuális gép üzemidő és a kedvezmény (%)?
-Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók. Mivel az értékelés a tulajdonságok érvénytelen kombinációjával lett létrehozva, a Szerkesztés és az újraszámolás gomb le lesz tiltva. Hozzon létre egy új értékelést. [További információk](./concepts-assessment-calculation.md#whats-an-assessment).
+Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók. Mivel az értékelés a tulajdonságok érvénytelen kombinációjával lett létrehozva, a Szerkesztés és az újraszámolás gomb le lesz tiltva. Hozzon létre egy új értékelést. [További információ](./concepts-assessment-calculation.md#whats-an-assessment).
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nem látok teljesítményadatokat a fizikai kiszolgálókon lévő egyes hálózati adapterekhez
 
@@ -165,8 +165,8 @@ Linux rendszerű virtuális gépek esetén győződjön meg arról, hogy az MMA 
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-- **MMS-ügynök**: Tekintse át a támogatott [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)és [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) operációs rendszereket.
-- **Függőségi ügynök**: a támogatott [Windows-és Linux-](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) operációs rendszerek.
+- **MMS-ügynök** : Tekintse át a támogatott [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)és [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) operációs rendszereket.
+- **Függőségi ügynök** : a támogatott [Windows-és Linux-](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) operációs rendszerek.
 
 ## <a name="visualize-dependencies-for--hour"></a>> óra függőségeinek megjelenítése
 
@@ -202,15 +202,15 @@ Gyűjtsön hálózati forgalmi naplókat a következőképpen:
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Nyomja meg az F12 billentyűt Fejlesztői eszközök elindításához. Ha szükséges, törölje a jelet a navigációs beállításban szereplő  **bejegyzések törlése** elemre.
 3. Válassza a **hálózat** fület, és indítsa el a hálózati forgalom rögzítését:
-   - A Chrome-ban válassza a **napló megőrzése**lehetőséget. A rögzítésnek automatikusan el kell indulnia. A piros kör azt jelzi, hogy a forgalom rögzítése folyamatban van. Ha a piros kör nem jelenik meg, válassza ki az elindulni kívánt fekete kört.
+   - A Chrome-ban válassza a **napló megőrzése** lehetőséget. A rögzítésnek automatikusan el kell indulnia. A piros kör azt jelzi, hogy a forgalom rögzítése folyamatban van. Ha a piros kör nem jelenik meg, válassza ki az elindulni kívánt fekete kört.
    - A Microsoft Edge-ben és az Internet Explorerben a rögzítés automatikusan elindul. Ha nem, kattintson a zöld Lejátszás gombra.
 4. Próbálja megismételni a hibát.
 5. Miután észlelte a hibát a rögzítés során, állítsa le a rögzítést, és mentse a rögzített tevékenység másolatát:
-   - A Chrome-ban kattintson a jobb gombbal, és válassza a **Save as har a tartalommal**lehetőséget. Ez a művelet tömöríti és exportálja a naplókat. har-fájlként.
+   - A Chrome-ban kattintson a jobb gombbal, és válassza a **Save as har a tartalommal** lehetőséget. Ez a művelet tömöríti és exportálja a naplókat. har-fájlként.
    - A Microsoft Edge vagy az Internet Explorerben válassza a **rögzített forgalom exportálása** lehetőséget. Ez a művelet tömöríti és exportálja a naplót.
 6. Válassza a **konzol** fület a figyelmeztetések és hibák kereséséhez. A konzol naplójának mentése:
-   - A Chrome-ban kattintson a jobb gombbal a konzol naplójában bárhová. Válassza a **Mentés másként**lehetőséget, exportálja és zip-ként a naplót.
-   - A Microsoft Edge vagy az Internet Explorerben kattintson a jobb gombbal a hibákra, és válassza az **összes másolása**lehetőséget.
+   - A Chrome-ban kattintson a jobb gombbal a konzol naplójában bárhová. Válassza a **Mentés másként** lehetőséget, exportálja és zip-ként a naplót.
+   - A Microsoft Edge vagy az Internet Explorerben kattintson a jobb gombbal a hibákra, és válassza az **összes másolása** lehetőséget.
 7. Fejlesztői eszközök bezárásához.
 
 

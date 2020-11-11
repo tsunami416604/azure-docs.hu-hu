@@ -471,7 +471,7 @@
       items:
         - name: Műveletek figyelése
           href: iot-hub-operations-monitoring.md
-        - name: Migrálás a diagnosztikai beállításokba
+        - name: Migrálás az Azure Monitorba
           href: iot-hub-migrate-to-diagnostics-settings.md
         - name: Megszűnik a TLS 1.0 és 1.1 támogatása
           href: iot-hub-tls-deprecating-1-0-and-1-1.md

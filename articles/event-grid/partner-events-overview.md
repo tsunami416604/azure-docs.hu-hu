@@ -2,16 +2,16 @@
 title: Azure Event Grid – partneri események
 description: A harmadik féltől származó Event Grid SaaS-és Pásti-partnerektől származó eseményeket közvetlenül az Azure-szolgáltatásoknak küldheti el Azure Event Grid.
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 87d1d40b3696229344b0b5c20d06d9d993a514a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102994"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506146"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Partneri események a Azure Event Gridban (előzetes verzió)
-A **partner Events** szolgáltatás lehetővé teszi, hogy egy harmadik féltől származó SaaS-szolgáltató eseményeket tegyen közzé a szolgáltatásaiból, hogy azok elérhetők legyenek az adott eseményekre előfizethető felhasználók számára. A szolgáltatás egy, a harmadik féltől származó eseményforrás számára kínál egy olyan [témakört](concepts.md#topics) , amely egy **partneri témakör** , amely az előfizetők által az események felhasználására használatos. Emellett egy tiszta pub-sub modellt is kínál, amely elválasztja az esemény-közzétevők és az előfizetők által használt erőforrások tulajdonjogát.
+A **partner Events** szolgáltatás lehetővé teszi, hogy a harmadik féltől származó SaaS-szolgáltató eseményeket tegyen közzé a szolgáltatásaiból, így a felhasználók előfizethetnek ezekre az eseményekre. Ez a funkció egy, a [témakör](concepts.md#topics) típusával, egy **partnerrel kapcsolatos témakörben** elérhetővé teszi a harmadik féltől származó eseményekhez való külső élményt. Az előfizetők előfizetéseket hoznak létre ennek a témakörnek az események felhasználásához. Emellett egy tiszta pub-sub modellt is biztosít az esemény-közzétevők és az előfizetők által használt erőforrások elkülönítésével és az azok tulajdonjogával kapcsolatban.
 
 > [!NOTE]
 > Ha még nem ismeri a Event Grid használatát, tekintse meg az [áttekintést](overview.md), a [fogalmakat](concepts.md)és az [eseménykezelőket](event-handlers.md)ismertető cikket.
@@ -75,6 +75,20 @@ Az Event Channel egy tükrözött erőforrás a partneri témakörben. Amikor eg
 
 ## <a name="resources-managed-by-subscribers"></a>Előfizetők által felügyelt erőforrások 
 Az előfizetők a közzétevő által definiált partneri témákat használhatják, és ez az egyetlen olyan típusú erőforrás, amelyet látnak és kezelnek. A partneri témakör létrehozása után az előfizető felhasználó létrehozhat olyan esemény-előfizetéseket, amelyek a szűrési szabályokat határozzák meg a [Célhelyek/eseménykezelők](overview.md#event-handlers)számára. Az előfizetőknek, a partnereknek és a kapcsolódó esemény-előfizetéseknek ugyanazok a funkciók, mint az [Egyéni témakörök](custom-topics.md) és a kapcsolódó előfizetések, amelyek egy jelentős különbséggel rendelkeznek: a partneri témák csak a [Cloud Events 1,0 sémát](cloudevents-schema.md)támogatják, amely a többi támogatott sémánál szélesebb körű képességeket biztosít.
+
+Az alábbi képen a vezérlési sík műveleteinek folyamata látható.
+
+:::image type="content" source="./media/partner-events-overview/partner-control-plane-flow.png" alt-text="Partneri események – vezérlési sík folyamata":::
+
+1. A közzétevő **partneri regisztrációt** hoz létre. A partnerek regisztrációi globálisak. Tehát nem egy adott Azure-régióhoz vannak társítva. Ez a lépés nem kötelező.
+1. A közzétevő **partneri névteret** hoz létre egy adott régióban.
+1. Ha az 1. előfizető megpróbál létrehozni egy partneri témakört, akkor először a közzétevő Azure-előfizetésében jön létre egy **Event Channel** , 1. esemény-csatorna.
+1. Ezután létrejön egy **partneri témakör** , 1. partneri témakör, amely az előfizető Azure-előfizetésében jön létre. Az előfizetőnek aktiválnia kell a partneri témakört. 
+1. Az 1. előfizető létrehoz egy **Azure Logic apps-előfizetést** az 1. partneri témakörben.
+1. Az 1. előfizető **Azure Blob Storage-előfizetést** hoz létre az 1. partneri témakörben. 
+1. Ha a 2. előfizető megpróbál létrehozni egy partneri témakört, egy másik **Event Channel** -et, az Event Channel 2-et, először a kiadó Azure-előfizetésében hozza létre. 
+1. Ezután létrejön a **partneri témakör** , a 2. partneri témakör, amely a második előfizető Azure-előfizetésében jön létre. Az előfizetőnek aktiválnia kell a partneri témakört. 
+1. A 2. előfizető létrehoz egy **Azure functions-előfizetést** a 2. partneri témakörben. 
 
 ## <a name="pricing"></a>Díjszabás
 A partneri témaköröket a Event Grid használatakor végrehajtott műveletek száma alapján számítjuk fel. A számlázási és a részletes díjszabási információk alapján felhasználható összes típusú műveletről a [Event Grid díjszabását](https://azure.microsoft.com/pricing/details/event-grid/)ismertető témakörben talál további információt.

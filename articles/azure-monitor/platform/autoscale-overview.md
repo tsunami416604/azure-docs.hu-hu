@@ -4,12 +4,12 @@ description: Méretezés Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: e89cf36e59ab26ec220d1125162a841fc10f0e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd7c1582cdb4b2b1b72d3f969ad08879d208785f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567264"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505837"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Az autoskálázás áttekintése Microsoft Azure
 Ez a cikk ismerteti, hogy mi Microsoft Azure az autoscale, annak előnyeit és a használatának első lépéseit.  
@@ -63,9 +63,9 @@ Az autoscale a következő terminológiát és struktúrát használja.
 
   - Az **autoskálázási profil** a következőket ötvözi:
 
-    - a **kapacitás beállítása**, amely megadja a példányok számának minimális, maximális és alapértelmezett értékét.
-    - **szabályok összessége**, amelyek mindegyike egy triggert (időt vagy metrikát) és egy méretezési műveletet (fel vagy le) tartalmaz.
-    - **Ismétlődés**, amely azt jelzi, hogy mikor kell a profilt az autoscale értékre állítani.
+    - a **kapacitás beállítása** , amely megadja a példányok számának minimális, maximális és alapértelmezett értékét.
+    - **szabályok összessége** , amelyek mindegyike egy triggert (időt vagy metrikát) és egy méretezési műveletet (fel vagy le) tartalmaz.
+    - **Ismétlődés** , amely azt jelzi, hogy mikor kell a profilt az autoscale értékre állítani.
 
       Több profillal is rendelkezhet, amelyek lehetővé teszik a különböző átfedési követelmények ellátását. Különböző autoskálázási profilokat használhat a hét különböző időpontjaihoz vagy napjaihoz, például:.
 
@@ -102,7 +102,7 @@ Beállíthatja az autoscale on
 | Virtual Machines: klasszikus |[A klasszikus virtuális gépek rendelkezésre állási csoportjainak méretezése](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | Virtual Machines: Windows-méretezési csoportok |[Virtuálisgép-méretezési csoportok méretezése a Windowsban](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtual Machines: linuxos méretezési csoportok |[Virtuálisgép-méretezési csoportok skálázása Linux rendszeren](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
-| Virtual Machines: Windows-példa |[Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
+| Virtual Machines: Windows-példa |[Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets](autoscale-virtual-machine-scale-sets.md) |
 | Azure App Service |[Alkalmazások vertikális felskálázása az Azure app Service-ben](../../app-service/manage-scale-up.md)|
 | API Management szolgáltatás|[Az Azure API Management-példány automatikus skálázása](../../api-management/api-management-howto-autoscale.md)
 | Azure Adatkezelő-fürtök|[Az Azure Adatkezelő-fürtök méretezése a változó igények kielégítése érdekében](/azure/data-explorer/manage-cluster-horizontal-scaling)|

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: c08dd1b5b2f90e874f36c6cf01c4cc5f5ae74d17
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4f5d691ef99ac4647d2031d6588d0b3922edd8cf
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636255"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505988"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Adatok biztonságos másolása az Azure Blob Storage-ból egy SQL-adatbázisba privát végpontok használatával
 
@@ -35,9 +35,9 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure-előfizetés** . Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* **Azure Storage-fiók** . A Blob Storage lesz használatban *forrás* adattárként. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md?tabs=azure-portal) lépéseit ismertető cikket. *Győződjön meg arról, hogy a Storage-fiók csak a kiválasztott hálózatokról engedélyezi a hozzáférést.* 
-* **Azure SQL Database** . Ezt az adatbázist használjuk *fogadó* adattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg az [SQL-adatbázis létrehozása](../azure-sql/database/single-database-create-quickstart.md) című témakört. *Győződjön meg arról, hogy az SQL Database-fiók csak a kiválasztott hálózatokról engedélyezi a hozzáférést.* 
+* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+* **Azure Storage-fiók**. A Blob Storage lesz használatban *forrás* adattárként. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md?tabs=azure-portal) lépéseit ismertető cikket. *Győződjön meg arról, hogy a Storage-fiók csak a kiválasztott hálózatokról engedélyezi a hozzáférést.* 
+* **Azure SQL Database**. Ezt az adatbázist használjuk *fogadó* adattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg az [SQL-adatbázis létrehozása](../azure-sql/database/single-database-create-quickstart.md) című témakört. *Győződjön meg arról, hogy az SQL Database-fiók csak a kiválasztott hálózatokról engedélyezi a hozzáférést.* 
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Blob és SQL-tábla létrehozása
 
@@ -59,17 +59,17 @@ Most készítse elő a blob Storage-t és az SQL Database-t az oktatóanyaghoz a
 
 A következő SQL-szkripttel hozza létre a **dbo.emp** táblát az SQL Database-ben.
 
-    ```sql
-    CREATE TABLE dbo.emp
-    (
-        ID int IDENTITY(1,1) NOT NULL,
-        FirstName varchar(50),
-        LastName varchar(50)
-    )
-    GO
+```sql
+CREATE TABLE dbo.emp
+(
+    ID int IDENTITY(1,1) NOT NULL,
+    FirstName varchar(50),
+    LastName varchar(50)
+)
+GO
 
-    CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
-    ```
+CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
+```
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Factory felhasználói felületét, hogy létrehozzon egy folyamatot az adat-előállítóban.
@@ -148,7 +148,7 @@ Ebben az oktatóanyagban egy folyamat létrehozásával kezdi meg a folyamatot. 
 
 1. A **formátum kiválasztása** párbeszédpanelen válassza ki az adatformátum típusát, majd kattintson a **Continue (folytatás** ) elemre.
 
-1. A **Tulajdonságok megadása** párbeszédpanelen adja meg a **sourceblobdataset lehetőség** **nevet** . Jelölje be az **első sor jelölőnégyzetét fejlécként** . A **társított szolgáltatás** szövegmezőben válassza az **+ új** lehetőséget.
+1. A **Tulajdonságok megadása** párbeszédpanelen adja meg a **sourceblobdataset lehetőség** **nevet**. Jelölje be az **első sor jelölőnégyzetét fejlécként**. A **társított szolgáltatás** szövegmezőben válassza az **+ új** lehetőséget.
 
 1. Az **új társított szolgáltatás (Azure Blob Storage)** párbeszédpanelen írja be a **AzureStorageLinkedService** **nevet** , és válassza ki a Storage-fiók nevét a **Storage-fiók neve** listából. 
 
@@ -156,7 +156,7 @@ Ebben az oktatóanyagban egy folyamat létrehozásával kezdi meg a folyamatot. 
 
     ![Az interaktív szerzői műveleteket bemutató képernyőkép.](./media/tutorial-copy-data-portal-private/interactive-authoring.png)
 
-1. Válassza a **Kapcsolat tesztelése** elemet. Ha a Storage-fiók csak a **kiválasztott hálózatokról** engedélyezi a hozzáférést, és Data Factoryt igényel ahhoz, hogy olyan privát végpontot hozzon létre, amelyet a használata előtt jóvá kell hagyni. A hibaüzenetben egy olyan hivatkozást kell látnia, amely létrehoz egy privát végpontot, amelyet követve felügyelt privát végpontokat hozhat létre. Egy másik lehetőség, hogy közvetlenül a **kezelés** lapra lép, és a [következő szakaszban](#create-a-managed-private-endpoint) található utasításokat követve felügyelt privát végpontot hoz létre.
+1. Válassza a **kapcsolatok tesztelése** lehetőséget. Ha a Storage-fiók csak a **kiválasztott hálózatokról** engedélyezi a hozzáférést, és Data Factoryt igényel ahhoz, hogy olyan privát végpontot hozzon létre, amelyet a használata előtt jóvá kell hagyni. A hibaüzenetben egy olyan hivatkozást kell látnia, amely létrehoz egy privát végpontot, amelyet követve felügyelt privát végpontokat hozhat létre. Egy másik lehetőség, hogy közvetlenül a **kezelés** lapra lép, és a [következő szakaszban](#create-a-managed-private-endpoint) található utasításokat követve felügyelt privát végpontot hoz létre.
 
    > [!NOTE]
    > Előfordulhat, hogy a **kezelés** lap nem érhető el az összes adatfeldolgozó példányhoz. Ha nem látja, elérheti a privát végpontokat a **szerzői**  >  **kapcsolatok**  >  **privát végpontjának** kiválasztásával.
@@ -168,7 +168,7 @@ Ebben az oktatóanyagban egy folyamat létrehozásával kezdi meg a folyamatot. 
 
 1. A társított szolgáltatás létrehozása után visszakerül a **set Properties (tulajdonságok beállítása** ) lapra. A **Fájl elérési útja** mellett válassza a **Tallózás** lehetőséget.
 
-1. Nyissa meg a **adftutorial/input** mappát, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra** .
+1. Nyissa meg a **adftutorial/input** mappát, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra**.
 
 1. Kattintson az **OK** gombra. Automatikusan a folyamat lapra kerül. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
 
@@ -224,7 +224,7 @@ Ha a kapcsolat tesztelésekor nem választotta ki a hiperhivatkozást, kövesse 
 
 1. Az **új adatkészlet** párbeszédpanelen írja be az **SQL** kifejezést a keresőmezőbe az összekötők szűréséhez. Válassza a **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** gombra. Ebben az oktatóanyagban adatokat másol egy SQL Database-be.
 
-1. A **Tulajdonságok megadása** párbeszédpanelen adja meg a **outputsqldataset érték** **nevet** . A **társított szolgáltatás** legördülő listából válassza az **+ új** lehetőséget. Az adatkészleteket mindig társítani kell egy társított szolgáltatáshoz. A társított szolgáltatás rendelkezik azzal a kapcsolati sztringgel, amely használatával a Data Factory a futtatás során kapcsolódik az SQL Database-hez. Az adatkészlet meghatározza azt a tárolót, mappát és fájlt (az utóbbi nem kötelező), ahova a rendszer az adatokat másolja.
+1. A **Tulajdonságok megadása** párbeszédpanelen adja meg a **outputsqldataset érték** **nevet**. A **társított szolgáltatás** legördülő listából válassza az **+ új** lehetőséget. Az adatkészleteket mindig társítani kell egy társított szolgáltatáshoz. A társított szolgáltatás rendelkezik azzal a kapcsolati sztringgel, amely használatával a Data Factory a futtatás során kapcsolódik az SQL Database-hez. Az adatkészlet meghatározza azt a tárolót, mappát és fájlt (az utóbbi nem kötelező), ahova a rendszer az adatokat másolja.
 
 1. Az **új társított szolgáltatás (Azure SQL Database)** párbeszédpanelen hajtsa végre a következő lépéseket:
 
@@ -234,7 +234,7 @@ Ha a kapcsolat tesztelésekor nem választotta ki a hiperhivatkozást, kövesse 
     1. Az **Adatbázis neve** mezőben válassza ki az SQL Database-adatbázisát.
     1. A **Felhasználónév** mezőben adja meg a felhasználó nevét.
     1. A **Jelszó** mezőben adja meg a felhasználó jelszavát.
-    1. Válassza a **Kapcsolat tesztelése** elemet. A művelet végrehajtása sikertelen, mert az SQL Server csak a **kiválasztott hálózatokról** engedélyezi a hozzáférést, és Data Factory kell létrehoznia egy privát végpontot, amelyet a használata előtt jóvá kell hagyni. A hibaüzenetben egy olyan hivatkozást kell látnia, amely létrehoz egy privát végpontot, amelyet követve felügyelt privát végpontokat hozhat létre. Egy másik lehetőség, hogy közvetlenül a **kezelés** lapra lép, és a következő szakaszban található utasításokat követve felügyelt privát végpontot hoz létre.
+    1. Válassza a **kapcsolatok tesztelése** lehetőséget. A művelet végrehajtása sikertelen, mert az SQL Server csak a **kiválasztott hálózatokról** engedélyezi a hozzáférést, és Data Factory kell létrehoznia egy privát végpontot, amelyet a használata előtt jóvá kell hagyni. A hibaüzenetben egy olyan hivatkozást kell látnia, amely létrehoz egy privát végpontot, amelyet követve felügyelt privát végpontokat hozhat létre. Egy másik lehetőség, hogy közvetlenül a **kezelés** lapra lép, és a következő szakaszban található utasításokat követve felügyelt privát végpontot hoz létre.
     1. Hagyja nyitva a párbeszédpanelt, majd lépjen a kiválasztott SQL Server-kiszolgálóra.
     1. A privát hivatkozás jóváhagyásához kövesse az [ebben a szakaszban](#approval-of-a-private-link-in-sql-server) található utasításokat.
     1. Lépjen vissza a párbeszédpanelre. Válassza a kapcsolat újbóli **tesztelése** lehetőséget, majd válassza a **Létrehozás** lehetőséget a társított szolgáltatás telepítéséhez.

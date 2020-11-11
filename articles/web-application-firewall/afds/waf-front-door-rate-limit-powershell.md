@@ -7,18 +7,21 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 29f50b2cf9523b9266de2f73607b0099f32852e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b8aa72c7b77da8fdde9925325587b67411de8d8
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005412"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506413"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Webalkalmazási tűzfal sebességének korlátozási szabályának konfigurálása Azure PowerShell használatával
 Az Azure-beli előtérben lévő Azure webalkalmazási tűzfal (WAF) díjszabási szabálya az ügyfelek által az egyperces időtartam alatt engedélyezett kérelmek számát szabályozza.
 Ez a cikk bemutatja, hogyan konfigurálhat egy WAF-korlátozási szabályt, amely meghatározza az ügyfelek által az Azure PowerShell használatával az URL-címben szereplő */promo* tartalmazó webalkalmazásoknak engedélyezett kérelmek számát.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+> [!NOTE]
+> Minden ügyfél IP-címére érvényesek a díjszabási korlátok. Ha több ügyfél fér hozzá a bejárati ajtóhoz különböző IP-címekről, a rendszer a saját díjszabási korlátját alkalmazza.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt elkezdi a díjszabási szabályzat beállítását, állítsa be a PowerShell-környezetet, és hozzon létre egy bejárati profilt.
@@ -73,9 +76,7 @@ Adja meg a díjszabási korlátot a [New-AzFrontDoorWafCustomRuleObject](/powers
 
 Keresse meg annak az erőforráscsoportnak a nevét, amely az első ajtó profilját tartalmazza a használatával `Get-AzureRmResourceGroup` . Ezután állítson be egy biztonsági házirendet egyéni díjszabási szabályként a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) használatával a megadott erőforráscsoport, amely tartalmazza az előtérben profilt.
 
-Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használja azzal a feltételezéssel, hogy létrehozta a bevezető ajtaját a gyors útmutató [: Create a](../../frontdoor/quickstart-create-front-door.md) bejárati ajtóról szóló cikket.
-
- a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)használata.
+Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használja azzal a feltételezéssel, hogy létrehozta a bevezető ajtót, amely a gyors üzembe helyezési útmutatóban szereplő utasítások alapján hozza létre a [bevezető](../../frontdoor/quickstart-create-front-door.md) ajtaját: [új AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)használatával.
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `
@@ -102,7 +103,7 @@ Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használ
 > [!NOTE]
 > A *WebApplicationFirewallPolicyLink* tulajdonságot csak egyszer kell beállítania, hogy egy biztonsági szabályzatot egy előtér-előtérben csatoljon. A következő házirend-frissítéseket a rendszer automatikusan alkalmazza az előtérben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bejárati ajtóról](../../frontdoor/front-door-overview.md). 
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6bea4ee4452675a50ef9144da300c3e15652a81f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 75428b28095b0e425a1670caffcf960aa6ae58f6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952165"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504444"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Oktatóanyag: az adatátalakítás Azure Stack Edge Pro-val
 
@@ -25,7 +25,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet számítási szerepkört konfigur
 Ez az eljárás körülbelül 10 – 15 percet is igénybe vehet.
 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Számítás konfigurálása
@@ -45,11 +45,11 @@ Mielőtt beállít egy számítási szerepkört a Azure Stack Edge Pro-eszközö
 
 A Azure Stack Edge Pro-ban való számítás konfigurálásához létre kell hoznia egy IoT Hub-erőforrást.
 
-1. Az Azure Stack Edge-erőforrás Azure Portal válassza az **Áttekintés**lehetőséget. A jobb oldali ablaktáblán, a **számítási** csempén válassza az első **lépések**lehetőséget.
+1. Az Azure Stack Edge-erőforrás Azure Portal válassza az **Áttekintés** lehetőséget. A jobb oldali ablaktáblán, a **számítási** csempén válassza az első **lépések** lehetőséget.
 
     ![Ismerkedés a számítási feladatokkal](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
 
-2. Az **Edge-számítás konfigurálása** csempén válassza a **számítás konfigurálása**lehetőséget.
+2. Az **Edge-számítás konfigurálása** csempén válassza a **számítás konfigurálása** lehetőséget.
 
     ![Számítás konfigurálása](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
 
@@ -58,7 +58,7 @@ A Azure Stack Edge Pro-ban való számítás konfigurálásához létre kell hoz
    
     |Mező  |Érték  |
     |---------|---------|
-    |IoT Hub     | Válasszon az **új** vagy a **meglévő**listából. <br> Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ.     |
+    |IoT Hub     | Válasszon az **új** vagy a **meglévő** listából. <br> Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ.     |
     |Név     |Adja meg a IoT Hub erőforrás nevét.         |
 
     ![Ismerkedés a 2. számítási feladatokkal](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
@@ -83,14 +83,14 @@ Az oktatóanyag egyszerű üzembe helyezéséhez két megosztásra lesz szüksé
 
 1. Vegyen fel egy peremhálózati megosztást az eszközön a következő lépések végrehajtásával:
 
-    1. Az Azure Stack Edge-erőforrásban lépjen az **Edge számítás > első lépések**elemre.
-    2. A **megosztás (ok) hozzáadása** csempén válassza a **Hozzáadás**lehetőséget.
+    1. Az Azure Stack Edge-erőforrásban lépjen az **Edge számítás > első lépések** elemre.
+    2. A **megosztás (ok) hozzáadása** csempén válassza a **Hozzáadás** lehetőséget.
 
         ![Megosztási csempe hozzáadása](./media/azure-stack-edge-j-series-deploy-configure-compute/add-share-1.png) 
 
     3. A **megosztás hozzáadása** panelen adja meg a megosztás nevét, és válassza ki a megosztás típusát.
-    4. Az Edge-megosztás csatlakoztatásához jelölje be a **megosztás Edge-számítással való használatának**jelölőnégyzetét.
-    5. Válassza ki a **Storage-fiókot**, a **Storage szolgáltatást**, egy meglévő felhasználót, majd válassza a **Létrehozás**lehetőséget.
+    4. Az Edge-megosztás csatlakoztatásához jelölje be a **megosztás Edge-számítással való használatának** jelölőnégyzetét.
+    5. Válassza ki a **Storage-fiókot** , a **Storage szolgáltatást** , egy meglévő felhasználót, majd válassza a **Létrehozás** lehetőséget.
 
         ![Peremhálózati megosztás hozzáadása](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-1.png) 
 
@@ -105,7 +105,7 @@ Az oktatóanyag egyszerű üzembe helyezéséhez két megosztásra lesz szüksé
 
     A rendszer létrehozza az Edge-megosztást, és sikeres létrehozási értesítést fog kapni. Előfordulhat, hogy a megosztási lista frissül, de meg kell várnia, amíg a megosztás létrehozása be nem fejeződik.
 
-2. Vegyen fel egy peremhálózati helyi megosztást a peremhálózati eszközön úgy, hogy megismétli az előző lépés összes lépését, és bejelöli a **beállítás helyi megosztásként**jelölőnégyzetet. A helyi megosztásban lévő adatmennyiség az eszközön marad.
+2. Vegyen fel egy peremhálózati helyi megosztást a peremhálózati eszközön úgy, hogy megismétli az előző lépés összes lépését, és bejelöli a **beállítás helyi megosztásként** jelölőnégyzetet. A helyi megosztásban lévő adatmennyiség az eszközön marad.
 
     ![Peremhálózat helyi megosztásának hozzáadása](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-2.png)
 
@@ -148,23 +148,23 @@ Az utolsó lépés az, hogy ellenőrizze, hogy a modul csatlakoztatva van-e, és
 
 Annak ellenőrzéséhez, hogy a modul fut-e, tegye a következőket:
 
-1. Válassza a **modul hozzáadása** csempét. Ekkor a **modulok** panelre kerül. A modulok listájában azonosítsa a telepített modult. A hozzáadott modul futásidejű állapotának *futnia*kell.
+1. Válassza a **modul hozzáadása** csempét. Ekkor a **modulok** panelre kerül. A modulok listájában azonosítsa a telepített modult. A hozzáadott modul futásidejű állapotának *futnia* kell.
 
     ![Telepített modul megtekintése](./media/azure-stack-edge-j-series-deploy-configure-compute/add-module-3.png)
  
-1.   A Fájlkezelőben a korábban létrehozott Edge helyi és peremhálózati megosztásokhoz is csatlakozhat.
+1. A Fájlkezelőben a korábban létrehozott Edge helyi és peremhálózati megosztásokhoz is csatlakozhat.
 
     ![Adatok átalakításának ellenőrzése](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
  
-1.   Adja hozzá az adatokat a helyi megosztáshoz.
+1. Adja hozzá az adatokat a helyi megosztáshoz.
 
     ![Adatok átalakításának ellenőrzése](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
  
-    Az adatok áthelyeződnek a felhőalapú megosztásba.
+   Az adatok áthelyeződnek a felhőalapú megosztásba.
 
     ![Adatok átalakításának ellenőrzése](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
 
-    Az adatok ezután a Felhőbeli megosztásról a Storage-fiókba kerülnek. Az adatmegjelenítéshez használhatja a Storage Explorer.
+   Az adatok ezután a Felhőbeli megosztásról a Storage-fiókba kerülnek. Az adatmegjelenítéshez használhatja a Storage Explorer.
 
     <!--![Verify data transform](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-5.png)-->
  

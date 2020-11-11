@@ -1,50 +1,53 @@
 ---
 title: Frissítés a dump és a Restore-Azure Database for PostgreSQL-Single Server használatával
-description: Néhány módszert ismertet az adatbázisok kiírásához és visszaállításához, hogy az áttelepíthető legyen egy magasabb verziójú Azure Database for PostgreSQL – egyetlen kiszolgálóra.
+description: Leírja az offline frissítési módszereket a dump és Restore adatbázisok használatával, hogy áttelepítsen egy újabb verzióra Azure Database for PostgreSQL – egyetlen kiszolgálóra.
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/05/2020
-ms.openlocfilehash: 6dfcf0b2ec1d46821007123908a8e7ba8df29744
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/10/2020
+ms.openlocfilehash: e756e033c8e5b2508dca9bde76ad16be26a940fa
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421764"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505784"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>A PostgreSQL-adatbázis frissítése a dump és a Restore használatával
 
-Azure Database for PostgreSQL egyetlen kiszolgálón ajánlott a PostgreSQL-adatbázismotor frissítése egy magasabb szintű verzióra a következő módszerek egyikének használatával:
-* Offline metódus a PostgreSQL [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html)használatával. Ebben a metódusban először a forrás-kiszolgálóról kell végrehajtani a memóriaképet, majd vissza kell állítania a memóriaképet a célkiszolgálón.
-* Online metódus [**Database Migration Service**](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) (DMS) használatával. Ezzel a módszerrel a célként megadott adatbázis szinkronban van a forrással, és kiválaszthatja, hogy mikor kell kivágni. Vannak azonban bizonyos előfeltételek és korlátozások. 
+A következő módszerekkel frissítheti a PostgreSQL-kiszolgálót Azure Database for PostgreSQL – egyetlen kiszolgálón is, ha az adatbázisait egy magasabb verziószámú kiszolgálóra telepíti át.
+* **Offline** metódus a PostgreSQL [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) használatával és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) , amely az adatáttelepítés során felmerülő állásidőt okoz. Ez a dokumentum a frissítési/áttelepítési módszert tárgyalja.
+* **Online** metódus [Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) (DMS) használatával. Ez a módszer csökkenti a leállások áttelepítését, és a célként megadott adatbázist szinkronban tartja a forrással, és kiválaszthatja, hogy mikor kell kivágni. A DMS használata azonban néhány előfeltételt és korlátozást is igénybe vehet. Részletekért lásd a [DMS dokumentációját](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal). 
 
-Az alábbi javaslatot követve döntheti el, hogy az online és az offline metódusok között hogyan végezheti el a főbb verziófrissítést.
+ Az alábbi táblázat az adatbázisok méretétől és forgatókönyveken alapuló javaslatokat tartalmaz.
 
-| **Adatbázis** | **Memóriakép/visszaállítás (offline)** | **DMS (online)** |
+| **Adatbázis/forgatókönyv** | **Memóriakép/visszaállítás (offline)** | **DMS (online)** |
 | ------ | :------: | :-----: |
 | Van egy kis adatbázisa, amely leállást biztosít a frissítéshez  | X | |
 | Kisméretű adatbázisok (< 10 GB)  | X | X | 
 | Kis adathordozós adatbázisok (10 GB – 100 GB) | X | X |
 | Nagyméretű adatbázisok (> 100 GB) |  | X |
 | Leállást biztosíthat a verziófrissítéshez (az adatbázis méretétől függetlenül) | X |  |
-| Megadhatja a DMS [előfeltételeit](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal#prerequisites) , beleértve az újraindítást is? |  | X |
+| Megadhatja a DMS [előfeltételeit](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal#prerequisites), beleértve az újraindítást is? |  | X |
 | Elkerülheti a frissítési folyamat során a DDLs és a nem naplózott táblákat? | |  X |
 
-Ez a útmutató két példát mutat be az adatbázisok PostgreSQL-pg_dump és pg_restore parancsok használatával történő frissítésére. A jelen dokumentumban szereplő folyamat **frissítésnek** minősül, bár a rendszer  **áttelepíti** az adatbázist a forráskiszolgálóról a célkiszolgálóra. 
+Ez az útmutató néhány offline áttelepítési módszert és példát tartalmaz, amelyek bemutatják, hogyan telepíthet át a forráskiszolgálóról a PostgreSQL újabb verzióját futtató célkiszolgálóra.
 
 > [!NOTE]
-> A PostgreSQL-memóriakép és a visszaállítás többféleképpen is elvégezhető. Dönthet úgy, hogy a jelen dokumentumban leírt módon különböző módszereket használ. Ha például egy olyan memóriaképet szeretne elvégezni, amelyet a PostgreSQL-ügyfélről szeretne visszaállítani, tekintse meg a részletes eljárás részletes ismertetését és az ajánlott eljárásokat ismertető [dokumentumot](./howto-migrate-using-dump-and-restore.md) . További paraméterekkel rendelkező részletes memóriakép-és visszaállítási szintaxist a következő cikkekben talál: [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html). 
+> A PostgreSQL-memóriakép és a visszaállítás többféleképpen is elvégezhető. Dönthet úgy, hogy az útmutatóban ismertetett módszerek egyikét használja, vagy az igényeinek megfelelő alternatív módszereket választ. További paraméterekkel rendelkező részletes memóriakép-és visszaállítási szintaxist a következő cikkekben talál: [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html). 
 
 
-## <a name="prerequisites-for-using-dump-and-restore-with-azure-postgresql"></a>A dump és a Restore Azure PostgreSQL-sel való használatának előfeltételei
+## <a name="prerequisites-for-using-dump-and-restore-with-azure-database-for-postgresql"></a>A dump és a Restore parancs használatának előfeltételei Azure Database for PostgreSQL
  
 A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
-- 9,5, 9,6 vagy 10 rendszerű forrásadatbázis (Azure Database for PostgreSQL – egyetlen kiszolgáló)
-- Célként megadott adatbázis-kiszolgáló a kívánt PostgreSQL főverzió [Azure Database for PostgreSQL-kiszolgálóval](quickstart-create-server-database-portal.md). 
-- A PostgreSQL-mel telepített, [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) parancssori segédprogramokkal rendelkező ügyfélrendszer (Linux) telepítve van. 
-- Azt is megteheti, hogy [Azure Cloud Shell](https://shell.azure.com) vagy a [Azure Portal](https://portal.azure.com)jobb felső sarkában lévő menüsorban található Azure Cloud Shellra kattint. `az login`A memóriakép és a visszaállítási parancsok futtatása előtt be kell jelentkeznie a fiókjába.
-- A PostgreSQL-ügyfél helye, például egy virtuális gép, amely a forrás-és a célkiszolgáló azonos régiójában fut. 
+
+- 9,5, 9,6 vagy 10 rendszert futtató **forrás** PostgreSQL-adatbázis, amelyet frissíteni kíván
+- **Cél** PostgreSQL-adatbázis-kiszolgáló a kívánt főverzióval [Azure Database for PostgreSQL-kiszolgálóval](quickstart-create-server-database-portal.md). 
+- PostgreSQL-ügyfélrendszer a memóriakép és a visszaállítási parancsok futtatásához.
+  - Ez lehet egy Linux vagy Windows rendszerű ügyfél, amelyen telepítve van a PostgreSQL, és [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) parancssori segédprogramok vannak telepítve. 
+  - Azt is megteheti, hogy [Azure Cloud Shell](https://shell.azure.com) vagy a [Azure Portal](https://portal.azure.com)jobb felső sarkában lévő menüsorban található Azure Cloud Shellra kattint. `az login`A memóriakép és a visszaállítási parancsok futtatása előtt be kell jelentkeznie a fiókjába.
+- A PostgreSQL-ügyfél lehetőleg ugyanabban a régióban fut, mint a forrás-és a célkiszolgáló. 
+
 
 ## <a name="additional-details-and-considerations"></a>További részletek és szempontok
 - A kapcsolódási karakterláncot a forrás-és a célként megadott adatbázisokhoz a portálon a "kapcsolódási karakterláncok" gombra kattintva érheti el. 
@@ -52,16 +55,12 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 - Hozza létre a megfelelő adatbázisokat a cél adatbázis-kiszolgálón.
 - Kihagyhatja a frissítés `azure_maintenance` vagy a sablon adatbázisait.
 - A fenti táblázatokból megállapíthatja, hogy az adatbázis alkalmas-e az ilyen áttelepítési módra.
-- Ha Azure Cloud Shellt szeretne használni, a munkamenet 20 perc elteltével időtúllépést tapasztal. Ha az adatbázis mérete < 10 GB, előfordulhat, hogy az időtúllépés nélkül befejezi a frissítést. Ellenkező esetben előfordulhat, hogy a munkamenetet más módon kell megnyitnia, például a kulcs megnyomása <Enter> 10-15 percen belül. 
+- Ha Azure Cloud Shell szeretné használni, vegye figyelembe, hogy a munkamenet 20 perc elteltével időtúllépést mutat. Ha az adatbázis mérete < 10 GB, lehetséges, hogy a munkamenet időtúllépése nélkül tudja befejezni a frissítést. Ellenkező esetben előfordulhat, hogy a munkamenetet más módon kell megnyitnia, például a kulcs megnyomása <Enter> 10-15 percen belül. 
 
-> [!TIP] 
-> - Ha a forráshoz és a céladatbázishez ugyanazt a jelszót használja, beállíthatja a `PGPASSWORD=yourPassword` környezeti változót.  Ezután nem kell megadnia a jelszót minden olyan parancs futtatásakor, mint például a psql, a pg_dump és a pg_restore.  Ehhez hasonlóan további változókat is beállíthat `PGUSER` , például `PGSSLMODE` a következőt: [PostgreSQL környezeti változók](https://www.postgresql.org/docs/11/libpq-envars.html).
->  
-> - Ha a PostgreSQL-kiszolgáló TLS/SSL-kapcsolatokat igényel (alapértelmezés szerint Azure Database for PostgreSQL-kiszolgálókon), állítson be egy környezeti változót, `PGSSLMODE=require` hogy a pg_restore eszköz csatlakozzon a TLS-hez. A TLS nélkül a hiba is olvasható  `FATAL:  SSL connection is required. Please specify SSL options and retry.`
->
-> - A Windows-parancssorban futtassa a parancsot a `SET PGSSLMODE=require` pg_restore parancs futtatása előtt. A Linux vagy a bash futtatása előtt futtassa a parancsot a `export PGSSLMODE=require` pg_restore parancs futtatása előtt.
 
 ## <a name="example-database-used-in-this-guide"></a>Példa az útmutatóban használt adatbázisra
+
+Ebben az útmutatóban a következő forrás-és célkiszolgáló és adatbázis-nevek szerepelnek példákkal.
 
  | **Leírás** | **Érték** |
  | ------- | ------- |
@@ -73,9 +72,22 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
  | Céladatbázis | bench5gb |
  | Cél felhasználóneve | pg@pg-11 |
 
-## <a name="method-1-upgrade-with-streaming-backups-to-the-target"></a>1. módszer: frissítés a célhelyre irányuló folyamatos biztonsági mentéssel 
+## <a name="upgrade-your-databases-using-offline-migration-methods"></a>Az adatbázisok frissítése offline áttelepítési módszerekkel
+Dönthet úgy, hogy az ebben a szakaszban ismertetett módszerek egyikét használja a frissítésekhez. A feladatok elvégzése közben a következő tippeket is használhatja.
 
-Ebben a metódusban a teljes adatbázis-memóriakép továbbítása közvetlenül a célként megadott adatbázis-kiszolgálóra történik, és nem tárolja a memóriaképet az ügyfélen. Ezért ezt a korlátozott tárterülettel rendelkező ügyféllel lehet használni, és a Azure Cloud Shell is futtathatók. 
+- Ha a forráshoz és a céladatbázishez ugyanazt a jelszót használja, beállíthatja a `PGPASSWORD=yourPassword` környezeti változót.  Ezután nem kell minden alkalommal megadnia a jelszót, amikor olyan parancsokat futtat, mint például a psql, a pg_dump és a pg_restore.  Ehhez hasonlóan további változókat is beállíthat `PGUSER` , például `PGSSLMODE` a következőt: [PostgreSQL környezeti változók](https://www.postgresql.org/docs/11/libpq-envars.html).
+  
+- Ha a PostgreSQL-kiszolgáló TLS/SSL-kapcsolatokat igényel (alapértelmezés szerint Azure Database for PostgreSQL-kiszolgálókon), állítson be egy környezeti változót, `PGSSLMODE=require` hogy a pg_restore eszköz csatlakozzon a TLS-hez. A TLS nélkül a hiba is olvasható  `FATAL:  SSL connection is required. Please specify SSL options and retry.`
+
+- A Windows-parancssorban futtassa a parancsot a `SET PGSSLMODE=require` pg_restore parancs futtatása előtt. A Linux vagy a bash futtatása előtt futtassa a parancsot a `export PGSSLMODE=require` pg_restore parancs futtatása előtt.
+
+### <a name="method-1-migrate-using-dump-file"></a>1. módszer: az áttelepítés memóriaképfájl használatával
+
+Ez a módszer két lépést is magában foglal. Először hozzon létre egy memóriaképet a forráskiszolgálóról. A második lépés a memóriakép fájljának visszaállítása a célkiszolgálóra. További részletekért tekintse meg a [Migrálás a dump és a Restore dokumentáció használatával](howto-migrate-using-dump-and-restore.md) című témakört. Ez az ajánlott módszer, ha nagyméretű adatbázisokkal rendelkezik, és az ügyfélrendszer elegendő tárterülettel rendelkezik a memóriakép fájljának tárolásához.
+
+### <a name="method-2-migrate-using-streaming-the-dump-data-to-the-target-database"></a>2. módszer: áttelepítés a memóriakép adatainak továbbítása a célként megadott adatbázisba
+
+Ha nem rendelkezik PostgreSQL-ügyféllel, vagy a Azure Cloud Shell szeretné használni, ezt a metódust használhatja. Az adatbázis-memóriakép továbbítása közvetlenül a célként megadott adatbázis-kiszolgálóra történik, és nem tárolja a memóriaképet az ügyfélen. Ezért ezt a korlátozott tárterülettel rendelkező ügyféllel lehet használni, és a Azure Cloud Shell is futtathatók. 
 
 1. Győződjön meg arról, hogy az adatbázis létezik a célkiszolgálón a `\l` parancs használatával. Ha az adatbázis nem létezik, hozza létre az adatbázist.
    ```azurecli-interactive
@@ -99,7 +111,7 @@ Ebben a metódusban a teljes adatbázis-memóriakép továbbítása közvetlenü
 3. Miután a verziófrissítési (áttelepítési) folyamat befejeződik, tesztelheti az alkalmazást a célkiszolgálóra. 
 4. Ismételje meg a folyamatot a kiszolgálón található összes adatbázisra vonatkozóan.
 
- Az alábbi táblázat az ezzel a módszerrel történő verziófrissítés idejét mutatja be. Az adatok a [pgbench](https://www.postgresql.org/docs/10/pgbench.html)használatával lesznek feltöltve. Mivel az adatbázis különböző méretű objektumokkal rendelkezhet, amelyek mérete eltérő, mint a pgbench létrehozott táblák és indexek, erősen ajánlott tesztelni a memóriaképet és visszaállítani az adatbázist, hogy megértse az adatbázis frissítéséhez szükséges időt. 
+ Az alábbi táblázat szemlélteti, hogy az adatfolyam-továbbítási módszer használatával történt Migrálás ideje. A mintaadatok a [pgbench](https://www.postgresql.org/docs/10/pgbench.html)használatával lesznek feltöltve. Mivel az adatbázis különböző méretű objektumokkal rendelkezhet, amelyek mérete eltérő, mint a pgbench létrehozott táblák és indexek, erősen ajánlott tesztelni a memóriaképet és visszaállítani az adatbázist, hogy megértse az adatbázis frissítéséhez szükséges időt. 
 
 | **Adatbázis mérete** | **Kb. szükséges idő** | 
 | ----- | ------ |
@@ -109,9 +121,9 @@ Ebben a metódusban a teljes adatbázis-memóriakép továbbítása közvetlenü
 | 50 GB | 1 – 1,5 óra |
 | 100 GB | 2,5 – 3 óra|
    
-## <a name="method-2-upgrade-with-parallel-dump-and-restore"></a>2. módszer: verziófrissítés párhuzamos memóriaképtel és visszaállítással 
+### <a name="method-3-migrate-using-parallel-dump-and-restore"></a>3. módszer: áttelepítés párhuzamos memóriakép és visszaállítás használatával 
 
-Ez a módszer akkor hasznos, ha kevés nagyobb táblázat van az adatbázisban, és szeretné integrálással az adott adatbázis memóriaképét és visszaállítási folyamatát. Elegendő helyi lemezes tárterületre van szüksége az adatbázisok biztonsági mentési memóriaképének befogadásához. Ez a párhuzamos memóriakép és visszaállítási folyamat csökkenti az idő felhasználását a teljes áttelepítés/frissítés befejezéséhez. Például a 50 GB-os pgbench-adatbázis, amely 1 – 1,5 órányi átállást vett igénybe, 30 percnél rövidebb idő alatt fejeződött be.
+Ezt a metódust akkor érdemes figyelembe venni, ha az adatbázis néhány nagyobb táblájával rendelkezik, és szeretné integrálással az adott adatbázis memóriaképét és visszaállítási folyamatát. Emellett elegendő tárterületre van szüksége az ügyfélrendszer számára a biztonsági mentési memóriaképek fogadásához. Ez a párhuzamos memóriakép és visszaállítási folyamat csökkenti az idő felhasználását a teljes áttelepítés befejezéséhez. Például a 50 GB-os pgbench-adatbázis, amely 1 – 1,5 órányi átállást vett igénybe, az 1. és 2. módszer használatával fejeződött be, a metódus használatával kevesebb, mint 30 percet vett igénybe.
 
 1. A forráskiszolgálón található minden adatbázishoz hozzon létre egy megfelelő adatbázist a célkiszolgálón.
 
@@ -151,6 +163,6 @@ Ez a módszer akkor hasznos, ha kevés nagyobb táblázat van az adatbázisban, 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha elégedett a célként megadott adatbázis-függvénnyel, elhúzhatja a régi adatbázis-kiszolgálót. 
+- Miután elégedett a céladatbázis-függvénnyel, elhúzhatja a régi adatbázis-kiszolgálót. 
 - Ha ugyanazt az adatbázis-végpontot szeretné használni, mint a forráskiszolgáló, akkor a régi forrás-adatbázis-kiszolgáló törlése után létrehozhat egy olvasási replikát a régi adatbázis-kiszolgáló nevével. Ha az állandó állapot létrejött, leállíthatja a replikát, amely a replika-kiszolgálót egy független kiszolgálónak fogja előléptetni. További részletekért lásd: [replikáció](./concepts-read-replicas.md) .
 - Az éles környezetben való használat előtt ne felejtse el tesztelni és érvényesíteni ezeket a parancsokat tesztkörnyezetben.

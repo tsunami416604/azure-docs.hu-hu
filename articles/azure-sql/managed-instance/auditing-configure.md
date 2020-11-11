@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 393fceaa91600ab143912bb3af38c349f29f770a
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427938"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505665"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Ismerkedés az Azure SQL felügyelt példányok naplózásával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,7 +59,7 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
   
 3. Miután létrehozta a tárolót a naplók számára, kétféleképpen konfigurálhatja azt célként a naplók számára: a [T-SQL használatával](#blobtsql) vagy [a SQL Server Management Studio (SSMS) felhasználói felület használatával](#blobssms):
 
-   - <a id="blobtsql"></a>BLOB Storage konfigurálása a naplókhoz a T-SQL használatával:
+   - <a id="blobtsql"></a>**BLOB Storage konfigurálása a naplókhoz a T-SQL használatával:**
 
      1. A tárolók listában kattintson az újonnan létrehozott tárolóra, majd a **tároló tulajdonságai** elemre.
 
@@ -120,7 +120,7 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
 
      1. Folytassa [a kiszolgáló naplózási specifikációjának vagy adatbázis-naplózási specifikációjának létrehozásával](#createspec).
 
-   - <a id="blobssms"></a>BLOB Storage konfigurálása a naplókhoz a SQL Server Management Studio 18 (előzetes verzió) használatával:
+   - <a id="blobssms"></a>**BLOB Storage konfigurálása a naplókhoz a SQL Server Management Studio 18 használatával:**
 
      1. Kapcsolódjon a felügyelt példányhoz a SQL Server Management Studio felhasználói felület használatával.
 
@@ -143,8 +143,8 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
         ![Válassza az Azure-előfizetés, a Storage-fiók és a blob-tároló elemet.](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
      1. A **naplózás létrehozása** párbeszédpanelen kattintson az **OK** gombra.
-
-4. <a id="createspec"></a>Miután konfigurálta a BLOB tárolót célként a naplók számára, hozzon létre és engedélyezzen egy kiszolgáló-naplózási specifikációt vagy egy adatbázis-naplózási specifikációt, ahogy az SQL Server:
+     
+     1. <a id="createspec"></a>Miután konfigurálta a BLOB tárolót célként a naplók számára, hozzon létre és engedélyezzen egy kiszolgáló-naplózási specifikációt vagy egy adatbázis-naplózási specifikációt, ahogy az SQL Server:
 
    - [Kiszolgáló naplózási specifikációjának létrehozása T-SQL-útmutató](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [Adatbázis-naplózási specifikáció létrehozása T-SQL-útmutató](/sql/t-sql/statements/create-database-audit-specification-transact-sql)

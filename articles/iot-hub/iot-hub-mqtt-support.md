@@ -13,12 +13,14 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 9f063b147fbddaeaa7888af755dba8f325d4fe0f
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+- fasttrack-edit
+- iot
+ms.openlocfilehash: 4e06edaf6323c13b3a5af037b5b85b5b0acecc79
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899109"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505648"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -81,7 +83,7 @@ Annak biztosítása érdekében, hogy az ügyfél/IoT Hub-kapcsolatok életben m
 |---------|---------|---------|
 |Node.js     |   180 másodperc      |     No    |
 |Java     |    230 másodperc     |     No    |
-|C     | 240 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
+|C#     | 240 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
 |Python   | 60 másodperc |  No   |
 
@@ -283,7 +285,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Eszközről a felhőbe irányuló üzenetek küldése
 
-A sikeres kapcsolódást követően az eszközök üzeneteket küldhetnek IoT Hub a `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a **témakör neveként** . Az `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Például:
+A sikeres kapcsolódást követően az eszközök üzeneteket küldhetnek IoT Hub a `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a **témakör neveként**. Az `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Ilyenek többek között:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -298,13 +300,14 @@ Az alábbi lista a IoT Hub implementáció-specifikus viselkedéseit sorolja fel
 
 * A IoT Hub nem tartja fenn az üzenetek megőrzését. Ha egy eszköz a **megőrzési** jelzővel ellátott üzenetet küld az 1 értékre, IoT hub hozzáadja a **mqtt-megőrzött** alkalmazás tulajdonságot az üzenethez. Ebben az esetben a megőrzött üzenet megőrzése helyett a IoT Hub átadja a háttérbeli alkalmazásnak.
 
-* A IoT Hub eszközön csak egy aktív MQTT-kapcsolatok támogatottak. Az azonos eszköz AZONOSÍTÓjának nevében az új MQTT-kapcsolatok IoT Hub a meglévő kapcsolatok eldobásához.
+* A IoT Hub eszközön csak egy aktív MQTT-kapcsolatok támogatottak. Az azonos eszköz AZONOSÍTÓjának nevében az új MQTT-kapcsolatok IoT Hub eldobni a meglévő kapcsolatokat, és az 400027-es **ConnectionForcefullyClosedOnNewConnection** bekerülnek IoT hub naplókba
+
 
 További információ: [üzenetküldési fejlesztői útmutató](iot-hub-devguide-messaging.md).
 
 ## <a name="receiving-cloud-to-device-messages"></a>Felhőből az eszközre irányuló üzenetek fogadása
 
-Az üzenetek IoT Hubból való fogadásához az eszköznek a használatával kell előfizetnie `devices/{device_id}/messages/devicebound/#` egy **témakör-szűrőként** . A témakör szűrője többszintű helyettesítő karaktert használ, amely `#` lehetővé teszi, hogy az eszköz további tulajdonságokat kapjon a témakör nevében. IoT Hub nem teszi lehetővé a `#` vagy `?` helyettesítő karakterek használatát az altémakörök szűréséhez. Mivel IoT Hub nem egy általános célú pub-sub Messaging Broker, csak a dokumentált témakörök nevét és a témakör szűrőit támogatja.
+Az üzenetek IoT Hubból való fogadásához az eszköznek a használatával kell előfizetnie `devices/{device_id}/messages/devicebound/#` egy **témakör-szűrőként**. A témakör szűrője többszintű helyettesítő karaktert használ, amely `#` lehetővé teszi, hogy az eszköz további tulajdonságokat kapjon a témakör nevében. IoT Hub nem teszi lehetővé a `#` vagy `?` helyettesítő karakterek használatát az altémakörök szűréséhez. Mivel IoT Hub nem egy általános célú pub-sub Messaging Broker, csak a dokumentált témakörök nevét és a témakör szűrőit támogatja.
 
 Az eszköz nem kap üzeneteket a IoT Hub addig, amíg sikeresen előfizette az eszközre vonatkozó végpontot, amelyet a `devices/{device_id}/messages/devicebound/#` témakör szűrője képvisel. Az előfizetés létrejötte után az eszköz megkapja a felhőből az eszközre irányuló üzeneteket, amelyeket az előfizetés időpontja után küldtek el. Ha az eszköz a **CleanSession** jelzővel csatlakozik **0-ra** , az előfizetés a különböző munkamenetek között marad meg. Ebben az esetben a következő alkalommal, amikor az eszköz a **CleanSession** -hez csatlakozik, a kapcsolat megszakadása közben minden, a számára elküldött függő üzenetet fogad. Ha az eszköz a **CleanSession** jelzőt **1-re** állítja, akkor a IoT hub addig nem kap üzenetet, amíg előfizet az eszköz-végpontra.
 
@@ -312,7 +315,7 @@ IoT Hub kézbesíti az üzeneteket a **témakör nevével** `devices/{device_id}
 
 A felhőből az eszközre irányuló üzenetekben a tulajdonságok táskájában lévő értékek a következő táblázatban látható módon jelennek meg:
 
-| Tulajdonság értéke | Képviselet | Description |
+| Tulajdonság értéke | Képviselet | Leírás |
 |----|----|----|
 | `null` | `key` | Csak a kulcs jelenik meg a tulajdonság táskájában |
 | üres karakterlánc | `key=` | A kulcsot, és nem értékkel rendelkező egyenlőségjelet kell írni |
@@ -370,7 +373,7 @@ A következő szakasz azt ismerteti, hogyan frissíti az eszköz a jelentett tul
 
 3. A szolgáltatás ezután egy válaszüzenetet küld, amely tartalmazza a jelentett tulajdonságok gyűjtemény új ETag értékét a következő témakörben: `$iothub/twin/res/{status}/?$rid={request id}` . Ez a válaszüzenet ugyanazt a **kérés-azonosítót** használja, mint a kérelem.
 
-A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az eszköz Twin dokumentumához. Egy tag, amely `null` törli a tagot a befoglaló objektumból. Például:
+A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az eszköz Twin dokumentumához. Egy tag, amely `null` törli a tagot a befoglaló objektumból. Ilyenek többek között:
 
 ```json
 {
@@ -408,7 +411,7 @@ További információ: az [eszközök ikrek fejlesztői útmutatója](iot-hub-de
 
 ## <a name="receiving-desired-properties-update-notifications"></a>A kívánt tulajdonságok frissítési értesítéseinek fogadása
 
-Ha egy eszköz csatlakoztatva van, IoT Hub értesítést küld a témakörnek `$iothub/twin/PATCH/properties/desired/?$version={new version}` , amely tartalmazza a megoldás hátterében végrehajtott frissítés tartalmát. Például:
+Ha egy eszköz csatlakoztatva van, IoT Hub értesítést küld a témakörnek `$iothub/twin/PATCH/properties/desired/?$version={new version}` , amely tartalmazza a megoldás hátterében végrehajtott frissítés tartalmát. Ilyenek többek között:
 
 ```json
 {

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cdc6cbbea8b222007d94ecac99902bc4498a42fe
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791596"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505257"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -56,6 +56,11 @@ Az élő események mostantól készenléti állapottal rendelkeznek.  Tekintse 
 Egy élő esemény támogatja A különböző bemeneti méretarányok fogadását. A stretch mód lehetővé teszi, hogy az ügyfelek megadják a kimenet nyújtásának viselkedését.
 
 Az élő kódolás mostantól lehetővé teszi a rögzített kulcstároló-töredékek 0,5 – 20 másodperc közötti kiépítésének lehetőségét.
+
+## <a name="accounts"></a>Fiókok
+
+> [!WARNING]
+> Ha a 2020-05-01 API-verzióval rendelkező Media Services fiókot hoz létre, az nem fog működni a RESTv2 
 
 ## <a name="august-2020"></a>2020. augusztus
 
@@ -109,13 +114,13 @@ Azure Media Player dokumentumok át lettek telepítve az [Azure-dokumentációba
 
 ### <a name="azure-government-cloud-updates"></a>Azure Government Felhőbeli frissítések
 
-Media Services GA'ed a következő Azure Government régiókban: *USA Korm. Arizona* és *USA Korm. Texas* .
+Media Services GA'ed a következő Azure Government régiókban: *USA Korm. Arizona* és *USA Korm. Texas*.
 
 ## <a name="december-2019"></a>2019. december
 
 Az élő és a videó igény szerinti folyamatos átviteléhez a CDN támogatását is hozzáadta a *forrás-és a kisegítő* fejlécekhez. olyan ügyfelek számára érhető el, akik közvetlen szerződést kötöttek a Akamai CDN-vel. Origin-Assist CDN-Prefetch funkció a következő HTTP-fejléceket foglalja magában a Akamai CDN és a Azure Media Services-forrás között:
 
-|HTTP-fejléc|Értékek|Küldő|Fogadó|Cél|
+|HTTP-fejléc|Értékek|Küldő|Fogadó|Rendeltetés|
 | ---- | ---- | ---- | ---- | ----- |
 |CDN-Origin-Assist-prefektus-enabled | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e|
 |CDN-Origin-Assist-prefektus-Path| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|A CDN elérési útjának biztosítása|
@@ -278,7 +283,7 @@ A V3 API GA-kiadásának frissítései a következők:
 * A **PresentationTimeRange** tulajdonságai többé nem szükségesek az **eszközök** és a **fiókok szűrőinek** kiszűréséhez. 
 * A **feladatok** és **átalakítások** $Top és $skip lekérdezési beállításai el lettek távolítva, és $OrderBy lettek hozzáadva. Az új rendezési funkció hozzáadásának részeként a rendszer azt észlelte, hogy a $top és $skip lehetőség korábban még nem volt elérhető, noha nincsenek implementálva.
 * A számbavétel bővíthetőségét újra engedélyezték. Ez a funkció engedélyezve volt az SDK előzetes verzióiban, és véletlenül le lett tiltva a GA verzióban.
-* Két előre megadott folyamatos átviteli házirend lett átnevezve. A **SecureStreaming** mostantól **MultiDrmCencStreaming** . A **SecureStreamingWithFairPlay** most már **Predefined_MultiDrmStreaming** .
+* Két előre megadott folyamatos átviteli házirend lett átnevezve. A **SecureStreaming** mostantól **MultiDrmCencStreaming**. A **SecureStreamingWithFairPlay** most már **Predefined_MultiDrmStreaming**.
 
 ## <a name="november-2018"></a>2018. november
 
