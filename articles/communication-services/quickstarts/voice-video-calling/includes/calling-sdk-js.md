@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9eca855269597477bc42a319c99c886576d92c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779123"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94482678"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -147,7 +147,8 @@ Ez egy olyan sztringet ad vissza, amely a hívás aktuális állapotát jelöli:
 * Csatlakoztatott – a hívás csatlakoztatva van
 * "Hold" – a hívás megtartásra kerül, és a helyi végpont és a távoli résztvevő (k) között nem folyik adathordozó.
 * "Kapcsolat bontása" – átmeneti állapot, mielőtt a hívás "leválasztott" állapotba kerül
-* "Leválasztott" – végső hívás állapota
+* "Leválasztott" – végső hívás állapota.
+   * Ha a hálózati kapcsolat megszakad, az állapot körülbelül 2 percet vesz igénybe.
 
 
 * Ha meg szeretné tudni, hogy egy adott hívás miért ért véget, vizsgálja meg a `callEndReason` tulajdonságot.
@@ -233,6 +234,9 @@ const source callClient.getDeviceManager().getCameraList()[1];
 localVideoStream.switchSource(source);
 
 ```
+### <a name="faq"></a>GYIK
+ * Ha a hálózati kapcsolat megszakad, a hívás állapota "leválasztva" állapotúra változik?
+    * Igen, ha a hálózati kapcsolat több mint 2 percet vesz igénybe, a hívás a leválasztott állapotra vált, és a hívás véget ért.
 
 ## <a name="remote-participants-management"></a>Távoli résztvevők kezelése
 
@@ -270,7 +274,8 @@ Az állapot lehet az egyik
 * "Csatlakoztatott" – a résztvevő csatlakozik a híváshoz
 * "Hold" – a résztvevő tart
 * "EarlyMedia" – a bejelentést csak akkor játssza le a rendszer, ha a résztvevő csatlakozik a híváshoz
-* "Leválasztott" – végső állapot – a résztvevő nem kapcsolódik a híváshoz
+* "Leválasztott" – végső állapot – a résztvevő nem kapcsolódik a híváshoz.
+   * Ha a távoli résztvevő elveszti hálózati kapcsolatát, akkor a távoli résztvevő állapota körülbelül 2 percet vesz igénybe.
 
 Annak megismeréséhez, hogy a résztvevő miért hagyta el a hívást, vizsgálja meg a `callEndReason` tulajdonságot:
 ```js
@@ -410,7 +415,9 @@ A skálázási módot később is frissítheti a metódus meghívásával `updat
 ```js
 view.updateScalingMode('Crop')
 ```
-
+### <a name="faq"></a>GYIK
+* Ha egy távoli résztvevő elveszíti hálózati kapcsolatát, akkor az állapotuk a "leválasztott" állapotra vált?
+    * Igen, ha egy távoli résztvevő több mint 2 percig elveszíti hálózati kapcsolatát, az állapota leválasztva állapotba kerül, és a rendszer eltávolítja a hívást.
 ## <a name="device-management"></a>Eszközfelügyelet
 
 `DeviceManager` lehetővé teszi olyan helyi eszközök enumerálását, amelyek a hang-és video-adatfolyamok továbbítására szolgáló hívásokban használhatók. Azt is lehetővé teszi, hogy engedélyt kérjen a felhasználótól, hogy a natív böngésző API használatával hozzáférjen a mikrofonhoz és a fényképezőgéphez.
