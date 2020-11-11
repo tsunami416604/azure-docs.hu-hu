@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: ba14e2c475611ed77661060d6e17ae0bcbf0a6ca
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f0c38e72231fb343cb9b27def520f73d923a70f6
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744208"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515710"
 ---
 # <a name="step-3-validate-connectivity"></a>3. lépés: a kapcsolat ellenőrzése
 
@@ -29,7 +29,7 @@ Miután telepítette a napló-továbbítót (az 1. lépésben), és úgy konfigu
 
 - Emelt szintű engedélyekkel (sudo) kell rendelkeznie a log továbbító számítógépén.
 
-- A **python 2,7** -es verziójának telepítve kell lennie a naplózási továbbító számítógépén.<br>
+- A naplózási továbbító számítógépén telepítve kell lennie a **python 2,7** vagy a **3** verziónak.<br>
 A parancs használatával keresse meg a következőt: `python –version` .
 
 - A folyamat egy pontján szükség lehet a munkaterület-AZONOSÍTÓra és a munkaterület elsődleges kulcsára. Ezeket a munkaterület-erőforrásban találja, az **ügynökök kezelése** területen.
@@ -37,7 +37,7 @@ A parancs használatával keresse meg a következőt: `python –version` .
 ## <a name="how-to-validate-connectivity"></a>A kapcsolat érvényesítése
 
 1. Az Azure Sentinel navigációs menüjében nyissa meg a **naplók** elemet. Futtasson egy lekérdezést a **CommonSecurityLog** sémával, és ellenőrizze, hogy a biztonsági megoldásból kapott-e naplókat.<br>
-Vegye figyelembe, hogy körülbelül 20 percet vesz igénybe, amíg a naplók meg nem jelennek a **log Analyticsban** . 
+Vegye figyelembe, hogy körülbelül 20 percet vesz igénybe, amíg a naplók meg nem jelennek a **log Analyticsban**. 
 
 1. Ha nem látja az eredményeket a lekérdezésből, ellenőrizze, hogy az események a biztonsági megoldásból származnak-e, vagy próbáljon meg generálni, és ellenőrizze, hogy továbbítva vannak-e a kijelölt syslog-továbbító gépnek. 
 
@@ -47,7 +47,7 @@ Vegye figyelembe, hogy körülbelül 20 percet vesz igénybe, amíg a naplók me
     sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
     ```
 
-   - Előfordulhat, hogy egy olyan üzenetet kap, amely egy parancs futtatásával kijavít egy problémát a ***számítógép* mező leképezésével** . A részletekért tekintse [meg az érvényesítési parancsfájl magyarázatát](#mapping-command) .
+   - Előfordulhat, hogy egy olyan üzenetet kap, amely egy parancs futtatásával kijavít egy problémát a ***számítógép* mező leképezésével**. A részletekért tekintse [meg az érvényesítési parancsfájl magyarázatát](#mapping-command) .
 
     - Előfordulhat, hogy egy olyan üzenetet kap, amely egy parancs futtatásával orvosolja a **Cisco ASA-tűzfalak naplófájljainak elemzésével** kapcsolatos problémát. A részletekért tekintse [meg az érvényesítési parancsfájl magyarázatát](#parsing-command) .
 

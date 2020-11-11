@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: 303ed66b7d268a5bab33d0d857399e907764d152
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f7b96bcebb2106e52c62426ca2b64f9305e09141
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378856"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515409"
 ---
 # <a name="creating-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
@@ -31,11 +31,10 @@ Az oktatóanyag lépéseinek elvégzéséhez hozzáféréssel kell rendelkeznie 
 1. A keresési eredmények között, a **szolgáltatások** területen válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió)** lehetőséget.
 1. Munkaterület létrehozásához válassza a **Hozzáadás** lehetőséget.
 1. Az **alapvető beállítások** területen adja meg a kívánt **előfizetést** , **erőforráscsoportot** , **régiót** , majd válassza ki a munkaterület nevét. Ebben az oktatóanyagban a **sajátmunkaterület** -t fogjuk használni.
-1. Munkaterület létrehozásához szükség van egy ADLSGEN2-fiókra és egy tárolóra a fiókban. A szinapszis munkaterület ezt a tárolót fogja használni az alapértelmezett helyként a Spark-naplók és-adathalmazok tárolására a Spark-táblákban.
-    1. Navigáljon a **2. generációs Data Lake Storage kiválasztásához**. 
-    1. Kattintson az **új létrehozása** elemre, és nevezze el **contosolake**.
-    1. Kattintson a **fájlrendszer** elemre, és nevezze el a **felhasználókat**. Ekkor létrejön egy **felhasználó** nevű tároló.
-1. Az Azure szinapszis-munkaterülete ezt a Storage-fiókot fogja használni az "elsődleges" Storage-fiók és a munkaterület-adattárolási tároló számára. A munkaterület Apache Spark táblákban tárolja az adattárakat. Egy **/Synapse/workspacename** nevű mappában tárolja a Spark-alkalmazás naplóit.
+1. Navigáljon a **2. generációs Data Lake Storage kiválasztásához**. 
+1. Kattintson az **új létrehozása** elemre, és nevezze el **contosolake**.
+1. Kattintson a **fájlrendszer** elemre, és nevezze el a **felhasználókat**. Ekkor létrejön egy **felhasználó** nevű tároló.
+1. A munkaterület ezt a Storage-fiókot fogja használni az "elsődleges" Storage-fiók a Spark-táblák és a Spark-alkalmazások naplói számára.
 1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A munkaterület pár percen belül elkészül.
 
 ## <a name="open-synapse-studio"></a>A szinapszis Studio megnyitása

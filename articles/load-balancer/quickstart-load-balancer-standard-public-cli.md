@@ -16,27 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 454dc3ddd03be319c23df67231ea2ab08b95c52b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a0903a1da02b1f187e6f12e35fcb4bc05cd82939
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544919"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516781"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rövid útmutató: Nyilvános Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
 Ismerkedjen meg Azure Load Balancer az Azure CLI használatával, és hozzon létre egy nyilvános Load balancert és három virtuális gépet.
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Helyileg telepített Azure CLI vagy Azure Cloud Shell
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+- Ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
-
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -65,7 +62,7 @@ A virtuális gépek üzembe helyezése és a terheléselosztó tesztelése előt
 
 Hozzon létre egy virtuális hálózatot [az az Network vnet Create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt)paranccsal:
 
-* Elnevezett **myVNet** .
+* Elnevezett **myVNet**.
 * A **10.1.0.0/16** címnek az előtagja.
 * **MyBackendSubnet** nevű alhálózat.
 * A **10.1.0.0/24** alhálózati előtag.
@@ -88,8 +85,8 @@ A standard Load Balancer esetében a háttérbeli címen lévő virtuális gépe
 
 Hozzon létre egy hálózati biztonsági csoportot [az az Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)paranccsal:
 
-* Elnevezett **myNSG** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* Elnevezett **myNSG**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 
 ```azurecli-interactive
   az network nsg create \
@@ -101,15 +98,15 @@ Hozzon létre egy hálózati biztonsági csoportot [az az Network NSG Create](ht
 
 Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt [az az Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)paranccsal:
 
-* Elnevezett **myNSGRuleHTTP** .
-* Az előző lépésben létrehozott hálózati biztonsági csoport **myNSG** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* Protokoll **(*)** .
-* Irány **bejövő** .
-* Forrás **(*)** .
-* Cél **(*)** .
-* Célport **portszáma 80** .
-* Hozzáférés **engedélyezése** .
+* Elnevezett **myNSGRuleHTTP**.
+* Az előző lépésben létrehozott hálózati biztonsági csoport **myNSG**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* Protokoll **(*)**.
+* Irány **bejövő**.
+* Forrás **(*)**.
+* Cél **(*)**.
+* Célport **portszáma 80**.
+* Hozzáférés **engedélyezése**.
 * **200** prioritás.
 
 ```azurecli-interactive
@@ -133,11 +130,11 @@ Hozzon létre három hálózati adaptert az [az Network NIC Create](https://docs
 
 #### <a name="vm1"></a>VM1
 
-* Elnevezett **myNicVM1** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* A virtuális hálózat **myVNet** .
-* Az alhálózat **myBackendSubnet** .
-* A hálózati biztonsági csoport **myNSG** .
+* Elnevezett **myNicVM1**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* A virtuális hálózat **myVNet**.
+* Az alhálózat **myBackendSubnet**.
+* A hálózati biztonsági csoport **myNSG**.
 
 ```azurecli-interactive
 
@@ -150,10 +147,10 @@ Hozzon létre három hálózati adaptert az [az Network NIC Create](https://docs
 ```
 #### <a name="vm2"></a>VM2
 
-* Elnevezett **myNicVM2** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* A virtuális hálózat **myVNet** .
-* Az alhálózat **myBackendSubnet** .
+* Elnevezett **myNicVM2**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* A virtuális hálózat **myVNet**.
+* Az alhálózat **myBackendSubnet**.
 
 ```azurecli-interactive
   az network nic create \
@@ -165,11 +162,11 @@ Hozzon létre három hálózati adaptert az [az Network NIC Create](https://docs
 ```
 #### <a name="vm3"></a>VM3
 
-* Elnevezett **myNicVM3** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* A virtuális hálózat **myVNet** .
-* Az alhálózat **myBackendSubnet** .
-* A hálózati biztonsági csoport **myNSG** .
+* Elnevezett **myNicVM3**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* A virtuális hálózat **myVNet**.
+* Az alhálózat **myBackendSubnet**.
+* A hálózati biztonsági csoport **myNSG**.
 
 ```azurecli-interactive
   az network nic create \
@@ -239,12 +236,12 @@ runcmd:
 Hozza létre a virtuális gépeket az [az VM Create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create)paranccsal:
 
 #### <a name="vm1"></a>VM1
-* Elnevezett **myVM1** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* Csatolva a hálózati adapter **myNicVM1** .
-* A virtuális gép rendszerképének **UbuntuLTS** .
+* Elnevezett **myVM1**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* Csatolva a hálózati adapter **myNicVM1**.
+* A virtuális gép rendszerképének **UbuntuLTS**.
 * A fenti lépésben létrehozott konfigurációs fájl **cloud-init.txt** .
-* **1. zóna** .
+* **1. zóna**.
 
 ```azurecli-interactive
   az vm create \
@@ -259,12 +256,12 @@ Hozza létre a virtuális gépeket az [az VM Create](https://docs.microsoft.com/
     
 ```
 #### <a name="vm2"></a>VM2
-* Elnevezett **myVM2** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* Csatolva a hálózati adapter **myNicVM2** .
-* A virtuális gép rendszerképének **UbuntuLTS** .
+* Elnevezett **myVM2**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* Csatolva a hálózati adapter **myNicVM2**.
+* A virtuális gép rendszerképének **UbuntuLTS**.
 * A fenti lépésben létrehozott konfigurációs fájl **cloud-init.txt** .
-* **2. zóna** .
+* **2. zóna**.
 
 ```azurecli-interactive
   az vm create \
@@ -279,12 +276,12 @@ Hozza létre a virtuális gépeket az [az VM Create](https://docs.microsoft.com/
 ```
 
 #### <a name="vm3"></a>VM3
-* Elnevezett **myVM3** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* Csatolva a hálózati adapter **myNicVM3** .
-* A virtuális gép rendszerképének **UbuntuLTS** .
+* Elnevezett **myVM3**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* Csatolva a hálózati adapter **myNicVM3**.
+* A virtuális gép rendszerképének **UbuntuLTS**.
 * A fenti lépésben létrehozott konfigurációs fájl **cloud-init.txt** .
-* **3. zóna** .
+* **3. zóna**.
 
 ```azurecli-interactive
    az vm create \
@@ -306,7 +303,7 @@ A webalkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-c
 Használja az [az Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to:
 
 * Hozzon létre egy szabványos, redundáns nyilvános IP-címet a **myPublicIP** néven.
-* **CreatePubLBQS – RG** .
+* **CreatePubLBQS – RG**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -338,7 +335,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 
 Hozzon létre egy nyilvános Load balancert az [az Network LB Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create)paranccsal:
 
-* Elnevezett **myLoadBalancer** .
+* Elnevezett **myLoadBalancer**.
 * Egy **myFrontEnd** nevű frontend-készlet.
 * Egy **myBackEndPool** nevű háttér-készlet.
 * Az előző lépésben létrehozott nyilvános IP- **myPublicIP** társítva. 
@@ -362,7 +359,7 @@ A rendszer eltávolít egy sikertelen mintavételi vizsgálatot tartalmazó virt
 Állapot-mintavétel létrehozása az [az Network LB Probe Create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create)paranccsal:
 
 * A virtuális gépek állapotának figyelése.
-* Elnevezett **myHealthProbe** .
+* Elnevezett **myHealthProbe**.
 * **TCP** protokoll.
 * A **80** -es port figyelése.
 
@@ -386,7 +383,7 @@ A terheléselosztó szabálya az alábbiakat határozza meg:
 Terheléselosztó-szabály létrehozása az [az Network LB Rule Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)paranccsal:
 
 * Elnevezett **: myhttprule**
-* A 80-es **port** figyelése a frontend-készlet **myFrontEnd** .
+* A 80-es **port** figyelése a frontend-készlet **myFrontEnd**.
 * Elosztott terhelésű hálózati forgalom küldése a háttérbeli címkészlet **myBackEndPool** a 80-es **porton** keresztül. 
 * A Health mintavételi **myHealthProbe** használata.
 * **TCP** protokoll.
@@ -415,8 +412,8 @@ Terheléselosztó-szabály létrehozása az [az Network LB Rule Create](https://
 Adja hozzá a virtuális gépeket a háttér-készlethez az [az Network NIC IP-config cím-Pool Add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)paranccsal:
 
 #### <a name="vm1"></a>VM1
-* A háttérbeli címkészlet **myBackEndPool** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* A háttérbeli címkészlet **myBackEndPool**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * A hálózati adapter **myNicVM1** és **ipconfig1** van társítva.
 * A terheléselosztó **myLoadBalancer** van társítva.
 
@@ -430,8 +427,8 @@ Adja hozzá a virtuális gépeket a háttér-készlethez az [az Network NIC IP-c
 ```
 
 #### <a name="vm2"></a>VM2
-* A háttérbeli címkészlet **myBackEndPool** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* A háttérbeli címkészlet **myBackEndPool**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * A hálózati adapter **myNicVM2** és **ipconfig1** van társítva.
 * A terheléselosztó **myLoadBalancer** van társítva.
 
@@ -445,8 +442,8 @@ Adja hozzá a virtuális gépeket a háttér-készlethez az [az Network NIC IP-c
 ```
 
 #### <a name="vm3"></a>VM3
-* A háttérbeli címkészlet **myBackEndPool** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* A háttérbeli címkészlet **myBackEndPool**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * A hálózati adapter **myNicVM3** és **ipconfig1** van társítva.
 * A terheléselosztó **myLoadBalancer** van társítva.
 
@@ -474,8 +471,8 @@ A kimenő NAT és a kimenő kapcsolatok skálázásával kapcsolatos további in
 
 #### <a name="public-ip"></a>Nyilvános IP-cím
 
-* Elnevezett **myPublicIPOutbound** .
-* **CreatePubLBQS – RG** .
+* Elnevezett **myPublicIPOutbound**.
+* **CreatePubLBQS – RG**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -495,9 +492,9 @@ Zóna nélküli redundáns nyilvános IP-cím létrehozása a 1. zónaban:
 ```
 #### <a name="public-ip-prefix"></a>Nyilvános IP-előtag
 
-* Elnevezett **myPublicIPPrefixOutbound** .
-* **CreatePubLBQS – RG** .
-* Az előtag hossza **28** .
+* Elnevezett **myPublicIPPrefixOutbound**.
+* **CreatePubLBQS – RG**.
+* Az előtag hossza **28**.
 
 ```azurecli-interactive
   az network public-ip prefix create \
@@ -523,8 +520,8 @@ Válassza ki a nyilvános IP-cím vagy a nyilvános IP-előtag parancsait az el�
 
 #### <a name="public-ip"></a>Nyilvános IP-cím
 
-* Elnevezett **myFrontEndOutbound** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* Elnevezett **myFrontEndOutbound**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * Nyilvános IP- **myPublicIPOutbound** társítva.
 * A terheléselosztó **myLoadBalancer** van társítva.
 
@@ -538,8 +535,8 @@ Válassza ki a nyilvános IP-cím vagy a nyilvános IP-előtag parancsait az el�
 
 #### <a name="public-ip-prefix"></a>Nyilvános IP-előtag
 
-* Elnevezett **myFrontEndOutbound** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* Elnevezett **myFrontEndOutbound**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * A nyilvános IP-előtag **myPublicIPPrefixOutbound** van társítva.
 * A terheléselosztó **myLoadBalancer** van társítva.
 
@@ -555,8 +552,8 @@ Válassza ki a nyilvános IP-cím vagy a nyilvános IP-előtag parancsait az el�
 
 Hozzon létre egy új kimenő készletet az [az Network LB-címkészlet Create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)paranccsal:
 
-* Elnevezett **myBackEndPoolOutbound** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* Elnevezett **myBackEndPoolOutbound**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * A terheléselosztó **myLoadBalancer** van társítva.
 
 ```azurecli-interactive
@@ -569,8 +566,8 @@ Hozzon létre egy új kimenő készletet az [az Network LB-címkészlet Create](
 
 Hozzon létre egy új kimenő szabályt a kimenő háttérrendszer-készlethez az [az Network LB kimenő-Rule Create](https://docs.microsoft.com/cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-create)paranccsal:
 
-* Elnevezett **myOutboundRule** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* Elnevezett **myOutboundRule**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * A terheléselosztó **myLoadBalancer** társítva
 * A frontend **myFrontEndOutbound** van társítva.
 * **Minden** protokoll.
@@ -595,8 +592,8 @@ Adja hozzá a virtuális gépeket a kimenő készlethez az [az Network NIC IP-co
 
 
 #### <a name="vm1"></a>VM1
-* A háttérbeli címkészlet **myBackEndPoolOutbound** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* A háttérbeli címkészlet **myBackEndPoolOutbound**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * A hálózati adapter **myNicVM1** és **ipconfig1** van társítva.
 * A terheléselosztó **myLoadBalancer** van társítva.
 
@@ -610,8 +607,8 @@ Adja hozzá a virtuális gépeket a kimenő készlethez az [az Network NIC IP-co
 ```
 
 #### <a name="vm2"></a>VM2
-* A háttérbeli címkészlet **myBackEndPoolOutbound** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* A háttérbeli címkészlet **myBackEndPoolOutbound**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * A hálózati adapter **myNicVM2** és **ipconfig1** van társítva.
 * A terheléselosztó **myLoadBalancer** van társítva.
 
@@ -625,8 +622,8 @@ Adja hozzá a virtuális gépeket a kimenő készlethez az [az Network NIC IP-co
 ```
 
 #### <a name="vm3"></a>VM3
-* A háttérbeli címkészlet **myBackEndPoolOutbound** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* A háttérbeli címkészlet **myBackEndPoolOutbound**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * A hálózati adapter **myNicVM3** és **ipconfig1** van társítva.
 * A terheléselosztó **myLoadBalancer** van társítva.
 
@@ -652,7 +649,7 @@ A virtuális gépek üzembe helyezése és a terheléselosztó tesztelése előt
 
 Hozzon létre egy virtuális hálózatot [az az Network vnet Create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt)paranccsal:
 
-* Elnevezett **myVNet** .
+* Elnevezett **myVNet**.
 * A **10.1.0.0/16** címnek az előtagja.
 * **MyBackendSubnet** nevű alhálózat.
 * A **10.1.0.0/24** alhálózati előtag.
@@ -675,8 +672,8 @@ A standard Load Balancer esetében a háttérbeli címen lévő virtuális gépe
 
 Hozzon létre egy hálózati biztonsági csoportot [az az Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)paranccsal:
 
-* Elnevezett **myNSG** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* Elnevezett **myNSG**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 
 ```azurecli-interactive
   az network nsg create \
@@ -688,15 +685,15 @@ Hozzon létre egy hálózati biztonsági csoportot [az az Network NSG Create](ht
 
 Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt [az az Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)paranccsal:
 
-* Elnevezett **myNSGRuleHTTP** .
-* Az előző lépésben létrehozott hálózati biztonsági csoport **myNSG** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* Protokoll **(*)** .
-* Irány **bejövő** .
-* Forrás **(*)** .
-* Cél **(*)** .
-* Célport **portszáma 80** .
-* Hozzáférés **engedélyezése** .
+* Elnevezett **myNSGRuleHTTP**.
+* Az előző lépésben létrehozott hálózati biztonsági csoport **myNSG**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* Protokoll **(*)**.
+* Irány **bejövő**.
+* Forrás **(*)**.
+* Cél **(*)**.
+* Célport **portszáma 80**.
+* Hozzáférés **engedélyezése**.
 * **200** prioritás.
 
 ```azurecli-interactive
@@ -720,11 +717,11 @@ Hozzon létre három hálózati adaptert az [az Network NIC Create](https://docs
 
 #### <a name="vm1"></a>VM1
 
-* Elnevezett **myNicVM1** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* A virtuális hálózat **myVNet** .
-* Az alhálózat **myBackendSubnet** .
-* A hálózati biztonsági csoport **myNSG** .
+* Elnevezett **myNicVM1**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* A virtuális hálózat **myVNet**.
+* Az alhálózat **myBackendSubnet**.
+* A hálózati biztonsági csoport **myNSG**.
 
 ```azurecli-interactive
 
@@ -737,11 +734,11 @@ Hozzon létre három hálózati adaptert az [az Network NIC Create](https://docs
 ```
 #### <a name="vm2"></a>VM2
 
-* Elnevezett **myNicVM2** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* A virtuális hálózat **myVNet** .
-* Az alhálózat **myBackendSubnet** .
-* A hálózati biztonsági csoport **myNSG** .
+* Elnevezett **myNicVM2**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* A virtuális hálózat **myVNet**.
+* Az alhálózat **myBackendSubnet**.
+* A hálózati biztonsági csoport **myNSG**.
 
 ```azurecli-interactive
   az network nic create \
@@ -753,11 +750,11 @@ Hozzon létre három hálózati adaptert az [az Network NIC Create](https://docs
 ```
 #### <a name="vm3"></a>VM3
 
-* Elnevezett **myNicVM3** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* A virtuális hálózat **myVNet** .
-* Az alhálózat **myBackendSubnet** .
-* A hálózati biztonsági csoport **myNSG** .
+* Elnevezett **myNicVM3**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* A virtuális hálózat **myVNet**.
+* Az alhálózat **myBackendSubnet**.
+* A hálózati biztonsági csoport **myNSG**.
 
 ```azurecli-interactive
   az network nic create \
@@ -830,9 +827,9 @@ runcmd:
 
 Hozza létre a rendelkezésre állási készletet az [az VM rendelkezésre állása-set Create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest#az-vm-availability-set-create)paranccsal:
 
-* Elnevezett **myAvSet** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* Hely **eastus** .
+* Elnevezett **myAvSet**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* Hely **eastus**.
 
 ```azurecli-interactive
   az vm availability-set create \
@@ -847,12 +844,12 @@ Hozza létre a rendelkezésre állási készletet az [az VM rendelkezésre áll�
 Hozza létre a virtuális gépeket az [az VM Create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create)paranccsal:
 
 #### <a name="vm1"></a>VM1
-* Elnevezett **myVM1** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* Csatolva a hálózati adapter **myNicVM1** .
-* A virtuális gép rendszerképének **UbuntuLTS** .
+* Elnevezett **myVM1**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* Csatolva a hálózati adapter **myNicVM1**.
+* A virtuális gép rendszerképének **UbuntuLTS**.
 * A fenti lépésben létrehozott konfigurációs fájl **cloud-init.txt** .
-* A rendelkezésre állási csoport **myAvSet** .
+* A rendelkezésre állási csoport **myAvSet**.
 
 ```azurecli-interactive
   az vm create \
@@ -866,12 +863,12 @@ Hozza létre a virtuális gépeket az [az VM Create](https://docs.microsoft.com/
     --no-wait 
 ```
 #### <a name="vm2"></a>VM2
-* Elnevezett **myVM2** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* Csatolva a hálózati adapter **myNicVM2** .
-* A virtuális gép rendszerképének **UbuntuLTS** .
+* Elnevezett **myVM2**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* Csatolva a hálózati adapter **myNicVM2**.
+* A virtuális gép rendszerképének **UbuntuLTS**.
 * A fenti lépésben létrehozott konfigurációs fájl **cloud-init.txt** .
-* **2. zóna** .
+* **2. zóna**.
 
 ```azurecli-interactive
   az vm create \
@@ -886,12 +883,12 @@ Hozza létre a virtuális gépeket az [az VM Create](https://docs.microsoft.com/
 ```
 
 #### <a name="vm3"></a>VM3
-* Elnevezett **myVM3** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
-* Csatolva a hálózati adapter **myNicVM3** .
-* A virtuális gép rendszerképének **UbuntuLTS** .
+* Elnevezett **myVM3**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
+* Csatolva a hálózati adapter **myNicVM3**.
+* A virtuális gép rendszerképének **UbuntuLTS**.
 * A fenti lépésben létrehozott konfigurációs fájl **cloud-init.txt** .
-* **3. zóna** .
+* **3. zóna**.
 
 ```azurecli-interactive
    az vm create \
@@ -914,7 +911,7 @@ A webalkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-c
 Használja az [az Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to:
 
 * Hozzon létre egy szabványos, redundáns nyilvános IP-címet a **myPublicIP** néven.
-* **CreatePubLBQS – RG** .
+* **CreatePubLBQS – RG**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -936,7 +933,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 
 Hozzon létre egy nyilvános Load balancert az [az Network LB Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create)paranccsal:
 
-* Elnevezett **myLoadBalancer** .
+* Elnevezett **myLoadBalancer**.
 * Egy **myFrontEnd** nevű frontend-készlet.
 * Egy **myBackEndPool** nevű háttér-készlet.
 * Az előző lépésben létrehozott nyilvános IP- **myPublicIP** társítva. 
@@ -960,7 +957,7 @@ A rendszer eltávolít egy sikertelen mintavételi vizsgálatot tartalmazó virt
 Állapot-mintavétel létrehozása az [az Network LB Probe Create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create)paranccsal:
 
 * A virtuális gépek állapotának figyelése.
-* Elnevezett **myHealthProbe** .
+* Elnevezett **myHealthProbe**.
 * **TCP** protokoll.
 * A **80** -es port figyelése.
 
@@ -984,7 +981,7 @@ A terheléselosztó szabálya az alábbiakat határozza meg:
 Terheléselosztó-szabály létrehozása az [az Network LB Rule Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)paranccsal:
 
 * Elnevezett **: myhttprule**
-* A 80-es **port** figyelése a frontend-készlet **myFrontEnd** .
+* A 80-es **port** figyelése a frontend-készlet **myFrontEnd**.
 * Elosztott terhelésű hálózati forgalom küldése a háttérbeli címkészlet **myBackEndPool** a 80-es **porton** keresztül. 
 * A Health mintavételi **myHealthProbe** használata.
 * **TCP** protokoll.
@@ -1010,8 +1007,8 @@ Adja hozzá a virtuális gépeket a háttér-készlethez az [az Network NIC IP-c
 
 
 #### <a name="vm1"></a>VM1
-* A háttérbeli címkészlet **myBackEndPool** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* A háttérbeli címkészlet **myBackEndPool**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * A hálózati adapter **myNicVM1** és **ipconfig1** van társítva.
 * A terheléselosztó **myLoadBalancer** van társítva.
 
@@ -1025,8 +1022,8 @@ Adja hozzá a virtuális gépeket a háttér-készlethez az [az Network NIC IP-c
 ```
 
 #### <a name="vm2"></a>VM2
-* A háttérbeli címkészlet **myBackEndPool** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* A háttérbeli címkészlet **myBackEndPool**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * A hálózati adapter **myNicVM2** és **ipconfig1** van társítva.
 * A terheléselosztó **myLoadBalancer** van társítva.
 
@@ -1040,8 +1037,8 @@ Adja hozzá a virtuális gépeket a háttér-készlethez az [az Network NIC IP-c
 ```
 
 #### <a name="vm3"></a>VM3
-* A háttérbeli címkészlet **myBackEndPool** .
-* Az erőforráscsoport **CreatePubLBQS – RG** .
+* A háttérbeli címkészlet **myBackEndPool**.
+* Az erőforráscsoport **CreatePubLBQS – RG**.
 * A hálózati adapter **myNicVM3** és **ipconfig1** van társítva.
 * A terheléselosztó **myLoadBalancer** van társítva.
 
@@ -1070,7 +1067,7 @@ Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 ```
 :::image type="content" source="./media/load-balancer-standard-public-cli/running-nodejs-app.png" alt-text="A terheléselosztó tesztelése" border="true":::
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítsa el az erőforráscsoportot, a Load balancert és az összes kapcsolódó erőforrást.
 

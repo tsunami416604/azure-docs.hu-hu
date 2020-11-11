@@ -3,21 +3,102 @@ title: Azure nagyvállalati regisztrációs számlák
 description: Ez a cikk az Azure Nagyvállalati számlák kezelését ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperfq1
+ms.openlocfilehash: 57ada2ca760ffff2124582c31fdd095d04d4375f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316137"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410953"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure nagyvállalati regisztrációs számlák
 
 Ez a cikk az Azure Nagyvállalati Szerződés (Azure EA) számláinak kezelését ismerteti. A számla a számlájának felel meg. Ellenőrizze a pontosságát. Azokkal a feladatokkal is érdemes megismerkednie, amelyekre szükség lehet a számla kezeléséhez.
+
+## <a name="view-usage-summary-and-download-reports"></a>Használati adatok összegzésének megtekintése és jelentések letöltése
+
+A vállalati rendszergazdák az Azure Enterprise portálon megtekinthetik a használati adataik összegzését, a felhasznált Azure-előrefizetési keretet, valamint a többlethasználattal kapcsolatos díjakat. A díjak minden fióknál és előfizetésnél az összegzés szintjén jelennek meg.
+
+Az egyes fiókok részletes használati adatainak megtekintéséhez töltse le a használati adatokról szóló jelentést:
+
+1. Jelentkezzen be az Azure Enterprise portálra.
+1. Válassza a **Jelentések** elemet.
+1. Válassza a **Használati adatok letöltése** fület.
+1. A jelentések listáján válassza a **Letöltés** elemet annál a havi jelentésnél, amelyet le szeretne tölteni.
+
+   > [!NOTE]
+   > A használati adatokról szóló jelentés nem tartalmazza a vonatkozó adókat.
+   >
+   > A használat felmerülésének időpontja és a jelentésben való megjelenése között akár nyolc órás késés is lehet.
+
+A használati adatokat összegző jelentések és ábrák megtekintése:
+
+1. Jelentkezzen be az Azure Enterprise portálra.
+
+1. Válasszon ki egy előrefizetési időszakot.
+
+   Váltson az **M** (Havi) és a **C** (Egyéni) módok között az oldal jobb felső részén, hogy módosítsa a **Használati adatok összegzésének** dátumtartományát, majd adjon meg egyéni kezdő és záró dátumokat.
+
+   ![Használati adatok összegzésének létrehozása és megtekintése, illetve jelentések letöltése egyéni nézetben](./media/ea-portal-enrollment-invoices/create-ea-view-usage-summary-and-download-reports-custom-view.png)
+1. Jelöljön ki egy időtartamot vagy egy hónapot a grafikonon a további részletek megtekintéséhez.
+
+   - A grafikon a havi használatot mutatja a használati adatok, a szolgáltatások túlhasználata, a külön számlázott díjak és az Azure Marketplace-költségek megjelenítésével.
+   - A kiválasztott hónapra vonatkozóan a grafikon alatti mezők segítségével részlegek, fiókok és előfizetések alapján szűrheti az adatokat.
+   - Válthat a díjak **szolgáltatások** és **hierarchia** szerinti megjelenítése között.
+   - A részletek megtekintéséhez kibonthatja vagy összecsukhatja az **Azure-szolgáltatások** , a **Külön számlázott díjak** és az **Azure Marketplace** területet.
+
+Tekintse meg az alábbi videót a használati adatok megtekintési módjának megismeréséhez:
+
+> [!VIDEO https://www.youtube.com/embed/Cv2IZ9QCn9E]
+
+### <a name="download-csv-reports"></a>CSV-jelentések letöltése
+
+A vállalati rendszergazdák a Havi jelentés letöltése lapot használhatják az alábbi jelentések CSV-fájlként való letöltéséhez:
+
+- Egyenleg és díjak
+- Használati adatok
+- Az Azure Marketplace díjai
+- Árlista
+
+A jelentések letöltéséhez:
+
+1. Az Azure Enterprise portálon válassza a **Jelentések** elemet.
+2. Válassza a lap tetején található **Használati adatok letöltése** elemet.
+3. Válassza a **Letöltés** elemet a havi jelentés mellett.
+
+   > [!NOTE]
+   > A használat felmerülésének időpontja és a jelentésben való megjelenése között akár öt nap késés is lehet.
+   >
+   > A CSV-fájlokat a Safari böngészőből az Excelbe letöltő felhasználók formázási hibákat tapasztalhatnak. A hibák elkerülése érdekében szövegszerkesztővel nyissa meg a fájlt.
+
+![A Használati adatok letöltése oldalt bemutató példa](./media/ea-portal-enrollment-invoices/create-ea-download-csv-reports.png)
+
+Tekintse meg az alábbi videót a használati adatok letöltési módjának megismeréséhez:
+
+> [!VIDEO https://www.youtube.com/embed/eY797htT1qg]
+
+### <a name="advanced-report-download"></a>Speciális jelentés letöltése
+
+Az adott dátumtartományokkal vagy fiókokkal kapcsolatos jelentések elkészítéséhez a speciális jelentések letöltése használható. A kimeneti fájl formátuma a nagyobb rekordhalmazok befogadása érdekében a .csv.
+
+1. Az Azure Enterprise portálon válassza a **Speciális jelentés letöltése** lehetőséget.
+1. Válassza ki a megfelelő dátumtartományt és a megfelelő fiókokat.
+1. Válassza a **Használati adatok lekérése** lehetőséget.
+1. Használja a **Frissítés** gombot, amíg a jelentés állapota **Letöltés** értékűre nem frissül.
+1. Töltse le a jelentést.
+
+### <a name="download-usage-reports-and-billing-information-for-a-prior-enrollment"></a>Használati jelentések és a számlázási információk letöltése egy korábbi regisztrációhoz
+
+A regisztrációt követően letölthet a korábbi regisztrációk egyikére vonatkozó használati jelentéseket és számlázási információkat. Az előzményeket feldolgozó jelentések az Azure Enterprise portálon és a Cost Management felületén egyaránt elérhetők.
+
+Az Azure Enterprise portál kiszűri az inaktív regisztrációkat. Az inaktív átvitt regisztrációk megtekintéséhez törölnie kell az **Aktív** jelölőnégyzet jelölését.  
+
+![Az aktív jelölőnégyzet jelölésének törlésével a felhasználó láthatja az inaktív regisztrációkat is](./media/ea-portal-enrollment-invoices/unchecked-active-box.png)
 
 ## <a name="change-a-po-number-for-an-upcoming-overage-invoice"></a>Jövőbeli túlhasználati számla rendelésszámának módosítása
 
@@ -61,20 +142,20 @@ A számlázási intervallum attól függ, hogyan kívánja teljesíteni az előr
 
 A túlhasználatról szóló számla kézhezvételének dátuma a regisztráció kezdési dátumától és a beállítástól függ:
 
-- **Közvetlen regisztrációk 2018. május 1. előtti kezdési dátummal**:
+- **Közvetlen regisztrációk 2018. május 1. előtti kezdési dátummal** :
   - Ha Ön közvetlen nagyvállalati Azure-ügyfél, akkor éves számlázási ciklusa van az Azure-szolgáltatásokhoz, kivéve az Azure Marketplace-szolgáltatásokat. Számlázási ciklusa az évforduló dátumán alapul: azon az időponton, amikor a szerződése hatályba lépett.
   - Ha túllépte az Azure EA-előrefizetés küszöbének 150%-át, akkor a rendszer automatikusan negyedéves számlázási ciklusra vált, amely az évforduló dátumán alapul. Emellett kapni fog egy, az Azure-szolgáltatások túlhasználatáról szóló számlát is.
   - Ha nem haladja meg az Azure-előrefizetés küszöbének 150%-át, a regisztráció az egyéves számlázási ciklusban marad. A túlhasználatról szóló számlát az előrefizetési év végén kapja meg.
 
-- **Közvetlen regisztrációk 2018. május 1. utáni kezdési dátummal**:
+- **Közvetlen regisztrációk 2018. május 1. utáni kezdési dátummal** :
   - Az Ön Azure-használatát és -díjait külön, havi számlázási ciklusban kiállított számlákon számlázzuk.
   - Az Azure-előrefizetés által nem fedezett díjakat túlhasználati díjként számoljuk fel.  
 
-- **Közvetett regisztrációk 2018. május 1. előtti kezdési dátummal rendelkező regisztrációval**:
+- **Közvetett regisztrációk 2018. május 1. előtti kezdési dátummal rendelkező regisztrációval** :
 
   Ha Ön közvetett vállalati megállapodással (EA) rendelkező ügyfél, és a szerződés kezdési dátuma 2018. május 1. elé esik, akkor negyedéves számlázási ciklussal rendelkezik majd. A csatornapartner (CP) közvetlenül Önnek állítja ki a számlát.  
 
-- **Közvetett regisztrációk 2018. május 1. utáni kezdési dátummal**:
+- **Közvetett regisztrációk 2018. május 1. utáni kezdési dátummal** :
 
   Költségei havi elszámolási időszakra lesznek vetítve.  
 
@@ -88,9 +169,9 @@ Túlhasználat esetén fizetnie kell azért a használatért vagy azokért a fog
 
 A számla minden tételénél látni fogja:
 
-- **Bővített összeg**: a teljes díj
-- **Előrefizetési összeg**: a díjak fedezésére felhasznált előrefizetési keret
-- **Nettó összeg**: az előrefizetési keretet meghaladó díjak összege
+- **Bővített összeg** : a teljes díj
+- **Előrefizetési összeg** : a díjak fedezésére felhasznált előrefizetési keret
+- **Nettó összeg** : az előrefizetési keretet meghaladó díjak összege
 
 A vonatkozó adókat csak az előrefizetési keretet meghaladó nettó összegre számítjuk ki.
 

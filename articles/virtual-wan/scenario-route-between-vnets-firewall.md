@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 301bc64bee291fa25506e7f435e923be7e244cd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d083607782f96744ecbd7d23976f77ee53fec49d
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267516"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515569"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Forgatókönyv: Azure Firewall-Custom
 
@@ -28,10 +28,10 @@ Ha szeretné megtudni, hogy hány útválasztási táblázatra van szükség, l�
 
 | Forrás           | Címzett:      | *Virtuális hálózatok*      | *Ágak*    | *Internet*   |
 |---             |---       |---           |---            |---           |
-| **Virtuális hálózatok**      |   &#8594;|     X        |     AzFW      |     AzFW     |
-| **Ágak**   |   &#8594;|    AzFW      |       X       |       X      |
+| **Virtuális hálózatok**      |   &#8594;|    Direct    |     AzFW      |     AzFW     |
+| **Ágak**   |   &#8594;|    AzFW      |    Direct     |    Direct    |
 
-Az előző táblázatban a "X" közvetlen kapcsolódást jelent két kapcsolat között anélkül, hogy a Azure Firewall a virtuális WAN-ban halad át, és a "AzFW" azt jelzi, hogy a folyamat áthalad a Azure Firewall. Mivel két különálló kapcsolati minta van a mátrixban, két útválasztási táblázatra lesz szükség, amely a következőképpen lesz konfigurálva:
+Az előző táblázatban a "Direct" közvetlen kapcsolatot jelöl két kapcsolat között anélkül, hogy a Azure Firewall a virtuális WAN-ban halad át, és a "AzFW" azt jelzi, hogy a folyamat a Azure Firewallon halad át. Mivel két különálló kapcsolati minta van a mátrixban, két útválasztási táblázatra lesz szükség, amely a következőképpen lesz konfigurálva:
 
 * Virtuális hálózatok:
   * Társított útválasztási táblázat: **RT_VNet**
@@ -62,7 +62,7 @@ A VPN-, a ExpressRoute-és a felhasználói VPN-kapcsolatok együttes neve ágak
    * Ne feledje, hogy az ágak az alapértelmezett útválasztási táblázathoz vannak társítva és propagálva.
    * Az ágak nem továbbítódnak RT_VNet útválasztási táblázatba. Ez biztosítja a VNet közötti adatforgalom áramlását a Azure Firewallon keresztül.
 
-Ez azt eredményezi, hogy az útválasztási konfiguráció megváltozik az **1. ábrán**látható módon.
+Ez azt eredményezi, hogy az útválasztási konfiguráció megváltozik az **1. ábrán** látható módon.
 
 **1. ábra**
 

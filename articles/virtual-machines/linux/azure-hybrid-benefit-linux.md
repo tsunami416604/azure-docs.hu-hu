@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: feaa2471f2867257deb06ab32ed5fc0a26a0d37e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443432"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516441"
 ---
 # <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Nyilvános előzetes verzió: Azure Hybrid Benefit – hogyan vonatkozik a Linux Virtual Machines
 
@@ -53,10 +53,12 @@ A Azure Hybrid Benefit (Linux esetében) már nyilvános előzetes verzióban é
 
 ### <a name="red-hat-customers"></a>Red Hat-ügyfelek
 
-1.    Regisztráció a [Red Hat Cloud Access programba](https://aka.ms/rhel-cloud-access)
-1.    Engedélyezze az Azure-előfizetését a Felhőbeli hozzáféréshez, és engedélyezze azokat a virtuális gépeket tartalmazó előfizetéseket, amelyekhez a kedvezményt használni szeretné
-1.    A meglévő virtuális gépek előnyének alkalmazása az Azure CLI-n keresztül
-1.    Az előnyt élvező virtuális gépek regisztrálása külön frissítési forrással
+A RHEL számára elérhető Azure Hybrid Benefit olyan ügyfelek számára érhető el, akik aktív/nem használt RHEL-előfizetésekkel rendelkeznek, amelyek jogosultak az Azure-ban való használatra, és akik egy vagy több előfizetést engedélyeztek az Azure-ban a [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) program használatával. 
+
+1.  Engedélyezzen egy vagy több jogosult RHEL-előfizetést az Azure-ban a [Red Hat Cloud Access felhasználói felületének](https://access.redhat.com/management/cloud)használatával.
+1.  A Red Hat Cloud Access engedélyezési folyamat során megadott Azure-előfizetések a Azure Hybrid Benefit funkció használatát teszik lehetővé.
+1.  Alkalmazza a Azure Hybrid Benefitt a meglévő RHEL TB virtuális gépekre, valamint az Azure Marketplace TB-lemezképekről üzembe helyezett új RHEL virtuális gépekre is.
+1.  Kövesse az ajánlott [következő lépéseket](https://access.redhat.com/articles/5419341) a RHEL virtuális gépek frissítési forrásainak konfigurálásához és a RHEL-előfizetés megfelelőségi iránymutatásaihoz.
 
 
 ### <a name="suse-customers"></a>SUSE-ügyfelek
@@ -124,7 +126,19 @@ A virtuális GÉPEN belül lekérdezheti a IMDS által tanúsított metaadatokat
 
 ### <a name="red-hat"></a>Red Hat
 
-A RHEL virtuális gépekhez való Azure Hybrid Benefit használatához először regisztrálnia kell a Red Hat Cloud Access programba. Ezt a Red Hat Cloud Access webhely használatával teheti meg. Miután engedélyezte a kedvezményt a virtuális gépen, regisztrálnia kell a virtuális gépet saját frissítési forrásával, vagy a Red Hat előfizetés-kezelővel vagy a Red Hat Satellitével. A frissítések regisztrálása biztosítja, hogy továbbra is támogatott állapotban maradjon.
+A RHEL Azure Hybrid Benefit használó ügyfelek elfogadják az Azure Marketplace RHEL-ajánlatokkal kapcsolatos általános [jogi feltételeket](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Cloud_Software_Subscription_Agreement_for_Microsoft_Azure.pdf) és [adatvédelmi nyilatkozatot](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Privacy_Statement_for_Microsoft_Azure.pdf) .
+
+A RHEL Azure Hybrid Benefit használó ügyfeleknek három lehetősége van a szoftverfrissítések és-javítások biztosítására a virtuális gépeken:
+
+1.  [Red Hat frissítési infrastruktúra (RHUI)](../workloads/redhat/redhat-rhui.md) (alapértelmezett beállítás)
+1.  Red Hat Satellite Server
+1.  Red Hat előfizetés-kezelő
+
+A RHUI beállítást használó ügyfelek továbbra is használhatják a RHUI a AHB RHEL fő frissítési forrásaként anélkül, hogy RHEL előfizetéseket csatolnak a virtuális gépekhez.  A RHUI lehetőséget választó ügyfelek felelősek a RHEL-előfizetés megfelelőségének biztosításáért.
+
+A Red Hat Satellite Servert vagy a Red Hat előfizetés-kezelőt választó ügyfeleknek el kell távolítaniuk a RHUI-konfigurációt, majd csatlakoztatnia kell a felhőalapú hozzáférés-kompatibilis RHEL-előfizetést a AHB RHEL virtuális géphez.  
+
+A Red Hat-előfizetések megfelelőségével, a szoftverfrissítések és a AHB RHEL virtuális gépek forrásaival kapcsolatos további információkért tekintse meg a következőt [:.](https://access.redhat.com/articles/5419341)
 
 ### <a name="suse"></a>SUSE
 
@@ -146,5 +160,5 @@ Ez a szakasz az észlelt gyakori problémák listáját és a mérséklési lép
 | ----- | ---------- |
 | "A műveletet nem lehetett befejezni, mert a rekordok azt mutatják, hogy az Azure-előfizetésében nem sikerült engedélyezni a Red Hat Cloud Access használatát..." | Ahhoz, hogy a juttatást a RHEL virtuális gépekkel használhassa, először regisztrálnia kell az Azure-előfizetését a Red Hat Cloud Access használatával. Tekintse meg ezt a hivatkozást, ha többet szeretne megtudni arról, hogyan regisztrálhat Azure-előfizetéseket a Red Hat Cloud Accesshez
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan hozhat létre és frissíthet virtuális gépeket, és hogyan adhat hozzá licenceket (RHEL_BYOS, SLES_BYOS) Azure Hybrid Benefit az [Azure CLI használatával.](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest&preserve-view=true)

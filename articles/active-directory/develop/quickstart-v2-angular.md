@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 4179807b349504d1ac0932f8d0816603f83afae4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 643e3bcd50258e2b5e7f52646f231485f950d677
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613424"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515545"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy szögletes egyoldalas alkalmazásban
 
-Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes egyoldalas alkalmazás (SPA) olyan felhasználók számára, akik személyes Microsoft-fiókkal, munkahelyi fiókkal vagy iskolai fiókkal rendelkeznek. A szögletes SPA a Microsoft Graph API vagy bármely webes API meghívására is kérhet hozzáférési jogkivonatot.
+Ebben a rövid útmutatóban egy mintakód-mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be egy szögletes egyoldalas alkalmazás (SPA) a felhasználókba, és hogyan hívhat Microsoft Graph. A kód minta bemutatja, hogyan szerezhet be hozzáférési jogkivonatot a Microsoft Graph API vagy bármely webes API meghívásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +38,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes 
 > 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz fér hozzá, válassza ki a fiókot a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure Active Directory (Azure AD) bérlőre.
 > 1. Nyissa meg a Azure Portal új [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) paneljét.
-> 1. Adja meg az alkalmazás nevét, majd válassza a **regisztráció**lehetőséget.
+> 1. Adja meg az alkalmazás nevét, majd válassza a **regisztráció** lehetőséget.
 > 1. Lépjen a gyors üzembe helyezés panelre, és tekintse meg a szögletes rövid útmutatót. Az új alkalmazás letöltéséhez és automatikus konfigurálásához kövesse az utasításokat.
 >
 > ### <a name="option-2-manual-register-and-manually-configure-the-application-and-code-sample"></a>2. lehetőség (manuális): az alkalmazás-és a kód-minta regisztrálása és manuális konfigurálása
@@ -100,12 +100,12 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes 
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Az alkalmazás regisztrációjának **Áttekintés** lapján ez az **alkalmazás (ügyfél) azonosítójának** értéke. |
 >|Enter_the_Cloud_Instance_Id_Here|Ez az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz írja be a következőt: **https://login.microsoftonline.com** . Az országos felhők (például Kína) esetében lásd: [nemzeti felhők](./authentication-national-cloud.md).|
->|Enter_the_Tenant_Info_Here| Állítsa be a következő lehetőségek egyikét: Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a címtár (bérlő) vagy a bérlő nevére (például **contoso.microsoft.com**). Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**. Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat*, cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok*támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**. |
+>|Enter_the_Tenant_Info_Here| Állítsa be a következő lehetőségek egyikét: Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat* , cserélje le ezt az értéket a címtár (bérlő) vagy a bérlő nevére (például **contoso.microsoft.com** ). Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat* , cserélje le ezt az értéket **szervezetekkel**. Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat* , cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok* támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**. |
 >|Enter_the_Redirect_Uri_Here|Cserélje le a-t **http://localhost:4200** .|
 >|cacheLocation  | Választható Állítsa be a böngésző tárterületét a hitelesítési állapothoz. Az alapértelmezett érték a **sessionStorage**.   |
 >|storeAuthStateInCookie  | Választható Azonosítsa a hitelesítési kérelem állapotát tároló könyvtárat. Ez az állapot szükséges a böngésző cookie-jai hitelesítési folyamatainak ellenőrzéséhez. Ez a cookie be van állítva az Internet Explorer és a Edge számára a két böngésző számára. További részletekért tekintse meg az [ismert problémákat](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
 > > [!TIP]
-> > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
+> > Az **alkalmazás (ügyfél) azonosítója** , a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
 
 További információ az elérhető konfigurálható lehetőségekről: [ügyfélalkalmazások inicializálása](msal-js-initializing-client-applications.md).
 
@@ -127,17 +127,17 @@ Ha Node.jst használ:
    ```
 
 1. Lépjen a **http://localhost:4200/** lapra.
-1. Válassza a **Bejelentkezés**lehetőséget.
+1. Válassza a **Bejelentkezés** lehetőséget.
 1. Válassza ki a **profilt** a Microsoft Graph meghívásához.
 
-Ha a böngésző betölti az alkalmazást, válassza a **Bejelentkezés**lehetőséget. Amikor először jelentkezik be, a rendszer arra kéri, hogy adja meg az engedélyt, hogy az alkalmazás hozzáférhessen a profiljához, és jelentkezzen be. Miután sikeresen bejelentkezett, válassza a **profil**lehetőséget, és a felhasználói profil adatai megjelennek az oldalon.
+Ha a böngésző betölti az alkalmazást, válassza a **Bejelentkezés** lehetőséget. Amikor először jelentkezik be, a rendszer arra kéri, hogy adja meg az engedélyt, hogy az alkalmazás hozzáférhessen a profiljához, és jelentkezzen be. Miután sikeresen bejelentkezett, válassza a **profil** lehetőséget, és a felhasználói profil adatai megjelennek az oldalon.
 
 ## <a name="how-the-sample-works"></a>A minta működése
 
 ![Diagram, amely bemutatja, hogyan működik a jelen rövid útmutatóban szereplő minta alkalmazás](./media/quickstart-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Következő lépésként megtudhatja, hogyan jelentkezhet be a felhasználóba, és hogyan szerezheti be a tokeneket a szögletes oktatóanyagban:
 

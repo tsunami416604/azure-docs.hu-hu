@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 6ab02cc7e60870852666c8c01ccc17a1b1102a62
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2f90a7c954fc8930f69dfee3e7b56b394225405a
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742834"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516737"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. lépés: a naplózási továbbító üzembe helyezése
 
@@ -38,7 +38,7 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
 
 - A kijelölt linuxos gépen emelt szintű engedélyekkel (sudo) kell rendelkeznie.
 
-- A Linux-gépen telepítve kell lennie a **python 2,7** -nek.<br>A parancs használatával keresse meg a következőt: `python -version` .
+- A Linux rendszerű gépen telepítve kell lennie a **python 2,7** vagy a **3** rendszernek.<br>A parancs használatával keresse meg a következőt: `python -version` .
 
 - A Linux rendszerű számítógép nem csatlakoztatható Azure-munkaterületekhez az Log Analytics-ügynök telepítése előtt.
 

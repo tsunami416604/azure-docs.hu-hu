@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 10/05/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: d2814a989cb82216081083f3198d52ccd70210ff
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1ce461f50a6775bf7884fedc4cfa4dc7cb41bb8c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131921"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408142"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
@@ -24,7 +24,7 @@ Ez a cikk lépésenként ismerteti, hogyan lehet átadni egy Azure-előfizetés 
 
 Ha meg szeretné tartani a számlázási tulajdonjogot, de módosítani kívánja az előfizetés típusát, tekintse meg [az Azure-előfizetés másik ajánlatra váltását](switch-azure-offer.md) bemutató cikket. Ha szeretné szabályozni, hogy ki férhet hozzá az előfizetés erőforrásaihoz, tekintse meg [az Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md).
 
-A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek esetében a vállalati rendszergazda adhatja át az előfizetések számlázási tulajdonjogát az egyes fiókok között. További információ: [Fiók tulajdonosának módosítása](ea-portal-get-started.md#change-account-owner).
+A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek esetében a vállalati rendszergazda adhatja át az előfizetések számlázási tulajdonjogát az egyes fiókok között. További információ: [Fiók tulajdonosának módosítása](ea-portal-administration.md#change-account-owner).
 
 Az előfizetés tulajdonjogát csak egy fiók számlázási rendszergazdája adhatja át.
 

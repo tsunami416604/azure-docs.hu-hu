@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 5366da1048e7c6d9612ad8b6b1f1694068bb35fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fe13c418452a7a88dcd97939d6e853039f3fb64
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543027"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517070"
 ---
 # <a name="onboarding-and-installing"></a>Előkészítés és telepítés
 
@@ -59,11 +59,11 @@ A Microsoft biztonsági kód elemzése csapat a partnereknek szóló szerződés
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>A Microsoft biztonsági kód elemzése bővítmény telepítése
 
 1. A bővítmény Azure DevOps-szervezettel való megosztása után nyissa meg az Azure DevOps-szervezet lapját. Ilyen oldal például a következő URL-cím: `https://dev.azure.com/contoso` .
-1. Válassza a bevásárló táska ikont a neve melletti jobb felső sarokban, majd válassza a **Bővítmények kezelése**lehetőséget.
-1. Válassza a **megosztott**lehetőséget.
-1. Válassza ki a Microsoft biztonsági kód elemzése bővítményt, majd válassza a **telepítés**lehetőséget.
+1. Válassza a bevásárló táska ikont a neve melletti jobb felső sarokban, majd válassza a **Bővítmények kezelése** lehetőséget.
+1. Válassza a **megosztott** lehetőséget.
+1. Válassza ki a Microsoft biztonsági kód elemzése bővítményt, majd válassza a **telepítés** lehetőséget.
 1. A legördülő listában válassza ki az Azure DevOps-szervezetet a bővítmény telepítéséhez.
-1. Válassza a **Telepítés** gombot. A telepítés befejezése után elkezdheti használni a bővítményt.
+1. Válassza a **Telepítés** lehetőséget. A telepítés befejezése után elkezdheti használni a bővítményt.
 
 >[!NOTE]
 > Még ha nincs hozzáférése a bővítmény telepítéséhez, folytassa a telepítési lépésekkel. A telepítési folyamat során az Azure DevOps-szervezet rendszergazdájától kérhet hozzáférést.
@@ -73,7 +73,7 @@ A bővítmény telepítése után a biztonságos fejlesztési felépítési fela
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Konkrét felépítési feladatok hozzáadása az Azure DevOps-folyamathoz
 
 1. Az Azure DevOps-szervezetből nyissa meg a csapat projektjét.
-1. Válassza a **folyamatok**  >  **buildek**lehetőséget.
+1. Válassza a **folyamatok**  >  **buildek** lehetőséget.
 1. Válassza ki azt a folyamatot, amelyben hozzá szeretné adni a bővítmény felépítési feladatait:
    - Új folyamat: válassza az **új** lehetőséget, majd az új folyamat létrehozásához kövesse a részletes lépéseket.
    - Folyamat szerkesztése: válasszon ki egy meglévő folyamatot, majd válassza a **Szerkesztés** lehetőséget a folyamat szerkesztésének megkezdéséhez.
@@ -90,7 +90,7 @@ A bővítmény telepítése után a biztonságos fejlesztési felépítési fela
 > - A biztonságos fejlesztési felépítési feladatokhoz mindig válassza **a folytatás hiba** esetén lehetőséget. Még ha egy eszköz meghibásodik, a többi futtatható. Nincsenek összefüggőségek az eszközök között.
 > - A Microsoft biztonsági kód elemzésekor felépítési feladatok csak akkor működnek, ha egy eszköz nem tud sikeresen futni. De akkor is sikeresek lesznek, ha az eszköz hibákat azonosít a kódban. Az elemzés utáni Build feladattal beállíthatja, hogy a Build működése meghiúsuljon, ha egy eszköz hibákat azonosít a kódban.
 > - Egyes Azure DevOps-Build feladatok nem támogatottak, ha kiadási folyamaton keresztül futnak. Konkrétabban az Azure DevOps nem támogatja azokat a feladatokat, amelyek egy kiadási folyamaton belül teszik közzé az összetevőket.
-> - Az Azure DevOps Team buildben paraméterként megadható előre definiált változók listáját az [Azure DevOps Build változói](https://docs.microsoft.com/azure/devops/pipelines/build/variables?tabs=batch&view=vsts)című témakörben tekintheti meg.
+> - Az Azure DevOps Team buildben paraméterként megadható előre definiált változók listáját az [Azure DevOps Build változói](/azure/devops/pipelines/build/variables?tabs=batch&view=vsts)című témakörben tekintheti meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

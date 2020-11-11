@@ -6,14 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 10/05/2020
 ms.author: banders
-ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: contperfq1
+ms.openlocfilehash: 3222c934998febe79c36121ca816f949b78d374e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371898"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411558"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-átvitelek
 
@@ -93,21 +94,25 @@ Az Azure-előrefizetést nem lehet átvinni egyik regisztrációból a másikba.
 
 A fiókok és a regisztrációk átvitele során nincs állásidő. Ha az összes szükséges információt megadja, a kérelem benyújtásának napján is el lehet végezni.
 
+## <a name="transfer-an-enterprise-subscription-to-a-pay-as-you-go-subscription"></a>Vállalati regisztráció átvitele egy használatalapú fizetéses előfizetésbe
+
+Ha egy Enterprise-előfizetést használatalapú fizetésű önálló előfizetésbe szeretne átvinni, új támogatási kérést kell létrehoznia az Azure Enterprise portálon. Támogatási kérés létrehozásához válassza az **+ Új támogatási kérés** elemet a **Súgó és támogatás** területen.
+
 ## <a name="change-account-owner"></a>Fiók tulajdonosának módosítása
 
-Az Azure EA Portalon át lehet adni az előfizetéseket egyik fióktulajdonostól a másiknak. További információért lásd: [Fiók tulajdonosának módosítása](ea-portal-get-started.md#change-account-owner).
+Az Azure EA Portalon át lehet adni az előfizetéseket egyik fióktulajdonostól a másiknak. További információért lásd: [Fiók tulajdonosának módosítása](ea-portal-administration.md#change-account-owner).
 
 ## <a name="subscription-transfer-effects"></a>Az előfizetés-áthelyezés hatásai
 
 Ha az Azure-előfizetést ugyanazon Azure Active Directory-bérlő egy másik fiókjába helyezi át, akkor az összes [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../../role-based-access-control/overview.md) rendelkező felhasználó, csoport és szolgáltatásnév megtartja az erőforrások kezeléséhez való hozzáférését.
 
-Az előfizetéshez Azure RBAC-hozzáféréssel rendelkező felhasználók megtekintése:
+Az előfizetéshez RBAC-hozzáféréssel rendelkező felhasználók megtekintése:
 
 1. Az Azure Portalon nyissa meg az **Előfizetések** oldalt.
 2. Válassza ki a megtekinteni kívánt előfizetést, majd válassza a **Hozzáférés-vezérlés (IAM)** elemet.
-3. Válassza a **Szerepkör-hozzárendelések** lehetőséget. A szerepkör-hozzárendelések oldala felsorolja az összes felhasználót, aki Azure RBAC-hozzáféréssel rendelkezik az előfizetéshez.
+3. Válassza a **Szerepkör-hozzárendelések** lehetőséget. A szerepkör-hozzárendelések oldala felsorolja az összes felhasználót, aki RBAC-hozzáféréssel rendelkezik az előfizetéshez.
 
-Ha az előfizetést egy másik Azure AD-bérlő fiókjába helyezi át, akkor az összes [Azure RBAC-vel](../../role-based-access-control/overview.md) rendelkező felhasználó, csoport és szolgáltatásnév _elveszíti_ a hozzáférését az erőforrások kezeléséhez. Bár nincs Azure RBAC-hozzáférés, mégis előfordulhat, hogy az előfizetést el lehet érni biztonsági mechanizmusokon keresztül, például:
+Ha az előfizetést egy másik Azure AD-bérlő fiókjába helyezi át, akkor az összes [RBAC-vel](../../role-based-access-control/overview.md) rendelkező felhasználó, csoport és szolgáltatásnév _elveszíti_ a hozzáférését az erőforrások kezeléséhez. Bár nincs RBAC-hozzáférés, mégis előfordulhat, hogy az előfizetést el lehet érni biztonsági mechanizmusokon keresztül, például:
 
 - Felügyeleti tanúsítványok, amelyek rendszergazdai jogosultságokat biztosítanak a felhasználónak az előfizetés erőforrásaihoz. További információért lásd: [Felügyeleti tanúsítvány létrehozása és feltöltése az Azure szolgáltatáshoz](../../cloud-services/cloud-services-certs-create.md).
 - A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókok áttekintésében](../../storage/common/storage-account-overview.md) találhat.

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: d1c13c5d4bea8bfdb0f70e67ce8f264a1929b8a2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 16fd15a5939cc6c268a80e88401f05042a206075
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150895"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516815"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Oktatóanyag: a blézer-kiszolgáló csevegési alkalmazásának létrehozása
 
@@ -96,7 +96,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
    dotnet add package Microsoft.AspNetCore.SignalR.Client --version 3.1.7
    ```
 
-1. `ChartRoom.razor` `Pages` A signaler-ügyfél megvalósításához hozzon létre egy mappát a mappában. Kövesse az alábbi lépéseket, vagy egyszerűen másolja a [chat. Razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor).
+1. `ChatRoom.razor` `Pages` A signaler-ügyfél megvalósításához hozzon létre egy mappát a mappában. Kövesse az alábbi lépéseket, vagy egyszerűen másolja a [chat. Razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor).
 
    1. Oldal hivatkozásának és hivatkozásának hozzáadása
       
@@ -285,7 +285,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
    </li>
    ```
    
-1. Frissítés `site.css` a diagramterület buborék nézeteinek optimalizálásához. Fűzze hozzá az alábbi kódot a végén.
+1. Frissítés `site.css` a csevegési területek buborék nézeteinek optimalizálásához. Fűzze hozzá az alábbi kódot a végén.
 
    ```css
    /* improved for chat text box */
@@ -379,7 +379,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
 
 1. Azure Signaler szolgáltatás-függőség hozzáadása
 
-   A közzétett profil létrehozása után a **szolgáltatás függőségei**alatt egy javasolt üzenet jelenik meg. Kattintson a **Konfigurálás** gombra új létrehozásához, vagy válassza a meglévő Azure signaler szolgáltatást a panelen.
+   A közzétett profil létrehozása után a **szolgáltatás függőségei** alatt egy javasolt üzenet jelenik meg. Kattintson a **Konfigurálás** gombra új létrehozásához, vagy válassza a meglévő Azure signaler szolgáltatást a panelen.
 
    [![Blazer – csevegés – függőség ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
 
@@ -449,7 +449,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsblazor)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha törölni szeretné a jelen oktatóanyag elvégzése során létrehozott erőforrásokat, törölje az erőforráscsoportot az Azure Portalon.
 
@@ -468,6 +468,6 @@ További információ a magas rendelkezésre állásról.
 > [!div class="nextstepaction"]
 > [Rugalmasság és vészhelyreállítás](signalr-concept-disaster-recovery.md)
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [ASP.NET Core Blazer](/aspnet/core/blazor)

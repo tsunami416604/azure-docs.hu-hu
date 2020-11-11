@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 45a6843c5ce55dca7ff72731752f3c1f24a5db6b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e2f2904c9b160e01000e63c1c48b7959c7e89603
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216657"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515455"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési token beszerzése egy JavaScript SPA-ban az Auth Code flow használatával
 
-Ebben a rövid útmutatóban egy kódrészletet fog futtatni, amely bemutatja, hogyan jelentkezhet be a JavaScript egyoldalas alkalmazás (SPA) a személyes fiókok, a munkahelyi fiókok és az iskolai fiókok felhasználói számára az engedélyezési kód folyamatának használatával. A kód minta azt is bemutatja, hogyan szerezhet be egy hozzáférési jogkivonatot a webes API meghívásához, ebben az esetben a Microsoft Graph API-t. Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
+Ebben a rövid útmutatóban egy kód mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be a JavaScript-alapú egyoldalas alkalmazás (SPA) a felhasználókba, és meghívja a Microsoft Grapht az engedélyezési kód folyamatának használatával. A kód minta bemutatja, hogyan szerezhet be hozzáférési jogkivonatot a Microsoft Graph API vagy bármely webes API meghívásához. 
+
+Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folyamatával. A MSAL.js 1,0-et az implicit folyamattal használó gyors útmutató: gyors üzembe helyezés a [felhasználók között JavaScript egyoldalas alkalmazásokban](./quickstart-v2-javascript.md).
 
@@ -41,7 +43,7 @@ Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folya
 > 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókot a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure Active Directory (Azure AD) bérlőre.
 > 1. Válassza az [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) lehetőséget.
 > 1. Adja meg az alkalmazás nevét.
-> 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
+> 1. A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 > 1. Válassza a **Regisztráció** lehetőséget.
 > 1. Lépjen a gyors üzembe helyezés panelre, és kövesse az utasításokat az új alkalmazás letöltéséhez és automatikus konfigurálásához.
 >
@@ -52,12 +54,12 @@ Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folya
 > 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
 > 1. Válassza az [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lehetőséget.
-> 1. Válassza az **új regisztráció**lehetőséget.
+> 1. Válassza az **új regisztráció** lehetőséget.
 > 1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
-> 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
+> 1. A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 > 1. Válassza a **Regisztráció** lehetőséget. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
-> 1. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
-> 1. A **platform-konfigurációk**területen válassza **a platform hozzáadása**lehetőséget. A megnyíló panelen válassza az **egylapos alkalmazás**lehetőséget.
+> 1. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés** lehetőséget.
+> 1. A **platform-konfigurációk** területen válassza **a platform hozzáadása** lehetőséget. A megnyíló panelen válassza az **egylapos alkalmazás** lehetőséget.
 > 1. Állítsa be az **átirányítási URI** értékét a következőre: `http://localhost:3000/` .
 > 1. Válassza a **Konfigurálás** lehetőséget.
 
@@ -112,10 +114,10 @@ Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folya
 > - `Enter_the_Application_Id_Here` a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
 > - `Enter_the_Cloud_Instance_Id_Here` Az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz írja be a következőt: `https://login.microsoftonline.com/` . Az **országos** felhők (például Kína) esetében lásd: [nemzeti felhők](authentication-national-cloud.md).
 > - `Enter_the_Tenant_info_here` értéke a következők egyike lehet:
->   - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére**. Például: `contoso.microsoft.com`.
->   - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket a következőre: `organizations` .
->   - Ha az alkalmazás a *szervezeti címtárban és a személyes Microsoft-fiókokban is támogatja a fiókokat*, cserélje le ezt az értéket a következőre: `common` . Ehhez a rövid útmutatóhoz használja **a következőt:** `common` .
->   - A *személyes Microsoft-fiókok*támogatásának korlátozásához cserélje le ezt az értéket a következőre: `consumers` .
+>   - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat* , cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére**. Például: `contoso.microsoft.com`.
+>   - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat* , cserélje le ezt az értéket a következőre: `organizations` .
+>   - Ha az alkalmazás a *szervezeti címtárban és a személyes Microsoft-fiókokban is támogatja a fiókokat* , cserélje le ezt az értéket a következőre: `common` . Ehhez a rövid útmutatóhoz használja **a következőt:** `common` .
+>   - A *személyes Microsoft-fiókok* támogatásának korlátozásához cserélje le ezt az értéket a következőre: `consumers` .
 > - A `Enter_the_Redirect_Uri_Here` értéke `http://localhost:3000/`.
 >
 > `authority`Ha a fő (globális) Azure-felhőt használja, a *authConfig.jsban* a következőhöz hasonló értéknek kell megjelennie:
@@ -125,7 +127,7 @@ Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folya
 > ```
 >
 > > [!TIP]
-> > Az **alkalmazás (ügyfél) azonosítójának**, **könyvtárának (BÉRLŐi) azonosítójának**és a **támogatott fióktípus**értékének megkereséséhez nyissa meg az alkalmazás regisztrációjának **Áttekintés** lapját a Azure Portal.
+> > Az **alkalmazás (ügyfél) azonosítójának** , **könyvtárának (BÉRLŐi) azonosítójának** és a **támogatott fióktípus** értékének megkereséséhez nyissa meg az alkalmazás regisztrációjának **Áttekintés** lapját a Azure Portal.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
@@ -200,4 +202,4 @@ npm install @azure/msal-browser
 Az ebben a rövid útmutatóban használt alkalmazás létrehozásával kapcsolatos részletes útmutatásért tekintse meg a következő oktatóanyagot:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag a bejelentkezéshez és az MS Graph meghívásához >](./tutorial-v2-javascript-auth-code.md)
+> [Oktatóanyag a bejelentkezéshez és az MS Graph meghívásához](./tutorial-v2-javascript-auth-code.md)

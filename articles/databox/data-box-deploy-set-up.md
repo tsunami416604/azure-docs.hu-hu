@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 53309023a838f4b256327a37866408f556c81d29
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ac87d5040cd572635d81be51308f48a57ddd38e3
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924156"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335468"
 ---
 ::: zone target="docs"
 
@@ -117,9 +117,9 @@ Az eszköz beállításához kövesse az alábbi lépéseket a helyi webes felha
 
 1. Azon a laptopon, amellyel az eszközhöz csatlakozik, állítsa be az Ethernet-adaptert a 192.168.100.5 statikus IP-cím és a 255.255.255.0 alhálózat használatára. 
 2. Csatlakozzon az eszköz felügyeleti portjához (MGMT), hogy hozzáférjen a helyi webes felhasználói felülethez a következő címen: https\://192.168.100.10. Ez az eszköz bekapcsolását követően 5 percet is igénybe vehet.
-3. Kattintson a **Részletek**, majd a **Továbblépés a weblapra** elemre.
+3. Kattintson a **Részletek** , majd a **Továbblépés a weblapra** elemre.
 
-   ![Csatlakozás a helyi webes felhasználói felülethez](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
+   ![Csatlakozás a helyi webes felhasználói felülethez](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png)
 
 4. Megjelenik a helyi webes felhasználói felület **bejelentkezési** oldala. Győződjön meg róla, hogy az eszköz sorozatszáma megegyezik a helyi webes felhasználói felületen és a portál felhasználói felületén. Ekkor az eszköz még le van zárva.
 5. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).

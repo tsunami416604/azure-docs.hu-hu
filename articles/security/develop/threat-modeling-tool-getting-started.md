@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: eb0aff6692a12ca7fb00090c0585e46f37c84ace
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 322f5f6a79bdce23706b2211ccc04ef2451675d0
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913024"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515727"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>A Threat Modeling Tool első lépései
 
-A Microsoft Threat Modeling Tool 2018-2018 as verziójának kiadása ingyenes **[kattintással letölthető](https://aka.ms/threatmodelingtool)** . A kézbesítési mechanizmus változása lehetővé teszi számunkra, hogy a legújabb javításokat és hibajavításokat minden alkalommal leküldje az ügyfeleknek, amikor megnyitják az eszközt, így egyszerűbbé válik a karbantartás és a használat.
+A Microsoft Threat Modeling Tool 2018-2018 as verziójának kiadása ingyenes **[kattintással letölthető](https://aka.ms/threatmodelingtool)**. A kézbesítési mechanizmus változása lehetővé teszi számunkra, hogy a legújabb javításokat és hibajavításokat minden alkalommal leküldje az ügyfeleknek, amikor megnyitják az eszközt, így egyszerűbbé válik a karbantartás és a használat.
 Ebből a cikkből megtudhatja, hogyan hozhatja létre a Microsoft SDL Threat modellezési módszerét, és bemutatja, hogyan fejlesztheti az eszközt a biztonsági folyamat gerincét képező nagy veszélyforrású modellek fejlesztéséhez.
 
-Ez a cikk az SDL-veszélyforrások modellezési megközelítésének meglévő ismeretét építi fel. A gyors áttekintéshez tekintse meg a **[veszélyforrások modellezése webalkalmazások](https://msdn.microsoft.com/library/ms978516.aspx)** és a **[biztonsági hiányosságok](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** archivált változatát az 2006-ben közzétett lépéseket ismertető MSDN-cikkben.
+Ez a cikk az SDL-veszélyforrások modellezési megközelítésének meglévő ismeretét építi fel. A gyors áttekintéshez tekintse meg a **[veszélyforrások modellezése webalkalmazások](/previous-versions/msp-n-p/ff648006(v=pandp.10))** és a **[biztonsági hiányosságok](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** archivált változatát az 2006-ben közzétett lépéseket ismertető MSDN-cikkben.
 
 A gyors összefoglalás érdekében a megközelítés magában foglalja egy diagram létrehozását, a fenyegetések azonosítását, a mérséklést és az egyes enyhítések érvényesítését. Itt látható egy diagram, amely kiemeli ezt a folyamatot:
 
@@ -80,7 +80,7 @@ Folyamatban van az első veszélyforrások modelljének fejlesztése.
 > - Parancsokat küldenek a webkiszolgálónak – a kört
 > - A webkiszolgáló egy adatbázishoz nyújt tanácsadást (két párhuzamos vonal)
 
-Azt mutatta, hogy Ricardo egy DFD, röviden az **[adatáramlási diagramhoz](https://en.wikipedia.org/wiki/Data_flow_diagram)** . A Threat Modeling Tool lehetővé teszi a felhasználók számára, hogy megadják a megbízhatósági határokat, amelyeket a piros pontozott vonalak jeleznek, hogy a különböző entitások hol vannak a vezérlésben A rendszergazdák például Active Directory rendszert igényelnek hitelesítési célokra, így a Active Directory kívül esnek a vezérlőn.
+Azt mutatta, hogy Ricardo egy DFD, röviden az **[adatáramlási diagramhoz](https://en.wikipedia.org/wiki/Data_flow_diagram)**. A Threat Modeling Tool lehetővé teszi a felhasználók számára, hogy megadják a megbízhatósági határokat, amelyeket a piros pontozott vonalak jeleznek, hogy a különböző entitások hol vannak a vezérlésben A rendszergazdák például Active Directory rendszert igényelnek hitelesítési célokra, így a Active Directory kívül esnek a vezérlőn.
 
 > Cristina: megkeresi a jogot. Mi a helyzet a fenyegetésekkel?
 > Ricardo: megmutatom Önnek.

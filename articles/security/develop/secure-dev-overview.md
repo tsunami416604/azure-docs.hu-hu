@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baaa311620f5c10948aa3494002ce359cc5dab28
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68934872"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517172"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Biztonságos fejlesztés – ajánlott eljárások az Azure-ban
 Ez a cikksorozat azokat a biztonsági tevékenységeket és ellenőrzéseket ismerteti, amelyeket figyelembe kell venni a Felhőbeli alkalmazások fejlesztésekor. A Microsoft biztonsági fejlesztési életciklus (SDL) és a biztonsági kérdések és fogalmak szakaszait az életciklus egyes szakaszaiban figyelembe kell venni. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket az életciklus egyes fázisaiban használhat a biztonságosabb alkalmazások tervezéséhez, fejlesztéséhez és üzembe helyezéséhez.
@@ -37,11 +37,11 @@ A biztonságos szoftverfejlesztés ajánlott eljárásait követve integrálni k
 
 A későbbiekben kijavít egy problémát a fejlesztési életciklusában, annál nagyobb lesz a megoldás. A biztonsági problémák nem kivételek. Ha a szoftverfejlesztés korai fázisaiban figyelmen kívül hagyja a biztonsági problémákat, akkor az alábbi fázisok öröklik az előző fázis biztonsági réseit. A végtermék több biztonsági problémát és a szerződésszegés lehetőségét is felhalmozottan fogja tartalmazni. A fejlesztési életciklus egyes szakaszaiban a biztonság kiépítése segít a korai problémák megoldásában, és segít csökkenteni a fejlesztési költségeket.
 
-A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) szakaszait követjük olyan tevékenységek és Azure-szolgáltatások bevezetéséhez, amelyek segítségével az életciklus minden fázisában a biztonságos szoftverfejlesztés gyakorlatait lehet teljesíteni.
+A Microsoft [biztonsági fejlesztési életciklus (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) szakaszait követjük olyan tevékenységek és Azure-szolgáltatások bevezetéséhez, amelyek segítségével az életciklus minden fázisában a biztonságos szoftverfejlesztés gyakorlatait lehet teljesíteni.
 
 Az SDL-fázisok a következők:
 
-  - Oktatás
+  - Képzés
   - Követelmények
   - Tervezés
   - Implementálás
@@ -63,7 +63,7 @@ Tisztában vagyunk azzal, hogy számos olvasó nem rendelkezhet biztonsági vagy
 
 A következő források segítségével többet tudhat meg a biztonságos alkalmazások fejlesztéséről és az Azure-beli alkalmazások biztonságossá tételéről:
 
-[Microsoft biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) – az SDL egy olyan szoftverfejlesztési folyamat a Microsofttól, amely segít a fejlesztőknek biztonságosabb szoftverek készítésében. Ez segít a biztonsági megfelelőségi követelmények kezelésében a fejlesztési költségek csökkentése mellett.
+[Microsoft biztonsági fejlesztési életciklus (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) – az SDL egy olyan szoftverfejlesztési folyamat a Microsofttól, amely segít a fejlesztőknek biztonságosabb szoftverek készítésében. Ez segít a biztonsági megfelelőségi követelmények kezelésében a fejlesztési költségek csökkentése mellett.
 
 A [Web Application Security Project (OWASP) megnyitása](https://www.owasp.org/index.php/Main_Page) – a OWASP egy online közösség, amely szabadon elérhető cikkeket, módszereket, dokumentációt, eszközöket és technológiákat hoz létre a webalkalmazások biztonsága terén.
 
@@ -75,7 +75,7 @@ A [bal oldali, például a főnök](https://code.likeagirl.io/pushing-left-like-
 
 [Biztonsági és megfelelőségi tervek az Azure](https://servicetrust.microsoft.com/ViewPage/BlueprintOverview) -ban – az Azure biztonsági és megfelelőségi tervei olyan erőforrások, amelyek segítségével a szigorú szabályozásoknak és szabványoknak megfelelő felhőalapú alkalmazásokat hozhat létre és indíthat el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekben olyan biztonsági vezérlőket és tevékenységeket ajánlunk, amelyek segíthetnek a biztonságos alkalmazások megtervezésében, fejlesztésében és üzembe helyezésében.
 
 - [Biztonságos alkalmazások tervezése](secure-design.md)

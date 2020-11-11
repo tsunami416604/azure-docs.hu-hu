@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c71ddbf1d2b435697b2707acf0b1262f2c5dc31
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68934889"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517189"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>Biztonságos alkalmazások üzembe helyezése az Azure-ban
-Ebben a cikkben bemutatjuk azokat a biztonsági tevékenységeket és ellenőrzéseket, amelyeket érdemes figyelembe venni a Felhőbeli alkalmazások telepítésekor. A biztonsági kérdéseket és fogalmakat a Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) kiadási és reagálási fázisaiban figyelembe kell venni. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások telepítéséhez használhat.
+Ebben a cikkben bemutatjuk azokat a biztonsági tevékenységeket és ellenőrzéseket, amelyeket érdemes figyelembe venni a Felhőbeli alkalmazások telepítésekor. A biztonsági kérdéseket és fogalmakat a Microsoft [biztonsági fejlesztési életciklus (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) kiadási és reagálási fázisaiban figyelembe kell venni. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások telepítéséhez használhat.
 
 Ebben a cikkben a következő SDL-fázisokat tárgyaljuk:
 
@@ -40,7 +40,7 @@ Mielőtt elindítja vagy üzembe helyezi a frissítéseket az éles környezetbe
 
 A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, amelyek az ismert biztonsági réseket használják ki. Az ilyen kihasználók között az SQL-injektálási támadások és a helyek közötti parancsfájlok elleni támadások is előfordulnak. A támadásoknak az alkalmazás kódjában való megelőzése kihívást jelenthet. Az alkalmazás topológiájának számos rétegében szigorú karbantartási, javítási és figyelési funkciókra lehet szükség. A központosított WAF megkönnyíti A biztonsági felügyeletet. A WAF-megoldás a biztonsági fenyegetésekre is reagálhat egy ismert biztonsági rés központi helyen történő javításával, illetve az egyes webalkalmazások biztonságossá tételével.
 
-Az [Azure Application Gateway WAF](../../application-gateway/waf-overview.md) a webalkalmazások központosított védelmét nyújtja a gyakori támadások és biztonsági rések ellen. A WAF az 3,0-es és a 2.2.9-es [OWASP-alapszabállyal](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) kapcsolatos szabályokon alapul.
+Az [Azure Application Gateway WAF](../../web-application-firewall/ag/ag-overview.md) a webalkalmazások központosított védelmét nyújtja a gyakori támadások és biztonsági rések ellen. A WAF az 3,0-es és a 2.2.9-es [OWASP-alapszabállyal](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) kapcsolatos szabályokon alapul.
 
 ### <a name="create-an-incident-response-plan"></a>Incidensmegoldási terv létrehozása
 
@@ -75,9 +75,9 @@ A [Application Insights](../../azure-monitor/app/app-insights-overview.md) egy b
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-A [Azure Security Center](../../security-center/security-center-intro.md) a fenyegetések megelőzését, észlelését és reagálását segíti az Azure-erőforrások, például a webalkalmazások biztonságának jobb láthatóságával (és szabályozásával). Azure Security Center segít felderíteni a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek. Különböző biztonsági megoldásokkal működik.
+A [Azure Security Center](../../security-center/security-center-introduction.md) a fenyegetések megelőzését, észlelését és reagálását segíti az Azure-erőforrások, például a webalkalmazások biztonságának jobb láthatóságával (és szabályozásával). Azure Security Center segít felderíteni a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek. Különböző biztonsági megoldásokkal működik.
 
-A Security Center ingyenes szintje korlátozott biztonságot nyújt az Azure-erőforrások számára. A [standard szintű Security Center](../../security-center/security-center-onboarding.md) kiterjeszti ezeket a képességeket a helyszíni erőforrásokra és más felhőkre.
+A Security Center ingyenes szintje korlátozott biztonságot nyújt az Azure-erőforrások számára. A [standard szintű Security Center](../../security-center/security-center-get-started.md) kiterjeszti ezeket a képességeket a helyszíni erőforrásokra és más felhőkre.
 A Security Center Standard a következőket teszi lehetővé:
 
   - Megkeresheti és elháríthatja a biztonsági réseket.
@@ -85,7 +85,7 @@ A Security Center Standard a következőket teszi lehetővé:
   - Az elemzések és az intelligencia használatával észlelheti a fenyegetéseket.
   - Gyors reagálás a támadás alatt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekben olyan biztonsági vezérlőket és tevékenységeket ajánlunk, amelyek segíthetnek a biztonságos alkalmazások tervezésében és fejlesztésében.
 
 - [Biztonságos alkalmazások tervezése](secure-design.md)

@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283486"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517087"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure szolgáltatásban
-Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
+Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
 
 Ebben a cikkben a következő SDL-fázisokat tárgyaljuk:
 
@@ -34,11 +34,11 @@ Tegyük fel, hogy az alkalmazás olyan módokon fog használatba venni, amelyeke
 
 ### <a name="perform-code-reviews"></a>Kód felülvizsgálatának elvégzése
 
-A kód beadása előtt a kód [felülvizsgálatával](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) növelheti a kódok általános minőségét, és csökkentheti a hibák kockázatát. A [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) segítségével kezelheti a kód-felülvizsgálati folyamatot.
+A kód beadása előtt a kód [felülvizsgálatával](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) növelheti a kódok általános minőségét, és csökkentheti a hibák kockázatát. A [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) segítségével kezelheti a kód-felülvizsgálati folyamatot.
 
 ### <a name="perform-static-code-analysis"></a>Statikus kódelemzés végrehajtása
 
-A [statikus kód elemzését](https://owasp.org/www-community/controls/Static_Code_Analysis) (más néven *forráskód-elemzést*) általában a kód felülvizsgálatának részeként hajtja végre a rendszer. A statikus kód elemzése általában arra utal, hogy statikus kód-elemzési eszközöket futtasson, hogy a nem futó kódban lévő lehetséges biztonsági réseket olyan technikák használatával találja meg, mint a [szennyező ellenőrzés](https://en.wikipedia.org/wiki/Taint_checking) és [az adatfolyam-elemzés](https://en.wikipedia.org/wiki/Data-flow_analysis).
+A [statikus kód elemzését](https://owasp.org/www-community/controls/Static_Code_Analysis) (más néven *forráskód-elemzést* ) általában a kód felülvizsgálatának részeként hajtja végre a rendszer. A statikus kód elemzése általában arra utal, hogy statikus kód-elemzési eszközöket futtasson, hogy a nem futó kódban lévő lehetséges biztonsági réseket olyan technikák használatával találja meg, mint a [szennyező ellenőrzés](https://en.wikipedia.org/wiki/Taint_checking) és [az adatfolyam-elemzés](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
 Az Azure Marketplace olyan [fejlesztői eszközöket](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) kínál, amelyek statikus kódok elemzését végzik, és segítséget nyújtanak a kódok felülvizsgálatában.
 
@@ -62,7 +62,7 @@ Ezt a kiszolgálót nem az ügyfél oldalán (vagy a kiszolgálón és az ügyf�
 
 ### <a name="verify-your-applications-outputs"></a>Az alkalmazás kimenetének ellenőrzése
 
-Minden olyan kimenetet, amelyet vizuálisan vagy egy dokumentumon belül már tartalmaz, mindig kódolva kell lennie és el kell menekülnie. A [Escape](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29)-, más néven a *kimeneti kódolás*a segítségével biztosítható, hogy a nem megbízható adatokat ne a jármű adja meg az injekciós támadásokhoz. Az adatellenőrzéssel együtt folytatott Escape-szolgáltatás többrétegű védelmet biztosít a rendszer egészének biztonságának növelésére.
+Minden olyan kimenetet, amelyet vizuálisan vagy egy dokumentumon belül már tartalmaz, mindig kódolva kell lennie és el kell menekülnie. A [Escape](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29)-, más néven a *kimeneti kódolás* a segítségével biztosítható, hogy a nem megbízható adatokat ne a jármű adja meg az injekciós támadásokhoz. Az adatellenőrzéssel együtt folytatott Escape-szolgáltatás többrétegű védelmet biztosít a rendszer egészének biztonságának növelésére.
 
 A Escape-funkció biztosítja, hogy minden *kimenetként* jelenjen meg. A szökés azt is lehetővé teszi, hogy a tolmács tudja, hogy az adatok nem hajthatók végre, és ez megakadályozza a támadások működését. Ez egy, a *többhelyes parancsfájlok* (XSS) elnevezésű gyakori támadási módszer.
 
@@ -99,7 +99,7 @@ Ha az alkalmazásnak automatikusan kell létrehoznia a jelszavakat, ügyeljen ar
 
 Ha az [alkalmazás lehetővé teszi a fájlfeltöltés használatát](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload), vegye figyelembe a kockázatos tevékenységhez szükséges óvintézkedéseket. A sok támadás első lépéseként egy rosszindulatú kód beszerzése egy támadás alatt álló rendszerbe. A fájlfeltöltés használatával a támadó elvégezheti ezt. A OWASP olyan megoldásokat kínál a fájlok érvényesítéséhez, amelyek biztosítják, hogy a feltöltött fájl biztonságos legyen.
 
-A kártevők elleni védelem segítségével azonosíthatja és eltávolíthatja a vírusokat, kémprogramokat és egyéb kártevő szoftvereket. Telepítheti a [Microsoft antimalware](../fundamentals/antimalware.md) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)és [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)).
+A kártevők elleni védelem segítségével azonosíthatja és eltávolíthatja a vírusokat, kémprogramokat és egyéb kártevő szoftvereket. Telepítheti a [Microsoft antimalware](../fundamentals/antimalware.md) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)és [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
 
 A [Microsoft antimalware](../fundamentals/antimalware.md) olyan funkciókat tartalmaz, mint a valós idejű védelem, az ütemezett vizsgálat, a kártevők szervizelése, az aláírások frissítése, a motor frissítései, a minták jelentéskészítés és a kizárási események gyűjteménye. Az üzembe helyezéshez és a beépített észlelésekhez (riasztások és incidensek) egyszerűen integrálható a Microsoft antimalware és a partneri megoldások [Azure Security Center](../../security-center/security-center-partner-integration.md) használatával.
 
@@ -150,7 +150,7 @@ Győződjön meg arról, hogy az alkalmazás biztonságban van, mivel minden má
 
 Az Azure-hoz készült [Secure DevOps Kit](https://azsk.azurewebsites.net/index.html) (AzSK) az Azure platform több szolgáltatásának SVTs tartalmazza. Ezeket a SVTs rendszeresen futtatva biztosíthatja, hogy az Azure-előfizetése és az alkalmazást alkotó különböző erőforrások biztonságos állapotúak legyenek. Ezeket a teszteket a AzSK folyamatos integráció/folyamatos üzembe helyezés (CI/CD) bővítmények szolgáltatásával is automatizálhatja, amely a Visual Studio-bővítményként elérhetővé teszi a SVTs.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekben olyan biztonsági vezérlőket és tevékenységeket ajánlunk, amelyek segíthetnek a biztonságos alkalmazások tervezésében és üzembe helyezésében.
 
 - [Biztonságos alkalmazások tervezése](secure-design.md)
