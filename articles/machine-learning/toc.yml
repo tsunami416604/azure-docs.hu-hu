@@ -160,6 +160,8 @@
         - name: Vállalati biztonság áttekintése
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
+        - name: Adattitkosítás
+          href: concept-data-encryption.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
     - name: Felelősségteljes ML
@@ -182,14 +184,17 @@
       items:
         - name: Identitás és hozzáférés kezelése
           items:
-            - name: Hitelesítés beállítása
+            - name: Munkaterület-hitelesítés
               displayName: 'authentication, auth, oauth'
               href: how-to-setup-authentication.md
-            - name: Felhasználók és szerepkörök kezelése
+            - name: Webszolgáltatás-hitelesítés
+              displayName: 'authentication, model, web service'
+              href: how-to-authenticate-web-service.md
+            - name: Hozzáférés-kezelés (engedélyezés)
               href: how-to-assign-roles.md
-            - name: Felügyelt identitások használata hozzáférés-vezérléshez
+            - name: Felügyelt identitások hozzáférés-vezérléshez
               href: how-to-use-managed-identities.md
-            - name: Az Azure AD Identity használata AKS-környezetekben
+            - name: Azure AD Identity AKS-környezetekben
               href: how-to-use-azure-ad-identity.md
         - name: Hálózati biztonság
           items:

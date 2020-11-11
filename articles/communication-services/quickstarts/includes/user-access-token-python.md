@@ -2,20 +2,20 @@
 title: fájlbefoglalás
 description: fájlbefoglalás
 services: azure-communication-services
-author: matthewrobertson
-manager: nimag
+author: tomaschladek
+manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
-ms.author: marobert
-ms.openlocfilehash: 4be8821a949527fefcc9005b1de7f4f7c438c568
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: tchladek
+ms.openlocfilehash: e307265cc95815f426317cee69d64b210bcd67a9
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947217"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506271"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,17 +30,17 @@ ms.locfileid: "90947217"
 1. Nyissa meg a terminált vagy a parancssorablakot, hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá.
 
    ```console
-   mkdir user-tokens-quickstart && cd user-tokens-quickstart
+   mkdir access-tokens-quickstart && cd access-tokens-quickstart
    ```
 
-1. Szövegszerkesztő használatával hozzon létre egy **Issue-tokens.py** nevű fájlt a projekt gyökérkönyvtárában, és adja hozzá a program struktúráját, beleértve az alapszintű kivételek kezelését. Ehhez a rövid útmutatóhoz tartozó forráskódot a következő részekben adja hozzá ehhez a fájlhoz.
+1. Szövegszerkesztő használatával hozzon létre egy **Issue-Access-tokens.py** nevű fájlt a projekt gyökérkönyvtárában, és adja hozzá a program struktúráját, beleértve az alapszintű kivételek kezelését. Ehhez a rövid útmutatóhoz tartozó forráskódot a következő részekben adja hozzá ehhez a fájlhoz.
 
    ```python
    import os
    from azure.communication.administration import CommunicationIdentityClient
 
    try:
-      print('Azure Communication Services - User Access Tokens Quickstart')
+      print('Azure Communication Services - Access Tokens Quickstart')
       # Quickstart code goes here
    except Exception as ex:
       print('Exception:')
@@ -54,8 +54,6 @@ Miközben még mindig az alkalmazás könyvtárában van, telepítse a Python-cs
 ```console
 pip install azure-communication-administration
 ```
-
-[!INCLUDE [User Access Tokens Object Model](user-access-tokens-object-model.md)]
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -72,51 +70,61 @@ connection_string = os.environ['COMMUNICATION_SERVICES_CONNECTION_STRING']
 client = CommunicationIdentityClient.from_connection_string(connection_string)
 ```
 
-## <a name="create-a-user"></a>Felhasználó létrehozása
+## <a name="create-an-identity"></a>Identitás létrehozása
 
-Az Azure kommunikációs szolgáltatások egy egyszerűsített identitási könyvtárat tartanak fenn. A `create_user` metódus használatával hozzon létre egy új bejegyzést a címtárban egyedi értékkel `Id` . Az alkalmazás felhasználóinak és a kommunikációs szolgáltatások által generált identitások (például az alkalmazás-kiszolgáló adatbázisában való tárolás) közötti leképezést kell fenntartani.
+Az Azure kommunikációs szolgáltatások egy egyszerűsített identitási könyvtárat tartanak fenn. A `create_user` metódus használatával hozzon létre egy új bejegyzést a címtárban egyedi értékkel `Id` . Tárolja a kapott identitást az alkalmazás felhasználóinak való leképezéssel. Például úgy, hogy az alkalmazás-kiszolgáló adatbázisában tárolja őket. Az identitást később kell megadni a hozzáférési tokenek kiküldéséhez.
 
 ```python
-user = client.create_user()
-print("\nCreated a user with ID: " + user.identifier + ":")
+identity = client.create_user()
+print("\nCreated an identity with ID: " + identity.identifier + ":")
 ```
 
-## <a name="issue-user-access-tokens"></a>Felhasználói hozzáférési tokenek kiadása
+## <a name="issue-access-tokens"></a>Hozzáférési tokenek kiadása
 
-A `issue_token` metódus használatával kiállíthatja a kommunikációs szolgáltatások felhasználójának hozzáférési jogkivonatát. Ha nem adja meg a választható `user` paramétert, a rendszer új felhasználót hoz létre, és visszaadja a tokent.
+A `issue_token` metódus használatával kiállíthat egy hozzáférési jogkivonatot a már meglévő kommunikációs szolgáltatások identitásához. A paraméter olyan `scopes` primitívek készletét határozza meg, amelyek engedélyezik ezt a hozzáférési jogkivonatot. Tekintse meg a [támogatott műveletek listáját](../../concepts/authentication.md). A paraméter új példánya az `communicationUser` Azure kommunikációs szolgáltatás identitásának karakterlánc-ábrázolása alapján hozható létre.
 
 ```python
-# Issue an access token with the "voip" scope for a new user
+# Issue an access token with the "voip" scope for an identity
 token_result = client.issue_token(user, ["voip"])
 expires_on = token_result.expires_on.strftime('%d/%m/%y %I:%M %S %p')
-print("\nIssued a token with 'voip' scope that expires at " + expires_on + ":")
+print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
 print(token_result.token)
 ```
 
-A felhasználói hozzáférési tokenek olyan rövid élettartamú hitelesítő adatok, amelyeket újra kell adni ahhoz, hogy a felhasználók megakadályozzák a szolgáltatás megszakadását. A `expires_on` Response tulajdonság a jogkivonat élettartamát jelzi.
+A hozzáférési jogkivonatok olyan rövid élettartamú hitelesítő adatok, amelyeket újra kell adni. Ha ezt nem teszi meg, az alkalmazás felhasználói élményének megszakadását okozhatja. A `expires_on` Response tulajdonság a hozzáférési jogkivonat élettartamát jelzi.
 
-## <a name="revoke-user-access-tokens"></a>Felhasználói hozzáférési tokenek visszavonása
+## <a name="refresh-access-tokens"></a>Hozzáférési jogkivonatok frissítése
 
-Bizonyos esetekben előfordulhat, hogy explicit módon vissza kell vonnia a felhasználói hozzáférési jogkivonatokat, például amikor egy felhasználó módosítja a szolgáltatásban való hitelesítéshez használt jelszót. Ez a funkció az Azure kommunikációs szolgáltatások felügyeleti ügyféloldali könyvtárán keresztül érhető el.
+Hozzáférési jogkivonat frissítéséhez használja az objektumot az `CommunicationUser` újrakibocsátáshoz:
 
 ```python  
-client.revoke_tokens(user)
-print("\nSuccessfully revoked all tokens for user with ID: " + user.identifier)
+# Value existingIdentity represents identity of Azure Communication Services stored during identity creation
+identity = CommunicationUser(existingIdentity)
+token_result = client.issue_token( identity, ["voip"])
 ```
 
-## <a name="delete-a-user"></a>Felhasználó törlése
+## <a name="revoke-access-tokens"></a>Hozzáférési tokenek visszavonása
 
-Az identitások törlése visszavonja az összes aktív jogkivonatot, és megakadályozza, hogy az identitások számára további jogkivonatokat bocsásson ki. Emellett eltávolítja a felhasználóhoz társított összes megőrzött tartalmat is.
+Bizonyos esetekben explicit módon visszavonhatja a hozzáférési jogkivonatokat. Például amikor egy alkalmazás felhasználója megváltoztatja a szolgáltatásban való hitelesítéshez használt jelszót. `revoke_tokens`A metódus érvényteleníti az összes aktív hozzáférési jogkivonatot, amelyet az identitáshoz adtak ki.
+
+```python  
+client.revoke_tokens(identity)
+print("\nSuccessfully revoked all access tokens for identity with ID: " + identity.identifier)
+```
+
+## <a name="delete-an-identity"></a>Identitás törlése
+
+Az identitás törlése visszavonja az összes aktív hozzáférési jogkivonatot, és megakadályozza, hogy az identitáshoz hozzáférési jogkivonatokat bocsásson ki. Emellett eltávolítja az identitáshoz társított összes megőrzött tartalmat is.
 
 ```python
-client.delete_user(user)
-print("\nDeleted the user with ID: " + user.identifier)
+client.delete_user(identity)
+print("\nDeleted the identity with ID: " + identity.identifier)
 ```
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-A konzol parancssorában navigáljon a *Issue-token.py* fájlt tartalmazó könyvtárra, majd futtassa az alábbi `python` parancsot az alkalmazás futtatásához.
+A konzol parancssorában navigáljon a *Issue-Access-Token.py* fájlt tartalmazó könyvtárra, majd futtassa az alábbi `python` parancsot az alkalmazás futtatásához.
 
 ```console
-python ./issue-token.py
+python ./issue-access-token.py
 ```

@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 44c9dbb0eed5e8f7a868832af93a3b841f67f784
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d0ae4ef48bfb79130180cc477eb2a6fbeb470eb6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310701"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506430"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>A .NET használata Apache Sparkhoz az Azure szinapszis Analytics használatával
 
@@ -48,15 +48,15 @@ Az oktatóanyagból megtudhatja, hogyan [hozhat létre Apache Spark-feladatdefin
 
     **Windows rendszeren:**
 
-A kinyerési program, például a [7-zip](https://www.7-zip.org/) vagy a [WinZip](https://www.winzip.com/)használatával kinyerheti a fájlt a bin könyvtárba az összes közzétett bináris fájllal.
+    A kinyerési program, például a [7-zip](https://www.7-zip.org/) vagy a [WinZip](https://www.winzip.com/)használatával kinyerheti a fájlt a bin könyvtárba az összes közzétett bináris fájllal.
 
-     **On Linux:**
+    **Linux rendszeren:**
 
-     1. Open a bash shell and cd into the bin directory with all the published binaries and run the following command.
+    Nyisson meg egy bash-rendszerhéjt és CD-t a bin könyvtárba az összes közzétett bináris fájlkal, és futtassa a következő parancsot.
 
-       ```bash
-       zip -r publish.zip
-       ```
+    ```bash
+    zip -r publish.zip
+    ```
 
 ## <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>.NET Apache Spark az Azure szinapszis Analytics-jegyzetfüzetekben 
 

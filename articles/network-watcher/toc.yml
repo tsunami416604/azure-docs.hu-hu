@@ -29,7 +29,7 @@
 - name: Alapelvek
   items:
     - name: Kapcsolatfigyelő (előzetes verzió)
-      href: connection-monitor-preview.md
+      href: connection-monitor-overview.md
     - name: Virtuális gép hálózati forgalmi problémáinak diagnosztizálása
       href: network-watcher-ip-flow-verify-overview.md
     - name: Az NSG-szabályok és a forgalomszűrés diagnosztizálása
@@ -61,9 +61,9 @@
     - name: Kapcsolatfigyelő létrehozása (előzetes verzió)
       items:
         - name: Az Azure Portal használata
-          href: connection-monitor-preview-create-using-portal.md
+          href: connection-monitor-create-using-portal.md
         - name: Az ARMClient használata
-          href: connection-monitor-preview-create-using-arm-client.md
+          href: connection-monitor-create-using-template.md
         - name: A PowerShell használata
           href: connection-monitor-create-using-powershell.md
     - name: Migrálás a kapcsolatfigyelőbe (előzetes verzió)

@@ -1,5 +1,5 @@
 ---
-title: Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása – Azure Portal | Microsoft Docs
+title: Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása – Azure Portal
 description: Megtudhatja, hogyan hozhat létre statikus nyilvános IP-címmel rendelkező virtuális gépet a Azure Portal használatával.
 services: virtual-network
 documentationcenter: na
@@ -11,77 +11,91 @@ ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/08/2018
+ms.date: 11/12/2020
 ms.author: allensu
-ms.openlocfilehash: 9e06e4079a5118e0aa9dedb1fca719f0b28e5716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ae0b869b24c4e05c88b936eceb1b9b1db3a9405
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448624"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506311"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása a Azure Portal használatával
 
-Létrehozhat egy statikus nyilvános IP-címmel rendelkező virtuális gépet is. A nyilvános IP-cím lehetővé teszi, hogy az internetről kommunikáljon egy virtuális géppel. Statikus nyilvános IP-címet rendeljen hozzá, nem pedig dinamikus címet, hogy a cím ne legyen módosítva. További információ a [statikus nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#allocation-method). Ha egy meglévő virtuális géphez hozzárendelt nyilvános IP-címet szeretne módosítani dinamikusról statikusra, vagy magánhálózati IP-címekkel szeretne dolgozni, tekintse meg az [IP-címek hozzáadása, módosítása vagy eltávolítása](virtual-network-network-interface-addresses.md)című témakört. A nyilvános IP-címek [névleges díjszabással](https://azure.microsoft.com/pricing/details/ip-addresses)rendelkeznek, és az előfizetések által használható nyilvános IP-címek száma [korlátozva](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) van.
+A nyilvános IP-cím lehetővé teszi, hogy az internetről kommunikáljon egy virtuális géppel. 
+
+Statikus nyilvános IP-címet rendeljen hozzá, nem pedig dinamikus címet, hogy a cím ne legyen módosítva.   
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-1. Az Azure Portal bal felső sarkában kattintson az **+ Erőforrás létrehozása** gombra.
-2. Válassza a **számítás**lehetőséget, majd válassza a **Windows Server 2016 virtuális gép**lehetőséget, vagy válasszon másik operációs rendszert.
-3. Adja meg vagy válassza ki a következő adatokat, fogadja el a többi beállítás alapértelmezett értékeit, majd kattintson az **OK gombra**:
+1. A portál bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép** vagy a keresés a **virtuális gépen** elemet a keresőmezőbe.
+   
+2. A **virtuális gép létrehozása** területen írja be vagy válassza ki az értékeket az **alapok** lapon:
 
-    |Beállítás|Érték|
-    |---|---|
-    |Name (Név)|myVM|
-    |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
-    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Előfizetés| Válassza ki előfizetését.|
-    |Erőforráscsoport| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
-    |Hely| Válassza ki az **USA keleti** régióját|
+    | Beállítás | Érték                                          |
+    |-----------------------|----------------------------------|
+    | **Projekt részletei** |  |
+    | Előfizetés | Válassza ki az Azure-előfizetését |
+    | Erőforráscsoport | Válassza az **Új létrehozása** lehetőséget. </br> A **név** mezőben adja meg a **myResourceGroup**. </br> Kattintson az **OK** gombra. |
+    | **Példány adatai** |  |
+    | Virtuális gép neve | **MyVM** megadása |
+    | Régió | Válassza ki az **USA keleti** régióját |
+    | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
+    | Kép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
+    | Azure Spot-példány | Válassza a **nem** lehetőséget |
+    | Méret | A virtuális gép méretének kiválasztása vagy az alapértelmezett beállítás megadása |
+    | **Rendszergazdai fiók** |  |
+    | Felhasználónév | Adjon meg egy felhasználónevet |
+    | Jelszó | Adja meg a jelszót |
+    | Jelszó megerősítése | Jelszó újbóli megadása |
 
-4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
-5. A **Beállítások**területen válassza a **nyilvános IP-cím**elemet.
-6. Adja meg a *myPublicIpAddress*, válassza a **statikus**lehetőséget, majd kattintson az **OK gombra**, ahogy az a következő képen látható:
+3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek** , majd a **Tovább: hálózatkezelés** lehetőséget.
+  
+4. A hálózatkezelés lapon válassza ki vagy írja be a következőket:
 
-   ![Statikus kijelölése](./media/virtual-network-deploy-static-pip-arm-portal/select-static.png)
+    | Beállítás | Érték |
+    |-|-|
+    | **Hálózati adapter** |  |
+    | Virtuális hálózat | Fogadja el az alapértelmezett hálózatnév nevét. |
+    | Alhálózat | Fogadja el az alapértelmezett alhálózati konfigurációt. |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **nyilvános IP-cím létrehozása** mezőben adja meg a **myPublicIP** nevet. </br> Az **SKU** esetében válassza a **standard** lehetőséget. </br> **Hozzárendelés** , válassza a **statikus** lehetőséget. </br> Kattintson az **OK** gombra.  |
+    | NIC hálózati biztonsági csoport | **Alapszintű** kiválasztása|
+    | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése** lehetőséget. |
+    | Válassza ki a bejövő portokat | **RDP kiválasztása (3389)** |
 
-   Ha a nyilvános IP-címnek standard SKU-nak kell lennie, válassza a **standard** elemet az **SKU**alatt. További információ a [nyilvános IP-cím SKU-](virtual-network-ip-addresses-overview-arm.md#sku)ról. Ha a virtuális gépet egy nyilvános Azure Load Balancer háttér-készletéhez adja hozzá, akkor a virtuális gép nyilvános IP-címének SKU-jának meg kell egyeznie a terheléselosztó nyilvános IP-címének SKU-jának. Részletekért lásd: [Azure Load Balancer](../load-balancer/skus.md).
-
-6. Válasszon ki egy portot, vagy ne válasszon portot a **nyilvános bejövő portok kiválasztása**területen. A portál 3389 van kiválasztva, hogy engedélyezze a távoli hozzáférést a Windows Server rendszerű virtuális géphez az internetről. Az 3389-as port az internetről való megnyitása nem ajánlott éles számítási feladatokhoz.
-
-   ![Válasszon portot](./media/virtual-network-deploy-static-pip-arm-portal/select-port.png)
-
-7. Fogadja el a fennmaradó alapértelmezett beállításokat, majd kattintson **az OK gombra**.
-8. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget. A virtuális gép üzembe helyezése néhány percet vesz igénybe.
-9. A virtuális gép üzembe helyezését követően írja be a *myPublicIpAddress* kifejezést a portál felső részén található keresőmezőbe. Ha a **myPublicIpAddress** megjelenik a keresési eredmények között, válassza ki.
-10. Megtekintheti a hozzárendelt nyilvános IP-címet, valamint azt, hogy a cím hozzá van-e rendelve a **myVM** virtuális géphez, ahogy az a következő képen látható:
-
-    ![A képernyőképen a nyilvános I P-címek ablaktáblája látható, az I P-címe és a neve. ](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
-
-    Az Azure hozzárendelt egy nyilvános IP-címet a virtuális gépet a ben létrehozó régióban használt címekről. Letöltheti a tartományok (előtagok) listáját az Azure [nyilvános](https://www.microsoft.com/download/details.aspx?id=56519), valamint [US government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) és [Germany](https://www.microsoft.com/download/details.aspx?id=57064) felhője esetében.
-
-11. A **konfiguráció** beállítás megadásával ellenőrizheti, hogy a hozzárendelés **statikus**-e.
-
-    ![A képernyőképen a nyilvános I P-címek ablaktáblája látható a kiválasztott konfigurációs elemmel.](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
-
-> [!WARNING]
-> Ne módosítsa az IP-cím beállításait a virtuális gép operációs rendszerén belül. Az operációs rendszer nem ismeri az Azure nyilvános IP-címeit. Bár a magánhálózati IP-címek beállításait az operációs rendszerhez is hozzáadhatja, azt javasoljuk, hogy csak akkor hajtsa végre ezt, ha szükséges, és nem, amíg az olvasó nem [ad hozzá privát IP-címet az operációs rendszerhez](virtual-network-network-interface-addresses.md#private).
+    > [!WARNING]
+    > A portál 3389 van kiválasztva, hogy engedélyezze a távoli hozzáférést a Windows Server rendszerű virtuális géphez az internetről. Az 3389-as port az internetre való megnyitása nem ajánlott az éles számítási feladatok kezeléséhez. </br> Az Azure Virtual Machines szolgáltatáshoz való biztonságos hozzáférésért lásd: **[Mi az az Azure Bastion?](/azure/bastion/bastion-overview)**
+   
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
+  
+6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
 
-1. Írja be a *myResourceGroup* nevet a portál tetején lévő **keresőmezőbe**. Amikor a **myResourceGroup** megjelenik a keresési eredmények között, válassza ki.
+1. Írja be a **myResourceGroup** nevet a portál tetején lévő **keresőmezőbe**. Amikor a **myResourceGroup** megjelenik a keresési eredmények között, válassza ki.
 2. Válassza az **Erőforráscsoport törlése** elemet.
-3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
+3. Írja be a **myResourceGroup** nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ az Azure [-beli nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- További információ az összes [nyilvános IP-cím beállításairól](virtual-network-public-ip-address.md#create-a-public-ip-address)
-- További információ a [magánhálózati IP-címekről](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) és a [statikus magánhálózati IP-](virtual-network-network-interface-addresses.md#add-ip-addresses) címek egy Azure-beli virtuális géphez való hozzárendeléséről
-- További információ a [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [Windows rendszerű](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek létrehozásáról
+Lásd: [IP-címek hozzáadása, módosítása vagy eltávolítása](virtual-network-network-interface-addresses.md):
+
+* Nyilvános IP-cím módosítása dinamikusról statikusra.
+* Magánhálózati IP-címek használata.
+
+A nyilvános IP-címekhez [névleges díj](https://azure.microsoft.com/pricing/details/ip-addresses)tartozik. Az előfizetések által használható nyilvános IP-címek száma [korlátozott](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .
+
+A virtuális gép nyilvános IP-címéhez tartozó SKU-nak meg kell egyeznie Azure Load Balancer nyilvános IP-címével, amikor hozzáadják a háttér-készlethez. Részletekért lásd: [Azure Load Balancer](../load-balancer/skus.md).
+
+Letöltheti a tartományok (előtagok) listáját az Azure [nyilvános](https://www.microsoft.com/download/details.aspx?id=56519), valamint [US government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) és [Germany](https://www.microsoft.com/download/details.aspx?id=57064) felhője esetében.
+
+- További információ a [statikus nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#allocation-method).
+- További információ az Azure [-beli nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) .
+- További információ az összes [nyilvános IP-cím beállításról](virtual-network-public-ip-address.md#create-a-public-ip-address).
+- További információk a [magánhálózati IP-címekről](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) és a [statikus magánhálózati IP-](virtual-network-network-interface-addresses.md#add-ip-addresses) címek egy Azure-beli virtuális géphez való hozzárendeléséről.

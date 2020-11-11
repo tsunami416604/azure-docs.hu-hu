@@ -36,6 +36,20 @@
       href: quickstart-multi-container.md
 - name: Oktatóanyagok
   items:
+    - name: Egy biztonságos alkalmazás hozzáfér a tárolóhoz és a Microsoft Graphhoz
+      items:
+        - name: Áttekintés
+          href: scenario-secure-app-overview.md
+        - name: Az App Service-hitelesítés beállítása
+          href: scenario-secure-app-authentication-app-service.md
+        - name: Egy biztonságos alkalmazás hozzáfér a tárolóhoz
+          href: scenario-secure-app-access-storage.md
+        - name: Egy biztonságos alkalmazás hozzáfér a Microsoft Graphhoz a felhasználó nevében
+          href: scenario-secure-app-access-microsoft-graph-as-user.md
+        - name: Egy biztonságos alkalmazás hozzáfér a Microsoft Graphhoz az alkalmazás nevében
+          href: scenario-secure-app-access-microsoft-graph-as-app.md
+        - name: Erőforrások felszabadítása
+          href: scenario-secure-app-clean-up-resources.md
     - name: Adatbázist használó alkalmazás
       items:
         - name: .NET Core és SQL-adatbázis

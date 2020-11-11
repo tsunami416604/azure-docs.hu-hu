@@ -114,15 +114,7 @@
     - name: Adatforrások
       href: platform/data-sources.md
     - name: Adatplatform
-      items:
-        - name: Áttekintés
-          href: platform/data-platform.md
-        - name: Naplók
-          href: platform/data-platform-logs.md
-        - name: Mérőszámok
-          href: platform/data-platform-metrics.md
-        - name: Adatok streamelése az Event Hubsra
-          href: platform/stream-monitoring-data-event-hubs.md
+      href: platform/data-platform.md
     - name: Adatbiztonság
       items:
         - name: Naplóadatok
@@ -188,98 +180,13 @@
               href: app/pricing.md
             - name: Adathasználat és -költségek naplózása
               href: platform/manage-cost-storage.md
-    - name: Platformnaplók
+    - name: Azure Monitor-naplók
       items:
         - name: Áttekintés
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/platform-logs-overview.md
-        - name: Tevékenységnapló
-          href: platform/activity-log.md
-        - name: Erőforrásnaplók
-          href: platform/resource-logs.md
-        - name: Diagnosztikai beállítások
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings.md
-    - name: Log Analytics
-      items:
-        - name: Áttekintés
-          displayname: 'Log Analytics, log query, log queries, query, queries'
-          href: log-query/log-query-overview.md
-        - name: Oktatóanyag
-          displayname: 'Log Analytics workspace, log query, log queries, query, queries'
-          href: log-query/get-started-portal.md
-        - name: Lekérdezési hatókör
-          href: log-query/scope.md
-        - name: Lekérdezés az Azure Data Explorerrel
-          href: platform/azure-data-explorer-monitor-proxy.md
-        - name: Naplólekérdezések
-          items:
-            - name: Standard oszlopok
-              href: platform/log-standard-columns.md
-            - name: Lekérdezések naplózása
-              href: log-query/query-audit.md
-            - name: Lekérdezések optimalizálása
-              href: log-query/query-optimization.md
-            - name: Függvények
-              href: log-query/functions.md
-            - name: Szövegadatok elemzése
-              href: log-query/parse-text.md
-            - name: Példa a lekérdezésekre
-              href: log-query/saved-queries.md
-            - name: Számítógépcsoportok
-              href: platform/computer-groups.md
-        - name: Lekérdezés nyelve
-          items:
-            - name: KQL-referencia
-              href: /azure/data-explorer/kusto/query/
-            - name: Különbségek az Azure Data Explorerhez képest
-              href: log-query/data-explorer-difference.md
-            - name: Példák
-              href: log-query/examples.md
-            - name: Példák intelligens elemzésre
-              href: log-query/smart-analytics.md
-            - name: Leckék
-              items:
-                - name: Sztringműveletek
-                  href: log-query/string-operations.md
-                - name: Dátum és idő típusú adatokkal végzett műveletek
-                  href: log-query/datetime-operations.md
-                - name: Aggregátumfüggvények
-                  href: log-query/aggregations.md
-                - name: Speciális aggregátumok
-                  href: log-query/advanced-aggregations.md
-                - name: Illesztések
-                  href: log-query/joins.md
-                - name: JSON és adatstruktúrák
-                  href: log-query/json-data-structures.md
-                - name: Továbbfejlesztett lekérdezésírás
-                  href: log-query/advanced-query-writing.md
-                - name: Diagramok
-                  href: log-query/charts.md
-                - name: Keresési lekérdezések
-                  href: log-query/search-queries.md
-            - name: Hasznos tanácsok
-              items:
-                - name: SQL
-                  href: log-query/sql-cheatsheet.md
-                - name: Splunk
-                  href: log-query/splunk-cheatsheet.md
-        - name: Erőforrásközi lekérdezések
-          items:
-            - name: Áttekintés
-              href: log-query/cross-workspace-query.md
-            - name: alkalmazáskifejezés
-              href: log-query/app-expression.md
-            - name: munkaterület-kifejezés
-              href: log-query/workspace-expression.md
-            - name: erőforrás-kifejezés
-              href: log-query/resource-expression.md
-            - name: Alkalmazás adatforrásainak egységesítése
-              href: log-query/unify-app-resource-data.md
+          displayname: 'Azure Monitor Logs, Logs, Log Analytics, log query, log queries, query, queries'
+          href: platform/data-platform-logs.md
         - name: Munkaterületek és fürtök
           items:
-            - name: Munkaterület üzembe helyezésének megtervezése
-              href: platform/design-logs-deployment.md
             - name: Munkaterület létrehozása
               items:
                 - name: Azure Portal
@@ -288,6 +195,8 @@
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
+            - name: Munkaterület üzembe helyezésének megtervezése
+              href: platform/design-logs-deployment.md
             - name: Munkaterület monitorozása
               href: platform/monitor-workspace.md
             - name: Munkaterület törlése és helyreállítása
@@ -301,6 +210,50 @@
               href: platform/service-providers.md
             - name: Dedikált fürtök
               href: log-query/logs-dedicated-clusters.md
+        - name: Log Analytics
+          items:
+            - name: Áttekintés
+              displayname: 'Log Analytics, log query, log queries, query, queries'
+              href: log-query/log-analytics-overview.md
+            - name: Oktatóanyag
+              displayname: 'Log Analytics workspace, log query, log queries, query, queries'
+              href: log-query/log-analytics-tutorial.md
+            - name: Lekérdezési hatókör
+              href: log-query/scope.md
+            - name: Példa a lekérdezésekre
+              href: log-query/example-queries.md
+        - name: Naplólekérdezések
+          items:
+            - name: Áttekintés
+              displayname: 'log query, log queries, query, queries'
+              href: log-query/log-query-overview.md
+            - name: KQL-referencia
+              href: /azure/data-explorer/kusto/query/
+            - name: Mintalekérdezések
+              href: /azure/data-explorer/kusto/query/samples?&pivots=azuremonitor
+            - name: Standard oszlopok
+              href: platform/log-standard-columns.md
+            - name: Lekérdezések optimalizálása
+              href: log-query/query-optimization.md
+            - name: Függvények
+              href: log-query/functions.md
+            - name: Szövegadatok elemzése
+              href: log-query/parse-text.md
+            - name: Számítógépcsoportok
+              href: platform/computer-groups.md
+            - name: Erőforrásközi lekérdezések
+              items:
+                - name: Áttekintés
+                  displayname: cross-resource queries
+                  href: log-query/cross-workspace-query.md
+                - name: alkalmazáskifejezés
+                  href: log-query/app-expression.md
+                - name: munkaterület-kifejezés
+                  href: log-query/workspace-expression.md
+                - name: erőforrás-kifejezés
+                  href: log-query/resource-expression.md
+                - name: Alkalmazás adatforrásainak egységesítése
+                  href: log-query/unify-app-resource-data.md
         - name: Adatexportálás
           items:
             - name: Munkaterület adatainak exportálása
@@ -309,16 +262,33 @@
               href: platform/logs-export-logic-app.md
             - name: Az exportált adatok lekérdezése a Data Explorerrel
               href: platform/azure-data-explorer-query-storage.md
-    - name: Metrikaböngésző
+    - name: Azure Monitor-metrikák
       items:
-        - name: Bevezetés a Metrikaböngésző használatába
-          href: platform/metrics-getting-started.md
-        - name: A Metrikaböngésző speciális funkciói
-          href: platform/metrics-charts.md
-        - name: Példák metrikadiagramokra
-          href: platform/metric-chart-samples.md
-        - name: Metrikadiagramok hibaelhárítása
-          href: platform/metrics-troubleshoot.md
+        - name: Áttekintés
+          displayname: Metrics
+          href: platform/data-platform-metrics.md
+        - name: Metrikaböngésző
+          items:
+            - name: Bevezetés a Metrikaböngésző használatába
+              href: platform/metrics-getting-started.md
+            - name: A Metrikaböngésző speciális funkciói
+              href: platform/metrics-charts.md
+            - name: Példák metrikadiagramokra
+              href: platform/metric-chart-samples.md
+            - name: Metrikadiagramok hibaelhárítása
+              href: platform/metrics-troubleshoot.md
+    - name: Platformnaplók
+      items:
+        - name: Áttekintés
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/platform-logs-overview.md
+        - name: Tevékenységnapló
+          href: platform/activity-log.md
+        - name: Erőforrásnaplók
+          href: platform/resource-logs.md
+        - name: Diagnosztikai beállítások
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/diagnostic-settings.md
     - name: Adatgyűjtés
       items:
         - name: Adatgyűjtési szabályok

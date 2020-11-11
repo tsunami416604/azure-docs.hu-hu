@@ -158,6 +158,8 @@
           items:
             - name: Azure-beli virtuális gépek biztonsági mentésének kezelése
               href: backup-azure-manage-vms.md
+            - name: Helyreállítási pontok kezelése
+              href: manage-recovery-points.md
     - name: Azure-beli virtuális gépen tárolt SQL Server-adatbázis biztonsági mentése
       items:
         - name: Áttekintés

@@ -1,5 +1,7 @@
 - name: Az Azure IoT Edge dokumentációja
   href: index.yml
+- name: Azure IoT Edge-verziók
+  href: version-history.md
 - name: Áttekintés
   items:
     - name: Tudnivalók az Azure IoT Edge-ről
@@ -13,13 +15,13 @@
       href: quickstart.md
 - name: Oktatóanyagok
   items:
-    - name: 1. Fejlesztési környezet beállítása
+    - name: Fejlesztési környezet beállítása
       items:
         - name: Fejlesztés Linux-eszközökhöz
           href: tutorial-develop-for-linux.md
         - name: Fejlesztés Windows-eszközökhöz
           href: tutorial-develop-for-windows.md
-    - name: 2. Egyéni kódmodulok fejlesztése
+    - name: Egyéni kódmodulok fejlesztése
       items:
         - name: C#
           items:
@@ -39,7 +41,7 @@
           href: tutorial-node-module.md
         - name: Python
           href: tutorial-python-module.md
-    - name: 3. Azure-szolgáltatások üzembe helyezése modulokként
+    - name: Azure-szolgáltatások üzembe helyezése modulokként
       items:
         - name: Adatok szűrése az Azure Functions segítségével
           href: tutorial-deploy-function.md
@@ -51,7 +53,11 @@
           href: tutorial-deploy-custom-vision.md
         - name: Adatok helyi tárolása az SQL-lel
           href: tutorial-store-data-sql-server.md
-    - name: 4. Peremhálózati gépi tanulás végpontok közötti példája
+    - name: Az IoT Edge átjáróként való használata
+      items:
+        - name: IoT Edge-eszközök hierarchiáinak létrehozása
+          href: tutorial-nested-iot-edge.md
+    - name: Peremhálózati gépi tanulás végpontok közötti példája
       items:
         - name: Introduction (Bevezetés)
           href: tutorial-machine-learning-edge-01-intro.md
@@ -187,16 +193,26 @@
           href: how-to-access-built-in-metrics.md
     - name: IoT Edge-eszközök használata átjáróként
       items:
-        - name: Transzparens átjáró konfigurálása
-          href: how-to-create-transparent-gateway.md
-        - name: Lefelé irányuló eszköz hitelesítése
-          href: how-to-authenticate-downstream-device.md
-        - name: Lefelé irányuló eszköz csatlakoztatása
-          href: how-to-connect-downstream-device.md
-        - name: Modbus-protokollnak megfelelő átjáró
-          href: deploy-modbus-gateway.md
+        - name: IoT-eszközök átjárói
+          items:
+            - name: Transzparens átjáró konfigurálása
+              href: how-to-create-transparent-gateway.md
+            - name: Lefelé irányuló eszköz hitelesítése
+              href: how-to-authenticate-downstream-device.md
+            - name: Lefelé irányuló eszköz csatlakoztatása
+              href: how-to-connect-downstream-device.md
+            - name: Modbus-protokollnak megfelelő átjáró
+              href: deploy-modbus-gateway.md
+        - name: IoT Edge-eszközök átjárói
+          items:
+            - name: Átjárók konfigurálása IoT Edge-eszközökhöz
+              href: how-to-connect-downstream-iot-edge-device.md
+            - name: Az API-proxymodul konfigurálása
+              href: how-to-configure-api-proxy-module.md
     - name: Proxytámogatás konfigurálása
       href: how-to-configure-proxy-support.md
+    - name: Közzététel és előfizetés az IoT Edge-dzsel
+      href: how-to-publish-subscribe.md
     - name: Azure Blob Storage az IoT Edge-ben
       items:
         - name: A peremhálózati Blob Storage megismerése

@@ -1,7 +1,11 @@
 - name: Azure SQL-dokumentáció
   href: index.yml
-- name: Mi az az Azure SQL?
-  href: azure-sql-iaas-vs-paas-what-is-overview.md
+- name: Azure SQL
+  items:
+    - name: Mi az az Azure SQL?
+      href: azure-sql-iaas-vs-paas-what-is-overview.md
+    - name: Migrálás az Azure SQL-be
+      href: migration-guides/index.yml
 - name: Közös SQL DB- és SQL MI-dokumentumok
   items:
     - name: Vásárlási modellek
@@ -301,6 +305,16 @@
               href: database/sql-data-sync-sql-server-configure.md
             - name: SQLite migrálása kiszolgáló nélküli környezetbe
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
+    - name: Migrálási útmutatók
+      items:
+        - name: DB2-ről
+          href: migration-guides/database/db2-to-sql-database-guide.md
+        - name: SQL Serverről
+          items:
+            - name: Áttekintés
+              href: migration-guides/database/sql-server-to-sql-database-overview.md
+            - name: Migrate
+              href: migration-guides/database/sql-server-to-sql-database-guide.md
     - name: Alapelvek
       items:
         - name: Kapcsolati architektúra
@@ -696,6 +710,18 @@
               href: managed-instance/replication-between-two-instances-configure-tutorial.md
             - name: 'MI pub, MI dist, SQL sub'
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
+    - name: Migrálási útmutatók
+      items:
+        - name: DB2-ről
+          href: migration-guides/managed-instance/db2-to-managed-instance-guide.md
+        - name: SQL Serverről
+          items:
+            - name: Áttekintés
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-overview.md
+            - name: Migrate
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
+            - name: Alapteljesítmény
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-performance-baseline.md
     - name: Alapelvek
       items:
         - name: Erőforráskorlátok
@@ -946,7 +972,7 @@
           href: database/arm-templates-content-guide.md?tabs=managed-instance
         - name: Kódminták
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
-- name: Azure virtuális gépen futó SQL Server
+- name: Azure-beli virtuális gépeken futó SQL Server
   items:
     - name: Dokumentáció
       href: virtual-machines/index.yml
@@ -1171,6 +1197,14 @@
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: Stack Overflow
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
+    - name: Migrálási útmutatók
+      items:
+        - name: Áttekintés
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+        - name: SQL Serverről
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+        - name: DB2-ről
+          href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
 - name: Referencia
   items:
     - name: T-SQL nyelvi referencia

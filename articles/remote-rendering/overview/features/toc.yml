@@ -18,6 +18,8 @@
   href: color-materials.md
 - name: Vázlat renderelése
   href: outlines.md
+- name: Shell-renderelés
+  href: shell-effect.md
 - name: Egyoldalas renderelés
   href: single-sided-rendering.md
 - name: Térbeli lekérdezések
