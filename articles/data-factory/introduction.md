@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 1840bf93cbca73e593465c999b416e7cbd7af201
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 730141d22b318d79c8c2b7d995b98ee1c311aaf5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89536312"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491273"
 ---
 # <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
 
@@ -22,7 +22,7 @@ ms.locfileid: "89536312"
 
 A big data világában a nyers, rendezetlen adatok tárolása leggyakrabban relációs, nem relációs vagy egyéb tárolórendszerekben történik. A nyers adatok önmagukban azonban nem biztosítanak megfelelő környezetet, sem értelmezhető elemzési lehetőségeket az elemzők, adatelemzők vagy üzleti döntéshozók számára. 
 
-A big data esetében olyan szolgáltatásra van szükség, amely lehetővé teszi az irányítási és üzembe helyezési folyamatok számára, hogy ezt a hatalmas nyers adatmennyiséget a gyakorlatban használható üzleti elemzésekké alakítsák. Az Azure Data Factory egy ilyen, az összetett hibrid ETL-, ELT- és adatintegrációs projektek kezelésre szolgáló felügyelt felhőszolgáltatás.
+A Big az adatmennyiséghez olyan szolgáltatásra van szükség, amely képes a nagy mennyiségű nyers adatmennyiséget hasznosítható üzleti információkra kialakítani és működővé tenni a folyamatokat. Az Azure Data Factory egy ilyen, az összetett hibrid ETL-, ELT- és adatintegrációs projektek kezelésre szolgáló felügyelt felhőszolgáltatás.
 
 Képzeljünk el például egy játékfejlesztő vállalatot, amely több petabájtnyi, a játékok által készített naplót gyűjt össze a felhőben. A vállalat e naplókat szeretné elemezni, hogy betekintést nyerhessen az ügyfelek preferenciáiba, demográfiai adataiba és felhasználói viselkedésébe, hogy ezek alapján azonosítsa az értékesítési és keresztértékesítési lehetőségeket, új funkciókat fejlesszen az üzleti növekedés elősegítése érdekében, és jobb felhasználói élményt nyújtson az ügyfeleinek.
 

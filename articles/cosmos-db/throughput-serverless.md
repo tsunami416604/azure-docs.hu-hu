@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: d16343864d9602d644b31d34a2b66e39211b6ece
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: f6fbd963966dd1a5c433a97cb8d37ae22998be4c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079338"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491188"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>A kiépített átviteli sebesség és a kiszolgáló nélküli választás
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -20,16 +20,13 @@ Azure Cosmos DB két különböző kapacitású üzemmódban érhető el: [kiép
 
 > [!VIDEO https://www.youtube.com/embed/CgYQo6uHyt0]
 
-> [!NOTE]
-> A kiszolgáló nélküli verzió jelenleg csak a Azure Cosmos DB Core (SQL) API-ban támogatott.
-
 ## <a name="detailed-comparison"></a>Részletes összehasonlítás
 
 | Feltételek | Kiosztott átviteli sebesség | Kiszolgáló nélküli |
 | --- | --- | --- |
-| status | Általánosan elérhető | Előzetes verzióban |
+| Állapot | Általánosan elérhető | Előzetes verzióban |
 | Legmegfelelőbb a következőhöz: | Kiszámítható teljesítményt igénylő, kritikus fontosságú számítási feladatok | Kis-közepes, nem kritikus fontosságú számítási feladatok |
-| A működési elv | Az egyes tárolók esetében bizonyos mennyiségű átviteli sebességet kell kiépíteni a [kérelmek](request-units.md) száma másodpercenként. Másodpercenként ez a kérelmek mennyisége elérhető az adatbázis műveleteihez. A kiépített átviteli sebesség manuálisan frissíthető, és automatikus [méretezéssel](provision-throughput-autoscale.md)automatikusan módosítható. | Az adatbázis-műveleteket a tárolók nélkül futtathatja anélkül, hogy kapacitást kellene kiépíteni. |
+| Működés | Az egyes tárolók esetében bizonyos mennyiségű átviteli sebességet kell kiépíteni a [kérelmek](request-units.md) száma másodpercenként. Másodpercenként ez a kérelmek mennyisége elérhető az adatbázis műveleteihez. A kiépített átviteli sebesség manuálisan frissíthető, és automatikus [méretezéssel](provision-throughput-autoscale.md)automatikusan módosítható. | Az adatbázis-műveleteket a tárolók nélkül futtathatja anélkül, hogy kapacitást kellene kiépíteni. |
 | Korlátozások/fiók | Azure-régiók maximális száma: korlátlan | Azure-régiók maximális száma: 1 |
 | Korlátozás/tároló | Maximális átviteli sebesség: korlátlan<br>Maximális tárterület: korlátlan | Maximális átviteli sebesség: 5 000 RU/s<br>Maximális tárterület: 50 GB |
 | Teljesítmény | 99,99% – 99,999% rendelkezésre állás SLA-val<br>< 10 MS késés az SLA által jelzett pont-olvasási és írási műveletekhez<br>99,99%-os garantált átviteli sebesség (SLA) | 99,9% – 99,99% rendelkezésre állás SLA-val<br>< 10 MS késés a Point-olvasások és a < 30 MS esetében az SLO által jelzett írásokhoz<br>95%-os kitörés az SLO-ban |
@@ -66,7 +63,7 @@ Ha a számítási feladathoz szükséges, hogy a számítási feladatok másodpe
 > [!NOTE]
 > Az előző példában bemutatott költségek csak demonstrációs célokat szolgálnak. A legfrissebb díjszabási információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [adatforgalom kiépítési teljesítményéről Azure Cosmos db](set-throughput.md)
 - További információ a [Azure Cosmos db kiszolgáló](serverless.md) nélküli használatáról

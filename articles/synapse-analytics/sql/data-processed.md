@@ -1,6 +1,6 @@
 ---
-title: Kiszolgáló nélküli SQL-készlettel feldolgozott adatfeldolgozás
-description: Ez a dokumentum azt ismerteti, hogyan számítja ki az adatfeldolgozási mennyiség kiszámításakor a rendszer az adattárban lévő adatlekérdezéseket.
+title: Cost Management kiszolgáló nélküli SQL-készlethez
+description: Ez a dokumentum ismerteti, hogyan kezelheti a kiszolgáló nélküli SQL-készlet költségeit és a feldolgozott adatmennyiséget az Azure Storage-ban tárolt adatlekérdezés során.
 services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,14 +9,22 @@ ms.subservice: sql
 ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a108e5fdd30c21cdb7771e3f683dad22773653a4
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 8a26f8ced5e91810f8cadff0a27796dc817e6517
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381201"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491569"
 ---
-# <a name="data-processed-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics kiszolgáló nélküli SQL-készlet használatával feldolgozott adatai
+# <a name="cost-management-for-serverless-sql-pool-in-azure-synapse-analytics"></a>A kiszolgáló nélküli SQL-készlet Cost Management az Azure szinapszis Analyticsben
+
+Ez a cikk azt ismerteti, hogyan lehet megbecsülni és kezelni a kiszolgáló nélküli SQL-készlet költségeit az Azure szinapszis Analyticsben:
+- A lekérdezés kiadása előtt feldolgozott adat becsült mennyisége
+- A Cost Control szolgáltatás használata a költségvetés beállításához
+
+Ismerje meg, hogy az Azure szinapszis Analytics kiszolgáló nélküli SQL-készletének költségei csak a havi költségek egy részét jelentik az Azure-számlán. Ha más Azure-szolgáltatásokat használ, akkor az Azure-előfizetésében használt összes Azure-szolgáltatás és erőforrás után, beleértve a harmadik féltől származó szolgáltatásokat is. Ez a cikk bemutatja, hogyan tervezheti meg és kezelheti a kiszolgáló nélküli SQL-készlet költségeit az Azure szinapszis Analytics szolgáltatásban.
+
+## <a name="data-processed"></a>Feldolgozott adatok
 
 A *feldolgozott* adatmennyiség a rendszer által ideiglenesen a lekérdezés futtatása közben tárolt adatmennyiség. A feldolgozott adatmennyiség a következő mennyiségekből áll:
 
@@ -85,6 +93,53 @@ Ez a lekérdezés teljes fájlokat olvas be. A tábla tárolási fájljainak tel
 
 Ez a lekérdezés valamivel több mint 100 KB adatmennyiséget dolgoz fel. A lekérdezésben feldolgozott adatmennyiség 10 MB-ra van kerekítve, a jelen cikk [kerekítési](#rounding) szakaszában megadott módon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="cost-control"></a>Cost Control
+
+A kiszolgáló nélküli SQL-készlet Cost Control funkciója lehetővé teszi a költségvetés beállítását a feldolgozott adatmennyiség tekintetében. Megadhatja, hogy egy adott nap, hét és hónap után milyen mennyiségű adat legyen feldolgozva a TB-ban. Egy vagy több költségvetést is beállíthat. A kiszolgáló nélküli SQL-készlet költséghatékonyságának konfigurálásához használhatja a szinapszis studiót vagy a T-SQL-T.
+
+## <a name="configure-cost-control-for-serverless-sql-pool-in-synapse-studio"></a>A kiszolgáló nélküli SQL-készlet költséghatékonyságának konfigurálása a szinapszis Studióban
+ 
+A kiszolgáló nélküli SQL-készletre vonatkozó Cost Control konfigurálása a szinapszis Studióban navigáljon a bal oldali menüben található elem kezelésére, mint az SQL Pool elem kiválasztása az elemzési készletek területen. Amikor a kiszolgáló nélküli SQL-készletre mutat, megjelenik a Cost Control ikonja – kattintson erre az ikonra.
+
+![Cost Control – navigáció](./media/data-processed/cost-control-menu.png)
+
+A Cost Control ikonra kattintva megjelenik egy oldalsó sáv:
+
+![Cost Control-konfiguráció](./media/data-processed/cost-control-sidebar.png)
+
+Egy vagy több költségvetés beállításához először kattintson a beállítani kívánt költségvetéshez tartozó választógomb engedélyezése gombra, a szövegmezőbe írja be az egész értéket. Az érték egysége a TBs. Miután konfigurálta a kívánt költségvetést, kattintson az Apply (alkalmaz) gombra az oldalsó sáv alján. Ekkor már be van állítva a költségkeret.
+
+## <a name="configure-cost-control-for-serverless-sql-pool-in-t-sql"></a>A kiszolgáló nélküli SQL-készlethez tartozó Cost Control konfigurálása a T-SQL-ben
+
+Ha a T-SQL-ben a kiszolgáló nélküli SQL-készlethez tartozó költséghatékonyságot szeretné beállítani, a következő tárolt eljárások közül egyet vagy többet kell végrehajtania.
+
+```sql
+sp_set_data_processed_limit
+    @type = N'daily',
+    @limit_tb = 1
+
+sp_set_data_processed_limit
+    @type= N'weekly',
+    @limit_tb = 2
+
+sp_set_data_processed_limit
+    @type= N'monthly',
+    @limit_tb = 3334
+```
+
+Az aktuális konfiguráció megtekintéséhez hajtsa végre a következő T-SQL-utasítást:
+
+```sql
+SELECT * FROM sys.configurations
+WHERE name like 'Data processed %';
+```
+
+Ha szeretné megtekinteni, hogy mennyi adat lett feldolgozva az aktuális nap, hét vagy hónap során, hajtsa végre a következő T-SQL-utasítást:
+
+```sql
+SELECT * FROM sys.dm_external_data_processed
+```
+
+## <a name="next-steps"></a>További lépések
 
 A teljesítményre vonatkozó lekérdezések optimalizálásával kapcsolatos további információkért lásd: [ajánlott eljárások kiszolgáló nélküli SQL-készlethez](best-practices-sql-on-demand.md).

@@ -4,15 +4,15 @@ description: Választ kaphat az Azure Marketplace-re és a Microsoft AppSourcera
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: a5c5d7ae4dbf1126d171c78bbd4e353f11402260
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e72acb532a33d0b3751bb8ad5051b1a3df4d7514
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126719"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491477"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -58,10 +58,10 @@ Ha regisztrálni szeretne a kereskedelmi piactér-közzétevőre, lépjen a [par
 
 Az ügyfelek által a kereskedelmi Marketplace-ajánlat használatának módja az ajánlatok létrehozásának módjától függ.
 
-- Az Ön által automatikusan biztosított megoldásokért, akár fizetős, akár saját licenccel (BYOL), akár díjmentesen, javasoljuk, hogy az ügyfelek *most kapják meg* .
+- Az Ön által automatikusan biztosított megoldásokért, akár fizetős, akár saját licenccel (BYOL), akár díjmentesen, javasoljuk, hogy az ügyfelek *most kapják meg*.
 - A tesztvezetés (bemutató) támogató ajánlatok az ügyfelet a *meghajtó tesztelésére* kérik. 
 - A kereskedelmi piactéren kívüli próbaverziót biztosító szolgáltatott szoftver (SaaS) ajánlat *ingyenes próbaverziót* biztosít.
-- Az egyszerű Listázás lehetővé teszi, hogy az ügyfél *kapcsolatba lépjen velem* .
+- Az egyszerű Listázás lehetővé teszi, hogy az ügyfél *kapcsolatba lépjen velem*.
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Hogyan ajánlatokat hozhat létre a kereskedelmi piactéren?
 
@@ -339,7 +339,7 @@ A Microsoft felügyeleti központtal kapcsolatos információkért lásd: a [kü
 ### <a name="where-can-i-learn-about-azure-government-and-the-azure-government-marketplace"></a>Hol tudhatok meg többet a Azure Governmentról és a Azure Government Marketplace-ről?
 
 - [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
-- [Microsoft Adatvédelmi központ](https://www.microsoft.com/trust-center)
+- [Microsoft adatvédelmi központ](https://www.microsoft.com/trust-center)
 - [Az Azure Government dokumentációja](../azure-government/index.yml)
 - [Azure Government piactér](../azure-government/documentation-government-manage-marketplace.md)
 - [Azure Government megfelelőség](../azure-government/documentation-government-plan-compliance.md)

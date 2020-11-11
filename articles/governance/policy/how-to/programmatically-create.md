@@ -3,12 +3,12 @@ title: Szabályzatok létrehozása programozott módon
 description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet szabályzatokat az Azure CLI-vel, a Azure PowerShelltal és a REST APIokkal Azure Policy.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 9b0c2e50536a847555dfa5cc6b9c823cfc1a4cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bf2b1864331fd785ecdd70be4af79be01f1e5e0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047054"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491800"
 ---
 # <a name="programmatically-create-policies"></a>Szabályzatok létrehozása programozott módon
 
@@ -92,7 +92,7 @@ Az erőforrások jobb láthatóságának első lépése, hogy szabályzatokat ho
 
    - Erőforrás `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Erőforráscsoport – `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Előfizetés `/subscriptions/{subId}/`
+   - Előfizetés `/subscriptions/{subId}`
    - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Az erőforrás-házirendek Resource Manager PowerShell-modul használatával történő kezelésével kapcsolatos további információkért tekintse meg az [az. Resources](/powershell/module/az.resources/#policies)című témakört.
@@ -237,7 +237,7 @@ Az Ön által létrehozott szabályzat-definíció AZONOSÍTÓjának a következ
 
 Az erőforrás-házirendek Azure CLI-vel való kezelésével kapcsolatos további információkért lásd: [Azure CLI erőforrás-házirendek](/cli/azure/policy).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A cikkben szereplő parancsokkal és lekérdezésekkel kapcsolatos további információkért tekintse át a következő cikkeket.
 

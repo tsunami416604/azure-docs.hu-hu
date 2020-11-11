@@ -4,15 +4,15 @@ description: Ez a cikk az ajánlatok Microsoft AppSource és az Azure Marketplac
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 0b4941d326359a51ff6a75385a74a8bcdabfa075
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 17b53d656d0344e4178b3034a972e26d6aa0bc15
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128997"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492106"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi beállítások meghatározása
 
@@ -54,9 +54,9 @@ A rendelkezésre álló tőzsdei lehetőségek differenciált ügyfél-összevon
 | **Közzétételi lehetőség**    | **Leírás**  |
 | :------------------- | :-------------------|
 | **Lista** | Az alkalmazás vagy szolgáltatás egyszerű felsorolása, amely lehetővé teszi, hogy a kereskedelmi piactér felhasználója kapcsolatba lépjen Önnel az ügyféllel a **kapcsolattartási** adatok listázása lehetőség használatával. |
-| **Próba** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, és automatizálhatja a megoldás próbaverziójának használatát, így a potenciális felhasználók a vásárlásuk előtt korlátozott ideig ingyenesen használhatják SaaS-, IaaS-vagy Microsoft-alkalmazásbeli élményét. A próbaverziós közzétételi lehetőséghez használt listázási beállítások az **ingyenes próbaverziós** vagy a **Test Drive** . |
-| **BYOL** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, automatizálhatja a megoldás üzembe helyezését, és elvégezheti a pénzügyi tranzakciók külön történő elvégzését. A BYOL-ajánlatok típusai ideálisak a helyszíni és a felhőalapú Migrálás számára. A listázási lehetőség **most már elérhető** .
-| **Tranzakciós** | A Transact-ajánlatokat a kereskedelmi Piactéren keresztül értékesítjük. A Microsoft felelős a számlázásért és a gyűjteményért. A listázási lehetőség **most már elérhető** .|
+| **Próba** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, és automatizálhatja a megoldás próbaverziójának használatát, így a potenciális felhasználók a vásárlásuk előtt korlátozott ideig ingyenesen használhatják SaaS-, IaaS-vagy Microsoft-alkalmazásbeli élményét. A próbaverziós közzétételi lehetőséghez használt listázási beállítások az **ingyenes próbaverziós** vagy a **Test Drive**. |
+| **BYOL** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, automatizálhatja a megoldás üzembe helyezését, és elvégezheti a pénzügyi tranzakciók külön történő elvégzését. A BYOL-ajánlatok típusai ideálisak a helyszíni és a felhőalapú Migrálás számára. A listázási lehetőség **most már elérhető**.
+| **Tranzakciós** | A Transact-ajánlatokat a kereskedelmi Piactéren keresztül értékesítjük. A Microsoft felelős a számlázásért és a gyűjteményért. A listázási lehetőség **most már elérhető**.|
 
 > [!Note]
 > A Transact Publishing lehetőség használatakor fontos megérteni a díjszabást, a számlázást, a számlázást és a kifizetési szempontokat az ajánlat típusának kiválasztása és az ajánlat létrehozása előtt. További információért tekintse át a [kereskedelmi Piactéri Transact-képességeket](./marketplace-commercial-transaction-capabilities-and-considerations.md)ismertető cikket.
@@ -81,7 +81,7 @@ Az SaaS-ajánlatokat közzéteheti az Azure piactéren vagy a AppSource. Ha az S
 | Mért számlázás | Nyilvános csomag | Saját csomag | Elérhető itt: |
 |---|---|---|---|
 | Igen             | Igen         | Nem           | Azure Marketplace és Azure Portal |
-| Igen             | Igen         | Igen          | Azure Marketplace és Azure Portal * |
+| Igen             | Igen         | Yes          | Azure Marketplace és Azure Portal * |
 | Igen             | Nem          | Igen          | Csak Azure Portal |
 | Nem              | Nem          | Igen          | Csak Azure Portal |
 
@@ -98,6 +98,6 @@ A kategóriák és alkategóriák a megoldás típusa alapján vannak leképezve
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A közzétételi lehetőség kiválasztása után tekintse át a [közzétételi útmutatót ajánlat típusa szerint](./publisher-guide-by-offer-type.md).

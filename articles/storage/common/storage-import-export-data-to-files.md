@@ -9,12 +9,12 @@ ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7d969392c3245eb81ed07889bd956d2b8e8fb82f
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 859325bffe1db9cd6a7afc7e5013681c88209eff
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234094"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491783"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Az Azure Import/Export szolgáltatás használata az adatok Azure Filesba történő importálásához
 
@@ -97,7 +97,7 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
 5. Az `PrepImport` adatlemezre másolással és előkészítéssel megadhatja az adatátvitelt. Ahhoz, hogy az első másolási munkamenet a címtárakat és/vagy fájlokat egy új másolási munkamenettel másolja, futtassa a következő parancsot:
 
     ```cmd
-    .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
+    .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>]/DataSet:<dataset.csv>
     ```
 
    Alább látható egy importálási példa.
@@ -119,7 +119,7 @@ További mintákért lépjen a [minták a Journal-fájlokhoz](#samples-for-journ
 
 Az alábbi lépések végrehajtásával hozzon létre egy importálási feladatot a Azure Portal.
 1. Jelentkezzen be a következőre: https://portal.azure.com/ .
-2. Lépjen az **összes szolgáltatás > Storage > importálási/exportálási feladatok lehetőségre** .
+2. Lépjen az **összes szolgáltatás > Storage > importálási/exportálási feladatok lehetőségre**.
 
     ![Importálási/exportálási ugrás](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
@@ -357,7 +357,7 @@ A feladatot nyomon követheti befejezésre. A feladatok befejezése után ellen�
 
 **További meghajtók hozzáadásához** hozzon létre egy új driveset-fájlt, és futtassa az alábbi parancsot az alábbiak szerint.
 
-Ha a további másolási munkameneteket a *InitialDriveset. csv* fájlban megadott lemezmeghajtók között szeretné megadni, adjon meg egy új driveset *. csv* fájlt, és adja meg a paraméter értékét `AdditionalDriveSet` . Használja **ugyanazt a naplófájl** -nevet, és adjon meg egy **új munkamenet-azonosítót** . A AdditionalDriveset CSV-fájl formátuma megegyezik a InitialDriveSet formátumával.
+Ha a további másolási munkameneteket a *InitialDriveset. csv* fájlban megadott lemezmeghajtók között szeretné megadni, adjon meg egy új driveset *. csv* fájlt, és adja meg a paraméter értékét `AdditionalDriveSet` . Használja **ugyanazt a naplófájl** -nevet, és adjon meg egy **új munkamenet-azonosítót**. A AdditionalDriveset CSV-fájl formátuma megegyezik a InitialDriveSet formátumával.
 
 ```cmd
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
@@ -372,7 +372,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDrive
 
 Ha további adatfájlokat szeretne hozzáadni ugyanahhoz a driveset, használja a PrepImport parancsot a további másolási munkamenetek számára további fájlok/könyvtár másolásához.
 
-Ha a későbbi másolási munkameneteket a *InitialDriveset.csv* fájlban megadott merevlemez-meghajtókra szeretné másolni, adja meg **ugyanazt a naplónevet** , és adjon meg egy **új munkamenet-azonosítót** . nincs szükség a Storage-fiók kulcsainak megadására.
+Ha a későbbi másolási munkameneteket a *InitialDriveset.csv* fájlban megadott merevlemez-meghajtókra szeretné másolni, adja meg **ugyanazt a naplónevet** , és adjon meg egy **új munkamenet-azonosítót**. nincs szükség a Storage-fiók kulcsainak megadására.
 
 ```cmd
 WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>
@@ -384,7 +384,7 @@ Alább látható egy importálási példa.
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A feladatok és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
 * [Importálási/exportálási követelmények áttekintése](storage-import-export-requirements.md)

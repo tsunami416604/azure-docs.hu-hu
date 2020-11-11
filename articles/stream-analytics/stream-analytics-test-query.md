@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 524b34c48146dc9e6102ed8d20ff8d1076706ba7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8e08c4c34495b58c105560dba9d818be9ebf5e34
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444962"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490967"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Azure Stream Analytics-feladatok tesztelése a portálon
 
@@ -101,8 +101,8 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
 
 1.  Az időszabályzat nem támogatott a portálon történő tesztelés során:
 
-   * Nem sorrendben: minden bejövő esemény megrendelésre kerül.
-   * Késői érkezés: nem lesz késői beérkezési esemény, mert Stream Analytics csak a meglévő, tesztelésre szolgáló adatfelhasználást tudja használni.
+    * Nem sorrendben: minden bejövő esemény megrendelésre kerül.
+    * Késői érkezés: nem lesz késői beérkezési esemény, mert Stream Analytics csak a meglévő, tesztelésre szolgáló adatfelhasználást tudja használni.
    
 2.  A C# UDF nem támogatott.
 
@@ -112,6 +112,7 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
 
 5.  A gépi tanulás nem támogatott.
 
+6. A Sample adatapi egy 15 perces ablakban öt kérelem után van szabályozva. A 15 perces időszak végét követően több minta adatkérést is megadhat. Ezt a korlátozást az előfizetés szintjén kell alkalmazni.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

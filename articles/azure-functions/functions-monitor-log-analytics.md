@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 582dafba40012e9ff9c59bc09adb1a0831e999f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208370"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491222"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions figyelése Azure Monitor naplókkal
 
@@ -22,23 +22,23 @@ Azure Monitor naplók lehetővé teszik a különböző erőforrásokból szárm
 A Azure Monitor az Azure Adatkezelő által használt [Kusto-lekérdezési nyelv](/azure/kusto/query/) egy olyan verzióját használja, amely az egyszerű naplózási lekérdezésekhez megfelelő, de olyan speciális funkciókat is tartalmaz, mint az összesítések, az illesztések és az intelligens elemzések. A lekérdezés nyelvét [több leckével](../azure-monitor/log-query/get-started-queries.md)is gyorsan megismerheti.
 
 > [!NOTE]
-> A Azure Monitor-naplókkal való integráció jelenleg nyilvános előzetes verzióban érhető el a Windows-használat, a prémium szintű és a dedikált üzemeltetési csomagok esetében futó functions-alkalmazásokhoz.
+> A Azure Monitor-naplókkal való integráció jelenleg nyilvános előzetes verzióban érhető el, és a Windows-használat, a prémium szintű és a dedikált üzemeltetési csomagok esetében a v2-es és v3-es függvények
 
 ## <a name="setting-up"></a>Beállítás
 
-1. A [Azure Portal](https://portal.azure.com)a Function alkalmazás **figyelés** szakaszában válassza a **diagnosztikai beállítások**lehetőséget, majd kattintson a **diagnosztikai beállítás hozzáadása**elemre.
+1. A [Azure Portal](https://portal.azure.com)a Function alkalmazás **figyelés** szakaszában válassza a **diagnosztikai beállítások** lehetőséget, majd kattintson a **diagnosztikai beállítás hozzáadása** elemre.
 
    :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="Diagnosztikai beállítások kiválasztása":::
 
-1. A **diagnosztika beállításai** oldalon, a **Kategória részletei** és a **napló**területen válassza a **FunctionAppLogs**lehetőséget.
+1. A **diagnosztika beállításai** oldalon, a **Kategória részletei** és a **napló** területen válassza a **FunctionAppLogs** lehetőséget.
 
    A **FunctionAppLogs** tábla tartalmazza a kívánt naplókat.
 
-1. A **célhely részletei**területen válassza a **Küldés log Analyticsba**lehetőséget, majd válassza ki a **log Analytics munkaterületet**. 
+1. A **célhely részletei** területen válassza a **Küldés log Analyticsba** lehetőséget, majd válassza ki a **log Analytics munkaterületet**. 
 
-1. Adja meg a **diagnosztikai beállítások nevét**, majd kattintson a **Mentés**gombra.
+1. Adja meg a **diagnosztikai beállítások nevét** , majd kattintson a **Mentés** gombra.
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Diagnosztikai beállítások kiválasztása":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Diagnosztikai beállítás hozzáadása":::
 
 ## <a name="user-generated-logs"></a>Felhasználó által generált naplók
 
@@ -81,15 +81,15 @@ logging.info('My app logs here.')
 
 A generált naplók lekérdezése:
  
-1. A Function alkalmazásban válassza a **diagnosztikai beállítások**lehetőséget. 
+1. A Function alkalmazásban válassza a **diagnosztikai beállítások** lehetőséget. 
 
 1. A **diagnosztikai beállítások** listából válassza ki azt a log Analytics munkaterületet, amelyet a függvény naplóinak küldéséhez konfigurált. 
 
-1. A **log Analytics munkaterület** lapon válassza a **naplók**lehetőséget.
+1. A **log Analytics munkaterület** lapon válassza a **naplók** lehetőséget.
 
-   Azure Functions az összes naplót a **FunctionAppLogs** táblába írja a **LogManagement**alatt. 
+   Azure Functions az összes naplót a **FunctionAppLogs** táblába írja a **LogManagement** alatt. 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Diagnosztikai beállítások kiválasztása":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Lekérdezési ablak Log Analytics munkaterületen":::
 
 Íme néhány példa a lekérdezésekre:
 
@@ -121,7 +121,7 @@ FunctionAppLogs
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a [Azure functions áttekintését](functions-overview.md).
 - További információ a [Azure monitor naplókról](../azure-monitor/platform/data-platform-logs.md).

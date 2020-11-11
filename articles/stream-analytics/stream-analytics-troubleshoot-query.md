@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: c2c199b2366f2708af19c1868cce09e0ba38fc96
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ef03560cff704255d2779a747d124e0b39a1c657
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130255"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491307"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics lekérdezések hibáinak megoldása
 
@@ -50,6 +50,8 @@ Ez a cikk a Azure Stream Analytics lekérdezések fejlesztésével, a lekérdez�
 ## <a name="resource-utilization-is-high"></a>Az erőforrás-használat magas
 
 Győződjön meg arról, hogy kihasználja Azure Stream Analytics párhuzamos előnyeit. Megtudhatja, hogyan méretezheti Stream Analytics feladatok [lekérdezési párhuzamos](stream-analytics-parallelization.md) a bemeneti partíciók konfigurálásával és az elemzési lekérdezés definíciójának finomhangolásával.
+
+Ha az Erőforrás kihasználtsága következetesen meghaladja a 80%-ot, a rendszer megnöveli a vízjel késleltetését, és a várakozó események száma nő, és a folyamatos átviteli egységeket is növelni kell. A magas kihasználtság azt jelzi, hogy a feladatoknak a maximálisan lefoglalt erőforrásokhoz való közelségét kell használnia.
 
 ## <a name="debug-queries-progressively"></a>Lekérdezések fokozatos hibakeresése
 
@@ -105,7 +107,7 @@ Ezúttal a kimenetben lévő adatok formázása és feltöltése a várt módon 
 
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

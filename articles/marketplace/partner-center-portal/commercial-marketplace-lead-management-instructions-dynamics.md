@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan állíthatja be a Dynamics 365-ügyfelek részv
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 54754f4c7753661b247f3f90942fb3074c34a38b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5d07dda82361ff59a43aa6753669bf38f4463059
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130612"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491137"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Az érdeklődők felügyeletének konfigurálása a Dynamics 365 Customer engagement szolgáltatáshoz
 
@@ -76,7 +76,7 @@ Azure Active Directory konfigurálása a Dynamics 365 Customer engagement szolg�
 
 1. Válassza a **Alkalmazásregisztrációk** lehetőséget a Azure Active Directory bal oldali ablaktáblán, majd válassza az **új regisztráció** lehetőséget az oldalon.
 1. Adjon meg egy értelmes nevet az alkalmazás neveként.
-1. A **támogatott fiókok típusai** területen válassza **a fiókok lehetőséget bármely szervezeti címtárban** .
+1. A **támogatott fiókok típusai** területen válassza **a fiókok lehetőséget bármely szervezeti címtárban**.
 1. Az **átirányítási URI (nem kötelező)** területen válassza a **web** lehetőséget, és adjon meg egy URI-t, például: `https://contosoapp1/auth` . 
 1. Válassza a **Regisztráció** lehetőséget.
 
@@ -94,7 +94,7 @@ Azure Active Directory konfigurálása a Dynamics 365 Customer engagement szolg�
 1. Válassza az **API-engedélyek** lehetőséget az alkalmazás bal oldali paneljén, majd válassza az **+ engedély hozzáadása** lehetőséget.
 1. Válassza a **Microsoft API** -k lehetőséget, majd válassza a **Dynamics CRM** lehetőséget API-ként.
 1. **Milyen típusú engedélyek szükségesek az alkalmazáshoz?** , győződjön meg arról, hogy a **delegált engedélyek** van kiválasztva. 
-1. Az **engedély** területen jelölje be a **user_impersonation** jelölőnégyzetet a **hozzáférés Common Data Service szervezeti felhasználóként** . Ezután válassza az **engedélyek hozzáadása** lehetőséget.
+1. Az **engedély** területen jelölje be a **user_impersonation** jelölőnégyzetet a **hozzáférés Common Data Service szervezeti felhasználóként**. Ezután válassza az **engedélyek hozzáadása** lehetőséget.
 
     ![Engedélyek hozzáadása gomb](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
@@ -192,7 +192,7 @@ Az ajánlathoz tartozó érdeklődő-felügyeleti információk konfigurálása 
     ![Office 365 Felhasználónév mező](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
 
 1. A **kapcsolattartási e-mail** cím mezőbe írja be az e-mail-címeket a vállalat azon tagjai számára, akik új érdeklődő fogadásakor e-mail-értesítéseket kapnak. A pontosvesszővel elválasztva több e-mail-címet is megadhat.
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

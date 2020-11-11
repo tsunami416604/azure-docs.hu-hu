@@ -15,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d476b1db645ed1f91b62fcf11464f7077a8fb3c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87077927"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491426"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification Hubs: gyakori kérdések
 
@@ -34,16 +34,16 @@ Az Azure Notification Hubs két erőforrás-szinttel rendelkezik: hubok és név
 
 A legfrissebb díjszabás a [Notification Hubs díjszabási] oldalán található. Notification Hubs számlázása a névtér szintjén történik. (Névtér definíciója: "mi az az erőforrás szerkezete Notification Hubs?") A Notification Hubs három szintet kínál:
 
-* **Ingyenes**: Ez a szinten jó kiindulási pont a leküldéses képességek feltárására. Éles alkalmazások esetében nem ajánlott. A 500-es és az 1 000 000-es leküldéses szolgáltatás havonta, a szolgáltatói szerződés (SLA) garanciája nélkül is elérhető.
-* **Alapszintű**: Ez a szint (vagy a standard szint) kisebb üzemi alkalmazások esetében ajánlott. Az 200 000-es és a 10 000 000-es leküldéses adategységek havonta, alapkonfigurációként jelennek meg.
-* **Standard**: Ez a szint közepes és nagy üzemi alkalmazások esetében ajánlott. Az 10 000 000-es és a 10 000 000-es leküldéses adategységek havonta, alapkonfigurációként jelennek meg. Gazdag telemetria tartalmaz (a leküldéses állapottal kapcsolatos további információkat).
+* **Ingyenes** : Ez a szinten jó kiindulási pont a leküldéses képességek feltárására. Éles alkalmazások esetében nem ajánlott. A 500-es és az 1 000 000-es leküldéses szolgáltatás havonta, a szolgáltatói szerződés (SLA) garanciája nélkül is elérhető.
+* **Alapszintű** : Ez a szint (vagy a standard szint) kisebb üzemi alkalmazások esetében ajánlott. Az 200 000-es és a 10 000 000-es leküldéses adategységek havonta, alapkonfigurációként jelennek meg.
+* **Standard** : Ez a szint közepes és nagy üzemi alkalmazások esetében ajánlott. Az 10 000 000-es és a 10 000 000-es leküldéses adategységek havonta, alapkonfigurációként jelennek meg. Gazdag telemetria tartalmaz (a leküldéses állapottal kapcsolatos további információkat).
 
 Standard szintű funkciók:
 
-* **Rich telemetria**: a leküldéses kérelmek nyomon követéséhez és a hibakereséshez platform Notification System visszajelzések Notification Hubséhez használhatja az telemetria-t.
-* **Több-bérlős**: platform Notification System hitelesítő adatokkal használható a névtér szintjén. Ez a beállítás lehetővé teszi, hogy könnyedén Ossza szét a bérlőket ugyanazon a névtéren belüli hubokba.
-* **Ütemezett**leküldés: az értesítések bármikor ütemezhetők.
-* **Tömeges műveletek**: engedélyezi a regisztrációk exportálási/importálási funkcióit a [regisztrációk exportálási/importálási] dokumentumában leírtak szerint.
+* **Rich telemetria** : a leküldéses kérelmek nyomon követéséhez és a hibakereséshez platform Notification System visszajelzések Notification Hubséhez használhatja az telemetria-t.
+* **Több-bérlős** : platform Notification System hitelesítő adatokkal használható a névtér szintjén. Ez a beállítás lehetővé teszi, hogy könnyedén Ossza szét a bérlőket ugyanazon a névtéren belüli hubokba.
+* **Ütemezett** leküldés: az értesítések bármikor ütemezhetők.
+* **Tömeges műveletek** : engedélyezi a regisztrációk exportálási/importálási funkcióit a [regisztrációk exportálási/importálási] dokumentumában leírtak szerint.
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Mi a Notification Hubs SLA?
 
@@ -159,15 +159,12 @@ A metaadatokon alapuló vész-helyreállítási lefedettséget biztosítunk a v�
 
 1. Másodlagos értesítési központ létrehozása egy másik adatközpontban. Azt javasoljuk, hogy hozzon létre egyet az elejétől kezdve, és megvédje Önt olyan vész-helyreállítási eseménytől, amely hatással lehet a felügyeleti képességeire. A vész-helyreállítási esemény időpontjában is létrehozhat egyet.
 
-2. Töltse fel a másodlagos értesítési központot az elsődleges értesítési központ regisztrációs adataival. Nem javasoljuk, hogy a regisztrációkat mindkét hubokon megőrizze, és szinkronizálja őket a regisztráció során. Ez a gyakorlat nem működik jól, mert a regisztrációk eleve a PNS oldalán lejárnak. Notification Hubs törli őket, mivel a lejárt vagy érvénytelen regisztrációkkal kapcsolatos PNS-visszajelzést kap.  
+2. Tartsa a másodlagos értesítési központot szinkronban az elsődleges értesítési központtal az alábbi lehetőségek egyikével:
 
-Az alkalmazás-háttérrendszer két javaslattal rendelkezik:
+   * Használjon olyan alkalmazás-hátteret, amely egyszerre hozza létre és frissíti a telepítéseket mindkét értesítési központban. A telepítések lehetővé teszik saját egyedi eszköz azonosítójának megadását, ami a replikálási forgatókönyvhöz alkalmasabb. További információ: Ez a [mintakód](https://github.com/Azure/azure-notificationhubs-dotnet/tree/main/Samples/RedundantHubSample).
+   * Használjon olyan alkalmazás-hátteret, amely az elsődleges értesítési központban található regisztrációk rendszeres memóriaképét biztonsági másolatként kéri le. Ezt követően tömeges beszúrást végezhet a másodlagos értesítési központban.
 
-* Használjon egy alkalmazás-hátteret, amely egy adott regisztrációt tart fenn a végén. Ezt követően tömeges beszúrást végezhet a másodlagos értesítési központban.
-* Használjon olyan alkalmazás-hátteret, amely az elsődleges értesítési központban található regisztrációk rendszeres memóriaképét biztonsági másolatként kéri le. Ezt követően tömeges beszúrást végezhet a másodlagos értesítési központban.
-
-> [!NOTE]
-> A standard szinten elérhető regisztrációk exportálási/importálási funkcióit a [regisztrációk exportálási/importálási] dokumentuma tárgyalja.
+A másodlagos értesítési központ lejárt telepítésekkel/regisztrációkkal végződhet. Ha a leküldés egy lejárt leíróra történik, Notification Hubs automatikusan törli a társított telepítési/regisztrációs rekordot a PNS-kiszolgálótól kapott válasz alapján. Ha törölni szeretné a lejárt rekordokat egy másodlagos értesítési központból, adjon hozzá egyéni logikát, amely az egyes küldések visszajelzéseit dolgozza fel. Ezután lejár a telepítés/regisztráció a másodlagos értesítési központban.
 
 Ha nem rendelkezik háttérrel, az alkalmazás a céleszköz indításakor új regisztrációt hajt végre a másodlagos értesítési központban. Végül a másodlagos értesítési központ minden aktív eszközön regisztrálva lesz.
 
@@ -191,11 +188,11 @@ Az Azure Notification Hubs számos funkciót kínál a hibaelhárításhoz, kül
 
 Az Azure Notification Hubs lehetővé teszi a [Azure Portal]telemetria-beli megtekintését. A metrikák részletei a [Notification Hubs metrikák] lapon érhetők el.
 
-Programozott módon is elérheti a metrikákat. További információkért tekintse át a következő cikkeket:
+Programozott módon is elérheti a metrikákat. További információkat az következő cikkekben talál:
 
 - [Azure monitor mérőszámok beolvasása a .net](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)-tel. Ez a példa a felhasználónevet és a jelszót használja. Ha tanúsítványt szeretne használni, a FromServicePrincipal metódust a [jelen példában](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)látható módon kell megadnia a tanúsítvány megadásához. 
 - [Erőforrások metrikáinak és tevékenységi naplóinak beolvasása](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
-- [Azure monitoring REST API útmutató](../azure-monitor/platform/rest-api-walkthrough.md)
+- [Útmutató az Azure Monitor REST API-hoz](../azure-monitor/platform/rest-api-walkthrough.md)
 
 > [!NOTE]
 > A sikeres értesítések egyszerűen leküldéses értesítéseket küldenek a külső PNS (például iOS-re, macOS-re vagy FCM-re Android-eszközök esetén). A PNS feladata az értesítések továbbítása az eszközök számára. A PNS jellemzően nem tesznek elérhetővé kézbesítési metrikákat harmadik félnek.  

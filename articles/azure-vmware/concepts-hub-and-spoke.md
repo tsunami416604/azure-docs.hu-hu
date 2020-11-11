@@ -3,12 +3,12 @@ title: Koncepció – Azure VMware-megoldás üzembe helyezésének integrálás
 description: Ismerje meg, hogyan integrálhat egy Azure-beli VMware-megoldás üzembe helyezését az Azure-ban a sugaras architektúrával.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 93c11ad9253fe78e1935da7b40e7251788f1f037
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0895e9c97f79e433b0383f0a99fbeeb124fd9064
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674679"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490814"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-megoldás integrálása egy sugaras architektúrával
 
@@ -36,30 +36,29 @@ Az ábrán egy példa látható az Azure-ban a helyszíni és az Azure VMware-me
 
 Az architektúra a következő fő összetevőkből áll:
 
--   Helyszíni **hely:** A helyszíni adatközpont (ok) ExpressRoute-kapcsolaton keresztül csatlakozik az Azure-hoz.
+- Helyszíni **hely:** A helyszíni adatközpont (ok) ExpressRoute-kapcsolaton keresztül csatlakozik az Azure-hoz.
 
--   **Azure VMware-megoldás saját felhő:** Az Azure VMware-megoldás SDDC egy vagy több vSphere-fürt alkotja, amelyek mindegyike legfeljebb 16 csomóponttal rendelkezik.
+- **Azure VMware-megoldás saját felhő:** Az Azure VMware-megoldás SDDC egy vagy több vSphere-fürt alkotja, amelyek mindegyike legfeljebb 16 csomóponttal rendelkezik.
 
--   **ExpressRoute-átjáró:** Lehetővé teszi a kommunikációt az Azure VMware-megoldás saját felhője, a hub virtuális hálózat megosztott szolgáltatásai és a küllős virtuális hálózatokon futó munkaterhelések között.
+- **ExpressRoute-átjáró:** Lehetővé teszi a kommunikációt az Azure VMware-megoldás saját felhője, a hub virtuális hálózat megosztott szolgáltatásai és a küllős virtuális hálózatokon futó munkaterhelések között.
 
--   **ExpressRoute Global REACH:** Engedélyezi a kapcsolatot a helyszíni és az Azure VMware megoldás saját felhője között.
-
-
-  > [!NOTE]
-  > **S2S VPN-megfontolások:** Az Azure VMware megoldás éles környezetekben való üzembe helyezése esetén az Azure S2S VPN a VMware HCX hálózati követelményei miatt nem támogatott. Egy PoC-telepítéshez azonban használhatja.
+- **ExpressRoute Global REACH:** Engedélyezi a kapcsolatot a helyszíni és az Azure VMware megoldás saját felhője között. Az Azure VMware-megoldás és az Azure-háló közötti kapcsolat csak a ExpressRoute Global Reachon keresztül érhető el. Nem választhat olyan lehetőséget, amely túllépi a ExpressRoute gyors elérési útját.  A ExpressRoute Direct nem támogatott.
 
 
--   **Hub virtuális hálózata:** Központi kapcsolódási pontként működik a helyszíni hálózat és az Azure VMware-megoldás privát felhője számára.
+- **S2S VPN-megfontolások:** Az Azure VMware megoldás éles környezetekben való üzembe helyezése esetén az Azure S2S VPN a VMware HCX hálózati követelményei miatt nem támogatott. Egy PoC-telepítéshez azonban használhatja.
 
--   **Küllős virtuális hálózat**
 
-    -   **IaaS küllő:** Egy IaaS az Azure IaaS-alapú számítási feladatait üzemelteti, beleértve a virtuális gépek rendelkezésre állási készleteit és a virtuálisgép-méretezési csoportokat, valamint a megfelelő hálózati összetevőket.
+- **Hub virtuális hálózata:** Központi kapcsolódási pontként működik a helyszíni hálózat és az Azure VMware-megoldás privát felhője számára.
 
-    -   **Péter küllő:** A Péter beszélt a privát [végpontok](../private-link/private-endpoint-overview.md) és a [privát kapcsolatok](../private-link/private-link-overview.md)révén a magánjellegű címzést használó Azure Pásti-szolgáltatásokat.
+- **Küllős virtuális hálózat**
 
--   **Azure Firewall:** Központi darabként működik a küllők és az Azure VMware-megoldás közötti forgalom szegmentálásához.
+    - **IaaS küllő:** Egy IaaS az Azure IaaS-alapú számítási feladatait üzemelteti, beleértve a virtuális gépek rendelkezésre állási készleteit és a virtuálisgép-méretezési csoportokat, valamint a megfelelő hálózati összetevőket.
 
--   **Application Gateway:** Az Azure IaaS/Pásti vagy az Azure VMware megoldású virtuális gépeken futó webalkalmazások közzététele és védelme. Integrálható más szolgáltatásokkal, például API Managementokkal.
+    - **Péter küllő:** A Péter beszélt a privát [végpontok](../private-link/private-endpoint-overview.md) és a [privát kapcsolatok](../private-link/private-link-overview.md)révén a magánjellegű címzést használó Azure Pásti-szolgáltatásokat.
+
+- **Azure Firewall:** Központi darabként működik a küllők és az Azure VMware-megoldás közötti forgalom szegmentálásához.
+
+- **Application Gateway:** Az Azure IaaS/Pásti vagy az Azure VMware megoldású virtuális gépeken futó webalkalmazások közzététele és védelme. Integrálható más szolgáltatásokkal, például API Managementokkal.
 
 ## <a name="network-and-security-considerations"></a>Hálózati és biztonsági megfontolások
 
@@ -69,12 +68,12 @@ Mivel az ExpressRoute-átjáró nem biztosít tranzitív útválasztást a csatl
 
 * **Helyszíni Azure-beli VMware-megoldás forgalmának folyamata**
 
-  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Helyszíni Azure-beli VMware-megoldás forgalmának folyamata" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
 
 
 * **Azure VMware-megoldás a VNET hub-forgalomhoz**
 
-  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware-megoldás a hub virtuális hálózati forgalmához" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
 Az Azure VMware megoldás hálózatkezelésével és a kapcsolati fogalmakkal kapcsolatos további részleteket az [Azure VMware megoldás termékdokumentációjában](./concepts-networking.md)talál.
@@ -85,7 +84,7 @@ Az Azure VMware megoldás hálózatkezelésével és a kapcsolati fogalmakkal ka
 
 Hozzon létre útválasztási táblákat a Azure Firewall felé irányuló forgalom irányításához.  A küllős virtuális hálózatok esetében hozzon létre egy útvonalat, amely a Azure Firewall belső felületének alapértelmezett útvonalát állítja be. Így amikor a Virtual Network munkaterhelésének el kell érnie az Azure VMware-megoldás címtartomány elérését, a tűzfal kiértékelheti azt, és alkalmazhatja a megfelelő forgalmi szabályt, hogy az engedélyezze vagy megtagadja.  
 
-:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
+:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Útválasztási táblázatok létrehozása a Azure Firewallhoz való közvetlen forgalomhoz" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
 
 
 > [!IMPORTANT]
@@ -93,7 +92,7 @@ Hozzon létre útválasztási táblákat a Azure Firewall felé irányuló forga
 
 Adja meg a megfelelő útválasztási táblázatban megadott hálózatok útvonalait. Például az Azure VMware-megoldás felügyeletéhez és a kihelyezett számítási feladatokhoz tartozó IP-előtagokhoz, valamint a körülötte lévő egyéb módszerekhez tartozó útvonalakat is elérheti.
 
-:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
+:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Adott hálózatok útvonalának beállítása a megfelelő útválasztási táblázatban" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
 
 Egy második szintű forgalmi szegmentálás a küllők és a hub hálózati biztonsági csoportjaival, hogy egy részletesebb forgalmi szabályzatot hozzon létre.
 
@@ -106,7 +105,7 @@ Az Azure Application Gateway v1-es és v2-es verziója olyan webalkalmazásokkal
 
 A részletekért és a követelményekért tekintse át [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md) Azure VMware-megoldásra vonatkozó cikket.
 
-:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false":::
+:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="A forgalom szegmentálásának második szintje a hálózati biztonsági csoportok használatával" border="false":::
 
 
 ### <a name="jump-box-and-azure-bastion"></a>Jump Box és az Azure Bastion
@@ -122,7 +121,7 @@ Ajánlott biztonsági eljárásként a központi virtuális hálózaton belül �
 > Ne adjon meg nyilvános IP-címet a Jump Box virtuális géphez, vagy tegye elérhetővé a 3389/TCP portot a nyilvános internethez. 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure Bastion hub virtuális hálózat" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Azure DNS megoldási megfontolások
@@ -139,11 +138,7 @@ A legjobb megoldás, ha az Azure VMware-megoldás, a helyszíni környezet és a
 
 Használhatja az Azure saját DNSt, ahol az Azure saját DNS-zóna a virtuális hálózatra mutat.  A DNS-kiszolgálók hibrid feloldóként használhatók feltételes továbbítással a helyszíni vagy az Azure VMware-megoldáshoz, amely az Azure saját DNS-infrastruktúrát használó DNS-t használja. 
 
-Több szempontot figyelembe kell venni a Azure DNS privát zónák esetében:
-
-* Az automatikus regisztrációt engedélyezni kell a Azure DNS számára, hogy automatikusan kezelhesse a DNS-rekordok életciklusát a küllős virtuális hálózatokon belül üzembe helyezett virtuális gépeknél.
-* Az automatikus regisztrációval rendelkező virtuális hálózatok maximális száma csak egy lehet.
-* Azon magánhálózati DNS-zónák maximális száma, amelyekhez a virtuális hálózat 1000, az automatikus regisztráció engedélyezése nélkül lehet kapcsolni.
+Ha automatikusan szeretné kezelni a DNS-rekordok életciklusát a küllős virtuális hálózatokon belül üzembe helyezett virtuális gépek esetében, engedélyezze az automatikus regisztrációt. Ha engedélyezve van, a magánhálózati DNS-zónák maximális száma csak egy. Ha le van tiltva, a maximális szám 1000.
 
 A helyszíni és az Azure VMware megoldás-kiszolgálókat feltételes továbbítókkal lehet konfigurálni az Azure-beli feloldó virtuális gépekhez az Azure saját DNS zónában.
 

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 551f0065f1547e94d93993a38795234f455b9eef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b20391c4d856a5c52b6017ae892ec0b86873dbca
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044396"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491885"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Stream Analytics hitelesítése Azure Data Lake Storage Gen1 felügyelt identitások használatával
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitást e
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Első lépésként hozzon létre egy új Stream Analytics feladatot, vagy nyisson meg egy meglévő feladatot a Azure Portalban. A képernyő bal oldalán található menüsávban válassza a **configure (Konfigurálás**) alatt található **felügyelt identitás** elemet.
+1. Első lépésként hozzon létre egy új Stream Analytics feladatot, vagy nyisson meg egy meglévő feladatot a Azure Portalban. A képernyő bal oldalán található menüsávban válassza a **configure (Konfigurálás** ) alatt található **felügyelt identitás** elemet.
 
    ![Stream Analytics felügyelt identitás konfigurálása](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitást e
 
    ![Stream Analytics egyszerű szolgáltatás azonosítója](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
  
-   Az egyszerű szolgáltatásnév neve megegyezik a Stream Analytics feladatokkal. Ha például a feladatainak neve **MyASAJob**, a létrehozott egyszerű szolgáltatásnév neve is **MyASAJob**.
+   Az egyszerű szolgáltatásnév neve megegyezik a Stream Analytics feladatokkal. Ha például a feladatainak neve **MyASAJob** , a létrehozott egyszerű szolgáltatásnév neve is **MyASAJob**.
 
 3. A ADLS Gen1 kimeneti fogadó kimeneti tulajdonságok ablakában kattintson a hitelesítési mód legördülő menüre, és válassza a * * felügyelt identitás * * elemet.
 
@@ -50,7 +50,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitást e
 
    ![Data Lake Storage hozzáférés konfigurálása](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-access.png)
 
-7. A **felhasználó vagy csoport kiválasztása** ablaktáblán a szövegmezőbe írja be az egyszerű szolgáltatásnév nevét. Ne feledje, hogy az egyszerű szolgáltatásnév neve szintén a megfelelő Stream Analytics feladatoknak a neve. Ahogy elkezdi a egyszerű név beírását, az a szövegmező alatt fog megjelenni. Válassza ki a kívánt egyszerű szolgáltatásnév nevét, és kattintson a **kiválasztás**elemre.
+7. A **felhasználó vagy csoport kiválasztása** ablaktáblán a szövegmezőbe írja be az egyszerű szolgáltatásnév nevét. Ne feledje, hogy az egyszerű szolgáltatásnév neve szintén a megfelelő Stream Analytics feladatoknak a neve. Ahogy elkezdi a egyszerű név beírását, az a szövegmező alatt fog megjelenni. Válassza ki a kívánt egyszerű szolgáltatásnév nevét, és kattintson a **kiválasztás** elemre.
 
    ![Egyszerű szolgáltatásnév kiválasztása](./media/stream-analytics-managed-identities-adls/stream-analytics-service-principal-name.png)
  
@@ -66,7 +66,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitást e
 
 ## <a name="stream-analytics-tools-for-visual-studio"></a>A Visual studióhoz készült Stream Analytics eszközök
 
-1. JobConfig.jsbekapcsolva beállításnál állítsa a **rendszer által hozzárendelt identitás használata** **igaz**értékre.
+1. JobConfig.jsbekapcsolva beállításnál állítsa a **rendszer által hozzárendelt identitás használata** **igaz** értékre.
 
    ![Stream Analytics feladatok konfigurációjának felügyelt identitások](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
@@ -74,7 +74,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitást e
 
    ![ADLS kimeneti felügyelt identitások](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 
-3. Töltse ki a többi tulajdonságot, és kattintson a **Mentés**gombra.
+3. Töltse ki a többi tulajdonságot, és kattintson a **Mentés** gombra.
 
 4. Kattintson a **Küldés az Azure** -ba lehetőségre a lekérdezés-szerkesztőben.
 
@@ -175,12 +175,16 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitást e
 
    A fenti PowerShell-paranccsal kapcsolatos további tudnivalókért tekintse meg a [set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) dokumentációt.
 
+## <a name="remove-managed-identity"></a>Felügyelt identitás eltávolítása
+
+A Stream Analytics feladatokhoz létrehozott felügyelt identitást csak akkor törli a rendszer, ha a feladatot törlik. A felügyelt identitást nem lehet törölni a feladatok törlése nélkül. Ha már nem szeretné használni a felügyelt identitást, módosíthatja a kimenet hitelesítési módszerét. A felügyelt identitás továbbra is érvényben marad, amíg el nem törli a feladatot, és a rendszer akkor fogja használni, ha a felügyelt identitások hitelesítését újra használta.
+
 ## <a name="limitations"></a>Korlátozások
 Ez a funkció nem támogatja a következőket:
 
-1. **Több-bérlős hozzáférés**: az adott stream Analytics feladathoz létrehozott egyszerű szolgáltatásnév azon a Azure Active Directory-bérlőn található, amelyen a feladatot létrehozták, és nem használható olyan erőforráson, amely egy másik Azure Active Directory bérlőn található. Ezért csak az MSI-t használhatja a ADLS 1. generációs erőforrásokhoz, amelyek ugyanabban a Azure Active Directory-bérlőn belül vannak, mint a Azure Stream Analytics feladatokkal. 
+1. **Több-bérlős hozzáférés** : az adott stream Analytics feladathoz létrehozott egyszerű szolgáltatásnév azon a Azure Active Directory-bérlőn található, amelyen a feladatot létrehozták, és nem használható olyan erőforráson, amely egy másik Azure Active Directory bérlőn található. Ezért csak az MSI-t használhatja a ADLS 1. generációs erőforrásokhoz, amelyek ugyanabban a Azure Active Directory-bérlőn belül vannak, mint a Azure Stream Analytics feladatokkal. 
 
-2. **[Felhasználóhoz rendelt identitás](../active-directory/managed-identities-azure-resources/overview.md)**: nem támogatott. Ez azt jelenti, hogy a felhasználó nem tudja megadni a saját egyszerű szolgáltatásnevet, amelyet a Stream Analytics feladataihoz használhatnak. Az egyszerű szolgáltatásnevet a Azure Stream Analytics hozza létre.
+2. **[Felhasználóhoz rendelt identitás](../active-directory/managed-identities-azure-resources/overview.md)** : nem támogatott. Ez azt jelenti, hogy a felhasználó nem tudja megadni a saját egyszerű szolgáltatásnevet, amelyet a Stream Analytics feladataihoz használhatnak. Az egyszerű szolgáltatásnevet a Azure Stream Analytics hozza létre.
 
 ## <a name="next-steps"></a>További lépések
 

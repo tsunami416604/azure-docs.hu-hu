@@ -3,12 +3,12 @@ title: Esemény-kézbesítés, felügyelt szolgáltatás identitása és privát
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a felügyelt szolgáltatás identitása egy Azure Event Grid-témakörben. Használatával továbbíthatja az eseményeket a támogatott célhelyekre.
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 434a2e36ead0d210b7edf64d104243f6643ac019
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d16310ac61121af0cc9d76664bfeeeb14e1bc243
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460920"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491715"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Esemény kézbesítése felügyelt identitással
 Ez a cikk azt ismerteti, hogyan engedélyezhető a [felügyelt szolgáltatás identitása](../active-directory/managed-identities-azure-resources/overview.md) az Azure Event Grid-témakörökhöz vagy-tartományokhoz. Használatával továbbíthatja az eseményeket olyan támogatott célhelyekre, mint a Service Bus várólisták és témakörök, az Event hubok és a Storage-fiókok.
@@ -29,7 +29,7 @@ Egy témakörhöz vagy tartományhoz is engedélyezheti a rendszerhez rendelt id
 
 ![Identitás engedélyezése témakör létrehozásakor](./media/managed-service-identity/create-topic-identity.png)
 
-### <a name="use-the-azure-cli"></a>Az Azure CLI használata
+### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 Az Azure CLI-vel olyan témakört vagy tartományt is létrehozhat, amely rendszerhez rendelt identitással rendelkezik. Használja a parancsot a következőhöz `az eventgrid topic create` `--identity` beállított paraméterrel: `systemassigned` . Ha nem ad meg értéket ehhez a paraméterhez, a rendszer az alapértelmezett értéket `noidentity` használja. 
 
 ```azurecli-interactive
@@ -56,7 +56,7 @@ A következő eljárás bemutatja, hogyan engedélyezheti a rendszer által fel�
 
 Az Event Grid-tartomány identitásának engedélyezéséhez hasonló lépések használhatók.
 
-### <a name="use-the-azure-cli"></a>Az Azure CLI használata
+### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 Használja a parancsot a következőre `az eventgrid topic update` `--identity` : beállítással `systemassigned` engedélyezheti a rendszerhez rendelt identitást egy meglévő témakörhöz. Ha le szeretné tiltani az identitást, állítsa be `noidentity` értékként. 
 
 ```azurecli-interactive
@@ -96,7 +96,7 @@ Az alábbi példa egy **msitesttopic** nevű Event Grid-témakörhöz tartozó f
 
 A lépések hasonlóak az identitásnak a táblázatban említett más szerepkörökhöz való hozzáadásához. 
 
-### <a name="use-the-azure-cli"></a>Az Azure CLI használata
+### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 Az ebben a szakaszban szereplő példa bemutatja, hogyan adhat identitást Azure-szerepkörhöz az Azure CLI használatával. A mintául szolgáló parancsok az Event Grid-témakörökre vonatkoznak. Az Event Grid-tartományok parancsai hasonlóak. 
 
 #### <a name="get-the-principal-id-for-the-topics-system-identity"></a>A témakör rendszeridentitásának elsődleges AZONOSÍTÓjának beolvasása 
@@ -166,7 +166,7 @@ sb_esname = "<Specify a name for the event subscription>"
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>Esemény-előfizetés létrehozása felügyelt identitás használatával kézbesítéshez 
-Ez a minta egy Event Grid-témakörhöz hoz létre egy esemény-előfizetést, amelyhez **Service Bus üzenetsor**van beállítva. 
+Ez a minta egy Event Grid-témakörhöz hoz létre egy esemény-előfizetést, amelyhez **Service Bus üzenetsor** van beállítva. 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -178,7 +178,7 @@ az eventgrid event-subscription create
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery-and-dead-lettering"></a>Esemény-előfizetés létrehozása felügyelt identitás használatával kézbesítéshez és kézbesítetlen levelekhez
-Ez a minta egy Event Grid-témakörhöz hoz létre egy esemény-előfizetést, amelyhez **Service Bus üzenetsor**van beállítva. Azt is megadja, hogy a rendszer által felügyelt identitást kell használni a kézbesítetlen levelekhez. 
+Ez a minta egy Event Grid-témakörhöz hoz létre egy esemény-előfizetést, amelyhez **Service Bus üzenetsor** van beállítva. Azt is megadja, hogy a rendszer által felügyelt identitást kell használni a kézbesítetlen levelekhez. 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -208,7 +208,7 @@ eh_esname = "<SPECIFY EVENT SUBSCRIPTION NAME>"
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>Esemény-előfizetés létrehozása felügyelt identitás használatával kézbesítéshez 
-Ez a minta parancs egy Event Grid-témakörhöz hoz létre egy esemény-előfizetést, amely **Event Hubs**értékre van beállítva. 
+Ez a minta parancs egy Event Grid-témakörhöz hoz létre egy esemény-előfizetést, amely **Event Hubs** értékre van beállítva. 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -220,7 +220,7 @@ az eventgrid event-subscription create
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery--deadletter"></a>Esemény-előfizetés létrehozása felügyelt identitás használatával a kézbesítéshez és a kézbesítetlen levelek 
-Ez a minta parancs egy Event Grid-témakörhöz hoz létre egy esemény-előfizetést, amely **Event Hubs**értékre van beállítva. Azt is megadja, hogy a rendszer által felügyelt identitást kell használni a kézbesítetlen levelekhez. 
+Ez a minta parancs egy Event Grid-témakörhöz hoz létre egy esemény-előfizetést, amely **Event Hubs** értékre van beállítva. Azt is megadja, hogy a rendszer által felügyelt identitást kell használni a kézbesítetlen levelekhez. 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -285,7 +285,7 @@ az eventgrid event-subscription create
 ## <a name="private-endpoints"></a>Privát végpontok
 Jelenleg nem lehet eseményeket kézbesíteni [privát végpontok](../private-link/private-endpoint-overview.md)használatával. Ez azt eredményezi, hogy nincs támogatás, ha szigorú hálózati elkülönítési követelmények vannak, amelyekben a továbbított események forgalma nem hagyhatja el a magánhálózati IP-területet. 
 
-Ha azonban a követelmények biztonságos módon küldik el az eseményeket egy titkosított csatornán keresztül, és a küldő (ebben az esetben Event Grid) nyilvános IP-cím használatával történő küldésének egy ismert identitását, akkor az eseményeket az Azure Event Grid-témakörben vagy egy, a rendszer által felügyelt identitással konfigurált tartományon keresztül teheti meg Event Hubs, Service Bus vagy Azure Storage szolgáltatásnak. Ezt követően használhat egy Azure Functions vagy a virtuális hálózaton üzembe helyezett webhookot az események lekéréséhez. Lásd a következő mintát: [Kapcsolódás privát végpontokhoz Azure functions.](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/)
+Ha azonban a követelmények biztonságos módon küldik el az eseményeket egy titkosított csatornán keresztül, és a küldő (ebben az esetben Event Grid) nyilvános IP-cím használatával történő küldésének egy ismert identitását, akkor az eseményeket az Azure Event Grid-témakörben vagy egy, a rendszer által felügyelt identitással konfigurált tartományon keresztül teheti meg Event Hubs, Service Bus vagy Azure Storage szolgáltatásnak. Ezt követően használhat egy Azure Functions vagy a virtuális hálózaton üzembe helyezett webhookot az események lekéréséhez. Lásd a következő mintát: [Kapcsolódás privát végpontokhoz Azure functions használatával](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/).
 
 Vegye figyelembe, hogy ebben a konfigurációban a forgalom a nyilvános IP-cím/Internet Event Grid Event Hubs, Service Bus vagy az Azure Storage szolgáltatásba kerül át, de a csatorna titkosítható, és Event Grid felügyelt identitása is használatos. Ha a virtuális hálózatra telepített Azure Functions vagy webhookot úgy konfigurálja, hogy Event Hubs, Service Bus vagy Azure Storage-t használ privát kapcsolaton keresztül, akkor a forgalom ezen szakasza nyilvánvalóan az Azure-ban marad.
 

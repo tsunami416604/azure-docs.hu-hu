@@ -3,12 +3,12 @@ title: Azure Functions biztonságossá tétele
 description: Ismerje meg, hogyan teheti meg az Azure-ban futó funkció kódját az általános támadásokkal szemben.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: cd97193fdf6549e667578e36f0be9104e4381d30
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102306"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491324"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions biztonságossá tétele
 
@@ -28,7 +28,7 @@ A Security Center a portálon integrálható a Function alkalmazással. A szolg�
 
 ### <a name="log-and-monitor"></a>Naplózás és monitorozás
 
-Az egyik a támadások észlelése tevékenység-figyelési tevékenység és a naplózási elemzés. A függvények integrálva vannak a Application Insights a Function alkalmazás napló-, teljesítmény-és hibajelentési adatainak gyűjtésére. Application Insights automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítenek a problémák diagnosztizálásában és a függvények használatának megismerésében. További információért lásd: [Azure functions figyelése](functions-monitoring.md).
+A támadások észlelésének egyik módja a tevékenység-figyelési tevékenység és a naplózási elemzés. A függvények integrálva vannak a Application Insights a Function alkalmazás napló-, teljesítmény-és hibajelentési adatainak gyűjtésére. Application Insights automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítenek a problémák diagnosztizálásában és a függvények használatának megismerésében. További információért lásd: [Azure functions figyelése](functions-monitoring.md).
 
 A functions a Azure Monitor-naplók integrálásával is lehetővé teszi, hogy a rendszer eseményeivel összevonja a Function app-naplókat a könnyebb elemzés érdekében. A diagnosztikai beállításokkal konfigurálhatja a függvények és mérőszámok adatfolyamként történő exportálását az Ön által választott célra, például egy naplók Analytics-munkaterületre. További információ: [Azure functions figyelése Azure monitor naplókkal](functions-monitor-log-analytics.md). 
 

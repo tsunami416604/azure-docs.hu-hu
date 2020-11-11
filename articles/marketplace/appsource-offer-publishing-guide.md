@@ -4,27 +4,27 @@ description: Részletes útmutató és közzétételi ellenőrzőlista az alkalm
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 68b11c672d362e7af7dfc01e2679d035d9e1e4c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b500a87613dee094c63e71fc76fb751d72aa049
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484816"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491154"
 ---
 # <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>A Microsoft 365, a Dynamics 365, a Power apps és a Power BI közzétételi útmutatója
 
 A Microsoft AppSource olyan ajánlatokat tartalmaz, amelyek Microsoft 365, Dynamics 365, Power apps és Power BI-ra épülő vagy azokon kiterjeszthető. Ezen termékek mindegyike rendelkezik egy adott dokumentációval, amely végigvezeti Önt a közzétételi folyamaton. 
 
-A AppSource fizetős, listázási és próbaverziós ajánlatokat tartalmaz, és a listázási *lehetőséggel azonnal* *kapcsolatba léphet velem*, és *kipróbálhatja*.
+A AppSource fizetős, listázási és próbaverziós ajánlatokat tartalmaz, és a listázási *lehetőséggel azonnal* *kapcsolatba léphet velem* , és *kipróbálhatja*.
 
 ## <a name="product-specific-guides"></a>Termékspecifikus útmutatók
 
 Az egyes ajánlati típusokhoz kapcsolódó folyamatok és irányelvek közzétételére mutató hivatkozásokat az alábbi táblázat tartalmazza:
 
-| Product    | Közzétételi útmutató  |
+| Termék    | Közzétételi útmutató  |
 | :------------------- | :-------------------|
 | Microsoft 365 | Tekintse át a [közzétételi folyamatot és az irányelveket](/office/dev/store/submit-to-appsource-via-partner-center). |
 | Dynamics 365 Business Central | Ha közzé szeretne tenni egy ajánlatot a partner Centerben, tekintse meg az [új Dynamics 365 Business Central-ajánlat létrehozását](./partner-center-portal/create-new-business-central-offer.md)ismertető témakört. |
@@ -35,7 +35,7 @@ Az egyes ajánlati típusokhoz kapcsolódó folyamatok és irányelvek közzét�
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

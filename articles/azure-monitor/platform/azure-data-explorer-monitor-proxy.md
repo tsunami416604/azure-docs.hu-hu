@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8a503a5456fc28bd1b3ebb69c784fc59b3c6e7df
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9b434c426264fcfee0dfe663a7d1b21a354badec
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049853"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491256"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Monitor lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
 Az Azure Adatkezelő proxy-fürt lehetővé teszi, hogy az Azure Adatkezelő, a Log Analytics munkaterületek és a klasszikus Application Insights alkalmazások között több lekérdezést végezzen Azure Monitor. Log Analytics-munkaterületeket Azure Monitor vagy klasszikus Application Insights alkalmazásokban proxy fürtökként is leképezheti. Ezután lekérdezheti a proxykiszolgálót az Azure Adatkezelő eszközeivel, és megtekintheti azt egy több fürtből álló lekérdezésben. A cikk bemutatja, hogyan csatlakozhat egy proxy fürthöz, hogyan adhat hozzá proxykiszolgálót az Azure Adatkezelő webes felhasználói felületéhez, és hogyan futtathat lekérdezéseket Log Analytics-munkaterületeken vagy az Azure Adatkezelő klasszikus Application Insights alkalmazásain.
@@ -28,7 +28,7 @@ Az alábbi ábra az Azure Adatkezelő proxy folyamatát mutatja be:
 ## <a name="connect-to-the-proxy"></a>Csatlakozás a proxyhoz
 A Log Analytics-munkaterület vagy a klasszikus Application Insights alkalmazás összekapcsolásához nyissa meg az[Azure adatkezelő webes felhasználói felületét](https://dataexplorer.azure.com/clusters). Ellenőrizze, hogy az Azure Adatkezelő natív fürtje (például a *Súgó* fürt) megjelenik-e a bal oldali menüben, mielőtt a Log Analytics vagy Application Insights fürthöz csatlakozna.
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-data-explorer-web-ui-help-cluster.png" alt-text="Az Azure adatkezelő proxy folyamata.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-data-explorer-web-ui-help-cluster.png" alt-text="Azure Adatkezelő natív fürt.":::
 
 Kattintson a **fürt hozzáadása** lehetőségre, majd adja hozzá a Log Analytics vagy Application Insights-fürt URL-címét az alábbi formátumok egyikében. 
     
@@ -37,14 +37,14 @@ Kattintson a **fürt hozzáadása** lehetőségre, majd adja hozzá a Log Analyt
 
 A kapcsolatok létrehozásához kattintson a **Hozzáadás** gombra.
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-add-cluster.png" alt-text="Az Azure adatkezelő proxy folyamata.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-add-cluster.png" alt-text="Fürt hozzáadása.":::
  
 > [!NOTE]
 > Ha egynél több proxykiszolgálót ad hozzá, adjon meg minden más nevet. Ellenkező esetben az összes neve megegyezik a bal oldali ablaktáblán.
 
 A létrehozást követően a Log Analytics vagy Application Insights fürt megjelenik a natív Azure Adatkezelő-fürt bal oldali ablaktábláján. 
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-azure-data-explorer-clusters.png" alt-text="Az Azure adatkezelő proxy folyamata.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-azure-data-explorer-clusters.png" alt-text="Log Analytics és az Azure Adatkezelő-fürtök.":::
  
 > [!NOTE]
 > A leképezhető Azure Monitor munkaterületek száma legfeljebb 100 lehet.
@@ -70,7 +70,7 @@ Lekérdezéseket futtathat a Log Analytics vagy Application Insights fürtön. E
 Perf | take 10 // Demonstrate query through the proxy on the Log Analaytics workspace
 ```
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-query-la.png" alt-text="Az Azure adatkezelő proxy folyamata.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-query-la.png" alt-text="Lekérdezés Log Analytics munkaterületen.":::
 
 ### <a name="cross-query-of-your-log-analytics-or-application-insights-proxy-cluster-and-the-azure-data-explorer-native-cluster"></a>Log Analytics vagy Application Insights proxy-fürt és az Azure Adatkezelő natív fürt több lekérdezése
 
@@ -85,7 +85,7 @@ union StormEvents, cluster('https://ade.loganalytics.io/subscriptions/<subscript
 let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>';
 union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
-Ha az [ `join` operátort](/azure/data-explorer/kusto/query/joinoperator?pivots=azuredataexplorer)használja az Union helyett, akkor előfordulhat, hogy egy [tippet](/azure/data-explorer/kusto/query/joinoperator?pivots=azuredataexplorer#join-hints) kell futtatnia egy Azure adatkezelő natív fürtön (és nem a proxyn). 
+Ha az [ `join` operátort](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor)használja az Union helyett, akkor előfordulhat, hogy egy [tippet](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor#join-hints) kell futtatnia egy Azure adatkezelő natív fürtön (és nem a proxyn). 
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Adatok csatlakoztatása Azure Adatkezelő-fürtből egyik bérlőn egy másik Azure Monitor erőforrással
 
@@ -113,7 +113,7 @@ A proxy a következő parancsokat támogatja:
 
 Az alábbi ábrán egy példa látható egy táblázatos függvény lekérdezésére az Azure Adatkezelő webes felhasználói felületéről. A függvény használatához futtassa a nevet a lekérdezési ablakban.
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-function-query.png" alt-text="Az Azure adatkezelő proxy folyamata.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-function-query.png" alt-text="Táblázatos függvény lekérdezése az Azure Adatkezelő webes felhasználói felületéről.":::
  
 > [!NOTE]
 > Azure Monitor csak a táblázatos függvények használatát támogatja, amelyek nem támogatják a paramétereket.
@@ -124,12 +124,12 @@ A Log Analytics vagy Application Insights fürtök meghívásakor a következő 
 
 |Szintaxis leírása  |Application Insights  |Log Analytics  |
 |----------------|---------|---------|
-| Olyan fürtön belüli adatbázis, amely csak az előfizetésben definiált erőforrást tartalmazza (**több fürt lekérdezéséhez ajánlott**) |   fürt ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>` ) | fürt ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>` )     |
+| Olyan fürtön belüli adatbázis, amely csak az előfizetésben definiált erőforrást tartalmazza ( **több fürt lekérdezéséhez ajánlott** ) |   fürt ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>` ) | fürt ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>` )     |
 | Az előfizetésben szereplő összes alkalmazást/munkaterületet tartalmazó fürt    |     fürt ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>` )    |    fürt ( `https://ade.loganalytics.io/subscriptions/<subscription-id>` )     |
 |Az előfizetésben szereplő összes alkalmazást/munkaterületet tartalmazó fürt, amely az erőforráscsoport tagjai.    |   fürt ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>` )      |    fürt ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>` )      |
 |Ebben az előfizetésben csak a definiált erőforrást tartalmazó fürt      |    fürt ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>` )    |  fürt ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>` )     |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [log Analytics munkaterületek és Application Insights adatszerkezetéről](data-platform-logs.md).
 - Megtudhatja, hogyan [írhat lekérdezéseket az Azure Adatkezelőban](https://docs.microsoft.com/azure/data-explorer/write-queries).

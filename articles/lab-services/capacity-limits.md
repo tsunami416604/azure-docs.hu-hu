@@ -3,12 +3,12 @@ title: A Azure Lab Services kapacitásának korlátai
 description: További információ a kapacitási korlátokról (a virtuális gépek korlátairól) Azure Lab Services.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 92bdc714d70b3d73ca2cbc76b1f5dc5366582cbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9866628cd11ec8df67e6fe16ae8806f0f30ae9a1
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85444097"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491018"
 ---
 # <a name="capacity-limits-in-azure-lab-services"></a>A Azure Lab Services kapacitásának korlátai
 Azure Lab Services az Azure-előfizetések alapértelmezett kapacitása korlátozza az Azure számítási kvótájának korlátozásait és a csalások enyhítését. Az Azure-előfizetések kezdeti kapacitási korláttal rendelkeznek, amely az előfizetés típusa, a normál számítási magok száma és a Azure Lab Services belül elérhető GPU magok alapján változhat. Ez korlátozza, hogy hány virtuális gép hozható létre a laborban, mielőtt a korlát növelésére lenne szüksége.  
@@ -50,4 +50,5 @@ A támogatási kérelem elküldése után a rendszer áttekinti a kérelmet. Ha 
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikket:
+- [Rendszergazdai útmutató – virtuális gép méretezése](administrator-guide.md#vm-sizing).
 - [Gyakran ismételt kérdések](classroom-labs-faq.md).

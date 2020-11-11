@@ -4,16 +4,16 @@ description: Egy meglévő kereskedelmi Piactéri ajánlat vagy csomag frissít�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 10/27/2020
 ms.custom: contperfq2
-ms.openlocfilehash: 376852c214d503867cd938507760e963b9b75e93
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3d96973d4d1e37ae3fee21eb70e3e32a45867f0c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129983"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491953"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Meglévő ajánlatok frissítése a kereskedelmi piactéren
 
@@ -49,7 +49,7 @@ Hajtsa végre ezeket a lépéseket egy új csomag egy már közzétett ajánlath
 Hajtsa végre ezeket a lépéseket a már közzétett ajánlatok tervének módosításához.
 
 1. Ha megnyitotta az ajánlat **Áttekintés** lapját, válassza ki a módosítani kívánt csomagot. Ha a csomag nem érhető el a **terv áttekintő** listájában, válassza a **minden csomag megtekintése** lehetőséget.
-1. Válassza ki a csomag **nevét** , **árképzési modelljét** vagy **rendelkezésre állását** . *Jelenleg a csomagok csak angol nyelven érhetők el (Egyesült Államok)* .
+1. Válassza ki a csomag **nevét** , **árképzési modelljét** vagy **rendelkezésre állását**. *Jelenleg a csomagok csak angol nyelven érhetők el (Egyesült Államok)*.
 1. A terv nevének, leírásának vagy a célközönség rendelkezésre állásának módosítása után válassza a **Piszkozat mentése** elemet.
 1. Válassza a **felülvizsgálat és közzététel** lehetőséget, amikor készen áll a frissítések közzétételére. Megnyílik a **[felülvizsgálat és közzététel](../review-publish-offer.md)** lap, amely a frissítések befejezési állapotát biztosítja.
 1. Válassza a **Közzététel** lehetőséget a frissített terv közzétételhez való elküldéséhez. A rendszer e-mailt küld Önnek, ha a frissített ajánlat előzetes verzióját szeretné áttekinteni és jóváhagyni.
@@ -137,6 +137,6 @@ Az ajánlat vagy a csomag értékesítésének leállítása után a partner Cen
 
 A meglévő ügyfelektől származó ajánlatok eltávolításához [Jelentkezzen be egy támogatási kérést](https://aka.ms/marketplacepublishersupport). A támogatási téma listán válassza a **kereskedelmi Piactéri**  >  **ajánlat vagy az alkalmazás-törlés, az Eltávolítás vagy a megszüntetés** lehetőséget, és küldje el a kérelmet. A támogatási csapat végigvezeti az ajánlat-eltávolítási folyamaton.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A kereskedelmi piactér ajánlat közzétételi állapotának megtekintése](../review-publish-offer.md)

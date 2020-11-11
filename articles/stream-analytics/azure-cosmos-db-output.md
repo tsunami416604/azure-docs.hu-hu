@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: e322135cfdb7aaff331367e84c603e8344436528
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a086d9fe150766c6b31210f29bf802a75e0ee4ec
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906253"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491732"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Cosmos DB kimenete
 
@@ -26,7 +26,7 @@ Stream Analytics Azure Cosmos DB kimenete jelenleg nem érhető el az Azure Chin
 
 Az alábbi táblázat a Azure Cosmos DB kimenet létrehozásának tulajdonságait ismerteti.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias | Az Stream Analytics-lekérdezésben ezt a kimenetet meghívó alias. |
 | Sink (Fogadó) | Azure Cosmos DB. |
@@ -34,18 +34,18 @@ Az alábbi táblázat a Azure Cosmos DB kimenet létrehozásának tulajdonságai
 | Fiókazonosító | A Azure Cosmos DB fiók neve vagy végpontjának URI azonosítója. |
 | Fiókkulcs | A Azure Cosmos DB-fiókhoz tartozó megosztott elérési kulcs. |
 | Adatbázis | A Azure Cosmos DB adatbázis neve. |
-| Tárolónév | A használandó tároló neve, amely a Cosmos DBban léteznie kell. Példa:  <br /><ul><li> _MyContainer_: A "MyContainer" nevű tárolónak léteznie kell.</li>|
+| Tárolónév | A használandó tároló neve, amely a Cosmos DBban léteznie kell. Példa:  <br /><ul><li> _MyContainer_ : A "MyContainer" nevű tárolónak léteznie kell.</li>|
 | Dokumentum azonosítója |Választható. Annak az elsődleges kulcsnak a megadásához használt mező neve, amelybe az INSERT vagy a Update művelet alapul.
 
 ## <a name="partitioning"></a>Particionálás
 
-A partíciós kulcs a lekérdezés PARTITION BY záradékán alapul. A kimeneti írók száma követi a bemeneti particionálást a [teljesen párhuzamos lekérdezéseknél](stream-analytics-scale-jobs.md). Stream Analytics átalakítja a Cosmos DB kimeneti partíciós kulcsát karakterlánccá. Ha például egy bigint típusú 1 értékű partíciós kulccsal rendelkezik, a rendszer a karakterlánc típusú "1" értékre konvertálja.
+A partíciós kulcs a lekérdezés PARTITION BY záradékán alapul. A kimeneti írók száma követi a bemeneti particionálást a [teljesen párhuzamos lekérdezéseknél](stream-analytics-scale-jobs.md). Stream Analytics átalakítja a Cosmos DB kimeneti partíciós kulcsát karakterlánccá. Ha például egy bigint típusú 1 értékű partíciós kulccsal rendelkezik, a rendszer a karakterlánc típusú "1" értékre konvertálja. Ez az átalakítás mindig történik, függetlenül attól, hogy a Partition tulajdonságot Cosmos DBba írta-e.
 
 ## <a name="output-batch-size"></a>Kimeneti köteg mérete
 
 Az üzenetek maximális méretéhez lásd: [Azure Cosmos db korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits). A köteg mérete és az írási gyakoriság a Azure Cosmos DB válaszok alapján dinamikusan módosul. A Stream Analytics nem rendelkezik előre meghatározott korlátozásokkal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 * [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)

@@ -1,18 +1,17 @@
 ---
-title: Csempék hozzáadása az Azure IoT Central irányítópulthoz | Microsoft Docs
+title: Konfigurálás az Azure IoT Central irányítópulton | Microsoft Docs
 description: A Builder segítségével megtudhatja, hogyan konfigurálhatja az alapértelmezett Azure IoT Central alkalmazás-irányítópultot csempék használatával.
-author: Haley-Rowland
-ms.author: harowl
-ms.date: 05/27/2020
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
-services: iot-central
-ms.openlocfilehash: 5276f9b8c6dd3bdc305142e5b9452cd9c5d60bce
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 2ea2dd18cd5816c7c1406ac201421a2983e431a3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376998"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491998"
 ---
 # <a name="configure-the-application-dashboard"></a>Az alkalmazás irányítópultjának konfigurálása
 
@@ -29,23 +28,26 @@ Az alábbi képernyőfelvételen az **egyéni alkalmazás** sablonjában létreh
 
 A **Szerkesztés** vagy az **új** lehetőség kiválasztása után az irányítópult *szerkesztési* módban van. Az irányítópult **szerkesztése** panelen található eszközök segítségével csempéket adhat hozzá az irányítópulthoz, és saját maga is testreszabhatja és eltávolíthatja a csempéket az irányítópulton. Például egy **telemetria** csempe hozzáadásához egy vagy több eszköz által jelentett aktuális hőmérséklet megjelenítéséhez:
 
-1. Az **irányítópult szerkesztése** panelen válasszon ki egy **eszközt**.
-1. Válasszon ki egy vagy több eszközt az **eszközök** legördülő menüben a csempén való megjelenítéshez. Ekkor megjelenik az eszközökön elérhető telemetria, tulajdonságok és parancsok.
-1. Válassza a **hőmérséklet** lehetőséget a telemetria szakaszban, majd kattintson a **csempe hozzáadása** lehetőségre. A csempe most már az irányítópulton látható, ahol módosíthatja a vizualizációt, átméretezheti a csempét, és konfigurálhatja:
+1. Válasszon ki egy **eszközt** , majd válassza ki az eszközöket az **eszközök** legördülő menüben a csempén való megjelenítéshez. Ekkor megjelenik az eszközökön elérhető telemetria, tulajdonságok és parancsok.
+
+1. Ha szükséges, a legördülő listából válassza ki a csempén megjelenítendő telemetria értéket. További elemeket is hozzáadhat a csempéhez a **+ telemetria** , **+ tulajdonság** vagy a **+ Cloud tulajdonság** kiválasztásával.
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Hőmérséklet-telemetria csempe hozzáadása az irányítópulthoz":::
 
-Ha befejezte a csempék hozzáadását és testreszabását az irányítópulton, válassza a **Mentés** lehetőséget.
+Ha a csempén megjelenítendő összes értéket kiválasztotta, kattintson a **csempe hozzáadása gombra.** A csempe ekkor megjelenik az irányítópulton, ahol módosíthatja a vizualizációt, átméretezheti, áthelyezheti és konfigurálhatja.
+
+Amikor befejezte a csempék hozzáadását és testreszabását az irányítópulton, válassza a **Mentés** lehetőséget, hogy mentse a módosításokat az irányítópulton, amely a szerkesztési módot veszi figyelembe.
 
 ## <a name="customize-tiles"></a>Csempék testreszabása
 
-Az irányítópulton egy csempe testreszabásához szerkesztési módban kell lennie. Az elérhető testreszabási beállítások a [csempe típusától](#tile-types)függenek:
+A csempék szerkesztéséhez szerkesztési módban kell lennie.  Az elérhető testreszabási beállítások a [csempe típusától](#tile-types)függenek:
 
-* A csempe vonalzó ikonja lehetővé teszi a vizualizáció módosítását. A vizualizációk közé tartoznak a sorok, a legutóbbi ismert értékek és a Heat maps.
+* A csempe vonalzó ikonja lehetővé teszi a vizualizáció módosítását. A vizualizációk közé tartoznak a diagramok, a sávdiagramok, a tortadiagramok, a legutóbbi ismert értékek, a fő teljesítménymutatók (vagy KPI-k), a intenzitástérképei és a térképek.
 
 * A négyzet ikon segítségével átméretezheti a csempét.
 
 * A fogaskerék ikon lehetővé teszi a vizualizáció konfigurálását. A Diagramos vizualizációk esetében például megadhatja a jelmagyarázat és a tengelyek megjelenítését, és kiválaszthatja a nyomtatandó időtartományt.
+
 
 ## <a name="tile-types"></a>Csempe típusai
 
@@ -91,12 +93,17 @@ A numerikus **KPI** , az **utolsó ismert érték** és a **tulajdonságlapok** 
 
 Adja meg a feltételes formázási szabályokat:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Az átlagos folyamat feltételes formázási szabályait bemutató képernyőkép. Három szabály van – a THA 20 értéke zöld, a 50-nál kevesebb sárga, míg a 50-es minden más vörös":::
-
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Az átlagos folyamat feltételes formázási szabályait bemutató képernyőkép. Három szabály van – kevesebb mint 20, zöld, 50-nál kevesebb sárga, és bármi több mint 50 vörös":::
+   
 Az alábbi képernyőfelvételen a feltételes formázási szabály hatása látható:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Képernyőfelvétel: a sárga háttérszín az átlagos vízfolyás csempén. A csempe száma 40,84":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Képernyőfelvétel: a piros háttérszín az átlagos vízfolyás csempén. A csempe száma 50,54":::
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="tile-formatting"></a>"csempe" formázása
+Ez a szolgáltatás KPI-, LKV-és tulajdonságlapokon érhető el, lehetővé teszi a felhasználók számára a betűméret beállítását, a decimális pontosságot, a numerikus értékeket (például 1 700-as formátumot), vagy a csempék sortörését.
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/tile-format.png" alt-text="Csempe formátuma":::
+
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan konfigurálhatja az Azure IoT Central alapértelmezett alkalmazás-irányítópultját, [megtudhatja, hogyan hozhat létre személyes irányítópultot](howto-create-personal-dashboards.md).

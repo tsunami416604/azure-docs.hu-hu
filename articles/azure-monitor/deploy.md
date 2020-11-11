@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0591825bf187648293d5aabc88597b19ab2436e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033472"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491052"
 ---
 # <a name="deploy-azure-monitor"></a>Az Azure Monitor üzembe helyezése
 Az Azure-erőforrások figyelésének engedélyezése Azure Monitor az Azure Monitor-összetevők konfigurálását és az Azure-erőforrások konfigurálását is lehetővé teszi, hogy a gyűjtéshez Azure Monitor figyelési adatokat készítsenek. Ez a cikk a Azure Monitor teljes megvalósításához szükséges különböző lépéseket ismerteti az Azure-előfizetésében lévő összes erőforrás figyelésére szolgáló közös konfiguráció használatával. Az egyes lépésekhez tartozó alapszintű leírások a részletes konfigurációs követelményekre mutató hivatkozásokkal is rendelkeznek.
@@ -118,7 +118,7 @@ Az ügynökök telepítésével és konfigurálásával kapcsolatos részleteket
 Azure Monitor a [Application Insights](app/app-insights-overview.md)használatával figyeli az egyéni alkalmazásokat, amelyeket minden egyes figyelni kívánt alkalmazáshoz konfigurálnia kell. A konfigurációs folyamat a figyelt alkalmazás típusától és a végrehajtani kívánt figyelési típustól függően eltérő lesz. A Application Insights által gyűjtött adatokat Azure Monitor metrikák, Azure Monitor naplók és az Azure Blob Storage tárolja a szolgáltatástól függően. A teljesítményadatok Azure Monitor Metrikákban és Azure Monitor naplókban is tárolódnak, és nincs szükség további konfigurálásra.
 
 ### <a name="create-an-application-resource"></a>Alkalmazás-erőforrás létrehozása
-Minden figyelni kívánt alkalmazáshoz létre kell hoznia egy erőforrást Application Insightsban. A Application Insights által gyűjtött adatokat a rendszer a munkaterület-alapú alkalmazások Azure Monitor naplófájljaiban tárolja. A klasszikus alkalmazások naplózási adatait a rendszer az [adatok szerkezete](platform/data-platform-logs.md#structure-of-data)szerint külön tárolja a log Analytics munkaterületről.
+Minden figyelni kívánt alkalmazáshoz létre kell hoznia egy erőforrást Application Insightsban. A Application Insights által gyűjtött adatokat a rendszer a munkaterület-alapú alkalmazások Azure Monitor naplófájljaiban tárolja. A klasszikus alkalmazások naplózási adatait a rendszer külön tárolja a Log Analytics munkaterületről az [adatstruktúra](platform/data-platform-logs.md#data-structure)című cikkben leírtak szerint.
 
  Az alkalmazás létrehozásakor ki kell választania, hogy a klasszikus vagy a munkaterület-alapú használatát kívánja-e használni. Lásd: [Application Insights-erőforrás létrehozása](app/create-new-resource.md) klasszikus alkalmazás létrehozásához. Munkaterület-alapú alkalmazás létrehozásához tekintse meg a [munkaterület-alapú Application Insights-erőforrások (előzetes verzió)](app/create-workspace-resource.md) című témakört.
 
@@ -192,6 +192,6 @@ Több típusú riasztási szabály van megadva az általuk használt adattípuss
 - Az [alkalmazások riasztásai](app/monitor-web-app-availability.md) lehetővé teszik a webalkalmazások proaktív teljesítményének és rendelkezésre állásának tesztelését. Egy egyszerű pingelési teszt díjmentesen elvégezhető, de összetettebb tesztelésre is van lehetőség. A különböző tesztek leírását és a létrehozásuk részleteit lásd: [bármely webhely rendelkezésre állásának figyelése](app/monitor-web-app-availability.md) .
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd: [Azure monitor üzembe helyezése méretezéssel Azure Policy használatával](deploy-scale.md).

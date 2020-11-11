@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan kezelheti a Marketo CRM-rendszert a Microsoft A
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: be1f21f927b01d66e19dc5e97b38e5c35e6664cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbd12481312d310add15bf3d41e21e9c416f1c39
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120262"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491075"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>A Marketo használata a kereskedelmi Piactéri érdeklődők kezelésére
 
@@ -22,25 +22,25 @@ Ez a cikk azt ismerteti, hogyan állíthatja be az Marketo CRM-rendszert a Micro
 
 1. Jelentkezzen be a Marketo.
 
-1. Válassza a **Design Studio**elemet.
+1. Válassza a **Design Studio** elemet.
 
     ![Marketo Design Studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
-1.  Válassza az **új űrlap**lehetőséget.
+1.  Válassza az **új űrlap** lehetőséget.
 
     ![Új Marketo űrlap](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
-1.  Töltse ki a kötelező mezőket az **új űrlap** párbeszédpanelen, majd válassza a **Létrehozás**lehetőséget.
+1.  Töltse ki a kötelező mezőket az **új űrlap** párbeszédpanelen, majd válassza a **Létrehozás** lehetőséget.
 
     ![Új űrlap létrehozása a Marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
-1.  A **mező részletei** lapon válassza a **Befejezés**lehetőséget.
+1.  A **mező részletei** lapon válassza a **Befejezés** lehetőséget.
 
     ![Marketo befejezési űrlapja](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
 1.  Jóváhagyás és bezárás.
 
-1. A **MarketplaceLeadBackend** lapon válassza a **beágyazási kód**lehetőséget. 
+1. A **MarketplaceLeadBackend** lapon válassza a **beágyazási kód** lehetőséget. 
 
     ![Marketo beágyazási kód](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
 
@@ -71,7 +71,7 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. Válassza ki az ajánlatot, és nyissa meg az **ajánlat beállítása** lapot.
 
-1. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat**lehetőséget.
+1. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat** lehetőséget.
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-marketo/customer-leads.png" alt-text="Ügyfél-érdeklődők":::
 
@@ -79,15 +79,15 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
     ![Érdeklődő célhelyének kiválasztása](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 
-1. Adja meg a **kiszolgáló azonosítóját**, a **Munchkin**és az **űrlap azonosítóját**.
+1. Adja meg a **kiszolgáló azonosítóját** , a **Munchkin** és az **űrlap azonosítóját**.
 
     > [!NOTE]
     > Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie az ajánlathoz tartozó érdeklődők fogadása előtt. 
 
-1. A **kapcsolattartási e-mail**cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mail-címet is megadhat.
+1. A **kapcsolattartási e-mail** cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mail-címet is megadhat.
 
 1. Kattintson az **OK** gombra.
 
-   Ha szeretné meggyőződni arról, hogy sikeresen csatlakozott egy érdeklődői célhoz, válassza az **Érvényesítés**lehetőséget. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
+   Ha szeretné meggyőződni arról, hogy sikeresen csatlakozott egy érdeklődői célhoz, válassza az **Érvényesítés** lehetőséget. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 
    ![Kapcsolat részletei előugró ablak](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

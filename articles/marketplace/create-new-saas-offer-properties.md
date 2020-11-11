@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 4dd592cb1b0037e2e1054bb24d987d4456f15e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d90c9b9b2c9aa97083e17d5ab7d20fc6b471658
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380976"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492123"
 ---
 # <a name="how-to-configure-your-saas-offer-properties"></a>SaaS-ajánlat tulajdonságainak konfigurálása
 
@@ -23,16 +23,16 @@ A **Tulajdonságok** lapon megadhatja az ajánlatra, az alkalmazás verziójára
 
 ## <a name="select-a-category-for-your-offer"></a>Válasszon kategóriát az ajánlathoz
 
-A **Kategória**területen válasszon ki legalább egy legfeljebb két kategóriát az ajánlatnak a piactér megfelelő keresési területeire való csoportosításához. A választott kategóriák alapján meghatározjuk, hogy mely online áruházakban szeretné kilistázni az ajánlatát: Azure Marketplace, Microsoft AppSource vagy mindkettő.
+A **Kategória** területen válasszon ki legalább egy legfeljebb két kategóriát az ajánlatnak a piactér megfelelő keresési területeire való csoportosításához. A választott kategóriák alapján meghatározjuk, hogy mely online áruházakban szeretné kilistázni az ajánlatát: Azure Marketplace, Microsoft AppSource vagy mindkettő.
 
 ## <a name="select-industries-optional"></a>Iparágak kiválasztása (nem kötelező)
 
-Az **ágazatok**területen legfeljebb két iparágot választhat ki, és legfeljebb két alágazatot (más néven vertikális) is kiválaszthat minden iparág számára. Ezek az ágazatok az ajánlat megjelenítésére szolgálnak, ha az ügyfelek az online áruházban szűrik a keresést az iparágban és az alszektorban.
+Az **ágazatok** területen legfeljebb két iparágot választhat ki, és legfeljebb két alágazatot (más néven vertikális) is kiválaszthat minden iparág számára. Ezek az ágazatok az ajánlat megjelenítésére szolgálnak, ha az ügyfelek az online áruházban szűrik a keresést az iparágban és az alszektorban.
 
 > [!NOTE]
 > Ha az ajánlata nem iparági specifikus, hagyja üresen ezt a szakaszt.
 
-1. Az **iparágak**területen válassza a **+ Industries** hivatkozást.
+1. Az **iparágak** területen válassza a **+ Industries** hivatkozást.
 1. Válasszon ki egy iparágat az **iparág** listából.
 1. Válasszon ki legalább egy és legfeljebb két függőleges értéket az **alágazatok** listájából. A CTRL billentyűvel több alágazatot is kijelölhet.
 1. Egy másik iparág és vertikális hozzáadásához válassza a **+ Industries** lehetőséget, majd ismételje meg az 1 – 3. lépést.
@@ -43,7 +43,7 @@ Az **ágazatok**területen legfeljebb két iparágot választhat ki, és legfelj
 
 ## <a name="provide-terms-and-conditions"></a>Feltételek és kikötések megadása
 
-A **jogi**területen adja meg az ajánlat használati feltételeit. Erre két lehetősége van:
+A **jogi** területen adja meg az ajánlat használati feltételeit. Erre két lehetősége van:
 
 - [A standard szerződés használata opcionális módosításokkal](#use-the-standard-contract)
 - [Saját használati feltételek használata](#use-your-own-terms-and-conditions)
@@ -57,7 +57,7 @@ Az ügyfelek beszerzési folyamatának leegyszerűsítése és a szoftvergyárt�
 1. Jelölje be a **szabványos szerződés használata a Microsoft kereskedelmi piactérhez** jelölőnégyzetet.
 
    ![Bemutatja a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződés használatát jelölőnégyzetet.](partner-center-portal/media/use-standard-contract.png)
-1. A **megerősítő** párbeszédpanelen válassza az **elfogadás**lehetőséget. Előfordulhat, hogy fel kell görgetni, hogy láthassa.
+1. A **megerősítő** párbeszédpanelen válassza az **elfogadás** lehetőséget. Előfordulhat, hogy fel kell görgetni, hogy láthassa.
 1. A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
    > [!NOTE]
@@ -73,11 +73,11 @@ Az **univerzális módosítási feltételek a Microsoft kereskedelmi Marketplace
 
 #### <a name="add-one-or-more-custom-amendments"></a>Adjon hozzá egy vagy több egyéni módosítást
 
-1. A **Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződésének egyéni módosítások**területén válassza az **Egyéni módosítási időszak hozzáadása (maximum 10)** hivatkozást.
+1. A **Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződésének egyéni módosítások** területén válassza az **Egyéni módosítási időszak hozzáadása (maximum 10)** hivatkozást.
 1. Az **Egyéni módosítási feltételek** mezőben adja meg a módosítási feltételeket.
 1. A **bérlő azonosítója** mezőben adja meg a bérlő azonosítóját. Az ajánlat beszerzési folyamatában csak az egyéni feltételekhez megadott bérlői azonosítókkal rendelkező ügyfelek látják majd az Azure Portal.
    > [!TIP]
-   > A bérlői azonosító azonosítja az ügyfelet az Azure-ban. Megkérheti az ügyfelet erre az azonosítóra, és megkeresheti a [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **Tulajdonságok**lehetőséggel. A címtár-azonosító értéke a bérlő azonosítója (például: `50c464d3-4930-494c-963c-1e951d15360e` ). A szervezet bérlői AZONOSÍTÓját is megkeresheti a saját tartománynév URL-címével, amely a [Microsoft Azure és az Office 365-bérlői azonosítóját használja?](https://www.whatismytenantid.com/).
+   > A bérlői azonosító azonosítja az ügyfelet az Azure-ban. Megkérheti az ügyfelet erre az azonosítóra, és megkeresheti a [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **Tulajdonságok** lehetőséggel. A címtár-azonosító értéke a bérlő azonosítója (például: `50c464d3-4930-494c-963c-1e951d15360e` ). A szervezet bérlői AZONOSÍTÓját is megkeresheti a saját tartománynév URL-címével, amely a [Microsoft Azure és az Office 365-bérlői azonosítóját használja?](https://www.whatismytenantid.com/).
 1. A **Leírás** mezőben opcionálisan megadhatja a bérlő azonosítójának rövid leírását. Ez a leírás segít azonosítani a módosítással megcélzott ügyfelet.
 1. Másik bérlői azonosító hozzáadásához jelölje be az **ügyfél bérlői azonosítójának hozzáadása** hivatkozást, és ismételje meg a 3. és a 4. lépést. Legfeljebb 20 bérlői azonosítót adhat hozzá.
 1. Egy másik módosítási kifejezés hozzáadásához ismételje meg az 1 – 5. lépést. Ajánlatunk legfeljebb tíz egyéni módosítási kifejezést biztosíthat. 
@@ -87,14 +87,10 @@ Az **univerzális módosítási feltételek a Microsoft kereskedelmi Marketplace
 
 A normál szerződés helyett saját használati feltételeket is megadhat. Az ügyfeleknek el kell fogadniuk ezeket a feltételeket, mielőtt kipróbálhatják az ajánlatot.
 
-1. A **jogi**területen győződjön meg arról, hogy a **Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződés használata** jelölőnégyzet be van jelölve.
+1. A **jogi** területen győződjön meg arról, hogy a **Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződés használata** jelölőnégyzet be van jelölve.
 1. A **feltételek és kikötések** mezőben adja meg a legfeljebb 10 000 karakter hosszúságú szöveget.
-
-   > [!NOTE]
-   > Ha további leírásra van szüksége, adjon meg egy webcímet, amely arra a pontra mutat, ahol a feltételek és kikötések találhatók. Az ügyfelek aktív hivatkozásként jelennek meg.
-
 1. A következő lapra való továbblépés előtt válassza a **Piszkozat mentése** lehetőséget, és adja meg a **listát**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az SaaS-ajánlat részleteinek konfigurálása](create-new-saas-offer-listing.md)

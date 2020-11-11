@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 70b5e85c99184b890d2b5269f483785a82340255
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 38f649fbff9ea2c1182adb613b9302768708a4c4
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127552"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490950"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>A streamelési egységek ismertetése és módosítása
 
@@ -20,10 +20,10 @@ A streaming Units (SUs) a Stream Analytics feladatok végrehajtásához lefoglal
 
 A kis késésű streamfeldolgozás érdekében az Azure Stream Analytics-feladatok minden feldolgozást a memóriában hajtanak végre. A memória elfogyása esetén a folyamatos átviteli feladatok sikertelenek. Ennek eredményeképpen éles feladatokhoz fontos figyelni a folyamatos átviteli feladatok erőforrás-felhasználását, és gondoskodni kell arról, hogy elegendő erőforrás legyen kiosztva a 24/7-ot futtató feladatok megtartásához.
 
-A (z)% kihasználtsági metrika, amely 0% és 100% közötti tartományba esik, a számítási feladatok memória-felhasználását írja le. Minimális helyigényű folyamatos átviteli feladatoknál ez a metrika általában 10% és 20% között van. Ha a SU%-kihasználtság magas (meghaladja a 80%-ot), vagy ha a bemeneti események várakozó kapnak (akár alacsony SU%-os kihasználtsággal is, mivel nem jeleníti meg a CPU-használatot), valószínűleg több számítási erőforrásra van szükség, amelyhez az SUs számának növelésére van szükség. Érdemes megtartani a SU metrika 80% alatti értékét az alkalmi tüskék beszámításához. A Microsoft azt javasolja, hogy a riasztást a 80% SU kihasználtsági metrikán állítsa be az erőforrás-kimerültség megelőzése érdekében. További információ: [oktatóanyag: riasztások beállítása Azure stream Analytics feladatokhoz](stream-analytics-set-up-alerts.md).
+A (z)% kihasználtsági metrika, amely 0% és 100% közötti tartományba esik, a számítási feladatok memória-felhasználását írja le. Minimális helyigényű folyamatos átviteli feladatoknál ez a metrika általában 10% és 20% között van. Ha a SU%-kihasználtság magas (meghaladja a 80%-ot), vagy ha a bemeneti események várakozó kapnak (akár alacsony SU%-os kihasználtsággal is, mivel nem jeleníti meg a CPU-használatot), valószínűleg több számítási erőforrásra van szükség, amelyhez az SUs számának növelésére van szükség. Érdemes megtartani a SU metrika 80% alatti értékét az alkalmi tüskék beszámításához. A megnövekedett számítási feladatokra és a folyamatos átviteli egységek növelésére való reagáláshoz érdemes lehet 80%-os riasztást beállítani a SU kihasználtsági metrikán. Azt is megteheti, hogy a vízjel késleltetése és a várakozó események mérőszámai hatással vannak a szolgáltatásra.
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Stream Analytics streaming Units (SUs) konfigurálása
-1. Bejelentkezés [Azure Portal](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Az erőforrások listájában keresse meg a méretezni kívánt Stream Analytics-feladatot, majd nyissa meg. 
 
@@ -45,7 +45,7 @@ Kiszámítja a munkaterhelés várható átviteli sebességét. Ha az átviteli 
 
 Egy adott feladathoz szükséges SUs számának kiválasztása a bemenetek és a feladatban definiált lekérdezés partíciójának konfigurációjától függ. A **skála** lapon állíthatja be a megfelelő számú SUs-értéket. Az ajánlott eljárás a szükségesnél több SUs kiosztása. A Stream Analytics feldolgozó motor a további memória lefoglalásának díja szerint optimalizálja a késést és az átviteli sebességet.
 
-Általánosságban elmondható, hogy az ajánlott eljárás az, ha 6 SUs-t használ olyan lekérdezések esetén, amelyek nem használják a **particionálást** . Ezt követően határozza meg az édes helyet egy próba-és hiba módszer használatával, amelyben módosítja a SUs számát a reprezentatív mennyiségű adat átadása után, és vizsgálja meg a SU% kihasználtsági mérőszámot. A Stream Analytics-feladatok által felhasználható folyamatos átviteli egységek maximális száma a feladatokhoz megadott lekérdezés lépéseinek és az egyes lépésekben lévő partíciók számának a számától függ. A korlátozásokról további információt [itt](./stream-analytics-parallelization.md#calculate-the-maximum-streaming-units-of-a-job)talál.
+Általánosságban elmondható, hogy az ajánlott eljárás az, ha 6 SUs-t használ olyan lekérdezések esetén, amelyek nem használják a **particionálást**. Ezt követően határozza meg az édes helyet egy próba-és hiba módszer használatával, amelyben módosítja a SUs számát a reprezentatív mennyiségű adat átadása után, és vizsgálja meg a SU% kihasználtsági mérőszámot. A Stream Analytics-feladatok által felhasználható folyamatos átviteli egységek maximális száma a feladatokhoz megadott lekérdezés lépéseinek és az egyes lépésekben lévő partíciók számának a számától függ. A korlátozásokról további információt [itt](./stream-analytics-parallelization.md#calculate-the-maximum-streaming-units-of-a-job)talál.
 
 Az SUs megfelelő számának kiválasztásával kapcsolatos további információkért tekintse meg a következő oldalt: [Azure stream Analytics feladatok méretezése az átviteli sebesség növelése érdekében](stream-analytics-scale-jobs.md)
 
@@ -145,7 +145,7 @@ A gyors keresés érdekében az ASA-ben lévő hivatkozási adatmennyiség betö
 ### <a name="use-of-udf-functions"></a>UDF függvények használata
 UDF-függvény hozzáadásakor Azure Stream Analytics betölti a JavaScript-futtatókörnyezetet a memóriába. Ez hatással lesz a SU%-ra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Párhuzamosítható-lekérdezések létrehozása a Azure Stream Analyticsban](stream-analytics-parallelization.md)
 * [Azure Stream Analytics feladatok méretezése az átviteli sebesség növelése érdekében](stream-analytics-scale-jobs.md)
 

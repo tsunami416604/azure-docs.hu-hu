@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3e9674916ea9bb5e756a5e57ff18517f53ca7497
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 05502b344b1224dff5d12f95b96b05baace98970
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427558"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491001"
 ---
 # <a name="configure-an-openvpn-client-for-azure-virtual-wan"></a>OpenVPN-ügyfél konfigurálása az Azure Virtual WAN-hoz
 
-Ez a cikk segítséget nyújt az **OpenVPN &reg; protokoll** ügyfeleinek konfigurálásához. A Windows 10-es Azure VPN-ügyfelét is használhatja az OpenVPN protokollon keresztüli csatlakozáshoz 
+Ez a cikk segítséget nyújt az **OpenVPN &reg; protokoll** ügyfeleinek konfigurálásához. A Windows 10-es Azure VPN-ügyfelét is használhatja az OpenVPN protokollon keresztüli csatlakozáshoz. További útmutatást [itt](openvpn-azure-ad-client.md) találhat
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -24,7 +24,7 @@ Hozzon létre egy felhasználói VPN (pont – hely) konfigurációt. Győződj�
 
 [!INCLUDE [configuration steps](../../includes/vpn-gateway-vwan-config-openvpn-clients.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználói VPN-kapcsolatokról (pont – hely) a [felhasználói VPN-kapcsolatok létrehozása](virtual-wan-point-to-site-portal.md)című témakörben olvashat bővebben.
 

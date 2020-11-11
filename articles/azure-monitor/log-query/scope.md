@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 2036505dea134a59e7dc0c75a030175b15dac0b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 066e9cf6c63c9f2073ba869e8b40e25bfc993cd8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031942"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491375"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>A lekérdezés hatókörének és időtartományának naplózása Azure Monitor Log Analytics
 Ha [a Azure Portal log Analyticsban](get-started-portal.md)futtat [naplózási lekérdezést](log-query-overview.md) , a lekérdezés által kiértékelt adatok halmaza a hatókörtől és a kiválasztott időtartománytól függ. Ez a cikk a hatókört és az időtartományt ismerteti, valamint azt, hogyan állíthatja be az egyes igényektől függően. Emellett leírja a különböző típusú hatókörök viselkedését is.
@@ -35,7 +35,7 @@ A hatókört a Log Analytics elindításához használt módszer határozza meg,
 | Application Insights alkalmazás | A Application Insights alkalmazás összes rekordja. | Válassza ki a **naplókat** az alkalmazás **Application Insights** menüjében. | A hatókört csak egy másik Application Insights alkalmazásra lehet módosítani. |
 | Erőforráscsoport | Az erőforráscsoport összes erőforrása által létrehozott rekordok. Több Log Analytics munkaterületről származó adatok is szerepelhetnek. | Válassza ki a **naplókat** az erőforráscsoport menüjében. | A hatókör nem módosítható.|
 | Előfizetés | Az előfizetésben található összes erőforrás által létrehozott rekordok. Több Log Analytics munkaterületről származó adatok is szerepelhetnek. | Válassza a **naplók** lehetőséget az előfizetés menüből.   | A hatókör nem módosítható. |
-| Egyéb Azure-erőforrások | Az erőforrás által létrehozott rekordok. Több Log Analytics munkaterületről származó adatok is szerepelhetnek.  | Válassza ki a **naplók** elemet az erőforrás menüben.<br>VAGY<br>Válassza ki a **naplók** elemet a **Azure monitor** menüben, majd válasszon ki egy új hatókört. | A hatókör nem módosítható ugyanarra az erőforrás-típusra. |
+| Egyéb Azure-erőforrások | Az erőforrás által létrehozott rekordok. Több Log Analytics munkaterületről származó adatok is szerepelhetnek.  | Válassza ki a **naplók** elemet az erőforrás menüben.<br>OR<br>Válassza ki a **naplók** elemet a **Azure monitor** menüben, majd válasszon ki egy új hatókört. | A hatókör nem módosítható ugyanarra az erőforrás-típusra. |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>Erőforrásokra vonatkozó hatókörre vonatkozó korlátozások
 
@@ -51,9 +51,7 @@ Az alábbi parancsok nem használhatók a lekérdezésekben, ha az erőforrás h
 - [munkaterület](workspace-expression.md)
  
 
-## <a name="query-limits"></a>Lekérdezési korlátok
-Előfordulhat, hogy az Azure-erőforrásokra vonatkozó üzleti követelmények több Log Analytics munkaterületre is írhatnak adatbevitelt. A munkaterületnek nem kell ugyanabban a régióban lennie, mint az erőforrás, és egy adott munkaterület több régióban is gyűjthet adatokat az erőforrásokból.  
-
+## <a name="query-scope-limits"></a>Lekérdezési hatókör korlátai
 Ha a hatókört erőforrásra vagy erőforrás-készletre állítja be, a Log Analytics különösen hatékony funkciója, mivel lehetővé teszi, hogy egyetlen lekérdezésben automatikusan összevonja az elosztott adatmennyiséget. Jelentős hatással lehet a teljesítményre, ha az adatok több Azure-régióban lévő munkaterületekről kérhetők le.
 
 Log Analytics segít megvédeni a több régióban munkaterületekre kiterjedő lekérdezések túlzott terhelését azáltal, hogy bizonyos számú régió használatakor figyelmeztetést vagy hibát ad ki. A lekérdezés figyelmeztetést küld, ha a hatókör 5 vagy több régióban tartalmaz munkaterületeket. Ez a művelet továbbra is futni fog, de a folyamat végrehajtása túl hosszú időt vehet igénybe.
@@ -66,32 +64,28 @@ A lekérdezés le lesz tiltva, ha a hatókör 20 vagy több régióban is tartal
 
 
 ## <a name="time-range"></a>Időtartomány
-Az időtartomány meghatározza a lekérdezés által a rekord létrehozásakor kiértékelt rekordok készletét. Ezt egy standard oszlop határozza meg a munkaterület vagy alkalmazás minden rekordján, ahogy az a következő táblázatban szerepel.
+Az időtartomány meghatározza a lekérdezés által a rekord létrehozásakor kiértékelt rekordok készletét. Ezt a **TimeGenerated** oszlop határozza meg a munkaterület vagy alkalmazás minden rekordján, ahogy az a következő táblázatban szerepel. Klasszikus Application Insights alkalmazás esetén a rendszer az időtartományhoz az **időbélyegző** oszlopot használja.
 
-| Hely | Oszlop |
-|:---|:---|
-| Log Analytics-munkaterület          | TimeGenerated |
-| Application Insights alkalmazás | időbélyeg     |
 
 Állítsa be az időtartományt úgy, hogy kijelöli a Log Analytics ablak tetején található időválasztót.  Kiválaszthat egy előre meghatározott időszakot, vagy az **Egyéni** lehetőséget választva megadhat egy adott időtartományt.
 
 ![Időválasztó](media/scope/time-picker.png)
 
-Ha olyan szűrőt állít be a lekérdezésben, amely a fenti táblázatban látható módon használja a standard Time oszlopot, akkor az időválasztó megváltoztatja a **lekérdezésben beállított**időt, és az időválasztó le van tiltva. Ebben az esetben a leghatékonyabban a lekérdezés tetejére helyezheti a szűrőt, így minden további feldolgozásnak csak a szűrt rekordokkal kell dolgoznia.
+Ha olyan szűrőt állít be a lekérdezésben, amely a fenti táblázatban látható módon használja a standard Time oszlopot, akkor az időválasztó megváltoztatja a **lekérdezésben beállított** időt, és az időválasztó le van tiltva. Ebben az esetben a leghatékonyabban a lekérdezés tetejére helyezheti a szűrőt, így minden további feldolgozásnak csak a szűrt rekordokkal kell dolgoznia.
 
 ![Szűrt lekérdezés](media/scope/query-filtered.png)
 
-Ha egy másik munkaterületről vagy alkalmazásból kéri le az adatok lekéréséhez a [munkaterület](workspace-expression.md) vagy az [alkalmazás parancsát](app-expression.md) , az időválasztó eltérően működhet. Ha a hatókör egy Log Analytics munkaterület, és használja az **alkalmazást**, vagy ha a hatókör egy Application Insights alkalmazás, és Ön a **munkaterületet**használja, log Analytics előfordulhat, hogy nem érti, hogy a szűrőben használt oszlopnak meg kell határoznia az időszűrőt.
+Ha a [munkaterület](workspace-expression.md) vagy az [alkalmazás](app-expression.md) parancs használatával kéri le az adatok egy másik munkaterületről vagy klasszikus alkalmazásból való lekérését, az időválasztó eltérően működhet. Ha a hatókör egy Log Analytics munkaterület, és használja az **alkalmazást** , vagy ha a hatókör egy klasszikus Application Insights alkalmazás, és Ön a **munkaterületet** használja, akkor log Analytics előfordulhat, hogy nem érti, hogy a szűrőben használt oszlopnak meg kell határoznia az időszűrőt.
 
 A következő példában a hatókör egy Log Analytics munkaterületre van beállítva.  A lekérdezés **munkaterületet** használ az adatok másik log Analytics munkaterületről való lekéréséhez. Az időválasztó a **lekérdezésben megadott** értékre változik, mert egy olyan szűrőt lát, amely a várt **TimeGenerated** oszlopot használja.
 
 ![Lekérdezés munkaterülettel](media/scope/query-workspace.png)
 
-Ha a lekérdezés a Application Insights alkalmazásból származó adatok lekérésére használja az **alkalmazást** , log Analytics nem ismeri fel a szűrő **timestamp** oszlopát, és az időválasztó változatlan marad. Ebben az esetben mindkét szűrőt alkalmazza a rendszer. A példában csak az elmúlt 24 órában létrehozott rekordok szerepelnek a lekérdezésben, annak ellenére, hogy a **Where** záradékban 7 nap van megadva.
+Ha a lekérdezés a klasszikus Application Insights alkalmazásból származó adatok lekérésére használja az **alkalmazást** , log Analytics nem ismeri fel a szűrő **timestamp** oszlopát, és az időválasztó változatlan marad. Ebben az esetben mindkét szűrőt alkalmazza a rendszer. A példában csak az elmúlt 24 órában létrehozott rekordok szerepelnek a lekérdezésben, annak ellenére, hogy a **Where** záradékban 7 nap van megadva.
 
 ![Lekérdezés az alkalmazással](media/scope/query-app.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Útmutató a Azure Portal log Analyticsjának használatáról](get-started-portal.md).
 - [Útmutató a lekérdezések írásához](get-started-queries.md).

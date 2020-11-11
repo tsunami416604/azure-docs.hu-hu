@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 11/09/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87239e361b518a85cf30352374e7a9b5e530928e
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 32d9683012a5900569740080d61ac21b464a5cd4
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042620"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490610"
 ---
 # <a name="what-is-risk"></a>Mit jelent a kockázat?
 
@@ -24,14 +24,14 @@ A Azure AD Identity Protection kockázati észlelése magában foglalja a címt�
 
 Az Identity Protection lehetővé teszi a szervezetek számára a hatékony erőforrásokhoz való hozzáférést, így gyorsan megtekintheti és reagálhat ezekre a gyanús műveletekre. 
 
->**Megjegyzés:** Az Identity Protection csak a megfelelő hitelesítő adatok használata esetén hoz létre kockázati észleléseket. Ha a bejelentkezés során helytelen hitelesítő adatok szerepelnek, akkor nem a hitelesítő adatok biztonságának kockázatát jelzi.
-
 ![A kockázatos felhasználókat és bejelentkezéseket bemutató biztonsági áttekintés](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
 
+> [!NOTE]
+> Az Identity Protection csak a megfelelő hitelesítő adatok használata esetén hoz létre kockázati észleléseket. Ha a bejelentkezés során helytelen hitelesítő adatok szerepelnek, akkor nem a hitelesítő adatok biztonságának kockázatát jelzi.
 
 ## <a name="risk-types-and-detection"></a>Kockázati típusok és észlelés
 
-Kétféle kockázati **felhasználó** és **Bejelentkezés** , valamint két típusú észlelési vagy számítási módszer áll rendelkezésre a **valós időben** és a **kapcsolat nélküli üzemmódban** .
+Kétféle kockázati **felhasználó** és **Bejelentkezés** , valamint két típusú észlelési vagy számítási módszer áll rendelkezésre a **valós időben** és a **kapcsolat nélküli üzemmódban**.
 
 A valós idejű észlelések nem jelennek meg a jelentéskészítésben öt – tíz percen belül. Előfordulhat, hogy az offline észlelések nem jelennek meg a jelentéskészítésben két-huszonnégy órán keresztül.
 
@@ -41,7 +41,7 @@ A felhasználói kockázat azt jelzi, hogy egy adott identitás vagy fiók bizto
 
 Ezeket a kockázatokat a Microsoft belső és külső veszélyforrások elleni intelligenciával, például a biztonsági kutatókkal, bűnüldözési szakemberekkel, a Microsoft biztonsági csoportjaival és más megbízható forrásokkal együtt offline számítjuk ki.
 
-| Kockázati észlelés | Leírás |
+| Kockázati észlelés | Description |
 | --- | --- |
 | Kiszivárgott hitelesítő adatok | Ez a kockázati észlelési típus azt jelzi, hogy a felhasználó érvényes hitelesítő adatait kiszivárgott. Ha a kiberbűnözők veszélyezteti a legitim felhasználók érvényes jelszavait, gyakran megosztják ezeket a hitelesítő adatokat. Ezt a megosztást általában nyilvánosan közzétesszük a Dark web, a Sites vagy a Trading szolgáltatásban, és a hitelesítő adatokat a fekete piacon forgalmazzák. Ha a Microsoft által kiszivárgott hitelesítő adatokkal rendelkező szolgáltatás felhasználói hitelesítő adatokat kér a sötét webhelyről, illetve más forrásokból, akkor azokat a rendszer az Azure AD-felhasználók aktuális érvényes hitelesítő adataival ellenőrzi, hogy érvényes egyezéseket keres. A kiszivárgott hitelesítő adatokkal kapcsolatos további információkért tekintse meg a [gyakori kérdéseket](#common-questions). |
 | Azure AD-fenyegetések felderítése | Ez a kockázati észlelési típus azt jelzi, hogy az adott felhasználó számára szokatlan felhasználói tevékenység van, vagy konzisztens a Microsoft belső és külső veszélyforrások elleni hírszerzési forrásaira épülő ismert támadási mintákkal. |
@@ -52,7 +52,7 @@ A bejelentkezési kockázat azt jelzi, hogy egy adott hitelesítési kérelem ne
 
 Ezek a kockázatok valós időben vagy a Microsoft belső és külső veszélyforrások elleni intelligenciával, például biztonsági kutatókkal, bűnüldöző szakemberekkel, a Microsoft biztonsági csoportjaival és más megbízható forrásokkal is kiszámíthatók.
 
-| Kockázati észlelés | Észlelés típusa | Leírás |
+| Kockázati észlelés | Észlelés típusa | Description |
 | --- | --- | --- |
 | Névtelen IP-cím | Valós idejű | Ez a kockázati észlelési típus a névtelen IP-címről (például Tor-böngésző vagy névtelen VPN) érkező bejelentkezéseket jelzi. Ezeket az IP-címeket jellemzően olyan szereplők használják, akik el szeretnék rejteni a bejelentkezési telemetria (IP-cím, hely, eszköz stb.) a potenciálisan rosszindulatú szándék érdekében. |
 | Szokatlan utazás | Offline | Ez a kockázati észlelési típus két, földrajzilag távoli helyről származó bejelentkezést azonosít, ahol a felhasználók legalább egyike atipikus lehet a felhasználó számára, a múltbeli viselkedés miatt. Ez a gépi tanulási algoritmus számos más tényezőt is figyelembe vesz, és azt, hogy a felhasználó az első helyről a másodikra utazzon, valamint azt, hogy egy másik felhasználó ugyanazokat a hitelesítő adatokat használja. <br><br> Az algoritmus figyelmen kívül hagyja a "hamis pozitív" állapotot, amely hozzájárul a lehetetlen utazási feltételekhez, például a VPN-hez és a szervezet más felhasználói által rendszeresen használt helyekhez. A rendszer kezdeti tanulási időszaka a legkorábbi 14 nap vagy 10 bejelentkezés, amely során egy új felhasználó bejelentkezési viselkedését tanulja meg. |
@@ -66,7 +66,7 @@ Ezek a kockázatok valós időben vagy a Microsoft belső és külső veszélyfo
 
 ### <a name="other-risk-detections"></a>Egyéb kockázati észlelések
 
-| Kockázati észlelés | Észlelés típusa | Leírás |
+| Kockázati észlelés | Észlelés típusa | Description |
 | --- | --- | --- |
 | További kockázat észlelhető | Valós idejű vagy offline | Ez az észlelés azt jelzi, hogy a rendszer a fenti prémium észlelések egyikét észlelte. Mivel a prémium észlelések csak prémium szintű Azure AD P2-ügyfelek számára láthatók, a "további kockázat észlelhető", prémium szintű Azure AD P2 licencek nélküli ügyfelek számára. |
 
@@ -77,6 +77,10 @@ Ezek a kockázatok valós időben vagy a Microsoft belső és külső veszélyfo
 Az Identity Protection három szinten kategorizálja a kockázatot: alacsony, közepes és magas. 
 
 Habár a Microsoft nem ad meg konkrét részleteket a kockázatok kiszámításáról, azt fogjuk mondani, hogy minden szint nagyobb megbízhatóságot biztosít a felhasználó vagy a bejelentkezés biztonsága szempontjából. Előfordulhat például, hogy egy felhasználó ismeretlen bejelentkezési tulajdonságainak egy példánya nem fenyegeti a kiszivárgott hitelesítő adatokat egy másik felhasználó számára.
+
+### <a name="password-hash-synchronization"></a>Jelszókivonat szinkronizálása
+
+A kockázati észlelések, például a kiszivárgott hitelesítő adatok és a jelszó-szórás megköveteli a jelszó-kivonatok jelenlétét az észleléshez. A jelszó-kivonat szinkronizálásával kapcsolatos további információkért tekintse meg a [jelszó-kivonat szinkronizálásának megvalósítása Azure ad Connect szinkronizálással](../hybrid/how-to-connect-password-hash-synchronization.md)című cikket.
 
 ### <a name="leaked-credentials"></a>Kiszivárgott hitelesítő adatok
 
@@ -103,7 +107,7 @@ Ha még nem látott kiszivárgott hitelesítőadat-kockázati eseményt, az a k�
 
 A hitelesítő adatok feldolgozása közvetlenül a megtalálása után történik, általában naponta több kötegben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A kockázatok enyhítésére rendelkezésre álló szabályzatok](concept-identity-protection-policies.md)
 - [Biztonsági áttekintés](concept-identity-protection-security-overview.md)

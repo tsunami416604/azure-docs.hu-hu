@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: c703dd4053cc27d469d83d344da910e8e5b23ddb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ec260c2e71d1716eb4de9ad25942f61169356dfb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129898"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491341"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Felügyelt identitások használata Azure SQL Database Azure Stream Analytics feladatokból való eléréséhez (előzetes verzió)
 
@@ -44,7 +44,7 @@ Először létre kell hoznia egy felügyelt identitást a Azure Stream Analytics
 
    ![Elsődleges AZONOSÍTÓként megjelenő objektumazonosító](./media/sql-db-output-managed-identity/principal-id.png)
 
-   Az egyszerű szolgáltatásnév neve megegyezik a Stream Analytics feladatokkal. Ha például a feladatainak neve *MyASAJob* , az egyszerű szolgáltatásnév neve is *MyASAJob* .
+   Az egyszerű szolgáltatásnév neve megegyezik a Stream Analytics feladatokkal. Ha például a feladatainak neve *MyASAJob* , az egyszerű szolgáltatásnév neve is *MyASAJob*.
 
 ## <a name="select-an-active-directory-admin"></a>Active Directory-rendszergazda kiválasztása
 
@@ -76,7 +76,7 @@ Ezután létre kell hoznia egy tárolt adatbázis-felhasználót a SQL Database,
 
    A kiszolgáló neve eltérő lehet `<SQL Server name>.database.windows.net` a különböző régiókban. A kínai régiónak például a következőt kell használnia: `<SQL Server name>.database.chinacloudapi.cn` .
  
-   Megadhat egy adott SQL Database a **beállítások > kapcsolati tulajdonságok > az adatbázishoz való kapcsolódás lehetőséggel** .  
+   Megadhat egy adott SQL Database a **beállítások > kapcsolati tulajdonságok > az adatbázishoz való kapcsolódás lehetőséggel**.  
 
    ![SQL Server a kapcsolatok tulajdonságai](./media/sql-db-output-managed-identity/sql-server-connection-properties.png)
 
@@ -90,7 +90,7 @@ Ezután létre kell hoznia egy tárolt adatbázis-felhasználót a SQL Database,
    1. A *záró IP* -címhez használja az **Új tűzfalszabály** ablakának *IP-* címét. 
    1. Válassza a **Mentés** lehetőséget, majd próbálkozzon újra a SQL Server Management Studio való kapcsolódással. 
 
-1. A csatlakozás után hozza létre a tárolt adatbázis-felhasználót. A következő SQL-parancs egy olyan tárolt adatbázis-felhasználót hoz létre, amelynek a neve megegyezik a Stream Analytics feladatokkal. Ügyeljen rá, hogy a zárójelek szerepeljenek a *ASA_JOB_NAMEban* . Használja a következő T-SQL szintaxist, és futtassa a lekérdezést. 
+1. A csatlakozás után hozza létre a tárolt adatbázis-felhasználót. A következő SQL-parancs egy olyan tárolt adatbázis-felhasználót hoz létre, amelynek a neve megegyezik a Stream Analytics feladatokkal. Ügyeljen rá, hogy a zárójelek szerepeljenek a *ASA_JOB_NAMEban*. Használja a következő T-SQL szintaxist, és futtassa a lekérdezést. 
 
    ```sql
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
@@ -110,7 +110,7 @@ Ha csak egy adott táblához vagy objektumhoz kíván engedélyeket adni az adat
 GRANT SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME; 
 ```
 
-Azt is megteheti, hogy a jobb gombbal a SQL Server Management Studio található SQL-adatbázisra kattint, és kiválasztja a **tulajdonságok > engedélyeket** . Az engedélyek menüben megtekintheti a korábban hozzáadott Stream Analytics feladatot, és manuálisan is engedélyezheti vagy megtagadhatja az engedélyeket.
+Azt is megteheti, hogy a jobb gombbal a SQL Server Management Studio található SQL-adatbázisra kattint, és kiválasztja a **tulajdonságok > engedélyeket**. Az engedélyek menüben megtekintheti a korábban hozzáadott Stream Analytics feladatot, és manuálisan is engedélyezheti vagy megtagadhatja az engedélyeket.
 
 ## <a name="create-an-azure-sql-database-output"></a>Azure SQL Database kimenet létrehozása
 
@@ -124,7 +124,11 @@ Győződjön meg arról, hogy létrehozott egy táblát a SQL Database a megfele
 
 1. Adja meg a többi tulajdonságot. SQL Database kimenet létrehozásával kapcsolatos további tudnivalókért tekintse meg [a SQL Database kimenet létrehozása stream Analytics](sql-database-output.md)használatával című témakört. Ha elkészült, válassza a **Mentés** lehetőséget. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="remove-managed-identity"></a>Felügyelt identitás eltávolítása
+
+A Stream Analytics feladatokhoz létrehozott felügyelt identitást csak akkor törli a rendszer, ha a feladatot törlik. A felügyelt identitást nem lehet törölni a feladatok törlése nélkül. Ha már nem szeretné használni a felügyelt identitást, módosíthatja a kimenet hitelesítési módszerét. A felügyelt identitás továbbra is érvényben marad, amíg el nem törli a feladatot, és a rendszer akkor fogja használni, ha a felügyelt identitások hitelesítését újra használta.
+
+## <a name="next-steps"></a>További lépések
 
 * [A Azure Stream Analytics kimenetének megismerése](stream-analytics-define-outputs.md)
 * [Azure Stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md)

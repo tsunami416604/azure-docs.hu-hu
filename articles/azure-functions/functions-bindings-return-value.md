@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 1dd9fabbe235e45290e607f861b67466d33319ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ee9b682bc97dc4044d811392cf4ff5b51a69fd
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212177"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491358"
 ---
 # <a name="using-the-azure-function-return-value"></a>Az Azure Function Return értékének használata
 
@@ -130,6 +130,27 @@ module.exports = function (context, input) {
     context.done(null, json);
 }
 ```
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+A következő kimeneti kötés szerepel a *function.js* fájlban:
+
+```json
+{
+    "name": "Response",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{blobname}"
+}
+```
+
+A következő PowerShell-kód egy http kimeneti kötés visszatérési értékét használja:
+
+```powershell
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body = $blobname
+    })
+```
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -174,7 +195,7 @@ public static String run(
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Functions kötési hibák kezelése](./functions-bindings-errors.md)
