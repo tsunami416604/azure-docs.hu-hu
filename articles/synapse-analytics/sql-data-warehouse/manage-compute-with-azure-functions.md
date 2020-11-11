@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: számítások kezelése Azure Functions'
-description: Az Azure functions használata az SQL-készlet számítási feladatainak kezeléséhez az Azure szinapszis Analyticsben.
+description: Az SQL-készlet számítási feladatainak kezelése a Azure Functions használatával az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 1683977d5c8be965cb329611c5a7fd6602a1cd97
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: bc615322c11a456699d2364cf44cad40e086e851
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043368"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517886"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>A számítási erőforrások kezelése Azure Functions használatával az Azure szinapszis Analytics SQL-készletben
 
@@ -44,7 +44,7 @@ A sablon üzembe helyezésekor három új erőforrást talál: egy ingyenes Azur
 
 ## <a name="change-the-compute-level"></a>A számítási szint módosítása
 
-1. Navigáljon a Függvényalkalmazás szolgáltatást. Ha az alapértelmezett értékekkel helyezte üzembe a sablont, a szolgáltatás neve *DWOperations* . A Függvényalkalmazás megnyitása után megfigyelheti, hogy a rendszer öt függvényt helyezett üzembe a Függvényalkalmazás szolgáltatásban.
+1. Navigáljon a Függvényalkalmazás szolgáltatást. Ha az alapértelmezett értékekkel helyezte üzembe a sablont, a szolgáltatás neve *DWOperations*. A Függvényalkalmazás megnyitása után megfigyelheti, hogy a rendszer öt függvényt helyezett üzembe a Függvényalkalmazás szolgáltatásban.
 
    ![Sablonnal üzembe helyezett függvények](./media/manage-compute-with-azure-functions/five-functions.png)
 
@@ -68,7 +68,7 @@ A sablon üzembe helyezésekor három új erőforrást talál: egy ingyenes Azur
 
 ## <a name="change-the-time-of-the-scale-operation"></a>A skálázási művelet időpontjának módosítása
 
-1. Navigáljon a Függvényalkalmazás szolgáltatást. Ha az alapértelmezett értékekkel helyezte üzembe a sablont, a szolgáltatás neve *DWOperations* . A Függvényalkalmazás megnyitása után megfigyelheti, hogy a rendszer öt függvényt helyezett üzembe a Függvényalkalmazás szolgáltatásban.
+1. Navigáljon a Függvényalkalmazás szolgáltatást. Ha az alapértelmezett értékekkel helyezte üzembe a sablont, a szolgáltatás neve *DWOperations*. A Függvényalkalmazás megnyitása után megfigyelheti, hogy a rendszer öt függvényt helyezett üzembe a Függvényalkalmazás szolgáltatásban.
 
 2. Válassza ki a *DWScaleDownTrigger* vagy a *DWScaleUpTrigger* elemet attól függően, hogy a vertikális fel- vagy leskálázás számítási értékét szeretné módosítani. A függvények kiválasztásakor az ablaktáblán az *index.js* fájlnak kell megjelennie.
 
@@ -167,6 +167,6 @@ Akár 08:00 – DW1000c, a hétköznapokon lefelé DW600c. Szüneteltetés pént
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információk az [időzítő által aktivált](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure-függvényekről.
+További információ az [időzítő trigger](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure Functionsról.
 
 Az SQL Pool [Samples repository](https://github.com/Microsoft/sql-data-warehouse-samples)kifizetése.

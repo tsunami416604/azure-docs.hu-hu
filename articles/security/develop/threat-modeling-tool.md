@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
-ms.openlocfilehash: dcf782a41dbb09135f7a4cd767a94ff90578b6ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a637dc431b0f9cd8c40cfa1c048559a56a6b97f
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87169361"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518056"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -33,7 +33,7 @@ Az eszköz a következőket teszi lehetővé:
 * **Fejlesztőknek és szoftvereknek szánt központilag:** számos megközelítés az eszközökön vagy a támadón alapul. A szoftvereket középpontba vesszük. Olyan tevékenységekre építünk, amelyeket a szoftverfejlesztők és az építészek is ismernek – például képek rajzolásához a szoftver architektúrája számára
 * **Tervezési elemzésre összpontosít:** A "fenyegetések modellezése" kifejezés a követelményekre vagy egy tervezési elemzési módszerre is utalhat. Időnként a kettő összetett keverékére hivatkozik. A veszélyforrások modellezésének Microsoft SDL megközelítése egy célirányos kialakítású elemzési módszer
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi táblázat fontos hivatkozásokat tartalmaz, amelyekkel elsajátíthatja a Threat Modeling Tool: lásd még: [rendszerkövetelmények](threat-modeling-tool-releases.md)
 
@@ -49,7 +49,7 @@ Az alábbi táblázat fontos hivatkozásokat tartalmaz, amelyekkel elsajátítha
 
 Íme néhány régebbi, a veszélyforrások modellezésével kapcsolatos cikk még ma:
 
-* [Cikk a veszélyforrások modellezésének fontosságáról](https://docs.microsoft.com/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
+* [Cikk a veszélyforrások modellezésének fontosságáról](/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
 * [Megbízható számítástechnika által közzétett képzés](https://www.microsoft.com/download/details.aspx?id=16420)
 
 Ismerkedjen meg néhány Threat Modeling Tool szakértővel:

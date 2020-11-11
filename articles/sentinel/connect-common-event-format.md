@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e8d1704b7f6048c14528b784f22d60b01592b54f
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fd08e6cc953f9d8526174fc96dd4e4d1dc9063f5
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347607"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517971"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A külső megoldás összekötése a közös esemény formátumával
 
@@ -27,14 +27,14 @@ Ha olyan külső megoldást csatlakoztat, amely CEF-üzeneteket küld, három l�
 
 1. lépés: [a CEF csatlakoztatása syslog/CEF-továbbító üzembe helyezésével](connect-cef-agent.md) 2. lépés: a [megoldásra vonatkozó lépések végrehajtása](connect-cef-solution-config.md) 3. lépés: a [kapcsolat ellenőrzése](connect-cef-verify.md)
 
-Ez a cikk leírja, hogyan működik a kapcsolat, biztosítja az előfeltételeket, és ismerteti az ügynök üzembe helyezésének lépéseit olyan biztonsági megoldásokban, amelyek a syslog-ra épülő Common Event Format (CEF) üzeneteket küldenek. 
+Ez a cikk leírja, hogyan működik a kapcsolat, felsorolja az előfeltételeket, és bemutatja, hogyan lehet üzembe helyezni egy olyan mechanizmust a biztonsági megoldásokhoz, amely a syslog-ra épülő Common Event Format (CEF) üzeneteket küldi el. 
 
 > [!NOTE] 
 > Az adattárolást annak a munkaterületnek a földrajzi helye tárolja, amelyen az Azure Sentinel alkalmazást futtatja.
 
 Ahhoz, hogy ez a kapcsolat elérhető legyen, telepítenie kell egy syslog-továbbító kiszolgálót a készülék és az Azure Sentinel közötti kommunikáció támogatásához.  A kiszolgáló egy dedikált linuxos gépről (VM vagy helyszíni) áll, amelyen telepítve van a Linux rendszerhez készült Log Analytics-ügynök. 
 
-Az alábbi ábra az Azure-beli linuxos virtuális gépek esetén történő telepítést ismerteti:
+Az alábbi ábra az Azure-beli Linux rendszerű virtuális gépek esetén történő telepítést ismerteti:
 
  ![CEF az Azure-ban](./media/connect-cef/cef-syslog-azure.png)
 
@@ -82,7 +82,7 @@ Győződjön meg arról, hogy a gép a következő követelményeknek is megfele
   - Emelt szintű engedélyekkel (sudo) kell rendelkeznie a gépen. 
 
 - Szoftverkövetelmények
-  - Győződjön meg arról, hogy a Python 2,7 fut a gépen.
+  - Győződjön meg arról, hogy a Python 2,7 vagy a 3 fut a gépen.
 
 ## <a name="next-steps"></a>Következő lépések
 

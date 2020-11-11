@@ -3,12 +3,12 @@ title: A nyilvános IP-funkciók használata az Azure VMware-megoldásban
 description: Ez a cikk azt ismerteti, hogyan használható a nyilvános IP-funkció az Azure Virtual WAN-ban.
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: 7ff1debe7b52599a2e4f20378f385359325be2f7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 036ec00077720e9dc3197bf9235bea34b77fb5f4
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504407"
+ms.locfileid: "94517903"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>A nyilvános IP-funkciók használata az Azure VMware-megoldásban
 
@@ -39,14 +39,14 @@ Ez a cikk részletesen ismerteti, hogyan használhatja a nyilvános IP-funkciók
 
 :::image type="content" source="media/public-ip-usage/public-ip-architecture-diagram.png" alt-text="Nyilvános IP-architektúra diagramja" border="false" lightbox="media/public-ip-usage/public-ip-architecture-diagram.png":::
 
-Az architektúra ábrán egy Azure VMware megoldási környezetben üzemeltetett webkiszolgáló látható, amely RFC1918 magánhálózati IP-címekkel van konfigurálva.  A webszolgáltatás elérhetővé válik az interneten a virtuális WAN nyilvános IP-funkcióival.  A nyilvános IP-cím jellemzően Azure Firewall lefordított cél NAT. A DNAT szabályokkal a tűzfalszabályok a nyilvános IP-címekre irányuló kéréseket privát címekre (webkiszolgálóra) fordítják le egy porttal.
+Az architektúra ábrán egy Azure VMware megoldási környezetben üzemeltetett webkiszolgáló látható, amely RFC1918 magánhálózati IP-címekkel van konfigurálva.  A webszolgáltatás elérhetővé válik az interneten a virtuális WAN nyilvános IP-funkcióival.  A nyilvános IP-cím jellemzően Azure Firewall lefordított cél NAT. A DNAT-szabályokkal a tűzfalszabályok a nyilvános IP-címekre irányuló kéréseket privát címekre (webkiszolgálóra) fordítják egy porttal.
 
 A felhasználói kérések megnyomják a tűzfalat egy nyilvános IP-címen, amelyet a rendszer a Azure Firewall DNAT-szabályainak használatával fordít a magánhálózati IP-címekre. A tűzfal ellenőrzi a NAT-táblázatot, és ha a kérelem megfelel egy bejegyzésnek, továbbítja a forgalmat a lefordított címről és portra az Azure VMware-megoldás környezetében.
 
 A webkiszolgáló fogadja a kérést, és a kért információkat vagy oldalt válaszolja meg a tűzfalon, majd a tűzfal továbbítja az adatokat a felhasználónak a nyilvános IP-címen.
 
 ## <a name="test-case"></a>Teszteset
-Ebben az esetben közzé kell tennie az IIS-webkiszolgálót az interneten. Az Azure VMware-megoldás nyilvános IP-funkciója segítségével közzéteheti a webhelyet egy nyilvános IP-címen.  A NAT-szabályokat a tűzfalon fogjuk konfigurálni, és a nyilvános IP-címmel elérjük az Azure VMware megoldás erőforrását (a webkiszolgálóval rendelkező virtuális gépeket).
+Ebben az esetben közzé fogja tenni az IIS webkiszolgálót az interneten. Az Azure VMware-megoldás nyilvános IP-funkciója segítségével közzéteheti a webhelyet egy nyilvános IP-címen.  A NAT-szabályokat a tűzfalon is konfigurálhatja, és a nyilvános IP-címmel elérheti az Azure VMware megoldás erőforrását (virtuális gépek webkiszolgálóval).
 
 ## <a name="deploy-virtual-wan"></a>A Virtual WAN üzembe helyezése
 
@@ -66,9 +66,9 @@ Ebben az esetben közzé kell tennie az IIS-webkiszolgálót az interneten. Az A
 
 1. Fogadja el az alapértelmezett értékeket, vagy módosítsa, majd válassza a **Létrehozás** lehetőséget.
 
-   - Virtuális nagykiterjedésű hálózati erőforráscsoport
+   - Virtuális WAN-erőforráscsoport
 
-   - Virtuális nagykiterjedésű hálózat neve
+   - Virtuális WAN neve
 
    - Virtuális hub-címterület (új, nem átfedésben lévő IP-címtartomány használata)
 
@@ -142,7 +142,7 @@ Az összes összetevő üzembe helyezése után megtekintheti őket a hozzáadot
 
 1. Válasszon egy hubot a listából, és válassza a **Hozzáadás** lehetőséget.
 
-   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Képernyőkép, amely megjeleníti a kiválasztott hubokat, amelyeket a rendszer Scecured virtuális hubokra konvertál." border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
+   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Képernyőkép, amely a védett virtuális hubokba konvertált kiválasztott hubokat jeleníti meg." border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
 1. Válassza a **Tovább: Címkék** lehetőséget. 
 

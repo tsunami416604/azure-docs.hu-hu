@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 336e708334778e107331f5f393476c4b3dbb98a3
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 996f138a14923319381738e7a55cd7ba4e8c4320
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507484"
+ms.locfileid: "94517767"
 ---
 # <a name="identity-model"></a>Identitási modell
 
@@ -59,3 +59,9 @@ Az Azure kommunikációs szolgáltatás elérési kulcsainak rotációja a korá
 Javasoljuk, hogy a hozzáférési jogkivonatokat a kiszolgálóoldali szolgáltatásban, nem pedig az ügyfél alkalmazásában adja meg. Ennek az az oka, hogy a kiadáshoz hozzáférési kulcsra vagy felügyelt identitásra van szükség. Biztonsági okokból nem ajánlott a hozzáférési kulcsok megosztása az ügyfél alkalmazásával. Az ügyfélalkalmazás olyan megbízható szolgáltatási végpontot használjon, amely képes hitelesíteni az ügyfeleit, és kiadni a hozzáférési jogkivonatot a nevükben. Az architektúrával kapcsolatos további részletek [itt](./client-and-server-architecture.md)találhatók.
 
 Ha a hozzáférési jogkivonatokat egy tárolóba gyorsítótárazza, javasoljuk, hogy használja a titkosítást. A hozzáférési jogkivonat bizalmas adatok, és rosszindulatú tevékenységekhez használható, ha az nem védett. A hozzáférési jogkivonat birtokában inicializálhatja az SDK-t, és hozzáférhet az API-hoz. Az elérhető API csak hatókörön alapul, és a hozzáférési jogkivonat rendelkezik. Javasoljuk, hogy csak a hatókörökkel rendelkező hozzáférési tokenek legyenek kibocsátva, amelyek szükségesek.
+
+## <a name="next-steps"></a>Következő lépések
+
+* A hozzáférési tokenek kezelésének bemutatása: [hozzáférési tokenek létrehozása és kezelése](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)
+* A hitelesítés bemutatása: [hitelesítés az Azure kommunikációs szolgáltatásokkal](https://docs.microsoft.com/azure/communication-services/concepts/authentication)
+* Az adattárolással és az adatvédelemmel kapcsolatos bevezetésért lásd: [régió rendelkezésre állása és az adatok tartózkodási](https://docs.microsoft.com/azure/communication-services/concepts/privacy) helye
