@@ -15,10 +15,6 @@
       href: virtual-wan-expressroute-portal.md
 - name: Alapelvek
   items:
-    - name: Biztonság
-      items:
-        - name: Biztonsági alapkonfiguráció
-          href: security-baseline.md
     - name: Távmunka
       items:
         - name: A távmunka támogatása
@@ -109,6 +105,8 @@
           href: about-vpn-profile-download.md
         - name: Globális és hubalapú profil
           href: global-hub-profile.md
+        - name: "Az Azure VPN-ügyfél konfigurálása Windows\_10-hez"
+          href: openvpn-azure-ad-client.md
         - name: Az OpenVPN-ügyfelek konfigurálása
           href: howto-openvpn-clients.md?
         - name: AlwaysOn VPN felhasználói alagút konfigurálása
@@ -119,8 +117,6 @@
           href: openvpn-azure-ad-mfa.md
         - name: Azure AD-hitelesítés konfigurálása
           href: virtual-wan-point-to-site-azure-ad.md
-        - name: "Az Azure VPN-ügyfél konfigurálása Windows\_10-hez"
-          href: openvpn-azure-ad-client.md
         - name: Több alkalmazásra kiterjedő Azure AD-hitelesítés konfigurálása
           href: openvpn-azure-ad-tenant-multi-app.md
     - name: Útválasztás

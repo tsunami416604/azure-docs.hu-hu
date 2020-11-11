@@ -12,6 +12,8 @@
   items:
     - name: SCIM-végpont létrehozása és az üzembe helyezés konfigurálása
       href: use-scim-to-provision-users-and-groups.md
+    - name: Attribútumleképezések testreszabása
+      href: customize-application-attributes.md
     - name: Alkalmazásspecifikus üzembehelyezési oktatóanyagok
       href: /azure/active-directory/saas-apps
 - name: Alapelvek
@@ -30,8 +32,6 @@
   items:
     - name: Üzembe helyezés konfigurálása katalógusbeli alkalmazás esetében
       href: configure-automatic-user-provisioning-portal.md
-    - name: Attribútumleképezések testreszabása
-      href: customize-application-attributes.md
     - name: Felhasználók és csoportok hatókörbe foglalása vagy hatókörből való kizárása
       items:
         - name: Átadásra váró felhasználók vagy csoportok hatókörkezelése

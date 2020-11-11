@@ -41,8 +41,6 @@
           href: batch-transcription.md
     - name: Oktatóanyagok
       items:
-        - name: Blobtárolóban tárolt beszéd felismerése
-          href: quickstarts/from-blob.md
         - name: Pontosság javítása bérlőmodellekkel
           href: tutorial-tenant-model.md
     - name: Testreszabás
