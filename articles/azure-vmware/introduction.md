@@ -3,12 +3,12 @@ title: Bevezetés
 description: Ismerje meg az Azure VMware-megoldás funkcióit és előnyeit a VMware-alapú számítási feladatok Azure-beli üzembe helyezéséhez és kezeléséhez.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: b71427402e08167e5868128ed1e553c69bef425d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1875f535a5ca3e346362409c143da82cb8c07a12
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91574457"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488587"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Mi az az Azure VMware Solution?
 
@@ -26,7 +26,7 @@ Az Azure VMware-megoldás privát felhők és fürtök egy operációs rendszer 
 
 Az új privát felhők üzembe helyezése a Azure Portal vagy az Azure CLI használatával történik.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 [!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
@@ -44,7 +44,7 @@ Az Azure VMware-megoldás saját felhő-és VMware-szoftverének rendszeres fris
 
 ## <a name="monitoring-your-private-cloud"></a>Saját felhő figyelése
 
-Miután telepítette az Azure VMware-megoldást az előfizetésbe, [Azure monitor naplók](../azure-monitor/overview.md) automatikusan létrejönnek. Emellett a saját felhőben lévő virtuális gépekről is gyűjthet naplókat. Az [MMA-ügynököt letöltheti és telepítheti](../azure-monitor/platform/log-analytics-agent.md#installation-options) az Azure VMware-megoldás privát felhőkben futtatott Linux és Windows rendszerű virtuális gépeken, valamint engedélyezheti az [Azure Diagnostics bővítményt](../azure-monitor/platform/diagnostics-extension-overview.md)is. Futtathatja ugyanazokat a lekérdezéseket is, amelyeket általában a virtuális gépeken futtat. További információ a lekérdezések létrehozásáról: [lekérdezések írása](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries). Az Azure VMware-megoldáson belüli figyelési minták hasonlóak az Azure Virtual Machineshoz a IaaS platformon belül. További információk és útmutatók: Azure-beli [virtuális gépek figyelése Azure monitorokkal](../azure-monitor/insights/monitor-vm-azure.md).
+Miután telepítette az Azure VMware-megoldást az előfizetésbe, [Azure monitor naplók](../azure-monitor/overview.md) automatikusan létrejönnek. Emellett a saját felhőben lévő virtuális gépekről is gyűjthet naplókat. Az [MMA-ügynököt letöltheti és telepítheti](../azure-monitor/platform/log-analytics-agent.md#installation-options) az Azure VMware-megoldás privát felhőkben futtatott Linux és Windows rendszerű virtuális gépeken, valamint engedélyezheti az [Azure Diagnostics bővítményt](../azure-monitor/platform/diagnostics-extension-overview.md)is. Futtathatja ugyanazokat a lekérdezéseket is, amelyeket általában a virtuális gépeken futtat. További információ a lekérdezések létrehozásáról: [Azure monitor naplók áttekintése](../azure-monitor/platform/data-platform-logs.md). Az Azure VMware-megoldáson belüli figyelési minták hasonlóak az Azure Virtual Machineshoz a IaaS platformon belül. További információk és útmutatók: Azure-beli [virtuális gépek figyelése Azure monitorokkal](../azure-monitor/insights/monitor-vm-azure.md).
 
 ## <a name="next-steps"></a>További lépések
 

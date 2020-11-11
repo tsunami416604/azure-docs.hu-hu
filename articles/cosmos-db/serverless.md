@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 75d22a5021c7c8ae3a12f25644f2875e0ccf8cdd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: c811a2ea5c06250068e7c0276e4b79e9108d920d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098756"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490355"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Kiszolgáló nélküli Azure Cosmos DB (előzetes verzió)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -51,9 +51,6 @@ Tekintse meg a [kiépített átviteli sebesség és a kiszolgáló nélküli cik
 
 A kiszolgáló nélküli egy új Azure Cosmos-fióktípus, ami azt jelenti, hogy új fiók létrehozásakor a **kiépített átviteli sebesség** és a **kiszolgáló** nélküli lehetőséget kell választania. Létre kell hoznia egy új kiszolgáló nélküli fiókot a kiszolgáló nélküli használat megkezdéséhez. Az előzetes verzióban az új kiszolgáló nélküli fiók létrehozásának egyetlen támogatott módja [a Azure Portal](create-cosmosdb-resources-portal.md). A meglévő fiókok kiszolgáló nélküli üzemmódba való áttelepítése jelenleg nem támogatott.
 
-> [!NOTE]
-> A kiszolgáló nélküli verzió jelenleg csak a Azure Cosmos DB Core (SQL) API-ban támogatott.
-
 Bármely kiszolgáló nélküli fiókban létrehozott tároló kiszolgáló nélküli tároló. A kiszolgáló nélküli tárolók ugyanazokat a képességeket teszik elérhetővé, mint a kiépített átviteli sebesség módban létrehozott tárolók, így az adatok pontosan ugyanúgy olvashatók, írhatók és lekérdezve. A kiszolgáló nélküli fiókok és tárolók azonban speciális tulajdonságokkal is rendelkeznek:
 
 > [!IMPORTANT]
@@ -89,7 +86,7 @@ A kiszolgáló nélküli erőforrások bizonyos teljesítménybeli jellemzőket 
 > [!NOTE]
 > Az Azure előzetes verziójának részeként Azure Cosmos DB kiszolgáló nélküli kizárva a szolgáltatói szerződések (SLA). A fent említett teljesítmény-jellemzők előzetes verzióként jelennek meg, ha általánosan elérhető az ajánlat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg a kiszolgáló nélküli használattal a következő cikkekkel:
 

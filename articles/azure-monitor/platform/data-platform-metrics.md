@@ -9,37 +9,58 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: b05007e2ea7815afbba2a7a71368686cf7c049fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f64a91e3b285c265296c361366a10443eda18201
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325610"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489427"
 ---
-# <a name="metrics-in-azure-monitor"></a>Metrikák az Azure Monitorban
+# <a name="azure-monitor-metrics-overview"></a>Azure Monitor mérőszámok áttekintése
+Azure Monitor mérőszámok olyan Azure Monitor szolgáltatása, amely a [figyelt erőforrások](../monitor-reference.md) numerikus adatait egy idősorozat-adatbázisba gyűjti. A metrikák olyan numerikus értékek, amelyeket rendszeres időközönként gyűjtenek, és egy adott rendszer bizonyos aspektusait egy adott időpontban írják le. A Azure Monitor metrikái nagyon egyszerűek, és a közel valós idejű forgatókönyvek támogatása révén különösen hasznosak lehetnek a riasztások és a problémák gyors észlelése érdekében. A mérőszámok Explorerrel interaktív módon elemezheti őket, és proaktívan értesítheti a riasztást, ha egy érték átlép egy küszöbértéket, vagy egy munkafüzetben vagy irányítópulton jeleníti meg őket.
+
 
 > [!NOTE]
-> A Azure Monitor adatplatform két alapvető adattípuson alapul: mérőszámok és naplók. Ez a cikk a metrikákat ismerteti. A naplók részletes leírását Azure Monitor és az [adatplatformot](data-platform.md) a kettő összevetéséhez [Azure monitor naplófájlokban](data-platform-logs.md) találhat.
+> Azure Monitor mérőszámok az Azure Monitor támogató adatplatform fele. A másik [Azure monitor naplók](data-platform-logs.md) , amelyek a napló-és teljesítményadatokat gyűjtik és rendszerezik, és lehetővé teszik, hogy a rendszer részletes lekérdezési nyelvvel elemezze azokat. A metrikák sokkal könnyebbek, mint Azure Monitor naplókban tárolt adatok, és a közel valós idejű forgatókönyvek támogatása lehetővé teszi számukra, hogy különösen hasznosak legyenek a riasztások és a problémák gyors észlelése érdekében. A metrikák azonban csak egy adott struktúrában tárolhatják a numerikus adatokat, míg a naplók számos különböző adattípust tárolhatnak a saját struktúrájuk használatával. A naplók adatain összetett elemzéseket is végrehajthat, ha olyan naplózási lekérdezéseket használ, amelyek nem használhatók a metrikák adatok elemzéséhez.
 
-A Azure Monitor metrikái nagyon egyszerűek, és a közel valós idejű forgatókönyvek támogatása révén különösen hasznosak lehetnek a riasztások és a problémák gyors észlelése érdekében. Ez a cikk bemutatja, hogyan épülnek fel a metrikák, mit tehet velük, és azonosíthatja azokat a különböző adatforrásokat, amelyek mérőszámokban tárolnak adatokat.
-
-## <a name="what-are-metrics"></a>Mik azok a metrikák?
-A metrikák numerikus értékek, amelyek egy rendszer valamely elemét egy adott időpontra vonatkozóan írják le. A metrikák gyűjtése rendszeres időközönként történik, és a riasztásokhoz hasznos, mivel azok gyakran mintavételezésre használhatók, és a riasztások gyorsan és viszonylag egyszerű logikával is elindíthatók.
 
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Mit tehet a Azure Monitor metrikákkal?
-A következő táblázat felsorolja azokat a különböző módszereket, amelyekkel a metrikai adatokat Azure Monitor használhatja.
+A következő táblázat felsorolja a Azure Monitor metrikáinak különböző módszereit.
 
-|  | Leírás |
+|  |  |
 |:---|:---|
 | **Elemzés** | A [metrikák](metrics-charts.md) segítségével elemezheti a diagramon összegyűjtött mérőszámokat, és összehasonlíthatja a különböző erőforrások metrikáit. |
-| **Vizualizáció** | Diagram rögzítése a metrikák Intézőből egy Azure- [irányítópultra](../learn/tutorial-app-dashboards.md).<br>Hozzon létre egy [munkafüzetet](./workbooks-overview.md) , amely kombinálható több adatkészlettel egy interaktív jelentésben. Egy lekérdezés eredményeinek exportálása a [Grafana](grafana-plugin.md) , hogy kihasználja az irányítópultot, és kombinálja más adatforrásokkal. |
 | **Riasztás** | Olyan [metrikai riasztási szabályt](alerts-metric.md) konfigurálhat, amely értesítést küld, vagy [automatizált műveletet hajt végre](action-groups.md) , ha a metrika értéke átlépi a küszöbértéket. |
+| **Vizualizáció** | Diagram rögzítése a metrikák Intézőből egy Azure- [irányítópultra](../learn/tutorial-app-dashboards.md).<br>Hozzon létre egy [munkafüzetet](./workbooks-overview.md) , amely kombinálható több adatkészlettel egy interaktív jelentésben. Egy lekérdezés eredményeinek exportálása a [Grafana](grafana-plugin.md) , hogy kihasználja az irányítópultot, és kombinálja más adatforrásokkal. |
 | **Automatizálás** |  Az [autoscale](autoscale-overview.md) használatával növelheti vagy csökkentheti az erőforrásokat egy küszöbértéket áthaladó metrika értéke alapján. |
-| **Exportálás** | [Átirányítja a metrikákat a naplókba](./resource-logs.md#send-to-azure-storage) , hogy Azure monitor mérőszámokban lévő adatokat elemezze Azure monitor-naplókba, és hogy a metrikus értékeket 93 napnál hosszabb ideig tárolja.<br>Stream-metrikák egy [Event hub](stream-monitoring-data-event-hubs.md) -hoz, hogy átirányítsa őket a külső rendszerekre. |
 | **Beolvasni** | Metrikai értékek elérése parancssorból PowerShell- [parancsmagok](/powershell/module/az.applicationinsights) használatával<br>Az egyéni alkalmazás metrikai értékeinek elérése [REST API](rest-api-walkthrough.md)használatával.<br>Metrikai értékek elérése parancssorból a  [CLI](/cli/azure/monitor/metrics)használatával. |
+| **Exportálás** | [Átirányítja a metrikákat a naplókba](./resource-logs.md#send-to-azure-storage) , hogy Azure monitor mérőszámokban lévő adatokat elemezze Azure monitor-naplókba, és hogy a metrikus értékeket 93 napnál hosszabb ideig tárolja.<br>Stream-metrikák egy [Event hub](stream-monitoring-data-event-hubs.md) -hoz, hogy átirányítsa őket a külső rendszerekre. |
 | **Archívum** | Az erőforrás teljesítmény-vagy állapotadatok [archiválása](./platform-logs-overview.md) megfelelőségi, naplózási vagy offline jelentéskészítési célokra. |
 
-## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Hogyan épülnek fel Azure Monitor mérőszámok adatai?
+![A metrikák áttekintése](media/data-platform-metrics/metrics-overview.png)
+
+
+## <a name="data-collection"></a>Adatgyűjtés
+Az Azure Monitor által összegyűjtött mérőszámok három alapvető forrása. A metrikák a Azure Monitor metrikus adatbázisban való gyűjtése után a forrástól függetlenül is kiértékelhető.
+
+**Azure-erőforrások**. A platform metrikáit az Azure-erőforrások hozzák létre, és megtekinthetik az állapotukat és a teljesítményt. Minden típusú erőforrás [külön mérőszámok készletét hozza létre, és](metrics-supported.md) nincs szükség konfigurációra. A platform metrikáit egyperces gyakorisággal gyűjtjük az Azure-erőforrásokból, kivéve, ha a mérőszám definíciójában másképp van megadva. 
+
+**Alkalmazások**. A metrikákat Application Insights hozza létre a figyelt alkalmazásokhoz, és segít a teljesítménnyel kapcsolatos problémák észlelésében és a trendek nyomon követésében az alkalmazás használatának módjában. Ez olyan értékeket foglal magában, mint a _kiszolgáló válaszideje_ és a _böngésző kivételei_.
+
+**Virtuálisgép-ügynökök**. A metrikák egy virtuális gép vendég operációs rendszeréről lesznek gyűjtve. Engedélyezze a vendég operációs rendszer metrikáit a Windows-alapú virtuális gépekhez [Windows diagnosztikai bővítménnyel (wad)](./diagnostics-extension-overview.md) és a [InfluxData](https://www.influxdata.com/time-series-platform/telegraf/)-val rendelkező Linux rendszerű virtuális gépekhez.
+
+**Egyéni metrikák**. A metrikákat az automatikusan elérhető szabványos metrikák mellett is meghatározhatja. Egyéni metrikákat adhat meg az [alkalmazásban](../app/api-custom-events-metrics.md) , amelyet Application Insights figyel, vagy egyéni metrikákat hozhat létre egy Azure-szolgáltatáshoz az [Egyéni metrikák API](metrics-store-custom-rest-api.md)használatával.
+
+- Tekintse meg a [Azure monitor által figyelt adatokat?](../monitor-reference.md) az adatforrások teljes listáját, amelyek adatokat küldhetnek Azure monitor metrikáknak.
+
+## <a name="metrics-explorer"></a>Metrikaböngésző
+A [Metrikaböngésző](metrics-charts.md) használatával interaktív módon elemezheti a metrikus adatbázisban lévő adatokat, és az idő múlásával több mérőszám értékét ábrázolhatja. A diagramokat rögzítheti egy irányítópulton, és megtekintheti azokat más vizualizációkkal. A metrikákat az [Azure monitoring REST API](rest-api-walkthrough.md)használatával is lekérheti.
+
+![Metrikaböngésző](media/data-platform/metrics-explorer.png)
+
+- A metrikák Explorer használatának megkezdéséhez tekintse meg [a Azure monitor mérőszámok Explorer](metrics-getting-started.md) használatába című témakört.
+
+## <a name="data-structure"></a>Adatszerkezet
 Azure Monitor metrikák által gyűjtött adatokat egy idősorozat-adatbázis tárolja, amely az időbélyegzővel ellátott adatok elemzésére van optimalizálva. A metrikai értékek minden készlete egy idősorozat a következő tulajdonságokkal:
 
 * Az érték gyűjtésének időpontja
@@ -50,9 +71,9 @@ Azure Monitor metrikák által gyűjtött adatokat egy idősorozat-adatbázis t�
 * Egyes mérőszámok több dimenzióval rendelkezhetnek, a [többdimenziós metrikák](#multi-dimensional-metrics)részben leírtak szerint. Az egyéni metrikák legfeljebb 10 dimenzióval rendelkezhetnek.
 
 ## <a name="multi-dimensional-metrics"></a>Többdimenziós metrikák
-A metrikus adatok egyik kihívása, hogy gyakran korlátozott információkkal szolgálnak az összegyűjtött értékek kontextusának biztosításához. Azure Monitor ez a kihívás többdimenziós metrikákkal foglalkozik. A mérőszámok méretei olyan név-érték párok, amelyek további adatokat hordoznak a metrika értékének leírásához. Egy metrikus _rendelkezésre álló_ lemezterület például rendelkezhet a " _C:_, _D:_" értékkel rendelkező _meghajtóval_ , amely lehetővé tenné a rendelkezésre álló lemezterület megtekintését az összes meghajtón vagy az egyes meghajtókon.
+A metrikus adatok egyik kihívása, hogy gyakran korlátozott információkkal szolgálnak az összegyűjtött értékek kontextusának biztosításához. Azure Monitor ez a kihívás többdimenziós metrikákkal foglalkozik. A mérőszámok méretei olyan név-érték párok, amelyek további adatokat hordoznak a metrika értékének leírásához. Egy metrikus _rendelkezésre álló_ lemezterület például rendelkezhet a " _C:_ , _D:_ " értékkel rendelkező _meghajtóval_ , amely lehetővé tenné a rendelkezésre álló lemezterület megtekintését az összes meghajtón vagy az egyes meghajtókon.
 
-Az alábbi példa egy _hálózati átviteli sebességű_feltételezett metrikai adatkészleteket mutat be. Az első adatkészlet nem rendelkezik dimenziókkal. A második adatkészlet a két dimenziót, az _IP-címet_ és az _irányt_tartalmazó értékeket jeleníti meg:
+Az alábbi példa egy _hálózati átviteli sebességű_ feltételezett metrikai adatkészleteket mutat be. Az első adatkészlet nem rendelkezik dimenziókkal. A második adatkészlet a két dimenziót, az _IP-címet_ és az _irányt_ tartalmazó értékeket jeleníti meg:
 
 ### <a name="network-throughput"></a>Hálózati átviteli sebesség
 
@@ -78,22 +99,6 @@ Ez a nem dimenziós metrika csak olyan alapvető kérdésekre tud válaszolni, m
 | 8/9/2017 8:15 | IP = "10.24.2.15"  | Direction = "fogadás" | 100,1 kbps |
 
 Ez a mérőszám a "mi volt az egyes IP-címek hálózati átviteli sebessége?" és a "mennyi adat lett elküldve, és nem kapott adatokat A többdimenziós mérőszámok további analitikai és diagnosztikai értékeket is magukban foglalhatnak a nem dimenziós mérőszámokhoz képest.
-
-## <a name="interacting-with-azure-monitor-metrics"></a>Az Azure Monitor-metrikák használata
-A [Metrikaböngésző](metrics-charts.md) használatával interaktív módon elemezheti a metrikus adatbázisban lévő adatokat, és az idő múlásával több mérőszám értékét ábrázolhatja. A diagramokat rögzítheti egy irányítópulton, és megtekintheti azokat más vizualizációkkal. A metrikákat az [Azure monitoring REST API](rest-api-walkthrough.md)használatával is lekérheti.
-
-![Metrikaböngésző](media/data-platform/metrics-explorer.png)
-
-## <a name="sources-of-azure-monitor-metrics"></a>Azure Monitor mérőszámok forrásai
-Az Azure Monitor által összegyűjtött mérőszámok három alapvető forrása. A metrikák a Azure Monitor metrikus adatbázisban való gyűjtése után a forrástól függetlenül is kiértékelhető.
-
-A **platform metrikáit** az Azure-erőforrások hozzák létre, és megtekinthetik az állapotukat és a teljesítményt. Minden típusú erőforrás [külön mérőszámok készletét hozza létre, és](metrics-supported.md) nincs szükség konfigurációra. A platform metrikáit egyperces gyakorisággal gyűjtjük az Azure-erőforrásokból, kivéve, ha a mérőszám definíciójában másképp van megadva. 
-
-A vendég operációs rendszer **mérőszámait** egy virtuális gép vendég operációs rendszere gyűjti. Engedélyezze a vendég operációs rendszer metrikáit a Windows-alapú virtuális gépekhez [Windows diagnosztikai bővítménnyel (wad)](./diagnostics-extension-overview.md) és a [InfluxData](https://www.influxdata.com/time-series-platform/telegraf/)-val rendelkező Linux rendszerű virtuális gépekhez.
-
-Az **alkalmazás-metrikákat** Application Insights hozza létre a figyelt alkalmazásokhoz, és segít a teljesítménnyel kapcsolatos problémák észlelésében és a trendek nyomon követésében az alkalmazás használatának módjában. Ez olyan értékeket foglal magában, mint a _kiszolgáló válaszideje_ és a _böngésző kivételei_.
-
-Az **Egyéni metrikák** olyan mérőszámok, amelyeket az automatikusan elérhető szabványos metrikák mellett határozhat meg. Egyéni metrikákat adhat meg az [alkalmazásban](../app/api-custom-events-metrics.md) , amelyet Application Insights figyel, vagy egyéni metrikákat hozhat létre egy Azure-szolgáltatáshoz az [Egyéni metrikák API](metrics-store-custom-rest-api.md)használatával.
 
 ## <a name="retention-of-metrics"></a>Mérőszámok megőrzése
 Az Azure-ban a legtöbb erőforrás esetében a metrikák 93 napig tárolódnak. Bizonyos kivételek:

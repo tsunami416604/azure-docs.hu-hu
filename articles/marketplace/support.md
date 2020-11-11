@@ -4,15 +4,15 @@ description: Ismerje meg a partner Center támogatási lehetőségeit, beleértv
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: navits09
+ms.author: navits
 ms.date: 09/18/2020
-ms.openlocfilehash: 983f7e400a33cb36f30505e5a8a28811d9d4cdfb
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b042d1e1f38b2a4a84522d58ad482d4262f69a4a
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284250"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488893"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>A kereskedelmi piactér program támogatása a partner Centerben
 
@@ -31,7 +31,7 @@ A Microsoft számos termék és szolgáltatás támogatását biztosítja. A meg
 
    ![Támogatás legördülő menü](./media/support/commercial-marketplace-support-pane.png)
 
-    Vagy nyissa meg a **Kezdőlap** ablaktáblát, és kattintson a **Súgó és támogatás**elemre.
+    Vagy nyissa meg a **Kezdőlap** ablaktáblát, és kattintson a **Súgó és támogatás** elemre.
 
    ![Súgó és támogatás a kezdőlapon](./media/support/homepage-help-support.png)
 
@@ -54,27 +54,27 @@ Most már készen áll egy támogatási jegy megnyitására a **Súgó és támo
 
 **2. lehetőség:** Témakörök tallózása – > **Kategória** kiválasztása = kereskedelmi piactér – > válassza ki a megfelelő **témakört** , majd **altémakört**.
 
-Ha megtalálta a kívánt témakört, válassza a **megoldások áttekintése**elemet.
+Ha megtalálta a kívánt témakört, válassza a **megoldások áttekintése** elemet.
 
 ![Következő lépés](./media/support/next-step.png)
 
 A következő lehetőségek lesznek elérhetők:
 
-- Egy másik témakör kiválasztásához válasszon egy másik témakör-hivatkozást a **kiválasztott probléma**területen.
-- Tekintse át a probléma leírását, ha van ilyen.  Ez az **ajánlott lépések**felett látható szöveg.
-- Tekintse át az **ajánlott lépéseket**, ha vannak ilyenek.
-- Tekintse át az **ajánlott dokumentumokat**, ha vannak ilyenek.
+- Egy másik témakör kiválasztásához válasszon egy másik témakör-hivatkozást a **kiválasztott probléma** területen.
+- Tekintse át a probléma leírását, ha van ilyen.  Ez az **ajánlott lépések** felett látható szöveg.
+- Tekintse át az **ajánlott lépéseket** , ha vannak ilyenek.
+- Tekintse át az **ajánlott dokumentumokat** , ha vannak ilyenek.
 
 ![Ajánlott megoldások](./media/support/recommended-solutions.png)
 
-Ha nem találja a választ a **javasolt megoldásokban**, válassza a **probléma részleteinek megadása**lehetőséget. Fejezze be az összes kötelező mezőt a megoldási folyamat felgyorsításához, majd válassza a **Küldés**lehetőséget.
+Ha nem találja a választ a **javasolt megoldásokban** , válassza a **probléma részleteinek megadása** lehetőséget. Fejezze be az összes kötelező mezőt a megoldási folyamat felgyorsításához, majd válassza a **Küldés** lehetőséget.
 
 >[!Note]
 >Ha még nem jelentkezett be a partner Centerben, és a témakör hitelesítésre szorul, a folytatáshoz a rendszer kérni fogja a bejelentkezést.  Nyilvános témakörök esetén nincs szükség hitelesítésre.
 
 ## <a name="track-your-existing-support-requests"></a>Meglévő támogatási kérelmek nyomon követése
 
-A nyitott és lezárt jegyek áttekintéséhez nyissa meg a **kereskedelmi piactér** elemet a bal oldali navigációs sávon, majd válassza a **támogatás**lehetőséget.
+A nyitott és lezárt jegyek áttekintéséhez nyissa meg a **kereskedelmi piactér** elemet a bal oldali navigációs sávon, majd válassza a **támogatás** lehetőséget.
 
 ## <a name="record-issue-details-with-a-har-file"></a>Probléma részleteinek rögzítése egy HAR-fájllal
 
@@ -85,7 +85,7 @@ Ha az ügynököket a probléma megoldásához szeretné támogatni, érdemes le
 
 ### <a name="microsoft-edge-and-google-chrome"></a>A Microsoft Edge és a Google Chrome
 
-HAR-fájl létrehozása a **Microsoft Edge** vagy a **Google Chrome**használatával:
+HAR-fájl létrehozása a **Microsoft Edge** vagy a **Google Chrome** használatával:
 
 1. Lépjen arra a weblapra, ahol a problémát tapasztalja.
 2. Az ablak jobb felső sarkában válassza a három pontot ábrázoló ikont, majd a **további eszközök**  >  **fejlesztői eszközöket**. Az F12 billentyű lenyomása parancsikonként is megadható.
@@ -99,14 +99,14 @@ HAR-fájl létrehozása a **Microsoft Edge** vagy a **Google Chrome**használat�
     ![Felvétel indítása a Microsoft Edge-ben vagy a Google Chrome-ban](media/support/chromium-start-session.png)
 
 6. Reprodukálja a hibakereséshez használni kívánt problémát.
-7. A probléma reprodukálása után válassza a **hálózati napló rögzítésének leállítása**lehetőséget.
-8. Válassza a **har exportálása**elemet, amely egy lefelé mutató nyíl ikonnal van megjelölve, és mentse a fájlt.
+7. A probléma reprodukálása után válassza a **hálózati napló rögzítésének leállítása** lehetőséget.
+8. Válassza a **har exportálása** elemet, amely egy lefelé mutató nyíl ikonnal van megjelölve, és mentse a fájlt.
 
     ![HAR-fájl exportálása a Microsoft Edge-ben vagy a Google Chrome-ban](media/support/chromium-network-export-har.png)
 
 ### <a name="mozilla-firefox"></a>Mozilla Firefox
 
-HAR-fájl létrehozása a **Mozilla Firefox**használatával:
+HAR-fájl létrehozása a **Mozilla Firefox** használatával:
 
 1. Lépjen arra a weblapra, ahol a problémát tapasztalja.
 1. Az ablak jobb felső sarkában válassza a három pontot ábrázoló ikont, majd a **Web Developer**  >  **pecek eszközöket**. Az F12 billentyű lenyomása parancsikonként is megadható.
@@ -115,17 +115,17 @@ HAR-fájl létrehozása a **Mozilla Firefox**használatával:
     ![Meglévő naplók eltávolítása a Mozilla Firefox-ban](media/support/firefox-clear-session.png)
 
 1. Reprodukálja a hibakereséshez használni kívánt problémát.
-1. A probléma reprodukálása után válassza a **har Exportálás/Importálás**az  >  **összes mentése a har-ként**lehetőséget.
+1. A probléma reprodukálása után válassza a **har Exportálás/Importálás** az  >  **összes mentése a har-ként** lehetőséget.
 
     ![HAR-fájl exportálása a Mozilla Firefox böngészőben](media/support/firefox-network-export-har.png)
 
 ### <a name="apple-safari"></a>Apple Safari
 
-HAR-fájl létrehozása a **Safari**használatával:
+HAR-fájl létrehozása a **Safari** használatával:
 
-1. A fejlesztői eszközök engedélyezése a Safariban: válassza a **Safari**-  >  **Beállítások**lehetőséget. Lépjen a **speciális** lapra, majd válassza a **menü fejlesztés megjelenítése menüpontját**.
+1. A fejlesztői eszközök engedélyezése a Safariban: válassza a **Safari** -  >  **Beállítások** lehetőséget. Lépjen a **speciális** lapra, majd válassza a **menü fejlesztés megjelenítése menüpontját**.
 1. Lépjen arra a weblapra, ahol a problémát tapasztalja.
-1. Válassza a **fejlesztés**, majd a **webes ellenőr megjelenítése**lehetőséget.
+1. Válassza a **fejlesztés** , majd a **webes ellenőr megjelenítése** lehetőséget.
 1. Válassza a **hálózat** fület, majd a meglévő naplók eltávolításához válassza a **hálózati elemek törlése** elemet.
 
     ![Meglévő naplók eltávolítása a Safari alkalmazásban](media/support/safari-clear-session.png)
@@ -135,6 +135,6 @@ HAR-fájl létrehozása a **Safari**használatával:
 
     ![HAR-fájl exportálása a Safari alkalmazásba](media/support/safari-network-export-har.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](partner-center-portal/update-existing-offer.md)

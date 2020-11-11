@@ -4,12 +4,12 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 9f0eb1ec7c979e6f35c21f49cad9ab9975a221fc
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 33250b0ba9209f7806346668dac0ef308101e7c2
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357290"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94487788"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -194,6 +194,12 @@ Nem. Az internetről közvetlenül a privát felhőkbe bejövő hálózati forga
 
 Igen. A NSX-T Manager használatával olyan tűzfalat kell létrehoznia, amely korlátozza a virtuális gépek internet-hozzáférését.
 
+
+#### <a name="can-azure-vmware-solution-use-azure-virtual-wan-hosted-expressroute-gateways"></a>Használható az Azure VMware-megoldás az Azure Virtual WAN üzemeltetett ExpressRoute-átjárók használatával?
+Igen.
+
+#### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>Lehet-e tranzit kapcsolatot létesíteni a helyszíni és az Azure VMware megoldás között az Azure Virtual WAN ExpressRoute-Global Reach keresztül?
+Az Azure Virtual WAN nem biztosít tranzitív útválasztást két csatlakoztatott ExpressRoute-áramkör és nem virtuális WAN ExpressRoute-átjáró között. A ExpressRoute Global Reach használata lehetővé teszi a helyszíni és az Azure VMware-megoldás közötti kapcsolatot, de a virtuális WAN-központ helyett a Microsoft globális hálózatán halad át.
 
 
 ## <a name="accounts-and-privileges"></a>Fiókok és jogosultságok

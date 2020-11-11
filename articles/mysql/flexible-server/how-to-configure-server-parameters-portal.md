@@ -5,15 +5,18 @@ author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/20/2020
-ms.openlocfilehash: 9568dfc2cfd678d0ce2dea8475328358906e16d1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 11/10/2020
+ms.openlocfilehash: 7733a6211363b4f1c9e9006f757b4d152c7af7f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92525136"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489556"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MySQL-rugalmas kiszolgálón a Azure Portal használatával
+
+> [!IMPORTANT] 
+> Azure Database for MySQL – a rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
 
 A kiszolgálói paraméterek használatával kezelheti Azure Database for MySQL rugalmas kiszolgáló konfigurációját. A kiszolgálói paraméterek az alapértelmezett és ajánlott értékkel vannak konfigurálva a kiszolgáló létrehozásakor.  
 
@@ -28,13 +31,13 @@ Ez a cikk a kiszolgálói paraméterek megtekintését és konfigurálását ism
 2. A **Beállítások** szakaszban kattintson a **kiszolgálói paraméterek** elemre a Azure Database for MySQL rugalmas kiszolgáló kiszolgálói paraméterek lapjának megnyitásához.
 [:::image type="content" source="./media/how-to-server-parameters/azure-portal-server-parameters.png" alt-text="Azure Portal kiszolgáló paramétereinek lapja":::](./media/how-to-server-parameters/azure-portal-server-parameters.png#lightbox)
 3. Keresse meg a módosítani kívánt kiszolgálói paramétereket. A **description (Leírás** ) oszlopban tekintse át a cél és az engedélyezett értékek ismeretét.
-[:::image type="content" source="./media/how-to-server-parameters/3-toggle-parameter.png" alt-text="Azure Portal kiszolgáló paramétereinek lapja":::](./media/how-to-server-parameters/3-toggle-parameter.png#lightbox)
+[:::image type="content" source="./media/how-to-server-parameters/3-toggle-parameter.png" alt-text="Számbavétel legördülő lista":::](./media/how-to-server-parameters/3-toggle-parameter.png#lightbox)
 4. A módosítások mentéséhez kattintson a  **Save (Mentés** ) gombra.
-[:::image type="content" source="./media/how-to-server-parameters/4-save-parameters.png" alt-text="Azure Portal kiszolgáló paramétereinek lapja":::](./media/how-to-server-parameters/4-save-parameters.png#lightbox)
+[:::image type="content" source="./media/how-to-server-parameters/4-save-parameters.png" alt-text="Módosítások mentése vagy elvetése":::](./media/how-to-server-parameters/4-save-parameters.png#lightbox)
 5. A statikus paraméterek azok, amelyek a kiszolgáló újraindítását igénylik érvénybe léptetéséhez. Ha módosítja a statikus paramétert, a rendszer kérni fogja, hogy **indítsa újra** a rendszert, vagy **később indítsa újra**.
-[:::image type="content" source="./media/how-to-server-parameters/5-save-parameter.png" alt-text="Azure Portal kiszolgáló paramétereinek lapja":::](./media/how-to-server-parameters/5-save-parameter.png#lightbox)
-6. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
-[:::image type="content" source="./media/how-to-server-parameters/6-reset-parameters.png" alt-text="Azure Portal kiszolgáló paramétereinek lapja":::](./media/how-to-server-parameters/6-reset-parameters.png#lightbox)
+[:::image type="content" source="./media/how-to-server-parameters/5-save-parameter.png" alt-text="Újraindítás statikus paraméter esetén mentés":::](./media/how-to-server-parameters/5-save-parameter.png#lightbox)
+6. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett** értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
+[:::image type="content" source="./media/how-to-server-parameters/6-reset-parameters.png" alt-text="Az összes visszaállítása az alapértelmezett értékre":::](./media/how-to-server-parameters/6-reset-parameters.png#lightbox)
 
 ## <a name="setting-non-modifiable-server-parameters"></a>Nem módosítható kiszolgálói paraméterek beállítása
 
@@ -48,7 +51,7 @@ Ha a frissíteni kívánt kiszolgálói paraméter nem módosítható, akkor opc
 4. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 >[!Note]
-> Az `init_connect` olyan paraméterek módosítására használható, amelyek nem igényelnek SUPER jogosultságo(ka)t a munkamenet szintjén. A `set session parameter_name=YOUR_DESIRED_VALUE;` parancs végrehajtásával ellenőrizze, hogy megadható-e a paraméter az **használatával. Ha hiba lép fel, és a**Hozzáférés megtagadva; SUPER jogosultság(ok) szükséges(ek)`init_connect` hibaüzenet jelenik meg, akkor a paraméter nem adható meg az init_connect segítségével.
+> Az `init_connect` olyan paraméterek módosítására használható, amelyek nem igényelnek SUPER jogosultságo(ka)t a munkamenet szintjén. A `set session parameter_name=YOUR_DESIRED_VALUE;` parancs végrehajtásával ellenőrizze, hogy megadható-e a paraméter az **használatával. Ha hiba lép fel, és a** Hozzáférés megtagadva; SUPER jogosultság(ok) szükséges(ek)`init_connect` hibaüzenet jelenik meg, akkor a paraméter nem adható meg az init_connect segítségével.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Az időzóna-paraméter használata
 
@@ -76,7 +79,7 @@ SELECT name FROM mysql.time_zone_name;
 
 A globális szintű időzónát a Azure Portal **kiszolgáló paraméterek** lapján lehet beállítani. Az alábbi beállítás a globális időzónát az "USA/csendes-óceáni" értékre állítja be.
 
-[:::image type="content" source="./media/how-to-server-parameters/timezone.png" alt-text="Azure Portal kiszolgáló paramétereinek lapja":::](./media/how-to-server-parameters/timezone.png#lightbox)
+[:::image type="content" source="./media/how-to-server-parameters/timezone.png" alt-text="Időzóna-paraméter beállítása":::](./media/how-to-server-parameters/timezone.png#lightbox)
 
 ### <a name="setting-the-session-level-time-zone"></a>A munkamenet-szint időzónájának beállítása
 
@@ -88,6 +91,6 @@ SET time_zone = 'US/Pacific';
 
 Tekintse meg a MySQL dokumentációját a [dátum-és Időfüggvényekhez](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [kiszolgálói paraméterek konfigurálása az Azure CLI-ben](./how-to-configure-server-parameters-cli.md)

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 1414f2ce53d1764e788749fc2d225c56f624bcdc
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 6f92c138a02c9dbdc1d22ca04c733cfbee69dcd0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370250"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488519"
 ---
 # <a name="how-to-configure-your-azure-application-offer-properties"></a>Az Azure-alkalmazás ajánlati tulajdonságainak konfigurálása
 
@@ -76,10 +76,6 @@ A normál szerződés helyett saját használati feltételeket is megadhat. Az �
 
 1. A **jogi** területen győződjön meg arról, hogy a **Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződés használata** jelölőnégyzet be van jelölve.
 1. A **feltételek és kikötések** mezőben adja meg a legfeljebb 10 000 karakter hosszúságú szöveget.
-
-   > [!NOTE]
-   > Ha további leírásra van szüksége, adjon meg egy webcímet, amely arra a pontra mutat, ahol a feltételek és kikötések találhatók. Az ügyfelek aktív hivatkozásként jelennek meg.
-
 1. A következő lapra való továbblépés előtt válassza a **Piszkozat mentése** lehetőséget: ajánlatok listája.
 
 ## <a name="next-steps"></a>További lépések

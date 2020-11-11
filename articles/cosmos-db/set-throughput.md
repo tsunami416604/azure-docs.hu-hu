@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 0dc55f4d77fde48590b1fbf206ed988e8fb9ec0e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098773"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490270"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Bevezetés a kiépített átviteli sebességbe Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -73,7 +73,7 @@ Ha a Azure Cosmos DB fiók már tartalmaz egy megosztott átviteli sebességű a
 
 Ha a számítási feladatok egy adatbázisban lévő összes gyűjtemény törlését és újbóli létrehozását vonják maguk után, akkor azt javasoljuk, hogy a gyűjtemény létrehozása előtt dobja el az üres adatbázist, és hozzon létre egy új adatbázist. Az alábbi képen látható, hogyan tárolhat egy fizikai partíció egy vagy több olyan logikai partíciót, amely különböző tárolókban található egy adatbázison belül:
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Egy vagy több tároló logikai partícióját tároló fizikai partíció" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Olyan fizikai partíció, amely egy vagy több különböző tárolóhoz tartozó logikai partíciót üzemeltet. " border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Átviteli sebesség beállítása egy adatbázison és egy tárolón
 
@@ -82,7 +82,7 @@ A két modellt kombinálhatja. Az adatátviteli sebesség az adatbázison és a 
 * Létrehozhat egy *Z* nevű Azure Cosmos-adatbázist a standard (manuális) kiépített átviteli sebességgel a *"K"* RUs használatával. 
 * Ezután hozzon létre öt tárolót a-adatbázison *belül a,* *B* , *C* , *D* és *E* névvel. A B tároló létrehozásakor ügyeljen arra, hogy engedélyezze a **tároló beállítás dedikált átviteli sebességét** , és explicit módon konfigurálja a *"P"* kiépített átviteli sebességét ezen a tárolón. A megosztott és a dedikált átviteli sebességet csak az adatbázis és a tároló létrehozásakor lehet konfigurálni. 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Egy vagy több tároló logikai partícióját tároló fizikai partíció":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Az átviteli sebesség beállítása a tároló szintjén":::
 
 * A *"K"* RUs-átviteli sebesség az *a* , *C* , *D* és *E* négy tárolóban van megosztva. Az *a* , a *C* , a *D* vagy az *E* által elérhető átviteli sebesség pontos mennyisége változó. Az egyes tárolók átviteli sebességéhez nem tartoznak SLA-k.
 * A *B* nevű tároló garantált, hogy minden alkalommal megkapja a *"P"* RUs átviteli sebességét. Ez a SLA-k által támogatott.
@@ -109,7 +109,7 @@ Ezeknek a módszereknek a válasza a tároló vagy adatbázis [minimálisan kios
 A tényleges RU/mp a fiók konfigurációjától függően változhat. De általában ez a maximális érték:
 
 * 400 RU/s 
-* Aktuális tárterület (GB * 10 RU/s)
+* Az aktuális tárterület (GB * 10 RU/s) (kivéve, ha a tároló vagy az adatbázis több mint 1 TB-ot tartalmaz, tekintse meg a [nagy tárterületet/alacsony átviteli sebességű programot](#high-storage-low-throughput-program))
 * Az adatbázison vagy a tárolón/100-ben kiépített legmagasabb RU/s
 * Tárolók száma * 100 RU/s (csak megosztott átviteli sebességű adatbázis esetén)
 
@@ -155,7 +155,7 @@ Ez a táblázat a kiépítési standard (manuális) átviteli sebességének ös
 |Egy tároló logikai partíciójának maximális átviteli sebessége|10K RU/s|10K RU/s|10K RU/s|10K RU/s|
 |Tárolók logikai partícióinak maximális tárterülete (adatsorok és indexek)|20 GB|20 GB|20 GB|20 GB|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [logikai partíciókhoz](partitioning-overview.md).
 * Ismerje meg, hogyan hozhat [létre standard (manuális) Azure Cosmos-tárolón](how-to-provision-container-throughput.md).

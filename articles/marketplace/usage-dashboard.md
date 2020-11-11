@@ -1,20 +1,20 @@
 ---
-title: Használati irányítópult a Microsoft kereskedelmi piactéren, az Azure Marketplace-en és a Microsoft AppSource
-description: Ismerje meg, hogyan érheti el az összes virtuális gép használati és mért számlázási metrikákat. Nyissa meg a használati irányítópultot a partner Centerben a kereskedelmi piactéren.
+title: Használati irányítópult a kereskedelmi piactér elemzésében | Azure piactér
+description: Ismerje meg, hogyan érheti el az Azure Marketplace-en közzétett ajánlatok összes használati és mért számlázási mérőszámát.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/09/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 9a1b6197241b93edf778295f196ccc92c45d85d6
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1ae30d97e64dc17086e199c3fcc8188f54e6ab69
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414571"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490117"
 ---
-# <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Használati irányítópult a Microsoft kereskedelmi piactér elemzésében
+# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>A Használat irányítópult a kereskedelmi piactér-elemzésekben
 
 Ez a cikk a partner Center használati irányítópultján tartalmaz információkat. Ez az irányítópult megjeleníti az összes virtuális gépet (VM), amely normalizált használatot, nyers használatot és mért számlázási mérőszámokat kínál három külön lapon: a virtuális gép normalizált használata, a virtuális gép nyers használata és a mért számlázási használat.
 

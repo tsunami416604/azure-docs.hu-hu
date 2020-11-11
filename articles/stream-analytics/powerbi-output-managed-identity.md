@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 29f02f80aa5bff1304dc593d68954e15fe6e66bb
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 469610d7195835a4b68e4d887c5be57a8926ba37
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346434"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489505"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI
 
@@ -210,6 +210,10 @@ Kérelem törzse
 }
 ```
 
+## <a name="remove-managed-identity"></a>Felügyelt identitás eltávolítása
+
+A Stream Analytics feladatokhoz létrehozott felügyelt identitást csak akkor törli a rendszer, ha a feladatot törlik. A felügyelt identitást nem lehet törölni a feladatok törlése nélkül. Ha már nem szeretné használni a felügyelt identitást, módosíthatja a kimenet hitelesítési módszerét. A felügyelt identitás továbbra is érvényben marad, amíg el nem törli a feladatot, és a rendszer akkor fogja használni, ha a felügyelt identitások hitelesítését újra használta.
+
 ## <a name="limitations"></a>Korlátozások
 A szolgáltatás korlátai a következők:
 
@@ -221,7 +225,7 @@ A szolgáltatás korlátai a következők:
 
 - A [felhasználó által hozzárendelt identitás](../active-directory/managed-identities-azure-resources/overview.md) nem támogatott. Ez azt jelenti, hogy nem tudja beírni a saját egyszerű szolgáltatásnevet, amelyet a Stream Analytics feladataihoz kíván használni. Az egyszerű szolgáltatásnevet Azure Stream Analytics kell létrehozni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Irányítópult-integráció Power BI Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
 * [A Azure Stream Analytics kimenetének megismerése](./stream-analytics-define-outputs.md)

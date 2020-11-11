@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/13/2019
-author: keferna
-ms.author: keferna
-ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+author: trkeya
+ms.author: trkeya
+ms.openlocfilehash: b3f46f934241d924789b97c24cf9b68213d94d63
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125682"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490083"
 ---
 # <a name="test-drive-technical-configuration"></a>Tesztverzió műszaki konfigurálása
 
@@ -93,14 +93,9 @@ A a partner központ **Test Drive (tesztelési** meghajtó) lapján található 
 
 Ha jelenleg a partner Centerben hozza létre a tesztelési meghajtót, a folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tesztelési meghajtó – ajánlott eljárások](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Áttekintés](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)(PDF; ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása)
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](partner-center-portal/update-existing-offer.md)
-
-## <a name="additional-resources"></a>További források
-
-## <a name="feedback"></a>Visszajelzés
-
-[A termékre](https://feedback.azure.com/forums/216369-azure-marketplace) vonatkozó visszajelzés küldése és megtekintése
+- [Azure Marketplace – visszajelzési fórum](https://feedback.azure.com/forums/216369-azure-marketplace)

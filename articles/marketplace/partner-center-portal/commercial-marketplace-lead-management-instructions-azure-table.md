@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan konfigurálhatja az Azure Table Storage-t a Mic
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 925bc79d54def3f2aec4657196b8cea53704396f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 70ce1807ea6080e3efc0cf3266a9940c9ddb9cd3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130646"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489352"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Table Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -38,7 +38,7 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
 1. A Azure Portal **kezdőlapján** válassza az **összes erőforrás** megjelenítése lehetőséget a Storage-fiók eléréséhez. Kiválaszthatja az **összes erőforrás** lehetőséget is a Azure Portal bal oldali menüjében.
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Azure Storage-fiók létrehozásának lépései.":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Nyissa meg az Azure Storage-fiókját.":::
 
 1. A Storage-fiók ablaktáblán válassza a **hozzáférési kulcsok** lehetőséget, és másolja a kulcshoz tartozó **kapcsolati sztring** értéket. Mentse ezt az értéket, mert ez a **Storage-fiók kapcsolódási karakterláncának** értéke, amelyet a közzétételi portálon kell megadnia az Azure Marketplace-ajánlathoz tartozó érdeklődők fogadásához.
 
@@ -48,10 +48,10 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure Storage-fiók létrehozásának lépései.":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure Storage-kulcs.":::
 
 
-1. A Storage-fiók ablaktáblán válassza a **táblák** lehetőséget, majd a táblázat létrehozásához válassza a **+ Table** elemet. Adja meg a tábla nevét, majd kattintson **az OK gombra** . Mentse ezt az értéket, mert szüksége lesz rá, ha be szeretne állítani egy folyamatot, amely e-mail-értesítéseket fogad, ha az érdeklődők érkeznek.
+1. A Storage-fiók ablaktáblán válassza a **táblák** lehetőséget, majd a táblázat létrehozásához válassza a **+ Table** elemet. Adja meg a tábla nevét, majd kattintson **az OK gombra**. Mentse ezt az értéket, mert szüksége lesz rá, ha be szeretne állítani egy folyamatot, amely e-mail-értesítéseket fogad, ha az érdeklődők érkeznek.
 
     ![Azure-táblák](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
@@ -72,7 +72,7 @@ A példa létrehoz egy folyamatot, amely automatikusan értesítő e-mailt küld
 
    ![Saját folyamatok + ütemezett – üresről](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-1. Az **ütemezett folyamat létrehozása** ablakban az **ismétlődéshez** válassza az **1** értéket az intervallum és az **óra** értéknél. Adja meg a folyamat nevét is, ha szeretné. Válassza a **Létrehozás** lehetőséget.
+1. Az **ütemezett folyamat létrehozása** ablakban az **ismétlődéshez** válassza az **1** értéket az intervallum és az **óra** értéknél. Adja meg a folyamat nevét is, ha szeretné. Kattintson a **Létrehozás** gombra.
 
    >[!NOTE]
    >Bár ez a példa egy órás időközt használ, kiválaszthatja az üzleti igényeinek leginkább megfelelő intervallumot és gyakoriságot.
@@ -80,11 +80,11 @@ A példa létrehoz egy folyamatot, amely automatikusan értesítő e-mailt küld
    ![Ütemezett folyamat létrehozása](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
 1. Válassza az **+ Új lépés** gombot.
-1. A **válasszon műveletet** ablakban keresse meg a **beolvasás időpontját** . Ezután a **műveletek** területen válassza a **beolvasás ideje** lehetőséget.
+1. A **válasszon műveletet** ablakban keresse meg a **beolvasás időpontját**. Ezután a **műveletek** területen válassza a **beolvasás ideje** lehetőséget.
 
    ![Válasszon műveletet](./media/commercial-marketplace-lead-management-instructions-azure-table/choose-an-action.png)
 
-1. A **múltbeli idő lekérése** ablakban állítsa az **intervallumot** **1-re** . Az **időegység** legördülő listából válassza az **óra** lehetőséget.
+1. A **múltbeli idő lekérése** ablakban állítsa az **intervallumot** **1-re**. Az **időegység** legördülő listából válassza az **óra** lehetőséget.
 
     >[!IMPORTANT]
     >Győződjön meg arról, hogy a 8. lépésben eljuttatott intervallum és időegység egyezik az 5. lépésben megismétlődéshez konfigurált intervallummal és gyakorisággal.
@@ -137,7 +137,7 @@ A példa létrehoz egy folyamatot, amely automatikusan értesítő e-mailt küld
    * Ha a feltétel a **nem** értékre van feloldva, semmit sem kell tennie.
    * Ha a feltétel az **Igen** értékre van feloldva, aktiváljon egy műveletet, amely összekapcsolja a munkahelyi vagy iskolai fiókját e-mailek küldéséhez. 
 
-1. Válassza a **művelet hozzáadása** lehetőséget, **Ha igen** .
+1. Válassza a **művelet hozzáadása** lehetőséget, **Ha igen**.
 
     ![Feltétel ablak, ha igen, művelet hozzáadása](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition-if-yes.png)
 
@@ -185,9 +185,9 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat** lehetőséget.
 
-    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Azure Storage-fiók létrehozásának lépései.":::
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Ügyfél-érdeklődők":::
 
-1. A **kapcsolat részletei** előugró ablakban válassza ki az **Azure Table** elemet az **érdeklődő célhelyéhez** . 
+1. A **kapcsolat részletei** előugró ablakban válassza ki az **Azure Table** elemet az **érdeklődő célhelyéhez**. 
      ![Érdeklődők felügyelete, kapcsolat részletei](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
 
 1. Illessze be a létrehozott Azure Storage-fiókhoz tartozó, a **Storage-fiók kapcsolatainak karakterlánca** mezőben a korábbi lépéseket követve.
@@ -195,7 +195,7 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. **Kapcsolattartási e-mail cím** : adja meg az e-maileket a vállalatnál, akinek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapnia. A pontosvesszővel elválasztva több e-mailt is megadhat.
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 83db314070f4c8857ebaa10b26d0adf51372776f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: d5da6576258d3e33296781bbc262494220140ddc
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447658"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489284"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Alsóbb rétegbeli IoT Edge eszköz csatlakoztatása Azure IoT Edge átjáróhoz (előzetes verzió)
 
@@ -43,7 +43,7 @@ A cikkben ismertetett lépések a [IoT Edge-eszköz konfigurálása, amely trans
 
 * Egy ingyenes vagy standard IoT hub.
 * Legalább két **IoT Edge eszköz** , az egyik a legfelső rétegű eszköz, és egy vagy több alsóbb rétegbeli eszköz. Ha nem áll rendelkezésre IoT Edge eszköz, [futtathatja Azure IoT Edge Ubuntu rendszerű virtuális gépeken](how-to-install-iot-edge-ubuntuvm.md)is.
-* Ha az Azure CLI-t használja az eszközök létrehozásához és kezeléséhez, az Azure CLI v 2.3.1-es verziója az Azure IoT Extension v 0.9.10 vagy újabb verzióra van telepítve.
+* Ha az Azure CLI-t használja az eszközök létrehozásához és kezeléséhez, az Azure CLI v 2.3.1-es verziója az Azure IoT Extension v 0.10.6 vagy újabb verzióra van telepítve.
 
 Ez a cikk részletesen ismerteti azokat a lépéseket és lehetőségeket, amelyekkel a forgatókönyvhöz megfelelő átjáró-hierarchia hozható létre. Interaktív oktatóanyagért lásd: [IoT Edge-eszközök hierarchiájának létrehozása átjárók használatával](tutorial-nested-iot-edge.md).
 

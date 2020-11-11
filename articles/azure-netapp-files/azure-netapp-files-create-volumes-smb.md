@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: d0a16dc639fb3206b480c1091a66686955cbb11d
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 9740506da2c03996db756175551867ed43575a7c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932345"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488179"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
@@ -45,7 +45,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     |    AD Web Services    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    N.A.       |    Visszhangos válasz    |
+    |    ICMPv4             |    N/A       |    Visszhangos válasz    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -119,10 +119,10 @@ A Azure NetApp Files további AADDS szempontokat is figyelembe kell venni:
 
 Active Directory-kapcsolatok létrehozásakor vegye figyelembe a következő AADDS vonatkozó jellemzőket:
 
-* Az **elsődleges DNS**-, **másodlagos DNS**-és **ad DNS-tartománynevek** adatait a AADDS menüben találja.  
+* Az **elsődleges DNS** -, **másodlagos DNS** -és **ad DNS-tartománynevek** adatait a AADDS menüben találja.  
 A DNS-kiszolgálók esetében két IP-cím lesz használva a Active Directory-kapcsolatok konfigurálásához. 
 * A **szervezeti egység elérési útja** : `OU=AADDC Computers` .  
-Ez a beállítás a **NetApp-fiókhoz**tartozó **Active Directory-kapcsolatokban** van konfigurálva:
+Ez a beállítás a **NetApp-fiókhoz** tartozó **Active Directory-kapcsolatokban** van konfigurálva:
 
   ![Szervezeti egység elérési útja](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
 
@@ -131,7 +131,7 @@ Ez a beállítás a **NetApp-fiókhoz**tartozó **Active Directory-kapcsolatokba
 
 ## <a name="create-an-active-directory-connection"></a>Active Directory-kapcsolatok létrehozása
 
-1. A NetApp-fiókból kattintson **Active Directory kapcsolatok**elemre, majd kattintson a **Csatlakozás**elemre.  
+1. A NetApp-fiókból kattintson **Active Directory kapcsolatok** elemre, majd kattintson a **Csatlakozás** elemre.  
 
     ![Active Directory kapcsolatok](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
@@ -146,7 +146,7 @@ Ez a beállítás a **NetApp-fiókhoz**tartozó **Active Directory-kapcsolatokba
     * **AD DNS-tartománynév**  
         Ez annak a Active Directory tartományi szolgáltatások a tartományneve, amelyhez csatlakozni szeretne.
     * **AD-hely neve**  
-        Ennek a helynek a neve, amelyet a tartományvezérlő felderítése korlátozni fog.
+        Ennek a helynek a neve, amelyet a tartományvezérlő felderítése korlátozni fog. Ennek meg kell egyeznie a hely nevével Active Directory helyeken és szolgáltatásokban.
     * **SMB-kiszolgáló (számítógépfiók) előtagja**  
         Ez az Active Directory lévő számítógépfiók elnevezési előtagja, amelyet a Azure NetApp Files új fiókok létrehozásához fog használni.
 
@@ -321,7 +321,7 @@ A fájlokra vagy mappákra vonatkozó engedélyeket a Windows SMB-ügyfélben ta
  
 ![Fájl-és mappa engedélyeinek beállítása](../media/azure-netapp-files/set-file-folder-permissions.png) 
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 * [Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)

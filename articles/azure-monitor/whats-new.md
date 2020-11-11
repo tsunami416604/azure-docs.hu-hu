@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: c9679fec1d9c5d501ead03bcfbf28132d9e3b90a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6ed00931e8cca1febac0b9b72b53eeb7e81042ea
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151812"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94487992"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Az Azure Monitor dokumentációjának újdonságai
 
@@ -99,8 +99,8 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 #### <a name="new-and-updated-articles-from-restructure-of-agent-content"></a>Új és frissített cikkek az ügynök tartalmának újrastrukturálása esetén
 - [Azure Monitor for VMs-áttekintés engedélyezése](insights/vminsights-enable-overview.md)
-- [Log Analytics-ügynök telepítése Linux rendszerű számítógépekre](platform/agent-linux.md)
-- [Log Analytics ügynök telepítése Windows rendszerű számítógépekre](platform/agent-windows.md)
+- [Log Analytics-ügynök telepítése Linux rendszerű számítógépeken](platform/agent-linux.md)
+- [Log Analytics-ügynök telepítése Windows rendszerű számítógépeken](platform/agent-windows.md)
 - [Log Analytics-ügynök áttekintése](platform/log-analytics-agent.md)
 
 ### <a name="application-insights"></a>Application Insights
@@ -157,7 +157,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 ### <a name="alerts"></a>Riasztások
 - [Azure monitor riasztásokra vonatkozó műveleti szabályok](platform/alerts-action-rules.md) – CLI-folyamatok hozzáadva.
 - [Műveleti csoportok létrehozása és kezelése a Azure Portalban](platform/action-groups.md) – frissítve a felhasználói felület változásainak megfelelően.
-- [Mentett lekérdezések Azure Monitor log Analytics](log-query/saved-queries.md) – új cikk.
+- [Példa lekérdezésekre Azure Monitor log Analytics](log-query/example-queries.md) – új cikk.
 - A riasztási szabály kvótájának Azure Monitor által hozzáadott szakasza [riasztások hibakeresése](platform/alerts-troubleshoot-log.md) .
 - Az [Azure metrika riasztásai](platform/alerts-troubleshoot-metric.md) – a riasztási szabály hozzáadott szakasza egy olyan egyéni metrika esetében, amely még nincs kibocsátva.
 - [Ismerje meg, hogyan működnek a metrikus riasztások Azure Monitorban.](platform/alerts-metric-overview.md) -Javaslat hozzáadva az összesítési részletesség kiválasztásához.
@@ -185,7 +185,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Figyelési megoldások Azure monitor](insights/solutions.md) – CLI-folyamatok.
 - [Office 365 felügyeleti megoldás az Azure-ban](insights/solution-office-365.md) – megváltozott a nyugdíjazás dátuma.
 
-### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
+### <a name="virtual-machines"></a>Virtuális gépek
 
 Új és frissített cikkek Azure Monitor for VMs tartalom átszervezéséről
 
@@ -262,7 +262,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Azure-tevékenység naplója](platform/activity-log.md)
 - [CLI-minták Azure Monitor](samples/cli-samples.md)
 - [PowerShell-minták Azure Monitor](samples/powershell-samples.md)
-- [Azure monitoring REST API útmutató](platform/rest-api-walkthrough.md)
+- [Útmutató az Azure Monitor REST API-hoz](platform/rest-api-walkthrough.md)
 - [Az Azure Resource naplózza a támogatott szolgáltatásokat és sémákat](./platform/resource-logs-schema.md)
 - [Azure-erőforrásnaplók](platform/resource-logs.md)
 - [Azure-beli tevékenységek naplójának összegyűjtése és elemzése Azure Monitor](./platform/activity-log.md)
@@ -273,7 +273,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Azure platform-naplók továbbítása egy Event hubhoz](./platform/resource-logs.md#send-to-azure-event-hubs)
 - [Azure-Tevékenységnaplók eseményeinek megtekintése Azure Monitor](./platform/activity-log.md#view-the-activity-log)
 
-### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
+### <a name="virtual-machines"></a>Virtuális gépek
 - [Engedélyezze a Azure Portal](./insights/vminsights-enable-portal.md) -frissítve Azure monitor for VMS az Azure arc befoglalását.
 - Az Azure arc befoglalásának [engedélyezése Azure monitor for VMS áttekintése](insights/vminsights-enable-overview.md) – frissítve.
 - [Mi az Azure Monitor for VMs?](insights/vminsights-overview.md) -Frissítve az Azure arc befoglalásával.
@@ -366,7 +366,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Optimalizálja SQL Server-környezetét a Azure monitor](insights/sql-assessment.md) által támogatott SQL Server-verziókhoz.
 
 
-### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
+### <a name="virtual-machines"></a>Virtuális gépek
 - A [Azure monitor for VMS áttekintésének engedélyezése](insights/vminsights-enable-overview.md) – az Ubuntu Server támogatott verzióihoz lett hozzáadva. Log Analytics munkaterület által támogatott régiók lettek hozzáadva.
 - A [teljesítmény diagramon való Azure monitor for VMS](insights/vminsights-performance.md) hozzáadásával kapcsolatos korlátozások szakasz a nem elérhető metrikák esetében.
 
@@ -472,7 +472,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 - [Összegyűjtheti és elemezheti az Azure-beli tevékenység naplóját Azure monitor](./platform/activity-log.md) – újraírhatja, hogy jobban megmagyarázza a begyűjtési tevékenység naplójának diagnosztikai beállításait.
 
-### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
+### <a name="virtual-machines"></a>Virtuális gépek
 
 - [Azure-beli virtuális gépek figyelése Azure monitor](insights/monitor-vm-azure.md) -új cikkel.
 - Gyors útmutató: az Azure-beli [virtuális gépek Azure monitor](learn/quick-monitor-azure-vm.md) frissítéssel való figyelése Azure monitor for VMS hozzáadásához.
@@ -683,6 +683,6 @@ Több cikk is frissült a tartalom átszervezésének részeként a platform nap
 - [Erőforrás-naplók összegyűjtése Azure-erőforrásokból és Azure monitor](learn/tutorial-resource-logs.md) -új cikk elemzése.
 - [Azure-erőforrás figyelése Azure monitor](learn/quick-monitor-azure-resource.md) -új cikkel.
    
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha szeretne hozzájárulni Azure Monitor dokumentációhoz, tekintse meg a [docs közreműködői útmutatóját](/contribute/).

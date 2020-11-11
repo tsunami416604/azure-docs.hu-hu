@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f88548b57cee9b5f637247fda1536488382ae2f6
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: bc811ab3cab4b79b81b16dd94a2c72225046e35a
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042626"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488278"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Feltételes hozzáférési technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -53,7 +53,7 @@ Minden bejelentkezéskor Azure AD B2C kiértékel minden házirendet, és gondos
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| OperationType | Yes | **Kiértékelésnek**kell lennie.  |
+| OperationType | Yes | **Kiértékelésnek** kell lennie.  |
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
 
@@ -115,7 +115,7 @@ A feltételes hozzáférés technikai profiljának **szervizelési** módja táj
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| OperationType | Yes | **Szervizelésnek**kell lennie.  |
+| OperationType | Yes | **Szervizelésnek** kell lennie.  |
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
 
@@ -130,7 +130,7 @@ A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -eleme
 
 ### <a name="output-claims"></a>Kimeneti jogcímek
 
-A feltételes hozzáférési protokoll szolgáltatója nem ad vissza **OutputClaims**, így nem kell megadnia a kimeneti jogcímeket. Megadhat azonban olyan jogcímeket is, amelyeket nem ad vissza a feltételes hozzáférési protokoll szolgáltatója, feltéve, hogy az `DefaultValue` attribútumot beállította.
+A feltételes hozzáférési protokoll szolgáltatója nem ad vissza **OutputClaims** , így nem kell megadnia a kimeneti jogcímeket. Megadhat azonban olyan jogcímeket is, amelyeket nem ad vissza a feltételes hozzáférési protokoll szolgáltatója, feltéve, hogy az `DefaultValue` attribútumot beállította.
 
 A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
 
@@ -428,7 +428,7 @@ Vegyen fel egy olyan felhasználói utat, amely az új jogcímeket használja, a
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
               <Value>CAChallengeIsMfa</Value>
-              <Value>false</Value>
+              <Value>False</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>
@@ -458,7 +458,7 @@ Vegyen fel egy olyan felhasználói utat, amely az új jogcímeket használja, a
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
               <Value>CAChallengeIsBlock</Value>
-              <Value>true</Value>
+              <Value>True</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>
@@ -522,6 +522,6 @@ Az alábbi példa egy függő entitás fájlját szemlélteti, amely hivatkozik 
 </TrustFrameworkPolicy>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [githubon](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access)megtalálhatja például a feltételes hozzáférési szabályzatot.

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 381ee08f44ad8fb4dade9b6229f5a5925cf2b6b7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a17143045b368038e24ac40f131325a623fc934d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375525"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489607"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Statikus csoporttagság módosítása a Azure Active Directory dinamikus értékre
 
@@ -32,8 +32,8 @@ A csoportok tagságát statikusról dinamikusra (vagy fordítva) is módosíthat
 
 ## <a name="change-the-membership-type-for-a-group"></a>Csoport tagsági típusának módosítása
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely globális rendszergazda vagy felhasználói rendszergazda az Azure ad-szervezetben.
-2. Válassza a **csoportok**lehetőséget.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely globális rendszergazda, felhasználói rendszergazda vagy csoportok rendszergazdája az Azure ad-szervezetben.
+2. Válassza a **csoportok** lehetőséget.
 3. A **minden csoport** listából nyissa meg a módosítani kívánt csoportot.
 4. Válassza ki a **Tulajdonságok** elemet.
 5. A csoport **Tulajdonságok** lapján válassza ki a hozzárendelt (statikus), a dinamikus felhasználó vagy a dinamikus eszköz **tagsági típusát** a kívánt tagsági típustól függően. A dinamikus tagság érdekében a Rule Builder használatával kiválaszthatja az egyszerű szabályok beállításait, vagy saját maga is írhat egy tagsági szabályt. 
@@ -44,7 +44,7 @@ A következő lépések a csoportok statikusról dinamikus tagságra történő 
   
    ![Válassza ki a dinamikus felhasználó tagsági típusát](./media/groups-change-type/select-group-to-convert.png)
   
-2. Válassza a **dinamikus lekérdezés hozzáadása**lehetőséget, majd adja meg a szabályt.
+2. Válassza a **dinamikus lekérdezés hozzáadása** lehetőséget, majd adja meg a szabályt.
   
    ![adja meg a dinamikus csoport szabályát](./media/groups-change-type/enter-rule.png)
   
@@ -115,7 +115,7 @@ Dinamikus csoport létrehozása:
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezek a cikkek további információkat nyújtanak Azure Active Directory csoportjairól.
 

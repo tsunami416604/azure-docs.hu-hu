@@ -3,89 +3,124 @@ title: Gyorsított labor-fiók telepítési útmutatója Azure Lab Services
 description: Ez az útmutató segítséget nyújt a rendszergazdáknak az iskolán belüli használatra szolgáló labor-fiókok gyors létrehozásában.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0855e59aced37e50c088cfe89ffeb3d0af9fcdca
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 4d9a64fe23c3e5b74e77e704154f5e74bf2066d9
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148285"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490559"
 ---
 # <a name="lab-account-setup-guide"></a>Lab-fiók telepítési útmutatója
+A Azure Lab Services-környezet beállításához a rendszergazdáknak először be kell állítania egy **labor-fiókot** az Azure-előfizetésében. A labor-fiók a laborok tárolója, és csak néhány percet vesz igénybe.
 
-Első lépésként a rendszergazdáknak be kell állítania egy Lab-fiókot az Azure-előfizetésében. A labor-fiók a tantermi laborok tárolója, és a beállítás csak néhány percet vesz igénybe.
+Ez az útmutató három szakaszt tartalmaz:
+-  Az első szakasz azokat az előfeltételeket ismerteti, amelyeket el kell végeznie a labor-fiók beállítása *előtt* .
+-  A második szakasz útmutatást nyújt a labor-fiókok beállításainak megtervezéséhez.
+-  A harmadik szakasz részletes útmutatást nyújt a labor-fiókok beállításához.
 
-## <a name="understand-your-schools-lab-account-requirements"></a>Az iskolai labor-fiókra vonatkozó követelmények megismerése
+## <a name="prerequisites-for-setting-up-your-lab-account"></a>A labor-fiók beállításának előfeltételei
+Ez a szakasz ismerteti azokat az előfeltételeket, amelyeket el kell végeznie, mielőtt beállít egy labor-fiókot.
 
-Ha meg szeretné tudni, hogyan konfigurálhatja a labor-fiókját az iskolai igények alapján, érdemes megfontolnia ezeket a kérdéseket.
+### <a name="obtain-an-azure-subscription"></a>Azure-előfizetés beszerzése
+Labor-fiók létrehozásához hozzá kell férnie egy Azure-előfizetéshez, amely be van állítva az iskolájában. Az iskolája egy vagy több előfizetéssel rendelkezhet. Az előfizetés segítségével kezelheti az Azure-erőforrások és-szolgáltatások, például a labor-fiókok számlázási és biztonsági szolgáltatásait.  Az Azure-előfizetéseket általában az informatikai részleg kezeli.  További információért olvassa el a következő témakört:
+ - [Rendszergazdai útmutató – előfizetés](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#subscription)
 
-### <a name="do-i-have-access-to-an-azure-subscription"></a>Van hozzáférése egy Azure-előfizetéshez?
+### <a name="estimate-the-number-of-vms-and-vm-sizes-that-you-need"></a>Becsülje meg a virtuális gépek és a szükséges virtuálisgép-méretek számát
+Meg kell becsülnie a virtuális gépek (VM-EK) számát és az iskolai igényeknek megfelelő virtuálisgép- [méreteket](https://docs.microsoft.com/azure/lab-services/administrator-guide#vm-sizing) .  Olvassa el a következő blogbejegyzéset, amely útmutatást nyújt a labs\images. szerkezetének megadásához  Ez a blogbejegyzés a virtuális gépek számának és a szükséges virtuálisgép-méreteknek a meghatározásához is segítséget nyújt:
+- [Áthelyezés fizikai laborból a Azure Lab Servicesba](https://techcommunity.microsoft.com/t5/azure-lab-services/moving-from-a-physical-lab-to-azure-lab-services/ba-p/1654931)
 
-Labor-fiók létrehozásához hozzá kell férnie az iskolához konfigurált Azure-előfizetéshez. Lehet, hogy az iskolája egy vagy több előfizetéssel rendelkezik. Az előfizetés segítségével kezelheti az Azure-erőforrások és-szolgáltatások, például a labor-fiókok számlázási és biztonsági szolgáltatásait.
+Tekintse meg ezt a cikket is, amely további útmutatást nyújt a laborok struktúrájával kapcsolatban:
+- [Rendszergazdai útmutató – labor](https://docs.microsoft.com/azure/lab-services/administrator-guide#classroom-lab)
 
-### <a name="how-many-lab-accounts-need-to-be-created"></a>Hány labor-fiókot kell létrehozni?
+### <a name="understand-subscription-vm-limits-and-regional-vm-capacity"></a>Az előfizetés virtuális gépek korlátai és a regionális virtuálisgép-kapacitás ismertetése
+A virtuális gépek számának és a laborok virtuálisgép-méretének becslése után a következőket kell tennie:
 
-A gyors kezdéshez hozzon létre egy Lab-fiókot, majd később szükség szerint hozzon létre további labor-fiókokat. Előfordulhat például, hogy végül egy labor-fiókkal rendelkezik egy részlegen.
+- Győződjön meg arról, hogy az Azure-előfizetése kapacitásának korlátja lehetővé teszi a virtuális gépek számát és a laborban használni kívánt virtuálisgép-méretet.
+
+- Hozza létre a labor-fiókját egy olyan régióban, amelyen elegendő virtuálisgép-kapacitás érhető el.
+
+További információért olvassa el a következő blogbejegyzéset: [virtuális gépek előfizetési korlátai és regionális kapacitás](https://techcommunity.microsoft.com/t5/azure-lab-services/vm-subscription-limits-and-regional-capacity/ba-p/1845553).
+
+### <a name="decide-how-many-lab-accounts-to-create"></a>Döntse el, hogy hány Lab-fiókot hoz létre
+
+A gyors kezdéshez hozzon létre egyetlen Lab-fiókot a saját erőforráscsoporthoz.  Később szükség szerint további labor-fiókokat (és erőforráscsoportokat) is létrehozhat. Előfordulhat például, hogy végül egy labor-fiókkal és egy erőforráscsoport-erőforrással rendelkezik, így egyértelműen elkülönítheti a költségeket.  A következő cikkekből többet tudhat meg a labor-fiókokról, az erőforráscsoportokről és az elválasztó költségekről:
+- [Rendszergazdai útmutató – erőforráscsoport](https://docs.microsoft.com/azure/lab-services/administrator-guide#resource-group)
+- [Rendszergazdai útmutató – Lab-fiók](https://docs.microsoft.com/azure/lab-services/administrator-guide#lab-account) 
+- [Cost Management Azure Lab Services](https://docs.microsoft.com/azure/lab-services/cost-management-guide)
+
+## <a name="planning-your-lab-accounts-settings"></a>A labor-fiók beállításainak megtervezése
+
+A labor-fiók beállításainak megtervezéséhez vegye figyelembe az alábbi kérdéseket.
 
 ### <a name="who-should-be-owners-and-contributors-of-the-lab-account"></a>Kinek kell a labor-fiók tulajdonosai és közreműködői?
 
-A rendszergazdák általában a labor-fiókok tulajdonosai és közreműködői. Ők felelősek a labor-fiókban található összes laborhoz tartozó szabályzatok kezeléséért. A labor-fiókot létrehozó személy automatikusan tulajdonosa. További tulajdonosokat és közreműködőket adhat hozzá, általában az előfizetéséhez társított Azure Active Directory (Azure AD) bérlőtől. Ez akkor lehet hasznos, ha a labor fiók szintjén a tulajdonos vagy közreműködő szerepkör hozzárendelésével segíti a tesztkörnyezet felügyeletét.
+   Az iskola informatikai rendszergazdái általában a labor-fiókok tulajdonosai és közreműködői. Ők felelősek a labor-fiókban található összes laborhoz tartozó szabályzatok kezeléséért. A labor-fiókot létrehozó személy automatikusan tulajdonosa. További tulajdonosokat és közreműködőket adhat hozzá az előfizetéséhez társított Azure Active Directory (AD) bérlőhöz. A labor-fiók tulajdonosi és közreműködői szerepköreivel kapcsolatos további információkért olvassa el a következőt:
+   -  [Rendszergazdai útmutató – identitás kezelése](https://docs.microsoft.com/azure/lab-services/administrator-guide#manage-identity).
 
-[!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
+   [!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
 
-A labor felhasználóinak csak egyetlen listát kell látniuk a virtuális gépekről, amelyekhez a Azure Lab Serviceson belüli bérlők között férhet hozzá.
+   A labor felhasználóinak csak egyetlen listát kell látniuk a virtuális gépekről, amelyekhez a Azure Lab Serviceson belüli bérlők között férhet hozzá.
 
-### <a name="who-will-be-allowed-to-create-and-manage-labs"></a>Kik számára engedélyezett a laborok létrehozása és kezelése?
+### <a name="who-will-be-allowed-to-create-labs"></a>Kik számára engedélyezett a laborok létrehozása?
 
-Dönthet úgy is, hogy a rendszergazdák és az oktatók tagjai létrehozzák és kezelik a laborokat. Ezek a felhasználók (általában az előfizetéséhez társított Azure AD-bérlőből) a labor-fiókon belül vannak hozzárendelve a labor létrehozói szerepkörhöz.
+   Dönthet úgy is, hogy az informatikai és oktatói tagok létrehozzák a laborokat. Amikor egy felhasználó létrehoz egy labort, a rendszer automatikusan a labor tulajdonosaként rendeli hozzá őket.  A Labs létrehozásához a felhasználókat (általában az előfizetéséhez társított Azure AD-bérlőből) hozzá kell rendelni a Lab-fiókon belül a labor létrehozói szerepkörhöz.  A labor létrehozói szerepkörről a következő témakörben olvashat bővebben:
+   -  [Rendszergazdai útmutató – identitás kezelése](https://docs.microsoft.com/azure/lab-services/administrator-guide#manage-identity)
 
-### <a name="do-you-want-to-give-lab-creators-the-ability-to-save-images-that-can-be-shared-across-labs"></a>Szeretné, hogy a labor-készítők képesek legyenek menteni a laboratóriumokban megosztható képeket?
+### <a name="who-will-be-allowed-to-own-and-manage-labs"></a>Kik is jogosultak a laborok felügyeletére?
 
-A megosztott képgyűjtemény olyan tárház, amely a képek mentésére és megosztására használható. Ha több olyan osztálya van, amelynek ugyanazokat a képeket kell megadnia, akkor a labor-létrehozók egyszer is létrehozhatják a lemezképet, és megoszthatják azt a A kezdéshez azonban nincs szükség megosztott képkatalógusra, mert később bármikor hozzáadhat egyet.
+   AZT is megteheti, hogy a own\manage Labs-t és oktatókat is kiválaszthatja *anélkül* , hogy a laborokat létre tudja hozni.  Ebben az esetben az előfizetéséhez tartozó Azure AD-bérlőhöz tartozó felhasználókat a meglévő Labs tulajdonosának vagy közreműködőinek kell megadnia.  A labor tulajdonosi és közreműködői szerepköreivel kapcsolatos további információkért olvassa el a következőt:
+   - [Rendszergazdai útmutató – identitás kezelése](https://docs.microsoft.com/azure/lab-services/administrator-guide#manage-identity)
 
-Ha erre a kérdésre igennel válaszolt, létre kell hoznia vagy csatolnia kell egy megosztott rendszerkép-tárat a labor-fiókjához. Ha azt válaszolta, hogy "nem tudom," elhalasztotta ezt a döntést a későbbiekben.
+### <a name="do-you-want-to-save-images-that-can-be-shared-across-labs"></a>Szeretné menteni a laborok között megosztható képeket?
+A megosztott képgyűjtemény olyan tárház, amely a képek mentésére és megosztására használható. Azon osztályok esetében, amelyeknek ugyanazt a képet kell megadniuk, a labor létrehozói létrehozzák a rendszerképet, majd exportálják azt a megosztott képgyűjteménybe.  A lemezképek megosztott képkatalógusba való exportálása után új Labs létrehozásához is használható.
 
-### <a name="which-images-in-azure-marketplace-will-your-classroom-labs-use"></a>Milyen rendszerképeket használnak az Azure Marketplace-en a tanterem Labs?
+Emellett előfordulhat, hogy létre szeretné hozni a lemezképeket a fizikai környezetében, majd importálja őket a megosztott rendszerkép-katalógusba.  A folyamattal kapcsolatos további információkért olvassa el a következő blogbejegyzést: 
+- [Egyéni rendszerkép importálása a megosztott rendszerkép-gyűjteménybe](https://techcommunity.microsoft.com/t5/azure-lab-services/import-custom-image-to-shared-image-gallery/ba-p/1777353)
 
+Ha úgy dönt, hogy megosztott képtárat szeretne használni, létre kell hoznia vagy csatolnia kell egy megosztott rendszerkép-tárat a labor-fiókjához. Azt is megteheti, hogy később elhalasztotta ezt a döntést, mivel egy labor-fiókhoz bármikor csatolható.  A megosztott képkatalógussal kapcsolatos további információkért olvassa el a következőt:
+- [Rendszergazdai útmutató – megosztott rendszerkép-gyűjtemény](https://docs.microsoft.com/azure/lab-services/administrator-guide#shared-image-gallery)
+- [Rendszergazdai útmutató – megosztott rendszerkép-katalógus – díjszabás](https://docs.microsoft.com/azure/lab-services/administrator-guide#shared-image-gallery-2)
+
+### <a name="which-images-in-azure-marketplace-will-your-labs-use"></a>Milyen rendszerképeket használnak a laborok az Azure Marketplace-en?
 Az Azure Marketplace több száz olyan képet biztosít, amely lehetővé teszi, hogy a labor létrehozói a rendszerképet használják a labor létrehozásához. Egyes képek tartalmazhatnak mindent, amit a labor már igényel. Más esetekben a rendszerképeket kiindulási pontként használhatja, majd a tesztkörnyezet létrehozója testre is szabhatja azt további alkalmazások vagy eszközök telepítésével.
 
-Ha nem tudja, hogy mely rendszerképeket kell használnia, később bármikor visszatérhet, hogy engedélyezze őket. Emellett a legjobb lehetőség, hogy megtekintse, mely képek érhetők el, először hozzon létre egy Lab-fiókot. Ez hozzáférést biztosít, így áttekintheti az elérhető rendszerképek és azok tartalmának listáját.
+Ha nem tudja, hogy mely rendszerképekre van szüksége, később is visszatérhet, hogy engedélyezze őket. Emellett a legjobb lehetőség, hogy megtekintse, mely képek érhetők el, először hozzon létre egy Lab-fiókot. Ez hozzáférést biztosít, így áttekintheti az elérhető rendszerképek és azok tartalmának listáját.  További információ a Piactéri lemezképekről:
+- [A tesztkörnyezet-készítők számára elérhető Piactéri lemezképek meghatározása](https://docs.microsoft.com/azure/lab-services/specify-marketplace-images)
   
-### <a name="do-the-labs-virtual-machines-need-to-have-access-to-other-azure-or-on-premises-resources"></a>Szükség van-e a labor virtuális gépei más Azure-vagy helyszíni erőforrásokhoz való hozzáférésre?
+### <a name="do-the-labs-vms-need-to-have-access-to-other-azure-or-on-premises-resources"></a>Kell-e a labor virtuális gépei hozzáférni más Azure-vagy helyszíni erőforrásokhoz?
+Labor-fiók létrehozásakor a labor-fiókját egy virtuális hálózattal (VNet) is elvégezheti.  Ne feledje, hogy a VNet és a labor-fióknak ugyanabban a régióban kell lennie.  Annak eldöntéséhez, hogy szükség van-e egy VNet, vegye figyelembe a következő forgatókönyveket:
 
-Labor-fiók beállításakor lehetősége van arra is, hogy a virtuális hálózattal is egyenrangú legyen. Ha szeretné eldönteni, hogy szüksége van-e erre, vegye figyelembe a következő kérdéseket:
-
-- **Hozzáférést kell biztosítania a licencelési kiszolgálóhoz?**
+- **Hozzáférés egy licencelési kiszolgálóhoz**
   
-   Ha azt tervezi, hogy az Azure Marketplace-rendszerképeket használja, az operációs rendszer licencének díja a labor Services díjszabásában található. Ezért nem szükséges licenceket megadnia magának az operációs rendszernek. A telepített további szoftverek és alkalmazások esetében azonban szükség szerint meg kell adnia egy licencet.
+   Az Azure Marketplace-rendszerképek használata esetén az operációs rendszer licencének díja a labor Services díjszabásában van beépítve. Nem kell azonban licenceket megadnia magának az operációs rendszernek. A telepített további szoftverek és alkalmazások esetében azonban szükség szerint meg kell adnia egy licencet.  Licencelési kiszolgáló elérése:
+   - Dönthet úgy, hogy egy helyszíni licencelési kiszolgálóhoz csatlakozik.  A helyszíni licencelési kiszolgálóhoz való csatlakozáshoz további beállítások szükségesek.
+   - Egy másik lehetőség, amely gyorsabban beállítható, egy Azure-beli virtuális gépen futtatott licenckiszolgáló létrehozása.  Az Azure-beli virtuális gép egy olyan virtuális hálózaton belül található, amelyet Ön a labor-fiókjához tartozó fiókkal.
 
-- **Szükség van-e a tesztkörnyezet virtuális gépei más helyszíni erőforrásokra, például fájlmegosztás vagy adatbázis elérésére?**
+- **Hozzáférés más helyi erőforrásokhoz, például fájlmegosztás vagy adatbázis**
 
-   Hozzon létre egy virtuális hálózatot, amely hozzáférést biztosít a helyszíni erőforrásokhoz, általában egy helyek közötti virtuális hálózati átjáró használatával. Ha nem rendelkezik konfigurált virtuális hálózattal, további időt kell megadnia ehhez.
+   Hozzon létre egy VNet, amely hozzáférést biztosít a helyszíni erőforrásokhoz, általában egy helyek közötti virtuális hálózati átjáró használatával. Az ilyen típusú környezet beállítása további időt is igénybe vesz.
 
-- **A labor virtuális gépeknek hozzá kell férniük más Azure-erőforrásokhoz, amelyek a virtuális hálózaton belül találhatók?**
+- **Hozzáférés más Azure-erőforrásokhoz, amelyek a VNet kívül találhatók**
 
-   Ha olyan Azure-erőforrások elérésére van szüksége, amelyek *nem* biztonságosak a virtuális hálózaton belül, akkor a nyilvános interneten keresztül hozzáférhet ezekhez az erőforrásokhoz anélkül, hogy bármilyen műveletet végrehajtaná.
+   Ha olyan Azure-erőforrások elérésére van szüksége, amelyek *nem* biztonságosak a VNet belül, akkor a nyilvános interneten keresztül hozzáférhet ezekhez az erőforrásokhoz anélkül, hogy bármilyen műveletet kellene elvégeznie.
 
-Ha az "igen" értéket adta meg egy vagy több kérdésnek, akkor a tesztkörnyezet fiókját egy virtuális hálózathoz kell összeállítania. Ha a "nem tudom," lehetőséget választotta, akkor később is elhalaszthatja ezt a döntést. A labor-fiók létrehozása után mindig dönthet úgy, hogy a virtuális hálózatot is létrehozta.
+A virtuális hálózatokkal kapcsolatos további információkért olvassa el a következőt:
+- [Architektúra alapjai – Virtual Network](https://docs.microsoft.com/azure/lab-services/classroom-labs-fundamentals#virtual-network)
+- [Kapcsolódás virtuális hálózathoz](https://docs.microsoft.com/azure/lab-services/how-to-connect-peer-virtual-network)
+- [Tesztkörnyezet létrehozása megosztott erőforrással Azure Lab Services](https://docs.microsoft.com/azure/lab-services/how-to-create-a-lab-with-shared-resource)
 
 ## <a name="set-up-your-lab-account"></a>A labor-fiók beállítása
 
-Miután megértette a labor-fiókjára vonatkozó követelményeket, készen áll a beállításra.
+A tervezés befejezése után készen áll a labor-fiók beállítására.  Ugyanezek a lépések alkalmazhatók a laborok [Azure Lab Services csapatokkal való](https://docs.microsoft.com/azure/lab-services/lab-services-within-teams-overview)beállítására.
 
 1. **Hozza létre a labor-fiókját.** Az utasításokért tekintse meg a [labor-fiók létrehozásáról](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#create-a-lab-account) szóló oktatóanyagot.
+   
+    Az elnevezéssel kapcsolatos további útmutatásért tekintse meg a következő cikket:
 
-   Labor-fiók létrehozásakor hasznos lehet megtekinteni az érintett Azure-erőforrásokat. További információkat az következő cikkekben talál:
-
-   - [Előfizetés](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#subscription)
-   - [Erőforráscsoport](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#resource-group)
-   - [Labor-fiók](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#lab-account)
-   - [Tantermi labor](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#classroom-lab)
-   - [Régió és hely kiválasztása](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)
    - [Az erőforrások elnevezési útmutatója](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#naming)
 
 2. **Adja hozzá a felhasználókat a labor létrehozói szerepkörhöz.** Útmutatásért lásd: [felhasználók hozzáadása a labor Creator szerepkörhöz](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role).
 
-   Továbbá a labor-fiókokat és a laborokat kezelő felhasználókhoz hozzárendelt különböző szerepkörökkel kapcsolatos további információkért tekintse meg az [identitás kezelése című útmutatót](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#manage-identity).
 
 3. **Kapcsolódjon egy társ virtuális hálózathoz.** Útmutatásért lásd: [a tesztkörnyezet hálózatának összekapcsolása egyenrangú virtuális hálózattal](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network).
 
@@ -97,12 +132,13 @@ Miután megértette a labor-fiókjára vonatkozó követelményeket, készen ál
 
    ![Az Azure Marketplace-rendszerképek áttekintése – képernyőkép](./media/setup-guide/review-marketplace-images.png)
 
-   Ha rendelkezik a labor-fiókhoz csatolt megosztott képkatalógussal, és engedélyezni szeretné az egyéni lemezképek megosztását a labor-készítők számára, hajtsa végre a következő képernyőképen láthatóhoz hasonló lépéseket:
+   Ha egy megosztott képtárat csatolnak a labor-fiókjához, és engedélyezni szeretné az egyéni lemezképek megosztását a labor-készítők számára, hajtsa végre a hasonló lépéseket az alábbi képernyőképen látható módon:
 
    ![Képernyőkép – Egyéni rendszerképek engedélyezése egy megosztott rendszerkép-gyűjteményben](./media/setup-guide/enable-sig-custom-images.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+
+A labor környezet beállításának következő lépései:
 
 - [Tesztkörnyezetfiókok kezelése](how-to-manage-lab-accounts.md)
-
-- [A tanterem Lab telepítési útmutatója](setup-guide.md)
+- [Labor telepítési útmutatója](setup-guide.md)

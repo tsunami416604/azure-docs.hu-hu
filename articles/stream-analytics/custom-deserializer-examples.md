@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a69ca707577ceddc56ae691d6e5e701458cae28
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4adf0b8a7c12abed9689b9ac0cc9c5d5c8c3f980
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346601"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488434"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>A bemeneti adatok bármilyen formátumban olvashatók a .NET-alapú egyéni deszerializálók használatával
 
@@ -249,9 +249,9 @@ Ez a funkció nem támogatott. Ha erre a képességre van szüksége, szavazzon 
 
 A deszerializáló megvalósítását követően a Közösséggel megoszthatja másokkal. Küldje be a kódot a [Azure stream Analytics GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)-tárházba.
 
-### <a name="what-are-the-other-limitation-of-using-custom-deserializers-in-stream-analytics"></a>Melyek a Stream Analytics egyéni deszerializálók használatának egyéb korlátai?
+### <a name="what-are-the-other-limitations-of-using-custom-deserializers-in-stream-analytics"></a>Melyek a Stream Analytics egyéni deszerializálók használatának egyéb korlátai?
 
-Ha a bemenet protopuf formátumú, és a MapField típusú sémát tartalmazza, nem fog tudni egyéni deszerializáló megvalósítani. Dolgozunk ezen típus támogatásán.
+Ha a bemeneti formátuma protopuf típusú sémát tartalmaz `MapField` , nem fog tudni egyéni deszerializáló megvalósítani. Emellett az egyéni deszerializálók nem támogatják a mintaadatok vagy az előnézeti adatmegjelenítést. 
 
 ## <a name="next-steps"></a>Következő lépések
 

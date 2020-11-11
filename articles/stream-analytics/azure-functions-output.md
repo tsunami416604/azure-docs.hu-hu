@@ -7,22 +7,22 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: f3f6e33c7c37089f7a9e87ab61bb00c966d8ccc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffaf66cbb5d9fa0b294f5749a1923684f16c2979
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90881913"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488089"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Functions kimenete
 
 A Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel igény szerint futtathat programkódokat anélkül, hogy explicit módon kellene kiépíteni vagy kezelni az infrastruktúrát. Lehetővé teszi az Azure-ban vagy a partneri szolgáltatásokban bekövetkező események által aktivált kódok megvalósítását. Azure Functions az eseményindítók megválaszolásának lehetősége a Azure Stream Analytics természetes kimenetét teszi lehetővé. Ez a kimeneti adapter lehetővé teszi, hogy a felhasználók a Azure Functionshoz csatlakozzanak Stream Analyticshoz, és egy parancsfájlt vagy programkódot futtassanak a különböző eseményekre adott válaszként.
 
-Stream Analytics Azure Functions kimenete jelenleg nem érhető el az Azure China 21Vianet és az Azure Germany (T-Systems International) régióiban.
+Stream Analytics Azure Functions kimenete nem érhető el az Azure China 21Vianet és az Azure Germany (T-Systems International) régióiban. Egy virtuális hálózaton (VNet) belüli, több-bérlős fürtön futó Stream Analytics-feladatokból való Azure Functions-kapcsolódás szintén nem támogatott.
 
 A Azure Stream Analytics HTTP-eseményindítók használatával hívja meg Azure Functions. A Azure Functions kimeneti adapter a következő konfigurálható tulajdonságokkal érhető el:
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Függvényalkalmazás |A Azure Functions alkalmazás neve. |
 | Függvény |A függvény neve a Azure Functions alkalmazásban. |
@@ -47,7 +47,7 @@ A partíciós kulcs a lekérdezés PARTITION BY záradékán alapul. A kimeneti 
 
 Az alapértelmezett köteg mérete 262 144 bájt (256 KB). Az események alapértelmezett száma/batch értéke 100. A köteg mérete konfigurálható, és a Stream Analytics kimeneti beállításokban növelheti vagy csökkenthető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 * [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)

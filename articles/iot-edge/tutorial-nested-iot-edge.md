@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 624a147a463ad3be7e15a469294f07793046aaf3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b2a74450477d562231eafd684b3d781d92f700d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445949"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489573"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Oktatóanyag: IoT Edge-eszközök hierarchiájának létrehozása (előzetes verzió)
 
@@ -53,7 +53,7 @@ IoT Edge eszközök hierarchiájának létrehozásához a következőkre lesz sz
 * Két linuxos eszköz IoT Edge eszközként való konfiguráláshoz. Ha nincs elérhető eszköze, használhatja az Azure-beli [virtuális gépeket](https://docs.microsoft.com/azure/virtual-machines/linux/).
 * Egy érvényes előfizetéssel rendelkező Azure-fiók. Ha nem rendelkezik Azure- [előfizetéssel](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 * Ingyenes vagy standard szintű [IoT hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* Azure CLI v 2.3.1 Az Azure IoT Extension v 0.9.10 vagy újabb verziójával. Ez az oktatóanyag a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)használja. Ha nem ismeri a Azure Cloud Shell, a [részletekért tekintse meg a](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#use-azure-cloud-shell)rövid útmutatót.
+* Azure CLI v 2.3.1 Az Azure IoT Extension v 0.10.6 vagy újabb verziójával. Ez az oktatóanyag a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)használja. Ha nem ismeri a Azure Cloud Shell, a [részletekért tekintse meg a](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#use-azure-cloud-shell)rövid útmutatót.
 
 Ezt a forgatókönyvet úgy is kipróbálhatja, hogy a megírt [Azure IoT Edge az ipari IoT minta](https://aka.ms/iotedge-nested-sample)alapján, amely az Azure-beli virtuális gépeket előre konfigurált eszközökként helyezi üzembe a gyári környezet szimulálása érdekében.
 

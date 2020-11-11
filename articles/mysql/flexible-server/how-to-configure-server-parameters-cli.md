@@ -6,16 +6,20 @@ ms.author: ambhatna
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 87ec99a68c538e8133d64351cdecbbf8b10459e6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 58e7c024d6494aee745884997e42b527c51ab237
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92525102"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489539"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MySQL rugalmas kiszolgálón az Azure CLI használatával
+
+> [!IMPORTANT] 
+> Azure Database for MySQL – a rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
+
 Az Azure CLI-vel, az Azure parancssori segédprogrammal megtekintheti, megjelenítheti és frissítheti az Azure Database for MySQL rugalmas kiszolgáló paramétereit. A kiszolgálói paraméterek az alapértelmezett és ajánlott értékkel vannak konfigurálva a kiszolgáló létrehozásakor.  
 
 Ez a cikk bemutatja, hogyan listázhatja, jelenítheti meg és frissítheti a kiszolgálói paramétereket az Azure CLI használatával.
@@ -31,7 +35,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 ## <a name="list-server-parameters-for-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL rugalmas kiszolgáló kiszolgálói paramétereinek listázása
 A kiszolgáló összes paraméterének és értékének listázásához futtassa az az [MySQL flexibilis-Server paraméter List](/cli/azure/mysql/flexible-server/parameter) parancsot.
 
-A kiszolgáló **mydemoserver.mysql.database.Azure.com** a **myresourcegroup**erőforráscsoport alatt listázhatja.
+A kiszolgáló **mydemoserver.mysql.database.Azure.com** a **myresourcegroup** erőforráscsoport alatt listázhatja.
 ```azurecli-interactive
 az mysql flexible-server parameter list --resource-group myresourcegroup --server-name mydemoserver
 ```
@@ -66,7 +70,7 @@ Frissítse a kiszolgáló **mydemoserver.mysql.database.Azure.com** **init \_ cs
 az mysql flexible-server parameter set --name init_connect --resource-group myresourcegroup --server-name mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
 ```
 >[!Note]
-> Az `init_connect` olyan paraméterek módosítására használható, amelyek nem igényelnek SUPER jogosultságo(ka)t a munkamenet szintjén. A `set session parameter_name=YOUR_DESIRED_VALUE;` parancs végrehajtásával ellenőrizze, hogy megadható-e a paraméter az **használatával. Ha hiba lép fel, és a**Hozzáférés megtagadva; SUPER jogosultság(ok) szükséges(ek)`init_connect` hibaüzenet jelenik meg, akkor a paraméter nem adható meg az init_connect segítségével.
+> Az `init_connect` olyan paraméterek módosítására használható, amelyek nem igényelnek SUPER jogosultságo(ka)t a munkamenet szintjén. A `set session parameter_name=YOUR_DESIRED_VALUE;` parancs végrehajtásával ellenőrizze, hogy megadható-e a paraméter az **használatával. Ha hiba lép fel, és a** Hozzáférés megtagadva; SUPER jogosultság(ok) szükséges(ek)`init_connect` hibaüzenet jelenik meg, akkor a paraméter nem adható meg az init_connect segítségével.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Az időzóna-paraméter használata
 
@@ -94,7 +98,7 @@ SELECT name FROM mysql.time_zone_name;
 
 A globális szintű időzónát az az [MySQL flexibilis-Server paraméter set](/cli/azure/mysql/flexible-server/parameter) paranccsal lehet beállítani.
 
-A következő parancs frissíti a kiszolgáló **mydemoserver.mysql.database.Azure.com** ** \_ időzóna** -kiszolgáló paraméterét az **USA/csendes-óceáni** **myresourcegroup** .
+A következő parancs frissíti a kiszolgáló **mydemoserver.mysql.database.Azure.com** **\_ időzóna** -kiszolgáló paraméterét az **USA/csendes-óceáni** **myresourcegroup** .
 
 ```azurecli-interactive
 az mysql flexible-server parameter set --name time_zone --resource-group myresourcegroup --server-name mydemoserver --value "US/Pacific"
@@ -111,6 +115,6 @@ SET time_zone = 'US/Pacific';
 Tekintse meg a MySQL dokumentációját a [dátum-és Időfüggvényekhez](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Kiszolgáló paramétereinek konfigurálása Azure Portal](./how-to-configure-server-parameters-portal.md)

@@ -3,12 +3,12 @@ title: A nyilvános IP-funkciók használata az Azure VMware-megoldásban
 description: Ez a cikk azt ismerteti, hogyan használható a nyilvános IP-funkció az Azure Virtual WAN-ban.
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: f51f00a9adc1fd122e723909ecaa6193c152d496
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 63475b478a951632c068b168353acf2e0bb7061c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912667"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490389"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>A nyilvános IP-funkciók használata az Azure VMware-megoldásban
 
@@ -50,19 +50,19 @@ Ebben az esetben közzé kell tennie az IIS webkiszolgálót az interneten. Az A
 
 ## <a name="deploy-virtual-wan"></a>A Virtual WAN üzembe helyezése
 
-1. Jelentkezzen be a Azure Portalba, majd keresse meg és válassza ki az **Azure VMware-megoldást** .
+1. Jelentkezzen be a Azure Portalba, majd keresse meg és válassza ki az **Azure VMware-megoldást**.
 
 1. Válassza ki az Azure VMware-megoldás saját felhőjét.
 
-   :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="Nyilvános IP-architektúra diagramja" border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
+   :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="Képernyőkép az Azure VMware Solution Private Cloud-ról." border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
 
 1. A **kezelés** területen válassza a **kapcsolat** lehetőséget.
 
-   :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="Nyilvános IP-architektúra diagramja" border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
+   :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="Képernyőfelvétel a kapcsolatról szakasz." border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
 
 1. Válassza a **nyilvános IP-cím** lapot, majd válassza a **Konfigurálás** lehetőséget.
 
-   :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="Nyilvános IP-architektúra diagramja" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
+   :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="A nyilvános IP-cím konfigurálását bemutató képernyőkép" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
 1. Fogadja el az alapértelmezett értékeket, vagy módosítsa, majd válassza a **Létrehozás** lehetőséget.
 
@@ -85,21 +85,21 @@ Az alábbi lépések végrehajtásával további nyilvános IP-címeket is megte
 
 1. A Azure Portal keresse meg és válassza a **tűzfal** lehetőséget.
 
-1. Válasszon ki egy központilag telepített tűzfalat, majd válassza a **látogatás Azure Firewall Manager elemet a tűzfal konfigurálásához és kezeléséhez** .
+1. Válasszon ki egy központilag telepített tűzfalat, majd válassza a **látogatás Azure Firewall Manager elemet a tűzfal konfigurálásához és kezeléséhez**.
 
-   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Nyilvános IP-architektúra diagramja" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
+   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="A tűzfal konfigurálásának és kezelésének lehetőségét bemutató képernyőkép" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
 1. Válassza a **biztonságos virtuális hubok** lehetőséget, és a listából válassza ki a virtuális hubot.
 
-   :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="Nyilvános IP-architektúra diagramja" lightbox="media/public-ip-usage/select-virtual-hub.png":::
+   :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="A Firewall Manager képernyőképe" lightbox="media/public-ip-usage/select-virtual-hub.png":::
 
 1. A virtuális központ lapon válassza a **nyilvános IP-konfiguráció** lehetőséget, és adjon hozzá több nyilvános IP-címet, majd válassza a **Hozzáadás** lehetőséget. 
 
-   :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="Nyilvános IP-architektúra diagramja" border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
+   :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="Képernyőkép a nyilvános IP-konfiguráció hozzáadásáról a Firewall Managerben" border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
 
 1. Adja meg a szükséges IP-címek számát, és válassza a **Hozzáadás** lehetőséget.
 
-   :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="Nyilvános IP-architektúra diagramja" border="true":::
+   :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="Képernyőkép egy megadott számú nyilvános IP-konfiguráció hozzáadásához" border="true":::
 
 
 ## <a name="create-firewall-policies"></a>Tűzfalszabályok létrehozása
@@ -108,13 +108,13 @@ Az összes összetevő üzembe helyezése után megtekintheti őket a hozzáadot
 
 1. A Azure Portal keresse meg és válassza a **tűzfal** lehetőséget.
 
-1. Válasszon ki egy központilag telepített tűzfalat, majd válassza a **látogatás Azure Firewall Manager elemet a tűzfal konfigurálásához és kezeléséhez** .
+1. Válasszon ki egy központilag telepített tűzfalat, majd válassza a **látogatás Azure Firewall Manager elemet a tűzfal konfigurálásához és kezeléséhez**.
 
-   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Nyilvános IP-architektúra diagramja" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
+   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="A tűzfal konfigurálásának és kezelésének lehetőségét bemutató képernyőkép" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
 1. Válassza ki **Azure Firewall házirendeket** , majd válassza a **Azure Firewall házirend létrehozása** lehetőséget.
 
-   :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="Nyilvános IP-architektúra diagramja" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
+   :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="A tűzfal-házirend létrehozása a tűzfal kezelőjében – képernyőkép" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
 
 1. Az **alapok** lapon adja meg a szükséges adatokat, és válassza a **Tovább: DNS-beállítások** elemet. 
 
@@ -140,15 +140,13 @@ Az összes összetevő üzembe helyezése után megtekintheti őket a hozzáadot
 
 1. Válassza a **virtuális központ hozzárendelése** lehetőséget.
 
-   :::image type="content" source="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png" alt-text="Nyilvános IP-architektúra diagramja" border="true" lightbox="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png":::
-
 1. Válasszon egy hubot a listából, és válassza a **Hozzáadás** lehetőséget.
 
-   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Nyilvános IP-architektúra diagramja" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
+   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Képernyőkép, amely megjeleníti a kiválasztott hubokat, amelyeket a rendszer Scecured virtuális hubokra konvertál." border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
 1. Válassza a **Tovább: Címkék** lehetőséget. 
 
-1. Választható Hozzon létre név/érték párokat az erőforrások kategorizálásához. 
+1. Választható Hozza létre a név és érték párokat az erőforrások kategorizálásához. 
 
 1. Válassza a **Next (tovább): felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget.
 
@@ -156,7 +154,7 @@ Az összes összetevő üzembe helyezése után megtekintheti őket a hozzáadot
 
 SDDCs legfeljebb 100 nyilvános IP-cím adható meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a nyilvános IP-címek [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md)használatával történő használatáról.
 

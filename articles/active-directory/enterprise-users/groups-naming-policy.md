@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9456d663eb1600bf73b1fe253560c2d9f29205ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 45dac4425f4d2f563cbc942f23d81583728139f6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375741"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489454"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Elnevezési szabályzat érvénybe léptetése Microsoft 365 csoportokban Azure Active Directory
 
@@ -85,26 +85,26 @@ A kiválasztott rendszergazdák mentesülnek a szabályzatokból, az összes cso
 ## <a name="configure-naming-policy-in-azure-portal"></a>Elnevezési házirend konfigurálása a Azure Portalban
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy csoport-rendszergazdai fiókkal.
-1. Válassza a **csoportok**lehetőséget, majd válassza az **elnevezési házirend** elemet az elnevezési házirend lap megnyitásához.
+1. Válassza a **csoportok** lehetőséget, majd válassza az **elnevezési házirend** elemet az elnevezési házirend lap megnyitásához.
 
     ![az elnevezési szabályzat lap megnyitása a felügyeleti központban](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Az előtag-utótag elnevezési házirend megtekintése vagy szerkesztése
 
-1. Az **elnevezési házirend** lapon válassza a **csoport elnevezési házirend**elemet.
+1. Az **elnevezési házirend** lapon válassza a **csoport elnevezési házirend** elemet.
 1. Az aktuális előtag-vagy utótag-elnevezési házirendeket egyenként tekintheti meg vagy szerkesztheti. Ehhez válassza ki azokat az attribútumokat vagy karakterláncokat, amelyeket az elnevezési szabályzat részeként szeretne kikényszeríteni.
-1. Ha el szeretne távolítani egy előtagot vagy utótagot a listából, válassza ki az előtagot vagy utótagot, majd válassza a **Törlés**lehetőséget. Egyszerre több elem is törölhető.
-1. Mentse az új szabályzat módosításait, hogy a **Mentés**gombra kattintva lépjen életbe.
+1. Ha el szeretne távolítani egy előtagot vagy utótagot a listából, válassza ki az előtagot vagy utótagot, majd válassza a **Törlés** lehetőséget. Egyszerre több elem is törölhető.
+1. Mentse az új szabályzat módosításait, hogy a **Mentés** gombra kattintva lépjen életbe.
 
 ### <a name="edit-custom-blocked-words"></a>Egyéni tiltott szavak szerkesztése
 
-1. A **névadási házirend** lapon válassza a **tiltott szavak**elemet.
+1. A **névadási házirend** lapon válassza a **tiltott szavak** elemet.
 
     ![tiltott szavak listájának szerkesztése és feltöltése elnevezési házirendhez](./media/groups-naming-policy/blockedwords.png)
 
-1. A **Letöltés**lehetőség kiválasztásával megtekintheti vagy szerkesztheti az egyéni tiltott szavak aktuális listáját.
+1. A **Letöltés** lehetőség kiválasztásával megtekintheti vagy szerkesztheti az egyéni tiltott szavak aktuális listáját.
 1. Töltse fel az egyéni tiltott szavak új listáját a fájl ikon kiválasztásával.
-1. Mentse az új szabályzat módosításait, hogy a **Mentés**gombra kattintva lépjen életbe.
+1. Mentse az új szabályzat módosításait, hogy a **Mentés** gombra kattintva lépjen életbe.
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell-parancsmagok telepítése
 
@@ -123,7 +123,7 @@ A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows 
    Install-Module AzureADPreview
    ```
 
-   Ha a rendszer felszólítja a nem megbízható adattár elérésére, írja be az **Y**értéket. Az új modul telepítéséhez néhány percet is igénybe vehet.
+   Ha a rendszer felszólítja a nem megbízható adattár elérésére, írja be az **Y** értéket. Az új modul telepítéséhez néhány percet is igénybe vehet.
 
 ## <a name="configure-naming-policy-in-powershell"></a>Elnevezési házirend konfigurálása a PowerShellben
 
@@ -206,7 +206,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ### <a name="remove-the-naming-policy-using-azure-portal"></a>Az elnevezési házirend eltávolítása Azure Portal használatával
 
-1. Az **elnevezési házirend** lapon válassza a **házirend törlése**lehetőséget.
+1. Az **elnevezési házirend** lapon válassza a **házirend törlése** lehetőséget.
 1. A Törlés megerősítése után a rendszer eltávolítja az elnevezési házirendet, beleértve az összes előtag-utótag elnevezési házirendet és az egyéni letiltott szavakat is.
 
 ### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>Az elnevezési házirend eltávolítása az Azure AD PowerShell használatával
@@ -249,7 +249,6 @@ A Mobile App csoportok | A groups Mobile alkalmazásban létrehozott csoportok m
 Planner | A Planner megfelel az elnevezési házirendnek. A Planner megjeleníti a névadási házirend előzetes verzióját a csomag nevének megadásakor. Ha egy felhasználó egyéni letiltott szót ad meg, a terv létrehozásakor hibaüzenet jelenik meg.
 Dynamics 365 for Customer Engagement | A Dynamics 365 for Customer engagement megfelel az elnevezési házirendnek. A Dynamics 365 megjeleníti az elnevezési szabályzatot, amely akkor lép érvénybe, ha a felhasználó a csoport nevét vagy a csoport e-mail aliasát adja meg. Ha a felhasználó egy egyéni letiltott szót ad meg, hibaüzenet jelenik meg a letiltott Szóval, így a felhasználó el tudja távolítani.
 School-adatszinkronizálás (SDS) | Az SDS használatával létrehozott csoportok megtartják az elnevezési házirendet, de az elnevezési házirend nincs automatikusan alkalmazva. Az SDS-rendszergazdáknak hozzá kell fűzni az előtagokat és az utótagokat azokhoz a csoportokhoz, amelyekhez létre kell hozni, majd fel kell tölteni őket az SDS-be. A csoport létrehozása vagy szerkesztése másként nem fog működni.
-Outlook Customer Manager (VÁLASZTHATÓÖSSZETEVŐ) | Az Outlook Customer Manager megfelel az elnevezési házirendnek, amely automatikusan az Outlook Customer Managerben létrehozott csoportra lesz alkalmazva. Ha a rendszer egy egyéni blokkolt szót észlel, a VÁLASZTHATÓÖSSZETEVŐ-ben való csoportos létrehozás le van tiltva, és a felhasználó le van tiltva a VÁLASZTHATÓÖSSZETEVŐ alkalmazás használatával.
 Tantermi alkalmazás | Az osztályterem alkalmazásban létrehozott csoportok megfelelnek az elnevezési házirendnek, de az elnevezési házirend nem lesz automatikusan alkalmazva, és az elnevezési szabályzat előzetes verziója nem jelenik meg a felhasználók számára az osztályterem csoport nevének megadásakor. A felhasználóknak meg kell adniuk a kényszerített osztályterem csoport nevét előtagokkal és utótagokkal. Ha nem, az osztályterem csoport létrehozás vagy szerkesztés művelete hibákkal meghiúsul.
 Power BI | Power BI munkaterületek megfelelnek az elnevezési házirendnek.    
 Yammer | Amikor egy felhasználó a Yammer-be bejelentkezett a Azure Active Directory-fiókjával, létrehoz egy csoportot, vagy szerkeszti a csoport nevét, a csoportnév megfelel az elnevezési házirendnek. Ez a Microsoft 365 csatlakoztatott csoportokra és az összes többi Yammer is vonatkozik.<br>Ha az elnevezési házirend betartását megelőzően egy Microsoft 365 csatlakoztatott csoport lett létrehozva, akkor a csoport neve nem követi automatikusan a névadási házirendeket. Amikor egy felhasználó szerkeszti a csoport nevét, a rendszer kérni fogja, hogy adja hozzá az előtagot és utótagot.
@@ -259,7 +258,7 @@ PowerShell-parancsmagok Azure Active Directory | Azure Active Directory PowerShe
 Exchange felügyeleti központ | Az Exchange felügyeleti központ megfelel az elnevezési házirendnek. A felhasználók a javasolt előtagokkal és utótagokkal, illetve az egyéni blokkolt szavak esetén kapják meg a megfelelő hibaüzeneteket, ha nem követik az elnevezési konvenciót a csoport neve és a csoport aliasában.
 Microsoft 365 felügyeleti központ | Microsoft 365 felügyeleti központ megfelel az elnevezési házirendnek. Amikor egy felhasználó létrehoz vagy szerkeszt egy csoportnevet, a rendszer automatikusan alkalmazza az elnevezési házirendet, és a felhasználók a megfelelő hibákat kapják meg, amikor egyéni tiltott szavakat hoznak létre. A Microsoft 365 felügyeleti központ még nem jeleníti meg az elnevezési házirend előnézetét, és nem ad vissza egyéni blokkolt Word-hibákat, amikor a felhasználó belép a csoport nevére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezek a cikkek további információkat nyújtanak az Azure AD-csoportokról.
 

@@ -1,30 +1,30 @@
 ---
-title: 'Gyors útmutató: NSG-adatforgalmi naplók konfigurálása Azure Resource Manager sablon használatával'
-description: Megtudhatja, hogyan engedélyezheti programozott módon a NSG-adatforgalmi naplókat egy Azure Resource Manager sablon (ARM-sablon) és Azure PowerShell használatával.
+title: 'Gyors útmutató: hálózati biztonsági csoport folyamatábráinak konfigurálása Azure Resource Manager sablon használatával (ARM-sablon)'
+description: Megtudhatja, hogyan engedélyezheti programozott módon a hálózati biztonsági csoport (NSG) folyamatait egy Azure Resource Manager sablon (ARM-sablon) és Azure PowerShell használatával.
 services: network-watcher
 author: damendo
-Customer intent: I need to enable the NSG flow logs using Azure Resource Manager Template
+Customer intent: I need to enable the network security group flow logs by using an Azure Resource Manager template.
 ms.service: network-watcher
 ms.topic: quickstart
 ms.date: 07/22/2020
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: 96f30c05527754cbce3b7593c8d62fb56844d41e
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 563f111a656376899fcd0201b42f87bfea445865
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042759"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488050"
 ---
-# <a name="quickstart-configure-nsg-flow-logs-using-an-arm-template"></a>Gyors útmutató: NSG-adatforgalmi naplók konfigurálása ARM-sablon használatával
+# <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Gyors útmutató: hálózati biztonsági csoport folyamatábráinak konfigurálása ARM-sablonnal
 
-Ebben a rövid útmutatóban egy [Azure Resource Manager](../azure-resource-manager/management/overview.md) sablon (ARM-sablon) és Azure PowerShell használatával engedélyezheti a [NSG folyamat naplóit](network-watcher-nsg-flow-logging-overview.md) .
+Ebből a rövid útmutatóból megtudhatja, hogyan engedélyezheti a [hálózati biztonsági csoport (NSG) folyamatának naplóit](network-watcher-nsg-flow-logging-overview.md) [Azure Resource Manager](../azure-resource-manager/management/overview.md) sablon (ARM-sablon) és Azure PowerShell használatával.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Kezdjük azzal, hogy áttekintjük a NSG flow log objektum tulajdonságait, amelyet néhány sablon követ. Ezután a sablon üzembe helyezése egy helyi PowerShell-példány használatával.
+Első lépésként tekintse át a NSG flow log objektum tulajdonságait. Minta sablonokat biztosítunk. Ezután egy helyi Azure PowerShell példányt használunk a sablon üzembe helyezéséhez.
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon megnyílik a Azure Portalban.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-networkwatcher-flowLogs-create%2Fazuredeploy.json)
 
@@ -34,18 +34,18 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create) közül származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create)származik.
 
 :::code language="json" source="~/quickstart-templates/101-networkwatcher-flowlogs-create/azuredeploy.json":::
 
-Több erőforrás van definiálva a sablonban:
+Ezek az erőforrások a sablonban vannak definiálva:
 
 - [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 - [Microsoft. Resources/üzemelő példányok](/azure/templates/microsoft.resources/deployments)
 
 ## <a name="nsg-flow-logs-object"></a>NSG-folyamat naplófájljainak objektuma
 
-Az NSG flow az összes paraméterrel rendelkező objektumot alább mutatja. A tulajdonságok teljes áttekintését lásd: [Microsoft. Network networkWatchers/flowLogs](/azure/templates/microsoft.network/networkwatchers/flowlogs).
+A következő kód egy NSG-folyamatábra objektumot és annak paramétereit jeleníti meg. Erőforrás létrehozásához `Microsoft.Network/networkWatchers/flowLogs` adja hozzá ezt a kódot a sablon erőforrások szakaszához:
 
 ```json
 {
@@ -76,20 +76,20 @@ Az NSG flow az összes paraméterrel rendelkező objektumot alább mutatja. A tu
 }
 ```
 
-Erőforrás létrehozásához `Microsoft.Network/networkWatchers/flowLogs` adja hozzá a fenti JSON-t a sablon erőforrások szakaszához.
+A NSG flow-naplók objektum tulajdonságainak teljes áttekintését lásd: [Microsoft. Network networkWatchers/flowLogs](/azure/templates/microsoft.network/networkwatchers/flowlogs).
 
-## <a name="creating-your-template"></a>A sablon létrehozása
+## <a name="create-your-template"></a>Sablon létrehozása
 
-Ha első alkalommal használ ARM-sablonokat, többet is megtudhat ezekről az alábbi hivatkozásokat használva.
+Ha első alkalommal használ ARM-sablonokat, tekintse meg az alábbi cikkeket az ARM-sablonokkal kapcsolatos további információkért:
 
 - [Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
 - [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
-Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create) közül származik.
+A következő példa egy teljes sablon. Ez a sablon legegyszerűbb verziója is. A példa a NSG-naplók beállításakor átadott minimális paramétereket tartalmazza. További példákért tekintse meg a [NSG flow-naplók konfigurálása Azure Resource Manager sablonból](network-watcher-nsg-flow-logging-azure-resource-manager.md)című cikket.
 
-Az alábbi példában a teljes sablon a NSG-naplók beállításához megadott minimális paraméterekkel rendelkező legegyszerűbb verzió. További példákért látogasson el erre a [útmutatóra](network-watcher-nsg-flow-logging-azure-resource-manager.md).
+### <a name="example"></a>Példa
 
-**Példa** : az alábbi sablon lehetővé teszi, hogy a NSG a cél NSG, és tárolja őket egy adott Storage-fiókban.
+A következő sablon lehetővé teszi a NSG számára a flow-naplókat, majd egy adott Storage-fiókban tárolja a naplókat:
 
 ```json
 {
@@ -116,16 +116,19 @@ Az alábbi példában a teljes sablon a NSG-naplók beállításához megadott m
 ```
 
 > [!NOTE]
-> - Az erőforrás neve a _szülő Resource_Child erőforrást_ formázza. Itt a szülő erőforrás a regionális Network Watcher-példány (Format: NetworkWatcher_RegionName. Példa: NetworkWatcher_centraluseuap)
+> - Az erőforrás neve a _ParentResource_ChildResource_ formátumot használja. A példánkban a szülő erőforrás a regionális Azure Network Watcher példány:
+>    - **Formátum** : NetworkWatcher_RegionName
+>    - **Példa** : NetworkWatcher_centraluseuap
 > - `targetResourceId` a cél NSG erőforrás-azonosítója.
 > - `storageId` a cél Storage-fiók erőforrás-azonosítója.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Ez az oktatóanyag feltételezi, hogy rendelkezik egy meglévő erőforráscsoporthoz és egy NSG, amelyen engedélyezheti a folyamat naplózását.
-A fenti példák bármelyikét helyileg is mentheti `azuredeploy.json` . Frissítse a tulajdonságértékek értékét úgy, hogy az előfizetése érvényes erőforrásokra mutasson.
+Ez az oktatóanyag feltételezi, hogy rendelkezik egy meglévő erőforráscsoporthoz és egy NSG, amely lehetővé teszi a folyamat bejelentkezését.
 
-A sablon üzembe helyezéséhez futtassa a következő parancsot a PowerShellben.
+A cikkben látható példák bármelyikét a következő módon mentheti: *azuredeploy.js*. Frissítse a tulajdonságértékek értékét, hogy az előfizetése érvényes erőforrásaira mutasson.
+
+A sablon üzembe helyezéséhez futtassa a következő parancsot Azure PowerShellban:
 
 ```azurepowershell-interactive
 $context = Get-AzSubscription -SubscriptionId <subscription Id>
@@ -135,28 +138,33 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 ```
 
 > [!NOTE]
-> A fenti parancsok egy erőforrást helyeznek üzembe a NetworkWatcherRG erőforráscsoporthoz, és nem a NSG tartalmazó erőforráscsoportot.
+> Ezek a parancsok egy erőforrást helyeznek üzembe a példa NetworkWatcherRG erőforráscsoporthoz, és nem a NSG tartalmazó erőforráscsoporthoz.
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-Több módon is ellenőrizhető, hogy sikeres volt-e a központi telepítés. A PowerShell-konzolnak a következőnek kell lennie: `ProvisioningState` `Succeeded` . Emellett a [NSG flow-naplók portál oldalán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) is megtekintheti a módosításokat. Ha probléma merült fel a központi telepítéssel kapcsolatban, tekintse meg a [gyakori Azure-telepítési hibák elhárítása a Azure Resource Managerkal](../azure-resource-manager/templates/common-deployment-errors.md)című témakört.
+Két lehetősége van annak megtekintésére, hogy sikeres volt-e az üzembe helyezés:
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+- A PowerShell-konzol a következőképpen jelenik meg: `ProvisioningState` `Succeeded` .
+- A változtatások megerősítéséhez lépjen a [NSG flow-naplók portál oldalra](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) . 
 
-Az Azure lehetővé teszi az erőforrás-törlést az `Complete` üzembe helyezési módban. A flow-naplók erőforrásának törléséhez olyan üzemmódot kell megadnia, amely `Complete` nem tartalmazza a törölni kívánt erőforrást. További információ a [teljes telepítési módból](../azure-resource-manager/templates/deployment-modes.md#complete-mode).
+Ha probléma merült fel a központi telepítéssel kapcsolatban, tekintse meg a [gyakori Azure-telepítési hibák elhárítása a Azure Resource Managerkal](../azure-resource-manager/templates/common-deployment-errors.md)című témakört.
 
-Azt is megteheti, hogy az alábbi lépések alapján letilthatja a NSG-flow naplóját Azure Portal:
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-1. Belépés az Azure Portalba
-1. Válassza a portál bal felső sarkában található **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a _Network Watcher_ kifejezést. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
+Az Azure-erőforrásokat a teljes telepítési mód használatával törölheti. A flow-naplók erőforrásának törléséhez adja meg a telepítést teljes módban anélkül, hogy a törölni kívánt erőforrást is tartalmazza. További információ a [teljes telepítési módból](../azure-resource-manager/templates/deployment-modes.md#complete-mode).
+
+A Azure Portal NSG is letilthatja:
+
+1. Jelentkezzen be az Azure Portalra.
+1. Válassza az **Összes szolgáltatás** elemet. A **szűrő** mezőbe írja be a **Network Watcher** értéket. A keresési eredmények között válassza a **Network Watcher** lehetőséget.
 1. A **naplók** területen válassza a **NSG flow-naplók** lehetőséget.
-1. A NSG listából válassza ki azt a NSG, amelynek le szeretné tiltani a folyamat naplóit.
-1. A **flow-naplók beállításai** alatt állítsa be a folyamatok naplójának állapota **kikapcsolva** értéket.
-1. Görgessen le, és válassza a **Mentés** lehetőséget.
+1. A NSG listából válassza ki azt a NSG, amely számára le szeretné tiltani a folyamat naplóit.
+1. A **flow-naplók beállításai** területen válassza a **ki** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban engedélyezte a NSG folyamat naplóit. Most meg kell tanulnia, hogyan jelenítheti meg a NSG folyamat adatait a következő használatával:
+Ebben a rövid útmutatóban megtanulta, hogyan engedélyezheti a NSG-folyamatok naplóit egy ARM-sablon használatával. Következő lépésként megtudhatja, hogyan jelenítheti meg a NSG folyamat adatait a következő lehetőségek egyikének használatával:
 
 - [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 - [Nyílt forráskódú eszközök](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)

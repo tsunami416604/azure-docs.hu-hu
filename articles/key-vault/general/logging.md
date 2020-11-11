@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5423fc27ecc58bcd79b36a845e4b7569f342f712
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: eef4f6b8ee5821e54b5b7709eee7f8dad8749e63
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286699"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488536"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -59,7 +59,7 @@ Az egyes blobok JSON-blobként, szöveges formában vannak tárolva. Nézzük me
 
 A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 | --- | --- |
 | **idő** |Dátum és idő (UTC). |
 | **resourceId** |Azure Resource Manager erőforrás-azonosító. Key Vault naplók esetében ez mindig a Key Vault erőforrás-azonosító. |
@@ -93,12 +93,14 @@ A következő táblázat felsorolja a **operationName** és a hozzá tartozó RE
 | **VaultDelete** |[Kulcstároló törlése](/rest/api/keyvault/vaults) |
 | **VaultPatch** |[Kulcstároló frissítése](/rest/api/keyvault/vaults) |
 | **VaultList** |[Az erőforráscsoport összes kulcstárolójának listázása](/rest/api/keyvault/vaults) |
+| **VaultPurge** |[Törölt tár kiürítése](/rest/api/keyvault/vaults/purgedeleted) |
+| **VaultRecover** |Törölt tár helyreállítása|
+| **VaultGetDeleted** |[Törölt tár beolvasása](/rest/api/keyvault/vaults/getdeleted) |
+| **VaultListDeleted** |[Törölt tárolók listázása](/rest/api/keyvault/vaults/listdeleted) |
 | **KeyCreate** |[Kulcs létrehozása](/rest/api/keyvault/createkey) |
 | **KeyGet** |[Kulcs adatainak lekérése](/rest/api/keyvault/getkey) |
 | **KeyImport** |[Kulcs importálása egy tárolóba](/rest/api/keyvault/vaults) |
-| **KeyBackup** |[Kulcs biztonsági mentése](/rest/api/keyvault/backupkey) |
 | **KeyDelete** |[Kulcs törlése](/rest/api/keyvault/deletekey) |
-| **KeyRestore** |[Kulcs helyreállítása](/rest/api/keyvault/restorekey) |
 | **KeySign** |[Aláírás kulccsal](/rest/api/keyvault/sign) |
 | **KeyVerify** |[Ellenőrzés kulccsal](/rest/api/keyvault/vaults) |
 | **KeyWrap** |[Kulcs becsomagolása](/rest/api/keyvault/wrapkey) |
@@ -106,14 +108,56 @@ A következő táblázat felsorolja a **operationName** és a hozzá tartozó RE
 | **KeyEncrypt** |[Titkosítás kulccsal](/rest/api/keyvault/encrypt) |
 | **KeyDecrypt** |[Visszafejtés kulccsal](/rest/api/keyvault/decrypt) |
 | **KeyUpdate** |[Kulcs frissítése](/rest/api/keyvault/updatekey) |
-| **KeyList** |[Egy tároló kulcsainak listázása](/rest/api/keyvault/vaults) |
+| **KeyList** |[Egy tároló kulcsainak listázása](/rest/api/keyvault/getkeys) |
 | **KeyListVersions** |[Kulcs verzióinak listázása](/rest/api/keyvault/getkeyversions) |
+| **Kiürítés** |[Kulcs kiürítése](/rest/api/keyvault/purgedeletedkey) |
+| **KeyBackup** |[Kulcs biztonsági mentése](/rest/api/keyvault/backupkey) |
+| **KeyRestore** |[Kulcs helyreállítása](/rest/api/keyvault/restorekey) |
+| **Visszaállítás** |[Kulcs helyreállítása](/rest/api/keyvault/recoverdeletedkey) |
+| **KeyGetDeleted** |[Törölt kulcs lekérése](/rest/api/keyvault/getdeletedkey) |
+| **KeyListDeleted** |[Tárolóban lévő törölt kulcsok listázása](/rest/api/keyvault/getdeletedkeys) |
+| **CertificateGet** |[Tanúsítvány adatainak beolvasása](/rest/api/keyvault/getcertificate) |
+| **CertificateCreate** |[Tanúsítvány létrehozása](/rest/api/keyvault/createcertificate) |
+| **CertificateImport** |[Tanúsítvány importálása egy tárba](/rest/api/keyvault/importcertificate) |
+| **CertificateUpdate** |[Tanúsítvány frissítése](/rest/api/keyvault/updatecertificate) |
+| **CertificateList** |[Tárban lévő tanúsítványok listázása](/rest/api/keyvault/getcertificates) |
+| **CertificateListVersions** |[A tanúsítvány verzióinak listázása](/rest/api/keyvault/getcertificateversions) |
+| **CertificateDelete** |[Tanúsítvány törlése](/rest/api/keyvault/deletecertificate) |
+| **CertificatePurge** |[Tanúsítvány kiürítése](/rest/api/keyvault/purgedeletedcertificate) |
+| **CertificateBackup** |[Tanúsítvány biztonsági mentése](/rest/api/keyvault/backupcertificate) |
+| **CertificateRestore** |[Tanúsítvány visszaállítása](/rest/api/keyvault/restorecertificate) |
+| **CertificateRecover** |[Tanúsítvány helyreállítása](/rest/api/keyvault/recoverdeletedcertificate) |
+| **CertificateGetDeleted** |[Törölt tanúsítvány beolvasása](/rest/api/keyvault/getdeletedcertificate) |
+| **CertificateListDeleted** |[Tárolóban lévő törölt tanúsítványok listázása](/rest/api/keyvault/getdeletedcertificates) |
+| **CertificatePolicyGet** |[Tanúsítvány-házirend beszerzése](/rest/api/keyvault/getcertificatepolicy) |
+| **CertificatePolicyUpdate** |[Tanúsítvány-házirend frissítése](/rest/api/keyvault/updatecertificatepolicy) |
+| **CertificatePolicySet** |[Tanúsítvány-házirend létrehozása](/rest/api/keyvault/createcertificate) |
+| **CertificateContactsGet** |[Tanúsítványhoz tartozó névjegyek beolvasása](/rest/api/keyvault/getcertificatecontacts) |
+| **CertificateContactsSet** |[A tanúsítvány névjegyeinek beállítása](/rest/api/keyvault/setcertificatecontacts) |
+| **CertificateContactsDelete** |[Tanúsítványhoz tartozó névjegyek törlése](/rest/api/keyvault/deletecertificatecontacts) |
+| **CertificateIssuerGet** |[Tanúsítvány kiállítójának beolvasása](/rest/api/keyvault/getcertificateissuer) |
+| **CertificateIssuerSet** |[Tanúsítvány kiállítójának beállítása](/rest/api/keyvault/setcertificateissuer) |
+| **CertificateIssuerUpdate** |[Tanúsítvány kiállítójának frissítése](/rest/api/keyvault/updatecertificateissuer) |
+| **CertificateIssuerDelete** |[Tanúsítvány kiállítójának törlése](/rest/api/keyvault/deletecertificateissuer) |
+| **CertificateIssuersList** |[A tanúsítvány kiállítóinak listázása](/rest/api/keyvault/getcertificateissuers) |
+| **CertificateEnroll** |Tanúsítvány regisztrálása |
+| **CertificateRenew** |Tanúsítvány megújítása |
+| **CertificatePendingGet** |Függőben lévő tanúsítvány beolvasása |
+| **CertificatePendingMerge** |Tanúsítvány egyesítése folyamatban |
+| **CertificatePendingUpdate** |Tanúsítvány frissítése függőben |
+| **CertificatePendingDelete** |Függőben lévő tanúsítvány törlése |
 | **SecretSet** |[Titkos kulcs létrehozása](/rest/api/keyvault/updatecertificate) |
 | **SecretGet** |[Titkos kód beszerzése](/rest/api/keyvault/getsecret) |
 | **SecretUpdate** |[Titkos kulcs frissítése](/rest/api/keyvault/updatesecret) |
 | **SecretDelete** |[Titkos kulcs törlése](/rest/api/keyvault/deletesecret) |
-| **SecretList** |[Egy tároló titkos kulcsainak listázása](/rest/api/keyvault/vaults) |
+| **SecretList** |[Egy tároló titkos kulcsainak listázása](/rest/api/keyvault/getsecrets) |
 | **SecretListVersions** |[Titkos kulcs verzióinak listázása](/rest/api/keyvault/getsecretversions) |
+| **SecretPurge** |[Titkos kód kiürítése](/rest/api/keyvault/purgedeletedsecret) |
+| **SecretBackup** |[Titkos másolat készítése](/rest/api/keyvault/backupsecret) |
+| **SecretRestore** |[Titkos kód visszaállítása](/rest/api/keyvault/restoresecret) |
+| **SecretRecover** |[Titkos kód helyreállítása](/rest/api/keyvault/recoverdeletedsecret) |
+| **SecretGetDeleted** |[Törölt titkos kód beolvasása](/rest/api/keyvault/getdeletedsecret) |
+| **SecretListDeleted** |[Tár törölt titkainak listázása](/rest/api/keyvault/getdeletedsecrets) |
 | **VaultAccessPolicyChangedEventGridNotification** | A tár hozzáférési szabályzatának változási eseménye közzétéve |
 | **SecretNearExpiryEventGridNotification** |Secret Near lejárat esemény közzététele |
 | **SecretExpiredEventGridNotification** |Titokban lejárt esemény közzétéve |
@@ -128,7 +172,7 @@ A Key Vault naplók áttekintéséhez használhatja a Azure Monitor naplók Key 
 
 További információk, például a beállításának módja: [Azure Key Vault Azure monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Key Vault naplózás engedélyezése](howto-logging.md)
 - A .NET-alapú webalkalmazásokban Azure Key Vaultt használó oktatóanyagért lásd: [Azure Key Vault használata webalkalmazásból](tutorial-net-create-vault-azure-web-app.md).

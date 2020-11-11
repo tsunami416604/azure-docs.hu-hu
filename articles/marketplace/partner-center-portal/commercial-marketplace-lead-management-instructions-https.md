@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan kezelheti a Power automatizálható és egy HTT
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 3cdbe1f3428418f082d53febca950a6a443fe5ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4dabee6a725fd02b7be6dd12c8a032e3d816835
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120368"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489369"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>HTTPS-végpont használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -31,11 +31,11 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy új folyamatot a Power Gyorsb�
 
     ![Bejelentkezés a saját folyamatok között](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-1. Az **+ új**alatt válassza **a + azonnali**lehetőséget.
+1. Az **+ új** alatt válassza **a + azonnali** lehetőséget.
 
     ![Saját folyamatok + automatizált – üresről](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-1. Adja meg a folyamat nevét, majd a folyamat kiváltási **módjának kiválasztása**területen válassza ki **a HTTP-kérés fogadásakor**lehetőséget.
+1. Adja meg a folyamat nevét, majd a folyamat kiváltási **módjának kiválasztása** területen válassza ki **a HTTP-kérés fogadásakor** lehetőséget.
 
     ![Automatikus folyamat ablakának kihagyása gomb](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
@@ -43,7 +43,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy új folyamatot a Power Gyorsb�
 
     ![A folyamat lépésének kibontása](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
 
-1. A **kérelem törzse JSON-séma**konfigurálásához használja a következő módszerek egyikét:
+1. A **kérelem törzse JSON-séma** konfigurálásához használja a következő módszerek egyikét:
 
     - Másolja a JSON-sémát a **kérelem törzse JSON-sémájának** szövegmezőbe.
     - Válassza a **Séma létrehozása hasznosadat-minta használatával** lehetőséget. Az **írja be vagy illessze be a minta JSON-adattartalom** szövegmezőbe illessze be a JSON-példát. Válassza a **kész** lehetőséget a séma létrehozásához.
@@ -151,8 +151,8 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy új folyamatot a Power Gyorsb�
 
 ### <a name="set-up-email-notification"></a>E-mail értesítések beállítása
 
-1. Most, hogy befejezte a JSON-sémát, válassza az **+ új lépés**lehetőséget.
-1. A **válasszon műveletet**területen válassza a **műveletek**lehetőséget.
+1. Most, hogy befejezte a JSON-sémát, válassza az **+ új lépés** lehetőséget.
+1. A **válasszon műveletet** területen válassza a **műveletek** lehetőséget.
 1. A **műveletek** lapon válassza az **E-mail küldése (Office 365 Outlook)** lehetőséget.
 
     >[!NOTE]
@@ -162,15 +162,15 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy új folyamatot a Power Gyorsb�
 
 1. Az **E-mail küldése** ablakban adja meg a következő kötelező mezőket:
 
-   - **Címzett**: adjon meg legalább egy érvényes e-mail-címet, ahol a rendszer elküldi az érdeklődőket.
-   - **Subject**: a Power automatizálás lehetőséget ad a dinamikus tartalmak hozzáadására, például a következő képernyőn látható **LeadSource** . Kezdje a mező nevének megadásával. Ezután válassza ki a dinamikus tartalom kiválasztása listát az előugró ablakban. 
+   - **Címzett** : adjon meg legalább egy érvényes e-mail-címet, ahol a rendszer elküldi az érdeklődőket.
+   - **Subject** : a Power automatizálás lehetőséget ad a dinamikus tartalmak hozzáadására, például a következő képernyőn látható **LeadSource** . Kezdje a mező nevének megadásával. Ezután válassza ki a dinamikus tartalom kiválasztása listát az előugró ablakban. 
 
         >[!NOTE] 
         > Mezők neveinek hozzáadásakor az egyes neveket kettősponttal (:) majd az **ENTER** gombra kattintva hozzon létre egy új sort. Miután hozzáadta a mezőneveket, hozzáadhatja az egyes társított paramétereket a dinamikus kivételezések listájából.
 
         ![E-mail művelet hozzáadása dinamikus tartalom használatával](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
 
-   - **Törzs**: a dinamikus tartalom kiválasztása listából adja hozzá a kívánt adatokat az e-mail törzsébe. Használhatja például a LastName, a FirstName, az E-mail és a Company címet. Ha elkészült az e-mail-értesítés beállításával, az a következő képernyőn látható példához hasonlóan néz ki.
+   - **Törzs** : a dinamikus tartalom kiválasztása listából adja hozzá a kívánt adatokat az e-mail törzsébe. Használhatja például a LastName, a FirstName, az E-mail és a Company címet. Ha elkészült az e-mail-értesítés beállításával, az a következő képernyőn látható példához hasonlóan néz ki.
 
 
        ![Példa e-mail-értesítésre](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
@@ -199,14 +199,14 @@ A konfigurációt a [Poster](https://app.getpostman.com/app/download/win64)segí
 
    ![A HTTP POST URL-cím beillesztése](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
-1. Térjen vissza a [Power automatizáláshoz](https://flow.microsoft.com/). Keresse meg az érdeklődők küldéséhez létrehozott folyamatot a Power automatizáló menüsorból a **saját folyamatok** lehetőségre kattintva. Kattintson a folyamat neve melletti három pontra a további beállítások megjelenítéséhez, majd válassza a **Szerkesztés**lehetőséget.
+1. Térjen vissza a [Power automatizáláshoz](https://flow.microsoft.com/). Keresse meg az érdeklődők küldéséhez létrehozott folyamatot a Power automatizáló menüsorból a **saját folyamatok** lehetőségre kattintva. Kattintson a folyamat neve melletti három pontra a további beállítások megjelenítéséhez, majd válassza a **Szerkesztés** lehetőséget.
 
 
-1. Válassza a **tesztelés** lehetőséget a jobb felső sarokban, válassza **az indítás műveletet**, majd a **teszt**lehetőséget. Megjelenik egy jelzés a képernyő felső részén, amelyen a teszt elindult.
+1. Válassza a **tesztelés** lehetőséget a jobb felső sarokban, válassza **az indítás műveletet** , majd a **teszt** lehetőséget. Megjelenik egy jelzés a képernyő felső részén, amelyen a teszt elindult.
 
    ![Elvégezem az trigger művelet lehetőséget](./media/commercial-marketplace-lead-management-instructions-https/test-flow-trigger-action.png)
 
-1. Lépjen vissza a Poster-alkalmazásba, és válassza a **Küldés**lehetőséget.
+1. Lépjen vissza a Poster-alkalmazásba, és válassza a **Küldés** lehetőséget.
 
    ![Küldés gomb](./media/commercial-marketplace-lead-management-instructions-https/postman-send.png)
 
@@ -229,14 +229,14 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. Válassza ki az ajánlatot, és nyissa meg az **ajánlat beállítása** lapot.
 
-1. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat**lehetőséget.
+1. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat** lehetőséget.
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-https/customer-leads.png" alt-text="Ügyfél-érdeklődők":::
 
 1. A **kapcsolat részletei** előugró ablakban válassza a https- **végpont** lehetőséget az **érdeklődő célhelyéhez**. Illessze be a HTTP POST URL-címet a létrehozott folyamatból, a korábbi lépéseket követve a **https-végpont URL-címe** mezőbe.
     ![Kapcsolat részletei – kapcsolattartási e-mail cím](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 
-1. A **kapcsolattartási e-mail**cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mailt is megadhat.
+1. A **kapcsolattartási e-mail** cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mailt is megadhat.
 
 1. Kattintson az **OK** gombra.
 
