@@ -1,7 +1,7 @@
 ---
 title: Adatok gyűjtése az üzemi modelleken
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan gyűjthet adatokat egy üzembe helyezett Azure Machine Learning modellből
+description: Ismerje meg, hogyan gyűjthet adatokat az Azure Kubernetes Service (ak) fürtön üzembe helyezett Azure Machine Learning modellből.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,14 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 9a9ef4dbe7f6b97675d395baf441530e5bd79320
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357643"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532817"
 ---
 # <a name="collect-data-from-models-in-production"></a>Adatok gyűjtése üzemi modellből
-
-
 
 Ez a cikk bemutatja, hogyan gyűjthet adatokat egy Azure Kubernetes Service (ak) fürtön üzembe helyezett Azure Machine Learning modellből. Ezután az összegyűjtött adatokat az Azure Blob Storage tárolja.
 
@@ -175,7 +173,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
     [![Power BI tartalom](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. Válassza az **OK** lehetőséget. Az adatelőre betöltött sorok.
+1. Kattintson az **OK** gombra. Az adatelőre betöltött sorok.
 
     [![Power BI fájlok egyesítése](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 

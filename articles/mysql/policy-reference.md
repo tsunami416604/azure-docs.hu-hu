@@ -3,16 +3,16 @@ title: A Azure Database for MySQL beépített szabályzat-definíciói
 description: A Azure Database for MySQL Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
 ms.date: 10/20/2020
 ms.topic: reference
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ec580d4582d1a9066ff1b91cf1fb856355d3156d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 75a3112875d6d4c610315c02151281a511f72322
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332365"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534432"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mysql"></a>A Azure Database for MySQL beépített definíciói Azure Policy
 

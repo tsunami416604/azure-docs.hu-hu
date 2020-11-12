@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Jupyter-jegyzetfüzetek (Python) – első lépések'
 titleSuffix: Azure Machine Learning
-description: Jupyter Notebook oktatóanyagok beállítása. Hozzon létre egy Azure Machine Learning munkaterületet, klónozott Jupyter notebookokat a munkaterületen, és hozzon létre egy számítási példányt, amelyen futtatja a jegyzetfüzeteket.
+description: Jupyter Notebook oktatóanyagok beállítása. Hozzon létre egy munkaterületet, klónozott jegyzetfüzeteket a munkaterületen, és hozzon létre egy számítási példányt, amelyen futtatja a jegyzetfüzeteket.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 601e124c1ad87724babfabffc95e9265bc962d87
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 6eb76c9d8cc8447755e045972a7aceddefd1604a
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913296"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532970"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Oktatóanyag: első lépések a Azure Machine Learning Jupyter-jegyzetfüzetekben
 
@@ -41,7 +41,7 @@ Ha már rendelkezik Azure Machine Learning munkaterülettel, ugorjon a [notebook
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT]
-> Jegyezze fel a *munkaterületet* és az *előfizetést* . Ezekre az információkra szüksége lesz, hogy a megfelelő helyen hozza létre a kísérletet.
+> Jegyezze fel a *munkaterületet* és az *előfizetést*. Ezekre az információkra szüksége lesz, hogy a megfelelő helyen hozza létre a kísérletet.
 
 ## <a name="run-a-notebook-in-your-workspace"></a><a name="azure"></a>Jegyzetfüzet futtatása a munkaterületen
 
@@ -82,7 +82,7 @@ Hajtsa végre a következő kísérlet beállítását, és futtassa a lépések
     
 1. Válassza ki a **tutorial-1st-Experiment-SDK-Train. ipynb** fájlt az **oktatóanyagok/rendszerkép-besorolás-mnist-adat** mappában.
 
-    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="A klón oktatóanyagok mappát megjelenítő képernyőkép.":::
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Képernyőkép, amely az Open oktatóanyagok mappát mutatja.":::
 
 1. A felső sávon válassza ki a jegyzetfüzet futtatásához használni kívánt számítási példányt. Ezek a virtuális gépek előre konfigurálva vannak a [Azure Machine learning futtatásához szükséges összes](concept-compute-instance.md#contents)szolgáltatással.
 

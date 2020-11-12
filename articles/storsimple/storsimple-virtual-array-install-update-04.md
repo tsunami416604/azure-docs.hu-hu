@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: 26890aaa7bc2d0ea70ff326e36a5767d1d468d5c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cc458f91a9b67ddd54e706575d29b8fc8618a2f7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977544"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534296"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>Az 0,4-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -52,7 +52,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
 
 2. Ha most használja először a Microsoft Update katalógust ezen a számítógépen, kattintson a **Telepítés** gombra, amikor a rendszer a Microsoft Update katalógus beépülő moduljának telepítésére kéri.
 
-3. A Microsoft Update-katalógus keresőmező mezőjébe írja be a letölteni kívánt gyorsjavítás tudásbázisának (KB) számát. Adja meg a **3216577** -es frissítést a 0,4-es frissítéshez, majd kattintson a **Keresés**gombra.
+3. A Microsoft Update-katalógus keresőmező mezőjébe írja be a letölteni kívánt gyorsjavítás tudásbázisának (KB) számát. Adja meg a **3216577** -es frissítést a 0,4-es frissítéshez, majd kattintson a **Keresés** gombra.
    
     Megjelenik a gyorsjavítások listája, például: **StorSimple Virtual Array Update 0,4**.
    
@@ -62,7 +62,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
 
 5. Kattintson a **Kosár megtekintése** gombra.
 
-6. Kattintson a **Letöltés**gombra. Adja meg vagy **tallózással** válassza ki a helyet, ahová a fájlokat le szeretné tölteni. A frissítések a megadott helyre lesznek letöltve, azon belül az egyes frissítések nevével egyező nevű almappákba. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.
+6. Kattintson a **Letöltés** gombra. Adja meg vagy **tallózással** válassza ki a helyet, ahová a fájlokat le szeretné tölteni. A frissítések a megadott helyre lesznek letöltve, azon belül az egyes frissítések nevével egyező nevű almappákba. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.
 
 7. Nyissa meg a másolt mappát, Microsoft Update önálló csomagfájl jelenik meg `WindowsTH-KB3011067-x64` . Ez a fájl a frissítés vagy a gyorsjavítás telepítéséhez használatos.
 
@@ -74,28 +74,28 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
 
-1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **szoftverfrissítés**elemre.
+1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **szoftverfrissítés** elemre.
    
-    ![1. eszköz frissítése](./media/storsimple-virtual-array-install-update/update1m.png)
+    ![A képernyőfelvételen a karbantartási menüből kiválasztott szoftverfrissítés látható.](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. A **frissítési fájl elérési útja**mezőben adja meg a frissítés vagy a gyorsjavítás fájlnevét. Ha hálózati megosztásra helyezi, tallózással is megkeresheti a frissítés vagy a gyorsjavítás telepítési fájlját. Kattintson az **Alkalmaz** gombra.
+2. A **frissítési fájl elérési útja** mezőben adja meg a frissítés vagy a gyorsjavítás fájlnevét. Ha hálózati megosztásra helyezi, tallózással is megkeresheti a frissítés vagy a gyorsjavítás telepítési fájlját. Kattintson az **Alkalmaz** gombra.
    
-    ![2. eszköz frissítése](./media/storsimple-virtual-array-install-update/update2m.png)
+    ![Képernyőfelvétel: a frissítési fájl elérési útja szövegmező a szoftverfrissítés lapon.](./media/storsimple-virtual-array-install-update/update2m.png)
 
 3. A rendszer figyelmeztetést jelenít meg. Ez az egyetlen csomópontos eszköz, amely a frissítés alkalmazása után újraindul, és leállási idő van. Kattintson a pipa ikonra.
    
-   ![3. eszköz frissítése](./media/storsimple-virtual-array-install-update/update3m.png)
+   ![A képernyőfelvételen megjelenik egy párbeszédpanel, amely figyelmeztetést jelenít meg az állásidőről.](./media/storsimple-virtual-array-install-update/update3m.png)
 
 4. A frissítés elindul. Az eszköz sikeres frissítése után újraindul. A helyi felhasználói felület ebben az időtartamban nem érhető el.
    
-    ![4. eszköz frissítése](./media/storsimple-virtual-array-install-update/update5m.png)
+    ![A képernyőképen a frissítés sikerességét jelző üzenet jelenik meg.](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási**  >  **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10289.0** kell lennie az 0,4-es frissítéshez.
+5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási**  >  **szoftverfrissítés** lapra. A megjelenített szoftververzió **10.0.0.0.0.10289.0** kell lennie az 0,4-es frissítéshez.
    
    > [!NOTE]
    > A szoftver-verziókat a helyi webes KEZELŐFELÜLETen és a Azure Portal némileg eltérő módon jelentik be. A helyi webes felhasználói felület például a **10.0.0.0.0.10289** és a Azure Portal jelentések **10.0.10289.0** ugyanazt a verziót jelenti.
    
-    ![5. eszköz frissítése](./media/storsimple-virtual-array-install-update/update6m.png)
+    ![Képernyőfelvétel: a szoftverfrissítés oldal a jelenlegi szoftververzió szerint.](./media/storsimple-virtual-array-install-update/update6m.png)
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
@@ -103,7 +103,7 @@ Ha a 0,2-es vagy újabb frissítést futtatja, javasoljuk, hogy telepítse a fri
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-04.md)]
 
-A telepítés befejezését követően (a feladatok állapota a 100%-ban jelezve) lépjen a StorSimple Eszközkezelő szolgáltatásra. Válassza az **eszközök** lehetőséget, majd válassza ki a frissíteni kívánt eszközt a szolgáltatáshoz csatlakozó eszközök listájából. A **Beállítások** panelen lépjen a **kezelés** szakaszra, és válassza az **eszközök frissítései**lehetőséget. A megjelenített szoftververzió **10.0.10289.0**kell lennie.
+A telepítés befejezését követően (a feladatok állapota a 100%-ban jelezve) lépjen a StorSimple Eszközkezelő szolgáltatásra. Válassza az **eszközök** lehetőséget, majd válassza ki a frissíteni kívánt eszközt a szolgáltatáshoz csatlakozó eszközök listájából. A **Beállítások** panelen lépjen a **kezelés** szakaszra, és válassza az **eszközök frissítései** lehetőséget. A megjelenített szoftververzió **10.0.10289.0** kell lennie.
 
 
 ## <a name="next-steps"></a>Következő lépések

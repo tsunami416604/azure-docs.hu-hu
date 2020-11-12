@@ -1,17 +1,17 @@
 ---
 title: Adatreplikálás – Azure Database for MariaDB
 description: További információ a külső kiszolgálóról a Azure Database for MariaDB szolgáltatásba való szinkronizáláshoz szükséges adatreplikálás használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: db85892115f345039353cd90eeedbe809eb6ae67
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 331e064bcf11af31a778cb8dd06c463712421b7c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425583"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533429"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Az adatreplikálás Azure Database for MariaDBba
 
@@ -37,10 +37,10 @@ A forráskiszolgáló [*MySQL rendszeradatbázisa*](https://mariadb.com/kb/en/li
 - Ha a forráskiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány szerepel-e a `mariadb.az_replication_change_master` tárolt eljárásban. Tekintse át az alábbi [példákat](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
 - Győződjön meg arról, hogy a forráskiszolgáló IP-címe hozzá lett adva az Azure Database for MariaDB-replika kiszolgálói tűzfalszabályok számára. A tűzfalszabályokat az [Azure Portallal](howto-manage-firewall-portal.md) vagy az [Azure CLI-vel](howto-manage-firewall-cli.md) frissítheti.
 - Győződjön meg arról, hogy a forráskiszolgáló üzemeltetése lehetővé teszi a bejövő és a kimenő forgalmat is a 3306-es porton.
-- Győződjön meg arról, hogy a forráskiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN).
+- Győződjön meg arról, hogy a forráskiszolgáló **nyilvános IP-címmel** rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN).
 
 ### <a name="other"></a>Egyéb
 - Az adatreplikálás csak általános célú és a memória optimalizált díjszabási szintjein támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Megtudhatja, hogyan [állíthatja be az adatreplikációt](howto-data-in-replication.md).

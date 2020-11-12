@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 78e0bfb0af494ecae2865fcc42679b8fcce44916
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 73aa6f8f6ee36aeeb41fbc54afe217ac776a4ebc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359578"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533878"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
 
@@ -25,7 +25,13 @@ Ez a cikk a kapcsolatok és a gráf egészének kezelésére koncentrál. az egy
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
-    
+
+## <a name="ways-to-manage-graph"></a>A gráf kezelésének módjai
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
+
+A gráfot az Azure Digital Twins (ADT) Explorer minta használatával is módosíthatja, amely lehetővé teszi az ikrek és a Graph megjelenítését, és a színfalak mögött használja az SDK-t. A következő szakasz részletesen ismerteti ezt a mintát.
+
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>Kapcsolatok létrehozása
@@ -219,7 +225,8 @@ Most meghívhatja ezt a metódust a következőhöz hasonló kapcsolat törlés�
 ```csharp
 await DeleteRelationship(client, srcId, relId);
 ```
-## <a name="create-a-twin-graph"></a>Dupla gráf létrehozása 
+
+## <a name="runnable-twin-graph-sample"></a>Futtatható Twin Graph minta
 
 A következő futtatható a jelen cikk kapcsolati műveleteivel létrehoz egy dupla gráfot a digitális ikrekből és a kapcsolatokból.
 
@@ -451,8 +458,8 @@ Vegye figyelembe a következő adattáblázatot, amely leírja a digitális ikre
 
 |  Modellazonosító    | Dupla azonosító (egyedinek kell lennie) | Kapcsolat neve  | Cél dupla azonosító  | Kettős init-adathalmaz |
 | --- | --- | --- | --- | --- |
-| dtmi: példa: Floor; 1    | Floor1 | contains | Room1 | |
-| dtmi: példa: Floor; 1    | Floor0 | contains | Room0 | |
+| dtmi: példa: Floor; 1    | Floor1 | tartalmazza | Room1 | |
+| dtmi: példa: Floor; 1    | Floor0 | tartalmazza | Room0 | |
 | dtmi: példa: Room; 1    | Room1 | | | {"Hőmérséklet": 80} |
 | dtmi: példa: Room; 1    | Room0 | | | {"Hőmérséklet": 70} |
 
@@ -575,11 +582,8 @@ namespace creating_twin_graph_from_csv
 }
 
 ```
-## <a name="manage-relationships-with-cli"></a>Kapcsolatok kezelése a CLI-vel
 
-Az ikrek és kapcsolataik az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók az Azure Digital Twins Twin Graph lekérdezéséről:
 * [*Fogalmak: lekérdezési nyelv*](concepts-query-language.md)

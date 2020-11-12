@@ -1,17 +1,17 @@
 ---
 title: Hozzáférés-naplózási naplók – Azure Portal – Azure Database for MariaDB
 description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni és elérni a naplókat a Azure Portal Azure Database for MariaDB.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: 30ca62305c325943e17ee574873cfbbbaee97f77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1f3cda4ed9cdac6f6e03e88601b0a35d5c53faf
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113037"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533446"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Naplózási naplók konfigurálása és elérése a Azure Portal
 
@@ -46,12 +46,12 @@ A naplózás engedélyezése és konfigurálása.
 1. Adja hozzá a naplózásból kizárandó MariaDB felhasználókat a **audit_log_exclude_users** paraméter frissítésével. Adja meg a felhasználókat a MariaDB felhasználónevének megadásával.
     ![Naplók kizárása a felhasználók számára](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
 
-1. A paraméterek módosítása után kattintson a **Mentés**gombra. Vagy **elvetheti** a módosításokat.
+1. A paraméterek módosítása után kattintson a **Mentés** gombra. Vagy **elvetheti** a módosításokat.
     ![Mentés](./media/howto-configure-audit-logs-portal/save-parameters.png)
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnosztikai naplók beállítása
 
-1. Az oldalsáv **figyelés** területén válassza a **diagnosztikai beállítások**elemet.
+1. Az oldalsáv **figyelés** területén válassza a **diagnosztikai beállítások** elemet.
 
 1. Kattintson a "+ diagnosztikai beállítás hozzáadása" ![ diagnosztikai beállítás hozzáadása elemre.](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
@@ -62,12 +62,12 @@ A naplózás engedélyezése és konfigurálása.
 1. Válassza a "MySqlAuditLogs" lehetőséget a napló típusaként.
 ![Diagnosztikai beállítás konfigurálása](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
 
-1. Miután konfigurálta az adattárolást a naplókba, kattintson a **Save (Mentés**) gombra.
+1. Miután konfigurálta az adattárolást a naplókba, kattintson a **Save (Mentés** ) gombra.
 ![Diagnosztikai beállítás mentése](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
 
 1. A naplókat úgy érheti el, hogy a konfigurált adattárolókban vizsgálja őket. A naplók megjelenése akár 10 percet is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure Database for MariaDB [naplózási naplóiról](concepts-audit-logs.md)
 - Ismerje meg, hogyan konfigurálhatja a naplókat az [Azure CLI](howto-configure-audit-logs-cli.md) -ben

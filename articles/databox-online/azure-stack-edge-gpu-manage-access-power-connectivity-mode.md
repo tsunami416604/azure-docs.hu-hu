@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 99dd3da3f9e8434f9c859afd347bd19d10628083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b66a184abce53c31fade19fc9e10ffe4c7ff8415
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935740"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532443"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>A Azure Stack Edge Pro GPU hozzáférés-, energiagazdálkodási és csatlakozási módjának kezelése
 
@@ -41,20 +41,20 @@ Az eszköz jelszavának módosításához kövesse az alábbi lépéseket a hely
 
     ![Change password](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. Válassza a **jelszó módosítása**lehetőséget.
+3. Válassza a **jelszó módosítása** lehetőséget.
  
 ### <a name="reset-device-password"></a>Eszköz jelszavának alaphelyzetbe állítása
 
 A munkafolyamat alaphelyzetbe állítása nem igényli, hogy a felhasználó felidézze a régi jelszót, és akkor is hasznos, ha a jelszó elvész. Ezt a munkafolyamatot a Azure Portal hajtja végre.
 
-1. A Azure Portal lépjen az **áttekintés > rendszergazdai jelszó visszaállítása**elemre.
+1. A Azure Portal lépjen az **áttekintés > rendszergazdai jelszó visszaállítása** elemre.
 
-    ![Új jelszó létrehozása](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Képernyőfelvétel: az eszköz alaphelyzetbe állítása jelszó kiválasztásával.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
 2. Adja meg az új jelszót, majd erősítse meg. A megadott jelszónak 8 és 16 karakter közöttinek kell lennie. A jelszónak legalább hármat tartalmaznia kell a következő karakterek közül: nagybetűk, kisbetűk, számok és speciális karakterek. Válassza az **Alaphelyzetbe állítás** lehetőséget.
 
-    ![Új jelszó létrehozása](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![Képernyőfelvétel: az eszköz jelszavának alaphelyzetbe állítása párbeszédpanel.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Erőforrás-hozzáférés kezelése
 
@@ -115,14 +115,14 @@ Az alapértelmezett teljes kapcsolaton kívül az eszköz részben csatlakoztato
 Az eszköz üzemmódjának módosításához kövesse az alábbi lépéseket:
 
 1. Az eszköz helyi webes FELÜLETén nyissa meg a **konfiguráció > a felhőben**.
-2. A legördülő listából válassza ki azt a módot, amelyre az eszközt használni szeretné. Kiválaszthatja a **teljes kapcsolat**, a **részlegesen csatlakoztatott**és a **teljesen leválasztott**lehetőséget is. Az eszköz részlegesen leválasztott módban való futtatásához engedélyezze **Azure Portal felügyeletet**.
+2. A legördülő listából válassza ki azt a módot, amelyre az eszközt használni szeretné. Kiválaszthatja a **teljes kapcsolat** , a **részlegesen csatlakoztatott** és a **teljesen leválasztott** lehetőséget is. Az eszköz részlegesen leválasztott módban való futtatásához engedélyezze **Azure Portal felügyeletet**.
 
  
 ## <a name="manage-power"></a>A Power kezelése
 
 A fizikai eszköz a helyi webes felhasználói felülettel állítható le vagy indítható újra. Az újraindítás előtt ajánlott offline állapotba állítani az adatkiszolgálón található megosztásokat, majd magát az eszközt is. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét.
 
-1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > Power**elemre.
+1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > Power** elemre.
 2. A kívánt művelettől függően válassza a **Leállítás** vagy az **Újraindítás** lehetőséget.
 
     ![Energiaellátási beállítások](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/shut-down-restart-1.png)

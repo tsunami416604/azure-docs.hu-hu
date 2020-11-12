@@ -4,33 +4,36 @@ description: Oktatóanyag a MSSparkutils Azure szinapszis Analytics-jegyzetfüze
 author: ruxu
 services: synapse-analytics
 ms.service: synapse-analytics
-ms.topic: conceptual
+ms.topic: reference
 ms.subservice: spark
 ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 648c5b75f125725ebda2966d3ebc4200ee76b98c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c03d8e744598386db3d6d03a71e4d1b735d9d71f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428618"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533276"
 ---
 # <a name="introduction-of-microsoft-spark-utilities"></a>A Microsoft Spark segédprogramok bemutatása
-A Microsoft Spark Utilities (MSSparkUtils) egy beépített csomag, amely megkönnyíti a gyakori használati feladatok elvégzését. A MSSparkUtils használatával hatékonyan dolgozhat a fájlrendszerrel, a környezeti változók beszerzésével és a titkokkal való munkával. A MSSparkUtils a, a és a jegyzetfüzetekben, valamint a `PySpark (Python)` `Scala` szinapszis- `.NET Spark (C#)` folyamatokban érhetők el.
+
+A Microsoft Spark Utilities (MSSparkUtils) egy beépített csomag, amely megkönnyíti a gyakori feladatok elvégzését. A MSSparkUtils használható a fájlrendszerekkel való együttműködéshez, környezeti változók beszerzéséhez és a titkokkal való munkához. A MSSparkUtils a, a és a jegyzetfüzetekben, valamint a `PySpark (Python)` `Scala` szinapszis- `.NET Spark (C#)` folyamatokban érhetők el.
 
 ## <a name="pre-requisites"></a>Előfeltételek
+
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2hoz való hozzáférés konfigurálása 
+
 A szinapszis jegyzetfüzetek az Azure Active Directory (Azure AD) átmenő hozzáférését használják a ADLS Gen2-fiókok eléréséhez. A ADLS Gen2 fiók (vagy mappa) eléréséhez **blob Storage közreműködőnek** kell lennie. 
 
-A szinapszis-folyamatok a munkaterület-identitás (MSI) használatával férnek hozzá a Storage-fiókokhoz. Ha a MSSparkUtils szeretné használni a folyamat tevékenységeiben, a munkaterület identitásának **blob Storage közreműködőnek** kell lennie a ADLS Gen2 fiók (vagy mappa) eléréséhez.
+A szinapszis-folyamatok a munkaterület-identitás (MSI) használatával férnek hozzá a Storage-fiókokhoz. Ha a MSSparkUtils szeretné használni a folyamat tevékenységeiben, a munkaterület identitásának **blob Storage közreműködőnek** kell lennie ahhoz, hogy hozzáférhessen a ADLS Gen2-fiókhoz (vagy mappához).
 
 Az alábbi lépések végrehajtásával győződjön meg arról, hogy az Azure AD és a munkaterület MSI-je hozzáfér a ADLS Gen2 fiókhoz:
 1. Nyissa meg a [Azure Portal](https://portal.azure.com/) és az elérni kívánt Storage-fiókot. Navigáljon az elérni kívánt tárolóhoz.
 2. Válassza ki a **hozzáférés-vezérlést (iam)** a bal oldali panelen.
-3. A Storage- **blob adatközreműködői** szerepkörének tárolási fiókjában rendeljen hozzá **Azure ad-fiókot** és **a munkaterület-identitást** (a munkaterület nevével megegyezővel), vagy győződjön meg arról, hogy az már hozzá van rendelve. 
-4. Kattintson a **Mentés** gombra.
+3. Rendelje hozzá az **Azure ad-fiókot** és **a munkaterület-identitást** (ugyanaz, mint a munkaterület neve) a Storage-beli **blob adatközreműködői** szerepkörhöz a Storage-fiókban, ha még nincs hozzárendelve. 
+4. Válassza a **Mentés** lehetőséget.
 
 A következő URL-címen keresztül férhet hozzá ADLS Gen2hoz a szinapszis Spark használatával:
 
@@ -45,10 +48,10 @@ Kövesse az alábbi lépéseket egy új társított szolgáltatás Azure Blob St
 1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
 2. Válassza a **kezelés** lehetőséget a bal oldali panelen, és válassza a **társított szolgáltatások** lehetőséget a **külső kapcsolatok** alatt.
 3. Az **Azure Blob Storage** az **új társított szolgáltatás** panelen keresse meg a jobb oldalon.
-4. Kattintson a **Folytatás** gombra.
+4. Válassza a **Folytatás** lehetőséget.
 5. Válassza ki az Azure Blob Storage fiókot a társított szolgáltatás nevének eléréséhez és konfigurálásához. Azt javasoljuk, hogy a **hitelesítési módszerhez** használja a **fiók kulcsát** .
-6. A beállítások helyességének ellenőrzéséhez kattintson a **Kapcsolódás tesztelése** elemre.
-7. Kattintson a **Létrehozás** elemre, majd kattintson az **összes közzététele** elemre a módosítások mentéséhez. 
+6. Válassza a **Kapcsolódás tesztelése** lehetőséget a beállítások helyességének ellenőrzéséhez.
+7. A módosítások mentéséhez válassza az első **Létrehozás** lehetőséget, majd kattintson az **összes közzététele** elemre. 
 
 Az Azure Blob Storage a következő URL-címen keresztül férhet hozzá a szinapszis Sparkhoz:
 
@@ -103,25 +106,25 @@ Hozzáadhat egy Azure Key Vault társított szolgáltatásként a Szinapszisban 
 2. Válassza a **kezelés** lehetőséget a bal oldali panelen, és válassza a **társított szolgáltatások** lehetőséget a **külső kapcsolatok** alatt.
 3. Keressen **Azure Key Vault** a jobb oldalon található **új társított szolgáltatás** panelen.
 4. Válassza ki a Azure Key Vault fiókot a társított szolgáltatás nevének eléréséhez és konfigurálásához.
-5. A beállítások helyességének ellenőrzéséhez kattintson a **Kapcsolódás tesztelése** elemre.
-6. Kattintson a **Létrehozás** elemre, majd a módosítás mentéséhez kattintson az **összes közzététele** elemre. 
+5. Válassza a **Kapcsolódás tesztelése** lehetőséget a beállítások helyességének ellenőrzéséhez.
+6. Válassza a **Létrehozás** először lehetőséget, majd kattintson az **összes közzététele** elemre a módosítás mentéséhez. 
 
 A szinapszis jegyzetfüzetek az Azure Active Directory (Azure AD) átmenő hozzáférését használják a Azure Key Vault eléréséhez. A szinapszis-folyamatok a munkaterület-identitás (MSI) használatával férnek hozzá Azure Key Vaulthoz. Annak érdekében, hogy a kód a jegyzetfüzetben és a szinapszis-folyamatban is működjön, javasoljuk, hogy titkos hozzáférési engedélyt adjon az Azure AD-fiókhoz és a munkaterület-identitáshoz.
 
 A következő lépésekkel titkos hozzáférést biztosíthat a munkaterület-identitáshoz:
 1. Nyissa meg a [Azure Portal](https://portal.azure.com/) és az elérni kívánt Azure Key Vault. 
 2. Válassza ki a **hozzáférési házirendeket** a bal oldali panelen.
-3. Kattintson a **hozzáférési szabályzat hozzáadása** elemre: 
+3. Válassza a **hozzáférési házirend hozzáadása** lehetőséget: 
     - Válassza a **kulcs, a titok, & a Tanúsítványkezelő** konfigurációs sablonként lehetőséget.
     - Válassza ki az **Azure ad-fiókot** és **a munkaterület identitását** (ugyanaz, mint a munkaterület neve) a rendszerbiztonsági tag kiválasztása lapon, vagy győződjön meg arról, hogy az már hozzá van rendelve. 
-4. Kattintson a **kiválasztás** és **Hozzáadás** gombra.
+4. Válassza a **kiválasztás** és **Hozzáadás** lehetőséget.
 5. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.  
 
 ## <a name="file-system-utilities"></a>Fájlrendszer segédprogramok
 
 `mssparkutils.fs` a különböző fájlrendszerek, például a Azure Data Lake Storage Gen2 (ADLS Gen2) és az Azure Blob Storage használatához biztosít segédprogramokat. Győződjön meg arról, hogy megfelelően konfigurálja a [Azure Data Lake Storage Gen2](#configure-access-to-azure-data-lake-storage-gen2) és az [Azure Blob Storage](#configure-access-to-azure-blob-storage) elérését.
 
-A következő parancs futtatásával tekintse át az elérhető metódusok áttekintését:
+Az elérhető módszerek áttekintéséhez futtassa az alábbi parancsokat:
 
 :::zone pivot = "programming-language-python"
 
@@ -196,7 +199,7 @@ FS.Ls("Your directory path")
 
 
 ### <a name="view-file-properties"></a>Fájl tulajdonságainak megtekintése
-A fájl tulajdonságait adja vissza, beleértve a fájlnevet, a fájl elérési útját, a fájlméretet, függetlenül attól, hogy ez egy könyvtár, és hogy fájl-e.
+A fájl tulajdonságait adja vissza, beleértve a fájlnevet, a fájl elérési útját, a fájl méretét, valamint azt, hogy a könyvtár és a fájl.
 
 :::zone pivot = "programming-language-python"
 
@@ -230,7 +233,8 @@ foreach(var File in Files) {
 ::: zone-end
 
 ### <a name="create-new-directory"></a>Új könyvtár létrehozása
-Az adott könyvtárat hozza létre, ha az nem létezik, továbbá létrehozza a szükséges szülő könyvtárakat is.
+
+Létrehozza a megadott könyvtárat, ha az nem létezik, és a szükséges szülő könyvtárakat.
 
 :::zone pivot = "programming-language-python"
 
@@ -256,7 +260,8 @@ FS.Mkdirs("new directory name")
 ::: zone-end
 
 ### <a name="copy-file"></a>Fájl másolása
-Fájl vagy könyvtár másolása, a támogatás a fájlrendszereken keresztül.
+
+Egy fájl vagy könyvtár másolása. Támogatja a másolást a fájlrendszerek között.
 
 :::zone pivot = "programming-language-python"
 
@@ -282,6 +287,7 @@ FS.Cp("source file or directory", "destination file or directory", true) // Set 
 ::: zone-end
 
 ### <a name="preview-file-content"></a>Fájl előnézetének tartalma
+
 Az adott fájl első "maxBytes" bájtjait adja vissza UTF-8 kódolású karakterláncként.
 
 :::zone pivot = "programming-language-python"
@@ -308,7 +314,8 @@ FS.Head("file path", maxBytes to read)
 ::: zone-end
 
 ### <a name="move-file"></a>Fájl áthelyezése
-Áthelyez egy fájlt vagy könyvtárat, és támogatja a különböző fájlrendszerek közötti váltást.
+
+Áthelyez egy fájlt vagy könyvtárat. Támogatja a különböző fájlrendszerek közötti áthelyezést.
 
 :::zone pivot = "programming-language-python"
 
@@ -334,6 +341,7 @@ FS.Mv("source file or directory", "destination directory", true)
 ::: zone-end
 
 ### <a name="write-file"></a>Fájl írása
+
 Egy fájlba írja az adott karakterláncot, amely UTF-8-ban van kódolva.
 
 :::zone pivot = "programming-language-python"
@@ -360,6 +368,7 @@ FS.Put("file path", "content to write", true) // Set the last parameter as True 
 ::: zone-end
 
 ### <a name="append-content-to-a-file"></a>Tartalom hozzáfűzése fájlba
+
 Hozzáfűzi az adott karakterláncot egy fájlhoz, UTF-8 kódolással.
 
 :::zone pivot = "programming-language-python"
@@ -386,6 +395,7 @@ FS.Append("file path","content to append",true) // Set the last parameter as Tru
 ::: zone-end
 
 ### <a name="delete-file-or-directory"></a>Fájl vagy könyvtár törlése
+
 Eltávolít egy fájlt vagy könyvtárat.
 
 :::zone pivot = "programming-language-python"
@@ -414,9 +424,9 @@ FS.Rm("file path", true) // Set the last parameter as True to remove all files a
 
 ## <a name="credentials-utilities"></a>Hitelesítő adatok segédprogramok
 
-A MSSparkUtils Hitelesítőadat-kezelő segédprogramokkal lekérheti a társított szolgáltatások hozzáférési jogkivonatait, és kezelheti Azure Key Vault a titkokat. 
+A MSSparkUtils hitelesítő adatok segédprogram segítségével lekérheti a társított szolgáltatások hozzáférési jogkivonatait, és kezelheti Azure Key Vaultban a titkokat. 
 
-A következő parancs futtatásával tekintse át az elérhető metódusok áttekintését:
+A következő parancs futtatásával tekintse át az elérhető módszerek áttekintését:
 
 :::zone pivot = "programming-language-python"
 
@@ -454,6 +464,7 @@ putSecret(akvName, secretName, secretValue): puts AKV secret for a given akvName
 ```
 
 ### <a name="get-token"></a>Jogkivonat beolvasása
+
 Egy adott közönséghez tartozó Azure AD-tokent ad vissza, név (nem kötelező). Az alábbi táblázat felsorolja az összes elérhető célközönség-típust: 
 
 |Célközönség típusa|Célközönség kulcsa|
@@ -492,6 +503,7 @@ mssparkutils.credentials.getToken("audience Key")
 
 
 ### <a name="validate-token"></a>Jogkivonat ellenőrzése
+
 Igaz értéket ad vissza, ha a jogkivonat nem járt le.
 
 :::zone pivot = "programming-language-python"
@@ -519,6 +531,7 @@ mssparkutils.credentials.isValidToken("your token")
 
 
 ### <a name="get-connection-string-or-credentials-for-linked-service"></a>Kapcsolati karakterlánc vagy a társított szolgáltatás hitelesítő adatainak beolvasása
+
 A társított szolgáltatáshoz tartozó kapcsolati karakterláncot vagy hitelesítő adatokat adja vissza. 
 
 :::zone pivot = "programming-language-python"
@@ -546,6 +559,7 @@ mssparkutils.credentials.getConnectionStringOrCreds("linked service name")
 
 
 ### <a name="get-secret-using-workspace-identity"></a>Titok beolvasása a munkaterület identitásával
+
 Azure Key Vault titkot ad vissza egy adott Azure Key Vault neve, titkos neve és társított szolgáltatás neve számára a munkaterület-identitás használatával. Győződjön meg arról, hogy megfelelően konfigurálja a hozzáférést [Azure Key Vault](#configure-access-to-azure-key-vault) .
 
 :::zone pivot = "programming-language-python"
@@ -573,6 +587,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name","linked 
 
 
 ### <a name="get-secret-using-user-credentials"></a>Titkos kód beolvasása felhasználói hitelesítő adatok használatával
+
 Azure Key Vault titkot ad vissza egy adott Azure Key Vault neve, titkos neve és társított szolgáltatás neve számára a felhasználói hitelesítő adatok használatával. 
 
 :::zone pivot = "programming-language-python"
@@ -599,6 +614,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name")
 ::: zone-end
 
 ### <a name="put-secret-using-workspace-identity"></a>Titkos kód létrehozása a munkaterület identitásával
+
 Azure Key Vault titkot helyez el egy adott Azure Key Vault neve, titkos neve és társított szolgáltatás neve számára a munkaterület-identitás használatával. Győződjön meg arról, hogy megfelelően konfigurálja a hozzáférést [Azure Key Vault](#configure-access-to-azure-key-vault) .
 
 :::zone pivot = "programming-language-python"
@@ -626,6 +642,7 @@ mssparkutils.credentials.putSecret("azure key vault name","secret name","secret 
 
 
 ### <a name="put-secret-using-user-credentials"></a>Titkos kód használata felhasználói hitelesítő adatokkal
+
 Azure Key Vault titkos kulcsot helyez el egy adott Azure Key Vault neve, titkos neve és társított szolgáltatás neve számára a felhasználói hitelesítő adatok használatával. 
 
 :::zone pivot = "programming-language-python"
@@ -654,7 +671,7 @@ mssparkutils.credentials.putSecret("azure key vault name","secret name","secret 
 
 ## <a name="environment-utilities"></a>Környezeti segédeszközök 
 
-A következő parancs futtatásával tekintse át az elérhető metódusok áttekintését:
+Futtassa az alábbi parancsokat az elérhető módszerek áttekintéséhez:
 
 :::zone pivot = "programming-language-python"
 
@@ -689,6 +706,7 @@ getClusterId(): returns cluster id
 ```
 
 ### <a name="get-user-name"></a>Felhasználónév beolvasása
+
 Az aktuális felhasználónevet adja vissza.
 
 :::zone pivot = "programming-language-python"
@@ -715,6 +733,7 @@ mssparkutils.env.getUserName()
 ::: zone-end
 
 ### <a name="get-user-id"></a>Felhasználói azonosító lekérése
+
 Az aktuális felhasználói azonosítót adja vissza.
 
 :::zone pivot = "programming-language-python"
@@ -741,6 +760,7 @@ mssparkutils.env.getUserId()
 ::: zone-end
 
 ### <a name="get-job-id"></a>Munkakör-azonosító beolvasása
+
 A AZONOSÍTÓJÚ feladatot adja vissza.
 
 :::zone pivot = "programming-language-python"
@@ -767,6 +787,7 @@ mssparkutils.env.getJobId()
 ::: zone-end
 
 ### <a name="get-workspace-name"></a>Munkaterület nevének beolvasása
+
 A munkaterület nevét adja vissza.
 
 :::zone pivot = "programming-language-python"
@@ -793,6 +814,7 @@ mssparkutils.env.getWorkspaceName()
 ::: zone-end
 
 ### <a name="get-pool-name"></a>Készlet nevének lekérése
+
 A Spark-készlet nevét adja vissza.
 
 :::zone pivot = "programming-language-python"
@@ -819,6 +841,7 @@ mssparkutils.env.getPoolName()
 ::: zone-end
 
 ### <a name="get-cluster-id"></a>Fürt AZONOSÍTÓjának beolvasása
+
 Az aktuális fürt AZONOSÍTÓját adja vissza.
 
 :::zone pivot = "programming-language-python"
@@ -845,6 +868,7 @@ mssparkutils.env.getClusterId()
 ::: zone-end
 
 ## <a name="next-steps"></a>Következő lépések
+
 - [Tekintse meg a szinapszis-minta jegyzetfüzeteket](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [Rövid útmutató: Apache Spark készlet (előzetes verzió) létrehozása az Azure szinapszis Analytics szolgáltatásban webes eszközök használatával](../quickstart-apache-spark-notebook.md)
 - [Az Azure szinapszis Analytics Apache Spark](apache-spark-overview.md)

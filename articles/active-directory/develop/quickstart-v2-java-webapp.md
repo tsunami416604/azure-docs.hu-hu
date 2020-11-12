@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: f00a935815b64f7c2c06dd33130c1a950582e5c3
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 620039ec43009693d09f732913264eff94d662c9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743488"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533242"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -51,7 +51,7 @@ A minta futtatásához a következőkre lesz szüksége:
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 >
 > 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalára.
-> 1. Válassza az **új regisztráció**lehetőséget.
+> 1. Válassza az **új regisztráció** lehetőséget.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `java-webapp`).
 >    - Válassza a **Regisztráció** lehetőséget.
@@ -59,11 +59,11 @@ A minta futtatásához a következőkre lesz szüksége:
 > 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
 >    - Adja hozzá **a** webplatform-konfigurációt.  Adja hozzá ezeket `https://localhost:8443/msal4jsample/secure/aad` és `https://localhost:8443/msal4jsample/graph/me` az **átirányítási URI-ket**.
 >    - Válassza a **Mentés** lehetőséget.
-> 1. Válassza ki a **tanúsítványokat & a titkokat** a menüben, majd az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka**lehetőségre:
+> 1. Válassza ki a **tanúsítványokat & a titkokat** a menüben, majd az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka** lehetőségre:
 >
 >    - Írja be a kulcs leírását (például az alkalmazás titkos kulcsaként).
->    - Válassza ki a kulcs időtartamát **1 év**múlva.
->    - A kulcs értéke a **Hozzáadás**gombra kattintva fog megjelenni.
+>    - Válassza ki a kulcs időtartamát **1 év** múlva.
+>    - A kulcs értéke a **Hozzáadás** gombra kattintva fog megjelenni.
 >    - Másolja később a kulcs értékét. Ez a kulcs nem jelenik meg újra, és semmilyen más módon nem kérhető le, ezért jegyezze fel, amint a Azure Portal látható.
 >
 > [!div class="sxs-lookup" renderon="portal"]
@@ -99,7 +99,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >   ```
 >   Helyezze a generált rendszertároló fájlt a "Resources" (erőforrások) mappába.
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [A mintakód letöltése](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -110,7 +110,7 @@ A minta futtatásához a következőkre lesz szüksége:
 > #### <a name="step-3-configure-the-code-sample"></a>3. lépés: a mintakód konfigurálása
 > 1. Csomagolja ki a zip-fájlt egy helyi mappába.
 > 1. Ha integrált fejlesztési környezetet használ, nyissa meg a mintát a kedvenc IDE (opcionális).
-> 1. Nyissa meg az Application. properties fájlt, amely a src/Main/Resources/mappában található, és cserélje le a *HRE. clientId*, *HRE. Authority* és *HRE. secretKey* mezők értékét az alkalmazás- **azonosító**, a **bérlői azonosító** és az **ügyfél titkos kulcsának** megfelelő értékekre az alábbiak szerint:
+> 1. Nyissa meg az Application. properties fájlt, amely a src/Main/Resources/mappában található, és cserélje le a *HRE. clientId* , *HRE. Authority* és *HRE. secretKey* mezők értékét az alkalmazás- **azonosító** , a **bérlői azonosító** és az **ügyfél titkos kulcsának** megfelelő értékekre az alábbiak szerint:
 >
 >    ```file
 >    aad.clientId=Enter_the_Application_Id_here
@@ -155,8 +155,8 @@ Ha IDE-ből futtatja a webalkalmazást, kattintson a Futtatás gombra, és keres
 1. A kezdőlapon kattintson a **Bejelentkezés** gombra a Azure Active Directory átirányításához, és kérje meg a felhasználót a hitelesítő adataik megadására.
 
 1. A felhasználó hitelesítése után a rendszer átirányítja a következőre: *https://localhost:8443/msal4jsample/secure/aad* . Most bejelentkeznek, és az oldalon megjelennek a bejelentkezett fiókra vonatkozó információk. A minta felhasználói felület a következő gombokkal rendelkezik:
-    - *Kijelentkezés*: aláírja az aktuális felhasználót az alkalmazásból, és átirányítja őket a kezdőlapra.
-    - *Felhasználói információk megjelenítése*: jogkivonatot kér Microsoft Graph és meghívja Microsoft Graph a tokent tartalmazó kérelemmel, amely a bejelentkezett felhasználó alapvető információit adja vissza.
+    - *Kijelentkezés* : aláírja az aktuális felhasználót az alkalmazásból, és átirányítja őket a kezdőlapra.
+    - *Felhasználói információk megjelenítése* : jogkivonatot kér Microsoft Graph és meghívja Microsoft Graph a tokent tartalmazó kérelemmel, amely a bejelentkezett felhasználó alapvető információit adja vissza.
 
 ##### <a name="running-from-tomcat"></a>Futtatás tomcat-ből
 

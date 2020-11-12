@@ -4,12 +4,12 @@ description: Webalkalmazások teljesítményelemzése és diagnosztikája hibake
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: a3937719fd47ba988cf1e0a93f4c06fcc8112d3e
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: d2de29d897c84496fd44d74d88d58decbc64b7f8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932209"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532902"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Alkalmazások hibakeresése az Azure Application Insights a Visual Studióban
 A Visual Studio 2015-ös és újabb verzióiban elemezheti az ASP.NET-webalkalmazások teljesítményét és diagnosztizálhatja a problémákat hibakeresés közben és éles környezetben is az [Azure Application Insights](./app-insights-overview.md) telemetriájával.
@@ -53,12 +53,12 @@ A keresési ablakban megjelennek a kivételekről szóló jelentések. (Az ASP.N
 
 Híváslánc lekéréséhez kattintson egy kivételre. Ha az alkalmazás kódja meg van nyitva a Visual Studióban, a hívásláncból végigkattinthat a kód megfelelő soráig.
 
-![Kivétel híváslánca](./media/visual-studio/17.png)
+![Képernyőfelvétel: az about objektum megjelenítése egy verem nyomkövetésében.](./media/visual-studio/17.png)
 
 ## <a name="view-request-and-exception-summaries-in-the-code"></a>A kérelem és a kivételek összegzésének megtekintése a kódban
 Az egyes kezelői módszerek fölötti kód Lencsés sorban megtekintheti az elmúlt 24 óra Application Insights által naplózott kérések és kivételek számát.
 
-![Kivétel híváslánca](./media/visual-studio/21.png)
+![A képernyőfelvétel egy helyi párbeszédpanelen kivételt mutat be.](./media/visual-studio/21.png)
 
 > [!NOTE] 
 > A Code Lens csak akkor jeleníti meg az Application Insights adatait, ha [úgy konfigurálta az alkalmazást, hogy telemetriát küldjön az Application Insights portálra](./asp-net.md).

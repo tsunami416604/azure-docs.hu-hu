@@ -3,16 +3,16 @@ title: Azure Policy szabályozási megfelelőségi szabályozása Azure Database
 description: Felsorolja Azure Policy Azure Database for MariaDB számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
 ms.date: 10/20/2020
 ms.topic: sample
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 0a1078a54205c21ffb748895e33bf35e033434d8
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3d6a7fe1f1e6ba6e553b6bb7a7f7b6d1168312d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314212"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532664"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mariadb"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Database for MariaDB
 

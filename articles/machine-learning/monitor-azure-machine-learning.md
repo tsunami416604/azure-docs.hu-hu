@@ -9,24 +9,26 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: b8ca96dd0b11f7a4c76f7a954959ef5005fb4a40
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a77f9c8f7e37d2c5a040a48b6bd96bef11d51f14
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323976"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533480"
 ---
 # <a name="monitor-azure-machine-learning"></a>Az Azure Machine Learning monitorozása
 
 Ha kritikus fontosságú alkalmazásokat és üzleti folyamatokat kíván használni az Azure-erőforrásokon, figyelnie kell ezeket az erőforrásokat a rendelkezésre állással, a teljesítménnyel és a művelettel kapcsolatban. Ez a cikk a Azure Machine Learning által generált figyelési információkat ismerteti, valamint azt, hogy miként elemezheti és figyelmeztetheti ezeket az információkat a Azure Monitor.
 
 > [!TIP]
-> A jelen dokumentumban található információk elsősorban rendszergazdák számára készültek, mivel a Azure Machine Learning figyelését írja le a *munkaterület* szintjén. Ha Ön egy adattudós vagy fejlesztő, és szeretné figyelni a *modell-oktatóprogramokra* vonatkozó információkat, tekintse meg a következő dokumentumokat:
+> A jelen dokumentumban található információk elsősorban __rendszergazdák__ számára készültek, mivel a Azure Machine learning szolgáltatás és az ahhoz kapcsolódó Azure-szolgáltatások figyelését ismerteti. Ha Ön egy __adattudós__ vagy __fejlesztő__ , és szeretné figyelni a *modell-oktatóprogramokra* vonatkozó információkat, tekintse meg a következő dokumentumokat:
 >
 > * [Betanítási futtatások indítása, figyelése és megszakítása](how-to-manage-runs.md)
 > * [A betanítási futtatások mérőszámainak naplózása](how-to-track-experiments.md)
 > * [Kísérletek nyomon követése az MLflow használatával](how-to-use-mlflow.md)
 > * [Futtatások megjelenítése a TensorBoard használatával](how-to-monitor-tensorboard.md)
+>
+> Ha a webszolgáltatásként vagy IoT Edge-modulként telepített modellek által létrehozott információkat szeretné figyelni, tekintse meg a [modell adatainak](how-to-enable-data-collection.md) és [a figyelő összegyűjtése a Application Insights](how-to-enable-app-insights.md)használatával című témakört.
 
 ## <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
 

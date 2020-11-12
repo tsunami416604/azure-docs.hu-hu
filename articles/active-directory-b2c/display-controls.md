@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49626d418f90f8b4bc7288a6d2f7d195cd906f7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 950c159ed4d2c57796f33b9505e6931dbec983ba
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961357"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532375"
 ---
 # <a name="display-controls"></a>Vezérlőelemek megjelenítése
 
@@ -28,11 +28,9 @@ Az alábbi ábrán egy önjelölt regisztrációs oldal látható, amelyben két
 
 ![Példa megjelenített megjelenítési vezérlőelemre](media/display-controls/display-control-email.png)
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="prerequisites"></a>Előfeltételek
 
- Az [önérvényesített műszaki profilok](self-asserted-technical-profile.md) [metaadatok](self-asserted-technical-profile.md#metadata) szakaszában a hivatkozott [ContentDefinition](contentdefinitions.md) `DataUri` 2.0.0 vagy újabb értékűnek kell lennie. Például:
+ Az [önérvényesített műszaki profilok](self-asserted-technical-profile.md) [metaadatok](self-asserted-technical-profile.md#metadata) szakaszában a hivatkozott [ContentDefinition](contentdefinitions.md) `DataUri` 2.0.0 vagy újabb értékűnek kell lennie. Ilyenek többek között:
 
 ```xml
 <ContentDefinition Id="api.selfasserted">
@@ -53,11 +51,11 @@ A **DisplayControl** elem a következő attribútumokat tartalmazza:
 
 A **DisplayControl** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Szabályzattípushoz | 0:1 | A **szabályzattípushoz** a felhasználó által összegyűjtött jogcímek értékének előre való feltöltésére szolgálnak. További információ: [szabályzattípushoz](technicalprofiles.md#inputclaims) elem. |
 | DisplayClaims | 0:1 | A **DisplayClaims** a felhasználótól gyűjtött jogcímek ábrázolására szolgálnak. További információ: [DisplayClaim](technicalprofiles.md#displayclaim) elem.|
-| OutputClaims | 0:1 | A **OutputClaims** a **DisplayControl**ideiglenesen menteni kívánt jogcímeket jelölik. További információ: [OutputClaims](technicalprofiles.md#outputclaims) elem.|
+| OutputClaims | 0:1 | A **OutputClaims** a **DisplayControl** ideiglenesen menteni kívánt jogcímeket jelölik. További információ: [OutputClaims](technicalprofiles.md#outputclaims) elem.|
 | Műveletek | 0:1 | A **műveletekkel** listázhatja az ellenőrzési technikai profilokat, amelyeket a rendszer az előtér felhasználói műveleteihez hív meg. |
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
@@ -78,9 +76,9 @@ A következő példa előre feltölti az e-mail-címet, hogy ellenőrizni lehess
 
 A megjelenítési vezérlők mindegyik típusának különböző megjelenítési jogcímeket, [kimeneti jogcímeket](#output-claims)és végrehajtandó [műveleteket](#display-control-actions) kell megadnia.
 
-Az [önérvényesített technikai profilban](self-asserted-technical-profile.md#display-claims)definiált **megjelenítési jogcímek** esetében a megjelenítési jogcímek a felhasználó által a megjelenítési vezérlőn belül összegyűjtött jogcímeket jelölik. A hivatkozott **claimType** elemnek meg kell adnia a Azure ad B2C által támogatott felhasználói beviteli típushoz tartozó **UserInputType** elemet, például: `TextBox` vagy `DropdownSingleSelect` . Ha egy **műveletnek**egy megjelenítési jogcím értékét kell megadnia, állítsa be a **kötelező** attribútumot arra, hogy `true` kényszerítse a felhasználót az adott megjelenítési jogcím értékének megadására.
+Az [önérvényesített technikai profilban](self-asserted-technical-profile.md#display-claims)definiált **megjelenítési jogcímek** esetében a megjelenítési jogcímek a felhasználó által a megjelenítési vezérlőn belül összegyűjtött jogcímeket jelölik. A hivatkozott **claimType** elemnek meg kell adnia a Azure ad B2C által támogatott felhasználói beviteli típushoz tartozó **UserInputType** elemet, például: `TextBox` vagy `DropdownSingleSelect` . Ha egy **műveletnek** egy megjelenítési jogcím értékét kell megadnia, állítsa be a **kötelező** attribútumot arra, hogy `true` kényszerítse a felhasználót az adott megjelenítési jogcím értékének megadására.
 
-Bizonyos megjelenítési jogcímek a megjelenítési vezérlők bizonyos típusaihoz szükségesek. Például **VerificationCode** szükséges a **VerificationControl**típusú megjelenítési vezérlőelemhez. A **ControlClaimType** attribútum használatával megtudhatja, hogy melyik DisplayClaim van kijelölve ehhez a szükséges jogcímhez. Például:
+Bizonyos megjelenítési jogcímek a megjelenítési vezérlők bizonyos típusaihoz szükségesek. Például **VerificationCode** szükséges a **VerificationControl** típusú megjelenítési vezérlőelemhez. A **ControlClaimType** attribútum használatával megtudhatja, hogy melyik DisplayClaim van kijelölve ehhez a szükséges jogcímhez. Ilyenek többek között:
 
 ```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
@@ -96,7 +94,7 @@ Ha ki szeretné próbálni a kimeneti jogcímeket a következő előkészítési
 
 A megjelenítési vezérlők **műveletei** olyan eljárások, amelyek a Azure ad B2C háttérben történnek, amikor egy felhasználó egy bizonyos műveletet hajt végre az ügyfél oldalán (a böngészőben). Például az a művelet, amelyet akkor kell végrehajtania, amikor a felhasználó kiválaszt egy gombot az oldalon.
 
-Egy művelet meghatározza az **érvényesítési műszaki profilok**listáját. Ezek a megjelenítési vezérlők egy vagy több megjelenítési jogcíme érvényesítésére szolgálnak. Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott adatokat, és hibát jelez a felhasználó számára. A **ContinueOnError**, a **ContinueOnSuccess**és az **előfeltételeket** a Display Control művelethez hasonlóan használhatja, mint ahogyan azokat az [érvényesítési technikai](validation-technical-profile.md) profilokban használják egy önjelölt technikai profilban.
+Egy művelet meghatározza az **érvényesítési műszaki profilok** listáját. Ezek a megjelenítési vezérlők egy vagy több megjelenítési jogcíme érvényesítésére szolgálnak. Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott adatokat, és hibát jelez a felhasználó számára. A **ContinueOnError** , a **ContinueOnSuccess** és az **előfeltételeket** a Display Control művelethez hasonlóan használhatja, mint ahogyan azokat az [érvényesítési technikai](validation-technical-profile.md) profilokban használják egy önjelölt technikai profilban.
 
 #### <a name="actions"></a>Műveletek
 
@@ -116,7 +114,7 @@ A **műveleti** elem a következő attribútumot tartalmazza:
 
 A **műveleti** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | ValidationClaimsExchange | 1:1 | Azon műszaki profilok azonosítói, amelyek a hivatkozó technikai profil megjelenítési jogcímek egy részének vagy egészének ellenőrzésére szolgálnak. A hivatkozott technikai profil összes bemeneti jogcímének szerepelnie kell a hivatkozó technikai profil megjelenítési jogcímeiben. |
 
@@ -124,7 +122,7 @@ A **műveleti** elem a következő elemet tartalmazza:
 
 A **ValidationClaimsExchange** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | A hivatkozó technikai profil megjelenítési jogcímeinek érvényesítésére szolgáló technikai profil. |
 
@@ -138,7 +136,7 @@ A **ValidationTechnicalProfile** elem a következő attribútumokat tartalmazza:
 
 A **ValidationTechnicalProfile** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Előfeltételei | 0:1 | Azon előfeltételek listája, amelyeknek meg kell felelniük az érvényesítési technikai profil végrehajtásához. |
 
@@ -151,7 +149,7 @@ Az **előfeltétel** elem a következő attribútumokat tartalmazza:
 
 Az **előfeltétel** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Érték | 1: n | Az ellenőrzés által használt adatértékek. Ha ez a jelölőnégyzet be van jelölve `ClaimsExist` , akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Ha az ellenőrzési típus értéke `ClaimEquals` , ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Itt adhatja meg a másik érték elemben ellenőrizendő értéket.|
 | Művelet | 1:1 | Az a művelet, amelyet akkor kell elvégezni, ha az előkészítési lépésen belüli előfeltétel-ellenőrzési érték igaz. A **művelet** értéke `SkipThisValidationTechnicalProfile` , amely megadja, hogy a társított érvényesítési technikai profil nem hajtható végre. |
@@ -212,7 +210,7 @@ A következő példa egy kódot küld e-mailben vagy SMS-ben, a felhasználó az
 
 A megjelenítési vezérlőkre az [önérvényesített technikai profil](self-asserted-technical-profile.md) [megjelenítési jogcímeiben](self-asserted-technical-profile.md#display-claims) hivatkozunk.
 
-Például:
+Ilyenek többek között:
 
 ```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">

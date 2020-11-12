@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e42c889277f937a33e72eaf57819385166d6a409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd90be6d93dc5ca399ac87daba0ca44fa7e88ff8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202314"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532494"
 ---
 # <a name="verification-display-control"></a>Ellenőrzés megjelenítésének vezérlője
 
@@ -30,11 +30,9 @@ A hitelesítési megjelenítés vezérlőelem két lépésből áll (műveletek)
 
     ![Példa a kód küldésére műveletre](media/display-control-verification/display-control-verification-email-action-01.png)
 
-1. A kód elküldése után a felhasználó beolvassa az üzenetet, beírja az ellenőrző kódot a megjelenítési vezérlő által megadott vezérlőelembe, és kiválasztja a **kód ellenőrzése**lehetőséget. A **kód ellenőrzése**lehetőség kiválasztásával a rendszer végrehajtja a **VerifyCode műveletet** a címben társított kód ellenőrzéséhez. Ha a felhasználó kiválasztja az **új kód küldése**lehetőséget, a rendszer ismét végrehajtja az első műveletet.
+1. A kód elküldése után a felhasználó beolvassa az üzenetet, beírja az ellenőrző kódot a megjelenítési vezérlő által megadott vezérlőelembe, és kiválasztja a **kód ellenőrzése** lehetőséget. A **kód ellenőrzése** lehetőség kiválasztásával a rendszer végrehajtja a **VerifyCode műveletet** a címben társított kód ellenőrzéséhez. Ha a felhasználó kiválasztja az **új kód küldése** lehetőséget, a rendszer ismét végrehajtja az első műveletet.
 
     ![Példa a kód ellenőrzésére műveletre](media/display-control-verification/display-control-verification-email-action-02.png)
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="verificationcontrol-required-elements"></a>VerificationControl szükséges elemek
 
@@ -49,7 +47,7 @@ A **VerificationControl** tartalmaznia kell a következő elemeket:
   - **SendCode** – kódot küld a felhasználónak. Ez a művelet általában két ellenőrzési technikai profilt tartalmaz, egy kód létrehozásához és az elküldéséhez.
   - **VerifyCode** – ellenőrzi a kódot. Ez a művelet általában egyetlen ellenőrzési technikai profilt tartalmaz.
 
-Az alábbi példában egy **e-mail-** szövegmező jelenik meg az oldalon. Ha a felhasználó megadja az e-mail-címét, és kiválasztja a **SendCode**-t, a **SendCode** műveletet a rendszer Azure ad B2C a háttérben indítja el.
+Az alábbi példában egy **e-mail-** szövegmező jelenik meg az oldalon. Ha a felhasználó megadja az e-mail-címét, és kiválasztja a **SendCode** -t, a **SendCode** műveletet a rendszer Azure ad B2C a háttérben indítja el.
 
 Ezután a felhasználó beírja a **verificationCode** , és kiválasztja a **VerifyCode** lehetőséget, hogy aktiválja a **VerifyCode** műveletet a háttérben. Ha az összes érvényesítés sikeres, a **VerificationControl** teljesnek minősül, és a felhasználó továbbra is folytathatja a következő lépéssel.
 

@@ -4,19 +4,19 @@ description: Azure Functions támogatja a futtatókörnyezet több verzióját. 
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c67708b5c23667a7b0a1603b756d564b35fa0c3f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208102"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533735"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions futtatókörnyezet-verziók áttekintése
 
 A Azure Functions jelenleg a futásidejű gazdagép három verzióját támogatja: 1. x, 2. x és 3. x. Az éles környezetekben mindhárom verzió támogatott.  
 
 > [!IMPORTANT]
-> Az 1. x verzió karbantartási módban van, és csak a Azure Portal vagy helyileg a Windows rendszerű számítógépeken támogatja a fejlesztést. A fejlesztéseket csak a későbbi verziókban biztosítjuk. 
+> Az 1. x verzió karbantartási módban van, és csak a Azure Portal, Azure Stack hub portálon vagy helyileg a Windows rendszerű számítógépeken való fejlesztést támogatja. A fejlesztéseket csak a későbbi verziókban biztosítjuk. 
 
 Ez a cikk a különböző verziók közötti különbségeket ismerteti, hogyan hozhatja létre az egyes verziókat, és hogyan módosíthatja a verziókat.
 
@@ -28,7 +28,7 @@ A következő táblázat azt mutatja be, hogy mely programozási nyelvek támoga
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-További információ: [támogatott nyelvek](supported-languages.md).
+További információt a [támogatott nyelvek](supported-languages.md) ismertetésében talál.
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>Futtatás adott verzión
 

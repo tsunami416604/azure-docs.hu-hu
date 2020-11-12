@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 21188f473cbd5a6fd2a1ee549f47ad9b0e5b8af3
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 083d868f2d2652be9480227c29dfb289564056d6
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279489"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533786"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Végpontok és útvonalak kezelése az Azure Digital Twins-ban (portál)
 
@@ -22,7 +22,7 @@ Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értes�
 
 Ez a cikk végigvezeti a végpontok és útvonalak létrehozásának folyamatán a [Azure Portal](https://portal.azure.com)használatával.
 
-A végpontokat és útvonalakat az [Event Routes API](/rest/api/digital-twins/dataplane/eventroutes)-k, a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)vagy az [Azure Digital Twins CLI](how-to-use-cli.md)használatával is kezelheti. A jelen cikk a portál helyett ezeket a mechanizmusokat használó verziója [*: útmutató: végpontok és útvonalak kezelése (API-k és parancssori felület)*](how-to-manage-routes-apis-cli.md).
+Azt is megteheti, hogy a végpontokat és útvonalakat az [Event Routes API](/rest/api/digital-twins/dataplane/eventroutes)-kkal, az [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis)-kkal vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felülettel kezeli. A jelen cikk a portál helyett ezeket a mechanizmusokat használó verziója [*: útmutató: végpontok és útvonalak kezelése (API-k és parancssori felület)*](how-to-manage-routes-apis-cli.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
