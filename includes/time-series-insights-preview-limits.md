@@ -4,25 +4,25 @@ description: fájlbefoglalás
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 07/09/2020
+ms.date: 11/11/2020
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 7259e1981f873c8385a02fe4f353dcdda495f823
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ec1f71d13d5d2fb3af86c1c63d5e61ce13d2c82
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287413"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553239"
 ---
 ### <a name="property-limits"></a>Tulajdonságok korlátai
 
-Azure Time Series Insights a 1 000 a Gen1-ben maximális 800-os korláttal emelkedett. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyeket megtekintheti a [Azure Time Series Insights Gen2 Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
+Azure Time Series Insights a tulajdonságok korlátai a meleg tárolás érdekében 1 000-ra növekedtek, és nem vonatkoznak a hűtőházi tárolásra vonatkozó tulajdonságértékek. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyeket megtekintheti a [Azure Time Series Insights Gen2 Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
 
-| SKU | Maximális tulajdonságok |
+| Termékváltozat | Maximális tulajdonságok |
 | --- | --- |
-| Gen2 (L1) | 1 000 tulajdonságok (oszlopok) |
+| Gen2 (L1) | 1 000 tulajdonságok (oszlopok) a meleg tároláshoz és korlátlan a hideg tároláshoz|
 | Gen1 (S1) | 600 tulajdonságok (oszlopok) |
 | Gen1 (S2) | 800 tulajdonságok (oszlopok) |
 

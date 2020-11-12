@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 11/20/2018
 ms.author: alkohli
-ms.openlocfilehash: 16b69ce5d63723919e74b62e8c62770ed5fbec85
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: bb1390a32abfe9ccf31002fc569936d39e4e5428
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375859"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553188"
 ---
 Konfigurálja a partneri szoftvert az ügyfélhez való kapcsolódáshoz. A partneri szoftverhez való kapcsolódáshoz általában az alábbi információkra van szüksége (amelyek az előző lépésben a helyi webes felhasználói felület **Kapcsolódás és másolás** lapján gyűltek össze):
 
@@ -23,8 +23,8 @@ Ha első alkalommal használja a Storage Explorer, a következő lépéseket kel
 
 1. A felső parancssáv lépjen a **> cél Azure stack szerkesztése** elemre.
 
-    ![Data Box irányítópult](media/data-box-configure-partner-software/data-box-connect-via-rest-6.png)
+    ![Képernyőfelvétel: a szerkesztési menüből kiválasztott cél Azure Stack.](media/data-box-configure-partner-software/data-box-connect-via-rest-6.png)
 
 2. A módosítások életbe léptetéséhez indítsa újra a Storage Explorer.
 
-    ![Data Box irányítópult 2](media/data-box-configure-partner-software/data-box-connect-via-rest-7.png)
+    ![A képernyőképen az újraindítás most gomb látható.](media/data-box-configure-partner-software/data-box-connect-via-rest-7.png)
