@@ -9,7 +9,7 @@ ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/10/2020
 ms.locfileid: "87280222"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrálás az Azure Kubernetes szolgáltatásba (ak)
