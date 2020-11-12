@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 2f7d102ad6bf2aba2056456acfe6207a0b0643ba
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0da4127960450a13b64ec23908b4a4fd4c69bd7e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357980"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542014"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
 
@@ -30,11 +30,15 @@ Ez a cikk a következő feladatokra mutat be példákat:
 * Gyermek-futtatások létrehozása.
 * Címke és keresés futtatása.
 
+> [!TIP]
+> Ha a Azure Machine Learning szolgáltatás és a kapcsolódó Azure-szolgáltatások figyelésével kapcsolatos információkat keres, tekintse meg a [Azure Machine learning figyelése](monitor-azure-machine-learning.md)című témakört.
+> Ha webszolgáltatásként vagy IoT Edge modulként üzembe helyezett figyelési modellekkel kapcsolatos információkat keres, tekintse meg a következőt: a [modell adatainak](how-to-enable-data-collection.md) és [figyelésének összegyűjtése Application Insightssal](how-to-enable-app-insights.md).
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következő elemekre lesz szüksége:
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
 

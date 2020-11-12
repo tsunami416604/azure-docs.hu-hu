@@ -1,17 +1,17 @@
 ---
 title: Komplex veszélyforrások elleni védelem – Azure Portal – Azure Database for MariaDB
 description: A veszélyforrások elleni védelem Azure Database for MariaDB észleli a rendellenes adatbázis-tevékenységeket, amelyek az adatbázis potenciális biztonsági fenyegetéseit jelzik.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 1b5a16a014892764ee26b524489a82744fe6ca82
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7734feddabb1a4a86e7932da3ef4adc57352637e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425964"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542694"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Komplex veszélyforrások elleni védelem Azure Database for MariaDB
 
@@ -31,7 +31,7 @@ A komplex veszélyforrások elleni védelem a fejlett adatbiztonsági ajánlat r
 3. A **speciális veszélyforrások elleni védelem (előzetes verzió)** konfigurációs lapján:
 
    - Az összetett veszélyforrások elleni védelem engedélyezése a kiszolgálón.
-   - Az **összetett veszélyforrások elleni védelem beállításaiban**a **riasztások küldése** a szövegmezőbe mezőbe írja be azoknak az e-maileknek a listáját, amelyek biztonsági riasztásokat kapnak a rendellenes adatbázis-tevékenységek észlelése után.
+   - Az **összetett veszélyforrások elleni védelem beállításaiban** a **riasztások küldése** a szövegmezőbe mezőbe írja be azoknak az e-maileknek a listáját, amelyek biztonsági riasztásokat kapnak a rendellenes adatbázis-tevékenységek észlelése után.
   
    ![Fenyegetés észlelésének beállítása](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
 
@@ -60,7 +60,7 @@ Kattintson a **veszélyforrások észlelése riasztásra** a Azure Security Cent
    ![Veszélyforrások észlelésének riasztása](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
    
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure Security Center](../security-center/security-center-introduction.md)
 * A díjszabással kapcsolatos további információkért tekintse meg a [Azure Database for MariaDB díjszabási oldalát](https://azure.microsoft.com/pricing/details/mariadb/) .

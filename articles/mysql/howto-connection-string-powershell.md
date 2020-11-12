@@ -1,18 +1,18 @@
 ---
 title: Kapcsolatok karakterláncának létrehozása a PowerShell-Azure Database for MySQL
 description: Ez a cikk egy Azure PowerShell példát mutat be a Azure Database for MySQLhoz való kapcsolódáshoz használt kapcsolati karakterlánc létrehozásához.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/5/2020
-ms.openlocfilehash: fcba366a0322c3c1b5c6dcdf0fc3571646053fad
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9f960d32dcf1f359327dccc01eeb06825cc3a062
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337183"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541470"
 ---
 # <a name="how-to-generate-an-azure-database-for-mysql-connection-string-with-powershell"></a>Azure Database for MySQL kapcsolódási karakterlánc létrehozása a PowerShell-lel
 
@@ -46,7 +46,7 @@ A paraméter érvényes értékei a `Client` következők:
 * Ruby
 * WebApp
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MySQL kiszolgáló paramétereinek testreszabása a PowerShell használatával](howto-configure-server-parameters-using-powershell.md)

@@ -1,17 +1,17 @@
 ---
 title: Adatreplikálás – Azure Database for MySQL
 description: További információ a külső kiszolgálóról a Azure Database for MySQL szolgáltatásba való szinkronizáláshoz szükséges adatreplikálás használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: e84f0c9beaee8a755499467925d28a83ba3139fc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 99beddba470f73d6eadb448dfe1b77453ce6426d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544052"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541589"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Az adatreplikálás Azure Database for MySQLba
 
@@ -50,7 +50,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 - Az adatreplikálás csak általános célú és a memória optimalizált díjszabási szintjein támogatott.
 - A globális tranzakciós azonosítók (GTID-EK) nem támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan [állíthatja be az adatreplikációt](howto-data-in-replication.md)
 - Tudnivalók [Az Azure-beli replikálásról olvasási replikákkal](concepts-read-replicas.md)
 - Az [adatáttelepítés minimális állásidővel való áttelepítésének ismertetése a DMS használatával](howto-migrate-online.md)

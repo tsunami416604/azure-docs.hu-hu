@@ -3,28 +3,29 @@ title: Azure Service Bus – üzenetkezelési entitások felfüggesztése
 description: Ez a cikk azt ismerteti, hogyan lehet ideiglenesen felfüggeszteni és újraaktiválni Azure Service Bus üzenet entitásait (várólisták, témakörök és előfizetések).
 ms.topic: article
 ms.date: 09/29/2020
-ms.openlocfilehash: f89e17e494cc777691b7f7ca47538cd29114d2dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea1acab3d0a86b0064f8b3eef7bfd1496bd17041
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575242"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543051"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Üzenetkezelési entitások felfüggesztése és újraaktiválása (Letiltás)
 
 A várólisták, témakörök és előfizetések ideiglenesen fel lesznek függesztve. A felfüggesztés letiltott állapotba helyezi az entitást, amelyben az összes üzenet a tárolóban marad. Az üzenetek azonban nem távolíthatók el és nem vehetők fel, és a vonatkozó protokollok műveleteinek hibái.
 
-Az entitások felfüggesztése általában sürgős adminisztratív okokból történik. Az egyik forgatókönyv egy olyan hibás fogadó üzembe helyezése, amely üzeneteket helyez el a várólistából, a feldolgozás sikertelen lesz, és még nem megfelelően végzi el az üzenetek telepítését és eltávolítását. Ha ezt a viselkedést diagnosztizálják, a várólistát le lehet tiltani a fogadáshoz, amíg a korrigált kód üzembe lett helyezve, és a hibás kód által okozott további adatvesztés megakadályozható.
+Sürgős felügyeleti okokból érdemes lehet felfüggeszteni egy entitást. Például egy hibás fogadó üzenetet küld a várólistáról, a folyamat sikertelen lesz, és még nem megfelelően végzi el az üzenetek feldolgozását és eltávolítását. Ebben az esetben előfordulhat, hogy le kívánja tiltani a fogadott várólistát, amíg ki nem javítsa és nem telepíti a kódot. 
 
 A felfüggesztés vagy az újraaktiválás a felhasználó vagy a rendszer által végezhető el. A rendszerek csak olyan súlyos adminisztratív okok miatt felfüggesztik az entitásokat, mint például az előfizetés költségkeretének korlátozása. A felhasználó nem tudja újraaktiválni a rendszer által letiltott entitásokat, de a felfüggesztés oka miatt visszaállnak.
 
 ## <a name="queue-status"></a>Várólista állapota 
-A várólistára beállítható állapotok a következők:
+A **várólistára** beállítható állapotok a következők:
 
--   **Aktív**: a várólista aktív.
--   **Letiltva**: a várólista fel van függesztve. Ez egyenértékű a **SendDisabled** és a **ReceiveDisabled**beállításával. 
--   **SendDisabled**: a várólista részlegesen fel van függesztve, és a fogadás engedélyezett.
--   **ReceiveDisabled**: a várólista részlegesen fel van függesztve, és a küldés engedélyezett.
+-   **Aktív** : a várólista aktív. Üzeneteket küldhet és fogadhat üzeneteket a várólistából. 
+-   **Letiltva** : a várólista fel van függesztve. Ez egyenértékű a **SendDisabled** és a **ReceiveDisabled** beállításával. 
+-   **SendDisabled** : nem küldhet üzeneteket a várólistába, de üzeneteket is fogadhat. Kivételt fog kapni, ha üzeneteket próbál küldeni a várólistára. 
+-   **ReceiveDisabled** : küldhet üzeneteket a várólistába, de nem fogadhat üzeneteket. Kivételt fog kapni, ha üzeneteket próbál fogadni a várólistára.
+
 
 ### <a name="change-the-queue-status-in-the-azure-portal"></a>Módosítsa a várólista állapotát a Azure Portalban: 
 
@@ -35,9 +36,9 @@ A várólistára beállítható állapotok a következők:
     :::image type="content" source="./media/entity-suspend/select-state.png" alt-text="Várólista állapotának kiválasztása":::
 4. Válassza ki a várólista új állapotát, és kattintson az **OK gombra**. 
 
-    :::image type="content" source="./media/entity-suspend/entity-state-change.png" alt-text="Várólista állapotának kiválasztása":::
+    :::image type="content" source="./media/entity-suspend/entity-state-change.png" alt-text="A várólista állapotának beállítása":::
     
-A portál csak teljesen letiltja a várólistákat. A küldési és fogadási műveleteket külön is letilthatja a .NET-keretrendszer SDK-ban található Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-kkal, vagy egy Azure Resource Manager sablonnal az Azure CLI vagy a Azure PowerShell használatával.
+Letilthatja a küldési és fogadási műveleteket a .NET SDK Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-jai segítségével, illetve az Azure CLI vagy a Azure PowerShell használatával Azure Resource Manager sablonnal is.
 
 ### <a name="change-the-queue-status-using-azure-powershell"></a>A várólista állapotának módosítása a Azure PowerShell használatával
 A várólista letiltására szolgáló PowerShell-parancs az alábbi példában látható. Az újraaktiválási parancs egyenértékű, aktív értékre van állítva `Status` . **Active**
@@ -51,24 +52,31 @@ Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueu
 ```
 
 ## <a name="topic-status"></a>Témakör állapota
-A témakör állapotának módosítása a Azure Portalban hasonló a várólista állapotának módosításához. A témakör aktuális állapotának kiválasztásakor a következő oldal jelenik meg, amely lehetővé teszi az állapot módosítását. 
+A témakör állapota módosítható a Azure Portalban. Válassza ki a témakör aktuális állapotát a következő oldal megjelenítéséhez, amely lehetővé teszi az állapot módosítását. 
 
-:::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="Várólista állapotának kiválasztása":::
+:::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="Témakör állapotának módosítása":::
 
-A témakörben beállítható állapotok a következők:
-- **Aktív**: a témakör aktív.
-- **Letiltva**: a témakör fel van függesztve.
-- **SendDisabled**: ugyanaz a hatás, mint a **Letiltva**.
+A **témakörben** beállítható állapotok a következők:
+- **Aktív** : a témakör aktív. Üzeneteket küldhet a témakörbe. 
+- **Letiltva** : a témakör fel van függesztve. Nem lehet üzeneteket küldeni a témakörbe. 
+- **SendDisabled** : ugyanaz a hatás, mint a **Letiltva**. Nem lehet üzeneteket küldeni a témakörbe. Kivételt fog kapni, ha üzenetet próbál küldeni a témakörnek. 
 
 ## <a name="subscription-status"></a>Előfizetés állapota
-Az előfizetés állapotának módosítása a Azure Portalban hasonló egy témakör vagy várólista állapotának módosításához. Az előfizetés aktuális állapotának kiválasztásakor a következő oldal jelenik meg, amely lehetővé teszi az állapot módosítását. 
+Az előfizetések állapotát a Azure Portal módosíthatja. Válassza ki az előfizetés aktuális állapotát a következő oldal megjelenítéséhez, amely lehetővé teszi az állapot módosítását. 
 
-:::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Várólista állapotának kiválasztása":::
+:::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Előfizetés állapotának módosítása":::
 
-A témakörben beállítható állapotok a következők:
-- **Aktív**: a témakör aktív.
-- **Letiltva**: a témakör fel van függesztve.
-- **ReceiveDisabled**: ugyanaz a hatás, mint a **Letiltva**.
+Az **előfizetéshez** megadható állapotok a következők:
+- **Aktív** : az előfizetés aktív. Az előfizetéshez tartozó üzenetet fogadhat.
+- **Letiltva** : az előfizetés fel van függesztve. Nem fogadhat üzeneteket az előfizetésből. 
+- **ReceiveDisabled** : ugyanaz a hatás, mint a **Letiltva**. Nem fogadhat üzeneteket az előfizetésből. Kivételt fog kapni, ha üzeneteket próbál fogadni az előfizetésbe.
+
+| Témakör állapota | Előfizetés állapota | Viselkedés | 
+| ------------ | ------------------- | -------- | 
+| Aktív | Aktív | Üzeneteket küldhet a témakörnek, és üzeneteket fogadhat az előfizetésből. | 
+| Aktív | Letiltva vagy fogadás letiltva | Üzeneteket küldhet a témakörbe, de nem fogadhat üzeneteket az előfizetésből | 
+| Letiltva vagy küldés letiltva | Aktív | Nem küldhet üzeneteket a témakörbe, de az előfizetésben már megjelenő üzeneteket is fogadhat. | 
+| Letiltva vagy küldés letiltva | Letiltva vagy fogadás letiltva | Nem lehet üzenetet küldeni a témakörnek, és nem kaphat az előfizetésből. | 
 
 ## <a name="other-statuses"></a>Egyéb állapotok
 A [EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) enumerálás olyan átmeneti állapotokat is meghatároz, amelyeket csak a rendszer adhat meg. 

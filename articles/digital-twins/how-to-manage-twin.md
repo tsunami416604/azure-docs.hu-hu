@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 929181f9a4d159892956274a7958b1daa95cbc10
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360071"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540968"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -26,6 +26,10 @@ Ez a cikk a digitális ikrek kezelésére koncentrál. Ha a kapcsolatokkal és a
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
+## <a name="ways-to-manage-twins"></a>Az ikrek kezelésének módjai
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
 ## <a name="create-a-digital-twin"></a>Digitális Twin létrehozása
 
@@ -82,7 +86,7 @@ Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` az objektumok egy `Id` mezővel rendelkeznek. Ezt a mezőt üresen hagyhatja, de ha egy azonosító értéket ad hozzá, akkor meg kell egyeznie a hívásnak átadott ID paraméterrel `CreateOrReplaceDigitalTwinAsync()` . Például:
+> `BasicDigitalTwin` az objektumok egy `Id` mezővel rendelkeznek. Ezt a mezőt üresen hagyhatja, de ha egy azonosító értéket ad hozzá, akkor meg kell egyeznie a hívásnak átadott ID paraméterrel `CreateOrReplaceDigitalTwinAsync()` . Ilyenek többek között:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -187,6 +191,17 @@ foreach (string prop in twin.Contents.Keys)
 ```
 
 További információ a szerializálási segítő osztályokról [*: az Azure Digital Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md).
+
+## <a name="view-all-digital-twins"></a>Az összes digitális ikrek megtekintése
+
+A példányban lévő összes digitális ikrek megtekintéséhez használjon [lekérdezést](how-to-query-graph.md). Futtathat egy lekérdezést a [lekérdezési API](/rest/api/digital-twins/dataplane/query) -kkal vagy a [CLI-parancsokkal](how-to-use-cli.md).
+
+Itt látható az alapszintű lekérdezés törzse, amely a példányban található összes digitális ikrek listáját fogja visszaadni:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+``` 
 
 ## <a name="update-a-digital-twin"></a>Digitális iker frissítése
 
@@ -360,7 +375,7 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 Az összes ikrek egyszerre történő törléséről például töltse le a _Tutorialben használt minta alkalmazást [: Ismerkedjen meg az alapokkal egy példaként szolgáló ügyfélalkalmazás használatával *](tutorial-command-line-app.md). A *CommandLoop.cs* fájl ezt egy `CommandDeleteAllTwins()` függvényben végzi el.
 
-## <a name="manage-twins-using-runnable-code-sample"></a>Az ikrek kezelése futtatható-mintakód használatával
+## <a name="runnable-digital-twin-code-sample"></a>Futtatható digitális kettős kód minta
 
 Az alábbi futtatható-mintakód használatával hozzon létre egy IKeret, frissítse a részleteit, és törölje a Twin. 
 
@@ -535,22 +550,6 @@ Itt látható a fenti program konzoljának kimenete:
 
 :::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="Konzol kimenete, amely azt mutatja, hogy a Twin létrehozása, frissítése és törlése megtörtént" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
-## <a name="manage-twins-with-cli"></a>Ikrek kezelése a CLI-vel
-
-Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a [_Howban találhatók: az Azure digitális Twins CLI * használatával](how-to-use-cli.md).
-
-## <a name="view-all-digital-twins"></a>Az összes digitális ikrek megtekintése
-
-A példányban lévő összes digitális ikrek megtekintéséhez használjon [lekérdezést](how-to-query-graph.md). Futtathat egy lekérdezést a [lekérdezési API](/rest/api/digital-twins/dataplane/query) -kkal vagy a [CLI-parancsokkal](how-to-use-cli.md).
-
-Itt látható az alapszintű lekérdezés törzse, amely a példányban található összes digitális ikrek listáját fogja visszaadni:
-
-```sql
-SELECT *
-FROM DIGITALTWINS
-``` 
-
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan hozhat létre és kezelhet kapcsolatokat a digitális ikrek között:
-* [*Útmutató: a Twin gráf kezelése kapcsolatok használatával*](how-to-manage-graph.md)
+Ismerje meg, hogyan hozhat létre és kezelhet kapcsolatokat a digitális ikrek között: _ [ *útmutató: a Twin gráf kezelése a kapcsolatokkal*](how-to-manage-graph.md)

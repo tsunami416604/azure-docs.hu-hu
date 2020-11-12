@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761481"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542677"
 ---
 # <a name="sizing-guidance"></a>Méretezési útmutató
 
@@ -89,6 +89,7 @@ Minden felügyelt SQL-példánynak a következő minimális erőforrás-kérelme
 - Magok: 1
 
 Minden létrehozott SQL felügyelt példányhoz tartozó Pod három tárolóval rendelkezik:
+
 |Tárolónév|CPU-kérelem|Memória-kérelem|CPU-korlát|Memória korlátja|Jegyzetek|
 |---|---|---|---|---|---|
 |fluentbit|100m|100Mi|Nincs megadva|Nincs megadva|A fluentbit-tároló erőforrás-kérelmei az SQL felügyelt példányához megadott kérelmeken _felül_ vannak.||
@@ -104,6 +105,7 @@ A PostgreSQL nagy kapacitású-kiszolgálócsoport összes csomópontjának a k�
 - Magok: 1
 
 Minden olyan PostgreSQL nagy kapacitású-kiszolgálócsoport-koordinátor vagy Worker Pod, amely létrehozva három tárolóval rendelkezik:
+
 |Tárolónév|CPU-kérelem|Memória-kérelem|CPU-korlát|Memória korlátja|Jegyzetek|
 |---|---|---|---|---|---|
 |fluentbit|100m|100Mi|Nincs megadva|Nincs megadva|A fluentbit-tároló erőforrás-kérelmei a PostgreSQL nagy kapacitású kiszolgálói csoport csomópontjaihoz megadott kérelmeken _kívül_ vannak.|
@@ -122,9 +124,9 @@ A következő példa egy méretezési számítást mutat be.
 
 Követelmények:
 
-- **"SQL1"**: 1 SQL felügyelt példány 16 GB RAM-mal, 4 mag
-- **"SQL2"**: 1 SQL felügyelt példány 256 GB RAM-mal, 16 mag
-- **"Postgres1"**: 1 PostgreSQL nagy kapacitású-kiszolgálócsoport 4 feldolgozóval 12 GB RAM-mal, 4 mag
+- **"SQL1"** : 1 SQL felügyelt példány 16 GB RAM-mal, 4 mag
+- **"SQL2"** : 1 SQL felügyelt példány 256 GB RAM-mal, 16 mag
+- **"Postgres1"** : 1 PostgreSQL nagy kapacitású-kiszolgálócsoport 4 feldolgozóval 12 GB RAM-mal, 4 mag
 
 Méretezési számítások:
 

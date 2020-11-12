@@ -1,17 +1,17 @@
 ---
 title: Biztonság – Azure Database for MariaDB
 description: A Azure Database for MariaDB biztonsági funkcióinak áttekintése.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8f41fe1005e96b428337bc73b9d468962a079596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a46f70e3089a8610fa8ca6362bcba6f624e2b1a
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79527826"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541147"
 ---
 # <a name="security-in-azure-database-for-mariadb"></a>Biztonság az Azure Database for MariaDB-ben
 
@@ -50,5 +50,5 @@ A komplex [veszélyforrások elleni védelem](concepts-data-access-and-security-
 A [naplózás elérhető](concepts-audit-logs.md) az adatbázisok tevékenységeinek nyomon követéséhez. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tűzfalszabályok engedélyezése [IP](concepts-firewall-rules.md) -címekhez vagy [virtuális hálózatokhoz](concepts-data-access-security-vnet.md)

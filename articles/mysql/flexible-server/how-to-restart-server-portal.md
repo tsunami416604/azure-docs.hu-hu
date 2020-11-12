@@ -1,17 +1,17 @@
 ---
 title: Kiszolgáló újraindítása – Azure Portal-Azure Database for MySQL – rugalmas kiszolgáló
 description: Ez a cikk azt ismerteti, hogyan lehet újraindítani egy Azure Database for MySQL rugalmas kiszolgálót a Azure Portal használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/26/2020
-ms.openlocfilehash: c44e1da46b969b2d359a225e9d310160ce2092ce
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 88a1524875f168b49f50f1684c650d5bc178bf38
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681560"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542660"
 ---
 # <a name="restart-azure-database-for-mysql-flexible-server-using-azure-portal"></a>Azure Database for MySQL rugalmas kiszolgáló újraindítása Azure Portal használatával
 Ez a témakör azt ismerteti, hogyan lehet újraindítani egy Azure Database for MySQL rugalmas kiszolgálót. Előfordulhat, hogy a kiszolgálót karbantartás miatt újra kell indítania, ami rövid kimaradást okoz, mivel a kiszolgáló végrehajtja a műveletet.
@@ -36,13 +36,15 @@ A következő lépések újraindítják a MySQL-kiszolgálót:
 
 3. A kiszolgáló újraindításának megerősítéséhez kattintson az **Igen** gombra.
 
-   :::image type="content" source="./media/how-to-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for MySQL – áttekintés – Újraindítás gomb" értékűre változik.
+   :::image type="content" source="./media/how-to-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for MySQL – újraindítás megerősítése":::
 
-   :::image type="content" source="./media/how-to-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for MySQL – áttekintés – Újraindítás gomb":::
+4. Figyelje meg, hogy a kiszolgáló állapota "újraindítás" értékűre változik.
+
+   :::image type="content" source="./media/how-to-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for MySQL – újraindítás állapota":::
 
 5. A kiszolgáló újraindításának megerősítése sikeres volt.
 
-   :::image type="content" source="./media/how-to-restart-server-portal/5-restart-success.png" alt-text="Azure Database for MySQL – áttekintés – Újraindítás gomb":::
+   :::image type="content" source="./media/how-to-restart-server-portal/5-restart-success.png" alt-text="Azure Database for MySQL – sikeres újraindítás":::
 
 ## <a name="next-steps"></a>Következő lépések
 

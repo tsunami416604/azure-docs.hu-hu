@@ -1,17 +1,17 @@
 ---
 title: Hozzáférés-naplózási naplók – Azure Portal – Azure Database for MySQL
 description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni és elérni a naplókat a Azure Portal Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: c406fa6b49e800912edb5738b4d60596d828fc94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a73a3c77310c0e19792758c0586975e14cfaebf8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570493"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541657"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>A Azure Portal Azure Database for MySQL naplózási naplóinak konfigurálása és elérése
 
@@ -38,26 +38,32 @@ A naplózás engedélyezése és konfigurálása.
     :::image type="content" source="./media/howto-configure-audit-logs-portal/server-parameters.png" alt-text="Kiszolgálóparaméterek":::
 
 1. Frissítse a **audit_log_enabled** PARAMÉTERt a következőre:.
-    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-enabled.png" alt-text="Kiszolgálóparaméterek":::
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-enabled.png" alt-text="Naplók engedélyezése":::
 
 1. Válassza ki a naplózni kívánt [események típusát](concepts-audit-logs.md#configure-audit-logging) a **audit_log_events** paraméter frissítésével.
-    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-events.png" alt-text="Kiszolgálóparaméterek":::
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-events.png" alt-text="Naplózási események":::
 
 1. Vegyen fel minden olyan MySQL-felhasználót, amelyet be szeretne vonni, vagy ki szeretne zárni a naplózásból a **audit_log_exclude_users** és **audit_log_include_users** paraméterek frissítésével. Adja meg a felhasználókat a MySQL-Felhasználónév megadásával.
-    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="Kiszolgálóparaméterek":::
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="Naplók kizárása a felhasználók számára":::
 
-1. A paraméterek módosítása után kattintson a **Mentés**gombra. Vagy **elvetheti** a módosításokat.
-    :::image type="content" source="./media/howto-configure-audit-logs-portal/save-parameters.png" alt-text="Kiszolgálóparaméterek":::
+1. A paraméterek módosítása után kattintson a **Mentés** gombra. Vagy **elvetheti** a módosításokat.
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/save-parameters.png" alt-text="Mentés":::
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnosztikai naplók beállítása
 
-1. Az oldalsáv **figyelés** területén válassza a **diagnosztikai beállítások**elemet.
+1. Az oldalsáv **figyelés** területén válassza a **diagnosztikai beállítások** elemet.
 
-1. Kattintson a "+ diagnosztikai beállítás hozzáadása" :::image type="content" source="./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="Kiszolgálóparaméterek" lehetőséget a napló típusaként.
-:::image type="content" source="./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="Kiszolgálóparaméterek":::
+1. Kattintson a "+ diagnosztikai beállítás hozzáadása" :::image type="content" source="./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="diagnosztikai beállítás hozzáadása"::: elemre.
 
-1. Miután konfigurálta az adattárolást a naplókba, kattintson a **Save (Mentés**) gombra.
-:::image type="content" source="./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="Kiszolgálóparaméterek":::
+1. Adja meg a diagnosztikai beállítások nevét.
+
+1. Itt adhatja meg, hogy mely adatnyelők küldje el a naplókat (Storage-fiók, Event hub és/vagy Log Analytics munkaterület).
+
+1. Válassza a "MySqlAuditLogs" lehetőséget a napló típusaként.
+:::image type="content" source="./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="Diagnosztikai beállítás konfigurálása":::
+
+1. Miután konfigurálta az adattárolást a naplókba, kattintson a **Save (Mentés** ) gombra.
+:::image type="content" source="./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="Diagnosztikai beállítás mentése":::
 
 1. A naplókat úgy érheti el, hogy a konfigurált adattárolókban vizsgálja őket. A naplók megjelenése akár 10 percet is igénybe vehet.
 

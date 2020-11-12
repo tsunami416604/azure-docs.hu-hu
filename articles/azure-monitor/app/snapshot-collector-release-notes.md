@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: faacb78ca7f055bb8e9a469afb894bc30ee87501
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 89c13566c3710e56a4cd737d9aa03c6fb57edc93
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507492"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542728"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>A Microsoft. ApplicationInsights. Snapshotcollector nugetcsomag kibocsátási megjegyzései
 
@@ -70,7 +70,7 @@ Snapshot Collector beolvassa és elemzi a ConnectionString-t a APPLICATIONINSIGH
 - _Kísérleti funkció_ : Snappoint-gyűjtési csomagok: add "snapshotOnFirstOccurence". További információk [itt](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)érhetők el.
 
 ## <a name="133"></a>[1.3.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.3)
-- Kijavítva a hiba, amely miatt SnapshotUploader.exe a rendszer lefagy, és nem tölt fel pillanatképeket a .NET Core-alkalmazásokhoz.
+- Kijavítva a hiba, amely miatt a SnapshotUploader.exe nem válaszol, és nem tölthet fel pillanatképeket a .NET Core-alkalmazásokhoz.
 
 ## <a name="132"></a>[1.3.2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.2)
 - _Kísérleti funkció_ : Snappoint-gyűjtési csomagok. További információk [itt](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)érhetők el.

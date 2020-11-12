@@ -1,17 +1,17 @@
 ---
 title: Az adatreplikálás konfigurálása – Azure Database for MySQL
 description: Ez a cikk a Azure Database for MySQL felhőbe irányuló replikálás beállítását ismerteti.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 58df34ae6a6ff3304304da192b429ac83c1b55c3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b7f1f16b5182658f42ad6594aace22fb5a1a80fc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544035"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541402"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL konfigurálása felhőbe irányuló replikálás
 
@@ -75,7 +75,7 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
       ```bash
       ping <output of step 2b>
       ``` 
-      Például: 
+      Ilyenek többek között: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -140,11 +140,11 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 
    Írja be a felhasználónevet a **bejelentkezési név** mezőbe. 
 
-   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Felhasználók és jogosultságok":::
+   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Felhasználó szinkronizálása":::
  
    Kattintson a **felügyeleti szerepkörök** panelre, majd válassza ki a **replikálás Slave** elemet a **globális jogosultságok** listájáról. Ezután kattintson az **Apply (alkalmaz** ) gombra a replikációs szerepkör létrehozásához.
 
-   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Felhasználók és jogosultságok":::
+   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Replikálási Slave":::
 
 1. A forráskiszolgáló beállítása írásvédett módra
 
@@ -164,7 +164,7 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
    ```
    Az eredménynek a következőhöz hasonlónak kell lennie. Ügyeljen arra, hogy a bináris fájl nevét jegyezze fel, mivel a későbbi lépésekben lesz használva.
 
-   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Felhasználók és jogosultságok":::
+   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Fő állapot eredményei":::
  
 ## <a name="dump-and-restore-source-server"></a>Forráskiszolgáló kiírása és visszaállítása
 
@@ -285,5 +285,5 @@ A replikálási hibák kihagyásához és a replikálás folytatásához haszná
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a Azure Database for MySQL [felhőbe irányuló replikálásról](concepts-data-in-replication.md) .

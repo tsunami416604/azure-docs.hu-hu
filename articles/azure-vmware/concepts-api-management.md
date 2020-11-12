@@ -2,13 +2,13 @@
 title: Fogalmak – API Management
 description: Ismerje meg, hogyan védi a API Management az Azure VMware-megoldású virtuális gépeken futó API-kat
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: f412ee81fc77435f2586a31c1bf6f6bdf22c66e2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/27/2020
+ms.openlocfilehash: 958cc52c48d1121a69dca2fc901289ad1ed671cb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670360"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541963"
 ---
 # <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>Az Azure VMware megoldáson alapuló virtuális gépeken futó API-k közzétételének és védelemének API Management
 
@@ -59,4 +59,4 @@ Belső telepítés esetén az API-k ugyanazon API Management-példányon lesznek
 * A külső forgalom az Azure-ba Application Gatewayon keresztül lép be, amely a API Management külső védelmi rétegét használja.
 
 
-:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Külső üzembe helyezés – Azure VMware-megoldás API Management" lightbox="media/api-management/internal-deployment.png":::
+:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Belső üzembe helyezés – Azure VMware-megoldás API Management" lightbox="media/api-management/internal-deployment.png":::

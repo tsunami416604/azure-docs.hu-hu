@@ -1,23 +1,23 @@
 ---
 title: Képek címkézése egy címkézési projektben
-titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja az adatcímkéző eszközöket egy Azure Machine Learning címkézési projektben.
+title.suffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja az adatcímkéző eszközöket, hogy gyorsan előkészítse a Machine Learning Azure Machine Learning címkézési projektben lévő adatfeldolgozást.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: cd015e952f93655a7bdba8c947fac6e9a8f6546c
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 4392086146642e18b1fdef28a9e602bdbb5b0b18
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518260"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542184"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben 
 
-Miután a projekt rendszergazdája [létrehoz egy címkézési projektet](./how-to-create-labeling-projects.md#create-a-labeling-project) a Azure Machine Learningban, a címkézés eszközzel (nyilvános előzetes verzió) gyorsan elő tudja készíteni a Machine learning projekt adatait. Ez a cikk a következőket ismerteti:
+Miután a projekt rendszergazdája [létrehoz egy címkézési projektet](./how-to-create-labeling-projects.md#create-a-labeling-project) a Azure Machine Learningban, a címkézés eszközzel gyorsan elő lehet készíteni egy Machine learning projekt adatait. Ez a cikk a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A címkézési projektek elérése
@@ -141,11 +141,11 @@ A sokszög törléséhez kattintson a sokszög mellett megjelenő X alakú célr
 
 Ha módosítani szeretné egy sokszög címkéjét, válassza a **régió áthelyezése** eszközt, kattintson a sokszögre, és válassza ki a megfelelő címkét.
 
-Szerkesztheti a meglévő sokszögeket is. A **zárolás/zárolás feloldása** eszköz ![ zárolási/feloldási régiói eszköz ](./media/how-to-label-images/lock-bounding-boxes-tool.png) vagy az "L" a viselkedést is bekapcsolja. Ha a régiók zárolva vannak, csak egy új sokszög alakját vagy helyét lehet megváltoztatni.
+Szerkesztheti a meglévő sokszögeket is. A **régiók zárolása/zárolásának feloldása** eszköz ![ a zárolási/feloldási régiók eszközzel ](./media/how-to-label-images/lock-bounding-boxes-tool.png) vagy az "L" kapcsolóval kapcsolja be ezt a viselkedést. Ha a régiók zárolva vannak, csak egy új sokszög alakját vagy helyét lehet megváltoztatni.
 
-A meglévő sokszögek módosításához használja a **sokszög pontok hozzáadása vagy eltávolítása** eszköz ![ régiók manipuláció eszközét ](./media/how-to-label-images/add-remove-points-tool.png) vagy az "U" lehetőséget. Kattintson a sokszögre egy pont hozzáadásához vagy eltávolításához. Ha nem tudja szerkeszteni a régiót, valószínűleg a **zárolási/zárolási régiók** eszközt is kikapcsolta.
+A sokszög **hozzáadása vagy eltávolítása** eszközzel sokszög- ![ pontok hozzáadása vagy eltávolítása eszköz ](./media/how-to-label-images/add-remove-points-tool.png) vagy "U" használatával módosíthatja a meglévő sokszögeket. Kattintson a sokszögre egy pont hozzáadásához vagy eltávolításához. Ha nem tudja szerkeszteni a régiót, valószínűleg a **zárolási/zárolási régiók** eszközt is kikapcsolta.
 
-Az aktuális rendszerkép *összes* sokszögének törléséhez válassza a **minden régió törlése** eszköz ![ régiók törlése eszközét ](./media/how-to-label-images/delete-regions-tool.png) .
+Az aktuális rendszerkép *összes* sokszögének törléséhez válassza a **minden régió törlése** eszköz ![ összes régió törlése eszközét ](./media/how-to-label-images/delete-regions-tool.png) .
 
 Miután létrehozta a képekhez tartozó sokszögeket, válassza a **Submit (Küldés** ) lehetőséget a munka mentéséhez, vagy a folyamatban lévő munka nem lesz mentve.
 

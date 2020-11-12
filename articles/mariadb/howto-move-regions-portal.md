@@ -1,18 +1,18 @@
 ---
 title: Azure-régiók áthelyezése – Azure Portal – Azure Database for MariaDB
 description: Egy Azure Database for MariaDB-kiszolgáló áthelyezése egyik Azure-régióból a másikba egy olvasási replika és a Azure Portal használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 75fabeeb7fa879a0f2843538d34f85e5ccec40e4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f4ce34bc1a1af7b2c0ee57a3297415bd9d033517
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425904"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540824"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Azure Database for MariaDB-kiszolgáló áthelyezése másik régióba a Azure Portal használatával
 
@@ -33,10 +33,10 @@ Egy Azure Database for MariaDB régiók [közötti olvasási replikát](concepts
 
 Ha a Azure Portal a régión belüli olvasási replika kiszolgálót kívánja létrehozni a célhelyen, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Válassza ki azt a meglévő Azure Database for MariaDB kiszolgálót, amelyet forráskiszolgálóként kíván használni. Ez a művelet megnyitja az **Áttekintés** lapot.
-1. Válassza a **replikálás** lehetőséget a menü **Beállítások**területén.
-1. Válassza a **replika hozzáadása**lehetőséget.
+1. Válassza a **replikálás** lehetőséget a menü **Beállítások** területén.
+1. Válassza a **replika hozzáadása** lehetőséget.
 1. Adja meg a replika kiszolgáló nevét.
 1. Válassza ki a replika-kiszolgáló helyét. Az alapértelmezett hely ugyanaz, mint a forráskiszolgáló. Győződjön meg arról, hogy kiválasztotta azt a célhelyet, ahová a replikát telepíteni kívánja.
 1. A replika létrehozásának jóváhagyásához kattintson **az OK gombra** . A replika létrehozásakor a rendszer az adatok átmásolását a forráskiszolgálóról a replikába. A létrehozási idő több percig is tarthat, a forráskiszolgáló méretének megfelelően.
@@ -53,17 +53,17 @@ Ha a Azure Portal a régión belüli olvasási replika kiszolgálót kívánja l
 A replikálás megszakítása a másodpéldány-kiszolgálón, az azt eredményezi, hogy az önálló kiszolgáló lesz. Ha le szeretné állítani a replikálást a Azure Portal a replikára, kövesse az alábbi lépéseket:
 
 1. A replika létrehozása után keresse meg és válassza ki a Azure Database for MariaDB forráskiszolgáló. 
-1. Válassza a **replikálás** lehetőséget a menü **Beállítások**területén.
+1. Válassza a **replikálás** lehetőséget a menü **Beállítások** területén.
 1. Válassza ki a másodpéldány-kiszolgálót.
-1. Válassza a **replikálás leállítása**lehetőséget.
-1. Az **OK**gombra kattintva erősítse meg, hogy le kívánja állítani a replikálást.
+1. Válassza a **replikálás leállítása** lehetőséget.
+1. Az **OK** gombra kattintva erősítse meg, hogy le kívánja állítani a replikálást.
 
 ## <a name="clean-up-source-server"></a>Forráskiszolgáló karbantartása
 
 Érdemes lehet törölni a forrás Azure Database for MariaDB-kiszolgálót. Ehhez a következőket kell tennie:
 
 1. A replika létrehozása után keresse meg és válassza ki a Azure Database for MariaDB forráskiszolgáló.
-1. Az **Áttekintés** ablakban válassza a **Törlés**lehetőséget.
+1. Az **Áttekintés** ablakban válassza a **Törlés** lehetőséget.
 1. Írja be a forráskiszolgáló nevét annak megerősítéséhez, hogy törölni kívánja a kiszolgálót.
 1. Válassza a **Törlés** elemet.
 

@@ -1,6 +1,6 @@
 ---
 title: Figyelő Azure Machine Learning adathivatkozása | Microsoft Docs
-description: A Azure Machine Learning figyeléséhez szükséges fontos referenciaanyagok. Ismerkedjen meg a Azure Machine Learning gyűjtött adatokkal és erőforrásokkal, és Azure Monitor elérhető. Azure Monitor gyűjti és felfedi a Azure Machine Learning munkaterületre vonatkozó adatokat, és lehetővé teszi a metrikák megtekintését, a riasztások beállítását és a naplózott adatok elemzését.
+description: Dokumentáció a Azure Machine Learning figyeléséhez. Ismerkedjen meg a Azure Monitorban gyűjtött és elérhető adatok & erőforrásaival.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bab74a1db04bb557aa6604fe76c05ba3d087f8c0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323940"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540790"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Az Azure Machine learning-adatreferenciák monitorozása
 
@@ -24,7 +24,7 @@ Ismerje meg az Azure Monitor által gyűjtött adatokat és erőforrásokat az A
 
 Ez a szakasz felsorolja a Azure Machine Learning összegyűjtött, automatikusan összegyűjtött platform-metrikákat. A metrikák erőforrás-szolgáltatója a [Microsoft. MachineLearningServices/workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
-**Modell**
+**Modellezés**
 
 | Metrika | Egység | Leírás |
 | ----- | ----- | ----- |
@@ -77,7 +77,7 @@ A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdim
 
 A Azure Machine Learning a metrikához tartozó következő dimenziókkal rendelkezik.
 
-| Dimenzió | Leírás |
+| Méret | Leírás |
 | ---- | ---- |
 | Fürt neve | A számítási példány neve. Minden kvóta-metrika esetében elérhető. |
 | VM-család neve | A fürt által használt virtuálisgép-család neve. Elérhető a kvóta kihasználtsága százalékban. |

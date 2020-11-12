@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505070"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541011"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>Rövid útmutató: dedikált SQL-készlet (előzetes verzió) létrehozása a Azure Portal használatával
 
@@ -48,7 +48,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
     | Beállítás | Ajánlott érték | Leírás |
     | :------ | :-------------- | :---------- |
-    | **dedikált SQL-készlet neve** | Bármely érvényes név | A dedikált SQL-készlet neve. |
+    | **Dedikált SQL-készlet neve** | Bármely érvényes név | A dedikált SQL-készlet neve. |
     | **Teljesítményszint** | DW100c | Állítsa a legkisebb méretre a gyors üzembe helyezés költségeinek csökkentése érdekében |
 
   
@@ -75,10 +75,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
  ![SQL-készlet folyamat létrehozása – erőforrás-kiépítés.](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
 
 
-
 A dedikált SQL-készlet létrehozása után elérhető lesz a munkaterületen az adatok betöltéséhez, a streamek feldolgozásához, a tótól való olvasáshoz stb.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az alábbi lépések végrehajtásával törölje a dedikált SQL-készletet a munkaterületről.
 > [!WARNING]

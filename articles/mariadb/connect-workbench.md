@@ -1,18 +1,18 @@
 ---
 title: 'Gyors útmutató: a MySQL Workbench összekapcsolásának Azure Database for MariaDB'
 description: Ez a rövid útmutató bemutatja, hogyan csatlakozhat az Azure Database for MariaDB-hez a MySQL Workbench használatával, és hogyan kérdezhet le adatokat.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.openlocfilehash: 90247f093096728ac250f36fa7cb0d5d88a597d9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 209c793903f1f706fc27102a783aa76e65382fcd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88121884"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541096"
 ---
 # <a name="quickstart-azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Gyors útmutató: Azure Database for MariaDB: a MySQL Workbench használata a kapcsolódáshoz és az adatlekérdezéshez
 
@@ -35,7 +35,7 @@ Kérje le az Azure Database for MariaDB-hez való csatlakozáshoz szükséges ka
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Az Azure Portal bal oldali menüjében válassza a **Minden erőforrás** elemet. Keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
+2. Az Azure Portal bal oldali menüjében válassza a **Minden erőforrás** elemet. Keressen rá a létrehozott kiszolgálóra (például **mydemoserver** ).
 
 3. Válassza ki a kiszolgálónevet.
 

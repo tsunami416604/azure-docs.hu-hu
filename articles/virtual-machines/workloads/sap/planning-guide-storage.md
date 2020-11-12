@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed99145a2d3860849c4a8117a93a9a0f24d227c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653613"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540926"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-tárolótípusok SAP számítási feladathoz
 Az Azure számos különböző tárolási típussal rendelkezik, amelyek nagy mértékben különböznek a képességek, a teljesítmény, a késés és az árak között. A tárolási típusok némelyike nem, vagy kizárólag SAP-forgatókönyvekhez használható. Míg számos Azure-beli tárolási típus jól használható vagy speciális SAP-munkaterhelési forgatókönyvekhez van optimalizálva. Különösen a SAP HANA esetében egyes Azure-beli tárolási típusok minősítést kaptak a SAP HANAval való használathoz. Ebben a dokumentumban a különböző típusú tárolásokat vesszük át, és leírjuk a képességeiket és a használhatóságát az SAP-munkaterhelésekkel és az SAP-összetevőkkel.
@@ -273,7 +273,7 @@ A ANF-tároló további beépített funkciója:
 - ANF-kötetek klónozása pillanatképekről
 - Kötetek visszaállítása pillanatképekről (snap-REVERT)
 
-**Összefoglalás**: Azure NETAPP Files egy HANA Certified kis késésű tároló, amely lehetővé teszi az NFS-és SMB-kötetek vagy-megosztások üzembe helyezését. A tároló három különböző szolgáltatási szintet tartalmaz, amelyek különböző átviteli sebességet és IOPS biztosítanak lineáris módon a köteten. A ANF-tároló lehetővé teszi SAP HANA kibővíthető forgatókönyvek üzembe helyezését készenléti csomóponttal. A tárterület a/sapmnt vagy az SAP globális átviteli címtár számára szükséges fájlmegosztás biztosítására alkalmas. A ANF-tároló a natív NetApp-funkcióként elérhető funkcionalitási rendelkezésre állást biztosít.  
+**Összefoglalás** : Azure NETAPP Files egy HANA Certified kis késésű tároló, amely lehetővé teszi az NFS-és SMB-kötetek vagy-megosztások üzembe helyezését. A tároló három különböző szolgáltatási szintet tartalmaz, amelyek különböző átviteli sebességet és IOPS biztosítanak lineáris módon a köteten. A ANF-tároló lehetővé teszi SAP HANA kibővíthető forgatókönyvek üzembe helyezését készenléti csomóponttal. A tárterület a/sapmnt vagy az SAP globális átviteli címtár számára szükséges fájlmegosztás biztosítására alkalmas. A ANF-tároló a natív NetApp-funkcióként elérhető funkcionalitási rendelkezésre állást biztosít.  
 
 
 
@@ -352,11 +352,10 @@ Ahogy az Azure-beli virtuális gépeket egy SAP-rendszer életciklusa során fel
 
 
 ## <a name="striping-or-not-striping"></a>Csíkozás vagy nem csíkozás
-Több Azure-lemezről egy nagyobb kötetre állított sáv létrehozása lehetővé teszi az egyes lemezek IOPS és átviteli sebességének összegyűjtését egyetlen kötetre. A szolgáltatás csak az Azure standard Storage és az Azure Premium Storage esetében használatos. Az Azure Ultra Disk, ahol az átviteli sebességet és a IOPS a lemez kapacitásatól függetlenül konfigurálhatja, a nem igényli a Stripe-készletek használatát. Az NFS-en vagy az SMB-en alapuló megosztott kötetek nem csíkozottak. Az Azure Premium Storage átviteli sebességének és IOPS nem lineáris jellege miatt kisebb kapacitást építhet ki ugyanazzal a IOPS és átviteli sebességgel, mint a nagyméretű, egyetlen Azure Premium Storage-lemezekkel. Ez az a módszer, amellyel a magasabb átviteli sebesség vagy IOPS alacsonyabb áron érhető el az Azure Premium Storage használatával. Például:
+Több Azure-lemezről egy nagyobb kötetre állított sáv létrehozása lehetővé teszi az egyes lemezek IOPS és átviteli sebességének összegyűjtését egyetlen kötetre. A szolgáltatás csak az Azure standard Storage és az Azure Premium Storage esetében használatos. Az Azure Ultra Disk, ahol az átviteli sebességet és a IOPS a lemez kapacitásatól függetlenül konfigurálhatja, a nem igényli a Stripe-készletek használatát. Az NFS-en vagy az SMB-en alapuló megosztott kötetek nem csíkozottak. Az Azure Premium Storage átviteli sebességének és IOPS nem lineáris jellege miatt kisebb kapacitást építhet ki ugyanazzal a IOPS és átviteli sebességgel, mint a nagyméretű, egyetlen Azure Premium Storage-lemezekkel. Ez az a módszer, amellyel a magasabb átviteli sebesség vagy IOPS alacsonyabb áron érhető el az Azure Premium Storage használatával. A két P15 Premium Storage-lemez közötti csíkozás például a következő átviteli sebességhez jut: 
 
-- A két P15 Premium Storage-lemez közötti csíkozás a következő adatátviteli sebességet kapja 
 - 250 MiB/mp. Egy ilyen kötet 512 GiB kapacitással fog rendelkezni. Ha egyetlen lemezre van szüksége, amely a 250 MiB-átviteli sebességet adja meg, egy 2 TiB kapacitású P40-lemezt kell kiválasztania. 
-- Vagy a 400 MiB/mp sebességét elérheti úgy, hogy négy P10 prémium szintű Storage-lemezt biztosít, amelyek teljes kapacitása 512 GiB a csíkozással. Ha a másodpercenként legalább 500 MiB-átviteli sebességű lemezre van szüksége, akkor egy P60 Premium Storage-lemezt kell választania 8 TiB-val. Mivel a díjszabás vagy a Premium Storage közel van a kapacitáshoz, a költségmegtakarítást a csíkozás használatával lehet megtakarítani.
+- 400 MiB/MP: négy P10 prémium szintű Storage-lemez, amely az 512 GiB teljes kapacitásával rendelkezik csíkozással. Ha a másodpercenként legalább 500 MiB-átviteli sebességű lemezre van szüksége, akkor egy P60 Premium Storage-lemezt kell választania 8 TiB-val. Mivel a Premium Storage díja közel van a kapacitáshoz, a költségmegtakarítást a csíkozás használatával lehet megtakarítani.
 
 Néhány szabályt követni kell a csíkozáson:
 
@@ -370,7 +369,7 @@ A sávok méretére vonatkozó javaslatokért olvassa el a különböző adatbá
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a cikkeket:
 
 - [Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez](./dbms_guide_general.md)

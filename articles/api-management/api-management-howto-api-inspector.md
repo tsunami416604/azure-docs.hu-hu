@@ -9,12 +9,12 @@ ms.service: api-management
 ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: e9a101de408b506fb5375b5f16c1deff4f67532d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 531e346569b85ababc382f997fd7764a92b3d05f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422001"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542314"
 ---
 # <a name="tutorial-debug-your-apis-using-request-tracing"></a>Oktatóanyag: API-k hibakeresése kérelmek nyomkövetésének használatával
 
@@ -47,7 +47,7 @@ Az API-hoz használt előfizetés **nyomkövetésének engedélyezése** beáll�
 1. Válassza ki a  **bemutató konferencia API** -t az API-listából.
 1. Kattintson a **Teszt** fülre.
 1. Válassza a **GetSpeakers** műveletet.
-1. Győződjön meg arról, hogy a HTTP-kérelem fejléce tartalmazza a **OCP-admin-Trace: true** értéket, valamint a **OCP-admin-előfizetés-kulcs** érvényes értékét. Ha nem, válassza a **+ fejléc hozzáadása** lehetőséget a fejléc hozzáadásához.
+1. Győződjön meg arról, hogy a HTTP-kérelem fejléce tartalmazza a **OCP-APIM-Trace: true** értéket, valamint a **OCP-APIM-Subscription-Key** érvényes értékét. Ha nem, válassza a **+ fejléc hozzáadása** lehetőséget a fejléc hozzáadásához.
 1. Az API-hívás létrehozásához válassza a **Küldés** lehetőséget.
 
   :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="API-nyomkövetés konfigurálása":::

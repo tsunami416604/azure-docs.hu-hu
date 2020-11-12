@@ -1,17 +1,17 @@
 ---
 title: Lassú lekérdezési naplók – Azure Database for MySQL – rugalmas kiszolgáló
 description: A Azure Database for MySQL rugalmas kiszolgálón elérhető lassú lekérdezési naplókat ismerteti.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 512a103f5ac116f1f4eb18631cdc8e4a8b9380c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dde9575a70ea80ad262bc01bb9d5d0015c803427
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399210"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543017"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Lassú lekérdezési naplók Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
 
@@ -23,14 +23,14 @@ Azure Database for MySQL rugalmas kiszolgáló esetében a lassú lekérdezési 
 A MySQL lassú lekérdezési naplóval kapcsolatos további információkért tekintse meg a MySQL motor dokumentációjának [lassú lekérdezési napló szakaszát](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) .
 
 ## <a name="configure-slow-query-logging"></a>Lassú lekérdezések naplózásának konfigurálása 
-Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. A naplók engedélyezéséhez állítsa be a `slow_query_log` kiszolgáló paraméterét *a*következőre:. Ezt a Azure Portal vagy az Azure CLI használatával lehet konfigurálni <!-- add link to server parameter-->. 
+Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. A naplók engedélyezéséhez állítsa be a `slow_query_log` kiszolgáló paraméterét *a* következőre:. Ezt a Azure Portal vagy az Azure CLI használatával lehet konfigurálni <!-- add link to server parameter-->. 
 
 Egyéb paraméterek a lassú lekérdezés naplózási viselkedésének vezérléséhez:
 
-- **long_query_time**: a lekérdezés naplózása, ha a művelet `long_query_time` befejezéséhez (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
-- **log_slow_admin_statements**: meghatározza, hogy a felügyeleti utasítások (pl. `ALTER_TABLE`, `ANALYZE_TABLE` ) naplózásra kerül.
-- **log_queries_not_using_indexes**: meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e.
-- **log_throttle_queries_not_using_indexes**: korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, ha `log_queries_not_using_indexes` be van állítva *ON*
+- **long_query_time** : a lekérdezés naplózása, ha a művelet `long_query_time` befejezéséhez (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
+- **log_slow_admin_statements** : meghatározza, hogy a felügyeleti utasítások (pl. `ALTER_TABLE`, `ANALYZE_TABLE` ) naplózásra kerül.
+- **log_queries_not_using_indexes** : meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e.
+- **log_throttle_queries_not_using_indexes** : korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, ha `log_queries_not_using_indexes` be van állítva *ON*
 
 > [!IMPORTANT]
 > Ha a táblák nincsenek indexelve, a (z) `log_queries_not_using_indexes` és a `log_throttle_queries_not_using_indexes` Paraméterek beállítása hatással lehet a MySQL-teljesítményre, mivel a nem indexelt táblákon futó összes lekérdezés a lassú lekérdezési naplóba kerül. **ON**

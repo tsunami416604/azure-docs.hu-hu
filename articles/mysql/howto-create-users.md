@@ -1,17 +1,17 @@
 ---
 title: Adatbázisok és felhasználók létrehozása – Azure Database for MySQL
 description: Ez a cikk azt ismerteti, hogyan hozhatók létre új felhasználói fiókok Azure Database for MySQL-kiszolgálóval való kommunikációhoz.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: 3e1f24b3ae6133241660751293f52fec63dfbe73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e934ede193d6efb9cc795c6b63cb485b88f792e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766882"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541419"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>Adatbázisok és felhasználók létrehozása a Azure Database for MySQLban
 
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan hozhatók létre felhasználók a Azure Database
 > [!NOTE]
 > **Elfogultság – ingyenes kommunikáció**
 >
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a *Slave*kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert ez a szó, amely jelenleg a szoftverben jelenik meg. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a *Slave* kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert ez a szó, amely jelenleg a szoftverben jelenik meg. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
 >
 
 Amikor először hozta létre a Azure Database for MySQL-kiszolgálót, a kiszolgálói rendszergazda felhasználónevet és jelszót adott meg. További [információt ebben a](quickstart-create-mysql-server-database-using-azure-portal.md)rövid útmutatóban talál. A kiszolgáló rendszergazdájának felhasználónevét a Azure Portalban határozhatja meg.
@@ -94,7 +94,7 @@ Azure Database for MySQL-kiszolgáló létrehozása után az első kiszolgálói
    
    Ha nem tudja, hogyan csatlakozhat, tekintse meg a következőt: [a MySQL Workbench használata a kapcsolódáshoz és az adatlekérdezéshez](./connect-workbench.md).
 
-3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét az `new_master_user` új felhasználónevére. Ez a szintaxis megadja a felsorolt jogosultságokat az összes adatbázis-sémán (*.*) a felhasználó számára ( `new_master_user` ebben a példában).
+3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét az `new_master_user` új felhasználónevére. Ez a szintaxis megadja a felsorolt jogosultságokat az összes adatbázis-sémán ( *.* ) a felhasználó számára ( `new_master_user` ebben a példában).
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';

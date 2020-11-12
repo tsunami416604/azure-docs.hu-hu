@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 3b407ae18316071d77cc87992a70a4fba857ab64
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0b0e198075455f697c87ad48741a770e6f78b5a5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979019"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542150"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedikált Azure-gazdagépek
 
@@ -70,7 +70,7 @@ Az [itt](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-
 > [!IMPORTANT]
 > Az automatikus elhelyezés jelenleg nyilvános előzetes verzióban érhető el.
 > Az előzetes verzióban való részvételhez végezze el az előzetes verziójú előkészítési felmérést a következő címen: [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Egy virtuális gép Azure-beli létrehozásakor kiválaszthatja, hogy melyik dedikált gazdagépet kívánja használni. Azt is megteheti, hogy automatikusan elhelyezi a virtuális gépeket a meglévő gazdagépeken egy gazdagépen belül. 
 
@@ -84,7 +84,6 @@ Ismert problémák és korlátozások az automatikus virtuális gép elhelyezés
 
 - A dedikált gazdagépeken nem alkalmazhat Azure Hybrid-előnyöket.
 - Nem fogja tudni újratelepíteni a virtuális gépet. 
-- A dedikált gazdagépek karbantartását nem fogja tudni szabályozni.
 - Dedikált gazdagépekkel nem lehet Lsv2, NVasv4, NVsv3, Msv2 vagy M sorozatú virtuális gépeket használni 
 
 
@@ -95,7 +94,7 @@ A virtuálisgép-méretezési csoportok lehetővé teszik, hogy egyetlen erőfor
 > [!IMPORTANT]
 > A dedikált gazdagépeken lévő Virtual Machine Scale Sets jelenleg nyilvános előzetes verzióban érhető el.
 > Az előzetes verzióban való részvételhez végezze el az előzetes verziójú előkészítési felmérést a következő címen: [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Virtuálisgép-méretezési csoport létrehozásakor megadhat egy meglévő gazdagép-csoportot, amely tartalmazza a dedikált gazdagépeken létrehozott összes virtuálisgép-példányt.
 
@@ -120,7 +119,7 @@ A dedikált gazdagépek nem minden méretezési és optimalizálási beállítá
 
 A virtuális gépeket támogató infrastruktúra esetenként frissíthető a megbízhatóság, a teljesítmény, a biztonság és az új funkciók megkezdése érdekében. Az Azure platform megpróbálja csökkenteni a platform karbantartásának hatását, amikor csak lehetséges, de a *karbantartási szempontból bizalmas* munkaterheléseket használó ügyfelek még néhány másodpercet sem tudnak elviselni, hogy a virtuális gépet be kell fagyasztani vagy le kell kapcsolni a karbantartáshoz.
 
-A **karbantartási ellenőrzés** lehetővé teszi az ügyfeleknek, hogy kihagyhatják a dedikált gazdagépeken ütemezett rendszeres szoftverfrissítéseket, majd egy 35 napos időszakon belül alkalmazza azt a választásuk időpontjában.
+A **karbantartási ellenőrzés** lehetővé teszi az ügyfeleknek, hogy kihagyhatják a dedikált gazdagépeken ütemezett rendszeres szoftverfrissítéseket, majd egy 35 napos időszakon belül alkalmazza azt a választásuk időpontjában. A karbantartási időszakon belül közvetlenül is alkalmazhatja a karbantartást a gazdagép szintjén, bármilyen sorrendben. Miután a karbantartási időszak véget ért, a Microsoft továbblép, és alkalmazza a függőben lévő karbantartást a gazdagépekre olyan sorrendben, amely nem követi a felhasználó által definiált tartalék tartományokat.
 
 További információ: [a platform frissítéseinek kezelése a karbantartási ellenőrzéssel](./maintenance-control.md).
 
@@ -172,7 +171,7 @@ A méretek és a hardver típusok régiónként eltérőek. További informáci�
 
 Az Azure figyeli és kezeli a gazdagépek állapotát. A következő állapotok lesznek visszaadva a gazdagép lekérdezésekor:
 
-| Állapot   | Description       |
+| Állapot   | Leírás       |
 |----------|----------------|
 | Gazdagép elérhető     | A gazdagépen nincsenek ismert problémák.   |
 | A vizsgálat alatt álló gazdagép  | Problémák léptek fel a gazdagépen, amit keresünk. Ez egy átmeneti állapot szükséges ahhoz, hogy az Azure kipróbálja és azonosítani tudja az azonosított probléma hatókörét és alapvető okát. A gazdagépen futó virtuális gépek befolyásolhatják a működését. |

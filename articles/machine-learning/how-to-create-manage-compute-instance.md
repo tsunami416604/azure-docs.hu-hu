@@ -1,7 +1,7 @@
 ---
 title: Számítási példány létrehozása és kezelése
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhat létre és kezelhet számítási példányokat a Azure Machine Learning munkaterületen. Használja a számítási példányt fejlesztési környezetként, vagy képzéshez és következtetések fejlesztéséhez és teszteléséhez.
+description: Megtudhatja, hogyan hozhat létre és kezelhet egy Azure Machine Learning számítási példányt. Fejlesztési vagy tesztelési célokra használható számítási célként.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 6e0d80c35a4822ad46973c94b32cf71b129ad1e1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bdae8d77dc5e51cf4a181459ab2e159f31f06e31
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318019"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543102"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning számítási példány létrehozása és kezelése
 

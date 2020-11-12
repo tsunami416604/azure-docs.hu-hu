@@ -1,17 +1,17 @@
 ---
 title: Illesztőprogramok és eszközök kompatibilitása – Azure Database for MySQL
 description: Ez a cikk a Azure Database for MySQL rendszerrel kompatibilis MySQL-illesztőprogramokat és-felügyeleti eszközöket ismerteti.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8d222eca76f020703f89dd1bdd5848cec4bc52ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2ea7af0ec9c740c07cd3a5e4ebd88a9ad1a031d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006533"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542643"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>A Azure Database for MySQL-kompatibilis MySQL-illesztőprogramok és-felügyeleti eszközök
 Ez a cikk a Azure Database for MySQL kompatibilis illesztőprogramokat és felügyeleti eszközöket ismerteti.
@@ -31,8 +31,8 @@ Azure Database for MySQL a MySQL-adatbázis világ legnépszerűbb közösségi 
 | Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11, 0.8.0, 0.8.1, 0.9.3 + | 0.9.0-0.9.2 (regresszió a web2py-ben) | |
 | Java | MariaDB-összekötő/J | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 és előtte | | 
 | Java | MySQL-összekötő/J | https://github.com/mysql/mysql-connector-j | 5.1.21 +, használja a 8.0.17 és a MySQL 8,0 | 5.1.20 és alacsonyabb | |
-| C | MySQL-összekötő/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2 + | | |
-| C | MySQL-összekötő/ODBC (MyODBC) | https://github.com/mysql/mysql-connector-odbc | 3.51.29 + | | |
+| C# | MySQL-összekötő/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2 + | | |
+| C# | MySQL-összekötő/ODBC (MyODBC) | https://github.com/mysql/mysql-connector-odbc | 3.51.29 + | | |
 | C++ | MySQL-összekötő/C++ | https://github.com/mysql/mysql-connector-cpp | 1.1.9 + | 1.1.3-es és alacsonyabb | | 
 | C++ | MySQL + +| https://github.com/tangentsoft/mysqlpp | 3.2.3 + | | |
 | Ruby | mysql2 | https://github.com/brianmario/mysql2 | 0.4.10 + | | |

@@ -1,7 +1,7 @@
 ---
 title: Példa Jupyter-jegyzetfüzetekre
 titleSuffix: Azure Machine Learning
-description: Megkeresheti és használhatja például a Jupyter jegyzetfüzeteket a Azure Machine Learning Python for SDK megismeréséhez.
+description: Megtudhatja, hogyan keresheti meg és használhatja a Juypter-jegyzetfüzeteket, amelyek segítségével megismerheti az SDK-t, és modellként szolgálhat saját gépi tanulási projektjeihez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 16859a6eeb152949387ac7eec8a50341e69b9691
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3f5cb2831a58ce9d0d30039b80815e281401e883
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323715"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542558"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>A Azure Machine Learning megismerése Jupyter notebookokkal
 

@@ -4,12 +4,12 @@ description: Oktatóanyag – Autodesk 3ds Max jelenetek renderelése az Arnoldd
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: fbaa56ab444b9d686e5054a3668604bd40f7a262
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 579a5446cb199bb73f98e2e1cbb0948f062470a8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097703"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542388"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Jelenetek renderelése az Azure Batch segítségével 
 
@@ -34,6 +34,8 @@ Az oktatóanyagban egy 3ds Max-jelenetet fog renderelni a Batch és az [Arnold](
 
 - Az oktatóanyaghoz az Azure CLI 2.0.20 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
+> [!TIP]
+> A Azure Batch Extension templates GitHub-tárházban megtekintheti az [Arnold-feladatok sablonjait](https://github.com/Azure/batch-extension-templates/tree/master/templates/arnold/render-windows-frames) .
 ## <a name="create-a-batch-account"></a>Batch-fiók létrehozása
 
 Ha eddig még nem tette meg, hozzon létre egy erőforráscsoportot, egy Batch-fiókot és egy kapcsolt tárfiókot az előfizetésében. 
@@ -91,7 +93,7 @@ az storage container create \
     --name scenefiles
 ```
 
-Töltse le a `MotionBlur-Dragon-Flying.max` jelenetet a [GitHubról](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) egy helyi munkakönyvtárba. Például:
+Töltse le a `MotionBlur-Dragon-Flying.max` jelenetet a [GitHubról](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) egy helyi munkakönyvtárba. Ilyenek többek között:
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -296,7 +298,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>A tevékenység kimenetének megtekintése
 
-A tevékenység futtatása néhány percet vesz igénybe. Az [az batch task list](/cli/azure/batch/task#az-batch-task-list) paranccsal tekintheti meg a tevékenységek állapotát. Például:
+A tevékenység futtatása néhány percet vesz igénybe. Az [az batch task list](/cli/azure/batch/task#az-batch-task-list) paranccsal tekintheti meg a tevékenységek állapotát. Ilyenek többek között:
 
 ```azurecli-interactive
 az batch task list \
@@ -304,7 +306,7 @@ az batch task list \
     --output table
 ```
 
-Az [az batch task show](/cli/azure/batch/task#az-batch-task-show) paranccsal tekintheti meg az egyes tevékenységek részleteit. Például:
+Az [az batch task show](/cli/azure/batch/task#az-batch-task-show) paranccsal tekintheti meg az egyes tevékenységek részleteit. Ilyenek többek között:
 
 ```azurecli-interactive
 az batch task show \
@@ -312,7 +314,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-A feladatok a *dragon0002.jpg* dragon0007.jpgnevű kimeneti fájlokat hoznak  -  *dragon0007.jpg* a számítási csomópontokon, és feltöltik őket a Storage *-fiók myrenderjob-* tárolójába. A kimenet megtekintéséhez töltse le a fájlokat a helyi számítógép egyik mappájába az [az storage blob download-batch](/cli/azure/storage/blob) paranccsal. Például:
+A feladatok a *dragon0002.jpg* dragon0007.jpgnevű kimeneti fájlokat hoznak  -  *dragon0007.jpg* a számítási csomópontokon, és feltöltik őket a Storage *-fiók myrenderjob-* tárolójába. A kimenet megtekintéséhez töltse le a fájlokat a helyi számítógép egyik mappájába az [az storage blob download-batch](/cli/azure/storage/blob) paranccsal. Ilyenek többek között:
 
 ```azurecli-interactive
 az storage blob download-batch \
@@ -325,7 +327,7 @@ Nyissa meg az egyik fájlt a számítógépen. A 6. renderelt kép a következő
 ![Renderelt sárkány, 6. képkocka](./media/tutorial-rendering-cli/dragon-frame6.png) 
 
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szükség rájuk, az [az group delete](/cli/azure/group#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot, a Batch-fiókot, a készleteket és az összes kapcsolódó erőforrást. Az erőforrásokat a következőképpen törölheti:
 

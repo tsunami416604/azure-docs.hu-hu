@@ -1,17 +1,17 @@
 ---
 title: Migrálás a dump és a Restore-Azure Database for MariaDB
 description: Ez a cikk két gyakori módszert ismertet a Azure Database for MariaDB adatbázisainak biztonsági mentésére és visszaállítására, például a mysqldump, a MySQL Workbench és a PHPMyAdmin eszközzel.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 2/27/2020
-ms.openlocfilehash: 674622e6210c3cceda5af3b53bf4ba1851f7179b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c23b027b428ef58ae51a6ba1d2603e94b1eaaf8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118851"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540858"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>A MariaDB-adatbázis migrálása Azure Database for MariaDB a dump és a Restore használatával
 Ez a cikk két gyakori módszert ismertet a Azure Database for MariaDB adatbázisainak biztonsági mentésére és visszaállítására
@@ -119,7 +119,7 @@ Az adatbázis importálása hasonló az exportáláshoz. Hajtsa végre a követk
 5. Az adatbázisfájl megkereséséhez használja a **Tallózás** gombot. 
 6. Kattintson a **Go (ugrás** ) gombra a biztonsági mentés exportálásához, hajtsa végre az SQL-parancsokat, majd hozza létre újra az adatbázist.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Alkalmazások Összekötése Azure Database for MariaDBhoz](./howto-connection-string.md).
  
 <!--

@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: dedikált dedikált SQL-készlet létrehozása a szinapszis Studio használatával'
+title: 'Rövid útmutató: dedikált SQL-készlet létrehozása a szinapszis Studio használatával'
 description: Hozzon létre egy dedikált SQL-készletet a szinapszis Studio használatával az útmutató lépéseinek követésével.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3ed5f3940a9b02701ad2f3c779b791e128e288c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3644891f12a6475ec9cfec51f572df4742481e8f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506345"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541844"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>Rövid útmutató: dedikált SQL-készlet létrehozása a szinapszis Studio használatával
 
@@ -110,6 +110,7 @@ Ha törölni szeretné a dedikált SQL-készletet, tegye a következőket:
 1. Erősítse meg a törlést, majd nyomja le a **delete (Törlés** ) gombot.
 1. Ha a folyamat sikeresen befejeződik, a dedikált SQL-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>Következő lépések
+ 
 - Tekintse meg a rövid útmutató [: Apache Spark jegyzetfüzet létrehozása](quickstart-apache-spark-notebook.md)című témakört.
 - Lásd [: gyors útmutató: DEDIKÁLT SQL-készlet létrehozása a Azure Portal használatával](quickstart-create-sql-pool-portal.md).

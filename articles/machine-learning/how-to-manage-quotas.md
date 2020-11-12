@@ -1,7 +1,7 @@
 ---
 title: Erőforrások és kvóták kezelése
 titleSuffix: Azure Machine Learning
-description: Ismerje meg a Azure Machine Learning erőforrásokra vonatkozó kvótákat, valamint a kvóta növelésének módját.
+description: Ismerje meg a Azure Machine Learning erőforrásaira vonatkozó kvótákat és korlátozásokat, valamint a kvóta növelésének módját.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 9bcf6ac9991c1ad070f823c97b5bd0460eff07c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d82cbafbbdeb379c8eb97494ca8d3243f356b7a1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309090"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542116"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kvótáinak kezelése és növelése Azure Machine Learning
 
@@ -45,7 +45,7 @@ A kvóták kezelése mellett megismerheti a [Azure Machine learning költségein
 
 Ebben a szakaszban az alábbi erőforrásokra vonatkozó alapértelmezett és maximális kvóta-korlátozásokat ismerheti meg:
 
-+ Virtual machines (Virtuális gépek)
++ Virtuális gépek
 + Azure Machine Learning számítás
 + Azure Machine Learning folyamatok
 + Azure Container Instances
@@ -54,7 +54,7 @@ Ebben a szakaszban az alábbi erőforrásokra vonatkozó alapértelmezett és ma
 > [!IMPORTANT]
 > A korlátozások változhatnak. A legfrissebb információkért tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](../azure-resource-manager/management/azure-subscription-service-limits.md) az Azure-ban.
 
-### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
+### <a name="virtual-machines"></a>Virtuális gépek
 Minden Azure-előfizetés korlátozza a virtuális gépek számát az összes szolgáltatáson belül. A virtuálisgép-magok méretének regionális korlátja és a regionális korlátok száma. Mindkét korlátot külön kényszeríti a rendszer.
 
 Például tegyük fel, hogy egy előfizetés az USA keleti régiójára vonatkozó teljes magkorlátja 30, az A sorozatú magkorlátja 30, és a D sorozatú magkorlátja is 30. Ez az előfizetés 30 a1-es virtuális gép vagy 30 D1 virtuális gép üzembe helyezését, illetve a kettő olyan kombinációját teszi lehetővé, amely nem haladja meg az összesen 30 magot.
@@ -98,7 +98,7 @@ A következő táblázat további korlátozásokat mutat be, amelyeket nem lehet
 | A folyamat lépései | 30 000 |
 | Munkaterületek erőforráscsoport szerint | 800 |
 
-### <a name="container-instances"></a>Tárolópéldányok
+### <a name="container-instances"></a>Container Instances
 
 További információ: [Container instances korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits).
 

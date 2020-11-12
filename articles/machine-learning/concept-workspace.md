@@ -1,7 +1,7 @@
 ---
 title: Mi az a munkaterület?
 titleSuffix: Azure Machine Learning
-description: A munkaterület a Azure Machine Learning legfelső szintű erőforrása. Megőrzi az összes képzési folyamat előzményeit, beleértve a naplókat, a metrikákat, a kimenetet és a parancsfájlok pillanatképét. Ezekkel az információkkal meghatározhatja, hogy melyik betanítási Futtatás a legjobb modellt állítja elő
+description: A munkaterület a Azure Machine Learning legfelső szintű erőforrása. Megőrzi az összes betanítási Futtatás előzményeit, naplókkal, metrikákkal, kimenettel és a parancsfájlok pillanatképével.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 1076b49a101d5657397ef12b8fac672d37e477b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 65cdf444386d1b10cf225010c55170e5b47b3eb4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324803"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541351"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az az Azure Machine Learning-munkaterület?
 

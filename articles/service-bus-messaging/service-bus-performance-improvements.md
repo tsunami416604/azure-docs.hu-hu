@@ -2,25 +2,22 @@
 title: Ajánlott eljárások a teljesítmény javításához a Azure Service Bus használatával
 description: Ismerteti, hogyan optimalizálható a teljesítmény a Service Bus használatával a felügyelt üzenetek cseréjekor.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2bd5a1598448722f46a91b889b0778e80ad4e140
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9104c5f4a01459c00327da1b60ad811787b7e22f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012058"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541266"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény javításához a Service Bus-üzenetkezelés használatával
 
-Ez a cikk azt ismerteti, hogyan optimalizálható a teljesítmény a felügyelt üzenetek cseréjekor a Azure Service Bus használatával. A cikk első része a teljesítmény növelését segítő különböző mechanizmusokat ismerteti. A második rész útmutatást nyújt arról, hogyan használhatók a Service Bus olyan módon, hogy a lehető legjobb teljesítményt nyújtsa egy adott forgatókönyvben.
+Ez a cikk azt ismerteti, hogyan optimalizálható a teljesítmény a felügyelt üzenetek cseréjekor a Azure Service Bus használatával. A cikk első része a teljesítmény növelésére szolgáló különböző mechanizmusokat ismerteti. A második rész útmutatást nyújt a Service Bus használatáról oly módon, hogy a lehető legjobb teljesítményt nyújtsa egy adott forgatókönyvben.
 
-Ebben a cikkben az "ügyfél" kifejezés minden olyan entitásra hivatkozik, amely hozzáfér Service Bushoz. Egy ügyfél elvégezheti a küldő vagy fogadó szerepkörét. A "Sender" kifejezés olyan Service Bus üzenetsor vagy témakör-ügyfél esetében használatos, amely üzeneteket küld egy Service Bus üzenetsor vagy témakör-előfizetés számára. A "fogadó" kifejezés egy Service Bus üzenetsor vagy egy előfizetési ügyfél, amely üzeneteket fogad egy Service Bus sorból vagy előfizetésből.
-
-Ezek a lépések számos olyan fogalom bevezetését ismertetik, amelyeket a Service Bus a teljesítmény növelése érdekében használ.
+Ebben a cikkben az "ügyfél" kifejezés minden olyan entitásra hivatkozik, amely hozzáfér Service Bushoz. Egy ügyfél elvégezheti a küldő vagy fogadó szerepkörét. A "Sender" kifejezés egy Service Bus üzenetsor-ügyfélhez vagy egy olyan témakör-ügyfélhez használatos, amely üzeneteket küld egy Service Bus-várólistába vagy egy témakörbe. A "fogadó" kifejezés olyan Service Bus üzenetsor-ügyfelet vagy előfizetési ügyfelet jelöl, amely egy Service Bus üzenetsor vagy előfizetés üzeneteit fogadja.
 
 ## <a name="protocols"></a>Protokollok
-
 Service Bus lehetővé teszi az ügyfelek számára az üzenetek küldését és fogadását a következő három protokoll egyikének használatával:
 
 1. Advanced Message Queueing Protocol (AMQP)
@@ -33,8 +30,7 @@ A AMQP a leghatékonyabb, mert a Service Bus kapcsolatot tart fenn. Emellett a k
 > A SBMP csak a .NET-keretrendszerhez érhető el. A AMQP a .NET Standard alapértelmezett értéke.
 
 ## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>A megfelelő Service Bus .NET SDK kiválasztása
-
-Két támogatott .NET SDK-Azure Service Bus létezik. Az API-k nagyon hasonlóak, és zavaró lehet, hogy melyiket érdemes választani. A döntés meghozatalához tekintse meg a következő táblázatot. Javasoljuk, hogy használja a Microsoft. Azure. ServiceBus SDK-t, mint a modern, a teljesítmény és a platformfüggetlen kompatibilitás. Emellett támogatja a AMQP-t a websocketeken keresztül, és része a nyílt forráskódú projektek Azure .NET SDK-gyűjteményének.
+Két támogatott .NET SDK-Azure Service Bus létezik. Az API-k hasonlóak, és zavaró lehet, hogy melyiket érdemes választani. A döntés meghozatalához tekintse meg a következő táblázatot. Javasoljuk, hogy használja a Microsoft. Azure. ServiceBus SDK-t, mint a modernebb, a teljesítmény és a platformfüggetlen kompatibilitás. Emellett támogatja a AMQP-t a websocketeken keresztül, és része a nyílt forráskódú projektek Azure .NET SDK-gyűjteményének.
 
 | NuGet-csomag | Elsődleges névtér (ek) | Minimális platform (ok) | Protokoll(ok) |
 |---------------|----------------------|---------------------|-------------|
@@ -47,19 +43,18 @@ További információ a .NET Standard szintű platform támogatásáról: [.net-
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-Service Bus az ügyfélalkalmazások, például a vagy a implementációját, [`IQueueClient`][QueueClient] [`IMessageSender`][MessageSender] regisztrálni kell a függőségi injektáláshoz (vagy egyszeres és megosztott). Azt javasoljuk, hogy az üzenet elküldése után ne zárjunk be üzenetküldési gyárakat vagy üzenetsor-kezelést, témakört és előfizetési ügyfelet, majd hozza létre újra a következő üzenet elküldésekor. Az üzenetküldési gyár bezárása törli a Service Bus szolgáltatással létesített kapcsolódást, és a gyár újbóli létrehozásakor létrejön egy új csatlakozás. A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy a több művelethez ugyanazt a gyári és ügyféloldali objektumot használja. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
+Service Bus az ügyfélalkalmazások, például a vagy a implementációját, [`IQueueClient`][QueueClient] [`IMessageSender`][MessageSender] regisztrálni kell a függőségi injektáláshoz (vagy egyszeres és megosztott). Azt javasoljuk, hogy az üzenet elküldése után ne zárjunk be üzenetküldési gyárakat, üzenetsor-kezelést, témakört vagy előfizetési ügyfelet, majd hozza létre újra a következő üzenet elküldésekor. Az üzenetküldési gyár bezárása törli a Service Bus szolgáltatáshoz való kapcsolódást. Új kapcsolódás jön létre a gyár újbóli létrehozásakor. A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy a több művelethez ugyanazt a gyári és ügyféloldali objektumot használja. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
 
-Service Bus-objektumok, például `QueueClient` a vagy a `MessageSender` egy [MessagingFactory][MessagingFactory] objektumon keresztül jönnek létre, amely a kapcsolatok belső felügyeletét is biztosítja. Azt javasoljuk, hogy az üzenet elküldése után ne zárjunk be üzenetküldési gyárakat vagy üzenetsor-kezelést, témakört és előfizetési ügyfelet, majd hozza létre újra a következő üzenet elküldésekor. Az üzenetküldési gyár bezárása törli a Service Bus szolgáltatással létesített kapcsolódást, és a gyár újbóli létrehozásakor létrejön egy új csatlakozás. A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy a több művelethez ugyanazt a gyári és ügyféloldali objektumot használja. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
+Service Bus-objektumok, például `QueueClient` a vagy a `MessageSender` egy [MessagingFactory][MessagingFactory] objektumon keresztül jönnek létre, amely a kapcsolatok belső felügyeletét is biztosítja. Azt javasoljuk, hogy az üzenet elküldése után ne zárjunk be üzenetküldési gyárakat, üzenetsor-kezelést, témakört vagy előfizetési ügyfelet, majd hozza létre újra a következő üzenet elküldésekor. Az üzenetküldési gyár bezárása törli a Service Bus szolgáltatással létesített kapcsolódást, és a gyár újbóli létrehozásakor létrejön egy új csatlakozás. A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy a több művelethez ugyanazt a gyári és ügyféloldali objektumot használja. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
 
 ---
 
 ## <a name="concurrent-operations"></a>Egyidejű műveletek
+Az olyan műveletek, mint a küldés, fogadás, törlés stb., eltarthat egy ideig. Ez az idő magában foglalja azt az időpontot, ameddig a Service Bus szolgáltatásnak a művelet feldolgozásához és a kérés késéséhez, valamint a válaszhoz kell kapcsolódnia. A műveletek másodpercenkénti számának növeléséhez a műveleteknek egyidejűleg kell futniuk.
 
-Egy művelet végrehajtása (küldés, fogadás, törlés stb.) eltarthat egy ideig. Ez az idő magában foglalja a műveletnek a Service Bus szolgáltatás általi feldolgozását, valamint a kérés késését és a választ. A műveletek másodpercenkénti számának növeléséhez a műveleteknek egyidejűleg kell futniuk.
-
-Az ügyfél aszinkron műveletek végrehajtásával ütemezhet egyidejű műveleteket. A következő kérelem az előző kérelem befejeződése előtt indul el. A következő kódrészlet példa egy aszinkron küldési műveletre:
+Az ügyfél **aszinkron** műveletek végrehajtásával ütemezhet egyidejű műveleteket. A következő kérelem az előző kérelem befejeződése előtt indul el. A következő kódrészlet példa egy aszinkron küldési műveletre:
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -167,11 +162,11 @@ A `MessagingFactory` létrehoz egy `factory` objektumot a kapcsolatok sztringbő
 
 A fogadási mód beállításakor `ReceiveAndDelete` mindkét lépés egyetlen kérelemben van egyesítve. Ezek a lépések csökkentik a műveletek teljes számát, és javítják az üzenetek teljes átviteli sebességét. Ez a teljesítmény az üzenetek elvesztésének kockázatával jár.
 
-A Service Bus nem támogatja a fogadási és törlési műveletek tranzakcióit. Emellett a betekintés-zárolás szemantikai követelménye minden olyan esetben szükséges, amikor az ügyfél késleltetni vagy [kézbesíteni](service-bus-dead-letter-queues.md) kívánja az üzenetet.
+A Service Bus nem támogatja a fogadási és törlési műveletek tranzakcióit. A betekintés zárolása olyan helyzetekben is szükséges, amikor az ügyfél késleltetni vagy [kézbesíteni](service-bus-dead-letter-queues.md) kívánja az üzenetet.
 
 ## <a name="client-side-batching"></a>Ügyféloldali kötegek
 
-Az ügyféloldali kötegek lehetővé teszik egy üzenetsor vagy egy témakör-ügyfél számára, hogy egy adott időtartamon belül késleltetni lehessen az üzenet küldését. Ha az ügyfél további üzeneteket küld ezen időszakon belül, a rendszer egyetlen kötegben továbbítja ezen üzeneteket. Az ügyféloldali kötegek azt is eredményezik, hogy egy üzenetsor vagy egy előfizetési ügyfél több **teljes** kérelmet küld egyetlen kérelembe. A kötegelt feldolgozás csak aszinkron **küldési** és **befejezési** műveletekhez érhető el. A szinkron műveleteket a rendszer azonnal elküldi a Service Bus szolgáltatásnak. A betekintési és fogadási műveletekre nem kerül sor, és a kötegelt feldolgozás nem történik meg az ügyfeleken.
+Az ügyféloldali kötegek lehetővé teszik egy üzenetsor vagy egy témakör-ügyfél számára, hogy egy adott időtartamon belül késleltetni lehessen az üzenet küldését. Ha az ügyfél további üzeneteket küld ezen időszakon belül, a rendszer egyetlen kötegben továbbítja ezen üzeneteket. Az ügyféloldali kötegek azt is eredményezik, hogy egy üzenetsor vagy egy előfizetési ügyfél több **teljes** kérelmet küld egyetlen kérelembe. A kötegelt feldolgozás csak aszinkron **küldési** és **befejezési** műveletekhez érhető el. A szinkron műveleteket a rendszer azonnal elküldi a Service Bus szolgáltatásnak. A betekintési és fogadási műveletekhez nem kerül sor, és a kötegelt feldolgozás nem történik meg az ügyfeleken.
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -181,7 +176,7 @@ A .NET Standard SDK batching funkciója még nem tesz elérhetővé egy tulajdon
 
 Alapértelmezés szerint az ügyfél 20 ms-os batch-intervallumot használ. A Batch-intervallum módosításához állítsa a [BatchFlushInterval][BatchFlushInterval] tulajdonságot az üzenetküldési gyár létrehozása előtt. Ez a beállítás a gyár által létrehozott összes ügyfelet érinti.
 
-A kötegelt feldolgozás letiltásához állítsa a [BatchFlushInterval][BatchFlushInterval] tulajdonságot **TimeSpan. Zero**értékre. Például:
+A kötegelt feldolgozás letiltásához állítsa a [BatchFlushInterval][BatchFlushInterval] tulajdonságot **TimeSpan. Zero** értékre. Ilyenek többek között:
 
 ```csharp
 var settings = new MessagingFactorySettings
@@ -209,7 +204,12 @@ A kötegelt feldolgozás nem befolyásolja a számlázható üzenetkezelési mű
 
 ## <a name="batching-store-access"></a>Tároló-hozzáférés feldolgozása
 
-Egy üzenetsor, témakör vagy előfizetés átviteli sebességének növeléséhez Service Bus batchs több üzenetet, amikor a belső tárolóba ír. Ha engedélyezve van egy várólistán vagy témakörön, a rendszer az üzeneteket az áruházba írja. Ha egy várólistán vagy előfizetésen engedélyezve van, az üzenetek az áruházból való törlése kötegelt feldolgozással történik. Ha a kötegek tárolóhoz való hozzáférése engedélyezve van egy entitáshoz, a Service Bus akár 20 MS-ra késlelteti az adott entitásra vonatkozó tárolási írási műveletet.
+Egy üzenetsor, témakör vagy előfizetés átviteli sebességének növeléséhez Service Bus batchs több üzenetet, amikor a belső tárolóba ír. 
+
+- Ha engedélyezi a kötegelt feldolgozást egy várólistán, az üzeneteket az áruházba írja, és a tárolóban lévő üzenetek törlését a rendszer kötegbe állítja. 
+- Ha engedélyezi a kötegelt feldolgozást egy témakörben, az üzenetek a tárolóba való írása kötegelt. 
+- Ha engedélyezi a kötegelt feldolgozást egy előfizetésre, az üzenetek az áruházból való törlése kötegelt. 
+- Ha egy entitáshoz engedélyezve van a batchd Store-hozzáférés, Service Bus akár 20 MS-ra késlelteti az adott entitás tárolási írási műveletét.
 
 > [!NOTE]
 > A kötegelt feldolgozással nem lehet az üzenetek elvesztésének kockázata, még akkor is, ha a 20ms-köteg intervallumának végén Service Bus hiba történt.
@@ -230,7 +230,7 @@ var queueDescription = new QueueDescription(path)
 var queue = await managementClient.CreateQueueAsync(queueDescription);
 ```
 
-További információkat a következő cikkekben talál:
+További információkat az következő cikkekben talál:
 * <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 * <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 * <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.topicdescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
@@ -247,28 +247,28 @@ var queueDescription = new QueueDescription(path)
 var queue = namespaceManager.CreateQueue(queueDescription);
 ```
 
-További információkat a következő cikkekben talál:
+További információkat az következő cikkekben talál:
 * <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 * <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 * <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicdescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ---
 
-A batchd Store-hozzáférés nem befolyásolja a számlázható üzenetkezelési műveletek számát, és egy üzenetsor, témakör vagy előfizetés tulajdonsága. Független a fogadási módtól és az ügyfél és a Service Bus szolgáltatás között használt protokolltól.
+A batchd Store-hozzáférés nem befolyásolja a számlázható üzenetkezelési műveletek számát. Ez egy üzenetsor, témakör vagy előfizetés tulajdonsága. Független a fogadási módtól és az ügyfél és a Service Bus szolgáltatás között használt protokolltól.
 
 ## <a name="prefetching"></a>Prefetching
 
-A [beolvasás](service-bus-prefetch.md) lehetővé teszi, hogy a várólista vagy az előfizetési ügyfél további üzeneteket töltsön be a szolgáltatásból, amikor fogadási műveletet hajt végre. Az ügyfél helyi gyorsítótárban tárolja ezeket az üzeneteket. A gyorsítótár méretét a vagy a tulajdonságok határozzák `QueueClient.PrefetchCount` meg `SubscriptionClient.PrefetchCount` . Minden olyan ügyfél, amely lehetővé teszi, hogy az előhívások saját gyorsítótárat tároljanak. A rendszer nem osztja meg a gyorsítótárat az ügyfelek között. Ha az ügyfél fogadási műveletet kezdeményez, és a gyorsítótára üres, a szolgáltatás egy köteg üzenetet küld. A köteg mérete megegyezik a gyorsítótár vagy a 256 KB-os méretével, attól függően, hogy melyik a kisebb. Ha az ügyfél fogadási műveletet kezdeményez, és a gyorsítótár egy üzenetet tartalmaz, a rendszer az üzenetet a gyorsítótárból veszi át.
+Az előzetes [beolvasás](service-bus-prefetch.md) lehetővé teszi, hogy a várólista vagy az előfizetési ügyfél további üzeneteket töltsön be a szolgáltatástól, amikor üzeneteket fogad. Az ügyfél helyi gyorsítótárban tárolja ezeket az üzeneteket. A gyorsítótár méretét a vagy a tulajdonságok határozzák `QueueClient.PrefetchCount` meg `SubscriptionClient.PrefetchCount` . Minden olyan ügyfél, amely lehetővé teszi, hogy az előhívások saját gyorsítótárat tároljanak. A gyorsítótárak nem oszthatók meg az ügyfelek között. Ha az ügyfél elindít egy fogadási műveletet, és a gyorsítótára üres, a szolgáltatás egy köteg üzenetet küld. A köteg mérete megegyezik a gyorsítótár vagy a 256 KB-os méretével, attól függően, hogy melyik a kisebb. Ha az ügyfél elindít egy fogadási műveletet, és a gyorsítótár egy üzenetet tartalmaz, a rendszer az üzenetet a gyorsítótárból veszi át.
 
-Egy üzenet előhívásakor a szolgáltatás zárolja az előhívott üzenetet. A zárolással az előhívott üzenetet nem lehet egy másik fogadótól fogadni. Ha a fogadó nem tudja befejezni az üzenetet a zárolás lejárta előtt, az üzenet elérhetővé válik más fogadók számára. Az üzenet előre beolvasott másolata a gyorsítótárban marad. A lejárt gyorsítótárazott példányt használó fogadó kivételt fog kapni, amikor megpróbálja befejezni az üzenetet. Alapértelmezés szerint az üzenet zárolása 60 másodperc után lejár. Ez az érték 5 percre bővíthető. A lejárt üzenetek felhasználásának megakadályozásához a gyorsítótár méretének mindig kisebbnek kell lennie, mint az ügyfél által a zárolási időkorlát intervallumában felhasználható üzenetek száma.
+Egy üzenet előhívásakor a szolgáltatás zárolja az előhívott üzenetet. A zárolással az előhívott üzenetet nem lehet egy másik fogadótól fogadni. Ha a fogadó nem tudja befejezni az üzenetet a zárolás lejárta előtt, az üzenet elérhetővé válik más fogadók számára. Az üzenet előre beolvasott másolata a gyorsítótárban marad. A lejárt gyorsítótárazott példányt használó fogadó kivételt fog kapni, amikor megpróbálja befejezni az üzenetet. Alapértelmezés szerint az üzenet zárolása 60 másodperc után lejár. Ez az érték 5 percre bővíthető. A lejárt üzenetek felhasználásának megakadályozásához állítsa be a gyorsítótár méretét a zárolási időkorlát intervallumán belül az ügyfél által felhasználható üzenetek számánál kisebb értékre.
 
-A 60 másodperces alapértelmezett zárolás lejáratának használatakor a megfelelő érték `PrefetchCount` 20-szor a gyári vevőkészülékek maximális feldolgozási sebességével. Egy gyár például három fogadót hoz létre, és az egyes fogadók másodpercenként akár 10 üzenetet is feldolgozhatnak. A kihívások száma nem haladhatja meg a 20 X 3 X 10 = 600. Alapértelmezés szerint a `PrefetchCount` értéke 0, ami azt jelenti, hogy a szolgáltatás nem olvas be további üzeneteket.
+A 60 másodperces alapértelmezett zárolás lejáratának használatakor a megfelelő érték `PrefetchCount` 20-szor a gyári vevőkészülékek maximális feldolgozási sebességével. Egy gyár például három fogadót hoz létre, és az egyes fogadók másodpercenként akár 10 üzenetet is feldolgozhatnak. A behívások száma nem haladhatja meg a 20 X 3 X 10 = 600. Alapértelmezés szerint a `PrefetchCount` értéke 0, ami azt jelenti, hogy a szolgáltatás nem olvas be további üzeneteket.
 
-Az üzenetek előhívása növeli a várólista vagy előfizetés teljes átviteli sebességét, mivel csökkenti az üzenetküldési műveletek teljes számát vagy az oda-és visszaútt. Az első üzenet beolvasása azonban hosszabb időt vesz igénybe (az üzenet méretének növekedése miatt). Az előre beolvasott üzenetek fogadása gyorsabb lesz, mert az ügyfél már letöltötte ezeket az üzeneteket.
+Az üzenetek előhívása növeli a várólista vagy előfizetés teljes átviteli sebességét, mivel csökkenti az üzenetküldési műveletek teljes számát vagy az oda-és visszaútt. Az első üzenet beolvasása azonban hosszabb időt vesz igénybe (a megnövekedett üzenet mérete miatt). Az előre beolvasott üzenetek a gyorsítótárból való fogadása gyorsabb, mert az ügyfél már letöltötte ezeket az üzeneteket.
 
 Az üzenet élettartam (TTL) tulajdonságát a kiszolgáló ellenőrzi, amikor a kiszolgáló elküldi az üzenetet az ügyfélnek. Az üzenet fogadásakor az ügyfél nem vizsgálja meg az üzenet TTL tulajdonságát. Ehelyett az üzenet akkor is megjelenhet, ha az üzenet TTL-értéke megtelt, miközben az ügyfél gyorsítótárazta az üzenetet.
 
-Az előolvasás nem befolyásolja a számlázható üzenetkezelési műveletek számát, és csak az Service Bus ügyfél-protokoll esetében érhető el. A HTTP protokoll nem támogatja a beolvasást. Az előhívás a szinkron és aszinkron fogadási műveletekhez is elérhető.
+Az előolvasás nem befolyásolja a számlázható üzenetkezelési műveletek számát, és csak az Service Bus ügyfél protokollja számára érhető el. A HTTP protokoll nem támogatja a beolvasást. Az előhívás a szinkron és aszinkron fogadási műveletekhez is elérhető.
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -291,27 +291,27 @@ További információkért lásd a következő `PrefetchCount` tulajdonságokat:
 > [!NOTE]
 > Ez a szakasz csak a WindowsAzure. ServiceBus SDK-ra vonatkozik, mivel a Microsoft. Azure. ServiceBus SDK nem tesz elérhetővé batch-függvényeket.
 
-Habár a több üzenet előhívásával kapcsolatos fogalmak hasonló szemantikai jellemzőkkel rendelkeznek a Batch () üzeneteinek feldolgozásához `ReceiveBatch` , néhány kisebb eltérést kell szem előtt tartania, amikor ezeket együtt használják.
+Habár a több üzenet előhívásának fogalmai hasonló szemantikai feladattal rendelkeznek a Batch () üzeneteinek feldolgozásához `ReceiveBatch` , néhány kisebb eltérést kell szem előtt tartani, amikor ezeket a módszereket együtt használják.
 
 A kiküldés egy konfiguráció (vagy mód) az ügyfélen ( `QueueClient` és `SubscriptionClient` ), és `ReceiveBatch` egy művelet (amely a kérés-válasz szemantikagal rendelkezik).
 
-Ha ezeket együtt használja, vegye figyelembe a következő eseteket:
+A megközelítések együttes használata közben vegye figyelembe a következő eseteket:
 
 * A prefektusnak nagyobbnak vagy egyenlőnek kell lennie, mint a várt üzenetek száma `ReceiveBatch` .
 * A kiállítók akár n/3-szor is lehetnek a feldolgozott üzenetek másodpercenkénti száma, ahol n az alapértelmezett zárolási időtartam.
 
-Vannak olyan kihívások, amelyek kapzsi megközelítéssel rendelkeznek (azaz a visszahívások száma nagyon magas), mert ez azt jelenti, hogy az üzenet egy adott fogadó számára van zárolva. A javaslat célja, hogy kipróbálja a fenti küszöbértékek közötti kiugró értékeket, és empirikusan azonosítsa, hogy mi illik hozzá.
+Vannak olyan kihívások, amelyek kapzsi megközelítéssel rendelkeznek, azaz a visszahívások száma magas, mert ez azt jelenti, hogy az üzenet egy adott fogadó számára van zárolva. A javaslat célja, hogy kipróbálja a fenti küszöbértékek közötti kiugró értékeket, és empirikusan azonosítsa, hogy mi illik hozzá.
 
 ## <a name="multiple-queues"></a>Több várólista
 
-Ha a várt terhelést egyetlen üzenetsor vagy témakör nem tudja kezelni, több üzenetkezelési entitást kell használnia. Ha több entitást használ, hozzon létre egy dedikált ügyfelet az egyes entitásokhoz ahelyett, hogy ugyanazt az ügyfelet használja az összes entitáshoz.
+Ha egyetlen üzenetsor vagy témakör nem tudja kezelni a vártat, használjon több üzenetkezelési entitást. Ha több entitást használ, hozzon létre egy dedikált ügyfelet az egyes entitásokhoz ahelyett, hogy ugyanazt az ügyfelet használja az összes entitáshoz.
 
 ## <a name="development-and-testing-features"></a>Fejlesztési és tesztelési funkciók
 
 > [!NOTE]
 > Ez a szakasz csak a WindowsAzure. ServiceBus SDK-ra vonatkozik, mivel a Microsoft. Azure. ServiceBus SDK nem teszi elérhetővé ezt a funkciót.
 
-Service Bus rendelkezik egy, a fejlesztéshez használt funkcióval, amelyet **soha nem szabad éles konfigurációban használni**: [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] .
+Service Bus rendelkezik egy, a fejlesztéshez használt funkcióval, amelyet **soha nem szabad éles konfigurációban használni** : [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] .
 
 Ha új szabályok vagy szűrők vannak hozzáadva a témakörhöz, a segítségével [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] ellenőrizheti, hogy az új szűrő kifejezés a várt módon működik-e.
 
@@ -334,11 +334,11 @@ Cél: egyetlen üzenetsor átviteli sebességének maximalizálása. A küldők 
 
 Cél: több várólista teljes átviteli sebességének maximalizálása. Az egyes várólisták átviteli sebessége közepes vagy magas.
 
-A maximális átviteli sebesség több várólistára történő beszerzéséhez használja a következő beállításokat, hogy maximalizálja egy adott várólista átviteli sebességét. Emellett különböző gyárakat használhat a különböző várólistákból küldött vagy fogadott ügyfelek létrehozásához.
+A maximális átviteli sebesség több várólistára történő beszerzéséhez használja a következő beállításokat, hogy maximalizálja egy adott várólista átviteli sebességét. Más gyárakat is használhat a különböző várólistákból küldött vagy fogadott ügyfelek létrehozásához.
 
 ### <a name="low-latency-queue"></a>Kis késleltetésű várólista
 
-Cél: a várólista vagy témakör végpontok közötti késésének csökkentése. A küldők és a fogadók száma kicsi. A várólista átviteli sebessége kicsi vagy mérsékelt.
+Cél: egy üzenetsor vagy témakör késésének csökkentése. A küldők és a fogadók száma kicsi. A várólista átviteli sebessége kicsi vagy mérsékelt.
 
 * Tiltsa le az ügyféloldali kötegeket. Az ügyfél azonnal üzenetet küld.
 * A kötegelt tárolók elérésének letiltása. A szolgáltatás azonnal beírja az üzenetet az áruházba.
@@ -349,11 +349,11 @@ Cél: a várólista vagy témakör végpontok közötti késésének csökkenté
 
 Cél: egy üzenetsor vagy témakör maximális átviteli sebessége nagy számú küldővel. Mindegyik feladó mérsékelt sebességgel küld üzeneteket. A fogadók száma kicsi.
 
-A Service Bus akár 1000 egyidejű kapcsolatot tesz lehetővé egy üzenetküldési entitással. Ez a korlát a névtér szintjén van kikényszerítve, és a várólisták/témakörök/előfizetések maximális száma a névtér egyidejű kapcsolatainak korlátja. A várólisták esetében ez a szám a küldők és a fogadók között van megosztva. Ha az összes 1000-kapcsolat szükséges a küldők számára, cserélje le a várólistát egy témakörre és egy előfizetésre. A témakörök legfeljebb 1000 egyidejű kapcsolatot fogadnak el a küldők között, míg az előfizetés további 1000 egyidejű kapcsolatokat fogad el a fogadók között. Ha több mint 1000 egyidejű küldőre van szükség, a küldőknek HTTP-n keresztül kell üzeneteket küldeniük a Service Bus protokollnak.
+A Service Bus akár 1000 egyidejű kapcsolatot tesz lehetővé egy üzenetküldési entitással. Ezt a korlátot a névtér szintjén kell kikényszeríteni, és a várólisták, témakörök vagy előfizetések maximális száma a névtér egyidejű kapcsolatainak korlátja. A várólisták esetében ez a szám a küldők és a fogadók között van megosztva. Ha az összes 1000-kapcsolat szükséges a küldők számára, cserélje le a várólistát egy témakörre és egy előfizetésre. A témakörök legfeljebb 1000 egyidejű kapcsolatot fogadnak el a küldők. Az előfizetés további 1000 egyidejű kapcsolatokat fogad el a fogadók között. Ha több mint 1000 egyidejű küldőre van szükség, a küldőknek HTTP-n keresztül kell üzeneteket küldeniük a Service Bus protokollnak.
 
-Az átviteli sebesség maximalizálása érdekében hajtsa végre a következő lépéseket:
+Az átviteli sebesség maximalizálása érdekében hajtsa végre az alábbi lépéseket:
 
-* Ha az egyes küldők egy másik folyamatban vannak, a folyamaton belül csak egyetlen gyárat használjon.
+* Ha minden feladó egy másik folyamatban van, csak egyetlen gyárat használjon egy folyamaton belül.
 * Aszinkron műveletek használatával kihasználhatja az ügyféloldali kötegek előnyeit.
 * A 20 MS alapértelmezett batch-intervallum használatával csökkentse a Service Bus az ügyfél-protokollok átvitelének számát.
 * A kötegelt tárolók elérésének engedélyezése engedélyezve. Ez a hozzáférés növeli az üzenetek üzenetsor vagy témakörbe való írásának általános sebességét.
@@ -365,9 +365,9 @@ Cél: a várólista vagy előfizetés fogadási sebességének maximalizálása 
 
 A Service Bus akár 1000 egyidejű kapcsolatot tesz lehetővé egy entitással. Ha egy üzenetsor több mint 1000 fogadót igényel, cserélje le a várólistát egy témakörre és több előfizetésre. Az egyes előfizetések akár 1000 egyidejű kapcsolatot is támogatnak. Másik lehetőségként a fogadók a HTTP protokollon keresztül érhetik el a várólistát.
 
-Az átviteli sebesség maximalizálása érdekében tegye a következőket:
+Az átviteli sebesség maximalizálása érdekében kövesse az alábbi irányelveket:
 
-* Ha az egyes fogadók egy másik folyamaton belül találhatók, a folyamathoz csak egyetlen gyárat használjon.
+* Ha minden fogadó egy másik folyamatban van, csak egyetlen gyárat használjon a folyamaton belül.
 * A fogadók szinkron vagy aszinkron műveleteket is használhatnak. Az egyes fogadók mérsékelt fogadási sebessége miatt a teljes kérelem ügyféloldali kötegelt feldolgozása nem befolyásolja a fogadó átviteli sebességét.
 * A kötegelt tárolók elérésének engedélyezése engedélyezve. Ez a hozzáférés csökkenti az entitás teljes terhelését. Emellett csökkenti az üzenetek üzenetsor vagy témakörbe való írásának általános sebességét is.
 * Állítsa be a prefektusi számot egy kis értékre (például PrefetchCount = 10). Ez a szám megakadályozza, hogy a fogadók tétlenek legyenek, míg a többi fogadó nagy számú üzenetet gyorsítótárazott.
@@ -376,7 +376,7 @@ Az átviteli sebesség maximalizálása érdekében tegye a következőket:
 
 Cél: egy adott témakör átviteli sebességének maximalizálása kis számú előfizetéssel. Számos előfizetés fogad egy üzenetet, ami azt jelenti, hogy az összes előfizetéshez tartozó összesített fogadási arány nagyobb a küldési aránynál. A küldők száma kicsi. Az előfizetéshez tartozó fogadók száma kicsi.
 
-Az átviteli sebesség maximalizálása érdekében tegye a következőket:
+Az átviteli sebesség maximalizálása érdekében kövesse az alábbi irányelveket:
 
 * A teljes küldési aránynak a témakörben való növeléséhez használjon több Message Factoryt a küldők létrehozásához. Mindegyik feladó esetében használjon aszinkron műveleteket vagy több szálat.
 * Az előfizetés teljes fogadási arányának növeléséhez használjon több Message Factoryt a fogadók létrehozásához. Minden egyes fogadó esetében használjon aszinkron műveleteket vagy több szálat.
@@ -389,7 +389,7 @@ Az átviteli sebesség maximalizálása érdekében tegye a következőket:
 
 Cél: nagy mennyiségű előfizetéssel maximalizálhatja a témakör átviteli sebességét. Számos előfizetés fogad egy üzenetet, ami azt jelenti, hogy az összes előfizetéshez tartozó összesített fogadási arány sokkal nagyobb, mint a küldési sebesség. A küldők száma kicsi. Az előfizetéshez tartozó fogadók száma kicsi.
 
-A nagy számú előfizetéssel rendelkező témakörök általában alacsony teljes átviteli sebességet tesznek elérhetővé, ha az összes üzenet az összes előfizetéshez van irányítva. Az alacsony átviteli sebesség oka az, hogy az egyes üzenetek többször is érkeznek, és a témakörben szereplő összes üzenet és az összes előfizetése ugyanabban a tárolóban van tárolva. Feltételezzük, hogy a küldők száma és az előfizetéshez tartozó fogadók száma kicsi. A Service Bus egy témakörben legfeljebb 2 000 előfizetést támogat.
+A nagy számú előfizetéssel rendelkező témakörök általában alacsony teljes átviteli sebességet tesznek elérhetővé, ha az összes üzenet az összes előfizetéshez van irányítva. Ez azért van, mert minden üzenet többször érkezik, és a témakörben szereplő összes üzenet és az összes előfizetése ugyanabban a tárolóban van tárolva. Ennek feltételezése, hogy a küldők száma és az előfizetéshez tartozó fogadók száma kicsi. A Service Bus egy témakörben legfeljebb 2 000 előfizetést támogat.
 
 Az átviteli sebesség maximalizálása érdekében próbálkozzon az alábbi lépésekkel:
 
