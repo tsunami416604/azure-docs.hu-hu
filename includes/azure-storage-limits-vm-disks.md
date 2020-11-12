@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: 10599b47d55a0b4ea1eb79cda3c31a2479efb7c0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ffb07220267a2c192b4aad2405185c80bd9abbc0
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755751"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523707"
 ---
 Több adatlemezt is csatolhat egy Azure-beli virtuális géphez. A virtuális gépek adatlemezei skálázhatósági és teljesítményi céljai alapján meghatározhatja a teljesítményre és a kapacitásra vonatkozó követelmények teljesítéséhez szükséges lemez számát és típusát.
 
@@ -31,7 +31,7 @@ Az alábbi táblázat az erőforrások számának alapértelmezett és maximáli
 
 **Standard szintű Storage-fiókok esetén:** A standard szintű Storage-fiók maximális száma 20 000 IOPS. A standard Storage-fiókban lévő összes virtuálisgép-lemez teljes IOPS nem lépheti túl ezt a korlátot.
   
-    You can roughly calculate the number of highly utilized disks supported by a single Standard storage account based on the request rate limit. For example, for a Basic tier VM, the maximum number of highly utilized disks is about 66, which is 20,000/300 IOPS per disk. The maximum number of highly utilized disks for a Standard tier VM is about 40, which is 20,000/500 IOPS per disk. 
+Nagyjából kiszámíthatja a standard Storage-fiók által támogatott, magas kihasználtságú lemezek számát a kérések díjszabási korlátja alapján. Egy alapszintű virtuális gép esetében például a magas kihasználtságú lemezek maximális száma körülbelül 66, amely lemezenként 20 000/300 IOPS. A standard szintű virtuális gép számára a magas kihasználtságú lemezek maximális száma körülbelül 40, amely lemezenként 20000/500 IOPS. 
 
 **Premium Storage-fiókok esetén:** A prémium szintű Storage-fiók maximális teljes átviteli sebessége 50 GB/s. Az összes virtuálisgép-lemezen lévő teljes átvitel nem lépheti túl ezt a korlátot.
 

@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 06/08/2020
+ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 14b9d9fe0eb9dfe2f25373c2d87d9b4af15dd0d9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 1a9f468b8e2f9fff20b9b26b8890d485e426b691
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371933"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523708"
 ---
 A regionális VNet-integráció használata lehetővé teszi, hogy az alkalmazás hozzáférjen:
 
@@ -42,10 +42,10 @@ Az alkalmazás alapértelmezés szerint csak a RFC1918-forgalmat irányítja át
 Bizonyos korlátozások vonatkoznak a VNet-integrációnak az azonos régióban található virtuális hálózatok való használatára:
 
 * A globális társ-összekapcsolási kapcsolatok erőforrásai nem érhetők el.
-* A szolgáltatás csak a PremiumV2 App Service csomagokat támogató újabb Azure App Service skálázási egységekből érhető el. Vegye figyelembe, hogy *Ez nem jelenti azt, hogy az alkalmazásnak egy PremiumV2 díjszabási szinten kell futnia* , csak azt, hogy egy app Service-csomagon kell futnia, ahol a PremiumV2 lehetőség elérhető (ami azt jelenti, hogy ez egy újabb méretezési egység, ahol ez a VNet-integrációs szolgáltatás is elérhető).
+* A szolgáltatás a Premium v2 és a Premium v3 összes App Service skálázási egységében érhető el. Standard szintű, de csak az újabb App Service skálázási egységek esetében érhető el. Ha régebbi méretezési egységet használ, a funkciót csak prémium v2 App Service csomaggal lehet használni. Ha azt szeretné, hogy a szolgáltatás a standard App Service csomagban is használható legyen, hozzon létre egy prémium szintű v3 App Service-csomagot. Ezek a csomagok csak a legújabb méretezési egységeken támogatottak. Ha ezt követően szeretné, lekicsinyítheti a méretezést.  
 * Az integrációs alhálózatot csak egy App Service csomag használhatja.
 * A funkciót nem lehet használni a App Service Environmentban található elkülönített csomagbeli alkalmazások.
-* A szolgáltatáshoz egy nem használt alhálózat szükséges, amely a/27 32-es vagy nagyobb méretű egy Azure Resource Manager VNet.
+* A szolgáltatáshoz egy Azure Resource Manager VNet egy/28 vagy nagyobb, nem használt alhálózatra van szükség.
 * Az alkalmazásnak és a VNet ugyanabban a régióban kell lennie.
 * A VNet nem törölhető integrált alkalmazással. A VNet törlése előtt távolítsa el az integrációt.
 * Csak a virtuális hálózatok integrálható az alkalmazással megegyező előfizetésben.
@@ -53,7 +53,21 @@ Bizonyos korlátozások vonatkoznak a VNet-integrációnak az azonos régióban 
 * Egy alkalmazás vagy csomag előfizetése nem módosítható, amíg van olyan alkalmazás, amely regionális VNet-integrációt használ.
 * Az alkalmazás a konfiguráció módosítása nélkül nem tudja feloldani a Azure DNS Private Zones címeit
 
-Az egyes csomag-példányok esetében egy-egy-egy-egy címnek Ha öt példányra méretezi az alkalmazást, akkor öt címet használ a rendszer. Mivel az alhálózat mérete nem módosítható a hozzárendelés után, olyan alhálózatot kell használnia, amely elég nagy ahhoz, hogy megfeleljen az alkalmazásnak. Az ajánlott méret a/26, 64 címmel. Az a/26, 64 címmel rendelkező Prémium csomag 30 példányban. Ha felfelé vagy lefelé méretezi a tervet, a rövid ideig kétszer annyi címre van szüksége.
+A VNet-integráció egy dedikált alhálózat használatával függ.  Amikor kiépít egy alhálózatot, az Azure-alhálózat elveszíti az 5 IP-címet az elejétől. Az egyes csomagokhoz tartozó integrációs alhálózaton egy-egy címnek kell lennie. Ha négy példányra méretezi az alkalmazást, akkor a rendszer négy címet használ. Az alhálózat méretétől számított 5 cím terhelés azt jelenti, hogy a maximálisan elérhető címek száma CIDR-blokk:
+
+- /28 rendelkezik 11 címmel
+- /27 27 címnek van
+- /26 rendelkezik 59-címmel
+
+Ha a méret fel-vagy leskálázását választja, a címnek rövid ideig kell megdupláznia. A méret mérete azt jelenti, hogy az alhálózati méretekben a valós rendelkezésre álló támogatott példányok száma az, ha az alhálózat a következő:
+
+- /28, a maximális vízszintes skála 5 példány
+- /27, a maximális vízszintes skála 13 példány
+- /26, a maximális vízszintes skála 29 példány
+
+A maximális horizontális skálán megjelenő korlátok feltételezik, hogy a méretekben vagy az SKU-ban legalább egy ponton fel kell skálázást. 
+
+Mivel az alhálózat mérete nem módosítható a hozzárendelés után, olyan alhálózatot használjon, amely elég nagy ahhoz, hogy megfeleljen az alkalmazásnak. Az alhálózati kapacitással kapcsolatos problémák elkerülése érdekében a/26 64-as címmel az ajánlott méret.  
 
 Ha azt szeretné, hogy egy másik csomagban lévő alkalmazásai olyan VNet érjenek el, amely már kapcsolódik egy másik csomagban lévő alkalmazásokhoz, válasszon egy másik alhálózatot, mint amelyet a meglévő VNet-integráció használ.
 
@@ -82,21 +96,15 @@ A Border Gateway Protocol (BGP) útvonalak az alkalmazások forgalmára is hatá
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-Miután az alkalmazás integrálva van a VNet, ugyanazt a DNS-kiszolgálót használja, amelyhez a VNet konfigurálva van. Alapértelmezés szerint az alkalmazás nem fog működni Azure DNS Private Zones. A Azure DNS Private Zones való együttműködéshez a következő Alkalmazásbeállítások hozzáadására van szükség:
-
-1. WEBSITE_DNS_SERVER értékkel 168.63.129.16
-1. 1. értékkel rendelkező WEBSITE_VNET_ROUTE_ALL
-
-Ezek a beállítások az alkalmazásból érkező összes kimenő hívást elküldik a VNet. Emellett lehetővé teszi, hogy az alkalmazás a Azure DNS használja a saját DNS zóna munkavégző szinten történő lekérdezésével. Ezt a funkciót akkor kell használni, ha egy futó alkalmazás egy saját DNS zónához fér hozzá.
-
-> [!NOTE]
->Egyéni tartomány saját DNS zónát használó webalkalmazáshoz való hozzáadása nem lehetséges a VNET-integráció. Az egyéni tartomány érvényesítése a vezérlő szintjén, nem pedig a munkavégző szinten történik, ami megakadályozza a DNS-rekordok észlelését. Ha saját DNS zónából szeretne egyéni tartományt használni, az érvényesítést Application Gateway vagy ILB App Service Environment használatával kell kihagyni.
-
-
+Miután az alkalmazás integrálva van a VNet, ugyanazt a DNS-kiszolgálót használja, amelyhez a VNet konfigurálva van. Ezt a viselkedést felülbírálhatja az alkalmazásban úgy, hogy az WEBSITE_DNS_SERVER a kívánt DNS-kiszolgáló címeként konfigurálja. Ha a VNet konfigurált egyéni DNS-kiszolgálóval rendelkezett, de azt szeretné, hogy az alkalmazása Azure DNS privát zónákat használjon, akkor a WEBSITE_DNS_SERVER értéket kell megadnia a 168.63.129.16 értékkel. 
 
 ### <a name="private-endpoints"></a>Privát végpontok
 
-Ha [privát végpontokra][privateendpoints]szeretne hívásokat kezdeményezni, akkor integrálnia kell Azure DNS Private Zones, vagy az alkalmazás által használt DNS-kiszolgálón kell kezelnie a privát végpontot. 
+Ha [privát végpontokra][privateendpoints]szeretne hívásokat kezdeményezni, győződjön meg arról, hogy a DNS-keresések fel lesznek oldva a privát végpontra. Annak biztosítása érdekében, hogy az alkalmazásból érkező DNS-keresések a privát végpontokra mutassanak, a következőket teheti:
+
+* integráció a Azure DNS Private Zonessal. Ha a VNet nem rendelkezik egyéni DNS-kiszolgálóval, akkor ez automatikusan
+* felügyelje az alkalmazás által használt DNS-kiszolgáló privát végpontját. Ehhez ismernie kell a privát végpontok címeit, majd azt a végpontot, amelyet egy rekord használatával szeretne elérni az adott címen.
+* saját DNS-kiszolgáló konfigurálása a Azure DNS privát zónákhoz való továbbításhoz
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png

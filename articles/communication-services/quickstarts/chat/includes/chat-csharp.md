@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 994f2829d260223567dcb5aed859812aa1fef3d1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 5eb9867b17151987b165021f42a075e9355a315d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91829086"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523750"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -77,7 +77,7 @@ ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential);
 
 `createChatThread`Csevegési szál létrehozásához használja a metódust.
 - A használatával `topic` témakört adhat ehhez a csevegéshez; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `UpdateThread` .
-- `members`A tulajdonság használatával adja át a `ChatThreadMember` csevegési szálhoz hozzáadandó objektumok listáját. Az `ChatThreadMember` objektum egy objektummal van inicializálva `CommunicationUser` . Egy objektum lekéréséhez `CommunicationUser` meg kell adnia egy hozzáférési azonosítót, amelyet a következő utasítások alapján hozott létre [egy felhasználó létrehozásához](../../access-tokens.md#create-a-user) :
+- `members`A tulajdonság használatával adja át a `ChatThreadMember` csevegési szálhoz hozzáadandó objektumok listáját. Az `ChatThreadMember` objektum egy objektummal van inicializálva `CommunicationUser` . Egy objektum lekéréséhez `CommunicationUser` meg kell adnia egy hozzáférési azonosítót, amelyet a következő utasítások alapján hozott létre [egy felhasználó létrehozásához](../../access-tokens.md#create-an-identity) :
 
 A válasz a `chatThreadClient` létrehozott csevegési szálon végzett műveletek végrehajtásához használható: Tagok hozzáadása a csevegési szálhoz, üzenet küldése, üzenet törlése stb. Tartalmazza azt az `Id` attribútumot, amely a csevegési szál egyedi azonosítója. 
 

@@ -7,24 +7,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: ec23ec58a020cc314f301e33b72b4787f4e32e14
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: cf7b82ec1da660ac68c6031434c0e0748ee67b3d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92924961"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523694"
 ---
 Ismerkedés az Arcfelismerés a Pythonhoz készült Face ügyféloldali kódtár használatával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
 A Pythonhoz készült Face ügyféloldali kódtár a következőre használható:
 
-* Arcok felismerése a képeken
-* Hasonló arcok keresése
-* Személy csoport létrehozása és betanítása
-* Arc azonosítása
-* Arcok ellenőrzése
+* [Arcok felismerése a képeken](#detect-faces-in-an-image)
+* [Hasonló arcok keresése](#find-similar-faces)
+* [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
+* [Arc azonosítása](#identify-a-face)
+* [Arcok ellenőrzése](#verify-faces)
 
 [Dokumentáció](/python/api/azure-cognitiveservices-vision-face/?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face)  |  [Csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)  |  [Példák](/samples/browse/?products=azure&term=face)
 
@@ -102,7 +102,7 @@ A következő kód egy távoli rendszerképben észlel egy arcot. Kinyomtatja az
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detect)]
 
 > [!TIP]
-> A helyi rendszerképben is felderítheti az arcokat. Tekintse meg a [FaceOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python) metódusokat, például a **detect_with_stream** .
+> A helyi rendszerképben is felderítheti az arcokat. Tekintse meg a [FaceOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python) metódusokat, például a **detect_with_stream**.
 
 ### <a name="display-and-frame-faces"></a>Arcok megjelenítése és kerete
 
@@ -157,7 +157,7 @@ A következő kód a képeket előtagjaként rendezi, észleli az arcokat, és h
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_assign)]
 
 > [!TIP]
-> Az URL-cím által hivatkozott távoli rendszerképekből is létrehozhat **PersonGroup** . Tekintse meg a [PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python) metódusokat, például a **add_face_from_url** .
+> Az URL-cím által hivatkozott távoli rendszerképekből is létrehozhat **PersonGroup** . Tekintse meg a [PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python) metódusokat, például a **add_face_from_url**.
 
 ### <a name="train-persongroup"></a>PersonGroup betanítása
 
@@ -180,7 +180,7 @@ A következő kód a projekt gyökerében található a rendszerkép _test-image
 
 ### <a name="identify-faces"></a>Arcok azonosítása
 
-Az **azonosítási** módszer az észlelt arcok tömbjét veszi fel, és összehasonlítja őket egy **PersonGroup** . Ha egy **személynek** észlelt arcot tud megfeleltetni, a rendszer menti az eredményt. Ez a kód részletes találatokat nyomtat a-konzolra.
+Az **azonosítási** módszer az észlelt arcok tömbjét veszi fel, és összehasonlítja őket egy **PersonGroup**. Ha egy **személynek** észlelt arcot tud megfeleltetni, a rendszer menti az eredményt. Ez a kód részletes találatokat nyomtat a-konzolra.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify)]
 
@@ -218,7 +218,7 @@ Futtassa az Arcfelismerés alkalmazást az alkalmazás könyvtárából az `pyth
 python quickstart-file.py
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 

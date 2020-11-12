@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 3c05596e16edc5243b8a97002a5cc5990c69ec43
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2b7d00335253772683b867acf0765b77fc493e79
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947186"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523973"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -85,7 +85,7 @@ chat_client = ChatClient(endpoint, CommunicationUserCredential(<Access Token>))
 `create_chat_thread`Csevegési szál létrehozásához használja a metódust.
 
 - A használatával `topic` adjon meg egy téma témakört; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `update_thread` .
-- A a `members` `ChatThreadMember` csevegési szálba felvenni kívánt elemek listázásához használja `ChatThreadMember` a `CommunicationUser` típust `user` , amelyet a [felhasználó létrehozása](../../access-tokens.md#create-a-user) után kapott.
+- A a `members` `ChatThreadMember` csevegési szálba felvenni kívánt elemek listázásához használja `ChatThreadMember` a `CommunicationUser` típust `user` , amelyet a [felhasználó létrehozása](../../access-tokens.md#create-an-identity) után kapott.
 
 A válasz az `chat_thread_client` újonnan létrehozott csevegési szálon végez műveleteket, például tagok hozzáadásával a csevegési szálhoz, üzenet küldése, üzenet törlése stb. Egy olyan `thread_id` tulajdonságot tartalmaz, amely a csevegési szál egyedi azonosítója.
 
@@ -158,7 +158,7 @@ A csevegési szál létrehozása után hozzáadhat és eltávolíthat felhaszná
 `add_members`A metódus használatával a szálazonosító által azonosított szálat adhat hozzá a szálhoz.
 
 - A használatával `members` listázhatja a csevegési szálba felvenni kívánt tagokat;
-- `user`, kötelező, a `CommunicationUser` által létrehozott `CommunicationIdentityClient` [felhasználó létrehozása](../../access-tokens.md#create-a-user)
+- `user`, kötelező, a `CommunicationUser` által létrehozott `CommunicationIdentityClient` [felhasználó létrehozása](../../access-tokens.md#create-an-identity)
 - `display_name`, nem kötelező, a szál tagja megjelenítendő neve.
 - `share_history_time`, nem kötelező, az az idő, amelyből a csevegési előzmények meg vannak osztva a taggal. Ha meg szeretné osztani a beszélgetési szál kezdete óta megjelenő előzményeket, állítsa ezt a tulajdonságot bármilyen dátumra vagy kevesebbre, mint a szál létrehozási ideje. Ha meg szeretné osztani az előző előzményeket a tag hozzáadásakor, állítsa az aktuális dátumra. A részleges előzmények megosztásához állítsa azt egy közbenső dátumra.
 

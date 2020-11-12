@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: ff8a09e32a44f51571cca93655f91080e5df9a50
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 7c2c6460207538371af2a1deada524313816793b
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186843"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523739"
 ---
 [Dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/MetricsAdvisor/)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/metricsadvisor/azure-ai-metricsadvisor/src)  |  Összetevő [(Maven)](https://search.maven.org/artifact/com.azure/azure-ai-metricsadvisor)  |  [Példák](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/metricsadvisor/azure-ai-metricsadvisor/src/samples)
 
@@ -59,7 +59,7 @@ Keresse meg a *Build. gradle. KTS* , és nyissa meg a kívánt ide-vagy szövegs
 
 ```kotlin
 dependencies {
-    compile("com.azure:azure-ai-metricsadvisor:1.0.0-beta.1")
+    compile("com.azure:azure-ai-metricsadvisor:1.0.0-beta.2")
 }
 ```
 
@@ -106,10 +106,10 @@ A következő osztályok a metrikai tanácsadó Java SDK főbb funkcióit kezeli
 
 |Név|Leírás|
 |---|---|
-| [MetricsAdvisorClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.1/com/azure/ai/metricsadvisor/MetricsAdvisorClient.html) | **A következőhöz használatos** : <br> -Incidensek listázása <br> -Az incidensek kiváltó okának listázása <br> – A szolgáltatás által dúsított eredeti idősoros adatok és idősoros adatok beolvasása. <br> – Riasztások listázása <br> – Visszajelzés hozzáadása a modell finomhangolásához |
-| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.1/com/azure/ai/metricsadvisor/administration/MetricsAdvisorAdministrationClient.html)| **A következőket teszi lehetővé:** <br> – Adatcsatornák kezelése <br> -Anomáliák észlelési konfigurációinak konfigurálása <br> -Anomáliák riasztási konfigurációinak konfigurálása <br> – Hookok kezelése  |
-| [DataFeed](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.1/com/azure/ai/metricsadvisor/models/DataFeed.html)| **A metrikák tanácsadója az adatforrásból származik. A a `DataFeed` következőket tartalmazza:** <br> – Időbélyeg <br> – Nulla vagy több dimenzió <br> -Egy vagy több mérték  |
-| [Metrika](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.1/com/azure/ai/metricsadvisor/models/Metric.html) | A egy `Metric` számszerűsíthető mérték, amely egy adott üzleti folyamat állapotának figyelésére és értékelésére szolgál. Több idősorozat-érték kombinációját is kioszthatja dimenzióra. A webes állapot mérőszáma például a felhasználók számának és az en-us piacnak a dimenzióit is tartalmazhatja. |
+| [MetricsAdvisorClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.2/com/azure/ai/metricsadvisor/MetricsAdvisorClient.html) | **A következőhöz használatos** : <br> -Anomália-incidensek listázása <br> -Az incidensek kiváltó okának listázása <br> – A szolgáltatás által dúsított eredeti idősoros adatok és idősoros adatok beolvasása. <br> – Riasztások listázása <br> – Visszajelzés hozzáadása a modell finomhangolásához |
+| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.2/com/azure/ai/metricsadvisor/administration/MetricsAdvisorAdministrationClient.html)| **A következőket teszi lehetővé:** <br> – Adatcsatornák kezelése <br> -Anomáliák észlelési konfigurációinak konfigurálása <br> -Anomáliák riasztási konfigurációinak konfigurálása <br> – Hookok kezelése  |
+| [DataFeed](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.2/com/azure/ai/metricsadvisor/models/DataFeed.html) | **A metrikák tanácsadója az adatforrásból származik. A a `DataFeed` következőket tartalmazza:** <br> – Időbélyeg <br> – Nulla vagy több dimenzió <br> -Egy vagy több mérték  |
+| [DataFeedMetric](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.2/com/azure/ai/metricsadvisor/models/DataFeedMetric.html) | A egy `DataFeedMetric` számszerűsíthető mérték, amely egy adott üzleti folyamat állapotának figyelésére és értékelésére szolgál. Több idősorozat-érték kombinációját is kioszthatja dimenzióra. A webes állapot mérőszáma például a felhasználók számának és az en-us piacnak a dimenzióit is tartalmazhatja. |
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -149,32 +149,32 @@ MetricsAdvisorAdministrationClient metricsAdvisorAdministrationClient =
 
 ## <a name="add-a-data-feed"></a>Adatcsatorna hozzáadása
 
-Cserélje le a `sql_server_connection_string` értéket a saját SQL Server-alapú kapcsolatok karakterláncára, és cserélje le `query` egy olyan lekérdezésre, amely egy időbélyegen keresztül adja vissza az adatait. A és az értékeket is módosítania kell az `metric` `dimension` Egyéni adatok alapján.
+Cserélje le a `sql_server_connection_string` értéket a saját SQL Server-alapú kapcsolatok karakterláncára, és cserélje le `query` egy olyan lekérdezésre, amely egy időbélyegen keresztül adja vissza az adatait. A és az értékeket is módosítania kell az `DataFeedMetric` `DataFeedDimension` Egyéni adatok alapján.
 
 > [!IMPORTANT]
 > A lekérdezésnek az egyes dimenzió-kombinációk esetében legfeljebb egy rekordot kell visszaadnia minden időbélyegnél. A lekérdezés által visszaadott összes rekordnak azonos időbélyegzővel kell rendelkeznie. A metrikai tanácsadó minden időbélyeg esetében futtatja ezt a lekérdezést az adatok betöltéséhez. További információért és példákért tekintse [meg a gyakori kérdések szakaszt](../../faq.md#how-do-i-write-a-valid-query-for-ingesting-my-data) . 
 
 ```java
-final DataFeed createdSqlDataFeed = metricsAdvisorAdministrationClient.createDataFeed(
-    "My data feed name",
-    new SQLServerDataFeedSource("sql_server_connection_string", "query"),
-    new DataFeedGranularity().setGranularityType(DataFeedGranularityType.DAILY),
-    new DataFeedSchema(Arrays.asList(
-        new Metric().setName("cost"),
-        new Metric().setName("revenue")))
-        .setDimensions(Arrays.asList(
-            new Dimension().setName("category"),
-            new Dimension().setName("city"))),
-    new DataFeedIngestionSettings(OffsetDateTime.parse("2020-01-01T00:00:00Z")),
-    new DataFeedOptions()
-        .setDescription("My data feed description")
-        .setRollupSettings(
-            new DataFeedRollupSettings()
-                .setAutoRollup(DataFeedAutoRollUpMethod.SUM, Arrays.asList("cost"), "__CUSTOM_SUM__"))
-        .setMissingDataPointFillSettings(
-            new DataFeedMissingDataPointFillSettings()
-                .setFillType(DataSourceMissingDataPointFillType.SMART_FILLING))
-        .setAccessMode(DataFeedAccessMode.PUBLIC));
+DataFeed dataFeed = new DataFeed()
+    .setName("dataFeedName")
+    .setSource(new MySqlDataFeedSource("sql_server_connection_string", "query"))
+    .setGranularity(new DataFeedGranularity().setGranularityType(DataFeedGranularityType.DAILY))
+    .setSchema(new DataFeedSchema(
+        Arrays.asList(
+            new DataFeedMetric().setName("cost"),
+            new DataFeedMetric().setName("revenue")
+        )).setDimensions(
+        Arrays.asList(
+            new DataFeedDimension().setName("city"),
+            new DataFeedDimension().setName("category")
+        ))
+    )
+    .setIngestionSettings(new DataFeedIngestionSettings(OffsetDateTime.parse("2020-01-01T00:00:00Z")))
+    .setOptions(new DataFeedOptions()
+        .setDescription("data feed description")
+        .setRollupSettings(new DataFeedRollupSettings()
+            .setRollupType(DataFeedRollupType.AUTO_ROLLUP)));
+final DataFeed createdSqlDataFeed = metricsAdvisorAdminClient.createDataFeed(dataFeed);
 
 System.out.printf("Data feed Id : %s%n", createdSqlDataFeed.getId());
 System.out.printf("Data feed name : %s%n", createdSqlDataFeed.getName());
@@ -185,14 +185,13 @@ System.out.printf("Data feed granularity type : %s%n",
 System.out.printf("Data feed granularity value : %d%n",
     createdSqlDataFeed.getGranularity().getCustomGranularityValue());
 System.out.println("Data feed related metric Ids:");
-createdSqlDataFeed.getMetricIds().forEach(metricId -> System.out.println(metricId));
+createdSqlDataFeed.getMetricIds().forEach(System.out::println);
 System.out.printf("Data feed source type: %s%n", createdSqlDataFeed.getSourceType());
-createdSqlDataFeed.getSchema().getMetrics().forEach(metric -> {
-    System.out.printf("metric name: %s metric id:%s", metric.getName(), metric.getId());
-});
 
-System.out.printf("Data feed sql server query: %s%n",
-    ((SQLServerDataFeedSource) createdSqlDataFeed.getSource()).getQuery());
+if (SQL_SERVER_DB == createdSqlDataFeed.getSourceType()) {
+    System.out.printf("Data feed sql server query: %s%n",
+        ((SQLServerDataFeedSource) createdSqlDataFeed.getSource()).getQuery());
+}
 ```
 
 ## <a name="check-the-ingestion-status"></a>A betöltési állapot keresése
@@ -202,7 +201,7 @@ Ez a példa egy előzőleg megadott adatcsatorna-forrás betöltési állapotát
 ```java
 String dataFeedId = "<use-the-data-feed-id-from-createdSqlDataFeed.getId()"; 
 
-metricsAdvisorAdministrationClient.listDataFeedIngestionStatus(
+metricsAdvisorAdminClient.listDataFeedIngestionStatus(
     dataFeedId,
     new ListDataFeedIngestionOptions(
         OffsetDateTime.parse("2020-01-01T00:00:00Z"),
@@ -238,9 +237,9 @@ SmartDetectionCondition smartDetectionCondition = new SmartDetectionCondition()
     .setSuppressCondition(new SuppressCondition().setMinNumber(1).setMinRatio(2));
 
 final AnomalyDetectionConfiguration anomalyDetectionConfiguration =
-    metricsAdvisorAdministrationClient.createMetricAnomalyDetectionConfiguration(
+    metricsAdvisorAdminClient.createMetricAnomalyDetectionConfig(
         metricId,
-        new AnomalyDetectionConfiguration("My Anomaly detection configuration")
+        new AnomalyDetectionConfiguration("My dataPoint anomaly detection configuration")
             .setDescription("anomaly detection config description")
             .setWholeSeriesDetectionCondition(
                 new MetricWholeSeriesDetectionCondition()
@@ -256,18 +255,19 @@ final AnomalyDetectionConfiguration anomalyDetectionConfiguration =
 Ez a példa egy e-mail-hookot hoz létre, amely anomália incidensi riasztásokat fogad.
 
 ```java
-Hook emailHook = new EmailHook("email hook")
-    .setDescription("my email hook")
+NotificationHook emailNotificationHook = new EmailNotificationHook("email Hook")
+    .setDescription("my email Hook")
     .addEmailToAlert("alertme@alertme.com")
-    .setExternalLink("https://adwiki.azurewebsites.net/articles/howto/alerts/create-hooks.html");
+    .setExternalLink("https://example.com/handleAlerts"); // you must enter a valid webhook url to post the alert payload
 
-final Hook hook = metricsAdvisorAdministrationClient.createHook(emailHook);
-EmailHook createdEmailHook = (EmailHook) hook;
-System.out.printf("Hook Id: %s%n", createdEmailHook.getId());
-System.out.printf("Hook Name: %s%n", createdEmailHook.getName());
-System.out.printf("Hook Description: %s%n", createdEmailHook.getDescription());
-System.out.printf("Hook External Link: %s%n", createdEmailHook.getExternalLink());
-System.out.printf("Hook Emails: %s%n", String.join(",", createdEmailHook.getEmailsToAlert()));
+final NotificationHook notificationHook = metricsAdvisorAdminClient.createHook(emailNotificationHook);
+EmailNotificationHook createdEmailHook = (EmailNotificationHook) notificationHook;
+System.out.printf("Email Hook Id: %s%n", createdEmailHook.getId());
+System.out.printf("Email Hook name: %s%n", createdEmailHook.getName());
+System.out.printf("Email Hook description: %s%n", createdEmailHook.getDescription());
+System.out.printf("Email Hook external Link: %s%n", createdEmailHook.getExternalLink());
+System.out.printf("Email Hook emails to alert: %s%n",
+    String.join(",", createdEmailHook.getEmailsToAlert()));
 ```
 
 ##  <a name="create-an-alert-configuration"></a>Riasztási konfiguráció létrehozása
@@ -281,8 +281,8 @@ String hookId1 = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 String hookId2 = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 
 final AnomalyAlertConfiguration anomalyAlertConfiguration
-    = metricsAdvisorAdministrationClient.createAnomalyAlertConfiguration(
-        new AnomalyAlertConfiguration("My Alert config name")
+    = metricsAdvisorAdminClient.createAnomalyAlertConfig(
+        new AnomalyAlertConfiguration("My anomaly alert config name")
             .setDescription("alert config description")
             .setMetricAlertConfigurations(
                 Arrays.asList(
@@ -291,8 +291,8 @@ final AnomalyAlertConfiguration anomalyAlertConfiguration
                     new MetricAnomalyAlertConfiguration(detectionConfigurationId2,
                         MetricAnomalyAlertScope.forWholeSeries())
                         .setAlertConditions(new MetricAnomalyAlertConditions()
-                            .setSeverityCondition(new SeverityCondition()
-                                .setMaxAlertSeverity(Severity.HIGH)))
+                            .setSeverityRangeCondition(new SeverityCondition()
+                                .setMaxAlertSeverity(AnomalySeverity.HIGH)))
                 ))
             .setCrossMetricsOperator(MetricAnomalyAlertConfigurationsOperator.AND)
             .setIdOfHooksToAlert(Arrays.asList(hookId1, hookId2)));
@@ -304,24 +304,24 @@ Ez a példa azt szemlélteti, hogy a felhasználók hogyan tudják lekérdezni a
 
 ```java
 String alertConfigurationId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+final OffsetDateTime startTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+final OffsetDateTime endTime = OffsetDateTime.parse("2020-09-09T00:00:00Z");
 metricsAdvisorClient.listAlerts(
     alertConfigurationId,
-    new ListAlertOptions(OffsetDateTime.parse("2020-01-01T00:00:00Z"),
-        OffsetDateTime.now(),
-        TimeMode.ANOMALY_TIME))
+        startTime, endTime)
     .forEach(alert -> {
-        System.out.printf("Alert Id: %s%n", alert.getId());
-        System.out.printf("Alert created on: %s%n", alert.getCreatedTime());
+        System.out.printf("AnomalyAlert Id: %s%n", alert.getId());
+        System.out.printf("AnomalyAlert created on: %s%n", alert.getCreatedTime());
 
         // List anomalies for returned alerts
         metricsAdvisorClient.listAnomaliesForAlert(
             alertConfigurationId,
             alert.getId())
             .forEach(anomaly -> {
-                System.out.printf("Anomaly was created on: %s%n", anomaly.getCreatedTime());
-                System.out.printf("Anomaly severity: %s%n", anomaly.getSeverity().toString());
-                System.out.printf("Anomaly status: %s%n", anomaly.getStatus());
-                System.out.printf("Anomaly related series key: %s%n", anomaly.getSeriesKey().asMap());
+                System.out.printf("DataPoint Anomaly was created on: %s%n", anomaly.getCreatedTime());
+                System.out.printf("DataPoint Anomaly severity: %s%n", anomaly.getSeverity().toString());
+                System.out.printf("DataPoint Anomaly status: %s%n", anomaly.getStatus());
+                System.out.printf("DataPoint Anomaly related series key: %s%n", anomaly.getSeriesKey().asMap());
             });
     });
 ```
