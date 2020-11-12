@@ -10,6 +10,8 @@
           href: what-is-b2b.md
         - name: Mi az az Azure AD B2C?
           href: ../../active-directory-b2c/overview.md
+        - name: A docs újdonságai
+          href: whats-new-docs.md
     - name: Rövid útmutatók
       items:
         - name: Vendégfelhasználók hozzáadása a portálon

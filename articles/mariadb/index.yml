@@ -3,17 +3,17 @@ title: Az Azure Database for MariaDB dokumentációja
 summary: Az Azure Database for MariaDB egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú MariaDB Server motoron alapul.  Ez a teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel és dinamikus skálázhatósággal kezeli a létfontosságú számítási feladatokat. Az Azure Database for MariaDB-ben végzett alkalmazásfejlesztéssel kiaknázhatja az Ön által választott nyílt forráskódú eszközök és platform előnyeit. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti az Azure Database for MariaDB használatát.
 metadata:
   description: Az Azure Database for MariaDB egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a nyílt forráskódú MariaDB adatbázismotoron alapul.
-  author: ajlam
-  ms.author: andrela
+  author: savjani
+  ms.author: pariks
   ms.date: 09/05/2019
   ms.service: mariadb
   ms.topic: landing-page
-  ms.openlocfilehash: 3e49a860cca6cb59543f450cda4bda8c6b0c0a38
-  ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+  ms.openlocfilehash: 3c2ea25c4d928071da6f6d3047b58996289aaa13
+  ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92428331"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94539804"
 landingContent:
 - title: Az Azure Database for MariaDB bemutatása
   linkLists:

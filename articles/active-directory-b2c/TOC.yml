@@ -7,6 +7,8 @@
       href: overview.md
     - name: Műszaki jellemzők és funkciók áttekintése
       href: technical-overview.md
+    - name: A docs újdonságai
+      href: whats-new-docs.md
 - name: Rövid útmutatók
   expanded: true
   items:

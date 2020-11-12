@@ -3,17 +3,17 @@ title: Az Azure Database for MySQL dokumentációja
 summary: Az Azure Database for MySQL egy relációsadatbázis-szolgáltatás, amely a MySQL Community Editionre épül. Önálló kiszolgálóval vagy Rugalmas kiszolgálóval (előzetes verzió) futtathat MySQL-adatbázist az Azure-ban. Ez a teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel és dinamikus skálázhatósággal kezeli a létfontosságú számítási feladatokat.
 metadata:
   description: Az Azure Database for MySQL egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a MySQL Community Editionre épül. Önálló kiszolgálóval vagy Rugalmas kiszolgálóval (előzetes verzió) helyezheti üzembe a MySQL-adatbázist az Azure-ban.
-  author: ajlam
-  ms.author: andrela
+  author: savjani
+  ms.author: pariks
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 9ac045aac0587f7080ab7df277522674ca603040
-  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+  ms.openlocfilehash: 82c736b3256a099aa0dbd2edca14f402a3b935be
+  ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/26/2020
-  ms.locfileid: "92546296"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94543034"
 landingContent:
 - title: További információ az Azure Database for MySQL-ről
   linkLists:
