@@ -178,6 +178,8 @@
           href: connect-threat-intelligence.md
         - name: Azure Stack rendszerű virtuális gépek csatlakoztatása
           href: connect-azure-stack.md
+        - name: Adatösszekötő állapotának monitorozása
+          href: monitor-data-connector-health.md
     - name: Felhasználói és entitásviselkedési elemzés engedélyezése
       href: enable-entity-behavior-analytics.md
     - name: Több bérlő (MSSP) kezelése

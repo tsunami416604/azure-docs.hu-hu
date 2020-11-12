@@ -119,12 +119,10 @@
       href: qna-maker-encryption-of-data-at-rest.md
     - name: REST API-referencia
       items:
-        - name: API-k készítése
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase'
-        - name: GenerateAnswer API
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
-        - name: API betanítása
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
+        - name: QnA Maker 4.0
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/alterations'
+        - name: QnA Maker 5.0 – 1. előzetes verzió
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/alterations'
     - name: SDK-k
       items:
         - name: C#
