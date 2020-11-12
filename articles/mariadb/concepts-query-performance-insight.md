@@ -1,17 +1,17 @@
 ---
 title: Lekérdezési terheléselemző – Azure Database for MariaDB
 description: Ez a cikk a Azure Database for MariaDB Lekérdezési terheléselemző szolgáltatását ismerteti.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 88777ee44551ed6abdb7a6c7c909d6bf55db48c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b643ba3305736480e06d7c10d594b2271839038f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79527844"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536332"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Lekérdezési teljesítmény elemzése az Azure Database for MariaDB-ben
 
@@ -19,7 +19,7 @@ ms.locfileid: "79527844"
 
 Lekérdezési terheléselemző segítségével gyorsan azonosíthatja a leghosszabb ideig futó lekérdezéseket, hogyan változnak az idő múlásával, és mi vár rájuk.
 
-## <a name="common-scenarios"></a>Gyakori helyzetek
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
 ### <a name="long-running-queries"></a>Hosszú ideig futó lekérdezések
 
@@ -56,7 +56,7 @@ Kattintással és húzással egy adott időablakra szűkítheti a diagramot. Azt
 ### <a name="wait-statistics"></a>Várakozási statisztika 
 
 > [!NOTE]
-> A várakozási statisztikák a lekérdezések teljesítményével kapcsolatos problémák elhárításához szükségesek. Javasoljuk, hogy csak hibaelhárítási célokra legyen bekapcsolva. <br>Ha a következő hibaüzenet jelenik meg: "*a Microsoft. DBforMariaDB" hibába ütközött "a probléma" Azure Portal. a kérés nem teljesíthető. Ha a probléma továbbra is fennáll, vagy váratlan, forduljon az ügyfélszolgálathoz az információval.*" a várakozási statisztikák megtekintése közben használjon kisebb időtartamot.
+> A várakozási statisztikák a lekérdezések teljesítményével kapcsolatos problémák elhárításához szükségesek. Javasoljuk, hogy csak hibaelhárítási célokra legyen bekapcsolva. <br>Ha a következő hibaüzenet jelenik meg: " *a Microsoft. DBforMariaDB" hibába ütközött "a probléma" Azure Portal. a kérés nem teljesíthető. Ha a probléma továbbra is fennáll, vagy váratlan, forduljon az ügyfélszolgálathoz az információval.* " a várakozási statisztikák megtekintése közben használjon kisebb időtartamot.
 
 A várakozási statisztikák áttekintést nyújtanak az adott lekérdezés végrehajtása során bekövetkezett várakozási eseményekről. További információ a várakozási események típusairól a [MySQL-motor dokumentációjában](https://go.microsoft.com/fwlink/?linkid=2098206).
 
@@ -66,6 +66,6 @@ A várakozási Statisztika nézetben megjelenő lekérdezések csoportosítása 
 
 ![Lekérdezési terheléselemző vár statisztikái](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure Database for MariaDB [figyeléséről és hangolásáról](concepts-monitoring.md) .

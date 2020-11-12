@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 9b55c4873c4d7ee430e7d9ce84d2782a37e522ae
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: dc5dcf20b8c4fb1dae971b9bda4ef1a7552ce9d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442140"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534738"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 
@@ -156,9 +156,12 @@ A privát végpontok és a virtuális hálózatok munkaterülettel való haszná
 
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Ügyfél által felügyelt kulcs és magas üzleti hatás munkaterülete
 
-Alapértelmezés szerint a munkaterülethez tartozó metrikák és metaadatok a Microsoft által fenntartott Azure Cosmos DB-példányban vannak tárolva. Ezeket az adatfájlokat a Microsoft által felügyelt kulcsokkal titkosítjuk. 
+Alapértelmezés szerint a munkaterület metaadatai a Microsoft által fenntartott Azure Cosmos DB-példányban vannak tárolva. Ezeket az adatfájlokat a Microsoft által felügyelt kulcsokkal titkosítjuk.
 
-A Microsoft által felügyelt kulcs használata helyett használhatja a saját kulcs megadását. Ezzel létrehozza az Azure-előfizetésében szereplő mérőszámokat és metaadatokat tároló Azure Cosmos DB-példányt. Használja a `--cmk-keyvault` paramétert a kulcsot tartalmazó Azure Key Vault megadásához, valamint a `--resource-cmk-uri` kulcs URL-címének megadásához a tárolón belül.
+> [!NOTE]
+> A Azure Cosmos DB __nem__ használható olyan információk tárolására, mint például a modell teljesítménye, a kísérletek által naplózott információk vagy a modell-telepítésből naplózott információk. Az elemek monitorozásával kapcsolatos további információkért tekintse meg az architektúra és fogalmak című cikk [figyelés és naplózás](concept-azure-machine-learning-architecture.md) című szakaszát.
+
+A Microsoft által felügyelt kulcs használata helyett használhatja a saját kulcs megadását. Ezzel létrehozza az Azure-előfizetésében található metaadatokat tároló Azure Cosmos DB-példányt. Használja a `--cmk-keyvault` paramétert a kulcsot tartalmazó Azure Key Vault megadásához, valamint a `--resource-cmk-uri` kulcs URL-címének megadásához a tárolón belül.
 
 A és a `--cmk-keyvault` paraméterek használata előtt `--resource-cmk-uri` először végre kell hajtania a következő műveleteket:
 
@@ -410,6 +413,6 @@ A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Regis
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A gépi tanuláshoz készült Azure CLI bővítménnyel kapcsolatos további információkért tekintse meg az az [ml](/cli/azure/ext/azure-cli-ml/ml?preserve-view=true&view=azure-cli-latest) dokumentációt.

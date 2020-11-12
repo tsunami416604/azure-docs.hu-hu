@@ -1,17 +1,17 @@
 ---
 title: Számítási és tárolási lehetőségek – Azure Database for MySQL – rugalmas kiszolgáló
 description: Ez a cikk a Azure Database for MySQL rugalmas kiszolgáló számítási és tárolási lehetőségeit ismerteti.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: 0755ca7e77592a2efd6d8687f9eb19eacc2f0128
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 36f31ee390a6a208b202698ec9bda59b644c9e30
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315176"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534670"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Számítási és tárolási lehetőségek Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -132,7 +132,7 @@ Ha többet szeretne megtudni a maximálisan érvényes IOPS, a számítási és 
 
 A maximális tényleges IOPS függ a maximális rendelkezésre álló IOPS, a számítási mérettől számítva. Tekintse meg az alábbi képletet, és tekintse meg a nem *gyorsítótárazott lemez maximális átviteli sebességét: IOPS/Mbps* a [B sorozat](../../virtual-machines/sizes-b-series-burstable.md), a [Ddsv4 sorozat](../../virtual-machines/ddv4-ddsv4-series.md)és a [Edsv4 sorozat](../../virtual-machines/edv4-edsv4-series.md) dokumentációjában.
 
-**Max. effektív IOPS** = minimális (*"a gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/Mbps"* , a számítási méret, a kiépített, GIB * 3)
+**Max. effektív IOPS** = minimális ( *"a gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/Mbps"* , a számítási méret, a kiépített, GIB * 3)
 
 Az I/O-használatot a Azure Portalban (Azure Monitor) figyelheti az [IO százalék](./concepts-monitoring.md) metrika használatával. Ha több IOPS van szüksége, meg kell ismernie, hogy korlátozva van-e a számítási méret vagy a kiépített tárterület. A kiszolgáló kiépített számítási vagy tárolási méretének skálázása.
 
@@ -153,7 +153,7 @@ A tárterület skálázása és a biztonsági mentés megőrzési időszakának 
 
 ## <a name="pricing"></a>Díjszabás
 
-A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/MySQL/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) a kiválasztott lehetőségek alapján a **számítási és tárolási** lap havi költségét jeleníti meg. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és a beállítások testreszabásához válassza a **Azure Database for MySQL**és a **rugalmas kiszolgáló** lehetőséget.
+A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/MySQL/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) a kiválasztott lehetőségek alapján a **számítási és tárolási** lap havi költségét jeleníti meg. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása** , majd az **adatbázisok** kategóriát, és a beállítások testreszabásához válassza a **Azure Database for MySQL** és a **rugalmas kiszolgáló** lehetőséget.
 
 Ha optimalizálni szeretné a kiszolgáló költségeit, akkor a következő tippeket kell figyelembe vennie:
 

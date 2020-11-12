@@ -1,17 +1,17 @@
 ---
 title: Lekérdezési teljesítmény – Azure Database for MariaDB
 description: Megtudhatja, hogyan használhatja a MAGYARÁZATot a Azure Database for MariaDB lekérdezési teljesítményének hibakereséséhez.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: ae3637eb5e9f6f70d0f53d7b1cb97bd348c114bc
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2b7491723ffcff73e4b243fe54ef18608167d636
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424427"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537237"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>A profil lekérdezési teljesítményének ismertetése a Azure Database for MariaDB
 A **magyarázat** egy praktikus eszköz a lekérdezések optimalizálásához. A magyarázó utasítás használatával információkat kaphat az SQL-utasítások végrehajtásáról. A következő kimenet egy példát mutat be a magyarázó utasítások végrehajtásához.
@@ -75,7 +75,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Ahogy a kimenet is látható, a MariaDB nem használ indexeket, mert nem állnak rendelkezésre megfelelő indexek. Emellett *az ideiglenes használatot is mutatja; Ha a file sort használja*, ami azt jelenti, hogy a MariaDB létrehoz egy ideiglenes táblázatot, amely kielégíti a **Group By** záradékot.
+Ahogy a kimenet is látható, a MariaDB nem használ indexeket, mert nem állnak rendelkezésre megfelelő indexek. Emellett *az ideiglenes használatot is mutatja; Ha a file sort használja* , ami azt jelenti, hogy a MariaDB létrehoz egy ideiglenes táblázatot, amely kielégíti a **Group By** záradékot.
  
 A **C2** -es oszlop indexének létrehozása önmagában nem tesz különbséget, és a MariaDB továbbra is létre kell hoznia egy ideiglenes táblát:
 
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Ebben az esetben a **C1** -es és a **C2** -es kezelt **index** is létrehozható, amelynek során a rendszer a **C2**-es értéket közvetlenül az indexben adja hozzá a további adatkeresések eltávolításához.
+Ebben az esetben a **C1** -es és a **C2** -es kezelt **index** is létrehozható, amelynek során a rendszer a **C2** -es értéket közvetlenül az indexben adja hozzá a további adatkeresések eltávolításához.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
@@ -165,5 +165,5 @@ A magyarázat azt mutatja, hogy a MariaDB képes a kombinált index használatá
  
 A magyarázat és a különböző típusú indexek használata jelentősen növelheti a teljesítményt. A tábla indexe nem feltétlenül jelenti azt, hogy a MariaDB használni tudná a lekérdezésekhez. Az indexek használatával mindig érvényesítse a feltételezéseket a lekérdezések MAGYARÁZATával és optimalizálásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ha szeretné megkeresni a leginkább érintett kérdésekre adott társi válaszokat, vagy új kérdést/választ szeretne küldeni, látogasson el [a Microsoft Q&egy kérdés oldalra](/answers/topics/azure-database-mariadb.html) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).

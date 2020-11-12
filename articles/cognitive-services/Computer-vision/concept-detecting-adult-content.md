@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e41eb0f6a61f7b195e251739ae93207c731cac5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71718517"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535877"
 ---
 # <a name="detect-adult-content"></a>Felnőtt tartalom észlelése
 
@@ -30,12 +30,12 @@ A Computer Vision képes felderíteni a képeken elérhető felnőtt anyagokat, 
 A "felnőtt" besorolás több különböző kategóriába esik:
 
 - A **felnőtt** képeket a kifejezetten szexuális természetű képek határozzák meg, és gyakran a meztelenség és a szexuális tevékenységek láthatók.
-- A **zamatos** képek olyan képként vannak definiálva, amelyek szexuálisan szuggesztív jellegűek, és gyakran kevésbé szexuálisan explicit tartalmú tartalmat tartalmaznak, mint a **felnőttként**megjelölt képek.
+- A **zamatos** képek olyan képként vannak definiálva, amelyek szexuálisan szuggesztív jellegűek, és gyakran kevésbé szexuálisan explicit tartalmú tartalmat tartalmaznak, mint a **felnőttként** megjelölt képek.
 - A **véres** képeket a Gore-t ábrázoló képek határozzák meg.
 
 ## <a name="use-the-api"></a>Az API használata
 
-A felnőtt tartalmat a [képek elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-val ismerheti meg. Amikor hozzáadja a értéket `Adult` a **visualFeatures** lekérdezési paraméterhez, az API három logikai tulajdonságot ad vissza, &mdash; `isAdultContent` és a `isRacyContent` `isGoryContent` &mdash; JSON-válaszában. A metódus a megfelelő tulajdonságokat is adja vissza, &mdash; `adultScore` `racyScore` `goreScore` &mdash; amelyek a nulla és az egyik kategóriába tartozó megbízhatósági pontszámokat jelölik.
+A felnőtt tartalmat a [képek elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API-val ismerheti meg. Amikor hozzáadja a értéket `Adult` a **visualFeatures** lekérdezési paraméterhez, az API három logikai tulajdonságot ad vissza, &mdash; `isAdultContent` és a `isRacyContent` `isGoryContent` &mdash; JSON-válaszában. A metódus a megfelelő tulajdonságokat is adja vissza, &mdash; `adultScore` `racyScore` `goreScore` &mdash; amelyek a nulla és az egyik kategóriába tartozó megbízhatósági pontszámokat jelölik.
 
 - [Gyors útmutató: rendszerkép elemzése (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 - [Gyors útmutató: rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)

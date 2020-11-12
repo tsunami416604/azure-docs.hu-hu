@@ -1,18 +1,18 @@
 ---
 title: 'Gyors útmutató: kiszolgáló létrehozása – Azure Portal – Azure Database for MariaDB'
 description: Ez a cikk azt mutatja be, hogyan hozhat létre egy mintául szolgáló Azure Database for MariaDB-kiszolgálót az Azure Portalon, nagyjából öt perc leforgása alatt.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/19/2020
-ms.openlocfilehash: e5801f46745b3fda28af19c11e323b9497ebe98a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7b27bff50b4e2cfa57e41919552086ba1d31f217
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88185247"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537050"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása a Azure Portal használatával
 
@@ -32,7 +32,7 @@ Azure Database for MariaDB-kiszolgáló létrehozása:
 
 1. A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
 
-2. Válassza az **adatbázisok**  >  **Azure Database for MariaDB**elemet. A **MariaDB** a keresőmezőbe is beírhatja a szolgáltatás megtalálásához.
+2. Válassza az **adatbázisok**  >  **Azure Database for MariaDB** elemet. A **MariaDB** a keresőmezőbe is beírhatja a szolgáltatás megtalálásához.
 
    ![Azure Database for MariaDB opció](./media/quickstart-create-mariadb-server-database-using-azure-portal/2_navigate-to-mariadb.png)
 
@@ -46,7 +46,7 @@ Azure Database for MariaDB-kiszolgáló létrehozása:
     Előfizetés | *az előfizetése* | Válassza ki a kiszolgálóhoz használni kívánt Azure-előfizetést. Ha több előfizetéssel is rendelkezik, válassza ki azt az előfizetést, amelynek a keretében az erőforrásért fizet.
     Erőforráscsoport | **myresourcegroup** | Adjon meg egy új erőforráscsoport-nevet, vagy válasszon egy meglévő erőforráscsoportot. 
     Forrás kiválasztása | **Üres** | Válassza az **Üres** lehetőséget egy teljesen új kiszolgáló létrehozásához. (Ha egy meglévő Azure Database for MariaDB-kiszolgáló georedundáns biztonsági mentéséből hoz létre kiszolgálót, válassza a **Biztonsági mentés** lehetőséget).
-    Kiszolgáló-rendszergazdai bejelentkezés | **myadmin** | A kiszolgálóhoz való csatlakozáshoz használni kívánt bejelentkezési fiók. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
+    Kiszolgáló-rendszergazdai bejelentkezés | **myadmin** | A kiszolgálóhoz való csatlakozáshoz használni kívánt bejelentkezési fiók. A rendszergazdai bejelentkezési név nem lehet **azure_superuser** , **admin** , **administrator** , **root** , **guest** vagy **public**.
     Jelszó | *tetszés szerinti* | Adjon meg a kiszolgálói rendszergazdai fiókhoz egy új jelszót. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
     Jelszó megerősítése | *tetszés szerinti*| Erősítse meg a rendszergazdafiók jelszavát.
     Hely | *a felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
@@ -62,7 +62,7 @@ Azure Database for MariaDB-kiszolgáló létrehozása:
 
 5. Az eszköztáron válassza az **Értesítések** elemet (a harang ikont) az üzembehelyezési folyamat nyomon követéséhez.
 
-Alapértelmezés szerint a következő adatbázisok jönnek létre a kiszolgáló alatt: **information_schema**, **mysql**, **performance_schema** és **sys**.
+Alapértelmezés szerint a következő adatbázisok jönnek létre a kiszolgáló alatt: **information_schema** , **mysql** , **performance_schema** és **sys**.
 
 ## <a name="configure-a-server-level-firewall-rule"></a><a name="configure-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása
 
@@ -99,7 +99,7 @@ Számos különféle alkalmazással csatlakozhat az Azure Database for MariaDB-k
 
 Először a [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) parancssori eszközt fogjuk használni a kiszolgálóhoz való csatlakozás bemutatásához. Egy böngészőt és az Azure Cloud Shellt is használhatja, nem lesz szükség külön szoftver telepítésére. Ha helyileg telepítve van a mysql segédprogram, onnan is csatlakozhat.
 
-1. Indítsa el az Azure Cloud Shellt az Azure Portal jobb felső eszköztárában található terminálikonnal (**>_**).
+1. Indítsa el az Azure Cloud Shellt az Azure Portal jobb felső eszköztárában található terminálikonnal ( **>_** ).
    ![Azure Cloud Shell terminál szimbóluma](./media/quickstart-create-mariadb-server-database-using-azure-portal/7-cloud-console.png)
 
 2. Az Azure Cloud Shell megnyílik a böngészőben. A Cloud Shellben bash felületi parancsokat használhat.
@@ -122,7 +122,7 @@ Először a [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) parancss
 
     mysql-paraméter |Ajánlott érték|Leírás
     ---|---|---
-    --host | *kiszolgáló neve* | Az a kiszolgálónév, amelyet korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet (** \* . MariaDB.database.Azure.com**) a példában látható módon. Ha nem emlékszik a kiszolgáló nevére, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat.
+    --host | *kiszolgáló neve* | Az a kiszolgálónév, amelyet korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet ( **\* . MariaDB.database.Azure.com** ) a példában látható módon. Ha nem emlékszik a kiszolgáló nevére, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat.
     --user | *kiszolgáló-rendszergazdai bejelentkezési név* |Az a kiszolgáló-rendszergazdai bejelentkezési felhasználónév, amelyet korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. Ha nem emlékszik a felhasználó nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. A formátum a *username \@ servername*.
     -p | *a jelszó*<br>(várja meg, amíg a rendszer felszólítja a megadására) |Amikor a rendszer kéri, adja meg a kiszolgáló létrehozásához használt jelszót. A beírt jelszókarakterek nem jelennek meg a Bash parancssorban, amikor beírja őket. A jelszó megadása után nyomja le az Enter billentyűt.
 
@@ -197,7 +197,7 @@ Ahhoz, hogy csatlakozzon a kiszolgálóhoz a MySQL Workbench használatával:
     |---|---|---|
      Kapcsolat neve | **Bemutató-kapcsolatok** | A kapcsolat címkéje. |
     Kapcsolati módszer | **Standard (TCP/IP)** | A Standard (TCP/IP) elégséges. |
-    Hostname (Gazdanév) | *kiszolgáló neve* | Az a kiszolgálónév, amelyet korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet (** \* . MariaDB.database.Azure.com**) a példában látható módon. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse a cikk korábbi szakaszában ismertetett lépéseket.|
+    Hostname (Gazdanév) | *kiszolgáló neve* | Az a kiszolgálónév, amelyet korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet ( **\* . MariaDB.database.Azure.com** ) a példában látható módon. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse a cikk korábbi szakaszában ismertetett lépéseket.|
      Port | 3306 | Az Azure Database for MariaDB-kiszolgálóhoz való csatlakozáskor használandó port. |
     Felhasználónév |  *kiszolgáló-rendszergazdai bejelentkezési név* | Azok a kiszolgáló-rendszergazdai bejelentkezési adatok, amelyeket korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. A példában szereplő Felhasználónév a **myadmin \@ mydemoserver**. Ha nem emlékszik a felhasználónevére, a kapcsolati adatok lekéréséhez kövesse a cikk korábbi szakaszában ismertetett lépéseket. A formátum a *username \@ servername*.
     Jelszó | *a jelszó* | A jelszó mentéséhez kattintson a **Store in Vault** (Tárolás a tárolóban) gombra. |
@@ -207,7 +207,7 @@ Ahhoz, hogy csatlakozzon a kiszolgálóhoz a MySQL Workbench használatával:
     > [!NOTE]
     > Alapértelmezés szerint a kiszolgáló mindenképpen SSL-t használ, ami a sikeres kapcsolódáshoz további konfigurációt igényel. További információ: [Az SSL-kapcsolatok konfigurálása az alkalmazásban az Azure Database for MariaDB-hez való biztonságos kapcsolódásra](./howto-configure-ssl.md). Ha le szeretné tiltani az SSL használatát a rövid útmutató műveleteihez, az Azure Portal kiszolgálót áttekintő lapján válassza ki a **Kapcsolatbiztonság** elemet a menüben. Az **SSL-kapcsolat kikényszerítésénél** válassza a **Letiltva** lehetőséget.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforrásokat. Törölheti a teljes [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md). Ez a beállítás az erőforráscsoport összes erőforrását törli. Ha a többi erőforrást érintetlenül szeretné hagyni, csak egy kiszolgálói erőforrást töröljön.
 
@@ -216,9 +216,9 @@ Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforr�
 
 Ha az újonnan létrehozott kiszolgálót is magában foglaló teljes erőforráscsoportot törölni szeretné:
 
-1. Keresse meg az erőforráscsoportot az Azure Portalon. A bal oldali menüben válassza az **Erőforráscsoportok** elemet, majd válassza ki az erőforráscsoport nevét (ami a példánkban a **myresourcegroup**).
+1. Keresse meg az erőforráscsoportot az Azure Portalon. A bal oldali menüben válassza az **Erőforráscsoportok** elemet, majd válassza ki az erőforráscsoport nevét (ami a példánkban a **myresourcegroup** ).
 
-2. Az erőforráscsoport oldalán kattintson a **Törlés** parancsra. Ezután adja meg az erőforráscsoport nevét (a mi példánkban ez **myresourcegroup**) a törlés megerősítéséhez. Válassza a **Törlés** elemet.
+2. Az erőforráscsoport oldalán kattintson a **Törlés** parancsra. Ezután adja meg az erőforráscsoport nevét (a mi példánkban ez **myresourcegroup** ) a törlés megerősítéséhez. Válassza a **Törlés** elemet.
 
 Csak az újonnan létrehozott kiszolgáló törlése:
 
@@ -228,7 +228,7 @@ Csak az újonnan létrehozott kiszolgáló törlése:
 
    ![Azure Database for MariaDB – Kiszolgáló törlése](./media/quickstart-create-mariadb-server-database-using-azure-portal/delete-server.png)
 
-3. Erősítse meg a törölni kívánt kiszolgáló nevét. Jelenítse meg alatta a törlés által érintett összes adatbázist. Írja be a kiszolgáló nevét (a példánkban: **mydemoserver**) a törlés megerősítéséhez. Válassza a **Törlés** elemet.
+3. Erősítse meg a törölni kívánt kiszolgáló nevét. Jelenítse meg alatta a törlés által érintett összes adatbázist. Írja be a kiszolgáló nevét (a példánkban: **mydemoserver** ) a törlés megerősítéséhez. Válassza a **Törlés** elemet.
 
 ## <a name="next-steps"></a>Következő lépések
 

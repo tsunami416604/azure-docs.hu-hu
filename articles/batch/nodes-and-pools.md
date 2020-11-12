@@ -2,13 +2,13 @@
 title: Csomópontok és készletek a Azure Batchban
 description: Ismerje meg a számítási csomópontokat és készleteket, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
-ms.date: 10/21/2020
-ms.openlocfilehash: c85c50d0b30e30563390d2ffb05942f199047d67
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 11/10/2020
+ms.openlocfilehash: 77f3a1c954f5591537436c9ee747052b3a642ec4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913806"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537611"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Csomópontok és készletek a Azure Batchban
 
@@ -25,7 +25,7 @@ A csomópontok minden olyan végrehajtható fájlt vagy parancsprogramot képese
 A Batch szolgáltatásban működő számítási csomópontok emellett a következőket is tartalmazzák:
 
 - Szabványos [mappastruktúra](files-and-directories.md), valamint az ehhez tartozó [környezeti változók](jobs-and-tasks.md), amelyekre a tevékenységek hivatkozni tudnak.
-- A hozzáférés vezérléséhez konfigurált **tűzfalbeállítások** .
+- A hozzáférés vezérléséhez konfigurált **tűzfalbeállítások**.
 - [Távelérés](error-handling.md#connect-to-compute-nodes) a Windows (RDP protokoll (RDP) és a Linux (Secure Shell)-csomópontokhoz (kivéve, ha [a készletet a távoli hozzáférés letiltásával hozza létre](pool-endpoint-configuration.md)).
 
 Alapértelmezés szerint a csomópontok képesek kommunikálni egymással, de nem tudnak kommunikálni olyan virtuális gépekkel, amelyek nem azonos készlet részét képezik. Ahhoz, hogy a csomópontok biztonságosan kommunikáljanak más virtuális gépekkel vagy helyszíni hálózattal, a készletet egy [Azure-beli virtuális hálózat (VNet) alhálózatában](batch-virtual-network.md)is kiépítheti. Ha így tesz, a csomópontok nyilvános IP-címeken keresztül is elérhetők. Ezeket a nyilvános IP-címeket a Batch hozza létre, és a készlet élettartamára változhat. Létrehozhat egy Ön által vezérelt [statikus nyilvános IP-címmel rendelkező készletet](create-pool-public-ip.md) is, amely biztosítja, hogy a rendszer váratlanul ne változzon meg.
@@ -72,9 +72,9 @@ A [Batch-csomóponti ügynök](https://github.com/Azure/Batch/blob/master/change
 
 ### <a name="cloud-services-configuration"></a>Cloud Services konfiguráció
 
-A **Cloud Services konfiguráció** azt adja meg, hogy a készlet az Azure Cloud Services-csomópontokból tevődik össze. A Cloud Services *csak* a Windows számítási csomópontjait biztosítja.
+A **Cloud Services konfiguráció** azt adja meg, hogy a készlet az Azure Cloud Services-csomópontokból tevődik össze. Cloud Services csak Windows számítási csomópontokat biztosít.
 
-A Cloud Services-konfigurációval beállított készletekhez elérhető operációs rendszerek listáját az [Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md) (Vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrix az Azure-hoz) című cikk ismerteti. Ha Cloud Services csomópontokat tartalmazó készletet hoz létre, meg kell adnia a csomópont méretét és az *operációsrendszer-családját* (amely meghatározza, hogy a .net melyik verzióit telepíti az operációs rendszer). Cloud Services a Windows rendszerű virtuális gépeknél gyorsabban üzembe helyezhető az Azure-ban. Ha windowsos számítási csomópontok készleteire van szükség, előfordulhat, hogy a Cloud Services üzembe helyezési idő szempontjából teljesítményelőnyt nyújt.
+A Cloud Services konfigurációs készletekhez elérhető operációs rendszerek az [Azure vendég operációs rendszer kiadásainak és az SDK-kompatibilitási mátrixnak](../cloud-services/cloud-services-guestos-update-matrix.md)vannak felsorolva, és az elérhető számítási csomópontok méretei a [Cloud Services méretében](../cloud-services/cloud-services-sizes-specs.md)vannak felsorolva. Cloud Services csomópontokat tartalmazó készlet létrehozásakor meg kell adnia a csomópont méretét és az operációsrendszer- *családját* (amely meghatározza, hogy a .net mely verzióit telepíti az operációs rendszer). Cloud Services a Windows rendszerű virtuális gépeknél gyorsabban üzembe helyezhető az Azure-ban. Ha windowsos számítási csomópontok készleteire van szükség, előfordulhat, hogy a Cloud Services üzembe helyezési idő szempontjából teljesítményelőnyt nyújt.
 
 Ahogy a Cloud Services feldolgozói szerepkörei esetében, itt is megadhatja az *operációs rendszer verzióját* (a feldolgozói szerepkörökkel kapcsolatos további információkért olvassa el [a Cloud Services áttekintésével](../cloud-services/cloud-services-choose-me.md) foglalkozó cikket). Azt javasoljuk, hogy az `Latest (*)` *operációs rendszer verziójának* megadásával a csomópontok automatikusan frissüljenek, és nem szükséges dolgozni az újonnan kiadott verziókhoz. Azért tanácsos megadni a konkrét operációsrendszer-verziót, mert így garantálható az alkalmazások kompatibilitása, hogy így a korábbi verziókkal való kompatibilitási tesztet lehessen végezni a verziófrissítés engedélyezése előtt. Az ellenőrzés után frissítheti a készlet *operációsrendszer-verzióját* , és telepítheti az új operációsrendszer-rendszerképet is. A rendszer megszakítja a futó feladatokat, és újból várólistára helyezi őket.
 

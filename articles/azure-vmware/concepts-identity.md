@@ -2,25 +2,25 @@
 title: Fogalmak – identitás és hozzáférés
 description: Ismerje meg az Azure VMware-megoldás identitás-és hozzáférési fogalmait
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 7127109801d92d2177f6edac3efcaf76ddf217e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/11/2020
+ms.openlocfilehash: e9c0d62968d94e2b018186f67072b6ae7078db02
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674645"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536098"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Az Azure VMware megoldás identitásával kapcsolatos fogalmak
 
-Privát felhő telepítésekor a rendszer kiépíti a vCenter-kiszolgálót és a NSX-T kezelőt. A vCenter használatával kezelheti a virtuális gépek (VM) munkaterheléseit. A NSX-T Manager használatával kiterjesztheti a saját felhőalapú szoftver által meghatározott hálózatot.
+Az Azure VMware-megoldás privát felhők a vCenter-kiszolgálóval és a NSX-T kezelővel vannak kiépítve. A vCenter használatával kezelheti a virtuális gépek (VM) munkaterheléseit. A NSX-T kezelőjével kiterjesztheti a privát felhőt.
 
 A hozzáférés és az Identitáskezelés a CloudAdmin csoport jogosultságait használja a vCenter és a korlátozott rendszergazdai jogokkal a NSX-T Manager számára. Gondoskodik arról, hogy a saját felhőalapú platformja automatikusan, a legújabb funkciókkal és javításokkal legyen frissítve.  További információ: [Private Cloud upgrade Concepts cikk][concepts-upgrades].
 
 ## <a name="vcenter-access-and-identity"></a>vCenter-hozzáférés és-identitás
 
-A vCenter lévő jogosultságok a CloudAdmin csoporton keresztül érhetők el. Ez a csoport helyileg felügyelhető a vCenter-ben, vagy a vCenter LDAP egyszeri bejelentkezés integrálásával Azure Active Directory használatával. Ezzel a lehetőséggel engedélyezheti az integrációt a privát felhő üzembe helyezése után.
+A CloudAdmin csoport a vCenter-ben biztosítja a jogosultságokat. A csoportot helyileg kezelheti a vCenter-ben. Egy másik lehetőség a vCenter LDAP-alapú egyszeri bejelentkezés és a Azure Active Directory integrációja. A privát felhő üzembe helyezése után engedélyezheti az integrációt. 
 
-A CloudAdmin és a CloudGlobalAdmin jogosultság az alábbi táblázatban látható.
+A táblázat a **CloudAdmin** és a **CloudGlobalAdmin** jogosultságokat jeleníti meg.
 
 |  Jogosultság-készlet           | CloudAdmin | CloudGlobalAdmin | Megjegyzés |
 | :---                     |    :---:   |       :---:      |   :--:  |
@@ -35,7 +35,7 @@ A CloudAdmin és a CloudGlobalAdmin jogosultság az alábbi táblázatban látha
 |  Globális                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. ServiceManagers, Global. SetCustomField, Global.SystemTag         |                  |    |
 |  Gazdagép                    |  Host. HBR. HbrManagement      |        --          |  A Microsoft minden más gazdagép-műveletet hajt végre.  |
 |  InventoryService        |  InventoryService. tagging      |        --          |  --  |
-|  Hálózat                 |  Network. assign    |                  |  A Microsoft minden más hálózati műveletet hajt végre.  |
+|  Network (Hálózat)                 |  Network. assign    |                  |  A Microsoft minden más hálózati műveletet hajt végre.  |
 |  Engedélyek             |  --  |        --       |  A Microsoft minden engedély műveletet végez.  |
 |  Profil alapú tárolás  |  --  |        --       |  A Microsoft minden profillal kapcsolatos műveletet végez.  |
 |  Erőforrás                |  A CloudAdmin-felhasználók minden erőforrás-jogosultsággal rendelkeznek.        |      --       | --   |

@@ -1,17 +1,17 @@
 ---
 title: Biztonság – Azure Database for MySQL
 description: A Azure Database for MySQL biztonsági funkcióinak áttekintése.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 5caed64beb43cbb1e884a3dde6bc0052c617f83e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90855059461fcd5f8ed8d2733d2b6d4addaccde3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378780"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535044"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Biztonság az Azure Database for MySQL-ben
 

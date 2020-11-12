@@ -1,18 +1,18 @@
 ---
 title: 'Rövid útmutató: Azure-adatbázis létrehozása MariaDB-ARM-sablonhoz'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Database for MariaDB-kiszolgálót egy Azure Resource Manager sablon használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/14/2020
-ms.openlocfilehash: dc3999193356dd9cddc52b9873d22b4172c0030c
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: de6df8349025c3e87e5b005196008053039fa49f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042496"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537142"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása ARM-sablonnal
 
@@ -70,21 +70,21 @@ A következő hivatkozásra kattintva telepítheti a Azure Database for MariaDB-
 
 A **Azure Database for MariaDB üzembe helyezése a VNet** oldalon:
 
-1. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget, adja meg az új erőforráscsoport nevét, majd kattintson **az OK gombra** .
+1. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget, adja meg az új erőforráscsoport nevét, majd kattintson **az OK gombra**.
 
 2. Ha létrehozott egy új erőforráscsoportot, válassza ki az erőforráscsoport és az új kiszolgáló **helyét** .
 
-3. Adja meg a **kiszolgáló nevét** , a **rendszergazdai bejelentkezési azonosítót** és a **rendszergazdai bejelentkezési jelszót** .
+3. Adja meg a **kiszolgáló nevét** , a **rendszergazdai bejelentkezési azonosítót** és a **rendszergazdai bejelentkezési jelszót**.
 
     ![Azure Database for MariaDB üzembe helyezése a VNet ablakban, Azure-beli Gyorsindítás sablon, Azure Portal](./media/quickstart-create-mariadb-server-database-arm-template/deploy-azure-database-mariadb-vnet.png)
 
 4. Ha szeretné, módosítsa a többi alapértelmezett beállítást:
 
     * **Előfizetés** : a kiszolgálóhoz használni kívánt Azure-előfizetés.
-    * **SKU-kapacitás** : a virtuális mag kapacitása, amely lehet *2* (alapértelmezett), *4* , *8* , *16* , *32* vagy *64* .
-    * **SKU neve** : az SKU-rétegek előtagja, az SKU-család és az SKU-kapacitás, aláhúzások, például *B_Gen5_1* , *GP_Gen5_2* (alapértelmezett) vagy *MO_Gen5_32* .
+    * **SKU-kapacitás** : a virtuális mag kapacitása, amely lehet *2* (alapértelmezett), *4* , *8* , *16* , *32* vagy *64*.
+    * **SKU neve** : az SKU-rétegek előtagja, az SKU-család és az SKU-kapacitás, aláhúzások, például *B_Gen5_1* , *GP_Gen5_2* (alapértelmezett) vagy *MO_Gen5_32*.
     * **SKU mérete MB** : a Azure Database for MariaDB kiszolgáló tárterületének mérete (MB) (alapértelmezett *51200* ).
-    * **SKU-szint** : az üzembe helyezési szint, például *alapszintű,* *GeneralPurpose* (alapértelmezett) vagy *MemoryOptimized* .
+    * **SKU-szint** : az üzembe helyezési szint, például *alapszintű,* *GeneralPurpose* (alapértelmezett) vagy *MemoryOptimized*.
     * **SKU-család** : *Gen4* vagy *Gen5* (alapértelmezett), amely a kiszolgáló telepítésének hardveres generálását jelzi.
     * **MariaDB-verzió** : a telepítendő MariaDB-kiszolgáló verziója, például *10,2* vagy *10,3* (alapértelmezett).
     * **Biztonsági másolatok megőrzési napjai** : a földrajzi redundáns biztonsági másolatok megőrzésének kívánt időtartama napokban (alapértelmezett *7* ).
@@ -148,7 +148,7 @@ read -p "Press [ENTER] to continue: "
 
 Az alábbi lépéseket követve tekintheti meg az új Azure Database for MariaDB-kiszolgáló áttekintését:
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki **Azure Database for MariaDB kiszolgálókat** .
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki **Azure Database for MariaDB kiszolgálókat**.
 
 2. Az adatbázis listában válassza ki az új kiszolgálót. Megjelenik az új Azure Database for MariaDB-kiszolgáló **Áttekintés** lapja.
 
@@ -175,7 +175,7 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
 

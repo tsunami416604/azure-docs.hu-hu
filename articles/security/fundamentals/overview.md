@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 0d893eb2bf7a57e173d7acb8f15104522edbc3bf
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: db7d9e99de8a4ee67e49f8b7568700fc07b1e2fd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408209"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536508"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
@@ -60,7 +60,7 @@ A Cloud Service-modelltől függően az alkalmazás vagy szolgáltatás biztons�
 
 A beépített funkciók hat funkcionális területen vannak rendszerezve: műveletek, alkalmazások, tárolás, hálózatkezelés, számítás és identitás. Az Azure platformon elérhető funkciókkal és képességekkel kapcsolatos további részleteket az alábbi hat területen tekintheti meg összefoglaló információk alapján.
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 Ez a szakasz további információkat tartalmaz a biztonsági műveletek főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összefoglaló információkkal kapcsolatban.
 
 ### <a name="security-and-audit-dashboard"></a>Security and Audit irányítópult
@@ -179,7 +179,7 @@ Az eltérő [eredetű erőforrás-megosztás (CORS)](/rest/api/storageservices/f
 
 Az Azure Storage Services mostantól támogatja a CORS-t, így ha beállította a szolgáltatás CORS-szabályait, a rendszer kiértékeli, hogy a szolgáltatásra vonatkozó megfelelő hitelesített kérést egy másik tartományon keresztül hozták-e létre.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 A szakasz további információkat tartalmaz az Azure hálózati biztonságának főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összegző információkkal kapcsolatban.
 
 ### <a name="network-layer-controls"></a>Hálózati réteg vezérlői
@@ -221,7 +221,7 @@ Az Azure-Virtual Network és a helyszíni hely közötti hálózati forgalom elk
 ### <a name="express-route"></a>Express Route
 A Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) egy dedikált WAN-kapcsolat, amely lehetővé teszi, hogy a helyszíni hálózatait a Microsoft Cloud-ra bővítse egy olyan dedikált privát kapcsolaton keresztül, amely egy kapcsolati szolgáltató által könnyíti meg.
 
-![Express Route](./media/overview/azure-security-fig1.png)
+![Express Route](./media/overview/azure-security-figure-1.png)
 
 A ExpressRoute használatával kapcsolatokat létesíthet a Microsoft Cloud Services, például a Microsoft Azure, a Microsoft 365 és a CRM Online számára. A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben.
 
@@ -231,7 +231,7 @@ A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, így a VPN-
 ### <a name="application-gateway"></a>Application Gateway
 A Microsoft [Azure Application Gateway](../../application-gateway/overview.md) egy [alkalmazás-továbbítási vezérlőt (ADC)](https://en.wikipedia.org/wiki/Application_delivery_controller) biztosít szolgáltatásként, amely különböző 7. rétegbeli terheléselosztási funkciókat kínál az alkalmazásához.
 
-![Application Gateway](./media/overview/azure-security-fig2.png)
+![Application Gateway](./media/overview/azure-security-figure-2.png)
 
 Lehetővé teszi a webfarmok hatékonyságának optimalizálását azáltal, hogy kiszervezi a CPU-igényes TLS-megszakítást a Application Gateway (más néven "TLS-kiszervezés" vagy "TLS-áthidaló"). Emellett további 7. rétegbeli útválasztási lehetőségeket is biztosít, beleértve a bejövő forgalom ciklikus időszeleteléses elosztását, a cookie-alapú munkamenet-affinitást, az URL-alapú útválasztást, valamint több webhely üzemeltetését egyetlen Application Gateway mögött. Az Azure Application Gateway egy 7. rétegbeli terheléselosztó.
 
@@ -242,7 +242,7 @@ Az alkalmazás számos Application Delivery Controller (ADC) funkciót kínál, 
 ### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 A webalkalmazási tűzfal az [Azure Application Gateway](../../application-gateway/overview.md) szolgáltatása, amely védelmet nyújt az Application Gatewayt használó webalkalmazásoknak a standard Application Delivery Control (ADC) függvényekhez. A webalkalmazási tűzfal ezt úgy éri el, hogy védelmet nyújt az alkalmazásoknak az OWASP 10 leggyakoribb webes biztonsági résének többségével szemben.
 
-![Webalkalmazási tűzfal](./media/overview/azure-security-fig1.png)
+![Webalkalmazási tűzfal](./media/overview/azure-security-figure-3.png)
 
 -   SQL-injektálás elleni védelem
 

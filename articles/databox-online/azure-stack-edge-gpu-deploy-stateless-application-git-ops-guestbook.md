@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d323504a46cd35525c889a94d2d044193c1471ac
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899558"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535945"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>PHP-beli Vendégkönyv állapot nélküli alkalmazás üzembe helyezése a Redis on arc enabled Kubernetes-fürtön Azure Stack Edge Pro GPU-val
 
@@ -77,11 +77,11 @@ A következő lépésekkel konfigurálhatja az Azure arc-erőforrást a GitOps-k
 
     ![Ugrás az Azure arc-erőforrásra](media/azure-stack-edge-gpu-connect-powershell-interface/verify-azure-arc-enabled-1.png)
 
-1. Lépjen a **konfigurációk** elemre, és válassza a **+ konfiguráció hozzáadása**elemet.
+1. Lépjen a **konfigurációk** elemre, és válassza a **+ konfiguráció hozzáadása** elemet.
 
-    ![Ugrás a konfigurációkhoz](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
+    ![A képernyőképen az Azure arc használatára képes Kubernetes-fürt látható a konfiguráció hozzáadása lehetőség kiválasztásával.](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. A **konfiguráció hozzáadása**lapon adja meg a mezők megfelelő értékeit, majd válassza az **alkalmaz**lehetőséget.
+1. A **konfiguráció hozzáadása** lapon adja meg a mezők megfelelő értékeit, majd válassza az **alkalmaz** lehetőséget.
 
     |Paraméter  |Leírás |
     |---------|---------|
@@ -89,22 +89,22 @@ A következő lépésekkel konfigurálhatja az Azure arc-erőforrást a GitOps-k
     |Operátor példányának neve     |Az operátor példányának neve egy adott konfiguráció azonosításához. A név a legfeljebb 253 karakterből álló karakterlánc, amely csak kisbetűket, alfanumerikus karaktereket, kötőjelet és pontot tartalmazhat.         |
     |Operátor névtere     | Állítsa a **demotestguestbook** értékre, mivel ez megegyezik az üzemelő példányban megadott névtérrel `yaml` . <br> A mező határozza meg azt a névteret, amelyben a kezelő telepítve van. A név a legfeljebb 253 karakterből álló karakterlánc, amely csak kisbetűket, alfanumerikus karaktereket, kötőjelet és pontot tartalmazhat.         |
     |Tárház URL-címe     |<br>A git-tárház elérési útja `http://github.com/username/repo` vagy `git://github.com/username/repo` formátuma, ahol a GitOps-konfiguráció található.         |
-    |Operátor hatóköre     | Válassza a **névtér**lehetőséget. <br>Ez határozza meg azt a hatókört, amelyen a kezelő telepítve van. Válassza ezt a névteret. Az operátor a telepítési YAML-fájlokban megadott névtérbe lesz telepítve.       |
+    |Operátor hatóköre     | Válassza a **névtér** lehetőséget. <br>Ez határozza meg azt a hatókört, amelyen a kezelő telepítve van. Válassza ezt a névteret. Az operátor a telepítési YAML-fájlokban megadott névtérbe lesz telepítve.       |
     |Operátor típusa     | Alapértelmezés szerint hagyja. <br>Ezzel a beállítással adható meg, hogy az operátor típusa alapértelmezés szerint a Flux értékre van-e állítva.        |
     |Operátori paraméterek     | Hagyja üresen. <br>Ez a mező a Flux-kezelőnek átadandó paramétereket tartalmaz.        |
-    |Helm     | A beállítás **Letiltva**értékre állítható. <br>Akkor engedélyezze ezt a beállítást, ha diagram alapú központi telepítéseket hajt végre.        |
+    |Helm     | A beállítás **Letiltva** értékre állítható. <br>Akkor engedélyezze ezt a beállítást, ha diagram alapú központi telepítéseket hajt végre.        |
 
 
     ![Konfiguráció hozzáadása](media/azure-stack-edge-gpu-connect-powershell-interface/add-configuration-1.png)
 
 
-1. A konfiguráció központi telepítése elindul, és a **kezelő állapota** **függőben**jelenik meg. 
+1. A konfiguráció központi telepítése elindul, és a **kezelő állapota** **függőben** jelenik meg. 
 
-    ![Ugrás a konfigurációkhoz](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
+    ![Képernyőfelvétel: az Azure arc-kompatibilis Kubernetes-fürt függő állapotban van, mivel frissül.](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
 
-1. Az üzembe helyezés pár percet vesz igénybe. Az üzembe helyezés befejeztével a **kezelő állapota** **telepítettként**jelenik meg.
+1. Az üzembe helyezés pár percet vesz igénybe. Az üzembe helyezés befejeztével a **kezelő állapota** **telepítettként** jelenik meg.
 
-    ![Ugrás a konfigurációkhoz](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
+    ![Képernyőfelvétel: az Azure arc-kompatibilis Kubernetes-fürt telepített állapotban van.](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
 
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
@@ -154,7 +154,7 @@ A GitOps-konfiguráción keresztüli központi telepítés létrehoz egy névter
 A központi telepítés törléséhez törölheti a konfigurációt a Azure Portalból. Ez törli a létrehozott objektumokat, beleértve az üzembe helyezéseket és a szolgáltatásokat is.
 
 1. A Azure Portalban nyissa meg az Azure arc-erőforrás > konfigurációit. 
-1. Keresse meg a törölni kívánt konfigurációt. Válassza a... a helyi menü meghívásához és a **Törlés**lehetőség kiválasztásához.
+1. Keresse meg a törölni kívánt konfigurációt. Válassza a... a helyi menü meghívásához és a **Törlés** lehetőség kiválasztásához.
     ![Konfiguráció törlése](media/azure-stack-edge-gpu-connect-powershell-interface/delete-configuration-1.png)
 
 A konfiguráció törléséhez több percet is igénybe vehet.

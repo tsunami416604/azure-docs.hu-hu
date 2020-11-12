@@ -1,17 +1,17 @@
 ---
 title: Kapcsolat átirányítással – Azure Database for MariaDB
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja az alkalmazást, hogy a Azure Database for MariaDBhoz kapcsolódjon az átirányítás használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: 45d93797b72b3b35dd44cddc22124acb73eb3454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f26de72839fcaa39bff4d827aba757721736934
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121095"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537424"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Kapcsolódás Azure Database for MariaDBhoz átirányítás használatával
 
@@ -40,11 +40,11 @@ A mysqlnd_azure bővítmény elérhető a PHP-alkalmazások számára a PECL-n k
 >[!IMPORTANT]
 > Az átirányítási logika/viselkedés elején lévő 1.1.0-es verziójának frissítése megtörtént, és a **1.1.0 + használata javasolt**.
 
-Az átirányítási viselkedést a értéke határozza meg `mysqlnd_azure.enableRedirect` . Az alábbi táblázat az átirányítás viselkedését ismerteti a paraméternek a **1.1.0 + verziótól**kezdődő értéke alapján.
+Az átirányítási viselkedést a értéke határozza meg `mysqlnd_azure.enableRedirect` . Az alábbi táblázat az átirányítás viselkedését ismerteti a paraméternek a **1.1.0 + verziótól** kezdődő értéke alapján.
 
 Ha a mysqlnd_azure bővítmény (1.0.0-1.0.3 verzió) régebbi verzióját használja, az átirányítási viselkedést a értéke határozza meg `mysqlnd_azure.enabled` . Az érvényes értékek `off` (az alábbi táblázatban szereplő viselkedéssel hasonlóan viselkednek), és `on` (az alábbi táblázat szerint viselkednek `preferred` ).  
 
-|**mysqlnd_azure. enableRedirect érték**| **Működés**|
+|**mysqlnd_azure. enableRedirect érték**| **Viselkedés**|
 |----------------------------------------|-------------|
 |`off` vagy `0`|Az átirányítás nem lesz használatban. |
 |`on` vagy `1`|– Ha a kapcsolat nem használ SSL-t az illesztőprogram oldalán, nem történik kapcsolat. A rendszer a következő hibaüzenetet adja vissza: *"mysqlnd_azure. enableRedirect, de az SSL-beállítás nincs beállítva a kapcsolati karakterláncban. Az átirányítás csak SSL használatával lehetséges. "*<br>-Ha az SSL használatban van az illesztőprogram oldalán, de az átirányítás nem támogatott a kiszolgálón, az első kapcsolat megszakad, és a rendszer a következő hibaüzenetet adja vissza: *"a kapcsolat megszakadt, mert az átirányítás nincs engedélyezve a MariaDB-kiszolgálón, vagy a hálózati csomag nem felel meg az átirányítási protokollnak."*<br>-Ha a MariaDB-kiszolgáló támogatja az átirányítás használatát, de az átirányított csatlakozás valamilyen okból meghiúsult, akkor az első proxy-csatlakozást is megszakítja. Az átirányított kapcsolatok hibájának visszaadása.|
@@ -161,5 +161,5 @@ $db_name = 'testdb';
 ?>
  ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a kapcsolatok karakterláncáról: a [kapcsolatok karakterláncai](howto-connection-string.md).

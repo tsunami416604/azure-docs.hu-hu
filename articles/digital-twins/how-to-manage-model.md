@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b31e3d44cc66e97506b29b81cef5b8d981d05e39
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: ca56c285baff9982ff465b0d4115d15eadedb8c9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279411"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534755"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -23,6 +23,10 @@ A kezelési műveletek közé tartozik a modellek feltöltése, ellenőrzése, b
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
+## <a name="ways-to-manage-models"></a>Modellek kezelésének módjai
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
 ## <a name="create-models"></a>Modellek létrehozása
 
@@ -73,17 +77,7 @@ Ezt a módszert követve megadhatja a kórházi részleg, a zónák vagy a kórh
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="manage-models-with-apis"></a>Modellek kezelése API-kkal
-
-A következő részben bemutatjuk, hogyan végezheti el a különböző modell-kezelési műveleteket az [Azure Digital Twins API-k és SDK-](how-to-use-apis-sdks.md)k használatával.
-
-> [!NOTE]
-> Az alábbi példák nem tartalmazzák a rövid leírások hibáinak kezelését. Azonban határozottan ajánlott a projekteken belül a szolgáltatási hívások becsomagolása a try/catch blokkokban.
-
-> [!TIP] 
-> Ne feledje, hogy minden SDK-módszer szinkron és aszinkron verziókban érhető el. A lapozási hívások esetében az aszinkron metódusok a `AsyncPageable<T>` szinkron verziók visszaadása után térnek vissza `Pageable<T>` .
-
-### <a name="upload-models"></a>Modellek feltöltése
+## <a name="upload-models"></a>Modellek feltöltése
 
 A modellek létrehozása után feltöltheti őket az Azure Digital Twins-példányba.
 
@@ -117,7 +111,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-A modell fájljai több modellt is tartalmazhatnak. Ebben az esetben a modelleket JSON-tömbbe kell helyezni. Például:
+A modell fájljai több modellt is tartalmazhatnak. Ebben az esetben a modelleket JSON-tömbbe kell helyezni. Ilyenek többek között:
 
 ```json
 [
@@ -136,7 +130,7 @@ A modell fájljai több modellt is tartalmazhatnak. Ebben az esetben a modelleke
  
 A feltöltéskor a modell fájljait a szolgáltatás ellenőrzi.
 
-### <a name="retrieve-models"></a>Modellek beolvasása
+## <a name="retrieve-models"></a>Modellek beolvasása
 
 Az Azure Digital Twins-példányon tárolt modelleket listázhatja és lekérheti. 
 
@@ -166,13 +160,13 @@ A `RetrieveModelWithDependencies` hívás nem csak a kért modellt adja vissza, 
 
 A modelleket nem feltétlenül adja vissza pontosan abban a dokumentum űrlapon, amelyet feltöltöttek. Az Azure Digital Twins csak azt garantálja, hogy a visszatérési űrlap szemantikailag egyenértékű lesz. 
 
-### <a name="update-models"></a>Modellek frissítése
+## <a name="update-models"></a>Modellek frissítése
 
 Miután feltöltötte a modellt az Azure Digital Twins-példányba, a teljes modell felülete nem változtatható meg. Ez azt jelenti, hogy nincs a modellek hagyományos "szerkesztése". Az Azure Digital Twins szintén nem teszi lehetővé ugyanannak a modellnek az újbóli feltöltését.
 
 Ehelyett, ha módosítani szeretné a modelleket – például a frissítést `displayName` vagy a módszert –, akkor `description` a modell **újabb verziójának** feltöltését kell végrehajtania. 
 
-#### <a name="model-versioning"></a>Modell verziószámozása
+### <a name="model-versioning"></a>Modell verziószámozása
 
 Meglévő modell új verziójának létrehozásához kezdje az eredeti modell DTDL. Frissítse, adja hozzá vagy távolítsa el a módosítani kívánt mezőket.
 
@@ -194,7 +188,7 @@ Ezután töltse fel a modell új verzióját a példányra.
 
 A modell ezen verziója ezután elérhető lesz a példányban a digitális ikrek számára. **Nem** írja felül a modell korábbi verzióit, így a modell több verziója is egyszerre fog létezni a példányban, amíg [el nem távolítja őket](#remove-models).
 
-#### <a name="impact-on-twins"></a>Az ikrek hatása
+### <a name="impact-on-twins"></a>Az ikrek hatása
 
 Új Twin létrehozásakor, mivel az új modell verziója és a régi modell verziója együttes létezik, az új Twin a modell új verzióját vagy a régebbi verziót is használhatja.
 
@@ -202,7 +196,7 @@ Ez azt is jelenti, hogy egy modell új verziójának feltöltése nem befolyáso
 
 Ezeket a meglévő ikreket frissítheti az új modell verziójára úgy, hogy kijavítja azokat a következő témakörben ismertetett módon: a [*Digital Twin modell frissítése*](how-to-manage-twin.md#update-a-digital-twins-model) című rész, *útmutató: digitális ikrek kezelése*. Ugyanezen a javításon belül frissítenie kell a **modell azonosítóját** (az új verzióra) és **minden olyan mezőt, amelyet meg kell változtatni a twinon, hogy az megfeleljen az új modellnek**.
 
-### <a name="remove-models"></a>Modellek eltávolítása
+## <a name="remove-models"></a>Modellek eltávolítása
 
 A modelleket a szolgáltatásból is el lehet távolítani a következő két módszer egyikével:
 * **Leszerelés** : a modell leszerelése után már nem használhatja új digitális Twins létrehozásához. A modellt már használó meglévő digitális ikrek nem érintettek, így továbbra is frissítheti azokat olyan dolgokkal, mint a tulajdonságok módosítása, valamint kapcsolatok hozzáadása vagy törlése.
@@ -210,7 +204,7 @@ A modelleket a szolgáltatásból is el lehet távolítani a következő két m�
 
 Ezek különálló funkciók, és nem érintik egymást, bár ezek együtt használhatók a modellek fokozatos eltávolítására. 
 
-#### <a name="decommissioning"></a>Leszerelési
+### <a name="decommissioning"></a>Leszerelési
 
 Itt látható a modell leszerelésének kódja:
 
@@ -223,7 +217,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 
 A modell leszerelési állapota a `ModelData` modell lekérési API-k által visszaadott rekordokban szerepel.
 
-#### <a name="deletion"></a>Törlés
+### <a name="deletion"></a>Törlés
 
 A példány összes modelljét egyszerre is törölheti, vagy megteheti azt egyéni alapon.
 
@@ -231,7 +225,7 @@ Az összes modell törlésére példaként töltse le az oktatóanyagban haszná
 
 A szakasz további részében lebonthatja a modell törlésének részleteit, és bemutatja, hogyan végezheti el azt egy adott modell esetében.
 
-##### <a name="before-deletion-deletion-requirements"></a>Törlés előtt: törlési követelmények
+#### <a name="before-deletion-deletion-requirements"></a>Törlés előtt: törlési követelmények
 
 A modelleket általában bármikor törölni lehet.
 
@@ -239,7 +233,7 @@ Kivételt képeznek a más modellektől függő modellek, vagy egy `extends` kap
 
 Ezt úgy teheti meg, hogy a függő modell frissítésével eltávolítja a függőségeket, vagy teljesen törli a függő modellt.
 
-##### <a name="during-deletion-deletion-process"></a>Törlés közben: törlési folyamat
+#### <a name="during-deletion-deletion-process"></a>Törlés közben: törlési folyamat
 
 Még ha a modell megfelel a azonnal törölni kívánt követelményeknek, érdemes lehet néhány lépést megtennie, hogy elkerülje a nem szándékolt következményeket az ikrek mögött. Íme néhány lépés, amely segíthet a folyamat kezelésében:
 1. Első lépésként szerelje le a modellt
@@ -255,7 +249,7 @@ A modell törléséhez használja a következő hívást:
 await client.DeleteModelAsync(IDToDelete);
 ```
 
-##### <a name="after-deletion-twins-without-models"></a>Törlés után: ikrek modellek nélkül
+#### <a name="after-deletion-twins-without-models"></a>Törlés után: ikrek modellek nélkül
 
 A modell törlését követően a modellt használó digitális ikrek már nem modellnek minősülnek. Vegye figyelembe, hogy nincs olyan lekérdezés, amely az összes ikrek listáját megadja ebben az állapotban, bár a törölt modellből *továbbra is* lekérdezheti az ikreket, hogy megtudja, milyen hatással van az ikrekre.
 
@@ -274,17 +268,13 @@ Nem **hajthatók** végre a következők:
 * Kimenő kapcsolatok szerkesztése (a-ben, *a Twin* és más ikrek közötti kapcsolatok)
 * Tulajdonságok szerkesztése
 
-##### <a name="after-deletion-re-uploading-a-model"></a>Törlés után: modell ismételt feltöltése
+#### <a name="after-deletion-re-uploading-a-model"></a>Törlés után: modell ismételt feltöltése
 
 A modell törlését követően később dönthet úgy, hogy új modellt tölt fel ugyanazzal az AZONOSÍTÓval, amelyet a törölt. Ebben az esetben ez történik.
 * A megoldás áruházának szemszögéből ez ugyanaz, mint egy teljesen új modell feltöltése. A szolgáltatás soha nem emlékszik a régire.   
 * Ha a gráf a törölt modellre hivatkozó további ikreket tartalmaz, azok már nem elárvultak. Ez a modell-azonosító ismét érvényes az új definícióval. Ha azonban a modell új definíciója eltér a törölt modellel, akkor ezek az ikrek olyan tulajdonságokkal és kapcsolatokkal rendelkezhetnek, amelyek megfelelnek a törölt definíciónak, és nem érvényesek az újat.
 
 Az Azure digitális Twins nem akadályozza ezt az állapotot, ezért ügyeljen arra, hogy az ikrek megfelelő javításával győződjön meg arról, hogy azok érvényesek maradnak a modell definíciós kapcsolóján keresztül.
-
-## <a name="manage-models-with-cli"></a>Modellek kezelése a CLI-vel
-
-A modellek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
 ## <a name="next-steps"></a>Következő lépések
 

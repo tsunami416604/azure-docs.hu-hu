@@ -1,17 +1,17 @@
 ---
 title: Az adatreplikálás konfigurálása – Azure Database for MariaDB
 description: Ez a cikk bemutatja, hogyan állíthatja be a felhőbe irányuló replikálást a Azure Database for MariaDBban.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 21a0aaaa9e10a7c3e445145eb178b50b446ba6ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fe7e02cc34dc9c97e540d7b8d96c48ee8d5cfe09
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426004"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535367"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>felhőbe irányuló replikálás konfigurálása Azure Database for MariaDB
 
@@ -45,7 +45,7 @@ A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adat
 > [!NOTE]
 > Elfogultság – ingyenes kommunikáció
 >
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
 >
 
 ## <a name="configure-the-source-server"></a>A forráskiszolgáló konfigurálása
@@ -54,7 +54,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
 1. A továbblépés előtt tekintse át a [fő kiszolgálóra vonatkozó követelményeket](concepts-data-in-replication.md#requirements) . 
 
-2. Győződjön meg arról, hogy a forráskiszolgáló engedélyezi a bejövő és a kimenő forgalmat is a 3306-es porton, valamint arról, hogy a forráskiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN). 
+2. Győződjön meg arról, hogy a forráskiszolgáló engedélyezi a bejövő és a kimenő forgalmat is a 3306-es porton, valamint arról, hogy a forráskiszolgáló **nyilvános IP-címmel** rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN). 
    
    Tesztelje a kapcsolatot a forráskiszolgálóról egy olyan eszközről való csatlakozásra tett kísérlettel, amely egy másik gépen vagy a Azure Portal elérhető [Azure Cloud Shell](../cloud-shell/overview.md) .
 
@@ -78,7 +78,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
       ```bash
       ping <output of step 2b>
       ``` 
-      Példa: 
+      Ilyenek többek között: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -115,7 +115,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    
    Ha szeretné megtudni, hogyan adhat hozzá felhasználói fiókokat a forráskiszolgálón, tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/library/create-user/).
 
-   Az alábbi parancsokkal az új replikációs szerepkör bármely gépről elérheti a forrást, nem csak a forrást futtató gépet. Ehhez a hozzáféréshez a ** \@ (z) "%" syncuser** kell megadnia a parancsban a felhasználó létrehozásához.
+   Az alábbi parancsokkal az új replikációs szerepkör bármely gépről elérheti a forrást, nem csak a forrást futtató gépet. Ehhez a hozzáféréshez a **\@ (z) "%" syncuser** kell megadnia a parancsban a felhasználó létrehozásához.
    
    A MariaDB-dokumentációval kapcsolatos további tudnivalókért tekintse [meg a fiókok nevének megadásával](https://mariadb.com/kb/en/library/create-user/#account-names)foglalkozó témakört.
 
@@ -141,7 +141,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
    **MySQL Workbench**
 
-   A MySQL Workbench replikációs szerepkörének létrehozásához a **felügyelet** ablaktáblán válassza a **felhasználók és jogosultságok**lehetőséget. Ezután válassza a **fiók hozzáadása**lehetőséget.
+   A MySQL Workbench replikációs szerepkörének létrehozásához a **felügyelet** ablaktáblán válassza a **felhasználók és jogosultságok** lehetőséget. Ezután válassza a **fiók hozzáadása** lehetőséget.
  
    ![Felhasználók és jogosultságok](./media/howto-data-in-replication/users_privileges.png)
 
@@ -149,7 +149,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
    ![Felhasználó szinkronizálása](./media/howto-data-in-replication/syncuser.png)
  
-   Válassza ki a **felügyeleti szerepkörök** panelt, majd a **globális jogosultságok**listájában válassza ki a **replikálási Slave**elemet. A replikációs szerepkör létrehozásához kattintson az **alkalmaz** gombra.
+   Válassza ki a **felügyeleti szerepkörök** panelt, majd a **globális jogosultságok** listájában válassza ki a **replikálási Slave** elemet. A replikációs szerepkör létrehozásához kattintson az **alkalmaz** gombra.
 
    ![Replikálási Slave](./media/howto-data-in-replication/replicationslave.png)
 
@@ -312,5 +312,5 @@ A replikálási hibák kihagyásához és a replikáció engedélyezéséhez has
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Azure Database for MariaDB [felhőbe irányuló replikálásról](concepts-data-in-replication.md) .

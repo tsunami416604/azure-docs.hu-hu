@@ -2,13 +2,13 @@
 title: Fogalmak – szerepköralapú hozzáférés-vezérlés (RBAC)
 description: Ismerje meg az Azure VMware-megoldás szerepköralapú hozzáférés-vezérlésének főbb képességeit
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 4fbda24ec6a8c1d08570d7f64270a954eb3d8a35
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 10/23/2020
+ms.openlocfilehash: 6e1864fdfe397325a7c5ba601b625bcc1776174c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440943"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535486"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure VMware-megoldáshoz
 
@@ -31,8 +31,8 @@ A saját felhőalapú felhasználó nem férhet hozzá a Microsoft által támog
 Megtekintheti az Azure VMware-megoldás CloudAdmin szerepkörhöz biztosított jogosultságokat az Azure VMware-megoldás saját Felhőbeli vCenter.
 
 1. Jelentkezzen be a SDDC vSphere-ügyfelébe, és lépjen a **menü adminisztráció elemre**  >  **Administration**.
-1. A **Access Control**területen válassza a **szerepkörök**lehetőséget.
-1. A szerepkörök listájából válassza a **CloudAdmin** lehetőséget, majd válassza a **jogosultságok**lehetőséget. 
+1. A **Access Control** területen válassza a **szerepkörök** lehetőséget.
+1. A szerepkörök listájából válassza a **CloudAdmin** lehetőséget, majd válassza a **jogosultságok** lehetőséget. 
 
    :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="A CloudAdmin szerepkörhöz tartozó jogosultságok megtekintése a vSphere-ügyfélben":::
 
@@ -61,7 +61,7 @@ Az Azure VMware-megoldás CloudAdmin szerepköre a következő jogosultságokkal
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyes jogosultságok részletes ismertetését a [VMware termékdokumentációban](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) találja.
 

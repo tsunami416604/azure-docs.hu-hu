@@ -1,19 +1,19 @@
 ---
 title: CLI-szkript – kiszolgáló létrehozása – Azure Database for MariaDB
 description: Ez a CLI-parancsfájl egy Azure Database for MariaDB-kiszolgálót hoz létre, és egy kiszolgálói szintű tűzfalszabály konfigurálását végzi.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 11/28/2018
-ms.openlocfilehash: 585e1e2653a6f42391e3754335920cd295f00c1c
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: a9a0ce595da1aecc3cd2ebdc071c99e42944ef9f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518033"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536795"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>MariaDB-kiszolgáló létrehozása és tűzfalszabály konfigurálása az Azure CLI használatával
 Ez a CLI-parancsfájl egy Azure Database for MariaDB-kiszolgálót hoz létre, és egy kiszolgálói szintű tűzfalszabály konfigurálását végzi. A szkript sikeres futtatása után a MariaDB-kiszolgálót az összes Azure-szolgáltatás és a konfigurált IP-cím is elérhetővé teszi.

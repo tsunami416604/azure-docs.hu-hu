@@ -3,17 +3,17 @@ title: A Windows rendszerű virtuális asztal újdonságai – Azure
 description: Új szolgáltatások és Termékfrissítések a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: overview
-ms.date: 10/01/2020
+ms.date: 11/11/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 0191d6ad74a9b6349f5d1724f9483607dce2d926
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c82312b40955b392243bf616ee991c0108a13fb5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630014"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537390"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
 
@@ -25,6 +25,48 @@ A Windows rendszerű virtuális asztali frissítések rendszeres időközönkén
 - Hibajavítások
 
 Ez a cikk havonta frissül. Ügyeljen arra, hogy az új frissítések megtartása érdekében gyakran térjen vissza ide.
+
+## <a name="october-2020"></a>2020. október
+
+A következők módosultak a 2020 októberében:
+
+### <a name="improved-performance"></a>Jobb teljesítmény
+
+- A következő Azure-földrajzi területeken a kapcsolatok késésének csökkentésével optimalizáltuk a teljesítményt:
+    - Svájc
+    - Kanada
+
+Most már használhatja a [Experience kalkulátort](https://azure.microsoft.com/services/virtual-desktop/assessment/) a felhasználói élmény minőségének becsléséhez ezekben a területeken.
+
+### <a name="azure-government-cloud-availability"></a>A felhő rendelkezésre állásának Azure Government
+
+A Azure Government-felhő már általánosan elérhető. További információt a [blogbejegyzésben](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-generally-available-in-the-azure-government-cloud/)talál.
+
+### <a name="windows-virtual-desktop-azure-portal-updates"></a>Windows rendszerű virtuális asztali Azure Portal frissítései
+
+Készítettünk néhány frissítést a Windows rendszerű virtuális asztali Azure Portal:
+
+- Kijavítva egy resourceID hiba, amely megakadályozta, hogy a felhasználók megnyissák a "munkamenetek" lapot.
+- Egyszerűsítheti a felhasználói felületet a "munkamenet-gazdagépek" lapon.
+- Az RDP-tulajdonságok területen az "Alapértelmezések", a "használhatóság" és az "alapértékek visszaállítása" beállítások lettek kijavítva.
+- A "Remove" és a "Delete" függvények az összes lapon konzisztensek.
+- A portál mostantól érvényesíti az alkalmazások nevét az "alkalmazás hozzáadása" munkafolyamatban.
+- Kijavítva a probléma, hogy a munkamenet-gazdagép exportálási adatértékei nem voltak igazítva az oszlopokban.
+- Kijavított egy hibát, amelyben a portál nem tudta beolvasni a felhasználói munkameneteket.
+- Kijavítottuk a munkamenet-gazdagép lekérésének hibáját, amely akkor történt, amikor a virtuális gép egy másik erőforráscsoporthoz lett létrehozva.
+- Frissítette a "munkamenet-gazdagép" fület az aktív és a Leválasztott munkamenetek listázásához.
+- Az "alkalmazások" lapon már vannak lapok.
+- Kijavított egy hibát, amelyben a "parancssor szükséges" szöveg nem jelenik meg megfelelően az "alkalmazások listája" lapon.
+- Javítva a problémát, ha a portál nem tudta üzembe helyezni a gazdagép-készleteket vagy virtuális gépeket, miközben a megosztott képgyűjtemény német nyelvű verzióját használja.
+
+### <a name="client-updates-for-october-2020"></a>Ügyfelek frissítései október 2020
+
+Megjelent az ügyfelek új verziói. További információt a következő cikkekben talál:
+
+- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
+- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
+
+További információ a többi ügyfélről: [ügyfelek frissítései](#client-updates).
 
 ## <a name="september-2020"></a>2020. szeptember
 
@@ -68,7 +110,7 @@ A következőképpen módosult a 2020 augusztusában:
 
 - Azure Advisor mostantól a Windows rendszerű virtuális asztal része. Ha a Azure Portalon keresztül fér hozzá a Windows rendszerű virtuális asztalhoz, a Windows rendszerű virtuális asztali környezet optimalizálására vonatkozó javaslatok láthatók. További információ: [Azure Advisor](azure-advisor.md).
 
-- Az Azure CLI mostantól támogatja a Windows rendszerű virtuális asztal () használatát a `az desktopvirtualization` Windows rendszerű virtuális asztali környezetek automatizálásának elősegítése érdekében. Tekintse meg a [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest) listáját a kiterjesztési parancsok listájához.
+- Az Azure CLI mostantól támogatja a Windows rendszerű virtuális asztal () használatát a `az desktopvirtualization` Windows rendszerű virtuális asztali környezetek automatizálásának elősegítése érdekében. Tekintse meg a [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest&preserve-view=true) listáját a kiterjesztési parancsok listájához.
 
 - Frissítettük a központi telepítési sablonokat, hogy teljes mértékben kompatibilisek legyenek a Windows rendszerű virtuális asztali Azure Resource Manager felületekkel. A sablonok a [githubon](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates)találhatók.
 
@@ -97,7 +139,7 @@ Mostantól a következő műveleteket végezheti el a Windows rendszerű virtuá
 
 ### <a name="diagnostics"></a>Diagnosztika
 
-Megjelent néhány új előre elkészített lekérdezés a Log Analytics munkaterülethez. A lekérdezések eléréséhez nyissa meg a **naplók** elemet, és a **Kategória**területen válassza a **Windows virtuális asztal**lehetőséget. További információ [a diagnosztikai szolgáltatás log Analytics használatáról](diagnostics-log-analytics.md).
+Megjelent néhány új előre elkészített lekérdezés a Log Analytics munkaterülethez. A lekérdezések eléréséhez nyissa meg a **naplók** elemet, és a **Kategória** területen válassza a **Windows virtuális asztal** lehetőséget. További információ [a diagnosztikai szolgáltatás log Analytics használatáról](diagnostics-log-analytics.md).
 
 ### <a name="update-for-remote-desktop-client-for-android"></a>Az Android rendszerhez készült Távoli asztal-ügyfél frissítése
 
@@ -140,7 +182,7 @@ Ezt a változást a következőképpen teheti meg:
 
 A modul telepítéséhez kövesse a [PowerShell-modul beállítása a Windows rendszerű virtuális asztalhoz](powershell-module.md)című témakör utasításait.
 
-Az elérhető parancsok listáját a [AzWvd PowerShell-referenciában](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization)is megtekintheti.
+Az elérhető parancsok listáját a [AzWvd PowerShell-referenciában](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization&preserve-view=true)is megtekintheti.
 
 Az új funkciókkal kapcsolatos további információkért tekintse meg a [blogbejegyzését](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245).
 
@@ -164,6 +206,6 @@ Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távo
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a jövőbeli tervekkel a [Microsoft 365 Windows rendszerű virtuális asztali menetrendben](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).

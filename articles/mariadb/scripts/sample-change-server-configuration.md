@@ -1,19 +1,19 @@
 ---
 title: CLI-parancsfájl – kiszolgáló paramétereinek módosítása – Azure Database for MariaDB
 description: Ez a CLI-parancsfájl felsorolja az összes rendelkezésre álló kiszolgálói konfigurációt és a Azure Database for MariaDB frissítéseit.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 849b57cecee1d5e11935462b54fc522e5eacc62f
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: c7a46f98f74648ccae9f9f9f94c218d42056decb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518073"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536806"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure Database for MariaDB-kiszolgáló konfigurációinak listázása és frissítése az Azure CLI használatával
 Ez a CLI-parancsfájl felsorolja az összes rendelkezésre álló konfigurációs paramétert, valamint a Azure Database for MariaDB kiszolgáló számára engedélyezett értékeit, és beállítja a *innodb_lock_wait_timeoutt* olyan értékre, amely nem az alapértelmezett.

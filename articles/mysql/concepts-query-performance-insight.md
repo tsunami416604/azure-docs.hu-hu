@@ -1,17 +1,17 @@
 ---
 title: Lekérdezési terheléselemző – Azure Database for MySQL
 description: Ez a cikk a Azure Database for MySQL Lekérdezési terheléselemző szolgáltatását ismerteti.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 7aefa6cd048c41feb1535f2ae7fa5c87bf628b2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30457b950e6400c799f35924e7b2ee90d868a465
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90884911"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535180"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Lekérdezési teljesítmény elemzése az Azure Database for MySQL-ben
 
@@ -19,7 +19,7 @@ ms.locfileid: "90884911"
 
 Lekérdezési terheléselemző segítségével gyorsan azonosíthatja a leghosszabb ideig futó lekérdezéseket, hogyan változnak az idő múlásával, és mi vár rájuk.
 
-## <a name="common-scenarios"></a>Gyakori helyzetek
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
 ### <a name="long-running-queries"></a>Hosszú ideig futó lekérdezések
 
@@ -56,7 +56,7 @@ Kattintással és húzással egy adott időablakra szűkítheti a diagramot. Azt
 ### <a name="wait-statistics"></a>Várakozási statisztika
 
 > [!NOTE]
-> A várakozási statisztikák a lekérdezések teljesítményével kapcsolatos problémák elhárításához szükségesek. Javasoljuk, hogy csak hibaelhárítási célokra legyen bekapcsolva. <br>Ha a következő hibaüzenet jelenik meg: "*a Microsoft. DBforMySQL" hibába ütközött "a probléma" Azure Portal. a kérés nem teljesíthető. Ha a probléma továbbra is fennáll, vagy váratlan, forduljon az ügyfélszolgálathoz az információval.*" a várakozási statisztikák megtekintése közben használjon kisebb időtartamot.
+> A várakozási statisztikák a lekérdezések teljesítményével kapcsolatos problémák elhárításához szükségesek. Javasoljuk, hogy csak hibaelhárítási célokra legyen bekapcsolva. <br>Ha a következő hibaüzenet jelenik meg: " *a Microsoft. DBforMySQL" hibába ütközött "a probléma" Azure Portal. a kérés nem teljesíthető. Ha a probléma továbbra is fennáll, vagy váratlan, forduljon az ügyfélszolgálathoz az információval.* " a várakozási statisztikák megtekintése közben használjon kisebb időtartamot.
 
 A várakozási statisztikák áttekintést nyújtanak az adott lekérdezés végrehajtása során bekövetkezett várakozási eseményekről. További információ a várakozási események típusairól a [MySQL-motor dokumentációjában](https://go.microsoft.com/fwlink/?linkid=2098206).
 
@@ -64,7 +64,7 @@ A kiszolgálóval kapcsolatos megfelelő várakozási adatok vizualizációinak 
 
 A várakozási Statisztika nézetben megjelenő lekérdezések csoportosítása a megadott időintervallumon belül a legnagyobb várakozásokat kiállító lekérdezések szerint történik.
 
-:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Hosszú ideig futó lekérdezések Lekérdezési terheléselemző":::
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Lekérdezési terheléselemző vár statisztikái":::
 
 ## <a name="next-steps"></a>Következő lépések
 

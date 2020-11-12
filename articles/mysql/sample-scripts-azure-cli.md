@@ -1,19 +1,19 @@
 ---
 title: Azure CLI-minták – Azure Database for MySQL
 description: Ez a cikk felsorolja az Azure Database for MySQL-lel folytatott kommunikációhoz elérhető Azure CLI-példakódokat.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: db762b62af610559391552451df7402d9e84ab22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1150b9e6f39f14cdfa3aa5c57d1cbacca0351b64
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495343"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537594"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>Azure CLI-példák az Azure Database for MySQL-hez 
 A következő táblázat hivatkozásokat tartalmaz az Azure Database for MySQL-hez elérhető Azure CLI-példaszkriptekre.

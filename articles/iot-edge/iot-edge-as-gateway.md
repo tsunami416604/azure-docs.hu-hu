@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c08e03e6ff77613c0950f17fe5225bccb706524c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 83e8089073f7e7e7634ddf00f7276e12aaf645b0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444377"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536438"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge-eszköz használata átjáróként
 
@@ -45,21 +45,21 @@ Az átjáró összes mintázata a következő előnyöket biztosítja:
 
 Az átlátszó átjáró mintájában az eszközök, amelyek elméletileg csatlakozhatnak IoT Hub csatlakozhatnak egy átjáró-eszközhöz. Az alsóbb rétegbeli eszközök saját IoT Hub identitásokkal rendelkeznek, és a MQTT vagy AMQP protokollok használatával kapcsolódnak egymáshoz. Az átjáró csupán továbbítja az eszközök és az IoT Hub közötti kommunikációt. Az eszközök és a velük kommunikáló felhasználók IoT Hub nem biztos, hogy az átjáró közvetíti a kommunikációt. Ez a tájékoztatás hiánya azt jelenti, hogy az átjáró *transzparensnek* tekintendő.
 
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-
-IoT Edge-eszközök transzparens átjárókkal, valamint normál IoT-eszközökkel is csatlakozhatnak.
-
-<!-- TODO add a downstream IoT Edge device to graphic -->
-
-::: moniker-end
-
 <!-- 1.0.10 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge-eszközök nem lehetnek IoT Edge átjárók alsóbb rétegében.
 
 ![Diagram – transzparens átjáró mintája](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+A 1.2.0 verziótól kezdődően IoT Edge eszközök transzparens átjárón keresztül csatlakozhatnak.
+
+<!-- TODO add a downstream IoT Edge device to graphic -->
 
 ::: moniker-end
 
@@ -102,10 +102,22 @@ Ha több IoT Edge átjáró csatlakozik egymáshoz egy átjáró-hierarchiában,
 
 ### <a name="device-capabilities-behind-transparent-gateways"></a>Az eszköz képességei átlátható átjárók mögött
 
-
 Az IoT Edge üzenetkezelési folyamatával dolgozó összes IoT Hub-primitív támogatja az átlátszó átjárók forgatókönyveit is. Minden IoT Edge átjáró rendelkezik az azon keresztül érkező üzenetek tárolására és továbbítására szolgáló képességekkel.
 
 Az alábbi táblázat segítségével megtekintheti, hogy a különböző IoT Hub képességek hogyan támogatottak az eszközökhöz képest az átjárók mögötti eszközökhöz képest.
+
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
+
+| Képesség | IoT-eszköz | IoT az átjáró mögött |
+| ---------- | ---------- | -------------------- |
+| [Eszközről a felhőbe irányuló (D2C) üzenetek](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![Igen – IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Igen – gyermek IoT D2C](./media/iot-edge-as-gateway/check-yes.png) |
+| [Felhőből eszközre (C2D) vonatkozó üzenetek](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![Igen – IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Igen – IoT gyermek C2D](./media/iot-edge-as-gateway/check-yes.png) |
+| [Közvetlen metódusok](../iot-hub/iot-hub-devguide-direct-methods.md) | ![Igen – IoT Direct metódus](./media/iot-edge-as-gateway/check-yes.png) | ![Igen – gyermek IoT közvetlen metódus](./media/iot-edge-as-gateway/check-yes.png) |
+| Az [eszközök ikrek](../iot-hub/iot-hub-devguide-device-twins.md) és [modul ikrek](../iot-hub/iot-hub-devguide-module-twins.md) | ![Igen – IoT ikrek](./media/iot-edge-as-gateway/check-yes.png) | ![Igen – gyermek IoT ikrek](./media/iot-edge-as-gateway/check-yes.png) |
+| [Fájlfeltöltés](../iot-hub/iot-hub-devguide-file-upload.md) | ![Igen – IoT fájl feltöltése](./media/iot-edge-as-gateway/check-yes.png) | ![Nem IoT-fájl feltöltése](./media/iot-edge-as-gateway/crossout-no.png) |
+
+::: moniker-end
 
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"
@@ -123,19 +135,6 @@ Az alábbi táblázat segítségével megtekintheti, hogy a különböző IoT Hu
 A **tárolók lemezképeit** letöltheti, tárolhatja és elküldheti a szülői eszközökről a gyermek eszközökre.
 
 A **Blobok** , beleértve a támogatási csomagokat és a naplókat, a gyermek eszközökről a szülő eszközökre tölthetők fel.
-
-::: moniker-end
-
-<!-- 1.0.10 -->
-::: moniker range="iotedge-2018-06"
-
-| Képesség | IoT-eszköz | IoT az átjáró mögött |
-| ---------- | ---------- | -------------------- |
-| [Eszközről a felhőbe irányuló (D2C) üzenetek](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![Igen – IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Igen – gyermek IoT D2C](./media/iot-edge-as-gateway/check-yes.png) |
-| [Felhőből eszközre (C2D) vonatkozó üzenetek](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![Igen – IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Igen – IoT gyermek C2D](./media/iot-edge-as-gateway/check-yes.png) |
-| [Közvetlen metódusok](../iot-hub/iot-hub-devguide-direct-methods.md) | ![Igen – IoT Direct metódus](./media/iot-edge-as-gateway/check-yes.png) | ![Igen – gyermek IoT közvetlen metódus](./media/iot-edge-as-gateway/check-yes.png) |
-| Az [eszközök ikrek](../iot-hub/iot-hub-devguide-device-twins.md) és [modul ikrek](../iot-hub/iot-hub-devguide-module-twins.md) | ![Igen – IoT ikrek](./media/iot-edge-as-gateway/check-yes.png) | ![Igen – gyermek IoT ikrek](./media/iot-edge-as-gateway/check-yes.png) |
-| [Fájlfeltöltés](../iot-hub/iot-hub-devguide-file-upload.md) | ![Igen – IoT fájl feltöltése](./media/iot-edge-as-gateway/check-yes.png) | ![Nem IoT-fájl feltöltése](./media/iot-edge-as-gateway/crossout-no.png) |
 
 ::: moniker-end
 
@@ -176,7 +175,7 @@ A protokoll fordítási mintájának használatakor az átjárón keresztül csa
 
 A IoT Edge futtatókörnyezet nem tartalmaz protokoll-vagy identitás-fordítási képességeket. Ezeknek a mintáknak olyan egyéni vagy külső modulokra van szükségük, amelyek gyakran a használt hardverre és protokollra vonatkoznak. Az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) számos protokoll-fordítási modult tartalmaz, amelyek közül választhat. Az identitás-fordítási mintát használó minta: [Azure IoT Edge LoRaWAN Starter Kit](https://github.com/Azure/iotedge-lorawan-starterkit).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő három lépésből megtudhatja, hogyan állíthat be transzparens átjárót:
 
