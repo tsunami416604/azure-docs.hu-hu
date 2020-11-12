@@ -1,17 +1,17 @@
 ---
 title: Minimális állásidő-áttelepítés – Azure Database for MySQL
 description: Ez a cikk azt ismerteti, hogyan hajtható végre a MySQL-adatbázisok minimális állásidőre való áttelepítése a Azure Database Migration Service használatával Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: 9a3eefc9e820735efec302eed0f879a748cb1200
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 75b548b53de4c0f4ea39959c3d70e9ddb361d64c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125784"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540331"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>Minimális – állásidő áttelepítése Azure Database for MySQLre
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]

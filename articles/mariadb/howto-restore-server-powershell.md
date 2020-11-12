@@ -1,19 +1,19 @@
 ---
 title: Biztonsági mentés és visszaállítás – Azure PowerShell – Azure Database for MariaDB
 description: Megtudhatja, hogyan készíthet biztonsági másolatot és állíthat vissza egy kiszolgálót a Azure Database for MariaDB Azure PowerShell használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 984a5d52dfdd45190cbded5e900d3fcfe2f9ad43
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0207be2c983fd986d5852403e36462d2d7d2cdda
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424512"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539617"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>Azure Database for MariaDB-kiszolgáló biztonsági mentése és visszaállítása a PowerShell használatával
 
@@ -41,7 +41,7 @@ A kiszolgáló létrehozásakor választhat, hogy a kiszolgálót helyileg redun
 > [!NOTE]
 > A kiszolgáló létrehozása után a redundancia nem módosítható, földrajzilag redundáns, a helyileg redundáns.
 
-A kiszolgáló parancson keresztüli létrehozása közben `New-AzMariaDbServer` a **GeoRedundantBackup** paraméter határozza meg a biztonsági mentési redundancia beállítást. Ha **engedélyezve**van, a rendszer redundáns biztonsági mentéseket végez. Ha **le van tiltva**, a rendszer helyileg redundáns biztonsági mentéseket végez.
+A kiszolgáló parancson keresztüli létrehozása közben `New-AzMariaDbServer` a **GeoRedundantBackup** paraméter határozza meg a biztonsági mentési redundancia beállítást. Ha **engedélyezve** van, a rendszer redundáns biztonsági mentéseket végez. Ha **le van tiltva** , a rendszer helyileg redundáns biztonsági mentéseket végez.
 
 A biztonsági mentés megőrzési időtartamát a **BackupRetentionDay** paraméter állítja be.
 
@@ -78,7 +78,7 @@ A parancsmag **PointInTimeRestore** paraméterének `Restore-AzMariaDbServer` a 
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| Name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| Név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | RestorePointInTime | 2020 – 03-13T13:59:00Z | Válasszon ki egy időpontot a visszaállításhoz. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. Használja a ISO8601 dátum és idő formátumát. Használhatja például a saját helyi időzónáját, például **2020-03-13T05:59:00-08:00**. Használhatja az UTC Zulu formátumot is, például **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | A visszaállításhoz használja az időponthoz tartozó módot. |
 
@@ -106,7 +106,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMariaDbServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Ez a példa egy **mydemoserver-georestored** nevű új kiszolgálót hoz létre az USA keleti régiójában, amely a következőhöz tartozik: **myresourcegroup**. Ez egy általános célú, Gen 5 kiszolgáló 8 virtuális mag. A kiszolgáló a **mydemoserver**a Geo-redundáns biztonsági másolatból jön létre, az erőforráscsoport **myresourcegroup**is.
+Ez a példa egy **mydemoserver-georestored** nevű új kiszolgálót hoz létre az USA keleti régiójában, amely a következőhöz tartozik: **myresourcegroup**. Ez egy általános célú, Gen 5 kiszolgáló 8 virtuális mag. A kiszolgáló a **mydemoserver** a Geo-redundáns biztonsági másolatból jön létre, az erőforráscsoport **myresourcegroup** is.
 
 Ha az új kiszolgálót egy másik erőforráscsoporthoz szeretné létrehozni a meglévő kiszolgálóról, az alábbi példában látható módon adja meg az új erőforráscsoport-nevet a **ResourceGroupName** paraméter használatával:
 
@@ -120,7 +120,7 @@ A parancsmag **GeoRestore** paraméterének `Restore-AzMariaDbServer` a követke
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 |ResourceGroupName | myResourceGroup | Azon erőforráscsoport neve, amelyhez az új kiszolgáló tartozik.|
-|Name | mydemoserver – georestored | Az új kiszolgáló neve. |
+|Név | mydemoserver – georestored | Az új kiszolgáló neve. |
 |Hely | eastus | Az új kiszolgáló helye. |
 |UseGeoRestore | `<SwitchParameter>` | A visszaállításhoz használja a Geo üzemmódot. |
 
@@ -130,7 +130,7 @@ A visszaállítási folyamat befejeződése után keresse meg az új kiszolgál�
 
 A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MariaDB kapcsolódási karakterlánc létrehozása a PowerShell-lel](howto-connection-string-powershell.md)

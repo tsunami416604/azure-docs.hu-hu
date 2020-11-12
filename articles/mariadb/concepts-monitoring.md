@@ -1,18 +1,18 @@
 ---
 title: Figyelés – Azure Database for MariaDB
 description: Ez a cikk a Azure Database for MariaDB figyelésére és riasztására vonatkozó mérőszámokat ismerteti, beleértve a CPU-t, a tárolást és a kapcsolatok statisztikáit.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: d2d34e95642308dcdacba20879945f2c965db955
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5790094571563d3ca8576480a6296a73756fb6a6
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425199"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540416"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Figyelés Azure Database for MariaDB
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A Azure Database for MariaDB különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a kiszolgáló működésére.
@@ -65,7 +65,7 @@ A [tervezett karbantartási értesítések](./concepts-planned-maintenance-notif
 
 További információ az értesítések beállításáról a [tervezett karbantartási értesítések](./concepts-planned-maintenance-notification.md) dokumentumban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A metrikák Azure Portal, REST API vagy parancssori felülettel való eléréséről és exportálásáról további információt az [Azure mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál.
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-metric.md) című témakörben tekintheti meg.

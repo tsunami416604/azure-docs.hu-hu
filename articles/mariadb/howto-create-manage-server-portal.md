@@ -1,17 +1,17 @@
 ---
 title: Kiszolgáló kezelése – Azure Portal – Azure Database for MariaDB
 description: Megtudhatja, hogyan kezelheti Azure Database for MariaDB-kiszolgálókat a Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 24481abb6606d9ce830e5b65285b31637417cbd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562451"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537985"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Azure Database for MariaDB-kiszolgáló kezelése a Azure Portal használatával
 Ez a cikk bemutatja, hogyan kezelheti a Azure Database for MariaDB-kiszolgálókat. A felügyeleti feladatok közé tartozik a számítási és tárolási skálázás, a rendszergazdai jelszó alaphelyzetbe állítása és a kiszolgáló adatainak megtekintése.
@@ -30,9 +30,9 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 Általános célúról a memóriára optimalizált és fordítva is méretezhető. A kiszolgáló létrehozása után az alapszintű csomagra való váltás nem támogatott. 
 
-1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet**, amely a **Beállítások** szakaszban található.
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet** , amely a **Beállítások** szakaszban található.
 
-2. Válassza ki az **általános célú** vagy a **memória optimalizált**elemet attól függően, hogy mit kíván méretezni. 
+2. Válassza ki az **általános célú** vagy a **memória optimalizált** elemet attól függően, hogy mit kíván méretezni. 
 
     ![Képernyőfelvétel: a kiválasztott árképzési csomaggal rendelkező Azure Portal és a memóriára optimalizált kiválasztott érték.](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
@@ -44,7 +44,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 ### <a name="scale-vcores-up-or-down"></a>Méretezési virtuális mag felfelé vagy lefelé
 
-1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet**, amely a **Beállítások** szakaszban található.
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet** , amely a **Beállítások** szakaszban található.
 
 2. Módosítsa a **virtuális mag** beállítást úgy, hogy áthelyezi a csúszkát a kívánt értékre.
 
@@ -58,7 +58,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 ### <a name="scale-storage-up"></a>A tárterület felskálázása
 
-1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet**, amely a **Beállítások** szakaszban található.
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet** , amely a **Beállítások** szakaszban található.
 
 2. Módosítsa a **tárolási** beállításokat úgy, hogy a csúszkát felfelé helyezi a kívánt értékre.
 
@@ -73,7 +73,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 ## <a name="update-admin-password"></a>Rendszergazdai jelszó frissítése
 A rendszergazdai szerepkör jelszava a Azure Portal használatával módosítható.
 
-1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
+1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **jelszó alaphelyzetbe állítása** lehetőséget.
 
    ![Áttekintés](./media/howto-create-manage-server-portal/overview-reset-password.png)
 
@@ -88,7 +88,7 @@ A rendszergazdai szerepkör jelszava a Azure Portal használatával módosíthat
 
 Ha már nincs szüksége rá, törölheti a kiszolgálót. 
 
-1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **Törlés**lehetőséget.
+1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **Törlés** lehetőséget.
 
     ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
 

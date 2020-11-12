@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: kiszolgáló létrehozása – Azure CLI – Azure Database for MariaDB'
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Database MariaDB-kiszolgálót az Azure CLI használatával egy Azure-erőforráscsoportban.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 198a8eee38da2738552bc5e2a2ba52e13a890122
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4d2300e36bd06313cf889f40f37d672d66534db6
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424493"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538362"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása az Azure CLI használatával
 
@@ -31,7 +31,7 @@ Ha több előfizetéssel rendelkezik, válassza ki az erőforrást tartalmazó e
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) az [az group create](/cli/azure/group#az-group-create) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 
@@ -49,14 +49,14 @@ Beállítás | Mintaérték | Leírás
 ---|---|---
 name | **mydemoserver** | Adjon meg egy egyedi nevet, amely azonosítja az Azure Database for MariaDB-kiszolgálót. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A jelszó 3–63 karakterből állhat.
 resource-group | **myresourcegroup** | Adja meg az Azure-erőforráscsoport nevét.
-sku-name | **GP_Gen5_2** | A termékváltozat neve. Az egyezmény *díjszabási szintjéhez*tartozó \_ *számítási generációs* \_ *virtuális mag* a gyorsírásban követhető. Az **sku-name** paraméterről az alábbi táblázat utáni szakaszban talál további információt.
+sku-name | **GP_Gen5_2** | A termékváltozat neve. Az egyezmény *díjszabási szintjéhez* tartozó \_ *számítási generációs* \_ *virtuális mag* a gyorsírásban követhető. Az **sku-name** paraméterről az alábbi táblázat utáni szakaszban talál további információt.
 backup-retention | **7** | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap. Tartomány: 7–35. 
-geo-redundant-backup | **Disabled** | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Engedélyezett értékek: **engedélyezve**, **Letiltva**.
+geo-redundant-backup | **Disabled** | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Engedélyezett értékek: **engedélyezve** , **Letiltva**.
 location | **westus** | A kiszolgáló Azure-helye.
-ssl-enforcement | **Engedélyezve** | Azt adja meg, hogy engedélyezni kell-e az SSL-t ehhez a kiszolgálóhoz. Engedélyezett értékek: **engedélyezve**, **Letiltva**.
+ssl-enforcement | **Engedélyezve** | Azt adja meg, hogy engedélyezni kell-e az SSL-t ehhez a kiszolgálóhoz. Engedélyezett értékek: **engedélyezve** , **Letiltva**.
 storage-size | **51 200** | A kiszolgáló tárkapacitása (megabájtban megadva). Az érvényes tárolóméretek: 5120 Mb (legalább), 1024 MB-os egységekben történő növekedéssel. További információ a tárolóméret korlátairól: [Tarifacsomagok](./concepts-pricing-tiers.md). 
 version | **10,2** | A MariaDB fő motorjának verziója.
-admin-user | **myadmin** | A rendszergazdai bejelentkezés felhasználóneve. Az **admin-user** paraméter nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
+admin-user | **myadmin** | A rendszergazdai bejelentkezés felhasználóneve. Az **admin-user** paraméter nem lehet **azure_superuser** , **admin** , **administrator** , **root** , **guest** vagy **public**.
 admin-password | *a jelszó* | A rendszergazda felhasználó jelszava. A jelszó 8–128 karakterből állhat. Legalább háromféle karaktert tartalmaznia kell a következő kategóriák közül: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek.
 
 Az sku-name paraméter értéke a {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi, a következő példákban látható módon:
@@ -223,7 +223,7 @@ Csatlakozás a kiszolgálóhoz a mysql parancssori eszköz használatával:
 
 4. A kapcsolatra kattintva sikeresen csatlakozhat a kiszolgálóhoz.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha az ebben a rövid útmutatóban használt erőforrásokra már nincs szüksége egy másik rövid útmutatóhoz vagy oktatóanyagokhoz, a következő parancs futtatásával törölheti azokat: 
 
@@ -237,7 +237,7 @@ Ha csak az ebben a rövid útmutatóban létrehozott kiszolgálót szeretné tö
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [MariaDB-adatbázis tervezése az Azure CLI-vel](tutorial-design-database-cli.md)

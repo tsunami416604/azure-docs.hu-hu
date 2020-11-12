@@ -1,7 +1,7 @@
 ---
 title: Mik a számítási célok
 titleSuffix: Azure Machine Learning
-description: Itt adhatja meg, hogy hol szeretné betanítani vagy üzembe helyezni a modellt Azure Machine Learning használatával.
+description: Megtudhatja, hogyan jelölhet ki számítási erőforrást vagy környezetet a modell betanításához vagy üzembe helyezéséhez Azure Machine Learning használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 72cdfe2ebe79abb9649ac497a6ecddda8918b951
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2a19183f5ba5b1ea4d50cd5cfba6115f7dede6cd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322269"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540046"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik a számítási célok az Azure Machine Learningben?
 
@@ -100,7 +100,7 @@ A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további inform
 
 | **Támogatott VM-sorozat**  | **Korlátozások** |
 |------------|------------|
-| T | Nincsenek. |
+| D | Nincsenek. |
 | Dv2 | Nincsenek. |  
 | Dv3 | Nincsenek.|
 | DSv2 | Nincsenek. | 

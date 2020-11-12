@@ -1,19 +1,19 @@
 ---
 title: Kiszolgáló paramétereinek konfigurálása – Azure PowerShell-Azure Database for MariaDB
 description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni a szolgáltatás paramétereit Azure Database for MariaDB a PowerShell használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d116bdec2974fa2c39c6a56364e54ca7d776b682
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 8ace6306bec4c79cbce0a1572360db1acd2cea97
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426031"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538240"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-powershell"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MariaDB a PowerShell használatával
 
@@ -53,7 +53,7 @@ Az egyes felsorolt paraméterek definícióját a [kiszolgálói rendszerváltoz
 
 Egy adott konfigurációs paraméter részleteinek megjelenítéséhez futtassa a `Get-AzMariaDbConfiguration` parancsmagot, és adja meg a **Name** paramétert.
 
-Ez a példa a **lassú \_ lekérdezési \_ napló** kiszolgálójának konfigurációs paraméterének részleteit jeleníti meg a kiszolgáló **mydemoserver** az erőforráscsoport **myresourcegroup**alatt.
+Ez a példa a **lassú \_ lekérdezési \_ napló** kiszolgálójának konfigurációs paraméterének részleteit jeleníti meg a kiszolgáló **mydemoserver** az erőforráscsoport **myresourcegroup** alatt.
 
 ```azurepowershell-interactive
 Get-AzMariaDbConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -63,13 +63,13 @@ Get-AzMariaDbConfiguration -Name slow_query_log -ResourceGroupName myresourcegro
 
 Egy bizonyos kiszolgáló-konfigurációs paraméter értékét is módosíthatja, amely frissíti a MariaDB-kiszolgáló motorjának alapjául szolgáló konfigurációs értéket. A konfiguráció frissítéséhez használja a `Update-AzMariaDbConfiguration` parancsmagot.
 
-A **lassú \_ lekérdezési \_ napló** kiszolgáló-konfigurációs paraméterének frissítése a kiszolgáló **mydemoserver** az erőforráscsoport **myresourcegroup**területen.
+A **lassú \_ lekérdezési \_ napló** kiszolgáló-konfigurációs paraméterének frissítése a kiszolgáló **mydemoserver** az erőforráscsoport **myresourcegroup** területen.
 
 ```azurepowershell-interactive
 Update-AzMariaDbConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver -Value On
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A tároló automatikus növekedése Azure Database for MariaDB-kiszolgálón a PowerShell használatával](howto-auto-grow-storage-powershell.md).

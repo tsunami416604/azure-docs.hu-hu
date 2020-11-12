@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 2c9d00f1d78d2dea46d4ff4a08433360e00c7b9d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 29c378d40e3a4f92852f433677125a9e8a6d1133
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445625"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540127"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning-munkaterületek létrehozása és kezelése 
 
@@ -191,7 +191,7 @@ Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyege
 
 ### <a name="advanced"></a>Felsőfokú
 
-Alapértelmezés szerint a munkaterülethez tartozó metrikák és metaadatok a Microsoft által fenntartott Azure Cosmos DB-példányban vannak tárolva. Ezeket az adatfájlokat a Microsoft által felügyelt kulcsokkal titkosítjuk.
+Alapértelmezés szerint a munkaterület metaadatai a Microsoft által fenntartott Azure Cosmos DB-példányban vannak tárolva. Ezeket az adatfájlokat a Microsoft által felügyelt kulcsokkal titkosítjuk.
 
 Ha korlátozni szeretné a Microsoft által a munkaterületre összegyűjtött adatokat, válassza a __magas üzleti hatás munkaterületet__ a portálon, vagy állítsa be a `hbi_workspace=true ` Pythont. További információ erről a beállításról: inaktív [titkosítás](concept-data-encryption.md#encryption-at-rest).
 
@@ -200,7 +200,7 @@ Ha korlátozni szeretné a Microsoft által a munkaterületre összegyűjtött a
 
 #### <a name="use-your-own-key"></a>Saját kulcs használata
 
-Az adattitkosításhoz saját kulcsot is megadhat. Ezzel létrehozza az Azure-előfizetésében szereplő mérőszámokat és metaadatokat tároló Azure Cosmos DB-példányt.
+Az adattitkosításhoz saját kulcsot is megadhat. Ezzel létrehozza az Azure-előfizetésében található metaadatokat tároló Azure Cosmos DB-példányt.
 
 [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
@@ -382,6 +382,6 @@ Példák a munkaterület létrehozására:
 * [Munkaterület és számítási példány létrehozása](tutorial-1st-experiment-sdk-setup.md) Azure Portal használatával
 * [Munkaterület létrehozása a saját környezetében](tutorial-1st-experiment-sdk-setup-local.md) a Python SDK használatával
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha már rendelkezik munkaterülettel, megismerheti a [modellek betanítását és üzembe helyezését](tutorial-train-models-with-aml.md).

@@ -1,18 +1,18 @@
 ---
 title: Az SSL konfigurálása – Azure Database for MariaDB
 description: Útmutatás a Azure Database for MariaDB és a társított alkalmazások megfelelő konfigurálásához az SSL-kapcsolatok megfelelő használatához
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1b7127fd4807e1ddd3d5181d73c7f8e77f10cf77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f505ad3090470d2afeb9b16ffbe5c872cb9586b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055985"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538104"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Az SSL-kapcsolat konfigurálása az alkalmazásban a Azure Database for MariaDBhoz való biztonságos csatlakozáshoz
 A Azure Database for MariaDB támogatja a Azure Database for MariaDB-kiszolgáló SSL (SSL) használatával történő ügyfélalkalmazások összekapcsolását. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
@@ -37,7 +37,7 @@ Konfigurálja a MySQL Workbench-t a biztonságos SSL-kapcsolathoz.
 
 1. Frissítse az **SSL használata** mezőt a kötelező értékre.
 
-1. Az **SSL-hitelesítésszolgáltató fájlja:** mezőben adja meg a **BaltimoreCyberTrustRoot. CRT. PEM**fájljának helyét. 
+1. Az **SSL-hitelesítésszolgáltató fájlja:** mezőben adja meg a **BaltimoreCyberTrustRoot. CRT. PEM** fájljának helyét. 
     
     ![SSL-konfiguráció mentése](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
@@ -56,7 +56,7 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 ## <a name="enforcing-ssl-connections-in-azure"></a>Az SSL-kapcsolatok kényszerítése az Azure-ban 
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
-A Azure Portal használatával keresse fel a Azure Database for MariaDB-kiszolgálót, majd kattintson a **kapcsolatbiztonsági**elemre. A váltógomb használatával engedélyezheti vagy letilthatja az **SSL-kapcsolat érvényesítése** beállítást, majd kattintson a **Mentés**gombra. A Microsoft azt javasolja, hogy mindig engedélyezze az **SSL-kapcsolat betartatása** beállítást a fokozott biztonság érdekében.
+A Azure Portal használatával keresse fel a Azure Database for MariaDB-kiszolgálót, majd kattintson a **kapcsolatbiztonsági** elemre. A váltógomb használatával engedélyezheti vagy letilthatja az **SSL-kapcsolat érvényesítése** beállítást, majd kattintson a **Mentés** gombra. A Microsoft azt javasolja, hogy mindig engedélyezze az **SSL-kapcsolat betartatása** beállítást a fokozott biztonság érdekében.
 ![az SSL engedélyezése a MariaDB-kiszolgálóhoz](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata

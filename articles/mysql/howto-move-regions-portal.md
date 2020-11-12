@@ -1,18 +1,18 @@
 ---
 title: Azure-régiók áthelyezése – Azure Portal – Azure Database for MySQL
 description: Egy Azure Database for MySQL-kiszolgáló áthelyezése egyik Azure-régióból a másikba egy olvasási replika és a Azure Portal használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
-ms.openlocfilehash: 88f9b82df0ce1fae78f0c9de9c8d7a7b158d151e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 279526d31adf25d1f4cd5a6d9b15519679bd88b9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546330"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540229"
 ---
 # <a name="move-an-azure-database-for-mysql-server-to-another-region-by-using-the-azure-portal"></a>Azure Database for MySQL-kiszolgáló áthelyezése másik régióba a Azure Portal használatával
 
@@ -33,7 +33,7 @@ Egy Azure Database for MySQL régiók [közötti olvasási replikát](concepts-r
 
 Ha a Azure Portal a régión belüli olvasási replika kiszolgálót kívánja létrehozni a célhelyen, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Válassza ki azt a meglévő Azure Database for MySQL kiszolgálót, amelyet forráskiszolgálóként kíván használni. Ez a művelet megnyitja az **Áttekintés** lapot.
 1. Válassza a **replikálás** lehetőséget a menü **Beállítások** területén.
 1. Válassza a **replika hozzáadása** lehetőséget.

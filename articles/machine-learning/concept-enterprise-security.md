@@ -10,18 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 2234b1507e6e0fdb0b668fc18a7c8533e3ea7cc1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: eaaedc4404419e6028250a994077dd3df20b83d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441783"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539651"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Nagyvállalati biztonság és irányítási Azure Machine Learning
 
 Ebben a cikkben megismerheti a Azure Machine Learning számára elérhető biztonsági funkciókat.
 
-Ha Cloud Service-t használ, az ajánlott eljárás a hozzáférés korlátozása csak azokra a felhasználókra, akiknek szükségük van rá. Először is megismerheti a szolgáltatás által használt hitelesítési és engedélyezési modellt. Előfordulhat, hogy korlátozni kívánja a hálózati hozzáférést, vagy biztonságos módon csatlakoztatja a helyszíni hálózatban lévő erőforrásokat a felhőhöz. Az adattitkosítás is létfontosságú, mind a nyugalmi állapotban, mind pedig az adatok a szolgáltatások között mozognak. Előfordulhat, hogy a szabályzatok létrehozásakor bizonyos konfigurációkat vagy naplókat is létre kell hoznia, ha nem megfelelő konfigurációkat hoz létre. Végezetül meg kell tudnia figyelni a szolgáltatást, és minden tevékenységhez létre kell hoznia egy naplót.
+Ha Cloud Service-t használ, az ajánlott eljárás a hozzáférés korlátozása csak azokra a felhasználókra, akiknek szükségük van rá. Először is megismerheti a szolgáltatás által használt hitelesítési és engedélyezési modellt. Előfordulhat, hogy korlátozni kívánja a hálózati hozzáférést, vagy biztonságos módon csatlakoztatja a helyszíni hálózatban lévő erőforrásokat a felhőhöz. Az adattitkosítás is létfontosságú, mind a nyugalmi állapotban, mind pedig az adatok a szolgáltatások között mozognak. Előfordulhat, hogy olyan házirendeket is létre szeretne hozni, amelyek bizonyos konfigurációkat vagy naplókat kényszerítenek, ha nem megfelelő konfigurációk jönnek létre. Végezetül meg kell tudnia figyelni a szolgáltatást, és minden tevékenységhez létre kell hoznia egy naplót.
 
 > [!NOTE]
 > A cikkben található információk a Python SDK Azure Machine Learning 1.0.83.1 vagy újabb verziójával működnek.
@@ -119,14 +119,15 @@ Ha olyan szolgáltatásokat használ, mint például az automatizált Machine Le
 
 Érdemes lehet titkosítani az [üzembe helyezett végpontból naplózott diagnosztikai adatokat](how-to-enable-app-insights.md) az Azure Application Insights-példányba.
 
-## <a name="monitoring"></a>Monitorozás
+## <a name="monitoring"></a>Figyelés
 
 A szerepkörtől és a figyeléstől függően számos figyelési forgatókönyv Azure Machine Learning.
 
-| Szerepkör | Használat figyelése |
-| ---- | ----- |
-| Adminisztrátor, DevOps, MLOps | [Azure monitor mérőszámok](#azure-monitor), [műveletnapló](#activity-log), [sebezhetőségi vizsgálat](#vulnerability-scanning) |
-| Adattudós, MLOps | [Figyelő futtatása](#monitor-runs) |
+| Szerepkör | Használat figyelése | Leírás |
+| ---- | ----- | ----- |
+| Adminisztrátor, DevOps, MLOps | [Azure monitor mérőszámok](#azure-monitor), [műveletnapló](#activity-log), [sebezhetőségi vizsgálat](#vulnerability-scanning) | Szolgáltatási szint adatai |
+| Adattudós, MLOps | [Figyelő futtatása](#monitor-runs) | A betanítási futtatások során naplózott információk |
+| MLOps | [Modell adatainak összegyűjtése](how-to-enable-data-collection.md), [figyelés Application Insights](how-to-enable-app-insights.md) | Webszolgáltatásként vagy IoT Edge-modulként telepített modellek által naplózott információk|
 
 ### <a name="monitor-runs"></a>Figyelő futtatása
 
@@ -189,7 +190,7 @@ További információ a Azure Machine Learningra vonatkozó házirendekről: a [
 
 [!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Biztonságos Azure Machine Learning webszolgáltatások TLS-vel](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett Machine Learning-modell felhasználása](how-to-consume-web-service.md)

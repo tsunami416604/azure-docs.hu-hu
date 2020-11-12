@@ -1,24 +1,24 @@
 ---
 title: Kiszolgáló paramétereinek konfigurálása – Azure Portal-Azure Database for MariaDB
 description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni a MariaDB Server-paramétereket a Azure Database for MariaDB a Azure Portal használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: 9d0b6865c7fb5b59f379568d15bd9b96883202e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7081535bb709e6731a9a15436334e8742e7bdd08
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626428"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539456"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>Kiszolgálói paraméterek konfigurálása Azure Database for MariaDB a Azure Portal használatával
 
 Azure Database for MariaDB támogatja egyes kiszolgálói paraméterek konfigurációját. Ez a cikk azt ismerteti, hogyan konfigurálhatja ezeket a paramétereket a Azure Portal használatával. Nem minden kiszolgáló paraméter módosítható.
 
 >[!Note]
-> A kiszolgálói paraméterek globálisan frissíthetők a kiszolgáló szintjén, az [Azure CLI](./howto-configure-server-parameters-cli.md), a [PowerShell](./howto-configure-server-parameters-using-powershell.md)vagy a [Azure Portal](./howto-server-parameters.md)használatával.
+> A kiszolgálóparaméterek a kiszolgáló szintjén frissíthetők globálisan. Használja az [Azure CLI-t](./howto-configure-server-parameters-cli.md), a [PowerShellt](./howto-configure-server-parameters-using-powershell.md) vagy az [Azure Portalt](./howto-server-parameters.md).
 
 ## <a name="configure-server-parameters"></a>Kiszolgáló paramétereinek konfigurálása
 
@@ -29,7 +29,7 @@ Azure Database for MariaDB támogatja egyes kiszolgálói paraméterek konfigur�
 ![Számbavétel legördülő lista](./media/howto-server-parameters/3-toggle_parameter.png)
 4. A módosítások mentéséhez kattintson a  **Save (Mentés** ) gombra.
 ![Módosítások mentése vagy elvetése](./media/howto-server-parameters/4-save_parameters.png)
-5. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
+5. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett** értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
 ![Az összes visszaállítása az alapértelmezett értékre](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="setting-parameters-not-listed"></a>Nem felsorolt paraméterek beállítása

@@ -1,17 +1,17 @@
 ---
 title: A kapcsolatok problémáinak elhárítása – Azure Database for MariaDB
 description: Ismerje meg, hogy miként lehet elhárítani a Azure Database for MariaDB kapcsolódási problémáit, beleértve az újrapróbálkozásokat igénylő átmeneti hibákat, a tűzfal problémáit és az kimaradásokat.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 521853fd361007159d7e497eb7e7c1f3d200731c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9a670472529dccd51cbfa71e385151bc63cff9b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82101450"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539379"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Az Azure Database for MariaDB-hez való csatlakozás hibáinak elhárítása
 
@@ -47,7 +47,7 @@ Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for MariaDBhoz,
 
 * Tűzfal-konfiguráció: a Azure Database for MariaDB-kiszolgáló vagy az ügyféloldali tűzfal blokkolja a kapcsolatokat.
 * Hálózati újrakonfigurálás az ügyféloldali oldalon: új IP-cím vagy proxykiszolgáló lett hozzáadva.
-* Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva, például a kiszolgáló neve a (z) vagy a felhasználónévben lévő * \@ kiszolgálónév* -utótaggal.
+* Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva, például a kiszolgáló neve a (z) vagy a felhasználónévben lévő *\@ kiszolgálónév* -utótaggal.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 
@@ -56,6 +56,6 @@ Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for MariaDBhoz,
 3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat. Tekintse át az [alkalmazások Azure Database for MariaDBhoz való kapcsolódásának módját](howto-connection-string.md).
 4. Keresse meg a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy regionális leállás van, tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md) című témakört, amely az új régióba való helyreállítás lépéseit Azure Database for MariaDB.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Database for MariaDB átmeneti kapcsolódási hibáinak kezelése](concepts-connectivity.md)

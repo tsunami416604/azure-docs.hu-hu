@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ce8abf439c44e06134113dd562ebadc62b803a28
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 7d97405a0b75129ddb0da581955728b393bf49ca
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506073"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539073"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -723,6 +723,8 @@ További információkat találhat az alábbi forrásokban:
 * [HTTP-és webhook-kötések](functions-bindings-http-webhook.md)
 * [Üzenetsor-tárolási kötések](functions-bindings-storage-queue.md)
 * [Időzítő-eseményindító](functions-bindings-timer.md)
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/python-functions-ref-survey)
 
 
 [HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true

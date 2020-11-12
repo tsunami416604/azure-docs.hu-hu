@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 9bd7e7dab5384ecd3e1e87d763d4b8f081b669be
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b065b36103b69f0601daa1388b45865856543d2b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329832"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540518"
 ---
 # <a name="language-support-for-computer-vision"></a>A Computer Vision nyelvi támogatása
 
@@ -30,11 +30,11 @@ Computer Vision OCR API-jai több nyelvet támogatnak. Nem igénylik a nyelvi k�
 |Arab | `ar`|✔ | | |
 |Kínai (egyszerűsített) | `zh-Hans`|✔ | |✔ |
 |Kínai (hagyományos) | `zh-Hant`|✔ | | |
-|Cseh | `cs` |✔ | | |
-|Dán | `da` |✔ | | |
+|cseh | `cs` |✔ | | |
+|dán | `da` |✔ | | |
 |Holland | `nl` |✔ |✔ |✔ |
 |Angol | `en` |✔ |✔ |✔ |
-|Finn | `fi` |✔ | | |
+|finn | `fi` |✔ | | |
 |Francia | `fr` |✔ |✔ |✔ |
 |Német | `de` |✔ |✔ |✔ |
 |Görög | `el` |✔ | | |
@@ -51,12 +51,12 @@ Computer Vision OCR API-jai több nyelvet támogatnak. Nem igénylik a nyelvi k�
 |Szerb (latin betűs) | `sr-Latn` |✔ | | |
 |Szlovák | `sk` |✔ | | |
 |Spanyol | `es` |✔ |✔ |✔ |
-|Svéd | `sw` |✔ | | |
+|svéd | `sw` |✔ | | |
 |Török | `tr` |✔ | | |
 
 ## <a name="image-analysis"></a>Képelemzés
 
-Az [elemzés-rendszerkép](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API egyes műveletei más nyelveket is visszaadhatnak a `language` lekérdezési paraméterrel megadottak szerint. A többi művelet angol nyelven adja vissza az eredményeket, függetlenül attól, hogy milyen nyelven van megadva, mások pedig kivételt képeznek a nem támogatott nyelvek esetében. A műveletek a és a `visualFeatures` `details` lekérdezési paraméterekkel vannak megadva. az [áttekintést](overview.md) a képelemzéssel elvégezhető műveletek listájáról tekintheti meg.
+Az [elemzés-rendszerkép](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API egyes műveletei más nyelveket is visszaadhatnak a `language` lekérdezési paraméterrel megadottak szerint. A többi művelet angol nyelven adja vissza az eredményeket, függetlenül attól, hogy milyen nyelven van megadva, mások pedig kivételt képeznek a nem támogatott nyelvek esetében. A műveletek a és a `visualFeatures` `details` lekérdezési paraméterekkel vannak megadva. az [áttekintést](overview.md) a képelemzéssel elvégezhető műveletek listájáról tekintheti meg.
 
 |Nyelv | Nyelvkód | Kategóriák | Címkék | Leírás | Felnőtt | Márkák | Szín | Arcok | ImageType | Objektumokat | Hírességek | Arcrészek |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -66,7 +66,7 @@ Az [elemzés-rendszerkép](https://westus.dev.cognitive.microsoft.com/docs/servi
 |Portugál | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Spanyol | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az útmutatóban említett Computer Vision-funkciókkal.
 

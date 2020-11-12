@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: ac3edc466d640fdb98fd38ba59938aa13fe00f73
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 4eb2835bd09e6548149ee90cb7232bf230de0300
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489148"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538750"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
@@ -186,7 +186,7 @@ Az olvasási API olyan képeket és dokumentumokat támogat, amelyek több kül�
 
 ## <a name="ocr-api"></a>OCR API
 
-Az [OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) egy régebbi felismerési modellt használ, csak a képeket támogatja, és szinkron módon hajtja végre az észlelt szöveggel való azonnali visszatérést. Lásd az [OCR által támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) , majd az API olvasása című témakört.
+Az [OCR API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) egy régebbi felismerési modellt használ, csak a képeket támogatja, és szinkron módon hajtja végre az észlelt szöveggel való azonnali visszatérést. Lásd az [OCR által támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) , majd az API olvasása című témakört.
 
 ## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
 
@@ -195,7 +195,7 @@ Akárcsak az összes kognitív szolgáltatás esetében, az olvasási/OCR szolg�
 > [!NOTE]
 > A vison 2,0 RecognizeText művelet folyamatban van a jelen cikkben ismertetett új olvasási API Javához. A meglévő ügyfeleknek [át kell térniük az olvasási műveletek használatára](upgrade-api-versions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg a [Computer Vision Read SDK](./quickstarts-sdk/client-library.md) -gyors útmutatóval C#, Java, JavaScript vagy Python nyelven.
 - A REST API-k használatával megtudhatja, hogyan használhatja a [Beolvasás REST API](./QuickStarts/CSharp-hand-text.md) a C#, a Java, a JavaScript vagy a Python használatával.

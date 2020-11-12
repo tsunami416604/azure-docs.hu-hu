@@ -1,18 +1,18 @@
 ---
 title: Figyelés – Azure Database for MySQL
 description: Ez a cikk a Azure Database for MySQL figyelésére és riasztására vonatkozó mérőszámokat ismerteti, beleértve a CPU-t, a tárolást és a kapcsolatok statisztikáit.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: b2670862814495ab04f92d8f34a757d3ede6cf4a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5b818068c2aab045b46b34d408a93b7cb3df15c7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546874"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537696"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Figyelés Azure Database for MySQL
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A Azure Database for MySQL különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a kiszolgáló működésére.

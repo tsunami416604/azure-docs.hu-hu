@@ -10,22 +10,18 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
-ms.openlocfilehash: ef573817927cf732da3426d802f8f26e2e9cd4ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7b696ba052b2aca9e14628327c07275845607ad
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398997"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540586"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>Társ-szolgáltatási kapcsolatok regisztrálása az Azure CLI használatával
 
 Az Azure társközi szolgáltatás olyan hálózati szolgáltatás, amely a Microsoft Cloud Services, például a Microsoft 365, a Dynamics 365, a szolgáltatott szoftver (SaaS) szolgáltatásai, az Azure vagy bármely, a nyilvános interneten keresztül elérhető Microsoft-szolgáltatás számára teszi lehetővé az ügyfelek kapcsolódását. Ebből a cikkből megtudhatja, hogyan regisztrálhat egy társ-szolgáltatási kapcsolatot az Azure CLI használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre most egy [fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+- Ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. Futtassa az [az version](/cli/azure/reference-index#az_version) parancsot a telepített verzió és a függő kódtárak megkereséséhez. A legújabb verzióra az [az upgrade](/cli/azure/reference-index#az_upgrade) paranccsal frissíthet.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -41,19 +37,11 @@ A hálózat Microsoft hálózattal való összekapcsolásához egy internetszolg
 
 Győződjön meg arról, hogy a kapcsolati szolgáltatók a Microsofttal együttműködtek.
 
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Jelentkezzen be az Azure-fiókjába, és válassza ki az előfizetését
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-A konfiguráció megkezdéséhez jelentkezzen be az Azure-fiókjába. Ha a Cloud Shell **kipróbálása** lehetőséget használja, automatikusan bejelentkezett. Az alábbi példák segítséget nyújtanak a kapcsolódáshoz.
+- Ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-```azurecli-interactive
-az login
-```
-
-Keresse meg a fiókot az előfizetésekben.
-
-```azurecli-interactive
-az account list
-```
+### <a name="1-select-your-subscription"></a>1. Válassza ki az előfizetését
 
 Válassza ki azt az előfizetést, amelyhez regisztrálni kívánja a társ-szolgáltatási kapcsolatot.
 

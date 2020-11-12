@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cd872d66088e165bfc8356ab6d96a0a6135a0e0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68946339"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538308"
 ---
 # <a name="detect-domain-specific-content"></a>Tartományspecifikus tartalom észlelése
 
@@ -26,7 +26,7 @@ A tartományszintű modelleket kétféleképpen használhatja: önmagukban (hat�
 
 ### <a name="scoped-analysis"></a>Hatókörön belüli elemzés
 
-A képeket a [models/ \<model\> /analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API meghívásával elemezheti úgy, hogy csak a kiválasztott tartományhoz tartozó modellt használja.
+A képeket a [models/ \<model\> /analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API meghívásával elemezheti úgy, hogy csak a kiválasztott tartományhoz tartozó modellt használja.
 
 Az alábbi példa egy, a **modell/hírességek/elemzés** API által visszaadott JSON-választ ad vissza az adott rendszerképhez:
 
@@ -57,7 +57,7 @@ Az alábbi példa egy, a **modell/hírességek/elemzés** API által visszaadott
 
 ### <a name="enhanced-categorization-analysis"></a>Továbbfejlesztett kategorizálási elemzés
 
-Az általános képelemzés kiegészítéseként a tartományra jellemző modelleket is használhatja. Ezt a [magas szintű kategorizálás](concept-categorizing-images.md) részeként úgy teheti meg, hogy a tartományra jellemző modelleket az [elemzési API-](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) hívás *részleteit* tartalmazó paraméterben megadja.
+Az általános képelemzés kiegészítéseként a tartományra jellemző modelleket is használhatja. Ezt a [magas szintű kategorizálás](concept-categorizing-images.md) részeként úgy teheti meg, hogy a tartományra jellemző modelleket az [elemzési API-](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) hívás *részleteit* tartalmazó paraméterben megadja.
 
 Ebben az esetben az 86 kategóriába tartozó taxonómia-osztályozó a neve első. Ha az észlelt kategóriák bármelyike megfelel a tartományra jellemző modellnek, a rendszer átadja a rendszerképet a modellnek, és hozzáadja az eredményeket is.
 
@@ -105,7 +105,7 @@ A Computer Vision jelenleg a következő tartományszintű modelleket támogatja
 | hírességek | Híresség-felismerés, a kategóriába sorolt rendszerképek esetén támogatott. `people_` |
 | arcrész | A tereptárgyak felismerése, amely a `outdoor_` vagy kategóriába sorolt rendszerképek esetén támogatott `building_` |
 
-A [models](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API meghívása ezeket az információkat az egyes modellek által alkalmazható kategóriákkal együtt fogja visszaadni:
+A [models](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20e) API meghívása ezeket az információkat az egyes modellek által alkalmazható kategóriákkal együtt fogja visszaadni:
 
 ```json
 {
@@ -137,6 +137,6 @@ A [models](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [képek kategorizálásával](concept-categorizing-images.md)kapcsolatos fogalmak megismerése.

@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: de83be26e3cb7105303528e10fb50b7ecc438472
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a133cdb72e304a254305833b9ae6e8a7ebe30ab3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447689"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540008"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Adattitkosítás Azure Machine Learning
 
@@ -53,7 +53,7 @@ A hozzáférési kulcsok újragenerálásával kapcsolatos információkért lá
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-A Azure Machine Learning a metrikákat és a metaadatokat egy Azure Cosmos DB példányban tárolja. Ez a példány egy Azure Machine Learning által felügyelt Microsoft-előfizetéshez van társítva. A Azure Cosmos DB tárolt összes adatok titkosítva vannak a Microsoft által felügyelt kulcsokkal.
+Azure Machine Learning a metaadatokat egy Azure Cosmos DB példányban tárolja. Ez a példány egy Azure Machine Learning által felügyelt Microsoft-előfizetéshez van társítva. A Azure Cosmos DB tárolt összes adatok titkosítva vannak a Microsoft által felügyelt kulcsokkal.
 
 Ha saját (ügyfél által felügyelt) kulcsokat kíván használni a Azure Cosmos DB-példány titkosításához, létrehozhat egy dedikált Cosmos DB-példányt a munkaterülethez való használatra. Ezt a megközelítést javasoljuk, ha a Microsoft-előfizetésben üzemeltetett több-bérlős Cosmos DB példányon kívül szeretné tárolni az adatokat, például a futtatási előzmények információit. 
 
@@ -158,7 +158,7 @@ Az SSH-jelszavak és-kulcsok a számítási célokhoz, például az Azure HDInsi
 
 Minden munkaterülethez tartozik egy társított, rendszerhez rendelt felügyelt identitás, amelynek a neve megegyezik a munkaterülettel. Ez a felügyelt identitás hozzáfér a kulcstartóban található összes kulcshoz, titokhoz és tanúsítványhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kapcsolódás az Azure Storage-hoz](how-to-access-data.md)
 * [Adatok lekérése adattárból](how-to-create-register-datasets.md)

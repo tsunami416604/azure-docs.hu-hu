@@ -1,17 +1,17 @@
 ---
 title: Kiszolgáló újraindítása – Azure Portal – Azure Database for MariaDB
 description: Ez a cikk azt ismerteti, hogyan lehet újraindítani egy Azure Database for MariaDB kiszolgálót az Azure Portal használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 369d19d98946f8309c7f2053f4453e09a7ed902f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c16cf8d67394f6aa50cb30a44b4ff5a677159de
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121061"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538886"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Azure Database for MariaDB kiszolgáló újraindítása Azure Portal használatával
 Ez a témakör azt ismerteti, hogyan lehet újraindítani egy Azure Database for MariaDB-kiszolgálót. Előfordulhat, hogy a kiszolgálót karbantartás miatt újra kell indítania, ami rövid kimaradást okoz, mivel a kiszolgáló végrehajtja a műveletet.
@@ -30,7 +30,7 @@ A következő lépésekkel indítsa újra a MariaDB-kiszolgálót:
 
 1. A Azure Portal válassza ki a Azure Database for MariaDB kiszolgálót.
 
-2. A kiszolgáló **Áttekintés** lapjának eszköztárán kattintson az **Újraindítás**elemre.
+2. A kiszolgáló **Áttekintés** lapjának eszköztárán kattintson az **Újraindítás** elemre.
 
    ![Azure Database for MariaDB – áttekintés – Újraindítás gomb](./media/howto-restart-server-portal/2-server.png)
 
@@ -46,6 +46,6 @@ A következő lépésekkel indítsa újra a MariaDB-kiszolgálót:
 
    ![Azure Database for MariaDB – sikeres újraindítás](./media/howto-restart-server-portal/5-restart-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyors útmutató: Azure Database for MariaDB kiszolgáló létrehozása Azure Portal használatával](./quickstart-create-mariadb-server-database-using-azure-portal.md)

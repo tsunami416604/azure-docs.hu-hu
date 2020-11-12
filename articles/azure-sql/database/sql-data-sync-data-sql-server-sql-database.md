@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: fdeddfb0a09151ea010d4e95a2954200dd9371dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 01c5d4395eb584631efb9b3b956b9a987e46b0db
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791426"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540620"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 
@@ -46,7 +46,7 @@ A szinkronizálási csoport a következő tulajdonságokkal rendelkezik:
 - A **szinkronizálási séma** leírja, hogy mely adatokat szinkronizálja a rendszer.
 - A **szinkronizálás iránya** lehet kétirányú, vagy csak egy irányba lehet flow. Vagyis a szinkronizálás iránya lehet a *tag* , a tag vagy a két *csomópont* is.
 - A szinkronizálási **időköz** leírja, hogy milyen gyakran történjen a szinkronizálás.
-- Az **ütközés-feloldási házirend** egy csoport szintű házirend, amely lehet *hub WINS* vagy *tag WINS* .
+- Az **ütközés-feloldási házirend** egy csoport szintű házirend, amely lehet *hub WINS* vagy *tag WINS*.
 
 ## <a name="when-to-use"></a>A következő esetekben használja
 
@@ -58,7 +58,7 @@ Az adatszinkronizálás olyan esetekben hasznos, amikor a Azure SQL Database vag
 
 Az adatszinkronizálás nem az előnyben részesített megoldás a következő esetekben:
 
-| Használati eset | Néhány ajánlott megoldás |
+| Használati példa | Néhány ajánlott megoldás |
 |----------|----------------------------|
 | Vészhelyreállítás | [Azure geo-redundáns biztonsági mentések](automated-backups-overview.md) |
 | Olvasási skála | [Csak olvasható replikák használata az írásvédett lekérdezési feladatok terheléselosztásához (előzetes verzió)](read-scale-out.md) |
@@ -150,7 +150,7 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 
 #### <a name="unsupported-column-types"></a>Nem támogatott oszlopok típusai
 
-Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rendszer által létrehozott oszlopokat. Például:
+Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rendszer által létrehozott oszlopokat. Ilyenek többek között:
 
 - Számított oszlopok.
 - Rendszer által generált oszlopok az ideiglenes táblákhoz.
@@ -166,7 +166,7 @@ Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rends
 | Szinkronizálási csoport táblái                                          | 500                    | Több szinkronizálási csoport létrehozása |
 | Egy szinkronizálási csoportba tartozó tábla oszlopai                              | 1000                   |                             |
 | Tábla adatsorainak mérete                                        | 24 MB                  |                             |
-| Szinkronizálás minimális gyakorisági időköze                                 | 5 perc              |                             |
+| Szinkronizálás minimális gyakorisági időköze (az előző szinkronizálás kezdete óta)     | 5 perc              |                             |
 
 > [!NOTE]
 > Egyetlen szinkronizálási csoportban akár 30 végpont is lehet, ha csak egy szinkronizálási csoport van. Ha több szinkronizálási csoport is van, akkor az összes szinkronizálási csoporton belüli végpontok száma nem haladhatja meg a 30-at. Ha egy adatbázis több szinkronizálási csoporthoz tartozik, a rendszer több végpontnak számít, nem egy.

@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: kiszolgáló létrehozása – Azure PowerShell – Azure Database for MariaDB'
 description: Ez a rövid útmutató azt ismerteti, hogyan használható a PowerShell egy Azure Database for MariaDB-kiszolgáló Azure-erőforráscsoportbeli létrehozásához.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 7db89d315e0df51aad7f4660ec5da64425eae2aa
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 05082ffa891b72b472ed5433282198c61080f073
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424439"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537798"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>Rövid útmutató: Azure Database for MariaDB-kiszolgáló létrehozása a PowerShell használatával
 
@@ -43,7 +43,7 @@ Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizet�
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 
@@ -61,7 +61,7 @@ A következő táblázat a parancsmag leggyakrabban használt paramétereinek li
 
 |        **Beállítás**         | **Mintaérték** |                                                                                                                                                             **Leírás**                                                                                                                                                              |
 | -------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name                       | mydemoserver     | Válasszon egy globálisan egyedi nevet az Azure-ban, amely a Azure Database for MariaDB-kiszolgálót azonosítja. A kiszolgáló neve csak betűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A megadott nagybetűs karakterek automatikusan kisbetűsre konvertálódnak a létrehozási folyamat során. 3–63 karakter hosszúságú lehet. |
+| Név                       | mydemoserver     | Válasszon egy globálisan egyedi nevet az Azure-ban, amely a Azure Database for MariaDB-kiszolgálót azonosítja. A kiszolgáló neve csak betűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A megadott nagybetűs karakterek automatikusan kisbetűsre konvertálódnak a létrehozási folyamat során. 3–63 karakter hosszúságú lehet. |
 | ResourceGroupName          | myResourceGroup  | Adja meg az Azure-erőforráscsoport nevét.                                                                                                                                                                                                                                                                                            |
 | SKU                        | GP_Gen5_2        | A termékváltozat neve. A következő egyezmény **díjszabása: standard \_ számítási generációs \_ virtuális mag** a gyorsírásban. Az SKU paraméterrel kapcsolatos további információkért tekintse meg a táblázatot követő információkat.                                                                                                                                           |
 | BackupRetentionDay         | 7                | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap. A tartomány 7–35.                                                                                                                                                                                                                                                                       |
@@ -70,7 +70,7 @@ A következő táblázat a parancsmag leggyakrabban használt paramétereinek li
 | SslEnforcement             | Engedélyezve          | Azt jelzi, hogy engedélyezve van-e az SSL, vagy sem ehhez a kiszolgálóhoz. Megengedett értékek: Engedélyezve, Letiltva.                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51 200            | A kiszolgáló tárkapacitása (megabájtban megadva). Az érvényes StorageInMb legalább 5120 MB, és 1024 MB-onként növekszik. További információ a tárolási méretekkel kapcsolatos korlátokról: [Azure Database for MariaDB díjszabási szintek](./concepts-pricing-tiers.md).                                                                               |
 | Verzió                    | 5.7              | A MariaDB főverziója.                                                                                                                                                                                                                                                                                                                 |
-| AdministratorUserName      | myadmin          | A rendszergazda bejelentkezéshez használt felhasználóneve. Nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.                                                                                                                                                                                            |
+| AdministratorUserName      | myadmin          | A rendszergazda bejelentkezéshez használt felhasználóneve. Nem lehet **azure_superuser** , **admin** , **administrator** , **root** , **guest** vagy **public**.                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | A rendszergazda felhasználó jelszava biztonságos sztring formájában. A jelszó 8–128 karakterből állhat. A jelszónak legalább háromféle karaktert tartalmaznia kell a következő kategóriák közül: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek.                                       |
 
 Az **SKU** paraméter értéke az egyezmény **díjszabási rétegének \_ számítási-generálási \_ virtuális mag** követi, ahogy az alábbi példákban is látható.
@@ -81,7 +81,7 @@ Az **SKU** paraméter értéke az egyezmény **díjszabási rétegének \_ szám
 
 További információ az érvényes **SKU** -értékekről régiónként és rétegek esetén: [Azure Database for MariaDB árképzési szintek](./concepts-pricing-tiers.md).
 
-A következő példa egy MariaDB-kiszolgálót hoz létre az **USA nyugati** régiójában, a **myresourcegroup** erőforráscsoport **mydemoserver** nevű csoportjában, a **myadmin**kiszolgáló-rendszergazdai bejelentkezési azonosítójával. Ez egy általános célú, 2 virtuális mag és a Geo-redundáns biztonsági mentést használó, általános célú árképzési szinten található Gen 5 kiszolgáló. Dokumentálja a példa első sorában használt jelszót, mivel ez a MariaDB-kiszolgáló rendszergazdai fiókjának jelszava.
+A következő példa egy MariaDB-kiszolgálót hoz létre az **USA nyugati** régiójában, a **myresourcegroup** erőforráscsoport **mydemoserver** nevű csoportjában, a **myadmin** kiszolgáló-rendszergazdai bejelentkezési azonosítójával. Ez egy általános célú, 2 virtuális mag és a Geo-redundáns biztonsági mentést használó, általános célú árképzési szinten található Gen 5 kiszolgáló. Dokumentálja a példa első sorában használt jelszót, mivel ez a MariaDB-kiszolgáló rendszergazdai fiókjának jelszava.
 
 > [!TIP]
 > A kiszolgáló neve egy DNS-névbe van leképezve, ezért globálisan egyedinek kell lennie az Azure-ban.
@@ -124,7 +124,7 @@ Update-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup -Ss
 
 ## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
-A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat. A kapcsolódási adatok megállapításához használja az alábbi példát. Jegyezze fel a **FullyQualifiedDomainName** és a **AdministratorLogin**értékeit.
+A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat. A kapcsolódási adatok megállapításához használja az alábbi példát. Jegyezze fel a **FullyQualifiedDomainName** és a **AdministratorLogin** értékeit.
 
 ```azurepowershell-interactive
 Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
@@ -218,7 +218,7 @@ További parancsokról a [MySQL 5.7 referencia-kézikönyvének 4.5.1 fejezetéb
 
 1. Válassza ki a kapcsolatot a kiszolgálóhoz való kapcsolódáshoz.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha az ebben a rövid útmutatóban létrehozott erőforrások nem szükségesek egy másik gyors útmutatóhoz vagy oktatóanyaghoz, a következő példa futtatásával törölheti őket.
 
@@ -236,7 +236,7 @@ Ha csak az ebben a rövid útmutatóban létrehozott kiszolgálót szeretné tö
 Remove-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MariaDB tervezése a PowerShell használatával](tutorial-design-database-using-powershell.md)

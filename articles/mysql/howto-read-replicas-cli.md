@@ -1,18 +1,18 @@
 ---
 title: Olvasási replikák kezelése – Azure CLI, REST API-Azure Database for MySQL
 description: Ismerje meg, hogyan állíthat be és kezelhet olvasási replikákat Azure Database for MySQL az Azure CLI vagy a REST API használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 747b8bc1abbf19c861e180faf17e2fa1a143a237
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1a5bc9638e2e6eeff8f2176247f579b64beede90
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546313"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540212"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MySQL az Azure CLI és a REST API használatával
 
@@ -179,6 +179,6 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [olvasási replikáról](concepts-read-replicas.md)

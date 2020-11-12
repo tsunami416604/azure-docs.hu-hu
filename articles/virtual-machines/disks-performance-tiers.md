@@ -1,23 +1,23 @@
 ---
 title: Az Azure Managed Disks teljesítményének módosítása
-description: Ismerje meg a felügyelt lemezek teljesítményi szintjeit, és Ismerje meg, hogyan változtathatók meg a meglévő felügyelt lemezek teljesítményi szintjei.
+description: Ismerje meg a felügyelt lemezek teljesítményi szintjeit, és megtudhatja, hogyan módosíthatja a meglévő felügyelt lemezek teljesítményi szintjeit a Azure PowerShell modul vagy az Azure CLI használatával.
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 11/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4e31af3a66927e0c93caf477a7daf1b86eebf8f5
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 923c5970183bd192ac1a2f20fb775d96dcc06865
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348695"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540637"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>A felügyelt lemezek teljesítményi szintjei (előzetes verzió)
 
-Azure Disk Storage jelenleg beépített kitörési képességekkel rendelkezik, amelyek nagyobb teljesítményt nyújtanak a rövid távú váratlan forgalom kezeléséhez. A prémium SSD-k rugalmasan növelhetik a lemez teljesítményét a lemez tényleges méretének növelése nélkül. Ez a funkció lehetővé teszi a számítási feladatok teljesítményének kielégítését és a költségek csökkentését. 
+A Azure Disk Storage beépített kitörési képességekkel rendelkezik, amelyek nagyobb teljesítményt biztosítanak a rövid távú váratlan forgalom kezeléséhez. A prémium SSD-k rugalmasan növelhetik a lemez teljesítményét a lemez tényleges méretének növelése nélkül. Ez a funkció lehetővé teszi a számítási feladatok teljesítményének kielégítését és a költségek csökkentését. 
 
 > [!NOTE]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. 
@@ -58,6 +58,8 @@ Számlázási információk: a [felügyelt lemez díjszabása](https://azure.mic
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Hozzon létre egy üres adatlemezt, amely az alapcsomagnál magasabb szintű.
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 subscriptionId=<yourSubscriptionIDHere>
 resourceGroupName=<yourResourceGroupNameHere>
@@ -83,8 +85,30 @@ image=Canonical:UbuntuServer:18.04-LTS:18.04.202002180
 
 az disk create -n $diskName -g $resourceGroupName -l $region --image-reference $image --sku Premium_LRS --tier $performanceTier
 ```
-     
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+$subscriptionId='yourSubscriptionID'
+$resourceGroupName='yourResourceGroupName'
+$diskName='yourDiskName'
+$diskSizeInGiB=4
+$performanceTier='P50'
+$sku='Premium_LRS'
+$region='westcentralus'
+
+Connect-AzAccount
+
+Set-AzContext -Subscription $subscriptionId
+
+$diskConfig = New-AzDiskConfig -SkuName $sku -Location $region -CreateOption Empty -DiskSizeGB $diskSizeInGiB -Tier $performanceTier
+New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
+```
+---
+
 ## <a name="update-the-tier-of-a-disk"></a>Lemez szintjeinek frissítése
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 resourceGroupName=<yourResourceGroupNameHere>
@@ -93,13 +117,38 @@ performanceTier=<yourDesiredPerformanceTier>
 
 az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+$resourceGroupName='yourResourceGroupName'
+$diskName='yourDiskName'
+$performanceTier='P1'
+
+$diskUpdateConfig = New-AzDiskUpdateConfig -Tier $performanceTier
+
+Update-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName -DiskUpdate $diskUpdateConfig
+```
+---
+
 ## <a name="show-the-tier-of-a-disk"></a>Lemez szintjeinek megjelenítése
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az disk show -n $diskName -g $resourceGroupName --query [tier] -o tsv
 ```
 
-## <a name="next-steps"></a>Következő lépések
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+$disk = Get-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName
+
+$disk.Tier
+```
+---
+
+## <a name="next-steps"></a>További lépések
 
 Ha át kell méreteznie egy lemezt a magasabb teljesítményszint kihasználásához, tekintse meg a következő cikkeket:
 

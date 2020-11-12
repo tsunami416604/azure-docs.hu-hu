@@ -1,17 +1,17 @@
 ---
 title: Olvasási replikák kezelése – Azure Portal-Azure Database for MariaDB
 description: Ez a cikk bemutatja, hogyan állíthat be és kezelhet olvasási replikákat Azure Database for MariaDB a portál használatával
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 5faed87995d1c49ab635f39264354a791f729b57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ca6ef3c368a5f578cc90fae3923caa89f3b076a
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742859"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537747"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB a Azure Portal használatával
 
@@ -31,13 +31,13 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási repli
 
 Az olvasási replika kiszolgáló a következő lépések segítségével hozható létre:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Válassza ki a meglévő Azure Database for MariaDB kiszolgálót, amelyet főkiszolgálóként kíván használni. Ez a művelet megnyitja az **Áttekintés** lapot.
 
-3. Válassza a **replikálás** lehetőséget a menü **Beállítások**területén.
+3. Válassza a **replikálás** lehetőséget a menü **Beállítások** területén.
 
-4. Válassza a **replika hozzáadása**lehetőséget.
+4. Válassza a **replika hozzáadása** lehetőséget.
 
    ![Azure Database for MariaDB – replikálás](./media/howto-read-replica-portal/add-replica.png)
 
@@ -67,17 +67,17 @@ A forrás és a replika közötti replikáció leállításához a Azure Portal 
 
 1. A Azure Portal válassza ki a forrás Azure Database for MariaDB kiszolgálót. 
 
-2. Válassza a **replikálás** lehetőséget a menü **Beállítások**területén.
+2. Válassza a **replikálás** lehetőséget a menü **Beállítások** területén.
 
 3. Válassza ki azt a másodpéldány-kiszolgálót, amelyen le szeretné állítani a replikálást.
 
    ![Azure Database for MariaDB – replikálás leállítása kiszolgáló kiválasztása](./media/howto-read-replica-portal/stop-replication-select.png)
 
-4. Válassza a **replikálás leállítása**lehetőséget.
+4. Válassza a **replikálás leállítása** lehetőséget.
 
    ![Azure Database for MariaDB – replikálás leállítása](./media/howto-read-replica-portal/stop-replication.png)
 
-5. Az **OK**gombra kattintva erősítse meg, hogy le kívánja állítani a replikálást.
+5. Az **OK** gombra kattintva erősítse meg, hogy le kívánja állítani a replikálást.
 
    ![Azure Database for MariaDB – replikálás leállítása – megerősítés](./media/howto-read-replica-portal/stop-replication-confirm.png)
 
@@ -87,7 +87,7 @@ Ha törölni szeretne egy olvasási replika kiszolgálót a Azure Portalről, k�
 
 1. A Azure Portal válassza ki a forrás Azure Database for MariaDB kiszolgálót.
 
-2. Válassza a **replikálás** lehetőséget a menü **Beállítások**területén.
+2. Válassza a **replikálás** lehetőséget a menü **Beállítások** területén.
 
 3. Válassza ki a törölni kívánt replika-kiszolgálót.
 
@@ -110,7 +110,7 @@ A forráskiszolgáló Azure Portalból való törléséhez kövesse az alábbi l
 
 1. A Azure Portal válassza ki a forrás Azure Database for MariaDB kiszolgálót.
 
-2. Az **Áttekintés**területen válassza a **Törlés**lehetőséget.
+2. Az **Áttekintés** területen válassza a **Törlés** lehetőséget.
 
    ![Azure Database for MariaDB – főkiszolgáló törlése](./media/howto-read-replica-portal/delete-master-overview.png)
 
@@ -122,7 +122,7 @@ A forráskiszolgáló Azure Portalból való törléséhez kövesse az alábbi l
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a figyelni kívánt replikát Azure Database for MariaDB-kiszolgálót.
 
-2. Az oldalsáv **figyelés** szakaszában válassza a **metrikák**elemet:
+2. Az oldalsáv **figyelés** szakaszában válassza a **metrikák** elemet:
 
 3. A rendelkezésre álló metrikák legördülő listájában válassza a **replikálás késése másodpercben** lehetőséget.
 

@@ -1,17 +1,17 @@
 ---
 title: Teljesítménnyel kapcsolatos javaslatok – Azure Database for MySQL
 description: Ez a cikk a Azure Database for MySQL Performance ajánlási funkcióját ismerteti
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 6f41863f45bdc90cb9fe589ba0a5011dea84a67c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1445ad3d6be020326c34d60c555c24c435548fd0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84485250"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537645"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Teljesítménnyel kapcsolatos javaslatok az Azure Database for MySQL-ben
 
@@ -35,7 +35,7 @@ Válassza **az elemzés lehetőséget, és válasszon** egy adatbázist, amely m
 
 A **javaslatok** ablak a javaslatok listáját jeleníti meg, valamint a kapcsolódó lekérdezés azonosítóját, amely a javaslatot generálta. A lekérdezés AZONOSÍTÓjának használatával a [MySQL.query_store](concepts-query-store.md#mysqlquery_store) nézettel többet is megtudhat a lekérdezésről.
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="A Teljesítménnyel kapcsolatos javaslatok kezdőlapja":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Teljesítményre vonatkozó javaslatok – új oldal":::
 
 A javaslatok nem lesznek automatikusan alkalmazva. A javaslat alkalmazásához másolja a lekérdezés szövegét, és futtassa azt a választott ügyfélről. A javaslat kiértékeléséhez ne felejtse el tesztelni és figyelni.
 
@@ -49,5 +49,5 @@ Az indexelési javaslatok alapján új indexek *hozhatók létre* , amelyek felg
 
 A lekérdezési javaslatok arra utalnak, hogy a számítási feladatban lévő lekérdezések optimalizálása és újraírhatók. A MySQL-lekérdezési minták azonosításával és a velük való kijavításával az időigényes lekérdezések teljesítménye javítható. Ehhez az ajánlási típushoz engedélyezni kell a Query Store-t. A lekérdezési tároló gyűjti a lekérdezési adatokat, és megadja az elemzés által a javaslat végrehajtásához használt részletes lekérdezési futtatókörnyezetet és gyakorisági statisztikát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a Azure Database for MySQL [figyeléséről és hangolásáról](concepts-monitoring.md) .

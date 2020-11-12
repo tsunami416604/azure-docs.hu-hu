@@ -1,17 +1,17 @@
 ---
 title: Korlátozások – Azure Database for MySQL
 description: Ez a cikk a Azure Database for MySQL korlátozásait ismerteti, például a kapcsolatok számát és a tárolási motor beállításait.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 2c70e862364aea549c10c24a9dcc1c424c792993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38c006bd1cda1494b284f742459aaf539ed4a2d1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652176"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539707"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>A Azure Database for MySQL korlátozásai
 A következő szakaszok ismertetik a kapacitást, a tárolási motor támogatását, a jogosultságok támogatását, az adatmanipulációs nyilatkozatok támogatását és az adatbázis-szolgáltatás működési korlátait. Lásd még a MySQL-adatbázismotor esetében alkalmazandó [általános korlátozásokat](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) is.

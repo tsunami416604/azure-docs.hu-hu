@@ -1,18 +1,18 @@
 ---
 title: Olvasási replikák kezelése – Azure PowerShell-Azure Database for MariaDB
 description: Ismerje meg, hogyan állíthat be és kezelhet olvasási replikákat Azure Database for MariaDB a PowerShell használatával.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2b622372c881997fd77a83feb8f6c393504900b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a5921026c8f260683f091870850350fcc4619f6b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428290"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538614"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB a PowerShell használatával
 
@@ -57,7 +57,7 @@ A `New-AzMariaDbServerReplica` parancshoz a következő paraméterek szükséges
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelyben a replika-kiszolgáló létrejön.  |
-| Name | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
+| Név | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
 
 Egy több régióból származó olvasási replika létrehozásához használja a **Location** paramétert. Az alábbi példa egy replikát hoz létre az **USA nyugati** régiójában.
 
@@ -107,7 +107,7 @@ A forráskiszolgáló törléséhez futtathatja a `Remove-AzMariaDbServer` paran
 Remove-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MariaDB kiszolgáló újraindítása a PowerShell-lel](howto-restart-server-powershell.md)

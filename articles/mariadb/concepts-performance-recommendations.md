@@ -1,17 +1,17 @@
 ---
 title: Teljesítménnyel kapcsolatos javaslatok – Azure Database for MariaDB
 description: Ez a cikk a Azure Database for MariaDB Performance ajánlási funkcióját ismerteti
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 05bc0f1ae50f74cc7c8ab2b236d73bdb4a6fe787
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a20b8a43c8955e1afea7a7157e3e73425fb0d806
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84484704"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540467"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Teljesítménnyel kapcsolatos javaslatok az Azure Database for MariaDB-ben
 
@@ -35,7 +35,7 @@ Válassza **az elemzés lehetőséget, és válasszon** egy adatbázist, amely m
 
 A **javaslatok** ablak a javaslatok listáját jeleníti meg, valamint a kapcsolódó lekérdezés azonosítóját, amely a javaslatot generálta. A lekérdezés AZONOSÍTÓjának használatával a [MySQL.query_store](concepts-query-store.md#mysqlquery_store) nézettel többet is megtudhat a lekérdezésről.
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="A Teljesítménnyel kapcsolatos javaslatok kezdőlapja":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Teljesítményre vonatkozó javaslatok – új oldal":::
 
 A javaslatok nem lesznek automatikusan alkalmazva. A javaslat alkalmazásához másolja a lekérdezés szövegét, és futtassa azt a választott ügyfélről. A javaslat kiértékeléséhez ne felejtse el tesztelni és figyelni.
 
@@ -48,6 +48,6 @@ Az indexelési javaslatok alapján új indexek *hozhatók létre* , amelyek felg
 ### <a name="query-recommendations"></a>Javaslatok lekérdezése
 
 A lekérdezési javaslatok arra utalnak, hogy a számítási feladatban lévő lekérdezések optimalizálása és újraírhatók. A MariaDB-lekérdezések elleni minták azonosításával és a velük való kijavításával az időigényes lekérdezések teljesítménye javítható. Ehhez az ajánlási típushoz engedélyezni kell a Query Store-t. A lekérdezési tároló gyűjti a lekérdezési adatokat, és megadja az elemzés által a javaslat végrehajtásához használt részletes lekérdezési futtatókörnyezetet és gyakorisági statisztikát.
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure Database for MariaDB [figyeléséről és hangolásáról](concepts-monitoring.md) .

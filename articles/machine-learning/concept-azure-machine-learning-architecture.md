@@ -1,7 +1,7 @@
 ---
 title: Architektúra & főbb fogalmak
 titleSuffix: Azure Machine Learning
-description: Ismerkedjen meg a Azure Machine Learning alkotó architektúrával, kifejezésekkel és fogalmakkal.
+description: Ez a cikk a Azure Machine Learningt alkotó architektúra, feltételek és fogalmak magas szintű megismerését ismerteti.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f17cdd42c892f6c0d218875cf304846937ba58d7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444834"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540202"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -268,6 +268,18 @@ A [Azure Machine learning CLI](reference-azure-machine-learning-cli.md) az Azure
 
 A folyamat lépései újrafelhasználhatók, és az előző lépések újbóli futtatása nélkül is futtathatók, ha a lépések eredménye nem módosult. Például áttaníthatja a modelleket anélkül, hogy újra kellene futtatnia a költséges adatelőkészítési lépéseket, ha az adatváltozás nem változott. A folyamatok azt is lehetővé teszik, hogy az adatszakértők működjenek együtt a gépi tanulási munkafolyamatok különálló területein való munka során.
 
+## <a name="monitoring-and-logging"></a>Monitorozás és naplózás
+
+Azure Machine Learning a következő figyelési és naplózási képességeket biztosítja:
+
+* Az __Adatszakértőknél__ nyomon követheti a kísérletek és a naplózási információkat a betanítási futtatásokból. További információkat az következő cikkekben talál:
+   * [Betanítási futtatások indítása, figyelése és megszakítása](how-to-manage-runs.md)
+   * [A betanítási futtatások mérőszámainak naplózása](how-to-track-experiments.md)
+   * [Kísérletek nyomon követése az MLflow használatával](how-to-use-mlflow.md)
+   * [Futtatások megjelenítése a TensorBoard használatával](how-to-monitor-tensorboard.md)
+* A __rendszergazdák__ számára a munkaterületről, a kapcsolódó Azure-erőforrásokról, valamint az olyan eseményekről, mint az erőforrások létrehozásának és törlésének Azure monitor használatával figyelhetők. További információ: [a Azure Machine learning figyelése](monitor-azure-machine-learning.md).
+* A __DevOps__ vagy a __MLOps__ a webszolgáltatásként vagy IoT Edge-modulként telepített modellek által létrehozott információkat figyelheti a központi telepítésekkel kapcsolatos problémák azonosításához és a szolgáltatásnak küldött adatok gyűjtéséhez. További információ: a [modell adatainak összegyűjtése](how-to-enable-data-collection.md) és [a figyelés Application Insightssal](how-to-enable-app-insights.md).
+
 ## <a name="interacting-with-your-workspace"></a>Interakció a munkaterülettel
 
 ### <a name="studio"></a>Studio
@@ -293,7 +305,7 @@ A Studióban a Azure Machine Learning részét képező interaktív eszközök i
 + Az automatizáláshoz használja a [Azure Machine learning CLI](./reference-azure-machine-learning-cli.md) -t.
 + A [számos Modelles megoldás-gyorsító](https://aka.ms/many-models) (előzetes verzió) a Azure Machine Learningra épít, és lehetővé teszi több száz vagy akár több ezer gépi tanulási modell betanítását, üzemeltetését és felügyeletét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Machine Learning megkezdéséhez tekintse meg a következőt:
 

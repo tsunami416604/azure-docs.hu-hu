@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: 7f2c7e99117c338d07abc2ed8760c2be18955d66
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 30ece529b141f3a50191c532d85265d8e9555b34
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489301"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538597"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Kapcsolódás az Azure Storage Services szolgáltatásához
 
@@ -180,7 +180,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 Egy Azure Data Lake Storage 2. generációs (ADLS Gen 2) adattár esetében a [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) használatával regisztrálja az Azure DataLake Gen 2 tárolóhoz csatlakoztatott hitelesítő adatokat az [egyszerű szolgáltatás engedélyeivel](../active-directory/develop/howto-create-service-principal-portal.md).  
 
-Az egyszerű szolgáltatás használatához [regisztrálnia](../active-directory/develop/app-objects-and-service-principals.md) kell az alkalmazást, és biztosítania kell az egyszerű szolgáltatásnév számára a **Storage blob adatolvasói** hozzáférését. További információ a [2. generációs ADLS-hez beállított hozzáférés-vezérlésről](../storage/blobs/data-lake-storage-access-control.md). 
+Az egyszerű szolgáltatás használatához [regisztrálnia](../active-directory/develop/app-objects-and-service-principals.md) kell az alkalmazást, és biztosítania kell a szolgáltatás egyszerű hozzáférését a szerepköralapú hozzáférés-vezérlés (Azure RBAC) vagy a hozzáférés-vezérlési listák (ACL) használatával. További információ a [2. generációs ADLS-hez beállított hozzáférés-vezérlésről](../storage/blobs/data-lake-storage-access-control-model.md). 
 
 A következő kód létrehozza és regisztrálja az `adlsgen2_datastore_name` adattárt a `ws` munkaterületen. Ez az adattár hozzáfér a fájlrendszerhez a `test` `account_name` Storage-fiókban a megadott egyszerű szolgáltatás hitelesítő adataival. Tekintse át a [tárolási hozzáférési & engedélyek](#storage-access-and-permissions) szakaszt a virtuális hálózati forgatókönyvekkel kapcsolatos útmutatásért és a szükséges hitelesítő adatok megkereséséhez. 
 
@@ -251,7 +251,7 @@ Az alapértelmezett adattár a következő kóddal is módosítható. Ez a képe
 
 A Azure Machine Learning számos módszert kínál a modellek pontozási célra való használatára. A módszerek némelyike nem biztosít hozzáférést az adattárolóhoz. A következő táblázat segítségével megtudhatja, hogy mely módszerek lehetővé teszik az adattárolók elérését a pontozás során:
 
-| Metódus | Adattár-hozzáférés | Description |
+| Metódus | Adattár-hozzáférés | Leírás |
 | ----- | :-----: | ----- |
 | [Kötegelt előrejelzés](./tutorial-pipeline-batch-scoring-classification.md) | ✔ | Előrejelzések készítése aszinkron módon nagy mennyiségű adattal. |
 | [Webszolgáltatás](how-to-deploy-and-where.md) | &nbsp; | Modellek üzembe helyezése webszolgáltatásként. |
@@ -267,7 +267,7 @@ Azure Machine Learning támogatja az Azure Blob Storage, Azure Files, Azure Data
 
 Azure Data Factory a hatékony és rugalmas adatátvitelt több mint 80 előre összeépített összekötővel biztosítja, felár nélkül. Ezek az összekötők közé tartoznak az Azure adatszolgáltatások, a helyszíni adatforrások, az Amazon S3 és a vöröseltolódás, valamint a Google BigQuery.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Machine learning-adatkészlet létrehozása](how-to-create-register-datasets.md)
 * [Modell betanítása](how-to-set-up-training-targets.md)

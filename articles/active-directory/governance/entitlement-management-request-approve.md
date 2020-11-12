@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca42ddbc648f7c342b1cd649c19b77df803257d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfbd5e6f190e0600c31aa17e9b1a75f08e213df4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979820"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537662"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Hozzáférési kérelmek jóváhagyása vagy elutasítása az Azure AD-jogosultságok kezelésében
 
@@ -53,15 +53,15 @@ Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megtalálhatja 
 
 1. Nyissa meg a saját hozzáférés **jóváhagyások** lapját.
 
-1. Lépjen a jóváhagyni kívánt kérelemre, és kattintson a **részletek**lehetőségre. Ha készen áll a döntésre, a **jóváhagyás** vagy a **Megtagadás** lehetőségre is kattinthat.
+1. Lépjen a jóváhagyni kívánt kérelemre, és kattintson a **részletek** lehetőségre. Ha készen áll a döntésre, a **jóváhagyás** vagy a **Megtagadás** lehetőségre is kattinthat.
 
-1. Kattintson a **kérelem részletei**elemre.
+1. Kattintson a **kérelem részletei** elemre.
 
      ![Hozzáférési portál – hozzáférési kérelem – kattintson a kérelem részletei lehetőségre](./media/entitlement-management-request-approve/requestor-information-request-details.png)
 
 1. A kérelmező által megadott információk a panel alján lesznek.
 
-     ![Hozzáférési portál – hozzáférési kérelem](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+     ![A kérés részleteit megjelenítő képernyőkép](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
 
 1. A kérelmező által megadott információk alapján jóváhagyhatja vagy megtagadhatja a kérelmet. Tekintse meg az útmutató jóváhagyása vagy elutasítása című témakör lépéseit.
 
@@ -77,11 +77,11 @@ Miután megnyitotta a hozzáférési kérelmek jóváhagyását, megtekintheti a
 
     A részletek tartalmazzák a felhasználó nevét, szervezetét, a hozzáférési kezdési és befejezési dátumát, ha van ilyen, az üzleti indoklás, a kérelem elküldésekor, valamint a kérelem érvényességének lejárta után.
 
-1. Kattintson a **jóváhagyás** vagy a **Megtagadás**gombra.
+1. Kattintson a **jóváhagyás** vagy a **Megtagadás** gombra.
 
 1. Szükség esetén adjon meg egy okot.
 
-    ![Hozzáférési portál – hozzáférési kérelem](./media/entitlement-management-request-approve/my-access-approve-request.png)
+    ![Képernyőfelvétel: az a lap, amelyben elfogadják vagy megtagadják a kérést.](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
 1. A döntés elküldéséhez kattintson a **Submit (Küldés** ) gombra.
 

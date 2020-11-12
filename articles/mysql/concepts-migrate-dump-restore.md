@@ -1,17 +1,17 @@
 ---
 title: Migrálás a dump és a Restore használatával – Azure Database for MySQL
 description: Ez a cikk két gyakori módszert ismertet a Azure Database for MySQL adatbázisainak biztonsági mentésére és visszaállítására, például a mysqldump, a MySQL Workbench és a PHPMyAdmin eszközzel.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 336021792b7e5340e35a0c59e0f113d4dad9307d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f21587fe6a48d042ed98c126beb2a7dcaa39b7d8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128963"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537917"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával
 
@@ -39,7 +39,7 @@ A leggyakoribb használati esetek a következők:
 
 - **Más felügyelt** szolgáltatótól való áthelyezés – a legtöbb felügyelt szolgáltató nem biztosít hozzáférést a fizikai tárolási fájlhoz biztonsági okokból, így a logikai biztonsági mentés és visszaállítás az egyetlen lehetőség az áttelepítésre.
 - **Migrálás a helyszíni környezetből vagy virtuális gépről** – Azure Database for MySQL nem támogatja a fizikai biztonsági másolatok visszaállítását, ami a logikai biztonsági mentést és visszaállítást teszi lehetővé az egyetlen módszerként.
-- **A biztonsági mentési tár helyileg redundánsból a Geo-redundáns tárolóba való áthelyezése** – Azure Database for MySQL lehetővé teszi a helyileg redundáns vagy geo-redundáns tárolás konfigurálását a biztonsági mentéshez, csak a kiszolgáló létrehozásakor engedélyezett. A kiszolgáló üzembe helyezését követően nem módosítható a biztonsági mentési tár redundáns beállítása. Ahhoz, hogy a biztonsági mentési tárolót helyileg redundáns tárterületről a Geo-redundáns tárolóra helyezze át, a dump és a Restore az egyetlen lehetőség. 
+- **A biztonsági mentési tár helyileg redundánsból a Geo-redundáns tárolóba való áthelyezése** – Azure Database for MySQL lehetővé teszi a helyileg redundáns vagy geo-redundáns tárolás konfigurálását a biztonsági mentéshez, csak a kiszolgáló létrehozásakor engedélyezett. A biztonsági mentési tároló redundanciára vonatkozó beállításait a kiszolgáló üzembe helyezése után már nem lehet módosítani. Ahhoz, hogy a biztonsági mentési tárolót helyileg redundáns tárterületről a Geo-redundáns tárolóra helyezze át, a dump és a Restore az egyetlen lehetőség. 
 -  Az **alternatív tárolóeszközökről a InnoDB-Azure Database for MySQLra való Migrálás** csak a InnoDB-tárolókat támogatja, és így nem támogatja az alternatív tárolóeszközöket. Ha a táblák más tárolási motorokkal vannak konfigurálva, a Azure Database for MySQLba való áttelepítés előtt alakítsa át őket a InnoDB-motor formátumba.
 
     Ha például egy WordPress vagy WebApp a MyISAM táblázatokat használja, először alakítsa át ezeket a táblákat úgy, hogy a Azure Database for MySQLra való visszaállítás előtt áttelepíti őket a InnoDB formátumba. Használja a záradékot `ENGINE=InnoDB` az új tábla létrehozásakor használt motor beállításához, majd a visszaállítás előtt vigye át az adatok a kompatibilis táblába.
@@ -73,7 +73,7 @@ A csatlakozáshoz keresse meg a kapcsolati adatokat a Azure Database for MySQL *
 
 Adja hozzá a kapcsolatok adatait a MySQL Workbench-hez.
 
-:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="A Azure Portal található kapcsolatok adatainak megkeresése":::
+:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="MySQL Workbench-beli kapcsolatok karakterlánca":::
 
 ## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>A cél Azure Database for MySQL-kiszolgáló előkészítése a gyors adatterhelések eléréséhez
 A cél Azure Database for MySQL kiszolgáló gyorsabb adatterhelésre való előkészítéséhez a következő kiszolgálói paramétereket és konfigurációkat módosítani kell.

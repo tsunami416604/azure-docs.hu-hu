@@ -1,17 +1,17 @@
 ---
 title: Importálás és exportálás – Azure Database for MySQL
 description: Ez a cikk az adatbázisok Azure Database for MySQL-ben történő importálásának és exportálásának általános módszereit ismerteti a MySQL Workbench eszközzel.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 1b4959cbf082a589c90034f48d597907c9b7e6cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: af9f0f65e01a786d478fac0adde6174b8f03b2fd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128929"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537900"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis migrálása Importálás és exportálás használatával
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
@@ -33,7 +33,7 @@ A csatlakozáshoz keresse meg a kapcsolati adatokat a Azure Database for MySQL *
 
 Adja hozzá a kapcsolódási adatokat a MySQL Workbenchhez.
 
-:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="A Azure Portal található kapcsolatok adatainak megkeresése":::
+:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="MySQL Workbench-beli kapcsolatok karakterlánca":::
 
 ## <a name="determine-when-to-use-import-and-export-techniques"></a>Az importálási és exportálási technikák használatának megállapítása
 
@@ -70,16 +70,16 @@ A MySQL Workbenchben kétféleképpen exportálhat és importálhat adatfájloka
 > - A MySQL-hez készült rugalmas kiszolgálók esetében használhatja a "username" lehetőséget, ha a (z) " username@servername " kapcsolatot használ a kapcsolódáshoz, a kapcsolat sikertelen lesz.
 
 ### <a name="table-data-export-and-import-wizards-from-the-object-browsers-context-menu"></a>Táblázatos adatok exportálása és importálása varázsló az objektum böngésző helyi menüjéből
-:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="A Azure Portal található kapcsolatok adatainak megkeresése":::
+:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="MySQL Workbench varázslók az objektum böngésző helyi menüjében":::
 
 A táblázatos adatokhoz tartozó varázslók a CSV-és JSON-fájlok használatával támogatják az importálási és exportálási műveleteket. Több konfigurációs lehetőséget is tartalmaznak, például elválasztókat, oszlopok kijelölését és a kódolás kijelölését. Az egyes varázslókat helyi vagy távolról csatlakoztatott MySQL-kiszolgálókon is elvégezheti. Az importálási művelet táblázat-, oszlop-és típus-hozzárendelést tartalmaz.
 
-Ezek a varázslók az objektum böngésző helyi menüjéből érhetők el, ha a jobb gombbal a táblára kattint. Ezután válassza a **tábla adatexportálás varázsló** vagy a **tábla adatimportálása varázslót** .
+Ezek a varázslók az objektum böngésző helyi menüjéből érhetők el, ha a jobb gombbal a táblára kattint. Ezután válassza a **tábla adatexportálás varázsló** vagy a **tábla adatimportálása varázslót**.
 
 #### <a name="table-data-export-wizard"></a>Tábla adatexportálási varázslója
 Az alábbi példa egy CSV-fájlba exportálja a táblázatot:
 1. Kattintson a jobb gombbal az exportálni kívánt adatbázis táblára.
-2. Válassza a **tábla adatexportálás varázslót** . Válassza ki az exportálandó oszlopokat, a sorok eltolását (ha van), és a darabszámot (ha van ilyen).
+2. Válassza a **tábla adatexportálás varázslót**. Válassza ki az exportálandó oszlopokat, a sorok eltolását (ha van), és a darabszámot (ha van ilyen).
 3. Az **exportálni kívánt adatexportálás** lapon kattintson a **tovább** gombra. Válassza ki a fájl elérési útját, CSV-fájlját vagy JSON-fájltípusát. Válassza ki a vonal elválasztóját, a karakterláncok befoglalásának metódusát és a mező elválasztóját is.
 4. A **kimeneti fájl helyének kiválasztása** lapon kattintson a **tovább** gombra.
 5. Az **adatexportálás** lapon kattintson a **tovább** gombra.
@@ -96,7 +96,7 @@ Az alábbi példa egy CSV-fájlból importálja a táblázatot:
 A MySQL Workbenchből generált vagy a mysqldump parancsból generált SQL-alapú exportálás vagy Importálás varázsló használatával. Nyissa meg ezeket a varázslókat a **navigátor** ablaktáblán, vagy válassza a főmenü **kiszolgáló** elemét. Ezután válassza **Az adatexportálás** vagy **az adatimportálás** lehetőséget.
 
 #### <a name="data-export"></a>Adatexportálás
-:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="A Azure Portal található kapcsolatok adatainak megkeresése":::
+:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="MySQL Workbench adatexportálás a navigátor panel használatával":::
 
 Az **adatexportálás** lapon a MySQL-adatait is exportálhatja.
 1. Válassza ki az exportálni kívánt sémákat, szükség esetén válassza ki az egyes sémák egyes sémái objektumait/táblázatait, majd az exportálást. A konfigurációs beállítások közé tartozik az Exportálás egy Project mappába vagy egy önálló SQL-fájlba, a tárolt rutinok és események kiírása vagy a táblázat adatainak kihagyása.
@@ -109,7 +109,7 @@ Az **adatexportálás** lapon a MySQL-adatait is exportálhatja.
 
 
 #### <a name="data-import"></a>Adatimportálás
-:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="A Azure Portal található kapcsolatok adatainak megkeresése":::
+:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="MySQL Workbench adatimportálás a felügyeleti navigátor használatával":::
 
 Az **adatimportálás** lapon importálhatja vagy visszaállíthatja az exportált adatok adatait az adatexportálási műveletből vagy a mysqldump parancsból.
 1. Válassza ki a Project mappát vagy az önálló SQL-fájlt, válassza ki az importálni kívánt sémát, vagy válassza az **új** lehetőséget egy új séma definiálásához.

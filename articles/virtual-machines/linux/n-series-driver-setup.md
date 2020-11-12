@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b80a09c82b1e932fb93b4c85ee250773aa7d3c38
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517259"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539753"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-illesztőprogramok telepítése a Linuxon futó N sorozatú virtuális gépeken
 
@@ -98,7 +98,9 @@ sudo reboot
   
    sudo reboot
 
-2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106). Check if LIS is required by verifying the results of lspci. If all GPU devices are listed as expected, installing LIS is not required.
+
+Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer required for these versions.
 
    ```bash
    wget https://aka.ms/lis
@@ -150,7 +152,7 @@ Ha az illesztőprogram telepítve van, az alábbihoz hasonló kimenet jelenik me
 
 ## <a name="rdma-network-connectivity"></a>RDMA hálózati kapcsolat
 
-A RDMA hálózati kapcsolat engedélyezhető a RDMA-kompatibilis N sorozatú virtuális gépeken, például az ugyanazon rendelkezésre állási csoportban vagy egy virtuális machiine (VM) méretezési csoporton belül üzembe helyezett NC24r is. A RDMA-hálózat támogatja a Message Passing Interface (MPI) forgalmat az Intel MPI 5. x vagy újabb verzióját futtató alkalmazások esetében. További követelmények:
+A RDMA hálózati kapcsolat engedélyezhető a RDMA-kompatibilis N sorozatú virtuális gépeken, például az azonos rendelkezésre állási csoporton vagy egy virtuálisgép-méretezési csoportban üzembe helyezett egyetlen elhelyezési csoportban is. A RDMA-hálózat támogatja a Message Passing Interface (MPI) forgalmat az Intel MPI 5. x vagy újabb verzióját futtató alkalmazások esetében. További követelmények:
 
 ### <a name="distributions"></a>Disztribúciók
 
@@ -225,7 +227,7 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
-6. Ha a rendszer megkérdezi, hogy szeretné-e futtatni az nvidia-xconfig segédprogramot az X konfigurációs fájl frissítéséhez, válassza az **Igen**lehetőséget.
+6. Ha a rendszer megkérdezi, hogy szeretné-e futtatni az nvidia-xconfig segédprogramot az X konfigurációs fájl frissítéséhez, válassza az **Igen** lehetőséget.
 
 7. A telepítés befejezése után másolja a/etc/NVIDIA/GRIDD.conf.Template egy új fájlba. conf fájlt a következő helyen:/etc/NVIDIA/
 
@@ -264,7 +266,7 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
    sudo yum install hyperv-daemons
    ```
 
-2. Tiltsa le a Nouveau kernel illesztőprogramját, amely nem kompatibilis az NVIDIA-illesztőprogrammal. (Csak az NVIDIA-illesztőprogramot használja az NV-vagy NV2-alapú virtuális gépeken.) Ehhez hozzon létre egy `/etc/modprobe.d` nevű fájlt `nouveau.conf` a következő tartalommal:
+2. Tiltsa le a Nouveau kernel illesztőprogramját, amely nem kompatibilis az NVIDIA-illesztőprogrammal. (Csak az NVIDIA-illesztőprogramot használja az NV-vagy NV3-alapú virtuális gépeken.) Ehhez hozzon létre egy `/etc/modprobe.d` nevű fájlt `nouveau.conf` a következő tartalommal:
 
    ```
    blacklist nouveau
@@ -272,7 +274,9 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
    blacklist lbm-nouveau
    ```
  
-3. Indítsa újra a virtuális gépet, kapcsolódjon újra, és telepítse a [Hyper-V és az Azure legújabb linuxos integrációs szolgáltatásait](https://www.microsoft.com/download/details.aspx?id=55106).
+3. Indítsa újra a virtuális gépet, kapcsolódjon újra, és telepítse a [Hyper-V és az Azure legújabb linuxos integrációs szolgáltatásait](https://www.microsoft.com/download/details.aspx?id=55106). Ellenőrizze, hogy szükséges-e a LIS a lspci eredményeinek ellenőrzéséhez. Ha az összes GPU-eszköz a várt módon van felsorolva, akkor a LIS telepítése nem szükséges. 
+
+Ugorja át ezt a lépést, ha a CentOS/RHEL 7,8-es vagy újabb verzióját használja.
  
    ```bash
    wget https://aka.ms/lis
@@ -298,7 +302,7 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
-6. Ha a rendszer megkérdezi, hogy szeretné-e futtatni az nvidia-xconfig segédprogramot az X konfigurációs fájl frissítéséhez, válassza az **Igen**lehetőséget.
+6. Ha a rendszer megkérdezi, hogy szeretné-e futtatni az nvidia-xconfig segédprogramot az X konfigurációs fájl frissítéséhez, válassza az **Igen** lehetőséget.
 
 7. A telepítés befejezése után másolja a/etc/NVIDIA/GRIDD.conf.Template egy új fájlba. conf fájlt a következő helyen:/etc/NVIDIA/
   
@@ -373,6 +377,7 @@ Ezután hozzon létre egy bejegyzést a frissítési parancsfájlhoz, `/etc/rc.d
 
 * Az adatmegőrzési módot úgy állíthatja be, hogy a `nvidia-smi` parancs kimenete gyorsabb legyen, ha kártyákat kell lekérdezni. Az adatmegőrzési mód beállításához futtassa a következőt: `nvidia-smi -pm 1` . Vegye figyelembe, hogy ha a virtuális gép újraindul, a Mode (mód) beállítás eltűnik. A mód beállítását bármikor végrehajthatja indításkor.
 * Ha a legújabb verzióra frissítette az NVIDIA CUDA-illesztőprogramokat, és megkeresi az RDMA-kapcsolatot, akkor [a kapcsolat újbóli létrehozásához telepítse újra a RDMA-illesztőprogramokat](#rdma-network-connectivity) . 
+* Ha egy bizonyos CentOS/RHEL operációsrendszer-verzió (vagy kernel) nem támogatott a LIS esetében, a rendszer a "nem támogatott kernel-verzió" hibát dobta. Jelentse ezt a hibát az operációs rendszer és a kernel verzióival együtt.
 
 ## <a name="next-steps"></a>Következő lépések
 

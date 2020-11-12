@@ -5,19 +5,19 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 7/29/2020
+ms.date: 11/11/2020
 ms.author: tisande
-ms.openlocfilehash: 38d37d03c99bd3a39b00276da110ea0ef6bb962e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 35f212ea246e03be02fa082ef1b55dcb7cae1575
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332372"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538648"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL fordítás
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-A Azure Cosmos DB lekérdezési szolgáltató a LINQ-lekérdezésből származó legjobb műveletet hajtja végre egy Cosmos DB SQL-lekérdezésben. Ha a LINQ-ből lefordított SQL-lekérdezést szeretné beszerezni, használja a `ToString()` metódust a generált `IQueryable` objektumon. A következő leírás feltételezi, hogy a [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)alapvető ismerete.
+A Azure Cosmos DB lekérdezési szolgáltató a LINQ-lekérdezésből származó legjobb műveletet hajtja végre egy Cosmos DB SQL-lekérdezésben. Ha a LINQ-ből lefordított SQL-lekérdezést szeretné beszerezni, használja a `ToString()` metódust a generált `IQueryable` objektumon. A következő leírás feltételezi, hogy a [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)alapvető ismerete. A LINQen kívül a Azure Cosmos DB támogatja az SQL API-val használható [Entity Framework Core](/ef/core/providers/cosmos/?tabs=dotnet-core-cli) -t is.
 
 A lekérdezés-szolgáltató típusa a rendszeren csak a JSON egyszerű típusokat támogatja: numerikus, logikai, karakterlánc és null.
 
@@ -25,7 +25,7 @@ A lekérdezési szolgáltató a következő skaláris kifejezéseket támogatja:
 
 - Állandó értékek, beleértve a primitív adattípusok állandó értékeit a lekérdezés kiértékelési idején.
   
-- Tulajdonság/tömb index kifejezés, amely egy objektum vagy egy tömb elem tulajdonságára hivatkozik. Például:
+- Tulajdonság/tömb index kifejezés, amely egy objektum vagy egy tömb elem tulajdonságára hivatkozik. Ilyenek többek között:
   
   ```
     family.Id;
@@ -344,7 +344,7 @@ Egy beágyazott lekérdezés a belső lekérdezést alkalmazza a külső tárol�
       WHERE c.familyName = f.parents[0].familyName
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dokumentumadatok modellezése](modeling-data.md)

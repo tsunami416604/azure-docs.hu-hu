@@ -1,17 +1,17 @@
 ---
 title: Lassú lekérdezési naplók elérése – Azure Portal-Azure Database for MariaDB
 description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni és elérni a lassú lekérdezési naplókat Azure Database for MariaDB a Azure Portalból.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: a2642ebbad7c8d7a2e092a6e00929e32b72b52d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5ee948daecafc061910f36d2ac95d15338bfb38
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86104979"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539940"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-from-the-azure-portal"></a>Az Azure Database for Maria DB lassú lekérdezési naplóinak konfigurálása és elérése a Azure Portal
 
@@ -27,18 +27,18 @@ Konfigurálja a lassú lekérdezési naplóhoz való hozzáférést.
 
 2. Válassza ki a Azure Database for MariaDB-kiszolgálót.
 
-3. Az oldalsáv **figyelés** szakaszában válassza a **kiszolgálói naplók**lehetőséget. 
+3. Az oldalsáv **figyelés** szakaszában válassza a **kiszolgálói naplók** lehetőséget. 
    ![A kiszolgálói naplók beállításainak képernyőképe](./media/howto-configure-server-logs-portal/1-select-server-logs-configure.png)
 
 4. A kiszolgáló paramétereinek megtekintéséhez **kattintson ide a naplók engedélyezéséhez és a naplózási paraméterek konfigurálásához**.
 
-5. **Slow_query_log** bekapcsolása **a**következőre:.
+5. **Slow_query_log** bekapcsolása **a** következőre:.
 
-6. Válassza ki, hová szeretné kiadni a naplókat a **log_output**használatához. Ha a naplókat a helyi tárolóba és Azure Monitor diagnosztikai naplókba kívánja küldeni, válassza a **fájl**elemet. 
+6. Válassza ki, hová szeretné kiadni a naplókat a **log_output** használatához. Ha a naplókat a helyi tárolóba és Azure Monitor diagnosztikai naplókba kívánja küldeni, válassza a **fájl** elemet. 
 
 7. Módosítsa a többi szükséges paramétert. 
 
-8. Kattintson a **Mentés** gombra. 
+8. Válassza a **Mentés** lehetőséget. 
 
    :::image type="content" source="./media/howto-configure-server-logs-portal/3-save-discard.png" alt-text="Képernyőkép a lassú lekérdezési napló paramétereinek és mentéséhez.":::
 
@@ -51,7 +51,7 @@ A naplózás megkezdése után megtekintheti az elérhető lassú lekérdezési 
 
 2. Válassza ki a Azure Database for MariaDB-kiszolgálót.
 
-3. Az oldalsáv **figyelés** szakaszában válassza a **kiszolgálói naplók**lehetőséget. A lap megjeleníti a naplófájlok listáját.
+3. Az oldalsáv **figyelés** szakaszában válassza a **kiszolgálói naplók** lehetőséget. A lap megjeleníti a naplófájlok listáját.
 
    ![Képernyőkép a kiszolgálói naplók lapról, a Kiemelt naplók listájával](./media/howto-configure-server-logs-portal/4-server-logs-list.png)
 
@@ -66,7 +66,7 @@ A naplózás megkezdése után megtekintheti az elérhető lassú lekérdezési 
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnosztikai naplók beállítása
 
-1. Az oldalsáv **figyelés** szakaszában válassza a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítás**elemet.
+1. Az oldalsáv **figyelés** szakaszában válassza a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítás** elemet.
 
    ![A diagnosztikai beállítások beállításainak képernyőképe](./media/howto-configure-server-logs-portal/add-diagnostic-setting.png)
 
@@ -77,12 +77,12 @@ A naplózás megkezdése után megtekintheti az elérhető lassú lekérdezési 
 1. Válassza a **MySqlSlowLogs** lehetőséget a napló típusaként.
 ![A diagnosztikai beállítások konfigurációs beállításainak képernyőképe](./media/howto-configure-server-logs-portal/configure-diagnostic-setting.png)
 
-1. Miután konfigurálta az adatnyelőket a lassú lekérdezések naplóinak a csatornába való konfigurálásához, válassza a **Mentés**lehetőséget.
+1. Miután konfigurálta az adatnyelőket a lassú lekérdezések naplóinak a csatornába való konfigurálásához, válassza a **Mentés** lehetőséget.
 ![A diagnosztikai beállítások konfigurációs beállításainak képernyőképe a kijelölt mentéssel](./media/howto-configure-server-logs-portal/save-diagnostic-setting.png)
 
 1. A lassú lekérdezési naplók eléréséhez vizsgálja meg őket a konfigurált adattárolók között. A naplók megjelenése akár 10 percet is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A lassú lekérdezési naplók programozott módon történő letöltésének megismeréséhez lásd: [a lassú lekérdezési naplók elérése a CLI-ben](howto-configure-server-logs-cli.md) .
 - További információ a Azure Database for MariaDB [lassú lekérdezési naplóiról](concepts-server-logs.md) .
 - A paraméter-definíciókkal és a naplózással kapcsolatos további információkért tekintse meg a [naplók](https://mariadb.com/kb/en/library/slow-query-log-overview/)MariaDB dokumentációját.

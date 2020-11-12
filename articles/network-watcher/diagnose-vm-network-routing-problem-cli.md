@@ -17,22 +17,24 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 5fa083626135170a05844a5e4434b608a1fabe60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d5f6f9cfaff722245f6105b5e86390b8aeb769f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302247"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539719"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Virtuálisgép-hálózat útválasztási problémáinak diagnosztizálása – Azure CLI
 
 Ebben a cikkben üzembe helyez egy virtuális gépet (VM), majd megtekintheti a kommunikációt egy IP-címmel és egy URL-címmel. Meghatározza a kommunikációs hiba okát és feloldásának módját.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell futtatnia. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Az Azure CLI verziójának ellenőrzése után futtassa a parancsot az `az login`  Azure-beli kapcsolatok létrehozásához. A cikkben szereplő Azure CLI-parancsok egy bash-rendszerhéjban történő futtatásra vannak formázva.
+- Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. 
+
+- A cikkben szereplő Azure CLI-parancsok egy bash-rendszerhéjban történő futtatásra vannak formázva.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
@@ -42,7 +44,7 @@ Mielőtt virtuális gépet hozhatna létre, létre kell hoznia egy erőforráscs
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A következő példa egy *myVm*nevű virtuális gépet hoz létre:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A következő példa egy *myVm* nevű virtuális gépet hoz létre:
 
 ```azurecli-interactive
 az vm create \
@@ -85,7 +87,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-Néhány másodperc elteltével a kimenet tájékoztatja Önt arról, hogy a **NextHopType** **internetes**, és hogy a **routeTableId** a **rendszer útvonala**. Ebből az eredményből megtudhatja, hogy van-e érvényes útvonal a célhelyre.
+Néhány másodperc elteltével a kimenet tájékoztatja Önt arról, hogy a **NextHopType** **internetes** , és hogy a **routeTableId** a **rendszer útvonala**. Ebből az eredményből megtudhatja, hogy van-e érvényes útvonal a célhelyre.
 
 Tesztelje a virtuális gép kimenő kommunikációját a 172.31.0.100 címen:
 
@@ -99,7 +101,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-A visszaadott kimenet tájékoztatja, hogy **egyik sem** a **nextHopType**, és hogy a **routeTableId** is a **rendszer útvonala**. Ez az eredmény azt jelzi, hogy létezik érvényes rendszerútvonal a cél felé, de nincs következő ugrás, hogy a forgalmat a cél felé irányítsa.
+A visszaadott kimenet tájékoztatja, hogy **egyik sem** a **nextHopType** , és hogy a **routeTableId** is a **rendszer útvonala**. Ez az eredmény azt jelzi, hogy létezik érvényes rendszerútvonal a cél felé, de nincs következő ugrás, hogy a forgalmat a cél felé irányítsa.
 
 ## <a name="view-details-of-a-route"></a>Útvonal részleteinek megtekintése
 
@@ -113,7 +115,7 @@ az network nic show-effective-route-table \
 
 A visszaadott kimenet a következő szöveget tartalmazza:
 
-```
+```console
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -133,7 +135,7 @@ Ha a parancs használatával `az network watcher show-next-hop` teszteli a 13.10
 
 Ha a parancsot a `az network watcher show-next-hop` 172.31.0.100 kimenő kommunikáció tesztelésére használta, az eredmény azonban arról tájékoztat, hogy nem volt következő ugrási típus. A visszaadott kimenetben a következő szöveg is látható:
 
-```
+```console
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -149,9 +151,9 @@ Ha a parancsot a `az network watcher show-next-hop` 172.31.0.100 kimenő kommuni
 },
 ```
 
-Ahogy a parancs kimenetében látható `az network watcher nic show-effective-route-table` , de a 172.16.0.0/12 előtag alapértelmezett útvonala, amely tartalmazza a 172.31.0.100-címeket, a **NextHopType** értéke **none**. Az Azure létrehoz egy alapértelmezett útvonalat a 172.16.0.0/12 címhez, de amíg nincs oka rá, nem határozza meg a következő ugrás típusát. Ha például hozzáadta a 172.16.0.0/12 címtartományt a virtuális hálózat címterület számára, az Azure a **NextHopType** **virtuális hálózatra** módosítja az útvonalon. Az ellenőrzések után a **virtuális hálózat** **nextHopType**jelenik meg.
+Ahogy a parancs kimenetében látható `az network watcher nic show-effective-route-table` , de a 172.16.0.0/12 előtag alapértelmezett útvonala, amely tartalmazza a 172.31.0.100-címeket, a **NextHopType** értéke **none**. Az Azure létrehoz egy alapértelmezett útvonalat a 172.16.0.0/12 címhez, de amíg nincs oka rá, nem határozza meg a következő ugrás típusát. Ha például hozzáadta a 172.16.0.0/12 címtartományt a virtuális hálózat címterület számára, az Azure a **NextHopType** **virtuális hálózatra** módosítja az útvonalon. Az ellenőrzések után a **virtuális hálózat** **nextHopType** jelenik meg.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-delete) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást:
 

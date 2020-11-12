@@ -4,12 +4,12 @@ description: A CodeLens használatával gyorsan elérheti az Application Insight
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 92879e9dc7b9de7ef5862f30241f2b80e6aac9e8
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2cfc4e06dcb5671f34ff98794c9569b6ed5ddae7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932651"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538495"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Application Insights Telemetria a Visual Studio CodeLensben
 A telemetriával megjegyzések fűzhetők a webalkalmazás kódjában szereplő metódusokhoz a futásidejű kivételekkel és a kérések válaszidejével kapcsolatban. Ha telepíti az [Azure Application Insights-t](./app-insights-overview.md) az alkalmazásban, a telemetria megjelenik a Visual Studio [CodeLensben](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) – az egyes függvények felett láthatók a jegyzetek, ahol korábban a függvény hivatkozási helyeinek száma, a legutóbbi szerkesztő neve vagy egyéb hasznos információk jelentek meg.
@@ -30,7 +30,7 @@ Az Application Insights Telemetriát a webalkalmazás nyilvános kérési metód
 > 
 
 ## <a name="exceptions-in-codelens"></a>Kivételek a CodeLensben
-![TBD](./media/visual-studio-codelens/codelens-exceptions.png)
+![A képernyőképen a Codelensben megjelenített 47-es kivételek láthatók.](./media/visual-studio-codelens/codelens-exceptions.png)
 
 A CodeLens-kivételjelző azt jeleníti meg, hogy az alkalmazás az elmúlt 24 óra alatti 15 leggyakoribb kivétele hányszor fordult elő az adott metódus által kiszolgált kérés feldolgozása közben.
 
@@ -52,7 +52,7 @@ További részletekért kattintson a CodeLens-kivételjelzőre:
 > 
 
 ## <a name="requests-in-codelens"></a>Kérések a CodeLensben
-![TBD](./media/visual-studio-codelens/codelens-requests.png)
+![A képernyőképen az 684-kérelmek részleteit jeleníti meg, beleértve a 7%-os hibát.](./media/visual-studio-codelens/codelens-requests.png)
 
 A CodeLens-kérésjelző azon HTTP-kérések számát mutatja, amelyeket egy metódus kiszolgált az elmúlt 24 órában, valamint a meghiúsult kérések százalékos arányát.
 

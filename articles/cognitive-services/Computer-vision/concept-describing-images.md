@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7bf95a2b49608ef1f031a3b443db92b42cdae624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d2b87710b2590f9bcf511ec0cbd5637913fb5c4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80244715"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538444"
 ---
 # <a name="describe-images-with-human-readable-language"></a>Képek leírása emberi olvasásra alkalmas nyelvvel
 
@@ -58,11 +58,11 @@ A következő JSON-válasz azt szemlélteti, hogy milyen Computer Vision ad viss
 
 ## <a name="use-the-api"></a>Az API használata
 
-A rendszerkép leírása funkció a [képelemzési](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `Description` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a szakasz tartalmának karakterláncát `"description"` .
+A rendszerkép leírása funkció a [képelemzési](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `Description` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a szakasz tartalmának karakterláncát `"description"` .
 
 * [Gyors útmutató: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 * [Gyors útmutató: rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [címkézheti a képeket](concept-tagging-images.md) és [kategorizálhatja a képeket](concept-categorizing-images.md).
