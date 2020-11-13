@@ -68,7 +68,7 @@
           href: tutorial-migrate-gcp-virtual-machines.md
 - name: Alapelvek
   items:
-    - name: Migrálási terv létrehozása az Azure Migrate-tel
+    - name: Migrálási terv összeállítása
       href: concepts-migration-planning.md
     - name: Támogatási mátrixok
       items:

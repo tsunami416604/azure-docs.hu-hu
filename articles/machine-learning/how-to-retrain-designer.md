@@ -1,7 +1,7 @@
 ---
 title: Modellek újratanítása Azure Machine Learning Designer használatával
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan lehet a modelleket Azure Machine Learning Designerben közzétett folyamatokkal áttanítani.
+description: Ismerje meg, hogyan lehet a gépi tanulási modelleket Azure Machine Learning Designerben közzétett folyamatokkal áttanítani.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d43bea855d9ac3dc34b8e72adcd9577e5933e52c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8ef4d9f768d6fdcf976c9317d1abec3d4533824
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905682"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554801"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer"></a>Modellek újratanítása Azure Machine Learning designerrel
 
@@ -69,7 +69,7 @@ Folyamat paramétereinek létrehozása a változók dinamikus beállításához 
    > [!NOTE]
    > A folyamat paramétereinek vizsgálatához és szerkesztéséhez válassza a folyamat piszkozatának címe melletti **Beállítások** fogaskerék ikont. 
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Save** (Mentés) lehetőséget.
 
 1. A folyamat futtatásának elküldése.
 
@@ -79,7 +79,7 @@ A tervező az összes folyamat kimenetét, beleértve a betanított modelleket i
 
 1. Várjon, amíg a folyamat befejeződik.
 1. Válassza ki a **Train Model** modult.
-1. A modul részletek ablaktábláján, a vászontól jobbra válassza a **kimenetek + naplók**lehetőséget.
+1. A modul részletek ablaktábláján, a vászontól jobbra válassza a **kimenetek + naplók** lehetőséget.
 1. A modellt **más kimenetekben** is megtalálhatja a futtatási naplókkal együtt.
 1. Másik lehetőségként válassza a **kimenet megtekintése** ikont. Innen követheti a párbeszédablak utasításait, hogy közvetlenül az adattárhoz navigáljon. 
 

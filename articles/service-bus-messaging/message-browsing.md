@@ -1,32 +1,30 @@
 ---
 title: Azure Service Bus – üzenetek tallózása
-description: A Tallózás és betekintés Service Bus üzenetek lehetővé teszik, hogy egy Azure Service Bus ügyfél enumerálja az üzenetsor vagy előfizetés összes üzenetét.
+description: Service Bus üzenetek tallózása és betekintés funkció lehetővé teszi, hogy egy Azure Service Bus-ügyfél enumerálja egy üzenetsor vagy előfizetés összes üzenetét.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 6e50fc737f6c81c07854ff07d8cc64061306749b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.openlocfilehash: c52c9c967d4eada1a931e188ed4d25f7691cfb91
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827449"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553641"
 ---
 # <a name="message-browsing"></a>Üzenetek tallózása
 
-Az üzenetek böngészése vagy betekintése lehetővé teszi, hogy egy Service Bus ügyfél enumerálja az összes várólistán vagy előfizetésen belüli üzenetet, jellemzően diagnosztikai és hibakeresési célokra.
+Az üzenetek böngészése vagy betekintése lehetővé teszi, hogy egy Service Bus-ügyfél egy üzenetsor vagy egy előfizetés összes üzenetének enumerálását diagnosztikai és hibakeresési célból.
 
-A betekintés művelet a várólista vagy az előfizetési üzenet naplójában található összes üzenetet visszaküldi, nem csak az azonnali beszerzéshez `Receive()` vagy a hurokhoz rendelkezésre álló üzeneteket `OnMessage()` . Az `State` egyes üzenetek tulajdonsága jelzi, hogy az üzenet aktív-e (elérhető), [késleltetve](message-deferral.md)vagy [ütemezve](message-sequencing.md).
+A várólistán lévő betekintés művelet visszaadja az üzenetsor összes üzenetét, nem csak az azonnali beszerzéshez `Receive()` vagy a `OnMessage()` hurokhoz elérhető üzeneteket. Az `State` egyes üzenetek tulajdonsága jelzi, hogy az üzenet aktív-e (elérhető), [késleltetve](message-deferral.md)vagy [ütemezve](message-sequencing.md). Az előfizetések betekintés művelete az előfizetési üzenet naplójában lévő ütemezett üzenetek kivételével minden üzenetet visszaadja. 
 
-A felhasznált és a lejárt üzeneteket egy aszinkron "Garbage Collection" futtatja, és nem feltétlenül pontosan az üzenetek lejárata után, ezért `Peek` Előfordulhat, hogy a már lejárt üzeneteket is visszaküldi, és a rendszer a várólistára vagy előfizetésre vonatkozóan a fogadási művelet következő meghívásakor eltávolítja vagy kézbesíti azt.
+A rendszer a felhasznált és a lejárt üzeneteket egy aszinkron "Garbage Collection" futtatással takarítja meg. Előfordulhat, hogy ez a lépés nem feltétlenül lép fel azonnal az üzenetek lejárta után. Ezért előfordulhat, hogy a `Peek` már lejárt üzeneteket is visszaküldi. Ezek az üzenetek el lesznek távolítva vagy kézbesítve lesznek, amikor a következő alkalommal fogad egy fogadási műveletet a várólistán vagy az előfizetésen. Tartsa szem előtt ezt a viselkedést, amikor megkísérli visszaállítani a késleltetett üzeneteket a várólistából. Egy lejárt üzenet már nem jogosult a rendszeres lekérésre bármilyen más módon, még akkor is, ha azt a betekintés visszaadja. Az üzenetek visszaküldése a következőképpen történik: betekintés a napló aktuális állapotát tükröző diagnosztikai eszköz.
 
-Ez különösen fontos a késleltetett üzenetek várólistából történő helyreállítására tett kísérlet során. Egy üzenet, amely esetében a [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) Instant átadása már nem jogosult a rendszeres lekérésre bármilyen más módon, még akkor is, ha azt a betekintés is visszaadja. Az üzenetek visszaküldése szándékosan történik, mivel a betekintés egy diagnosztikai eszköz, amely a napló aktuális állapotát tükrözi.
-
-A betekintés a zárolt és jelenleg más fogadók által feldolgozott üzeneteket is visszaadja, de még nem fejeződött be. Mivel azonban a betekintés egy leválasztott pillanatképet ad vissza, egy üzenet zárolási állapota nem figyelhető meg a beérkező üzenetekben, és a [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) és a [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) tulajdonság eldobjon egy [InvalidOperationException](/dotnet/api/system.invalidoperationexception) , amikor az alkalmazás megkísérli a beolvasást.
+A betekintés a zárolt és jelenleg más fogadók által feldolgozott üzeneteket is visszaadja. Mivel azonban a betekintés egy leválasztott pillanatképet ad vissza, egy üzenet zárolási állapota nem figyelhető meg a beérkező üzenetekben. A [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) és a [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) tulajdonság akkor dobja el a [InvalidOperationException](/dotnet/api/system.invalidoperationexception) , amikor az alkalmazás megpróbálja beolvasni azokat.
 
 ## <a name="peek-apis"></a>Betekintési API-k
 
-A [betekintés/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) és a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metódus minden .net-és Java-ügyfél-függvénytárban és minden fogadó objektumon megtalálható: **MessageReceiver**, **MessageSession**. A betekintés az összes várólistán és előfizetésen, valamint a hozzájuk tartozó kézbesítetlen levelek várólistáján működik.
+A [betekintési/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) és [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metódusok léteznek a .net-és Java-ügyféloldali kódtárakban és a fogadó objektumokon: **MessageReceiver** , **MessageSession**. A betekintés a várólistákon, előfizetéseken és a hozzájuk tartozó kézbesítetlen levelek várólistáján működik.
 
-Ha többször is meghívják, a betekintés metódus a várólista vagy az előfizetési naplóban található összes üzenetet enumerálja sorszám sorrendben, a legalacsonyabb rendelkezésre álló sorozatszámtól a legmagasabb értékig. Ez az a sorrend, amelyben az üzenetek várólistán lévő, és nem az, hogy milyen sorrendben lehet az üzenetek lekérése.
+Ha többször hívja meg a hívást, a **betekintés** a várólista összes üzenetét vagy az előfizetési naplóban lévő összes üzenetet a legalacsonyabb rendelkezésre álló sorozatszámból a legmagasabb értékre sorolja fel. Ez az a sorrend, amelyben az üzenetek várólistán lévő voltak, nem pedig az, hogy az üzenetek végül milyen sorrendben lesznek lekérdezve.
 
 A [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) több üzenetet kér le, és visszaadja őket enumerálásként. Ha nem áll rendelkezésre üzenet, a számbavételi objektum üres, nem null értékű.
 

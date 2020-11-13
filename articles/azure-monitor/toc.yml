@@ -180,6 +180,21 @@
               href: app/pricing.md
             - name: Adathasználat és -költségek naplózása
               href: platform/manage-cost-storage.md
+    - name: Azure Monitor-metrikák
+      items:
+        - name: Áttekintés
+          displayname: Metrics
+          href: platform/data-platform-metrics.md
+        - name: Metrikaböngésző
+          items:
+            - name: Bevezetés a Metrikaböngésző használatába
+              href: platform/metrics-getting-started.md
+            - name: A Metrikaböngésző speciális funkciói
+              href: platform/metrics-charts.md
+            - name: Példák metrikadiagramokra
+              href: platform/metric-chart-samples.md
+            - name: Metrikadiagramok hibaelhárítása
+              href: platform/metrics-troubleshoot.md
     - name: Azure Monitor-naplók
       items:
         - name: Áttekintés
@@ -262,21 +277,10 @@
               href: platform/logs-export-logic-app.md
             - name: Az exportált adatok lekérdezése a Data Explorerrel
               href: platform/azure-data-explorer-query-storage.md
-    - name: Azure Monitor-metrikák
-      items:
-        - name: Áttekintés
-          displayname: Metrics
-          href: platform/data-platform-metrics.md
-        - name: Metrikaböngésző
-          items:
-            - name: Bevezetés a Metrikaböngésző használatába
-              href: platform/metrics-getting-started.md
-            - name: A Metrikaböngésző speciális funkciói
-              href: platform/metrics-charts.md
-            - name: Példák metrikadiagramokra
-              href: platform/metric-chart-samples.md
-            - name: Metrikadiagramok hibaelhárítása
-              href: platform/metrics-troubleshoot.md
+            - name: Küldés az Excelbe
+              href: log-query/log-excel.md
+            - name: Küldés a Power BI-ba
+              href: log-query/log-powerbi.md
     - name: Platformnaplók
       items:
         - name: Áttekintés
@@ -575,12 +579,16 @@
                   displayname: 'ilogger, logging, log'
                   href: app/ilogger.md
             - name: ASP.NET
-              displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
-              href: app/asp-net.md
-            - name: Nem HTTP alkalmazások/háttérben futó alkalmazások
+              items:
+                - name: ASP.NET-alkalmazások monitorozása
+                  displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
+                  href: app/asp-net.md
+                - name: Az ASP.NET hibaelhárítása
+                  href: app/asp-net-troubleshoot-no-data.md
+            - name: Nem HTTP-alapú/Háttérbeli alkalmazások
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: .NET-konzol
+            - name: ASP.NET konzol
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
             - name: Java
@@ -590,18 +598,10 @@
                   href: app/java-get-started.md
                 - name: Nyomkövetési naplók
                   href: app/java-trace-logs.md
-                - name: Unix-metrikák
-                  href: app/java-collectd.md
                 - name: Függőségek
                   href: app/java-agent.md
                 - name: Szűrőtelemetria
                   href: app/java-filter-telemetry.md
-                - name: Mikrométeres metrikák
-                  displayname: java
-                  href: app/micrometer-java.md
-                - name: Spring Boot-alkalmazás
-                  displayname: java
-                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
                 - name: Hibaelhárítás
                   href: app/java-troubleshoot.md
             - name: Node.js
@@ -637,8 +637,6 @@
             - name: Application Insights API összefoglalója
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
-            - name: Az ASP.NET hibaelhárítása
-              href: app/asp-net-troubleshoot-no-data.md
             - name: Az Application Insights eltávolítása
               href: app/remove-application-insights.md
         - name: Kód nélküli monitorozás
@@ -1241,6 +1239,8 @@
               href: app/release-notes.md
             - name: Webalkalmazás-bővítmény
               href: app/web-app-extension-release-notes.md
+            - name: Pillanatkép-hibakereső
+              href: app/snapshot-collector-release-notes.md
         - name: Adatmodell
           items:
             - name: Áttekintés
@@ -1323,6 +1323,11 @@
           href: platform/resource-logs-blob-format.md
         - name: Key Vault-elemzés (elavult)
           href: insights/azure-key-vault-deprecated.md
+        - name: Unix-metrikák
+          href: app/java-collectd.md
+        - name: Mikrométeres metrikák
+          displayname: java
+          href: app/micrometer-java.md
         - name: Nézetek
           items:
             - name: Nézettervező

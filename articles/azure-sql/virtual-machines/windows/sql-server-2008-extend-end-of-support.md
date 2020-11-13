@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fbfc4619e8af86a89b82f32ff3bc9a39c92b355a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1c1dd2ba5eb6ee61a0f8cf151649441cbc783166
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784864"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553527"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>A SQL Server 2008 és SQL Server 2008 R2 támogatásának kiterjesztése az Azure-ra
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,12 +42,12 @@ Az Azure Marketplace-en keresztül üzembe helyezett lemezképek előre telepít
 > [!NOTE]
 > Bár a SQL Server- **létrehozási** és- **kezelési** lapok a Azure Portal SQL Server 2008 R2 rendszerképpel működnek együtt, a következő funkciók _nem támogatottak_ : automatikus biztonsági mentések, Azure Key Vault integráció, R-szolgáltatások és tárolási konfiguráció.
 
-## <a name="licensing"></a>Licencek
+## <a name="licensing"></a>Licencelés
 Az utólagos elszámolású SQL Server 2008 R2-es üzemelő példányok [Azure Hybrid Benefitre](https://azure.microsoft.com/pricing/hybrid-benefit/)konvertálhatók.
 
-Ha frissítési garanciát (SA) alapuló licencet szeretne átváltani, az ügyfélnek regisztrálnia kell az SQL VM erőforrás- [szolgáltatóval](sql-vm-resource-provider-register.md). A regisztráció után az SQL-licenc típusa Azure Hybrid Benefit és utólagos elszámolású.
+Ha frissítési garanciát (SA) alapuló licencet szeretne átváltani, az ügyfeleknek regisztrálniuk kell az [SQL IaaS-ügynök bővítménnyel](sql-agent-extension-manually-register-single-vm.md). A regisztráció után az SQL-licenc típusa Azure Hybrid Benefit és utólagos elszámolású.
 
-Az Azure-beli virtuális gépen lévő, öntelepített SQL Server 2008-es vagy SQL Server 2008 R2-példányok regisztrálhatnak az SQL VM erőforrás-szolgáltatóval, és a licencük típusát elvégezheti.
+Az Azure-beli virtuális gépeken telepített SQL Server 2008-es vagy SQL Server 2008 R2-példányok regisztrálhatnak az SQL IaaS-ügynök bővítménnyel, és a licencük típusát az utólagos elszámolású verzióra válthatják.
 
 ## <a name="migration"></a>Migrálás
 A manuális biztonsági mentési/visszaállítási módszerekkel áttelepítheti az EOS SQL Server példányait egy Azure-beli virtuális gépre. Ez a legelterjedtebb áttelepítési módszer a helyszínről egy Azure-beli virtuális gépre.
@@ -71,7 +71,8 @@ Az Azure-beli virtuális gépeken az EOS SQL Server vész-helyreállítási mego
 - **Azure site Recovery** : a virtuális gép a zónák és régiók között replikálható Azure site Recovery replikálással. SQL Server alkalmazás-konzisztens Pillanatképek szükségesek a helyreállítás biztosításához vészhelyzet esetén. Azure Site Recovery legalább 1 órás RPO, valamint egy 2 órás (plusz SQL Server helyreállítási idő) RTO biztosít az EOS SQL Server vész-helyreállításhoz.
 
 ## <a name="security-patching"></a>Biztonsági javítások
-SQL Server virtuális gépek bővített biztonsági frissítései a Microsoft Update csatornákon keresztül érkeznek, miután a SQL Server VM regisztrálva lettek az SQL VM [erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md). A javítások manuálisan vagy automatikusan is letölthetők.
+
+SQL Server virtuális gépek bővített biztonsági frissítései a Microsoft Update csatornákon keresztül érkeznek, miután a SQL Server VM regisztrálva lettek az [SQL IaaS-ügynök bővítménnyel](sql-agent-extension-manually-register-single-vm.md). A javítások manuálisan vagy automatikusan is letölthetők.
 
 Az *Automatikus javítás* alapértelmezés szerint engedélyezve van. Az automatizált javítás lehetővé teszi, hogy az Azure automatikus javításokat alkalmazzon az SQL Serveren és az operációs rendszeren. Megadhatja a hét egy napját, az időpontot és az időtartamot a karbantartási időszakra vonatkozóan, ha a SQL Server IaaS bővítmény telepítve van. Az Azure ebben a karbantartási időszakban végzi el a javításokat. A karbantartási időszak ütemezése a virtuális gép területi beállítása szerinti időt használja. További információ: [SQL Server automatikus javítása az Azure Virtual Machines-on](automated-patching.md).
 

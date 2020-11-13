@@ -9,12 +9,12 @@ ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 7b44abbbf2e7592205d5d5c291ce99d381a283f7
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: de93d96085269c2cc8fcf6c18d7e6643facfcaa4
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043284"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372710"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>Azure-előfizetések létrehozása programozott módon a legújabb API-kkal
 
@@ -798,7 +798,15 @@ Létrehozhat előfizetéseket az Azure Resource Manager-sablonon (ARM-sablon), a
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Előfizetések létrehozásához tulajdonosi, közreműködői vagy Azure-előfizetések létrehozói szerepkörével kell rendelkeznie egy számlaszakaszra, vagy tulajdonos vagy közreműködői szerepkörrel egy számlázási profilra vagy számlázási fiókra vonatkozóan. További információkért lásd [az előfizetés számlázási szerepköreit és azok feladatait](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+Előfizetések létrehozásához az alábbi szerepkörök valamelyikével kell rendelkeznie: 
+
+- Azure-előfizetés tulajdonosa egy számlaszakaszban
+- Azure-előfizetés közreműködője egy számlaszakaszban
+- Azure-előfizetés létrehozói szerepköre egy számlaszakaszban
+- Azure-előfizetés tulajdonosa egy számlázási profil vagy számlázási fiók esetében
+- Azure-előfizetés közreműködői szerepköre egy számlázási profil vagy számlázási fiók esetében
+
+ További információkért lásd [az előfizetés számlázási szerepköreit és azok feladatait](understand-mca-roles.md#subscription-billing-roles-and-tasks).
 
 Továbbá, mivel ARM-sablont helyez üzembe, írási engedéllyel kell rendelkeznie a gyökérobjektumon. Tehát ha egy felügyeleti csoportban hozza létre az ARM-alapú környezetet, írási engedéllyel kell rendelkeznie azon a felügyeleti csoporton. Vegye figyelembe, hogy a művelet kizárólag egy ARM-alapú környezet létrehozására szolgál. Ha előfizetés is létrejön, azt csak az ARM-sablonban megadott felügyeleti csoportban hozza létre a rendszer.
 

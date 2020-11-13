@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 07/01/2020
 ms.author: alkohli
-ms.openlocfilehash: d099e33e7b35381f5404c9f8964d3ea90d4f3908
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a78bce9f6e714aa5564791f6bb63996554beabf1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959474"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376039"
 ---
 Az utolsó lépés az eszköz szállításának előkészítése. Ebben a lépésben az összes eszközmegosztást offline állapotba helyezi. A folyamat megkezdése után a megosztásokhoz nem lehet hozzáférni.
 
@@ -30,18 +30,18 @@ Az utolsó lépés az eszköz szállításának előkészítése. Ebben a lépé
 
     Ha több adatot szeretne átmásolni az eszközre, feloldhatja az eszköz zárolását, további adatokat másolhat, és ismét futtathatja a szállítás előkészítését.
 
-    Ha ebben a lépésben hibák léptek fel, az állapot a következőre frissül: *A vizsgálat hibákkal fejeződött be* . Oldja fel az eszköz zárolását, majd lépjen a **Csatlakozás és másolás** oldalra, töltse le a hibalistát, és hárítsa el a hibákat.
+    Ha ebben a lépésben hibák léptek fel, az állapot a következőre frissül: *A vizsgálat hibákkal fejeződött be*. Oldja fel az eszköz zárolását, majd lépjen a **Csatlakozás és másolás** oldalra, töltse le a hibalistát, és hárítsa el a hibákat.
 
-    ![A szállítás előkészítése 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
+    ![A szállítás előkészítése 4](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 
-    A hibák megoldása után futtassa **A szállítás előkészítését** .
+    A hibák megoldása után futtassa **A szállítás előkészítését**.
 
 4. A szállítás előkészítésének sikeres (hibák nélküli) befejezése után kövesse az alábbi lépéseket:
 
     1. Jegyezze fel a befejezés hivatkozási számát. Attól függően, hogy melyik országban tartózkodik, szükség lehet erre a számra a különböző műveletekhez.
     2. Töltse le az ebben a folyamatban lemásolt fájlok listáját (más néven a jegyzéket). Később ezen lista alapján ellenőrizheti az Azure-ba feltöltött fájlokat. További információ: [Anyagjegyzékfájlok vizsgálata a szállítás előkészítése során](../articles/databox/data-box-logs.md#inspect-bom-during-prepare-to-ship).
         
-        ![A szállítás előkészítése 1](media/data-box-prepare-to-ship/prepare-to-ship5.png)
+        ![A szállítás előkészítése 5](media/data-box-prepare-to-ship/prepare-to-ship5.png)
     3. Válassza ki és töltse le az eszköz szállítási utasításait. A szállítási utasítások eltérnek attól függően, hogy melyik országban tartózkodik.
     4. Ha az E-ink kijelzőn nem jelenik meg a fuvarlevélcímke, innen letöltheti a visszaszállítási címkét. 
 

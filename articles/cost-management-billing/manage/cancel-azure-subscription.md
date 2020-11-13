@@ -7,20 +7,20 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/09/2020
 ms.author: banders
-ms.openlocfilehash: 16ba70717d04c44e950ce2ed2c47e54859c4be47
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f90d1fe22ae2f46fdc6d764ce98db8e0f48b8b35
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684881"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408022"
 ---
 # <a name="cancel-your-azure-subscription"></a>Az Azure-előfizetés lemondása
 
-Ha többé nincs szüksége Azure-előfizetésre, lemondhatja azt az Azure Portalon.
+Ha nincs már szüksége az Azure-előfizetésre, lemondhatja azt az Azure Portalon.
 
-Bár nem kötelező, a Microsoft *javasolja*, hogy végezze el az alábbi műveleteket az előfizetés lemondása előtt:
+Bár nem kötelező, a Microsoft *javasolja* , hogy végezze el az alábbi műveleteket az előfizetés lemondása előtt:
 
 * Készítsen az adatokról biztonsági másolatot. Ha például az Azure Storage-ban vagy SQL-ben tárol adatokat, töltsön le róluk egy másolatot. Ha virtuális géppel rendelkezik, helyben mentsen róla egy rendszerképet.
 * Állítsa le a szolgáltatásokat. Lépjen a [felügyeleti portál erőforrások oldalára](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), és **állítsa le** az összes aktuálisan futó virtuális gépet, alkalmazást, és egyéb szolgáltatást.
@@ -34,7 +34,7 @@ Ha egy fizetett Azure-támogatási csomagot mond le, az előfizetési időszak h
 
 1. Válassza ki előfizetését az [Azure Portal Előfizetések oldalán](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Válassza ki a lemondani kívánt előfizetést.
-1. Válassza az **Áttekintés** lehetőséget, majd az**Előfizetés lemondása** elemet.
+1. Válassza az **Áttekintés** lehetőséget, majd az **Előfizetés lemondása** elemet.
     ![A Lemondás gombot megjelenítő képernyőkép](./media/cancel-azure-subscription/cancel_ibiza.png)
 1. Kövesse az utasításokat a lemondás befejezéséhez.
 
@@ -54,7 +54,7 @@ A lemondás után a számlázás azonnal leáll. Akár 10 percet is igénybe veh
 
 A szolgáltatások a lemondás után le lesznek tiltva. Ez azt jelenti, hogy virtuális gépei felszabadultak, az ideiglenes IP-címek szabadok, a tárterület pedig csak olvasható.
 
-Az előfizetés lemondása után a Microsoft 30–90 napot vár adatai végleges törlésével, hogy szükség esetén hozzájuk tudjon férni, vagy arra az esetre, ha meggondolná magát. Adatai megőrzésért nem számolunk fel díjat. További tudnivalókért lásd a [Microsoft Adatvédelmi központ az adatok kezelését](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409) ismertető cikkét.
+Az előfizetés lemondása után a Microsoft 30–90 napot vár adatai végleges törlésével, hogy szükség esetén hozzájuk tudjon férni, vagy arra az esetre, ha meggondolná magát. Adatai tárolásáért nem számolunk fel díjat. További tudnivalókért lásd a [Microsoft Adatvédelmi központ az adatok kezelését](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409) ismertető cikkét.
 
 ## <a name="delete-free-trial-subscription"></a>Az ingyenes próbaverziós előfizetés törlése
 
@@ -71,9 +71,21 @@ Ha véletlenül lemondja a használatalapú fizetéses előfizetését, [a Fiók
 
 Ha előfizetése nem használatalapú fizetéses előfizetés, akkor a lemondás utáni 90 napon belül újraaktiválhatja előfizetését, ha felveszi a kapcsolatot az ügyfélszolgálattal.
 
-## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
+## <a name="why-dont-i-see-the-cancel-subscription-option-on-the-azure-portal"></a>Miért nem látom az Előfizetés lemondása lehetőséget az Azure Portalon? 
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Előfordulhat, hogy nem rendelkezik az előfizetés lemondásához szükséges engedélyekkel. Tekintse meg a [Ki mondhat le előfizetést?](https://docs.microsoft.com/azure/cost-management-billing/manage/cancel-azure-subscription#who-can-cancel-a-subscription) szakaszt, amelyből megtudhatja, hogy ki mondhatja le a különböző típusú előfizetéseket.
+
+## <a name="how-do-i-delete-my-azure-account"></a>Hogyan törölhetem az Azure-fiókomat?
+
+*El kell távolítanom a fiókomat, az összes személyes adatommal együtt. Már lemondtam az aktív (ingyenes próbaverziós) előfizetéseseimet. Nincs aktív előfizetésem, és törölni szeretném a fiókomat*.
+
+* Ha a szervezete biztosítja az Azure Active Directory-fiókot az Ön számára, akkor az Azure AD-rendszergazda tudja törölni a fiókot. Ezt követően a szolgáltatások le lesznek tiltva. Ez azt jelenti, hogy virtuális gépei felszabadultak, az ideiglenes IP-címek szabadok, a tárterület pedig csak olvasható. Összefoglalva: a lemondás után a számlázás azonnal leáll.
+
+* Ha nem a szervezete biztosítja az Azure AD-fiókot az Ön számára, lemondhatja és törölheti az Azure-előfizetéseket, majd eltávolíthatja a hitelkártyáját a fiókból. A művelet nem törli a fiókot, azonban működésképtelenné teszi. Egy lépéssel tovább is mehet, és törölheti a társított Microsoft-fiókot is, ha azt nem használja semmilyen más célra.
+
+## <a name="how-do-i-cancel-a-visual-studio-professional-account"></a>Hogyan mondható le egy Visual Studio Professional-fiók?
+
+Tekintse meg a [megújításról és lemondásról](https://docs.microsoft.com/visualstudio/subscriptions/faq/admin/renewal-cancellation) szóló cikket. Ha rendelkezik bármilyen Visual Studio Azure-előfizetéssel, ezeket is le kell mondania, illetve törölnie kell.
 
 ## <a name="next-steps"></a>További lépések
 

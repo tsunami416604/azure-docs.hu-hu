@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a9c8fce87b48b47f4bf82e5fd25fda12a25758
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82192416"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553505"
 ---
 # <a name="operating-system-upgrade"></a>Operációs rendszer frissítése
 Ez a dokumentum ismerteti az operációs rendszer frissítésének részleteit a HANA nagyméretű példányain.
@@ -38,11 +38,9 @@ Belefoglalás a jegybe:
 * Az alkalmazni kívánt javítási szint.
 * A módosítás megtervezésének dátuma. 
 
-Javasoljuk, hogy ezt a jegyet legalább egy héttel a kívánt frissítési dátum előtt nyissa meg, mert a műveleti csapat ellenőrzi, hogy szükség van-e belső vezérlőprogram-frissítésre a kiszolgáló paneljén.
-
+Javasoljuk, hogy a kívánt frissítés előtt legalább egy héttel nyissa meg ezt a jegyet, amely lehetővé teszi, hogy a opration csapata tudja a szükséges belső vezérlőprogram-verziót.
 
 A különböző Linux-verziókkal rendelkező különböző SAP HANA verziók támogatási mátrixa: [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581).
-
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -55,16 +53,17 @@ A frissítés során néhány gyakori ismert probléma a következő:
 Az operációs rendszer konfigurációja a javítások, a Rendszerfrissítések és az ügyfelek által végzett módosítások miatt idővel eltérhet az ajánlott beállításoktól. A Microsoft emellett a meglévő rendszerekhez szükséges frissítéseket is azonosítja, így biztosítva, hogy optimálisan legyenek konfigurálva a legjobb teljesítményhez és rugalmassághoz. A következő utasítások a hálózati teljesítményre, a rendszer stabilitására és az optimális HANA-teljesítményre vonatkozó javaslatokat ismertetik.
 
 ### <a name="compatible-enicfnic-driver-versions"></a>Kompatibilis eNIC-/fNIC-illesztőprogram-verziók
-  A megfelelő hálózati teljesítmény és a rendszer stabilitásának biztosítása érdekében javasoljuk, hogy a eNIC és a fNIC illesztőprogramok operációs rendszerre vonatkozó megfelelő verzióját a következő kompatibilitási táblázatban látható módon telepítse. A kiszolgálók a kompatibilis verziókkal rendelkező ügyfeleknek érkeznek. Vegye figyelembe, hogy bizonyos esetekben az operációs rendszer/kernel javítása során az illesztőprogramok visszaállíthatók az alapértelmezett illesztőprogram-verzióra. Győződjön meg arról, hogy az illesztőprogram megfelelő verziója az operációs rendszer/kernel javítási műveleteit futtatja.
+  A megfelelő hálózati teljesítmény és a rendszer stabilitásának biztosítása érdekében javasoljuk, hogy a eNIC és a fNIC illesztőprogramok operációs rendszerre vonatkozó megfelelő verzióját a következő kompatibilitási táblázatban látható módon telepítse. A kiszolgálók a kompatibilis verziókkal rendelkező ügyfeleknek érkeznek. Bizonyos esetekben az operációs rendszer/kernel javítása során az illesztőprogramok visszaállíthatók az alapértelmezett illesztőprogram-verzióra. Ellenőrizze, hogy az illesztőprogram megfelelő verziója fut-e az operációs rendszer/kernel javítási műveleteinek futtatása után.
        
       
   |  Operációs rendszer szállítója    |  Operációs rendszer csomagjának verziója     |  Belső vezérlőprogram verziója  |  eNIC-illesztőprogram |  fNIC-illesztőprogram | 
   |---------------|-------------------------|--------------------|--------------|--------------|
   |   SuSE        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
   |   SuSE        |  SLES 12 SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
-  |   SuSE        |  SLES 12 SP4            |   3.2.3 i           |  2.3.0.47    |   2.0.0.54   |
+  |   SuSE        |  SLES 12 SP4            |   3.2.3 i           |  4.0.0.6     |   2.0.0.60   |
   |   SuSE        |  SLES 12 SP2            |   3.2.3 i           |  2.3.0.45    |   1.6.0.37   |
-  |   SuSE        |  SLES 12 SP3            |   3.2.3 i           |  2.3.0.45    |   1.6.0.37   |
+  |   SuSE        |  SLES 12 SP3            |   3.2.3 i           |  2.3.0.43    |   1.6.0.36   |
+  |   SuSE        |  SLES 12 SP5            |   3.2.3 i           |  4.0.0.8     |   2.0.0.60   |
   |   Red Hat     |  RHEL 7,2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
  
 
@@ -88,6 +87,15 @@ rpm -ivh <enic/fnic.rpm>
 modinfo enic
 modinfo fnic
 ```
+
+#### <a name="steps-for-enicfnic-drivers-installation-during-os-upgrade"></a>A eNIC/fNIC illesztőprogramok telepítésének lépései az operációs rendszer frissítése során
+
+* Operációs rendszer verziójának frissítése
+* Régi rpm-csomagok eltávolítása
+* Kompatibilis eNIC-/fNIC-illesztőprogramok telepítése telepített operációsrendszer-verzióként
+* Rendszer újraindítása
+* Újraindítás után keresse meg a eNIC/fNIC verzióját.
+
 
 ### <a name="suse-hlis-grub-update-failure"></a>SuSE HLIs GRUB-frissítési hiba
 Az Azure HANA nagyméretű példányain (I. típus) lévő SAP nem indítható állapotban lehet a frissítés után. Az alábbi eljárás javítja ezt a problémát.
@@ -117,7 +125,6 @@ blacklist edac_core
 ```
 A módosítások érvénybe lépéséhez újraindítás szükséges. Futtassa `lsmod` a parancsot, és ellenőrizze, hogy a modul nem található-e a kimenetben.
 
-
 ### <a name="kernel-parameters"></a>Kernel-paraméterek
    Győződjön meg arról, hogy a, a, a és a megfelelő beállítás `transparent_hugepage` `numa_balancing` `processor.max_cstate` `ignore_ce` `intel_idle.max_cstate` van alkalmazva.
 
@@ -126,7 +133,6 @@ A módosítások érvénybe lépéséhez újraindítás szükséges. Futtassa `l
 * transparent_hugepage = soha
 * numa_balancing = letiltás
 * MCE = ignore_ce
-
 
 #### <a name="execution-steps"></a>Végrehajtási lépések
 
@@ -141,6 +147,6 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 * Rendszer újraindítása.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tekintse át a [biztonsági mentést és a visszaállítást](hana-overview-high-availability-disaster-recovery.md) az operációs rendszer biztonsági mentése I SKU osztályban.
 - Tekintse át az [operációs rendszer biztonsági másolatát](os-backup-type-ii-skus.md) , amely a 2. típusú SKU osztályhoz tartozó 3. típusú bélyegzőket használja.

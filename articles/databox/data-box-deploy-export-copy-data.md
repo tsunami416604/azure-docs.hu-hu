@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fb1415874c42e3913d98d4a674732a4d9b98a0c5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123908"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335213"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Oktatóanyag: Adatok másolása az Azure Data Boxból SMB-n keresztül (Előzetes verzió)
 
@@ -54,9 +54,9 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 
 2. Az Access share and copy data (Megosztási és másolási adatok másolása) párbeszédpanelen másolja ki a megosztásnak megfelelő **Username** (Felhasználónév) és **Password** (Jelszó) értékeket. Kattintson az **OK** gombra.
     
-    ![Megosztások hitelesítő adatainak beszerzése 2](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
+    ![Megosztás hitelesítő adatainak beszerzése, a hozzáférés megosztása és az adatok másolása](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
 
-3. A tárfiókjához (a következő példában *exportbvtdataset2*) társított megosztások gazdagépről történő eléréséhez nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
+3. A tárfiókjához (a következő példában *exportbvtdataset2* ) társított megosztások gazdagépről történő eléréséhez nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -73,13 +73,13 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
     The command completed successfully.
     ```
 
-4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>`. Kattintson az **OK** gombra a Fájlkezelő megnyitásához.
+5. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>`. Kattintson az **OK** gombra a Fájlkezelő megnyitásához.
     
-    ![Kapcsolódás a megosztáshoz a Fájlkezelővel](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![Kapcsolódás a megosztáshoz a Fájlkezelővel, az eszköz IP-címének megadása](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     A megosztásoknak ezután mappaként kell megjelenniük.
     
-    ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
+    ![Kapcsolódás a megosztáshoz a Fájlkezelővel, megosztások megtekintése](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
 
     
 Linux-ügyfél használata esetén csatlakoztassa az SMB-megosztást az alábbi parancs használatával. Az alábbi vers paraméter az SMB Linux-gazdagép által támogatott verziója. Az alábbi parancsban adja meg a megfelelő verziót. A Data Box által támogatott SMB-verziókkal kapcsolatban tekintse meg a [Linux-ügyfelek esetében támogatott fájlrendszereket](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) ismertető cikket. 
@@ -100,7 +100,7 @@ A Data Box-megosztásokhoz történő csatlakozás után a következő lépés a
 
 A Robocopy-paranccsal kapcsolatos további információért lásd [a Robocopyt és néhány példát](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) bemutató témakört.
 
-A másolás befejezése után nyissa meg az **Irányítópultot**, majd ellenőrizze, hogy az eszközén lévő felhasznált és szabad tárhely mennyiségét.
+A másolás befejezése után nyissa meg az **Irányítópultot** , majd ellenőrizze, hogy az eszközén lévő felhasznált és szabad tárhely mennyiségét.
 
 Ezután elküldheti az Azure Data Boxot a Microsoftnak.
 

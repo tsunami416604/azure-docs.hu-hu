@@ -22,30 +22,30 @@ Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé
 Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
-Azure Database for PostgreSQL egykiszolgálós adatbázis létrehozásához nyissa meg a [Azure Portal](https://portal.azure.com/) . Keresse meg és válassza ki *Azure Database for PostgreSQL-kiszolgálókat* .
+Azure Database for PostgreSQL egykiszolgálós adatbázis létrehozásához nyissa meg a [Azure Portal](https://portal.azure.com/) . Keresse meg és válassza ki *Azure Database for PostgreSQL-kiszolgálókat*.
 
 >[!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-database-portal/search-postgres.png" alt-text="Azure Database for PostgreSQL keresése.":::
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 2. A Azure Database for PostgreSQL létrehozása lapon válassza az  **egyetlen kiszolgáló** lehetőséget.
 
     >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-database-portal/select-single-server.png" alt-text="Azure Database for PostgreSQL keresése.":::
+    > :::image type="content" source="./media/quickstart-create-database-portal/select-single-server.png" alt-text="Egyetlen kiszolgáló kiválasztása":::
 
 3. Most adja meg az **alapok** űrlapot a következő információkkal.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="Azure Database for PostgreSQL keresése.":::
+   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="Képernyőkép, amely az alapvető beállítások lapot mutatja egyetlen kiszolgáló létrehozásához.":::
 
    |Beállítás|Ajánlott érték|Leírás|
    |:---|:---|:---|
    |Előfizetés|az előfizetés neve|Válassza ki a kívánt Azure-előfizetést.|
    |Erőforráscsoport|*myresourcegroup*| Új vagy meglévő erőforráscsoport az előfizetésből.|
    |Kiszolgálónév |*mydemoserver*|Egy egyedi név, amely az Azure Database for PostgreSQL-kiszolgálót azonosítja. A rendszer hozzáfűzi a *postgres.database.Azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgáló neve csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Az értéknek 3 – 63 karaktert kell tartalmaznia.|
-   |Adatforrás | Nincsenek | Válassza a **Nincs** lehetőséget egy teljesen új kiszolgáló létrehozásához. Csak akkor válassza a **biztonsági mentést** , ha egy meglévő kiszolgáló geo-biztonsági másolatából végez visszaállítást.|
-   |Rendszergazdai felhasználónév |*myadmin*| Adja meg a kiszolgáló-rendszergazdai felhasználónevét. Nem kezdődhet **pg_** és ezek az értékek nem engedélyezettek: **azure_superuser** , **azure_pg_admin** , **Admin** , **Administrator** , **root** , **Guest** vagy **Public** .|
+   |Adatforrás | None | Válassza a **Nincs** lehetőséget egy teljesen új kiszolgáló létrehozásához. Csak akkor válassza a **biztonsági mentést** , ha egy meglévő kiszolgáló geo-biztonsági másolatából végez visszaállítást.|
+   |Rendszergazdai felhasználónév |*myadmin*| Adja meg a kiszolgáló-rendszergazdai felhasználónevét. Nem kezdődhet **pg_** és ezek az értékek nem engedélyezettek: **azure_superuser** , **azure_pg_admin** , **Admin** , **Administrator** , **root** , **Guest** vagy **Public**.|
    |Jelszó |az ön jelszava| Új jelszó a kiszolgáló-rendszergazda felhasználó számára. 8 – 128 karaktert tartalmazhat a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számok (0 – 9) és nem alfanumerikus karakterek (például!, $, #,%).|
    |Hely|a kívánt hely| Válasszon ki egy helyet a legördülő listából.|
    |Verzió|A legújabb főverzió| A legújabb PostgreSQL-főverzió, hacsak nincsenek más konkrét követelmények.|
@@ -57,10 +57,10 @@ Azure Database for PostgreSQL egykiszolgálós adatbázis létrehozásához nyis
 
 5. Válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások áttekintéséhez. A kiszolgáló üzembe helyezéséhez válassza a **Létrehozás** lehetőséget. A művelet eltarthat néhány percig.
     > [!NOTE]
-    > A rendszer létrehoz egy üres adatbázist, a **postgres** . Emellett olyan **azure_maintenance** -adatbázist is talál, amely a felügyelt szolgáltatás folyamatainak elkülönítésére szolgál a felhasználói műveletekben. A **azure_maintenance** adatbázis nem érhető el.
+    > A rendszer létrehoz egy üres adatbázist, a **postgres**. Emellett olyan **azure_maintenance** -adatbázist is talál, amely a felügyelt szolgáltatás folyamatainak elkülönítésére szolgál a felhasználói műveletekben. A **azure_maintenance** adatbázis nem érhető el.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-database-portal/deployment-success.png" alt-text="Azure Database for PostgreSQL keresése.":::
+> :::image type="content" source="./media/quickstart-create-database-portal/deployment-success.png" alt-text="sikeres üzembe helyezés.":::
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/postgres-doc-feedback)
 
@@ -68,7 +68,7 @@ Azure Database for PostgreSQL egykiszolgálós adatbázis létrehozásához nyis
 Alapértelmezés szerint a létrehozott kiszolgáló nem érhető el nyilvánosan. Engedélyeket kell adnia az IP-címéhez. Nyissa meg a kiszolgálói erőforrást a Azure Portalban, és válassza a **kapcsolatbiztonsági** lehetőséget a kiszolgáló erőforrásának bal oldali menüjében. Ha nem tudja, hogyan találja meg az erőforrását, tekintse [meg az erőforrások megnyitása](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)című témakört.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Azure Database for PostgreSQL keresése.":::
+> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="A kapcsolatbiztonsági szabályokra vonatkozó tűzfalszabályok bemutató képernyőkép.":::
 
 Válassza az **aktuális ügyfél IP-címének hozzáadása** lehetőséget, majd válassza a **Mentés** lehetőséget. További IP-címeket adhat hozzá, vagy megadhat egy IP-címtartományt, amely az IP-címekről a kiszolgálóhoz csatlakozik. További információ: [Tűzfalszabályok a Azure Database for PostgreSQL](./concepts-firewall-rules.md).
 
@@ -83,7 +83,7 @@ Használhatja a [psql](http://postgresguide.com/utilities/psql.html) vagy a [pgA
 
 1. Jegyezze fel a kiszolgáló nevét, a kiszolgáló-rendszergazdai bejelentkezési nevet, a jelszót és az újonnan létrehozott kiszolgáló előfizetés-AZONOSÍTÓját a kiszolgáló **Áttekintés** szakaszában.
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-database-portal/overview-new.png" alt-text="Azure Database for PostgreSQL keresése.":::
+    > :::image type="content" source="./media/quickstart-create-database-portal/overview-new.png" alt-text="a kapcsolatfelvételi adatok beolvasása.":::
 
 
 2. Nyissa meg Azure Cloud Shell a portálon a bal felső sarokban található ikon kiválasztásával.
@@ -92,7 +92,7 @@ Használhatja a [psql](http://postgresguide.com/utilities/psql.html) vagy a [pgA
    > Ha első alkalommal nyit meg Cloud Shell, megjelenik egy erőforráscsoport és egy Storage-fiók létrehozásának kérése. Ez egy egyszeri lépés, és a rendszer automatikusan csatolja az összes munkamenethez.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="Azure Database for PostgreSQL keresése.":::
+   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="Képernyőkép, amely megjeleníti a kiszolgáló adatait és a Azure Cloud Shell megnyitásának ikonját.":::
 
 3. Futtassa a következő parancsot a Azure Cloud Shell terminálon. Cserélje le az értékeket a tényleges kiszolgálónévre és a rendszergazda felhasználói bejelentkezési nevére. A következő formátumban használja az üres adatbázis- **postgres** a rendszergazda felhasználóval: `<admin-username>@<servername>` .
 
@@ -134,7 +134,7 @@ Használhatja a [psql](http://postgresguide.com/utilities/psql.html) vagy a [pgA
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/postgres-doc-feedback)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Sikeresen létrehozott egy Azure Database for PostgreSQL-kiszolgálót egy erőforráscsoporthoz. Ha nem szeretné, hogy a jövőben is szükség lenne ezekre az erőforrásokra, törölheti őket az erőforráscsoport vagy a PostgreSQL-kiszolgáló törlésével.
 
 Az erőforráscsoport törlése:
@@ -147,11 +147,11 @@ Az erőforráscsoport törlése:
 A kiszolgáló törléséhez kattintson a **Törlés** gombra a kiszolgáló **Áttekintés** lapján:
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="Azure Database for PostgreSQL keresése.":::
+> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="A kiszolgáló törlésére szolgáló gombot megjelenítő képernyőkép.":::
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/postgres-doc-feedback)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálás és importálás használatával](./howto-migrate-using-export-and-import.md) <br/>
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 3237ff37e4314459a9e9a7a255b0ad10b3958509
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/09/2020
+ms.openlocfilehash: 7d10eec3fb200d2ef9e583c012cc522888f3c65b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636952"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553597"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba a Adatok másolása eszköz használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -99,7 +99,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. A **Blobok** ablakban válassza a **+ tároló** elemet.
 
-1. Az **új tároló** ablakban a név mezőbe írja be a **adftutorial** **nevet** , majd kattintson az **OK gombra** .
+1. Az **új tároló** ablakban a név mezőbe írja be a **adftutorial** **nevet** , majd kattintson az **OK gombra**.
 
 1. A tárolók listájában kattintson az **adftutorial** elemre.
 
@@ -109,7 +109,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
-1. A bal oldali menüben válassza az **+ erőforrás létrehozása**  >  **elemzési**  >  **Data Factory** elemet.
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **integráció**  >  **Data Factory** elemet.
 
    ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -141,22 +141,22 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
    ![Első lépések lap](./media/doc-common-process/get-started-page.png)
 
-1. Az Adatok másolása eszköz **Tulajdonságok** lapján a **Feladat neve** alatt írja be a következőt: **CopyFromOnPremSqlToAzureBlobPipeline** . Ezután kattintson a **Tovább** gombra. Az Adatok másolása eszköz létrehoz egy folyamatot a mezőben megadott néven.
+1. Az Adatok másolása eszköz **Tulajdonságok** lapján a **Feladat neve** alatt írja be a következőt: **CopyFromOnPremSqlToAzureBlobPipeline**. Ezután kattintson a **Tovább** gombra. Az Adatok másolása eszköz létrehoz egy folyamatot a mezőben megadott néven.
   ![Feladat neve](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
 1. A **Forrásadattár** oldalon kattintson az **Új kapcsolat létrehozása** lehetőségre.
 
 1. Az **új társított szolgáltatás** területen keressen **SQL Server** , majd válassza a **Folytatás** lehetőséget.
 
-1. Az **új társított szolgáltatás (SQL Server)** párbeszédpanel **név** mezőjébe írja be a következőt: **SqlServerLinkedService** . Válassza a **+Új** elemet a **Csatlakozás integrációs modulon keresztül** résznél. Létre kell hoznia egy saját üzemeltetésű integrációs modult, le kell töltenie a gépére, és regisztrálnia kell a Data Factoryban. A saját üzemeltetésű integrációs modul adatokat másol a helyszíni környezetből a felhőbe.
+1. Az **új társított szolgáltatás (SQL Server)** párbeszédpanel **név** mezőjébe írja be a következőt: **SqlServerLinkedService**. Válassza a **+Új** elemet a **Csatlakozás integrációs modulon keresztül** résznél. Létre kell hoznia egy saját üzemeltetésű integrációs modult, le kell töltenie a gépére, és regisztrálnia kell a Data Factoryban. A saját üzemeltetésű integrációs modul adatokat másol a helyszíni környezetből a felhőbe.
 
 1. A **Integration Runtime telepítés** párbeszédpanelen válassza a **saját** üzemeltetésű lehetőséget. Ezután válassza a **Folytatás** elemet.
 
    ![Integrációs modul létrehozása](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-1. A **Integration Runtime beállítása** párbeszédpanel név területén írja be a **TutorialIntegrationRuntime** **nevet** . Ezután válassza a **Létrehozás** elemet.
+1. A **Integration Runtime beállítása** párbeszédpanel név területén írja be a **TutorialIntegrationRuntime** **nevet**. Ezután válassza a **Létrehozás** elemet.
 
-1. A **Integration Runtime telepítés** párbeszédpanelen válassza **a kattintson ide, hogy elindítsa a számítógép expressz telepítését** . Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult.
+1. A **Integration Runtime telepítés** párbeszédpanelen válassza **a kattintson ide, hogy elindítsa a számítógép expressz telepítését**. Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult.
 
 1. Futtassa a letöltött alkalmazást. Az expressz telepítés állapota látható az ablakban.
 
@@ -193,7 +193,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. Az **Új társított szolgáltatás (Azure Blob Storage)** párbeszédpanelen végezze el az alábbi lépéseket:
 
-   a. A **név** mezőben adja meg a **AzureStorageLinkedService** .
+   a. A **név** mezőben adja meg a **AzureStorageLinkedService**.
 
    b. A **Csatlakozás integrációs modulon keresztül** területen válassza ki a **TutorialIntegrationRuntime** értéket
 

@@ -13,12 +13,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fcb6d4da3d9b044cf722c6333f61a0f8d38f1956
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a4c8f0c636e254c4afc2d6cd83a744939096233a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91598014"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553624"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>Gyors útmutató: SQL Server létrehozása Windows rendszerű virtuális gépen Azure PowerShell
 
@@ -32,7 +32,7 @@ Ez a rövid útmutató végigvezeti a SQL Server virtuális gép (VM) Azure Powe
 
 ## <a name="get-an-azure-subscription"></a><a id="subscription"></a> Azure-előfizetés beszerzése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 ## <a name="get-azure-powershell"></a><a id="powershell"></a> Az Azure PowerShell beszerzése
@@ -49,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 1. Amikor megjelenik a bejelentkezési ablak, adja meg a hitelesítő adatait. Használja ugyanazt az e-mail-címet és jelszót, amelyet az Azure Portalra való bejelentkezéshez használ.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 1. Adjon meg egy változót egy egyedi erőforráscsoport-névvel. A rövid útmutató további részének egyszerűsítése érdekében a többi parancs ezt a nevet használja az egyéb erőforrásnevek alapján.
 
@@ -150,9 +150,9 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ## <a name="register-with-sql-vm-rp"></a>Regisztrálás az SQL VM erőforrás-szolgáltatónál 
 
-A portál-integráció és az SQL-alapú virtuális gépek funkcióinak beszerzéséhez regisztrálnia kell az [SQL VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md).
+A portál-integráció és az SQL-alapú virtuális gépek funkcióinak beszerzéséhez regisztrálnia kell az [SQL IaaS-ügynök bővítménnyel](sql-agent-extension-manually-register-single-vm.md).
 
-A teljes funkcionalitás eléréséhez teljes módban regisztrálnia kell az erőforrás-szolgáltatóban. Ezzel azonban újraindítja a SQL Server szolgáltatást, ezért az ajánlott módszer az, hogy egyszerű módban regisztrálja a regisztrációt, majd a karbantartási időszak alatt teljes egészében frissítsen. 
+A teljes funkcionalitás eléréséhez teljes módban regisztrálnia kell a bővítményt. Ezzel azonban újraindítja a SQL Server szolgáltatást, ezért az ajánlott módszer az, hogy egyszerű módban regisztrálja a regisztrációt, majd a karbantartási időszak alatt teljes egészében frissítsen. 
 
 Először regisztrálja a SQL Server VMt könnyű módban: 
 
@@ -171,7 +171,7 @@ Ezután a karbantartási időszak alatt frissítsen a teljes módra:
 # Get the existing Compute VM
 $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
       
-# Register with SQL VM resource provider in full mode
+# Register with SQL IaaS Agent extension in full mode
 Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
 ```
 
@@ -197,7 +197,7 @@ Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManag
 
 1. A Távoli asztal-munkamenetbe való bejelentkezés után indítsa el **SQL Server Management Studio 2017** alkalmazást a Start menüből.
 
-1. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen tartsa meg az alapértelmezett értékeket. A kiszolgáló neve a virtuális gép neve. A Hitelesítés értéke **Windows Authentication** (Windows-hitelesítés). Kattintson a **Csatlakozás** gombra.
+1. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen tartsa meg az alapértelmezett értékeket. A kiszolgáló neve a virtuális gép neve. A Hitelesítés értéke **Windows Authentication** (Windows-hitelesítés). Válassza a **Kapcsolódás** lehetőséget.
 
 Mostantól a SQL Server helyileg csatlakozik. Ha távolról szeretne csatlakozni, a Azure Portal vagy manuálisan kell [konfigurálnia a kapcsolatot](ways-to-connect-to-sql.md) .
 
@@ -211,7 +211,7 @@ Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 
 A **Remove-AzResourceGroup** paranccsal véglegesen törölheti a virtuális géphez társított összes erőforrást is. Ezzel véglegesen törli a virtuális gépet is, ezért használja ezt a parancsot körültekintően.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy SQL Server 2017-et futtató virtuális gépet hozott létre az Azure PowerShell használatával. Az adatok az új SQL Serverre való migrálásával kapcsolatos további információkért lásd a következő cikket.
 

@@ -3,17 +3,17 @@ title: Az Azure költségeinek elemzése a Power BI-alkalmazással
 description: Ez a cikk ismerteti az Azure Cost Management Power BI-alkalmazás telepítését és használatát.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 7282ef9269c1168214fe57d3faa5488e531af8da
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1c5adf58f670f3cadcedbe710568551004b77b78
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131122"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413241"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Az Azure költségeinek elemzése a Nagyvállalati Szerződésekhez (EA) készült Azure Cost Management Power BI-alkalmazással
 
@@ -204,8 +204,8 @@ Az alábbi információk az alkalmazáson keresztül elérhető adatokat foglalj
 | [**Költségvetések**](/rest/api/consumption/budgets/get#definitions) | A költségvetés részletei a tényleges költségek és használat a meglévő költségvetéshez viszonyított megtekintéséhez. |
 | [**Árlisták**](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet#see-also) | Vonatkozó fogyasztási díjak a megadott számlázási profilhoz vagy EA-regisztrációhoz. |
 | [**RI-díjak**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges#response) | A fenntartott példányaihoz társított díjak az utolsó 24 hónap tekintetében. |
-| [**RI-javaslatok (megosztott)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | Az elmúlt 7, 30 vagy 60 nap összes előfizetés-használati trendjén alapuló javaslatok a fenntartott példányok vásárlására vonatkozóan. |
-| [**RI-javaslatok (egy előfizetéshez)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | Az elmúlt 7, 30 vagy 60 nap egyetlen előfizetésre vonatkozó használati trendjén alapuló javaslatok a fenntartott példányok vásárlásához. |
+| [**RI-javaslatok (megosztott)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | Az elmúlt 7 nap összes előfizetés-használati trendjén alapuló javaslatok a fenntartott példányok vásárlására vonatkozóan. |
+| [**RI-javaslatok (egy előfizetéshez)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | Az elmúlt 7 nap egyetlen előfizetésre vonatkozó használati trendjén alapuló javaslatok a fenntartott példányok vásárlásához. |
 | [**RI-használati adatok**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#response) | Az elmúlt hónap felhasználási adatai a meglévő fenntartott példányokra vonatkozóan. |
 | [**RI-használat összegzése**](/rest/api/consumption/reservationssummaries/list) | Az Azure-beli foglalások napi használatának százalékos aránya. |
 | [**Használati adatok**](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#usage-details-field-definitions) | A felhasznált mennyiségek és a becsült költségek részletezése az EA-regisztráció adott számlázási profiljához. |

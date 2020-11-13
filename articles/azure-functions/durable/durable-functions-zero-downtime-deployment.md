@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c96f2cc37c47c77b82ca86d5fd0295f0c66a896
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093068"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553692"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nulla – állásidő üzembe helyezése Durable Functions
 
@@ -54,7 +54,7 @@ A forgatókönyv beállításához kövesse az alábbi eljárást.
 
 1. Az egyes tárolóhelyek esetében hozzon létre egy új alkalmazást, például: `DurableManagementStorage` . Állítsa az értékét a különböző Storage-fiókok kapcsolati karakterláncára. Ezeket a Storage-fiókokat a Durable Functions bővítmény használja a [megbízható végrehajtáshoz](./durable-functions-orchestrations.md). Mindegyik tárolóhelyhez külön Storage-fiókot használjon. Ne jelölje be a beállítást üzembe helyezési tárolóhelyként beállításként.
 
-1. A Function app [host.jsfájl durableTask szakaszában](durable-functions-bindings.md#hostjson-settings)adja meg a `azureStorageConnectionStringName` 3. lépésben létrehozott Alkalmazásbeállítás nevét.
+1. A Function app [host.jsfájl durableTask szakaszában](durable-functions-bindings.md#hostjson-settings)adja meg a `connectionStringName` (tartós 2. x) vagy a `azureStorageConnectionStringName` (tartós 1. x) értéket a 3. lépésben létrehozott Alkalmazásbeállítások nevével.
 
 A következő ábra az üzembe helyezési pontok és a Storage-fiókok leírt konfigurációját mutatja be. Ebben a lehetséges előtelepítési forgatókönyvben a Function app 2. verziója az üzemi tárolóhelyen fut, míg az 1. verzió az átmeneti tárolóhelyen marad.
 
@@ -71,7 +71,10 @@ A következő JSON-töredékek példák a *host.js* fájlhoz tartozó kapcsolato
   "version": 2.0,
   "extensions": {
     "durableTask": {
-      "azureStorageConnectionStringName": "DurableManagementStorage"
+      "hubName": "MyTaskHub",
+      "storageProvider": {
+        "connectionStringName": "DurableManagementStorage"
+      }
     }
   }
 }
@@ -168,7 +171,7 @@ További információ: a [példányok kezelése az Azure](durable-functions-inst
 
 ![Nyomkövetési tároló beállításai](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Verziószámozás Durable Functions](durable-functions-versioning.md)

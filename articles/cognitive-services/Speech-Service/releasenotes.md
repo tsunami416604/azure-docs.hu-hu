@@ -11,14 +11,28 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 01c9cbe0438ee0efeece4c7e6b17e9607db4c4cc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2586b3aab9d1fb8e7ae12aea540df19ff6c37556
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356688"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553658"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
+
+## <a name="text-to-speech-2020-october-release"></a>Szöveg-beszéd 2020 – októberi kiadás
+
+**Új funkciók**
+- Jenny új stílust támogat `newscast` . Tekintse meg [, hogyan használhatja a SSML a beszélő stílusokat](speech-synthesis-markup.md#adjust-speaking-styles).
+- **A HiFiNet vocoder-ra frissített neurális hangok magasabb hanghűséget és gyorsabb szintézist** tesznek lehetővé. Ez a megoldás olyan ügyfelek számára előnyös, akik a Hi-Fi hang-vagy hosszú interakciókat, például a videó-szinkronizálást, a hangoskönyveket vagy az online oktatási anyagokat is felhasználják. [Tudjon meg többet a történetről, és hallgassa meg a Tech Community blogon a hangmintákat](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860)
+- **Az [Egyéni](https://speech.microsoft.com/customvoice)  &  [hangtartalom-létrehozási Studio](https://speech.microsoft.com/audiocontentcreation) 17 területi** beállításra van honosítva. A felhasználók könnyedén átválthatják a felhasználói felületet a helyi nyelvre.   
+- **Hangtartalom létrehozása** : hozzáadott Style Degree Control a XiaoxiaoNeural; Finomítsa a testreszabott szünet funkciót a 50ms növekményes megszakításával. 
+
+**Általános TTS hang minőségének fejlesztése**
+- Továbbfejlesztett Word-szintű kiejtési pontosság a (z) `pl-PL` (hiba arányának csökkentése: 51%) és `fi-FI` (a hiba mértékének csökkentése: 58%)
+- Továbbfejlesztett `ja-JP` egyszavas olvasás a szótári forgatókönyvhöz. Csökkentett kiejtési hiba 80%-kal.
+- `zh-CN-XiaoxiaoNeural`: Továbbfejlesztett hangulat/CustomerService/bemondás/vidám/dühös stílusú hangminőség.
+- `zh-CN`: Továbbfejlesztett Erhua-kiejtés és világos tónusok és finomított lemezterület-prosody, ami jelentősen javítja az érthetőséget. 
 
 ## <a name="speech-sdk-1140-2020-october-release"></a>Speech SDK 1.14.0:2020 – októberi kiadás
 
@@ -78,6 +92,18 @@ Az SPX a parancssori felület, amellyel a kód írása nélkül használhatja az
 - `spx * --http header A=B` – támogatja az egyéni fejléceket (az Office egyéni hitelesítéshez hozzáadva). 
 - `spx help` – a szöveg és a háttér színének továbbfejlesztett szövege (kék).
 
+## <a name="text-to-speech-2020-september-release"></a>Szövegről beszédre 2020 – szeptemberi kiadás
+
+### <a name="new-features"></a>Új funkciók
+
+* **Neurális TTS** 
+    * **Kiterjesztve a 18 új nyelv/területi beállítás támogatására.** Ezek a következők: bolgár, Cseh, német (Ausztria), német (Svájc), görög, angol (Írország), francia (Svájc), héber, horvát, magyar, indonéz, maláj, román, szlovák, szlovén, tamil, telugu és vietnami. 
+    * **14 új hang lett kiadva a különböző nyelvekhez.** Tekintse meg [a teljes nyelv és hang listáját](language-support.md#neural-voices).
+    * **Új beszélő stílusok `en-US` és `zh-CN` hangok.** Jenny, az új hang angol nyelven (US), támogatja a Csevegőrobot, az ügyfélszolgálatot és a Segéd-stílusokat. 10 új beszélő stílus érhető el a zh-CN hang-és XiaoXiao. Emellett a XiaoXiao neurális hang támogatja a `StyleDegree` hangolást. Tekintse meg [, hogyan használhatja a SSML a beszélő stílusokat](speech-synthesis-markup.md#adjust-speaking-styles).
+
+* **Tárolók: egy nyilvános előzetes verzióban megjelent neurális TTS-tároló 14 nyelven érhető el 16 hangon.** További információ a [Speech containers for NEURÁLIS TTS üzembe helyezéséről](speech-container-howto.md)  
+
+Olvassa el az [ignite 2020 TTS-frissítéseinek teljes bejelentését](https://techcommunity.microsoft.com/t5/azure-ai/ignite-2020-neural-tts-updates-new-language-support-more-voices/ba-p/1698544) 
 
 ## <a name="text-to-speech-2020-august-release"></a>Szöveg-beszéd 2020 – augusztusi kiadás
 

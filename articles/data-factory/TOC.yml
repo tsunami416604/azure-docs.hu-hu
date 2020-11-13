@@ -451,6 +451,8 @@
           href: copy-activity-fault-tolerance.md
         - name: Adatkonzisztencia-ellenőrzés
           href: copy-activity-data-consistency.md
+        - name: Másolási tevékenység naplója
+          href: copy-activity-log.md
         - name: Formátum- és tömörítéstámogatás (örökölt)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: Adatok átalakítása

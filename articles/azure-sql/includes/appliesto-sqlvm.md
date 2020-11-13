@@ -6,5 +6,5 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
 ms.locfileid: "90533185"
 ---
-<Token>**a következőkre vonatkozik:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: SQL Server Azure-beli virtuális gépen </Token> 
+<Token>**a következőkre vonatkozik:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: SQL Server Azure-beli virtuális gépen</Token> 
 

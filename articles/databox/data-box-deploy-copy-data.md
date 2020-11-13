@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ced33bb17e9c24faa127b27adacce9cab011e1d8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7ecccd64921b2d95155318fe91c897725e340b7e
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426262"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334669"
 ---
 ::: zone target="docs"
 
@@ -103,7 +103,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
     
     ![A Fájlkezelőben látható megosztások](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
-    **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába** . A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér* mappájába.
+    **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér* mappájába.
     
 Linux-ügyfél használata esetén csatlakoztassa az SMB-megosztást az alábbi parancs használatával. Az alábbi vers paraméter az SMB Linux-gazdagép által támogatott verziója. Az alábbi parancsban adja meg a megfelelő verziót. A Data Box által támogatott SMB-verziókkal kapcsolatban tekintse meg a [Linux-ügyfelek esetében támogatott fájlrendszereket](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) ismertető cikket. 
 
@@ -229,11 +229,11 @@ Ha hiba lép fel a másolási folyamat során, megjelenik erről egy értesíté
 
 Válassza a **Hibalista letöltése** lehetőséget.
 
-![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése 2](media/data-box-deploy-copy-data/view-errors-2.png)
+![Csatlakozás és másolás, hibalista letöltése](media/data-box-deploy-copy-data/view-errors-2.png)
 
 Nyissa meg a listát a hiba részleteinek megtekintéséhez, majd kattintson a megoldás URL-címére az ajánlott megoldás megtekintéséhez.
 
-![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése 3](media/data-box-deploy-copy-data/view-errors-3.png)
+![Csatlakozás és másolás, hibák letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-3.png)
 
 További információkért lásd: [Az adatok Data Boxra másolása során készült hibanaplók megtekintése](data-box-logs.md#view-error-log-during-data-copy). Az adatok másolása során felmerülő hibák részletes listájáért tekintse meg a [Data Box-problémák elhárításával](data-box-troubleshoot.md) kapcsolatos cikket.
 

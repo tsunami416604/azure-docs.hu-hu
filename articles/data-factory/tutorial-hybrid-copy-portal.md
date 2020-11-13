@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 19a0446cc0e69b860d6238ef7d7823cfa0afbb7c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/09/2020
+ms.openlocfilehash: 172ebb5f5b7896b6b642c1fe6c5d01afb1dbf479
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636221"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553607"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba
 
@@ -110,7 +110,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Factory felhasználói felületét, hogy létrehozzon egy folyamatot az adat-előállítóban.
 
 1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory** :
+1. A bal oldali menüben válassza az **erőforrás** -  >  **integráció** létrehozása  >  **Data Factory** :
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -144,31 +144,31 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
    ![Első lépések lap](./media/doc-common-process/get-started-page.png)
 
-1. A **Tulajdonságok** terület általános paneljén adja meg **SQLServerToBlobPipeline** a SQLServerToBlobPipeline **nevet** . Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
+1. A **Tulajdonságok** terület általános paneljén adja meg **SQLServerToBlobPipeline** a SQLServerToBlobPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
 
-1. A **tevékenységek** eszközben bontsa ki az **Áthelyezés & átalakítás** elemet. Húzza a **Másolás** tevékenységet a folyamat tervezési felületére. Állítsa a tevékenység nevét a következőre: **CopySqlServerToAzureBlobActivity** .
+1. A **tevékenységek** eszközben bontsa ki az **Áthelyezés & átalakítás** elemet. Húzza a **Másolás** tevékenységet a folyamat tervezési felületére. Állítsa a tevékenység nevét a következőre: **CopySqlServerToAzureBlobActivity**.
 
 1. A **Tulajdonságok** ablakban lépjen a **Forrás** lapra, és válassza a **+ Új** elemet.
 
-1. Az **új adatkészlet** párbeszédpanelen keressen **SQL Server** . Válassza a **SQL Server** lehetőséget, majd kattintson a **Folytatás** gombra.
+1. Az **új adatkészlet** párbeszédpanelen keressen **SQL Server**. Válassza a **SQL Server** lehetőséget, majd kattintson a **Folytatás** gombra.
     ![Új SqlServer adatkészlet](./media/tutorial-hybrid-copy-portal/create-sqlserver-dataset.png)
 
-1. A **tulajdonságok beállítása** párbeszédpanel Név mezőjébe írja be a **SqlServerDataset** **nevet** . A **társított szolgáltatás** területen válassza az **+ új** lehetőséget. Ebben a lépésben egy kapcsolatot hoz létre a forrásadatkészlettel (az SQL Server-adatbázissal).
+1. A **tulajdonságok beállítása** párbeszédpanel Név mezőjébe írja be a **SqlServerDataset** **nevet**. A **társított szolgáltatás** területen válassza az **+ új** lehetőséget. Ebben a lépésben egy kapcsolatot hoz létre a forrásadatkészlettel (az SQL Server-adatbázissal).
 
 1. Az **új társított szolgáltatás** párbeszédpanelen adja hozzá a **nevet** a **SqlServerLinkedService** mezőhöz. A **Csatlakozás Integration Runtime használatával** területen válassza az **+ új** lehetőséget.  Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű integrációs modul az a komponens, amely adatokat másol a gépen futó SQL Server-adatbázisból a Blob Storage-ba.
 
 1. A **Integration Runtime telepítés** párbeszédpanelen válassza a **saját** üzemeltetésű lehetőséget, majd kattintson a **Folytatás** gombra.
 
-1. A név mezőben adja meg a **TutorialIntegrationRuntime** . Ezután válassza a **Létrehozás** elemet.
+1. A név mezőben adja meg a **TutorialIntegrationRuntime**. Ezután válassza a **Létrehozás** elemet.
 
-1. A beállítások lapon **kattintson ide a számítógép expressz telepítésének elindításához** . Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult.
+1. A beállítások lapon **kattintson ide a számítógép expressz telepítésének elindításához**. Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult.
     ![Integrációs modul telepítése](./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png)
 
 1. A **Integration Runtime (helyi) expressz telepítés** ablakban válassza a **Bezárás** lehetőséget a folyamat befejeződése után.
 
     ![Az integrációs modul (saját üzemeltetésű) expressz telepítése](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
 
-1. Az **új társított szolgáltatás (SQL Server)** párbeszédpanelen ellenőrizze, hogy a **TutorialIntegrationRuntime** van-e kiválasztva a **Csatlakozás Integration Runtime használatával** . Ezután hajtsa végre a következő lépéseket:
+1. Az **új társított szolgáltatás (SQL Server)** párbeszédpanelen ellenőrizze, hogy a **TutorialIntegrationRuntime** van-e kiválasztva a **Csatlakozás Integration Runtime használatával**. Ezután hajtsa végre a következő lépéseket:
 
     a. A **Név** mezőben adja meg az **SqlServerLinkedService** nevet.
 
@@ -178,9 +178,9 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
     d. A **Hitelesítés típusa** alatt válassza ki azt a hitelesítési típust, amelyet a Data Factorynak az SQL Server-adatbázishoz történő csatlakozáshoz használnia kell.
 
-    e. A **Felhasználónév** és a **Jelszó** alatt adja meg a felhasználónevet és a jelszót. Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *SajátTartomány \\ \\ myuser* .
+    e. A **Felhasználónév** és a **Jelszó** alatt adja meg a felhasználónevet és a jelszót. Szükség esetén használja a *SajátTartomány \\ myuser* .
 
-    f. Válassza a **Kapcsolat tesztelése** elemet. Ezzel a lépéssel ellenőrizheti, hogy Data Factory tud-e csatlakozni a SQL Server-adatbázishoz a létrehozott saját üzemeltetésű integrációs modul használatával.
+    f. Válassza a **kapcsolatok tesztelése** lehetőséget. Ezzel a lépéssel ellenőrizheti, hogy Data Factory tud-e csatlakozni a SQL Server-adatbázishoz a létrehozott saját üzemeltetésű integrációs modul használatával.
 
     : A társított szolgáltatás mentéséhez válassza a **Létrehozás** lehetőséget.
  
@@ -190,7 +190,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
     a. Ellenőrizze, hogy a **Társított szolgáltatás** mezőben látható-e az **SqlServerLinkedService** szolgáltatás.
 
-    b. A **tábla neve** területen válassza a **[dbo] elemet. [ EMP]** .
+    b. A **tábla neve** területen válassza a **[dbo] elemet. [ EMP]**.
     
     c. Kattintson az **OK** gombra.
 

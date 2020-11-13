@@ -6,14 +6,15 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/23/2020
 ms.author: banders
-ms.openlocfilehash: 13b344d3f13993dc7b6acf7bfe9a0ccdea0c866b
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: contperfq1
+ms.openlocfilehash: e712b44f22a8080b14a2cc2532cadf2dd4738b76
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371354"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409200"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Az Azure Enterprise szerepköreinek kezelése
 
@@ -34,6 +35,86 @@ A regisztráció kiépítése során megadott első regisztrációs rendszergazd
 Ha például a kezdeti hitelesítési típus vegyesre van állítva, akkor az EA Microsoft-fiókként lesz hozzáadva, és a számlázási kapcsolattartó csak olvasási EA-rendszergazdai jogosultságokkal fog rendelkezni. Ha az EA-rendszergazda nem hagyja jóvá egy meglévő számlázási kapcsolattartó Microsoft-fiókkal történő hitelesítését, az EA-rendszergazda törölheti a szóban forgó felhasználót, és megkérheti az ügyfelet, hogy újból adja hozzá a felhasználót csak olvasási jogosultsággal rendelkező rendszergazdaként, munkahelyi vagy iskolai fiókkal, amely csak a regisztráció szintjén van megadva az EA Portalon.
 
 Ezek a szerepkörök kifejezetten az Azure Nagyvállalati Szerződések kezelésére szolgálnak, és kiegészítik az Azure beépített szerepköreit, amelyek az erőforrásokhoz való hozzáférést szabályozzák. További információ: [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md).
+
+## <a name="azure-enterprise-portal-hierarchy"></a>Az Azure Enterprise portál hierarchiája
+
+Az Azure Enterprise portál hierarchiája az alábbiakat tartalmazza:
+
+- Az **Azure Enterprise portál** egy online felügyeleti portál, amely segít az Azure EA-szolgáltatások költségeinek kezelésében. A következőket teheti:
+
+  - Hozzon létre egy Azure EA-hierarchiát részlegekkel, fiókokkal és előfizetésekkel.
+  - Összeegyeztetheti az igénybe vett szolgáltatások költségeit, letöltheti a használati jelentéseket és megtekintheti az árlistákat.
+  - Létrehozhat API-kulcsokat a regisztrációjához.
+
+- A **részlegek** segítenek a költségek logikai csoportosítás szerinti szegmentálásában. A részlegek lehetővé teszik, hogy megadjon egy költségkeretet vagy kvótát a részlegszinten.
+
+- A **fiókok** az Azure Enterprise portálon található szervezeti egységek. A fiókok segítségével kezelheti az előfizetéseket és hozzáférhet a jelentésekhez.
+
+- Az **előfizetések** az Azure Enterprise portálon található legkisebb egységek. A szolgáltatásadminisztrátorok által kezelt Azure-szolgáltatások tárolóiként szolgálnak.
+
+Az alábbi ábra egyszerű Azure EA-hierarchiákat mutat be.
+
+![Egyszerű Azure EA-hierarchiák ábrája](./media/understand-ea-roles/ea-hierarchies.png)
+
+## <a name="enterprise-user-roles"></a>Vállalati felhasználók szerepkörei
+
+Az alábbi rendszergazdai felhasználói szerepkörök a vállalati regisztráció részei:
+
+- Vállalati rendszergazda
+- Részlegszintű rendszergazda
+- Fióktulajdonos
+- Szolgáltatás-rendszergazda
+- Értesítendő fél
+
+A szerepkörök két különböző portálon végzett feladatok végrehajtásához használhatók. Az [Azure Enterprise portált](https://ea.azure.com) használhatja a számlázás és a költségek kezeléséhez, az [Azure Portalt](https://portal.azure.com) pedig az Azure-szolgáltatások kezeléséhez.
+
+A felhasználói szerepkörök felhasználói fiókhoz vannak rendelve. A felhasználók hitelességének ellenőrzéséhez minden felhasználónak érvényes munkahelyi, iskolai vagy Microsoft-fiókkal kell rendelkeznie. Győződjön meg arról, hogy mindegyik fiókhoz olyan e-mail-cím tartozik, amely rendszeresen ellenőrizve van. A fiókértesítéseket az e-mail-címekre küldi a rendszer.
+
+A felhasználók beállításakor több fiókot is hozzárendelhet a vállalati rendszergazdai szerepkörhöz. Azonban csak egy fióktulajdonos engedélyezett. Emellett egyszerre egyetlen fiók rendelkezhet a vállalati rendszergazdai és a fióktulajdonosi szerepkörrel.
+
+### <a name="enterprise-administrator"></a>Vállalati rendszergazda
+
+Az ilyen szerepkörrel felruházott felhasználók rendelkeznek a legmagasabb szintű hozzáféréssel. Ezek a következők:
+
+- A fiókok és fióktulajdonosok kezelése.
+- Más vállalati rendszergazdák kezelése.
+- Részlegszintű rendszergazdák kezelése.
+- Értesítendő felek kezelése.
+- A fiókok használati adatainak megtekintése.
+- A fiókok nem számlázott díjainak megtekintése.
+
+Több vállalati rendszergazda is lehet egy vállalati regisztrációban. A vállalati rendszergazdákhoz rendelhet csak olvasási hozzáférést is. Mindegyikük örökli a részlegszintű rendszergazdai szerepkört.
+
+### <a name="department-administrator"></a>Részlegszintű rendszergazda
+
+A szerepkörrel rendelkező felhasználók képesek:
+
+- Részlegek létrehozására és kezelésére.
+- Új fióktulajdonosok létrehozására.
+- Az általuk kezelt részlegek használati adatainak megtekintésére.
+- A szükséges engedélyek birtokában a költségek megtekintésére.
+
+Több részlegszintű rendszergazdája is lehet az egyes vállalati regisztrációkban.
+
+A részlegszintű rendszergazdákhoz rendelhet csak olvasási hozzáférést is, amikor részlegszintű rendszergazdát módosít vagy hoz létre. Állítsa a csak olvasási hozzáférési beállítást **Igen** értékre.
+
+### <a name="account-owner"></a>Fióktulajdonos
+
+A szerepkörrel rendelkező felhasználók képesek:
+
+- Előfizetések létrehozására és kezelésére.
+- Szolgáltatásadminisztrátorok kezelésére.
+- Előfizetések használati adatainak megtekintésére.
+
+Mindegyik fiókhoz szükség van egyedi munkahelyi, iskolai vagy Microsoft-fiókra. Az Azure Enterprise portál rendszergazdai szerepköreivel kapcsolatos további információkért lásd [az Azure Nagyvállalati Szerződés Azure-beli felügyeleti szerepköreinek ismertetését](understand-ea-roles.md).
+
+### <a name="service-administrator"></a>Szolgáltatás-rendszergazda
+
+A szolgáltatásadminisztrátor jogosult a szolgáltatások kezelésre az Azure Portalon, és a társadminisztrátori szerepkör felhasználókhoz való hozzárendelésére.
+
+### <a name="notification-contact"></a>Értesítendő fél
+
+Az értesítendő fél a regisztrációval kapcsolatos használati értesítéseket kap.
 
 A következő szakaszok az egyes szerepkörök korlátait és képességeit mutatják be.
 
@@ -69,7 +150,7 @@ A következő szakaszok az egyes szerepkörök korlátait és képességeit muta
 
 ## <a name="add-a-new-enterprise-administrator"></a>Új vállalati rendszergazda hozzáadása
 
-Az Azure EA-regisztrációk kezelésénél a vállalati rendszergazdák rendelkeznek a legtöbb jogosultsággal. Az első Azure EA-rendszergazdát a nagyvállalati szerződés megkötésekor hozták létre. Viszont bármikor hozzá lehet adni új rendszergazdákat, vagy el is lehet távolítani őket. Az új rendszergazdákat csak a meglévő rendszergazdák adhatják hozzá. A vállalati rendszergazdák hozzáadásával kapcsolatos további információkért lásd az [új vállalati rendszergazda létrehozását](ea-portal-get-started.md#create-another-enterprise-administrator) ismertető részt. A számlázási profil szerepköreivel és feladataival kapcsolatos további információkért lásd [a számlázási profil szerepköreinek és azok feladatainak ismertetését](understand-mca-roles.md#billing-profile-roles-and-tasks).
+Az Azure EA-regisztrációk kezelésénél a vállalati rendszergazdák rendelkeznek a legtöbb jogosultsággal. Az első Azure EA-rendszergazdát a nagyvállalati szerződés megkötésekor hozták létre. Viszont bármikor hozzá lehet adni új rendszergazdákat, vagy el is lehet távolítani őket. Az új rendszergazdákat csak a meglévő rendszergazdák adhatják hozzá. A vállalati rendszergazdák hozzáadásával kapcsolatos további információkért lásd az [új vállalati rendszergazda létrehozását](ea-portal-administration.md#create-another-enterprise-administrator) ismertető részt. A számlázási profil szerepköreivel és feladataival kapcsolatos további információkért lásd [a számlázási profil szerepköreinek és azok feladatainak ismertetését](understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ## <a name="update-account-owner-state-from-pending-to-active"></a>A fióktulajdonosi állapot frissítése Függőben értékről Aktív értékre
 
@@ -79,7 +160,7 @@ Amikor először hozzáadják az új fióktulajdonosokat (AO) egy Azure EA-regis
 
 Ha az egyik Azure EA-rendszergazda létrehozott egy részleget, az Azure vállalati rendszergazda részlegszintű rendszergazdákat adhat hozzá, és hozzárendelheti őket egy-egy részleghez. A részlegszintű rendszergazdák új fiókokat hozhatnak létre. Az Azure EA-előfizetések létrehozásához új fiókokra van szükség.
 
-A részlegszintű rendszergazdák hozzáadásával kapcsolatos további információkért tekintse meg az [Azure EA-részlegszintű rendszergazdák létrehozását](ea-portal-get-started.md#add-a-department-administrator) ismertető témakört.
+A részlegszintű rendszergazdák hozzáadásával kapcsolatos további információkért tekintse meg az [Azure EA-részlegszintű rendszergazdák létrehozását](ea-portal-administration.md#add-a-department-administrator) ismertető témakört.
 
 ## <a name="usage-and-costs-access-by-role"></a>Szerepkörök szerint hozzáférés a használati adatokhoz és a költségekhez
 
@@ -114,12 +195,12 @@ A következő táblázat bemutatja a Nagyvállalati Szerződés rendszergazdai s
 |Fióktulajdonos VAGY részlegszintű rendszergazda|✘ Letiltva |Nincs|Nincs díjszabás|
 |None|Nem alkalmazható |Tulajdonos|Kiskereskedelmi díjszabás|
 
-A vállalati rendszergazdai szerepkört és a díjtétel-megtekintési szabályzatokat az Enterprise Portalon lehet beállítani. Az Azure-szerepkört az Azure Portalon lehet frissíteni. További információ: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+A vállalati rendszergazdai szerepkört és a díjtétel-megtekintési szabályzatokat az Enterprise Portalon lehet beállítani. Az Azure-szerepkört az Azure Portalon lehet frissíteni. További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../../role-based-access-control/role-assignments-portal.md) ismertető cikket.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure-beli számlázási információkhoz való hozzáférés kezelése](manage-billing-access.md)
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
+- [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
 - [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md)

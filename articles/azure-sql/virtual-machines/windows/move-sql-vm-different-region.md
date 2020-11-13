@@ -14,12 +14,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 131deabfbd29e4d55a3f34252e3ba68261872ca0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ae89091eb57eade39f8b7581fc5df7ad449e8590
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785493"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553556"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>SQL Server VM áthelyezése az Azure-ban lévő másik régióba Azure Site Recovery
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +64,7 @@ Készítse elő mind a forrás SQL Server VM, mind a cél régiót az áthelyez�
     - Azure Site Recovery automatikusan felfedi és létrehoz egy virtuális hálózatot, amikor engedélyezi a forrás virtuális gép replikálását. Emellett előre létrehozhat egy hálózatot, és hozzárendelheti a virtuális géphez a replikáció engedélyezéséhez a felhasználói folyamaton belül. A célként megadott régióban manuálisan kell létrehoznia a többi erőforrást.
 - A forrás virtuális gép konfigurációja alapján a leggyakrabban használt hálózati erőforrások létrehozásához tekintse meg a következő dokumentációt: 
     - [Hálózati biztonsági csoportok](../../../virtual-network/tutorial-filter-network-traffic.md) 
-    - [Terheléselosztóval](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
+    - [Terheléselosztó](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
     - [Nyilvános IP-cím](../../../virtual-network/virtual-network-public-ip-address.md)
     - További hálózatkezelési összetevőkért tekintse meg a [hálózatkezelési dokumentációt](../../../virtual-network/virtual-networks-overview.md).
 - Ha tesztelni szeretné a konfigurációt, manuálisan hozza létre a nem éles hálózatot a célként megadott régióban. Ezt a lépést javasoljuk, mert minimális beavatkozást biztosít az üzemi hálózattal. 
@@ -73,7 +73,7 @@ Készítse elő mind a forrás SQL Server VM, mind a cél régiót az áthelyez�
 
 A következő lépések bemutatják, hogyan másolhatók az adatAzure Site Recoveryek a célként megadott régióba. Hozza létre a Recovery Services-tárolót a forrás régiótól eltérő bármely régióban. 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 1. Válassza a navigációs ablaktábla bal felső sarkában található **erőforrás létrehozása** lehetőséget. 
 1. Válassza ki **& felügyeleti eszközöket** , majd válassza **a biztonsági mentés és site Recovery** lehetőséget. 
 1. Az **alapvető beállítások** lap **projekt részletei** területén hozzon létre egy új erőforráscsoportot a céltartományban, vagy válasszon ki egy meglévő erőforráscsoportot a célként megadott régióban. 
@@ -114,7 +114,7 @@ A következő lépések bemutatják, hogyan használhatja a Azure Site Recovery 
    ![Feladatátvételi teszt előrehaladásának figyelése](./media/move-sql-vm-different-region/monitor-failover-test-job.png)
 
 1. A teszt befejezése után navigáljon a **virtuális gépekhez** a portálon, és tekintse át az újonnan létrehozott virtuális gépet. Győződjön meg arról, hogy a SQL Server VM fut, a mérete megfelelő, és csatlakoztatva van a megfelelő hálózathoz. 
-1. Törölje a teszt részeként létrehozott virtuális gépet, mert **a feladatátvételi beállítás** szürkén jelenik meg, amíg a feladatátvételi teszt erőforrásai nem törlődnek. Váltson vissza a tárolóhoz, válassza a **replikált elemek** lehetőséget, válassza ki a SQL Server VM, majd válassza a **feladatátvételi teszt törlése** lehetőséget. Jegyezze fel és mentse a teszttel kapcsolatos megfigyeléseket a **Megjegyzések** szakaszban, és jelölje be a tesztelés elem melletti jelölőnégyzetet **. Törölje a feladatátvételi teszt virtuális gépeket** . Az **OK** gombra kattintva törölheti az erőforrásokat a teszt után. 
+1. Törölje a teszt részeként létrehozott virtuális gépet, mert **a feladatátvételi beállítás** szürkén jelenik meg, amíg a feladatátvételi teszt erőforrásai nem törlődnek. Váltson vissza a tárolóhoz, válassza a **replikált elemek** lehetőséget, válassza ki a SQL Server VM, majd válassza a **feladatátvételi teszt törlése** lehetőséget. Jegyezze fel és mentse a teszttel kapcsolatos megfigyeléseket a **Megjegyzések** szakaszban, és jelölje be a tesztelés elem melletti jelölőnégyzetet **. Törölje a feladatátvételi teszt virtuális gépeket**. Az **OK** gombra kattintva törölheti az erőforrásokat a teszt után. 
 
    ![elemek tisztítása a feladatátvételi teszt után](./media/move-sql-vm-different-region/cleanup-test-items.png)
 
@@ -131,7 +131,7 @@ A következő lépések bemutatják, hogyan helyezheti át a SQL Server VM a for
 1. Az előző szakaszban a feladatátvételi teszt figyelése során megtekintett **site Recovery feladatok** oldaláról is figyelheti a feladatátvételi folyamatot. 
 1. Miután a feladatok befejeződik, győződjön meg arról, hogy a SQL Server VM a várt módon jelenik meg a célként megadott régióban. 
 1. Lépjen vissza a tárolóhoz, válassza a **replikált elemek** lehetőséget, válassza ki a SQL Server VM, majd a **véglegesítés** gombra kattintva fejezze be az áthelyezési folyamatot a célként megadott régióba. Várjon, amíg a véglegesítési feladatok befejeződik. 
-1. Regisztrálja SQL Server VM az SQL VM erőforrás-szolgáltatóval, hogy engedélyezze az SQL-alapú **virtuális gépek** kezelhetőségét az erőforrás-szolgáltatóhoz társított Azure Portalokban és szolgáltatásokban. További információ: [SQL Server VM regisztrálása az SQL VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md). 
+1. Regisztrálja a SQL Server VMt az SQL IaaS-ügynök bővítménnyel, hogy engedélyezze az SQL-alapú **virtuális gépek** kezelhetőségét a bővítményhez társított Azure Portalokban és szolgáltatásokban. További információ: [SQL Server VM regisztrálása az SQL IaaS-ügynök bővítménnyel](sql-agent-extension-manually-register-single-vm.md). 
 
   > [!WARNING]
   > SQL Server az adatkonzisztencia csak az alkalmazás-konzisztens Pillanatképek esetében garantált. A **legutóbbi feldolgozott** pillanatkép nem használható SQL Server feladatátvételhez, mert az összeomlás-helyreállítási pillanatkép nem tudja garantálni SQL Server adatkonzisztencia. 

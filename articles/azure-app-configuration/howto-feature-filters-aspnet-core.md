@@ -1,30 +1,31 @@
 ---
-title: Szolgáltatás-szűrők használata a szolgáltatások egy részhalmaza számára történő engedélyezéséhez
+title: Funkciós szűrők használata a feltételes funkciók jelzőjének engedélyezéséhez
 titleSuffix: Azure App Configuration
-description: Ismerje meg, hogyan használhatók a funkciók a felhasználók egy részhalmaza számára a funkciók használatával
+description: Ismerje meg, hogyan használhatók a funkciók szűrői a feltételes funkciók jelzőjének engedélyezéséhez
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 author: lisaguthrie
 ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 5b2eb942581f6e4163012b0f767d04c02689bb7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af8df66e02dc9316311f36dec60374a7c4e649b8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206772"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554747"
 ---
-# <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>Szolgáltatás-szűrők használata a szolgáltatások egy részhalmaza számára történő engedélyezéséhez
+# <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Funkciós szűrők használata a feltételes funkciók jelzőjének engedélyezéséhez
 
 A funkciók jelzői lehetővé teszik az alkalmazás funkcióinak aktiválását vagy inaktiválását. Egy egyszerű funkció jelzője be vagy ki van kapcsolva. Az alkalmazás mindig ugyanúgy viselkedik. Létrehozhat például egy új funkciót a szolgáltatás jelölője mögött. Ha a funkció jelzője engedélyezve van, az összes felhasználó látja az új funkciót. A funkció jelző letiltása elrejti az új funkciót.
 
 Ezzel szemben a _feltételes funkciók jelzője_ lehetővé teszi, hogy a szolgáltatás jelölője dinamikusan legyen engedélyezve vagy letiltva. Az alkalmazás a szolgáltatás jelző feltételeitől függően eltérően működhet. Tegyük fel, hogy először a felhasználók kis részhalmazára szeretné megjeleníteni az új funkciót. A feltételes funkciók jelzője lehetővé teszi, hogy egyes felhasználók számára engedélyezze a szolgáltatás jelölőjét, miközben mások számára letiltja azt. A _szolgáltatási szűrők_ határozzák meg a szolgáltatás jelölője állapotát minden egyes kiértékeléskor.
 
-A `Microsoft.FeatureManagement` függvénytár két szolgáltatási szűrőt tartalmaz:
+A `Microsoft.FeatureManagement` könyvtár három szolgáltatáskészlet-szűrőt tartalmaz:
 
 - `PercentageFilter` engedélyezi a szolgáltatás jelölőjét a százalék alapján.
 - `TimeWindowFilter` engedélyezi a szolgáltatás jelölőjét egy adott időszakban.
+- `TargetingFilter` engedélyezi a szolgáltatás jelölőjét a megadott felhasználók és csoportok számára.
 
 Létrehozhat egy saját szolgáltatáskészlet-szűrőt is, amely megvalósítja a [Microsoft. FeatureManagement. IFeatureFilter felületet](/dotnet/api/microsoft.featuremanagement.ifeaturefilter).
 
@@ -48,21 +49,21 @@ Ezeket a beállításokat konfigurálhatja az Azure-alkalmazások konfiguráció
 
 1. Kövesse a gyors üzembe helyezési útmutató [: szolgáltatás-jelzők hozzáadása egy ASP.net Core alkalmazáshoz](./quickstart-feature-flag-aspnet-core.md) webalkalmazás létrehozásához a szolgáltatás jelölőjét.
 
-1. A Azure Portal nyissa meg a konfigurációs tárolót, és kattintson a **Feature Manager**elemre.
+1. A Azure Portal nyissa meg a konfigurációs tárolót, és kattintson a **Feature Manager** elemre.
 
 1. Kattintson a rövid útmutatóban létrehozott *béta* -szolgáltatás jelölő helyi menüjére. Kattintson a **Szerkesztés** gombra.
 
     > [!div class="mx-imgBorder"]
     > ![Bétaverzió funkciójának szerkesztése](./media/edit-beta-feature-flag.png)
 
-1. A **Szerkesztés** képernyőn válassza a on Radio ( **bekapcsolva** ) gombot, ha még nincs kiválasztva. Ezután kattintson a **szűrő hozzáadása** gombra. (Az **on** Radio gomb címkéje olvasási **feltételesre**változik.)
+1. A **Szerkesztés** képernyőn válassza a on Radio ( **bekapcsolva** ) gombot, ha még nincs kiválasztva. Ezután kattintson a **szűrő hozzáadása** gombra. (Az **on** Radio gomb címkéje olvasási **feltételesre** változik.)
 
-1. A **kulcs** mezőben adja meg a *Microsoft. százalék*értéket.
+1. A **kulcs** mezőben adja meg a *Microsoft. százalék* értéket.
 
     > [!div class="mx-imgBorder"]
     > ![Szolgáltatás-szűrő hozzáadása](./media/feature-flag-add-filter.png)
 
-1. Kattintson a funkció szűrő kulcs melletti helyi menüre. Kattintson a **Paraméterek szerkesztése**elemre.
+1. Kattintson a funkció szűrő kulcs melletti helyi menüre. Kattintson a **Paraméterek szerkesztése** elemre.
 
     > [!div class="mx-imgBorder"]
     > ![Szolgáltatás-szűrő paramétereinek szerkesztése](./media/feature-flag-edit-filter-parameters.png)
@@ -74,7 +75,7 @@ Ezeket a beállításokat konfigurálhatja az Azure-alkalmazások konfiguráció
 
 1. Kattintson az **alkalmaz** gombra a **funkció-jelölő szerkesztése** képernyőre való visszatéréshez. Ezután kattintson ismét az **alkalmaz** gombra a szolgáltatás jelölő beállításainak mentéséhez.
 
-1. A szolgáltatás jelző **állapota** most *feltételesként*jelenik meg. Ez az állapot azt jelzi, hogy a szolgáltatás jelölője a szolgáltatás szűrője által kényszerített feltételek alapján lesz engedélyezve vagy letiltva a kérelmek alapján.
+1. A szolgáltatás jelző **állapota** most *feltételesként* jelenik meg. Ez az állapot azt jelzi, hogy a szolgáltatás jelölője a szolgáltatás szűrője által kényszerített feltételek alapján lesz engedélyezve vagy letiltva a kérelmek alapján.
 
     > [!div class="mx-imgBorder"]
     > ![Feltételes szolgáltatás jelzője](./media/feature-flag-filter-enabled.png)
@@ -84,9 +85,9 @@ Ezeket a beállításokat konfigurálhatja az Azure-alkalmazások konfiguráció
 A szolgáltatás jelző hatásainak megtekintéséhez indítsa el az alkalmazást, és a böngészőben többször kattintson a **frissítés** gombra. Láthatja, hogy a *bétaverzió* az idő 50%-ában megjelenik az eszköztáron. A rendszer elrejti a hátralévő időt, mert a a `PercentageFilter` kérések egy részhalmaza inaktiválja a *Beta* funkciót. A következő videó mutatja ezt a viselkedést működés közben.
 
 > [!div class="mx-imgBorder"]
-> ![PercentageFilter működés közben](./media/feature-flags-percentagefilter.gif)
+> ![TargetingFilter működés közben](./media/feature-flags-percentagefilter.gif)
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [A szolgáltatások kezelése – áttekintés](./concept-feature-management.md)
+> [A funkciók lépcsőzetes bevezetésének engedélyezése a megcélzott célközönségek számára](./howto-targetingfilter-aspnet-core.md)

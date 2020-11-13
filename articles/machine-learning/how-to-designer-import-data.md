@@ -1,7 +1,7 @@
 ---
 title: Adatimportálás a tervezőbe
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan importálhat különböző adatforrásokból származó adatok Azure Machine Learning designerbe.
+description: Megtudhatja, hogyan importálhat adatokat Azure Machine Learning designerbe Azure Machine Learning-adatkészletek és az Adatimportálási modul használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce0bb2a30ec4092d0053adf2de711547595c900
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985612"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554716"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Az adatimportálás Azure Machine Learning designerbe
 
@@ -42,7 +42,7 @@ Bármely tervező modul kimenetét adatkészletként is regisztrálhatja.
 
     ![Az adatkészlet regisztrálása lehetőségre való váltást bemutató képernyőkép](media/how-to-designer-import-data/register-dataset-designer.png)
 
-Ha a modul kimeneti adatokat táblázatos formátumban adja meg, akkor a kimenetet **fájl-adatkészlet** vagy **táblázatos adatkészletként**kell regisztrálnia.
+Ha a modul kimeneti adatokat táblázatos formátumban adja meg, akkor a kimenetet **fájl-adatkészlet** vagy **táblázatos adatkészletként** kell regisztrálnia.
 
  - A **fájl adatkészlete** fájl adatkészletként regisztrálja a modul kimeneti mappáját. A kimeneti mappa tartalmaz egy adatfájlt és egy olyan metataget, amelyet a Designer belsőleg használ. Válassza ezt a lehetőséget, ha továbbra is használni szeretné a regisztrált adatkészletet a tervezőben. 
 
@@ -52,7 +52,7 @@ Ha a modul kimeneti adatokat táblázatos formátumban adja meg, akkor a kimenet
 
 ### <a name="use-a-dataset"></a>Adatkészlet használata
 
-A regisztrált adatkészletek a modul palettáján, az **adatkészletek**területen találhatók. Adatkészlet használatához húzza azt a folyamat vászonra. Ezután kapcsolja össze az adatkészlet kimeneti portját a vászon más moduljaival. 
+A regisztrált adatkészletek a modul palettáján, az **adatkészletek** területen találhatók. Adatkészlet használatához húzza azt a folyamat vászonra. Ezután kapcsolja össze az adatkészlet kimeneti portját a vászon más moduljaival. 
 
 ![A mentett adatkészletek helyét bemutató képernyőkép a tervező palettán](media/how-to-designer-import-data/use-datasets-designer.png)
 

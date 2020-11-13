@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 2165efd6b522d3809dba285cf2c3050fc50b2d28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: c6893dc9a5ca59736597edf6cfb2a4664c9daea3
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84660961"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553709"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Databaseba a Adatok másolása eszközzel
 
@@ -40,9 +40,9 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* **Azure Storage-fiók**: a blob Storage-t használja _forrásként_ szolgáló adattárként. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakör utasításait.
-* **Azure SQL Database**: használjon egy SQL Database a fogadó _adattárként_ . Ha nem rendelkezik SQL Databaseval, tekintse meg a [SQL Database létrehozása](../azure-sql/database/single-database-create-quickstart.md)című témakör utasításait.
+* **Azure-előfizetés** : Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* **Azure Storage-fiók** : a blob Storage-t használja _forrásként_ szolgáló adattárként. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakör utasításait.
+* **Azure SQL Database** : használjon egy SQL Database a fogadó _adattárként_ . Ha nem rendelkezik SQL Databaseval, tekintse meg a [SQL Database létrehozása](../azure-sql/database/single-database-create-quickstart.md)című témakör utasításait.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Blob és SQL-tábla létrehozása
 
@@ -80,7 +80,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**:
+1. A bal oldali menüben válassza az **erőforrás** -  >  **integráció** létrehozása  >  **Data Factory** :
 
     ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket.
@@ -90,12 +90,12 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
     ![Új adat-előállító hibaüzenete](./media/doc-common-process/name-not-available-error.png)
 
     Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. Például: _**sajátneve**_**ADFTutorialDataFactory**. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
-1. Válassza ki az Azure-**előfizetést** az új adat-előállító létrehozásához.
+1. Válassza ki az Azure- **előfizetést** az új adat-előállító létrehozásához.
 1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
 
-    a. Válassza a **meglévő használata**lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
+    a. Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
 
-    b. Válassza az **új létrehozása**lehetőséget, és adja meg az erőforráscsoport nevét.
+    b. Válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét.
     
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket.
 
@@ -120,9 +120,9 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
     a. Kapcsolat hozzáadásához kattintson a **+ Új kapcsolat létrehozása** lehetőségre
 
-    b. Válassza ki az **Azure Blob Storage** elemet a katalógusból, majd válassza a **Folytatás**lehetőséget.
+    b. Válassza ki az **Azure Blob Storage** elemet a katalógusból, majd válassza a **Folytatás** lehetőséget.
 
-    c. Az **új társított szolgáltatás** lapon válassza ki az Azure-előfizetését, és válassza ki a Storage-fiók **nevét a Storage-fiók neve** listából. Tesztelje a kapcsolatokat, majd válassza a **Létrehozás**lehetőséget.
+    c. Az **új társított szolgáltatás** lapon válassza ki az Azure-előfizetését, és válassza ki a Storage-fiók **nevét a Storage-fiók neve** listából. Tesztelje a kapcsolatokat, majd válassza a **Létrehozás** lehetőséget.
 
     d. Forrásnak válassza ki az újonnan létrehozott társított szolgáltatást, majd kattintson a **Tovább** gombra.
 
@@ -134,16 +134,16 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
     b. A következő lépéshez kattintson a **Tovább** gombra.
 
-1. A **File Format Settings (fájlformátum beállításai** ) lapon engedélyezze az *első sor fejlécként*való bejelölését. Figyelje meg, hogy az eszköz automatikusan észleli az oszlopok és a sorok határolóit. Kattintson a **Tovább** gombra. Ezen a lapon megtekintheti az adatokat is, és megtekintheti a bemeneti adatok sémáját.
+1. A **File Format Settings (fájlformátum beállításai** ) lapon engedélyezze az *első sor fejlécként* való bejelölését. Figyelje meg, hogy az eszköz automatikusan észleli az oszlopok és a sorok határolóit. Válassza a **Tovább** gombot. Ezen a lapon megtekintheti az adatokat is, és megtekintheti a bemeneti adatok sémáját.
 
     ![A Fájlformátum beállításai](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. A **Céladattár** oldalon hajtsa végre a következő lépéseket:
 
     a. Kapcsolat hozzáadásához kattintson a **+ Új kapcsolat létrehozása** lehetőségre
 
-    b. Válassza ki **Azure SQL Database** a katalógusból, majd válassza a **Folytatás**lehetőséget.
+    b. Válassza ki **Azure SQL Database** a katalógusból, majd válassza a **Folytatás** lehetőséget.
 
-    c. Az **új társított szolgáltatás** lapon válassza ki a kiszolgáló nevét és az adatbázis nevét a legördülő listából, majd adja meg a felhasználónevet és a jelszót, majd kattintson a **Létrehozás**gombra.
+    c. Az **új társított szolgáltatás** lapon válassza ki a kiszolgáló nevét és az adatbázis nevét a legördülő listából, majd adja meg a felhasználónevet és a jelszót, majd kattintson a **Létrehozás** gombra.
 
     ![Azure SQL-adatbázis konfigurálása](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
@@ -151,7 +151,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
 1. A **Tábla hozzárendelése** oldalon válassza ki a **[dbo].[emp]** táblát, majd kattintson a **Tovább** gombra.
 
-1. Figyelje meg, hogy az **oszlop-hozzárendelés** oldalon a bemeneti fájl második és harmadik oszlopa az **EMP** tábla **FirstName** és **LastName** oszlopára van leképezve. Állítsa be úgy a leképezést, hogy ne legyen hiba, majd válassza a **tovább**lehetőséget.
+1. Figyelje meg, hogy az **oszlop-hozzárendelés** oldalon a bemeneti fájl második és harmadik oszlopa az **EMP** tábla **FirstName** és **LastName** oszlopára van leképezve. Állítsa be úgy a leképezést, hogy ne legyen hiba, majd válassza a **tovább** lehetőséget.
 
     ![Oszlop-hozzárendelési lap](./media/tutorial-copy-data-tool/column-mapping.png)
 
@@ -176,7 +176,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
     ![Szerző lap kiválasztása](./media/tutorial-copy-data-tool/author-tab.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az ebben a példában szereplő folyamat átmásolja az adatait a blob Storage-ból egy SQL Databaseba. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

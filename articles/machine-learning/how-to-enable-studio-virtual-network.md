@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning Studio engedélyezése virtuális hálózaton
 titleSuffix: Azure Machine Learning
-description: A virtuális hálózaton belül tárolt adatmennyiség eléréséhez használja a Azure Machine Learning studiót.
+description: Megtudhatja, hogyan konfigurálhatja Azure Machine Learning studiót a virtuális hálózatban tárolt adatmennyiség eléréséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: aca7b7e8590c9c8eb3db987c5d1527d9f135bf3f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 7cdd70a44a090b03a3f11626805565469c7c04e7
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392996"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554665"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio használata Azure-beli virtuális hálózaton
 
@@ -142,7 +142,7 @@ Az alapértelmezett adattárat is felülbírálhatja egy modul alapján. Ez lehe
 1. Válassza a **kimeneti beállítások megadása** lehetőséget.
 1. Új adattárt kell megadnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat választható részét képezi. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

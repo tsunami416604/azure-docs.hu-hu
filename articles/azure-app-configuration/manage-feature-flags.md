@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: dd816ebcf2a40e6a0b7febcc3fe5c1006dac20bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e35c408d2e0ec2954ffdcbbce47f98ac49b16b8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88209950"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554699"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Oktatóanyag: funkció-jelzők kezelése az Azure-alkalmazás konfigurációjában
 
@@ -50,12 +50,13 @@ Az alkalmazás-konfiguráció Azure Portaljában található Feature Manager egy
 
     ![Szolgáltatás jelölője – létrehozás](./media/azure-app-configuration-feature-flag-create.png)
 
-1. Ha az állapot *be van kapcsolva*, válassza a **+ szűrő hozzáadása** lehetőséget az állapot minősítéséhez szükséges további feltételek megadásához. Adjon meg egy beépített vagy egyéni szűrő kulcsot, majd válassza a **+ paraméter hozzáadása** lehetőséget, ha egy vagy több paramétert szeretne hozzárendelni a szűrőhöz. A beépített szűrők a következők:
+1. Ha az állapot *be van kapcsolva* , válassza a **+ szűrő hozzáadása** lehetőséget az állapot minősítéséhez szükséges további feltételek megadásához. Adjon meg egy beépített vagy egyéni szűrő kulcsot, majd válassza a **+ paraméter hozzáadása** lehetőséget, ha egy vagy több paramétert szeretne hozzárendelni a szűrőhöz. A beépített szűrők a következők:
 
     | Kulcs | JSON-paraméterek |
     |---|---|
     | Microsoft. százalék | {"Érték": 0-100 százalék} |
     | Microsoft. TimeWindow | {"Start": UTC-idő, "End": UTC-idő} |
+    | Microsoft. Targeting | {"Hallgatóság": JSON-blob, amely a felhasználókat, a csoportokat és a bevezetési százalékokat határozza meg. Tekintse meg a `EnabledFor` [fenti beállítási fájl](https://github.com/microsoft/FeatureManagement-Dotnet/blob/master/examples/FeatureFlagDemo/appsettings.json) elem alatti példát.
 
     ![Szolgáltatás jelölője szűrő](./media/azure-app-configuration-feature-flag-filter.png)
 
@@ -63,9 +64,9 @@ Az alkalmazás-konfiguráció Azure Portaljában található Feature Manager egy
 
 A szolgáltatás jelölője állapotának módosítása:
 
-1. Válassza a **szolgáltatás-kezelő**elemet.
+1. Válassza a **szolgáltatás-kezelő** elemet.
 
-1. A módosítani kívánt szolgáltatási jelzőtől jobbra válassza a három pontot (**..**.), majd válassza a **Szerkesztés**lehetőséget.
+1. A módosítani kívánt szolgáltatási jelzőtől jobbra válassza a három pontot ( **..**.), majd válassza a **Szerkesztés** lehetőséget.
 
 1. Új állapot beállítása a szolgáltatás jelzője számára.
 
@@ -73,7 +74,7 @@ A szolgáltatás jelölője állapotának módosítása:
 
 A Feature Manager által létrehozott funkció-jelzők tárolása és lekérése normál értékként történik. Ezeket egy speciális névtér-előtagja tárolja `.appconfig.featureflag` . Az alapul szolgáló kulcs értékeit a Configuration Explorer használatával tekintheti meg. Az alkalmazás lekérheti ezeket az értékeket az alkalmazás-konfiguráció konfigurációs szolgáltatói, SDK-k, parancssori bővítmények és REST API-k használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan kezelheti a funkciók jelzőit és állapotát az alkalmazás konfigurációjának használatával. Az alkalmazás-konfiguráció és a ASP.NET Core szolgáltatás-felügyeleti támogatásáról az alábbi cikkben talál további információt:
 

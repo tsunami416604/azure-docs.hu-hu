@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 424d5a7ade04c2b72a0bc8ec379a6fad09216f39
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/09/2020
+ms.openlocfilehash: ca9ca495f2b3449b5aeb933bbd8d312fc9341fd9
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042678"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554117"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Betöltés az Azure Data Lake Storage Gen2ba Azure Data Factory
 
@@ -42,7 +42,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory** :
+1. A bal oldali menüben válassza az **erőforrás** -  >  **integráció** létrehozása  >  **Data Factory** :
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -54,7 +54,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
     * **Verzió** : Válassza a **V2** lehetőséget.
     * **Hely** : válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. 
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 
 4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható: 
    
@@ -66,7 +66,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 1. Az Adatok másolása eszköz elindításához az **Első lépések** oldalon kattintson az **Adatok másolása** csempére.
 
-2. A **Tulajdonságok** lapon adja meg a **CopyFromAmazonS3ToADLS** mezőt a **feladat neve** mezőben, majd kattintson a **Tovább gombra** .
+2. A **Tulajdonságok** lapon adja meg a **CopyFromAmazonS3ToADLS** mezőt a **feladat neve** mezőben, majd kattintson a **Tovább gombra**.
 
     ![Tulajdonságok lap](./media/load-azure-data-lake-storage-gen2/copy-data-tool-properties-page.png)
 3. A **Forrásadattár** oldalon kattintson az **Új kapcsolat létrehozása** lehetőségre. Válassza ki az **Amazon S3** elemet az összekötő-katalógusból, és válassza a **Folytatás** lehetőséget.
@@ -80,13 +80,13 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
    3. Kattintson a **Kapcsolódás tesztelése** elemre a beállítások ellenőrzéséhez, majd válassza a **Létrehozás** lehetőséget.
 
       ![Amazon S3-fiók meghatározása](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-   4. Ekkor megjelenik egy új AmazonS3-kapcsolatok létrehozása. Kattintson a **Tovább** gombra. 
+   4. Ekkor megjelenik egy új AmazonS3-kapcsolatok létrehozása. Válassza a **Tovább** gombot. 
 
 5. **A bemeneti fájl vagy mappa kiválasztása** lapon tallózzon az átmásolni kívánt mappához és fájlhoz. Válassza ki a mappát vagy a fájlt, majd válassza **a kiválasztás lehetőséget.**
 
     ![Bemeneti fájl vagy mappa kiválasztása](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
 
-6. A **rekurzív** és a **bináris másolási** beállítások ellenőrzésével határozza meg a másolási viselkedést. Kattintson a **Tovább** gombra.
+6. A **rekurzív** és a **bináris másolási** beállítások ellenőrzésével határozza meg a másolási viselkedést. Válassza a **Tovább** gombot.
 
     ![A képernyőfelvételen a bemeneti fájl vagy mappa kiválasztása látható, ahol kiválaszthatja a bináris másolás és rekurzív módon lehetőséget.](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
@@ -109,7 +109,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
     ![Beállítások lap](./media/load-azure-data-lake-storage-gen2/copy-settings.png)
 
-11. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Tovább gombra** .
+11. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Tovább gombra**.
 
     ![Összefoglaló lap](./media/load-azure-data-lake-storage-gen2/copy-summary.png)
 

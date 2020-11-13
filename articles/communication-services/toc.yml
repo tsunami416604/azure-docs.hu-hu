@@ -76,6 +76,8 @@
       href: concepts/pricing.md
     - name: Adatvédelem
       href: concepts/privacy.md
+    - name: Identitásmodell
+      href: concepts/identity-model.md
     - name: Hitelesítés
       href: concepts/authentication.md
     - name: Eseménykezelés

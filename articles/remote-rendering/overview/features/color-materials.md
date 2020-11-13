@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: ce3174516d8046df53b5290bcfeea03756937129
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 26ac1714330bba06c01d33b47105f04c600c7729
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201528"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555107"
 ---
 # <a name="color-materials"></a>Színes anyagok
 
@@ -22,7 +22,7 @@ A színanyagok hatékonyabbak, mint a [pbr-anyagok](pbr-materials.md) , az egysz
 
 Ezek a tulajdonságok az összes anyagnál közösek:
 
-* **albedoColor:** Ez a szín más színekkel, például a *albedoMap* vagy a * :::no-loc text="vertex"::: színekkel*együtt van megszorozva. Ha az *átlátszóság* engedélyezve van egy adott anyagon, az alfa-csatorna az opacitás beállítására szolgál, amely `1` teljes mértékben átlátszatlan és `0` teljes átláthatóságot jelent. Az alapértelmezett érték fehér.
+* **albedoColor:** Ez a szín más színekkel, például a *albedoMap* vagy a *:::no-loc text="vertex"::: színekkel* együtt van megszorozva. Ha az *átlátszóság* engedélyezve van egy adott anyagon, az alfa-csatorna az opacitás beállítására szolgál, amely `1` teljes mértékben átlátszatlan és `0` teljes átláthatóságot jelent. Az alapértelmezett érték fehér.
 
   > [!NOTE]
   > Mivel a színanyagok nem tükrözik a környezetet, a teljes átlátszó színanyag láthatatlanná válik. Ez a pbr- [anyagok](pbr-materials.md)esetében különbözik.
@@ -38,6 +38,12 @@ Ezek a tulajdonságok az összes anyagnál közösek:
 * **isDoubleSided:** Ha a kétoldalas megjelenítés értéke TRUE (igaz), akkor az ezzel az anyaggal rendelkező háromszögek akkor is jelennek meg, ha a kamera a háttérben néz. Alapértelmezés szerint ez a beállítás le van tiltva. Lásd még: [ :::no-loc text="Single-sided"::: renderelés](single-sided-rendering.md).
 
 * **TransparencyWritesDepth:** Ha az TransparencyWritesDepth jelző be van állítva az anyagra, és az anyag átlátszó, akkor az ezt az anyagot használó objektumok is hozzájárulnak a végső mélységi pufferhez. A következő szakaszban tekintse meg a Color Material tulajdonság *transparencyMode* . A funkció engedélyezése akkor ajánlott, ha a használati esetnek a teljes transzparens jelenetek [kivetítésének valószínűbb késői fázisára](late-stage-reprojection.md) van szüksége. Vegyes átlátszatlan/transzparens jelenetek esetén ez a beállítás nem valószínűsíthető újravetítési viselkedést vagy újravetítési összetevőket vezethet be. Ezért az általános használati eset alapértelmezett és ajánlott beállítása a jelző letiltása. A rendszer a kamerához legközelebb eső objektum képpont mélységi rétegében található írásos mélységi értékeket veszi figyelembe.
+
+* **FresnelEffect:** Az anyag jelzője lehetővé teszi, hogy az adalékanyag [Fresnel hatással](../../overview/features/fresnel-effect.md) legyen a megfelelő anyagra. A hatás megjelenését a következő Fresnel paraméterek szabályozzák. 
+
+* **FresnelEffectColor:** Az anyaghoz használt Fresnel-szín. Csak akkor fontos, ha az Fresnel-effektus bit be van állítva ezen az anyagon (lásd fent). Ez a tulajdonság a Fresnel ragyogás alapszínét szabályozza (lásd a [Fresnel-effektust](../../overview/features/fresnel-effect.md) a teljes magyarázathoz). Jelenleg csak az RGB-csatorna értékei fontosak, és az alfa-érték figyelmen kívül lesz hagyva.
+
+* **FresnelEffectExponent:** Az anyaghoz használt Fresnel kitevő. Csak akkor fontos, ha az Fresnel-effektus bit be van állítva ezen az anyagon (lásd fent). Ez a tulajdonság határozza meg a Fresnel ragyogásának eloszlását. A 0,01-as minimális érték a teljes objektumon belüli oldalpárt okoz. A 10,0-as maximális érték a ragyogást csak a leginkább kipróbálható élekre korlátozza.
 
 ## <a name="color-material-properties"></a>Színanyag tulajdonságai
 

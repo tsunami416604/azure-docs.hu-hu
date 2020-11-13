@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 866f1c404df2de87c2b3ce58b791ceb5257fca1b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 88481346f22176b8e307b53774b42d753838f90b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074447"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554823"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása ASP.NET Core-alkalmazáshoz
 
@@ -29,7 +29,7 @@ A .NET Core-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendsze
 
 [!INCLUDE[Azure App Configuration resource creation steps](../../includes/azure-app-configuration-create.md)]
 
-8. Válassza a **Operations**  >  **Feature Manager**  >  **Hozzáadás** elemet a *Beta*nevű szolgáltatás-jelölő hozzáadásához.
+8. Válassza a **Operations**  >  **Feature Manager**  >  **Hozzáadás** elemet a *Beta* nevű szolgáltatás-jelölő hozzáadásához.
 
     > [!div class="mx-imgBorder"]
     > ![A szolgáltatás jelölő engedélyezése Beta néven](media/add-beta-feature-flag.png)
@@ -70,7 +70,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Ezt a titkot a .NET Core konfigurációs API használatával érheti el. A kettőspont ( `:` ) a konfigurációs névvel együtt a konfigurációs API-val működik az összes támogatott platformon. További információ: [konfigurációs kulcsok és értékek](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
-1. A *program.cs*-ben frissítse a metódust az `CreateWebHostBuilder` alkalmazás konfigurációjának használatára a metódus meghívásával `AddAzureAppConfiguration` .
+1. A *program.cs* -ben frissítse a metódust az `CreateWebHostBuilder` alkalmazás konfigurációjának használatára a metódus meghívásával `AddAzureAppConfiguration` .
 
     > [!IMPORTANT]
     > `CreateHostBuilder``CreateWebHostBuilder`a .net Core 3. x helyére kerül. Válassza ki a megfelelő szintaxist a környezet alapján.
@@ -106,9 +106,9 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    Az előző módosítással az alkalmazás konfigurációjának [szolgáltatója](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) regisztrálva van a .net Core konfigurációs API-val.
+    Az előző módosítással az alkalmazás konfigurációjának [szolgáltatója](https://go.microsoft.com/fwlink/?linkid=2074664) regisztrálva van a .net Core konfigurációs API-val.
 
-1. A *Startup.cs*-ben adjon hozzá egy hivatkozást a .net Core Feature Managerhez:
+1. A *Startup.cs* -ben adjon hozzá egy hivatkozást a .net Core Feature Managerhez:
 
     ```csharp
     using Microsoft.FeatureManagement;
@@ -173,7 +173,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
     }
     ```
 
-1. A *views/_ViewImports. cshtmlban*regisztrálja a Feature Manager-címke segédjét egy `@addTagHelper` direktíva használatával:
+1. A *views/_ViewImports. cshtmlban* regisztrálja a Feature Manager-címke segédjét egy `@addTagHelper` direktíva használatával:
 
     ```cshtml
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
@@ -181,36 +181,9 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Az előző kód lehetővé teszi a `<feature>` címke Helper használatát a projekt *. cshtml* fájljaiban.
 
-1. A *views/Shared/_Layout. cshtml*elemnél cserélje le a `<nav>` vonalkódot a `<body>`  >  `<header>` következő jelöléssel:
+1. Nyissa meg a *_Layout. cshtml* mappát a *nézetek* \\ *megosztott* könyvtárában. Keresse meg a `<nav>` vonalkódot a alatt `<body>`  >  `<header>` . Szúrjon be egy új `<feature>` címkét a *Kezdőlap* és az *Adatvédelem* navigációs elemei közé, ahogyan az az alábbi kiemelt sorokban látható.
 
-    ```cshtml
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TestFeatureFlags</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <feature name="Beta">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Beta" asp-action="Index">Beta</a>
-                    </li>
-                    </feature>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    ```
-
-    Az előző korrektúrában figyelje meg a `<feature>` *bétaverziós* listaelemet körülvevő címke Segédet.
+    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
 
 1. Hozzon létre egy *views/Beta* könyvtárat és egy *index. cshtml* fájlt, amely a következő korrektúrát tartalmazza:
 
@@ -236,7 +209,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
     dotnet run
     ```
 
-1. Nyisson meg egy böngészőablakot, és nyissa meg a következőt `http://localhost:5000` :, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe. Ha dolgozik a Azure Cloud Shellban, válassza a **webes előnézet** gombot, majd a **configure (Konfigurálás**) lehetőséget. Ha a rendszer kéri, válassza a 5000-es portot.
+1. Nyisson meg egy böngészőablakot, és nyissa meg a következőt `http://localhost:5000` :, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe. Ha dolgozik a Azure Cloud Shellban, válassza a **webes előnézet** gombot, majd a **configure (Konfigurálás** ) lehetőséget. Ha a rendszer kéri, válassza a 5000-es portot.
 
     ![A webes előnézet gomb megkeresése](./media/quickstarts/cloud-shell-web-preview.png)
 
@@ -244,15 +217,17 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-before.png" alt-text="Helyi Gyorsindítás alkalmazás a módosítás előtt" border="true":::
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás** lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
 
-1. Válassza a **szolgáltatásvezérlő**lehetőséget, majd módosítsa a *bétaverzió* állapotát **a be**értékre.
+1. Válassza a **szolgáltatás-kezelő** elemet. 
+
+1. Engedélyezze a *béta* jelölőt a jelölőnégyzet bejelölésével **.**
 
 1. Térjen vissza a parancs-rendszerhéjhoz. A `dotnet` <kbd>CTRL + C</kbd>billentyűkombináció lenyomásával szakítsa meg a futó folyamatot. Indítsa újra az alkalmazást a használatával `dotnet run` .
 
 1. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
 
-    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="Helyi Gyorsindítás alkalmazás a módosítás előtt" border="true":::
+    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="Helyi Gyorsindítás alkalmazás a módosítás után" border="true":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -260,7 +235,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy ASP.NET Core webalkalmazás funkcióinak kezelésére a [szolgáltatás-felügyeleti kódtárak](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)segítségével.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy ASP.NET Core webalkalmazás funkcióinak kezelésére a [szolgáltatás-felügyeleti kódtárak](https://go.microsoft.com/fwlink/?linkid=2074664)segítségével.
 
 * További információ a [szolgáltatások kezeléséről](./concept-feature-management.md).
 * [Szolgáltatás-jelzők kezelése](./manage-feature-flags.md).
