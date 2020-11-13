@@ -1,17 +1,17 @@
 ---
 title: Kiszolgáló nélküli Function-alkalmazás létrehozása az Azure CLI-vel
-description: Function-alkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz az Azure-ban az Azure CLI használatával
+description: Hozzon létre egy Function alkalmazást az Azure-beli kiszolgáló nélküli végrehajtáshoz az Azure CLI használatával.
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: f94048014f18c584637b9863bb59982f9143661e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5fa6b5a25b07585e3c0ea07fb4a361ab82a9815
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498242"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565095"
 ---
 # <a name="create-a-function-app-for-serverless-code-execution"></a>Függvényalkalmazás létrehozása kiszolgáló nélküli kódvégrehajtáshoz 
 
@@ -19,9 +19,9 @@ Ez az Azure Functions-példaszkript egy függvényalkalmazást hoz létre, amely
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket. 
+ - Az oktatóanyaghoz az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -41,7 +41,7 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy Azure Storage-fiókot. |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

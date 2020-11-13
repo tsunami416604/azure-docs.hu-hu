@@ -6,22 +6,22 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 08/20/2019
+ms.date: 11/12/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 767b5a6be9c9aaff1bfe82ebc46b3b9179e271e4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2aa589d237a8cfeb8e0dc947896dba82e755631c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736985"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564769"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok – tervezett karbantartás értesítései
 
 
 Az Azure rendszeres időközönként frissítéseket végez a virtuális gépek (VM-EK) számára a gazdagép-infrastruktúra megbízhatóságának, teljesítményének és biztonságának javítása érdekében. A frissítések tartalmazhatják az üzemeltetési környezet javítását, illetve a hardverek frissítését és leszerelését. A legtöbb frissítés nem befolyásolja az üzemeltetett virtuális gépeket. A frissítések azonban a következő helyzetekben érintik a virtuális gépeket:
 
-- Ha a karbantartás nem igényel újraindítást, az Azure helyben történő áttelepítés használatával szünetelteti a virtuális gépet a gazdagép frissítése közben. Azok a karbantartási műveletek, amelyek nem igényelnek újraindítást, tartalék tartományt alkalmaznak a tartalék tartomány alapján. A rendszer leállítja az előrehaladást, ha a rendszer figyelmeztetési állapottal kapcsolatos riasztásokat fogad.
+- Ha a karbantartás nem igényel újraindítást, az Azure néhány másodpercig szünetelteti a virtuális gépet, amíg a rendszer frissíti a gazdagépet. Az ilyen típusú karbantartási műveletek tartalék tartományra vonatkoznak a tartalék tartomány alapján. A rendszer leállítja az előrehaladást, ha a rendszer figyelmeztetési állapottal kapcsolatos riasztásokat fogad.
 
 - Ha a karbantartás újraindítást igényel, a karbantartás megtervezése után értesítést kap. Ezekben az esetekben egy olyan időablakot kap, amely általában 35 nap, ahol elindíthatja a karbantartást, ha Ön is működik.
 
@@ -72,10 +72,10 @@ Az önkiszolgáló karbantartást a következő esetekben érdemes használni:
 
 Tervezett karbantartási hullám ütemezésekor megtekintheti azoknak a virtuálisgép-méretezési csoportoknak a listáját, amelyeket a következő karbantartási hullám érint a Azure Portal használatával. 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben válassza a **minden szolgáltatás** lehetőséget, majd válassza a **virtuálisgép-méretezési** csoportok lehetőséget.
 3. A **virtuálisgép-méretezési** csoportok területen válassza az **Oszlopok szerkesztése** lehetőséget az elérhető oszlopok listájának megnyitásához.
-4. Az **elérhető oszlopok** szakaszban válassza az **önkiszolgáló karbantartás** lehetőséget, majd helyezze át a **kijelölt oszlopok** listájára. Kattintson az **Alkalmaz** gombra.  
+4. Az **elérhető oszlopok** szakaszban válassza az **önkiszolgáló karbantartás** lehetőséget, majd helyezze át a **kijelölt oszlopok** listájára. Kattintson az **Alkalmaz** elemre.  
 
     Ahhoz, hogy az **önkiszolgáló karbantartási** elem könnyebben megkereshető legyen, az **összesből** a **Tulajdonságok** lehetőségre kattintva megváltoztathatja a legördülő lehetőséget az **elérhető oszlopok** szakaszban.
 
@@ -91,7 +91,7 @@ Az **önkiszolgáló karbantartási** oszlop most megjelenik a virtuálisgép-m�
 
 Az Azure a tervezett karbantartásra vonatkozó ütemtervet küld az előfizetés tulajdonosának és a közös tulajdonosok csoportjának e-mail-címének elküldésével. A kommunikációhoz címzetteket és csatornákat is hozzáadhat a tevékenység naplójának riasztásai létrehozásával. További információ: [előfizetés figyelése tevékenység az Azure-tevékenység naplójában](../azure-monitor/platform/platform-logs-overview.md).
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben válassza a **figyelő** elemet. 
 3. A **figyelő-riasztások (klasszikus)** ablaktáblán válassza a **+ tevékenység naplójának hozzáadása riasztás** elemet.
 4. A **tevékenység naplójának hozzáadása riasztás** lapon válassza ki vagy adja meg a kért adatokat. A **feltételek** területen győződjön meg arról, hogy a következő értékeket állítja be:
@@ -185,7 +185,7 @@ A magas rendelkezésre állással kapcsolatos további információkért lásd: 
 
 **K: Hogyan kaphatok értesítést a tervezett karbantartásról?**
 
-**A:** Egy tervezett karbantartási hullám egy vagy több Azure-régióra vonatkozó ütemterv beállításával kezdődik. Hamarosan e-mailben értesítést küldünk az előfizetés tulajdonosainak (egy e-mail-cím/előfizetés). Ehhez az értesítéshez hozzáadhat csatornákat és címzetteket a műveletnapló riasztásai segítségével. Ha olyan régióba helyez üzembe egy virtuális gépet, amelyben a tervezett karbantartás már be van ütemezve, akkor nem kapja meg az értesítést. Ehelyett vizsgálja meg a virtuális gép karbantartási állapotát.
+**A:** Egy tervezett karbantartási hullám egy vagy több Azure-régióra vonatkozó ütemterv beállításával kezdődik. Az előfizetés-adminisztrátorok, a közös adminisztrátorok, a tulajdonosok és a közreműködők e-mailben értesítést kapnak (egy e-mail-cím/előfizetés). Az értesítéshez tartozó további csatornákat és címzetteket a műveletnapló riasztásai használatával lehet konfigurálni. Ha olyan régióba helyez üzembe egy virtuális gépet, amelyben a tervezett karbantartás már be van ütemezve, akkor nem kapja meg az értesítést. Ehelyett vizsgálja meg a virtuális gép karbantartási állapotát.
 
 **K: nem látom a tervezett karbantartást a portálon, a PowerShellen vagy a parancssori felületen. mi a baj?**
 

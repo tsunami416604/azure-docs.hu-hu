@@ -6,18 +6,18 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ae22294d86ab65be0f09b734735885177c1cf63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c4920eaa7a5619be37d38afd763e7be416d3124
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777309"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565721"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Oktatóanyag: személyre szabott használata a .NET-csevegési robotban
 
 Használjon egy C# .NET chat-robotot egy személyre szabott hurok használatával a megfelelő tartalom biztosításához a felhasználó számára. Ez a csevegési robot egy adott kávét vagy teát javasol egy felhasználónak. A felhasználó elfogadhatja vagy elutasíthatja ezt a javaslatot. Ez a személyre szabott információkat biztosít a következő javaslat megfelelőbbvé tételéhez.
 
-**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+**Az oktatóanyag a következőket ismerteti:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -43,7 +43,7 @@ Ez egy egyszerű csevegési robot, amely lehetővé teszi szöveges lekérdezés
 |--|--|--|
 |Nincs megadva szöveg – a robot megkezdi a beszélgetést.|`This is a simple chatbot example that illustrates how to use Personalizer. The bot learns what coffee or tea order is preferred by customers given some context information (such as weather, temperature, and day of the week) and information about the user.`<br>`To use the bot, just follow the prompts. To try out a new imaginary context, type “Reset” and a new one will be randomly generated.`<br>`Welcome to the coffee bot, please tell me if you want to see the menu or get a coffee or tea suggestion for today. Once I’ve given you a suggestion, you can reply with ‘like’ or ‘don’t like’. It’s Tuesday today and the weather is Snowy.`|A robot tanítási szöveggel kezdi a beszélgetést, és ismeri a kontextust: `Tuesday` , `Snowy` .|
 |`Show menu`|`Here is our menu: Coffee: Cappuccino Espresso Latte Macchiato Mocha Tea: GreenTea Rooibos`|Határozza meg a lekérdezés szándékát a LUIS használatával, majd jelenítse meg a kávé-és teafőző menüpontot. A műveletek funkciói |
-|`What do you suggest`|`How about Latte?`|Határozza meg a lekérdezés célját a LUIS használatával, majd hívja meg a **Rank API**-t, és kérdezzen rá a legjobb választásra `How about {response.RewardActionId}?` . A JSON-hívást és a választ is megjeleníti illusztrációs célokra.|
+|`What do you suggest`|`How about Latte?`|Határozza meg a lekérdezés célját a LUIS használatával, majd hívja meg a **Rank API** -t, és kérdezzen rá a legjobb választásra `How about {response.RewardActionId}?` . A JSON-hívást és a választ is megjeleníti illusztrációs célokra.|
 |`I like it`|`That’s great! I’ll keep learning your preferences over time.`<br>`Would you like to get a new suggestion or reset the simulated context to a new day?`|Állapítsa meg a lekérdezés célját a LUIS használatával, majd hívja meg a **jutalmazási API** -t a jutalmaval `1` , és jelenítse meg a JSON-hívást és az illusztrációs válaszokat.|
 |`I don't like it`|`Oh well, maybe I’ll guess better next time.`<br>`Would you like to get a new suggestion or reset the simulated context to a new day?`|Állapítsa meg a lekérdezés célját a LUIS használatával, majd hívja meg a **jutalmazási API** -t a jutalmaval `0` , és jelenítse meg a JSON-hívást és az illusztrációs válaszokat.|
 |`Reset`|Az utasítás szövegét adja vissza.|Határozza meg a lekérdezés szándékát a LUIS használatával, majd megjeleníti az útmutatás szövegét, és visszaállítja a környezetet.|
@@ -105,9 +105,9 @@ A funkciók kiválasztása ebben a csevegési robotban véletlenszerű. A valós
 ### <a name="design-considerations-for-this-bot"></a>Tervezési szempontok ehhez a robothoz
 
 A beszélgetéssel kapcsolatban néhány figyelmeztetést is figyelembe kell venni:
-* **Bot-interakció**: a beszélgetés nagyon egyszerű, mert a rangsort és a jutalmat egyszerű használati esetekben mutatja be. A bot Framework SDK vagy az emulátor teljes funkcionalitását nem igazolja.
-* **Személyre szabás**: a funkciók véletlenszerűen vannak kiválasztva a használat szimulálása érdekében. Az éles személyre szabott forgatókönyvben ne végezzen véletlenszerű funkciókat.
-* **Language Understanding (Luis)**: a Luis-modell néhány példájának hosszúságú kimondott szöveg kizárólag ehhez a mintához. Ne használja ezt a néhány példát az üzemi LUIS-alkalmazás hosszúságú kimondott szöveg.
+* **Bot-interakció** : a beszélgetés nagyon egyszerű, mert a rangsort és a jutalmat egyszerű használati esetekben mutatja be. A bot Framework SDK vagy az emulátor teljes funkcionalitását nem igazolja.
+* **Személyre szabás** : a funkciók véletlenszerűen vannak kiválasztva a használat szimulálása érdekében. Az éles személyre szabott forgatókönyvben ne végezzen véletlenszerű funkciókat.
+* **Language Understanding (Luis)** : a Luis-modell néhány példájának hosszúságú kimondott szöveg kizárólag ehhez a mintához. Ne használja ezt a néhány példát az üzemi LUIS-alkalmazás hosszúságú kimondott szöveg.
 
 
 ## <a name="install-required-software"></a>A szükséges szoftverek telepítése
@@ -130,7 +130,7 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 A csevegő robot használatához Azure-erőforrásokat kell létrehoznia a személyre szabott és a Language Understanding (LUIS) számára.
 
-* [Luis-erőforrások létrehozása](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal). A létrehozási lépésben válassza a **mindkettő** lehetőséget, mivel a szerzői és az előrejelzési erőforrások is szükségesek.
+* [Luis-erőforrások létrehozása](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal). A létrehozási lépésben válassza a **mindkettő** lehetőséget, mivel a szerzői és az előrejelzési erőforrások is szükségesek.
 * [Hozzon létre egy személyre szabott erőforrást](how-to-create-resource.md) , majd másolja a kulcsot és a végpontot a Azure Portalból. Ezeket az értékeket a `appsettings.json` .NET-projekt fájljában kell megadnia.
 
 ### <a name="create-luis-app"></a>LUIS-alkalmazás létrehozása
@@ -138,14 +138,14 @@ A csevegő robot használatához Azure-erőforrásokat kell létrehoznia a szem�
 Ha a LUIS új, be kell [jelentkeznie](https://www.luis.ai) , és azonnal át kell telepítenie a fiókját. Nem kell új erőforrásokat létrehoznia, hanem ki kell választania az oktatóanyag előző szakaszában létrehozott erőforrásokat.
 
 1. Új LUIS-alkalmazás létrehozásához a [Luis portálon](https://www.luis.ai)válassza ki az előfizetését és a szerzői erőforrást.
-1. Ezután továbbra is ugyanazon a lapon válassza az **+ új alkalmazás a beszélgetéshez**, majd az **Importálás JSON-ként**lehetőséget.
+1. Ezután továbbra is ugyanazon a lapon válassza az **+ új alkalmazás a beszélgetéshez** , majd az **Importálás JSON-ként** lehetőséget.
 1. Az előugró párbeszédpanelen válassza a **fájl kiválasztása** elemet, majd válassza ki a `/samples/ChatbotExample/CognitiveModels/coffeebot.json` fájlt. Adja meg a nevet `Personalizer Coffee bot` .
 1. Kattintson a **betanítás** gombra a Luis-portál jobb felső sarkában.
 1. Kattintson a **Közzététel** gombra, és tegye közzé az alkalmazást az előrejelzési futtatókörnyezet **üzemi tárolóhelyén** .
-1. Válassza a **kezelés**, majd a **Beállítások**lehetőséget. Másolja ki az **alkalmazás azonosítójának**értékét. Ezt az értéket a `appsettings.json` .NET-projekt fájljában kell megadnia.
-1. Továbbra is a **kezelés** szakaszban válassza az **Azure-erőforrások**lehetőséget. Ez megjeleníti az alkalmazáshoz kapcsolódó erőforrásokat.
-1. Válassza az **előrejelzési erőforrás hozzáadása**lehetőséget. Az előugró párbeszédpanelen válassza ki az előfizetését, és az oktatóanyag előző részében létrehozott előrejelzési erőforrást, majd kattintson a **kész**gombra.
-1. Másolja az **elsődleges kulcs** és a **végpont URL-címének**értékeit. Ezeket az értékeket a `appsettings.json` .NET-projekt fájljában kell megadnia.
+1. Válassza a **kezelés** , majd a **Beállítások** lehetőséget. Másolja ki az **alkalmazás azonosítójának** értékét. Ezt az értéket a `appsettings.json` .NET-projekt fájljában kell megadnia.
+1. Továbbra is a **kezelés** szakaszban válassza az **Azure-erőforrások** lehetőséget. Ez megjeleníti az alkalmazáshoz kapcsolódó erőforrásokat.
+1. Válassza az **előrejelzési erőforrás hozzáadása** lehetőséget. Az előugró párbeszédpanelen válassza ki az előfizetését, és az oktatóanyag előző részében létrehozott előrejelzési erőforrást, majd kattintson a **kész** gombra.
+1. Másolja az **elsődleges kulcs** és a **végpont URL-címének** értékeit. Ezeket az értékeket a `appsettings.json` .NET-projekt fájljában kell megadnia.
 
 ### <a name="configure-bot-with-appsettingsjson-file"></a>A robot konfigurálása appsettings.jsfájllal
 
@@ -176,20 +176,20 @@ Tartsa meg a webhelyet, mert az oktatóanyag leírja, hogy mit csinál a robot, 
 
 ## <a name="set-up-the-bot-emulator"></a>A robot-emulátor beállítása
 
-1. Nyissa meg a bot Framework Emulatort, és válassza a **robot megnyitása**lehetőséget.
+1. Nyissa meg a bot Framework Emulatort, és válassza a **robot megnyitása** lehetőséget.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="A csevegési robot webhelyét megjelenítő böngésző képernyőképe.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Képernyőkép a robot-emulátor indítási képernyőjéről.":::
 
 
-1. Konfigurálja a robotot a következő **robot URL-címmel** , majd válassza a **kapcsolat**elemet:
+1. Konfigurálja a robotot a következő **robot URL-címmel** , majd válassza a **kapcsolat** elemet:
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="A csevegési robot webhelyét megjelenítő böngésző képernyőképe.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Képernyőkép a robot-emulátor megnyitási beállításairól.":::
 
     Az emulátor csatlakozik a csevegési robothoz, és megjeleníti az útmutató szövegét, valamint a naplózási és hibakeresési információkat a helyi fejlesztéshez.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="A csevegési robot webhelyét megjelenítő böngésző képernyőképe.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Képernyőkép a bot emulatorról az első beszélgetés során.":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>A robot használata a bot emulatorban
 
@@ -432,7 +432,7 @@ Ha elkészült ezzel az Oktatóanyaggal, törölje a következő erőforrásokat
 * Törölje a minta projekt könyvtárát.
 * Törölje a személyre szabott és LUIS-erőforrást a Azure Portal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Personalizer működése](how-personalizer-works.md)
 * [Funkciók](concepts-features.md): a funkciókkal és környezettel kapcsolatos fogalmak megismerése
 * [Jutalmak](concept-rewards.md): tudnivalók a jutalmak kiszámításáról

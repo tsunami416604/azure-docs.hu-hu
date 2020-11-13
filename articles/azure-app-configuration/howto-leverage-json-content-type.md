@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: 725beb50e55852e35ee4434539ff158f082059df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee262c0eb2431085e71d8ee0035bcdab9833d1cf
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88122009"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565772"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>A tartalom típusának kihasználása JSON-kulcsok tárolásához az alkalmazás konfigurációjában
 
@@ -25,9 +25,9 @@ Az adatok az alkalmazás konfigurációjában kulcs-értékként tárolódnak, a
 ## <a name="overview"></a>Áttekintés
 
 Az alkalmazás konfigurálásakor a JSON-adathordozó típusát használhatja a kulcs-értékek tartalomtípusa, hogy a következő előnyöket használja:
-- **Egyszerűbb adatkezelés**: a kulcs-értékek, például a tömbök kezelése sokkal egyszerűbb lesz a Azure Portalban.
-- **Bővített adatexportálás**: az adatexportálás során az egyszerű típusok, a tömbök és a JSON-objektumok is megmaradnak.
-- **Natív támogatás az alkalmazás-konfigurációs szolgáltatónál**: a JSON-tartalommal rendelkező kulcs-értékek jól működnek, ha az alkalmazásban az alkalmazás konfigurációs szolgáltatói kódtárai használják azokat.
+- **Egyszerűbb adatkezelés** : a kulcs-értékek, például a tömbök kezelése sokkal egyszerűbb lesz a Azure Portalban.
+- **Bővített adatexportálás** : az adatexportálás során az egyszerű típusok, a tömbök és a JSON-objektumok is megmaradnak.
+- **Natív támogatás az alkalmazás-konfigurációs szolgáltatónál** : a JSON-tartalommal rendelkező kulcs-értékek jól működnek, ha az alkalmazásban az alkalmazás konfigurációs szolgáltatói kódtárai használják azokat.
 
 #### <a name="valid-json-content-type"></a>Érvényes JSON-tartalom – típus
 
@@ -53,7 +53,7 @@ Néhány példa az érvényes JSON-értékekre:
 - {"ObjectSetting": {"Targeting": {"default": igaz, "level": "információ"}}}
 
 > [!NOTE]
-> A cikk további részében minden olyan kulcs-érték az alkalmazás konfigurációjában, amely érvényes JSON-tartalomtípussal rendelkezik, és az érvényes JSON-érték **JSON kulcs-érték**lesz. 
+> A cikk további részében minden olyan kulcs-érték az alkalmazás konfigurációjában, amely érvényes JSON-tartalomtípussal rendelkezik, és az érvényes JSON-érték **JSON kulcs-érték** lesz. 
 
 Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 > [!div class="checklist"]
@@ -63,13 +63,11 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 > * JSON-kulcsok felhasználása az alkalmazásokban.
 
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
-- Az Azure CLI legújabb verziója (2.10.0 vagy újabb). A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha az Azure CLI-t használja, először be kell jelentkeznie a használatával `az login` . Igény szerint a Azure Cloud Shell is használhatja.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
+- Az oktatóanyaghoz az Azure CLI 2.10.0 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 ## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
 
@@ -82,7 +80,7 @@ JSON-kulcs – az értékek a Azure Portal, az Azure CLI használatával vagy eg
 
 ### <a name="create-json-key-values-using-azure-portal"></a>JSON-kulcs létrehozása – értékek Azure Portal használatával
 
-Tallózással keresse meg az alkalmazás konfigurációs tárolóját **Configuration Explorer**, és  >  **Create**  >  a következő kulcs-érték párok hozzáadásához válassza a konfigurációs Explorer Create**Key-Value** elemet:
+Tallózással keresse meg az alkalmazás konfigurációs tárolóját **Configuration Explorer** , és  >  **Create**  >  a következő kulcs-érték párok hozzáadásához válassza a konfigurációs Explorer Create **Key-Value** elemet:
 
 | Kulcs | Érték | Tartalom típusa |
 |---|---|---|
@@ -94,7 +92,7 @@ Tallózással keresse meg az alkalmazás konfigurációs tárolóját **Configur
 | Beállítások: RolloutPercentage | [25, 50, 75100] | application/json |
 | Beállítások: naplózás | {"Test": {"szint": "debug"}, "Prod": {"level": "figyelmeztetés"}} | application/json |
 
-Hagyja üresen a **feliratot** , és kattintson az **alkalmaz**gombra.
+Hagyja üresen a **feliratot** , és kattintson az **alkalmaz** gombra.
 
 ### <a name="create-json-key-values-using-azure-cli"></a>JSON-kulcs létrehozása – értékek az Azure CLI használatával
 

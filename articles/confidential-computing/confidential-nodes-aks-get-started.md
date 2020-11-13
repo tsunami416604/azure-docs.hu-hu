@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 994cf78a9a9b8c418d0f29f5d595f88f021659b4
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 95626836afb09ada286cf7e171f97db450167999
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341906"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564344"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése bizalmas számítástechnikai csomópontokkal az Azure CLI használatával (előzetes verzió)
 
@@ -19,7 +19,7 @@ Ez a rövid útmutató olyan fejlesztők vagy fürtök számára készült, akik
 
 ## <a name="overview"></a>Áttekintés
 
-Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy Azure Kubernetes Service-(ak-) fürtöt az Azure CLI használatával, és hogyan futtathat egy Hello World alkalmazást egy enklávéban. Az AK egy felügyelt Kubernetes szolgáltatás, amely lehetővé teszi fürtök gyors üzembe helyezését és kezelését. További információ [az AK-](https://docs.microsoft.com/azure/aks/intro-kubernetes)ról.
+Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy Azure Kubernetes Service-(ak-) fürtöt az Azure CLI használatával, és hogyan futtathat egy Hello World alkalmazást egy enklávéban. Az AK egy felügyelt Kubernetes szolgáltatás, amely lehetővé teszi fürtök gyors üzembe helyezését és kezelését. További információ [az AK-](../aks/intro-kubernetes.md)ról.
 
 > [!NOTE]
 > A bizalmas számítástechnikai DCsv2 virtuális gépek olyan speciális hardvereket használnak, amelyek a magasabb díjszabás és a régió rendelkezésre állása alá esnek. További információ: a virtuális gépek oldal a [rendelkezésre álló SKU-és támogatott régiókhoz](virtual-machine-solutions.md).
@@ -27,17 +27,17 @@ Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy Azure K
 ### <a name="deployment-pre-requisites"></a>Üzembe helyezési előfeltételek
 
 1. Aktív Azure-előfizetéssel rendelkezik. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot a](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) Kezdés előtt
-1. Az Azure CLI 2.0.64 vagy újabb verzióját kell telepítenie és konfigurálnia az üzembe helyezési gépen (Futtatás a `az --version` verzió megkereséséhez). Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli) ismertető témakört.
+1. Az Azure CLI 2.0.64 vagy újabb verzióját kell telepítenie és konfigurálnia az üzembe helyezési gépen (Futtatás a `az --version` verzió megkereséséhez). Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](../container-registry/container-registry-get-started-azure-cli.md) ismertető témakört.
 1. [AK – előzetes verziójú bővítmény](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) minimális verziója 0.4.62 
-1. Legalább hat **DC <x> s-v2** mag érhető el az előfizetésben a használathoz. Alapértelmezés szerint a virtuális gép az Azure-előfizetések 8 maggal kapcsolatos bizalmas számítástechnikai kvótáját is felszámítja. Ha olyan fürtöt szeretne kiépíteni, amely több mint 8 magot igényel, kövesse az [alábbi](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) utasításokat a kvóta növeléséhez
+1. Legalább hat **DC <x> s-v2** mag érhető el az előfizetésben a használathoz. Alapértelmezés szerint a virtuális gép az Azure-előfizetések 8 maggal kapcsolatos bizalmas számítástechnikai kvótáját is felszámítja. Ha olyan fürtöt szeretne kiépíteni, amely több mint 8 magot igényel, kövesse az [alábbi](../azure-portal/supportability/per-vm-quota-requests.md) utasításokat a kvóta növeléséhez
 
 ### <a name="confidential-computing-node-features-dcxs-v2"></a>A bizalmas számítástechnikai csomópont funkciói (DC <x> s-v2)
 
 1. Csak Linux-tárolókat támogató linuxos munkavégző csomópontok
 1. Ubuntu 2. generációs 18,04 Virtual Machines
-1. Intel SGX ENKLÁVÉHOZ-alapú CPU titkosított oldal gyorsítótár-memóriával (EPC). [További információk](https://docs.microsoft.com/azure/confidential-computing/faq)
+1. Intel SGX ENKLÁVÉHOZ-alapú CPU titkosított oldal gyorsítótár-memóriával (EPC). [További információk](./faq.md)
 1. Kubernetes-verzió 1.16 +
-1. Az Intel SGX ENKLÁVÉHOZ előre telepített DCAP illesztőprogramja. [További információk](https://docs.microsoft.com/azure/confidential-computing/faq)
+1. Az Intel SGX ENKLÁVÉHOZ előre telepített DCAP illesztőprogramja. [További információk](./faq.md)
 1. A CLI-alapú üzembe helyezés az előzetes verzióban
 
 
@@ -81,7 +81,7 @@ Először hozzon létre egy erőforráscsoportot a fürthöz az az Group Create 
 az group create --name myResourceGroup --location westus2
 ```
 
-Most hozzon létre egy AK-fürtöt az az AK Create paranccsal. A következő példa egy olyan fürtöt hoz létre, amelynek mérete egyetlen csomópont `Standard_DC2s_v2` . További támogatott DCsv2 SKU-ket is választhat a következő [listából:](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)
+Most hozzon létre egy AK-fürtöt az az AK Create paranccsal. A következő példa egy olyan fürtöt hoz létre, amelynek mérete egyetlen csomópont `Standard_DC2s_v2` . További támogatott DCsv2 SKU-ket is választhat a következő [listából:](../virtual-machines/dcv2-series.md)
 
 ```azurecli-interactive
 az aks create \
@@ -94,7 +94,7 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --aks-custom-headers usegen2vm=true
 ```
-A fenti parancsnak egy, a **DC <x> s-v2** csomópont-készletekkel rendelkező új AK-fürtöt kell kiépítenie, és automatikusan telepítenie kell két démon-készletet – ([SGX enklávéhoz-eszköz beépülő modul](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX enklávéhoz](confidential-nodes-aks-overview.md#sgx-quote)
+A fenti parancsnak egy, a **DC <x> s-v2** csomópont-készletekkel rendelkező új AK-fürtöt kell kiépítenie, és automatikusan telepítenie kell két démon-készletet – ( [SGX enklávéhoz-eszköz beépülő modul](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX enklávéhoz](confidential-nodes-aks-overview.md#sgx-quote)
 
 Kérje le az AK-fürt hitelesítő adatait az az az AK Get-hitelesítőadats parancs használatával:
 
@@ -244,6 +244,3 @@ az aks nodepool delete --cluster-name myAKSCluster --name myNodePoolName --resou
 Python, node stb. futtatása Bizalmas tárolókban bizalmasan kezelheti az alkalmazásokat a [bizalmas tárolók mintáinak](https://github.com/Azure-Samples/confidential-container-samples)meglátogatásával.
 
 Az enklávéban az [Azure Container Samples](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/)használatával meglátogatható alkalmazások is futtathatók az enklávéban.
-
-
-

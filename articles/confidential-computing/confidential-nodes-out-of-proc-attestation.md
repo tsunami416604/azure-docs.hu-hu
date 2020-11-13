@@ -6,12 +6,12 @@ author: agowdamsft
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 90b74e51dce994c3041c15feec729ff1fae2bb00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b79b3b40f3fbfe7d70550db3aaf7b365aa455e89
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000978"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564157"
 ---
 # <a name="platform-software-management-with-sgx-quote-helper-daemon-set"></a>Platform Software Management a SGX ENKLÁVÉHOZ quote Helper Daemon set
 
@@ -20,13 +20,13 @@ A távoli igazolást végző [enklávé-alkalmazásokhoz](confidential-computing
 ## <a name="overview"></a>Áttekintés
  
 Az Intel két igazolási módot támogat az idézőjelek létrehozásához:
-- **in-proc**: az enklávé alkalmazás folyamatán belül tárolja a megbízható szoftver összetevőit.
+- **in-proc** : az enklávé alkalmazás folyamatán belül tárolja a megbízható szoftver összetevőit.
 
-- **folyamaton**kívüli: az enklávé alkalmazáson kívül tárolja a megbízható szoftverek összetevőit.
+- **folyamaton** kívüli: az enklávé alkalmazáson kívül tárolja a megbízható szoftverek összetevőit.
  
 Az Open enklávé SDK-val létrehozott SGX ENKLÁVÉHOZ-alkalmazások alapértelmezés szerint a-proc igazolási módot használják. A SGX ENKLÁVÉHOZ-alapú alkalmazások lehetővé teszik a folyamaton kívüli működést, és a szükséges összetevők (például az építészeti enklávé Service Manager (AESM), az alkalmazáson kívüli) további üzemeltetését igénylik.
 
-A funkció használata **erősen ajánlott**, mivel az az időpontot fokozza az enklávé alkalmazásai számára az Intel platform frissítései vagy a DCAP-illesztőprogram frissítései során.
+A funkció használata **erősen ajánlott** , mivel az az időpontot fokozza az enklávé alkalmazásai számára az Intel platform frissítései vagy a DCAP-illesztőprogram frissítései során.
 
 ## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>Miért és milyen előnyökkel jár az out-of-proc?
 
@@ -126,10 +126,10 @@ spec:
 
 [Gyors kezdő minták – bizalmas tárolók](https://github.com/Azure-Samples/confidential-container-samples)
 
-[DCsv2 SKU-lista](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)
+[DCsv2 SKU-lista](../virtual-machines/dcv2-series.md)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure Attestation]: ../attestation/index.yml
 
 
 <!-- LINKS - internal -->

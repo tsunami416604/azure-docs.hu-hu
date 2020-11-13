@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2c266d31a3aacc5bc97434de2246bfb1285a1ee
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462428"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565704"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Útmutató: alkalmazás futtatása a Fortanix enklávé Managerrel 
 
@@ -60,31 +60,31 @@ Ebből az oktatóanyagból megtudhatja, hogyan alakíthatja át az alkalmazás r
 
 6. Ebben az oktatóanyagban a Fortanix Docker-beállításjegyzékét fogjuk használni a minta alkalmazáshoz. Adja meg a részleteket az alábbi információk alapján. A kimeneti rendszerkép megtartásához használja a privát Docker-beállításjegyzéket. 
  
-    - **Alkalmazás neve**: Python Application Server
-    - **Leírás**: Python-lombik kiszolgálója
-    - **Bemeneti rendszerkép neve**: fortanix/Python-lombik
-    - **Kimeneti rendszerkép neve**: fortanx-Private/Python-lombik-SGX enklávéhoz
-    - **ISVPRODID**: 1
-    - **ISVSVM**: 1
-    - **Memória mérete**: 1 GB
-    - **Szálak száma**: 128
+    - **Alkalmazás neve** : Python Application Server
+    - **Leírás** : Python-lombik kiszolgálója
+    - **Bemeneti rendszerkép neve** : fortanix/Python-lombik
+    - **Kimeneti rendszerkép neve** : fortanx-Private/Python-lombik-SGX enklávéhoz
+    - **ISVPRODID** : 1
+    - **ISVSVM** : 1
+    - **Memória mérete** : 1 GB
+    - **Szálak száma** : 128
 
-    Nem *kötelező*: futtassa az alkalmazást.
-    - **Docker hub**: [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
-    - **Alkalmazás**: fortanix/Python-lombik
+    Nem *kötelező* : futtassa az alkalmazást.
+    - **Docker hub** : [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
+    - **Alkalmazás** : fortanix/Python-lombik
 
         Futtassa az alábbi parancsot:
          ```bash
             sudo docker run fortanix/python-flask
          ```
 
-1. Tanúsítvány hozzáadása. Adja meg az adatokat az alábbi adatok alapján, majd válassza a **Next (tovább**) gombot:
-    - **Tartomány**: SajátPr. domain. Dom
-    - **Típus**: az enklávé Manager által kiállított tanúsítvány 
-    - **Kulcs elérési útja**:/appkey.PEM
-    - **Kulcs típusa**: RSA
-    - **Tanúsítvány elérési útja**:/appcert.PEM
-    - **RSA-kulcs mérete**: 2048 bit
+1. Tanúsítvány hozzáadása. Adja meg az adatokat az alábbi adatok alapján, majd válassza a **Next (tovább** ) gombot:
+    - **Tartomány** : SajátPr. domain. Dom
+    - **Típus** : az enklávé Manager által kiállított tanúsítvány 
+    - **Kulcs elérési útja** :/appkey.PEM
+    - **Kulcs típusa** : RSA
+    - **Tanúsítvány elérési útja** :/appcert.PEM
+    - **RSA-kulcs mérete** : 2048 bit
     
 
 ## <a name="create-an-image"></a>Rendszerkép létrehozása
@@ -92,7 +92,7 @@ A Fortanix EM-rendszerkép egy alkalmazás szoftveres kiadása vagy verziója. M
 1. A **rendszerkép hozzáadása** lapon adja meg a **kimeneti rendszerkép nevének** **beállításjegyzékbeli hitelesítő adatait** . Ezek a hitelesítő adatok a privát Docker-beállításjegyzék elérésére szolgálnak, ahol a rendszer leküldi a rendszerképet. 
 
     ![rendszerkép létrehozása](media/how-to-fortanix-enclave-manager/create-image.png)
-1. Adja meg a rendszerkép címkéjét, és válassza a **Létrehozás**lehetőséget.
+1. Adja meg a rendszerkép címkéjét, és válassza a **Létrehozás** lehetőséget.
 
     ![címke hozzáadása](media/how-to-fortanix-enclave-manager/add-tag.png)
 
@@ -113,14 +113,14 @@ A Fortanix enklávé kezelőjében létre kell hoznia egy jogkivonatot. Ez a tok
 A Fortanix-csomópontok létrehozásakor a rendszer egy virtuális gépet, egy hálózati adaptert, egy virtuális hálózatot, egy hálózati biztonsági csoportot és egy nyilvános IP-címet helyez üzembe az Azure-erőforráscsoporthoz. Azure-előfizetését óránként számlázjuk a virtuális géphez. A Fortanix csomópont-ügynök létrehozása előtt tekintse át az Azure [virtuális gépek díjszabási lapját](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a DCsv2 sorozathoz. Ha nincs használatban, törölje az Azure-erőforrásokat. 
 
 1. Nyissa meg az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) -t, és jelentkezzen be az Azure-beli hitelesítő adataival.
-1. A keresősáv mezőbe írja be a **Fortanix bizalmas számítástechnikai csomópont-ügynök**kifejezést. Válassza ki azt az alkalmazást, amely megjelenik a **Fortanix bizalmas számítástechnikai csomópont-ügynök** nevű keresőmezőben az ajánlat kezdőlapjának megnyitásához. 
+1. A keresősáv mezőbe írja be a **Fortanix bizalmas számítástechnikai csomópont-ügynök** kifejezést. Válassza ki azt az alkalmazást, amely megjelenik a **Fortanix bizalmas számítástechnikai csomópont-ügynök** nevű keresőmezőben az ajánlat kezdőlapjának megnyitásához. 
      ![Keresés a piactéren](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
-1. Válassza a **Letöltés most**lehetőséget, adja meg az adatokat, ha szükséges, majd kattintson a **Folytatás**gombra. A rendszer átirányítja a Azure Portal. 
+1. Válassza a **Letöltés most** lehetőséget, adja meg az adatokat, ha szükséges, majd kattintson a **Folytatás** gombra. A rendszer átirányítja a Azure Portal. 
 1. Válassza a **Létrehozás** lehetőséget a Fortanix bizalmas számítástechnikai csomópont-ügynök üzembe helyezési lapjának megadásához.
 1. Ezen a lapon megadhatja a virtuális gép üzembe helyezéséhez szükséges adatokat. Pontosabban, ez a virtuális gép egy DCsv2-Series Intel SGX ENKLÁVÉHOZ-kompatibilis virtuális gép az Azure-ban, amelyen telepítve van a Fortanix Node Agent szoftver. A csomópont-ügynök lehetővé teszi, hogy az átalakított rendszerkép biztonságosan fusson az Azure-beli Intel SGX ENKLÁVÉHOZ-csomópontokon.  Válassza ki azt az **előfizetést** és **erőforráscsoportot** , ahol telepíteni szeretné a virtuális gépet és a kapcsolódó erőforrásokat. 
  
     > [!NOTE]
-    > DCsv2-Series virtuális gépek Azure-ban való telepítésekor megkötések vannak. Előfordulhat, hogy további magokra vonatkozó kvótát kell igényelnie. További információt az Azure-beli [virtuális gépeken található bizalmas számítástechnikai megoldásokról szóló](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) témakörben olvashat. 
+    > DCsv2-Series virtuális gépek Azure-ban való telepítésekor megkötések vannak. Előfordulhat, hogy további magokra vonatkozó kvótát kell igényelnie. További információt az Azure-beli [virtuális gépeken található bizalmas számítástechnikai megoldásokról szóló](./virtual-machine-solutions.md) témakörben olvashat. 
 
 1. Válasszon a rendelkezésre álló régiók közül.
 1. A **csomópont neve** mezőben adja meg a virtuális gép nevét. 
@@ -130,7 +130,7 @@ A Fortanix-csomópontok létrehozásakor a rendszer egy virtuális gépet, egy h
 
      ![erőforrás üzembe helyezése](media/how-to-fortanix-enclave-manager/deploy-fortanix-node-agent.png)
 
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget. Győződjön meg arról, hogy az ellenőrzés megfelel, majd válassza a **Létrehozás**lehetőséget. Az összes erőforrás üzembe helyezése után a számítási csomópont regisztrálva lesz az enklávé Managerben. 
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget. Győződjön meg arról, hogy az ellenőrzés megfelel, majd válassza a **Létrehozás** lehetőséget. Az összes erőforrás üzembe helyezése után a számítási csomópont regisztrálva lesz az enklávé Managerben. 
 
 ## <a name="run-the-application-image-on-the-compute-node"></a>Az alkalmazás rendszerképének futtatása a számítási csomóponton
 Futtassa az alkalmazást az alábbi parancs végrehajtásával. Győződjön meg arról, hogy a csomópont IP-címét, a portot és a konvertált lemezképfájlt bemenetként módosítja az adott alkalmazáshoz. 
@@ -162,9 +162,9 @@ ahol
 
 Ha már nincs rá szükség, törölheti az erőforráscsoportot, a virtuális gépet és a kapcsolódó erőforrásokat. Az erőforráscsoport törlésével törli a konvertált rendszerképhez társított csomópontok regisztrációját. 
 
-Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez.
+Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza a **Törlés** lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez.
 
-A létrehozott Fortanix enklávé-kezelő fiók törléséhez nyissa meg az enklávé-kezelő [fiókok lapját](https://em.fortanix.com/accounts) . Vigye a kurzort a törölni kívánt fiók fölé. Válassza a jobb felső sarokban található függőleges fekete pontokat, és válassza a **fiók törlése**lehetőséget.
+A létrehozott Fortanix enklávé-kezelő fiók törléséhez nyissa meg az enklávé-kezelő [fiókok lapját](https://em.fortanix.com/accounts) . Vigye a kurzort a törölni kívánt fiók fölé. Válassza a jobb felső sarokban található függőleges fekete pontokat, és válassza a **fiók törlése** lehetőséget.
 
   ![delete](media/how-to-fortanix-enclave-manager/delete-account.png)
 
@@ -174,4 +174,4 @@ Ebben a rövid útmutatóban a Fortanix-eszközök használatával alakíthatja 
 
 További információ az Azure bizalmas számítástechnikai kínálatáról: az [Azure bizalmas számítástechnika áttekintése](overview.md)
 
- Megtudhatja, hogyan hajthat végre hasonló feladatokat más, harmadik féltől származó ajánlatokkal az Azure-ban, például a [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) és a [Scone](https://sconedocs.github.io).  
+ Megtudhatja, hogyan hajthat végre hasonló feladatokat más, harmadik féltől származó ajánlatokkal az Azure-ban, például a [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) és a [Scone](https://sconedocs.github.io).

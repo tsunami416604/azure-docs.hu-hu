@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e7e140e26da79475bea032c8190ee64740370d04
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6c565be3aea43fc4dc86fd793e0dc2dea0b08d4c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312867"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563749"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rövid útmutató: Azure Notification hub létrehozása az Azure CLI használatával
 
@@ -27,12 +27,12 @@ Az Azure Notification Hubs egy egyszerűen használható és kibővített lekül
 
 Ebben a rövid útmutatóban egy értesítési központot hoz létre az Azure CLI használatával. Az első szakasz egy Notification Hubs névtér létrehozásának lépéseit ismerteti. A második szakasz egy értesítési központ meglévő névtérben való létrehozásának lépéseit ismerteti. Azt is megtudhatja, hogyan hozhat létre egyéni hozzáférési szabályzatot.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!IMPORTANT]
-> Notification Hubs az Azure CLI 2.0.67 vagy újabb verzióját igényli. Futtassa az az [Version](/cli/azure/reference-index?#az_version) parancsot, és keresse meg a telepített verziót és a függő könyvtárakat. A legújabb verzióra való frissítéshez futtassa az [az upgrade](/cli/azure/reference-index?#az_upgrade)parancsot.
+> Notification Hubs az Azure CLI 2.0.67 vagy újabb verzióját igényli. Futtassa az [az version](/cli/azure/reference-index#az_version) parancsot a telepített verzió és a függő kódtárak megkereséséhez. A legújabb verzióra az [az upgrade](/cli/azure/reference-index#az_upgrade) paranccsal frissíthet.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

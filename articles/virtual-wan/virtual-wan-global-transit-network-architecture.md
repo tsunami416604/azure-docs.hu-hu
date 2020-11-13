@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: e3a0eaeebbc0659b217051c6e98d67803896f2e1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102323"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563732"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális átviteli hálózati architektúra és virtuális WAN
 
@@ -127,7 +127,7 @@ Ez a jelző akkor látható, ha a felhasználó szerkeszt egy virtuális hálóz
 
 Az Azure Virtual WAN-hubok összekötik az összes hálózati végpontot a hibrid hálózaton, és lehetséges, hogy az összes átviteli hálózati forgalom megjelenik. A virtuális WAN-hubok biztonságos virtuális hubokba alakíthatók, ha a Azure Firewallt a VWAN-hubokon belül telepíti, hogy engedélyezze a felhőalapú biztonságot, a hozzáférést és a házirend-vezérlést. A virtuális WAN-hubokban található Azure-tűzfalak összehangolása a Azure Firewall Manager által végezhető el.
 
-A [Azure Firewall Manager](https://go.microsoft.com/fwlink/?linkid=2107683) biztosítja a globális átviteli hálózatok biztonságának kezeléséhez és méretezéséhez szükséges képességeket. A Azure Firewall Manager lehetővé teszi, hogy központilag kezelhesse az útválasztást, a globális házirendek felügyeletét, a speciális internetes biztonsági szolgáltatásokat harmadik felekkel, valamint a Azure Firewall.
+A [Azure Firewall Manager](../firewall-manager/index.yml) biztosítja a globális átviteli hálózatok biztonságának kezeléséhez és méretezéséhez szükséges képességeket. A Azure Firewall Manager lehetővé teszi, hogy központilag kezelhesse az útválasztást, a globális házirendek felügyeletét, a speciális internetes biztonsági szolgáltatásokat harmadik felekkel, valamint a Azure Firewall.
 
 ![biztonságos virtuális központ Azure Firewall](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
@@ -171,10 +171,10 @@ Ha a virtuális központ már megtanulta egy alapértelmezett útvonalat (a BGP-
 > Jelenleg nincs lehetőség a helyszíni tűzfal vagy a Azure Firewall (és a megbízható biztonsági szolgáltató) kiválasztására a virtuális hálózatok, ágakból vagy felhasználókból származó, interneten keresztül kötött forgalomhoz. Az Azure Firewall Manager beállításban megismert alapértelmezett útvonal mindig előnyben részesített az egyik ág által megismert alapértelmezett útvonalon.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre egy virtuális WAN-kapcsolaton keresztüli kapcsolatokat, és telepítse a Azure Firewallt az VWAN hub (ok) ban.
 
 * [Helyek közötti kapcsolatok virtuális WAN használatával](virtual-wan-site-to-site-portal.md)
 * [ExpressRoute-kapcsolatok virtuális WAN használatával](virtual-wan-expressroute-portal.md)
-* [Azure Firewall Manager az Azure FW üzembe helyezéséhez a VWAN-ben](https://go.microsoft.com/fwlink/?linkid=2107683)
+* [Azure Firewall Manager az Azure FW üzembe helyezéséhez a VWAN-ben](../firewall-manager/index.yml)

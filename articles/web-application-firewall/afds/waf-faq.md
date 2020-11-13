@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 0ba0cbbccd1f4a9bc8ff8a4895e238c9150c9b17
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5b60082db53b458adc53ac23d98731ad1c97b52b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413071"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563647"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Gyakori kérdések az Azure-webalkalmazási tűzfalról az Azure bejárati szolgáltatásában
 
@@ -55,7 +55,7 @@ A háttérbeli IP-Access Control listát úgy is konfigurálhatja, hogy csak a k
 
 ## <a name="which-azure-waf-options-should-i-choose"></a>Mely Azure WAF-beállításokat válasszam?
 
-A WAF-szabályzatok az Azure-ban való alkalmazása két lehetőséget kínál. A WAF az Azure bejárati ajtó egy globálisan elosztott, peremhálózati biztonsági megoldás. A Application Gateway WAF egy regionális, dedikált megoldás. Javasoljuk, hogy válasszon egy megoldást a teljes teljesítmény-és biztonsági követelmények alapján. További információ: terheléselosztás [Az Azure Application Delivery Suite](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite)szolgáltatással.
+A WAF-szabályzatok az Azure-ban való alkalmazása két lehetőséget kínál. A WAF az Azure bejárati ajtó egy globálisan elosztott, peremhálózati biztonsági megoldás. A Application Gateway WAF egy regionális, dedikált megoldás. Javasoljuk, hogy válasszon egy megoldást a teljes teljesítmény-és biztonsági követelmények alapján. További információ: terheléselosztás [Az Azure Application Delivery Suite](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md)szolgáltatással.
 
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Minden integrált platformon ugyanazokat az WAF funkciókat támogatja?
@@ -74,7 +74,7 @@ Az azonos ügyféltől érkező kérések gyakran ugyanahhoz az előtérben lév
 
 Azonban előfordulhat, hogy az azonos ügyféltől érkező kérések egy másik, a számlálóra vonatkozó korlátot nem frissítő bejárati kiszolgálótól érkeznek. Előfordulhat például, hogy az ügyfél új kapcsolatokat nyit meg az egyes kérésekhez, és a küszöbérték alacsony. Ebben az esetben az új bejárati kiszolgálóra irányuló első kérésnek meg kell felelnie a határérték-ellenőrzési értéknek. A díjszabási küszöbérték általában magas értékre van állítva, hogy az ügyfél IP-címéről érkező szolgáltatásmegtagadási támadások elleni védekezést végezzen. Nagyon alacsony küszöbérték esetén előfordulhat, hogy a küszöbérték feletti további kérelmeket is láthat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg az [Azure webalkalmazási tűzfalat](../overview.md).
 - További információ az [Azure bejáratáról](../../frontdoor/front-door-overview.md).

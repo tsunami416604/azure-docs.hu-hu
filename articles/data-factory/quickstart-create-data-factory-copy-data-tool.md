@@ -1,6 +1,6 @@
 ---
 title: Adatmásolás az Azure Adatok másolása eszköz használatával
-description: Létrehozhat egy Azure-beli adat-előállítót, majd az Adatok másolása eszközzel másolhat adatokat egy Azure Blob Storage-beli helyről egy másik helyre.
+description: Hozzon létre egy Azure Data Factory, majd a Adatok másolása eszközzel másolja át az adatait az Azure Blob Storage egyik helyéről egy másik helyre.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 24ebd9a89f94d062672ec7246163abb93396813f
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 282917a6bbf7edb962a87ad87810adde56206d97
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555961"
+ms.locfileid: "94564718"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Gyors útmutató: az Adatok másolása eszközzel másolhatja az Adatmásolást
 
@@ -43,7 +43,7 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
 1. Az **Új data factory** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
  
-   Az Azure-beli adatgyár nevének *globálisan egyedinek* kell lennie. Ha a következő hiba jelenik meg, módosítsa az adatgyár nevét (például **&lt; sajátneve &gt; ADFTutorialDataFactory** ), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   A Azure Data Factory nevének *globálisan egyedinek* kell lennie. Ha a következő hiba jelenik meg, módosítsa az adatgyár nevét (például **&lt; sajátneve &gt; ADFTutorialDataFactory** ), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
    ![Hibaüzenet, ha egy név nem érhető el](./media/doc-common-process/name-not-available-error.png)
 1. **Előfizetés:** válassza ki azt az Azure-előfizetést, amelyben az adat-előállítót létre szeretné hozni. 

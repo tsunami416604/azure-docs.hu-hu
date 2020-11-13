@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: aa3d14be3a7a9392ca721fa3de52b8f92dbe986e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2ea833b72b9522cdfca836a7b13f7b411402103e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098144"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562695"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-dbs-api-for-mongodb-using-azure-cli"></a>Erőforrás-zárolás létrehozása Azure Cosmos DB API-MongoDB az Azure CLI használatával
 [!INCLUDE[appliesto-mongodb-api](../../../includes/appliesto-mongodb-api.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.9.1 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+- Ehhez a cikkhez az Azure CLI 2.9.1 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 > [!IMPORTANT]
 > Az erőforrás-zárolások nem működnek a felhasználók által a MongoDB SDK, a Mongoshell, a bármely eszköz vagy az Azure Portal használatával összekapcsolt módosítások esetében, kivéve, ha a Cosmos DB fiókot az `disableKeyBasedMetadataWriteAccess` engedélyezett tulajdonsággal először zárolták. Ha többet szeretne megtudni a tulajdonság engedélyezéséről, tekintse meg az SDK-k [módosításainak megelőzését](../../../role-based-access-control.md#prevent-sdk-changes)ismertető témakört.
@@ -32,7 +32,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az Lock Create](/cli/azure/lock#az-lock-create) | Zárolást hoz létre. |
 | [az Lock List](/cli/azure/lock#az-lock-list) | Zárolási információk listázása. |
@@ -41,8 +41,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 ## <a name="next-steps"></a>Következő lépések
 
--[Erőforrások zárolása a váratlan módosítások megelőzése érdekében](../../../../azure-resource-manager/management/lock-resources.md)
+- [Erőforrások zárolása a váratlan módosítások megelőzése érdekében](../../../../azure-resource-manager/management/lock-resources.md)
 
--[Azure Cosmos db parancssori felület dokumentációja](/cli/azure/cosmosdb).
+- [Azure Cosmos db parancssori felület dokumentációja](/cli/azure/cosmosdb).
 
--[Azure Cosmos db CLI GitHub-tárház](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
+- [Azure Cosmos db CLI GitHub-tárház](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).

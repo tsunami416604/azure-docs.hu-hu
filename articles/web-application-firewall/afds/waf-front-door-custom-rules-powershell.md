@@ -7,19 +7,19 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: 40f0195ced375da09891eb577bd81f36b2f37cba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a0e262db9f5c37189a589eefc451a88dd5ea8c6
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005548"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563409"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Webalkalmazási tűzfal házirend konfigurálása Azure PowerShell használatával
 
 Az Azure webalkalmazási tűzfal (WAF) szabályzata meghatározza a szükséges ellenőrzéseket, amikor egy kérés érkezik a bejárati ajtón.
 Ez a cikk bemutatja, hogyan konfigurálhat olyan WAF szabályzatot, amely néhány egyéni szabályt és az Azure által felügyelt alapértelmezett szabálykészlet használatát teszi lehetővé.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,9 +27,9 @@ Mielőtt elkezdi a díjszabási szabályzat beállítását, állítsa be a Powe
 
 ### <a name="set-up-your-powershell-environment"></a>A PowerShell-környezet beállítása
 
-Az Azure PowerShell olyan parancsmagok készletét kínálja, amelyek az [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modellt használják az Azure-erőforrások kezeléséhez. 
+Az Azure PowerShell olyan parancsmagok készletét kínálja, amelyek az [Azure Resource Manager](../../azure-resource-manager/management/overview.md) modellt használják az Azure-erőforrások kezeléséhez. 
 
-Az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az oldalon megjelenő utasításokat, és jelentkezzen be az Azure-beli hitelesítő adataival, és telepítse az az PowerShell-modult.
+Az [Azure PowerShellt](/powershell/azure/) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az oldalon megjelenő utasításokat, és jelentkezzen be az Azure-beli hitelesítő adataival, és telepítse az az PowerShell-modult.
 
 #### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -110,7 +110,7 @@ Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használ
 > [!NOTE]
 > A *WebApplicationFirewallPolicyLink* tulajdonságot csak egyszer kell beállítania, hogy egy biztonsági szabályzatot egy előtér-előtérben csatoljon. A következő házirend-frissítéseket a rendszer automatikusan alkalmazza az előtérben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bejárati ajtóról](../../frontdoor/front-door-overview.md) 
 - További információ a [WAF a bejárati ajtóval](afds-overview.md)

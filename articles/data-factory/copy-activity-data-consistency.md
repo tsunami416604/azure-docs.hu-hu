@@ -11,23 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: 55db5cf62e2e4ba2844a47ad405afa88349dc8fd
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e7c66518cd62ef1debd8ceb1c38ba93101c8395d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634912"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565653"
 ---
-#  <a name="data-consistency-verification-in-copy-activity-preview"></a>Adatkonzisztencia-ellenőrzés a másolási tevékenységben (előzetes verzió)
+#  <a name="data-consistency-verification-in-copy-activity"></a>Adatkonzisztencia-ellenőrzés a másolási tevékenységben
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ha a forrásról a célhelyre helyezi át az adatátvitelt, Azure Data Factory másolási tevékenység lehetővé teszi további adatkonzisztencia-ellenőrzés elvégzését, hogy az adatok ne legyenek csak a forrásról a célhelyre, hanem konzisztensek legyenek a forrás-és a célhely-tároló között. Ha inkonzisztens fájlok találhatók az adatáthelyezés során, megszakíthatja a másolási tevékenységet, vagy folytathatja a másolást. ehhez engedélyezze a hibatűrési beállítást az inkonzisztens fájlok kihagyásához. A kihagyott fájlnevek lekéréséhez engedélyezze a munkamenet-napló beállításait a másolási tevékenységben. 
-
-> [!IMPORTANT]
-> Ez a funkció jelenleg előzetes verzióban érhető el, és a következő korlátozásokkal dolgozunk aktívan:
->- Ha engedélyezi a munkamenet-napló beállítását a másolási tevékenységben a kihagyott inkonzisztens fájlok naplózásához, a naplófájl teljessége nem lehet 100%-ban garantált, ha a másolási tevékenység meghiúsult.
->- A munkamenet-napló csak inkonzisztens fájlokat tartalmaz, ahol a sikeresen másolt fájlok nincsenek naplózva eddig.
+Ha a forrásról a célhelyre helyezi át az adatátvitelt, Azure Data Factory másolási tevékenység lehetővé teszi további adatkonzisztencia-ellenőrzés elvégzését, hogy az adatok ne legyenek csak a forrásról a célhelyre, hanem konzisztensek legyenek a forrás-és a célhely-tároló között. Ha inkonzisztens fájlok találhatók az adatáthelyezés során, megszakíthatja a másolási tevékenységet, vagy folytathatja a másolást. ehhez engedélyezze a hibatűrési beállítást az inkonzisztens fájlok kihagyásához. A kihagyott fájlnevek lekéréséhez engedélyezze a munkamenet-napló beállításait a másolási tevékenységben. További részletekért tekintse meg a [munkamenet-napló a másolási tevékenységben](copy-activity-log.md) című témakört.
 
 ## <a name="supported-data-stores-and-scenarios"></a>Támogatott adattárak és-forgatókönyvek
 
@@ -60,13 +55,19 @@ Az alábbi példa egy JSON-definíciót biztosít az adatkonzisztencia-ellenőrz
     "skipErrorFile": { 
         "dataInconsistency": true 
     }, 
-    "logStorageSettings": { 
-        "linkedServiceName": { 
-            "referenceName": "ADLSGen2_storage", 
-            "type": "LinkedServiceReference" 
-        }, 
-        "path": "/sessionlog/" 
-} 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+                "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            }
+        }
+    }
 } 
 ```
 
@@ -74,7 +75,7 @@ Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | -------- 
 validateDataConsistency | Ha a True értéket állítja be ehhez a tulajdonsághoz, a bináris fájlok másolásakor a másolási tevékenység a forrás és a cél tároló közötti adatkonzisztencia biztosítása érdekében minden bináris fájl esetében a fájl méretét, lastModifiedDate és MD5 ellenőrzőösszegét fogja ellenőrizni. Táblázatos adatok másolásakor a másolási tevékenység a feladatok befejezése után ellenőrizni fogja a sorok teljes számát, így biztosítva, hogy a forrásból beolvasott sorok teljes száma megegyezzen a célhelyre másolt sorok számával és a kihagyott inkompatibilis sorok számával. Vegye figyelembe, hogy a másolási teljesítmény a beállítás engedélyezésével lesz hatással.  | Igaz<br/>False (alapértelmezett) | Nem
 dataInconsistency | A skipErrorFile tulajdonság táska egyik kulcs-érték párja, amely meghatározza, hogy ki szeretné-e hagyni a inkonzisztens fájlokat. <br/> -True (igaz): az inkonzisztens fájlok kihagyásával szeretné átmásolni a többit.<br/> -False (hamis): a másolási tevékenységet a fájl inkonzisztens leállítása után szeretné megszakítani.<br/>Ügyeljen arra, hogy ez a tulajdonság csak akkor érvényes, ha bináris fájlokat másol, és a validateDataConsistency értéke TRUE (igaz).  | Igaz<br/>False (alapértelmezett) | Nem
-logStorageSettings | Olyan tulajdonságok csoportja, amelyek lehetővé teszik a munkamenet naplójának a kihagyott fájlok naplóba való beadását. | | Nem
+logSettings | Olyan tulajdonságok csoportja, amelyek lehetővé teszik a munkamenet naplójának a kihagyott fájlok naplóba való beadását. | | Nem
 linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása a munkamenet naplófájljainak tárolására. | Egy `AzureBlobStorage` vagy több `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájlok tárolásához használt példányra hivatkozik. | Nem
 path | A naplófájlok elérési útja. | Itt adhatja meg a naplófájlok tárolásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
@@ -95,7 +96,7 @@ A másolási tevékenység teljes futtatása után megtekintheti az adatkonziszt
             "filesWritten": 1, 
             "filesSkipped": 2, 
             "throughput": 297,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "dataConsistencyVerification": 
            { 
                 "VerificationResult": "Verified", 

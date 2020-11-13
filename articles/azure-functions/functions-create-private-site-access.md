@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 6c87fcf4f56b7092436fa16658a72ead24d9fec2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 38bc0ec546526cd0c6631b7cd5b70753c3235d18
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423028"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563987"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Oktatóanyag: Azure Functions Private site-hozzáférés létrehozása
 
@@ -172,7 +172,7 @@ A [privát hely](functions-networking-options.md#private-site-access) elérésé
 1. A _hozzáférési korlátozások_ lap most már azt mutatja, hogy van új korlátozás. Eltarthat néhány másodpercig, amíg a _végpont állapota_ le lesz tiltva a kiépítés útján, hogy engedélyezve legyen.
 
     >[!IMPORTANT]
-    > Minden Function alkalmazáshoz egy [speciális eszköz-(kudu-) hely](../app-service/app-service-ip-restrictions.md#scm-site) tartozik, amely a Function app üzemelő példányának kezelésére szolgál. A webhely a következőhöz hasonló URL-címről érhető el: `<FUNCTION_APP_NAME>.scm.azurewebsites.net` . A hozzáférési korlátozások engedélyezése a kudu-helyen megakadályozza a projekt kódjának helyi fejlesztői munkaállomásról történő telepítését, majd az üzembe helyezés elvégzéséhez a virtuális hálózaton belül ügynökre van szükség.
+    > Minden Function alkalmazáshoz egy [speciális eszköz-(kudu-) hely](../app-service/app-service-ip-restrictions.md#restrict-access-to-an-scm-site) tartozik, amely a Function app üzemelő példányának kezelésére szolgál. A webhely a következőhöz hasonló URL-címről érhető el: `<FUNCTION_APP_NAME>.scm.azurewebsites.net` . A hozzáférési korlátozások engedélyezése a kudu-helyen megakadályozza a projekt kódjának helyi fejlesztői munkaállomásról történő telepítését, majd az üzembe helyezés elvégzéséhez a virtuális hálózaton belül ügynökre van szükség.
 
 ## <a name="access-the-functions-app"></a>A functions alkalmazás elérése
 
@@ -223,7 +223,7 @@ A függvény elérése egy webböngészőn keresztül (az Azure Bastion szolgál
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 > [!div class="nextstepaction"]

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
-ms.openlocfilehash: 6ab3e1e063409832de839da26eba80efd8b3f4d5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8c7cb1e9f39b1de7897da29467a607953b42bb24
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344805"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565738"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>Egyéni parancsok alkalmazás exportálása távoli képességként
 
@@ -35,7 +35,7 @@ Ebből a cikkből megtudhatja, hogyan exportálhat egy egyéni parancs-alkalmaz�
 ## <a name="configure-an-application-to-be-exposed-as-a-remote-skill"></a>Távoli képességként elérhetővé tett alkalmazás konfigurálása
 
 ### <a name="application-level-settings"></a>Alkalmazás szintű beállítások
-1. A bal oldali panelen válassza a **Beállítások**  >  **távoli képességek**lehetőséget.
+1. A bal oldali panelen válassza a **Beállítások**  >  **távoli képességek** lehetőséget.
 1. A **távoli képességek engedélyezve** váltógomb beállítása be értékre.
 
 ### <a name="authentication-to-skills"></a>A szaktudás hitelesítése
@@ -51,9 +51,9 @@ Ebből a cikkből megtudhatja, hogyan exportálhat egy egyéni parancs-alkalmaz�
 
 Lehetősége van kiválasztani, hogy mely parancsokat kívánja exportálni távoli képességeken keresztül.
 
-1. Ha készségeket szeretne közzétenni, válassza az **új parancs engedélyezése** a **parancsok engedélyezése**lehetőséggel lehetőséget.
+1. Ha készségeket szeretne közzétenni, válassza az **új parancs engedélyezése** a **parancsok engedélyezése** lehetőséggel lehetőséget.
 1. A legördülő listából válassza ki a hozzáadni kívánt parancsot.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-triggering-utterances-for-commands"></a>A parancsok kiváltó hosszúságú kimondott szöveg konfigurálása
 Az egyéni parancsok a parancsokhoz konfigurált példa mondatokat használják a hosszúságú kimondott szöveg kiváltó képességek létrehozásához. Ezeket a **kiváltó hosszúságú kimondott szöveg** a rendszer a **kiosztó** szakaszt a [**szakértelem jegyzékfájljának**](https://microsoft.github.io/botframework-solutions/skills/handbook/manifest/)létrehozásához használja.
@@ -64,11 +64,11 @@ Szerzőként érdemes lehet megszabni, hogy a példák milyen **mondatokat** has
     > [!div class="mx-imgBorder"]
     > ![Engedélyezett parancs szerkesztése a szakértelemhez](media/custom-commands/skill-edit-enabled-command.png)
 
-1. Ezután a kihagyni kívánt példa mondatokban kattintson a **jobb gombbal**a  >  **példa mondat letiltása**elemre.
+1. Ezután a kihagyni kívánt példa mondatokban kattintson a **jobb gombbal** a  >  **példa mondat letiltása** elemre.
     > [!div class="mx-imgBorder"]
     > ![Példák letiltása](media/custom-commands/skill-disable-example-sentences.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 1. Megfigyelheti, hogy ebben az ablakban nem adhat hozzá új példát. Ha erre szükség van, folytassa a kilépés a beállítások szakaszból, és válassza ki a megfelelő parancsot a **parancsok** alapján. Ezen a ponton az új bejegyzést felveheti a **példa mondatok** szakaszba. Ez a módosítás automatikusan megjelenik a parancs távoli képességek beállításainak értékében.
 
 > [!IMPORTANT]
@@ -82,10 +82,10 @@ Szerzőként érdemes lehet megszabni, hogy a példák milyen **mondatokat** has
 > Ha **bármilyen módosítást** végzett az alkalmazásban, akkor újra közzé kell tennie az alkalmazást, hogy a legutóbbi módosítások tükrözzék a jegyzékfájlt.
 
 > [!NOTE]
-> Ha az alkalmazás közzétételével kapcsolatos problémákba ütközik, és a hiba a hosszúságú kimondott szöveg-t kiváltó készségekre irányítja, ellenőrizze újra az **engedélyezett parancsok**konfigurációját. Az összes elérhető parancsnak rendelkeznie kell legalább egy érvényes kiváltó kiírással.
+> Ha az alkalmazás közzétételével kapcsolatos problémákba ütközik, és a hiba a hosszúságú kimondott szöveg-t kiváltó készségekre irányítja, ellenőrizze újra az **engedélyezett parancsok** konfigurációját. Az összes elérhető parancsnak rendelkeznie kell legalább egy érvényes kiváltó kiírással.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [CI-/CD-folyamat engedélyezése a Custom Commands-alkalmazás számára](./how-to-custom-commands-deploy-cicd.md)
+> [Parancs frissítése az ügyfélről](./how-to-custom-commands-update-command-from-client.md)

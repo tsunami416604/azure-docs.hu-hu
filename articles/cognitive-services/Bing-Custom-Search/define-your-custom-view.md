@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 52819caeb833eb475c8ea2c476ef5ba27681a50c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e8747b822916ba2c9ef7b45cc3cbbaa88d16dcb1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367556"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565789"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>A Bing Custom Search-élmény konfigurálása
 
@@ -24,7 +24,7 @@ ms.locfileid: "94367556"
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
 > Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
-Az egyéni keresési példány lehetővé teszi a keresési élmény testreszabását, hogy csak olyan webhelyekről tartalmazzon tartalmat, amelyekkel a felhasználók törődnek. Webes keresés helyett a Bing csak az Önt érdeklő webes szeleteket keresi. Az egyéni kívánalmaknak megfelelő webes keresés létrehozásához használja a Bing Custom Search [portált](https://customsearch.ai).
+Az egyéni keresési példány lehetővé teszi a keresési élmény testreszabását, hogy csak olyan webhelyekről tartalmazzon tartalmat, amelyekkel a felhasználók törődnek. Webes keresés helyett a Bing csak az Önt érdeklő webes szeleteket keresi. Az egyéni kívánalmaknak megfelelő webes keresés létrehozásához használja a Bing Custom Search [portált](https://www.customsearch.ai).
 
 A portál lehetővé teszi, hogy olyan keresési példányt hozzon létre, amely meghatározza a Web: tartományok, aloldalak és weblapok szeleteit, amelyeket a Bingnek keresnie kell, és azokat, amelyeket nem kíván a keresésre használni. A portál arra is utalhat, hogy milyen tartalmat érdemes felvennie.
 
@@ -160,7 +160,7 @@ Ha a megfelelő szinten előfizetett az egyéni keresésre (lásd a [díjszabás
 - A szám növelése és lefokozása két rangsorolási beállításként.
 - Az egyes egyéni keresési példányok esetében az elvégezhető PIN-kódok maximális száma a 200-ra korlátozódik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni keresés meghívása](./search-your-custom-view.md)
 - [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)

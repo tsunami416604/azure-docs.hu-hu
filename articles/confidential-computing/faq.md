@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: cf90ff5b94eb03f76dffc8b64dd4d92a44ac20ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848908"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564106"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Gyakran ismételt kérdések az Azure bizalmas számítástechnikai szolgáltatásáról
 
@@ -32,14 +32,14 @@ Az alábbi módokon telepítheti a DCsv2 virtuális gépeket:
 
 **Az operációsrendszer-lemezképek az Azure bizalmas számítástechnikai szolgáltatásával működnek?**
 
-Nem. A virtuális gépek csak az Ubuntu Server 18,04, az Ubuntu Server 16,04, a Windows Server 2019 Datacenter és a Windows Server 2016 Datacenter rendszerű 2. generációs operációs rendszereken telepíthetők. További információ a 2. generációs virtuális gépekről [Linux](../virtual-machines/linux/generation-2.md) és [Windows](../virtual-machines/windows/generation-2.md) rendszeren
+Nem. A virtuális gépek csak az Ubuntu Server 18,04, az Ubuntu Server 16,04, a Windows Server 2019 Datacenter és a Windows Server 2016 Datacenter rendszerű 2. generációs operációs rendszereken telepíthetők. További információ a 2. generációs virtuális gépekről [Linux](../virtual-machines/generation-2.md) és [Windows](../virtual-machines/generation-2.md) rendszeren
 
 **A DCsv2 virtuális gépek szürkén jelennek meg a portálon, és nem tudok kiválasztani egyet**
 
 A virtuális gép melletti információs buborék alapján különböző műveletek szükségesek:
-   -    **UnsupportedGeneration**: módosítsa a virtuális gép rendszerképének generációját "Gen2" értékre.
-   -    **NotAvailableForSubscription**: a régió még nem érhető el az előfizetéséhez. Válasszon a rendelkezésre álló régiók közül.
-   -    **InsufficientQuota**: [hozzon létre egy támogatási kérést a kvóta növeléséhez](../azure-portal/supportability/per-vm-quota-requests.md). Az ingyenes próbaverziós előfizetések esetében nincs kvóta a bizalmas számítástechnikai virtuális gépekhez. 
+   -    **UnsupportedGeneration** : módosítsa a virtuális gép rendszerképének generációját "Gen2" értékre.
+   -    **NotAvailableForSubscription** : a régió még nem érhető el az előfizetéséhez. Válasszon a rendelkezésre álló régiók közül.
+   -    **InsufficientQuota** : [hozzon létre egy támogatási kérést a kvóta növeléséhez](../azure-portal/supportability/per-vm-quota-requests.md). Az ingyenes próbaverziós előfizetések esetében nincs kvóta a bizalmas számítástechnikai virtuális gépekhez. 
 
 **A DCsv2 virtuális gépek nem jelennek meg, amikor megpróbálok megkeresni őket a portál méretének választójában**
 

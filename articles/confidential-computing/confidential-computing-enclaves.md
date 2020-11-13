@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 9/3/2020
 ms.author: JenCook
-ms.openlocfilehash: a7e3ade66aa4ebf7584e03b75f85c48b44537d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 565f4971fffde1cbeb2234b43aaad5cce73b5404
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995857"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564378"
 ---
 # <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Azure bizalmas számítástechnikai virtuális gépek (VM) – áttekintés
 
@@ -29,7 +29,7 @@ Az Azure bizalmas számítástechnikai virtuális gépeken a CPU hardverének eg
 
 Az Azure bizalmas számítástechnikai infrastruktúrája jelenleg a virtuális gépek (VM-EK) speciális SKU-jának részét alkotja. Ezek a virtuális gépek az Intel-processzorokon futnak a szoftveres Guard bővítménnyel (Intel SGX ENKLÁVÉHOZ). Az [Intel SGX enklávéhoz](https://intel.com/sgx) az a komponens, amely lehetővé teszi a bizalmas számítástechnikai szolgáltatással való fokozott védelmet. 
 
-Napjainkban az Azure az Intel SGX ENKLÁVÉHOZ technológiára épülő [DCsv2-sorozatot](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) kínálja a hardveres enklávé létrehozásához. Létrehozhat biztonságos enklávé-alapú alkalmazásokat az DCsv2-sorozatú virtuális gépeken való futtatáshoz az alkalmazásadatok és a használatban lévő kódok védelme érdekében. 
+Napjainkban az Azure az Intel SGX ENKLÁVÉHOZ technológiára épülő [DCsv2-sorozatot](../virtual-machines/dcv2-series.md) kínálja a hardveres enklávé létrehozásához. Létrehozhat biztonságos enklávé-alapú alkalmazásokat az DCsv2-sorozatú virtuális gépeken való futtatáshoz az alkalmazásadatok és a használatban lévő kódok védelme érdekében. 
 
 [További](virtual-machine-solutions.md) információ az Azure bizalmas számítástechnikai virtuális gépek hardveres megbízható enklávékkal történő üzembe helyezéséről.
 
@@ -39,7 +39,7 @@ Az enklávék a hardver processzorának és memóriájának biztonságos részei
 
 Alapvetően úgy gondolja, hogy egy enklávé biztonságos mező. A mezőbe a titkosított kódot és az adatmezőket helyezheti el. A mező kívülről nem láthat semmit. Az enklávénak egy kulcsot kell adnia az adatvisszafejtéshez, majd újra fel kell dolgoznia és titkosítania kell az adatközpontot az enklávéból való kiküldésük előtt.
 
-Az egyes enklávék számára a titkosított oldal gyorsítótára (EPC) mérete határozza meg, hogy az egyes enklávék mennyi memóriát tárolhatnak. A nagyobb DCsv2 virtuális gépek több EPC memóriával rendelkeznek. Olvassa el a [DCsv2-specifikációk](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) lapot a virtuális gép maximális számaként.
+Az egyes enklávék számára a titkosított oldal gyorsítótára (EPC) mérete határozza meg, hogy az egyes enklávék mennyi memóriát tárolhatnak. A nagyobb DCsv2 virtuális gépek több EPC memóriával rendelkeznek. Olvassa el a [DCsv2-specifikációk](../virtual-machines/dcv2-series.md) lapot a virtuális gép maximális számaként.
 
 
 

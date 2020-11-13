@@ -7,18 +7,18 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 4b8aa72c7b77da8fdde9925325587b67411de8d8
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 23b893bad591af5f1e923b68e8d30453f859792b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506413"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563477"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Webalkalmazási tűzfal sebességének korlátozási szabályának konfigurálása Azure PowerShell használatával
 Az Azure-beli előtérben lévő Azure webalkalmazási tűzfal (WAF) díjszabási szabálya az ügyfelek által az egyperces időtartam alatt engedélyezett kérelmek számát szabályozza.
 Ez a cikk bemutatja, hogyan konfigurálhat egy WAF-korlátozási szabályt, amely meghatározza az ügyfelek által az Azure PowerShell használatával az URL-címben szereplő */promo* tartalmazó webalkalmazásoknak engedélyezett kérelmek számát.
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > Minden ügyfél IP-címére érvényesek a díjszabási korlátok. Ha több ügyfél fér hozzá a bejárati ajtóhoz különböző IP-címekről, a rendszer a saját díjszabási korlátját alkalmazza.
@@ -26,9 +26,9 @@ Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingy
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt elkezdi a díjszabási szabályzat beállítását, állítsa be a PowerShell-környezetet, és hozzon létre egy bejárati profilt.
 ### <a name="set-up-your-powershell-environment"></a>A PowerShell-környezet beállítása
-Az Azure PowerShell olyan parancsmagok készletét kínálja, amelyek az [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modellt használják az Azure-erőforrások kezeléséhez. 
+Az Azure PowerShell olyan parancsmagok készletét kínálja, amelyek az [Azure Resource Manager](../../azure-resource-manager/management/overview.md) modellt használják az Azure-erőforrások kezeléséhez. 
 
-Az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az oldalon megjelenő utasításokat, és jelentkezzen be az Azure-beli hitelesítő adataival, és telepítse az az PowerShell-modult.
+Az [Azure PowerShellt](/powershell/azure/) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az oldalon megjelenő utasításokat, és jelentkezzen be az Azure-beli hitelesítő adataival, és telepítse az az PowerShell-modult.
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Kapcsolódás az Azure-hoz egy interaktív párbeszédablak a bejelentkezéshez
 ```
@@ -105,6 +105,4 @@ Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használ
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [bejárati ajtóról](../../frontdoor/front-door-overview.md). 
-
-
+- További információ a [bejárati ajtóról](../../frontdoor/front-door-overview.md).

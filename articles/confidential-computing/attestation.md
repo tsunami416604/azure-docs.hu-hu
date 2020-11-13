@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 9/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 70a17aacde67744eae74ca263200f2c65fbd300a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86856d1f66b5b7d723c907c17d7179ffcd2b82ab
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995851"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565670"
 ---
 # <a name="attesting-sgx-enclaves"></a>SGX ENKLÁVÉHOZ enklávék igazolása
 
@@ -30,11 +30,11 @@ Az igazolás lehetővé teszi, hogy a függő entitás nagyobb megbízhatóságo
 
 Az igazolást olyan biztonságos igazolási szolgáltatás használatával kell megvalósítani, amely kompatibilis a rendszerszoftverrel és a szilíciummal. Néhány példa a használható szolgáltatásokra
 
-- [Microsoft Azure igazolás (előzetes verzió)](https://docs.microsoft.com/azure/attestation/overview) vagy
+- [Microsoft Azure igazolás (előzetes verzió)](../attestation/overview.md) vagy
 - [Az Intel tanúsítvány-és kiépítési szolgáltatásai](https://software.intel.com/sgx/attestation-services)
 
 
 mindkettő kompatibilis az Azure bizalmas számítástechnikai Intel SGX ENKLÁVÉHOZ infrastruktúrával. 
 
 ## <a name="next-steps"></a>Következő lépések
-Próbálja ki az [enklávé-kompatibilis alkalmazások Microsoft Azure igazolási mintáit](https://docs.microsoft.com/samples/azure-samples/microsoft-azure-attestation/sample-code-for-intel-sgx-attestation-using-microsoft-azure-attestation/).
+Próbálja ki az [enklávé-kompatibilis alkalmazások Microsoft Azure igazolási mintáit](/samples/azure-samples/microsoft-azure-attestation/sample-code-for-intel-sgx-attestation-using-microsoft-azure-attestation/).

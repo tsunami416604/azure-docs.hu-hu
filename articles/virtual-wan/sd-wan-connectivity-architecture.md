@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: e3f6f947b86b1cb34fde66c62199336403037827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea9ddd05fe6fc745a3eefc29ab4f1d6aababc936
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828071"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564701"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>SD-WAN kapcsolati architektúra az Azure Virtual WAN-ral
 
@@ -44,9 +44,9 @@ A Virtual WAN használatával a felhasználók beszerezhetik az Azure Path Selec
 
 ## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>Közvetlen összekötő modell a NVA-in-VWAN-hub-vel
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="Közvetlen összekötő-modell":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="Közvetlen összekötő modell a NVA-in-VWAN-hub-vel":::
 
-Ez az architektúra-modell támogatja a harmadik féltől származó [hálózati virtuális berendezés (NVA) közvetlen telepítését a virtuális hubhoz](https://docs.microsoft.com/azure/virtual-wan/about-nva-hub). Ez lehetővé teszi, hogy azok az ügyfelek, akik a fiókirodát a virtuális központ ugyanazon NVA szeretnék csatlakoztatni, így kihasználhatják az Azure-beli számítási feladatokhoz való csatlakozáshoz szükséges teljes körű SD-WAN-képességeket. 
+Ez az architektúra-modell támogatja a harmadik féltől származó [hálózati virtuális berendezés (NVA) közvetlen telepítését a virtuális hubhoz](./about-nva-hub.md). Ez lehetővé teszi, hogy azok az ügyfelek, akik a fiókirodát a virtuális központ ugyanazon NVA szeretnék csatlakoztatni, így kihasználhatják az Azure-beli számítási feladatokhoz való csatlakozáshoz szükséges teljes körű SD-WAN-képességeket. 
 
 Több virtuális WAN-partner is dolgozott olyan élmény biztosításához, amely automatikusan konfigurálja a NVA a telepítési folyamat részeként. Ha a NVA a virtuális hubhoz lett kiépítve, a NVA szükséges további konfigurációkat az NVA Partners portálon vagy a felügyeleti alkalmazáson keresztül kell elvégezni. A NVA való közvetlen hozzáférés nem érhető el. Az Azure-beli virtuális WAN-hubhoz központilag üzembe helyezhető NVA kifejezetten a virtuális központban való használatra lettek tervezve. A VWAN hub NVA támogató partnerei, valamint a telepítési útmutatók a [virtuális WAN-partnerek](virtual-wan-locations-partners.md#partners-with-integrated-virtual-hub-offerings) című cikkben találhatók.
 
@@ -55,7 +55,7 @@ Ebben a modellben a kereskedelmi forgalom a valós idejű adatforgalmi jellemző
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Közvetett Interconnect-modell
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="Közvetlen összekötő-modell":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="Közvetett Interconnect-modell":::
 
 Ebben az architektúra-modellben az SD-WAN ág CPEs közvetetten csatlakoznak a virtuális WAN-hubokhoz. Ahogy az ábrán látható, egy SD-WAN virtuális CPE üzembe helyezése egy vállalati VNet történik. Ez a virtuális CPE az IPsec használatával csatlakozik a virtuális WAN hub (ok) hoz. A virtuális CPE SD-WAN-átjáróként szolgál az Azure-ban. Az Azure-beli számítási feladataik eléréséhez szükséges ágak a v-CPE-átjárón keresztül lesznek elérhetők.
 
@@ -63,7 +63,7 @@ Mivel az Azure-hoz való kapcsolódás a v-CPE-átjárón (NVA) keresztül tört
   
 ## <a name="managed-hybrid-wan-model"></a><a name="hybrid"></a>Felügyelt hibrid WAN-modell
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="Közvetlen összekötő-modell":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="Felügyelt hibrid WAN-modell":::
 
 Ebben az architektúrában a vállalatok a felügyelt SD-WAN-partner által kínált felügyelt SD-WAN szolgáltatást használhatják. Ez a modell hasonló a fent ismertetett közvetlen vagy közvetett modellekhez. Ebben a modellben azonban az SD-WAN kialakítását, a koordinálást és a műveleteket az SD-WAN szolgáltató biztosítja.
 

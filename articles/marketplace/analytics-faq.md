@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/10/2020
-author: shganesh-dev
-ms.author: shganesh
-ms.openlocfilehash: 55427f2a9b889c247708d130f651738c50f6bf5a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+author: sayantanroy83
+ms.author: sroy
+ms.openlocfilehash: 1b98948100c06868cd14f636f2049ca515fec18d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496925"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564804"
 ---
 # <a name="commercial-marketplace-analytics-common-questions"></a>Kereskedelmi piactér Analytics – gyakori kérdések
 
@@ -41,7 +41,7 @@ Miért érdemes ezt az üzenetet látni:
 - Ha ezt az üzenetet kapja, az azt jelenti, hogy rendelkezik analitikai adattal, de nem rendelkezik a kiválasztott számítási időszakra vonatkozó adattal. Válasszon másik számítási időszakot vagy hónapot a 2010 óta megjelenő összes érték megtekintéséhez.
 - Ha kiválasztott egy vagy több kategóriát a szűrő kijelölése különböző dimenziói közül, előfordulhat, hogy nem rendelkezik a kijelöléshez szükséges elemzési adatokkal. Próbálja meg alaphelyzetbe állítani a szűrőt, vagy adjon meg különböző beállításokat a szűrőből.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A partner Centerben elérhető elemzési jelentések áttekintését lásd: [Access Analytics-jelentések a kereskedelmi piactérhez a partner Centerben](./partner-center-portal/analytics.md).
 - További információ a megrendelésekről grafikus és letölthető formátumban:  [Orders Dashboard a kereskedelmi piactér elemzésében](orders-dashboard.md).

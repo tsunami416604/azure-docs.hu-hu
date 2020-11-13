@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 229c1d2aaab6029ccec3f8831f42a7ce8de2e31e
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555481"
+ms.locfileid: "94565908"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 
@@ -103,3 +103,4 @@ Látogasson el a [studióba](https://ml.azure.com), vagy Ismerje meg a különb�
   + [Jupyter notebookok használata számítási példányokon a & üzembe helyezési modelljeinek betanításához](tutorial-1st-experiment-sdk-setup.md)
   + [Az automatizált gépi tanulás használata a & üzembe helyezési modelljeinek betanításához](tutorial-first-experiment-automated-ml.md)  
   + [A Designer használata & üzembe helyezési modelljeinek betanításához](tutorial-designer-automobile-price-train-score.md)
+  + [A Studio használata biztonságos virtuális hálózaton](how-to-enable-studio-virtual-network.md)

@@ -1,15 +1,15 @@
 ---
-title: Az Azure monitor-riasztások általános riasztási sémája
+title: Azure Monitor riasztások általános riasztási sémája
 description: Az általános riasztási séma megismerése, miért érdemes használni, és hogyan kell engedélyezni
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: bb182f88a896be436e3981ff4e361010ee2655f6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: aa619976c8fa03b925d66e884ad03fc4e385693e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108830"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565602"
 ---
 # <a name="common-alert-schema"></a>Gyakori riasztási séma
 
@@ -19,9 +19,9 @@ Ez a cikk ismerteti a gyakori riasztási sémát, a használatának előnyeit é
 
 A Common Alert séma szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma. Az Azure-ban a három riasztási típust (metrikus, log és Activity log) a saját e-mail-sablonjai, webhook-sémái stb. is megkapta. A Common Alert séma használatával mostantól konzisztens sémával fogadhat riasztási értesítéseket.
 
-Minden riasztási példány leírja **az érintett erőforrást** , valamint **a riasztás okát**, és ezeket a példányokat az alábbi szakaszokban ismertetett általános séma ismerteti:
-* **Essentials**: az összes riasztási típussal közös **szabványosított mezők**összessége, amelyek leírják, hogy a riasztás **milyen erőforrást** tartalmaz, valamint a további gyakori riasztási metaadatokat (például a súlyosságot vagy a leírást). 
-* **Riasztási környezet**: olyan mezők összessége, amelyek leírják a **riasztás okát**, a **riasztás típusától**függően változó mezőkkel. Egy metrikai riasztás például olyan mezőkkel rendelkezhet, mint a metrika neve és a metrika értéke a riasztási környezetben, míg a tevékenység naplójának riasztása a riasztást kiváltó eseményről tartalmaz információt. 
+Minden riasztási példány leírja **az érintett erőforrást** , valamint **a riasztás okát** , és ezeket a példányokat az alábbi szakaszokban ismertetett általános séma ismerteti:
+* **Essentials** : az összes riasztási típussal közös **szabványosított mezők** összessége, amelyek leírják, hogy a riasztás **milyen erőforrást** tartalmaz, valamint a további gyakori riasztási metaadatokat (például a súlyosságot vagy a leírást). 
+* **Riasztási környezet** : olyan mezők összessége, amelyek leírják a **riasztás okát** , a **riasztás típusától** függően változó mezőkkel. Egy metrikai riasztás például olyan mezőkkel rendelkezhet, mint a metrika neve és a metrika értéke a riasztási környezetben, míg a tevékenység naplójának riasztása a riasztást kiváltó eseményről tartalmaz információt. 
 
 Az ügyfeleinktől származó tipikus integrációs forgatókönyvek a riasztási példánynak az érintett csapathoz való továbbítását foglalják magukban egy adott pivot (például erőforráscsoport) alapján, amely után a felelős csapat elkezdi a munkát. Az általános riasztási sémával szabványosított útválasztási logikával rendelkezhet a riasztási típusok között, ha kihasználja az alapvető mezőket, így a környezeti mezőket az érintett csapatok továbbra is kivizsgálják.
 
@@ -31,7 +31,7 @@ Ez azt jelenti, hogy lehetséges, hogy kevesebb integrációval rendelkezik, íg
 
 Az általános riasztási séma elsődlegesen a riasztási értesítésekben is megnyilvánulhat. A megjelenő fejlesztések az alábbi listában láthatók:
 
-| Művelet | Fejlesztések|
+| Műveletek | Fejlesztések|
 |:---|:---|
 | SMS | Konzisztens SMS-sablon az összes riasztási típushoz. |
 | E-mail | Konzisztens és részletes e-mail sablon, amely lehetővé teszi, hogy könnyedén diagnosztizálja a problémákat egy pillantással. Beágyazott mély – hivatkozások a riasztási példányra a Portálon és az érintett erőforráson gondoskodjon arról, hogy gyorsan beugorjon a Szervizelési folyamatba. |
@@ -118,7 +118,7 @@ Például a [Létrehozás vagy frissítés](/rest/api/monitor/actiongroups/creat
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Gyakori riasztási séma-definíciók webhookok/Logic Apps/Azure Functions/Automation Runbookok.](./alerts-common-schema-definitions.md)
 - [Megtudhatja, hogyan hozhat létre egy logikai alkalmazást, amely a gyakori riasztási sémát használja az összes riasztás kezeléséhez.](./alerts-common-schema-integrations.md)
