@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: f7b96bcebb2106e52c62426ca2b64f9305e09141
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 65d89436486940ad5239dd2c3e83401b82234a21
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515409"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555464"
 ---
 # <a name="creating-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
@@ -47,14 +47,9 @@ Az Azure szinapszis-munkaterület létrehozása után kétféleképpen nyithatja
 ## <a name="create-a-dedicated-sql-pool"></a>Dedikált SQL-készlet létrehozása
 
 1. A szinapszis Studióban a bal oldali ablaktáblán válassza az **Manage**  >  **SQL-készletek** kezelése lehetőséget.
-1. Válassza az **új** lehetőséget, és adja meg a következő beállításokat:
-
-    |Beállítás | Ajánlott érték | 
-    |---|---|---|
-    |**SQL-készlet neve**| **SQLDB1**|
-    |**Teljesítményszint**|**DW100C**|
-    |||
-
+1. **Új** kiválasztása
+1. Az **SQL-készlet neve** területen válassza a **SQLDB1** lehetőséget.
+1. A **teljesítmény szintjén** válassza a **DW100C** lehetőséget.
 1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A dedikált SQL-készlet néhány percen belül elkészül. A dedikált SQL-készlet egy dedikált SQL Pool-adatbázishoz van társítva, amely más néven **SQLDB1**.
 
 A dedikált SQL-készletek számlázható erőforrásokat használnak, amíg aktívak. A készletet később is szüneteltetheti a költségek csökkentése érdekében.
@@ -62,14 +57,10 @@ A dedikált SQL-készletek számlázható erőforrásokat használnak, amíg akt
 ## <a name="create-a-serverless-apache-spark-pool"></a>Kiszolgáló nélküli Apache Spark készlet létrehozása
 
 1. A szinapszis Studióban a bal oldali ablaktáblán válassza a **Manage**  >  **Apache Spark készletek** kezelése lehetőséget.
-1. Válassza az **új** lehetőséget, és adja meg a következő beállításokat:
-
-    |Beállítás | Ajánlott érték | 
-    |---|---|---|
-    |**Apache Spark készlet neve**|**Spark1**
-    |**Csomópont mérete**| **Kicsi**|
-    |**Csomópontok száma**| Állítsa be a minimumot 3 értékre, a maximumot 3 értékre|
-
+1. **Új** kiválasztása 
+1. **Apache Spark a készlet neve** mezőbe írja be a következőt: **Spark1**.
+1. A **csomópont mérete** mezőben adja meg a **kis** értéket.
+1. Ha a **csomópontok száma** a minimum 3 és a maximum 3 értéket állítja be
 1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A Apache Spark-készlet néhány másodpercen belül elkészül.
 
 Amikor Spark-tevékenységet hajt végre az Azure Szinapszisban, meg kell adnia a használni kívánt Spark-készletet. A készlet azt jelzi, hogy az Azure szinapszis hány Spark-erőforrást használ. Ön csak a felhasznált erőforrásokért fizet. Ha aktívan abbahagyja a készlet használatát, az erőforrások automatikusan időtúllépést és újrahasznosítást végeznek.

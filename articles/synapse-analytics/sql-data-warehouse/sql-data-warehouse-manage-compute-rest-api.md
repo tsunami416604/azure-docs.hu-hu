@@ -1,6 +1,6 @@
 ---
 title: Szüneteltetés, folytatás, méretezés REST API-kkal
-description: A számítási teljesítmény kezelése az Azure szinapszis Analytics-adattárházban REST API-kon keresztül.
+description: A dedikált SQL-készlet (korábban SQL DW) számítási teljesítményének kezelése az Azure szinapszis Analytics REST API-kon keresztül.
 services: synapse-analytics
 author: antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/29/2019
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bbb8e82710b4c8ca7736b53d427b3880faf2be05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49702051b5399d5079aacc97c00233a23ba8712d
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213278"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556012"
 ---
-# <a name="rest-apis-for-azure-synapse-analytics-data-warehouse"></a>REST API-k az Azure szinapszis Analytics-adattárházhoz
+# <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>REST API-k dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben
 
-REST API-k a számítások kezeléséhez az Azure szinapszis Analytics-adattárházban.
+REST API-k a kiszámítások kezeléséhez a dedikált SQL-készlet (korábban SQL DW) számára az Azure szinapszis Analyticsben.
 
 ## <a name="scale-compute"></a>Számítások méretezése
 
@@ -64,7 +64,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="get-maintenance-schedule"></a>Karbantartási ütemterv beolvasása
 
-Keresse meg az adatraktárhoz beállított karbantartási ütemtervet.
+A dedikált SQL-készlethez (korábban SQL DW) beállított karbantartási ütemtervet itt találja.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -73,7 +73,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="set-maintenance-schedule"></a>Karbantartási ütemterv beállítása
 
-Karbantartási ütemterv beállítása és frissítése egy meglévő adatraktáron.
+Karbantartási ütemterv beállítása és frissítése egy meglévő dedikált SQL-készleten (korábban SQL DW).
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -97,6 +97,6 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: a [számítások kezelése](sql-data-warehouse-manage-compute-overview.md).

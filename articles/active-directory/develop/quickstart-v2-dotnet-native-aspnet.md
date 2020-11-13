@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 786f566b121d5f0d5d64e7b8b269c7cdfab9e4a6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6874794dcf33d77d0b03f2a5713bdf42a40d6891
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825063"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560910"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Rövid útmutató: a Microsoft Identity platform által védett ASP.NET webes API meghívása
 
-Ebben a rövid útmutatóban egy webes API-t tesz elérhetővé, és gondoskodik arról, hogy csak a hitelesített felhasználók férhessenek hozzá. A cikk bemutatja, hogyan tehet közzé egy ASP.NET webes API-t, így elfogadhatja a személyes fiókok által kiadott jogkivonatokat, például a outlook.com vagy a live.com, valamint a munkahelyi vagy iskolai fiókokat bármely olyan vállalattól vagy szervezettől, amely integrálva van a Microsoft Identity platformmal.
+Ebben a rövid útmutatóban egy kódrészletet tölt le és futtat, amely bemutatja, hogyan lehet védelemmel ellátni egy ASP.NET webes API-t azáltal, hogy korlátozza az erőforrásokhoz való hozzáférést csak a jogosult fiókok számára. A minta támogatja a személyes Microsoft-fiókok és-fiókok engedélyezését bármely Azure Active Directory (Azure AD) szervezeten belül.
 
 A cikk egy Windows megjelenítési alaprendszer (WPF) alkalmazást is használ annak bemutatására, hogyan kérhet hozzáférési jogkivonatot a webes API-k eléréséhez.
 
@@ -49,31 +49,31 @@ Ebben a szakaszban regisztrálnia kell a webes API-t a Azure Portal **Alkalmazá
 Az alkalmazások manuális regisztrálásához válassza ki azt a Azure Active Directory (Azure AD) bérlőt, amelyben létre szeretné hozni az alkalmazásokat.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók.
-1. Ha a fiókja egynél több Azure AD-bérlőn található, válassza ki a profilt a jobb felső sarokban, majd válassza a **címtár váltása**lehetőséget.
+1. Ha a fiókja egynél több Azure AD-bérlőn található, válassza ki a profilt a jobb felső sarokban, majd válassza a **címtár váltása** lehetőséget.
 1. Módosítsa a portál munkamenetét a használni kívánt Azure AD-bérlőre.
 
 ### <a name="register-the-todolistservice-app"></a>A TodoListService alkalmazás regisztrálása
 
 1. Nyissa meg a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) portált.
-1. Válassza az **új regisztráció**lehetőséget.
+1. Válassza az **új regisztráció** lehetőséget.
 1. Amikor megnyílik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait:
 
     1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Írja be például a következőt: **AppModelv2-NativeClient-DotNet-TodoListService**.
-    1. A **támogatott fióktípus**esetében válassza a **fiókok lehetőséget bármely szervezeti címtárban**.
+    1. A **támogatott fióktípus** esetében válassza a **fiókok lehetőséget bármely szervezeti címtárban**.
     1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 
 1. Az alkalmazás **– Áttekintés** oldalon keresse meg az **alkalmazás (ügyfél) azonosító** értékét, majd jegyezze fel későbbi használatra. Ehhez a projekthez a Visual Studio konfigurációs fájlját (azaz `ClientId` a *TodoListService\Web.config* fájlban) kell konfigurálnia.
 
-1. Az **API közzététele** szakaszban válassza a **hatókör hozzáadása**lehetőséget, fogadja el a javasolt alkalmazás-azonosító URI-t ( `api://{clientId}` ) a **Mentés és folytatás**lehetőség kiválasztásával, majd adja meg a következő adatokat:
+1. Az **API közzététele** szakaszban válassza a **hatókör hozzáadása** lehetőséget, fogadja el a javasolt alkalmazás-azonosító URI-t ( `api://{clientId}` ) a **Mentés és folytatás** lehetőség kiválasztásával, majd adja meg a következő adatokat:
 
-    1. A **hatókör neve**mezőbe írja be a következőt: **access_as_user**.
-    1. Válassza ki a **rendszergazdák és a felhasználók** lehetőséget, hogy **ki is**jogosult legyen.
+    1. A **hatókör neve** mezőbe írja be a következőt: **access_as_user**.
+    1. Válassza ki a **rendszergazdák és a felhasználók** lehetőséget, hogy **ki is** jogosult legyen.
     1. A **rendszergazdai engedély megjelenítendő neve** mezőbe írja be a **hozzáférés TodoListService felhasználóként**.
     1. A **rendszergazdai engedély leírása** mezőbe írja be **a következőt: hozzáférés a TodoListService webes API-hoz felhasználóként**.
-    1. A **felhasználó beleegyezik megjelenítendő neve** mezőbe írja be a **hozzáférés TodoListService felhasználóként**értéket.
+    1. A **felhasználó beleegyezik megjelenítendő neve** mezőbe írja be a **hozzáférés TodoListService felhasználóként** értéket.
     1. A **felhasználói beleegyező Leírás** mezőbe írja be **a TodoListService web API felhasználóként való elérését**.
-    1. **Állapot**esetén tartsa be a következőt: **engedélyezve**.
-    1. Válassza a **hatókör hozzáadása**elemet.
+    1. **Állapot** esetén tartsa be a következőt: **engedélyezve**.
+    1. Válassza a **hatókör hozzáadása** elemet.
 
 ### <a name="configure-the-service-project"></a>A szolgáltatási projekt konfigurálása
 
@@ -96,18 +96,18 @@ Az új hatókör TodoListClient *app.config* fájlhoz való hozzáadásához teg
 
 ## <a name="register-the-todolistclient-client-app"></a>A TodoListClient-ügyfélalkalmazás regisztrálása
 
-Ebben a szakaszban regisztrálnia kell a TodoListClient alkalmazást a Azure Portal **Alkalmazásregisztrációkban** , majd konfigurálnia kell a kódot a TodoListClient projektben. Ha az ügyfél és a kiszolgáló *ugyanazt az alkalmazást*veszi figyelembe, a 2. lépésben regisztrált alkalmazást is újra felhasználhatja. Használja ugyanazt az alkalmazást, ha azt szeretné, hogy a felhasználók személyes Microsoft-fiókkal jelentkezzenek be.
+Ebben a szakaszban regisztrálnia kell a TodoListClient alkalmazást a Azure Portal **Alkalmazásregisztrációkban** , majd konfigurálnia kell a kódot a TodoListClient projektben. Ha az ügyfél és a kiszolgáló *ugyanazt az alkalmazást* veszi figyelembe, a 2. lépésben regisztrált alkalmazást is újra felhasználhatja. Használja ugyanazt az alkalmazást, ha azt szeretné, hogy a felhasználók személyes Microsoft-fiókkal jelentkezzenek be.
 
 ### <a name="register-the-app"></a>Az alkalmazás regisztrálása
 
 A TodoListClient alkalmazás regisztrálásához tegye a következőket:
 
 1. Nyissa meg a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) portált.
-1. Válassza az **új regisztráció**lehetőséget.
+1. Válassza az **új regisztráció** lehetőséget.
 1. Amikor megnyílik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait:
 
-    1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára (például **NativeClient-DotNet-TodoListClient**).
-    1. A **támogatott fióktípus**esetében válassza a **fiókok lehetőséget bármely szervezeti címtárban**.
+    1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára (például **NativeClient-DotNet-TodoListClient** ).
+    1. A **támogatott fióktípus** esetében válassza a **fiókok lehetőséget bármely szervezeti címtárban**.
     1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 
    > [!NOTE]
@@ -116,14 +116,14 @@ A TodoListClient alkalmazás regisztrálásához tegye a következőket:
    > - `organizations`: Munkahelyi vagy iskolai fiókkal is bejelentkezhet.
    > - `consumers`: Csak személyes Microsoft-fiókkal lehet bejelentkezni.
 
-1. Az alkalmazás **áttekintése** lapon válassza a **hitelesítés**lehetőséget, majd tegye a következőket:
+1. Az alkalmazás **áttekintése** lapon válassza a **hitelesítés** lehetőséget, majd tegye a következőket:
 
-    1. A **platform-konfigurációk**területen válassza a **platform hozzáadása** gombot.
-    1. **Mobil-és asztali alkalmazások**esetében válassza a **mobil-és asztali alkalmazások**lehetőséget.
-    1. Az **átirányítási URI**-k esetében jelölje be a **https://login.microsoftonline.com/common/oauth2/nativeclient** jelölőnégyzetet.
+    1. A **platform-konfigurációk** területen válassza a **platform hozzáadása** gombot.
+    1. **Mobil-és asztali alkalmazások** esetében válassza a **mobil-és asztali alkalmazások** lehetőséget.
+    1. Az **átirányítási URI** -k esetében jelölje be a **https://login.microsoftonline.com/common/oauth2/nativeclient** jelölőnégyzetet.
     1. Válassza a **Konfigurálás** lehetőséget.
 
-1. Válassza az **API-engedélyek**lehetőséget, majd tegye a következőket:
+1. Válassza az **API-engedélyek** lehetőséget, majd tegye a következőket:
 
     1. Nyomja meg **Az engedély hozzáadása** gombot.
     1. Válassza a **saját API** -k fület.
@@ -135,7 +135,7 @@ A TodoListClient alkalmazás regisztrálásához tegye a következőket:
 
 A TodoListClient-projekt konfigurálásához tegye a következőket:
 
-1. Az **Alkalmazásregisztrációk** portál **Áttekintés** lapján másolja az **alkalmazás (ügyfél) azonosítójának**értékét.
+1. Az **Alkalmazásregisztrációk** portál **Áttekintés** lapján másolja az **alkalmazás (ügyfél) azonosítójának** értékét.
 
 1. A TodoListClient projekt gyökérkönyvtárában nyissa meg a *app.config* fájlt, majd illessze be az alkalmazás-azonosító értékét a `ida:ClientId` paraméterbe.
 
@@ -145,7 +145,7 @@ A TodoListClient-projekt futtatásához tegye a következőket:
 
 1. Nyomja le az F5 billentyűt a TodoListClient-projekt megnyitásához. A projekt oldalának nyitva kell lennie.
 
-1. A jobb felső sarokban válassza a **Bejelentkezés**lehetőséget, majd jelentkezzen be ugyanazokkal a hitelesítő adatokkal, amelyeket az alkalmazás regisztrálásához használt, vagy jelentkezzen be felhasználóként ugyanabban a címtárban.
+1. A jobb felső sarokban válassza a **Bejelentkezés** lehetőséget, majd jelentkezzen be ugyanazokkal a hitelesítő adatokkal, amelyeket az alkalmazás regisztrálásához használt, vagy jelentkezzen be felhasználóként ugyanabban a címtárban.
 
    Ha első alkalommal jelentkezik be, előfordulhat, hogy a rendszer a TodoListService webes API-hoz való hozzájárulásukat kéri.
 
@@ -156,15 +156,15 @@ A TodoListClient-projekt futtatásához tegye a következőket:
 Az egyik lehetőség, hogy más címtárakból származó felhasználók is hozzáférjenek a webes API-hoz, az ügyfélalkalmazás előzetes engedélyezése a webes API-hoz való hozzáféréshez. Ezt úgy teheti meg, hogy hozzáadja az alkalmazás AZONOSÍTÓját az ügyfélalkalmazás a webes API-hoz tartozó, előre jóváhagyott alkalmazások listájához. Egy előre engedélyezett ügyfél hozzáadásával engedélyezheti a felhasználók számára a webes API elérését anélkül, hogy meg kellene adni a beleegyezett. Az ügyfélalkalmazás előzetes engedélyezéséhez tegye a következőket:
 
 1. A **Alkalmazásregisztrációk** portálon nyissa meg a TodoListService-alkalmazás tulajdonságait.
-1. Az **API közzététele** szakasz a **jóváhagyott ügyfélalkalmazások**területen válassza az **ügyfélalkalmazás hozzáadása**elemet.
+1. Az **API közzététele** szakasz a **jóváhagyott ügyfélalkalmazások** területen válassza az **ügyfélalkalmazás hozzáadása** elemet.
 1. Az **ügyfél-azonosító** mezőben illessze be a TODOLISTCLIENT alkalmazás azonosítóját.
 1. A **jogosultsági hatókörök** szakaszban válassza ki a `api://<Application ID>/access_as_user` webes API hatókörét.
-1. Válassza az **alkalmazás hozzáadása**lehetőséget.
+1. Válassza az **alkalmazás hozzáadása** lehetőséget.
 
 ### <a name="run-your-project"></a>A projekt futtatása
 
 1. A projekt futtatásához nyomja le az F5 billentyűt. A TodoListClient alkalmazásnak nyitva kell lennie.
-1. A jobb felső sarokban válassza a **Bejelentkezés**lehetőséget, majd jelentkezzen be egy személyes Microsoft-fiók, például a Live.com vagy a hotmail.com, vagy egy munkahelyi vagy iskolai fiók használatával.
+1. A jobb felső sarokban válassza a **Bejelentkezés** lehetőséget, majd jelentkezzen be egy személyes Microsoft-fiók, például a Live.com vagy a hotmail.com, vagy egy munkahelyi vagy iskolai fiók használatával.
 
 ## <a name="optional-limit-sign-in-access-to-certain-users"></a>Nem kötelező: a bejelentkezési hozzáférés korlátozása bizonyos felhasználók számára
 
@@ -174,7 +174,7 @@ Annak megadásához, hogy ki tud bejelentkezni az alkalmazásba, használja az a
 
 ### <a name="option-1-limit-access-to-a-single-organization-single-tenant"></a>1. lehetőség: egyetlen szervezethez való hozzáférés korlátozása (egyetlen bérlő)
 
-Az alkalmazáshoz való bejelentkezési hozzáférést korlátozhatja egyetlen Azure AD-bérlőben lévő felhasználói fiókokra, beleértve a bérlő *vendég fiókjait* is. Ez a forgatókönyv az üzletági *alkalmazások*esetében gyakori.
+Az alkalmazáshoz való bejelentkezési hozzáférést korlátozhatja egyetlen Azure AD-bérlőben lévő felhasználói fiókokra, beleértve a bérlő *vendég fiókjait* is. Ez a forgatókönyv az üzletági *alkalmazások* esetében gyakori.
 
 1. Nyissa meg a *App_Start \startup.auth* fájlt, majd módosítsa a metaadatok végpontjának értékét a `OpenIdConnectSecurityTokenProvider` -ba `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` . A bérlő nevét is használhatja, például: `contoso.onmicrosoft.com` .
 2. Ugyanebben a fájlban állítsa be a `ValidIssuer` tulajdonságot a to értékre `TokenValidationParameters` `"https://sts.windows.net/{Tenant ID}/"` , és állítsa be az `ValidateIssuer` argumentumot a `true` következőre:.

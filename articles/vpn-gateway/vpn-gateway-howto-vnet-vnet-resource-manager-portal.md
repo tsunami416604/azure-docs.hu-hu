@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: e8323c5a290ee2a78e2a3a131d50883d5f8c5a28
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 723d93b9a5e986501278bdee35835cfa0c234711
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "92330988"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555845"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>VNet-VNet VPN Gateway-kapcsolat konfigurálása a Azure Portal használatával
 
 Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a virtuális hálózatok (virtuális hálózatok) a VNet – VNet kapcsolattípus használatával. A virtuális hálózatok lehetnek különböző régiókban és különböző előfizetésekben. Ha különböző előfizetésekhez kapcsolódik a virtuális hálózatok, az előfizetéseket nem kell ugyanahhoz a Active Directory bérlőhöz társítania. 
 
-![v2v ábra](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet-vnet-diagram.png" alt-text="VNet – VNet diagram":::
 
 A cikkben ismertetett lépések a Azure Resource Manager üzemi modellre vonatkoznak, és a Azure Portal használják. Ezt a konfigurációt egy másik központi telepítési eszközzel vagy modellel is létrehozhatja az alábbi cikkekben ismertetett beállítások használatával:
 
@@ -65,7 +65,7 @@ A következő okok miatt érdemes lehet virtuális hálózatokat csatlakoztatni 
 
 A virtuális hálózatok közötti kommunikáció kombinálható többhelyes konfigurációkkal. Ezekkel a konfigurációkkal olyan hálózati topológiákat hozhat létre, amelyek a létesítmények közötti kapcsolatokat a virtuális hálózatok közötti kapcsolattal ötvözik, ahogy az alábbi ábrán is látható:
 
-![Tudnivalók a kapcsolatokról](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "Tudnivalók a kapcsolatokról")
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections-diagram.png" alt-text="VNet-kapcsolatok diagramja":::
 
 Ez a cikk bemutatja, hogyan csatlakoztathatja a virtuális hálózatok a VNet – VNet kapcsolattípus használatával. Ha gyakorlatként követi ezeket a lépéseket, használhatja a következő példában szereplő beállításokat. A példában a virtuális hálózatok ugyanabban az előfizetésben, de különböző erőforráscsoportokban vannak. Ha a virtuális hálózatok különböző előfizetésekben találhatóak, nem hozhatja létre a kapcsolatot a portálon. Ehelyett használja a [PowerShellt](vpn-gateway-vnet-vnet-rm-ps.md) vagy a [CLI](vpn-gateway-howto-vnet-vnet-cli.md) -t. További információ a VNet-VNet kapcsolatokról: [VNet – VNet gyakori kérdések](#vnet-to-vnet-faq).
 
@@ -157,17 +157,17 @@ A VNet1 konfigurálása után hozzon létre Vnet4 felé és a Vnet4 felé-átjá
 
 Ha a VNet1 és a Vnet4 felé virtuális hálózati átjárói is befejeződtek, létrehozhatók a virtuális hálózati átjárók kapcsolatai. Ebben a szakaszban létrehozza a kapcsolatot a VNet1 felől a VNet4 felé. Ezek a lépések csak egyazon előfizetésben lévő virtuális hálózatokkal működnek. Ha a virtuális hálózatok különböző előfizetésekben vannak, a kapcsolódáshoz a [PowerShellt](vpn-gateway-vnet-vnet-rm-ps.md) kell használnia. Ha azonban a virtuális hálózatok ugyanabban az előfizetésben különböző erőforráscsoportok, akkor a portálon keresztül is csatlakozhat.
 
-1. A Azure Portal válassza a **minden erőforrás** elemet, adja meg a *virtuális hálózati átjáró* kifejezést a keresőmezőbe, majd navigáljon a VNet tartozó virtuális hálózati átjáróhoz. Például: **VNet1GW** . Válassza ki az átjárót a **virtuális hálózati átjáró** lap megnyitásához.
+1. A Azure Portal válassza a **minden erőforrás** elemet, adja meg a *virtuális hálózati átjáró* kifejezést a keresőmezőbe, majd navigáljon a VNet tartozó virtuális hálózati átjáróhoz. Például: **VNet1GW**. Válassza ki az átjárót a **virtuális hálózati átjáró** lap megnyitásához.
 1. Az átjáró lapon lépjen a **Beállítások->kapcsolatok** elemre. Ezután válassza a **+ Hozzáadás** lehetőséget.
 
    :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="Kapcsolatok lap":::
 1. Megnyílik a **kapcsolatok hozzáadása** lap.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="Kapcsolatok lap":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="Kapcsolat hozzáadása":::
 
    A **kapcsolatok hozzáadása** lapon adja meg a kapcsolatok értékeit:
 
-   * **Név** : adja meg a kapcsolatok nevét. Például: *VNet1toVNet4* .
+   * **Név** : adja meg a kapcsolatok nevét. Például: *VNet1toVNet4*.
 
    * **Kapcsolattípus** : válassza a **VNet-to-VNet** elemet a legördülő menüből.
 
@@ -175,7 +175,7 @@ Ha a VNet1 és a Vnet4 felé virtuális hálózati átjárói is befejeződtek, 
 
    * **Második virtuális hálózati átjáró** : Ez a mező annak a VNet a virtuális hálózati átjárója, amelyhez kapcsolódni szeretne. A **virtuális hálózati átjáró kiválasztása** lap megnyitásához válassza a **másik virtuális hálózati átjáró kiválasztása** lehetőséget.
 
-      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="Kapcsolatok lap":::
+      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="Átjáró kiválasztása":::
 
      * Tekintse át az oldalon felsorolt virtuális hálózati átjárók listáját. Csak azok a virtuális hálózati átjárók jelennek meg, amelyek az előfizetésében szerepelnek. Ha olyan virtuális hálózati átjáróhoz szeretne csatlakozni, amely nem szerepel az előfizetésben, használja a [PowerShellt](vpn-gateway-vnet-vnet-rm-ps.md).
 
@@ -193,10 +193,10 @@ Ezután hozzon létre egy, a Vnet4 felé és a VNet1 közötti kapcsolatokat. Ke
 1. Keresse meg a virtuális hálózati átjárót a Azure Portal. 
 1. A **virtuális hálózati átjáró** lapon válassza a **kapcsolatok** lehetőséget a virtuális hálózati átjáró **kapcsolatok** lapjának megtekintéséhez. A kapcsolat létrejötte után az **állapot** értékek a **Connected** értékre változnak.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="Kapcsolatok lap":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="Kapcsolatok ellenőrzése":::
 1. A **név** oszlopban válassza ki a kapcsolatok egyikét a további információk megtekintéséhez. Amikor az adatok áramlanak, az adatok és **az** **adatok ki** lesznek láthatók.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="Kapcsolatok lap":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="Képernyőfelvétel: az adatforrások és a kimenő adatok értékeit megjelenítő erőforráscsoport":::
 
 ## <a name="add-additional-connections"></a>További kapcsolatok hozzáadása
 

@@ -13,21 +13,19 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 514782d62f117af5bfff4a5d2b3354c4e263eece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cd7074467332f89d4d6c60830be34f4e2a638c1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80550239"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562083"
 ---
 # <a name="overview-of-shared-device-mode"></a>Megosztott eszköz üzemmódjának áttekintése
 
 A megosztott eszköz mód a Azure Active Directory szolgáltatása, amely lehetővé teszi olyan alkalmazások létrehozását, amelyek támogatják a Firstline-feldolgozókat, és lehetővé teszik a megosztott eszköz üzemmód használatát a rájuk telepített eszközökön.
 
-> [!NOTE]
-> Ez a funkció nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>[!IMPORTANT]
+> Ez a funkció [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="what-are-firstline-workers"></a>Mik azok a Firstline-feldolgozók?
 
@@ -45,7 +43,7 @@ Mivel az iOS vagy az Android rendszerű mobileszközök egyetlen felhasználóho
 
 Annak engedélyezéséhez, hogy a szervezet alkalmazottai az alkalmazásokat az alkalmazottak által megosztott eszközökön használják, a fejlesztőknek engedélyeznie kell az ellenkező élményt. Az alkalmazottaknak képesnek kell lenniük egy eszköz kiválasztására a készletből, és egyetlen kézmozdulatot kell elvégezniük a váltás időtartamára. A váltás végén egy másik kézmozdulatot is el kell végeznie a globális kijelentkezéshez az eszközön, és az összes személyes és céges adata el lett távolítva, hogy vissza lehessen őket adni az eszköz készletének. Továbbá, ha egy alkalmazott elfelejti a kijelentkezést, az eszközt a váltás végén és/vagy inaktivitás után automatikusan ki kell jelentkeznie.
 
-Azure Active Directory engedélyezi ezeket a forgatókönyveket egy **megosztott eszköz üzemmód**nevű szolgáltatással.
+Azure Active Directory engedélyezi ezeket a forgatókönyveket egy **megosztott eszköz üzemmód** nevű szolgáltatással.
 
 ## <a name="introducing-shared-device-mode"></a>Megosztott eszköz üzemmód bemutatása
 
@@ -56,7 +54,7 @@ Ahogy említettük, a megosztott eszköz mód az Azure Active Directory szolgál
 
 ### <a name="build-applications-that-support-firstline-workers"></a>Firstline-feldolgozót támogató alkalmazások készítése
 
-Az alkalmazásokban a Microsoft Authentication Library (MSAL) használatával és [Microsoft Authenticator alkalmazással](../user-help/user-help-auth-app-overview.md) is támogathatja a Firstline-feldolgozókat, ha az eszközt *megosztott eszköz módban*szeretné engedélyezni. Ha egy eszköz megosztott eszköz módban van, a Microsoft információt nyújt az alkalmazásnak, amely lehetővé teszi, hogy az eszköz felhasználójának állapota alapján módosítsa a viselkedését, és védje a felhasználói adatokat.
+Az alkalmazásokban a Microsoft Authentication Library (MSAL) használatával és [Microsoft Authenticator alkalmazással](../user-help/user-help-auth-app-overview.md) is támogathatja a Firstline-feldolgozókat, ha az eszközt *megosztott eszköz módban* szeretné engedélyezni. Ha egy eszköz megosztott eszköz módban van, a Microsoft információt nyújt az alkalmazásnak, amely lehetővé teszi, hogy az eszköz felhasználójának állapota alapján módosítsa a viselkedését, és védje a felhasználói adatokat.
 
 A támogatott szolgáltatások a következők:
 
@@ -75,9 +73,9 @@ Az alkalmazások megosztott eszköz módra való módosításával kapcsolatos t
 
 Miután az alkalmazásai támogatják a megosztott eszköz üzemmódot, és tartalmazzák a szükséges és a biztonsági módosításokat, a Firstline-feldolgozók által használhatóként hirdetheti meg őket.
 
-A szervezet eszközeinek rendszergazdái a mobileszköz-kezelési (MDM) megoldáson (például Microsoft Intune) keresztül telepíthetik eszközeiket és alkalmazásaikat az áruházba és a munkahelyekre. A kiépítési folyamat részeként az eszköz megjelölése *megosztott eszközként*történik. A rendszergazdák úgy konfigurálhatják a megosztott eszköz üzemmódot, hogy a konfigurációs paraméterek használatával telepítik a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-overview.md) és a megosztott eszköz üzemmódot. A lépések elvégzése után a megosztott eszköz üzemmódot támogató összes alkalmazás a Microsoft Authenticator alkalmazást fogja használni a felhasználói állapotának kezeléséhez, valamint az eszköz és a szervezet biztonsági funkcióinak biztosításához.
+A szervezet eszközeinek rendszergazdái a mobileszköz-kezelési (MDM) megoldáson (például Microsoft Intune) keresztül telepíthetik eszközeiket és alkalmazásaikat az áruházba és a munkahelyekre. A kiépítési folyamat részeként az eszköz megjelölése *megosztott eszközként* történik. A rendszergazdák úgy konfigurálhatják a megosztott eszköz üzemmódot, hogy a konfigurációs paraméterek használatával telepítik a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-overview.md) és a megosztott eszköz üzemmódot. A lépések elvégzése után a megosztott eszköz üzemmódot támogató összes alkalmazás a Microsoft Authenticator alkalmazást fogja használni a felhasználói állapotának kezeléséhez, valamint az eszköz és a szervezet biztonsági funkcióinak biztosításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az iOS-és Android-platformokat a megosztott eszközök üzemmódjában támogatjuk. Az alábbi dokumentációban megtekintheti a platformját, amellyel megkezdheti az alkalmazások Firstline-feldolgozóinak támogatását.
 

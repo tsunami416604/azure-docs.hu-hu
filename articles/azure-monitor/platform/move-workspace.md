@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/13/2019
-ms.openlocfilehash: e80ff2c04cf71fa322bb0bf41e8132f595c0644e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 11/12/2020
+ms.openlocfilehash: 04da4d6466d450d04d7008332e32ea3d59cd0252
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372276"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555532"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
 
@@ -29,14 +29,14 @@ A munkaterület forrás-és célhely-előfizetésének ugyanabban a Azure Active
 ```
 
 ## <a name="workspace-move-considerations"></a>A munkaterület áthelyezésével kapcsolatos megfontolások
-A munkaterületen telepített felügyelt megoldások a Log Analytics munkaterület áthelyezési művelettel lesznek áthelyezve. A csatlakoztatott ügynökök továbbra is csatlakoztatva maradnak, és az áthelyezés után megőrzik az adatküldést a munkaterületre. Mivel az áthelyezési művelethez nincs szükség társított szolgáltatásokra a munkaterületen, a kapcsolaton alapuló megoldásokat el kell távolítani a munkaterület áthelyezésének engedélyezéséhez.
-
-Olyan megoldások, amelyeket el kell távolítani az Automation-fiók csatolásának megszüntetése előtt:
-
-- Frissítéskezelés
-- Változások követése
-- Virtuális gépek indítása és leállítása munkaidőn kívül
-- Azure Security Center
+- A munkaterületen telepített felügyelt megoldások a Log Analytics munkaterület áthelyezési művelettel lesznek áthelyezve. 
+- A munkaterület kulcsai újra létrejönnek a munkaterület mozgatásával (elsődleges és másodlagos). Ha a munkaterület kulcsa egy tároló, frissítse azokat az új generált kulcsokkal. 
+- A csatlakoztatott ügynökök továbbra is csatlakoztatva maradnak, és az áthelyezés után megőrzik az adatküldést a munkaterületre. 
+- Mivel az áthelyezési művelethez nincs szükség társított szolgáltatásokra a munkaterületen, a kapcsolaton alapuló megoldásokat el kell távolítani a munkaterület áthelyezésének engedélyezéséhez. Olyan megoldások, amelyeket el kell távolítani az Automation-fiók csatolásának megszüntetése előtt:
+  - Frissítéskezelés
+  - Változások követése
+  - Virtuális gépek indítása és leállítása munkaidőn kívül
+  - Azure Security Center
 
 >[!IMPORTANT]
 > **Azure Sentinel-ügyfelek**
@@ -51,7 +51,7 @@ Olyan megoldások, amelyeket el kell távolítani az Automation-fiók csatolás�
 > 
 >   *Példák:*
 >   - [Riasztási szabályok Azure Monitor](alerts-resource-move.md)
->   - Harmadik féltől származó alkalmazások
+>   - Külső alkalmazások
 >   - Egyéni parancsfájlok
 >
 
@@ -60,7 +60,7 @@ A következő eljárással távolíthatja el a megoldásokat a Azure Portal hasz
 
 1. Nyissa meg annak az erőforráscsoportnak a menüjét, amelyre a megoldások telepítve vannak.
 2. Válassza ki az eltávolítandó megoldásokat.
-3. Kattintson az **erőforrások törlése** elemre, majd erősítse meg az eltávolítandó erőforrásokat a **delete (Törlés**) gombra kattintva.
+3. Kattintson az **erőforrások törlése** elemre, majd erősítse meg az eltávolítandó erőforrásokat a **delete (Törlés** ) gombra kattintva.
 
 ![Megoldások törlése](media/move-workspace/delete-solutions.png)
 
@@ -77,9 +77,9 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 ### <a name="remove-alert-rules-for-startstop-vms-solution"></a>Riasztási szabályok eltávolítása a virtuális gépek indítási és leállítási megoldásához
 A **virtuális gépek indítási és leállítási** megoldásának eltávolításához el kell távolítania a megoldás által létrehozott riasztási szabályokat is. A következő eljárással távolíthatja el ezeket a szabályokat a Azure Portal.
 
-1. Nyissa meg a **figyelés** menüt, majd válassza a **riasztások**lehetőséget.
-2. Kattintson a **riasztási szabályok kezelése**lehetőségre.
-3. Válassza ki a következő három riasztási szabályt, majd kattintson a **Törlés**gombra.
+1. Nyissa meg a **figyelés** menüt, majd válassza a **riasztások** lehetőséget.
+2. Kattintson a **riasztási szabályok kezelése** lehetőségre.
+3. Válassza ki a következő három riasztási szabályt, majd kattintson a **Törlés** gombra.
 
    - AutoStop_VM_Child
    - ScheduledStartStop_Parent
@@ -91,7 +91,7 @@ A **virtuális gépek indítási és leállítási** megoldásának eltávolít�
 Az Automation-fiók a munkaterületről a Azure Portal használatával való leválasztásához kövesse az alábbi eljárást:
 
 1. Nyissa meg az **Automation-fiókok** menüt, majd válassza ki az eltávolítandó fiókot.
-2. A menü **kapcsolódó erőforrások** szakaszában válassza a **csatolt munkaterület**elemet. 
+2. A menü **kapcsolódó erőforrások** szakaszában válassza a **csatolt munkaterület** elemet. 
 3. Kattintson a **munkaterület leválasztása** elemre a munkaterület Automation-fiókból való leválasztásához.
 
     ![Munkaterület leválasztása](media/move-workspace/unlink-workspace.png)
@@ -102,7 +102,7 @@ Az Automation-fiók a munkaterületről a Azure Portal használatával való lev
 A következő eljárás használatával helyezheti át a munkaterületet a Azure Portal használatával:
 
 1. Nyissa meg a **log Analytics munkaterületek** menüt, majd válassza ki a munkaterületet.
-2. Az **Áttekintés** lapon kattintson az **erőforráscsoport** vagy **előfizetés**melletti **módosítás** elemre.
+2. Az **Áttekintés** lapon kattintson az **erőforráscsoport** vagy **előfizetés** melletti **módosítás** elemre.
 3. Megnyílik egy új lap a munkaterülethez kapcsolódó erőforrások listájával. Válassza ki azokat az erőforrásokat, amelyeket ugyanahhoz a cél-előfizetéshez és erőforráscsoporthoz szeretne áthelyezni a munkaterületen. 
 4. Válassza ki a cél- **előfizetést** és az **erőforráscsoportot**. Ha a munkaterületet ugyanabba az előfizetésbe helyezi egy másik erőforráscsoporthoz, nem jelenik meg az **előfizetés** lehetőség.
 5. A munkaterület és a kiválasztott erőforrások áthelyezéséhez kattintson **az OK** gombra.

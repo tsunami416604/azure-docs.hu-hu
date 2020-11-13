@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 16f45c39a329998f4b4da4ea89315683a0fab790
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44479db6b29075e87b0d2dcef6f0d9bc1881738c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90967585"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560825"
 ---
 # <a name="confidential-computing-on-azure"></a>Bizalmas számítástechnika az Azure-ban
 
@@ -37,7 +37,7 @@ Tudjuk, hogy fontos a Felhőbeli adatvédelme. Halljuk az Ön problémáit. Íme
 - Hogyan a vállalaton belül a rendszerjogosultságú rendszergazdák biztonsági fenyegetésének megelőzése?
 - Milyen módon lehet megakadályozni, hogy harmadik felek hozzáférjenek a bizalmas ügyféladatok eléréséhez?
 
-A Microsoft Azure segítségével csökkentheti a támadási felületet, így erősebb adatvédelmet nyerhet. Az Azure már számos olyan eszközt kínál, amelyekkel a különböző modelleken keresztül biztosíthatja az [**adatok**](../security/fundamentals/encryption-atrest.md) védelmét, például az ügyféloldali titkosítással és a kiszolgálóoldali titkosítással. Az Azure emellett a biztonságos protokollok, például a TLS [**és a HTTPS protokollon keresztül is**](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit) titkosítja az adatátviteli mechanizmusokat. Ez az oldal az adattitkosítás harmadik szakaszát mutatja be – a **használatban**lévő adattitkosítást.
+A Microsoft Azure segítségével csökkentheti a támadási felületet, így erősebb adatvédelmet nyerhet. Az Azure már számos olyan eszközt kínál, amelyekkel a különböző modelleken keresztül biztosíthatja az [**adatok**](../security/fundamentals/encryption-atrest.md) védelmét, például az ügyféloldali titkosítással és a kiszolgálóoldali titkosítással. Az Azure emellett a biztonságos protokollok, például a TLS [**és a HTTPS protokollon keresztül is**](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit) titkosítja az adatátviteli mechanizmusokat. Ez az oldal az adattitkosítás harmadik szakaszát mutatja be – a **használatban** lévő adattitkosítást.
 
 ## <a name="introduction-to-confidential-computing"></a>A bizalmas számítástechnika bemutatása 
 
@@ -49,11 +49,11 @@ A TEE olyan környezet, amely csak a jóváhagyott kód végrehajtását kénysz
 A munkaterhelések Felhőbeli futtatása megbízhatóságot igényel. Ezt a megbízhatóságot a különböző szolgáltatók számára biztosíthatja, amelyek lehetővé teszik az alkalmazás különböző összetevőit.
 
 
-**Alkalmazás-szoftvergyártók**: a helyszíni alkalmazások központi telepítésével, nyílt forráskódú vagy házon belüli alkalmazás létrehozásával megbízza a szoftvert.
+**Alkalmazás-szoftvergyártók** : a helyszíni alkalmazások központi telepítésével, nyílt forráskódú vagy házon belüli alkalmazás létrehozásával megbízza a szoftvert.
 
-**Hardvergyártók**: a helyszíni hardver vagy a házon belüli hardver használatával bízza a hardvert. 
+**Hardvergyártók** : a helyszíni hardver vagy a házon belüli hardver használatával bízza a hardvert. 
 
-**Infrastruktúra-szolgáltatók**: megbízható felhőalapú szolgáltatók vagy saját helyszíni adatközpontok kezelése.
+**Infrastruktúra-szolgáltatók** : megbízható felhőalapú szolgáltatók vagy saját helyszíni adatközpontok kezelése.
 
 
 Az Azure bizalmas számítástechnikai szolgáltatásával könnyebben megbízhat a Felhőbeli szolgáltatóban, így a számítási felhő-infrastruktúra különböző szempontjain való megbízhatóságra van szükség. Az Azure bizalmas számítástechnikai szolgáltatásával a gazdagép operációs rendszerének kernele, a hypervisor, a VM-rendszergazda és a gazdagép rendszergazdája is megbízik.
@@ -68,13 +68,13 @@ Az alsó TCB nagyobb biztonságot jelent. A különböző sebezhetőségek, kár
 
 Az Azure bizalmas számítástechnikai részlege lehetővé teszi, hogy a virtualizált környezetekben a bizalmas számítástechnikai funkciókat használja. Mostantól eszközöket, szoftvereket és felhőalapú infrastruktúrát is használhat a biztonságos hardverre való kiépítéshez.  
 
-**Jogosulatlan hozzáférés megakadályozása**: bizalmas adatok futtatása a felhőben. Bízza az Azure-t, hogy a lehető legjobb adatvédelmet biztosítson, kevés a változás a mai naptól.
+**Jogosulatlan hozzáférés megakadályozása** : bizalmas adatok futtatása a felhőben. Bízza az Azure-t, hogy a lehető legjobb adatvédelmet biztosítson, kevés a változás a mai naptól.
 
-**Jogszabályi megfelelőség**: Migrálás a felhőbe és az adatok teljes körű ellenőrzése a személyes adatok védelméhez és a szervezeti IP-címek védelméhez szükséges kormányzati rendelkezések teljesítése érdekében.
+**Jogszabályi megfelelőség** : Migrálás a felhőbe és az adatok teljes körű ellenőrzése a személyes adatok védelméhez és a szervezeti IP-címek védelméhez szükséges kormányzati rendelkezések teljesítése érdekében.
 
-**Biztonságos és nem megbízható együttműködés**: az iparági szintű munkamennyiséggel kapcsolatos problémák megoldása azáltal, hogy az adatvédelmet több szervezet, akár a versenytársak között, a széles körű adatelemzések és a mélyebb elemzések feloldása érdekében.
+**Biztonságos és nem megbízható együttműködés** : az iparági szintű munkamennyiséggel kapcsolatos problémák megoldása azáltal, hogy az adatvédelmet több szervezet, akár a versenytársak között, a széles körű adatelemzések és a mélyebb elemzések feloldása érdekében.
 
-**Elkülönített feldolgozás**: egy új hullámot kínál, amely megszünteti a személyes és a vak feldolgozással kapcsolatos felelősséget. A szolgáltató nem tudja lekérni a felhasználói adatkéréseket. 
+**Elkülönített feldolgozás** : egy új hullámot kínál, amely megszünteti a személyes és a vak feldolgozással kapcsolatos felelősséget. A szolgáltató nem tudja lekérni a felhasználói adatkéréseket. 
 
 ## <a name="get-started"></a>Első lépések
 ### <a name="azure-compute"></a>Azure Compute
@@ -84,7 +84,7 @@ Hozzon létre alkalmazásokat az Azure-ban bizalmas számítási IaaS-ajánlatok
 
 ### <a name="azure-security"></a>Azure Security 
 Ellenőrizze, hogy a munkaterhelések biztonságosak-e az ellenőrzési módszerek és a hardveres kulcsok felügyelete révén. 
-- Igazolás: [Microsoft Azure igazolás (előzetes verzió)](https://docs.microsoft.com/azure/attestation/overview)
+- Igazolás: [Microsoft Azure igazolás (előzetes verzió)](../attestation/overview.md)
 - Kulcskezelő: felügyelt HSM (előzetes verzió)
 
 ### <a name="develop"></a>Fejlesztés
@@ -92,9 +92,9 @@ A bizalmas következtetési keretrendszer használatával megkezdheti a enkláv�
 - Alkalmazások írása DCsv2 virtuális gépeken való futtatásra: [Open-ENKLÁVÉ SDK](https://github.com/openenclave/openenclave)
 - Bizalmas ML-modellek a ONNX-futtatókörnyezetben: [bizalmas következtetés (bétaverzió)](https://aka.ms/confidentialinference)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Helyezzen üzembe egy DCsv2-sorozatú virtuális gépet, és telepítse az OE SDK-t.
+Helyezzen üzembe egy DCsv2-Series virtuális gépet, és telepítse az OE SDK-t.
 
 > [!div class="nextstepaction"]
 > [Bizalmas számítástechnikai virtuális gép üzembe helyezése az Azure Marketplace-en](quick-create-marketplace.md)

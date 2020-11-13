@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: eaaedc4404419e6028250a994077dd3df20b83d4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fb1f1d098970927ba04c840e77ec0a0b8d76ca02
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539651"
+ms.locfileid: "94561318"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Nagyvállalati biztonság és irányítási Azure Machine Learning
 
@@ -105,7 +105,13 @@ Igény szerint saját felügyelt identitásokat is konfigurálhat az Azure Virtu
 
 A Azure Machine Learning erőforrásokhoz való fizikai hozzáférés korlátozásához használhatja az Azure Virtual Networkt (VNet). A virtuális hálózatok lehetővé teszi olyan hálózati környezetek létrehozását, amelyek részben vagy teljesen el vannak különítve a nyilvános internetről. Ez csökkenti a megoldás támadási felületét, valamint az adatkiszűrése esélyét.
 
-További információ: [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md).
+További információ a következő dokumentumokban található:
+
+* [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md)
+* [Biztonságos munkaterületi erőforrások](how-to-secure-workspace-vnet.md)
+* [Biztonságos betanítási környezet](how-to-secure-training-vnet.md)
+* [Biztonságos következtetési környezet](how-to-secure-inferencing-vnet.md)
+* [A Studio használata biztonságos virtuális hálózaton](how-to-enable-studio-virtual-network.md)
 
 <a id="encryption-at-rest"></a><a id="azure-blob-storage"></a>
 
@@ -131,7 +137,7 @@ A szerepkörtől és a figyeléstől függően számos figyelési forgatókönyv
 
 ### <a name="monitor-runs"></a>Figyelő futtatása
 
-Figyelheti Azure Machine Learning a kísérleteket, beleértve a betanítási parancsfájlokból való naplózási adatokat is. Ezek az információk az SDK-val, az Azure CLI-vel és a Studióval is megtekinthetők. További információkat az következő cikkekben talál:
+Figyelheti Azure Machine Learning a kísérleteket, beleértve a betanítási parancsfájlokból való naplózási adatokat is. Ezek az információk az SDK-val, az Azure CLI-vel és a Studióval is megtekinthetők. További információért tekintse át a következő cikkeket:
 
 * [Betanítási futtatások indítása, figyelése és megszakítása](how-to-manage-runs.md)
 * [Naplók engedélyezése](how-to-track-experiments.md)

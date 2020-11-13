@@ -7,15 +7,15 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: 0119d134861b54ac14c6fe22b638ab459344c5ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2019
+ms.openlocfilehash: fa516f577254f827a6437697df82010bd9b631ee
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569891"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555910"
 ---
-# <a name="transform-data-using-mapping-data-flows"></a>Adatátalakítás a leképezési adatfolyamok használatával
+# <a name="transform-data-using-mapping-data-flows"></a>Adatok átalakítása adatfolyamok leképezésével
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -36,28 +36,28 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 * **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * **Azure Storage-fiók**. A ADLS-tárolók *forrásaként* és fogadó *adattárakként* használhatók. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket.
 
-Az oktatóanyagban átalakított fájl MoviesDB.csv, amely [itt](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)található. A fájl GitHubról történő lekéréséhez másolja a tartalmat egy tetszőleges szövegszerkesztőbe, és mentse helyileg a. csv-fájlként. A fájlnak a Storage-fiókba való feltöltéséhez tekintse meg a [Blobok feltöltése az Azure Portalon](../storage/blobs/storage-quickstart-blobs-portal.md)című témakört. Ez a példa egy "Sample-adat" nevű tárolóra hivatkozik.
+Az oktatóanyagban átalakított fájl MoviesDB.csv, amely [itt](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)található. A fájl GitHubról történő lekéréséhez másolja a tartalmat egy tetszőleges szövegszerkesztőbe, és mentse helyileg a. csv-fájlként. A fájlnak a Storage-fiókba való feltöltéséhez lásd: [Blobok feltöltése a Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). Ez a példa egy "Sample-adat" nevű tárolóra hivatkozik.
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 Ebben a lépésben létrehoz egy adatelőállítót, és megnyitja a Data Factory UX-t egy folyamat létrehozásához az adatelőállítóban.
 
 1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome böngészőt**. Jelenleg Data Factory felhasználói felület csak a Microsoft Edge és a Google Chrome böngészőben támogatott.
-2. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**:
+2. A bal oldali menüben válassza az **erőforrás** -  >  **integráció** létrehozása  >  **Data Factory** :
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket.
 
-   Az Azure-beli adatgyár nevének *globálisan egyedinek*kell lennie. Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. (például Sajátneveadftutorialdatafactory). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure-beli adatgyár nevének *globálisan egyedinek* kell lennie. Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. (például Sajátneveadftutorialdatafactory). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 
      ![Új adat-előállító](./media/doc-common-process/name-not-available-error.png)
-4. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
+4. Válassza ki azt az **Azure-előfizetést** , amelyben az adat-előállítót létre szeretné hozni.
 5. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
 
-    a. Válassza a **meglévő használata**lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
+    a. Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
 
-    b. Válassza az **új létrehozása**lehetőséget, és adja meg az erőforráscsoport nevét. 
+    b. Válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. 
          
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket. 
 6. A **Verzió** résznél válassza a **V2** értéket.
@@ -95,13 +95,13 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 1. Nevezze el a forrás **MoviesDB**. Új forrás adatkészlet létrehozásához kattintson az **új** elemre.
 
     ![Képernyőkép, amely azt mutatja, hogy hol válassza az új lehetőséget a forrás nevének megadása után.](media/tutorial-data-flow/dataflow3.png)
-1. Válassza a **Azure Data Lake Storage Gen2**lehetőséget. Kattintson a Folytatás gombra.
+1. Válassza a **Azure Data Lake Storage Gen2** lehetőséget. Kattintson a Folytatás gombra.
 
     ![Képernyőkép, amely megjeleníti a Azure Data Lake Storage Gen2 csempét.](media/tutorial-data-flow/dataset1.png)
-1. Válassza a **DelimitedText**lehetőséget. Kattintson a Folytatás gombra.
+1. Válassza a **DelimitedText** lehetőséget. Kattintson a Folytatás gombra.
 
     ![Képernyőkép, amely a DelimitedText csempét jeleníti meg.](media/tutorial-data-flow/dataset2.png)
-1. Nevezze el az adatkészlet **MoviesDB**. A társított szolgáltatás legördülő menüben válassza az **új**lehetőséget.
+1. Nevezze el az adatkészlet **MoviesDB**. A társított szolgáltatás legördülő menüben válassza az **új** lehetőséget.
 
     ![A társított szolgáltatás legördülő listáját megjelenítő képernyőkép.](media/tutorial-data-flow/dataset3.png)
 1. A társított szolgáltatás létrehozása képernyőn nevezze el a ADLS Gen2 társított szolgáltatás **ADLSGen2** , és adja meg a hitelesítési módszert. Ezután adja meg a kapcsolatok hitelesítő adatait. Ebben az oktatóanyagban a fiók kulcsát használjuk a Storage-fiókhoz való kapcsolódáshoz. Kattintson a **Kapcsolódás tesztelése** lehetőségre a hitelesítő adatok helyes beírásának ellenőrzéséhez. Ha elkészült, kattintson a Létrehozás gombra.
@@ -138,7 +138,7 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 1. Egy **Adatelőnézet** beolvasása annak ellenőrzéséhez, hogy a szűrő megfelelően működik-e.
 
     ![Képernyőkép, amely a beolvasott adatelőnézetet jeleníti meg.](media/tutorial-data-flow/filter3.png)
-1. A hozzáadni kívánt következő átalakítás a **séma-módosító**alatt létrehozott **összesített** transzformáció.
+1. A hozzáadni kívánt következő átalakítás a **séma-módosító** alatt létrehozott **összesített** transzformáció.
 
     ![Az összesített séma-módosítót megjelenítő képernyőkép.](media/tutorial-data-flow/agg1.png)
 1. Nevezze el az összesített átalakítási **AggregateComedyRatings**. A **Csoportosítás** lapon válassza az **év** lehetőséget a legördülő listából, hogy csoportosítsa az összesítéseket a film által kiváltott év alapján.
@@ -147,7 +147,7 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 1. Nyissa meg az **összesítések** lapot. A bal oldali szövegmezőben nevezze el az összesítő oszlop **AverageComedyRating**. Kattintson a jobb oldali kifejezés mezőre az összesítő kifejezés megadásához a Expression Builder használatával.
 
     ![Képernyőkép, amely az összesítési beállítások lapon az év lehetőséget jeleníti meg.](media/tutorial-data-flow/agg3.png)
-1. Az oszlop- **minősítés**átlagának lekéréséhez használja az ```avg()``` összesítő függvényt. Mivel a **minősítés** egy karakterlánc ```avg()``` , és egy numerikus bemenetet vesz igénybe, az értéket egy számra kell konvertálnia a ```toInteger()``` függvényen keresztül. A kifejezés a következőképpen néz ki:
+1. Az oszlop- **minősítés** átlagának lekéréséhez használja az ```avg()``` összesítő függvényt. Mivel a **minősítés** egy karakterlánc ```avg()``` , és egy numerikus bemenetet vesz igénybe, az értéket egy számra kell konvertálnia a ```toInteger()``` függvényen keresztül. A kifejezés a következőképpen néz ki:
 
     ```avg(toInteger(Rating))```
 
@@ -157,19 +157,19 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 1. Az átalakítás kimenetének megtekintéséhez nyissa meg az **adatelőnézet** lapot. Figyelje meg, hogy csak két oszlop van, az **év** és a **AverageComedyRating**.
 
     ![Összesítés](media/tutorial-data-flow/agg3.png)
-1. Ezután hozzá kíván **adni egy** fogadó átalakítást a **célhely**területen.
+1. Ezután hozzá kíván **adni egy** fogadó átalakítást a **célhely** területen.
 
     ![Képernyőkép, amely bemutatja, hová kell hozzáadni a fogadó átalakítást a célhelyen.](media/tutorial-data-flow/sink1.png)
-1. Nevezze el a **Sink**fogadó fogadót. A fogadó adatkészlet létrehozásához kattintson az **új** elemre.
+1. Nevezze el a **Sink** fogadó fogadót. A fogadó adatkészlet létrehozásához kattintson az **új** elemre.
 
     ![Képernyőkép, amely megjeleníti a fogadó nevét, és létrehoz egy új fogadó adatkészletet.](media/tutorial-data-flow/sink2.png)
-1. Válassza a **Azure Data Lake Storage Gen2**lehetőséget. Kattintson a Folytatás gombra.
+1. Válassza a **Azure Data Lake Storage Gen2** lehetőséget. Kattintson a Folytatás gombra.
 
     ![A kiválasztható Azure Data Lake Storage Gen2 csempét bemutató képernyőkép.](media/tutorial-data-flow/dataset1.png)
-1. Válassza a **DelimitedText**lehetőséget. Kattintson a Folytatás gombra.
+1. Válassza a **DelimitedText** lehetőséget. Kattintson a Folytatás gombra.
 
     ![Adathalmaz](media/tutorial-data-flow/dataset2.png)
-1. Nevezze el a fogadó adatkészletet **MoviesSink**. A társított szolgáltatás mezőben válassza ki a 6. lépésben létrehozott ADLS Gen2 társított szolgáltatást. Adja meg azt a kimeneti mappát, ahová az adatokat írni kívánja. Ebben az oktatóanyagban a "kimenet" mappába írunk a "Sample-recontainer" tárolóban. A mappának nem kell előre megadnia, és dinamikusan létre lehet hozni. Állítsa az **első sort fejlécként** True (igaz) értékre, és válassza a **nincs lehetőséget** a **séma importálása**lehetőségnél. Kattintson a Finish (Befejezés) gombra.
+1. Nevezze el a fogadó adatkészletet **MoviesSink**. A társított szolgáltatás mezőben válassza ki a 6. lépésben létrehozott ADLS Gen2 társított szolgáltatást. Adja meg azt a kimeneti mappát, ahová az adatokat írni kívánja. Ebben az oktatóanyagban a "kimenet" mappába írunk a "Sample-recontainer" tárolóban. A mappának nem kell előre megadnia, és dinamikusan létre lehet hozni. Állítsa az **első sort fejlécként** True (igaz) értékre, és válassza a **nincs lehetőséget** a **séma importálása** lehetőségnél. Kattintson a Finish (Befejezés) gombra.
 
     ![Sink (Fogadó)](media/tutorial-data-flow/sink3.png)
 

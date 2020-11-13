@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: 6567651f76ff19a8105158b243de7582256e0375
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 9bd7c9622ebad602fc4833664e2a47d7c91ea897
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320914"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555345"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure SQL Database adatok növekményes betöltése az Azure Blob Storage-ba a Azure Portal használatával
 
@@ -53,7 +53,7 @@ Az alábbiak a megoldás kialakításának leglényegesebb lépései:
 
 2. **Egy adatraktár előkészítése a küszöbértékek tárolására**. Ebben az oktatóanyagban a küszöbértékeket egy SQL-adatbázisban tároljuk.
 
-3. **Hozzon létre egy folyamatot a következő munkafolyamattal**:
+3. **Hozzon létre egy folyamatot a következő munkafolyamattal** :
 
     Ebben a megoldásban a folyamat a következő tevékenységeket tartalmazza:
 
@@ -69,7 +69,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 * **Azure Storage**. A blobtárolót használjuk majd fogadóadattárként. Ha még nem rendelkezik tárfiókkal, tekintse meg a [tárfiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket. Hozzon létre egy tárolót adftutorial néven. 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Adatforrástábla létrehozása az SQL-adatbázisban
-1. Nyissa meg az SQL Server Management Studiót. A **Server Explorerben**kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés**elemet.
+1. Nyissa meg az SQL Server Management Studiót. A **Server Explorerben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 
 2. Futtassa a következő SQL-parancsot az SQL-adatbázison egy tábla `data_source_table` néven, adatforrástárként történő létrehozásához:
 
@@ -153,25 +153,25 @@ END
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-2. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**:
+2. A bal oldali menüben válassza az **erőforrás** -  >  **integráció** létrehozása  >  **Data Factory** :
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. Az **Új data factory** lapon, a **Név** mezőben adja meg a következőt: **ADFIncCopyTutorialDF**.
 
-   Az Azure-beli adatgyár nevének **globálisan egyedinek**kell lennie. Ha egy piros felkiáltójelet lát a következő hibaüzenettel, változtassa meg az adat-előállító nevét (például a következőre: sajátneveADFIncCopyTutorialDF), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure-beli adatgyár nevének **globálisan egyedinek** kell lennie. Ha egy piros felkiáltójelet lát a következő hibaüzenettel, változtassa meg az adat-előállító nevét (például a következőre: sajátneveADFIncCopyTutorialDF), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 
     *A "ADFIncCopyTutorialDF" nevű adatgyár nem érhető el*
-4. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
-5. Az **erőforráscsoport**esetében hajtsa végre az alábbi lépések egyikét:
+4. Válassza ki azt az **Azure-előfizetést** , amelyben az adat-előállítót létre szeretné hozni.
+5. Az **erőforráscsoport** esetében hajtsa végre az alábbi lépések egyikét:
 
-      - Válassza a **meglévő használata**lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
-      - Válassza az **új létrehozása**lehetőséget, és adja meg az erőforráscsoport nevét.   
+      - Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
+      - Válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét.   
          
         Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. A HDInsight adattárak (Azure Storage, Azure SQL Database, Azure SQL felügyelt példány stb.) és a (z) és a (z) és a (z) adatfeldolgozó által használt számítási erőforrások (stb.) más régiókban is lehetnek.
-8. Kattintson a **Létrehozás** elemre.      
+8. Kattintson a **Létrehozás** gombra.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
 
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
@@ -183,24 +183,24 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 1. A Data Factory felhasználói felületének **első lépéseket ismertető** oldalán kattintson a **Folyamat létrehozása** csempére.
 
    ![A Data Factory felhasználói felületének első lépéseket ismertető oldala](./media/doc-common-process/get-started-page.png)    
-3. A **Tulajdonságok**terület általános paneljén adja meg **IncrementalCopyPipeline** a IncrementalCopyPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
+3. A **Tulajdonságok** terület általános paneljén adja meg **IncrementalCopyPipeline** a IncrementalCopyPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
 
 4. Adja meg az első keresési tevékenységet a régi küszöbérték lekéréséhez. A **Tevékenységek** eszközkészletben bontsa ki az **Általános** elemet, és húzza a **Keresés** tevékenységet a folyamat tervezőfelületére. Változtassa a tevékenység nevét a következőre: **LookupOldWaterMarkActivity**.
 
    ![Első keresési tevékenység – név](./media/tutorial-incremental-copy-portal/first-lookup-name.png)
 5. Váltson a **Beállítások** lapra, és a **Forrásadatkészlet** elemnél kattintson az **+ Új** gombra. Ebben a lépésben egy olyan adatkészletet hoz létre, amely a **küszöbértékek táblájában** található adatokat jelöli. Ez a tábla tartalmazza az előző másolási művelet során használt régi küszöbértéket.
 
-6. Az **új adatkészlet** ablakban válassza a **Azure SQL Database**lehetőséget, majd kattintson a **Folytatás**gombra. Ekkor megjelenik egy új ablak, amely megnyílik az adatkészlethez.
+6. Az **új adatkészlet** ablakban válassza a **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** gombra. Ekkor megjelenik egy új ablak, amely megnyílik az adatkészlethez.
 
 7. Az adatkészlet **tulajdonságok beállítása** ablakában adja meg a **WatermarkDataset** **nevet**.
 
-8. A **társított szolgáltatás**esetében válassza az **új**lehetőséget, majd hajtsa végre a következő lépéseket:
+8. A **társított szolgáltatás** esetében válassza az **új** lehetőséget, majd hajtsa végre a következő lépéseket:
 
     1. A **Név** mezőbe írja az **AzureSqlDatabaseLinkedService** nevet.
     2. Válassza ki a kiszolgálót **a kiszolgálónévhez.**
     3. Válassza ki az **adatbázis nevét** a legördülő listából.
     4. Adja meg a **felhasználóneve**  &  **jelszavát**.
-    5. Az SQL Database-adatbázishoz való kapcsolódás teszteléséhez kattintson a **Kapcsolódás tesztelése**gombra.
+    5. Az SQL Database-adatbázishoz való kapcsolódás teszteléséhez kattintson a **Kapcsolódás tesztelése** gombra.
     6. Kattintson a **Finish** (Befejezés) gombra.
     7. Ellenőrizze, hogy a **AzureSqlDatabaseLinkedService** van-e kiválasztva a **társított szolgáltatáshoz**.
 
@@ -215,24 +215,24 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 
 12. A második **keresési** tevékenység tulajdonságainak ablakában váltson a **Beállítások** lapra, majd kattintson az **Új** gombra. Így létrehoz egy, az új küszöbértéket (LastModifyTime maximális értéke) tartalmazó táblára mutató adatkészletet.
 
-13. Az **új adatkészlet** ablakban válassza a **Azure SQL Database**lehetőséget, majd kattintson a **Folytatás**gombra.
+13. Az **új adatkészlet** ablakban válassza a **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** gombra.
 14. A **készlet tulajdonságai** ablakban adja meg a **SourceDataset** **nevet**. A **Társított szolgáltatás** elemnél válassza az **AzureSqlDatabaseLinkedService** lehetőséget.
 15. Válassza a **[dbo] lehetőséget. [ data_source_table]** a táblához. Az oktatóanyag során később megadunk egy olyan lekérdezést, amely az adatkészletre vonatkozik. A lekérdezés elsőbbséget élvez az ebben a lépésben megadott táblával szemben.
 16. Válassza a **Befejezés** lehetőséget.
 17. A folyamatszerkesztőt úgy érheti el, ha a fenti folyamat fülre vagy a bal oldali fanézetben a folyamat nevére kattint. A **keresési** tevékenység tulajdonságainak lapján ellenőrizze, hogy a **SourceDataset** lehetőség van-e kiválasztva a **Forrásadatkészlet** mezőnél.
-18. A **Lekérdezés használata** mezőben válassza a **Lekérdezés** lehetőséget, majd írja be a következő lekérdezést: Ön csak a **LastModifyTime** érték maximális értékét választja ki a **data_source_table** táblából. Győződjön meg arról, hogy csak az **első sort**jelölte be.
+18. A **Lekérdezés használata** mezőben válassza a **Lekérdezés** lehetőséget, majd írja be a következő lekérdezést: Ön csak a **LastModifyTime** érték maximális értékét választja ki a **data_source_table** táblából. Győződjön meg arról, hogy csak az **első sort** jelölte be.
 
     ```sql
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table
     ```
 
     ![Második keresési tevékenység – lekérdezés](./media/tutorial-incremental-copy-portal/query-for-new-watermark.png)
-19. A **tevékenységek** eszközkészletben bontsa ki az **Áthelyezés & átalakítás**elemet, majd húzza a **Másolás** tevékenységet a tevékenységek eszközkészletből, és állítsa a nevet **IncrementalCopyActivity**értékre.
+19. A **tevékenységek** eszközkészletben bontsa ki az **Áthelyezés & átalakítás** elemet, majd húzza a **Másolás** tevékenységet a tevékenységek eszközkészletből, és állítsa a nevet **IncrementalCopyActivity** értékre.
 
 20. A keresési tevékenységhez csatolt **zöld gombot** a másolási tevékenységhez húzva **kapcsolja mindkét keresési tevékenységet a másolási tevékenységhez**. Amikor a másolási tevékenység szegélyének színe kékre vált, engedje el az egér gombját.
 
     ![Keresési tevékenységek hozzákapcsolása egy másolási tevékenységhez](./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png)
-21. Válassza ki a **másolási tevékenységet**, és győződjön meg arról, hogy a **tulajdonságok** ablakában megjelennek a tevékenység tulajdonságai.
+21. Válassza ki a **másolási tevékenységet** , és győződjön meg arról, hogy a **tulajdonságok** ablakában megjelennek a tevékenység tulajdonságai.
 
 22. Váltson a **Forrás** lapra a **tulajdonságok** ablakában, és hajtsa végre a következő lépéseket:
 
@@ -247,19 +247,19 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
         ![Másolási tevékenység – forrás](./media/tutorial-incremental-copy-portal/copy-activity-source.png)
 23. Váltson a **Fogadó** lapra, és kattintson az **+ Új** lehetőségre a **Fogadó adatkészlet** mezőben.
 
-24. Ebben az oktatóanyagban a fogadó adattár típusa Azure Blob Storage. Ezért válassza az **Azure Blob Storage**lehetőséget, majd kattintson a **Continue (folytatás** ) gombra az **új adatkészlet** ablakban.
-25. A **formátum kiválasztása** ablakban válassza ki az adatai formátumának típusát, majd kattintson a **Folytatás**gombra.
-25. A **készlet tulajdonságai** ablakban adja meg a **SinkDataset** **nevet**. A **társított szolgáltatás**esetében válassza az **+ új**lehetőséget. Ebben a lépésben létrehoz egy kapcsolatot (társított szolgáltatást) az **Azure Blob-tárolóhoz**.
+24. Ebben az oktatóanyagban a fogadó adattár típusa Azure Blob Storage. Ezért válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Continue (folytatás** ) gombra az **új adatkészlet** ablakban.
+25. A **formátum kiválasztása** ablakban válassza ki az adatai formátumának típusát, majd kattintson a **Folytatás** gombra.
+25. A **készlet tulajdonságai** ablakban adja meg a **SinkDataset** **nevet**. A **társított szolgáltatás** esetében válassza az **+ új** lehetőséget. Ebben a lépésben létrehoz egy kapcsolatot (társított szolgáltatást) az **Azure Blob-tárolóhoz**.
 26. Az **új társított szolgáltatás (Azure Blob Storage)** ablakban végezze el a következő lépéseket:
 
     1. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.
     2. A **Storage-fiók neve** elemnél válassza ki saját Azure Storage-fiókját.
-    3. Tesztelje a kapcsolatokat, majd kattintson a **Befejezés**gombra.
+    3. Tesztelje a kapcsolatokat, majd kattintson a **Befejezés** gombra.
 
-27. A **készlet tulajdonságai** ablakban ellenőrizze, hogy a **AzureStorageLinkedService** van-e kiválasztva a **társított szolgáltatáshoz**. Ezután válassza a **Befejezés**lehetőséget.
+27. A **készlet tulajdonságai** ablakban ellenőrizze, hogy a **AzureStorageLinkedService** van-e kiválasztva a **társított szolgáltatáshoz**. Ezután válassza a **Befejezés** lehetőséget.
 28. Nyissa meg a SinkDataset **Kapcsolódás** lapját, és hajtsa végre a következő lépéseket:
     1. A **fájl elérési útja** mezőbe írja be a következőt: **adftutorial/incrementalcopy**. Az **adftutorial** a blobtároló, az **incrementalcopy** pedig a mappa neve. Ez a kódtöredék azt feltételezi, hogy a Blob Storage-ban rendelkezik egy adftutorial nevű blobtárolóval. Ha még nem létezik, hozza létre a tárolót, vagy állítsa be egy meglévő tároló nevét. Az Azure Data Factory automatikusan létrehozza az **incrementalcopy** kimeneti mappát, ha az még nem létezik. A **fájl elérési útjánál** a **Tallózás** gombot is használhatja a blobtárolóban található mappák megkereséséhez.
-    2. A **fájl elérési útja** mező **fájljának** részeként válassza a **dinamikus tartalom hozzáadása [ALT + P]** lehetőséget, majd adja meg `@CONCAT('Incremental-', pipeline().RunId, '.txt')` a megnyitott ablakot. Ezután válassza a **Befejezés**lehetőséget. A fájl neve dinamikusan jön létre a kifejezés használatával. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához.
+    2. A **fájl elérési útja** mező **fájljának** részeként válassza a **dinamikus tartalom hozzáadása [ALT + P]** lehetőséget, majd adja meg `@CONCAT('Incremental-', pipeline().RunId, '.txt')` a megnyitott ablakot. Ezután válassza a **Befejezés** lehetőséget. A fájl neve dinamikusan jön létre a kifejezés használatával. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához.
 
 28. A **folyamatszerkesztőt** úgy érheti el, ha a fenti folyamat fülre vagy a bal oldali fanézetben a folyamat nevére kattint.
 29. A **tevékenységek** eszközkészletében bontsa ki az **Általános** elemet, és húzza a **tárolt eljárási** tevékenységet a **tevékenységek** eszközkészletéből a folyamat tervezőfelületére. **Kapcsolja** a **másolási** tevékenység zöld (sikeres) kimenetét a **tárolt eljárási** tevékenységhez.
@@ -270,12 +270,12 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 
 26. Váltson a **Tárolt eljárás** lapra, és végezze el az alábbi lépéseket:
 
-    1. A **tárolt eljárás neve**mezőben válassza a **usp_write_watermark**lehetőséget.
+    1. A **tárolt eljárás neve** mezőben válassza a **usp_write_watermark** lehetőséget.
     2. A tárolt eljárás paraméterértékeinek megadásához kattintson a **Paraméter importálása** gombra, és adja meg az alábbi értékeket a paraméterekhez:
 
         | Név | Típus | Érték |
         | ---- | ---- | ----- |
-        | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
+        | LastModifiedtime | Dátum/idő | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Sztring | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
         ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
@@ -285,7 +285,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 
 
 ## <a name="trigger-a-pipeline-run"></a>Folyamat futtatásának aktiválása
-1. Kattintson az **trigger hozzáadása** elemre az eszköztáron, majd az **aktiválás most**elemre.
+1. Kattintson az **trigger hozzáadása** elemre az eszköztáron, majd az **aktiválás most** elemre.
 
 2. A **Folyamatfuttatás** ablakban kattintson a **Befejezés** gombra.
 
@@ -351,7 +351,7 @@ PersonID | Name | LastModifytime
 
 1. Váltson a **Szerkesztés** lapra. Kattintson a folyamatra a fanézetben, ha az nincs megnyitva a tervezőben.
 
-2. Kattintson az **trigger hozzáadása** elemre az eszköztáron, majd az **aktiválás most**elemre.
+2. Kattintson az **trigger hozzáadása** elemre az eszköztáron, majd az **aktiválás most** elemre.
 
 
 ## <a name="monitor-the-second-pipeline-run"></a>A folyamat második futtatásának monitorozása.
@@ -382,7 +382,7 @@ PersonID | Name | LastModifytime
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]

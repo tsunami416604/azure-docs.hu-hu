@@ -13,12 +13,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 997e867798922975757a588ef50248f0d09a96e0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 801a9a112615bd6220b5f273b51ed39248ebcd45
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789845"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556471"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Az Azure-beli virtuális gépen futó SQL Server kiadásának módosítása helyben
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Ha a SQL Server kiadását belsőleg módosították a SQL Server VMre, akkor a 
 A SQL Server kiadásának helyben történő megváltoztatásához a következőkre lesz szüksége: 
 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
-- Az [SQL VM erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md)regisztrált [Windows-SQL Server VM](./create-sql-vm-portal.md) .
+- Az [SQL IaaS-ügynök bővítménnyel](sql-agent-extension-manually-register-single-vm.md)regisztrált [Windows-SQL Server VM](./create-sql-vm-portal.md) .
 - Állítsa be az adathordozót SQL Server **kívánt kiadásával** . A [Frissítési garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [Mennyiségilicenc-szolgáltatási központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx) szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, a kívánt kiadással rendelkező Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják (általában a következő helyen található `C:\SQLServerFull` ). 
 
 
@@ -75,9 +75,9 @@ A SQL Server kiadásának visszaminősítése után módosítsa a Azure Portal S
 
 ## <a name="change-edition-in-portal"></a>Kiadás módosítása a portálon 
 
-Miután módosította SQL Server kiadását a telepítési adathordozó használatával, és regisztrálta a SQL Server VM az [SQL VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md), a Azure Portal használatával módosíthatja a SQL Server VM kiadási tulajdonságát a számlázási célokra. Ehhez kövesse az alábbi lépéseket: 
+Miután módosította SQL Server kiadását a telepítési adathordozó használatával, és regisztrálta az SQL Server VM az [SQL IaaS-ügynök bővítménnyel](sql-agent-extension-manually-register-single-vm.md), a Azure Portal használatával módosíthatja a SQL Server VM kiadási tulajdonságát a számlázási célokra. Ehhez kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 1. Nyissa meg a SQL Server virtuális gép erőforrását. 
 1. A **Beállítások** területen válassza a **Konfigurálás** lehetőséget. Ezután válassza ki az SQL Server kívánt kiadását a **kiadás** alatti legördülő listából. 
 
@@ -91,7 +91,7 @@ Miután módosította SQL Server kiadását a telepítési adathordozó használ
 
 - A SQL Server VM kiadási tulajdonságának meg kell egyeznie az összes SQL Server virtuális géphez telepített SQL Server példány kiadásával, beleértve az utólagos elszámolású és a saját licences licencek típusát is.
 - Ha eldobja a SQL Server VM-erőforrást, visszatérhet a rendszerkép rögzített változatára.
-- A kiadás módosításának lehetősége az SQL VM erőforrás-szolgáltató szolgáltatása. Egy Azure Marketplace-rendszerkép üzembe helyezése a Azure Portal automatikusan regisztrálja az SQL Server VM az erőforrás-szolgáltatóval. A SQL Server önálló telepítését végző ügyfeleknek azonban manuálisan kell [regisztrálniuk SQL Server VM](sql-vm-resource-provider-register.md).
+- A kiadás módosításának lehetősége az SQL IaaS-ügynök bővítmény egyik funkciója. Egy Azure Marketplace-rendszerkép üzembe helyezése a Azure Portal automatikusan regisztrálja az SQL IaaS-ügynök bővítménnyel rendelkező SQL Server VM. A SQL Server önálló telepítését végző ügyfeleknek azonban manuálisan kell [regisztrálniuk SQL Server VM](sql-agent-extension-manually-register-single-vm.md).
 - SQL Server VM hozzáadása egy rendelkezésre állási csoporthoz újra kell létrehozni a virtuális gépet. A rendelkezésre állási csoportba felvett virtuális gépek vissza lesznek állítva az alapértelmezett kiadásra, és a kiadást újra módosítani kell.
 
 ## <a name="next-steps"></a>Következő lépések

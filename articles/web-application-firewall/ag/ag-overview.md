@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 050252718e4796ff20d57be3fdeac98f0cf04fdf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d3e38de191557f0602d1b544c6590018f98405b0
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785221"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560791"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Mi az Azure webalkalmazási tűzfal az Azure Application Gateway?
 
@@ -60,7 +60,7 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 
 * Egyéni szabályok létrehozása az alkalmazás igényeinek megfelelően
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 - SQL-befecskendezéses védelem.
 - Helyek közötti parancsfájlok elleni védelem.
@@ -132,9 +132,9 @@ A Application Gateway WAF a következő két módban való futtatásra konfigur�
 
 A OWASP két módja van annak eldöntésére, hogy le kell-e tiltani a forgalmat: hagyományos mód és anomália pontozási mód.
 
-Hagyományos módban a szabályoknak megfelelő forgalom a többi szabálytól függetlenül tekintendő. Ez a mód könnyen értelmezhető. Ha azonban nincs információ arról, hogy hány szabály felel meg egy adott kérésnek, a korlátozás. Tehát a anomália pontozási mód be lett vezetve. Ez az alapértelmezett érték a OWASP 3 esetében. *x* .
+Hagyományos módban a szabályoknak megfelelő forgalom a többi szabálytól függetlenül tekintendő. Ez a mód könnyen értelmezhető. Ha azonban nincs információ arról, hogy hány szabály felel meg egy adott kérésnek, a korlátozás. Tehát a anomália pontozási mód be lett vezetve. Ez az alapértelmezett érték a OWASP 3 esetében. *x*.
 
-A anomália pontozási módban a szabályoknak megfelelő forgalom nem lesz azonnal letiltva, ha a tűzfal megelőzési módban van. A szabályok bizonyos súlyossággal rendelkeznek: *kritikus* , *hiba* , *Figyelmeztetés* vagy *Figyelmeztetés* . Ez a súlyosság befolyásolja a kérelem numerikus értékét, amelyet az anomália pontszámnak nevezünk. Egy *Figyelmeztetési* szabály például a következőhöz járul hozzá: 3 – a pontszám. Egy *kritikus* szabály egyezése 5.
+A anomália pontozási módban a szabályoknak megfelelő forgalom nem lesz azonnal letiltva, ha a tűzfal megelőzési módban van. A szabályok bizonyos súlyossággal rendelkeznek: *kritikus* , *hiba* , *Figyelmeztetés* vagy *Figyelmeztetés*. Ez a súlyosság befolyásolja a kérelem numerikus értékét, amelyet az anomália pontszámnak nevezünk. Egy *Figyelmeztetési* szabály például a következőhöz járul hozzá: 3 – a pontszám. Egy *kritikus* szabály egyezése 5.
 
 |Súlyosság  |Érték  |
 |---------|---------|
@@ -160,7 +160,7 @@ Application Gateway naplók integrálva vannak a [Azure Monitorekkel](../../azur
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Security Center](../../security-center/security-center-intro.md) segít a fenyegetések megelőzésében, észlelésében és megválaszolásában. Az Azure-erőforrások jobb láthatóságát és felügyeletét teszi lehetővé. Application Gateway [integrálva van Security Centersal](../../application-gateway/application-gateway-integration-security-center.md). Security Center megvizsgálja a környezetet a nem védett webalkalmazások észleléséhez. Application Gateway WAF is javasolhatja, hogy megvédje ezeket a sebezhető erőforrásokat. A tűzfalak közvetlenül a Security Centerből hozhatók létre. Ezek a WAF-példányok a Security Centerba vannak integrálva. Riasztásokat és állapotadatok küldését Security Center a jelentéskészítéshez.
+[Security Center](../../security-center/security-center-introduction.md) segít a fenyegetések megelőzésében, észlelésében és megválaszolásában. Az Azure-erőforrások jobb láthatóságát és felügyeletét teszi lehetővé. Application Gateway [integrálva van Security Centersal](../../application-gateway/application-gateway-integration-security-center.md). Security Center megvizsgálja a környezetet a nem védett webalkalmazások észleléséhez. Application Gateway WAF is javasolhatja, hogy megvédje ezeket a sebezhető erőforrásokat. A tűzfalak közvetlenül a Security Centerből hozhatók létre. Ezek a WAF-példányok a Security Centerba vannak integrálva. Riasztásokat és állapotadatok küldését Security Center a jelentéskészítéshez.
 
 ![Security Center áttekintése ablak](../media/ag-overview/figure1.png)
 

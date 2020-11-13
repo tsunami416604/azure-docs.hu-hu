@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: az autók árának előrejelzése a tervezővel'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan lehet a gépi tanulási modellt betanítani, bemutatni és üzembe helyezni egy drag-and-drop interfész használatával. Ez az oktatóanyag egy kétrészes sorozat első része, amely az autó árát lineáris regresszió használatával Jósolja meg.
+description: A gépi tanulási modell betanítása a személygépkocsik árának lineáris regresszió használatával történő előrejelzéséhez. Ez az oktatóanyag egy kétrészes sorozat első része.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: d9422cfb9bd8e5539f1a9b43d6fb7b137778f3d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0475e7a7b9bb40e77fe23362ff098350037bdd30
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404918"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555268"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel
 
@@ -54,13 +54,13 @@ A tervező használatához először Azure Machine Learning munkaterületre van 
 
 1. Jelentkezzen be a <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.Azure.com</a>-be, és válassza ki a munkaterületet, amellyel dolgozni szeretne.
 
-1. Válassza a **tervező**lehetőséget.
+1. Válassza a **tervező** lehetőséget.
 
     ![A tervező elérését bemutató vizualizációs munkaterület képernyőképe](./media/tutorial-designer-automobile-price-train-score/launch-designer.png)
 
-1. Válassza **a könnyen használható előre elkészített modulok**elemet.
+1. Válassza **a könnyen használható előre elkészített modulok** elemet.
 
-1. A vászon tetején válassza ki az alapértelmezett folyamat neve **folyamat – létrehozva**lehetőséget. Nevezze át az *autó árának előrejelzésére*. A névnek nem kell egyedinek lennie.
+1. A vászon tetején válassza ki az alapértelmezett folyamat neve **folyamat – létrehozva** lehetőséget. Nevezze át az *autó árának előrejelzésére*. A névnek nem kell egyedinek lennie.
 
 ## <a name="set-the-default-compute-target"></a>Az alapértelmezett számítási cél beállítása
 
@@ -70,7 +70,7 @@ Beállíthatja a teljes folyamat **alapértelmezett számítási célját** , am
 
 1. A folyamat neve mellett kattintson a **fogaskerék** ikonra a ![ vászon tetején található fogaskerék ikonra, ](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) és nyissa meg a **Beállítások** panelt.
 
-1. A vászontól jobbra található **Beállítások** ablaktáblán válassza a **számítási cél kiválasztása**lehetőséget.
+1. A vászontól jobbra található **Beállítások** ablaktáblán válassza a **számítási cél kiválasztása** lehetőséget.
 
     Ha már van elérhető számítási cél, akkor kiválaszthatja a folyamat futtatásához.
 
@@ -79,7 +79,7 @@ Beállíthatja a teljes folyamat **alapértelmezett számítási célját** , am
 
 1. Adja meg a számítási erőforrás nevét.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Save** (Mentés) lehetőséget.
 
     > [!NOTE]
     > Számítási erőforrás létrehozása körülbelül öt percet vesz igénybe. Az erőforrás létrehozása után újra felhasználhatja azt, és kihagyhatja ezt a várakozási időt a jövőbeli futtatásokhoz.
@@ -92,7 +92,7 @@ A tervezőben több minta adatkészletet is megadhat a kipróbáláshoz. Ebben a
 
 1. Az adatkészletek és modulok palettájának bal oldalán található. Válassza ki a **minta adatkészleteket** az elérhető minta adatkészletek megtekintéséhez.
 
-1. Válassza ki az adatkészlet **Automobile Price (nyers) adatokat**, és húzza rá a vászonra.
+1. Válassza ki az adatkészlet **Automobile Price (nyers) adatokat** , és húzza rá a vászonra.
 
    ![Az adathúzás vászonra](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
 
@@ -100,7 +100,7 @@ A tervezőben több minta adatkészletet is megadhat a kipróbáláshoz. Ebben a
 
 Megjelenítheti az adatokat, hogy megértse a használni kívánt adatkészletet.
 
-1. Kattintson a jobb gombbal a **személygépkocsi-árlista (nyers)** elemre, majd válassza a **Megjelenítés**lehetőséget.
+1. Kattintson a jobb gombbal a **személygépkocsi-árlista (nyers)** elemre, majd válassza a **Megjelenítés** lehetőséget.
 
 1. Válassza ki az adatablak különböző oszlopait az egyes adatok megtekintéséhez.
 
@@ -118,7 +118,7 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 
 1. Húzza az **Oszlopok kiválasztása az adatkészlet** modulban elemet a vászonra. Dobja el a modult az adatkészlet modul alatt.
 
-1. Csatlakoztassuk az **Automobile Price (nyers)** adatkészletet az **adathalmaz-modul Select oszlopaihoz** . Húzza a mutatót az adatkészlet kimeneti portjáról, amely a vászonon található adatkészlet alján lévő kis kör, az **adatkészletben lévő oszlopok kiválasztása**bemeneti portjára, amely a modul tetején lévő kis kör.
+1. Csatlakoztassuk az **Automobile Price (nyers)** adatkészletet az **adathalmaz-modul Select oszlopaihoz** . Húzza a mutatót az adatkészlet kimeneti portjáról, amely a vászonon található adatkészlet alján lévő kis kör, az **adatkészletben lévő oszlopok kiválasztása** bemeneti portjára, amely a modul tetején lévő kis kör.
 
     > [!TIP]
     > Az adatáramlás a folyamaton keresztül jön létre, amikor egy modul kimeneti portját egy másik bemeneti porthoz kapcsolja.
@@ -128,13 +128,13 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 
 1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget.
 
-1. A vászon jobb oldalán található modul részletei ablaktáblán válassza az **oszlop szerkesztése**lehetőséget.
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza az **oszlop szerkesztése** lehetőséget.
 
-1. Bontsa ki az **oszlopnevek** legördülő listát a **Belefoglalás**elem mellett, majd válassza az  **összes oszlop**lehetőséget.
+1. Bontsa ki az **oszlopnevek** legördülő listát a **Belefoglalás** elem mellett, majd válassza az  **összes oszlop** lehetőséget.
 
 1. Jelölje be az **+** új szabály hozzáadásához.
 
-1. A legördülő menüben válassza a **kizárás** és **oszlopnevek**lehetőséget.
+1. A legördülő menüben válassza a **kizárás** és **oszlopnevek** lehetőséget.
     
 1. Adja meg a *normalizált – veszteségeket* a szövegmezőben.
 
@@ -144,7 +144,7 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 
 1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget. 
 
-1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **Megjegyzés** szövegmezőt, és adja meg a *normalizált veszteségek kizárása*lehetőséget.
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **Megjegyzés** szövegmezőt, és adja meg a *normalizált veszteségek kizárása* lehetőséget.
 
     A diagramon megjegyzések jelennek meg, amelyek segítenek a folyamat rendszerezésében.
 
@@ -155,19 +155,19 @@ A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet tov
 > [!TIP]
 > A bemeneti adatokból hiányzó értékek tisztítása előfeltétel a legtöbb modul a Designerben való használatához.
 
-1. A vászon bal oldalán található modul palettán bontsa ki az **adatátalakítás**szakaszt, és keresse meg a **tiszta hiányzó** adatmodult.
+1. A vászon bal oldalán található modul palettán bontsa ki az **adatátalakítás** szakaszt, és keresse meg a **tiszta hiányzó** adatmodult.
 
 1. Húzza a **tiszta hiányzó** adatmodult a folyamat vászonra. Kapcsolódjon az **adathalmaz-modul Select oszlopaihoz** . 
 
 1. Válassza ki a **tiszta hiányzó** adatmodult.
 
-1. A vászon jobb oldalán található modul részletei ablaktáblán válassza az **oszlop szerkesztése**lehetőséget.
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza az **oszlop szerkesztése** lehetőséget.
 
-1. A megjelenő **oszlopok** területen bontsa ki a **Belefoglalás**elem melletti legördülő menüt. Kijelölés, **minden oszlop**
+1. A megjelenő **oszlopok** területen bontsa ki a **Belefoglalás** elem melletti legördülő menüt. Kijelölés, **minden oszlop**
 
-1. Válassza a **Mentés** lehetőséget
+1. Válassza a **Mentés** lehetőséget.
 
-1. A vászontól jobbra található modul részletei ablaktáblán válassza a **teljes sor eltávolítása** a **tisztítási mód**alatt lehetőséget.
+1. A vászontól jobbra található modul részletei ablaktáblán válassza a **teljes sor eltávolítása** a **tisztítási mód** alatt lehetőséget.
 
 1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **Megjegyzés** mezőt, és írja be a *hiányzó értékek eltávolítása sorokat*. 
 
@@ -192,7 +192,7 @@ Az adatok felosztása gyakori feladat a gépi tanulásban. Az adatokat két kül
 1. A **tiszta hiányzó** adatmodul bal oldali portjának összekötése az **adatfelosztási** modulba.
 
     > [!IMPORTANT]
-    > Ügyeljen arra, hogy a **tiszta hiányzó adatokat** tartalmazó bal oldali kimeneti portok a **felosztott adatokat**csatlakoztassa. A bal oldali port a megtisztított adathalmazokat tartalmazza. A megfelelő port tartalmazza a lefoglalt adatlemezeket.
+    > Ügyeljen arra, hogy a **tiszta hiányzó adatokat** tartalmazó bal oldali kimeneti portok a **felosztott adatokat** csatlakoztassa. A bal oldali port a megtisztított adathalmazokat tartalmazza. A megfelelő port tartalmazza a lefoglalt adatlemezeket.
 
 1. Válassza ki az **Adatfelosztási** modult.
 
@@ -206,28 +206,28 @@ Az adatok felosztása gyakori feladat a gépi tanulásban. Az adatokat két kül
 
 A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algoritmus létrehoz egy modellt, amely ismerteti a funkciók és a betanítási információ által bemutatott ár közötti kapcsolatot.
 
-1. A modul palettáján bontsa ki a **Machine learning algoritmusok**elemet.
+1. A modul palettáján bontsa ki a **Machine learning algoritmusok** elemet.
     
     Ez a beállítás számos, a tanulási algoritmusok inicializálására használható modul-kategóriát jelenít meg.
 
-1. Válassza a **regressziós**  >  **lineáris regresszió**lehetőséget, majd húzza a folyamat vászonra.
+1. Válassza a **regressziós**  >  **lineáris regresszió** lehetőséget, majd húzza a folyamat vászonra.
 
-1. A modul palettáján bontsa ki a **modul betanítása**szakaszt, majd húzza a **Train Model** modult a vászonra.
+1. A modul palettáján bontsa ki a **modul betanítása** szakaszt, majd húzza a **Train Model** modult a vászonra.
 
 1. Kapcsolja össze a **lineáris regressziós** modul kimenetét a **Train Model** modul bal oldali bemenetével.
 
 1. Kapcsolja össze az **adatok felosztása** modul betanítási adat kimenetét (bal oldali port) a **Train Model** modul jobb oldali bemenetével.
     
     > [!IMPORTANT]
-    > Ügyeljen arra, hogy a **felosztott adatokat** tartalmazó bal oldali kimeneti portok a **betanítási modellhez**kapcsolódjanak. A bal oldali port tartalmazza a betanítási készletet. A megfelelő port tartalmazza a tesztelési készletet.
+    > Ügyeljen arra, hogy a **felosztott adatokat** tartalmazó bal oldali kimeneti portok a **betanítási modellhez** kapcsolódjanak. A bal oldali port tartalmazza a betanítási készletet. A megfelelő port tartalmazza a tesztelési készletet.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Oszlop kijelölése":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Képernyőfelvétel a Train Model modul helyes konfigurációjának megjelenítéséről. A lineáris regressziós modul a betanítási modell moduljának bal oldali portjához csatlakozik, és a felosztott adatmodul csatlakozik a betanítási modell jobb portjához.":::
 
 1. Válassza ki a **Train Model** modult.
 
 1. A vászon jobb oldalán található modul részletei ablaktáblán válassza az **oszlop szerkesztése** lehetőséget.
 
-1. Az **oszlop felirata** párbeszédpanelen bontsa ki a legördülő menüt, és válassza az **oszlopnevek**lehetőséget. 
+1. Az **oszlop felirata** párbeszédpanelen bontsa ki a legördülő menüt, és válassza az **oszlopnevek** lehetőséget. 
 
 1. A szövegmezőbe írja be a *Price (ár* ) értéket a modell által előre jelzett érték megadásához.
 
@@ -236,7 +236,7 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
 
     A folyamatnak így kell kinéznie:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Oszlop kijelölése":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Képernyőfelvétel: a folyamat helyes konfigurációjának megjelenítése a Train Model modul hozzáadása után.":::
 
 ### <a name="add-the-score-model-module"></a>A pontszám modell modul hozzáadása
 
@@ -252,19 +252,19 @@ A **modell kiértékelése** modul használatával kiértékelheti, hogy a model
 
 1. A **modell kiértékelése** modul megkereséséhez írja be a *kiértékelés* kifejezést a keresőmezőbe. Húzza a modult a folyamat vászonra. 
 
-1. A **pontszám modell** modul kimenetének összekötése a **modell kiértékelésének**bal oldali bemenetével. 
+1. A **pontszám modell** modul kimenetének összekötése a **modell kiértékelésének** bal oldali bemenetével. 
 
     Az utolsó folyamatnak a következőképpen kell kinéznie:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Oszlop kijelölése":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="A folyamat helyes konfigurációját ábrázoló képernyőfelvétel.":::
 
 ## <a name="submit-the-pipeline"></a>A folyamat elküldése
 
 Most, hogy elvégezte a folyamat minden beállítását, elküldheti a folyamat futtatását a Machine learning-modell betanításához. Elküldheti a folyamat bármely pontján futó érvényes folyamatot, amellyel áttekintheti a folyamat módosításait a fejlesztés során.
 
-1. A vászon tetején válassza a **Küldés**lehetőséget.
+1. A vászon tetején válassza a **Küldés** lehetőséget.
 
-1. A **folyamat futtatásának beállítása** párbeszédpanelen válassza az **új létrehozása**lehetőséget.
+1. A **folyamat futtatásának beállítása** párbeszédpanelen válassza az **új létrehozása** lehetőséget.
 
     > [!NOTE]
     > A kísérletek csoport hasonló folyamata együtt fut. Ha többször is futtat egy folyamatot, kiválaszthatja ugyanazt a kísérletet egymást követő futtatásokhoz.
@@ -285,7 +285,7 @@ A Futtatás után megtekintheti a folyamat futtatásának eredményét. Előszö
 
     Itt láthatja az előrejelzett árakat és a tényleges árakat a tesztelési adatokból.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Oszlop kijelölése":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Képernyőkép a kimeneti vizualizáció kiemeléséről a mutató feliratú oszlop":::
 
 ### <a name="evaluate-models"></a>Modellek kiértékelése
 
@@ -295,11 +295,11 @@ A **kiértékelési modell** használatával megtekintheti, hogy a betanított m
 
 A modellhez a következő statisztikák láthatók:
 
-* Átlagos **abszolút hiba (Mae)**: az abszolút hibák átlaga. Hiba a várt érték és a tényleges érték közötti különbség.
-* **Legfelső szintű, négyzetes hiba (gyökátlagos)**: a tesztelési adatkészleten végrehajtott jóslatok átlagának négyzetes gyökere.
+* Átlagos **abszolút hiba (Mae)** : az abszolút hibák átlaga. Hiba a várt érték és a tényleges érték közötti különbség.
+* **Legfelső szintű, négyzetes hiba (gyökátlagos)** : a tesztelési adatkészleten végrehajtott jóslatok átlagának négyzetes gyökere.
 * **Relative Absolute Error** (relatív abszolút eltérés): a tényleges értékek és az összes tényleges értékek átlaga közötti különbségek abszolút eltérésének átlaga.
 * **Relative Squared Error** (relatív négyzetes eltérés): a négyzetes eltérések átlaga a tényleges értékek és az összes tényleges érték átlaga közötti különbség négyzetes értékéhez viszonyítva.
-* **Meghatározási együttható**: az R négyzetes értékként is ismert, ez a statisztikai metrika azt jelzi, hogy milyen jól illeszkedik a modell az adatokhoz.
+* **Meghatározási együttható** : az R négyzetes értékként is ismert, ez a statisztikai metrika azt jelzi, hogy milyen jól illeszkedik a modell az adatokhoz.
 
 Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a modell. A kisebb érték azt jelzi, hogy a jóslatok közelebb vannak a tényleges értékekhez. A meghatározási együttható esetében minél közelebb van az értéke egy (1,0), annál jobb az előrejelzések.
 
@@ -309,7 +309,7 @@ Ugorja át ezt a szakaszt, ha folytatni szeretné az oktatóanyag 2. részét, �
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: b07c53d048d60b555c33cacf42557f5da26552cc
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/09/2020
+ms.openlocfilehash: 065cfe6695d7651d3cda49ad32428127633b834c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637479"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555447"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Az adatok növekményes betöltése a SQL Server több táblájából egy Azure SQL Database-adatbázisba az Azure Portal
 
@@ -42,11 +42,11 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 ## <a name="overview"></a>Áttekintés
 Az alábbiak a megoldás kialakításának leglényegesebb lépései: 
 
-1. **A küszöb oszlopának kiválasztása** .
+1. **A küszöb oszlopának kiválasztása**.
     
     Jelölje ki az adatforrás egyes táblázatainak egy-egy oszlopát, amely alapján az új és a frissített rekordok minden egyes futtatáskor azonosíthatóak. Normális esetben az ebben a kiválasztott oszlopban (például: last_modify_time vagy ID) lévő adatok a sorok létrehozásával vagy frissítésével folyamatosan növekednek. Az ebben az oszlopban lévő legnagyobb érték szolgál a küszöbként.
 
-1. **Egy adatraktár előkészítése a küszöbértékek tárolására** .   
+1. **Egy adatraktár előkészítése a küszöbértékek tárolására**.   
     
     Ebben az oktatóanyagban a küszöbértékeket egy SQL-adatbázisban tároljuk.
 
@@ -68,8 +68,8 @@ Az alábbiak a megoldás kialakításának leglényegesebb lépései:
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **SQL Server** . Ebben az oktatóanyagban egy SQL Server adatbázist használ a forrásként szolgáló adattárként. 
-* **Azure SQL Database** . A fogadó adattára Azure SQL Database-adatbázist használ. Ha nem rendelkezik SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Databaseben](../azure-sql/database/single-database-create-quickstart.md) a létrehozásához szükséges lépések. 
+* **SQL Server**. Ebben az oktatóanyagban egy SQL Server adatbázist használ a forrásként szolgáló adattárként. 
+* **Azure SQL Database**. A fogadó adattára Azure SQL Database-adatbázist használ. Ha nem rendelkezik SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Databaseben](../azure-sql/database/single-database-create-quickstart.md) a létrehozásához szükséges lépések. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Forrástáblák létrehozása az SQL Server-adatbázisban
 
@@ -236,11 +236,11 @@ END
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-2. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory** : 
+2. A bal oldali menüben válassza az **erőforrás** -  >  **integráció** létrehozása  >  **Data Factory** : 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-3. Az **Új data factory** lapon, a **Név** mezőben adja meg a következőt: **ADFMultiIncCopyTutorialDF** . 
+3. Az **Új data factory** lapon, a **Név** mezőben adja meg a következőt: **ADFMultiIncCopyTutorialDF**. 
  
    Az Azure-beli adatgyár nevének **globálisan egyedinek** kell lennie. Ha egy piros felkiáltójelet lát a következő hibaüzenettel, változtassa meg az adat-előállító nevét (például a következőre: sajátneveADFIncCopyTutorialDF), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
@@ -253,7 +253,7 @@ END
     - Válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét.   
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 6. A **Verzió** résznél válassza a **V2** értéket.
-7. Válassza ki a Data Factory **helyét** . A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 8. Kattintson a **Létrehozás** gombra.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
@@ -306,7 +306,7 @@ Ebben a lépésben összekapcsolja SQL Server adatbázisát az adatelőállító
     1. Az **Adatbázis neve** mezőben adja meg a forrásadatokkal rendelkező SQL Server-adatbázis nevét. Az előfeltételek részeként létrehozott egy táblát, és adatokat szúrt be ebbe az adatbázisba. 
     1. Az **Authentication type** (Hitelesítési típus) mezőben válassza ki **a hitelesítés típusát** , amellyel az adatbázishoz kíván csatlakozni. 
     1. A **User name** (Felhasználónév) mezőben adja meg az SQL Server-adatbázishoz hozzáféréssel rendelkező felhasználó nevét. Ha perjel karaktert (`\`) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja az escape-karaktert (`\`). Például: `mydomain\\myuser`.
-    1. A **Password** (Jelszó) mezőben adja meg a felhasználónévhez tartozó **jelszót** . 
+    1. A **Password** (Jelszó) mezőben adja meg a felhasználónévhez tartozó **jelszót**. 
     1. Ha tesztelni szeretné, hogy a Data Factory csatlakozni tud-e az SQL Server-adatbázishoz, kattintson a **Test connection** (Kapcsolat tesztelése) gombra. Javítson ki minden hibát, amíg nem sikerül a kapcsolódás. 
     1. A társított szolgáltatás mentéséhez kattintson a **Befejezés** gombra.
 
@@ -321,7 +321,7 @@ Az utolsó lépésben létrehoz egy társított szolgáltatást, amely összekap
     1. A **kiszolgáló neve** mezőben válassza ki a kiszolgáló nevét a legördülő listából. 
     1. Az **adatbázis neve** mezőben válassza ki azt az adatbázist, amelyben létrehozta customer_table és project_table az előfeltételek részeként. 
     1. A **Felhasználónév** mezőbe írja be annak a felhasználónak a nevét, aki hozzáfér az adatbázishoz. 
-    1. A **Password** (Jelszó) mezőben adja meg a felhasználónévhez tartozó **jelszót** . 
+    1. A **Password** (Jelszó) mezőben adja meg a felhasználónévhez tartozó **jelszót**. 
     1. Ha tesztelni szeretné, hogy a Data Factory csatlakozni tud-e az SQL Server-adatbázishoz, kattintson a **Test connection** (Kapcsolat tesztelése) gombra. Javítson ki minden hibát, amíg nem sikerül a kapcsolódás. 
     1. A társított szolgáltatás mentéséhez kattintson a **Befejezés** gombra.
 
@@ -355,10 +355,10 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
 1. Váltson a **Parameters** (Paraméterek) lapra a tulajdonságok ablakában, és hajtsa végre a következő lépéseket: 
 
     1. Kattintson a **New** (Új) elemre a **Create/update parameters** (Paraméterek létrehozása/frissítése) szakaszban. 
-    1. Adja meg a **SinkTableName****nevet** és a **String** (Sztring) **típust** . Ez az adatkészlet a **SinkTableName** paramétert használja. A SinkTableName paramétert a folyamat állítja be dinamikusan, futásidőben. A folyamat ForEach tevékenysége végighalad a táblanevek listáján, és minden egyes ismétléskor átadja a táblanevet ennek az adatkészletnek.
+    1. Adja meg a **SinkTableName****nevet** és a **String** (Sztring) **típust**. Ez az adatkészlet a **SinkTableName** paramétert használja. A SinkTableName paramétert a folyamat állítja be dinamikusan, futásidőben. A folyamat ForEach tevékenysége végighalad a táblanevek listáján, és minden egyes ismétléskor átadja a táblanevet ennek az adatkészletnek.
    
         ![Fogadó adatkészlet – tulajdonságok](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
-1. Váltson a Tulajdonságok ablak **kapcsolat** fülére, és válassza a **AzureSqlDatabaseLinkedService** lehetőséget a **társított szolgáltatáshoz** . A **Table** (Tábla) tulajdonsághoz kattintson az **Add dynamic content** (Dinamikus tartalom hozzáadása) lehetőségre.   
+1. Váltson a Tulajdonságok ablak **kapcsolat** fülére, és válassza a **AzureSqlDatabaseLinkedService** lehetőséget a **társított szolgáltatáshoz**. A **Table** (Tábla) tulajdonsághoz kattintson az **Add dynamic content** (Dinamikus tartalom hozzáadása) lehetőségre.   
     
 1. A **dinamikus tartalom hozzáadása** ablakban válassza a **SinkTableName** elemet a **Parameters (paraméterek** ) szakaszban. 
  
@@ -396,13 +396,13 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 
 1. Kattintson a bal oldali ablaktáblán a **+ (plusz)** jelre, majd kattintson a **Folyamat** elemre.
 
-1. A **Tulajdonságok** terület általános paneljén adja meg **IncrementalCopyPipeline** a IncrementalCopyPipeline **nevet** . Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.  
+1. A **Tulajdonságok** terület általános paneljén adja meg **IncrementalCopyPipeline** a IncrementalCopyPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.  
 
 1. A **Parameters (paraméterek** ) lapon hajtsa végre a következő lépéseket: 
 
     1. Kattintson az **+ Új** elemre. 
     1. A paraméter **nevénél** adja meg a **tableList** nevet. 
-    1. Válassza a **tömb** lehetőséget a paraméter **típusaként** .
+    1. Válassza a **tömb** lehetőséget a paraméter **típusaként**.
 
 1. A **tevékenységek** eszközkészletében bontsa ki az **Ismétlés és feltételek** elemet, és húzza a **ForEach** tevékenységet a folyamat tervezőfelületére. A **Properties** (Tulajdonságok) ablak **General** (Általános) lapján az **IterateSQLTables** értéket adja meg. 
 
@@ -425,7 +425,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
         ```
 
         ![Első keresési tevékenység – beállítások](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-settings.png)
-1. Húzza a **Lookup** (Keresés) tevékenységet az **Activities** (Tevékenységek) eszközkészletből, és írja be a **LookupNewWaterMarkActivity****nevet** .
+1. Húzza a **Lookup** (Keresés) tevékenységet az **Activities** (Tevékenységek) eszközkészletből, és írja be a **LookupNewWaterMarkActivity****nevet**.
         
 1. Váltson a **Beállítások** lapra.
 
@@ -438,7 +438,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
         ```
     
         ![Második keresési tevékenység – beállítások](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
-1. Húzza a **Copy** (Másolás) tevékenységet az **Activities** (Tevékenységek) eszközkészletből, és írja be az **IncrementalCopyActivity****nevet** . 
+1. Húzza a **Copy** (Másolás) tevékenységet az **Activities** (Tevékenységek) eszközkészletből, és írja be az **IncrementalCopyActivity****nevet**. 
 
 1. Kapcsolja egymás után a **Lookup** (Keresés) tevékenységeket a **Copy** (Másolás) tevékenységhez. A csatlakozáshoz húzza a **Lookup** (Keresés) tevékenységhez tartozó **zöld** gombot a **Copy** (Másolás) tevékenységre. Amikor a másolási tevékenység szegélyének színe **kékre** vált, engedje el az egér gombját.
 
@@ -468,7 +468,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 
 1. Válassza ki a **Stored Procedure** (Tárolt eljárás) tevékenységet a folyamatban, és írja be a **StoredProceduretoWriteWatermarkActivity****nevet** a **Properties** (Tulajdonságok) ablak **General** (Általános) lapján. 
 
-1. Váltson az **SQL-fiók** lapra, és válassza a **AzureSqlDatabaseLinkedService** lehetőséget a **társított szolgáltatáshoz** .
+1. Váltson az **SQL-fiók** lapra, és válassza a **AzureSqlDatabaseLinkedService** lehetőséget a **társított szolgáltatáshoz**.
 
     ![Tárolt eljárási tevékenység – SQL-fiók](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. Váltson a **Tárolt eljárás** lapra, és végezze el az alábbi lépéseket:
@@ -479,7 +479,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 
         | Név | Típus | Érték | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | Dátum/idő | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Sztring | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)

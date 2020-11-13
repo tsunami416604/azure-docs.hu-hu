@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: b57303a1c9fdba2bea8637bef6c148622087a8d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9d0dd8ee1b99ddd2abf4fad154c70315a3d33c83
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789777"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556420"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Rövid útmutató: SQL Server VM létrehozása ARM-sablonnal
 
@@ -45,14 +45,14 @@ Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://
 - [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups): létrehoz egy hálózati biztonsági csoportot. 
 - [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces): konfigurálja a hálózati adaptert. 
 - [Microsoft. számítás/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): virtuális gép létrehozása az Azure-ban. 
-- [Microsoft. SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): regisztrálja a virtuális GÉPET az SQL VM erőforrás-szolgáltatóval. 
+- [Microsoft. SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): regisztrálja a virtuális GÉPET az SQL IaaS Agent bővítménnyel. 
 
 Az Azure-beli virtuálisgép-sablonokkal kapcsolatos további SQL Server a gyors üzembe helyezési [sablon galériájában](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular)találhatók.
 
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon egy virtuális gépet hoz létre, amelynek a tervezett SQL Server verziója telepítve van, és regisztrálva van az SQL VM erőforrás-szolgáltatóban. 
+1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon egy olyan virtuális gépet hoz létre, amelynek a tervezett SQL Server verziója telepítve van, és az SQL IaaS-ügynök bővítménnyel van regisztrálva. 
 
    [![Üzembe helyezés az Azure-ban](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
@@ -60,7 +60,7 @@ Az Azure-beli virtuálisgép-sablonokkal kapcsolatos további SQL Server a gyors
 
     * **Előfizetés** : válasszon ki egy Azure-előfizetést.
     * **Erőforráscsoport** : a SQL Server VM előkészített erőforráscsoport. 
-    * **Régió** : válasszon régiót.  Például: **USA középső régiója** .
+    * **Régió** : válasszon régiót.  Például: **USA középső régiója**.
     * **Virtuális gép neve** : adja meg SQL Server virtuális gép nevét. 
     * **Virtuális gép mérete** : válassza ki a virtuális gép megfelelő méretét a legördülő menüből.
     * **Meglévő Virtual Network neve** : adja meg a SQL Server VM felkészített virtuális hálózatának nevét. 
@@ -77,7 +77,7 @@ Az Azure-beli virtuálisgép-sablonokkal kapcsolatos további SQL Server a gyors
     * **Napló elérési útja** : a SQL Server naplófájlok elérési útja. 
     * **Hely** : az összes erőforrás helye, ennek az értéknek az alapértelmezettnek kell maradnia `[resourceGroup().location]` . 
 
-3. Válassza az **Áttekintés + létrehozás** lehetőséget. A SQL Server VM sikeres üzembe helyezését követően értesítést kap.
+3. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A SQL Server VM sikeres üzembe helyezését követően értesítést kap.
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -92,7 +92,7 @@ read resourcegroupName &&
 az resource list --resource-group $resourcegroupName 
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot az Azure CLI vagy a Azure PowerShell használatával:
 

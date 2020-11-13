@@ -13,19 +13,17 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7ec6ab8b52d9d43d898f481a2f36310e5c0897d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530697"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561080"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO beépülő modul Apple-eszközökhöz (előzetes verzió)
 
-> [!NOTE]
-> Ez a funkció nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>[!IMPORTANT]
+> Ez a funkció [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 Az *Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modul* egyszeri bejelentkezést (SSO) biztosít a Azure Active Directory (Azure ad) fiókokhoz az Apple [vállalati egyszeri bejelentkezés](https://developer.apple.com/documentation/authenticationservices) funkcióját támogató összes alkalmazásban. A Microsoft az Apple-szel szorosan együttműködve fejleszti ezt a beépülő modult az alkalmazás használhatóságának növeléséhez, miközben az Apple és a Microsoft által biztosított legjobb védelmet nyújtja.
 
@@ -53,10 +51,10 @@ Az Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modul enge
 
 Az Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modul konfigurálásához használja a következő paramétereket:
 
-- **Típus**: átirányítás
-- **BŐVÍTMÉNY azonosítója**: `com.microsoft.azureauthenticator.ssoextension`
-- **Csoport azonosítója**: (ez a mező nem szükséges az iOS esetében)
-- **URL-címek**:
+- **Típus** : átirányítás
+- **BŐVÍTMÉNY azonosítója** : `com.microsoft.azureauthenticator.ssoextension`
+- **Csoport azonosítója** : (ez a mező nem szükséges az iOS esetében)
+- **URL-címek** :
   - `https://login.microsoftonline.com`
   - `https://login.microsoft.com`
   - `https://sts.windows.net`
@@ -80,10 +78,10 @@ Csak a natív Apple hálózati technológiákat vagy webnézeteket használó al
 
 A következő paraméterekkel konfigurálhatja a Microsoft Enterprise SSO beépülő modult olyan alkalmazásokhoz, amelyek nem használnak MSAL:
 
-- **Kulcs**: `AppAllowList`
-- **Írja be a következőt**: `String`
-- **Érték**: az alkalmazási köteg azonosítóinak vesszővel tagolt listája azon alkalmazások esetében, amelyek jogosultak az SSO-ban való részvételre
-- **Példa**: `com.contoso.workapp, com.contoso.travelapp`
+- **Kulcs** : `AppAllowList`
+- **Írja be a következőt** : `String`
+- **Érték** : az alkalmazási köteg azonosítóinak vesszővel tagolt listája azon alkalmazások esetében, amelyek jogosultak az SSO-ban való részvételre
+- **Példa** : `com.contoso.workapp, com.contoso.travelapp`
 
 A MDM-rendszergazda által az SSO-ben való részvételre engedélyezett, belefoglalt [alkalmazások](./application-consent-experience.md) a végfelhasználók számára csendes jogkivonatot szerezhetnek. Ezért fontos, hogy csak megbízható alkalmazásokat adjon hozzá az engedélyezési listához. 
 
@@ -95,9 +93,9 @@ Alapértelmezés szerint a Microsoft vállalati egyszeri bejelentkezés beépül
 
 `browser_sso_interaction_enabled`A Flag engedélyezése lehetővé teszi a nem MSAL alkalmazások és a Safari böngésző számára a kezdeti indítást és a megosztott hitelesítő adatok beszerzését. Ha a Microsoft vállalati egyszeri bejelentkezés beépülő modulja még nem rendelkezik megosztott hitelesítő adatokkal, akkor a rendszer megkísérli a bejelentkezést, amikor egy Azure AD-URL-címről kéri a Safari böngészőben, a ASWebAuthenticationSession-ban, a SafariViewController-ban vagy más engedélyezett natív alkalmazásban.  
 
-- **Kulcs**: `browser_sso_interaction_enabled`
-- **Írja be a következőt**: `Integer`
-- **Érték**: 1 vagy 0
+- **Kulcs** : `browser_sso_interaction_enabled`
+- **Írja be a következőt** : `Integer`
+- **Érték** : 1 vagy 0
 
 Javasoljuk, hogy ezt a jelzőt úgy engedélyezze, hogy következetesebb élményt kapjon az összes alkalmazásban. Ez alapértelmezés szerint le van tiltva. 
 
@@ -107,9 +105,9 @@ A Microsoft Enterprise SSO beépülő modulja egyszeri bejelentkezést biztosít
 
 A `disable_explicit_app_prompt` jelölő engedélyezése korlátozza a natív és a webalkalmazások képességét, hogy a végfelhasználói kérdést kényszerítse a protokoll rétegén és az egyszeri bejelentkezés mellőzését.
 
-- **Kulcs**: `disable_explicit_app_prompt`
-- **Írja be a következőt**: `Integer`
-- **Érték**: 1 vagy 0
+- **Kulcs** : `disable_explicit_app_prompt`
+- **Írja be a következőt** : `Integer`
+- **Érték** : 1 vagy 0
 
 Javasoljuk, hogy ezt a jelzőt úgy engedélyezze, hogy következetesebb élményt kapjon az összes alkalmazásban. Ez alapértelmezés szerint le van tiltva. 
 

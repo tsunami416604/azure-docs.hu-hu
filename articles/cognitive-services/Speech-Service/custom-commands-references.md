@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 052418924e73252a780689aea33e84d5bfdbc3f6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 98510132b2341736664dfafa52e9567df95652be
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927651"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561097"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Egyéni parancsok – fogalmak és definíciók
 
@@ -40,7 +40,7 @@ Az interakciós szabályok további szabályok, amelyek az összetettebb vagy ö
 
 A paraméterek a feladatok végrehajtásához szükséges parancsok. Összetett forgatókönyvekben a paramétereket az egyéni műveleteket kiváltó feltételek definiálására is használhatja.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Név
 A Name tulajdonság azonosítja a paramétereket. Mindig adjon egy leíró nevet a paraméternek. A paraméterek több szakaszban is szerepelhetnek, például a feltételek, a beszédfelismerési válaszok vagy más műveletek összeállításakor.
  
 ### <a name="isglobal"></a>IsGlobal
@@ -49,20 +49,22 @@ Ez a jelölőnégyzet azt jelzi, hogy a paraméter hatóköre meg van-e osztva a
 ### <a name="required"></a>Kötelező
 Ez a jelölőnégyzet azt jelzi, hogy a paraméter értéke kötelező-e a parancs teljesítéséhez vagy befejezéséhez. A válaszokat úgy kell konfigurálni, hogy megkérdezze a felhasználót, hogy adjon meg egy értéket, ha a paraméter kötelezőként van megjelölve.
 
+Vegye figyelembe, hogy ha egy **kötelező paramétert** beállított **alapértelmezett értékkel** , a rendszer továbbra is explicit módon kéri a paraméter értékét.
+
 ### <a name="type"></a>Típus
 Az egyéni parancsok a következő típusú paramétereket támogatják:
 
-* DateTime
+* Dátum/idő
 * Földrajzi hely
 * Szám
 * Sztring
 
-Az összes ilyen típusú paraméter támogatja az alapértelmezett érték konfigurációját, amelyet a Azure Portal konfigurálhat.
+Az összes ilyen típusparaméter, kivéve a földrajzot, támogatja az alapértelmezett érték konfigurációját, amelyet a portálról konfigurálhat.
 
 ### <a name="configuration"></a>Konfiguráció
 A Configuration paraméter csak a karakterlánc típusú tulajdonsághoz van definiálva. A következő értékek támogatottak:
 
-* **Nincs** .
+* **Nincs**.
 * **Teljes bevitel elfogadása** : Ha engedélyezve van, a paraméter fogadja az összes bemenetet. Ez a beállítás akkor hasznos, ha a felhasználónak a teljes kilépéssel rendelkező paraméterre van szüksége. Ilyenek például a postai címek.
 * **Előre megadott bemeneti értékek elfogadása külső katalógusból** : ez az érték egy olyan paraméter konfigurálására szolgál, amely az értékek széles skáláját feltételezheti. Ilyen például egy értékesítési katalógus. Ebben az esetben a katalógus egy külső webes végponton fut, és egymástól függetlenül is konfigurálható.
 * **Előre megadott bemeneti értékek elfogadása belső katalógusból** : ez az érték egy olyan paraméter konfigurálására szolgál, amely néhány értéket feltételez. Ebben az esetben az értékeket a Speech Studióban kell konfigurálni.
@@ -71,7 +73,7 @@ A Configuration paraméter csak a karakterlánc típusú tulajdonsághoz van def
 ### <a name="validation"></a>Érvényesítés
 Az érvényesítés olyan paraméterekre vonatkozik, amelyek lehetővé teszik a paraméterek értékére vonatkozó korlátozások konfigurálását. Az egyéni parancsok jelenleg a következő típusparaméter-típusok érvényességét támogatják:
 
-* DateTime
+* Dátum/idő
 * Szám
 
 ## <a name="rules-configuration"></a>Szabályok konfigurálása

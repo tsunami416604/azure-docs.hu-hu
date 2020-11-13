@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: dc0cdca2355403bc8f5409d9a6ca7f4ae89caf25
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa0a001f9c35202939eeb4a7752803b998a3acf7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947178"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562015"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Gyors útmutató: ASP.NET Core webes API-k védetté helyezése a Microsoft Identity platformmal
 
-Ebben a rövid útmutatóban megtudhatja, hogyan védhető meg a ASP.NET Core webes API-k, így csak a jogosult fiókok férhetnek hozzá. A fiókok lehetnek személyes fiókok (hotmail.com, outlook.com és mások) és munkahelyi és iskolai fiókok is bármely Azure Active Directory (Azure AD) példányban.
+Ebben a rövid útmutatóban letölt egy ASP.NET Core webes API-kód mintát, és áttekinti a kódját, amely korlátozza az erőforrásokhoz való hozzáférést csak a jogosult fiókok számára. A minta támogatja a személyes Microsoft-fiókok és-fiókok engedélyezését bármely Azure Active Directory (Azure AD) szervezeten belül.
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>Előfeltételek
@@ -38,19 +38,19 @@ Ebben a rövid útmutatóban megtudhatja, hogyan védhető meg a ASP.NET Core we
 > 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 > 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 > 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
-> 1. A **kezelés**területen válassza a **Alkalmazásregisztrációk**, majd az **új regisztráció**lehetőséget.
+> 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** , majd az **új regisztráció** lehetőséget.
 > 1. Adja meg az alkalmazás **nevét** , például: `AspNetCoreWebApi-Quickstart` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
 > 1. Válassza a **Regisztráció** lehetőséget.
-> 1. A **kezelés**területen válassza **az API közzététele** lehetőséget.
+> 1. A **kezelés** területen válassza **az API közzététele** lehetőséget.
 > 1. Válassza a **hatókör hozzáadása** elemet, majd válassza a mentés lehetőséget, és fogadja el az alapértelmezett alkalmazás- **azonosító URI** **-** t.
 > 1. A **hatókör hozzáadása** panelen adja meg a következő értékeket:
->    - **Hatókör neve**: `access_as_user`
->    - **Kik tudnak beleegyezni?**: **rendszergazdák és felhasználók**
->    - **Rendszergazdai engedély megjelenítendő neve**: `Access AspNetCoreWebApi-Quickstart`
->    - **Rendszergazdai engedély leírása**: `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
->    - **Felhasználói beleegyező megjelenítendő név**: `Access AspNetCoreWebApi-Quickstart`
->    - **Felhasználói beleegyezett Leírás**: `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
->    - **Állapot**: **engedélyezve**
+>    - **Hatókör neve** : `access_as_user`
+>    - **Kik tudnak beleegyezni?** : **rendszergazdák és felhasználók**
+>    - **Rendszergazdai engedély megjelenítendő neve** : `Access AspNetCoreWebApi-Quickstart`
+>    - **Rendszergazdai engedély leírása** : `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
+>    - **Felhasználói beleegyező megjelenítendő név** : `Access AspNetCoreWebApi-Quickstart`
+>    - **Felhasználói beleegyezett Leírás** : `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
+>    - **Állapot** : **engedélyezve**
 > 1. A hatókör hozzáadásának befejezéséhez válassza a **hatókör hozzáadása** elemet.
 
 ## <a name="step-2-download-the-aspnet-core-project"></a>2. lépés: a ASP.NET Core-projekt letöltése
@@ -74,9 +74,9 @@ Ebben a rövid útmutatóban megtudhatja, hogyan védhető meg a ASP.NET Core we
 >
 >    - A helyére írja `Enter_the_Application_Id_here` be a Azure Portalban regisztrált alkalmazás **alkalmazás (ügyfél) azonosítóját** . Az **alkalmazás (ügyfél) azonosítóját** az alkalmazás **Áttekintés** oldalán találja.
 >    - Cserélje le az értékét `Enter_the_Tenant_Info_Here` a következők egyikére:
->       - Ha az alkalmazás **csak ebben a szervezeti könyvtárban támogatja a fiókokat**, cserélje le ezt az értéket a **könyvtár (bérlő) azonosítójával** (GUID) vagy a **bérlő nevével** (például `contoso.onmicrosoft.com` ). A **címtár (bérlő) azonosítója** az alkalmazás **Áttekintés** lapján található.
+>       - Ha az alkalmazás **csak ebben a szervezeti könyvtárban támogatja a fiókokat** , cserélje le ezt az értéket a **könyvtár (bérlő) azonosítójával** (GUID) vagy a **bérlő nevével** (például `contoso.onmicrosoft.com` ). A **címtár (bérlő) azonosítója** az alkalmazás **Áttekintés** lapján található.
 >       - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot** támogat, ezt az értéket az `organizations` értékre cserélje le
->       - Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót**, hagyja ezt az értéket `common`
+>       - Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót** , hagyja ezt az értéket `common`
 >
 > Ebben a rövid útmutatóban ne módosítsa a fájl *appsettings.js* egyéb értékeit.
 
@@ -160,7 +160,7 @@ namespace webapi.Controllers
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A ASP.NET Core web API code minta részét képező GitHub-tárház útmutatást és további kódrészleteket tartalmaz, amelyek bemutatják a következőket:
 

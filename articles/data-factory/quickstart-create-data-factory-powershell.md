@@ -1,6 +1,6 @@
 ---
 title: Adatmásolás Blob Storage a Azure Data Factory használatával
-description: Hozzon létre egy Azure-beli adatgyárat a PowerShell használatával, és másolja át az adatait az Azure Blob Storage egyik helyéről egy másik helyre.
+description: Azure Data Factory létrehozása a PowerShell használatával az adatok másolása az Azure Blob Storage egyik helyéről egy másik helyre.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,14 +13,14 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 1377743fbaefdb812f18768307421fdae637ed54
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a7fcb4be47e0e1e62c190a9b089243a178df8e7a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637581"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562049"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rövid útmutató: Azure-beli adat-előállító létrehozása a PowerShell használatával
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rövid útmutató: Azure Data Factory létrehozása a PowerShell használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -28,7 +28,7 @@ ms.locfileid: "92637581"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ez a rövid útmutató bemutatja, hogyan használható a PowerShell egy Azure-beli adat-előállító létrehozásához. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az adatAzure Data Factory használatával történő **átalakításával** kapcsolatos oktatóanyagért lásd [: oktatóanyag: az adatátalakítás a Spark használatával](transform-data-using-spark.md).
+Ez a rövid útmutató azt ismerteti, hogyan használható a PowerShell egy Azure Data Factory létrehozásához. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az adatAzure Data Factory használatával történő **átalakításával** kapcsolatos oktatóanyagért lásd [: oktatóanyag: az adatátalakítás a Spark használatával](transform-data-using-spark.md).
 
 > [!NOTE]
 > Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md).
@@ -43,7 +43,7 @@ Telepítse a legújabb Azure PowerShell modulokat a [Azure PowerShell telepíté
 
 #### <a name="log-in-to-powershell"></a>Bejelentkezés a PowerShellbe
 
-1. Indítsa el a gépén a **PowerShellt** . A PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell ezeket a parancsokat.
+1. Indítsa el a gépén a **PowerShellt**. A PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell ezeket a parancsokat.
 
 2. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt Azure-beli felhasználónevét és jelszavát:
 
@@ -99,7 +99,7 @@ Telepítse a legújabb Azure PowerShell modulokat a [Azure PowerShell telepíté
 
 Vegye figyelembe a következő szempontokat:
 
-* Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet, majd próbálkozzon újra.
+* Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet, majd próbálkozzon újra.
 
     ```
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
@@ -144,7 +144,7 @@ Társított szolgáltatásokat hozhat létre egy adat-előállítóban az adatt�
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
 
-3. Futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureStorageLinkedService** .
+3. Futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureStorageLinkedService**.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
@@ -190,7 +190,7 @@ A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatk�
     }
     ```
 
-2. A következő adatkészlet létrehozásához futtassa a **set-AzDataFactoryV2Dataset** parancsmagot: **InputDataset** .
+2. A következő adatkészlet létrehozásához futtassa a **set-AzDataFactoryV2Dataset** parancsmagot: **InputDataset**.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -231,7 +231,7 @@ A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatk�
     }
     ```
 
-4. A **set-AzDataFactoryV2Dataset** parancsmag futtatásával hozza létre az **adatkészletet** .
+4. A **set-AzDataFactoryV2Dataset** parancsmag futtatásával hozza létre az **adatkészletet**.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `

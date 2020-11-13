@@ -1,7 +1,7 @@
 ---
 title: '& Train models készítése'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan taníthat modelleket Azure Machine Learningokkal, beleértve a népszerű keretrendszerek (például a Scikit-Learn, a TensorFlow és a PyTorch) használatát. Machine Learning a folyamatok megkönnyítik a felügyelet nélküli futtatások beosztását, a heterogén számítási környezetek használatát, valamint a munkafolyamat részeinek újrafelhasználását. A és a Run konfigurációk részletes szabályozást biztosítanak azokon a számítási céloknál, amelyeken a betanítási folyamat fut.
+description: Ismerje meg, hogyan taníthatja ki a modelleket Azure Machine Learning használatával. Ismerkedjen meg a különböző képzési módszerekkel, és válassza ki a megfelelőt a projekthez.
 services: machine-learning
 ms.service: machine-learning
 author: Blackmist
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8888393cdbc738525b89ace1cf6f5864b7aa3b6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2448f5f778f19674aec63291acb72536c65ca6c9
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324809"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555889"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
 

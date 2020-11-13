@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 297b34fd9981308ece52545ac5878eaa144f4829
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 28d912153b52580727e0fb5086e0a7ae55e8b545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824410"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560927"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rövid útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
-Ez a rövid útmutató egy mintakód használatával mutatja be, hogyan jelentkezhet be egy Univerzális Windows-platform (UWP) alkalmazás a felhasználók személyes fiókjaival vagy munkahelyi és iskolai fiókjaival, hozzáférési token beszerzésével és a Microsoft Graph API meghívásával. Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
+Ebben a rövid útmutatóban egy kód mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be egy Univerzális Windows-platform (UWP) alkalmazás a felhasználók számára, és hogyan szerezhet be hozzáférési tokent a Microsoft Graph API meghívásához. 
+
+Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>Előfeltételek
@@ -48,14 +50,14 @@ Ez a rövid útmutató egy mintakód használatával mutatja be, hogyan jelentke
 > 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 > 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://aka.ms/MobileAppReg) oldalára.
-> 1. Válassza az **új regisztráció**lehetőséget.
-> 1. Az **alkalmazás regisztrálása**területen adja meg az alkalmazás regisztrációs adatait:
+> 1. Válassza az **új regisztráció** lehetőséget.
+> 1. Az **alkalmazás regisztrálása** területen adja meg az alkalmazás regisztrációs adatait:
 >      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `UWP-App-calling-MsGraph`).
 >      - A **Támogatott fióktípusok** szakaszban jelölje be a **Tetszőleges szervezeti címtárban található fiókok és a Személyes Microsoft-fiókok (például Skype, Xbox, Outlook.com)** beállítást.
 > 1. Válassza a **regisztráció** lehetőséget az alkalmazás létrehozásához, majd jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
-> 1. A **kezelés**területen válassza a **hitelesítés**lehetőséget.
-> 1. Válassza **a platform**  >  **mobil-és asztali alkalmazások**hozzáadása lehetőséget.
-> 1. Az **átirányítási URI**-k területen válassza a elemet `https://login.microsoftonline.com/common/oauth2/nativeclient` .
+> 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
+> 1. Válassza **a platform**  >  **mobil-és asztali alkalmazások** hozzáadása lehetőséget.
+> 1. Az **átirányítási URI** -k területen válassza a elemet `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 > 1. Válassza a **Konfigurálás** lehetőséget.
 
 > [!div renderon="portal" class="sxs-lookup"]
@@ -90,30 +92,30 @@ Ez a rövid útmutató egy mintakód használatával mutatja be, hogyan jelentke
 >
 > 1. Bontsa ki a. zip-archívumot egy helyi mappába a meghajtó gyökeréhez. Például a **C:\Azure-Samples**.
 > 1. Nyissa meg a projektet a Visual Studióban. Ha a rendszer kéri, telepítse a **univerzális Windows-platform-fejlesztési** számítási feladatot és az egyes SDK-összetevőket.
-> 1. A *MainPage.XAML.cs*módosítsa a változó értékét a `ClientId` korábban regisztrált alkalmazás **alkalmazás (ügyfél) azonosítójára** .
+> 1. A *MainPage.XAML.cs* módosítsa a változó értékét a `ClientId` korábban regisztrált alkalmazás **alkalmazás (ügyfél) azonosítójára** .
 >
 >    ```csharp
 >    private const string ClientId = "Enter_the_Application_Id_here";
 >    ```
 >
->    Az **alkalmazás (ügyfél) azonosítóját** az alkalmazás **Áttekintés** paneljén találja a Azure Portal (**Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  *{az alkalmazás regisztrációja}*).
+>    Az **alkalmazás (ügyfél) azonosítóját** az alkalmazás **Áttekintés** paneljén találja a Azure Portal ( **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  *{az alkalmazás regisztrációja}* ).
 > 1. Hozzon létre egy új önaláírt teszt tanúsítványt a csomaghoz, majd válassza ki a következőt:
->     1. A **megoldáskezelő**kattintson duplán a *Package. appxmanifest* fájlra.
->     1. Válasszon **csomagolást**a tanúsítvány kiválasztása.  >  **..**  >  **Létrehozás...**
+>     1. A **megoldáskezelő** kattintson duplán a *Package. appxmanifest* fájlra.
+>     1. Válasszon **csomagolást** a tanúsítvány kiválasztása.  >  **..**  >  **Létrehozás...**
 >     1. Adja meg a jelszót, majd kattintson **az OK gombra**.
 >     1. Válassza a **kiválasztás fájlból..**. lehetőséget, majd válassza ki az imént létrehozott *Native_UWP_V2_TemporaryKey. pfx* fájlt, majd kattintson **az OK gombra**.
 >     1. Zárjuk be a *Package. appxmanifest* fájlt (válassza az **OK** gombot, ha a rendszer kéri a fájl mentését).
->     1. A **megoldáskezelő**kattintson a jobb gombbal a **Native_UWP_V2** projektre, és válassza a **Tulajdonságok**lehetőséget.
->     1. Válassza az **aláírás**lehetőséget, majd válassza ki a. pfx fájlt, amelyet a **válasszon erős nevet tartalmazó kulcsfájl** legördülő menüből.
+>     1. A **megoldáskezelő** kattintson a jobb gombbal a **Native_UWP_V2** projektre, és válassza a **Tulajdonságok** lehetőséget.
+>     1. Válassza az **aláírás** lehetőséget, majd válassza ki a. pfx fájlt, amelyet a **válasszon erős nevet tartalmazó kulcsfájl** legördülő menüből.
 
 #### <a name="step-4-run-the-application"></a>4. lépés: az alkalmazás futtatása
 
 A minta alkalmazás futtatása a helyi gépen:
 
-1. A Visual Studio eszköztárán válassza ki a megfelelő platformot (valószínűleg **x64** vagy **x86**, nem ARM). A célként megadott eszköznek az *eszközről* a *helyi gépre*kell váltania.
+1. A Visual Studio eszköztárán válassza ki a megfelelő platformot (valószínűleg **x64** vagy **x86** , nem ARM). A célként megadott eszköznek az *eszközről* a *helyi gépre* kell váltania.
 1. Válassza a **Debug (Hibakeresés)**  > **Start Without Debugging (Indítás hibakeresés nélkül)** lehetőséget.
     
-    Ha a rendszer erre kéri, először engedélyeznie kell a **fejlesztői módot**, majd újra kell **indítania a hibakeresést** az alkalmazás elindításához.
+    Ha a rendszer erre kéri, először engedélyeznie kell a **fejlesztői módot** , majd újra kell **indítania a hibakeresést** az alkalmazás elindításához.
 
 Amikor megjelenik az alkalmazás ablaka, a **hívás Microsoft Graph API** gombra kattintva megadhatja a hitelesítő adatait, és beleegyezik az alkalmazás által kért engedélyekkel. Ha a művelet sikeres, az alkalmazás megjeleníti a Microsoft Graph API-nak a hívásból beszerzett néhány jogkivonat-információt és adatot.
 
@@ -123,7 +125,7 @@ Amikor megjelenik az alkalmazás ablaka, a **hívás Microsoft Graph API** gombr
 
 ### <a name="msalnet"></a>MSAL.NET
 
-A MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) a felhasználók bejelentkezésére és biztonsági jogkivonatok igénylésére használt könyvtár. A biztonsági jogkivonatok a Microsoft Identity platform által védett API-k elérésére használhatók a fejlesztők számára. Az MSAL telepítéséhez futtassa a következő parancsot a Visual Studio *Package Manager konzolján*:
+A MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) a felhasználók bejelentkezésére és biztonsági jogkivonatok igénylésére használt könyvtár. A biztonsági jogkivonatok a Microsoft Identity platform által védett API-k elérésére használhatók a fejlesztők számára. Az MSAL telepítéséhez futtassa a következő parancsot a Visual Studio *Package Manager konzolján* :
 
 ```powershell
 Install-Package Microsoft.Identity.Client

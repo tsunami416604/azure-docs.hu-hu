@@ -4,14 +4,14 @@ description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozz
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc33e9d8d613b9d0575da069d884e454d9930eac
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460091"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555639"
 ---
-# <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
+# <a name="azure-monitor-partner-integrations"></a>Azure Monitor-partnerintegrációk
 
 Betűrendben látható. 
 
@@ -151,7 +151,7 @@ A Focus **ArcSight** rendelkezik egy intelligens összekötővel Azure monitor E
 
 A "Focus **Operations Bridge** " szolgáltatás automatikusan figyeli az összes hibrid it-erőforrást – bármilyen eszközt, operációs rendszert, adatbázist, alkalmazást vagy szolgáltatást, függetlenül attól, hogy hol futnak, és alkalmazza a AIOps az összes adattípusra – az eseményeket, a metrikákat, a naplókat és a függőségeket. A szolgáltatás a minőségi szolgáltatások figyelésének egyedi kombinációját biztosítja, amely a Deep Application Health Analytics-szel párosul, és átfogó teljesítményt és rendelkezésre állást biztosít a Microsoft Azure-szolgáltatások számára. Az Operations Bridge lehetővé teszi, hogy az ügyfelek egyetlen panelt biztosítanak az összes böngészővel rendelkező eszközön, így mind az üzleti, mind az érintett felek megismerhetik.
 
-Tudjon meg többet
+Részletek
 - [Az OB Suite áttekintése](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Letöltés](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - A [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope az Operations Bridge Suite egyik összetevője.
@@ -253,7 +253,7 @@ Csökkentse az incidenseket és a MTTR MOSTANtól a AIOps platformmal a zaj, a r
 
 ![SignalFX embléma](./media/partners/signalfx.png)
 
-A SignalFx az adatvezérelt DevOps valós idejű operatív intelligenciának vezetője. A szolgáltatás felfedi és begyűjti a mérőszámokat a felhő minden összetevőjére. Lecseréli a hagyományos pontszerű eszközöket, és valós idejű láthatóságot biztosít a mai dinamikus környezetekben. A nagymértékben méretezhető SignalFx platform kihasználása a SaaS platform a tárolók és a szolgáltatásokon alapuló architektúrák számára van optimalizálva, és hatékony vizualizációt, proaktív riasztást és együttműködési osztályozási képességeket biztosít a különböző méretű szervezetekben. A SignalFx közvetlenül integrálható a Azure Monitor és a nyílt forráskódú összekötők, például a *Graf*, a *statd*és a *Collected* , hogy az Azure-ban az irányítópultok, az elemzések és a riasztások számára legmegfelelőbbek legyenek.
+A SignalFx az adatvezérelt DevOps valós idejű operatív intelligenciának vezetője. A szolgáltatás felfedi és begyűjti a mérőszámokat a felhő minden összetevőjére. Lecseréli a hagyományos pontszerű eszközöket, és valós idejű láthatóságot biztosít a mai dinamikus környezetekben. A nagymértékben méretezhető SignalFx platform kihasználása a SaaS platform a tárolók és a szolgáltatásokon alapuló architektúrák számára van optimalizálva, és hatékony vizualizációt, proaktív riasztást és együttműködési osztályozási képességeket biztosít a különböző méretű szervezetekben. A SignalFx közvetlenül integrálható a Azure Monitor és a nyílt forráskódú összekötők, például a *Graf* , a *statd* és a *Collected* , hogy az Azure-ban az irányítópultok, az elemzések és a riasztások számára legmegfelelőbbek legyenek.
 
 [a signalfx dokumentációja](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure)
 
@@ -301,9 +301,19 @@ A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség val
 
 [Turbonomic bemutatása](https://turbonomic.com/)
 
+## <a name="bmc-helix"></a>BMC Helix
+
+![BMC Helix embléma](./media/partners/BMCHelix.png)
+
+A BMC Helix egy autonóm Enterprise Service and Operations SaaS platform. Az 360-es fokú intelligenciával integráltan a vállalatok proaktív módon, predictively, felügyelni, szervizelni, optimalizálni, optimalizálni és továbbítani képesek az informatikai és üzletági funkciókat.
+Emellett a ITSM és az IT Operations Management (ITOM) zökkenőmentes integrálásával a BMC Helix lehetővé teszi az informatikai és üzleti felhasználók számára az IT-silók eltávolítását, az adatvezérelt üzleti döntések meghozatalát és az iparág vezető felhasználói élményének biztosítását.
+Az ügyfelek üzembe helyezhetik a BMC Helix platformot az általuk választott Felhőbeli üzembe helyezéssel – nyilvános, privát vagy hibrid. Emellett az ügyfelek választhatnak az iparág vezető szolgáltatói által kihasználható AI/ML-megoldásokkal.
+
+[További információ a BMC Helix-ról](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
+
 ## <a name="next-steps"></a>Következő lépések
 
-- [További információ a Azure Monitor](../overview.md)
+- [További információ az Azure Monitorról](../overview.md)
 - [Metrikák elérése a REST API használatával](rest-api-walkthrough.md)
 - [A tevékenység naplójának továbbítása nem Microsoft-szolgáltatásba](./activity-log.md#legacy-collection-methods)
 - [Erőforrás-naplók továbbítása nem Microsoft-szolgáltatásba](./resource-logs.md#send-to-azure-event-hubs)

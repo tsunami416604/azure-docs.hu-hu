@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 204c7d756a13ed0427f06abfb56e3f1256df48bc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e52925acb099190305e1f0609ac389565336e24b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789947"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556505"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure Gyorsindítás sablonok használata az Azure-beli virtuális gépen SQL Server rendelkezésre állási csoport konfigurálásához
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Habár ez a cikk az Azure rövid útmutató sablonjaival konfigurálja a rendelk
 Ha egy always on rendelkezésre állási csoport beállítását szeretné automatizálni a gyors üzembe helyezési sablonok használatával, a következő előfeltételek szükségesek: 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - Egy tartományvezérlővel rendelkező erőforráscsoport. 
-- Egy vagy több [, az Azure-ban SQL Server 2016 (vagy újabb) Enterprise kiadást futtató,](./create-sql-vm-portal.md) tartományhoz csatlakoztatott virtuális gép, amely ugyanabban a rendelkezésre állási csoport vagy rendelkezésre állási zónában található, és amelyek [regisztrálva vannak az SQL VM erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md).  
+- Egy vagy több [, az Azure-ban SQL Server 2016 (vagy újabb) Enterprise kiadást futtató,](./create-sql-vm-portal.md) tartományhoz csatlakoztatott virtuális gép, amely ugyanabban a rendelkezésre állási csoport vagy rendelkezésre állási zónában található, és amelyek [regisztrálva vannak az SQL IaaS-ügynök bővítménnyel](sql-agent-extension-manually-register-single-vm.md).  
 - Két elérhető (bármely entitás nem használja) IP-címek: egyet a belső terheléselosztó számára, a rendelkezésre állási csoport figyelője pedig a rendelkezésre állási csoporttal azonos alhálózaton belül. Ha meglévő terheléselosztó használatban van, csak egy elérhető IP-címet kell használnia.  
 
 ## <a name="permissions"></a>Engedélyek
@@ -52,7 +52,7 @@ Az Always On rendelkezésre állási csoport Azure Gyorsindítás sablonok haszn
 
 
 ## <a name="create-cluster"></a>Fürt létrehozása
-Miután a SQL Server virtuális gépek regisztrálva lettek az SQL VM erőforrás-szolgáltatóval, csatlakoztathatja a SQL Server virtuális gépeket a *SqlVirtualMachineGroups* . Ez az erőforrás a Windows feladatátvevő fürt metaadatait határozza meg. A metaadatok tartalmazzák a verziót, a kiadást, a teljes tartománynevet, Active Directory a fürt és a SQL Server kezelésére szolgáló fiókokat, valamint a Storage-fiókot a Felhőbeli tanúként. 
+Miután a SQL Server virtuális gépek regisztrálva lettek az SQL IaaS-ügynök bővítménnyel, csatlakozhat a SQL Server virtuális gépekhez a *SqlVirtualMachineGroups*. Ez az erőforrás a Windows feladatátvevő fürt metaadatait határozza meg. A metaadatok tartalmazzák a verziót, a kiadást, a teljes tartománynevet, Active Directory a fürt és a SQL Server kezelésére szolgáló fiókokat, valamint a Storage-fiókot a Felhőbeli tanúként. 
 
 SQL Server virtuális gépeknek a *SqlVirtualMachineGroups* erőforráscsoporthoz való hozzáadása a Windows feladatátvevő fürtszolgáltatást a fürt létrehozásához, majd a fürthöz tartozó SQL Server virtuális gépekhez csatlakoztatja. Ez a lépés a **101-SQL-VM-AG-Setup** gyorsindítási sablonnal automatizálható. A következő lépések végrehajtásával valósítható meg:
 
@@ -116,13 +116,13 @@ Csak létre kell hoznia a belső Load balancert. A 4. lépésben a **101-SQL-VM-
 
 1. A Azure Portal nyissa meg azt az erőforráscsoportot, amely a SQL Server virtuális gépeket tartalmazza. 
 2. Az erőforráscsoport területen válassza a **Hozzáadás** lehetőséget.
-3. Keresse meg a **Load balancert** . A keresési eredmények között válassza a **Load Balancer** lehetőséget, amelyet a **Microsoft** tesz közzé.
+3. Keresse meg a **Load balancert**. A keresési eredmények között válassza a **Load Balancer** lehetőséget, amelyet a **Microsoft** tesz közzé.
 4. A **Load Balancer** panelen válassza a **Létrehozás** lehetőséget.
 5. A terheléselosztó **létrehozása** párbeszédpanelen konfigurálja a terheléselosztó a következőképpen:
 
    | Beállítás | Érték |
    | --- | --- |
-   | **Név** |Adja meg a terheléselosztó nevét jelölő szöveges nevet. Írja be például a következőt: **sqlLB** . |
+   | **Név** |Adja meg a terheléselosztó nevét jelölő szöveges nevet. Írja be például a következőt: **sqlLB**. |
    | **Típus** |**Belső** : a legtöbb implementáció belső Load balancert használ, amely lehetővé teszi, hogy az ugyanazon a virtuális hálózaton lévő alkalmazások csatlakozzanak a rendelkezésre állási csoporthoz.  </br> **Külső** : lehetővé teszi, hogy az alkalmazások nyilvános internetkapcsolaton keresztül csatlakozzanak a rendelkezésre állási csoporthoz. |
    | **Virtuális hálózat** | Válassza ki azt a virtuális hálózatot, amelyre a SQL Server példányok tartoznak. |
    | **Alhálózat** | Válassza ki azt az alhálózatot, amelyhez a SQL Server példányok tartoznak. |
@@ -141,7 +141,7 @@ Csak létre kell hoznia a belső Load balancert. A 4. lépésben a **101-SQL-VM-
 
 ## <a name="create-listener"></a>Figyelő létrehozása 
 
-Hozza létre a rendelkezésre állási csoport figyelőjét, és konfigurálja a belső terheléselosztó automatikus konfigurálását az **101-SQL-VM-aglistener-Setup**  gyorsindító sablonnal. A sablon a Microsoft. SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener erőforrást is kiépíti. Az  **101-SQL-VM-aglistener-Setup** Gyorsindítás sablon az SQL VM erőforrás-szolgáltatón keresztül a következő műveleteket végzi el:
+Hozza létre a rendelkezésre állási csoport figyelőjét, és konfigurálja a belső terheléselosztó automatikus konfigurálását az **101-SQL-VM-aglistener-Setup**  gyorsindító sablonnal. A sablon a Microsoft. SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener erőforrást is kiépíti. Az  **101-SQL-VM-aglistener-Setup** rövid útmutató sablonja az SQL IaaS-ügynök bővítménnyel a következő műveleteket végzi el:
 
 - Létrehoz egy új előtér-IP-erőforrást (az üzembe helyezés során megadott IP-cím értéke alapján) a figyelőhöz. 
 - A fürt és a belső terheléselosztó hálózati beállításainak konfigurálása. 
@@ -179,9 +179,9 @@ A belső terheléselosztó konfigurálásához és a rendelkezésre állási cso
 >Ha az üzemelő példány a felében nem sikerül, manuálisan [el kell távolítania az újonnan létrehozott figyelőt](#remove-listener) a PowerShell használatával, mielőtt újra telepítené a **101-SQL-VM-aglistener-Setup** gyorsindító sablont. 
 
 ## <a name="remove-listener"></a>Figyelő eltávolítása
-Ha később el kell távolítania a rendelkezésre állási csoport figyelőjét, amelyet a sablon konfigurált, el kell végeznie az SQL virtuális gép erőforrás-szolgáltatóját. Mivel a figyelő az SQL VM erőforrás-szolgáltatón keresztül van regisztrálva, csak a SQL Server Management Studio-en keresztüli törlés nem elegendő. 
+Ha később el kell távolítania a rendelkezésre állási csoport figyelőjét, amelyet a sablon konfigurált, el kell végeznie az SQL IaaS-ügynök bővítményt. Mivel a figyelő az SQL IaaS-ügynök bővítménnyel van regisztrálva, csak a SQL Server Management Studio-en keresztüli törlés nem elegendő. 
 
-A legjobb módszer az SQL VM erőforrás-szolgáltatón keresztüli Törlés az alábbi kódrészlettel a PowerShellben. Ezzel eltávolítja a rendelkezésre állási csoport figyelő metaadatait az SQL VM erőforrás-szolgáltatójából. Emellett fizikailag törli a figyelőt a rendelkezésre állási csoportból. 
+A legjobb módszer az SQL IaaS-ügynök bővítményen keresztüli törlése az alábbi kódrészlettel a PowerShellben. Ezzel eltávolítja a rendelkezésre állási csoport figyelő metaadatait az SQL IaaS-ügynök bővítménnyel. Emellett fizikailag törli a figyelőt a rendelkezésre állási csoportból. 
 
 ```PowerShell
 # Remove the availability group listener
@@ -192,19 +192,19 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 ## <a name="common-errors"></a>Gyakori hibák
 Ez a szakasz néhány ismert problémát és lehetséges megoldását tárgyalja. 
 
-A (z) **"" rendelkezésre állási csoport figyelője \<AG-Name> már létezik** a rendelkezésre állási csoport figyelője számára az Azure rövid útmutató sablonjában használt kiválasztott rendelkezésre állási csoporttal, amely már tartalmaz figyelőt. Vagy fizikailag a rendelkezésre állási csoporton belül van, vagy a metaadatok az SQL VM erőforrás-szolgáltatóján belül maradnak. Távolítsa el a figyelőt a [PowerShell](#remove-listener) használatával az **101-SQL-VM-aglistener-Setup** gyorsindítási sablon újbóli üzembe helyezése előtt. 
+A (z) **"" rendelkezésre állási csoport figyelője \<AG-Name> már létezik** a rendelkezésre állási csoport figyelője számára az Azure rövid útmutató sablonjában használt kiválasztott rendelkezésre állási csoporttal, amely már tartalmaz figyelőt. Vagy fizikailag a rendelkezésre állási csoporton belül van, vagy a metaadatok az SQL IaaS-ügynök bővítményén belül maradnak. Távolítsa el a figyelőt a [PowerShell](#remove-listener) használatával az **101-SQL-VM-aglistener-Setup** gyorsindítási sablon újbóli üzembe helyezése előtt. 
 
 **A kapcsolatok csak az elsődleges replikából működnek** Ez a viselkedés valószínűleg egy sikertelen **101-SQL-VM-aglistener –** telepítési sablon telepítése, amely inkonzisztens állapotban hagyta el a belső terheléselosztó konfigurációját. Ellenőrizze, hogy a háttér-készlet tartalmazza-e a rendelkezésre állási csoport listáját, valamint hogy léteznek-e szabályok az állapot-mintavételhez és a terheléselosztási szabályokhoz. Ha bármilyen hiányzik, a belső terheléselosztó konfigurációja inkonzisztens állapotú. 
 
 A probléma megoldásához távolítsa el a figyelőt a [PowerShell](#remove-listener)használatával, törölje a belső Load balancert a Azure Portalon keresztül, majd kezdje újra a 3. lépésben. 
 
-**BadRequest – csak az SQL-alapú virtuális gépek listája frissíthető** Ez a hiba akkor fordulhat elő, ha az **101-SQL-VM-aglistener-Setup** sablont üzembe helyezi, ha a figyelőt SQL Server Management Studio (SSMS) használatával törölte, de az nem lett törölve az SQL VM erőforrás-szolgáltatótól. A figyelő a SSMS-n keresztül történő törlése nem távolítja el a figyelő metaadatait az SQL VM erőforrás-szolgáltatótól. A figyelőt törölni kell az erőforrás-szolgáltatóról a [PowerShell](#remove-listener)használatával. 
+**BadRequest – csak az SQL-alapú virtuális gépek listája frissíthető** Ez a hiba akkor fordulhat elő, ha az **101-SQL-VM-aglistener-Setup** sablont telepíti, ha a figyelő SQL Server Management Studio (SSMS) használatával lett törölve, de az SQL IaaS ügynök bővítményből nem lett törölve. A figyelő a SSMS-n keresztül történő törlése nem távolítja el a figyelő metaadatait az SQL IaaS-ügynök bővítménnyel. A figyelőt törölni kell az erőforrás-szolgáltatóról a [PowerShell](#remove-listener)használatával. 
 
 A **tartományi fiók nem létezik** . Ennek a hibának két oka lehet. Vagy a megadott tartományi fiók nem létezik, vagy hiányzik az egyszerű felhasználónév [(UPN)](/windows/desktop/ad/naming-properties#userprincipalname) . Az **101-SQL-VM-AG-Setup** sablon tartományi fiókot vár az UPN-űrlapon (azaz user@domain.com ), de előfordulhat, hogy bizonyos tartományi fiókok hiányoznak. Ez általában akkor fordul elő, ha egy helyi felhasználó át lett telepítve az első tartományi rendszergazdai fiókba, ha a kiszolgálót tartományvezérlővé adták elő, vagy ha a felhasználó a PowerShell használatával lett létrehozva. 
 
 Ellenőrizze, hogy létezik-e a fiók. Ha igen, lehet, hogy a második szituációban fut. A probléma megoldásához tegye a következőket:
 
-1. A tartományvezérlőn nyissa meg a **Active Directory felhasználók és számítógépek** ablakot a Kiszolgálókezelő **eszközök** lehetőségével **Server Manager** . 
+1. A tartományvezérlőn nyissa meg a **Active Directory felhasználók és számítógépek** ablakot a Kiszolgálókezelő **eszközök** lehetőségével **Server Manager**. 
 2. Nyissa meg a fiókot a bal oldali ablaktáblán a **felhasználók** lehetőség kiválasztásával.
 3. Kattintson a jobb gombbal a fiókra, majd válassza a **Tulajdonságok** lehetőséget.
 4. Válassza a **fiók** fület. Ha a **felhasználói bejelentkezési név** mező üres, akkor ez a hiba oka. 

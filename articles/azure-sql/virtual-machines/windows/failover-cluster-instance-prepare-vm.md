@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5eff13c9ec672937258cf35274d2f5f7bc66f18
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 901c090d26959950d0ffd6a96253bdc36c9331c5
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164244"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556335"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Virtuális gépek előkészítése a (z) rendszerhez (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,9 +47,9 @@ A feladatátvételi fürtszolgáltatás megköveteli, hogy a virtuális gépek e
 
 Körültekintően válassza ki a virtuális gép rendelkezésre állási beállítását, amely megfelel a kívánt fürtkonfiguráció: 
 
- - **Azure Shared Disks**: a tartalék tartományhoz konfigurált [rendelkezésre állási](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) csoport és a frissítési tartomány 1 értékre van állítva, és egy [közelségi elhelyezési csoportba](../../../virtual-machines/windows/proximity-placement-groups-portal.md)kerül.
- - **Prémium fájlmegosztás**: [rendelkezésre állási csoport](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) vagy [rendelkezésre állási zóna](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address). Ha a rendelkezésre állási zónákat a virtuális gépek rendelkezésre állási konfigurációjaként választja, a prémium fájlmegosztás az egyetlen megosztott tárolási beállítás. 
- - **Közvetlen tárolóhelyek**: [rendelkezésre állási csoport](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
+ - **Azure Shared Disks** : a tartalék tartományhoz konfigurált [rendelkezésre állási](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) csoport és a frissítési tartomány 1 értékre van állítva, és egy [közelségi elhelyezési csoportba](../../../virtual-machines/windows/proximity-placement-groups-portal.md)kerül.
+ - **Prémium fájlmegosztás** : [rendelkezésre állási csoport](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) vagy [rendelkezésre állási zóna](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address). Ha a rendelkezésre állási zónákat a virtuális gépek rendelkezésre állási konfigurációjaként választja, a prémium fájlmegosztás az egyetlen megosztott tárolási beállítás. 
+ - **Közvetlen tárolóhelyek** : [rendelkezésre állási csoport](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
 
 >[!IMPORTANT]
 >A virtuális gép létrehozása után a rendelkezésre állási csoport nem állítható be és nem módosítható.
@@ -71,15 +71,15 @@ Létrehozhat egy Azure-beli virtuális gépet SQL Server előre [telepített vag
 
 ## <a name="uninstall-sql-server"></a>SQL Server eltávolítása
 
-A létrehozási folyamat során a SQL Server fürtözött példányként telepíti a feladatátvevő fürtbe. *Ha SQL Server nélkül telepített egy Azure Marketplace-lemezképpel rendelkező virtuális gépet, akkor kihagyhatja ezt a lépést.* Ha SQL Server előre telepített lemezképet telepített, akkor törölnie kell a SQL Server VM az SQL VM erőforrás-szolgáltatóból, majd el kell távolítania a SQL Server. 
+A létrehozási folyamat során a SQL Server fürtözött példányként telepíti a feladatátvevő fürtbe. *Ha SQL Server nélkül telepített egy Azure Marketplace-lemezképpel rendelkező virtuális gépet, akkor kihagyhatja ezt a lépést.* Ha SQL Server előre telepített lemezképet telepített, akkor törölnie kell a SQL Server VM az SQL IaaS-ügynök bővítménnyel, majd el kell távolítania a SQL Server. 
 
-### <a name="unregister-from-the-sql-vm-resource-provider"></a>Az SQL VM erőforrás-szolgáltató regisztrációjának törlése
+### <a name="unregister-from-the-sql-iaas-agent-extension"></a>Az SQL IaaS-ügynök bővítmény regisztrációjának törlése
 
-Az Azure Marketplace-ről SQL Server VM rendszerképek automatikusan regisztrálva lesznek az SQL VM erőforrás-szolgáltatóban. Az előre telepített SQL Server példány eltávolítása előtt törölnie kell [az egyes SQL Server VMokat az SQL VM erőforrás-szolgáltatótól](sql-vm-resource-provider-register.md#unregister-from-rp). 
+Az Azure Marketplace-ről SQL Server VM rendszerképek automatikusan regisztrálva lesznek az SQL IaaS-ügynök bővítménnyel. Az előre telepített SQL Server példány eltávolítása előtt törölnie kell [minden SQL Server VM az SQL IaaS-ügynök bővítményből](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension). 
 
 ### <a name="uninstall-sql-server"></a>SQL Server eltávolítása
 
-Az erőforrás-szolgáltató regisztrációjának törlése után eltávolíthatja SQL Server. Kövesse az alábbi lépéseket az egyes virtuális gépeken: 
+A bővítményből való regisztráció törlése után eltávolíthatja SQL Server. Kövesse az alábbi lépéseket az egyes virtuális gépeken: 
 
 1. Kapcsolódjon a virtuális géphez RDP használatával.
 
@@ -87,14 +87,14 @@ Az erőforrás-szolgáltató regisztrációjának törlése után eltávolíthat
 
 1. Ha a SQL Server-alapú virtuálisgép-rendszerképek egyikét használja, távolítsa el a SQL Server példányt:
 
-   1. A **programok és szolgáltatások**területen kattintson a jobb gombbal az **Microsoft SQL Server 201_ (64 bites)** elemre, és válassza az **Eltávolítás/módosítás**parancsot.
-   1. Válassza az **Eltávolítás**lehetőséget.
+   1. A **programok és szolgáltatások** területen kattintson a jobb gombbal az **Microsoft SQL Server 201_ (64 bites)** elemre, és válassza az **Eltávolítás/módosítás** parancsot.
+   1. Válassza az **Eltávolítás** lehetőséget.
    1. Válassza ki az alapértelmezett példányt.
-   1. Távolítsa el az összes funkcióját az **adatbázismotor-szolgáltatások**területen. Ne távolítson el semmit a **megosztott szolgáltatások**területen. A következő képernyőképhez hasonlóan fog megjelenni:
+   1. Távolítsa el az összes funkcióját az **adatbázismotor-szolgáltatások** területen. Ne távolítson el semmit a **megosztott szolgáltatások** területen. A következő képernyőképhez hasonlóan fog megjelenni:
 
       ![Funkciók kiválasztása](./media/failover-cluster-instance-prepare-vm/03-remove-features.png)
 
-   1. Válassza a **tovább**, majd az **Eltávolítás**lehetőséget.
+   1. Válassza a **tovább** , majd az **Eltávolítás** lehetőséget.
    1. A példány sikeres eltávolítása után indítsa újra a virtuális gépet. 
 
 ## <a name="open-the-firewall"></a>A tűzfal megnyitása 
@@ -105,11 +105,11 @@ Az egyes virtuális gépeken nyissa meg a SQL Server által használt Windows t�
 
 Ez a tábla a szükséges portokat részletezi az Ön által megnyitható portoktól függően: 
 
-   | Cél | Port | Jegyzetek
+   | Rendeltetés | Port | Jegyzetek
    | ------ | ------ | ------
-   | SQL Server | TCP 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot. </br> </br> **Felhasználta**: az összes%-os konfiguráció. |
-   | Állapotadat-mintavétel | TCP 59999 | Bármilyen nyitott TCP-port. Konfigurálja a terheléselosztó [állapotának](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) mintavételét és a fürtöt a port használatára. </br> </br> **A**(z): a Load Balancer használatával. |
-   | Fájlmegosztás | UDP 445 | A fájlmegosztási szolgáltatás által használt port. </br> </br> **A**(z): verzió prémium fájlmegosztás használatával. |
+   | SQL Server | TCP 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot. </br> </br> **Felhasználta** : az összes%-os konfiguráció. |
+   | Állapotadat-mintavétel | TCP 59999 | Bármilyen nyitott TCP-port. Konfigurálja a terheléselosztó [állapotának](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) mintavételét és a fürtöt a port használatára. </br> </br> **A** (z): a Load Balancer használatával. |
+   | Fájlmegosztás | UDP 445 | A fájlmegosztási szolgáltatás által használt port. </br> </br> **A** (z): verzió prémium fájlmegosztás használatával. |
 
 ## <a name="join-the-domain"></a>Csatlakozás a tartományhoz
 
@@ -120,7 +120,7 @@ A virtuális gépeket is csatlakoztatnia kell a tartományhoz. Ezt megteheti egy
 Az Azure piactéren létrehozott virtuális gépekhez csatlakoztatott tároló tartozik. Ha a prémium szintű fájlmegosztás vagy az Azure Shared Disks használatával tervezi beállítani a (z)%-os tárhelyet, eltávolíthatja a csatlakoztatott tárolót a költségek mentéséhez, mivel a rendszer a feladatátvevő fürt példányához nem használja a helyi tárterületet. Azonban lehetséges, hogy a csatlakoztatott tárolót Közvetlen tárolóhelyek-es verziós megoldásokhoz is használhatja, ezért előfordulhat, hogy a rendszer nem segít eltávolítani őket ebben az esetben. Tekintse át a következőt:-es tárolási megoldás annak megállapításához, hogy a csatlakoztatott tároló eltávolítása optimális-e a költségek megtakarításához 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy előkészítette a virtuális gép környezetét, készen áll a feladatátvevő fürt példányának konfigurálására. 
 

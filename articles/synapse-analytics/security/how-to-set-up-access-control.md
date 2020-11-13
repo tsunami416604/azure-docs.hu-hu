@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 080e56a5b6be8ba68c901509fe87421632144643
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 79a4db1f7d4be88260ea41ce1090007bc66cc7c8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312037"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556029"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió) 
 
@@ -31,7 +31,7 @@ A szinapszis-munkaterület (előzetes verzió) biztonságossá tételéhez köve
   - Az Azure szinapszis Analytics-rendszergazda Apache Spark
 - Azure Data Lake Storage Gen 2 (ADLSGEN2) adathozzáférés-vezérlése.
 - A szinapszis SQL és a Spark adatbázisok hozzáférés-vezérlése
-- 
+
 ## <a name="steps-to-secure-a-synapse-workspace"></a>A szinapszis-munkaterület biztonságossá tételének lépései
 
 Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséhez. Cserélje le azokat bármely tetszőleges névvel.

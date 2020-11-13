@@ -1,6 +1,6 @@
 ---
-title: Adattitkosítás Microsoft Azure-at-Rest | Microsoft Docs
-description: Ez a cikk áttekintést nyújt a REST-alapú adattitkosításról, a teljes képességekről és az általános szempontokról Microsoft Azure.
+title: Azure-alapú adattitkosítás – a REST-Azure biztonság
+description: Ez a cikk áttekintést nyújt az Azure-beli adattitkosításról, az általános képességekről és az általános szempontokról.
 services: security
 documentationcenter: na
 author: msmbaldwin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c9a68661a89f53c5aa27bdd046b5bc09a47db400
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412782"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556624"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Inaktív adatok titkosítása az Azure-ban
 
@@ -128,7 +128,7 @@ Az összes Azure Storage-szolgáltatás (blob Storage, üzenetsor-tárolás, Tab
 
 A Azure SQL Database jelenleg a Microsoft által felügyelt szolgáltatás-és ügyféloldali titkosítási helyzetekben támogatja a REST titkosítást.
 
-A kiszolgálói titkosítás támogatását jelenleg a transzparens adattitkosítás nevű SQL-szolgáltatás nyújtja. Ha egy Azure SQL Database ügyfél lehetővé teszi, hogy a rendszer automatikusan létrehozza és felügyeli a TDE kulcsot. A inaktív adatok titkosítása az adatbázis és a kiszolgáló szintjén is engedélyezhető. A 2017. júniusi [transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) alapértelmezés szerint engedélyezve van az újonnan létrehozott adatbázisokon. Azure SQL Database támogatja az RSA 2048-bites ügyfél által felügyelt kulcsokat Azure Key Vault. További információ: [transzparens adattitkosítás bring your own Key támogatással a Azure SQL Database és az Adattárházhoz](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current).
+A kiszolgálói titkosítás támogatását jelenleg a transzparens adattitkosítás nevű SQL-szolgáltatás nyújtja. Ha egy Azure SQL Database ügyfél lehetővé teszi, hogy a rendszer automatikusan létrehozza és felügyeli a TDE kulcsot. A inaktív adatok titkosítása az adatbázis és a kiszolgáló szintjén is engedélyezhető. A 2017. júniusi [transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) alapértelmezés szerint engedélyezve van az újonnan létrehozott adatbázisokon. Azure SQL Database támogatja az RSA 2048-bites ügyfél által felügyelt kulcsokat Azure Key Vault. További információ: [transzparens adattitkosítás bring your own Key támogatással a Azure SQL Database és az Adattárházhoz](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql).
 
 A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkción keresztül. A Always Encrypted az ügyfél által létrehozott és tárolt kulcsot használja. Az ügyfelek a főkulcsot egy Windows tanúsítványtárolóban, Azure Key Vaultban vagy egy helyi hardveres biztonsági modulban tárolhatják. A SQL Server Management Studio használatával az SQL-felhasználók kiválaszthatják, hogy milyen kulcsot szeretnének használni az oszlop titkosításához.
 
@@ -136,7 +136,8 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 
 Az Azure-szolgáltatásokon belül tárolt ügyféladatok védelme kiemelkedő fontosságú a Microsoft számára. Az összes Azure-beli üzemeltetett szolgáltatás elkötelezett amellett, hogy titkosítást biztosítson a REST-beállításokban. Az Azure-szolgáltatások a szolgáltatás által felügyelt kulcsokat, az ügyfél által felügyelt kulcsokat vagy az ügyféloldali titkosítást támogatják. Az Azure-szolgáltatások széles körben javítják a titkosítást a REST rendelkezésre állása során, és az új lehetőségek az előzetes verzióra és az általános elérhetőségre vannak tervezve a következő hónapokban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szolgáltatás által felügyelt kulcsokkal és az ügyfél által felügyelt kulcsokkal kapcsolatos további tudnivalókért tekintse meg az [adattitkosítási modelleket](encryption-models.md) .
 - Ismerje meg, hogyan használja az Azure a [kettős titkosítást](double-encryption.md) az adattitkosítással kapcsolatos fenyegetések enyhítésére.
+- Ismerje meg, hogy a Microsoft Hogyan biztosítja a [platform integritását és biztonságát](platform.md) a hardver-és belső vezérlőprogram-kiépítési, integrációs, operacionalizálási és javítási folyamatokat áthaladó gazdagépek számára.

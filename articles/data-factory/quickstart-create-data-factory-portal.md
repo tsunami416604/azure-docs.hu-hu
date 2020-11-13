@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 06/04/2020
+ms.date: 11/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 519447dfffaa660131fa587eaef946c76f66983b
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 454bdaeb83e329ae059d6450b928d1286cd9552a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027329"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555736"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyorsútmutató: Adat-előállító létrehozása az Azure Data Factory felhasználói felületén 
 
@@ -42,7 +42,7 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
 1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet.
-1. Válassza az **elemzés** lehetőséget, majd válassza a **Data Factory** lehetőséget. 
+1. Válassza az **integráció** lehetőséget, majd válassza a **Data Factory** lehetőséget. 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Az **Új data factory** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
@@ -64,7 +64,7 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 
 1. Válassza a **Tovább: git-konfiguráció** lehetőséget, majd válassza a **git konfigurálása később** lehetőséget.
 
-1. Válassza a **Létrehozás** lehetőséget. A létrehozás befejezése után válassza az **erőforrás keresése** lehetőséget, és lépjen a **Data Factory** lapra. 
+1. Kattintson a **Létrehozás** gombra. A létrehozás befejezése után válassza az **erőforrás keresése** lehetőséget, és lépjen a **Data Factory** lapra. 
 
 1. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
    
@@ -121,13 +121,13 @@ A társított szolgáltatás beállításaiban a forrásadatokat tartalmazó Azu
    
 1. A **készlet tulajdonságai** lapon hajtsa végre a következő lépéseket:
 
-    a. A **név** mezőben adja meg a **InputDataset** . 
+    a. A **név** mezőben adja meg a **InputDataset**. 
 
     b. **Társított szolgáltatás** : válassza az **AzureStorageLinkedService** értéket.
 
     c. **Fájl elérési útja** : kattintson a **Tallózás** gombra.
 
-    d. A **fájl vagy mappa kiválasztása** ablakban keresse meg a **bemeneti** mappát az **adftutorial** tárolóban, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra** .
+    d. A **fájl vagy mappa kiválasztása** ablakban keresse meg a **bemeneti** mappát az **adftutorial** tárolóban, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra**.
     
     e. Kattintson az **OK** gombra.   
 
@@ -153,7 +153,7 @@ A feladat részeként létrehozza és megerősíti azt a másolási tevékenysé
 
 1. Válassza a **+** (plusz) gombot, majd válassza a **folyamat** elemet. 
 
-1. A **Tulajdonságok** terület általános paneljén adja meg **CopyPipeline** a CopyPipeline **nevet** . Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
+1. A **Tulajdonságok** terület általános paneljén adja meg **CopyPipeline** a CopyPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
 
 1. A **Tevékenységek** eszközkészletben bontsa ki az **Áthelyezés és átalakítás** elemet. Húzza a **adatok másolása** tevékenységet a **tevékenységek** eszközkészletből a folyamat tervező felületére. A **Tevékenységek** eszközkészletben kereshet is az egyes tevékenységek között. Adja meg a **CopyFromBlobToBlob** értéket a **Név** mezőben.
    ![Adatmásolási tevékenység létrehozása](./media/quickstart-create-data-factory-portal/copy-activity.png)
@@ -198,7 +198,7 @@ A feladat részeként entitásokat (társított szolgáltatásokat, adatkészlet
 1. Váltson vissza a **folyamat** futtatása nézetre a **tevékenység futtatása** nézetből a **minden folyamat futtatása** hivatkozásra kattintva. 
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>A folyamat aktiválása ütemezés szerint
-Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időközönként (például óránként, naponta) történő futtatásához létrehozhat egy *ütemező eseményindítót* . A feladat részeként egy olyan eseményindítót fog létrehozni, amely a megadott záró dátumig és időpontig percenként fut. 
+Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időközönként (például óránként, naponta) történő futtatásához létrehozhat egy *ütemező eseményindítót*. A feladat részeként egy olyan eseményindítót fog létrehozni, amely a megadott záró dátumig és időpontig percenként fut. 
 
 1. Váltson a **Szerző** lapra. 
 
@@ -206,14 +206,14 @@ Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időköz�
 
 1. Az **Eseményindítók hozzáadása** lapon kattintson az **Eseményindító kiválasztása** , majd pedig az **Új** elemre. 
 
-1. Az **új trigger** lapon a **Befejezés** alatt válassza **a dátum** lehetőséget, adja meg az aktuális időpont után néhány perccel későbbi befejezési időt, majd kattintson az **OK gombra** . 
+1. Az **új trigger** lapon a **Befejezés** alatt válassza **a dátum** lehetőséget, adja meg az aktuális időpont után néhány perccel későbbi befejezési időt, majd kattintson az **OK gombra**. 
 
    Minden egyes folyamatfuttatásnak van bizonyos költségvonzata, ezért a befejezés időpontját csak néhány perccel a kezdés időpontja utánra állítsa be. Győződjön meg arról, hogy a két időponthoz tartozó dátum megegyezik. Azonban győződjön meg arról, hogy elegendő idő van a folyamat futtatására a közzétételi idő és a befejezési idő között. Az eseményindító csak a Data Factoryban való közzététel után lesz aktív, a felhasználói felületen történő mentéskor még nem. 
 
-1. Az **új trigger** lapon jelölje be az **aktiválva** jelölőnégyzetet, majd kattintson az **OK gombra** . 
+1. Az **új trigger** lapon jelölje be az **aktiválva** jelölőnégyzetet, majd kattintson az **OK gombra**. 
 
    ![Új trigger-beállítás](./media/quickstart-create-data-factory-portal/trigger-settings-next.png)
-1. Tekintse át a figyelmeztető üzenetet, és kattintson **az OK gombra** .
+1. Tekintse át a figyelmeztető üzenetet, és kattintson **az OK gombra**.
 
 1. Válassza az **összes közzététele** lehetőséget a Data Factory módosításainak közzétételéhez. 
 

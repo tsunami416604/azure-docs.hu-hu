@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/12/2020
+ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76314538"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555600"
 ---
 # <a name="apply-sql-transformation"></a>SQL-átalakítás alkalmazása
 
@@ -29,11 +29,26 @@ Az SQL-transzformációs modul alkalmazásával a következőket végezheti el:
 -   SQL-lekérdezési utasítások végrehajtása az adatszűréshez és az adatmódosításhoz, valamint a lekérdezés eredményének adattáblaként való visszaadása.  
 
 > [!IMPORTANT]
-> Az ebben a modulban használt SQL-motor **SQLite**. Az SQLite szintaxissal kapcsolatos további információkért lásd: az [SQL mint az SQLite által értelmezett](https://www.sqlite.org/index.html) további információ.  
+> Az ebben a modulban használt SQL-motor **SQLite**. Az SQLite szintaxissal kapcsolatos további információkért lásd az SQL-et az [SQLite által értelmezett módon](https://www.sqlite.org/index.html).
+> Ez a modul a memóriában lévő SQLite-ba ütközik, így a modul végrehajtása sokkal több memóriát igényel, és `Out of memory` hibát okozhat. Győződjön meg arról, hogy a számítógépén elegendő RAM van.
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>Az SQL-transzformáció alkalmazásának konfigurálása  
 
 A modul bemenetként akár három adatkészletet is igénybe vehet. Ha az egyes bemeneti portokhoz kapcsolódó adatkészletekre hivatkozik, akkor a és a nevet kell használnia `t1` `t2` `t3` . A tábla száma a bemeneti port indexét jelzi.  
+
+Az alábbi mintakód bemutatja, hogyan csatlakozhat két táblához. a T1 és a T2 két olyan adathalmaz, amely a bal és a középső bemeneti porton csatlakozik az **SQL-transzformáció alkalmazásához** :
+
+```sql
+SELECT t1.*
+    , t3.Average_Rating
+FROM t1 join
+    (SELECT placeID
+        , AVG(rating) AS Average_Rating
+    FROM t2
+    GROUP BY placeID
+    ) as t3
+on t1.placeID = t3.placeID
+```
   
 A fennmaradó paraméter egy SQL-lekérdezés, amely az SQLite szintaxist használja. Ha több sort ír be az **SQL-parancsfájl** szövegmezőbe, használjon pontosvesszőt az egyes utasítások megszakításához. Ellenkező esetben a sortörések szóközökre lesznek konvertálva.  
 
@@ -62,6 +77,6 @@ Bár az SQLite az ANSI SQL standard nagy részét is támogatja, nem tartalmazza
 
 A hivatalos SQLite webhelyen elérhető nem támogatott függvények listája mellett a következő wiki a többi nem támogatott funkció listáját tartalmazza: [SQLite –](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql) nem támogatott SQL  
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

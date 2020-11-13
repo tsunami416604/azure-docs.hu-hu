@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 46bdc314e7aa0002937e808d7982f43c8e725d6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de0065abaf5669859e864186fc9a3fb88219414b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357471"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555821"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD a Custom Speechhez
 
@@ -37,7 +37,7 @@ A git-kiszolgálók, például a GitHub és az Azure DevOps automatizált munkaf
 
 ### <a name="ci-workflow-for-testing-data-updates"></a>CI-munkafolyamat az adatfrissítések teszteléséhez
 
-A CI/CD-munkafolyamatok elsődleges célja, hogy egy új modellt hozzon létre a betanítási adatok használatával, és tesztelje a modellt a tesztelési adatok használatával annak megállapításához, hogy a [Word Error Rate](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) (WER) a korábbi legjobban teljesítő modellhez képest javult-e (a "teljesítményteszt-modell"). Ha az új modell jobban teljesít, ez lesz az új teljesítményteszt-modell, amely a jövőbeli modelleket hasonlítja össze.
+A CI/CD-munkafolyamatok elsődleges célja, hogy egy új modellt hozzon létre a betanítási adatok használatával, és tesztelje a modellt a tesztelési adatok használatával annak megállapításához, hogy a [Word Error Rate](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) a korábbi legjobban teljesítő modellhez képest javult-e (a "teljesítményteszt-modell"). Ha az új modell jobban teljesít, ez lesz az új teljesítményteszt-modell, amely a jövőbeli modelleket hasonlítja össze.
 
 Az adatfrissítések tesztelésére szolgáló CI-munkafolyamatnak újra kell tesztelni a jelenlegi teljesítményteszt-modellt a frissített tesztelési adattal a felülvizsgált WER kiszámításához. Ez biztosítja, hogy amikor egy új modell WERjét összehasonlítja a teljesítményteszt WER-modelljével, mindkét modellt ugyanazzal a tesztelési adattal tesztelték, és a hasonló módon hasonlítjuk össze.
 
@@ -84,8 +84,8 @@ A [beszédfelismerési DevOps-sablon](https://github.com/Azure-Samples/Speech-Se
 
 - Másolja a sablon tárházát a GitHub-fiókjába, majd hozzon létre Azure-erőforrásokat és egy [egyszerű szolgáltatásnevet](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) a GitHub-műveletek CI/CD-munkafolyamataihoz.
 - Végigvezeti a "[dev Inner loop](https://mitchdenny.com/the-inner-loop/)"-t. Frissítheti a betanítási és tesztelési adatait egy adott szolgáltatási ágra, tesztelheti a módosításokat egy ideiglenes fejlesztési modellel, és lekéréses kérelmet hozhat létre, és áttekintheti a módosításokat.
-- Ha a betanítási adatok egy lekéréses kérelemben frissülnek a *Master*-be, a modellek betanítása a GitHub Actions CI-munkafolyamattal
-- Automatizált pontossági tesztelést végezhet a modell [Word-hibák arányának](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) (WER) létrehozásához. A teszt eredményeinek tárolása az Azure blobban.
+- Ha a betanítási adatok egy lekéréses kérelemben frissülnek a *Master* -be, a modellek betanítása a GitHub Actions CI-munkafolyamattal
+- Automatizált pontossági tesztelést végezhet a modell [Word-hibák arányának](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) létrehozásához. A teszt eredményeinek tárolása az Azure blobban.
 - Futtassa a CD-munkafolyamatot, és hozzon létre egy végpontot, amikor a WER fejleszti.
 
 ## <a name="next-steps"></a>Következő lépések

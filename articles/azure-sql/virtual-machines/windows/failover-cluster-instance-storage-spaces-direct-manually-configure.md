@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 9b90d13d6f4fa5a33bff38aaa66728a5d0f3d70f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 01f9ee1ad134c14150d16569fd57e658b160784c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289956"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556318"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Közvetlen tárolóhelyek (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -92,15 +92,15 @@ A fürt a felhasználói felületen való ellenőrzéséhez tegye a következők
 
 1. A **Kiszolgálókezelő** területen válassza az **eszközök** , majd a **Feladatátvevőfürt-kezelő** lehetőséget.
 1. A **Feladatátvevőfürt-kezelő** alatt válassza a **művelet** , majd a **Konfiguráció ellenőrzése** lehetőséget.
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** gombot.
 1. A **kiszolgálók vagy fürt kijelölése** területen adja meg mindkét virtuális gép nevét.
 1. A **tesztelési beállítások** területen válassza a **csak a kiválasztott tesztek futtatása** lehetőséget. 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** gombot.
 1. A **teszt kiválasztása** területen válassza a minden teszt lehetőséget a **tárolás** kivételével, ahogy az itt látható:
 
    ![Fürt-ellenőrzési tesztek kiválasztása](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** gombot.
 1. A **megerősítés** területen válassza a **tovább** lehetőséget.
 
     A **Konfiguráció ellenőrzése** varázsló futtatja az ellenőrző teszteket.
@@ -217,7 +217,7 @@ Miután konfigurálta a feladatátvevő fürtöt és a fürt összes összetevő
 
 ## <a name="register-with-the-sql-vm-rp"></a>Regisztrálás az SQL VM RP-vel
 
-A SQL Server VM a portálról való kezeléséhez regisztrálja az SQL VM erőforrás-szolgáltatóval (RP) az [egyszerűsített felügyeleti módban](sql-vm-resource-provider-register.md#lightweight-management-mode), jelenleg az egyetlen olyan mód, amelyet az Azure-beli virtuális gépeken a (z) és a SQL Server támogatott. 
+A SQL Server VM a portálról való kezeléséhez regisztrálja az SQL IaaS-ügynök bővítménnyel (RP) az [egyszerűsített felügyeleti módban](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode), jelenleg az egyetlen olyan mód, amelyet az Azure-beli virtuális gépeken a (z) és a SQL Server is támogat. 
 
 
 SQL Server VM regisztrálása könnyűsúlyú módban a PowerShell használatával:  
@@ -239,7 +239,7 @@ Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné ir�
 
 - Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019-on a CSV és a [standard Load Balancer](../../../load-balancer/load-balancer-overview.md)szolgáltatással.
 - Az NTFS fájlrendszerrel formázott lemezként csatolt lemezek Közvetlen tárolóhelyek csak akkor használhatók, ha nincs bejelölve a lemezre vonatkozó jogosultsági lehetőség, vagy nincs törölve, amikor a tárolót hozzáadja a fürthöz. 
-- Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-server-iaas-agent-extension-automate-management.md#management-modes) támogatott.
+- Csak az SQL IaaS-ügynök bővítménnyel való regisztráció [egyszerűsített felügyeleti módban](sql-server-iaas-agent-extension-automate-management.md#management-modes) támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -249,6 +249,6 @@ Ha Közvetlen tárolóhelyek nem az Ön számára megfelelő, az Ön számára m
 
 További tudnivalókat az Azure-beli [virtuális gépekkel](failover-cluster-instance-overview.md) és a [fürt konfigurálásával kapcsolatos ajánlott eljárásokkal](hadr-cluster-best-practices.md)foglalkozó, a SQL Server az Azure-ban című témakörben 
 
-További információkért lásd: 
+További információ: 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

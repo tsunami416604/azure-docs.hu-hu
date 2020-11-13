@@ -1,78 +1,80 @@
 ---
-title: Azure Files teljesítmény hibaelhárítási útmutatója
-description: Az Azure-fájlmegosztás ismert teljesítményével kapcsolatos problémák elhárítása. A problémák előfordulásakor észlelheti a lehetséges okokat és a kapcsolódó megkerülő megoldásokat.
+title: Azure-fájlmegosztás teljesítményének hibaelhárítási útmutatója
+description: A Azure Files ismert teljesítménnyel kapcsolatos problémáinak elhárítása. A problémák előfordulásakor észlelheti a lehetséges okokat és a kapcsolódó megkerülő megoldásokat.
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 4d21bfa69022cbebdcbf80c3bee4aec76bf99c53
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 52376cabfd837ad7435c8e9c992fe000e0521247
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491120"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561114"
 ---
-# <a name="troubleshoot-azure-files-performance-issues"></a>A teljesítménnyel kapcsolatos problémák elhárítása Azure Files
+# <a name="troubleshoot-azure-file-share-performance-issues"></a>Az Azure-fájlmegosztás teljesítményével kapcsolatos hibák elhárítása
 
-Ez a cikk az Azure-fájlmegosztás szolgáltatással kapcsolatos gyakori problémákat sorolja fel. A probléma előfordulásakor lehetséges okokat és megkerülő megoldásokat biztosít.
+Ez a cikk az Azure-fájlmegosztás szolgáltatással kapcsolatos gyakori problémákat sorolja fel. A probléma lehetséges okait és megkerülő megoldásait biztosítja.
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Nagy késés, alacsony átviteli sebesség és általános teljesítménnyel kapcsolatos problémák
 
 ### <a name="cause-1-share-was-throttled"></a>1. ok: a megosztás szabályozása megvolt
 
-A kérelmek szabályozása akkor történik meg, amikor elérik a fájlmegosztás IOPS, bejövő vagy kimenő elérési korlátait. A standard és a prémium szintű fájlmegosztás korlátainak megismeréséhez tekintse meg a [fájlmegosztás és a fájlméret céljait](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)ismertető témakört.
+A rendszer a kérelmeket akkor szabályozza, ha a fájlmegosztás I/O-műveletei másodpercenként (IOPS), bejövő vagy kimenő korláttal rendelkeznek. A standard és a prémium szintű fájlmegosztás korlátainak megismeréséhez tekintse meg a [fájlmegosztás és a fájlméret céljait](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)ismertető témakört.
 
-Annak ellenőrzéséhez, hogy a megosztás szabályozása folyamatban van-e, kihasználhatja az Azure-mérőszámokat a portálon.
+Annak ellenőrzéséhez, hogy a megosztást szabályozzák-e, elérheti és használhatja az Azure-metrikákat a portálon.
 
 1. A Azure Portal nyissa meg a Storage-fiókját.
 
-1. A bal oldali menüben a **figyelés** területen válassza a **metrikák** lehetőséget.
+1. A bal oldali ablaktábla **figyelés** területén válassza a **metrikák** lehetőséget.
 
 1. Válassza a **fájl** lehetőséget a Storage-fiók hatókörének metrikai névterében.
 
 1. Metrikaként válassza a **tranzakciók** lehetőséget.
 
-1. Adjon hozzá egy szűrőt a **ResponseType** , és ellenőrizze, hogy vannak-e olyan kérelmek, amelyek **SuccessWithThrottling** (SMB) vagy **ClientThrottlingError** (REST esetén) rendelkeznek.
+1. Adjon hozzá egy szűrőt a **Válasz típusához** , és ellenőrizze, hogy a kérelmek rendelkeznek-e a következő válasz kódok valamelyikével:
+   * **SuccessWithThrottling** : kiszolgálói üzenetblokk (SMB) esetén
+   * **ClientThrottlingError** : Rest esetén
 
-![A prémium szintű állnak metrikáinak beállításai](media/storage-troubleshooting-premium-fileshares/metrics.png)
+   ![Képernyőkép a prémium szintű fájlmegosztás mérőszámok lehetőségeiről, amely a "Response type" tulajdonság szűrőjét jeleníti meg.](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
-> [!NOTE]
-> Ha egy fájlmegosztás szabályozása esetén riasztást szeretne kapni, tekintse meg a [riasztások létrehozása a fájlmegosztás szabályozása](#how-to-create-an-alert-if-a-file-share-is-throttled)esetén című témakört.
+   > [!NOTE]
+   > A riasztások fogadásához tekintse meg a cikk későbbi, ["a riasztások létrehozása, ha a fájlmegosztás szabályozása"](#how-to-create-an-alert-if-a-file-share-is-throttled) című szakaszát.
 
 ### <a name="solution"></a>Megoldás
 
 - Ha szabványos fájlmegosztást használ, engedélyezze a [nagyméretű fájlmegosztást](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) a Storage-fiókban. A nagyméretű fájlmegosztás akár 10 000 IOPS-t is támogat.
-- Ha prémium szintű fájlmegosztást használ, növelje a kiosztott fájlmegosztás méretét, hogy növelje a IOPS korlátját. További tudnivalókat a Azure Files tervezési útmutató a [prémium szintű fájlmegosztás kiépítés ismertetése](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares) című szakaszában talál.
+- Ha prémium szintű fájlmegosztást használ, növelje a kiosztott fájlmegosztás méretét, hogy növelje a IOPS korlátját. További információ: "a prémium szintű fájlmegosztás kiépítés ismertetése" szakasz, [Azure Files tervezési útmutató](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares).
 
-### <a name="cause-2-metadatanamespace-heavy-workload"></a>2. ok: nagy mennyiségű metaadat/névtér
+### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>2. ok: a metaadatok vagy a névtér nagy terhelése
 
-Ha a kérések többsége metaadat-központú (például CreateFile/OpenFile/closefile/QueryInfo/querydirectory), akkor a késés az írási/olvasási műveletekhez képest rosszabb lesz.
+Ha a kérések többsége metaadat-központú (például CreateFile, OpenFile, closefile, QueryInfo vagy querydirectory), a késés az írási/olvasási műveleteknél rosszabb lesz.
 
-Annak ellenőrzéséhez, hogy a kérések többsége metaadat-központú, használhatja a fenti lépéseket. A **ResponseType** szűrő hozzáadása helyett adjon hozzá egy szűrőt az **API-névhez**.
+Annak megállapításához, hogy a kérések többsége metaadat-központú-e, indítsa el az 1. lépésben leírt módon az 1-4-as lépéseket követve. Az 5. lépésnél a **Válasz típusához** tartozó szűrő hozzáadása helyett adjon hozzá egy tulajdonság-szűrőt az **API-névhez**.
 
-![Az API-név szűrése a metrikákban](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
+![Képernyőkép a prémium szintű fájlmegosztás mérőszámok lehetőségeiről, amely az "API Name" tulajdonság szűrőjét jeleníti meg.](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
 - Ellenőrizze, hogy az alkalmazás módosítható-e a metaadat-műveletek számának csökkentése érdekében.
-- Adjon hozzá egy virtuális merevlemezt a fájlmegosztás és a virtuális merevlemez csatlakoztatása SMB-kapcsolaton keresztül az ügyfélről, hogy a fájlok műveleteit végrehajtsa az adatokon. Ez a megközelítés egyetlen író és több olvasó esetében is működik, és lehetővé teszi a metaadatok helyi használatát, amely a helyi, közvetlenül csatlakoztatott tárolóhoz hasonló teljesítményt nyújt.
+- Adjon hozzá egy virtuális merevlemezt (VHD-t) a fájlmegosztás számára, és csatlakoztassa a VHD-t SMB-kapcsolaton keresztül az adatokhoz való fájl-műveletek végrehajtásához. Ez a megközelítés egyetlen író és több olvasó esetében is működik, és lehetővé teszi a metaadatok helyi használatát. A telepítő a helyi közvetlenül csatlakoztatott tárolóhoz hasonló teljesítményt nyújt.
 
 ### <a name="cause-3-single-threaded-application"></a>3. ok: egyszálas alkalmazás
 
-Ha az ügyfél által használt alkalmazás egyetlen szálból áll, ez jelentős mértékben csökkentheti a IOPS/átviteli sebességet, mint a kiosztott megosztási méret alapján lehetséges maximális érték.
+Ha a használt alkalmazás egyetlen szálból áll, akkor ez a beállítás a kiosztott megosztás méretétől függően jelentősen csökkentheti a IOPS átviteli sebességet, mint a maximális lehetséges átviteli sebesség.
 
 ### <a name="solution"></a>Megoldás
 
 - Növelje az alkalmazások párhuzamosságát a szálak számának növelésével.
-- Váltson olyan alkalmazásokra, ahol a párhuzamosság lehetséges. A másolási műveletek esetében például az ügyfelek a AzCopy vagy a RoboCopy szolgáltatást használhatják a Windows-ügyfelektől vagy a Linux-ügyfeleken **futó Parallel** parancs használatával.
+- Váltson olyan alkalmazásokra, ahol a párhuzamosság lehetséges. A másolási műveletek esetében például használhatja a AzCopy vagy a RoboCopy elemet a Windows-ügyfelektől, illetve a Linux-ügyfelektől származó **Parallel** paranccsal.
 
 ## <a name="very-high-latency-for-requests"></a>Nagyon nagy késés a kérelmek esetében
 
 ### <a name="cause"></a>Ok
 
-Az ügyfél virtuális gépe a fájlmegosztás eltérő régiójában található.
+A virtuális gép (VM) a fájlmegosztás egy másik régiójában található.
 
 ### <a name="solution"></a>Megoldás
 
@@ -80,28 +82,28 @@ Az ügyfél virtuális gépe a fájlmegosztás eltérő régiójában találhat�
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Az ügyfél nem tudja elérni a hálózat által támogatott maximális átviteli sebességet
 
-Ennek egyik lehetséges oka a többcsatornás SMB-támogatás hiánya. Az Azure-fájlmegosztás jelenleg csak egyetlen csatornát támogat, így az ügyfél virtuális gépe csak egyetlen kapcsolatban áll a-kiszolgálóval. Ez az egyetlen kapcsolódás az ügyfél virtuális gépe egyetlen magját, így a virtuális gépről elérhető maximális átviteli sebességet egyetlen mag köti.
+### <a name="cause"></a>Ok
+Az egyik lehetséges ok a többcsatornás SMB-támogatás hiánya. A Azure Files jelenleg csak egyetlen csatornát támogat, így az ügyfél virtuális gépe csak egyetlen kapcsolatban áll a-kiszolgálóval. Ez az egyetlen kapcsolódás az ügyfél virtuális gépe egyetlen magját, így a virtuális gépről elérhető maximális átviteli sebességet egyetlen mag köti.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-- A nagyobb mag-t tartalmazó virtuális gépek beszerzése segíthet az átviteli sebesség növelésében.
+- A nagyobb mag-t tartalmazó virtuális gépek beszerzése segíthet az átviteli sebesség javításában.
 - Az ügyfélalkalmazás több virtuális gépről való futtatása növeli az átviteli sebességet.
-
 - Ha lehetséges, használja a REST API-kat.
 
-## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>A Linux-ügyfelek átviteli sebessége jelentősen alacsonyabb a Windows-ügyfelekhez képest.
+## <a name="throughput-on-linux-clients-is-significantly-lower-than-that-of-windows-clients"></a>A Linux-ügyfelek átviteli sebessége jelentősen alacsonyabb, mint a Windows-ügyfeleknél
 
 ### <a name="cause"></a>Ok
 
-Ez egy ismert probléma az SMB-ügyfél Linux rendszeren történő megvalósításával kapcsolatban.
+Ez egy ismert probléma az SMB-ügyfél Linux rendszeren való megvalósításával kapcsolatban.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
 - A terhelés elosztása több virtuális gép között.
-- Ugyanazon a virtuális gépen használjon több csatlakoztatási pontot a **nosharesock** kapcsolóval, majd a terhelést a csatlakoztatási pontok között.
-- Linux rendszeren próbálja meg az **nostrictsync** kapcsolóval való csatlakoztatást, hogy ne kényszerítse az SMB ürítését minden **Fsync** -híváson. Azure Files esetén ez a beállítás nem zavarja az adatkonzisztenciaot, de a könyvtár listázásához ( **ls-l** parancs) elavult fájl-metaadatokat is eredményezhet. A fájl metaadatainak közvetlen lekérdezése ( **stat** Command) a legnaprakészebb fájl-metaadatokat fogja visszaadni.
+- Ugyanazon a virtuális gépen használjon több csatlakoztatási pontot egy **nosharesock** kapcsolóval, majd a terhelést a csatlakoztatási pontok között.
+- Linux rendszeren próbálja meg a csatlakoztatást egy **nostrictsync** beállítással, hogy ne kényszerítse az SMB-kiürítést minden **Fsync** -híváson. Azure Files esetén ez a beállítás nem zavarja az adatkonzisztenciaot, de az elavult fájlok metaadatait is eredményezheti a címtár-listázásban ( **ls-l** parancs). A fájl metaadatainak közvetlen lekérdezése a **stat** parancs használatával a legfrissebb fájl-metaadatokat fogja visszaadni.
 
-## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Magas késés a metaadatok nagy számítási feladataihoz, amelyek kiterjedt nyitott/zárási műveleteket foglalnak magukban.
+## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Magas késés a metaadatok esetében – nagy mennyiségű nyitott/záró műveletet igénylő számítási feladatok
 
 ### <a name="cause"></a>Ok
 
@@ -109,41 +111,40 @@ A címtár-bérletek támogatásának hiánya.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-- Ha lehetséges, kerülje a túlzott nyitó/záró leírót egy rövid időn belül ugyanazon a címtáron.
-- Linux rendszerű virtuális gépek esetén növelje a címtár-bejegyzés gyorsítótárának időtúllépését a **actimeo = \<sec>** csatlakoztatási lehetőség megadásával. Alapértelmezés szerint ez egy másodperc, így egy nagyobb érték, például három vagy öt, segítségre lehet.
-- A RHEL/CentOS virtuális gépek esetében frissítse a rendszerét a RHEL/CentOS 8,2-re. Más Linux rendszerű virtuális gépek esetén a kernelt 5,0-re vagy újabbra kell frissíteni.
+- Ha lehetséges, kerülje a túlzott nyitó/záró fogantyú használatát egy rövid időn belül ugyanazon a címtáron.
+- Linux rendszerű virtuális gépek esetén növelje a címtár-bejegyzés gyorsítótárának időtúllépését a **actimeo = \<sec>** csatlakoztatási lehetőség megadásával. Alapértelmezés szerint az időtúllépés 1 másodperc, így a nagyobb érték (például 3 vagy 5 másodperc) segíthet.
+- CentOS Linux vagy Red Hat Enterprise Linux (RHEL) virtuális gépek esetében frissítse a rendszert a CentOS Linux 8,2 vagy a RHEL 8,2 rendszerre. Más Linux rendszerű virtuális gépek esetében frissítse a kernelt 5,0-re vagy újabb verzióra.
 
-## <a name="low-iops-on-centosrhel"></a>Alacsony IOPS a CentOS/RHEL
+## <a name="low-iops-on-centos-linux-or-rhel"></a>Alacsony IOPS a CentOS Linux vagy a RHEL
 
 ### <a name="cause"></a>Ok
 
-A CentOS/RHEL esetében a nagyobb IO-mélység nem támogatott.
+Az 1 értéknél nagyobb I/O-mélység nem támogatott CentOS Linux vagy RHEL esetén.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-- Frissítsen a CentOS 8/RHEL 8 verzióra.
+- Frissítsen a CentOS Linux 8 vagy a RHEL 8 verzióra.
 - Váltson Ubuntu-ra.
 
-## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Lassú a másolás a Linux rendszerbe és Azure Filesba
+## <a name="slow-file-copying-to-and-from-azure-file-shares-in-linux"></a>Lassú fájlmásolás az Azure-fájlmegosztás és a Linux között
 
-Ha lassú másolást végez a Azure Filesba és a-ból, akkor tekintse meg a Linux-alapú hibaelhárítási útmutatóban a [lassú fájl másolása a következőre és a Azure Files Linux rendszeren](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) című szakaszát.
+Ha lassú a fájlok másolása, tekintse meg a [Linux hibaelhárítási útmutatójának](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux)"lassú fájlok másolása az Azure-ba és az Azure-fájlmegosztás a Linux rendszerben" című szakaszát.
 
-## <a name="jitterysaw-tooth-pattern-for-iops"></a>Idegesség/fűrész-Tooth mintázat a IOPS
+## <a name="jittery-or-sawtooth-pattern-for-iops"></a>Vibrálás vagy fűrészfog minta a IOPS
 
 ### <a name="cause"></a>Ok
 
-Az ügyfélalkalmazás konzisztensen meghaladja az alapkonfiguráció IOPS. Jelenleg a kérések terhelése nem zökkenőmentes, így ha az ügyfél túllépi az alapkonfiguráció IOPS, a szolgáltatás szabályozza a szolgáltatást. Ez a szabályozás azt eredményezheti, hogy az ügyfél vibrálás vagy fűrészes IOPS mintát észlelt. Ebben az esetben az ügyfél által elért átlagos IOPS alacsonyabb lehet az alapkonfiguráció IOPS.
+Az ügyfélalkalmazás konzisztensen meghaladja az alapkonfiguráció IOPS. Jelenleg nem áll rendelkezésre a kérések terhelése. Ha az ügyfél túllépi az alapkonfiguráció IOPS, akkor a szolgáltatás szabályozza a szolgáltatást. A szabályozás azt eredményezheti, hogy az ügyfél ideges vagy fűrészfog IOPS mintát tapasztal. Ebben az esetben az ügyfél által elért átlagos IOPS alacsonyabb lehet, mint az alapkonfiguráció IOPS.
 
 ### <a name="workaround"></a>Áthidaló megoldás
-
-- Csökkentse a kérelmek terhelését az ügyfélalkalmazás alapján, hogy a megosztás ne legyen szabályozva.
+- Csökkentse a kérések terhelését az ügyfélalkalmazás alapján, hogy a megosztás ne legyen szabályozva.
 - Növelje a megosztás kvótáját úgy, hogy a megosztás ne legyen szabályozva.
 
 ## <a name="excessive-directoryopendirectoryclose-calls"></a>Túlzott DirectoryOpen/DirectoryClose-hívások
 
 ### <a name="cause"></a>Ok
 
-Ha a DirectoryOpen/DirectoryClose hívások száma a leggyakoribb API-hívások egyike, és nem várja meg, hogy az ügyfél sok hívást hajtson fel, akkor előfordulhat, hogy az Azure-ügyfél virtuális gépre telepített víruskereső probléma merülhet fel.
+Ha a **DirectoryOpen/DirectoryClose** hívások száma a legnépszerűbb API-hívások egyike, és nem várja meg, hogy az ügyfél sok hívást hajtson végre, a problémát az Azure-ügyfél virtuális gépre telepített víruskereső szoftver okozhatja.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
@@ -153,7 +154,7 @@ Ha a DirectoryOpen/DirectoryClose hívások száma a leggyakoribb API-hívások 
 
 ### <a name="cause"></a>Ok
 
-A nagy mennyiségű fájl létrehozására támaszkodó munkaterhelések nem fogják látni a prémium fájlmegosztás és a normál fájlmegosztás teljesítményének jelentős különbségét.
+A nagy mennyiségű fájl létrehozására támaszkodó munkaterhelések nem jelentenek jelentős különbséget a prémium fájlmegosztás és a normál fájlmegosztás közötti teljesítményben.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
@@ -163,7 +164,7 @@ A nagy mennyiségű fájl létrehozására támaszkodó munkaterhelések nem fog
 
 ### <a name="cause"></a>Ok
 
-Nagyobb, mint a várt késés a Azure Files IO-igényű számítási feladatokhoz való hozzáféréskor.
+Nagyobb, mint a várt késés a nagy I/O-igényű számítási feladatokhoz való hozzáféréshez az Azure-fájlmegosztás esetében.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
@@ -171,65 +172,73 @@ Nagyobb, mint a várt késés a Azure Files IO-igényű számítási feladatokho
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Riasztás létrehozása a fájlmegosztás szabályozása esetén
 
-1. Nyissa meg a **Storage-fiókját** a **Azure Portal**.
-2. A figyelés szakaszban kattintson a **riasztások** , majd az **+ új riasztási szabály** elemre.
-3. Kattintson az **erőforrás szerkesztése** lehetőségre, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve contoso, válassza ki a contoso/fájl erőforrást.
-4. Feltétel hozzáadásához kattintson a **feltétel kiválasztása** elemre.
-5. Ekkor megjelenik a Storage-fiók által támogatott jelek listája, és válassza ki a **tranzakciók** metrikáját.
-6. A **jel logikai beállítása** panelen kattintson a **dimenzió neve** legördülő listára, és válassza a **Válasz típusa** lehetőséget.
-7. Kattintson a **dimenzió értékek** legördülő listára, és válassza a **SuccessWithThrottling** (SMB) vagy a **ClientThrottlingError** (REST) lehetőséget.
+1. A Azure Portal nyissa meg a Storage-fiókját.
+1. A **figyelés** szakaszban válassza a **riasztások** lehetőséget, majd válassza az **új riasztási szabály** lehetőséget.
+1. Válassza az **erőforrás szerkesztése** lehetőséget, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve *contoso* , válassza ki a contoso/fájl erőforrást.
+1. Feltétel hozzáadásához válassza a **feltétel kiválasztása** lehetőséget.
+1. A Storage-fiók által támogatott jelek listájában válassza ki a **tranzakciók** metrikáját.
+1. A **jel logikai beállítása** ablaktábla **dimenzió neve** legördülő listájában válassza a **Válasz típusa** lehetőséget.
+1. A **dimenzió értékei** legördülő listában válassza a **SuccessWithThrottling** (SMB esetében) vagy a **ClientThrottlingError** (REST) lehetőséget.
 
    > [!NOTE]
-   > Ha a SuccessWithThrottling vagy a ClientThrottlingError dimenzió értéke nem szerepel a listáján, ez azt jelenti, hogy az erőforrás nincs szabályozva. A dimenzióérték hozzáadásához kattintson az **Egyéni érték hozzáadása** lehetőségre a **dimenzió értékei** legördülő menüben, írja be a **SuccessWithThrottling** vagy a **ClientThrottlingError** értéket, kattintson **az OK** gombra, majd ismételje meg a #7 lépést.
+   > Ha sem a **SuccessWithThrottling** , sem a **ClientThrottlingError** dimenzió értéke nem szerepel a felsorolásban, ez azt jelenti, hogy az erőforrás nincs szabályozva. A dimenzió értékének hozzáadásához a **dimenzióértékek** legördülő lista mellett válassza az **Egyéni érték hozzáadása** lehetőséget, adja meg a **SuccessWithThrottling** vagy a **ClientThrottlingError** értéket, majd kattintson **az OK gombra** , majd ismételje meg a 7. lépést.
 
-8. Kattintson a **dimenzió neve** legördülő listára, és válassza a **fájlmegosztás** lehetőséget.
-9. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
+1. A **dimenzió neve** legördülő listában válassza a **fájlmegosztás** lehetőséget.
+1. A **dimenzió értékei** legördülő listában válassza ki azt a fájlmegosztást vagy megosztásokat, amelyekről riasztást szeretne kapni.
 
    > [!NOTE]
-   > Ha a fájlmegosztás szabványos fájlmegosztás, válassza a **minden aktuális és jövőbeli értéket**. A dimenzióértékek legördülő lista nem sorolja fel a fájlmegosztást (ka) t, mert a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében. A normál fájlmegosztás esetén a rendszer elindítja a riasztásokat, ha a Storage-fiókon belül bármilyen fájlmegosztás szabályozva van, és a riasztás nem azonosítja, hogy mely fájlmegosztás lett szabályozva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, a javaslat egy fájlmegosztási fiókkal rendelkezik.
+   > Ha a fájlmegosztás szabványos fájlmegosztás, válassza a **minden aktuális és jövőbeli értéket**. A dimenzióértékek legördülő lista nem sorolja fel a fájlmegosztást, mert a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetén. A normál fájlmegosztás esetén a rendszer elindítja a riasztásokat, ha a Storage-fiókon belül bármilyen fájlmegosztás szabályozva van, és a riasztás nem azonosítja, hogy mely fájlmegosztás lett szabályozva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, azt javasoljuk, hogy használjon egy fájlmegosztást a Storage-fiókon.
 
-10. Adja meg a **riasztási paramétereket** (a küszöbértéket, az operátort, az Összesítés részletességét és a kiértékelés gyakoriságát), majd kattintson a **kész** gombra.
+1. Adja meg a riasztási paramétereket a **küszöbérték** , az **operátor** , az **Összesítés részletessége** és **a kiértékelés gyakoriságának** megadásával, majd válassza a **kész** lehetőséget.
 
     > [!TIP]
-    > Ha statikus küszöbértéket használ, a metrikai diagram segíthet meghatározni egy ésszerű küszöbértéket, ha a fájlmegosztást jelenleg szabályozzák. Dinamikus küszöbérték használata esetén a metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket.
+    > Ha statikus küszöbértéket használ, a metrikai diagram segítségével meghatározhatja az ésszerű küszöbértéket, ha a fájlmegosztást jelenleg szabályozzák. Ha dinamikus küszöbértéket használ, a metrika diagram a legutóbbi adatok alapján megjeleníti a számított küszöbértékeket.
 
-11. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy **műveleti csoport** (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét** , **leírását** és **súlyosságát**.
-13. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
-
-Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
-
-## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-towards-being-throttled"></a>Riasztások létrehozása, ha a prémium fájlmegosztás a szabályozás irányába mutat
-
-1. Nyissa meg a **Storage-fiókját** a **Azure Portal**.
-2. A figyelés szakaszban kattintson a **riasztások** , majd az **+ új riasztási szabály** elemre.
-3. Kattintson az **erőforrás szerkesztése** lehetőségre, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve contoso, válassza ki a contoso/fájl erőforrást.
-4. Feltétel hozzáadásához kattintson a **feltétel kiválasztása** elemre.
-5. Ekkor megjelenik a Storage-fiók által támogatott jelek listája, és válassza ki a **kimenő** forgalom metrikáját.
-
-   > [!NOTE]
-   > 3 külön riasztást kell létrehoznia, amely riasztást kap, ha a bejövő, kimenő vagy tranzakciós érték meghaladja a beállított küszöbértéket. Ennek az az oka, hogy a rendszer csak akkor küld riasztást, ha az összes feltétel teljesül. Tehát ha az összes feltételt egy riasztásban elhelyezi, csak akkor kell riasztást kapnia, ha a bejövő forgalom, a kimenő forgalom és a tranzakciók túllépik a küszöbértéket.
-
-6. Görgessen le. Kattintson a **dimenzió neve** legördülő listára, és válassza a **fájlmegosztás** lehetőséget.
-7. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
-8. Adja meg a **riasztási paramétereket** (a küszöbértéket, az operátort, az Összesítés részletességét és a kiértékelés gyakoriságát), majd kattintson a **kész** gombra.
-
-   > [!NOTE]
-   > A kimenő, bejövő és tranzakciós mérőszámok percenkénti forgalomban vannak, bár a kimenő forgalom, a bejövő forgalom és a IOPS másodpercenkénti száma. (az Összesítés részletességének ismertetése – > percenként = több zajos, tehát válasszon diff-t) Ezért például ha a kiépített kimenő forgalom 90 MiB/másodperc, és azt szeretné, hogy a küszöbérték a kiépített kimenő forgalom 80%-ában legyen kiválasztva, akkor a következő riasztási paramétereket kell kiválasztania: 75497472 a **küszöbértékhez** , nagyobb vagy egyenlő az **operátorhoz** , és az **összesítési típus** átlaga. Attól függően, hogy milyen zajos a riasztás, kiválaszthatja, hogy mely értékek legyenek kiválasztva az Összesítés részletessége és a kiértékelés gyakorisága alapján. Ha például azt szeretném, hogy a riasztásom megtekintse az óra időtartamára vonatkozó átlagos beérkező adatokat, és szeretném, hogy a riasztási szabályt óránként futtassák, akkor 1 órát választok az **Összesítés részletessége** és 1 óra **alapján a kiértékelés gyakorisága** érdekében.
-
-9. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy **műveleti csoport** (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-10. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét** , **leírását** és **súlyosságát**.
-11. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
-
-    > [!NOTE]
-    > Ha értesítést szeretne kapni, ha a prémium szintű fájlmegosztás a kiépített bejövő forgalom miatt le van zárva, kövesse ugyanezeket a lépéseket, az 5. lépésben leírtak szerint pedig válassza a **bejövő** forgalom metrikáját.
-
-    > [!NOTE]
-    > Ha értesítést szeretne kapni, ha a prémium fájlmegosztás a kiépített IOPS miatt le van zárva, néhány módosítást kell végeznie. Az 5. lépésben válassza ki a **tranzakciók** metrikáját. Továbbá a 10. lépésnél az **összesítési típus** egyetlen lehetősége a teljes. Ezért a küszöbérték a kiválasztott összesítési részletességtől függ. Ha például azt szeretné, hogy a küszöbérték a kiépített alapszintű IOPS 80%-ában van megadva, és az **Összesítés részletessége** 1 órát választotta, a **küszöbérték** az alapszintű IOPS (bájtban) x 0,8 x 3600. A módosítások mellett kövesse a fent felsorolt lépéseket. 
+1. Válassza a **műveleti csoport kiválasztása** lehetőséget, majd adjon hozzá egy műveleti csoportot (például e-mailt vagy SMS-t) a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+1. Adja meg a riasztás részleteit, például a **riasztási szabály nevét** , **leírását** és **súlyosságát**.
+1. A riasztás létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget.
 
 Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
 
-## <a name="see-also"></a>Lásd még
-* [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)
-* [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)
-* [Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)](storage-files-faq.md)
+## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-toward-being-throttled"></a>Riasztások létrehozása, ha a prémium fájlmegosztás a szabályozás irányába közeledik
+
+1. A Azure Portal nyissa meg a Storage-fiókját.
+1. A **figyelés** szakaszban válassza a **riasztások** lehetőséget, majd válassza az **új riasztási szabály** lehetőséget.
+1. Válassza az **erőforrás szerkesztése** lehetőséget, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve *contoso* , válassza ki a contoso/fájl erőforrást.
+1. Feltétel hozzáadásához válassza a **feltétel kiválasztása** lehetőséget.
+1. A Storage-fiók által támogatott jelek listájában válassza ki a **kimenő** forgalom metrikáját.
+
+   > [!NOTE]
+   > Három külön riasztást kell létrehoznia, ha a bejövő, kimenő vagy tranzakciós értékek meghaladják a beállított küszöbértékeket. Ennek az az oka, hogy a riasztás csak akkor aktiválódik, ha az összes feltétel teljesül. Ha például az összes feltételt egy riasztásban helyezi el, akkor a rendszer csak akkor küld riasztást, ha a bejövő, a kimenő forgalom és a tranzakciók túllépik a küszöbértéket.
+
+1. Görgessen le. A **dimenzió neve** legördülő listában válassza a **fájlmegosztás** lehetőséget.
+1. A **dimenzió értékei** legördülő listában válassza ki azt a fájlmegosztást vagy megosztásokat, amelyekről riasztást szeretne kapni.
+1. Adja meg a riasztási paramétereket az **operátor** , a **küszöbérték** , az **Összesítés részletessége** és **a kiértékelési** legördülő lista értékeinek kiválasztásával, majd válassza a **kész** lehetőséget.
+
+   A kimenő forgalom, a bejövő forgalom és a tranzakciók mérőszáma percenként van kifejezve, de a kimenő forgalom, a bejövő forgalom és az I/O másodpercenkénti száma kiépítve. Ezért ha például a kiépített kimenő forgalom 90 &nbsp; mebibytes másodpercenként (MIB/s), és azt szeretné, hogy a küszöbérték a &nbsp; kiépített kimenő forgalom 80 százalékát adja meg, válassza a következő riasztási paramétereket: 
+   - **Küszöbérték** : *75497472* 
+   - **Operátor** esetén: *nagyobb vagy egyenlő*
+   - **Összesítési típus** : *átlag*
+   
+   Attól függően, hogy milyen zajos a riasztás, kiválaszthatja az **Összesítés részletességének** és **a kiértékelés gyakoriságának** értékét is. Ha például azt szeretné, hogy a riasztás megtekintse az átlagos bejövő forgalmat az 1 órás időszakban, és szeretné, hogy a riasztási szabály óránként fusson, válassza a következőt:
+   - **Összesítési részletesség** : *1 óra*
+   - **Értékelés gyakorisága** : *1 óra*
+
+1. Válassza a **műveleti csoport kiválasztása** lehetőséget, majd adjon hozzá egy műveleti csoportot (például e-mailt vagy SMS-t) a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új létrehozásával.
+1. Adja meg a riasztás részleteit, például a **riasztási szabály nevét** , **leírását** és **súlyosságát**.
+1. A riasztás létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget.
+
+    > [!NOTE]
+    > - Ha értesítést szeretne kapni arról, hogy a prémium szintű fájlmegosztás a *kiépített bejövő forgalom miatt* már a szabályozáshoz közeledik, kövesse az előző utasításokat, de a következő módosítással:
+    >    - Az 5. lépésben válassza a **bejövő** forgalom metrikáját a **kimenő** forgalom helyett.
+    >
+    > - Ha értesítést szeretne kapni arról, hogy a prémium fájlmegosztás a *kiépített IOPS miatt* a szabályozáshoz közeledik, kövesse az előző utasításokat, de a következő módosításokkal:
+    >    - Az 5. lépésben válassza ki a **tranzakciók** metrikáját a **kimenő** forgalom helyett.
+    >    - A 10. lépésben az egyetlen lehetőség az **összesítési típushoz** *összesen*. Ezért a küszöbérték a kiválasztott összesítési részletességtől függ. Ha például azt szeretné, hogy a küszöbérték 80%- &nbsp; a kiépített alapkonfiguráció IOPS, és *1 órát* választ az **Összesítés Részletességéhez** , a **küszöbérték** az alapszintű IOPS (bájtban) &times; &nbsp; 0,8 &times; &nbsp; 3600. 
+
+Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
+
+## <a name="see-also"></a>További információ
+- [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)  
+- [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)  
+- [Gyakori kérdések az Azure Files-szal kapcsolatban](storage-files-faq.md)

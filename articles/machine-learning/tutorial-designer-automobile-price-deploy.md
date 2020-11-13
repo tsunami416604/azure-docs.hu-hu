@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: ML modellek üzembe helyezése a tervezővel'
 titleSuffix: Azure Machine Learning
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre prediktív elemzési megoldást Azure Machine Learning Designerben. A gépi tanulási modellek betanítása, pontszáma és üzembe helyezése drag-and-drop modulok használatával.
+description: Hozzon létre egy prediktív elemzési megoldást Azure Machine Learning Designerben. A gépi tanulási modellek betanítása, pontszáma és üzembe helyezése drag-and-drop modulok használatával.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 95e5b3ac568cfa370fd1e49fad990b681aef46d9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 31b742144bfb20af14cf6f5e95f5dfc951845ee2
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311517"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555515"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel
 
@@ -40,7 +40,7 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Valós idejű következtetési folyamat létrehozása
 
-1. A folyamat fölötti vászonnál válassza a **következtetés létrehozása folyamat**  >  **valós idejű következtetési folyamat**lehetőséget.
+1. A folyamat fölötti vászonnál válassza a **következtetés létrehozása folyamat**  >  **valós idejű következtetési folyamat** lehetőséget.
 
     :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="Képernyőfelvétel a folyamat létrehozása gombról":::
 
@@ -48,9 +48,9 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
 
    ![Képernyőfelvétel a folyamat várható konfigurációjának megjelenítéséről az üzembe helyezés előkészítése után](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
-    Amikor kiválasztja a **következtetési folyamat létrehozása**lehetőséget, több dolog történik:
+    Amikor kiválasztja a **következtetési folyamat létrehozása** lehetőséget, több dolog történik:
     
-    * A betanított modellt a modul palettáján **adatkészlet** -modulként tárolja a rendszer. **Az adatkészletek**szakaszban találja.
+    * A betanított modellt a modul palettáján **adatkészlet** -modulként tárolja a rendszer. **Az adatkészletek** szakaszban találja.
     * A képzési modulok, például a **betanítási modell** és a **felosztott adategységek** törlődnek.
     * A rendszer visszaadja a mentett betanított modellt a folyamatba.
     * A **webszolgáltatás bemeneti** és **webszolgáltatás-kimeneti** moduljai hozzáadódnak a szolgáltatáshoz. Ezek a modulok azt mutatják be, hogy a felhasználói adatcsatorna hol adja meg a folyamatot
@@ -59,7 +59,7 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
     > Alapértelmezés szerint a **webszolgáltatás bemenete** ugyanazt az adatsémát fogja várni, mint a prediktív folyamat létrehozásához használt betanítási adatok. Ebben az esetben a séma tartalmazza az árat. Az előrejelzés során azonban az ár nem használható faktorként.
     >
 
-1. Válassza a **Submit (Küldés**) lehetőséget, és használja ugyanazt a számítási célt és kísérletet, amelyet az első részben használt.
+1. Válassza a **Submit (Küldés** ) lehetőséget, és használja ugyanazt a számítási célt és kísérletet, amelyet az első részben használt.
 
     Ha ez az első futtatás, akár 20 percet is igénybe vehet, amíg a folyamat befejezi a futását. Az alapértelmezett számítási beállításokhoz a csomópont minimális mérete 0, ami azt jelenti, hogy a tervezőnek üresjárat után le kell foglalnia az erőforrásokat. Az ismétlődő folyamat-futtatások kevesebb időt vesznek igénybe, mivel a számítási erőforrások már le vannak foglalva. Emellett a tervező az egyes modulok gyorsítótárazott eredményeit használja a hatékonyság növelése érdekében.
 
@@ -71,7 +71,7 @@ A megjelenő párbeszédpanelen bármelyik meglévő Azure Kubernetes Service-(a
 
 1. A **számítási** lapon megjelenő párbeszédpanelen kattintson a **számítás** elemre.
 
-1. A navigációs menüszalagon válassza a **következtetési fürtök**  >  **+ új**lehetőséget.
+1. A navigációs menüszalagon válassza a **következtetési fürtök**  >  **+ új** lehetőséget.
 
     ![Az új következtetési fürt ablaktábla beszerzését bemutató képernyőkép](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
    
@@ -79,7 +79,7 @@ A megjelenő párbeszédpanelen bármelyik meglévő Azure Kubernetes Service-(a
 
 1. Írja be a következőt: *Kaba-számítás* a **számítási névhez**.
     
-1. Válasszon egy közeli régiót, amely elérhető a **régió**számára.
+1. Válasszon egy közeli régiót, amely elérhető a **régió** számára.
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -93,13 +93,13 @@ Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós i
 
 1. Válassza a vászon fölötti **üzembe helyezés** lehetőséget.
 
-1. Válassza az **új valós idejű végpont telepítése**lehetőséget. 
+1. Válassza az **új valós idejű végpont telepítése** lehetőséget. 
 
 1. Válassza ki a létrehozott AK-fürtöt.
 
 1. Válassza az **Üzembe helyezés** lehetőséget.
     
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Képernyőfelvétel a folyamat létrehozása gombról":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Az új valós idejű végpont beállítását bemutató képernyőkép":::
 
     Az üzembe helyezés befejeződése után a vászon fölötti sikeres értesítés jelenik meg. Néhány percet is igénybe vehet.
 

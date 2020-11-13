@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: d3d8908739d6dda76f4c3d44540c36b36115d6f5
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b58119ccc1551d12dfc9b09f76f6980618ba6221
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289413"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556301"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Gyakori kérdések az Azure-beli virtuális gépek SQL Serveréről
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -52,7 +52,7 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
    
 1. **Létre lehet hozni egy általános Azure Marketplace-SQL Server rendszerképet a saját SQL Server VM, és azt használva üzembe helyezhetem a virtuális gépeket?**
 
-   Igen, de ezt követően [regisztrálnia kell az egyes SQL Server VMokat a SQL Server VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md) , hogy kezelje a SQL Server VM a portálon, valamint olyan funkciókat is használhat, mint az automatikus javítás és az automatikus biztonsági mentés. Az erőforrás-szolgáltatóval való Regisztráláskor meg kell adnia az egyes SQL Server VMokhoz tartozó licenc típusát is.
+   Igen, de ezt követően [regisztrálnia kell az egyes SQL Server VMokat az SQL IaaS-ügynök bővítményével](sql-agent-extension-manually-register-single-vm.md) , hogy kezelje a SQL Server VM a portálon, valamint olyan funkciókat is használhat, mint az automatikus javítás és az automatikus biztonsági mentés. A bővítménnyel való Regisztráláskor meg kell adnia az egyes SQL Server VMokhoz tartozó licenc típusát is.
 
 1. **Hogyan általánosíthatja SQL Server az Azure-beli virtuális gépen, és felhasználhatja az új virtuális gépek üzembe helyezéséhez?**
 
@@ -64,32 +64,32 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
 
    > [!NOTE]
-   > SQL Server az Azure-beli virtuális gépeken, beleértve az egyéni általánosított rendszerképekből telepítetteket is, [regisztrálni kell az SQL VM erőforrás-szolgáltatóval](./sql-vm-resource-provider-register.md?tabs=azure-cli%252cbash) a megfelelőségi követelmények kielégítése érdekében, valamint olyan választható funkciók használatához, mint az automatikus javítás és az automatikus biztonsági mentés. Az erőforrás-szolgáltató azt is lehetővé teszi, hogy [Megadja a licenc típusát](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal) az egyes SQL Server VMokhoz.
+   > SQL Server az Azure-beli virtuális gépeken, beleértve az egyéni általánosított rendszerképekből telepítetteket is, [regisztrálni kell az SQL IaaS-ügynök bővítménnyel](./sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%252cbash) , hogy megfeleljenek a megfelelőségi követelményeknek, és olyan opcionális funkciókat használjanak, mint az automatikus javítás és az automatikus biztonsági mentés. A bővítmény lehetővé teszi az egyes SQL Server VMok [licencelési típusának megadását](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal) is.
 
 1. **Használhatom a saját VHD-t egy SQL Server VM üzembe helyezéséhez?**
 
-   Igen, de ezt követően [regisztrálnia kell az egyes SQL Server VMokat a SQL Server VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md) , hogy kezelje a SQL Server VM a portálon, valamint olyan funkciókat is használhat, mint az automatikus javítás és az automatikus biztonsági mentés.
+   Igen, de ezt követően [regisztrálnia kell az egyes SQL Server VMokat az SQL IaaS-ügynök bővítményével](sql-agent-extension-manually-register-single-vm.md) , hogy kezelje a SQL Server VM a portálon, valamint olyan funkciókat is használhat, mint az automatikus javítás és az automatikus biztonsági mentés.
 
 1. **Lehetséges a virtuálisgép-katalógusban nem látható konfigurációk beállítása (például Windows 2008 R2 + SQL Server 2012)?**
 
-   Nem. SQL Server tartalmazó virtuálisgép-katalógusbeli rendszerképek esetén a megadott rendszerképek egyikét ki kell választania a Azure Portal vagy a [PowerShell](create-sql-vm-powershell.md)használatával. Azonban lehetősége van arra, hogy Windows rendszerű virtuális gépet helyezzen üzembe, és telepítse SQL Server. Ezután [regisztrálnia kell az SQL Server VMt a SQL Server VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md) , hogy kezelje a SQL Server VM a Azure Portalban, valamint olyan funkciókat is használhat, mint az automatikus javítás és az automatikus biztonsági mentés. 
+   Nem. SQL Server tartalmazó virtuálisgép-katalógusbeli rendszerképek esetén a megadott rendszerképek egyikét ki kell választania a Azure Portal vagy a [PowerShell](create-sql-vm-powershell.md)használatával. Azonban lehetősége van arra, hogy Windows rendszerű virtuális gépet helyezzen üzembe, és telepítse SQL Server. Ezután [regisztrálnia kell az SQL Server VMt az SQL IaaS-ügynök bővítménnyel](sql-agent-extension-manually-register-single-vm.md) , hogy az Azure Portal kezelje a SQL Server VM, valamint olyan funkciókat, mint az automatikus javítás és az automatikus biztonsági mentés. 
 
 
 ## <a name="creation"></a>Létrehozás
 
 1. **Hogyan létrehoz egy Azure-beli virtuális gépet SQL Server?**
 
-   A legegyszerűbb módszer egy SQL Servert tartalmazó virtuális gép létrehozása. Az Azure-regisztrációval és a portálon SQL Server VM létrehozásával kapcsolatos oktatóanyagért lásd: [SQL Server virtuális gép kiépítése a Azure Portal](create-sql-vm-portal.md). Kiválaszthat egy olyan virtuálisgép-rendszerképet, amely SQL Server másodpercenkénti fizetést használ, vagy használhat olyan rendszerképet, amely lehetővé teszi a saját SQL Server licencének használatát. Lehetősége van arra is, hogy manuálisan telepítse a SQL Servert egy olyan virtuális gépre, amely vagy egy ingyenes licenccel rendelkező kiadás (Developer vagy Express), vagy egy helyszíni licenc újrafelhasználásával. Győződjön meg arról, hogy [regisztrálja a SQL Server VMt a SQL Server VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md) , hogy kezelje a SQL Server VM a portálon, valamint olyan funkciókat használ, mint például az automatikus javítás és az automatikus biztonsági mentés. Ha saját licencet használ, rendelkeznie kell [licenchordozhatóság frissítési garancia keretében az Azure](https://azure.microsoft.com/pricing/license-mobility/)-ban. További információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](pricing-guidance.md).
+   A legegyszerűbb módszer egy SQL Servert tartalmazó virtuális gép létrehozása. Az Azure-regisztrációval és a portálon SQL Server VM létrehozásával kapcsolatos oktatóanyagért lásd: [SQL Server virtuális gép kiépítése a Azure Portal](create-sql-vm-portal.md). Kiválaszthat egy olyan virtuálisgép-rendszerképet, amely SQL Server másodpercenkénti fizetést használ, vagy használhat olyan rendszerképet, amely lehetővé teszi a saját SQL Server licencének használatát. Lehetősége van arra is, hogy manuálisan telepítse a SQL Servert egy olyan virtuális gépre, amely vagy egy ingyenes licenccel rendelkező kiadás (Developer vagy Express), vagy egy helyszíni licenc újrafelhasználásával. Ügyeljen arra, hogy [regisztrálja SQL Server VM az SQL IaaS-ügynök bővítménnyel](sql-agent-extension-manually-register-single-vm.md) , hogy kezelhesse a SQL Server VM a portálon, valamint olyan funkciókat is használhat, mint az automatikus javítás és az automatikus biztonsági mentés. Ha saját licencet használ, rendelkeznie kell [licenchordozhatóság frissítési garancia keretében az Azure](https://azure.microsoft.com/pricing/license-mobility/)-ban. További információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](pricing-guidance.md).
 
 1. **Hogyan telepíthetem a helyszíni SQL Server-adatbázist a felhőbe?**
 
    Először hozzon létre egy SQL Server példánnyal rendelkező Azure-beli virtuális gépet. Ezután telepítse át a helyszíni adatbázisait erre a példányra. Az adatáttelepítési stratégiákat lásd: [SQL Server adatbázis áttelepítése egy Azure-beli virtuális gépen SQL Server](migrate-to-vm-from-sql-server.md).
 
-## <a name="licensing"></a>Licencek
+## <a name="licensing"></a>Licencelés
 
 1. **Hogyan telepíthetem az SQL Server egy licencelt példányát egy Azure-beli virtuális gépen?**
 
-   Ezt háromféleképpen teheti meg. Ha Ön Nagyvállalati Szerződés (EA) ügyfél, kiépítheti a [licenceket támogató virtuálisgép-lemezképek](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL)egyikét, amely a saját licenc (BYOL) néven is ismert. Ha rendelkezik frissítési [garanciával](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default), engedélyezheti a [Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md) egy meglévő utólagos elszámolású (TB) rendszerképben. Másik lehetőségként másolja át az SQL Server telepítési adathordozóját egy Windows Server rendszerű virtuális gépre, majd telepítse az SQL Servert a virtuális gépre. Ügyeljen arra, hogy regisztrálja SQL Server VM az [erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md) olyan funkciókhoz, mint a portál kezelése, az automatikus biztonsági mentés és az automatikus javítás. 
+   Ezt háromféleképpen teheti meg. Ha Ön Nagyvállalati Szerződés (EA) ügyfél, kiépítheti a [licenceket támogató virtuálisgép-lemezképek](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL)egyikét, amely a saját licenc (BYOL) néven is ismert. Ha rendelkezik frissítési [garanciával](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default), engedélyezheti a [Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md) egy meglévő utólagos elszámolású (TB) rendszerképben. Másik lehetőségként másolja át az SQL Server telepítési adathordozóját egy Windows Server rendszerű virtuális gépre, majd telepítse az SQL Servert a virtuális gépre. Ügyeljen arra, hogy regisztrálja a SQL Server VMt a portál felügyeletére, az automatikus biztonsági mentésre és az automatikus javításra szolgáló funkciók [bővítményével](sql-agent-extension-manually-register-single-vm.md) . 
 
 1. **Módosíthatok egy virtuális gépet, hogy a saját SQL Server-licencemet használja, ha az a használatalapú fizetéses katalógus egyik rendszerképéből lett létrehozva?**
 
@@ -97,15 +97,15 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
 
 1. **A licencelési modell módosítása során az SQL Server le fog állni?**
 
-   Nem. [A licencelési modell módosítása](licensing-model-azure-hybrid-benefit-ahb-change.md) nem igényel leállást SQL Server mivel a változás azonnal hatályba lép, és nem igényli a virtuális gép újraindítását. Ahhoz azonban, hogy a SQL Server VMt a SQL Server VM erőforrás-szolgáltatóval regisztrálja, az [SQL IaaS bővítmény](sql-server-iaas-agent-extension-automate-management.md) előfeltétele, és az SQL IaaS bővítmény _teljes_ módban történő telepítése újraindítja a SQL Server szolgáltatást. Ilyen esetben, ha az SQL IaaS bővítményt telepíteni kell, vagy a korlátozott funkcionalitás érdekében telepítse azt egy _egyszerű_ módban, vagy a karbantartási időszak során _teljes_ módba kell telepítenie. Az _egyszerűsített_ módban telepített SQL IaaS bővítmény bármikor frissíthető _teljes_ módba, de a SQL Server szolgáltatás újraindítását igényli. 
+   Nem. [A licencelési modell módosítása](licensing-model-azure-hybrid-benefit-ahb-change.md) nem igényel leállást SQL Server mivel a változás azonnal hatályba lép, és nem igényli a virtuális gép újraindítását. Ahhoz azonban, hogy a SQL Server VM az SQL IaaS-ügynök bővítménnyel regisztrálja, az [SQL IaaS bővítmény](sql-server-iaas-agent-extension-automate-management.md) előfeltétele, és az SQL IaaS-bővítmény _teljes_ módban történő telepítése újraindítja a SQL Server szolgáltatást. Ilyen esetben, ha az SQL IaaS bővítményt telepíteni kell, vagy a korlátozott funkcionalitás érdekében telepítse azt egy _egyszerű_ módban, vagy a karbantartási időszak során _teljes_ módba kell telepítenie. Az _egyszerűsített_ módban telepített SQL IaaS bővítmény bármikor frissíthető _teljes_ módba, de a SQL Server szolgáltatás újraindítását igényli. 
    
 1. **Lehetőség van a licencelési modellek váltására a klasszikus modell használatával üzembe helyezett SQL Server VMon?**
 
-   Nem. A licencelési modellek módosítása klasszikus virtuális gépen nem támogatott. Migrálással áttelepítheti a virtuális gépet az Azure Resource Manager-modellbe, és regisztrálhatja az SQL Servert futtató virtuális gép erőforrás-szolgáltatójánál. Ha a virtuális gép regisztrálása megtörtént az SQL Servert futtató virtuális gép erőforrás-szolgáltatójánál, a licencelési modell módosításai elérhetővé válnak a virtuális gépen.
+   Nem. A licencelési modellek módosítása klasszikus virtuális gépen nem támogatott. Áttelepítheti a virtuális gépet a Azure Resource Manager modellbe, és regisztrálhatja az SQL IaaS-ügynök bővítményét. Miután regisztrálta a virtuális gépet az SQL IaaS-ügynök bővítménnyel, a licencelési modell módosításai elérhetők lesznek a virtuális gépen.
 
 1. **Az Azure Portal használható egyszerre több példány ugyanazon a virtuális gépen történő kezelésére?**
 
-   Nem. A portálkezelési szolgáltatást az SQL Servert futtató virtuális gép erőforrás-szolgáltatója biztosítja, amely az SQL Server IaaS-ügynök bővítményétől függ. Így az erőforrás-szolgáltatóra és a bővítményre ugyanazok a korlátozások érvényesek. A portálon csak egy alapértelmezett példány vagy egy elnevezett példány kezelhető, feltéve, hogy megfelelően van konfigurálva. További információ ezekről a korlátozásokról: [SQL Server IaaS-ügynök bővítmény](sql-server-iaas-agent-extension-automate-management.md). 
+   Nem. A portál felügyelete az SQL IaaS-ügynök bővítmény által biztosított szolgáltatás, amely a SQL Server IaaS-ügynök bővítményére támaszkodik. Ennek megfelelően ugyanazok a korlátozások vonatkoznak a bővítményre, mint a bővítményre. A portálon csak egy alapértelmezett példány vagy egy elnevezett példány kezelhető, feltéve, hogy megfelelően van konfigurálva. További információ ezekről a korlátozásokról: [SQL Server IaaS-ügynök bővítmény](sql-server-iaas-agent-extension-automate-management.md). 
 
 1. **A CSP-előfizetések aktiválhatják az Azure Hybrid Benefitet?**
 
@@ -135,27 +135,27 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
    Az olyan átfogó programok, amelyek a Frissítési Garanciával egyenértékű előfizetési jogokat kínálnak rögzített előnyként, támogatják a vészhelyreállítási lehetőséget. Ide tartoznak az alábbiak: azonban nem korlátozódik a nyílt értékre (OV), az Open Value előfizetés (OVS), a Nagyvállalati Szerződés (EA), a Nagyvállalati Szerződés előfizetés (EAS), valamint a kiszolgáló és a Felhőbeli regisztráció (SCE) használatára. További információkért tekintse meg a [termék feltételeit](https://www.microsoft.com/licensing/product-licensing/products) , és forduljon a licencelési partnerekhez vagy a fiókkezelőhöz. 
 
    
- ## <a name="resource-provider"></a>Erőforrás-szolgáltató
+ ## <a name="extension"></a>Kiterjesztés
 
-1. **Regisztrálja a virtuális gépet az új SQL Server VM erőforrás-szolgáltatónál, hogy további költségekkel jár?**
+1. **Regisztrálja a virtuális gépet az új SQL IaaS-ügynök bővítménnyel, hogy további költségekkel jár?**
 
-   Nem. A SQL Server VM erőforrás-szolgáltató csak a további kezelhetőséget teszi lehetővé az Azure-beli virtuális gépeken való SQL Server további költségek nélkül. 
+   Nem. Az SQL IaaS-ügynök bővítménye csak további kezelhetőséget tesz lehetővé az Azure-beli virtuális gépeken SQL Server további költségek nélkül. 
 
-1. **Elérhető a SQL Server VM erőforrás-szolgáltató az összes ügyfél számára?**
+1. **Elérhető az SQL IaaS-ügynök bővítmény az összes ügyfél számára?**
  
-   Igen, ha a SQL Server VM a nyilvános felhőben a Resource Manager-modellel lett telepítve, nem a klasszikus modellt. Minden más ügyfél regisztrálhat az új SQL Server VM erőforrás-szolgáltatóval. Azonban csak a frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3) rendelkező ügyfelek használhatják a saját licencét a [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) SQL Server VM való aktiválásával. 
+   Igen, ha a SQL Server VM a nyilvános felhőben a Resource Manager-modellel lett telepítve, nem a klasszikus modellt. Minden más ügyfél regisztrálhat az új SQL IaaS-ügynök bővítménnyel. Azonban csak a frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3) rendelkező ügyfelek használhatják a saját licencét a [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) SQL Server VM való aktiválásával. 
 
-1. **Mi történik az erőforrás-szolgáltató ( _Microsoft. SqlVirtualMachine_ ) erőforrással, ha a virtuális gép erőforrása át van helyezve vagy el lett dobva?** 
+1. **Mi történik a bővítmény ( _Microsoft. SqlVirtualMachine_ ) erőforrással, ha a virtuálisgép-erőforrás át van helyezve vagy el van dobva?** 
 
    A Microsoft. számítási/VirtualMachine erőforrás eldobása vagy áthelyezése után a rendszer a társított Microsoft. SqlVirtualMachine erőforrást a művelet aszinkron replikálására értesíti.
 
-1. **Mi történik a virtuális géppel, ha az erőforrás-szolgáltató ( _Microsoft. SqlVirtualMachine_ ) erőforrás el van dobva?**
+1. **Mi történik a virtuális géppel, ha a bővítmény ( _Microsoft. SqlVirtualMachine_ ) erőforrása el van dobva?**
 
     A Microsoft. SqlVirtualMachine-erőforrás eldobásakor a Microsoft. számítás/VirtualMachine erőforrás nincs hatással. A licencelés módosításai azonban alapértelmezés szerint visszaállnak az eredeti rendszerkép forrására. 
 
-1. **Lehetséges a SQL Server VM erőforrás-szolgáltatóval önálló üzembe helyezett SQL Server virtuális gépek regisztrálása?**
+1. **Lehetséges a saját üzembe helyezett SQL Server virtuális gépek regisztrálása az SQL IaaS-ügynök bővítménnyel?**
 
-    Igen. Ha a saját adathordozóról telepített SQL Serverokat, és telepítette az SQL IaaS bővítményt, akkor az SQL IaaS-bővítmény által biztosított kezelhetőségi előnyök beszerzéséhez regisztrálhatja SQL Server VM az erőforrás-szolgáltatóval.    
+    Igen. Ha a saját adathordozóról telepített SQL Serverokat, és telepítette az SQL IaaS bővítményt, akkor az SQL IaaS bővítmény által biztosított kezelhetőségi előnyök beszerzéséhez regisztrálja SQL Server VM a bővítményben.    
 
 
 ## <a name="administration"></a>Felügyelet
@@ -186,12 +186,12 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
    1. Ha szükséges, biztonsági mentést készíthet az összes adatairól, beleértve a rendszeradatbázisokat is. 
    1. Távolítsa el SQL Server teljesen, beleértve az SQL IaaS bővítményt (ha van).
    1. Telepítse az ingyenes [SQL Express kiadást](https://www.microsoft.com/sql-server/sql-server-downloads).
-   1. Az SQL VM erőforrás-szolgáltatót [egyszerűsített módban](sql-vm-resource-provider-register.md)regisztrálja.
+   1. Az SQL IaaS-ügynök bővítményét [egyszerűsített módban](sql-agent-extension-manually-register-single-vm.md)regisztrálja.
    1. választható Tiltsa le az expressz SQL Server szolgáltatást a szolgáltatás indításának letiltásával. 
 
 1. **Az Azure Portal használható egyszerre több példány ugyanazon a virtuális gépen történő kezelésére?**
 
-   Nem. A portál felügyeletét az SQL VM erőforrás-szolgáltató biztosítja, amely a SQL Server IaaS-ügynök bővítményére támaszkodik. Így ugyanazok a korlátozások vonatkoznak az erőforrás-szolgáltatóra, mint a bővítményre. A portálon csak egy alapértelmezett példány, vagy egy elnevezett példány kezelhető, ha megfelelően van konfigurálva. További információ: [SQL Server IaaS-ügynök bővítménye](sql-server-iaas-agent-extension-automate-management.md) 
+   Nem. A portál felügyeletét az SQL IaaS-ügynök bővítménye nyújtja, amely a SQL Server IaaS-ügynök bővítményére támaszkodik. Ezért ugyanezek a korlátozások érvényesek a kiterjesztésre. A portálon csak egy alapértelmezett példány, vagy egy elnevezett példány kezelhető, ha megfelelően van konfigurálva. További információ: [SQL Server IaaS-ügynök bővítménye](sql-server-iaas-agent-extension-automate-management.md) 
 
 
 ## <a name="updating-and-patching"></a>Frissítés és javítás
@@ -208,7 +208,7 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
 
    A virtuális gépek lehetővé teszik a gazdagép vezérlését, például a frissítések alkalmazási időpontjának és módjának vezérlését. Az operációs rendszer esetében manuálisan alkalmazhatja a Windows-frissítéseket, vagy engedélyezheti az [Automatikus javítás](automated-patching.md) nevű ütemezési szolgáltatást. Az Automatikus javítás minden fontosként megjelölt frissítést telepít, így az e kategóriába eső SQL Server-frissítéseket is. Az SQL Server egyéb nem kötelező frissítéseit manuálisan kell telepíteni.
 
-1. **Frissíthetem a SQL Server 2008/2008 R2 példányt a SQL Server VM erőforrás-szolgáltatóval való regisztráció után?**
+1. **Frissíthetem a SQL Server 2008/2008 R2 példányt az SQL IaaS-ügynök bővítménnyel való regisztráció után?**
 
    Ha az operációs rendszer Windows Server 2008 R2 vagy újabb, igen. Bármilyen telepítési adathordozót használhat a SQL Server verziójának és kiadásának frissítésére, majd az [SQL IaaS-bővítmény üzemmódjának](sql-server-iaas-agent-extension-automate-management.md#management-modes)frissítését a teljes _ügynök nélkül_ is _full_. Ez lehetővé teszi az SQL IaaS bővítmény összes előnyének elérését, például a portál kezelhetőségét, az automatikus biztonsági mentést és az automatizált javításokat. Ha az operációs rendszer verziója Windows Server 2008, csak a nem ügynök mód támogatott. 
 

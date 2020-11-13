@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: dbf38c303f024884971e95f7be9d4dfc50d118de
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 954e94063ec91cd2a6d67d154dfd7da553e0935a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127824"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560893"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Application Gateway integráció a szolgáltatási végpontokkal
 A App Service három változata van, amelyek némileg eltérő konfigurációt igényelnek az Azure Application Gateway-nal való integrációhoz. A variációk közé tartoznak a rendszeres App Service – többek között a több-bérlős, belső Load Balancer (ILB) App Service Environment (Bevezetés) és a külső betekintő is. Ez a cikk bemutatja, hogyan konfigurálhatja azt App Service (több-bérlős), és megvitathatja a ILB és a külső beadással kapcsolatos szempontokat.
@@ -36,7 +36,7 @@ A Azure Portal segítségével négy lépést követve üzembe helyezheti és ko
 1. Hozzon létre egy App Servicet a App Service dokumentációjában található rövid útmutatók valamelyikével, például: [.net Core](../quickstart-dotnetcore.md) rövid útmutató
 2. Hozzon létre egy Application Gateway a [portál](../../application-gateway/quick-create-portal.md)rövid útmutatójának használatával, de hagyja ki a háttérbeli célok hozzáadása szakaszt.
 3. Konfigurálja [app Service háttérként a Application Gatewayban](../../application-gateway/configure-web-app-portal.md), de hagyja ki a hozzáférés korlátozása szakaszt.
-4. Végül hozza létre a [hozzáférési korlátozást a szolgáltatási végpontok használatával](../../app-service/app-service-ip-restrictions.md#service-endpoints).
+4. Végül hozza létre a [hozzáférési korlátozást a szolgáltatási végpontok használatával](../../app-service/app-service-ip-restrictions.md#use-service-endpoints).
 
 Most már elérheti a App Servicet a Application Gatewayon keresztül, de ha közvetlenül próbál hozzáférni a App Servicehoz, egy 403 HTTP-hibaüzenetet kell kapnia, amely azt jelzi, hogy a webhely le van állítva.
 

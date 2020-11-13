@@ -1,6 +1,6 @@
 ---
 title: Az Adatmásolás növekményes másolása a Change Tracking használatával Azure Portal
-description: Ebben az oktatóanyagban létrehoz egy Azure-beli adat-előállítót egy olyan folyamattal, amely az Azure Blob Storage-ban Azure SQL Database található forrásadatbázis változás-követési információi alapján tölti be a különbözeti adatokat.
+description: Ebben az oktatóanyagban egy Azure Data Factory hoz létre egy olyan folyamattal, amely az Azure Blob Storage-ban lévő forrás-adatbázis változás-követési információi alapján tölti be a különbözeti adatokat a Azure SQL Database.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 78b9d3f30ebc8f74433f04c4474121682c4a3f36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5f87e693d2592f830ec785f2163c232915544d1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542019"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561131"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Adatok növekményes betöltése Azure SQL Databaseból az Azure-ba Blob Storage a Change Tracking Information használatával a Azure Portal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban létrehoz egy Azure-beli adat-előállítót egy olyan folyamattal, amely az Azure Blob Storage-ban Azure SQL Database található forrásadatbázis **változás-követési** információi alapján tölti be a különbözeti adatokat.  
+Ebben az oktatóanyagban egy Azure Data Factory hoz létre egy olyan folyamattal, amely az Azure Blob Storage-ban lévő forrás-adatbázis **változás-követési** információi alapján tölti be a különbözeti adatokat a Azure SQL Database.  
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -75,8 +75,8 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ### <a name="create-a-data-source-table-in-azure-sql-database"></a>Adatforrás-tábla létrehozása Azure SQL Databaseban
 
-1. Indítsa el **SQL Server Management Studio**, és kapcsolódjon a SQL Databasehoz.
-2. A **Kiszolgálókezelőben** kattintson a jobb gombbal az **adatbázisra**, és válassza az **Új lekérdezés** elemet.
+1. Indítsa el **SQL Server Management Studio** , és kapcsolódjon a SQL Databasehoz.
+2. A **Kiszolgálókezelőben** kattintson a jobb gombbal az **adatbázisra** , és válassza az **Új lekérdezés** elemet.
 3. Futtassa a következő SQL-parancsot az adatbázison, és hozzon létre egy nevű táblát az `data_source_table` adatforrás-tárolóban.  
 
     ```sql
@@ -156,7 +156,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory**:
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory** :
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -164,20 +164,20 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 
      ![Új adat-előállító lap](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
 
-   Az Azure-beli adatgyár nevének **globálisan egyedinek**kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a data factory nevét (például sajátnévADFTutorialDataFactory-ra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   A Azure Data Factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a data factory nevét (például sajátnévADFTutorialDataFactory-ra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 
    *A "ADFTutorialDataFactory" nevű adatgyár nem érhető el*
-3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
-4. Az **erőforráscsoport**esetében hajtsa végre az alábbi lépések egyikét:
+3. Válassza ki azt az **Azure-előfizetést** , amelyben az adat-előállítót létre szeretné hozni.
+4. Az **erőforráscsoport** esetében hajtsa végre az alábbi lépések egyikét:
 
-      - Válassza a **meglévő használata**lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
-      - Válassza az **új létrehozása**lehetőséget, és adja meg az erőforráscsoport nevét.   
+      - Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
+      - Válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét.   
          
         Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. Válassza a **V2 (előzetes verzió)** értéket a **verzió** esetén.
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Létrehozás** elemre.      
+7. Kattintson a **Létrehozás** gombra.      
 8. Az irányítópulton a következő csempe jelenik meg, amelynek állapota: az **adatgyár üzembe helyezése**.
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
@@ -195,7 +195,7 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage-beli társított szolgáltatás létrehozása
 Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 
-1. Kattintson a **Kapcsolatok**, majd az **+ Új** elemre.
+1. Kattintson a **Kapcsolatok** , majd az **+ Új** elemre.
 
    ![Új kapcsolat gomb](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-connection-button-storage.png)
 2. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Continue** (Folytatás) elemre.
@@ -213,7 +213,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása.
 Ebben a lépésben összekapcsolja az adatbázist az adatelőállítóval.
 
-1. Kattintson a **Kapcsolatok**, majd az **+ Új** elemre.
+1. Kattintson a **Kapcsolatok** , majd az **+ Új** elemre.
 2. Az **Új társított szolgáltatás** ablakban válassza az **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** elemre.
 3. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
 
@@ -265,7 +265,7 @@ Ebben a lépésben egy adatkészletet hoz létre, amely a forrásadattárból m�
 
     1. A **Társított szolgáltatás** mezőben válassza az **AzureStorageLinkedService** értéket.
     2. A **filePath****mappa** részéhez írja be az **adftutorial/incchgtracking** kifejezést.
-    3. Adja meg ** \@ a concat (növekményes, folyamat () értéket. RunId, '. txt ')** a **filepath** **fájljának** részeként.  
+    3. Adja meg **\@ a concat (növekményes, folyamat () értéket. RunId, '. txt ')** a **filepath** **fájljának** részeként.  
 
        ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -306,7 +306,7 @@ Ebben a lépésben egy másolási tevékenységgel rendelkező folyamatot fog l�
     ![A képernyőképen az összes közzététel gomb jelenik meg.](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
 8. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet.
 
-    ![A közzététel sikerült](./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png)
+    ![Sikeres közzététel](./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png)
 9. Az értesítéseket a bal oldalon található **Értesítések megjelenítése** gombra kattintva tekintheti meg. Az értesítések ablakának bezárásához kattintson az **X** gombra.
 
     ![Értesítések megjelenítése](./media/tutorial-incremental-copy-change-tracking-feature-portal/show-notifications.png)
@@ -360,7 +360,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>Folyamat létrehozása a változásadatok másolásához
 Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog létrehozni, majd időszakosan futtatni. A **keresési tevékenységek** lekérik a SYS_CHANGE_VERSION régi és új értékét az Azure SQL Database-ből, majd átadják azt a másolási tevékenységnek. A **másolási tevékenység** a két SYS_CHANGE_VERSION érték közötti beillesztett/frissített/törölt adatokat az Azure SQL Database-ből az Azure Blob Storage-be másolja. A **tárolt eljárási tevékenység** frissíti a SYS_CHANGE_VERSION értékét a következő folyamatfuttatáshoz.
 
-1. A Data Factory felhasználói felületen váltson a **Szerkesztés** lapra. Kattintson a **+ (plusz)** gombra a bal oldali ablaktáblán, majd kattintson a **folyamat**elemre.
+1. A Data Factory felhasználói felületen váltson a **Szerkesztés** lapra. Kattintson a **+ (plusz)** gombra a bal oldali ablaktáblán, majd kattintson a **folyamat** elemre.
 
     ![A képernyőfelvétel azt mutatja be, hogyan lehet folyamatokat létrehozni egy adatelőállítóban.](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. Megjelenik egy új, a folyamat konfigurálására szolgáló lap. A folyamat fanézetben is megjelenik. A **Tulajdonságok** ablakban módosítsa a folyamat nevét a következőre: **IncrementalCopyPipeline**.
@@ -369,7 +369,7 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
 3. A **Tevékenységek** eszközkészletben bontsa ki az **Általános** elemet, és húzza a **Keresés** tevékenységet a folyamat tervezőfelületére. Állítsa a tevékenység nevét a következőre: **LookupLastChangeTrackingVersionActivity**. Ez a tevékenység a **table_store_ChangeTracking_version** táblában tárolt utolsó másolási művelet során használt változáskövetési verziót kapja meg.
 
     ![A képernyőképen egy keresési tevékenységgel rendelkező folyamat látható.](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
-4. Váltson a **Beállítások ** lapra a ** tulajdonságok** ablakában, és válassza a **ChangeTrackingDataset** elemet a **Forrásadatkészlet** mezőnél.
+4. Váltson a **Beállítások** lapra a **tulajdonságok** ablakában, és válassza a **ChangeTrackingDataset** elemet a **Forrásadatkészlet** mezőnél.
 
     ![A képernyőképen a Tulajdonságok ablak Beállítások lapja látható.](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
 5. Húzza a **keresési** tevékenységet a **Tevékenységek** eszközkészletből a folyamat tervezőfelületére. Állítsa a tevékenység nevét a következőre: **LookupCurrentChangeTrackingVersionActivity**. Ez a tevékenység az aktuális változáskövetési verziót kapja meg.
@@ -403,13 +403,13 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
 9. Váltson a **Fogadó** lapra, és válassza a **SinkDataset** lehetőséget a **Fogadó adatkészlet** mezőnél.
 
     ![Másolási tevékenység – fogadóbeállítások](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
-10. **Mindkét keresési tevékenységet kapcsolja a másolási tevékenységhez**, egymás után. Húzza a **keresési** tevékenységhez tartozó **zöld** gombot a **másolási** tevékenységhez.
+10. **Mindkét keresési tevékenységet kapcsolja a másolási tevékenységhez** , egymás után. Húzza a **keresési** tevékenységhez tartozó **zöld** gombot a **másolási** tevékenységhez.
 
     ![A keresési és másolási tevékenységek összekapcsolása](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-lookup-and-copy.png)
 11. Húzza át a **Tárolt eljárás** tevékenységet a **tevékenységek** eszközkészletéből a folyamat tervezőfelületére. Állítsa a tevékenység nevét a következőre: **StoredProceduretoUpdateChangeTrackingActivity**. Ez a tevékenység frissíti a **table_store_ChangeTracking_version** táblában található változáskövetési verziót.
 
     ![Tárolt eljárási tevékenység – név](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
-12. Váltson az *SQL-fiók** lapra, majd a **Társított szolgáltatás** elemnél válassza az **AzureSqlDatabaseLinkedService** lehetőséget.
+12. Váltson az *SQL-fiók* * lapra, majd a **Társított szolgáltatás** elemnél válassza az **AzureSqlDatabaseLinkedService** lehetőséget.
 
     ![Tárolt eljárási tevékenység – SQL-fiók](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. Váltson a **Tárolt eljárás** lapra, és végezze el az alábbi lépéseket:
@@ -471,7 +471,7 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan másolhat új és módosított fájlokat csak a LastModifiedDate alapján:
 
 > [!div class="nextstepaction"]

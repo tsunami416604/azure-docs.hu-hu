@@ -1,6 +1,6 @@
 ---
 title: Mi az Azure Machine Learning Studio?
-description: A Azure Machine Learning Studio egy Azure Machine Learning-munkaterületek webes portálja. A Studio a kód nélküli és a kód első lépéseit kombinálva létrehoz egy inkluzív adatelemzési platformot.
+description: A Studio egy webes portál Azure Machine Learning munkaterületekhez. A Studio a kód nélküli és a kód első lépéseit kombinálja egy inkluzív adatelemzési platformon.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 345c925d3b1350dfc2ea69d65d8d14688c6930b9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 229c1d2aaab6029ccec3f8831f42a7ce8de2e31e
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310175"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555481"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 
@@ -61,7 +61,7 @@ A gépi tanulási eszközöket közvetlenül a böngészőben kezelheti. Az eszk
 - Notebooks
 - Kísérletek
 - Naplók futtatása
-- Folyamatok 
+- Pipelines 
 - Folyamat végpontjai
 
 Még ha tapasztalt fejlesztő is, a Studio leegyszerűsítheti a munkaterület-erőforrások kezelését.
@@ -80,7 +80,7 @@ Azt javasoljuk, hogy az új felhasználók ML Studio (klasszikus) helyett **Azur
 
 Az alábbi táblázat összefoglalja ML Studio (klasszikus) és Azure Machine Learning közötti fő különbségeket.
 
-| Funkció | ML Studio (klasszikus) | Azure Machine Learning |
+| Jellemző | ML Studio (klasszikus) | Azure Machine Learning |
 |---| --- | --- |
 | Húzási interfész | Klasszikus felhasználói élmény | Frissített tapasztalat – [Azure Machine learning Designer](concept-designer.md)| 
 | SDK-kód | Nem támogatott | Teljes mértékben integrált [Azure Machine learning Python](/python/api/overview/azure/ml/) és [R](tutorial-1st-r-experiment.md) SDK-k |

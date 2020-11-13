@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
+ms.date: 11/11/2020
 ms.author: jingwang
-ms.openlocfilehash: becebf5e56840b8430dd8d4a7714229503e677da
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ef9ac29735289d5c7a60ff0fca3b9e9f360f6e08
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637122"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555396"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy Azure SQL Database-adatbázisba Azure Data Factory használatával
 
@@ -39,9 +39,9 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 > * A folyamat és a tevékenységek futásának monitorozása
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure-előfizetés** . Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* **Azure Storage-fiók** . A Blob Storage lesz használatban *forrás* adattárként. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket.
-* **Azure SQL Database** . Ezt az adatbázist használjuk *fogadó* adattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg az [adatbázis létrehozása a Azure SQL Databaseban](../azure-sql/database/single-database-create-quickstart.md) című témakört a létrehozásához szükséges lépésekért.
+* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+* **Azure Storage-fiók**. A Blob Storage lesz használatban *forrás* adattárként. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket.
+* **Azure SQL Database**. Ezt az adatbázist használjuk *fogadó* adattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg az [adatbázis létrehozása a Azure SQL Databaseban](../azure-sql/database/single-database-create-quickstart.md) című témakört a létrehozásához szükséges lépésekért.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Blob és SQL-tábla létrehozása
 
@@ -80,8 +80,8 @@ Készítse elő a Blob Storage-et és az SQL Database-t az oktatóanyaghoz a kö
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Factory felhasználói felületét, hogy létrehozzon egy folyamatot az adat-előállítóban.
 
-1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome böngészőt** . A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-2. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory** elemet.
+1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome böngészőt**. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
+2. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **integráció**  >  **Data Factory** elemet.
 3. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket.
 
    Az Azure-beli adatgyár nevének *globálisan egyedinek* kell lennie. Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. (például Sajátneveadftutorialdatafactory). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
@@ -115,7 +115,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
    ![Folyamat létrehozása](./media/doc-common-process/get-started-page.png)
 
-1. 1. A **Tulajdonságok** terület általános paneljén adja meg **CopyPipeline** a CopyPipeline **nevet** . Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
+1. 1. A **Tulajdonságok** terület általános paneljén adja meg **CopyPipeline** a CopyPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
 
 1. A **tevékenységek** eszközben bontsa ki az **áthelyezés és átalakítás** kategóriát, majd húzza a **adatok másolása** tevékenységet az eszközkészletből a folyamat tervező felületére. Adja meg a **CopyFromBlobToSql** értéket a **Név** mezőben.
 
@@ -133,13 +133,13 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
 1. A **formátum kiválasztása** párbeszédpanelen válassza ki az adatformátum típusát, majd kattintson a **Continue (folytatás** ) elemre.
 
-1. A **Tulajdonságok megadása** párbeszédpanelen adja meg a **sourceblobdataset lehetőség** nevet. Jelölje be az **első sor jelölőnégyzetét fejlécként** . A **társított szolgáltatás** szövegmezőben válassza az **+ új** lehetőséget.
+1. A **Tulajdonságok megadása** párbeszédpanelen adja meg a **sourceblobdataset lehetőség** nevet. Jelölje be az **első sor jelölőnégyzetét fejlécként**. A **társított szolgáltatás** szövegmezőben válassza az **+ új** lehetőséget.
 
 1. Az **új társított szolgáltatás (Azure Blob Storage)** párbeszédpanelen írja be a **AzureStorageLinkedService** nevet, válassza ki a Storage-fiók nevét a **Storage-fiók neve** listából. A kapcsolat tesztelése lapon válassza a **Létrehozás** lehetőséget a társított szolgáltatás telepítéséhez.
 
 1. A társított szolgáltatás létrehozása után a rendszer a **tulajdonságok beállítása** lapra navigál. A **Fájl elérési útja** mellett válassza a **Tallózás** lehetőséget.
 
-1. Keresse meg a **adftutorial/input** mappát, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra** .
+1. Keresse meg a **adftutorial/input** mappát, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra**.
 
 1. Kattintson az **OK** gombra. Automatikusan megnyitja a folyamat lapot. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
 
@@ -199,7 +199,7 @@ Elvégezheti a folyamat hibakeresését, mielőtt összetevőket (társított sz
 ## <a name="trigger-the-pipeline-manually"></a>A folyamat manuális aktiválása
 Ebben a lépésben manuálisan fogja aktiválni az előző lépésben közzétett folyamatot.
 
-1. Kattintson az **Aktiválás** gombra az eszköztáron, majd válassza az **Aktiválás most** lehetőséget. A **folyamat futtatása** lapon kattintson az **OK gombra** .  
+1. Kattintson az **Aktiválás** gombra az eszköztáron, majd válassza az **Aktiválás most** lehetőséget. A **folyamat futtatása** lapon kattintson az **OK gombra**.  
 
 1. Lépjen a bal oldali **Figyelés** lapra. Itt láthat egy manuális eseményindító által aktivált folyamatfuttatást. A **folyamat neve** oszlopban található hivatkozások használatával megtekintheti a tevékenységek részleteit, és újra futtathatja a folyamatot.
 
@@ -224,19 +224,17 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 
     a. A **Név** mezőbe írja a **RunEveryMinute** nevet.
 
-    b. A **Befejezés** alatt válassza a **Dátum** elemet.
+    b. Frissítse az trigger **kezdő dátumát** . Ha a dátum korábbi az aktuális dátum/idő, az trigger a módosítás közzétételekor lép érvénybe. 
 
-    c. A **Befejezés** alatt válassza a legördülő listát.
+    c. Az **időzóna** területen válassza a legördülő listát.
 
-    d. Válassza a **mai nap** lehetőséget. Alapértelmezés szerint a következő nap van beállítva.
+    d. Állítsa be az **ismétlődést** **1 percenként**.
 
-    e. Frissítse a **befejezési időt** , hogy az aktuális dátum és idő pár perccel korábbi legyen. Az eseményindító csak a módosítások közzététele után lesz aktív. Ha úgy állítja be, hogy csak néhány percre van beállítva, és nem teszi közzé azt, akkor nem jelenik meg a trigger futtatása.
+    e. Jelölje be a **befejezési dátum megadása** jelölőnégyzetet, és a szakasz **végének** frissítése után néhány perccel az aktuális dátum és idő értéket. Az eseményindító csak a módosítások közzététele után lesz aktív. Ha úgy állítja be, hogy csak néhány percre van beállítva, és nem teszi közzé azt, akkor nem jelenik meg a trigger futtatása.
 
-    f. Kattintson az **OK** gombra.
+    f. Az **aktivált** beállításnál válassza az **Igen** lehetőséget.
 
-    : Az **aktivált** beállításnál válassza az **Igen** lehetőséget.
-
-    h. Kattintson az **OK** gombra.
+    : Kattintson az **OK** gombra.
 
     > [!IMPORTANT]
     > Minden egyes folyamatfuttatásnak van bizonyos költségvonzata, ezért a befejezés időpontját ezt figyelembe véve adja meg.

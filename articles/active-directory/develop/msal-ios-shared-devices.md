@@ -13,19 +13,17 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 949ddae903a53957f62b89a01ce477edb92917c1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a97e14bcb68629f5f175a4913146187949af08be
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365910"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561063"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Megosztott eszköz mód iOS-eszközökhöz
 
-> [!NOTE]
-> Ez a funkció nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>[!IMPORTANT]
+> Ez a funkció [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 A Firstline-feldolgozók, például a kiskereskedelmi munkatársak, a hajózószemélyzet tagjai és a helyszíni szolgáltatások feldolgozói gyakran közös mobileszköz használatával végzik munkájukat. Ezek a megosztott eszközök biztonsági kockázatokat jelenthetnek, ha a felhasználók a jelszavukat vagy PIN-fájljaikat szándékosan vagy nem használják, hogy hozzáférjenek a megosztott eszközön lévő ügyfél-és üzleti adataihoz.
 
@@ -43,7 +41,7 @@ Megosztott eszköz üzemmódú alkalmazás létrehozásához a fejlesztők és a
 
 1. Az eszközök **rendszergazdái** megoszthatják az eszközt egy mobileszköz-felügyeleti (Mdm-) szolgáltató használatával, mint a Microsoft Intune a szervezet eszközeinek kezeléséhez. A MDM leküldi a Microsoft Authenticator alkalmazást az eszközökre, és bekapcsolja a "Shared Mode" (megosztott mód) lehetőséget az eszközön a profil frissítése során. Ez a megosztott üzemmódú beállítás a támogatott alkalmazások viselkedését módosítja az eszközön. Ez a konfiguráció a MDM-szolgáltatónál beállítja az eszköz megosztott eszközének módját, és engedélyezi a [Microsoft Enterprise SSO beépülő modult az Apple-eszközökhöz](apple-sso-plugin.md) , amelyek a megosztott eszköz üzemmódhoz szükségesek.
 
-1. [**Csak a nyilvános előzetes**verzióban szükséges] A [felhőalapú eszköz rendszergazdai](../roles/permissions-reference.md#cloud-device-administrator) szerepkörrel rendelkező felhasználónak el kell indítania a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-overview.md) , és csatlakoztatnia kell az eszközét a szervezethez.
+1. [ **Csak a nyilvános előzetes** verzióban szükséges] A [felhőalapú eszköz rendszergazdai](../roles/permissions-reference.md#cloud-device-administrator) szerepkörrel rendelkező felhasználónak el kell indítania a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-overview.md) , és csatlakoztatnia kell az eszközét a szervezethez.
 
     A szervezeti szerepkörök tagságának konfigurálása a Azure Portal: **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **Felhőbeli eszköz rendszergazdája**
 
@@ -58,10 +56,10 @@ Az eszközt úgy kell konfigurálni, hogy támogassa a megosztott eszköz üzemm
 
 1. Az Intune konfigurációs portálján adja meg az eszközt, hogy engedélyezze a [Microsoft Enterprise SSO beépülő modult az Apple-eszközökhöz](apple-sso-plugin.md) a következő konfigurációval:
 
-    - **Típus**: átirányítás
-    - **BŐVÍTMÉNY azonosítója**: com. microsoft. azureauthenticator. ssoextension
-    - **Csoport azonosítója**: (ez a mező nem szükséges az iOS esetében)
-    - **URL-címek**:   
+    - **Típus** : átirányítás
+    - **BŐVÍTMÉNY azonosítója** : com. microsoft. azureauthenticator. ssoextension
+    - **Csoport azonosítója** : (ez a mező nem szükséges az iOS esetében)
+    - **URL-címek** :   
         - `https://login.microsoftonline.com`
         - `https://login.microsoft.com`
         - `https://sts.windows.net`
@@ -71,7 +69,7 @@ Az eszközt úgy kell konfigurálni, hogy támogassa a megosztott eszköz üzemm
         - `https://login.microsoftonline.us`
         - `https://login.usgovcloudapi.net`
         - `https://login-us.microsoftonline.com`
-    - **További konfigurálandó információk**:
+    - **További konfigurálandó információk** :
       - Kulcs: sharedDeviceMode
       - Típus: Boolean
       - Érték: true

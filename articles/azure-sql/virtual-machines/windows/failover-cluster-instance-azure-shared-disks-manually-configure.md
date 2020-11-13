@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: c78899bff39f37c63c7db0eeb12690ab2a90cac4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: df50583e650d3d44e702c0f7d1596f2a733a4445
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285371"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556386"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Az Azure Shared Disks (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -153,10 +153,10 @@ A fürt a felhasználói felületen való ellenőrzéséhez tegye a következők
 
 1. A **Kiszolgálókezelő** területen válassza az **eszközök** , majd a **Feladatátvevőfürt-kezelő** lehetőséget.
 1. A **Feladatátvevőfürt-kezelő** alatt válassza a **művelet** , majd a **Konfiguráció ellenőrzése** lehetőséget.
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** gombot.
 1. A **kiszolgálók vagy fürt kijelölése** területen adja meg mindkét virtuális gép nevét.
 1. A **tesztelési beállítások** területen válassza a **csak a kiválasztott tesztek futtatása** lehetőséget. 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** gombot.
 1. A **teszt kiválasztása** területen válassza az összes teszt lehetőséget a **tárolás** *kivételével*
 
 ## <a name="test-cluster-failover"></a>Fürt feladatátvételének tesztelése
@@ -197,7 +197,7 @@ Az adatkönyvtáraknak az Azure-beli megosztott lemezeken kell lenniük.
 
 ## <a name="register-with-the-sql-vm-rp"></a>Regisztrálás az SQL VM RP-vel
 
-A SQL Server VM a portálról való kezeléséhez regisztrálja az SQL VM erőforrás-szolgáltatóval (RP) az [egyszerűsített felügyeleti módban](sql-vm-resource-provider-register.md#lightweight-management-mode), jelenleg az egyetlen olyan mód, amely az Azure-beli virtuális gépeken a (z) és a SQL Server támogatott. 
+A SQL Server VM a portálról való kezeléséhez regisztrálja az SQL IaaS-ügynök kiterjesztésével (RP) az [egyszerűsített felügyeleti módban](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode), jelenleg az egyetlen olyan mód, amely az Azure-beli virtuális gépeken a (z) és a SQL Server támogatott. 
 
 
 SQL Server VM regisztrálása könnyűsúlyú módban a PowerShell használatával:  
@@ -217,7 +217,7 @@ Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné ir�
 
 ## <a name="limitations"></a>Korlátozások
 
-- Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-server-iaas-agent-extension-automate-management.md#management-modes) támogatott.
+- Csak az SQL IaaS-ügynök bővítménnyel való regisztráció [egyszerűsített felügyeleti módban](sql-server-iaas-agent-extension-automate-management.md#management-modes) támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -228,6 +228,6 @@ Ha az Azure Shared Disks nem az Ön számára megfelelő, és nem az Ön számá
 
 További tudnivalókat az Azure-beli [virtuális gépekkel](failover-cluster-instance-overview.md) és a [fürt konfigurálásával kapcsolatos ajánlott eljárásokkal](hadr-cluster-best-practices.md)foglalkozó, a SQL Server az Azure-ban című témakörben
 
-További információkért lásd: 
+További információ: 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

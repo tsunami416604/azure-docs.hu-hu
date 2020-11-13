@@ -1,7 +1,7 @@
 ---
 title: Python-szkript végrehajtása a Designerben
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan alakíthatja át az adatátalakítást a Python használatával Azure Machine Learning Designerben.
+description: Megtudhatja, hogyan használhatja a Python szkriptek futtatására szolgáló modellt a Azure Machine Learning Designerben a Pythonban írt egyéni műveletek futtatásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer, devx-track-python
-ms.openlocfilehash: 6a393cf2c0787a2bc2111581126cbc261d85f1f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcc28d98efbc82079586de8cfbecd35effc93d6e
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897741"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556233"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Python-kód futtatása a Azure Machine Learning Designerben
 
@@ -58,7 +58,7 @@ A bemeneti modulok nem kötelezőek, mivel közvetlenül a **Python-szkript vég
 
 A Designer egy kezdeti belépési pont parancsfájlt biztosít a saját Python-kódjának szerkesztéséhez és megadásához. 
 
-Ebben a példában a pandák használatával két oszlopot egyesítünk a személygépkocsi-adatkészletben, az **Ár** -és a **lóerőben**, egy új oszlop létrehozásához ( **dollár/lóerő**). Ez az oszlop azt jelzi, hogy mennyit fizet minden lóerőért, ami hasznos funkció lehet annak eldöntéséhez, hogy az autó jó üzlet-e a pénzért. 
+Ebben a példában a pandák használatával két oszlopot egyesítünk a személygépkocsi-adatkészletben, az **Ár** -és a **lóerőben** , egy új oszlop létrehozásához ( **dollár/lóerő** ). Ez az oszlop azt jelzi, hogy mennyit fizet minden lóerőért, ami hasznos funkció lehet annak eldöntéséhez, hogy az autó jó üzlet-e a pénzért. 
 
 1. Válassza a **Python-szkript végrehajtása** modult.
 
@@ -83,7 +83,7 @@ Ebben a példában a pandák használatával két oszlopot egyesítünk a szemé
     
 1. A folyamat elküldése.
 
-Most már rendelkezik egy adatkészlettel, amely a **dollár/HP**új funkcióval rendelkezik, ami hasznos lehet az autó ajánlójának betanításához. Ez egy példa a szolgáltatások kinyerésére és a dimenzióját csökkentésére. 
+Most már rendelkezik egy adatkészlettel, amely a **dollár/HP** új funkcióval rendelkezik, ami hasznos lehet az autó ajánlójának betanításához. Ez egy példa a szolgáltatások kinyerésére és a dimenzióját csökkentésére. 
 
 ## <a name="next-steps"></a>Következő lépések
 

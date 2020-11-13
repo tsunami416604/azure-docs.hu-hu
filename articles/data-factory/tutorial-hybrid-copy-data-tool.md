@@ -1,6 +1,6 @@
 ---
 title: Helyszíni adatai másolása az Azure Adatok másolása eszköz használatával
-description: Hozzon létre egy Azure-beli adatelőállítót, majd az Adatok másolása eszközzel másolja át az adatait egy SQL Server-adatbázisból az Azure Blob Storage-ba.
+description: Hozzon létre egy Azure Data Factory, majd a Adatok másolása eszközzel másolja át az adatait egy SQL Server-adatbázisból az Azure Blob Storage-ba.
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: 7d10eec3fb200d2ef9e583c012cc522888f3c65b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d9cf9729d8be77845572efd9ef6e2486ddceaaaf
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553597"
+ms.locfileid: "94561998"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba a Adatok másolása eszköz használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]

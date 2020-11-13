@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: a85c1326501a362371d3bc961f5c5ae448e8d22e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9129d0cb44aea9b85c5569d4d939c0904c398c07
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790083"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556522"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Az Azure-beli virtuális gépen SQL Server rendelkezésre állási csoport konfigurálása a PowerShell vagy az a CLI használatával 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ Az Always On rendelkezésre állási csoport konfigurálásához a következő e
 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - Egy tartományvezérlővel rendelkező erőforráscsoport. 
-- Egy vagy több [, az Azure-ban SQL Server 2016 (vagy újabb) Enterprise Edition rendszert futtató,](./create-sql-vm-portal.md) tartományhoz csatlakoztatott virtuális gép *ugyanazon* rendelkezésre állási csoporton vagy *különböző* rendelkezésre állási zónákban, amelyek [regisztrálva vannak az SQL VM erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md).  
+- Egy vagy több [, az Azure-ban SQL Server 2016 (vagy újabb) Enterprise Edition rendszert futtató,](./create-sql-vm-portal.md) tartományhoz csatlakoztatott virtuális gép *ugyanazon* rendelkezésre állási csoporton vagy *különböző* rendelkezésre állási zónákban, amelyek [regisztrálva vannak az SQL IaaS-ügynök bővítménnyel](sql-agent-extension-manually-register-single-vm.md).  
 - A [PowerShell](/powershell/scripting/install/installing-powershell) vagy az [Azure CLI](/cli/azure/install-azure-cli)legújabb verziója. 
 - Két elérhető (egyetlen entitás sem használja) IP-címek. Az egyik a belső terheléselosztó. A másik a rendelkezésre állási csoporttal megegyező alhálózaton belüli figyelő. Ha meglévő terheléselosztó használatával rendelkezik, csak egy elérhető IP-címet kell használnia a rendelkezésre állási csoport figyelője számára. 
 
@@ -423,9 +423,9 @@ Replika eltávolítása a rendelkezésre állási csoportból:
 ---
 
 ## <a name="remove-listener"></a>Figyelő eltávolítása
-Ha később el kell távolítania az Azure CLI-vel konfigurált rendelkezésre állási csoport figyelőjét, el kell végeznie az SQL virtuális gép erőforrás-szolgáltatóját. Mivel a figyelő az SQL VM erőforrás-szolgáltatón keresztül van regisztrálva, csak a SQL Server Management Studio-en keresztüli törlés nem elegendő. 
+Ha később el kell távolítania az Azure CLI-vel konfigurált rendelkezésre állási csoport figyelőjét, el kell végeznie az SQL IaaS-ügynök bővítményt. Mivel a figyelő az SQL IaaS-ügynök bővítménnyel van regisztrálva, csak a SQL Server Management Studio-en keresztüli törlés nem elegendő. 
 
-A legjobb módszer az SQL VM erőforrás-szolgáltatón keresztüli Törlés az Azure CLI következő kódrészletének használatával. Ezzel eltávolítja a rendelkezésre állási csoport figyelő metaadatait az SQL VM erőforrás-szolgáltatójából. Emellett fizikailag törli a figyelőt a rendelkezésre állási csoportból. 
+Az ajánlott módszer az SQL IaaS-ügynök bővítményen keresztüli törlése az Azure CLI következő kódrészletének használatával. Ezzel eltávolítja a rendelkezésre állási csoport figyelő metaadatait az SQL IaaS-ügynök bővítménnyel. Emellett fizikailag törli a figyelőt a rendelkezésre állási csoportból. 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -451,7 +451,7 @@ Remove-AzAvailabilityGroupListener -Name <Listener> `
 
 ## <a name="remove-cluster"></a>Fürt eltávolítása
 
-Távolítsa el az összes csomópontot a fürtből annak megsemmisítéséhez, majd távolítsa el a fürt metaadatait az SQL VM erőforrás-szolgáltatójából. Ezt az Azure CLI vagy a PowerShell használatával teheti meg. 
+Távolítsa el az összes csomópontot a fürtből annak megsemmisítéséhez, majd távolítsa el a fürt metaadatait az SQL IaaS-ügynök bővítménnyel. Ezt az Azure CLI vagy a PowerShell használatával teheti meg. 
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -468,7 +468,7 @@ az sql vm remove-from-group --name <VM2 name>  --resource-group <resource group 
 
 Ha ezek az egyetlen virtuális gép a fürtben, akkor a rendszer megsemmisíti a fürtöt. Ha a fürtben más virtuális gépek is találhatók, az eltávolított SQL Server virtuális gépektől függetlenül, a többi virtuális gép nem lesz eltávolítva, és a fürt nem lesz megsemmisítve. 
 
-Ezután távolítsa el a fürt metaadatait az SQL VM erőforrás-szolgáltatójából: 
+Ezután távolítsa el a fürt metaadatait az SQL IaaS-ügynök bővítményből: 
 
 ```azurecli-interactive
 # Remove the cluster from the SQL VM RP metadata
@@ -497,7 +497,7 @@ $sqlvm = Get-AzSqlVM -Name <VM Name> -ResourceGroupName <Resource Group Name>
 
 Ha ezek az egyetlen virtuális gép a fürtben, akkor a rendszer megsemmisíti a fürtöt. Ha a fürtben más virtuális gépek is találhatók, az eltávolított SQL Server virtuális gépektől függetlenül, a többi virtuális gép nem lesz eltávolítva, és a fürt nem lesz megsemmisítve. 
 
-Ezután távolítsa el a fürt metaadatait az SQL VM erőforrás-szolgáltatójából: 
+Ezután távolítsa el a fürt metaadatait az SQL IaaS-ügynök bővítményből: 
 
 ```powershell-interactive
 # Remove the cluster metadata
@@ -510,7 +510,7 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkat az következő cikkekben talál: 
+További információért tekintse át a következő cikkeket: 
 
 * [SQL Server virtuális gépek áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [SQL Server virtuális gépekkel kapcsolatos gyakori kérdések](frequently-asked-questions-faq.md)

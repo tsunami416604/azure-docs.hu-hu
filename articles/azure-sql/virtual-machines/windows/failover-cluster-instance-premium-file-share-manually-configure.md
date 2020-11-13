@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 1994cda9dbf22a81216408ee07d51f635e89cff4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 56509bfcd267a590946eb750bd74ce1f67aecc00
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285275"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556403"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Egy prémium szintű fájlmegosztás (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -90,15 +90,15 @@ A fürt a felhasználói felületen való ellenőrzéséhez tegye a következők
 
 1. A **Kiszolgálókezelő** területen válassza az **eszközök** , majd a **Feladatátvevőfürt-kezelő** lehetőséget.
 1. A **Feladatátvevőfürt-kezelő** alatt válassza a **művelet** , majd a **Konfiguráció ellenőrzése** lehetőséget.
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** gombot.
 1. A **kiszolgálók vagy fürt kijelölése** területen adja meg mindkét virtuális gép nevét.
 1. A **tesztelési beállítások** területen válassza a **csak a kiválasztott tesztek futtatása** lehetőséget. 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** gombot.
 1. A **teszt kiválasztása** területen válassza a minden teszt lehetőséget a **tárolás** és a **közvetlen tárolóhelyek** kivételével, ahogy az itt látható:
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Fürt-ellenőrzési tesztek kiválasztása":::
 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** gombot.
 1. A **megerősítés** területen válassza a **tovább** lehetőséget.
 
 A **Konfiguráció ellenőrzése** varázsló futtatja az ellenőrző teszteket.
@@ -189,7 +189,7 @@ Miután konfigurálta a feladatátvevő fürtöt, létrehozhatja a SQL Server-t.
 
 ## <a name="register-with-the-sql-vm-rp"></a>Regisztrálás az SQL VM RP-vel
 
-A SQL Server VM a portálról való kezeléséhez regisztrálja az SQL VM erőforrás-szolgáltatóval (RP) az [egyszerűsített felügyeleti módban](sql-vm-resource-provider-register.md#lightweight-management-mode), jelenleg az egyetlen olyan mód, amelyet az Azure-beli virtuális gépeken a (z) és a SQL Server támogatott. 
+A SQL Server VM a portálról való kezeléséhez regisztrálja az SQL IaaS-ügynök bővítménnyel (RP) az [egyszerűsített felügyeleti módban](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode), jelenleg az egyetlen olyan mód, amelyet az Azure-beli virtuális gépeken a (z) és a SQL Server is támogat. 
 
 SQL Server VM regisztrálása könnyűsúlyú módban a PowerShell-lel (-LicenseType lehet `PAYG` vagy `AHUB` ):
 
@@ -210,7 +210,7 @@ Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné ir�
 
 - A Microsoft Elosztott tranzakciók koordinátora (MSDTC) nem támogatott a Windows Server 2016-es és korábbi verzióiban. 
 - A FileStream nem támogatott egy prémium szintű fájlmegosztást használó feladatátvevő fürt esetén. A FileStream használatához [közvetlen tárolóhelyek](failover-cluster-instance-storage-spaces-direct-manually-configure.md) vagy [Azure Shared Disks](failover-cluster-instance-azure-shared-disks-manually-configure.md) használatával helyezze üzembe a fürtöt.
-- Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-server-iaas-agent-extension-automate-management.md#management-modes) támogatott. 
+- Csak az SQL IaaS-ügynök bővítménnyel való regisztráció [egyszerűsített felügyeleti módban](sql-server-iaas-agent-extension-automate-management.md#management-modes) támogatott. 
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -221,6 +221,6 @@ Ha a prémium fájlmegosztás nem az Ön számára megfelelő, az Azure-beli [me
 
 További tudnivalókat az Azure-beli [virtuális gépekkel](failover-cluster-instance-overview.md) és a [fürt konfigurálásával kapcsolatos ajánlott eljárásokkal](hadr-cluster-best-practices.md)foglalkozó, a SQL Server az Azure-ban című témakörben 
 
-További információkért lásd: 
+További információ: 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

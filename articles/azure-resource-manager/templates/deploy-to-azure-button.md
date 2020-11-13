@@ -3,12 +3,12 @@ title: Üzembe helyezés az Azure-ban gomb
 description: Azure Resource Manager-sablonok GitHub-tárházból való üzembe helyezéséhez használja a gombot.
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 7d002508f6b2402f8cff40fb0369896080ecbbad
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 25ec5fd7a0c5b356097412ab6f1765cb0886522a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490899"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555263"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Sablonok üzembe helyezése a GitHub-tárházból a központi telepítés gomb használatával
 
@@ -19,11 +19,15 @@ A központi telepítési hatókör meghatározása a sablon sémája alapján t�
 * [erőforráscsoportok](deploy-to-resource-group.md)
 * [előfizetések](deploy-to-subscription.md)
 * [felügyeleti csoportok](deploy-to-management-group.md)
-* [bérlők](deploy-to-tenant.md).
+* [bérlők](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>Közös rendszerkép használata
 
 A gombnak a weboldalához vagy adattárhoz való hozzáadásához használja az alábbi képet:
+
+```markdown
+![Deploy to Azure](https://aka.ms/deploytoazurebutton)
+```
 
 ```html
 <img src="https://aka.ms/deploytoazurebutton"/>
@@ -48,6 +52,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 Ezután alakítsa át az URL-címet egy URL-kódolású értékre. Használhat online kódolót, vagy futtathat egy parancsot. A következő PowerShell-példa azt szemlélteti, hogyan kódolhat egy értéket az URL-cím.
 
 ```powershell
+$url = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 [uri]::EscapeDataString($url)
 ```
 
@@ -70,6 +75,8 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 ```
 
 A hivatkozás teljes URL-címe.
+
+A sablont általában nyilvános tárházban kell üzemeltetni. Ha privát tárházat használ, meg kell adnia egy jogkivonatot a sablon nyers tartalmának eléréséhez. A GitHub által generált jogkivonat csak rövid ideig érvényes. Gyakran frissítenie kell a hivatkozást.
 
 Ha a git-t egy GitHub-tárház helyett az [Azure Repos](/azure/devops/repos/git/) használatával használja, továbbra is használhatja az üzembe helyezés az Azure-ban gombot. Győződjön meg arról, hogy a tárház nyilvános. A sablon beszerzéséhez használja az [Items műveletet](/rest/api/azure/devops/git/items/get) . A kérelemnek a következő formátumúnak kell lennie:
 
@@ -113,6 +120,6 @@ A portálon egy ablaktábla jelenik meg, amely lehetővé teszi a paraméterek �
 
 ![A portál használata az üzembe helyezéshez](./media/deploy-to-azure-button/portal.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a sablonokról: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md).

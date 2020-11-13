@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 14c7c3deb60c50fe71cf52959e342a3dcf2afc94
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 53cde1178a4faae0fbd11222e4219f70be29145d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151556"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560808"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Tervezett karbantartási értesítések feldolgozása
 
 Az Azure rendszeresen végez frissítéseket a virtuális gépeket futtató infrastruktúra megbízhatóságának, teljesítményének és biztonságának javítása érdekében. A frissítések olyan változások, mint az üzemeltetési környezet javítása vagy a hardver frissítése és leszerelése. A frissítések többsége az üzemeltetett virtuális gépekre gyakorolt hatás nélkül fejeződik be. Vannak azonban olyan esetek, amikor a frissítések hatással vannak a következőkre:
 
-- Ha a karbantartás nem igényel újraindítást, az Azure helyben történő áttelepítés használatával szünetelteti a virtuális gépet a gazdagép frissítése közben. Az ilyen típusú karbantartási műveletek tartalék tartományra vonatkoznak a tartalék tartomány alapján. A rendszer leállítja az előrehaladást, ha a rendszer figyelmeztetési állapottal kapcsolatos riasztásokat fogad.
+- Ha a karbantartás nem igényel újraindítást, az Azure néhány másodpercig szünetelteti a virtuális gépet, amíg a rendszer frissíti a gazdagépet. Az ilyen típusú karbantartási műveletek tartalék tartományra vonatkoznak a tartalék tartomány alapján. A rendszer leállítja az előrehaladást, ha a rendszer figyelmeztetési állapottal kapcsolatos riasztásokat fogad.
 
 - Ha a karbantartás újraindítást igényel, a karbantartás megtervezése után értesítést kap. Körülbelül 35 napos időablakot kap, ahol megkezdheti a karbantartást, ha Ön is működik.
 
@@ -43,7 +43,7 @@ Az alábbi irányelvek segítségével eldöntheti, hogy használja-e ezt a kép
 > Előfordulhat, hogy az önkiszolgáló karbantartás nem érhető el az összes virtuális géphez. Annak megállapításához, hogy elérhető-e az előjelzéses újratelepítés a virtuális géphez, keresse meg a **Start Now** (Karbantartás) állapotot. Az önkiszolgáló karbantartás jelenleg nem érhető el Cloud Services (webes/feldolgozói szerepkör) és Service Fabrichoz.
 
 
-Az önkiszolgáló karbantartás nem ajánlott a **rendelkezésre állási csoportokkal**történő üzembe helyezéshez. A rendelkezésre állási csoportok egyszerre csak egy frissítési tartományt frissítenek. 
+Az önkiszolgáló karbantartás nem ajánlott a **rendelkezésre állási csoportokkal** történő üzembe helyezéshez. A rendelkezésre állási csoportok egyszerre csak egy frissítési tartományt frissítenek. 
 
 - Hagyja, hogy az Azure aktiválja a karbantartást. Az újraindítást igénylő karbantartás esetén a karbantartási tartomány frissíti a tartományt. A frissítési tartományok nem feltétlenül kapják meg a karbantartást egymás után, és a frissítési tartományok között 30 perces szünet van. 
 - Ha bizonyos kapacitás ideiglenes elvesztése (1 frissítési tartomány) aggodalomra ad okot, a karbantartási időszak alatt hozzáadhat példányokat. 
@@ -80,7 +80,7 @@ További információ a magas rendelkezésre állásról: [virtuális gépek ren
 
 **K: Hogyan értesítést kap a tervezett karbantartásról?**
 
-**A:** Egy tervezett karbantartási hullám egy vagy több Azure-régióra vonatkozó ütemterv beállításával kezdődik. Nem sokkal később e-mailben értesítést küldünk az előfizetés-rendszergazdának és a társ-rendszergazdáknak (egy e-mail-cím/előfizetés). Az értesítéshez tartozó további csatornákat és címzetteket a műveletnapló riasztásai használatával lehet konfigurálni. Ha olyan régióba helyez üzembe egy virtuális gépet, ahol a tervezett karbantartás már ütemezve van, nem fogja tudni megkapni az értesítést, hanem a virtuális gép karbantartási állapotát.
+**A:** Egy tervezett karbantartási hullám egy vagy több Azure-régióra vonatkozó ütemterv beállításával kezdődik. Az előfizetés-adminisztrátorok, a közös adminisztrátorok, a tulajdonosok és a közreműködők e-mailben értesítést kapnak (egy e-mail-cím/előfizetés). Az értesítéshez tartozó további csatornákat és címzetteket a műveletnapló riasztásai használatával lehet konfigurálni. Ha olyan régióba helyez üzembe egy virtuális gépet, ahol a tervezett karbantartás már ütemezve van, nem fogja tudni megkapni az értesítést, hanem a virtuális gép karbantartási állapotát.
 
 **K: nem látom a tervezett karbantartást a portálon, a PowerShellben vagy a CLI-ben. mi a baj?**
 
