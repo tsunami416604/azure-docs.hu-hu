@@ -2,13 +2,13 @@
 title: Hibrid gép összekapcsolása az Azure arc-kompatibilis kiszolgálókkal
 description: Ismerje meg, hogyan csatlakozhat és regisztrálhat hibrid gépet az Azure arc-kompatibilis kiszolgálókon.
 ms.topic: quickstart
-ms.date: 09/23/2020
-ms.openlocfilehash: b57f30821a105a99041d8187716b75096116ea8e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/12/2020
+ms.openlocfilehash: 3779d95ac138e83b1d953f744e07ae553890a5d7
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327884"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576842"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Gyors útmutató: hibrid gép összekapcsolása az Azure arc-kompatibilis kiszolgálókkal
 
@@ -42,34 +42,40 @@ Az Azure arc használatára képes kiszolgálók a szolgáltatás használatáho
 Regisztrálja őket a következő parancsok használatával:
 
 ```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 ## <a name="generate-installation-script"></a>Telepítési parancsfájl létrehozása
 
 Az Azure arc letöltésének, telepítésének és létrehozásának automatizálására szolgáló parancsfájl a Azure Portal érhető el. A folyamat befejezéséhez tegye a következőket:
 
-1. Indítsa el az Azure arc szolgáltatást a Azure Portal a **minden szolgáltatás**elemre kattintva, majd a gépek keresése és kiválasztása **– Azure arc**.
+1. Indítsa el az Azure arc szolgáltatást a Azure Portal a **minden szolgáltatás** elemre kattintva, majd a kiszolgálók keresése és kiválasztása **– Azure arc**.
 
     :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Az ív használatára képes kiszolgálók keresése az összes szolgáltatásban" border="false":::
 
-1. A **gépek – Azure arc** lapon válassza a **Hozzáadás**, a bal felső sarokban vagy a **számítógép létrehozása – Azure arc** lehetőséget a középső ablaktábla alján.
+1. A **kiszolgálók – Azure arc** lapon válassza a **Hozzáadás** lehetőséget a bal felső sarokban.
 
-1. A **módszer kiválasztása** lapon jelölje be a **számítógépek hozzáadása interaktív parancsfájl** -csempével lehetőséget, majd válassza a **parancsfájl létrehozása**lehetőséget.
+1. A **módszer kiválasztása** lapon jelölje be a **kiszolgálók hozzáadása interaktív parancsfájl** csempével lehetőséget, majd válassza a **parancsfájl létrehozása** lehetőséget.
 
-1. A **parancsfájl létrehozása** lapon válassza ki azt az előfizetést és erőforráscsoportot, ahol a gépet az Azure-ban szeretné felügyelni. Válasszon ki egy Azure-helyet, ahol a rendszer a számítógép metaadatait tárolja.
+1. A **parancsfájl létrehozása** lapon válassza ki azt az előfizetést és erőforráscsoportot, ahol a gépet az Azure-ban szeretné felügyelni. Válasszon ki egy Azure-helyet, ahol a rendszer a számítógép metaadatait tárolja. Ez a hely lehet azonos vagy eltérő, mint az erőforráscsoport helye.
 
-1. A **parancsfájl létrehozása** lap **operációs rendszer** legördülő listájában válassza ki azt az operációs rendszert, amelyen a parancsfájl futni fog.
+1. Az **Előfeltételek** lapon tekintse át az információkat, majd kattintson a **Tovább gombra: erőforrás részletei**.
 
-1. Ha a gép proxykiszolgálón keresztül kommunikál az internethez, válassza a **Tovább: proxykiszolgáló**lehetőséget.
+1. Az **erőforrás részletei** lapon adja meg a következőket:
 
-1. A **proxykiszolgáló** lapon adja meg a proxykiszolgáló IP-címét, vagy azt a nevet és portszámot, amelyet a gép a proxykiszolgálóhoz való kommunikációhoz használni fog. Adja meg az értéket a formátumban `http://<proxyURL>:<proxyport>` .
+    1. Az **erőforráscsoport** legördülő listában válassza ki azt az erőforráscsoportot, amelyből a gépet felügyelni kívánja.
+    1. A **régió** legördülő listában válassza ki az Azure-régiót a kiszolgálók metaadatainak tárolásához.
+    1. Az **operációs rendszer** legördülő listában válassza ki azt az operációs rendszert, amelyre a parancsfájlt konfigurálni kívánja.
+    1. Ha a gép egy proxykiszolgálón keresztül kommunikál az internethez, adja meg a proxykiszolgáló IP-címét, vagy azt a nevet és portszámot, amelyet a gép használni fog a proxykiszolgálóhoz való kommunikációhoz. Adja meg az értéket a formátumban `http://<proxyURL>:<proxyport>` .
+    1. Kattintson a **Tovább gombra: címkék**.
 
-1. Válassza a **felülvizsgálat + előállítás**lehetőséget.
+1. A **címkék** lapon tekintse át a javasolt alapértelmezett **fizikai hely címkéit** , és adjon meg egy értéket, vagy adjon meg egy vagy több **Egyéni címkét** a szabványok támogatásához.
 
-1. A **felülvizsgálat + előállítás** lapon tekintse át az összegző információkat, majd kattintson a **Letöltés**gombra. Ha továbbra is módosításokat kell végeznie, válassza az **előző**lehetőséget.
+1. Válassza **a tovább lehetőséget: parancsfájl letöltése és futtatása**.
+
+1. A **letöltési és futtatási parancsfájl** lapon tekintse át az összegzési információkat, majd kattintson a **Letöltés** gombra. Ha továbbra is módosításokat kell végeznie, válassza az **előző** lehetőséget.
 
 ## <a name="install-the-agent-using-the-script"></a>Az ügynök telepítése a parancsfájl használatával
 
@@ -99,9 +105,9 @@ Az Azure arc letöltésének, telepítésének és létrehozásának automatizá
 
 Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis kiszolgálókhoz való csatlakozáshoz, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakozott-e. Megtekintheti a gépet a [Azure Portalban](https://aka.ms/hybridmachineportal).
 
-:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="Az ív használatára képes kiszolgálók keresése az összes szolgáltatásban" border="false":::
+:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="A számítógép sikeres csatlakoztatása" border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy engedélyezte a Linux vagy Windows rendszerű hibrid gépet, és sikeresen csatlakozott a szolgáltatáshoz, készen áll a Azure Policy az Azure-ban való megfelelőség megismerésére.
 

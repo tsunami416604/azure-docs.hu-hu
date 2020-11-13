@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 7a8bdd911db82a07bfcdd1596b7a8203a19a6442
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341957"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566248"
 ---
 # <a name="set-up-web-endpoints"></a>Webes végpontok beállítása
 
@@ -125,14 +125,14 @@ A legtöbb esetben azonban csak akkor szeretné elküldeni a tevékenységet az 
     1. Másolja az alábbi JSON-t a **Tevékenység tartalma** mezőbe
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
-    > [!div class="mx-imgBorder"]
-    > ![Tevékenység küldése siker esetén](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-activity.png)
    
 Mostantól a tevékenységet csak akkor küldi el az ügyfélnek, ha a webes végpontra irányuló kérés sikeres.
 
@@ -207,3 +207,4 @@ Ha az előző szakaszban az alkalmazást a `turn on tv` használatával tesztelt
 
 > [!div class="nextstepaction"]
 > [Egyéni parancsok alkalmazás exportálása távoli képességként](./how-to-custom-commands-integrate-remote-skills.md)
+

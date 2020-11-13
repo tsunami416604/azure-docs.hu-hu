@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 5873f28fed492f9ef906a9d7c1364d8ae07033a7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fbdae2480caef5bf1d190124ca3be6c5b97a2f9
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336061"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576359"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Felügyelt lemez létrehozása lemezkép-verzióból
 
@@ -23,7 +23,7 @@ Ha szükséges, exportálhatja az operációs rendszert vagy egy adatlemezt egy 
 
 ## <a name="cli"></a>parancssori felület
 
-Egy katalógusban lévő rendszerkép-verziók listázása az [az SIG rendszerkép-Version List](/cli/azure/sig/image-version.md#az_sig_image_version_list)paranccsal. Ebben a példában az összes olyan rendszerkép-verziót keresjük, amelyek a *myImageDefinition* rendszerkép-definíció részét képezik a *MyGallery* -rendszerkép galériájában.
+Egy katalógusban lévő rendszerkép-verziók listázása az [az SIG rendszerkép-Version List](/cli/azure/sig/image-version#az_sig_image_version_list)paranccsal. Ebben a példában az összes olyan rendszerkép-verziót keresjük, amelyek a *myImageDefinition* rendszerkép-definíció részét képezik a *MyGallery* -rendszerkép galériájában.
 
 ```azurecli-interactive
 az sig image-version list \
@@ -33,7 +33,7 @@ az sig image-version list \
    -o table
 ```
 
-Állítsa a `source` változót a lemezkép verziójának azonosítójára, majd az [az Disk Create](/cli/azure/disk.md#az_disk_create) paranccsal hozza létre a felügyelt lemezt. 
+Állítsa a `source` változót a lemezkép verziójának azonosítójára, majd az [az Disk Create](//cli/azure/disk#az_disk_create) paranccsal hozza létre a felügyelt lemezt. 
 
 Ebben a példában a lemezkép operációsrendszer-lemezét exportáljuk egy *myManagedOSDisk* nevű felügyelt lemez létrehozásához a *EastUS* régióban egy *myResourceGroup* nevű erőforráscsoport alatt. 
 
@@ -115,7 +115,7 @@ New-AzDisk -Disk $diskConfig `
    -DiskName myManagedDataDisk
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyelt lemezekről az [Azure CLI](image-version-managed-image-cli.md) vagy a [PowerShell](image-version-managed-image-powershell.md)használatával is létrehozhat lemezkép-verziót.
 

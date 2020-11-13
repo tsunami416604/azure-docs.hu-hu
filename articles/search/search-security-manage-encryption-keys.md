@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: dfea03270dfea3699f7c3508b9f5275a2dd26372
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7f2df005a8d3211ba53aadb16370624c4f530eb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287159"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575866"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Ügyfél által felügyelt kulcsok konfigurálása az adattitkosításhoz az Azure-ban Cognitive Search
 
@@ -169,9 +169,11 @@ A hozzáférési engedélyeket bármikor visszavonhatja. A visszavonás után a 
 > [!Important]
 > Az Azure Cognitive Search titkosított tartalma úgy van konfigurálva, hogy egy meghatározott Azure Key Vault-kulcsot használjon egy adott **verzióval**. Ha megváltoztatja a kulcsot vagy a verziót, az indexet vagy a szinonima-térképet frissíteni kell az új key\version használatára az előző key\version. törlése **előtt** . Ha ezt nem teszi meg, az index vagy a szinonimák leképezése használhatatlan lesz, a kulcs elérésének elvesztése után nem fogja tudni visszafejteni a tartalmat.
 
+<a name="encrypt-content"></a>
+
 ## <a name="5---encrypt-content"></a>5 – tartalom titkosítása
 
-Ha egy ügyfél által felügyelt kulcsot szeretne felvenni egy indexre vagy szinonimára, egy REST API vagy SDK használatával hozzon létre egy objektumot, amelynek definíciója tartalmazza a következőt: `encryptionKey` .
+Ha egy ügyfél által felügyelt kulcsot szeretne felvenni egy indexre, adatforrásra, készségkészlet, indexelő vagy szinonimára, akkor a [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) vagy egy SDK-t kell használnia. A portál nem teszi lehetővé a szinonimák leképezését vagy a titkosítási tulajdonságokat. Ha érvényes API-indexeket használ, az adatforrások, a szakértelmével, az indexelő és a szinonimák leképezései támogatják a legfelső szintű **encryptionKey** tulajdonságot.
 
 Ebben a példában a REST API a Azure Key Vault és a Azure Active Directory értékeit használja:
 
@@ -192,6 +194,12 @@ Ebben a példában a REST API a Azure Key Vault és a Azure Active Directory ér
 > [!Note]
 > Ezek a kulcstartó-részletek egyike sem minősül titkosnak, és könnyen lekérhető, ha megkeresi a megfelelő Azure Key Vault kulcsot tartalmazó lapot Azure Portal.
 
+## <a name="example-index-encryption"></a>Példa: index encryption
+
+Hozzon létre egy titkosított indexet a [create index Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
+> [!Note]
+> Ezek a kulcstartó-részletek egyike sem minősül titkosnak, és könnyen lekérhető, ha megkeresi a megfelelő Azure Key Vault kulcsot tartalmazó lapot Azure Portal.
+
 ## <a name="rest-examples"></a>REST-példák
 
 Ez a szakasz a titkosított indexek és a szinonimák megfeleltetésének teljes JSON-fájlját mutatja
@@ -202,7 +210,7 @@ Az új indexnek a REST API használatával történő létrehozásának részlet
 
 ```json
 {
- "name": "hotels",  
+ "name": "hotels",
  "fields": [
   {"name": "HotelId", "type": "Edm.String", "key": true, "filterable": true},
   {"name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false},
@@ -231,19 +239,19 @@ Most már elküldheti az index-létrehozási kérelmet, majd megkezdheti a norm�
 
 ### <a name="synonym-map-encryption"></a>Szinonimák leképezésének titkosítása
 
-Az új szinonimák leképezésének a REST API használatával történő létrehozásának részleteit a [szinonimák leképezése (REST API) létrehozása](/rest/api/searchservice/create-synonym-map)című rész tartalmazza, ahol az egyetlen különbség a titkosítási kulcs részleteinek megadása a szinonimák leképezése definíciójának részeként: 
+Hozzon létre egy titkosított szinonima-leképezést a [szinonimák leképezése Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
 
 ```json
-{   
-  "name" : "synonymmap1",  
-  "format" : "solr",  
+{
+  "name" : "synonymmap1",
+  "format" : "solr",
   "synonyms" : "United States, United States of America, USA\n
   Washington, Wash. => WA",
   "encryptionKey": {
     "keyVaultUri": "https://demokeyvault.vault.azure.net",
     "keyVaultKeyName": "myEncryptionKey",
     "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
-    "activeDirectoryAccessCredentials": {
+    "accessCredentials": {
       "applicationId": "00000000-0000-0000-0000-000000000000",
       "applicationSecret": "myApplicationSecret"
     }
@@ -252,6 +260,86 @@ Az új szinonimák leképezésének a REST API használatával történő létre
 ```
 
 Most már elküldheti a szinonima-hozzárendelési kérést, majd normál módon megkezdheti a használatát.
+
+## <a name="example-data-source-encryption"></a>Példa: adatforrás titkosítása
+
+Hozzon létre egy titkosított adatforrást az [adatforrás létrehozása (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-data-source)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
+
+```json
+{
+  "name" : "datasource1",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
+  },
+  "container" : { "name" : "containername" },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+Most már elküldheti az adatforrás-létrehozási kérést, majd megkezdheti a szokásos használatát.
+
+## <a name="example-skillset-encryption"></a>Példa: Készségkészlet titkosítás
+
+Hozzon létre egy titkosított készségkészlet a [create Készségkészlet Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
+
+```json
+{
+  "name" : "datasource1",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
+  },
+  "container" : { "name" : "containername" },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+Most már elküldheti a készségkészlet-létrehozási kérelmet, majd megkezdheti a szokásos használatát.
+
+## <a name="example-indexer-encryption"></a>Példa: indexelő titkosítás
+
+Hozzon létre egy titkosított indexelő a [create indexelő Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/create-indexer)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
+
+```json
+{
+  "name": "indexer1",
+  "dataSourceName": "datasource1",
+  "skillsetName": "skillset1",
+  "parameters": {
+      "configuration": {
+          "imageAction": "generateNormalizedImages"
+      }
+  },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+Most már elküldheti az indexelő létrehozására vonatkozó kérést, majd megkezdheti a szokásos használatát.
 
 >[!Important]
 > Habár `encryptionKey` nem adható hozzá a meglévő keresési indexekhez vagy a szinonima térképekhez, a három kulcstartó részleteinek (például a kulcs verziójának frissítése) különböző értékeit is frissítheti. Új Key Vault kulcsra vagy új kulcs verzióra való váltáskor a kulcsot használó keresési indexeket vagy szinonimákat először frissíteni kell az új key\version használatára az előző key\version. törlése **előtt** . Ha ezt nem teszi meg, az index vagy a szinonimák leképezése használhatatlan lesz, mivel a kulcs elérésének elvesztése után nem tudja visszafejteni a tartalmat. Bár a Key Vault-hozzáférési engedélyek későbbi visszaállítása a tartalom-hozzáférés visszaállítását eredményezi.
@@ -265,7 +353,6 @@ Ezzel a módszerrel kihagyhatja az alkalmazás regisztrációjának és az alkal
 A felügyelt identitás általában lehetővé teszi, hogy a keresési szolgáltatás a hitelesítő adatok (ApplicationID vagy ApplicationSecret) a kódban való tárolása nélkül hitelesítse Azure Key Vault. Az ilyen típusú felügyelt identitás életciklusa a keresési szolgáltatás életciklusához van kötve, amely csak egyetlen felügyelt identitással rendelkezhet. A felügyelt identitások működésével kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitása](../active-directory/managed-identities-azure-resources/overview.md).
 
 1. Végezzen megbízható szolgáltatást a keresési szolgáltatásban.
-
    ![A rendszerhez rendelt felügyelt identitás bekapcsolása](./media/search-managed-identities/turn-on-system-assigned-identity.png "A rendszerhez rendelt felügyelt identitás bekapcsolása")
 
 1. Amikor Azure Key Vault hozzáférési szabályzatot állít be, válassza ki a megbízható keresési szolgáltatást (az AD-regisztrált alkalmazás helyett). Rendelje hozzá ugyanezeket az engedélyeket (több beolvasás, becsomagolás, kicsomagolás), ahogyan az a hozzáférési kulcs engedélyeinek megadása lépés utasításai szerint.

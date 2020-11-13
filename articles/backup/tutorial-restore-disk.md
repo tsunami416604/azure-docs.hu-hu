@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan állíthatja vissza a lemezt, valamint hogyan h
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 2d8ce7ab6d5a3ab244d0292ffe52847f18ea8795
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 45e171e064cbd8be5418e20784e6034830d27fe9
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746752"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566673"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Virtuális gép visszaállítása az Azure CLI használatával
 
@@ -23,13 +23,11 @@ Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreáll�
 
 További információért a PowerShell a lemez visszaállításhoz és egy helyreállított virtuális gép létrehozásához való használatáról, tekintse meg a [Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel](backup-azure-vms-automation.md#restore-an-azure-vm) című részt.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.18 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
+ - Az oktatóanyaghoz az Azure CLI 2.0.18 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-## <a name="prerequisites"></a>Előfeltételek
-
-Ehhez az oktatóanyaghoz olyan Linux rendszerű virtuális gépre van szükség, amelyet az Azure Backup véd. A virtuális gép véletlen törlésének és a helyreállítási folyamatnak a szimulálásához hozzon létre egy virtuális gépet a helyreállítási pont egyik lemezéről. Ha szüksége van egy linuxos virtuális gépre, amelyet az Azure Backup véd, lásd: [Virtuális gép biztonsági mentése az Azure-ban a parancssori felület használatával](quick-backup-vm-cli.md).
+ - Ehhez az oktatóanyaghoz olyan Linux rendszerű virtuális gépre van szükség, amelyet az Azure Backup véd. A virtuális gép véletlen törlésének és a helyreállítási folyamatnak a szimulálásához hozzon létre egy virtuális gépet a helyreállítási pont egyik lemezéről. Ha szüksége van egy linuxos virtuális gépre, amelyet az Azure Backup véd, lásd: [Virtuális gép biztonsági mentése az Azure-ban a parancssori felület használatával](quick-backup-vm-cli.md).
 
 ## <a name="backup-overview"></a>A biztonsági mentés áttekintése
 
@@ -74,7 +72,7 @@ Ha a biztonsági másolatban szereplő virtuális gép felügyelt lemezekkel ren
         --sku Standard_LRS
     ```
 
-2. Állítsa vissza a lemezt a helyreállítási pontról az [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) paranccsal. Cserélje le *mystorageaccount* kifejezést az előző paranccsal létrehozott tárfiók nevére. Cserélje le a *myrecoverypointname kifejezést* elemet az előző az [Backup recoverypoint List](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) parancs kimenetében beszerzett helyreállítási pont nevére. ***Adja meg azt a cél erőforráscsoportot is, amelyhez a felügyelt lemezeket a rendszer visszaállítja** .
+2. Állítsa vissza a lemezt a helyreállítási pontról az [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) paranccsal. Cserélje le *mystorageaccount* kifejezést az előző paranccsal létrehozott tárfiók nevére. Cserélje le a *myrecoverypointname kifejezést* elemet az előző az [Backup recoverypoint List](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) parancs kimenetében beszerzett helyreállítási pont nevére. ***Adja meg azt a cél erőforráscsoportot is, amelyhez a felügyelt lemezeket a rendszer visszaállítja**.
 
     ```azurecli-interactive
     az backup restore restore-disks \

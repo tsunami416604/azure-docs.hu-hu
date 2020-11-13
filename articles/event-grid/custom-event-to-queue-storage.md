@@ -4,12 +4,12 @@ description: 'Rövid útmutató: a Azure Event Grid és az Azure CLI használat�
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2c017b95493000b3c206aa7b2398bbf7ef464ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4de7aa1c111b5b21a27b155474ae10f78feba083
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87497341"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566316"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Gyors útmutató: egyéni események irányítása az Azure üzenetsor-tárolóba az Azure CLI-vel és a Event Grid
 
@@ -17,16 +17,15 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure 
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Ha az Azure CLI-t vagy Azure PowerShellt használja a helyi gépen, ahelyett, hogy Cloud Shellt használ a Azure Portalban, győződjön meg arról, hogy rendelkezik az Azure CLI és a Azure PowerShell következő verzióival. 
+- Ehhez a cikkhez az Azure CLI 2.0.56 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-- Az Azure CLI verziója 2.0.56 vagy újabb. Az Azure CLI legújabb verziójának telepítésével kapcsolatos utasításokért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). 
-- Azure PowerShell 1.1.0 vagy újabb verzió. Töltse le a Azure PowerShell legújabb verzióját a Windows rendszerű gépén az [Azure downloads-parancssori eszközökről](https://azure.microsoft.com/downloads/). 
+- Ha Azure PowerShellt használ a helyi gépen a Azure Portal Cloud Shell használata helyett, győződjön meg arról, hogy Azure PowerShell 1.1.0 vagy újabb verzióra van szüksége. Töltse le a Azure PowerShell legújabb verzióját a Windows rendszerű gépén az [Azure downloads-parancssori eszközökről](https://azure.microsoft.com/downloads/). 
 
 Ez a cikk az Azure CLI használatának parancsait ismerteti. 
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -126,7 +125,7 @@ Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létr
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

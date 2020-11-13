@@ -1,15 +1,15 @@
 ---
-title: Oktatóanyag – SAP HANA adatbázis biztonsági mentése az Azure-ban a parancssori felület használatával
+title: Oktatóanyag – SAP HANA adatbázis biztonsági mentése az Azure-ban az Azure CLI használatával
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépeken futó SAP HANA adatbázisokról egy Azure Backup Recovery Services-tárolóra az Azure CLI használatával.
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f11e01c6af18cac956d58b9c692d7b57c8fe653a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2cc34ae33ad283c30bbc5ce05a31b5e35a192de
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324960"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566656"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -26,9 +26,9 @@ Ez a dokumentum azt feltételezi, hogy már rendelkezik egy Azure-beli virtuáli
 
 Tekintse át a SAP HANA [jelenleg támogatott forgatókönyveket](./sap-hana-backup-support-matrix.md#scenario-support) .
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-A parancssori felület helyi telepítéséhez és használatához az Azure CLI XX. xxx. x vagy újabb verzióját kell futtatnia. A parancssori felület verziójának megkereséséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+ - Az oktatóanyaghoz az Azure CLI xx.xx.xxx vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -42,7 +42,7 @@ Ebben az oktatóanyagban a következőket fogjuk használni:
 * egy *saphanaVM* nevű virtuális gép
 * erőforrások a *westus2* helyen.
 
-Létrehozunk egy *saphanaVault*nevű tárat.
+Létrehozunk egy *saphanaVault* nevű tárat.
 
 ```azurecli-interactive
 az backup vault create --resource-group saphanaResourceGroup \
@@ -180,7 +180,7 @@ A válasz megadja a feladatnév nevét. Ez a feladatnév használható a feladat
 >
 > Az Azure Backup jelenleg nem támogatja a növekményes biztonsági mentéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha meg szeretné tudni, hogyan állíthatja vissza SAP HANA adatbázist az Azure virtuális gépen a parancssori felület használatával, folytassa az Oktatóanyaggal – [SAP HANA adatbázis visszaállítása az Azure virtuális gépen a CLI használatával](tutorial-sap-hana-restore-cli.md)
 

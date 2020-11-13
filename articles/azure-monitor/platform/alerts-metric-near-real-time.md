@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 9/30/2020
 ms.subservice: alerts
-ms.openlocfilehash: d99e37171f2fb5b86bee897caca55c3e8782f92e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d1a1a31d5894338e0deeed27fabcde9fdbf6f588
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108813"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566486"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>A metrikus riasztások által támogatott erőforrások Azure Monitor
 
@@ -26,7 +26,7 @@ Jelenleg csak a Azure Portal, [REST API](/rest/api/monitor/metricalerts/)vagy [R
 ## <a name="metrics-and-dimensions-supported"></a>A metrikák és a méretek támogatottak
 Az újabb metrikai riasztások támogatják a dimenziókat használó mérőszámok riasztásait. Méretek használatával szűrheti a metrikát a megfelelő szintre. Az összes támogatott mérőszám és a vonatkozó dimenziók megtekinthetők és megjeleníthetők [Azure monitor-Metrikaböngészőból](./metrics-charts.md).
 
-Itt látható az újabb riasztások által támogatott Azure monitor metrikai források teljes listája:
+Az újabb riasztások által támogatott Azure Monitor metrikus források teljes listája:
 
 |Erőforrás típusa  |Támogatott méretek |Több erőforrásból álló riasztások| Elérhető metrikák|
 |---------|---------|-----|----------|
@@ -49,7 +49,7 @@ Itt látható az újabb riasztások által támogatott Azure monitor metrikai fo
 |Microsoft.Compute/virtualMachines | Igen | Igen<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | Igen | Nem |[Virtuálisgép-méretezési csoportok](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Microsoft. ContainerInstance/containerGroups | Igen| Nem | [Tárolócsoportok](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
-|Microsoft. ContainerRegistry/nyilvántartók | Nem | Nem | [Tárolóregisztrációs adatbázisok](./metrics-supported.md#microsoftcontainerregistryregistries) |
+|Microsoft. ContainerRegistry/nyilvántartók | Nem | Nem | [Tároló-nyilvántartók](./metrics-supported.md#microsoftcontainerregistryregistries) |
 |Microsoft. Tárolószolgáltatás/managedClusters | Igen | Nem | [Felügyelt fürtök](./metrics-supported.md#microsoftcontainerservicemanagedclusters) |
 |Microsoft. DataBoxEdge/dataBoxEdgeDevices | Igen | Igen | [Data Box](./metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
 |Microsoft. DataFactory/datafactories| Igen| Nem | [Az adatgyárak v1-es verziója](./metrics-supported.md#microsoftdatafactorydatafactories) |
@@ -85,7 +85,7 @@ Itt látható az újabb riasztások által támogatott Azure monitor metrikai fo
 |Microsoft. Network/applicationGateways | Igen | Nem | [Application Gateway átjárók](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft. Network/azurefirewalls | Igen | Nem | [Tűzfalak](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft. Network/dnsZones | Nem | Nem | [DNS-zónák](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/expressRouteCircuits | N.A. | Nem |[Express Route-kapcsolatcsoportok](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/expressRouteCircuits | N/A | Nem |[Express Route-kapcsolatcsoportok](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft. Network/loadBalancers (csak standard SKU-hoz)| Igen| Nem | [Terheléselosztó](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft. Network/natGateways| Nem | Nem | |
 |Microsoft. Network/privateEndpoints| Nem | Nem | |
@@ -175,7 +175,7 @@ A POST művelet a következő JSON-adattartalomot és sémát tartalmazza az ös
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az új [riasztási élményről](./alerts-overview.md).
 * További információ a [log-riasztásokról az Azure-ban](./alerts-unified-log.md).

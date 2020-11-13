@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e074be91f343e04ba3049aea51f83f7f6364cdb0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e1549dda367105db34272eab8a90c1760dd5bb5c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564038"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576444"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Hozzáférési korlátozások beállítása Azure App Service
 
@@ -179,7 +179,7 @@ Az értékeket manuálisan is megadhatja a következők valamelyikével:
 A hozzáférési korlátozások a App Service csomagokkal megegyező funkciókkal rendelkező Function apps-alkalmazásokhoz is elérhetők. Ha engedélyezi a hozzáférési korlátozásokat, a Azure Portal Kódszerkesztő is letiltható a nem engedélyezett IP-címekhez.
 
 ## <a name="next-steps"></a>Következő lépések
-[Azure Functions hozzáférési korlátozásai](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)  
+[Azure Functions hozzáférési korlátozásai](../azure-functions/functions-networking-options.md#inbound-access-restrictions)  
 [Application Gateway integráció a szolgáltatási végpontokkal](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->

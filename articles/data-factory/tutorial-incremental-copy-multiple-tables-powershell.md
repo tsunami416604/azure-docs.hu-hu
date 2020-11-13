@@ -1,6 +1,6 @@
 ---
 title: Több tábla növekményes másolása a PowerShell használatával
-description: Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely a SQL Server-adatbázis több táblájából származó különbözeti adatok betöltését Azure SQL Database.
+description: Ebben az oktatóanyagban egy Azure Data Factory hoz létre egy olyan folyamattal, amely egy SQL Server-adatbázis több táblájából származó különbözeti adatok betöltését Azure SQL Database.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: be98ff2a31e3216088fb9197fab477d9b1088f26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 54dea3ba7bbc3339b7b044b476c321fd95138ac2
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634096"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566418"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Több táblázatból származó adatok növekményes betöltése SQL Server Azure SQL Database a PowerShell használatával
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely a SQL Server-adatbázis több táblájából származó különbözeti adatok betöltését Azure SQL Database.    
+Ebben az oktatóanyagban egy Azure Data Factory hoz létre egy olyan folyamattal, amely egy SQL Server-adatbázis több táblájából származó különbözeti adatok betöltését Azure SQL Database.    
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -42,11 +42,11 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 ## <a name="overview"></a>Áttekintés
 Az alábbiak a megoldás kialakításának leglényegesebb lépései: 
 
-1. **A küszöb oszlopának kiválasztása** .
+1. **A küszöb oszlopának kiválasztása**.
 
     Jelöljön ki egy oszlopot a forrás adattárolóban lévő minden egyes táblához, ahol azonosíthatja az új vagy frissített rekordokat minden futtatáshoz. Normális esetben az ebben a kiválasztott oszlopban (például: last_modify_time vagy ID) lévő adatok a sorok létrehozásával vagy frissítésével folyamatosan növekednek. Az ebben az oszlopban lévő legnagyobb érték szolgál a küszöbként.
 
-2. **Egy adatraktár előkészítése a küszöbértékek tárolására** .
+2. **Egy adatraktár előkészítése a küszöbértékek tárolására**.
 
     Ebben az oktatóanyagban a küszöbértékeket egy SQL-adatbázisban tároljuk.
 
@@ -69,8 +69,8 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **SQL Server** . Ebben az oktatóanyagban egy SQL Server adatbázist használ a forrásként szolgáló adattárként. 
-* **Azure SQL Database** . A fogadó adattára Azure SQL Database-adatbázist használ. Ha nem rendelkezik SQL-adatbázissal, tekintse meg az [adatbázis létrehozása Azure SQL Databaseban](../azure-sql/database/single-database-create-quickstart.md) című témakört. 
+* **SQL Server**. Ebben az oktatóanyagban egy SQL Server adatbázist használ a forrásként szolgáló adattárként. 
+* **Azure SQL Database**. A fogadó adattára Azure SQL Database-adatbázist használ. Ha nem rendelkezik SQL-adatbázissal, tekintse meg az [adatbázis létrehozása Azure SQL Databaseban](../azure-sql/database/single-database-create-quickstart.md) című témakört. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Forrástáblák létrehozása az SQL Server-adatbázisban
 
@@ -812,7 +812,7 @@ A folyamat táblanevek listáját használja paraméterként. A **foreach tevék
 
 ## <a name="monitor-the-pipeline"></a>A folyamat figyelése
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Kattintson a **Minden szolgáltatás** elemre, végezzen keresést az *Adat-előállítók* kulcsszóval, és válassza az **Adat-előállítók** lehetőséget. 
 
@@ -823,7 +823,7 @@ A folyamat táblanevek listáját használja paraméterként. A **foreach tevék
 5. Az **első lépések** oldalon válassza a **figyelő** lehetőséget a bal oldalon. 
 ![A képernyőképen a Azure Data Factory első lépések lapja látható.](media/doc-common-process/get-started-page-monitor-button.png)    
 
-6. Itt megtekintheti az összes folyamatfuttatást és azok állapotát. A következő példában a folyamatfuttatás állapota **Sikeres** . A **Paraméterek** oszlopban található hivatkozásra kattintva megtekintheti a folyamatnak átadott paramétereket. Hiba esetén egy hivatkozás jelenik meg a **Hiba** oszlopban.
+6. Itt megtekintheti az összes folyamatfuttatást és azok állapotát. A következő példában a folyamatfuttatás állapota **Sikeres**. A **Paraméterek** oszlopban található hivatkozásra kattintva megtekintheti a folyamatnak átadott paramétereket. Hiba esetén egy hivatkozás jelenik meg a **Hiba** oszlopban.
 
     ![Képernyőfelvétel: a folyamat futtatására szolgáló adatfeldolgozó.](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 7. Amikor kiválasztja a **műveletek** oszlopban található hivatkozást, megjelenik a folyamat összes tevékenység-futtatása. 

@@ -1,6 +1,6 @@
 ---
 title: Nyelvi Testreszabás a Azure Active Directory B2Cban
-description: Ismerje meg a felhasználói folyamatok nyelvi élményének testreszabását.
+description: Ismerje meg, hogyan szabhatja testre a felhasználói folyamatok nyelvi élményét Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.date: 08/13/2019
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b3bb3648fff6bc893ea07204fad79d2830a1b47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5bfdada12229070568bb9b0556471ea5aab306f
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355093"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575951"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Nyelvi Testreszabás a Azure Active Directory B2Cban
 
@@ -28,9 +28,9 @@ A nyelvi testreszabással kiválaszthatja, hogy a felhasználói folyamat mely n
 
 Előfordulhat, hogy nincs szüksége arra, hogy milyen nyelveken látja az ügyfelet. Ha nem ad meg `ui_locales` paramétert, az ügyfél felhasználói élményét a böngésző beállításai határozzák meg. Továbbra is szabályozhatja, hogy a felhasználói folyamat mely nyelveket fordítsa le, ha azt támogatott nyelvként adja hozzá. Ha egy ügyfél böngészője olyan nyelvet mutat be, amelyet nem szeretne támogatni, akkor a támogatott kultúrákban alapértelmezettként kiválasztott nyelv jelenik meg.
 
-* **felhasználói felület – megadott nyelv**: a nyelvi Testreszabás engedélyezése után a rendszer lefordítja a felhasználói folyamatot az itt megadott nyelvre.
-* **Böngésző által kért nyelv**: Ha nincs `ui_locales` megadva paraméter, a felhasználói folyamat a böngésző által kért nyelvre lesz lefordítva, *Ha a nyelv támogatott*.
-* **Házirend alapértelmezett nyelve**: Ha a böngésző nem ad meg nyelvet, vagy egy nem támogatott értéket ad meg, a felhasználói folyamat fordítása a felhasználói folyamat alapértelmezett nyelvére történik.
+* **felhasználói felület – megadott nyelv** : a nyelvi Testreszabás engedélyezése után a rendszer lefordítja a felhasználói folyamatot az itt megadott nyelvre.
+* **Böngésző által kért nyelv** : Ha nincs `ui_locales` megadva paraméter, a felhasználói folyamat a böngésző által kért nyelvre lesz lefordítva, *Ha a nyelv támogatott*.
+* **Házirend alapértelmezett nyelve** : Ha a böngésző nem ad meg nyelvet, vagy egy nem támogatott értéket ad meg, a felhasználói folyamat fordítása a felhasználói folyamat alapértelmezett nyelvére történik.
 
 > [!NOTE]
 > Ha egyéni felhasználói attribútumokat használ, saját fordításokat kell megadnia. További információ: [a karakterláncok testreszabása](#customize-your-strings).
@@ -41,10 +41,10 @@ A nyelvi Testreszabás általánosan elérhetővé tétele előtt létrehozott s
 
 Ha engedélyezi a nyelvi testreszabást egy felhasználói folyamaton, a paraméter hozzáadásával szabályozhatja a felhasználói folyamat nyelvét `ui_locales` .
 
-1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok**lehetőséget.
+1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
 1. Kattintson arra a felhasználói folyamatra, amelyet engedélyezni szeretne a fordítások számára.
-1. Válassza a **nyelvek**lehetőséget.
-1. Válassza a **nyelvi Testreszabás engedélyezése**lehetőséget.
+1. Válassza a **nyelvek** lehetőséget.
+1. Válassza a **nyelvi Testreszabás engedélyezése** lehetőséget.
 
 ## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>Válassza ki, hogy a felhasználói folyamat mely nyelveken legyen engedélyezve
 
@@ -52,7 +52,7 @@ Lehetővé teheti a felhasználói folyamat fordítását, ha a böngésző a pa
 
 1. Győződjön meg arról, hogy a felhasználói folyamat rendelkezik a korábbi utasításokban engedélyezett nyelvi testreszabással.
 1. A felhasználói folyamat **nyelvek** lapján válassza ki a támogatni kívánt nyelvet.
-1. A Tulajdonságok ablaktáblán az **enabled** ( **Igen**) értékre vált.
+1. A Tulajdonságok ablaktáblán az **enabled** ( **Igen** ) értékre vált.
 1. Válassza a **Mentés** lehetőséget a Tulajdonságok ablaktábla tetején.
 
 >[!NOTE]
@@ -65,7 +65,7 @@ A nyelvi Testreszabás lehetővé teszi a felhasználói folyamat bármely karak
 
 1. Győződjön meg arról, hogy a felhasználói folyamat rendelkezik az előző utasításokban engedélyezett nyelvi testreszabással.
 1. A felhasználói folyamat **nyelvek** lapján válassza ki a testreszabni kívánt nyelvet.
-1. Az **oldal szintű erőforrások fájljai**területen válassza ki a szerkeszteni kívánt oldalt.
+1. Az **oldal szintű erőforrások fájljai** területen válassza ki a szerkeszteni kívánt oldalt.
 1. Válassza az **Alapértelmezések letöltése** (vagy a **felülbírálások letöltése** lehetőséget, ha korábban már szerkesztette ezt a nyelvet).
 
 Ezek a lépések egy JSON-fájlt biztosítanak a karakterláncok szerkesztésének megkezdéséhez.
@@ -137,7 +137,7 @@ Ha meg szeretné adni a válaszok értékeinek listáját, létre kell hoznia eg
 
 1. A JSON-fájl módosításainak befejezése után lépjen vissza a B2C-bérlőre.
 1. Válassza a **felhasználói folyamatok** lehetőséget, majd kattintson arra a felhasználói folyamatra, amelyet engedélyezni szeretne a fordítások számára.
-1. Válassza a **nyelvek**lehetőséget.
+1. Válassza a **nyelvek** lehetőséget.
 1. Válassza ki a nyelvet, amelyet le szeretne fordítani.
 1. Válassza ki azt a lapot, amelyen a fordításokat meg szeretné adni.
 1. Válassza ki a mappa ikont, és válassza ki a feltölteni kívánt JSON-fájlt.
@@ -164,13 +164,13 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 Hozzáadhat olyan nyelveket is, amelyeket a Microsoft jelenleg nem biztosít fordításokat a szolgáltatáshoz. A felhasználói folyamat összes karakterláncához meg kell adnia a fordításokat. A nyelvi és területi beállítási kódok az ISO 639-1 szabványban foglalt értékekre korlátozódnak.
 
-1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok**lehetőséget.
-2. Kattintson arra a felhasználói folyamatra, amelyhez egyéni nyelveket kíván hozzáadni, majd kattintson a **nyelvek**elemre.
+1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
+2. Kattintson arra a felhasználói folyamatra, amelyhez egyéni nyelveket kíván hozzáadni, majd kattintson a **nyelvek** elemre.
 3. Válassza az **Egyéni nyelv hozzáadása** lehetőséget az oldal tetején.
 4. A megnyíló környezet ablaktáblán azonosítsa, hogy egy érvényes területi beállítás megadásával melyik nyelvet használja a fordítások számára.
 5. Minden oldalon letöltheti az angol nyelvű felülbírálások készletét, és dolgozhat a fordításokon is.
 6. Miután elkészült a JSON-fájlokkal, feltöltheti őket az egyes lapokra.
-7. Válassza az **Engedélyezés**lehetőséget, és a felhasználói folyamat mostantól megjelenítheti a felhasználók számára a nyelvet.
+7. Válassza az **Engedélyezés** lehetőséget, és a felhasználói folyamat mostantól megjelenítheti a felhasználók számára a nyelvet.
 8. Mentse a nyelvet.
 
 >[!IMPORTANT]
@@ -208,19 +208,19 @@ A Azure AD B2C a következő nyelvek támogatását tartalmazza. A felhasználó
 | Bolgár             | BG            | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Bangla                | Mrd USD            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) |
 | Katalán               | CA            | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
-| Cseh                 | CS            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
-| Dán                | da            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
+| cseh                 | CS            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
+| dán                | da            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Német                | de            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Görög                 | el            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Angolul               | hu            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | spanyol               | es            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Észt              | et            | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Baszk                | EU            | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
-| Finn               | Fi            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
+| finn               | Fi            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Francia                | fr            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Gallego              | GL            | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | gudzsaráti              | Gu            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) |
-| Héber                | ő            | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
+| héber                | ő            | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Hindi                 | szia            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Horvát              | ó            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Magyar             | hu            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
@@ -248,7 +248,7 @@ A Azure AD B2C a következő nyelvek támogatását tartalmazza. A felhasználó
 | Szlovén             | SL            | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Szerb – cirillbetűs    | SR-cryl-cs    | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Szerb – latinbetűs       | SR-Latn-cs    | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
-| Svéd               | Sv            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
+| svéd               | Sv            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | tamil                 | ta            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) |
 | telugu                | ttelepítése            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) |
 | Thai                  | adik            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |

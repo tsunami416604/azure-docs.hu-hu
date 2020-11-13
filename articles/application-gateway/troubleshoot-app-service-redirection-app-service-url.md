@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 676d7c2ad18327471c6e95f3cef26185fa49b78b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 51249c68407f6b4ca7793b2fdeceab5aa4f7bc5c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396889"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575985"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>A Application Gateway App Service problémáinak elhárítása
 
@@ -93,7 +93,7 @@ Az App Service mostantól átirányítja az átirányítást (ha van ilyen) ugya
 
 Egy egyéni tartománynak kell lennie, és a következő eljárást kell követnie:
 
-- Regisztrálja a tartományt az App Service egyéni tartomány listájában. Az App Service teljes tartománynevére mutató CNAME-t kell megadnia az egyéni tartományban. További információ: [meglévő egyéni DNS-név leképezése Azure app Service](//azure/app-service/app-service-web-tutorial-custom-domain).
+- Regisztrálja a tartományt az App Service egyéni tartomány listájában. Az App Service teljes tartománynevére mutató CNAME-t kell megadnia az egyéni tartományban. További információ: [meglévő egyéni DNS-név leképezése Azure app Service](/azure/app-service/app-service-web-tutorial-custom-domain).
 
     ![App Service – egyéni tartomány listája](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
@@ -142,6 +142,6 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
   X-Powered-By: ASP.NET
   ```
-  ## <a name="next-steps"></a>További lépések
+  ## <a name="next-steps"></a>Következő lépések
 
 Ha a fenti lépések nem oldották meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).

@@ -8,7 +8,6 @@
     - name: Támogatott adattárak
       href: supported-data-stores.md
 - name: Rövid útmutatók
-  expanded: true
   items:
     - name: Adatok megosztása – Azure Portal
       href: share-your-data-portal.md
@@ -16,6 +15,7 @@
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: Oktatóanyagok
+  expanded: true
   items:
     - name: Adatok megosztása
       href: share-your-data.md
@@ -54,7 +54,7 @@
       href: how-to-delete-invitation.md
     - name: Megosztási előfizetés visszavonása
       href: how-to-revoke-share-subscription.md
-    - name: Figyelés
+    - name: Monitor
       href: how-to-monitor.md
     - name: Biztonság
       href: security.md

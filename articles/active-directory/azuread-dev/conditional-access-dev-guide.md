@@ -13,20 +13,23 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 378dab95d8fb3519bb2fc5c934a760e051a18d29
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116298"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575883"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Fejlesztői útmutató a Azure Active Directory feltételes hozzáférési szolgáltatáshoz
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
+> [!NOTE]
+> A cikk Microsoft Identity platformjának verziója a következő témakörben található: [Azure Active Directory feltételes hozzáférés fejlesztői útmutatója](/azure/active-directory/develop/v2-conditional-access-dev-guide).
+
 Azure Active Directory (Azure AD) feltételes hozzáférési funkciója számos módszert kínál az alkalmazás biztonságossá tételéhez és a szolgáltatások védelméhez. A feltételes hozzáférés lehetővé teszi a fejlesztők és a nagyvállalatok számára, hogy számos módon védik a szolgáltatásokat, többek között:
 
-* Többtényezős hitelesítés
+* Multi-Factor Authentication
 * Csak az Intune-ban regisztrált eszközök hozzáférésének engedélyezése adott szolgáltatásokhoz
 * Felhasználói helyszínek és IP-címtartományok korlátozása
 
@@ -40,7 +43,7 @@ A rendszer feltételezi az [önálló és a több-bérlős](../develop/howto-con
 
 ### <a name="app-types-impacted"></a>Érintett alkalmazások típusai
 
-A leggyakoribb esetek többségében a feltételes hozzáférés nem változtatja meg az alkalmazás viselkedését, vagy a fejlesztőtől semmilyen változást nem igényel.Csak bizonyos esetekben, amikor egy alkalmazás közvetve vagy csendes módon kér le egy jogkivonatot a szolgáltatáshoz, az alkalmazásnak a feltételes hozzáférés "kihívásai" kezeléséhez programkód-módosításokat kell megadnia.Lehet, hogy olyan egyszerű, mint egy interaktív bejelentkezési kérés végrehajtása.
+A leggyakoribb esetek többségében a feltételes hozzáférés nem változtatja meg az alkalmazás viselkedését, vagy a fejlesztőtől semmilyen változást nem igényel. Csak bizonyos esetekben, amikor egy alkalmazás közvetve vagy csendes módon kér le egy jogkivonatot a szolgáltatáshoz, az alkalmazásnak a feltételes hozzáférés "kihívásai" kezeléséhez programkód-módosításokat kell megadnia. Lehet, hogy olyan egyszerű, mint egy interaktív bejelentkezési kérés végrehajtása.
 
 Az alábbi forgatókönyvek a feltételes hozzáférés "kihívásai" kezelésére vonatkozó kódot igényelnek:
 
@@ -175,7 +178,7 @@ Az alkalmazásnak meg kell fognia a következőt: `error=interaction_required` .
 
 Ha szeretné kipróbálni ezt a forgatókönyvet, tekintse [meg a JS Spa-t a kód nevében](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Ez a mintakód azt a feltételes hozzáférési házirendet és webes API-t használja, amelyet korábban regisztrált a JS SPA használatával a forgatókönyv bemutatásához. Bemutatja, hogyan kezelheti megfelelően a jogcímek kihívását, és hogyan szerezhet be egy olyan hozzáférési jogkivonatot, amelyet a webes API-hoz használhat. Alternatív megoldásként az általános [Angular.js kódot](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) is kiválaszthatja egy szögletes fürdőre vonatkozó útmutatásért
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * A képességekkel kapcsolatos további tudnivalókért tekintse meg a [feltételes hozzáférés Azure Active Directoryban](../conditional-access/overview.md)című témakört.
 * További Azure AD-kódrészletek: a [Code Samples GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)-tárháza.

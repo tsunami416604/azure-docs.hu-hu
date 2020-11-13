@@ -2,20 +2,20 @@
 title: Gyakori kérdések
 description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 33250b0ba9209f7806346668dac0ef308101e7c2
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 99e9e53693e42f907250331894f55ed0160f9e30
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94487788"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577515"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
 Válaszok az Azure VMware megoldással kapcsolatos gyakori kérdésekre.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 #### <a name="what-is-azure-vmware-solution"></a>Mi az az Azure VMware Solution?
 
@@ -229,9 +229,15 @@ A NSX-T teljes körű rendszergazdai jogosultságokkal rendelkezik, és a szerep
 
 A díjszabással kapcsolatos általános kérdésekért tekintse meg az Azure VMware megoldás [díjszabását](https://azure.microsoft.com/pricing/details/azure-vmware) ismertető oldalt. 
 
+#### <a name="can-azure-vmware-solution-be-purchased-through-a-microsoft-csp"></a>Vásárolhat Azure VMware-megoldást Microsoft CSP-n keresztül?
+
+Igen, az ügyfelek egy CSP által felügyelt Azure-előfizetésen belül telepíthetik az Azure VMware-megoldást.
+
 #### <a name="who-supports-azure-vmware-solution"></a>Ki támogatja az Azure VMware-megoldást?
 
-A Microsoft támogatást nyújt az Azure VMware-megoldáshoz. Egy [támogatási kérelmet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)is küldhet.
+A Microsoft támogatást nyújt az Azure VMware-megoldáshoz. Egy [támogatási kérelmet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)is küldhet. 
+
+A CSP által felügyelt előfizetések esetében az első támogatási szintet a megoldás szolgáltatója fogja biztosítani ugyanúgy, mint a CSP más Azure-szolgáltatásokhoz.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Milyen fiókokra van szükségem egy Azure VMware-megoldás saját Felhőbeli létrehozásához?
 
@@ -246,6 +252,10 @@ A Microsoft és a Red hat olyan integrált, közösen elhelyezett támogatási c
 A VMware HCX Enterprise Edition (EE) elérhető az Azure VMware-megoldással, amely *előzetes* funkcióként vagy szolgáltatásként érhető el. Habár az Azure VMware-megoldáshoz készült VMware HCX EE előzetes verzióban érhető el, ingyenes funkció vagy szolgáltatás, és az előzetes verziójú szolgáltatási feltételek és kikötések érvényesek. Miután a VMware HCX EE szolgáltatás elérhetővé válik, 30 napos értesítést kap arról, hogy a számlázás átvált. Kikapcsolhatja vagy letilthatja a szolgáltatást.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Hogyan az Azure VMware-megoldáshoz tartozó gazdagép-kvóta növelését?
+
+A CSP által felügyelt előfizetések esetében az ügyfélnek el kell végeznie a kérést a partnernek, és a partner csapata a Microsofttal együttműködve lekéri az előfizetés kvótájának növelését. 
+
+EA-előfizetések esetén az ügyfélnek ezt az eljárást kell követnie.
 
 * Szüksége lesz egy [Azure nagyvállalati Szerződésra (EA)](../cost-management-billing/manage/ea-portal-agreements.md) a Microsofttal.
 * Egy Azure-előfizetésben Azure-fiókra lesz szüksége.
@@ -283,9 +293,12 @@ Az Azure VMware-megoldási erőforrás létrehozása előtt támogatási jegyet 
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   `"
 
-   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
+   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md). 
+
+#### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
+
+Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
 
 
 ## Customer communication

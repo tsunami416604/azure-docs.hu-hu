@@ -7,12 +7,12 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 10/14/2020
 ms.author: victorh
-ms.openlocfilehash: 789a60c80d14301c107824d178a3566d358d287f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0f7fec997ec6d0c73fe6d1039ab1033752e0cedf
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056395"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566571"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Az Azure webalkalmazási tűzfal (WAF) szabályzatának áttekintése
 
@@ -21,7 +21,7 @@ A webalkalmazási tűzfal házirendjei a WAF összes beállítását és konfigu
 > [!NOTE]
 > Az Azure webalkalmazási tűzfal (WAF) URI-házirendjei nyilvános előzetes verzióban érhetők el.
 > 
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A létrehozható szabályzatok száma nincs korlátozva. Amikor létrehoz egy házirendet, az alkalmazásnak hozzá kell rendelnie egy Application Gateway-hez, amely érvénybe lép. Az Application Gateway, a figyelők és az elérésiút-alapú szabályok tetszőleges kombinációjával társítható.
 
@@ -57,7 +57,7 @@ Ebben a példában egy globális szabályzattal rendelkezik, amely két helyre v
 
 ## <a name="existing-waf-configurations"></a>Meglévő WAF-konfigurációk
 
-Az új webalkalmazási tűzfal WAF-beállításai (egyéni szabályok, felügyelt szabálykészlet-konfigurációk, kizárások stb.) léteznek egy WAF-szabályzatban. Ha rendelkezik meglévő WAF, ezek a beállítások továbbra is előfordulhatnak a WAF-konfigurációban. Az új WAF házirendre való áttéréssel kapcsolatos további információkért [telepítse át a WAF config-t egy WAF-házirendbe](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy). 
+Az új webalkalmazási tűzfal WAF-beállításai (egyéni szabályok, felügyelt szabálykészlet-konfigurációk, kizárások stb.) léteznek egy WAF-szabályzatban. Ha rendelkezik meglévő WAF, ezek a beállítások továbbra is előfordulhatnak a WAF-konfigurációban. Az új WAF házirendre való áttéréssel kapcsolatos további információkért [telepítse át a WAF config-t egy WAF-házirendbe](./migrate-policy.md). 
 
 
 ## <a name="next-steps"></a>Következő lépések

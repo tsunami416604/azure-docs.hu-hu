@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 523f28cdd32c5176160587a8531aa66c0621d5a7
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 37982d1c28d445d40fa9d53a2a1eb076fbbf7f2f
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330673"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566707"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -29,7 +29,7 @@ Alapértelmezés szerint a Azure Data Factory felhasználói felületi élmény 
 A jobb authoring Experience Azure Data Factory lehetővé teszi egy git-tárház konfigurálását az Azure Repos vagy a GitHub használatával. A git egy verziókövető rendszer, amely megkönnyíti a változások nyomon követését és együttműködését. Ebből a cikkből megtudhatja, hogyan konfigurálhat és dolgozhat a git-tárházban, valamint kiemelheti az ajánlott eljárásokat és a hibaelhárítási útmutatót.
 
 > [!NOTE]
-> Az Azure-beli adatgyári git-integráció nem érhető el a Azure Government felhőben.
+> Azure Data Factory git-integráció nem érhető el a Azure Government felhőben.
 
 Ha többet szeretne megtudni arról, hogy a Azure Data Factory hogyan integrálódik a git-vel, tekintse meg az alábbi 15 perces oktatóanyagot:
 
@@ -291,7 +291,7 @@ Miután eltávolította az aktuális tárházhoz való társítást, beállítha
 > [!IMPORTANT]
 > A git-konfiguráció adat-előállítóból való eltávolítása nem törli az adattárból származó semmit. A gyár minden közzétett erőforrást tartalmaz majd. A gyárat továbbra is szerkesztheti közvetlenül a szolgáltatással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A folyamatok figyelésével és kezelésével kapcsolatos további információkért lásd a [folyamatok programozott figyelését és](monitor-programmatically.md)felügyeletét ismertető témakört.
 * A folyamatos integráció és üzembe helyezés megvalósításához tekintse [meg az Azure Data Factory folyamatos integrációját és továbbítását (CI/CD)](continuous-integration-deployment.md).

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 18c8aa0ff05dababc5a79c5c05b43ce9ebcbf9b4
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 3cae4591a5da53683c965d7c6ba3ec169249c87e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397093"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566129"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Oktatóanyag: az új, Application Gateway példánnyal rendelkező új AK-fürthöz tartozó bejövő vezérlő bővítmény (előzetes verzió) engedélyezése
 
@@ -22,7 +22,7 @@ Ebben az oktatóanyagban létre fog hozni egy AK-fürtöt, amelyen engedélyezve
 
 A bővítmény sokkal gyorsabban üzembe helyezi a AGIC-t az AK-fürthöz, mint [korábban a helmon keresztül](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). Emellett teljes körűen felügyelt élményt nyújt.    
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy erőforráscsoportot. 
@@ -30,39 +30,26 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Helyezzen üzembe egy minta alkalmazást a AGIC használatával az AK-fürtön történő bejövő forgalomhoz.
 > * Győződjön meg arról, hogy az alkalmazás elérhető Application Gatewayon keresztül.
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+ - Az oktatóanyaghoz az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
+ - Regisztrálja az *AK-IngressApplicationGatewayAddon* funkció jelzőjét az az [Feature Register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) paranccsal az alábbi példában látható módon. Ezt csak egyszer kell elvégeznie előfizetés esetén, amíg a bővítmény még előzetes verzióban van.
+    ```azurecli-interactive
+    az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
+    ```
 
-Ha a parancssori felület helyi telepítését és használatát választja, az oktatóanyaghoz az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+   Az állapot megjelenítéséhez néhány percet is igénybe vehet `Registered` . A regisztrációs állapotot az az [Feature List](https://docs.microsoft.com/cli/azure/feature#az-feature-register) parancs használatával tekintheti meg:
+    ```azurecli-interactive
+    az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
+    ```
 
-Regisztrálja az *AK-IngressApplicationGatewayAddon* funkció jelzőjét az az [Feature Register](/cli/azure/feature#az-feature-register) paranccsal az alábbi példában látható módon. Ezt csak egyszer kell elvégeznie előfizetés esetén, amíg a bővítmény még előzetes verzióban van.
-```azurecli-interactive
-az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
-```
-
-Az állapot megjelenítéséhez néhány percet is igénybe vehet `Registered` . A regisztrációs állapotot az az [Feature List](/cli/azure/feature#az-feature-register) parancs használatával tekintheti meg:
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
-```
-
-Ha elkészült, frissítse a Microsoft. Tárolószolgáltatás erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider#az-provider-register) paranccsal:
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-Telepítse vagy frissítse a jelen oktatóanyaghoz tartozó AK-előzetes bővítményt. Használja az alábbi Azure CLI-parancsokat:
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-```azurecli-interactive
-az extension update --name aks-preview
-az extension list
-```
+ - Ha elkészült, frissítse a Microsoft. Tárolószolgáltatás erőforrás-szolgáltató regisztrációját az az [Provider Register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) paranccsal:
+    ```azurecli-interactive
+    az provider register --namespace Microsoft.ContainerService
+    ```
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -134,7 +121,7 @@ Ha már nincs szüksége rájuk, távolítsa el az erőforráscsoportot, a Appli
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a AGIC-bővítmény letiltásáról](./ingress-controller-disable-addon.md)

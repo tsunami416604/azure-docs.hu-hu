@@ -1,6 +1,6 @@
 ---
 title: Kerberos által korlátozott delegálás Azure Active Directory
-description: A hitelesítési minta megvalósítására szolgáló építészeti útmutató
+description: Építészeti útmutató a Kerberos által korlátozott delegálás eléréséhez Azure Active Directorysal.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77f90cd7aa8d972226a8f134eaa7b3abfe7bea66
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 62c8f230ca2b2d0db1170cde9b24f9e4819889bb
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114260"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577124"
 ---
 # <a name="windows-authentication---kerberos-constrained-delegation-with-azure-active-directory"></a>Windows-hitelesítés – Kerberos által korlátozott delegálás Azure Active Directory
 
@@ -36,19 +36,19 @@ Szükség van a távoli hozzáférés biztosítására, az előhitelesítéssel 
 
 ## <a name="components-of-system"></a>A System összetevői
 
-* **Felhasználó**: az alkalmazásproxy által kiszolgált örökölt alkalmazáshoz fér hozzá.
+* **Felhasználó** : az alkalmazásproxy által kiszolgált örökölt alkalmazáshoz fér hozzá.
 
-* **Webböngésző**: az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló összetevő.
+* **Webböngésző** : az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló összetevő.
 
-* **Azure ad**: hitelesíti a felhasználót. 
+* **Azure ad** : hitelesíti a felhasználót. 
 
-* **Alkalmazásproxy szolgáltatás**: fordított proxyként viselkedik, hogy a felhasználótól érkező kérést küldjön a helyszíni alkalmazásnak. Az Azure AD-ban található. Az alkalmazásproxy is kényszerítheti a feltételes hozzáférési szabályzatok alkalmazását.
+* **Alkalmazásproxy szolgáltatás** : fordított proxyként viselkedik, hogy a felhasználótól érkező kérést küldjön a helyszíni alkalmazásnak. Az Azure AD-ban található. Az alkalmazásproxy is kényszerítheti a feltételes hozzáférési szabályzatok alkalmazását.
 
-* **Alkalmazásproxy-összekötő**: a helyszíni Windows-kiszolgálókon telepítve van az alkalmazáshoz való kapcsolódás. Az Azure AD-re adott válasz visszaadása. KCD-egyeztetést végez Active Directory használatával, megszemélyesítve a felhasználót, hogy Kerberos-jogkivonatot kapjon az alkalmazáshoz.
+* **Alkalmazásproxy-összekötő** : a helyszíni Windows-kiszolgálókon telepítve van az alkalmazáshoz való kapcsolódás. Az Azure AD-re adott válasz visszaadása. KCD-egyeztetést végez Active Directory használatával, megszemélyesítve a felhasználót, hogy Kerberos-jogkivonatot kapjon az alkalmazáshoz.
 
-* **Active Directory**: a Kerberos-tokent elküldi az alkalmazásnak az alkalmazásproxy-összekötőnek.
+* **Active Directory** : a Kerberos-tokent elküldi az alkalmazásnak az alkalmazásproxy-összekötőnek.
 
-* **Örökölt alkalmazások**: az alkalmazásproxy felhasználói kérelmeit fogadó alkalmazások. Az örökölt alkalmazások visszaküldik a választ az alkalmazásproxy-összekötőnek.
+* **Örökölt alkalmazások** : az alkalmazásproxy felhasználói kérelmeit fogadó alkalmazások. Az örökölt alkalmazások visszaküldik a választ az alkalmazásproxy-összekötőnek.
 
 ## <a name="implement-windows-authentication-kcd-with-azure-ad"></a>Windows-hitelesítés (KCD) implementálása az Azure AD-vel
 

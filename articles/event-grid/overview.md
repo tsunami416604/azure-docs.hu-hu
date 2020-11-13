@@ -3,12 +3,12 @@ title: Mi az Azure Event Grid?
 description: Eseményazonosító küldése a forrástól a kezelőknek Azure Event Grid használatával. Hozzon létre eseményvezérelt alkalmazásokat, és integrálja az Azure-szolgáltatásokat.
 ms.topic: overview
 ms.date: 09/24/2020
-ms.openlocfilehash: 73d218058c5f95d8c2d2324f1a0e1e77b24f1364
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a4f614a22fdfa7d2272c70751f56f19145a10fa6
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91326498"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576682"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -69,7 +69,7 @@ Az Azure Event Grid öt fontos alapfogalma:
 
 További információ ezekről a fogalmakról: [Az Azure Event Grid alapfogalmai](concepts.md).
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 Az Azure Event Grid néhány főbb jellemzője:
 
@@ -78,7 +78,7 @@ Az Azure Event Grid néhány főbb jellemzője:
 * **Kipróbálhatja** , hogy több végpontot is felfizessen ugyanarra az eseményre, hogy a lehető legtöbb helyre küldje el az esemény másolatait.
 * **Megbízhatóság** – 24 órás újrapróbálkozás exponenciális leállítási az események kézbesítésének biztosításához.
 * **Eseményenkénti fizetés** – Csak az Event Grid használatának mennyisége alapján kell fizetnie.
-* **Nagy teljesítmény** – Nagy kapacitású számítási feladatokat hozhat létre az Event Griden, amelyek események millióit támogatják másodpercenként.
+* **Nagy átviteli sebesség** – nagy mennyiségű számítási feladat létrehozása Event Gridon.
 * **Beépített események** – Az erőforrások által meghatározott, beépített eseményekkel gyorsan munkához láthat.
 * **Egyéni események** – az Event Grid segítségével átirányíthatja, szűrheti és megbízhatóan kézbesítheti az egyéni eseményeket az alkalmazásban.
 
@@ -110,7 +110,7 @@ Az Event Grid más szolgáltatásokkal kapcsolja össze alkalmazását. Létreho
 
 Az Azure Event Grid árképzése eseményenkénti fizetésen alapul, tehát a fizetés a használat alapján történik. A havi első 100 000 művelet ingyenes. A műveletek a következőképpen vannak meghatározva: események bejövő forgalma, előfizetési kézbesítési kísérletek, kezelési hívások és tárgyutótag szerinti szűrés. A részleteket lásd az [árképzést ismertető oldalon](https://azure.microsoft.com/pricing/details/event-grid/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Storage Blob-események útválasztása](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   Az Event Grid használatával válaszolhat a Storage Blob-eseményekre.

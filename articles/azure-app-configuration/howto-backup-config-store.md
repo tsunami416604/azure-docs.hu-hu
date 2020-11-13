@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: b48adfdfda4b3e120b2246e67a70000d25c25f3a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 04edf2eeb231ff1444c732840def2b78b1373e79
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737092"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565925"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Alkalmazás-konfigurációs tárolók automatikus biztonsági mentése
 
@@ -37,16 +37,19 @@ Az alkalmazások konfigurációs tárolóinak biztonsági mentésének motiváci
 
 Ebben az oktatóanyagban egy másodlagos tárolót fog létrehozni a `centralus` régióban, és minden más erőforrást a `westus` régióban.
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)].
 
-- Egy Azure-előfizetés. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/). 
+## <a name="prerequisites"></a>Előfeltételek 
+
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) az Azure-fejlesztési számítási feladattal.
+
 - [.Net Core SDK](https://dotnet.microsoft.com/download).
-- Az Azure CLI legújabb verziója (2.3.1 vagy újabb). A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha az Azure CLI-t használja, először be kell jelentkeznie a használatával `az login` . Igény szerint a Azure Cloud Shell is használhatja.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+- Az oktatóanyaghoz az Azure CLI 2.3.1-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -248,7 +251,7 @@ Ha nem látja az új beállítást a másodlagos tárolóban:
 - Az [Azure Application Insights](../azure-functions/functions-monitoring.md?tabs=cmd)használatával beállíthatja a Azure functions figyelését és riasztását is. 
 
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha azt tervezi, hogy ezzel az alkalmazás-konfigurációval és esemény-előfizetéssel folytatja a munkát, ne törölje a cikkben létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő parancs használatával törölheti a cikkben létrehozott erőforrásokat.
 
 ```azurecli-interactive

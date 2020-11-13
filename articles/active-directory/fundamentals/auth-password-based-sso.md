@@ -1,6 +1,6 @@
 ---
 title: Jelszó-alapú hitelesítés Azure Active Directory
-description: A hitelesítési minta megvalósítására szolgáló építészeti útmutató
+description: A jelszó-alapú hitelesítés Azure Active Directory használatával történő megvalósítására szolgáló építészeti útmutató.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f05bf8f5f7ec4907c2cd61ff48e3438dfa1e097a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 74815976036abafc56f97e622351a1018fe30504
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114202"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576932"
 ---
 # <a name="password-based-authentication-with-azure-active-directory"></a>Jelszó-alapú hitelesítés Azure Active Directory
 
@@ -35,13 +35,13 @@ Az előhitelesítéssel kell védelemmel ellátnia az egyszeri bejelentkezést, 
 
 ## <a name="components-of-system"></a>A System összetevői
 
-* **Felhasználó**: a létrehozott alapú alkalmazást a saját alkalmazások közül vagy a webhely közvetlen meglátogatásával érheti el. 
+* **Felhasználó** : a létrehozott alapú alkalmazást a saját alkalmazások közül vagy a webhely közvetlen meglátogatásával érheti el. 
 
-* **Webböngésző**: az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló összetevő. A felhasználó az MyApps-bővítményen keresztül fér hozzá az űrlapalapú alkalmazáshoz. 
+* **Webböngésző** : az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló összetevő. A felhasználó az MyApps-bővítményen keresztül fér hozzá az űrlapalapú alkalmazáshoz. 
 
-* **MyApps-bővítmény**: azonosítja a konfigurált jelszó-alapú SSO-alkalmazást, és a bejelentkezési űrlapon továbbítja a hitelesítő adatokat. A MyApps bővítmény telepítve van a webböngészőben. 
+* **MyApps-bővítmény** : azonosítja a konfigurált jelszó-alapú SSO-alkalmazást, és a bejelentkezési űrlapon továbbítja a hitelesítő adatokat. A MyApps bővítmény telepítve van a webböngészőben. 
 
-* **Azure ad**: hitelesíti a felhasználót.
+* **Azure ad** : hitelesíti a felhasználót.
 
 ## <a name="implement-password-based-sso-with-azure-ad"></a>Jelszó-alapú egyszeri bejelentkezés megvalósítása az Azure AD-vel
 

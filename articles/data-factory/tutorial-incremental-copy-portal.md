@@ -1,6 +1,6 @@
 ---
 title: Táblázat növekményes másolása Azure Portal használatával
-description: Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely az Azure Blob Storage-ba Azure SQL Database egy táblából származó különbözeti adatait tölti be.
+description: Ebben az oktatóanyagban egy Azure Data Factory hoz létre egy olyan folyamattal, amely az Azure Blob Storage-ba Azure SQL Database egy táblából származó különbözeti adatait tölti be.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: 9bd7c9622ebad602fc4833664e2a47d7c91ea897
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 6dba148f0cde81905bc66f7750ff5e04edc948aa
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555345"
+ms.locfileid: "94566391"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure SQL Database adatok növekményes betöltése az Azure Blob Storage-ba a Azure Portal használatával
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely az Azure Blob Storage-ba Azure SQL Database egy táblából származó különbözeti adatait tölti be.
+Ebben az oktatóanyagban egy Azure Data Factory hoz létre egy olyan folyamattal, amely az Azure Blob Storage-ba Azure SQL Database egy táblából származó különbözeti adatait tölti be.
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -159,7 +159,7 @@ END
 
 3. Az **Új data factory** lapon, a **Név** mezőben adja meg a következőt: **ADFIncCopyTutorialDF**.
 
-   Az Azure-beli adatgyár nevének **globálisan egyedinek** kell lennie. Ha egy piros felkiáltójelet lát a következő hibaüzenettel, változtassa meg az adat-előállító nevét (például a következőre: sajátneveADFIncCopyTutorialDF), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   A Azure Data Factory nevének **globálisan egyedinek** kell lennie. Ha egy piros felkiáltójelet lát a következő hibaüzenettel, változtassa meg az adat-előállító nevét (például a következőre: sajátneveADFIncCopyTutorialDF), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 
     *A "ADFIncCopyTutorialDF" nevű adatgyár nem érhető el*
 4. Válassza ki azt az **Azure-előfizetést** , amelyben az adat-előállítót létre szeretné hozni.

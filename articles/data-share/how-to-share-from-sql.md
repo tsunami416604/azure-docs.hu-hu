@@ -6,23 +6,23 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.openlocfilehash: c13b71858915ab262ab3e0e99ab8c482d19160ea
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 205600e488822c5ade4b808c29c66741d28a84a7
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318501"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575924"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Adatok megosztása és fogadása az Azure SQL Database-ből és az Azure Synapse Analyticsből
 
 [!INCLUDE[appliesto-sql](includes/appliesto-sql.md)]
 
-Az Azure-beli adatmegosztás támogatja a pillanatkép-alapú megosztási Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL DW) használatát. Ez a cikk az ezekből a forrásokból származó adatok megosztását és fogadását ismerteti.
+Az Azure-beli adatmegosztás támogatja a Snapshot-alapú megosztási Azure SQL Database és az Azure szinapszis Analytics szolgáltatást. Ez a cikk az ezekből a forrásokból származó adatok megosztását és fogadását ismerteti.
 
-Az Azure-beli adatmegosztás támogatja a táblák és nézetek megosztását a Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL DW) használatával. Az adatfogyasztók dönthetnek úgy, hogy elfogadják az Azure Data Lake Storage Gen2 vagy az Azure Blob Storage CSV-vagy Parque-fájlként, valamint a Azure SQL Database és az Azure szinapszis Analytics táblázatként való elfogadását.
+Az Azure-beli adatmegosztás támogatja a táblák és nézetek megosztását a Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL DW) használatával, valamint a táblák megosztását az Azure szinapszis Analytics (munkaterület) SQL-készletből. Az adatfogyasztók dönthetnek úgy, hogy elfogadják az Azure Data Lake Storage Gen2 vagy az Azure Blob Storage CSV-vagy Parque-fájlként, valamint a Azure SQL Database és az Azure szinapszis Analytics táblázatként való elfogadását.
 
 Amikor Azure Data Lake Store Gen2 vagy Azure Blob Storageba fogadja az adatfogadást, a teljes Pillanatképek felülírják a célfájl tartalmát, ha már létezik.
-Amikor az Adatfogadás a táblába történik, és ha a céltábla még nem létezik, az Azure-beli adatmegosztás létrehozza az SQL-táblázatot a forrás sémával. Ha már létezik ilyen nevű céltábla, a rendszer elveti és felülírja a legújabb teljes pillanatképtel. A növekményes Pillanatképek jelenleg nem támogatottak.
+Ha az SQL-táblába beérkeznek az adatforrások, és ha a céltábla még nem létezik, az Azure-beli adatmegosztás létrehozza az SQL-táblázatot a forrás sémával. Ha már létezik ilyen nevű céltábla, a rendszer elveti és felülírja a legújabb teljes pillanatképtel. A növekményes Pillanatképek jelenleg nem támogatottak.
 
 ## <a name="share-data"></a>Adatok megosztása
 
@@ -33,12 +33,15 @@ Amikor az Adatfogadás a táblába történik, és ha a céltábla még nem lét
 * Ha az Azure-beli adattár egy másik Azure-előfizetésben található, mint amelyet az adatmegosztási erőforrás létrehozásához fog használni, regisztrálja a [Microsoft. DataShare erőforrás-szolgáltatót](concepts-roles-permissions.md#resource-provider-registration) abban az előfizetésben, amelyben az Azure-adattár található. 
 
 ### <a name="prerequisites-for-sql-source"></a>Az SQL-forrás előfeltételei
-Az alábbi lista tartalmazza az SQL-forrásokból származó adatok megosztásának előfeltételeit. Az előfeltételek konfigurálásához kövesse a [lépésenkénti bemutatót](https://youtu.be/hIE-TjJD8Dc) is.
+Az alábbi lista tartalmazza az SQL-forrásokból származó adatok megosztásának előfeltételeit. 
 
-* Egy Azure SQL Database vagy Azure szinapszis Analytics (korábban SQL Data Warehouse) a megosztani kívánt táblázatokkal és nézetekkel.
-* A *Microsoft. SQL/Servers/Databases/Write* adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a Közreműködő szerepkör részét képezi.
-* Az adatraktár eléréséhez szükséges engedély. Ezt a következő lépések végrehajtásával teheti meg: 
-    1. A Azure Portalban navigáljon az SQL Serverre, és állítsa be magát a Azure Active Directory-rendszergazdaként.
+#### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>A Azure SQL Database vagy az Azure szinapszis Analytics (korábban Azure SQL DW) megosztásának előfeltételei
+Az előfeltételek konfigurálásához kövesse a [lépésenkénti bemutató](https://youtu.be/hIE-TjJD8Dc) lépéseit.
+
+* Egy Azure SQL Database vagy Azure szinapszis Analytics (korábban Azure SQL DW) a megosztani kívánt táblázatokkal és nézetekkel.
+* A *Microsoft. SQL/Servers/Databases/Write* adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a **Közreműködő** szerepkör részét képezi.
+* Engedély az adatmegosztási erőforrás felügyelt identitásához az adatbázis eléréséhez. Ezt a következő lépések végrehajtásával teheti meg: 
+    1. A Azure Portalban navigáljon az SQL Serverre, és állítsa be magát a **Azure Active Directory-rendszergazdaként**.
     1. Kapcsolódjon a Azure SQL Database/adattárházhoz a [Lekérdezés-szerkesztő](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) használatával, vagy SQL Server Management Studio Azure Active Directory hitelesítéssel. 
     1. A következő szkript végrehajtásával adja hozzá az adatmegosztási erőforrás felügyelt identitását db_datareaderként. Active Directory használatával kell kapcsolódnia, nem SQL Server a hitelesítéshez. 
     
@@ -48,11 +51,32 @@ Az alábbi lista tartalmazza az SQL-forrásokból származó adatok megosztásá
         ```                   
        Vegye figyelembe, hogy a *<share_acc_name>* az adatmegosztási erőforrás neve. Ha még nem hozott létre adatmegosztási erőforrást, később is visszatérhet ehhez az előfeltételhöz.  
 
-* Egy Azure SQL Database "db_datareader" hozzáféréssel rendelkező felhasználó navigálhat, és kiválaszthatja a megosztani kívánt táblákat és/vagy nézeteket. 
+* Egy Azure SQL Database **"db_datareader"** hozzáféréssel rendelkező felhasználó navigálhat, és kiválaszthatja a megosztani kívánt táblákat és/vagy nézeteket. 
 
 * SQL Server tűzfal-hozzáférés. Ezt a következő lépések végrehajtásával teheti meg: 
-    1. A Azure Portal található SQL Serverben navigáljon a *tűzfalak és a virtuális hálózatok* területére.
+    1. A Azure Portalban navigáljon az SQL Server elemre. A bal oldali navigációs sávon válassza a *tűzfalak és virtuális hálózatok* lehetőséget.
     1. Az **Igen** gombra kattintva *engedélyezheti, hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a kiszolgálóhoz*.
+    1. Kattintson az **+ ügyfél IP-** címének hozzáadása elemre. Az ügyfél IP-címének módosítása változhat. Előfordulhat, hogy ezt a folyamatot meg kell ismételni, amikor legközelebb megosztja az SQL-adatok Azure Portalból való megosztását. Hozzáadhat IP-címtartományt is.
+    1. Kattintson a **Mentés** gombra. 
+
+#### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>Az Azure szinapszis Analytics (munkaterület) SQL-készlet megosztásának előfeltételei
+
+* Egy olyan Azure szinapszis Analytics-(munkaterület-) SQL-készlet, amelyben meg szeretné osztani a táblázatokat. A nézet megosztása jelenleg nem támogatott.
+* Engedély a szinapszis munkaterületen található SQL-készletbe való írásra, amely megtalálható a *Microsoft. szinapszis/munkaterület/sqlPools/Write* fájlokban. Ez az engedély a **Közreműködő** szerepkör részét képezi.
+* Engedély az adatmegosztási erőforrás felügyelt identitásához a szinapszis-munkaterület SQL-készletének eléréséhez. Ezt a következő lépések végrehajtásával teheti meg: 
+    1. A Azure Portalban navigáljon a szinapszis munkaterületre. Válassza az SQL Active Directory-rendszergazda lehetőséget a bal oldali navigációs sávon, és állítsa be magát a **Azure Active Directory-rendszergazdaként**.
+    1. Nyissa meg a szinapszis Studio alkalmazást, és válassza a *kezelés* lehetőséget a bal oldali navigációs sávon. Válassza a *hozzáférés-vezérlés* lehetőséget a biztonság területen. Rendeljen hozzá saját **SQL-rendszergazdai** vagy **munkaterület-rendszergazdai** szerepkört.
+    1. A szinapszis Studióban válassza a *fejlesztés* lehetőséget a bal oldali navigációs sávon. Hajtsa végre a következő parancsfájlt az SQL-készletben az adatmegosztási erőforrás felügyelt identitásának db_datareader való hozzáadásához. 
+    
+        ```sql
+        create user "<share_acct_name>" from external provider;     
+        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
+        ```                   
+       Vegye figyelembe, hogy a *<share_acc_name>* az adatmegosztási erőforrás neve. Ha még nem hozott létre adatmegosztási erőforrást, később is visszatérhet ehhez az előfeltételhöz.  
+
+* A szinapszis munkaterület tűzfal-hozzáférése. Ezt a következő lépések végrehajtásával teheti meg: 
+    1. A Azure Portalban navigáljon a szinapszis munkaterületre. A bal oldali navigációs sávon válassza a *tűzfalak* lehetőséget.
+    1. Ide **kattintva** *engedélyezheti, hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a munkaterülethez*.
     1. Kattintson az **+ ügyfél IP-** címének hozzáadása elemre. Az ügyfél IP-címének módosítása változhat. Előfordulhat, hogy ezt a folyamatot meg kell ismételni, amikor legközelebb megosztja az SQL-adatok Azure Portalból való megosztását. Hozzáadhat IP-címtartományt is.
     1. Kattintson a **Mentés** gombra. 
 
@@ -77,7 +101,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
     | Előfizetés | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | *teszt – erőforrás-csoport* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
     | Hely | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
-    | Name | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
+    | Név | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
     | | |
 
 1. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
@@ -108,11 +132,11 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
     ![AddDatasets](./media/add-datasets.png "Adatkészletek hozzáadása")    
 
-1. Válassza ki az SQL Servert, adja meg a hitelesítő adatokat, majd a **tovább** gombra kattintva navigáljon a megosztani kívánt objektumhoz, és válassza az "adatkészletek hozzáadása" lehetőséget. 
+1. Válassza ki az SQL Server vagy a szinapszis munkaterületet, adja meg a hitelesítő adatokat, ha a rendszer kéri, majd a **tovább** gombra kattintva navigáljon a megosztani kívánt objektumhoz, és válassza az "adatkészletek hozzáadása" lehetőséget. 
 
     ![SelectDatasets](./media/select-datasets-sql.png "Adatkészletek kiválasztása")    
 
-1. A címzettek lapon adja meg az adatfogyasztó e-mail-címeit a "+ Címzett hozzáadása" lehetőség kiválasztásával. 
+1. A címzettek lapon adja meg az adatfogyasztó e-mail-címeit a "+ Címzett hozzáadása" lehetőség kiválasztásával. Az e-mail-címnek a címzett Azure bejelentkezési e-mail-címének kell lennie.
 
     ![AddRecipients](./media/add-recipient.png "Címzettek hozzáadása") 
 
@@ -145,15 +169,19 @@ Az adatmegosztási Meghívások elfogadása előtt győződjön meg arról, hogy
 Ha úgy dönt, hogy az Azure Storage-ba fogadja az adatgyűjtést, az alábbi lista tartalmazza az előfeltételek listáját.
 
 * Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](../storage/common/storage-account-create.md)is. 
-* A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write* szolgáltatásban. Ez az engedély a Közreműködő szerepkör részét képezi. 
-* Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély a Tulajdonos szerepkör részét képezi.  
+* A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write* szolgáltatásban. Ez az engedély a **Közreműködő** szerepkör részét képezi. 
+* Engedély az adatmegosztási erőforrás felügyelt identitásának szerepkör-hozzárendelésének hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély a **Tulajdonos** szerepkör részét képezi.  
 
 ### <a name="prerequisites-for-sql-target"></a>Az SQL-cél előfeltételei
-Ha úgy dönt, hogy befogadja az Azure SQL Databaseba az Azure szinapszis Analyticset, az alábbi lista tartalmazza az előfeltételek listáját. Az előfeltételek konfigurálásához kövesse a [lépésenkénti bemutatót](https://youtu.be/aeGISgK1xro) is.
+Ha úgy dönt, hogy befogadja az Azure SQL Databaseba az Azure szinapszis Analyticset, az alábbi lista tartalmazza az előfeltételek listáját. 
 
-* A *Microsoft. SQL/Servers/Databases/Write* adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a Közreműködő szerepkör részét képezi. 
+#### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Az Adatfogadás előfeltételei a Azure SQL Database vagy az Azure szinapszis Analytics szolgáltatásba (korábban Azure SQL DW)
+Az előfeltételek konfigurálásához kövesse a [lépésenkénti bemutató](https://youtu.be/aeGISgK1xro) lépéseit.
+
+* Egy Azure SQL Database vagy Azure szinapszis Analytics (korábban Azure SQL DW).
+* A *Microsoft. SQL/Servers/Databases/Write* adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a **Közreműködő** szerepkör részét képezi. 
 * Az adatmegosztási erőforrás felügyelt identitására vonatkozó engedély a Azure SQL Database vagy az Azure szinapszis Analytics eléréséhez. Ezt a következő lépések végrehajtásával teheti meg: 
-    1. A Azure Portalban navigáljon az SQL Serverre, és állítsa be magát a Azure Active Directory-rendszergazdaként.
+    1. A Azure Portalban navigáljon az SQL Serverre, és állítsa be magát a **Azure Active Directory-rendszergazdaként**.
     1. Kapcsolódjon a Azure SQL Database/adattárházhoz a [Lekérdezés-szerkesztő](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) használatával, vagy SQL Server Management Studio Azure Active Directory hitelesítéssel. 
     1. A következő szkript végrehajtásával adja hozzá az adatmegosztás felügyelt identitását "db_datareader, db_datawriter, db_ddladmin" értékre. Active Directory használatával kell kapcsolódnia, nem SQL Server a hitelesítéshez. 
 
@@ -168,6 +196,29 @@ Ha úgy dönt, hogy befogadja az Azure SQL Databaseba az Azure szinapszis Analyt
 * SQL Server tűzfal-hozzáférés. Ezt a következő lépések végrehajtásával teheti meg: 
     1. A Azure Portal található SQL Serverben navigáljon a *tűzfalak és a virtuális hálózatok* területére.
     1. Az **Igen** gombra kattintva *engedélyezheti, hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a kiszolgálóhoz*.
+    1. Kattintson az **+ ügyfél IP-** címének hozzáadása elemre. Az ügyfél IP-címének módosítása változhat. Előfordulhat, hogy ezt a folyamatot meg kell ismételni, amikor legközelebb megosztja az SQL-adatok Azure Portalból való megosztását. Hozzáadhat IP-címtartományt is.
+    1. Kattintson a **Mentés** gombra. 
+ 
+#### <a name="prerequisites-for-receiving-data-into-azure-synapse-analytics-workspace-sql-pool"></a>Az Azure szinapszis Analytics (munkaterület) SQL-készletbe való adatfogadás előfeltételei
+
+* Egy Azure szinapszis Analytics-(munkaterület-) SQL-készlet.
+* Engedély a szinapszis munkaterületen található SQL-készletbe való írásra, amely megtalálható a *Microsoft. szinapszis/munkaterület/sqlPools/Write* fájlokban. Ez az engedély a **Közreműködő** szerepkör részét képezi.
+* Engedély az adatmegosztási erőforrás felügyelt identitásához a szinapszis-munkaterület SQL-készletének eléréséhez. Ezt a következő lépések végrehajtásával teheti meg: 
+    1. A Azure Portalban navigáljon a szinapszis munkaterületre. Válassza az SQL Active Directory-rendszergazda lehetőséget a bal oldali navigációs sávon, és állítsa be magát a **Azure Active Directory-rendszergazdaként**.
+    1. Nyissa meg a szinapszis Studio alkalmazást, és válassza a *kezelés* lehetőséget a bal oldali navigációs sávon. Válassza a *hozzáférés-vezérlés* lehetőséget a biztonság területen. Rendeljen hozzá saját **SQL-rendszergazdai** vagy **munkaterület-rendszergazdai** szerepkört.
+    1. A szinapszis Studióban válassza a *fejlesztés* lehetőséget a bal oldali navigációs sávon. Hajtsa végre a következő parancsfájlt az SQL-készletben az adatmegosztási erőforrás felügyelt identitásának "db_datareader, db_datawriter, db_ddladmin" értékkel való hozzáadásához. 
+    
+        ```sql
+        create user "<share_acc_name>" from external provider; 
+        exec sp_addrolemember db_datareader, "<share_acc_name>"; 
+        exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
+        exec sp_addrolemember db_ddladmin, "<share_acc_name>";
+        ```                   
+       Vegye figyelembe, hogy a *<share_acc_name>* az adatmegosztási erőforrás neve. Ha még nem hozott létre adatmegosztási erőforrást, később is visszatérhet ehhez az előfeltételhöz.  
+
+* A szinapszis munkaterület tűzfal-hozzáférése. Ezt a következő lépések végrehajtásával teheti meg: 
+    1. A Azure Portalban navigáljon a szinapszis munkaterületre. A bal oldali navigációs sávon válassza a *tűzfalak* lehetőséget.
+    1. Ide **kattintva** *engedélyezheti, hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a munkaterülethez*.
     1. Kattintson az **+ ügyfél IP-** címének hozzáadása elemre. Az ügyfél IP-címének módosítása változhat. Előfordulhat, hogy ezt a folyamatot meg kell ismételni, amikor legközelebb megosztja az SQL-adatok Azure Portalból való megosztását. Hozzáadhat IP-címtartományt is.
     1. Kattintson a **Mentés** gombra. 
 
@@ -202,7 +253,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
    ![Elfogadás beállításai](./media/accept-options.png "Elfogadás beállításai") 
 
-   Ekkor a kapott megosztás szerepel az adatmegosztási fiókban. 
+   Ekkor megjelenik a kapott megosztás az adatmegosztási fiókban. 
 
    Ha nem szeretné elfogadni a meghívót, válassza az *elutasítás* lehetőséget. 
 
@@ -244,9 +295,9 @@ Az SQL-forrásokból származó adatok megosztásakor a rendszer a következő l
 | binary |Bájt [] |
 | bit |Logikai |
 | char |Karakterlánc, char [] |
-| dátum |DateTime |
-| Datetime |DateTime |
-| datetime2 |DateTime |
+| dátum |Dátum/idő |
+| Datetime |Dátum/idő |
+| datetime2 |Dátum/idő |
 | DateTimeOffset |DateTimeOffset |
 | Tizedesjegy |Tizedesjegy |
 | FILESTREAM attribútum (varbinary (max)) |Bájt [] |
@@ -260,7 +311,7 @@ Az SQL-forrásokból származó adatok megosztásakor a rendszer a következő l
 | nvarchar |Karakterlánc, char [] |
 | valós szám |Egyirányú |
 | ROWVERSION |Bájt [] |
-| idő adattípusúra |DateTime |
+| idő adattípusúra |Dátum/idő |
 | smallint |Int16 |
 | túlcsordulási |Tizedesjegy |
 | sql_variant |Objektum |
@@ -290,7 +341,7 @@ Az SQL-Pillanatképek teljesítményét számos tényező befolyásolja. A sajá
 * A forrás és a cél adattárolók helye. 
 
 ## <a name="troubleshoot-sql-snapshot-failure"></a>SQL-pillanatkép hibáinak hibaelhárítása
-A pillanatképek meghibásodásának leggyakoribb oka az, hogy az adatmegosztás nem rendelkezik engedéllyel a forrás-vagy a célként megadott adattárhoz. Ahhoz, hogy adatmegosztási engedélyt adjon a forrás vagy cél SQL-adattár számára, futtatnia kell a megadott SQL-parancsfájlt az SQL-adatbázishoz való csatlakozáskor Azure Active Directory hitelesítés használatával. További SQL-Pillanatképek hibáinak hibaelhárításához tekintse meg a [Pillanatkép-hiba hibaelhárítása](data-share-troubleshoot.md#snapshot-failed)című témakört.
+A pillanatképek meghibásodásának leggyakoribb oka az, hogy az adatmegosztás nem rendelkezik engedéllyel a forrás-vagy a célként megadott adattárhoz. Ahhoz, hogy adatmegosztási engedélyt adjon a forrás vagy a cél Azure SQL Database vagy az Azure szinapszis Analytics (korábban Azure SQL DW) számára, futtatnia kell a megadott SQL-parancsfájlt az SQL-adatbázishoz való csatlakozáskor Azure Active Directory hitelesítés használatával. További SQL-Pillanatképek hibáinak hibaelhárításához tekintse meg a [Pillanatkép-hiba hibaelhárítása](data-share-troubleshoot.md#snapshot-failed)című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 Megtanulta, hogyan oszthat meg és fogadhat adatait SQL-forrásokból az Azure adatmegosztási szolgáltatás használatával. Ha többet szeretne megtudni a más adatforrásokból történő megosztásról, folytassa a [támogatott adattárakkal](supported-data-stores.md).

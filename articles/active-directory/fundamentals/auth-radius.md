@@ -1,6 +1,6 @@
 ---
 title: RADIUS-hitelesítés Azure Active Directory
-description: A hitelesítési minta megvalósítására szolgáló építészeti útmutató
+description: Építészeti útmutató a RADIUS-hitelesítés megvalósításához a Azure Active Directory használatával.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff6210741d87602b4f695633b11d2641a6bb6781
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 155b359c109de948ab9b9d6862ef7507ee76f619
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114287"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576812"
 ---
 # <a name="radius-authentication-with-azure-active-directory"></a>RADIUS-hitelesítés Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) lehetővé teszi a többtényezős hitelesít�
 
 A Windows hálózati házirend-kiszolgáló hitelesíti a felhasználó hitelesítő adatait Active Directory, majd elküldi a Multi-Factor Authentication kérést az Azure-nak. A felhasználó Ezután kap egy kihívást a mobil hitelesítő adataival kapcsolatban. Ha a művelet sikeres, az ügyfélalkalmazás csatlakozhat a szolgáltatáshoz. 
 
-## <a name="usewhen"></a>Használat: 
+## <a name="use-when"></a>A következő esetekben használja: 
 
 Multi-Factor Authenticationt kell hozzáadnia az alkalmazásokhoz, például:
 * Virtuális magánhálózat (VPN)
@@ -45,19 +45,19 @@ Multi-Factor Authenticationt kell hozzáadnia az alkalmazásokhoz, például:
 ![építészeti diagram](./media/authentication-patterns/radius-auth.png)
 
 
-## <a name="componentsofthe-system"></a>A System összetevői 
+## <a name="components-of-the-system"></a>A System összetevői 
 
-* **Ügyfélalkalmazás (VPN-ügyfél)**: hitelesítési kérés küldése a RADIUS-ügyfélnek.
+* **Ügyfélalkalmazás (VPN-ügyfél)** : hitelesítési kérés küldése a RADIUS-ügyfélnek.
 
-* **RADIUS-ügyfél**: átalakítja az ügyfélalkalmazás kérelmeit, és elküldi azokat a RADIUS-kiszolgálónak, amelyen telepítve van az NPS-bővítmény.
+* **RADIUS-ügyfél** : átalakítja az ügyfélalkalmazás kérelmeit, és elküldi azokat a RADIUS-kiszolgálónak, amelyen telepítve van az NPS-bővítmény.
 
-* **RADIUS-kiszolgáló**: a Active Directory a RADIUS-kérelem elsődleges hitelesítésének végrehajtásához kapcsolódik. A művelet sikere után továbbítja a kérést az Azure Multi-Factor Authentication NPS bővítménynek.
+* **RADIUS-kiszolgáló** : a Active Directory a RADIUS-kérelem elsődleges hitelesítésének végrehajtásához kapcsolódik. A művelet sikere után továbbítja a kérést az Azure Multi-Factor Authentication NPS bővítménynek.
 
-* **NPS-bővítmény**: egy másodlagos hitelesítésre vonatkozó kérést indít az Azure multi-Factor Authentication számára. Ha ez sikeres, a hálózati házirend-kiszolgáló bővítménye végrehajtja a hitelesítési kérést azáltal, hogy a RADIUS-kiszolgálót olyan biztonsági jogkivonatokkal biztosítja, amelyek az Azure biztonsági jogkivonat-szolgáltatása által kiadott Multi-Factor Authentication jogcímeket tartalmaznak
+* **NPS-bővítmény** : egy másodlagos hitelesítésre vonatkozó kérést indít az Azure multi-Factor Authentication számára. Ha ez sikeres, a hálózati házirend-kiszolgáló bővítménye végrehajtja a hitelesítési kérést azáltal, hogy a RADIUS-kiszolgálót olyan biztonsági jogkivonatokkal biztosítja, amelyek az Azure biztonsági jogkivonat-szolgáltatása által kiadott Multi-Factor Authentication jogcímeket tartalmaznak
 
-* **Azure multi-Factor Authentication**: kommunikáció az Azure ad-vel a felhasználó adatainak beolvasása és másodlagos hitelesítés végrehajtása a felhasználó által konfigurált ellenőrzési módszer használatával.
+* **Azure multi-Factor Authentication** : kommunikáció az Azure ad-vel a felhasználó adatainak beolvasása és másodlagos hitelesítés végrehajtása a felhasználó által konfigurált ellenőrzési módszer használatával.
 
-## <a name="implementradiuswith-azure-ad"></a>RADIUS implementálása az Azure AD-vel 
+## <a name="implement-radius-with-azure-ad"></a>RADIUS implementálása az Azure AD-vel 
 
 * [Az Azure Multi-Factor Authentication képességeinek biztosítása az NPS használatával](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension) 
 

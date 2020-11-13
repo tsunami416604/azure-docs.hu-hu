@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: efb00d35d2b12e6b6a577483257debf4e797c0a0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a47548fb1f94ac7fe9b561e798b010fa9176e9e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88934038"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566299"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Rövid útmutató: Eseményközpont létrehozása az Azure CLI-vel
 
@@ -18,22 +18,15 @@ Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgál
 
 Ebben a rövid útmutatóban az Azure CLI használatával hoz létre eseményközpontot.
 
-## <a name="prerequisites"></a>Előfeltételek
-A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot][], mielőtt hozzákezd.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. Futtassa az `az --version` parancsot a verzió ellenőrzéséhez. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
+- Ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+## <a name="set-the-subscription-context"></a>Az előfizetési környezet beállítása
 
 Az alábbi lépések nem szükségesek, ha a parancsokat a Cloud Shellben futtatja. Ha helyileg futtatja a CLI-t, az alábbi lépések elvégzésével jelentkezzen be az Azure-ba, és állítsa be az aktuális előfizetést:
-
-Az alábbi parancs futtatásával jelentkezzen be az Azure-ba:
-
-```azurecli-interactive
-az login
-```
 
 Állítsa be az aktuális előfizetési környezetet. A `MyAzureSub` értéket cserélje le a használni kívánt Azure-előfizetés nevére:
 
@@ -41,7 +34,7 @@ az login
 az account set --subscription MyAzureSub
 ``` 
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Az erőforráscsoport Azure-erőforrások logikai gyűjteménye. Minden erőforrás üzembe helyezése és kezelése erőforráscsoportban történik. Futtassa az alábbi parancsot egy erőforráscsoport létrehozásához:
 
 ```azurecli-interactive
@@ -67,7 +60,7 @@ az eventhubs eventhub create --name <event hub name> --resource-group <resource 
 
 Gratulálunk! Az Azure CLI segítségével létrehozott egy Event Hubs-névteret és egy eseményközpontot a névtéren belül. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy erőforráscsoportot, egy Event Hubs-névteret és egy eseményközpontot hozott létre. Az események küldése az Event hub-tól (vagy) események fogadására vonatkozó részletes utasításokért lásd a **küldési és fogadási események** oktatóanyagokat: 
 
@@ -79,7 +72,7 @@ Ebben a cikkben egy erőforráscsoportot, egy Event Hubs-névteret és egy esem�
 - [C (csak küldés)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (csak fogadás)](event-hubs-storm-getstarted-receive.md)
 
-[ingyenes fiók létrehozása]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[create a free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7b3221c55cef6207ea38ac1375202acd8b8ab4f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13b8e88d10d66f96db6b50e505d4e579cb1f2f2b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588323"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566911"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure-alkalmazás konfigurációs tárolójának létrehozása
 
@@ -22,9 +22,9 @@ Ez a példa az Azure app Configuration új példányát hozza létre egy új er�
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+ - Az oktatóanyaghoz az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -73,7 +73,7 @@ Ez a szkript a következő parancsokat használja egy új erőforráscsoport és
 | [az appconfig Create](/cli/azure/appconfig#az-appconfig-create) | Létrehoz egy alkalmazás-konfigurációs tároló erőforrást. |
 | [az appconfig hitelesítőadat-lista](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Az alkalmazás konfigurációs tárolójának hozzáférési kulcsainak listázása. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c59a104796e11b15af805e34f9cd14b2ce8bd075
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 6f7888e978fd4eb19232c156ce65b6e4967d9c5a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628847"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575968"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -36,7 +36,7 @@ Azure AD B2C az SAML együttműködési képességet kétféleképpen éri el:
 
 A két nem kizárólagos alapszintű forgatókönyvek összefoglalása az SAML használatával:
 
-| Használati eset | Azure AD B2C szerepkör | Használati útmutató |
+| Használati példa | Azure AD B2C szerepkör | Használati útmutató |
 | -------- | ----------------- | ------- |
 | Az alkalmazás egy SAML-állítást vár a hitelesítés elvégzéséhez. | **Azure AD B2C identitás-szolgáltatóként (identitásszolgáltató) működik**<br />Azure AD B2C SAML-identitásszolgáltató viselkedik az alkalmazásokban. | Ez a cikk. |
 | A felhasználóknak egyszeri bejelentkezésre van szükségük egy SAML-kompatibilis identitás-szolgáltatóval, például az ADFS, a Salesforce vagy a Shibboleth.  | **Azure AD B2C szolgáltatóként működik (SP)**<br />A Azure AD B2C szolgáltatóként működik, amikor az SAML-identitás szolgáltatóhoz csatlakozik. Ez egy összevonási proxy az alkalmazás és a SAML-identitás szolgáltatója között.  | <ul><li>[Bejelentkezés beállítása SAML-identitásszolgáltató az ADFS-ben egyéni szabályzatok használatával](identity-provider-adfs2016-custom.md)</li><li>[Bejelentkezés beállítása Salesforce SAML-szolgáltatóval egyéni szabályzatok használatával](identity-provider-salesforce-custom.md)</li></ul> |
@@ -101,11 +101,11 @@ Ezután töltse fel az SAML-jogkivonatot és a válasz aláíró tanúsítvány�
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg a Azure ad B2C bérlőt.
 1. A **házirendek** területen válassza az **identitási élmény keretrendszere** , majd a **házirend-kulcsok** elemet.
 1. Válassza a **Hozzáadás** , majd a **Beállítások**  >  **feltöltés** lehetőséget.
-1. Írjon be egy **nevet** , például *SamlIdpCert* . Az előtag *B2C_1A_* automatikusan hozzáadódik a kulcs nevéhez.
+1. Írjon be egy **nevet** , például *SamlIdpCert*. Az előtag *B2C_1A_* automatikusan hozzáadódik a kulcs nevéhez.
 1. Töltse fel a tanúsítványt a fájl feltöltése vezérlőelem használatával.
 1. Adja meg a tanúsítvány jelszavát.
 1. Kattintson a **Létrehozás** gombra.
-1. Ellenőrizze, hogy a kulcs a várt módon jelenik-e meg. Például *B2C_1A_SamlIdpCert* .
+1. Ellenőrizze, hogy a kulcs a várt módon jelenik-e meg. Például *B2C_1A_SamlIdpCert*.
 
 ## <a name="2-prepare-your-policy"></a>2. a szabályzat előkészítése
 
@@ -159,7 +159,7 @@ Most, hogy a bérlő kiállíthatja az SAML-kijelentéseket, létre kell hoznia 
 
 ### <a name="31-create-sign-up-or-sign-in-policy"></a>3,1 regisztrációs vagy bejelentkezési szabályzat létrehozása
 
-1. Hozzon létre egy másolatot a *SignUpOrSignin.xml* fájlról a Starter Pack munkakönyvtárában, és mentse azt egy új néven. Például *SignUpOrSigninSAML.xml* . Ez a függő entitás házirend-fájlja.
+1. Hozzon létre egy másolatot a *SignUpOrSignin.xml* fájlról a Starter Pack munkakönyvtárában, és mentse azt egy új néven. Például *SignUpOrSigninSAML.xml*. Ez a függő entitás házirend-fájlja.
 
 1. Nyissa meg a *SignUpOrSigninSAML.xml* fájlt az előnyben részesített szerkesztőben.
 
@@ -260,7 +260,7 @@ A végleges függő entitás házirend-fájljának a következő XML-kódhoz has
 
 Mentse a módosításokat, és töltse fel az új házirend-fájlt. Miután feltöltötte mindkét szabályzatot (a kiterjesztést és a függő entitás fájljait), nyisson meg egy webböngészőt, és navigáljon a szabályzat metaadataihoz.
 
-Azure AD B2C Policy IDENTITÁSSZOLGÁLTATÓ metaadatok az SAML-protokollban használt információk, amelyek lehetővé teszik az SAML-identitások szolgáltatójának konfigurálását. A metaadatok határozzák meg a szolgáltatások helyét, például a bejelentkezést és a kijelentkezést, a tanúsítványokat, a bejelentkezési metódusokat és egyebeket. A Azure AD B2C szabályzat metaadatai a következő URL-címen érhetők el. Cserélje le a helyére `tenant-name` a Azure ad B2C bérlő nevét és a `policy-name` szabályzat nevét (azonosítóját):
+Azure AD B2C Policy IDENTITÁSSZOLGÁLTATÓ metaadatok az SAML-protokollban használt információk, amelyek lehetővé teszik az SAML-identitások szolgáltatójának konfigurálását. A metaadatok határozzák meg a szolgáltatások helyét, például a bejelentkezést és a kijelentkezést, a tanúsítványokat, a bejelentkezési metódusokat és egyebeket. A Azure AD B2C szabályzat metaadatai a következő URL-címen érhetők el. Cserélje le a helyére `tenant-name` a Azure ad B2C bérlő nevét, és a `policy-name` szabályzat nevét (azonosítóját), például:.../B2C_1A_SAML2_signup_signin/samlp/metadata:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -270,11 +270,11 @@ Most már készen áll az egyéni házirend-és Azure AD B2C-bérlőre. Ezután 
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 az alkalmazás regisztrálása Azure AD B2C
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza az **új regisztráció** lehetőséget.
-1. Adja meg az alkalmazás **nevét** . Például: *SAMLApp1* .
+1. Adja meg az alkalmazás **nevét** . Például: *SAMLApp1*.
 1. A **támogatott fióktípus** területen válassza az **ebben a szervezeti könyvtárban lévő fiókok** lehetőséget
 1. Az **átirányítási URI** területen válassza a Web lehetőséget, majd írja be a **következőt** : `https://localhost` . Ezt az értéket később módosíthatja az alkalmazás regisztrációs jegyzékfájljában.
 1. Válassza a **Regisztráció** lehetőséget.

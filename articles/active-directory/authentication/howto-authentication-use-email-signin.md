@@ -10,14 +10,17 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: c822aaebb2451d709f6afcdeba959f39c4d491cb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c3fcff5673f4498e92f5d66fe96d806a08527197
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964536"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576019"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Bejelentkezés Azure Active Directory az e-mail-cím használata másodlagos bejelentkezési AZONOSÍTÓként (előzetes verzió)
+
+> [!NOTE]
+> Jelentkezzen be az Azure AD-be a másodlagos bejelentkezési AZONOSÍTÓként a Azure Active Directory nyilvános előzetes verziójára. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Számos szervezet szeretné engedélyezni, hogy a felhasználók a helyszíni címtár-környezettel megegyező hitelesítő adatokkal jelentkezzenek be Azure Active Directoryba (Azure AD-ba). A hibrid hitelesítésnek nevezett megközelítéssel a felhasználóknak csak egy hitelesítő adatot kell megemlékezniük.
 
@@ -27,12 +30,12 @@ Néhány szervezet nem helyezte át a hibrid hitelesítést a következő okok m
 * Az Azure AD UPN módosítása helytelen egyezést hoz létre az olyan helyszíni és Azure AD-környezetek között, amelyek bizonyos alkalmazásokkal és szolgáltatásokkal kapcsolatos problémákat okozhatnak.
 * Az üzleti vagy megfelelőségi okok miatt a szervezet nem szeretné a helyszíni UPN-t használni az Azure AD-be való bejelentkezéshez.
 
-Ha segítségre van szüksége a hibrid hitelesítésre való áttéréshez, beállíthatja az Azure AD-t, hogy a felhasználók a hitelesített tartományba tartozó e-mailben jelentkezzenek be egy másik bejelentkezési AZONOSÍTÓként. Ha például a *contoso* a *Fabrikam*-re lett átnevezve, és nem kívánja tovább használni az örökölt `balas@contoso.com` UPN-t, a rendszer mostantól másodlagos Bejelentkezési azonosítóként is használhatja az e-mailt. Egy alkalmazáshoz vagy szolgáltatáshoz való hozzáféréshez a felhasználók a hozzárendelt e-mail-cím használatával bejelentkeznek az Azure AD-be, például: `balas@fabrikam.com` .
+Ha segítségre van szüksége a hibrid hitelesítésre való áttéréshez, beállíthatja az Azure AD-t, hogy a felhasználók a hitelesített tartományba tartozó e-mailben jelentkezzenek be egy másik bejelentkezési AZONOSÍTÓként. Ha például a *contoso* a *Fabrikam* -re lett átnevezve, és nem kívánja tovább használni az örökölt `balas@contoso.com` UPN-t, a rendszer mostantól másodlagos Bejelentkezési azonosítóként is használhatja az e-mailt. Egy alkalmazáshoz vagy szolgáltatáshoz való hozzáféréshez a felhasználók a hozzárendelt e-mail-cím használatával bejelentkeznek az Azure AD-be, például: `balas@fabrikam.com` .
 
 Ez a cikk bemutatja, hogyan engedélyezheti és használhatja az e-maileket alternatív bejelentkezési AZONOSÍTÓként. Ez a funkció a ingyenes Azure AD Edition és újabb verziókban érhető el.
 
 > [!NOTE]
-> Jelentkezzen be az Azure AD-be a másodlagos bejelentkezési AZONOSÍTÓként a Azure Active Directory nyilvános előzetes verziójára. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez a funkció csak a felhőben hitelesített Azure AD-felhasználók számára érhető el.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Az Azure AD bejelentkezési módszereinek áttekintése
 
@@ -169,6 +172,72 @@ A házirend alkalmazása esetén akár egy órát is igénybe vehet, hogy a felh
 
 Annak ellenőrzéséhez, hogy a felhasználók bejelentkezhetnek-e e-mail-címmel, az [https://myprofile.microsoft.com][my-profile] e-mail-címük alapján egy felhasználói fiókkal, például a (z `balas@fabrikam.com` ), nem pedig az egyszerű felhasználónévvel is bejelentkezhetnek `balas@contoso.com` . A bejelentkezési élménynek ugyanúgy kell kinéznie, mint az UPN-alapú bejelentkezési eseménnyel.
 
+## <a name="enable-staged-rollout-to-test-user-sign-in-with-an-email-address"></a>A bevezetésének engedélyezése a felhasználói bejelentkezés e-mail-címmel való teszteléséhez  
+
+A [kétlépcsős][staged-rollout] bevezetéssel a bérlői rendszergazdák engedélyezhetik bizonyos csoportok funkcióinak használatát. Javasoljuk, hogy a bérlői rendszergazdák szakaszos bevezetést használjanak a felhasználói bejelentkezés e-mail-címmel való teszteléséhez. Ha a rendszergazdák készen állnak a szolgáltatás központi telepítésére a teljes bérlőn, a Kezdőlap tartomány-felderítési házirendet kell használniuk.  
+
+
+A következő lépések végrehajtásához *bérlői rendszergazdai* engedélyekre van szükség:
+
+1. Nyisson meg egy PowerShell-munkamenetet rendszergazdaként, majd telepítse a *AzureADPreview* modult az [install-Module][Install-Module] parancsmag használatával:
+
+    ```powershell
+    Install-Module AzureADPreview
+    ```
+
+    Ha a rendszer kéri, válassza az **Y** elemet a NuGet telepítéséhez vagy nem megbízható adattárból történő telepítéshez.
+
+2. Jelentkezzen be az Azure AD-bérlőbe *bérlői rendszergazdaként* a (z) [AzureAD][Connect-AzureAD] parancsmag használatával:
+
+    ```powershell
+    Connect-AzureAD
+    ```
+
+    A parancs a fiókjával, a környezettel és a bérlői AZONOSÍTÓval kapcsolatos információkat ad vissza.
+
+3. Sorolja fel az összes létező bevezetési szabályzatot a következő parancsmag használatával:
+   
+   ```powershell
+   Get-AzureADMSFeatureRolloutPolicy
+   ``` 
+
+4. Ha a szolgáltatáshoz nem tartozik meglévő szakaszos bevezetési szabályzat, hozzon létre egy új, szakaszos bevezetési házirendet, és jegyezze fel a házirend-azonosítót:
+
+   ```powershell
+   New-AzureADMSFeatureRolloutPolicy -Feature EmailAsAlternateId -DisplayName "EmailAsAlternateId Rollout Policy" -IsEnabled $true
+   ```
+
+5. Keresse meg a szakaszos bevezetési szabályzatba felvenni kívánt csoport directoryObject-AZONOSÍTÓját. Jegyezze fel az *azonosító* paraméternek visszaadott értéket, mert a következő lépésben fogja használni.
+   
+   ```powershell
+   Get-AzureADMSGroup -SearchString "Name of group to be added to the staged rollout policy"
+   ```
+
+6. Vegye fel a csoportot a szakaszos bevezetési szabályzatba az alábbi példában látható módon. Cserélje le a *-ID* paraméter értékét a 4. lépésben a házirend-azonosítóhoz visszaadott értékre, és cserélje le a *-RefObjectId* paraméter értékét az 5. lépésben feljegyzett *azonosítóra* . Akár 1 órát is igénybe vehet, mielőtt a csoportba tartozó felhasználók a proxy címüket használhatják a bejelentkezéshez.
+
+   ```powershell
+   Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -RefObjectId "GROUP_OBJECT_ID"
+   ```
+   
+A csoportba felvett új tagok esetében akár 24 óráig is eltarthat, mielőtt a proxy címeiket felhasználhatják a bejelentkezéshez.
+
+### <a name="removing-groups"></a>Csoportok eltávolítása
+
+Ha egy csoportot a szakaszos bevezetési szabályzatból szeretne eltávolítani, futtassa a következő parancsot:
+
+```powershell
+Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -ObjectId "GROUP_OBJECT_ID" 
+```
+
+### <a name="removing-policies"></a>Szabályzatok eltávolítása
+
+A szakaszos bevezetési szabályzat eltávolításához először tiltsa le a szabályzatot, majd távolítsa el a rendszerből:
+
+```powershell
+Set-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID" -IsEnabled $false 
+Remove-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID"
+```
+
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
 Ha a felhasználók az e-mail-címükkel ütköznek a bejelentkezési eseményekkel, tekintse át a következő hibaelhárítási lépéseket:
@@ -202,4 +271,5 @@ További információ a hibrid identitási műveletekről: [jelszó-kivonatolás
 [Get-AzureADPolicy]: /powershell/module/azuread/get-azureadpolicy
 [New-AzureADPolicy]: /powershell/module/azuread/new-azureadpolicy
 [Set-AzureADPolicy]: /powershell/module/azuread/set-azureadpolicy
+[staged-rollout]: /powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged-rollout
 [my-profile]: https://myprofile.microsoft.com

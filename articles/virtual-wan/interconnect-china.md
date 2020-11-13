@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b2595eaf1e373c3a15014d0bc684d6e3914a665
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399108"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566639"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Interconnect Kínával az Azure Virtual WAN és a Secure hub használatával
 
@@ -111,7 +111,7 @@ A Hongkonghoz való kapcsolódásra vonatkozó döntéstől függően az által�
 
 Az összes lehetőség elérhetővé teszi az Azure Virtual WAN biztonságos hubot a közvetlen Microsoft 365 kapcsolathoz Hongkongban. Ezek az architektúrák támogatják a [Microsoft 365 multi-geo](/microsoft-365/enterprise/microsoft-365-multi-geo) megfelelőségi követelményeit is, és a forgalmat a következő Azure bejárati hely közelében tartja. Ennek eredményeképpen a Microsoft 365 Kínában való használatának is javulást jelent.
 
-Ha az Azure Virtual WAN-t internetkapcsolattal együtt használja, minden kapcsolat kihasználhatja az olyan további szolgáltatásokat, mint a [Microsoft Azure-társas szolgáltatások (Maps)](https://docs.microsoft.com/azure/peering-service/about). A MAPS szolgáltatás a Microsoft globális hálózata felé irányuló forgalom optimalizálására készült a harmadik féltől származó internetszolgáltatótól.
+Ha az Azure Virtual WAN-t internetkapcsolattal együtt használja, minden kapcsolat kihasználhatja az olyan további szolgáltatásokat, mint a [Microsoft Azure-társas szolgáltatások (Maps)](../peering-service/about.md). A MAPS szolgáltatás a Microsoft globális hálózata felé irányuló forgalom optimalizálására készült a harmadik féltől származó internetszolgáltatótól.
 
 ### <a name="option-1-sdwan-or-vpn"></a><a name="option-1"></a>1. lehetőség: SDWAN vagy VPN
 
@@ -151,4 +151,4 @@ További információt a következő cikkekben talál:
 
 * [Virtuális WAN biztonságos központ konfigurálása](../firewall-manager/secure-cloud-network.md)
 
-* [Az Azure peering Service előzetes verziójának áttekintése](https://docs.microsoft.com/azure/peering-service/about)
+* [Az Azure peering Service előzetes verziójának áttekintése](../peering-service/about.md)

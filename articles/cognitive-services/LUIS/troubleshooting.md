@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: 8eb37b993ee5bc3944228cba72be0557b52e3dc6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 17b070fea422268ec12e0ccd3357ae0549a78916
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149263"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566265"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – Gyakori kérdések (GYIK)
 
@@ -91,11 +91,11 @@ A 403-es és a 429-es hibakód akkor jelenik meg, ha az árképzési szinten a m
 
 Ha az összes ingyenes 1000-végpontot lekérdezi, vagy túllépi a díjszabási csomag havi tranzakciós kvótáját, a rendszer HTTP 403 hibakódot kap.
 
-Ennek a hibának a kijavításához [módosítania kell az árképzési szintet](luis-how-to-azure-subscription.md#change-pricing-tier) egy magasabb szintű csomagra, vagy [létre kell hoznia egy új erőforrást](get-started-portal-deploy-app.md#create-the-endpoint-resource) , és [hozzá kell rendelnie az alkalmazáshoz](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+Ennek a hibának a kijavításához [módosítania kell az árképzési szintet](luis-how-to-azure-subscription.md#change-the-pricing-tier) egy magasabb szintű csomagra, vagy [létre kell hoznia egy új erőforrást](get-started-portal-deploy-app.md#create-the-endpoint-resource) , és [hozzá kell rendelnie az alkalmazáshoz](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
 
 A hiba megoldásai a következők:
 
-* A [Azure Portal](https://portal.azure.com)a Language Understanding erőforráson az **Erőforrás-kezelés – > díjszabási**szinten módosítsa az árképzési szintet magasabb TPS szintjére. Ha az erőforrás már hozzá van rendelve a Language Understanding alkalmazáshoz, semmit nem kell tennie a Language Understanding portálon.
+* A [Azure Portal](https://portal.azure.com)a Language Understanding erőforráson az **Erőforrás-kezelés – > díjszabási** szinten módosítsa az árképzési szintet magasabb TPS szintjére. Ha az erőforrás már hozzá van rendelve a Language Understanding alkalmazáshoz, semmit nem kell tennie a Language Understanding portálon.
 *  Ha a használat meghaladja a legmagasabb szintű díjszabást, vegyen fel további Language Understanding erőforrásokat egy terheléselosztó elé. A Kubernetes vagy Docker-összeállítással rendelkező [Language Understanding-tároló](luis-container-howto.md) segíthet ennek elvégzésében.
 
 ### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>HTTP 429-es hiba-állapotkód érkezett. Hogyan lehet kijavítani a hibát?
@@ -106,7 +106,7 @@ Ezt az állapotkódot akkor adja vissza a rendszer, ha a másodpercenkénti tran
 
 A megoldások a következők:
 
-* [Megnövelheti az árképzési szintet](luis-how-to-azure-subscription.md#change-pricing-tier), ha nem a legmagasabb szintű szinten van.
+* [Megnövelheti az árképzési szintet](luis-how-to-azure-subscription.md#change-the-pricing-tier), ha nem a legmagasabb szintű szinten van.
 * Ha a használat meghaladja a legmagasabb szintű díjszabást, vegyen fel további Language Understanding erőforrásokat egy terheléselosztó elé. A Kubernetes vagy Docker-összeállítással rendelkező [Language Understanding-tároló](luis-container-howto.md) segíthet ennek elvégzésében.
 * Az ügyfélalkalmazás kérelmeit megadhatja az [újrapróbálkozási szabályzattal](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) , amelyet Ön saját maga is végrehajthat, amikor megkapja ezt az állapotkódot.
 
@@ -190,7 +190,7 @@ Tekintse meg [a vonatot az összes adattal](luis-how-to-train.md#train-with-all-
 ## <a name="app-publishing"></a>Alkalmazások közzététele
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Mi a bérlő azonosítója a "kulcs hozzáadása az alkalmazáshoz" ablakban?
-Az Azure-ban a bérlő a szolgáltatáshoz társított ügyfelet vagy szervezetet jelöli. A **címtár-azonosító** mezőben keresse meg a bérlő azonosítóját a Azure Portal **Azure Active Directory**a  >  **Manage**  >  **Tulajdonságok**kezelése lehetőség kiválasztásával.
+Az Azure-ban a bérlő a szolgáltatáshoz társított ügyfelet vagy szervezetet jelöli. A **címtár-azonosító** mezőben keresse meg a bérlő azonosítóját a Azure Portal **Azure Active Directory** a  >  **Manage**  >  **Tulajdonságok** kezelése lehetőség kiválasztásával.
 
 ![Bérlő azonosítója a Azure Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -224,7 +224,7 @@ A szerzői kulcsok a [szerzői műveletek elvégzése](luis-migration-authoring.
 ## <a name="app-management"></a>Alkalmazáskezelés
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Hogyan letölti a felhasználói hosszúságú kimondott szöveg naplóját?
-Alapértelmezés szerint a LUIS-alkalmazás a felhasználóktól hosszúságú kimondott szöveg naplózza. A felhasználók által a LUIS-alkalmazásba küldött hosszúságú kimondott szöveg letöltéséhez lépjen a **saját alkalmazások**elemre, és válassza ki az alkalmazást. A környezetfüggő eszköztáron válassza a **végponti naplók exportálása**lehetőséget. A napló vesszővel tagolt (CSV) fájlként van formázva.
+Alapértelmezés szerint a LUIS-alkalmazás a felhasználóktól hosszúságú kimondott szöveg naplózza. A felhasználók által a LUIS-alkalmazásba küldött hosszúságú kimondott szöveg letöltéséhez lépjen a **saját alkalmazások** elemre, és válassza ki az alkalmazást. A környezetfüggő eszköztáron válassza a **végponti naplók exportálása** lehetőséget. A napló vesszővel tagolt (CSV) fájlként van formázva.
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Hogyan lehet letiltani a hosszúságú kimondott szöveg naplózását?
 Kikapcsolhatja a felhasználói hosszúságú kimondott szöveg naplózását `log=false` a végpont URL-címének beállításával, amelyet az ügyfélalkalmazás a Luis lekérdezésére használ. A naplózás kikapcsolása azonban letiltja a LUIS-alkalmazás hosszúságú kimondott szöveg, vagy javíthatja az [aktív tanuláson](luis-concept-review-endpoint-utterances.md#what-is-active-learning)alapuló teljesítményt. Ha adatvédelmi okokból állítja be az `log=false` adatokat, nem töltheti le a felhasználói hosszúságú kimondott szöveg származó rekordokat a Luis-ból, vagy a hosszúságú kimondott szöveg használatával javíthatja az alkalmazását.
@@ -268,17 +268,17 @@ Az első probléma az, hogy elkülöníti a problémát, ha a probléma LUIS-hez
 #### <a name="resolve-issue-in-luis"></a>Probléma megoldása a LUIS-ben
 A Luis- [végponttal](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)azonos Kimondás a Luis-nek. Ha hibaüzenetet kap, oldja meg a problémát a LUIS-ben, amíg a hibát már nem adja vissza. Gyakori hibák a következők:
 
-* `Out of call volume quota. Quota will be replenished in <time>.` – Ez a probléma azt jelzi, hogy egy szerzői kulcsból egy [végponti kulcsra](luis-how-to-azure-subscription.md) kell váltania, vagy módosítania kell a [szolgáltatási szinteket](luis-how-to-azure-subscription.md#change-pricing-tier).
+* `Out of call volume quota. Quota will be replenished in <time>.` – Ez a probléma azt jelzi, hogy egy szerzői kulcsból egy [végponti kulcsra](luis-how-to-azure-subscription.md) kell váltania, vagy módosítania kell a [szolgáltatási szinteket](luis-how-to-azure-subscription.md#change-the-pricing-tier).
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Probléma megoldása Azure Bot Service
 
 Ha a Azure Bot Service használja, és a probléma az, hogy a **webes csevegésben a teszt** visszaadja `Sorry, my bot code is having an issue` , ellenőrizze a naplókat:
 
-1. A robot Azure Portal a robot **kezelése** szakaszban válassza a **Létrehozás**lehetőséget.
+1. A robot Azure Portal a robot **kezelése** szakaszban válassza a **Létrehozás** lehetőséget.
 1. Nyissa meg az online Kódszerkesztő alkalmazást.
 1. A felső, kék navigációs sávban válassza ki a robot nevét (a második elem jobbra).
-1. Az eredményül kapott legördülő listában válassza a **kudu-konzol megnyitása**lehetőséget.
-1. Válassza ki a **LogFiles**elemet, majd válassza az **alkalmazás**lehetőséget. Tekintse át az összes naplófájlt. Ha nem látja a hibát az alkalmazás mappájában, tekintse át az összes naplófájlt a **LogFiles (naplófájlok**) területen.
+1. Az eredményül kapott legördülő listában válassza a **kudu-konzol megnyitása** lehetőséget.
+1. Válassza ki a **LogFiles** elemet, majd válassza az **alkalmazás** lehetőséget. Tekintse át az összes naplófájlt. Ha nem látja a hibát az alkalmazás mappájában, tekintse át az összes naplófájlt a **LogFiles (naplófájlok** ) területen.
 1. Ne felejtse el újraépíteni a projektet, ha olyan lefordított nyelvet használ, mint például a C#.
 
 > [!Tip]

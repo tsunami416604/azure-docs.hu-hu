@@ -1,20 +1,20 @@
 ---
-title: Tudásbázis tervezése – QnA Maker
+title: Tudásbázis kialakítása – QnA Maker fogalmak
 description: Megtudhatja, hogyan tervezhet tudásbázist – QnA Maker.
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: b2661b61e0422f796813be0908d866028ee128a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c21c82b5fd024598da30f4ac7b1ed01e64561e3b
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776901"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576189"
 ---
 # <a name="question-and-answer-pair-concepts"></a>Kérdések és válaszok – pár fogalmak
 
-A Tudásbázis kérdések és válaszok (QnA) párokból áll.  Minden pár egyetlen választ tartalmaz, és egy pár tartalmazza az adott _válaszhoz_tartozó összes információt. A válasz egy adatbázis-sorra vagy egy adatstruktúra-példányra is lazán hasonlíthat.
+A Tudásbázis kérdések és válaszok (QnA) párokból áll.  Minden pár egyetlen választ tartalmaz, és egy pár tartalmazza az adott _válaszhoz_ tartozó összes információt. A válasz egy adatbázis-sorra vagy egy adatstruktúra-példányra is lazán hasonlíthat.
 
 ## <a name="question-and-answer-pairs"></a>Kérdés-válasz párok
 
@@ -23,13 +23,13 @@ A kérdés-válasz (QnA) pár **kötelező** beállításai a következők:
 * a **felhasználói lekérdezésnek a QnA Maker** gépi tanuláshoz használt szövege, amely a felhasználó kérdéséhez igazodik a különböző szóhasználattal, de ugyanaz a válasz
 * a **Válasz** – a pár válasza az a válasz, amelyet a rendszer akkor ad vissza, amikor egy felhasználói lekérdezés megfelel a kapcsolódó kérdésnek
 
-Az egyes párokat **azonosítók**jelölik.
+Az egyes párokat **azonosítók** jelölik.
 
 A párok **opcionális** beállításai a következők:
 
 * **A kérdés alternatív formái** – ez segít QnA Maker a megfelelő választ visszaadni a kérdéses szövegezések széles körére
-* **Metaadatok**: a metaadatok egy QnA-párral vannak társítva, és kulcs-érték párokként jelennek meg. A metaadatok címkéi a QnA párok szűrésére és a lekérdezési egyeztetést végző készlet korlátozására használhatók.
-* Többfordulatú **kérések**, amelyek a több fordulatos beszélgetés folytatására szolgálnak
+* **Metaadatok** : a metaadatok egy QnA-párral vannak társítva, és kulcs-érték párokként jelennek meg. A metaadatok címkéi a QnA párok szűrésére és a lekérdezési egyeztetést végző készlet korlátozására használhatók.
+* Többfordulatú **kérések** , amelyek a több fordulatos beszélgetés folytatására szolgálnak
 
 ![QnA Maker tudásbázisok](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 

@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: f3ecf8ef22d3f1d66b7148b809475a830c7e9f13
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 10/30/2020
+ms.openlocfilehash: 47c484268573334057e6b4dd14bbae849f9ce774
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318584"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577221"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Az Azure Data Share támogatott adattárai
 
@@ -23,14 +23,15 @@ Ebből a cikkből megismerheti az Azure-adatmegosztások által támogatott Azur
 
 Az alábbi táblázat az Azure-adatmegosztás támogatott adatforrásait részletezi. 
 
-| Adattár | Pillanatkép-alapú megosztás | Helyi megosztás 
-|:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob Storage |✓ | |
-| 1. generációs Azure Data Lake Storage |✓ | |
-| 2. generációs Azure Data Lake Storage |✓ ||
-| Azure SQL Database |✓ | |
-| Azure szinapszis Analytics (korábban Azure SQL DW) |✓ | |
-| Azure Data Explorer | |✓ |
+| Adattár | Pillanatkép-alapú megosztás (teljes pillanatkép) | Pillanatkép-alapú megosztás (növekményes pillanatkép) | Helyi megosztás 
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure Blob Storage |✓ |✓ | |
+| 1. generációs Azure Data Lake Storage |✓ |✓ | |
+| 2. generációs Azure Data Lake Storage |✓ |✓ ||
+| Azure SQL Database |✓ | | |
+| Azure szinapszis Analytics (korábban Azure SQL DW) |✓ | | |
+| Az Azure szinapszis Analytics (munkaterület) SQL-készlete | Nyilvános előzetes verzió | | |
+| Azure Data Explorer | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Adattár támogatási mátrixa
 
@@ -38,14 +39,15 @@ Az Azure-beli adatmegosztás rugalmasságot biztosít az adattáraknak az adatt�
 
 Az alábbi táblázat a különböző kombinációkat és választásokat ismerteti, amelyeket az adatfogyasztók az adatmegosztás elfogadásakor és konfigurálásakor tartalmaznak. Az adatkészlet-hozzárendelések konfigurálásával kapcsolatos további információkért lásd: [adatkészlet-hozzárendelések konfigurálása](how-to-configure-mapping.md).
 
-| Adattár | Azure Blob Storage | 1. generációs Azure Data Lake Storage | 2. generációs Azure Data Lake Storage | Azure SQL Database | Azure Synapse Analytics | Azure Data Explorer
-|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob Storage | ✓ || ✓ ||
-| 1. generációs Azure Data Lake Storage | ✓ | | ✓ ||
-| 2. generációs Azure Data Lake Storage | ✓ | | ✓ ||
-| Azure SQL Database | ✓ | | ✓ | ✓ | ✓ ||
-| Azure szinapszis Analytics (korábban Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ ||
-| Azure Data Explorer |||||| ✓ |
+| Adattár | Azure Blob Storage | 1. generációs Azure Data Lake Storage | 2. generációs Azure Data Lake Storage | Azure SQL Database | Azure szinapszis Analytics (korábban Azure SQL DW) | Az Azure szinapszis Analytics (munkaterület) SQL-készlete | Azure Data Explorer
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
+| Azure Blob Storage | ✓ || ✓ |||
+| 1. generációs Azure Data Lake Storage | ✓ | | ✓ |||
+| 2. generációs Azure Data Lake Storage | ✓ | | ✓ |||
+| Azure SQL Database | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Azure szinapszis Analytics (korábban Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Az Azure szinapszis Analytics (munkaterület) SQL-készlete | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Azure Data Explorer ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>Megosztás egy Storage-fiókból
 Az Azure-beli adatmegosztás támogatja a fájlok, mappák és fájlrendszerek megosztását Azure Data Lake Gen1 és Azure Data Lake Gen2. Emellett támogatja a Blobok, mappák és tárolók megosztását az Azure Blob Storage-ból. Jelenleg csak a Block blob támogatott. Ha a fájlrendszer, a tárolók vagy a mappák a pillanatkép-alapú megosztásban vannak megosztva, az adatfogyasztó dönthet úgy, hogy teljes másolatot készít a megosztási adatokról, vagy a növekményes pillanatkép-képességgel csak az új vagy frissített fájlokat másolja. A növekményes pillanatkép a fájlok utolsó módosításának időpontján alapul. A rendszer felülírja az azonos nevű meglévő fájlokat.
@@ -53,7 +55,7 @@ Az Azure-beli adatmegosztás támogatja a fájlok, mappák és fájlrendszerek m
 A részletekért tekintse [meg az Azure-Blob Storage és Azure Data Lake Storage adatainak megosztása és fogadása](how-to-share-from-storage.md) című témakört.
 
 ## <a name="share-from-a-sql-based-source"></a>Megosztás SQL-alapú forrásból
-Az Azure-beli adatmegosztás támogatja a táblák és nézetek megosztását a Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL DW) használatával. Az adatfogyasztók dönthetnek úgy, hogy elfogadják az Azure Data Lake Storage Gen2 vagy az Azure Blob Storage CSV-vagy Parque-fájlként, valamint a Azure SQL Database és az Azure szinapszis Analytics táblázatként való elfogadását.
+Az Azure-beli adatmegosztás támogatja a táblák és nézetek megosztását a Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL DW) használatával, valamint a táblák megosztását az Azure szinapszis Analytics (munkaterület) SQL-készletből. Az adatfogyasztók dönthetnek úgy, hogy elfogadják az Azure Data Lake Storage Gen2 vagy az Azure Blob Storage CSV-vagy Parque-fájlként, valamint a Azure SQL Database és az Azure szinapszis Analytics táblázatként való elfogadását.
 
 Amikor Azure Data Lake Store Gen2 vagy Azure Blob Storageba fogadja az adatfogadást, a teljes Pillanatképek felülírják a célfájl tartalmát, ha már létezik.
 Amikor az Adatfogadás a táblába történik, és ha a céltábla még nem létezik, az Azure-beli adatmegosztás létrehozza az SQL-táblázatot a forrás sémával. Ha már létezik ilyen nevű céltábla, a rendszer elveti és felülírja a legújabb teljes pillanatképtel. A növekményes Pillanatképek jelenleg nem támogatottak.

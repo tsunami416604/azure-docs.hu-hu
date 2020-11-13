@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: fc62c87fd12457c60d3eb26cba6814aa1df76f87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839214"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566095"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Egyéni parancsok tevékenység küldése ügyfélalkalmazás számára
 
@@ -36,15 +36,17 @@ A következő feladatokat hajtja végre:
 ## <a name="setup-send-activity-to-client"></a>A telepítő tevékenység küldése az ügyfélnek 
 1. Nyissa meg a korábban létrehozott egyéni parancsok alkalmazást
 1. Válassza a **TurnOnOff** parancsot, válassza a **ConfirmationResponse** lehetőséget a befejezési szabály területen, majd válassza **a művelet hozzáadása** lehetőséget.
-1. Az **új művelet típusa**területen válassza a **tevékenység küldése ügyfélnek** lehetőséget.
+1. Az **új művelet típusa** területen válassza a **tevékenység küldése ügyfélnek** lehetőséget.
 1. Az alábbi JSON másolása a **tevékenység tartalmába**
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
 1. Kattintson a **Save (Mentés** ) gombra egy új szabály létrehozásához egy küldési tevékenység művelettel, a **betanítással** és a módosítás **közzétételével**
 
@@ -55,7 +57,7 @@ A következő feladatokat hajtja végre:
 
 [Útmutató: az ügyfélalkalmazás beállítása a SPEECH SDK-val (előzetes verzió)](./how-to-custom-commands-setup-speech-sdk.md), a Speech SDK-val létrehozott UWP-ügyfélalkalmazás olyan parancsokat kezelt, mint például a `turn on the tv` , `turn off the fan` . Néhány vizualizáció hozzáadásával megtekintheti a parancsok eredményét.
 
-Ha **be** -vagy **kikapcsolt**szöveggel rendelkező címkével ellátott mezőket szeretne felvenni, adja hozzá a következő XML-blokkot a StackPanel `MainPage.xaml` .
+Ha **be** -vagy **kikapcsolt** szöveggel rendelkező címkével ellátott mezőket szeretne felvenni, adja hozzá a következő XML-blokkot a StackPanel `MainPage.xaml` .
 
 ```xml
 <StackPanel Orientation="Vertical" H......>
@@ -83,8 +85,8 @@ Ha **be** -vagy **kikapcsolt**szöveggel rendelkező címkével ellátott mezők
 Mivel létrehozott egy JSON-adattartalmat, a deszerializálás kezeléséhez hozzá kell adnia egy hivatkozást a [JSON.net](https://www.newtonsoft.com/json) -könyvtárhoz.
 
 1. A jobb ügyfél a megoldás.
-1. Válassza **a megoldás NuGet-csomagok kezelése**lehetőséget, majd kattintson a **Tallózás gombra** . 
-1. Ha már telepített **Newtonsoft.jsa-on**, győződjön meg arról, hogy a verziószáma legalább 12.0.3. Ha nem, lépjen a **NuGet-csomagok kezelése a megoldáshoz-frissítésekhez**, és keressen rá **Newtonsoft.jsa** frissítéshez. Ez az útmutató a 12.0.3 verzióját használja.
+1. Válassza **a megoldás NuGet-csomagok kezelése** lehetőséget, majd kattintson a **Tallózás gombra** . 
+1. Ha már telepített **Newtonsoft.jsa-on** , győződjön meg arról, hogy a verziószáma legalább 12.0.3. Ha nem, lépjen a **NuGet-csomagok kezelése a megoldáshoz-frissítésekhez** , és keressen rá **Newtonsoft.jsa** frissítéshez. Ez az útmutató a 12.0.3 verzióját használja.
 
     > [!div class="mx-imgBorder"]
     > ![Tevékenység-adattartalom küldése](media/custom-commands/send-activity-to-client-json-nuget.png)
@@ -114,8 +116,8 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     if (name.Equals("UpdateDeviceState"))
     {
         Debug.WriteLine("Here");
-        var state = activity?.device != null ? activity.state.ToString() : string.Empty;
-        var device = activity?.device != null ? activity.device.ToString() : string.Empty;
+        var state = activity?.value?.state != null ? activity.value.state.ToString() : string.Empty;
+        var device = activity?.value?.device != null ? activity.value.device.ToString() : string.Empty;
 
         if (state.Equals("on") || state.Equals("off"))
         {

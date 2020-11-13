@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78165e9c14d4a83dbc20cbccd2f31dc8ac4c79ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53b8d74d6eb35347d6ac5b27d12fa5b5eaed2582
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440858"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566367"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure-beli virtuális WAN-naplók és-metrikák
 
@@ -66,7 +66,7 @@ A következő lépések segítségével megkeresheti és megtekintheti a metrik�
 
 4. A **metrikák** lapon megtekintheti az Önt érdeklő mérőszámokat.
 
-   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="A képernyőképen egy olyan hely jelenik meg, amelyen a hely a V P N ablaktáblán látható, Azure Monitor kiválasztott nézettel.":::
+   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="Képernyőkép, amely megjeleníti a &quot;metrikák&quot; oldalt a Kiemelt kategóriákkal.":::
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic"></a>Diagnosztikai naplók
 
@@ -93,19 +93,19 @@ A következő lépések segítenek a diagnosztika megkeresésében és megtekint
 
 1. A portálon navigáljon a virtuális WAN-erőforráshoz. A portál virtuális WAN lapjának **Áttekintés** szakaszában válassza az **Essentials** elemet a nézet kibontásához és az erőforráscsoport adatainak beszerzéséhez. Másolja ki az erőforráscsoport adatait.
 
-   :::image type="content" source="./media/logs-metrics/3.png" alt-text="A képernyőképen egy olyan hely jelenik meg, amelyen a hely a V P N ablaktáblán látható, Azure Monitor kiválasztott nézettel.":::
+   :::image type="content" source="./media/logs-metrics/3.png" alt-text="Képernyőkép, amely az &quot;áttekintés&quot; szakaszt jeleníti meg a &quot;Copy&quot; (másolás) gombra mutató nyíllal.":::
 
-2. A figyelés szakaszban navigáljon az erőforráscsoporthoz. Válassza a **diagnosztikai beállítások**lehetőséget, majd adja meg az erőforrás-információkat. Ez a cikk [korábbi részében](#metrics-steps) a 2. lépésben átmásolt erőforrás-információ.
+2. A figyelés szakaszban navigáljon az erőforráscsoporthoz. Válassza a **diagnosztikai beállítások** lehetőséget, majd adja meg az erőforrás-információkat. Ez a cikk [korábbi részében](#metrics-steps) a 2. lépésben átmásolt erőforrás-információ.
 
-   :::image type="content" source="./media/logs-metrics/4.png" alt-text="A képernyőképen egy olyan hely jelenik meg, amelyen a hely a V P N ablaktáblán látható, Azure Monitor kiválasztott nézettel.":::
+   :::image type="content" source="./media/logs-metrics/4.png" alt-text="Képernyőkép, amely megjeleníti a &quot;Figyelés&quot; szakaszt az &quot;erőforrás&quot; legördülő menüre mutató nyíllal.":::
 
-3. Az eredmények lapon válassza a **+ diagnosztikai beállítás hozzáadása**lehetőséget, majd válasszon egy beállítást. Dönthet úgy is, hogy elküldi Log Analytics, streamet egy Event hub-ba, vagy egyszerűen archiválja a Storage-fiókba.
+3. Az eredmények lapon válassza a **+ diagnosztikai beállítás hozzáadása** lehetőséget, majd válasszon egy beállítást. Dönthet úgy is, hogy elküldi Log Analytics, streamet egy Event hub-ba, vagy egyszerűen archiválja a Storage-fiókba.
 
-   :::image type="content" source="./media/logs-metrics/5.png" alt-text="A képernyőképen egy olyan hely jelenik meg, amelyen a hely a V P N ablaktáblán látható, Azure Monitor kiválasztott nézettel.":::
+   :::image type="content" source="./media/logs-metrics/5.png" alt-text="metrikák lap":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Log Analytics minta lekérdezés
 
-A naplók az **Azure log Analytics-munkaterületen**találhatók. Beállíthat egy lekérdezést Log Analyticsban. A következő példa egy lekérdezést tartalmaz a helyek közötti útvonal-diagnosztika beszerzéséhez.
+A naplók az **Azure log Analytics-munkaterületen** találhatók. Beállíthat egy lekérdezést Log Analyticsban. A következő példa egy lekérdezést tartalmaz a helyek közötti útvonal-diagnosztika beszerzéséhez.
 
 ```AzureDiagnostics | where Category == "RouteDiagnosticLog"```
 
@@ -119,9 +119,9 @@ Szükség esetén cserélje le az alábbi értékeket a **= =** érték után.
 
 ## <a name="activity-logs"></a><a name="activity-logs"></a>Tevékenységnaplók
 
-A rendszer alapértelmezés szerint gyűjti a **tevékenység naplójának** bejegyzéseit, és megtekintheti őket a Azure Portalban. Az Azure-tevékenység naplóinak (korábbi nevén *operatív naplók* és *naplók*) használatával megtekintheti az Azure-előfizetéséhez benyújtott összes műveletet.
+A rendszer alapértelmezés szerint gyűjti a **tevékenység naplójának** bejegyzéseit, és megtekintheti őket a Azure Portalban. Az Azure-tevékenység naplóinak (korábbi nevén *operatív naplók* és *naplók* ) használatával megtekintheti az Azure-előfizetéséhez benyújtott összes műveletet.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A Azure Firewall naplók és mérőszámok figyelésének megismeréséhez tekintse meg az [oktatóanyag: Azure Firewall naplók figyelése](../firewall/tutorial-diagnostics.md)című témakört.
+* A Azure Firewall naplók és mérőszámok figyelésének megismeréséhez tekintse meg az [oktatóanyag: Azure Firewall naplók figyelése](../firewall/firewall-diagnostics.md)című témakört.
 * Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse meg a [Azure monitor mérőszámait](../azure-monitor/platform/data-platform-metrics.md).

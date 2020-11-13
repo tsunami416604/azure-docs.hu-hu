@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 11/11/2020
 ms.author: aahi
-ms.openlocfilehash: 348fb301d1a36c8df405c641f7644889417b11ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb9b0da609169288521d21ee6d5e412a786c7549
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91545796"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94574345"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure Cognitive Services tároló biztonsága
 
@@ -33,7 +33,7 @@ Alternatív és *biztonságos* megközelítésként a Cognitive Services tárol�
 
 ### <a name="container-networking"></a>Tárolóalapú hálózatkezelés
 
-A Cognitive Services tárolók számlázási célú mérési adatok küldéséhez szükségesek. Az egyetlen kivétel, a *kapcsolat nélküli tárolók* , amelyek eltérő számlázási módszert követnek. Nem sikerült engedélyezni a különböző hálózati csatornák listáját, amelyeken a Cognitive Services tárolók támaszkodnak, így nem fog működni a tároló.
+A Cognitive Services tárolók számlázási célú mérési adatok küldéséhez szükségesek. Nem sikerült engedélyezni a különböző hálózati csatornák listáját, amelyeken a Cognitive Services tárolók támaszkodnak, így nem fog működni a tároló.
 
 #### <a name="allow-list-cognitive-services-domains-and-ports"></a>Engedélyezési lista Cognitive Services tartományok és portok
 

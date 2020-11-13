@@ -1,6 +1,6 @@
 ---
 title: LDAP-hitelesítés Azure Active Directory
-description: A hitelesítési minta megvalósítására szolgáló építészeti útmutató
+description: Építészeti útmutató az LDAP-hitelesítés Azure Active Directory használatával történő eléréséhez.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a70cb4754d98f4573670860c510692a7a2d134c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d5314758acecae2a9d68f2405fc1c3d2196950b4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114242"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577056"
 ---
 # <a name="ldap-authentication-with-azure-active-directory"></a>LDAP-hitelesítés Azure Active Directory
 
@@ -40,23 +40,23 @@ Egy alkalmazásnak vagy szolgáltatásnak LDAP-hitelesítést kell használnia.
 
 ## <a name="components-of-system"></a>A System összetevői
 
-* **Felhasználó**: az LDAP-függő alkalmazások elérése böngészőn keresztül.
+* **Felhasználó** : az LDAP-függő alkalmazások elérése böngészőn keresztül.
 
-* **Webböngésző**: az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló felület.
+* **Webböngésző** : az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló felület.
 
-* **Virtual Network**: egy Azure-beli magánhálózati hálózat, amelyen keresztül az örökölt alkalmazás képes az LDAP-szolgáltatások használatára. 
+* **Virtual Network** : egy Azure-beli magánhálózati hálózat, amelyen keresztül az örökölt alkalmazás képes az LDAP-szolgáltatások használatára. 
 
-* **Örökölt alkalmazások**: olyan alkalmazások vagy kiszolgálói munkaterhelések, amelyek az Azure-ban egy virtuális hálózaton üzembe helyezett LDAP-t igényelnek, vagy amelyek hálózati útvonalakon keresztül láthatók a AD DS példányok IP-címeire. 
+* **Örökölt alkalmazások** : olyan alkalmazások vagy kiszolgálói munkaterhelések, amelyek az Azure-ban egy virtuális hálózaton üzembe helyezett LDAP-t igényelnek, vagy amelyek hálózati útvonalakon keresztül láthatók a AD DS példányok IP-címeire. 
 
-* **Azure ad**: a szervezet helyi könyvtárából származó azonosító adatok szinkronizálása Azure ad Connect használatával.
+* **Azure ad** : a szervezet helyi könyvtárából származó azonosító adatok szinkronizálása Azure ad Connect használatával.
 
-* **Azure ad Domain Services (AD DS)**: egyirányú szinkronizálást végez az Azure ad-ből, hogy hozzáférést biztosítson a felhasználók, csoportok és hitelesítő adatok központi készletéhez. A AD DS példány egy virtuális hálózathoz van rendelve. Az Azure-ban a AD DShoz rendelt virtuális hálózathoz csatlakozó alkalmazások, szolgáltatások és virtuális gépek olyan általános AD DS funkciókat használhatnak, mint az LDAP, a tartományhoz való csatlakozás, a csoportházirend, a Kerberos és az NTLM-hitelesítés.
+* **Azure ad Domain Services (AD DS)** : egyirányú szinkronizálást végez az Azure ad-ből, hogy hozzáférést biztosítson a felhasználók, csoportok és hitelesítő adatok központi készletéhez. A AD DS példány egy virtuális hálózathoz van rendelve. Az Azure-ban a AD DShoz rendelt virtuális hálózathoz csatlakozó alkalmazások, szolgáltatások és virtuális gépek olyan általános AD DS funkciókat használhatnak, mint az LDAP, a tartományhoz való csatlakozás, a csoportházirend, a Kerberos és az NTLM-hitelesítés.
    > [!NOTE]
    >  Olyan környezetekben, ahol a szervezet nem tudja szinkronizálni a jelszó-kivonatokat, vagy ha a felhasználók intelligens kártyával jelentkeznek be, javasoljuk, hogy használjon AD DS erőforrás-erdőt. 
 
-* **Azure ad Connect**: egy eszköz, amely a helyszíni identitás információit Microsoft Azure Adre szinkronizálja. A központi telepítési varázsló és az interaktív funkciók segítségével konfigurálhatja a kapcsolódáshoz szükséges előfeltételeket és összetevőket, beleértve a szinkronizálást és a bejelentkezést Active Directory az Azure AD-be. 
+* **Azure ad Connect** : egy eszköz, amely a helyszíni identitás információit Microsoft Azure Adre szinkronizálja. A központi telepítési varázsló és az interaktív funkciók segítségével konfigurálhatja a kapcsolódáshoz szükséges előfeltételeket és összetevőket, beleértve a szinkronizálást és a bejelentkezést Active Directory az Azure AD-be. 
 
-* **Active Directory**: [a helyszíni identitási adatokat tároló címtárszolgáltatás, például felhasználói és fiókadatok](https://www.dnsstuff.com/active-directory-service-accounts), valamint biztonsági információk, például jelszavak.
+* **Active Directory** : [a helyszíni identitási adatokat tároló címtárszolgáltatás, például felhasználói és fiókadatok](https://www.dnsstuff.com/active-directory-service-accounts), valamint biztonsági információk, például jelszavak.
 
 ## <a name="implement-ldap-authentication-with-azure-ad"></a>LDAP-hitelesítés implementálása az Azure AD-vel
 

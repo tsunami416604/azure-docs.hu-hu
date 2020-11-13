@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights Java konfigurációs lehetőség
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: b703a708af564b9dafc8c1409333a2cfed6d2653
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: f951048da753a0ba38d6c10dc65bdca5205727f4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427700"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577362"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure Monitor Application Insights Java konfigurációs lehetőségei
 
@@ -336,7 +336,7 @@ Az igényeinek megfelelően konfigurálja az adott beállításokat.
       "enabled": true
     }
   },
-  "httpProxy": {
+  "proxy": {
   },
   "preview": {
     "processors": [

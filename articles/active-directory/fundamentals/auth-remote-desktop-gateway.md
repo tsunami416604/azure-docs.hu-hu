@@ -1,6 +1,6 @@
 ---
 title: Szolgáltatások Távoli asztali átjáró Azure Active Directory
-description: A hitelesítési minta megvalósítására szolgáló építészeti útmutató
+description: Építészeti útmutató Távoli asztali átjáró szolgáltatások Azure Active Directorysal való eléréséhez.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff099d41970ad4d78d5c6035a60f448f29ab24b1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 57466cccb71444d5711a9221c324a107757c5e82
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114199"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576795"
 ---
 # <a name="remote-desktop-gateway-services"></a>Távoli asztali átjáró szolgáltatások
 
@@ -32,15 +32,15 @@ Meg kell adnia a távelérést, és biztosítania kell a Távoli asztali szolgá
 
 ## <a name="components-of-system"></a>A System összetevői
 
-* **Felhasználó**: az Application proxy által kiszolgált RDS elérését biztosítja.
+* **Felhasználó** : az Application proxy által kiszolgált RDS elérését biztosítja.
 
-* **Webböngésző**: az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló összetevő.
+* **Webböngésző** : az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló összetevő.
 
-* **Azure ad**: hitelesíti a felhasználót. 
+* **Azure ad** : hitelesíti a felhasználót. 
 
-* **Alkalmazásproxy szolgáltatás**: fordított proxyként működik a kérésnek a felhasználótól az RDS-be való továbbításához. Az alkalmazásproxy is kényszerítheti a feltételes hozzáférési szabályzatok alkalmazását. 
+* **Alkalmazásproxy szolgáltatás** : fordított proxyként működik a kérésnek a felhasználótól az RDS-be való továbbításához. Az alkalmazásproxy is kényszerítheti a feltételes hozzáférési szabályzatok alkalmazását. 
 
-* **Távoli asztali szolgáltatások**: különálló virtualizált alkalmazások platformja, amely biztonságos mobil-és távoli asztali hozzáférést biztosít, és lehetővé teszi a végfelhasználók számára, hogy alkalmazásaikat és asztalait a felhőből futtassák. 
+* **Távoli asztali szolgáltatások** : különálló virtualizált alkalmazások platformja, amely biztonságos mobil-és távoli asztali hozzáférést biztosít, és lehetővé teszi a végfelhasználók számára, hogy alkalmazásaikat és asztalait a felhőből futtassák. 
 
 ## <a name="implement-remote-desktop-gateway-services-with-azure-ad"></a>Távoli asztali átjáró szolgáltatások implementálása az Azure AD-vel
 

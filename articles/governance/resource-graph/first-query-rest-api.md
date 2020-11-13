@@ -3,12 +3,12 @@ title: 'Rövid útmutató: az első REST API lekérdezés'
 description: Ebben a rövid útmutatóban követheti az erőforrás-gráf végpontjának meghívásához REST API és az első lekérdezés futtatásához szükséges lépéseket.
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8be0556b6aa2fd234c0f3e25d83c0239c8f674bb
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: eafbd0b408ab50f901d52e59efcfbd5f89b46fe5
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057212"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566078"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a REST API használatával
 
@@ -30,7 +30,7 @@ Az Azure Resource Graph specifikációi: [Azure Resource graph REST API](/rest/a
 
 ### <a name="rest-api-and-powershell"></a>A REST API és a PowerShell
 
-Ha még nem választott eszközt a REST API-hívások kezeléséhez, ennek az útmutatónak a keretében érdemes a PowerShellt használnia. Az alábbi mintakód egy fejlécet kap az Azure-beli hitelesítéshez. Hozzon létre egy hitelesítési fejlécet, vagy más néven **tulajdonosi jogkivonatot**, és adja meg a kapcsolódáshoz szükséges REST API URI-t a paraméterekkel vagy egy **kérelemtörzzsel**:
+Ha még nem választott eszközt a REST API-hívások kezeléséhez, ennek az útmutatónak a keretében érdemes a PowerShellt használnia. Az alábbi mintakód egy fejlécet kap az Azure-beli hitelesítéshez. Hozzon létre egy hitelesítési fejlécet, vagy más néven **tulajdonosi jogkivonatot** , és adja meg a kapcsolódáshoz szükséges REST API URI-t a paraméterekkel vagy egy **kérelemtörzzsel** :
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if not using Cloud Shell
@@ -76,7 +76,6 @@ Az egyes REST API hívásokhoz tartozó kérelem törzsében van egy változó, 
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5"
-         }
      }
      ```
 
@@ -99,7 +98,6 @@ Az egyes REST API hívásokhoz tartozó kérelem törzsében van egy változó, 
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5 | order by name asc"
-         }
      }
      ```
 
@@ -122,7 +120,6 @@ Az egyes REST API hívásokhoz tartozó kérelem törzsében van egy változó, 
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | order by name asc | limit 5"
-         }
      }
      ```
 

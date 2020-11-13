@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29fff3a6a430e3bc1a0b3a13876b55d22f7cb545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208341"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566469"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Irányelvek a virtuális WAN-partnerek automatizálásához
 
@@ -33,9 +33,9 @@ Az ág-eszköz (a helyszíni VPN-eszköz vagy a SDWAN CPE) általában egy vezé
 
 ### <a name="additional-information"></a><a name ="additional"></a>További információ
 
-* [REST API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs) a virtuális központ létrehozásának automatizálásához
-* [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways) az Azure VPN Gateway virtuális WAN-hoz való automatizálásához
-* [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections) egy VPNSite Azure VPN-hubhoz való összekapcsolásához
+* [REST API](/rest/api/virtualwan/virtualhubs) a virtuális központ létrehozásának automatizálásához
+* [REST API](/rest/api/virtualwan/vpngateways) az Azure VPN Gateway virtuális WAN-hoz való automatizálásához
+* [REST API](/rest/api/virtualwan/vpnconnections) egy VPNSite Azure VPN-hubhoz való összekapcsolásához
 * [Alapértelmezett IPsec-házirendek](#default)
 
 ## <a name="customer-experience"></a><a name ="ae"></a>Felhasználói élmény
@@ -63,11 +63,11 @@ Az ügyfeleknek képesnek kell lenniük a virtuális WAN megfelelő hozzáféré
 
 ###  <a name="upload-branch-device-information"></a><a name="branch"></a>Ág-eszköz adatainak feltöltése
 
-Meg kell terveznie a felhasználói élményt az ág (helyszíni hely) adatainak az Azure-ba való feltöltéséhez. A VPNSite [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) -k használatával hozhatja létre a hely adatait a virtuális WAN-ban. Megadhatja az összes ág SDWAN/VPN-eszközt, vagy kiválaszthatja a megfelelő eszközök testreszabását.
+Meg kell terveznie a felhasználói élményt az ág (helyszíni hely) adatainak az Azure-ba való feltöltéséhez. A VPNSite [REST API](/rest/api/virtualwan/vpnsites) -k használatával hozhatja létre a hely adatait a virtuális WAN-ban. Megadhatja az összes ág SDWAN/VPN-eszközt, vagy kiválaszthatja a megfelelő eszközök testreszabását.
 
 ### <a name="device-configuration-download-and-connectivity"></a><a name="device"></a>Eszközök konfigurációjának letöltése és kapcsolata
 
-Ez a lépés az Azure-konfiguráció letöltését és a fiókirodai eszköz és az Azure Virtual WAN közötti kapcsolat beállítását foglalja magában. Ebben a lépésben a szolgáltatót nem használó ügyfél manuálisan letölti az Azure-konfigurációt, és alkalmazza azt a helyszíni SDWAN/VPN-eszközre. Szolgáltatóként automatizálja ezt a lépést. További információkért tekintse meg a letöltési [REST API-kat](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) . Az eszköz vezérlője a "GetVpnConfiguration" REST API hívhatja le az Azure-konfiguráció letöltéséhez.
+Ez a lépés az Azure-konfiguráció letöltését és a fiókirodai eszköz és az Azure Virtual WAN közötti kapcsolat beállítását foglalja magában. Ebben a lépésben a szolgáltatót nem használó ügyfél manuálisan letölti az Azure-konfigurációt, és alkalmazza azt a helyszíni SDWAN/VPN-eszközre. Szolgáltatóként automatizálja ezt a lépést. További információkért tekintse meg a letöltési [REST API-kat](/rest/api/virtualwan/vpnsitesconfiguration/download) . Az eszköz vezérlője a "GetVpnConfiguration" REST API hívhatja le az Azure-konfiguráció letöltéséhez.
 
 **Konfigurációs megjegyzések**
 

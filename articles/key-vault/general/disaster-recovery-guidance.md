@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 3cc4bdc0fabd9d1e209634a88bed1bf063db917c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aea5f0428fe55c0dae3734e196008cbc26a974b9
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597869"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576220"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Az Azure Key Vault rendelkezésre állása és redundanciája
 
@@ -23,11 +23,11 @@ Azure Key Vault több réteget is tartalmaz, így biztosíthatja, hogy a kulcsok
 > [!NOTE]
 > Ez az útmutató a tárolók esetében érvényes. A felügyelt HSM-készletek eltérő magas rendelkezésre állású és vész-helyreállítási modellt használnak. További információkért lásd: [felügyelt HSM vész-helyreállítási útmutató](../managed-hsm/disaster-recovery-guide.md) .
 
-A Key Vault tartalmát a régión belül, illetve legalább 150 mérfölddel arrébb egy másodlagos régióba replikálja a rendszer, a kulcsok és a titkok magas tartósságának fenntartása érdekében. Az egyes régiókkal kapcsolatos részletekért tekintse meg az [Azure párosított régiókról](../../best-practices-availability-paired-regions.md) szóló dokumentumot.
+A Key Vault tartalmát a régión belül, illetve legalább 150 mérfölddel arrébb egy másodlagos régióba replikálja a rendszer, de ugyanazon a földrajzon belül a kulcsok és titkok magas tartósságának fenntartása érdekében. Az adott régió párokkal kapcsolatos részletekért lásd: [Azure párosított régiók](../../best-practices-availability-paired-regions.md). A párosított régiók modelljének kivétele Brazília déli régiója, amely csak a Dél-Brazíliában található tárolt adatmegőrzési lehetőséget teszi lehetővé. Dél-Brazília a helyileg redundáns tárolás (LRS) használatával háromszor replikálja az adatait az adott helyen/régióban.   
 
 Ha a Key Vault szolgáltatásban lévő egyes összetevők meghibásodnak, a régión belüli alternatív összetevők, hogy kiszolgálják a kérést, hogy a rendszer ne csökkentse a funkciók romlását. A folyamat elindításához semmilyen műveletet nem kell végrehajtania, automatikusan megtörténik, és transzparens lesz.
 
-Abban a ritka esetben, ha egy teljes Azure-régió nem érhető el, az adott régióban Azure Key Vault a kérelmeket a rendszer automatikusan átirányítja (*feladatátvétel*) egy másodlagos régióba. Ha az elsődleges régió újra elérhetővé válik, a rendszer visszairányítja a kérelmeket az elsődleges régióhoz (a*sikertelen visszaállítást*). Többé nem kell semmit tennie, mert ez automatikusan megtörténik.
+Abban a ritka esetben, ha egy teljes Azure-régió nem érhető el, az adott régióban Azure Key Vault a kérelmeket a rendszer automatikusan átirányítja ( *feladatátvétel* ) egy másodlagos régióba. Ha az elsődleges régió újra elérhetővé válik, a rendszer visszairányítja a kérelmeket az elsődleges régióhoz (a *sikertelen visszaállítást* ). Többé nem kell semmit tennie, mert ez automatikusan megtörténik.
 
 A magas rendelkezésre állás kialakításán keresztül a Azure Key Vault nem igényel állásidőt karbantartási tevékenységekhez.
 

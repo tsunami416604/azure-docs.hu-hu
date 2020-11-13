@@ -4,12 +4,12 @@ description: A Azure Container Instances szolgáltatás számítási és memóri
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: e4fbf1023863f9f4c46e6bd2266f72ff2f7d7adc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2a833c93c80d932305f47b6e292e5e5df4d0cb95
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395869"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576614"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Erőforrások rendelkezésre állása Azure Container Instances Azure-régiókban
 
@@ -55,6 +55,9 @@ A következő régiók és maximális erőforrások elérhetők a Linux-tároló
 
 A következő maximális erőforrások érhetők el egy [GPU-erőforrásokkal](container-instances-gpu.md) (előzetes verzió) üzembe helyezett tároló csoport számára.
 
+> [!IMPORTANT]
+> Jelenleg a GPU-erőforrásokkal üzemelő példányok nem támogatottak az Azure-beli virtuális hálózatok üzembe helyezése során, és csak Linux-tárolók csoportjain érhetők el.
+
 | GPU SKU-i | GPU-szám | Max CPU (Max. CPU) | Maximális memória (GB) | Tárterület (GB) |
 | --- | --- | --- | --- | --- |
 | K80 | 1 | 6 | 56 | 50 |
@@ -67,6 +70,9 @@ A következő maximális erőforrások érhetők el egy [GPU-erőforrásokkal](c
 ## <a name="windows-container-groups"></a>Windows-tárolók csoportjai
 
 A következő régiók és maximális erőforrások elérhetők a [támogatott és előzetes](container-instances-faq.md#what-windows-base-os-images-are-supported) verziójú Windows Server-tárolókkal rendelkező tároló-csoportok számára.
+
+> [!IMPORTANT]
+> Jelenleg a Windows-tárolók csoportjaival üzemelő példányok nem támogatottak az Azure-beli virtuális hálózatok üzembe helyezése közben.
 
 ###  <a name="windows-server-2016"></a>Windows Server 2016
 
@@ -126,7 +132,7 @@ A következő régiók és maximális erőforrások elérhetők a [támogatott �
 | USA nyugati régiója | 4 | 16 | 4 | 16 | 20 |
 | USA 2. nyugati régiója | 2 | 8 | 4 | 16 | 20 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tájékoztassa a csapatot, ha további régiókat szeretne látni, vagy megnövelt erőforrás-elérhetőséget a [aka.MS/ACI/feedback](https://aka.ms/aci/feedback)címen.
 

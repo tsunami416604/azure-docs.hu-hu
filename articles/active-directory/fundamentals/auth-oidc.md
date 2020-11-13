@@ -1,6 +1,6 @@
 ---
 title: OpenID Connect-hitelesítés Azure Active Directory
-description: A hitelesítési minta megvalósítására szolgáló építészeti útmutató
+description: Építészeti útmutató az OpenID Connect hitelesítés megvalósításához Azure Active Directorysal.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6f2ad3b5e86eebfc2d6f1f42f8a2ab0520144b5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f38da0dd2dc2adc8049e2b307c861651a55ed700
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114207"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576988"
 ---
 # <a name="openid-connect-authentication-with-azure-active-directory"></a>OpenID Connect-hitelesítés Azure Active Directory
 
@@ -38,13 +38,13 @@ Felhasználói hozzáférésre és webes bejelentkezésre van szükség.
 
 ## <a name="components-of-system"></a>A System összetevői
 
-* **Felhasználó**: szolgáltatás kérése az alkalmazástól.
+* **Felhasználó** : szolgáltatás kérése az alkalmazástól.
 
-* **Megbízható ügynök**: az az összetevő, amellyel a felhasználó kommunikál. Ez a megbízható ügynök általában egy webböngésző.
+* **Megbízható ügynök** : az az összetevő, amellyel a felhasználó kommunikál. Ez a megbízható ügynök általában egy webböngésző.
 
-* **Application**(alkalmazás): az alkalmazás vagy az erőforrás-kiszolgáló, ahol az erőforrás vagy az adat található. Megbízhatónak tartja az identitás-szolgáltatót a megbízható ügynök biztonságos hitelesítéséhez és engedélyezéséhez. 
+* **Application** (alkalmazás): az alkalmazás vagy az erőforrás-kiszolgáló, ahol az erőforrás vagy az adat található. Megbízhatónak tartja az identitás-szolgáltatót a megbízható ügynök biztonságos hitelesítéséhez és engedélyezéséhez. 
 
-* **Azure ad**: a OIDC-szolgáltató, más néven az identitás-szolgáltató, biztonságosan felügyeli a felhasználó adatait, hozzáférését, valamint a folyamat részes felei közötti megbízhatósági kapcsolatokat. Hitelesíti a felhasználó identitását, engedélyezi és visszavonja az erőforrásokhoz való hozzáférést, és jogkivonatokat állít ki. 
+* **Azure ad** : a OIDC-szolgáltató, más néven az identitás-szolgáltató, biztonságosan felügyeli a felhasználó adatait, hozzáférését, valamint a folyamat részes felei közötti megbízhatósági kapcsolatokat. Hitelesíti a felhasználó identitását, engedélyezi és visszavonja az erőforrásokhoz való hozzáférést, és jogkivonatokat állít ki. 
 
 ## <a name="implement-oidc-with-azure-ad"></a>A OIDC megvalósítása az Azure AD-vel
 
