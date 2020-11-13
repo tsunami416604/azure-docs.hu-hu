@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 23077d7d6b476bcca0812dcff8660376568f7dd9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.date: 11/13/2020
+ms.openlocfilehash: 4dfe284a00052cbd1915d62355e1d7772f3712ab
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376332"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591869"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
@@ -31,6 +31,8 @@ Ez a modul megvalósítja az egy-és az összes módszert, amelyben a több kime
 Lényegében a modul az egyes modellek együttesét hozza létre, majd egyesíti az eredményeket, hogy egyetlen modellt hozzon létre, amely minden osztályt előre jelez. Bármely bináris osztályozó használható az egy-és az összes modell alapjaként.  
 
 Tegyük fel például, hogy egy [kétosztályos támogatási vektoros](two-class-support-vector-machine.md) modellt konfigurál, és a One-vs-all Multiclass modulba bemenetként adja meg. A modul kétosztályos támogatást hoz létre a kimeneti osztály összes tagjához. Ezután alkalmazza a One-versus-all metódust az összes osztály eredményeinek összevonásához.  
+
+A modul a sklearn OneVsRestClassifier használja, és további részletekért [itt](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html)talál további információt.
 
 ## <a name="how-to-configure-the-one-vs-all-multiclass-classifier"></a>Az One-vs-All Multiclass osztályozó konfigurálása  
 

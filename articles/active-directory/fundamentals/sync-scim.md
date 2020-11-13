@@ -1,6 +1,6 @@
 ---
 title: SCIM-szinkronizálás Azure Active Directory
-description: A szinkronizálási minta megvalósítására szolgáló építészeti útmutató
+description: Építészeti útmutató a SCIM-szinkronizálás megvalósításához Azure Active Directory használatával.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1dda465dd675e0f5f519f86289df2621be0b9bb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f957070ec94fc4c61089f31fe91261a2f52c4ee4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367856"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578858"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>SCIM-szinkronizálás Azure Active Directory
 
@@ -35,13 +35,13 @@ Automatikusan szeretné kiépíteni a felhasználói adatokat egy HCM rendszerb�
 
 ## <a name="components-of-system"></a>A System összetevői 
 
-* **HCM rendszer**: olyan alkalmazások és technológiák, amelyek lehetővé teszik a humántőke-felügyeleti folyamatokat, valamint a HR-folyamatokat támogató és automatizálható eljárásokat az alkalmazottak életciklusa során. 
+* **HCM rendszer** : olyan alkalmazások és technológiák, amelyek lehetővé teszik a humántőke-felügyeleti folyamatokat, valamint a HR-folyamatokat támogató és automatizálható eljárásokat az alkalmazottak életciklusa során. 
 
-* **Azure ad-kiépítési szolgáltatás**: a scim 2,0 protokollt használja az automatikus kiépítés számára. A szolgáltatás a SCIM-végponthoz csatlakozik az alkalmazáshoz, és a SCIM felhasználói objektum sémáját és a REST API-kat használja a felhasználók és csoportok kiépítése és kiépítése automatizálására.  
+* **Azure ad-kiépítési szolgáltatás** : a scim 2,0 protokollt használja az automatikus kiépítés számára. A szolgáltatás a SCIM-végponthoz csatlakozik az alkalmazáshoz, és a SCIM felhasználói objektum sémáját és a REST API-kat használja a felhasználók és csoportok kiépítése és kiépítése automatizálására.  
 
-* **Azure ad**: felhasználói adattár, amely az identitások és a hozzájuk tartozó jogosultságok életciklusának kezelésére szolgál. 
+* **Azure ad** : felhasználói adattár, amely az identitások és a hozzájuk tartozó jogosultságok életciklusának kezelésére szolgál. 
 
-* **Célrendszer**: az scim-végponttal rendelkező alkalmazás vagy rendszer, amely az Azure ad-kiépítés használatával lehetővé teszi a felhasználók és csoportok automatikus kiépítét.  
+* **Célrendszer** : az scim-végponttal rendelkező alkalmazás vagy rendszer, amely az Azure ad-kiépítés használatával lehetővé teszi a felhasználók és csoportok automatikus kiépítét.  
 
 ## <a name="implement-scim-with-azure-ad"></a>A SCIM megvalósítása az Azure AD-vel 
 

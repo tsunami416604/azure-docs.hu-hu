@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: a4a338a4d13715ba1ff7cb30c011757d5050ba05
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 85577a428f803e31aa33468496d7efca77933835
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100069"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579311"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>A költségek optimalizálása az Azure Blob Storage hozzáférési szintjeinek automatizálásával
 
@@ -80,9 +80,22 @@ Két módon adhat hozzá házirendet a Azure Portalon keresztül.
 
 1. A szabály feltételeinek megadásához válassza az **Alap Blobok** lehetőséget. A következő példában a blobokat a rendszer a lassú tárterületre helyezi át, ha 30 napig nem módosították őket.
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Életciklus-kezelés: szabály részleteinek hozzáadása lap Azure Portal" kezdetű blobokat.
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Életciklus-kezelési alap Blobok lapja Azure Portal":::
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Életciklus-kezelés: szabály részleteinek hozzáadása lap Azure Portal":::
+   Az **utolsó hozzáférés** lehetőség a következő régiókban érhető el előzetes verzióban:
+
+    - Közép-Franciaország
+    - Kelet-Kanada
+    - Közép-Kanada
+
+   > [!IMPORTANT]
+   > A legutóbbi hozzáférési idő követésének előzetes verziója csak a nem éles használatra használható. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
+   
+   Az **utolsó elérhető** beállítás használatához a Azure Portal **életciklus-kezelés** lapján válassza a **hozzáférés-követés engedélyezése** lehetőséget. További információ az **utolsó elért** lehetőségről: az [adatok áthelyezése az utolsó hozzáférés dátuma (előzetes verzió) alapján](#move-data-based-on-last-accessed-date-preview).
+
+1. Ha a **részletek** lapon a **Blobok korlátozása szűrőkkel** lehetőséget választotta, akkor a szűrő **beállítása** elemre kattintva hozzáadhat egy opcionális szűrőt. A következő példa a *mylifecyclecontainer* tárolóban lévő blobokra szűri a "log" kezdetű blobokat.
+
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Életciklus-felügyeleti szűrő beállított lapja Azure Portal":::
 
 1. Az új szabályzat hozzáadásához válassza a **Hozzáadás** lehetőséget.
 
@@ -226,13 +239,13 @@ Az életciklus-kezelési szabályzat egy JSON-dokumentum szabályainak gyűjtem�
 
 A szabályzatok a szabályok gyűjteményei:
 
-| Paraméter neve | Paraméter típusa | Megjegyzések |
+| Paraméter neve | Paraméter típusa | Jegyzetek |
 |----------------|----------------|-------|
 | `rules`        | Szabály objektumainak tömbje | Egy házirendben legalább egy szabályra van szükség. Egy házirendben legfeljebb 100 szabályt adhat meg.|
 
 A szabályzaton belüli szabályok több paraméterrel rendelkeznek:
 
-| Paraméter neve | Paraméter típusa | Megjegyzések | Kötelező |
+| Paraméter neve | Paraméter típusa | Jegyzetek | Kötelező |
 |----------------|----------------|-------|----------|
 | `name`         | Sztring |A szabály neve legfeljebb 256 alfanumerikus karaktert tartalmazhat. A szabály neve megkülönbözteti a kis-és nagybetűket. Egy szabályzaton belül egyedinek kell lennie. | Igaz |
 | `enabled`      | Logikai | Egy nem kötelező logikai érték, amely lehetővé teszi egy szabály ideiglenes letiltását. Az alapértelmezett érték igaz, ha nincs beállítva. | Hamis | 
@@ -302,7 +315,7 @@ A szűrő korlátozza a szabályok műveleteit a Blobok egy részhalmazára a St
 
 A szűrők a következők:
 
-| Szűrő neve | Szűrő típusa | Megjegyzések | Kötelező |
+| Szűrő neve | Szűrő típusa | Jegyzetek | Kötelező |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Előre definiált enumerálási értékek tömbje. | A jelenlegi kiadás támogatja `blockBlob` és `appendBlob` . A csak a törlést támogatja `appendBlob` , a set szintű beállítás nem támogatott. | Igen |
 | prefixMatch | Karakterláncok tömbje az előtagok megfeleltetéséhez. Mindegyik szabály legfeljebb 10 előtagot tud definiálni. Egy előtag-karakterláncnak a tároló nevével kell kezdődnie. Ha például egy szabályhoz tartozó összes blobot szeretné egyeztetni `https://myaccount.blob.core.windows.net/container1/foo/...` , a prefixMatch a következő: `container1/foo` . | Ha nem határoz meg prefixMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik. | Nem |
@@ -317,7 +330,7 @@ Ha a futtatási feltétel teljesül, a rendszer a szűrt blobokra alkalmazza a m
 
 Az életciklus-kezelés támogatja a Blobok, a korábbi blob-verziók és a blob-Pillanatképek leválasztását és törlését. Adjon meg legalább egy műveletet az alapblobok, a korábbi blob-verziók vagy a blob-Pillanatképek minden szabályához.
 
-| Művelet                      | Alap blob                                  | Pillanatkép      | Verzió
+| Műveletek                      | Alap blob                                  | Pillanatkép      | Verzió
 |-----------------------------|--------------------------------------------|---------------|---------------|
 | tierToCool                  | Támogatott: `blockBlob`                  | Támogatott     | Támogatott     |
 | enableAutoTierToHotFromCool | Támogatott: `blockBlob`                  | Nem támogatott | Nem támogatott |
@@ -426,7 +439,7 @@ A legutóbbi hozzáférési idő nyomon követése a következő típusú Storag
 
 Ha a Storage-fiók egy általános célú v1-fiók, a Azure Portal használatával frissítsen egy általános célú v2-fiókra.
 
-A Azure Data Lake Storage Gen2-mel való használatra engedélyezett hierarchikus névtérrel rendelkező Storage-fiókok még nem támogatottak.
+A Azure Data Lake Storage Gen2 használatával használható hierarchikus névtérrel rendelkező Storage-fiókok mostantól támogatottak.
 
 #### <a name="pricing-and-billing"></a>Árak és számlázás
 

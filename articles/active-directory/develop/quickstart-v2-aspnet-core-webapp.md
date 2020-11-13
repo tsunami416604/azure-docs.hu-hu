@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 80b0c357bbad79a31d8b7153248b73c1231629c8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 98d2b4ed4b0d3cef2cde156dc05ebb314edff365
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145036"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592260"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 
-Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core webalkalmazás a személyes fiókokban (hotmail.com, outlook.com, Others) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD) példányból. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
+Ebben a rövid útmutatóban egy kódrészletet tölt le és futtat, amely bemutatja, hogyan jelentkezhet be ASP.NET Core webalkalmazás a felhasználók bármelyik Azure Active Directory (Azure AD) szervezetből.  
+
+Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>Előfeltételek
@@ -48,12 +50,12 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 > 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 > 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 > 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
-> 1. A **kezelés**területen válassza a **Alkalmazásregisztrációk**, majd az **új regisztráció**lehetőséget.
+> 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** , majd az **új regisztráció** lehetőséget.
 > 1. Adja meg az alkalmazás **nevét** , például: `AspNetCore-Quickstart` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
 > 1. Adjon meg egy **átirányítási URI** -t `https://localhost:44321/`
 > 1. Válassza a **Regisztráció** lehetőséget.
-> 1. A **kezelés**területen válassza a **hitelesítés**lehetőséget.
-> 1. Az **átirányítási URI**-k területen válassza az **URI hozzáadása**lehetőséget, majd írja be a `https://localhost:44321/signin-oidc`
+> 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
+> 1. Az **átirányítási URI** -k területen válassza az **URI hozzáadása** lehetőséget, majd írja be a `https://localhost:44321/signin-oidc`
 > 1. Adja meg a **kijelentkezési URL-címét**`https://localhost:44321/signout-oidc`
 > 1. Az **Implicit engedély** területen válassza az **Azonosítói jogkivonatok** elemet.
 > 1. Kattintson a **Mentés** gombra.
@@ -97,15 +99,15 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 >
 >    - A helyére írja `Enter_the_Application_Id_here` be a Azure Portalban regisztrált alkalmazás **alkalmazás (ügyfél) azonosítóját** . Az **alkalmazás (ügyfél) azonosítóját** az alkalmazás **Áttekintés** oldalán találja.
 >    - Cserélje le az értékét `common` a következők egyikére:
->       - Ha az alkalmazás **csak ebben a szervezeti könyvtárban támogatja a fiókokat**, cserélje le ezt az értéket a **könyvtár (bérlő) azonosítójával** (GUID) vagy a **bérlő nevével** (például `contoso.onmicrosoft.com` ). A **címtár (bérlő) azonosítója** az alkalmazás **Áttekintés** lapján található.
+>       - Ha az alkalmazás **csak ebben a szervezeti könyvtárban támogatja a fiókokat** , cserélje le ezt az értéket a **könyvtár (bérlő) azonosítójával** (GUID) vagy a **bérlő nevével** (például `contoso.onmicrosoft.com` ). A **címtár (bérlő) azonosítója** az alkalmazás **Áttekintés** lapján található.
 >       - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot** támogat, ezt az értéket az `organizations` értékre cserélje le
->       - Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót**, hagyja ezt az értéket `common`
+>       - Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót** , hagyja ezt az értéket `common`
 >
 > Ebben a rövid útmutatóban ne módosítsa a fájl *appsettings.js* egyéb értékeit.
 >
 > #### <a name="step-4-build-and-run-the-application"></a>4. lépés: Az alkalmazás fordítása és futtatása
 >
-> Az alkalmazás a Visual Studióban történő létrehozásához és futtatásához válassza a **hibakeresés menüt >** **hibakeresés indítása**vagy a kulcs megnyomásával `F5` .
+> Az alkalmazás a Visual Studióban történő létrehozásához és futtatásához válassza a **hibakeresés menüt >** **hibakeresés indítása** vagy a kulcs megnyomásával `F5` .
 >
 > A rendszer kéri a hitelesítő adatait, majd megkéri, hogy adja meg az alkalmazáshoz szükséges engedélyeket. Válassza az **elfogadás** lehetőséget a beleegyezés kérése lapon.
 >
@@ -113,7 +115,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 >
 > A kért engedélyek beleegyezése után az alkalmazás azt jeleníti meg, hogy sikeresen bejelentkezett a Azure Active Directory hitelesítő adataival.
 >
-> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Az alkalmazás által az > felhasználótól kért engedélyeket megjelenítő belefoglalási párbeszédpanel":::
+> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Webböngésző, amely megjeleníti a futó webalkalmazást és a bejelentkezett felhasználót":::
 
 ## <a name="more-information"></a>További információ
 
@@ -148,7 +150,7 @@ A `AddAuthentication()` metódus úgy konfigurálja a szolgáltatást, hogy cook
 
 Az `.AddMicrosoftIdentityWebApp` alkalmazáshoz a Microsoft Identity platform hitelesítésének hozzáadását tartalmazó sor. Ezt követően a rendszer úgy konfigurálja, hogy a Microsoft Identity platform végpontjának használatával jelentkezzen be a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
 
-| *appsettings.jsa* kulcson | Description                                                                                                                                                          |
+| *appsettings.jsa* kulcson | Leírás                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | A Azure Portalban regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítója** .                                                                                       |
 | `Instance`             | A hitelesítéshez használt biztonságijogkivonat-szolgáltatás (STS) végpontja. Ez az érték általában `https://login.microsoftonline.com/` Az Azure nyilvános felhőre utal. |

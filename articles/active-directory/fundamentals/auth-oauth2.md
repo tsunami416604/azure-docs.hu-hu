@@ -1,6 +1,6 @@
 ---
 title: OAUTH 2,0-hitelesítés Azure Active Directory
-description: A hitelesítési minta megvalósítására szolgáló építészeti útmutató
+description: Építészeti útmutató a OAUTH 2,0 hitelesítés megvalósításához Azure Active Directory használatával.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea22c4e5b363eaa3ecc2a736dfef714666310062
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: daf40a2ced3f753619e9c4723dbe78cd7e51ff21
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114210"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577906"
 ---
 # <a name="oauth-20-authentication-with-azure-active-directory"></a>OAuth 2,0-hitelesítés Azure Active Directory
 
@@ -34,13 +34,13 @@ Gazdag ügyfél & modern alkalmazások és REST-alapú webes API-hozzáférés.
 
 ## <a name="components-of-system"></a>A System összetevői
 
-* **Felhasználó**: szolgáltatás kérése a webalkalmazástól (alkalmazás). A felhasználó általában az az erőforrás-tulajdonos, aki az adott adattal rendelkezik, és lehetővé teszi, hogy az ügyfelek hozzáférjenek az adatforráshoz vagy az erőforráshoz. 
+* **Felhasználó** : szolgáltatás kérése a webalkalmazástól (alkalmazás). A felhasználó általában az az erőforrás-tulajdonos, aki az adott adattal rendelkezik, és lehetővé teszi, hogy az ügyfelek hozzáférjenek az adatforráshoz vagy az erőforráshoz. 
 
-* **Webböngésző**: az a webböngésző, amelyet a felhasználó a OAuth-ügyfélhez kommunikál. 
+* **Webböngésző** : az a webböngésző, amelyet a felhasználó a OAuth-ügyfélhez kommunikál. 
 
-* **Webalkalmazás**: a webalkalmazás, illetve az erőforrás-kiszolgáló, ahol az erőforrás vagy az adat található. Megbízik az engedélyezési kiszolgálón a OAuth-ügyfél biztonságos hitelesítéséhez és engedélyezéséhez. 
+* **Webalkalmazás** : a webalkalmazás, illetve az erőforrás-kiszolgáló, ahol az erőforrás vagy az adat található. Megbízik az engedélyezési kiszolgálón a OAuth-ügyfél biztonságos hitelesítéséhez és engedélyezéséhez. 
 
-* **Azure ad**: az Azure ad az engedélyezési kiszolgáló, más néven az identitás-szolgáltató (identitásszolgáltató). Biztonságos módon kezeli a felhasználó adatait, hozzáférését és megbízhatósági kapcsolatát. Az erőforrásokhoz való hozzáférés engedélyezését és visszavonását végző jogkivonatok kiadásáért felelősek.
+* **Azure ad** : az Azure ad az engedélyezési kiszolgáló, más néven az identitás-szolgáltató (identitásszolgáltató). Biztonságos módon kezeli a felhasználó adatait, hozzáférését és megbízhatósági kapcsolatát. Az erőforrásokhoz való hozzáférés engedélyezését és visszavonását végző jogkivonatok kiadásáért felelősek.
 
 ## <a name="implement-oauth-20-with-azure-ad"></a>A OAuth 2,0 megvalósítása az Azure AD-vel
 

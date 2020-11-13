@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: c79586703c49fe37d4d0915f49b69e6aa842083e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d653916c9b50d552825fcb03a860a2a2008b204d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017522"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578518"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Az Azure NetApp Files metrikái
 
@@ -88,7 +88,8 @@ A Azure NetApp Files a lefoglalt tároló, a tényleges tárterület-használat,
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>Kötet replikációs metrikái
 
 > [!NOTE] 
-> A hálózati átvitel mérete (például a *kötet replikálása teljes átvitel* mérőszámai) eltérhetnek a régiók közötti replikálás forrás-vagy cél köteteitől. Ennek a viselkedésnek a hatására a rendszer hatékony replikációs motort használ, hogy csökkentse a hálózati átvitel költségeit.
+> * A hálózati átvitel mérete (például a *kötet replikálása teljes átvitel* mérőszámai) eltérhetnek a régiók közötti replikálás forrás-vagy cél köteteitől. Ennek a viselkedésnek a hatására a rendszer hatékony replikációs motort használ, hogy csökkentse a hálózati átvitel költségeit.
+> * A kötet replikációs metrikái jelenleg a replikálási cél köteteihez vannak feltöltve, nem pedig a replikációs kapcsolat forrásaként.
 
 - *A kötet replikálási állapota Kifogástalan*   
     A replikációs kapcsolat feltétele. A megfelelő állapotot a jelzi `1` . A nem kifogástalan állapotot a jelzi `0` .

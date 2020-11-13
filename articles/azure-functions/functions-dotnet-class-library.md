@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti Azure Functions a C# használatáv
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 51a7ffe72f8597fbaa11eae12585ebde8bb83153
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380963"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578773"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# – fejlesztői dokumentáció
 
@@ -17,12 +17,13 @@ ms.locfileid: "94380963"
 
 Ez a cikk bemutatja, hogyan fejlesztheti Azure Functions a C# használatával a .NET-osztály könyvtáraiban.
 
+C#-fejlesztőként a következő cikkek egyike is érdekli:
+
+| Első lépések | Alapelvek| Interaktív tanulás/minták |
+| -- | -- | -- | 
+| <ul><li>[A Visual Studio használata](functions-create-your-first-function-visual-studio.md)</li><li>[A Visual Studio Code használata](create-first-function-vs-code-csharp.md)</li><li>[Parancssori eszközök használata](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li><li>[A Visual Studio fejlesztése](functions-develop-vs.md)</li><li>[Függőséginjektálás](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[C#-minták](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+
 Azure Functions támogatja a C# és C# programozási nyelveket. Ha a C# használatával kapcsolatos útmutatást keres [a Azure Portalban](functions-create-function-app-portal.md), tekintse meg a [c# parancsfájl (. CSX) fejlesztői referenciáját](functions-reference-csharp.md).
-
-Ez a cikk azt feltételezi, hogy már elolvasta a következő cikkeket:
-
-* [Azure Functions fejlesztői útmutató](functions-reference.md)
-* [Azure Functions Visual Studio 2019-eszközök](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>Támogatott verziók
 

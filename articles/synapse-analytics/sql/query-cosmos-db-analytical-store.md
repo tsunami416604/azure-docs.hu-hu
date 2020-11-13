@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f57d435134bffbb8e7576adffeacb92bf687124
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 087ee796fbd3c0563b8019a062acab9c7ad80bb1
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310300"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579385"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Lekérdezés Azure Cosmos DB az Azure-beli kiszolgáló nélküli SQL-készlettel az Azure szinapszis-hivatkozás (előzetes verzió)
 
@@ -42,7 +42,9 @@ OPENROWSET(
 A Azure Cosmos DB kapcsolódási karakterlánc megadja a Azure Cosmos DB fiók nevét, az adatbázis nevét, az adatbázis-fiók főkulcsát, és egy választható régió nevét `OPENROWSET` . 
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy az aliast az után használja `OPENROWSET` . Létezik egy [ismert probléma](#known-issues) , amelynek hatására a kapcsolódási probléma a kiszolgáló nélküli SQL-végpontra mutat, ha nem adja meg az aliast a `OPENROWSET` függvény után.
+> Győződjön meg arról, hogy UTF-8-alapú adatbázis-rendezést használ (például `Latin1_General_100_CI_AS_SC_UTF8` ), mert a Cosmos db analitikus tárolóban lévő karakterlánc-értékek UTF-8 szövegként vannak kódolva.
+> A fájl és a rendezés szövegbeli kódolása nem egyezik meg a szöveges konvertálás során fellépő hibák miatt.
+> Az aktuális adatbázis alapértelmezett rendezését az alábbi T-SQL-utasítás használatával egyszerűen módosíthatja: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 A kapcsolatok karakterláncának formátuma a következő:
 ```sql
@@ -338,8 +340,8 @@ Ebben a példában az esetek száma a következőképpen van tárolva `int32` `i
 
 ## <a name="known-issues"></a>Ismert problémák
 
-- Az **aliast** a függvény után kell megadni `OPENROWSET` (például: `OPENROWSET (...) AS function_alias` ). Az alias kihagyása okozhatja a csatlakoztatási problémákat, és a kiszolgáló nélküli SQL-végpont átmenetileg nem érhető el. Ezt a problémát november 2020-én oldja fel a rendszer.
 - A kiszolgáló nélküli SQL-készlet lekérdezési élménye [Azure Cosmos db teljes hűségű sémához](#full-fidelity-schema) olyan ideiglenes viselkedés, amely az előzetes visszajelzések alapján módosul. Ne támaszkodjon arra, hogy a záradék nélküli séma a nyilvános előzetes verzióban is elérhető `OPENROWSET` `WITH` legyen, mert a lekérdezési élmény a felhasználói visszajelzések alapján jól definiált sémával van igazítva. Visszajelzés kéréséhez lépjen kapcsolatba a [szinapszis link Product csapatával](mailto:cosmosdbsynapselink@microsoft.com) .
+- A kiszolgáló nélküli SQL-készlet nem ad vissza fordítási idejű hibát, ha az `OPENROSET` oszlop rendezése nem rendelkezik UTF-8 kódolással. A `OPENROWSET` következő T-SQL-utasítás használatával egyszerűen módosíthatja az aktuális adatbázisban futó összes függvény alapértelmezett rendezését: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 A lehetséges hibák és hibaelhárítási műveletek az alábbi táblázatban láthatók:
 
@@ -356,7 +358,7 @@ A javaslatok és a problémák jelentése az [Azure szinapszis visszajelzéseit 
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkat az következő cikkekben talál:
+További információért tekintse át a következő cikkeket:
 
 - [Power BI és kiszolgáló nélküli SQL-készlet használata az Azure szinapszis hivatkozásával](../../cosmos-db/synapse-link-power-bi.md)
 - [Nézetek létrehozása és használata kiszolgáló nélküli SQL-készletben](create-use-views.md) 

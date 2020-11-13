@@ -7,12 +7,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 10/15/2020
-ms.openlocfilehash: a323dec66a3077784ff85deadd4f12086648fb3a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220458"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579147"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Az Azure Data Share gyakori hibáinak elhárítása 
 
@@ -52,11 +52,11 @@ Ez az alábbi okok miatt történhet:
 
 "Az Azure-beli adatmegosztási fiókhoz nem lehet írási engedélyt adni egy vagy több kiválasztott erőforráshoz"
 
-Ha a fenti hibák bármelyikét megkapja egy új megosztás vagy leképezési adatkészlet létrehozásakor, annak oka az lehet, hogy nem rendelkezik megfelelő engedélyekkel az Azure-adattárhoz. A szükséges engedélyekhez tartozó [szerepkörök és követelmények](concepts-roles-permissions.md) című témakörben talál további információt. 
+Ha a fenti hibák bármelyikét megkapja új megosztás létrehozásakor, adatkészletek hozzáadásával vagy adatkészletek hozzárendelésével, akkor előfordulhat, hogy nem rendelkezik a megfelelő engedélyekkel az Azure-adattárhoz. A szükséges engedélyekhez tartozó [szerepkörök és követelmények](concepts-roles-permissions.md) című témakörben talál további információt. 
 
-Írási engedéllyel kell rendelkeznie az adatok megosztásához vagy fogadásához egy Azure-adattárból, amely általában a közreműködő szerepkörben található. 
+Írási engedéllyel kell rendelkeznie az adatok megosztásához vagy fogadásához egy Azure-adattárból, amely általában a **közreműködő** szerepkörben található. 
 
-Ha első alkalommal oszt meg vagy fogad el egy Azure-adattárat, szüksége lesz a *Microsoft. Authorization/szerepkör-hozzárendelésekre/írási* engedélyre, amely általában a tulajdonosi szerepkörben található. Még ha létrehozta az Azure adattár-erőforrást, az nem teszi automatikusan az erőforrás tulajdonosát. A megfelelő engedélyekkel az Azure adatmegosztási szolgáltatás automatikusan megadja az adatmegosztási erőforrás felügyelt identitás-hozzáférését az adattárhoz. Ez a folyamat néhány percet is igénybe vehet. Ha ez a késés miatt sikertelen, próbálkozzon újra néhány perc múlva.
+Ha első alkalommal oszt meg vagy fogad el egy Azure-adattárat, szüksége lesz a *Microsoft. Authorization/szerepkör-hozzárendelésekre/írási* engedélyre, amely általában a **tulajdonosi** szerepkörben található. Még ha létrehozta az Azure adattár-erőforrást, az nem teszi automatikusan az erőforrás tulajdonosát. A megfelelő engedélyekkel az Azure adatmegosztási szolgáltatás automatikusan megadja az adatmegosztási erőforrás felügyelt identitás-hozzáférését az adattárhoz. Ez a folyamat néhány percet is igénybe vehet. Ha ez a késés miatt sikertelen, próbálkozzon újra néhány perc múlva.
 
 Az SQL-alapú megosztáshoz további engedélyek szükségesek. Az előfeltételek részletes listájáért lásd: [SQL-források megosztása](how-to-share-from-sql.md) .
 
@@ -69,7 +69,7 @@ A pillanatkép különböző okok miatt sikertelen lehet. A részletes hibaüzen
 
 SQL-források esetén a pillanatkép-hibák további okai a következők: 
 
-* Az adatmegosztási engedélyt megadó forrás vagy cél SQL-parancsfájl nem fut, vagy Azure Active Directory hitelesítés helyett SQL-hitelesítéssel fut.  
+* Az adatmegosztási engedélyt megadó forrás vagy cél SQL-parancsfájl nem fut. Vagy Azure SQL Database vagy Azure szinapszis Analytics (korábban Azure SQL DW) esetében az SQL-hitelesítéssel futtatja Azure Active Directory hitelesítés helyett.  
 * A forrás vagy a cél SQL-adattár szüneteltetve van.
 * Az SQL-adattípusokat nem támogatja a pillanatkép-készítési folyamat vagy a célként megadott adattár. A részletekért tekintse [meg az SQL-források megosztását](how-to-share-from-sql.md#supported-data-types) ismertető témakört.
 * A forrás vagy a cél SQL-adattár más folyamatok által zárolva van. Az Azure-beli adatmegosztás nem alkalmazza a forrás és a cél SQL-adattár zárolásait. A forrás és a cél SQL-adattár meglévő zárolásai azonban pillanatkép-hibát okozhatnak.

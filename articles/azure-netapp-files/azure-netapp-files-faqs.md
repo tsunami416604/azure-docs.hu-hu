@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 4c578f99e22e35871f0c52440c3b73a636ef958b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d4e66511ce3017749076615f081a8fb56d8b8452
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089315"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591546"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -150,7 +150,7 @@ Igen, az SMB-kötetek telepítése előtt létre kell hoznia Active Directory-ka
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Hány Active Directory-kapcsolat támogatott?
 
-A Azure NetApp Files nem támogatja több Active Directory (AD) kapcsolat használatát egyetlen *régióban*, még akkor is, ha az ad-kapcsolatok különböző NetApp-fiókokban vannak. Egyetlen *előfizetéshez*azonban több ad-kapcsolat is tartozhat, ha az ad-kapcsolatok különböző régiókban találhatók. Ha egyetlen régióban több AD-kapcsolatra van szüksége, külön előfizetéseket is használhat. 
+A Azure NetApp Files nem támogatja több Active Directory (AD) kapcsolat használatát egyetlen *régióban* , még akkor is, ha az ad-kapcsolatok különböző NetApp-fiókokban vannak. Egyetlen *előfizetéshez* azonban több ad-kapcsolat is tartozhat, ha az ad-kapcsolatok különböző régiókban találhatók. Ha egyetlen régióban több AD-kapcsolatra van szüksége, külön előfizetéseket is használhat. 
 
 Az AD-kapcsolatok egy NetApp-fiókkal vannak konfigurálva; az AD-kapcsolatok csak a ben létrehozott NetApp-fiókon keresztül láthatók.
 
@@ -173,16 +173,6 @@ Az SMB-ügyfél által jelentett kötet mérete az a maximális méret, ameddig 
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
-
-## <a name="dual-protocol-faqs"></a>Dual-Protocol – gyakori kérdések
-
-### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Megpróbáltam a "root" és a local Users használatával hozzáférni egy kettős protokollú kötethez az NTFS biztonsági stílussal egy UNIX rendszeren. Miért történt "engedély megtagadva" hibaüzenet?   
-
-Lásd: a [kettős protokollú kötetek hibáinak elhárítása](troubleshoot-dual-protocol-volumes.md) .
-
-### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Amikor megpróbálok létrehozni egy kettős protokollú kötetet, miért nem sikerült a létrehozási folyamat végrehajtása a következő hibával: "az LDAP-konfiguráció ellenőrzése sikertelen volt, próbálkozzon újra az LDAP-konfiguráció javítása után"?  
-
-Lásd: a [kettős protokollú kötetek hibáinak elhárítása](troubleshoot-dual-protocol-volumes.md) .
 
 ## <a name="capacity-management-faqs"></a>A kapacitások kezelésével kapcsolatos gyakori kérdések
 
@@ -255,7 +245,7 @@ Nem. A Azure Data Box jelenleg nem támogatja a Azure NetApp Files.
 
 Nem. Az Azure import/export szolgáltatás jelenleg nem támogatja a Azure NetApp Files.
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Microsoft Azure ExpressRoute GYIK](../expressroute/expressroute-faqs.md)
 - [Microsoft Azure Virtual Network GYIK](../virtual-network/virtual-networks-faq.md)

@@ -2,14 +2,14 @@
 title: Az Azure arc használatára képes kiszolgálók áttekintése
 description: Ismerje meg, hogyan használhatja az Azure arc-kompatibilis kiszolgálókat az Azure-on kívül üzemeltetett kiszolgálók (például Azure-erőforrások) kezelésére.
 keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
-ms.date: 11/04/2020
+ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: b9d38b2395d922e3e2a7daec654cd73de7267ee1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2df970f7c94f1e306243aba1480ee7023b8f76c1
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360581"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578722"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Mi azok az Azure Arc-kompatibilis kiszolgálók?
 
@@ -44,7 +44,16 @@ A hibrid gépről Log Analytics munkaterületen gyűjtött és tárolt adatok na
 
 Az Azure arc-kompatibilis kiszolgálókkal rendelkező támogatott régiók végleges listáját az Azure- [termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc) oldalon tekintheti meg.
 
-A legtöbb esetben a telepítési parancsfájl létrehozásakor kiválasztott helyen kell lennie az Azure-régiónak, amelynek földrajzilag legközelebb kell lennie a számítógép helyéhez. A nyugalmi állapotban lévő adatok tárolása az Ön által megadott régiót tartalmazó Azure földrajzon belül történik, amely az Ön által választott régióra is hatással lehet, ha rendelkezik az adatok tartózkodási feltételeivel. Ha az Azure-régió, amellyel a gépet csatlakoztatja, a rendszer áramszünetet érint, a csatlakoztatott gép nem lesz hatással, de előfordulhat, hogy az Azure-t használó felügyeleti műveletek nem lesznek végrehajtva. Regionális kimaradás esetén, ha több, földrajzilag redundáns szolgáltatást támogató hellyel rendelkezik, a legjobb megoldás, ha a gépeket egy másik Azure-régióhoz köti.
+A legtöbb esetben a telepítési parancsfájl létrehozásakor kiválasztott helyen kell lennie az Azure-régiónak, amelynek földrajzilag legközelebb kell lennie a számítógép helyéhez. Az inaktív adatok tárolása az Ön által megadott régiót tartalmazó Azure-földrajzon belül történik, amely az Ön által választott régióra is hatással lehet, ha rendelkezik az adatok tartózkodási feltételeivel. Ha az Azure-régió, amellyel a gépet csatlakoztatja, a rendszer áramszünetet érint, a csatlakoztatott gép nem lesz hatással, de előfordulhat, hogy az Azure-t használó felügyeleti műveletek nem lesznek végrehajtva. Regionális kimaradás esetén, ha több, földrajzilag redundáns szolgáltatást támogató hellyel rendelkezik, a legjobb megoldás, ha a gépeket egy másik Azure-régióhoz köti.
+
+A rendszer a csatlakoztatott géppel kapcsolatos következő metaadatokat gyűjti és tárolja abban a régióban, ahol az Azure arc machine-erőforrás konfigurálva van:
+
+- Operációs rendszer neve és verziója
+- Számítógép neve
+- Számítógép teljesen minősített tartományneve (FQDN)
+- Csatlakoztatott gépi ügynök verziója
+
+Ha például a gép regisztrálva van az Azure arc-ban az USA keleti régiójában, a rendszer ezeket az adatterületet az Egyesült Államok régiójában tárolja.
 
 ### <a name="agent-status"></a>Ügynök állapota
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 54a1135931c2be9c6b7941c9ff740fd29f855eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26dd255e6edff7c339ab9766bb71889cf4e2deaa
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601248"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577643"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Öt lépés az összes alkalmazás integrálásához az Azure AD-vel
 
@@ -46,7 +46,7 @@ Végül integrálhatja a házon belül fejlesztett alkalmazásokat is. Ez a jele
 
 Ezután Fedezze fel az alkalmazások alkalmazottai gyakran használják, és rangsorolja a munkáját, hogy integrálja őket az Azure AD-vel.
 
-A Microsoft Cloud App Security&#39;s [Cloud Discovery Tools](/cloud-app-security/tutorial-shadow-it) használatával elkezdheti a &quot; hálózatban lévő árnyékok felderítését és kezelését &quot; (azaz az IT-részleg által nem kezelt alkalmazásokat). A felderítési folyamat egyszerűsítéséhez és bővítéséhez [használhatja a Microsoft Defender Advanced Threat Protection (ATP)](/cloud-app-security/wdatp-integration) eszközt.
+A Microsoft Cloud App Security&#39;s [Cloud Discovery Tools](/cloud-app-security/tutorial-shadow-it) használatával elkezdheti a &quot; hálózatban lévő árnyékok felderítését és kezelését &quot; (azaz az IT-részleg által nem kezelt alkalmazásokat). A felderítési folyamat egyszerűsítéséhez és bővítéséhez [használhatja a Microsoft Defender Advanced Threat Protection (ATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) eszközt.
 
 Emellett a Azure Portal [AD FS alkalmazás tevékenység jelentésével](../manage-apps/migrate-adfs-application-activity.md) felderítheti a szervezetben lévő összes AD FS alkalmazást, a számukra bejelentkezett egyedi felhasználók számát, és az Azure ad-vel való integráláshoz való kompatibilitást is.
 

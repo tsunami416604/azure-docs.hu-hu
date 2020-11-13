@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3559b3724d14be6aade07c4884190afce30c0715
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cc2c40dd0b61f917da86d67188f4b503ca9b9298
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306867"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579351"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -36,6 +36,11 @@ from openrowset(
 ```
 
 Győződjön meg arról, hogy hozzáfér a fájlhoz. Ha a fájlt SAS-kulccsal vagy egyéni Azure-identitással védi, a [kiszolgáló szintű hitelesítő adatokat kell beállítania az SQL-bejelentkezéshez](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
+
+> [!IMPORTANT]
+> Győződjön meg arról, hogy UTF-8 adatbázis-rendezést használ (például `Latin1_General_100_CI_AS_SC_UTF8` ), mert a parketta-fájlokban lévő karakterlánc-értékek UTF-8 kódolással vannak kódolva.
+> A parketta-fájl kódolása nem egyezik, és a rendezés váratlan konverziós hibákat okozhat.
+> Az aktuális adatbázis alapértelmezett rendezését az alábbi T-SQL-utasítás használatával egyszerűen módosíthatja: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>Adatforrás használata
 
@@ -67,6 +72,12 @@ from openrowset(
         format = 'parquet'
     ) with ( date_rep date, cases int, geo_id varchar(6) ) as rows
 ```
+
+> [!IMPORTANT]
+> Győződjön meg arról, hogy a explicilty valamilyen UTF-8 rendezést határoz meg (például `Latin1_General_100_CI_AS_SC_UTF8` ) a záradékban található összes karakterlánc-oszlophoz, `WITH` vagy állítson be néhány UTF-8 rendezést az adatbázis szintjén.
+> A fájl-és karakterlánc-oszlopok rendezésének szöveges kódolása nem megfelelő, ezért váratlan konverziós hibák merülhetnek fel.
+> Az aktuális adatbázis alapértelmezett rendezését az alábbi T-SQL-utasítás használatával egyszerűen módosíthatja: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> A UnitPrice-típusok rendezését könnyedén megadhatja a következő definíció használatával: `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8`
 
 A következő részekben láthatja, hogyan lehet lekérdezni a különböző típusú parketta-fájlokat.
 

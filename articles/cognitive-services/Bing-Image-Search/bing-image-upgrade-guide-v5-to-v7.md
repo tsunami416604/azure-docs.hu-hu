@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: a1d233273ced4891c9987ff8ba50e5491ae6071c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0e8a3ec38a79edb52031d6c18596038ab4c6a8af
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084459"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592141"
 ---
 # <a name="bing-image-search-api-v7-upgrade-guide"></a>Bing Image Search API v7 frissítési útmutató
 
@@ -44,7 +44,7 @@ Ez a frissítési útmutató a Bing Image Search API 5. és 7. verziójának vá
 
 - Az V5-hibakódokat a következő lehetséges `code` és értékekkel cserélte le `subCode` .
 
-|Code|Alkód|Leírás
+|Kód|Alkód|Leírás
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|A Bing visszaadja a ServerError, ha az alkódok bármely feltétele teljesül. A válasz tartalmazza ezeket a hibákat, ha a HTTP-állapotkód 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokkolva|A Bing visszaadja a InvalidRequest, ha a kérelem bármely része érvénytelen. Például hiányzik egy kötelező paraméter, vagy a paraméter értéke érvénytelen.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a HTTP-állapotkód 400.<br/><br/>Ha a hiba HttpNotAllowed, a 410-es HTTP-állapotkód.
@@ -79,83 +79,83 @@ Blokkolva|InvalidRequest. Blocked
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 
-- Átnevezte a `modulesRequested` lekérdezési paramétert a [modulokra](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).  
+- Átnevezte a `modulesRequested` lekérdezési paramétert a [modulokra](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).  
 
-- Átnevezte a megjegyzéseket a címkékre. Lásd: [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) lekérdezési paramétere címkékre.  
+- Átnevezte a megjegyzéseket a címkékre. Lásd: [modulok](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) lekérdezési paramétere címkékre.  
 
-- Módosította a ShoppingSources szűrő értékének támogatott piacainak listáját csak en-US értékre. Lásd: [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype).  
+- Módosította a ShoppingSources szűrő értékének támogatott piacainak listáját csak en-US értékre. Lásd: [imageType](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype).  
 
 
 ### <a name="image-insights-changes"></a>Képelemzési változások
 
-- Átnevezte a `annotations` [ImagesInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) mezőjét a következőre: `imageTags` .  
+- Átnevezte a `annotations` [ImagesInsights](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) mezőjét a következőre: `imageTags` .  
 
-- Átnevezte a `AnnotationModule` [ImageTagsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetagsmodule)objektumot.  
+- Átnevezte a `AnnotationModule` [ImageTagsModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetagsmodule)objektumot.  
 
-- Átnevezte az `Annotation` objektumot a [címkére](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#tag), és eltávolította a `confidence` mezőt.  
+- Átnevezte az `Annotation` objektumot a [címkére](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#tag), és eltávolította a `confidence` mezőt.  
 
-- Átnevezte a `insightsSourcesSummary` [rendszerkép](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) objektum mezőjét a következőre: `insightsMetadata` .  
+- Átnevezte a `insightsSourcesSummary` [rendszerkép](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) objektum mezőjét a következőre: `insightsMetadata` .  
 
-- Átnevezte a `InsightsSourcesSummary` [InsightsMetadata](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightsmetadata)objektumot.  
+- Átnevezte a `InsightsSourcesSummary` [InsightsMetadata](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightsmetadata)objektumot.  
 
 - A végpont hozzáadva `https://api.cognitive.microsoft.com/bing/v7.0/images/details` . Ezzel a végponttal az/images/Search végpont helyett képelemzéseket kérhet. Lásd: [Képelemzések](./image-insights.md).
 
 - A következő lekérdezési paraméterek mostantól csak a `/images/details` végpontnál érvényesek.  
 
-    -   [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken)  
-    -   [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)  
-    -   [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl)  
-    -   [cab](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab)  
-    -   [Cal](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)  
-    -   [car](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car)  
-    -   [Cat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)  
-    -   [az](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#ct)  
+    -   [insightsToken](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken)  
+    -   [modulok](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)  
+    -   [imgUrl](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl)  
+    -   [cab](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab)  
+    -   [Cal](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)  
+    -   [car](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car)  
+    -   [Cat](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)  
+    -   [az](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#ct)  
 
-- Átnevezte a `ImageInsightsResponse` [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights)objektumot.  
+- Átnevezte a `ImageInsightsResponse` [ImageInsights](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights)objektumot.  
 
-- Módosította a következő mezők adattípusait a [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights) objektumban.  
+- Módosította a következő mezők adattípusait a [ImageInsights](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights) objektumban.  
 
-    -   Módosította a mező típusát a `relatedCollections` `ImageGallery[]` [RelatedCollectionsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedcollectionsmodule)értékre.  
+    -   Módosította a mező típusát a `relatedCollections` `ImageGallery[]` [RelatedCollectionsModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedcollectionsmodule)értékre.  
 
-    -   Módosította a mező típusát a `pagesIncluding` `Image[]` [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)értékre.  
+    -   Módosította a mező típusát a `pagesIncluding` `Image[]` [ImagesModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)értékre.  
 
-    -   Módosította a mező típusát a `relatedSearches` `Query[]` [RelatedSearchesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedsearchesmodule)értékre.  
+    -   Módosította a mező típusát a `relatedSearches` `Query[]` [RelatedSearchesModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedsearchesmodule)értékre.  
 
-    -   Módosította a mező típusát a `recipes` `Recipe[]` [RecipesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recipesmodule)értékre.  
+    -   Módosította a mező típusát a `recipes` `Recipe[]` [RecipesModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recipesmodule)értékre.  
 
-    -   Módosította a mező típusát a `visuallySimilarImages` `Image[]` [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)értékre.  
+    -   Módosította a mező típusát a `visuallySimilarImages` `Image[]` [ImagesModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)értékre.  
 
-    -   Módosította a mező típusát a `visuallySimilarProducts` `ProductSummaryImage[]` [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)értékre.  
+    -   Módosította a mező típusát a `visuallySimilarProducts` `ProductSummaryImage[]` [ImagesModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)értékre.  
 
-    -   Eltávolította az `ProductSummaryImage` objektumot, és áthelyezte a termékkel kapcsolatos mezőket a [rendszerkép](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) objektumba. Az `Image` objektum csak akkor tartalmazza a termékkel kapcsolatos mezőket, ha a képet egy képelemzési válaszban szereplő, hasonló termékek részeként jeleníti meg.  
+    -   Eltávolította az `ProductSummaryImage` objektumot, és áthelyezte a termékkel kapcsolatos mezőket a [rendszerkép](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) objektumba. Az `Image` objektum csak akkor tartalmazza a termékkel kapcsolatos mezőket, ha a képet egy képelemzési válaszban szereplő, hasonló termékek részeként jeleníti meg.  
 
-    -   Módosította a mező típusát a `recognizedEntityGroups` `RecognizedEntityGroup[]` [RecognizedEntitiesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recognizedentitiesmodule)értékre.  
+    -   Módosította a mező típusát a `recognizedEntityGroups` `RecognizedEntityGroup[]` [RecognizedEntitiesModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recognizedentitiesmodule)értékre.  
 
--   Átnevezte a `categoryClassification` [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) mezőjét `annotations` , és módosította a típusát `AnnotationsModule` .  
+-   Átnevezte a `categoryClassification` [ImageInsights](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) mezőjét `annotations` , és módosította a típusát `AnnotationsModule` .  
 
 ### <a name="images-answer"></a>A képek válasza
 
--   Eltávolította a displayShoppingSourcesBadges és a displayRecipeSourcesBadges mezőket a [képekből](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images).  
+-   Eltávolította a displayShoppingSourcesBadges és a displayRecipeSourcesBadges mezőket a [képekből](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images).  
 
--   Átnevezte a `nextOffsetAddCount` [képek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) mezőjét a következőre: `nextOffset` . Az eltolás használatának módja is megváltozott. Korábban az [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) lekérdezési paraméter `nextOffsetAddCount` értékét az előző eltolási értékre és az eredményben szereplő rendszerképek számára kell beállítani. Most `offset` az értékre kell állítani `nextOffset` .  
+-   Átnevezte a `nextOffsetAddCount` [képek](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) mezőjét a következőre: `nextOffset` . Az eltolás használatának módja is megváltozott. Korábban az [eltolás](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) lekérdezési paraméter `nextOffsetAddCount` értékét az előző eltolási értékre és az eredményben szereplő rendszerképek számára kell beállítani. Most `offset` az értékre kell állítani `nextOffset` .  
 
 
 ## <a name="non-breaking-changes"></a>Nem törhető változások
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 
-- A rendszer transzparensként adja hozzá a lehetséges [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) -szűrő értékét. Az átlátszó szűrő csak az átlátszó háttérrel rendelkező képeket adja vissza.
+- A rendszer transzparensként adja hozzá a lehetséges [imageType](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) -szűrő értékét. Az átlátszó szűrő csak az átlátszó háttérrel rendelkező képeket adja vissza.
 
-- Hozzáadta a bármely lehetséges [licenckulcs](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license) -értéket. A bármely szűrő csak a licenccel rendelkező lemezképeket adja vissza.
+- Hozzáadta a bármely lehetséges [licenckulcs](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license) -értéket. A bármely szűrő csak a licenccel rendelkező lemezképeket adja vissza.
 
-- Hozzáadta a [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) és a [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) lekérdezési paramétereket. Ezekkel a szűrőkkel a képfájlok egy tartományán belüli képeket adhatnak vissza.  
+- Hozzáadta a [maxFileSize](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) és a [minFileSize](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) lekérdezési paramétereket. Ezekkel a szűrőkkel a képfájlok egy tartományán belüli képeket adhatnak vissza.  
 
-- Hozzáadta a [maxHeight](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxheight), a [minHeight](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minheight), a [maxWidth](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxwidth)és a [MinWidth értékénél](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minwidth) lekérdezési paramétereket. Ezekkel a szűrőkkel a képek a magasság és a szélesség tartományán belül adhatók vissza.  
+- Hozzáadta a [maxHeight](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxheight), a [minHeight](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minheight), a [maxWidth](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxwidth)és a [MinWidth értékénél](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minwidth) lekérdezési paramétereket. Ezekkel a szűrőkkel a képek a magasság és a szélesség tartományán belül adhatók vissza.  
 
 ### <a name="object-changes"></a>Objektum változásai
 
-- Hozzáadta a `description` és a `lastUpdated` mezőket az [ajánlat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) objektumhoz.  
+- Hozzáadta a `description` és a `lastUpdated` mezőket az [ajánlat](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) objektumhoz.  
 
-- Hozzáadta a `name` mezőt a [ImageGallery](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) objektumhoz.  
+- Hozzáadta a `name` mezőt a [ImageGallery](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) objektumhoz.  
 
-- Hozzáadva `similarTerms` a [képek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) objektumhoz. Ez a mező a felhasználó lekérdezési karakterláncához hasonló kifejezések listáját tartalmazza.  
+- Hozzáadva `similarTerms` a [képek](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) objektumhoz. Ez a mező a felhasználó lekérdezési karakterláncához hasonló kifejezések listáját tartalmazza.

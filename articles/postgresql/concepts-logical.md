@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 0e9773e5c08f9d07f76a70bc4f899acf5004d3c2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: cda305ac705b728e0d2e129d7d42d53ea0251d86
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421809"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591529"
 ---
 # <a name="logical-decoding"></a>Logikai dekódolás
  
@@ -37,7 +37,6 @@ A megfelelő naplózási szint konfigurálásához használja az Azure-replikác
 * **Replika** – részletesebb, mint a **kikapcsolás**. Az [olvasási replikák](concepts-read-replicas.md) működéséhez szükséges naplózás minimális szintje. Ez a beállítás az alapértelmezett a legtöbb kiszolgálón.
 * **Logikai** – részletesebb, mint a **replika**. Ez a minimális szintű naplózás a logikai dekódolás működéséhez. Ebben a beállításban az olvasási replikák is működnek.
 
-A kiszolgálót újra kell indítani a paraméter módosítása után. Belsőleg ez a paraméter a és a postgres paramétereket állítja be `wal_level` `max_replication_slots` `max_wal_senders` .
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
@@ -86,7 +85,7 @@ Az alábbi példában az SQL-felületet használjuk a wal2json beépülő modull
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. SQL-parancsok kiadása. Ilyenek többek között:
+2. SQL-parancsok kiadása. Például:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,
@@ -169,7 +168,7 @@ SELECT pg_drop_replication_slot('test_slot');
 > Ha leállítja a logikai dekódolást, módosítsa azure.replication_support vissza a következőre: `replica` vagy `off` . A megőrzött WAL-részletek `logical` részletesebbek, és le kell tiltani, ha nincs használatban a logikai dekódolás. 
 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [logikai dekódolással kapcsolatos további információkért](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html)látogasson el a postgres dokumentációba.
 * Ha a logikai dekódolással kapcsolatban kérdése van, akkor elérheti a [csapatot](mailto:AskAzureDBforPostgreSQL@service.microsoft.com) .

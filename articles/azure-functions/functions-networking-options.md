@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 6b082801a89450e34056be8be88a96fe26b7eeec
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413088"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578821"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -30,18 +30,36 @@ A Function apps több módon is üzemeltethető:
 
 [!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
-## <a name="inbound-ip-restrictions"></a>Bejövő IP-korlátozások
+## <a name="inbound-access-restrictions"></a>Bejövő hozzáférési korlátozások
 
-Az IP-korlátozások segítségével megadhatja az alkalmazáshoz hozzáférést engedélyező vagy megtagadott IP-címek prioritással rendezett listáját. A lista IPv4-és IPv6-címeket is tartalmazhat. Ha egy vagy több bejegyzés van, akkor a lista végén egy implicit "elutasítás all" érték szerepel. Az IP-korlátozások az összes funkció-üzemeltetési lehetőséggel működnek.
+A hozzáférési korlátozások használatával megadhatja az alkalmazáshoz engedélyezett vagy megtagadott IP-címek prioritással rendezett listáját. A lista tartalmazhat IPv4-és IPv6-címeket, illetve adott virtuális hálózati alhálózatokat a [szolgáltatási végpontok](#use-service-endpoints)használatával. Ha egy vagy több bejegyzés van, akkor a lista végén egy implicit "elutasítás all" érték szerepel. Az IP-korlátozások az összes funkció-üzemeltetési lehetőséggel működnek.
+
+A hozzáférési korlátozások a [prémium](functions-premium-plan.md), a [felhasználás](functions-scale.md#consumption-plan)és a [app Service](functions-scale.md#app-service-plan)esetében érhetők el.
 
 > [!NOTE]
-> Ha hálózati korlátozásokkal rendelkezik, a portál szerkesztőt csak a virtuális hálózatán belül használhatja, vagy ha az Ön által használt gép IP-címét a biztonságos címzettek listáján lévő Azure Portal eléréséhez használja. Azonban továbbra is hozzáférhet bármely szolgáltatáshoz a **platform szolgáltatások** lapján bármely gépről.
+> A hálózati korlátozásokkal csak a virtuális hálózatról telepítheti a szolgáltatást, vagy ha az Ön által használt gép IP-címét a biztonságos címzettek listáján lévő Azure Portal eléréséhez helyezi el. Azonban továbbra is kezelheti a függvényt a portál használatával.
 
 További információ: [Azure app Service statikus hozzáférési korlátozások](../app-service/app-service-ip-restrictions.md).
 
-## <a name="private-site-access"></a>Hozzáférés személyes oldalakhoz
+### <a name="use-service-endpoints"></a>Szolgáltatásvégpontok használata
+
+A szolgáltatási végpontok használatával korlátozhatja a hozzáférést a kiválasztott Azure-beli virtuális hálózati alhálózatokhoz. Egy adott alhálózathoz való hozzáférés korlátozásához hozzon létre egy korlátozási szabályt egy **Virtual Network** típussal. Ezután kiválaszthatja azt az előfizetést, virtuális hálózatot és alhálózatot, amely számára engedélyezni vagy megtagadni kívánja a hozzáférést. 
+
+Ha a szolgáltatási végpontok még nincsenek engedélyezve a Microsoft. Web-ben a kiválasztott alhálózathoz, akkor automatikusan engedélyezve lesznek, kivéve, ha bejelöli a **hiányzó Microsoft. Web Service-végpontok figyelmen kívül hagyása** jelölőnégyzetet. A forgatókönyv, ahol előfordulhat, hogy engedélyezni szeretné a szolgáltatási végpontokat az alkalmazáson, de az alhálózat nem függ elsősorban attól, hogy rendelkezik-e az alhálózaton való engedélyezéséhez szükséges engedélyekkel. 
+
+Ha valaki másnak kell engedélyeznie a szolgáltatási végpontokat az alhálózaton, jelölje be a **hiányzó Microsoft. webszolgáltatás-végpontok figyelmen kívül hagyása** jelölőnégyzetet. Az alkalmazás a szolgáltatás-végpontok számára lesz konfigurálva, hogy az alhálózaton később engedélyezzék őket. 
+
+![Képernyőfelvétel: az "IP-korlátozás hozzáadása" panel a kiválasztott Virtual Network típussal.](../app-service/media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
+
+A szolgáltatási végpontok nem használhatók a App Service Environmenton futó alkalmazásokhoz való hozzáférés korlátozására. Ha az alkalmazás egy App Service Environmentban van, akkor az IP-hozzáférési szabályok alkalmazásával szabályozhatja a hozzáférését. 
+
+A szolgáltatási végpontok beállításával kapcsolatos további információkért lásd: [Azure functions privát hely elérésének létrehozása](functions-create-private-site-access.md).
+
+## <a name="private-endpoint-connections"></a>Magánhálózati végpontok kapcsolatai
 
 [!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
+
+Ha más olyan szolgáltatásokat szeretne meghívni, amelyek privát végponti kapcsolatban állnak, például a Storage vagy a Service Bus szolgáltatással, konfigurálja úgy az alkalmazást, hogy kimenő hívásokat hajtson végre a [privát végpontok számára](#private-endpoints).
 
 ## <a name="virtual-network-integration"></a>Virtuális hálózat integrációja
 
@@ -69,7 +87,7 @@ További információ: [Virtual Network szolgáltatás-végpontok](../virtual-ne
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>A Storage-fiók korlátozása virtuális hálózatra (előzetes verzió)
 
-Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t.  Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval.  Ez az előzetes verziójú funkció jelenleg csak a Nyugat-európai Windows Premium-csomagokkal működik.  Egy privát hálózatra korlátozott Storage-fiókkal rendelkező függvény beállítása:
+Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t.  Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval.  Ez az előzetes verziójú funkció jelenleg csak a Nyugat-európai Windows Premium-csomagokkal működik.  Egy privát hálózatra korlátozódó Storage-fiókkal rendelkező függvény beállítása:
 
 > [!NOTE]
 > A Storage-fiók korlátozása jelenleg csak a prémium szintű függvények esetében működik a Nyugat-európai Windows rendszerben
@@ -80,7 +98,7 @@ Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános cé
 1. [Hozzon létre egy fájlmegosztást](../storage/files/storage-how-to-create-file-share.md#create-file-share) a biztonságos Storage-fiókban.
 1. Engedélyezze a szolgáltatási végpontokat vagy a magánhálózati végpontot a Storage-fiókhoz.  
     * Ha szolgáltatási végpontot használ, ügyeljen arra, hogy a Function apps számára dedikált alhálózatot engedélyezze.
-    * Hozzon létre egy DNS-rekordot, és konfigurálja úgy az alkalmazást, hogy a magánhálózati végpontok használata esetén is [működjön a privát végponti végpontokkal](#azure-dns-private-zones) .  A Storage-fióknak szüksége lesz egy privát végpontra a `file` és az `blob` alerőforrásokhoz.  Ha bizonyos képességeket (például Durable Functions) használ, `queue` `table` egy privát végponti kapcsolaton keresztül is szüksége lesz rá, és elérhetővé válik.
+    * Hozzon létre egy DNS-rekordot, és konfigurálja úgy az alkalmazást, hogy a magánhálózati végpontok használata esetén is [működjön a privát végponti végpontokkal](#azure-dns-private-zones) .  A Storage-fióknak szüksége lesz egy privát végpontra a `file` és `blob` alerőforrásokhoz.  Ha bizonyos képességeket (például Durable Functions) használ, `queue` `table` egy privát végponti kapcsolaton keresztül is szüksége lesz rá, és elérhetővé válik.
 1. Választható Másolja a fájl és a blob tartalmát a Function app Storage-fiókból a biztonságos Storage-fiókba és a fájlmegosztásba.
 1. Másolja ki a Storage-fiókhoz tartozó kapcsolatok karakterláncát.
 1. Frissítse az **alkalmazás beállításait** a Function alkalmazás **konfigurációjában** a következőre:
@@ -159,14 +177,14 @@ Ha egy prémium szintű csomagban vagy egy virtuális hálózattal rendelkező A
 ## <a name="automation"></a>Automation
 A következő API-k lehetővé teszik a regionális virtuális hálózati integrációk programozott kezelését:
 
-+ **Azure CLI** : [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) regionális virtuális hálózati integrációk hozzáadására, listázására vagy eltávolítására használható parancsokkal.  
++ **Azure CLI** : [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) egy regionális virtuális hálózati integráció hozzáadásához, listázásához vagy eltávolításához használja a parancsokat.  
 + **ARM-sablonok** : a regionális virtuális hálózatok integrációja Azure Resource Manager sablon használatával engedélyezhető. Teljes példaként tekintse meg [ezt a functions gyorsindító sablont](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a hálózatkezelésről és a Azure Functions:
 

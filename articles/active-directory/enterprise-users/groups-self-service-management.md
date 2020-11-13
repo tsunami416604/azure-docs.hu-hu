@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4651d15fb765182c788733c0542480805387871
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f1730507c022d57495efa56c98215ff72d07e180
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375497"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578178"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Önkiszolgáló csoport felügyeletének beállítása Azure Active Directory 
 
@@ -44,15 +44,15 @@ Létrehozott csoportok | Biztonsági csoport alapértelmezett viselkedése | Mic
 ## <a name="make-a-group-available-for-user-self-service"></a>Csoport elérhetővé tétele önkiszolgáló felhasználói tevékenységhez
 
 1. Jelentkezzen be az [Azure AD felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-1. Válassza a **csoportok**lehetőséget, majd válassza az **általános** beállítások lehetőséget.
-1. **A tulajdonosok beállítása a hozzáférési panelen a csoporttagság-kérelmeket** **Igen**értékre állíthatja.
-1. **A hozzáférési panelen a csoportok hozzáférésének korlátozása a** **nem**értékre.
+1. Válassza a **csoportok** lehetőséget, majd válassza az **általános** beállítások lehetőséget.
+1. **A tulajdonosok beállítása a hozzáférési panelen a csoporttagság-kérelmeket** **Igen** értékre állíthatja.
+1. **A hozzáférési panelen a csoportok hozzáférésének korlátozása a** **nem** értékre.
 1. Ha úgy állítja be **a felhasználókat, hogy létrehozhatnak biztonsági csoportokat az Azure** Portalon, vagy a felhasználók létrehozhatnak **Microsoft 365 csoportokat az Azure-portálokon**
 
-    - **Igen**: az Azure ad-szervezetben lévő összes felhasználó létrehozhat új biztonsági csoportokat, és tagokat vehet fel ezekbe a csoportokba. Ezek az új csoportok szintén valamennyi felhasználó számára láthatóvá válnak a hozzáférési panelen. Ha a csoport házirend-beállítása lehetővé teszi, más felhasználók is létrehozhatnak kérelmeket a csoportokhoz való csatlakozáshoz
-    - **Nem**: a felhasználók nem hozhatnak létre csoportokat, és nem módosíthatják azokat a meglévő csoportokat, amelyeknek tulajdonosai. Ugyanakkor továbbra is kezelhetik az ilyen csoportok tagságát, és elfogadhatják más felhasználók csoportfelvételi kéréseit.
+    - **Igen** : az Azure ad-szervezetben lévő összes felhasználó létrehozhat új biztonsági csoportokat, és tagokat vehet fel ezekbe a csoportokba. Ezek az új csoportok szintén valamennyi felhasználó számára láthatóvá válnak a hozzáférési panelen. Ha a csoport házirend-beállítása lehetővé teszi, más felhasználók is létrehozhatnak kérelmeket a csoportokhoz való csatlakozáshoz
+    - **Nem** : a felhasználók nem hozhatnak létre csoportokat, és nem módosíthatják azokat a meglévő csoportokat, amelyeknek tulajdonosai. Ugyanakkor továbbra is kezelhetik az ilyen csoportok tagságát, és elfogadhatják más felhasználók csoportfelvételi kéréseit.
 
-Olyan tulajdonosokat is használhat, **akik csoport tulajdonosaként rendelnek hozzá tagokat az Azure** Portalon és a **tulajdonosokat, akik a tagokat az Azure** Portalon szeretnék hozzárendelni, így részletesebb hozzáférés-vezérlést biztosíthatnak a felhasználók önkiszolgáló csoportjának felügyeletéhez.
+Emellett olyan tulajdonosokat is használhat, **akik csoport tulajdonosaként hozzárendelhetők a Azure Portalban** , így részletesebb hozzáférés-vezérlést biztosíthat a felhasználók önkiszolgáló csoportjának felügyeletéhez.
 
 Ha a felhasználók létrehozhatnak csoportokat, a szervezet minden felhasználója létrehozhat új csoportokat, majd az alapértelmezett tulajdonosként hozzáadhat tagokat ezekhez a csoportokhoz. Nem adhat meg olyan személyeket, akik létrehozhatják saját csoportjaikat. Csak olyan személyeket adhat meg, akik egy csoport tulajdonosának egy másik csoport tagjává teszik.
 

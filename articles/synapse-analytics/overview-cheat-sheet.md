@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: b3ae2c958b479f5f131de871b64663c2754713b6
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: fbd113194aa904096425ee09b741cf693f89bba2
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330428"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591920"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure szinapszis Analytics – Cheat Sheet
 
@@ -36,37 +36,31 @@ A **SZINAPSZIS SQL** lehetővé teszi a T-SQL-alapú elemzések elvégzését a 
 
 A Spark Analytics használatához hozzon létre és használjon **kiszolgáló nélküli Apache Spark készleteket** a szinapszis munkaterületen.
 
-## <a name="sql-terminology"></a>SQL-terminológia
-| Kifejezés                         | Definíció      |
-|:---                                 |:---                 |
-| **SQL-kérelem**  |   Olyan művelet, mint például a lekérdezés dedikált SQL-készleten vagy kiszolgáló nélküli SQL-készleten keresztüli futtatása. |
-|**SQL-szkript**| Egy fájlban mentett SQL-parancsok készlete. Egy SQL-parancsfájl egy vagy több SQL-utasítást is tartalmazhat. Az SQL-kérelmeket dedikált SQL-készlet vagy kiszolgáló nélküli SQL-készlet használatával futtathatja.|
+* **SQL-kérelem** – művelet, például egy lekérdezés dedikált SQL-készleten vagy kiszolgáló nélküli SQL-készleten keresztüli futtatása.
+* **SQL-parancsfájl** – egy fájlba mentett SQL-parancsok készlete. Egy SQL-parancsfájl egy vagy több SQL-utasítást is tartalmazhat. Az SQL-kérelmeket dedikált SQL-készlet vagy kiszolgáló nélküli SQL-készlet használatával futtathatja.
+
 
 ## <a name="spark-terminology"></a>Spark-terminológia
-| Kifejezés                         | Definíció      |
-|:---                                 |:---                 |
-|**A szinapszis Apache Spark** | Spark futásidejű kiszolgáló nélküli Spark-készletben használt idő. A jelenleg támogatott verzió a Spark 2,4 a Python 3.6.1, a Scala 2.11.12, a .NET-támogatás a Apache Spark 0,5 és a Delta Lake 0,3.  | 
-| **Apache Spark készlet**  | a 0 – N Spark kiosztott erőforrásai és a hozzájuk tartozó adatbázisok is üzembe helyezhetők egy munkaterületen. A Spark-készlet lehet automatikusan szüneteltethető, folytatható és méretezhető.  |
-| **Spark-alkalmazás**  |   Egy illesztőprogram-folyamatból és egy végrehajtó folyamatokból áll. A Spark-alkalmazások kiszolgáló nélküli Spark-készleten futnak.            |
-| **Spark-munkamenet**  |   Spark-alkalmazás egyesített belépési pontja. Lehetővé teszi a Spark különböző funkcióinak és kisebb számú szerkezetének kezelését. Jegyzetfüzet futtatásához létre kell hoznia egy munkamenetet. Egy munkamenet konfigurálható úgy, hogy egy adott méretű, meghatározott számú végrehajtón fusson. A notebook-munkamenet alapértelmezett konfigurációja 2 közepes méretű végrehajtón fut. |
-|**Jegyzetfüzet**| A Scala, a PySpark, a C# és a SparkSQL támogató interaktív és reaktív adatelemzési és mérnöki felület. |
-|**Spark-feladatdefiníció**|Egy Spark-feladatoknak a kódot és függőségeit tartalmazó szerelvény jar használatával történő elküldésére szolgáló felület.|
+
+* **Apache Spark a szinapszisok számára** – a Spark futási ideje kiszolgáló nélküli Spark-készletben használt. A jelenleg támogatott verzió a Spark 2,4 a Python 3.6.1, a Scala 2.11.12, a .NET-támogatás a Apache Spark 0,5 és a Delta Lake 0,3.  
+* **Apache Spark készlet** – 0 – N Spark által kiépített, a hozzájuk tartozó adatbázisokkal rendelkező erőforrások a munkaterületen helyezhetők üzembe. A Spark-készlet lehet automatikusan szüneteltethető, folytatható és méretezhető.  
+* **Spark-alkalmazás** – egy illesztőprogram-folyamatból és egy végrehajtó folyamatokból áll. A Spark-alkalmazások kiszolgáló nélküli Spark-készleten futnak.            
+* Spark- **munkamenet** – a Spark-alkalmazás egyesített belépési pontja. Lehetővé teszi a Spark különböző funkcióinak és kisebb számú szerkezetének kezelését. Jegyzetfüzet futtatásához létre kell hoznia egy munkamenetet. Egy munkamenet konfigurálható úgy, hogy egy adott méretű, meghatározott számú végrehajtón fusson. A notebook-munkamenet alapértelmezett konfigurációja 2 közepes méretű végrehajtón fut.
+* **Notebook** -interaktív és reaktív adatelemzési és-mérnöki felület, amely támogatja a Scala, a PySpark, a C# és a SparkSQL.
+* **Spark Job definition** – a felületet, amely a kódot és annak függőségeit tartalmazó szerelvény-jar-feladatokat küld el a Spark-feladatokhoz.
 
 ## <a name="pipelines-terminology"></a>Folyamatok terminológiája
-| Kifejezés                         | Definíció      |
-|:---                                 |:---                 |
-|**Adatintegráció**| Lehetővé teszi az adatgyűjtést a különböző források között, valamint a munkaterületen belül vagy a munkaterületen kívül futó tevékenységek szervezését.| 
-|**Adatfolyam**|  A teljes körű vizuális élményt nyújt, és nincs szükség kódolásra big data átalakításhoz. Az optimalizálást és a végrehajtást kiszolgáló nélküli módon kezeljük. |
-|**Folyamat**| A feladatokat elvégző tevékenységek logikai csoportosítása.|
-|**Tevékenység**| Meghatározza az adatokon végrehajtandó műveleteket, például az adatok másolását, egy jegyzetfüzet vagy egy SQL-parancsfájl futtatását.|
-|**Eseményindító**| Folyamat végrehajtása. Futtatható manuálisan vagy automatikusan (Schedule, bukdácsoló vagy eseményvezérelt).|
-|**Integrációs adatkészlet**|  Az adatok elnevezett nézete, amely egyszerűen rámutat vagy hivatkozik a tevékenységekben a bemenetként és kimenetként használt adatokra. Egy társított szolgáltatáshoz tartozik.|
+* **Adatintegráció** – lehetővé teszi az adatgyűjtést a különböző források között, és a munkaterületen belül vagy a munkaterületen kívül futó tevékenységek szervezését.
+* **Adatfolyam** – teljes körű vizuális élményt nyújt Big Data átalakításhoz szükséges kódolás nélkül. Az optimalizálást és a végrehajtást kiszolgáló nélküli módon kezeljük.
+* **Folyamat** – a tevékenységeket végrehajtó tevékenységek logikai csoportosítása.
+* **Tevékenység** – az adatokon végrehajtandó műveletek, például adatok másolása, jegyzetfüzetek vagy SQL-parancsfájlok futtatása.
+* **Trigger** – folyamat végrehajtása. Futtatható manuálisan vagy automatikusan (Schedule, bukdácsoló ablak vagy eseményvezérelt)
+* **Integrációs adatkészlet** – olyan adatok elnevezett nézete, amelyek egyszerűen rámutatnak vagy hivatkoznak egy tevékenységben bemenetként és kimenetként használandó adatokra. Egy társított szolgáltatáshoz tartozik.
 
 ## <a name="general-terminology"></a>Általános terminológia
-| Kifejezés                         | Definíció      |
-|:---                                 |:---                 |
-|**Artifacts**| A felhasználó által az adatforrások kezeléséhez, a fejlesztéshez, a koordináláshoz és a vizualizációhoz szükséges összes objektumot magában foglalja.|
-|**Társított szolgáltatások**| Kapcsolati karakterláncok, amelyek meghatározzák a munkaterület külső erőforrásokhoz való kapcsolódásához szükséges kapcsolati adatokat.|
+
+* Összetevők **– az** adatforrások kezeléséhez, fejlesztéséhez, összehangolásához és megjelenítéséhez szükséges összes objektumot magában foglalja.
+* **Társított szolgáltatás** – kapcsolati karakterláncok, amelyek meghatározzák a munkaterület külső erőforrásokhoz való kapcsolódásához szükséges kapcsolati adatokat.
 
 ## <a name="next-steps"></a>Következő lépések
 

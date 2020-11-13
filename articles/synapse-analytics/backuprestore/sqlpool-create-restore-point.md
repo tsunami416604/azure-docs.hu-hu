@@ -1,6 +1,6 @@
 ---
 title: Felhasználó által definiált visszaállítási pont létrehozása egy dedikált SQL-készlethez
-description: Visszaállítási pont létrehozása a dedikált SQL-készlethez.
+description: Ebből a témakörből megtudhatja, hogyan hozhat létre felhasználó által definiált visszaállítási pontot a dedikált SQL-készlethez az Azure szinapszis Analytics szolgáltatásban a Azure Portal használatával.
 services: synapse-analytics
 author: joannapea
 manager: igorstan
@@ -11,12 +11,12 @@ ms.date: 10/29/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c0835fb48d00fe5277732f34fd6b0de1448f6a78
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 21fd20100095040fda9f72b00e17147ff560fbca
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94332131"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579538"
 ---
 # <a name="user-defined-restore-points"></a>Felhasználó által definiált visszaállítási pontok
 
@@ -38,7 +38,7 @@ A felhasználó által definiált visszaállítási pontok a Azure Portal haszn�
 
     ![A visszaállítási pont neve](../media/sql-pools/create-sqlpool-restore-point-02.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő dedikált SQL-készlet visszaállítása](restore-sql-pool.md)
 

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 9ce0bb2a30ec4092d0053adf2de711547595c900
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554716"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591988"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Az adatimportálás Azure Machine Learning designerbe
 
@@ -53,6 +53,8 @@ Ha a modul kimeneti adatokat táblázatos formátumban adja meg, akkor a kimenet
 ### <a name="use-a-dataset"></a>Adatkészlet használata
 
 A regisztrált adatkészletek a modul palettáján, az **adatkészletek** területen találhatók. Adatkészlet használatához húzza azt a folyamat vászonra. Ezután kapcsolja össze az adatkészlet kimeneti portját a vászon más moduljaival. 
+
+Ha a fájl adatkészletét regisztrálja, az adatkészlet kimeneti portjának típusa **AnyDirectory**. Ha egy táblázatos adatkészletet regisztrál, az adatkészlet kimeneti portjának típusa **DataFrameDirectory**. Vegye figyelembe, hogy ha az adatkészlet kimeneti portját a tervező más moduljaihoz köti, az adatkészletek és modulok portszámát össze kell hangolni.
 
 ![A mentett adatkészletek helyét bemutató képernyőkép a tervező palettán](media/how-to-designer-import-data/use-datasets-designer.png)
 

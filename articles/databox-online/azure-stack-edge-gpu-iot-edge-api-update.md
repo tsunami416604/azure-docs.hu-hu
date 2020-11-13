@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Edge január 2021 Update Impact | Microsoft Docs
-description: Ismerteti IoT Edge szerepkör-felügyelet hatását a Azure Stack Edge-eszközökön a január 2021 frissítés telepítését követően.
+description: Ez a cikk azt ismerteti, hogy milyen hatással van a IoT Edge szerepkör-kezelés Azure Stack Edge-eszközökön a januári 2021 frissítés telepítése után.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,38 +8,41 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 10/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 4b54f75b7d90e4b3a0a11d2ecdc676bb48eeee99
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f16f33e9aadcc01427602a1bd81f81cb0710e4dd
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335682"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578739"
 ---
-# <a name="iot-edge-role-management-changes-for-your-azure-stack-edge"></a>A Azure Stack Edge szerepkör-felügyeleti módosításai IoT Edge
+# <a name="iot-edge-role-management-changes-for-your-azure-stack-edge-device"></a>A Azure Stack Edge-eszköz szerepkör-felügyeleti változásainak IoT Edge
 
-Az Azure Stack Edge-eszköz szerepkör-kezelésének IoT Edge az API, az SDK és a Azure PowerShell legújabb verzióját használja a 2021 januári kiadás miatt. Ez a cikk részletesen ismerteti azokat a módosításokat, amelyek az API, az SDK és a PowerShell-parancsmagok legújabb verziójának használatakor szükségesek a Azure Stack Edge-ben való IoT Edge szerepkör-kezeléshez.
+Az Azure Stack Edge-eszköz szerepkör-kezeléséhez használja az API, az SDK és a Azure PowerShell frissített verzióját, amely a 2021 januári kiadásra van ütemezve. Azure IoT Edge 
 
-A januári 2021-es frissítés csak Azure Stack Edge Pro-GPU, Azure Stack Edge Pro R és Azure Stack Edge mini R-eszközök esetén érhető el, és a cikkben szereplő információk csak ezekre az eszközökre vonatkoznak. 
+Ez a cikk részletesen ismerteti azokat a módosításokat, amelyeket a legújabb verzió használatakor el kell végeznie.
+
+A januári 2021-es frissítés csak Azure Stack Edge Pro-GPU, Azure Stack Edge Pro R és Azure Stack Edge mini R-eszközök esetén lesz elérhető. A cikkben szereplő információk csak ezekre az eszközökre vonatkoznak.
+
+> [!NOTE]
+> Nem kell frissítenie a januári 2021-es verzióra. Ha úgy dönt, hogy továbbra is használja a jelenlegi verzióját, akkor nincs hatással IoT Edge szerepkör-felügyeletre. Ahhoz azonban, hogy kihasználhassa az új funkciókat, és csökkenteni tudja a biztonsági kockázatokat, javasoljuk, hogy telepítse az újabb verziót. 
 
 ## <a name="iot-edge-role-management-changes"></a>Szerepkör-kezelés IoT Edge módosítása
 
-Miután telepítette a választható január 2021 eszköz szoftverét az Azure Stack Edge-eszközön, az API, az SDK és a PowerShell-parancsmagok legújabb verzióját kell használnia IoT Edge szerepkör-kezeléshez.
+Miután telepítette az opcionális január 2021 frissítést az Azure Stack Edge-eszközön, az API, az SDK és a PowerShell-parancsmagok legújabb verzióját kell használnia IoT Edge szerepkör-kezeléshez.
 
-- Ha az 2019-08-01-es verzióval rendelkező szerepkör-kezelési API-t használja, frissítsen az API-verzióra a 2021-es kiadásban. 
-- Ha a szerepkör-kezelést SDK-s verziójú 1.0.0-on keresztül használja, frissítsen a verzióra a 2021 januárjában.
-- Ha Azure PowerShell-parancsmagokkal (előzetes verzió) (például,,, vagy) szerepkör-kezelést használ `Get-AzStackEdgeRole` `New-AzStackEdgeRole` `Set-AzStackEdgeRole` `Remove-AzStackEdgeRole` , meg kell várnia az új parancsmagokat, amelyek felszabadulnak a Feb 2021-ben.
+A következő módosítások csak akkor szükségesek, ha a januári 2021 frissítést alkalmazza:
 
-A fenti módosítások csak akkor szükségesek, ha január 2021 frissítést alkalmaz. Ha továbbra is a szoftver meglévő verzióját szeretné megtartani, nincs hatással IoT Edge szerepkör-felügyeletre. Javasoljuk azonban, hogy frissítse az eszközt új funkciókkal és biztonsági fejlesztésekkel. 
-
+- Ha jelenleg az &nbsp; 2019-08-01-es szerepkör-kezelési API-t használja, frissítsen az API-verzióra, amelyet a 2021-es verzióban fog megjelenni. 
+- Ha jelenleg az SDK-s verziójú 1.0.0-n keresztül használja &nbsp; a szerepkör-kezelést, frissítsen a verzióra, amely a 2021-es januári kiadásban jelenik meg.
+- Ha szerepkör-kezelést használ a Azure PowerShell-parancsmagokkal (előzetes verzió), például,,, `Get-AzStackEdgeRole` `New-AzStackEdgeRole` `Set-AzStackEdgeRole` vagy `Remove-AzStackEdgeRole` , várjon, amíg az új parancsmagok fel lesznek szabadítva a 2021 februárjában.
 
 ## <a name="api-usage"></a>API-használat
 
-Ha IoT Edge szerepkör-kezelést API-n keresztül hajtja végre, használja az új API-verziót (2020-12-01), amelyet később közzé fog tenni. Ha a jelenlegi szerepkör-API-t használja, és telepítette az eszköz közelgő verzióját, a Put, a GET, a DELETE Kubernetes szerepkört kell áthelyeznie, majd az IoT addon API-t.
+Ha jelenleg IoT Edge szerepkör-kezelést hajt végre az API-n keresztül, akkor az új API 2020-12-01-es verzióját kell használnia, amely később közzé lesz téve. Ha a jelenlegi szerepkör-API-t használja, a közelgő eszköz szoftverének telepítését követően át kell térnie a PUT, a GET vagy a DELETE Kubernetes szerepkörre, majd a PUT IoT bővítmény API-ra.
 
+### <a name="for-the-put-method"></a>A PUT metódushoz
 
-### <a name="for-put-method"></a>PUT metódus esetén
-
-#### <a name="current-http-request"></a>Jelenlegi HTTP-kérelem 
+#### <a name="the-current-http-request"></a>Az aktuális HTTP-kérelem 
 
 - Az API-hívások a következő URI-n történnek: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01 "
 
@@ -84,11 +87,13 @@ Ha IoT Edge szerepkör-kezelést API-n keresztül hajtja végre, használja az �
     }
     ```
 
-#### <a name="upcoming-http-request"></a>Közelgő HTTP-kérelem 
+#### <a name="the-upcoming-http-request"></a>A közelgő HTTP-kérelem 
 
-- A Kubernetes szerepkörhöz tartozó API-hívások a következő URI-n lesznek elvégezve: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1?api-version=2020-12-01 "
+- A Kubernetes szerepkörhöz tartozó API-hívások a következő URI-n lesznek: 
 
-    A kérelem törzse a következőképpen néz ki:
+  'https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1?api-version=2020-12-01'
+
+    A kérelem törzse így fog kinézni:
 
     ```json
     {
@@ -110,10 +115,11 @@ Ha IoT Edge szerepkör-kezelést API-n keresztül hajtja végre, használja az �
     }
     ```
 
-- Az IoT Edge addon API-hívásai a következő URI-n találhatók: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01 "
+- A IoT Edge-bővítmény API-hívásai a következő URI-n történnek: 
 
+   'https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01'
 
-    A kérelem törzse a következőképpen néz ki:
+    A kérelem törzse így fog kinézni:
 
     ```json
     {
@@ -152,12 +158,13 @@ Ha IoT Edge szerepkör-kezelést API-n keresztül hajtja végre, használja az �
     ```
 
 
-### <a name="for-get-method"></a>GET metódus
+### <a name="for-the-get-method"></a>A GET metódushoz
 
-#### <a name="current-http-response"></a>Aktuális http-válasz
+#### <a name="the-current-http-response"></a>A jelenlegi HTTP-válasz
 
-- Az API-hívások a következő URI-val lesznek elvégezve: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01 "
+- Az API-hívások a következő URI-n történnek:
 
+   'https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01'
 
 - A válasz törzse a következőképpen néz ki:
 
@@ -190,9 +197,12 @@ Ha IoT Edge szerepkör-kezelést API-n keresztül hajtja végre, használja az �
     }    
     ```
 
-#### <a name="upcoming-http-response"></a>Közelgő http-válasz
+#### <a name="the-upcoming-http-response"></a>A közelgő HTTP-válasz
 
-- Az API-hívások a következő URI-val lesznek elvégezve: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01 "
+- Az API-hívások a következő URI-n történnek: 
+
+   'https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01'
+
 - A válasz törzse a következőképpen néz ki: 
 
     ```json
@@ -224,22 +234,25 @@ Ha IoT Edge szerepkör-kezelést API-n keresztül hajtja végre, használja az �
     }
     ```
 
-### <a name="for-delete-method"></a>TÖRLÉSi metódus
+### <a name="for-the-delete-method"></a>A DELETE metódushoz
 
-### <a name="current"></a>Aktuális
+### <a name="the-current-api-calls"></a>Az aktuális API-hívások
 
-Az API-hívások a következő URI-val lesznek elvégezve: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01 "
+Az API-hívások a következő URI-n történnek: 
 
-### <a name="upcoming"></a>Közelgő
+'https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/IoTRole1?api-version=2019-08-01'
 
-Az API-hívások a következő URI-val lesznek elvégezve: " https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01 "
+### <a name="the-upcoming-api-calls"></a>A közelgő API-hívások
 
+Az API-hívások a következő URI-n történnek: 
+
+'https://management.azure.com/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/KubernetesRole1/addons/iotaddon?api-version=2020-12-01'
 
 ## <a name="sdk-usage"></a>SDK-használat
 
-Ha az SDK-t használja, és telepítette a januári 2021-es eszköz frissítését, akkor az alábbi táblázatban látható módon meg kell változtatnia IoT Edge szerepkör beállításának módját. Ezután töltse le és telepítse a közelgő NuGet csomagot, hogy az új SDK-ra váltson az alábbi mintában látható módon.
+Ha az SDK-t használja, a januári 2021-es frissítés telepítése után módosítania kell a IoT Edge szerepkör beállításának módját, ahogy az a következő mintában látható. Ezután letöltheti és telepítheti a közelgő NuGet csomagot, hogy az itt látható módon váltson az új SDK-ra.
 
-### <a name="current-sdk-sample"></a>Aktuális SDK-minta
+### <a name="the-current-sdk-sample"></a>Az aktuális SDK-minta
 
 ```csharp
 var iotRoleStatus = "Enabled";
@@ -267,7 +280,7 @@ DataBoxEdgeManagementClient.Roles.CreateOrUpdate(deviceName, iotRoleName, role, 
 ```
 
 
-### <a name="new-sdk-sample"></a>Új SDK-minta
+### <a name="the-new-sdk-sample"></a>Az új SDK-minta
 
 ```csharp
 var k8sRoleStatus = "Enabled";
@@ -304,24 +317,24 @@ DataBoxEdgeManagementClient.AddOns.CreateOrUpdate(deviceName, k8sRoleName, addon
 
 ## <a name="cmdlet-usage"></a>Parancsmag használata
 
-Ha,, `Get-AzStackEdgeRole` `New-AzStackEdgeRole` `Set-AzStackEdgeRole` vagy parancsmagot használ, `Remove-AzStackEdgeRole` meg kell várnia az új, a 2021 februárjában tervezett verziót.
+Ha jelenleg a `Get-AzStackEdgeRole` ,, `New-AzStackEdgeRole` `Set-AzStackEdgeRole` vagy `Remove-AzStackEdgeRole` parancsmagot használja, meg kell várnia a februári 2021-es kiadáshoz tervezett új verziót.
 
-## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
+## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-#### <a name="i-am-using-azure-stack-edge-pro--fpga-does-the-january-2021-update-affect-the-fpga-model"></a>Azure Stack Edge Pro-FPGA használok. Befolyásolja a januári 2021-es frissítés a FPGA modellt?
+**Azure Stack Edge Pro-FPGA-t használok. Befolyásolja a januári 2021-es frissítés a FPGA modellt?**
 
-Nem. A januári 2021-es frissítés csak Azure Stack Edge – GPU, Azure Stack Edge Pro R és Azure Stack Edge mini R-eszközökre vonatkozik. Ez a frissítés nem érinti a Azure Stack Edge Pro – FPGA szolgáltatást, és nem igényel semmilyen módosítást IoT Edge szerepkör-felügyelethez.
+Nem. A januári 2021-es frissítés csak Azure Stack Edge Pro-FPGA, Azure Stack Edge Pro R-re és Azure Stack Edge mini R-eszközökre vonatkozik. A Azure Stack Edge Pro-FPGA nem érinti ez a frissítés, és nem igényel semmilyen módosítást IoT Edge szerepkör-felügyelethez.
 
-#### <a name="after-i-update-my-azure-stack-edge-pro---gpu-to-the-new-device-software-in-january-2021-are-any-of-the-existing-services-affected"></a>Miután Frissítettem a Azure Stack Edge Pro-GPU-t az új eszközre a 2021-es verzióban, a meglévő szolgáltatások bármelyike érintett?
+**Miután Frissítettem a Azure Stack Edge Pro-GPU-t az új eszközre a 2021-as verzióban, a meglévő szolgáltatások bármelyike érintett?**
 
-Nem. A konfigurált szolgáltatások a januári 2021-es eszköz frissítésének telepítését követően nem lesznek hatással. <!--check w/ Anoob, what existing services you are talking about in this question-->
+Nem. A konfigurált szolgáltatásokat a januári 2021-es eszköz frissítésének telepítése után nem érinti a rendszer.
 
-#### <a name="what-are-the-high-level-changes-to-iot-edge-management-api-sdk-or-cmdlet"></a>Mik a IoT Edge Management API, az SDK vagy a parancsmag magas szintű változásai?
+**Milyen magas szintű változások vonatkoznak a IoT Edge Management API-ra, az SDK-ra vagy a parancsmagra?**
 
-IoT Edge a Kubernetes szerepkörhöz tartozó addon. Ez azt jelenti, hogy meg kell győződnie arról, hogy a Kubernetes először van konfigurálva, majd végrehajtja a IoT Edge konfigurációját.
+IoT Edge egy bővítmény a Kubernetes szerepkörben, ami azt jelenti, hogy először meg kell győződnie arról, hogy a Kubernetes konfigurálva van, majd végre kell hajtania a IoT Edge-konfigurációt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Útmutató a [frissítések alkalmazásához](azure-stack-edge-gpu-install-update.md).
+- [Útmutató a frissítések alkalmazásához](azure-stack-edge-gpu-install-update.md)
 

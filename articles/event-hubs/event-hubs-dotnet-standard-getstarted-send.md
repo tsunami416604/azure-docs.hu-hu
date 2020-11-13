@@ -4,12 +4,12 @@ description: Ez a cikk egy olyan .NET Core-alkalmazás létrehozását ismerteti
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4949d68750e95e5b62b8387f03c77c082fbaf7f4
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 1c0f5a5fb45ee45cb9b7e399dc39ad29406b15dc
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329321"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578994"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Események küldése és fogadása az Azure Event Hubs-.NET-ről (Azure. Messaging. EventHubs) 
 Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről az **Azure. Messaging. EventHubs** .net-kódtár használatával. 
@@ -34,12 +34,12 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan .NET Core Console-a
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
 1. Indítsa el a Visual Studio 2019-et. 
-1. Válassza **az új projekt létrehozása**lehetőséget. 
-1. A **create a New Project (új projekt létrehozása** ) párbeszédpanelen hajtsa végre a következő lépéseket: Ha nem látja ezt a párbeszédpanelt, válassza a **fájl** lehetőséget a menüben, majd válassza az **új**, majd a **projekt**elemet. 
+1. Válassza **az új projekt létrehozása** lehetőséget. 
+1. A **create a New Project (új projekt létrehozása** ) párbeszédpanelen hajtsa végre a következő lépéseket: Ha nem látja ezt a párbeszédpanelt, válassza a **fájl** lehetőséget a menüben, majd válassza az **új** , majd a **projekt** elemet. 
     1. Válassza a **C#** lehetőséget a programozási nyelvhez.
     1. Válassza ki a **konzolt** az alkalmazás típusához. 
     1. Válassza ki a **Console app (.net Core)** elemet az eredmények listából. 
-    1. Ezután válassza a **tovább**lehetőséget. 
+    1. Ezután válassza a **tovább** lehetőséget. 
 
         ![A New project (Új projekt) párbeszédpanel](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
 1. Adja meg a **EventHubsSender** a projekt neve mezőben, a **EventHubsQuickStart** , majd kattintson az **OK** gombra a projekt létrehozásához. 
@@ -48,7 +48,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan .NET Core Console-a
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Az Event Hubs NuGet-csomag hozzáadása
 
-1. Válassza ki az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt** a menüből. 
+1. Válassza ki az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolt** a menüből. 
 1. Futtassa az alábbi parancsot az **Azure. Messaging. EventHubs** NuGet-csomag telepítéséhez:
 
     ```cmd
@@ -104,7 +104,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan .NET Core Console-a
     [![Annak ellenőrzése, hogy az Event hub fogadta-e az üzeneteket](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
     > [!NOTE]
-    > A teljes forráskódot további tájékoztató megjegyzésekkel tekintheti [meg a githubon](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample03_PublishAnEventBatch.cs) .
+    > A teljes forráskódot további tájékoztató megjegyzésekkel tekintheti [meg a githubon](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample04_PublishingEvents.md) .
 
 ## <a name="receive-events"></a>Események fogadása
 Ez a szakasz bemutatja, hogyan írhat olyan .NET Core Console-alkalmazást, amely az Event hub-ból származó üzeneteket fogad egy eseményvezérelt processzor használatával. Az esemény-feldolgozó leegyszerűsíti az események fogadását az Event hubokból az állandó ellenőrzőpontok és a párhuzamos fogadások az adott esemény hubokból való kezelésével. Egy esemény-feldolgozó társítva van egy adott Event hubhoz és egy fogyasztói csoporthoz. Az Event hub több partíciójának eseményeit fogadja el, amelyek az Ön által megadott kóddal való feldolgozásra szolgálnak. 
@@ -128,13 +128,13 @@ Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-táro
 
 ### <a name="create-a-project-for-the-receiver"></a>Projekt létrehozása a fogadó számára
 
-1. A Megoldáskezelő ablakban kattintson a jobb gombbal a **EventHubQuickStart** -megoldásra, mutasson a **Hozzáadás**elemre, majd válassza az **új projekt**lehetőséget. 
+1. A Megoldáskezelő ablakban kattintson a jobb gombbal a **EventHubQuickStart** -megoldásra, mutasson a **Hozzáadás** elemre, majd válassza az **új projekt** lehetőséget. 
 1. Válassza ki a **Console app (.net Core)** elemet, majd kattintson a **Tovább gombra**. 
-1. Adja meg a **EventHubsReceiver** a **projekt neveként**, majd válassza a **Létrehozás**lehetőséget. 
+1. Adja meg a **EventHubsReceiver** a **projekt neveként** , majd válassza a **Létrehozás** lehetőséget. 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Az Event Hubs NuGet-csomag hozzáadása
 
-1. Válassza ki az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt** a menüből. 
+1. Válassza ki az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolt** a menüből. 
 1. Futtassa az alábbi parancsot az **Azure. Messaging. EventHubs** NuGet-csomag telepítéséhez:
 
     ```cmd
@@ -227,7 +227,7 @@ Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-táro
     Ezek az események a küldő program futtatásával korábban a következő három eseményt küldik el az Event hub számára. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a mintákat a GitHubon. 
 
 - [Event Hubs minták a GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)

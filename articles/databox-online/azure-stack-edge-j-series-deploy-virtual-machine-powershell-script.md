@@ -1,6 +1,6 @@
 ---
-title: Virtuális gépek üzembe helyezése az Azure Stack Edge Pro GPU-eszközön Azure PowerShell használatával
-description: Ismerteti, hogyan lehet virtuális gépeket (VM-ket) létrehozni és felügyelni egy Azure Stack Edge Pro-eszközön Azure PowerShell használatával.
+title: Virtuális gépek üzembe helyezése Azure Stack Edge Pro GPU-eszközön Azure PowerShell parancsfájl használatával
+description: Ismerteti, hogyan lehet virtuális gépeket (VM-ket) létrehozni és kezelni egy Azure Stack Edge Pro-eszközön egy Azure PowerShell parancsfájl használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd877a91c7c082ce7845394f2636857f33b7940f
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890650"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578756"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Virtuális gépek üzembe helyezése Azure Stack Edge Pro GPU-eszközön Azure PowerShell parancsfájl használatával
 

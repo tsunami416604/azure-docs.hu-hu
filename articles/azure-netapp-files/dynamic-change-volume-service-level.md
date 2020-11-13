@@ -12,19 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: fe4b2925a34ae7c06bb0b597f0bcdcc3f4d80896
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e5219e1c87221ade8da68c21209f41b4d6139be2
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363221"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579079"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Kötetek szolgáltatásszintjének dinamikus módosítása
 
 > [!IMPORTANT] 
-> A szolgáltatás nyilvános előzetes regisztrációja továbbra is érvényben marad. 
+> * A szolgáltatás nyilvános előzetes regisztrációja továbbra is érvényben marad. 
+> * A replikációs cél kötet szolgáltatási szintjének dinamikus módosítása jelenleg nem támogatott.
 
 Megváltoztathatja egy meglévő kötet szolgáltatási szintjét úgy, hogy áthelyezi a kötetet egy másik, a kötethez használni kívánt [szolgáltatási szintre](azure-netapp-files-service-levels.md) . Ennek a kötetnek a helyi szolgáltatási szintjének módosítása nem igényli az adatáttelepítést. Emellett nem befolyásolja a kötethez való hozzáférést is.  
 
@@ -71,7 +72,7 @@ You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view
 3.  Kattintson az **OK** gombra.
 
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)
 * [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)

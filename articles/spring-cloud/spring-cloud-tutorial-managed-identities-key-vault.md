@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: b3505f8bf31c2e700ce1cc57e106c33a13e0aa9b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fc44dd6cf91d687f47afadf1c3378956d838bc9d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737177"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579504"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Oktatóanyag: felügyelt identitás használata a Key Vault Azure Spring Cloud-alkalmazáshoz való összekapcsolásához
 
@@ -28,7 +28,7 @@ Azure Key Vault a tokenekhez, jelszavakhoz, tanúsítványokhoz, API-kulcsokhoz 
 * [Az Azure CLI 2.0.67 vagy újabb verziójának telepítése](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 * [A Maven 3,0-es vagy újabb verziójának telepítése](https://maven.apache.org/download.cgi)
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Key Vault és a Spring Cloud karaktert is tartalmazza az az [Group Create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-create): paranccsal.
 
 ```azurecli-interactive
@@ -77,6 +77,8 @@ A használatával `az keyvault set-policy` megfelelő hozzáférést biztosítha
 ```azurecli
 az keyvault set-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY} --secret-permissions set get list
 ```
+> [!NOTE]
+> A használatával `az keyvault delete-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY}` távolíthatja el az alkalmazáshoz való hozzáférést, miután a rendszerhez rendelt felügyelt identitás le van tiltva.
 
 ## <a name="build-a-sample-spring-boot-app-with-spring-boot-starter"></a>Minta Spring boot-alkalmazás létrehozása Spring boot Starter-vel
 Ez az alkalmazás hozzáférhet a Azure Key Vault titkainak beszerzéséhez. Használja az alapszintű alkalmazást: [Azure Key Vault Secrets Spring boot Starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets).  Azure Key Vault a Spring **PropertySource** -példányként lesz hozzáadva.  A Azure Key Vaultban tárolt titkos kulcsok kényelmesen elérhetők és felhasználhatók, mint például a fájlok tulajdonságai. 

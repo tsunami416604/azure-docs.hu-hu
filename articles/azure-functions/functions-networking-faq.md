@@ -4,12 +4,12 @@ description: Válaszok a Azure Functions-vel való hálózatkezeléssel kapcsola
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: d07484943f8ba85cc8e46737f3ef85b6e25d5187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538058"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578229"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Gyakori kérdések a hálózatkezeléssel kapcsolatban Azure Functions
 
@@ -31,11 +31,9 @@ Ne feledje, hogy a Azure Portal-szerkesztőnek közvetlen hozzáférésre van sz
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Hogyan korlátozza a saját Function alkalmazást egy virtuális hálózatra?
 
-A [szolgáltatási végpontok](./functions-networking-options.md#private-site-access)használatával korlátozhatja a functions-alkalmazások **bejövő** forgalmát egy virtuális hálózatra. Ez a konfiguráció továbbra is lehetővé teszi, hogy a Function alkalmazás kimenő hívásokat hajtson végre az interneten.
+A [szolgáltatási végpontok](./functions-networking-options.md#use-service-endpoints)használatával korlátozhatja a functions-alkalmazások **bejövő** forgalmát egy virtuális hálózatra. Ez a konfiguráció továbbra is lehetővé teszi, hogy a Function alkalmazás kimenő hívásokat hajtson végre az interneten.
 
-Az egyetlen mód arra, hogy teljes mértékben korlátozza a függvényeket úgy, hogy a virtuális hálózaton keresztül lebonyolított összes forgalom belsőleg elosztott terhelésű App Service Environment használjon. Ez a beállítás a virtuális hálózaton belüli dedikált infrastruktúrán helyezi üzembe a helyet, és az összes eseményindítót és forgalmat a virtuális hálózaton keresztül küldi el. 
-
-App Service Environment használatáról a [belső terheléselosztó létrehozása és használata app Service Environment](../app-service/environment/create-ilb-ase.md)használatával című cikk nyújt tájékoztatást.
+Ha egy olyan függvényt szeretne teljes mértékben korlátozni, amely az összes forgalmat egy virtuális hálózaton keresztül hajtja végre, a kimenő virtuális hálózati integrációval vagy egy App Service Environment rendelkező [privát végpontokat](./functions-networking-options.md#private-endpoint-connections) használhat.
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Hogyan lehet hozzáférni egy virtuális hálózat erőforrásaihoz egy Function alkalmazásból?
 
@@ -47,7 +45,7 @@ A Virtual Network Integration használatával elérheti a szolgáltatás-végpon
 
 ## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Hogyan válthatok ki egy függvényt egy erőforrásból egy virtuális hálózaton?
 
-Lehetővé teszi, hogy a HTTP-eseményindítók a [szolgáltatási végpontok](./functions-networking-options.md#private-site-access)használatával legyenek meghívva egy virtuális hálózatból. 
+Lehetővé teszi a HTTP-eseményindítók meghívását egy virtuális hálózatból [szolgáltatási végpontok](./functions-networking-options.md#use-service-endpoints) vagy [privát végponti kapcsolatok](./functions-networking-options.md#private-endpoint-connections)használatával. 
 
 A függvényt a virtuális hálózat minden más erőforrásáról is aktiválhatja, ha a Function alkalmazást egy prémium csomagra, App Service csomagra vagy App Service Environmentra telepíti. További információ: [nem http virtuális hálózati eseményindítók](./functions-networking-options.md#virtual-network-triggers-non-http)
 

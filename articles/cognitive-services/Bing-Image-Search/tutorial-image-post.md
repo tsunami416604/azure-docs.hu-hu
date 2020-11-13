@@ -11,21 +11,21 @@ ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 76670c6a061ce3f257d9df8cfe61b1cc020194c6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: cef39b940f0d61fc60ea10156acfd781289157de
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100218"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591971"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Oktatóanyag: Képadatok kinyerése a Bing Image Search API és a C# használatával
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-A Bing Image Search API-n keresztül több [végpont](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint) is elérhető. A `/details` végpont egy képpel együtt érkező POST-kérelmet fogad el, és különböző adatokat képes visszaadni a képről. A C#-alkalmazás az API használatával elküld egy képet, és megjeleníti a Bing által visszaadott adatokat JSON-objektumok formájában, mint amilyen például a következő:
+A Bing Image Search API-n keresztül több [végpont](./image-search-endpoint.md) is elérhető. A `/details` végpont egy képpel együtt érkező POST-kérelmet fogad el, és különböző adatokat képes visszaadni a képről. A C#-alkalmazás az API használatával elküld egy képet, és megjeleníti a Bing által visszaadott adatokat JSON-objektumok formájában, mint amilyen például a következő:
 
 ![[JSON-találatok]](media/cognitive-services-bing-images-api/jsonResult.jpg)
 
@@ -117,6 +117,6 @@ Ha azonosítható személyek vagy helyek szerepelnek a képen, a kérelem rájuk
 > [!div class="nextstepaction"]
 > [Képek és keresési beállítások megjelenítése egyoldalas webalkalmazásban](tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

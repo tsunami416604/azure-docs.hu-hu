@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 4d758d4613f68450be9c444063d3a6188d1aa689
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: e87be0db65cf12a265566e0c05815722ce3cc609
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337576"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578875"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC-megoldások létrehozása és üzembe helyezése az Azure-folyamatokkal
 
@@ -24,7 +24,7 @@ Ebben a példában létrehozunk egy létrehozási és kiadási folyamatot egy Az
 
 ![A folyamaton belüli üzembe helyezés folyamatát bemutató ábra](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>Telepítés
+### <a name="setup"></a>Létrehozás
 
 A cikkben ismertetett lépések végrehajtásához egy Azure DevOps-szervezetre és egy Team-projektre van szükség.
 
@@ -43,7 +43,7 @@ Az ebben a példában használt kód szerkezet a következőhöz hasonló:
 
 * Egy **ARM-templates** mappa, amely több Azure Resource Manager sablont tartalmaz. A sablonokat a cikk ismerteti.
 * Egy **ügyfél-alkalmazás** mappa, amely a [Azure Batch .net file Processing és az FFmpeg](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) minta másolata. Ez nem szükséges ehhez a cikkhez.
-* **HPC-Application** mappa, amely az [ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-10-01-essentials_build.7z)Windows 64 bites verziója.
+* **HPC-Application** mappa, amely az [ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08)Windows 64 bites verziója.
 * A **folyamatok** mappája. Ez egy YAML-fájlt tartalmaz, amely felvázolja a létrehozás folyamatát. Ezt a cikk tárgyalja.
 
 Ez a szakasz feltételezi, hogy már ismeri a verziókövetés és a Resource Manager-sablonok tervezését. Ha nem ismeri ezeket a fogalmakat, további információért tekintse meg a következő lapokat.
@@ -500,7 +500,7 @@ Méretezze át a készletet úgy, hogy elérhetők legyenek a feladatok és a te
 az batch pool resize --pool-id <poolname> --target-dedicated-nodes 4
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A jelen cikk mellett két olyan oktatóanyag is létezik, amely az FFmpeg-t használja a .NET és a Python használatával. A Batch-fiók egyszerű alkalmazáson keresztül történő kezelésével kapcsolatos további információkért tekintse meg ezeket az oktatóanyagokat.
 

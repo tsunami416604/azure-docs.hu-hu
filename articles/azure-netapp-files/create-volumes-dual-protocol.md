@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 54be34b2151aa88705559ac2913db4f528ea4492
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4fa2c724906c8a6bfb294541b6616ddc7ae22df6
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963516"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591648"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Hozzon létre egy Dual-Protocol (NFSv3 és SMB) kötetet Azure NetApp Files
 
@@ -37,7 +37,7 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMBv3 vagy 
 
 * Győződjön meg arról, hogy megfelel a [Active Directory kapcsolatok követelményeinek](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
 * Hozzon létre egy névkeresési zónát a DNS-kiszolgálón, majd adjon hozzá egy mutató (PTR) rekordot a névkeresési zónában található AD-gazdagéphez. Ellenkező esetben a kettős protokollú kötet létrehozása sikertelen lesz.
-* Győződjön meg arról, hogy az NFS-ügyfél naprakész, és futtatja az operációs rendszer legújabb frissítéseit.
+* Ellenőrizze, hogy az NFS-ügyfél naprakész állapotban van-e, illetve hogy az operációs rendszer legfrissebb verziója fut-e rajta.
 * Győződjön meg arról, hogy a Active Directory (AD) LDAP-kiszolgáló működik és fut az AD-ben. Ezt úgy teheti meg, ha telepíti és konfigurálja a [Active Directory Lightweight Directory-szolgáltatások (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) szerepkört az ad-gépen.
 * Az önaláírt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozásához és exportálásához a [Active Directory tanúsítványszolgáltatások (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) szerepkör használatával győződjön meg arról, hogy a hitelesítésszolgáltató (CA) létrejött az ad-ben.   
 * A kettős protokollú kötetek jelenleg nem támogatják a Azure Active Directory Domain Servicest (AADDS).  
@@ -58,7 +58,7 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMBv3 vagy 
 
     ![A kötetek navigálása](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  A kötet létrehozása ablakban kattintson a **Létrehozás**gombra, és adja meg a következő mezők adatait az alapok lapon:   
+2.  A kötet létrehozása ablakban kattintson a **Létrehozás** gombra, és adja meg a következő mezők adatait az alapok lapon:   
     * **Kötet neve**      
         Adja meg a létrehozni kívánt kötet nevét.   
 
@@ -100,7 +100,7 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMBv3 vagy 
 
         ![Speciális kijelölés megjelenítése](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-3. Kattintson a **protokoll**elemre, majd hajtsa végre a következő műveleteket:  
+3. Kattintson a **protokoll** elemre, majd hajtsa végre a következő műveleteket:  
     * Válassza a **kettős protokoll (NFSv3 és SMB)** lehetőséget a kötethez.   
 
     * A legördülő listából válassza ki a **Active Directory** -kapcsolatokat.  
@@ -135,7 +135,7 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMBv3 vagy 
 
     ![Tanúsítvány exportálása varázsló](../media/azure-netapp-files/certificate-export-wizard.png)
 
-4. Nyissa meg a kettős protokollú kötet NetApp-fiókját, kattintson a **Active Directory kapcsolatok**elemre, és töltse fel a legfelső szintű hitelesítésszolgáltatói tanúsítványt a **Csatlakozás Active Directory** ablak használatával:  
+4. Nyissa meg a kettős protokollú kötet NetApp-fiókját, kattintson a **Active Directory kapcsolatok** elemre, és töltse fel a legfelső szintű hitelesítésszolgáltatói tanúsítványt a **Csatlakozás Active Directory** ablak használatával:  
 
     ![Kiszolgáló legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa](../media/azure-netapp-files/server-root-ca-certificate.png)
 
@@ -161,5 +161,5 @@ Az NFS-ügyfél konfigurálásához kövesse az [NFS-ügyfél konfigurálása Az
 
 ## <a name="next-steps"></a>Következő lépések  
 
-* [Dual-Protocol – gyakori kérdések](azure-netapp-files-faqs.md#dual-protocol-faqs)
 * [NFS-ügyfél konfigurálása az Azure NetApp Fileshoz](configure-nfs-clients.md)
+* [Kettős protokollú kötetek hibaelhárítása](troubleshoot-dual-protocol-volumes.md)

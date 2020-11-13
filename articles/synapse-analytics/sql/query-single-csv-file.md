@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7e5a64a75ca6cde4172e49eb77dde42a44c06d5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b9896b62ab347ec3b4751eb517c00222f00ddb1c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321456"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579402"
 ---
 # <a name="query-csv-files"></a>CSV-fájlok lekérdezése
 
@@ -45,6 +45,11 @@ from openrowset(
 ```
 
 Ezzel a beállítással lehet `firstrow` kihagyni a CSV-fájl első olyan sorát, amely ebben az esetben a fejlécet jelöli. Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájlt SAS-kulccsal vagy egyéni identitással védi, a [kiszolgáló szintű hitelesítő adatokat kell beállítania az SQL-bejelentkezéshez](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
+
+> [!IMPORTANT]
+> Ha a CSV-fájl UTF-8 karaktereket tartalmaz, ügyeljen arra, hogy az UTF-8 adatbázis-rendezést használja (például `Latin1_General_100_CI_AS_SC_UTF8` ).
+> A fájl és a rendezés szöveges kódolása nem egyezik meg, mert nem várt konverziós hiba történt.
+> Az aktuális adatbázis alapértelmezett rendezését az alábbi T-SQL-utasítás használatával egyszerűen módosíthatja: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>Adatforrás használata
 
@@ -90,6 +95,12 @@ from openrowset(
 ```
 
 A záradékban szereplő adattípusú számok a `WITH` CSV-fájlban lévő oszlop indexét jelölik.
+
+> [!IMPORTANT]
+> Ha a CSV-fájl UTF-8 karaktereket tartalmaz, győződjön meg róla, hogy az explicilty egy bizonyos UTF-8 rendezést ad meg (például `Latin1_General_100_CI_AS_SC_UTF8` ) a záradék összes oszlopához, `WITH` vagy állítson be néhány UTF-8 rendezést az adatbázis szintjén.
+> A fájl és a rendezés szöveges kódolása nem egyezik meg, mert nem várt konverziós hiba történt.
+> Az aktuális adatbázis alapértelmezett rendezését az alábbi T-SQL-utasítás használatával egyszerűen módosíthatja: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> A UnitPrice-típusok rendezését könnyedén megadhatja a következő definíció használatával: `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8 8`
 
 A következő részekben láthatja, hogyan lehet lekérdezni különböző típusú CSV-fájlokat.
 

@@ -3,12 +3,12 @@ title: 'Hibakeresési hiba: Azure Functions-futtatókörnyezet nem érhető el'
 description: Ismerje meg, hogyan lehet elhárítani egy érvénytelen Storage-fiókot.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: 094f4f45be0ae4173af434be178f2eae2b21b6be
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0b6778a08bf04367f2a0ef10f7cd4fe29a52dd61
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054729"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579011"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Hibakeresési hiba: "a Azure Functions-futtatókörnyezet nem érhető el"
 
@@ -76,7 +76,7 @@ Előfordulhat, hogy a függvény futtatókörnyezete a következő okok valamely
 
 * A Function alkalmazást [belső terheléselosztású app Service Environment](../app-service/environment/create-ilb-ase.md) üzemelteti, és úgy van konfigurálva, hogy letiltsa a bejövő internetes forgalmat.
 
-* A Function alkalmazás [bejövő IP-korlátozásokkal](functions-networking-options.md#inbound-ip-restrictions) rendelkezik, amelyek az Internet-hozzáférés blokkolására vannak konfigurálva. 
+* A Function alkalmazás [bejövő IP-korlátozásokkal](functions-networking-options.md#inbound-access-restrictions) rendelkezik, amelyek az Internet-hozzáférés blokkolására vannak konfigurálva. 
 
 A Azure Portal közvetlenül a futó alkalmazásban hívja meg a függvények listáját, és HTTP-hívásokat kezdeményez az kudu-végpontra. A platform **szolgáltatásai** lap platform szintű beállításai továbbra is elérhetők.
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 76da267ae14a1f58ee2cadbf48f4b2ec419312b4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 99aa4d9ed6552075b0da4d451201f48ba6adfb1b
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543525"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578705"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Előre fizetés az Azure cache számára a fenntartott kapacitású számítási erőforrások Redis
 
@@ -37,6 +37,8 @@ Tegyük fel például, hogy két gyorsítótárat futtat – az egyiket 13 GB-ra
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>Azure cache vásárlása a Redis fenntartott kapacitáshoz
 
+Egy fenntartott VM-példányt vásárolhat a [Azure Portalban](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/). A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/monthly-payments-reservations.md).
+
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
 3. Válassza a **Hozzáadás** lehetőséget, majd a foglalások ablaktáblán válassza a **Redis Azure cache** lehetőséget, ha új foglalást szeretne vásárolni a gyorsítótárak számára.
@@ -54,7 +56,7 @@ A következő táblázat a kötelező mezőket ismerteti.
 | Hatókör | A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: </br></br> **Megosztva** a foglalási kedvezményt a rendszer az Azure cache-re alkalmazza a számlázási környezetben lévő előfizetésekben futó Redis-példányok esetében. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.</br></br> **Egy előfizetés** esetén a foglalási kedvezmény az Azure cache-re érvényes az előfizetéshez tartozó Redis-példányok esetében. </br></br> **Egy erőforráscsoport** , a foglalási kedvezményt a rendszer az Azure cache-re alkalmazza a kijelölt előfizetésben található Redis-példányok esetében, valamint az adott előfizetéshez tartozó kiválasztott erőforráscsoportot.
 | Régió | A Redis fenntartott kapacitás foglalásához az Azure cache által érintett Azure-régió.
 | Tarifacsomag | A Redis-kiszolgálók Azure gyorsítótárának szolgáltatási szintje.
-| Időszak | Egy vagy három év
+| Kifejezés | Egy vagy három év
 | Mennyiség | Az Azure cache-ben megvásárolni kívánt számítási erőforrások mennyisége a Redis fenntartott kapacitás foglalásához. A mennyiség a kijelölt Azure-régióban és szolgáltatási szinten foglalt gyorsítótárak száma, amelyek foglalása folyamatban van, és a számlázási kedvezményt kapja. Ha például olyan Redis-kiszolgálókon futtatja az Azure cache-t, amelyeken az USA keleti régiójában a teljes gyorsítótár kapacitása összesen 26 GB, akkor olyan mennyiséget kell megadnia, amely 26 GB-ot biztosít az összes gyorsítótár előnyének maximalizálása érdekében. Ez lehet 1 P3 vagy 2 P2 gyorsítótár.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése

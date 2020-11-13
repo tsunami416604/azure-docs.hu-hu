@@ -1,23 +1,23 @@
 ---
-title: Az Azure Stream Analytics áttekintése
-description: Ismerkedjen meg Stream Analyticsával, amely egy felügyelt szolgáltatás, amellyel valós időben elemezheti a eszközök internetes hálózata (IoT) adatfolyam-adatait.
+title: Bevezetés a Azure Stream Analyticsba
+description: Ismerkedjen meg Azure Stream Analyticsával, amely egy felügyelt szolgáltatás, amellyel valós időben elemezheti a eszközök internetes hálózata (IoT) adatfolyam-adatait.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc, contperfq2
-ms.date: 11/03/2020
-ms.openlocfilehash: d81858db3f4d09b834a9199804a6f2631828496b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 11/12/2020
+ms.openlocfilehash: 0022e19e23b7808cd78da988fd3fdef2d537acf5
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342232"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579436"
 ---
-# <a name="what-is-azure-stream-analytics"></a>Mi az az Azure Stream Analytics?
+# <a name="welcome-to-azure-stream-analytics"></a>Üdvözli a Azure Stream Analytics
 
-A Azure Stream Analytics egy valós idejű elemzési és összetett eseményvezérelt motor, amely nagy mennyiségű, egyszerre több forrásból származó gyors adatfolyam-adatok elemzésére és feldolgozására szolgál. A minták és kapcsolatok a számos bemeneti forrásból kinyert információk, például az eszközök, érzékelők, kattintássorozatokból, közösségi média-hírcsatornák és alkalmazások alapján azonosíthatók. Ezek a minták a műveletek indításához és olyan munkafolyamatok elindításához használhatók, mint például a riasztások létrehozása, az információk bejelentési eszközre való etetése vagy az átalakított adatok későbbi használatra való tárolása. A Stream Analytics Azure IoT Edge futtatókörnyezetben is elérhető, amely lehetővé teszi az IoT-eszközökön tárolt adatfeldolgozást. 
+A Azure Stream Analytics egy valós idejű elemzési és összetett eseményvezérelt motor, amely nagy mennyiségű, egyszerre több forrásból származó gyors adatfolyam-adatok elemzésére és feldolgozására szolgál. A minták és kapcsolatok a számos bemeneti forrásból kinyert információk, például az eszközök, érzékelők, kattintássorozatokból, közösségi média-hírcsatornák és alkalmazások alapján azonosíthatók. Ezek a minták a műveletek indításához és olyan munkafolyamatok elindításához használhatók, mint például a riasztások létrehozása, az információk bejelentési eszközre való etetése vagy az átalakított adatok későbbi használatra való tárolása. A Stream Analytics Azure IoT Edge futtatókörnyezetben is elérhető, amely lehetővé teszi az IoT-eszközökön tárolt adatfeldolgozást.
 
 A következő forgatókönyvek példákat mutatnak a Azure Stream Analytics használatára:
 
@@ -26,6 +26,11 @@ A következő forgatókönyvek példákat mutatnak a Azure Stream Analytics hasz
 * Térinformatikai elemzés flottakezeléshez és vezető nélküli járművekhez
 * Távoli monitorozás és prediktív karbantartás a nagy értékű eszközökön
 * A pénztári adatok valós idejű elemzése készletszabályozáshoz és anomáliadetektáláshoz
+
+A Azure Stream Analytics ingyenes Azure-előfizetéssel is kipróbálhatja.
+
+> [!div class="nextstepaction"]
+> [Azure Stream Analytics kipróbálása](https://azure.microsoft.com/services/stream-analytics/)
 
 ## <a name="how-does-stream-analytics-work"></a>Hogyan működik a Stream Analytics?
 
@@ -98,11 +103,11 @@ Azure Stream Analytics az [Azure megfelelőségének áttekintése](https://gall
 
 A Stream Analytics másodpercenként több millió eseményt képes feldolgozni, és az eredményeket rendkívül alacsony késéssel kézbesítheti. Lehetővé teszi a vertikális felskálázást és a méretezést a nagy valós idejű és összetett eseménykezelő alkalmazások kezeléséhez. Stream Analytics a particionálás nagyobb teljesítményt nyújt, és lehetővé teszi, hogy az összetett lekérdezések párhuzamosak legyenek, és több folyamatos átviteli csomóponton fussanak. A Azure Stream Analytics a [trilla](https://github.com/Microsoft/Trill)-ra épülő, nagy teljesítményű, memóriabeli adatfolyam-elemzési motor, amely a Microsoft Research szolgáltatással együttműködve lett kifejlesztve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A cikk az Azure Stream Analytics szolgáltatásról nyújtott áttekintést. Ezután megismerheti a részleteket, és létrehozhatja első Stream Analytics-feladatát:
 
-* [Stream Analytics-feladat létrehozása az Azure Portalon](stream-analytics-quick-create-portal.md).
-* [Hozzon létre egy stream Analytics feladatot Azure PowerShell használatával](stream-analytics-quick-create-powershell.md).
-* [Hozzon létre egy stream Analytics feladatot a Visual Studio használatával](stream-analytics-quick-create-vs.md).
-* [Hozzon létre egy stream Analytics feladatot a Visual Studio Code használatával](quick-create-visual-studio-code.md).
+* [Stream Analytics-feladatok létrehozása a Azure Portal használatával](stream-analytics-quick-create-portal.md)
+* [Stream Analytics-feladat létrehozása az Azure PowerShell használatával](stream-analytics-quick-create-powershell.md)
+* [Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
+* [Stream Analytics-feladatok létrehozása a Visual Studio Code használatával](quick-create-visual-studio-code.md)

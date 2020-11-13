@@ -1,6 +1,6 @@
 ---
 title: Címtár-szinkronizálás Azure Active Directory
-description: A szinkronizálási minta megvalósítására szolgáló építészeti útmutató
+description: Építészeti útmutató a címtár-szinkronizálás Azure Active Directorysal való megvalósításához.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 862d17948cb09c18f9372f8b8b981e5efa6be71b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c340f973193f9c46735423c86112816003fecfcd
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114180"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578909"
 ---
 # <a name="directory-synchronization"></a>Címtár-szinkronizálás
 
@@ -40,17 +40,17 @@ A helyszíni Active Directory környezetekről az Azure AD-be kell szinkronizál
 
 ## <a name="components-of-system"></a>A System összetevői
 
-* **Felhasználó**: az Azure ad használatával fér hozzá egy alkalmazáshoz.
+* **Felhasználó** : az Azure ad használatával fér hozzá egy alkalmazáshoz.
 
-* **Webböngésző**: az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló összetevő.
+* **Webböngésző** : az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló összetevő.
 
-* **Application**: webalkalmazás, amely az Azure ad hitelesítésre és engedélyezésre való használatára támaszkodik.
+* **Application** : webalkalmazás, amely az Azure ad hitelesítésre és engedélyezésre való használatára támaszkodik.
 
-* **Azure ad**: a szervezet helyi könyvtárából származó azonosító adatok szinkronizálása Azure ad Connect használatával. 
+* **Azure ad** : a szervezet helyi könyvtárából származó azonosító adatok szinkronizálása Azure ad Connect használatával. 
 
-* **Azure ad Connect**: a helyszíni identitás-infrastruktúrák Microsoft Azure ADhoz való csatlakoztatására szolgáló eszköz. A varázsló és az interaktív élmények segítségével üzembe helyezheti és konfigurálhatja a csatlakozáshoz szükséges előfeltételeket és összetevőket, beleértve a szinkronizálást és a bejelentkezést az Active Directory-ból az Azure AD-be. 
+* **Azure ad Connect** : a helyszíni identitás-infrastruktúrák Microsoft Azure ADhoz való csatlakoztatására szolgáló eszköz. A varázsló és az interaktív élmények segítségével üzembe helyezheti és konfigurálhatja a csatlakozáshoz szükséges előfeltételeket és összetevőket, beleértve a szinkronizálást és a bejelentkezést az Active Directory-ból az Azure AD-be. 
 
-* **Active Directory**: a Active Directory a legtöbb Windows Server operációs rendszerhez tartozó címtárszolgáltatás. Active Directory tartományi szolgáltatások (AD DS) rendszert futtató kiszolgálókat tartományvezérlőknek nevezzük. A tartomány minden felhasználóját és számítógépét hitelesítik és engedélyezik.
+* **Active Directory** : a Active Directory a legtöbb Windows Server operációs rendszerhez tartozó címtárszolgáltatás. Active Directory tartományi szolgáltatások (AD DS) rendszert futtató kiszolgálókat tartományvezérlőknek nevezzük. A tartomány minden felhasználóját és számítógépét hitelesítik és engedélyezik.
 
 ## <a name="implement-directory-synchronization-with-azure-ad"></a>Címtár-szinkronizálás megvalósítása az Azure AD-vel
 

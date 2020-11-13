@@ -12,15 +12,18 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperfq1
-ms.openlocfilehash: 41ef13351e6a87369f3fe1e2181ca2113bf79bca
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d356674819304897aef353d161ddf236e19db1f5
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533259"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592243"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
-Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások személyes fiókjait (hotmail.com, outlook.com, másokat) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD-példányból).  (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
+
+Ebben a rövid útmutatóban egy kódrészletet tölt le és futtat, amely bemutatja, hogy egy ASP.NET-webalkalmazás hogyan tud bejelentkezni a felhasználók bármelyik Azure Active Directory (Azure AD) szervezetből. 
+
+Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>Előfeltételek
 >

@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/10/2020
 ms.author: normesta
-ms.openlocfilehash: 099d79e63795a88a66ef1ec65aa1bfd97037191e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a5cdeba654440e666bc79df361b3f90db8a73b0a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92134174"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578648"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési modell Azure Data Lake Storage Gen2
 
@@ -43,11 +43,11 @@ A következő szerepkörök lehetővé teszik a rendszerbiztonsági tag számár
 | [Storage-blobadatok közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) | BLOB Storage-tárolók és-Blobok olvasási, írási és törlési hozzáférése. Ez a hozzáférés nem teszi lehetővé a rendszerbiztonsági tag számára egy elem tulajdonjogának beállítását, de módosíthatja a rendszerbiztonsági tag tulajdonában lévő elemek hozzáférés-vezérlési listáját. |
 | [Storage-blobadatok olvasója](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) | BLOB Storage-tárolók és Blobok olvasása és listázása. |
 
-A [tulajdonos](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner), a [közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor), az [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)és a [Storage-fiók közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) szerepkörei lehetővé teszik a rendszerbiztonsági tag számára a Storage-fiókok kezelését, de nem biztosítanak hozzáférést az adott fiókon belüli adathoz. Ezek a szerepkörök (az **olvasó**kivételével) azonban hozzáférhetnek a tároló kulcsaihoz, amelyek különböző eszközökön is használhatók az adateléréshez.
+A [tulajdonos](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner), a [közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor), az [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)és a [Storage-fiók közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) szerepkörei lehetővé teszik a rendszerbiztonsági tag számára a Storage-fiókok kezelését, de nem biztosítanak hozzáférést az adott fiókon belüli adathoz. Ezek a szerepkörök (az **olvasó** kivételével) azonban hozzáférhetnek a tároló kulcsaihoz, amelyek különböző eszközökön is használhatók az adateléréshez.
 
 ## <a name="access-control-lists-acls"></a>Hozzáférés-vezérlési lista (ACL-ek)
 
-A hozzáférés-vezérlési listák lehetővé teszi a "finomabb gabona" elérési szintjének alkalmazását a címtárakhoz és a fájlokhoz. Az *ACL* egy engedélyezési konstrukció, amely *ACL-bejegyzéseket*tartalmaz. Minden ACL-bejegyzés egy hozzáférési szinttel társítja a rendszerbiztonsági tag-t.  További információ: [hozzáférés-vezérlési listák (ACL-ek) Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
+A hozzáférés-vezérlési listák lehetővé teszi a "finomabb gabona" elérési szintjének alkalmazását a címtárakhoz és a fájlokhoz. Az *ACL* egy engedélyezési konstrukció, amely *ACL-bejegyzéseket* tartalmaz. Minden ACL-bejegyzés egy hozzáférési szinttel társítja a rendszerbiztonsági tag-t.  További információ: [hozzáférés-vezérlési listák (ACL-ek) Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 
 ## <a name="how-permissions-are-evaluated"></a>Az engedélyek kiértékelésének módja
 
@@ -71,38 +71,38 @@ Az alábbi ábrán három gyakori művelet engedélyezési folyamata látható: 
 
 ## <a name="permissions-table-combining-azure-rbac-and-acl"></a>Engedélyek tábla: az Azure RBAC és az ACL összekapcsolása
 
-Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure RBAC-szerepköröket és-ACL-bejegyzéseket, hogy a rendszerbiztonsági tag el tudja végezni a **művelet** oszlopban felsorolt műveleteket. Ez a táblázat egy fiktív címtár-hierarchia minden szintjét jelképező oszlopot mutat be. Van egy oszlop a tároló gyökérkönyvtárához ( `/` ), egy **Oregon**nevű alkönyvtárhoz, a **Portland**nevű Oregon könyvtár alkönyvtárához és egy **Data.txt**nevű Portland-könyvtárban található szövegfájlhoz. Ezekben az oszlopokban az engedélyek megadásához szükséges ACL-bejegyzés [rövid formáját](data-lake-storage-access-control.md#short-forms-for-permissions) ábrázolja. **N/A** (_nem alkalmazható_) az oszlopban jelenik meg, ha a művelet VÉGREHAJTÁSához nincs szükség ACL-bejegyzésre.
+Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure RBAC-szerepköröket és-ACL-bejegyzéseket, hogy a rendszerbiztonsági tag el tudja végezni a **művelet** oszlopban felsorolt műveleteket. Ez a táblázat egy fiktív címtár-hierarchia minden szintjét jelképező oszlopot mutat be. Van egy oszlop a tároló gyökérkönyvtárához ( `/` ), egy **Oregon** nevű alkönyvtárhoz, a **Portland** nevű Oregon könyvtár alkönyvtárához és egy **Data.txt** nevű Portland-könyvtárban található szövegfájlhoz. Ezekben az oszlopokban az engedélyek megadásához szükséges ACL-bejegyzés [rövid formáját](data-lake-storage-access-control.md#short-forms-for-permissions) ábrázolja. **N/A** ( _nem alkalmazható_ ) az oszlopban jelenik meg, ha a művelet VÉGREHAJTÁSához nincs szükség ACL-bejegyzésre.
 
 |    Művelet             | Hozzárendelt RBAC szerepkör               |    /        | Oregon     | Portland | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
 | Olvasási Data.txt            |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |  
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Nincsenek                           | `--X`    | `--X`    | `--X`     | `R--`  |
+|                          |   Nincs                           | `--X`    | `--X`    | `--X`     | `R--`  |
 | Hozzáfűzés Data.txt       |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `--X`     | `-W-`  |
-|                          |   Nincsenek                           | `--X`    | `--X`    | `--X`     | `RW-`  |
+|                          |   Nincs                           | `--X`    | `--X`    | `--X`     | `RW-`  |
 | Data.txt törlése          |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N.A.    |
-|                          |   Nincsenek                           | `--X`    | `--X`    | `-WX`     | N.A.    |
+|                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N/A    |
+|                          |   Nincs                           | `--X`    | `--X`    | `-WX`     | N/A    |
 | Data.txt létrehozása          |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N.A.    |
-|                          |   Nincsenek                           | `--X`    | `--X`    | `-WX`     | N.A.    |
+|                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N/A    |
+|                          |   Nincs                           | `--X`    | `--X`    | `-WX`     | N/A    |
 | Listáját                   |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Nincsenek                           | `R-X`    | N.A.      | N.A.       | N.A.    |
+|                          |   Nincs                           | `R-X`    | N.A.      | N.A.       | N.A.    |
 | /Oregon/listázása            |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Nincsenek                           | `--X`    | `R-X`    | N.A.       | N.A.    |
+|                          |   Nincs                           | `--X`    | `R-X`    | N.A.       | N.A.    |
 | /Oregon/Portland/listázása   |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Nincsenek                           | `--X`    | `--X`    | `R-X`     | N.A.    |
+|                          |   Nincs                           | `--X`    | `--X`    | `R-X`     | N/A    |
 
 
 > [!NOTE] 
@@ -114,7 +114,7 @@ Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure RBAC-szerepkörök
 
 ## <a name="limits-on-azure-rbac-role-assignments-and-acl-entries"></a>Azure RBAC szerepkör-hozzárendelések és ACL-bejegyzések korlátai
 
-A csoportok használatával kevésbé valószínű, hogy túllépi a szerepkör-hozzárendelések maximális számát az előfizetésben, valamint az ACl-bejegyzések maximális számát fájlonként vagy címtárban. A következő táblázat ezeket a korlátozásokat ismerteti.
+A csoportok használatával kevésbé valószínű, hogy túllépi a szerepkör-hozzárendelések maximális számát az előfizetésben, valamint az ACL-bejegyzések maximális számát fájlonként vagy címtárban. A következő táblázat ezeket a korlátozásokat ismerteti.
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
 

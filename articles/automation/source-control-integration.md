@@ -3,20 +3,20 @@ title: A verziókövetés integrációjának használata Azure Automation
 description: Ez a cikk azt ismerteti, hogyan lehet szinkronizálni Azure Automation a verziókövetés más adattárakkal.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/10/2019
+ms.date: 11/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: eea4de106fe566b55ae30330d4c9d101f7126bbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2ddb0143bb9cba0dc2fc48ff9b9df94dc55c29c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86229618"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579453"
 ---
 # <a name="use-source-control-integration"></a>Verziókövetés-integrálás használata
 
  A verziókövetés integrációja Azure Automation támogatja az egyirányú szinkronizálást a verziókövetés adattárból. A verziókövetés lehetővé teszi, hogy a runbookok az Automation-fiókban naprakészek maradjanak a GitHub vagy az Azure Repos Source Control adattárában található parancsfájlok használatával. Ez a szolgáltatás megkönnyíti a fejlesztési környezetben tesztelt kód előállítását az üzemi Automation-fiókba.
- 
- A verziókövetés integrációja lehetővé teszi, hogy könnyedén együttműködjön a csapatával, nyomon követheti a változásokat, és visszaállíthatja a runbookok korábbi verzióit. A verziókövetés lehetővé teszi például a verziókövetés különböző ágainak szinkronizálását a fejlesztési, tesztelési és üzemi Automation-fiókokkal. 
+
+ A verziókövetés integrációja lehetővé teszi, hogy könnyedén együttműködjön a csapatával, nyomon követheti a változásokat, és visszaállíthatja a runbookok korábbi verzióit. A verziókövetés lehetővé teszi például a verziókövetés különböző ágainak szinkronizálását a fejlesztési, tesztelési és üzemi Automation-fiókokkal.
 
 ## <a name="source-control-types"></a>Verziókövetés típusai
 
@@ -43,21 +43,21 @@ Ez a szakasz azt ismerteti, hogyan konfigurálható a verziókövetés az Automa
 
 Ezzel az eljárással konfigurálhatja a verziókövetés használatát a Azure Portal használatával.
 
-1. Az Automation-fiókban válassza a **verziókövetés** lehetőséget, majd kattintson a **Hozzáadás**gombra.
+1. Az Automation-fiókban válassza a **verziókövetés** lehetőséget, majd kattintson a **Hozzáadás** gombra.
 
     ![Forrás vezérlőelem kiválasztása](./media/source-control-integration/select-source-control.png)
 
-2. Válassza a **forrás vezérlőelem típusát**, majd kattintson a **hitelesítés**elemre. 
+2. Válassza a **forrás vezérlőelem típusát** , majd kattintson a **hitelesítés** elemre.
 
 3. Megnyílik egy böngészőablak, amely felszólítja a bejelentkezésre. A hitelesítés befejezéséhez kövesse az utasításokat.
 
-4. A verziókövetés összegzése lapon használja a mezőket az alább megadott verziókövetés tulajdonságainak kitöltéséhez. Ha elkészült, kattintson a **Mentés** gombra. 
+4. A verziókövetés összegzése lapon használja a mezőket az alább megadott verziókövetés tulajdonságainak kitöltéséhez. Ha elkészült, kattintson a **Mentés** gombra.
 
     |Tulajdonság  |Leírás  |
     |---------|---------|
     |Forrás vezérlőelem neve     | A verziókövetés rövid neve. A név csak betűket és számokat tartalmazhat.        |
     |Forrás vezérlőelem típusa     | A forrás-ellenőrzési mechanizmus típusa. Az elérhető lehetőségek:</br> * GitHub</br>* Azure-repók (git)</br> * Azure-repók (TFVC)        |
-    |Adattár     | A tárház vagy a projekt neve. A rendszer beolvassa az első 200 adattárat. Egy adattár kereséséhez írja be a nevet a mezőbe, majd kattintson a **Keresés a githubon**lehetőségre.|
+    |Adattár     | A tárház vagy a projekt neve. A rendszer beolvassa az első 200 adattárat. Egy adattár kereséséhez írja be a nevet a mezőbe, majd kattintson a **Keresés a githubon** lehetőségre.|
     |Elágaztatás     | A forrásfájlokat lekérő ág. A TFVC nem érhető el a fiókra vonatkozó célzás.          |
     |Mappa elérési útja     | A szinkronizálni kívánt runbookok tartalmazó mappa, például **/Runbooks**. A rendszer csak a megadott mappában lévő runbookok szinkronizálja. A rekurzió nem támogatott.        |
     |<sup>1</sup> . automatikus szinkronizálás     | Az automatikus szinkronizálás bekapcsolásának vagy kikapcsolásának beállítása a verziókövetés adattárában.        |
@@ -69,13 +69,13 @@ Ezzel az eljárással konfigurálhatja a verziókövetés használatát a Azure 
    ![Verziókövetés összegzése](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Előfordulhat, hogy a forrásként szolgáló adattárházhoz tartozó bejelentkezési azonosító eltér a Azure Portalhoz tartozó bejelentkezési adatoktól. Győződjön meg arról, hogy a verziókövetés konfigurálásakor a forrás vezérlő adattárának megfelelő fiókkal van bejelentkezve. Ha kétségei vannak, nyisson meg egy új fület a böngészőben, jelentkezzen ki a **dev.Azure.com**, a **visualstudio.com**vagy a **GitHub.com**-ből, és próbálkozzon újra a verziókövetés használatával.
+> Előfordulhat, hogy a forrásként szolgáló adattárházhoz tartozó bejelentkezési azonosító eltér a Azure Portalhoz tartozó bejelentkezési adatoktól. Győződjön meg arról, hogy a verziókövetés konfigurálásakor a forrás vezérlő adattárának megfelelő fiókkal van bejelentkezve. Ha kétségei vannak, nyisson meg egy új fület a böngészőben, jelentkezzen ki a **dev.Azure.com** , a **visualstudio.com** vagy a **GitHub.com** -ből, és próbálkozzon újra a verziókövetés használatával.
 
 ### <a name="configure-source-control-in-powershell"></a>A verziókövetés konfigurálása a PowerShellben
 
-A PowerShell használatával is konfigurálhatja a verziókövetés Azure Automationban való konfigurálását. Ehhez a művelethez a PowerShell-parancsmagok használatához személyes hozzáférési jogkivonat (PAT) szükséges. A [New-AzAutomationSourceControl](/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0) parancsmaggal hozza létre a verziókövetés-kapcsolatokat. Ehhez a parancsmaghoz biztonságos karakterlánc szükséges a PAT számára. A biztonságos sztringek létrehozásáról további információt a következő témakörben talál: [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
+A PowerShell használatával is konfigurálhatja a verziókövetés Azure Automationban való konfigurálását. Ehhez a művelethez a PowerShell-parancsmagok használatához személyes hozzáférési jogkivonat (PAT) szükséges. A [New-AzAutomationSourceControl](/powershell/module/az.automation/new-azautomationsourcecontrol) parancsmaggal hozza létre a verziókövetés-kapcsolatokat. Ehhez a parancsmaghoz biztonságos karakterlánc szükséges a PAT számára. A biztonságos sztringek létrehozásáról további információt a következő témakörben talál: [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring).
 
-Az alábbi alszakaszok a GitHub, az Azure Repos (git) és az Azure Repos (TFVC) forrás-ellenőrzési kapcsolatainak létrehozását szemléltetik. 
+Az alábbi alszakaszok a GitHub, az Azure Repos (git) és az Azure Repos (TFVC) forrás-ellenőrzési kapcsolatainak létrehozását szemléltetik.
 
 #### <a name="create-source-control-connection-for-github"></a>Verziókövetés-kapcsolatok létrehozása a GitHubhoz
 
@@ -86,7 +86,7 @@ New-AzAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accoun
 #### <a name="create-source-control-connection-for-azure-repos-git"></a>Adatforrás-vezérlési kapcsolatok létrehozása az Azure Repos (git) szolgáltatáshoz
 
 > [!NOTE]
-> Az Azure Repos (git) olyan URL-címet használ, amely a korábbi formátumokban használt **VisualStudio.com**helyett a **dev.Azure.com** -hez fér hozzá. A régebbi URL-formátum `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` elavult, de továbbra is támogatott. Az új formátum előnyben részesített.
+> Az Azure Repos (git) olyan URL-címet használ, amely a korábbi formátumokban használt **VisualStudio.com** helyett a **dev.Azure.com** -hez fér hozzá. A régebbi URL-formátum `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` elavult, de továbbra is támogatott. Az új formátum előnyben részesített.
 
 
 ```powershell-interactive
@@ -96,7 +96,7 @@ New-AzAutomationSourceControl -Name SCReposGit -RepoUrl https://dev.azure.com/<a
 #### <a name="create-source-control-connection-for-azure-repos-tfvc"></a>Adatforrás-vezérlési kapcsolatok létrehozása az Azure Repos (TFVC) számára
 
 > [!NOTE]
-> Az Azure Repos (TFVC) olyan URL-címet használ, amely a korábbi formátumokban használt **VisualStudio.com**helyett a **dev.Azure.com** -hoz fér hozzá. A régebbi URL-formátum `https://<accountname>.visualstudio.com/<projectname>/_versionControl` elavult, de továbbra is támogatott. Az új formátum előnyben részesített.
+> Az Azure Repos (TFVC) olyan URL-címet használ, amely a korábbi formátumokban használt **VisualStudio.com** helyett a **dev.Azure.com** -hoz fér hozzá. A régebbi URL-formátum `https://<accountname>.visualstudio.com/<projectname>/_versionControl` elavult, de továbbra is támogatott. Az új formátum előnyben részesített.
 
 ```powershell-interactive
 New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
@@ -116,13 +116,15 @@ A következő táblázat a GitHubhoz szükséges minimális PAT-engedélyeket ha
 |`repo:status`     | Hozzáférési véglegesítés állapota         |
 |`repo_deployment`      | Hozzáférés központi telepítési állapota         |
 |`public_repo`     | Nyilvános adattárak elérése         |
+|`repo:invite` | Hozzáférés a tárház meghívásához |
+|`security_events` | Biztonsági események olvasása és írása |
 |**`admin:repo_hook`**     |         |
 |`write:repo_hook`     | Adattár-hookok írása         |
 |`read:repo_hook`|Adattár-hookok olvasása|
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Az Azure-adattárakhoz minimálisan szükséges PAT-engedélyek
 
-Az alábbi lista meghatározza az Azure Repos minimálisan szükséges PAT-engedélyeit. További információ a PAT Azure Repos-beli létrehozásáról: [hozzáférés hitelesítése személyes hozzáférési jogkivonatokkal](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).
+Az alábbi lista meghatározza az Azure Repos minimálisan szükséges PAT-engedélyeit. További információ a PAT Azure Repos-beli létrehozásáról: [hozzáférés hitelesítése személyes hozzáférési jogkivonatokkal](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
 | Hatókör  |  Hozzáférés típusa  |
 |---------| ----------|
@@ -137,13 +139,13 @@ Az alábbi lista meghatározza az Azure Repos minimálisan szükséges PAT-enged
 
 ## <a name="synchronize-with-source-control"></a>Szinkronizálás a forrás vezérlőelemmel
 
-Kövesse az alábbi lépéseket a verziókövetés szinkronizálásához. 
+Kövesse az alábbi lépéseket a verziókövetés szinkronizálásához.
 
-1. Válassza ki a forrást a forrás vezérlőelem oldalon található táblázatból. 
+1. Válassza ki a forrást a forrás vezérlőelem oldalon található táblázatból.
 
-2. A szinkronizálási folyamat elindításához kattintson a **szinkronizálás indítása** elemre. 
+2. A szinkronizálási folyamat elindításához kattintson a **szinkronizálás indítása** elemre.
 
-3. A **szinkronizálási feladatok** lapra kattintva megtekintheti az aktuális szinkronizálási feladat vagy az előzőek állapotát. 
+3. A **szinkronizálási feladatok** lapra kattintva megtekintheti az aktuális szinkronizálási feladat vagy az előzőek állapotát.
 
 4. **A verziókövetés legördülő menüben** válassza ki a forrás vezérlő mechanizmust.
 
@@ -189,13 +191,13 @@ A forrás-felügyeleti adattárból való leválasztáshoz:
 
 1. Az **Automation-fiók Fiókbeállítások területén** nyissa meg a **verziókövetés** csomópontot.
 
-2. Válassza ki az eltávolítandó verziókövetés-mechanizmust. 
+2. Válassza ki az eltávolítandó verziókövetés-mechanizmust.
 
-3. A verziókövetés összegzése lapon kattintson a **Törlés**elemre.
+3. A verziókövetés összegzése lapon kattintson a **Törlés** elemre.
 
 ## <a name="handle-encoding-issues"></a>Kódolási problémák kezelése
 
-Ha több ember szerkeszti a runbookok a különböző szerkesztők használatával, a kódolási problémák léphetnek fel. Ha többet szeretne megtudni erről a helyzetről, tekintse meg a [kódolási problémák gyakori okait](/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
+Ha több ember szerkeszti a runbookok a különböző szerkesztők használatával, a kódolási problémák léphetnek fel. Ha többet szeretne megtudni erről a helyzetről, tekintse meg a [kódolási problémák gyakori okait](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
 
 ## <a name="update-the-pat"></a>A PAT frissítése
 
@@ -204,7 +206,7 @@ Jelenleg nem használhatja a Azure Portal a PAT in Source vezérlőben való fri
 * Használja a [REST API](/rest/api/automation/sourcecontrol/update).
 * Használja az [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) parancsmagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A verziókövetés Azure Automationban való integrálásához tekintse meg a [Azure Automation: verziókövetés integrálása a Azure Automationban](https://azure.microsoft.com/blog/azure-automation-source-control-13/)című témakört.  
 * A runbook a Visual Studio online-ban való integrálásához tekintse meg a következőt [: Azure Automation: a runbook-vezérlés integrálása a Visual Studio online](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)-ban.

@@ -6,16 +6,16 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 38bc0ec546526cd0c6631b7cd5b70753c3235d18
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e367e4f2a704d8c718551fb031164520b3ff5bb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563987"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579130"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Oktatóanyag: Azure Functions Private site-hozzáférés létrehozása
 
-Ebből az oktatóanyagból megtudhatja, hogyan engedélyezheti a [Private site-hozzáférést](./functions-networking-options.md#private-site-access) a Azure functions. A Private site Access használatával megkövetelheti, hogy a függvény kódja csak egy adott virtuális hálózatról induljon el.
+Ebből az oktatóanyagból megtudhatja, hogyan engedélyezheti a [Private site-hozzáférést](./functions-networking-options.md#private-endpoint-connections) a Azure functions. A Private site Access használatával megkövetelheti, hogy a függvény kódja csak egy adott virtuális hálózatról induljon el.
 
 A Private site Access olyan helyzetekben hasznos, amikor a Function alkalmazáshoz való hozzáférést egy adott virtuális hálózatra kell korlátozni. A Function alkalmazás például csak egy adott szervezet alkalmazottaira, illetve a megadott virtuális hálózaton belüli szolgáltatásokra (például egy másik Azure-függvényre, Azure-beli virtuális gépre vagy egy AK-fürtre) alkalmazható.
 
@@ -159,7 +159,7 @@ A következő lépés egy Function-alkalmazás létrehozása az Azure-ban a [fel
 
 A következő lépés a [hozzáférési korlátozások](../app-service/app-service-ip-restrictions.md) konfigurálása annak biztosítására, hogy csak a virtuális hálózaton található erőforrások hívhatják meg a függvényt.
 
-A [privát hely](functions-networking-options.md#private-site-access) elérését az Azure Virtual Network [szolgáltatás végpontjának](../virtual-network/virtual-network-service-endpoints-overview.md) létrehozásával engedélyezheti a Function alkalmazás és a megadott virtuális hálózat között. A hozzáférési korlátozások a szolgáltatási végpontokon keresztül valósíthatók meg. A szolgáltatási végpontok biztosítják, hogy csak a megadott virtuális hálózaton belülről származó forgalom férhessenek hozzá a kijelölt erőforráshoz. Ebben az esetben a kijelölt erőforrás az Azure-függvény.
+A [privát hely](functions-networking-options.md#private-endpoint-connections) elérését az Azure Virtual Network [szolgáltatás végpontjának](../virtual-network/virtual-network-service-endpoints-overview.md) létrehozásával engedélyezheti a Function alkalmazás és a megadott virtuális hálózat között. A hozzáférési korlátozások a szolgáltatási végpontokon keresztül valósíthatók meg. A szolgáltatási végpontok biztosítják, hogy csak a megadott virtuális hálózaton belülről származó forgalom férhessenek hozzá a kijelölt erőforráshoz. Ebben az esetben a kijelölt erőforrás az Azure-függvény.
 
 1. A Function alkalmazásban válassza a **hálózatkezelés** hivatkozást a _Beállítások_ szakasz fejlécében.
 1. A _hálózatkezelés_ lap a kiindulási pont, amely az Azure bejárati ajtót, a Azure CDNt és a hozzáférés korlátozásait is beállítja.

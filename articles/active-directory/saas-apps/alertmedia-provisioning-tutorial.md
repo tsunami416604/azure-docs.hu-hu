@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 086f79239fd4f6b01f4b76d1385598bac52bb471
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9a7c19e30c6c26d7bf7f11d6f03a0acaee160c9a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358969"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578603"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés AlertMedia konfigurálása
 
@@ -95,9 +95,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
     ![Kiépítés lap automatikus](common/provisioning-automatic.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a AlertMedia **bérlői URL-címét** az alábbiak egyikének megfelelően.
-      * (nincs egyéni tartomány) https://dashboard.alertmedia.com/api/scim/v3
+      * (nincs egyéni tartomány) `https://dashboard.alertmedia.com/api/scim/v3`
 
-      * (egyéni tartomány) https://subdomain.alertmedia.com/api/scim/v3
+      * (egyéni tartomány) `https://subdomain.alertmedia.com/api/scim/v3`
 
       Adja meg a **titkos tokent** a 2. lépésben korábban lekért módon. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a AlertMedia. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a AlertMedia-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 

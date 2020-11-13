@@ -1,6 +1,6 @@
 ---
 title: LDAP-szinkronizálás Azure Active Directory
-description: A szinkronizálási minta megvalósítására szolgáló építészeti útmutató
+description: Építészeti útmutató az LDAP-szinkronizálás megvalósításához Azure Active Directory használatával.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a14149551c0fb33906ab7d1a00b387026d827911
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e617d7ccc14e65c18eb86877b1c7fb1aeef74cd0
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114174"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578892"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>LDAP-szinkronizálás Azure Active Directory
 
@@ -34,21 +34,21 @@ Az azonosító adatokat szinkronizálnia kell a helyszíni LDAP v3-címtárak é
 
 ## <a name="components-of-system"></a>A System összetevői
 
-* **Felhasználó**: hozzáfér egy olyan alkalmazáshoz, amely egy LDAP v3-címtár használatára támaszkodik a felhasználók és a jelszavak rendezéséhez.
+* **Felhasználó** : hozzáfér egy olyan alkalmazáshoz, amely egy LDAP v3-címtár használatára támaszkodik a felhasználók és a jelszavak rendezéséhez.
 
-* **Webböngésző**: az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló összetevő
+* **Webböngésző** : az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló összetevő
 
-* **Webalkalmazás**: az LDAP v3-címtárak függőségeivel rendelkező alkalmazás.
+* **Webalkalmazás** : az LDAP v3-címtárak függőségeivel rendelkező alkalmazás.
 
-* **Azure ad**: az Azure ad a szervezet helyszíni LDAP-könyvtáraiból Azure ad Connecton keresztül szinkronizálja az identitási adatokat (felhasználókat, csoportokat, jelszavakat). 
+* **Azure ad** : az Azure ad a szervezet helyszíni LDAP-könyvtáraiból Azure ad Connecton keresztül szinkronizálja az identitási adatokat (felhasználókat, csoportokat, jelszavakat). 
 
-* **Azure ad Connect**: a helyszíni identitás-infrastruktúrák Microsoft Azure ADhoz való csatlakoztatására szolgáló eszköz. A varázsló és az interaktív funkciók segítenek a csatlakozáshoz szükséges előfeltételek és összetevők üzembe helyezésében és konfigurálásában. 
+* **Azure ad Connect** : a helyszíni identitás-infrastruktúrák Microsoft Azure ADhoz való csatlakoztatására szolgáló eszköz. A varázsló és az interaktív funkciók segítenek a csatlakozáshoz szükséges előfeltételek és összetevők üzembe helyezésében és konfigurálásában. 
 
-* **Egyéni összekötő**: az általános LDAP-összekötő lehetővé teszi az Azure ad Connect synchronization szolgáltatás integrálását egy LDAP v3-kiszolgálóval. Azure AD Connect.
+* **Egyéni összekötő** : az általános LDAP-összekötő lehetővé teszi az Azure ad Connect synchronization szolgáltatás integrálását egy LDAP v3-kiszolgálóval. Azure AD Connect.
 
-* **Active Directory**: a Active Directory a legtöbb Windows Server operációs rendszerhez tartozó címtárszolgáltatás. Active Directory címtárszolgáltatást futtató kiszolgálókat tartományvezérlőknek nevezzük, és a Windows-tartomány összes felhasználóját és számítógépét hitelesítik és engedélyezik.
+* **Active Directory** : a Active Directory a legtöbb Windows Server operációs rendszerhez tartozó címtárszolgáltatás. Active Directory címtárszolgáltatást futtató kiszolgálókat tartományvezérlőknek nevezzük, és a Windows-tartomány összes felhasználóját és számítógépét hitelesítik és engedélyezik.
 
-* **LDAP v3-kiszolgáló**: LDAP protokollal kompatibilis könyvtár, amely a címtárszolgáltatások hitelesítéséhez használt vállalati felhasználókat és jelszavakat tárolja.
+* **LDAP v3-kiszolgáló** : LDAP protokollal kompatibilis könyvtár, amely a címtárszolgáltatások hitelesítéséhez használt vállalati felhasználókat és jelszavakat tárolja.
 
 ## <a name="implement-ldap-synchronization-with-azure-ad"></a>LDAP-szinkronizálás megvalósítása az Azure AD-vel
 

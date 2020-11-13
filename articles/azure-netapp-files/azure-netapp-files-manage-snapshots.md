@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: e578e377e322e6b6a23f0990ca1fa0285a4ec87d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c64bc8bf265a8e3cc3c490827bdbd79661e3528a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491647"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591757"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp Filesszal
 
@@ -144,6 +144,17 @@ Törölheti azt a pillanatkép-szabályzatot, amelyet már nem szeretne megőriz
 
     ![Pillanatkép-szabályzat törlésének megerősítése](../media/azure-netapp-files/snapshot-policy-delete-confirm.png) 
 
+## <a name="edit-the-hide-snapshot-path-option"></a>A pillanatkép elérési útjának elrejtése lehetőség szerkesztése
+A pillanatkép elérési útjának elrejtése beállítás azt szabályozza, hogy látható-e a kötet pillanatképének elérési útja. Egy [NFS](azure-netapp-files-create-volumes.md#create-an-nfs-volume) -vagy [SMB](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) -kötet létrehozása során lehetősége van megadnia, hogy a pillanatkép elérési útja rejtett legyen-e. Ezt követően szükség szerint szerkesztheti a pillanatkép elérési útjának elrejtése beállítást.  
+
+> [!NOTE]
+> A régiók közötti replikálásban a [cél kötet](cross-region-replication-create-peering.md#create-the-data-replication-volume-the-destination-volume) esetében a pillanatkép elérési útjának elrejtése beállítás alapértelmezés szerint engedélyezve van, és a beállítás nem módosítható. 
+
+1. A kötet pillanatkép-elérési útjának elrejtése beállításának megtekintéséhez válassza ki a kötetet. A **Pillanatkép elérési útjának elrejtése** mező jelzi, hogy a beállítás engedélyezve van-e.   
+    ![A pillanatkép elérési útjának elrejtése mezőt ismertető képernyőkép.](../media/azure-netapp-files/hide-snapshot-path-field.png) 
+2. A pillanatkép elérési útjának elrejtése beállítás szerkesztéséhez kattintson a kötet lapon a **Szerkesztés** gombra, és szükség szerint módosítsa a **Pillanatkép elérési útjának elrejtése** beállítást.   
+    ![A mennyiségi pillanatkép szerkesztése lehetőséget ismertető képernyőkép.](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>Pillanatkép visszaállítása új kötetre
 
 Jelenleg csak egy új kötetre állíthatja vissza a pillanatképet. 
@@ -163,7 +174,7 @@ Jelenleg csak egy új kötetre állíthatja vissza a pillanatképet.
 
     ![Visszaállítás új kötetre](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. Kattintson a **felülvizsgálat + létrehozás** gombra.  Kattintson a **Létrehozás** lehetőségre.   
+4. Kattintson a **felülvizsgálat + létrehozás** gombra.  Kattintson a **Létrehozás** gombra.   
     Az új kötet ugyanazt a protokollt használja, mint amelyet a pillanatkép használ.   
     Az új kötet, amelybe a pillanatkép vissza lett állítva, megjelenik a kötetek panelen.
 
@@ -173,11 +184,7 @@ Ha nem szeretné [visszaállítani a teljes pillanatképet egy kötetre](#restor
 
 A csatlakoztatott kötet tartalmazza  `.snapshot` az ügyfél számára elérhető pillanatkép-könyvtárat (az NFS-ügyfeleken) vagy `~snapshot` (az SMB-ügyfeleken). A pillanatkép könyvtára a kötet pillanatképeit reprezentáló alkönyvtárakat tartalmaz. Minden alkönyvtár tartalmazza a pillanatkép fájljait. Ha véletlenül töröl vagy felülír egy fájlt, visszaállíthatja a fájlt a szülő írható-olvasható könyvtárára úgy, hogy a fájlt egy pillanatkép-alkönyvtárból az írható-olvasható könyvtárba másolja. 
 
-Ha a kötet létrehozásakor a pillanatkép elérési útjának elrejtése jelölőnégyzet be van jelölve, a pillanatkép-könyvtár rejtett. Megtekintheti a kötet pillanatkép-elérési útjának állapotának elrejtését a kötet kiválasztásával. A pillanatkép elérési útjának elrejtése lehetőségre kattintva szerkesztheti a kötet oldalának **Szerkesztés** elemét.  
-
-A régiók közötti replikáláshoz tartozó cél kötet esetén a pillanatkép elérési útjának elrejtése alapértelmezés szerint engedélyezve van, és a beállítás nem módosítható.
-
-![Kötet-pillanatkép beállításainak szerkesztése](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+Ha nem látja a pillanatképek könyvtárát, előfordulhat, hogy rejtve van, mert jelenleg engedélyezve van a pillanatkép-elrejtési útvonal elrejtése beállítás. [A pillanatkép elérési útjának elrejtése lehetőséggel](#edit-the-hide-snapshot-path-option) letilthatja azt.  
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Fájl visszaállítása Linux NFS-ügyfél használatával 
 
@@ -254,7 +261,7 @@ Törölheti azokat a pillanatképeket, amelyeket már nem kell megtartania.
 
     ![A pillanatkép törlését igazoló képernyőkép](../media/azure-netapp-files/snapshot-confirm-delete.png)  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Pillanatkép-szabályzatokkal kapcsolatos problémák elhárítása](troubleshoot-snapshot-policies.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)

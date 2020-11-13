@@ -4,19 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 5e0cff7bde6e80a776d694820ca7b69dafa7c0d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d66e7f497f85141de172c59b67676e1bb93955e
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83648814"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578814"
 ---
-A privát helyhez való hozzáférés arra utal, hogy az alkalmazás csak magánhálózat, például egy Azure virtuális hálózat számára legyen elérhető.
+Az [Azure privát végpont](../articles/private-link/private-endpoint-overview.md) egy hálózati adapter, amely privát és biztonságos módon csatlakoztatja Önt egy Azure privát kapcsolat által működtetett szolgáltatáshoz.  A privát végpont a virtuális hálózat egyik magánhálózati IP-címét használja, így hatékonyan bekapcsolja a szolgáltatást a virtuális hálózatba.
 
-* A privát helyhez való hozzáférés a szolgáltatási végpontok konfigurálásakor a [prémium](../articles/azure-functions/functions-premium-plan.md), a [fogyasztási](../articles/azure-functions/functions-scale.md#consumption-plan)és a [app Servicei](../articles/azure-functions/functions-scale.md#app-service-plan) csomagban érhető el.
-    * A szolgáltatási végpontok a **platform szolgáltatásai**  >  **hálózatkezelés**  >  **konfigurálása hozzáférési korlátozások megadása**  >  **szabály hozzáadása**alkalmazás alapján konfigurálhatók. A virtuális hálózatok mostantól szabálytípusként is kiválaszthatók.
-    * További információ: [Virtual Network szolgáltatás-végpontok](../articles/virtual-network/virtual-network-service-endpoints-overview.md).
-    * Ne feledje, hogy a szolgáltatási végpontok esetében a függvény továbbra is teljes kimenő hozzáférést biztosít az internethez, még a konfigurált Virtual Network Integration is.
-* A privát hely elérését egy belső terheléselosztó (ILB) használatára konfigurált App Service Environmenton belül is elérhető. További információ: [belső terheléselosztó létrehozása és használata app Service Environmentsal](../articles/app-service/environment/create-ilb-ase.md).
+A [prémium](../articles/azure-functions/functions-premium-plan.md) és [app Service](../articles/azure-functions/functions-scale.md#app-service-plan) csomagokban üzemeltetett függvények saját végpontot is használhatnak.
 
-A privát helyek hozzáférésének beállításával kapcsolatos további információkért lásd: [Azure functions Private site Access létrehozása](../articles/azure-functions/functions-create-private-site-access.md).
+Ha egy bejövő magánhálózati végponti kapcsolódást hoz létre a függvények számára, szüksége lesz egy DNS-rekordra is a magánhálózati címek feloldásához.  Alapértelmezés szerint a rendszer létrehoz egy privát DNS-rekordot, amikor a Azure Portal használatával hoz létre privát végpontot.
+
+További információ: [privát végpontok használata web Appshoz](../articles/app-service/networking/private-endpoint.md).

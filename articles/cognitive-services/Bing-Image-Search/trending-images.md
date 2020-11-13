@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 9163868848f2fdbd535a6b601077be570b0b01bf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 20050cb373456296ef573368e6b289ec4b7d946d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076724"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591886"
 ---
 # <a name="get-trending-images-from-the-web"></a>Trendek a webes képekből
 
@@ -44,7 +44,7 @@ A trend images API jelenleg csak a következő piacokat támogatja:
 - EN-AU (angol, Ausztrália)  
 - zh-CN (kínai, Kína)
 
-A válasz egy olyan [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) objektumot tartalmaz, amely kategória szerint sorolja fel a lemezképeket. A kategória `title` segítségével csoportosíthatja a képeket a felhasználói élményben. A kategóriák változhatnak naponta.  
+A válasz egy olyan [TrendingImages](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) objektumot tartalmaz, amely kategória szerint sorolja fel a lemezképeket. A kategória `title` segítségével csoportosíthatja a képeket a felhasználói élményben. A kategóriák változhatnak naponta.  
 
 ```json
 {
@@ -93,9 +93,9 @@ A válasz egy olyan [TrendingImages](https://docs.microsoft.com/rest/api/cogniti
 }  
 ```  
 
-Minden csempe tartalmaz egy képet és egy lehetőséget a kapcsolódó képek beolvasásához. A kapcsolódó rendszerképek lekéréséhez a lekérdezést használhatja a `text` [Image Search API](./search-the-web.md) meghívásához és a kapcsolódó rendszerképek megjelenítéséhez. A-ben az URL-cím használatával a `webSearchUrl` felhasználót a Bing képkeresés eredményeinek oldalára is felhasználhatja, amely tartalmazza a kapcsolódó képeket.
+Minden csempe tartalmaz egy képet és egy lehetőséget a kapcsolódó képek beolvasásához. A kapcsolódó rendszerképek lekéréséhez a lekérdezést használhatja a `text` [Image Search API](./overview.md) meghívásához és a kapcsolódó rendszerképek megjelenítéséhez. A-ben az URL-cím használatával a `webSearchUrl` felhasználót a Bing képkeresés eredményeinek oldalára is felhasználhatja, amely tartalmazza a kapcsolódó képeket.
 
-Ha a kapcsolódó rendszerképek beolvasásához a Image Search API-t hívja meg, állítsa be az [ID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) lekérdezési paramétert a mezőben lévő azonosítóra `id` . Az azonosító megadásával biztosíthatja, hogy a válasz tartalmazza a képet (ez az első kép a válaszban) és a kapcsolódó képeket. Emellett állítsa a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) lekérdezési paramétert az `query` objektum mezőjében szereplő szövegre `text` .
+Ha a kapcsolódó rendszerképek beolvasásához a Image Search API-t hívja meg, állítsa be az [ID](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) lekérdezési paramétert a mezőben lévő azonosítóra `id` . Az azonosító megadásával biztosíthatja, hogy a válasz tartalmazza a képet (ez az első kép a válaszban) és a kapcsolódó képeket. Emellett állítsa a [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) lekérdezési paramétert az `query` objektum mezőjében szereplő szövegre `text` .
 
 Az alábbi példa bemutatja, hogyan használható a rendszerkép-azonosító a Mr. Smith kapcsolódó képeinek beolvasására az előző trend images API-válaszban.
 
@@ -106,4 +106,4 @@ X-MSEdge-ClientIP: 999.999.999.999
 X-Search-Location: lat:47.60357;long:-122.3295;re:100  
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
-```  
+```

@@ -11,12 +11,12 @@ ms.date: 09/17/2020
 ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 2225ef42d8862935e5cd682a3c11a7ce687babab
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b05891500ae5fd66e5ec2381066ccd1d26aa7ec
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325570"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578059"
 ---
 # <a name="advanced-entry-script-authoring"></a>Speciális bejegyzésszkript létrehozása
 
@@ -28,7 +28,10 @@ Ez a cikk azt feltételezi, hogy már rendelkezik egy betanított gépi tanulás
 
 ## <a name="automatically-generate-a-swagger-schema"></a>Swagger-séma automatikus létrehozása
 
-Ha automatikusan szeretne létrehozni egy sémát a webszolgáltatás számára, adja meg a bemeneti és/vagy kimeneti adatokat a konstruktorban egy adott típusú objektumhoz. A rendszer a típust és a mintát használja a séma automatikus létrehozásához. A Azure Machine Learning Ezután létrehoz egy [OpenAPI](https://swagger.io/docs/specification/about/) (hencegő) specifikációt a webszolgáltatás számára az üzembe helyezés során.
+Ha automatikusan szeretne létrehozni egy sémát a webszolgáltatás számára, adja meg a bemeneti és/vagy kimeneti adatokat a konstruktorban egy adott típusú objektumhoz. A rendszer a típust és a mintát használja a séma automatikus létrehozásához. A Azure Machine Learning Ezután létrehoz egy [OpenAPI](https://swagger.io/docs/specification/about/) (hencegő) specifikációt a webszolgáltatás számára az üzembe helyezés során. 
+
+> [!WARNING]
+> Nem használhat bizalmas vagy magánjellegű adatokat a minta bemeneti vagy kimeneti adatokhoz. A pénzmosás által szolgáltatott következtetések lapja elérhetővé teszi a mintaadatok betekintését. 
 
 Ezek a típusok jelenleg támogatottak:
 

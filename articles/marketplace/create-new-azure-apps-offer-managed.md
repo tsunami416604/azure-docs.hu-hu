@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 66da9124a6b46fa34d0a13c8992cd3141b095422
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 85f5beb6188b1f6987934f1c39c579d5a3028a5e
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370317"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579487"
 ---
 # <a name="configure-a-managed-application-plan"></a>Felügyelt alkalmazáscsomag konfigurálása
 
@@ -138,7 +138,7 @@ Válassza ki a **teljes** vagy **növekményes** üzembe helyezési módot.
 - **Teljes** módban az ügyfél által az alkalmazás újratelepítése a felügyelt erőforráscsoport erőforrásainak eltávolítását eredményezi, ha az erőforrások nincsenek meghatározva a [mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md).
 - A **növekményes** módban az alkalmazás újratelepítése változatlanul hagyja a meglévő erőforrásokat.
 
-További információ az üzembe helyezési módokról: [Azure Resource Manager telepítési módok](/azure/azure-resource-manager/deployment-modes.md).
+További információ az üzembe helyezési módokról: [Azure Resource Manager telepítési módok](/azure/azure-resource-manager/deployment-modes).
 
 ### <a name="provide-a-notification-endpoint-url"></a>Értesítési végpont URL-címének megadása
 
@@ -185,7 +185,7 @@ A **terv áttekintés** lapjának **művelet** oszlopában elérhető műveletek
 - Ha a terv állapota **élő** , a **művelet** oszlopban található hivatkozás nem fogja **megszüntetni a terv értékesítését** vagy a **privát célközönség szinkronizálását**. A **privát célközönség szinkronizálása** hivatkozás csak a privát célközönségek módosításait teszi közzé anélkül, hogy közzé kellene tenni az ajánlatban esetlegesen végrehajtott egyéb frissítéseket.
 - Ha egy másik csomagot szeretne létrehozni ehhez az ajánlathoz, a **terv áttekintése** lap tetején válassza az **+ új terv létrehozása** lehetőséget. Ezután ismételje meg az [Azure-alkalmazási ajánlathoz tartozó csomagok létrehozása](create-new-azure-apps-offer-plans.md)című témakör lépéseit. Ellenkező esetben, ha elkészült a csomagok létrehozásával, ugorjon a következő szakaszra: további lépések.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-alkalmazás ajánlatának tesztelése és közzététele](create-new-azure-apps-offer-test-publish.md).
 - Ismerje meg [, hogyan forgalmazhatja Azure-alkalmazásait](create-new-azure-apps-offer-marketing.md) a Microsofttal való közös értékesítéssel és a CSP-programokkal való viszonteladással.

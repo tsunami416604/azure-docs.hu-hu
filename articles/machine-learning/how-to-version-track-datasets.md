@@ -11,15 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b4dc222ed0fc350b680d2696c1faa16d44b84a02
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 496a38e43c7bd624c42f5c7a43ad9cf16f85d166
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358337"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579572"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Adatkészletek verziója és nyomon követése kísérletekben
-
 
 Ebből a cikkből megtudhatja, hogyan lehet a reprodukálni Azure Machine Learning adatkészletek verzióját és nyomon követését. Az adatkészlet verziószámozása lehetővé teszi az adathalmazok könyvjelzővel való megjelölését, így az adatkészlet egy adott verzióját később is alkalmazhatja a jövőbeli kísérletekhez.
 
@@ -116,11 +115,11 @@ dataset2.register(workspace = workspace,
 
 <a name="pipeline"></a>
 
-## <a name="version-a-pipeline-output-dataset"></a>A folyamat kimeneti adatkészletének verziója
+## <a name="version-an-ml-pipeline-output-dataset"></a>ML-folyamat kimeneti adatkészletének verziója
 
-Az adatkészleteket minden Machine Learning folyamat lépéseinek bemenete és kimenete használatával is használhatja. Ha Újrafuttatja a folyamatokat, az egyes folyamatokhoz tartozó lépések kimenete új adatkészlet-verzióként lesz regisztrálva.
+Az adatkészleteket az egyes [ml-folyamatok](concept-ml-pipelines.md) bemenetének és kimenetének megfelelően használhatja. Ha Újrafuttatja a folyamatokat, az egyes folyamatokhoz tartozó lépések kimenete új adatkészlet-verzióként lesz regisztrálva.
 
-Mivel Machine Learning folyamatok minden egyes lépés kimenetét egy új mappába töltik fel, valahányszor a folyamat újratöltődik, a verziószámmal ellátott kimeneti adatkészletek reprodukálva lesznek. További információ a [folyamatok adatkészletekről](how-to-create-your-first-pipeline.md#steps).
+A feldolgozási folyamat minden egyes lépés kimenetét egy új mappába tölti fel, valahányszor a folyamat újrapróbálkozik. Ez a viselkedés lehetővé teszi, hogy a verziószámmal ellátott kimeneti adatkészletek megismételhetőek legyenek. További információ a [folyamatok adatkészletekről](how-to-create-your-first-pipeline.md#steps).
 
 ```Python
 from azureml.core import Dataset
@@ -154,9 +153,36 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datasets-in-experiments"></a>Adathalmazok nyomon követése kísérletekben
+## <a name="track-datas-in-your-experiments"></a>A kísérletek adatai nyomon követése
 
-Az egyes Machine Learning kísérleteknél könnyedén nyomon követheti a bemenetként használt adatkészleteket a kísérlet `Run` objektumon keresztül.
+A Azure Machine Learning bemeneti és kimeneti adatkészletként követi nyomon az adatokat a kísérlet során.  
+
+Az alábbi forgatókönyvek az adatok **bemeneti adatkészletként** való nyomon követésére szolgálnak. 
+
+* Objektum az `DatasetConsumptionConfig` `inputs` `arguments` objektum vagy paraméterén keresztül `ScriptRunConfig` a kísérlet futtatásának elküldésekor. 
+
+* A (z), get_by_name () vagy get_by_id () metódusokat a parancsfájlban kell meghívni. Ebben a forgatókönyvben az adatkészlethez hozzárendelt név jelenik meg, amikor a munkaterülethez regisztrálta a nevet. 
+
+Az alábbi forgatókönyvek az adatok **kimeneti adatkészletként** való nyomon követésére szolgálnak.  
+
+* Adjon át egy `OutputFileDatasetConfig` objektumot a `outputs` vagy a `arguments` paraméterrel a kísérlet futtatásának elküldésekor. `OutputFileDatasetConfig` az objektumok a folyamat lépései közötti adatmegőrzéshez is használhatók. Lásd: [az adatmozgatás a ml-folyamat lépései között.](how-to-move-data-in-out-of-pipelines.md)
+    > [!TIP]
+    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) a egy nyilvános előzetes verzió, amely a [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) előzetes verzió funkcióit tartalmazza, amelyek bármikor megváltozhatnak.
+
+* Regisztráljon egy adatkészletet a parancsfájlban. Ebben a forgatókönyvben az adatkészlethez hozzárendelt név jelenik meg, amikor a munkaterülethez regisztrálta a nevet. A következő példában `training_ds` a név jelenik meg.
+
+    ```Python
+   training_ds = unregistered_ds.register(workspace = workspace,
+                                     name = 'training_ds',
+                                     description = 'training data'
+                                     )
+    ```
+
+* A beküldési gyermek nem regisztrált adatkészlettel fut a parancsfájlban. Ez egy névtelen mentett adatkészlet eredményét eredményezi.
+
+### <a name="trace-datasets-in-experiment-runs"></a>Nyomkövetési adatkészletek a kísérletek futtatásában
+
+Minden Machine Learning kísérletnél könnyedén nyomon követheti a kísérlet objektum bemenetként használt adatkészleteket `Run` .
 
 A következő kód a [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) metódus használatával követi nyomon, hogy mely bemeneti adatkészletek lettek használva a kísérlet futtatásával:
 
@@ -169,7 +195,7 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-A from kísérletek a használatával is megtalálhatók `input_datasets` https://ml.azure.com/ . 
+A `input_datasets` from kísérletek a [Azure Machine learning Studio]()használatával is megtalálhatók. 
 
 Az alábbi képen látható, hol található egy kísérlet bemeneti adatkészlete Azure Machine Learning Studióban. Ebben a példában lépjen a **kísérletek** ablaktáblára, és nyissa meg a kísérlet adott futtatásának **Tulajdonságok** lapját `keras-mnist` .
 
@@ -183,7 +209,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-A regisztráció után megtekintheti az adatkészlethez regisztrált modellek listáját a Python használatával vagy a következővel: https://ml.azure.com/ .
+A regisztráció után megtekintheti az adatkészlethez regisztrált modellek listáját a Python használatával vagy a [Studióban](https://ml.azure.com/).
 
 A következő nézet az **adatkészletek** ablaktábla **eszközök** területén található. Válassza ki az adatkészletet, majd válassza a **modellek** fület az adatkészletben regisztrált modellek listájához. 
 
