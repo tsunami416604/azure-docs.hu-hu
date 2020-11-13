@@ -3,12 +3,12 @@ title: Traffic Manager üzembe helyezése az Azure VMware Solution (AVS) számí
 description: Ismerje meg, hogyan integrálhatja a Traffic Managert az Azure VMware-megoldással (AVS) az alkalmazások számítási feladatainak különböző régiókban lévő több végponton való kiegyensúlyozásához.
 ms.topic: how-to
 ms.date: 08/14/2020
-ms.openlocfilehash: d461cc444c60e1907a34a08c68139446301c133c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 076d9c77d68df3d8acb7b531b3dfbea40fb3cedd
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579840"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593136"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Traffic Manager üzembe helyezése az Azure VMware Solution (AVS) számítási feladatok kiegyensúlyozásához
 
@@ -30,7 +30,7 @@ Ahogy az az alábbi ábrán is látható, az Azure Traffic Manager terheléselos
 
 A virtuális hálózaton keresztüli kapcsolat a két AVS Private Cloud region, az USA nyugati régiója és Nyugat-Európa, valamint az USA keleti régiójában található helyszíni kiszolgáló között egy ExpressRoute-átjárót használ.   
 
-![Traffic Manager integráció az AVS-vel](media/traffic-manager/traffic-manager-topology.png)
+![Az Azure VMware-megoldással való Traffic Manager integráció architektúrájának ábrája](media/traffic-manager/traffic-manager-topology.png)
  
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,15 +55,15 @@ A következő lépésekkel ellenőrizheti az Application Gateway-átjárók hely
     - AVS-GW-EUS (helyszíni)
     - AVS-GW-NYEU
 
-    :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="Az Application Gateway-példányok listája." lightbox="media/traffic-manager/app-gateways-list-1.png":::
+    :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="Képernyőkép az Application Gateway oldalról, amely a konfigurált Application Gateway-átjárók listáját jeleníti meg." lightbox="media/traffic-manager/app-gateways-list-1.png":::
 
 2. Válassza ki a korábban telepített Application Gateway-átjárók egyikét. Megnyílik egy ablak, amely az Application Gateway különböző információit jeleníti meg. Válassza ki a **háttér-készletek** lehetőséget a háttérbeli készletek egyikének a konfigurációjának ellenőrzéséhez.
 
-   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="Az Application Gateway-példányok listája." lightbox="media/traffic-manager/backend-pool-config.png":::
+   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="Képernyőkép az Application Gateway oldalról, amely a kiválasztott Application Gateway részleteit jeleníti meg." lightbox="media/traffic-manager/backend-pool-config.png":::
  
 3. Ebben az esetben egy, a 172.29.1.10 IP-címét tartalmazó webkiszolgálóként konfigurált virtuálisgép-háttérbeli készletet látunk.
  
-    :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="Az Application Gateway-példányok listája.":::
+    :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="Képernyőkép a háttérbeli készlet szerkesztése oldalról a cél IP-címmel kiemelve.":::
 
     Hasonlóképpen ellenőrizheti a többi Application Gateway és a háttérbeli készlet tagjainak konfigurációját is. 
 
@@ -75,53 +75,47 @@ Ebben az esetben egy NSX-T szegmens van konfigurálva az AVS-környezetben, ahol
 
 1. Válassza ki a **szegmenseket** a konfigurált szegmensek megtekintéséhez. Ebben az esetben azt láthatjuk, hogy a contoso-segment1 egy 1. rétegbeli rugalmas útválasztóhoz csatlakozik a contoso-T01 átjáróhoz.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Az Application Gateway-példányok listája.":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="A NSX-T Manager szegmens profiljait ábrázoló képernyőkép.":::    
 
 2. Válassza az **1. rétegbeli átjárók** lehetőséget az 1. rétegbeli átjárók listájának megtekintéséhez a csatolt szegmensek számával. Válassza ki a contoso-T01 társított szegmenst. Megnyílik egy ablak, amely a réteg-01 útválasztón konfigurált logikai felületet mutatja. Ez átjáróként szolgál a szegmenshez csatlakoztatott háttérbeli készlethez tartozó tag virtuális géphez.
 
-   :::image type="content" source="media/traffic-manager/nsx-t-segment-linked-2.png" alt-text="Az Application Gateway-példányok listája.":::    
+   :::image type="content" source="media/traffic-manager/nsx-t-segment-linked-2.png" alt-text="A kiválasztott szegmens átjárójának címeit bemutató képernyőkép.":::    
 
 3. A virtuálisgép-vSphere ügyfélen válassza ki a virtuális gépet a részletek megtekintéséhez. Vegye figyelembe, hogy az IP-címe megegyezik az előző szakasz 3. lépésében szereplővel: 172.29.1.10.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Az Application Gateway-példányok listája.":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Képernyőfelvétel: a virtuális gép részletei a VSphere-ügyfélen.":::    
 
 4. Válassza ki a virtuális gépet, majd kattintson a **műveletek > beállítások szerkesztése** lehetőségre a NSX-T szegmenshez való kapcsolódás ellenőrzéséhez.
 
 ## <a name="create-your-traffic-manager-profile"></a>A Traffic Manager profil létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://rc.portal.azure.com/#home). Az **Azure-szolgáltatások > hálózatkezelés**területen válassza a **Traffic Manager profilok**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://rc.portal.azure.com/#home). Az **Azure-szolgáltatások > hálózatkezelés** területen válassza a **Traffic Manager profilok** lehetőséget.
 
 2. Új Traffic Manager-profil létrehozásához válassza a **+ Hozzáadás** lehetőséget.
  
-3. Adja meg a profil nevét, az útválasztási módszert (ezt a forgatókönyvet fogjuk használni, lásd: [Traffic Manager útválasztási módszerek](../traffic-manager/traffic-manager-routing-methods.md)), előfizetés és erőforráscsoport, majd válassza a **Létrehozás**lehetőséget.
+3. Adja meg a profil nevét, az útválasztási módszert (ezt a forgatókönyvet fogjuk használni, lásd: [Traffic Manager útválasztási módszerek](../traffic-manager/traffic-manager-routing-methods.md)), előfizetés és erőforráscsoport, majd válassza a **Létrehozás** lehetőséget.
 
 ## <a name="add-external-endpoints-into-the-traffic-manager-profile"></a>Külső végpontok hozzáadása a Traffic Manager profilhoz
 
-1. Válassza ki a Traffic Manager profilt a keresési eredmények ablaktáblán, válassza a **végpontok** , majd a **+ Hozzáadás**lehetőséget.
+1. Válassza ki a Traffic Manager profilt a keresési eredmények ablaktáblán, válassza a **végpontok** , majd a **+ Hozzáadás** lehetőséget.
 
-2. Adja meg a szükséges adatokat: típus, név, teljes tartománynév (FQDN) vagy IP-cím és súlyozás (ebben a forgatókönyvben az egyes végpontok 1. súlyozását rendeli hozzá). Válassza a **Hozzáadás** lehetőséget.
+2. Adja meg a szükséges adatokat: típus, név, teljes tartománynév (FQDN) vagy IP-cím és súlyozás (ebben a forgatókönyvben az egyes végpontok 1. súlyozását rendeli hozzá). Válassza a **Hozzáadás** elemet. Ez létrehozza a külső végpontot. A figyelő állapotának **online** állapotúnak kell lennie. Ugyanezen lépések megismétlésével hozzon létre két további külső végpontot, egyet egy másik régióban és a másikat a helyszínen. A létrehozás után mindhárom megjelenik a Traffic Manager profilban, és mindhárom állapotnak **online** állapotúnak kell lennie.
 
-   :::image type="content" source="media/traffic-manager/traffic-manager-profile.png" alt-text="Az Application Gateway-példányok listája.":::  
- 
-   Ez létrehozza a külső végpontot. A figyelő állapotának **online**állapotúnak kell lennie. 
+3. Válassza az **Áttekintés** lehetőséget. Másolja az URL-címet a **DNS-név** területen.
 
-   Ugyanezen lépések megismétlésével hozzon létre két további külső végpontot, egyet egy másik régióban és a másikat a helyszínen. A létrehozás után mindhárom megjelenik a Traffic Manager profilban, és mindhárom állapotnak **online**állapotúnak kell lennie.
-
-3. Válassza az **Áttekintés** lehetőséget. Másolja az URL-címet a **DNS-név**területen.
-
-   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Az Application Gateway-példányok listája."::: 
+   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Képernyőfelvétel: Traffic Manager végpont áttekintése a DNS-név kiemelésével."::: 
 
 4. Illessze be a DNS-név URL-címét egy böngészőben. A következő képernyőfelvételen a Nyugat-európai régióra irányított forgalom látható.
 
-   :::image type="content" source="media/traffic-manager/traffic-to-west-europe.png" alt-text="Az Application Gateway-példányok listája."::: 
+   :::image type="content" source="media/traffic-manager/traffic-to-west-europe.png" alt-text="Képernyőfelvétel: a böngészőablakban a Nyugat-Európába irányított forgalom látható."::: 
 
 5. Frissítse a böngészőjét. Az alábbi képernyőfelvételen az USA nyugati régiójában lévő háttérbeli készlet tagjainak egy másik készletére irányítja át a forgalmat.
 
-   :::image type="content" source="media/traffic-manager/traffic-to-west-us.png" alt-text="Az Application Gateway-példányok listája."::: 
+   :::image type="content" source="media/traffic-manager/traffic-to-west-us.png" alt-text="Képernyőkép – a böngészőablakban az USA nyugati régiójában átirányított forgalom látható."::: 
 
 6. Frissítse újra a böngészőt. A következő képernyőfelvételen a háttérrendszer-készlet tagjainak a helyszínen történő üzembe helyezett forgalma látható.
 
-   :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="Az Application Gateway-példányok listája.":::
+   :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="Képernyőkép a böngészőablakban átirányított forgalomról.":::
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: c742240cc82035b2a9af16348eaa9f2a40a32fa3
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 548d936538a909da10796d0377f119826582c420
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900323"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616059"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Custom Vision projektek másolása és áthelyezése
 
@@ -30,7 +30,7 @@ Ha az alkalmazás vagy az üzlet egy Custom Vision-projekttől függ, javasoljuk
 
 - Két Azure Custom Vision-erőforrás. Ha nem rendelkezik ezekkel, lépjen a Azure Portalra, és [hozzon létre egy új Custom Vision-erőforrást](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - A Custom Vision erőforrások betanítási kulcsainak és végpontjának URL-címei. Ezek az értékek az erőforrás **Áttekintés** lapján találhatók a Azure Portal.
-- Létrehozott Custom Vision projekt. Ehhez útmutatást az [osztályozó](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/getting-started-build-a-classifier) létrehozása című cikkben talál.
+- Létrehozott Custom Vision projekt. Ehhez útmutatást az [osztályozó](./getting-started-build-a-classifier.md) létrehozása című cikkben talál.
 
 ## <a name="process-overview"></a>Folyamat áttekintése
 
@@ -137,7 +137,7 @@ Választ kaphat az `200/OK` újonnan importált projekt metaadataira.
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban megtanulta, hogyan másolhat és helyezhet át egy projektet Custom Vision erőforrások között. Ezután tekintse meg az API-referenciák dokumentációját, hogy megtudja, mit tehet a Custom Vision.
 * [REST API dokumentáció](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)

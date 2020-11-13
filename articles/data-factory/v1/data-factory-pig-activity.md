@@ -1,6 +1,6 @@
 ---
 title: Adatátalakítás a Pig tevékenységgel Azure Data Factory
-description: Ismerje meg, hogyan használhatja a Pig-tevékenységet egy Azure-beli adatelőállító v1-ben egy igény szerinti vagy saját HDInsight-fürtön futó Pig-parancsfájlok futtatásához.
+description: Megtudhatja, hogyan használhatja a Pig-tevékenységet a Azure Data Factory v1-ben a Pig-parancsfájlok futtatásához igény szerinti vagy saját HDInsight-fürtön.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 35990312658492e1e41b47096a43748c3a4e653e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c94d66bf98645e12a6c603f2b35d229080717734
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359900"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616858"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Adatátalakítás a Pig tevékenységgel Azure Data Factory
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -26,8 +26,8 @@ ms.locfileid: "92359900"
 > * [MapReduce tevékenység](data-factory-map-reduce.md)
 > * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 > * [Spark-tevékenység](data-factory-spark.md)
-> * [Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenység](data-factory-azure-ml-update-resource-activity.md)
+> * [Az Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenysége](data-factory-azure-ml-batch-execution-activity.md)
+> * [Az Azure Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenysége](data-factory-azure-ml-update-resource-activity.md)
 > * [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-tevékenység](data-factory-usql-activity.md)
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
@@ -124,7 +124,7 @@ A Pig szkript Data Factory folyamaton való végrehajtásához hajtsa végre a k
 1. Hozzon létre egy társított szolgáltatást a [saját HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) regisztrálásához vagy [igény szerinti HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)konfigurálásához. Hívjuk ezt a társított szolgáltatás **HDInsightLinkedService**.
 2. Hozzon létre egy [társított szolgáltatást](data-factory-azure-blob-connector.md) a kapcsolat konfigurálásához az Azure Blob Storage-hoz, amely az adattárolót üzemelteti. Hívjuk ezt a társított szolgáltatás **StorageLinkedService**.
 3. A bemeneti és a kimeneti adatokra mutató [adatkészletek](data-factory-create-datasets.md) létrehozása. Hívjuk a bemeneti adatkészlet **PigSampleIn** és a kimeneti adatkészlet **PigSampleOut**.
-4. Másolja a Pig-lekérdezést egy olyan fájlba, amelyet az Azure Blob Storage a #2 lépésben konfigurált. Ha az adatok tárolására szolgáló Azure Storage nem azonos a lekérdezési fájllal, hozzon létre egy külön Azure Storage-beli társított szolgáltatást. Tekintse át a társított szolgáltatást a tevékenység konfigurációjában. A **scriptPath** használatával adja meg a Pig-parancsfájl és a **scriptlinkedservice szolgáltatás**elérési útját. 
+4. Másolja a Pig-lekérdezést egy olyan fájlba, amelyet az Azure Blob Storage a #2 lépésben konfigurált. Ha az adatok tárolására szolgáló Azure Storage nem azonos a lekérdezési fájllal, hozzon létre egy külön Azure Storage-beli társított szolgáltatást. Tekintse át a társított szolgáltatást a tevékenység konfigurációjában. A **scriptPath** használatával adja meg a Pig-parancsfájl és a **scriptlinkedservice szolgáltatás** elérési útját. 
    
    > [!NOTE]
    > A Pig szkriptet a tevékenység definíciójában is megadhatja a **script** tulajdonság használatával. Ez a megközelítés azonban nem ajánlott, mivel a parancsfájlban szereplő összes speciális karakternek el kell menekülnie, és hibakeresési problémákhoz vezethet. Az ajánlott eljárás a #4 lépés végrehajtása.
@@ -210,7 +210,7 @@ A paraméteres Pig-parancsfájl használatához tegye a következőket:
       }
     }
     ```
-* A Pig-szkriptben a következő példában látható módon tekintse át a paramétereket a "**$parameterName**" használatával:
+* A Pig-szkriptben a következő példában látható módon tekintse át a paramétereket a " **$parameterName** " használatával:
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);

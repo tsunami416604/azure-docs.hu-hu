@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/15/2020
-ms.openlocfilehash: 205600e488822c5ade4b808c29c66741d28a84a7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/12/2020
+ms.openlocfilehash: 87d6ca8ee69ca49cf52b61e6beddb56721658afa
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575924"
+ms.locfileid: "94593739"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Adatok megosztása és fogadása az Azure SQL Database-ből és az Azure Synapse Analyticsből
 
@@ -19,7 +19,7 @@ ms.locfileid: "94575924"
 
 Az Azure-beli adatmegosztás támogatja a Snapshot-alapú megosztási Azure SQL Database és az Azure szinapszis Analytics szolgáltatást. Ez a cikk az ezekből a forrásokból származó adatok megosztását és fogadását ismerteti.
 
-Az Azure-beli adatmegosztás támogatja a táblák és nézetek megosztását a Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL DW) használatával, valamint a táblák megosztását az Azure szinapszis Analytics (munkaterület) SQL-készletből. Az adatfogyasztók dönthetnek úgy, hogy elfogadják az Azure Data Lake Storage Gen2 vagy az Azure Blob Storage CSV-vagy Parque-fájlként, valamint a Azure SQL Database és az Azure szinapszis Analytics táblázatként való elfogadását.
+Az Azure-beli adatmegosztás támogatja a táblák és nézetek megosztását a Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL DW) használatával, valamint a táblák megosztását az Azure szinapszis Analytics (munkaterület) dedikált SQL-készletből. Az Azure szinapszis Analytics (munkaterület) kiszolgáló nélküli SQL-készletének megosztása jelenleg nem támogatott. Az adatfogyasztók dönthetnek úgy, hogy elfogadják az Azure Data Lake Storage Gen2 vagy az Azure Blob Storage CSV-vagy Parque-fájlként, valamint a Azure SQL Database és az Azure szinapszis Analytics táblázatként való elfogadását.
 
 Amikor Azure Data Lake Store Gen2 vagy Azure Blob Storageba fogadja az adatfogadást, a teljes Pillanatképek felülírják a célfájl tartalmát, ha már létezik.
 Ha az SQL-táblába beérkeznek az adatforrások, és ha a céltábla még nem létezik, az Azure-beli adatmegosztás létrehozza az SQL-táblázatot a forrás sémával. Ha már létezik ilyen nevű céltábla, a rendszer elveti és felülírja a legújabb teljes pillanatképtel. A növekményes Pillanatképek jelenleg nem támogatottak.
@@ -61,7 +61,7 @@ Az előfeltételek konfigurálásához kövesse a [lépésenkénti bemutató](ht
 
 #### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>Az Azure szinapszis Analytics (munkaterület) SQL-készlet megosztásának előfeltételei
 
-* Egy olyan Azure szinapszis Analytics-(munkaterület-) SQL-készlet, amelyben meg szeretné osztani a táblázatokat. A nézet megosztása jelenleg nem támogatott.
+* Egy Azure szinapszis Analytics (munkaterület) dedikált SQL-készlet a megosztani kívánt táblázatokkal. A nézet megosztása jelenleg nem támogatott. A kiszolgáló nélküli SQL-készletből való megosztás jelenleg nem támogatott.
 * Engedély a szinapszis munkaterületen található SQL-készletbe való írásra, amely megtalálható a *Microsoft. szinapszis/munkaterület/sqlPools/Write* fájlokban. Ez az engedély a **Közreműködő** szerepkör részét képezi.
 * Engedély az adatmegosztási erőforrás felügyelt identitásához a szinapszis-munkaterület SQL-készletének eléréséhez. Ezt a következő lépések végrehajtásával teheti meg: 
     1. A Azure Portalban navigáljon a szinapszis munkaterületre. Válassza az SQL Active Directory-rendszergazda lehetőséget a bal oldali navigációs sávon, és állítsa be magát a **Azure Active Directory-rendszergazdaként**.
@@ -132,7 +132,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
     ![AddDatasets](./media/add-datasets.png "Adatkészletek hozzáadása")    
 
-1. Válassza ki az SQL Server vagy a szinapszis munkaterületet, adja meg a hitelesítő adatokat, ha a rendszer kéri, majd a **tovább** gombra kattintva navigáljon a megosztani kívánt objektumhoz, és válassza az "adatkészletek hozzáadása" lehetőséget. 
+1. Válassza ki az SQL Server vagy a szinapszis munkaterületet, adja meg a hitelesítő adatokat, ha a rendszer kéri, majd a **tovább** gombra kattintva navigáljon a megosztani kívánt objektumhoz, és válassza az "adatkészletek hozzáadása" lehetőséget. Kiválaszthatja a Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL DW), illetve az Azure szinapszis Analytics (munkaterület) dedikált SQL-készletből származó táblákat és nézeteket. 
 
     ![SelectDatasets](./media/select-datasets-sql.png "Adatkészletek kiválasztása")    
 
@@ -201,7 +201,7 @@ Az előfeltételek konfigurálásához kövesse a [lépésenkénti bemutató](ht
  
 #### <a name="prerequisites-for-receiving-data-into-azure-synapse-analytics-workspace-sql-pool"></a>Az Azure szinapszis Analytics (munkaterület) SQL-készletbe való adatfogadás előfeltételei
 
-* Egy Azure szinapszis Analytics-(munkaterület-) SQL-készlet.
+* Egy Azure szinapszis Analytics (munkaterület) dedikált SQL-készlet. Az Adatfogadás kiszolgáló nélküli SQL-készletbe jelenleg nem támogatott.
 * Engedély a szinapszis munkaterületen található SQL-készletbe való írásra, amely megtalálható a *Microsoft. szinapszis/munkaterület/sqlPools/Write* fájlokban. Ez az engedély a **Közreműködő** szerepkör részét képezi.
 * Engedély az adatmegosztási erőforrás felügyelt identitásához a szinapszis-munkaterület SQL-készletének eléréséhez. Ezt a következő lépések végrehajtásával teheti meg: 
     1. A Azure Portalban navigáljon a szinapszis munkaterületre. Válassza az SQL Active Directory-rendszergazda lehetőséget a bal oldali navigációs sávon, és állítsa be magát a **Azure Active Directory-rendszergazdaként**.
@@ -343,5 +343,5 @@ Az SQL-Pillanatképek teljesítményét számos tényező befolyásolja. A sajá
 ## <a name="troubleshoot-sql-snapshot-failure"></a>SQL-pillanatkép hibáinak hibaelhárítása
 A pillanatképek meghibásodásának leggyakoribb oka az, hogy az adatmegosztás nem rendelkezik engedéllyel a forrás-vagy a célként megadott adattárhoz. Ahhoz, hogy adatmegosztási engedélyt adjon a forrás vagy a cél Azure SQL Database vagy az Azure szinapszis Analytics (korábban Azure SQL DW) számára, futtatnia kell a megadott SQL-parancsfájlt az SQL-adatbázishoz való csatlakozáskor Azure Active Directory hitelesítés használatával. További SQL-Pillanatképek hibáinak hibaelhárításához tekintse meg a [Pillanatkép-hiba hibaelhárítása](data-share-troubleshoot.md#snapshot-failed)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megtanulta, hogyan oszthat meg és fogadhat adatait SQL-forrásokból az Azure adatmegosztási szolgáltatás használatával. Ha többet szeretne megtudni a más adatforrásokból történő megosztásról, folytassa a [támogatott adattárakkal](supported-data-stores.md).

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: c54b81ca25602fa77ad66bbb818df3cd8eee39a1
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: e56a840da07a2f6e966867699506f0122a0e7956
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94519969"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593644"
 ---
 #  <a name="session-log-in-copy-activity"></a>Munkamenet-napló a másolási tevékenységben
 
@@ -60,9 +60,10 @@ Az alábbi példa egy JSON-definíciót biztosít a munkamenet-napló másolási
         },
         "logLocationSettings": {
             "linkedServiceName": {
-                "referenceName": "ADLSGen2",
+               "referenceName": "ADLSGen2",
                "type": "LinkedServiceReference"
-            }
+            },
+            "path": "sessionlog/"
         }
     }
 }
@@ -70,12 +71,12 @@ Az alábbi példa egy JSON-definíciót biztosít a munkamenet-napló másolási
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | -------- 
-enableCopyActivityLog | Ha igaz értékre állítja, lehetősége lesz a másolt fájlok, a kihagyott fájlok vagy a kihagyott sorok naplózására.  | Igaz<br/>False (alapértelmezett) | No
-Naplózási szint | Az "info" a másolt fájlok, a kihagyott fájlok és a kihagyott sorok naplózására fog bejelentkezni. A "figyelmeztetés" csak a kihagyott fájlokat és a kihagyott sorokat fogja naplózni.  | Információ<br/>Figyelmeztetés (alapértelmezett) | No
-enableReliableLogging | Ha az értéke igaz, a másolási tevékenység megbízható módban azonnal kiüríti a naplókat, amint az egyes fájlok a célhelyre másolódnak.  Ha olyan nagy mennyiségű fájlt másol át, amely megbízható naplózási módban van engedélyezve a másolási tevékenység során, akkor a másolási átviteli sebesség hatással lesz, mivel az egyes fájlok másolásához dupla írási műveletek szükségesek. Az egyik kérelem a célhelyre mutat, és egy másik kérelem a log Storage-tárolóba.  A másolási tevékenység a legjobb lehetőség módban egy adott időtartamon belül üríti a naplókat a rekordok kötegével, ahol a másolási sebesség sokkal kevésbé lesz hatással. Ebben a módban nem garantáljuk a naplózás teljességét és időszerűségét, mivel néhány lehetőség van arra, hogy a naplózott események utolsó kötege nem lett kiürítve a naplófájlba, ha a másolási tevékenység meghiúsult. Ebben a pillanatban látni fogja, hogy a rendszer nem naplózza a célhelyre másolt néhány fájlt.  | Igaz<br/>False (alapértelmezett) | No
-logLocationSettings | Olyan tulajdonságok csoportja, amelyek segítségével megadhatja a munkamenet-naplók tárolására szolgáló helyet. | | No
-linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása a munkamenet naplófájljainak tárolására. | Egy `AzureBlobStorage` vagy több `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájlok tárolásához használt példányra hivatkozik. | No
-path | A naplófájlok elérési útja. | Itt adhatja meg a naplófájlok tárolásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | No
+enableCopyActivityLog | Ha igaz értékre állítja, lehetősége lesz a másolt fájlok, a kihagyott fájlok vagy a kihagyott sorok naplózására.  | Igaz<br/>False (alapértelmezett) | Nem
+Naplózási szint | Az "info" a másolt fájlok, a kihagyott fájlok és a kihagyott sorok naplózására fog bejelentkezni. A "figyelmeztetés" csak a kihagyott fájlokat és a kihagyott sorokat fogja naplózni.  | Információ<br/>Figyelmeztetés (alapértelmezett) | Nem
+enableReliableLogging | Ha az értéke igaz, a másolási tevékenység megbízható módban azonnal kiüríti a naplókat, amint az egyes fájlok a célhelyre másolódnak.  Ha olyan nagy mennyiségű fájlt másol át, amely megbízható naplózási módban van engedélyezve a másolási tevékenység során, akkor a másolási átviteli sebesség hatással lesz, mivel az egyes fájlok másolásához dupla írási műveletek szükségesek. Az egyik kérelem a célhelyre mutat, és egy másik kérelem a log Storage-tárolóba.  A másolási tevékenység a legjobb lehetőség módban egy adott időtartamon belül üríti a naplókat a rekordok kötegével, ahol a másolási sebesség sokkal kevésbé lesz hatással. Ebben a módban nem garantáljuk a naplózás teljességét és időszerűségét, mivel néhány lehetőség van arra, hogy a naplózott események utolsó kötege nem lett kiürítve a naplófájlba, ha a másolási tevékenység meghiúsult. Ebben a pillanatban látni fogja, hogy a rendszer nem naplózza a célhelyre másolt néhány fájlt.  | Igaz<br/>False (alapértelmezett) | Nem
+logLocationSettings | Olyan tulajdonságok csoportja, amelyek segítségével megadhatja a munkamenet-naplók tárolására szolgáló helyet. | | Nem
+linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása a munkamenet naplófájljainak tárolására. | Egy `AzureBlobStorage` vagy több `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájlok tárolásához használt példányra hivatkozik. | Nem
+path | A naplófájlok elérési útja. | Itt adhatja meg a naplófájlok tárolásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
 
 ## <a name="monitoring"></a>Figyelés

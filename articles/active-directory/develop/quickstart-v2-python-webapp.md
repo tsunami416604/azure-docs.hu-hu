@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 63abbc739849a201275995c81a28ede9f9c84b5a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eaac8bdf828d2dd9a8e2dfae0b1b2b5985d1951d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613339"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592702"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba
 
-Ebből a rövid útmutatóból megtudhatja, hogyan integrálhat egy Python-webalkalmazást a Microsoft Identity platformmal. Az alkalmazás bejelentkezik egy felhasználóval, hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához, és kérelmet küld a Microsoft Graph API-nak.
+Ebben a rövid útmutatóban egy kódrészletet tölt le és futtat, amely bemutatja, hogyan jelentkezhet be egy Python-webalkalmazás a felhasználók számára, és hogyan szerezhet be hozzáférési jogkivonatot a Microsoft Graph API meghívásához. A személyes Microsoft-fiókkal vagy egy Azure Active Directory (Azure AD-) szervezet fiókkal is bejelentkezhet az alkalmazásba.
 
-Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-fiókok (például a outlook.com, a live.com és mások) és a munkahelyi vagy iskolai fiókok bejelentkezési adatait bármely olyan vállalattól vagy szervezettől, amely Azure Active Directoryt használ. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
+Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,20 +53,20 @@ Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-
 > 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 > 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalára.
-> 1. Válassza az **új regisztráció**lehetőséget.
+> 1. Válassza az **új regisztráció** lehetőséget.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `python-webapp`).
->      - A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
+>      - A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 >      - Válassza a **Regisztráció** lehetőséget.
 >      - Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 > 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
->    - Adja hozzá **a** webplatform-konfigurációt. Hozzáadás `http://localhost:5000/getAToken` **átirányítási URI**-ként.
+>    - Adja hozzá **a** webplatform-konfigurációt. Hozzáadás `http://localhost:5000/getAToken` **átirányítási URI** -ként.
 >    - Válassza a **Mentés** lehetőséget.
 > 1. A bal oldali menüben válassza a **tanúsítványok & Secrets** elemet, majd kattintson az **új ügyfél titkára** az **ügyfél titkai** szakaszban:
 >
 >      - Írja be a kulcs leírását (a példány-alkalmazás titkos kulcsa).
->      - Adja **meg az 1 év**kulcsának időtartamát.
->      - Ha a **Hozzáadás**gombra kattint, megjelenik a kulcs értéke.
+>      - Adja **meg az 1 év** kulcsának időtartamát.
+>      - Ha a **Hozzáadás** gombra kattint, megjelenik a kulcs értéke.
 >      - Másolja a kulcs értékét. Erre később még szüksége lesz.
 > 1. Válassza ki az **API-engedélyek** szakaszt
 >
@@ -107,7 +107,7 @@ Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-application"></a>3. lépés: az alkalmazás konfigurálása
 >
-> 1. Csomagolja ki a zip-fájlt egy helyi mappába a gyökérmappa közelében (például: **C:\Azure-Samples**)
+> 1. Csomagolja ki a zip-fájlt egy helyi mappába a gyökérmappa közelében (például: **C:\Azure-Samples** )
 > 1. Ha integrált fejlesztési környezetet használ, nyissa meg a mintát a kedvenc IDE (opcionális).
 > 1. Nyissa meg a **app_config.** a fájlt, amely megtalálható a gyökérkönyvtárban, és cserélje le a következő kódrészletre:
 >
@@ -128,7 +128,7 @@ Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-
 > [!div renderon="docs"]
 > #### <a name="step-4-run-the-code-sample"></a>4. lépés: a kód mintájának futtatása
 
-1. Telepítenie kell a MSAL Python Library, a lombik Framework, a többtényezős munkamenet-kezelés és a pip-t használó kérelmeket a következő módon:
+1. Telepítenie kell a MSAL Python Library, a lombik Framework Flask-Sessions a kiszolgálóoldali munkamenet-kezeléshez és a pip-t használó kérelmekhez a következő módon:
 
     ```Shell
     pip install -r requirements.txt
@@ -164,7 +164,7 @@ import msal
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a többrészes forgatókönyvek felhasználói számára bejelentkező webalkalmazásokról.
 

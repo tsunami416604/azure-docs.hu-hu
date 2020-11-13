@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 34baa054104a6cf2c78864cc2827b16c1eedb084
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5cde4b539262c9e20bbcf2e7dd8c8e9de38035c3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613305"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594249"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: bejelentkezés hozzáadása az OpenID használatával Node.js webalkalmazáshoz
 
-Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be az OpenID Connect-hitelesítést egy Node.js és Express használatával létrehozott webalkalmazásban. A minta úgy van kialakítva, hogy bármilyen platformon fusson.
+Ebben a rövid útmutatóban egy Code-mintát tölt le és futtat, amely bemutatja, hogyan állítható be az OpenID Connect-hitelesítés a Node.js Express használatával létrehozott webalkalmazásokban. A minta úgy van kialakítva, hogy bármilyen platformon fusson.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +55,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be az OpenID Con
 
 1. Válassza a **Mentés** lehetőséget.
 
-1. A **tanúsítványok & titkok** oldal **ügyfél-titkok** szakaszában válassza az **új ügyfél titka**elemet.
+1. A **tanúsítványok & titkok** oldal **ügyfél-titkok** szakaszában válassza az **új ügyfél titka** elemet.
     - Adja meg a kulcs leírását (például az alkalmazás titkos kulcsaként).
     - Válassza ki a kulcs időtartamát **1 év vagy 2 év között,** vagy **Soha ne járjon le**.
     - A **Hozzáadás** gombra kattintva megjelenik a kulcs értéke. Másolja a kulcs értékét, és mentse biztonságos helyre.
@@ -122,7 +122,7 @@ A kiszolgáló sikeresen fut `http://localhost:3000` .
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Microsoft Identity platform által támogatott Web App-forgatókönyvről:
 > [!div class="nextstepaction"]
 > [Felhasználói forgatókönyvet használó webalkalmazás](scenario-web-app-sign-user-overview.md)

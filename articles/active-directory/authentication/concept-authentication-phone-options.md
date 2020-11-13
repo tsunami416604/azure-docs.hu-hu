@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 11/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 74be3f4218149f0cdb9f107c8aba0be76d8da27e
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377751"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593076"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Hitelesítési módszerek Azure Active Directory-telefon beállításaiban
 
@@ -32,7 +32,7 @@ A megfelelő működéshez a telefonszámoknak a *+ országhívószám telefonsz
 
 ## <a name="mobile-phone-verification"></a>Mobiltelefon ellenőrzése
 
-Az Azure Multi-Factor Authentication vagy SSPR esetében a felhasználók dönthetnek úgy, hogy szöveges üzenetet kapnak a bejelentkezési felületen megjelenő ellenőrző kóddal, vagy telefonhívást fogadnak a megadott PIN-kód megadásához.
+Az Azure Multi-Factor Authentication vagy SSPR esetében a felhasználók dönthetnek úgy, hogy szöveges üzenetet kapnak a bejelentkezési felületen megjelenő ellenőrző kóddal, vagy telefonhívást fogadnak.
 
 Ha a felhasználó nem szeretné, hogy a mobil telefonszáma megjelenjen a címtárban, de azt szeretné használni a jelszó alaphelyzetbe állításához, akkor a rendszergazdák nem tölthetik fel a telefonszámot a címtárban. Ehelyett a felhasználóknak fel kell tölteniük a **hitelesítési telefonos** attribútumot a következő helyen: [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) . A rendszergazdák láthatják ezeket az információkat a felhasználó profiljában, de máshol nem jelennek meg.
 
@@ -46,11 +46,11 @@ Ha a SSPR vagy az Azure Multi-Factor Authentication során SMS-t szeretne ellen�
 
 ### <a name="phone-call-verification"></a>Telefonhívás ellenőrzése
 
-Ha a SSPR vagy az Azure Multi-Factor Authenticationban telefonhívás-ellenőrzést végez, a felhasználó által regisztrált telefonszámra automatikus hanghívás történik. A bejelentkezési folyamat befejezéséhez a rendszer kéri a felhasználótól, hogy adja meg a PIN-kódját, majd a billentyűzetén a # értéket.
+Ha a SSPR vagy az Azure Multi-Factor Authenticationban telefonhívás-ellenőrzést végez, a felhasználó által regisztrált telefonszámra automatikus hanghívás történik. A bejelentkezési folyamat befejezéséhez a rendszer felszólítja a felhasználót, hogy nyomja meg a # gombot a billentyűzetén.
 
 ## <a name="office-phone-verification"></a>Irodai telefon ellenőrzése
 
-Ha a SSPR vagy az Azure Multi-Factor Authenticationban telefonhívás-ellenőrzést végez, a felhasználó által regisztrált telefonszámra automatikus hanghívás történik. A bejelentkezési folyamat befejezéséhez a rendszer kéri a felhasználótól, hogy adja meg a PIN-kódját, majd a billentyűzetén a # értéket.
+Ha a SSPR vagy az Azure Multi-Factor Authenticationban telefonhívás-ellenőrzést végez, a felhasználó által regisztrált telefonszámra automatikus hanghívás történik. A bejelentkezési folyamat befejezéséhez a rendszer felszólítja a felhasználót, hogy nyomja meg a # gombot a billentyűzetén.
 
 ## <a name="troubleshooting-phone-options"></a>Telefonos beállítások hibaelhárítása
 
@@ -61,7 +61,7 @@ Ha problémák merülnek fel az Azure AD-beli telefonos hitelesítéssel kapcsol
 * Helytelen a telefonszám vagy az ország/régió kódja, vagy a személyes telefonszám és a munkahelyi telefonszám közötti zűrzavar.
    * A felhasználói objektum és a konfigurált hitelesítési módszerek hibáinak megoldása. Győződjön meg arról, hogy a megfelelő telefonszámok regisztrálva vannak.
 * Helytelen PIN-kód van megadva.
-   * Erősítse meg, hogy a felhasználó a megfelelő PIN-kódot használta a fiókjához való regisztrációhoz.
+   * Erősítse meg, hogy a felhasználó a megfelelő PIN-kódot használta a fiókjához (csak MFA-kiszolgáló felhasználóinak).
 * A hívás a hangpostára lett továbbítva.
    * Győződjön meg arról, hogy a felhasználó telefonja be van kapcsolva, és hogy a szolgáltatás elérhető a saját területén, vagy használjon másik módszert.
 * A felhasználó blokkolva van

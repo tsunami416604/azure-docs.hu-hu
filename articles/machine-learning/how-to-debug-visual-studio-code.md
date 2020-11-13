@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: e042fd62d99c9fdf88a144c93739bf1f3f08a78c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 12163419ad779acfa116f1dee66284623e2d45fb
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325589"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616110"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktív hibakeresés a Visual Studio Code-ban
 
 
 
-Megtudhatja, hogyan lehet interaktív módon hibakeresést végezni Azure Machine Learning kísérleteket, folyamatokat és üzembe helyezéseket a Visual Studio Code (VS Code) és a [depugpy](https://github.com/microsoft/debugpy/)használatával.
+Megtudhatja, hogyan lehet interaktív módon hibakeresést végezni Azure Machine Learning kísérleteket, folyamatokat és üzembe helyezéseket a Visual Studio Code (VS Code) és a [debugpy](https://github.com/microsoft/debugpy/)használatával.
 
 ## <a name="run-and-debug-experiments-locally"></a>Kísérletek helyi futtatása és hibakeresése
 
@@ -484,7 +484,7 @@ A tároló leállításához használja a következő parancsot:
 docker stop debug
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy beállította a VS Code Remote szolgáltatást, számítási példányt használhat távoli számításként a VS Code-ból a kód interaktív hibakereséséhez. 
 

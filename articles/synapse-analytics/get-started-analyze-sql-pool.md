@@ -10,21 +10,21 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: bc16dde7d3156df08b946a15012a201054cd8e0a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147558"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592600"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Az adatelemzés dedikált SQL-készletekkel
 
 Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQL-készlettel. Ebben az oktatóanyagban a New York-i taxi-adatszolgáltatások segítségével megismerheti a dedicted SQL-készlet képességeit.
 
-## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>A New York-i taxi-szolgáltatás betöltése a SQLDB1
+## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>A New York-i taxi-szolgáltatás betöltése a SQLPOOL1
 
 1. A szinapszis Studióban navigáljon a **fejlesztés** hubhoz, majd hozzon létre új SQL-parancsfájlt.
-1. Válassza ki a "SQLDB1" készletet (az oktatóanyag [1. lépésében](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) létrehozott készletet) a parancsfájl "kapcsolódás" szakaszában.
+1. Válassza ki a "SQLPOOL1" készletet (az oktatóanyag [1. lépésében](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) létrehozott készletet) a parancsfájl "kapcsolódás" szakaszában.
 1. Írja be a következő kódot:
     ```
     CREATE TABLE [dbo].[Trip]
@@ -76,10 +76,10 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>A New York-i taxi adatai a dedikált SQL-készletben
 
 1. A szinapszis Studióban nyissa meg **az** adatközpontot.
-1. Nyissa meg a **SQLDB1**  >  **táblákat**. Ekkor több táblázat is betöltődik.
-1. Kattintson a jobb gombbal a **dbo. Utazási** táblázat és válassza az **új SQL-parancsfájl**lehetőséget, majd  >  **válassza a Top 100 sort**.
+1. Nyissa meg a **SQLPOOL1**  >  **táblákat**. Ekkor több táblázat is betöltődik.
+1. Kattintson a jobb gombbal a **dbo. Utazási** táblázat és válassza az **új SQL-parancsfájl** lehetőséget, majd  >  **válassza a Top 100 sort**.
 1. Várjon, amíg a rendszer létrehoz egy új SQL-parancsfájlt, és futtatja azt.
-1. Figyelje meg, hogy az SQL-parancsfájl felső részén a **Kapcsolódás** automatikusan a **SQLDB1**nevű SQL-készletre lesz beállítva.
+1. Figyelje meg, hogy az SQL-parancsfájl felső részén a **Kapcsolódás** automatikusan a **SQLPOOL1** nevű SQL-készletre lesz beállítva.
 1. Cserélje le az SQL-parancsfájl szövegét ezzel a kóddal, majd futtassa.
 
     ```sql

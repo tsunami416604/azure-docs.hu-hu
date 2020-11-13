@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: a864717304dacaf6cf4c77c92050827af619ed39
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: cfd28171524ada5f5feea9e18e4b88a291254e88
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736678"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616790"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -26,7 +26,7 @@ A nyelvi támogatás a beszédfelismerési szolgáltatás működésének függv
 
 A Microsoft Speech SDK és a REST API egyaránt a következő nyelveket támogatja (területi beállítások). 
 
-A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza számára ajánljuk a **hang-és emberi címkével ellátott átiratok** vagy a **kapcsolódó szövegek feltöltésével: mondatok** . A testreszabással kapcsolatos további tudnivalókért tekintse meg [a Custom Speech első lépéseivel foglalkozó](how-to-custom-speech.md)témakört.
+A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza számára ajánljuk a **hang-és emberi címkével ellátott átiratok** vagy a **kapcsolódó szövegek feltöltésével: mondatok**. A testreszabással kapcsolatos további tudnivalókért tekintse meg [a Custom Speech első lépéseivel foglalkozó](how-to-custom-speech.md)témakört.
 
 <!--
 To get the AM and ML bits:
@@ -36,7 +36,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Nyelv                          | Területi beállítás | Testreszabások                                   |
+| Nyelv                          | Területi beállítás (BCP-47) | Testreszabások                                   |
 |-----------------------------------|--------|--------------------------------------------------|
 |Arab (Bahrein), modern standard  |`ar-BH` | Nyelvi modell                                   |
 |Arab (Egyiptom)                     |`ar-EG` | Nyelvi modell                                   |
@@ -136,7 +136,7 @@ A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel val
 
 További információ a regionális elérhetőségről: [régiók](regions.md#standard-and-neural-voices).
 
-|Nyelv  | Területi beállítás           | Nem | Hang neve | Stílus támogatása |
+|Nyelv  | Területi beállítás (BCP-47)          | Nem | Hang neve | Stílus támogatása |
 |--|--|--|--|--|
 | Arab (Egyiptom) | `ar-EG` | Nő | `ar-EG-SalmaNeural` | Általános kérdések |
 | Arab (Szaúd-Arábia) | `ar-SA` | Nő | `ar-SA-ZariyahNeural` | Általános kérdések |
@@ -219,7 +219,7 @@ Ha szeretné megtudni, hogyan konfigurálhatja és módosíthatja a neurális ha
 
 Több mint 75 standard hang érhető el több mint 45 nyelven és területi beállításban, amely lehetővé teszi szöveg konvertálását a szintetizált beszédbe. További információ a regionális elérhetőségről: [régiók](regions.md#standard-and-neural-voices).
 
-| Nyelv | Területi beállítás | Nem | Hang neve |
+| Nyelv | Területi beállítás (BCP-47) | Nem | Hang neve |
 |--|--|--|--|
 | Arab (arab)  |  `ar-EG`  |  Nő  |  `ar-EG-Hoda`|
 | Arab (Szaúd-Arábia)  |  `ar-SA`  |  Férfi  |  `ar-SA-Naayf`|
@@ -356,7 +356,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | Kiswahili               | `sw`          |
 | Klingon                 | `tlh-Latn`    |
 | Klingon (plqaD)         | `tlh-Piqd`    |
-| koreai                  | `ko`          |
+| Koreai                  | `ko`          |
 | Lett                 | `lv`          |
 | Litván              | `lt`          |
 | Malgas                | `mg`          |
@@ -365,9 +365,9 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | Máltai                 | `mt`          |
 | maori                   | `mi`          |
 | marathi                 | `mr`          |
-| norvég               | `nb`          |
+| Norvég               | `nb`          |
 | perzsa                 | `fa`          |
-| lengyel                  | `pl`          |
+| Lengyel                  | `pl`          |
 | Portugál (Brazília)     | `pt-br`       |
 | Portugál (Portugália)   | `pt-pt`       |
 | pandzsábi                 | `pa`          |
@@ -386,18 +386,18 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | telugu                  | `te`          |
 | Thai                    | `th`          |
 | Tongai                  | `to`          |
-| török                 | `tr`          |
+| Török                 | `tr`          |
 | Ukrán               | `uk`          |
 | urdu                    | `ur`          |
 | Vietnámi              | `vi`          |
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="speaker-recognition"></a>Beszélőfelismerés
+## <a name="speaker-recognition"></a>Speaker Recognition
 
 A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
 
-| Nyelv | Területi beállítás | Szövegtől függő ellenőrzés | Szövegtől független ellenőrzés | Szöveg – független azonosítás |
+| Nyelv | Területi beállítás (BCP-47) | Szövegtől függő ellenőrzés | Szövegtől független ellenőrzés | Szöveg – független azonosítás |
 |----|----|----|----|----|
 |Angol (US)  |  en-US  |  igen  |  igen  |  igen |
 |Kínai (mandarin, egyszerűsített) | zh-CN     |     n/a |     igen |     igen|
@@ -407,7 +407,7 @@ A különböző Speaker Recognition API-khoz támogatott nyelveket a következő
 |Francia (Kanada)     | fr – CA     | n/a     | igen |     igen|
 |Francia (Franciaország)     | fr-FR     | n/a     | igen     | igen|
 |Német (Németország)     | de-DE     | n/a     | igen     | igen|
-|olasz | it-IT     |     n/a     | igen |     igen|
+|Olasz | it-IT     |     n/a     | igen |     igen|
 |Japán     | ja-JP | n/a     | igen     | igen|
 |Portugál (Brazília) | pt-BR |     n/a |     igen |     igen|
 |Spanyol (Mexikó)     | es-MX     | n/a |     igen |     igen|

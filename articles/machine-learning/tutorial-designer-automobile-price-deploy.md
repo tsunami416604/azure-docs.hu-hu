@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 11/13/2020
 ms.custom: designer
-ms.openlocfilehash: 31b742144bfb20af14cf6f5e95f5dfc951845ee2
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5a5d166e36b2870ceb081c1c6d2635e01ab43a4d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555515"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592549"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel
 
@@ -112,6 +112,8 @@ Az üzembe helyezés befejeződése után megtekintheti a valós idejű végpont
 1. A **részletek** lapon további információkat tekinthet meg, például a REST URI-t, az állapotot és a címkéket.
 
 1. A felhasználás **lapon** megtalálhatja a biztonsági kulcsokat, és megadhatja a hitelesítési módszereket.
+
+1. A **központi telepítési naplók** lapon megtekintheti a valós idejű végpont részletes üzembe helyezési naplóit. 
 
 További információ a webszolgáltatás használatáról: a [webszolgáltatásként üzembe helyezett modell felhasználása](how-to-consume-web-service.md)
 

@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: e223b5ae072a323ad56ed396c06580fea9b8b7ab
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 52e6c70b76b83c73059dc887eaefe8403befac13
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335247"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594232"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy Node-webalkalmazásban az Auth Code flow használatával
 
-Ebben a rövid útmutatóban egy kódrészletet fog futtatni, amely bemutatja, hogyan jelentkezhet be egy Node.js webalkalmazás a személyes fiókok, a munkahelyi fiókok és az iskolai fiókok felhasználói számára az engedélyezési kód folyamatábrájának használatával. A kód minta azt is bemutatja, hogyan szerezhet be egy hozzáférési jogkivonatot a webes API meghívásához, ebben az esetben a Microsoft Graph API-t. Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
+Ebben a rövid útmutatóban egy kód mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be Node.js webalkalmazás a felhasználók számára az engedélyezési kód folyamatával. A kód minta azt is bemutatja, hogyan szerezhet be hozzáférési tokent Microsoft Graph API meghívásához. 
+
+Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 Ez a rövid útmutató a Microsoft hitelesítési függvénytárát használja Node.jshoz (MSAL node) az engedélyezési kód folyamatával.
 
@@ -39,7 +41,7 @@ Ez a rövid útmutató a Microsoft hitelesítési függvénytárát használja N
 >
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 >
-> 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
 > 1. Válassza az [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lehetőséget.
 > 1. Válassza az **új regisztráció** lehetőséget.

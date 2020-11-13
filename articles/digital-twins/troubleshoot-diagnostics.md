@@ -5,14 +5,14 @@ description: 'Lásd: a naplózás engedélyezése a diagnosztikai beállítások
 author: baanders
 ms.author: baanders
 ms.date: 11/9/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0d775ffa1ce063c01fc6762d77201e5a4caaad87
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d988617fcaf7479c7bb3356e6ef6f87824ed23a7
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411751"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616654"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins hibaelhárítása: diagnosztika naplózása
 
@@ -77,7 +77,7 @@ Minden naplózási kategória írási, olvasási, törlési és művelet-művele
 | Írás | PUT és PATCH |
 | Olvasás | GET |
 | Törlés | DELETE |
-| Művelet | POST |
+| Műveletek | POST |
 
 Itt látható a műveletek és a megfelelő [Azure digitális Twins REST API](/rest/api/azure-digitaltwins/) a különböző kategóriákba bejelentkezett hívások részletes listája. 
 
@@ -114,7 +114,7 @@ Az API-naplók mező-és tulajdonság-leírása itt található.
 
 | Mező neve | Adattípus | Leírás |
 |-----|------|-------------|
-| `Time` | Dátum/idő | Az esemény bekövetkezett dátuma és időpontja (UTC) |
+| `Time` | DateTime | Az esemény bekövetkezett dátuma és időpontja (UTC) |
 | `ResourceID` | Sztring | Annak az erőforrásnak a Azure Resource Manager erőforrás-azonosítója, amelyben az esemény lezajlott |
 | `OperationName` | Sztring  | Az esemény során végrehajtandó művelet típusa |
 | `OperationVersion` | Sztring | Az esemény során használt API-verzió |
@@ -200,7 +200,7 @@ Ez a naplók sémája `ADTEventRoutesOperation` . Ezek a kivételekre és az Azu
 
 |Mező neve | Adattípus | Leírás |
 |-----|------|-------------|
-| `Time` | Dátum/idő | Az esemény bekövetkezett dátuma és időpontja (UTC) |
+| `Time` | DateTime | Az esemény bekövetkezett dátuma és időpontja (UTC) |
 | `ResourceId` | Sztring | Annak az erőforrásnak a Azure Resource Manager erőforrás-azonosítója, amelyben az esemény lezajlott |
 | `OperationName` | Sztring  | Az esemény során végrehajtandó művelet típusa |
 | `Category` | Sztring | A kibocsátott erőforrás típusa |

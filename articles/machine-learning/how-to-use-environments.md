@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 32748a996e0622c4b75d887aebf8a1805c5368bd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f3056c500453c2249d66a05079334851c851df33
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319081"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616620"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Hozzon létre & a szoftveres környezetek használatával Azure Machine Learning
 
@@ -114,7 +114,7 @@ Alapértelmezés szerint az újonnan létrehozott Docker-rendszerkép megjelenik
 
 #### <a name="use-a-prebuilt-docker-image"></a>Előre összeépített Docker-rendszerkép használata
 
-Alapértelmezés szerint a szolgáltatás automatikusan a Ubuntu Linux-alapú [alaplemezképek](https://github.com/Azure/AzureML-Containers)valamelyikét használja, különösen a által meghatározottak szerint `azureml.core.environment.DEFAULT_CPU_IMAGE` . Ezután telepíti a megadott, az Azure ML-környezet által meghatározott Python-csomagokat. [Egyéni Docker-alaprendszerkép](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image)is használható.
+Alapértelmezés szerint a szolgáltatás automatikusan a Ubuntu Linux-alapú [alaplemezképek](https://github.com/Azure/AzureML-Containers)valamelyikét használja, különösen a által meghatározottak szerint `azureml.core.environment.DEFAULT_CPU_IMAGE` . Ezután telepíti a megadott, az Azure ML-környezet által meghatározott Python-csomagokat. Más Azure ML CPU-és GPU-alapú rendszerképek is elérhetők a tároló- [tárházban](https://github.com/Azure/AzureML-Containers). [Egyéni Docker-alaprendszerkép](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image)is használható.
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -430,7 +430,7 @@ Töltse le a regisztrált környezetet a következő parancs használatával.
 az ml environment download -n myenv -d downloaddir
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha felügyelt számítási célt kíván használni a modell betanításához, tekintse meg az [oktatóanyag: modell](tutorial-train-models-with-aml.md)betanítása című témakört.
 * A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe a modelleket](how-to-deploy-and-where.md).

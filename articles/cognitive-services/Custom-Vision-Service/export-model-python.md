@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: af0e9cd66cf64366a6f563148fa6b075161151f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee9f49463e8e6749d29c810afaf7337cc99a98e8
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87875438"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616042"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Oktatóanyag: TensorFlow-modell futtatása Python nyelven
 
-Miután [exportálta a TensorFlow-modellt](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) a Custom Vision Service-ből, ez a rövid útmutató azt fogja bemutatni, hogyan használhatja a modellt képek helyi besorolására.
+Miután [exportálta a TensorFlow-modellt](./export-your-model.md) a Custom Vision Service-ből, ez a rövid útmutató azt fogja bemutatni, hogyan használhatja a modellt képek helyi besorolására.
 
 > [!NOTE]
 > Ez az oktatóanyag csak a képbesorolási projektekben exportált modellekre vonatkozik.

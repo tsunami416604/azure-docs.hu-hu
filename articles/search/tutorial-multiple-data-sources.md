@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a1a7e19e598980b21ee6c41f6984de38d6a6f2b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c9d9c43ae1be755ccb30fc377692257a81332ea8
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791613"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593722"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Oktatóanyag: több adatforrásból származó index a .NET SDK használatával
 
@@ -72,15 +72,15 @@ Ez a példa két kisebb adathalmazt használ, amelyek a hét kitalált szállod�
 
 1. Adja meg a **Hotel-Rooms-db** nevet. Fogadja el az alapértelmezett értékeket a többi beállításhoz.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Új adatbázis létrehozása" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Adatbázis konfigurálása" border="false":::
 
 1. Hozzon létre egy új tárolót. Használja az imént létrehozott meglévő adatbázist. Adja **meg a helyet a tároló** neveként, és használja a **/HotelId** a partíciós kulcshoz.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Új adatbázis létrehozása" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Tároló hozzáadása" border="false":::
 
 1. Válassza a **hotelek** területen található **elemek** elemet, majd kattintson az **elem feltöltése** gombra a parancssorban. Keresse meg, majd válassza ki a **cosmosdb/HotelsDataSubset_CosmosDb.js** fájlt a Project mappában.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Új adatbázis létrehozása" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Feltöltés Azure Cosmos DB gyűjteménybe" border="false":::
 
 1. A refresh (frissítés) gombbal frissítheti a Hotels gyűjteményben lévő elemek nézetét. A felsorolt hét új adatbázis-dokumentumnak kell megjelennie.
 
@@ -92,11 +92,11 @@ Ez a példa két kisebb adathalmazt használ, amelyek a hét kitalált szállod�
 
 1. [Hozzon létre egy](../storage/blobs/storage-quickstart-blobs-portal.md) " **Hotel-Rooms** " nevű BLOB-tárolót a minta szállodai szoba JSON-fájljainak tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Új adatbázis létrehozása" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Blobtároló létrehozása" border="false":::
 
 1. A tároló létrehozása után nyissa meg, majd válassza a parancssáv **feltöltés** elemét. Navigáljon a minta fájlokat tartalmazó mappához. Jelölje ki az összeset, majd kattintson a **feltöltés** elemre.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Új adatbázis létrehozása" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Fájlok feltöltése" border="false":::
 
 1. Másolja a Storage-fiók nevét és egy kapcsolati karakterláncot a **hozzáférési kulcsok** lapról a Jegyzettömbbe. Egy későbbi lépésben aappsettings.jsértékeit is **meg** kell adni.
 
@@ -112,21 +112,21 @@ A keresési szolgáltatás hitelesítéséhez szüksége lesz a szolgáltatás U
 
 1. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Új adatbázis létrehozása" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
 Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 ## <a name="2---set-up-your-environment"></a>2 – a környezet beállítása
 
-1. Indítsa el a Visual studiót, és az **eszközök** menüben válassza a **NuGet csomagkezelő** elemet, majd a **megoldáshoz tartozó NuGet-csomagokat..** . lehetőséget. 
+1. Indítsa el a Visual studiót, és az **eszközök** menüben válassza a **NuGet csomagkezelő** elemet, majd a **megoldáshoz tartozó NuGet-csomagokat..**. lehetőséget. 
 
 1. A **Tallózás** lapon keresse meg és telepítse **Azure.Search.Documents** (11,0-es vagy újabb verzió). A telepítés befejezéséhez kattintson a további párbeszédablakok lehetőségre.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Új adatbázis létrehozása" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Azure-kódtárak hozzáadása a NuGet használatával" border="false":::
 
 1. Keressen rá a **Microsoft.Extensions.Configszülő** , és **Microsoft.Extensions.Configuration.Jsa** NuGet-csomagokra, és telepítse azokat is.
 
-1. Nyissa meg a megoldás fájljának **/v11/AzureSearchMultipleDataSources.SLN** .
+1. Nyissa meg a megoldás fájljának **/v11/AzureSearchMultipleDataSources.SLN**.
 
 1. A Megoldáskezelőban szerkessze a fájl **appsettings.jsját** a kapcsolódási adatok hozzáadásához.  
 
@@ -350,7 +350,7 @@ await indexerClient.CreateOrUpdateIndexerAsync(blobIndexer);
 try
 {
     // Run the indexer.
-    await searchService.Indexers.RunAsync(cosmosDbIndexer.Name);
+    await searchService.Indexers.RunAsync(blobIndexer.Name);
 }
 catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
 {
@@ -369,7 +369,7 @@ A program futtatása után megtekintheti a feltöltött keresési indexet a port
 
 A Azure Portalban nyissa meg a keresési szolgáltatás **áttekintése** lapot, és keresse meg a **Hotel-Rooms-Sample** indexet az **indexek** listájában.
 
-  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Új adatbázis létrehozása" border="false":::
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Az Azure Cognitive Search indexek listája" border="false":::
 
 Kattintson a Hotel-Rooms-Sample index elemre a listában. Ekkor megjelenik az indexhez tartozó keresési Explorer felülete. Adjon meg egy lekérdezést egy olyan kifejezéshez, mint a "Luxury". Meg kell jelennie legalább egy dokumentumnak az eredményekben, és a dokumentumnak tartalmaznia kell a Room Objects-objektumok listáját a szobák tömbben.
 
@@ -381,7 +381,7 @@ A mintakód ellenőrzi a meglévő objektumokat, és törli vagy frissíti őket
 
 A portál segítségével indexeket, indexelő fájlokat és adatforrásokat is törölhet.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: a62133737d48a8ebf454b5fab83ef52ef2daad09
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a9dba9222816ef2cc7891ff7f803e6a7409802a4
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098433"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593450"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Image Search API használatával
 
@@ -122,7 +122,7 @@ Az `onsubmit` kezelő alapértelmezésként `false` értéket ad vissza, ami meg
 
 ![[Bing Image Search űrlap]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-A Bing Image Search API több [szűrőlekérdezési paramétert](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters) kínál a találatok szűkítéséhez és szűréséhez. Ebben az alkalmazásban a HTML-űrlap az alábbi paraméteres beállításokat használja és jeleníti meg:
+A Bing Image Search API több [szűrőlekérdezési paramétert](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters) kínál a találatok szűkítéséhez és szűréséhez. Ebben az alkalmazásban a HTML-űrlap az alábbi paraméteres beállításokat használja és jeleníti meg:
 
 | Beállítás | Leírás |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -416,6 +416,6 @@ Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak
 > [!div class="nextstepaction"]
 > [Képadatok kinyerése a Bing Image Search API használatával](tutorial-image-post.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d7d66e247c6a6240bd6fde08612b8eb770bd3b92
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b85b2d9b81e84ec6c6e09fef16c66a919aa30cd7
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737551"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616756"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: az Azure szolgáltatás emblémáinak felismerése kamerás képeken
 
@@ -34,9 +34,9 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/downloads/)
-- A Xamarin munkaterhelés a Visual studióhoz (lásd: [Xamarin telepítése](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
+- A Xamarin munkaterhelés a Visual studióhoz (lásd: [Xamarin telepítése](/xamarin/cross-platform/get-started/installation/windows))
 - IOS-vagy Android-emulátor a Visual studióhoz
-- Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (opcionális)
+- Az [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (opcionális)
 
 ## <a name="get-the-source-code"></a>A forráskód lekérése
 
@@ -94,7 +94,7 @@ Ha többet szeretne megtudni arról, hogy az alkalmazás hogyan kezeli ezeket az
 
 Az oktatóanyag Custom Vision része befejeződött. Ha futtatni szeretné az alkalmazást, a Computer Vision szolgáltatást is integrálnia kell. Az alkalmazás a Computer Vision Text felismerése funkciót használja az embléma észlelési folyamatának kiegészítéséhez. Az Azure-emblémák a megjelenésük alapján *vagy* a közelében kinyomtatott szöveg alapján felismerhetők. A Custom Vision-modellekkel ellentétben a rendszer bizonyos műveleteket hajt végre a képeken vagy videókon, Computer Vision.
 
-Fizessen elő a Computer Vision szolgáltatásra a kulcs és végpont URL-címének lekéréséhez. A lépéssel kapcsolatos segítségért lásd: [előfizetés-kulcsok beszerzése](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe).
+Fizessen elő a Computer Vision szolgáltatásra a kulcs és végpont URL-címének lekéréséhez. A lépéssel kapcsolatos segítségért lásd: [előfizetés-kulcsok beszerzése](../cognitive-services-apis-create-account.md?tabs=singleservice%2Cwindows).
 
 ![A Azure Portal Computer Vision szolgáltatása a kiválasztott rövid útmutató menüjével. A kulcsok hivatkozását a rendszer az API-végpont URL-címének megfelelően ismerteti](media/azure-logo-tutorial/comvis-keys.png)
 
@@ -104,7 +104,7 @@ Ezután nyissa meg a *Source\VisualProvision\AppSettings.cs* fájlt, és töltse
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Az alkalmazáshoz egy Azure egyszerű szolgáltatás fiókra van szükség a szolgáltatások Azure-előfizetéshez való telepítéséhez. Az egyszerű szolgáltatásnév lehetővé teszi, hogy az Azure szerepköralapú hozzáférés-vezérlés használatával meghatározott engedélyeket delegáljon egy alkalmazáshoz. További tudnivalókat az [egyszerű szolgáltatásokról szóló útmutatóban](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals)talál.
+Az alkalmazáshoz egy Azure egyszerű szolgáltatás fiókra van szükség a szolgáltatások Azure-előfizetéshez való telepítéséhez. Az egyszerű szolgáltatásnév lehetővé teszi, hogy az Azure szerepköralapú hozzáférés-vezérlés használatával meghatározott engedélyeket delegáljon egy alkalmazáshoz. További tudnivalókat az [egyszerű szolgáltatásokról szóló útmutatóban](/azure-stack/operator/azure-stack-create-service-principals)talál.
 
 Az itt látható módon létrehozhat egy egyszerű szolgáltatásnevet Azure Cloud Shell vagy az Azure CLI használatával. A kezdéshez jelentkezzen be, és válassza ki a használni kívánt előfizetést.
 
@@ -172,13 +172,13 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
     ![Egy alkalmazás képernyője, amely a központi telepítési régió és az erőforráscsoport mezőit jeleníti meg](media/azure-logo-tutorial/app-deployment-options.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha követte a forgatókönyv összes lépését, és az alkalmazást használta az Azure-szolgáltatások üzembe helyezéséhez a fiókjában, lépjen a [Azure Portal](https://ms.portal.azure.com/). Itt szakítsa meg a használni nem kívánt szolgáltatásokat.
 
 Ha azt tervezi, hogy létrehoz egy saját objektum-észlelési projektet a Custom Vision, akkor érdemes törölni az oktatóanyagban létrehozott embléma-észlelési projektet. A Custom Vision ingyenes előfizetése csak két projektet tesz lehetővé. Az embléma-észlelési projekt törléséhez nyissa meg a [Custom Vision webhelyén](https://customvision.ai)a **projektek** elemet, majd válassza a Kuka ikont az **új projekt** területen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy teljes funkcionalitású Xamarin. Forms-alkalmazást állít be és vizsgál meg, amely a Custom Vision szolgáltatást használja a mobil kamera-lemezképekben található emblémák észlelésére. Következő lépésként Ismerkedjen meg a Custom Vision-modell létrehozásával kapcsolatos ajánlott eljárásokkal, hogy a saját alkalmazásaihoz hozzon létre egyet, így hatékony és pontos lehet.
 

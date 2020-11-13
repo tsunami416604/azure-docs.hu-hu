@@ -1,18 +1,18 @@
 ---
-title: Az erőforrás állapotának megértése
+title: Az erőforrás állapotának értelmezése
 titleSuffix: Azure Digital Twins
 description: 'Lásd: a Azure Resource Health használata az Azure Digital Twins-példány állapotának vizsgálatához.'
 author: baanders
 ms.author: baanders
 ms.date: 10/6/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9c31345a4ddaf9ac2b75204172dbc47606cb07db
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b64ee4d1538276bbbcab3fe09054f399ad20c162
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681609"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616549"
 ---
 # <a name="troubleshooting-azure-digital-twins-resource-health"></a>Az Azure Digital Twins hibaelhárítása: erőforrás állapota
 
@@ -36,7 +36,7 @@ A fenti képen ez a példány *elérhetőként* jelenik meg, és az elmúlt kile
 
 Emellett további információkat olvashat a különböző típusú Azure-erőforrások erőforrás-állapotáról az erőforrás- [*típusok és az állapot-ellenőrzések az Azure Resource Health*](../service-health/resource-health-checks-resource-types.md)szolgáltatásban című témakörben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Digital Twins-példány figyelésének egyéb módjairól az alábbi cikkekben olvashat:
 * [*Hibaelhárítás: mérőszámok megtekintése Azure Monitor*](troubleshoot-metrics.md)

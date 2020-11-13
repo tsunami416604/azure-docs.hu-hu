@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/28/2020
+ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 8f73f2a86e97dad1d6a0b0f05c54f3f896b4b49d
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b670ec3cee2ebd1cc98ea2e04fb2b0dfd90e4e1a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579215"
+ms.locfileid: "94594215"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el
 
@@ -52,8 +52,8 @@ A következő táblázat azt mutatja be, hogy az egyes Blobok tárolási funkci�
 |Egyéni tartományok|Még nem támogatott|Még nem támogatott|[Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)|
 |Titkosítási hatókörök|Még nem támogatott|Még nem támogatott|[Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](encryption-scope-manage.md)|
 |Csatorna módosítása|Még nem támogatott|Még nem támogatott|[A hírcsatornák támogatásának módosítása az Azure Blob Storage-ban](storage-blob-change-feed.md)|
-|Objektumreplikáció|Még nem támogatott|Még nem támogatott|[Objektumok replikálásának konfigurálása a blokk Blobok számára (előzetes verzió)](object-replication-configure.md)|
-|BLOB verziószámozása|Még nem támogatott|Még nem támogatott|[BLOB verziószámozásának engedélyezése és kezelése (előzetes verzió)](versioning-enable.md)|
+|Objektumreplikáció|Még nem támogatott|Még nem támogatott|[Objektumok replikálásának konfigurálása a blokkos blobokhoz](object-replication-configure.md)|
+|BLOB verziószámozása|Még nem támogatott|Még nem támogatott|[BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)|
 
 <div id="blob-container-ACL"><sup>1</sup> a tároló gyökérkönyvtárában állíthatja be az ACL-eket, a tárolót azonban nem.</div><br>
 

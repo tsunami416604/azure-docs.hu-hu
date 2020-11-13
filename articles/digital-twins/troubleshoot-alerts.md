@@ -5,14 +5,14 @@ description: Ismerje meg, hogyan engedélyezheti a riasztásokat az Azure-beli d
 author: baanders
 ms.author: baanders
 ms.date: 7/28/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ae7e85624f5da06603ddc2675787b84203bc987b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 057a1b08095a71e2fca6119f5b63bfdc787eea88
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087208"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616602"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Azure Digital Twins hibaelhárítása: riasztások
 
@@ -44,19 +44,19 @@ A mezők kitöltését bemutató útmutató a [*Microsoft Azure riasztások átt
 
 Íme egy részlet a *Select Condition (feltétel kiválasztása* ) folyamatból, amely bemutatja, hogy milyen típusú riasztások érhetők el az Azure digitális Twins szolgáltatásban. Ezen az oldalon szűrheti a jel típusát, és kiválaszthatja a listából a kívánt jeleket.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="Képernyőfelvétel: a riasztási szabály létrehozása lap a hatókör, a feltétel, a műveleti csoport és a riasztási szabály részleteinek részeivel":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="Képernyőfelvétel: az első a jel logikai beállítása oldal. A jel típusa mezőben a mérőszámok vagy a tevékenységek naplóinak kiválasztására, valamint a kiválasztható mérőszámok listájára van lehetőség.":::
 
 A jel kiválasztása után a rendszer kérni fogja a riasztás logikájának konfigurálását. Szűrheti a dimenziót, megadhatja a riasztás küszöbértékét, és beállíthatja a feltétel ellenőrzésének gyakoriságát. Íme egy példa arra, hogy mikor kell beállítani a riasztást, ha az átlagos útválasztási hiba arányának mérőszáma 5% fölé esik.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="Képernyőfelvétel: a riasztási szabály létrehozása lap a hatókör, a feltétel, a műveleti csoport és a riasztási szabály részleteinek részeivel":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="A második, a jel logikai oldalának konfigurálását bemutató képernyőkép. A lapon láthatók a metrikák előzményei, egy olyan dimenzióval szűrhetők, mint a Event Grid műveletek, valamint egy szakasz a riasztási logika meghatározásához, például az &quot;átlag nagyobb, mint 5&quot;":::
 
 ### <a name="verify-success"></a>Sikeres ellenőrzés
 
 A riasztások beállítása után a rendszer megjeleníti a példány *riasztások* lapját.
  
-:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Képernyőfelvétel: a riasztási szabály létrehozása lap a hatókör, a feltétel, a műveleti csoport és a riasztási szabály részleteinek részeivel" lightbox="media/troubleshoot-alerts/alerts-post.png":::
+:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Képernyőfelvétel: a riasztások oldal és a hozzáadandó gomb. Egy riasztás van konfigurálva" lightbox="media/troubleshoot-alerts/alerts-post.png":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Monitor riasztásokkal kapcsolatos további információkért lásd: [*Microsoft Azure riasztások áttekintése*](../azure-monitor/platform/alerts-overview.md).
 * További információ az Azure digitális Twins metrikáinak használatáról [*: a metrikák megtekintése Azure Monitorsal*](troubleshoot-metrics.md).

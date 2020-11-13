@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: caec9b802bb347333dd861ebe499f72249d75aa2
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e64f4ab31aed5c4c3e70ef10faf2049027525014
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634777"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593645"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Másolási tevékenység hibatűrése az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -27,7 +27,7 @@ ms.locfileid: "92634777"
 
 Amikor Adatmásolást végez a forrásról a célhelyre, Azure Data Factory másolási tevékenység bizonyos szintű hibatűrést biztosít, hogy megakadályozza az adatáthelyezési hibák megszakadását. Tegyük fel például, hogy több millió sort másol a forrásról a célhelyre, ahol a céladatbázis egy elsődleges kulcsát hozta létre, de a forrásadatbázis nem rendelkezik meghatározott elsődleges kulcsokkal. Ha a duplikált sorokat a forrásról a célhelyre másolja, akkor a célként megadott adatbázis PK-megsértési hibáját fogja érinteni. A másolási tevékenység jelenleg két módszert kínál az ilyen hibák kezelésére: 
 - A másolási tevékenységet a hiba előfordulását követően is megszakíthatja. 
-- Továbbra is másolhatja a többit, ha engedélyezi a hibatűrést a nem kompatibilis adatok kihagyásához. Például ugorja át a duplikált sort ebben az esetben. A kihagyott adatok a másolási tevékenységen belüli munkamenet-napló engedélyezésével is bejelentkezhetnek. 
+- Továbbra is másolhatja a többit, ha engedélyezi a hibatűrést a nem kompatibilis adatok kihagyásához. Például ugorja át a duplikált sort ebben az esetben. A kihagyott adatok a másolási tevékenységen belüli munkamenet-napló engedélyezésével is bejelentkezhetnek. További részletekért tekintse meg a [munkamenet-napló a másolási tevékenységben](copy-activity-log.md) című témakört.
 
 ## <a name="copying-binary-files"></a>Bináris fájlok másolása 
 
@@ -61,13 +61,20 @@ Ha bináris fájlokat másol a Storage Stores között, a következő módon eng
         "dataInconsistency": true 
     }, 
     "validateDataConsistency": true, 
-    "logStorageSettings": { 
-        "linkedServiceName": { 
-            "referenceName": "ADLSGen2", 
-            "type": "LinkedServiceReference" 
-            }, 
-        "path": "sessionlog/" 
-     } 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {            
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
+    }
 } 
 ```
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
@@ -76,7 +83,7 @@ skipErrorFile | Az adatáthelyezés során kihagyni kívánt hibák típusait me
 fileMissing | A skipErrorFile tulajdonság táska egyik kulcs-érték párja határozza meg, hogy szeretné-e kihagyni a fájlokat, amelyeket más alkalmazások törölnek, amikor az ADF-et időközben másolja. <br/> -True (igaz): a többi alkalmazás által törölt fájlok kihagyásával szeretné átmásolni a többit. <br/> -False (hamis): a másolási tevékenységet szeretné megszakítani, ha a fájlok törlése a forrás-áruházból történik az adatáthelyezés közepén. <br/>Ügyeljen arra, hogy ez a tulajdonság a True (igaz) értékre van beállítva. | True (alapértelmezett) <br/>Hamis | Nem
 fileForbidden | A skipErrorFile tulajdonság táska egyik kulcs-érték párokkal határozható meg, hogy ki szeretné-e hagyni az adott fájlokat, ha a fájlok vagy mappák ACL-jei magasabb jogosultsági szintet igényelnek, mint az ADF-ben konfigurált kapcsolatok. <br/> -True (igaz): a fájlok kihagyásával szeretné átmásolni a többit. <br/> -False (hamis): a másolási tevékenységet a mappák vagy fájlok engedélyeinek lekérése után szeretné megszakítani. | Igaz <br/>False (alapértelmezett) | Nem
 dataInconsistency | A skipErrorFile tulajdonság táska egyik kulcs-érték párja, amely meghatározza, hogy ki szeretné-e hagyni a forrás-és a cél-tároló közötti inkonzisztens adatmennyiséget. <br/> -True (igaz): az inkonzisztens adatok kihagyásával szeretné átmásolni a REST-et. <br/> -False (hamis): a másolási tevékenységet szeretné megszakítani, ha a rendszer inkonzisztens adathalmazt talált. <br/>Ügyeljen arra, hogy ez a tulajdonság csak akkor érvényes, ha a validateDataConsistency értéke TRUE (igaz). | Igaz <br/>False (alapértelmezett) | Nem
-logStorageSettings  | A kihagyott objektumok nevének naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem
+logSettings  | A kihagyott objektumok nevének naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem
 linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása a munkamenet naplófájljainak tárolására. | Egy `AzureBlobStorage` vagy `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájl tárolására használt példányra hivatkozik. | Nem
 path | A naplófájlok elérési útja. | A naplófájlok tárolásához használt elérési út megadása. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
@@ -108,7 +115,7 @@ Lekérheti az olvasási, írásos és kihagyott fájlok számát az egyes másol
             "filesWritten": 1, 
             "filesSkipped": 2, 
             "throughput": 297,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "dataConsistencyVerification": 
            { 
                 "VerificationResult": "Verified", 
@@ -146,15 +153,15 @@ A fenti naplóból megtekintheti, bigfile.csv ki lett hagyva, mert egy másik al
 ### <a name="supported-scenarios"></a>Támogatott esetek
 A másolási tevékenység három olyan forgatókönyvet támogat, amelyek nem kompatibilis táblázatos adatok észlelésére, kihagyására és naplózására alkalmasak:
 
-- Nem **kompatibilis a forrás adattípusa és a fogadó natív típusa között** . 
+- Nem **kompatibilis a forrás adattípusa és a fogadó natív típusa között**. 
 
     Példa: adatok másolása CSV-fájlból a blob Storage-ból egy SQL Database-be egy olyan séma-definícióval, amely három INT típusú oszlopot tartalmaz. A numerikus adatértékeket tartalmazó CSV-fájlok sorai, például az 123 456 789-es sorok sikeres másolása a fogadó tárolóba. Azonban a nem numerikus értékeket tartalmazó sorok, például az 123 456, az ABC nem kompatibilisként és kimarad.
 
-- A **forrás és a fogadó közötti oszlopok száma nem egyezik** .
+- A **forrás és a fogadó közötti oszlopok száma nem egyezik**.
 
     Például: adatok másolása egy CSV-fájlból a blob Storage-ban egy SQL Database-be olyan séma-definícióval, amely hat oszlopot tartalmaz. A hat oszlopot tartalmazó CSV-fájl sorainak másolása sikeresen megtörtént a fogadó tárolóba. A több mint hat oszlopot tartalmazó CSV-fájlok nem kompatibilisként vannak észlelve, és kimaradnak.
 
-- **Az elsődleges kulcs megsértése SQL Server/Azure SQL Database/Azure Cosmos db írásakor** .
+- **Az elsődleges kulcs megsértése SQL Server/Azure SQL Database/Azure Cosmos db írásakor**.
 
     Például: adatok másolása egy SQL-kiszolgálóról egy SQL-adatbázisba. Elsődleges kulcs van definiálva a fogadó SQL-adatbázisban, de nincs ilyen elsődleges kulcs definiálva a forrás SQL-kiszolgálón. A forrásban található duplikált sorok nem másolhatók a fogadóba. A másolási tevékenység csak a forrásadatok első sorát másolja a fogadóba. A duplikált elsődleges kulcs értékét tartalmazó következő forrásfájlokat inkompatibilisként észleli a rendszer, és kihagyja.
 
@@ -175,12 +182,19 @@ A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok m�
         "type": "AzureSqlSink" 
     }, 
     "enableSkipIncompatibleRow": true, 
-    "logStorageSettings": { 
-    "linkedServiceName": { 
-        "referenceName": "ADLSGen2", 
-        "type": "LinkedServiceReference" 
-        }, 
-    "path": "sessionlog/" 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {            
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
     } 
 }, 
 ```
@@ -188,7 +202,7 @@ A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok m�
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | Meghatározza, hogy a nem kompatibilis sorok kihagyása a másolás során vagy sem. | Igaz<br/>False (alapértelmezett) | Nem
-logStorageSettings | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem
+logSettings | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem
 linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy `AzureBlobStorage` vagy `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájl tárolására használt példányra hivatkozik. | Nem
 path | A kihagyott sorokat tartalmazó naplófájlok elérési útja. | Itt adhatja meg a nem kompatibilis adatfájlok naplózásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
@@ -203,7 +217,7 @@ A másolási tevékenység futtatása után a másolási tevékenység kimeneté
             "rowsSkipped": 2,
             "copyDuration": 16,
             "throughput": 0.01,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "errors": []
         },
 

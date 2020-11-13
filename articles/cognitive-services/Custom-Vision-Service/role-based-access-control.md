@@ -10,27 +10,27 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 096946a1a63c0826381875cd3ce4eaf0129a85df
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d265b6698a87c1c651dff1413cf48dd4984cd606
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146377"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616892"
 ---
 # <a name="azure-role-based-access-control"></a>Azure-beli szerepköralapú hozzáférés-vezérlés
 
-Custom Vision támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC), az Azure-erőforrásokhoz való egyéni hozzáférés kezelésére szolgáló engedélyezési rendszert. Az Azure RBAC segítségével különböző csoporttagokat rendelhet hozzá a Custom Vision projektjeihez. Az Azure RBAC kapcsolatos további információkért tekintse meg az [Azure RBAC dokumentációját](https://docs.microsoft.com/azure/role-based-access-control/).
+Custom Vision támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC), az Azure-erőforrásokhoz való egyéni hozzáférés kezelésére szolgáló engedélyezési rendszert. Az Azure RBAC segítségével különböző csoporttagokat rendelhet hozzá a Custom Vision projektjeihez. Az Azure RBAC kapcsolatos további információkért tekintse meg az [Azure RBAC dokumentációját](../../role-based-access-control/index.yml).
 
 ## <a name="add-role-assignment-to-custom-vision-resource"></a>Szerepkör-hozzárendelés hozzáadása Custom Vision erőforráshoz
 
 Az Azure-RBAC hozzárendelhető egy Custom Vision erőforráshoz. Az Azure-erőforrásokhoz való hozzáférés biztosításához hozzá kell adnia egy szerepkör-hozzárendelést.
 1. Az [Azure Portalon](https://ms.portal.azure.com/) válassza a **Minden szolgáltatás** elemet. 
-1. Ezután válassza ki a **Cognitive Services**, és navigáljon az adott Custom Vision képzési erőforráshoz.
+1. Ezután válassza ki a **Cognitive Services** , és navigáljon az adott Custom Vision képzési erőforráshoz.
    > [!NOTE]
    > Az Azure-RBAC a teljes erőforráscsoport, előfizetések és felügyeleti csoportok számára is beállíthatja. Ehhez válassza ki a kívánt hatóköri szintet, majd navigáljon a kívánt elemhez (például válassza az **erőforráscsoportok** lehetőséget, majd kattintson a át a kívánt erőforrás-csoportra).
 1. A bal oldali navigációs ablaktáblán válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
 1. Válassza ki a **szerepkör-hozzárendelések** lapot a hatókörhöz tartozó szerepkör-hozzárendelések megtekintéséhez.
-1. Válassza a **Hozzáadás**  ->  **szerepkör-hozzárendelés hozzáadása**elemet.
+1. Válassza a **Hozzáadás**  ->  **szerepkör-hozzárendelés hozzáadása** elemet.
 1. A **szerepkör** legördülő listában válassza ki a hozzáadni kívánt szerepkört.
 1. A **Select (kiválasztás** ) listán válasszon ki egy felhasználót, csoportot, szolgáltatásnevet vagy felügyelt identitást. Ha nem látja a rendszerbiztonsági tag elemet a listában, beírhatja a kiválasztási mezőt a megjelenítendő nevek, e-mail-címek és objektumazonosítók kereséséhez.
 1. A szerepkör hozzárendeléséhez válassza a **Mentés** lehetőséget.

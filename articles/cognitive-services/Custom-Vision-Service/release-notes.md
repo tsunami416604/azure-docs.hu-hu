@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
-ms.openlocfilehash: f7259fe486a473f994d7795de5926b86717bb1b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccf742e5ff612816cae1056ef7bf0e64fc9dbb5b
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391706"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616467"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service kibocsátási megjegyzések
 
@@ -41,7 +41,7 @@ ms.locfileid: "85391706"
 
 - A Custom Vision Service általánosan elérhetővé tette az Azure-ban!
 - Fejlett betanítási funkció új gépi tanulási háttérrel a jobb teljesítmény érdekében, különösen a kihívást jelentő adatkészletek és a részletes besorolás tekintetében. A speciális betanítással megadhatja a betanítási és a Custom Vision számítási idő költségvetést, amely a legjobb képzési és bővítési beállítások kipróbálását is lehetővé teszi. A gyors iterációk esetében továbbra is használhatja a meglévő gyors képzést.
-- 3,0 API-k bevezetése. Az előzetes verziójú 3,0 API-k az 2019-es október 1-én elavultak. Az első lépésekhez a [.net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial), a [Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial), a [Node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial), a [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)vagy a [Go](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) dokumentációjában találhat példákat.
+- 3,0 API-k bevezetése. Az előzetes verziójú 3,0 API-k az 2019-es október 1-én elavultak. Az első lépésekhez a [.net](./quickstarts/image-classification.md), a [Python](./quickstarts/image-classification.md), a [Node](./quickstarts/image-classification.md), a [Java](./quickstarts/image-classification.md)vagy a [Go](./quickstarts/image-classification.md) dokumentációjában találhat példákat.
 - Az "alapértelmezett iterációk" helyébe a 3,0 API-k közzétételi/visszavonási lehetőségeit cserélték.
 - Új modell-exportálási célok lettek hozzáadva. A Docker export frissítve lett a következőhöz: málna PI 3. Az exportálási támogatás hozzá lett adva a [jövőkép AI fejlesztői csomaghoz.](https://visionaidevkit.com/)
 - Megnövelt számú címke/projekt – 500 a S0 szinten. Nagyobb számú lemezkép projektenként és 100 000 a S0 szinten.

@@ -8,17 +8,19 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5106e1089e2353d2db884977eb51a4fd2717b99
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 85c9111b0b16667e847aaf70d746e87fe524ef87
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506175"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592923"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
+
+A videó feltöltése után Video Indexer (opcionálisan) kódolja a videót (a cikkben ismertetett módon). A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőség használata esetén létre kell hoznia egy Video Indexer-fiókot, amely [össze van kapcsolva az Azure-előfizetésével és egy Azure Media Services-fiókkal](connect-to-azure.md). Az indexelt percek megfizetése után további információért lásd a [Media Services díjszabását](https://azure.microsoft.com/pricing/details/media-services/).
 
 Amikor videókat tölt fel a Video Indexer API-val, az alábbi feltöltési lehetőségek állnak rendelkezésére: 
 
@@ -26,34 +28,10 @@ Amikor videókat tölt fel a Video Indexer API-val, az alábbi feltöltési lehe
 * a videofájl elküldése byte-tömbként a kérelem törzsében
 * A meglévő Azure Media Services-objektum használata az [objektumazonosító](../latest/assets-concept.md) megadásával (csak a fizetős fiókokban támogatott).
 
-A videó feltöltése után Video Indexer (opcionálisan) kódolja a videót (a cikkben ismertetett módon). A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőség használata esetén létre kell hoznia egy Video Indexer-fiókot, amely [össze van kapcsolva az Azure-előfizetésével és egy Azure Media Services-fiókkal](connect-to-azure.md). Az indexelt percek megfizetése után további információért lásd a [Media Services díjszabását](https://azure.microsoft.com/pricing/details/media-services/).
-
 A cikk bemutatja, hogyan tölthet fel és indexelheti a videókat a következő beállításokkal:
 
-* [A Video Indexer webhely](#website) 
-* [A Video Indexer API-k](#apis)
-
-## <a name="uploading-considerations-and-limitations"></a>A feltöltéssel kapcsolatos megfontolandó szempontok és korlátozások
- 
-- A videó nevének hossza nem haladhatja meg a 80 karaktert.
-- A videó URL-cím alapján történő feltöltésekor (ez az előnyben részesített megoldás) a végpontot a TLS 1.2-es (vagy újabb) verziójával kell védeni.
-- Az URL-címről való feltöltés használata esetén a feltöltött videó mérete legfeljebb 30 GB lehet.
-- A kérés URL-címének hossza legfeljebb 6144 karakter lehet, amelyben a lekérdezési sztring URL-címe legfeljebb 4096 karakter hosszúságú lehet.
-- A bájttömb használata esetén a feltöltött videó mérete legfeljebb 2 GB lehet.
-- A bájttömbként történő küldés időkorlátja 30 perc.
-- A paraméterben megadott URL-címet `videoURL` kódolni kell.
-- A Media Services-objektumok indexelésére az URL-címből történő indexeléssel megegyező korlátozások vonatkoznak.
-- A Video Indexerben egy adott fájlra 4 órás korlát érvényes.
-- Az URL-címnek elérhetőnek kell lennie (például nyilvános URL-nek kell lennie). 
-
-    Ha az URL-cím magánjellegű, a hozzáférési jogkivonatot meg kell adni a kérésben.
-- Az URL-címnek érvényes médiafájlra kell mutatnia, nem pedig egy weboldalra, például egy hivatkozásra az `www.youtube.com` oldalra.
-- Fizetős fiókban percenként legfeljebb 50 videót tölthet fel, próbaverziós fiókban pedig percenként legfeljebb 5 videót.
-
-> [!Tip]
-> Javasoljuk, hogy a .NET-keretrendszer 4.6.2-es vagy újabb verzióját használja, mivel a régebbi verziók nem a TLS 1.2-t használják alapértelmezés szerint.
->
-> Ha régebbi verziót kell használnia, adjon hozzá egy sort a kódban a REST API-hívás indítása előtt:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+* [A Video Indexer webhely](#upload-and-index-a-video-using-the-video-indexer-website) 
+* [A Video Indexer API-k](#upload-and-index-with-api)
 
 ## <a name="supported-file-formats-for-video-indexer"></a>A Video Indexer támogatott fájlformátumai
 
@@ -66,7 +44,7 @@ A Video Indexer használatával használható fájlformátumok listáját a [bem
 - Bármikor törölheti a videó-és hangfájlokat, valamint a belőlük kinyert metaadatokat és elemzéseket Video Indexer alapján. Ha töröl egy fájlt a Video Indexer, a fájl és a hozzá tartozó metaadatok és az adatok véglegesen törlődnek a Video Indexerból. Ha azonban végrehajtotta saját biztonsági mentési megoldását az Azure Storage-ban, a fájl az Azure Storage-ban marad.
 - A videók perzisztencia megegyeznek, függetlenül attól, hogy a feltöltés készen áll-e a Video Indexer webhely vagy a feltöltési API használatával.
    
-## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>Videó feltöltése és indexelése a Video Indexer webhelyén
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a>Videó feltöltése és indexelése a Video Indexer webhelyén
 
 > [!NOTE]
 > A videó nevének hossza nem haladhatja meg a 80 karaktert.
@@ -82,7 +60,7 @@ A Video Indexer használatával használható fájlformátumok listáját a [bem
     > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="A feltöltés állapota":::
 1. A Video Indexer elemzése után egy e-mailt fog kapni a videóra mutató hivatkozással, és egy rövid leírást arról, hogy mi található a videóban. Például: személyek, témák, OCR-ek.
 
-## <a name="upload-and-index-with-api"></a><a name="apis"></a>Feltöltés és indexelés API-val
+## <a name="upload-and-index-with-api"></a>Feltöltés és indexelés API-val
 
 A [videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API-val feltöltheti és indexelheti a videókat egy URL-cím alapján. Az alábbi mintakód tartalmazza a megjegyzésből vett kódot, amely bemutatja, hogyan tölthető fel a bájtok tömbje. 
 
@@ -364,6 +342,28 @@ A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi 
 |409|VIDEO_INDEXING_IN_PROGRESS|Ugyanannak a videónak a feldolgozása már folyamatban van az adott fiókban.|
 |400|VIDEO_ALREADY_FAILED|Ugyanannak a videónak a feldolgozása már meghiúsult az adott fiókban 2 órán belül. Az API-ügyfeleknek legalább 2 órát várniuk kell a videó ismételt feltöltése előtt.|
 |429||A próbaverziós fiókok percenként 5 feltöltést vehetnek igénybe. A fizetős fiókok percenként 50 feltöltést engedélyeznek.|
+
+## <a name="uploading-considerations-and-limitations"></a>A feltöltéssel kapcsolatos megfontolandó szempontok és korlátozások
+ 
+- A videó nevének hossza nem haladhatja meg a 80 karaktert.
+- A videó URL-cím alapján történő feltöltésekor (ez az előnyben részesített megoldás) a végpontot a TLS 1.2-es (vagy újabb) verziójával kell védeni.
+- Az URL-címről való feltöltés használata esetén a feltöltött videó mérete legfeljebb 30 GB lehet.
+- A kérés URL-címének hossza legfeljebb 6144 karakter lehet, amelyben a lekérdezési sztring URL-címe legfeljebb 4096 karakter hosszúságú lehet.
+- A bájttömb használata esetén a feltöltött videó mérete legfeljebb 2 GB lehet.
+- A bájttömbként történő küldés időkorlátja 30 perc.
+- A paraméterben megadott URL-címet `videoURL` kódolni kell.
+- A Media Services-objektumok indexelésére az URL-címből történő indexeléssel megegyező korlátozások vonatkoznak.
+- A Video Indexerben egy adott fájlra 4 órás korlát érvényes.
+- Az URL-címnek elérhetőnek kell lennie (például nyilvános URL-nek kell lennie). 
+
+    Ha az URL-cím magánjellegű, a hozzáférési jogkivonatot meg kell adni a kérésben.
+- Az URL-címnek érvényes médiafájlra kell mutatnia, nem pedig egy weboldalra, például egy hivatkozásra az `www.youtube.com` oldalra.
+- Fizetős fiókban percenként legfeljebb 50 videót tölthet fel, próbaverziós fiókban pedig percenként legfeljebb 5 videót.
+
+> [!Tip]
+> Javasoljuk, hogy a .NET-keretrendszer 4.6.2-es vagy újabb verzióját használja, mivel a régebbi verziók nem a TLS 1.2-t használják alapértelmezés szerint.
+>
+> Ha régebbi verziót kell használnia, adjon hozzá egy sort a kódban a REST API-hívás indítása előtt:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
 ## <a name="next-steps"></a>Következő lépések
 

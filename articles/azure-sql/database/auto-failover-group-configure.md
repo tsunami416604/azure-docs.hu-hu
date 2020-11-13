@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 08/14/2019
-ms.openlocfilehash: 98f2a8fb0ce48dab0e1e5f7610d73d55526969eb
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 09bb7cb2344e3e708a64842916e6e483136da3bb
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675107"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594283"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -509,7 +509,7 @@ Hozzon létre kapcsolatokat a két átjáró között a Azure Portal használat�
 1. Válassza az **erőforrás létrehozása** lehetőséget a [Azure Portal](https://portal.azure.com).
 1. Írja be `connection` a keresőmezőbe, majd nyomja le az ENTER billentyűt a kereséshez, amely a Microsoft által közzétett **kapcsolódási** erőforrásra viszi.
 1. Válassza a **Létrehozás** lehetőséget a kapcsolódás létrehozásához.
-1. Az **alapvető beállítások** lapon válassza ki a következő értékeket, majd kattintson az **OK gombra** .
+1. Az **alapvető beállítások** lapon válassza ki a következő értékeket, majd kattintson az **OK gombra**.
     1. Válassza `VNet-to-VNet` a **kapcsolattípus** lehetőséget.
     1. Válassza ki előfizetését a legördülő listából.
     1. Válassza ki a felügyelt példányhoz tartozó erőforráscsoportot a legördülő menüből.

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 2a22174fb23a4f0f7bebd58e276a6778e986ce9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fabfdce72202f79e2ac5bad08d124df7ce2de542
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322917"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592583"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>A Storage-fiókban tárolt adatelemzés
 
@@ -36,16 +36,16 @@ Futtassa a következő kódot egy jegyzetfüzetben. Létrehoz egy CSV-fájlt és
 %%pyspark
 df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
 df = df.repartition(1) # This ensure we'll get a single file during write()
-df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats.csv")
-df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
+df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats_csvformat")
+df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 ```
 
 ### <a name="analyze-data-in-a-storage-account"></a>A Storage-fiókban tárolt adatelemzés
 
 1. A szinapszis Studióban nyissa meg **az** adatközpontot, majd kattintson a **csatolt** elemre.
 1. Nyissa meg a **Storage accounts**  >  **sajátmunkaterület (Primary-contosolake)**.
-1. Válassza a **felhasználók (elsődleges)** lehetőséget. Ekkor megjelenik a **NYCTaxi** mappa. A belsejében két, **PassengerCountStats.csv** és **PassengerCountStats. Parque** nevű mappát kell látnia.
-1. Nyissa meg a **PassengerCountStats. Parque** mappát. A (z) rendszerben egy, a következőhöz hasonló nevű parketta-fájl jelenik meg: `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
+1. Válassza a **felhasználók (elsődleges)** lehetőséget. Ekkor megjelenik a **NYCTaxi** mappa. A belsejében két, **PassengerCountStats_csvformat** és **PassengerCountStats_parquetformat** nevű mappát kell látnia.
+1. Nyissa meg a **PassengerCountStats_parquetformat** mappát. A (z) rendszerben egy, a következőhöz hasonló nevű parketta-fájl jelenik meg: `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
 1. Kattintson a jobb gombbal a **. parketta** elemre, majd válassza az **új jegyzetfüzet** lehetőséget. Létrehoz egy jegyzetfüzetet, amely a következőhöz hasonló cellával rendelkezik:
 
     ```py

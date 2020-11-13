@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 1c08ba51b815386783c3412e9238d2e96da03ff9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.date: 11/13/2020
+ms.openlocfilehash: 92ef5b372113d0d226335b8ec464a75a5a684bc3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94377679"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592906"
 ---
 # <a name="one-vs-one-multiclass"></a>Egy-vs-One többosztályos
 
@@ -31,6 +31,8 @@ Ez a modul megvalósítja az egy-az-egyhez metódust, amelyben a rendszer egy bi
 Lényegében a modul az egyes modellek együttesét hozza létre, majd egyesíti az eredményeket, hogy egyetlen modellt hozzon létre, amely minden osztályt előre jelez. Bármely bináris osztályozó használható egy-az-egyhez modell alapjaként.  
 
 Tegyük fel például, hogy konfigurál egy [kétosztályos támogatást a vektoros gépekhez](two-class-support-vector-machine.md) , és úgy adja meg, hogy az egy-egy többosztályos modul bemenete legyen. A modul kétosztályos támogatást hoz létre a kimeneti osztály összes tagjához. Ezután alkalmazza az egy-az-egyhez metódust az összes osztály eredményeinek összevonásához.  
+
+A modul a sklearn OneVsOneClassifier használja, és további részletekért [itt](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsOneClassifier.html)talál további információt.
 
 ## <a name="how-to-configure-the-one-vs-one-multiclass-classifier"></a>Az egy-és többosztályos osztályozó konfigurálása  
 

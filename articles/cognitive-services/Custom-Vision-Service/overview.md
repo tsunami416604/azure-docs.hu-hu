@@ -12,18 +12,18 @@ ms.date: 09/14/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: képek felismerése, rendszerkép-azonosító, képfelismerési alkalmazás, egyéni jövőkép
-ms.openlocfilehash: 47227a60b1ed45499afdb42fbc062abc5ae51ff9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa338bf708abaa49d65b6a817009224973f3fb29
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90605537"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616909"
 ---
 # <a name="what-is-custom-vision"></a>Mi a Custom Vision?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Az Azure Custom Vision egy képfelismerési szolgáltatás, amely lehetővé teszi saját rendszerkép-azonosítók elkészítését, üzembe helyezését és fejlesztését. A képazonosítók a képekre mutató címkéket (amelyek osztályokat vagy objektumokat jelölnek) a vizualizáció tulajdonságaik szerint. A [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) szolgáltatástól eltérően a Custom Vision lehetővé teszi a címkék megadását és az egyéni modellek betanítását az észleléshez.
+Az Azure Custom Vision egy képfelismerési szolgáltatás, amely lehetővé teszi saját rendszerkép-azonosítók elkészítését, üzembe helyezését és fejlesztését. A képazonosítók a képekre mutató címkéket (amelyek osztályokat vagy objektumokat jelölnek) a vizualizáció tulajdonságaik szerint. A [Computer Vision](../computer-vision/overview.md) szolgáltatástól eltérően a Custom Vision lehetővé teszi a címkék megadását és az egyéni modellek betanítását az észleléshez.
 
 ## <a name="what-it-does"></a>Művelet
 

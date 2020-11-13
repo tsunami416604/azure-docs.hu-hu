@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: ef999d4b452f3f31942e1fb2ddb46efe760acff0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342147"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616246"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Adatok modellezése és particionálása az Azure Cosmos DB-ben való életből vett példa használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,6 +21,8 @@ ms.locfileid: "93342147"
 Ez a cikk számos olyan Azure Cosmos DB-fogalomra épül, mint például [az adatmodellezés](modeling-data.md), a [particionálás](partitioning-overview.md)és a [kiosztott átviteli sebesség](request-units.md) , hogy bemutassa, hogyan kezelhető a valós adattervezési gyakorlat.
 
 Ha általában a kapcsolatok adatbázisaival dolgozik, valószínűleg az adatmodell kialakításával kapcsolatos szokásait és tapasztalatait is felkészítette. Az egyes megkötések, de a Azure Cosmos DB egyedi erőssége miatt az ajánlott eljárások többsége nem jól lefordítható, és a legoptimálisabb megoldásokra is húzhatja őket. Ennek a cikknek a célja, hogy végigvezeti Önt a valós használati eset modellezésének teljes folyamatán a Azure Cosmos DBon, az elemek modellezése és a tárolók particionálása között.
+
+[Töltse le vagy tekintse meg](https://github.com/jwidmer/AzureCosmosDbBlogExample) a jelen cikkben szereplő fogalmakat bemutató, Közösség által generált forráskódot. Ezt a kódrészletet a közösségi közreműködők járultak hozzá, és Azure Cosmos DB csapat nem támogatja a karbantartását.
 
 ## <a name="the-scenario"></a>Esetleírás
 

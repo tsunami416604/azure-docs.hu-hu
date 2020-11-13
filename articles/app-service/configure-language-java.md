@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 2e77d76ddae540a311655eca36c53b23c418f5e3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9abc069c202af425970e46286d88d1c18ece5a20
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744152"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616195"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -68,11 +68,11 @@ A teljesítménnyel kapcsolatos jelentések, a forgalmi vizualizációk és az �
 
 További információ: [stream-naplók Cloud Shellban](troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
+::: zone pivot="platform-linux"
+
 ### <a name="ssh-console-access"></a>SSH-konzolhoz való hozzáférés
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
-
-::: zone pivot="platform-linux"
 
 ### <a name="troubleshooting-tools"></a>Hibaelhárítási eszközök
 
@@ -330,9 +330,9 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
 ::: zone pivot="platform-windows"
 
 1. NewRelic-fiók létrehozása a [NewRelic.com](https://newrelic.com/signup) -ben
-2. Töltse le a Java-ügynököt a NewRelic webhelyről, és a fájl neve hasonló lesz a *newrelic-java-x.x.x.ziphoz* .
+2. Töltse le a Java-ügynököt a NewRelic webhelyről, és a fájl neve hasonló lesz a *newrelic-java-x.x.x.ziphoz*.
 3. A licenckulcs másolásához az ügynököt később kell konfigurálnia.
-4. [SSH-t a app Service-példányba](configure-linux-open-ssh-session.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM* .
+4. [SSH-t a app Service-példányba](configure-linux-open-ssh-session.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM*.
 5. Töltse fel a kicsomagolt NewRelic Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM* alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/newrelic* -ben kell lenniük.
 6. Módosítsa a YAML fájlt a */Home/site/wwwroot/APM/newrelic/newrelic.YML* címen, és cserélje le a helyőrző licenc értékét a saját licenckulcs használatára.
 7. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
@@ -344,9 +344,9 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
 ::: zone pivot="platform-linux"
 
 1. NewRelic-fiók létrehozása a [NewRelic.com](https://newrelic.com/signup) -ben
-2. Töltse le a Java-ügynököt a NewRelic webhelyről, és a fájl neve hasonló lesz a *newrelic-java-x.x.x.ziphoz* .
+2. Töltse le a Java-ügynököt a NewRelic webhelyről, és a fájl neve hasonló lesz a *newrelic-java-x.x.x.ziphoz*.
 3. A licenckulcs másolásához az ügynököt később kell konfigurálnia.
-4. [SSH-t a app Service-példányba](configure-linux-open-ssh-session.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM* .
+4. [SSH-t a app Service-példányba](configure-linux-open-ssh-session.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM*.
 5. Töltse fel a kicsomagolt NewRelic Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM* alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/newrelic* -ben kell lenniük.
 6. Módosítsa a YAML fájlt a */Home/site/wwwroot/APM/newrelic/newrelic.YML* címen, és cserélje le a helyőrző licenc értékét a saját licenckulcs használatára.
 7. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
@@ -376,7 +376,7 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
 
 1. AppDynamics-fiók létrehozása a [AppDynamics.com](https://www.appdynamics.com/community/register/) -ben
 2. Töltse le a Java-ügynököt a AppDynamics webhelyről, a fájl neve hasonló lesz *AppServerAgent-x.x.x.xxxxx.zip*
-3. [SSH-t a app Service-példányba](configure-linux-open-ssh-session.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM* .
+3. [SSH-t a app Service-példányba](configure-linux-open-ssh-session.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM*.
 4. Töltse fel a Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM* alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/appdynamics* -ben kell lenniük.
 5. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
 
@@ -541,7 +541,7 @@ Ezután állapítsa meg, hogy az adatforrásnak elérhetőnek kell lennie egy al
 
 #### <a name="shared-server-level-resources"></a>Megosztott kiszolgálói szintű erőforrások
 
-Megosztott, kiszolgálóoldali adatforrások hozzáadásához a Tomcat server.xml szerkesztésére lesz szükség. Először töltse fel az [indítási parancsfájlt](faq-app-service-linux.md#built-in-images) , és állítsa be a parancsfájl elérési útját a **konfigurációs**  >  **indítási parancsban** . Az indítási parancsfájlt az [FTP](deploy-ftp.md)használatával töltheti fel.
+Megosztott, kiszolgálóoldali adatforrások hozzáadásához a Tomcat server.xml szerkesztésére lesz szükség. Először töltse fel az [indítási parancsfájlt](faq-app-service-linux.md#built-in-images) , és állítsa be a parancsfájl elérési útját a **konfigurációs**  >  **indítási parancsban**. Az indítási parancsfájlt az [FTP](deploy-ftp.md)használatával töltheti fel.
 
 Az indítási parancsfájl [XSL-átalakítót](https://www.w3schools.com/xml/xsl_intro.asp) készít a server.xml fájlra, majd az eredményül kapott XML-fájlt kiírja a következőre: `/usr/local/tomcat/conf/server.xml` . Az indítási parancsfájlnak az apk használatával kell telepítenie a libxslt-t. Az XSL-fájl és az indítási parancsfájl FTP-n keresztül tölthető fel. Az alábbi példa egy indítási parancsfájlt mutat be.
 
@@ -678,7 +678,7 @@ Az [adatforrások JBoss EAP-vel való regisztrálása](https://access.redhat.com
     ```
 
 1. Egy tetszőleges FTP-ügyfelet használva feltöltheti a JDBC-illesztőprogramot, a- `jboss-cli-commands.cli` `startup_script.sh` t és a modul definícióját `/site/deployments/tools/` .
-2. Konfigurálja úgy a helyet, hogy `startup_script.sh` a tároló indításakor fusson. Az Azure Portalon navigáljon a **konfiguráció**  >  **általános beállítások**  >  **indítási parancshoz** . Az indítási parancs mező értékét állítsa a következőre: `/home/site/deployments/tools/startup_script.sh` . **Mentse** a módosításokat.
+2. Konfigurálja úgy a helyet, hogy `startup_script.sh` a tároló indításakor fusson. Az Azure Portalon navigáljon a **konfiguráció**  >  **általános beállítások**  >  **indítási parancshoz**. Az indítási parancs mező értékét állítsa a következőre: `/home/site/deployments/tools/startup_script.sh` . **Mentse** a módosításokat.
 
 Annak ellenőrzéséhez, hogy az adatforrást hozzáadta-e a JBoss-kiszolgálóhoz, SSH-t a webappba, és futtassa `$JBOSS_HOME/bin/jboss-cli.sh --connect` . Miután csatlakozott a JBoss-hoz, futtassa a `/subsystem=datasources:read-resource` parancsot az adatforrások listájának kinyomtatásához.
 
@@ -725,7 +725,7 @@ A fejlesztők letölthetik az Azul Zulu Enterprise JDK éles kiadását helyi fe
 
 Az Azure [által támogatott Azul ZULU JDK-](https://www.azul.com/downloads/azure-only/zulu/) vel kapcsolatos terméktámogatás a Microsofton keresztül érhető el az Azure-hoz való fejlesztéshez, illetve a [Azure stack](https://azure.microsoft.com/overview/azure-stack/) egy [minősített Azure-támogatási csomaggal](https://azure.microsoft.com/support/plans/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Látogasson el az Azure [for Java Developers](/java/azure/) Center webhelyre, ahol megtalálhatja az Azure rövid útmutatók, oktatóanyagok és a Java-dokumentációt.
 

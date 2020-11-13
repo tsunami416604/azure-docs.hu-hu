@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 158a82b43e573e5d34ec9a44c4a47cd1126de8ed
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0ec70963dd7f464ae4e72c3bf79e06ebfb5238fc
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424590"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616178"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Oktatóanyag – SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
@@ -88,7 +88,8 @@ A fent definiált séma az alábbi JSON-adattartalommal lesz ábrázolva. Vegye 
      "location":
  "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
    }
- ```
+}   
+```
 
 ### <a name="table-2-default-user-attribute-mapping"></a>2. táblázat: alapértelmezett felhasználói attribútum leképezése
 Ezután az alábbi táblázat segítségével megismerheti, hogy az alkalmazás által igényelt attribútumok hogyan képezhetők le az Azure AD-ben és a SCIM RFC-ben található attribútumokra. [Testreszabhatja](customize-application-attributes.md) az attribútumok leképezését az Azure ad és a scim végpontja között. Vegye figyelembe, hogy nem kell támogatnia a felhasználókat és a csoportokat, sem az összes alább látható attribútumot. Ezek arra utalnak, hogy az Azure AD-beli attribútumok gyakran a SCIM protokoll tulajdonságaira vannak leképezve. 
@@ -126,7 +127,7 @@ Ezután az alábbi táblázat segítségével megismerheti, hogy az alkalmazás 
 | objectId |externalId |
 | proxyAddresses |e-mailek [type EQ "other"]. Érték |
 
-A SCIM RFC-ben több végpont is definiálva van. Megkezdheti a/User-végpont megkezdését, majd onnan kiterjesztheti. Az/schemas-végpont hasznos lehet egyéni attribútumok használatakor, vagy ha a séma gyakran változik. Lehetővé teszi, hogy az ügyfél automatikusan lekérje a legfrissebb sémát. A/bulk végpont különösen hasznos a csoportok támogatásakor. Az alábbi táblázat a SCIM standardban definiált különböző végpontokat ismerteti. Az/schemas-végpont hasznos lehet egyéni attribútumok használatakor, vagy ha a séma gyakran változik. Lehetővé teszi, hogy az ügyfél automatikusan beolvassa a legnaprakészebb sémát. A/bulk végpont különösen hasznos a csoportok támogatásakor. Az alábbi táblázat a SCIM standardban definiált különböző végpontokat ismerteti. 
+A SCIM RFC-ben több végpont is definiálva van. Megkezdheti a/User-végpont megkezdését, majd onnan kiterjesztheti. Az/schemas-végpont hasznos lehet egyéni attribútumok használatakor, vagy ha a séma gyakran változik. Lehetővé teszi, hogy az ügyfél automatikusan lekérje a legfrissebb sémát. A/bulk végpont különösen hasznos a csoportok támogatásakor. Az alábbi táblázat a SCIM standardban definiált különböző végpontokat ismerteti.
  
 ### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>4. táblázat: a fejleszteni kívánt végpontok meghatározása
 |VÉGPONT|LEÍRÁS|
@@ -761,7 +762,7 @@ Az Azure AD-kiépítési csapat által közzétett nyílt forráskódú .NET Cor
 
 A megoldás két projektből áll: a _Microsoft. scim_ és a _Microsoft. scim. WebHostSample_.
 
-A _Microsoft. scim_ projekt az a könyvtár, amely meghatározza a webszolgáltatás azon összetevőit, amelyek megfelelnek a scim specifikációjának. Deklarálja a _Microsoft. scim. IProvider_felületet, a kérelmeket a szolgáltató módszereire fordítja le, amelyek az Identity Store-ban való működésre lesznek programozva.
+A _Microsoft. scim_ projekt az a könyvtár, amely meghatározza a webszolgáltatás azon összetevőit, amelyek megfelelnek a scim specifikációjának. Deklarálja a _Microsoft. scim. IProvider_ felületet, a kérelmeket a szolgáltató módszereire fordítja le, amelyek az Identity Store-ban való működésre lesznek programozva.
 
 ![Részletezés: A szolgáltató módszereire irányuló kérések lefordítása](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
 
@@ -808,9 +809,9 @@ A HTTPS-vel kapcsolatos további információkért ASP.NET Core használja a kö
 
 A Azure Active Directorytól érkező kérések közé tartozik egy OAuth 2,0 tulajdonosi jogkivonat. A kérelmet fogadó bármely szolgáltatásnak hitelesítenie kell a kiállítót úgy, hogy Azure Active Directory a várt Azure Active Directory bérlőnek.
 
-A jogkivonatban a kibocsátót egy ISS jogcím azonosítja, például: `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"` . Ebben a példában a jogcím értékének alapszintű címe, `https://sts.windows.net` amely a kiállítóként azonosítja Azure Active Directory, míg a relatív cím szegmens, a _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_, annak a Azure Active Directory bérlőnek az egyedi azonosítója, amelyhez a tokent kiállították.
+A jogkivonatban a kibocsátót egy ISS jogcím azonosítja, például: `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"` . Ebben a példában a jogcím értékének alapszintű címe, `https://sts.windows.net` amely a kiállítóként azonosítja Azure Active Directory, míg a relatív cím szegmens, a _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_ , annak a Azure Active Directory bérlőnek az egyedi azonosítója, amelyhez a tokent kiállították.
 
-A jogkivonat célközönsége lesz az alkalmazás sablon-azonosítója a katalógusban, és az egyetlen bérlőben regisztrált összes alkalmazás ugyanazt a `iss` jogcímet fogadhatja a scim-kérelmekkel. Az összes egyéni alkalmazáshoz tartozó _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_-azonosító. Az Azure AD-létesítési szolgáltatás által generált jogkivonat csak tesztelésre használható. Éles környezetben nem használható.
+A jogkivonat célközönsége lesz az alkalmazás sablon-azonosítója a katalógusban, és az egyetlen bérlőben regisztrált összes alkalmazás ugyanazt a `iss` jogcímet fogadhatja a scim-kérelmekkel. Az összes egyéni alkalmazáshoz tartozó _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_ -azonosító. Az Azure AD-létesítési szolgáltatás által generált jogkivonat csak tesztelésre használható. Éles környezetben nem használható.
 
 A mintakód a kérelmeket a Microsoft. AspNetCore. Authentication. JwtBearer csomag használatával hitelesíti. A következő kód azt kényszeríti, hogy a szolgáltatás bármelyik végpontjának küldött kérések hitelesítése egy adott bérlő Azure Active Directory által kiállított tulajdonosi jogkivonatának használatával történik:
 
@@ -916,7 +917,7 @@ Küldjön egy GET kérelmet a jogkivonat-vezérlőnek, hogy érvényes tulajdono
 
 ### <a name="handling-provisioning-and-deprovisioning-of-users"></a>A felhasználók kiépítésének és megszüntetésének kezelési felépítése
 
-***1. példa. A szolgáltatás lekérdezése a megfelelő felhasználóhoz**_
+***1. példa. A szolgáltatás lekérdezése a megfelelő felhasználóhoz** _
 
 Azure Active Directory lekérdezi a szolgáltatást az `externalId` Azure ad-beli felhasználó mailNickname attribútumának megfelelő attribútumérték értékkel rendelkező felhasználó számára. A lekérdezés Hypertext Transfer Protocol (HTTP) kérelemként van kifejezve, mint például az a példa, amelyben a jyoung egy, a Azure Active Directory felhasználójának egy mailNickname-mintája.
 
@@ -949,7 +950,7 @@ paraméterek. AlternateFilters. Count: 1
 * paraméterek. AlternateFilters. ElementAt (0). ÖsszehasonlítóOperátor: ÖsszehasonlítóOperátor. Equals
 * paraméterek. AlternateFilter. ElementAt (0). ComparisonValue: "jyoung"
 
-***2. példa. Felhasználó kiépítése**_
+***2. példa. Felhasználó kiépítése** _
 
 Ha egy olyan felhasználó számára, aki egy olyan attribútum értékkel rendelkezik `externalId` , amely megfelel a felhasználó mailNickname attribútumának, nem ad vissza felhasználót, Azure Active Directory kéri, hogy a szolgáltatás olyan felhasználót helyezzen üzembe, amely megfelel a Azure Active Directory.  Íme egy példa erre a kérelemre: 
 
@@ -1025,7 +1026,7 @@ A felhasználó aktuális állapotának lekérésére irányuló kérelem péld�
 _ Azonosító: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * SchemaIdentifier: "urn: IETF: paraméterek: scim: sémák: bővítmény: Enterprise: 2.0: user"
 
-***4. példa. A frissítendő Reference attribútum értékének lekérdezése**_ 
+***4. példa. A frissítendő Reference attribútum értékének lekérdezése** _ 
 
 Ha frissíteni kell egy hivatkozási attribútumot, akkor Azure Active Directory lekérdezi a szolgáltatást annak meghatározására, hogy a szolgáltatás által elindított, az identitás-tárolóban lévő Reference attribútum aktuális értéke már megegyezik-e az adott attribútum értékével Azure Active Directoryban. A felhasználók számára az egyetlen olyan attribútum, amelynek az aktuális értéke a felettes attribútum, így a jelenlegi érték lekérdezhető. Íme egy példa arra a kérelemre, amely meghatározza, hogy egy felhasználói objektum Manager-attribútuma jelenleg egy bizonyos értékkel rendelkezik-e: a mintakód a kérést a szolgáltatás szolgáltatójának QueryAsync metódusára hívja le. A paraméterek argumentum értékeként megadott objektum tulajdonságainak értéke a következő: 
   
@@ -1089,7 +1090,7 @@ _ ResourceIdentifier. azonosító: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * (PatchRequest as PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Hivatkozás: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
 * (PatchRequest as PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Érték: 2819c223-7f76-453a-919d-413861904646
 
-***6. példa. Felhasználó kiépítése**_
+***6. példa. Felhasználó kiépítése** _
 
 Az Azure AD egy olyan kérelmet küld, amely egy SCIM-szolgáltatás által elküldött identitás-tárolóból kiépíti a felhasználót, például a következőt:
 
@@ -1132,14 +1133,14 @@ Az ebben a cikkben ismertetett SCIM-profilt támogató alkalmazások az Azure AD
 
 1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com). Vegye figyelembe, hogy a [fejlesztői programra](https://developer.microsoft.com/office/dev-program) való feliratkozással a P2-licenccel rendelkező Azure Active Directory ingyenes próbaverzióját érheti el
 2. Válassza a **vállalati alkalmazások** lehetőséget a bal oldali ablaktáblán. Megjelenik az összes konfigurált alkalmazás listája, beleértve a gyűjteményből hozzáadott alkalmazásokat is.
-3. Válassza az **+ új alkalmazás**  >  **minden**  >  **nem**katalógusbeli alkalmazás lehetőséget.
+3. Válassza az **+ új alkalmazás**  >  **minden**  >  **nem** katalógusbeli alkalmazás lehetőséget.
 4. Adja meg az alkalmazás nevét, majd kattintson a **Hozzáadás** elemre az alkalmazás-objektum létrehozásához. A rendszer hozzáadja az új alkalmazást a vállalati alkalmazások listájához, és megnyílik az alkalmazás-felügyeleti képernyőjén.
 
    ![Képernyőfelvétel az Azure AD Application galleryről](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
    *Azure AD-alkalmazás katalógusa*
 
 5. Az App Management képernyőn válassza a **kiépítés** lehetőséget a bal oldali panelen.
-6. A **létesítési mód** menüben válassza az **automatikus**lehetőséget.
+6. A **létesítési mód** menüben válassza az **automatikus** lehetőséget.
 
    ![Példa: az alkalmazás kiépítési lapja a Azure Portal](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
    *A kiépítés konfigurálása a Azure Portalban*
@@ -1147,8 +1148,8 @@ Az ebben a cikkben ismertetett SCIM-profilt támogató alkalmazások az Azure AD
 7. A **bérlői URL-cím** mezőben adja meg az alkalmazás scim-végpontjának URL-címét. Például: `https://api.contoso.com/scim/`
 8. Ha az SCIM-végpont OAuth-tulajdonosi jogkivonatot igényel az Azure AD-től eltérő kibocsátótól, akkor másolja a szükséges OAuth-tulajdonosi tokent a nem kötelező **titkos jogkivonat** mezőbe. Ha ez a mező üresen marad, az Azure AD az Azure AD-ből kiállított OAuth-tulajdonosi jogkivonatot tartalmaz minden kéréssel. Az Azure AD-t identitás-szolgáltatóként használó alkalmazások ellenőrizhetik ezt az Azure AD-kiállított jogkivonatot. 
    > [!NOTE]
-   > Ez **_nem_* ajánlott üresen hagyni ezt a mezőt, és az Azure ad által generált tokenre támaszkodhat. Ez a lehetőség elsősorban tesztelési célokra használható.
-9. Válassza a _*test kapcsolat*lehetőséget, hogy Azure Active Directory próbáljon csatlakozni az scim-végponthoz. Ha a kísérlet sikertelen, a rendszer hibaüzenetet jelenít meg.  
+   > Ez * *_nem_* ajánlott üresen hagyni ezt a mezőt, és az Azure ad által generált tokenre támaszkodhat. Ez a lehetőség elsősorban tesztelési célokra használható.
+9. Válassza a _ *test kapcsolat* lehetőséget, hogy Azure Active Directory próbáljon csatlakozni az scim-végponthoz. Ha a kísérlet sikertelen, a rendszer hibaüzenetet jelenít meg.  
 
     > [!NOTE]
     > A SCIM a nem létező felhasználóhoz tartozó végpontot **kérdezi** le, véletlenszerű GUID azonosítóval, amely az Azure ad-konfigurációban kiválasztott egyező tulajdonság. A várt helyes válasz a HTTP 200 OK, amely üres SCIM ListResponse-üzenettel rendelkezik.
@@ -1159,8 +1160,8 @@ Az ebben a cikkben ismertetett SCIM-profilt támogató alkalmazások az Azure AD
     > [!NOTE]
     > A csoportok leképezésének letiltásával letilthatja a csoport objektumainak szinkronizálását.
 
-12. A **Beállítások**területen a **hatókör** mező határozza meg, hogy mely felhasználók és csoportok legyenek szinkronizálva. Jelölje be a **csak a hozzárendelt felhasználók** és csoportok szinkronizálása (javasolt) lehetőséget, hogy csak a **felhasználók és csoportok** lapon hozzárendelt felhasználókat és csoportokat szinkronizálja.
-13. A konfiguráció befejezése után állítsa be a **kiépítési állapotot** **a**következőre:.
+12. A **Beállítások** területen a **hatókör** mező határozza meg, hogy mely felhasználók és csoportok legyenek szinkronizálva. Jelölje be a **csak a hozzárendelt felhasználók** és csoportok szinkronizálása (javasolt) lehetőséget, hogy csak a **felhasználók és csoportok** lapon hozzárendelt felhasználókat és csoportokat szinkronizálja.
+13. A konfiguráció befejezése után állítsa be a **kiépítési állapotot** **a** következőre:.
 14. Válassza a **Mentés** lehetőséget az Azure ad-kiépítési szolgáltatás elindításához.
 15. Ha csak a hozzárendelt felhasználókat és csoportokat szinkronizálja (ajánlott), akkor ügyeljen arra, hogy a **felhasználók és csoportok** lapot jelölje ki, és rendelje hozzá a szinkronizálni kívánt felhasználókat vagy csoportokat.
 

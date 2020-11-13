@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 10/05/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 168dc342eaf61a9ede632fb429311f6f5c1d4be4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e3d95be52215b03a30dc4b5c7f251357f163b24a
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311569"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616093"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>A munkaterület használata egyéni DNS-kiszolgálóval
 
-Ha virtuális hálózattal Azure Machine Learning használ, a [DNS-névfeloldás több módon is kezelhető](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Alapértelmezés szerint az Azure automatikusan kezeli a munkaterület és a magánhálózati végpont névfeloldását. A __saját egyéni DNS-kiszolgáló használatakor__ azonban manuálisan kell létrehoznia a munkaterület DNS-bejegyzéseit.
+Ha virtuális hálózattal Azure Machine Learning használ, a [DNS-névfeloldás több módon is kezelhető](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Alapértelmezés szerint az Azure automatikusan kezeli a munkaterület és a magánhálózati végpont névfeloldását. Ha ehelyett _saját, egyéni DNS-kiszolgálót használ_ , akkor manuálisan kell létrehoznia a munkaterület DNS-bejegyzéseit.
 
 > [!IMPORTANT]
 > Ez a cikk csak a teljes tartománynév (FQDN) és az IP-címek megkeresését ismerteti ezen bejegyzések esetében, ezért nem nyújt információt ezen elemek DNS-rekordjainak konfigurálásáról. A rekordok hozzáadásával kapcsolatos információkért olvassa el a DNS-szoftver dokumentációját.
@@ -40,13 +40,14 @@ Ha virtuális hálózattal Azure Machine Learning használ, a [DNS-névfeloldás
 A következő lista tartalmazza a munkaterület és a privát végpont által használt teljes tartományneveket (FQDN):
 
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `<workspace-GUID>.studio.workspace.<region>.api.azureml.ms`
-* `cert-<workspace-GUID>.workspace.<region>.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
 * `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
-* Ha létrehoz egy számítási példányt, hozzá kell adnia egy bejegyzést is a munkaterület privát `<instance-name>.<region>.instances.azureml.ms` IP-címéhez. Vegye figyelembe, hogy a számítási példány csak a virtuális hálózaton belülről érhető el.
+* Ha számítási példányt hoz létre, a saját IP-címéhez is hozzá kell adnia egy bejegyzést a `<instance-name>.<region>.instances.azureml.ms` munkaterület privát végpontja számára.
+
+    > [!NOTE]
+    > A számítási példányok csak a virtuális hálózaton belül érhetők el.
 
 A VNet lévő teljes tartománynevek belső IP-címeinek megkereséséhez használja az alábbi módszerek egyikét:
 
@@ -82,8 +83,6 @@ Az összes metódus által visszaadott információ ugyanaz; az erőforrások te
 | FQDN | IP-cím |
 | ----- | ----- |
 | `fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
-| `fb7e20a0-8891-458b-b969-55ddb3382f51.studio.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
-| `cert-fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
 | `ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net` | `10.1.0.6` |
 
 > [!IMPORTANT]
@@ -96,6 +95,6 @@ Az összes metódus által visszaadott információ ugyanaz; az erőforrások te
 >
 > Az összes IP-cím esetében ugyanazt a címet használja, mint az `*.api.azureml.ms` előző lépésekből visszaadott bejegyzéseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Machine Learning virtuális hálózattal való használatával kapcsolatos további információkért lásd a [virtuális hálózat áttekintését](how-to-network-security-overview.md).

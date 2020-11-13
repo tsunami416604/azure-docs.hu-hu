@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sashan, sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: sashan
 ms.date: 08/27/2019
-ms.openlocfilehash: df10e2b674a8e97766ee96a802e614e2bd797b7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d1ce51306e846e2d842bef33bb9782da14019a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617740"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593994"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL felügyelt példány hozzáadása feladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -63,16 +63,16 @@ A felügyelt példányokat a [párosított régiók](../../best-practices-availa
 
 Hozza létre az erőforráscsoportot és az elsődleges felügyelt példányt a Azure Portal használatával. 
 
-1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be `Azure SQL` a keresőmezőbe a kifejezést. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
+1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás** lehetőséget, majd írja be `Azure SQL` a keresőmezőbe a kifejezést. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
 1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A különböző adatbázisokkal kapcsolatos további információkat az **adatbázisok** csempén a **Részletek megjelenítése** lehetőség kiválasztásával tekintheti meg.
 1. Válassza a **Létrehozás** lehetőséget a **felügyelt SQL-példányok** csempén. 
 
     ![SQL felügyelt példány kiválasztása](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
 1. Az **Azure SQL felügyelt példány létrehozása** oldalon az **alapok** lapon:
-    1. A **Project Details (projekt részletei**) területen válassza ki az **előfizetését** a legördülő menüből, majd válassza az **Új erőforráscsoport létrehozása** lehetőséget. Írja be az erőforráscsoport nevét, például: `myResourceGroup` . 
-    1. Az **SQL felügyelt példányának adatai**alatt adja meg a felügyelt példány nevét, valamint azt a régiót, ahol a felügyelt példányt telepíteni szeretné. Az alapértelmezett értékekben hagyja a **számítás + tárolás** értéket. 
-    1. A **rendszergazdai fiók**területen adjon meg egy rendszergazdai bejelentkezési azonosítót, például `azureuser` , és egy összetett rendszergazdai jelszót. 
+    1. A **Project Details (projekt részletei** ) területen válassza ki az **előfizetését** a legördülő menüből, majd válassza az **Új erőforráscsoport létrehozása** lehetőséget. Írja be az erőforráscsoport nevét, például: `myResourceGroup` . 
+    1. Az **SQL felügyelt példányának adatai** alatt adja meg a felügyelt példány nevét, valamint azt a régiót, ahol a felügyelt példányt telepíteni szeretné. Az alapértelmezett értékekben hagyja a **számítás + tárolás** értéket. 
+    1. A **rendszergazdai fiók** területen adjon meg egy rendszergazdai bejelentkezési azonosítót, például `azureuser` , és egy összetett rendszergazdai jelszót. 
 
     ![Elsődleges felügyelt példány létrehozása](./media/failover-group-add-instance-tutorial/primary-sql-mi-values.png)
 
@@ -161,8 +161,8 @@ Hozza létre az erőforráscsoportot és az elsődleges felügyelt példányt a 
    # Suppress networking breaking changes warning (https://aka.ms/azps-changewarnings
    Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
    
-   # Set the subscription context
-   Set-AzContext -SubscriptionId $subscriptionId 
+   # Set the subscription context
+   Set-AzContext -SubscriptionId $subscriptionId 
    
    # Create the resource group
    Write-host "Creating resource group..."
@@ -422,9 +422,9 @@ Az elsődleges virtuális hálózat alhálózati tartományának ellenőrzéséh
 
 Virtuális hálózat létrehozásához kövesse az alábbi lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása** és a *virtuális hálózat*keresése lehetőséget. 
+1. A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása** és a *virtuális hálózat* keresése lehetőséget. 
 1. Válassza ki a Microsoft által közzétett **Virtual Network** lehetőséget, majd válassza a **Létrehozás** elemet a következő oldalon. 
-1. Adja meg a szükséges mezőket a másodlagos felügyelt példány virtuális hálózatának konfigurálásához, majd válassza a **Létrehozás**lehetőséget. 
+1. Adja meg a szükséges mezőket a másodlagos felügyelt példány virtuális hálózatának konfigurálásához, majd válassza a **Létrehozás** lehetőséget. 
 
    A következő táblázat a másodlagos virtuális hálózathoz szükséges értékeket mutatja be:
 
@@ -457,7 +457,7 @@ A második felügyelt példánynak a következőket kell tennie:
 
 Hozza létre a másodlagos felügyelt példányt a Azure Portal használatával. 
 
-1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be `Azure SQL` a keresőmezőbe a kifejezést. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
+1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás** lehetőséget, majd írja be `Azure SQL` a keresőmezőbe a kifejezést. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
 1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A különböző adatbázisokkal kapcsolatos további információkat az **adatbázisok** csempén a **Részletek megjelenítése** lehetőség kiválasztásával tekintheti meg.
 1. Válassza a **Létrehozás** lehetőséget a **felügyelt SQL-példányok** csempén. 
 
@@ -477,11 +477,11 @@ Hozza létre a másodlagos felügyelt példányt a Azure Portal használatával.
     | **Jelszó** | Összetett jelszó, amelyet az új másodlagos felügyelt példányhoz tartozó rendszergazdai bejelentkezés fog használni.  |
     | &nbsp; | &nbsp; |
 
-1. A **hálózatkezelés** lap **Virtual Network**területén válassza ki a másodlagos felügyelt példányhoz létrehozott virtuális hálózatot a legördülő menüből.
+1. A **hálózatkezelés** lap **Virtual Network** területén válassza ki a másodlagos felügyelt példányhoz létrehozott virtuális hálózatot a legördülő menüből.
 
    ![Másodlagos MI hálózatkezelés](./media/failover-group-add-instance-tutorial/networking-settings-for-secondary-mi.png)
 
-1. A **További beállítások** lap **geo-replikáció**területén válassza az **Igen** lehetőséget a _feladatátvétel másodlagosként való használathoz_. Válassza ki az elsődleges felügyelt példányt a legördülő menüből. 
+1. A **További beállítások** lap **geo-replikáció** területén válassza az **Igen** lehetőséget a _feladatátvétel másodlagosként való használathoz_. Válassza ki az elsődleges felügyelt példányt a legördülő menüből. 
     
    Ügyeljen arra, hogy a rendezés és az időzóna megfeleljen az elsődleges felügyelt példánynak. Az oktatóanyagban létrehozott elsődleges felügyelt példány az alapértelmezett `SQL_Latin1_General_CP1_CI_AS` rendezést és az `(UTC) Coordinated Universal Time` időzónát használta. 
 
@@ -751,11 +751,11 @@ Hozza létre az elsődleges felügyelt példány virtuális hálózatának átj�
 
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg az erőforráscsoportot, és válassza ki a **virtuális hálózati** erőforrást az elsődleges felügyelt példányhoz. 
-1. Válassza ki az **alhálózatok** lehetőséget a **Beállítások** területen, majd válassza a lehetőséget egy új **átjáró-alhálózat**hozzáadásához. Hagyja meg az alapértelmezett értékeket. 
+1. Válassza ki az **alhálózatok** lehetőséget a **Beállítások** területen, majd válassza a lehetőséget egy új **átjáró-alhálózat** hozzáadásához. Hagyja meg az alapértelmezett értékeket. 
 
    ![Átjáró hozzáadása az elsődleges felügyelt példányhoz](./media/failover-group-add-instance-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. Az alhálózat-átjáró létrehozása után válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs ablaktáblán, majd írja be `Virtual network gateway` a keresőmezőbe a kifejezést. Válassza ki a **Microsoft**által közzétett **Virtual Network Gateway** -erőforrást. 
+1. Az alhálózat-átjáró létrehozása után válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs ablaktáblán, majd írja be `Virtual network gateway` a keresőmezőbe a kifejezést. Válassza ki a **Microsoft** által közzétett **Virtual Network Gateway** -erőforrást. 
 
    ![Új virtuális hálózati átjáró létrehozása](./media/failover-group-add-instance-tutorial/create-virtual-network-gateway.png)
 
@@ -768,8 +768,8 @@ Hozza létre az elsődleges felügyelt példány virtuális hálózatának átj�
     | **Előfizetés** |  Az az előfizetés, amelyben az elsődleges felügyelt példánya. |
     | **Név** | A virtuális hálózati átjáró neve, például: `primary-mi-gateway` . | 
     | **Régió** | Az a régió, ahol az elsődleges felügyelt példánya van. |
-    | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
-    | **VPN-típus** | Válassza az **útvonal-alapú**lehetőséget. |
+    | **Átjáró típusa** | Válassza a **VPN** lehetőséget. |
+    | **VPN-típus** | Válassza az **útvonal-alapú** lehetőséget. |
     | **Termékváltozat**| Hagyja meg az alapértelmezett értéket `VpnGw1` . |
     | **Virtuális hálózat**| Válassza ki a 2. szakaszban létrehozott virtuális hálózatot, például: `vnet-sql-mi-primary` . |
     | **Nyilvános IP-cím**| Válassza az **Új létrehozása** lehetőséget. |
@@ -849,8 +849,8 @@ A Azure Portal használatával ismételje meg az előző szakaszban leírt lép�
    | **Előfizetés** |  Az előfizetés, amelyben a másodlagos felügyelt példánya van. |
    | **Név** | A virtuális hálózati átjáró neve, például: `secondary-mi-gateway` . | 
    | **Régió** | Az a régió, amelyben a másodlagos felügyelt példány található. |
-   | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
-   | **VPN-típus** | Válassza az **útvonal-alapú**lehetőséget. |
+   | **Átjáró típusa** | Válassza a **VPN** lehetőséget. |
+   | **VPN-típus** | Válassza az **útvonal-alapú** lehetőséget. |
    | **Termékváltozat**| Hagyja meg az alapértelmezett értéket `VpnGw1` . |
    | **Virtuális hálózat**| Válassza ki a virtuális hálózatot a másodlagos felügyelt példányhoz, például: `vnet-sql-mi-secondary` . |
    | **Nyilvános IP-cím**| Válassza az **Új létrehozása** lehetőséget. |
@@ -926,14 +926,14 @@ Kapcsolja össze a két átjárót a Azure Portal használatával.
 1. Írja be `connection` a keresőmezőbe, majd nyomja le az ENTER billentyűt a kereséshez, amely a Microsoft által közzétett **kapcsolódási** erőforrásra viszi.
 1. Válassza a **Létrehozás** lehetőséget a kapcsolódás létrehozásához. 
 1. Az **alapvető beállítások** lapon válassza ki a következő értékeket, majd kattintson az **OK gombra**. 
-    1. Válassza `VNet-to-VNet` a **kapcsolattípus**lehetőséget. 
+    1. Válassza `VNet-to-VNet` a **kapcsolattípus** lehetőséget. 
     1. Válassza ki előfizetését a legördülő listából. 
     1. Válassza ki az SQL felügyelt példányhoz tartozó erőforráscsoportot a legördülő menüből. 
     1. Válassza ki az elsődleges felügyelt példány helyét a legördülő menüből. 
-1. A **Beállítások** lapon válassza ki vagy adja meg a következő értékeket, majd kattintson az **OK gombra**:
-    1. Válassza ki az **első virtuális hálózati átjáró**elsődleges hálózati átjáróját, például: `primaryGateway` .  
-    1. Válassza ki a **második virtuális hálózati átjáró**másodlagos hálózati átjáróját, például: `secondaryGateway` . 
-    1. Jelölje be a **kétirányú kapcsolat létesítése**melletti jelölőnégyzetet. 
+1. A **Beállítások** lapon válassza ki vagy adja meg a következő értékeket, majd kattintson az **OK gombra** :
+    1. Válassza ki az **első virtuális hálózati átjáró** elsődleges hálózati átjáróját, például: `primaryGateway` .  
+    1. Válassza ki a **második virtuális hálózati átjáró** másodlagos hálózati átjáróját, például: `secondaryGateway` . 
+    1. Jelölje be a **kétirányú kapcsolat létesítése** melletti jelölőnégyzetet. 
     1. Hagyja meg az alapértelmezett elsődleges kapcsolódási nevet, vagy nevezze át tetszőleges értékre. 
     1. Adjon meg egy **megosztott kulcsot (PSK)** a kapcsolatban, például: `mi1m2psk` . 
     1. A beállítások mentéséhez kattintson **az OK gombra** . 
@@ -983,9 +983,9 @@ Ebben a lépésben létrehozza a feladatátvételi csoportot, és hozzáadja a f
 Hozza létre a feladatátvételi csoportot a Azure Portal használatával. 
 
 
-1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be `Azure SQL` a keresőmezőbe a kifejezést. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
+1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás** lehetőséget, majd írja be `Azure SQL` a keresőmezőbe a kifejezést. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
 1. Válassza ki az első szakaszban létrehozott elsődleges felügyelt példányt, például: `sql-mi-primary` . 
-1. A **Beállítások**területen navigáljon a **példány feladatátvételi csoportok** elemre, majd válassza a **Csoport hozzáadása** lehetőséget a **példány feladatátvételi csoport** lap megnyitásához. 
+1. A **Beállítások** területen navigáljon a **példány feladatátvételi csoportok** elemre, majd válassza a **Csoport hozzáadása** lehetőséget a **példány feladatátvételi csoport** lap megnyitásához. 
 
    ![Feladatátvételi csoport hozzáadása](./media/failover-group-add-instance-tutorial/add-failover-group.png)
 
@@ -1090,10 +1090,10 @@ Az erőforrások törléséhez először törölje a felügyelt példányokat, m
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 1. Navigáljon az erőforráscsoporthoz a [Azure Portal](https://portal.azure.com). 
-1. Válassza ki a felügyelt példány (oka) t, majd válassza a **Törlés**lehetőséget. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget. Ez a folyamat hosszabb időt is igénybe vehet a háttérben, és amíg el nem végzi a műveletet, nem fogja tudni törölni a *virtuális fürtöt* vagy bármely más függő erőforrást. Figyelje meg a törlést a **tevékenység** lapon a felügyelt példány törlésének megerősítéséhez. 
-1. A felügyelt példány törlése után törölje a *virtuális fürtöt* úgy, hogy kiválasztja az erőforráscsoportot, majd a **Törlés**lehetőséget választja. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget. 
-1. Törölje a többi erőforrást. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget. 
-1. Törölje az erőforráscsoportot az **erőforráscsoport törlése**elem kiválasztásával, írja be az erőforráscsoport nevét, majd válassza a `myResourceGroup` **Törlés**lehetőséget. 
+1. Válassza ki a felügyelt példány (oka) t, majd válassza a **Törlés** lehetőséget. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés** lehetőséget. Ez a folyamat hosszabb időt is igénybe vehet a háttérben, és amíg el nem végzi a műveletet, nem fogja tudni törölni a *virtuális fürtöt* vagy bármely más függő erőforrást. Figyelje meg a törlést a **tevékenység** lapon a felügyelt példány törlésének megerősítéséhez. 
+1. A felügyelt példány törlése után törölje a *virtuális fürtöt* úgy, hogy kiválasztja az erőforráscsoportot, majd a **Törlés** lehetőséget választja. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés** lehetőséget. 
+1. Törölje a többi erőforrást. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés** lehetőséget. 
+1. Törölje az erőforráscsoportot az **erőforráscsoport törlése** elem kiválasztásával, írja be az erőforráscsoport nevét, majd válassza a `myResourceGroup` **Törlés** lehetőséget. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

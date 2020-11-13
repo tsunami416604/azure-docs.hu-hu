@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: 3e94172096daf5fd06549f8645d05b874948a917
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 1e71d3883b8dacefa9b501ee3a9a0533d5c7d515
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420818"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592668"
 ---
 # <a name="execute-r-script-module"></a>R-parancsfájl végrehajtása modul
 
@@ -121,10 +121,10 @@ A folyamat futásának befejezése után a rendszerképet a modul jobb oldali pa
 
 ## <a name="access-to-registered-dataset"></a>Hozzáférés a regisztrált adatkészlethez
 
-A következő mintakód a munkaterületén [regisztrált adatkészletekhez való hozzáféréshez](../how-to-create-register-datasets.md) használható:
+A következő mintakód a munkaterületén [regisztrált adatkészletekhez](../how-to-create-register-datasets.md) való hozzáféréshez használható:
 
 ```R
-        azureml_main <- function(dataframe1, dataframe2){
+    azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
   run = get_current_run()
   ws = run$experiment$workspace
@@ -503,6 +503,6 @@ Jelenleg a következő előre telepített R-csomagok érhetők el:
 | zeallot      | 0.1.0      | 
 | zoo          | 1.8-6      | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

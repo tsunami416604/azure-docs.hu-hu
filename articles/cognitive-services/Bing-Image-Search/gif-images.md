@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: bcfd711f0a38d5993447823c31cbf7f27226ad6b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9da9a34d986878b2304a496cf046215c8cc1fe28
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084340"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593501"
 ---
 # <a name="search-for-gif-images"></a>GIF-képek keresése 
 
@@ -31,7 +31,7 @@ A következő URL-cím az animált. gif rendszerképek lekérdezése.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 ```
-A [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) paraméter határozza meg a keresési kifejezéseket.  Az előző lekérdezés `animatedGif` a [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) Filter paraméter használatát is megadja.
+A [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) paraméter határozza meg a keresési kifejezéseket.  Az előző lekérdezés `animatedGif` a [imageType](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) Filter paraméter használatát is megadja.
 
 A találatok megjelenítéséhez használja a következő URL-címet a bing.com kereséséhez.
 ```
@@ -40,15 +40,15 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 ```
 ## <a name="query-parameters"></a>Lekérdezési paraméterek
 
-A lekérdezési paraméterekkel és beállításokkal kapcsolatos további információkért tekintse meg a [Image Search API-referenciát](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters). Egy példa a címsor alatt [, például az animált GIF keresése a Java használatával](#gifExample)című szakaszban látható.
+A lekérdezési paraméterekkel és beállításokkal kapcsolatos további információkért tekintse meg a [Image Search API-referenciát](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters). Egy példa a címsor alatt [, például az animált GIF keresése a Java használatával](#gifExample)című szakaszban látható.
 
 ## <a name="tips-and-suggestions"></a>Tippek és javaslatok
 
-- Megadhatja a [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) és a [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) paramétereket. Azt javasoljuk, hogy a maxFileSize = 2000000 beállítása a GIF-fájlok többsége az indexben a 2 MB-ot.  Ez az adatok méretének szabályozását is lehetővé teszi, ha a sávszélesség aggodalomra ad okot, például mobil celluláris helyzetekben.
+- Megadhatja a [maxFileSize](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) és a [minFileSize](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) paramétereket. Azt javasoljuk, hogy a maxFileSize = 2000000 beállítása a GIF-fájlok többsége az indexben a 2 MB-ot.  Ez az adatok méretének szabályozását is lehetővé teszi, ha a sávszélesség aggodalomra ad okot, például mobil celluláris helyzetekben.
 - Az érzékelt teljesítmény javítása érdekében először töltse be a miniatűrt a forrás URL-cím betöltése előtt.  
 - Ha még nem rendelkezik felhasználói lekérdezéssel, próbálja ki a trendi GIF-kereséseket a Trends [images API](trending-images.md)segítségével.
-- A [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) paraméternek három beállítása van.  A `strict` lehetőség letiltja a felnőtt tartalmat.
-- A támogatott nyelvek és helyszínek teljes listájáért lásd: [MKT](supported-countries-markets.md) .
+- A [safeSearch](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) paraméternek három beállítása van.  A `strict` lehetőség letiltja a felnőtt tartalmat.
+- A támogatott nyelvek és helyszínek teljes listájáért lásd: [MKT](./language-support.md) .
 - A *AnimatedGifHttps* csak a https-címről érkező animált GIF-képeket adja vissza. A biztonság érdekében számos alkalmazás igényli a https-kapcsolaton keresztüli külső webes hivatkozásokhoz való kapcsolódást. Például az Apple App Store-nak HTTPS-kapcsolaton keresztül kell kapcsolódnia a webszolgáltatásokhoz, amely az átvitel során titkosítja a felhasználói adatvédelmet.
 
 <a name="gifExample"></a>
@@ -60,7 +60,7 @@ A következő URL-cím megkeresi az animált. gif képeket: `q=interesting`
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 
 ```
-Ahogy az az alábbi példában is látható, az URL-lekérdezéshez [OCP-APIM-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#headers) fejléc szükséges.
+Ahogy az az alábbi példában is látható, az URL-lekérdezéshez [OCP-APIM-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#headers) fejléc szükséges.
 
 A következő Java-példa létrehozza és elküldi a kérést.
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 833ec0f706786ebb86a54fb3c5b13d9c6e5c6062
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604291"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616229"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Oktatóanyag: Custom Vision használata IoT-eszközzel a vizualizációs állapotok jelentéséhez
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Az alkalmazás használatával betaníthatja Custom Vision projektjét.
 > * Az alkalmazás segítségével valós időben lehet új képeket kipróbálni, és elküldeni az eredményeket az Azure-ba.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services), mielőtt hozzákezd. 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,16 +41,16 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 * Emellett [létre kell hoznia egy IoT hub erőforrást](https://ms.portal.azure.com/#create/Microsoft.IotHub) az Azure-ban.
 * [Visual Studio 2015 vagy újabb](https://www.visualstudio.com/downloads/)
 * Opcionálisan a Windows 10 IoT Core 17763-es vagy újabb verzióját futtató IoT-eszköz. Az alkalmazást közvetlenül a SZÁMÍTÓGÉPRŐL is futtathatja.
-   * A 2. és 3. málna esetében beállíthatja a Windows 10 rendszert közvetlenül a IoT irányítópult-alkalmazásból. Más eszközök, például a DrangonBoard esetében az [eMMC-módszer](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)használatával kell Flash-t használnia. Ha segítségre van szüksége egy új eszköz beállításához, tekintse [meg az eszköz beállítása](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup) a Windows IoT dokumentációjában.
+   * A 2. és 3. málna esetében beállíthatja a Windows 10 rendszert közvetlenül a IoT irányítópult-alkalmazásból. Más eszközök, például a DrangonBoard esetében az [eMMC-módszer](/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)használatával kell Flash-t használnia. Ha segítségre van szüksége egy új eszköz beállításához, tekintse [meg az eszköz beállítása](/windows/iot-core/tutorials/quickstarter/devicesetup) a Windows IoT dokumentációjában.
 
 ## <a name="about-the-visual-alerts-app"></a>Tudnivalók a vizualizációs riasztások alkalmazásról
 
 A IoT vizuális riasztások alkalmazás folytonos hurokban fut, és szükség szerint négy különböző állapot közötti váltást tesz elérhetővé:
 
-* **Nincs modell**: A No-op állapot. Az alkalmazás folyamatosan alvó állapotba kerül egy másodpercig, és megkeresi a kamerát.
-* **Betanítási lemezképek rögzítése**: ebben az állapotban az alkalmazás rögzíti a képet, és a cél Custom Vision projektnek betanítási képként tölti fel. Az alkalmazás ezután alvó állapotba lép a 500 MS-ban, és megismétli a műveletet, amíg meg nem történik a megadott számú rendszerkép rögzítése. Ezután elindítja a Custom Vision modell betanítását.
-* **Várakozás a betanított modellre**: ebben az állapotban az alkalmazás meghívja a Custom Vision API-t másodpercenként, hogy meggyőződjön arról, hogy a célként megadott projekt tartalmaz-e betanított iterációt. Ha megtalál egyet, letölti a megfelelő ONNX-modellt egy helyi fájlba, és a **pontozás** állapotra vált.
-* **Pontozás**: ebben az állapotban az alkalmazás a Windows ml-t használja a kamera egyetlen keretének kiértékeléséhez a helyi ONNX modellből. Az eredményül kapott képbesorolás megjelenik a képernyőn, és üzenetet küld a IoT Hubnak. Az alkalmazás ezután egy másodpercig alvó állapotba helyezi az új rendszerkép pontozását.
+* **Nincs modell** : A No-op állapot. Az alkalmazás folyamatosan alvó állapotba kerül egy másodpercig, és megkeresi a kamerát.
+* **Betanítási lemezképek rögzítése** : ebben az állapotban az alkalmazás rögzíti a képet, és a cél Custom Vision projektnek betanítási képként tölti fel. Az alkalmazás ezután alvó állapotba lép a 500 MS-ban, és megismétli a műveletet, amíg meg nem történik a megadott számú rendszerkép rögzítése. Ezután elindítja a Custom Vision modell betanítását.
+* **Várakozás a betanított modellre** : ebben az állapotban az alkalmazás meghívja a Custom Vision API-t másodpercenként, hogy meggyőződjön arról, hogy a célként megadott projekt tartalmaz-e betanított iterációt. Ha megtalál egyet, letölti a megfelelő ONNX-modellt egy helyi fájlba, és a **pontozás** állapotra vált.
+* **Pontozás** : ebben az állapotban az alkalmazás a Windows ml-t használja a kamera egyetlen keretének kiértékeléséhez a helyi ONNX modellből. Az eredményül kapott képbesorolás megjelenik a képernyőn, és üzenetet küld a IoT Hubnak. Az alkalmazás ezután egy másodpercig alvó állapotba helyezi az új rendszerkép pontozását.
 
 ## <a name="examine-the-code-structure"></a>A kód szerkezetének vizsgálata
 
@@ -76,7 +76,7 @@ Kövesse az alábbi lépéseket, hogy lekérje a IoT vizuális riasztások alkal
     1. Frissítse a `targetCVSProjectGuid` változót a használni kívánt Custom Vision-projekt megfelelő azonosítójával. 
 1. A IoT Hub erőforrás beállítása:
     1. A _IoTHub\IotHubWrapper.cs_ -parancsfájlban frissítse a `s_connectionString` változót az eszközéhez tartozó megfelelő kapcsolattípus-karakterláncra. 
-    1. A Azure Portal töltse be IoT Hub példányát, kattintson a **IoT** alatt található eszközök **elemre**, válassza ki a kívánt eszközt (vagy hozzon létre egyet, ha szükséges), és keresse meg a kapcsolatok karakterláncát az **elsődleges kapcsolatok karakterlánca**alatt. A karakterlánc a IoT Hub nevét, az eszköz AZONOSÍTÓját és a közös elérési kulcsot fogja tartalmazni; a formátuma a következő: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}` .
+    1. A Azure Portal töltse be IoT Hub példányát, kattintson a **IoT** alatt található eszközök **elemre** , válassza ki a kívánt eszközt (vagy hozzon létre egyet, ha szükséges), és keresse meg a kapcsolatok karakterláncát az **elsődleges kapcsolatok karakterlánca** alatt. A karakterlánc a IoT Hub nevét, az eszköz AZONOSÍTÓját és a közös elérési kulcsot fogja tartalmazni; a formátuma a következő: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}` .
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
@@ -107,8 +107,8 @@ A folyamat megismétlése saját forgatókönyv esetén:
 1. Jelentkezzen be a [Custom Vision webhelyére](http://customvision.ai).
 1. Keresse meg a célként megadott projektet, amely most már rendelkezik az alkalmazás által feltöltött összes betanítási képpel.
 1. Minden olyan vizualizációs állapothoz, amelyet azonosítani szeretne, válassza ki a megfelelő lemezképeket, és manuálisan alkalmazza a címkét.
-    * Ha például a cél az, hogy különbséget tegyen egy üres helyiség és egy olyan hely között, amelyben a személyek szerepelnek, javasoljuk, hogy öt vagy több képet válasszon ki az emberekkel új osztályként, **emberekként**, és öt vagy több, a **negatív** címkével nem rendelkező képet. Ez segít a modellnek a két állapot közötti különbségtételben.
-    * Másik példaként, ha a cél az, hogy megközelítje a polc teljes értékét, olyan címkéket használhat, mint például a **EmptyShelf**, a **PartiallyFullShelf**és a **FullShelf**.
+    * Ha például a cél az, hogy különbséget tegyen egy üres helyiség és egy olyan hely között, amelyben a személyek szerepelnek, javasoljuk, hogy öt vagy több képet válasszon ki az emberekkel új osztályként, **emberekként** , és öt vagy több, a **negatív** címkével nem rendelkező képet. Ez segít a modellnek a két állapot közötti különbségtételben.
+    * Másik példaként, ha a cél az, hogy megközelítje a polc teljes értékét, olyan címkéket használhat, mint például a **EmptyShelf** , a **PartiallyFullShelf** és a **FullShelf**.
 1. Ha elkészült, kattintson a **vonat** gombra.
 1. A betanítás befejezése után az alkalmazás megállapítja, hogy elérhető-e egy betanított iteráció. A program elindítja a betanított modell exportálásának folyamatát, hogy ONNX és letöltse azt az eszközre.
 
@@ -142,5 +142,5 @@ Ebben az oktatóanyagban egy olyan alkalmazást állít be és futtatott, amely 
 > [IoTVisualAlerts minta (GitHub)](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)
 
 * IoT Hub metódus hozzáadásával az alkalmazást közvetlenül a **betanított modell** állapotára való várakozásra válthat. Így a modellt betaníthatja az eszköz által nem rögzített rendszerképekkel, majd leküldheti az új modellt az eszközre a parancsban.
-* Kövesse a [valós idejű érzékelők megjelenítése](https://docs.microsoft.com/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi) oktatóanyagot, és hozzon létre egy Power bi irányítópultot a minta által elküldhető IoT hub-riasztások megjelenítéséhez.
-* A [IoT távoli figyelési](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps) oktatóanyagot követve hozzon létre egy logikai alkalmazást, amely válaszol a IoT hub riasztásokra a vizualizációs állapotok észlelésekor.
+* Kövesse a [valós idejű érzékelők megjelenítése](../../iot-hub/iot-hub-live-data-visualization-in-power-bi.md) oktatóanyagot, és hozzon létre egy Power bi irányítópultot a minta által elküldhető IoT hub-riasztások megjelenítéséhez.
+* A [IoT távoli figyelési](../../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md) oktatóanyagot követve hozzon létre egy logikai alkalmazást, amely válaszol a IoT hub riasztásokra a vizualizációs állapotok észlelésekor.

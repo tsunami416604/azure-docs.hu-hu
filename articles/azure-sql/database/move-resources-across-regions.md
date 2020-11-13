@@ -8,16 +8,16 @@ ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 0b78419f4fb37bb96e2c71c89f740a35914ccede
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae6c87c9eabea837ba9c43676d4ca712caa385cb
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446382"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594164"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>Erőforrások áthelyezése új régióba – Azure SQL Database & Azure SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -68,7 +68,7 @@ Ez a cikk általános munkafolyamatot biztosít az erőforrások másik régiób
 
 ### <a name="monitor-the-preparation-process"></a>Az előkészítési folyamat figyelése
 
-Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup) t az adatbázisok replikációjának figyelésére a forrásról a célra. A kimeneti objektum `Get-AzSqlDatabaseFailoverGroup` tartalmazza a **ReplicationState**tulajdonságát:
+Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup) t az adatbázisok replikációjának figyelésére a forrásról a célra. A kimeneti objektum `Get-AzSqlDatabaseFailoverGroup` tartalmazza a **ReplicationState** tulajdonságát:
 
 - A **ReplicationState = 2** (CATCH_UP) azt jelzi, hogy az adatbázis szinkronizálva van, és a rendszer biztonságosan feladatátvételt hajt végre.
 - **ReplicationState = 0** (előkészítés) – azt jelzi, hogy az adatbázis még nincs bevezetve, és a feladatátvételi kísérlet sikertelen lesz.
@@ -122,7 +122,7 @@ Az áthelyezés befejeződése után távolítsa el a forrás régió erőforrá
 
 ### <a name="monitor-the-preparation-process"></a>Az előkészítési folyamat figyelése
 
-Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup) t az adatbázisok replikációjának figyelésére a forrásról a célra. A kimeneti objektum `Get-AzSqlDatabaseFailoverGroup` tartalmazza a **ReplicationState**tulajdonságát:
+Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup) t az adatbázisok replikációjának figyelésére a forrásról a célra. A kimeneti objektum `Get-AzSqlDatabaseFailoverGroup` tartalmazza a **ReplicationState** tulajdonságát:
 
 - A **ReplicationState = 2** (CATCH_UP) azt jelzi, hogy az adatbázis szinkronizálva van, és a rendszer biztonságosan feladatátvételt hajt végre.
 - **ReplicationState = 0** (előkészítés) – azt jelzi, hogy az adatbázis még nincs bevezetve, és a feladatátvételi kísérlet sikertelen lesz.
@@ -170,7 +170,7 @@ Az egyes példányokon lévő összes adatbázis replikációja automatikusan me
 
 ### <a name="monitor-the-preparation-process"></a>Az előkészítési folyamat figyelése
 
-Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup) t az adatbázisok replikációjának figyelésére a forrásról a célra. A kimeneti objektum `Get-AzSqlDatabaseFailoverGroup` tartalmazza a **ReplicationState**tulajdonságát:
+Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup) t az adatbázisok replikációjának figyelésére a forrásról a célra. A kimeneti objektum `Get-AzSqlDatabaseFailoverGroup` tartalmazza a **ReplicationState** tulajdonságát:
 
 - A **ReplicationState = 2** (CATCH_UP) azt jelzi, hogy az adatbázis szinkronizálva van, és a rendszer biztonságosan feladatátvételt hajt végre.
 - A **ReplicationState = 0** (beültetés) azt jelzi, hogy az adatbázis még nincs felszámítva, és a feladatátvételi kísérlet sikertelen lesz.

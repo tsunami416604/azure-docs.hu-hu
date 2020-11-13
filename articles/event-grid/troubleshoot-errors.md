@@ -3,15 +3,20 @@ title: Azure Event Grid – hibaelhárítási útmutató
 description: Ez a cikk a hibakódok, a hibaüzenetek, a leírások és a javasolt műveletek listáját tartalmazza.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1dd464339e7654f8886224ff07cf368b4724ff82
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 79533918ccc6995f459b39f058de9e01091c0958
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041390"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592991"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Azure Event Grid hibák elhárítása
-Ez a hibaelhárítási útmutató a Azure Event Grid hibakódok, a hibaüzenetek, a leírások és az ajánlott műveletek listáját tartalmazza, amelyeket a hibák vételekor kell végrehajtania. 
+Ez a hibaelhárítási útmutató a következő információkat tartalmazza: 
+
+- Azure Event Grid hibakódok
+- Hibaüzenetek
+- A hibák leírása
+- A hibák fogadásakor végrehajtandó ajánlott műveletek. 
 
 ## <a name="error-code-400"></a>Hibakód: 400
 | Hibakód | Hibaüzenet | Leírás | Ajánlás |
@@ -23,7 +28,7 @@ Ez a hibaelhárítási útmutató a Azure Event Grid hibakódok, a hibaüzenetek
 ## <a name="error-code-409"></a>Hibakód: 409
 | Hibakód | Hibaüzenet | Leírás | Javasolt művelet |
 | ---------- | ------------- | ----------- | -------------- | 
-| HttpStatusCode. Conflict <br/>409 | A megadott nevű témakör már létezik. Válasszon másik témakör-nevet.   | Az egyéni témakör nevének egyedinek kell lennie egyetlen Azure-régióban a megfelelő közzétételi művelet biztosítása érdekében. Ugyanezt a nevet különböző Azure-régiókban is használhatja. | Válasszon másik nevet a témakörnek. |
+| HttpStatusCode. Conflict <br/>409 | A megadott nevű témakör már létezik. Válasszon másik témakör-nevet.   | Az egyéni témakör nevének egyedinek kell lennie egyetlen Azure-régióban, így biztosítva a megfelelő közzétételi műveletet. Ugyanezt a nevet különböző Azure-régiókban is használhatja. | Válasszon másik nevet a témakörnek. |
 | HttpStatusCode. Conflict <br/> 409 | A megadott tartomány már létezik. Válasszon másik tartománynevet. | A tartománynévnek egyedinek kell lennie egyetlen Azure-régióban a megfelelő közzétételi művelet biztosítása érdekében. Ugyanezt a nevet különböző Azure-régiókban is használhatja. | Válasszon másik nevet a tartománynak. |
 | HttpStatusCode. Conflict<br/>409 | Elérte a kvóta korlátját. További információ ezekről a korlátozásokról: [Azure Event Grid korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits).  | Az egyes Azure-előfizetések az általa használható Azure Event Grid erőforrások számát korlátozzák. A kvóta egy részét vagy egészét túllépte, és nem hozható létre több erőforrás. |    Győződjön meg az erőforrások aktuális használatáról, és törölje a szükséges adatokat. Ha továbbra is meg kell emelnie a kvótát, küldjön e-mailt [aeg@microsoft.com](mailto:aeg@microsoft.com) a szükséges erőforrások pontos számával. |
 
@@ -31,27 +36,17 @@ Ez a hibaelhárítási útmutató a Azure Event Grid hibakódok, a hibaüzenetek
 
 | Hibakód | Hibaüzenet | Leírás | Javasolt művelet |
 | ---------- | ------------- | ----------- | ------------------ |
-| HttpStatusCode. tiltott <br/>403 | Az IP-cím szűrési szabályainak elutasítása miatt a rendszer elutasította a (a (témakör/tartomány) {Ip_cím} ügyfél általi közzétételét | A témakörhöz vagy tartományhoz IP-tűzfalszabályok vannak konfigurálva, és a hozzáférés csak a konfigurált IP-címekre van korlátozva. | Adja hozzá az IP-címet az IP-tűzfalszabályok számára: [IP-tűzfal konfigurálása](configure-firewall.md) |
-| HttpStatusCode. tiltott <br/> 403 | A (z) {topic/domain} ügyfél általi közzétételét a rendszer elutasította, mivel a kérés a privát végponttól érkezett, és nem található az erőforráshoz tartozó saját végpont-kapcsolódás. | A témakörhöz vagy a tartományhoz saját végpontok vannak konfigurálva, és a közzétételi kérelem olyan privát végpontból jött létre, amely nincs konfigurálva/jóváhagyva. | Magánhálózati végpont konfigurálása a témakörhöz/tartományhoz. [Privát végpontok konfigurálása](configure-private-endpoints.md) |
+| HttpStatusCode. tiltott <br/>403 | Az IP-cím-szűrési szabályok miatt a rendszer elutasította a ({témakör/tartomány}) {Ip_cím} ügyfél általi közzétételét. | A témakörhöz vagy tartományhoz IP-tűzfalszabályok vannak konfigurálva, és a hozzáférés csak a konfigurált IP-címekre van korlátozva. | Adja hozzá az IP-címet az IP-tűzfalszabályok számára: [IP-tűzfal konfigurálása](configure-firewall.md) |
+| HttpStatusCode. tiltott <br/> 403 | A (z) {topic/domain} ügyfél általi közzétételét a rendszer elutasította, mivel a kérés a privát végponttól érkezett, és nem található az erőforráshoz tartozó saját végpont-kapcsolódás. | A témakör vagy a tartomány saját végpontokkal rendelkezik, és a közzétételi kérelem egy nem konfigurált vagy jóváhagyott privát végpontból érkezett. | Magánhálózati végpont konfigurálása a témakörhöz/tartományhoz. [Privát végpontok konfigurálása](configure-private-endpoints.md) |
 
-## <a name="troubleshoot-event-subscription-validation"></a>Az esemény-előfizetés ellenőrzésének hibája
+Azt is ellenőrizze, hogy a webhook egy Azure Application Gateway vagy webalkalmazási tűzfal mögött van-e. Ha igen, tiltsa le a következő tűzfalszabályok, és tegye meg újra a HTTP-BEJEGYZÉST:
 
-Ha az esemény-előfizetés létrehozása során hibaüzenetet kap (például `The attempt to validate the provided endpoint https://your-endpoint-here failed. For more details, visit https://aka.ms/esvalidation` ), az azt jelzi, hogy hiba történt az érvényesítési kézfogásban. A hiba megoldásához ellenőrizze a következő szempontokat:
+- 920300 (a kérelemből hiányzik egy Accept fejléc)
+- 942430 (korlátozott SQL-karakteres anomáliák észlelése (argumentumok): a speciális karakterek száma túllépve (12)
+- 920230 (több URL-kódolás észlelhető)
+- 942130 (SQL injection támadás: az SQL-tautológia észlelve.)
+- 931130 (lehetséges távoli fájlok felvételének (RFI) támadása = off-domain Reference/link)
 
-- Végezzen HTTP-BEJEGYZÉST a webhook URL-címére a Poster vagy a curl vagy hasonló eszköz használatával egy [minta SubscriptionValidationEvent](webhook-event-delivery.md#validation-details) -kérelem Törzsével.
-- Ha a webhook szinkron ellenőrzési kézfogási mechanizmust valósít meg, ellenőrizze, hogy a ValidationCode a válasz részeként adja-e vissza.
-- Ha a webhook aszinkron ellenőrzési kézfogási mechanizmust valósít meg, ellenőrizze, hogy a HTTP-bejegyzés 200 OK-e.
-- Ha a webhook 403 (tiltott) értékkel tér vissza a válaszban, ellenőrizze, hogy a webhook egy Azure Application Gateway vagy webalkalmazási tűzfal mögött van-e. Ha igen, akkor le kell tiltania ezeket a tűzfalszabályok, és végre kell hajtania a HTTP-KÖZZÉTÉTELt:
-
-  920300 (a kérelemből hiányzik egy Accept fejléc, ezt kijavíthatjuk)
-
-  942430 (korlátozott SQL-karakteres anomáliák észlelése (argumentumok): a speciális karakterek száma túllépve (12)
-
-  920230 (több URL-kódolás észlelhető)
-
-  942130 (SQL injection támadás: az SQL-tautológia észlelve.)
-
-  931130 (lehetséges távoli fájlok felvételének (RFI) támadása = Off-Domain hivatkozás/hivatkozás)
 
 
 ## <a name="next-steps"></a>Következő lépések
