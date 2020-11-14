@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: a Batch pontozásának ML-folyamatai'
 titleSuffix: Azure Machine Learning
-description: Ebben az oktatóanyagban egy gépi tanulási folyamatot hoz létre a Batch-pontozás létrehozásához egy képbesorolási modellen. Azure Machine Learning lehetővé teszi, hogy az infrastruktúra és az automatizálás helyett a gépi tanulásra koncentráljon.
+description: Ebben az oktatóanyagban egy gépi tanulási folyamatot hoz létre a Batch-pontozás végrehajtásához. Az infrastruktúra és az automatizálás helyett a gépi tanulásra koncentrálhat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: f7d1cffb44914535fe218980c750270ebba14445
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8748d6e155eb84cf948966d768dda1a992207f7e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309448"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629631"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Oktatóanyag: Azure Machine Learning folyamat létrehozása a Batch-pontozáshoz
 
@@ -445,7 +445,7 @@ Ha nem tervezi a létrehozott erőforrások használatát, törölje őket, így
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a Machine learning-folyamatok oktatóanyagában a következő feladatokat végezte el:
 

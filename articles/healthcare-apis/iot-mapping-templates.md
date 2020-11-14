@@ -8,15 +8,15 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 1702c17555d1d3c39a83fa16ca790d6f8f2b3344
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 63484361a6d5a331fd9dc646c53627918ce8b246
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394237"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630549"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) leképezési sablonjai
-Ez a cikk részletesen ismerteti, hogyan konfigurálhatja az Azure IoT Connectort a FHIR * szolgáltatáshoz a leképezési sablonok használatával.
+Ez a cikk részletesen ismerteti, hogyan konfigurálhatja az Azure IoT Connectort a gyors egészségügyi együttműködési erőforrásokhoz (FHIR&#174;) * a leképezési sablonok használatával.
 
 A FHIR készült Azure IoT-összekötőhöz két típusú JSON-alapú leképezési sablon szükséges. Az első típus, az **eszköz-hozzárendelés** feladata az `devicedata` Azure Event hub-végpontnak eljuttatott eszköz-adattartalom megfeleltetése. Kibontja a típusokat, az eszközök azonosítóit, a mérési dátum időpontját és a mérési értéket. A második típus, a **FHIR leképezése** SZABÁLYOZZA a FHIR-erőforrás leképezését. Lehetővé teszi a megfigyelési időszak hosszának, az értékek tárolására szolgáló FHIR és a terminológiai kódoknak a konfigurálását. 
 
@@ -567,6 +567,4 @@ Tekintse meg a FHIR (előzetes verzió) Azure IoT-összekötővel kapcsolatos gy
 >[!div class="nextstepaction"]
 >[Azure IoT-összekötő FHIR – gyakori kérdések](fhir-faq.md)
 
-* A Azure Portal a FHIR készült Azure IoT-összekötő a IoT-összekötő (előzetes verzió) néven ismert.
-
-Az FHIR a HL7 bejegyzett védjegye, amelynek felhasználását a HL7 engedélyezte.
+* A Azure Portal a FHIR készült Azure IoT Connector a IoT Connector (előzetes verzió) néven ismert. A FHIR a HL7 bejegyzett védjegye, és a HL7 engedélyével van használatban.

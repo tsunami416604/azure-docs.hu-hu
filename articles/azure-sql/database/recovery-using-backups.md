@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
-ms.date: 09/26/2019
-ms.openlocfilehash: 334495eeef410c42fb45445c400a86ff1b777061
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/13/2020
+ms.openlocfilehash: 415c9fdcbf0e8bfecaa48b8199702d4159bc32d9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790338"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629189"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Helyreállítás automatikus adatbázis-biztonsági másolatokkal – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -107,6 +107,9 @@ A törölt adatbázist visszaállíthatja a törlési időre vagy egy korábbi i
 ### <a name="deleted-database-restore-by-using-the-azure-portal"></a>Az adatbázis-visszaállítás törölve a Azure Portal használatával
 
 A törölt adatbázisokat a kiszolgálóról vagy a felügyelt példányok erőforrásból kell visszaállítani a Azure Portalból.
+
+> [!TIP]
+> Több percet is igénybe vehet, hogy a nemrég törölt adatbázisok megjelenjenek a Azure Portal **törölt adatbázisok** lapján, vagy ha [programozott](#programmatic-recovery-using-automated-backups)módon jeleníti meg a törölt adatbázisokat.
 
 #### <a name="sql-database"></a>SQL Database
 
@@ -254,7 +257,7 @@ A felügyelt példányok adatbázisának az Azure CLI használatával történő
 
 Az automatikus biztonsági mentések védik az adatbázisokat a felhasználók és alkalmazások hibáiból, a véletlen adatbázis-törlésből és a hosszan tartó kimaradásokból. Ez a beépített képesség minden szolgáltatási réteghez és számítási mérethez elérhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az üzletmenet folytonossága – áttekintés](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 - [Automatikus biztonsági mentések SQL Database](automated-backups-overview.md)

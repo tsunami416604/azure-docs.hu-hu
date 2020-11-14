@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: cbbd4960a498516182323748e6609b834b1d4884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fe6befbfc3c6f12cf804841052795647cd1f76a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014684"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629835"
 ---
 # <a name="azure-files-reference"></a>Azure Files-referenciák
 
@@ -25,7 +25,7 @@ Az alábbi táblázat a Azure Files .NET API-k hivatkozásait és mintáit sorol
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [A .NET-hez készült ügyféloldali kódtár Azure Files](/dotnet/api/overview/azure/storage.files.shares-readme) | [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
-| 11. x | [Microsoft. Azure. Storage. file névtér](/dotnet/api/microsoft.azure.storage.file) | [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel](/azure/storage/files/storage-dotnet-how-to-use-files) |
+| 11. x | [Microsoft. Azure. Storage. file névtér](/dotnet/api/microsoft.azure.storage.file) | [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel](./storage-dotnet-how-to-use-files.md) |
 
 ### <a name="storage-management"></a>Tárolókezelés
 
@@ -50,7 +50,7 @@ Az alábbi táblázat a Azure Files Java API-k hivatkozásait és mintáit tarta
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [A Javához készült ügyféloldali kódtár Azure Files](/java/api/overview/azure/storage-file-share-readme) | [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
-| 8. x | [com. microsoft. Azure. Storage. file](/java/api/com.microsoft.azure.storage.file) | [Csomag (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Fejlesztés az Azure Files szolgáltatáshoz Javával](/azure/storage/files/storage-java-how-to-use-file-storage) |
+| 8. x | [com. microsoft. Azure. Storage. file](/java/api/com.microsoft.azure.storage.file) | [Csomag (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Fejlesztés az Azure Files szolgáltatáshoz Javával](./storage-java-how-to-use-file-storage.md) |
 
 ### <a name="storage-management"></a>Tárolókezelés
 
@@ -67,7 +67,7 @@ Az alábbi táblázat a Python API-k Azure Files dokumentációját és mintáit
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Az Azure Storage ügyféloldali kódtárai a Pythonhoz](/azure/developer/python/sdk/storage/overview) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Példák](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2. x | [Azure Storage ügyféloldali kódtárak v2 a Pythonhoz](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Fejlesztés az Azure Files szolgáltatáshoz Pythonnal](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 2. x | [Azure Storage ügyféloldali kódtárak v2 a Pythonhoz](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Fejlesztés az Azure Files szolgáltatáshoz Pythonnal](./storage-python-how-to-use-file-storage.md) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript-ügyféloldali kódtárak
 

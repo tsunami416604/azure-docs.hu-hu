@@ -7,19 +7,19 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0bf66baba1b665c92a11d7bda91dcaa3e355dd96
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dea88bf93000422ce1d832be4a0f60474ff27938
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "75431817"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629784"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure Storage Explorerrel
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) Azure Storage Explorerrel történő használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
 
 Az Azure Storage Explorer a Windows, macOS és Linux esetén egyaránt elérhető népszerű ügyféleszköz. A Storage Explorer segítségével felügyelheti az Azure-fájlmegosztásokat és más tárolási erőforrásokat.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutatóhoz a Storage Explorer telepítése szükséges. A letöltéséhez és telepítéséhez keresse fel az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) webhelyét.
@@ -32,11 +32,11 @@ A Storage Explorer nem használható új erőforrások létrehozására. A bemut
 ## <a name="connect-storage-explorer-to-azure-resources"></a>A Storage Explorer csatlakoztatása Azure-erőforrásokhoz
 A Storage Explorer első indításakor megjelenik a **Microsoft Azure Storage Explorer – Csatlakozás** ablak. A Storage Explorer számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz: 
 
-- **Bejelentkezés az Azure-fiókon keresztül**: Bejelentkezhet a vállalata vagy Microsoft-fiókja felhasználói hitelesítő adataival. 
-- **Csatlakozás adott tárfiókhoz kapcsolati sztring vagy SAS-jogkivonat használatával**: A kapcsolati sztring egy speciális sztring, amely tartalmazza a tárfiók nevét és a tárfiók kulcsát/SAS-jogkivonatát. A jogkivonattal a Storage Explorer közvetlenül a tárfiókhoz fér hozzá (ahelyett, hogy egyszerűen az Azure-fiókban lévő összes tárfiókot látná). További információ a kapcsolati sztringekról: [Az Azure Storage kapcsolati sztringek konfigurálása](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-- **Csatlakozás adott tárfiókhoz a tárfiók nevének és kulcsának használatával**: A tárfiók nevével és kulcsával csatlakozhat az Azure Storage-hoz.
+- **Bejelentkezés az Azure-fiókon keresztül** : Bejelentkezhet a vállalata vagy Microsoft-fiókja felhasználói hitelesítő adataival. 
+- **Csatlakozás adott tárfiókhoz kapcsolati sztring vagy SAS-jogkivonat használatával** : A kapcsolati sztring egy speciális sztring, amely tartalmazza a tárfiók nevét és a tárfiók kulcsát/SAS-jogkivonatát. A jogkivonattal a Storage Explorer közvetlenül a tárfiókhoz fér hozzá (ahelyett, hogy egyszerűen az Azure-fiókban lévő összes tárfiókot látná). További információ a kapcsolati sztringekról: [Az Azure Storage kapcsolati sztringek konfigurálása](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- **Csatlakozás adott tárfiókhoz a tárfiók nevének és kulcsának használatával** : A tárfiók nevével és kulcsával csatlakozhat az Azure Storage-hoz.
 
-Ebben a rövid útmutatóban az Azure-fiókjával jelentkezzen be. Válassza az **Azure-fiók hozzáadása**, majd a **Bejelentkezés** elemet. Az utasításokat követve jelentkezzen be Azure-fiókjába.
+Ebben a rövid útmutatóban az Azure-fiókjával jelentkezzen be. Válassza az **Azure-fiók hozzáadása** , majd a **Bejelentkezés** elemet. Az utasításokat követve jelentkezzen be Azure-fiókjába.
 
 ![A Microsoft Azure Storage Explorer – Csatlakozás ablak képernyőképe](./media/storage-how-to-use-files-storage-explorer/connect-to-azure-storage-1.png)
 
@@ -49,7 +49,7 @@ Az első Azure-fájlmegosztás létrehozása a `storageacct<random number>` tár
 
 3. Adja a *myshare* nevet a fájlmegosztásnak, majd nyomja le az Enter billentyűt.
 
-A fájlmegosztások neve csak kisbetűket, számokat és kötőjeleket tartalmazhat (de nem kezdődhet kötőjellel). A fájlmegosztás és a fájlok elnevezésével kapcsolatos részletes információkért lásd: [megosztások, könyvtárak, fájlok és metaadatok elnevezése és hivatkozása](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+A fájlmegosztások neve csak kisbetűket, számokat és kötőjeleket tartalmazhat (de nem kezdődhet kötőjellel). A fájlmegosztás és a fájlok elnevezésével kapcsolatos részletes információkért lásd: [megosztások, könyvtárak, fájlok és metaadatok elnevezése és hivatkozása](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
 Ha a fájlmegosztás létrejött, a jobb oldali panelen megnyílik a fájlmegosztás lapja. 
 

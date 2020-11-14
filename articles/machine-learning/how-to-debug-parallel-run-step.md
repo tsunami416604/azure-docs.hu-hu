@@ -1,7 +1,7 @@
 ---
 title: ParallelRunStep – hibakeresés és hibaelhárítás
 titleSuffix: Azure Machine Learning
-description: ParallelRunStep hibakeresése és hibaelhárítása a gépi tanulási folyamatokban a Pythonhoz készült Azure Machine Learning SDK-ban. Ismerje meg a folyamatokkal kapcsolatos gyakori buktatókat, valamint a távoli végrehajtás előtt és közben a parancsfájlok hibakeresését segítő tippeket.
+description: ParallelRunStep hibakeresése és hibaelhárítása a gépi tanulási folyamatokban a Pythonhoz készült Azure Machine Learning SDK-ban.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 93997629b6b30f87769a0154e344215ca52c8ec4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 09f75e9e8f972ec44098e119dc5b30bd44638918
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308379"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630464"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep – hibakeresés és hibaelhárítás
 
@@ -140,7 +140,7 @@ ds = Dataset.File.from_files(default_blob_store, '_*path**_')
 registered_ds = ds.register(ws, '_*_dataset-name_*_', create_new_version=True)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 _ Tekintse meg ezeket a [Jupyter-jegyzetfüzeteket Azure Machine learning folyamatok bemutatásával](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 

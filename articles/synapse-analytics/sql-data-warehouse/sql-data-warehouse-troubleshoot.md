@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2019
+ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a50554c73958400f1f16348d3b8fb2bac88ac61b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e9811710971b411aaaed64ec0072dcf7b6b116d3
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340277"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630056"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>A szinapszis SQL hibaelhárítása Az Azure szinapszis Analyticsben
 
@@ -29,7 +29,7 @@ Ez a cikk a szinapszis SQL általános hibaelhárítási problémáit sorolja fe
 | Az „NT AUTHORITY\ANONYMOUS LOGON” felhasználó bejelentkezése nem sikerült. (Microsoft SQL Server, hiba: 18456) | Ez a hiba akkor fordul elő, amikor egy Azure AD-felhasználó megpróbál csatlakozni a Master adatbázishoz, de nem rendelkezik a főkiszolgálóval.  A probléma megoldásához adja meg azt a dedikált SQL-készletet, amelyhez csatlakozni szeretne, vagy adja hozzá a felhasználót a Master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése](sql-data-warehouse-overview-manage-security.md) című cikket. |
 | A „MyUserName” kiszolgálói tag a jelenlegi biztonsági környezetben nem tud hozzáférni a „master” adatbázishoz. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés sikertelen volt. A következő felhasználó bejelentkezése nem sikerült: „MyUserName”. (Microsoft SQL Server, hiba: 916) | Ez a hiba akkor fordul elő, amikor egy Azure AD-felhasználó megpróbál csatlakozni a Master adatbázishoz, de nem rendelkezik a főkiszolgálóval.  A probléma megoldásához adja meg azt a dedikált SQL-készletet, amelyhez csatlakozni szeretne, vagy adja hozzá a felhasználót a Master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése](sql-data-warehouse-overview-manage-security.md) című cikket. |
 | CTAIP hiba                                                  | Ez a hiba akkor fordulhat elő, ha a SQL Database Master adatbázisban létrehozott egy bejelentkezési azonosítót, de nem az adott SQL-adatbázisban.  Ha ezt a hibát tapasztalja, tekintse meg a [biztonsági áttekintést ismertető](sql-data-warehouse-overview-manage-security.md) cikket.  Ez a cikk bemutatja, hogyan hozhat létre egy felhasználónevet és egy felhasználót a Master adatbázisban, majd hogyan hozhat létre felhasználót egy SQL-adatbázisban. |
-| Tűzfal blokkolja                                          | a dedikált SQL-készleteket a tűzfalak védik, hogy csak az ismert IP-címek férhessenek hozzá egy adatbázishoz. Alapértelmezés szerint a tűzfalak biztonságosak, ami azt jelenti, hogy a kapcsolat megkezdése előtt explicit módon engedélyeznie kell és meg kell adnia az IP-címet vagy a címtartományt.  A tűzfal hozzáférésre való konfigurálásához kövesse a [kiszolgáló tűzfal-hozzáférés konfigurálása az ügyfél IP](create-data-warehouse-portal.md) -címére című témakör lépéseit a [létesítési utasításokban](create-data-warehouse-portal.md). |
+| A tűzfal blokkolja                                          | a dedikált SQL-készleteket a tűzfalak védik, hogy csak az ismert IP-címek férhessenek hozzá egy adatbázishoz. Alapértelmezés szerint a tűzfalak biztonságosak, ami azt jelenti, hogy a kapcsolat megkezdése előtt explicit módon engedélyeznie kell és meg kell adnia az IP-címet vagy a címtartományt.  A tűzfal hozzáférésre való konfigurálásához kövesse a [kiszolgáló tűzfal-hozzáférés konfigurálása az ügyfél IP](create-data-warehouse-portal.md) -címére című témakör lépéseit a [létesítési utasításokban](create-data-warehouse-portal.md). |
 | Nem lehet kapcsolatot létesíteni az eszközzel vagy az illesztőprogrammal                           | A dedikált SQL-készlet a [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [a SSDT for Visual Studio](sql-data-warehouse-install-visual-studio.md)vagy a [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) használatát javasolja az adatai lekérdezéséhez. További információ az illesztőprogramokról és az Azure Szinapszishoz való csatlakozásról: [Az Azure szinapszis-illesztőprogramok](sql-data-warehouse-connection-strings.md) és [Az Azure szinapszis-cikkek csatlakoztatása](sql-data-warehouse-connect-overview.md) . |
 
 ## <a name="tools"></a>Eszközök
@@ -39,6 +39,12 @@ Ez a cikk a szinapszis SQL általános hibaelhárítási problémáit sorolja fe
 | A Visual Studio Object Explorerből hiányzik az Azure AD-felhasználók           | Ez egy ismert probléma.  Áthidaló megoldásként tekintse meg [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)felhasználóit.  További információ a Azure Active Directory dedikált SQL-készlettel való használatáról: az [Azure szinapszis hitelesítése](sql-data-warehouse-authentication.md) . |
 | A manuális parancsfájlok, a parancsfájlkezelés varázsló használata vagy a SSMS-on keresztüli csatlakozás lassú, nem válaszol, vagy hibákat állít elő. | Győződjön meg arról, hogy a felhasználók létre lettek hozva a Master adatbázisban. A parancsfájl-kezelési beállítások területen győződjön meg arról, hogy a motor kiadása "Microsoft Azure szinapszis Analytics Edition", a motor típusa pedig "Microsoft Azure SQL Database". |
 | A szkriptek előállítása meghiúsul a SSMS                               | Nem sikerül parancsfájlt létrehozni a dedikált SQL-készlethez, ha a "függő objektumok parancsfájl létrehozása" beállítás értéke "true" (igaz). Megkerülő megoldásként a felhasználóknak manuálisan kell megadniuk az **eszközök-> Options->SQL Server Object Explorer-> parancsfájlt létrehozni a függő beállításokhoz, és false** értékre kell állítani. |
+
+## <a name="data-ingestion-and-preparation"></a>Adatfeldolgozás és -előkészítés
+
+| Probléma                                                        | Feloldás                                                   |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| Az üres karakterláncok CETAS használatával történő exportálása NULL értéket eredményez a parketta-és az ork-fájlokban. Megjegyzés: Ha nem NULL értékű korlátozásokkal rendelkező oszlopokból exportál üres karakterláncokat, a CETAS visszautasította a rekordokat, és az Exportálás sikertelen lehet. | Távolítsa el az üres karakterláncokat vagy a jogsértő oszlopot a CETAS SELECT utasításában. |
 
 ## <a name="performance"></a>Teljesítmény
 

@@ -1,7 +1,7 @@
 ---
 title: Honnan menthetők a & írási kísérlet fájljai
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hová mentse a kísérlet bemeneti fájljait, és hova írhat kimeneti fájlokat a tárolási korlátozási hibák és a kísérletek késleltetésének megakadályozása érdekében.
+description: Megtudhatja, hol mentheti a bemeneti és kimeneti fájljait a tárolási korlátozási hibák és a kísérletek késésének megakadályozása érdekében.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 0dab99c902269f7d598eedb8c2fa23bbed3948c4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49e1e9efbd6f59bd037a8033f83836bf7fc71c43
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325360"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630328"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Fájlok mentése és írása Azure Machine Learning kísérletekhez
 
@@ -75,7 +75,7 @@ Ha nincs szüksége adattárra, írja a fájlokat a `./outputs` és/vagy `./logs
 
 * **Ha az írott fájlt naplófájlként szeretné menteni a futtatási előzményekben,** írja a fájlokat a `./logs` mappába. A naplók valós időben lesznek feltöltve, így ez a módszer alkalmas az élő frissítések távoli futtatásból való továbbítására.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [adattárolók adatainak eléréséről](how-to-access-data.md).
 

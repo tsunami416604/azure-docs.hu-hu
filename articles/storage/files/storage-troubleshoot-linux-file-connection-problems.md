@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: da60d6a2146385e1dfd0717afb1172b378e52533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19fe6be0487772524516172bd32e0562512c4e3c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716003"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630175"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>A Linux (SMB) Azure Files problémáinak elhárítása
 
@@ -61,14 +61,14 @@ A probléma megoldásához használja a [hibaelhárítási eszközt a Azure File
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>1. ok: titkosítatlan kommunikációs csatorna
 
-Biztonsági okokból az Azure-fájlmegosztásokhoz való kapcsolódás le van tiltva, ha a kommunikációs csatorna nincsen titkosítva, vagy ha a csatlakozási kísérlet nem ugyanabból az adatközpontból történik, ahol az Azure-fájlmegosztások találhatók. Az ugyanazon adatközponton belüli titkosítatlan kapcsolatokat akkor is blokkolhatja a rendszer, ha a tárfiókban engedélyezve van a [Biztonságos átvitelre van szükség](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás. Csak akkor biztosítható titkosított kommunikációs csatorna, ha a felhasználó ügyfél operációs rendszere támogatja az SMB-titkosítást.
+Biztonsági okokból az Azure-fájlmegosztásokhoz való kapcsolódás le van tiltva, ha a kommunikációs csatorna nincsen titkosítva, vagy ha a csatlakozási kísérlet nem ugyanabból az adatközpontból történik, ahol az Azure-fájlmegosztások találhatók. Az ugyanazon adatközponton belüli titkosítatlan kapcsolatokat akkor is blokkolhatja a rendszer, ha a tárfiókban engedélyezve van a [Biztonságos átvitelre van szükség](../common/storage-require-secure-transfer.md) beállítás. Csak akkor biztosítható titkosított kommunikációs csatorna, ha a felhasználó ügyfél operációs rendszere támogatja az SMB-titkosítást.
 
 További információ: [Azure-fájlmegosztás Linux és a cifs-utils csomag használatával történő csatlakoztatásának előfeltételei](storage-how-to-use-files-linux.md#prerequisites). 
 
 ### <a name="solution-for-cause-1"></a>Megoldás az 1. ok esetén
 
 1. Kapcsolódjon egy olyan ügyfélhez, amely támogatja az SMB-titkosítást, vagy kapcsolódjon egy olyan virtuális gépről, amely ugyanabban az adatközpontban található, mint az Azure-fájlmegosztás esetében használt Azure Storage-fiók.
-2. Győződjön meg arról, hogy a [biztonságos átvitel szükséges](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás le van tiltva a Storage-fiókban, ha az ügyfél nem támogatja az SMB-titkosítást.
+2. Győződjön meg arról, hogy a [biztonságos átvitel szükséges](../common/storage-require-secure-transfer.md) beállítás le van tiltva a Storage-fiókban, ha az ügyfél nem támogatja az SMB-titkosítást.
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2. ok: a virtuális hálózat vagy a tűzfalszabályok engedélyezve vannak a Storage-fiókon. 
 
@@ -76,7 +76,7 @@ Ha virtuális hálózati (VNET) és tűzfalszabályok vannak konfigurálva a tá
 
 ### <a name="solution-for-cause-2"></a>Megoldás a 2. ok esetén
 
-Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról**. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról**. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../common/storage-network-security.md).
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>"[engedély megtagadva] a lemezre vonatkozó kvóta túllépve", amikor megpróbál megnyitni egy fájlt
@@ -95,19 +95,19 @@ Egyetlen fájl vagy könyvtár 2 000-es nyitott leírójának kvótája. Ha a 2 
 
 Csökkentse az egyidejű megnyitott fogópontok számát néhány leíró bezárásával, majd próbálja megismételni a műveletet.
 
-Egy fájlmegosztás, könyvtár vagy fájl nyitott leíróinak megtekintéséhez használja a [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmagot.  
+Egy fájlmegosztás, könyvtár vagy fájl nyitott leíróinak megtekintéséhez használja a [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmagot.  
 
-Egy fájlmegosztás, könyvtár vagy fájl megnyitott leíróinak bezárásához használja a [AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell-parancsmagot.
+Egy fájlmegosztás, könyvtár vagy fájl megnyitott leíróinak bezárásához használja a [AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell-parancsmagot.
 
 > [!Note]  
-> A Get-AzStorageFileHandle és Close-AzStorageFileHandle parancsmagok az az PowerShell-modul 2,4-es vagy újabb verziójában szerepelnek. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> A Get-AzStorageFileHandle és Close-AzStorageFileHandle parancsmagok az az PowerShell-modul 2,4-es vagy újabb verziójában szerepelnek. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps).
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Lassú a másolás a Linux rendszerbe és Azure Filesba
 
 - Ha nem rendelkezik meghatározott minimális I/O-mérettel, javasoljuk, hogy az optimális teljesítmény érdekében az 1 MiB-t használja az I/O-mérethez.
 - Használja a megfelelő másolási módszert:
-    - Használjon [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a két fájlmegosztás közötti átvitelhez.
+    - Használjon [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) a két fájlmegosztás közötti átvitelhez.
     - A CP vagy a dd párhuzamosan történő használata a másolási sebesség növelését eredményezheti, a szálak száma a használati esettől és a számítási feladatoktól függ. A következő példák hat-ot használnak: 
     - CP-példa (a CP a fájlrendszer alapértelmezett méretét fogja használni az adathalmaz méretének megfelelően): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` .
     - dd-példa (ez a parancs explicit módon beállítja az adatrészlet méretét 1 MiB-re): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
@@ -144,13 +144,13 @@ Hibakód: 403
 
 ### <a name="solution-for-cause-1"></a>Megoldás az 1. ok esetén
 
-Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról**. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról**. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../common/storage-network-security.md).
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>2. ok: a felhasználói fióknak nincs hozzáférése a Storage-fiókhoz
 
 ### <a name="solution-for-cause-2"></a>Megoldás a 2. ok esetén
 
-Keresse meg azt a Storage-fiókot, ahol az Azure-fájlmegosztás található, kattintson a **hozzáférés-vezérlés (iam)** elemre, és ellenőrizze, hogy a felhasználói fiókja rendelkezik-e hozzáféréssel a Storage-fiókhoz. További információt a [Storage-fiók biztonságossá tétele az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)című témakörben talál.
+Keresse meg azt a Storage-fiókot, ahol az Azure-fájlmegosztás található, kattintson a **hozzáférés-vezérlés (iam)** elemre, és ellenőrizze, hogy a felhasználói fiókja rendelkezik-e hozzáféréssel a Storage-fiókhoz. További információt a [Storage-fiók biztonságossá tétele az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../blobs/security-recommendations.md#data-protection)című témakörben talál.
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nem sikerült törölni egy fájlt vagy könyvtárt valamelyik Azure-fájlmegosztásban
@@ -162,12 +162,12 @@ Ez a probléma általában akkor fordul elő, ha a fájl vagy könyvtár nyitott
 
 Ha az SMB-ügyfelek lezárták az összes nyitott leírót, és a probléma továbbra is fennáll, hajtsa végre a következőket:
 
-- A [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmag használatával tekintheti meg a nyitott leírókat.
+- A [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmag használatával tekintheti meg a nyitott leírókat.
 
-- A [AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell-parancsmag használatával zárhatja be a megnyitott leírókat. 
+- A [AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell-parancsmag használatával zárhatja be a megnyitott leírókat. 
 
 > [!Note]  
-> A Get-AzStorageFileHandle és Close-AzStorageFileHandle parancsmagok az az PowerShell-modul 2,4-es vagy újabb verziójában szerepelnek. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> A Get-AzStorageFileHandle és Close-AzStorageFileHandle parancsmagok az az PowerShell-modul 2,4-es vagy újabb verziójában szerepelnek. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps).
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux virtuális géphez csatlakoztatott Azure-fájlmegosztás lassú teljesítménye
@@ -192,11 +192,11 @@ Azt is megtudhatja, hogy a megfelelő beállításokat használja-e a  **sudo Mo
 //azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)
 ```
 
-Ha a **cache = Strict** vagy a **serverino** beállítás nincs jelen, válassza le és csatlakoztassa újra Azure Files a csatlakoztatás parancsnak a [dokumentációból](../storage-how-to-use-files-linux.md)való futtatásával. Ezután győződjön meg arról, hogy az **/etc/fstab** bejegyzés megfelelő beállításokkal rendelkezik.
+Ha a **cache = Strict** vagy a **serverino** beállítás nincs jelen, válassza le és csatlakoztassa újra Azure Files a csatlakoztatás parancsnak a [dokumentációból](./storage-how-to-use-files-linux.md)való futtatásával. Ezután győződjön meg arról, hogy az **/etc/fstab** bejegyzés megfelelő beállításokkal rendelkezik.
 
 ### <a name="cause-2-throttling"></a>2. ok: szabályozás
 
-Lehetséges, hogy sávszélesség-szabályozást tapasztal, és a kéréseket egy várólistába küldik. Ezt úgy ellenőrizheti, hogy kihasználja [Az Azure Storage-metrikákat Azure monitorban](../common/storage-metrics-in-azure-monitor.md).
+Lehetséges, hogy sávszélesség-szabályozást tapasztal, és a kéréseket egy várólistába küldik. Ezt úgy ellenőrizheti, hogy kihasználja [Az Azure Storage-metrikákat Azure monitorban](../blobs/monitor-blob-storage.md).
 
 ### <a name="solution-for-cause-2"></a>Megoldás a 2. ok esetén
 
@@ -294,7 +294,7 @@ Ha nem tud frissíteni a legújabb kernelverziókra, áthidaló megoldásként l
 ## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-30"></a>"CIFS VFS: Error-22 az IOCTL lekérése a" kapcsolati listához "az Azure-fájlmegosztás SMB 3,0 használatával történő csatlakoztatásakor
 
 ### <a name="cause"></a>Ok
-A rendszer naplózza a hibát, mert Azure Files [jelenleg nem támogatja a többcsatornás SMB](https://docs.microsoft.com/rest/api/storageservices/features-not-supported-by-the-azure-file-service)-t.
+A rendszer naplózza a hibát, mert Azure Files [jelenleg nem támogatja a többcsatornás SMB](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)-t.
 
 ### <a name="solution"></a>Megoldás
 Ez a hiba figyelmen kívül hagyható.

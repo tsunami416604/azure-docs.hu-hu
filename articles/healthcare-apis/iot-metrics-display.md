@@ -1,21 +1,21 @@
 ---
-title: Az Azure IoT-összekötő megjelenítése és konfigurálása a FHIR (előzetes verzió) mérőszámokhoz
+title: Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) metrikáinak megjelenítése és konfigurálása
 description: Ez a cikk bemutatja, hogyan jelenítheti meg és konfigurálhatja az Azure IoT Connectort a FHIR (előzetes verzió) mérőszámokhoz.
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 9a4e2c4dfe8a9de28688afe0dd036cecb7ce2b39
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 79a7b18986f4bed503cd5493a7d74325a13fe535
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381218"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630515"
 ---
-# <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Az Azure IoT-összekötő megjelenítése és konfigurálása a FHIR (előzetes verzió) mérőszámokhoz 
+# <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) metrikáinak megjelenítése és konfigurálása 
 
 Ebből a cikkből megtudhatja, hogyan jelenítheti meg és konfigurálhatja az Azure IoT Connectort a gyors egészségügyi együttműködési erőforrások (FHIR&#174;) * mérőszámok számára.
 
@@ -41,6 +41,9 @@ Ebből a cikkből megtudhatja, hogyan jelenítheti meg és konfigurálhatja az A
    :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="Képernyőkép az &quot;IoT-összekötő&quot; panelről, amely egy &quot;1 órás&quot; időszakos grafikont jelenít meg az 1-es összekötőhöz." lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
  
 ## <a name="metric-types-for-azure-iot-connector-for-fhir-preview"></a>Metrikus típusok az Azure IoT-összekötőhöz a FHIR (előzetes verzió) 
+
+> [!TIP]
+> Ha többet szeretne megtudni a FHIR készült Azure IoT Connector adatforgalmáról, tekintse meg az [Azure IoT Connector for FHIR (előzetes verzió) adatfolyamát](./iot-data-flow.md) és [Az Azure IOT Connector for FHIR (előzetes verzió) hibaelhárítási útmutatóját](./iot-troubleshoot-guide.md) a hibaüzenetekkel és javításokkal kapcsolatos további információkért.
 
 A megjeleníthető IoT-összekötő metrikái a következő táblázatban láthatók:
 
@@ -68,7 +71,7 @@ Ebben a példában a **Bejövő üzenetek** metrikájának számát fogjuk össz
 ## <a name="conclusion"></a>Összegzés 
 A figyeléshez és a hibaelhárításhoz elengedhetetlen, hogy az adatközpont metrikái hozzáférjenek. A FHIR készült Azure IoT Connector a mérőszámokon keresztül segíti ezeket a műveleteket. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Válaszok az Azure IoT Connector FHIR szolgáltatással kapcsolatos gyakori kérdéseire.
 

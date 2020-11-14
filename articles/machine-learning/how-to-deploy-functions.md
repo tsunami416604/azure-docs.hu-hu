@@ -1,7 +1,7 @@
 ---
 title: Ml modellek üzembe helyezése Azure Functions alkalmazásokban (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan helyezhet üzembe modelleket Azure Functions alkalmazásokban a Azure Machine Learning használatával.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning a modellek webszolgáltatásként való becsomagolásához és üzembe helyezéséhez egy Azure Functions alkalmazásban.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: 5e5ab4e3c9332d0daa1acf32edeeba2423c97ac3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d17967c24fbbb127c1d3eaee5acd5b78c3e3b902
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324604"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630345"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Gépi tanulási modell üzembe helyezése Azure Functions (előzetes verzió)
 
@@ -295,7 +295,7 @@ Miután betöltötte a rendszerképet, és az alkalmazás elérhetővé válik, 
 
 A blob-eseményindítók használatával kapcsolatos további információkért tekintse meg az [Azure Blob Storage által aktivált függvények létrehozását](../azure-functions/functions-create-storage-blob-triggered-function.md) ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan konfigurálhatja a functions alkalmazást a [functions](../azure-functions/functions-create-function-linux-custom-image.md) dokumentációjában.
 * További információ a blob Storage eseményindítók [Azure Blob Storage-kötésekről](../azure-functions/functions-bindings-storage-blob.md).

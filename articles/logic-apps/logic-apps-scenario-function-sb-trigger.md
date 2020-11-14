@@ -1,22 +1,22 @@
 ---
 title: Logikai alkalmazások meghívása Azure Functions-függvényekkel
-description: Logikai alkalmazásokat hívó vagy indító Azure functions létrehozása a Azure Service Bus
+description: Logikai alkalmazások meghívása vagy elindítása Azure Functions és Azure Service Bus használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fcf7f1a27633c978c10f541d0a341225fbcb126d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013775"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629733"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Logikai alkalmazások meghívása vagy elindítása Azure Functions és Azure Service Bus használatával
 
-A [Azure functions](../azure-functions/functions-overview.md) használatával aktiválhat egy logikai alkalmazást, ha hosszú ideig futó figyelőt vagy feladatot kell telepítenie. Létrehozhat például egy olyan Azure-függvényt, amely egy [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) várólistán figyel, és azonnal leküldéses eseményindítóként egy logikai alkalmazást indít el.
+A [Azure functions](../azure-functions/functions-overview.md) használatával aktiválhat egy logikai alkalmazást, ha hosszú ideig futó figyelőt vagy feladatot kell telepítenie. Létrehozhat például egy olyan függvényt, amely egy [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) várólistán figyeli, és azonnal leküldéses eseményindítóként egy logikai alkalmazást indít el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -24,7 +24,7 @@ A [Azure functions](../azure-functions/functions-overview.md) használatával ak
 
 * Egy Azure Service Bus névtér. Ha nem rendelkezik névtérrel, [először hozza létre a névteret](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
-* Egy Azure Function-alkalmazás, amely az Azure functions tárolója. Ha nem rendelkezik Function alkalmazással, [először hozza létre a Function alkalmazást](../azure-functions/functions-create-first-azure-function.md), és győződjön meg arról, hogy a .NET-et futtatókörnyezeti veremként választja.
+* Function-alkalmazás, amely a függvények tárolója. Ha nem rendelkezik Function alkalmazással, [először hozza létre a Function alkalmazást](../azure-functions/functions-create-first-azure-function.md), és győződjön meg arról, hogy a .NET-et futtatókörnyezeti veremként választja.
 
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -48,9 +48,9 @@ Ebben a forgatókönyvben egy olyan függvény fut, amely minden olyan logikai a
 
    Ha nem rendelkezik sémával, de JSON formátumú minta-adattartalommal rendelkezik, létrehozhat egy sémát ebből a hasznos adatból.
 
-   1. A kérelem triggerben válassza a **minta hasznos adatok használata a séma létrehozásához**lehetőséget.
+   1. A kérelem triggerben válassza a **minta hasznos adatok használata a séma létrehozásához** lehetőséget.
 
-   1. Az **írja be vagy illessze be a minta JSON-adattartalmat**területen adja meg a minta hasznos adatait, majd kattintson a **kész**gombra.
+   1. Az **írja be vagy illessze be a minta JSON-adattartalmat** területen adja meg a minta hasznos adatait, majd kattintson a **kész** gombra.
 
       ![Adja meg a minta hasznos adatait](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -94,13 +94,13 @@ Ebben a forgatókönyvben egy olyan függvény fut, amely minden olyan logikai a
 
    ![Generált visszahívási URL-cím triggerhez](./media/logic-apps-scenario-function-sb-trigger/callback-URL-for-trigger.png)
 
-## <a name="create-azure-function"></a>Azure-függvény létrehozása
+## <a name="create-a-function"></a>Függvény létrehozása
 
 Ezután hozza létre az triggerként viselkedő függvényt, és figyelje a várólistát.
 
 1. A Azure Portal nyissa meg és bontsa ki a Function alkalmazást, ha még nincs megnyitva. 
 
-1. A Function alkalmazás neve alatt bontsa ki a **függvények**elemet. A **függvények** ablaktáblán válassza az **új függvény**lehetőséget.
+1. A Function alkalmazás neve alatt bontsa ki a **függvények** elemet. A **függvények** ablaktáblán válassza az **új függvény** lehetőséget.
 
    ![Bontsa ki a "függvények" elemet, és válassza az "új függvény" lehetőséget.](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
@@ -114,7 +114,7 @@ Ezután hozza létre az triggerként viselkedő függvényt, és figyelje a vár
 
      ![Sablon kiválasztása meglévő Function-alkalmazáshoz](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. Az **Azure Service Bus várólista-trigger** ablaktáblán adja meg az trigger nevét, majd állítsa be a **Service Bus-kapcsolatokat** a várólista számára, amely az Azure Service Bus SDK- `OnMessageReceive()` figyelőt használja, majd válassza a **Létrehozás**lehetőséget.
+1. Az **Azure Service Bus várólista-trigger** ablaktáblán adja meg az trigger nevét, majd állítsa be a **Service Bus-kapcsolatokat** a várólista számára, amely az Azure Service Bus SDK- `OnMessageReceive()` figyelőt használja, majd válassza a **Létrehozás** lehetőséget.
 
 1. Írjon egy alapszintű függvényt a korábban létrehozott Logic app-végpont meghívásához az üzenetsor-üzenet triggerként való használatával. A függvény írása előtt tekintse át a következő szempontokat:
 
@@ -149,6 +149,6 @@ Ezután hozza létre az triggerként viselkedő függvényt, és figyelje a vár
 
    A logikai alkalmazás azonnal elindul, miután a függvény megkapja az üzenetet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Munkafolyamatok hívása, elindítása vagy beágyazása HTTP-végpontok használatával](../logic-apps/logic-apps-http-endpoint.md)

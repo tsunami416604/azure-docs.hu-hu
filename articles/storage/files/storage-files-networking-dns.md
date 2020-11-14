@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320268"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630192"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>DNS-továbbítás konfigurálása az Azure Fileshoz
 Azure Files lehetővé teszi, hogy saját végpontokat hozzon létre a fájlmegosztást tartalmazó Storage-fiókok számára. Bár számos különböző alkalmazás esetében hasznos, a privát végpontok különösen hasznosak az Azure-fájlmegosztás helyszíni hálózatról VPN-vagy ExpressRoute-kapcsolattal való összekapcsolásához. 
@@ -43,7 +43,7 @@ Mielőtt a DNS-továbbítást beállíthatja Azure Filesre, végre kell hajtania
 
 - Egy olyan Storage-fiók, amely tartalmazza a csatlakoztatni kívánt Azure-fájlmegosztást. További információ a Storage-fiókok és az Azure-fájlmegosztás létrehozásáról: [Azure-fájlmegosztás létrehozása](storage-how-to-create-file-share.md).
 - A Storage-fiókhoz tartozó magánhálózati végpont. Ha meg szeretné tudni, hogyan hozhat létre saját végpontot a Azure Fileshoz, tekintse meg [a privát végpont létrehozása](storage-files-networking-endpoints.md#create-a-private-endpoint)című témakört.
-- A Azure PowerShell modul [legújabb verziója](https://docs.microsoft.com/powershell/azure/install-az-ps) .
+- A Azure PowerShell modul [legújabb verziója](/powershell/azure/install-az-ps) .
 
 > [!Important]  
 > Ez az útmutató feltételezi, hogy a Windows Serveren belüli DNS-kiszolgálót használja a helyszíni környezetben. A jelen útmutatóban ismertetett lépések bármilyen DNS-kiszolgálóval lehetségesek, nem csak a Windows DNS-kiszolgáló.
@@ -151,7 +151,7 @@ Ha már beállított egy VPN-vagy ExpressRoute-kapcsolat használatát, azt is m
 Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCPPort SMB
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 - [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
 - [Azure Files hálózati megfontolások](storage-files-networking-overview.md)
 - [Azure Files hálózati végpontok konfigurálása](storage-files-networking-endpoints.md)

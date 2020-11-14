@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 11/09/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 124c3b3667e847a5ee1bb8034ef01088c629d503
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 403b6656a47f56508682dcda2438a85d513fbfb1
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540943"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630498"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Azure IoT-összekötő a FHIR (előzetes verzió) – hibaelhárítási útmutató
 
-Ez a cikk az Azure IoT-összekötő FHIR * hibaüzenetek és feltételek esetén történő hibaelhárításának lépéseit ismerteti.  
+Ez a cikk az Azure IoT-összekötők gyors egészségügyi együttműködési erőforrásokhoz való hibaelhárításának lépéseit (FHIR&#174;) * hibaüzeneteket és feltételeket ismerteti.  
 
 Azt is megtudhatja, hogyan hozhat létre másolatot az Azure IoT-összekötőről a FHIR átalakítási leképezések JSON-fájlhoz (például: eszköz-és FHIR).  
 
@@ -102,7 +102,7 @@ Ez a tulajdonság a IoT-összekötő által a hiba bekövetkezésekor végrehajt
 
 |Adatfolyam fázisa|Leírás|
 |---------------|-----------|
-|Telepítés|Az IoT-összekötő példányának beállítására vonatkozó művelet|
+|Előkészületek|Az IoT-összekötő példányának beállítására vonatkozó művelet|
 |Normalizálás|Az adatáramlási fázis, ahol az eszközre vonatkozó adatmennyiség normalizálva lesz|
 |Csoportosítás|Az adatfolyam fázisa, ahol a normalizált adatmennyiség csoportosítva lesz|
 |FHIRConversion|Az adatfolyam fázisa, ahol a csoportosított normalizált adatmennyiség átalakítja egy FHIR-erőforrásba|
@@ -184,13 +184,11 @@ Az Azure technikai támogatásához meg kell adni a leképezési fájlok másola
 > [!TIP]
 > Ha a FHIR-hez készült Azure IoT-összekötőhöz [Azure technikai támogatási](https://azure.microsoft.com/support/create-ticket/) jegyet nyit meg, ügyeljen arra, hogy a hibaelhárítási folyamattal kapcsolatos segítséget nyújtson a konverziós leképezési JSON másolatának elkészítéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a FHIR készült Azure IoT-összekötővel kapcsolatos gyakori kérdéseket.
 
 >[!div class="nextstepaction"]
 >[Azure IoT-összekötő FHIR – gyakori kérdések](fhir-faq.md)
 
-* A Azure Portal a FHIR készült Azure IoT-összekötő a IoT-összekötő (előzetes verzió) néven ismert.
-
-Az FHIR a HL7 bejegyzett védjegye, amelynek felhasználását a HL7 engedélyezte.
+* A Azure Portal a FHIR készült Azure IoT Connector a IoT Connector (előzetes verzió) néven ismert. A FHIR a HL7 bejegyzett védjegye, és a HL7 engedélyével van használatban.

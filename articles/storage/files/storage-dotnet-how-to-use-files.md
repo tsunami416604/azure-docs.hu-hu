@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 21b407002adce01155b37321c068fb10d2c003f6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0196330df01f98e216c39bcc689eac2bde2f4cd9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319798"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629342"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel
 
@@ -41,7 +41,7 @@ Az Azure Files két széleskörű megközelítést nyújt az ügyfélalkalmazás
 
 API | A következő esetekben használja | Megjegyzések
 ----|-------------|------
-[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Az alkalmazás/alkalmazásnak: <ul><li>Az SMB használatával kell olvasni/írni a fájlokat</li><li>Olyan eszközön fut, amely a 445-ös porton keresztül éri el az Azure Files-fiókot.</li><li>Nem kell kezelnie a fájlmegosztás rendszergazdai beállításait.</li></ul> | A Azure Files SMB protokollon keresztül megvalósított fájl I/O általában ugyanaz, mint a hálózati fájlmegosztás vagy a helyi tárolóeszköz I/O-értéke. A .NET-szolgáltatások számos funkciójának bevezetéséhez, beleértve a fájl I/O-t, tekintse meg a [konzol alkalmazás](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) oktatóanyagát.
+[System.IO](/dotnet/api/system.io) | Az alkalmazás/alkalmazásnak: <ul><li>Az SMB használatával kell olvasni/írni a fájlokat</li><li>Olyan eszközön fut, amely a 445-ös porton keresztül éri el az Azure Files-fiókot.</li><li>Nem kell kezelnie a fájlmegosztás rendszergazdai beállításait.</li></ul> | A Azure Files SMB protokollon keresztül megvalósított fájl I/O általában ugyanaz, mint a hálózati fájlmegosztás vagy a helyi tárolóeszköz I/O-értéke. A .NET-szolgáltatások számos funkciójának bevezetéséhez, beleértve a fájl I/O-t, tekintse meg a [konzol alkalmazás](/dotnet/csharp/tutorials/console-teleprompter) oktatóanyagát.
 [Azure. Storage. files. shares](/dotnet/api/azure.storage.files.shares) | Az alkalmazás/alkalmazásnak: <ul><li>Az 445-as porton keresztüli SMB használatával nem lehet hozzáférni Azure Files tűzfal-vagy INTERNETSZOLGÁLTATÓi megkötések miatt</li><li>Rendszergazdai funkciókat igényel, például a fájlmegosztás kvótájának beállítását vagy közös hozzáférésű jogosultságkód létrehozásának lehetőségét.</li></ul> | Ez a cikk azt mutatja be, `Azure.Storage.Files.Shares` hogyan használható a fájl I/O-használata az SMB és a fájlmegosztás kezelése helyett a REST használatával.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>A konzolalkalmazás létrehozása és az összeállítás elérése
@@ -50,9 +50,9 @@ A Azure Files ügyféloldali kódtárat bármilyen típusú .NET-alkalmazásban 
 
 Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A következő lépések bemutatják, hogyan hozhat létre egy Console-alkalmazást a Visual Studio 2019-ben. A lépések a Visual Studio más verziói esetén is hasonlók.
 
-1. Indítsa el a Visual studiót, és válassza **az új projekt létrehozása**lehetőséget.
-1. A **create a New Project (új projekt létrehozása**) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# számára, majd kattintson a **tovább**gombra.
-1. Az **új projekt konfigurálása**lapon adja meg az alkalmazás nevét, majd válassza a **Létrehozás**lehetőséget.
+1. Indítsa el a Visual studiót, és válassza **az új projekt létrehozása** lehetőséget.
+1. A **create a New Project (új projekt létrehozása** ) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# számára, majd kattintson a **tovább** gombra.
+1. Az **új projekt konfigurálása** lapon adja meg az alkalmazás nevét, majd válassza a **Létrehozás** lehetőséget.
 
 Adja hozzá a cikkben szereplő összes példát a Program.cs- `Program` fájl osztályához *Program.cs* .
 
@@ -69,8 +69,8 @@ Tekintse meg a projektben a következő csomagokat:
 
 A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseket:
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget.
-1. A **NuGet csomagkezelő**területén válassza a **Tallózás**lehetőséget. Ezután keresse meg és válassza ki az **Azure. Core**elemet, majd válassza a **telepítés**lehetőséget.
+1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget.
+1. A **NuGet csomagkezelő** területén válassza a **Tallózás** lehetőséget. Ezután keresse meg és válassza ki az **Azure. Core** elemet, majd válassza a **telepítés** lehetőséget.
 
    Ez a lépés telepíti a csomagot és annak függőségeit.
 
@@ -89,8 +89,8 @@ A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseke
 
 A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseket:
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget.
-1. A **NuGet csomagkezelő**területén válassza a **Tallózás**lehetőséget. Ezután keresse meg és válassza a **Microsoft. Azure. Storage. blob**elemet, majd válassza a **telepítés**lehetőséget.
+1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget.
+1. A **NuGet csomagkezelő** területén válassza a **Tallózás** lehetőséget. Ezután keresse meg és válassza a **Microsoft. Azure. Storage. blob** elemet, majd válassza a **telepítés** lehetőséget.
 
    Ez a lépés telepíti a csomagot és annak függőségeit.
 1. A csomagok keresése és telepítése:
@@ -103,7 +103,7 @@ A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseke
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>A Storage-fiók hitelesítő adatainak mentése a App.config fájlba
 
-Ezután mentse a hitelesítő adatait a projekt *App.config* fájljában. A **megoldáskezelő**kattintson duplán `App.config` a fájlra, és szerkessze a fájlt úgy, hogy az a következő példához hasonló legyen.
+Ezután mentse a hitelesítő adatait a projekt *App.config* fájljában. A **megoldáskezelő** kattintson duplán `App.config` a fájlra, és szerkessze a fájlt úgy, hogy az a következő példához hasonló legyen.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -135,7 +135,7 @@ Cserélje le a `myaccount` nevet a Storage-fiók nevére és a `StorageAccountKe
 
 ## <a name="add-using-directives"></a>Hozzáadás irányelvekkel
 
-A **Megoldáskezelőban**nyissa meg a *program.cs* fájlt, és adja hozzá az alábbi utasításokat a fájl elejéhez.
+A **Megoldáskezelőban** nyissa meg a *program.cs* fájlt, és adja hozzá az alábbi utasításokat a fájl elejéhez.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -316,7 +316,7 @@ A megosztott hozzáférési aláírások létrehozásával és használatával k
 
 Az Azure Files ügyféloldali kódtár 5. x-es verziójától kezdve egy fájlt másolhat egy másik fájlba, egy fájlt egy blobba vagy egy blobot egy fájlba.
 
-A AzCopy használatával az egyik fájlt átmásolhatja egy másikba, vagy átmásolhatja a blobot egy fájlba vagy fordítva. Lásd: Ismerkedés [a AzCopy szolgáltatással](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+A AzCopy használatával az egyik fájlt átmásolhatja egy másikba, vagy átmásolhatja a blobot egy fájlba vagy fordítva. Lásd: Ismerkedés [a AzCopy szolgáltatással](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
 
 > [!NOTE]
 > Ha egy blobot másol egy fájlba vagy egy fájlt egy blobba, akkor is közös hozzáférésű jogosultságkóddal (SAS) kell engedélyeznie a forrásobjektumhoz való hozzáférést, ha a másolás tárfiókon belül történik.
@@ -613,7 +613,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 Ha bármilyen problémába ütközik, tekintse meg a [Windows Azure Files kapcsolatos problémák elhárítása](storage-troubleshoot-windows-file-connection-problems.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Filesről:
 
@@ -624,10 +624,10 @@ További információ a Azure Filesről:
 
 ### <a name="tooling-support-for-file-storage"></a>File Storage-eszköztámogatás
 
-- [Bevezetés az AzCopy használatába](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-- [Azure Files-problémák hibaelhárítása Windowson](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
+- [Bevezetés az AzCopy használatába](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)
+- [Azure Files-problémák hibaelhárítása Windowson](./storage-troubleshoot-windows-file-connection-problems.md)
 
-### <a name="reference"></a>Referencia
+### <a name="reference"></a>Hivatkozás
 
 - [Azure Storage API-k a .NET-hez](/dotnet/api/overview/azure/storage)
 - [A File szolgáltatás REST API-ja](/rest/api/storageservices/File-Service-REST-API)

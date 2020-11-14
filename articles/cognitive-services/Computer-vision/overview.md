@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 11/13/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: Computer vízió, Computer víziós alkalmazások, számítógépes jövőkép szolgáltatás
-ms.openlocfilehash: 851470971335f144ebe0f9b602a8adc7d5ee06cf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536217"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629750"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -27,19 +27,19 @@ ms.locfileid: "94536217"
 
 Az Azure Computer Vision szolgáltatásával olyan speciális algoritmusokhoz férhet hozzá, amelyek képek feldolgozását végzik, és a vizuális funkciók alapján adnak vissza információkat. A Computer Vision például megállapíthatja, hogy egy rendszerkép tartalmaz-e felnőtt tartalmat, megkeresheti-e az adott márkákat vagy objektumokat, vagy megkeresheti az emberi arcokat.
 
-Létrehozhat Computer Vision-alkalmazásokat egy ügyféloldali kódtár SDK-n keresztül, vagy közvetlenül is meghívja a REST API. Ez az oldal széles körben ismerteti, hogy mit tehet a Computer Vision.
+Létrehozhat Computer Vision-alkalmazásokat egy [ügyféloldali KÓDTÁR SDK](./quickstarts-sdk/client-library.md) -n keresztül, vagy közvetlenül is meghívja a [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) . Ez az oldal széles körben ismerteti, hogy mit tehet a Computer Vision.
+
+## <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
+
+A Computer Vision az optikai karakterfelismerési [(OCR)](concept-recognizing-text.md) képességeket is tartalmazza. Az új olvasási API használatával kinyerheti a nyomtatott és a kézírásos szöveget a képekből és a dokumentumokból. A legújabb modelleket használja, és számos felületen és háttérbeli szöveggel működik együtt. Ilyenek például a nyugták, a plakátok, az üzleti kártyák, a levelek és a táblák. A két OCR API támogatja a nyomtatott szövegek [több nyelven](./language-support.md)való kinyerését. [A kezdéshez kövesse az első](./quickstarts-sdk/client-library.md) lépéseket.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Computer Vision a digitális eszközök kezeléséhez
 
 A Computer Vision számos digitális Asset Management-(DAM-) forgatókönyvet képes kihasználni. A DAM a gazdag média-eszközök rendszerezésének, tárolásának és lekérésének üzleti folyamata, valamint a digitális jogok és engedélyek kezelése. Előfordulhat például, hogy egy vállalat szeretné csoportosítani és azonosítani a képeket a látható emblémák, arcok, objektumok, színek és egyebek alapján. Vagy előfordulhat, hogy automatikusan kívánja [létrehozni a képekhez tartozó feliratokat](./Tutorials/storage-lab-tutorial.md) és kulcsszavakat csatolni, hogy azok kereshetőek legyenek. Az Cognitive Services, az Azure Cognitive Search és az intelligens jelentéskészítés szolgáltatást használó teljes körű megoldásért tekintse meg a Knowledge Reporting [Solution-gyorsító útmutatót](https://github.com/Azure-Samples/azure-search-knowledge-mining) a githubon. Más DAM-példákért tekintse meg a [Computer Vision megoldási sablonok](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates) tárházát.
 
-## <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
-
-A Computer Vision az optikai karakterfelismerési [(OCR)](concept-recognizing-text.md) képességeket is tartalmazza. Az új olvasási API használatával kinyerheti a nyomtatott és a kézírásos szöveget a képekből és a dokumentumokból. A legújabb modelleket használja, és számos felületen és háttérbeli szöveggel működik együtt. Ilyenek például a nyugták, a plakátok, az üzleti kártyák, a levelek és a táblák. A két OCR API támogatja a nyomtatott szövegek [több nyelven](./language-support.md)való kinyerését. [A kezdéshez kövesse az első](#next-steps) lépéseket.
-
 ## <a name="analyze-images-for-insight"></a>Képek elemzése eredmények kinyeréséhez
 
-Elemezheti a képeket, hogy információkat szolgáltasson a vizualizáció szolgáltatásairól és jellemzőiről. Az alábbi táblázat összes funkcióját a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API tartalmazza. [A kezdéshez kövesse az első](#next-steps) lépéseket.
+Elemezheti a képeket, hogy információkat szolgáltasson a vizualizáció szolgáltatásairól és jellemzőiről. Az alábbi táblázat összes funkcióját a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API tartalmazza. [A kezdéshez kövesse az első](./quickstarts-sdk/client-library.md) lépéseket.
 
 
 ### <a name="tag-visual-features"></a>Vizuális jellemzők címkézése
@@ -111,10 +111,8 @@ A Computer Vision a következő követelményeknek megfelelő képeket képes el
 
 Akárcsak az összes Cognitive Services esetében, a Computer Vision szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A Computer Vision használatának első lépései a gyors üzembe helyezési útmutatót követve:
+A Computer Vision használatának első lépései a következő útmutatóban olvashatók az előnyben részesített fejlesztői nyelven:
 
-- [Gyors útmutató: Computer Vision .NET ügyféloldali kódtár](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-- [Gyors útmutató: Computer Vision Python ügyféloldali kódtár](./quickstarts-sdk/client-library.md?pivots=programming-language-python)
-- [Rövid útmutató: Computer Vision Java ügyféloldali kódtár](./quickstarts-sdk/client-library.md?pivots=programming-language-java)
+- [Gyors útmutató: Computer Vision ügyféloldali kódtár](./quickstarts-sdk/client-library.md)

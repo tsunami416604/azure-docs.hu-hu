@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d9cf7b3cf996e41f90e3a40a6ee08d0fd51c8457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78c7953ef6432d37542a7a8b06f226a07f2b701f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85510333"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630481"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 Migrálás Azure File Syncre
 
@@ -32,7 +32,7 @@ A Azure File Sync egy Microsoft Cloud Service, amely két fő összetevő alapj�
 
 Ez a cikk az áttelepítési lépésekre összpontosít. Ha az áttelepítés előtt szeretne többet megtudni a Azure File Syncről, javasoljuk a következő cikkeket:
 
-* [Azure File Sync – áttekintés](https://aka.ms/AFS "Áttekintés")
+* [Azure File Sync – áttekintés](./storage-sync-files-planning.md "Áttekintés")
 * [Azure File Sync – üzembe helyezési útmutató](storage-sync-files-deployment-guide.md)
 
 ## <a name="migration-goals"></a>Migrálási célok
@@ -155,7 +155,7 @@ Háttér
       /MIR
    :::column-end:::
    :::column span="1":::
-      Lehetővé teszi a RoboCopy parancs többszöri futtatását ugyanazon cél/cél esetén egymás után. Ez azonosítja a korábban másolt fájlt, és kihagyja azt. Csak a módosítások, kiegészítések és*törlések*lesznek feldolgozva, amelyek az utolsó Futtatás óta történtek. Ha a parancs korábban nem volt futtatva, semmi nincs megadva. Ez egy kiváló megoldás, amely továbbra is aktívan használt és módosítható.
+      Lehetővé teszi a RoboCopy parancs többszöri futtatását ugyanazon cél/cél esetén egymás után. Ez azonosítja a korábban másolt fájlt, és kihagyja azt. Csak a módosítások, kiegészítések és *törlések* lesznek feldolgozva, amelyek az utolsó Futtatás óta történtek. Ha a parancs korábban nem volt futtatva, semmi nincs megadva. Ez egy kiváló megoldás, amely továbbra is aktívan használt és módosítható.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -210,13 +210,13 @@ Elvégezte a megosztások/csoportok egy közös gyökerébe vagy kötetbe való 
 A másolatok közül néhányat párhuzamosan is futtathat. Javasoljuk, hogy egyszerre egy Azure-fájlmegosztás hatókörét dolgozza fel.
 
 > [!WARNING]
-> Ha áthelyezte a StorSimple összes adatait a Windows Serverre, és az áttelepítés befejeződött: térjen vissza a Azure Portal ***összes***  szinkronizálási csoportjához, és állítsa be a Felhőbeli kötet szabad területének százalékos értékét a gyorsítótár kihasználtságára alkalmasabb értékre, 20%-ot. 
+> Ha áthelyezte a StorSimple összes adatait a Windows Serverre, és az áttelepítés befejeződött: térjen vissza a Azure Portal **minden** _ szinkronizálási csoportba, és állítsa be a felhő-rétegek kötetének szabad területének százalékos értékét a gyorsítótár kihasználtságának megfelelő értékre, azaz 20%-ot. 
 
 A felhő-rétegek kötetének szabad területére vonatkozó házirend olyan kötet szintjén működik, amelynek több kiszolgálói végpontja is szinkronizálva van. Ha a szabad területet még egy kiszolgálói végponton is módosítani szeretné, a szinkronizálás továbbra is alkalmazza a legszigorúbb szabályt, és megkísérli a 99%-os szabad lemezterület fenntartását, így a helyi gyorsítótár nem végezhető el a várt módon. Kivéve, ha a célja, hogy csak a ritkán használt, archivált adatmennyiséget tartalmazó kötet névterét adja meg.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-A legvalószínűbb probléma az, hogy a RoboCopy parancs a Windows Server oldalon a *"teljes kötet"* művelettel meghiúsul. Ha ez a helyzet, akkor a letöltési sebesség valószínűleg jobb, mint a feltöltési sebesség. A felhő-rétegek a szinkronizált helyi Windows Server-lemezről óránként egyszer elürítik a tartalmat.
+A legvalószínűbb probléma az, hogy a RoboCopy parancs a Windows Server oldalon a "Volume Full" * értékkel meghiúsul. Ha ez a helyzet, akkor a letöltési sebesség valószínűleg jobb, mint a feltöltési sebesség. A felhő-rétegek a szinkronizált helyi Windows Server-lemezről óránként egyszer elürítik a tartalmat.
 
 A szinkronizálási folyamat és a Felhőbeli rétegek felszabadítása szabad lemezterületet szabadít fel. Megfigyelheti, hogy a Fájlkezelőben a Windows Serveren.
 
@@ -233,6 +233,6 @@ Ha ez megtörténik, tekintse meg a **hivatkozást Azure file Sync hibaelhárít
 
 Azure File Sync tartalom:
 
-* [Az AFS áttekintése](https://aka.ms/AFS)
+* [Az AFS áttekintése](./storage-sync-files-planning.md)
 * [Az AFS telepítési útmutatója](storage-files-deployment-guide.md)
 * [AFS – hibaelhárítás](storage-sync-files-troubleshoot.md)

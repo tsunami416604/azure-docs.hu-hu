@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fd8e845734169bcd73fa0e087c30c0f2fd6ef4f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d8d19256dfca21cc805c2689557099a6785f76b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85510305"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629206"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrálás hálózati csatlakoztatott tárolóból (NAS) hibrid felhőbe történő központi telepítésre Azure File Sync
 
@@ -151,7 +151,7 @@ Háttér
       /MIR
    :::column-end:::
    :::column span="1":::
-      Lehetővé teszi a RoboCopy parancs többszöri futtatását ugyanazon cél/cél esetén egymás után. Ez azonosítja a korábban másolt fájlt, és kihagyja azt. Csak a módosítások, kiegészítések és*törlések*lesznek feldolgozva, amelyek az utolsó Futtatás óta történtek. Ha a parancs korábban nem volt futtatva, semmi nincs megadva. A */Mir* jelző kiváló megoldás a forrásként szolgáló helyekhez, amelyek továbbra is aktívan használatban vannak és változnak.
+      Lehetővé teszi a RoboCopy parancs többszöri futtatását ugyanazon cél/cél esetén egymás után. Ez azonosítja a korábban másolt fájlt, és kihagyja azt. Csak a módosítások, kiegészítések és *törlések* lesznek feldolgozva, amelyek az utolsó Futtatás óta történtek. Ha a parancs korábban nem volt futtatva, semmi nincs megadva. A */Mir* jelző kiváló megoldás a forrásként szolgáló helyekhez, amelyek továbbra is aktívan használatban vannak és változnak.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -208,13 +208,13 @@ Elvégezte a megosztások/csoportok egy közös gyökerébe vagy kötetbe való 
 A másolatok közül néhányat párhuzamosan is futtathat. Javasoljuk, hogy egyszerre egy Azure-fájlmegosztás hatókörét dolgozza fel.
 
 > [!WARNING]
-> Ha áthelyezte az összes adatforrást a Windows Server rendszerbe, és az áttelepítés befejeződött: térjen vissza a Azure Portal ***összes***  szinkronizálási csoportjához, és állítsa be a Felhőbeli kötet szabad területének százalékos értékét a gyorsítótár kihasználtságára alkalmasabb értékre, azaz 20%-ot. 
+> Miután áthelyezte az összes olyan hálózati kiszolgálót a Windows Serverre, amelyről az áttelepítés befejeződött: térjen vissza a Azure Portal **minden** _ szinkronizálási csoportba, és állítsa be a Felhőbeli kötet szabad területének százalékos értékét a gyorsítótár kihasználtságára alkalmasabb értékre, azaz 20%-ot. 
 
 A felhő-rétegek kötetének szabad területére vonatkozó házirend olyan kötet szintjén működik, amelynek több kiszolgálói végpontja is szinkronizálva van. Ha a szabad területet még egy kiszolgálói végponton is módosítani szeretné, a szinkronizálás továbbra is alkalmazza a legszigorúbb szabályt, és megkísérli a 99%-os szabad lemezterület fenntartását, így a helyi gyorsítótár nem végezhető el a várt módon. Kivéve, ha a célja, hogy csak a ritkán használt, archivált adatok tárolására szolgáló kötet névterét adja meg, és egy másik forgatókönyvben a tárterület többi részét is kiszolgálja.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-A legvalószínűbb probléma az, hogy a RoboCopy parancs a Windows Server oldalon a *"teljes kötet"* művelettel meghiúsul. A felhő-rétegek a szinkronizált helyi Windows Server-lemezről óránként egyszer elürítik a tartalmat. A cél az, hogy eléri a 99%-os szabad területet a köteten.
+A legvalószínűbb probléma az, hogy a RoboCopy parancs a Windows Server oldalon a "Volume Full" * értékkel meghiúsul. A felhő-rétegek a szinkronizált helyi Windows Server-lemezről óránként egyszer elürítik a tartalmat. A cél az, hogy eléri a 99%-os szabad területet a köteten.
 
 A szinkronizálási folyamat és a Felhőbeli rétegek felszabadítása szabad lemezterületet szabadít fel. Megfigyelheti, hogy a Fájlkezelőben a Windows Serveren.
 
@@ -226,6 +226,6 @@ A következő szakaszban található hivatkozásra kattintva megtudhatja, hogyan
 
 További információ az Azure-fájlmegosztás és a Azure File Sync. A következő cikkek segítséget nyújtanak a speciális beállítások, az ajánlott eljárások és a hibaelhárítással kapcsolatos súgó megismerésében. Ezek a cikkek szükség szerint az [Azure file share-dokumentációra](storage-files-introduction.md) mutató hivatkozást tartalmaznak.
 
-* [Az AFS áttekintése](https://aka.ms/AFS)
+* [Az AFS áttekintése](./storage-sync-files-planning.md)
 * [Az AFS telepítési útmutatója](storage-files-deployment-guide.md)
 * [AFS – hibaelhárítás](storage-sync-files-troubleshoot.md)

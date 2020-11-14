@@ -8,16 +8,16 @@ ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperfq1, devx-track-azurecli
-ms.openlocfilehash: 906ec80ecc198675fdb5b163403267be1d13de00
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5d900f105728efc6f58c4f9f7412cea157cbfe20
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746845"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630379"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Active Directory Domain Services hitelesítés engedélyezése Azure Files
 
-[Azure Files](storage-files-introduction.md)   támogatja a kiszolgálói üzenetblokk (SMB) szolgáltatáson keresztüli identitás-alapú hitelesítést a következő két típusú tartományi szolgáltatáson keresztül: helyszíni Active Directory tartományi szolgáltatások (AD DS) és Azure Active Directory Domain Services (Azure AD DS). Javasoljuk, hogy tekintse át a [működéséről szóló szakaszt](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) , és válassza ki a megfelelő tartományi szolgáltatást a hitelesítéshez. A beállítás eltérő a választott tartományi szolgáltatástól függ. Ebből a cikkből megtudhatja, hogyan engedélyezheti és konfigurálhatja az Azure-AD DS az Azure-fájlmegosztás segítségével történő hitelesítéshez.
+[Azure Files](storage-files-introduction.md)   támogatja a kiszolgálói üzenetblokk (SMB) szolgáltatáson keresztüli identitás-alapú hitelesítést a következő két típusú tartományi szolgáltatáson keresztül: helyszíni Active Directory tartományi szolgáltatások (AD DS) és Azure Active Directory Domain Services (Azure AD DS). Javasoljuk, hogy tekintse át a [működéséről szóló szakaszt](./storage-files-active-directory-overview.md#how-it-works) , és válassza ki a megfelelő tartományi szolgáltatást a hitelesítéshez. A beállítás eltérő a választott tartományi szolgáltatástól függ. Ebből a cikkből megtudhatja, hogyan engedélyezheti és konfigurálhatja az Azure-AD DS az Azure-fájlmegosztás segítségével történő hitelesítéshez.
 
 Ha még nem ismeri az Azure-fájlmegosztás újdonságait, javasoljuk, hogy olvassa el a [tervezési útmutatót](storage-files-planning.md) , mielőtt elolvassa a következő cikksorozatot.
 
@@ -33,7 +33,7 @@ Mielőtt engedélyezte az Azure AD-t az Azure-fájlmegosztás SMB-en keresztül,
 
     Az Azure AD-hitelesítéshez új vagy meglévő bérlőt használhat az SMB protokollon keresztül. A bérlőt és az elérni kívánt fájlmegosztást ugyanahhoz az előfizetéshez kell társítani.
 
-    Új Azure AD-bérlő létrehozásához [hozzáadhat egy Azure ad-bérlőt és egy Azure ad-előfizetést](https://docs.microsoft.com/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription). Ha rendelkezik meglévő Azure AD-Bérlővel, de szeretne létrehozni egy új bérlőt az Azure-fájlmegosztás használatához, tekintse meg a [Azure Active Directory bérlő létrehozása](https://docs.microsoft.com/rest/api/datacatalog/create-an-azure-active-directory-tenant)című témakört.
+    Új Azure AD-bérlő létrehozásához [hozzáadhat egy Azure ad-bérlőt és egy Azure ad-előfizetést](/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription). Ha rendelkezik meglévő Azure AD-Bérlővel, de szeretne létrehozni egy új bérlőt az Azure-fájlmegosztás használatához, tekintse meg a [Azure Active Directory bérlő létrehozása](/rest/api/datacatalog/create-an-azure-active-directory-tenant)című témakört.
 
 1.  **Engedélyezze Azure AD Domain Services az Azure AD-bérlőn.**
 
@@ -89,7 +89,7 @@ Ha engedélyezni szeretné az Azure AD DS hitelesítést az SMB protokollon kere
 1. A Azure Portal nyissa meg a meglévő Storage-fiókot, vagy [hozzon létre egy Storage-fiókot](../common/storage-account-create.md).
 1. A **Beállítások** szakaszban válassza a **Konfigurálás** lehetőséget.
 1. A **fájlmegosztás identitás-alapú hozzáférése** területen kapcsolja be a **Azure Active Directory tartományi szolgáltatás (HRE DS)** kapcsolóját, hogy **engedélyezve** legyen.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Az alábbi képen bemutatjuk, hogyan engedélyezhető az Azure AD DS hitelesítés az SMB protokollon keresztül a Storage-fiókhoz.
 
@@ -97,9 +97,9 @@ Az alábbi képen bemutatjuk, hogyan engedélyezhető az Azure AD DS hitelesít�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ha engedélyezni szeretné az Azure AD DS hitelesítést az SMB protokollon keresztül a Azure PowerShell, telepítse a legújabbat az az Module (2,4 vagy újabb) vagy az az. Storage modul (1,5 vagy újabb). A PowerShell telepítésével kapcsolatos további információkért lásd: [Azure PowerShell telepítése Windows rendszerre a PowerShellGet](https://docs.microsoft.com/powershell/azure/install-Az-ps)használatával.
+Ha engedélyezni szeretné az Azure AD DS hitelesítést az SMB protokollon keresztül a Azure PowerShell, telepítse a legújabbat az az Module (2,4 vagy újabb) vagy az az. Storage modul (1,5 vagy újabb). A PowerShell telepítésével kapcsolatos további információkért lásd: [Azure PowerShell telepítése Windows rendszerre a PowerShellGet](/powershell/azure/install-Az-ps)használatával.
 
-Új Storage-fiók létrehozásához hívja a [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0), majd állítsa a **EnableAzureActiveDirectoryDomainServicesForFile** paramétert **true (igaz** ) értékre. A következő példában ne felejtse el lecserélni a helyőrző értékeket a saját értékeire. (Ha az előző előnézeti modult használta, a szolgáltatás engedélyezésének paramétere a **EnableAzureFilesAadIntegrationForSMB** .)
+Új Storage-fiók létrehozásához hívja a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0), majd állítsa a **EnableAzureActiveDirectoryDomainServicesForFile** paramétert **true (igaz** ) értékre. A következő példában ne felejtse el lecserélni a helyőrző értékeket a saját értékeire. (Ha az előző előnézeti modult használta, a szolgáltatás engedélyezésének paramétere a **EnableAzureFilesAadIntegrationForSMB**.)
 
 ```powershell
 # Create a new storage account
@@ -123,9 +123,9 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ha engedélyezni szeretné az Azure AD-hitelesítést az SMB protokollon keresztül az Azure CLI-vel, telepítse a CLI legújabb verzióját (2.0.70 vagy újabb verzió). Az Azure CLI telepítésével kapcsolatos további információkért lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Ha engedélyezni szeretné az Azure AD-hitelesítést az SMB protokollon keresztül az Azure CLI-vel, telepítse a CLI legújabb verzióját (2.0.70 vagy újabb verzió). Az Azure CLI telepítésével kapcsolatos további információkért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Hozzon létre egy új Storage-fiókot az [az Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)paranccsal, és állítsa a `--enable-files-aadds` tulajdonságot **true (igaz** ) értékre. A következő példában ne felejtse el lecserélni a helyőrző értékeket a saját értékeire. (Ha az előző előzetes modult használta, a szolgáltatás engedélyezésének paramétere a **file-HRE** .)
+Hozzon létre egy új Storage-fiókot az [az Storage Account Create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)paranccsal, és állítsa a `--enable-files-aadds` tulajdonságot **true (igaz** ) értékre. A következő példában ne felejtse el lecserélni a helyőrző értékeket a saját értékeire. (Ha az előző előzetes modult használta, a szolgáltatás engedélyezésének paramétere a **file-HRE**.)
 
 ```azurecli-interactive
 # Create a new storage account
@@ -144,7 +144,7 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 Sikeresen engedélyezte az Azure AD DS hitelesítést az SMB protokollon keresztül, és hozzárendelt egy egyéni szerepkört, amely hozzáférést biztosít egy Azure-fájlmegosztás Azure AD-identitással való eléréséhez. Ha további felhasználóknak szeretne hozzáférést adni a fájlmegosztás eléréséhez, kövesse a [hozzáférési engedélyek hozzárendelése](#assign-access-permissions-to-an-identity) az identitás használatához és az NTFS- [engedélyek SMB-szakaszokon keresztüli konfigurálásához](#configure-ntfs-permissions-over-smb)című témakör utasításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Files és az Azure AD SMB használatával történő használatáról további információt az alábbi forrásokban talál:
 

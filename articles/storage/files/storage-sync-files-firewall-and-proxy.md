@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 69fdfea6768a895db1f85df4c2936936a2ffd3f5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 95139c862b82a85dbf7f50aef021ad71c5c8210f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675780"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629444"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Azure File Sync összekapcsolja a helyszíni kiszolgálókat a Azure Fileshoz, és lehetővé teszi a többhelyes szinkronizálást és a felhőalapú rétegbeli funkciókat. Ennek megfelelően a helyszíni kiszolgálónak csatlakoznia kell az internethez. A rendszergazdának el kell döntenie, hogy melyik a legjobb elérési út ahhoz, hogy a kiszolgáló elérje az Azure Cloud Services szolgáltatást.
@@ -154,7 +154,7 @@ Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előford
 ### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure File Sync IP-címek engedélyezési listájának engedélyezése
 Azure File Sync támogatja a szolgáltatás- [címkék](../../virtual-network/service-tags-overview.md)használatát, amely az adott Azure-szolgáltatáshoz tartozó IP-cím előtagjainak egy csoportját jelöli. A szolgáltatás-címkék használatával olyan tűzfalszabályok hozhatók létre, amelyek lehetővé teszik a Azure File Sync szolgáltatással folytatott kommunikációt. Azure File Sync a szolgáltatás címkéje `StorageSyncService` .
 
-Ha az Azure-ban Azure File Synct használ, a hálózati biztonsági csoportban található szolgáltatás neve közvetlenül a forgalom engedélyezéséhez használható. Ha többet szeretne megtudni Ennek módjáról, tekintse meg a [hálózati biztonsági csoportok](../../virtual-network/security-overview.md)című témakört.
+Ha az Azure-ban Azure File Synct használ, a hálózati biztonsági csoportban található szolgáltatás neve közvetlenül a forgalom engedélyezéséhez használható. Ha többet szeretne megtudni Ennek módjáról, tekintse meg a [hálózati biztonsági csoportok](../../virtual-network/network-security-groups-overview.md)című témakört.
 
 Ha helyszíni Azure File Sync használ, a Service tag API-val adott IP-címtartományok beolvasása a tűzfal engedélyezési listájához. A következő két módszer használható az adatok lekéréséhez:
 
@@ -164,9 +164,9 @@ Ha helyszíni Azure File Sync használ, a Service tag API-val adott IP-címtarto
     - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
 - A Service tag Discovery API (előzetes verzió) lehetővé teszi az aktuális szolgáltatási címkék programozott lekérését. Az előzetes verzióban a Service tag Discovery API a Microsoft letöltőközpontból közzétett JSON-dokumentumokból származó információknál kevésbé naprakész adatokat adhat vissza. Az API felületét az automatizálási beállítások alapján használhatja:
-    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+    - [REST API](/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 Mivel a Service tag felderítési API-ját a Microsoft letöltőközpontban közzétett JSON-dokumentumok nem frissítik, a JSON-dokumentum használatával a helyszíni tűzfal engedélyezési listájának frissítését javasoljuk. Ezt a következőképpen teheti meg:
 
@@ -281,7 +281,7 @@ A dokumentum korábbi listája tartalmazza azokat az URL-címeket, Azure File Sy
 
 A tartomány korlátozására vonatkozó tűzfalszabályok beállítása lehet egy mérték a biztonság növelése érdekében. Ha ezeket a tűzfal-konfigurációkat használja, az egyiknek figyelembe kell vennie, hogy az URL-címek fel lesznek véve, és akár idővel is változhatnak. Ebben a cikkben rendszeresen tájékozódhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 - [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

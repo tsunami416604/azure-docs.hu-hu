@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17b2ab53c0154a29f9084f9dd999a53bcf477b72
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b684123068889e422080605fb9c50ef9aed0cb76
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075126"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630158"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>A Windows (SMB) Azure Files problémáinak elhárítása
 
@@ -30,14 +30,14 @@ Amikor megpróbál csatlakoztatni egy fájlmegosztást, a következő hibaüzene
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>1. ok: titkosítatlan kommunikációs csatorna
 
-Biztonsági okokból az Azure-fájlmegosztásokhoz való kapcsolódás le van tiltva, ha a kommunikációs csatorna nincsen titkosítva, vagy ha a csatlakozási kísérlet nem ugyanabból az adatközpontból történik, ahol az Azure-fájlmegosztások találhatók. Az ugyanazon adatközponton belüli titkosítatlan kapcsolatokat akkor is blokkolhatja a rendszer, ha a tárfiókban engedélyezve van a [Biztonságos átvitelre van szükség](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás. Csak akkor biztosítható titkosított kommunikációs csatorna, ha a felhasználó ügyfél operációs rendszere támogatja az SMB-titkosítást.
+Biztonsági okokból az Azure-fájlmegosztásokhoz való kapcsolódás le van tiltva, ha a kommunikációs csatorna nincsen titkosítva, vagy ha a csatlakozási kísérlet nem ugyanabból az adatközpontból történik, ahol az Azure-fájlmegosztások találhatók. Az ugyanazon adatközponton belüli titkosítatlan kapcsolatokat akkor is blokkolhatja a rendszer, ha a tárfiókban engedélyezve van a [Biztonságos átvitelre van szükség](../common/storage-require-secure-transfer.md) beállítás. Csak akkor biztosítható titkosított kommunikációs csatorna, ha a felhasználó ügyfél operációs rendszere támogatja az SMB-titkosítást.
 
 A Windows 8, a Windows Server 2012 és újabb verzióik olyan kéréseket egyeztetnek, amelyek magukban foglalják a titkosítást támogató SMB 3.0-t.
 
 ### <a name="solution-for-cause-1"></a>Megoldás az 1. ok esetén
 
 1. Kapcsolódjon egy olyan ügyfélhez, amely támogatja az SMB-titkosítást (Windows 8, Windows Server 2012 vagy újabb), vagy kapcsolódjon egy olyan virtuális gépről, amely az Azure-fájlmegosztás által használt Azure Storage-fiókkal azonos adatközpontban található.
-2. Győződjön meg arról, hogy a [biztonságos átvitel szükséges](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás le van tiltva a Storage-fiókban, ha az ügyfél nem támogatja az SMB-titkosítást.
+2. Győződjön meg arról, hogy a [biztonságos átvitel szükséges](../common/storage-require-secure-transfer.md) beállítás le van tiltva a Storage-fiókban, ha az ügyfél nem támogatja az SMB-titkosítást.
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2. ok: a virtuális hálózat vagy a tűzfalszabályok engedélyezve vannak a Storage-fiókon. 
 
@@ -45,7 +45,7 @@ Ha virtuális hálózati (VNET) és tűzfalszabályok vannak konfigurálva a tá
 
 ### <a name="solution-for-cause-2"></a>Megoldás a 2. ok esetén
 
-Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról** . További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról**. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../common/storage-network-security.md).
 
 ### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>3. ok: a megosztási szintű engedélyek helytelenek az identitás-alapú hitelesítés használatakor
 
@@ -55,10 +55,10 @@ Ha a felhasználók Active Directory (AD) vagy Azure Active Directory Domain Ser
 
 Ellenőrizze, hogy az engedélyek helyesen vannak-e konfigurálva:
 
-- **Active Directory (ad)** lásd: [megosztási szintű engedélyek társítása identitáshoz](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
+- **Active Directory (ad)** lásd: [megosztási szintű engedélyek társítása identitáshoz](./storage-files-identity-ad-ds-assign-permissions.md).
 
     A megosztási szintű engedélyek hozzárendelései olyan csoportok és felhasználók számára támogatottak, amelyek a Active Directory (AD) szolgáltatásból Azure Active Directory (Azure AD) Azure AD Connect használatával szinkronizálhatók.  Győződjön meg arról, hogy a csoportoknak és a megosztott megosztási szintű engedélyekkel rendelkező felhasználók nem támogatják a "csak felhőalapú" csoportokat.
-- **Azure Active Directory Domain Services (Azure AD DS)** lásd: [hozzáférési engedélyek kiosztása identitáshoz](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
+- **Azure Active Directory Domain Services (Azure AD DS)** lásd: [hozzáférési engedélyek kiosztása identitáshoz](./storage-files-identity-auth-active-directory-domain-service-enable.md?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>53 hiba, hiba 67 vagy hiba 87 az Azure-fájlmegosztás csatlakoztatásakor vagy leválasztásakor
@@ -111,7 +111,7 @@ TcpTestSucceeded : True
 ### <a name="solution-for-cause-1"></a>Megoldás az 1. ok esetén
 
 #### <a name="solution-1---use-azure-file-sync"></a>1. megoldás – az Azure File Sync használata
-Azure File Sync átalakíthatja a helyszíni Windows Servert az Azure-fájlmegosztás gyors gyorsítótárba. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Az Azure File Sync a 443-as porton keresztül működik, ezért megkerülő megoldásként használható az Azure Files eléréséhez a letiltott 445-ös porttal rendelkező ügyfelekről. [Útmutató a Azure file Sync telepítéséhez](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
+Azure File Sync átalakíthatja a helyszíni Windows Servert az Azure-fájlmegosztás gyors gyorsítótárba. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Az Azure File Sync a 443-as porton keresztül működik, ezért megkerülő megoldásként használható az Azure Files eléréséhez a letiltott 445-ös porttal rendelkező ügyfelekről. [Útmutató a Azure file Sync telepítéséhez](./storage-sync-files-extend-servers.md).
 
 #### <a name="solution-2---use-vpn"></a>2. megoldás – VPN használata
 A VPN az adott Storage-fiókhoz való beállításával a forgalom egy biztonságos alagúton halad át, szemben az interneten keresztül. Ha Windowsból szeretné elérni az Azure Filest, kövesse [a VPN beállításához kapcsolódó utasításokat](storage-files-configure-p2s-vpn-windows.md).
@@ -120,7 +120,7 @@ A VPN az adott Storage-fiókhoz való beállításával a forgalom egy biztonsá
 Az IT-részleggel vagy az INTERNETSZOLGÁLTATÓval együttműködve nyissa meg az 445-es portot az [Azure IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653).
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>4. megoldás – REST API-alapú eszközök, például a Storage Explorer és a Powershell használata
-A Azure Files az SMB mellett a REST-t is támogatja. A REST-hozzáférés a 443-as (szabványos TCP-) porton keresztül működik. Számos olyan REST API-val írt eszköz létezik, amely gazdag felhasználói felületi élmény megvalósítását teszi lehetővé. [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) az egyikük. [Töltse le és telepítse a Storage Explorert](https://azure.microsoft.com/features/storage-explorer/), és csatlakozzon az Azure Files-támogatással rendelkező fájlmegosztáshoz. Használhatja a [PowerShellt](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) is, amely a felhasználó REST API is.
+A Azure Files az SMB mellett a REST-t is támogatja. A REST-hozzáférés a 443-as (szabványos TCP-) porton keresztül működik. Számos olyan REST API-val írt eszköz létezik, amely gazdag felhasználói felületi élmény megvalósítását teszi lehetővé. [Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) az egyikük. [Töltse le és telepítse a Storage Explorert](https://azure.microsoft.com/features/storage-explorer/), és csatlakozzon az Azure Files-támogatással rendelkező fájlmegosztáshoz. Használhatja a [PowerShellt](./storage-how-to-use-files-powershell.md) is, amely a felhasználó REST API is.
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>2. ok: a NTLMv1 engedélyezve van
 
@@ -130,7 +130,7 @@ Ha meg szeretne bizonyosodni arról, hogy valóban ez a hiba oka, ellenőrizze, 
 
 **HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel**
 
-További információért tekintse meg a TechNet [LmCompatibilityLevel](https://technet.microsoft.com/library/cc960646.aspx) témakörét.
+További információért tekintse meg a TechNet [LmCompatibilityLevel](/previous-versions/windows/it-pro/windows-2000-server/cc960646(v=technet.10)) témakörét.
 
 ### <a name="solution-for-cause-2"></a>Megoldás a 2. ok esetén
 
@@ -143,18 +143,18 @@ További információért tekintse meg a TechNet [LmCompatibilityLevel](https://
 
 ### <a name="cause"></a>Ok
 
-1816-es hiba történik, amikor eléri az Azure-fájlmegosztás fájljának vagy könyvtárának felső határát. További információ: [Azure Files – skálázási célok](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets).
+1816-es hiba történik, amikor eléri az Azure-fájlmegosztás fájljának vagy könyvtárának felső határát. További információ: [Azure Files – skálázási célok](./storage-files-scale-targets.md#azure-files-scale-targets).
 
 ### <a name="solution"></a>Megoldás
 
-Csökkentse az egyidejű megnyitott fogópontok számát néhány leíró bezárásával, majd próbálkozzon újra. További információ: [Microsoft Azure Storage teljesítmény-és méretezhetőségi ellenőrzőlista](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+Csökkentse az egyidejű megnyitott fogópontok számát néhány leíró bezárásával, majd próbálkozzon újra. További információ: [Microsoft Azure Storage teljesítmény-és méretezhetőségi ellenőrzőlista](../blobs/storage-performance-checklist.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
 
-Egy fájlmegosztás, könyvtár vagy fájl nyitott leíróinak megtekintéséhez használja a [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmagot.  
+Egy fájlmegosztás, könyvtár vagy fájl nyitott leíróinak megtekintéséhez használja a [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmagot.  
 
-Egy fájlmegosztás, könyvtár vagy fájl megnyitott leíróinak bezárásához használja a [AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell-parancsmagot.
+Egy fájlmegosztás, könyvtár vagy fájl megnyitott leíróinak bezárásához használja a [AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell-parancsmagot.
 
 > [!Note]  
-> A Get-AzStorageFileHandle és Close-AzStorageFileHandle parancsmagok az az PowerShell-modul 2,4-es vagy újabb verziójában szerepelnek. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> A Get-AzStorageFileHandle és Close-AzStorageFileHandle parancsmagok az az PowerShell-modul 2,4-es vagy újabb verziójában szerepelnek. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps).
 
 <a id="noaaccessfailureportal"></a>
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Hiba: "nincs hozzáférés", amikor megpróbál hozzáférni vagy törölni egy Azure-fájlmegosztást  
@@ -167,13 +167,13 @@ Hibakód: 403
 
 ### <a name="solution-for-cause-1"></a>Megoldás az 1. ok esetén
 
-Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról** . További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról**. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../common/storage-network-security.md).
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>2. ok: a felhasználói fióknak nincs hozzáférése a Storage-fiókhoz
 
 ### <a name="solution-for-cause-2"></a>Megoldás a 2. ok esetén
 
-Keresse meg azt a Storage-fiókot, ahol az Azure-fájlmegosztás található, kattintson a **hozzáférés-vezérlés (iam)** elemre, és ellenőrizze, hogy a felhasználói fiókja rendelkezik-e hozzáféréssel a Storage-fiókhoz. További információt a [Storage-fiók biztonságossá tétele az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)című témakörben talál.
+Keresse meg azt a Storage-fiókot, ahol az Azure-fájlmegosztás található, kattintson a **hozzáférés-vezérlés (iam)** elemre, és ellenőrizze, hogy a felhasználói fiókja rendelkezik-e hozzáféréssel a Storage-fiókhoz. További információt a [Storage-fiók biztonságossá tétele az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../blobs/security-recommendations.md#data-protection)című témakörben talál.
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nem sikerült törölni egy fájlt vagy könyvtárt valamelyik Azure-fájlmegosztásban
@@ -199,15 +199,15 @@ Bár a fájlkezelők és a bérletek fontos célt szolgálnak, időnként előfo
 A probléma megoldása attól függ, hogy ezt egy árva fájlkezelő vagy bérlet okozza-e. 
 
 ### <a name="cause-1"></a>1\. ok
-A fájlleíró megakadályozza, hogy egy fájl vagy könyvtár módosítható vagy törölve legyen. A [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmag használatával megtekintheti a nyitott leírókat. 
+A fájlleíró megakadályozza, hogy egy fájl vagy könyvtár módosítható vagy törölve legyen. A [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmag használatával megtekintheti a nyitott leírókat. 
 
 Ha az összes SMB-ügyfél lezárta a megnyitott kezelőket egy fájlra vagy könyvtárra, és a probléma továbbra is fennáll, akkor kényszerítheti a fájlleíró bezárását.
 
 ### <a name="solution-1"></a>1\. megoldás
-A fájlkezelő bezárásának kényszerítéséhez használja a [Close-AzStorageFileHandle PowerShell-](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) parancsmagot. 
+A fájlkezelő bezárásának kényszerítéséhez használja a [Close-AzStorageFileHandle PowerShell-](/powershell/module/az.storage/close-azstoragefilehandle) parancsmagot. 
 
 > [!Note]  
-> A Get-AzStorageFileHandle és Close-AzStorageFileHandle parancsmagok az az PowerShell-modul 2,4-es vagy újabb verziójában szerepelnek. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> A Get-AzStorageFileHandle és Close-AzStorageFileHandle parancsmagok az az PowerShell-modul 2,4-es vagy újabb verziójában szerepelnek. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps).
 
 ### <a name="cause-2"></a>2\. ok
 A fájlok bérlete megakadályozza a fájlok módosítását vagy törlését. Azt is megteheti, hogy egy fájl rendelkezik-e a következő PowerShell-lel, amely a `<resource-group>` `<storage-account>` `<file-share>` `<path-to-file>` környezet megfelelő értékeit helyettesíti:
@@ -262,8 +262,8 @@ Előfordulhat, hogy a lassú teljesítmény jelenik meg, amikor fájlokat prób�
 - Ha nem rendelkezik meghatározott minimális I/O-mérettel, javasoljuk, hogy az optimális teljesítmény érdekében az 1 MiB-t használja az I/O-mérethez.
 -   Ha ismeri az írásokkal kiterjeszthető fájl végső méretét, és a szoftver nem rendelkezik kompatibilitási problémákkal, ha a fájl íratlan farka nulla értéket tartalmaz, a fájl méretét előre állítsa be ahelyett, hogy minden írási kibővítést ír.
 -   Használja a megfelelő másolási módszert:
-    -   Használjon [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a két fájlmegosztás közötti átvitelhez.
-    -   Egy helyszíni számítógépen lévő fájlmegosztás esetén használja a [Robocopy](/azure/storage/files/storage-files-deployment-guide#robocopy) szolgáltatást.
+    -   Használjon [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) a két fájlmegosztás közötti átvitelhez.
+    -   Egy helyszíni számítógépen lévő fájlmegosztás esetén használja a [Robocopy](./storage-files-deployment-guide.md#robocopy) szolgáltatást.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>A Windows 8,1 vagy a Windows Server 2012 R2 szempontjai
 
@@ -290,7 +290,7 @@ Ha egy Azure-fájlmegosztást rendszergazdaként rendel a net use használatáva
 Alapértelmezés szerint a Windows file Explorer nem rendszergazdaként fut. Ha a net használatát rendszergazdai parancssorból futtatja, a hálózati meghajtót rendszergazdaként kell leképezni. Mivel a csatlakoztatott meghajtók felhasználó-központú, a bejelentkezett felhasználói fiók nem jeleníti meg a meghajtókat, ha egy másik felhasználói fiókhoz vannak csatlakoztatva.
 
 ### <a name="solution"></a>Megoldás
-Csatlakoztassa a megosztást egy nem rendszergazdai parancssorból. Azt is megteheti, hogy [ezt a TechNet-témakört](https://technet.microsoft.com/library/ee844140.aspx) követve konfigurálja a **EnableLinkedConnections** beállításazonosító értékét.
+Csatlakoztassa a megosztást egy nem rendszergazdai parancssorból. Azt is megteheti, hogy [ezt a TechNet-témakört](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee844140(v=ws.10)) követve konfigurálja a **EnableLinkedConnections** beállításazonosító értékét.
 
 <a id="netuse"></a>
 ## <a name="net-use-command-fails-if-the-storage-account-contains-a-forward-slash"></a>A net use parancs végrehajtása meghiúsul, ha a Storage-fiók perjelet tartalmaz
@@ -376,20 +376,20 @@ Beállíthatja például a 0x100000, és megtekintheti, hogy a teljesítmény jo
 
 ### <a name="cause"></a>Ok
 
-Hiba történt a AadDsTenantNotFound, amikor az Azure [AD tartományi szolgáltatást (azure AD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nem a társított előfizetés Azure ad-bérlője számára való [Azure Active Directory Domain Services (Azure AD DS) hitelesítésre próbálja engedélyezni Azure Filesn](storage-files-identity-auth-active-directory-domain-service-enable.md) .  
+Hiba történt a AadDsTenantNotFound, amikor az Azure [AD tartományi szolgáltatást (azure AD DS)](../../active-directory-domain-services/overview.md) nem a társított előfizetés Azure ad-bérlője számára való [Azure Active Directory Domain Services (Azure AD DS) hitelesítésre próbálja engedélyezni Azure Filesn](storage-files-identity-auth-active-directory-domain-service-enable.md) .  
 
 ### <a name="solution"></a>Megoldás
 
-Engedélyezze az Azure AD DS azon előfizetés Azure AD-bérlőn, amelyre a Storage-fiókja telepítve van. Felügyelt tartomány létrehozásához rendszergazdai jogosultsággal kell rendelkeznie az Azure AD-bérlőben. Ha nem az Azure AD-bérlő rendszergazdája, lépjen kapcsolatba a rendszergazdával, és kövesse a lépésenkénti útmutatót, amely [lehetővé teszi Azure Active Directory Domain Services használatát a Azure Portal használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
+Engedélyezze az Azure AD DS azon előfizetés Azure AD-bérlőn, amelyre a Storage-fiókja telepítve van. Felügyelt tartomány létrehozásához rendszergazdai jogosultsággal kell rendelkeznie az Azure AD-bérlőben. Ha nem az Azure AD-bérlő rendszergazdája, lépjen kapcsolatba a rendszergazdával, és kövesse az [Azure Active Directory Domain Services felügyelt tartomány létrehozásához és konfigurálásához](../../active-directory-domain-services/tutorial-create-instance.md)szükséges lépésenkénti útmutatót.
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
 ## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Nem sikerült csatlakoztatni az AD hitelesítő adatokkal rendelkező Azure Files 
 
 ### <a name="self-diagnostics-steps"></a>Saját diagnosztika lépései
-Először is győződjön meg arról, hogy követte az [Azure Files ad-hitelesítés engedélyezéséhez](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)szükséges négy lépést.
+Először is győződjön meg arról, hogy követte az [Azure Files ad-hitelesítés engedélyezéséhez](./storage-files-identity-auth-active-directory-enable.md)szükséges négy lépést.
 
-Másodszor, próbálja meg [csatlakoztatni az Azure-fájlmegosztást a Storage-fiók kulcsaként](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Ha nem sikerült csatlakoztatni, töltse le [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) , hogy segítsen ellenőrizni a környezetet futtató ügyfelet, és felismeri a nem kompatibilis ügyfél-konfigurációt, amely a Azure Files hozzáférési hibáját okozhatja, az önjavításra és a diagnosztikai Nyomkövetések gyűjtésére szolgáló részletes útmutatást nyújt.
+Másodszor, próbálja meg [csatlakoztatni az Azure-fájlmegosztást a Storage-fiók kulcsaként](./storage-how-to-use-files-windows.md). Ha nem sikerült csatlakoztatni, töltse le [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) , hogy segítsen ellenőrizni a környezetet futtató ügyfelet, és felismeri a nem kompatibilis ügyfél-konfigurációt, amely a Azure Files hozzáférési hibáját okozhatja, az önjavításra és a diagnosztikai Nyomkövetések gyűjtésére szolgáló részletes útmutatást nyújt.
 
 Harmadszor, a Debug-AzStorageAccountAuth parancsmag futtatásával elvégezheti az Active Directory-konfiguráción végzett alapszintű ellenőrzéseket a bejelentkezett AD-felhasználó használatával. Az [AzFilesHybrid v0.1.2+ verziója](https://github.com/Azure-Samples/azure-files-samples/releases) támogatja ezt a parancsmagot. A parancsmagot egy olyan AD-felhasználóval kell futtatnia, aki tulajdonosi engedéllyel rendelkezik a cél tárfiókon.  
 ```PowerShell
@@ -399,13 +399,13 @@ $StorageAccountName = "<storage-account-name-here>"
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 A parancsmag az alábbi ellenőrzéseket hajtja végre egymás után, és útmutatást nyújt a hibákhoz:
-1. CheckADObjectPasswordIsCorrect: Győződjön meg arról, hogy a Storage-fiókot jelképező AD-identitáson konfigurált jelszó megegyezik a kerb1 vagy a kerb2 kulcsával. Ha a jelszó helytelen, az [Update-AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) futtatásával állíthatja alaphelyzetbe a jelszót. 
+1. CheckADObjectPasswordIsCorrect: Győződjön meg arról, hogy a Storage-fiókot jelképező AD-identitáson konfigurált jelszó megegyezik a kerb1 vagy a kerb2 kulcsával. Ha a jelszó helytelen, az [Update-AzStorageAccountADObjectPassword](./storage-files-identity-ad-ds-update-password.md) futtatásával állíthatja alaphelyzetbe a jelszót. 
 2. CheckADObject: Ellenőrizze, hogy van-e olyan objektum a Active Directoryban, amely a Storage-fiókot jelöli, és rendelkezik a megfelelő SPN-vel (egyszerű szolgáltatásnév). Ha az egyszerű szolgáltatásnév nem megfelelően van beállítva, futtassa a Debug parancsmagban visszaadott set-AD parancsmagot az egyszerű szolgáltatásnév konfigurálásához.
-3. CheckDomainJoined: ellenőrzi, hogy az ügyfélszámítógép tartományhoz van-e csatlakoztatva az AD-hez. Ha a számítógép nincs tartományhoz csatlakoztatva az AD-hez, tekintse meg ezt a [cikket](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) a tartományhoz való csatlakozással kapcsolatos útmutatásért.
+3. CheckDomainJoined: ellenőrzi, hogy az ügyfélszámítógép tartományhoz van-e csatlakoztatva az AD-hez. Ha a számítógép nincs tartományhoz csatlakoztatva az AD-hez, tekintse meg ezt a [cikket](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) a tartományhoz való csatlakozással kapcsolatos útmutatásért.
 4. CheckPort445Connectivity: Győződjön meg arról, hogy a 445-es port az SMB-kapcsolatok számára meg van nyitva. Ha a szükséges port nincs megnyitva, tekintse meg a hibaelhárítási eszközt [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) a Azure Files kapcsolódási problémáinak elhárításához.
 5. CheckSidHasAadUser: Győződjön meg róla, hogy a bejelentkezett AD-felhasználó szinkronizálva van az Azure AD-vel. Ha szeretné megkeresni, hogy egy adott AD-felhasználó szinkronizálva van-e az Azure AD-val, megadhatja a-UserName és a-domain paramétert a bemeneti paraméterekben. 
 6. CheckGetKerberosTicket: a Storage-fiókhoz való kapcsolódásra irányuló Kerberos-jegy beszerzésére tett kísérlet. Ha nincs érvényes Kerberos-jogkivonat, futtassa a klist Get CIFS/Storage-Account-Name. file. Core. Windows. net parancsmagot, és vizsgálja meg a hibakódot a fő – a jegy lekérési hibája miatt.
-7. CheckStorageAccountDomainJoined: Ellenőrizze, hogy az AD-hitelesítés engedélyezve van-e, és hogy a fiók AD-tulajdonságainak feltöltése megtörtént-e. Ha nem, tekintse meg a AD DS hitelesítés engedélyezése Azure Fileson című [témakör utasításait](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable) . 
+7. CheckStorageAccountDomainJoined: Ellenőrizze, hogy az AD-hitelesítés engedélyezve van-e, és hogy a fiók AD-tulajdonságainak feltöltése megtörtént-e. Ha nem, tekintse meg a AD DS hitelesítés engedélyezése Azure Fileson című [témakör utasításait](./storage-files-identity-ad-ds-enable.md) . 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Nem lehet konfigurálni a címtár/fájl szintű engedélyeket (Windows ACL) a Windows fájlkezelővel
 
@@ -417,7 +417,7 @@ Előfordulhat, hogy az alábbiakban ismertetett tüneteket tapasztalja, amikor a
 
 ### <a name="solution"></a>Megoldás
 
-Javasoljuk, hogy a mappa/fájl szintű engedélyek megkerülő megoldásként való konfigurálásához használja a [icacls eszközt](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) . 
+Javasoljuk, hogy a mappa/fájl szintű engedélyek megkerülő megoldásként való konfigurálásához használja a [icacls eszközt](/windows-server/administration/windows-commands/icacls) . 
 
 ## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>Hibák Join-AzStorageAccountForAuth parancsmag futtatásakor
 
@@ -431,7 +431,7 @@ Ezt a hibát valószínűleg a Join-AzStorageAccountforAuth parancsban lévő sz
 
 ## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>Azure Files helyszíni AD DS hitelesítés támogatása AES 256 Kerberos-titkosításhoz
 
-Az AES 256 Kerberos-titkosítási támogatást bevezetett Azure Files helyszíni AD DS hitelesítéshez a [AzFilesHybrid modul v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Ha engedélyezte a AD DS hitelesítést a v 0.2.2 alacsonyabb verziójú modulnál, le kell töltenie a legújabb AzFilesHybrid-modult (v 0.2.2 +), és az alábbi PowerShellt kell futtatnia. Ha még nem engedélyezte AD DS hitelesítését a Storage-fiókjában, ezt az [útmutatót](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) az engedélyezéshez követheti. 
+Az AES 256 Kerberos-titkosítási támogatást bevezetett Azure Files helyszíni AD DS hitelesítéshez a [AzFilesHybrid modul v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Ha engedélyezte a AD DS hitelesítést a v 0.2.2 alacsonyabb verziójú modulnál, le kell töltenie a legújabb AzFilesHybrid-modult (v 0.2.2 +), és az alábbi PowerShellt kell futtatnia. Ha még nem engedélyezte AD DS hitelesítését a Storage-fiókjában, ezt az [útmutatót](./storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module) az engedélyezéshez követheti. 
 
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"

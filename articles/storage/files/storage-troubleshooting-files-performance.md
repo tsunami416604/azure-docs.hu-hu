@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 4d89fb4bcedb58aa156e75aaefc87479797dcd37
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 3e6490babb5a4e68c1ecd931251ea4eb99d6c3f5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577972"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630141"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Az Azure file shares teljesítményével kapcsolatos problémák elhárítása
 
@@ -22,7 +22,7 @@ Ez a cikk az Azure-fájlmegosztás szolgáltatással kapcsolatos gyakori problé
 
 ### <a name="cause-1-share-was-throttled"></a>1. ok: a megosztás szabályozása megvolt
 
-A rendszer a kérelmeket akkor szabályozza, ha a fájlmegosztás I/O-műveletei másodpercenként (IOPS), bejövő vagy kimenő korláttal rendelkeznek. A standard és a prémium szintű fájlmegosztás korlátainak megismeréséhez tekintse meg a [fájlmegosztás és a fájlméret céljait](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)ismertető témakört.
+A rendszer a kérelmeket akkor szabályozza, ha a fájlmegosztás I/O-műveletei másodpercenként (IOPS), bejövő vagy kimenő korláttal rendelkeznek. A standard és a prémium szintű fájlmegosztás korlátainak megismeréséhez tekintse meg a [fájlmegosztás és a fájlméret céljait](./storage-files-scale-targets.md#file-share-and-file-scale-targets)ismertető témakört.
 
 Annak ellenőrzéséhez, hogy a megosztást szabályozzák-e, elérheti és használhatja az Azure-metrikákat a portálon.
 
@@ -45,8 +45,8 @@ Annak ellenőrzéséhez, hogy a megosztást szabályozzák-e, elérheti és hasz
 
 ### <a name="solution"></a>Megoldás
 
-- Ha szabványos fájlmegosztást használ, engedélyezze a [nagyméretű fájlmegosztást](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) a Storage-fiókban. A nagyméretű fájlmegosztás akár 10 000 IOPS-t is támogat.
-- Ha prémium szintű fájlmegosztást használ, növelje a kiosztott fájlmegosztás méretét, hogy növelje a IOPS korlátját. További információ: "a prémium szintű fájlmegosztás kiépítés ismertetése" szakasz, [Azure Files tervezési útmutató](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares).
+- Ha szabványos fájlmegosztást használ, engedélyezze a [nagyméretű fájlmegosztást](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) a Storage-fiókban. A nagyméretű fájlmegosztás akár 10 000 IOPS-t is támogat.
+- Ha prémium szintű fájlmegosztást használ, növelje a kiosztott fájlmegosztás méretét, hogy növelje a IOPS korlátját. További információ: "a prémium szintű fájlmegosztás kiépítés ismertetése" szakasz, [Azure Files tervezési útmutató](./storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>2. ok: a metaadatok vagy a névtér nagy terhelése
 

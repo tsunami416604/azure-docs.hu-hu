@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 48e9fc4c1efa3517f5de46b7198c868a22331c79
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 93dd73b5a9149474be771537f47b448c5c4d7d8f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486389"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629325"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítési beállítások áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,11 +26,11 @@ Hasznos megérteni az Azure AD tartományi szolgáltatás hitelesítésével kap
 
 -   **Kerberos-hitelesítés**
 
-    A Kerberos egy olyan hitelesítési protokoll, amely a felhasználó vagy a gazdagép identitásának ellenőrzésére szolgál. További információ a Kerberosról: [Kerberos-hitelesítés áttekintése](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview).
+    A Kerberos egy olyan hitelesítési protokoll, amely a felhasználó vagy a gazdagép identitásának ellenőrzésére szolgál. További információ a Kerberosról: [Kerberos-hitelesítés áttekintése](/windows-server/security/kerberos/kerberos-authentication-overview).
 
 -  **Server Message Block (SMB) protokoll**
 
-    Az SMB egy iparági szabványnak megfelelő hálózati fájlmegosztás protokoll. Az SMB-t a Common Internet File System vagy CIFS néven is nevezik. Az SMB-vel kapcsolatos további információkért lásd: a [Microsoft SMB protokoll és a CIFS protokoll áttekintése](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview).
+    Az SMB egy iparági szabványnak megfelelő hálózati fájlmegosztás protokoll. Az SMB-t a Common Internet File System vagy CIFS néven is nevezik. Az SMB-vel kapcsolatos további információkért lásd: a [Microsoft SMB protokoll és a CIFS protokoll áttekintése](/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview).
 
 -   **Azure Active Directory (Azure AD)**
 
@@ -42,7 +42,7 @@ Hasznos megérteni az Azure AD tartományi szolgáltatás hitelesítésével kap
 
 - **Helyszíni Active Directory tartományi szolgáltatások (AD DS)**
 
-    A helyszíni Active Directory tartományi szolgáltatások (AD DS) Azure Files integrációja biztosítja a címtáradatok tárolásának módszereit, miközben elérhetővé teszi a hálózati felhasználók és a rendszergazdák számára. A biztonság integrálva van AD DS a bejelentkezési hitelesítéssel és a címtárban található objektumok hozzáférés-vezérlésével. A rendszergazdák egyetlen hálózati bejelentkezéssel kezelhetik a címtáradatokat és a szervezetet a hálózaton belül, és a jogosult hálózati felhasználók hozzáférhetnek az erőforrásokhoz a hálózat bármely pontján. A AD DS általában a helyszíni környezetben működő vállalatok fogadják el, és AD DS hitelesítő adatokat használják a hozzáférés-vezérlés identitásának. További információ: [Active Directory tartományi szolgáltatások Overview (áttekintés](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)).
+    A helyszíni Active Directory tartományi szolgáltatások (AD DS) Azure Files integrációja biztosítja a címtáradatok tárolásának módszereit, miközben elérhetővé teszi a hálózati felhasználók és a rendszergazdák számára. A biztonság integrálva van AD DS a bejelentkezési hitelesítéssel és a címtárban található objektumok hozzáférés-vezérlésével. A rendszergazdák egyetlen hálózati bejelentkezéssel kezelhetik a címtáradatokat és a szervezetet a hálózaton belül, és a jogosult hálózati felhasználók hozzáférhetnek az erőforrásokhoz a hálózat bármely pontján. A AD DS általában a helyszíni környezetben működő vállalatok fogadják el, és AD DS hitelesítő adatokat használják a hozzáférés-vezérlés identitásának. További információ: [Active Directory tartományi szolgáltatások Overview (áttekintés](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)).
 
 -   **Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)**
 
@@ -116,7 +116,7 @@ Az alábbi ábra az Azure-AD DS az SMB-en keresztüli Azure-fájlmegosztás hite
 
 - Másodszor, az Azure AD-ben meglévő összes felhasználó hitelesíthető és engedélyezett. A felhasználó csak Felhőbeli vagy hibrid lehet. Az Azure AD-ből az Azure AD DS-ra való szinkronizálást a platform felügyeli anélkül, hogy felhasználói konfigurációra lenne szükség. Az ügyfélnek azonban tartományhoz kell tartoznia az Azure AD DShoz, nem lehet az Azure AD-hez csatlakoztatva vagy regisztrálni. 
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="A helyszíni AD DS az Azure-fájlmegosztás SMB-kapcsolaton keresztüli hitelesítését ábrázoló diagram.":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Ábra":::
 
 ### <a name="enable-identity-based-authentication"></a>Identitás-alapú hitelesítés engedélyezése
 
@@ -128,7 +128,7 @@ Ha az Azure AD DS vagy a helyszíni AD DS hitelesítés engedélyezve van, haszn
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>A Azure Files könyvtár-vagy fájl szintű engedélyeinek konfigurálása
 
-Az Azure-fájlmegosztás a könyvtár és a fájl szintjén is kikényszeríti a Windows-fájlok szabványos engedélyeit, beleértve a gyökérkönyvtárat is. A címtár vagy a fájl szintű engedélyek konfigurációja az SMB és a REST protokollon keresztül is támogatott. Csatlakoztassa a célfájl megosztását a virtuális gépről, és konfigurálja az engedélyeket a Windows fájlkezelő, a Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)vagy a [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) parancs használatával.
+Az Azure-fájlmegosztás a könyvtár és a fájl szintjén is kikényszeríti a Windows-fájlok szabványos engedélyeit, beleértve a gyökérkönyvtárat is. A címtár vagy a fájl szintű engedélyek konfigurációja az SMB és a REST protokollon keresztül is támogatott. Csatlakoztassa a célfájl megosztását a virtuális gépről, és konfigurálja az engedélyeket a Windows fájlkezelő, a Windows [icacls](/windows-server/administration/windows-commands/icacls)vagy a [set-ACL](/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) parancs használatával.
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>Rendszergazdai jogosultságok használata a Storage-fiók kulcsaként
 
@@ -139,12 +139,12 @@ A Storage-fiók kulcsával rendelkező felhasználók hozzáférhetnek az Azure-
 
 ### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>Címtár és fájl ACL-ek megőrzése az Azure-fájlmegosztásba való adatimportáláskor
 
-Azure Files támogatja az adatok Azure-fájlmegosztásba való másolásakor a címtár vagy a fájl szintű ACL-ek megőrzését. Az ACL-eket egy könyvtárra vagy fájlra másolhatja az Azure-fájlmegosztás Azure File Sync vagy közös fájl-áthelyezési eszközkészlet használatával. Használhatja például a [robocopyt](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) a `/copy:s` jelölővel az adatmásoláshoz, valamint az ACL-eket egy Azure-fájlmegosztás eléréséhez. Az ACL-ek alapértelmezés szerint megmaradnak, és az ACL-ek megőrzése érdekében nem szükséges az identitás-alapú hitelesítés engedélyezése a Storage-fiókban.
+Azure Files támogatja az adatok Azure-fájlmegosztásba való másolásakor a címtár vagy a fájl szintű ACL-ek megőrzését. Az ACL-eket egy könyvtárra vagy fájlra másolhatja az Azure-fájlmegosztás Azure File Sync vagy közös fájl-áthelyezési eszközkészlet használatával. Használhatja például a [robocopyt](/windows-server/administration/windows-commands/robocopy) a `/copy:s` jelölővel az adatmásoláshoz, valamint az ACL-eket egy Azure-fájlmegosztás eléréséhez. Az ACL-ek alapértelmezés szerint megmaradnak, és az ACL-ek megőrzése érdekében nem szükséges az identitás-alapú hitelesítés engedélyezése a Storage-fiókban.
 
 ## <a name="pricing"></a>Díjszabás
 A Storage-fiókjában nem található további szolgáltatás, amely lehetővé teszi az identitás-alapú hitelesítés használatát az SMB protokollon keresztül. A díjszabással kapcsolatos további információkért tekintse meg a [Azure Files díjszabását](https://azure.microsoft.com/pricing/details/storage/files/) és a [Azure ad Domain Services díjszabását](https://azure.microsoft.com/pricing/details/active-directory-ds/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az SMB-en keresztüli Azure Files-és identitás-alapú hitelesítéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 
 - [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)

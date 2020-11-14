@@ -7,20 +7,20 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 609f6d5fd0bf75b1a2056c01c8d22ae9e08ab9cb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1eddca26152f27ced20bbae66b3265639b97e64e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746829"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629495"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
-A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) és a [Network File System (NFS) protokollon](https://en.wikipedia.org/wiki/Network_File_System) (előzetes verzió) keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
+A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) és a [Network File System (NFS) protokollon](https://en.wikipedia.org/wiki/Network_File_System) (előzetes verzió) keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
 
 Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori kérdésekre ad választ, beleértve a Azure File Sync használatát Azure Files használatával. Ha nem látja a választ a kérdésére, felveheti velünk a kapcsolatot a következő csatornákon keresztül (növekvő sorrendben):
 
 1. A cikk megjegyzések szakasza.
-2. [A Microsoft Q&az Azure Storage-ra vonatkozó kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-file-storage.html).
+2. [A Microsoft Q&az Azure Storage-ra vonatkozó kérdés oldalát](/answers/topics/azure-file-storage.html).
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
 4. Microsoft ügyfélszolgálata. Új támogatási kérelem létrehozásához a Azure Portal **Súgó** lapján kattintson a **Súgó + támogatás** gombra, majd válassza az **új támogatási kérelem** lehetőséget.
 
@@ -80,7 +80,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
 * <a id="file-locking"></a>
   **Támogatja a Azure Files a fájlok zárolását?**  
-    Igen, Azure Files teljes mértékben támogatja az SMB-/Windows-stílusú fájlok zárolását, [lásd: részletek](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks).
+    Igen, Azure Files teljes mértékben támogatja az SMB-/Windows-stílusú fájlok zárolását, [lásd: részletek](/rest/api/storageservices/managing-file-locks).
 
 * <a id="give-us-feedback"></a>
   **Szeretném megtekinteni a Azure Fileshoz hozzáadott speciális funkciót. Felveheti?**  
@@ -107,7 +107,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
     A teljesítmény a környezeti beállításoktól, a konfigurációtól és attól függően változik, hogy ez egy kezdeti szinkronizálás vagy egy folyamatban lévő szinkronizálás. További információ: [Azure file Sync teljesítmény mérőszámai](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
 
 * <a id="afs-conflict-resolution"></a>**Ha ugyanezt a fájlt két kiszolgálón is megváltoztatják egy időben, mi történik?**  
-    A Azure File Sync egy egyszerű ütközés-feloldási stratégiát használ: egyszerre két végponton módosult fájlok változásai is megmaradnak. A legutóbb írt módosítás megtartja az eredeti fájlnevet. A régebbi (LastWriteTime által meghatározott) fájl a végpont nevét és a fájlnévhez hozzáfűzött ütközési számot tartalmaz. A kiszolgálói végpontok esetében a végpont neve a kiszolgáló neve. A Felhőbeli végpontok esetén a végpont neve **felhő** . A név ezt a besorolást követi: 
+    A Azure File Sync egy egyszerű ütközés-feloldási stratégiát használ: egyszerre két végponton módosult fájlok változásai is megmaradnak. A legutóbb írt módosítás megtartja az eredeti fájlnevet. A régebbi (LastWriteTime által meghatározott) fájl a végpont nevét és a fájlnévhez hozzáfűzött ütközési számot tartalmaz. A kiszolgálói végpontok esetében a végpont neve a kiszolgáló neve. A Felhőbeli végpontok esetén a végpont neve **felhő**. A név ezt a besorolást követi: 
    
     \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
@@ -158,7 +158,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
     
 * <a id="afs-resource-move"></a>
   **Áthelyezhetem a Storage Sync szolgáltatást és/vagy a Storage-fiókot egy másik erőforráscsoport, előfizetés vagy Azure AD-bérlőbe?**  
-   Igen, a Storage Sync szolgáltatás és/vagy a Storage-fiók áthelyezhető egy másik erőforráscsoport, előfizetés vagy Azure AD-bérlőbe. A Storage Sync szolgáltatás vagy a Storage-fiók áthelyezése után meg kell adnia a Microsoft. StorageSync alkalmazás elérését a Storage-fiókhoz (lásd: [Azure file Sync hozzáférése a Storage-fiókhoz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+   Igen, a Storage Sync szolgáltatás és/vagy a Storage-fiók áthelyezhető egy másik erőforráscsoport, előfizetés vagy Azure AD-bérlőbe. A Storage Sync szolgáltatás vagy a Storage-fiók áthelyezése után meg kell adnia a Microsoft. StorageSync alkalmazás elérését a Storage-fiókhoz (lásd: [Azure file Sync hozzáférése a Storage-fiókhoz](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)).
 
     > [!Note]  
     > A Felhőbeli végpont létrehozásakor a Storage Sync szolgáltatásnak és a Storage-fióknak ugyanabban az Azure AD-bérlőben kell lennie. A Felhőbeli végpont létrehozása után a Storage Sync szolgáltatás és a Storage-fiók áthelyezhető a különböző Azure AD-bérlők között.
@@ -184,7 +184,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
     - Azure File Sync megőrzi és replikálja az összes tulajdonosi ACL-t vagy DACL-t (akár Active Directory-alapú, akár helyi) az összes olyan kiszolgálói végpontra, amelyet szinkronizál. 
     
-    Az Azure Storage szolgáltatásban támogatott összes protokoll átfogó megjelenítéséhez tekintse meg az [Azure Storage-hozzáférés engedélyezését](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető témakört. 
+    Az Azure Storage szolgáltatásban támogatott összes protokoll átfogó megjelenítéséhez tekintse meg az [Azure Storage-hozzáférés engedélyezését](../common/storage-auth.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) ismertető témakört. 
     
 * <a id="encryption-at-rest"></a>
 **Hogyan biztosíthatom, hogy az Azure-fájlmegosztás titkosítatlan állapotban legyen?**  
@@ -209,14 +209,14 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 * <a id="data-compliance-policies"></a>
 **Milyen adatmegfelelőségi szabályzatokat támogat az Azure Files?**  
 
-   Azure Files ugyanazon a tárolási architektúrán fut, amelyet az Azure Storage más tárolási szolgáltatásaiban használ. Azure Files ugyanazokat az adatmegfelelőségi szabályzatokat alkalmazza, amelyek más Azure Storage-szolgáltatásokban is használhatók. Az Azure Storage-beli adatok megfelelőségével kapcsolatos további információkért tekintse meg az [Azure Storage megfelelőségi ajánlatait](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings), és nyissa meg a [Microsoft adatvédelmi központját](https://microsoft.com/trustcenter/default.aspx).
+   Azure Files ugyanazon a tárolási architektúrán fut, amelyet az Azure Storage más tárolási szolgáltatásaiban használ. Azure Files ugyanazokat az adatmegfelelőségi szabályzatokat alkalmazza, amelyek más Azure Storage-szolgáltatásokban is használhatók. Az Azure Storage-beli adatok megfelelőségével kapcsolatos további információkért tekintse meg az [Azure Storage megfelelőségi ajánlatait](../common/storage-compliance-offerings.md), és nyissa meg a [Microsoft adatvédelmi központját](https://microsoft.com/trustcenter/default.aspx).
 
 * <a id="file-auditing"></a>
 **Hogyan lehet naplózni a fájlok hozzáférését és a Azure Files változásait?**
 
   Két lehetőség áll rendelkezésre a Azure Files naplózási funkcióinak megadására:
-  - Ha a felhasználók közvetlenül érik el az Azure-fájlmegosztást, az [Azure Storage-naplók (előzetes verzió)](https://docs.microsoft.com/azure/storage/common/monitor-storage?tabs=azure-powershell#logs-in-azure-monitor-preview) segítségével nyomon követhetik a fájl módosításait és a felhasználói hozzáférést. Ezek a naplók hibaelhárítási célokra használhatók, és a kérelmeket a lehető legjobb módon naplózzák.
-  - Ha a felhasználók egy olyan Windows Serveren keresztül érik el az Azure-fájlmegosztást, amelyen telepítve van a Azure File Sync ügynök, a Windows Serveren a fájl-és felhasználói hozzáférés nyomon követéséhez használjon [naplózási házirendet](https://docs.microsoft.com/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) vagy harmadik féltől származó terméket. 
+  - Ha a felhasználók közvetlenül érik el az Azure-fájlmegosztást, az [Azure Storage-naplók (előzetes verzió)](../blobs/monitor-blob-storage.md?tabs=azure-powershell#analyzing-logs) segítségével nyomon követhetik a fájl módosításait és a felhasználói hozzáférést. Ezek a naplók hibaelhárítási célokra használhatók, és a kérelmeket a lehető legjobb módon naplózzák.
+  - Ha a felhasználók egy olyan Windows Serveren keresztül érik el az Azure-fájlmegosztást, amelyen telepítve van a Azure File Sync ügynök, a Windows Serveren a fájl-és felhasználói hozzáférés nyomon követéséhez használjon [naplózási házirendet](/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) vagy harmadik féltől származó terméket. 
    
 ### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS & Azure AD DS Authentication
 * <a id="ad-support-devices"></a>
@@ -247,7 +247,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 * <a id="ad-aad-smb-files"></a>
 **Hogyan ellenőrizhetem, hogy engedélyezve van-e a AD DS hitelesítés a Storage-fiókomban, és hogyan kérhető le a tartományi információ?**
 
-    Útmutatásért lásd [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account).
+    Útmutatásért lásd [itt](./storage-files-identity-ad-ds-enable.md#confirm-the-feature-is-enabled).
 
 * <a id=""></a>
 **Támogatja Azure Files Azure AD-hitelesítés a Linux rendszerű virtuális gépeket?**
@@ -288,19 +288,14 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
     Igen, engedélyezheti az AD-hitelesítést az Azure file Sync által kezelt fájlmegosztás esetén. A könyvtár/fájl NTFS ACL-ek helyi fájlkiszolgálón való módosítása a Azure Files és fordítva történik.
 
 * <a id="ad-aad-smb-files"></a>
-**Hogyan ellenőrizhetem, hogy engedélyezem-e az AD-hitelesítést a Storage-fiókomon és az AD-tartomány adatain?**
-
-    Az [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) található útmutatást követve ellenőrizheti, hogy Azure Files ad-hitelesítés engedélyezve van-e a Storage-fiókjában, és lekéri az ad-tartomány adatait.
-
-* <a id="ad-aad-smb-files"></a>
 **Van valamilyen különbség a saját Storage-fiókomat képviselő számítógépfiók vagy szolgáltatásbeli bejelentkezési fiók létrehozásakor?**
 
-    Egy [számítógépfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (alapértelmezett) vagy egy [szolgáltatás-bejelentkezési fiók](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) létrehozása nem különbözik attól, hogy a hitelesítés hogyan működjön együtt Azure Filesokkal. Saját maga dönthet úgy, hogy a Storage-fiókot identitásként jelöli meg az AD-környezetben. A Join-AzStorageAccountForAuth parancsmagban beállított alapértelmezett DomainAccountType számítógépfiók. Azonban az AD-környezetben konfigurált jelszó lejárati kora eltérő lehet a számítógép vagy szolgáltatás bejelentkezési fiókja számára, és figyelembe kell vennie, hogy a [Storage-fiók identitásának frissítése az ad-ban](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)című részében kell megfontolnia a jelszót.
+    Egy [számítógépfiók](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (alapértelmezett) vagy egy [szolgáltatás-bejelentkezési fiók](/windows/win32/ad/about-service-logon-accounts) létrehozása nem különbözik attól, hogy a hitelesítés hogyan működjön együtt Azure Filesokkal. Saját maga dönthet úgy, hogy a Storage-fiókot identitásként jelöli meg az AD-környezetben. A Join-AzStorageAccountForAuth parancsmagban beállított alapértelmezett DomainAccountType számítógépfiók. Azonban az AD-környezetben konfigurált jelszó lejárati kora eltérő lehet a számítógép vagy szolgáltatás bejelentkezési fiókja számára, és figyelembe kell vennie, hogy a [Storage-fiók identitásának frissítése az ad-ban](./storage-files-identity-ad-ds-update-password.md)című részében kell megfontolnia a jelszót.
  
 * <a id="ad-support-rest-apis"></a>
 **Vannak olyan REST API-k, amelyek támogatják a lekérési/beállítási/másolási és a fájlok Windows ACL-jeit?**
 
-    Igen, támogatjuk a REST API-kat, amelyek a könyvtárakra vagy fájlokra vonatkozó NTFS ACL-ek beszerzését, beállítását vagy másolását használják az [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (vagy újabb) REST API használatakor. A Windows ACL-ek továbbra is támogatottak a REST-alapú eszközökön: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
+    Igen, támogatjuk a REST API-kat, amelyek a könyvtárakra vagy fájlokra vonatkozó NTFS ACL-ek beszerzését, beállítását vagy másolását használják az [2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (vagy újabb) REST API használatakor. A Windows ACL-ek továbbra is támogatottak a REST-alapú eszközökön: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
 
 ## <a name="network-file-system"></a>Hálózati fájlrendszer
 
@@ -324,7 +319,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 * <a id="port-445-blocked"></a>
 **Az INTERNETSZOLGÁLTATÓm vagy blokkolja a 445-es portot, amely nem Azure Files csatlakoztatást. Mit tegyek?**
 
-    Az [445-es blokkolt port megkerülő megoldásának különböző módjairól itt](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)olvashat. Azure Files csak a régión vagy adatközponton kívülről engedélyezi a kapcsolódást az SMB 3,0 (titkosítási támogatással) használatával. Az SMB 3,0 protokoll számos olyan biztonsági funkciót vezetett be, mint például a csatornák titkosítása, ami nagyon biztonságos az interneten keresztül. Lehetséges azonban, hogy a 445-es portot letiltották az alacsonyabb SMB-verziókban található sebezhetőségek korábbi okai miatt. Ideális esetben a portot csak az SMB 1,0-forgalomhoz kell letiltani, és az SMB 1,0-et minden ügyfélen ki kell kapcsolni.
+    Az [445-es blokkolt port megkerülő megoldásának különböző módjairól itt](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)olvashat. Azure Files csak a régión vagy adatközponton kívülről engedélyezi a kapcsolódást az SMB 3,0 (titkosítási támogatással) használatával. Az SMB 3,0 protokoll számos olyan biztonsági funkciót vezetett be, mint például a csatornák titkosítása, ami nagyon biztonságos az interneten keresztül. Lehetséges azonban, hogy a 445-es portot letiltották az alacsonyabb SMB-verziókban található sebezhetőségek korábbi okai miatt. Ideális esetben a portot csak az SMB 1,0-forgalomhoz kell letiltani, és az SMB 1,0-et minden ügyfélen ki kell kapcsolni.
 
 * <a id="expressroute-not-required"></a>
 **Az Azure ExpressRoute-t kell használnia a Azure Fileshoz való kapcsolódáshoz vagy a helyszíni Azure File Sync használatához?**  
@@ -339,7 +334,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Hogyan az Azure-fájlmegosztás biztonsági mentését?**  
-    A véletlen törlések elleni védelemhez használhat rendszeres [megosztási pillanatképeket](storage-snapshots-files.md) . Használhatja a AzCopy, a Robocopy vagy egy külső gyártótól származó biztonsági mentési eszközt is, amely képes biztonsági másolatot készíteni egy csatlakoztatott fájlmegosztásról. A Azure Backup Azure Files biztonsági mentését kínálja. További információ az [Azure-fájlmegosztás Azure Backup általi biztonsági mentéséről](https://docs.microsoft.com/azure/backup/backup-azure-files).
+    A véletlen törlések elleni védelemhez használhat rendszeres [megosztási pillanatképeket](storage-snapshots-files.md) . Használhatja a AzCopy, a Robocopy vagy egy külső gyártótól származó biztonsági mentési eszközt is, amely képes biztonsági másolatot készíteni egy csatlakoztatott fájlmegosztásról. A Azure Backup Azure Files biztonsági mentését kínálja. További információ az [Azure-fájlmegosztás Azure Backup általi biztonsági mentéséről](../../backup/backup-afs.md).
 
 ## <a name="share-snapshots"></a>Pillanatképek megosztása
 
@@ -450,11 +445,11 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 ## <a name="features-and-interoperability-with-other-services"></a>Funkciók és együttműködés más szolgáltatásokkal
 * <a id="cluster-witness"></a>
 **Használhatom az Azure-fájlmegosztást *tanúsító fájlmegosztásként* a Windows Server feladatátvevő fürthöz?**  
-    Az Azure-fájlmegosztás jelenleg nem támogatja ezt a konfigurációt. További információ az Azure Blob Storage-hoz való beállításáról: [Felhőbeli tanúsító üzembe helyezése feladatátvevő fürtön](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness).
+    Az Azure-fájlmegosztás jelenleg nem támogatja ezt a konfigurációt. További információ az Azure Blob Storage-hoz való beállításáról: [Felhőbeli tanúsító üzembe helyezése feladatátvevő fürtön](/windows-server/failover-clustering/deploy-cloud-witness).
 
 * <a id="containers"></a>
 **Csatlakoztatható Azure-fájlmegosztás egy Azure Container-példányon?**  
-    Igen, az Azure-fájlmegosztás jó lehetőség, ha a Container-példányok élettartama után szeretné megőrizni az adatokat. További információ: Azure- [fájlmegosztás csatlakoztatása az Azure Container instances szolgáltatással](../../container-instances/container-instances-mounting-azure-files-volume.md).
+    Igen, az Azure-fájlmegosztás jó lehetőség, ha a Container-példányok élettartama után szeretné megőrizni az adatokat. További információ: Azure- [fájlmegosztás csatlakoztatása az Azure Container instances szolgáltatással](../../container-instances/container-instances-volume-azure-files.md).
 
 * <a id="rest-rename"></a>
 **Van átnevezési művelet a REST APIban?**  
@@ -468,7 +463,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 **Hogyan Azure Files az IBM MQ-val?**  
     Az IBM kiadott egy olyan dokumentumot, amely segítséget nyújt az IBM MQ-ügyfeleknek az IBM szolgáltatással való Azure Files konfigurálásában. További információ: az [IBM MQ többpéldányos üzenetsor-kezelő beállítása Microsoft Azure Files szolgáltatással](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)
 * [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)
 * [Azure File Sync – hibaelhárítás](storage-sync-files-troubleshoot.md)

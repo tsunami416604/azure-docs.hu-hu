@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 5a57b13cdb8c7c1144815543e03b970de32b4369
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 14fd5378f37ebfc20b2d7084c08f15ea8f7a00b2
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394254"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630532"
 ---
 # <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) metrikáinak exportálása a diagnosztikai beállításokon keresztül
 
-Ebből a cikkből megtudhatja, hogyan exportálhatja az Azure IoT Connectort az FHIR * mérőszámok naplóiba. A metrikák naplózását lehetővé tevő szolgáltatás a Azure Portal [**diagnosztikai beállításai**](../azure-monitor/platform/diagnostic-settings.md) . 
+Ebből a cikkből megtudhatja, hogyan exportálhatja az Azure IoT Connectort a gyors egészségügyi együttműködési erőforrások (FHIR&#174;) * mérőszámok naplóiba. A metrikák naplózását lehetővé tevő szolgáltatás a Azure Portal [**diagnosztikai beállításai**](../azure-monitor/platform/diagnostic-settings.md) . 
 
 > [!TIP]
 > A naplózási naplózás beállításához kövesse az [Azure API diagnosztikai naplózásának engedélyezése az FHIR és az Azure IoT connectorhoz](enable-diagnostic-logging.md#enable-diagnostic-logging-in-azure-api-for-fhir) című témakör útmutatását.
@@ -41,7 +41,7 @@ Ebből a cikkből megtudhatja, hogyan exportálhatja az Azure IoT Connectort az 
 
 6. A FHIR Azure IoT-összekötőhöz tartozó **hibák, forgalom és késés** kiválasztása.  Válassza ki a FHIR Azure API-hoz rögzíteni kívánt további metrikai kategóriákat.
 
-7. Válassza a **Mentés** lehetőséget.
+7. Válassza a **Mentés** lehetőséget
 
    :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT Connector2" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
 
@@ -60,6 +60,4 @@ Tekintse meg a FHIR készült Azure IoT-összekötővel kapcsolatos gyakori kér
 >[!div class="nextstepaction"]
 >[Azure IoT-összekötő FHIR – gyakori kérdések](fhir-faq.md)
 
-* A Azure Portal a FHIR készült Azure IoT-összekötő a IoT-összekötő (előzetes verzió) néven ismert.
-
-Az FHIR a HL7 bejegyzett védjegye, amelynek felhasználását a HL7 engedélyezte.
+* A Azure Portal a FHIR készült Azure IoT Connector a IoT Connector (előzetes verzió) néven ismert. A FHIR a HL7 bejegyzett védjegye, és a HL7 engedélyével van használatban.

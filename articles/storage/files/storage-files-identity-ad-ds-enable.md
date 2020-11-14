@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 6251894018ceeb2a99ebb62939b6e446fea825a2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 948b30cbf37ae5f4f357860569579d8591412414
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220720"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630396"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Első rész: az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése 
 
@@ -28,20 +28,20 @@ A AzFilesHybrid PowerShell-modul parancsmagai elvégzik a szükséges módosít�
 
 ### <a name="download-azfileshybrid-module"></a>AzFilesHybrid modul letöltése
 
-- [Töltse le és csomagolja ki a AzFilesHybrid modult (GA-modul: v 0.2.0 +)](https://github.com/Azure-Samples/azure-files-samples/releases) Vegye figyelembe, hogy az AES 256 Kerberos-titkosítás támogatott a v 0.2.2 vagy újabb verziókban. Ha engedélyezte a szolgáltatást a v 0.2.2 alatti AzFilesHybrid-verzióval, és frissíteni szeretné az AES 256 Kerberos-titkosítás támogatásához, tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). 
+- [Töltse le és csomagolja ki a AzFilesHybrid modult (GA-modul: v 0.2.0 +)](https://github.com/Azure-Samples/azure-files-samples/releases) Vegye figyelembe, hogy az AES 256 Kerberos-titkosítás támogatott a v 0.2.2 vagy újabb verziókban. Ha engedélyezte a szolgáltatást a v 0.2.2 alatti AzFilesHybrid-verzióval, és frissíteni szeretné az AES 256 Kerberos-titkosítás támogatásához, tekintse meg [ezt a cikket](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). 
 - Telepítse és hajtsa végre a modult egy olyan eszközön, amely tartományhoz van csatlakoztatva a helyszíni AD DS olyan AD DS hitelesítő adatokkal, amelyek engedéllyel rendelkeznek a szolgáltatás bejelentkezési fiókjának vagy a célszámítógép fiókjának létrehozásához a cél AD-ben.
 -  Futtassa a parancsfájlt egy helyszíni AD DS hitelesítő adat használatával, amely szinkronizálva van az Azure AD-vel. A helyszíni AD DS hitelesítő adatának a Storage-fiók tulajdonosa vagy a közreműködő Azure-szerepkör engedélyekkel kell rendelkeznie.
 
 ### <a name="run-join-azstorageaccountforauth"></a>Join-AzStorageAccountForAuth futtatása
 
-A `Join-AzStorageAccountForAuth` parancsmag egy kapcsolat nélküli tartományhoz való csatlakozást hajt végre a megadott Storage-fiók nevében. A szkript a parancsmag használatával hozza létre a [számítógépfiókot](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) az ad-tartományban. Ha bármilyen okból nem tud számítógépfiókot használni, megváltoztathatja a parancsfájlt a [szolgáltatás bejelentkezési fiókjának](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) létrehozásához. Ha a parancs manuális futtatását választja, válassza ki a környezete számára legmegfelelőbb fiókot.
+A `Join-AzStorageAccountForAuth` parancsmag egy kapcsolat nélküli tartományhoz való csatlakozást hajt végre a megadott Storage-fiók nevében. A szkript a parancsmag használatával hozza létre a [számítógépfiókot](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) az ad-tartományban. Ha bármilyen okból nem tud számítógépfiókot használni, megváltoztathatja a parancsfájlt a [szolgáltatás bejelentkezési fiókjának](/windows/win32/ad/about-service-logon-accounts) létrehozásához. Ha a parancs manuális futtatását választja, válassza ki a környezete számára legmegfelelőbb fiókot.
 
 A parancsmag által létrehozott AD DS fiók a Storage-fiókot jelöli. Ha a AD DS fiók egy szervezeti egység (OU) alatt jön létre, amely kikényszeríti a jelszó lejáratát, akkor a jelszó maximális kora előtt frissítenie kell a jelszót. Nem sikerült frissíteni a fiók jelszavát, mielőtt ez a dátum az Azure-fájlmegosztás elérésekor hitelesítési hibákat eredményez. A jelszó frissítésével kapcsolatos további információkért lásd: [AD DS fiók jelszavának frissítése](storage-files-identity-ad-ds-update-password.md).
 
 Cserélje le a helyőrző értékeket az alábbi paraméterekkel, mielőtt végrehajtja a PowerShellben.
 > [!IMPORTANT]
-> A tartományhoz való csatlakozás parancsmag létrehoz egy AD-fiókot, amely a Storage-fiókot (fájlmegosztást) az AD-ben fogja ábrázolni. Megadhatja, hogy számítógép-fiókként vagy szolgáltatás-bejelentkezési fiókként regisztrálja a részleteket a [Gyakori kérdések](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) részben. Számítógépfiókok esetében az alapértelmezett jelszó lejárati ideje 30 nap múlva az AD-ben van beállítva. Hasonlóképpen, előfordulhat, hogy a szolgáltatás bejelentkezési fiókja az AD-tartományon vagy a szervezeti egységen (OU) beállított alapértelmezett jelszó-lejárati kort tartalmaz.
-> Mindkét fióktípus esetében javasoljuk, hogy tekintse meg az AD-környezetben konfigurált jelszó lejárati idejét, és tervezze meg, hogy a jelszó maximális kora előtt [frissítse a Storage-fiók identitásának jelszavát](storage-files-identity-ad-ds-update-password.md) . Érdemes lehet [új ad szervezeti egységet (OU-t) létrehozni az ad-ben](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) , és ennek megfelelően letiltani a jelszó lejárati házirendjét a [számítógép fiókjain](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) vagy a szolgáltatás bejelentkezési fiókjain. 
+> A tartományhoz való csatlakozás parancsmag létrehoz egy AD-fiókot, amely a Storage-fiókot (fájlmegosztást) az AD-ben fogja ábrázolni. Megadhatja, hogy számítógép-fiókként vagy szolgáltatás-bejelentkezési fiókként regisztrálja a részleteket a [Gyakori kérdések](./storage-files-faq.md#security-authentication-and-access-control) részben. Számítógépfiókok esetében az alapértelmezett jelszó lejárati ideje 30 nap múlva az AD-ben van beállítva. Hasonlóképpen, előfordulhat, hogy a szolgáltatás bejelentkezési fiókja az AD-tartományon vagy a szervezeti egységen (OU) beállított alapértelmezett jelszó-lejárati kort tartalmaz.
+> Mindkét fióktípus esetében javasoljuk, hogy tekintse meg az AD-környezetben konfigurált jelszó lejárati idejét, és tervezze meg, hogy a jelszó maximális kora előtt [frissítse a Storage-fiók identitásának jelszavát](storage-files-identity-ad-ds-update-password.md) . Érdemes lehet [új ad szervezeti egységet (OU-t) létrehozni az ad-ben](/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) , és ennek megfelelően letiltani a jelszó lejárati házirendjét a [számítógép fiókjain](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) vagy a szolgáltatás bejelentkezési fiókjain. 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -89,7 +89,7 @@ Ha a `Join-AzStorageAccountForAuth` fenti szkriptet már sikeresen végrehajtott
 
 ### <a name="checking-environment"></a>Környezet ellenőrzése
 
-Először ellenőriznie kell a környezet állapotát. Pontosabban ellenőriznie kell, hogy telepítve van-e a [Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) , és hogy a rendszerhéj rendszergazdai jogosultságokkal van-e végrehajtva. Ezután ellenőrizze, hogy az [Az.Storage 2.0 modul](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) telepítve van-e, és ha nincs, telepítse. Az ellenőrzések elvégzése után ellenőrizze a AD DS, hogy van-e olyan [számítógépfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (alapértelmezett) vagy [szolgáltatás-bejelentkezési fiók](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) , amely már létrehozva van SPN/UPN néven "CIFS/a-Storage-Account-Name-here. file. Core. Windows. net". Ha a fiók nem létezik, hozzon létre egyet a következő szakaszban leírtak szerint.
+Először ellenőriznie kell a környezet állapotát. Pontosabban ellenőriznie kell, hogy telepítve van-e a [Active Directory PowerShell](/powershell/module/addsadministration/?view=win10-ps) , és hogy a rendszerhéj rendszergazdai jogosultságokkal van-e végrehajtva. Ezután ellenőrizze, hogy az [Az.Storage 2.0 modul](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) telepítve van-e, és ha nincs, telepítse. Az ellenőrzések elvégzése után ellenőrizze a AD DS, hogy van-e olyan [számítógépfiók](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (alapértelmezett) vagy [szolgáltatás-bejelentkezési fiók](/windows/win32/ad/about-service-logon-accounts) , amely már létrehozva van SPN/UPN néven "CIFS/a-Storage-Account-Name-here. file. Core. Windows. net". Ha a fiók nem létezik, hozzon létre egyet a következő szakaszban leírtak szerint.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Az AD-ben manuálisan létrehozott Storage-fiókot jelölő identitás létrehozása
 
@@ -165,7 +165,7 @@ DomainGuid:<yourGUIDHere>
 DomainSid:<yourSIDHere>
 AzureStorageID:<yourStorageSIDHere>
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezzel sikeresen engedélyezte a szolgáltatást a Storage-fiókjában. A szolgáltatás használatához hozzá kell rendelnie a megosztási szintű engedélyeket. Folytassa a következő szakasszal.
 

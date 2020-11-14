@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: 1c02f9de5b41d58e40001ba103191f3ef015f5c5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bcfd14572b632cdc455babf7b9f8d67be904406c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534906"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629954"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Külső metaadattárak használata az Azure HDInsightban
 
@@ -67,7 +67,7 @@ Hozzon létre vagy rendelkezzen meglévő Azure SQL Database a HDInsight-fürth�
 
 A fürt létrehozása során a HDInsight szolgáltatásnak csatlakoznia kell a külső metaadattár, és ellenőriznie kell a hitelesítő adatait. Azure SQL Database tűzfalszabályok konfigurálásával engedélyezheti az Azure-szolgáltatások és-erőforrások számára a kiszolgáló elérését. Engedélyezze ezt a beállítást a Azure Portal a **kiszolgáló tűzfalának beállítása** elem kiválasztásával. Ezután válassza a **nincs** a **nyilvános hálózati hozzáférés megtagadása** alatt lehetőséget, és **Igen** , az **Azure-szolgáltatások és-erőforrások engedélyezése alatt a kiszolgálóhoz való hozzáféréshez** Azure SQL Database. További információt az [IP-Tűzfalszabályok létrehozásával és kezelésével](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) foglalkozó témakörben talál.
 
-Az SQL-áruházakhoz tartozó magánhálózati végpontok nem támogatottak.
+Az SQL-áruházakhoz tartozó magánhálózati végpontok csak a ResourceProviderConnection-mel létrehozott fürtökön támogatottak `outbound` . További információért tekintse meg ezt a [dokumentációt](https://docs.microsoft.com/azure/hdinsight/hdinsight-private-link).
 
 ![kiszolgáló tűzfalának beállítása gomb](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
@@ -110,6 +110,6 @@ A Oozie-metaadattár Azure SQL Database használatával történő létrehozás�
 
 Ha saját külső adatbázist szeretne használni az Apache Ambari a HDInsight-on, tekintse meg az [Egyéni Apache Ambari-adatbázist](hdinsight-custom-ambari-db.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával](./hdinsight-hadoop-provision-linux-clusters.md)

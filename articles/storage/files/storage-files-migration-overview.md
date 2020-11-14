@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 995ae176a8eec58f8dc9522e6fac6fd78170014d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785612"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628917"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrálás Azure-fájlmegosztásokba
 
@@ -134,7 +134,7 @@ Ez a szakasz azokat az eszközöket ismerteti, amelyek segítségével megtervez
 
 #### <a name="robocopy-from-microsoft-corporation"></a>RoboCopy a Microsoft Corporation-től
 
-A RoboCopy a fájlok áttelepítésére leginkább alkalmazható eszközök egyike. A Windows részét képezi. A [Robocopy fő dokumentációja](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) az eszköz számos lehetőségének hasznos forrása.
+A RoboCopy a fájlok áttelepítésére leginkább alkalmazható eszközök egyike. A Windows részét képezi. A [Robocopy fő dokumentációja](/windows-server/administration/windows-commands/robocopy) az eszköz számos lehetőségének hasznos forrása.
 
 #### <a name="treesize-from-jam-software-gmbh"></a>TreeSize a JAM Software GmbH-ból
 
@@ -144,7 +144,7 @@ Az eszköz használatával perspektívát hozhat létre [Azure file Sync közpon
 
 Az eszköz tesztelt verziója a 4.4.1-es verzió. Kompatibilis a Felhőbeli rétegbeli fájlokkal. Az eszköz a normál működés közben nem idézi elő a rétegekből származó fájlok felidézését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 1. Hozzon létre egy tervet, amely az Azure-fájlmegosztás (csak felhőalapú vagy hibrid) telepítését kívánja használni.
 1. Tekintse át az elérhető áttelepítési útmutatók listáját, és keresse meg az Azure-fájlmegosztás forrására és üzembe helyezésére vonatkozó részletes útmutatót.

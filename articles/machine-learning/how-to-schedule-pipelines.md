@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning folyamatok ütemezhetnek
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning folyamatok ütemezhetnek a Pythonhoz készült Azure Machine Learning SDK-val. Az ütemezett folyamatok lehetővé teszik a rutin, az időigényes feladatok, például az adatfeldolgozás, a képzés és a figyelés automatizálását.
+description: Az ütemezett folyamatok lehetővé teszik a rutin, az időigényes feladatok, például az adatfeldolgozás, a képzés és a figyelés automatizálását.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 97d0f822e63bb6eb32b1cd2f211621af8ad1c4b8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2c931aa6cd170c72654eb9ced6813d26e21ce5d0
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314000"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630311"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Gépi tanulási folyamatok ütemezhetnek a Pythonhoz készült Azure Machine Learning SDK-val
 
@@ -142,11 +142,11 @@ stop_by_schedule_id(ws, schedule_id)
 
 Ha ezt követően újra futtatja `Schedule.list(ws)` , üres listát kell kapnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a Pythonhoz készült Azure Machine Learning SDK-val két különböző módon ütemezhet egy folyamatot. Az egyik ütemezett ismétlődés az eltelt idő alapján. A másik ütemterv akkor fut, ha egy fájlt módosítanak egy adott `Datastore` vagy a tároló egyik könyvtárán belül. Látta, hogyan használhatja a portált a folyamat és az egyes futtatások vizsgálatára. Végezetül megtanulta, hogyan tilthatja le az ütemtervet, hogy a folyamat lefusson.
 
-További információkért lásd:
+További információ:
 
 > [!div class="nextstepaction"]
 > [Azure Machine Learning folyamatok használata a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md)

@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: c809a1ae525fb7fab6dceebb3241e229e8a0284e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a30fe70943c5329b36cbe10b75d47cc0ee3827fc
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781838"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630413"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Az Azure Blob Storage költségeinek megtervezése és kezelése
 
@@ -39,6 +39,9 @@ Az [Azure díjszabási számológépével](https://azure.microsoft.com/pricing/c
    A **típus** legördülő lista értékének módosításakor a munkalapon megjelenő egyéb beállítások is módosulnak. A **további információkkal** foglalkozó szakaszban található hivatkozásokat követve további információkat tudhat meg arról, hogy az egyes lehetőségek mit jelentenek, és hogy ezek a beállítások milyen hatással vannak a tárolással kapcsolatos műveletek árára. 
 
 4. Módosítsa a hátralévő beállításokat, hogy azok hatással legyenek a becsült értékekre.
+
+   > [!NOTE]
+   > Az Azure Blob Storage díjait az Azure Nagyvállalati Szerződés pénzügyi kötelezettségvállalásával kapcsolatos díjakért kell fizetnie. A pénzügyi kötelezettségvállalással kapcsolatos kreditek azonban nem használhatók fel a harmadik féltől származó termékekkel és szolgáltatásokkal, például az Azure Marketplace-ről fizetett díjakért.
 
 ## <a name="optimize-costs"></a>Költségek optimalizálása
 
@@ -99,11 +102,15 @@ Az Azure Storage költségeinek megtekintése a Cost Analysis szolgáltatásban:
 
 Az előző példában a szolgáltatás aktuális díja látható. Az Azure-régiók (helyszínek) és az erőforráscsoport költségei is megjelennek. További szűrőket is hozzáadhat (például egy szűrőt az adott Storage-fiókok költségeinek megjelenítéséhez).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="export-cost-data"></a>Költségadatok exportálása
 
-További információ a költségek a [Cost Analysis](../../cost-management-billing/costs/quick-acm-cost-analysis.md)szolgáltatással történő kezeléséről.
+A költségadatok a Storage-fiókba is [exportálhatók](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Ez akkor hasznos, ha szüksége van rá, vagy másoknak további adatelemzést kell végeznie a költségekért. Egy pénzügyi csapat például az Excel vagy a Power BI használatával elemezheti az adatelemzést. A költségeket napi, heti vagy havi rendszerességgel exportálhatja, és egyéni dátumtartományt is beállíthat. A költségadatok exportálásának ajánlott módja a Cost-adatkészletek beolvasása.
 
-Az alábbi cikkekből megtudhatja, hogyan működik az árképzés az Azure Storage-ban:
+## <a name="next-steps"></a>További lépések
 
-- [Az Azure Storage áttekintése – díjszabás](https://azure.microsoft.com/pricing/details/storage/)
-- [A fenntartott kapacitású Blob Storage költségeinek optimalizálása](../blobs/storage-blob-reserved-capacity.md)
+- További információ arról, hogyan működik az árképzés az Azure Storage-ban. Lásd: az [Azure Storage áttekintésének díjszabása](https://azure.microsoft.com/pricing/details/storage/).
+- [A blob Storage költségeinek optimalizálása a fenntartott kapacitással](../blobs/storage-blob-reserved-capacity.md).
+- Megtudhatja [, hogyan optimalizálhatja a felhőalapú befektetéseit Azure Cost Managementokkal](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- További információ a költségek a [Cost Analysis](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)szolgáltatással történő kezeléséről.
+- További információ a [váratlan költségek megelőzéséről](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- Vegye figyelembe a [Cost Management](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) interaktív tanulás tanfolyamát.

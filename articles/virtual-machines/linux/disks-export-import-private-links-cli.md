@@ -8,12 +8,12 @@ ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 20b2f74b33ae57016188ee66af29570f7ec1b529
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 9a005712eda1e735608e3ddf93be2bba98fbdcd3
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289273"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630040"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI – a felügyelt lemezek importálási/exportálási hozzáférésének korlátozása privát hivatkozásokkal
 
@@ -27,9 +27,6 @@ A NetworkAccessPolicy tulajdonságot beállíthatja úgy `DenyAll` , hogy megaka
 
 [!INCLUDE [virtual-machines-disks-private-links-limitations](../../../includes/virtual-machines-disks-private-links-limitations.md)]
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
-
-[!INCLUDE [virtual-machines-disks-private-links-regions](../../../includes/virtual-machines-disks-private-links-regions.md)]
 
 ## <a name="log-in-into-your-subscription-and-set-your-variables"></a>Jelentkezzen be az előfizetésbe, és állítsa be a változókat
 
@@ -155,7 +152,7 @@ az snapshot create -n $snapshotNameSecuredWithPL \
 --disk-access $diskAccessId 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [GYIK a privát hivatkozásokról](../faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
 - [Felügyelt pillanatképek a CLI használatával történő exportálása/másolása virtuális merevlemezként egy másik régióban lévő tárfiókba](../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md)

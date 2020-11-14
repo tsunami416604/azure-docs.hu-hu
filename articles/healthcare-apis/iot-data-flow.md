@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 3cae648e3c2bddbafec555621d97575a007cfeb4
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 310be095af10f5ed5860c4f627caa0373be55835
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394866"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629665"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) adatfolyama
 
-Ez a cikk áttekintést nyújt az Azure IoT-összekötőben a FHIR *-hoz való adatforgalomról. Megismerheti az Azure IoT-összekötő különböző adatfeldolgozási szakaszait, amelyek az FHIR FHIR-alapú [megfigyelési](https://www.hl7.org/fhir/observation.html) erőforrásokra alakítják át.
+Ez a cikk áttekintést nyújt az Azure IoT Connector adatforgalmáról a gyors egészségügyi együttműködési erőforrások (FHIR&#174;) * számára. Megismerheti az Azure IoT-összekötő különböző adatfeldolgozási szakaszait, amelyek az FHIR FHIR-alapú [megfigyelési](https://www.hl7.org/fhir/observation.html) erőforrásokra alakítják át.
 
 ![Azure IoT-összekötő a FHIR-adatfolyamhoz](media/concepts-iot-data-flow/iot-connector-data-flow.png)
 
@@ -64,6 +64,4 @@ A következő lépésre kattintva megtudhatja, hogyan hozhat létre eszköz-és 
 >[!div class="nextstepaction"]
 >[Azure IoT-összekötő FHIR-leképezési sablonokhoz](iot-mapping-templates.md)
 
-* A Azure Portal a FHIR készült Azure IoT-összekötő a IoT-összekötő (előzetes verzió) néven ismert.
-
-Az FHIR a HL7 bejegyzett védjegye, amelynek felhasználását a HL7 engedélyezte.
+* A Azure Portal a FHIR készült Azure IoT Connector a IoT Connector (előzetes verzió) néven ismert. A FHIR a HL7 bejegyzett védjegye, és a HL7 engedélyével van használatban. 

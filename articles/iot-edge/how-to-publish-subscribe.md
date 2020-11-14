@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 941435e90f91a4c3a4e41c2869e35157da41d8b0
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: ef92895374f07c79f8ba8d626a0aab3d89733f40
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592175"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629648"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Közzététel és előfizetés Azure IoT Edge
 
@@ -31,8 +31,10 @@ Az üzenetek közzétételéhez és előfizetéséhez Azure IoT Edge MQTT Broker
 - Egy, az F1, S1, S2 vagy S3 értékű SKU- **IoT hub** .
 - Az **1,2-es vagy újabb verzióval rendelkező IoT Edge-eszköz**. Mivel IoT Edge MQTT Broker jelenleg nyilvános előzetes verzióban érhető el, a MQTT-átvitelszervező engedélyezéséhez állítsa az alábbi környezeti változókat True értékre a edgeHub-tárolón:
 
-    - experimentalFeatures__enabled
-    - mqttbroker__enabled
+   | Név | Érték |
+   | - | - |
+   | `experimentalFeatures__enabled` | `true` |
+   | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
 - A IoT Edge eszközre telepített **Mosquitto-ügyfelek** . Ez a cikk a [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) és [MOSQUITTO_SUBt](https://mosquitto.org/man/mosquitto_sub-1.html)tartalmazó népszerű Mosquitto-ügyfeleket használja. Ehelyett más MQTT-ügyfelek is használhatók. Ha Ubuntu-eszközön szeretné telepíteni a Mosquitto-ügyfeleket, futtassa a következő parancsot:
 
@@ -437,6 +439,6 @@ Az alábbi példa egy olyan IoT Edge MQTT híd-konfigurációra mutat példát, 
 Egyéb megjegyzések a IoT Edge hub MQTT-hídhoz:
 - Az MQTT protokollt a rendszer automatikusan az upstream protokollként használja a MQTT-közvetítő használatakor, valamint azt, hogy a IoT Edge egy beágyazott konfigurációban, például egy megadott módon legyen használatban `parent_hostname` . A felsőbb rétegbeli protokollokkal kapcsolatos további tudnivalókért tekintse meg a [felhőalapú kommunikációt](iot-edge-runtime.md#cloud-communication)ismertető témakört. További információ a beágyazott konfigurációkról: [alsóbb rétegbeli IoT Edge eszköz csatlakoztatása Azure IoT Edge-átjáróhoz](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az IoT Edge hub ismertetése](iot-edge-runtime.md#iot-edge-hub)

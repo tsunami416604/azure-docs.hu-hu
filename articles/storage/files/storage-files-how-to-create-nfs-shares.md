@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: bf75537c0baf029bc3fc63e320f6290a1f41a524
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7680e251d8411ce154e1f7dfb8af1d66514dd579
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738843"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629461"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS-megosztás létrehozása
 
@@ -38,7 +38,7 @@ Az Azure-fájlmegosztás teljes körűen felügyelt fájlmegosztás, amely a fel
     - [Pont – hely (P2S) VPN konfigurálása Linux rendszeren a Azure Fileshoz való használathoz](storage-files-configure-p2s-vpn-linux.md).
     - [Helyek közötti VPN konfigurálása Azure Fileshoz való használatra](storage-files-configure-s2s-vpn.md).
     - Konfigurálja a [ExpressRoute](../../expressroute/expressroute-introduction.md).
-- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="register-the-nfs-41-protocol"></a>Az NFS 4,1 protokoll regisztrálása
 
@@ -110,7 +110,7 @@ Most, hogy létrehozott egy FileStorage-fiókot, és konfigurálta a hálózatot
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   A PowerShell verziójának frissítéséhez lásd: a [meglévő Windows PowerShell frissítése](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
+   A PowerShell verziójának frissítéséhez lásd: a [meglévő Windows PowerShell frissítése](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
     
 1. Telepítse a PowershellGet modul legújabb verzióját.
 
@@ -126,7 +126,7 @@ Most, hogy létrehozott egy FileStorage-fiókot, és konfigurálta a hálózatot
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   A PowerShell-modulok telepítésével kapcsolatos további információkért lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)
+   A PowerShell-modulok telepítésével kapcsolatos további információkért lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps?view=azps-3.0.0)
    
 1. Ha prémium szintű fájlmegosztást szeretne létrehozni a Azure PowerShell modullal, használja a [New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) parancsmagot.
 
@@ -159,7 +159,7 @@ az storage share-rm create \
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy létrehozott egy NFS-megosztást, a használatához csatlakoztatnia kell azt a Linux-ügyfélen. Részletekért lásd: [NFS-megosztás csatlakoztatása](storage-files-how-to-mount-nfs-shares.md).
 

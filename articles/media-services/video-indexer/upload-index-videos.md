@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85c9111b0b16667e847aaf70d746e87fe524ef87
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 014c9759756a1da922a5141f064991827d593208
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592923"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630260"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -66,7 +66,7 @@ A [videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operati
 
 ### <a name="configurations-and-params"></a>Konfigurációk és paraméterek
 
-Ez a szakasz ismertet néhány választható paramétert, és leírja, hogy mikor érdemes beállítani őket.
+Ez a szakasz ismertet néhány választható paramétert, és leírja, hogy mikor érdemes beállítani őket. A legnaprakészebb params-információk a [videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API-ban olvashatók.
 
 #### <a name="externalid"></a>externalID 
 
@@ -365,6 +365,6 @@ A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi 
 >
 > Ha régebbi verziót kell használnia, adjon hozzá egy sort a kódban a REST API-hívás indítása előtt:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az API által létrehozott Azure Video Indexer-kimenet vizsgálata](video-indexer-output-json-v2.md)

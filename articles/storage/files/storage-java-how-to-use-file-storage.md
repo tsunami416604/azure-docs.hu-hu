@@ -8,12 +8,12 @@ ms.date: 09/19/2017
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2c80d741ca1cf0b4d66bc18488af8ef1da44fd14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 977777aff4aa32bf6876e1d573970d71ec71584e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462598"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629767"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Fejlesztés az Azure Files szolgáltatáshoz Javával
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -29,7 +29,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan alkalmazások
 * Fájl feltöltése, letöltése és törlése
 
 > [!Note]  
-> Mivel Azure Files az SMB protokollon keresztül érhető el, az Azure-fájlmegosztás szabványos Java I/O-osztályok használatával való elérésére szolgáló alkalmazások írhatók. Ez a cikk leírja, hogyan írhatók az Azure Storage Java SDK-t használó alkalmazások, amelyek a [Azure Files REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) használatával kommunikálnak a Azure Filesekkel.
+> Mivel Azure Files az SMB protokollon keresztül érhető el, az Azure-fájlmegosztás szabványos Java I/O-osztályok használatával való elérésére szolgáló alkalmazások írhatók. Ez a cikk leírja, hogyan írhatók az Azure Storage Java SDK-t használó alkalmazások, amelyek a [Azure Files REST API](/rest/api/storageservices/file-service-rest-api) használatával kommunikálnak a Azure Filesekkel.
 
 ## <a name="create-a-java-application"></a>Java-alkalmazás létrehozása
 A minták létrehozásához szüksége lesz a Java Development Kit (JDK) és a [Javához készült Azure Storage SDK](https://github.com/Azure/azure-storage-java)-ra. Létre kell hoznia egy Azure Storage-fiókot is.
@@ -74,7 +74,7 @@ try {
 A **CloudStorageAccount. Parse** egy InvalidKeyException dob, így azt egy try/catch blokkban kell elhelyeznie.
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
-A Azure Files összes fájlja és könyvtára egy **megosztás**nevű tárolóban található. A Storage-fiókja annyi megosztással rendelkezhet, amennyit a fiók kapacitása lehetővé tesz. Egy megosztáshoz és annak tartalmához való hozzáféréshez Azure Files-ügyfelet kell használnia.
+A Azure Files összes fájlja és könyvtára egy **megosztás** nevű tárolóban található. A Storage-fiókja annyi megosztással rendelkezhet, amennyit a fiók kapacitása lehetővé tesz. Egy megosztáshoz és annak tartalmához való hozzáféréshez Azure Files-ügyfelet kell használnia.
 
 ```java
 // Create the Azure Files client.
@@ -96,7 +96,7 @@ if (share.createIfNotExists()) {
 }
 ```
 
-Ezen a ponton a **megosztás** egy **sampleshare**nevű megosztásra mutató hivatkozást tárol.
+Ezen a ponton a **megosztás** egy **sampleshare** nevű megosztásra mutató hivatkozást tárol.
 
 ## <a name="delete-an-azure-file-share"></a>Azure-fájlmegosztás törlése
 Egy megosztás törléséhez hívja meg a **deleteifexists paranccsal** metódust egy CloudFileShare objektumon. Az alábbi mintakód erre a kódra vonatkozik.
@@ -204,7 +204,7 @@ System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>Fájl törlése
-Egy másik gyakori Azure Files művelet a fájl törlése. A következő kód törli a **sampledir**nevű könyvtárban tárolt SampleFile.txt nevű fájlt.
+Egy másik gyakori Azure Files művelet a fájl törlése. A következő kód törli a **sampledir** nevű könyvtárban tárolt SampleFile.txt nevű fájlt.
 
 ```java
 // Get a reference to the root directory for the share.
@@ -222,14 +222,14 @@ if ( file.deleteIfExists() ) {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni az Azure Storage API-król, kövesse az alábbi hivatkozásokat.
 
 * [Azure Java-fejlesztőknek](/java/azure)/)
 * [Javához készült Azure Storage SDK](https://github.com/azure/azure-storage-java)
 * [Androidhoz készült Azure Storage SDK](https://github.com/azure/azure-storage-android)
 * [Azure Storage ügyféloldali SDK-referencia](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
-* [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Az Azure Storage csapat blogja](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
-* [Adatok átvitele a AzCopy Command-Line segédprogrammal](../common/storage-use-azcopy.md)
+* [Az Azure Storage-szolgáltatások REST API-ja](/rest/api/storageservices/)
+* [Az Azure Storage csapat blogja](/archive/blogs/windowsazurestorage/)
+* [Adatok átvitele a AzCopy Command-Line segédprogrammal](../common/storage-use-azcopy-v10.md)
 * [Azure Files-problémák hibaelhárítása – Windows](storage-troubleshoot-windows-file-connection-problems.md)

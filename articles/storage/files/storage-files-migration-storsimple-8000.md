@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 128e4d0a421fc9ad4251f24f2cb37a217eeb1e31
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 046cca4e683a8f14893bf48ac8601b138a7c28a7
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322211"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630277"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
 
@@ -45,7 +45,7 @@ A StorSimple-kötetek Azure-fájlmegosztás felé történő áttelepítése a S
 
 Az Azure-fájlmegosztás a Fájlszolgáltatások üzembe helyezéséhez szükséges lehetőségek teljes új világát nyitja meg. Az Azure-fájlmegosztás csak egy SMB-megosztás a felhőben, amellyel beállíthatja, hogy a felhasználók közvetlenül az SMB protokollon keresztül férhessenek hozzá az ismerős Kerberos-hitelesítéssel és a meglévő NTFS-engedélyekkel (fájlok és mappák ACL-ekkel), amelyek natív módon működnek. További információ az [Azure-fájlmegosztás identitás-alapú eléréséről](storage-files-active-directory-overview.md).
 
-A közvetlen hozzáférés alternatívája [Azure file Sync](https://aka.ms/AFS). Azure File Sync egy közvetlen analóg, amellyel a StorSimple képes gyorsítótárazni a gyakran használt fájlokat a helyszínen.
+A közvetlen hozzáférés alternatívája [Azure file Sync](./storage-sync-files-planning.md). Azure File Sync egy közvetlen analóg, amellyel a StorSimple képes gyorsítótárazni a gyakran használt fájlokat a helyszínen.
 
 A Azure File Sync egy Microsoft Cloud Service, amely két fő összetevő alapján érhető el:
 
@@ -56,7 +56,7 @@ Az Azure-fájlmegosztás a tárolt fájlokhoz (például attribútumok, engedél
 
 Ez a cikk az áttelepítési lépésekre összpontosít. Ha többet szeretne megtudni Azure File Sync az áttelepítés előtt, tekintse meg a következő cikkeket:
 
-* [Azure File Sync áttekintése](https://aka.ms/AFS "Áttekintés")
+* [Azure File Sync áttekintése](./storage-sync-files-planning.md "Áttekintés")
 * [Azure File Sync telepítési útmutató](storage-sync-files-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple szolgáltatás adattitkosítási kulcsa
@@ -385,7 +385,7 @@ A regisztrált helyszíni Windows Server-példánynak készen kell állnia, és 
 * [Windows P2S VPN konfigurálása](storage-files-configure-p2s-vpn-windows.md)
 * [Linux P2S VPN konfigurálása](storage-files-configure-p2s-vpn-linux.md)
 * [A DNS-továbbítás konfigurálása](storage-files-networking-dns.md)
-* [Az elosztott fájlrendszer konfigurálása – N](https://aka.ms/AzureFiles/Namespaces)
+* [Az elosztott fájlrendszer konfigurálása – N](/windows-server/storage/dfs-namespaces/dfs-overview)
    :::column-end:::
 :::row-end:::
 
@@ -535,7 +535,7 @@ Ha Azure File Sync használ, valószínűleg létre kell hoznia az SMB-megosztá
 
 Ha van DFS-N üzemelő példánya, akkor a DFN-Namespaces az új kiszolgáló mappájának helyeire irányíthatja. Ha nincs DFS-N üzemelő példánya, és a 8100-es vagy 8600-es készüléket helyileg, egy Windows Server-példánnyal elvégezte, akkor a kiszolgálót kikapcsolhatja a tartományból. Ezután a tartományhoz csatlakoztassa az új Azure File Sync-kompatibilis Windows Server-példányt. A folyamat során a kiszolgálónak ugyanazt a kiszolgálónevet és neveket kell megadnia, mint a régi kiszolgálót, így a felhasználók, a csoportházirend és a parancsfájlok átláthatóbb maradnak.
 
-További információ az [elosztott fájlrendszerről – N](https://aka.ms/AzureFiles/Namespaces).
+További információ az [elosztott fájlrendszerről – N](/windows-server/storage/dfs-namespaces/dfs-overview).
 
 ## <a name="deprovision"></a>Megszüntetése
 
@@ -559,9 +559,9 @@ A Migrálás befejeződött.
 > Továbbra is kérdése van vagy probléma merült fel?</br>
 > Itt segítünk AzureFilesMigration@microsoft.com .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ismerkedjen meg [Azure file Syncával: aka.MS/AFS](https://aka.ms/AFS).
+* Ismerkedjen meg [Azure file Syncával: aka.MS/AFS](./storage-sync-files-planning.md).
 * Ismerje meg a [felhőre vonatkozó szintű](storage-sync-cloud-tiering.md) házirendek rugalmasságát.
 * Az Azure-fájlmegosztás [Azure Backupának engedélyezése](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) a pillanatképek ütemezett és a biztonsági mentési adatmegőrzési ütemtervek definiálásához.
 * Ha a Azure Portal úgy látja, hogy egyes fájlok véglegesen nem szinkronizálhatók, tekintse át a [hibaelhárítási útmutatót](storage-sync-files-troubleshoot.md) a problémák megoldásához szükséges lépésekért.

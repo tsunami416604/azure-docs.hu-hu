@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 685373203da14a6aa83c608d90d6416ab2b30ae4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74422318718e318a00d7bd7ebaf8e4093ef75aa6
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515305"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629274"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Pont – hely (P2S) VPN konfigurálása Linux rendszeren a Azure Files-vel való használatra
 A pont – hely (P2S) VPN-kapcsolattal Azure-fájlmegosztás az Azure-on kívülről is csatlakoztatható SMB-n keresztül, a 445-es port megnyitása nélkül. A pont – hely VPN-kapcsolat az Azure és az egyes ügyfelek közötti VPN-kapcsolat. Ha a P2S VPN-kapcsolatot Azure Files használatával szeretné használni, konfigurálnia kell egy P2S VPN-kapcsolatot minden olyan ügyfél számára, amelyhez csatlakozni szeretne. Ha sok ügyféllel kell csatlakoznia az Azure-fájlmegosztás számára a helyszíni hálózatból, akkor az egyes ügyfelek pont – hely kapcsolata helyett használhat helyek közötti (S2S) VPN-kapcsolatot. További információ: helyek közötti [VPN konfigurálása Azure Fileshoz való használatra](storage-files-configure-s2s-vpn.md).
@@ -22,7 +22,7 @@ Javasoljuk, hogy olvassa el [Azure Files hálózatkezelési áttekintést](stora
 A cikk részletesen bemutatja, hogyan konfigurálhat egy pont – hely VPN-t Linux rendszeren az Azure-fájlmegosztás közvetlen helyszíni csatlakoztatásához. Ha VPN-en keresztül szeretné átirányítani Azure File Sync forgalmat, tekintse meg a [Azure file Sync proxy-és tűzfalbeállítások konfigurálása](storage-sync-files-firewall-and-proxy.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Az Azure CLI legújabb verziója. Az Azure CLI telepítésével kapcsolatos további információkért lásd: [install the Azure POWERSHELL CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) , és válassza ki az operációs rendszert. Ha a Linux rendszeren szeretné használni a Azure PowerShell-modult, akkor az alábbi utasításokat azonban az Azure CLI-hez mutatjuk be.
+- Az Azure CLI legújabb verziója. Az Azure CLI telepítésével kapcsolatos további információkért lásd: [install the Azure POWERSHELL CLI](/cli/azure/install-azure-cli) , és válassza ki az operációs rendszert. Ha a Linux rendszeren szeretné használni a Azure PowerShell-modult, akkor az alábbi utasításokat azonban az Azure CLI-hez mutatjuk be.
 
 - Egy Azure-fájlmegosztás, amelyet a helyszínen kíván csatlakoztatni. Az Azure-fájlmegosztás üzembe helyezése a Storage-fiókokban történik, amelyek olyan felügyeleti szerkezetek, amelyek olyan megosztott tárolót képviselnek, amelyben több fájlmegosztás, valamint más tárolási erőforrások, például blob-tárolók vagy várólisták helyezhetők üzembe. Az Azure-fájlmegosztás és a Storage-fiókok Azure- [fájlmegosztás létrehozása](storage-how-to-create-file-share.md)című részében olvashat bővebben.
 
@@ -210,7 +210,7 @@ smbPath="//$storageAccountPrivateIP/$fileShareName"
 sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 - [Azure Files hálózatkezelés – áttekintés](storage-files-networking-overview.md)
 - [Pont – hely (P2S) VPN konfigurálása Windows rendszeren a Azure Files-mel való használatra](storage-files-configure-p2s-vpn-windows.md)
 - [Helyek közötti (S2S) VPN konfigurálása Azure Fileshoz való használatra](storage-files-configure-s2s-vpn.md)

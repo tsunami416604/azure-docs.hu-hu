@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 747d03b228d41066cfc834b4a9c044b16c767622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 026f4f36986fa5fcfad4dac5186e9dc0b0997d72
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329363"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629410"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Az Azure File Sync hálózati végpontjainak konfigurálása
 Azure Files és Azure File Sync két fő típusú végpontot biztosít az Azure-fájlmegosztás eléréséhez: 
@@ -33,15 +33,15 @@ Ez a cikk azt feltételezi, hogy:
 - Már létrehozott egy Storage Sync szolgáltatást, és regisztrálta azt a Windows-fájlkiszolgálón. A Azure File Sync telepítésének megismeréséhez tekintse meg a [Azure file Sync üzembe helyezése](storage-sync-files-deployment-guide.md)című témakört.
 
 Továbbá:
-- Ha Azure PowerShell szeretne használni, [telepítse a legújabb verziót](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Ha Azure PowerShell szeretne használni, [telepítse a legújabb verziót](/powershell/azure/install-az-ps).
+- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-the-private-endpoints"></a>Saját végpontok létrehozása
 Ha egy Azure-erőforráshoz hoz létre privát végpontot, a rendszer a következő erőforrásokat telepíti:
 
-- **Privát végpont**: egy Azure-erőforrás, amely a Storage-fiók vagy a Storage Sync szolgáltatás privát végpontját jelöli. Ezt olyan erőforrásként tekintheti meg, amely összekapcsolja az Azure-erőforrást és egy hálózati adaptert.
-- **Hálózati adapter (NIC)**: a megadott virtuális hálózaton/alhálózaton belüli magánhálózati IP-címet fenntartó hálózati adapter. Ez ugyanaz az erőforrás, amelyet a rendszer a virtuális gépek telepítésekor üzembe helyez, azonban a virtuális géphez való hozzárendelés helyett a magánhálózati végpont tulajdonosa.
-- **Privát DNS-zóna**: Ha korábban még nem telepített privát végpontot ehhez a virtuális hálózathoz, a rendszer új magánhálózati DNS-zónát helyez üzembe a virtuális hálózathoz. A DNS-rekord is létrejön az Azure-erőforráshoz ebben a DNS-zónában. Ha már telepített egy privát végpontot ebben a virtuális hálózaton, az Azure-erőforráshoz tartozó új rekord lesz hozzáadva a meglévő DNS-zónához. A DNS-zónák üzembe helyezése nem kötelező, azonban kifejezetten ajánlott a DNS-kezelés szükséges egyszerűsítése.
+- **Privát végpont** : egy Azure-erőforrás, amely a Storage-fiók vagy a Storage Sync szolgáltatás privát végpontját jelöli. Ezt olyan erőforrásként tekintheti meg, amely összekapcsolja az Azure-erőforrást és egy hálózati adaptert.
+- **Hálózati adapter (NIC)** : a megadott virtuális hálózaton/alhálózaton belüli magánhálózati IP-címet fenntartó hálózati adapter. Ez ugyanaz az erőforrás, amelyet a rendszer a virtuális gépek telepítésekor üzembe helyez, azonban a virtuális géphez való hozzárendelés helyett a magánhálózati végpont tulajdonosa.
+- **Privát DNS-zóna** : Ha korábban még nem telepített privát végpontot ehhez a virtuális hálózathoz, a rendszer új magánhálózati DNS-zónát helyez üzembe a virtuális hálózathoz. A DNS-rekord is létrejön az Azure-erőforráshoz ebben a DNS-zónában. Ha már telepített egy privát végpontot ebben a virtuális hálózaton, az Azure-erőforráshoz tartozó új rekord lesz hozzáadva a meglévő DNS-zónához. A DNS-zónák üzembe helyezése nem kötelező, azonban kifejezetten ajánlott a DNS-kezelés szükséges egyszerűsítése.
 
 > [!Note]  
 > Ez a cikk az Azure nyilvános régióinak, a `core.windows.net` Storage-fiókoknak és `afs.azure.net` a Storage Sync Services DNS-utótagját használja. Ez a kommentár az Azure szuverén felhőkre is vonatkozik, például az Azure US government-felhőre, és csak a megfelelő utótagokat helyettesíti a környezetében.
@@ -130,7 +130,7 @@ Address: 192.168.0.5
 > Ha privát végpontokat szeretne használni a Storage Sync Service-erőforráson, akkor a Azure File Sync Agent 10,1-es vagy újabb verzióját kell használnia. A 10,1 előtti ügynök-verziók nem támogatják a Storage Sync szolgáltatás magánhálózati végpontját. Az összes korábbi ügynök-verzió támogatja a Storage-fiók erőforrásához tartozó magánhálózati végpontokat.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-Navigáljon a **privát hivatkozás központhoz** , és írja be a Azure Portal felső részén található keresési sávra a *privát hivatkozást* . A privát kapcsolati központ tartalomjegyzékében válassza a **privát végpontok**lehetőséget, majd a **+ Hozzáadás** elemet egy új privát végpont létrehozásához.
+Navigáljon a **privát hivatkozás központhoz** , és írja be a Azure Portal felső részén található keresési sávra a *privát hivatkozást* . A privát kapcsolati központ tartalomjegyzékében válassza a **privát végpontok** lehetőséget, majd a **+ Hozzáadás** elemet egy új privát végpont létrehozásához.
 
 [![A privát kapcsolati központ képernyőképe](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png)](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png#lightbox)
 
@@ -140,7 +140,7 @@ Az **alapvető beállítások** panelen válassza ki a saját végpontja számá
 
 ![A privát végpont létrehozása szakasz alapjai szakaszának képernyőképe](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-1.png)
 
-Az **erőforrás** panelen válassza a **saját címtárban található Azure-erőforráshoz való kapcsolódáshoz**használandó választógombot. Az **erőforrástípus**területen válassza a **Microsoft. StorageSync/storageSyncServices** elemet az erőforrás típushoz. 
+Az **erőforrás** panelen válassza a **saját címtárban található Azure-erőforráshoz való kapcsolódáshoz** használandó választógombot. Az **erőforrástípus** területen válassza a **Microsoft. StorageSync/storageSyncServices** elemet az erőforrás típushoz. 
 
 A **konfiguráció** panelen kiválaszthatja azt a virtuális hálózatot és alhálózatot, amelyhez hozzá szeretné adni a privát végpontot. Válassza ki ugyanazt a virtuális hálózatot, mint amelyet a fenti Storage-fiókhoz használt. A konfiguráció panelen a magánhálózati DNS-zóna létrehozásával/frissítésével kapcsolatos információk is szerepelnek.
 
@@ -554,7 +554,7 @@ A Storage-fiók és a Storage Sync Services nyilvános végpontokra is korlátoz
 A nyilvános végponthoz való hozzáférés korlátozását a Storage-fiók tűzfala beállítások használatával végezheti el. Általánosságban elmondható, hogy egy Storage-fiókhoz a legtöbb tűzfal-házirend korlátozza a hálózati hozzáférést egy vagy több virtuális hálózathoz. A Storage-fiókokhoz való hozzáférés korlátozásának két módja van:
 
 - [Hozzon létre egy vagy több privát végpontot a Storage-fiókhoz](#create-the-storage-account-private-endpoint) , és tiltsa le a nyilvános végponthoz való hozzáférést. Ez biztosítja, hogy csak a kívánt virtuális hálózatokból származó forgalom férhessenek hozzá az Azure-fájlmegosztás számára a Storage-fiókon belül.
-- Korlátozza a nyilvános végpontot egy vagy több virtuális hálózatra. Ez a *szolgáltatás végpontok*nevű virtuális hálózat funkciójának használatával működik. Ha egy szolgáltatási végponton keresztül korlátozza a forgalmat egy Storage-fiókra, akkor továbbra is a nyilvános IP-cím használatával fér hozzá a Storage-fiókhoz.
+- Korlátozza a nyilvános végpontot egy vagy több virtuális hálózatra. Ez a *szolgáltatás végpontok* nevű virtuális hálózat funkciójának használatával működik. Ha egy szolgáltatási végponton keresztül korlátozza a forgalmat egy Storage-fiókra, akkor továbbra is a nyilvános IP-cím használatával fér hozzá a Storage-fiókhoz.
 
 #### <a name="disable-access-to-the-storage-account-public-endpoint"></a>A Storage-fiók nyilvános végponthoz való hozzáférés letiltása
 Ha a nyilvános végponthoz való hozzáférés le van tiltva, a Storage-fiók továbbra is elérhető a saját végpontján keresztül. Ellenkező esetben a rendszer elutasítja a Storage-fiók nyilvános végpontjának érvényes kérelmeit. 
@@ -571,7 +571,7 @@ Ha a nyilvános végponthoz való hozzáférés le van tiltva, a Storage-fiók t
 ---
 
 #### <a name="restrict-access-to-the-storage-account-public-endpoint-to-specific-virtual-networks"></a>A Storage-fiók nyilvános végpontjának megadott virtuális hálózatokra való hozzáférésének korlátozása
-Ha a Storage-fiókot adott virtuális hálózatokra korlátozza, a megadott virtuális hálózatokról érkező kéréseket engedélyez a nyilvános végpontnak. Ez a *szolgáltatás végpontok*nevű virtuális hálózat funkciójának használatával működik. Ez privát végpontokkal vagy anélkül is használható.
+Ha a Storage-fiókot adott virtuális hálózatokra korlátozza, a megadott virtuális hálózatokról érkező kéréseket engedélyez a nyilvános végpontnak. Ez a *szolgáltatás végpontok* nevű virtuális hálózat funkciójának használatával működik. Ez privát végpontokkal vagy anélkül is használható.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-public-restrict-portal](../../../includes/storage-files-networking-endpoints-public-restrict-portal.md)]
@@ -622,6 +622,6 @@ az resource update \
 ```
 ---
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
-- [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)
+- [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)

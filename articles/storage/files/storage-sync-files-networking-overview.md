@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76d97e3312c1df51193d8a881f3ee07fcd155d75
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267788"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629359"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure File Sync hálózati megfontolások
 Az Azure-fájlmegosztás két módon is kapcsolódhat:
@@ -55,7 +55,7 @@ A Azure File Sync a következő szolgáltatások IP-címtartományok használat�
 | Azure Resource Manager | A Azure Resource Manager az Azure felügyeleti felülete. Minden felügyeleti hívás, beleértve a Azure File Sync kiszolgáló regisztrációját és a folyamatban lévő szinkronizálási kiszolgáló feladatait, a Azure Resource Manageron keresztül történik. | `AzureResourceManager` |
 | Azure Active Directory | A Azure Active Directory vagy az Azure AD olyan felhasználói rendszerbiztonsági tagokat tartalmaz, amelyek a kiszolgáló regisztrálásának engedélyezéséhez szükségesek a Storage Sync szolgáltatáshoz, valamint a Azure File Sync számára szükséges egyszerű szolgáltatásokat a Felhőbeli erőforrások eléréséhez. | `AzureActiveDirectory` |
 
-Ha az Azure-ban Azure File Synct használ, még akkor is, ha ez egy másik régió, a szolgáltatási címke nevét közvetlenül a hálózati biztonsági csoportban használhatja, hogy engedélyezze a forgalmat a szolgáltatás felé. Ha többet szeretne megtudni Ennek módjáról, tekintse meg a [hálózati biztonsági csoportok](../../virtual-network/security-overview.md)című témakört. 
+Ha az Azure-ban Azure File Synct használ, még akkor is, ha ez egy másik régió, a szolgáltatási címke nevét közvetlenül a hálózati biztonsági csoportban használhatja, hogy engedélyezze a forgalmat a szolgáltatás felé. Ha többet szeretne megtudni Ennek módjáról, tekintse meg a [hálózati biztonsági csoportok](../../virtual-network/network-security-groups-overview.md)című témakört. 
 
 Ha helyszíni Azure File Sync használ, a Service tag API-val adott IP-címtartományok beolvasása a tűzfal engedélyezési listájához. A következő két módszer használható az adatok lekéréséhez:
 
@@ -65,9 +65,9 @@ Ha helyszíni Azure File Sync használ, a Service tag API-val adott IP-címtarto
     - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
 - A Service tag Discovery API (előzetes verzió) lehetővé teszi az aktuális szolgáltatási címkék programozott lekérését. Az előzetes verzióban a Service tag Discovery API a Microsoft letöltőközpontból közzétett JSON-dokumentumokból származó információknál kevésbé naprakész adatokat adhat vissza. Az API felületét az automatizálási beállítások alapján használhatja:
-    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+    - [REST API](/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 Ha többet szeretne megtudni arról, hogy a Service tag API hogyan használható a szolgáltatások címeinek lekérésére, tekintse meg a [Azure file Sync IP-címek engedélyezési listájának engedélyezése](storage-sync-files-firewall-and-proxy.md#allow-list-for-azure-file-sync-ip-addresses)című témakört.
 
@@ -170,6 +170,6 @@ A Azure File Sync ügynöktől az Azure-fájlmegosztás vagy a Storage Sync szol
 
 További információ az átvitel közbeni titkosításról: [biztonságos átvitel megkövetelése az Azure Storage-ban](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
-- [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)
+- [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)

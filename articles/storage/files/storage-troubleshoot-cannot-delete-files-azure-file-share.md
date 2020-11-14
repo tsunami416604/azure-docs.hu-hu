@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: 1c50f54491e0284005c4b762b0c4b35a8460f5ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4f10745d90ccd83e7251af40d3e92a230f2fcd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85511964"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629682"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure-fájlmegosztás – nem sikerült a fájlok törlése valamelyik Azure-fájlmegosztásban
 
@@ -34,7 +34,7 @@ Nem áll rendelkezésre elegendő kvóta a parancs feldolgozásához
 
 ## <a name="cause"></a>Ok
 
-1816-as hiba történik, amikor eléri a fájlhoz engedélyezett egyidejű nyitott kezelők felső korlátját azon a számítógépen, amelyen a fájlmegosztás csatlakoztatva van. További információ: az [Azure Storage teljesítmény-és méretezhetőségi ellenőrzőlistája](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist).
+1816-as hiba történik, amikor eléri a fájlhoz engedélyezett egyidejű nyitott kezelők felső korlátját azon a számítógépen, amelyen a fájlmegosztás csatlakoztatva van. További információ: az [Azure Storage teljesítmény-és méretezhetőségi ellenőrzőlistája](../blobs/storage-performance-checklist.md).
 
 ## <a name="resolution"></a>Feloldás
 
@@ -44,7 +44,7 @@ Csökkentse az egyidejű megnyitott fogópontok számát néhány leíró bezár
 
 ### <a name="install-the-latest-azure-powershell-module"></a>A legújabb Azure PowerShell modul telepítése
 
-* [Az Azure PowerShell-modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps)
+* [Az Azure PowerShell-modul telepítése](/powershell/azure/install-az-ps)
 
 ### <a name="connect-to-azure"></a>Kapcsolódás az Azure-hoz:
 

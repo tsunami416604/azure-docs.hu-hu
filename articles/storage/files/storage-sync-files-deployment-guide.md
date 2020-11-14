@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 128a974c41b1c09196ecab2070136d9568b08f5d
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: d39f26d86792214c1ef0300bc39404bf6581826f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331787"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629478"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -48,7 +48,7 @@ Javasoljuk, hogy olvassa el a [Azure Files központi telepítésének megtervez�
     > [!Important]  
     > Ha azt tervezi, hogy a kiszolgáló regisztrációjának felhasználói felületét használja, és nem közvetlenül a PowerShellből regisztrálja, akkor a PowerShell 5,1-et kell használnia.
 
-1. Ha a PowerShell 5,1 használatát választotta, győződjön meg arról, hogy legalább .NET 4.7.2 van telepítve. További információ a [.NET-keretrendszer verzióiról és függőségeiről](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) a rendszeren.
+1. Ha a PowerShell 5,1 használatát választotta, győződjön meg arról, hogy legalább .NET 4.7.2 van telepítve. További információ a [.NET-keretrendszer verzióiról és függőségeiről](/dotnet/framework/migration-guide/versions-and-dependencies) a rendszeren.
 
     > [!Important]  
     > Ha a .NET 4.7.2 + rendszert a Windows Server Core verzióra telepíti, a és a jelzőket kell telepítenie, `quiet` `norestart` vagy a telepítés sikertelen lesz. Ha például a .NET 4,8-et telepíti, a parancs a következőhöz hasonlóan fog kinézni:
@@ -56,7 +56,7 @@ Javasoljuk, hogy olvassa el a [Azure Files központi telepítésének megtervez�
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-1. Az az PowerShell-modul, amely a következő utasításokat követve telepíthető: [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+1. Az az PowerShell-modul, amely a következő utasításokat követve telepíthető: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-Az-ps).
      
     > [!Note]  
     > Az az. StorageSync modul mostantól automatikusan települ az az PowerShell modul telepítésekor.
@@ -573,7 +573,7 @@ Ha azonban úgy módosítja az ütemtervet, hogy az a kompatibilis nap értékn�
 
 A köteten tárolt VSS-Pillanatképek alapértelmezett maximális száma (64), valamint az alapértelmezett ütemterv, amely azt eredményezi, hogy a köteten tárolni kívánt VSS-Pillanatképek számától függően a rendszer legfeljebb 45 nappal korábbi verziót tud visszaállítani.
 
-Ha a max. 64 VSS-Pillanatképek mennyisége nem a megfelelő beállítás, akkor az [értéket egy beállításkulcs segítségével módosíthatja](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
+Ha a max. 64 VSS-Pillanatképek mennyisége nem a megfelelő beállítás, akkor az [értéket egy beállításkulcs segítségével módosíthatja](/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Az új korlát érvénybe léptetéséhez újra kell futtatnia a parancsmagot a korábbi verziók kompatibilitásának engedélyezéséhez minden korábban engedélyezett köteten, a-Force jelzővel, hogy a köteten lévő VSS-Pillanatképek maximális számát figyelembe vegye. Ennek eredményeképpen egy újonnan számított számú kompatibilis nap fog megjelenni. Vegye figyelembe, hogy ez a változás csak az újonnan létrehozott fájlokra lép érvénybe, és felülírja az esetlegesen elvégzett VSS-ütemterv testreszabásait.
 
 <a id="proactive-recall"></a>
@@ -599,7 +599,7 @@ A globálisan elosztott vállalatok fiókirodái az Egyesült Államokban és In
 
 # <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
 
-A kiszolgálói végpont tulajdonságait a PowerShellben módosíthatja a [set-AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) parancsmag használatával.
+A kiszolgálói végpont tulajdonságait a PowerShellben módosíthatja a [set-AzStorageSyncServerEndpoint](/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) parancsmag használatával.
 
 ```powershell
 # Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"

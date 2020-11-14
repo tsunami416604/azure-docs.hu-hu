@@ -7,19 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: ac210adbc29075f27739b08dcf83eeedbeea3ed5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628983"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630362"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-titkosítás az Azure HDInsight
 
 Ez a cikk az Azure HDInsight-fürtcsomópontok közötti kommunikációhoz használt titkosítás implementációját ismerteti.
-
-> [!Note]
-> Az átvitel közbeni titkosítás jelenleg a következő régiókban engedélyezett: USA keleti régiója, USA déli középső régiója, Nyugat-RÉGIÓJA.
 
 ## <a name="background"></a>Háttér
 
@@ -42,7 +39,7 @@ Ha olyan új fürtöt szeretne létrehozni, amely a Azure Portal használatával
 
 1. A **Biztonság és hálózat** lapon jelölje be a **titkosítás engedélyezése a továbbításkor** jelölőnégyzetet.
 
-    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Hozzon létre egy fürt – biztonság és hálózatkezelés lapot.":::
+    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Fürt létrehozása – engedélyezze a titkosítást az átvitelben.":::
 
 ### <a name="create-a-cluster-with-encryption-in-transit-enabled-through-the-azure-cli"></a>Az Azure CLI-n keresztül engedélyező, titkosítással rendelkező fürt létrehozása
 
@@ -79,7 +76,7 @@ az group deployment create --name HDInsightEnterpriseSecDeployment \
     --parameters parameters.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A vállalati biztonság áttekintése az Azure HDInsight](hdinsight-security-overview.md)
 * [Azure Active Directory felhasználók szinkronizálása egy HDInsight-fürttel](../disk-encryption.md).

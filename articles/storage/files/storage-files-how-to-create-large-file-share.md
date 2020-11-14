@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 6c611d65c30cceba5fd6ff409ef71b906cd8674c
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 5acb8e347046780c84f0aa324b997abb5e2aa840
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330308"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629223"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Nagyméretű fájlmegosztás engedélyezése és létrehozása
 
@@ -22,8 +22,8 @@ Ha engedélyezi a nagyméretű fájlmegosztást a Storage-fiókjában, a fájlme
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Ha a Azure PowerShell modult szeretné használni, [telepítse a legújabb verziót](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0).
+- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Ha a Azure PowerShell modult szeretné használni, [telepítse a legújabb verziót](/powershell/azure/install-az-ps?view=azps-4.6.0).
 
 ## <a name="restrictions"></a>Korlátozások
 
@@ -61,11 +61,11 @@ A nagyméretű fájlmegosztás egy fiókban való engedélyezése visszafordíth
 
     ![Képernyőfelvétel az "enabled" (engedélyezve) gombra a Azure Portal új Storage-fiókjában](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Először [telepítse az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , hogy lehetővé váljon a nagyméretű fájlmegosztás engedélyezése.
+Először [telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli?view=azure-cli-latest) , hogy lehetővé váljon a nagyméretű fájlmegosztás engedélyezése.
 
 Nagyméretű fájlmegosztást engedélyező Storage-fiók létrehozásához használja a következő parancsot. Cserélje `<yourStorageAccountName>` le `<yourResourceGroup>` a, a és `<yourDesiredRegion>` az adatait az adataira.
 
@@ -76,7 +76,7 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Először [telepítse a PowerShell legújabb verzióját](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) , hogy lehetővé váljon a nagyméretű fájlmegosztás engedélyezése.
+Először [telepítse a PowerShell legújabb verzióját](/powershell/azure/install-az-ps?view=azps-3.0.0) , hogy lehetővé váljon a nagyméretű fájlmegosztás engedélyezése.
 
 Nagyméretű fájlmegosztást engedélyező Storage-fiók létrehozásához használja a következő parancsot. Cserélje `<yourStorageAccountName>` le `<yourResourceGroup>` a, a és `<yourDesiredRegion>` az adatait az adataira.
 

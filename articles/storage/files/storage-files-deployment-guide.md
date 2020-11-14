@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 08bcb41dd8d9f4643b03d855960d8632b778ff84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53111ccd634c516d0db10c0e2dd41768aba43f41
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034498"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629240"
 ---
 # <a name="how-to-deploy-azure-files"></a>Az Azure Files üzembe helyezése
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő SMB protokollon keresztül érhető el. Ez a cikk bemutatja, hogyan lehet gyakorlatilag üzembe helyezni Azure Files a szervezeten belül.
@@ -22,7 +22,7 @@ Javasoljuk, hogy az ebben a cikkben ismertetett lépések végrehajtása előtt 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk azt feltételezi, hogy már végrehajtotta a következő lépéseket:
 
-- Létrehozott egy Azure Storage-fiókot a kívánt rugalmassági és titkosítási beállításokkal a kívánt régióban. A Storage-fiók létrehozásával kapcsolatos részletes útmutatásért tekintse meg a [Storage-fiók létrehozása](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) című témakört.
+- Létrehozott egy Azure Storage-fiókot a kívánt rugalmassági és titkosítási beállításokkal a kívánt régióban. A Storage-fiók létrehozásával kapcsolatos részletes útmutatásért tekintse meg a [Storage-fiók létrehozása](../common/storage-account-create.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) című témakört.
 - Létrehozott egy Azure-fájlmegosztást a kívánt kvótával a Storage-fiókban. A fájlmegosztás létrehozásával kapcsolatos részletes útmutatásért tekintse meg a [fájlmegosztás létrehozása](storage-how-to-create-file-share.md) című témakört.
 
 ## <a name="transfer-data-into-azure-files"></a>Adatok átvitele a Azure Filesba
@@ -63,7 +63,7 @@ A következő lépések a helyszíni helyről az Azure-fájlmegosztás adatait f
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    A Storage-fiókkal több megosztás is megadható. További információ: [az ADATKÉSZLET CSV-fájljának előkészítése](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
+    A Storage-fiókkal több megosztás is megadható. További információ: [az ADATKÉSZLET CSV-fájljának előkészítése](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) .
 
 5. Hozza létre a driveset CSV-fájlt. A driveset CSV-fájl felsorolja a helyszíni exportálási ügynök számára elérhető lemezeket. Például a következő driveset CSV-fájlok listája `X:` , és a helyszíni `Y:` `Z:` exportálási feladatokban használandó meghajtók:
 
@@ -74,7 +74,7 @@ A következő lépések a helyszíni helyről az Azure-fájlmegosztás adatait f
     Z,Format,SilentMode,Encrypt,
     ```
     
-    További információ: [a DRIVESET CSV-fájl előkészítése](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
+    További információ: [a DRIVESET CSV-fájl előkészítése](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) .
 
 6. Az [WAImportExport eszköz](https://www.microsoft.com/download/details.aspx?id=55280) használatával másolja az adatait egy vagy több merevlemezre.
 
@@ -88,7 +88,7 @@ A következő lépések a helyszíni helyről az Azure-fájlmegosztás adatait f
 7. [Importálási feladatok létrehozása](../common/storage-import-export-data-to-files.md#step-2-create-an-import-job).
     
 ### <a name="robocopy"></a>Robocopy
-A Robocopy egy jól ismert másolási eszköz, amely a Windows és a Windows Server rendszert is tartalmazza. A Robocopy felhasználható az adatok Azure Filesba történő átvitelére a fájlmegosztás helyi csatlakoztatásával, majd a csatlakoztatott hely célként való használatával a Robocopy parancsban. A Robocopy használata meglehetősen egyszerű:
+A Robocopy egy jól ismert másolási eszköz, amely mellékelve van a Windows és Windows Server rendszerekhez. A Robocopy felhasználható az adatok Azure Filesba történő átvitelére a fájlmegosztás helyi csatlakoztatásával, majd a csatlakoztatott hely célként való használatával a Robocopy parancsban. A Robocopy használata meglehetősen egyszerű:
 
 1. [Csatlakoztassa az Azure-fájlmegosztást](storage-how-to-use-files-windows.md). Az optimális teljesítmény érdekében javasoljuk, hogy helyileg csatlakoztassa az Azure-fájlmegosztást az azokat tartalmazó kiszolgálón. Bizonyos esetekben, például ha az adatkiszolgáló, amely egy NAS-eszköz, előfordulhat, hogy ez nem lehetséges. Ebben az esetben tökéletesen elfogadható az Azure-fájlmegosztás csatlakoztatása egy számítógépen. Ebben a példában `net use` a parancssorban a fájlmegosztás csatlakoztatására használjuk a következőt:
 
@@ -102,12 +102,12 @@ A Robocopy egy jól ismert másolási eszköz, amely a Windows és a Windows Ser
     robocopy <path-to-local-share> <path-to-azure-file-share> /E /Z /MT:32
     ```
     
-    A Robocopy jelentős számú lehetőséget kínál a másolási viselkedés igény szerinti módosítására. További információkért tekintse meg a [Robocopy](https://technet.microsoft.com/library/cc733145.aspx) manuális oldalát.
+    A Robocopy jelentős számú lehetőséget kínál a másolási viselkedés igény szerinti módosítására. További információkért tekintse meg a [Robocopy](/windows-server/administration/windows-commands/robocopy) manuális oldalát.
 
 ### <a name="azcopy"></a>AzCopy
 A AzCopy egy parancssori segédprogram, amely az adatok Azure Filesba, valamint az Azure Blob Storage-ba történő másolására szolgál, és az optimális teljesítményű egyszerű parancsokat használja. A AzCopy használata egyszerű:
 
-1. Töltse le a [AzCopy legújabb verzióját Windows](https://aka.ms/downloadazcopy) vagy [Linux](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux#download-and-install-azcopy)rendszeren.
+1. Töltse le a [AzCopy legújabb verzióját Windows](https://aka.ms/downloadazcopy) vagy [Linux](../common/storage-use-azcopy-v10.md?toc=/azure/storage/files/toc.json#download-azcopy)rendszeren.
 2. Az `azcopy` Azure-fájlmegosztás eléréséhez használja a parancsot a parancssorban. A Windows szintaxisa a következő: 
 
     ```
@@ -120,7 +120,7 @@ A AzCopy egy parancssori segédprogram, amely az adatok Azure Filesba, valamint 
     azcopy --source <path-to-local-share> --destination https://<storage-account>.file.core.windows.net/<file-share>/ --dest-key <storage-account-key> --recursive
     ```
 
-    A AzCopy jelentős számú lehetőséggel módosíthatja a másolási viselkedést a kívánt módon. További információkért tekintse meg a Windows és a AzCopy [AzCopy a](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) [Linuxon](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)című témakört.
+    A AzCopy jelentős számú lehetőséggel módosíthatja a másolási viselkedést a kívánt módon. További információ: Ismerkedés [a AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)szolgáltatással.
 
 ## <a name="automatically-mount-on-needed-pcsservers"></a>Automatikus csatlakoztatás szükséges számítógépeken/kiszolgálókon
 Egy helyszíni fájlmegosztás cseréjéhez hasznos a megosztások előzetes csatlakoztatása azon gépeken, amelyeket használni fog. Ezt automatikusan megteheti a számítógépek listáján.
@@ -147,7 +147,7 @@ do
 done
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure File Sync központi telepítésének megtervezése](storage-sync-files-planning.md)
 - [Azure-fájlok hibaelhárítása Windows rendszeren](storage-troubleshoot-windows-file-connection-problems.md)
 - [Azure-fájlok hibaelhárítása Linux rendszeren](storage-troubleshoot-linux-file-connection-problems.md)

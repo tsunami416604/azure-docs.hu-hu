@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb74ab16e51fbb3a157757353d5743e889f993dd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515391"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629699"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Fejlesztés a C++ nyelv Azure Files
 
@@ -32,7 +32,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hajthat végre alapszintű művel
 * Közös hozzáférésű jogosultságkód (SAS-kulcs) létrehozása egy, a megosztásban meghatározott megosztott elérési házirendet használó fájlhoz.
 
 > [!Note]  
-> Mivel Azure Files az SMB-kapcsolaton keresztül érhető el, az Azure-fájlmegosztás szabványos C++ I/O-osztályaival és-funkcióival való használatával egyszerű alkalmazásokat írhat. Ez a cikk azt írja le, hogyan írhat olyan alkalmazásokat, amelyek az Azure Storage C++ SDK-t használják, amely a [REST API fájl](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) használatával kommunikál a Azure files.
+> Mivel Azure Files az SMB-kapcsolaton keresztül érhető el, az Azure-fájlmegosztás szabványos C++ I/O-osztályaival és-funkcióival való használatával egyszerű alkalmazásokat írhat. Ez a cikk azt írja le, hogyan írhat olyan alkalmazásokat, amelyek az Azure Storage C++ SDK-t használják, amely a [REST API fájl](/rest/api/storageservices/file-service-rest-api) használatával kommunikál a Azure files.
 
 ## <a name="create-a-c-application"></a>C++-alkalmazás létrehozása
 
@@ -41,7 +41,7 @@ A minták létrehozásához telepítenie kell az Azure Storage ügyféloldali k�
 Az Azure Storage-ügyfél C++ 2.4.0 telepítéséhez a következő módszerek egyikét használhatja:
 
 * **Linux:** Kövesse az [Azure Storage ügyféloldali függvénytárában](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) található útmutatást.
-* **Windows:** A Visual Studióban kattintson a **Tools NuGet Package Manager &gt; &gt; csomagkezelő konzol**elemre. Írja be a következő parancsot a [NuGet Package Manager konzolba](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) , majd nyomja le az **ENTER**billentyűt.
+* **Windows:** A Visual Studióban kattintson a **Tools NuGet Package Manager &gt; &gt; csomagkezelő konzol** elemre. Írja be a következő parancsot a [NuGet Package Manager konzolba](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) , majd nyomja le az **ENTER** billentyűt.
   
 
 ```powershell
@@ -79,7 +79,7 @@ azure::storage::cloud_storage_account storage_account =
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 
-Egy Azure-fájlmegosztás összes fájlja és könyvtára egy **megosztás**nevű tárolóban található. A Storage-fiókja annyi megosztással rendelkezhet, amennyit a fiók kapacitása lehetővé tesz. Egy megosztáshoz és annak tartalmához való hozzáféréshez Azure Files-ügyfelet kell használnia.
+Egy Azure-fájlmegosztás összes fájlja és könyvtára egy **megosztás** nevű tárolóban található. A Storage-fiókja annyi megosztással rendelkezhet, amennyit a fiók kapacitása lehetővé tesz. Egy megosztáshoz és annak tartalmához való hozzáféréshez Azure Files-ügyfelet kell használnia.
 
 ```cpp
 // Create the Azure Files client.
@@ -103,7 +103,7 @@ if (share.create_if_not_exists()) {
 }
 ```
 
-Ezen a ponton a **megosztás** egy **My-Sample-Share**nevű megosztásra mutató hivatkozást tárol.
+Ezen a ponton a **megosztás** egy **My-Sample-Share** nevű megosztásra mutató hivatkozást tárol.
 
 ## <a name="delete-an-azure-file-share"></a>Azure-fájlmegosztás törlése
 
@@ -160,7 +160,7 @@ directory.delete_directory_if_exists();
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Fájlok és könyvtárak enumerálása Azure-fájlmegosztás esetén
 
-Egy megosztáson belüli fájlok és könyvtárak listájának beszerzése egyszerűen elvégezhető a **list_files_and_directories** **cloud_file_directory** -hivatkozással való meghívásával. Ha a tulajdonságok és metódusok gazdag készletét szeretné elérni egy visszaadott **list_file_and_directory_item**, meg kell hívnia a **list_file_and_directory_item. a _file** metódussal lekérhet egy **cloud_file** -objektumot, vagy a list_file_and_directory_item **. as _directory** metódust **cloud_file_directory** objektum beolvasásához.
+Egy megosztáson belüli fájlok és könyvtárak listájának beszerzése egyszerűen elvégezhető a **list_files_and_directories** **cloud_file_directory** -hivatkozással való meghívásával. Ha a tulajdonságok és metódusok gazdag készletét szeretné elérni egy visszaadott **list_file_and_directory_item** , meg kell hívnia a **list_file_and_directory_item. a _file** metódussal lekérhet egy **cloud_file** -objektumot, vagy a list_file_and_directory_item **. as _directory** metódust **cloud_file_directory** objektum beolvasásához.
 
 A következő kód bemutatja, hogyan kérhető le és jeleníthető meg a megosztás gyökérkönyvtárában lévő egyes elemek URI-ja.
 
