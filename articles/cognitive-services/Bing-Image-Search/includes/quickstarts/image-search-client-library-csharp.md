@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: aahi
-ms.openlocfilehash: 122e44da7bbf4229f932eefdae4c70dc49f43bfe
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 247aea49d60c2d953d8b6dff37d22188a5442a1f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371280"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625295"
 ---
 Ezzel a rövid útmutatóval elvégezheti az első képkeresést az Bing Image Search ügyféloldali kódtár használatával. 
 
@@ -45,8 +45,8 @@ Először hozzon létre egy új C#-konzol alkalmazást.
     
 1. A [kognitív Image Search NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch) hozzáadása
     1. Kattintson a jobb gombbal a projektre **megoldáskezelő**.
-    1. Válassza a **NuGet-csomagok kezelése**lehetőséget.
-    1. Keresse meg és válassza ki a *Microsoft. Azure. CognitiveServices. Search. ImageSearch*, majd telepítse a csomagot.
+    1. Válassza a **NuGet-csomagok kezelése** lehetőséget.
+    1. Keresse meg és válassza ki a *Microsoft. Azure. CognitiveServices. Search. ImageSearch* , majd telepítse a csomagot.
     
 # <a name="vs-code"></a>[VS Code](#tab/vscode)
 
@@ -126,15 +126,15 @@ if (imageResults != null)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+> [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](../../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
-* [Mi a Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Mi a Bing Image Search?](../../overview.md)  
 * [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [.NET-minták az Azure Cognitive Services SDK-hoz](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
-* [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Az Azure Cognitive Services dokumentációja](../../../index.yml)
+* [Bing Image Search API – referencia](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

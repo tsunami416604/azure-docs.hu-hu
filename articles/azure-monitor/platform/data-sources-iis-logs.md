@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: ca3cf93329ea84183ef11eec8f8fac52cd84d445
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 11/13/2020
+ms.openlocfilehash: a089631ab199b0fe997bba001561c6b027034e2c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461192"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628747"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Az IIS-naplók összegyűjtése Log Analytics ügynökkel Azure Monitor
 A Internet Information Services (IIS) olyan naplófájlokban tárolja a felhasználói tevékenységeket, amelyeket az Log Analytics ügynök gyűjthet, és [Azure monitor naplókban](data-platform.md)tárol.
@@ -26,12 +26,14 @@ A Azure Monitor az IIS által létrehozott naplófájlokból gyűjt bejegyzések
 
 Azure Monitor csak a W3C formátumban tárolt IIS-naplófájlokat támogatja, és nem támogatja az egyéni mezőket vagy az IIS speciális naplózását. Az NCSA vagy az IIS natív formátumában nem gyűjt naplókat.
 
-Konfigurálja az IIS-naplókat a Azure Monitor a Log Analytics ügynök [Speciális beállítások menüjében](agent-data-sources.md#configuring-data-sources) .  A **W3C-formátumú IIS-naplófájlok gyűjtésének**kiválasztásához nincs szükség konfigurációra.
+Konfigurálja az IIS-naplókat a Azure Monitor a Log Analytics ügynök [Speciális beállítások menüjében](agent-data-sources.md#configuring-data-sources) .  A **W3C-formátumú IIS-naplófájlok gyűjtésének** kiválasztásához nincs szükség konfigurációra.
 
 
 ## <a name="data-collection"></a>Adatgyűjtés
-A Azure Monitor az egyes ügynököktől érkező IIS-naplókat gyűjti össze minden alkalommal, amikor megváltozik a napló időbélyege. A napló **5 percenként**olvasható. Ha bármilyen okból kifolyólag az IIS nem frissíti az időbélyeget az új fájl létrehozásakor, a rendszer az új fájl létrehozása után begyűjti a bejegyzéseket. Az új fájl létrehozásának gyakoriságát az IIS-hely **naplófájl-átváltási ütemezési** beállítása szabályozza, amely alapértelmezés szerint naponta egyszer történik. Ha a beállítás **óránként**történik, Azure monitor óránként gyűjti a naplót. Ha a beállítás **naponta**történik, Azure monitor 24 óránként gyűjti a naplót.
+A Azure Monitor az egyes ügynököktől érkező IIS-naplókat gyűjti össze minden alkalommal, amikor megváltozik a napló időbélyege. A napló **5 percenként** olvasható. Ha bármilyen okból kifolyólag az IIS nem frissíti az időbélyeget az új fájl létrehozásakor, a rendszer az új fájl létrehozása után begyűjti a bejegyzéseket. Az új fájl létrehozásának gyakoriságát az IIS-hely **naplófájl-átváltási ütemezési** beállítása szabályozza, amely alapértelmezés szerint naponta egyszer történik. Ha a beállítás **óránként** történik, Azure monitor óránként gyűjti a naplót. Ha a beállítás **naponta** történik, Azure monitor 24 óránként gyűjti a naplót.
 
+> [!IMPORTANT]
+> Javasoljuk, hogy **óránként** állítsa be a **naplófájlok ütemezését** . Ha **napi** értékre van állítva, akkor a rendszer az adatokban csak egyszer gyűjthet össze adatokat.
 
 ## <a name="iis-log-record-properties"></a>IIS-napló rekordjának tulajdonságai
 Az IIS-naplóbejegyzések típusa **W3CIISLog** , és a következő táblázatban található tulajdonságokkal rendelkezik:

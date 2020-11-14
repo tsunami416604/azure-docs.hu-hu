@@ -3,17 +3,17 @@ title: Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 description: Tekintse át az Azure Marketplace-megoldások felhasználói használatának nyomon követését ismertető cikket.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 95ac1abc1f286330bc5e7036f01faa6cf1b22d70
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 2c2b7de65e7ac22ebe648ce98633d5ae88818324
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337899"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628390"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 
@@ -74,15 +74,15 @@ Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynö
    * A partnerek több GUID-azonosítót is regisztrálhatnak.
    * A partnerek a nem Piactéri megoldások sablonjaihoz és ajánlatokhoz regisztrálhatnak GUID azonosítókat.
 
-1. A jobb felső sarokban válassza a beállítások fogaskerék ikont, majd válassza a **fejlesztői beállítások** lehetőséget.
+1. Válassza a **Beállítások** (fogaskerék ikon) lehetőséget a jobb felső sarokban > **Fiókbeállítások** menüpontot.
 
-1. A **Fiókbeállítások lapon** válassza a **nyomkövetési GUID hozzáadása elemet.**
+1. A **szervezeti profilok**  >  **azonosítói** lapon válassza a **nyomkövetési GUID hozzáadása** elemet.
 
 1. A **GUID** mezőben adja meg a nyomkövetési GUID azonosítóját. Az előtag nélkül adja meg a GUID azonosítót `pid-` . A **Leírás** mezőben adja meg az ajánlat nevét vagy leírását.
 
 1. Egynél több GUID-azonosító regisztrálásához válassza ismét a **nyomkövetési GUID hozzáadása** elemet. Az oldalon további mezők jelennek meg.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sablonok használata
 Számos partneri megoldás Azure Resource Manager-sablonok használatával van üzembe helyezve. Ha van olyan Resource Manager-sablonja, amely elérhető az Azure Marketplace-en, a GitHubon vagy egy rövid útmutatóként, a sablon módosításának folyamata, amely lehetővé teszi az ügyfél-használati jóváírást, azonnal továbbítsa.
@@ -183,9 +183,10 @@ Ha Azure PowerShell segítségével telepít erőforrásokat, a következő mód
 
 Ha az Azure CLI-t használja a GUID-azonosító hozzáfűzéséhez, állítsa be a **AZURE_HTTP_USER_AGENT** környezeti változót. Ezt a változót egy parancsfájl hatókörén belül állíthatja be. A változót globálisan is beállíthatja a rendszerhéj hatóköréhez:
 
-```
+```powershell
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
 További információ: [Go nyelvhez készült Azure SDK](/azure/developer/go/).
 
 ## <a name="use-terraform"></a>Terraform használata
@@ -206,7 +207,6 @@ Azok a partnerek, akik az ügyfél-használati jóváírás által követett Ter
 
 * GUID létrehozása (az egyes ajánlatokhoz vagy SKU-hoz hozzá kell adni a GUID azonosítót)
 * Frissítse az Azure-szolgáltatóját a *partner_id* értékének a GUID azonosítóra való beállításához (a GUID-ot ne a "PID-" beállítással állítsa be, csak állítsa a tényleges GUID azonosítóra)
-
 
 ## <a name="verify-the-guid-deployment"></a>A GUID központi telepítésének ellenőrzése
 
@@ -263,11 +263,11 @@ A partnereknek tájékoztatniuk kell az ügyfelet az ügyfél-használati jóvá
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Értesítés Resource Manager-sablonok üzembe helyezéséhez
 
-A sablon központi telepítésekor a Microsoft azonosítani tudja a \<PARTNER> telepített Azure-erőforrásokkal rendelkező szoftverek telepítését. A Microsoft képes a szoftver támogatásához használt Azure-erőforrások összekapcsolására. A Microsoft ezeket az adatokat gyűjti, hogy a lehető legjobb élményt nyújtsa termékeivel, és üzleti tevékenységét. Az adatokat a Microsoft adatvédelmi szabályzatai gyűjtik és szabályozzák, amelyek a következő címen találhatók: https://www.microsoft.com/trustcenter .
+A sablon központi telepítésekor a Microsoft azonosítani tudja a \<PARTNER> telepített Azure-erőforrásokkal rendelkező szoftverek telepítését. A Microsoft képes a szoftver támogatásához használt Azure-erőforrások összekapcsolására. A Microsoft ezeket az adatokat gyűjti, hogy a lehető legjobb élményt nyújtsa termékeivel, és üzleti tevékenységét. Az adatokat a Microsoft adatvédelmi szabályzatai gyűjtik és szabályozzák, amelyek a következő címen találhatók: [https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) .
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>Értesítés SDK-vagy API-telepítésekhez
 
-A szoftverek központi telepítésekor a \<PARTNER> Microsoft képes azonosítani a \<PARTNER> szoftver telepítését a központilag telepített Azure-erőforrásokkal. A Microsoft képes a szoftver támogatásához használt Azure-erőforrások összekapcsolására. A Microsoft ezeket az adatokat gyűjti, hogy a lehető legjobb élményt nyújtsa termékeivel, és üzleti tevékenységét. Az adatokat a Microsoft adatvédelmi szabályzatai gyűjtik és szabályozzák, amelyek a következő címen találhatók: https://www.microsoft.com/trustcenter .
+A szoftverek központi telepítésekor a \<PARTNER> Microsoft képes azonosítani a \<PARTNER> szoftver telepítését a központilag telepített Azure-erőforrásokkal. A Microsoft képes a szoftver támogatásához használt Azure-erőforrások összekapcsolására. A Microsoft ezeket az adatokat gyűjti, hogy a lehető legjobb élményt nyújtsa termékeivel, és üzleti tevékenységét. Az adatokat a Microsoft adatvédelmi szabályzatai gyűjtik és szabályozzák, amelyek a következő címen találhatók: [https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) .
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -282,6 +282,7 @@ Ismerje meg a kereskedelmi piactér támogatási lehetőségeit a [partner Cente
     * Töltse ki/tekintse át a kapcsolattartási adatokat.
     * A konzultáció részleteit előre ki lehet tölteni, vagy a legördülő listából választhat.
     * Adja meg a címet és a probléma leírását (a lehető legrészletesebben adja meg a problémát).
+
 1. Kattintson a Submit (Küldés) gombra
 
 Részletes útmutatást találhat a képernyőképek [használatáról a Technical Sales and Deployment Services használatával](https://aka.ms/TechConsultInstructions).

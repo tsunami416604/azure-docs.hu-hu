@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "87088393"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>ASP.NET-webalkalmazás közzététele Azure-beli virtuális gépen a Visual studióból
@@ -33,7 +33,7 @@ A következő szakasz azt ismerteti, hogyan tehet közzé egy meglévő ASP.NET-
 
 1. Nyissa meg a webalkalmazási megoldást a Visual Studio 2019-ben.
 2. Kattintson a jobb gombbal a projektre Megoldáskezelő, majd válassza a **Közzététel...** lehetőséget.
-3. A lap jobb oldalán található nyílra kattintva görgessen végig a közzétételi beállításokon, amíg meg nem találja a **Microsoft Azure Virtual Machines** .  
+3. A lap jobb oldalán található nyílra kattintva görgessen végig a közzétételi beállításokon, amíg meg nem találja a **Microsoft Azure Virtual Machines**.  
 
    ![Közzétételi oldal jobbra nyíl]
 
@@ -107,7 +107,7 @@ A beállításoknak a következőhöz hasonlóan kell kinéznie:
 
 ![Közzétételi beállítások – beállítások lap]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>CI/CD beállítása az Azure-beli virtuális gép automatikus üzembe helyezéséhez
 

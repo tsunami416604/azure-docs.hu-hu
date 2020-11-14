@@ -1,23 +1,25 @@
 ---
 title: Oktatóanyag – bejelentkezési felhasználók és egy védett API meghívása egy Blazer webszerelvény-alkalmazásból
 titleSuffix: Microsoft identity platform
-description: Ebben az oktatóanyagban jelentkezzen be a felhasználókba, és hívjon fel egy védett API-t a Microsoft Identity platform használatával egy Blazer webszerelvény-alkalmazásban.
+description: Ebben az oktatóanyagban jelentkezzen be a felhasználókba, és hívjon fel egy védett API-t a Microsoft Identity platform használatával a Blazer webassembly (WASM) alkalmazásban.
 author: knicholasa
 ms.author: nichola
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: ba3607c522191644ec0cc63db118de285d297c48
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f967b10d729c9c5486bbca9b643f48aaf558687c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223078"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628067"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és a védett API meghívása egy Blazer webszerelvény-alkalmazásból
 
-A [Blazing web Assembly](/aspnet/core/blazor#blazor-webassembly) egy egyoldalas alkalmazás-keretrendszer, amellyel interaktív ügyféloldali webalkalmazásokat hozhat létre a .NET használatával. Ebben az oktatóanyagban egy olyan alkalmazást hoz létre, amely bejelentkezik a felhasználók számára, és lekéri a védett API-ból származó adatok beolvasását a [Microsoft Identity platformmal](https://docs.microsoft.com/azure/active-directory/develop/)rendelkező Blazer webassembly (Blazer WASM) alkalmazásból.
+A Blazer web Assembly (WASM) egy egyoldalas alkalmazás-keretrendszer, amellyel interaktív ügyféloldali webalkalmazásokat hozhat létre a .NET használatával. Ebből az oktatóanyagból megtudhatja, hogyan valósítható meg a hitelesítés, és hogyan kérhet le információkat Microsoft Graph egy WASM-alkalmazásban a Microsoft Identity platform használatával, és hogyan regisztrálhat az alkalmazást Azure Active Directory (Azure AD)-ban.
+
+A [Blazer-kiszolgáló oktatóanyaga](tutorial-blazor-server.md)is rendelkezésre áll. 
 
 Az oktatóanyagban a következőket végezheti el:
 
@@ -35,10 +37,10 @@ Az oktatóanyagban a következőket végezheti el:
 
 Minden Azure Active Directory (Azure AD) hitelesítést használó alkalmazást regisztrálni kell az Azure AD-ben. Kövesse az [alkalmazás regisztrálása](quickstart-register-app.md) a következő specifikációkkal című témakör utasításait:
 
-- **Támogatott fióktípus**esetén **csak a szervezeti címtárban**válassza a fiókok lehetőséget.
+- **Támogatott fióktípus** esetén **csak a szervezeti címtárban** válassza a fiókok lehetőséget.
 - Hagyja meg az **átirányítási URI** legördülő listát a web értékre, és írja be a **következőt** : `https://localhost:5001/authentication/login-callback` . A vércse-on futó alkalmazások alapértelmezett portja 5001. Ha az alkalmazás egy másik porton érhető el, a portszámot a helyett kell megadnia `5001` .
 
-A regisztrálás után a **hitelesítés**  >  **implicit megadása**területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek**jelölőnégyzetét, majd kattintson a **Save (Mentés** ) gombra.
+A regisztrálás után a **hitelesítés**  >  **implicit megadása** területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek** jelölőnégyzetét, majd kattintson a **Save (Mentés** ) gombra.
 
 ## <a name="create-the-app-using-the-net-core-cli"></a>Az alkalmazás létrehozása a a .NET Core parancssori felülete használatával
 
@@ -83,10 +85,10 @@ Most frissítenie kell az alkalmazás regisztrációját és kódját, hogy lek�
 Először adja hozzá az `Mail.Read` API-engedélyt az alkalmazás regisztrálásához, hogy az Azure ad tisztában legyen azzal, hogy az alkalmazás kérni fogja a felhasználók e-mail-címének elérését.
 
 1. A Azure Portal válassza ki az alkalmazást **Alkalmazásregisztrációkban**.
-1. A **kezelés**területen válassza az **API-engedélyek**lehetőséget.
-1. Válassza **az engedély hozzáadása**  >  **Microsoft Graph**elemet.
-1. Válassza a **delegált engedélyek**elemet, majd keresse meg és válassza ki a **mail. Read** engedélyt.
-1. Válassza az **engedélyek hozzáadása**lehetőséget.
+1. A **kezelés** területen válassza az **API-engedélyek** lehetőséget.
+1. Válassza **az engedély hozzáadása**  >  **Microsoft Graph** elemet.
+1. Válassza a **delegált engedélyek** elemet, majd keresse meg és válassza ki a **mail. Read** engedélyt.
+1. Válassza az **engedélyek hozzáadása** lehetőséget.
 
 Ezután adja hozzá a következőt a projekt *. csproj* fájljához a Netstandard 2.1 **ItemGroup**. Ez lehetővé teszi az egyéni HttpClient létrehozását a következő lépésben.
 
@@ -237,7 +239,7 @@ A jóváhagyás megadása után navigáljon az "adat lekérése" lapra, és olva
 
 :::image type="content" source="./media/tutorial-blazor-webassembly/final-app.png" alt-text="Képernyőkép a végleges alkalmazásról. Van egy fejléce, amely szerint a Hello Nicholas, és megjeleníti a Nicholas-hoz tartozó e-mailek listáját.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Microsoft Identity platform – ajánlott eljárások és javaslatok](./identity-platform-integration-checklist.md)
-- [Az ASP.NET Core Blazor bemutatása](/aspnet/core/blazor)
+> [!div class="nextstepaction"]
+> [Microsoft Identity platform – ajánlott eljárások és javaslatok](./identity-platform-integration-checklist.md)

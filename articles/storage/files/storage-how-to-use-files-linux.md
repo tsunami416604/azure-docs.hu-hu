@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 957e827e621d07ed9b5533a1607f955f05985d9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c271107b85e4903153c29b58aadadd37fb051b76
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004782"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626741"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztás az [SMB kernel-ügyféllel](https://wiki.samba.org/index.php/LinuxCIFS)is csatlakoztatható Linux-disztribúciókban. Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy Azure-fájlmegosztást: igény szerint a `mount` paranccsal és a rendszerindítással, ha létrehoz egy bejegyzést a alkalmazásban `/etc/fstab` .
@@ -47,19 +47,19 @@ uname -r
     sudo apt install cifs-utils
     ```
 
-    **Fedora**, **Red Hat Enterprise Linux 8 +** és **CentOS 8 +** esetén használja a `dnf` Package Managert:
+    **Fedora** , **Red Hat Enterprise Linux 8 +** és **CentOS 8 +** esetén használja a `dnf` Package Managert:
 
     ```bash
     sudo dnf install cifs-utils
     ```
 
-    A **Red Hat Enterprise Linux** és a **CentOS**régebbi verzióiban használja a `yum` Package Managert:
+    A **Red Hat Enterprise Linux** és a **CentOS** régebbi verzióiban használja a `yum` Package Managert:
 
     ```bash
     sudo yum install cifs-utils 
     ```
 
-    Az **openSUSE**-ben használja a `zypper` csomagkezelő eszközt:
+    Az **openSUSE** -ben használja a `zypper` csomagkezelő eszközt:
 
     ```bash
     sudo zypper install cifs-utils
@@ -67,9 +67,9 @@ uname -r
 
     Más disztribúciók esetén használja a megfelelő csomagkezelő vagy [fordítás forrásból elemet](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download) .
 
-* **Az Azure parancssori felület (CLI) legújabb verziója.** Az Azure CLI telepítésével kapcsolatos további információkért lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és az operációs rendszer kiválasztása. Ha inkább a Azure PowerShell modult szeretné használni a PowerShell 6 +-ban, akkor az alábbi utasításokat azonban az Azure CLI-hez mutatjuk be.
+* **Az Azure parancssori felület (CLI) legújabb verziója.** Az Azure CLI telepítésével kapcsolatos további információkért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest) és az operációs rendszer kiválasztása. Ha inkább a Azure PowerShell modult szeretné használni a PowerShell 6 +-ban, akkor az alábbi utasításokat azonban az Azure CLI-hez mutatjuk be.
 
-* **Győződjön meg arról**, hogy a 445-es port nyitva van: az SMB a 445-es TCP-porton keresztül kommunikál, és ellenőrizze, hogy a tűzfal nem blokkolja-e az ügyfélszámítógép TCP-445 portjait.  Cserélje le `<your-resource-group>` , `<your-storage-account>` majd futtassa a következő parancsfájlt:
+* **Győződjön meg arról** , hogy a 445-es port nyitva van: az SMB a 445-es TCP-porton keresztül kommunikál, és ellenőrizze, hogy a tűzfal nem blokkolja-e az ügyfélszámítógép TCP-445 portjait.  Cserélje le `<your-resource-group>` , `<your-storage-account>` majd futtassa a következő parancsfájlt:
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -99,7 +99,7 @@ Ha egy Azure-fájlmegosztást Linux-disztribúcióval szeretne használni, létr
 Szükség esetén egyszerre több csatlakoztatási pontra is csatlakoztathatja az Azure-fájlmegosztást.
 
 ### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Igény szerinti Azure-fájlmegosztás csatlakoztatása a következővel: `mount`
-1. **Hozzon létre egy mappát a csatlakoztatási ponthoz**: cserélje le `<your-resource-group>` , `<your-storage-account>` és a `<your-file-share>` megfelelő információkkal a környezetéhez:
+1. **Hozzon létre egy mappát a csatlakoztatási ponthoz** : cserélje le `<your-resource-group>` , `<your-storage-account>` és a `<your-file-share>` megfelelő információkkal a környezetéhez:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -135,7 +135,7 @@ Szükség esetén egyszerre több csatlakoztatási pontra is csatlakoztathatja a
 Ha elkészült az Azure-fájlmegosztás használatával, `sudo umount $mntPath` a használatával leválaszthatja a megosztást.
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Állandó csatlakozási pont létrehozása az Azure-fájlmegosztás számára a következővel: `/etc/fstab`
-1. **Hozzon létre egy mappát a csatlakoztatási ponthoz**: egy csatlakozási ponthoz tartozó mappa bárhol létrehozható a fájlrendszerben, de ez a közös konvenció a/mnt. alatt történő létrehozásához. A következő parancs például létrehoz egy új könyvtárat, lecseréli `<your-resource-group>` , `<your-storage-account>` és a `<your-file-share>` megfelelő információkat a környezetéhez:
+1. **Hozzon létre egy mappát a csatlakoztatási ponthoz** : egy csatlakozási ponthoz tartozó mappa bárhol létrehozható a fájlrendszerben, de ez a közös konvenció a/mnt. alatt történő létrehozásához. A következő parancs például létrehoz egy új könyvtárat, lecseréli `<your-resource-group>` , `<your-storage-account>` és a `<your-file-share>` megfelelő információkat a környezetéhez:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -174,7 +174,7 @@ Ha elkészült az Azure-fájlmegosztás használatával, `sudo umount $mntPath` 
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. A **következő parancs használatával fűzze hozzá a következő sort `/etc/fstab` **az alkalmazáshoz: az alábbi példában a helyi Linux-fájl és a mappa engedélyei alapértelmezett 0755, ami azt jelenti, hogy olvasás, írás és végrehajtás a tulajdonos számára (a fájl/könyvtár Linux tulajdonosa alapján), olvasás és végrehajtás a tulajdonos csoportba tartozó felhasználók számára, valamint olvasás és végrehajtás mások számára a rendszeren. A `uid` és a `gid` csatlakoztatási lehetőségekkel beállíthatja a csatlakoztatás felhasználói azonosítóját és a csoport azonosítóját. `dir_mode`A és a használatával is igény `file_mode` szerint állíthatja be az egyéni engedélyeket. További információ az engedélyek beállításáról: [UNIX numerikus jelölés](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) a wikipedia-ben.
+1. A **következő parancs használatával fűzze hozzá a következő sort `/etc/fstab`** az alkalmazáshoz: az alábbi példában a helyi Linux-fájl és a mappa engedélyei alapértelmezett 0755, ami azt jelenti, hogy olvasás, írás és végrehajtás a tulajdonos számára (a fájl/könyvtár Linux tulajdonosa alapján), olvasás és végrehajtás a tulajdonos csoportba tartozó felhasználók számára, valamint olvasás és végrehajtás mások számára a rendszeren. A `uid` és a `gid` csatlakoztatási lehetőségekkel beállíthatja a csatlakoztatás felhasználói azonosítóját és a csoport azonosítóját. `dir_mode`A és a használatával is igény `file_mode` szerint állíthatja be az egyéni engedélyeket. További információ az engedélyek beállításáról: [UNIX numerikus jelölés](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) a wikipedia-ben.
 
     ```bash
     # This command assumes you have logged in with az login
@@ -207,19 +207,19 @@ Ha elkészült az Azure-fájlmegosztás használatával, `sudo umount $mntPath` 
     sudo apt update
     sudo apt install autofs
     ```
-    **Fedora**, **Red Hat Enterprise Linux 8 +** és **CentOS 8 +** esetén használja a `dnf` Package Managert:
+    **Fedora** , **Red Hat Enterprise Linux 8 +** és **CentOS 8 +** esetén használja a `dnf` Package Managert:
     ```bash
     sudo dnf install autofs
     ```
-    A **Red Hat Enterprise Linux** és a **CentOS**régebbi verzióiban használja a `yum` Package Managert:
+    A **Red Hat Enterprise Linux** és a **CentOS** régebbi verzióiban használja a `yum` Package Managert:
     ```bash
     sudo yum install autofs 
     ```
-    Az **openSUSE**-ben használja a `zypper` csomagkezelő eszközt:
+    Az **openSUSE** -ben használja a `zypper` csomagkezelő eszközt:
     ```bash
     sudo zypper install autofs
     ```
-2. **Csatlakozási pont létrehozása a megosztás (ok) hoz**:
+2. **Csatlakozási pont létrehozása a megosztás (ok) hoz** :
    ```bash
     sudo mkdir /fileshares
     ```
@@ -322,9 +322,9 @@ sudo modprobe cifs
 cat /sys/module/cifs/parameters/disable_legacy_dialects
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 
 * [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
-* [Gyakori kérdések](../storage-files-faq.md)
+* [Gyakori kérdések](./storage-files-faq.md)
 * [Hibaelhárítás](storage-troubleshoot-linux-file-connection-problems.md)

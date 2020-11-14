@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 75ba8e1e2037ba8ef249b548dfb38e5fd1618cb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ec8e4a945f8b8277d05c11bf3673d2e4ab15f9a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564185"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626792"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>Prémium szintű Azure-fájlmegosztás létrehozása
 
@@ -24,8 +24,8 @@ Ez a cikk bemutatja, hogyan hozhatja létre ezt az új számlatípust a [Azure P
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Ha a Azure PowerShell modult szeretné használni, [telepítse a legújabb verziót](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0).
+- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Ha a Azure PowerShell modult szeretné használni, [telepítse a legújabb verziót](/powershell/azure/install-az-ps?view=azps-4.6.0).
 
 ## <a name="create-a-filestorage-storage-account"></a>FileStorage-fiók létrehozása
 
@@ -49,11 +49,11 @@ Most már készen áll a Storage-fiók létrehozására.
 
 1. Ezután adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A név 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
 1. Válassza ki a tárfiókja helyét, vagy használja az alapértelmezett helyet.
-1. A **teljesítmény** beállításnál válassza a **prémium**lehetőséget.
+1. A **teljesítmény** beállításnál válassza a **prémium** lehetőséget.
 
     Ki kell választania a **prémium** szintű **FileStorage** , hogy elérhető legyen a **Fiók típusa** legördülő menüben.
 
-1. Válassza a **Fiók típusa** lehetőséget, és válassza a **FileStorage**lehetőséget.
+1. Válassza a **Fiók típusa** lehetőséget, és válassza a **FileStorage** lehetőséget.
 1. Hagyja meg a **replikálást** a **helyileg REDUNDÁNS tárolás (LRS)** alapértelmezett értékére.
 
     ![Storage-fiók létrehozása prémium fájlmegosztás esetén](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
@@ -144,9 +144,9 @@ Most, hogy létrehozott egy FileStorage-fiókot, létrehozhat egy prémium fájl
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A Storage-fiók bal oldali menüjében görgessen a **Fájlszolgáltatások** szakaszhoz, majd válassza a **fájlok**lehetőséget.
+1. A Storage-fiók bal oldali menüjében görgessen a **Fájlszolgáltatások** szakaszhoz, majd válassza a **fájlok** lehetőséget.
 1. Prémium fájlmegosztás létrehozásához válassza a **fájlmegosztás** lehetőséget.
-1. Adjon meg egy nevet és egy kívánt kvótát a fájlmegosztás számára, majd válassza a **Létrehozás**lehetőséget.
+1. Adjon meg egy nevet és egy kívánt kvótát a fájlmegosztás számára, majd válassza a **Létrehozás** lehetőséget.
 
 > [!NOTE]
 > A kiosztott megosztási méretek a megosztási kvóta szerint vannak megadva, a fájlmegosztás számlázása a kiosztott méret alapján történik. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/storage/files/) olvasható.
@@ -210,7 +210,7 @@ az group delete --name myResourceGroup
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy prémium szintű fájlmegosztást hozott létre. Ha többet szeretne megtudni a fiók által kínált teljesítményről, folytassa a tervezési útmutató teljesítményszint szakaszával.
 

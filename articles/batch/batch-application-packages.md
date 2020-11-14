@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "91277699"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
@@ -77,7 +77,7 @@ A Batch szolgáltatás az Azure Storage-t használja az alkalmazáscsomag blokko
 
 Ha szeretné megtekinteni az alkalmazásokat a Batch-fiókban, válassza az **alkalmazások** lehetőséget a bal oldali navigációs menüben.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Az alkalmazások és az alkalmazáscsomag magas szintű nézetét bemutató ábra.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Képernyőkép a Azure Portal alkalmazások menüjéről.":::
 
 Ha ezt a menüelemet választja, megnyílik az **alkalmazások** ablak. Ez az ablak a fiókban lévő egyes alkalmazások AZONOSÍTÓját, valamint a következő tulajdonságokat jeleníti meg:
 
@@ -91,7 +91,7 @@ Ha ezt a menüelemet választja, megnyílik az **alkalmazások** ablak. Ez az ab
 
 Egy alkalmazás részleteinek megtekintéséhez válassza ki azt az **alkalmazások** ablakban. Az alkalmazáshoz a következő beállításokat állíthatja be.
 
-- **Frissítések engedélyezése** : azt jelzi, hogy lehet [-e frissíteni vagy törölni](#update-or-delete-an-application-package)az alkalmazáscsomag. Az alapértelmezett érték az **Igen** . Ha a **nem** értékre van állítva, a meglévő alkalmazáscsomag nem frissíthető és nem törölhető, de az új alkalmazáscsomag-verziók továbbra is hozzáadhatók.
+- **Frissítések engedélyezése** : azt jelzi, hogy lehet [-e frissíteni vagy törölni](#update-or-delete-an-application-package)az alkalmazáscsomag. Az alapértelmezett érték az **Igen**. Ha a **nem** értékre van állítva, a meglévő alkalmazáscsomag nem frissíthető és nem törölhető, de az új alkalmazáscsomag-verziók továbbra is hozzáadhatók.
 - **Alapértelmezett verzió** : az alkalmazás telepítésekor használandó alapértelmezett alkalmazáscsomag, ha nincs megadva verzió.
 - **Megjelenítendő név** : a Batch-megoldás által az alkalmazással kapcsolatos információk megjelenítésére használt rövid név. Ezt a nevet használhatja például egy olyan szolgáltatás felhasználói felületén, amelyet az ügyfelek számára a Batch használatával biztosít.
 
@@ -101,7 +101,7 @@ Egy alkalmazás részleteinek megtekintéséhez válassza ki azt az **alkalmazá
 
 A Batch-fiókban válassza az **alkalmazások** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Az alkalmazások és az alkalmazáscsomag magas szintű nézetét bemutató ábra.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Képernyőkép a Azure Portal új alkalmazás-létrehozási folyamatáról.":::
 
 Adja meg a következő információkat:
 
@@ -128,7 +128,7 @@ Ahogy az új alkalmazásnál, adja meg az új csomag **verzióját** , töltse f
 
 Meglévő alkalmazáscsomag frissítéséhez vagy törléséhez válassza ki az alkalmazást a Batch-fiók **alkalmazások** szakaszában. Válassza ki a módosítani kívánt alkalmazáscsomag sorában található három pontot, majd válassza ki a végrehajtani kívánt műveletet.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Az alkalmazások és az alkalmazáscsomag magas szintű nézetét bemutató ábra.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Képernyőfelvétel a Azure Portal alkalmazás csomagjainak frissítési és törlési lehetőségeiről.":::
 
 Ha a **frissítés** lehetőséget választja, feltöltheti egy új. zip fájlt. Ez felülírja az adott verzióhoz feltöltött előző. zip fájlt.
 
@@ -283,7 +283,7 @@ foreach (ApplicationSummary app in applications)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [Batch REST API](/rest/api/batchservice) Emellett támogatást biztosít az alkalmazáscsomag működéséhez. Tekintse meg például az [applicationPackageReferences](/rest/api/batchservice/pool/add#applicationpackagereference) elemet a telepítendő csomagok megadásához [, valamint az alkalmazás adatainak](/rest/api/batchservice/application) beszerzéséhez.
 - Ismerje meg, hogyan [felügyelheti Azure batch fiókokat és kvótákat a Batch Management .net-](batch-management-dotnet.md)tel. A [Batch Management .net](/dotnet/api/overview/azure/batch/management) -függvénytár lehetővé teheti a fiókok létrehozási és törlési funkcióit a Batch-alkalmazáshoz vagy-szolgáltatáshoz.

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 11/04/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8608da33c747f76452a0106e4e2737849e06a75c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: cdda14bb579fc94414f9da89b8b1f1aa04ec3bf5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443228"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628101"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás: token beszerzése
 
@@ -183,7 +183,7 @@ Androidon a szülő tevékenységet is meg kell adnia a használatával, amint a
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-A felhasználói felület azért fontos, mert interaktív. `AcquireTokenInteractive` egy adott opcionális paraméterrel rendelkezik, amely az azt támogató platformok esetében megadhatja a szülő felhasználói felületet. Asztali alkalmazásokban való használat esetén `.WithParentActivityOrWindow` eltérő típusú, amely a platformtól függ. Azt is megteheti, hogy kihagyja a választható szülő ablak paramétert egy ablak létrehozásához, ha nem szeretné szabályozni, hogy a bejelentkezési párbeszédpanel megjelenjen-e a képernyőn. Ez a parancssoron alapuló, a más háttérrendszer-szolgáltatásokra irányuló hívások átadására, valamint a felhasználói beavatkozáshoz nem szükséges Windows-alapú alkalmazásokra alkalmazható. 
+A felhasználói felület azért fontos, mert interaktív. `AcquireTokenInteractive` egy adott opcionális paraméterrel rendelkezik, amely az azt támogató platformok esetében megadhatja a szülő felhasználói felületet. Asztali alkalmazásokban való használat esetén `.WithParentActivityOrWindow` eltérő típusú, amely a platformtól függ. Azt is megteheti, hogy kihagyja a választható szülő ablak paramétert egy ablak létrehozásához, ha nem szeretné szabályozni, hogy a bejelentkezési párbeszédpanel megjelenjen-e a képernyőn. Ez a parancssoron alapuló, a más háttérrendszer-szolgáltatásokra irányuló hívások átadására, valamint a felhasználói beavatkozáshoz nem szükséges Windows-alapú alkalmazásokra alkalmazható.
 
 ```csharp
 // net45
@@ -278,7 +278,7 @@ A MSAL.NET csapata újraírta a felhasználói felületi teszteket, hogy ezt a b
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>Nagyszerű élményt nyújt a SystemWebViewOptions
 
-A MSAL.NET 4,1-es verziójában [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) megadhatja a következőket:
+A MSAL.NET 4,1-es verziójában [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions) megadhatja a következőket:
 
 - A () `BrowserRedirectError` vagy a megjelenített HTML-kódrészlet () vagy a rendszerböngészőbe való bejelentkezés vagy a hozzájuk tartozó megadási `HtmlMessageError` hibák esetén használandó URI.
 - A `BrowserRedirectSuccess` `HtmlMessageSuccess` sikeres bejelentkezés vagy beleegyezikés esetén a () vagy a megjelenítendő HTML-kódrészlet ().
@@ -304,7 +304,7 @@ var result = app.AcquireTokenInteractive(scopes)
 
 #### <a name="other-optional-parameters"></a>Egyéb választható paraméterek
 
-Ha többet szeretne megtudni a további választható paraméterekről, tekintse meg a következőt `AcquireTokenInteractive` : [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
+Ha többet szeretne megtudni a további választható paraméterekről, tekintse meg a következőt `AcquireTokenInteractive` : [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -532,7 +532,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-A AcquireTokenByIntegratedWindowsAuthentication lehetséges módosítók listájáért lásd: [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods).
+A AcquireTokenByIntegratedWindowsAuthentication lehetséges módosítók listájáért lásd: [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -832,7 +832,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-További információ az összes alkalmazható módosítóról `AcquireTokenByUsernamePassword` : [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods).
+További információ az összes alkalmazható módosítóról `AcquireTokenByUsernamePassword` : [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -1387,6 +1387,10 @@ namespace CommonCacheMsalV3
  }
 }
 ```
+
+## <a name="advanced-accessing-the-users-cached-tokens-in-background-apps-and-services"></a>Speciális A felhasználó gyorsítótárazott jogkivonatának elérése a háttérben futó alkalmazásokban és szolgáltatásokban
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ## <a name="next-steps"></a>További lépések
 

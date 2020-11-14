@@ -8,16 +8,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 429d0b9c3a118061d713484a7db3aca376a24d04
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: aaf716b4ac4c49f1d852e917ba818a10ecb541c4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873183"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628033"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Oktatóanyag: a Microsoft Identity platformot használó blézer-kiszolgálói alkalmazás létrehozása a hitelesítéshez
 
-A Blazer-kiszolgáló támogatást nyújt a borotva összetevőinek a kiszolgálón ASP.NET Core alkalmazásban való üzemeltetéséhez. Ebből az oktatóanyagból megtudhatja, hogyan valósítható meg a hitelesítés, és hogyan kérhet le Microsoft Grapht a Microsoft Identity platformot használó blézer-kiszolgálói alkalmazásokban.
+A Blazer-kiszolgáló támogatást nyújt a borotva összetevőinek a kiszolgálón ASP.NET Core alkalmazásban való üzemeltetéséhez. Ebből az oktatóanyagból megtudhatja, hogyan valósítható meg a hitelesítés, és hogyan kérhet le információkat a Microsoft Graph egy Blaze Server-alkalmazásban a Microsoft Identity platform használatával, és regisztrálja az alkalmazást a Azure Active Directoryban (Azure AD).
+
+A [Blazer WASM](tutorial-blazor-webassembly.md)oktatóanyaga is rendelkezésre áll.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -35,14 +37,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Minden Azure Active Directory (Azure AD) hitelesítést használó alkalmazást regisztrálni kell az Azure AD-ben. Kövesse az [alkalmazás regisztrálása](quickstart-register-app.md) a következő kiegészítésekkel című témakör utasításait:
 
-- **Támogatott fióktípus**esetén **csak a szervezeti címtárban**válassza a fiókok lehetőséget.
+- **Támogatott fióktípus** esetén **csak a szervezeti címtárban** válassza a fiókok lehetőséget.
 - Hagyja meg az **átirányítási URI** legördülő listát a web értékre, és írja be a **következőt** : `https://localhost:5001/signin-oidc` . A vércse-on futó alkalmazások alapértelmezett portja 5001. Ha az alkalmazás egy másik porton érhető el, a portszámot a helyett kell megadnia `5001` .
 
-A **hitelesítés**  >  **implicit megadása**területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek**jelölőnégyzetét, majd kattintson a **Save (Mentés** ) gombra.
+A **hitelesítés**  >  **implicit megadása** területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek** jelölőnégyzetét, majd kattintson a **Save (Mentés** ) gombra.
 
 Végül, mivel az alkalmazás meghívja a védett API-t (ebben az esetben Microsoft Graph), az ügyfél titkos kulcsára van szükség ahhoz, hogy igazolja az identitását, amikor hozzáférési jogkivonatot kér az API meghívásához.
 
-1. Ugyanannak az alkalmazásnak a regisztrációja alatt a **kezelés**területen válassza a **tanúsítványok & Secrets**elemet.
+1. Ugyanannak az alkalmazásnak a regisztrációja alatt a **kezelés** területen válassza a **tanúsítványok & Secrets** elemet.
 2. Hozzon létre egy **új ügyfél titkot** , amely soha nem jár le.
 3. Jegyezze fel a titkos kulcs **értékét** , mert a következő lépésben használni fogja. A panelről való kilépést követően többé nem férhet hozzá. Azonban szükség esetén újra létrehozhatja.
 
@@ -91,10 +93,10 @@ Mielőtt elkezdené, jelentkezzen ki az alkalmazásból, mert a szükséges enge
 Most frissítenie kell az alkalmazás regisztrációját és kódját, hogy lekérje a felhasználó e-mail-címét, és megjeleníti az üzeneteket az alkalmazáson belül. Ennek eléréséhez először ki kell terjesztenie az alkalmazás regisztrációs engedélyeit az Azure AD-ben, hogy engedélyezze az e-mailek elérését. Ezután vegyen fel kódot a Blazer alkalmazásba, és jelenítse meg ezeket az adatlapokat az egyik oldalon.
 
 1. A Azure Portal válassza ki az alkalmazást **Alkalmazásregisztrációkban**.
-1. A **kezelés**területen válassza az **API-engedélyek**lehetőséget.
-1. Válassza **az engedély hozzáadása**  >  **Microsoft Graph**elemet.
-1. Válassza a **delegált engedélyek**elemet, majd keresse meg és válassza ki a **mail. Read** engedélyt.
-1. Válassza az **engedélyek hozzáadása**lehetőséget.
+1. A **kezelés** területen válassza az **API-engedélyek** lehetőséget.
+1. Válassza **az engedély hozzáadása**  >  **Microsoft Graph** elemet.
+1. Válassza a **delegált engedélyek** elemet, majd keresse meg és válassza ki a **mail. Read** engedélyt.
+1. Válassza az **engedélyek hozzáadása** lehetőséget.
 
 A *appsettings.js* fájlon frissítse a kódot, hogy a megfelelő engedélyekkel beolvassa a megfelelő jogkivonatot. Adja hozzá a "mail. Read" kifejezést a "user. Read" hatókörben a "DownstreamAPI" alatt. Ez határozza meg, hogy az alkalmazás mely hatókörökhöz (vagy engedélyekhez) kér hozzáférést.
 
@@ -199,7 +201,7 @@ A jóváhagyás megadása után navigáljon az "adat lekérése" lapra, és olva
 
 :::image type="content" source="./media/tutorial-blazor-server/final-app-2.png" alt-text="Képernyőkép a végleges alkalmazásról. Van egy fejléce, amely szerint a Hello Nicholas, és megjeleníti a Nicholas-hoz tartozó e-mailek listáját.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hívhat meg olyan webalkalmazásokat, amelyek a többrészes forgatókönyvek felhasználói számára jelentkeznek be:
 

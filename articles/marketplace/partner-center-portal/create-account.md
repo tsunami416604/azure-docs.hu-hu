@@ -1,19 +1,19 @@
 ---
-title: Kereskedelmi piactér-fiók létrehozása a partner Centerben
+title: Kereskedelmi Piactéri fiók létrehozása az Azure Marketplace-hez készült partner Centerben
 description: Ismerje meg, hogyan hozhat létre Microsoft kereskedelmi piactér-fiókot a partner Centerben.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: deb64d1c8268268061a8121151c00ccb55902274
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e15937797077e3fa46a12e726a3ce690c3979cbd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130459"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628781"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactér-fiók létrehozása a partner Centerben
 
@@ -65,9 +65,9 @@ A közzétevői profil tartalmazza a vállalat nevét és az MPN-AZONOSÍTÓját
     > [!IMPORTANT]
     > A feltételek elfogadásához engedélyezni kell, hogy a vállalat nevében járjon el.
 
-    A regisztrációt követően a kereskedelmi piactér – áttekintés lapot vesszük. A kereskedelmi piactér fiók megjelenik a bal oldali ablaktáblán. 
-    
-1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások**  >  **partner-beállítások**  >  **programok** elemet.
+    A regisztrációt követően a kereskedelmi piactér – áttekintés lapot vesszük. A kereskedelmi piactér fiók megjelenik a bal oldali ablaktáblán.
+
+1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e a listában, válassza a **Beállítások** (fogaskerék ikon) lehetőséget a jobb felső sarokban > **fejlesztői beállítások**  >  **programjaiban**.
 
 Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. Folytassa [új közzétevők hozzáadásával a kereskedelmi piactéren](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -91,19 +91,19 @@ A Microsoft Partner Network-fiók használatakor a vállalat munkahelyi e-mail-f
 > A Microsoft Partner Networkba való bejelentkezéshez rendszergazdai **fiókkal** vagy **globális rendszergazdai** szerepkörrel kell rendelkeznie.
 
 1. Jelentkezzen be a [partner Centerbe](https://partner.microsoft.com/dashboard/) a Microsoft Partner Network-fiókjával.
-1. Válassza a **Beállítások**  >  **partner-beállítások**  >  **programok** első  >  **lépéseket** .
+1. Válassza a **Beállítások**  >  **fejlesztői beállítások**  >  **programok** első  >  **lépéseket**.
 
    Microsoft Partner Network észleli az előfizetését, és megjeleníti a **közzétevői profil** ablaktáblát.
-   
+
 1. Adja meg a cég nevét és MPN-AZONOSÍTÓját.
 1. Olvassa el a [Microsoft kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560)használati feltételeit, majd válassza az **elfogadás és folytatás** lehetőséget a regisztráció befejezéséhez.
 
     > [!IMPORTANT]
     > A feltételek elfogadásához engedélyezni kell, hogy a vállalat nevében járjon el.
 
-    A regisztrációt követően a kereskedelmi piactér – áttekintés lapot vesszük. A kereskedelmi piactér fiók megjelenik a bal oldali ablaktáblán. 
-    
-1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások**  >  **partner-beállítások**  >  **programok** elemet.
+    A regisztrációt követően a kereskedelmi piactér – áttekintés lapot vesszük. A kereskedelmi piactér fiók megjelenik a bal oldali ablaktáblán.
+
+1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások**  >  **fejlesztői beállítások**  >  **programok** elemet.
 
 Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. Folytassa [új közzétevők hozzáadásával a kereskedelmi piactéren](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -112,9 +112,9 @@ Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. Folytas
 >[!NOTE]
 >Ha regisztrálni szeretne a kereskedelmi piactéren ugyanazzal a fiókkal, amelybe bejelentkezett, regisztrálnia kell a partner Centerben a vállalati fiókkal. Ha egy egyéni fiókkal regisztrált, a kereskedelmi piactér-regisztráció egy új fiókban fog megjelenni.
 >
->Az egyéni fiókok olyan fejlesztők számára készültek, akik saját maguk dolgoznak. A vállalati fiókok a szervezetekhez és a vállalkozásokhoz tartoznak. A vállalati fiókok hozzáférést biztosítanak az alkalmazások további funkciókkal való elküldéséhez. 
+>Az egyéni fiókok olyan fejlesztők számára készültek, akik saját maguk dolgoznak. A vállalati fiókok a szervezetekhez és a vállalkozásokhoz tartoznak. A vállalati fiókok hozzáférést biztosítanak az alkalmazások további funkciókkal való elküldéséhez.
 >
-> Annak megállapításához, hogy engedélyezte-e a fiók beállítását a vállalatnál, a regisztráció után további ellenőrzésre van szükség a vállalati fiókokról. Ez az ellenőrzés néhány napig is eltarthat néhány hétig, és gyakran tartalmaz telefonhívást a vállalatnak. Mindkét típusú fiók lehetővé teszi az alkalmazások, beépülő modulok és szolgáltatások beküldését. További információkért lásd a [fióktípus, a helyszínek és a díjak](/windows/uwp/publish/account-types-locations-and-fees)című témakört.
+> Annak megállapításához, hogy engedélyezte-e a fiók beállítását a vállalatnál, a regisztráció után további ellenőrzésre van szükség a vállalati fiókokról. Ez az ellenőrzés néhány napig is eltarthat néhány hétig, és gyakran tartalmaz telefonhívást a vállalatnak. Mindkét típusú fiók lehetővé teszi az alkalmazások, beépülő modulok és szolgáltatások beküldését. További információkért lásd a [fióktípus, a helyszínek és a díjak](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)című témakört.
 
 Ha regisztrálja a kereskedelmi piactér programját a fejlesztői programtal megegyező fiókkal, a partner Center bal oldali ablaktábláján láthatja az összes meglévő program-regisztrációt.
 
@@ -126,9 +126,9 @@ Ha regisztrálja a kereskedelmi piactér programját a fejlesztői programtal me
     >[!Important]
     > A feltételek elfogadásához engedélyezni kell, hogy a vállalat nevében járjon el.
 
-    A regisztrációt követően a kereskedelmi piactér – áttekintés lapot vesszük. A kereskedelmi piactér fiók megjelenik a bal oldali ablaktáblán. 
-    
-1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások**  >  **partner-beállítások**  >  **programok** elemet.
+    A regisztrációt követően a kereskedelmi piactér – áttekintés lapot vesszük. A kereskedelmi piactér fiók megjelenik a bal oldali ablaktáblán.
+
+1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások**  >  **fejlesztői beállítások**  >  **programok** elemet.
 
 Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. A kiadók hozzáadásával kapcsolatos segítségért folytassa az [új közzétevők hozzáadását a kereskedelmi piactéren](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -142,7 +142,7 @@ A közzétételi szerződés és a vállalati profil adatai áttérnek az új pa
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Új közzétevők hozzáadása a kereskedelmi piactér programhoz
 
-Egy szervezethez több közzétevő is társítva van egy kereskedelmi piactér-fiókkal. Egy meglévő felhasználó további közzétevőket adhat hozzá a partner központba való bejelentkezés után, ha kiválasztja a **Fiókbeállítások**  >  **közzétevők**  >  **Hozzáadás kiadó** elemet.
+Egy szervezethez több közzétevő is társítva van egy kereskedelmi piactér-fiókkal. Egy meglévő felhasználó további közzétevőket vehet fel a partnervállalatba való bejelentkezés után. Ehhez válassza a **Beállítások**  >  **fejlesztői beállítások**  >  **közzétevő**  >  **közzétevő hozzáadása** elemet.
 
 >[!NOTE]
 >Új közzétevő hozzáadása előtt tekintse át a meglévő közzétevők listáját a partner Centerbe való bejelentkezéssel és a **Fiókbeállítások**  >  **közzétevők** kiválasztásával.
@@ -161,7 +161,7 @@ Az azonos Azure Active Directory bérlő további felhasználói a következő l
 
 A folyamat befejezése után nyissa meg a kereskedelmi piactér fiókot, amely megjelenik a bal oldali panelen az újonnan létrehozott közzétevő kezeléséhez. Ha nem látja a kereskedelmi Piactéri fiókot, frissítse az oldalt. Az új közzétevő megjelenik a **közzétevők** listájában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mit az a Microsoft kereskedelmi piactér?](../overview.md)
 - [A kereskedelmi piactér-fiók kezelése a partner Centerben](manage-account.md)

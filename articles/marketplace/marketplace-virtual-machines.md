@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: a14ccb74e6f0ac2454255d609662706cb53ede31
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129592"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628288"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Virtuális gépek ajánlatának megtervezése
 
@@ -100,7 +100,7 @@ Az alábbi példa egy virtuálisgép-ajánlatot mutat be az Azure Marketplace-en
 
 A virtuális gép felderítését és üzembe helyezését egy adott ügyfélre korlátozhatja a rendszerkép és a díjszabás privát csomagként való közzétételével. A Private-csomagok lehetővé teszi, hogy exkluzív ajánlatokat hozzon létre a legközelebbi ügyfelei számára, és testreszabott szoftvereket és feltételeket nyújtson. A testreszabott feltételek lehetővé teszik különféle forgatókönyvek kiemelését, beleértve a speciális díjszabási és használati feltételeket, valamint a korlátozott kiadású szoftverek korai elérését. A privát csomagok lehetővé teszik, hogy meghatározott díjszabást vagy termékeket biztosítson az ügyfelek korlátozott készlete számára.
 
-További információkért lásd: a [kereskedelmi piactéren elérhető csomagok és díjszabások](plans-pricing.md) , valamint az [Azure Marketplace-en elérhető ajánlatok](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).
+További információ: a kereskedelmi Piactéri ajánlatok és [a Microsoft kereskedelmi piactéren elérhető privát ajánlatok](private-offers.md) [csomagjai és díjszabása](plans-pricing.md) .
 
 ## <a name="test-drives"></a>Tesztverziók
 
@@ -131,7 +131,7 @@ Ha az ajánlatot a partner Centerben hozza létre, megjelenik az **viszonteladá
 > [!NOTE]
 > Már elérhető a felhőalapú megoldás-szolgáltató (CSP) Partner Channel-beli aktiválása. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [**Cloud Solution Providers**](./cloud-solution-providers.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Virtuálisgép-ajánlat létrehozása az Azure Marketplace-en](azure-vm-create.md)
 - [Hozzon létre egy virtuális gépet jóváhagyott alap használatával](azure-vm-create-using-approved-base.md) , vagy [hozzon létre egy virtuális gépet saját rendszerkép használatával](azure-vm-create-using-own-image.md).

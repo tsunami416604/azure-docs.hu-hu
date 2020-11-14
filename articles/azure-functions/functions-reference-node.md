@@ -3,14 +3,14 @@ title: JavaScript fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a JavaScript használatával.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b9ffdec83fb613b7df0b5a3227ca66c55e54fe9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9b920dc8a31967c9d8e1f05a6101fdfcc7a1304e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422552"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628832"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -18,7 +18,7 @@ Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azur
 
 Express.js, Node.js vagy JavaScript-fejlesztőként, ha még nem ismeri a Azure Functionst, először olvassa el a következő cikkek egyikét:
 
-| Első lépések | Alapelvek| Interaktív tanulás |
+| Első lépések | Fogalmak| Interaktív tanulás |
 | -- | -- | -- | 
 | <ul><li>[Node.js függvény a Visual Studio Code használatával](./create-first-function-vs-code-node.md)</li><li>[Node.js függvény a Terminal/Command parancssorral](./create-first-function-cli-java.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
@@ -508,12 +508,20 @@ A következő táblázat az operációs rendszer által támogatott Node.js-verz
 | Függvények verziója | Csomópont verziója (Windows) | Csomópont verziója (Linux) |
 |---|---| --- |
 | 1. x | 6.11.2 (a futtatókörnyezet zárolta) | n/a |
-| 2. x  | ~ 8<br/>~ 10 (ajánlott)<br/>~ 12<sup>*</sup> | ~ 8 (ajánlott)<br/>~ 10  |
-| 3. x | ~ 10<br/>~ 12 (ajánlott)  | ~ 10<br/>~ 12 (ajánlott) |
+| 2. x  | `~8`<br/>`~10` ajánlott<br/>`~12` | `node|8`<br/>`node|10` ajánlott  |
+| 3. x | `~10`<br/>`~12` ajánlott<br/>`~14` előnézet  | `node|10`<br/>`node|12` ajánlott<br/>`node|14` előnézet |
 
-<sup>*</sup>A (z) ~ 12 csomópont jelenleg engedélyezett a functions futtatókörnyezet 2. x verziójában. A legjobb teljesítmény érdekében azonban javasoljuk, hogy a functions Runtime 3. x verzióját használja a ~ 12 csomóponttal. 
+A futtatókörnyezet által használt aktuális verziót `process.version` bármely függvényből megtekintheti.
 
-A futtatókörnyezet által használt aktuális verziót úgy tekintheti meg, ha ellenőrzi a fenti alkalmazás beállítását, vagy `process.version` bármilyen függvényből nyomtat. A verzió megcélzása az Azure-ban a WEBSITE_NODE_DEFAULT_VERSION [alkalmazás beállításának](functions-how-to-use-azure-function-app-settings.md#settings) egy támogatott LTS-verzióra való beállításával, például: `~10` .
+### <a name="setting-the-node-version"></a>A csomópont verziójának beállítása
+
+A Windows Function apps esetében az `WEBSITE_NODE_DEFAULT_VERSION` [alkalmazás beállítását](functions-how-to-use-azure-function-app-settings.md#settings) egy támogatott LTS-verzióra kell beállítania az Azure-ban `~12` .
+
+Linux Function-alkalmazások esetén futtassa a következő Azure CLI-parancsot a csomópont verziójának frissítéséhez.
+
+```bash
+az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+```
 
 ## <a name="dependency-management"></a>Függőségkezelés
 Ha a JavaScript-kódban a közösségi kódtárakat szeretné használni, ahogy az az alábbi példában is látható, gondoskodnia kell arról, hogy az Azure-ban minden függőség telepítve legyen az függvényalkalmazás.

@@ -8,12 +8,12 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329346"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626894"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -46,7 +46,7 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 Győződjön meg arról, hogy a 445-ös port nyitva van: Az SMB protokollhoz szükséges, hogy a 445-ös TCP port nyitva legyen; a csatlakozás nem sikerül, ha a 445-ös port blokkolva van. Megtekintheti, hogy a tűzfal blokkolja-e a 445-es portot a `Test-NetConnection` parancsmaggal. Ha többet szeretne megtudni a letiltott 445-portok használatáról, tekintse meg a Windows hibaelhárítási útmutatójának [1. oka: a 445-es port letiltott](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) szakaszát.
 
 ## <a name="using-an-azure-file-share-with-windows"></a>Az Azure-fájlmegosztások használata Windowson
-Az Azure-fájlmegosztások Windowson való használatához csatlakoztatnia kell azokat, azaz hozzájuk kell rendelnie egy meghajtó betűjelét vagy egy csatlakoztatási pont elérési útját, vagy pedig az [UNC-útvonalukon](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx) keresztül érheti el azokat. 
+Az Azure-fájlmegosztások Windowson való használatához csatlakoztatnia kell azokat, azaz hozzájuk kell rendelnie egy meghajtó betűjelét vagy egy csatlakoztatási pont elérési útját, vagy pedig az [UNC-útvonalukon](/windows/win32/fileio/naming-a-file) keresztül érheti el azokat. 
 
 Ez a cikk a Storage-fiók kulcsát használja a fájlmegosztás eléréséhez. A Storage-fiók kulcsa a Storage-fiókhoz tartozó rendszergazdai kulcs, beleértve a megosztott fájlmegosztás összes fájljának és mappájának rendszergazdai engedélyeit, valamint a Storage-fiókban található összes fájlmegosztást és egyéb tárolási erőforrást (Blobok, várólisták, táblák stb.). Ha ez nem elegendő a munkaterheléshez, [Azure file Sync](storage-sync-files-planning.md) lehet használni, vagy az [SMB protokollon alapuló identitás-alapú hitelesítést](storage-files-active-directory-overview.md)is használhat.
 
@@ -65,14 +65,14 @@ A szkript beszerzése:
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="például":::
 
-1. Kattintson a **Csatlakozás** gombra.
+1. Válassza a **Kapcsolódás** lehetőséget.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="például":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Képernyőfelvétel a fájlmegosztás összekapcsolási ikonjáról.":::
 
 1. Válassza ki a meghajtóbetűjelet, amelyhez a megosztást csatlakoztatni szeretné.
 1. Másolja a megadott parancsfájlt.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="például":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Példa szövege":::
 
 1. Illessze be a szkriptet arra a gazdagépre, amelyre a fájlmegosztást csatlakoztatni szeretné, majd futtassa.
 
@@ -196,11 +196,11 @@ Miután létrehozta a beállításkulcsot, indítsa újra a kiszolgálót az SMB
 ### <a name="smb-resources"></a>SMB-erőforrások
 - [Az SMB 1 használatának leállítása](https://blogs.technet.microsoft.com/filecab/2016/09/16/stop-using-smb1/)
 - [SMB 1 termék adategyeztető központ](https://blogs.technet.microsoft.com/filecab/2017/06/01/smb1-product-clearinghouse/)
-- [Az SMB 1 felfedezése a környezetben DSCEA használatával](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
-- [Az SMB 1 letiltása csoportházirend használatával](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
+- [Az SMB 1 felfedezése a környezetben DSCEA használatával](/archive/blogs/ralphkyttle/discover-smb1-in-your-environment-with-dscea)
+- [Az SMB 1 letiltása csoportházirend használatával](/archive/blogs/secguide/disabling-smbv1-through-group-policy)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 - [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
-- [Gyakori kérdések](../storage-files-faq.md)
-- [Hibaelhárítás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)      
+- [Gyakori kérdések](./storage-files-faq.md)
+- [Hibaelhárítás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)

@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: bb408c762c33e4d146a2f0ef36f32e525b3859bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc6433170144635ad05033d110f448cf314179b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758268"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628849"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Áttekintés – helyszíni Active Directory tartományi szolgáltatások hitelesítés SMB-en keresztül az Azure-fájlmegosztás esetében
 
-[Azure Files](storage-files-introduction.md)   támogatja a kiszolgálói üzenetblokk (SMB) szolgáltatáson keresztüli identitás-alapú hitelesítést a következő két típusú tartományi szolgáltatáson keresztül: helyszíni Active Directory tartományi szolgáltatások (AD DS) és Azure Active Directory Domain Services (Azure AD DS). Javasoljuk, hogy tekintse át a [működéséről szóló szakaszt](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) , és válassza ki a megfelelő tartományi szolgáltatást a hitelesítéshez. A beállítás a választott tartományi szolgáltatástól függően eltérő. Ezek a cikksorozatok a helyszíni AD DS engedélyezésére és konfigurálására összpontosítanak az Azure-fájlmegosztás segítségével történő hitelesítéshez.
+[Azure Files](storage-files-introduction.md)   támogatja a kiszolgálói üzenetblokk (SMB) szolgáltatáson keresztüli identitás-alapú hitelesítést a következő két típusú tartományi szolgáltatáson keresztül: helyszíni Active Directory tartományi szolgáltatások (AD DS) és Azure Active Directory Domain Services (Azure AD DS). Javasoljuk, hogy tekintse át a [működéséről szóló szakaszt](./storage-files-active-directory-overview.md#how-it-works) , és válassza ki a megfelelő tartományi szolgáltatást a hitelesítéshez. A beállítás a választott tartományi szolgáltatástól függően eltérő. Ezek a cikksorozatok a helyszíni AD DS engedélyezésére és konfigurálására összpontosítanak az Azure-fájlmegosztás segítségével történő hitelesítéshez.
 
 Ha még nem ismeri az Azure-fájlmegosztás újdonságait, javasoljuk, hogy olvassa el a [tervezési útmutatót](storage-files-planning.md) , mielőtt elolvassa a következő cikksorozatot.
 
@@ -24,7 +24,7 @@ Ha még nem ismeri az Azure-fájlmegosztás újdonságait, javasoljuk, hogy olva
 
 - AD DS Azure Files helyszíni AD DS hitelesítéshez használt identitásokat szinkronizálni kell az Azure AD-vel. A jelszó-kivonat szinkronizálása nem kötelező. 
 - A Azure File Sync által felügyelt Azure-fájlmegosztás használatát támogatja.
-- Támogatja a Kerberos-hitelesítést az AD-vel az RC4-HMAC és [AES 256 titkosítással](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). Az AES 128 Kerberos-titkosítás még nem támogatott.
+- Támogatja a Kerberos-hitelesítést az AD-vel az RC4-HMAC és [AES 256 titkosítással](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). Az AES 128 Kerberos-titkosítás még nem támogatott.
 - Támogatja az egyszeri bejelentkezési élményt.
 - Csak a Windows 7 vagy Windows Server 2008 R2 rendszernél újabb verziójú operációs rendszert futtató ügyfelek esetében támogatott.
 - Csak azon AD-erdőben támogatott, amelyhez a Storage-fiók regisztrálva van. Alapértelmezés szerint csak egyetlen erdő AD DS hitelesítő adataival érheti el az Azure-fájlmegosztást. Ha egy másik erdőből kell hozzáférnie az Azure-fájlmegosztás számára, győződjön meg arról, hogy a megfelelő erdőszintű megbízhatósági kapcsolat van konfigurálva. a részletekért tekintse meg a [gyakori kérdéseket](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) .
@@ -42,11 +42,11 @@ Ha engedélyezi a AD DS az Azure-fájlmegosztás SMB protokollon keresztül tör
 
 Az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése előtt győződjön meg arról, hogy végrehajtotta a következő előfeltételeket: 
 
-- Válassza ki vagy hozza létre [AD DS-környezetét](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) , és [szinkronizálja azt az Azure AD](../../active-directory/hybrid/how-to-connect-install-roadmap.md) -be Azure ad Connect használatával. 
+- Válassza ki vagy hozza létre [AD DS-környezetét](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) , és [szinkronizálja azt az Azure AD](../../active-directory/hybrid/how-to-connect-install-roadmap.md) -be Azure ad Connect használatával. 
 
     A szolgáltatást egy új vagy meglévő helyszíni AD DS környezetben is engedélyezheti. A hozzáféréshez használt identitásokat szinkronizálni kell az Azure AD-vel. Az Azure AD-bérlőt és az elérni kívánt fájlmegosztást ugyanahhoz az előfizetéshez kell társítani.
 
-- Tartomány – helyszíni vagy Azure-beli virtuális gép csatlakoztatása helyszíni AD DShoz. További információ a tartományhoz való csatlakozásról: [számítógép csatlakoztatása tartományhoz](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain).
+- Tartomány – helyszíni vagy Azure-beli virtuális gép csatlakoztatása helyszíni AD DShoz. További információ a tartományhoz való csatlakozásról: [számítógép csatlakoztatása tartományhoz](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain).
 
     Ha a számítógép nincs tartományhoz csatlakoztatva egy AD DShoz, akkor továbbra is használhatja az AD hitelesítő adatokat a hitelesítéshez, ha a számítógép az AD-tartományvezérlővel rendelkezik.
 
@@ -55,7 +55,7 @@ Az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése előtt győző
     Győződjön meg arról, hogy a fájlmegosztást tartalmazó Storage-fiók még nincs konfigurálva az Azure AD DS-hitelesítéshez. Ha Azure Files Azure AD DS hitelesítés engedélyezve van a Storage-fiókon, akkor azt a helyszíni AD DS használata előtt le kell tiltani. Ez azt jelenti, hogy az Azure AD DS-környezetben konfigurált meglévő ACL-eket újra kell konfigurálni a megfelelő engedélyek kényszerítéséhez.
 
 
-    Ha a Azure Fileshoz való csatlakozással kapcsolatos problémákat tapasztal, tekintse meg [a hibaelhárítási eszközt, amelyet Azure Files csatlakoztatási hibákhoz tettünk közzé a Windows](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)rendszeren. Az 445-as port blokkolása esetén [útmutatást](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) is biztosítunk a forgatókönyvek megoldásához. 
+    Ha a Azure Fileshoz való csatlakozással kapcsolatos problémákat tapasztal, tekintse meg [a hibaelhárítási eszközt, amelyet Azure Files csatlakoztatási hibákhoz tettünk közzé a Windows](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)rendszeren. Az 445-as port blokkolása esetén [útmutatást](./storage-files-faq.md#on-premises-access) is biztosítunk a forgatókönyvek megoldásához. 
 
 
 - Az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése és konfigurálása előtt végezze el a megfelelő hálózati konfigurációt. További információért tekintse meg [Azure Files hálózatkezelési megfontolásokat](storage-files-networking-overview.md) .
@@ -66,7 +66,7 @@ Azure Files a hitelesítés az AD DS szolgáltatással elérhető az [összes Az
 
 ## <a name="overview"></a>Áttekintés
 
-Ha azt tervezi, hogy engedélyezi a fájlmegosztás hálózati konfigurációját, javasoljuk, hogy olvassa el a [hálózatkezelési megfontolásokat](https://docs.microsoft.com/azure/storage/files/storage-files-networking-overview) ismertető cikket, és a AD DS hitelesítés engedélyezése előtt fejezze be a kapcsolódó konfigurációt.
+Ha azt tervezi, hogy engedélyezi a fájlmegosztás hálózati konfigurációját, javasoljuk, hogy olvassa el a [hálózatkezelési megfontolásokat](./storage-files-networking-overview.md) ismertető cikket, és a AD DS hitelesítés engedélyezése előtt fejezze be a kapcsolódó konfigurációt.
 
 Az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése lehetővé teszi az Azure-fájlmegosztás hitelesítését a helyszíni AD DS hitelesítő adataival. Továbbá lehetővé teszi az engedélyek jobb kezelését a részletes hozzáférés-vezérlés engedélyezéséhez. Ehhez szükség van a helyszíni AD DS és az Azure AD közötti, AD-kapcsolaton keresztüli identitások szinkronizálására. A megosztási szint hozzáférését az Azure AD-be szinkronizált identitásokkal szabályozhatja, miközben a fájl-és megosztási szinthez való hozzáférést a helyszíni AD DS hitelesítő adataival kezelheti.
 
@@ -86,9 +86,9 @@ Az alábbi ábra a teljes munkafolyamatot mutatja be, amely lehetővé teszi az 
 
 ![Fájlok AD munkafolyamat-diagramja](media/storage-files-active-directory-domain-services-enable/diagram-files-ad.png)
 
-Az Azure-fájlmegosztás eléréséhez használt identitásokat szinkronizálni kell az Azure AD-vel, hogy az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) modellje segítségével kényszerítse a megosztási szintű fájlok engedélyeit. A meglévő fájlkiszolgálók által átvitt fájlok/könyvtárak [Windows-stílusú DACL-listái](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) megmaradnak és érvényben lesznek. Ez zökkenőmentes integrációt biztosít a vállalati AD DS környezettel. Amikor az Azure-fájlmegosztás használatával cseréli le a helyszíni fájlkiszolgálók szolgáltatást, a meglévő felhasználók az Azure-fájlmegosztást az aktuális ügyfelektől egyszeri bejelentkezéssel érhetik el, a használatban lévő hitelesítő adatok módosítása nélkül.  
+Az Azure-fájlmegosztás eléréséhez használt identitásokat szinkronizálni kell az Azure AD-vel, hogy az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) modellje segítségével kényszerítse a megosztási szintű fájlok engedélyeit. A meglévő fájlkiszolgálók által átvitt fájlok/könyvtárak [Windows-stílusú DACL-listái](/previous-versions/technet-magazine/cc161041(v=msdn.10)) megmaradnak és érvényben lesznek. Ez zökkenőmentes integrációt biztosít a vállalati AD DS környezettel. Amikor az Azure-fájlmegosztás használatával cseréli le a helyszíni fájlkiszolgálók szolgáltatást, a meglévő felhasználók az Azure-fájlmegosztást az aktuális ügyfelektől egyszeri bejelentkezéssel érhetik el, a használatban lévő hitelesítő adatok módosítása nélkül.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha engedélyezni szeretné a helyszíni AD DS hitelesítést az Azure-fájlmegosztás számára, folytassa a következő cikkel:
 

@@ -4,10 +4,10 @@ description: Útmutató a meglévő Azure Service Bus standard névterek prémiu
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "85340746"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Meglévő Azure Service Bus standard névterek migrálása a prémium szintre
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan telepítheti át a meglévő standard szintű névte
 
 Néhány Megjegyzés:
 
-- Az áttelepítés célja, hogy megtörténjen, ami azt jelenti, hogy a meglévő küldő és fogadó alkalmazások **nem igénylik a kód vagy a konfiguráció módosítását** . A meglévő kapcsolódási sztring automatikusan az új prémium névtérre mutat.
+- Az áttelepítés célja, hogy megtörténjen, ami azt jelenti, hogy a meglévő küldő és fogadó alkalmazások **nem igénylik a kód vagy a konfiguráció módosítását**. A meglévő kapcsolódási sztring automatikusan az új prémium névtérre mutat.
 - A **prémium** névtérnek **nem lehetnek entitásai** az áttelepítés sikerességéhez.
 - A standard névtérben lévő összes **entitást** az áttelepítési folyamat során a prémium névtérre **másolja** a rendszer.
 - A Migrálás a prémium **szinten 1 000 entitást támogat az üzenetkezelési egységenként** . Annak megállapításához, hogy hány üzenetkezelési egységre van szüksége, kezdje az aktuális standard névtérben található entitások számával.
@@ -92,11 +92,11 @@ A Azure Portal használatával végzett Migrálás ugyanazzal a logikai folyamat
 1. A bal oldali ablaktábla **navigációs** menüjében válassza az **áttelepítés prémiumra** lehetőséget. Kattintson az **első lépések** gombra a következő lapra való továbblépéshez.
     ![Áttelepítési Kezdőlap][]
 
-1. Fejezze be a **telepítést** .
+1. Fejezze be a **telepítést**.
    ![Telepítési névtér][]
    1. Hozza létre és rendelje hozzá a prémium névteret a meglévő standard névtér áttelepítéséhez.
         ![Névtér beállítása – prémium szintű névtér létrehozása][]
-   1. Válassza ki az **áttelepítés utáni nevet** . Ezt a nevet fogja használni a standard névtér eléréséhez az áttelepítés befejeződése után.
+   1. Válassza ki az **áttelepítés utáni nevet**. Ezt a nevet fogja használni a standard névtér eléréséhez az áttelepítés befejeződése után.
         ![Névtér beállítása – a kivételezés utáni áttelepítés neve][]
    1. A folytatáshoz válassza a **Next (tovább** ) lehetőséget.
 1. Entitások szinkronizálása a standard és a prémium szintű névterek között.
@@ -208,7 +208,7 @@ Ha azonban egy tervezett karbantartási/kitakarítási időszakban is át tud t�
     >
     > Az áttelepítés befejezése után a fogadó alkalmazások le lesznek választva a standard névtérből, és automatikusan csatlakoznak a prémium szintű névtérhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információk a [standard és a prémium szintű üzenetkezelés közötti különbségekről](./service-bus-premium-messaging.md).
 * Ismerje meg a [Service Bus Premium magas rendelkezésre állási és Geo-Disaster helyreállítási szempontjait](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).

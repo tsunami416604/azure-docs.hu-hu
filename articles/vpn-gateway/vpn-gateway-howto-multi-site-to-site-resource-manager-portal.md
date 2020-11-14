@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
 ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92890148"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>További S2S-kapcsolatok hozzáadása egy VNet: Azure Portal
@@ -47,7 +47,7 @@ Ellenőrizze a következő elemeket:
 1. A **kapcsolatok** lapon válassza a **+ Hozzáadás** lehetőséget.
 1. Ekkor megnyílik a **kapcsolatok hozzáadása** lap.
 
-   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="VPN Gateway-kapcsolatok":::
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="A kapcsolatok hozzáadása lap":::
 1. A **kapcsolatok hozzáadása** lapon töltse ki a következő mezőket:
 
    * **Név:** Az a név, amelyet a helyhez szeretne adni, amelyhez a kapcsolódást hozza létre.
@@ -58,7 +58,7 @@ Ellenőrizze a következő elemeket:
 1. A **helyi hálózati átjáró** mezőben válassza ki **_a helyi hálózati átjáró_ ( *_) lehetőséget. Ekkor megnyílik a* helyi hálózati átjáró kiválasztása** lap.
 1. Válassza az **+ új létrehozása** lehetőséget a **helyi hálózati átjáró létrehozása** lap megnyitásához.
 
-   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="VPN Gateway-kapcsolatok":::
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="Helyi hálózati átjáró létrehozása lap":::
 1. A **helyi hálózati átjáró létrehozása** lapon töltse ki a következő mezőket:
 
    * **Név:** A helyi hálózati átjáró erőforrásához adni kívánt név.
@@ -80,6 +80,6 @@ Ellenőrizze a következő elemeket:
 
 [!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információ: [Virtual Machines learning paths](/learn/paths/deploy-a-website-with-azure-virtual-machines/).

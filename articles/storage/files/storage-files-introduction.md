@@ -7,15 +7,15 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2b5fa5211ad8d4de01f2b63e8267e297e13c4485
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9ce2044f3ee0bff3335f46d8cf712e64394af2d3
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91570018"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628866"
 ---
 # <a name="what-is-azure-files"></a>Mi az Azure Files?
-A Azure Files teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) vagy a [hálózati fájlrendszer (NFS) protokollon](https://en.wikipedia.org/wiki/Network_File_System)keresztül érhető el. Az Azure-fájlmegosztást a felhő vagy a helyszíni üzemelő példányok párhuzamosan is csatlakoztathatja. Azure Files SMB-fájlmegosztás elérhető Windows, Linux és macOS rendszerű ügyfelekről. Azure Files NFS-fájlmegosztás elérhető Linux vagy macOS rendszerű ügyfelekről. Emellett Azure Files az SMB-fájlmegosztás gyorsítótárazása a Windows-kiszolgálókon Azure File Sync a gyors elérés érdekében, ahol az adatforgalom használatban van.
+A Azure Files teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokoll](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) vagy a [hálózati fájlrendszer (NFS) protokollon](https://en.wikipedia.org/wiki/Network_File_System)keresztül érhető el. Az Azure-fájlmegosztást a felhő vagy a helyszíni üzemelő példányok párhuzamosan is csatlakoztathatja. Azure Files SMB-fájlmegosztás elérhető Windows, Linux és macOS rendszerű ügyfelekről. Azure Files NFS-fájlmegosztás elérhető Linux vagy macOS rendszerű ügyfelekről. Emellett Azure Files az SMB-fájlmegosztás gyorsítótárazása a Windows-kiszolgálókon Azure File Sync a gyors elérés érdekében, ahol az adatforgalom használatban van.
 
 ## <a name="videos"></a>Videók
 | Azure File Sync bemutatása | Azure Files szinkronizálással (Ignite 2019)  |
@@ -29,23 +29,23 @@ A Azure Files teljes körűen felügyelt fájlmegosztást biztosít a felhőben,
 ## <a name="why-azure-files-is-useful"></a>Miért hasznos az Azure Files?
 Az Azure-fájlmegosztások az alábbiakra használhatók:
 
-* **Helyszíni fájlkiszolgálók lecserélése vagy kiegészítése**:  
+* **Helyszíni fájlkiszolgálók lecserélése vagy kiegészítése** :  
     Az Azure Files használatával teljes mértékben lecserélheti vagy kiegészítheti a hagyományos helyszíni fájlkiszolgálókat vagy NAS-eszközöket. Az Azure-fájlmegosztások közvetlenül csatlakoztathatók a népszerű operációs rendszerekhez (például Windows, macOS és Linux) a földrajzi helyüktől függetlenül. Az Azure file SMB-fájlmegosztás Azure File Sync is replikálható a Windows-kiszolgálókkal a helyszíni vagy a felhőben, a teljesítményre és az elosztott gyorsítótárazásra a használatban lévő adat alapján. Az [Azure Files ad-hitelesítés](storage-files-active-directory-overview.md)legújabb kiadásával az Azure file SMB-fájlmegosztás továbbra is képes együttműködni a helyszíni Active Directoryval a hozzáférés-vezérléshez. 
 
-* **A "lift and SHIFT" alkalmazások**:  
+* **A "lift and SHIFT" alkalmazások** :  
     Az Azure Files segítségével könnyedén „átemelhetők” azok az alkalmazások a felhőbe, amelyekhez fájlmegosztás szükséges a fájlalkalmazások és a felhasználók adatainak tárolásához. Az Azure Files az alkalmazást és az adatokat egyaránt az Azure-ba áthelyező „klasszikus”, és az adatokat az Azure Filesba áthelyező és az alkalmazást továbbra is a helyszíni környezetben futtató „hibrid” átemelési forgatókönyvet is támogatja. 
 
-* A **felhőalapú fejlesztés egyszerűsítése**:  
+* A **felhőalapú fejlesztés egyszerűsítése** :  
     Az Azure Files emellett számos különféle módon segítheti az új felhőalapú fejlesztési projektek egyszerűbbé tételét. Például:
-    * **Megosztott alkalmazás beállításai**:  
+    * **Megosztott alkalmazás beállításai** :  
         Az elosztott alkalmazások egyik jellegzetessége, hogy egy központi helyen található a konfigurációs fájljuk, ahol számos alkalmazáspéldány hozzáférhet. Az alkalmazáspéldányok a konfigurációjukat a Fájl REST API-val tudják betölteni, és a felhasználók az SMB-megosztások helyi csatlakoztatásával érhetik el őket igény szerint.
 
-    * **Diagnosztikai megosztás**:  
+    * **Diagnosztikai megosztás** :  
         Az Azure-fájlmegosztások kényelmes helyet biztosítanak a felhőalkalmazások számára a naplók, a mérőszámok és az összeomlási memóriaképek írásához. Az alkalmazáspéldányok a Fájl REST API-val írhatják a naplókat, a fejlesztők pedig a fájlmegosztás a helyi gépükön való csatlakoztatásával érhetik el őket. Ez nagy rugalmasságot biztosít, mivel a fejlesztők anélkül használhatják ki a felhő előnyeit, hogy le kellene mondaniuk az általuk használt és kedvelt eszközökről.
 
-    * Fejlesztés **/tesztelés/hibakeresés**:  
+    * Fejlesztés **/tesztelés/hibakeresés** :  
         Amikor a fejlesztők vagy rendszergazdák a felhőben végeznek munkálatokat a virtuális gépen, gyakran van szükségük ugyanazokra az eszközökre vagy segédprogramokra. Az ilyen segédprogramok és eszközök az egyes virtuális gépekre másolása időigényes feladat. Az Azure-fájlmegosztások a virtuális gépekre történő helyi csatlakoztatásával a fejlesztők és a rendszergazdák gyorsan hozzáférhetnek eszközeikhez és segédprogramjaikhoz másolás nélkül.
-* **Tárolókra bontás**:  
+* **Tárolókra bontás** :  
     Az Azure-fájlmegosztás az állapot-nyilvántartó tárolók állandó köteteiként használható. A tárolók a "Build Once, bárhol" funkciót biztosítják, amelyek lehetővé teszik a fejlesztők számára az innováció felgyorsítását. Ahhoz, hogy a tárolók minden indításkor hozzáférjenek a nyers adatszolgáltatáshoz, egy megosztott fájlrendszerre van szükség ahhoz, hogy a tárolók hozzáférhessenek a fájlrendszerhez, függetlenül attól, hogy melyik példányt futnak.
 
 ## <a name="key-benefits"></a>Főbb előnyök
@@ -53,7 +53,7 @@ Az Azure-fájlmegosztások az alábbiakra használhatók:
 * **Teljes mértékben felügyelt**. Az Azure-fájlmegosztások anélkül is létrehozhatók, hogy felügyelnie kellene a hardvereket vagy az operációs rendszert. Ez azt jelenti, hogy nincs szükség a kiszolgáló operációs rendszerének kritikus fontosságú frissítésekkel történő javítására vagy a hibás merevlemezek cseréjére.
 * **Parancsfájlok és eszközök**. A PowerShell-parancsmagok és az Azure CLI használatával az Azure-fájlmegosztásokat az Azure-alkalmazások felügyeletének részeként hozhatja létre, csatlakoztathatja és kezelheti. Az Azure-fájlmegosztásokat az Azure Portalról és az Azure Storage Explorerrel hozhatja létre és kezelheti. 
 * **Rugalmasság**. Az Azure Files szolgáltatást a kezdetektől úgy hozták létre, hogy folyamatosan rendelkezésre álljon. Ha lecseréli helyszíni fájlmegosztásait az Azure Filesra, akkor többé nem kell helyi áramkimaradásokkal vagy hálózati hibákkal megküzdenie. 
-* **Ismerős programozhatóság**. Az Azure-ban futó alkalmazások a [fájlrendszer adatátviteli API-jain](https://msdn.microsoft.com/library/system.io.file.aspx) keresztül férhetnek hozzá a megosztás adataihoz. A fejlesztők épp ezért meglévő kódjaik és képességeik felhasználásával áttelepíthetik az alkalmazásokat. A rendszer átviteli API-jai mellett az [Azure Storage ügyfélkódtárait](https://msdn.microsoft.com/library/azure/dn261237.aspx) vagy az [Azure Storage REST API-ját](/rest/api/storageservices/file-service-rest-api) is használhatja.
+* **Ismerős programozhatóság**. Az Azure-ban futó alkalmazások a [fájlrendszer adatátviteli API-jain](/dotnet/api/system.io.file) keresztül férhetnek hozzá a megosztás adataihoz. A fejlesztők épp ezért meglévő kódjaik és képességeik felhasználásával áttelepíthetik az alkalmazásokat. A rendszer átviteli API-jai mellett az [Azure Storage ügyfélkódtárait](/previous-versions/azure/dn261237(v=azure.100)) vagy az [Azure Storage REST API-ját](/rest/api/storageservices/file-service-rest-api) is használhatja.
 
 ## <a name="next-steps"></a>Következő lépések
 * [További információ a rendelkezésre álló fájlmegosztási protokollokról](storage-files-compare-protocols.md)
