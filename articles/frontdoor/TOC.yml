@@ -36,6 +36,10 @@
       href: front-door-quickstart-template-samples.md
 - name: Alapelvek
   items:
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Háttérrendszerek és háttérkészletek
       href: front-door-backend-pool.md
     - name: Gyorsítótárazás a bejárati ajtóval

@@ -46,7 +46,7 @@
     - name: 13 – Virtuális gépek monitorozása
       href: tutorial-monitor.md
     - name: 14 – Virtuális gépek biztonságának kezelése
-      href: tutorial-azure-security.md
+      href: ../tutorial-azure-security.md
     - name: 15 – SQL-\IIS-\.NET-verem telepítése
       href: tutorial-iis-sql.md
     - name: 16 – Webkiszolgáló védelme SSL-lel
@@ -648,8 +648,16 @@
         - name: Operációsrendszer-lemez cseréje
           href: os-disk-swap.md
         - name: Virtuális gép címkézése
-          href: tag.md
-        - name: Időszinkronizálás
+          items:
+            - name: Portál
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: parancssori felület
+              href: ../tag-cli.md
+            - name: Sablon
+              href: ../tag-template.md
+            - name: Időszinkronizálás
           href: time-sync.md
         - name: Szkriptek futtatása virtuális gépeken
           href: run-scripts-in-vm.md

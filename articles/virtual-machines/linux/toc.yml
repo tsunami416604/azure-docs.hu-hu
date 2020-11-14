@@ -45,7 +45,7 @@
     - name: 13 – Virtuális gépek monitorozása
       href: tutorial-monitor.md
     - name: 14 – Virtuális gépek biztonságának kezelése
-      href: tutorial-azure-security.md
+      href: ../tutorial-azure-security.md
     - name: 15a – Buildelés a Jenkins használatával
       href: /azure/developer/jenkins/pipeline-with-github-and-docker
     - name: 15b – A Jenkins integrálása az Azure DevOpsszal
@@ -687,7 +687,15 @@
         - name: Időszinkronizálás
           href: time-sync.md
         - name: Virtuális gép címkézése
-          href: tag.md
+          items:
+            - name: parancssori felület
+              href: ../tag-cli.md
+            - name: Portál
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: Sablon
+              href: ../tag-template.md
         - name: Szkriptek futtatása virtuális gépeken
           href: run-scripts-in-vm.md
           items:

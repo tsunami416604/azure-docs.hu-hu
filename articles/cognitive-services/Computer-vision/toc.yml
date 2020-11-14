@@ -85,12 +85,14 @@
       href: Tutorials/storage-lab-tutorial.md
 - name: Alapelvek
   items:
-    - name: Tartalomcímkék
-      href: concept-tagging-images.md
+    - name: Optikai karakterfelismerés (OCR)
+      href: concept-recognizing-text.md
     - name: Objektumészlelés
       href: concept-object-detection.md
     - name: Márkaészlelés
       href: concept-brand-detection.md
+    - name: Tartalomcímkék
+      href: concept-tagging-images.md
     - name: Képek kategorizálása
       href: concept-categorizing-images.md
     - name: Képleírások
@@ -105,8 +107,6 @@
       href: concept-detecting-color-schemes.md
     - name: Intelligens körbevágású miniatűrök
       href: concept-generating-thumbnails.md
-    - name: Optikai karakterfelismerés (OCR)
-      href: concept-recognizing-text.md
     - name: Felnőtteknek szóló tartalom észlelése
       href: concept-detecting-adult-content.md
 - name: Felelősségteljes MI

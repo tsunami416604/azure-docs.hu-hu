@@ -122,6 +122,10 @@
           href: manage/azure-plan-subscription-transfer-partners.md
         - name: Első lépések a nagyvállalati szerződéses Azure Portalon
           href: manage/ea-portal-get-started.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
 - name: Útmutatók
   items:
     - name: Azure Cost Management + Billing konfigurálása
