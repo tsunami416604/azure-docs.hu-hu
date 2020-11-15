@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 3618ba28403882ee1f949a2bbc97e586674b3772
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3f3009799889bd6b118f586676e22338d821d37c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317522"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635289"
 ---
 # <a name="using-sql-scripts-in-azure-synapse-studio-preview"></a>SQL-parancsfájlok használata az Azure szinapszis Studióban (előzetes verzió)
 
@@ -74,6 +74,18 @@ Az elérhető kézmozdulatok megismeréséhez kattintson a jobb gombbal az SQL-a
  
 ![új parancsfájl-adatbázis](media/author-sql-script/new-script-database.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="create-folders-and-move-sql-scripts-into-a-folder"></a>Mappák létrehozása és SQL-parancsfájlok áthelyezése egy mappába
+
+Az SQL-parancsfájlok fejlesztése szakaszban található Műveletek menüben válassza az "új mappa" lehetőséget a "műveletek" menüben az SQL-parancsfájlok fejlesztése területen. És írja be az új mappa nevét az előugró ablakban. 
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/new-sql-script-create-folder.png)
+
+Ha egy SQL-parancsfájlt szeretne áthelyezni egy mappába, válassza ki az SQL-parancsfájlt, és válassza a "áthelyezés" lehetőséget a Műveletek menüből. Ezután keresse meg a célmappát az új ablakban, és helyezze át az SQL-parancsfájlt a kiválasztott mappába. Azt is megteheti, hogy gyorsan húzza az SQL-parancsfájlt, és eldobja egy mappába.  
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/new-sql-script-move-folder.png)
+
+## <a name="next-steps"></a>További lépések
 
 Az SQL-parancsfájlok létrehozásával kapcsolatos további információkért lásd: az [Azure szinapszis Analytics](https://docs.microsoft.com/azure/synapse-analytics).

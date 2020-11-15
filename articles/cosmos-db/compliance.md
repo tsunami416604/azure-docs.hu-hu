@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: c7a013e07ada0ba88b20598c23f706eb5ee71d49
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 512accd274da35c1f747f2ef185f0b3eefa4756d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073063"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636792"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Megfelelőség az Azure Cosmos DB-ben 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -65,7 +65,7 @@ A következő táblázat felsorolja a Azure Government Azure Cosmos DB által t�
 | SOC 1, 2, 3 | | |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure megfelelőségi tanúsítványokkal kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
@@ -79,4 +79,4 @@ Az Azure megfelelőségi tanúsítványokkal kapcsolatos további tudnivalókér
 
 * A FedRAMP vonatkozó megfelelőségi információkért lásd: [Azure-szolgáltatások a FedRAMP és a DoD CC SRG naplózási hatóköre](../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
 
-* A DoD megfelelőségi információit lásd: a [DoD megfelelőségi ajánlatai](/microsoft-365/compliance/offering-dod-disa-l2-l4-l5?view=o365-worldwide).
+* A DoD megfelelőségi információit lásd: a [DoD megfelelőségi ajánlatai](/microsoft-365/compliance/offering-dod-disa-l2-l4-l5).

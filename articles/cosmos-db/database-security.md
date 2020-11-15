@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5b2457018daf716052b81a8b99c21e3248f185eb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 19b4c8466e88159839ce1f43a5ba282b1bb3ec9e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096784"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636926"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Biztonság az Azure Cosmos DB-ben – Áttekintés
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -63,7 +63,7 @@ Ismerkedjen meg minden részlettel.
 |Hálózati biztonság|Az adatbázis biztonságossá tételéhez az IP-tűzfal használata az első védelmi réteg. Azure Cosmos DB támogatja a házirend által vezérelt IP-alapú hozzáférés-vezérlést a bejövő tűzfalak támogatásához. Az IP-alapú hozzáférés-vezérlések a hagyományos adatbázis-rendszerek által használt tűzfalszabályok hasonlóak, de kibővülnek, így az Azure Cosmos adatbázis-fiók csak jóváhagyott gépekből vagy felhőalapú szolgáltatásokból érhető el. További információt [Azure Cosmos db tűzfal támogatási](how-to-configure-firewall.md) cikkében talál.<br><br>Azure Cosmos DB lehetővé teszi egy adott IP-cím (168.61.48.0), egy IP-címtartomány (168.61.48.0/8), valamint az IP-címek és tartományok kombinációjának engedélyezését. <br><br>Azure Cosmos DB letiltja az ezen az engedélyezési listán kívüli gépekről származó összes kérelmet. A jóváhagyott gépektől és a Cloud servicestől érkező kéréseket a hitelesítési folyamatnak kell elvégeznie, hogy hozzáférés-vezérlést kapjon az erőforrásokhoz.<br><br> A [virtuális hálózati szolgáltatás címkéi](../virtual-network/service-tags-overview.md) a hálózati elkülönítés eléréséhez és a Azure Cosmos db-erőforrások általános internetről való ellátásához használhatók. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például AzureCosmosDB) megadásával a szabály megfelelő forrás vagy cél mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.|
 |Engedélyezés|A Azure Cosmos DB kivonat-alapú üzenethitelesítő kódot (HMAC) használ a hitelesítéshez. <br><br>Minden kérelmet a titkos fiók kulcsa alapján kell kivonattal ellátni, és a rendszer a következő Base-64 kódolású kivonatot küldi el a Azure Cosmos DB összes hívásával. A kérelem érvényesítéséhez a Azure Cosmos DB szolgáltatás a helyes titkos kulcsot és tulajdonságokat használja a kivonat létrehozásához, majd összehasonlítja az értéket a kérelemben szereplővel. Ha a két érték egyezik, a művelet sikeresen engedélyezve lesz, és a rendszer feldolgozza a kérést, ellenkező esetben a rendszer elutasítja a kérelmet.<br><br>Használhat egy [elsődleges kulcsot](#primary-keys)vagy egy [erőforrás-tokent](secure-access-to-data.md#resource-tokens) , amely lehetővé teszi a részletes hozzáférést egy erőforráshoz, például egy dokumentumhoz.<br><br>További információ a [Azure Cosmos db erőforrásaihoz való hozzáférés biztonságossá tételéről](secure-access-to-data.md).|
 |Felhasználók és engedélyek|A fiók elsődleges kulcsának használatával létrehozhat egy adatbázison felhasználói erőforrásokat és engedélyek erőforrásait. Az erőforrás-token egy adatbázisban lévő engedélyhez van társítva, és meghatározza, hogy a felhasználó rendelkezik-e hozzáféréssel (írható-olvasható, írásvédett vagy nincs hozzáférés) az adatbázisban lévő alkalmazás-erőforráshoz. Az alkalmazás erőforrásai közé tartozik a tároló, a dokumentumok, a mellékletek, a tárolt eljárások, az eseményindítók és a UDF. Az erőforrás-tokent a rendszer a hitelesítés során használja az erőforráshoz való hozzáférés megadásához vagy megtagadásához.<br><br>További információ a [Azure Cosmos db erőforrásaihoz való hozzáférés biztonságossá tételéről](secure-access-to-data.md).|
-|Active Directory-integráció (RBAC)| Az Azure Portal hozzáférés-vezérlés (IAM) használatával is megadhatja vagy korlátozhatja a Cosmos-fiók, az adatbázis, a tároló és az ajánlatok elérését. A IAM a szerepköralapú hozzáférés-vezérlést és a Active Directory integrációját biztosítja. Használhat beépített szerepköröket vagy egyéni szerepköröket egyéni felhasználókhoz és csoportokhoz. További információ: [Active Directory Integration](role-based-access-control.md) article.|
+|Active Directory-integráció (Azure RBAC)| Az Azure Portal hozzáférés-vezérlés (IAM) használatával is megadhatja vagy korlátozhatja a Cosmos-fiók, az adatbázis, a tároló és az ajánlatok elérését. A IAM a szerepköralapú hozzáférés-vezérlést és a Active Directory integrációját biztosítja. Használhat beépített szerepköröket vagy egyéni szerepköröket egyéni felhasználókhoz és csoportokhoz. További információ: [Active Directory Integration](role-based-access-control.md) article.|
 |Globális replikálás|A Azure Cosmos DB kulcsrakész globális terjesztést kínál, amely lehetővé teszi az adatai replikálását az Azure egyik globális adatközpontja számára egy gombnyomással. A globális replikáció lehetővé teszi, hogy globálisan méretezhető legyen, és alacsony késésű hozzáférést biztosítson az adataihoz világszerte.<br><br>A biztonság kontextusában a globális replikáció biztosítja a regionális hibákkal szembeni adatvédelmet.<br><br>További információ: [Globális adatterjesztés](distribute-data-globally.md).|
 |Régiónkénti feladatátvétel|Ha több adatközpontban replikálta az adatait, Azure Cosmos DB automatikusan legörgeti a műveleteket, ha a regionális adatközpont offline állapotba kerül. Létrehozhatja a feladatátvételi régiók rangsorolt listáját azon régiók használatával, amelyekben az adatait replikálja. <br><br>További információ a [regionális feladatátvételekről Azure Cosmos DBban](high-availability.md).|
 |Helyi replikálás|A Azure Cosmos DB még egy adatközponton belül is automatikusan replikálja az adatok magas rendelkezésre állását, így biztosítva a [konzisztencia-szintek](consistency-levels.md)választékát. Ez a replikálás garantálja a 99,99%-os [rendelkezésre állási SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) -t az összes egyrégiós fiókhoz és az összes többrégiós fiókhoz, amely nyugodt konzisztenciát és 99,999%-os olvasási rendelkezésre állást biztosít az összes több régiós adatbázis|
@@ -80,7 +80,7 @@ Ismerkedjen meg minden részlettel.
 |Erős jelszavakkal rendelkező rendszergazdai fiókok|Nehéz elhinni, hogy még meg is kell említeni ezt a követelményt, de a versenytársaktól eltérően nem lehet rendszergazdai fiókja, amely nem rendelkezik jelszóval a Azure Cosmos DBban.<br><br> A TLS-vel és a HMAC-alapú titkos hitelesítéssel történő biztonság alapértelmezés szerint besütött.|
 |Biztonsági és adatvédelmi tanúsítványok| A minősítések legnaprakészebb listája a teljes [Azure-megfelelőségi webhelyet](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) , valamint a legújabb [Azure-megfelelőségi dokumentumot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) tartalmazza minden minősítéssel (a Cosmos kifejezés keresése). A koncentráltabb olvasásért tekintse meg 2018 az [Azure #CosmosDB: Secure, Private, kompatibilis, SOCS 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP magas és sok más.
 
-A következő képernyőképen látható, hogyan használhatók a naplózási naplózási és a tevékenységi naplók a fiók figyeléséhez: :::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="Az ügyfél-és adatbázis-szolgáltató feladatai":::
+A következő képernyőképen látható, hogyan használhatók a naplózási naplózási és a tevékenységi naplók a fiók figyeléséhez: :::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="Azure Cosmos db":::
 
 <a id="primary-keys"></a>
 
@@ -99,9 +99,9 @@ A Cosmos DB fiók két elsődleges kulcsa mellett két írásvédett kulcs is va
 
 Az elsődleges, a másodlagos, az írásvédett és az írható-olvasható elsődleges kulcsok lekérhető és újragenerálható a Azure Portal használatával. Útmutatásért lásd: [hozzáférési kulcsok megtekintése, másolása és újragenerálása](manage-with-cli.md#regenerate-account-key).
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Az ügyfél-és adatbázis-szolgáltató feladatai":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – NoSQL adatbázis biztonságának bemutatása":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az elsődleges kulcsokról és az erőforrás-jogkivonatokról: a [Azure Cosmos db adatokhoz való hozzáférés biztonságossá tétele](secure-access-to-data.md).
 

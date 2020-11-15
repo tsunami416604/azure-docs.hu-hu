@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 0d954123b0d48a4b78c0dcda98898b7ab539d502
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3f159a11dc9607daf479c13f6612cab0175dae0c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504503"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634888"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók létrehozása
 
@@ -194,7 +194,11 @@ A fiók létrehozásának automatizálásához a következő két lépésből á
     Tekintse meg a [Media Services fiók létrehozási sablonjának](https://github.com/Azure-Samples/media-services-v3-arm-templates)példáját.
 1. Hívja [a Create-Account fiókot a Media Services és az Azure ad-alkalmazással](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha elkészült az Oktatóanyaggal, törölje azokat az erőforrásokat, amelyeket nem szeretne használni.
+
+## <a name="next-steps"></a>További lépések
 
 Programozott módon használhatja a próbaverziós fiókját és/vagy az Azure-hoz kapcsolódó Video Indexer-fiókokat a következő témakörben található utasítások végrehajtásával: API-k [használata](video-indexer-use-apis.md).
 

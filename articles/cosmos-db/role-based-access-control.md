@@ -1,22 +1,22 @@
 ---
-title: Szerepköralapú hozzáférés-vezérlés az Azure Cosmos DB-ben
-description: Ismerje meg, hogyan biztosítja az Azure Cosmos DB az adatbázis-védelmet az Active Directory-integrációval (RBAC).
+title: Azure szerepköralapú hozzáférés-vezérlés Azure Cosmos DB
+description: Ismerje meg, hogyan biztosítja az Azure Cosmos DB az adatbázis-védelmet az Active Directory-integrációval (Azure RBAC).
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9f0d42e2e3dfb7e11d3c74ad1280bb867a85e2f8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 950a3c03d5c2c76ad417634833c473ee65adb9b9
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085462"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636639"
 ---
-# <a name="role-based-access-control-in-azure-cosmos-db"></a>Szerepköralapú hozzáférés-vezérlés az Azure Cosmos DB-ben
+# <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Azure szerepköralapú hozzáférés-vezérlés Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-A Azure Cosmos DB beépített szerepköralapú hozzáférés-vezérlést (RBAC) biztosít a Azure Cosmos DB gyakori felügyeleti eseteihez. A Azure Active Directory profillal rendelkező személy a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz rendelheti hozzá ezeket az Azure-szerepköröket az erőforrásokhoz és műveletekhez való hozzáférés engedélyezéséhez vagy megtagadásához Azure Cosmos DB erőforrásokon. A szerepkör-hozzárendelések hatóköre csak a csak vezérlőre vonatkozik, amely hozzáférést biztosít az Azure Cosmos-fiókok,-adatbázisok,-tárolók és-ajánlatok (átviteli sebesség) számára.
+A Azure Cosmos DB beépített Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) biztosít a gyakori felügyeleti forgatókönyvekhez Azure Cosmos DBban. A Azure Active Directory profillal rendelkező személy a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz rendelheti hozzá ezeket az Azure-szerepköröket az erőforrásokhoz és műveletekhez való hozzáférés engedélyezéséhez vagy megtagadásához Azure Cosmos DB erőforrásokon. A szerepkör-hozzárendelések hatóköre csak a csak vezérlőre vonatkozik, amely hozzáférést biztosít az Azure Cosmos-fiókok,-adatbázisok,-tárolók és-ajánlatok (átviteli sebesség) számára.
 
 ## <a name="built-in-roles"></a>Beépített szerepkörök
 
@@ -30,11 +30,11 @@ A Azure Cosmos DB által támogatott beépített szerepkörök a következők:
 |[Cosmos DB operátor](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Az Azure Cosmos-fiókokat,-adatbázisokat és-tárolókat is kiépítheti. Nem lehet hozzáférni semmilyen adattal, vagy nem használhatja a Adatkezelő.|
 
 > [!IMPORTANT]
-> A Azure Cosmos DB RBAC-támogatása csak a vezérlési sík műveleteire vonatkozik. Az adatsíkok műveletei elsődleges kulcsok vagy erőforrás-tokenek használatával biztonságosak. További információ: az [adathozzáférés biztonságossá tétele Azure Cosmos db](secure-access-to-data.md)
+> Az Azure Cosmos DB Azure RBAC-támogatás csak a vezérlési sík műveleteire vonatkozik. Az adatsíkok műveletei elsődleges kulcsok vagy erőforrás-tokenek használatával biztonságosak. További információ: az [adathozzáférés biztonságossá tétele Azure Cosmos db](secure-access-to-data.md)
 
 ## <a name="identity-and-access-management-iam"></a>Identitás-és hozzáférés-kezelés (IAM)
 
-A Azure Portal hozzáférés-vezérlés **(iam)** ablaktáblája az Azure Cosmos-erőforrások szerepköralapú hozzáférés-vezérlésének konfigurálására szolgál. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat. Az alábbi képernyőfelvételen a Azure Portal hozzáférés-vezérlés (IAM) használatával Active Directory integráció (RBAC) látható:
+A Azure Portal **hozzáférés-vezérlés (iam)** ablaktáblája az Azure-beli szerepköralapú hozzáférés-vezérlés konfigurálására szolgál az Azure Cosmos-erőforrásokon. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat. Az alábbi képernyőfelvételen a Azure Portal hozzáférés-vezérlés (IAM) használatával Active Directory integráció (Azure RBAC) látható:
 
 :::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – az adatbázis biztonságának bemutatása":::
 
@@ -112,7 +112,7 @@ A Azure PowerShell használatának engedélyezéséhez használja az alábbi par
 Update-AzCosmosDBAccount -ResourceGroupName [ResourceGroupName] -Name [CosmosDBAccountName] -DisableKeyBasedMetadataWriteAccess true
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../role-based-access-control/overview.md)
 - [Egyéni Azure-szerepkörök](../role-based-access-control/custom-roles.md)

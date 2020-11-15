@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16ac28e46e9231918f433c0e9eb077cb0d8cf230
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 21b563bf383dce486de86bc51913feac7863d8e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791171"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635160"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával
 
@@ -161,8 +161,8 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 > [!NOTE]
 > Az Azure AD-vel a blob-vagy üzenetsor-adatkérések engedélyezéséhez HTTPS protokollt kell használnia a kérelmekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A tárolási és az Azure RBAC hozzáférési jogosultságának kezelése](./storage-auth-aad-rbac-portal.md).
 - [Használja az Azure ad-t a Storage-alkalmazásokhoz](storage-auth-aad-app.md).
-- [PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a Blobok adatainak eléréséhez](../blobs/authorize-active-directory-powershell.md)
+- [PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a Blobok adatainak eléréséhez](../blobs/authorize-data-operations-powershell.md)

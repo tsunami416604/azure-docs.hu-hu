@@ -7,20 +7,20 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 414ae3b2adb60b9442a69e3ebcc8b13b29c67cb7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 51cb79e942b9d92876bd4d0e2cc27bb5ee0337bf
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070503"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634871"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Nyilvános standard Load Balancer használata az Azure Kubernetes szolgáltatásban (ak)
 
-A Azure Load Balancer a nyílt rendszerek összekapcsolási (OSI) modellje, amely támogatja a bejövő és a kimenő forgatókönyveket is. Elosztja a terheléselosztó előtér-példányaira érkező bejövő folyamatokat.
+A Azure Load Balancer a nyílt rendszerek összekapcsolási (OSI) modellje, amely mind a bejövő, mind a kimenő forgatókönyveket támogatja. Elosztja a terheléselosztó előtér-példányaira érkező bejövő folyamatokat.
 
 Az AK-val integrált **nyilvános** Load Balancer két célt szolgálnak:
 
-1. A fürt csomópontjain belüli kimenő kapcsolatok biztosításához az AK virtuális hálózaton belül. Ezt a célt úgy éri el, hogy a csomópontok magánhálózati IP-címét egy olyan nyilvános IP-címhez fordítja le, amely a *kimenő készlet*részét képezi.
+1. A fürt csomópontjain belüli kimenő kapcsolatok biztosításához az AK virtuális hálózaton belül. Ezt a célt úgy éri el, hogy a csomópontok magánhálózati IP-címét egy olyan nyilvános IP-címhez fordítja le, amely a *kimenő készlet* részét képezi.
 2. Az alkalmazásokhoz való hozzáférés biztosítása Kubernetes-szolgáltatásokon keresztül `LoadBalancer` . Ezzel könnyedén méretezheti alkalmazásait, és létrehozhat egy magasan elérhető szolgáltatásokat.
 
 Egy **belső (vagy privát)** terheléselosztó akkor használatos, ha csak a magánhálózati IP-címek engedélyezettek a rendszerfelületként. A belső terheléselosztó a virtuális hálózaton belüli forgalom elosztására szolgál. A terheléselosztó felülete egy helyszíni hálózatról is elérhető hibrid forgatókönyv esetén.
@@ -93,13 +93,13 @@ Azure Load Balancer kimenő kapcsolatot biztosít egy virtuális hálózattól a
 
 Az összes Load Balancer-szabályhoz hasonlóan a kimenő szabályok ugyanazt a szintaxist követik, mint a terheléselosztás és a bejövő NAT-szabályok:
 
-***előtér-IP-címek + paraméterek + háttér-készlet***
+*előtér-IP-címek **+ Paraméterek + háttér-készlet** _
 
 Egy kimenő szabály konfigurálja a kimenő NAT-t a háttér-készlet által azonosított összes virtuális gép számára, hogy a rendszer lefordítsa a felületet. A és a paraméterek további részletes szabályozást biztosítanak a kimenő NAT-algoritmushoz képest.
 
 Míg egy kimenő szabály csak egyetlen nyilvános IP-címmel használható, a kimenő szabályok megkönnyítik a kimenő NAT skálázásának konfigurációs terhelését. Több IP-címet is használhat a nagy léptékű forgatókönyvek tervezéséhez, és a kimenő szabályok használatával csökkentheti a SNAT kimerülésének hajlamos mintázatát. A frontend által biztosított minden további IP-cím a SNAT-portokként való használatra Load Balancer 64 KB-os ideiglenes portot biztosít. 
 
-Ha egy *szabványos* SKU-Load balancert használ a felügyelt kimenő nyilvános IP-címekkel, amelyek alapértelmezés szerint jönnek létre, akkor a paraméter használatával méretezheti a felügyelt kimenő nyilvános IP-címek számát **`load-balancer-managed-ip-count`** .
+Ha _Standard * SKU Load balancert használ a felügyelt kimenő nyilvános IP-címekkel, amelyek alapértelmezés szerint jönnek létre, akkor a paraméter használatával méretezheti a felügyelt kimenő nyilvános IP-címek számát **`load-balancer-managed-ip-count`** .
 
 Meglévő fürt frissítéséhez futtassa a következő parancsot. Ez a paraméter a fürt létrehozási ideje beállításnál is beállítható, hogy több felügyelt kimenő nyilvános IP-cím legyen.
 
@@ -110,7 +110,7 @@ az aks update \
     --load-balancer-managed-outbound-ip-count 2
 ```
 
-A fenti példa a felügyelt kimenő nyilvános IP-címek számát állítja be a *myResourceGroup*-ben található *myAKSCluster* - *fürt esetében.* 
+A fenti példa a felügyelt kimenő nyilvános IP-címek számát állítja be a *myResourceGroup* -ben található *myAKSCluster* - *fürt esetében.* 
 
 A **`load-balancer-managed-ip-count`** paraméter használatával beállíthatja a felügyelt kimenő nyilvános IP-címek kezdeti számát a fürt létrehozásakor a paraméter hozzáfűzésével **`--load-balancer-managed-outbound-ip-count`** és a kívánt értékre való beállításával. A felügyelt kimenő nyilvános IP-címek alapértelmezett száma 1.
 
@@ -266,7 +266,7 @@ Ha várhatóan több rövid életű kapcsolatra van szüksége, és nem áll ren
  
 *outboundIPs* \* 64 000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
-Ha például 3 *nodeVMs*van, és 50 000 *desiredAllocatedOutboundPorts*, legalább 3 *outboundIPs*kell lennie. Javasoljuk, hogy a szükségesnél újabb kimenő IP-kapacitást építsen ki. Emellett a fürt automéretezőjét és a csomópont-készlet frissítésének lehetőségét is figyelembe kell vennie a kimenő IP-kapacitás kiszámításakor. A fürt autoskálázása esetében tekintse át az aktuális csomópontok darabszámát és a csomópontok maximális darabszámát, és használja a magasabb értéket. A frissítéshez az összes olyan csomópont-készlethez, amely lehetővé teszi a frissítését, egy további csomópontos virtuális gép számára.
+Ha például 3 *nodeVMs* van, és 50 000 *desiredAllocatedOutboundPorts* , legalább 3 *outboundIPs* kell lennie. Javasoljuk, hogy a szükségesnél újabb kimenő IP-kapacitást építsen ki. Emellett a fürt automéretezőjét és a csomópont-készlet frissítésének lehetőségét is figyelembe kell vennie a kimenő IP-kapacitás kiszámításakor. A fürt autoskálázása esetében tekintse át az aktuális csomópontok darabszámát és a csomópontok maximális darabszámát, és használja a magasabb értéket. A frissítéshez az összes olyan csomópont-készlethez, amely lehetővé teszi a frissítését, egy további csomópontos virtuális gép számára.
 
 - Ha a *IdleTimeoutInMinutes* eltérő értékre állítja be, mint az alapértelmezett 30 perc, akkor vegye figyelembe, hogy a számítási feladatoknak mennyi ideig kell kiadniuk a kimenő kapcsolatokat. Azt is vegye figyelembe, hogy egy *standard* SKU-Load Balancer alapértelmezett időtúllépési értéke 4 perc. Egy olyan *IdleTimeoutInMinutes* -érték, amely pontosabban tükrözi az adott AK-beli munkaterhelést, csökkentheti a SNAT okozta kimerültséget, mivel a kapcsolatok már nincsenek használatban.
 
@@ -377,7 +377,7 @@ A következő korlátozások érvényesek a terheléselosztó és a *szabványos
 * *Standard szintű* Az SKU-terheléselosztó csak a *szabványos* SKU IP-címeket támogatja.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Kubernetes Services szolgáltatásról a [Kubernetes Services dokumentációjában][kubernetes-services].
 

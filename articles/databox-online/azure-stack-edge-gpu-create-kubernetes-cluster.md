@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f6d2b126cd9a0acbbbdb8d17ce7345bbf17b556
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903218"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635908"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-fürt csatlakoztatása és kezelése a Azure Stack Edge Pro GPU-eszközön a kubectl használatával
 
-A Azure Stack Edge Pro-eszközön a számítási szerepkör konfigurálásakor létrejön egy Kubernetes-fürt. A Kubernetes-fürt létrehozása után a fürt helyileg is csatlakoztatható egy ügyfélszámítógépről egy natív eszköz, például a *kubectl*használatával.
+A Azure Stack Edge Pro-eszközön a számítási szerepkör konfigurálásakor létrejön egy Kubernetes-fürt. A Kubernetes-fürt létrehozása után a fürt helyileg is csatlakoztatható egy ügyfélszámítógépről egy natív eszköz, például a *kubectl* használatával.
 
-Ez a cikk azt ismerteti, hogyan csatlakozhat egy Kubernetes-fürthöz a Azure Stack Edge Pro-eszközön, majd hogyan kezelheti azt a *kubectl*használatával. 
+Ez a cikk azt ismerteti, hogyan csatlakozhat egy Kubernetes-fürthöz a Azure Stack Edge Pro-eszközön, majd hogyan kezelheti azt a *kubectl* használatával. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -44,7 +44,7 @@ A Kubernetes-fürt létrehozása után elérheti ezt a fürtöt névterek és fe
 [!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 
-## <a name="configure-cluster-access-via-rbac"></a>A fürt elérésének konfigurálása a RBAC-n keresztül
+## <a name="configure-cluster-access-via-kubernetes-rbac"></a>A fürt elérésének konfigurálása a Kubernetes-RBAC keresztül
 
 A Kubernetes-fürt létrehozása után a *kubectl* a cmdline keresztül a fürt eléréséhez használhatja. 
 
@@ -125,7 +125,7 @@ Ebben a megközelítésben létre kell hoznia egy névteret és egy felhasznál�
     Ha például a Kubernetes fő csomópontja a v 1.15.2-t futtatta, telepítse a v 1.15.2-t az ügyfélen.
 
     > [!IMPORTANT]
-    > Töltsön le egy olyan ügyfelet, amely nem rendelkezik több, mint egy alverzióval a főkiszolgálóról. Az ügyfél verziója, de a főkiszolgálót akár egy alverzión is elvezethetik. A v 1.3-as főkiszolgáló például a v 1.1, v 1.2 és v 1.3 csomópontokkal működik együtt, és működnie kell a v 1.2, v 1.3 és v 1.4 rendszerű ügyfelekkel. A Kubernetes-ügyfélszoftversel kapcsolatos további információkért lásd: [a Kubernetes verziója és verziója](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew). A Azure Stack Edge Pro Kubernetes Server-verziójával kapcsolatos további információkért keresse fel a Kubernetes-kiszolgáló verziójának beolvasása című témakört.<!-- insert link-->
+    > Olyan ügyfelet töltsön le, amely legfeljebb egy alverzióval tér el a főverziótól. Az ügyfél verziója, de a főkiszolgálót akár egy alverzión is elvezethetik. A v 1.3-as főkiszolgáló például a v 1.1, v 1.2 és v 1.3 csomópontokkal működik együtt, és működnie kell a v 1.2, v 1.3 és v 1.4 rendszerű ügyfelekkel. A Kubernetes-ügyfélszoftversel kapcsolatos további információkért lásd: [a Kubernetes verziója és verziója](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew). A Azure Stack Edge Pro Kubernetes Server-verziójával kapcsolatos további információkért keresse fel a Kubernetes-kiszolgáló verziójának beolvasása című témakört.<!-- insert link-->
     > Előfordulhat, `kubectl` hogy a rendszer előre telepíti a rendszert, ha a Windowshoz vagy más eszközökhöz a Docker-t futtatja. Fontos, hogy az ebben a szakaszban jelzett módon töltse le az adott verziót a `kubectl` kubernetes-fürttel való együttműködéshez. 
 
     A telepítés több percet is igénybe vehet.
@@ -160,7 +160,7 @@ Ebben a megközelítésben létre kell hoznia egy névteret és egy felhasznál�
 Mostantól üzembe helyezheti az alkalmazásait a névtérben, majd megtekintheti az alkalmazásokat és a naplókat.
 
 > [!IMPORTANT]   
-> Számos parancs nem futtatható, például olyan parancsok, amelyekhez rendszergazdai hozzáférés szükséges. Csak a névtérben engedélyezett műveleteket lehet végrehajtani.
+> Számos parancs nem futtatható, például olyan parancsok, amelyekhez rendszergazdai hozzáférés szükséges. Csak olyan műveleteket hajthat végre, amelyek engedélyezve vannak a névtérben.
 
 
 ## <a name="remove-kubernetes-cluster"></a>Kubernetes-fürt eltávolítása
@@ -170,6 +170,6 @@ A Kubernetes-fürt eltávolításához el kell távolítania a számítási konf
 Részletes útmutatásért lépjen a [számítási konfiguráció eltávolítása](azure-stack-edge-j-series-manage-compute.md#remove-compute-configuration)elemre.
    
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Állapot nélküli alkalmazás üzembe helyezése a Azure stack Edge Pro](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)-ban.

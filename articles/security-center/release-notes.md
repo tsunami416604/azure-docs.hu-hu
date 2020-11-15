@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 375dff1dacc949dd4373bbf26908feb504750224
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: c0333f9faeae99ee83beda381f77f4f95b0a9192
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372341"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636120"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -37,7 +37,8 @@ A novemberi frissítések a következők:
 
 - [29 előzetes javaslat hozzáadva az Azure biztonsági teljesítményteszt lefedettségének növeléséhez](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [NIST SP 800 171 R2 hozzáadva a Security Center szabályozási megfelelőségi irányítópulthoz](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
-
+- [A javaslatok listája mostantól szűrőket is tartalmaz](#recommendations-list-now-includes-filters)
+- [Továbbfejlesztett és bővített automatikus üzembe helyezési élmény](#auto-provisioning-experience-improved-and-expanded)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 előzetes javaslat hozzáadva az Azure biztonsági teljesítményteszt lefedettségének növeléséhez
 
@@ -78,6 +79,30 @@ A standard előfizetésekre való alkalmazásához és a megfelelőségi állapo
 További információ erről a megfelelőségi szabványról: [NIST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final).
 
 
+### <a name="recommendations-list-now-includes-filters"></a>A javaslatok listája mostantól szűrőket is tartalmaz
+
+Mostantól szűrheti a biztonsági javaslatok listáját a feltételek körének megfelelően. A következő példában a javaslatok listáját a rendszer szűrte a következő javaslatok megjelenítéséhez:
+
+- **általánosan elérhetők** (azaz nem előzetes verzió)
+- a **Storage-fiókok** esetében
+- **gyors javítási** szervizelés támogatása
+
+:::image type="content" source="media/release-notes/recommendations-filters.png" alt-text="A javaslatok listához tartozó szűrők":::
+
+
+### <a name="auto-provisioning-experience-improved-and-expanded"></a>Továbbfejlesztett és bővített automatikus üzembe helyezési élmény
+
+Az automatikus kiépítési funkció segít csökkenteni a felügyeleti terhelést azáltal, hogy telepíti a szükséges bővítményeket az új és a meglévő Azure-beli virtuális gépekre, így azok a Security Center védelmére is kihasználhatják őket. 
+
+Ahogy Azure Security Center nő, több bővítmény lett kifejlesztve, és Security Center képes figyelni az erőforrástípusok nagyobb listáját. Az automatikus kiépítési eszközök mostantól kibővültek a további kiterjesztések és erőforrástípusok támogatásához a Azure Policy képességeinek kihasználásával.
+
+Mostantól konfigurálhatja az automatikus kiépítés lehetőségeit:
+
+- Log Analytics-ügynök
+- Új A Kubernetes Azure Policy bővítménye
+- Új Microsoft függőségi ügynök
+
+További információ: [Azure Security Centerból származó automatikus kiépítési ügynökök és bővítmények](security-center-enable-data-collection.md).
 
 ## <a name="october-2020"></a>2020. október
 

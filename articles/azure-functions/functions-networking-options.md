@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 6b082801a89450e34056be8be88a96fe26b7eeec
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578821"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636469"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -97,8 +97,8 @@ Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános cé
 1. Hozzon létre vagy konfiguráljon egy másik Storage-fiókot.  Ez lesz az a Storage-fiók, amelyet a szolgáltatási végpontok biztosítanak, és összekapcsolhatjuk a funkciót.
 1. [Hozzon létre egy fájlmegosztást](../storage/files/storage-how-to-create-file-share.md#create-file-share) a biztonságos Storage-fiókban.
 1. Engedélyezze a szolgáltatási végpontokat vagy a magánhálózati végpontot a Storage-fiókhoz.  
-    * Ha szolgáltatási végpontot használ, ügyeljen arra, hogy a Function apps számára dedikált alhálózatot engedélyezze.
-    * Hozzon létre egy DNS-rekordot, és konfigurálja úgy az alkalmazást, hogy a magánhálózati végpontok használata esetén is [működjön a privát végponti végpontokkal](#azure-dns-private-zones) .  A Storage-fióknak szüksége lesz egy privát végpontra a `file` és `blob` alerőforrásokhoz.  Ha bizonyos képességeket (például Durable Functions) használ, `queue` `table` egy privát végponti kapcsolaton keresztül is szüksége lesz rá, és elérhetővé válik.
+    * Privát végponti kapcsolatok használata esetén a Storage-fióknak szüksége lesz egy privát végpontra a `file` és az `blob` alerőforrásokhoz.  Ha bizonyos képességeket (például Durable Functions) használ, `queue` `table` egy privát végponti kapcsolaton keresztül is szüksége lesz rá, és elérhetővé válik.
+    * Ha szolgáltatási végpontokat használ, engedélyezze a Function apps számára dedikált alhálózatot a Storage-fiókokhoz.
 1. Választható Másolja a fájl és a blob tartalmát a Function app Storage-fiókból a biztonságos Storage-fiókba és a fájlmegosztásba.
 1. Másolja ki a Storage-fiókhoz tartozó kapcsolatok karakterláncát.
 1. Frissítse az **alkalmazás beállításait** a Function alkalmazás **konfigurációjában** a következőre:
@@ -106,6 +106,9 @@ Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános cé
     - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a biztonságos Storage-fiókhoz tartozó kapcsolódási karakterláncra.
     - `WEBSITE_CONTENTSHARE` a biztonságos Storage-fiókban létrehozott fájlmegosztás nevével.
     - Hozzon létre egy új beállítást a név és a érték megadásával `WEBSITE_CONTENTOVERVNET` `1` .
+    - Ha a Storage-fiók magánhálózati végponti kapcsolatokat használ, ellenőrizze vagy adja hozzá a következő beállításokat
+        - `WEBSITE_VNET_ROUTE_ALL` értékkel `1` .
+        - `WEBSITE_DNS_SERVER` értéke `168.63.129.16` 
 1. Mentse az alkalmazás beállításait.  
 
 A Function alkalmazás újraindul, és mostantól egy biztonságos Storage-fiókhoz fog csatlakozni.
@@ -184,7 +187,7 @@ A következő API-k lehetővé teszik a regionális virtuális hálózati integr
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a hálózatkezelésről és a Azure Functions:
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 45f5a7e66c80dff5e78e575463becd95bcc7fca1
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b8aaebdd37f835201ef549e3f97e0c0b657e4fe9
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242177"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636214"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Privát hivatkozás létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgáló számára a parancssori felület használatával
 
@@ -67,6 +67,7 @@ az vm create \
   --name myVm \
   --image Win2019Datacenter
 ```
+
  Jegyezze fel a virtuális gép nyilvános IP-címét. Ezt a lakcímet fogja használni a virtuális géphez az internetről a következő lépésben való kapcsolódáshoz.
 
 ## <a name="create-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló létrehozása 
@@ -99,6 +100,7 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>A saját DNS zóna konfigurálása 
 Hozzon létre egy saját DNS zónát a PostgreSQL-kiszolgáló tartományhoz, és hozzon létre egy társítási hivatkozást a Virtual Network. 
+
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.postgres.database.azure.com" 
@@ -126,7 +128,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 > [!NOTE]
 > Bizonyos esetekben a Azure Database for PostgreSQL és a VNet különböző előfizetésekben találhatók. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
-> - Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. DBforPostgreSQL** erőforrás-szolgáltatónál. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
+> - Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. DBforPostgreSQL** erőforrás-szolgáltatónál. További információkért tekintse meg az [erőforrás-szolgáltatók](../azure-resource-manager/management/resource-providers-and-types.md)című témakört.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
@@ -145,7 +147,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával** .
+        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával**.
 
 1. Válassza az **OK** lehetőséget.
 
@@ -159,27 +161,28 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 2. Írja be a következő szöveget:  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`. 
 
-    Egy ehhez hasonló üzenet jelenik meg:
-    ```azurepowershell
-    Server:  UnKnown
-    Address:  168.63.129.16
-    Non-authoritative answer:
-    Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
-    Address:  10.1.3.4
-    ```
+   Egy ehhez hasonló üzenet jelenik meg:
 
-3. A PostgreSQL-kiszolgáló magánhálózati kapcsolati kapcsolatának tesztelése bármely elérhető ügyfél használatával. Az alábbi példában az [Azure](/sql/azure-data-studio/download?view=sql-server-ver15) -beli adattárat használtuk a művelet végrehajtásához.
+   ```azurepowershell
+   Server:  UnKnown
+   Address:  168.63.129.16
+   Non-authoritative answer:
+   Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
+   Address:  10.1.3.4
+   ```
+
+3. A PostgreSQL-kiszolgáló magánhálózati kapcsolati kapcsolatának tesztelése bármely elérhető ügyfél használatával. Az alábbi példa az [Azure adatstudiót](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) használja a művelet elvégzésére.
 
 4. Az **új kapcsolatok** területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
-    | ------- | ----- |
-    | Server type (Kiszolgáló típusa)| Válassza a **PostgreSQL** lehetőséget.|
-    | Kiszolgálónév| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* kiválasztása |
-    | Felhasználónév | Adja meg username@servername a PostgreSQL-kiszolgáló létrehozásakor megadott felhasználónevet. |
-    |Jelszó |Adja meg a PostgreSQL-kiszolgáló létrehozásakor megadott jelszót. |
-    |SSL|Válassza a **kötelező** lehetőséget.|
-    ||
+   | Beállítás | Érték |
+   | ------- | ----- |
+   | Server type (Kiszolgáló típusa)| Válassza a **PostgreSQL** lehetőséget.|
+   | Kiszolgálónév| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* kiválasztása |
+   | Felhasználónév | Adja meg username@servername a PostgreSQL-kiszolgáló létrehozásakor megadott felhasználónevet. |
+   |Jelszó |Adja meg a PostgreSQL-kiszolgáló létrehozásakor megadott jelszót. |
+   |SSL|Válassza a **kötelező** lehetőséget.|
+   ||
 
 5. Válassza a Csatlakozás lehetőséget.
 
@@ -196,8 +199,5 @@ Ha már nincs rá szükség, az az Group delete paranccsal eltávolíthatja az e
 az group delete --name myResourceGroup --yes 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ az [Azure Private Endpoint szolgáltatásról](../private-link/private-endpoint-overview.md)
-
-<!-- Link references, to text, Within this same GitHub repo. -->
-[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 089476980ff3e8b2d3b72cb2d229934cf7850c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f67a36ac4ccb27d7b955158b7e4a9cf4f5185d0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899254"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636918"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes az Azure Stack Edge Pro GPU-eszközön
 
@@ -57,7 +57,7 @@ Az alkalmazások számítási feladatainak támogatásához csatlakoztathatja az
 
 További információ: Storage-létesítési beállítások a Kubernetes-tárolóban lévő alkalmazások számára az [Azure stack Edge Pro-eszközhöz](azure-stack-edge-gpu-kubernetes-storage.md).
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 A Kubernetes hálózatkezelés lehetővé teszi a Kubernetes-hálózaton belüli kommunikáció konfigurálását, többek között a tárolók közötti hálózatkezelést, a pod-Pod hálózatkezelést, a pod-szolgáltatást és az internetről a szolgáltatásba történő hálózatkezelést. További információ: hálózati modell a [Kubernetes hálózatkezelésben az Azure stack Edge Pro-eszközhöz](azure-stack-edge-gpu-kubernetes-networking.md).
 
@@ -67,7 +67,7 @@ Mivel az új Kubernetes-verziók elérhetővé válnak, a fürt frissíthető az
 
 ## <a name="access-monitoring"></a>Hozzáférés, figyelés
 
-A Kubernetes-fürt az Azure Stack Edge Pro-eszközön lehetővé teszi a szerepköralapú hozzáférés-vezérlést (RBAC). További információ: [szerepköralapú hozzáférés-vezérlés a Kubernetes-fürthöz az Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-rbac.md).
+A Kubernetes-fürt az Azure Stack Edge Pro-eszközön lehetővé teszi a Kubernetes szerepköralapú hozzáférés-vezérlését (Kubernetes RBAC). További információ: [Kubernetes szerepköralapú hozzáférés-vezérlés a Azure stack Edge Pro GPU-eszközön](azure-stack-edge-gpu-kubernetes-rbac.md).
 
 A fürt és az erőforrások állapotát a Kubernetes irányítópulton is nyomon követheti. A tároló naplói is elérhetők. További információ: [a Kubernetes-irányítópult használata a Kubernetes-fürt állapotának figyelésére a Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md).
 
@@ -109,7 +109,7 @@ Az alkalmazások Kubernetes-fürtön IoT Edge használatával történő közpon
 Az Azure arc egy hibrid felügyeleti eszköz, amely lehetővé teszi, hogy alkalmazásokat helyezzen üzembe a Kubernetes-fürtökön. Az Azure arc azt is lehetővé teszi, hogy a tárolók Azure Monitor használatával megtekinthesse és figyelje a fürtöket. További információért látogasson el a [Mi az Azure-Arc enabled Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)című témakörben. Az Azure arc díjszabásával kapcsolatos információkért látogasson el az [Azure arc díjszabására](https://azure.microsoft.com/services/azure-arc/#pricing).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Kubernetes Storage szolgáltatásról [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-storage.md).
 - A Kubernetes hálózati modell megismerése [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-networking.md).

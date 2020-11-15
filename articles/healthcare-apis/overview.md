@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: matjazl
-ms.openlocfilehash: 12635979d90dcc4be5b45bf7d64ceb602119faf7
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 3bb168cf3f642d22096c54b3f35c7833afaff769
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394764"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635143"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Mi az a FHIR készült Azure API &reg; ?
 
@@ -84,7 +84,7 @@ Olyan használati esetekhez, amelyek a FHIR-kiszolgáló kiterjesztését vagy t
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT-összekötő a FHIR (előzetes verzió)
 
-Az Azure IoT-összekötő a FHIR * szolgáltatáshoz az Azure API választható funkciója, amely lehetővé teszi az orvosi eszközök internetes hálózatáról (IoMT) származó adatok betöltését. Az orvosi eszközök internetes hálózata olyan IoT-eszközök kategóriája, amelyek az egészségügyi & a wellness-és egyéb egészségügyi informatikai rendszerekkel együtt, hálózaton keresztül. Néhány példa a IoMT-eszközökre: fitnesz és klinikai wearables, monitorozási érzékelők, tevékenység-követési funkciók, vagy akár egy intelligens pirula. A FHIR szolgáltatáshoz készült Azure IoT-összekötő lehetővé teszi, hogy gyorsan beállítson egy szolgáltatást a IoMT-alapú Azure API-ba való betöltéséhez a FHIR méretezhető, biztonságos és megfelelő módon.
+Az Azure IoT-összekötő a gyors egészségügyi együttműködési erőforrásokhoz (FHIR&#174;) * az Azure API opcionális funkciója a FHIR-hez, amely lehetővé teszi az orvosi eszközök internetes hálózatáról (IoMT) származó adatok betöltését. Az orvosi eszközök internetes hálózata olyan IoT-eszközök kategóriája, amelyek az egészségügyi & a wellness-és egyéb egészségügyi informatikai rendszerekkel együtt, hálózaton keresztül. Néhány példa a IoMT-eszközökre: fitnesz és klinikai wearables, monitorozási érzékelők, tevékenység-követési funkciók, vagy akár egy intelligens pirula. A FHIR szolgáltatáshoz készült Azure IoT-összekötő lehetővé teszi, hogy gyorsan beállítson egy szolgáltatást a IoMT-alapú Azure API-ba való betöltéséhez a FHIR méretezhető, biztonságos és megfelelő módon.
 
 A FHIR készült Azure IoT-összekötők elfogadják a IoMT-eszközök által küldött JSON-alapú üzeneteket. Ezek az információk először a megfelelő FHIR-alapú [megfigyelési](https://www.hl7.org/fhir/observation.html) erőforrásokra vannak átalakítva, majd a FHIR Azure API-ban is megmaradnak. Az Adatátalakítási logikát az FHIR és a követelmények alapján konfigurált, leképezési sablonokból álló párok határozzák meg. Az eszközökről közvetlenül az Azure IoT Connector FHIR vagy az Azure-beli IoT-megoldásokkal ([azure IoT hub](../iot-hub/index.yml) és az [Azure IoT Central](../iot-central/index.yml)) való gördülékenyen használhatók. A FHIR készült Azure IoT-összekötő biztonságos adatfolyamatot biztosít, és lehetővé teszi, hogy az Azure IoT-megoldások kezelhesse a fizikai eszközök kiépítését és karbantartását.
 
@@ -108,6 +108,4 @@ Ha szeretné kipróbálni az Azure IoT-összekötőt a FHIR szolgáltatáshoz, t
 >[!div class="nextstepaction"]
 >[Az Azure IoT-összekötő üzembe helyezése a FHIR](iot-fhir-portal-quickstart.md)
 
-* A Azure Portal a FHIR készült Azure IoT-összekötő a IoT-összekötő (előzetes verzió) néven ismert.
-
-Az FHIR a HL7 bejegyzett védjegye, amelynek felhasználását a HL7 engedélyezte.
+* A Azure Portal a FHIR készült Azure IoT Connector a IoT Connector (előzetes verzió) néven ismert. A FHIR a HL7 bejegyzett védjegye, és a HL7 engedélyével van használatban. 

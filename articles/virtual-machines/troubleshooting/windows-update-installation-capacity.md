@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999105"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635705"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>Operációs rendszer indításának hibája – Windows Update telepítési kapacitás
 
@@ -62,8 +62,6 @@ A probléma megoldásához:
 
 1. Ellenőrizze, hogy a lemez megtelt-e. Ha a lemez mérete 1 TB-nál kisebb, akkor a [PowerShell használatával](../windows/expand-os-disk.md)legfeljebb 1 TB-ra bontsa ki.
 1. Ha a lemez már 1 TB, akkor el kell végeznie a lemez karbantartását.
-   1. Válassza le az adatlemezt [a hibás virtuális](../windows/detach-disk.md)gépről.
-   1. Csatlakoztassa az adatlemezt [egy működő virtuális géphez](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
    1. Lemezterület felszabadításához használja a [lemezkarbantartó eszközt](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) .
 1. Az átméretezés és a tisztítás befejezése után a következő paranccsal távolíthatja el a meghajtót:
 
@@ -75,12 +73,12 @@ A töredezettség szintjétől függően a detöredezettség több órát is ig�
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>A soros konzol és a memóriakép gyűjteményének engedélyezése
 
-**Ajánlott**: a virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriakép gyűjteményét a következő parancsfájl futtatásával:
+**Ajánlott** : a virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriakép gyűjteményét a következő parancsfájl futtatásával:
 
 1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet.
 1. Futtassa az alábbi parancsot:
 
-   **A soros konzol engedélyezése**:
+   **A soros konzol engedélyezése** :
    
    ```
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
@@ -89,7 +87,7 @@ A töredezettség szintjétől függően a detöredezettség több órát is ig�
 
 1. Győződjön meg arról, hogy az operációsrendszer-lemez szabad területe nagyobb, mint a virtuális gép memóriájának mérete (RAM).
 
-   Ha nincs elég hely az operációsrendszer-lemezen, akkor módosítsa a memóriakép fájljának helyét, és ezt a helyet a virtuális géphez csatolt, elegendő szabad területtel rendelkező adatlemezre kell hivatkoznia. A hely módosításához cserélje le a **% systemroot%** betűjelet az adatlemez meghajtóbetűjelére (pl **. F:**) a következő parancsokban.
+   Ha nincs elég hely az operációsrendszer-lemezen, akkor módosítsa a memóriakép fájljának helyét, és ezt a helyet a virtuális géphez csatolt, elegendő szabad területtel rendelkező adatlemezre kell hivatkoznia. A hely módosításához cserélje le a **% systemroot%** betűjelet az adatlemez meghajtóbetűjelére (pl **. F:** ) a következő parancsokban.
 
    Az operációs rendszer memóriaképének engedélyezéséhez javasolt konfiguráció:
 
@@ -99,7 +97,7 @@ A töredezettség szintjétől függően a detöredezettség több órát is ig�
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM 
    ```
    
-   **Engedélyezés a ControlSet001**:
+   **Engedélyezés a ControlSet001** :
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -107,7 +105,7 @@ A töredezettség szintjétől függően a detöredezettség több órát is ig�
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **Engedélyezés a ControlSet002**:
+   **Engedélyezés a ControlSet002** :
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -115,7 +113,7 @@ A töredezettség szintjétől függően a detöredezettség több órát is ig�
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **Sérült operációsrendszer-lemez eltávolítása**:
+   **Sérült operációsrendszer-lemez eltávolítása** :
 
    ```
    REG UNLOAD HKLM\BROKENSYSTEM

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre JavaScript-függvényt a parancss
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5a77ae054191c4a96026ac74bd9da226542de838
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4a178cb0e69a6e2b666247bcb8e76ab2c7e272e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425092"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635670"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Gyors útmutató: JavaScript-függvény létrehozása az Azure-ban a parancssorból
 
@@ -123,7 +123,7 @@ Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     
     ```azurepowershell
-    New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime node -FunctionsVersion 3 -Location 'West Europe'
+    New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime node -RuntimeVersion 12 -FunctionsVersion 3 -Location 'West Europe'
     ```
     
     A [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) parancsmag létrehozza a Function alkalmazást az Azure-ban. Ha Node.js 10-et használ, váltson a következőre: `-RuntimeVersion` `10` .

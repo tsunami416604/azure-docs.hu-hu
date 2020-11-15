@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5243419d8e2c4780708e9bdee0d57f2734fe78b2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1c8c766208132aec115e1fbeb15af3a057c3de3e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341960"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636690"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>Azure Cosmos DB erőforrások törlésének vagy módosításának megakadályozása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,7 +26,7 @@ Rendszergazdaként előfordulhat, hogy egy Azure Cosmos-fiókot,-adatbázist vag
 
 Ha egy fölérendelt hatókörben zárolja a zárolást, akkor a hatókörben lévő összes erőforrás örökli ugyanazt a zárolást. A később hozzáadott erőforrások még a szülőtől öröklik a zárolást. Az öröklés legszigorúbb zárolása elsőbbséget élvez.
 
-A felügyeleti zárolás a szerepköralapú hozzáférés-vezérléssel szemben minden felhasználóra és szerepkörre érvényes korlátozásokat alkalmaz. További információ a Azure Cosmos DB RBAC: [szerepköralapú hozzáférés-vezérlés Azure Cosmos DBban](role-based-access-control.md).
+Az Azure szerepköralapú hozzáférés-vezérlésével ellentétben a felügyeleti zárolások használatával korlátozásokat alkalmazhat az összes felhasználó és szerepkör között. A Azure Cosmos DB Azure-beli RBAC kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés a Azure Cosmos DBban](role-based-access-control.md).
 
 A Resource Manager zárolásai csak a felügyeleti síkon történő műveletekre érvényesek, ezek pedig a https://management.azure.com címre küldött műveletek. A zárolások nem korlátozzák, hogy az erőforrások hogyan végzik saját funkcióikat. Az erőforrás változásai korlátozva vannak, de az erőforrás működése nincs korlátozva. Például egy Azure Cosmos-tároló írásvédett zárolása megakadályozza a tároló törlését vagy módosítását. Nem akadályozza meg a tárolóban lévő adatok létrehozását, frissítését és törlését. Az adattranzakciók engedélyezve vannak, mert ezek a műveletek nem lesznek elküldve a https://management.azure.com webhelyre.
 

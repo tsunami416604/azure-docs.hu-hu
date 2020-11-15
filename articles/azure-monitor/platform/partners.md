@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozz
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: dc33e9d8d613b9d0575da069d884e454d9930eac
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d603e130d4e65667edb34121a4c89b7b0e02b819
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555639"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636741"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor-partnerintegrációk
 
@@ -46,6 +46,16 @@ A AppDynamics Application Performance Management (APM) lehetővé teszi, hogy az
 Azure Monitor-riasztásokhoz JIRA-jegyeket is létrehozhat.
 
 [A Azure Monitor Atlassian dokumentációja](https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/)
+
+## <a name="bmc-helix"></a>BMC Helix
+
+![BMC Helix embléma](./media/partners/BMCHelix.png)
+
+A BMC Helix egy autonóm Enterprise Service and Operations SaaS platform. Az 360-es fokú intelligenciával integráltan a vállalatok proaktív módon, predictively, felügyelni, szervizelni, optimalizálni, optimalizálni és továbbítani képesek az informatikai és üzletági funkciókat.
+Emellett a ITSM és az IT Operations Management (ITOM) zökkenőmentes integrálásával a BMC Helix lehetővé teszi az informatikai és üzleti felhasználók számára az IT-silók eltávolítását, az adatvezérelt üzleti döntések meghozatalát és az iparág vezető felhasználói élményének biztosítását.
+Az ügyfelek üzembe helyezhetik a BMC Helix platformot az általuk választott Felhőbeli üzembe helyezéssel – nyilvános, privát vagy hibrid. Emellett az ügyfelek választhatnak az iparág vezető szolgáltatói által kihasználható AI/ML-megoldásokkal.
+
+[További információ a BMC Helix-ról](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
 
 ## <a name="botmetric"></a>Botmetric
 
@@ -151,7 +161,7 @@ A Focus **ArcSight** rendelkezik egy intelligens összekötővel Azure monitor E
 
 A "Focus **Operations Bridge** " szolgáltatás automatikusan figyeli az összes hibrid it-erőforrást – bármilyen eszközt, operációs rendszert, adatbázist, alkalmazást vagy szolgáltatást, függetlenül attól, hogy hol futnak, és alkalmazza a AIOps az összes adattípusra – az eseményeket, a metrikákat, a naplókat és a függőségeket. A szolgáltatás a minőségi szolgáltatások figyelésének egyedi kombinációját biztosítja, amely a Deep Application Health Analytics-szel párosul, és átfogó teljesítményt és rendelkezésre állást biztosít a Microsoft Azure-szolgáltatások számára. Az Operations Bridge lehetővé teszi, hogy az ügyfelek egyetlen panelt biztosítanak az összes böngészővel rendelkező eszközön, így mind az üzleti, mind az érintett felek megismerhetik.
 
-Részletek
+További információ
 - [Az OB Suite áttekintése](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Letöltés](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - A [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope az Operations Bridge Suite egyik összetevője.
@@ -301,17 +311,8 @@ A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség val
 
 [Turbonomic bemutatása](https://turbonomic.com/)
 
-## <a name="bmc-helix"></a>BMC Helix
 
-![BMC Helix embléma](./media/partners/BMCHelix.png)
-
-A BMC Helix egy autonóm Enterprise Service and Operations SaaS platform. Az 360-es fokú intelligenciával integráltan a vállalatok proaktív módon, predictively, felügyelni, szervizelni, optimalizálni, optimalizálni és továbbítani képesek az informatikai és üzletági funkciókat.
-Emellett a ITSM és az IT Operations Management (ITOM) zökkenőmentes integrálásával a BMC Helix lehetővé teszi az informatikai és üzleti felhasználók számára az IT-silók eltávolítását, az adatvezérelt üzleti döntések meghozatalát és az iparág vezető felhasználói élményének biztosítását.
-Az ügyfelek üzembe helyezhetik a BMC Helix platformot az általuk választott Felhőbeli üzembe helyezéssel – nyilvános, privát vagy hibrid. Emellett az ügyfelek választhatnak az iparág vezető szolgáltatói által kihasználható AI/ML-megoldásokkal.
-
-[További információ a BMC Helix-ról](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ az Azure Monitorról](../overview.md)
 - [Metrikák elérése a REST API használatával](rest-api-walkthrough.md)

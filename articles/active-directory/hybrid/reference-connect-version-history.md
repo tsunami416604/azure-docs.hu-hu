@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73318d1ee14894f5d22f7c4d2e61418e3b1038c1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604070"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636877"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -37,7 +37,12 @@ Letöltés| [Azure ad Connect letöltése](https://go.microsoft.com/fwlink/?Link
 >[!NOTE]
 >A Azure AD Connect új verziójának kiadása egy olyan folyamat, amely több minőségellenőrzési lépést igényel a szolgáltatás működési funkcióinak biztosításához, és a folyamat során az új kiadás verziószámát, valamint a kiadási állapotot is frissíti a legújabb állapotnak megfelelően.
 Amíg ezt a folyamatot elvégezjük, a kiadás verziószáma "X"-ként jelenik meg a másodlagos kiadási szám pozíciójában, ahogy az "1.3. X. 0" értéknél – ez azt jelenti, hogy a jelen dokumentumban szereplő kibocsátási megjegyzések az "1,3." kezdetű összes verzióra érvényesek. Amint elvégezte a kiadási folyamat véglegesítését, a kiadás verziószámát a rendszer frissíti a legújabb verzióra, és a kiadási állapot frissülni fog a "kiadás a letöltéshez és az automatikus frissítéshez".
-Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshez. A kiadási állapot azt jelzi, hogy elérhető-e kiadás az automatikus frissítéshez vagy csak a letöltéshez. Ha az automatikus frissítés engedélyezve lett a Azure AD Connect-kiszolgálón, akkor a kiszolgáló automatikusan az automatikus frissítéshez kiadott Azure AD Connect legújabb verziójára fog frissülni. Vegye figyelembe, hogy nem minden Azure AD Connect konfiguráció jogosult az automatikus frissítésre. Az [automatikus frissítéssel](how-to-connect-install-automatic-upgrade.md) kapcsolatos további információért kövesse ezt a hivatkozást
+Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshez. A kiadási állapot azt jelzi, hogy elérhető-e kiadás az automatikus frissítéshez vagy csak a letöltéshez. Ha az automatikus frissítés engedélyezve lett a Azure AD Connect-kiszolgálón, akkor a kiszolgáló automatikusan az automatikus frissítéshez kiadott Azure AD Connect legújabb verziójára fog frissülni. Vegye figyelembe, hogy nem minden Azure AD Connect konfiguráció jogosult az automatikus frissítésre. 
+
+Az automatikus frissítés használatának tisztázásához az összes fontos frissítést és kritikus javítást le kell küldenie. Ez nem feltétlenül a legújabb verzió, mert nem minden verzió esetében szükséges egy kritikus biztonsági probléma (csak egy példa a sok) javítására. Olyan problémát jelent, amely az automatikus frissítéssel megadott új verzióval fog foglalkozni. Ha nincsenek ilyen problémák, az automatikus frissítés nem küldi el a frissítéseket, és általában akkor is jó, ha a legújabb automatikus frissítési verziót használja.
+Ha azonban a legújabb funkciókat és frissítéseket szeretné megtekinteni, a legjobb módszer az, hogy ellenőrizze, hogy van-e a lapon, és hogyan telepítheti őket úgy, ahogy az illik. 
+
+Az [automatikus frissítéssel](how-to-connect-install-automatic-upgrade.md) kapcsolatos további információért kövesse ezt a hivatkozást
 
 >[!IMPORTANT]
 > 2020 november 1-től kezdődően megkezdjük egy elavult folyamat megvalósítását, amelynek során a több mint 18 hónappal ezelőtt kiadott Azure AD Connect verziók elavultak lesznek. Ekkor megkezdjük ezt a folyamatot, ha elavulttá válik a (4/24/2019-es verzióban kiadott) 1.3.20.0-verzióval rendelkező Azure AD Connect összes kiadása, és az új verziók kiadásakor a rendszer minden alkalommal kiértékeli Azure AD Connect régebbi verzióinak elavult verzióját.
@@ -123,7 +128,7 @@ Ez a gyorsjavítás-Build javít egy problémát a build 1.5.20.0, ha klónozott
 
 > [!IMPORTANT]
 > Ha klónozott a alkalmazást az **ad-Group csatlakozás** szinkronizálási szabályból, és nem klónozotta a-t az **ad-Group Common** Sync szabályból, és nem tervezi a verziófrissítést, hajtsa végre a következő lépéseket a frissítés részeként:
-> 1. A frissítés során törölje a **szinkronizálási folyamat elindítása a konfiguráció befejeződése**után lehetőséget.
+> 1. A frissítés során törölje a **szinkronizálási folyamat elindítása a konfiguráció befejeződése** után lehetőséget.
 > 2. Szerkessze a klónozott illesztés szinkronizálási szabályát, és adja hozzá a következő két átalakítást:
 >     - A közvetlen folyamat beállítása a következőre: `objectGUID` `sourceAnchorBinary` .
 >     - A kifejezés folyamatának beállítása a következőre: `ConvertToBase64([objectGUID])` `sourceAnchor` .     
@@ -261,5 +266,5 @@ Kijavítottunk egy hibát a szinkronizálási hibák tömörítése segédprogra
 - A Microsoft Azure Active Directory Connect build 1.3.20.0 található, a jogosultságok kiterjesztésével kapcsolatos sebezhetőség javítva.  Ez a biztonsági rés bizonyos körülmények között lehetővé teheti, hogy egy támadó egy kiemelt fiók környezetében két PowerShell-parancsmagot hajtson végre, és magas jogosultsági szintű műveleteket hajtson végre.  Ez a biztonsági frissítés a parancsmagok letiltásával oldja meg a problémát. További információ: [biztonsági frissítés](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

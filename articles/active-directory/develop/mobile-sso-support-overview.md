@@ -1,7 +1,7 @@
 ---
 title: Az egyszeri bejelentkezés és az alkalmazás-védelmi szabályzatok támogatása a fejleszthető mobil alkalmazásokban | Azure
 titleSuffix: Microsoft identity platform
-description: Az egyszeri bejelentkezést és az alkalmazás-védelmi szabályzatokat támogató mobileszközök létrehozásának magyarázata és áttekintése
+description: Az egyszeri bejelentkezést és az alkalmazás-védelmi szabályzatokat támogató mobileszközök kiépítésének magyarázata és áttekintése a Microsoft Identity platform használatával és a Azure Active Directory integrálásával.
 services: active-directory
 author: knicholasa
 manager: CelesteDG
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331606"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634854"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Az egyszeri bejelentkezés és az alkalmazás-védelmi szabályzatok támogatása a fejleszthető mobil alkalmazásokban
 
-Az egyszeri bejelentkezés (SSO) egyszerű és biztonságos bejelentkezéseket biztosít az alkalmazás felhasználói számára. Az alkalmazás-védelmi szabályzatok (alkalmazás) lehetővé teszik a kulcsfontosságú biztonsági házirendek támogatását, amelyek megőrzik a felhasználó adatait. Ezek a funkciók együtt lehetővé teszik a biztonságos felhasználói bejelentkezéseket és az alkalmazás adatai felügyeletét.
+Az egyszeri bejelentkezés (SSO) a Microsoft Identity platform és a Azure Active Directory egyik legfontosabb ajánlata, amely egyszerű és biztonságos bejelentkezéseket biztosít az alkalmazás felhasználói számára. Emellett az alkalmazás-védelmi szabályzatok (alkalmazás) lehetővé teszik a kulcsfontosságú biztonsági házirendek támogatását, amelyek megőrzik a felhasználó adatait. Ezek a funkciók együtt lehetővé teszik a biztonságos felhasználói bejelentkezéseket és az alkalmazás adatai felügyeletét.
 
 Ez a cikk leírja, hogy az SSO és az alkalmazás miért fontos, és magas szintű útmutatást nyújt az ezeket a szolgáltatásokat támogató mobileszközök létrehozásához. Ez a telefon-és Tablet-alkalmazásokra is vonatkozik. Ha Ön rendszergazda, aki a szervezet Azure Active Directory bérlője számára szeretne SSO-t telepíteni, tekintse meg az [egyszeri bejelentkezéses telepítés megtervezésére vonatkozó útmutatást](../manage-apps/plan-sso-deployment.md) .
 
@@ -68,7 +68,7 @@ Emellett a hitelesítéshez egy közvetítő alkalmazást kell használnia. A k�
 
 Végül [adja hozzá az INTUNE SDK](/mem/intune/developer/app-sdk-get-started) -t az alkalmazáshoz az alkalmazás-védelmi szabályzatok engedélyezéséhez. Az SDK a legtöbb esetben egy elfogási modellt követ, és automatikusan alkalmazza az alkalmazás-védelmi házirendeket annak meghatározására, hogy az alkalmazás által végzett műveletek engedélyezettek-e vagy sem. Vannak olyan API-k is, amelyekkel manuálisan hívható meg az alkalmazás, ha bizonyos műveletek korlátozásai vannak.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Azure Active Directory egyszeri bejelentkezéses telepítés megtervezése](../manage-apps/plan-sso-deployment.md)
 - [Útmutató: az SSO konfigurálása macOS és iOS rendszeren](single-sign-on-macos-ios.md)

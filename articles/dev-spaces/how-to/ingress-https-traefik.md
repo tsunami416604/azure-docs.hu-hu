@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Ismerje meg, hogyan konfigurálhatja az Azure dev Spaces-t egyéni traefik bemenő vezérlő használatára, és hogyan konfigurálhatja a HTTPS-t az adott bejövő vezérlő használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fb45c310d306813dc10b667db6ce36048eccf217
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2dcb549078f1f0f5f7168960864d564fd0c169fc
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746111"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636826"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Egyéni bejövő traefik-vezérlő használata és HTTPS konfigurálása
 
@@ -53,7 +53,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 Hozzon létre egy Kubernetes-névteret a traefik beáramló vezérlőhöz, és telepítse azt a használatával `helm` .
 
 > [!NOTE]
-> Ha az AK-fürtön nincs engedélyezve a RBAC, távolítsa el a *--set RBAC. enabled = True* paramétert.
+> Ha az AK-fürthöz nincs engedélyezve a Kubernetes RBAC, távolítsa el a *--set RBAC. enabled = True* paramétert.
 
 ```console
 kubectl create ns traefik
@@ -102,8 +102,8 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 Nyissa meg a [Values. YAML][values-yaml] , és végezze el a következő frissítéseket:
-* Cserélje le a *<REPLACE_ME_WITH_HOST_SUFFIX>* összes példányát a *traefik. MY_CUSTOM_DOMAIN* a tartományt a *MY_CUSTOM_DOMAINhoz* . 
-* Cserélje le a *kubernetes.IO/ingress.Class: traefik-azds # dev Spaces-specifikus* with *kubernetes.IO/ingress.Class: traefik # Custom beáramló* . 
+* Cserélje le a *<REPLACE_ME_WITH_HOST_SUFFIX>* összes példányát a *traefik. MY_CUSTOM_DOMAIN* a tartományt a *MY_CUSTOM_DOMAINhoz*. 
+* Cserélje le a *kubernetes.IO/ingress.Class: traefik-azds # dev Spaces-specifikus* with *kubernetes.IO/ingress.Class: traefik # Custom beáramló*. 
 
 Az alábbi példa egy frissített fájlt mutat be `values.yaml` :
 
@@ -212,7 +212,7 @@ spec:
 ```
 
 > [!NOTE]
-> Teszteléshez egy [átmeneti kiszolgáló][letsencrypt-staging-issuer] is használható a *ClusterIssuer* .
+> Teszteléshez egy [átmeneti kiszolgáló][letsencrypt-staging-issuer] is használható a *ClusterIssuer*.
 
 `kubectl`Az alkalmazással használható `letsencrypt-clusterissuer.yaml` .
 
@@ -223,7 +223,7 @@ kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 Távolítsa el az előző *traefik* *ClusterRole* és *ClusterRoleBinding* , majd frissítse a traefik a https használatára a használatával `helm` .
 
 > [!NOTE]
-> Ha az AK-fürtön nincs engedélyezve a RBAC, távolítsa el a *--set RBAC. enabled = True* paramétert.
+> Ha az AK-fürthöz nincs engedélyezve a Kubernetes RBAC, távolítsa el a *--set RBAC. enabled = True* paramétert.
 
 ```console
 kubectl delete ClusterRole traefik
@@ -363,7 +363,7 @@ azds up
 
 Navigáljon az alkalmazáshoz a *dev/azureuser1* , és figyelje meg, hogy a rendszer a HTTPS-t hibák nélkül használja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure dev Spaces működéséről.
 

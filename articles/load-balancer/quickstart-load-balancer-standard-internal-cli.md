@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 852589e7ba1896ad493c5b8c300240490a516b64
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 51f02d9f059ef87f7c1627102508b8b2aa7f537a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518243"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636299"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához az Azure CLI használatával
 
@@ -122,6 +122,14 @@ Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt [az az N
     --priority 200
 ```
 
+## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
+
+Ebben a szakaszban a következőket hozza létre:
+
+* A háttér-kiszolgálók hálózati adapterei.
+* Egy **cloud-init.txt** nevű Felhőbeli konfigurációs fájl a kiszolgáló konfigurációjához.
+* Két virtuális gép, amely háttér-kiszolgálóként használható a terheléselosztó számára.
+
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>Hálózati adapterek létrehozása a virtuális gépekhez
 
 Hozzon létre két hálózati adaptert az [az Network NIC Create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)paranccsal:
@@ -158,13 +166,6 @@ Hozzon létre két hálózati adaptert az [az Network NIC Create](https://docs.m
     --subnet myBackEndSubnet \
     --network-security-group myNSG
 ```
-
-## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
-
-Ebben a szakaszban a következőket hozza létre:
-
-* Egy **cloud-init.txt** nevű Felhőbeli konfigurációs fájl a kiszolgáló konfigurációjához.
-* Két virtuális gép, amely háttér-kiszolgálóként használható a terheléselosztó számára.
 
 ### <a name="create-cloud-init-configuration-file"></a>Cloud-init konfigurációs fájl létrehozása
 
@@ -849,7 +850,7 @@ A virtuális gép üzembe helyezése néhány percet is igénybe vehet.
    
 Ha meg szeretné tekinteni, hogy a terheléselosztó mindhárom virtuális gépen osztja el a forgalmat, testreszabhatja az egyes virtuális gépek IIS-webkiszolgálójának alapértelmezett oldalát, majd kényszerítheti a webböngésző frissítését az ügyfélgépről.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítsa el az erőforráscsoportot, a Load balancert és az összes kapcsolódó erőforrást.
 
@@ -858,7 +859,7 @@ Ha már nincs rá szükség, az az [Group delete](https://docs.microsoft.com/cli
     --name CreateIntLBQS-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban
 
 * Létrehozta a standard vagy a nyilvános terheléselosztó

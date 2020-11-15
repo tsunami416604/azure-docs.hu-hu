@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
-ms.openlocfilehash: 036629bd72f8219c2d7b1877dd1672291ed3d98a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: b87408669dbb9268d6e3cd47b410b888ef1a19c2
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425120"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637149"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Rövid útmutató: C#-függvény létrehozása az Azure-ban a parancssorból
 
@@ -28,6 +28,8 @@ A cikk [Visual Studio Code-alapú verziója](create-first-function-vs-code-cshar
 Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 + Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
++ A [.NET Core SDK 3,1](https://www.microsoft.com/net/download)
 
 + A [Azure functions Core Tools](functions-run-local.md#v2) 3. x verzió.
 
@@ -49,6 +51,8 @@ Ellenőrizze az előfeltételeket, amelyek attól függnek, hogy az Azure CLI-t 
 
 + A futtatásával `az login` Jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
 
++ A futtatásával `dotnet --list-sdks` Győződjön meg arról, hogy a .net Core SDK 3.1. x verziója telepítve van
+
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 + A terminál vagy a parancssorablakban futtassa a parancsot az `func --version` Azure functions Core Tools 3. x verziójának megadásához.
@@ -56,6 +60,8 @@ Ellenőrizze az előfeltételeket, amelyek attól függnek, hogy az Azure CLI-t 
 + Futtassa `(Get-Module -ListAvailable Az).Version` és ellenőrizze a 5,0-es vagy újabb verziót. 
 
 + A futtatásával `Connect-AzAccount` Jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
+
++ A futtatásával `dotnet --list-sdks` Győződjön meg arról, hogy a .net Core SDK 3.1. x verziója telepítve van
 
 ---
 

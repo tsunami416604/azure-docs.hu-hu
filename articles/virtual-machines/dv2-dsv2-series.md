@@ -1,5 +1,5 @@
 ---
-title: Dv2 és Dsv2 sorozat – Azure Virtual Machines
+title: Dv2 és DSv2 sorozat – Azure Virtual Machines
 description: A Dv2 és a Dsv2 sorozatú virtuális gépek specifikációi.
 author: joelpelley
 ms.service: virtual-machines
@@ -7,16 +7,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 785e72a47d68bf368e160b1f3bf2a6d762d1f100
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1bd2e0360b064a71dd91241d40513d8c37447bb
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649694"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635636"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 és DSv2 sorozat
 
-A Dv2 és a Dsv2 sorozat, amely az eredeti D sorozaton alapul, egy nagyobb teljesítményű CPU-és optimális CPU-memória-konfigurációt biztosít, amely a legtöbb éles számítási feladathoz megfelelővé teszi őket. A Dv2 sorozat körülbelül 35%-kal gyorsabb a D sorozatnál. Az Dv2 sorozat Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell), vagy Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorokkal rendelkezik, amelyek az Intel Turbo Boost Technology 2,0-ot futtatnak. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
+A Dv2 és a DSv2 sorozat, amely az eredeti D sorozaton alapul, egy nagyobb teljesítményű CPU-és optimális CPU-memória-konfigurációt biztosít, amely a legtöbb éles számítási feladathoz megfelelővé teszi őket. A Dv2 sorozat körülbelül 35%-kal gyorsabb a D sorozatnál. Az Dv2 sorozat Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell), vagy Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorokkal rendelkezik, amelyek az Intel Turbo Boost Technology 2,0-ot futtatnak. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 
 ## <a name="dv2-series"></a>Dv2-sorozat
 
@@ -73,6 +73,6 @@ Az Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (
 
 További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

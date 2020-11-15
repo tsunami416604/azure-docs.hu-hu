@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 683fc553e7712e2a760a0af1b601207cb20f2f55
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0feaf4a984f40ddee7a30291fe0a8f671b6512a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092806"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636843"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB vezérlési sík műveleteinek naplózása
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -28,7 +28,7 @@ A következő példák olyan forgatókönyveket mutatnak be, amelyekben a napló
 
 ## <a name="disable-key-based-metadata-write-access"></a>Kulcs alapú metaadatok írási hozzáférésének letiltása
 
-Mielőtt naplózza a vezérlési sík műveleteit a Azure Cosmos DBban, tiltsa le a kulcs alapú metaadatok írási hozzáférését a fiókjában. Ha a kulcs alapú metaadatok írási hozzáférése le van tiltva, a fiók kulcsain keresztül az Azure Cosmos-fiókhoz csatlakozó ügyfelek nem férnek hozzá a fiókhoz. A tulajdonság Igaz értékre állításával letilthatja az írási hozzáférést `disableKeyBasedMetadataWriteAccess` . A tulajdonság beállítása után bármely erőforrás módosítása a megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel és a hitelesítő adatokkal rendelkező felhasználótól történhet. Ha többet szeretne megtudni ennek a tulajdonságnak a beállításáról, olvassa el az [SDK-k változásainak megakadályozása](role-based-access-control.md#prevent-sdk-changes) című cikket. 
+Mielőtt naplózza a vezérlési sík műveleteit a Azure Cosmos DBban, tiltsa le a kulcs alapú metaadatok írási hozzáférését a fiókjában. Ha a kulcs alapú metaadatok írási hozzáférése le van tiltva, a fiók kulcsain keresztül az Azure Cosmos-fiókhoz csatlakozó ügyfelek nem férnek hozzá a fiókhoz. A tulajdonság Igaz értékre állításával letilthatja az írási hozzáférést `disableKeyBasedMetadataWriteAccess` . A tulajdonság beállítása után bármely erőforrás módosítása a megfelelő Azure-szerepkörrel és hitelesítő adatokkal rendelkező felhasználótól történhet. Ha többet szeretne megtudni ennek a tulajdonságnak a beállításáról, olvassa el az [SDK-k változásainak megakadályozása](role-based-access-control.md#prevent-sdk-changes) című cikket. 
 
 Ha a `disableKeyBasedMetadataWriteAccess` be van kapcsolva, ha az SDK-alapú ügyfelek létrehozási vagy frissítési műveletet futtatnak, a " *ContainerNameorDatabaseName" erőforrás "művelet" bejegyzése nem engedélyezett Azure Cosmos db végponton keresztül* . Be kell kapcsolnia a fiókjához való hozzáférést, vagy a létrehozás/frissítés műveletet a Azure Resource Manager, az Azure CLI vagy a Azure PowerShell használatával. A visszaállításhoz állítsa a disableKeyBasedMetadataWriteAccess **hamis** értékre az Azure CLI használatával, a [változások megakadályozása a Cosmos SDK](role-based-access-control.md#prevent-sdk-changes) -ban című cikkben leírtak szerint. Ügyeljen arra, hogy a True érték helyett false értékűre módosítsa a értéket `disableKeyBasedMetadataWriteAccess` .
 
@@ -70,17 +70,17 @@ A naplózás bekapcsolását követően kövesse az alábbi lépéseket egy adot
 
 Az alábbi képernyőképek rögzítik a naplókat, ha egy Azure Cosmos-fiókhoz módosul egy konzisztencia-szint:
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Vezérlési sík kérelmek naplózásának engedélyezése":::
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Vezérlési sík naplói a VNet hozzáadásakor":::
 
 A következő képernyőképek rögzítik a naplókat, amikor létrejön egy Cassandra-fiókhoz tartozó szóköz vagy tábla, és frissül az átviteli sebesség. A vezérlő síkja a létrehozási és frissítési műveletekhez tartozó naplókat naplózza az adatbázison, és a tárolót külön naplózza, ahogy az alábbi képernyőképen is látható:
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Vezérlési sík kérelmek naplózásának engedélyezése":::
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Vezérlési sík naplói az átviteli sebesség frissítésekor":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Egy adott művelethez társított identitás azonosítása
 
 Ha további hibakeresést szeretne végezni, akkor a tevékenység azonosítója vagy a művelet időbélyegzője segítségével azonosíthatja a **tevékenységek naplójában** megadott műveletet. Az időbélyeg olyan Resource Manager-ügyfelek esetében használatos, amelyekben a tevékenység azonosítója nem lett explicit módon átadva. A tevékenység naplója részletesen ismerteti a műveletet kezdeményező identitást. Az alábbi képernyőfelvételen a tevékenység-azonosító használata látható, és megkeresheti az ahhoz társított műveleteket a tevékenység naplójában:
 
-:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Vezérlési sík kérelmek naplózásának engedélyezése":::
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="A tevékenység-azonosító használata és a műveletek megkeresése":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Vezérlési sík műveletei az Azure Cosmos-fiókhoz
 
@@ -227,7 +227,7 @@ AzureDiagnostics
 {id:skewed,indexingPolicy:{automatic:true,indexingMode:consistent,includedPaths:[{path:/*,indexes:[]}],excludedPaths:[{path:/_etag/?}],compositeIndexes:[],spatialIndexes:[]},partitionKey:{paths:[/pk],kind:Hash},defaultTtl:1000000,uniqueKeyPolicy:{uniqueKeys:[]},conflictResolutionPolicy:{mode:LastWriterWins,conflictResolutionPath:/_ts,conflictResolutionProcedure:}
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Cosmos DB Azure Monitor megismerése](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
 * [A Azure Cosmos DB metrikáinak monitorozása és hibakeresése](use-metrics.md)

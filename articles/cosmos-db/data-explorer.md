@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: d5958ea947f6b786e9fbc6c44ab914ea895d6e08
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096801"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637115"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Adatok kezelése az Azure Cosmos Explorerrel 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,15 +26,15 @@ A Azure Cosmos DB Explorer egy önálló, webalapú felület, amellyel megtekint
 
 ## <a name="access-azure-cosmos-db-explorer"></a>Hozzáférés Azure Cosmos DB Explorerrel
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/). 
 
-2. Az **összes erőforrás** területen keresse meg és navigáljon a Azure Cosmos db-fiókjához, válassza a kulcsok lehetőséget, és másolja ki az **elsődleges kapcsolódási karakterláncot** .  
+2. Az **összes erőforrás** területen keresse meg és navigáljon a Azure Cosmos db-fiókjához, válassza a kulcsok lehetőséget, és másolja ki az **elsődleges kapcsolódási karakterláncot**.  
 
 3. Lépjen https://cosmos.azure.com/ a mezőbe, illessze be a kapcsolati karakterláncot, majd válassza a **Kapcsolódás** lehetőséget. A kapcsolati karakterlánc használatával a Azure Cosmos DB Explorer időbeli korlátok nélkül is elérhető.  
 
    Ha más felhasználóknak is ideiglenes hozzáférést szeretne biztosítani a Azure Cosmos DB-fiókjához, ezt az írási-olvasási és olvasási hozzáférési URL-címek használatával teheti meg. 
 
-4. Nyissa meg a **adatkezelő** panelt, és válassza a **teljes képernyő megnyitása** lehetőséget. Az előugró párbeszédpanelen két hozzáférési URL-címet tekinthet meg – **írható** és **olvasható** . Ezek az URL-címek lehetővé teszik a Azure Cosmos DB fiók ideiglenes megosztását más felhasználókkal. A fiókhoz való hozzáférés 24 órán belül lejár, amely után új hozzáférési URL-címmel vagy a kapcsolati karakterlánccal csatlakozhat. 
+4. Nyissa meg a **adatkezelő** panelt, és válassza a **teljes képernyő megnyitása** lehetőséget. Az előugró párbeszédpanelen két hozzáférési URL-címet tekinthet meg – **írható** és **olvasható**. Ezek az URL-címek lehetővé teszik a Azure Cosmos DB fiók ideiglenes megosztását más felhasználókkal. A fiókhoz való hozzáférés 24 órán belül lejár, amely után új hozzáférési URL-címmel vagy a kapcsolati karakterlánccal csatlakozhat. 
 
    **Írható-** olvasható – ha a Read-Write URL-címet más felhasználókkal osztja meg, megtekintheti és módosíthatja az adott fiókhoz társított adatbázisokat, gyűjteményeket, lekérdezéseket és egyéb erőforrásokat.
 
@@ -50,9 +50,9 @@ Jelenleg a **nyílt teljes képernyős** élmény lehetővé teszi, hogy az idei
 
 Az UUID-t tartalmazó dokumentumok jelenleg nem támogatottak Adatkezelőban. Ez nem befolyásolja a gyűjtemények betöltését, csak az ezeket a dokumentumokat tartalmazó egyes dokumentumokat vagy lekérdezéseket tekinti meg. A dokumentumok megtekintéséhez és kezeléséhez a felhasználóknak továbbra is az eredetileg a dokumentumok létrehozásához használt eszközt kell használniuk.
 
-Előfordulhat, hogy a HTTP-401 hibákat fogadó ügyfelek nem rendelkeznek elegendő RBAC engedéllyel az ügyfél Azure-fiókjához, különösen akkor, ha a fiók egyéni RBAC szerepkörrel rendelkezik. Minden egyéni szerepkörnek rendelkeznie kell a `Microsoft.DocumentDB/databaseAccounts/listKeys/*` adatkezelő használatára, ha Azure Active Directory hitelesítő adataival jelentkezik be.
+Előfordulhat, hogy a HTTP-401 hibákat fogadó ügyfelek nem rendelkeznek elegendő Azure RBAC engedélyekkel az ügyfél Azure-fiókjához, különösen akkor, ha a fiók egyéni szerepkörrel rendelkezik. Minden egyéni szerepkörnek rendelkeznie kell a `Microsoft.DocumentDB/databaseAccounts/listKeys/*` adatkezelő használatára, ha Azure Active Directory hitelesítő adataival jelentkezik be.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megtanulta, hogyan használhatja a Azure Cosmos DB Explorer alkalmazást az adatai kezeléséhez, a következő lépésként:
 

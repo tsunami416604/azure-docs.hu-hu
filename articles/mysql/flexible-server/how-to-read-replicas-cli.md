@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 10/23/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: acbb0d5b643919d7fa1bf3966532ebd83129fc2a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 151b72eb11600713b115d45e5927d8170a519ad1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795271"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635772"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Olvasási replikák létrehozása és kezelése Azure Database for MySQL rugalmas kiszolgálón az Azure CLI használatával
 
@@ -29,7 +29,7 @@ Az olvasási replikákat az Azure CLI használatával hozhatja létre és kezelh
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- [Az Azure CLI 2,0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Az Azure CLI 2,0 telepítése](/cli/azure/install-azure-cli)
 - Egy [Azure Database for MySQL rugalmas kiszolgáló](quickstart-create-server-cli.md) , amelyet forráskiszolgálóként fog használni.
 
 ### <a name="create-a-read-replica"></a>Olvasási replika létrehozása
@@ -85,6 +85,6 @@ A forráskiszolgáló törléséhez futtassa az az **[MySQL flexibilis-Server de
 az mysql flexible-server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [olvasási replikáról](concepts-read-replicas.md)

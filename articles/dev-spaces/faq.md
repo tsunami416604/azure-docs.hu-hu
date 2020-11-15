@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Válaszok az Azure dev Spaces használatával kapcsolatos gyakori kérdésekre
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 9870ba52424f6f59cc908e4d70bf1560f7d69165
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a25ebd88d022ff278b3e3d9cc9cbf4d8b9b670cd
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970299"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636095"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Gyakran ismételt kérdések az Azure dev Spaces-ről
 
@@ -36,7 +36,7 @@ Igen, ha a projekt már rendelkezik egy Docker vagy egy Helm-diagrammal, ezeket 
 
 Saját Docker vagy Helm-diagram használata esetén a következő korlátozások érvényesek:
 * Ha csak egy Docker használ, tartalmaznia kell mindazt, amire szüksége lehet a fejlesztési forgatókönyvek engedélyezéséhez, például a nyelvi SDK-t, nem csak a futtatókörnyezetet. Ha külön Docker használ az Azure dev Spaces szolgáltatáshoz, például egy Docker. fejlesszen, a fejlesztési forgatókönyvek engedélyezéséhez szükséges mindennek szerepelnie kell a Docker.
-* A Helm-diagramnak támogatnia kell a vagy a teljes képcímkét a Values *. YAML*értékének átadásával.
+* A Helm-diagramnak támogatnia kell a vagy a teljes képcímkét a Values *. YAML* értékének átadásával.
 * Ha bármit módosít a bejövő forgalomban, akkor a Helm diagramot is frissítheti az Azure dev Spaces által biztosított bejövő megoldás használatára.
 * Ha az [Azure dev Spaces által biztosított útválasztási funkciókat][dev-spaces-routing]szeretné használni, az egyes projektekhez tartozó összes szolgáltatásnak egyetlen Kubernetes-névtérben kell lennie, és egyszerű elnevezéssel kell rendelkeznie, például a *Service-a szolgáltatáshoz*. A standard Helm-diagramok esetében ez az elnevezési frissítés a *fullnameOverride* tulajdonság értékének megadásával végezhető el.
 
@@ -72,9 +72,9 @@ Igen, az Azure dev-szóközöket az AK-fürtökön használhatja az [API-kiszolg
 
 Igen, a megfelelő teljes tartománynevek engedélyezése után használhatja az Azure dev-szóközöket az AK-fürtökön a [korlátozott kimenő forgalommal rendelkező fürtcsomópontok esetében][aks-restrict-egress-traffic] . [Itt](configure-networking.md#ingress-and-egress-network-traffic-requirements)talál további információt arról, hogyan használhatók a korlátozott kimenő forgalommal rendelkező AK-fürtök az Azure dev Spaces szolgáltatással engedélyezett fürtcsomópontok esetében.
 
-## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Használhatom az Azure dev Spaces szolgáltatást a RBAC-kompatibilis AK-fürtökön?
+## <a name="can-i-use-azure-dev-spaces-on-kubernetes-rbac-enabled-aks-clusters"></a>Használhatom az Azure dev Spaces szolgáltatást a Kubernetes RBAC-kompatibilis AK-fürtökön?
 
-Igen, az Azure dev-szóközöket RBAC-alapú vagy anélkül is használhatja az AK-fürtökön.
+Igen, a Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) segítségével vagy anélkül is használhatja az Azure dev-szóközöket az AK-fürtökön.
 
 ## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Mi történik, ha engedélyezem a bejövő forgalmat a Visual Studióban?
 

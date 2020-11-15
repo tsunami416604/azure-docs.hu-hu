@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás a szinapszis Studio Workspace-erőforráshoz egy korlátozott hálózatról
-description: Ebből a cikkből megtudhatja, hogyan csatlakozhat az Azure szinapszis Studio-munkaterület erőforrásaihoz egy korlátozott hálózatról
+title: Kapcsolódás a munkaterület-erőforrásokhoz az Azure szinapszis Analytics Studióban egy korlátozott hálózatról
+description: Ez a cikk bemutatja, hogyan csatlakozhat a munkaterület-erőforrásokhoz egy korlátozott hálózatról
 author: xujxu
 ms.service: synapse-analytics
 ms.topic: how-to
@@ -8,112 +8,119 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: d94ee3145fb073dae982019fd4096cc2ceb7cd86
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 7cff2d8245095489fbba3b7af24b416885995e4d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578331"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637132"
 ---
-# <a name="connect-to-synapse-studio-workspace-resources-from-a-restricted-network"></a>Kapcsolódás a szinapszis Studio-munkaterület erőforrásaihoz egy korlátozott hálózatról
+# <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Kapcsolódás a munkaterület erőforrásaihoz egy korlátozott hálózatról
 
-Ez a cikk célzott olvasója a vállalati rendszergazda, aki a vállalat korlátozott hálózatát kezeli. A rendszergazda arra készül, hogy engedélyezze a hálózati kapcsolatot az Azure szinapszis Studio és az ezen a korlátozott hálózaton belüli munkaállomás között.
-
-Ebből a cikkből megtudhatja, hogyan csatlakozhat az Azure-beli szinapszis-munkaterülethez egy korlátozott hálózati környezetben. 
+Tegyük fel, hogy Ön rendszergazda, aki a szervezete korlátozott hálózatát kezeli. Engedélyezni szeretné az Azure szinapszis Analytics Studio és a korlátozott hálózaton belüli munkaállomás közötti hálózati kapcsolatot. Ez a cikk bemutatja, hogyan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés** : Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
-* **Azure szinapszis-munkaterület** : Ha nem rendelkezik a szinapszis Studióval, hozzon létre egy szinapszis-munkaterületet az Azure szinapszis Analytics szolgáltatásban. A munkaterület nevének megadása a 4. lépésben szükséges.
-* **Korlátozott hálózat** : a korlátozott hálózatot a vállalat informatikai rendszergazdája tartja karban. a rendszergazda jogosult a hálózati házirend konfigurálására. A virtuális hálózat neve és alhálózata a 3. lépésben lesz szükséges.
+* **Azure szinapszis Analytics-munkaterület** : létrehozhat egyet az Azure szinapszis Analytics használatával. A munkaterület nevét a 4. lépésben kell megadnia.
+* **Korlátozott hálózat** : a rendszergazda megtartja a szervezet korlátozott hálózatát, és jogosult a hálózati házirend konfigurálására. A 3. lépésben a virtuális hálózat neve és az alhálózata szükséges.
 
 
 ## <a name="step-1-add-network-outbound-security-rules-to-the-restricted-network"></a>1. lépés: hálózati kimenő biztonsági szabályok hozzáadása a korlátozott hálózathoz
 
-Négy szolgáltatási címkével rendelkező négy hálózati kimenő biztonsági szabályt kell felvennie. További információ a [szolgáltatási címkék áttekintéséről](/azure/virtual-network/service-tags-overview) 
+Négy szolgáltatási címkével rendelkező négy hálózati kimenő biztonsági szabályt kell felvennie. 
 * AzureResourceManager
 * AzureFrontDoor. frontend
 * AzureActiveDirectory
-* AzureMonitor (nem kötelező. Ezt a típusú szabályt csak akkor adja hozzá, ha az adatmegosztást a Microsoftnak szeretné megosztani.)
+* AzureMonitor (az ilyen típusú szabály nem kötelező. Csak akkor adja hozzá, ha az adatmegosztást a Microsofttal szeretné megosztani.)
 
-**Azure Resource Manager** Kimenő szabály adatait az alábbiak szerint. A másik három szabály létrehozásakor cserélje le a " **rendeltetési szolgáltatás címkéje** " értéket a " **AzureFrontDoor. frontend** ", a " **AzureActiveDirectory** ", a " **AzureMonitor** " nevű szolgáltatási kódelem kiválasztásával a legördülő listából.
+Az alábbi képernyőképen a Azure Resource Manager Kimenő szabály részletei láthatók.
 
-![AzureResourceManager](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
+![Képernyőkép a Azure Resource Manager szolgáltatás címkéjének részleteiről.](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
 
+A másik három szabály létrehozásakor cserélje le a **AzureFrontDoor. frontend** , a **AzureActiveDirectory** vagy a **AzureMonitor** értékre a **célként megadott szolgáltatási címkét** a listáról.
 
-## <a name="step-2-create-azure-synapse-analytics-private-link-hubs"></a>2. lépés: az Azure szinapszis Analytics (Private link hubok) létrehozása
+További információ: szolgáltatás- [címkék áttekintése](/azure/virtual-network/service-tags-overview.md).
 
-Létre kell hoznia egy Azure szinapszis Analytics (magánhálózati kapcsolati hubok) Azure Portal. Keressen rá az " **Azure szinapszis Analytics (Private link hubok)** " kifejezésre a Azure Portalon keresztül, majd töltse ki a szükséges mezőt, és hozza létre. 
+## <a name="step-2-create-private-link-hubs"></a>2. lépés: magánhálózati kapcsolati hubok létrehozása
 
-> [!Note]
-> A régiónak azonosnak kell lennie, mint ahol a szinapszis-munkaterület van.
-
-![A szinapszis Analytics Private link hubok létrehozása](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
-
-## <a name="step-3-create-private-endpoint-for-synapse-studio-gateway"></a>3. lépés: privát végpont létrehozása a szinapszis Studio-átjáróhoz
-
-A szinapszis Studio-átjáró eléréséhez létre kell hoznia egy privát végpontot a Azure Portalból. A " **privát hivatkozás** " kifejezés a Azure Portalon keresztül érhető el. Válassza a "privát **végpont létrehozása** " lehetőséget a " **privát kapcsolat központban** ", majd töltse ki a szükséges mezőt, és hozza létre. 
+Következő lépésként hozzon létre privát kapcsolati hubokat a Azure Portal. A portálon megkeresheti az *Azure szinapszis Analytics (Private link hubok) szolgáltatást* , majd kitöltheti a szükséges információkat a létrehozásához. 
 
 > [!Note]
-> A régiónak azonosnak kell lennie, mint ahol a szinapszis-munkaterület van.
+> Győződjön meg arról, hogy a **régió** értéke ugyanaz, mint az Azure szinapszis Analytics-munkaterülete.
 
-![Privát végpont létrehozása a szinapszis Studio 1 számára](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-1.png)
+![Képernyőfelvétel a szinapszis Private link hub létrehozásáról.](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
 
-A " **Resource** " következő lapján válassza ki a privát kapcsolat hubot, amelyet a fenti 2. lépésben hozott létre.
+## <a name="step-3-create-a-private-endpoint-for-your-gateway"></a>3. lépés: hozzon létre egy privát végpontot az átjáróhoz
 
-![Privát végpont létrehozása a szinapszis Studio 2 számára](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-2.png)
+Az Azure szinapszis Analytics Studio-átjáró eléréséhez létre kell hoznia egy privát végpontot a Azure Portalból. Ha szeretné megkeresni a portálon, keresse meg a *privát hivatkozás* kifejezést. A **privát kapcsolat központban** válassza a **privát végpont létrehozása** lehetőséget, majd adja meg a szükséges adatokat a létrehozásához. 
 
-A " **Konfigurálás** " következő lapján 
-* Válassza ki a virtuális **hálózathoz** tartozó korlátozott virtuális hálózat nevét.
-* Válassza ki az " **alhálózat** " számára a korlátozott virtuális hálózat alhálózatát. 
-* Válassza az **Igen** lehetőséget a " **saját DNS-zóna integrálása** " elemre.
+> [!Note]
+> Győződjön meg arról, hogy a **régió** értéke ugyanaz, mint az Azure szinapszis Analytics-munkaterülete.
 
-![Privát végpont létrehozása a szinapszis Studio 3 számára](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-3.png)
+![Képernyőkép a privát végpontok létrehozásáról: alapbeállítások lap.](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-1.png)
 
-A privát kapcsolat végpontjának létrehozása után elérheti a szinapszis Studio Web Tool bejelentkezési lapját. A szinapszis munkaterületen belül azonban nem férhet hozzá az erőforrásokhoz, amíg el nem végzi a következő lépést.
+Az **erőforrás** lapon válassza a 2. lépésben létrehozott Private link hub elemet.
 
-## <a name="step-4-create-private-endpoints-for-synapse-studio-workspace-resource"></a>4. lépés: magánhálózati végpontok létrehozása a szinapszis Studio Workspace-erőforráshoz
+![Képernyőkép a privát végpont, Erőforrás lap létrehozásáról.](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-2.png)
 
-A szinapszis Studio Workspace-erőforráson belüli erőforrások eléréséhez létre kell hoznia legalább egy privát kapcsolati végpontot **a "****cél alerőforrás** " típussal, és két további opcionális, " **SQL** " vagy " **SqlOnDemand** " típusú privát kapcsolati végpont attól függ, hogy milyen erőforrásokra van szükség a szinapszis Studio munkaterület eléréséhez. Ez a privát hivatkozás végpontjának létrehozása a szinapszis Studio-munkaterülethez hasonló, mint a végpontok létrehozásakor.  
+A **konfiguráció** lapon: 
+* A **virtuális hálózat** területen válassza a korlátozott virtuális hálózat nevét.
+* Az **alhálózat** területen válassza ki a korlátozott virtuális hálózat alhálózatát. 
+* A **magánhálózati DNS-zónával való integrációhoz** válassza az **Igen** lehetőséget.
 
-Ügyeljen az " **erőforrás** " lapon az alábbi területekre:
-* Válassza a " **Microsoft. szinapszis/munkaterületek** " lehetőséget az " **Erőforrás típusa** " értékre.
-* Válassza a " **YourWorkSpaceName** " elemet a korábban létrehozott **erőforráshoz**.
-* Válassza ki a végpont típusát a **cél alerőforrásban** :
-  * **SQL** : SQL-lekérdezés végrehajtása SQL-készletben.
-  * **SqlOnDemand** : az SQL beépített lekérdezés-végrehajtásához használható.
-  * **Fejlesztői** : a szinapszis Studio-munkaterületeken található minden más szolgáltatáshoz való hozzáférés. Létre kell hoznia legalább egy ilyen típusú magánhálózati kapcsolati végpontot.
+![Képernyőkép a privát végpontok, a konfiguráció lap létrehozásáról.](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-3.png)
 
-![Privát végpont létrehozása a szinapszis Studio-munkaterülethez](./media/how-to-connect-to-workspace-from-restricted-network/plinks-endpoint-ws-1.png)
+A magánhálózati kapcsolat végpontjának létrehozása után elérheti az Azure szinapszis Analytics Studio webeszközének bejelentkezési lapját. Azonban még nem fér hozzá a munkaterületen belüli erőforrásokhoz. Ehhez végre kell hajtania a következő lépést.
+
+## <a name="step-4-create-private-endpoints-for-your-workspace-resource"></a>4. lépés: privát végpontok létrehozása a munkaterület-erőforráshoz
+
+Az Azure szinapszis Analytics Studio Workspace-erőforráson belüli erőforrások eléréséhez létre kell hoznia a következőket:
+
+- Legalább egy titkos kapcsolati végpont, amely a **cél alerőforrásának** **fejlesztői** típusát adja meg.
+- Két további opcionális privát csatolási végpont **SQL** -vagy **SqlOnDemand** -típussal attól függően, hogy milyen erőforrásokat szeretne elérni a munkaterületen.
+
+A létrehozás hasonló ahhoz, ahogy az előző lépésben létrehozza a végpontot.  
+
+Az **erőforrás** lapon:
+
+* Az **erőforrástípus** mezőben válassza a **Microsoft. szinapszis/munkaterületek** lehetőséget.
+* Az **erőforrás** mezőben válassza ki a korábban létrehozott munkaterület nevét.
+* A **cél alerőforrásnál** válassza ki a végpont típusát:
+  * Az **SQL az SQL** -lekérdezés futtatására szolgál az SQL-készletben.
+  * A **SqlOnDemand** az SQL beépített lekérdezés-végrehajtásához használható.
+  * A **dev** az Azure szinapszis Analytics Studio-munkaterületein minden más szolgáltatáshoz való hozzáférés. Létre kell hoznia legalább egy ilyen típusú privát kapcsolati végpontot.
+
+![Képernyőkép a privát végpont, Erőforrás lap és munkaterület létrehozásáról.](./media/how-to-connect-to-workspace-from-restricted-network/plinks-endpoint-ws-1.png)
 
 
-## <a name="step-5-create-private-endpoints-for-synapse-studio-workspace-linked-storage"></a>5. lépés: magánhálózati végpontok létrehozása a szinapszis Studio-munkaterülethez társított tároláshoz
+## <a name="step-5-create-private-endpoints-for-workspace-linked-storage"></a>5. lépés: magánhálózati végpontok létrehozása a munkaterület csatolt tárolójához
 
-A kapcsolódó tárolónak a szinapszis Studio munkaterületen található Storage Explorerrel való eléréséhez létre kell hoznia egy privát végpontot a 3. lépésben említett hasonló lépésekkel. 
+Ha a társított tárolót az Azure szinapszis Analytics Studio munkaterületen található Storage Explorerrel szeretné elérni, létre kell hoznia egy privát végpontot. Az ehhez hasonló lépések a 3. lépésben láthatók. 
 
-Ügyeljen az " **erőforrás** " lapon az alábbi területekre:
-* Válassza a " **Microsoft. szinapszis/storageAccounts** " értéket az " **erőforrástípus** " értékre.
-* Válassza a " **YourWorkSpaceName** " elemet a korábban létrehozott **erőforráshoz**.
-* Válassza ki a végpont típusát a **cél alerőforrásban** :
-  * **blob** : az Azure Blob Storage-hoz.
-  * **DFS** : Azure Data Lake Storage Gen2.
+Az **erőforrás** lapon:
+* Az **erőforrástípus** mezőben válassza a **Microsoft. szinapszis/storageAccounts** lehetőséget.
+* Az **erőforrás** mezőben válassza ki a korábban létrehozott Storage-fiók nevét.
+* A **cél alerőforrásnál** válassza ki a végpont típusát:
+  * a **blob** az Azure Blob Storage.
+  * a **dfs** Azure Data Lake Storage Gen2.
 
-![Privát végpont létrehozása a szinapszis Studio-munkaterület társított tárterületéhez](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-storage.png)
+![Képernyőkép a privát végpont, Erőforrás lap, tárterület létrehozásáról.](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-storage.png)
 
-Most már elérheti a csatolt Storage-erőforrást a vNet-ben található szinapszis Studio-munkaterületen a Storage Explorerben.
+Most elérheti a társított tárolási erőforrást. A virtuális hálózaton belül az Azure szinapszis Analytics Studio-munkaterületen a Storage Explorer használatával férhet hozzá a társított tárolási erőforráshoz.
 
-Ha a munkaterület " **felügyelt virtuális hálózat engedélyezése** " lehetőséggel rendelkezik a munkaterület létrehozása során az alábbi módon:
+Engedélyezheti a felügyelt virtuális hálózatot a munkaterülethez, ahogy az a következő képernyőképen is látható:
 
-![Privát végpont létrehozása a szinapszis Studio-munkaterület csatolt tárterületéhez 1](./media/how-to-connect-to-workspace-from-restricted-network/ws-network-config.png)
+![Képernyőfelvétel a szinapszis-munkaterület létrehozásáról, a felügyelt virtuális hálózat engedélyezése lehetőség kiemelve.](./media/how-to-connect-to-workspace-from-restricted-network/ws-network-config.png)
 
-És azt szeretné, hogy a jegyzetfüzet egy bizonyos Storage-fiókhoz tartozó társított tárolási erőforrásokat is hozzáférhessen, hozzá kell adnia egy " **felügyelt privát végpontot** " a szinapszis Studióban. A " **Storage-fiók neve** " legyen a notebookhoz való hozzáféréshez szükséges egyik. Ismerje meg a [felügyelt privát végpontok adatforráshoz való létrehozásának](./how-to-create-managed-private-endpoints.md)részletes lépéseit.
+Ha azt szeretné, hogy a notebookja egy bizonyos Storage-fiókhoz tartozó társított tárolási erőforrásokhoz férhessen hozzá, vegyen fel felügyelt magánhálózati végpontokat az Azure szinapszis Analytics Studióban. A Storage-fiók nevének kell lennie, amelyet a notebooknak el kell érnie. További információ: [felügyelt privát végpont létrehozása az adatforráshoz](./how-to-create-managed-private-endpoints.md).
 
-A végpont létrehozása után a "jóváhagyás állapota" " **függőben** " **állapotú** lesz, ennek a Storage-fióknak a tulajdonosát kell megkérnie, hogy hagyja jóvá a " **privát végponti kapcsolatok** " lapon a Azure Portal. A jóváhagyást követően a jegyzetfüzet hozzáférhet a Storage-fiókhoz tartozó társított tárolási erőforrásokhoz.
+A végpont létrehozása után a jóváhagyási állapot **függőben** állapotot mutat. A Storage-fiók tulajdonosának jóváhagyása a Azure Portal a Storage-fiók **Private Endpoint Connections** lapján. A jóváhagyást követően a notebookja hozzáférhet a Storage-fiókban lévő társított tárolási erőforrásokhoz.
 
-Most pedig minden beállítás. Elérheti a szinapszis Studio-munkaterület erőforrását.
+Most pedig minden beállítás. Elérheti az Azure szinapszis Analytics Studio Workspace-erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [felügyelt munkaterületről Virtual Network](./synapse-workspace-managed-vnet.md)
+További információ a [felügyelt munkaterület virtuális hálózatáról](./synapse-workspace-managed-vnet.md).
 
-További információ a [felügyelt privát végpontokról](./synapse-workspace-managed-private-endpoints.md)
+További információ a [felügyelt privát végpontokról](./synapse-workspace-managed-private-endpoints.md).

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 30cdc9924d41fdbe27156fcf90688d4baf440487
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7e17cdca508db81551d988c795bd1235fa729e82
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210373"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636860"
 ---
 # <a name="apache-kafka-with-confluent-schema-registry-in-azure-hdinsight"></a>Apache Kafka az Azure HDInsight-ben az Fluent séma beállításjegyzékével
 
@@ -34,14 +34,14 @@ Ebben a szakaszban egy HDInsight által felügyelt Kafka-fürtöt helyezünk üz
 
 1. Az Azure-ba való bejelentkezéshez és a Resource Manager-sablon megnyitásához válassza az alábbi **üzembe helyezés az Azure** -ban gombot.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/schema-registry/hdi-deploy-to-azure1.png"/></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json" target="_blank">:::image type="icon" source="media/schema-registry/hdi-deploy-to-azure1.png":::</a>
 
 1. Az egyéni központi telepítési sablonban töltse fel a mezőket az alább leírtak szerint:
 
     |Tulajdonság |Leírás |
     |---|---|
     |Előfizetés|A legördülő listában válassza ki a fürthöz használt Azure-előfizetést.|
-    |Erőforráscsoport|A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása**lehetőséget.|
+    |Erőforráscsoport|A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása** lehetőséget.|
     |Régió|A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.|
     |Fürt neve|Adjon meg egy globálisan egyedi nevet. Vagy hagyja a következőt: az alapértelmezett név használata.|
     |Fürt bejelentkezési felhasználóneve|Adja meg a felhasználónevet, az alapértelmezett érték a **rendszergazda**.|
@@ -71,13 +71,13 @@ A séma regisztrálásának tudnia kell, hogy a Zookeeper szolgáltatás képes 
     export password='PASSWORD'
     ```
 
-1. Bontsa ki a megfelelő tokozású fürt nevét. Hajtsa végre a következő parancsot:
+1. Bontsa ki a megfelelő tokozású fürt nevét. Futtassa a következő parancsot:
 
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
 
-1. A Kafka Zookeeper-gazdagépek kibontása. Hajtsa végre a következő parancsot:
+1. A Kafka Zookeeper-gazdagépek kibontása. Futtassa a következő parancsot:
 
     ```bash
     export KAFKAZKHOSTS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2);
@@ -87,7 +87,7 @@ A séma regisztrálásának tudnia kell, hogy a Zookeeper szolgáltatás képes 
 
     Jegyezze fel ezt az értéket, mert később használni fogja.
 
-1. Bontsa ki a Kafka Broker gazdagépeit. Hajtsa végre a következő parancsot:
+1. Bontsa ki a Kafka Broker gazdagépeit. Futtassa a következő parancsot:
 
     ```bash
     export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
@@ -95,7 +95,7 @@ A séma regisztrálásának tudnia kell, hogy a Zookeeper szolgáltatás képes 
     echo $KAFKABROKERS
     ```
 
-1. Nyissa meg szerkesztési módban a séma beállításjegyzékének tulajdonságait tartalmazó fájlokat. Hajtsa végre a következő parancsot:
+1. Nyissa meg szerkesztési módban a séma beállításjegyzékének tulajdonságait tartalmazó fájlokat. Futtassa a következő parancsot:
 
     ```bash
     sudo nano /etc/schema-registry/schema-registry.properties
@@ -113,7 +113,7 @@ A séma regisztrálásának tudnia kell, hogy a Zookeeper szolgáltatás képes 
     debug=true
     ```
 
-1. A fájl mentéséhez használja a **CTRL + X billentyűkombinációt** **, majd** **írja be**a következőt:.
+1. A fájl mentéséhez használja a **CTRL + X billentyűkombinációt** **, majd** **írja be** a következőt:.
 
 1. Indítsa el a séma beállításjegyzékét, és mutasson rá a frissített séma beállításjegyzék-tulajdonságok fájljának használatára. Hajtsa végre a következő parancsokat:
 
@@ -215,7 +215,7 @@ Ebben a szakaszban beolvasjuk az adatokat a standard bemenetből, és egy Kafka-
     }
     ```
 
-    Használja az alábbi parancsot a **Kafka Avro-konzol gyártójának**elindításához:
+    Használja az alábbi parancsot a **Kafka Avro-konzol gyártójának** elindításához:
 
     ```bash
     /usr/bin/kafka-avro-console-producer     --broker-list $KAFKABROKERS     --topic agkafkaschemareg     --property parse.key=true --property key.schema='{"type" : "int", "name" : "id"}'     --property value.schema='{ "type" : "record", "name" : "example_schema", "namespace" : "com.example", "fields" : [ { "name" : "cust_id", "type" : "int", "doc" : "Id of the customer account" }, { "name" : "year", "type" : "int", "doc" : "year of expense" }, { "name" : "expenses", "type" : {"type": "array", "items": "float"}, "doc" : "Expenses for the year" } ], "doc:" : "A basic schema for storing messages" }'
@@ -276,6 +276,6 @@ Ebben a szakaszban beolvasjuk az adatokat a standard bemenetből, és egy Kafka-
     {"cust_id":3535353,"year":2011,"expenses":[761.35,92.18,14.41]}
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Apache Kafka producer és a fogyasztói API-k használata](apache-kafka-producer-consumer-api.md)

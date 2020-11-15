@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: ee286540d4fd740c5e7c1f8bd693fddd625eeae2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 6c364cf84bada2a951ef3f224ea836885f0e3c1e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398147"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636316"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Oktatóanyag: eszközre vonatkozó adatfogadás az Azure IoT Hub
 
-Az Azure IoT-összekötő a FHIR * számára lehetővé teszi, hogy az orvosi eszközök internetes hálózatáról (IoMT) származó adatok betöltését az Azure API-ba FHIR. Az [Azure IoT-összekötő üzembe helyezése a FHIR-ben (előzetes verzió) a Azure Portal](iot-fhir-portal-quickstart.md) rövid útmutatóban az Azure IoT Central által felügyelt eszközre mutat példát, amely [telemetria küld](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot) az Azure IoT Connectornak FHIR. A FHIR készült Azure IoT-összekötő az Azure IoT Hub használatával kiépített és felügyelt eszközökkel is használható. Ez az oktatóanyag azt az eljárást ismerteti, amellyel az Azure IoT Hub az Azure IoT-összekötőhöz csatlakoztathatja és irányíthatja az eszközöket az FHIR-hez.
+Az Azure IoT-összekötő a gyors egészségügyi együttműködési erőforrásokhoz (FHIR&#174;) * lehetőséget nyújt az orvosi eszközök internetes hálózatáról (IoMT) származó adatoknak az Azure API-ba való betöltésére a FHIR. Az [Azure IoT-összekötő üzembe helyezése a FHIR-ben (előzetes verzió) a Azure Portal](iot-fhir-portal-quickstart.md) rövid útmutatóban az Azure IoT Central által felügyelt eszközre mutat példát, amely [telemetria küld](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot) az Azure IoT Connectornak FHIR. A FHIR készült Azure IoT-összekötő az Azure IoT Hub használatával kiépített és felügyelt eszközökkel is használható. Ez az oktatóanyag azt az eljárást ismerteti, amellyel az Azure IoT Hub az Azure IoT-összekötőhöz csatlakoztathatja és irányíthatja az eszközöket az FHIR-hez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,7 +51,7 @@ Itt látható a végpont létrehozásához a paranccsal használandó paraméter
 |PowerShell-paraméter|CLI-paraméter|Leírás|
 |---|---|---|
 |ResourceGroupName|resource-group|Az IoT Hub erőforrás erőforráscsoport-neve.|
-|Name|hub neve|A IoT Hub erőforrás neve.|
+|Név|hub neve|A IoT Hub erőforrás neve.|
 |Végpontneve|végpont neve|Használjon olyan nevet, amelyet hozzá szeretne rendelni a létrehozandó végponthoz.|
 |EndpointType|végpont típusa|Annak a végpontnak a típusa, amelyhez IoT Hub csatlakoznia kell. Használja a "EventHub" konstans értékét a PowerShell és a "EventHub" számára a CLI-hez.|
 |EndpointResourceGroup|végpont – erőforrás-csoport|Erőforráscsoport neve az Azure IoT-összekötőhöz a FHIR Azure API-hoz a FHIR-erőforráshoz. Ezt az értéket a FHIR készült Azure API áttekintés lapján érheti el.|
@@ -66,7 +66,7 @@ Az üzenet útvonalának hozzáadásához a paranccsal használható paramétere
 |PowerShell-paraméter|CLI-paraméter|Leírás|
 |---|---|---|
 |ResourceGroupName|g|Az IoT Hub erőforrás erőforráscsoport-neve.|
-|Name|hub neve|A IoT Hub erőforrás neve.|
+|Név|hub neve|A IoT Hub erőforrás neve.|
 |Végpontneve|végpont neve|A fent létrehozott végpont neve.|
 |Z|útvonal neve|A létrehozandó üzenet-útvonalhoz hozzárendelni kívánt név.|
 |Forrás|forrás típusa|A végpontnak küldendő adattípusok. Használja a "DeviceMessages" konstans értékét a PowerShell és a "DeviceMessages" számára a CLI-hez.|
@@ -113,6 +113,4 @@ Ismerje meg, hogyan konfigurálhatja az IoT-összekötőt eszköz-és FHIR-leké
 >[!div class="nextstepaction"]
 >[Azure IoT-összekötő FHIR-leképezési sablonokhoz](iot-mapping-templates.md)
 
-* A Azure Portal a FHIR készült Azure IoT-összekötő a IoT-összekötő (előzetes verzió) néven ismert.
-
-Az FHIR a HL7 bejegyzett védjegye, amelynek felhasználását a HL7 engedélyezte.
+* A Azure Portal a FHIR készült Azure IoT Connector a IoT Connector (előzetes verzió) néven ismert. A FHIR a HL7 bejegyzett védjegye, és a HL7 engedélyével van használatban.

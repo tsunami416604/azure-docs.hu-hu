@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 98d3beef72d314f93f6a2bc580b1dd5de5735f23
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 23b9774f28f915596abafbd8c1f6c38fc4f55748
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242466"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636265"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Privát hivatkozás létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgáló számára a portál használatával
 
@@ -62,7 +62,7 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
     | Virtuális gép neve | Adja meg a *myVm*. |
     | Régió | Válassza a **Nyugat-Európa** régiót. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Kép | Válassza a **Windows Server 2019 Datacenter** lehetőséget. |
+    | Rendszerkép | Válassza a **Windows Server 2019 Datacenter** lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2** értéket. |
     | **RENDSZERGAZDAFIÓK** |  |
     | Felhasználónév | Adja meg a választott felhasználónevet. |
@@ -121,7 +121,7 @@ Ebben a szakaszban egy Azure Database for PostgreSQL-kiszolgálót fog létrehoz
     | Számítás és tárolás| Válassza ki a kiszolgálón a munkaterhelés alapján szükséges díjszabási szintet. |
     |||
  
-7. Válassza az **OK** lehetőséget. 
+7. Kattintson az **OK** gombra. 
 8. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját. 
 9. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a **Létrehozás** lehetőséget. 
 10. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a létrehozás lehetőséget. 
@@ -222,7 +222,7 @@ A **myVm** létrehozása után az alábbi módon csatlakozhat az internetről:
     Address:  10.1.3.4
     ```
 
-3. A PostgreSQL-kiszolgáló magánhálózati kapcsolati kapcsolatának tesztelése bármely elérhető ügyfél használatával. Az alábbi példában az [Azure](/sql/azure-data-studio/download?view=sql-server-ver15) -beli adattárat használtuk a művelet végrehajtásához.
+3. A PostgreSQL-kiszolgáló magánhálózati kapcsolati kapcsolatának tesztelése bármely elérhető ügyfél használatával. Az alábbi példában az [Azure](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) -beli adattárat használtuk a művelet végrehajtásához.
 
 4. Az **új kapcsolatok** területen adja meg vagy válassza ki az alábbi adatokat:
 
@@ -250,7 +250,7 @@ Ha végzett a privát végpont, a PostgreSQL-kiszolgáló és a virtuális gép 
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Database for PostgreSQL-kiszolgálót és egy privát végpontot a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságos módon kommunikál a PostgreSQL-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint](../private-link/private-endpoint-overview.md).
 

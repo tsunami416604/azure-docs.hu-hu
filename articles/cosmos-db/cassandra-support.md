@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: ae4281350efc96fab6c4e2898cbcddf83bf29cd8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ecf4229c95ff9103cd27fd161fdd19c9e7a0f76b
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073115"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636962"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -51,7 +51,7 @@ Az Azure Cosmos DB Cassandra API a következő CQL-adattípusokat támogatja:
 | boolean  | Igen |
 | számláló  | Igen |
 | dátum  | Igen |
-| decimal  | Igen |
+| tizedes tört  | Igen |
 | double  | Igen |
 | float  | Igen |
 | kimerevítve  | Igen |
@@ -86,17 +86,24 @@ Az Azure Cosmos DB Cassandra API a következő CQL-függvényeket támogatja:
 | writetime | Igen |
 | típuskonverzió | Nem |
 
-\* Cassandra API a tokent kivetítési/választóként támogatja, és csak a tokent (PK) engedélyezi egy WHERE záradék bal oldalán. Például `WHERE token(pk) > 1024` támogatott, de `WHERE token(pk) > token(100)` nem támogatott.
+> [!NOTE]
+> \* Cassandra API a tokent kivetítési/választóként támogatja, és csak a tokent (PK) engedélyezi egy WHERE záradék bal oldalán. Például `WHERE token(pk) > 1024` támogatott, de `WHERE token(pk) > token(100)` **nem** támogatott.
+
 
 
 Összesítő függvények:
 
 |Parancs  |Támogatott |
 |---------|---------|
-| p | Igen |
-| max. | Igen |
 | AVG | Igen |
 | count | Igen |
+| p | Igen |
+| max. | Igen |
+| Sum | Igen |
+
+> [!NOTE]
+> Az összesítő függvények normál oszlopokon működnek, de a fürtözési oszlopok összesítései **nem** támogatottak.
+
 
 BLOB-átalakítási függvények:
  
@@ -200,7 +207,7 @@ Az Azure Cosmos DB Cassandra API egy felügyelt szolgáltatási platform. A für
 
 Egy üzemeltetett natív Cassandra shellt (CQLSH v 5.0.1) közvetlenül a [Azure Portal](data-explorer.md) vagy az [Azure Cosmos Explorer](https://cosmos.azure.com/)adatkezelő lehet megnyitni. A CQL-rendszerhéj engedélyezése előtt engedélyeznie kell [a jegyzetfüzetek](enable-notebooks.md) szolgáltatást a fiókjában (ha még nincs engedélyezve, akkor a rendszer rákérdez a gombra `Open Cassandra Shell` ). Jelölje be a Kiemelt Megjegyzés a [jegyzetfüzetek engedélyezése Azure Cosmos db-fiókok](enable-notebooks.md) számára támogatott Azure-régiók számára című részt.
 
-:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH megnyitása&quot;:::
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH megnyitása":::
 
 A helyi gépre telepített CQLSH használatával a Azure Cosmos DB Cassandra API is csatlakozhat. Az Apache Cassandra 3.1.1-es verziójában a környezeti változók beállításával működik a doboz. A következő részekben a CQLSH-t használó Windowson vagy Linuxon Cassandra API telepítéséhez, konfigurálásához és a Azure Cosmos DBhoz való kapcsolódáshoz szükséges utasítások találhatók.
 
@@ -224,7 +231,7 @@ curl https://cacert.omniroot.com/bc2025.crt > bc2025.crt
 keytool -importcert -alias bc2025ca -file bc2025.crt
 
 # Install the Cassandra libraries in order to get CQLSH:
-echo &quot;deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install cassandra
@@ -260,7 +267,7 @@ Az Azure Cosmos DB Cassandra API konzisztenciaválasztási lehetőséget kínál
 
 ## <a name="permission-and-role-management"></a>Engedély- és szerepkörkezelés
 
-A Azure Cosmos DB támogatja a szerepköralapú hozzáférés-vezérlést (RBAC) a kiépítés, a kulcsok elforgatása, a metrikák, valamint az írási és olvasási és a csak olvasható jelszavak/kulcsok megtekintésére, amelyek a [Azure Portal](https://portal.azure.com)keresztül szerezhetők be. A Azure Cosmos DB nem támogatja a szifilisz-tevékenységek szerepkörét.
+Azure Cosmos DB támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) a kiépítés, a kulcsok elforgatása, a metrikák, valamint az írási és olvasási és csak olvasható jelszavak/kulcsok megtekintésére, amelyek a [Azure Portal](https://portal.azure.com)keresztül szerezhetők be. A Azure Cosmos DB nem támogatja a szifilisz-tevékenységek szerepkörét.
 
 ## <a name="keyspace-and-table-options"></a>A térköz és a tábla beállításai
 
@@ -284,6 +291,6 @@ A Cassandra API támogatja a másodlagos indexeket minden adattípuson, kivéve 
 
 A Azure Cosmos DB erőforrás-szabályozású rendszer. Ez azt jelenti, hogy egy adott másodpercben bizonyos számú műveletet végrehajthat a műveletek által felhasznált kérelmek egységei alapján. Ha egy alkalmazás túllépi ezt a korlátot egy adott másodpercben, a kérések száma korlátozott, és a rendszer a kivételeket is eldönti. A Azure Cosmos DB Cassandra API lefordítja ezeket a kivételeket a Cassandra Native protokollon túlterhelt hibák esetén. Annak biztosítása érdekében, hogy az alkalmazás képes legyen feltartóztatni és újrapróbálkozni a kérelmeket a díjszabás korlátozása esetén, a [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) és a [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) -bővítmények is elérhetők. Lásd még: Java-kódrészletek a [3](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) . és [4-es verziójú](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4) Datastax-illesztőprogramok esetén, amikor a Cassandra APIhoz csatlakozik Azure Cosmos DBban. Ha más SDK-kat használ a Azure Cosmos DB Cassandra APIhoz való hozzáféréshez, hozzon létre egy kapcsolati szabályzatot, amely újrapróbálkozik ezekkel a kivételekkel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedés a [Cassandra API-fiókok, -adatbázisok és -táblák létrehozásával](create-cassandra-api-account-java.md) Java-alkalmazás használatával

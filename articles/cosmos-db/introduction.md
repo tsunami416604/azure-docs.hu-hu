@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: eb2212d618d45187779b328c7ba164bbacc980a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 012df825f38d292d0b0549701ad90334e3e30bb0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088686"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637013"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -55,7 +55,7 @@ Garantálhatja az üzletmenet folytonosságát, a 99,999%-os rendelkezésre áll
 - A Azure Cosmos DB számos [SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) -t kínál, többek között piacvezető rendelkezésre állást világszerte.
 - Az automatikus adatreplikálással könnyedén terjesztheti az összes Azure-régiót. Erős konzisztencia használata esetén a nulla állásidőt a többrégiós írásokkal vagy a RPO 0 értékkel veheti igénybe.
 - A nagyvállalati szintű titkosítást saját maga által felügyelt kulcsokkal használhatja.
-- A szerepköralapú hozzáférés-vezérlés biztosítja az adatbiztonságot, és kiválóan hangolt vezérlést biztosít.
+- Az Azure szerepköralapú hozzáférés-vezérlés gondoskodik az adatai biztonságáról, és kiválóan hangolt vezérlést biztosít.
 
 ### <a name="fully-managed-and-cost-effective"></a>Teljes körűen felügyelt és költséghatékony
 
@@ -70,7 +70,7 @@ Végpontok közötti adatbázis-kezelés, kiszolgáló nélküli és automatikus
 
 Az olyan [webes, mobil-, játék-és IoT-alkalmazások](use-cases.md) , amelyek nagy mennyiségű adatot, olvasási és írási műveleteket igényelnek [globális szinten](distribute-data-globally.md) , a különböző adatokhoz közel valós válaszidő esetén, Cosmos db [garantált magas rendelkezésre állást](https://azure.microsoft.com/support/legal/sla/cosmos-db/), magas átviteli sebességet, kis késést és hangolt konzisztenciát biztosítanak. Ismerje meg, hogyan használhatók a Azure Cosmos DB a [IoT és a telematika](use-cases.md#iot-and-telematics), a [kiskereskedelmi és a marketing](use-cases.md#retail-and-marketing), a [játékok](use-cases.md#gaming) és a [webes és mobil alkalmazások](use-cases.md#web-and-mobile-applications)létrehozásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi rövid útmutatókkal könnyedén elkezdheti az Azure Cosmos DB használatát:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 4f83500e539ff5254db290d156dfcf50ea60de14
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 236a604c2c1cecfb18a2d82c3796a88cc4341a34
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372557"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636384"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender a gépeken futó SQL-kiszolgálókon 
 
@@ -48,7 +48,7 @@ A fentiek mindegyikét alább találja.
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>1. lépés A Log Analytics-ügynök kiépítése az SQL Server gazdagépén:
 
-- **SQL Server Azure** -beli virtuális gépen – ha az SQL-gépe Azure-beli virtuális gépen üzemel, akkor [automatikusan kiépítheti a log Analytics-ügynököt](security-center-enable-data-collection.md#workspace-configuration). Azt is megteheti, hogy a manuális eljárást követve bevezeti [a Azure stack virtuális gépeket](quickstart-onboard-machines.md#onboard-your-azure-stack-vms).
+- **SQL Server Azure** -beli virtuális gépen – ha az SQL-gépe Azure-beli virtuális gépen üzemel, akkor [engedélyezheti a log Analytics- <a name="auto-provision-mma"></a> ügynök automatikus](security-center-enable-data-collection.md#auto-provision-mma)kihelyezését. Azt is megteheti, hogy a manuális eljárást követve bevezeti [a Azure stack virtuális gépeket](quickstart-onboard-machines.md#onboard-your-azure-stack-vms).
 - **SQL Server az Azure-on** – ha az SQL Servert az [Azure arc](../azure-arc/index.yml) -kompatibilis kiszolgálók felügyelik, a log Analytics-ügynököt a Security Center javaslat használatával telepítheti: "log Analytics ügynökének telepítve kell lennie a Windows-alapú Azure arc-gépeken (előzetes verzió)". Másik lehetőségként az [Azure arc dokumentációjában](../azure-arc/servers/manage-vm-extensions.md)ismertetett telepítési módszereket is követheti.
 
 - **Helyszíni SQL Server** – ha a SQL Server Azure arc nélküli helyszíni Windows-gépen üzemel, két lehetőség közül választhat az Azure-hoz való csatlakozáshoz:

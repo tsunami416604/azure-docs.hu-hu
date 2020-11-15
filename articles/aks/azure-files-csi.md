@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b29f4034b12ce43e6c051e454601f196365469f3
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745791"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636980"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>A Azure Files Container Storage Interface (CSI) illesztőprogramjainak használata az Azure Kubernetes Service-ben (ak) (előzetes verzió)
 
@@ -229,7 +229,7 @@ az provider register --namespace Microsoft.Storage
 [Hozzon létre egy `Premium_LRS` ](../storage/files/storage-how-to-create-premium-fileshare.md) Az NFS-megosztások támogatásához a következő konfigurációkat tartalmazó Azure Storage-fiók:
 - fiók típusa: FileStorage
 - biztonságos átvitel szükséges (csak HTTPS-forgalom engedélyezése): false
-- Válassza ki az ügynök csomópontjainak virtuális hálózatát a tűzfalak és a virtuális hálózatok területen
+- Válassza ki az ügynök csomópontjainak virtuális hálózatát a tűzfalakban és a virtuális hálózatokban – ezért érdemes lehet a Storage-fiókot a MC_ erőforráscsoporthoz létrehozni.
 
 ### <a name="create-nfs-file-share-storage-class"></a>NFS-fájlmegosztás tárolási osztályának létrehozása
 
@@ -239,7 +239,7 @@ A `nfs-sc.yaml` megfelelő helyőrzők szerkesztésével mentse az alábbi jegyz
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: azurefile-csi
+  name: azurefile-csi-nfs
 provisioner: file.csi.azure.com
 parameters:
   resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
@@ -276,6 +276,10 @@ accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-55660
 ...
 ```
 
+>[!NOTE]
+> Vegye figyelembe, hogy mivel az NFS-fájlmegosztás Premium-fiókban van, a fájlmegosztás minimális mérete 100 GB. Ha kisebb tárterülettel rendelkező PVC-t hoz létre, a következő hibaüzenet jelenhet meg: "nem sikerült létrehozni a fájlmegosztást... méret (5)... "
+
+
 ## <a name="windows-containers"></a>Windows-tárolók
 
 A Azure Files CSI-illesztőprogram a Windows-csomópontokat és-tárolókat is támogatja. Ha Windows-tárolókat szeretne használni, kövesse a [Windows-tárolók oktatóanyagot](windows-container-cli.md) a Windows-csomópontok hozzáadásához.
@@ -300,7 +304,7 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 (...)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure-lemezek CSI-illesztőprogramjainak használatáról további információt az [Azure-lemezek használata a CSI-illesztőprogramokkal](azure-disk-csi.md)című témakörben talál.
 - További információ a tárolással kapcsolatos ajánlott eljárásokról: [ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban][operator-best-practices-storage].

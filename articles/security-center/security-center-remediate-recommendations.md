@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 4bad3227e08c0fbe0d280967e45bbef9d477e1b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4b968d0d5e091d72cf718d58b11ade68ddf8c6
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569135"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637088"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Helyreállítási javaslatok az Azure Security Centerben
 
@@ -38,15 +38,22 @@ Az összes javaslat áttekintése után döntse el, hogy melyiket kell elsőkén
 
 ## <a name="quick-fix-remediation"></a>Gyors javítás szervizelése<a name="one-click"></a>
 
-A gyors javítás lehetővé teszi, hogy gyorsan javítsa a több erőforrásra vonatkozó javaslatait. Csak konkrét javaslatok esetében érhető el. A gyors javítás leegyszerűsíti a szervizelést, és lehetővé teszi a biztonsági pontszám gyors növelését, a környezet biztonságának javítását.
+A gyors javítás leegyszerűsíti a szervizelést, és lehetővé teszi a biztonsági pontszám gyors növelését, a környezet biztonságának javítását.
 
-A gyors javítási szervizelés megvalósítása:
+A gyors javítás lehetővé teszi, hogy gyorsan javítsa a több erőforrásra vonatkozó javaslatait. 
+
+> [!TIP]
+> A gyors javítás csak bizonyos javaslatok esetében érhető el. A gyors javítási lehetőséggel rendelkező javaslatok megkereséséhez használja a javaslatok listájának tetején található dedikált szűrőt:
+> 
+> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="A javaslatok lista fölötti szűrők használatával megtalálhatja a gyors javítás lehetőséget tartalmazó javaslatokat":::
+
+Gyors javítási szervizelés megvalósítása:
 
 1. A **gyors javítást** tartalmazó javaslatok listájáról címkére, kattintson a javaslatra.
 
     [![Válassza a gyors javítás lehetőséget.](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
 
-1. A nem kifogástalan **erőforrások** lapon válassza ki azokat az erőforrásokat, amelyekhez javaslatot kíván végrehajtani, majd kattintson a **szervizelés**elemre.
+1. A nem kifogástalan **erőforrások** lapon válassza ki azokat az erőforrásokat, amelyekhez javaslatot kíván végrehajtani, majd kattintson a **szervizelés** elemre.
 
     > [!NOTE]
     > Előfordulhat, hogy a felsorolt erőforrások némelyike le van tiltva, mert nem rendelkezik a megfelelő engedélyekkel a módosításhoz.
@@ -70,7 +77,7 @@ A gyors javítási szervizelés megvalósítása:
 A Szervizelési művelet sablon-telepítési vagy REST-javító API-hívást használ a konfiguráció alkalmazásához az erőforráson. Ezeket a műveleteket az [Azure-tevékenység naplójában](../azure-resource-manager/management/view-activity-logs.md)naplózza a rendszer.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan javíthatja az ajánlásokat a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő témaköröket:
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/10/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cfaef4460df040ecc9b055fba83d33a3b687b200
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: cdba4ce36322f9c3fb0f898cb7eb1d1185ed1dc6
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505376"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636945"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
@@ -207,12 +207,16 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha elkészült az Oktatóanyaggal, törölje azokat az erőforrásokat, amelyeket nem szeretne használni.
+
+## <a name="see-also"></a>További információ
 
 - [A Video Indexer áttekintése](video-indexer-overview.md)
 - [Régiók](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A kimeneti JSON részleteinek vizsgálata](video-indexer-output-json-v2.md)
 - Tekintse meg a videó feltöltésének és indexelésének fontos aspektusát bemutató [mintakód](https://github.com/Azure-Samples/media-services-video-indexer) használatát. A kód követésével jól megtudhatja, hogyan használhatja API-ját alapszintű funkciókhoz. Olvassa el a beágyazott megjegyzéseket, és figyelje meg az ajánlott eljárásokkal kapcsolatos tanácsokat.
