@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 11/12/2020
+ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: e25b8af3dd56078a3febe436b74af8f94cdcc485
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 7d96b03598f90b45b7ecf88027be7408d8f161ea
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636012"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638767"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Ügynökök és bővítmények automatikus kiépítés a Azure Security Centerból
 
@@ -24,7 +24,7 @@ Az adatgyűjtés szükséges a hiányzó frissítések láthatóságának biztos
 Az adatok gyűjtése a használatával történik:
 
 - A **log Analytics ügynök** , amely különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat olvas be a gépről, és átmásolja az adatokat a munkaterületre elemzés céljából. Ilyenek például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó.
-- A **virtuálisgép-bővítmények** , például a [Kubernetes Azure Policy-bővítménye](../governance/policy/concepts/policy-for-kubernetes.md), amely a speciális erőforrástípusok Security Center vonatkozó információkat is biztosít.
+- A **biztonsági bővítmények** , például a [Kubernetes Azure Policy-bővítménye](../governance/policy/concepts/policy-for-kubernetes.md), amely a speciális erőforrástípusok Security Center vonatkozó információkat is biztosít.
 
 > [!TIP]
 > Ahogy a Security Center nőtt, a megfigyelhető erőforrások típusai is megnőttek. A bővítmények száma is megnőtt. Az automatikus kiépítés kibővült a további erőforrástípusok támogatásához a Azure Policy képességeinek kihasználásával.
@@ -277,7 +277,7 @@ Az ügynök automatikus kiépítési funkciójának kikapcsolásához:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk bemutatja, hogyan működik az adatgyűjtés és az automatikus kiépítés a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő lapokat:
 
 - [Azure Security Center – gyakran ismételt kérdések](faq-general.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

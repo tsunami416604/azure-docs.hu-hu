@@ -11,18 +11,21 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 0a3aa0c26ddb515b8096cce909ca074f6f24a333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 732abed830afdb759ed52fd933673edd8e5cade6
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86250481"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638733"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Gyorsítótárazás hozzáadása az Azure API Management teljesítményének javításához
 
-Az API Management műveleteit konfigurálni lehet a válaszok gyorsítótárazásához. A válaszok gyorsítótárazása jelentősen csökkentheti az API-k késleltetését, sávszélesség-használatát és a webszolgáltatások terhelését olyan adatok esetén, amelyek nem változnak gyakran.
+A API Management API-jai és műveletei a válasz gyorsítótárazásával konfigurálhatók. A válasz gyorsítótárazása jelentősen csökkentheti a késést az API-hívók és a háttérbeli terhelések számára az API-szolgáltatók számára.
+
+> [!IMPORTANT]
+> A beépített gyorsítótár változékony, és az azonos régióban található összes egység ugyanazon a API Management szolgáltatásban van megosztva.
 
 A gyorsítótárazással kapcsolatos részletes információk: [Az API Management gyorsítótárazási házirendjei](api-management-caching-policies.md) és [Egyedi gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
 
@@ -91,7 +94,7 @@ A gyorsítótárazás működés közbeni megtekintéséhez hívja meg a művele
 5. Kattintson a **Tesztelés** lapra a jobb felső menüben.
 6. Kattintson a **Küldés** gombra.
 
-## <a name="next-steps"></a><a name="next-steps"> </a>További lépések
+## <a name="next-steps"></a><a name="next-steps"> </a>Következő lépések
 * További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] oktatóanyag [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
 * További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
 * További információ a Redis külső Azure cache-ről való használatáról: [külső Azure-gyorsítótár használata az azure API Management-ben való Redis](api-management-howto-cache-external.md).

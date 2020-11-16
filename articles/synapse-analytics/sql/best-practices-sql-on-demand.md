@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6fd0ba19739b75e72541ac84d6b1696ab2819dee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317428"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638869"
 ---
 # <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások a kiszolgáló nélküli SQL-készlethez (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -127,13 +127,17 @@ Ha a tárolt adatai nincsenek particionálva, érdemes particionálni. Ezen füg
 
 A CSV-fájlok lekérdezése teljesítményre optimalizált elemző használatával végezhető el. Részletekért lásd: [PARSER_VERSION](develop-openrowset.md).
 
+## <a name="manually-create-statistics-for-csv-files"></a>CSV-fájlok statisztikáinak manuális létrehozása
+
+A kiszolgáló nélküli SQL-készlet statisztikái támaszkodik az optimális lekérdezés-végrehajtási tervek létrehozásához. A statisztikák automatikusan létrejönnek a Parquet-fájlok oszlopaihoz, ha szükséges. Jelenleg nem jön létre automatikusan statisztikai adatok a CSV-fájlokban lévő oszlopokhoz, és a lekérdezésekben használt oszlopok esetében manuálisan kell létrehoznia a statisztikát, különösen a DISTINCT, a JOIN, a WHERE, a ORDER BY és a GROUP BY utasításban. A részletekért olvassa [el a kiszolgáló nélküli SQL-készlet statisztikáit](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview) .
+
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>A CETAS használata a lekérdezések teljesítményének és illesztésének növeléséhez
 
 A [CETAS](develop-tables-cetas.md) a kiszolgáló nélküli SQL-készlet legfontosabb funkcióinak egyike. A CETAS egy párhuzamos művelet, amely létrehozza a külső tábla metaadatait, és exportálja a SELECT lekérdezési eredményeket a Storage-fiókban lévő fájlok készletére.
 
 A CETAS használatával a lekérdezések gyakran használt részeit (például az összekapcsolt hivatkozási táblákat) a fájlok új készletéhez is tárolhatja. Ezután ehhez az egyetlen külső táblához csatlakozhat, és nem kell ismétlődő közös illesztéseket használnia több lekérdezésben.
 
-Ahogy a CETAS a parketta-fájlokat hozza létre, a statisztikák automatikusan létrejönnek, amikor az első lekérdezés ezt a külső táblázatot célozza meg, ami jobb teljesítményt eredményez.
+Ahogy a CETAS a parketta-fájlokat hozza létre, a rendszer automatikusan létrehozza a statisztikát, amikor az első lekérdezés erre a külső táblára irányul, ami jobb teljesítményt eredményez a CETAS-vel létrehozott táblázat későbbi lekérdezésekhez.
 
 ## <a name="azure-ad-pass-through-performance"></a>Azure AD-alapú átmenő teljesítmény
 

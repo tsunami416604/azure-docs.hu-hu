@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2020
+ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 315183040515110a6a21afcd00e12d1b12313170
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 2ea9fdcb11bd88755c0972fa166d1d94068ce60e
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341838"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638814"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -91,7 +91,7 @@ Az alapértelmezett munkaterület helye az Azure-régiótól függ:
 Az ügynök által figyelt alkalmazások és szolgáltatások teljes listájáért tekintse meg a [mi által figyelt Azure monitor?](../azure-monitor/monitor-reference.md#azure-services)című témakört.
 
 > [!IMPORTANT]
-> Vegye figyelembe, hogy egyes szolgáltatásokhoz, például a Azure Firewallhoz, ha engedélyezte a naplózást, és kiválasztott egy csevegő erőforrást a naplóhoz (például a naplót *részletesen*állítja be), jelentős hatással lehet az log Analytics munkaterület tárolási igényeire. 
+> Vegye figyelembe, hogy egyes szolgáltatásokhoz, például a Azure Firewallhoz, ha engedélyezte a naplózást, és kiválasztott egy csevegő erőforrást a naplóhoz (például a naplót *részletesen* állítja be), jelentős hatással lehet az log Analytics munkaterület tárolási igényeire. 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Törölhetem a Security Center által létrehozott alapértelmezett munkaterületeket?
@@ -109,24 +109,28 @@ Kiválaszthat egy meglévő Log Analytics munkaterületet a Security Center ált
 
 Meglévő Log Analytics munkaterület kiválasztása:
 
-1. A **biztonsági házirend – adatgyűjtés**területen válassza a **másik munkaterület használata**lehetőséget.
+1. A Security Center menüjében válassza a **díjszabás & beállítások** lehetőséget.
+1. Válassza ki az adott előfizetést.
+1. Nyissa meg az **automatikus kiépítés** lapot, s
+1. A Log Analytics ügynöknél válassza a **konfiguráció szerkesztése** lehetőséget. 
 
-    ![Másik munkaterület használata][4]
+    :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="Az automatikus központi telepítés használatakor használandó Log Analytics-ügynök konfigurációja" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::
 
-1. A legördülő menüben válasszon ki egy munkaterületet az összegyűjtött adatok tárolásához.
+1. Válassza az Azure-beli **virtuális gépek összekapcsolását egy másik munkaterületre** , és válassza ki a meglévő munkaterületet
 
-    > [!NOTE]
-    > A legördülő menüben csak azok a munkaterületek jelennek meg, amelyekhez hozzáférése van az Azure-előfizetéséhez.
+    :::image type="content" source="./media/security-center-enable-data-collection/choose-workspace.png" alt-text="A Log Analytics ügynök nem alapértelmezett munkaterületének kiválasztása a jelentéshez" lightbox="./media/security-center-enable-data-collection/choose-workspace.png":::
 
-1. Válassza a **Mentés** lehetőséget. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni a figyelt virtuális gépeket.
+    > [!TIP]
+    > A lista csak azokat a munkaterületeket tartalmazza, amelyekhez hozzáférése van, és amelyek az Azure-előfizetésében találhatók.
+
+1. Kattintson a **Mentés** gombra. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni a figyelt virtuális gépeket.
 
     - Válassza a **nem** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **csak az új virtuális gépeken legyenek érvényesek**. Az új munkaterület-beállítások csak az új ügynök telepítésére érvényesek; újonnan felderített virtuális gépek, amelyeken nincs telepítve a Log Analytics ügynök.
-    - Válassza az **Igen** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **minden virtuális gépen érvényesek**legyenek. Továbbá a Security Center létrehozott munkaterülethez csatlakozó összes virtuális gép újra csatlakozik az új cél munkaterülethez.
+    - Válassza az **Igen** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **minden virtuális gépen érvényesek** legyenek. Továbbá a Security Center létrehozott munkaterülethez csatlakozó összes virtuális gép újra csatlakozik az új cél munkaterülethez.
 
     > [!NOTE]
-    > Ha az **Igen**lehetőséget választja, ne törölje a Security Center által létrehozott munkaterületeket, amíg az összes virtuális gép újra nem csatlakozik az új cél munkaterülethez. A művelet meghiúsul, ha a munkaterület túl korán van törölve.
+    > Ha az **Igen** lehetőséget választja, ne törölje a Security Center által létrehozott munkaterületeket, amíg az összes virtuális gép újra nem csatlakozik az új cél munkaterülethez. A művelet meghiúsul, ha a munkaterület túl korán van törölve.
 
-    - A művelet megszakításához válassza a **Mégse**lehetőséget.
 
 ## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>Mi a teendő, ha a Log Analytics-ügynök már telepítve van a virtuális gépen lévő bővítményként?<a name="mmaextensioninstalled"></a>
 
@@ -162,14 +166,19 @@ Ha eltávolítja a Microsoft figyelési bővítményt, Security Center nem tud b
 
 ## <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>Hogyan leállítani az ügynök automatikus telepítését és a munkaterület létrehozását?
 
-Az előfizetésekhez tartozó automatikus kiépítés kikapcsolható a biztonsági házirendben, de ez nem ajánlott. Az automatikus kiépítési korlátok kikapcsolásával Security Center javaslatok és riasztások. Az automatikus kiépítés letiltása:
+Az előfizetésekhez tartozó automatikus kiépítés kikapcsolható a biztonsági házirendben, de ez nem ajánlott. Az automatikus kiépítési korlátok kikapcsolása Security Center javaslatok és riasztások. Az automatikus kiépítés letiltása:
 
-1. Ha az előfizetéshez engedélyezve van az Azure Defender, nyissa meg az előfizetéshez tartozó biztonsági házirendet, és válassza ki az **Azure Defender**szolgáltatást.
+1. A Security Center menüjében válassza a **díjszabás & beállítások** lehetőséget.
+1. Válassza ki az adott előfizetést.
+1. Ha az előfizetéshez engedélyezve van az Azure Defender, nyissa meg az **Azure Defender** -csomagokat, és válassza ki az **Azure Defender** szolgáltatást.
 
     :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Az Azure Defender engedélyezése vagy letiltása":::
 
-1. Ezt követően kapcsolja ki az automatikus kiépítés szolgáltatást a **biztonsági házirend – adatgyűjtési** lapon a **kikapcsolás** lehetőség kiválasztásával.
-   ![Adatgyűjtés][2]
+1. Az **automatikus kiépítés** lapon válassza a toll lehetőséget, majd az automatikus kiosztás kikapcsolása elemet a  **biztonsági házirend – adatgyűjtési** lapon.
+
+    :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="Az Log Analytics-ügynök automatikus központi telepítésének engedélyezése":::
+
+1. Kattintson a **Mentés** gombra.
 
 
 ## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>Letiltom az ügynök automatikus telepítését és a munkaterület létrehozását?
@@ -218,7 +227,7 @@ Az ügynök manuális eltávolítása:
 
 1.    A Log Analytics lapon válasszon ki egy munkaterületet:
 
-1.    Válassza ki azokat a virtuális gépeket, amelyeket nem szeretne figyelni, és válassza a **Leválasztás**lehetőséget.
+1.    Válassza ki azokat a virtuális gépeket, amelyeket nem szeretne figyelni, és válassza a **Leválasztás** lehetőséget.
 
    ![Az ügynök eltávolítása][3]
 
@@ -232,18 +241,16 @@ Az automatikus kiépítés kifejezetten ajánlott ahhoz, hogy biztonsági riaszt
 
 Ha engedélyezte, de most le szeretné tiltani:
 
-1. [A Azure Portal](https://portal.azure.com)nyissa meg **Security Center** és válassza a **biztonsági házirend**elemet.
+1. [A Azure Portal](https://portal.azure.com)nyissa meg **Security Center** , és válassza a **díjszabás és beállítások** lehetőséget.
 
 1. Válassza ki azt az előfizetést, amelyen le szeretné tiltani az automatikus kiépítés szolgáltatást.
 
-    **Biztonsági házirend – az adatgyűjtés** megnyílik.
-
-1. Az **automatikus kiépítés**alatt válassza ki a **ki**lehetőséget.
+1. Az **automatikus kiépítés** alatt kapcsolja ki a log Analytics-ügynök kapcsolóját.
 
 
 ## <a name="how-do-i-enable-data-collection"></a>Hogyan engedélyezi az adatgyűjtés?
 
-Az Azure-előfizetéshez tartozó adatgyűjtést a biztonsági szabályzatban engedélyezheti. Az adatgyűjtés engedélyezéséhez. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), válassza a **Tallózás**lehetőséget, válassza a **Security Center**lehetőséget, és válassza a **biztonsági szabályzat**lehetőséget. Válassza ki azt az előfizetést, amelyhez engedélyezni kívánja az automatikus kiépítés engedélyezését. Amikor kiválaszt egy előfizetési **biztonsági házirendet** , megnyílik az adatgyűjtés. Az **automatikus kiépítés**területen válassza **a**be lehetőséget.
+Az Azure-előfizetéshez tartozó adatgyűjtést a biztonsági szabályzatban engedélyezheti. Az adatgyűjtés engedélyezéséhez. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), válassza a **Tallózás** lehetőséget, válassza a **Security Center** lehetőséget, és válassza a **biztonsági szabályzat** lehetőséget. Válassza ki azt az előfizetést, amelyhez engedélyezni kívánja az automatikus kiépítés engedélyezését. Amikor kiválaszt egy előfizetési **biztonsági házirendet** , megnyílik az adatgyűjtés. Az **automatikus kiépítés** területen válassza **a** be lehetőséget.
 
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>Mi történik, ha az adatgyűjtés engedélyezve van?
