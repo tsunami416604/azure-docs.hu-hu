@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: b0dcb2e33777451a8adba5973dc2511633f4e876
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: 20be1ac6c4701a84788f2e43903ab6b366dfe594
+  ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92371156"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94556558"
 highlightedContent:
   items:
   - title: Mi az a beszédszolgáltatás?
@@ -43,9 +43,9 @@ conceptualContent:
     - itemType: quickstart
       text: A diktálás használatának első lépései
       url: get-started-speech-to-text.md
-    - itemType: how-to-guide
-      text: Pontosság javítása Custom Speech segítségével
-      url: how-to-custom-speech.md
+    - itemType: overview
+      text: Tudnivalók a Custom Speechről
+      url: custom-speech-overview.md
     footerLink:
       text: Továbbiak
       url: index-speech-to-text.yml

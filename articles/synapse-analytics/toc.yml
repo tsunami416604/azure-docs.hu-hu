@@ -130,6 +130,8 @@
             - name: A Synapse Studio kapcsolati problémáinak hibaelhárítása
               href: troubleshoot/troubleshoot-synapse-studio-powershell.md
               displayname: powershell
+            - name: A Synapse Studio és a tároló csatlakoztatásának hibaelhárítása
+              href: troubleshoot/troubleshoot-synapse-studio-and-storage-connectivity.md
     - name: Útmutatók
       items:
         - name: Biztonságos

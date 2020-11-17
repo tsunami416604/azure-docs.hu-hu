@@ -106,8 +106,10 @@
           href: concept-disaster-recovery.md
 - name: Útmutatók
   items:
-    - name: Egy szolgáltatás engedélyezése a felhasználók egy része számára
+    - name: Szolgáltatás engedélyezése a felhasználók egy bizonyos százaléka számára
       href: howto-feature-filters-aspnet-core.md
+    - name: Szolgáltatás engedélyezése megadott felhasználók/csoportok számára
+      href: howto-targetingfilter-aspnet-core.md
     - name: Környezetenkénti konfigurálás címkék használatával
       href: howto-labels-aspnet-core.md
     - name: Konfigurációs adatok importálása vagy exportálása

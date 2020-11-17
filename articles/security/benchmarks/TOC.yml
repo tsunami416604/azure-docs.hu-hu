@@ -93,6 +93,8 @@
       href: ../../devtest-labs/security-baseline.md
     - name: Az Azure Firewall biztonsági alapkonfigurációja
       href: ../../firewall/security-baseline.md
+    - name: Az Azure Front Door biztonsági alapkonfigurációja
+      href: ../../frontdoor/security-baseline.md
     - name: Az Azure Functions biztonsági alapkonfigurációja
       href: ../../azure-functions/security-baseline.md
     - name: Az Azure IoT Hub biztonsági alapkonfigurációja
@@ -139,6 +141,8 @@
       href: ../../container-registry/security-baseline.md
     - name: A Cosmos DB biztonsági alapkonfigurációja
       href: ../../cosmos-db/security-baseline.md
+    - name: A Cost Management biztonsági alapkonfigurációja
+      href: ../../cost-management-billing/security-baseline.md
     - name: Az Ügyfélszéf biztonsági alapkonfigurációja
       href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: A Data Lake Analytics biztonsági alapkonfigurációja

@@ -28,8 +28,6 @@
       items:
         - name: Beszédfelismerési forrásnyelv módosítása
           href: how-to-specify-source-language.md
-        - name: Pontosság javítása Custom Speech segítségével
-          href: how-to-custom-speech.md
         - name: Tömörített hangbemeneti formátumok használata
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
@@ -45,20 +43,18 @@
           href: tutorial-tenant-model.md
     - name: Testreszabás
       items:
+        - name: Mi az a Custom Speech?
+          href: custom-speech-overview.md
         - name: Modell tesztelése hangfájlok használatával a Speech Studióban
           href: quickstarts/speech-studio-test-model.md
         - name: Adatok előkészítése a Custom Speech szolgáltatáshoz
           href: how-to-custom-speech-test-and-train.md
         - name: Custom Speech-adatok vizsgálata
           href: how-to-custom-speech-inspect-data.md
-        - name: A Custom Speech pontosságának értékelése
+        - name: A Custom Speech pontosságának értékelése és javítása
           href: how-to-custom-speech-evaluate-data.md
-        - name: A Custom Speech pontosságának javítása
-          href: how-to-custom-speech-improve-accuracy.md
-        - name: Modell betanítása a Custom Speech szolgáltatáshoz
+        - name: A Custom Speech-modellek betanítása és üzembe helyezése
           href: how-to-custom-speech-train-model.md
-        - name: Egyéni modell üzembe helyezése
-          href: how-to-custom-speech-deploy-model.md
         - name: CI/CD a Custom Speechhez
           href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: Ember által címkézett átiratok létrehozása
@@ -391,6 +387,10 @@
                       href: how-to-custom-commands-setup-web-endpoints.md
                     - name: Custom Commands-alkalmazás exportálása készségként
                       href: how-to-custom-commands-integrate-remote-skills.md
+                    - name: Parancsok frissítése az ügyfélalkalmazásból
+                      href: how-to-custom-commands-update-command-from-client.md
+                    - name: Parancsok frissítése webes végpontról
+                      href: how-to-custom-commands-update-command-from-web-endpoint.md
                 - name: Üzembe helyezés
                   items:
                     - name: Folyamatos üzembe helyezés az Azure DevOps használatával

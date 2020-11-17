@@ -101,10 +101,10 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
     | Előfizetés | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | *teszt – erőforrás-csoport* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
     | Hely | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
-    | Név | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
+    | Name | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
     | | |
 
-1. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
+1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
 
 1. Ha a telepítés befejeződött, válassza az **Ugrás erőforráshoz** lehetőséget.
 
@@ -279,7 +279,7 @@ Ezek a lépések csak a pillanatkép-alapú megosztásra vonatkoznak.
 
    ![Pillanatkép indítása](./media/trigger-snapshot.png "Pillanatkép indítása") 
 
-1. Ha a legutóbbi futtatási állapot *sikeres* , nyissa meg a cél adattárt a kapott adatértékek megtekintéséhez. Válassza az **adatkészletek** lehetőséget, majd kattintson a hivatkozásra a cél elérési úton. 
+1. Ha a legutóbbi futtatási állapot *sikeres*, nyissa meg a cél adattárt a kapott adatértékek megtekintéséhez. Válassza az **adatkészletek** lehetőséget, majd kattintson a hivatkozásra a cél elérési úton. 
 
    ![Fogyasztói adatkészletek](./media/consumer-datasets.png "Fogyasztói adatkészlet megfeleltetése") 
 
@@ -295,9 +295,9 @@ Az SQL-forrásokból származó adatok megosztásakor a rendszer a következő l
 | binary |Bájt [] |
 | bit |Logikai |
 | char |Karakterlánc, char [] |
-| dátum |Dátum/idő |
-| Datetime |Dátum/idő |
-| datetime2 |Dátum/idő |
+| dátum |DateTime |
+| Datetime |DateTime |
+| datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
 | Tizedesjegy |Tizedesjegy |
 | FILESTREAM attribútum (varbinary (max)) |Bájt [] |
@@ -311,7 +311,7 @@ Az SQL-forrásokból származó adatok megosztásakor a rendszer a következő l
 | nvarchar |Karakterlánc, char [] |
 | valós szám |Egyirányú |
 | ROWVERSION |Bájt [] |
-| idő adattípusúra |Dátum/idő |
+| idő adattípusúra |DateTime |
 | smallint |Int16 |
 | túlcsordulási |Tizedesjegy |
 | sql_variant |Objektum |
@@ -343,5 +343,5 @@ Az SQL-Pillanatképek teljesítményét számos tényező befolyásolja. A sajá
 ## <a name="troubleshoot-sql-snapshot-failure"></a>SQL-pillanatkép hibáinak hibaelhárítása
 A pillanatképek meghibásodásának leggyakoribb oka az, hogy az adatmegosztás nem rendelkezik engedéllyel a forrás-vagy a célként megadott adattárhoz. Ahhoz, hogy adatmegosztási engedélyt adjon a forrás vagy a cél Azure SQL Database vagy az Azure szinapszis Analytics (korábban Azure SQL DW) számára, futtatnia kell a megadott SQL-parancsfájlt az SQL-adatbázishoz való csatlakozáskor Azure Active Directory hitelesítés használatával. További SQL-Pillanatképek hibáinak hibaelhárításához tekintse meg a [Pillanatkép-hiba hibaelhárítása](data-share-troubleshoot.md#snapshot-failed)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtanulta, hogyan oszthat meg és fogadhat adatait SQL-forrásokból az Azure adatmegosztási szolgáltatás használatával. Ha többet szeretne megtudni a más adatforrásokból történő megosztásról, folytassa a [támogatott adattárakkal](supported-data-stores.md).

@@ -56,7 +56,7 @@
           href: database-encryption-at-rest.md
         - name: Szolgáltatáscímkék
           href: ../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-        - name: Szerepköralapú hozzáférés-vezérlés
+        - name: Azure-beli szerepköralapú hozzáférés-vezérlés
           displayName: rbac
           href: role-based-access-control.md
         - name: Az Azure Policy támogatása

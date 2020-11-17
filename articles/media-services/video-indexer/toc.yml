@@ -47,8 +47,6 @@
           href: customize-person-model-overview.md
 - name: Útmutatók
   items:
-    - name: Csatlakozás az Azure szolgáltatáshoz
-      href: connect-to-azure.md
     - name: Az Azure-hoz csatlakoztatott fiók kezelése
       href: manage-account-connected-to-azure.md
     - name: Videók feltöltése és indexelése

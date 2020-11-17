@@ -38,6 +38,21 @@
           href: infrastructure-integrity.md
         - name: Adatvédelem
           href: protection-customer-data.md
+    - name: A platform integritása és biztonsága
+      href: platform.md
+      items:
+        - name: A belső vezérlőprogram biztonsága
+          href: firmware.md
+        - name: Biztonságos rendszerindítás
+          href: secure-boot.md
+        - name: Mért rendszerindítási és gazdagép-igazolás
+          href: measured-boot-host-attestation.md
+        - name: Project Cerberus
+          href: project-cerberus.md
+        - name: Titkosítás inaktív állapotban
+          href: encryption-atrest.md
+        - name: A hipervizor biztonsága
+          href: hypervisor.md
     - name: Elkülönítés az Azure-felhőben
       href: isolation-choices.md
 - name: Identitáskezelés

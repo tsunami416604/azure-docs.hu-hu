@@ -67,9 +67,9 @@
       href: load-balancer-ha-ports-overview.md
     - name: Több előtérrendszer
       href: load-balancer-multivip-overview.md
-    - name: Kimenő proxy
+    - name: SNAT az internet felé irányuló kimenő kapcsolatokhoz
       href: load-balancer-outbound-connections.md
-    - name: Kimenő szabályok
+    - name: Kimenő szabályok konfigurálása
       href: outbound-rules.md
     - name: A TCP visszaállítása üresjárati időtúllépés esetén
       href: load-balancer-tcp-reset.md

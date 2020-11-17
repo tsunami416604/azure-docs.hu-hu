@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi a Stream Analytics?
+    - name: Üdvözli a Stream Analytics
       href: stream-analytics-introduction.md
     - name: Stream Analytics-fürt
       href: cluster-overview.md
