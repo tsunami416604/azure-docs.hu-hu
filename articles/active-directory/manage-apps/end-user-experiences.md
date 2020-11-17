@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bcf45cdfbadbf16f48f8f2ac3bd0c6320a2803f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605124"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649228"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>A Azure Active Directory alkalmazások végfelhasználói élményei
 
@@ -37,13 +37,13 @@ Alapértelmezés szerint az összes alkalmazás egyetlen oldalon jelenik meg. Az
 
 A saját alkalmazások el vannak különítve a Azure Portaltól, és nincs szükség arra, hogy a felhasználók Azure-előfizetéssel vagy Microsoft 365-előfizetéssel rendelkezzenek.
 
-Az Azure AD-vel kapcsolatos további információkért tekintse meg az [alkalmazások bevezetését](../user-help/active-directory-saas-access-panel-introduction.md)ismertető témakört.
+Az Azure AD-vel kapcsolatos további információkért tekintse meg az [alkalmazások bevezetését](../user-help/my-apps-portal-end-user-access.md)ismertető témakört.
 
 ## <a name="microsoft-365-application-launcher"></a>Microsoft 365 Application Launcher
 
 A Microsoft 365 üzembe helyezett szervezetek esetében az Azure AD-n keresztül a felhasználókhoz rendelt alkalmazások az Office 365 portálon is megjelennek [https://portal.office.com/myapps](https://portal.office.com/myapps) . Így a szervezet felhasználói egyszerűen és kényelmesen indíthatják el alkalmazásaikat anélkül, hogy egy második portált kellene használniuk, és az ajánlott alkalmazás-indítási megoldás a Microsoft 365 használó szervezeteknek.
 
-Az Office 365 Application Launcher szolgáltatással kapcsolatos további információkért tekintse [meg az alkalmazás megjelenése az office 365 app launcherben](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)című témakört.
+Az Office 365 Application Launcher szolgáltatással kapcsolatos további információkért tekintse [meg az alkalmazás megjelenése az office 365 app launcherben](/previous-versions/office/office-365-api/)című témakört.
 
 ## <a name="direct-sign-on-to-federated-apps"></a>Közvetlen bejelentkezés az összevont alkalmazásokba
 
@@ -53,7 +53,7 @@ Az SAML 2,0, a WS-Federation vagy az OpenID Connect szolgáltatást támogató l
 
 Az Azure AD Emellett támogatja a közvetlen egyszeri bejelentkezést a jelszó-alapú egyszeri bejelentkezést, a csatolt egyszeri bejelentkezést és az összevont egyszeri bejelentkezést támogató egyes alkalmazásokra.
 
-Ezek a hivatkozások kifejezetten olyan URL-címek, amelyek egy adott alkalmazáshoz az Azure AD bejelentkezési folyamatán keresztül küldik el a felhasználót anélkül, hogy a felhasználónak el kellene indítania azokat az Azure AD saját alkalmazásaiból vagy Microsoft 365. Ezek a **felhasználói hozzáférési URL-címek** az elérhető vállalati alkalmazások tulajdonságai alatt találhatók. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki az alkalmazást, majd válassza a **Tulajdonságok**lehetőséget.
+Ezek a hivatkozások kifejezetten olyan URL-címek, amelyek egy adott alkalmazáshoz az Azure AD bejelentkezési folyamatán keresztül küldik el a felhasználót anélkül, hogy a felhasználónak el kellene indítania azokat az Azure AD saját alkalmazásaiból vagy Microsoft 365. Ezek a **felhasználói hozzáférési URL-címek** az elérhető vállalati alkalmazások tulajdonságai alatt találhatók. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget. Válassza ki az alkalmazást, majd válassza a **Tulajdonságok** lehetőséget.
 
 ![Felhasználói hozzáférési URL-cím – példa a Twitter tulajdonságaiban](media/end-user-experiences/direct-sign-on-link.png)
 

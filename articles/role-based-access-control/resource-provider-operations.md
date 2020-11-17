@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: e337cef9121dc5992f87b9996cfd01d16d9cc188
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cf8c8e7d56f4eff351361edd148f91e81a07bfbb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309366"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649143"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -629,7 +629,7 @@ Azure-szolgáltatás: [Service Fabric](../service-fabric/index.yml)
 > | Microsoft. ServiceFabric/Locations/Operations/READ | Bármilyen művelet beolvasása hely szerint |
 > | Microsoft. ServiceFabric/Operations/READ | Az összes elérhető művelet beolvasása |
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 ### <a name="microsoftcdn"></a>Microsoft. CDN
 
@@ -792,7 +792,7 @@ Azure-szolgáltatás: klasszikus üzembe helyezési modell virtuális hálózata
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), [azure Bastion](../bastion/index.yml), [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md), [Azure DNS](../dns/index.yml), [Azure ExpressRoute](../expressroute/index.yml), [Azure Firewall](../firewall/index.yml), [Azure bejárati szolgáltatás](../frontdoor/index.yml), [azure Private link](../private-link/index.yml), [Load Balancer](../load-balancer/index.yml), [Network Watcher](../network-watcher/index.yml), [Traffic Manager](../traffic-manager/index.yml), [Virtual Network](../virtual-network/index.yml), [Virtual WAN](../virtual-wan/index.yml), [VPN Gateway](../vpn-gateway/index.yml)
+Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), [azure Bastion](../bastion/index.yml), [Azure DDoS Protection](../ddos-protection/ddos-protection-overview.md), [Azure DNS](../dns/index.yml), [Azure ExpressRoute](../expressroute/index.yml), [Azure Firewall](../firewall/index.yml), [Azure bejárati szolgáltatás](../frontdoor/index.yml), [azure Private link](../private-link/index.yml), [Load Balancer](../load-balancer/index.yml), [Network Watcher](../network-watcher/index.yml), [Traffic Manager](../traffic-manager/index.yml), [Virtual Network](../virtual-network/index.yml), [Virtual WAN](../virtual-wan/index.yml), [VPN Gateway](../vpn-gateway/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
@@ -3850,7 +3850,7 @@ Azure-szolgáltatás: [Azure Cosmos db](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Azure SQL felügyelt példány](../azure-sql/managed-instance/index.yml), [azure szinapszis Analytics (korábban SQL Data Warehouse)](../sql-data-warehouse/index.yml)
+Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Azure SQL felügyelt példány](../azure-sql/managed-instance/index.yml), [azure szinapszis Analytics (korábban SQL Data Warehouse)](../synapse-analytics/sql-data-warehouse/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
@@ -4331,7 +4331,7 @@ Azure-szolgáltatás: [Azure Analysis Services](../analysis-services/index.yml)
 
 ### <a name="microsoftdatabricks"></a>Microsoft. Databricks
 
-Azure-szolgáltatás: [Azure Databricks](https://docs.microsoft.com/azure/databricks/)
+Azure-szolgáltatás: [Azure Databricks](/azure/databricks/)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
@@ -4619,7 +4619,7 @@ Azure-szolgáltatás: [azure adatkezelő](/azure/data-explorer/)
 
 ### <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
 
-Azure-szolgáltatás: [Power bi Embedded](https://docs.microsoft.com/azure/power-bi-embedded/)
+Azure-szolgáltatás: [Power bi Embedded](/azure/power-bi-embedded/)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
@@ -4712,7 +4712,7 @@ Azure-szolgáltatás: [Azure Blockchain Service](../blockchain/workbench/index.y
 
 ### <a name="microsoftbotservice"></a>Microsoft. BotService
 
-Azure-szolgáltatás: [Azure bot Service](https://docs.microsoft.com/azure/bot-service/)
+Azure-szolgáltatás: [Azure bot Service](/azure/bot-service/)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
@@ -6187,7 +6187,7 @@ Azure-szolgáltatás: [Logic apps](../logic-apps/index.yml)
 
 ### <a name="microsoftrelay"></a>Microsoft. Relay
 
-Azure-szolgáltatás: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
+Azure-szolgáltatás: [Azure Relay](../azure-relay/relay-what-is-it.md)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
@@ -6257,7 +6257,7 @@ Azure-szolgáltatás: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 
 ### <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-Azure-szolgáltatás: [Service Bus](../service-bus/index.md)
+Azure-szolgáltatás: [Service Bus](../service-bus-messaging/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
@@ -6957,7 +6957,7 @@ Azure-szolgáltatás: [Azure Lab Services](../lab-services/index.yml)
 
 ### <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
 
-Azure-szolgáltatás: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
+Azure-szolgáltatás: [Azure DevOps](/azure/devops/)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
@@ -8924,7 +8924,7 @@ Azure-szolgáltatás: [Azure arc](../azure-arc/index.yml)
 
 ### <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
-Azure-szolgáltatás: [Azure arc-kompatibilis Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)
+Azure-szolgáltatás: [Azure arc-kompatibilis Kubernetes](../azure-arc/kubernetes/overview.md)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
@@ -9677,7 +9677,7 @@ Azure-szolgáltatás: a Microsoft monitoring bepillantást nyerhet
 
 ### <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
-Azure-szolgáltatás: [Bing Maps](https://docs.microsoft.com/BingMaps/)
+Azure-szolgáltatás: [Bing Maps](/BingMaps/)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |

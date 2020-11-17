@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 189eaf3a08ce0e8411ce67170fdf1a895cbc56d2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375846"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647715"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Bérlő törlése Azure Active Directory
 
@@ -38,13 +38,13 @@ Nem törölhet szervezetet az Azure AD-ben, amíg át nem halad több ellenőrz�
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet globális rendszergazdája.
 
-2. Válassza a **Azure Active Directory**lehetőséget.
+2. Válassza a **Azure Active Directory** lehetőséget.
 
 3. Váltson a törölni kívánt szervezetre.
   
    ![A szervezet megerősítése a törlés előtt](./media/directory-delete-howto/delete-directory-command.png)
 
-4. Válassza a **bérlő törlése**lehetőséget.
+4. Válassza a **bérlő törlése** lehetőséget.
   
    ![Válassza ki a szervezet törlésére szolgáló parancsot](./media/directory-delete-howto/delete-directory-list.png)
 
@@ -56,7 +56,7 @@ Ha konfigurálta az Azure AD-szervezetet, akkor lehet, hogy aktiválta a licenc-
 
 A következő táblázatból megtudhatja, mire számíthat, ha egy próbaverzió Microsoft 365-előfizetés lejár (nem tartalmazza a fizetős partner/CSP, Nagyvállalati Szerződés vagy mennyiségi licencelés). További információ a Microsoft 365 adatmegőrzéssel és az előfizetések életciklusával kapcsolatban: [Mi történik az adatokkal és a hozzáféréssel, ha a Microsoft 365 for Business-előfizetés lejár?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
-Előfizetés állapota | Adatok | Hozzáférés az adatkezeléshez
+Előfizetés állapota | Adatok | Az adatokhoz való hozzáférés
 ----- | ----- | -----
 Aktív (30 nap próbaverzió esetén) | Az összes elérhető | A felhasználók normál hozzáféréssel rendelkeznek Microsoft 365 fájlokhoz vagy alkalmazásokhoz<br>A rendszergazdáknak normális hozzáférésük van Microsoft 365 felügyeleti központhoz és erőforrásokhoz 
 Lejárt (30 nap) | Az összes elérhető| A felhasználók normál hozzáféréssel rendelkeznek Microsoft 365 fájlokhoz vagy alkalmazásokhoz<br>A rendszergazdáknak normális hozzáférésük van Microsoft 365 felügyeleti központhoz és erőforrásokhoz
@@ -73,7 +73,7 @@ A **kiépített** állapotba egy előfizetést a Microsoft 365 felügyeleti köz
 
    ![Tekintse meg az új M365 felügyeleti központ felületét](./media/directory-delete-howto/preview-toggle.png)
 
-3. Az új felügyeleti központ engedélyezése után le kell mondania egy előfizetést, mielőtt törölni lehetne. Válassza a **számlázás** lehetőséget, válassza a **termékek & szolgáltatások**elemet, majd válassza az **előfizetés megszakítása** lehetőséget a megszakítani kívánt előfizetéshez. Egy visszajelzési oldalra kerül.
+3. Az új felügyeleti központ engedélyezése után le kell mondania egy előfizetést, mielőtt törölni lehetne. Válassza a **számlázás** lehetőséget, válassza a **termékek & szolgáltatások** elemet, majd válassza az **előfizetés megszakítása** lehetőséget a megszakítani kívánt előfizetéshez. Egy visszajelzési oldalra kerül.
 
    ![Válassza ki a törölni kívánt előfizetést](./media/directory-delete-howto/cancel-choose-subscription.png)
 
@@ -81,7 +81,7 @@ A **kiépített** állapotba egy előfizetést a Microsoft 365 felügyeleti köz
 
    ![Megszakított parancs az előfizetés előnézetében](./media/directory-delete-howto/cancel-command.png)
 
-5. Most már törölheti is az előfizetést. Válassza **a Törlés lehetőséget** a törölni kívánt előfizetéshez. Ha nem találja az előfizetést a **termékek & szolgáltatások** lapon, győződjön meg arról, hogy az **előfizetés állapota** **mind**értékre van állítva.
+5. Most már törölheti is az előfizetést. Válassza **a Törlés lehetőséget** a törölni kívánt előfizetéshez. Ha nem találja az előfizetést a **termékek & szolgáltatások** lapon, győződjön meg arról, hogy az **előfizetés állapota** **mind** értékre van állítva.
 
    ![Előfizetés törlésére szolgáló hivatkozás törlése](./media/directory-delete-howto/delete-command.png)
 
@@ -110,7 +110,7 @@ A jelenleg elérhető önkiszolgáló regisztrációs termékekkel és szolgált
 
 A következő táblázatból megtudhatja, mire számíthat, ha egy próbaverzió Microsoft 365-előfizetés lejár (nem tartalmazza a fizetős partner/CSP, Nagyvállalati Szerződés vagy mennyiségi licencelés). További információ a Microsoft 365 adatmegőrzéssel és az előfizetések életciklusával kapcsolatban: [Mi történik az adatokkal és a hozzáféréssel, ha a Microsoft 365 for Business-előfizetés lejár?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
-Termék állapota | Adatok | Hozzáférés az adatkezeléshez
+Termék állapota | Adatok | Az adatokhoz való hozzáférés
 ------------- | ---- | --------------
 Aktív (30 nap próbaverzió esetén) | Az összes elérhető | A felhasználók normál hozzáféréssel rendelkeznek az önkiszolgáló regisztrációs termékekhez, fájlokhoz vagy alkalmazásokhoz<br>A rendszergazdáknak normális hozzáférésük van Microsoft 365 felügyeleti központhoz és erőforrásokhoz
 Törölve | Az adattörlés | A felhasználók nem férhetnek hozzá az önkiszolgáló regisztrációs termékekhez, fájlokhoz és alkalmazásokhoz<br>A rendszergazdák hozzáférhetnek a Microsoft 365 felügyeleti központhoz más előfizetések megvásárlásához és kezeléséhez
@@ -121,7 +121,7 @@ Az Azure AD-portálon azonnal törölheti az önkiszolgáló regisztrációs ter
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely a szervezet globális rendszergazdája. Ha törölni szeretné a "contoso" nevű szervezetet, amely a kezdeti alapértelmezett tartományi contoso.onmicrosoft.com rendelkezik, jelentkezzen be egy egyszerű felhasználónévvel, például: admin@contoso.onmicrosoft.com .
 
-2. Válassza a **licencek**lehetőséget, majd válassza az **önkiszolgáló regisztrációs termékek**lehetőséget. Az összes önkiszolgáló regisztrációs terméket külön tekintheti meg az ülésen alapuló előfizetések között. Válassza ki a véglegesen törölni kívánt terméket. Íme egy példa a Microsoft Power BIban:
+2. Válassza a **licencek** lehetőséget, majd válassza az **önkiszolgáló regisztrációs termékek** lehetőséget. Az összes önkiszolgáló regisztrációs terméket külön tekintheti meg az ülésen alapuló előfizetések között. Válassza ki a véglegesen törölni kívánt terméket. Íme egy példa a Microsoft Power BIban:
 
     ![Képernyőkép, amely a "licencek önkiszolgáló regisztrációs termékek" lapot jeleníti meg.](./media/directory-delete-howto/licenses-page.png)
 
@@ -129,11 +129,11 @@ Az Azure AD-portálon azonnal törölheti az önkiszolgáló regisztrációs ter
 
     ![Képernyőkép: "licencek önkiszolgáló regisztrációs termékek" oldal, "az önkiszolgáló bejelentkezési termék törlése" ablak nyitva.](./media/directory-delete-howto/delete-product.png)
 
-4. Ha az **Igen**lehetőséget választja, a rendszer kezdeményezi az önkiszolgáló termék törlését. Értesítés jelenik meg arról, hogy a törlés folyamatban van.  
+4. Ha az **Igen** lehetőséget választja, a rendszer kezdeményezi az önkiszolgáló termék törlését. Értesítés jelenik meg arról, hogy a törlés folyamatban van.  
 
     ![Képernyőkép: "a licencek önkiszolgáló regisztrációs termékek" oldal, amely a "Törlés folyamatban" értesítést jeleníti meg.](./media/directory-delete-howto/progress-message.png)
 
-5. Az önkiszolgáló bejelentkezési termék állapota most már **törölve**lett. Az oldal frissítésekor a terméket el kell távolítani az **önkiszolgáló regisztrációs termékek** oldaláról.  
+5. Az önkiszolgáló bejelentkezési termék állapota most már **törölve** lett. Az oldal frissítésekor a terméket el kell távolítani az **önkiszolgáló regisztrációs termékek** oldaláról.  
 
     ![Képernyőkép: a "licencek önkiszolgáló regisztrációs termékek" oldal, amely a jobb oldalon található "önkiszolgáló bejelentkezési termék törlése" panelt tartalmazza.](./media/directory-delete-howto/product-deleted.png)
 

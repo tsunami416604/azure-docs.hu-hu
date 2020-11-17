@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-fürt beállításainak módosítása
 description: Ez a cikk a háló beállításait és a testre szabható háló-frissítési szabályzatokat ismerteti.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: fbd6c9503e409473a87c58202eb88d77716441f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a83d24b4badd78750756a3cb4564b1e53fd30593
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055120"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648225"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetén testreszabhatja a beállításokat, ha frissíti a *ClusterConfig.js* fájlt, és végrehajtja a fürtön a konfiguráció frissítését. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -243,7 +243,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |QuorumLossWaitDuration | Az idő másodpercben, az alapértelmezett érték a MaxValue |Statikus|Másodpercek alatt meg kell adni a TimeSpan. A FaultAnalysisService QuorumLossWaitDuration. |
 |ReplicaDropWaitDurationInSeconds|int, alapértelmezett érték 600|Statikus|Ezt a paramétert az adatvesztési API meghívásakor használja a rendszer. Azt határozza meg, hogy a rendszer mennyi ideig várjon, amíg egy replika el fog dobni az eltávolítás után a replika belső meghívása után. |
 |ReplicaRestartWaitDuration |Az idő másodpercben, az alapértelmezett érték 60 perc|Statikus|Másodpercek alatt meg kell adni a TimeSpan. A FaultAnalysisService ReplicaRestartWaitDuration. |
-|StandByReplicaKeepDuration| Az idő másodpercben, az alapértelmezett érték (60*24*7) perc |Statikus|Másodpercek alatt meg kell adni a TimeSpan. A FaultAnalysisService StandByReplicaKeepDuration. |
+|StandByReplicaKeepDuration| Az idő másodpercben, az alapértelmezett érték (60 *24* 7) perc |Statikus|Másodpercek alatt meg kell adni a TimeSpan. A FaultAnalysisService StandByReplicaKeepDuration. |
 |StoredActionCleanupIntervalInSeconds | Int, alapértelmezett érték 3600 |Statikus|Ez azt mutatja, hogy a tároló milyen gyakran lesz törölve. Csak a terminál állapotában lévő műveletek; és ez legalább CompletedActionKeepDurationInSeconds ezelőtt elvégezhető. |
 |StoredChaosEventCleanupIntervalInSeconds | Int, alapértelmezett érték 3600 |Statikus|Milyen gyakran naplózzák a rendszer a tárolót a tisztításhoz. Ha az események száma meghaladja a 30000-et; a tisztítás beindul. |
 |TargetReplicaSetSize |Int, az alapértelmezett érték 0 |Statikus|NOT_PLATFORM_UNIX_START a FaultAnalysisService TargetReplicaSetSize. |
@@ -423,14 +423,14 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |AzureStorageMaxConnections | Int, alapértelmezett érték 5000 |Dinamikus|Az Azure Storage-hoz való egyidejű kapcsolatok maximális száma. |
 |AzureStorageMaxWorkerThreads | Int, az alapértelmezett érték 25 |Dinamikus|A feldolgozói szálak maximális száma párhuzamosan. |
 |AzureStorageOperationTimeout | Az idő másodpercben, az alapértelmezett érték 6000 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Időtúllépés a xstore művelet befejezéséhez. |
-|CleanupApplicationPackageOnProvisionSuccess|bool, az alapértelmezett érték FALSE |Dinamikus|Engedélyezheti vagy letilthatja az alkalmazáscsomag automatikus törlését a sikeres üzembe helyezéshez.
-
-*Ajánlott eljárás a használata `true` .* | | CleanupUnusedApplicationTypes | Bool, az alapértelmezett érték a FALSE | Dinamikus | Ez a konfiguráció, ha engedélyezve van, lehetővé teszi a nem használt alkalmazások típusának regisztrációját a legújabb három nem használt verzió kihagyása mellett, így a rendszerkép-tárolóban foglalt lemezterület kivágása is megtörténik. Az automatikus tisztítás az adott alkalmazás típusának sikeres kiépítését követően aktiválódik, és az összes alkalmazás típusának naponta egyszer rendszeresen fut. A kihagyható verziók száma a "MaxUnusedAppTypeVersionsToKeep" paraméter használatával konfigurálható. 
-
-*Ajánlott eljárás a használata `true` .*
-| | DisableChecksumValidation | Bool, az alapértelmezett érték a False | Statikus | Ezzel a konfigurációval engedélyezheti vagy letilthatja az ellenőrzőösszeg-érvényesítést az alkalmazás üzembe helyezése során. | | DisableServerSideCopy | Bool, az alapértelmezett érték a False | Statikus | Ezzel a konfigurációval engedélyezheti vagy letilthatja az alkalmazáscsomag kiszolgálóoldali példányát a Lemezképtárolóba az alkalmazás üzembe helyezése során. | | ImageCachingEnabled | Bool, az alapértelmezett érték a True | Statikus | Ez a konfiguráció lehetővé teszi a gyorsítótárazás engedélyezését vagy letiltását. | | ImageStoreConnectionString | SecureString | Statikus | A Lemezképtárolóba gyökeréhez tartozó kapcsolódási karakterlánc. | | ImageStoreMinimumTransferBPS | Int, alapértelmezett érték 1024 | Dinamikus | A fürt és a Lemezképtárolóba közötti minimális adatátviteli sebesség. Ez az érték határozza meg az időtúllépést a külső Lemezképtárolóba elérésekor. Csak akkor módosítsa ezt az értéket, ha a fürt és a Lemezképtárolóba közötti késés magas, hogy több idő legyen a fürt külső Lemezképtárolóba való letöltésére. | | MaxUnusedAppTypeVersionsToKeep | Int, alapértelmezés szerint 3 | Dinamikus | Ez a konfiguráció határozza meg a tisztításhoz kihagyható, nem használt alkalmazás-verziók számát. Ez a paraméter csak akkor alkalmazható, ha a CleanupUnusedApplicationTypes paraméter engedélyezve van.
-
-*Az általános ajánlott eljárás az alapértelmezett () használata `3` .*|
+|CleanupApplicationPackageOnProvisionSuccess|bool, az alapértelmezett érték FALSE |Dinamikus|Engedélyezheti vagy letilthatja az alkalmazáscsomag automatikus törlését a sikeres üzembe helyezéshez.<br/> *Ajánlott eljárás a használata `true` .*
+|CleanupUnusedApplicationTypes|Bool, az alapértelmezett érték FALSE |Dinamikus|Ez a konfiguráció, ha engedélyezve van, lehetővé teszi a nem használt alkalmazások típusának regisztrációját a legújabb három nem használt verzió kihagyása mellett, így a rendszerkép-tárolóban foglalt lemezterület kivágása is megtörténik. Az automatikus tisztítás az adott alkalmazás típusának sikeres kiépítését követően aktiválódik, és az összes alkalmazás típusának naponta egyszer rendszeresen fut. A kihagyható verziók száma a "MaxUnusedAppTypeVersionsToKeep" paraméter használatával konfigurálható. <br/> *Ajánlott eljárás a használata `true` .*
+|DisableChecksumValidation | Bool, az alapértelmezett érték false |Statikus| Ezzel a konfigurációval engedélyezheti vagy letilthatja az ellenőrzőösszeg-érvényesítést az alkalmazás üzembe helyezése során. |
+|DisableServerSideCopy | Bool, az alapértelmezett érték false |Statikus|Ezzel a konfigurációval engedélyezheti vagy letilthatja az alkalmazáscsomag kiszolgálóoldali példányát a Lemezképtárolóba az alkalmazás üzembe helyezése során. |
+|ImageCachingEnabled | Bool, az alapértelmezett érték TRUE (igaz) |Statikus|Ez a konfiguráció lehetővé teszi a gyorsítótárazás engedélyezését vagy letiltását. |
+|ImageStoreConnectionString |SecureString |Statikus|A Lemezképtárolóba gyökeréhez tartozó kapcsolódási karakterlánc. |
+|ImageStoreMinimumTransferBPS | Int, alapértelmezett érték 1024 |Dinamikus|A fürt és a Lemezképtárolóba közötti minimális adatátviteli sebesség. Ez az érték határozza meg az időtúllépést a külső Lemezképtárolóba elérésekor. Csak akkor módosítsa ezt az értéket, ha a fürt és a Lemezképtárolóba közötti késés magas, hogy több idő legyen a fürt külső Lemezképtárolóba való letöltésére. |
+|MaxUnusedAppTypeVersionsToKeep | Int, az alapértelmezett érték 3 |Dinamikus|Ez a konfiguráció határozza meg a tisztításhoz kihagyható, nem használt alkalmazás-verziók számát. Ez a paraméter csak akkor alkalmazható, ha a CleanupUnusedApplicationTypes paraméter engedélyezve van. <br/>*Az általános ajánlott eljárás az alapértelmezett () használata `3` . Az 1 értéknél kisebb értékek nem érvényesek.*|
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
@@ -890,7 +890,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |PlacementConstraints | karakterlánc, az alapértelmezett érték: "" |Statikus| A UpgradeOrchestrationService PlacementConstraints. |
 |QuorumLossWaitDuration | Az idő másodpercben, az alapértelmezett érték a MaxValue |Statikus| Másodpercek alatt meg kell adni a TimeSpan. A UpgradeOrchestrationService QuorumLossWaitDuration. |
 |ReplicaRestartWaitDuration | Az idő másodpercben, az alapértelmezett érték 60 perc|Statikus| Másodpercek alatt meg kell adni a TimeSpan. A UpgradeOrchestrationService ReplicaRestartWaitDuration. |
-|StandByReplicaKeepDuration | Idő (másodperc), az alapértelmezett érték 60*24*7 perc |Statikus| Másodpercek alatt meg kell adni a TimeSpan. A UpgradeOrchestrationService StandByReplicaKeepDuration. |
+|StandByReplicaKeepDuration | Idő (másodperc), az alapértelmezett érték 60 *24* 7 perc |Statikus| Másodpercek alatt meg kell adni a TimeSpan. A UpgradeOrchestrationService StandByReplicaKeepDuration. |
 |TargetReplicaSetSize |Int, az alapértelmezett érték 0 |Statikus |A UpgradeOrchestrationService TargetReplicaSetSize. |
 |UpgradeApprovalRequired | Bool, az alapértelmezett érték false | Statikus|A kód frissítésének beállításához rendszergazdai jóváhagyásra van szükség a továbblépés előtt. |
 

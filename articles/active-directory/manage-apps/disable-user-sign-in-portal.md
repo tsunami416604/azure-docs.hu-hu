@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c6fc9a4716f1427257b3bbf18e5fa653567e141
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c208da657d30d4a0f5b6f171693c5c6abc2b358b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763380"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649178"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Vállalati alkalmazásokhoz tartozó felhasználói bejelentkezések letiltása Azure Active Directory
 
@@ -30,16 +30,16 @@ A vállalati alkalmazások egyszerűen letilthatók, így egyetlen felhasználó
 ## <a name="how-do-i-disable-user-sign-ins"></a>Hogyan letiltani a felhasználói bejelentkezéseket?
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-1. Válassza a **minden szolgáltatás**lehetőséget, írja be **Azure Active Directory** a szövegmezőbe, majd válassza az **ENTER billentyűt**.
-1. A **Azure Active Directory**  -   ***könyvtárnév*** ablaktáblán (azaz a kezelt címtárhoz tartozó Azure ad-ablaktáblán) válassza a **vállalati alkalmazások**lehetőséget.
+1. Válassza a **minden szolgáltatás** lehetőséget, írja be **Azure Active Directory** a szövegmezőbe, majd válassza az **ENTER billentyűt**.
+1. Az **Azure Active Directory**  -   **_könyvtárnév_*_ ablaktáblán (azaz a felügyelt címtárhoz tartozó Azure ad-ablaktáblán) válassza az _ Enterprise-alkalmazások elemet***.
 1. A **vállalati alkalmazások – minden alkalmazás** panelen láthatja a felügyelhető alkalmazások listáját. Jelöljön ki egy alkalmazást.
-1. A ***AppName*** panelen (azaz a cím alatt a kiválasztott alkalmazás nevét tartalmazó ablaktáblán) válassza a **Tulajdonságok**lehetőséget.
-1. A ***AppName***  -  **Tulajdonságok** ablaktáblán válassza a **nem** lehetőséget, ha **a felhasználók bejelentkeznek?**.
+1. Az **_AppName_*_ ablaktáblán (azaz a cím alatt a kiválasztott alkalmazás nevét tartalmazó ablaktáblán) válassza a _ tulajdonságok elemet***.
+1. A **_AppName_*_-_* tulajdonságok** paneljén válassza a **nem** lehetőséget a **felhasználók bejelentkezéshez való engedélyezéséhez?**.
 1. Kattintson a **Save (Mentés** ) parancsra.
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Lista nélküli alkalmazás letiltása az Azure AD PowerShell használatával
 
-Ha ismeri egy olyan alkalmazás AppId, amely nem jelenik meg a vállalati alkalmazások listáján (például azért, mert törölte az alkalmazást vagy a szolgáltatást még nem hozták létre a Microsoft által előre felhatalmazott alkalmazás miatt), manuálisan is létrehozhatja az alkalmazást, majd letilthatja a [AzureAD PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0)használatával.
+Ha ismeri egy olyan alkalmazás AppId, amely nem jelenik meg a vállalati alkalmazások listáján (például azért, mert törölte az alkalmazást vagy a szolgáltatást még nem hozták létre a Microsoft által előre felhatalmazott alkalmazás miatt), manuálisan is létrehozhatja az alkalmazást, majd letilthatja a [AzureAD PowerShell-parancsmag](/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0)használatával.
 
 ```PowerShell
 # The AppId of the app to be disabled
@@ -56,9 +56,9 @@ if ($servicePrincipal) {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Összes saját csoport megjelenítése](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](assign-user-or-group-access-portal.md)
-* [Felhasználó vagy csoport hozzárendelésének eltávolítása vállalati alkalmazásból](remove-user-or-group-access-portal.md)
-* [Vállalati alkalmazás nevének vagy emblémájának módosítása](change-name-or-logo-portal.md)
+* [Felhasználó vagy csoport hozzárendelésének eltávolítása vállalati alkalmazásból](./assign-user-or-group-access-portal.md)
+* [Vállalati alkalmazás nevének vagy emblémájának módosítása](./add-application-portal-configure.md)

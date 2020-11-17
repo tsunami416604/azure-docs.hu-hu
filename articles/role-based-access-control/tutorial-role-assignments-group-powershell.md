@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 0d72ea23b74137e7e57f892b831b0be1b4a89de5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b1a2f87498d7869b21e6a8ab44fc1f9660456ad
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735521"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648295"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>Oktatóanyag: csoporthoz való hozzáférés biztosítása az Azure-erőforrásokhoz Azure PowerShell használatával
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Hozzáférések felsorolása
 > * Hozzáférés eltávolítása
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 Az oktatóanyag elvégzéséhez a következőkre van szükség:
 
 - Engedélyek csoportok létrehozására az Azure Active Directoryban (vagy egy meglévő csoport)
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)
+- [Azure Cloud Shell](../cloud-shell/quickstart-powershell.md)
 
 ## <a name="role-assignments"></a>Szerepkör-hozzárendelések
 
@@ -48,8 +48,8 @@ Az Azure RBAC a hozzáférés biztosításához létre kell hoznia egy szerepkö
 
 | Rendszerbiztonsági tag | Szerepkör-definíció | Hatókör |
 | --- | --- | --- |
-| Group<br>(RBAC-oktatóanyagbeli csoport) | [Olvasó](built-in-roles.md#reader) | Előfizetés |
-| Group<br>(RBAC-oktatóanyagbeli csoport)| [Közreműködő](built-in-roles.md#contributor) | Erőforráscsoport<br>(rbac-tutorial-resource-group) |
+| Csoport<br>(RBAC-oktatóanyagbeli csoport) | [Olvasó](built-in-roles.md#reader) | Előfizetés |
+| Csoport<br>(RBAC-oktatóanyagbeli csoport)| [Közreműködő](built-in-roles.md#contributor) | Erőforráscsoport<br>(rbac-tutorial-resource-group) |
 
    ![Csoport szerepkör-hozzárendelései](./media/tutorial-role-assignments-group-powershell/rbac-role-assignments.png)
 
@@ -72,7 +72,7 @@ Szerepkör hozzárendeléséhez felhasználóra, csoportra vagy szolgáltatásn�
 
 Ha nem rendelkezik a csoportok létrehozásához szükséges engedélyekkel, kipróbálhatja az [oktatóanyagot: felhasználói hozzáférést biztosíthat az Azure-erőforrásokhoz Azure PowerShell](tutorial-role-assignments-user-powershell.md) helyett.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Egy erőforráscsoport használatával bemutatjuk, hogyan rendelhet hozzá egy szerepkört erőforráscsoporti hatókörben.
 
@@ -291,7 +291,7 @@ Ha törölni szeretné a jelen oktatóanyag során létrehozott erőforrásokat,
     
     Ha a csoport törlése során hibaüzenet jelenik meg, a csoportot a portálon is törölheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](role-assignments-powershell.md)

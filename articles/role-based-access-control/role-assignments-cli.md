@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
-ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75f2eb90e2418b57e5e0a358fbd6282b20ddc9e7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597652"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648361"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure CLI használatával
 
@@ -26,7 +26,7 @@ ms.locfileid: "91597652"
 Szerepkör-hozzárendelések hozzáadásához vagy eltávolításához a következőket kell tennie:
 
 - `Microsoft.Authorization/roleAssignments/write` és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy a [tulajdonos](built-in-roles.md#owner)
-- [Bash Azure Cloud Shell](/azure/cloud-shell/overview) vagy [Azure CLI](/cli/azure) -ben
+- [Bash Azure Cloud Shell](../cloud-shell/overview.md) vagy [Azure CLI](/cli/azure) -ben
 
 ## <a name="steps-to-add-a-role-assignment"></a>Szerepkör-hozzárendelés hozzáadásának lépései
 
@@ -52,7 +52,7 @@ Azure AD-csoport esetén a csoport objektum-AZONOSÍTÓra van szükség. Az obje
 az ad group show --group "{groupName}" --query "objectId" --output tsv
 ```
 
-**Egyszerű szolgáltatásnév**
+**Szolgáltatásnév**
 
 Az Azure AD egyszerű szolgáltatásnév (az alkalmazás által használt identitás) esetében szüksége lesz a szolgáltatásnév objektum AZONOSÍTÓra. Az objektumazonosító beszerzéséhez használja az [az ad SP listát](/cli/azure/ad/sp#az_ad_sp_list). Egyszerű szolgáltatásnév esetén használja az objektumazonosító azonosítót, **ne** pedig az alkalmazás azonosítóját.
 
@@ -185,7 +185,7 @@ Az alábbi példa bemutatja a kimenetet, amikor hozzárendeli a [virtuális gép
 
 ### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>Szerepkör-hozzárendelés hozzáadása egy adott blob-tároló erőforrás-hatóköréhez
 
-Hozzárendeli a [Storage blob-adatközreműködői](built-in-roles.md#storage-blob-data-contributor) szerepkört egy olyan szolgáltatáshoz, amelynek a *55555555-5555-5555-5555-555555555555* -es azonosítójú objektuma egy *blob-Container-01*nevű blob-tároló erőforrás-hatókörében van.
+Hozzárendeli a [Storage blob-adatközreműködői](built-in-roles.md#storage-blob-data-contributor) szerepkört egy olyan szolgáltatáshoz, amelynek a *55555555-5555-5555-5555-555555555555* -es azonosítójú objektuma egy *blob-Container-01* nevű blob-tároló erőforrás-hatókörében van.
 
 ```azurecli
 az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
@@ -195,7 +195,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 
 ### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Szerepkör-hozzárendelés hozzáadása a Storage-fiók erőforrás-hatókörében lévő összes blob-tárolóhoz
 
-Hozzárendeli a [Storage blob-adatközreműködői](built-in-roles.md#storage-blob-data-contributor) szerepkört egy, a *storage12345*nevű Storage-fiók erőforrás-HATÓKÖRében a *55555555-5555-5555-5555-555555555555* azonosítójú azonosítójú szolgáltatáshoz.
+Hozzárendeli a [Storage blob-adatközreműködői](built-in-roles.md#storage-blob-data-contributor) szerepkört egy, a *storage12345* nevű Storage-fiók erőforrás-HATÓKÖRében a *55555555-5555-5555-5555-555555555555* azonosítójú azonosítójú szolgáltatáshoz.
 
 ```azurecli
 az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
@@ -205,7 +205,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 
 ### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Szerepkör-hozzárendelés hozzáadása egy adott virtuális hálózati erőforrás-hatókörben lévő csoporthoz
 
-Hozzárendeli a [virtuálisgép-közreműködő](built-in-roles.md#virtual-machine-contributor) szerepkört az *Ann Mack Team* csoporthoz a 22222222-2222-2222-2222-222222222222 azonosítóval, amely egy *Pharma-Sales-Project-Network*nevű virtuális hálózat erőforrás-hatóköre.
+Hozzárendeli a [virtuálisgép-közreműködő](built-in-roles.md#virtual-machine-contributor) szerepkört az *Ann Mack Team* csoporthoz a 22222222-2222-2222-2222-222222222222 azonosítóval, amely egy *Pharma-Sales-Project-Network* nevű virtuális hálózat erőforrás-hatóköre.
 
 ```azurecli
 az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
@@ -362,4 +362,4 @@ az role assignment delete --assignee "alain@example.com" \
 ## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli szerepkör-hozzárendelések listázása az Azure CLI használatával](role-assignments-list-cli.md)
-- [Azure-erőforrások és-erőforráscsoportok kezelése az Azure CLI használatával](../azure-resource-manager/cli-azure-resource-manager.md)
+- [Azure-erőforrások és-erőforráscsoportok kezelése az Azure CLI használatával](../azure-resource-manager/management/manage-resources-cli.md)

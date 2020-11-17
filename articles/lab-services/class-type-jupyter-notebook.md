@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4034f889334bcf1e4eaa3710a32db60b6a9936b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533520"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648021"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Tesztkörnyezet létrehozása az adatelemzéshez Python és Jupyter notebookokkal
 Ez a cikk azt ismerteti, hogyan állítható be a sablon virtuális gép (VM) a labor Servicesben a diákoknak a [Jupyter-jegyzetfüzetek](http://jupyter-notebook.readthedocs.io/)használatának megtanításához szükséges eszközökkel, valamint arról, hogy a tanulók hogyan kapcsolódhatnak a notebookokhoz a virtuális gépeken (VM-EK).
@@ -20,7 +20,7 @@ A Jupyter notebookok egy nyílt forráskódú projekt, amely lehetővé teszi, h
 ## <a name="set-up-the-lab"></a>A labor beállítása
 
 ### <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
-A tesztkörnyezet beállításához hozzá kell férnie egy Azure-előfizetéshez és egy labor-fiókhoz. A szervezet rendszergazdájával megtudhatja, hogy tud-e hozzáférni egy meglévő Azure-előfizetéshez. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+A tesztkörnyezet beállításához hozzá kell férnie egy Azure-előfizetéshez és egy labor-fiókhoz. A szervezet rendszergazdájával megtudhatja, hogy tud-e hozzáférni egy meglévő Azure-előfizetéshez. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 Ha rendelkezik Azure-előfizetéssel, hozzon létre egy új Labor-fiókot Azure Lab Services az oktatóanyag: [labor-fiók beállítása](tutorial-setup-lab-account.md)című témakörben leírtak szerint. Használhat meglévő labor-fiókot is.
 
@@ -29,7 +29,7 @@ Engedélyezze az alábbi táblázatban ismertetett beállításokat a labor-fió
 
 | Tesztkörnyezet-fiók beállítása | Utasítások |
 | ------------------- | ------------ |
-| Piactéri rendszerkép | A labor-fiókjában az operációs rendszer igényei alapján engedélyezze az Azure Marketplace-lemezképek egyikét: <br/><ul><li>Data Science Virtual Machine – Windows Server 2019</li><li>Data Science Virtual Machine – Ubuntu 18,04</li></ul> |
+| Marketplace-beli rendszerkép | A labor-fiókjában az operációs rendszer igényei alapján engedélyezze az Azure Marketplace-lemezképek egyikét: <br/><ul><li>Data Science Virtual Machine – Windows Server 2019</li><li>Data Science Virtual Machine – Ubuntu 18,04</li></ul> |
 
 > [!NOTE]
 > Ez a cikk az Azure Marketplace-en elérhető adatelemzési virtuálisgép-rendszerképeket használja, mivel azok előre vannak konfigurálva a Jupyter Notebook használatával. Ezek a lemezképek azonban számos más fejlesztési és modellező eszközt is tartalmaznak az adatelemzéshez. Ha nem szeretné, hogy ezek a további eszközök, és csak Jupyter notebookokkal rendelkező egyszerű telepítést szeretne, hozzon létre egy egyéni virtuálisgép-rendszerképet. Példa a [JupyperHub telepítésére az Azure](http://tljh.jupyter.org/en/latest/install/azure.html)-ban. Miután létrehozta az egyéni rendszerképet, feltöltheti egy megosztott képkatalógusba, hogy Azure Lab Serviceson belül használhassa a rendszerképet. További információ a [megosztott képkatalógus használatáról Azure Lab Servicesban](how-to-attach-detach-shared-image-gallery.md). 
@@ -86,15 +86,15 @@ Ha a diákoknak Linux rendszerű virtuális gépeket adtak meg, akkor a tanulók
 A következő szakaszokban részletesen ismertetjük a Jupyter-jegyzetfüzetekhez való kapcsolódás módját. 
 
 #### <a name="ssh-to-virtual-machine"></a>SSH – virtuális gép
-A diákok SSH-n keresztül csatlakozhatnak a Linux rendszerű virtuális gépekhez egy terminál-munkamenetből. A részletes lépésekért lásd: a [tantermi labor elérése](how-to-use-classroom-lab.md). Ha Windows-ügyfélszámítógépet használnak, az SSH-ügyfelet a [Putty](https://www.putty.org/) letöltésével vagy a [Windowsban](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse) az SSH-val való engedélyezésével kell engedélyeznie a parancssorból. 
+A diákok SSH-n keresztül csatlakozhatnak a Linux rendszerű virtuális gépekhez egy terminál-munkamenetből. A részletes lépésekért lásd: a [tantermi labor elérése](how-to-use-classroom-lab.md). Ha Windows-ügyfélszámítógépet használnak, az SSH-ügyfelet a [Putty](https://www.putty.org/) letöltésével vagy a [Windowsban](/windows-server/administration/openssh/openssh_install_firstuse) az SSH-val való engedélyezésével kell engedélyeznie a parancssorból. 
 
 1.  Indítsa el a virtuális gépet.
-2.  Ha a virtuális gép fut, kattintson a **Kapcsolódás**elemre, amely egy olyan párbeszédpanelt nyit meg, amely az SSH-parancs karakterláncát adja meg, amely a következő mintához hasonlóan fog kinézni:
+2.  Ha a virtuális gép fut, kattintson a **Kapcsolódás** elemre, amely egy olyan párbeszédpanelt nyit meg, amely az SSH-parancs karakterláncát adja meg, amely a következő mintához hasonlóan fog kinézni:
     
      ```shell
     ssh -p 12345 student@ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com
      ```
-3.  Nyissa meg a parancssort vagy a terminált, és illessze be ezt a parancsot, majd nyomja le az **ENTER**billentyűt.
+3.  Nyissa meg a parancssort vagy a terminált, és illessze be ezt a parancsot, majd nyomja le az **ENTER** billentyűt.
 4.  Adja meg a virtuális gépre való bejelentkezéshez használandó jelszót. 
 
 Ha a tanulók virtuális gépekhez csatlakoznak, a Jupyter notebookokat helyileg érhetik el és futtathatják.
@@ -104,7 +104,7 @@ Az **Data Science Virtual Machine – Ubuntu-** rendszerkép már ki van építv
 
 1.  Töltse le és telepítse a [X2Go-ügyfelet](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) az ügyféloldali platformra.
 2.  A [Azure Lab Services-portálon](https://labs.azure.com)győződjön meg arról, hogy a linuxos virtuális gép, amelyhez csatlakozni szeretne, elindul.
-3.  Ha a virtuális gép fut, kattintson a **Kapcsolódás**gombra, amely az SSH-parancs karakterláncát tartalmazó párbeszédpanelt nyit meg, amely a következő mintához hasonlóan fog kinézni:
+3.  Ha a virtuális gép fut, kattintson a **Kapcsolódás** gombra, amely az SSH-parancs karakterláncát tartalmazó párbeszédpanelt nyit meg, amely a következő mintához hasonlóan fog kinézni:
 
     ```
      ssh -p 12345 student@ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com
@@ -134,7 +134,7 @@ A virtuális géphez való kapcsolódáshoz kövesse az alábbi lépéseket:
 Előfordulhat, hogy néhány tanuló közvetlenül a helyi számítógépről szeretne csatlakozni a Jupyter-kiszolgálóhoz a virtuális gépeken belül. Az SSH protokoll lehetővé teszi a port továbbítását a helyi számítógép és egy távoli kiszolgáló (a mi esetünkben a Student-féle Tesztkörnyezet virtuális gépe) között, hogy egy adott porton futó alkalmazás a helyi számítógép leképezési portjára legyen **Bújtatásban** . A diákoknak az alábbi lépéseket kell követniük az SSH-alagúton a Jupyter-kiszolgálónak a labor virtuális gépeken:
 
 1.  Győződjön meg arról, hogy a [Azure Lab Services-portálon](https://labs.azure.com)a csatlakozni kívánt linuxos virtuális gép elindult.
-2.  Ha a virtuális gép fut, kattintson a **Kapcsolódás**gombra, amely az SSH-parancs karakterláncát tartalmazó párbeszédpanelt nyit meg, amely a következő sztringhez hasonlóan fog kinézni:
+2.  Ha a virtuális gép fut, kattintson a **Kapcsolódás** gombra, amely az SSH-parancs karakterláncát tartalmazó párbeszédpanelt nyit meg, amely a következő sztringhez hasonlóan fog kinézni:
 
     ```bash
      ssh -p 12345 student@ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com

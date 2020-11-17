@@ -3,12 +3,12 @@ title: Kapcsolódás a Azure Lab Services társ hálózatához | Microsoft Docs
 description: Ismerje meg, hogyan csatlakoztatható a labor-hálózat egy másik hálózathoz társként. Például összekapcsolhatja a helyszíni szervezeti vagy egyetemi hálózatot a labor virtuális hálózatával az Azure-ban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 20e47113d5c2439c9c8ea355288442b5f41d90ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 169160005b27f6ab9575749e4a72a26d2df4000b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445831"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647987"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>A labor hálózatának összekötése egy társ virtuális hálózattal Azure Lab Services
 
@@ -26,7 +26,7 @@ Előfordulhat, hogy a tesztkörnyezet hálózatát egy társ virtuális hálóza
 Bizonyos helyszíni hálózatok az Azure-Virtual Networkhoz kapcsolódnak [ExpressRoute](../expressroute/expressroute-introduction.md) vagy [Virtual Network átjárón](../vpn-gateway/vpn-gateway-about-vpngateways.md)keresztül. Ezeket a szolgáltatásokat Azure Lab Serviceson kívül kell beállítani. Ha szeretne többet megtudni arról, hogyan csatlakoztathat helyszíni hálózatot az Azure-hoz az ExpressRoute használatával, tekintse meg az [ExpressRoute áttekintése](../expressroute/expressroute-introduction.md)című témakört. Virtual Network átjárót használó helyszíni kapcsolat esetén az átjárónak, a megadott virtuális hálózatnak és a labor-fióknak ugyanabban a régióban kell lennie.
 
 > [!NOTE]
-> Ha olyan Azure-Virtual Network hoz létre, amely egy labor-fiókkal lesz társítva, fontos tisztában lennie azzal, hogy a virtuális hálózat régiója milyen hatással van az osztályterem Labs létrehozására.  További információkért tekintse meg a rendszergazdai útmutató szakaszát a [regions\locations](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)webhelyen.
+> Ha olyan Azure-Virtual Network hoz létre, amely egy labor-fiókkal lesz társítva, fontos tisztában lennie azzal, hogy a virtuális hálózat régiója milyen hatással van az osztályterem Labs létrehozására.  További információkért tekintse meg a rendszergazdai útmutató szakaszát a [regions\locations](./administrator-guide.md#regionslocations)webhelyen.
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurálás a labor-fiók létrehozásakor
 
@@ -71,7 +71,7 @@ A következő eljárás a virtuális gépekhez tartozó címtartomány megadás�
 
     ![Címtartomány konfigurálása](./media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd az alábbi cikkeket:
 

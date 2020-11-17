@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 659d136695943d846fe57986d4b64a37f0d8f30e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 677c9c0123c174fdf2cf8e94f9c8110656d21306
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89300119"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649398"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás törlése a Azure Active Directory (Azure AD) bérlőből
 
@@ -40,18 +40,18 @@ Ha törölni szeretne egy alkalmazást az Azure AD-bérlőből, a következőkre
 
 Alkalmazás törlése az Azure AD-bérlőből:
 
-1. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki a törölni kívánt alkalmazást. Ebben az esetben törölte az előző rövid útmutatóban hozzáadott **GitHub_test** alkalmazást.
-1. A bal oldali ablaktábla **kezelés** szakaszában válassza a **Tulajdonságok**lehetőséget.
-1. Válassza a **Törlés**lehetőséget, majd kattintson az **Igen** gombra annak megerősítéséhez, hogy törölni szeretné az alkalmazást az Azure ad-bérlőből.
+1. Az Azure AD-portálon válassza a **vállalati alkalmazások** lehetőséget. Ezután keresse meg és válassza ki a törölni kívánt alkalmazást. Ebben az esetben törölte az előző rövid útmutatóban hozzáadott **GitHub_test** alkalmazást.
+1. A bal oldali ablaktábla **kezelés** szakaszában válassza a **Tulajdonságok** lehetőséget.
+1. Válassza a **Törlés** lehetőséget, majd kattintson az **Igen** gombra annak megerősítéséhez, hogy törölni szeretné az alkalmazást az Azure ad-bérlőből.
 
 > [!TIP]
-> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](/graph/application-saml-sso-configure-api).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült ezzel a rövid útmutatóval, érdemes törölni az alkalmazást a tesztelési bérlő tisztításához. Az alkalmazás törlése ebben a rövid útmutatóban szerepelt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Elvégezte a gyors üzembe helyezési sorozatot! Következő lépésként olvassa el az App Management ajánlott eljárásait ismertető témakört.
 > [!div class="nextstepaction"]

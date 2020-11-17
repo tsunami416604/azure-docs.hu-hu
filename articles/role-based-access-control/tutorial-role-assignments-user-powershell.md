@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 9c35c08889892e877ecfac20910607ddf85b2282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9b66d7b37397fe509cce5c66d30da0a3ae63465
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735487"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648259"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-azure-powershell"></a>Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz Azure PowerShell használatával
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Hozzáférések felsorolása
 > * Hozzáférés eltávolítása
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 Az oktatóanyag elvégzéséhez a következőkre van szükség:
 
 - Engedélyek felhasználók létrehozására az Azure Active Directoryban (vagy meglévő felhasználó)
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)
+- [Azure Cloud Shell](../cloud-shell/quickstart-powershell.md)
 
 ## <a name="role-assignments"></a>Szerepkör-hozzárendelések
 
@@ -77,7 +77,7 @@ Szerepkör hozzárendeléséhez felhasználóra, csoportra vagy szolgáltatásn�
     11111111-1111-1111-1111-111111111111 RBAC Tutorial User rbacuser@example.com Member
     ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Egy erőforráscsoport használatával bemutatjuk, hogyan rendelhet hozzá egy szerepkört erőforráscsoporti hatókörben.
 
@@ -276,7 +276,7 @@ Ha törölni szeretné a jelen oktatóanyag során létrehozott erőforrásokat,
     Remove-AzureADUser -ObjectId "rbacuser@example.com"
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](role-assignments-powershell.md)

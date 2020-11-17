@@ -16,16 +16,16 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: a891830d876bfa99d29087278dd5b870ae7e2866
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 846e1a83f3cba5f87210ae4f825b5fac4f1569c6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368383"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648378"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a külső vendég felhasználók számára a Azure Portal használatával
 
-Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) nagyobb biztonsági felügyeletet tesz lehetővé a nagyméretű szervezetek számára, valamint a kis-és közepes méretű vállalkozások számára, akik olyan külső közreműködők, szállítók vagy szabadúszók számára biztosítanak hozzáférést, amelyeknek hozzá kell férniük a környezet adott erőforrásaihoz, de nem feltétlenül a teljes infrastruktúrához vagy a számlázással kapcsolatos hatókörökhöz. A [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) funkciói a külső vendég felhasználóival való együttműködéshez használhatók, és az Azure RBAC használatával csak azokat az engedélyeket adhatja meg, amelyekre a vendég felhasználóknak szüksége van a környezetében.
+Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) nagyobb biztonsági felügyeletet tesz lehetővé a nagyméretű szervezetek számára, valamint a kis-és közepes méretű vállalkozások számára, akik olyan külső közreműködők, szállítók vagy szabadúszók számára biztosítanak hozzáférést, amelyeknek hozzá kell férniük a környezet adott erőforrásaihoz, de nem feltétlenül a teljes infrastruktúrához vagy a számlázással kapcsolatos hatókörökhöz. A [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) funkciói a külső vendég felhasználóival való együttműködéshez használhatók, és az Azure RBAC használatával csak azokat az engedélyeket adhatja meg, amelyekre a vendég felhasználóknak szüksége van a környezetében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,13 +49,13 @@ A címtár (member Users) natív tagjai eltérő engedélyekkel rendelkeznek, mi
 
 A következő lépésekkel adhat hozzá egy vendég felhasználót a címtárhoz a Azure Active Directory oldalon.
 
-1. Győződjön meg arról, hogy a szervezet külső együttműködési beállításai úgy vannak konfigurálva, hogy Ön is meghívja vendégeit. További információkért tekintse meg a [külső B2B-együttműködés engedélyezése és a vendégek meghívására alkalmas személyek kezelése](../active-directory/b2b/delegate-invitations.md)című témakört.
+1. Győződjön meg arról, hogy a szervezet külső együttműködési beállításai úgy vannak konfigurálva, hogy Ön is meghívja vendégeit. További információkért tekintse meg a [külső B2B-együttműködés engedélyezése és a vendégek meghívására alkalmas személyek kezelése](../active-directory/external-identities/delegate-invitations.md)című témakört.
 
-1. A Azure Portal kattintson **Azure Active Directory**  >  **felhasználók**  >  **új vendég felhasználó**elemre.
+1. A Azure Portal kattintson **Azure Active Directory**  >  **felhasználók**  >  **új vendég felhasználó** elemre.
 
     ![Új vendég felhasználói szolgáltatás a Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
-1. Kövesse a lépéseket egy új vendég felhasználó hozzáadásához. További információ: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory).
+1. Kövesse a lépéseket egy új vendég felhasználó hozzáadásához. További információ: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](../active-directory/external-identities/add-users-administrator.md#add-guest-users-to-the-directory).
 
 Miután hozzáadta a vendég felhasználót a címtárhoz, elküldheti a vendég felhasználó közvetlen hivatkozását egy megosztott alkalmazásra, vagy a vendég felhasználó a meghívót tartalmazó e-mailben a beváltási URL-címre is kattinthat.
 
@@ -65,7 +65,7 @@ Ahhoz, hogy a vendég felhasználó hozzáférhessen a címtárhoz, el kell vég
 
 ![Vendég felhasználói meghívás-felülvizsgálati engedélyek](./media/role-assignments-external-users/invite-review-permissions.png)
 
-További információ a Meghívási folyamatról: [Azure Active Directory B2B együttműködés meghívásának beváltása](../active-directory/b2b/redemption-experience.md).
+További információ a Meghívási folyamatról: [Azure Active Directory B2B együttműködés meghívásának beváltása](../active-directory/external-identities/redemption-experience.md).
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>Szerepkör-hozzárendelés hozzáadása vendég felhasználóhoz
 
@@ -73,7 +73,7 @@ Az Azure RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre.
 
-1.  Válassza ki azon erőforrások készletét, amelyekre a hozzáférés vonatkozik, más néven hatókör. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat**vagy egy erőforrást.
+1.  Válassza ki azon erőforrások készletét, amelyekre a hozzáférés vonatkozik, más néven hatókör. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat** vagy egy erőforrást.
 
 1. Kattintson az adott erőforrásra.
 
@@ -111,7 +111,7 @@ Ha a vendég felhasználó még nem szerepel a címtárban, a felhasználót kö
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre.
 
-1.  Válassza ki azon erőforrások készletét, amelyekre a hozzáférés vonatkozik, más néven hatókör. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat**vagy egy erőforrást.
+1.  Válassza ki azon erőforrások készletét, amelyekre a hozzáférés vonatkozik, más néven hatókör. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat** vagy egy erőforrást.
 
 1. Kattintson az adott erőforrásra.
 
@@ -145,7 +145,7 @@ Ha a vendég felhasználó még nem szerepel a címtárban, a felhasználót kö
 
 1. Küldje el a Meghívási hivatkozást a vendég felhasználónak a meghívás folyamatának befejezéséhez.
 
-    További információ a Meghívási folyamatról: [Azure Active Directory B2B együttműködés meghívásának beváltása](../active-directory/b2b/redemption-experience.md).
+    További információ a Meghívási folyamatról: [Azure Active Directory B2B együttműködés meghívásának beváltása](../active-directory/external-identities/redemption-experience.md).
 
 ## <a name="remove-a-guest-user-from-your-directory"></a>Vendég felhasználó eltávolítása a címtárból
 
@@ -163,9 +163,9 @@ Mielőtt eltávolít egy vendég felhasználót egy címtárból, először el k
 
    ![Szerepkör-hozzárendelés eltávolítási üzenete](./media/role-assignments-external-users/remove-role-assignment.png)
 
-1. A megjelenő szerepkör-hozzárendelés eltávolítása üzenetben kattintson az **Igen**gombra.
+1. A megjelenő szerepkör-hozzárendelés eltávolítása üzenetben kattintson az **Igen** gombra.
 
-1. A bal oldali navigációs sávon kattintson **Azure Active Directory**  >  **felhasználók**elemre.
+1. A bal oldali navigációs sávon kattintson **Azure Active Directory**  >  **felhasználók** elemre.
 
 1. Kattintson az eltávolítani kívánt vendég felhasználóra.
 
@@ -173,7 +173,7 @@ Mielőtt eltávolít egy vendég felhasználót egy címtárból, először el k
 
    ![Vendég felhasználó törlése](./media/role-assignments-external-users/delete-guest-user.png)
 
-1. A megjelenő törlési üzenetben kattintson az **Igen**gombra.
+1. A megjelenő törlési üzenetben kattintson az **Igen** gombra.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -183,7 +183,7 @@ A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. 
 
 ![A vendég felhasználó nem tallózhat a címtárban lévő felhasználók között](./media/role-assignments-external-users/directory-no-users.png)
 
-Ha egy vendég felhasználónak további jogosultságokra van szüksége a címtárban, hozzárendelhet egy címtárbeli szerepkört a vendég felhasználóhoz. Ha szeretné, hogy a vendég felhasználó teljes olvasási hozzáféréssel rendelkezzen a címtárhoz, hozzáadhatja a vendég felhasználót az Azure AD [címtár-olvasói](../active-directory/roles/permissions-reference.md) szerepköréhez. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/b2b/add-guest-to-role.md).
+Ha egy vendég felhasználónak további jogosultságokra van szüksége a címtárban, hozzárendelhet egy címtárbeli szerepkört a vendég felhasználóhoz. Ha szeretné, hogy a vendég felhasználó teljes olvasási hozzáféréssel rendelkezzen a címtárhoz, hozzáadhatja a vendég felhasználót az Azure AD [címtár-olvasói](../active-directory/roles/permissions-reference.md) szerepköréhez. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/external-identities/add-guest-to-role.md).
 
 ![Directory-olvasók szerepkörének kiosztása](./media/role-assignments-external-users/directory-roles.png)
 
@@ -193,27 +193,27 @@ A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. 
 
 ![A vendég felhasználó nem tallózhat a rendszerbiztonsági tag számára szerepkörök hozzárendeléséhez](./media/role-assignments-external-users/directory-no-browse.png)
 
-Ha a vendég felhasználó tudja, hogy valaki pontosan bejelentkezik a címtárba, hozzáférést biztosíthat. Ha szeretné, hogy a vendég felhasználó teljes olvasási hozzáféréssel rendelkezzen a címtárhoz, hozzáadhatja a vendég felhasználót az Azure AD [címtár-olvasói](../active-directory/roles/permissions-reference.md) szerepköréhez. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/b2b/add-guest-to-role.md).
+Ha a vendég felhasználó tudja, hogy valaki pontosan bejelentkezik a címtárba, hozzáférést biztosíthat. Ha szeretné, hogy a vendég felhasználó teljes olvasási hozzáféréssel rendelkezzen a címtárhoz, hozzáadhatja a vendég felhasználót az Azure AD [címtár-olvasói](../active-directory/roles/permissions-reference.md) szerepköréhez. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/external-identities/add-guest-to-role.md).
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>A vendég felhasználó nem regisztrálhat alkalmazásokat, és nem hozhat létre egyszerű szolgáltatásokat
 
-A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. Ha egy vendég felhasználónak képesnek kell lennie az alkalmazások regisztrálására vagy egyszerű szolgáltatásnév létrehozására, a vendég felhasználót hozzáadhatja az [alkalmazás fejlesztői](../active-directory/roles/permissions-reference.md) szerepköréhez az Azure ad-ben. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/b2b/add-guest-to-role.md).
+A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. Ha egy vendég felhasználónak képesnek kell lennie az alkalmazások regisztrálására vagy egyszerű szolgáltatásnév létrehozására, a vendég felhasználót hozzáadhatja az [alkalmazás fejlesztői](../active-directory/roles/permissions-reference.md) szerepköréhez az Azure ad-ben. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/external-identities/add-guest-to-role.md).
 
 ![A vendég felhasználó nem tud regisztrálni alkalmazásokat](./media/role-assignments-external-users/directory-access-denied.png)
 
 ### <a name="guest-user-does-not-see-the-new-directory"></a>A vendég felhasználó nem látja az új könyvtárat
 
-Ha a vendég felhasználó hozzáférést kapott egy címtárhoz, de nem látja a Azure Portalban felsorolt új könyvtárat, amikor megpróbálnak váltani a **címtár + előfizetés** ablaktáblán, győződjön meg arról, hogy a vendég felhasználó befejezte a Meghívási folyamatot. További információ a Meghívási folyamatról: [Azure Active Directory B2B együttműködés meghívásának beváltása](../active-directory/b2b/redemption-experience.md).
+Ha a vendég felhasználó hozzáférést kapott egy címtárhoz, de nem látja a Azure Portalban felsorolt új könyvtárat, amikor megpróbálnak váltani a **címtár + előfizetés** ablaktáblán, győződjön meg arról, hogy a vendég felhasználó befejezte a Meghívási folyamatot. További információ a Meghívási folyamatról: [Azure Active Directory B2B együttműködés meghívásának beváltása](../active-directory/external-identities/redemption-experience.md).
 
 ### <a name="guest-user-does-not-see-resources"></a>A vendég felhasználó nem látja az erőforrásokat
 
-Ha a vendég felhasználó hozzáférést kapott egy címtárhoz, de nem látja azokat az erőforrásokat, amelyekhez hozzáférést kapott a Azure Portal, győződjön meg arról, hogy a vendég felhasználó a megfelelő könyvtárat választotta. Előfordulhat, hogy A vendég felhasználó több könyvtárat is elérhet. A címtárak váltásához kattintson a bal felső sarokban található **könyvtár + előfizetés**elemre, majd kattintson a megfelelő könyvtárra.
+Ha a vendég felhasználó hozzáférést kapott egy címtárhoz, de nem látja azokat az erőforrásokat, amelyekhez hozzáférést kapott a Azure Portal, győződjön meg arról, hogy a vendég felhasználó a megfelelő könyvtárat választotta. Előfordulhat, hogy A vendég felhasználó több könyvtárat is elérhet. A címtárak váltásához kattintson a bal felső sarokban található **könyvtár + előfizetés** elemre, majd kattintson a megfelelő könyvtárra.
 
 ![Könyvtárak és előfizetések panel a Azure Portal](./media/role-assignments-external-users/directory-subscription.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal](../active-directory/b2b/add-users-administrator.md)
-- [Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai](../active-directory/b2b/user-properties.md)
-- [A B2B együttműködés meghívójának e-mail-Azure Active Directory elemei](../active-directory/b2b/invitation-email-elements.md)
+- [Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal](../active-directory/external-identities/add-users-administrator.md)
+- [Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai](../active-directory/external-identities/user-properties.md)
+- [A B2B együttműködés meghívójának e-mail-Azure Active Directory elemei](../active-directory/external-identities/invitation-email-elements.md)
 - [Vendég felhasználó hozzáadása társ-rendszergazdaként](classic-administrators.md#add-a-guest-user-as-a-co-administrator)

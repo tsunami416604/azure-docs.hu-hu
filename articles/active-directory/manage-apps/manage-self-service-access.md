@@ -15,16 +15,16 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bd6ddf58b3a6e8eb8c618ded335c699fc93328c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dfa7530617830de99d752edcf4545300525ddbe8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362365"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649211"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Önkiszolgáló alkalmazás-hozzárendelés konfigurálása
 
-Ahhoz, hogy a felhasználók maguk is felfedezzék alkalmazásaikat a saját alkalmazásaikban, engedélyeznie kell az **önkiszolgáló alkalmazás-hozzáférést** minden olyan alkalmazáshoz, amely számára engedélyezni szeretné a felhasználók számára a saját felderítését és a hozzáférés kérését. Ez a funkció olyan alkalmazásokhoz érhető el, amelyeket az Azure [ad](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)-katalógusból, az [Azure ad Application proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) -ból vagy [felhasználói vagy rendszergazdai hozzájárulással](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)adott hozzá. 
+Ahhoz, hogy a felhasználók maguk is felfedezzék alkalmazásaikat a saját alkalmazásaikban, engedélyeznie kell az **önkiszolgáló alkalmazás-hozzáférést** minden olyan alkalmazáshoz, amely számára engedélyezni szeretné a felhasználók számára a saját felderítését és a hozzáférés kérését. Ez a funkció olyan alkalmazásokhoz érhető el, amelyeket az Azure [ad](./add-application-portal.md)-katalógusból, az [Azure ad Application proxy](./application-proxy.md) -ból vagy [felhasználói vagy rendszergazdai hozzájárulással](../develop/application-consent-experience.md)adott hozzá. 
 
 Ez a funkció nagyszerű lehetőséget nyújt arra, hogy időt és pénzt takarítson meg informatikai csoportként, és a Azure Active Directory használatával korszerű alkalmazások központi telepítésének részeként erősen ajánlott.
 
@@ -53,29 +53,29 @@ Az önkiszolgáló alkalmazások alkalmazáshoz való hozzáférésének engedé
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként.
 
-2. Válassza a **Azure Active Directory**lehetőséget. A bal oldali navigációs menüben válassza a **vállalati alkalmazások**lehetőséget.
+2. Válassza a **Azure Active Directory** lehetőséget. A bal oldali navigációs menüben válassza a **vállalati alkalmazások** lehetőséget.
 
-3. Válassza ki az alkalmazást a listából. Ha nem látja az alkalmazást, kezdje el beírni a nevét a keresőmezőbe. Vagy használja a szűrő vezérlőelemeket az alkalmazás típusának, állapotának vagy láthatóságának kiválasztásához, majd válassza az **alkalmaz**lehetőséget.
+3. Válassza ki az alkalmazást a listából. Ha nem látja az alkalmazást, kezdje el beírni a nevét a keresőmezőbe. Vagy használja a szűrő vezérlőelemeket az alkalmazás típusának, állapotának vagy láthatóságának kiválasztásához, majd válassza az **alkalmaz** lehetőséget.
 
-4. A bal oldali navigációs menüben válassza az **önkiszolgáló**lehetőséget.
+4. A bal oldali navigációs menüben válassza az **önkiszolgáló** lehetőséget.
 
 5. Az alkalmazás önkiszolgáló alkalmazásokhoz való hozzáférésének engedélyezéséhez kapcsolja be a **felhasználók számára az alkalmazáshoz való hozzáférés kérését?** váltson át az Igen értékre **.**
 
-6. Válassza ki azt **a csoportot, amelyhez hozzá kívánja adni a felhasználókat?** lapon kattintson a **csoport kiválasztása**elemre. Válasszon ki egy csoportot, majd kattintson a **kiválasztás**elemre. Ha a felhasználó kérelmét jóváhagyják, a rendszer hozzáadja a csoporthoz. A csoport tagságának megtekintésekor láthatja, hogy ki kapta meg az alkalmazáshoz való hozzáférést az önkiszolgáló hozzáférésen keresztül.
+6. Válassza ki azt **a csoportot, amelyhez hozzá kívánja adni a felhasználókat?** lapon kattintson a **csoport kiválasztása** elemre. Válasszon ki egy csoportot, majd kattintson a **kiválasztás** elemre. Ha a felhasználó kérelmét jóváhagyják, a rendszer hozzáadja a csoporthoz. A csoport tagságának megtekintésekor láthatja, hogy ki kapta meg az alkalmazáshoz való hozzáférést az önkiszolgáló hozzáférésen keresztül.
   
     > [!NOTE]
     > Ez a beállítás nem támogatja a helyszíni környezetből szinkronizált csoportok használatát.
 
-7. Nem **kötelező:** Ha szeretné megkövetelni, hogy a felhasználók hozzáférhessenek az üzleti jóváhagyáshoz, állítsa be a **jóváhagyás megkövetelése, mielőtt hozzáférést adna ehhez az alkalmazáshoz?** váltson az **Igen**értékre.
+7. Nem **kötelező:** Ha szeretné megkövetelni, hogy a felhasználók hozzáférhessenek az üzleti jóváhagyáshoz, állítsa be a **jóváhagyás megkövetelése, mielőtt hozzáférést adna ehhez az alkalmazáshoz?** váltson az **Igen** értékre.
 
-8. Nem **kötelező: csak jelszó egyszeri bejelentkezést használó alkalmazások esetében** , hogy az üzleti jóváhagyók megadják az alkalmazásnak a jóváhagyott felhasználók számára eljuttatott jelszavakat, a **jóváhagyók beállításával állíthatja be a felhasználók jelszavait ehhez az alkalmazáshoz?** váltás az **Igen**értékre.
+8. Nem **kötelező: csak jelszó egyszeri bejelentkezést használó alkalmazások esetében** , hogy az üzleti jóváhagyók megadják az alkalmazásnak a jóváhagyott felhasználók számára eljuttatott jelszavakat, a **jóváhagyók beállításával állíthatja be a felhasználók jelszavait ehhez az alkalmazáshoz?** váltás az **Igen** értékre.
 
-9. Nem **kötelező:** Azon üzleti jóváhagyók megadása, akik számára engedélyezett az alkalmazáshoz való hozzáférés jóváhagyása, annak mellett, hogy **ki jogosult az alkalmazáshoz való hozzáférés jóváhagyására?** kattintson a **jóváhagyók kiválasztása**lehetőségre, majd válassza ki a legfeljebb 10 egyéni üzleti jóváhagyót. Ezután kattintson a **Kiválasztás** elemre.
+9. Nem **kötelező:** Azon üzleti jóváhagyók megadása, akik számára engedélyezett az alkalmazáshoz való hozzáférés jóváhagyása, annak mellett, hogy **ki jogosult az alkalmazáshoz való hozzáférés jóváhagyására?** kattintson a **jóváhagyók kiválasztása** lehetőségre, majd válassza ki a legfeljebb 10 egyéni üzleti jóváhagyót. Ezután kattintson a **Kiválasztás** elemre.
 
     >[!NOTE]
     >A csoportok nem támogatottak. Legfeljebb 10 egyéni üzleti jóváhagyót választhat ki. Ha több jóváhagyót is megad, akkor egyetlen jóváhagyó is jóváhagyhat egy hozzáférési kérelmet.
 
-10. Nem **kötelező:** **olyan alkalmazások esetében, amelyek szerepköröket tesznek elérhetővé**az önkiszolgáló jóváhagyott felhasználók szerepkörhöz való hozzárendeléséhez, a **-hoz melyik szerepkört kell hozzárendelni a felhasználókhoz az alkalmazásban?** lapon kattintson a **szerepkör kiválasztása**elemre, majd válassza ki azt a szerepkört, amelyhez ezeket a felhasználókat hozzá szeretné rendelni. Ezután kattintson a **Kiválasztás** elemre.
+10. Nem **kötelező:** **olyan alkalmazások esetében, amelyek szerepköröket tesznek elérhetővé** az önkiszolgáló jóváhagyott felhasználók szerepkörhöz való hozzárendeléséhez, a **-hoz melyik szerepkört kell hozzárendelni a felhasználókhoz az alkalmazásban?** lapon kattintson a **szerepkör kiválasztása** elemre, majd válassza ki azt a szerepkört, amelyhez ezeket a felhasználókat hozzá szeretné rendelni. Ezután kattintson a **Kiválasztás** elemre.
 
 11. A befejezéshez kattintson a **Mentés** gombra a panel tetején.
 

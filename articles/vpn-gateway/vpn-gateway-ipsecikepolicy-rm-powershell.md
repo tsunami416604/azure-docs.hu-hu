@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 6039eeed2e1bcb348920be986e72089164c614ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392650"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649262"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>IPsec/IKE-szabályzat S2S VPN- vagy VNet–VNet-kapcsolatokhoz történő konfigurálása
 
@@ -34,9 +34,8 @@ Ez a cikk útmutatást nyújt az IPsec/IKE-szabályzatok létrehozásához és k
 
 > [!IMPORTANT]
 > 1. Vegye figyelembe, hogy az IPsec/IKE-szabályzat csak a következő átjárók esetében működik:
->    * ***VpnGw1, VpnGw2, VpnGw3*** (Route-based)
->    * ***Standard*** és ***HighPerformance*** (Route-based)
-> 2. Egy adott kapcsolathoz csak ***egy*** házirendet adhat meg.
+>    * ***VpnGw1, VpnGw2, VpnGw3** _ (Route-based) _ ***standard** _ és _*_HighPerformance_*_ (Route-based)
+> 2. Egy adott kapcsolatok esetében csak _*_egy_*_ házirend-kombinációt adhat meg.
 > 3. Meg kell adnia az összes algoritmust és paramétert mind az IKE (Main Mode), mind az IPsec (gyors mód) esetében. A részleges házirend-megadás nem engedélyezett.
 > 4. A VPN-eszközök gyártójának specifikációit megkeresve ellenőrizze, hogy a helyi VPN-eszközökön támogatott-e a házirend. A S2S-vagy VNet-VNet kapcsolatok nem tudják létrehozni, ha a házirendek nem kompatibilisek.
 
@@ -56,7 +55,7 @@ Az ebben a cikkben szereplő utasítások segítséget nyújt az IPsec/IKE-szab�
 
 A következő táblázat felsorolja az ügyfelek által konfigurálható támogatott titkosítási algoritmusokat és főbb erősségeket:
 
-| **IPsec/IKEv2**  | **Lehetőségek**    |
+| _ *IPSec/IKEv2**  | **Beállítások**    |
 | ---  | --- 
 | IKEv2-titkosítás | AES256, AES192, AES128, DES3, DES  
 | IKEv2-integritás  | SHA384, MD5, SHA1, SHA256  |
@@ -64,7 +63,7 @@ A következő táblázat felsorolja az ügyfelek által konfigurálható támoga
 | IPsec-titkosítás | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Nincs    |
 | IPsec-integritás  | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5 |
 | PFS-csoport        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Nincs 
-| Gyorsmódú biztonsági társítás élettartama   | (Nem**kötelező**: Ha nincs megadva, az alapértelmezett értékek szerepelnek)<br>Másodperc (egész szám; **min. 300**/alapértelmezett érték: 27000 másodperc)<br>KB (egész szám; **min. 1024**/alapértelmezett érték: 102400000 KB)   |
+| Gyorsmódú biztonsági társítás élettartama   | (Nem **kötelező**: Ha nincs megadva, az alapértelmezett értékek szerepelnek)<br>Másodperc (egész szám; **min. 300**/alapértelmezett érték: 27000 másodperc)<br>KB (egész szám; **min. 1024**/alapértelmezett érték: 102400000 KB)   |
 | Forgalomválasztó | UsePolicyBasedTrafficSelectors * * ($True/$False; Nem **kötelező**, alapértelmezett $false, ha nincs megadva)    |
 |  |  |
 
@@ -153,7 +152,7 @@ $LNGIP6        = "131.107.72.22"
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. kapcsolódjon az előfizetéshez, és hozzon létre egy új erőforráscsoportot
 
-A Resource Manager parancsmagjainak használatához váltson át PowerShell módba. További információ: [A Windows PowerShell használata a Resource Managerrel](../powershell-azure-resource-manager.md).
+A Resource Manager parancsmagjainak használatához váltson át PowerShell módba. További információ: [A Windows PowerShell használata a Resource Managerrel](../azure-resource-manager/management/manage-resources-powershell.md).
 
 Nyissa meg a PowerShell konzolt, és csatlakozzon a fiókjához. A következő minta segíthet a kapcsolódásban:
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: badf10da8af0ed3829deb2498b51b5d5c8ce6a93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56b6638462acaf43b6353787495e5b7993acb413
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604318"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648276"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Szerepkör-hozzárendelés hozzáadásának lépései
 
@@ -22,18 +22,18 @@ ms.locfileid: "91604318"
 
 ## <a name="step-1-determine-who-needs-access"></a>1. lépés: annak meghatározása, hogy kinek van hozzáférése
 
-Először meg kell határoznia, hogy kinek van szüksége hozzáférésre. Szerepkört hozzárendelhet egy felhasználóhoz, csoporthoz, egyszerű szolgáltatásnévhez vagy felügyelt identitáshoz. Ezt *rendszerbiztonsági tag*is nevezik.
+Először meg kell határoznia, hogy kinek van szüksége hozzáférésre. Szerepkört hozzárendelhet egy felhasználóhoz, csoporthoz, egyszerű szolgáltatásnévhez vagy felügyelt identitáshoz. Ezt *rendszerbiztonsági tag* is nevezik.
 
 ![Szerepkör-hozzárendelések rendszerbiztonsági tagjai](./media/shared/rbac-security-principal.png)
 
-- Felhasználó – Egy Azure Active Directory-profillal rendelkező személy. Más bérlőkön lévő felhasználókhoz is hozzárendelhet szerepköröket. A más vállalatok felhasználóira vonatkozó információkért lásd: [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md).
+- Felhasználó – Egy Azure Active Directory-profillal rendelkező személy. Más bérlőkön lévő felhasználókhoz is hozzárendelhet szerepköröket. A más vállalatok felhasználóira vonatkozó információkért lásd: [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md).
 - Csoport – Felhasználók az Azure Active Directoryban létrehozott csoportja. Ha egy csoporthoz rendel hozzá egy szerepkört, a csoportban lévő összes felhasználó rendelkezik majd az adott szerepkörrel. 
 - Szolgáltatásnév – Alkalmazások vagy szolgáltatások által adott Azure-erőforrások elérésére használt biztonsági identitás. Úgy képzelhető el, mint egy alkalmazás *felhasználói identitása* (felhasználóneve és jelszava vagy tanúsítványa).
 - Felügyelt identitás – az Azure által automatikusan kezelt Azure Active Directory identitás. A Felhőbeli alkalmazások fejlesztése során jellemzően [felügyelt identitásokat](../active-directory/managed-identities-azure-resources/overview.md) használ az Azure-szolgáltatásokhoz való hitelesítéshez szükséges hitelesítő adatok kezeléséhez.
 
 ## <a name="step-2-find-the-appropriate-role"></a>2. lépés: a megfelelő szerepkör megkeresése
 
-Az engedélyek egy *szerepkör-definícióba*vannak csoportosítva. Általában csak *szerepkörnek*nevezik. A számos beépített szerepkör listájából választhat. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját egyéni szerepköröket is létrehozhat.
+Az engedélyek egy *szerepkör-definícióba* vannak csoportosítva. Általában csak *szerepkörnek* nevezik. A számos beépített szerepkör listájából választhat. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját egyéni szerepköröket is létrehozhat.
 
 ![Szerepkör-hozzárendelések szerepkör-definíciója](./media/shared/rbac-role-definition.png)
 
@@ -62,7 +62,7 @@ A *hatókör* azon erőforrások készlete, amelyekre a hozzáférés vonatkozik
 
 ![Szerepkör-hozzárendelés hatóköre](./media/shared/rbac-scope.png)
 
-Amikor fölérendelt hatókörhöz rendel szerepkört, ezek az engedélyek a gyermek hatókörökre lesznek örökölve. Példa:
+Amikor fölérendelt hatókörhöz rendel szerepkört, ezek az engedélyek a gyermek hatókörökre lesznek örökölve. Például:
 
 - Ha az [olvasó](built-in-roles.md#reader) szerepkört a felügyeleti csoport hatókörében lévő felhasználóhoz rendeli, a felhasználó a felügyeleti csoportban lévő összes előfizetésben is elolvashatja a mindent.
 - Ha a [Számlázási olvasó](built-in-roles.md#billing-reader) szerepkört egy csoporthoz rendeli az előfizetés hatókörében, akkor a csoport tagjai elolvashatják az előfizetésben lévő összes erőforráscsoport és erőforrás számlázási adatait.

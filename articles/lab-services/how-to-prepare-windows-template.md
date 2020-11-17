@@ -5,12 +5,12 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 216dc843b31eac355e1d818014f3d70b2ef83132
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396688"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647902"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Útmutató Windows-sablonok számítógépének beállításához Azure Lab Services
 
@@ -47,7 +47,7 @@ Write-Host "Installing OneDrive..."
 
 ### <a name="onedrive-customizations"></a>OneDrive testreszabása
 
-Számos [testreszabási művelet hajtható végre a OneDrive](https://docs.microsoft.com/onedrive/use-group-policy). Ismerkedjen meg a leggyakoribb testreszabásokkal.
+Számos [testreszabási művelet hajtható végre a OneDrive](/onedrive/use-group-policy). Ismerkedjen meg a leggyakoribb testreszabásokkal.
 
 #### <a name="silently-move-windows-known-folders-to-onedrive"></a>Windows ismert mappák csendes áthelyezése a OneDrive
 
@@ -61,7 +61,7 @@ Ha olyan gépen van, amely nem Active Directory használ, a felhasználók manu�
 
 Ha a virtuális gép csatlakoztatva van Active Directoryhoz, beállíthatja, hogy a sablon számítógépe automatikusan rákérdezzen a tanulók számára az ismert mappák OneDrive való áthelyezésére.  
 
-Először le kell kérnie a szervezet AZONOSÍTÓját.  További útmutatásért lásd [a Microsoft 365 szervezet azonosítójának megkeresése](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)című témakört.  A szervezet AZONOSÍTÓját a következő PowerShell használatával is lekérheti.
+Először le kell kérnie a szervezet AZONOSÍTÓját.  További útmutatásért lásd [a Microsoft 365 szervezet azonosítójának megkeresése](/onedrive/find-your-office-365-tenant-id)című témakört.  A szervezet AZONOSÍTÓját a következő PowerShell használatával is lekérheti.
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -137,7 +137,7 @@ Ha a sablon számítógépének szüksége van az Office-ra, javasoljuk, hogy az
 
 ### <a name="change-the-microsoft-365-update-channel"></a>A Microsoft 365 frissítési csatorna módosítása
 
-Az Office konfigurációs eszköz használatával beállíthatja, hogy az Office milyen gyakran kapjon frissítéseket. Ha azonban módosítania kell, hogy az Office milyen gyakran kapja meg a frissítéseket a telepítés után, módosíthatja a frissítési csatorna URL-címét. A frissítési csatorna URL-címei a [Microsoft 365 alkalmazások frissítési csatornájának módosítása a szervezet eszközeire](https://docs.microsoft.com/deployoffice/change-update-channels)című részében találhatók. Az alábbi példa bemutatja, hogyan állíthatja be Microsoft 365 a havi frissítési csatorna használatára.
+Az Office konfigurációs eszköz használatával beállíthatja, hogy az Office milyen gyakran kapjon frissítéseket. Ha azonban módosítania kell, hogy az Office milyen gyakran kapja meg a frissítéseket a telepítés után, módosíthatja a frissítési csatorna URL-címét. A frissítési csatorna URL-címei a [Microsoft 365 alkalmazások frissítési csatornájának módosítása a szervezet eszközeire](/deployoffice/change-update-channels)című részében találhatók. Az alábbi példa bemutatja, hogyan állíthatja be Microsoft 365 a havi frissítési csatorna használatára.
 
 ```powershell
 # Update to the Microsoft 365 Monthly Channel
@@ -188,7 +188,7 @@ A PowerShell használatával is frissítheti Microsoft Store már telepített al
 
 ### <a name="stop-automatic-windows-updates"></a>Automatikus Windows-frissítések leállítása
 
-Ha a Windowst a legújabb verzióra frissíti, érdemes lehet megszüntetni a Windows-frissítéseket.  Az automatikus frissítések megakadályozhatják az ütemezett osztályok időpontját.  Ha a tanfolyam már fut, gondolja át, hogy a tanulók manuálisan keresik-e meg a frissítéseket, vagy az ütemezett órákon kívüli időpontra állítanak be automatikus frissítéseket.  A Windows Update testreszabási lehetőségeivel kapcsolatos további információkért tekintse meg a [további Windows Update-beállítások kezelése](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings)című témakört.
+Ha a Windowst a legújabb verzióra frissíti, érdemes lehet megszüntetni a Windows-frissítéseket.  Az automatikus frissítések megakadályozhatják az ütemezett osztályok időpontját.  Ha a tanfolyam már fut, gondolja át, hogy a tanulók manuálisan keresik-e meg a frissítéseket, vagy az ütemezett órákon kívüli időpontra állítanak be automatikus frissítéseket.  A Windows Update testreszabási lehetőségeivel kapcsolatos további információkért tekintse meg a [további Windows Update-beállítások kezelése](/windows/deployment/update/waas-wu-settings)című témakört.
 
 Előfordulhat, hogy az automatikus Windows-frissítések a következő PowerShell-parancsfájl használatával leállnak.
 

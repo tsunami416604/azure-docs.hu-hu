@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8fc26b00214106aa08e0e6e4c41f9f05aca9344d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073971"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648038"
 ---
 # <a name="understand-linked-sign-on"></a>A csatolt bejelentkezés ismertetése
 
@@ -29,7 +29,7 @@ Néhány gyakori forgatókönyv, ahol a hivatkozás lehetőség értékes:
 - Hozzáadhat részletes hivatkozásokat bizonyos SharePoint-lapokhoz vagy más weblapokhoz, amelyeket csak szeretne megjeleníteni a felhasználó hozzáférési panelén.
 - Olyan alkalmazásra mutató hivatkozás hozzáadása, amely nem igényel hitelesítést. 
  
- A **csatolt** lehetőség nem biztosít bejelentkezési funkciókat az Azure ad hitelesítő adataival. Azonban továbbra is használhatja a **vállalati alkalmazások**egyéb funkcióit. Használhatja például a naplókat, és hozzáadhat egy egyéni emblémát és egy alkalmazás nevét.
+ A **csatolt** lehetőség nem biztosít bejelentkezési funkciókat az Azure ad hitelesítő adataival. Azonban továbbra is használhatja a **vállalati alkalmazások** egyéb funkcióit. Használhatja például a naplókat, és hozzáadhat egy egyéni emblémát és egy alkalmazás nevét.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -38,19 +38,19 @@ Az ismeretek gyors bejárásához járjon végig az alkalmazás-felügyeleti út
 A **csatolt** lehetőség nem nyújt bejelentkezési funkciókat az Azure ad-n keresztül. A beállítás egyszerűen beállítja, hogy a rendszer a felhasználók számára küldje el az [alkalmazást az alkalmazásokban vagy a](https://myapps.microsoft.com/) Microsoft 365 app launcherben.  Mivel a bejelentkezés nem biztosít bejelentkezési funkciókat az Azure AD-n keresztül, a feltételes hozzáférés nem érhető el a csatolt egyszeri bejelentkezéssel konfigurált alkalmazásokhoz.
 
 > [!IMPORTANT] 
-> Vannak olyan helyzetek, amikor az **egyszeri bejelentkezési** lehetőség nem lesz a **vállalati alkalmazásokban**lévő alkalmazás navigációjában. 
+> Vannak olyan helyzetek, amikor az **egyszeri bejelentkezési** lehetőség nem lesz a **vállalati alkalmazásokban** lévő alkalmazás navigációjában. 
 >
-> Ha az alkalmazás a **Alkalmazásregisztrációk** használatával lett regisztrálva, akkor az egyszeri bejelentkezés funkció alapértelmezés szerint a OIDC OAuth használatára van beállítva. Ebben az esetben az **egyszeri bejelentkezési** lehetőség nem jelenik meg a **vállalati alkalmazások**navigációs sávján. Ha a **Alkalmazásregisztrációk** használatával adja hozzá az egyéni alkalmazást, a jegyzékfájlban konfigurálhatja a beállításokat. További információ a jegyzékfájlról: [Azure Active Directory app manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). Az SSO-szabványokkal kapcsolatos további tudnivalókért tekintse meg a [hitelesítés és engedélyezés a Microsoft Identity platform használatával](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)című témakört. 
+> Ha az alkalmazás a **Alkalmazásregisztrációk** használatával lett regisztrálva, akkor az egyszeri bejelentkezés funkció alapértelmezés szerint a OIDC OAuth használatára van beállítva. Ebben az esetben az **egyszeri bejelentkezési** lehetőség nem jelenik meg a **vállalati alkalmazások** navigációs sávján. Ha a **Alkalmazásregisztrációk** használatával adja hozzá az egyéni alkalmazást, a jegyzékfájlban konfigurálhatja a beállításokat. További információ a jegyzékfájlról: [Azure Active Directory app manifest](../develop/reference-app-manifest.md). Az SSO-szabványokkal kapcsolatos további tudnivalókért tekintse meg a [hitelesítés és engedélyezés a Microsoft Identity platform használatával](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform)című témakört. 
 >
 > Egyéb forgatókönyvek, amelyekben az **egyszeri bejelentkezés** hiányzik a navigálásból, ha egy alkalmazás egy másik bérlőn fut, vagy ha a fiókja nem rendelkezik a szükséges engedélyekkel (globális rendszergazda, Felhőbeli alkalmazás rendszergazdája, alkalmazás-rendszergazda vagy az egyszerű szolgáltatásnév tulajdonosa). Az engedélyek olyan eseteket is okozhatnak, ahol megnyithatja az **egyszeri bejelentkezést** , de nem fogja tudni menteni. További információ az Azure AD rendszergazdai szerepköreiről: ( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 
 ### <a name="configure-link"></a>Hivatkozás konfigurálása
 
-Egy alkalmazás hivatkozásának megadásához válassza az **egyszeri bejelentkezés** lapon a **csatolt** lehetőséget. Ezután adja meg a hivatkozást, és kattintson a **Mentés**gombra. Szüksége van egy emlékeztetőre, ahol megtalálja ezeket a beállításokat? Tekintse meg a gyors üzembe helyezési [sorozatot](view-applications-portal.md).
+Egy alkalmazás hivatkozásának megadásához válassza az **egyszeri bejelentkezés** lapon a **csatolt** lehetőséget. Ezután adja meg a hivatkozást, és kattintson a **Mentés** gombra. Szüksége van egy emlékeztetőre, ahol megtalálja ezeket a beállításokat? Tekintse meg a gyors üzembe helyezési [sorozatot](view-applications-portal.md).
  
 Miután konfigurált egy alkalmazást, rendeljen hozzá felhasználókat és csoportokat. A felhasználók hozzárendelésével szabályozhatja, hogy mikor jelenik meg az alkalmazás a [saját alkalmazások](https://myapps.microsoft.com/) vagy a Microsoft 365 app Launcher használatával.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Felhasználók vagy csoportok társítása az alkalmazáshoz](methods-for-assigning-users-and-groups.md)
+- [Felhasználók vagy csoportok társítása az alkalmazáshoz](./assign-user-or-group-access-portal.md)
 - [A felhasználói fiókok automatikus üzembe helyezésének konfigurálása](../app-provisioning/configure-automatic-user-provisioning-portal.md)

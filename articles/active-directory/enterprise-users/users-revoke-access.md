@@ -3,22 +3,22 @@ title: A felhasználói hozzáférés visszavonása vészhelyzetben Azure Active
 description: Felhasználók összes hozzáférésének visszavonása Azure Active Directory
 services: active-directory
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
 author: curtand
 ms.author: curtand
 manager: daveba
 ms.reviewer: krbain
-ms.date: 07/15/2020
+ms.date: 11/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16577c3509c9d3d9b02ead5e69832bacc7d083bb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e12d08acdd9fc869ed766a1bbd78f35eb371cc8a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92375323"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649687"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Felhasználói hozzáférés visszavonása Azure Active Directory
 
@@ -113,11 +113,11 @@ Azure Active Directory rendszergazdaként nyissa meg a PowerShellt, futtassa ``C
 
 Miután a rendszergazdák elvégezték a fenti lépéseket, a felhasználó nem szerezhet új jogkivonatokat minden olyan alkalmazáshoz, amely Azure Active Directoryhoz van kötve. A visszavonás és a felhasználó hozzáférésének elvesztése közötti eltelt idő attól függ, hogy az alkalmazás hogyan adja meg a hozzáférést:
 
-- **Hozzáférési jogkivonatokat használó alkalmazások**esetén a felhasználó elveszíti a hozzáférést, amikor lejár a hozzáférési jogkivonat.
+- **Hozzáférési jogkivonatokat használó alkalmazások** esetén a felhasználó elveszíti a hozzáférést, amikor lejár a hozzáférési jogkivonat.
 
-- A **munkamenet-jogkivonatokat használó alkalmazások**esetében a meglévő munkamenetek a jogkivonat lejárta után azonnal véget tartanak. Ha a felhasználó letiltott állapota szinkronizálva van az alkalmazással, akkor az alkalmazás automatikusan visszavonhatja a felhasználó meglévő munkameneteit, ha erre van konfigurálva.  A szükséges idő az alkalmazás és az Azure AD közötti szinkronizálás gyakoriságának függvénye.
+- A **munkamenet-jogkivonatokat használó alkalmazások** esetében a meglévő munkamenetek a jogkivonat lejárta után azonnal véget tartanak. Ha a felhasználó letiltott állapota szinkronizálva van az alkalmazással, akkor az alkalmazás automatikusan visszavonhatja a felhasználó meglévő munkameneteit, ha erre van konfigurálva.  A szükséges idő az alkalmazás és az Azure AD közötti szinkronizálás gyakoriságának függvénye.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Biztonságos hozzáférési eljárások az Azure AD-rendszergazdák számára](../roles/security-planning.md)
 - [Felhasználói profil adatainak hozzáadása vagy frissítése](../fundamentals/active-directory-users-profile-azure-portal.md)

@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18c3b0397a0ad3e9e368d1a14e20a999ced5545b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0339e9f7688555b4d99c2d3255461b5675f642ff
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88690272"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649551"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nem lehet hozzáférni a vállalati alkalmazáshoz" hibaüzenet alkalmazásproxy-alkalmazás használatakor
 
@@ -87,7 +87,7 @@ Győződjön meg arról, hogy az összes szükséges port meg van nyitva. A szü
 
 ## <a name="check-for-other-connector-errors"></a>Más összekötők hibáinak keresése
 
-Ha a fentiek egyike sem oldja meg a problémát, a következő lépés az összekötővel kapcsolatos problémák vagy hibák megkeresése. A [hibaelhárítási dokumentumban](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)néhány gyakori hibát láthat.
+Ha a fentiek egyike sem oldja meg a problémát, a következő lépés az összekötővel kapcsolatos problémák vagy hibák megkeresése. A [hibaelhárítási dokumentumban](./application-proxy-troubleshoot.md#connector-errors)néhány gyakori hibát láthat.
 
 A hibák azonosításához közvetlenül az összekötő naplófájljaiban is kereshet. A hibaüzenetek számos konkrét javaslattal rendelkeznek a javítások megosztva. A naplók megtekintéséhez tekintse meg az [Összekötők dokumentációját](application-proxy-connectors.md#under-the-hood).
 
@@ -103,6 +103,6 @@ Ha a hiba továbbra is fennáll, lépjen arra a gépre, amelyen az összekötő 
 
 Ha az adott gépről elérheti az alkalmazást, akkor az összekötővel kapcsolatos problémákat és hibákat kereshet. A [hibaelhárítási dokumentumban](application-proxy-troubleshoot.md#connector-errors)néhány gyakori hibát láthat. A hibák azonosításához közvetlenül az összekötő naplófájljaiban is kereshet. A hibaüzenetek nagy része a javításokra vonatkozó konkrétabb javaslatok megosztását is lehetővé teheti. A naplók megtekintésének megismeréséhez tekintse meg az [Összekötők dokumentációját](application-proxy-connectors.md#under-the-hood).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)

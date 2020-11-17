@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cbca82ba88baf5ddda2a6d7a6cdd35b62f28b8e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404782"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647936"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Tesztkörnyezet beállítása GPU virtuális gépekkel
 
@@ -30,14 +30,14 @@ Az alábbi táblázatban leírtak szerint a *számítási* GPU-méret nagy szám
 
 | Méret | Cores | RAM | Leírás | 
 | ---- | ----- | --- | ----------- | 
-| Kis GPU (számítás) | -&nbsp;6 &nbsp; mag<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Ez a méret kiválóan alkalmas olyan nagy számítási igényű alkalmazások számára, mint a mesterséges intelligencia (AI) és a Deep learning. |
+| Kis GPU (számítás) | -&nbsp;6 &nbsp; mag<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](../virtual-machines/nc-series.md) |Ez a méret kiválóan alkalmas olyan nagy számítási igényű alkalmazások számára, mint a mesterséges intelligencia (AI) és a Deep learning. |
 
 A *vizualizációs* GPU-méretek a nagy grafikai igényű alkalmazások számára készültek.  A [SOLIDWORKS mérnöki osztályának típusa](./class-type-solidworks.md) például a **kis GPU (vizualizáció)** méretet mutatja.  A vizualizációs GPU alkalmas az ilyen típusú osztályok számára, mivel a tanulók a SOLIDWORKS 3D számítógépes tervezési (CAD) környezetet használják a Solid Objects modellezéséhez és megjelenítéséhez.
 
 | Méret | Cores | RAM | Leírás | 
 | ---- | ----- | --- | ----------- | 
-| Kis GPU (vizualizáció) | -&nbsp;6 &nbsp; mag<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Ez a méret a távoli vizualizációk, a folyamatos átvitel, a játékok és az OpenGL-t és a DirectX-t használó keretrendszereket használó kódoláshoz ideális. |
-| Közepes GPU (vizualizáció) | -&nbsp;12 &nbsp; mag<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a távoli vizualizációk, a folyamatos átvitel, a játékok és az OpenGL-t és a DirectX-t használó keretrendszereket használó kódoláshoz ideális. |
+| Kis GPU (vizualizáció) | -&nbsp;6 &nbsp; mag<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](../virtual-machines/nv-series.md) | Ez a méret a távoli vizualizációk, a folyamatos átvitel, a játékok és az OpenGL-t és a DirectX-t használó keretrendszereket használó kódoláshoz ideális. |
+| Közepes GPU (vizualizáció) | -&nbsp;12 &nbsp; mag<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Ez a méret a távoli vizualizációk, a folyamatos átvitel, a játékok és az OpenGL-t és a DirectX-t használó keretrendszereket használó kódoláshoz ideális. |
 
 > [!NOTE]
 > Az egyes virtuálisgép-méretek nem jelennek meg a listában a tantermi labor létrehozásakor. A lista a tesztkörnyezet helyének aktuális kapacitása alapján töltődik fel. Ha a labor-fiók létrehozója [lehetővé teszi, hogy a labor-készítők kiválasszák a labor helyét](allow-lab-creator-pick-lab-location.md), próbáljon meg egy másik helyet választani a laborhoz, és ellenőrizze, hogy elérhető-e a virtuális gép mérete. A virtuális gépek rendelkezésre állását lásd: [régiónként elérhető termékek](https://azure.microsoft.com/regions/services/?products=virtual-machines).
@@ -65,7 +65,7 @@ Ha manuálisan szeretné telepíteni az illesztőprogramokat a számítási GPU-
    ![Az NVIDIA-illesztőprogram letöltési oldalának képernyőképe](./media/how-to-setup-gpu/nvidia-driver-download.png) 
 
    a. A böngészőben nyissa meg az [NVIDIA-illesztőprogram letöltése lapot](https://www.nvidia.com/Download/index.aspx).  
-   b. Adja meg a **termék típusát** a **Tesla**értékre.  
+   b. Adja meg a **termék típusát** a **Tesla** értékre.  
    c. A **termék sorozatát** állítsa a **K sorozatra**.  
    d. Állítsa be az **operációs rendszert** a tesztkörnyezet létrehozásakor kiválasztott alaprendszerkép típusának megfelelően.  
    e. Állítsa be a **CUDA-eszközkészletet** a szükséges CUDA-illesztőprogram verziójára.  
@@ -76,7 +76,7 @@ Ha manuálisan szeretné telepíteni az illesztőprogramokat a számítási GPU-
 1. Miután telepítette az adott osztályhoz szükséges illesztőprogramokat és más szoftvereket, válassza a **Közzététel** lehetőséget a tanulói virtuális gépek létrehozásához.
 
 > [!NOTE]
-> Ha Linux-rendszerképet használ, a telepítő letöltése után telepítse az illesztőprogramokat a következő témakörben ismertetett utasítások alapján: a [CUDA-illesztőprogramok telepítése Linux rendszeren](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup?toc=/azure/virtual-machines/linux/toc.json#install-cuda-drivers-on-n-series-vms).
+> Ha Linux-rendszerképet használ, a telepítő letöltése után telepítse az illesztőprogramokat a következő témakörben ismertetett utasítások alapján: a [CUDA-illesztőprogramok telepítése Linux rendszeren](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#install-cuda-drivers-on-n-series-vms).
 
 #### <a name="install-the-visualization-gpu-drivers"></a>A vizualizációs GPU-illesztőprogramok telepítése
 
@@ -85,8 +85,8 @@ Ha manuálisan szeretné telepíteni az illesztőprogramokat a vizualizáció GP
 1. A labor létrehozási varázslóban a [tesztkörnyezet létrehozásakor](./how-to-manage-classroom-labs.md)tiltsa le a **GPU-illesztőprogramok telepítése** beállítást.
 1. A tesztkörnyezet létrehozása után kapcsolódjon a sablon virtuális géphez a megfelelő illesztőprogramok telepítéséhez.
 1. Telepítse a Microsoft által a sablon virtuális gépen biztosított GRID-illesztőprogramokat az operációs rendszerére vonatkozó utasításokat követve:
-   -  [Windows NVIDIA GRID-illesztőprogramok](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)
-   -  [Linux NVIDIA GRID-illesztőprogramok](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup?toc=/azure/virtual-machines/linux/toc.json#nvidia-grid-drivers)
+   -  [Windows NVIDIA GRID-illesztőprogramok](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)
+   -  [Linux NVIDIA GRID-illesztőprogramok](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#nvidia-grid-drivers)
   
 1. Indítsa újra a sablon virtuális gépet.
 1. Ellenőrizze, hogy az illesztőprogramok megfelelően vannak-e telepítve. Ehhez kövesse a [telepített illesztőprogramok ellenőrzése](how-to-setup-lab-gpu.md#validate-the-installed-drivers) szakasz utasításait.
@@ -96,13 +96,13 @@ Ha manuálisan szeretné telepíteni az illesztőprogramokat a vizualizáció GP
 Ez a szakasz azt ismerteti, hogyan ellenőrizhető, hogy a GPU-illesztőprogramok megfelelően vannak-e telepítve.
 
 #### <a name="windows-images"></a>Windows-rendszerképek
-1.  Kövesse az [NVIDIA GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépekre](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)című témakör "az illesztőprogramok telepítésének ellenőrzése" című szakaszának utasításait.
+1.  Kövesse az [NVIDIA GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépekre](../virtual-machines/windows/n-series-driver-setup.md#verify-driver-installation)című témakör "az illesztőprogramok telepítésének ellenőrzése" című szakaszának utasításait.
 1.  Ha *vizualizációs* GPU-t használ, a következőket is elvégezheti:
-    - Az NVIDIA Vezérlőpulton tekintheti meg és módosíthatja a GPU-beállításokat. Ehhez a **Windows Vezérlőpultján**válassza a **hardver**lehetőséget, majd kattintson az **NVIDIA Vezérlőpult**elemre.
+    - Az NVIDIA Vezérlőpulton tekintheti meg és módosíthatja a GPU-beállításokat. Ehhez a **Windows Vezérlőpultján** válassza a **hardver** lehetőséget, majd kattintson az **NVIDIA Vezérlőpult** elemre.
 
       ![Képernyőkép a Windows Vezérlőpultján, amely az NVIDIA Vezérlőpult hivatkozását mutatja](./media/how-to-setup-gpu/control-panel-nvidia-settings.png) 
 
-     - Tekintse meg a GPU teljesítményét a **Feladatkezelő**használatával.  Ehhez válassza a **teljesítmény** fület, majd válassza a **GPU** lehetőséget.
+     - Tekintse meg a GPU teljesítményét a **Feladatkezelő** használatával.  Ehhez válassza a **teljesítmény** fület, majd válassza a **GPU** lehetőséget.
 
        ![A Feladatkezelő GPU-teljesítmény lapját ábrázoló képernyőfelvétel](./media/how-to-setup-gpu/task-manager-gpu.png) 
 
@@ -110,7 +110,7 @@ Ez a szakasz azt ismerteti, hogyan ellenőrizhető, hogy a GPU-illesztőprogramo
       > Az NVIDIA Vezérlőpult beállításai csak a *vizualizációs* GPU-k számára érhetők el.  Ha megpróbál megnyitni egy számítási GPU-hoz készült NVIDIA Vezérlőpultot, a következő hibaüzenet jelenik meg: "az NVIDIA megjelenítési beállításai nem érhetők el.  Jelenleg nem használja az NVIDIA GPU-hoz csatolt kijelzőt. "  Ehhez hasonlóan a Feladatkezelő GPU-teljesítményadatokat csak a vizualizációs GPU-k számára biztosítjuk.
 
 #### <a name="linux-images"></a>Linux-rendszerképek
-Kövesse az [NVIDIA GPU-illesztőprogramok telepítése a Linux rendszerű N sorozatú virtuális gépekre](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#verify-driver-installation)című témakör "az illesztőprogramok telepítésének ellenőrzése" című szakaszának utasításait.
+Kövesse az [NVIDIA GPU-illesztőprogramok telepítése a Linux rendszerű N sorozatú virtuális gépekre](../virtual-machines/linux/n-series-driver-setup.md#verify-driver-installation)című témakör "az illesztőprogramok telepítésének ellenőrzése" című szakaszának utasításait.
 
 ## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
@@ -118,6 +118,3 @@ Lásd az alábbi cikkeket:
 - [Osztálytermi tesztkörnyezetek létrehozása és kezelése](how-to-manage-classroom-labs.md)
 - [SOLIDWORKS – számítógéppel segített tervezési (CAD) osztály típusa](class-type-solidworks.md)
 - [MATLAB (mátrix laboratórium) osztály típusa](class-type-matlab.md)
-
-
-

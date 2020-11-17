@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bd47e5e39684bd4b684cd1e12dd9a3d420640ee2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f39bd874c1f5a1be42ca1c88e6ea2fe8df22f87
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005805"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648208"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Service Fabric-fürt programozott méretezése 
 
@@ -121,5 +121,5 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 A saját automatikus méretezési logikája megvalósításának megkezdéséhez Ismerkedjen meg a következő fogalmakkal és hasznos API-kkal:
 
 - [Méretezés manuálisan vagy automatikus méretezési szabályokkal](./service-fabric-cluster-scale-in-out.md)
-- [Fluent Azure felügyeleti kódtárak a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (a Service Fabric-fürt mögöttes virtuálisgép-méretezési csoportjaival való interakcióhoz hasznos)
+- .NET-hez készült [Azure felügyeleti kódtárak](https://github.com/Azure/azure-libraries-for-net) (a Service Fabric-fürt mögöttes virtuálisgép-méretezési csoportjaival való interakcióhoz hasznos)
 - [System. Fabric. FabricClient](/dotnet/api/system.fabric.fabricclient) (Service Fabric-fürttel és annak csomópontjaival való interakcióhoz hasznos)

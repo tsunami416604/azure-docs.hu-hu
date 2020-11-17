@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: c1c0c3038c687b7f91d3c75d8c4c9589c5e245a3
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1617015d6d4a026d5dadda667dcd03447a20c288
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427640"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649500"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása
 
@@ -50,14 +50,14 @@ A felhasználói beleegyező beállítások konfigurálása a Azure Portal haszn
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator--company-administrator).
 1. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**  >  **beleegyezett és engedélyek**  >  **felhasználói beleegyező beállításait**.
-1. **Az alkalmazások felhasználói beleegyezike**területen válassza ki, hogy az összes felhasználóra vonatkozóan melyik beleegyező beállítást szeretné konfigurálni.
+1. **Az alkalmazások felhasználói beleegyezike** területen válassza ki, hogy az összes felhasználóra vonatkozóan melyik beleegyező beállítást szeretné konfigurálni.
 1. A beállítások mentéséhez kattintson a **Mentés** gombra.
 
 :::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="Felhasználói beleegyező beállítások":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Az [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)legújabb Azure ad PowerShell-előnézeti modullal kiválaszthatja, hogy melyik alkalmazás-engedélyezési házirend szabályozza az alkalmazások felhasználói engedélyeit.
+Az [AzureADPreview](/powershell/azure/active-directory/install-adv2?preserve-view=true&view=azureadps-2.0-preview)legújabb Azure ad PowerShell-előnézeti modullal kiválaszthatja, hogy melyik alkalmazás-engedélyezési házirend szabályozza az alkalmazások felhasználói engedélyeit.
 
 #### <a name="disable-user-consent"></a>Felhasználói engedély letiltása
 
@@ -101,7 +101,7 @@ Set-AzureADMSAuthorizationPolicy `
 
 ## <a name="risk-based-step-up-consent"></a>Kockázatalapú lépésekre vonatkozó beleegyezett
 
-A kockázatalapú lépésekre [vonatkozó](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)beleegyezikés segít csökkenteni a felhasználókat olyan kártékony alkalmazásokkal szemben, amelyek nem tesznek lehetővé jogcímeket. Ha a Microsoft egy kockázatos végfelhasználói kérést észlel, a kérelemhez "Step-up" értékre van szükség a rendszergazdai beleegyező művelethez. Ez a funkció alapértelmezés szerint engedélyezve van, de csak akkor eredményezi a viselkedést, ha engedélyezve van a végfelhasználói engedély.
+A kockázatalapú lépésekre [vonatkozó](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)beleegyezikés segít csökkenteni a felhasználókat olyan kártékony alkalmazásokkal szemben, amelyek nem tesznek lehetővé jogcímeket. Ha a Microsoft egy kockázatos végfelhasználói kérést észlel, a kérelemhez "Step-up" értékre van szükség a rendszergazdai beleegyező művelethez. Ez a funkció alapértelmezés szerint engedélyezve van, de csak akkor eredményezi a viselkedést, ha engedélyezve van a végfelhasználói engedély.
 
 Kockázatos beleegyezési kérelem észlelésekor a beleegyezés kérése üzenet jelenik meg, amely jelzi, hogy a rendszergazda jóváhagyása szükséges. Ha a [rendszergazdai hozzájárulási kérelem munkafolyamata](configure-admin-consent-workflow.md) engedélyezve van, a felhasználó a kérést egy rendszergazdának küldheti el további áttekintés céljából közvetlenül a hozzájárulási kérésből. Ha nincs engedélyezve, a következő üzenet jelenik meg:
 
@@ -114,9 +114,9 @@ Ebben az esetben a naplózási esemény a "ApplicationManagement" kategóriába 
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Kockázatalapú lépésenkénti belefoglalási engedély letiltása vagy újbóli engedélyezése a PowerShell használatával
 
-A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)Azure ad PowerShell-előnézeti modullal letilthatja a rendszergazdai belefoglaláshoz szükséges lépéseket olyan esetekben, amikor a Microsoft észleli a kockázatokat, vagy ha korábban letiltották, újra engedélyezi.
+A [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)Azure ad PowerShell-előnézeti modullal letilthatja a rendszergazdai belefoglaláshoz szükséges lépéseket olyan esetekben, amikor a Microsoft észleli a kockázatokat, vagy ha korábban letiltották, újra engedélyezi.
 
-1. Győződjön meg arról, hogy a [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modult használja. Ez a lépés akkor fontos, ha a [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) modult és a [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modult is telepítette.
+1. Győződjön meg arról, hogy a [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modult használja. Ez a lépés akkor fontos, ha a [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) modult és a [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modult is telepítette.
 
     ```powershell
     Remove-Module AzureAD
@@ -173,7 +173,7 @@ A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=az
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók:
 
@@ -182,7 +182,7 @@ További tudnivalók:
 * [Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
 * [Megtudhatja, hogyan kezelheti az alkalmazásokra vonatkozó beleegyezett, és hogyan értékelheti a hozzájárulásukat](manage-consent-requests.md)
 * [Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz](grant-admin-consent.md)
-* [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/active-directory-v2-scopes.md)
+* [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/v2-permissions-and-consent.md)
 
 Segítség kérése vagy válaszok keresése a kérdéseire:
 * [Azure AD a StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

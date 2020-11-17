@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 803663f845272c6b1573fceed8025cc23483ec09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cef5c60b8b06a7bedbf65312c3210d5eb746880d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628740"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649751"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Egy meglévő erdő és egy új erdő integrálása egyetlen Azure AD-bérlővel
 
@@ -45,33 +45,34 @@ Ebben a forgatókönyvben egy meglévő erdő van szinkronizálva, Azure AD Conn
      | --- | --- |
      | **80** | Letölti a visszavont tanúsítványok listáját (CRL) a TLS/SSL-tanúsítvány ellenőrzése közben. |
      | **443** | Kezeli az összes kimenő kommunikációt a szolgáltatással. |
+     | **8082**| A telepítéshez szükséges.|
      | **8080** (nem kötelező) | Az ügynökök 10 percenként jelentik az állapotukat az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. |
      
      Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futtató Windows-szolgáltatások forgalmára.
-   - Ha a tűzfal vagy a proxy lehetővé teszi a biztonságos utótagok megadását, akkor vegyen fel kapcsolatokat a ** \* . msappproxy.net** és a ** \* . servicebus.Windows.net**. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
+   - Ha a tűzfal vagy a proxy lehetővé teszi a biztonságos utótagok megadását, akkor vegyen fel kapcsolatokat a **\* . msappproxy.net** és a **\* . servicebus.Windows.net**. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
    - Az ügynököknek hozzá kell férniük a **login.Windows.net** és a **login.microsoftonline.com** a kezdeti regisztrációhoz. Nyissa meg a tűzfalat az URL-címekhez is.
-   - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **mscrl.microsoft.com:80**, **CRL.microsoft.com:80**, **OCSP.msocsp.com:80**és **www \. Microsoft.com:80**. Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
+   - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **mscrl.microsoft.com:80**, **CRL.microsoft.com:80**, **OCSP.msocsp.com:80** és **www \. Microsoft.com:80**. Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Az Azure AD Connect létesítési ügynök telepítése
 1. Jelentkezzen be a tartományhoz csatlakoztatott kiszolgálóra.  Ha az  [alapszintű ad-és Azure-környezettel](tutorial-basic-ad-azure.md) foglalkozó oktatóanyagot használja, az DC1 lenne.
 2. Jelentkezzen be a Azure Portalba kizárólag Felhőbeli globális rendszergazdai hitelesítő adatok használatával.
 3. A bal oldalon válassza a **Azure Active Directory**, majd a **Azure ad Connect** , és a központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.</br>
-![Azure Portal](media/how-to-install/install6.png)</br>
+![Azure Portal](media/how-to-install/install-6.png)</br>
 4. Kattintson a "ügynök letöltése" gombra.
 5. Az Azure AD Connect létesítési ügynök futtatása
-6. A splash képernyőn **fogadja el** a licencelési feltételeket, majd kattintson a **telepítés**gombra.</br>
-![Képernyőfelvétel: a "Microsoft Azure AD-létesítési ügynök csomagjának" Splash-képernyője.](media/how-to-install/install1.png)</br>
+6. A splash képernyőn **fogadja el** a licencelési feltételeket, majd kattintson a **telepítés** gombra.</br>
+![Képernyőfelvétel: a "Microsoft Azure AD-létesítési ügynök csomagjának" Splash-képernyője.](media/how-to-install/install-1.png)</br>
 
 7. A művelet befejezése után elindul a konfigurációs varázsló.  Jelentkezzen be az Azure AD globális rendszergazdai fiókjával.  Vegye figyelembe, hogy ha az Internet Explorer fokozott biztonsági funkciója engedélyezve van, ez letiltja a bejelentkezést.  Ebben az esetben zárjuk le a telepítést, tiltsa le az IE fokozott biztonságát a Kiszolgálókezelőben, majd kattintson a **HRE-létesítési ügynök varázslóra** a telepítés újraindításához.
-8. A **Active Directory összekapcsolása** képernyőn kattintson a **könyvtár hozzáadása** lehetőségre, majd jelentkezzen be a Active Directory tartományi rendszergazdai fiókjával.  Megjegyzés: a tartományi rendszergazdai fióknak nem kell módosítania a jelszó-módosítási követelményeket. Abban az esetben, ha a jelszó lejár vagy megváltozik, újra kell konfigurálnia az ügynököt az új hitelesítő adatokkal. Ezzel a művelettel a helyszíni címtárat fogja felvenni.  Kattintson a **Tovább** gombra.</br>
-![A "kapcsolat Active Directory" képernyőt bemutató képernyőkép.](media/how-to-install/install3.png)</br>
+8. A **Active Directory összekapcsolása** képernyőn kattintson a **könyvtár hozzáadása** lehetőségre, majd jelentkezzen be a Active Directory tartományi rendszergazdai fiókjával. A tartományi rendszergazdai fióknak nem kell módosítania a jelszó-módosítási követelményeket. Abban az esetben, ha a jelszó lejár vagy megváltozik, újra kell konfigurálnia az ügynököt az új hitelesítő adatokkal. Ezzel a művelettel a helyszíni címtárat fogja felvenni.  Kattintson a **Tovább** gombra.</br>
+![A "kapcsolat Active Directory" képernyőt bemutató képernyőkép.](media/how-to-install/install-3.png)</br>
 
 9. A **konfiguráció kész** képernyőn kattintson a **Confirm (megerősítés**) gombra.  Ez a művelet regisztrálja és újraindítja az ügynököt.</br>
-![Képernyőkép, amely a "konfigurálás kész" képernyőt jeleníti meg.](media/how-to-install/install4.png)</br>
+![Képernyőkép, amely a "konfigurálás kész" képernyőt jeleníti meg.](media/how-to-install/install-4a.png)</br>
 
-10. Ha a művelet befejeződik, megjelenik egy értesítés: **az ügynök konfigurációjának ellenőrzése sikerült.**  Kattintson a **Kilépés**lehetőségre.</br>
-![Üdvözlőképernyő](media/how-to-install/install5.png)</br>
-11. Ha továbbra is megjelenik a kezdeti splash képernyő, kattintson a **Bezárás**gombra.
+10. Ha a művelet befejeződik, megjelenik egy értesítés: **az ügynök konfigurációjának ellenőrzése sikerült.**  Kattintson a **Kilépés** lehetőségre.</br>
+![Üdvözlőképernyő](media/how-to-install/install-5.png)</br>
+11. Ha továbbra is megjelenik a kezdeti splash képernyő, kattintson a **Bezárás** gombra.
 
 
 ## <a name="verify-agent-installation"></a>Ügynök telepítésének ellenőrzése
@@ -80,23 +81,23 @@ Az ügynök ellenőrzése a Azure Portal és az ügynököt futtató helyi kiszo
 ### <a name="azure-portal-agent-verification"></a>Azure Portal ügynök ellenőrzése
 Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látja-e az Azure-t:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. A bal oldalon válassza a **Azure Active Directory**, majd a **Azure ad Connect** , és a központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.</br>
-![Azure Portal](media/how-to-install/install6.png)</br>
+![Azure Portal](media/how-to-install/install-6.png)</br>
 
-3.  Az **Azure ad-kiépítés (előzetes verzió)** képernyőn kattintson az **összes ügynök áttekintése**elemre.
-![Azure AD-kiépítés](media/how-to-install/install7.png)</br>
+3.  Az **Azure ad-kiépítés (előzetes verzió)** képernyőn kattintson az **összes ügynök áttekintése** elemre.
+![Azure AD-kiépítés](media/how-to-install/install-7.png)</br>
  
 4. A helyszíni **kiépítési ügynökök képernyőjén** látni fogja a telepített ügynököket.  Ellenőrizze, hogy a szóban forgó ügynök **aktív**-e, és hogy van-e megjelölve.
-![Kiépítési ügynökök](media/how-to-install/verify1.png)</br>
+![Kiépítési ügynökök](media/how-to-install/verify-1.png)</br>
 
 ### <a name="on-the-local-server"></a>A helyi kiszolgálón
 Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket:
 
 1.  Jelentkezzen be a kiszolgálóra egy rendszergazdai fiókkal
 2.  Nyissa meg a szolgáltatásokat vagy navigáljon a **szolgáltatáshoz** , vagy indítsa el a Start/Run/Services. msc parancsot.
-3.  Győződjön meg arról, hogy a **szolgáltatások**területen a **Microsoft Azure ad összekapcsolási ügynök frissítése** és a **Microsoft Azure ad kapcsolat létesítése ügynök** van jelen, és az állapota **fut**.
-![Szolgáltatások](media/how-to-troubleshoot/troubleshoot1.png)
+3.  Győződjön meg arról, hogy a **szolgáltatások** területen a **Microsoft Azure ad összekapcsolási ügynök frissítése** és a **Microsoft Azure ad kapcsolat létesítése ügynök** van jelen, és az állapota **fut**.
+![Szolgáltatások](media/how-to-install/troubleshoot-1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect felhőalapú kiépítés konfigurálása
  A kiépítés konfigurálásához kövesse az alábbi lépéseket
@@ -108,9 +109,9 @@ Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket:
  ![ képernyőképet, amely a "kiépítés kezelése (előzetes verzió)" hivatkozást mutatja.](media/how-to-configure/manage1.png)
 5.  Az **New Configuration** 
  ![ Azure ad-kiépítés (előzetes verzió) képernyő új konfiguráció képernyőképére kattintva kiemelve jelenik meg az "új konfiguráció" hivatkozás.](media/tutorial-single-forest/configure1.png)
-7.  A konfiguráció képernyőn adja meg az **értesítő e-mailt**, helyezze át a választót az **engedélyezéshez** , majd kattintson a **Mentés**gombra.
+7.  A konfiguráció képernyőn adja meg az **értesítő e-mailt**, helyezze át a választót az **engedélyezéshez** , majd kattintson a **Mentés** gombra.
 ![Képernyőkép a konfigurálásról a képernyőn megjelenő értesítő e-mailben és a kijelölés engedélyezése lapon.](media/how-to-configure/configure2.png)
-1.  A konfigurációs állapotnak most **kifogástalannak**kell lennie.
+1.  A konfigurációs állapotnak most **kifogástalannak** kell lennie.
 ![Képernyőkép az Azure AD-kiépítési (előzetes) képernyőről, amely kifogástalan állapotot mutat.](media/how-to-configure/manage4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>A felhasználók létrehozásának és szinkronizálásának ellenőrzése
@@ -121,17 +122,16 @@ Ekkor ellenőrzi, hogy a helyszíni címtárban lévő felhasználók szinkroniz
 2. A bal oldalon válassza a **Azure Active Directory**
 3. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
 4. Ellenőrizze, hogy megjelenik-e az új felhasználók a bérlőben</br>
-![Szinkronizálási](media/tutorial-single-forest/synchronize1.png)</br>
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Bejelentkezés az egyik felhasználóval
 
 1. Nyissa meg a következő címet a böngészőben: [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Jelentkezzen be egy olyan felhasználói fiókkal, amely az új bérlőben lett létrehozva.  A következő formátumban kell bejelentkeznie: ( user@domain.onmicrosoft.com ). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.</br>
-   ![Ellenőrzés](media/tutorial-single-forest/verify1.png)</br>
+   ![Ellenőrzés](media/tutorial-single-forest/verify-1.png)</br>
 
 Ezzel sikeresen beállított egy hibrid identitási környezetet, amellyel tesztelheti és megismerheti az Azure által kínált lehetőségeket.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 2d6610a2f69b6da34972510a5619c6d16a605289
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4bf4127dc163bb5f034e077b84664828374ba87
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776442"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647970"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Tesztkörnyezet létrehozása megosztott erőforrással Azure Lab Services
 
@@ -38,12 +38,12 @@ Az egyik leggyakoribb megosztott erőforrás a licenckiszolgáló, íme néhány
 A licenckiszolgálót ahhoz a virtuális hálózathoz kell csatlakoztatni, amely a laborhoz van csatlakoztatva, ezért a licenckiszolgálóra a labor-fiókkal megegyező régióban kell lennie.
 
 #### <a name="static-private-ip-and-mac-address"></a>Statikus magánhálózati IP-cím és MAC-cím
-Alapértelmezés szerint a virtuális gépek dinamikus magánhálózati IP-címmel rendelkeznek, [mielőtt bármilyen szoftvert beállít a magánhálózati IP-cím statikusra állítása előtt](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-pportal). Ez a beállítás a magánhálózati IP-címet és a MAC-címet statikusra állítja.  
+Alapértelmezés szerint a virtuális gépek dinamikus magánhálózati IP-címmel rendelkeznek, [mielőtt bármilyen szoftvert beállít a magánhálózati IP-cím statikusra állítása előtt](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Ez a beállítás a magánhálózati IP-címet és a MAC-címet statikusra állítja.  
 
 #### <a name="control-access"></a>Vezérlési hozzáférés
 A licenckiszolgáló hozzáférésének szabályozása kulcs.  Ha a virtuális gép beállítása a telepítéshez továbbra is szükséges lesz a karbantartáshoz, a hibaelhárításhoz és a frissítéshez.  Íme néhány különböző módszer.
-- [Igény szerinti (JIT) hozzáférés beállítása Azure Security Centeron belül.](https://docs.microsoft.com/azure/security-center/security-center-just-in-time?tabs=jit-config-asc%2Cjit-request-asc)
-- [Hálózati biztonsági csoport beállítása a hozzáférés korlátozására.](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)
+- [Igény szerinti (JIT) hozzáférés beállítása Azure Security Centeron belül.](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
+- [Hálózati biztonsági csoport beállítása a hozzáférés korlátozására.](../virtual-network/network-security-groups-overview.md)
 - [Állítsa be a Bastion-t a licenckiszolgáló biztonságos elérésének engedélyezéséhez.](https://azure.microsoft.com/services/azure-bastion/)
 
 ## <a name="lab-account"></a>Labor-fiók

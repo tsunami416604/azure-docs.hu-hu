@@ -3,12 +3,12 @@ title: A Project beállítása a laborok bevezetésének módja a Azure Lab Serv
 description: Megtudhatja, hogyan állíthatja be a laborokat a projekt vezetésének tanításához.
 ms.topic: article
 ms.date: 10/28/2020
-ms.openlocfilehash: 8585d09759319eef04da5ed68fec603cfa390093
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e3783ae4fa07bf783841022903c4bcf3ab6fbe23
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496888"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648004"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>A laborok beállítása a projecthez a következőképpen: osztályok
 
@@ -53,12 +53,12 @@ A [Project Lead the way (PLTW)](https://www.pltw.org/) egy nonprofit szervezet, 
 Az egyes osztályokhoz tartozó [szoftverek teljes listájáért](https://www.pltw.org/pltw-software) tekintse meg a PLTW webhelyét.
 
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
-A laborok PLTW való beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért tekintse meg a [labor-fiók beállítását](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)ismertető oktatóanyagot. Használhat meglévő labor-fiókot is.
+A laborok PLTW való beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért tekintse meg a [labor-fiók beállítását](./tutorial-setup-lab-account.md)ismertető oktatóanyagot. Használhat meglévő labor-fiókot is.
 
 Ha már rendelkezik labor-fiókkal, hozzon létre külön Labs-t egy PLTW osztály minden egyes munkamenetéhez, amelyet az iskolája biztosít.  Azt is javasoljuk, hogy hozzon létre külön rendszerképeket az egyes PLTW-osztályokhoz.  A laborok és a lemezképek felépítésével kapcsolatos további információkért olvassa el a következő blogbejegyzést: [áttérés fizikai laborból Azure Lab Servicesra](https://techcommunity.microsoft.com/t5/azure-lab-services/moving-from-a-physical-lab-to-azure-lab-services/ba-p/1654931).
 
 ### <a name="lab-account-settings"></a>Tesztkörnyezet-Fiókbeállítások
-Engedélyezze az alábbi táblázatban ismertetett beállításokat a labor-fiókhoz. A Piactéri lemezképek engedélyezésével kapcsolatos további információkért tekintse meg a [Piactéri rendszerképek elérhetővé tétele a labor-készítők](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)számára című cikket.
+Engedélyezze az alábbi táblázatban ismertetett beállításokat a labor-fiókhoz. A Piactéri lemezképek engedélyezésével kapcsolatos további információkért tekintse meg a [Piactéri rendszerképek elérhetővé tétele a labor-készítők](./specify-marketplace-images.md)számára című cikket.
 
 | Tesztkörnyezet-fiók beállítása | Utasítások |
 | -------------------- | ----- |
@@ -80,19 +80,19 @@ A fenti PLTW-osztályokban használt szoftverek többsége *_nem igényel_* hozz
 
 Ha a hálózati licencelést az Autodesk szoftverrel szeretné használni, a [PLTW részletesen ismerteti](https://www.pltw.org/pltw-software) az Autodesk licenckezelő telepítését a licencelési kiszolgálón.  Ez a licencelési kiszolgáló általában a helyszíni hálózatban található, vagy egy Azure-beli virtuális gépen (VM) fut az Azure Virtual Networkben (VNet) belül.
 
-A licenckiszolgáló beállítása után meg kell adni [a VNet](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) a [labor-fiókjához](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account). A hálózati társítást _before * kell létrehozni a labor létrehozásához, hogy a labor virtuális gépek hozzáférhessenek a licenckiszolgálóra és a másik megoldáshoz.
+A licenckiszolgáló beállítása után meg kell adni [a VNet](./how-to-connect-peer-virtual-network.md) a [labor-fiókjához](./tutorial-setup-lab-account.md). A hálózati társítást _before * kell létrehozni a labor létrehozásához, hogy a labor virtuális gépek hozzáférhessenek a licenckiszolgálóra és a másik megoldáshoz.
 
 Az Autodesk által generált licencfájl beágyazza a licencelési kiszolgáló MAC-címeit.  Ha úgy dönt, hogy egy Azure-beli virtuális gép használatával üzemelteti a licenckiszolgálót, fontos, hogy a licenckiszolgáló MAC-címe ne változzon.   Ellenkező esetben a MAC-címek megváltozásakor a rendszer újból létrehozza a licencelési fájlokat.  A MAC-címek módosításának megakadályozásához kövesse az alábbi tippeket:
 
-- [Állítson be egy statikus magánhálózati IP-címet és MAC-címet](https://docs.microsoft.com/azure/lab-services/how-to-create-a-lab-with-shared-resource#static-private-ip-and-mac-address) a licencelési kiszolgálót futtató Azure-beli virtuális géphez.
+- [Állítson be egy statikus magánhálózati IP-címet és MAC-címet](./how-to-create-a-lab-with-shared-resource.md#static-private-ip-and-mac-address) a licencelési kiszolgálót futtató Azure-beli virtuális géphez.
 - Győződjön meg arról, hogy a labor-fiók és a licencelési kiszolgáló VNet is rendelkezik olyan region\location, amely elegendő virtuálisgép-kapacitással rendelkezik, így nem kell újabb region\location áthelyeznie ezeket az erőforrásokat.
 
-További információért olvassa el a [licencelési kiszolgáló megosztott erőforrásként való beállításával](https://docs.microsoft.com/azure/lab-services/how-to-create-a-lab-with-shared-resource) foglalkozó cikket is.
+További információért olvassa el a [licencelési kiszolgáló megosztott erőforrásként való beállításával](./how-to-create-a-lab-with-shared-resource.md) foglalkozó cikket is.
 
 ### <a name="template-machine"></a>Sablon számítógép
 A PLTW szükséges telepítési fájlok némelyike nagyméretű, és hosszú időt vesz igénybe a másolás, amikor letölti őket a labor sablonjának gépére.
 
-Nem kell letöltenie a telepítési fájlokat a sablon számítógépére, és ott kell telepítenie a PLTW-lemezképeket a fizikai környezetben.  Ezután importálhatja a lemezképeket a megosztott rendszerkép-katalógusba, így az Egyéni rendszerképek használatával létrehozhatja a laborokat.  A részletekért olvassa el a következő cikket: [Egyéni rendszerkép feltöltése a megosztott képgyűjteménybe](https://docs.microsoft.com/azure/lab-services/upload-custom-image-shared-image-gallery).
+Nem kell letöltenie a telepítési fájlokat a sablon számítógépére, és ott kell telepítenie a PLTW-lemezképeket a fizikai környezetben.  Ezután importálhatja a lemezképeket a megosztott rendszerkép-katalógusba, így az Egyéni rendszerképek használatával létrehozhatja a laborokat.  A részletekért olvassa el a következő cikket: [Egyéni rendszerkép feltöltése a megosztott képgyűjteménybe](./upload-custom-image-shared-image-gallery.md).
 
 Ezt a javaslatot követve a tesztkörnyezet beállításának főbb feladatai a következők:
 
@@ -103,11 +103,11 @@ Ezt a javaslatot követve a tesztkörnyezet beállításának főbb feladatai a 
     > [!NOTE]    
     > Az Autodesk alkalmazásai telepítésekor az Autodesk telepítését végző számítógépnek képesnek kell lennie kommunikálni a licencelési kiszolgálóval (az Autodesk telepítővarázsló megkéri, hogy adja meg annak a gépnek a számítógépnevét, amelyen a licenckiszolgáló található).  Ha egy Azure-beli virtuális gépen üzemelteti a licenckiszolgálót, előfordulhat, hogy várnia kell az Autodesk telepítését a labor sablonjának gépére, hogy az Autodesk telepítési varázslója hozzáférhessen a licencelési kiszolgálóhoz
 
-    b.  [Telepítse és konfigurálja a OneDrive](https://docs.microsoft.com/azure/lab-services/how-to-prepare-windows-template#install-and-configure-onedrive) (vagy az iskolája által használható egyéb biztonsági mentési beállításokat).
+    b.  [Telepítse és konfigurálja a OneDrive](./how-to-prepare-windows-template.md#install-and-configure-onedrive) (vagy az iskolája által használható egyéb biztonsági mentési beállításokat).
     
-    c.  [Windows-frissítések telepítése és konfigurálása](https://docs.microsoft.com/azure/lab-services/how-to-prepare-windows-template#install-and-configure-updates).
+    c.  [Windows-frissítések telepítése és konfigurálása](./how-to-prepare-windows-template.md#install-and-configure-updates).
 
-1.  Töltse fel az egyéni rendszerképet a [labor-fiókjához csatolt megosztott képgyűjteménybe](https://docs.microsoft.com/azure/lab-services/how-to-attach-detach-shared-image-gallery).
+1.  Töltse fel az egyéni rendszerképet a [labor-fiókjához csatolt megosztott képgyűjteménybe](./how-to-attach-detach-shared-image-gallery.md).
 
 1.  Hozzon létre egy labort, és válassza ki az előző lépésben feltöltött egyéni rendszerképet.
 
@@ -118,9 +118,9 @@ Ezt a javaslatot követve a tesztkörnyezet beállításának főbb feladatai a 
 ## <a name="student-devices"></a>Tanulói eszközök
 A tanulók Windows\Mac számítógépekről és Chromebook is csatlakozhatnak a labor virtuális gépekhez.  Az alábbi hivatkozásokra kattintva megtekintheti az egyes beállításokra vonatkozó utasításokat:
 
-- [Kapcsolódjon a Windows rendszerből](https://docs.microsoft.com/azure/lab-services/how-to-use-classroom-lab#connect-to-the-vm)
-- [Mac-kapcsolat](https://docs.microsoft.com/azure/lab-services/connect-virtual-machine-mac-remote-desktop)
-- [Kapcsolat a Chromebook](https://docs.microsoft.com/azure/lab-services/connect-virtual-machine-chromebook-remote-desktop)
+- [Kapcsolódjon a Windows rendszerből](./how-to-use-classroom-lab.md#connect-to-the-vm)
+- [Mac-kapcsolat](./connect-virtual-machine-mac-remote-desktop.md)
+- [Kapcsolat a Chromebook](./connect-virtual-machine-chromebook-remote-desktop.md)
 
 ## <a name="cost"></a>Költség
 A fenti PLTW osztályok lehetséges költségbecslés.  Ez a becslés nem tartalmazza a licenckiszolgáló futtatásának költségeit vagy a megosztott képtárat.  25 tanulós osztályt fogunk használni.  20 órányi ütemezett idő van.  Emellett minden tanuló 10 órás kvótát kap a munkahelyi vagy az ütemezett osztályon kívüli hozzárendelésekhez.  A **nagyméretű** és a **kis GPU-(vizualizáció-)** méretek esetében tekintse meg a következő költségbecslést.
@@ -139,10 +139,10 @@ A fenti PLTW osztályok lehetséges költségbecslés.  Ez a becslés nem tartal
 > [!NOTE] 
 > A PLTW számos osztálya olyan alkalmazásokat használ, amelyek böngészőn keresztül érhetők el, például az MIT app Inventor használatával.  Ezek a böngészőalapú alkalmazások nem igényelnek gyors PROCESSZORt vagy GPU-t, és az internetkapcsolattal rendelkező eszközökről is elérhetők.  Ha a tanulók ezeket az alkalmazásokat használják, javasoljuk, hogy a böngészőt a fizikai eszközön használják, ahelyett, hogy a böngészőt használják a laboratóriumi virtuális gépeken.  Ez segít a költségek csökkentésében azáltal, hogy csak a tesztkörnyezetben működő virtuális gépeket használja a gyors CPU vagy GPU-t igénylő alkalmazásokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő lépések közösek a laborok beállításához:
 
 - [Felhasználók hozzáadása](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Kvóta beállítása](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Ütemterv beállítása](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [E-mail-regisztráció a tanulók számára](how-to-configure-student-usage.md#send-invitations-to-users). 
+- [E-mail-regisztráció a tanulók számára](how-to-configure-student-usage.md#send-invitations-to-users).

@@ -3,12 +3,12 @@ title: A Linux rendszerhez készült grafikus távoli asztal engedélyezése a A
 description: Megtudhatja, hogyan engedélyezheti a Távoli asztalt a Linux rendszerű virtuális gépek számára a Azure Lab Servicesban található laborban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34c940fec388bb0e79ab5e1db9be6d52fb223873
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251609"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647953"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>A grafikus távoli asztal engedélyezése a Linux rendszerű virtuális gépek számára a Azure Lab Servicesban
 Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
@@ -38,7 +38,7 @@ A X2Go ugyanazt a portot használja, amely már engedélyezve van az SSH-hoz.  E
 > Bizonyos esetekben, például Ubuntu LTS 18,04 esetén a X2Go jobb teljesítményt nyújt.  Ha a grafikus asztali környezettel való interakció során RDP-és késési késleltetést használ, érdemes lehet a X2Go próbálkozni, mivel ez javíthatja a teljesítményt.
 
 > [!IMPORTANT]
->  Egyes piactér-lemezképek már telepítve vannak grafikus asztali környezettel és távoli asztali kiszolgálóval.  Például a [linuxos Data Science Virtual Machine (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) már rendelkezik [telepített és konfigurált Xfce-és X2Go-kiszolgálóval, hogy fogadja az ügyfélkapcsolatokat](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro#x2go).
+>  Egyes piactér-lemezképek már telepítve vannak grafikus asztali környezettel és távoli asztali kiszolgálóval.  Például a [linuxos Data Science Virtual Machine (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) már rendelkezik [telepített és konfigurált Xfce-és X2Go-kiszolgálóval, hogy fogadja az ügyfélkapcsolatokat](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#x2go).
 
 ## <a name="enable-remote-desktop-connection-for-rdp"></a>Távoli asztali kapcsolat engedélyezése RDP-hez
 
@@ -48,7 +48,7 @@ Ez a lépés csak az RDP használatával való kapcsolódáshoz szükséges.  Ha
   
     ![Képernyőfelvétel: az "új Labor" ablak az "Enable Távoli asztali kapcsolat" lehetőséggel.](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
-2. A **Távoli asztali kapcsolati üzenet engedélyezése** párbeszédpanelen válassza a **Folytatás a távoli asztal**lehetőséget. 
+2. A **Távoli asztali kapcsolati üzenet engedélyezése** párbeszédpanelen válassza a **Folytatás a távoli asztal** lehetőséget. 
 
     ![Távoli asztali kapcsolat engedélyezése Linux-rendszerképekhez](./media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
 
@@ -73,7 +73,7 @@ A sablon virtuális gép beállításához kövesse az alábbi lépéseket:
     ![SSH-kapcsolatok karakterlánca](./media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
 
 4. Telepítse az RDP-t vagy a X2Go-t az Ön által választott grafikus asztali környezettel együtt.  Tekintse át az alábbi utasításokat:
-    - [Az RDP telepítése és konfigurálása](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)
+    - [Az RDP telepítése és konfigurálása](../virtual-machines/linux/use-remote-desktop.md)
     - [X2Go telepítése és konfigurálása](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/X2GoRemoteDesktop)
 
 ## <a name="connect-to-the-template-vm-via-the-gui"></a>Kapcsolódás a sablon virtuális géphez a grafikus felhasználói felületen keresztül
@@ -82,7 +82,7 @@ A sablon virtuális gép beállítása után az oktató a **Microsoft távoli as
 
 ### <a name="microsoft-remote-desktop-rdp-client"></a>Microsoft Távoli asztal (RDP) ügyfél
 
-A Microsoft Távoli asztal-(RDP-) ügyfél egy RDP-konfigurációval rendelkező sablonos virtuális géphez való kapcsolódásra szolgál.  A Távoli asztal ügyfél Windows, Chromebook és Mac rendszereken is használható.  További részletekért tekintse meg [Távoli asztal-ügyfelekről](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) szóló cikket.
+A Microsoft Távoli asztal-(RDP-) ügyfél egy RDP-konfigurációval rendelkező sablonos virtuális géphez való kapcsolódásra szolgál.  A Távoli asztal ügyfél Windows, Chromebook és Mac rendszereken is használható.  További részletekért tekintse meg [Távoli asztal-ügyfelekről](/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) szóló cikket.
 
 Kövesse az alábbi lépéseket a sablon virtuális géphez való kapcsolódáshoz használt számítógép típusától függően:
 
@@ -106,5 +106,5 @@ A X2Go-ügyfél a X2Go konfigurált virtuálisgép-virtuális gépekhez való ka
 ## <a name="next-steps"></a>Következő lépések
 Miután az oktató létrehozta a sablon virtuális gépén az RDP-t vagy a X2Go-t, és közzéteszi, a tanulók a grafikus felhasználói felület távoli asztalán vagy SSH-n keresztül kapcsolódhatnak a virtuális gépekhez.
 
-További információkért lásd:
+További információ:
  - [Csatlakozás Linux rendszerű virtuális géphez](how-to-use-remote-desktop-linux-student.md)

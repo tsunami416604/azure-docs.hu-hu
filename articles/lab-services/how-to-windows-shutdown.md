@@ -3,19 +3,19 @@ title: Útmutató a Windows leállítási viselkedésének szabályozásához a 
 description: A tétlen Windowsos virtuális gépek automatikus leállításának és a Windows leállítás parancs eltávolításának lépései.
 ms.topic: article
 ms.date: 09/29/2020
-ms.openlocfilehash: c6021131787dde4fe23ec4caad107bda2e20158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 248bbeabaf704ba636e2f82c7a93d0ee90a09f22
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541560"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647698"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Útmutató a Windows leállítási viselkedésének szabályozásához
 
 A Azure Lab Services számos költségtakarékos szolgáltatást biztosít annak biztosítására, hogy a Windows rendszerű virtuális gépek (VM-EK) ne fussanak váratlanul:
- - [Ütemterv beállítása](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
- - [Kvóták beállítása a felhasználók számára](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)
- - [Automatikus leállítás engedélyezése a kapcsolat bontásakor](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
+ - [Ütemterv beállítása](./tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+ - [Kvóták beállítása a felhasználók számára](./how-to-configure-student-usage.md#set-quotas-for-users)
+ - [Automatikus leállítás engedélyezése a kapcsolat bontásakor](./how-to-enable-shutdown-disconnect.md)
 
 Ezek a költségadatok még akkor is előfordulhatnak, ha egy Windows rendszerű virtuális gép váratlanul tovább fut; Ennek eredményeképpen a tanulói kvóta levonása:
 
@@ -25,7 +25,7 @@ Ezek a költségadatok még akkor is előfordulhatnak, ha egy Windows rendszerű
 
 - **A Windows Shutdown parancs a virtuális gép kikapcsolására szolgál**
   
-    A tanulók a Windows leállítási parancsát vagy a Windowson belül elérhető egyéb leállítási mechanizmusokat is használhatják a virtuális gép kikapcsolására [Azure Lab Services "Leállítás gomb](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-classroom-lab#start-or-stop-the-vm)használata helyett.  Ha ez történik, a Azure Lab Services szempontjából a virtuális gép továbbra is használatban van.
+    A tanulók a Windows leállítási parancsát vagy a Windowson belül elérhető egyéb leállítási mechanizmusokat is használhatják a virtuális gép kikapcsolására [Azure Lab Services "Leállítás gomb](./how-to-use-classroom-lab.md#start-or-stop-the-vm)használata helyett.  Ha ez történik, a Azure Lab Services szempontjából a virtuális gép továbbra is használatban van.
     
 Ennek az útmutatónak a segítségével megakadályozhatja, hogy ezek a helyzetek ne legyenek elérhetők. Ez az útmutató a Windows rendszerű virtuális gépek automatikus leállítását és a **Start** menüből történő eltávolítását ismerteti.  
 
@@ -50,9 +50,9 @@ A következő manuális lépéseket is végrehajthatja a sablon virtuális gép 
 
     ![Helyi csoportházirend-szerkesztő](./media/how-to-windows-shutdown/group-policy-shutdown.png)
 
-1. Kattintson a jobb gombbal az Eltávolítás elemre, **és tiltsa le a leállítási, újraindítási, alvó és hibernált parancsok elérését**, majd kattintson a **Szerkesztés**elemre.
+1. Kattintson a jobb gombbal az Eltávolítás elemre, **és tiltsa le a leállítási, újraindítási, alvó és hibernált parancsok elérését**, majd kattintson a **Szerkesztés** elemre.
 
-1. Jelölje be az **engedélyezett** beállítást, majd kattintson **az OK**gombra:
+1. Jelölje be az **engedélyezett** beállítást, majd kattintson **az OK** gombra:
  
    ![Leállítás beállítása](./media/how-to-windows-shutdown/edit-shutdown.png)
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9b0df4337a5e5faff3427222fb66caf8e02184a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3fc54829be301c063440bd3508472287b6db265
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86146665"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648323"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával
 
@@ -32,7 +32,7 @@ ms.locfileid: "86146665"
 Szerepkör-hozzárendelések hozzáadásához vagy eltávolításához a következőket kell tennie:
 
 - `Microsoft.Authorization/roleAssignments/write` és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy a [tulajdonos](built-in-roles.md#owner)
-- [PowerShell Azure Cloud Shell](/azure/cloud-shell/overview) vagy [Azure PowerShell](/powershell/azure/install-az-ps)
+- [PowerShell Azure Cloud Shell](../cloud-shell/overview.md) vagy [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="get-object-ids"></a>Objektum-azonosítók beolvasása
 
@@ -47,7 +47,7 @@ Get-AzADUser -StartsWith <string_in_quotes>
 (Get-AzADUser -DisplayName <name_in_quotes>).id
 ```
 
-### <a name="group"></a>Group
+### <a name="group"></a>Csoport
 
 Az Azure AD-csoporthoz tartozó objektumazonosító beszerzéséhez használja a [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup).
 
@@ -102,7 +102,7 @@ Néhány alkalommal, amikor a szerepkör neve változhat, például:
 
 > [!IMPORTANT]
 > Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A szerepkör-azonosító nem változik, még akkor is, ha a szerepkör át lett nevezve. Ha parancsfájlokat vagy automationt használ a szerepkör-hozzárendelések létrehozásához, ajánlott az egyedi szerepkör-azonosítót használni a szerepkör neve helyett. Ezért ha egy szerepkört átneveznek, a parancsfájlok nagyobb valószínűséggel fognak működni.
 
@@ -227,7 +227,7 @@ Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -S
 
 Ha a következő hibaüzenet jelenik meg: "a megadott információk nem képeznek szerepkör-hozzárendelést", győződjön meg arról, hogy a vagy a paramétereket is megadja `-Scope` `-ResourceGroupName` . További információ: az [Azure RBAC hibáinak megoldása](troubleshooting.md#role-assignments-with-identity-not-found).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli szerepkör-hozzárendelések listázása Azure PowerShell használatával](role-assignments-list-powershell.md)
 - [Oktatóanyag: csoporthoz való hozzáférés biztosítása az Azure-erőforrásokhoz Azure PowerShell használatával](tutorial-role-assignments-group-powershell.md)

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8051621cf05b0f8c387c41cf0b95bb32e15e667
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 794c4e1a0859fc8a36b0abf4fcc9d5243c8bd308
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825895"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649568"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Az alkalmazások távoli Azure-AD Application Proxy való elérésének biztonsági szempontjai
 
@@ -49,7 +49,7 @@ A hálózatra irányuló kapcsolatok létrehozása előtt alkalmazzon gazdagabb 
 
 A [feltételes hozzáféréssel](../conditional-access/concept-conditional-access-cloud-apps.md)korlátozásokat határozhat meg, hogy a felhasználók hogyan férhetnek hozzá az alkalmazásokhoz. Olyan házirendeket hozhat létre, amelyek a hely, a hitelesítés erőssége és a felhasználói kockázati profil alapján korlátozzák a bejelentkezéseket.
 
-A feltételes hozzáférés használatával Multi-Factor Authentication házirendeket is konfigurálhat, és további biztonsági réteget adhat hozzá a felhasználói hitelesítésekhez. Emellett az alkalmazások az Azure AD feltételes hozzáférés használatával Microsoft Cloud App Security is továbbíthatók, így valós idejű monitorozást és vezérlést biztosítanak a [hozzáférési](https://docs.microsoft.com/cloud-app-security/access-policy-aad) és [munkamenet](https://docs.microsoft.com/cloud-app-security/session-policy-aad) -szabályzatok segítségével.
+A feltételes hozzáférés használatával Multi-Factor Authentication házirendeket is konfigurálhat, és további biztonsági réteget adhat hozzá a felhasználói hitelesítésekhez. Emellett az alkalmazások az Azure AD feltételes hozzáférés használatával Microsoft Cloud App Security is továbbíthatók, így valós idejű monitorozást és vezérlést biztosítanak a [hozzáférési](/cloud-app-security/access-policy-aad) és [munkamenet](/cloud-app-security/session-policy-aad) -szabályzatok segítségével.
 
 ### <a name="traffic-termination"></a>Forgalom leállítása
 
@@ -61,7 +61,7 @@ Mivel az Azure AD Application Proxy egy fordított proxy, a rendszer a háttérb
 
 Nincs szükség a vállalati hálózatra irányuló bejövő kapcsolatok megnyitására.
 
-Az alkalmazásproxy-összekötők csak a kimenő kapcsolatokat használják az Azure AD Application Proxy szolgáltatáshoz, ami azt jelenti, hogy nincs szükség a tűzfal portjainak megnyitására a bejövő kapcsolatokhoz. A hagyományos proxyk számára szükséges a peremhálózat (más néven *DMZ*, *vagy demilitarizált zóna*vagy *szűrt alhálózat*), és engedélyezett a nem hitelesített kapcsolatokhoz való hozzáférés a hálózati Edge-ben. Ez a forgatókönyv szükséges a webalkalmazási tűzfal termékeiben a forgalom elemzéséhez és a környezet megóvásához szükséges beruházásokhoz. Az alkalmazásproxy használata esetén nincs szükség peremhálózati hálózatra, mert minden kapcsolat kimenő, és egy biztonságos csatornán történik.
+Az alkalmazásproxy-összekötők csak a kimenő kapcsolatokat használják az Azure AD Application Proxy szolgáltatáshoz, ami azt jelenti, hogy nincs szükség a tűzfal portjainak megnyitására a bejövő kapcsolatokhoz. A hagyományos proxyk számára szükséges a peremhálózat (más néven *DMZ*, *vagy demilitarizált zóna* vagy *szűrt alhálózat*), és engedélyezett a nem hitelesített kapcsolatokhoz való hozzáférés a hálózati Edge-ben. Ez a forgatókönyv szükséges a webalkalmazási tűzfal termékeiben a forgalom elemzéséhez és a környezet megóvásához szükséges beruházásokhoz. Az alkalmazásproxy használata esetén nincs szükség peremhálózati hálózatra, mert minden kapcsolat kimenő, és egy biztonságos csatornán történik.
 
 További információ az összekötők használatáról: az [Azure ad Application proxy-összekötők ismertetése](application-proxy-connectors.md).
 
@@ -69,7 +69,7 @@ További információ az összekötők használatáról: az [Azure ad Applicatio
 
 Az élvonalbeli biztonsági védelem beszerzése.
 
-Mivel Azure Active Directory része, az alkalmazásproxy kihasználhatja a [Azure ad Identity Protection](../active-directory-identityprotection.md), a Microsoft Security Response Center és a digitális bűncselekmények egységből származó adatokkal. Együtt proaktív módon azonosítjuk a feltört fiókokat, és magas kockázatú bejelentkezések elleni védelmet biztosítunk. Számos tényezőt figyelembe veszünk annak meghatározásához, hogy mely bejelentkezési kísérletek nagy kockázatot jelentenek. Ezek a tényezők közé tartoznak a fertőzött eszközök, anonimizálásával hálózatok és atipikus vagy nem valószínű helyszínek megjelölése.
+Mivel Azure Active Directory része, az alkalmazásproxy kihasználhatja a [Azure ad Identity Protection](../identity-protection/overview-identity-protection.md), a Microsoft Security Response Center és a digitális bűncselekmények egységből származó adatokkal. Együtt proaktív módon azonosítjuk a feltört fiókokat, és magas kockázatú bejelentkezések elleni védelmet biztosítunk. Számos tényezőt figyelembe veszünk annak meghatározásához, hogy mely bejelentkezési kísérletek nagy kockázatot jelentenek. Ezek a tényezők közé tartoznak a fertőzött eszközök, anonimizálásával hálózatok és atipikus vagy nem valószínű helyszínek megjelölése.
 
 Ezen jelentések és események közül sok már elérhető egy API-n keresztül a biztonsági információkkal és az Event Management-(SIEM-) rendszerekkel való integrációhoz.
 
@@ -107,8 +107,8 @@ Az összekötő egy ügyféltanúsítványt használ az alkalmazásproxy szolgá
 
 Az összekötő első beállításakor a következő flow-események lépnek életbe:
 
-1. A szolgáltatáshoz való regisztráció az összekötő telepítésének részeként történik. A rendszer felszólítja a felhasználókat az Azure AD-rendszergazdai hitelesítő adataik megadására.Ekkor a hitelesítésből beszerzett token jelenik meg az Azure AD Application Proxy szolgáltatásban.
-2. Az alkalmazásproxy szolgáltatás kiértékeli a jogkivonatot. Ellenőrzi, hogy a felhasználó a bérlő vállalati rendszergazdája-e.Ha a felhasználó nem rendszergazda, a folyamat megszakad.
+1. A szolgáltatáshoz való regisztráció az összekötő telepítésének részeként történik. A rendszer felszólítja a felhasználókat az Azure AD-rendszergazdai hitelesítő adataik megadására. Ekkor a hitelesítésből beszerzett token jelenik meg az Azure AD Application Proxy szolgáltatásban.
+2. Az alkalmazásproxy szolgáltatás kiértékeli a jogkivonatot. Ellenőrzi, hogy a felhasználó a bérlő vállalati rendszergazdája-e. Ha a felhasználó nem rendszergazda, a folyamat megszakad.
 3. Az összekötő létrehoz egy ügyféltanúsítvány-kérelmet, és továbbítja azt a jogkivonattal együtt az alkalmazásproxy szolgáltatásnak. A szolgáltatás pedig ellenőrzi a jogkivonatot, és aláírja az ügyféltanúsítvány-kérelmet.
 4. Az összekötő az ügyféltanúsítványt használja az alkalmazásproxy szolgáltatással folytatott jövőbeli kommunikációhoz.
 5. Az összekötő a szolgáltatásból a rendszerkonfigurációs adatok kezdeti lekérését végzi az ügyféltanúsítvány használatával, és most már készen áll a kérelmekre.
@@ -173,7 +173,7 @@ Miután befejeződött az összes tartalom kérése és továbbítása a hátté
 
 Miután a kapott választ, az összekötő kimenő kapcsolattal csatlakozik az alkalmazásproxy-szolgáltatáshoz, és visszaküldi a fejléc részleteit, és megkezdi a visszatérési adatok továbbítását.
 
-#### <a name="5-the-service-streams-data-to-the-user"></a>5. a szolgáltatás továbbítja az adatforgalmat a felhasználó felé. 
+#### <a name="5-the-service-streams-data-to-the-user"></a>5. a szolgáltatás továbbítja az adatforgalmat a felhasználó felé. 
 
 Az alkalmazás egyes feldolgozása itt fordulhat elő. Ha úgy konfigurálta az alkalmazásproxy-t, hogy az alkalmazásban fejléceket vagy URL-címeket fordítson le, akkor ez a lépés a szükséges módon történik.
 
