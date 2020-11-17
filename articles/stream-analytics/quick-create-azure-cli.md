@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 8c2e7b6a02c0a0fea32fb1effb30b682971c3f6f
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fa7919f54663387ddef811d02137da6d3ffb9d9b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348780"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646627"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával
 
@@ -23,41 +23,11 @@ Ebben a rövid útmutatóban az Azure CLI használatával határozhat meg egy ol
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prepare-your-environment"></a>A környezet előkészítése
-
-1. Jelentkezzen be.
-
-   Jelentkezzen be az [az login](/cli/azure/reference-index#az-login) paranccsal, ha a CLI helyi telepítését használja.
-
-    ```azurecli
-    az login
-    ```
-
-    A terminálon megjelenő utasítások alapján végezze el a hitelesítési folyamatot.
-
-2. Telepítse az Azure CLI-bővítményt.
-
-   Ha az Azure CLI bővítményhivatkozásaival dolgozik, először telepítenie kell a bővítményt.  Az Azure CLI-bővítmények hozzáférést biztosítanak azokhoz a kísérleti és kiadás előtti parancsokhoz, amelyek az alap CLI-vel még nincsenek szállítva.  A bővítményekről, beleértve azok frissítését és eltávolítását is, a [Bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview) című cikkben olvashat.
-
-   Telepítse a [stream Analytics bővítményét](/cli/azure/ext/stream-analytics/stream-analytics) a következő parancs futtatásával:
-
-    ```azurecli
-    az extension add --name stream-analytics
-    ```
-
-   Telepítse az [Azure IoT bővítményét](/cli/azure/ext/azure-iot) a következő parancs futtatásával:
-
-    ```azurecli
-    az extension add --name azure-iot
-    ```
-
-3. Hozzon létre egy erőforráscsoportot.
-
-   Az összes Azure-erőforrást egy erőforráscsoporthoz kell telepíteni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
+- Hozzon létre egy erőforráscsoportot. Az összes Azure-erőforrást egy erőforráscsoporthoz kell telepíteni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
 
    Ebben a rövid útmutatóban hozzon létre egy *streamanalyticsrg* nevű erőforráscsoportot a *eastus* helyen a következő az [Group Create](/cli/azure/group#az-group-create) paranccsal:
 
@@ -270,7 +240,7 @@ az stream-analytics job start
 
 Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha később is szeretné használni a feladatot, akkor nem kell törölnie, hanem elég, ha leállítja. Ha nem kívánja tovább használni ezt a feladatot, törölje az ebben a rövid útmutatóban létrehozott összes erőforrást a következő parancsmag futtatásával:
 
-```powershell
+```azurecli
 az group delete \
     --name streamanalyticsrg \
     --no-wait

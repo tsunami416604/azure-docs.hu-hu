@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 092288d320874488cee4d2f097d7406c0757e8a0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e5cec8802fba3852f4600b9fb426ee4c175314b1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379116"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647120"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>Törölt Microsoft 365 csoport visszaállítása Azure Active Directory
 
@@ -29,7 +29,7 @@ Ha töröl egy Microsoft 365 csoportot a Azure Active Directoryban (Azure AD), a
 
 A csoportok visszaállításához szükséges engedély az alábbiak bármelyike lehet:
 
-Role | Engedélyek
+Szerepkör | Engedélyek
 --------- | ---------
 Globális rendszergazda, csoport rendszergazdája, partner szint-támogatás és Intune-rendszergazda | Visszaállíthatja az összes törölt Microsoft 365 csoportot
 Felhasználói rendszergazda és partner Tier1-támogatás | Visszaállíthatja az összes törölt Microsoft 365 csoportot, kivéve azokat a csoportokat, amelyek a vállalati rendszergazda szerepkörhöz vannak rendelve
@@ -39,14 +39,14 @@ Felhasználó | Visszaállíthatja az összes törölt Microsoft 365 csoportot.
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy felhasználói rendszergazdai fiókkal.
 
-2. Válassza a **csoportok**lehetőséget, majd válassza a **törölt csoportok** lehetőséget a visszaállítani kívánt törölt csoportok megtekintéséhez.
+2. Válassza a **csoportok** lehetőséget, majd válassza a **törölt csoportok** lehetőséget a visszaállítani kívánt törölt csoportok megtekintéséhez.
 
     ![a visszaállításhoz elérhető csoportok megtekintése](./media/groups-restore-deleted/deleted-groups3.png)
 
 3. A **törölt csoportok** panelen a következőket teheti:
 
    - Állítsa vissza a törölt csoportot és annak tartalmát a **Restore Group (visszaállítási csoport**) lehetőség kiválasztásával.
-   - Véglegesen távolítsa el a törölt csoportot a **Törlés végleges**lehetőség kiválasztásával. A csoportok végleges eltávolításához rendszergazdának kell lennie.
+   - Véglegesen távolítsa el a törölt csoportot a **Törlés végleges** lehetőség kiválasztásával. A csoportok végleges eltávolításához rendszergazdának kell lennie.
 
 ## <a name="view-the-deleted-microsoft-365-groups-that-are-available-to-restore-using-powershell"></a>A PowerShell használatával történő visszaállításhoz elérhető törölt Microsoft 365 csoportok megtekintése
 

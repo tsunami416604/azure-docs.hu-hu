@@ -10,18 +10,18 @@ editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 07/07/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50915aebc9cb76c7bb67235e40564ff32ce656b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8ec9a215d25ce1177b015b392c4f36d7547be521
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375461"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647018"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Felhasználóra vagy csoportra vonatkozó licenc-hozzárendelések módosítása Azure Active Directory
 
@@ -46,8 +46,8 @@ A licenc-hozzárendelések frissítése előtt fontos ellenőrizni, hogy egyes f
 Ha úgy látja, hogy egyes jelölőnégyzetek nem érhetők el, a **licenc-hozzárendelések frissítése** oldalon láthatja azokat a szolgáltatásokat, amelyek nem módosíthatók, mert örökölnek egy csoporttól származó licenccel.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure ad-szervezetben található licenc-rendszergazdai fiók használatával.
-1. Válassza ki **Azure Active Directory**  >  **felhasználók**elemet, majd nyissa meg egy felhasználó **profil** lapját.
-1. Válassza a **licencek**lehetőséget.
+1. Válassza ki **Azure Active Directory**  >  **felhasználók** elemet, majd nyissa meg egy felhasználó **profil** lapját.
+1. Válassza a **licencek** lehetőséget.
 1. Válassza a **hozzárendelések** lehetőséget a felhasználó vagy csoport licenc-hozzárendelésének szerkesztéséhez. A **hozzárendelések** lap a licenc-hozzárendelési ütközések feloldására szolgál.
 1. Jelölje be az Office 365 E3 jelölőnégyzetét, és győződjön meg arról, hogy legalább a felhasználóhoz rendelt összes E1 szolgáltatás ki van választva.
 1. Törölje az Office 365 E1 jelölőnégyzet jelölését.
@@ -62,7 +62,7 @@ Az Azure AD az új licenceket alkalmazza, és egyszerre eltávolítja a régi li
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure ad-szervezetben található licenc-rendszergazdai fiók használatával.
 1. Válassza ki **Azure Active Directory**  >  **csoportokat**, majd nyissa meg egy csoport **Áttekintés** lapját.
-1. Válassza a **licencek**lehetőséget.
+1. Válassza a **licencek** lehetőséget.
 1. Kattintson a **hozzárendelések** parancsra a felhasználó vagy csoport licenc-hozzárendelésének szerkesztéséhez.
 1. Jelölje be az Office 365 E3 jelölőnégyzetét. A szolgáltatás folytonosságának fenntartása érdekében válassza ki az összes olyan E1-szolgáltatást, amely már hozzá van rendelve a felhasználóhoz.
 1. Törölje az Office 365 E1 jelölőnégyzet jelölését.

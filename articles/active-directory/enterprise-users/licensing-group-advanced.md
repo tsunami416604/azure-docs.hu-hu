@@ -9,18 +9,18 @@ manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 08/13/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56f16dea1f81f7f6a35409d8481550fd000864b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c4f298cf7487e00f6ee6a8aa8913fd32f8c6beee
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375473"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647103"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory
 
@@ -28,7 +28,7 @@ Az alábbi információk és példák segítségével összetettebb ismereteket 
 
 ## <a name="usage-location"></a>Használat helye
 
-Nem minden Microsoft-szolgáltatás érhető el minden területen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy felhasználóhoz, a rendszergazdának meg kell adnia a **használat helye** tulajdonságot a felhasználónál. [A Azure Portal](https://portal.azure.com)a **felhasználói** &gt; **profil** &gt; **beállításaiban**megadhatja a használati helyet.
+Nem minden Microsoft-szolgáltatás érhető el minden területen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy felhasználóhoz, a rendszergazdának meg kell adnia a **használat helye** tulajdonságot a felhasználónál. [A Azure Portal](https://portal.azure.com)a **felhasználói** &gt; **profil** &gt; **beállításaiban** megadhatja a használati helyet.
 
 A csoport licencének hozzárendelésekor a megadott használati hely nélküli felhasználók öröklik a címtár helyét. Ha több helyen is vannak felhasználók, ügyeljen arra, hogy a felhasználói erőforrásokban megfelelően tükrözze, mielőtt felhasználókat adna hozzá a licencekhez.
 
@@ -110,7 +110,7 @@ Rendszergazdaként áttekintheti a változás által érintett összes csoportot
 
 2. A Microsofttól értesítést kapott arról, hogy az E5 termék ki lesz bővítve egy új szolgáltatás- *Microsoft stream*. Ha a szolgáltatás elérhetővé válik a szervezetében, a következőket teheti:
 
-3. Lépjen a [**Azure Active Directory > licencek > minden termék**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) panelre, és válassza az *Office 365 Enterprise E5*lehetőséget, majd válassza a **licencelt csoportok** lehetőséget az adott termékkel rendelkező csoportok listájának megtekintéséhez.
+3. Lépjen a [**Azure Active Directory > licencek > minden termék**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) panelre, és válassza az *Office 365 Enterprise E5* lehetőséget, majd válassza a **licencelt csoportok** lehetőséget az adott termékkel rendelkező csoportok listájának megtekintéséhez.
 
 4. Kattintson az áttekinteni kívánt csoportra (ebben az esetben az *O365 E5-Exchange-* re). Ekkor megnyílik a **licencek** lap. Ha az E5-licencre kattint, megnyílik egy panel, amely felsorolja az összes engedélyezett szolgáltatást.
    > [!NOTE]
@@ -148,7 +148,7 @@ Az [Azure ad-naplók](../reports-monitoring/concept-audit-logs.md#audit-logs) ha
 
 ### <a name="find-out-who-modified-a-group-license"></a>Megtudhatja, hogy ki módosította a csoport licencét
 
-1. Állítsa be a **tevékenység** szűrőt a *csoport licencének beállításához* , majd kattintson az **alkalmaz**gombra.
+1. Állítsa be a **tevékenység** szűrőt a *csoport licencének beállításához* , majd kattintson az **alkalmaz** gombra.
 2. Az eredmények közé tartozik a csoportokon beállított vagy módosított licencek összes esete.
    >[!TIP]
    > A *cél* szűrőben a csoport nevét is beírhatja az eredmények hatókörének meghatározásához.
@@ -167,7 +167,7 @@ Amikor egy licenc megváltozik egy csoporton, az Azure AD elkezdi alkalmazni a m
    >[!TIP]
    > Kattintson a lista egyik elemére a *módosított tulajdonságok* mező megjelenítéséhez – ez megjeleníti a feldolgozásra kiválasztott licencek változásait. Ez akkor hasznos, ha egy csoporton több módosítást hajtott végre, és nem biztos benne, hogy melyik lett feldolgozva.
 
-2. Hasonlóképpen, ha szeretné megtekinteni, hogy a csoportok Mikor dolgozzák fel a feldolgozást, használja a szűrési érték *befejezése csoport alapú licenc alkalmazása a felhasználók számára*lehetőséget.
+2. Hasonlóképpen, ha szeretné megtekinteni, hogy a csoportok Mikor dolgozzák fel a feldolgozást, használja a szűrési érték *befejezése csoport alapú licenc alkalmazása a felhasználók számára* lehetőséget.
    > [!TIP]
    > Ebben az esetben a *módosított tulajdonságok* mező az eredmények összegzését tartalmazza – ez hasznos lehet annak gyors ellenőrzéséhez, hogy a feldolgozás hibákat eredményezett-e. Példa a kimenetre:
    > ```
@@ -217,7 +217,7 @@ Ha Group-alapú licencelést használ, érdemes megismernie az alábbi korlátoz
 
 - A licencelési szolgáltatás automatizálása nem reagál automatikusan a környezet összes változására. Előfordulhat például, hogy elfogyott a licencek, ami miatt egyes felhasználók hibás állapotba kerülhetnek. A rendelkezésre álló ülőhelyek számának felszabadításához eltávolíthat néhány közvetlenül hozzárendelt licencet a többi felhasználótól. A rendszer azonban nem reagál automatikusan erre a változásra, és kijavítja a felhasználókat az adott hiba állapotában.
 
-  Az ilyen típusú korlátozások megkerülő megoldásként nyissa meg a **csoport** panelt az Azure ad-ben, és kattintson az **újrafeldolgozás**gombra. Ez a parancs feldolgozza a csoport összes felhasználóját, és ha lehetséges, feloldja a hibák állapotait.
+  Az ilyen típusú korlátozások megkerülő megoldásként nyissa meg a **csoport** panelt az Azure ad-ben, és kattintson az **újrafeldolgozás** gombra. Ez a parancs feldolgozza a csoport összes felhasználóját, és ha lehetséges, feloldja a hibák állapotait.
 
 ## <a name="next-steps"></a>Következő lépések
 

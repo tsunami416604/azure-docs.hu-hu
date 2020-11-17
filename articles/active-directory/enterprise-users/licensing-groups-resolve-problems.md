@@ -7,20 +7,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7529d72c3d94e3c7bef58c6a26af62b97ac92d9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bd61a33bdcc0d18dee7dba651f097f7cd49e7149
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375401"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647033"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Egy csoport licenc-hozzárendelési problémáinak azonosítása és megoldása Azure Active Directory
 
@@ -34,7 +34,7 @@ Ha csoportos licencelést használ, ugyanazok a hibák fordulhatnak elő, de a h
 
 ### <a name="to-find-users-in-an-error-state-in-a-group"></a>Felhasználók megkeresése egy csoportban lévő hibás állapottal
 
-1. Nyissa meg a csoportot az Áttekintés lapra, és válassza a **licencek**lehetőséget. Egy értesítés jelenik meg, ha bármilyen felhasználó hibás állapotban van.
+1. Nyissa meg a csoportot az Áttekintés lapra, és válassza a **licencek** lehetőséget. Egy értesítés jelenik meg, ha bármilyen felhasználó hibás állapotban van.
 
    ![Csoport és hiba értesítéseinek üzenete](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
@@ -42,7 +42,7 @@ Ha csoportos licencelést használ, ugyanazok a hibák fordulhatnak elő, de a h
 
    ![a csoport licencelési hibája állapotú felhasználók listája](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-1. Az összes olyan csoport megkereséséhez, amely legalább egy hibát tartalmaz, a **Azure Active Directory** panelen válassza a **licencek**lehetőséget, majd válassza az **Áttekintés**lehetőséget. Ha a csoportok beavatkozást igényelnek, egy információs mező jelenik meg.
+1. Az összes olyan csoport megkereséséhez, amely legalább egy hibát tartalmaz, a **Azure Active Directory** panelen válassza a **licencek** lehetőséget, majd válassza az **Áttekintés** lehetőséget. Ha a csoportok beavatkozást igényelnek, egy információs mező jelenik meg.
 
    ![A hibás állapotú csoportok áttekintése és információi](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
@@ -56,9 +56,9 @@ A következő részekben ismertetjük az egyes lehetséges problémák leírás�
 
 **Probléma:** Nincs elég elérhető licenc a csoportban megadott egyik termékhez sem. További licenceket kell vásárolnia a termékhez, vagy fel kell vennie a nem használt licenceket más felhasználóktól vagy csoportokból.
 
-Ha szeretné megtekinteni, hogy hány licenc áll rendelkezésre, lépjen **Azure Active Directory**  >  **licencek**  >  **minden termék**lehetőségre.
+Ha szeretné megtekinteni, hogy hány licenc áll rendelkezésre, lépjen **Azure Active Directory**  >  **licencek**  >  **minden termék** lehetőségre.
 
-Ha szeretné megtekinteni, hogy mely felhasználók és csoportok használják a licenceket, válasszon ki egy terméket. A **licenccel rendelkező felhasználók**területen megtekintheti az összes olyan felhasználó listáját, akik közvetlenül vagy egy vagy több csoporton keresztül rendeltek hozzá licenceket. A **licencelt csoportok**területen láthatja az összes olyan csoportot, amelyhez a termékek hozzá lettek rendelve.
+Ha szeretné megtekinteni, hogy mely felhasználók és csoportok használják a licenceket, válasszon ki egy terméket. A **licenccel rendelkező felhasználók** területen megtekintheti az összes olyan felhasználó listáját, akik közvetlenül vagy egy vagy több csoporton keresztül rendeltek hozzá licenceket. A **licencelt csoportok** területen láthatja az összes olyan csoportot, amelyhez a termékek hozzá lettek rendelve.
 
 **PowerShell:** A PowerShell-parancsmagok ezt a hibát jelentik a _CountViolation_.
 

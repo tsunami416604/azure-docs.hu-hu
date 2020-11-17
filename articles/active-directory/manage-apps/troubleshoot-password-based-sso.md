@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 0534c85548b1d8b6203aaac4911dc851dd49d81a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1823de88597756ba3db9aee0dc29501b1ba914a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460354"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646236"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Jelszó alapú egyszeri bejelentkezés hibáinak megoldása az Azure AD-ben
 
@@ -36,7 +36,7 @@ Ez a probléma általában akkor fordul elő, ha az alkalmazás gyártója nemr�
 
 Habár a Microsoft olyan technológiákkal rendelkezik, amelyekkel automatikusan észlelhetők az integrációs folyamatok, előfordulhat, hogy a problémák azonnal nem találhatók meg, vagy ha a problémák kijavítása hosszabb időt vesz igénybe. Abban az esetben, ha az ilyen integrációk egyike nem működik megfelelően, nyisson meg egy támogatási esetet, hogy a lehető leggyorsabban meg lehessen oldani.
 
-**Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** küldje el őket, így a Microsoft dolgozhat velük, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../azuread-dev/howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
+**Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** küldje el őket, így a Microsoft dolgozhat velük, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../develop/v2-howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>A hitelesítő adatokat a rendszer kitölti és elküldte, de az oldal jelzi, hogy a hitelesítő adatok helytelenek.
 
@@ -62,7 +62,7 @@ Abban az esetben, ha az előző javaslatok nem működnek, lehet, hogy változá
 
 Habár a Microsoft olyan technológiákkal rendelkezik, amelyekkel automatikusan észlelhetők az alkalmazások integrációja, előfordulhat, hogy nem lehet azonnal megkeresni a problémákat, vagy ha a problémák egy ideig eltartanak. Ha egy integráció nem működik megfelelően, nyisson meg egy támogatási esetet, hogy a lehető leggyorsabban rögzítse. 
 
-Ezen kívül, **Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** **küldje** el a módját, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../azuread-dev/howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
+Ezen kívül, **Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** **küldje** el a módját, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../develop/v2-howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Ellenőrizze, hogy az alkalmazás bejelentkezési lapja nemrég módosult-e, vagy további mezőt igényel
 
@@ -70,7 +70,7 @@ Ha az alkalmazás bejelentkezési lapja drasztikusan módosult, időnként az in
 
 Habár a Microsoft olyan technológiákkal rendelkezik, amelyekkel automatikusan észlelhetők az alkalmazások integrációja, előfordulhat, hogy nem lehet azonnal megkeresni a problémákat, vagy ha a problémák egy ideig eltartanak. Ha egy integráció nem működik megfelelően, nyisson meg egy támogatási esetet, hogy a lehető leggyorsabban rögzítse. 
 
-Ezen kívül, **Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** **küldje** el a módját, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../azuread-dev/howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
+Ezen kívül, **Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** **küldje** el a módját, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../develop/v2-howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
 
 ## <a name="capture-sign-in-fields-for-an-app"></a>Alkalmazás bejelentkezési mezőinek rögzítése
 
@@ -89,7 +89,7 @@ Az egyéni alkalmazások bejelentkezési mezőinek rögzítése kétféleképpen
 Ha a jelszó-alapú egyszeri bejelentkezést az automatikus bejelentkezési mező rögzítése használatával szeretné konfigurálni, kövesse az alábbi lépéseket:
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
 2. A bal oldali navigációs ablaktáblán a **minden szolgáltatás** elemre kattintva nyissa meg az Azure ad bővítményt.
-3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory**lehetőséget.
+3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory** lehetőséget.
 4. Válassza a **vállalati alkalmazások** lehetőséget az Azure ad navigációs ablaktábláján.
 5. Az alkalmazások listájának megtekintéséhez kattintson a **minden alkalmazás** elemre.
    > [!NOTE]
@@ -98,17 +98,17 @@ Ha a jelszó-alapú egyszeri bejelentkezést az automatikus bejelentkezési mez�
 7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget a bal oldali navigációs ablaktáblán.
 8. Válassza a **jelszó alapú bejelentkezési** mód lehetőséget.
 9. Adja meg a **bejelentkezési URL-címet**, amely annak az oldalnak az URL-címe, ahol a felhasználók megadják a felhasználónevét és jelszavát a bejelentkezéshez. Győződjön *meg arról, hogy a bejelentkezési mezők láthatók az Ön által megadott URL-címen a lapon*.
-10. Kattintson a **Mentés** gombra.
+10. Válassza a **Mentés** lehetőséget.
     A rendszer automatikusan lekaparja a lapot a Felhasználónév és a jelszó beviteli mezőihez. Mostantól az Azure AD használatával biztonságosan továbbíthatja a jelszavakat az alkalmazásba a saját alkalmazások böngésző bővítménnyel.
 
 ### <a name="manually-capture-sign-in-fields-for-an-app"></a>Egy alkalmazás bejelentkezési mezőinek manuális rögzítése
 
-A bejelentkezési mezők manuális rögzítéséhez telepíteni kell a saját alkalmazások böngésző bővítményét. Emellett a böngésző nem futhat *InPrivate*, *inkognitóban*vagy *privát* módban.
+A bejelentkezési mezők manuális rögzítéséhez telepíteni kell a saját alkalmazások böngésző bővítményét. Emellett a böngésző nem futhat *InPrivate*, *inkognitóban* vagy *privát* módban.
 
 Ha a jelszó-alapú egyszeri bejelentkezést szeretné beállítani egy alkalmazáshoz a manuális bejelentkezési mező rögzítése segítségével, kövesse az alábbi lépéseket:
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
 2. A bal oldali navigációs ablaktáblán a **minden szolgáltatás** elemre kattintva nyissa meg az Azure ad bővítményt.
-3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory**lehetőséget.
+3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory** lehetőséget.
 4. Válassza a **vállalati alkalmazások** lehetőséget az Azure ad navigációs ablaktábláján.
 5. Az alkalmazások listájának megtekintéséhez kattintson a **minden alkalmazás** elemre.
    > [!NOTE] 
@@ -117,10 +117,10 @@ Ha a jelszó-alapú egyszeri bejelentkezést szeretné beállítani egy alkalmaz
 7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget a bal oldali navigációs ablaktáblán.
 8. Válassza a **jelszó alapú bejelentkezési** mód lehetőséget.
 9. Adja meg a **bejelentkezési URL-címet**, amely a felhasználók felhasználónevének és jelszavának megadására szolgáló lap. Győződjön *meg arról, hogy a bejelentkezési mezők láthatók az Ön által megadott URL-címen a lapon*.
-10. Válassza **a * &lt; AppName &gt; * jelszavának egyszeri bejelentkezési beállításainak konfigurálása**lehetőséget.
-11. Jelölje be **a bejelentkezési mezők manuális észlelése**jelölőnégyzetet.
+10. Válassza **a *&lt; AppName &gt;* jelszavának egyszeri bejelentkezési beállításainak konfigurálása** lehetőséget.
+11. Jelölje be **a bejelentkezési mezők manuális észlelése** jelölőnégyzetet.
 14. Kattintson az **OK** gombra.
-15. Kattintson a **Mentés** gombra.
+15. Válassza a **Mentés** lehetőséget.
 16. Az alkalmazások használatához kövesse az utasításokat.
 
 
@@ -146,10 +146,10 @@ Ha a manuális észlelés nem működik, a következő viselkedéseket érdemes 
 
 Ha ezeket a problémákat tapasztalja, tegye a következőket:
 - Győződjön meg arról, hogy a saját alkalmazások böngésző bővítményének legújabb verziója van *telepítve és engedélyezve*.
-- A rögzítési folyamat során győződjön meg arról, hogy a böngésző nem az *inkognitóban*, *InPrivate*vagy *Private* módban van. A saját alkalmazások bővítmény nem támogatott ezekben a módokban.
-- Győződjön meg arról, hogy a felhasználók nem próbálnak bejelentkezni az alkalmazásokba az alkalmazásból az *Incognito*, *InPrivate*vagy *Private módban*.
+- A rögzítési folyamat során győződjön meg arról, hogy a böngésző nem az *inkognitóban*, *InPrivate* vagy *Private* módban van. A saját alkalmazások bővítmény nem támogatott ezekben a módokban.
+- Győződjön meg arról, hogy a felhasználók nem próbálnak bejelentkezni az alkalmazásokba az alkalmazásból az *Incognito*, *InPrivate* vagy *Private módban*.
 - Próbálkozzon újra a manuális rögzítési folyamattal. Győződjön meg arról, hogy a piros jelölők a megfelelő mezőkön vannak.
-- Ha a manuális rögzítési folyamat úgy tűnik, hogy nem válaszol, vagy a bejelentkezési oldal nem válaszol, próbálkozzon újra a manuális rögzítési folyamattal. Ezúttal azonban a folyamat befejezése után nyomja le az F12 billentyűt a böngésző fejlesztői konzoljának megnyitásához. Válassza a **konzol** fület. írja be az **ablakot. location = "* &lt; az alkalmazás &gt; konfigurálásakor megadott bejelentkezési URL-címet***, majd nyomja le az ENTER billentyűt. Ez kényszeríti az átirányítást, amely befejezi a rögzítési folyamatot, és a rögzített mezőket tárolja.
+- Ha a manuális rögzítési folyamat úgy tűnik, hogy nem válaszol, vagy a bejelentkezési oldal nem válaszol, próbálkozzon újra a manuális rögzítési folyamattal. Ezúttal azonban a folyamat befejezése után nyomja le az F12 billentyűt a böngésző fejlesztői konzoljának megnyitásához. Válassza a **konzol** fület. írja be az **ablakot. location = "*&lt; az alkalmazás &gt; konfigurálásakor megadott bejelentkezési URL-címet***, majd nyomja le az ENTER billentyűt. Ez kényszeríti az átirányítást, amely befejezi a rögzítési folyamatot, és a rögzített mezőket tárolja.
 
 ## <a name="request-support"></a>Támogatás kérése 
 Ha az egyszeri bejelentkezés beállítása és a felhasználók kiosztása során hibaüzenet jelenik meg, nyisson meg egy támogatási jegyet. A lehető legtöbbet a következő információkból állhat:

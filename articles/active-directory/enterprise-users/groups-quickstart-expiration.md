@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 842cd92e451b8d959dcf04135da504d7cf85a16e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379153"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647205"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Gyors útmutató: Microsoft 365 csoportok lejáratának beállítása Azure Active Directory
 
@@ -49,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
   
    ![Önkiszolgáló csoport beállításai lap](./media/groups-quickstart-expiration/self-service-settings.png)
 
-3. Beállíthatja, hogy a  **felhasználók létrehozhatnak Microsoft 365 csoportokat** **Igen**értékre.
+3. Beállíthatja, hogy a  **felhasználók létrehozhatnak Microsoft 365 csoportokat** **Igen** értékre.
 
 4. Ha elkészült, a csoportbeállítások mentéséhez kattintson a **Mentés** gombra.
 
@@ -63,7 +63,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 3. Adjon meg egy e-mail-címet, ahova a rendszer az elévülési értesítéseket küldheti, ha egy csoportnak nincs tulajdonosa.
 
-4. Ehhez a rövid útmutatóhoz állítsa a **Microsoft 365 csoportok engedélyezése az** **összesre**lehetőséget.
+4. Ehhez a rövid útmutatóhoz állítsa a **Microsoft 365 csoportok engedélyezése az** **összesre** lehetőséget.
 
 5. Ha elkészült, az elévülési beállítások mentéséhez kattintson a **Mentés** gombra.
 
@@ -75,12 +75,12 @@ Ennyi az egész! Ebben a rövid útmutatóban sikeresen beállította a kijelöl
 
 1. Győződjön meg arról, hogy bejelentkezett a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely az Azure ad-szervezet globális rendszergazdája.
 2. Válassza ki **Azure Active Directory**  >  **csoportok**  >  **lejáratát**.
-3. **Ezen Microsoft 365 csoportok engedélyezésének lejáratának** beállítása **none**értékre.
+3. **Ezen Microsoft 365 csoportok engedélyezésének lejáratának** beállítása **none** értékre.
 
 ### <a name="to-turn-off-user-creation-for-groups"></a>Felhasználói létrehozás kikapcsolása a csoportokhoz
 
-1. Válassza ki a **Azure Active Directory**  >  **csoportok**  >  **általános**elemet. 
-2. A **felhasználók Microsoft 365 csoportokat hozhatnak létre az Azure-portálokon** a **nem**értékre.
+1. Válassza ki a **Azure Active Directory**  >  **csoportok**  >  **általános** elemet. 
+2. A **felhasználók Microsoft 365 csoportokat hozhatnak létre az Azure-portálokon** a **nem** értékre.
 
 ## <a name="next-steps"></a>Következő lépések
 

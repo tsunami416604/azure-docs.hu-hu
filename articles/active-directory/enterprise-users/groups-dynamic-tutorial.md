@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: tutorial
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf911a240456871275abbd7f1e7313a1d2289b98
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ba6ba2bccf45f7f18e26fb073a2b992167a5c9be
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379051"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647324"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Oktatóanyag: Csoporttagok automatikus hozzáadása és eltávolítása
 
@@ -35,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a szolgáltatáshoz egy prémium szintű Azure AD licencre van szükség a szervezet globális rendszergazdája számára. Ha még nem rendelkezik ilyennel, az Azure ad-ben válassza a **licencek**  >  **termékek**  >  **kipróbálás/vásárlás**lehetőséget.
+Ehhez a szolgáltatáshoz egy prémium szintű Azure AD licencre van szükség a szervezet globális rendszergazdája számára. Ha még nem rendelkezik ilyennel, az Azure ad-ben válassza a **licencek**  >  **termékek**  >  **kipróbálás/vásárlás** lehetőséget.
 
 A felhasználókhoz nem szükséges licenceket hozzárendelnie ahhoz, hogy dinamikus csoportok tagjai lehessenek. A szervezetben csak a rendelkezésre álló prémium szintű Azure AD P1-licencek minimális száma szükséges, hogy az összes ilyen felhasználóra vonatkozzon. 
 
@@ -44,7 +44,7 @@ A felhasználókhoz nem szükséges licenceket hozzárendelnie ahhoz, hogy dinam
 Először létrehozunk egy csoportot az egy partnervállalatból származó vendégfelhasználók számára. Esetükben speciális licencelésre van szükség, ezért érdemes erre a célra létrehozni egy csoportot.
 
 1. Jelentkezzen be a Azure Portalba ( https://portal.azure.com) egy olyan fiókkal, amely a szervezet globális rendszergazdája.
-2. Válassza **Azure Active Directory**  >  **csoportok**  >  **új csoport**lehetőséget.
+2. Válassza **Azure Active Directory**  >  **csoportok**  >  **új csoport** lehetőséget.
    ![új csoport indításához válassza a parancs lehetőséget](./media/groups-dynamic-tutorial/new-group.png)
 3. A **Csoport** panelen:
   
@@ -57,19 +57,19 @@ Először létrehozunk egy csoportot az egy partnervállalatból származó vend
 6. Válassza a dinamikus **lekérdezés szerkesztése** lehetőséget a **dinamikus felhasználói tagok** mezőben.
 7. A **Dinamikus tagsági szabályok** panelen tegye a következőket:
 
-   * A **tulajdonság** mezőben kattintson a meglévő értékre, majd válassza a **userType**lehetőséget. 
+   * A **tulajdonság** mezőben kattintson a meglévő értékre, majd válassza a **userType** lehetőséget. 
    * Ellenőrizze, hogy az **operátor** mező **értéke** ki van-e jelölve.  
    * Válassza ki az érték mezőt, és adja meg a **vendég** **értéket** . 
    * Kattintson a **kifejezés hozzáadása** hivatkozásra egy másik sor hozzáadásához.
-   * A **és/vagy** mezőben válassza a **és**a elemet.
-   * A **tulajdonság** mezőben válassza a **Cégnév**lehetőséget.
+   * A **és/vagy** mezőben válassza a **és** a elemet.
+   * A **tulajdonság** mezőben válassza a **Cégnév** lehetőséget.
    * Ellenőrizze, hogy az **operátor** mező **értéke** ki van-e jelölve.
    * Az érték mezőbe írja be a **contoso** **értéket** .
    * A **dinamikus tagsági szabályok** panel bezárásához kattintson a **Mentés** gombra.
    
 8. A fiók létrehozásához kattintson a **Csoport** panel **Létrehozás** elemére.
 
-## <a name="assign-licenses"></a>Licencek kiosztása
+## <a name="assign-licenses"></a>Licencek hozzárendelése
 
 Most, hogy létrejött az új csoport, hozzárendelheti a partnerek számára szükséges licenceket.
 

@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 02/28/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79062b8b1072e40fc9997d5ed6c730801aca20d1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e37a450ad99c37a2468e4cb73ce9f88decb628d5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375752"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647239"
 ---
 # <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Csoportok és tagok keresése (előzetes verzió) Azure Active Directory
 
@@ -36,7 +36,7 @@ Az előzetes verzió változásai a következők:
 
 Könnyedén csatlakozhat az előzetes verzióhoz:
 
-  1. Jelentkezzen be az [Azure ad-portálra](https://portal.azure.com), és válassza a **csoportok**lehetőséget.
+  1. Jelentkezzen be az [Azure ad-portálra](https://portal.azure.com), és válassza a **csoportok** lehetőséget.
   2. A groups – all groups (csoportok – minden csoport) lapon válassza a lap tetején található szalagcímet az előzetes verzióhoz való csatlakozáshoz.
 
 A legújabb funkciókat és a tökéletesítéseket is megtekintheti, ha az **összes csoport** lapon az **előnézet információ** lehetőségre kattint. Az előzetes verzióhoz való csatlakozást követően az előnézeti címkét az összes olyan csoportnál láthatja, amely az előzetes verzió részét képezi. Nem minden csoport lap frissült az előzetes verzió részeként.

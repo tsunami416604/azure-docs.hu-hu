@@ -4,8 +4,8 @@ description: Vegyen fel tömegesen a csoporttagokat a Azure Active Directory fel
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d2a6e0a5459fbf53698b4204b8ae1f47a6a17bc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 227a8261aef7953c07bcc12f7754a56dd8e7fafa
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375560"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647426"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>Csoporttagok tömeges hozzáadása Azure Active Directory
 
@@ -49,9 +49,9 @@ A letöltött CSV-sablon sorai a következők:
 ## <a name="to-bulk-import-group-members"></a>Csoporttagok tömeges importálása
 
 1. Jelentkezzen be [a Azure Portalba](https://portal.azure.com) a szervezet felhasználói rendszergazdai fiókjával. A csoport tulajdonosai a saját csoportok tagjainak tömeges importálását is elvégezheti.
-1. Az Azure ad-ben válassza a **csoportok**  >  **minden csoport**elemet.
-1. Nyissa meg azt a csoportot, amelyhez tagokat vesz fel, majd válassza a **tagok**lehetőséget.
-1. A **tagok** lapon válassza a **tagok importálása**lehetőséget.
+1. Az Azure ad-ben válassza a **csoportok**  >  **minden csoport** elemet.
+1. Nyissa meg azt a csoportot, amelyhez tagokat vesz fel, majd válassza a **tagok** lehetőséget.
+1. A **tagok** lapon válassza a **tagok importálása** lehetőséget.
 1. A **csoportos importálás csoport tagjai** lapon válassza a **Letöltés** lehetőséget a CSV-sablonfájl a szükséges csoporttagok tulajdonságaival való beszerzéséhez.
 
     ![A tagok importálása parancs a csoport profil lapján található.](./media/groups-bulk-import-members/import-panel.png)
@@ -60,7 +60,7 @@ A letöltött CSV-sablon sorai a következők:
 
     :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="A CSV-fájl az importálandó tagok nevét és azonosítóit tartalmazza.":::
 
-1. A **csoportos importálás csoport tagjai** lapon, a **CSV-fájl feltöltése**területen keresse meg a fájlt. A fájl kiválasztásakor elindul a CSV-fájl érvényesítése.
+1. A **csoportos importálás csoport tagjai** lapon, a **CSV-fájl feltöltése** területen keresse meg a fájlt. A fájl kiválasztásakor elindul a CSV-fájl érvényesítése.
 1. A fájl tartalmának ellenőrzésekor a tömeges importálás lap megjeleníti a **fájl feltöltésének sikerességét**. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.
 1. Ha a fájl érvényesíti az ellenőrzést, válassza a **Submit (Küldés** ) lehetőséget az Azure tömeges művelet elindításához, amely importálja a csoporttagokat a csoportba.
 1. Amikor az importálási művelet befejeződik, megjelenik egy értesítés arról, hogy a tömeges művelet sikeresen befejeződött.
@@ -71,7 +71,7 @@ Az összes függőben lévő tömeges kérelem állapotát a **tömeges művelet
 
 [![A tömeges műveletek eredményei lapon található állapot keresése.](./media/groups-bulk-import-members/bulk-center.png)](./media/groups-bulk-import-members/bulk-center.png#lightbox)
 
-A tömeges műveletben szereplő egyes sorokra vonatkozó részletekért válassza ki a **# sikeres**, **# sikertelen**vagy az **összes kérelem** oszlopban szereplő értékeket. Ha hiba történt, a hiba okai lesznek felsorolva.
+A tömeges műveletben szereplő egyes sorokra vonatkozó részletekért válassza ki a **# sikeres**, **# sikertelen** vagy az **összes kérelem** oszlopban szereplő értékeket. Ha hiba történt, a hiba okai lesznek felsorolva.
 
 ## <a name="bulk-import-service-limits"></a>Tömeges importálási szolgáltatás korlátai
 

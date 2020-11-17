@@ -5,20 +5,20 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 09/04/2020
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8fdeefab150a2992edf40076a44c936d35b14dc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cac88e57ce0135295ac4b7078111102fa69e6838
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375326"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646593"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>A vendég hozzáférési engedélyei (előzetes verzió) korlátozása Azure Active Directory
 
@@ -41,8 +41,8 @@ A külső együttműködési beállítások konfigurálásához globális rendsz
 Módosítottuk a vendég felhasználói engedélyeinek meglévő Azure Portal vezérlőit.
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) globális rendszergazdai engedélyekkel.
-1. A szervezet **Azure Active Directory** áttekintés lapján válassza a **felhasználói beállítások**lehetőséget.
-1. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
+1. A szervezet **Azure Active Directory** áttekintés lapján válassza a **felhasználói beállítások** lehetőséget.
+1. A **külső felhasználók** területen válassza a **külső együttműködési beállítások kezelése** lehetőséget.
 1. A **külső együttműködési beállítások** lapon válassza a **vendég felhasználói hozzáférés lehetőséget a saját címtár-objektumok tulajdonságai és tagsága** lehetőségre.
 
     ![Az Azure AD külső együttműködési beállítások lapja](./media/users-restrict-guest-permissions/external-collaboration-settings.png)

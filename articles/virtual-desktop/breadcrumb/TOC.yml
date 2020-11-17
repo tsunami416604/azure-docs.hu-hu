@@ -2,7 +2,7 @@
   tocHref: /azure
   topicHref: /azure/index
   items:
-    - name: Windows Virtual Desktop
+    - name: Windows virtuális asztal
       tocHref: /azure/virtual-desktop
       topicHref: /azure/virtual-desktop/index
       items:
@@ -11,7 +11,4 @@
           topicHref: /azure/virtual-desktop/index
         - name: Referencia
           tocHref: /WindowsServerDocs/remote/remote-desktop-services/virtual-machine-recs
-          topicHref: /azure/virtual-desktop/index
-        - name: Referencia
-          tocHref: /WindowsServerDocs/remote/remote-desktop-services/network-guidance
           topicHref: /azure/virtual-desktop/index

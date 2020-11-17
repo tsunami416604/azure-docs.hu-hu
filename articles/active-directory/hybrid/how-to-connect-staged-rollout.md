@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d7208b068bee4b0a4cc30adfd98d2422718bbcc
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 24eb7ac7c4490c8d27d141f6417ae157a7a9c65b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628900"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646576"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
@@ -73,7 +73,7 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
 
 - A rendszergazdák biztonsági csoportok használatával tudják kideríteni a Felhőbeli hitelesítést. Ha a helyszíni Active Directory biztonsági csoportok használatakor szeretné elkerülni a szinkronizálás késését, javasoljuk, hogy használjon Felhőbeli biztonsági csoportokat. A következő feltételek érvényesek:
 
-    - Szolgáltatásként legfeljebb 10 csoportot használhat. Ez azt is megteheti, hogy 10 csoportot használ a *jelszó kivonatának szinkronizálásához* , az *átmenő hitelesítéshez* és a *zökkenőmentes egyszeri bejelentkezéshez*.
+    - Szolgáltatásként legfeljebb 10 csoportot használhat. Ez azt is megteheti, hogy 10 csoportot használ a *jelszó kivonatának szinkronizálásához*, az *átmenő hitelesítéshez* és a *zökkenőmentes egyszeri bejelentkezéshez*.
     - Beágyazott csoportok *nem támogatottak*. Ez a hatókör a nyilvános előzetes verzióra is érvényes.
     - A szakaszos bevezetéshez *nem használhatók* dinamikus csoportok.
     - A csoporton belüli kapcsolattartási objektumok nem lesznek hozzáadva a csoporthoz.
@@ -117,7 +117,7 @@ Ha lépcsőzetes *bevezetéssel* kívánja tesztelni az átmenő hitelesítési 
 
 1. Győződjön meg arról, hogy megfelelően konfigurálta az [intelligens zárolás beállításait](../authentication/howto-password-smart-lockout.md) . Így biztosíthatja, hogy a felhasználók helyszíni Active Directory fiókjai ne legyenek kizárva a rossz szereplőkkel.
 
-Javasoljuk, hogy engedélyezze a *zökkenőmentes egyszeri bejelentkezést* a bejelentkezési módszertől függetlenül ( *jelszó-kivonatolási szinkronizálás* vagy *átmenő hitelesítés* ), amelyet a szakaszos bevezetéshez választott ki. A *zökkenőmentes egyszeri bejelentkezés* engedélyezéséhez kövesse a következő szakaszban leírt útmutatást.
+Javasoljuk, hogy engedélyezze a *zökkenőmentes egyszeri bejelentkezést* a bejelentkezési módszertől függetlenül (*jelszó-kivonatolási szinkronizálás* vagy *átmenő hitelesítés*), amelyet a szakaszos bevezetéshez választott ki. A *zökkenőmentes egyszeri bejelentkezés* engedélyezéséhez kövesse a következő szakaszban leírt útmutatást.
 
 ## <a name="pre-work-for-seamless-sso"></a>A zökkenőmentes egyszeri bejelentkezéshez szükséges előzetes munka
 
@@ -149,7 +149,7 @@ Az alábbi lépésekkel engedélyezheti a *zökkenőmentes egyszeri bejelentkez�
 
 ## <a name="enable-staged-rollout"></a>Szakaszos bevezetés engedélyezése
 
-Egy adott szolgáltatás ( *átmenő hitelesítés* , *jelszó-kivonatoló szinkronizálás* vagy *zökkenőmentes SSO* ) egy csoporton belüli kiválasztásához kövesse a következő szakaszokban ismertetett utasításokat.
+Egy adott szolgáltatás (*átmenő hitelesítés*, *jelszó-kivonatoló szinkronizálás* vagy *zökkenőmentes SSO*) egy csoporton belüli kiválasztásához kövesse a következő szakaszokban ismertetett utasításokat.
 
 ### <a name="enable-a-staged-rollout-of-a-specific-feature-on-your-tenant"></a>Egy adott szolgáltatás lépcsőzetes bevezetésének engedélyezése a bérlőn
 
@@ -165,7 +165,7 @@ Tegye a következőket:
 
 2. Jelölje be a **felügyelt felhasználói bejelentkezés (előzetes verzió) hivatkozásának engedélyezése szakaszos** bevezetést.
 
-   Ha például engedélyezni szeretné az *a kapcsolót* , a **jelszó-kivonatolási szinkronizálást** és a **zökkenőmentes egyszeri bejelentkezéses** vezérlőket csúsztassa a **be** értékre, ahogy az az alábbi képeken látható.
+   Ha például engedélyezni szeretné az *a kapcsolót*, a **jelszó-kivonatolási szinkronizálást** és a **zökkenőmentes egyszeri bejelentkezéses** vezérlőket csúsztassa a **be** értékre, ahogy az az alábbi képeken látható.
 
    ![Az Azure AD Connect lap](./media/how-to-connect-staged-rollout/sr4.png)
 
@@ -178,12 +178,13 @@ Tegye a következőket:
    >[!NOTE]
    >A csoport tagjai automatikusan engedélyezve vannak az előkészített bevezetéshez. A beágyazott és a dinamikus csoportok nem támogatottak a szakaszos bevezetéshez.
    >Új csoport hozzáadásakor a csoportba tartozó felhasználók (egy új csoport számára legfeljebb 200 felhasználó) frissülni fognak a felügyelt Auth immidiatly. A csoportok szerkesztésével (felhasználók hozzáadásával vagy eltávolításával) akár 24 óráig is eltarthat, amíg a módosítások érvénybe lépnek.
+   >A zökkenőmentes egyszeri bejelentkezés csak akkor érvényes, ha a felhasználók a zökkenőmentes SSO-csoportban, valamint egy PTA vagy PHS csoportban is szerepelnek.
 
 ## <a name="auditing"></a>Naplózás
 
 Engedélyezte a naplózási eseményeket a szakaszos bevezetéshez végrehajtott különféle műveletekhez:
 
-- Naplózási esemény, ha engedélyez egy előkészített bevezetést a *jelszó-kivonatolási szinkronizáláshoz* , az *átmenő hitelesítéshez* vagy a *zökkenőmentes egyszeri bejelentkezéshez*.
+- Naplózási esemény, ha engedélyez egy előkészített bevezetést a *jelszó-kivonatolási szinkronizáláshoz*, az *átmenő hitelesítéshez* vagy a *zökkenőmentes egyszeri bejelentkezéshez*.
 
   >[!NOTE]
   >A rendszer naplózza a naplózási eseményt, ha a *zökkenőmentes egyszeri bejelentkezés* be van kapcsolva a szakaszos bevezetés használatával.
@@ -192,7 +193,7 @@ Engedélyezte a naplózási eseményeket a szakaszos bevezetéshez végrehajtott
 
   ![A "bevezetési szabályzat létrehozása a szolgáltatáshoz" panel – módosított tulajdonságok lap](./media/how-to-connect-staged-rollout/sr8.png)
 
-- Naplózási esemény, ha egy csoport hozzá lett adva a *jelszó kivonatának szinkronizálásához* , az *átmenő hitelesítéshez* vagy a *zökkenőmentes egyszeri bejelentkezéshez*.
+- Naplózási esemény, ha egy csoport hozzá lett adva a *jelszó kivonatának szinkronizálásához*, az *átmenő hitelesítéshez* vagy a *zökkenőmentes egyszeri bejelentkezéshez*.
 
   >[!NOTE]
   >A rendszer naplózza a naplózási eseményt, amikor a rendszer hozzáad egy csoportot a *jelszó-kivonat szinkronizálásához* a szakaszos bevezetéshez.
@@ -239,11 +240,11 @@ Válasz: igen, használhatja ezt a funkciót az üzemi bérlőben, de javasoljuk
 
 **K: használhatja ezt a szolgáltatást állandó "közös létezés" fenntartására, ahol egyes felhasználók összevont hitelesítést használnak, mások pedig Felhőbeli hitelesítést használnak?**
 
-A: nem, ez a funkció az összevontról a felhőbe való Migrálás fázisokban való áttelepítésére, majd a Felhőbeli hitelesítésre való áttérésre lett tervezve. Nem ajánlott állandó vegyes állapotot használni, mivel ez a módszer váratlan hitelesítési folyamatokhoz vezethet.
+A: nem, ez a funkció a felhőalapú hitelesítés tesztelésére szolgál. A sikeres tesztelést követően néhány felhasználói csoportot a Felhőbeli hitelesítésre kell kivágni. Nem ajánlott állandó vegyes állapotot használni, mivel ez a módszer váratlan hitelesítési folyamatokhoz vezethet.
 
 **K: használhatom a PowerShellt a szakaszos bevezetéshez?**
 
 V: Igen. Ha szeretné megtudni, hogyan használhatja a PowerShellt a szakaszos bevezetéshez, tekintse meg az [Azure ad előzetes](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)verzióját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure AD 2,0 előzetes verzió](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

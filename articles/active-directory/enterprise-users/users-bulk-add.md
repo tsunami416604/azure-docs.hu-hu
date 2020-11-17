@@ -4,21 +4,21 @@ description: Felhasználók tömeges hozzáadása az Azure AD felügyeleti közp
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 08/11/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8e6ab8fd726eaba309f0949020139901dd3712f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 42e26e9b1e3548d3caeff58079ec489c2d282a63
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375389"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646882"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Felhasználók tömeges létrehozása Azure Active Directory
 
@@ -51,12 +51,12 @@ A letöltött CSV-sablon sorai a következők:
 - Először a szükséges oszlopok szerepelnek.
 - Nem ajánlott új oszlopokat hozzáadni a sablonhoz. A hozzáadott további oszlopokat a rendszer figyelmen kívül hagyja, és nem dolgozza fel.
 - Javasoljuk, hogy a lehető legtöbbször töltse le a CSV-sablon legújabb verzióját.
-- Győződjön meg arról, hogy a mező előtt/után nem található nem kívánt szóköz. Az **egyszerű felhasználónevek**esetében az ilyen szóközök az importálási hiba miatt meghiúsulnak.
+- Győződjön meg arról, hogy a mező előtt/után nem található nem kívánt szóköz. Az **egyszerű felhasználónevek** esetében az ilyen szóközök az importálási hiba miatt meghiúsulnak.
 
 ## <a name="to-create-users-in-bulk"></a>Felhasználók tömeges létrehozása
 
 1. [Jelentkezzen be az Azure ad-szervezetbe](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
-1. Az Azure ad-ben **Users**válassza a  >  **tömegesen létrehozott**felhasználók elemet.
+1. Az Azure ad-ben **Users** válassza a  >  **tömegesen létrehozott** felhasználók elemet.
 1. A felhasználó **tömeges létrehozása** lapon válassza a **Letöltés** lehetőséget a felhasználói tulajdonságok érvényes, VESSZŐVEL tagolt (CSV) fájljának megjelenítéséhez, majd adja hozzá a létrehozni kívánt felhasználókat.
 
    ![Válassza ki azt a helyi CSV-fájlt, amelyben fel szeretné sorolni a hozzáadni kívánt felhasználókat](./media/users-bulk-add/upload-button.png)
@@ -65,8 +65,8 @@ A letöltött CSV-sablon sorai a következők:
 
    [![A CSV-fájl a létrehozandó felhasználók nevét és azonosítóit tartalmazza](./media/users-bulk-add/add-csv-file.png)](./media/users-bulk-add/add-csv-file.png#lightbox)
 
-1. A **felhasználó tömeges létrehozása** lapon a CSV-fájl feltöltése területen keresse meg a fájlt. Ha kijelöli a fájlt, majd a **Küldés**gombra kattint, a CSV-fájl érvényesítése elindul.
-1. A fájl tartalmának ellenőrzése után a **fájl feltöltése sikeresen**megtörténik. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.
+1. A **felhasználó tömeges létrehozása** lapon a CSV-fájl feltöltése területen keresse meg a fájlt. Ha kijelöli a fájlt, majd a **Küldés** gombra kattint, a CSV-fájl érvényesítése elindul.
+1. A fájl tartalmának ellenőrzése után a **fájl feltöltése sikeresen** megtörténik. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.
 1. Amikor a fájl átadja az ellenőrzést, válassza a **Submit (Küldés** ) lehetőséget, hogy elindítsa az új felhasználókat importáló Azure bulk műveletet.
 1. Amikor az importálási művelet befejeződik, megjelenik egy értesítés a tömeges művelet állapotáról.
 
@@ -83,9 +83,9 @@ Ezután ellenőrizze, hogy a létrehozott felhasználók szerepelnek-e az Azure 
 ## <a name="verify-users-in-the-azure-portal"></a>Felhasználók ellenőrzése a Azure Portalban
 
 1. [Jelentkezzen be az Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
-1. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+1. A navigációs ablaktáblán válassza a **Azure Active Directory** lehetőséget.
 1. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
-1. A **Megjelenítés**területen válassza a **minden felhasználó** lehetőséget, és győződjön meg arról, hogy a létrehozott felhasználók szerepelnek a felsorolásban.
+1. A **Megjelenítés** területen válassza a **minden felhasználó** lehetőséget, és győződjön meg arról, hogy a létrehozott felhasználók szerepelnek a felsorolásban.
 
 ### <a name="verify-users-with-powershell"></a>Felhasználók ellenőrzése a PowerShell-lel
 

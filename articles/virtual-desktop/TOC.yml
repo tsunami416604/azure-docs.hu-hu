@@ -112,12 +112,22 @@
   items:
     - name: Hitelesítés
       href: authentication.md
-    - name: Biztonságos URL-címek listája
-      href: safe-url-list.md
     - name: A Windows Virtual Desktop környezete
       href: environment-setup.md
-    - name: Felhasználói kapcsolat késleltetésének meghatározása
-      href: connection-latency.md
+    - name: Hálózati kapcsolat
+      items:
+        - name: Ismerkedés a hálózati kapcsolatokkal
+          href: network-connectivity.md
+        - name: RDP rövid elérési útja
+          href: shortpath.md
+        - name: Szolgáltatásminőség (QoS) implementálása
+          href: rdp-quality-of-service-qos.md
+        - name: Biztonságos URL-címek listája
+          href: safe-url-list.md
+        - name: Sávszélességgel kapcsolatos szempontok
+          href: rdp-bandwidth.md
+        - name: Felhasználói kapcsolat késleltetésének meghatározása
+          href: connection-latency.md
     - name: Delegált hozzáférés a Windows Virtual Desktopon
       href: delegated-access-virtual-desktop.md
     - name: Gazdagépcsoport terheléselosztási módszerei
@@ -168,8 +178,6 @@
       href: linux-overview.md
     - name: Támogatott RDP-fájlbeállítások
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
-    - name: Hálózati útmutató
-      href: /windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context
     - name: Útmutató a virtuális gépek méretezéséhez
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure parancssori felület (CLI)
