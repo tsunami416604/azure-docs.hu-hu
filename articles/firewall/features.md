@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 7429be4430b2b520fb2a66b6b2c0dd138af8e501
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850591"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652144"
 ---
 # <a name="azure-firewall-features"></a>Az Azure Firewall funkciói
 
@@ -103,7 +103,7 @@ Ez a következő forgatókönyveket teszi lehetővé:
 
 A rendszer minden eseményt integrál a Azure Monitorba, így lehetővé teszi a naplók archiválását egy Storage-fiókba, az események továbbítását az Event hub-ba, vagy elküldheti őket Azure Monitor naplókba. Azure Monitor naplózási minták esetében lásd: [Azure monitor naplók a Azure Firewall](log-analytics-samples.md).
 
-További információ: [oktatóanyag: Azure Firewall-naplók és-metrikák figyelése](tutorial-diagnostics.md). 
+További információ: [oktatóanyag: Azure Firewall-naplók és-metrikák figyelése](./firewall-diagnostics.md). 
 
 Azure Firewall munkafüzet rugalmas vásznon biztosít Azure Firewall adatelemzéshez. A szolgáltatással gazdag vizuális jelentéseket hozhat létre a Azure Portalon belül. További információ: [naplók figyelése Azure Firewall munkafüzet használatával](firewall-workbook.md).
 

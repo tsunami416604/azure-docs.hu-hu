@@ -13,18 +13,18 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: bb138ade0f579a7545c0910646b6adfb7d5ac02a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "89565854"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650223"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Arculat hozzáadása a szervezet Azure Active Directory bejelentkezési lapjához
 A szervezet emblémájának és egyéni színsémáinak használatával egységes megjelenést és működést biztosíthat a Azure Active Directory (Azure AD) bejelentkezési oldalain. A bejelentkezési oldalai akkor jelennek meg, amikor a felhasználók bejelentkeznek a szervezet webalapú alkalmazásaiba, például a Microsoft 365ba, amely az Azure AD-t használja az identitás-szolgáltatóként.
 
 >[!NOTE]
->Az egyéni védjegyezés hozzáadásához prémium szintű Azure Active Directory 1, prémium 2 vagy alapszintű kiadást kell használnia, vagy Microsoft 365 licenccel kell rendelkeznie. További információ a licencelésről és a kiadásokról: [regisztráció a prémium szintű Azure ADra](active-directory-get-started-premium.md).<br><br>Az Azure AD Prémium és Alapszintű kiadása az Azure Active Directory világszerte elérhető példányával érhetők el a kínai ügyfelek számára. Az Azure AD Prémium és Alapszintű kiadása jelenleg nem támogatott Kínában a 21Vianet által működtetett Azure-szolgáltatásban. További információért lépjen velünk kapcsolatba az [Azure Active Directory fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/) keresztül.
+>Az egyéni védjegyezés hozzáadásához prémium szintű Azure Active Directory 1 vagy Premium 2 licenc szükséges. További információ a licencelésről és a kiadásokról: [regisztráció a prémium szintű Azure ADra](active-directory-get-started-premium.md).<br><br>A prémium szintű Azure AD kiadásai a Azure Active Directory világméretű példányát használó kínai vásárlók számára érhetők el. A 21Vianet által üzemeltetett Azure-szolgáltatás jelenleg nem támogatja a prémium szintű Azure AD kiadásait Kínában. További információért lépjen velünk kapcsolatba az [Azure Active Directory fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/) keresztül.
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Az Azure AD bejelentkezési oldalának testreszabása
 Testreszabhatja az Azure AD bejelentkezési lapjait, amelyek akkor jelennek meg, amikor a felhasználók bejelentkeznek a szervezet bérlői-specifikus alkalmazásaiba, például `https://outlook.com/contoso.com` vagy egy tartományi változó átadásakor, például: `https://passwordreset.microsoftonline.com/?whr=contoso.com` .
@@ -113,7 +113,7 @@ Az egyéni védjegyezés létrehozása után visszaléphet, és módosíthatja a
 
 3. A **vállalati védjegyezés konfigurálása** lapon a jelen cikk az [Azure ad bejelentkezési oldalának testreszabása](#customize-your-azure-ad-sign-in-page) lapján található leírások alapján adja hozzá, távolítsa el vagy módosítsa a szükséges információkat.
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
    A bejelentkezési oldal arculatán alkalmazott módosítások megjelenítése akár egy órát is igénybe vehet.
 
@@ -130,7 +130,7 @@ Az eredeti konfiguráció nyelvét nem módosíthatja az alapértelmezett nyelvr
 
 3. A **vállalati védjegyezés konfigurálása** lapon válassza ki a nyelvet (például francia), majd adja hozzá a lefordított adatokat a jelen cikk [Azure ad bejelentkezési oldalának testreszabása lapján](#customize-your-azure-ad-sign-in-page) található leírások alapján.
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
     A **contoso – vállalati védjegyezési** oldal frissítései az új francia konfiguráció megjelenítéséhez.
 

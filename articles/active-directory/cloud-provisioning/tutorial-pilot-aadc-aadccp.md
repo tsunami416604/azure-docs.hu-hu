@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a8e6948b9912061801fefaa63d2f49611014aa
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266496"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651702"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén 
 
@@ -50,8 +50,8 @@ Legalább az [Azure ad-csatlakozási](https://www.microsoft.com/download/details
 Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekövetkező változásokat egy ütemező használatával. Egyéni szabályok módosításához és hozzáadásához le szeretné tiltani az ütemező szolgáltatást, hogy a szinkronizálások ne fussanak, amíg éppen dolgozik.  Ehhez a következő lépések szükségesek:
 
 1.  Azure AD Connect Sync alkalmazást futtató kiszolgálón nyissa meg a PowerShellt rendszergazdai jogosultságokkal.
-2.  A `Stop-ADSyncSyncCycle` parancs futtatása.  Nyomja meg az ENTER billentyűt.
-3.  A `Set-ADSyncScheduler -SyncCycleEnabled $false` parancs futtatása.
+2.  Futtassa a `Stop-ADSyncSyncCycle` parancsot.  Nyomja meg az ENTER billentyűt.
+3.  Futtassa a `Set-ADSyncScheduler -SyncCycleEnabled $false` parancsot.
 
 >[!NOTE] 
 >Ha Azure AD Connect szinkronizáláshoz saját egyéni ütemező alkalmazást futtat, tiltsa le az ütemező szolgáltatást. 
@@ -61,10 +61,10 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
  1. Indítsa el a szinkronizációs szerkesztőt az asztal alkalmazás menüjében az alábbi ábrán látható módon:</br>
  ![Szinkronizációs szabály szerkesztője menü](media/how-to-cloud-custom-user-rule/user8.png)</br>
  
- 2. Válassza a **bejövő** lehetőséget a legördülő listából az irányhoz, és kattintson az **új szabály hozzáadása**lehetőségre.
+ 2. Válassza a **bejövő** lehetőséget a legördülő listából az irányhoz, és kattintson az **új szabály hozzáadása** lehetőségre.
  ![A szinkronizálási szabályok megtekintése és kezelése ablak "bejövő" és "új szabály hozzáadása" gombjának bejelölését bemutató képernyőkép.](media/how-to-cloud-custom-user-rule/user1.png)</br>
  
- 3. A **Leírás** lapon adja meg a következőt, majd kattintson a **tovább**gombra:
+ 3. A **Leírás** lapon adja meg a következőt, majd kattintson a **tovább** gombra:
 
     **Név:** Adjon egy értelmes nevet a szabálynak<br>
     **Leírás:** Adjon hozzá egy értelmes Leírást<br>
@@ -85,7 +85,7 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
 
     ![Képernyőfelvétel: a "bejövő szinkronizálási szabály létrehozása – hatóköri szűrő" lap, amely tartalmazza a megadott hatókör-szűrő értékét.](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
- 5. Az **illesztési** szabályok lapon kattintson a **tovább**gombra.
+ 5. Az **illesztési** szabályok lapon kattintson a **tovább** gombra.
  6. Az **átalakítások** lapon adjon hozzá egy állandó átalakítást: a flow igaz értéket a cloudNoFlow attribútumhoz. Kattintson a **Hozzáadás** parancsra.
  ![Képernyőkép a "bejövő szinkronizálási szabály létrehozása – átalakítások" oldal "állandó átalakítás" folyamatával.](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
@@ -93,10 +93,10 @@ Ugyanezeket a lépéseket kell követni minden objektumtípus esetében (felhasz
 
 ## <a name="create-custom-user-outbound-rule"></a>Egyéni felhasználói Kimenő szabály létrehozása
 
- 1. Válassza a **kimenő** lehetőséget a legördülő listából az irányhoz, és kattintson a **szabály hozzáadása**elemre.
+ 1. Válassza a **kimenő** lehetőséget a legördülő listából az irányhoz, és kattintson a **szabály hozzáadása** elemre.
  ![Képernyőkép, amely a "kimenő" irányt jeleníti meg, és az "új szabály hozzáadása" gomb ki van emelve.](media/how-to-cloud-custom-user-rule/user5.png)</br>
  
- 2. A **Leírás** lapon adja meg a következőt, majd kattintson a **tovább**gombra:
+ 2. A **Leírás** lapon adja meg a következőt, majd kattintson a **tovább** gombra:
 
     **Név:** Adjon egy értelmes nevet a szabálynak<br>
     **Leírás:** Adjon hozzá egy értelmes Leírást<br>
@@ -109,11 +109,11 @@ Ugyanezeket a lépéseket kell követni minden objektumtípus esetében (felhasz
     
     ![Képernyőkép, amely a "Description" (Leírás) lapot mutatja a megadott tulajdonságokkal.](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
- 3. A **hatókör-szűrő** lapon válassza a **cloudNoFlow** egyenlő **igaz**értéket. Ezután kattintson a **Tovább** gombra.
+ 3. A **hatókör-szűrő** lapon válassza a **cloudNoFlow** egyenlő **igaz** értéket. Ezután kattintson a **Tovább** gombra.
  ![Egyéni szabály](media/how-to-cloud-custom-user-rule/user7.png)</br>
  
- 4. Az **illesztési** szabályok lapon kattintson a **tovább**gombra.
- 5. Az **átalakítások** lapon kattintson a **Hozzáadás**gombra.
+ 4. Az **illesztési** szabályok lapon kattintson a **tovább** gombra.
+ 5. Az **átalakítások** lapon kattintson a **Hozzáadás** gombra.
 
 Ugyanezeket a lépéseket kell követni minden objektumtípus esetében (felhasználó, csoport és kapcsolattartó).
 
@@ -121,19 +121,19 @@ Ugyanezeket a lépéseket kell követni minden objektumtípus esetében (felhasz
 1. Jelentkezzen be a-kiszolgálóra, amelyet a vállalati rendszergazdai engedélyekkel fog használni.  Ha az  [alapszintű ad-és Azure-környezetbeli](tutorial-basic-ad-azure.md) oktatóanyagot használja, az CP1 lenne.
 2. Töltse le a Azure AD Connect Cloud kiépítési ügynököt az [itt](how-to-install.md#install-the-agent)ismertetett lépések segítségével.
 3. Az Azure AD Connect Cloud kiépítés (AADConnectProvisioningAgent. Installer) futtatása
-3. A splash képernyőn **fogadja el** a licencelési feltételeket, majd kattintson a **telepítés**gombra.</br>
-![Képernyőfelvétel: "Microsoft Azure A D kapcsolat létesítési ügynöke" splash screen.](media/how-to-install/install1.png)</br>
+3. A splash képernyőn **fogadja el** a licencelési feltételeket, majd kattintson a **telepítés** gombra.</br>
+![Képernyőfelvétel: "Microsoft Azure A D kapcsolat létesítési ügynöke" splash screen.](media/how-to-install/install-1.png)</br>
 
 4. A művelet befejezése után elindul a konfigurációs varázsló.  Jelentkezzen be az Azure AD globális rendszergazdai fiókjával.
 5. A **Active Directory összekapcsolása** képernyőn kattintson a **könyvtár hozzáadása** lehetőségre, majd jelentkezzen be a Active Directory rendszergazdai fiókjával.  Ezzel a művelettel a helyszíni címtárat fogja felvenni.  Kattintson a **Tovább** gombra.</br>
-![Képernyőfelvétel: a "kapcsolat Active Directory" képernyő egy megadott könyvtár értékkel.](media/how-to-install/install3.png)</br>
+![Képernyőfelvétel: a "kapcsolat Active Directory" képernyő egy megadott könyvtár értékkel.](media/how-to-install/install-3.png)</br>
 
 6. A **konfiguráció kész** képernyőn kattintson a **Confirm (megerősítés**) gombra.  Ez a művelet regisztrálja és újraindítja az ügynököt.</br>
-![Képernyőfelvétel: a "jóváhagyás" gomb kiválasztásakor megjelenik a "konfigurálás kész" képernyő.](media/how-to-install/install4.png)</br>
+![Képernyőfelvétel: a "jóváhagyás" gomb kiválasztásakor megjelenik a "konfigurálás kész" képernyő.](media/how-to-install/install-4a.png)</br>
 
-7. Miután a művelet befejeződik, meg kell jelennie arról, hogy **a sikeres ellenőrzést** észlelte.  Kattintson a **Kilépés**lehetőségre.</br>
-![Üdvözlőképernyő](media/how-to-install/install5.png)</br>
-8. Ha továbbra is megjelenik a kezdeti splash képernyő, kattintson a **Bezárás**gombra.
+7. Miután a művelet befejeződik, meg kell jelennie arról, hogy **a sikeres ellenőrzést** észlelte.  Kattintson a **Kilépés** lehetőségre.</br>
+![Üdvözlőképernyő](media/how-to-install/install-5.png)</br>
+8. Ha továbbra is megjelenik a kezdeti splash képernyő, kattintson a **Bezárás** gombra.
 
 ## <a name="verify-agent-installation"></a>Ügynök telepítésének ellenőrzése
 Az ügynök ellenőrzése a Azure Portal és az ügynököt futtató helyi kiszolgálón történik.
@@ -141,14 +141,14 @@ Az ügynök ellenőrzése a Azure Portal és az ügynököt futtató helyi kiszo
 ### <a name="azure-portal-agent-verification"></a>Azure Portal ügynök ellenőrzése
 Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látja-e az Azure-t:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. A bal oldalon válassza a **Azure Active Directory**, majd a **Azure ad Connect** , és a központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.</br>
-![Azure Portal](media/how-to-install/install6.png)</br>
+![Azure Portal](media/how-to-install/install-6.png)</br>
 
-3.  Az **Azure ad-kiépítés (előzetes verzió)** képernyőn kattintson az **összes ügynök áttekintése**elemre.
-![Azure AD-kiépítés](media/how-to-install/install7.png)</br>
+3.  Az **Azure ad-kiépítés (előzetes verzió)** képernyőn kattintson az **összes ügynök áttekintése** elemre.
+![Azure AD-kiépítés](media/how-to-install/install-7.png)</br>
  
-4. A helyszíni **kiépítési ügynökök képernyőjén** látni fogja a telepített ügynököket.  Ellenőrizze, hogy a szóban forgó ügynök van-e **Letiltva**, és le van-e jelölve.  Az ügynök alapértelmezés szerint le van tiltva a ![ kiépítési ügynököknél](media/how-to-install/verify1.png)</br>
+4. A helyszíni **kiépítési ügynökök képernyőjén** látni fogja a telepített ügynököket.  Ellenőrizze, hogy a szóban forgó ügynök van-e **Letiltva**, és le van-e jelölve.  Az ügynök alapértelmezés szerint le van tiltva a ![ kiépítési ügynököknél](media/how-to-install/verify-1.png)</br>
 
 ### <a name="on-the-local-server"></a>A helyi kiszolgálón
 Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket:
@@ -156,7 +156,7 @@ Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket:
 1.  Jelentkezzen be a kiszolgálóra egy rendszergazdai fiókkal
 2.  Nyissa meg a szolgáltatásokat vagy navigáljon a **szolgáltatáshoz** , vagy indítsa el a Start/Run/Services. msc parancsot.
 3.  A **szolgáltatások** területen győződjön meg arról, hogy **Microsoft Azure ad az ügynök frissítése** és a **Microsoft Azure ad kapcsolat létesítése ügynök** van ott, és az állapota **fut**.
-![Szolgáltatások](media/how-to-troubleshoot/troubleshoot1.png)
+![Szolgáltatások](media/how-to-install/troubleshoot-1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect felhőalapú kiépítés konfigurálása
 A kiépítés konfigurálásához kövesse az alábbi lépéseket:
@@ -168,13 +168,13 @@ A kiépítés konfigurálásához kövesse az alábbi lépéseket:
   ![ képernyőképet, amely a "kiépítés kezelése (előzetes verzió)" hivatkozást mutatja.](media/how-to-configure/manage1.png)</br>
  5.  Az **New Configuration** 
   ![ Azure ad-kiépítés (előzetes verzió) képernyő új konfiguráció képernyőképére kattintva kiemelve jelenik meg az "új konfiguráció" hivatkozás.](media/tutorial-single-forest/configure1.png)</br>
- 6.  A konfiguráció képernyőn adja meg az **értesítő e-mailt**, helyezze át a választót az **engedélyezéshez** , majd kattintson a **Mentés**gombra.
+ 6.  A konfiguráció képernyőn adja meg az **értesítő e-mailt**, helyezze át a választót az **engedélyezéshez** , majd kattintson a **Mentés** gombra.
  ![Képernyőkép a konfigurálásról a képernyőn megjelenő értesítő e-mailben és a kijelölés engedélyezése lapon.](media/tutorial-single-forest/configure2.png)</br>
- 7. A **Konfigurálás**területen válassza a **minden felhasználó** lehetőséget a konfigurációs szabály hatókörének módosításához.
+ 7. A **Konfigurálás** területen válassza a **minden felhasználó** lehetőséget a konfigurációs szabály hatókörének módosításához.
  ![Képernyőkép a konfigurálás képernyőről "minden felhasználó" lehetőség mellett, a "hatókör felhasználói" elem mellett.](media/how-to-configure/scope2.png)</br>
  8. A jobb oldalon módosítsa a hatókört úgy, hogy az imént létrehozott adott szervezeti egységet tartalmazza: "OU = processzorok, DC = contoso, DC = com".
  ![Képernyőfelvétel: a hatókör felhasználói képernyő kiemelte a hatókört a létrehozott szervezeti egységre.](media/tutorial-existing-forest/scope2.png)</br>
- 9.  Kattintson a **kész** és a **Mentés**gombra.
+ 9.  Kattintson a **kész** és a **Mentés** gombra.
  10. A hatókört most egy szervezeti egységre kell beállítani. 
  ![Képernyőkép a configure (Konfigurálás) képernyőről "1 szervezeti egység" a "hatókörű felhasználók" elem mellett.](media/tutorial-existing-forest/scope3.png)</br>
  
@@ -214,16 +214,16 @@ Miután meggyőződött róla, hogy a kísérleti szervezeti egység felhasznál
  1. A Azure AD Connect rendszert futtató kiszolgálón kattintson duplán a Azure AD Connect ikonra.
  2. Kattintson a **Konfigurálás** elemre.
  3. Válassza a **szinkronizálási beállítások testreszabása lehetőséget** , majd kattintson a Tovább gombra.
- 4. Jelentkezzen be az Azure AD-be, és kattintson a **tovább**gombra.
- 5. A **címtárak összekapcsolása** képernyőn kattintson a **tovább**gombra.
- 6. A **tartomány és szervezeti egység szűrése** képernyőn válassza a **kiválasztott tartományok és szervezeti egységek szinkronizálása**lehetőséget.
+ 4. Jelentkezzen be az Azure AD-be, és kattintson a **tovább** gombra.
+ 5. A **címtárak összekapcsolása** képernyőn kattintson a **tovább** gombra.
+ 6. A **tartomány és szervezeti egység szűrése** képernyőn válassza a **kiválasztott tartományok és szervezeti egységek szinkronizálása** lehetőséget.
  7. Bontsa ki a tartományt, és **törölje** a **processzorok** szervezeti egységét.  Kattintson a **Tovább** gombra.
 ![hatókör](media/tutorial-existing-forest/scope1.png)</br>
- 9. A **választható szolgáltatások** képernyőn kattintson a **tovább**gombra.
- 10. A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás**elemre.
- 11. A befejezést követően kattintson a **Kilépés**gombra. 
+ 9. A **választható szolgáltatások** képernyőn kattintson a **tovább** gombra.
+ 10. A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás** elemre.
+ 11. A befejezést követően kattintson a **Kilépés** gombra. 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

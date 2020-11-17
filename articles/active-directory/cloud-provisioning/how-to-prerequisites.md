@@ -7,31 +7,27 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/06/2019
+ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf072ae9544cd479aeca02d9b9fcd670b8eb5fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74754c973dbe11d954a1714e9a98d99de639acd4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226896"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651141"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Az Azure AD Connect felhőalapú jogosultságkiosztás előfeltételei
 Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőalapú kiépítés a személyazonossági megoldáshoz való kiválasztásához és használatához.
-
-
 
 ## <a name="cloud-provisioning-agent-requirements"></a>A felhőalapú kiépítési ügynökre vonatkozó követelmények
 Azure AD Connect felhőalapú kiépítés használatához a következőkre lesz szüksége:
     
 - Egy hibrid identitás-rendszergazdai fiók az Azure AD-bérlőhöz, amely nem vendég felhasználó.
 - Helyszíni kiszolgáló a kiépítési ügynökhöz Windows 2012 R2 vagy újabb rendszerrel.  A kiszolgálónak a [Active Directory felügyeleti rétegek modellje](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)alapján 0. rétegű kiszolgálónak kell lennie.
+- Tartományi rendszergazda vagy vállalati rendszergazdai hitelesítő adatok a Azure AD Connect Cloud Sync gMSA (csoportosan felügyelt szolgáltatásfiók) létrehozásához az ügynök szolgáltatás futtatásához.
 - Helyszíni tűzfal-konfigurációk.
-
->[!NOTE]
->A kiépítési ügynök jelenleg csak angol nyelvű kiszolgálókon telepíthető. Egy angol nyelvi csomag nem angol nyelvű kiszolgálón való telepítése nem érvényes Áthidaló megoldás, ezért az ügynök nem lesz telepítve. 
 
 A dokumentum további részében részletes útmutatót talál az előfeltételekhez.
 
@@ -57,7 +53,9 @@ A [IdFix eszköz](/office365/enterprise/prepare-directory-attributes-for-synch-w
         | --- | --- |
         | **80** | Letölti a visszavont tanúsítványok listáját (CRL) a TLS/SSL-tanúsítvány ellenőrzése közben.  |
         | **443** | A szolgáltatással folytatott összes kimenő kommunikációt kezeli. |
+        |**8082**|A telepítéshez szükséges, és ha be szeretné állítani az adminisztrációs API-t.  Ez a port eltávolítható az ügynök telepítése után, és ha nem tervezi az API használatát.   |
         | **8080** (nem kötelező) | Az ügynökök 10 percenként jelentik az állapotukat az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. |
+   
      
    - Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futtató Windows-szolgáltatások forgalmára.
    - Ha a tűzfal vagy proxy lehetővé teszi a biztonságos utótagok megadását, vegyen fel kapcsolatokat a \* . msappproxy.net és a \* . servicebus.Windows.net. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
@@ -66,6 +64,17 @@ A [IdFix eszköz](/office365/enterprise/prepare-directory-attributes-for-synch-w
 
 >[!NOTE]
 > A felhőalapú kiépítési ügynök telepítése a Windows Server Core rendszerre nem támogatott.
+
+## <a name="group-managed-service-accounts"></a>Csoportosan felügyelt szolgáltatásfiókok
+A csoportosan felügyelt szolgáltatásfiók egy felügyelt tartományi fiók, amely automatikus jelszavas kezelést, egyszerűsített egyszerű szolgáltatásnév (SPN) felügyeletet, a felügyelet más rendszergazdák számára való delegálását, valamint a funkció több kiszolgálón való kibővítését is lehetővé teszi.  Azure AD Connect a Cloud Sync támogatja, és gMSA használ az ügynök futtatásához.  A fiók létrehozásához a rendszer kérni fogja a rendszergazdai hitelesítő adatok megadását a telepítés során.  A fiók a következőképpen fog megjelenni: (domain\provAgentgMSA $).  További információ a gMSA: [csoportosan felügyelt szolgáltatásfiókok](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
+
+### <a name="prerequisites-for-gmsa"></a>A gMSA előfeltételei:
+1.  A gMSA tartomány erdő Active Directory sémáját frissíteni kell a Windows Server 2012-re.
+2.  [POWERSHELL RSAT-modulok](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) egy tartományvezérlőn
+3.  A tartomány legalább egy tartományvezérlőjén a Windows Server 2012 operációs rendszernek kell futnia.
+4.  Egy tartományhoz csatlakoztatott kiszolgáló, amelyen az ügynök telepítve van, Windows Server 2012 vagy újabb rendszernek kell lennie.
+
+A meglévő ügynökök gMSA-fiók használatára való frissítésének lépései a [csoportosan felügyelt szolgáltatásfiókok](how-to-install.md#group-managed-service-accounts)című részben olvashatók.
 
 
 ### <a name="additional-requirements"></a>További követelmények
@@ -90,6 +99,8 @@ A TLS 1,2 engedélyezéséhez kövesse az alábbi lépéseket.
     ```
 
 1. Indítsa újra a kiszolgálót.
+
+
 
 
 ## <a name="next-steps"></a>Következő lépések 

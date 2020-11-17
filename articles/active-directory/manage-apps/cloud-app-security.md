@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/03/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62a77c1b21a6d602a2d54f56a2ed294fe800ac38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e3e0c10a7ec6b42420db30955ae4911bca27cc0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763652"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651226"
 ---
 # <a name="cloud-app-visibility-and-control"></a>Felhőalkalmazások láthatósága és vezérlése
 
@@ -34,10 +34,10 @@ A Microsoft Cloud alkalmazás-felderítés (egy prémium szintű Azure Active Di
 - Speciális Shadow IT Discovery-jelentéskészítés
 - Engedélyezett alkalmazások vezérlése
  
-### <a name="learn-more"></a>Tudjon meg többet
+### <a name="learn-more"></a>További információ
 
-- [A hálózatban lévő árnyék felderítése és kezelése ](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [Felderített alkalmazások Cloud App Security ](https://docs.microsoft.com/cloud-app-security/discovered-apps)
+- [A hálózatban lévő árnyék felderítése és kezelése ](/cloud-app-security/tutorial-shadow-it)
+- [Felderített alkalmazások Cloud App Security ](/cloud-app-security/discovered-apps)
  
 ## <a name="user-session-visibility-and-control"></a>Felhasználói munkamenet láthatósága és vezérlése 
 
@@ -51,21 +51,21 @@ Ezzel a vezérlővel a következőket teheti:
 - Fájlok elérésének szabályozása  
 - Dokumentumok védelemmel való ellátása letöltéskor  
  
-### <a name="learn-more"></a>Tudjon meg többet
+### <a name="learn-more"></a>További információ
 
-- [Alkalmazások elleni védelem a Cloud App Security munkamenet-vezérléssel ](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Alkalmazások elleni védelem a Cloud App Security munkamenet-vezérléssel ](/cloud-app-security/proxy-intro-aad)
  
 ## <a name="advanced-app-visibility-and-controls"></a>Speciális alkalmazások láthatósága és vezérlése 
 
 Az alkalmazás-összekötők az alkalmazás-szolgáltatók API-jait használva nagyobb láthatóságot és irányítást biztosítanak Microsoft Cloud App Security a csatlakozáshoz használt alkalmazásokon keresztül. Cloud App Security kihasználja a felhőalapú szolgáltató által biztosított API-kat. Minden szolgáltatás saját keretrendszerrel és API-korlátozásokkal rendelkezik, mint például a szabályozás, az API-korlátok, a dinamikus időeltolású API-ablakok és egyebek. A Cloud App Security termék csapata ezekkel a szolgáltatásokkal optimalizálja az API-k használatát, és biztosítja a legjobb teljesítményt. A különböző korlátozási szolgáltatásokat használó API-k esetében a Cloud App Security motorok a maximálisan megengedett kapacitást használják. Egyes műveletek, például a bérlő összes fájljának vizsgálata, számos API-hívást igényelnek, hogy hosszabb időn keresztül legyenek elosztva. Bizonyos házirendek várhatóan több óráig vagy napon futnak. 
  
-### <a name="learn-more"></a>Tudjon meg többet  
+### <a name="learn-more"></a>További információ  
 
-- [Alkalmazások összekötése Cloud App Security ](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Alkalmazások összekötése Cloud App Security ](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [A hálózatban lévő árnyék felderítése és kezelése ](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [Felderített alkalmazások Cloud App Security ](https://docs.microsoft.com/cloud-app-security/discovered-apps)
-- [Alkalmazások elleni védelem a Cloud App Security munkamenet-vezérléssel ](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [Alkalmazások összekötése Cloud App Security ](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [A hálózatban lévő árnyék felderítése és kezelése ](/cloud-app-security/tutorial-shadow-it)
+- [Felderített alkalmazások Cloud App Security ](/cloud-app-security/discovered-apps)
+- [Alkalmazások elleni védelem a Cloud App Security munkamenet-vezérléssel ](/cloud-app-security/proxy-intro-aad)
+- [Alkalmazások összekötése Cloud App Security ](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)

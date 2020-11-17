@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: ed34bf755023ab866e95c51aca6d1bfb1dd7bf71
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c0bd2f6a021baae80dafcc3d544e1062d8e022e8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099453"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653334"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN-címkék – áttekintés
 
@@ -30,8 +30,8 @@ A következő táblázat a jelenleg használható FQDN-címkéket mutatja. A Mic
 
 |FQDN címke  |Leírás  |
 |---------|---------|
-|Windows Update     |A Microsoft Update kimenő hozzáférésének engedélyezése a [tűzfal konfigurálása a szoftverfrissítések számára](https://docs.microsoft.com/mem/configmgr/sum/get-started/install-a-software-update-point)című témakörben leírtak szerint.|
-|Windows diagnosztika|Engedélyezze a kimenő hozzáférést az összes [Windows diagnosztikai végponthoz](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints).|
+|Windows Update     |A Microsoft Update kimenő hozzáférésének engedélyezése a [tűzfal konfigurálása a szoftverfrissítések számára](/mem/configmgr/sum/get-started/install-a-software-update-point)című témakörben leírtak szerint.|
+|Windows diagnosztika|Engedélyezze a kimenő hozzáférést az összes [Windows diagnosztikai végponthoz](/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints).|
 |Microsoft Active Protection Service (MAPS)|A [Maps](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/)-hez való kimenő hozzáférés engedélyezése.|
 |App Service Environment (bemutató)|Kimenő hozzáférés engedélyezése az ASE-platform forgalmához. Ez a címke nem fedi le a beszállító által létrehozott ügyfél-specifikus tárterületet és SQL-végpontokat. Ezeket a [szolgáltatás-végpontokon](../virtual-network/tutorial-restrict-network-access-to-resources.md) keresztül kell engedélyezni, vagy manuálisan kell hozzáadni.<br><br>További információ a Azure Firewall beépítéséről a bevonással: [app Service Environment zárolása](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
 |Azure Backup|Engedélyezi a kimenő hozzáférést a Azure Backup szolgáltatásokhoz.|

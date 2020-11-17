@@ -10,18 +10,18 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
-ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e3b6802bab2c5fae97be8e55c8d5c11ff570f78
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588688"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651312"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>A vadászat során az Azure Sentinel használatával nyomon követheti az adatgyűjtést
 
 A fenyegetések vadászata jellemzően a kártékony viselkedés bizonyítékait keresi a naplózott adatok hegyeinek áttekintéséhez. Ezen eljárás során a nyomozók a lehetséges hipotézisek érvényesítése és a kompromisszumok teljes történetének megismerése során megkeresik azokat az eseményeket, amelyeket érdemes megjegyezni, újra felkeresni és elemezni.
 
-Az Azure Sentinelben elérhető vadászati könyvjelzők segítségével elvégezheti az **Azure Sentinel-logs-naplókban**futtatott lekérdezések megőrzését, valamint a szükségesnek ítélt lekérdezési eredményeket. Feljegyzések és címkék hozzáadásával rögzítheti a kontextusbeli megjegyzéseket, és hivatkozhat az eredményekre. A könyvjelzővel ellátott adatelemek az egyszerű együttműködés érdekében láthatók Önnek és a csapattársaik számára.
+Az Azure Sentinelben elérhető vadászati könyvjelzők segítségével elvégezheti az **Azure Sentinel-logs-naplókban** futtatott lekérdezések megőrzését, valamint a szükségesnek ítélt lekérdezési eredményeket. Feljegyzések és címkék hozzáadásával rögzítheti a kontextusbeli megjegyzéseket, és hivatkozhat az eredményekre. A könyvjelzővel ellátott adatelemek az egyszerű együttműködés érdekében láthatók Önnek és a csapattársaik számára.
 
 A beérkező könyvjelzők adatait bármikor újra felkeresheti a **vadászat** ablaktábla **könyvjelzők** lapján. A szűrési és a keresési beállítások használatával gyorsan megtalálhatja az aktuális vizsgálathoz tartozó konkrét adatait. Azt is megteheti, hogy megtekinti a könyvjelzővel ellátott adatait közvetlenül a Log Analytics munkaterület **HuntingBookmark** táblájában. Például:
 
@@ -38,9 +38,9 @@ Az előzetes verzióban is megjelenítheti a könyvjelzővel ellátott adatokat 
 
 1. A Azure Portalban navigáljon a **Sentinel**  >  **Threat Management**  >  **vadászathoz** , és futtasson lekérdezéseket a gyanús és rendellenes viselkedés érdekében.
 
-2. Válassza ki az egyik vadászati lekérdezést, és a jobb oldalon, a vadászati lekérdezés részleteiben válassza a **lekérdezés futtatása**lehetőséget. 
+2. Válassza ki az egyik vadászati lekérdezést, és a jobb oldalon, a vadászati lekérdezés részleteiben válassza a **lekérdezés futtatása** lehetőséget. 
 
-3. Válassza a **lekérdezés eredményeinek megtekintése**lehetőséget. Például:
+3. Válassza a **lekérdezés eredményeinek megtekintése** lehetőséget. Például:
     
     > [!div class="mx-imgBorder"]
     > ![lekérdezési eredmények megtekintése az Azure Sentinel-vadászatból](./media/bookmarks/new-processes-observed-example.png)
@@ -49,19 +49,19 @@ Az előzetes verzióban is megjelenítheti a könyvjelzővel ellátott adatokat 
 
 4. A naplók lekérdezésének eredményei listán a jelölőnégyzetek használatával jelöljön ki egy vagy több olyan sort, amely az érdekesnek talált információkat tartalmazza.
 
-5. Válassza a **Könyvjelző hozzáadása**lehetőséget:
+5. Válassza a **Könyvjelző hozzáadása** lehetőséget:
     
     > [!div class="mx-imgBorder"]
     > ![Vadászati könyvjelző hozzáadása a lekérdezéshez](./media/bookmarks/add-hunting-bookmark.png)
 
 6. A jobb oldalon a **Könyvjelző hozzáadása** panelen igény szerint frissítheti a könyvjelző nevét, címkékkel és megjegyzésekkel láthatja el, hogy milyen érdekes az elem.
 
-7. A **lekérdezési adatok** szakaszban a legördülő lista segítségével kinyerheti az adatokat a **fiók**, a **gazdagép**és az **IP-cím** típusú entitások lekérdezési eredményeiből. Ez a művelet leképezi a kiválasztott entitás típusát egy adott oszlopra a lekérdezési eredményből. Például:
+7. A **lekérdezési adatok** szakaszban a legördülő lista segítségével kinyerheti az adatokat a **fiók**, a **gazdagép** és az **IP-cím** típusú entitások lekérdezési eredményeiből. Ez a művelet leképezi a kiválasztott entitás típusát egy adott oszlopra a lekérdezési eredményből. Például:
     
     > [!div class="mx-imgBorder"]
     > ![Entitások típusának hozzárendelése a vadászati könyvjelzőhöz](./media/bookmarks/map-entity-types-bookmark.png)
     
-    Ha meg szeretné tekinteni a könyvjelzőt a vizsgálati gráfban (jelenleg előzetes verzióban), legalább egy olyan entitást le kell képeznie, amelyik a **fiók**, a **gazdagép**vagy az **IP-cím**. 
+    Ha meg szeretné tekinteni a könyvjelzőt a vizsgálati gráfban (jelenleg előzetes verzióban), legalább egy olyan entitást le kell képeznie, amelyik a **fiók**, a **gazdagép** vagy az **IP-cím**. 
 
 5. A módosítások elvégzéséhez és a könyvjelző hozzáadásához kattintson a **Mentés** gombra. Minden könyvjelzővel ellátott adattal megosztanak más nyomozókat, és ez az első lépés az együttműködési vizsgálat során.
 
@@ -86,11 +86,11 @@ Az előzetes verzióban is megjelenítheti a könyvjelzővel ellátott adatokat 
 > [!IMPORTANT]
 > A vizsgálati gráfban található könyvjelzők feltárása és maga a vizsgálati gráf jelenleg nyilvános előzetes verzióban érhető el.
 > Ezeket a szolgáltatásokat szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 1. A Azure Portal keresse meg a **Sentinel**  >  **Threat Management**  >  **vadászati**  >  **könyvjelzők** fület, és válassza ki a vizsgálni kívánt könyvjelzőt vagy könyvjelzőket.
 
-2. A könyvjelző részletei területen győződjön meg arról, hogy legalább egy entitás le van képezve. Az **entitások**esetében például az **IP-cím**, a **gép**vagy a **fiók**bejegyzései jelennek meg.
+2. A könyvjelző részletei területen győződjön meg arról, hogy legalább egy entitás le van képezve. Az **entitások** esetében például az **IP-cím**, a **gép** vagy a **fiók** bejegyzései jelennek meg.
 
 3. Kattintson **a vizsgálat gombra a** könyvjelző a vizsgálati gráfban való megtekintéséhez.
 
@@ -101,7 +101,7 @@ A vizsgálati gráf használatára vonatkozó utasításokért tekintse meg a r�
 > [!IMPORTANT]
 > A könyvjelzők új vagy meglévő incidenshez való hozzáadása jelenleg nyilvános előzetes verzióban érhető el.
 > Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 1. A Azure Portal navigáljon a **Sentinel**  >  **Threat Management**  >  **vadászati**  >  **könyvjelzők** lapra, és válassza ki az incidenshez hozzáadni kívánt könyvjelzőt vagy könyvjelzőket.
 
@@ -110,15 +110,15 @@ A vizsgálati gráf használatára vonatkozó utasításokért tekintse meg a r�
     > [!div class="mx-imgBorder"]
     > ![Könyvjelzők felvétele az incidensbe](./media/bookmarks/incident-actions.png)
 
-3. Szükség szerint válassza az **új incidens létrehozása** vagy **a meglévő incidenshez való hozzáadás**lehetőséget. Ezután:
+3. Szükség szerint válassza az **új incidens létrehozása** vagy **a meglévő incidenshez való hozzáadás** lehetőséget. Ezután:
     
-    - Új incidens esetén: igény szerint frissítheti az incidens részleteit, majd válassza a **Létrehozás**lehetőséget.
-    - Könyvjelzők meglévő incidenshez való hozzáadásához: válasszon ki egy incidenst, majd válassza a **Hozzáadás**lehetőséget. 
+    - Új incidens esetén: igény szerint frissítheti az incidens részleteit, majd válassza a **Létrehozás** lehetőséget.
+    - Könyvjelzők meglévő incidenshez való hozzáadásához: válasszon ki egy incidenst, majd válassza a **Hozzáadás** lehetőséget. 
 
-Ha meg szeretné tekinteni a könyvjelzőt az incidensen belül: navigáljon a **Sentinel**  >  **Threat Management**  >  **incidensekhez** , és válassza ki az incidenst a könyvjelzővel. Válassza a **teljes részletek megtekintése**lehetőséget, majd kattintson a **könyvjelzők** fülre.
+Ha meg szeretné tekinteni a könyvjelzőt az incidensen belül: navigáljon a **Sentinel**  >  **Threat Management**  >  **incidensekhez** , és válassza ki az incidenst a könyvjelzővel. Válassza a **teljes részletek megtekintése** lehetőséget, majd kattintson a **könyvjelzők** fülre.
 
 > [!TIP]
-> A parancssáv **incidensek (előzetes verzió)** lehetőségének alternatívájaként a menüsávon a helyi menü (**..**.) segítségével választhatja ki az **új incidens létrehozására**, **a meglévő incidenshez való hozzáadására**és **az incidensből való eltávolításra**vonatkozó beállításokat. 
+> A parancssáv **incidensek (előzetes verzió)** lehetőségének alternatívájaként a menüsávon a helyi menü (**..**.) segítségével választhatja ki az **új incidens létrehozására**, **a meglévő incidenshez való hozzáadására** és **az incidensből való eltávolításra** vonatkozó beállításokat. 
 
 ## <a name="view-bookmarked-data-in-logs"></a>Könyvjelzővel ellátott adatnaplók megtekintése
 
@@ -133,7 +133,7 @@ Az összes könyvjelzőhöz tartozó nyers könyvjelzők adatait úgy is megteki
 > [!div class="mx-imgBorder"]
 > ![Könyvjelző-naplók](./media/bookmarks/bookmark-logs.png)
 
-Ez a nézet megjeleníti a társított metaadatokkal rendelkező összes könyvjelzőt. A [Kulcsszóválasztó lekérdezési nyelv](https://docs.microsoft.com/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) (KQL) lekérdezésekkel leszűrheti a keresett könyvjelző legújabb verzióját.
+Ez a nézet megjeleníti a társított metaadatokkal rendelkező összes könyvjelzőt. A [Kulcsszóválasztó lekérdezési nyelv](/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) (KQL) lekérdezésekkel leszűrheti a keresett könyvjelző legújabb verzióját.
 
 > [!NOTE]
 > A könyvjelzők létrehozása és a **könyvjelzők** lapon megjelenő idő között jelentős késleltetés (percben mérve) lehet.
@@ -147,7 +147,7 @@ Ez a nézet megjeleníti a társított metaadatokkal rendelkező összes könyvj
 A könyvjelző törlése eltávolítja a könyvjelzőt a **Könyvjelző** lapon lévő listából. A Log Analytics munkaterület **HuntingBookmark** táblázata továbbra is az előző könyvjelző-bejegyzéseket fogja tartalmazni, a legújabb bejegyzés azonban igaz értékre módosítja a **SoftDelete** értéket, így a régi könyvjelzők kiszűrhetők. A könyvjelzők törlése nem távolítja el a más könyvjelzőhöz vagy riasztásokhoz társított vizsgálati élményből származó entitásokat. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan futtathat egy vadászati vizsgálatot a könyvjelzők használatával az Azure Sentinelben. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: 1267f040b13184f50c9d98fe0fb13fb24db0f4f7
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: fd3c8a08e5512d15be4dfb26ca3eff151d08386f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026836"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651362"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Az Azure Sentinel lists használata
 
@@ -27,9 +27,9 @@ A listák használatának gyakori forgatókönyvei a következők:
 
 - **Üzleti adathalmazok importálása** listára. Például importálhatja a felhasználói listát a rendszerjogosultságú rendszerhozzáféréssel vagy a leállított alkalmazottakkal, majd a listával létrehozhat engedélyezési és letiltási listát, amelyekkel észlelhetők vagy letilthatók a felhasználók a hálózatra.
 
-- A **riasztások fáradtságának csökkentése** . Hozzon létre engedélyezési listát, amely letiltja a riasztásokat a felhasználók egy csoportjából, például olyan meghatalmazott IP-címekről származó felhasználókat, amelyek általában a riasztást kiváltó feladatokat látnak el, és megakadályozzák, hogy a jóindulatú események riasztások legyenek.
+- A **riasztások fáradtságának csökkentése**. Hozzon létre engedélyezési listát, amely letiltja a riasztásokat a felhasználók egy csoportjából, például olyan meghatalmazott IP-címekről származó felhasználókat, amelyek általában a riasztást kiváltó feladatokat látnak el, és megakadályozzák, hogy a jóindulatú események riasztások legyenek.
 
-- **Az események bővítése** . A listák használatával gazdagíthatja az események adatait a külső adatforrásokból származtatott név-érték kombinációkkal.
+- **Az események bővítése**. A listák használatával gazdagíthatja az események adatait a külső adatforrásokból származtatott név-érték kombinációkkal.
 
 ## <a name="create-a-new-watchlist"></a>Új listának létrehozása
 
@@ -58,30 +58,30 @@ A listák használatának gyakori forgatókönyvei a következők:
 
     Megjelenik egy értesítés, ha a listát létrehozták.
 
-    :::image type="content" source="./media/watchlists/sentinel-watchlist-complete.png" alt-text="List forrás lapja" lightbox="./media/watchlists/sentinel-watchlist-complete.png":::
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-complete.png" alt-text="List sikeres létrehozási értesítés" lightbox="./media/watchlists/sentinel-watchlist-complete.png":::
 
 ## <a name="use-watchlists-in-queries"></a>A lists használata a lekérdezésekben
 
-1. A Azure Portal navigáljon az **Azure Sentinel**  >  **Configuration**  >  **listához** , válassza ki a használni kívánt listát, majd válassza a **nézet lehetőséget log Analytics** .
+1. A Azure Portal navigáljon az **Azure Sentinel**  >  **Configuration**  >  **listához**, válassza ki a használni kívánt listát, majd válassza a **nézet lehetőséget log Analytics**.
 
-    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-list.png" alt-text="List forrás lapja" lightbox="./media/watchlists/sentinel-watchlist-queries-list.png":::
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-list.png" alt-text="a lists használata a lekérdezésekben" lightbox="./media/watchlists/sentinel-watchlist-queries-list.png":::
 
 1. A rendszer automatikusan kibontja a listához tartozó elemeket a lekérdezéshez, és az **eredmények** lapon fog megjelenni. Az alábbi példa a **servername** és az **IP** -cím mezők kinyerésének eredményét mutatja.
 
     > [!NOTE]
     > A lekérdezések időbélyege figyelmen kívül lesz hagyva a lekérdezés felhasználói felületén és az ütemezett riasztásokban is.
 
-    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="List forrás lapja" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="lekérdezések a listával – mezők" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
     
 ## <a name="use-watchlists-in-analytics-rules"></a>A lists használata az elemzési szabályokban
 
 Ha az elemzési szabályokban a felsorolásokat szeretné használni, a Azure Portalból navigáljon az **Azure Sentinel**  >  **Configuration**  >  **Analytics** szolgáltatáshoz, és hozzon létre egy szabályt a `_GetWatchlist('<watchlist>')` lekérdezésben szereplő függvénnyel.
 
-:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="List forrás lapja" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
+:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="a lists használata az elemzési szabályokban" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
 
 ## <a name="view-list-of-watchlists-aliases"></a>Listázási aliasok listájának megtekintése
 
-A listához tartozó-aliasok listájának lekéréséhez a Azure Portalból navigáljon az **Azure Sentinel**  >  **általános**  >  **naplóihoz** , és futtassa a következő lekérdezést: `_GetWatchlistAlias` . Az aliasok listáját a **Results (eredmények** ) lapon tekintheti meg.
+A listához tartozó-aliasok listájának lekéréséhez a Azure Portalból navigáljon az **Azure Sentinel**  >  **általános**  >  **naplóihoz**, és futtassa a következő lekérdezést: `_GetWatchlistAlias` . Az aliasok listáját a **Results (eredmények** ) lapon tekintheti meg.
 
 > [!div class="mx-imgBorder"]
 > ![listák listázása](./media/watchlists/sentinel-watchlist-alias.png)
@@ -89,6 +89,5 @@ A listához tartozó-aliasok listájának lekéréséhez a Azure Portalból navi
 ## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan használhatja a listát az Azure Sentinelben az adatelemzéshez és a vizsgálatok fejlesztéséhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).
 - Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
-

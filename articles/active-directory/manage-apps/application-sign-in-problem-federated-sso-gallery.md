@@ -12,20 +12,20 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e75669c70c67d55c94642a0f6dbe3c9dbc3376e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357912"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651549"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémák az SAML-alapú egyszeri bejelentkezés konfigurált alkalmazásaiba való bejelentkezéskor
 Az alábbi bejelentkezési problémák elhárítása érdekében javasoljuk, hogy a következő lépésekkel jobban diagnosztizálja és automatizálja a megoldási lépéseket:
 
-- Telepítse a [saját alkalmazások biztonságos böngésző bővítményét](access-panel-extension-problem-installing.md) , hogy Azure Active Directory (Azure ad) jobb diagnosztikai és megoldási funkciókat nyújtson a Azure Portal tesztelési felületének használatakor.
-- Reprodukálja a hibát a Azure Portal alkalmazás konfigurációja lapján található tesztelési élmény használatával. További információ az [SAML-alapú egyszeri bejelentkezési alkalmazások hibakereséséről](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- Telepítse a [saját alkalmazások biztonságos böngésző bővítményét](./access-panel-deployment-plan.md) , hogy Azure Active Directory (Azure ad) jobb diagnosztikai és megoldási funkciókat nyújtson a Azure Portal tesztelési felületének használatakor.
+- Reprodukálja a hibát a Azure Portal alkalmazás konfigurációja lapján található tesztelési élmény használatával. További információ az [SAML-alapú egyszeri bejelentkezési alkalmazások hibakereséséről](./debug-saml-sso-issues.md)
 
-Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési](../azuread-dev/howto-v1-debug-saml-sso-issues.md) funkciót, az alábbi lépéseket nem kell manuálisan végrehajtania az SAML-alapú egyszeri bejelentkezés konfigurációjának megnyitásához.
+Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési](./debug-saml-sso-issues.md) funkciót, az alábbi lépéseket nem kell manuálisan végrehajtania az SAML-alapú egyszeri bejelentkezés konfigurációjának megnyitásához.
 
 Az SAML-alapú egyszeri bejelentkezési konfiguráció oldalának megnyitása:
 1.  Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** **vagy felügyelőként.**
@@ -88,7 +88,7 @@ Az Azure AD nem támogatja az alkalmazás egyszeri bejelentkezésre vonatkozó S
 
 **Resolution** (Osztás)
 
-1. Az SAML-kérelem rögzítése. Kövesse az [SAML-alapú egyszeri bejelentkezés az Azure ad-alkalmazásokban való hibakeresését](../azuread-dev/howto-v1-debug-saml-sso-issues.md) ismertető oktatóanyagot, amelyből megtudhatja, hogyan rögzítheti az SAML-kérelmet.
+1. Az SAML-kérelem rögzítése. Kövesse az [SAML-alapú egyszeri bejelentkezés az Azure ad-alkalmazásokban való hibakeresését](./debug-saml-sso-issues.md) ismertető oktatóanyagot, amelyből megtudhatja, hogyan rögzítheti az SAML-kérelmet.
 1. Lépjen kapcsolatba az alkalmazás forgalmazójával, és adja meg a következő adatokat:
     - SAML-kérelem
     - [Az Azure AD egyszeri bejelentkezési SAML protokolljának követelményei](../develop/single-sign-on-saml-protocol.md)
@@ -172,7 +172,7 @@ Ellenőrizze, hogy a portálon lévő konfigurációk megfelelnek-e az alkalmaz�
 
 Hasonlítsa össze azt az erőforrást, amelyhez hozzáférést kér a kódban a **szükséges erőforrások** lapon beállított engedélyekkel, és győződjön meg arról, hogy csak a konfigurált erőforrásokat kéri.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Gyorsindítás sorozat az alkalmazás-kezelésben](add-application-portal-assign-users.md)
-- [Az SAML-alapú egyszeri bejelentkezések hibakeresése az Azure AD-beli alkalmazásokban](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
-- [Az Azure AD egyszeri bejelentkezési SAML protokolljának követelményei](../develop/active-directory-single-sign-on-protocol-reference.md)
+- [Az SAML-alapú egyszeri bejelentkezések hibakeresése az Azure AD-beli alkalmazásokban](./debug-saml-sso-issues.md)
+- [Az Azure AD egyszeri bejelentkezési SAML protokolljának követelményei](../develop/single-sign-on-saml-protocol.md)

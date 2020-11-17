@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan hozhat létre és használhat statikus IP-címet az Azure Kubernetes Service (ak) terheléselosztó használatával.
 services: container-service
 ms.topic: article
-ms.date: 03/09/2020
-ms.openlocfilehash: 3055b5d32055d0ed0e3870f16f6af95407a68cd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/14/2020
+ms.openlocfilehash: 22fd099633556fa9ddce575c2ac238b4950667cb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243936"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651889"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statikus nyilvános IP-cím és DNS-címke használata az Azure Kubernetes Service (ak) terheléselosztó használatával
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan hozhat létre statikus nyilvános IP-címet, és hog
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 Ez a cikk a standard *SKU IP* *standard* SKU Load Balancer használatával történő használatát ismerteti. További információt [az IP-címek típusai és a kiosztási módszerek az Azure-ban][ip-sku]című témakörben talál.
 
@@ -74,7 +74,10 @@ az role assignment create \
 
 Azt is megteheti, hogy az egyszerű szolgáltatásnév helyett a rendszerhez rendelt felügyelt identitást használja az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md).
 
-Ha a *terheléselosztó* szolgáltatást statikus nyilvános IP-címmel szeretné létrehozni, adja hozzá a `loadBalancerIP` tulajdonságot és a statikus nyilvános IP-cím értékét a YAML-jegyzékhez. Hozzon létre egy nevű fájlt `load-balancer-service.yaml` , és másolja a következő YAML. Adja meg az előző lépésben létrehozott saját nyilvános IP-címet. A következő példa a jegyzetet is beállítja az *myResourceGroup*nevű erőforráscsoporthoz. Adja meg a saját erőforráscsoport-nevét.
+> [!IMPORTANT]
+> Ha a kimenő IP-címet testreszabta, győződjön meg arról, hogy a fürt identitása rendelkezik a kimenő nyilvános IP-címhez és a bejövő nyilvános IP-címhez tartozó engedélyekkel is.
+
+Ha a *terheléselosztó* szolgáltatást statikus nyilvános IP-címmel szeretné létrehozni, adja hozzá a `loadBalancerIP` tulajdonságot és a statikus nyilvános IP-cím értékét a YAML-jegyzékhez. Hozzon létre egy nevű fájlt `load-balancer-service.yaml` , és másolja a következő YAML. Adja meg az előző lépésben létrehozott saját nyilvános IP-címet. A következő példa a jegyzetet is beállítja az *myResourceGroup* nevű erőforráscsoporthoz. Adja meg a saját erőforráscsoport-nevét.
 
 ```yaml
 apiVersion: v1
@@ -154,7 +157,7 @@ Events:
   Warning  CreatingLoadBalancerFailed  6s (x2 over 12s)  service-controller  Error creating load balancer (will retry): Failed to create load balancer for service default/azure-load-balancer: user supplied IP Address 40.121.183.52 was not found
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazásokra irányuló hálózati forgalom további szabályozása érdekében érdemes lehet [egy bejövő vezérlőt létrehozni][aks-ingress-basic]. Egy [statikus nyilvános IP-címmel rendelkező bejövő vezérlőt is létrehozhat][aks-static-ingress].
 

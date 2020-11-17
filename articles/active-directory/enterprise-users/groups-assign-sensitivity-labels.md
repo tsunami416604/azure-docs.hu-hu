@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63b754886d88e97134b30e4a2bee7bdf5ac5a9d3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c30dea57310fb040d8fa5f52e1d8576c2dd08504
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375605"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650835"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Érzékenységi címkék kiosztása Microsoft 365 csoportokhoz Azure Active Directory
 
@@ -40,7 +40,7 @@ A közzétett címkék csoportokba való alkalmazásához először engedélyezn
     Connect-AzureAD
     ```
 
-    A **Bejelentkezés a fiókba** lapon adja meg a rendszergazdai fiókját és jelszavát a szolgáltatáshoz való kapcsolódáshoz, majd válassza a **Bejelentkezés**lehetőséget.
+    A **Bejelentkezés a fiókba** lapon adja meg a rendszergazdai fiókját és jelszavát a szolgáltatáshoz való kapcsolódáshoz, majd válassza a **Bejelentkezés** lehetőséget.
 1. Az Azure AD-szervezet aktuális csoportjának beállításainak beolvasása.
 
     ```PowerShell
@@ -73,19 +73,19 @@ Az érzékenységi címkéket az Azure AD-be is szinkronizálnia kell. Útmutat�
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Címke kiosztása egy új csoportba Azure Portal
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com).
-1. Válassza a **csoportok**lehetőséget, majd válassza az **új csoport**lehetőséget.
-1. Az **új csoport** lapon válassza az **Office 365**lehetőséget, majd adja meg az új csoport szükséges adatait, és válasszon ki egy érzékenységi címkét a listából.
+1. Válassza a **csoportok** lehetőséget, majd válassza az **új csoport** lehetőséget.
+1. Az **új csoport** lapon válassza az **Office 365** lehetőséget, majd adja meg az új csoport szükséges adatait, és válasszon ki egy érzékenységi címkét a listából.
 
    ![Érzékenységi címke kiosztása az új csoportok lapon](./media/groups-assign-sensitivity-labels/new-group-page.png)
 
-1. Mentse a módosításokat, és válassza a **Létrehozás**lehetőséget.
+1. Mentse a módosításokat, és válassza a **Létrehozás** lehetőséget.
 
 A rendszer létrehozza a csoportot, és a kiválasztott címkéhez társított hely-és csoportfiókok automatikusan érvénybe lép.
 
 ## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Címke kiosztása meglévő csoporthoz Azure Portal
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy csoport-rendszergazdai fiókkal vagy egy csoport tulajdonosaként.
-1. Válassza a **csoportok**lehetőséget.
+1. Válassza a **csoportok** lehetőséget.
 1. A **minden csoport** lapon válassza ki a címkézni kívánt csoportot.
 1. A kiválasztott csoport lapon válassza a **Tulajdonságok** lehetőséget, és válasszon egy érzékenységi címkét a listából.
 
@@ -96,10 +96,10 @@ A rendszer létrehozza a csoportot, és a kiválasztott címkéhez társított h
 ## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Címke eltávolítása meglévő csoportból Azure Portal
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) globális rendszergazdai vagy csoportos rendszergazdai fiókkal, vagy egy csoport tulajdonosaként.
-1. Válassza a **csoportok**lehetőséget.
+1. Válassza a **csoportok** lehetőséget.
 1. A **minden csoport** lapon válassza ki azt a csoportot, amelyből el szeretné távolítani a címkét.
-1. A **csoport** lapon válassza a **Tulajdonságok**lehetőséget.
-1. Válassza az **Eltávolítás**lehetőséget.
+1. A **csoport** lapon válassza a **Tulajdonságok** lehetőséget.
+1. Válassza az **Eltávolítás** lehetőséget.
 1. A módosítások alkalmazásához kattintson a **Mentés** gombra.
 
 ## <a name="using-classic-azure-ad-classifications"></a>Klasszikus Azure AD-besorolások használata
@@ -133,7 +133,7 @@ Ha a keresett címke nem szerepel a listán, akkor ez a következő okok egyike 
 A címkék bármikor felcserélhetők, ha ugyanazokat a lépéseket használják, mint a címkék egy meglévő csoportba való hozzárendelésével, az alábbiak szerint:
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) globális vagy csoportos rendszergazdai fiókkal vagy a csoport tulajdonosaként.
-1. Válassza a **csoportok**lehetőséget.
+1. Válassza a **csoportok** lehetőséget.
 1. A **minden csoport** lapon válassza ki a címkézni kívánt csoportot.
 1. A kiválasztott csoport lapon válassza a **Tulajdonságok** lehetőséget, és válasszon egy új érzékenységi címkét a listából.
 1. Válassza a **Mentés** lehetőséget.

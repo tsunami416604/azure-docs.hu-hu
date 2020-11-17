@@ -4,21 +4,21 @@ description: Az Azure felügyeleti központban tömeges műveletekkel távolíth
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5da3da152fa8d0f568ee0f4075dafb8da8c3bf8a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 83b905faa892cc338b5bdf4f998ad95f7b8a484e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375544"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650853"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Csoporttagok tömeges eltávolítása Azure Active Directory
 
@@ -48,9 +48,9 @@ A letöltött CSV-sablon sorai a következők:
 ## <a name="to-bulk-remove-group-members"></a>Csoporttagok tömeges eltávolítása
 
 1. Jelentkezzen be [a Azure Portalba](https://portal.azure.com) a szervezet felhasználói rendszergazdai fiókjával. A csoport tulajdonosai a saját csoportok tagjainak tömeges eltávolítására is jogosultak.
-1. Az Azure ad-ben válassza a **csoportok**  >  **minden csoport**elemet.
-1. Nyissa meg azt a csoportot, amelyből el kívánja távolítani a tagokat, majd válassza a **tagok**elemet.
-1. A **tagok** lapon válassza a **tagok eltávolítása**lehetőséget.
+1. Az Azure ad-ben válassza a **csoportok**  >  **minden csoport** elemet.
+1. Nyissa meg azt a csoportot, amelyből el kívánja távolítani a tagokat, majd válassza a **tagok** elemet.
+1. A **tagok** lapon válassza a **tagok eltávolítása** lehetőséget.
 1. A **csoporttagok eltávolítása** lapon válassza a **Letöltés** lehetőséget a CSV-sablonfájl a szükséges csoporttagok tulajdonságaival való beszerzéséhez.
 
    ![A tagok eltávolítása parancs a csoport profil lapján található.](./media/groups-bulk-remove-members/remove-panel.png)
@@ -59,7 +59,7 @@ A letöltött CSV-sablon sorai a következők:
 
     :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="A CSV-fájl az eltávolítandó csoporttagok nevét és azonosítóit tartalmazza.":::
 
-1. A **csoporttagok eltávolítása** lapon a **CSV-fájl feltöltése**területen keresse meg a fájlt. A fájl kiválasztásakor elindul a CSV-fájl érvényesítése.
+1. A **csoporttagok eltávolítása** lapon a **CSV-fájl feltöltése** területen keresse meg a fájlt. A fájl kiválasztásakor elindul a CSV-fájl érvényesítése.
 1. A fájl tartalmának ellenőrzésekor a tömeges importálás lap megjeleníti a **fájl feltöltésének sikerességét**. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.
 1. Ha a fájl átadja az ellenőrzést, válassza a **Submit (Küldés** ) lehetőséget az Azure tömeges művelet elindításához, amely eltávolítja a csoport tagjait a csoportból.
 1. Amikor az eltávolítási művelet befejeződik, megjelenik egy értesítés arról, hogy a tömeges művelet sikeresen befejeződött.
@@ -70,7 +70,7 @@ Az összes függőben lévő tömeges kérelem állapotát a **tömeges művelet
 
 [![Állapot keresése a tömeges műveletek eredményei lapon](./media/groups-bulk-remove-members/bulk-center.png)](./media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
-A tömeges műveletben szereplő egyes sorokra vonatkozó részletekért válassza ki a **# sikeres**, **# sikertelen**vagy az **összes kérelem** oszlopban szereplő értékeket. Ha hiba történt, a hiba okai lesznek felsorolva.
+A tömeges műveletben szereplő egyes sorokra vonatkozó részletekért válassza ki a **# sikeres**, **# sikertelen** vagy az **összes kérelem** oszlopban szereplő értékeket. Ha hiba történt, a hiba okai lesznek felsorolva.
 
 ## <a name="bulk-removal-service-limits"></a>Tömeges eltávolítási szolgáltatás korlátai
 

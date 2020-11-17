@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: e03598ab53a9061a59e18041b2f3f4dc04e1b110
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 8cbc683f06b809ec4d9c63a61d73a0c731a92cd7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424544"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651618"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Az Azure AD saját alkalmazásaiból alkalmazásba való bejelentkezéssel kapcsolatos problémák elhárítása
 
@@ -70,7 +70,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy van-e felhasználó fiókja
 2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** lehetőség kiválasztásával.
 3.  Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
 4.  A navigációs menüben válassza a **felhasználók és csoportok** lehetőséget.
-5.  Válassza **a minden felhasználó**lehetőséget.
+5.  Válassza **a minden felhasználó** lehetőséget.
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **válassza ki a** kijelölni kívánt sort.
 7.  Ellenőrizze a felhasználói objektum tulajdonságait, és győződjön meg róla, hogy a vártnak megfelelően van-e megadva, és nincs hiányzó adatmennyiség.
 
@@ -80,10 +80,10 @@ A felhasználó fiókja állapotának megtekintéséhez kövesse az alábbi lép
 2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** lehetőség kiválasztásával.
 3.  Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
 4.  A navigációs menüben válassza a **felhasználók és csoportok** lehetőséget.
-5.  Válassza **a minden felhasználó**lehetőséget.
+5.  Válassza **a minden felhasználó** lehetőséget.
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **válassza ki a** kijelölni kívánt sort.
-7.  Válassza a **profil**lehetőséget.
-8.  A **Beállítások** területen győződjön meg arról, hogy a **Letiltás tiltása** beállítás **nem**értékre van állítva.
+7.  Válassza a **profil** lehetőséget.
+8.  A **Beállítások** területen győződjön meg arról, hogy a **Letiltás tiltása** beállítás **nem** értékre van állítva.
 
 ### <a name="reset-a-users-password"></a>Felhasználó jelszavának alaphelyzetbe állítása
 A felhasználó jelszavának alaphelyzetbe állításához kövesse az alábbi lépéseket:
@@ -91,7 +91,7 @@ A felhasználó jelszavának alaphelyzetbe állításához kövesse az alábbi l
 2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** lehetőség kiválasztásával.
 3.  Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
 4.  A navigációs menüben válassza a **felhasználók és csoportok** lehetőséget.
-5.  Válassza **a minden felhasználó**lehetőséget.
+5.  Válassza **a minden felhasználó** lehetőséget.
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **válassza ki a** kijelölni kívánt sort.
 7.  Kattintson a **jelszó alaphelyzetbe állítása** gombra a felhasználó ablaktábla tetején.
 8.  Kattintson a **jelszó alaphelyzetbe állítása** gombra a megjelenő **jelszó alaphelyzetbe** állítása panelen.
@@ -100,8 +100,8 @@ A felhasználó jelszavának alaphelyzetbe állításához kövesse az alábbi l
 
 ### <a name="enable-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének engedélyezése
 Az önkiszolgáló jelszó-visszaállítás engedélyezéséhez kövesse az alábbi telepítési lépéseket:
--   [A Azure Active Directory jelszavának alaphelyzetbe állításának engedélyezése a felhasználók számára](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
--   [Az Active Directory helyszíni jelszavak alaphelyzetbe állításának vagy módosításának engedélyezése a felhasználók számára](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [A Azure Active Directory jelszavának alaphelyzetbe állításának engedélyezése a felhasználók számára](../authentication/tutorial-enable-sspr.md)
+-   [Az Active Directory helyszíni jelszavak alaphelyzetbe állításának vagy módosításának engedélyezése a felhasználók számára](../authentication/tutorial-enable-sspr.md)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>A felhasználó többtényezős hitelesítési állapotának keresése
 A felhasználó többtényezős hitelesítési állapotának megtekintéséhez kövesse az alábbi lépéseket:
@@ -109,11 +109,11 @@ A felhasználó többtényezős hitelesítési állapotának megtekintéséhez k
 2. Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** lehetőség kiválasztásával.
 3. Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
 4. A navigációs menüben válassza a **felhasználók és csoportok** lehetőséget.
-5. Válassza **a minden felhasználó**lehetőséget.
+5. Válassza **a minden felhasználó** lehetőséget.
 6. Kattintson a panel tetején található **multi-Factor Authentication** gombra.
 7. Miután a **multi-Factor Authentication felügyeleti portál** betöltődik, győződjön meg arról, hogy a **felhasználók** lapon van.
 8. Keresse meg a felhasználót a felhasználók listájában keresés, szűrés vagy rendezés alapján.
-9. Válassza ki a felhasználót a felhasználók listájából, és **engedélyezze**, **Tiltsa le**vagy **kényszerítse** ki a többtényezős hitelesítést igény szerint.
+9. Válassza ki a felhasználót a felhasználók listájából, és **engedélyezze**, **Tiltsa le** vagy **kényszerítse** ki a többtényezős hitelesítést igény szerint.
    >[!NOTE]
    >Ha egy felhasználó **kényszerített** állapotban van, beállíthatja, hogy ideiglenesen **letiltsa** őket a fiókjába való visszatéréshez. Ha ismét bejelentkeznek, a következő bejelentkezéskor **újra meg** lehet változtatni az állapotukat, hogy újra regisztrálni tudják a kapcsolattartási adatokat. Azt is megteheti, hogy a [felhasználó hitelesítési kapcsolattartási adatainak ellenőrzése](#check-a-users-authentication-contact-info) lapon található lépéseket követve ellenőrizheti vagy beállítja ezeket az adatokat.
 
@@ -123,9 +123,9 @@ A többtényezős hitelesítéshez, a feltételes hozzáféréshez, az Identitá
 2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** lehetőség kiválasztásával.
 3.  Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
 4.  A navigációs menüben válassza a **felhasználók és csoportok** lehetőséget.
-5.  Válassza **a minden felhasználó**lehetőséget.
+5.  Válassza **a minden felhasználó** lehetőséget.
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **válassza ki a** kijelölni kívánt sort.
-7.  Válassza a **profil**lehetőséget.
+7.  Válassza a **profil** lehetőséget.
 8.  Görgessen le a **hitelesítési kapcsolattartási adatokhoz**.
 9.  **Tekintse át** a felhasználó számára regisztrált és a frissítéshez szükséges, igény szerinti frissítést.
 
@@ -135,7 +135,7 @@ A felhasználók csoporttagságok vizsgálatához kövesse az alábbi lépéseke
 2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** lehetőség kiválasztásával.
 3.  Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
 4.  A navigációs menüben válassza a **felhasználók és csoportok** lehetőséget.
-5.  Válassza **a minden felhasználó**lehetőséget.
+5.  Válassza **a minden felhasználó** lehetőséget.
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **válassza ki a** kijelölni kívánt sort.
 7.  Válassza ki a **csoportokat** , és ellenőrizze, hogy a felhasználó melyik csoport tagja.
 
@@ -145,7 +145,7 @@ A felhasználóhoz hozzárendelt licencek vizsgálatához kövesse az alábbi l�
 2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** lehetőség kiválasztásával.
 3.  Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
 4.  A navigációs menüben válassza a **felhasználók és csoportok** lehetőséget.
-5.  Válassza **a minden felhasználó**lehetőséget.
+5.  Válassza **a minden felhasználó** lehetőséget.
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **válassza ki a** kijelölni kívánt sort.
 7.  Válassza a **licencek** lehetőséget, hogy megtekintse, mely licenceket rendeli hozzá jelenleg a felhasználó.
 
@@ -155,7 +155,7 @@ Ha licencet szeretne hozzárendelni egy felhasználóhoz, kövesse az alábbi l�
 2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** lehetőség kiválasztásával.
 3.  Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
 4.  A navigációs menüben válassza a **felhasználók és csoportok** lehetőséget.
-5.  Válassza **a minden felhasználó**lehetőséget.
+5.  Válassza **a minden felhasználó** lehetőséget.
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **válassza ki a** kijelölni kívánt sort.
 7.  Válassza a **licencek** lehetőséget, hogy megtekintse, mely licenceket rendeli hozzá jelenleg a felhasználó.
 8.  Kattintson a **hozzárendelés** gombra.
@@ -193,5 +193,5 @@ Ha elérhető, nyisson meg egy támogatási jegyet a következő információkka
 -   Az időzóna és az idő/időkeret a hiba bekövetkezésekor
 -   Hegedűs nyomkövetései
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)

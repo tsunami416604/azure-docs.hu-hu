@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 65e1b1b5e84c3344a082b73b7768935d788a3394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 668976e9777b35e514746070f0f4039a12b4e02b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707407"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651719"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Helyszíni alkalmazások Azure AD-alkalmazásproxyval történő távoli elérése
 
@@ -36,7 +36,7 @@ Az alkalmazásproxy az Azure AD egyik funkciója, amely lehetővé teszi a felha
 Az alkalmazásproxy a következőket támogatja:
 
 * [Integrált Windows-hitelesítést](application-proxy-configure-single-sign-on-with-kcd.md) használó webalkalmazások hitelesítéshez
-* Űrlapalapú vagy [fejléc-alapú](application-proxy-configure-single-sign-on-with-ping-access.md) hozzáférést használó webalkalmazások
+* Űrlapalapú vagy [fejléc-alapú](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers) hozzáférést használó webalkalmazások
 * Webes API-k, amelyeket a különböző eszközökön lévő gazdag alkalmazások számára kíván tenni
 * Egy [Távoli asztali átjáró](application-proxy-integrate-with-remote-desktop-services.md) mögött futó alkalmazások
 * A Microsoft Authentication Library (MSAL) szolgáltatással integrált, gazdag alkalmazások
@@ -74,4 +74,3 @@ Az alábbi ábra bemutatja, hogyan működik együtt az Azure AD és az alkalmaz
 
 ## <a name="next-steps"></a>Következő lépések
 Az alkalmazásproxy használatának megkezdéséhez lásd [: oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez alkalmazásproxy](application-proxy-add-on-premises-application.md)használatával.
-

@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a94d1a4fa717bbee9974f7218e704ba06dad530d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f9fcdd2ce17e967be432f8edc910dcf2fcdbed3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375837"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650903"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Dinamikus csoport létrehozása vagy frissítése Azure Active Directory
 
@@ -47,19 +47,19 @@ A tagsági szabályok szintaxisára, támogatott tulajdonságaira, operátorára
 ## <a name="to-create-a-group-membership-rule"></a>Csoporttagság-szabály létrehozása
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a globális rendszergazda, az Intune-rendszergazda vagy a felhasználói rendszergazdai szerepkör tagja az Azure ad-szervezetben.
-1. **Csoportok**keresése és kiválasztása.
-1. Válassza ki **az összes csoportot**, és válassza az **új csoport**lehetőséget.
+1. **Csoportok** keresése és kiválasztása.
+1. Válassza ki **az összes csoportot**, és válassza az **új csoport** lehetőséget.
 
    ![Válassza ki az új csoport hozzáadására szolgáló parancsot](./media/groups-create-rule/create-new-group-azure-active-directory.png)
 
-1. A **csoport** lapon adja meg az új csoport nevét és leírását. Válasszon **tagsági típust** a felhasználók vagy eszközök számára, majd válassza a **dinamikus lekérdezés hozzáadása**lehetőséget. A szabály-szerkesztő legfeljebb öt kifejezést támogat. Ötnél több kifejezés hozzáadásához a szövegmezőt kell használnia.
+1. A **csoport** lapon adja meg az új csoport nevét és leírását. Válasszon **tagsági típust** a felhasználók vagy eszközök számára, majd válassza a **dinamikus lekérdezés hozzáadása** lehetőséget. A szabály-szerkesztő legfeljebb öt kifejezést támogat. Ötnél több kifejezés hozzáadásához a szövegmezőt kell használnia.
 
    ![Képernyőkép, amely a "minden csoport" lapot mutatja az "új csoport" művelet kiválasztásával.](./media/groups-create-rule/add-dynamic-group-rule.png)
 
 1. A tagsági lekérdezéshez elérhető egyéni kiterjesztési tulajdonságok megtekintéséhez:
    1. Válassza az **Egyéni bővítmény tulajdonságainak beolvasása** elemet.
-   1. Adja meg az alkalmazás AZONOSÍTÓját, majd kattintson a **Tulajdonságok frissítése**elemre.
-1. A szabály létrehozása után válassza a **Mentés**lehetőséget.
+   1. Adja meg az alkalmazás AZONOSÍTÓját, majd kattintson a **Tulajdonságok frissítése** elemre.
+1. A szabály létrehozása után válassza a **Mentés** lehetőséget.
 1. Válassza a **Létrehozás** lehetőséget az **új csoport** lapon a csoport létrehozásához.
 
 Ha a beírt szabály nem érvényes, a portálon egy Azure-értesítésben láthatja, hogy a szabály miért nem dolgozható fel. Olvassa el figyelmesen, hogy megtudja, hogyan javíthatja a szabályt.
@@ -67,16 +67,16 @@ Ha a beírt szabály nem érvényes, a portálon egy Azure-értesítésben láth
 ## <a name="to-update-an-existing-rule"></a>Meglévő szabály frissítése
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a globális rendszergazda, a csoport rendszergazdája, az Intune-rendszergazda vagy a felhasználói rendszergazdai szerepkör tagja az Azure ad-szervezetben.
-1. Válassza **Groups**  >  **a csoportok minden csoport**elemet.
+1. Válassza **Groups**  >  **a csoportok minden csoport** elemet.
 1. Válasszon ki egy csoportot a profiljának megnyitásához.
-1. A csoport profil lapján válassza a **dinamikus tagsági szabályok**lehetőséget. A szabály-szerkesztő legfeljebb öt kifejezést támogat. Ötnél több kifejezés hozzáadásához a szövegmezőt kell használnia.
+1. A csoport profil lapján válassza a **dinamikus tagsági szabályok** lehetőséget. A szabály-szerkesztő legfeljebb öt kifejezést támogat. Ötnél több kifejezés hozzáadásához a szövegmezőt kell használnia.
 
    ![Tagsági szabály hozzáadása dinamikus csoporthoz](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 1. A tagsági szabályhoz elérhető egyéni kiterjesztési tulajdonságok megtekintéséhez:
    1. Válassza az **Egyéni bővítmény tulajdonságainak beolvasása** elemet.
-   1. Adja meg az alkalmazás AZONOSÍTÓját, majd kattintson a **Tulajdonságok frissítése**elemre.
-1. A szabály frissítése után válassza a **Mentés**lehetőséget.
+   1. Adja meg az alkalmazás AZONOSÍTÓját, majd kattintson a **Tulajdonságok frissítése** elemre.
+1. A szabály frissítése után válassza a **Mentés** lehetőséget.
 
 ## <a name="turn-on-or-off-welcome-email"></a>Üdvözlő e-mailek be-és kikapcsolása
 
@@ -102,7 +102,7 @@ A következő állapotüzenetek jeleníthetők meg a **tagság utolsó frissít�
 - **Folyamatban**: a frissítések jelenleg folyamatban vannak.
 - **Ismeretlen**: az utolsó frissítés időpontja nem olvasható be. Lehet, hogy a csoport új.
 
-Ha hiba lép fel egy adott csoport tagsági szabályának feldolgozása közben, a rendszer riasztást jelenít meg a csoport **Áttekintés oldalának** tetején. Ha 24 óránál hosszabb ideig nem lehet feldolgozni a szervezeten belüli összes csoportra vonatkozóan a függőben lévő dinamikus tagsági frissítéseket, a rendszer riasztást jelenít meg az **összes csoport**tetején.
+Ha hiba lép fel egy adott csoport tagsági szabályának feldolgozása közben, a rendszer riasztást jelenít meg a csoport **Áttekintés oldalának** tetején. Ha 24 óránál hosszabb ideig nem lehet feldolgozni a szervezeten belüli összes csoportra vonatkozóan a függőben lévő dinamikus tagsági frissítéseket, a rendszer riasztást jelenít meg az **összes csoport** tetején.
 
 ![hibaüzenetek feldolgozása – riasztások](./media/groups-create-rule/processing-error.png)
 

@@ -3,22 +3,22 @@ title: Munkahelyi vagy iskolai fiók lezárása egy nem felügyelt Azure AD-szer
 description: Munkahelyi vagy iskolai fiók lezárása nem felügyelt Azure Active Directoryban.
 services: active-directory
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/20/2019
+ms.date: 11/20/2020
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87e03214e2a00a16064763f35f38bdd3ea0e6123
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 142143f96314539051ea44c00c6ff95cb2650566
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375329"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650206"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Munkahelyi vagy iskolai fiók lezárása egy nem felügyelt Azure AD-szervezetben
 
@@ -45,11 +45,11 @@ Nem felügyelt munkahelyi vagy iskolai fiók bezárásához kövesse az alábbi 
 
 1. A [fiók bezárásához](https://go.microsoft.com/fwlink/?linkid=873123)jelentkezzen be a fiókjába.
 
-1. **Az adatkérések**területen válassza a **fiók lezárása**lehetőséget.
+1. **Az adatkérések** területen válassza a **fiók lezárása** lehetőséget.
 
     ![Adatkérések – fiók lezárása](./media/users-close-account/close-account.png)
 
-1. Tekintse át a megerősítő üzenetet, majd válassza az **Igen**lehetőséget.
+1. Tekintse át a megerősítő üzenetet, majd válassza az **Igen** lehetőséget.
 
     ![Adatkérések – Bezárás megerősítése](./media/users-close-account/confirm-close.png)
 

@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 5511ad5a517bbd320ce3d66de90a8aec084c7e15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc6fdadbdfdbdd1d32f640e356a67841187a83c9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87290735"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651804"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Tesztkörnyezet beállítása mérnöki osztályokhoz a SOLIDWORKS használatával
 
@@ -24,22 +24,22 @@ Ebben a cikkben bemutatjuk, hogyan állíthat be egy, a SOLIDWORKS 2019-t és a 
 
 A SOLIDWORKS hálózati licenceléséhez telepíteni kell a SolidNetWork, és aktiválni kell a licenckiszolgálót.  Ez a licenckiszolgáló általában a helyi hálózaton vagy egy, az Azure-on belüli magánhálózaton található.  A SolidNetWork-licencek kiszolgálón való beállításával kapcsolatos további információkért lásd: a [License Manager telepítése és aktiválása](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm) a SOLIDWORKS telepítési útmutatójában.  Ha ezt a beállítást használja, jegyezze fel a **portszámot** és a [**sorozatszámot**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm) , mivel ezek a későbbi lépésekben szükségesek.
 
-A licenckiszolgáló beállítása után meg kell adni a [virtuális hálózatot (VNet)](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) a [labor-fiókjához](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account).  A hálózati társítást a tesztkörnyezet létrehozása előtt kell elvégezni, hogy a labor virtuális gépek hozzáférhessenek a licenckiszolgálóra és a másik megoldáshoz.
+A licenckiszolgáló beállítása után meg kell adni a [virtuális hálózatot (VNet)](./how-to-connect-peer-virtual-network.md) a [labor-fiókjához](./tutorial-setup-lab-account.md).  A hálózati társítást a tesztkörnyezet létrehozása előtt kell elvégezni, hogy a labor virtuális gépek hozzáférhessenek a licenckiszolgálóra és a másik megoldáshoz.
 
 > [!NOTE]
-> Győződjön meg arról, hogy a megfelelő portok meg vannak nyitva a tűzfalakon a tesztkörnyezet virtuális gépei és a licenckiszolgáló közötti kommunikáció engedélyezéséhez.  Tekintse meg például a [Windows tűzfal licencelés-kezelő számítógép portjainak módosítására](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm) vonatkozó utasításokat, amelyek bemutatják, hogyan adhat hozzá bejövő és kimenő szabályokat a licenckiszolgáló tűzfalához.  Előfordulhat, hogy a tesztkörnyezet virtuális gépei számára is meg kell nyitnia a portokat.  Erről a következő cikkben ismertetett lépéseket követve további információt talál a tesztkörnyezetben a [tűzfal beállításairól](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-firewall-settings) , beleértve a tesztkörnyezet nyilvános IP-címének beszerzését.
+> Győződjön meg arról, hogy a megfelelő portok meg vannak nyitva a tűzfalakon a tesztkörnyezet virtuális gépei és a licenckiszolgáló közötti kommunikáció engedélyezéséhez.  Tekintse meg például a [Windows tűzfal licencelés-kezelő számítógép portjainak módosítására](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm) vonatkozó utasításokat, amelyek bemutatják, hogyan adhat hozzá bejövő és kimenő szabályokat a licenckiszolgáló tűzfalához.  Előfordulhat, hogy a tesztkörnyezet virtuális gépei számára is meg kell nyitnia a portokat.  Erről a következő cikkben ismertetett lépéseket követve további információt talál a tesztkörnyezetben a [tűzfal beállításairól](./how-to-configure-firewall-settings.md) , beleértve a tesztkörnyezet nyilvános IP-címének beszerzését.
 
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
-A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd. Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért tekintse meg a [labor-fiók beállítását](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)ismertető oktatóanyagot. Használhat meglévő labor-fiókot is.
+A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért tekintse meg a [labor-fiók beállítását](./tutorial-setup-lab-account.md)ismertető oktatóanyagot. Használhat meglévő labor-fiókot is.
 
 ### <a name="lab-account-settings"></a>Tesztkörnyezet-Fiókbeállítások
 
-Engedélyezze az alábbi táblázatban ismertetett beállításokat a labor-fiókhoz. A Piactéri lemezképek engedélyezésével kapcsolatos további információkért tekintse meg a [Piactéri rendszerképek elérhetővé tétele a labor-készítők](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)számára című cikket.
+Engedélyezze az alábbi táblázatban ismertetett beállításokat a labor-fiókhoz. A Piactéri lemezképek engedélyezésével kapcsolatos további információkért tekintse meg a [Piactéri rendszerképek elérhetővé tétele a labor-készítők](./specify-marketplace-images.md)számára című cikket.
 
 | Tesztkörnyezet-fiók beállítása | Utasítások |
 | ------------------- | ------------ |
-|Piactéri rendszerkép| Engedélyezze a Windows 10 Pro-rendszerkép használatát a labor-fiókjában.|
+|Marketplace-beli rendszerkép| Engedélyezze a Windows 10 Pro-rendszerkép használatát a labor-fiókjában.|
 
 > [!NOTE]
 > A Windows 10 rendszeren kívül a SOLIDWORKS a Windows egyéb verzióit is támogatja.  A részletekért lásd a [SOLIDWORKS rendszerkövetelményeit](https://www.solidworks.com/sw/support/SystemRequirements.html) .
@@ -76,7 +76,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan állíthatja be a s
     > [!NOTE]
     > A **kiszolgáló hozzáadása** párbeszédpanelen a rendszer kérni fogja a licenckiszolgáló által használt **portszámot** , valamint a licenckiszolgáló nevét vagy IP-címét.
 
-## <a name="cost"></a>Költségek
+## <a name="cost"></a>Költség
 
 Az osztályra vonatkozó lehetséges költségbecslés. Ez a becslés nem tartalmazza a licenckiszolgáló futtatásának költségeit. 25 tanulós osztályt fogunk használni. 20 órányi ütemezett idő van. Emellett minden tanuló 10 órás kvótát kap a házi feladat vagy az ütemezett osztályon kívüli hozzárendelések számára. A kiválasztott virtuálisgép-méret kisméretű **GPU (vizualizáció)** volt, amely 160 Lab egység.
 
@@ -85,7 +85,7 @@ Az osztályra vonatkozó lehetséges költségbecslés. Ez a becslés nem tartal
 >[!IMPORTANT]
 > A költségbecslés csak példaként szolgál.  A díjszabással kapcsolatos aktuális információk: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépések közösek a laborok beállításához.
 

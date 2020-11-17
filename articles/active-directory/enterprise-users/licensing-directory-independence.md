@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 04/29/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1db812fb9c1503771bec0b1795ee8c15bb70014a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b35c8630f47910c61e169d405c2117e53d0d536e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379111"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650527"
 ---
 # <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Ismerje meg, hogyan hatnak több Azure Active Directory szervezet
 
@@ -47,7 +47,7 @@ Az egyes Azure AD-szervezeteket egymástól függetlenül konfigurálhatja:
 
 ## <a name="add-an-azure-ad-organization"></a>Azure AD-szervezet hozzáadása
 
-Ha Azure AD-szervezetet szeretne felvenni a Azure Portalba, jelentkezzen be [a Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely az Azure ad globális rendszergazdája, és válassza az **új**lehetőséget.
+Ha Azure AD-szervezetet szeretne felvenni a Azure Portalba, jelentkezzen be [a Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely az Azure ad globális rendszergazdája, és válassza az **új** lehetőséget.
 
 > [!NOTE]
 > A többi Azure-erőforrástól eltérően az Azure AD-szervezetek nem az Azure-előfizetések alárendelt erőforrásai. Ha az Azure-előfizetését megszakították vagy lejártak, az Azure AD-szervezet adatait Azure PowerShell, a Microsoft Graph API-val vagy a Microsoft 365 felügyeleti központtal is elérheti. [Egy másik előfizetést is társíthat a szervezethez](../fundamentals/active-directory-how-subscriptions-associated-directory.md).

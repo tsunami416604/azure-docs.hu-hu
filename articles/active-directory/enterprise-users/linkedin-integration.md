@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d70676e117a71fbd194e921b4755ba5d196871c7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375924"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650308"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>A LinkedIn-fiókok kapcsolatainak integrálása Azure Active Directory
 
@@ -41,8 +41,8 @@ A LinkedIn-fiókok kapcsolatai csak azokra a felhasználókra engedélyezhetők,
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/) egy olyan fiókkal, amely az Azure ad-szervezet globális rendszergazdája.
 1. Válassza a **Felhasználók** lehetőséget.
-1. A **felhasználók** lapon válassza a **felhasználói beállítások**lehetőséget.
-1. A **LinkedIn-fiókok kapcsolatai**területen engedélyezze a felhasználók számára, hogy a LinkedIn-kapcsolataik elérését néhány Microsoft-alkalmazáson belül hozzáférjenek a fiókjához. A felhasználók nem oszthatnak meg semmilyen adatmegosztást, amíg a felhasználók nem csatlakoznak a fiókjához.
+1. A **felhasználók** lapon válassza a **felhasználói beállítások** lehetőséget.
+1. A **LinkedIn-fiókok kapcsolatai** területen engedélyezze a felhasználók számára, hogy a LinkedIn-kapcsolataik elérését néhány Microsoft-alkalmazáson belül hozzáférjenek a fiókjához. A felhasználók nem oszthatnak meg semmilyen adatmegosztást, amíg a felhasználók nem csatlakoznak a fiókjához.
 
     * Az **Igen** lehetőség kiválasztásával engedélyezheti a szolgáltatást a szervezet összes felhasználója számára
     * Válassza a **kijelölt csoport** lehetőséget, hogy a szolgáltatás csak a szervezet kiválasztott felhasználói csoportjának engedélyezze a szolgáltatást
@@ -92,7 +92,7 @@ Ha az Azure AD felügyeleti központban lévő LinkedIn Account Connections (Lin
 1. Bontsa ki az **ADMX** -fájlokat, és másolja őket a központi tárolóba.
 1. Nyissa meg a Csoportházirend kezelése eszközt.
 1. Hozzon létre egy csoportházirend objektumot a következő beállítással: **felhasználói konfiguráció**  >  **Felügyeleti sablonok**  >  **Microsoft Office 2016**  >  **egyebek**  >  **az Office-alkalmazások LinkedIn szolgáltatásainak megjelenítése**.
-1. Válassza az **engedélyezve** vagy a **Letiltva**lehetőséget.
+1. Válassza az **engedélyezve** vagy a **Letiltva** lehetőséget.
   
    Állapot | Hatás
    ------ | ------

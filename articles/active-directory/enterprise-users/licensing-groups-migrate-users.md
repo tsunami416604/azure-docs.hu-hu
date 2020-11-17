@@ -10,18 +10,18 @@ editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 179ad1e552899f8fa92b8191fe78223458f87104
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f202bebd2c9ab6147d8a37fc6109b915065068aa
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375416"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650342"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Egyéni licenccel rendelkező felhasználók áttelepítése licencelési csoportokba
 
@@ -57,13 +57,13 @@ Az áttelepítési folyamat így néz ki:
 
 1. A Azure Portal használatával rendelje hozzá az Office 365 E3-licencet az Azure AD **összes felhasználó** csoportjához.
 
-1. Győződjön meg arról, hogy az összes felhasználó számára befejeződött a licenc-hozzárendelés. Nyissa meg a csoport áttekintés lapját, válassza a **licencek**lehetőséget, majd a **licencek** panel felső részén tekintse meg a feldolgozás állapotát.
+1. Győződjön meg arról, hogy az összes felhasználó számára befejeződött a licenc-hozzárendelés. Nyissa meg a csoport áttekintés lapját, válassza a **licencek** lehetőséget, majd a **licencek** panel felső részén tekintse meg a feldolgozás állapotát.
 
    - A feldolgozás befejezésének megerősítéséhez keresse meg a "legújabb licencelési módosítások alkalmazása az összes felhasználóra" lehetőséget.
 
    - Tekintse meg az azon felhasználókra vonatkozó értesítéseket, akik számára nem sikerült a licencek hozzárendelése. Kifogytak a licencek egyes felhasználók számára? Vannak-e olyan ütköző licenccel rendelkező felhasználók, amelyek megakadályozzák a csoportos licencek öröklését?
 
-1. Ellenőrizze, hogy vannak-e olyan felhasználók, akik ellenőrzik, hogy mind a közvetlen, mind a csoportos licenc alkalmazva van-e. Lépjen a felhasználó profil lapjára, válassza a **licencek**lehetőséget, és vizsgálja meg a licencek állapotát.
+1. Ellenőrizze, hogy vannak-e olyan felhasználók, akik ellenőrzik, hogy mind a közvetlen, mind a csoportos licenc alkalmazva van-e. Lépjen a felhasználó profil lapjára, válassza a **licencek** lehetőséget, és vizsgálja meg a licencek állapotát.
 
    - Ez a várt felhasználói állapot az áttelepítés során:
 
@@ -71,7 +71,7 @@ Az áttelepítési folyamat így néz ki:
 
      Ezzel megerősíti, hogy a felhasználó közvetlen és örökölt licencekkel rendelkezik. Láthatjuk, hogy az Office 365 E3 van hozzárendelve.
 
-   - Válassza ki az egyes licenceket, és ellenőrizze, hogy mely szolgáltatások engedélyezettek. Annak ellenőrzéséhez, hogy a közvetlen és a csoportos licenc pontosan ugyanazokat a szolgáltatásokat engedélyezi-e a felhasználó számára, válassza a **hozzárendelések**lehetőséget.
+   - Válassza ki az egyes licenceket, és ellenőrizze, hogy mely szolgáltatások engedélyezettek. Annak ellenőrzéséhez, hogy a közvetlen és a csoportos licenc pontosan ugyanazokat a szolgáltatásokat engedélyezi-e a felhasználó számára, válassza a **hozzárendelések** lehetőséget.
 
 1. Miután megerősítette, hogy a közvetlen és a csoportos licencek is egyenértékűek, megkezdheti a közvetlen licencek eltávolítását a felhasználóktól. Ezt úgy tesztelheti, ha eltávolítja őket a portál egyes felhasználóival, majd automatizálja az Automation-parancsfájlokat, hogy azok tömeges eltávolításra kerülnek. Íme egy példa arra a felhasználóra, aki a közvetlen licenceket eltávolította a portálon keresztül. Figyelje meg, hogy a licenc állapota változatlan marad, de a közvetlen hozzárendelések már nem láthatók.
 

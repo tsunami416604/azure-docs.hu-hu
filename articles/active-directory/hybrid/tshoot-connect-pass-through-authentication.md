@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91741193"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652518"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítésének hibaelhárítása
 
@@ -149,7 +149,7 @@ Az esetlegesen felmerülő problémák típusától függően különböző hely
 
 ### <a name="azure-ad-connect-logs"></a>Naplók Azure AD Connect
 
-A telepítéssel kapcsolatos hibákért olvassa el a Azure AD Connect naplókat a **%ProgramData%\AADConnect\trace- \* . log**címen.
+A telepítéssel kapcsolatos hibákért olvassa el a Azure AD Connect naplókat a **%ProgramData%\AADConnect\trace- \* . log** címen.
 
 ### <a name="authentication-agent-event-logs"></a>Hitelesítési ügynök eseménynaplói
 
@@ -157,9 +157,11 @@ A hitelesítési ügynökkel kapcsolatos hibák esetén nyissa meg a Eseménynap
 
 A részletes elemzéshez engedélyezze a "munkamenet" naplót (kattintson a jobb gombbal a Eseménynapló alkalmazáson belül a beállítás megkereséséhez). A normál műveletek során ne futtassa a hitelesítési ügynököt ezzel a naplóval. csak hibaelhárításhoz használható. A napló tartalma csak akkor látható, ha a napló újra le van tiltva.
 
+A PTA Agent esemény jegyzékfájlja [itt](https://msazure.visualstudio.com/One/_git/AD-AppProxy?path=%2Fsrc%2FProduct%2FMUC%2FPTADiagnosticsResource%2FPTADiagnosticsResource%2FPTAConnectorDiagnosticsResource%2FPTAConnectorEventManifest.man&_a=contents&version=GBmaster)található.
+
 ### <a name="detailed-trace-logs"></a>Részletes nyomkövetési naplók
 
-A felhasználók bejelentkezési hibáinak elhárításához keresse meg a nyomkövetési naplókat a **%PROGRAMDATA%\MICROSOFT\AZURE ad kapcsolódási hitelesítési Agent\Trace \\ **. Ezek a naplók magukban foglalják, hogy egy adott felhasználói bejelentkezés miért nem sikerült az átmenő hitelesítés funkció használatával. Ezek a hibák az előző bejelentkezési hiba okainak táblázatában látható bejelentkezési hibák okaira is leképezhetők. A következő példa egy naplóbejegyzés:
+A felhasználók bejelentkezési hibáinak elhárításához keresse meg a nyomkövetési naplókat a **%PROGRAMDATA%\MICROSOFT\AZURE ad kapcsolódási hitelesítési Agent\Trace \\**. Ezek a naplók magukban foglalják, hogy egy adott felhasználói bejelentkezés miért nem sikerült az átmenő hitelesítés funkció használatával. Ezek a hibák az előző bejelentkezési hiba okainak táblázatában látható bejelentkezési hibák okaira is leképezhetők. A következő példa egy naplóbejegyzés:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 8b94b71993285a61042be3c6cd9e4708315fab9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3e6ea6692a81a06bbf3180904dfb465a88b105d1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413003"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653419"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – gyakori kérdések
 
@@ -40,9 +40,9 @@ Azure Firewall támogatja a szabályokat és a szabályok gyűjteményeit. A sza
 
 Háromféle típusú szabálygyűjtemény létezik:
 
-* *Alkalmazási szabályok* : olyan teljes tartománynevek (FQDN-EK) konfigurálása, amelyek egy alhálózatból érhetők el.
-* *Hálózati szabályok* : a forrás-, protokoll-, célport-és célcím-szabályokat tartalmazó szabályok konfigurálása.
-* *NAT-szabályok* : KONFIGURÁLJA a DNAT szabályokat a bejövő internetkapcsolatok engedélyezéséhez.
+* *Alkalmazási szabályok*: olyan teljes tartománynevek (FQDN-EK) konfigurálása, amelyek egy alhálózatból érhetők el.
+* *Hálózati szabályok*: a forrás-, protokoll-, célport-és célcím-szabályokat tartalmazó szabályok konfigurálása.
+* *NAT-szabályok*: KONFIGURÁLJA a DNAT szabályokat a bejövő internetkapcsolatok engedélyezéséhez.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Támogatja Azure Firewall a bejövő forgalom szűrését?
 
@@ -50,7 +50,7 @@ Azure Firewall támogatja a bejövő és a kimenő szűrést. A bejövő védele
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Mely naplózási és elemzési szolgáltatásokat támogatja a Azure Firewall?
 
-Azure Firewall integrálva van Azure Monitor a tűzfalak megtekintésére és elemzésére. Naplók küldhetők Log Analyticsba, Azure Storage-ba vagy Event Hubsba. Ezek Log Analytics vagy különböző eszközök, például az Excel és a Power BI segítségével elemezhetők. További információ: [oktatóanyag Azure Firewall-naplók figyelése](tutorial-diagnostics.md).
+Azure Firewall integrálva van Azure Monitor a tűzfalak megtekintésére és elemzésére. Naplók küldhetők Log Analyticsba, Azure Storage-ba vagy Event Hubsba. Ezek Log Analytics vagy különböző eszközök, például az Excel és a Power BI segítségével elemezhetők. További információ: [oktatóanyag Azure Firewall-naplók figyelése](./firewall-diagnostics.md).
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Hogyan működik a Azure Firewall eltérően a meglévő szolgáltatások, például a NVA a piactéren?
 
@@ -139,9 +139,9 @@ Nem. A NAT-szabályok implicit módon hozzáadnak egy megfelelő hálózati szab
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Hogyan működnek a helyettesítő karakterek egy alkalmazás-szabályban célként megadott FQDN-ben?
 
-A helyettesítő karakterek használata jelenleg csak a teljes tartománynév bal oldalán lehetséges. Például: * *_. contoso.com_* és * *_contoso.com_*.
+A helyettesítő karakterek használata jelenleg csak a teljes tartománynév bal oldalán lehetséges. Például: **_. contoso.com_* és **_contoso.com_*.
 
-Ha a * *_. contoso.com_* konfigurálja, akkor a *anyvalue*. contoso.com, de nem contoso.com (a tartomány csúcspontja) használatát teszi lehetővé. Ha engedélyezni szeretné a tartomány csúcspontját, explicit módon konfigurálnia kell célként megadott FQDN-ként.
+Ha a **_. contoso.com_* konfigurálja, akkor a *anyvalue*. contoso.com, de nem contoso.com (a tartomány csúcspontja) használatát teszi lehetővé. Ha engedélyezni szeretné a tartomány csúcspontját, explicit módon konfigurálnia kell célként megadott FQDN-ként.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>Mit jelent a *kiépítési állapot: nem sikerült* ?
 
@@ -217,7 +217,7 @@ Nem, az IP-csoportok másik erőforráscsoporthoz való áthelyezése jelenleg n
 
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Mi a Azure Firewall TCP üresjárati időkorlátja?
 
-A hálózati tűzfal szabványos viselkedése a TCP-kapcsolatok életben tartásának biztosítása, és ha nincs tevékenység, azonnal lezárhatja őket. Azure Firewall TCP Üresjárati időkorlát négy perc. Ez a beállítás nem konfigurálható. Ha egy inaktivitási időtartam hosszabb az időtúllépési értéknél, nincs garancia arra, hogy a TCP-vagy HTTP-munkamenet továbbra is fennáll. Gyakori eljárás a TCP Keep-Alive használata. Ez a gyakorlat hosszabb ideig tart a kapcsolatok aktív állapotban. További információ: [.net-példák](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).
+A hálózati tűzfal szabványos viselkedése a TCP-kapcsolatok életben tartásának biztosítása, és ha nincs tevékenység, azonnal lezárhatja őket. Azure Firewall TCP Üresjárati időkorlát négy perc. Ez a beállítás nem konfigurálható. Ha egy inaktivitási időtartam hosszabb az időtúllépési értéknél, nincs garancia arra, hogy a TCP-vagy HTTP-munkamenet továbbra is fennáll. Gyakori eljárás a TCP Keep-Alive használata. Ez a gyakorlat hosszabb ideig tart a kapcsolatok aktív állapotban. További információ: [.net-példák](/dotnet/api/system.net.servicepoint.settcpkeepalive?view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).
 
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>Telepíthetek Azure Firewall nyilvános IP-cím nélkül?
 

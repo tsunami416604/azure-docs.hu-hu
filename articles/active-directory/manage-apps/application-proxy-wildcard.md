@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b2563b238bae310d662220d2c244e863249c9c4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85367733"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651940"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Helyettesítő karakteres alkalmazások a Azure Active Directory alkalmazásproxy
 
@@ -72,7 +72,7 @@ Egyéni tartományok használatakor létre kell hoznia egy DNS-bejegyzést a kü
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-Annak ellenőrzéséhez, hogy helyesen konfigurálta-e a CNAME-t, használhatja az [nslookupt](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) az egyik cél végponton, például: `expenses.adventure-works.com` .  A válasznak tartalmaznia kell a már említett aliast ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ).
+Annak ellenőrzéséhez, hogy helyesen konfigurálta-e a CNAME-t, használhatja az [nslookupt](/windows-server/administration/windows-commands/nslookup) az egyik cél végponton, például: `expenses.adventure-works.com` .  A válasznak tartalmaznia kell a már említett aliast ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ).
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
@@ -84,7 +84,7 @@ Helyettesítő karakteres alkalmazások esetén a **belső URL-címet** a követ
 
 ![A belső URL-cím esetében használja a http (s)://* formátumot. \< tartomány>](./media/application-proxy-wildcard/22.png)
 
-**Külső URL-cím**konfigurálásakor a következő formátumot kell használnia:`https://*.<custom domain>`
+**Külső URL-cím** konfigurálásakor a következő formátumot kell használnia:`https://*.<custom domain>`
 
 ![A külső URL-cím esetében használja a * https://formátumot. \< egyéni tartomány>](./media/application-proxy-wildcard/21.png)
 
@@ -169,11 +169,11 @@ Győződjön meg arról, hogy létezik egy CNAME rekord, amely az alkalmazáshoz
 
 A [dokumentált lépéseket](application-proxy-add-on-premises-application.md)követve ehhez a forgatókönyvhöz a következő beállítások szükségesek:
 
-- A **belső URL-címben**helyettesítő karakter helyett a **Pénzügy** értéket kell beállítania.
+- A **belső URL-címben** helyettesítő karakter helyett a **Pénzügy** értéket kell beállítania.
 
     ![Példa: a pénzügy beállítása helyettesítő karakter helyett a belső URL-címben](./media/application-proxy-wildcard/52.png)
 
-- A **külső URL-címben**helyettesítő karakter helyett a **Pénzügy** értéket kell beállítania.
+- A **külső URL-címben** helyettesítő karakter helyett a **Pénzügy** értéket kell beállítania.
 
     ![Példa: a pénzügy beállítása helyettesítő karakter helyett a külső URL-címben](./media/application-proxy-wildcard/53.png)
 
@@ -189,7 +189,7 @@ Mivel a `finance.adventure-works.com` egy konkrétabb URL-cím `*.adventure-work
 
 Ha több alkalmazás van közzétéve a Finance szolgáltatásban, és Ön `finance.adventure-works.com` ellenőrzött tartománnyal rendelkezik, közzétehet egy másik helyettesítő karaktert `*.finance.adventure-works.com` . Mivel ez az általánosnál sokkal pontosabb `*.adventure-works.com` , elsőbbséget élvez, ha egy felhasználó a pénzügyi tartományban található alkalmazáshoz fér hozzá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Az **Egyéni tartományokkal**kapcsolatos további tudnivalókért tekintse meg az [Egyéni tartományok használata az Azure ad Application proxy-ban](application-proxy-configure-custom-domain.md)című témakört.
+- Az **Egyéni tartományokkal** kapcsolatos további tudnivalókért tekintse meg az [Egyéni tartományok használata az Azure ad Application proxy-ban](application-proxy-configure-custom-domain.md)című témakört.
 - További információ az **alkalmazások közzétételéről**: [alkalmazások közzététele az Azure ad Application proxy használatával](application-proxy-add-on-premises-application.md)

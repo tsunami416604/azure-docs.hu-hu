@@ -8,19 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f3544d81059cd4c25c584d8af1b6fcd45a41b8bb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375768"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650716"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 csoportok elévülési szabályzatának konfigurálása
 
@@ -62,7 +62,7 @@ A rendszergazdák az Azure AD-ben lekérhetik az automatikusan megújított csop
 
 A következők olyan szerepkörök, amelyek az Azure AD-ben Microsoft 365 csoportok számára a lejárat konfigurálását és használatát is használhatják.
 
-Role | Engedélyek
+Szerepkör | Engedélyek
 -------- | --------
 Globális rendszergazda, csoport rendszergazdája vagy felhasználói rendszergazda | Létrehozhatja, elolvashatja, frissítheti vagy törölheti a Microsoft 365 csoportok lejárati szabályzatának beállításait<br>Bármely Microsoft 365 csoport megújítható
 Felhasználó | Megújíthatja a saját Microsoft 365 csoportját<br>Visszaállíthatja a saját Microsoft 365 csoportját<br>A lejárati szabályzat beállításainak olvasása
@@ -73,7 +73,7 @@ A törölt csoportok visszaállítására vonatkozó engedélyekkel kapcsolatos 
 
 1. Nyissa meg az [Azure ad felügyeleti központot](https://aad.portal.azure.com) egy olyan fiókkal, amely globális rendszergazda az Azure ad-szervezetben.
 
-2. Válassza a **csoportok**lehetőséget, majd válassza a **lejárat** lehetőséget a lejárat beállításainak megnyitásához.
+2. Válassza a **csoportok** lehetőséget, majd válassza a **lejárat** lehetőséget a lejárat beállításainak megnyitásához.
   
    ![Csoportok lejárati beállításai](./media/groups-lifecycle/expiration-settings.png)
 
@@ -85,7 +85,7 @@ A törölt csoportok visszaállítására vonatkozó engedélyekkel kapcsolatos 
       - **Az összes** Microsoft 365 csoportok
       - A **kiválasztott** Microsoft 365 csoportok listája
       - **Nincs** az összes csoport lejáratának korlátozása
-    - Ha elkészült, mentse a beállításokat a **Mentés gombra**kattintva.
+    - Ha elkészült, mentse a beállításokat a **Mentés gombra** kattintva.
 
 > [!NOTE]
 > - Amikor első alkalommal állítja be a lejáratot, a lejárati időintervallumnál régebbi csoportok 35 napra vannak beállítva, kivéve, ha a csoport automatikusan megújul, vagy a tulajdonos megújítja.

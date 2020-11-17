@@ -11,18 +11,18 @@ ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8836295e9f54260c4e9ff6c1da333ef2a86d58fb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84759929"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651855"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory Application Proxy CORS kapcsolatos problémák megismerése és megoldása
 
-[Több eredetű erőforrás-megosztás (CORS)](https://www.w3.org/TR/cors/)   időnként a Azure Active Directory Application Proxyon közzétett alkalmazások és API-k számára is kihívást jelenthet. Ez a cikk az Azure AD Application Proxy CORS kapcsolatos problémákat és megoldásokat ismerteti.
+A [több eredetű erőforrás-megosztás (CORS)](https://www.w3.org/TR/cors/) időnként kihívást jelenthet a Azure Active Directory Application Proxyon közzétett alkalmazások és API-k számára. Ez a cikk az Azure AD Application Proxy CORS kapcsolatos problémákat és megoldásokat ismerteti.
 
-A böngésző biztonsága általában megakadályozza, hogy a weblapok AJAX-kérelmeket hozzanak egy másik tartományba. Ezt a korlátozást *azonos eredetű házirendnek*nevezzük, és megakadályozza, hogy egy rosszindulatú hely bizalmas adatokat olvasson be egy másik helyről. Előfordulhat azonban, hogy más helyekre is meg szeretné hívni a webes API-t. A CORS egy W3C-szabvány, amely lehetővé teszi, hogy a kiszolgálók megpihenjenek az azonos eredetű házirendben, és egyes eltérő eredetű kérelmeket is engedélyezzenek, míg mások elutasítását.
+A böngésző biztonsága általában megakadályozza, hogy a weblapok AJAX-kérelmeket hozzanak egy másik tartományba. Ezt a korlátozást *azonos eredetű házirendnek* nevezzük, és megakadályozza, hogy egy rosszindulatú hely bizalmas adatokat olvasson be egy másik helyről. Előfordulhat azonban, hogy más helyekre is meg szeretné hívni a webes API-t. A CORS egy W3C-szabvány, amely lehetővé teszi, hogy a kiszolgálók megpihenjenek az azonos eredetű házirendben, és egyes eltérő eredetű kérelmeket is engedélyezzenek, míg mások elutasítását.
 
 ## <a name="understand-and-identify-cors-issues"></a>CORS kapcsolatos problémák ismertetése és azonosítása
 
@@ -52,7 +52,7 @@ A következő képernyőképen a **kipróbálás** gomb kiválasztásával egy C
 
 ## <a name="cors-challenges-with-application-proxy"></a>CORS kapcsolatos kihívások az alkalmazásproxy esetében
 
-Az alábbi példa egy tipikus Azure AD Application Proxy CORS forgatókönyvet mutat be. A belső kiszolgáló egy **CORSWebService** web API-vezérlőt és egy **CORSWebService**meghívására szolgáló **CORSWebClient** üzemeltet. Van egy AJAX-kérés a **CORSWebClient** és a **CORSWebService**között.
+Az alábbi példa egy tipikus Azure AD Application Proxy CORS forgatókönyvet mutat be. A belső kiszolgáló egy **CORSWebService** web API-vezérlőt és egy **CORSWebService** meghívására szolgáló **CORSWebClient** üzemeltet. Van egy AJAX-kérés a **CORSWebClient** és a **CORSWebService** között.
 
 ![Helyszíni azonos eredetű kérelem](./media/application-proxy-understand-cors-issues/image1.png)
 
@@ -66,13 +66,13 @@ A fenti CORS probléma többféleképpen is feloldható.
 
 ### <a name="option-1-set-up-a-custom-domain"></a>1. lehetőség: egyéni tartomány beállítása
 
-Egy Azure-AD Application Proxy [egyéni tartomány](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) használatával tehet közzé ugyanabból a forrásból, anélkül, hogy módosítania kellene az alkalmazás eredetét, kódját vagy fejlécét. 
+Egy Azure-AD Application Proxy [egyéni tartomány](./application-proxy-configure-custom-domain.md) használatával tehet közzé ugyanabból a forrásból, anélkül, hogy módosítania kellene az alkalmazás eredetét, kódját vagy fejlécét. 
 
 ### <a name="option-2-publish-the-parent-directory"></a>2. lehetőség: a szülő könyvtár közzététele
 
 Mindkét alkalmazás szülő könyvtárának közzététele. Ez a megoldás különösen jól működik, ha csak két alkalmazással rendelkezik a webkiszolgálón. Az egyes alkalmazások külön közzététele helyett közzéteheti a közös szülő könyvtárat, amely ugyanezt a forrást eredményezi.
 
-Az alábbi példák a portál Azure AD Application Proxy lapját mutatják be a CORSWebClient alkalmazáshoz.  Ha a **belső URL-cím** a *contoso.com/CORSWebClient*értékre van állítva, az alkalmazás nem tud sikeres kéréseket készíteni a *contoso.com/CORSWebService* könyvtárára, mert azok több eredetűek. 
+Az alábbi példák a portál Azure AD Application Proxy lapját mutatják be a CORSWebClient alkalmazáshoz.  Ha a **belső URL-cím** a *contoso.com/CORSWebClient* értékre van állítva, az alkalmazás nem tud sikeres kéréseket készíteni a *contoso.com/CORSWebService* könyvtárára, mert azok több eredetűek. 
 
 ![Alkalmazás közzététele egyenként](./media/application-proxy-understand-cors-issues/image4.png)
 
@@ -117,4 +117,4 @@ Bizonyos CORS problémák nem oldhatók fel, például amikor az alkalmazás át
 ## <a name="see-also"></a>Lásd még
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md) 
 - [Azure AD alkalmazás-proxy telepítési útmutató](application-proxy-deployment-plan.md) 
-- [Helyi alkalmazásokhoz való távoli hozzáférés Azure Active Directory Application Proxy](application-proxy.md) 
+- [Helyi alkalmazásokhoz való távoli hozzáférés Azure Active Directory Application Proxy](application-proxy.md)
