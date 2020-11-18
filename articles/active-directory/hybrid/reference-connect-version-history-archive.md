@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0adf548b009ad6fe0c85501b9777ff23723b3e24
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 859a4f199e65dd0c3aee9424029f6060683d5fbd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413411"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836087"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect: kiadási előzmények archiválása
 
@@ -212,8 +212,8 @@ Azure AD Connect frissítés meghiúsul, ha az SQL always on rendelkezésre áll
 - Az eszköz visszaírási konfigurációja mostantól kizárólag a Azure AD Connect varázslóban felügyelhető.
 - Egy új, ADSyncTools. psm1 nevű PowerShell-modult ad hozzá, amely az SQL-kapcsolati problémák és a különböző hibaelhárítási segédeszközök hibaelhárítására használható. További információ a [ADSyncTools modulról](tshoot-connect-tshoot-sql-connectivity.md). 
 - Új "eszközbeállítások konfigurálása" nevű további feladat lett hozzáadva. A feladatot a következő két művelet konfigurálására használhatja: 
-  - **Hibrid Azure ad-csatlakozás** : Ha a környezet helyszíni ad-lábnyomot használ, és a Azure Active Directory által biztosított képességek előnyeit is szeretné kihasználni, a hibrid Azure ad-hez csatlakoztatott eszközöket is megvalósíthatja. Ezek olyan eszközök, amelyek a helyszíni Active Directoryhoz és az Azure Active Directoryhoz is csatlakoznak.
-  - **Eszköz visszaírási** : az eszköz visszaírási lehetővé teszi a feltételes hozzáférés engedélyezését az eszközökön alapuló AD FS (2012 R2 vagy újabb) védett eszközökre
+  - **Hibrid Azure ad-csatlakozás**: Ha a környezet helyszíni ad-lábnyomot használ, és a Azure Active Directory által biztosított képességek előnyeit is szeretné kihasználni, a hibrid Azure ad-hez csatlakoztatott eszközöket is megvalósíthatja. Ezek olyan eszközök, amelyek a helyszíni Active Directoryhoz és az Azure Active Directoryhoz is csatlakoznak.
+  - **Eszköz visszaírási**: az eszköz visszaírási lehetővé teszi a feltételes hozzáférés engedélyezését az eszközökön alapuló AD FS (2012 R2 vagy újabb) védett eszközökre
 
     >[!NOTE] 
     > - Az eszköz visszaírási a szinkronizálási beállítások testreszabásával történő engedélyezésének lehetősége szürkén jelenik meg. 
@@ -362,7 +362,7 @@ Zárja le a AD DS fiók hozzáférését a helyszíni AD-ben a következő enged
 *   Távolítsa el az összes Ace-t az adott objektumon, kivéve az önmagukhoz tartozó Ace-ket. Azt szeretnénk, hogy az alapértelmezett engedélyek érintetlenek maradjanak, ha önmagukban is megmaradnak.
 *   Rendelje hozzá ezeket a konkrét engedélyeket:
 
-Típus     | Name                          | Access               | Érvényesség
+Típus     | Név                          | Access               | Érvényesség
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
@@ -425,27 +425,27 @@ További információ: [Microsoft biztonsági tanácsadó 4056318](/security-upd
 #### <a name="fixed-issues"></a>Megoldott problémák
 * A Azure AD Connect varázsló *felhasználói bejelentkezés módosítása* feladatának hibája javítva:
 
-  * A probléma akkor fordul elő, ha a jelszó-szinkronizálással rendelkező meglévő Azure AD Connect-telepítést **engedélyezte** , és a felhasználói bejelentkezési módszert az *átmenő hitelesítésre* próbálja beállítani. A módosítás alkalmazása előtt a varázsló helytelenül jeleníti meg a " *Jelszó-szinkronizálás letiltása* " üzenetet. A jelszó-szinkronizálás azonban továbbra is engedélyezve marad a módosítás alkalmazása után. Ezzel a javítással a varázsló már nem jeleníti meg a kérdést.
+  * A probléma akkor fordul elő, ha a jelszó-szinkronizálással rendelkező meglévő Azure AD Connect-telepítést **engedélyezte**, és a felhasználói bejelentkezési módszert az *átmenő hitelesítésre* próbálja beállítani. A módosítás alkalmazása előtt a varázsló helytelenül jeleníti meg a "*Jelszó-szinkronizálás letiltása*" üzenetet. A jelszó-szinkronizálás azonban továbbra is engedélyezve marad a módosítás alkalmazása után. Ezzel a javítással a varázsló már nem jeleníti meg a kérdést.
 
   * A varázsló nem tiltja le a jelszó-szinkronizálást, ha a felhasználó bejelentkezési módszerét a *felhasználói bejelentkezés módosítása* feladat használatával frissíti. Ezzel elkerülhető, hogy a jelszó-szinkronizálást megtartó ügyfelek ne legyenek megszakítva annak ellenére, hogy engedélyezve vannak az átmenő hitelesítés vagy az összevonás elsődleges felhasználói bejelentkezési módszerként.
 
   * Ha a felhasználói bejelentkezési módszer frissítése után le szeretné tiltani a jelszó-szinkronizálást, akkor a varázslóban végre kell hajtania a *szinkronizálási konfiguráció testreszabása* feladatot. Ha megnyitja a *választható funkciók* lapot, törölje a jelszó- *szinkronizálás* lehetőséget.
 
-  * Vegye figyelembe, hogy ugyanez a probléma akkor is előfordulhat, ha a zökkenőmentes egyszeri bejelentkezés engedélyezését vagy letiltását kísérli meg. A jelszó-szinkronizálás engedélyezve van egy meglévő Azure AD Connect-telepítéssel, és a felhasználói bejelentkezési módszer már be van állítva *átmenő hitelesítésként*. A *felhasználói bejelentkezés módosítása* feladat használatával megpróbálhatja bejelölni/kitörölni a *zökkenőmentes egyszeri bejelentkezés engedélyezése* lehetőséget, miközben a felhasználói bejelentkezési módszer "átmenő hitelesítésként" lesz konfigurálva. A módosítás alkalmazása előtt a varázsló helytelenül jeleníti meg a " *Jelszó-szinkronizálás letiltása* " üzenetet. A jelszó-szinkronizálás azonban továbbra is engedélyezve marad a módosítás alkalmazása után. Ezzel a javítással a varázsló már nem jeleníti meg a kérdést.
+  * Vegye figyelembe, hogy ugyanez a probléma akkor is előfordulhat, ha a zökkenőmentes egyszeri bejelentkezés engedélyezését vagy letiltását kísérli meg. A jelszó-szinkronizálás engedélyezve van egy meglévő Azure AD Connect-telepítéssel, és a felhasználói bejelentkezési módszer már be van állítva *átmenő hitelesítésként*. A *felhasználói bejelentkezés módosítása* feladat használatával megpróbálhatja bejelölni/kitörölni a *zökkenőmentes egyszeri bejelentkezés engedélyezése* lehetőséget, miközben a felhasználói bejelentkezési módszer "átmenő hitelesítésként" lesz konfigurálva. A módosítás alkalmazása előtt a varázsló helytelenül jeleníti meg a "*Jelszó-szinkronizálás letiltása*" üzenetet. A jelszó-szinkronizálás azonban továbbra is engedélyezve marad a módosítás alkalmazása után. Ezzel a javítással a varázsló már nem jeleníti meg a kérdést.
 
 * A Azure AD Connect varázsló *felhasználói bejelentkezés módosítása* feladatának hibája javítva:
 
-  * A probléma akkor fordul elő, ha a jelszó-szinkronizálással meglévő Azure AD Connect üzemelő példánya **le van tiltva** , és a felhasználó bejelentkezési módszerét át szeretné állítani *átmenő hitelesítésként*. A módosítás alkalmazása esetén a varázsló az átmenő hitelesítést és a jelszó-szinkronizálást is lehetővé teszi. Ezzel a javítással a varázsló már nem engedélyezi a jelszó-szinkronizálást.
+  * A probléma akkor fordul elő, ha a jelszó-szinkronizálással meglévő Azure AD Connect üzemelő példánya **le van tiltva**, és a felhasználó bejelentkezési módszerét át szeretné állítani *átmenő hitelesítésként*. A módosítás alkalmazása esetén a varázsló az átmenő hitelesítést és a jelszó-szinkronizálást is lehetővé teszi. Ezzel a javítással a varázsló már nem engedélyezi a jelszó-szinkronizálást.
 
   * Korábban a jelszó-szinkronizálás előfeltétel volt az átmenő hitelesítés engedélyezéséhez. Ha a felhasználói bejelentkezési módszert *átmenő hitelesítésként* állítja be, a varázsló az áteresztő hitelesítést és a jelszó-szinkronizálást is lehetővé teszi. A közelmúltban a jelszó-szinkronizálás el lett távolítva az előfeltételként. Azure AD Connect 1.1.557.0 verziójának részeként módosult a Azure AD Connect, hogy ne engedélyezze a jelszó-szinkronizálást, amikor a felhasználó bejelentkezési módszerét *átmenő hitelesítésként* állítja be. A módosítás azonban csak Azure AD Connect telepítésre lett alkalmazva. Ezzel a javítással ugyanezt a módosítást is alkalmazza a rendszer a felhasználó bejelentkezési feladatának *módosítására* .
 
   * Vegye figyelembe, hogy ugyanez a probléma akkor is előfordulhat, ha a zökkenőmentes egyszeri bejelentkezés engedélyezését vagy letiltását kísérli meg. A jelszó-szinkronizálással meglévő Azure AD Connect üzemelő példánya le van tiltva, és a felhasználói bejelentkezési módszer már be van állítva *átmenő hitelesítésként*. A *felhasználói bejelentkezés módosítása* feladat használatával megpróbálhatja bejelölni/kitörölni a *zökkenőmentes egyszeri bejelentkezés engedélyezése* lehetőséget, miközben a felhasználói bejelentkezési módszer "átmenő hitelesítésként" lesz konfigurálva. A módosítás alkalmazása után a varázsló engedélyezi a jelszó-szinkronizálást. Ezzel a javítással a varázsló már nem engedélyezi a jelszó-szinkronizálást. 
 
-* Kijavított egy problémát, amely miatt Azure AD Connect frissítés sikertelen volt, hiba: " *nem sikerült frissíteni a szinkronizációs szolgáltatást* ". A szinkronizálási szolgáltatás többé nem kezdődhet "a szolgáltatás nem indítható el" hibaüzenettel, *mert az adatbázis verziója újabb, mint a telepített bináris fájlok verziója*. A probléma akkor fordul elő, ha a frissítést végrehajtó rendszergazda nem rendelkezik rendszergazdai jogosultsággal az Azure AD Connect által használt SQL-kiszolgálóhoz. Ezzel a javítással a Azure AD Connect csak a rendszergazdának kell db_owner jogosultsággal rendelkeznie a ADSync-adatbázishoz a frissítés során.
+* Kijavított egy problémát, amely miatt Azure AD Connect frissítés sikertelen volt, hiba: "*nem sikerült frissíteni a szinkronizációs szolgáltatást*". A szinkronizálási szolgáltatás többé nem kezdődhet "a szolgáltatás nem indítható el" hibaüzenettel,*mert az adatbázis verziója újabb, mint a telepített bináris fájlok verziója*. A probléma akkor fordul elő, ha a frissítést végrehajtó rendszergazda nem rendelkezik rendszergazdai jogosultsággal az Azure AD Connect által használt SQL-kiszolgálóhoz. Ezzel a javítással a Azure AD Connect csak a rendszergazdának kell db_owner jogosultsággal rendelkeznie a ADSync-adatbázishoz a frissítés során.
 
 * Kijavított egy Azure AD Connect frissítési problémát, amelyet a [zökkenőmentes egyszeri bejelentkezést](./how-to-connect-sso.md)engedélyező ügyfelek érintettek. Azure AD Connect frissítése után a zökkenőmentes önálló Sign-On helytelenül jelenik meg a Azure AD Connect varázslóban, még akkor is, ha a funkció engedélyezve van és teljes mértékben működőképes marad. Ezzel a javítással a funkció mostantól helyesen jelenik meg a varázslóban.
 
-* Kijavított egy problémát, amely azt eredményezte, hogy Azure AD Connect varázsló mindig megjeleníti a " *forrás-horgony konfigurálása* " kérést a *konfigurálásra kész* lapon, még akkor is, ha nem történt változás a forrás-rögzítéssel kapcsolatban.
+* Kijavított egy problémát, amely azt eredményezte, hogy Azure AD Connect varázsló mindig megjeleníti a "*forrás-horgony konfigurálása*" kérést a *konfigurálásra kész* lapon, még akkor is, ha nem történt változás a forrás-rögzítéssel kapcsolatban.
 
 * Azure AD Connect manuális helyi frissítésének végrehajtásakor az ügyfélnek meg kell adnia a megfelelő Azure AD-bérlő globális rendszergazdai hitelesítő adatait. Korábban a frissítés akkor is folytatható, ha a globális rendszergazda hitelesítő adatai egy másik Azure AD-bérlőhöz tartoztak. Ha a frissítés sikeresen befejeződött, bizonyos konfigurációk nem maradnak meg megfelelően a frissítéssel. Ezzel a módosítással a varázsló megakadályozza a frissítés folytatását, ha a megadott hitelesítő adatok nem egyeznek az Azure AD-Bérlővel.
 
@@ -480,7 +480,7 @@ További információ: [Microsoft biztonsági tanácsadó 4056318](/security-upd
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="known-issues"></a>Ismert problémák
-* Létezik egy ismert probléma, amely miatt Azure AD Connect frissítés sikertelen a következő hiba miatt: " *nem sikerült frissíteni a szinkronizációs szolgáltatást* ". A szinkronizálási szolgáltatás többé nem kezdődhet "a szolgáltatás nem indítható el" hibaüzenettel, *mert az adatbázis verziója újabb, mint a telepített bináris fájlok verziója*. A probléma akkor fordul elő, ha a frissítést végrehajtó rendszergazda nem rendelkezik rendszergazdai jogosultsággal az Azure AD Connect által használt SQL-kiszolgálóhoz. A dbo engedélyei nem elegendőek.
+* Létezik egy ismert probléma, amely miatt Azure AD Connect frissítés sikertelen a következő hiba miatt: "*nem sikerült frissíteni a szinkronizációs szolgáltatást*". A szinkronizálási szolgáltatás többé nem kezdődhet "a szolgáltatás nem indítható el" hibaüzenettel,*mert az adatbázis verziója újabb, mint a telepített bináris fájlok verziója*. A probléma akkor fordul elő, ha a frissítést végrehajtó rendszergazda nem rendelkezik rendszergazdai jogosultsággal az Azure AD Connect által használt SQL-kiszolgálóhoz. A dbo engedélyei nem elegendőek.
 
 * Ismert probléma van Azure AD Connect frissítéssel kapcsolatban, amely hatással van a [zökkenőmentes egyszeri bejelentkezést](how-to-connect-sso.md)engedélyező ügyfelekre. Azure AD Connect frissítése után a szolgáltatás letiltottként jelenik meg a varázslóban, még akkor is, ha a funkció engedélyezve marad. A probléma megoldása a következő kiadásban lesz elérhető. Azok az ügyfelek, akik aggódnak erről a megjelenítési hibáról, manuálisan is kijavíthatják azt a varázsló zökkenőmentes egyetlen Sign-Onének engedélyezésével.
 
@@ -1023,7 +1023,7 @@ Kiadás dátuma: február 2016
 **Új funkciók:**
 
 * [Automatikus frissítési](how-to-connect-install-automatic-upgrade.md) funkció az expressz beállítások ügyfelei számára.
-* A globális rendszergazda támogatása az Azure Multi-Factor Authentication és Privileged Identity Management használatával a telepítővarázsló segítségével.
+* A globális rendszergazda támogatása az Azure AD Multi-Factor Authentication és Privileged Identity Management használatával a telepítővarázsló segítségével.
   * Engedélyeznie kell, hogy a proxy a Multi-Factor Authentication használata esetén is engedélyezze a forgalmat https://secure.aadcdn.microsoftonline-p.com .
   * A https://secure.aadcdn.microsoftonline-p.com multi-Factor Authentication megfelelő működéséhez hozzá kell adnia a megbízható helyek listájához.
 * A felhasználói bejelentkezési módszer módosításának engedélyezése a kezdeti telepítés után.
@@ -1221,5 +1221,5 @@ Kiadás dátuma: szeptember 2014
 
 **Azure AD-szinkronizáló kezdeti kiadása.**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

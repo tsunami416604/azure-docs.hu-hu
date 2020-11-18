@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 8e345b27fdb2604c0c3264d6935cb9cff8aeec9c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656734"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835662"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése
 
@@ -26,7 +26,7 @@ Az Azure AD saját alkalmazások használatával a következőket teheti:
 * Felderítheti és elérheti vállalata Azure AD-hez kapcsolódó erőforrásait, például az alkalmazásokat
 * Hozzáférés kérése új alkalmazásokhoz és csoportokhoz
 * Ezekhez az erőforrásokhoz való hozzáférés kezelése mások számára
-* Önkiszolgáló jelszavak alaphelyzetbe állítása és az Azure Multi-Factor Authentication beállításainak kezelése
+* Önkiszolgáló jelszó-visszaállítások és az Azure AD-Multi-Factor Authentication beállításainak kezelése
 * Eszközök kezelése
 
 Emellett a rendszergazdák számára is lehetővé teszi a felügyeletet:
@@ -54,7 +54,7 @@ A **robusztus naplózás és használat nyomon követését teszi lehetővé**: 
 
 Az alkalmazások ingyenesek, és nem igényelnek alapszintű licencet. A címtárban lévő objektumok száma és a telepíteni kívánt további funkciók azonban további licenceket igényelhetnek. A licencelési követelményekkel rendelkező gyakori Azure AD-forgatókönyvek a következő biztonsági funkciókat tartalmazzák:
 
-* [Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Azure AD-Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 * [Csoport alapú tagság](../fundamentals/active-directory-manage-groups.md)
 * [Új jelszó önkiszolgáló kérése](../authentication/tutorial-enable-sspr.md)
 * [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
@@ -312,4 +312,4 @@ A legkevesebb Kiemelt szerepkörrel hajtson végre egy szükséges feladatot a A
 A [Privileged Identity Management](../privileged-identity-management/pim-configure.md) segítségével kezelheti a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot biztosítson a címtár-jogosultságokkal rendelkező felhasználók számára.
 
 ## <a name="next-steps"></a>Következő lépések
-[Az Azure Multi-Factor Authentication üzembe helyezésének megtervezése](../authentication/howto-mfa-getstarted.md)
+[Az Azure AD-Multi-Factor Authentication üzembe helyezésének megtervezése](../authentication/howto-mfa-getstarted.md)

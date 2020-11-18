@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e38d8261bf141248fd143f27c74e0761e54f73f9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: eaa4a8f92809dcf44969958573231ad37d908daa
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649330"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835697"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Biztonságos hozzáférés a helyszíni API-khoz az Azure AD Application Proxy
 
@@ -36,7 +36,7 @@ Az alábbi ábra bemutatja, hogyan használható az Azure AD Application Proxy a
 
 Az Azure AD Application Proxy a megoldás gerincét képezi, amely nyilvános végpontként működik az API-hozzáféréshez, és biztosítja a hitelesítést és az engedélyezést. A [Microsoft Authentication Library (MSAL)](../azuread-dev/active-directory-authentication-libraries.md) -kódtárak használatával a platformok széles köréhez férhet hozzá.
 
-Mivel az Azure AD Application Proxy hitelesítés és engedélyezés az Azure AD-re épül, az Azure AD feltételes hozzáférés használatával biztosíthatja, hogy csak a megbízható eszközök férhessenek hozzá az Application proxyn keresztül közzétett API-khoz. Az Azure AD JOIN vagy az Azure AD hibrid csatlakoztatása asztali számítógépekhez és az Intune által felügyelt eszközökhöz. Kihasználhatja az Azure-Multi-Factor Authentication, valamint az [Azure Identity Protection](../identity-protection/overview-identity-protection.md)gépi tanulásra képes biztonsági mentésével prémium szintű Azure Active Directory szolgáltatásokat is.
+Mivel az Azure AD Application Proxy hitelesítés és engedélyezés az Azure AD-re épül, az Azure AD feltételes hozzáférés használatával biztosíthatja, hogy csak a megbízható eszközök férhessenek hozzá az Application proxyn keresztül közzétett API-khoz. Az Azure AD JOIN vagy az Azure AD hibrid csatlakoztatása asztali számítógépekhez és az Intune által felügyelt eszközökhöz. Kihasználhatja az Azure AD-Multi-Factor Authentication, valamint az [Azure Identity Protection](../identity-protection/overview-identity-protection.md)gépi tanulásra képes biztonsági mentésének prémium szintű Azure Active Directory funkcióit is.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

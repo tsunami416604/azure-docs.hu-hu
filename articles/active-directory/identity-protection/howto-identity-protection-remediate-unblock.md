@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd918aef85deefc23771413c3eb7b92f1189d39
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776102"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835798"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>Kockázatok szervizelése és a felhasználók blokkolásának feloldása
 
@@ -37,7 +37,7 @@ A rendszergazdák a következő lehetőségek közül választhatnak:
 
 ### <a name="self-remediation-with-risk-policy"></a>Önszervizelés kockázati házirenddel
 
-Ha lehetővé teszi a felhasználók számára az önkiszolgálást, az Azure Multi-Factor Authentication (MFA) és az önkiszolgáló jelszó-visszaállítást (SSPR) az Ön kockázati házirendjeiben, akkor feloldhatók a kockázatok észlelése esetén. Ezeket az észleléseket a rendszer lezártnak tekinti. A felhasználóknak előzőleg regisztrálniuk kell az Azure MFA-t és a SSPR-t ahhoz, hogy a rendszer felderítse a kockázatot.
+Ha az Azure AD Multi-Factor Authentication (MFA) és az önkiszolgáló jelszó-visszaállítás (SSPR) révén lehetővé teszi a felhasználók számára a kockázatkezelést, akkor a kockázat észlelésekor feloldják magukat. Ezeket az észleléseket a rendszer lezártnak tekinti. A felhasználóknak előzőleg regisztrálniuk kell az Azure AD MFA-t és a SSPR-t, ha a rendszer kockázatot észlel.
 
 Előfordulhat, hogy bizonyos észlelések nem növelik a kockázatokat arra a szintre, ahol a felhasználó önszervizelése kötelező, de a rendszergazdáknak továbbra is értékelniük kell ezeket az észleléseket. A rendszergazdák meghatározhatják, hogy további mértékek szükségesek, például [blokkolja a hozzáférést a helyekről](../conditional-access/howto-conditional-access-policy-location.md) , vagy csökkentheti a szabályzatok elfogadható kockázatát.
 
@@ -49,13 +49,13 @@ A rendszergazdák két lehetőséget kapnak a felhasználók jelszavának alaphe
 
 - **Ideiglenes jelszó létrehozása** – ideiglenes jelszó létrehozásával azonnal visszaállíthatja az identitást biztonságos állapotba. Ehhez a metódushoz kapcsolatba kell lépnie az érintett felhasználókkal, mert tudniuk kell, hogy mi az ideiglenes jelszó. Mivel a jelszó ideiglenes, a rendszer a következő bejelentkezéskor kéri a felhasználót, hogy változtassa meg a jelszót valami újat.
 
-- **A jelszó alaphelyzetbe állításának megkövetelése a felhasználótól** – a jelszavak alaphelyzetbe állítását igénylő felhasználók számára lehetővé teszi az önhelyreállítást az ügyfélszolgálat vagy a rendszergazda segítsége nélkül Ez a módszer csak az Azure MFA és a SSPR szolgáltatásban regisztrált felhasználókra vonatkozik. A nem regisztrált felhasználók esetében ez a lehetőség nem érhető el.
+- **A jelszó alaphelyzetbe állításának megkövetelése a felhasználótól** – a jelszavak alaphelyzetbe állítását igénylő felhasználók számára lehetővé teszi az önhelyreállítást az ügyfélszolgálat vagy a rendszergazda segítsége nélkül Ez a módszer csak az Azure AD MFA és a SSPR szolgáltatásban regisztrált felhasználókra vonatkozik. A nem regisztrált felhasználók esetében ez a lehetőség nem érhető el.
 
 ### <a name="dismiss-user-risk"></a>Felhasználói kockázat elvetése
 
 Ha a jelszó alaphelyzetbe állítása nem lehetséges, mert például a felhasználó törölve lett, dönthet úgy, hogy elveti a felhasználói kockázatok észlelését.
 
-Ha a **felhasználói kockázat elvetése**gombra kattint, az összes esemény be van zárva, és az érintett felhasználó már nem veszélyeztetett. Mivel azonban ez a módszer nem befolyásolja a meglévő jelszót, nem vonja vissza a kapcsolódó identitást biztonságos állapotba. 
+Ha a **felhasználói kockázat elvetése** gombra kattint, az összes esemény be van zárva, és az érintett felhasználó már nem veszélyeztetett. Mivel azonban ez a módszer nem befolyásolja a meglévő jelszót, nem vonja vissza a kapcsolódó identitást biztonságos állapotba. 
 
 ### <a name="close-individual-risk-detections-manually"></a>Egyéni kockázati észlelések manuális lezárása
 

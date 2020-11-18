@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49f3e082969b7483601088cd976d8cc30d500017
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 366d68be1a7f115980973015e363da6095876754
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367465"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835917"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Útmutató: kockázatkezelési szabályzatok konfigurálása és engedélyezése
 
@@ -33,7 +33,7 @@ Mindkét szabályzat úgy működik, hogy automatizálja a kockázati észlelés
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Ha a szervezet szeretné lehetővé tenni a felhasználók számára, hogy a kockázatok észlelése után is önmagukban tudják javítani a felhasználókat, regisztrálni kell mind az önkiszolgáló jelszó-visszaállítást, mind az Azure-Multi-Factor Authentication. Javasoljuk, hogy a lehető legjobb felhasználói élmény érdekében [engedélyezze a kombinált biztonsági információk regisztrálását](../authentication/howto-registration-mfa-sspr-combined.md) . Lehetővé teheti a felhasználók számára, hogy a rendszergazda beavatkozása nélkül gyorsabban visszakapjanak produktív állapotba. A rendszergazdák továbbra is láthatják ezeket az eseményeket, és a tény után kivizsgálják azokat. 
+Ha a szervezet szeretné lehetővé tenni a felhasználók számára, hogy a kockázatok észlelése után is önmagukban tudják javítani a felhasználókat, regisztrálni kell mind az önkiszolgáló jelszó-visszaállítást, mind az Azure AD-Multi-Factor Authentication. Javasoljuk, hogy a lehető legjobb felhasználói élmény érdekében [engedélyezze a kombinált biztonsági információk regisztrálását](../authentication/howto-registration-mfa-sspr-combined.md) . Lehetővé teheti a felhasználók számára, hogy a rendszergazda beavatkozása nélkül gyorsabban visszakapjanak produktív állapotba. A rendszergazdák továbbra is láthatják ezeket az eseményeket, és a tény után kivizsgálják azokat. 
 
 ## <a name="choosing-acceptable-risk-levels"></a>Elfogadható kockázati szintek kiválasztása
 
@@ -55,20 +55,20 @@ A felhasználói kockázat és a bejelentkezési kockázati házirendek engedél
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com).
 1. Tallózással keresse meg **Azure Active Directory**  >  **biztonsági**  >  **azonosítók védelmének**  >  **áttekintését**.
-1. Válassza a **felhasználói kockázati házirend**elemet.
+1. Válassza a **felhasználói kockázati házirend** elemet.
    1. A **hozzárendelések** alatt
       1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
          1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
-      1. **Feltételek**  -  **Felhasználói kockázat** A Microsoft javaslata, hogy ezt a beállítást **magas**értékre állítsa.
+      1. **Feltételek**  -  **Felhasználói kockázat** A Microsoft javaslata, hogy ezt a beállítást **magas** értékre állítsa.
    1. A **vezérlők** területen
       1. **Hozzáférés** – a Microsoft javaslata a **hozzáférés engedélyezése** és a **jelszó megkövetelése**.
    1. Szabályzat érvénybe **léptetése**  -  **Bekapcsolva**
    1. **Mentés** – ez a művelet visszaküldi az **Áttekintés** oldalra.
-1. Válassza **a bejelentkezési kockázati házirend**elemet.
+1. Válassza **a bejelentkezési kockázati házirend** elemet.
    1. A **hozzárendelések** alatt
       1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
          1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
-      1. **Feltételek**  -  **Bejelentkezési kockázat** A Microsoft javaslata, hogy ezt a beállítást **közepes és újabb**értékre állítsa be.
+      1. **Feltételek**  -  **Bejelentkezési kockázat** A Microsoft javaslata, hogy ezt a beállítást **közepes és újabb** értékre állítsa be.
    1. A **vezérlők** területen
       1. **Hozzáférés** – a Microsoft javaslata, hogy **engedélyezze a hozzáférést** és a **többtényezős hitelesítés megkövetelését**.
    1. Szabályzat érvénybe **léptetése**  -  **Bekapcsolva**
@@ -76,7 +76,7 @@ A felhasználói kockázat és a bejelentkezési kockázati házirendek engedél
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Multi-Factor Authentication regisztrációs szabályzatának engedélyezése](howto-identity-protection-configure-mfa-policy.md)
+- [Az Azure AD Multi-Factor Authentication regisztrációs szabályzatának engedélyezése](howto-identity-protection-configure-mfa-policy.md)
 
 - [Mi a kockázat](concept-identity-protection-risks.md)
 

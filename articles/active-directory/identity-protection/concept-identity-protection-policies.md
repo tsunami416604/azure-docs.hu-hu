@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8776ad915ff215eef143f62aaa9e242ff0354f3e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 28a9080ce878e262573adf0b3c79394079c09ca2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368791"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835968"
 ---
 # <a name="identity-protection-policies"></a>Identity Protection-szabályzatok
 
@@ -24,11 +24,11 @@ A Azure Active Directory Identity Protection három alapértelmezett szabályzat
 
 ![Identity Protection-szabályzatok](./media/concept-identity-protection-policies/identity-protection-policies.png)
 
-## <a name="azure-mfa-registration-policy"></a>Azure MFA regisztrációs szabályzat
+## <a name="azure-ad-mfa-registration-policy"></a>Azure AD MFA regisztrációs szabályzat
 
-Az Identity Protection lehetővé teszi a szervezetek számára, hogy az Azure-Multi-Factor Authentication (MFA) a bejelentkezéskor regisztrációt igénylő feltételes hozzáférési szabályzattal nyújtsanak be. Ennek a szabályzatnak a engedélyezése nagyszerű módja annak, hogy a szervezet új felhasználói az első napon regisztrálták az MFA-t. A többtényezős hitelesítés a kockázati események egyik önszervizelési módszere az Identity Protectionben. Az önszervizelés lehetővé teszi, hogy a felhasználók saját maguk végezzék el az ügyfélszolgálati hívások mennyiségének csökkentését.
+Az Identity Protection lehetővé teszi a szervezetek számára az Azure AD Multi-Factor Authentication (MFA) használatát a bejelentkezést igénylő feltételes hozzáférési szabályzattal. Ennek a szabályzatnak a engedélyezése nagyszerű módja annak, hogy a szervezet új felhasználói az első napon regisztrálták az MFA-t. A többtényezős hitelesítés a kockázati események egyik önszervizelési módszere az Identity Protectionben. Az önszervizelés lehetővé teszi, hogy a felhasználók saját maguk végezzék el az ügyfélszolgálati hívások mennyiségének csökkentését.
 
-Az Azure Multi-Factor Authentication-ról további információt talál a következő cikkben, [Hogyan működik: azure multi-Factor Authentication](../authentication/concept-mfa-howitworks.md).
+Az Azure AD Multi-Factor Authentication kapcsolatos további információkért tekintse meg a következő cikket [: az Azure ad multi-Factor Authentication működése](../authentication/concept-mfa-howitworks.md).
 
 ## <a name="sign-in-risk-policy"></a>Bejelentkezési kockázati szabályzat
 
@@ -37,7 +37,7 @@ Az Identity Protection elemzi az egyes bejelentkezések, valós idejű és offli
 Ha a rendszer veszélyezteti a kockázatot, a felhasználók a többtényezős hitelesítést a saját kiszolgálására, valamint a kockázatos bejelentkezési esemény bezárására is használhatják a rendszergazdák számára szükségtelen zaj megelőzése érdekében.
 
 > [!NOTE] 
-> A bejelentkezési kockázati házirend elindítása előtt a felhasználóknak előzőleg regisztrálniuk kell az Azure Multi-Factor Authentication-ban.
+> A bejelentkezési kockázati házirend elindítása előtt a felhasználóknak előzőleg regisztrálniuk kell az Azure AD-Multi-Factor Authentication.
 
 ### <a name="custom-conditional-access-policy"></a>Egyéni feltételes hozzáférési szabályzat
 
@@ -58,8 +58,8 @@ Ha a rendszer veszélyezteti a kockázatot, a felhasználók önkiszolgáló jel
 
 - [Az Azure AD önkiszolgáló jelszó-visszaállítás engedélyezése](../authentication/howto-sspr-deployment.md)
 
-- [Az Azure Multi-Factor Authentication engedélyezése](../authentication/howto-mfa-getstarted.md)
+- [Azure AD-Multi-Factor Authentication engedélyezése](../authentication/howto-mfa-getstarted.md)
 
-- [Az Azure Multi-Factor Authentication regisztrációs szabályzatának engedélyezése](howto-identity-protection-configure-mfa-policy.md)
+- [Az Azure AD Multi-Factor Authentication regisztrációs szabályzatának engedélyezése](howto-identity-protection-configure-mfa-policy.md)
 
 - [Bejelentkezési és felhasználói kockázati házirendek engedélyezése](howto-identity-protection-configure-risk-policies.md)

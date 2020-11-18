@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff2651d2fed9c307bbb90623572b4a74d750d3a4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014633"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836070"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect GYIK
 
@@ -218,7 +218,7 @@ Igen, továbbra is frissítenie kell a 1.1.750.0 vagy újabb verzióra. Az autom
 Nem kell tudnia a Azure AD Connect frissítéséhez eredetileg használt felhasználónevet és jelszót. Használja a globális rendszergazdai szerepkörrel rendelkező bármely Azure AD-fiókot.
 
 **K: Hogyan lehet megkeresni, hogy a Azure AD Connect melyik verzióját használom?**  
-Annak ellenőrzéséhez, hogy a Azure ad Connect melyik verziója van telepítve a kiszolgálón, lépjen a Vezérlőpult elemre, és keresse meg Microsoft Azure ad kapcsolódás telepített verzióját a **programok**  >  **programok és szolgáltatások**elem kiválasztásával, ahogy az itt látható:
+Annak ellenőrzéséhez, hogy a Azure ad Connect melyik verziója van telepítve a kiszolgálón, lépjen a Vezérlőpult elemre, és keresse meg Microsoft Azure ad kapcsolódás telepített verzióját a **programok**  >  **programok és szolgáltatások** elem kiválasztásával, ahogy az itt látható:
 
 ![Azure AD Connect verziója a Vezérlőpulton](./media/reference-connect-faq/faq1.png)
 
@@ -261,7 +261,7 @@ Ha segítségre van szüksége a Azure AD Connect újabb verziójára való fris
 ## <a name="operational-best-practice"></a>Operatív ajánlott eljárás    
 Az alábbiakban ismertetjük a Windows Server Active Directory és Azure Active Directory közötti szinkronizálás során megvalósított ajánlott eljárásokat.
 
-**Multi-Factor Authentication alkalmazása az összes szinkronizált fiókra** Az Azure Multi-Factor Authentication segít az adatkezelésben és az alkalmazásokban való hozzáférésben, miközben a felhasználók egyszerűségét is fenntartja. További biztonságot nyújt a hitelesítés második formáját igényli, és erős hitelesítést tesz lehetővé számos könnyen használható hitelesítési módszer segítségével. A rendszergazda által létrehozott konfigurációs döntések alapján előfordulhat, hogy a felhasználók nem tudják feltámadni az MFA-t. Az MFA-ról itt talál további információt: https://www.microsoft.com/security/business/identity/mfa?rtc=1
+**Multi-Factor Authentication alkalmazása az összes szinkronizált fiókra** Az Azure AD Multi-Factor Authentication segít megőrizni az adathozzáférést és az alkalmazásokat, miközben a felhasználók számára egyszerűséget biztosít. További biztonságot nyújt a hitelesítés második formáját igényli, és erős hitelesítést tesz lehetővé számos könnyen használható hitelesítési módszer segítségével. A rendszergazda által létrehozott konfigurációs döntések alapján előfordulhat, hogy a felhasználók nem tudják feltámadni az MFA-t. Az MFA-ról itt talál további információt: https://www.microsoft.com/security/business/identity/mfa?rtc=1
 
 **Kövesse a Azure ad Connect-kiszolgáló biztonsági irányelveit** A Azure AD Connect kiszolgáló kritikus identitási adatokból áll, és 0. rétegű összetevőként kell kezelni, ahogy azt az [Active Directory felügyeleti csomag modelljében](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)dokumentálták. Tekintse meg a [AADConnect-kiszolgáló biztonságossá tételére vonatkozó irányelveket](./how-to-connect-install-prerequisites.md#azure-ad-connect-server)is.
 

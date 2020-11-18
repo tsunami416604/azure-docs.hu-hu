@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f52e46ff9cab7d3d150af9fd7b4f1c432bec74b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294867"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836189"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Hibrid identitás-bevezetési stratégia definiálása
 Ebben a feladatban megadhatja a hibrid identitás-bevezetési stratégiát a hibrid személyazonossági megoldáshoz, hogy megfeleljenek a következő cikkben tárgyalt üzleti követelményeknek:
@@ -176,7 +176,7 @@ A következők nem támogatottak, és nem választhatók implementációként:
 > 
 
 ## <a name="define-multi-factor-authentication-strategy"></a>Multi-Factor Authentication stratégia meghatározása
-Ebben a feladatban a használni kívánt multi-Factor Authentication stratégiát fogja meghatározni.  Az Azure Multi-Factor Authentication két különböző verzióban érhető el.  Az egyik a felhőalapú, a másik pedig a helyszíni Azure MFA-kiszolgáló használatával.  A fenti kiértékelés alapján meghatározhatja, hogy melyik megoldás a legmegfelelőbb a stratégiához.  Az alábbi táblázat segítségével meghatározhatja, hogy melyik tervezési lehetőség felel meg legjobban a vállalat biztonsági követelményeinek:
+Ebben a feladatban a használni kívánt multi-Factor Authentication stratégiát fogja meghatározni.  Az Azure AD Multi-Factor Authentication két különböző verzióban érhető el.  Az egyik a felhőalapú, a másik pedig a helyszíni Azure MFA-kiszolgáló használatával.  A fenti kiértékelés alapján meghatározhatja, hogy melyik megoldás a legmegfelelőbb a stratégiához.  Az alábbi táblázat segítségével meghatározhatja, hogy melyik tervezési lehetőség felel meg legjobban a vállalat biztonsági követelményeinek:
 
 Multi-Factor design beállításai:
 
@@ -213,6 +213,6 @@ A többtényezős hitelesítés alapértelmezés szerint olyan globális rendsze
 ## <a name="next-steps"></a>Következő lépések
 [Adatvédelmi követelmények meghatározása](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 [Tervezési szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
 

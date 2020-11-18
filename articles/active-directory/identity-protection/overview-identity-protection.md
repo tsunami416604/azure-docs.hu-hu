@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ed8d645c5bedf6df087fa9c948415c6a1df24e9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 74cc5bb2b434e757e090bac45202704eb934a522
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783181"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835747"
 ---
 # <a name="what-is-identity-protection"></a>Mi az az Identity Protection?
 
@@ -39,9 +39,9 @@ Az 2018 Alex Weinert [októberi blogbejegyzést](https://techcommunity.microsoft
 >
 > Az Ignite tavaly megbeszélte az első 3 támadást az Identity Systems-ben. Itt láthatók a támadások legutóbbi mennyisége
 >   
->   - **Visszajátszási ismétlés** : 4,6 milliárd támadás észlelhető 2018 májusában
->   - **Jelszó spray** : 350k áprilisban 2018
->   - **Adathalászat** : ez nehezen számszerűsíthető, de a 23M kockázati eseményeinek száma a 2018-as számú.
+>   - **Visszajátszási ismétlés**: 4,6 milliárd támadás észlelhető 2018 májusában
+>   - **Jelszó spray**: 350k áprilisban 2018
+>   - **Adathalászat**: ez nehezen számszerűsíthető, de a 23M kockázati eseményeinek száma a 2018-as számú.
 
 ## <a name="risk-detection-and-remediation"></a>Kockázatok észlelése és szervizelése
 
@@ -59,7 +59,7 @@ Az Identity Protection a következő besorolások kockázatait azonosítja:
 
 A kockázatokról és azok kiszámításáról további részleteket a cikkben [találhat.](concept-identity-protection-risks.md)
 
-A kockázati jelek olyan szervizelési erőfeszítéseket válthatnak ki, mint például a felhasználók megkövetelése: az Azure Multi-Factor Authentication elvégzése, jelszó alaphelyzetbe állítása az önkiszolgáló jelszó-visszaállítással vagy a rendszergazda beavatkozása nélkül.
+A kockázati jelek olyan szervizelési erőfeszítéseket válthatnak ki, mint például a felhasználók megkövetelése: az Azure AD-Multi-Factor Authentication elvégzése, jelszó visszaállítása önkiszolgáló jelszó-visszaállítással vagy a rendszergazda beavatkozása nélkül.
 
 ## <a name="risk-investigation"></a>Kockázati vizsgálat
 
@@ -87,7 +87,7 @@ Az Identity Protection-információk Azure Sentineltel való integrálásával k
 
 Az Identity Protection használatához a felhasználóknak biztonsági olvasónak, biztonsági kezelőnek, biztonsági rendszergazdának, globális olvasónak vagy globális rendszergazdának kell lenniük ahhoz, hogy hozzáférjenek.
 
-| Role | Elvégezhető | Nem hajtható végre |
+| Szerepkör | Elvégezhető | Nem hajtható végre |
 | --- | --- | --- |
 | Globális rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz |   |
 | Biztonsági rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz | Felhasználó jelszavának alaphelyzetbe állítása |

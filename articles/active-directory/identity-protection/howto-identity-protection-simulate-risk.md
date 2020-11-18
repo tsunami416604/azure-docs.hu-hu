@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eafeaf59757fcda978fa89b4bc2f9882b769e48
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84463756"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835900"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>A kockázatok észlelésének szimulálása az Identity Protectionben
 
@@ -40,7 +40,7 @@ A kockázatok észlelésével kapcsolatos további információkért tekintse me
 Az alábbi eljárás végrehajtásához a következőket kell használnia:
 
 - A [Tor böngésző](https://www.torproject.org/projects/torbrowser.html.en) névtelen IP-címeket szimulál. Előfordulhat, hogy egy virtuális gépet kell használnia, ha a szervezet a Tor böngésző használatával korlátozza a használatát.
-- Olyan tesztelési fiók, amely még nincs regisztrálva az Azure Multi-Factor Authentication.
+- Olyan tesztelési fiók, amely még nincs regisztrálva az Azure AD-Multi-Factor Authentication.
 
 **Egy névtelen IP-címről történő bejelentkezés szimulálása érdekében hajtsa végre a következő lépéseket**:
 
@@ -61,7 +61,7 @@ Az alábbi eljárás egy újonnan létrehozott műveletet használ:
 Az alábbi eljárás végrehajtásához olyan felhasználói fiókot kell használnia, amely a következő:
 
 - Legalább egy 30 napos bejelentkezési előzmény.
-- Az Azure Multi-Factor Authentication engedélyezve.
+- Az Azure AD Multi-Factor Authentication engedélyezve.
 
 **Ha a bejelentkezést ismeretlen helyről szeretné szimulálni, hajtsa végre a következő lépéseket**:
 
@@ -94,11 +94,11 @@ A felhasználói kockázatokra vonatkozó biztonsági házirend teszteléséhez 
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com).
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **áttekintést**.
-1. Válassza a **felhasználói kockázati házirend konfigurálása**lehetőséget.
+1. Válassza a **felhasználói kockázati házirend konfigurálása** lehetőséget.
    1. A **hozzárendelések** alatt
       1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
          1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
-      1. **Feltételek**  -  **Felhasználói kockázat** A Microsoft javaslata, hogy ezt a beállítást **magas**értékre állítsa.
+      1. **Feltételek**  -  **Felhasználói kockázat** A Microsoft javaslata, hogy ezt a beállítást **magas** értékre állítsa.
    1. A **vezérlők** területen
       1. **Hozzáférés** – a Microsoft javaslata a **hozzáférés engedélyezése** és a **jelszó megkövetelése**.
    1. Szabályzat érvénybe **léptetése**  -  **Kikapcsolva**
@@ -114,18 +114,18 @@ A bejelentkezési kockázati szabályzat teszteléséhez hajtsa végre a követk
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com).
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **áttekintést**.
-1. Válassza a **bejelentkezési kockázati házirend konfigurálása**lehetőséget.
+1. Válassza a **bejelentkezési kockázati házirend konfigurálása** lehetőséget.
    1. A **hozzárendelések** alatt
       1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
          1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
-      1. **Feltételek**  -  **Bejelentkezési kockázat** A Microsoft javaslata, hogy ezt a beállítást **közepes és újabb**értékre állítsa be.
+      1. **Feltételek**  -  **Bejelentkezési kockázat** A Microsoft javaslata, hogy ezt a beállítást **közepes és újabb** értékre állítsa be.
    1. A **vezérlők** területen
       1. **Hozzáférés** – a Microsoft javaslata, hogy **engedélyezze a hozzáférést** és a **többtényezős hitelesítés megkövetelését**.
    1. Szabályzat érvénybe **léptetése**  -  **Bekapcsolva**
    1. **Mentés** – ez a művelet visszaküldi az **Áttekintés** oldalra.
 1. A bejelentkezési kockázat alapú feltételes hozzáférést mostantól kockázatos munkamenet használatával is tesztelheti (például a Tor böngésző használatával). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mit jelent a kockázat?](concept-identity-protection-risks.md)
 
