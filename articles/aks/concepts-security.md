@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: b81b592cf35d0ca13d1c7bd2281ce35cce827a3c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 1adf8370f55a0f6131eb4140c58fa4618e08127b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057858"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686021"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) alkalmazásainak és fürtjeinek biztonsági fogalmai
 
@@ -36,7 +36,7 @@ Az AK-ban a Kubernetes fő összetevői a Microsoft által biztosított felügye
 
 Alapértelmezés szerint a Kubernetes API-kiszolgáló egy nyilvános IP-címet és egy teljesen minősített tartománynevet (FQDN) használ. Az API-kiszolgáló végpontjának hozzáférését az [engedélyezett IP-címtartományok][authorized-ip-ranges]alapján korlátozhatja. Létrehozhat egy teljesen [privát fürtöt][private-clusters] is az API-kiszolgáló virtuális hálózathoz való hozzáférésének korlátozásához.
 
-Az API-kiszolgáló hozzáférését az Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) és a Azure Active Directory használatával szabályozhatja. További információ: [Azure ad-integráció az AK][aks-aad]-nal.
+Az API-kiszolgáló hozzáférését az Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) és az Azure RBAC használatával szabályozhatja. További információ: [Azure ad-integráció az AK][aks-aad]-nal.
 
 ## <a name="node-security"></a>Csomópont biztonsága
 
@@ -50,7 +50,7 @@ A csomópontok magánhálózati virtuális hálózati alhálózatba vannak telep
 
 A tárolók biztosításához a csomópontok az Azure Managed Disks használják. A virtuálisgép-csomópontok többségének mérete esetén ezek a nagy teljesítményű SSD-k által támogatott prémium lemezek. A felügyelt lemezeken tárolt adatok automatikusan titkosítva maradnak az Azure platformon belül. A redundancia javítása érdekében ezeket a lemezeket az Azure-adatközpontban is biztonságosan replikálja a rendszer.
 
-A Kubernetes-környezetek (ak-ban vagy máshol) jelenleg nem teljesen biztonságosak az ellenséges, több-bérlős használatra. További biztonsági funkciók, mint például a *Pod biztonsági szabályzatok*, vagy a csomópontok részletes, szerepköralapú hozzáférés-vezérlése (RBAC) is nehezebbé teszik a kiaknázást. Azonban az ellenséges, több-bérlős számítási feladatok futtatásakor a megfelelő biztonság érdekében a hypervisor az egyetlen biztonsági szint, amelyet megbízhatónak tart. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia. A számítási feladatok elkülönítésének módjaival kapcsolatos további információkért lásd: [ajánlott eljárások a fürtök elkülönítéséhez az AK-ban][cluster-isolation].
+A Kubernetes-környezetek (ak-ban vagy máshol) jelenleg nem teljesen biztonságosak az ellenséges, több-bérlős használatra. További biztonsági funkciók, például a *Pod biztonsági szabályzatok*, vagy a csomópontok részletes Kubernetes szerepköralapú hozzáférés-vezérlése (Kubernetes RBAC), nehezebbé teszi a kihasználat. Azonban az ellenséges, több-bérlős számítási feladatok futtatásakor a megfelelő biztonság érdekében a hypervisor az egyetlen biztonsági szint, amelyet megbízhatónak tart. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia. A számítási feladatok elkülönítésének módjaival kapcsolatos további információkért lásd: [ajánlott eljárások a fürtök elkülönítéséhez az AK-ban][cluster-isolation].
 
 ### <a name="compute-isolation"></a>Számítási elkülönítés
 
@@ -90,7 +90,7 @@ A fürtben található hüvelyek közötti hálózati forgalom korlátozásához
 
 ## <a name="kubernetes-secrets"></a>A Kubernetes titkos kódjai
 
-A *titkos* Kubernetes a bizalmas adatok hüvelybe való beadására, például a hozzáférési hitelesítő adatokra vagy kulcsokra használják. Először hozzon létre egy titkos kulcsot a Kubernetes API használatával. A pod vagy az üzembe helyezés megadásakor a rendszer egy adott titkot kérhet. A titkos kulcsokat csak olyan csomópontok számára biztosítjuk, amelyekhez szükség van egy ütemezett Pod-re, és a titkot a *tmpfs*tárolja, nem lemezre írva. Ha a titkos kulcsot tartalmazó csomópont utolsó podét törli, a titkos kulcsot a rendszer törli a csomópont tmpfs. A titkos kulcsok tárolása egy adott névtéren belül történik, és csak ugyanazon a névtéren belüli hüvelyek érhetik el.
+A *titkos* Kubernetes a bizalmas adatok hüvelybe való beadására, például a hozzáférési hitelesítő adatokra vagy kulcsokra használják. Először hozzon létre egy titkos kulcsot a Kubernetes API használatával. A pod vagy az üzembe helyezés megadásakor a rendszer egy adott titkot kérhet. A titkos kulcsokat csak olyan csomópontok számára biztosítjuk, amelyekhez szükség van egy ütemezett Pod-re, és a titkot a *tmpfs* tárolja, nem lemezre írva. Ha a titkos kulcsot tartalmazó csomópont utolsó podét törli, a titkos kulcsot a rendszer törli a csomópont tmpfs. A titkos kulcsok tárolása egy adott névtéren belül történik, és csak ugyanazon a névtéren belüli hüvelyek érhetik el.
 
 A titkok használata csökkenti a pod vagy a Service YAML-jegyzékben definiált bizalmas adatokat. Ehelyett a Kubernetes API-kiszolgálón tárolt titkos kulcsot a YAML-jegyzék részeként kell megkérnie. Ez a megközelítés csak a titkos kulcshoz megadott Pod-hozzáférést biztosítja. Megjegyzés: a titkos titkos jegyzékfájl fájljai Base64 formátumban tartalmazzák a titkos adatokat (további részleteket a [hivatalos dokumentációban][secret-risks] talál). Ezért ezt a fájlt bizalmas információként kell kezelni, és soha nem kell véglegesíteni a verziókövetés előtt.
 

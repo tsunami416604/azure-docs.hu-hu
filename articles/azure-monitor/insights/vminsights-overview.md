@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: 5c3cb13d0b2da9370f402083d82397679f2c9343
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5eaf2d7075ca09aeb3cfaa2dfea81fd0f8d65ad
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022496"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685307"
 ---
-# <a name="what-is-azure-monitor-for-vms"></a>Mi az Azure Monitor for VMs?
+# <a name="overview-of-azure-monitor-for-vms"></a>A virtuális gépekhez készült Azure Monitor áttekintése
 
 Azure Monitor for VMs figyeli a virtuális gépek és a virtuálisgép-méretezési csoportok teljesítményét és állapotát, beleértve a futó folyamatokat és a más erőforrásokra vonatkozó függőségeket. A teljesítménnyel kapcsolatos szűk keresztmetszetek és hálózati problémák azonosításával segítheti a létfontosságú alkalmazások kiszámítható teljesítményét és rendelkezésre állását, és segít megérteni, hogy a probléma más függőségekhez is kapcsolódik-e.
 
@@ -26,8 +26,6 @@ A Azure Monitor for VMs a következő műveleteket támogatja a Windows és Linu
 - Más felhőalapú környezetben üzemeltetett virtuális gépek
   
 
-
-
 A Azure Monitor for VMs Azure Monitor naplókban tárolja az adatait, ami lehetővé teszi, hogy hatékony összesítést és szűrést nyújtson, és az adattrendeket az idő múlásával elemezze. Ezeket az adatokat egyetlen virtuális gépen tekintheti meg közvetlenül a virtuális gépről, vagy a Azure Monitor használatával több virtuális gép összesített nézetét is továbbíthatja.
 
 ![Virtuális gépekkel kapcsolatban bepillantást nyerhet a Azure Portal](media/vminsights-overview/vminsights-azmon-directvm.png)
@@ -37,6 +35,7 @@ A Azure Monitor for VMs Azure Monitor naplókban tárolja az adatait, ami lehet�
 Azure Monitor for VMs nem jár közvetlen költséggel, de a Log Analytics munkaterületen a tevékenységért kell fizetnie. A [Azure monitor díjszabási oldalán](https://azure.microsoft.com/pricing/details/monitor/)közzétett díjszabás alapján Azure monitor for VMS a következő díjat számítjuk fel:
 
 - Az ügynököktől betöltött és a munkaterületen tárolt adatok.
+- A vendég állapotból gyűjtött állapot-adatok (előzetes verzió)
 - A riasztási szabályok a naplózási és az állapotadatok alapján.
 - Riasztási szabályokból küldött értesítések.
 

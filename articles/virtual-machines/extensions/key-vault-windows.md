@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f06c5f2b2938505380ea668a7c4113015c852b1d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7c5c536b95360c536998a5de87e9307918b15630
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913959"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685987"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>A Windows rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -27,7 +27,7 @@ A Key Vault virtuálisgép-bővítmény a Windows alábbi verzióit támogatja:
 - Windows Server 2016
 - Windows Server 2012
 
-A Key Vault VM-extensio az egyéni helyi virtuális gépeken is támogatott, amelyeket az Azure-ban a Windows Server 2019 Core install használatával tölthet fel és alakít át egy speciális rendszerképbe.
+A Key Vault virtuálisgép-bővítményt olyan egyéni helyi virtuális gépen is támogatja a rendszer, amelyet az Azure-ban a Windows Server 2019 Core install használatával tölthet fel és alakít át egy speciális rendszerképbe.
 
 ### <a name="supported-certificate-content-types"></a>Támogatott tanúsítvány-tartalomtípusok
 
@@ -87,7 +87,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa | Adattípus |
+| Név | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | dátum |
 | közzétevő | Microsoft.Azure.KeyVault | sztring |

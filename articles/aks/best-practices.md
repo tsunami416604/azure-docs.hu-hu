@@ -4,12 +4,12 @@ description: A Fürtfelügyelő és a fejlesztői ajánlott eljárások gyűjtem
 services: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.openlocfilehash: 1278a03d3ffc7ccb11b0e3c4c84f6c213648440b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8f9c1946567ac3c3ea1045a216d6b0486fd959a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008780"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686259"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Fürtözési és fejlesztői ajánlott eljárások az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások létrehozásához és kezeléséhez
 
@@ -30,7 +30,7 @@ A fürt operátorai együttműködnek az alkalmazás-tulajdonosokkal és a fejle
 * [Ajánlott eljárások a Scheduler speciális funkcióihoz](operator-best-practices-advanced-scheduler.md)
     * Magában foglalja a szennyező elemek használatát és a tolerancia, a csomópont-választókat és az affinitást, valamint a több-Pod affinitást és az affinitást.
 * [Ajánlott hitelesítési és engedélyezési eljárások](operator-best-practices-identity.md)
-    * A Azure Active Directory integrációját is magában foglalja a szerepköralapú hozzáférés-vezérlés (RBAC) és a pod-identitások használatával.
+    * Magában foglalja a Azure Active Directory integrációját a Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) használatával, az Azure RBAC és a pod identitások használatával.
 
 **Biztonság**
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b74baebd964ee43658f74e0050dff838e29f9b8a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bd69f239a1c65040c44da776186ab8d955f5e333
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409059"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693183"
 ---
 # <a name="security-control-network-security"></a>Biztonsági ellenőrzés: hálózati biztonság
 
@@ -148,7 +148,7 @@ Emellett az alkalmazás biztonsági csoportjaival is egyszerűsítheti az össze
 
 A hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy.
 
-Az Azure-tervrajzok segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, például az Azure Resources Manager-sablonokat, a RBAC-vezérlőket és a házirendeket egyetlen terv definíciójában. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el.
+Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, például az Azure Resources Manager-sablonokat, az Azure RBAC-vezérlőket és a szabályzatokat egyetlen terv definíciójában. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el.
 
 - [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -186,6 +186,6 @@ Az Azure-tevékenység naplójának használatával figyelheti az erőforrás-ko
 
 - [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/platform/alerts-activity-log.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a következő biztonsági vezérlőt: [naplózás és figyelés](security-control-logging-monitoring.md)

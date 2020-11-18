@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4337d6bb108042a909250b3d87d13ab60357cfec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4239b5400e919621dfff001ca7e6cb9de1626658
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311127"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686208"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Kapcsolódás a szinapszis SQLhoz a SQL Server Management Studio (SSMS) használatával
 > [!div class="op_single_selector"]
@@ -54,9 +54,9 @@ A következő lépésekkel csatlakozhat a szinapszis SQL-hez a dedikált SQL-ké
   
     ![Kapcsolódás az 1. kiszolgálóhoz](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **Kiszolgáló neve** : adja meg a korábban azonosított **kiszolgálónevet** .
-   * **Hitelesítés** : válasszon hitelesítési típust, például **SQL Server hitelesítést** vagy **Active Directory integrált hitelesítést**.
-   * **Felhasználónév** és **jelszó** : adja meg felhasználónevét és jelszavát, ha SQL Server hitelesítés lett kiválasztva.
+   * **Kiszolgáló neve**: adja meg a korábban azonosított **kiszolgálónevet** .
+   * **Hitelesítés**: válasszon hitelesítési típust, például **SQL Server hitelesítést** vagy **Active Directory integrált hitelesítést**.
+   * **Felhasználónév** és **jelszó**: adja meg felhasználónevét és jelszavát, ha SQL Server hitelesítés lett kiválasztva.
 
 1. Bontsa ki az Azure-SQL Server **Object Explorer**. Megtekintheti a kiszolgálóhoz társított adatbázisokat, például a minta AdventureWorksDW-adatbázist. Az adatbázis kibontásával megjelenítheti a táblákat:
    
@@ -72,9 +72,9 @@ Ha kiszolgáló nélküli SQL-készlettel szeretne csatlakozni a szinapszis SQL-
    
     ![Kapcsolódás a 2. kiszolgálóhoz](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **Kiszolgáló neve** : adja meg a korábban azonosított **kiszolgálónevet** .
-   * **Hitelesítés** : válasszon hitelesítési típust, például **SQL Server hitelesítést** vagy **Active Directory integrált hitelesítést** :
-   * **Felhasználónév** és **jelszó** : adja meg felhasználónevét és jelszavát, ha SQL Server hitelesítés lett kiválasztva.
+   * **Kiszolgáló neve**: adja meg a korábban azonosított **kiszolgálónevet** .
+   * **Hitelesítés**: válasszon hitelesítési típust, például **SQL Server hitelesítést** vagy **Active Directory integrált hitelesítést**:
+   * **Felhasználónév** és **jelszó**: adja meg felhasználónevét és jelszavát, ha SQL Server hitelesítés lett kiválasztva.
    * Válassza a **Kapcsolódás** lehetőséget.
 
 4. A részletes megtekintéshez bontsa ki az Azure SQL-kiszolgálót. Megtekintheti a kiszolgálóhoz társított adatbázisokat. Bontsa ki a *bemutatót* a mintaadatbázis tartalmának megtekintéséhez.

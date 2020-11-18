@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: d2cad98267ef1654c4f2d9ad2db75f769dbc0780
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b73ce5c994231a1c7b2f26ad702f2ad5880ba44
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091355"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686276"
 ---
 # <a name="encrypt-deployment-data"></a>Üzembehelyezési adatok titkosítása
 
@@ -59,7 +59,7 @@ Ha nem tudja sikeresen létrehozni a szolgáltatásnevet:
 
 ### <a name="create-a-key-vault-resource"></a>Key Vault erőforrás létrehozása
 
-Hozzon létre egy Azure Key Vaultt a [Azure Portal](../key-vault/secrets/quick-create-portal.md#create-a-vault), a [CLI](../key-vault/secrets/quick-create-cli.md)vagy a [PowerShell](../key-vault/secrets/quick-create-powershell.md)használatával. 
+Hozzon létre egy Azure Key Vaultt a [Azure Portal](../key-vault/general/quick-create-portal.md), az [Azure CLI](../key-vault/general/quick-create-cli.md)vagy a [Azure PowerShell](../key-vault/general/quick-create-powershell.md)használatával.
 
 A Key Vault tulajdonságaihoz használja a következő irányelveket: 
 * Név: Egy egyedi nevet kell megadnia. 

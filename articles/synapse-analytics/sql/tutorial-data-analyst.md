@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: cec16041edd10a57088df4ae9cfe0587906919eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 84fc49df2838a66969b449dee5b416c2a0f86f86
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309280"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685919"
 ---
 # <a name="tutorial-use-serverless-sql-pool-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Oktatóanyag: kiszolgáló nélküli SQL-készlet használata az Azure Open-adatkészletek elemzéséhez és az eredmények megjelenítéséhez az Azure szinapszis Studióban
 
@@ -102,7 +102,7 @@ Az alábbi kódrészlet a taxik éves számának eredményét mutatja:
 
 ![A taxi rides eredményének éves száma](./media/tutorial-data-analyst/4.png)
 
-Az adatok megjeleníthetők a szinapszis Studióban úgy, hogy a **táblázatról** a **diagram** nézetre vált. Különböző típusú diagramok közül választhat, például a **területen** , a **sáv** , az **oszlop** , a **vonal** , a **torta** és a **Scatter**. Ebben az esetben ábrázolja az **oszlopdiagram** és a **category (kategória** ) oszlopot a **current_year** értékre:
+Az adatok megjeleníthetők a szinapszis Studióban úgy, hogy a **táblázatról** a **diagram** nézetre vált. Különböző típusú diagramok közül választhat, például a **területen**, a **sáv**, az **oszlop**, a **vonal**, a **torta** és a **Scatter**. Ebben az esetben ábrázolja az **oszlopdiagram** és a **category (kategória** ) oszlopot a **current_year** értékre:
 
 ![A rides/Year diagramot bemutató oszlopdiagram](./media/tutorial-data-analyst/5.png)
 

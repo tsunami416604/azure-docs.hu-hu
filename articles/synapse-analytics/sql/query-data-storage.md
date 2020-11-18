@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3fd3a94efd6e7870ae3919a011fc24f66b97c559
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c7a8fb63f775a76342849957f070861fd200a9d3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310949"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685664"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Tárolási fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -65,7 +65,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 Néhány további lehetőség is használható az elemzési szabályok egyéni CSv-formátumra való beállításához:
 - A ESCAPE_CHAR = "char" a fájlban szereplő karaktert határozza meg, amely a fájlban lévő összes elválasztó érték kiszökésére szolgál. Ha az Escape-karaktert a saját maga vagy az elválasztó értékek egyike követi, az escape-karakter eldobása az érték beolvasása közben történik.
 A ESCAPE_CHAR paraméter akkor lesz alkalmazva, ha a FIELDQUOTE vagy nincs engedélyezve. A rendszer nem használja fel az idézett karakter megmenekülésére. Az idézőjel karakternek egy másik idézőjel karakterrel kell megszöknie. Az idézőjel karakter csak akkor szerepelhet az oszlop értékén belül, ha az érték idézőjelekkel van ellátva.
-- A FIELDTERMINATOR = ' field_terminator ' meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző (" **,** ")
+- A FIELDTERMINATOR = ' field_terminator ' meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző ("**,**")
 - A ROWTERMINATOR = ' row_terminator ' megadja a használandó sort. Az alapértelmezett sor lezáró egy sortörési karakter: **\r\n**.
 
 ## <a name="file-schema"></a>Fájl sémája

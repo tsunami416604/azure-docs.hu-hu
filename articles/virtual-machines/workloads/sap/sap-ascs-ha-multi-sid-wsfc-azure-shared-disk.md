@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8116f3e00d13c0bd1e5f075a7fbe3264f337079
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: df611e01fefacd22f4dc026a819d4c71ede6e7e3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970401"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686089"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és az Azure megosztott lemezzel
 
@@ -35,12 +35,12 @@ Ebből a cikkből megtudhatja, hogyan helyezhet át egyetlen ASCS/SCS-telepíté
 Jelenleg az Azure prémium SSD-lemezeket Azure-beli megosztott lemezként használhatja az SAP ASCS/SCS-példányhoz. A következő korlátozások vannak érvényben:
 
 -  Az [Azure Ultra Disk](../../disks-types.md#ultra-disk) nem támogatott Azure-beli megosztott lemezként az SAP-munkaterhelésekhez. Jelenleg nem helyezhetők üzembe Azure-beli virtuális gépek a rendelkezésre állási csoportba tartozó Azure Ultra Disk használatával
--  Prémium SSD lemezzel rendelkező Azure-beli [megosztott lemez](../../windows/disks-shared.md) csak a rendelkezésre állási csoportba tartozó virtuális gépek esetében támogatott. Availability Zones üzemelő példányban nem támogatott. 
+-  Prémium SSD lemezzel rendelkező Azure-beli [megosztott lemez](../../disks-shared.md) csak a rendelkezésre állási csoportba tartozó virtuális gépek esetében támogatott. Availability Zones üzemelő példányban nem támogatott. 
 -  Az Azure Shared Disk Value [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) meghatározza, hogy hány fürtcsomópont használhatja a megosztott lemezt. Az SAP ASCS/SCS-példány esetében általában két csomópontot fog konfigurálni a Windows feladatátvevő fürtben, ezért a értékét `maxShares` kettőre kell beállítani.
 -  Az összes SAP-ASCS/SCS-fürt virtuális gépnek ugyanabban az Azure-beli [közelségi csoportban](../../windows/proximity-placement-groups.md)kell lennie.   
    Bár a Windows-fürt virtuális gépei a rendelkezésre állási csoportokban a PPG nélkül is üzembe helyezhetők az Azure-beli megosztott lemezzel, a PPG biztosítja az Azure-beli megosztott lemezek és a fürt virtuális gépei közel fizikai közelségét, így a virtuális gépek és a tárolási réteg közötti alacsonyabb késést.    
 
-Az Azure Shared Disk korlátozásával kapcsolatos további részletekért tekintse át az Azure Shared Disk dokumentációjának [korlátozások](../../linux/disks-shared.md#limitations) című szakaszát.  
+Az Azure Shared Disk korlátozásával kapcsolatos további részletekért tekintse át az Azure Shared Disk dokumentációjának [korlátozások](../../disks-shared.md#limitations) című szakaszát.  
 
 > [!IMPORTANT]
 > Ha az Azure megosztott lemezzel telepíti az SAP ASCS/SCS Windows feladatátvevő fürtöt, vegye figyelembe, hogy az üzemelő példány egyetlen megosztott lemezzel fog működni egyetlen tároló fürtben. Az SAP-ASCS/SCS-példány hatással lesz a Storage-fürttel kapcsolatos problémák esetén, ahol az Azure-beli megosztott lemez telepítve van.  
@@ -56,7 +56,7 @@ Az Azure Shared Disk korlátozásával kapcsolatos további részletekért tekin
 
 A Windows Server 2016 és a Windows Server 2019 egyaránt támogatott (a legújabb adatközpont-lemezképek használata).
 
-Javasoljuk, hogy a **Windows Server 2019 Datacenter**használatát a következőképpen ajánljuk:
+Javasoljuk, hogy a **Windows Server 2019 Datacenter** használatát a következőképpen ajánljuk:
 - A Windows 2019 feladatátvételi fürtszolgáltatás Azure-beli szolgáltatás
 - Az Azure-gazdagép karbantartásával és jobb megismerésével bővült az Azure-beli menetrend eseményeinek monitorozása.
 - Az elosztott hálózat nevét is használhatja (ez az alapértelmezett beállítás). Ezért nem kell dedikált IP-címet adni a fürt hálózati neveként. Ezt az IP-címet nem kell konfigurálnia az Azure belső Load Balancerján. 
@@ -95,7 +95,7 @@ A sorba helyezni replikációs kiszolgáló 1 (ERS1) és a sorba helyezni Replic
 
 ## <a name="infrastructure-preparation"></a>Infrastruktúra-előkészítés
 
-Új SAP SID- **PR2**fogunk telepíteni a **meglévő fürtözött** SAP **PR1** ASCS/SCS-példányon kívül.  
+Új SAP SID- **PR2** fogunk telepíteni a **meglévő fürtözött** SAP **PR1** ASCS/SCS-példányon kívül.  
 
 ### <a name="host-names-and-ip-addresses"></a>Állomásnevek és IP-címek
 
@@ -113,7 +113,7 @@ A sorba helyezni replikációs kiszolgáló 1 (ERS1) és a sorba helyezni Replic
 
 Az SAP ASCS, az SAP SCS és az új SAP-ERS2 a virtuális állomásnév és a virtuális IP-címek használata. Az Azure-ban a virtuális IP-címek használatához [Load Balancer](../../../load-balancer/load-balancer-overview.md) szükséges. Javasoljuk, hogy használja a [standard Load balancert](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md). 
 
-A második SAP SID ASCS/SCS/ERS példány **PR2**hozzá kell adnia egy konfigurációt a meglévő Load Balancerhez. Az első SAP SID- **PR1** konfigurációját már meg kell adni.  
+A második SAP SID ASCS/SCS/ERS példány **PR2** hozzá kell adnia egy konfigurációt a meglévő Load Balancerhez. Az első SAP SID- **PR1** konfigurációját már meg kell adni.  
 
 **Egy SCS PR2 [példány száma 02]**
 - Előtér-konfiguráció
@@ -125,13 +125,13 @@ A második SAP SID ASCS/SCS/ERS példány **PR2**hozzá kell adnia egy konfigur�
 - Terheléselosztási szabályok
     - Ha standard Load Balancer használ, válassza a hektár portok elemet.
     - Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
-        - 32**Nr** TCP [**3202**]
-        - 36**Nr** TCP [**3602**]
-        - 39**Nr** TCP [**3902**]
-        - 81**Nr** TCP [**8102**]
-        - 5**Nr**13 TCP [**50213**]
-        - 5**Nr**14 TCP [**50214**]
-        - 5**Nr**16 TCP [**50216**]
+        - 32 **Nr** TCP [**3202**]
+        - 36 **Nr** TCP [**3602**]
+        - 39 **Nr** TCP [**3902**]
+        - 81 **Nr** TCP [**8102**]
+        - 5 **Nr** 13 TCP [**50213**]
+        - 5 **Nr** 14 TCP [**50214**]
+        - 5 **Nr** 16 TCP [**50216**]
         - Társítsa a **PR2** ASCS frontend IP-címét, az állapot-mintavételt és a meglévő háttér-készletet.  
 
     - Győződjön meg arról, hogy az Üresjárati időkorlát (perc) a maximális 30 értékre van beállítva, és hogy a lebegőpontos IP-cím (a közvetlen kiszolgáló visszaadása) engedélyezve van.
@@ -151,11 +151,11 @@ Ahogy a sorba helyezni Replication Server 2 (ERS2) is fürtözött, a ERS2 virtu
 - Új terheléselosztási szabályok
     - Ha standard Load Balancer használ, válassza a hektár portok elemet.
     - Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
-        - 32**Nr** TCP [**3212**]
-        - 33**Nr** TCP [**3312**]
-        - 5**Nr**13 TCP [**51212**]
-        - 5**Nr**14 TCP [**51212**]
-        - 5**Nr**16 TCP [**51212**]
+        - 32 **Nr** TCP [**3212**]
+        - 33 **Nr** TCP [**3312**]
+        - 5 **Nr** 13 TCP [**51212**]
+        - 5 **Nr** 14 TCP [**51212**]
+        - 5 **Nr** 16 TCP [**51212**]
         - Társítsa a **PR2** ERS2 frontend IP-címét, az állapot-mintavételt és a meglévő háttér-készletet.  
 
     - Győződjön meg arról, hogy az Üresjárati időkorlát (perc) a maximális értékre van beállítva (például 30), és hogy a lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása) engedélyezve van.
@@ -259,7 +259,7 @@ Futtassa ezt a parancsot a fürtcsomópontok egyikén. Módosítania kell az er�
  
    _Adja meg az SAP ERS2-fürt virtuális neve és IP-címe DNS-bejegyzését_
 
-3. A virtuális gazdagép neveként hozzárendelt IP-cím megadásához válassza a **DNS-kezelő**  >  **tartomány**lehetőséget.
+3. A virtuális gazdagép neveként hozzárendelt IP-cím megadásához válassza a **DNS-kezelő**  >  **tartomány** lehetőséget.
 
    ![Új virtuális név és IP-cím az SAP ASCS/SCS és a ERS2-fürt konfigurációjához][sap-ha-guide-figure-6011]
 
@@ -293,7 +293,7 @@ A belső terheléselosztó mintavételi funkciójának használatával biztosít
 Ez azonban nem fog működni bizonyos fürtkonfiguráció esetén, mert csak egy példány aktív. A másik példány passzív, és nem fogadja el a számítási feladatok egyikét sem. A mintavételi funkciók segítségével az Azure belső terheléselosztó felismeri, hogy melyik példány aktív, és csak az aktív példányt célozza meg.  
 
 > [!IMPORTANT]
-> Ebben a példában a **ProbePort** a 620**Nr**értékre van állítva. A **02** -es számú SAP ASCS-példány esetében 620**02**.
+> Ebben a példában a **ProbePort** a 620 **Nr** értékre van állítva. A **02** -es számú SAP ASCS-példány esetében 620 **02**.
 > A konfigurációt úgy kell beállítani, hogy az megfeleljen az SAP-példányok számának és az SAP SID-nek.
 
 Mintavételi port hozzáadásához futtassa ezt a PowerShell-modult az egyik fürtözött virtuális gépen:
@@ -303,7 +303,7 @@ Mintavételi port hozzáadásához futtassa ezt a PowerShell-modult az egyik fü
    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID PR2 -ProbePort 62002
    ```
 
-- A ERS2 használata esetén a **12-es**példányszámmal, amely fürtözött. Nem kell konfigurálni a mintavételi portot a ERS1, mert nem fürtözött.  
+- A ERS2 használata esetén a **12-es** példányszámmal, amely fürtözött. Nem kell konfigurálni a mintavételi portot a ERS1, mert nem fürtözött.  
    ```powershell
    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID PR2 -ProbePort 62012 -IsSAPERSClusteredInstance $True
    ```
@@ -461,7 +461,7 @@ Mintavételi port hozzáadásához futtassa ezt a PowerShell-modult az egyik fü
 ## <a name="test-the-sap-ascsscs-instance-failover"></a>Az SAP-ASCS/SCS-példány feladatátvételének tesztelése
 A vázolt feladatátvételi tesztek esetében feltételezzük, hogy az SAP ASCS aktív az A csomóponton.  
 
-1. Győződjön meg arról, hogy az SAP-rendszer sikeresen feladatátvételt végez az A csomópontról a B csomópontra. Ebben a példában a tesztet a SAPSID **PR2**hajtja végre.  
+1. Győződjön meg arról, hogy az SAP-rendszer sikeresen feladatátvételt végez az A csomópontról a B csomópontra. Ebben a példában a tesztet a SAPSID **PR2** hajtja végre.  
    Győződjön meg arról, hogy minden SAPSID sikeresen át tud lépni a másik fürtcsomóponton.   
    Válasszon egyet az alábbi lehetőségek közül, ha feladatátvételt szeretne kezdeményezni az SAP-fürtről a (z) " \<SID\> a" fürtről a B csomópontra:
     - Feladatátvevőfürt-kezelő  

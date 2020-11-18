@@ -3,17 +3,17 @@ title: Azure Defender for SQL – az előnyök és funkciók
 description: Ismerje meg az Azure Defender for SQL előnyeit és funkcióit.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 11/17/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 220f9fffd6c0f9b959230964a9ec79f4e209bd54
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b4f046339c027a5ae66f7f7510d8d2b311abd6df
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372543"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693460"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Az SQL-hez készült Azure Defender bemutatása
 
@@ -25,7 +25,7 @@ Az SQL-hez készült Azure Defender két Azure Defender-csomagot tartalmaz, amel
 |----|:----|
 |Kiadás állapota:|**Azure Defender az Azure SQL Database-kiszolgálókhoz** – általánosan elérhető (GA)<br>**Azure Defender a gépeken futó SQL-kiszolgálókon** – előzetes verzió<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Árképzési|Az **Azure Defender for SQL** -t alkotó két csomag számlázása [a díjszabási oldalon](security-center-pricing.md) látható módon történik|
-|Védett SQL-verziók:|Azure SQL Database <br>Felügyelt Azure SQL-példány<br>Azure Synapse Analytics (korábban SQL DW)<br>SQL Server (az összes támogatott verzió)|
+|Védett SQL-verziók:|Azure SQL Database <br>Felügyelt Azure SQL-példány<br>Dedikált SQL-készlet az Azure Szinapszisban (korábban SQL DW)<br>SQL Server (az összes támogatott verzió)|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
@@ -36,7 +36,7 @@ Az SQL-hez készült Azure Defender két Azure Defender-csomagot tartalmaz, amel
 - **Az Azure Defender for Azure SQL Database-kiszolgálók a** következőket védik:
   - [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)
   - [Felügyelt Azure SQL-példány](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
-  - [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+  - [Dedikált SQL-készlet az Azure Szinapszisban](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)
 
 - A **gépeken futó Azure Defender (előzetes verzió)** kiterjeszti az Azure-natív SQL-kiszolgálók védelmét, így teljes mértékben támogatja a hibrid környezeteket, és védelmet biztosít az Azure-ban, más felhőalapú környezetekben és akár helyszíni gépeken üzemeltetett SQL-kiszolgálóknak (az összes támogatott verziónak).
 
@@ -62,7 +62,7 @@ A riasztások tartalmazzák az azokat kiváltó incidens részleteit, valamint a
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta az SQL-hez készült Azure Defendert.
 

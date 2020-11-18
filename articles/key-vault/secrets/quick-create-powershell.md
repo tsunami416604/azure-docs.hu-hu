@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
 ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d8375b4a47df8454ceb4aba4cb2e695255161409
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c28dbc25abfd701450cf9f232ea1a4b5e16841aa
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324752"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686191"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból a PowerShell használatával
 
@@ -45,8 +45,8 @@ Következő lépésként létrehoz egy kulcstartót. Ehhez a lépéshez tudnia k
 
 Bár a jelen rövid útmutatóban a "contoso KeyVault2" nevet használjuk a Key Vaultnak, egyedi nevet kell használnia.
 
-- **Tároló neve** : Contoso-Vault2.
-- **Erőforráscsoport neve** : ContosoResourceGroup.
+- **Tároló neve**: Contoso-Vault2.
+- **Erőforráscsoport neve**: ContosoResourceGroup.
 - **Tartózkodási hely** USA keleti régiója.
 
 ```azurepowershell-interactive
@@ -55,8 +55,8 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 
 Ezzel a parancsmaggal megjelenítheti az újonnan létrehozott kulcstartó tulajdonságait. Jegyezze fel az alábbi két tulajdonságot:
 
-* **Tároló neve** : A példában ez **Contoso-Vault2**. Ezt a nevet fogja majd más Key Vault parancsmagokban is megadni.
-* **A tároló URI-ja** : Ebben a példában ez https://Contoso-Vault2.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
+* **Tároló neve**: A példában ez **Contoso-Vault2**. Ezt a nevet fogja majd más Key Vault parancsmagokban is megadni.
+* **A tároló URI-ja**: Ebben a példában ez https://Contoso-Vault2.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 A tároló létrehozása után az Azure-fiókja az egyetlen fiók, amely bármit végrehajthat az új tárolón.
 
@@ -79,9 +79,12 @@ $secretvalue = ConvertTo-SecureString 'hVFkk965BuUv' -AsPlainText -Force
 
 Ezután írja be az alábbi PowerShell-parancsokat, és hozzon létre egy titkos kulcsot Key Vault nevű **ExamplePassword** a **hVFkk965BuUv** értékkel:
 
+
 ```azurepowershell-interactive
 $secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePassword' -SecretValue $secretvalue
 ```
+
+## <a name="retrieve-a-secret-from-key-vault"></a>Titkos kód beolvasása Key Vault
 
 A titkos kódban tárolt érték megtekintése egyszerű szövegként:
 

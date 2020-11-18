@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0c05db39e02a6bc2a7fa5d62b8b891626eb0d241
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 362f46290bbe2008f9fb862a8711577050050192
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675801"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693249"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Az Azure Cognitive Search lekérdezési típusai és összetétele
 
@@ -59,9 +59,9 @@ Ha követte ezt a rövid útmutatót a [Hotels bemutató index létrehozásához
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>A lekérdezési műveletek engedélyezése az index alapján
 
-Az index tervezési és lekérdezési kialakítása szorosan összekapcsolható az Azure Cognitive Searchban. Fontos, hogy tudd elölről, hogy az *index séma* , amely az egyes mezők attribútumait határozza meg, meghatározza, hogy milyen típusú lekérdezést hozhat létre. 
+Az index tervezési és lekérdezési kialakítása szorosan összekapcsolható az Azure Cognitive Searchban. Fontos, hogy tudd elölről, hogy az *index séma*, amely az egyes mezők attribútumait határozza meg, meghatározza, hogy milyen típusú lekérdezést hozhat létre. 
 
-Egy mező indexelése az engedélyezett műveletekkel – azt határozza meg, hogy egy mező *kereshető* -e az indexben, lekérhető az *eredmények között,* *rendezhető* , *szűrhető* és így tovább. A példában a lekérdezési karakterláncban `"$orderby": "Rating"` csak a működik, mert a minősítés mező az index sémában *rendezhető* van megjelölve. 
+Egy mező indexelése az engedélyezett műveletekkel – azt határozza meg, hogy egy mező *kereshető* -e az indexben, lekérhető az *eredmények között,* *rendezhető*, *szűrhető* és így tovább. A példában a lekérdezési karakterláncban `"$orderby": "Rating"` csak a működik, mert a minősítés mező az index sémában *rendezhető* van megjelölve. 
 
 ![A szállodai minta index-definíciója](./media/search-query-overview/hotel-sample-index-definition.png "A szállodai minta index-definíciója")
 
@@ -78,8 +78,8 @@ A lekérdezési kérelemhez szükséges elemek a következő összetevőket tart
 
 + A szolgáltatási végpont és az indexelési dokumentumok gyűjteménye rögzített és felhasználó által definiált összetevőket tartalmazó URL-címként kifejezve: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
 + **`api-version`** (Csak REST) szükséges, mert az API több verziója mindig elérhető. 
-+ **`api-key`** , vagy egy lekérdezési vagy felügyeleti API-kulcs, hitelesíti a kérést a szolgáltatásnak.
-+ **`queryType`** (egyszerű vagy teljes), amely kihagyható, ha a beépített alapértelmezett egyszerű szintaxist használja.
++ **`api-key`**, vagy egy lekérdezési vagy felügyeleti API-kulcs, hitelesíti a kérést a szolgáltatásnak.
++ **`queryType`**(egyszerű vagy teljes), amely kihagyható, ha a beépített alapértelmezett egyszerű szintaxist használja.
 + **`search`** vagy **`filter`** adja meg az egyeztetési feltételeket, amelyek nem adhatók meg, ha üres keresést szeretne végezni. Mindkét lekérdezési típust az egyszerű elemző is tárgyalja, de a speciális lekérdezésekhez a keresési paraméter szükséges a komplex lekérdezési kifejezések átadásához.
 
 Az összes többi keresési paraméter megadása nem kötelező. Az attribútumok teljes listájáért lásd: [index létrehozása (REST)](/rest/api/searchservice/create-index). A paraméterek a feldolgozás során való használatának alaposabb megismeréséhez lásd: [Hogyan működik a teljes szöveges keresés az Azure Cognitive Searchban](search-lucene-query-architecture.md).
@@ -91,7 +91,7 @@ A következő táblázat a lekérdezések elküldéséhez szükséges API-kat é
 | Módszertan | Leírás |
 |-------------|-------------|
 | [Keresési ablak (portál)](search-explorer.md) | Az index és az API-Version beállításokhoz biztosít keresési sávot. Az eredményeket JSON-dokumentumként adja vissza a rendszer. Feltárásra, tesztelésre és érvényesítésre ajánlott. <br/>[Részletek](search-get-started-portal.md#query-index) | 
-| [Poster vagy más REST-eszközök](search-get-started-postman.md) | A webes tesztelési eszközök kiváló választás a REST-hívások kialakításához. A REST API az Azure Cognitive Search minden lehetséges műveletét támogatja. Ebből a cikkből megtudhatja, hogyan állíthatja be a HTTP-kérések fejlécét és törzsét a kérelmek Azure Cognitive Searchba való küldéséhez.  |
+| [Poster vagy más REST-eszközök](search-get-started-rest.md) | A webes tesztelési eszközök kiváló választás a REST-hívások kialakításához. A REST API az Azure Cognitive Search minden lehetséges műveletét támogatja. Ebből a cikkből megtudhatja, hogyan állíthatja be a HTTP-kérések fejlécét és törzsét a kérelmek Azure Cognitive Searchba való küldéséhez.  |
 | [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Az Azure Cognitive Search index lekérdezéséhez használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md)  |
 | [Dokumentumok keresése (REST API)](/rest/api/searchservice/search-documents) | Metódusok beolvasása vagy közzététele indexeken a lekérdezési paraméterek használatával további bevitelhez.  |
 
@@ -165,7 +165,7 @@ Ha azt szeretné, hogy az Azure Cognitive Search az eredményeket a keresési po
 ### <a name="hit-highlighting"></a>Találatok kiemelése
 Az Azure Cognitive Searchban a keresési lekérdezésnek megfelelő keresési eredmények pontos részét kiemelve a, a és a paraméterek használatával egyszerűen elvégezhető **`highlight`** **`highlightPreTag`** **`highlightPostTag`** . Megadhatja, hogy mely *kereshető* mezőknél legyen kiemelve a párosított szöveg, valamint az Azure Cognitive Search által visszaadott egyező szöveg kezdetéhez és végéhez hozzáfűzni kívánt karakterlánc-címkék pontos megadását.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [A teljes szöveges keresés működése az Azure Cognitive Searchban (lekérdezési elemzési architektúra)](search-lucene-query-architecture.md)
 + [Keresési ablak](search-explorer.md)

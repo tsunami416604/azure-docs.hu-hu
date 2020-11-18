@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 098256c3174f5a737bec4f6a62cb1d2af99e6f4f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a284e453a621860c0aebf68bef13d30e77971f88
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311079"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686157"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Kapcsolódás a szinapszis SQLhoz a Visual Studióval és a SSDT
 
@@ -52,9 +52,9 @@ Az oktatóanyag használatához a következő összetevőket kell használnia:
    
     ![Csatlakozás kiszolgálóhoz](./media/get-started-visual-studio/connection-dialog.png)
    
-   * **Kiszolgáló neve** : adja meg a korábban azonosított **kiszolgálónevet** .
-   * **Hitelesítés** : válassza **SQL Server hitelesítés** vagy **Active Directory integrált hitelesítés** lehetőséget:
-   * **Felhasználónév** és **jelszó** : adja meg felhasználónevét és jelszavát, ha SQL Server hitelesítés lett kiválasztva.
+   * **Kiszolgáló neve**: adja meg a korábban azonosított **kiszolgálónevet** .
+   * **Hitelesítés**: válassza **SQL Server hitelesítés** vagy **Active Directory integrált hitelesítés** lehetőséget:
+   * **Felhasználónév** és **jelszó**: adja meg felhasználónevét és jelszavát, ha SQL Server hitelesítés lett kiválasztva.
    * Kattintson a **Csatlakozás** gombra.
 5. A részletes megtekintéshez bontsa ki az Azure SQL-kiszolgálót. Megtekintheti a kiszolgálóhoz társított adatbázisokat. Bontsa ki az AdventureWorksDW elemet a mintaadatbázis tábláinak megtekintéséhez.
    

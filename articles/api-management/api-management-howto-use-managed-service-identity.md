@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 8a7fa295bdc8881c0c1ba58c95872a9380231b81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1a8238cf9ddae57d73438d43daa54294ce6860
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85558030"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686225"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Felügyelt identitások használata az Azure-ban API Management
 
@@ -34,8 +34,8 @@ API Management-példányhoz két típusú identitást adhat meg:
 A Azure Portal felügyelt identitásának beállításához először létre kell hoznia egy API Management példányt, majd engedélyeznie kell a szolgáltatást.
 
 1. A szokásos módon hozzon létre egy API Management példányt a portálon. Tallózással keresse meg a portálon.
-2. Válassza a **felügyelt identitások**lehetőséget.
-3. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Mentés** gombra.
+2. Válassza a **felügyelt identitások** lehetőséget.
+3. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Válassza a **Mentés** lehetőséget.
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="A rendszer által hozzárendelt felügyelt identitás engedélyezésének kiválasztása" border="true":::
 
@@ -123,12 +123,12 @@ A `tenantId` tulajdonság azonosítja, hogy az identitás melyik Azure ad-bérl�
 > [!NOTE]
 > Egy API Management-példányhoz a rendszerhez hozzárendelt és felhasználó által hozzárendelt identitások is tartozhatnak egyszerre. Ebben az esetben a tulajdonság a következő `type` lesz: `SystemAssigned,UserAssigned` .
 
-### <a name="supported-scenarios"></a>Támogatott esetek
+## <a name="supported-scenarios-using-system-assigned-identity"></a>A rendszerhez rendelt identitást használó támogatott forgatókönyvek
 
-#### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>Egyéni TLS/SSL-tanúsítvány beszerzése a API Management-példányhoz Azure Key Vault
+### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>Egyéni TLS/SSL-tanúsítvány beszerzése a API Management-példányhoz Azure Key Vault
 API Management példány rendszerhez rendelt identitásával lekérheti a Azure Key Vault tárolt egyéni TLS/SSL-tanúsítványokat. Ezeket a tanúsítványokat az API Management-példányban lévő egyéni tartományokhoz rendelheti hozzá. A következő szempontokat vegye figyelembe:
 
-- A titkos kód tartalomtípusának az *Application/x-PKCS12/pfx-profil*kell lennie.
+- A titkos kód tartalomtípusának az *Application/x-PKCS12/pfx-profil* kell lennie.
 - Használja az Key Vault-tanúsítvány titkos végpontját, amely tartalmazza a titkos kulcsot.
 
 > [!Important]
@@ -262,7 +262,7 @@ Az alábbi példa egy Azure Resource Manager sablont mutat be, amely a következ
 }
 ```
 
-#### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>Hitelesítés a háttérben API Management identitás használatával
+### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>Hitelesítés a háttérben API Management identitás használatával
 
 A rendszer által hozzárendelt identitás használatával a [hitelesítéssel felügyelt identitásra](api-management-authentication-policies.md#ManagedIdentity) vonatkozó házirend segítségével végezheti el a hitelesítést a háttérben.
 
@@ -277,11 +277,11 @@ A rendszer által hozzárendelt identitás használatával a [hitelesítéssel f
 Ha felügyelt identitást szeretne beállítani a portálon, először létre kell hoznia egy API Management példányt, majd engedélyeznie kell a szolgáltatást.
 
 1. A szokásos módon hozzon létre egy API Management példányt a portálon. Tallózással keresse meg a portálon.
-2. Válassza a **felügyelt identitások**lehetőséget.
-3. A **felhasználó által hozzárendelt** lapon válassza a **Hozzáadás**lehetőséget.
-4. Keresse meg a korábban létrehozott identitást, és válassza ki. Válassza a **Hozzáadás** lehetőséget.
+2. Válassza a **felügyelt identitások** lehetőséget.
+3. A **felhasználó által hozzárendelt** lapon válassza a **Hozzáadás** lehetőséget.
+4. Keresse meg a korábban létrehozott identitást, és válassza ki. Válassza a **Hozzáadás** elemet.
 
-   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="A rendszer által hozzárendelt felügyelt identitás engedélyezésének kiválasztása" border="true":::
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Felhasználó által hozzárendelt felügyelt identitás engedélyezésének kiválasztása" border="true":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -387,9 +387,32 @@ A `principalId` tulajdonság az Azure ad-felügyelethez használt identitás egy
 > [!NOTE]
 > Egy API Management-példányhoz a rendszerhez hozzárendelt és felhasználó által hozzárendelt identitások is tartozhatnak egyszerre. Ebben az esetben a tulajdonság a következő `type` lesz: `SystemAssigned,UserAssigned` .
 
-### <a name="supported-scenarios"></a>Támogatott esetek
+## <a name="supported-scenarios-using-user-assigned-managed-identity"></a>A felhasználóhoz rendelt felügyelt identitást használó támogatott forgatókönyvek
 
-#### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Hitelesítés a háttérben a felhasználó által hozzárendelt identitás használatával
+### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault-ua"></a>Egyéni TLS/SSL-tanúsítvány beszerzése a API Management-példányhoz Azure Key Vault
+Bármely felhasználó által hozzárendelt identitást használhat a API Management-példány és a kulcstartó közötti megbízhatósági kapcsolat létrehozásához. Ezt a megbízhatóságot ezután a Azure Key Vaultban tárolt egyéni TLS/SSL-tanúsítványok beolvasására használhatja. Ezeket a tanúsítványokat az API Management-példányban lévő egyéni tartományokhoz rendelheti hozzá. 
+
+A következő szempontokat vegye figyelembe:
+
+- A titkos kód tartalomtípusának az *Application/x-PKCS12/pfx-profil* kell lennie.
+- Használja az Key Vault-tanúsítvány titkos végpontját, amely tartalmazza a titkos kulcsot.
+
+> [!Important]
+> Ha nem adja meg a tanúsítvány objektumának verzióját, akkor a API Management a tanúsítvány újabb verzióját a Key Vault frissítése után négy órán belül automatikusan beolvassa.
+
+A teljes sablonhoz lásd: [API Management a kulcstároló-alapú SSL használatával a felhasználó által hozzárendelt identitással](https://github.com/Azure/azure-quickstart-templates/blob/master/101-api-management-key-vault-create/azuredeploy.json).
+
+Ebben a sablonban a következőket fogja telepíteni:
+
+* Azure API Management
+* Azure által felügyelt felhasználóhoz rendelt identitás
+* Azure-kulcstartó az SSL/TLS-tanúsítvány tárolásához
+
+Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-api-management-key-vault-create%2Fazuredeploy.json)
+
+### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Hitelesítés a háttérben a felhasználó által hozzárendelt identitás használatával
 
 A felhasználó által hozzárendelt identitás használatával a [hitelesítéssel felügyelt identitás](api-management-authentication-policies.md#ManagedIdentity) -házirenddel végezheti el a hitelesítést a háttérben.
 
@@ -413,7 +436,7 @@ Ha a Azure Resource Manager sablonnal szeretné eltávolítani az összes identi
 >
 > A blokkolás feloldásához váltson át egy Azure Key Vault-tanúsítványról egy beágyazott kódolt tanúsítványra, majd tiltsa le a felügyelt identitást. További információ: [Egyéni tartománynév konfigurálása](configure-custom-domain.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-erőforrások felügyelt identitásáról:
 

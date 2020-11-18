@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) méretezését,
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b72ed7cefc6a16eb484e1337dbd64e5f069a2201
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499885"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686038"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazásskálázási beállítások az Azure Kubernetes Service-ben (AKS)
 
@@ -50,7 +50,7 @@ Jelenleg nem állíthatók be ezek a hűtési értékek az alapértelmezett ért
 
 ## <a name="cluster-autoscaler"></a>Automatikus fürtskálázási eszköz
 
-Ahhoz, hogy válaszoljon a Kubernetes módosítására, a fürt automatikusan méretezhető, amely a csomópontok által igényelt számítási erőforrások alapján módosítja a csomópontok számát. Alapértelmezés szerint a fürt autoskálázása 10 másodpercenként ellenőrzi a metrikák API-kiszolgálóját a csomópontok számának szükséges változásaihoz. Ha a fürt autoskálázása meghatározza, hogy szükség van-e módosításra, az AK-fürt csomópontjainak száma ennek megfelelően növekszik vagy csökken. A fürt autoskálázása RBAC-kompatibilis AK-fürtökkel működik, amelyek Kubernetes 1,10. x vagy újabb verziójúak.
+Ahhoz, hogy válaszoljon a Kubernetes módosítására, a fürt automatikusan méretezhető, amely a csomópontok által igényelt számítási erőforrások alapján módosítja a csomópontok számát. Alapértelmezés szerint a fürt autoskálázása 10 másodpercenként ellenőrzi a metrikák API-kiszolgálóját a csomópontok számának szükséges változásaihoz. Ha a fürt autoskálázása meghatározza, hogy szükség van-e módosításra, az AK-fürt csomópontjainak száma ennek megfelelően növekszik vagy csökken. A fürt autoskálázása olyan Kubernetes RBAC-kompatibilis AK-fürtökkel működik, amelyek Kubernetes 1,10. x vagy újabb rendszereken futnak.
 
 ![Kubernetes-fürt autoskálázása](media/concepts-scale/cluster-autoscaler.png)
 
@@ -86,7 +86,7 @@ Az alkalmazás nem igényel módosítást virtuális csomópontok használatáho
 
 A virtuális csomópontok egy további alhálózatra vannak telepítve, ugyanabban a virtuális hálózatban, mint az AK-fürt. Ez a virtuális hálózati konfiguráció lehetővé teszi az ACI és az AK közötti adatforgalom védelmét. Az AK-fürtökhöz hasonlóan az ACI-példányok egy biztonságos, logikai számítási erőforrás, amely más felhasználóktól el van különítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazások méretezésének megkezdéséhez először kövesse a gyors üzembe helyezési lehetőséget, és [hozzon létre egy AK-fürtöt az Azure CLI][aks-quickstart]használatával. Ezután megkezdheti az alkalmazások manuális vagy automatikus méretezését az AK-fürtben:
 

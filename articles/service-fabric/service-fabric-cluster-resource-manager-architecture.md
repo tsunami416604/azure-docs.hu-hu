@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8e7d5d4b730ef1669bd9bb7d74e35924061f5580
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 0aff55810508fedcf354fba3d9fca9f7a402029b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146211"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685834"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>A fürterőforrás-kezelő architektúrájának áttekintése
 A Service Fabric fürterőforrás-kezelő egy központi szolgáltatás, amely a fürtben fut. Felügyeli a fürtben lévő szolgáltatások kívánt állapotát, különösen az erőforrás-felhasználás és az elhelyezési szabályok tekintetében. 
@@ -43,7 +43,7 @@ Nézzük meg a következő ábrát:
 
 <center>
 
-![A fürterőforrás-kezelő szolgáltatás thow bemutató diagram a helyi ügynököktől származó összes információt összesíti, és az aktuális konfiguráció alapján működik.][Image1]
+![A fürterőforrás-kezelő szolgáltatást megjelenítő diagram a helyi ügynököktől származó összes információt összesíti, és az aktuális konfiguráció alapján működik.][Image1]
 </center>
 
 A futtatókörnyezet során számos változás következik be. Tegyük fel például, hogy az egyes szolgáltatások által használt erőforrások mennyisége megváltozik, néhány szolgáltatás meghibásodik, és néhány csomópont csatlakozik a fürthöz, és elhagyja a fürtöt. A rendszer összesíti és rendszeres időközönként elküldi a csomópontok összes módosítását a fürterőforrás-kezelő szolgáltatásnak (1, 2), ahol az összesítésük újra, elemezve és tárolva van. A szolgáltatás néhány másodpercenként megtekinti a módosításokat, és meghatározza, hogy van-e szükség műveletekre (3). Láthatja például, hogy egyes üres csomópontok hozzá lettek adva a fürthöz. Ennek eredményeképpen úgy dönt, hogy egyes szolgáltatásokat áthelyez a csomópontokra. A fürterőforrás-kezelő azt is megfigyelheti, hogy egy adott csomópont túl van terhelve, vagy bizonyos szolgáltatások sikertelenek vagy törölve lettek, az erőforrások máshol való felszabadítása.

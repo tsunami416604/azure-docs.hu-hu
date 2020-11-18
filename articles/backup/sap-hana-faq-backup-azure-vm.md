@@ -3,12 +3,12 @@ title: Gyakori kérdések – SAP HANA-adatbázisok biztonsági mentése Azure-b
 description: Ebből a cikkből megismerheti a SAP HANA adatbázisok a Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a1d6012ec064b5ec582896ac3484161a6e25f2bf
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 24eb4abaaabe166ceb3e6bdb99f9446d398d03a1
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659964"
+ms.locfileid: "94686106"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -26,7 +26,7 @@ Nem. A sikeres biztonsági mentési feladatok nem hoznak fel riasztásokat. A re
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Láthatom az ütemezett biztonsági mentési feladatokat a biztonsági mentési feladatok menüben?
 
-A biztonsági mentési feladat menü csak az alkalmi biztonsági mentési feladatokat jeleníti meg. Ütemezett feladatokhoz használja a [Azure monitor](./backup-azure-monitoring-use-azuremonitor.md).
+A biztonsági mentési feladat menü csak az igény szerinti biztonsági mentési feladatokat jeleníti meg. Ütemezett feladatokhoz használja a [Azure monitor](./backup-azure-monitoring-use-azuremonitor.md).
 
 ### <a name="are-future-databases-automatically-added-for-backup"></a>A jövőbeli adatbázisokról is automatikusan készül biztonsági mentés?
 
@@ -47,7 +47,7 @@ Tekintse át az [előfeltételeket](tutorial-backup-sap-hana-db.md#prerequisites
 
 ### <a name="what-permissions-should-be-set-so-azure-can-back-up-sap-hana-databases"></a>Milyen engedélyeket kell beállítani, hogy az Azure biztonsági másolatot készítsen SAP HANA adatbázisokról?
 
-Az előzetes regisztrációs parancsfájl futtatásakor a szükséges engedélyek megadásával engedélyezheti az Azure számára a SAP HANA adatbázisok biztonsági mentését. [Itt](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)megtalálhatja az előzetes regisztrációs szkriptet.
+Az előzetes regisztrációs parancsfájl futtatásakor a szükséges engedélyek megadásával engedélyezheti az Azure számára a SAP HANA adatbázisok biztonsági mentését. Az előzetes regisztrációs szkriptről [itt](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)talál további információt.
 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>A biztonsági mentések a SDC-ről a MDC-be való SAP HANA Migrálás után fognak működni?
 
@@ -62,13 +62,13 @@ Jelenleg nincs lehetőség arra, hogy a megoldást a virtuális IP-címekre áll
 1. Várja meg, amíg a jelenleg futó biztonsági mentés készen áll a kívánt adatbázisra (a telepítés befejezéséhez keresse meg a stúdiót).
 1. Tiltsa le a naplók biztonsági mentését, és állítsa be a katalógus biztonsági mentését a **fájlrendszerre** a kívánt adatbázisra a következő lépések segítségével:
 1. Kattintson duplán a **SYSTEMDB**  ->  **konfigurálása**  ->  **adatbázis**  ->  **-szűrő kiválasztása (napló)** elemre.
-    1. Enable_auto_log_backup beállítása **nem** értékre
-    1. Catalog_backup_using_backint beállítása **hamis** értékre
+    1. A enable_auto_log_backup beállítása **nem** értékre.
+    1. Catalog_backup_using_backint beállítása **hamis** értékre.
 1. Készítsen egy igény szerinti biztonsági mentést (teljes/különbözeti/növekményes) a kívánt adatbázison, és várjon, amíg a biztonsági mentés és a katalógus biztonsági mentése befejeződik.
 1. Ha a napló biztonsági másolatait is át szeretné helyezni a fájlrendszerbe, állítsa a enable_auto_log_backup **értéket igen** értékre.
 1. Térjen vissza az előző beállításokra, hogy a biztonsági mentések az Azure-tárolóba haladjanak:
-    1. Enable_auto_log_backup beállítása **Igen** értékre
-    1. Catalog_backup_using_backint beállítása **true (igaz** ) értékre
+    1. Állítsa a enable_auto_log_backup **értéket igen** értékre.
+    1. A catalog_backup_using_backint beállítása **igaz** értékre.
 
 >[!NOTE]
 >Ha a biztonsági mentéseket a helyi fájlrendszerbe helyezi át, és ismét visszavált az Azure-tárolóra, előfordulhat, hogy a rendszer naplózza a tárolóban lévő biztonsági másolatok naplózási láncát. A művelet elindít egy teljes biztonsági mentést, amely a sikeres befejezést követően elindítja a naplók biztonsági mentését.
@@ -77,7 +77,7 @@ Jelenleg nincs lehetőség arra, hogy a megoldást a virtuális IP-címekre áll
 
 A Azure Backup jelenleg nem képes megérteni egy HSR beállítását. Ez azt jelenti, hogy a HSR elsődleges és másodlagos csomópontjai két önálló, nem kapcsolódó virtuális gépre lesznek kezelve. Először konfigurálnia kell a biztonsági mentést az elsődleges csomóponton. Ha feladatátvétel történik, a biztonsági mentést a másodlagos csomóponton kell konfigurálni (amely most az elsődleges csomópont lesz). Nincs automatikus feladatátvétel a másik csomópontra történő biztonsági mentésből.
 
-Ha az aktív (elsődleges) csomópontról szeretne biztonsági másolatot készíteni egy adott időpontra vonatkozóan, **átválthatja a védelmet**  a másodlagos csomópontra, amely most már az elsődleges feladatátvétel után válik elérhetővé.
+Ha az aktív (elsődleges) csomópontról szeretne biztonsági másolatot készíteni egy adott időpontra vonatkozóan, **átválthatja a védelmet** a másodlagos csomópontra, amely most már az elsődleges feladatátvétel után válik elérhetővé.
 
 Az alábbi lépéseket követve hajthatja végre a **kapcsoló védelmét**:
 
@@ -85,7 +85,7 @@ Az alábbi lépéseket követve hajthatja végre a **kapcsoló védelmét**:
 - Az [előzetes regisztrációs parancsfájl](https://aka.ms/scriptforpermsonhana) futtatása a másodlagos csomóponton
 - A másodlagos csomóponton [található adatbázisok felderítése](tutorial-backup-sap-hana-db.md#discover-the-databases) és a [biztonsági mentések konfigurálása](tutorial-backup-sap-hana-db.md#configure-backup)
 
-Ezeket a lépéseket manuálisan kell végrehajtani minden feladatátvétel után. Ezeket a lépéseket a Azure Portalon kívül parancssori/HTTP-REST-en keresztül is végrehajthatja. A lépések automatizálásához használhatja az Azure-runbook.
+Ezeket a lépéseket minden feladatátvétel után manuálisan kell elvégezni. Ezeket a lépéseket a Azure Portalon kívül parancssori/HTTP-REST-en keresztül is végrehajthatja. A lépések automatizálásához használhatja az Azure-runbook.
 
 Itt látható egy részletes példa arra, hogyan kell elvégezni a **váltást** :
 
@@ -131,30 +131,30 @@ Igen, a SLES-on futó HANA-adatbázison aktiválható streaming Backups használ
 
 A szabályzat létrehozása előtt törölni kell a RPO és a RTO követelményeit, valamint a kapcsolódó költségeket.
 
-A RPO (helyreállítási pont-célkitűzés) azt jelzi, hogy mennyi adatvesztés van a felhasználó vagy az ügyfél számára. Ezt a napló biztonsági mentési gyakorisága határozza meg. A gyakori naplózási biztonsági másolatok azt jelzik, hogy az alacsonyabb RPO és a Azure Backup szolgáltatás által támogatott minimális érték 15 perc, azaz a napló biztonsági mentési gyakorisága 15 perc vagy magasabb lehet.
+A RPO (helyreállítási pont-célkitűzés) azt jelzi, hogy mekkora adatvesztés fogadható el a felhasználó/ügyfél számára. Ezt a napló biztonsági mentési gyakorisága határozza meg. A naplók gyakoribb biztonsági mentései azt jelzik, hogy az alacsonyabb RPO és a Azure Backup szolgáltatás által támogatott minimális érték 15 perc. A napló biztonsági mentésének gyakorisága akár 15 percet is igénybe vehet.
 
 RTO (helyreállítási idő – célkitűzés) – azt jelzi, hogy az adatvesztési forgatókönyv után milyen gyorsan kell visszaállítani az adott időpontot az utolsó elérhető időpontra. Ez a HANA által alkalmazott helyreállítási stratégiától függ, amely általában attól függ, hogy hány fájl szükséges a visszaállításhoz. Ez a költségeket is érinti, és az alábbi táblázat segítséget nyújt az összes forgatókönyv és azok következményeinek megismeréséhez.
 
 |Biztonsági mentési szabályzat  |RTO  |Költség  |
 |---------|---------|---------|
-|Napi teljes + naplók     |   A leggyorsabb, mivel csak egy teljes másolási és szükséges naplókra van szükség az időponthoz tartozó visszaállításhoz      |    Costliest beállítás, mivel a teljes másolás naponta történik, így egyre több és több adat gyűlik össze a háttérben, amíg meg nem történik a megőrzési idő   |
-|Hetente teljes + napi különbözet + napló     |   A fentinél lassabban, de az alábbinál gyorsabb, mivel egy teljes másolási és egy különbözeti másolási + naplóra van szükség az időponthoz tartozó visszaállításhoz      |    Kevésbé költséges lehetőség, mivel a napi különbözet általában kisebb, mint a teljes, és a teljes másolat csak hetente egyszer kerül beszámításra      |
+|Napi teljes + naplók     |   Leggyorsabb, mivel csak egy teljes másolási és szükséges naplókra van szükség az időponthoz tartozó visszaállításhoz      |    Costliest beállítás, mivel a teljes másolás naponta történik, így egyre több és több adat gyűlik össze a háttérben, amíg meg nem történik a megőrzési idő   |
+|Hetente teljes + napi különbözet + napló     |   A fentinél lassabb, de a következő beállításnál gyorsabb, mivel egy teljes másolási + egy különbözeti másolat + napló szükséges az időponthoz való visszaállításhoz      |    Kevésbé költséges lehetőség, mivel a napi különbözet általában kisebb, mint a teljes, és a teljes másolat csak hetente egyszer kerül beszámításra      |
 |Hetente teljes + napi növekmény + napló     |  A leglassabb, mivel egy teljes másolási + "n" növekmény + naplóra van szükség az időponthoz tartozó helyreállításhoz       |     A legdrágább lehetőség, mivel a napi növekmény kisebb a különbözetnél, és a teljes másolat csak hetente jelenik meg.    |
 
 > [!NOTE]
-> A fenti lehetőségek a leggyakoribbak, de nem az egyetlen lehetőség. Például az egyik heti teljes biztonsági mentés + különbözet hetente kétszer és naplókban is szerepelhet.
+> A fenti lehetőségek a leggyakoribbak, de nem az egyetlen lehetőség. Például hetente két teljes biztonsági mentést és különbözetet használhat hetente és naplókban.
 
-Ezért az RPO és a RTO célkitűzések és a költséghatékonyság alapján választhatják ki a házirend-változatot.
+Ezért kiválaszthatja a házirend-változatot a RPO és a RTO célkitűzések és a Cost szempontok alapján.
 
 ### <a name="impact-of-modifying-a-policy"></a>A szabályzat módosításának következményei
 
-A biztonsági mentési elem házirendjének az 1. házirend (P1) és a 2. házirend (P2) vagy az 1. (P1) szerkesztési szabályra való váltásának következményeit figyelembe véve kell szem előtt tartani.
+A biztonsági mentési elem házirendjének az 1. szabályzatból a 2., illetve az 1. (P1) házirendbe való váltásának következményeit figyelembe kell venni.
 
 - Az összes módosítás visszamenőlegesen is érvényben van. A legújabb biztonsági mentési szabályzatot a korábban végrehajtott helyreállítási pontokra is alkalmazza a rendszer. Tegyük fel például, hogy a napi teljes megőrzés 30 nap, a jelenleg aktív házirend szerint pedig 10 helyreállítási pont lett elvégezve. Ha a napi teljes megőrzés 10 napra módosul, akkor az előző pont lejárati idejét is újraszámítja a kezdési idő + 10 nap, és törölheti, ha lejártak.
-- A módosítás hatóköre magában foglalja a biztonsági mentés napját, a biztonsági mentés típusát és a megőrzési időt is. Például: Ha egy házirendet vasárnap teljes egészében módosítanak a vasárnaponként, a rendszer minden korábbi, nem vasárnapi teljes betöltést megjelöl törlésre.
-- A szülő nem törlődik, amíg a gyermek aktív/nem járt le. Minden biztonsági mentési típushoz a jelenleg aktív házirend szerint lejárati idő tartozik. A teljes biztonsági mentési típust azonban szülőként kell tekinteni a következő "különbözeti", "növekményes" és "naplók" számára. A "különbözet" és a "log" nem szülő másnak. A "növekményes" lehet egy szülő a következő "növekményes" értékre. Még ha a "Parent" jelölése törlésre van megjelölve, a rendszer valójában nem törli őket, ha a gyermek "különbségek" vagy "naplók" nem jártak le. Ha például egy házirendet a napi teljes és heti teljes egészében módosítanak a vasárnapra, a rendszer minden korábbi, nem vasárnapi teljes betöltést megjelöl törlésre. De a rendszer valójában nem törli őket, amíg a korábban a nap folyamán elkészített naplók lejárnak. Más szóval a napló legutóbbi időtartama szerint megőrzi őket. A naplók lejárta után a rendszer a naplókat és a teljes betelteket is törli.
+- A módosítás hatóköre magában foglalja a biztonsági mentés napját, a biztonsági mentés típusát és a megőrzési időt is. Például: Ha egy házirendet vasárnap teljes egészében módosítanak a vasárnaponként, a rendszer minden korábbi, a vasárnapon nem szereplő teljes elemet megjelöl törlésre.
+- A szülő nincs törölve, amíg a gyermek aktív/nem járt le. Minden biztonsági mentési típushoz tartozik egy lejárati idő a jelenleg aktív szabályzatnak megfelelően. A teljes biztonsági mentési típust azonban szülőként kell tekinteni a következő "különbözeti", "növekményes" és "naplók" számára. A "különbözet" és a "log" nem a szülők számára bárki másnak. A "növekményes" lehet egy szülő a következő "növekményes" értékre. Még ha a "Parent" jelölése törlésre van megjelölve, nem törlődik ténylegesen, ha a gyermek "különbségek" vagy "naplók" nem jártak le. Ha például egy házirendet a napi teljes és heti teljes egészében módosítanak a vasárnapra, a rendszer minden korábbi, a vasárnapon nem szereplő teljes elemet megjelöl törlésre. De valójában nem törlődnek, amíg a korábban a nap folyamán elkészített naplók lejárnak. Más szóval a napló legutóbbi időtartama szerint megőrzi őket. A naplók lejárta után a rendszer a naplókat és a teljes betelteket is törli.
 
-Ezeket az alapelveket követve az alábbi táblázatból megismerheti a szabályzatok változásának következményeit.
+Ezen alapelvek alapján a következő táblázatból megismerheti a szabályzatok módosításának következményeit.
 
 |Régi házirend/új szabályzat  |Napi teljes és napló  | Hetente betelik + napi különbözet + naplók  |Hetente betelik + napi növekmények + naplók  |
 |---------|---------|---------|---------|

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 97b872c5fe0a155bb6e474f327f8d0c65e22b21f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d2cd05251e7bf1a0b0ebcd24e6d3d0202f277969
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317443"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685511"
 ---
 # <a name="azure-load-balancer-components"></a>Összetevők Azure Load Balancer
 
@@ -141,7 +141,7 @@ Az alapszintű Load Balancer nem támogatja a kimenő szabályokat.
 - A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozását](quickstart-load-balancer-standard-public-portal.md) ismertető témakört.
 - További információ a [Azure Load Balancerról](load-balancer-overview.md).
 - Tudnivalók a [nyilvános IP-címekről](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
-- További információ a [magánhálózati IP-címekről](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)
+- További információ a [magánhálózati IP-címekről](../virtual-network/private-ip-addresses.md)
 - Tudnivalók a [standard Load Balancer és a Availability Zones](load-balancer-standard-availability-zones.md)használatáról.
 - Ismerje meg a [standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md).
 - További információ [a TCP alaphelyzetbe állításáról üresjáratban](load-balancer-tcp-reset.md).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 402fc1b0b436e7e2061cb2e1a922a75c82ac5235
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 082408f357e97a2ed2153d43dbea459ff09ba704
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408056"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693182"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez az Azure Storage használatával
 Ebben a cikkben az Azure Storage ajánlott biztonsági eljárásainak gyűjteményét tárgyaljuk, amelyekkel biztosítható a platform-szolgáltatásként szolgáló webes és mobil alkalmazások védelme. Ezek az ajánlott eljárások az Azure tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
@@ -34,7 +34,7 @@ Az [Azure Storage biztonsági útmutatója](../../storage/blobs/security-recomme
 Ez a cikk az alábbi ajánlott eljárásokat tárgyalja:
 
 - Közös hozzáférésű jogosultságkódok (SAS)
-- Szerepköralapú hozzáférés-vezérlés (RBAC)
+- Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
 - Ügyféloldali titkosítás nagy értékű adathoz
 - Storage Service Encryption
 
@@ -55,16 +55,16 @@ Az SAS lehetővé teszi a tartalmak megosztását, ahogyan azt a Storage-fiók k
 
 További információ a közös hozzáférésű aláírásról: a [közös hozzáférésű aláírások használata](../../storage/common/storage-sas-overview.md). 
 
-## <a name="use-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés alkalmazása
-A hozzáférés kezelésének egy másik módja az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)használata. A RBAC-mel arra összpontosít, hogy az alkalmazottaknak szükségük van a rájuk vonatkozó pontos engedélyek megadására, és a minimális jogosultsági szintű biztonsági alapelveket figyelembe véve. Túl sok engedély teheti ki a fiókot a támadók számára. A túl kevés engedély azt jelenti, hogy az alkalmazottak nem tudják hatékonyan elvégezni a munkájukat. A RBAC segít a probléma megoldásában azáltal, hogy részletes hozzáférés-kezelést nyújt az Azure-hoz. Ez olyan szervezetek számára fontos, akik biztonsági házirendeket kívánnak kikényszeríteni az adateléréshez.
+## <a name="use-azure-role-based-access-control"></a>Az Azure szerepköralapú hozzáférés-vezérlés használata
+A hozzáférés kezelésének egy másik módja az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)használata. Az Azure RBAC segítségével az alkalmazottaknak az igényeknek megfelelő, a minimális jogosultságokkal kapcsolatos biztonsági alapelveket kell megadniuk. Túl sok engedély teheti ki a fiókot a támadók számára. A túl kevés engedély azt jelenti, hogy az alkalmazottak nem tudják hatékonyan elvégezni a munkájukat. Az Azure RBAC részletes hozzáférés-kezelést nyújt az Azure-hoz, így segít a probléma megoldásában. Ez olyan szervezetek számára fontos, akik biztonsági házirendeket kívánnak kikényszeríteni az adateléréshez.
 
 Az Azure-ban az Azure beépített szerepkörei segítségével jogosultságokat rendelhet a felhasználókhoz. Használja például a Storage-fiók közreműködője olyan felhőalapú operátorok esetében, amelyeknek a Storage-fiókokat és a klasszikus Storage-fiók közreműködői szerepkörét kell kezelnie a klasszikus Storage-fiókok kezeléséhez. Azon felhőalapú operátorok esetében, amelyeknek virtuális gépeket kell kezelnie, de nem az a virtuális hálózat vagy a Storage-fiók, amelyhez csatlakoznak, a virtuális gép közreműködői szerepkörhöz adhatók hozzá.
 
-Azok a szervezetek, amelyek nem kényszerítik ki az adathozzáférés-vezérlést olyan képességek használatával, mint például a RBAC, több jogosultságot biztosítanak a felhasználók számára szükségesnél. Ez olyan adatbiztonságot eredményezhet, amely lehetővé teszi egyes felhasználók számára, hogy az első helyen ne férhessenek hozzájuk.
+Azok a szervezetek, amelyek nem kényszerítik ki az adathozzáférés-vezérlést olyan képességek használatával, mint például az Azure RBAC, több jogosultságot biztosítanak a felhasználók számára szükségesnél. Ez olyan adatbiztonságot eredményezhet, amely lehetővé teszi egyes felhasználók számára, hogy az első helyen ne férhessenek hozzájuk.
 
-További információ a RBAC:
+További információ az Azure RBAC:
 
-- [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
 - [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md)
 - [Azure Storage – biztonsági útmutató](../../storage/blobs/security-recommendations.md) 
 
@@ -78,7 +78,7 @@ Az ügyféloldali titkosítás a Java és a .NET Storage ügyféloldali kódtár
 ## <a name="enable-storage-service-encryption-for-data-at-rest"></a>Storage Service Encryption engedélyezése a nyugalmi állapotban lévő adatokhoz
 Ha a file Storage [Storage Service encryption](../../storage/common/storage-service-encryption.md) engedélyezve van, az adatai automatikusan titkosítva vannak az AES-256 titkosítás használatával. A Microsoft kezeli az összes titkosítási, visszafejtési és kulcskezelő kezelést. Ez a funkció LRS és GRS redundancia-típusok esetén érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk az Azure Storage ajánlott biztonsági eljárásainak gyűjteményét mutatta be a Pásti web-és Mobile-alkalmazások biztonságossá tételéhez. További információ a Pásti-telepítések biztonságossá tételéről:
 

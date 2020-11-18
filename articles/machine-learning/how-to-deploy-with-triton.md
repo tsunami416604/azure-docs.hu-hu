@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3a7d750caed297dfa364e2f1ef176ee19ad35480
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: eed1a3d403a6012e2010a6b9a47a60f815044565
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654206"
+ms.locfileid: "94685902"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Nagy teljesítményű kiszolgálás a Triton inferenc Serverrel (előzetes verzió) 
 
@@ -50,6 +50,17 @@ Mielőtt a Tritont a saját modelljére próbálja használni, fontos tisztában
 * A következtetési kérelmek a __pontozási URI__-t használják. Például: `https://myserevice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Normál, nem Triton, üzembe helyezési architektúra diagramja":::
+
+### <a name="setting-the-number-of-workers"></a>A feldolgozók számának beállítása
+
+Az üzemelő példányban lévő feldolgozók számának beállításához állítsa be a környezeti változót `WORKER_COUNT` . Ha van egy nevű [környezeti](https://docs.microsoft.compython/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) objektum `env` , a következőket teheti:
+
+```{py}
+env.environment_variables["WORKER_COUNT"] = "1"
+```
+
+Ez azt jelzi, hogy az Azure ML felgyorsítja a megadott munkavégzők számát.
+
 
 **Konfiguráció központi telepítése a Tritontal**
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 11/13/2020
 ms.custom: mvc
-ms.openlocfilehash: dbc0f34e57297b9879a865511f6e7b4ed7ca2a3c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 1bf3141876ee56ee1361f19a67689ca3b2f4f89a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636894"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685290"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -28,7 +28,7 @@ Az első lépésekhez fejezze be az [Azure Red Hat OpenShift-fürt létrehozása
 
 ## <a name="access-security-and-monitoring"></a>Hozzáférés, biztonság és monitoring
 
-A jobb biztonság és felügyelet érdekében az Azure Red Hat OpenShift lehetővé teszi a Azure Active Directory (Azure AD) integrálását és a Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) használatát. A fürtje és az erőforrásai állapotát is monitorozhatja.
+A jobb biztonság és felügyelet érdekében az Azure Red Hat OpenShift lehetővé teszi a Azure Active Directory (Azure AD) integrációját és a Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) használatát. A fürtje és az erőforrásai állapotát is monitorozhatja.
 
 ## <a name="cluster-and-node"></a>Fürt és csomópont
 
@@ -38,7 +38,7 @@ Az Azure Red Hat OpenShift-csomópontjai Azure-beli virtuális gépeken futnak. 
 
 Az Azure Red Hat OpenShift egy szolgáltatói szerződés biztosít, amely garantálja, hogy a szolgáltatás az idő 99,95%-ában elérhető lesz. További információ az SLA-ról: [Azure Red Hat OPENSHIFT SLA](https://azure.microsoft.com/en-au/support/legal/sla/openshift/v1_0/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg az Azure Red Hat OpenShift előfeltételeit:
 

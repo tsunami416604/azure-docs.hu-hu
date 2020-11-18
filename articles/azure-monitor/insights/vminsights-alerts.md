@@ -5,16 +5,19 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/23/2020
-ms.openlocfilehash: be469ab3b05c54ebc5afa6bd6d129efd8d4ba692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: f582f0dc7547a607351fcfc4ff9d39e8c5a077df
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254805"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686177"
 ---
 # <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Riasztások létrehozása a Azure Monitor for VMsból
 A [Azure monitor riasztásai](../platform/alerts-overview.md) proaktívan értesítik Önt a megfigyelési adataiban található érdekes adatmennyiségekről és mintákról. A Azure Monitor for VMs nem tartalmaz előre konfigurált riasztási szabályokat, de saját maga is létrehozhat saját adatokat a gyűjtött adatok alapján. Ez a cikk útmutatást nyújt a riasztási szabályok létrehozásához, többek között a példákat tartalmazó lekérdezésekhez.
+
+> [!IMPORTANT]
+> A cikkben ismertetett riasztások a Azure Monitor for VMs gyűjtött adatokból származó naplók lekérdezésén alapulnak. Ez eltér a Azure monitor által a [VM Guest Health](vminsights-health-overview.md) szolgáltatáshoz létrehozott riasztások, amely jelenleg nyilvános előzetes verzióban érhető el. Mivel ez a szolgáltatás általános elérhetőséget mutat, a riasztásokra vonatkozó útmutatást összevonjuk.
 
 
 ## <a name="alert-rule-types"></a>Riasztási szabályok típusai
@@ -29,11 +32,11 @@ A Azure Monitor két típusú naplózási riasztás létezik:
 ## <a name="alert-rule-walkthrough"></a>Riasztási szabály – útmutató
 Ez a szakasz egy mérőszám-mérési riasztási szabály létrehozását mutatja be Azure Monitor for VMsból származó teljesítményadatokat használva. Ezt az alapszintű folyamatot számos különböző naplózási lekérdezéssel használhatja, amelyek riasztást küldenek a különböző teljesítményszámlálók esetében.
 
-Első lépésként hozzon létre egy új riasztási szabályt a [naplók létrehozása, megtekintése és kezelése a Azure monitor használatával című](../platform/alerts-log.md)szakaszban ismertetett eljárást követve. Az **erőforráshoz**válassza ki azt a log Analytics munkaterületet, amely Azure monitor virtuális gépeket az előfizetésében. Mivel a naplózási riasztási szabályok cél erőforrása mindig Log Analytics munkaterület, a naplózási lekérdezésnek tartalmaznia kell egy szűrőt az adott virtuális gépekhez vagy virtuálisgép-méretezési csoportokhoz. 
+Első lépésként hozzon létre egy új riasztási szabályt a [naplók létrehozása, megtekintése és kezelése a Azure monitor használatával című](../platform/alerts-log.md)szakaszban ismertetett eljárást követve. Az **erőforráshoz** válassza ki azt a log Analytics munkaterületet, amely Azure monitor virtuális gépeket az előfizetésében. Mivel a naplózási riasztási szabályok cél erőforrása mindig Log Analytics munkaterület, a naplózási lekérdezésnek tartalmaznia kell egy szűrőt az adott virtuális gépekhez vagy virtuálisgép-méretezési csoportokhoz. 
 
-A riasztási szabály **feltétele** a következő [szakaszban](#sample-alert-queries) található lekérdezések egyikét használja **keresési lekérdezésként**:. A lekérdezésnek egy *AggregatedValue*nevű numerikus tulajdonságot kell visszaadnia. A számítógépnek össze kell foglalnia az adatait, hogy külön riasztást hozzon létre minden olyan virtuális géphez, amely meghaladja a küszöbértéket.
+A riasztási szabály **feltétele** a következő [szakaszban](#sample-alert-queries) található lekérdezések egyikét használja **keresési lekérdezésként**:. A lekérdezésnek egy *AggregatedValue* nevű numerikus tulajdonságot kell visszaadnia. A számítógépnek össze kell foglalnia az adatait, hogy külön riasztást hozzon létre minden olyan virtuális géphez, amely meghaladja a küszöbértéket.
 
-A **riasztási logikában**válassza a **metrika mérése** elemet, majd adjon meg egy **küszöbértéket**. Az **trigger riasztása alapján**beállításnál határozza meg, hogy a rendszer hányszor lépje túl a küszöbértéket a riasztás létrehozása előtt. Előfordulhat például, hogy nem biztos abban, hogy a processzor túllépte a küszöbértéket, majd visszatér a normál értékre, de ha továbbra is meghaladja a küszöbértéket több egymást követő mérésnél, akkor ügyeljen rá.
+A **riasztási logikában** válassza a **metrika mérése** elemet, majd adjon meg egy **küszöbértéket**. Az **trigger riasztása alapján** beállításnál határozza meg, hogy a rendszer hányszor lépje túl a küszöbértéket a riasztás létrehozása előtt. Előfordulhat például, hogy nem biztos abban, hogy a processzor túllépte a küszöbértéket, majd visszatér a normál értékre, de ha továbbra is meghaladja a küszöbértéket több egymást követő mérésnél, akkor ügyeljen rá.
 
 A **kiértékelt szakasz alapján** határozza meg, hogy a lekérdezés milyen gyakran fusson, és a lekérdezés időablaka. Az alább látható példában a lekérdezés 15 percenként fog futni, és kiértékeli az elmúlt 15 percben összegyűjtött teljesítményadatokat.
 

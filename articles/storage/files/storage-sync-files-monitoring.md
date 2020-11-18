@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 785a63d695f7c615ce21fa5714b76988b5e281c4
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 59c489fac8bf02263cc51833675af414d5de6a52
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629376"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686004"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
@@ -45,7 +45,7 @@ Az Azure File Sync következő mérőszámai érhetők el Azure Monitorban:
 | Metrika neve | Leírás |
 |-|-|
 | Szinkronizált bájtok száma | Az átvitt adatok mérete (feltöltés és letöltés).<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható méretek: kiszolgálói végpont neve, szinkronizálás iránya, szinkronizálási csoport neve |
-| Felhőbeli rétegek felidézése | A visszahívott adatmennyiség.<br><br>**Megjegyzés** : Ez a mérőszám a jövőben el lesz távolítva. A Felhőbeli rétegű visszahívás méretének mérőszámával figyelheti a meghívott adatok méretét.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgálónév |
+| Felhőbeli rétegek felidézése | A visszahívott adatmennyiség.<br><br>**Megjegyzés**: Ez a mérőszám a jövőben el lesz távolítva. A Felhőbeli rétegű visszahívás méretének mérőszámával figyelheti a meghívott adatok méretét.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgálónév |
 | Felhőbeli rétegek felidézésének mérete | A visszahívott adatmennyiség.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgáló neve, szinkronizálási csoport neve |
 | Felhőbeli rétegek felidézésének mérete alkalmazás szerint | Az alkalmazás által visszahívott adatmennyiség.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: alkalmazás neve, kiszolgálónév, szinkronizálási csoport neve |
 | Felhőbeli rétegek felidézésének átviteli sebessége | Az visszahívási teljesítmény mérete.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgáló neve, szinkronizálási csoport neve |
@@ -67,7 +67,7 @@ A riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a
     - **Dimenzió neve**
     - **Riasztási logika**
 4. Kattintson a **műveleti csoport kijelölése** elemre, és adjon hozzá egy műveleti csoportot (E-mail, SMS stb.) a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-5. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét** , **leírását** és **súlyosságát**.
+5. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 6. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.  
 
 A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz használandó megfelelő mérőszámot sorolja fel:
@@ -83,7 +83,7 @@ Az ilyen forgatókönyvekhez tartozó riasztások létrehozásával kapcsolatos 
 
 ## <a name="storage-sync-service"></a>Társzinkronizálási szolgáltatás
 
-Ha meg szeretné tekinteni a Azure File Sync üzemelő példányának állapotát a **Azure Portalban** , navigáljon a **Storage Sync szolgáltatáshoz** , és az alábbi információk érhetők el:
+Ha meg szeretné tekinteni a Azure File Sync üzemelő példányának állapotát a **Azure Portalban**, navigáljon a **Storage Sync szolgáltatáshoz** , és az alábbi információk érhetők el:
 
 - Regisztrált kiszolgáló állapota
 - Kiszolgálói végpont állapota
@@ -100,8 +100,8 @@ A **regisztrált kiszolgáló állapotának** megtekintéséhez a portálon navi
 
 ![Képernyőfelvétel a regisztrált kiszolgálók állapotáról](media/storage-sync-files-troubleshoot/file-sync-registered-servers.png)
 
-- Ha a **regisztrált kiszolgáló** állapota **online** , a kiszolgáló sikeresen kommunikál a szolgáltatással.
-- Ha a **regisztrált kiszolgáló** állapota **kapcsolat nélküli üzemmódban jelenik meg** , a tárolási szinkronizálási figyelő folyamata (AzureStorageSyncMonitor.exe) nem fut, vagy a kiszolgáló nem fér hozzá a Azure file Sync szolgáltatáshoz. Útmutatásért tekintse meg a [hibaelhárítási dokumentációt](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#server-endpoint-noactivity) .
+- Ha a **regisztrált kiszolgáló** állapota **online**, a kiszolgáló sikeresen kommunikál a szolgáltatással.
+- Ha a **regisztrált kiszolgáló** állapota **kapcsolat nélküli üzemmódban jelenik meg**, a tárolási szinkronizálási figyelő folyamata (AzureStorageSyncMonitor.exe) nem fut, vagy a kiszolgáló nem fér hozzá a Azure file Sync szolgáltatáshoz. Útmutatásért tekintse meg a [hibaelhárítási dokumentációt](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#server-endpoint-noactivity) .
 
 ### <a name="server-endpoint-health"></a>Kiszolgálói végpont állapota
 
@@ -141,14 +141,14 @@ A kiszolgáló telemetria-eseménynaplójának használatával figyelheti a regi
 
 Szinkronizálás állapota
 
-- A 9102-es AZONOSÍTÓJÚ esemény a szinkronizálási munkamenet befejeződése után van naplózva. Ezzel az eseménnyel megállapíthatja, hogy a szinkronizálási munkamenetek sikeresek-e ( **HResult = 0** ), és hogy vannak-e az egyes elemek szinkronizálási hibái ( **PerItemErrorCount** ). További információ: [Sync Health](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#broken-sync) és  [per-Item errors](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) dokumentáció.
+- A 9102-es AZONOSÍTÓJÚ esemény a szinkronizálási munkamenet befejeződése után van naplózva. Ezzel az eseménnyel megállapíthatja, hogy a szinkronizálási munkamenetek sikeresek-e (**HResult = 0**), és hogy vannak-e az egyes elemek szinkronizálási hibái (**PerItemErrorCount**). További információ: [Sync Health](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#broken-sync) és  [per-Item errors](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) dokumentáció.
 
   > [!Note]  
   > Időnként a szinkronizálási munkamenetek nem teljesek, vagy nem nulla PerItemErrorCount rendelkeznek. Azonban továbbra is előrehaladást végeznek, és néhány fájl szinkronizálása sikeresen megtörtént. Ezt az alkalmazott mezőkben láthatja, például AppliedFileCount, AppliedDirCount, AppliedTombstoneCount és AppliedSizeBytes. Ezek a mezők tájékoztatják, hogy a munkamenet mennyivel járt sikerrel. Ha úgy látja, hogy egy sorban több szinkronizálási munkamenet is meghibásodik, és egyre nagyobb mértékben vannak alkalmazva, a támogatási jegy megnyitása előtt adja meg a szinkronizálási időt.
 
-- Az 9121-as AZONOSÍTÓJÚ esemény a szinkronizálási munkamenet befejeződése után minden egyes eseti hiba esetén be van jelentkezve. Ennek az eseménynek a segítségével meghatározhatja, hogy hány fájlt nem lehet szinkronizálni ezzel a hibával ( **PersistentCount** és **TransientCount** ). A rendszer kideríti az elemek állandó hibáit, lásd: Hogyan, hogy vannak-e olyan [fájlok vagy mappák, amelyek nem szinkronizálhatók?](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
+- Az 9121-as AZONOSÍTÓJÚ esemény a szinkronizálási munkamenet befejeződése után minden egyes eseti hiba esetén be van jelentkezve. Ennek az eseménynek a segítségével meghatározhatja, hogy hány fájlt nem lehet szinkronizálni ezzel a hibával (**PersistentCount** és **TransientCount**). A rendszer kideríti az elemek állandó hibáit, lásd: Hogyan, hogy vannak-e olyan [fájlok vagy mappák, amelyek nem szinkronizálhatók?](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
 
-- Az 9302-as AZONOSÍTÓJÚ esemény 5 – 10 percenként van naplózva, ha aktív szinkronizálási munkamenet van. Ezzel az eseménnyel meghatározhatja, hogy hány elemet kell szinkronizálni ( **TotalItemCount** ), az eddig szinkronizált elemek számát ( **AppliedItemCount** ) és a nem szinkronizált elemek számát ( **PerItemErrorCount** ). Ha a szinkronizálás nem halad előre ( **AppliedItemCount = 0** ), a szinkronizálási munkamenet végül meghiúsul, és a rendszer a 9102-es azonosítójú eseményt naplózza a hibával. További információt a [szinkronizálási folyamat dokumentációjában](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)talál.
+- Az 9302-as AZONOSÍTÓJÚ esemény 5 – 10 percenként van naplózva, ha aktív szinkronizálási munkamenet van. Ezzel az eseménnyel meghatározhatja, hogy hány elemet kell szinkronizálni (**TotalItemCount**), az eddig szinkronizált elemek számát (**AppliedItemCount**) és a nem szinkronizált elemek számát (**PerItemErrorCount**). Ha a szinkronizálás nem halad előre (**AppliedItemCount = 0**), a szinkronizálási munkamenet végül meghiúsul, és a rendszer a 9102-es azonosítójú eseményt naplózza a hibával. További információt a [szinkronizálási folyamat dokumentációjában](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)talál.
 
 Regisztrált kiszolgáló állapota
 
@@ -212,7 +212,7 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
     - Értékelés alapja: aggregációs részletesség = **24 óra** | Értékelés gyakorisága = **óránként** 
     - Kattintson a **Kész gombra.** 
 8. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy műveleti csoport (E-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét** , **leírását** és **súlyosságát**.
+9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 
 
 ### <a name="how-to-create-an-alert-if-files-are-failing-to-sync-to-a-server-or-cloud-endpoint"></a>Riasztás létrehozása, ha a fájlok nem szinkronizálhatók a kiszolgálóval vagy a Felhőbeli végponttal
@@ -229,12 +229,12 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
 7. Navigáljon a **riasztási logikához** , és végezze el a következőket: 
      - Küszöbérték **statikusra** állítva 
      - Operátor: **nagyobb, mint** 
-     - Összesítés típusa: **összesen**  
+     - Összesítés típusa: **átlag**  
      - Küszöbérték: **100** 
      - Értékelés alapja: aggregációs részletesség = **5 perc** | Értékelés gyakorisága = **5 percenként** 
      - Kattintson a **Kész gombra.** 
 8. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy műveleti csoport (E-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét** , **leírását** és **súlyosságát**.
+9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 
 
 ### <a name="how-to-create-an-alert-if-a-registered-server-is-failing-to-communicate-with-the-storage-sync-service"></a>Riasztás létrehozása, ha egy regisztrált kiszolgáló nem tud kommunikálni a Storage Sync szolgáltatással
@@ -257,7 +257,7 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
         - Vegye figyelembe, hogy a metrikák a Azure Monitor 15 – 20 percenként érkeznek. Ne állítsa 30 percnél rövidebbre a **kiértékelés gyakoriságát** (hamis riasztásokat hoz létre).
      - Kattintson a **Kész gombra.** 
 8. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy műveleti csoport (E-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét** , **leírását** és **súlyosságát**.
+9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 
 
 ### <a name="how-to-create-an-alert-if-the-cloud-tiering-recall-size-has-exceeded-500gib-in-a-day"></a>Riasztás létrehozása, ha a Felhőbeli rétegek felidézésének mérete túllépte a 500GiB egy napon belül
@@ -279,10 +279,10 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
      - Értékelés alapja: aggregációs részletesség = **24 óra** | Értékelés gyakorisága = **óránként** 
     - Kattintson a **Kész gombra.** 
 8. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy műveleti csoport (E-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét** , **leírását** és **súlyosságát**.
+9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 - [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
 - [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)

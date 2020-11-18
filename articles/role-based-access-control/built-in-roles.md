@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: 2ffa5d65675b8fe6eeecbcc71c49d7aa8ebb7eaf
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a48a13fa18025254ee31344868d10181ae87c65e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657771"
+ms.locfileid: "94685477"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -7618,7 +7618,7 @@ Lehetővé teszi, hogy új laborokat hozzon létre az Azure Lab-fiókjaiban. [To
 }
 ```
 
-## <a name="monitor"></a>Figyelés
+## <a name="monitor"></a>Monitor
 
 
 ### <a name="application-insights-component-contributor"></a>Application Insights összetevő közreműködője
@@ -7760,8 +7760,7 @@ Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/Action | Lekéri a munkaterület megosztott kulcsait. Ezek a kulcsok a Microsoft Operational Insights-ügynökök munkaterülethez való összekapcsolására szolgálnak. |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/storageinsightconfigs/* | A log Analytics tárolási Insight-konfigurációinak olvasása/írása/törlése. |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
-> | [Microsoft. WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/Monitors/* |  |
-> | [Microsoft. WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/notificationSettings/* |  |
+> | [Microsoft. WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/Monitors/* | Információ kérése a vendég virtuális gép állapotának figyelői.  |
 > | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartDetectorAlertRules/* |  |
 > | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/actionRules/* |  |
 > | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartGroups/* |  |
@@ -7812,7 +7811,6 @@ Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még
         "Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*",
         "Microsoft.Support/*",
         "Microsoft.WorkloadMonitor/monitors/*",
-        "Microsoft.WorkloadMonitor/notificationSettings/*",
         "Microsoft.AlertsManagement/smartDetectorAlertRules/*",
         "Microsoft.AlertsManagement/actionRules/*",
         "Microsoft.AlertsManagement/smartGroups/*"

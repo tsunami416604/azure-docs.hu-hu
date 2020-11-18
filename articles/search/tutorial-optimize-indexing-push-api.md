@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 13825422358fdddf6742353fbabaac0303b0c82e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d22ff5c863617a3feb2a08d4b1889d0a7c10cd3a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973444"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693399"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Oktatóanyag: indexelés optimalizálása a leküldéses API-val
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag a C# és a [.net SDK](/dotnet/api/overview/azure/search) hasz
 > * Több szál használata az indexelési sebesség növeléséhez
 > * Az exponenciális leállítási újrapróbálkozási stratégiájának használata a sikertelen dokumentumok újrapróbálkozásához
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -54,7 +54,7 @@ Amikor egy indexbe küldi az adatküldést, számos fontos szempontot kell figye
 A következő hat kulcsfontosságú tényezőt kell figyelembe venni:
 
 + A **szolgáltatási réteg és a partíciók/replikák száma** – a partíciók hozzáadása és a réteg növelése egyaránt növeli az indexelési sebességet.
-+ **Séma indexelése** – mezők hozzáadásával és további tulajdonságok hozzáadásával a mezőkhöz (például *kereshető*, *sokrétű*vagy *szűrhető*) az indexelési sebesség csökkentése érdekében.
++ **Séma indexelése** – mezők hozzáadásával és további tulajdonságok hozzáadásával a mezőkhöz (például *kereshető*, *sokrétű* vagy *szűrhető*) az indexelési sebesség csökkentése érdekében.
 + **Köteg mérete** – az optimális köteg mérete az index sémája és az adatkészlet alapján változik.
 + **Szálak/feldolgozók száma** – egyetlen szál nem használja ki teljes mértékben az indexelési sebességeket
 + **Újrapróbálkozási stratégia** – exponenciális leállítási újrapróbálkozási stratégiát kell használni az indexelés optimalizálásához.
@@ -71,9 +71,9 @@ Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szü
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-   ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
+   ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-rest/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
 ## <a name="2---set-up-your-environment"></a>2 – a környezet beállítása
 
@@ -90,7 +90,7 @@ Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szü
 
 ## <a name="3---explore-the-code"></a>3 – a kód megismerése
 
-A *appsettings.js*frissítését követően a **OptimizeDataIndexing. SLN** programban a minta programnak készen kell állnia a létrehozásra és a futtatásra.
+A *appsettings.js* frissítését követően a **OptimizeDataIndexing. SLN** programban a minta programnak készen kell állnia a létrehozásra és a futtatásra.
 
 Ez a kód a [C#](search-get-started-dotnet.md)rövid útmutatóból származik. A .NET SDK-val kapcsolatos részletes információk a cikkben találhatók.
 
@@ -162,7 +162,7 @@ Az index sémája jelentős hatással lehet az indexelési sebességre. Ennek a 
 Az Azure Cognitive Search a következő API-kat támogatja egy vagy több dokumentum indexbe való betöltéséhez:
 
 + [Dokumentumok hozzáadása, frissítése vagy törlése (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [IndexDocumentsAction osztály](/dotnet/api/azure.search.documents.models.indexdocumentsaction?view=azure-dotnet) vagy [IndexDocumentsBatch osztály](/dotnet/api/azure.search.documents.models.indexdocumentsbatch?view=azure-dotnet)
++ [IndexDocumentsAction osztály](/dotnet/api/azure.search.documents.models.indexdocumentsaction) vagy [IndexDocumentsBatch osztály](/dotnet/api/azure.search.documents.models.indexdocumentsbatch)
 
 A dokumentumok a kötegekben való indexelése jelentősen javítja az indexelési teljesítményt. Ezek a kötegek akár 1000-dokumentumok, akár 16 MB-onként is lehetnek.
 
@@ -404,7 +404,7 @@ Az oktatóanyaghoz tartozó mintakód ellenőrzi a meglévő indexeket, és tör
 
 Az indexek törléséhez használhatja a portált is.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 

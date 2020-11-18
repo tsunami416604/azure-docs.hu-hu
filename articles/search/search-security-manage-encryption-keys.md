@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 95ac4ed83a4486665ce378972ea7d6423c2482d5
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b0871b6365d78129cd6fdaec82fee14e2b0a7a4b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682910"
+ms.locfileid: "94693443"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Ügyfél által felügyelt kulcsok konfigurálása az adattitkosításhoz az Azure-ban Cognitive Search
 
@@ -52,7 +52,7 @@ Ebben a forgatókönyvben a következő eszközöket és szolgáltatásokat hasz
 Olyan keresési alkalmazással kell rendelkeznie, amely létrehozhatja a titkosított objektumot. Ebben a kódban egy Key Vault-kulcsra és Active Directory regisztrációs információra fog hivatkozni. Ez a kód lehet egy működő alkalmazás vagy prototípus-kód, például a [C# kód minta DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK).
 
 > [!TIP]
-> A [Poster](search-get-started-postman.md) vagy a [Azure PowerShell](./search-get-started-powershell.md) használatával meghívhatja a REST API-kat, amelyek indexeket és szinonimákat hoznak létre, amelyek tartalmazzák a titkosítási kulcs paraméterét. Jelenleg nem támogatott a kulcsok indexekhez vagy szinonimához való hozzáadásához szükséges portál támogatása.
+> A [Poster vagy a Visual Studio Code](search-get-started-rest.md)vagy a [Azure PowerShell](./search-get-started-powershell.md)használatával meghívhatja a REST API-kat, amelyek indexeket és szinonimákat hoznak létre, amelyek tartalmazzák a titkosítási kulcs paraméterét. Jelenleg nem támogatott a kulcsok indexekhez vagy szinonimához való hozzáadásához szükséges portál támogatása.
 
 ## <a name="1---enable-key-recovery"></a>1 – kulcshelyreállítás engedélyezése
 

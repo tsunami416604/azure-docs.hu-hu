@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: db7d9e99de8a4ee67e49f8b7568700fc07b1e2fd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 749c32091ed10d5bb39d7b67c8b737e002fc9909
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536508"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693732"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
@@ -60,7 +60,7 @@ A Cloud Service-modelltől függően az alkalmazás vagy szolgáltatás biztons�
 
 A beépített funkciók hat funkcionális területen vannak rendszerezve: műveletek, alkalmazások, tárolás, hálózatkezelés, számítás és identitás. Az Azure platformon elérhető funkciókkal és képességekkel kapcsolatos további részleteket az alábbi hat területen tekintheti meg összefoglaló információk alapján.
 
-## <a name="operations"></a>Üzemeltetés
+## <a name="operations"></a>Műveletek
 Ez a szakasz további információkat tartalmaz a biztonsági műveletek főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összefoglaló információkkal kapcsolatban.
 
 ### <a name="security-and-audit-dashboard"></a>Security and Audit irányítópult
@@ -141,8 +141,8 @@ Az Application Diagnostics felületén a következő módokon csoportosíthatók
 ## <a name="storage"></a>Storage
 A szakasz további információkat tartalmaz az Azure Storage biztonságának főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összegző információkkal kapcsolatban.
 
-### <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
-Role-Based Access Control (RBAC) használatával biztonságossá teheti a Storage-fiókját. Az adathozzáférésre vonatkozó biztonsági szabályzatokat kényszerítő szervezetek számára elengedhetetlen a hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legalacsonyabb jogosultsági szintű](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elvek alapján. Ezek a hozzáférési jogosultságok akkor érhetők el, ha a megfelelő Azure-szerepkört hozzárendeli a csoportokhoz és alkalmazásokhoz egy bizonyos hatókörben. A jogosultságok felhasználókhoz való hozzárendeléséhez használhatja az [Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md), például a Storage-fiók közreműködőjét. A Storage-fiókok [Azure Resource Manager](../../storage/blobs/security-recommendations.md) modell használatával történő elérését Role-Based Access Control (RBAC) segítségével lehet szabályozni.
+### <a name="azure-role-based-access-control-azure-rbac"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
+Az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) biztonságossá teheti a Storage-fiókját. Az adathozzáférésre vonatkozó biztonsági szabályzatokat kényszerítő szervezetek számára elengedhetetlen a hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legalacsonyabb jogosultsági szintű](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elvek alapján. Ezek a hozzáférési jogosultságok akkor érhetők el, ha a megfelelő Azure-szerepkört hozzárendeli a csoportokhoz és alkalmazásokhoz egy bizonyos hatókörben. A jogosultságok felhasználókhoz való hozzárendeléséhez használhatja az [Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md), például a Storage-fiók közreműködőjét. A Storage-fiókok [Azure Resource Manager](../../storage/blobs/security-recommendations.md) modell használatával történő elérését az Azure RBAC keresztül lehet szabályozni.
 
 ### <a name="shared-access-signature"></a>Közös hozzáférési aláírás
 A [közös hozzáférésű jogosultságkód (SAS)](../../storage/common/storage-sas-overview.md) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz. Az SAS azt jelenti, hogy a megadott időszakra és meghatározott engedélyekkel engedélyezheti az ügyfél számára a Storage-fiókban lévő objektumokra vonatkozó korlátozott engedélyeket. Ezeket a korlátozott engedélyeket a fiók hozzáférési kulcsainak megosztása nélkül is megadhatja.
@@ -336,7 +336,7 @@ A Microsoft több biztonsági gyakorlatot és technológiát használ termékei 
 
 -   A [jogkivonat-alapú hitelesítés](../../active-directory/develop/authentication-vs-authorization.md) lehetővé teszi a hitelesítés Azure Active Directory használatával.
 
--   Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/built-in-roles.md) lehetővé teszi, hogy a felhasználó hozzárendelt szerepköre alapján engedélyezze a hozzáférést, így a felhasználók csak a feladat feladataik elvégzéséhez szükséges hozzáférést biztosíthatják. A RBAC személyre szabása a szervezet üzleti modelljében és a kockázati toleranciában végezhető el.
+-   Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/built-in-roles.md) lehetővé teszi, hogy a felhasználó hozzárendelt szerepköre alapján engedélyezze a hozzáférést, így a felhasználók csak a feladat feladataik elvégzéséhez szükséges hozzáférést biztosíthatják. Az Azure-RBAC testre szabhatja a szervezet üzleti modelljében és a kockázati tolerancián.
 
 -   Az [integrált Identitáskezelés (hibrid identitás)](../../active-directory/hybrid/plan-hybrid-identity-design-considerations-overview.md) lehetővé teszi a felhasználók hozzáférésének felügyeletét a belső adatközpontokban és a Felhőbeli platformokon, így egyetlen felhasználói identitást hozhat létre a hitelesítéshez és az összes erőforrás engedélyezéséhez.
 

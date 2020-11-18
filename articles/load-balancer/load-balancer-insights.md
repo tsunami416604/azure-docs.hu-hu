@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 2168ee05ab93655cc0ad87221bff29c1b6b1035d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d57dfd0a496e71c1f0e6ddea839723da35bc5f76
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897592"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686242"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>A Azure Load Balancer figyelése és konfigurálása a bepillantást használva
 
-A [hálózatokon keresztüli Azure monitor a](https://docs.microsoft.com/azure/azure-monitor/insights/insights-overview#azure-monitor-for-networks-preview)funkciók függőségi vizualizációit és előre konfigurált mérőszámokat biztosít a terheléselosztó számára. Ezek a vizualizációk segítenek a tervezési döntések meghozatalában, valamint a hibák gyors honosításában, diagnosztizálásában és megoldásában.
+A hálózatokon keresztüli Azure Monitor a funkciók függőségi vizualizációit és előre konfigurált mérőszámokat biztosít a terheléselosztó számára. Ezek a vizualizációk segítenek a tervezési döntések meghozatalában, valamint a hibák gyors honosításában, diagnosztizálásában és megoldásában.
 
 >[!NOTE] 
 >Vegye figyelembe, hogy ez a funkció előzetes verzióban érhető el, és a funkcionális függőségi nézet és az előre konfigurált irányítópult is változhat a felhasználói élmény javítása érdekében

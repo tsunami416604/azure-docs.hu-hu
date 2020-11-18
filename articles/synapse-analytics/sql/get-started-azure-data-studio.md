@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb4c7f8ba49cf701ef13cb57ab2b323a94c928cc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3af28ef575f770a5b8c3fb73ade1f9c53be66843
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323830"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685749"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Kapcsolódás a szinapszis SQLhoz a Azure Data Studio használatával (előzetes verzió)
 
@@ -50,7 +50,7 @@ A kapcsolathoz a következő paraméterek szükségesek:
 >
 > - `<Azure Synapse workspace name>`. sql.azuresynapse.net
 
-**Hitelesítési típusként** válassza a **Windows-hitelesítés** , a **Azure Active Directory** vagy az **SQL-bejelentkezés** lehetőséget.
+**Hitelesítési típusként** válassza a **Windows-hitelesítés**, a **Azure Active Directory** vagy az **SQL-bejelentkezés** lehetőséget.
 
 Ha az **SQL-bejelentkezést** hitelesítési típusként szeretné használni, adja hozzá a username/Password paramétert:
 

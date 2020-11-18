@@ -1,25 +1,25 @@
 ---
 title: Fogalmak – hozzáférés és identitás az Azure Kubernetes Servicesben (ak)
-description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) hozzáférését és identitását, beleértve a Azure Active Directory integrációt, az Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC), valamint a szerepköröket és kötéseket.
+description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) hozzáférését és identitását, beleértve a Azure Active Directory integrációt, a szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC), valamint a szerepköröket és kötéseket.
 services: container-service
 ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 5013f8b7dd88340e397fd3d4d4cd93d4b911fbbb
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: ca167a2ae313c29581d40fe921a8742b9b6b61fe
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378227"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686055"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és identitás-beállítások az Azure Kubernetes Service (AKS) szolgáltatáshoz
 
-A hitelesítés, a hozzáférés/engedélyezés és a biztonságos Kubernetes-fürtök többféleképpen is megadhatók. A Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) használatával a felhasználók, csoportok és szolgáltatásfiókok hozzáférése csak a szükséges erőforrásokhoz biztosítható. Az Azure Kubernetes Service (ak) segítségével tovább növelheti a biztonsági és az engedélyezési struktúrát Azure Active Directory és az Azure RBAC használatával. Ezek a módszerek segítenek a fürt hozzáférésének biztonságossá tételében, és csak a minimálisan szükséges engedélyeket biztosítják a fejlesztők és a kezelők számára.
+A hitelesítés, a hozzáférés/engedélyezés és a biztonságos Kubernetes-fürtök többféleképpen is megadhatók. A Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) használatával a felhasználók, csoportok és szolgáltatásfiókok hozzáférése csak a szükséges erőforrásokhoz biztosítható. Az Azure Kubernetes Service (ak) segítségével tovább növelheti a biztonsági és az engedélyezési struktúrát Azure Active Directory és az Azure RBAC használatával. Ezek a módszerek segítenek a fürt hozzáférésének biztonságossá tételében, és csak a minimálisan szükséges engedélyeket biztosítják a fejlesztők és a kezelők számára.
 
 Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek segítséget nyújtanak az AK-beli engedélyek hitelesítéséhez és hozzárendeléséhez:
 
-- [Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC)](#kubernetes-role-based-access-control-rbac)
+- [Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC)](#kubernetes-role-based-access-control-kubernetes-rbac)
   - [Szerepkörök és ClusterRoles](#roles-and-clusterroles)
   - [RoleBindings és ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
   - [Kubernetes-szolgáltatásfiókok](#kubernetes-service-accounts)
@@ -29,11 +29,11 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek segítséget nyújta
   - [Azure RBAC for Kubernetes-engedélyezés (előzetes verzió)](#azure-rbac-for-kubernetes-authorization-preview)
 
 
-## <a name="kubernetes-role-based-access-control-rbac"></a>Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC)
+## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC)
 
-A felhasználók által elvégezhető műveletek részletes szűrésének biztosításához a Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) használ. Ez a vezérlési mechanizmus lehetővé teszi a felhasználók vagy felhasználói csoportok hozzárendelését, például az erőforrások létrehozását és módosítását, illetve a naplók megtekintését az alkalmazás-munkaterhelések futtatásához. Ezek az engedélyek egyetlen névtérre is érvényesek, vagy a teljes AK-fürtön keresztül is megadhatók. A Kubernetes RBAC segítségével létrehozhat *szerepköröket* az engedélyek definiálásához, majd hozzárendelheti ezeket a szerepköröket a felhasználókhoz *szerepkör-kötésekkel*.
+A felhasználók által elvégezhető műveletek részletes szűrésének biztosításához a Kubernetes a Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC) használja. Ez a vezérlési mechanizmus lehetővé teszi a felhasználók vagy felhasználói csoportok hozzárendelését, például az erőforrások létrehozását és módosítását, illetve a naplók megtekintését az alkalmazás-munkaterhelések futtatásához. Ezek az engedélyek egyetlen névtérre is érvényesek, vagy a teljes AK-fürtön keresztül is megadhatók. A Kubernetes RBAC segítségével létrehozhat *szerepköröket* az engedélyek definiálásához, majd hozzárendelheti ezeket a szerepköröket a felhasználókhoz *szerepkör-kötésekkel*.
 
-További információ: RBAC- [hitelesítés használata][kubernetes-rbac].
+További információ: [a KUBERNETES RBAC-hitelesítés használata][kubernetes-rbac].
 
 
 ### <a name="roles-and-clusterroles"></a>Szerepkörök és ClusterRoles
@@ -46,7 +46,7 @@ A ClusterRole ugyanúgy működik, hogy engedélyeket biztosítson az erőforrá
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBindings és ClusterRoleBindings
 
-Ha a szerepkörök úgy vannak meghatározva, hogy engedélyeket adjanak az erőforrásoknak, akkor ezeket a Kubernetes RBAC engedélyeket egy *RoleBinding* kell rendelnie. Ha az AK-fürt [integrálva van Azure Active Directoryokkal](#azure-active-directory-integration), a kötések azt ismertetik, hogy az Azure ad-felhasználók hogyan kapnak engedélyeket a fürtön belüli műveletek végrehajtásához: Hogyan [vezérelheti a hozzáférést a fürterőforrások a szerepköralapú hozzáférés-vezérlés és a Azure Active Directory identitások használatával](azure-ad-rbac.md).
+Ha a szerepkörök úgy vannak meghatározva, hogy engedélyeket adjanak az erőforrásoknak, akkor ezeket a Kubernetes RBAC engedélyeket egy *RoleBinding* kell rendelnie. Ha az AK-fürt [integrálva van Azure Active Directoryokkal](#azure-active-directory-integration), a kötések azt ismertetik, hogy az Azure ad-felhasználók hogyan kapnak engedélyeket a fürtön belüli műveletek végrehajtásához: Hogyan [vezérelheti a hozzáférést a Kubernetes szerepköralapú hozzáférés-vezérlés és Azure Active Directory identitások használatával](azure-ad-rbac.md).
 
 A szerepkör-kötések egy adott névtér szerepköreinek hozzárendelésére szolgálnak. Ez a megközelítés lehetővé teszi, hogy logikailag elkülönítse egyetlen AK-beli fürtöt, és a felhasználók csak a hozzárendelt névtérben lévő alkalmazás-erőforrásokat tudják elérni. Ha a szerepköröket a teljes fürtön kell megkötnie, vagy egy adott névtéren kívüli fürt erőforrásaira van szüksége, használhatja a *ClusterRoleBindings*.
 
@@ -107,7 +107,7 @@ További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés
 
 Az AK-fürtök teljes körű működtetéséhez két hozzáférési szint szükséges: 
 1. [Hozzáférés az AK-erőforráshoz az Azure-előfizetésében](#azure-rbac-to-authorize-access-to-the-aks-resource). Ezzel a folyamattal vezérelheti a fürtök méretezését vagy frissítését az AK API-k használatával, valamint a kubeconfig lekérésével.
-2. Hozzáférés a Kubernetes API-hoz. Ezt a hozzáférést a [KUBERNETES RBAC](#kubernetes-role-based-access-control-rbac) (hagyományos) vagy az [Azure RBAC és a Kubernetes-hitelesítés integrálásával](#azure-rbac-for-kubernetes-authorization-preview) vezérelheti
+2. Hozzáférés a Kubernetes API-hoz. Ezt a hozzáférést a [KUBERNETES RBAC](#kubernetes-role-based-access-control-kubernetes-rbac) (hagyományos) vagy az [Azure RBAC és a Kubernetes-hitelesítés integrálásával](#azure-rbac-for-kubernetes-authorization-preview) vezérelheti
 
 ### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>Azure-RBAC az AK-erőforráshoz való hozzáférés engedélyezéséhez
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2786a45ef779b9c66edda4c765a1cf2140f1bf9f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 37db72b2b5dadfba930ca003121140fd99c4736d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425293"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686072"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Azure Load Balancer Azure biztonsági alapterve
 
@@ -30,7 +30,7 @@ Az Azure kétféle Load Balancer ajánlatot, valamint standard és alapszintű s
 
 Az éles számítási feladatokhoz a standard Load Balancer használata ajánlott, és általában az alapszintű Load Balancer csak teszteléshez használható, mivel az alapszintű típus alapértelmezés szerint nyitott az internetről, és nem igényel hálózati biztonsági csoportokat a művelethez. 
 
-- [Kimenő kapcsolatok az Azure-ban](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#outboundrule)
+- [Kimenő kapcsolatok az Azure-ban](load-balancer-outbound-connections.md)
 
 - [Azure nyilvános Load Balancer frissítése](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard)
 
@@ -664,7 +664,7 @@ Használja a Security Center adatösszekötőt a riasztások Azure Sentinelbe va
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)
