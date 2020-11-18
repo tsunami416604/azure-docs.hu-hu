@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87190e9a7aa3c3a26b77220dd0332d65c640bc2e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763210"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658995"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Az összevont egyszeri bejelentkezés tanúsítványainak kezelése Azure Active Directory
 
@@ -57,13 +57,13 @@ Először hozzon létre és mentsen új tanúsítványt más lejárati dátummal
 1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com/). Megjelenik a **Azure Active Directory felügyeleti központ** lap.
 1. A bal oldali panelen válassza ki a **Vállalati alkalmazások** elemet. Megjelenik a fiókjában a vállalati alkalmazások listája.
 1. Válassza ki az érintett alkalmazást. Megjelenik az alkalmazás áttekintő lapja.
-1. Az alkalmazás – Áttekintés lap bal oldali ablaktábláján válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Ha megjelenik az **egyszeri bejelentkezési módszer kiválasztása** lap, válassza az **SAML**lehetőséget.
+1. Az alkalmazás – Áttekintés lap bal oldali ablaktábláján válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Ha megjelenik az **egyszeri bejelentkezési módszer kiválasztása** lap, válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-előnézettel** lapon keresse meg az **SAML-aláíró tanúsítvány** fejlécét, és válassza a **Szerkesztés** ikont (egy ceruza). Megjelenik az **SAML aláíró tanúsítvány** lapja, amely megjeleníti az egyes tanúsítványok állapotát (**aktív** vagy **inaktív**), a lejárati dátumot és az ujjlenyomatot (a kivonatoló karakterláncot).
-1. Válassza az **új tanúsítvány**lehetőséget. Egy új sor jelenik meg a tanúsítványok listája alatt, ahol a lejárati dátum alapértelmezett értéke pontosan három év az aktuális dátum után. (A módosítások még nem lettek mentve, így továbbra is módosíthatja a lejárati dátumot.)
+1. Válassza az **új tanúsítvány** lehetőséget. Egy új sor jelenik meg a tanúsítványok listája alatt, ahol a lejárati dátum alapértelmezett értéke pontosan három év az aktuális dátum után. (A módosítások még nem lettek mentve, így továbbra is módosíthatja a lejárati dátumot.)
 1. Az új tanúsítvány sorában vigye a kurzort a lejárat dátuma oszlop fölé, és válassza a **dátum kiválasztása** ikont (a naptárat). Ekkor megjelenik egy naptár vezérlőelem, amely megjeleníti az új sor aktuális lejárati dátumának napját.
 1. Az új dátum beállításához használja a naptár vezérlőt. Az aktuális dátum és az aktuális dátumot követő három év közötti időpontot állíthatja be.
-1. Kattintson a **Mentés** gombra. Az új tanúsítvány mostantól **inaktív**állapottal, a választott lejárati dátummal és egy ujjlenyomattal jelenik meg.
+1. Válassza a **Mentés** lehetőséget. Az új tanúsítvány mostantól **inaktív** állapottal, a választott lejárati dátummal és egy ujjlenyomattal jelenik meg.
 1. Az **X** érték kiválasztásával térjen vissza a **Set up Single Sign-On for SAML-Preview** oldalára.
 
 ### <a name="upload-and-activate-a-certificate"></a>Tanúsítvány feltöltése és aktiválása
@@ -77,7 +77,7 @@ Ezután töltse le az új tanúsítványt a megfelelő formátumban, töltse fel
 
 1. Az utasításokban jegyezze fel a tanúsítvány feltöltéséhez szükséges kódolási formátumot.
 1. Kövesse az [automatikusan generált tanúsítvány a katalógushoz és a nem Gallery-alkalmazásokhoz](#auto-generated-certificate-for-gallery-and-non-gallery-applications) című szakasz utasításait. Ez a lépés letölti a tanúsítványt az alkalmazás feltöltéséhez szükséges kódolási formátumban.
-1. Ha át szeretné térni az új tanúsítványra, lépjen vissza az **SAML aláíró tanúsítvány** lapra, és az újonnan mentett tanúsítvány sorban válassza a három pontot (**...**), majd válassza a **tanúsítvány aktívvá tétele**lehetőséget. Az új tanúsítvány állapota **aktívra**változik, és a korábban aktív tanúsítvány **inaktív**állapotra változik.
+1. Ha át szeretné térni az új tanúsítványra, lépjen vissza az **SAML aláíró tanúsítvány** lapra, és az újonnan mentett tanúsítvány sorban válassza a három pontot (**...**), majd válassza a **tanúsítvány aktívvá tétele** lehetőséget. Az új tanúsítvány állapota **aktívra** változik, és a korábban aktív tanúsítvány **inaktív** állapotra változik.
 1. Folytassa az alkalmazás SAML-bejelentkezési konfigurációs utasításait, amelyeket korábban megjelenített, így feltöltheti az SAML-aláíró tanúsítványt a megfelelő kódolási formátumba.
 
 ## <a name="add-email-notification-addresses-for-certificate-expiration"></a>E-mail értesítési címek hozzáadása a tanúsítvány lejáratához
@@ -88,7 +88,7 @@ Az Azure AD e-mailben értesítést küld a 60, 30 és 7 nappal az SAML-tanúsí
 1. A végső e-mail-cím alatt írja be azt az e-mail-címet, amelyre a tanúsítvány lejárati értesítése érkezik, majd nyomja le az ENTER billentyűt.
 1. Ismételje meg az előző lépést minden hozzáadni kívánt e-mail-cím esetében.
 1. Minden törölni kívánt e-mail-cím esetében válassza a **Törlés** ikont (a szemetet is) az e-mail-cím mellett.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Az értesítő e-mailt a következő címről küldi: aadnotification@microsoft.com . Ha el szeretné kerülni, hogy az e-mail a levélszemét helyére kerüljön, vegye fel ezt az e-mailt a névjegyalbumba.
 
@@ -99,7 +99,7 @@ Ha egy tanúsítvány hamarosan lejár, megújíthatja azt egy olyan eljárássa
 1. Kövesse az [új tanúsítvány létrehozása](#create-a-new-certificate) című szakasz utasításait a meglévő tanúsítvánnyal átfedésben lévő dátum használatával. Ez a dátum korlátozza a tanúsítvány lejárata által okozott állásidő mennyiségét.
 1. Ha az alkalmazás automatikusan átadhat egy tanúsítványt, az alábbi lépéseket követve állítsa az új tanúsítványt aktívra:
    1. Térjen vissza az **SAML aláíró tanúsítvány** lapjára.
-   1. Az újonnan mentett tanúsítvány sorban válassza a három pontot (**..**.), majd válassza a **tanúsítvány aktívvá tétele**lehetőséget.
+   1. Az újonnan mentett tanúsítvány sorban válassza a három pontot (**..**.), majd válassza a **tanúsítvány aktívvá tétele** lehetőséget.
    1. Ugorja át a következő két lépést.
 
 1. Ha az alkalmazás egyszerre csak egy tanúsítványt tud kezelni, válasszon egy állásidőt a következő lépés végrehajtásához. (Ellenkező esetben, ha az alkalmazás nem tudja automatikusan felvenni az új tanúsítványt, de több aláíró tanúsítványt is kezelhet, bármikor végrehajthatja a következő lépést.)
@@ -111,4 +111,4 @@ Ha egy tanúsítvány hamarosan lejár, megújíthatja azt egy olyan eljárássa
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](../saas-apps/tutorial-list.md)
 - [Alkalmazásfelügyelet az Azure Active Directoryval](what-is-application-management.md)
 - [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](what-is-single-sign-on.md)
-- [Az Azure Active Directoryban található alkalmazásokba történő SAML-alapú egyszeri bejelentkezés hibaelhárítása](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- [Az Azure Active Directoryban található alkalmazásokba történő SAML-alapú egyszeri bejelentkezés hibaelhárítása](./debug-saml-sso-issues.md)

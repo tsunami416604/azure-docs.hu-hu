@@ -15,12 +15,12 @@ ms.date: 03/13/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779d1b73f45f9be5b4bd00d546987b7c1e0b6a43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 820e2cb0d422597f0e649e6934fd8bb11c1521db
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763346"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659029"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Útmutató: az Azure AD SAML-jogkivonat titkosításának konfigurálása
 
@@ -59,7 +59,7 @@ A nyilvános tanúsítványt a Azure Portalon belül adhatja hozzá az alkalmaz�
 
 1. Lépjen a **Azure Active Directory > vállalati alkalmazások** panelre, majd válassza ki azt az alkalmazást, amelyre a jogkivonat-titkosítást konfigurálni kívánja.
 
-1. Az alkalmazás lapján válassza a jogkivonat- **titkosítás**lehetőséget.
+1. Az alkalmazás lapján válassza a jogkivonat- **titkosítás** lehetőséget.
 
     ![Jogkivonat-titkosítási beállítás a Azure Portal](./media/howto-saml-token-encryption/token-encryption-option-small.png)
 
@@ -78,11 +78,11 @@ A nyilvános tanúsítványt a Azure Portalon belül adhatja hozzá az alkalmaz�
 
 ### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>Jogkivonat-titkosítás inaktiválása a Azure Portalban
 
-1. A Azure Portal lépjen a **Azure Active Directory > vállalati alkalmazások**elemre, majd válassza ki azt az alkalmazást, amelyen engedélyezve van az SAML-jogkivonat titkosítása.
+1. A Azure Portal lépjen a **Azure Active Directory > vállalati alkalmazások** elemre, majd válassza ki azt az alkalmazást, amelyen engedélyezve van az SAML-jogkivonat titkosítása.
 
-1. Az alkalmazás lapján válassza a jogkivonat- **titkosítás**elemet, keresse meg a tanúsítványt, majd válassza a **...** lehetőséget a legördülő menü megjelenítéséhez.
+1. Az alkalmazás lapján válassza a jogkivonat- **titkosítás** elemet, keresse meg a tanúsítványt, majd válassza a **...** lehetőséget a legördülő menü megjelenítéséhez.
 
-1. Jelölje be a **jogkivonat-titkosítás inaktiválása**jelölőnégyzetet.
+1. Jelölje be a **jogkivonat-titkosítás inaktiválása** jelölőnégyzetet.
 
 ## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>SAML-jogkivonat titkosításának konfigurálása a Graph API, a PowerShell vagy az alkalmazás jegyzékfájljának használatával
 
@@ -124,7 +124,7 @@ Amikor a Graph, a PowerShell vagy az Application manifest használatával konfig
 
 1. A bérlőhöz való kapcsolódáshoz használja a legújabb Azure AD PowerShell-modult.
 
-1. Állítsa be a jogkivonat titkosítási beállításait a **[set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** parancs használatával.
+1. Állítsa be a jogkivonat titkosítási beállításait a **[set-AzureApplication](/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** parancs használatával.
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
@@ -217,7 +217,7 @@ Amikor a Graph, a PowerShell vagy az Application manifest használatával konfig
     }  
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, [hogyan használja az Azure ad az SAML protokollt](../develop/active-directory-saml-protocol-reference.md)
 * A SAML-tokenek formátumának, biztonsági jellemzőinek és tartalmának megismerése az [Azure ad-ben](../develop/reference-saml-tokens.md)

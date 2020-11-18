@@ -2,49 +2,59 @@
 title: Bővítményerőforrás-típusok
 description: Felsorolja az Azure-erőforrástípusok használatát a más erőforrástípusok képességeinek bővítésére.
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 8b80c63d361f3ad8199fd669178f7bf88dabe02e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/14/2020
+ms.openlocfilehash: 5561c480dd5a2849588ed2288eb5bcc35fc1446c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969746"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658451"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Más erőforrások képességeit kiterjesztő erőforrástípusok
 
 A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás képességeihez járul hozzá. Például az erőforrás-zárolás egy bővítmény-erőforrás. Egy erőforrás-zárolást egy másik erőforráshoz alkalmazva megakadályozhatja a törlését vagy módosítását. Nincs értelme létrehozni erőforrás-zárolást önmagában. A bővítmény erőforrásait mindig egy másik erőforrásra alkalmazza a rendszer.
 
-## <a name="extension-resource-types"></a>Bővítményerőforrás-típusok
+## <a name="microsoftadvisor"></a>Microsoft. Advisor
 
 - Microsoft. Advisor/konfigurációk
 - Microsoft. Advisor/javaslatok
 - Microsoft. Advisor/tiltások
+
+## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
+
 - Microsoft. AlertsManagement/riasztások
-- Microsoft. AlertsManagement/alertsSummary
-- Microsoft. Authorization/accessReviewScheduleDefinitions
-- Microsoft. Authorization/accessReviewScheduleSettings
-- Microsoft. Authorization/checkAccess
+
+## <a name="microsoftauthorization"></a>Microsoft.Authorization
+
 - Microsoft. Authorization/denyAssignments
-- Microsoft. Authorization/findOrphanRoleAssignments
 - Microsoft. engedélyezés/zárolások
-- Microsoft. Authorization/engedélyek
 - Microsoft. Authorization/policyAssignments
 - Microsoft. Authorization/policyDefinitions
 - Microsoft. Authorization/policyExemptions
 - Microsoft. Authorization/policySetDefinitions
 - Microsoft. Authorization/privateLinkAssociations
 - Microsoft. Authorization/roleAssignments
-- Microsoft. Authorization/roleAssignmentsUsageMetrics
 - Microsoft. Authorization/roleDefinitions
+
+## <a name="microsoftautomanage"></a>Microsoft. automanage
+
 - Microsoft. automanage/configurationProfileAssignments
+
+## <a name="microsoftbilling"></a>Microsoft. számlázás
+
 - Microsoft. Billing/billingPeriods
 - Microsoft. Billing/billingPermissions
 - Microsoft. Billing/billingRoleAssignments
 - Microsoft. Billing/billingRoleDefinitions
 - Microsoft. Billing/createBillingRoleAssignment
+
+## <a name="microsoftblueprint"></a>Microsoft. Blueprint
+
 - Microsoft. Blueprint/blueprintAssignments
 - Microsoft. Blueprint/tervrajzok
-- Microsoft. ChangeAnalysis/resourceChanges
+
+## <a name="microsoftconsumption"></a>Microsoft. felhasználás
+
 - Microsoft. fogyasztás/AggregatedCost
 - Microsoft. fogyasztás/egyenlegek
 - Microsoft. fogyasztás/költségvetés
@@ -55,8 +65,6 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. felhasználás/előrejelzések
 - Microsoft. fogyasztás/tételek
 - Microsoft. fogyasztás/piactér
-- Microsoft. fogyasztás/OperationResults
-- Microsoft. fogyasztás/OperationStatus
 - Microsoft. fogyasztás/Pricesheets
 - Microsoft. fogyasztás/termékek
 - Microsoft. fogyasztás/ReservationDetails
@@ -64,14 +72,15 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. fogyasztás/ReservationRecommendations
 - Microsoft. fogyasztás/ReservationSummaries
 - Microsoft. fogyasztás/ReservationTransactions
-- Microsoft. felhasználás/Címkék
-- Microsoft. fogyasztás/bérlők
-- Microsoft. felhasználás/feltételek
-- Microsoft. fogyasztás/UsageDetails
+
+## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
+
 - Microsoft. ContainerInstance/serviceAssociationLinks
+
+## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
+
 - Microsoft. CostManagement/riasztások
 - Microsoft. CostManagement/költségvetés
-- Microsoft. CostManagement/costAllocationRules
 - Microsoft. CostManagement/méretek
 - Microsoft. CostManagement/export
 - Microsoft. CostManagement/ExternalSubscriptions
@@ -80,24 +89,31 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. CostManagement/Query
 - Microsoft. CostManagement/Reportconfigs
 - Microsoft. CostManagement/jelentések
-- Microsoft. CostManagement/showbackRules
 - Microsoft. CostManagement/nézetek
+
+## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
+
 - Microsoft. CustomProviders/társítások
+
+## <a name="microsofteventgrid"></a>Microsoft. EventGrid
+
 - Microsoft. EventGrid/eventSubscriptions
 - Microsoft. EventGrid/extensionTopics
+
+## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
+
 - Microsoft. GuestConfiguration/configurationProfileAssignments
 - Microsoft. GuestConfiguration/guestConfigurationAssignments
 - Microsoft. GuestConfiguration/szoftver
-- Microsoft. GuestConfiguration/softwareUpdateProfile
-- Microsoft. GuestConfiguration/softwareUpdates
+
+## <a name="microsoftinsights"></a>Microsoft. bepillantások
+
 - Microsoft. bepillantások/alapterv
-- Microsoft. bepillantások/calculatebaseline
 - Microsoft. bepillantások/dataCollectionRuleAssociations
 - Microsoft. bepillantások/diagnosticSettings
 - Microsoft. bepillantások/diagnosticSettingsCategories
 - Microsoft. bepillantások/eventtypes
 - Microsoft. bepillantások/extendedDiagnosticSettings
-- Microsoft. bepillantások/generateLiveToken
 - Microsoft. bepillantások/guestDiagnosticSettingsAssociation
 - Microsoft. bepillantások/logDefinitions
 - Microsoft. elemzések/naplók
@@ -108,45 +124,78 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. bepillantások/myWorkbooks
 - Microsoft. bepillantások/topológia
 - Microsoft. bepillantások/tranzakciók
-- Microsoft. bepillantások/vmInsightsOnboardingStatuses
+
+## <a name="microsoftkubernetesconfiguration"></a>Microsoft. KubernetesConfiguration
+
 - Microsoft. KubernetesConfiguration/bővítmények
 - Microsoft. KubernetesConfiguration/sourceControlConfigurations
+
+## <a name="microsoftmaintenance"></a>Microsoft. Maintenance
+
 - Microsoft. Maintenance/applyUpdates
 - Microsoft. Maintenance/configurationAssignments
 - Microsoft. Maintenance/Updates
+
+## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
+
 - Microsoft. ManagedIdentity/identitások
+
+## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
+
 - Microsoft. ManagedServices/registrationAssignments
 - Microsoft. ManagedServices/registrationDefinitions
+
+## <a name="microsoftoperationalinsights"></a>Microsoft. OperationalInsights
+
 - Microsoft. OperationalInsights/storageInsightConfigs
+
+## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
+
 - Microsoft. OperationsManagement/managementassociations
+
+## <a name="microsoftpolicyinsights"></a>Microsoft. PolicyInsights
+
 - Microsoft. PolicyInsights/igazolások
 - Microsoft. PolicyInsights/policyEvents
 - Microsoft. PolicyInsights/policyStates
 - Microsoft. PolicyInsights/policyTrackedResources
 - Microsoft. PolicyInsights/szervizelések
+
+## <a name="microsoftrecoveryservices"></a>Microsoft. Recoveryservices szolgáltatónál
+
 - Microsoft. Recoveryservices szolgáltatónál/backupProtectedItems
 - Microsoft. Recoveryservices szolgáltatónál/replicationEligibilityResults
-- Microsoft. ResourceHealth/availabilityStatuses
-- Microsoft. ResourceHealth/childAvailabilityStatuses
+
+## <a name="microsoftresourcehealth"></a>Microsoft. ResourceHealth
+
 - Microsoft. ResourceHealth/childResources
 - Microsoft. ResourceHealth/események
 - Microsoft. ResourceHealth/impactedResources
 - Microsoft. ResourceHealth/értesítések
+
+## <a name="microsoftresources"></a>Microsoft. Resources
+
 - Microsoft. Resources/hivatkozások
 - Microsoft. Resources/Tags
+
+## <a name="microsoftsecurity"></a>Microsoft. Security
+
 - Microsoft. Security/adaptiveNetworkHardenings
 - Microsoft. Security/advancedThreatProtectionSettings
 - Microsoft. Security/assessmentMetadata
 - Microsoft. Security/értékelések
-- Microsoft. Security/complianceResults
 - Microsoft. Security/megfelelőség
 - Microsoft. Security/dataCollectionAgents
+- Microsoft. Security/eszközök
 - Microsoft. Security/deviceSecurityGroups
 - Microsoft. Security/InformationProtectionPolicies
 - Microsoft. Security/iotSensors
 - Microsoft. Security/jitPolicies
 - Microsoft. Security/serverVulnerabilityAssessments
 - Microsoft. Security/sqlVulnerabilityAssessments
+
+## <a name="microsoftsecurityinsights"></a>Microsoft. SecurityInsights
+
 - Microsoft. SecurityInsights/összesítések
 - Microsoft. SecurityInsights/alertRules
 - Microsoft. SecurityInsights/alertRuleTemplates
@@ -156,15 +205,25 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. SecurityInsights/dataConnectors
 - Microsoft. SecurityInsights/dataConnectorsCheckRequirements
 - Microsoft. SecurityInsights/entitások
-- Microsoft. SecurityInsights/entityQueries
 - Microsoft. SecurityInsights/incidensek
-- Microsoft. SecurityInsights/officeConsents
 - Microsoft. SecurityInsights/beállítások
 - Microsoft. SecurityInsights/threatIntelligence
 - Microsoft. SecurityInsights/listák
+
+## <a name="microsoftserialconsoleppe"></a>Microsoft. SerialConsole. PPE
+
+- Microsoft. SerialConsole. PPE/serialPorts
+
+## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
+
 - Microsoft. SoftwarePlan/hybridUseBenefits
-- Microsoft. előfizetés/CreateSubscription
+
+## <a name="microsoftsupport"></a>Microsoft. support
+
 - Microsoft. support/supporttickets
+
+## <a name="microsoftworkloadmonitor"></a>Microsoft. WorkloadMonitor
+
 - Microsoft. WorkloadMonitor/összetevők
 - Microsoft. WorkloadMonitor/monitorInstances
 - Microsoft. WorkloadMonitor/figyelők

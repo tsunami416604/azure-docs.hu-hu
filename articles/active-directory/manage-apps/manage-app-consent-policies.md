@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: 07637a8be49fb2449c5c92c1a1ea4b2c7ace9a8d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4368f20171da0c1896e642361578580b1d958296
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442259"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659046"
 ---
 # <a name="manage-app-consent-policies"></a>Alkalmazás-hozzájárulási szabályzatok kezelése
 
@@ -31,7 +31,7 @@ Azok az alkalmazás-engedélyezési házirendek, amelyekben az azonosító a "Mi
 
 ## <a name="pre-requisites"></a>Előfeltételek
 
-1. Győződjön meg arról, hogy a [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modult használja. Ez a lépés akkor fontos, ha a [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) modult és a [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modult is telepítette.
+1. Győződjön meg arról, hogy a [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modult használja. Ez a lépés akkor fontos, ha a [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) modult és a [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modult is telepítette.
 
     ```powershell
     Remove-Module AzureAD -ErrorAction SilentlyContinue
@@ -130,10 +130,10 @@ Miután létrehozta az alkalmazáshoz való beleegyezett szabályzatot, [engedé
 
 Az alábbi táblázat az alkalmazás-engedélyezési házirendek támogatott feltételeinek listáját tartalmazza.
 
-| Condition (Állapot) | Description|
+| Condition (Állapot) | Leírás|
 |:---------------|:----------|
 | PermissionClassification | Az engedélyek [besorolása](configure-permission-classifications.md) a megadott engedélyhez, vagy az "all", hogy egyezzen az engedélyek besorolásával (beleértve a nem besorolt engedélyeket is). Az alapértelmezett érték az "all". |
-| PermissionType | A megadott engedély engedélyezési típusa. Használja az "alkalmazás" jogosultságot az alkalmazás engedélyeihez (például az alkalmazás szerepköreihez) vagy a delegált engedélyekhez. <br><br>**Megjegyzés** : a "delegatedUserConsentable" érték olyan delegált engedélyeket jelöl, amelyeket nem konfiguráltak az API-közzétevő a rendszergazdai hozzájárulás megköveteléséhez – ez az érték a beépített engedélyezési házirendekben használható, de nem használható egyéni engedélyek megadására szolgáló szabályzatokban. Kötelező. |
+| PermissionType | A megadott engedély engedélyezési típusa. Használja az "alkalmazás" jogosultságot az alkalmazás engedélyeihez (például az alkalmazás szerepköreihez) vagy a delegált engedélyekhez. <br><br>**Megjegyzés**: a "delegatedUserConsentable" érték olyan delegált engedélyeket jelöl, amelyeket nem konfiguráltak az API-közzétevő a rendszergazdai hozzájárulás megköveteléséhez – ez az érték a beépített engedélyezési házirendekben használható, de nem használható egyéni engedélyek megadására szolgáló szabályzatokban. Kötelező. |
 | ResourceApplication | Az erőforrás-alkalmazás **AppID** (például az API-t), amelyhez engedély van megadva, vagy bármely erőforrás-alkalmazással vagy API-val való egyeztetéshez. Az alapértelmezett érték az "any". |
 | Engedélyek | A megfelelő engedélyekhez tartozó engedélyezési azonosítók listája, vagy egy olyan lista, amely egyetlen "all" értékkel rendelkezik, hogy minden engedélyhez illeszkedjen. Az alapértelmezett érték az "all". <ul><li>A delegált engedélyek azonosítói az API ServicePrincipal objektumának **OAuth2Permissions** tulajdonságában találhatók.</li><li>Az alkalmazás engedélyeinek azonosítói az API ServicePrincipal objektumának **AppRoles** tulajdonságában találhatók.</li></ol> |
 | ClientApplicationIds | Azon **AppID** -értékek listája, amelyek megfelelnek az ügyfél-alkalmazásoknak, vagy egy olyan lista, amely egyetlen "all" értékkel rendelkezik az ügyfélalkalmazás egyeztetéséhez. Az alapértelmezett érték az "all". |
@@ -141,7 +141,7 @@ Az alábbi táblázat az alkalmazás-engedélyezési házirendek támogatott fel
 | ClientApplicationPublisherIds | Az ügyfélalkalmazás [ellenőrzött közzétevői](../develop/publisher-verification-overview.md) számára készült Microsoft Partner Network (MPN) azonosítók listája, vagy egyetlen "all" értékű lista, amely az ügyfélalkalmazások bármelyik közzétevőtől való egyeztetésére használható. Az alapértelmezett érték az "all". |
 | ClientApplicationsFromVerifiedPublisherOnly | A beállítás értéke `$true` csak az [ellenőrzött közzétevővel](../develop/publisher-verification-overview.md)rendelkező ügyfélalkalmazások egyeztetése. Úgy állítsa be, `$false` hogy minden ügyfélalkalmazás egyezzen, még akkor is, ha nem rendelkezik ellenőrzött közzétevővel. Az alapértelmezett szint a `$false`. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók:
 
@@ -149,7 +149,7 @@ További tudnivalók:
 * [Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
 * [Megtudhatja, hogyan kezelheti az alkalmazásokra vonatkozó beleegyezett, és hogyan értékelheti a hozzájárulásukat](manage-consent-requests.md)
 * [Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz](grant-admin-consent.md)
-* [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/active-directory-v2-scopes.md)
+* [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/v2-permissions-and-consent.md)
 
 Segítség kérése vagy válaszok keresése a kérdéseire:
 * [Azure AD a StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5fc1b84e624828d7feb64bd53e8fe8ffff2a7ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f46071d15db57f64eb60d9267d4081a2b0b74a50
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88054834"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658434"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Felügyelet nélküli telepítési parancsfájl létrehozása az Azure AD Application Proxy-összekötőhöz
 
@@ -39,7 +39,7 @@ Az [alkalmazásproxy-összekötő](application-proxy-connectors.md) működésé
 A felügyelet nélküli telepítéshez két lépés szükséges. Először telepítse az összekötőt. Másodszor regisztrálja az összekötőt az Azure AD-ben.
 
 > [!IMPORTANT]
-> Ha a Azure Government-felhőhöz tartozó összekötőt telepíti, tekintse át az [Előfeltételek](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) és a [telepítés lépéseit](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud). Ehhez engedélyezni kell a hozzáférést egy másik URL-készlethez, és egy további paramétert a telepítés futtatásához.
+> Ha a Azure Government-felhőhöz tartozó összekötőt telepíti, tekintse át az [Előfeltételek](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) és a [telepítés lépéseit](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud). Ehhez engedélyezni kell a hozzáférést egy másik URL-készlethez, és egy további paramétert a telepítés futtatásához.
 
 ## <a name="install-the-connector"></a>Az összekötő telepítése
 A következő lépésekkel telepítheti az összekötőt a regisztráció nélkül:

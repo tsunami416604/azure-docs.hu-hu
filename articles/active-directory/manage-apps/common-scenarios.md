@@ -15,18 +15,18 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ce3819ff1f9b0c61f7738f90ff17c2798fe888b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9699f425b296f1c88162c78b8f86de74303747be
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88642112"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658332"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Az alkalmazások kezelésének központosítása az Azure AD-vel
 
 Jelszavak, mind az IT-rémálom, mind a fájdalom a világ különböző alkalmazottai számára. Ezért egyre több vállalat fordul Azure Active Directory, a Microsoft identitás-és hozzáférés-kezelési megoldása a felhőhöz és az összes többi erőforráshoz. Ugorjon az alkalmazásból az alkalmazásba anélkül, hogy jelszót kellene megadnia mindegyikhez. Ugorjon az Outlookból a munkanapokra, és válassza az ADP-t a gyors megnyitáshoz, gyorsan és biztonságosan. Ezután a partnerekkel együttműködve még a szervezeten kívül is dolgozhat, anélkül, hogy meg kellene hívnia. További információ: az Azure AD segít a kockázat kezelésében azáltal, hogy a többtényezős hitelesítéshez hasonló módon biztosítja a használatban lévő alkalmazásokat, hogy megbizonyosodjon róla, hogy ki, folyamatosan adaptív gépi tanulási és biztonsági intelligenciával azonosítsa a gyanús bejelentkezéseket, így biztonságos hozzáférést biztosít a szükséges alkalmazásokhoz, bárhol is legyenek. Ez nem csak a felhasználók számára hasznos, hanem azért is. Az igény szerinti hozzáférési felülvizsgálatok és a teljes körű irányítási csomag segítségével az Azure AD lehetővé teszi a megfelelőség és a szabályzatok betartatását. Így akár automatizálhatja a felhasználói fiókok üzembe helyezését is, így a hozzáférés-kezelés gyerekjáték. Tekintse meg a gyakori forgatókönyveket, amelyeket az ügyfél a Azure Active Directory alkalmazás-felügyeleti képességeinek használatára használ.
 
-**Gyakori helyzetek**
+**Gyakori forgatókönyvek**
 
 
 > [!div class="checklist"]
@@ -42,8 +42,8 @@ Nincs több felügyelet jelszava. Biztonságosan férhet hozzá az összes szük
 
 |Szolgáltatás  | Leírás | Ajánlás |
 |---------|---------|---------|
-|SSO|Szabványokon alapuló összevont egyszeri bejelentkezés a megbízható iparági szabványokkal.|Mindig az [SAML/OIDC](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-choose-multi-tenant-federation) használatával engedélyezze az egyszeri bejelentkezést, ha az alkalmazás támogatja azt.|
-|Saját alkalmazások|Egy egyszerű központot biztosít a felhasználóknak az összes alkalmazás felderítéséhez és eléréséhez. Hatékonyabbá teheti őket az önkiszolgáló képességekkel, például az alkalmazásokhoz és csoportokhoz való hozzáférés kérelmezéséhez, illetve mások nevében az erőforrásokhoz való hozzáférés kezeléséhez.| Alkalmazások [üzembe](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-deployment-plan) helyezése a szervezetben, ha az Azure ad-vel integrálta az alkalmazásokat az egyszeri bejelentkezéshez.|
+|SSO|Szabványokon alapuló összevont egyszeri bejelentkezés a megbízható iparági szabványokkal.|Mindig az [SAML/OIDC](../develop/v2-howto-app-gallery-listing.md) használatával engedélyezze az egyszeri bejelentkezést, ha az alkalmazás támogatja azt.|
+|Saját alkalmazások|Egy egyszerű központot biztosít a felhasználóknak az összes alkalmazás felderítéséhez és eléréséhez. Hatékonyabbá teheti őket az önkiszolgáló képességekkel, például az alkalmazásokhoz és csoportokhoz való hozzáférés kérelmezéséhez, illetve mások nevében az erőforrásokhoz való hozzáférés kezeléséhez.| Alkalmazások [üzembe](./access-panel-deployment-plan.md) helyezése a szervezetben, ha az Azure ad-vel integrálta az alkalmazásokat az egyszeri bejelentkezéshez.|
 
 ## <a name="scenario-2-automate-provisioning-and-deprovisioning"></a>2. forgatókönyv: a kiépítés és a megszüntetés automatizálása 
 
@@ -53,7 +53,7 @@ A legtöbb alkalmazásnak szüksége van egy felhasználónak az alkalmazásba v
 
 |Szolgáltatás  |Leírás|Ajánlás |
 |---------|---------|---------|
-|SCIM kiépítés|A [scim](https://aka.ms/SCIMOverview) egy iparági ajánlott eljárás a felhasználók üzembe helyezésének automatizálásához. Minden SCIM-kompatibilis alkalmazás integrálható az Azure AD-vel. Felhasználói fiókok automatikus létrehozása, frissítése és törlése anélkül, hogy CSV-fájlokat, egyéni parancsfájlokat vagy helyszíni megoldásokat kellene fenntartania.|Tekintse meg az [előre integrált](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) alkalmazások növekvő listáját az Azure ad app Galleryben|
+|SCIM kiépítés|A [scim](https://aka.ms/SCIMOverview) egy iparági ajánlott eljárás a felhasználók üzembe helyezésének automatizálásához. Minden SCIM-kompatibilis alkalmazás integrálható az Azure AD-vel. Felhasználói fiókok automatikus létrehozása, frissítése és törlése anélkül, hogy CSV-fájlokat, egyéni parancsfájlokat vagy helyszíni megoldásokat kellene fenntartania.|Tekintse meg az [előre integrált](../saas-apps/tutorial-list.md) alkalmazások növekvő listáját az Azure ad app Galleryben|
 |Microsoft Graph|Kihasználhatja az Azure AD által az általa igényelt adatmennyiséggel gazdagított alkalmazások kilégzését és mélységét.|Használja ki a [Microsoft Graphot](https://developer.microsoft.com/graph/) a Microsoft-ökoszisztéma adatainak beszerzéséhez. |
 
 
@@ -63,17 +63,17 @@ Az identitás a biztonság sarokköve. Ha egy identitás biztonsága sérül, hi
 |Szolgáltatás  |Leírás| Ajánlás |
 |---------|---------| ---------|
 |Azure MFA|Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. A rendszergazda által jóváhagyott hitelesítési módszerek használatával az Azure MFA segít megőrizni az adataihoz és alkalmazásaihoz való hozzáférést, miközben az egyszerű bejelentkezési folyamat iránti igényt is kielégíti.| Az [MFA engedélyezése](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124) a felhasználók számára.  |
-|Feltételes hozzáférés|A feltételes hozzáféréssel olyan automatizált hozzáférés-vezérlési döntéseket hozhat létre, amelyek a feltételek alapján hozzáférhetnek a felhőalapú alkalmazásokhoz.| Tekintse át az ügyfelek által használt [biztonsági alapértékeket](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) és [általános házirendeket](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common) . | 
-|Identity Protection|Az Identity Protection a Microsoft által az Azure AD-vel, a Microsoft-fiókokkal, a Microsoft-fiókokkal és az Xbox-szal a felhasználók védelme érdekében a Microsoft által beszerzett tapasztalatokat használja. A Microsoft naponta 6 500 000 000 000-as jeleket elemez, hogy azonosítsa és megvédje az ügyfeleket a fenyegetésektől.|Engedélyezze a szolgáltatás által biztosított [alapértelmezett Identity Protection-szabályzatokat](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-policies) . | 
+|Feltételes hozzáférés|A feltételes hozzáféréssel olyan automatizált hozzáférés-vezérlési döntéseket hozhat létre, amelyek a feltételek alapján hozzáférhetnek a felhőalapú alkalmazásokhoz.| Tekintse át az ügyfelek által használt [biztonsági alapértékeket](../fundamentals/concept-fundamentals-security-defaults.md) és [általános házirendeket](../conditional-access/concept-conditional-access-policy-common.md) . | 
+|Identity Protection|Az Identity Protection a Microsoft által az Azure AD-vel, a Microsoft-fiókokkal, a Microsoft-fiókokkal és az Xbox-szal a felhasználók védelme érdekében a Microsoft által beszerzett tapasztalatokat használja. A Microsoft naponta 6 500 000 000 000-as jeleket elemez, hogy azonosítsa és megvédje az ügyfeleket a fenyegetésektől.|Engedélyezze a szolgáltatás által biztosított [alapértelmezett Identity Protection-szabályzatokat](../identity-protection/concept-identity-protection-policies.md) . | 
 
 ## <a name="scenario-4-govern-access-to-your-applications"></a>4. forgatókönyv: az alkalmazásokhoz való hozzáférés szabályozása
 Az identitások szabályozása révén a szervezetek a termelékenység egyensúlyát érhetik el – milyen gyorsan férhet hozzá egy személy a szükséges alkalmazásokhoz, például ha a szervezethez csatlakoznak? És biztonság – Hogyan változnak a hozzáférésük az idő múlásával, például az adott személy foglalkoztatási állapotának változásai miatt? 
 
 |Szolgáltatás  |Leírás|Ajánlás |
 |---------|---------| ---------|
-|ELM|Az Azure AD-jogosultságok kezelése lehetővé teheti a szervezeten belüli és kívüli felhasználók számára, hogy az alkalmazásokhoz való hozzáférést hatékonyabban kezeljék.| Lehetővé teszi, hogy a nem rendszergazdák kezelhesse az alkalmazásaikat [hozzáférési csomagokkal](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-first).|
-|Hozzáférési felülvizsgálatok|A felhasználók alkalmazásokhoz való hozzáférését rendszeresen felül lehet vizsgálni, hogy csak a megfelelő személyek férhessenek hozzájuk.| [Tekintse át](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) a legérzékenyebb alkalmazásokhoz való hozzáférést. |
-|Log Analytics|Jelentéseket készíthet arról, hogy ki fér hozzá az alkalmazásokhoz, és hogyan tárolhatja azokat a SIEM-eszközben, hogy az adatforrások és az adatok között összekapcsolja az információkat.| Engedélyezze a [log Analytics szolgáltatást](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics) , és állítson be riasztásokat az alkalmazásokkal kapcsolatos kritikus eseményekhez. |
+|ELM|Az Azure AD-jogosultságok kezelése lehetővé teheti a szervezeten belüli és kívüli felhasználók számára, hogy az alkalmazásokhoz való hozzáférést hatékonyabban kezeljék.| Lehetővé teszi, hogy a nem rendszergazdák kezelhesse az alkalmazásaikat [hozzáférési csomagokkal](../governance/entitlement-management-access-package-first.md).|
+|Hozzáférési felülvizsgálatok|A felhasználók alkalmazásokhoz való hozzáférését rendszeresen felül lehet vizsgálni, hogy csak a megfelelő személyek férhessenek hozzájuk.| [Tekintse át](../governance/access-reviews-overview.md) a legérzékenyebb alkalmazásokhoz való hozzáférést. |
+|Log Analytics|Jelentéseket készíthet arról, hogy ki fér hozzá az alkalmazásokhoz, és hogyan tárolhatja azokat a SIEM-eszközben, hogy az adatforrások és az adatok között összekapcsolja az információkat.| Engedélyezze a [log Analytics szolgáltatást](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md) , és állítson be riasztásokat az alkalmazásokkal kapcsolatos kritikus eseményekhez. |
 
 
 ## <a name="scenario-5-hybrid-secure-access"></a>5. forgatókönyv: hibrid biztonságos hozzáférés
@@ -81,14 +81,14 @@ Az identitás csak akkor lehet a vezérlési síkon, ha mindent a felhőben és 
 
 |Szolgáltatás  |Leírás|Ajánlás |
 |---------|---------|---------|
-|Alkalmazásproxy|Napjainkban a munkavállalók a legkülönfélébb helyeken, időpontokban és eszközökön szeretnek dolgozni. Az SaaS-alkalmazásokhoz a helyszíni felhőben és a vállalati alkalmazásokban is hozzá kell férniük. Az Azure AD-alkalmazásproxy lehetővé teszi, hogy ez a robusztus hozzáférés költséges és összetett virtuális magánhálózatok (VPN) vagy vagy demilitarizált zónák (DMZ) nélkül legyen elérhető.|[Távoli hozzáférés](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) beállítása helyszíni alkalmazásokhoz. |
-|F5, Akamai, Zscaler|A meglévő hálózatkezelési és kézbesítési vezérlő használatával könnyedén biztosíthatja az üzleti folyamatok számára kritikus fontosságú, de az Azure AD-vel még nem védett korábbi alkalmazásokat. Valószínűleg már mindent megtalál, amire szüksége lehet az alkalmazások védelmének megkezdéséhez.| Akamai, Citrix, F5 vagy Zscaler használatával? Tekintse meg az [előre elkészített megoldásokat](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access). | 
+|Alkalmazásproxy|Napjainkban a munkavállalók a legkülönfélébb helyeken, időpontokban és eszközökön szeretnek dolgozni. Az SaaS-alkalmazásokhoz a helyszíni felhőben és a vállalati alkalmazásokban is hozzá kell férniük. Az Azure AD-alkalmazásproxy lehetővé teszi, hogy ez a robusztus hozzáférés költséges és összetett virtuális magánhálózatok (VPN) vagy vagy demilitarizált zónák (DMZ) nélkül legyen elérhető.|[Távoli hozzáférés](./application-proxy.md) beállítása helyszíni alkalmazásokhoz. |
+|F5, Akamai, Zscaler|A meglévő hálózatkezelési és kézbesítési vezérlő használatával könnyedén biztosíthatja az üzleti folyamatok számára kritikus fontosságú, de az Azure AD-vel még nem védett korábbi alkalmazásokat. Valószínűleg már mindent megtalál, amire szüksége lehet az alkalmazások védelmének megkezdéséhez.| Akamai, Citrix, F5 vagy Zscaler használatával? Tekintse meg az [előre elkészített megoldásokat](./secure-hybrid-access.md). | 
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-- [Alkalmazáskezelés](https://docs.microsoft.com/azure/active-directory/manage-apps/index)
-- [Alkalmazások üzembe helyezése](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)
-- [Hibrid biztonságos hozzáférés](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
-- [Identitás-szabályozás](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
-- [Microsoft-identitásplatform](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
-- [Identitás biztonsága](https://docs.microsoft.com/azure/active-directory/conditional-access/index)
+- [Alkalmazáskezelés](./index.yml)
+- [Alkalmazások üzembe helyezése](../app-provisioning/user-provisioning.md)
+- [Hibrid biztonságos hozzáférés](./secure-hybrid-access.md)
+- [Identitáskezelés](../governance/identity-governance-overview.md)
+- [Microsoft-identitásplatform](../develop/v2-overview.md)
+- [Identitás biztonsága](../conditional-access/index.yml)

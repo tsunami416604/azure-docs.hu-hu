@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 674b8ab8266921a4eef8bbf212f3c556b1e587d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86037834"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658349"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Hibaelhárítás: az Azure-helyek közötti VPN-kapcsolat nem tud csatlakozni, és leáll
 
@@ -22,7 +22,7 @@ Miután konfigurált egy helyek közötti VPN-kapcsolatot egy helyszíni hálóz
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
-A probléma megoldásához először próbálja meg [alaphelyzetbe állítani az Azure VPN-átjárót](vpn-gateway-resetgw-classic.md) , és állítsa alaphelyzetbe az alagutat a helyszíni VPN-eszközről. Ha a probléma továbbra is fennáll, kövesse az alábbi lépéseket a probléma okának meghatározásához.
+A probléma megoldásához először próbálja meg [alaphelyzetbe állítani az Azure VPN-átjárót](./reset-gateway.md) , és állítsa alaphelyzetbe az alagutat a helyszíni VPN-eszközről. Ha a probléma továbbra is fennáll, kövesse az alábbi lépéseket a probléma okának meghatározásához.
 
 ### <a name="prerequisite-step"></a>Előfeltételi lépés
 
@@ -50,7 +50,7 @@ Az Azure VPN-kapcsolat megosztott kulcsának megtekintéséhez használja az al�
 
 1. Lépjen a létrehozott VPN Gateway-helyek közötti kapcsolathoz.
 
-2. A **Beállítások** szakaszban kattintson a **megosztott kulcs**elemre.
+2. A **Beállítások** szakaszban kattintson a **megosztott kulcs** elemre.
     
     ![Megosztott kulcs](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/sharedkey.png)
 
@@ -108,7 +108,7 @@ Ellenőrizze és távolítsa el a felhasználó által megadott útválasztást 
 
 A tökéletes továbbítási titoktartási funkció a lekapcsolódási problémákhoz vezethet. Ha a VPN-eszközön engedélyezve van a megfelelő továbbítási titoktartás, tiltsa le a szolgáltatást. Ezután frissítse a VPN Gateway IPsec-házirendjét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -   [Helyek közötti kapcsolat konfigurálása virtuális hálózathoz](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 -   [IPsec/IKE-házirend konfigurálása a helyek közötti VPN-kapcsolatokhoz](vpn-gateway-ipsecikepolicy-rm-powershell.md)

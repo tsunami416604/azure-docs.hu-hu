@@ -15,12 +15,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e78efd71943332e8a40e5b44b6b78f88e516649a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99fb466debd5a2ee4bb659aea3494469a8bbe8e1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84759963"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658417"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Azure Active Directory Application Proxy személyes adatfájljainak eltávolítása
 
@@ -35,7 +35,7 @@ Az Application proxy a következő típusú naplókba írhatja a személyes adat
 
 ## <a name="remove-personal-data-from-windows-event-logs"></a>Személyes adatok eltávolítása a Windows-eseménynaplóból
 
-További információ a Windows-eseménynaplók adatmegőrzésének konfigurálásáról: [Eseménynaplók beállításai](https://technet.microsoft.com/library/cc952132.aspx). A Windows-eseménynaplók megismeréséhez lásd: [a Windows Eseménynapló használata](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
+További információ a Windows-eseménynaplók adatmegőrzésének konfigurálásáról: [Eseménynaplók beállításai](https://technet.microsoft.com/library/cc952132.aspx). A Windows-eseménynaplók megismeréséhez lásd: [a Windows Eseménynapló használata](/windows/win32/wes/using-windows-event-log).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
@@ -54,7 +54,7 @@ A következő részben az összekötő-eseménynaplók személyes adatait távol
 
 Adott adatok megtekintéséhez vagy exportálásához keresse meg a kapcsolódó bejegyzéseket az egyes összekötő-eseménynaplókban. A naplók a következő helyen találhatók: `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace` .
 
-Mivel a naplók szövegfájlok, a [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) használatával keresheti meg a felhasználóhoz kapcsolódó szöveges bejegyzéseket.  
+Mivel a naplók szövegfájlok, a [findstr](/windows-server/administration/windows-commands/findstr) használatával keresheti meg a felhasználóhoz kapcsolódó szöveges bejegyzéseket.  
 
 Személyes adatkereséshez keresse meg a felhasználói azonosítóhoz tartozó naplófájlokat.
 
@@ -79,6 +79,6 @@ Az egyik lehetőség annak biztosítására, hogy az összekötő naplófájljai
 
 ![Megjelenít egy kódrészletet az eltávolítandó Kiemelt kóddal](./media/application-proxy-remove-personal-data/01.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazásproxy áttekintését lásd: [biztonságos távoli hozzáférés biztosítása a helyszíni alkalmazásokhoz](application-proxy.md).

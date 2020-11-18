@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 38bff38ebe44d9018299444b89d7743c4cc92b72
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ef38c5364a0df1df63be825e2c46009174840b72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424204"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658128"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -58,7 +58,7 @@ Javaslatokért lásd: [az alkalmazásproxy-összekötők és-alkalmazások magas
 Az alkalmazásproxy-összekötő tanúsítvány alapú hitelesítést végez az Azure-ban. A TLS-megszakítás (TLS/HTTPS-ellenőrzés vagy gyorsítás) megszakítja ezt a hitelesítési módszert, és nem támogatott. Az összekötőtől az Azure-ba irányuló forgalomnak meg kell kerülnie a TLS-megszakítást végző eszközöket.  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>A TLS 1,2 szükséges minden kapcsolathoz?
-Igen. Ahhoz, hogy a legjobb titkosítást nyújtson ügyfeleinknek, az alkalmazásproxy szolgáltatás csak a TLS 1,2 protokollokra korlátozza a hozzáférést. Ezeket a módosításokat a 2019-es augusztus 31-ig fokozatosan kivezették és hatályba lépnek. Győződjön meg arról, hogy az összes ügyfél-kiszolgáló és böngésző-kiszolgáló kombináció frissítve van a TLS 1,2 használatára az alkalmazásproxy szolgáltatáshoz való csatlakozás fenntartása érdekében. Ezek közé tartoznak azok az ügyfelek, akikkel a felhasználók az Application proxyn keresztül közzétett alkalmazások elérését használják. Lásd: Felkészülés a [TLS 1,2-es verzióra az Office 365-ben](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) hasznos referenciák és erőforrások.
+Igen. Ahhoz, hogy a legjobb titkosítást nyújtson ügyfeleinknek, az alkalmazásproxy szolgáltatás csak a TLS 1,2 protokollokra korlátozza a hozzáférést. Ezeket a módosításokat a 2019-es augusztus 31-ig fokozatosan kivezették és hatályba lépnek. Győződjön meg arról, hogy az összes ügyfél-kiszolgáló és böngésző-kiszolgáló kombináció frissítve van a TLS 1,2 használatára az alkalmazásproxy szolgáltatáshoz való csatlakozás fenntartása érdekében. Ezek közé tartoznak azok az ügyfelek, akikkel a felhasználók az Application proxyn keresztül közzétett alkalmazások elérését használják. Lásd: Felkészülés a [TLS 1,2-es verzióra az Office 365-ben](/microsoft-365/compliance/prepare-tls-1.2-in-office-365) hasznos referenciák és erőforrások.
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>A továbbító kiszolgáló (k) és a háttérrendszer-kiszolgáló között lehet-e továbbítási proxyt elhelyezni?
 Igen, ez a forgatókönyv a 1.5.1526.0-összekötő verziótól kezdődően támogatott. Lásd: [a meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md).
@@ -71,7 +71,7 @@ Nincs ok a következőre:. Minden globális rendszergazda vagy alkalmazás-rends
 
 A Teljesítményfigyelő-számlálók a-összekötővel együtt települnek. Megtekintheti őket:  
 
-1. Kattintson a **Start**gombra, írja be a "Perfmon" kifejezést, majd nyomja le az ENTER billentyűt.
+1. Kattintson a **Start** gombra, írja be a "Perfmon" kifejezést, majd nyomja le az ENTER billentyűt.
 2. Válassza a **Teljesítményfigyelő** lehetőséget, majd kattintson a zöld **+** ikonra.
 3. Adja hozzá a figyelni kívánt **Microsoft HRE** -alkalmazásproxy összekötő számlálóit.
 
@@ -102,7 +102,7 @@ Az alapértelmezett hossz 85 másodperc. A "Long" beállítás 180 másodperc. N
 
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>Hogyan módosítja az alkalmazás betöltését a kezdőlapon?
 
-Az alkalmazás-regisztrációk lapon módosíthatja a Kezdőlap URL-címét a céloldal kívánt külső URL-címére. A megadott oldal betöltődik, amikor az alkalmazást a saját alkalmazások vagy az Office 365 portálról indítják el. A konfigurációs lépésekért lásd: [Egyéni Kezdőlap beállítása közzétett alkalmazásokhoz az Azure ad Application proxy használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-home-page)
+Az alkalmazás-regisztrációk lapon módosíthatja a Kezdőlap URL-címét a céloldal kívánt külső URL-címére. A megadott oldal betöltődik, amikor az alkalmazást a saját alkalmazások vagy az Office 365 portálról indítják el. A konfigurációs lépésekért lásd: [Egyéni Kezdőlap beállítása közzétett alkalmazásokhoz az Azure ad Application proxy használatával](./application-proxy-configure-custom-home-page.md)
 
 ### <a name="can-only-iis-based-applications-be-published-what-about-web-applications-running-on-non-windows-web-servers-does-the-connector-have-to-be-installed-on-a-server-with-iis-installed"></a>Csak az IIS-alapú alkalmazások közzétehetők? Mi a helyzet a nem Windows webkiszolgálókon futó webalkalmazásokkal? Telepíteni kell az összekötőt olyan kiszolgálóra, amelyen telepítve van az IIS?
 
@@ -171,7 +171,7 @@ Tekintse meg a [távoli hozzáférés engedélyezése a sharepointhoz az Azure a
 
 ### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>Használhatom a SharePoint Mobile alkalmazást (iOS/Android) a közzétett SharePoint-kiszolgáló eléréséhez?
 
-A [SharePoint Mobile alkalmazás](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) jelenleg nem támogatja a Azure Active Directory előhitelesítést.
+A [SharePoint Mobile alkalmazás](/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) jelenleg nem támogatja a Azure Active Directory előhitelesítést.
 
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Közzététel Active Directory összevonási szolgáltatások (AD FS) (AD FS) 
 
@@ -193,7 +193,7 @@ A Windows felügyeleti központban (WAC) vagy Távoli asztal webes ügyfélprogr
 
 Igen. A hivatkozás fordítása hatással van a teljesítményre. Az alkalmazásproxy szolgáltatás megkeresi az alkalmazást a hardcoded-hivatkozásokra, és lecseréli azokat a megfelelő, közzétett külső URL-címekre, mielőtt azokat bemutatják a felhasználónak. 
 
-A legjobb teljesítmény érdekében az azonos belső és külső URL-címek használatát javasoljuk [Egyéni tartományok](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)konfigurálásával. Ha az egyéni tartományok használata nem lehetséges, a saját alkalmazások biztonságos bejelentkezési bővítmény vagy a mobil Microsoft Edge böngésző használatával javíthatja a hivatkozások fordítási teljesítményét. Lásd: az [Azure ad Application proxy közzétett alkalmazásaihoz tartozó hardcoded-hivatkozások átirányítása](application-proxy-configure-hard-coded-link-translation.md).
+A legjobb teljesítmény érdekében az azonos belső és külső URL-címek használatát javasoljuk [Egyéni tartományok](./application-proxy-configure-custom-domain.md)konfigurálásával. Ha az egyéni tartományok használata nem lehetséges, a saját alkalmazások biztonságos bejelentkezési bővítmény vagy a mobil Microsoft Edge böngésző használatával javíthatja a hivatkozások fordítási teljesítményét. Lásd: az [Azure ad Application proxy közzétett alkalmazásaihoz tartozó hardcoded-hivatkozások átirányítása](application-proxy-configure-hard-coded-link-translation.md).
 
 ## <a name="wildcards"></a>Helyettesítő karakterek
 
@@ -204,5 +204,5 @@ Ez a forgatókönyv nem támogatott közvetlenül. A forgatókönyv beállítás
 1. Tegye közzé mind a HTTP-, mind a HTTPS-URL-címet külön alkalmazásként egy helyettesítő karakterrel, de adjon nekik egy másik egyéni tartományt. Ez a konfiguráció úgy fog működni, mert eltérő külső URL-címekkel rendelkeznek.
 
 2. A HTTPS URL-cím közzététele helyettesítő alkalmazás használatával. Tegye közzé a HTTP-alkalmazásokat az alábbi alkalmazásproxy PowerShell-parancsmagok használatával:
-   - [Alkalmazásproxy-alkalmazások kezelése](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
-   - [Alkalmazásproxy-összekötő kezelése](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)
+   - [Alkalmazásproxy-alkalmazások kezelése](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
+   - [Alkalmazásproxy-összekötő kezelése](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)

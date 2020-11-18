@@ -12,12 +12,12 @@ ms.date: 7/10/2020
 ms.author: mimart
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95e13cedc0cdbaedc8c00b9d855057da7e631c19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ff97d0a69efbe624e959f92f5320f921476a306
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510878"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658978"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>A Azure Active Directoryban lévő, nem megfelelő jogosultságokkal rendelkező vagy gyanús alkalmazásokra vonatkozó teendők
 
@@ -29,14 +29,14 @@ További információ az alkalmazásokkal való hozzájárulásról: [Azure Acti
 
 A következő műveletek végrehajtásához globális rendszergazdaként, alkalmazás-rendszergazdaként vagy Felhőbeli alkalmazás-rendszergazdaként kell bejelentkeznie.
 
-Az alkalmazásokhoz való hozzáférés korlátozásához felhasználói hozzárendelést kell megkövetelni, majd hozzá kell rendelnie a felhasználókat vagy csoportokat az alkalmazáshoz.  További információ: [felhasználók és csoportok hozzárendelésének módszerei](methods-for-assigning-users-and-groups.md).
+Az alkalmazásokhoz való hozzáférés korlátozásához felhasználói hozzárendelést kell megkövetelni, majd hozzá kell rendelnie a felhasználókat vagy csoportokat az alkalmazáshoz.  További információ: [felhasználók és csoportok hozzárendelésének módszerei](./assign-user-or-group-access-portal.md).
 
 Az Azure AD-portálon a műveletek végrehajtásához környezetfüggő PowerShell-parancsfájlokat érhet el.
  
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként, alkalmazás-rendszergazdaként vagy Felhőbeli alkalmazás-rendszergazdaként.
-2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget.
+2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget.
 3. Válassza ki azt az alkalmazást, amelyhez korlátozni kívánja a hozzáférést.
-4. Válassza az **engedélyek**lehetőséget. A parancssorban válassza az **engedélyek ellenőrzése**lehetőséget.
+4. Válassza az **engedélyek** lehetőséget. A parancssorban válassza az **engedélyek ellenőrzése** lehetőséget.
 
 ![Képernyőkép az engedélyek áttekintése ablakról.](./media/manage-application-permissions/review-permissions.png)
 
@@ -46,10 +46,10 @@ Az Azure AD-portálon a műveletek végrehajtásához környezetfüggő PowerShe
 Javasoljuk, hogy a **felhasználó-hozzárendelés** beállítás bekapcsolásával korlátozza az alkalmazáshoz való hozzáférést.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként, alkalmazás-rendszergazdaként vagy Felhőbeli alkalmazás-rendszergazdaként.
-2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget.
+2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget.
 3. Válassza ki azt az alkalmazást, amelyhez korlátozni kívánja a hozzáférést.
-4. Válassza a **Tulajdonságok**lehetőséget, majd állítsa az **Igen**értékre a **felhasználói követelményt** .
-5. Válassza a **felhasználók és csoportok**lehetőséget, majd távolítsa el az alkalmazáshoz hozzárendelt nemkívánatos felhasználókat.
+4. Válassza a **Tulajdonságok** lehetőséget, majd állítsa az **Igen** értékre a **felhasználói követelményt** .
+5. Válassza a **felhasználók és csoportok** lehetőséget, majd távolítsa el az alkalmazáshoz hozzárendelt nemkívánatos felhasználókat.
 6. Felhasználók vagy csoportok társítása az alkalmazáshoz.
 
 Igény szerint eltávolíthatja az alkalmazáshoz hozzárendelt összes felhasználót a PowerShell használatával.
@@ -64,19 +64,19 @@ A PowerShell-parancsfájl használatával visszavonja az alkalmazásnak biztosí
 Igény szerint letilthatja az alkalmazást, hogy a felhasználók hozzáférhessenek az alkalmazáshoz, és hogy az alkalmazás hozzáférjen az adatokhoz.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként, alkalmazás-rendszergazdaként vagy Felhőbeli alkalmazás-rendszergazdaként.
-2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget.
+2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget.
 3. Válassza ki azt az alkalmazást, amelyhez korlátozni kívánja a hozzáférést.
-4. Válassza a **Tulajdonságok**lehetőséget, majd **engedélyezze a felhasználók számára a bejelentkezést?** **nem**értékre.
+4. Válassza a **Tulajdonságok** lehetőséget, majd **engedélyezze a felhasználók számára a bejelentkezést?** **nem** értékre.
 
 ## <a name="investigate-a-suspicious-application"></a>Gyanús alkalmazás vizsgálata
 
 Javasoljuk, hogy a **felhasználó-hozzárendelés** beállítás bekapcsolásával korlátozza az alkalmazáshoz való hozzáférést. Ezután tekintse át a felhasználók és a rendszergazdák által az alkalmazás számára biztosított engedélyeket.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként, alkalmazás-rendszergazdaként vagy Felhőbeli alkalmazás-rendszergazdaként.
-3. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget.
+3. Válassza **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget.
 5. Válassza ki azt az alkalmazást, amelyhez korlátozni kívánja a hozzáférést.
-6. Válassza a **Tulajdonságok**lehetőséget, majd állítsa az **Igen**értékre a **felhasználói követelményt** .
-7. Válassza az **engedélyek**lehetőséget, és tekintse át a rendszergazda és a felhasználó beleegyezéses engedélyeit.
+6. Válassza a **Tulajdonságok** lehetőséget, majd állítsa az **Igen** értékre a **felhasználói követelményt** .
+7. Válassza az **engedélyek** lehetőséget, és tekintse át a rendszergazda és a felhasználó beleegyezéses engedélyeit.
 
 Igény szerint a PowerShell használatával a következőket teheti:
 
@@ -92,9 +92,9 @@ Vagy letilthatja az alkalmazást a felhasználók hozzáférésének letiltásá
 Javasoljuk, hogy tiltsa le az alkalmazást, hogy letiltsa a felhasználók hozzáférését, és hogy az alkalmazás hozzáférjen az adatokhoz. Ha ehelyett törli az alkalmazást, akkor a felhasználók újra megadhatják az alkalmazáshoz, és hozzáférést biztosíthatnak az adataihoz.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként, alkalmazás-rendszergazdaként vagy Felhőbeli alkalmazás-rendszergazdaként.
-2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget.
+2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget.
 3. Válassza ki azt az alkalmazást, amelyhez korlátozni kívánja a hozzáférést.
-4. Válassza a **Tulajdonságok**lehetőséget, majd másolja az objektumazonosítót.
+4. Válassza a **Tulajdonságok** lehetőséget, majd másolja az objektumazonosítót.
 
 ### <a name="powershell-commands"></a>PowerShell-parancsok
 
@@ -102,9 +102,9 @@ Javasoljuk, hogy tiltsa le az alkalmazást, hogy letiltsa a felhasználók hozz�
 A szolgáltatásnév-objektum AZONOSÍTÓjának beolvasása.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként, alkalmazás-rendszergazdaként vagy Felhőbeli alkalmazás-rendszergazdaként.
-2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget.
+2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget.
 3. Válassza ki azt az alkalmazást, amelyhez korlátozni kívánja a hozzáférést.
-4. Válassza a **Tulajdonságok**lehetőséget, majd másolja az objektumazonosítót.
+4. Válassza a **Tulajdonságok** lehetőséget, majd másolja az objektumazonosítót.
 
 ```powershell
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"

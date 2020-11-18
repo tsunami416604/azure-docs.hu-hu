@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9680c9bee6d0cf5c9605ce7b6009a500abd81ffb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7e56968250c10bb46553e618fd278df7d642683f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369097"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659080"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz
 
@@ -30,7 +30,7 @@ További információ az alkalmazásokkal való hozzájárulásról: [Azure Acti
 A bérlői szintű rendszergazdai jóváhagyás megadása megköveteli, hogy [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator--company-administrator), [alkalmazás-rendszergazdaként](../roles/permissions-reference.md#application-administrator)vagy [felhőalapú alkalmazás-rendszergazdaként](../roles/permissions-reference.md#cloud-application-administrator)jelentkezzen be.
 
 > [!IMPORTANT]
-> Ha egy alkalmazás teljes körű rendszergazdai jogosultsággal rendelkezik, az összes felhasználó be tud jelentkezni az alkalmazásba, kivéve, ha úgy van konfigurálva, hogy felhasználói hozzárendelést igényeljen. Ha szeretné korlátozni, hogy mely felhasználók jelentkezhetnek be egy alkalmazásba, megkövetelheti a felhasználói hozzárendelést, majd felhasználókat vagy csoportokat rendelhet hozzá az alkalmazáshoz. További információ: [felhasználók és csoportok hozzárendelésének módszerei](methods-for-assigning-users-and-groups.md).
+> Ha egy alkalmazás teljes körű rendszergazdai jogosultsággal rendelkezik, az összes felhasználó be tud jelentkezni az alkalmazásba, kivéve, ha úgy van konfigurálva, hogy felhasználói hozzárendelést igényeljen. Ha szeretné korlátozni, hogy mely felhasználók jelentkezhetnek be egy alkalmazásba, megkövetelheti a felhasználói hozzárendelést, majd felhasználókat vagy csoportokat rendelhet hozzá az alkalmazáshoz. További információ: [felhasználók és csoportok hozzárendelésének módszerei](./assign-user-or-group-access-portal.md).
 >
 > A globális rendszergazdai szerepkör szükséges ahhoz, hogy rendszergazdai jogosultságot adjon a Microsoft Graph API-nak az alkalmazás engedélyeihez.
 
@@ -45,12 +45,12 @@ A bérlői szintű rendszergazdai jóváhagyás megadása megköveteli, hogy [gl
 
 Ha az alkalmazás már üzembe lett helyezve a bérlőben, a bérlői szintű rendszergazdai jóváhagyást is megadhatja a *vállalati alkalmazásokon* keresztül. Egy alkalmazás például kiépíthető a bérlőben, ha legalább egy felhasználó már beleegyezett az alkalmazásba. További információ: [how és Why alkalmazások hozzáadása a Azure Active Directoryhoz](../develop/active-directory-how-applications-are-added.md).
 
-A bérlői szintű rendszergazdai jóváhagyás biztosítása a **vállalati alkalmazásokban**felsorolt alkalmazásokhoz:
+A bérlői szintű rendszergazdai jóváhagyás biztosítása a **vállalati alkalmazásokban** felsorolt alkalmazásokhoz:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator--company-administrator), alkalmazás- [rendszergazdaként](../roles/permissions-reference.md#application-administrator)vagy [Felhőbeli alkalmazás-rendszergazdaként](../roles/permissions-reference.md#cloud-application-administrator).
-2. Válassza **Azure Active Directory** majd a **vállalati alkalmazások**lehetőséget.
+2. Válassza **Azure Active Directory** majd a **vállalati alkalmazások** lehetőséget.
 3. Válassza ki azt az alkalmazást, amelyhez bérlői szintű rendszergazdai jogosultságot szeretne adni.
-4. Válassza az **engedélyek** lehetőséget, majd kattintson a **rendszergazdai jóváhagyás megadása**lehetőségre.
+4. Válassza az **engedélyek** lehetőséget, majd kattintson a **rendszergazdai jóváhagyás megadása** lehetőségre.
 5. Körültekintően tekintse át az alkalmazás által igényelt engedélyeket.
 6. Ha elfogadja az alkalmazás által igényelt engedélyeket, engedélyezze a jóváhagyást. Ha nem, kattintson a **Mégse** gombra, vagy az ablak bezárásához.
 
@@ -64,9 +64,9 @@ A szervezet által fejlesztett, vagy közvetlenül az Azure AD-bérlőben regisz
 A bérlői szintű rendszergazdai jóváhagyás engedélyezése **Alkalmazásregisztrációktól**:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator--company-administrator), alkalmazás- [rendszergazdaként](../roles/permissions-reference.md#application-administrator)vagy [Felhőbeli alkalmazás-rendszergazdaként](../roles/permissions-reference.md#cloud-application-administrator).
-2. Válassza a **Azure Active Directory** majd **Alkalmazásregisztrációk**lehetőséget.
+2. Válassza a **Azure Active Directory** majd **Alkalmazásregisztrációk** lehetőséget.
 3. Válassza ki azt az alkalmazást, amelyhez bérlői szintű rendszergazdai jogosultságot szeretne adni.
-4. Válassza az **API-engedélyek** lehetőséget, majd kattintson a **rendszergazdai jóváhagyás megadása**lehetőségre.
+4. Válassza az **API-engedélyek** lehetőséget, majd kattintson a **rendszergazdai jóváhagyás megadása** lehetőségre.
 5. Körültekintően tekintse át az alkalmazás által igényelt engedélyeket.
 6. Ha elfogadja az alkalmazás által igényelt engedélyeket, engedélyezze a jóváhagyást. Ha nem, kattintson a **Mégse** gombra, vagy az ablak bezárásához.
 
@@ -99,6 +99,6 @@ Ahogy mindig, körültekintően tekintse át az alkalmazások kérelmének enged
 
 [Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
 
-[Engedélyek és beleegyezett a Microsoft Identity platform](../develop/active-directory-v2-scopes.md)
+[Engedélyek és beleegyezett a Microsoft Identity platform](../develop/v2-permissions-and-consent.md)
 
 [Azure AD a StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

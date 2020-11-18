@@ -5,14 +5,14 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f03016c9a44968db49cd68bfec025c328861fc07
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 72d774b4ced6471ff7b355b2cb43c3c9127b5975
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286437"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658519"
 ---
 # <a name="supported-postgresql-major-versions"></a>Támogatott PostgreSQL főverziók
 
@@ -32,11 +32,14 @@ Az aktuális másodlagos kiadás a 9.6.16. Tekintse meg a [PostgreSQL dokumentá
 ## <a name="postgresql-version-95"></a>PostgreSQL 9,5-es verzió
 Az aktuális másodlagos kiadás a 9.5.20. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/9.5/static/release-9-5-20.html) , amely az ebben a másodlagos kiadásban található javításokat és javításokat ismerteti.
 
+> [!NOTE]
+> A postgres közösségi [verziószámozási szabályzattal](https://www.postgresql.org/support/versioning/)való összehangolása Azure Database for PostgreSQL 9,5-es verziójának kivonásával történik a 2021. február 11-én a postgres. További részletekért és korlátozásért tekintse meg [Azure Database for PostgreSQL verziószámozási szabályzatát](concepts-version-policy.md) .
+
 ## <a name="managing-upgrades"></a>Frissítések kezelése
 A PostgreSQL-projekt rendszeresen kiad kisebb kiadásokat a jelentett hibák kijavítása érdekében. Azure Database for PostgreSQL a szolgáltatás havi üzembe helyezése során a rendszer a kisebb kiadású kiszolgálók automatikus javítását végzi. 
 
 A főverziók automatikus helyi frissítése nem támogatott. A következő főverzióra való frissítéshez 
-   * Tekintse meg a [főbb verziófrissítési frissítéseket a dump és a Restore használatával](./how-to-upgrade-using-dump-and-restore.md)
+   * A főbb verziófrissítések elvégzésének különböző módszerei a [dump és a Restore használatával](./how-to-upgrade-using-dump-and-restore.md)
    * A [pg_dump és a pg_restore](./howto-migrate-using-dump-and-restore.md) használatával helyezzen át egy adatbázist az új motor verziójával létrehozott kiszolgálóra
    * Azt is megteheti, hogy a PostgreSQL 10 és 11 közötti verziójára frissít az [Azure Database Migration Service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) használatával
 

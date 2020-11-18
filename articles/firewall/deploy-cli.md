@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: d7c6640b6634a017819735b9d0f7b906f8dc91d0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 6993bd10caf2f7e489de8074e311f75710b83d82
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565874"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659437"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure Firewall üzembe helyezése és konfigurálása az Azure CLI-vel
 
@@ -25,7 +25,7 @@ Az Azure-alhálózatok kimenő hálózati hozzáférése többek között az Azu
 
 A hálózati forgalmat a konfigurált tűzfalszabályok irányítják, ha alapértelmezett alhálózati átjáróként irányítja a tűzfalhoz a forgalmat.
 
-Ebben a cikkben egy egyszerűsített egyszeri VNet hoz létre három alhálózattal az egyszerű üzembe helyezéshez. Éles környezetekben javasolt a [hub és a küllős modell](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) használata. A tűzfal a saját VNet található. A munkaterhelés-kiszolgálók egy vagy több alhálózattal azonos régióban lévő, egymással azonos régióba tartozó virtuális hálózatok találhatók.
+Ebben a cikkben egy egyszerűsített egyszeri VNet hoz létre három alhálózattal az egyszerű üzembe helyezéshez. Éles környezetekben javasolt a [hub és a küllős modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) használata. A tűzfal a saját VNet található. A munkaterhelés-kiszolgálók egy vagy több alhálózattal azonos régióban lévő, egymással azonos régióba tartozó virtuális hálózatok találhatók.
 
 * **AzureFirewallSubnet** – ezen az alhálózaton található a tűzfal.
 * **Workload-SN** – ezen az alhálózaton található a számítási feladat kiszolgálója. Ennek az alhálózatnak a hálózati forgalma a tűzfalon halad át.
@@ -290,4 +290,4 @@ az group delete \
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)
+* [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./firewall-diagnostics.md)

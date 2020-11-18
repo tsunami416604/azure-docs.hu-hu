@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/16/2020
 ms.author: b-juche
-ms.openlocfilehash: d4e66511ce3017749076615f081a8fb56d8b8452
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 5409f9177116add1fd794ec1e72f276daf34e029
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591546"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659148"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -167,6 +167,10 @@ Azure NetApp Files támogatja a Active Directory tartományi szolgáltatások Wi
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Miért nem jelenik meg a kiépített méret az SMB-ügyfélen elérhető szabad terület?
 
 Az SMB-ügyfél által jelentett kötet mérete az a maximális méret, ameddig a Azure NetApp Files kötet képes növekedni. Az SMB-ügyfélen látható Azure NetApp Files kötet mérete nem tükrözi a kötet kvótáját vagy méretét. A Azure NetApp Files kötet méretét vagy kvótáját a Azure Portal vagy az API használatával szerezheti be.
+
+### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>Problémák léptek fel az SMB-megosztáshoz való kapcsolódás során. Mit tegyek?
+
+Ajánlott eljárásként állítsa be a számítógép órája szinkronizálásának maximális tűréshatárát öt percre. További információ: [a számítógép órája szinkronizálásának maximális hibatűrése](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11)). 
 
 <!--
 ### Does Azure NetApp Files support LDAP signing? 

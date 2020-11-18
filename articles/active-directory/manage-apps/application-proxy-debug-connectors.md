@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 7e7a1de24e5032b2dade2f325560fd6964c892d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbbb5328f2d7e814be9b5b94ec522bbb01df39e5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86145683"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658247"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Alkalmazásproxy-összekötők problémáinak hibakeresése 
 
@@ -44,7 +44,7 @@ Ez a folyamatábra végigvezeti a leggyakoribb összekötő-problémák némelyi
 |---------|---------|---------|
 |1 | Az alkalmazáshoz rendelt összekötő-csoport megkeresése | Valószínűleg van több kiszolgálóra telepített összekötő, amely esetben az összekötőket [hozzá kell rendelni az összekötő-csoportokhoz](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). További információ az összekötő-csoportokról: [alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával](application-proxy-connector-groups.md). |
 |2 | Az összekötő telepítése és a csoport társítása | Ha nincs telepítve összekötő, tekintse meg [az összekötők telepítése és regisztrálása](application-proxy-add-on-premises-application.md#install-and-register-a-connector)című témakört.<br></br> Ha problémába ütközik az összekötő telepítésekor, tekintse meg [az összekötő telepítésekor jelentkező problémát](application-proxy-connector-installation-problem.md).<br></br> Ha az összekötő nincs csoporthoz rendelve, tekintse [meg az összekötő társítása csoporthoz](application-proxy-connector-groups.md#create-connector-groups)című témakört.<br></br>Ha az alkalmazás nincs összekötő-csoporthoz rendelve, tekintse [meg az alkalmazás hozzárendelése összekötő-csoporthoz](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)című témakört.|
-|3 | Port teszt futtatása az összekötő-kiszolgálón | Az összekötő-kiszolgálón futtassa a port tesztet a [Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) vagy más port tesztelési eszköz használatával annak ellenőrzéséhez, hogy [a 443-es és a 80-es portok nyitva vannak-](application-proxy-add-on-premises-application.md#open-ports)e.|
+|3 | Port teszt futtatása az összekötő-kiszolgálón | Az összekötő-kiszolgálón futtassa a port tesztet a [Telnet](/windows-server/administration/windows-commands/telnet) vagy más port tesztelési eszköz használatával annak ellenőrzéséhez, hogy [a 443-es és a 80-es portok nyitva vannak-](application-proxy-add-on-premises-application.md#open-ports)e.|
 |4 | A tartományok és portok konfigurálása | [Győződjön meg arról, hogy a tartományok és a portok megfelelően vannak konfigurálva](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) Ahhoz, hogy az összekötő megfelelően működjön, bizonyos portoknak nyitva kell lenniük, és olyan URL-címekkel kell rendelkezniük, amelyeknek a kiszolgálónak hozzá kell férnie. |
 |5 | Ellenőrizze, hogy van-e használatban háttérbeli proxy | Ellenőrizze, hogy az összekötők használnak-e háttér-proxykiszolgálót, vagy megkerülését. Részletekért lásd: [összekötő-proxyval kapcsolatos problémák elhárítása és a szolgáltatás kapcsolódási](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues)problémái. |
 |6 | Az összekötő és a frissítő frissítése a háttér-proxy használatára | Ha a háttér-proxy használatban van, akkor győződjön meg arról, hogy az összekötő ugyanazt a proxyt használja. További információ az összekötők hibaelhárításáról és konfigurálásáról a proxykiszolgálók működéséhez: [meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md). |
@@ -53,7 +53,7 @@ Ez a folyamatábra végigvezeti a leggyakoribb összekötő-problémák némelyi
 |9 | Az időtúllépési érték meghosszabbítása a háttérben | Az alkalmazás **további beállításainál** módosítsa a **háttérbeli alkalmazások időtúllépési** beállítását **hosszúra**. Lásd: helyszíni [alkalmazás hozzáadása az Azure ad-](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)hez. |
 |10 | Ha a probléma továbbra is fennáll, konkrét folyamatokkal kapcsolatos problémák megcélzása, alkalmazás-és egyszeri bejelentkezéses hibakeresés | A [hibakeresési alkalmazásproxy alkalmazásával kapcsolatos problémák](application-proxy-debug-apps.md) elhárítása. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 * [Alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával](application-proxy-connector-groups.md)

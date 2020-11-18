@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14520c7c448231045b36e025c2c92332f9daac53
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603339"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658723"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Egyszeri bejelentkezés üzembe helyezésének tervezése
 
@@ -39,7 +39,7 @@ Az Azure Marketplace-en több mint 3000 alkalmazás található előre integrál
 
 ## <a name="plan-your-sso-team"></a>Az SSO-csapat megtervezése
 
-- **A megfelelő érintett felek bevonása** – ha a technológiai projektek meghiúsulnak, általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](https://aka.ms/deploymentplans) , és hogy az érintettek megértsék a szerepköreiket.
+- **A megfelelő érintett felek bevonása** – ha a technológiai projektek meghiúsulnak, általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](../fundamentals/active-directory-deployment-plans.md) , és hogy az érintettek megértsék a szerepköreiket.
 - **Kommunikáció tervezése** – a kommunikáció kritikus fontosságú az új szolgáltatások sikeressége szempontjából. Proaktív módon kommunikálhat a felhasználókkal arról, hogy a tapasztalatok Hogyan változnak, Mikor változnak, és hogyan szerezhetnek támogatást, ha problémákat tapasztalnak. Tekintse át, hogy a [végfelhasználók hogyan érhetik el az SSO-kompatibilis alkalmazásokat](end-user-experiences.md), és hogyan teheti a kommunikációt a választott lehetőségeknek megfelelően. 
 
 ## <a name="plan-your-sso-protocol"></a>Az SSO protokoll megtervezése
@@ -54,25 +54,25 @@ Kétféleképpen engedélyezheti a felhasználók számára az alkalmazások egy
 
 ### <a name="considerations-for-federation-based-sso"></a>Az összevonási alapú SSO szempontjai
 
-- Az **OpenID Connect és a OAuth használata** – ha a csatlakoztatni kívánt alkalmazás támogatja azt, használja az OIDC/OAuth 2,0 metódust, hogy engedélyezze az egyszeri bejelentkezést az adott alkalmazáshoz. Ez a módszer kevesebb konfigurálást igényel, és gazdagabb felhasználói élményt tesz lehetővé. További információ: [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md), [OpenID Connect 1,0](../develop/v2-protocols-oidc.md)és [Azure Active Directory fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+- Az **OpenID Connect és a OAuth használata** – ha a csatlakoztatni kívánt alkalmazás támogatja azt, használja az OIDC/OAuth 2,0 metódust, hogy engedélyezze az egyszeri bejelentkezést az adott alkalmazáshoz. Ez a módszer kevesebb konfigurálást igényel, és gazdagabb felhasználói élményt tesz lehetővé. További információ: [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md), [OpenID Connect 1,0](../develop/v2-protocols-oidc.md)és [Azure Active Directory fejlesztői útmutató](../develop/index.yml).
 - Az **SAML-alapú SSO végpont-konfigurációi** – ha SAML-t használ, a fejlesztőknek az alkalmazás konfigurálása előtt egyedi információkra van szükségük. További információ: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-saml-single-sign-on.md).
-- **Tanúsítványkezelő az SAML-alapú egyszeri bejelentkezéshez** – Ha engedélyezi az összevont SSO-t az alkalmazáshoz, az Azure ad alapértelmezés szerint három évig érvényes tanúsítványt hoz létre. Ha szükséges, testreszabhatja a tanúsítvány lejárati dátumát. Győződjön meg arról, hogy a tanúsítványok megújításához szükséges folyamatok vannak érvényben a lejárat előtt. További információ: [Azure ad-tanúsítványok kezelése](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs).
+- **Tanúsítványkezelő az SAML-alapú egyszeri bejelentkezéshez** – Ha engedélyezi az összevont SSO-t az alkalmazáshoz, az Azure ad alapértelmezés szerint három évig érvényes tanúsítványt hoz létre. Ha szükséges, testreszabhatja a tanúsítvány lejárati dátumát. Győződjön meg arról, hogy a tanúsítványok megújításához szükséges folyamatok vannak érvényben a lejárat előtt. További információ: [Azure ad-tanúsítványok kezelése](./manage-certificates-for-federated-single-sign-on.md).
 
 ### <a name="considerations-for-password-based-sso"></a>A jelszó-alapú egyszeri bejelentkezés szempontjai
 
-Az Azure AD jelszó-alapú egyszeri bejelentkezéshez való használatához olyan böngésző-bővítményt kell telepíteni, amely biztonságosan kéri le a hitelesítő adatokat, és kitölti a bejelentkezési űrlapokat. Definiáljon egy mechanizmust a bővítmény a [támogatott böngészőkkel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)való üzembe helyezéséhez. A lehetőségek a következők:
+Az Azure AD jelszó-alapú egyszeri bejelentkezéshez való használatához olyan böngésző-bővítményt kell telepíteni, amely biztonságosan kéri le a hitelesítő adatokat, és kitölti a bejelentkezési űrlapokat. Definiáljon egy mechanizmust a bővítmény a [támogatott böngészőkkel](../user-help/my-apps-portal-end-user-access.md)való üzembe helyezéséhez. A lehetőségek a következők:
 
-- [Csoportházirend az Internet Explorerben](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-- [Configuration Manager az Internet Explorerben](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-- [A Chrome, a Firefox, a Microsoft Edge vagy az IE felhasználó által vezérelt letöltése és konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+- [Csoportházirend az Internet Explorerben](./access-panel-deployment-plan.md)
+- [Configuration Manager az Internet Explorerben](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+- [A Chrome, a Firefox, a Microsoft Edge vagy az IE felhasználó által vezérelt letöltése és konfigurálása](../user-help/my-apps-portal-end-user-access.md)
 
-További információ: [a jelszó egyszeri bejelentkezésének konfigurálása](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
+További információ: [a jelszó egyszeri bejelentkezésének konfigurálása](./configure-password-single-sign-on-non-gallery-applications.md).
 
 #### <a name="capturing-login-forms-metadata-for-applications-that-arent-in-the-gallery"></a>Bejelentkezési űrlapok metaadatainak rögzítése a katalógusban nem szereplő alkalmazásokhoz
 
 A Microsoft támogatja a metaadatok rögzítését egy webalkalmazásban a jelszó-tárolóhoz (a Felhasználónév és a jelszó mezők rögzítése). Navigáljon a bejelentkezési URL-címre az alkalmazás konfigurálásának folyamata során az űrlap metaadatainak rögzítéséhez. Kérje meg az alkalmazás tulajdonosát a bejelentkezés pontos URL-címére. Ezeket az adatokat a rendszer a bejelentkezési folyamat során használja, és az Azure AD hitelesítő adatait az alkalmazáshoz a bejelentkezéskor rendeli hozzá.
 
-További információ: [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure ad-vel? – jelszó-alapú egyszeri bejelentkezés](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/).
+További információ: [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure ad-vel? – jelszó-alapú egyszeri bejelentkezés](./what-is-single-sign-on.md).
 
 #### <a name="indications-that-metadata-in-forms-needs-to-be-recaptured"></a>Azt jelzi, hogy az űrlapokon lévő metaadatokat újra kell rögzíteni
 
@@ -96,7 +96,7 @@ A bejelentkezési perspektívából a megosztott fiókkal rendelkező alkalmazá
 
 A megfelelő hitelesítési módszer kiválasztása kulcsfontosságú első döntés az Azure AD Hybrid Identity megoldás létrehozásához. A Azure AD Connect használatával konfigurált hitelesítési módszer implementálása, amely a felhőben lévő felhasználókat is kiépíti.
 
-A hitelesítési módszer kiválasztásához figyelembe kell vennie az időt, a meglévő infrastruktúrát, az összetettséget és a választott megvalósítás költségeit. Ezek a tényezők minden szervezet esetében eltérőek, és idővel változhatnak. Válassza ki azt, amelyik leginkább megfelel az adott forgatókönyvnek. További információ: [válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
+A hitelesítési módszer kiválasztásához figyelembe kell vennie az időt, a meglévő infrastruktúrát, az összetettséget és a választott megvalósítás költségeit. Ezek a tényezők minden szervezet esetében eltérőek, és idővel változhatnak. Válassza ki azt, amelyik leginkább megfelel az adott forgatókönyvnek. További információ: [válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](../hybrid/choose-ad-authn.md).
 
 ## <a name="plan-your-security-and-governance"></a>A biztonság és irányítás megtervezése 
 
@@ -104,7 +104,7 @@ A biztonság és a beruházások új elsődleges feladata, hogy a hálózati kö
 
 ### <a name="plan-access-reviews"></a>Hozzáférési felülvizsgálatok tervezése
 
-A [hozzáférési felülvizsgálatok](https://docs.microsoft.com/azure/active-directory/governance/create-access-review) lehetővé teszik a szervezetek számára a csoporttagságok hatékony kezelését, a vállalati alkalmazások elérését és a szerepkör-hozzárendeléseket. Érdemes rendszeresen megtervezni a felhasználói hozzáférés áttekintését, hogy csak a megfelelő személyek férhessenek hozzájuk.
+A [hozzáférési felülvizsgálatok](../governance/create-access-review.md) lehetővé teszik a szervezetek számára a csoporttagságok hatékony kezelését, a vállalati alkalmazások elérését és a szerepkör-hozzárendeléseket. Érdemes rendszeresen megtervezni a felhasználói hozzáférés áttekintését, hogy csak a megfelelő személyek férhessenek hozzájuk.
 
 A hozzáférési felülvizsgálatok beállítása során megtervezni kívánt főbb témakörök a következők:
 
@@ -116,7 +116,7 @@ A hozzáférési felülvizsgálatok beállítása során megtervezni kívánt f�
 
 ### <a name="plan-auditing"></a>Terv naplózása
 
-Az Azure AD olyan [jelentéseket biztosít, amelyek technikai és üzleti ismereteket tartalmaznak](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/). 
+Az Azure AD olyan [jelentéseket biztosít, amelyek technikai és üzleti ismereteket tartalmaznak](../reports-monitoring/overview-reports.md). 
 
 A biztonsági és a tevékenységgel kapcsolatos jelentések egyaránt elérhetők. A biztonsági jelentések megjelenítik a kockázatnak megjelölt felhasználókat és a kockázatos bejelentkezéseket. A tevékenységgel kapcsolatos jelentések segítenek megérteni a szervezet felhasználói viselkedését a bejelentkezési tevékenység részletes ismertetésével, valamint az összes bejelentkezés naplózási nyomvonalának biztosításával. A jelentések segítségével kezelheti a kockázatokat, növelheti a hatékonyságot és figyelheti a megfelelőséget.
 
@@ -139,15 +139,15 @@ A MCAS üzembe helyezése a következőket teszi lehetővé:
 - A feltételes hozzáférést biztosító alkalmazás-vezérlő Protection használatával valós idejű láthatóságot érhet el, és szabályozhatja a Felhőbeli alkalmazások hozzáférését és tevékenységeit
 - Segíti a folyamatos vezérlést a beállítással, majd folyamatosan pontosíthatja a szabályzatokat.
 
-A Microsoft Cloud Application Security (MCAS) munkamenet-vezérlő bármely operációs rendszer bármely jelentős platformján elérhető bármely böngészőhöz. A Mobile apps és az asztali alkalmazások blokkolása vagy engedélyezése is lehetséges. Az Azure AD-vel való natív integrálással minden SAML-vel konfigurált alkalmazás, illetve az Azure AD egyszeri bejelentkezéssel rendelkező Open ID-alapú csatlakozási alkalmazások is támogatottak, beleértve [több kiemelt alkalmazást](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)is.
+A Microsoft Cloud Application Security (MCAS) munkamenet-vezérlő bármely operációs rendszer bármely jelentős platformján elérhető bármely böngészőhöz. A Mobile apps és az asztali alkalmazások blokkolása vagy engedélyezése is lehetséges. Az Azure AD-vel való natív integrálással minden SAML-vel konfigurált alkalmazás, illetve az Azure AD egyszeri bejelentkezéssel rendelkező Open ID-alapú csatlakozási alkalmazások is támogatottak, beleértve [több kiemelt alkalmazást](/cloud-app-security/proxy-intro-aad)is.
 
-További információ a MCAS: a [Microsoft Cloud app Security áttekintése](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security). A MCAS egy felhasználó-alapú előfizetési szolgáltatás. A licencelés részleteit a [MCAS licencelési adatlapjában](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)tekintheti át.
+További információ a MCAS: a [Microsoft Cloud app Security áttekintése](/cloud-app-security/what-is-cloud-app-security). A MCAS egy felhasználó-alapú előfizetési szolgáltatás. A licencelés részleteit a [MCAS licencelési adatlapjában](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)tekintheti át.
 
 ### <a name="use-conditional-access"></a>Feltételes hozzáférés használata
 
 A feltételes hozzáférés segítségével automatizálhatja a feltételeken alapuló hozzáférés-vezérlési döntéseket a felhőalapú alkalmazásokhoz.
 
-A feltételes hozzáférési házirendeket az első tényezős hitelesítés befejeződése után kényszeríti ki a rendszer. Ezért a feltételes hozzáférés nem az első vonali védelem, mint például a szolgáltatásmegtagadási (DoS) támadások, de ezekből az eseményekről származó jelek használatával határozhatja meg a hozzáférést. Például a bejelentkezési kockázati szint, a kérelem helye, és így tovább használható. További információ a feltételes hozzáférésről: [Áttekintés](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access) és [telepítési terv](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access).
+A feltételes hozzáférési házirendeket az első tényezős hitelesítés befejeződése után kényszeríti ki a rendszer. Ezért a feltételes hozzáférés nem az első vonali védelem, mint például a szolgáltatásmegtagadási (DoS) támadások, de ezekből az eseményekről származó jelek használatával határozhatja meg a hozzáférést. Például a bejelentkezési kockázati szint, a kérelem helye, és így tovább használható. További információ a feltételes hozzáférésről: [Áttekintés](../conditional-access/plan-conditional-access.md) és [telepítési terv](../conditional-access/plan-conditional-access.md).
 
 ## <a name="azure-sso-technical-requirements"></a>Az Azure SSO műszaki követelményei
 
@@ -163,7 +163,7 @@ Az összes előre integrált SaaS-alkalmazáshoz a Microsoft egy oktatóanyagot 
 
 ### <a name="attribute-requirements"></a>Attribútumokra vonatkozó követelmények
 
-Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között van egy előre konfigurált attribútum és attribútum-hozzárendelés. Egyes alkalmazások más típusú objektumokat, például csoportokat kezelnek. Tervezze meg a felhasználói attribútumok leképezését az Azure AD-ből az alkalmazásba, és [szabja testre az alapértelmezett attribútum-hozzárendeléseket](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) az üzleti igényeknek megfelelően.
+Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között van egy előre konfigurált attribútum és attribútum-hozzárendelés. Egyes alkalmazások más típusú objektumokat, például csoportokat kezelnek. Tervezze meg a felhasználói attribútumok leképezését az Azure AD-ből az alkalmazásba, és [szabja testre az alapértelmezett attribútum-hozzárendeléseket](../app-provisioning/customize-application-attributes.md) az üzleti igényeknek megfelelően.
 
 ### <a name="certificate-requirements"></a>Tanúsítványkövetelmények
 
@@ -171,9 +171,9 @@ Az alkalmazás tanúsítványának naprakésznek kell lennie, vagy fennáll a ko
 
 A tanúsítványok kezelésének két módja van. 
 
-- **Automatikus tanúsítvány-rollover** – a Microsoft támogatja [Az Azure ad-ben az aláíró kulcsok átváltását](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Habár a tanúsítványok kezelésének előnyben részesített módja, nem minden ISV támogatja ezt a forgatókönyvet.
+- **Automatikus tanúsítvány-rollover** – a Microsoft támogatja [Az Azure ad-ben az aláíró kulcsok átváltását](../develop/active-directory-signing-key-rollover.md). Habár a tanúsítványok kezelésének előnyben részesített módja, nem minden ISV támogatja ezt a forgatókönyvet.
 
-- **Manuális frissítés** – minden alkalmazás saját tanúsítvánnyal rendelkezik, amely a definiálása alapján lejár. Az alkalmazás tanúsítványának lejárata előtt hozzon létre egy új tanúsítványt, és küldje el az ISV-nek. Ezeket az információkat az összevonási metaadatokból lehet kihúzni. [További információ az összevonási metaadatokról itt olvasható.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-federation-metadata)
+- **Manuális frissítés** – minden alkalmazás saját tanúsítvánnyal rendelkezik, amely a definiálása alapján lejár. Az alkalmazás tanúsítványának lejárata előtt hozzon létre egy új tanúsítványt, és küldje el az ISV-nek. Ezeket az információkat az összevonási metaadatokból lehet kihúzni. [További információ az összevonási metaadatokról itt olvasható.](../azuread-dev/azure-ad-federation-metadata.md)
 
 ## <a name="implement-sso"></a>Egyszeri bejelentkezés implementálása
 
@@ -189,11 +189,11 @@ A következő fázisok segítségével tervezze meg és telepítse üzembe megol
 
 - **Egyszeri bejelentkezés konfigurálása**
 
-   Az [alkalmazások listájából](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)keresse meg és nyissa meg az alkalmazás egyszeri bejelentkezésre vonatkozó oktatóanyagát, majd kövesse az oktatóanyag lépéseit a SaaS-alkalmazás sikeres konfigurálásához.
+   Az [alkalmazások listájából](../saas-apps/tutorial-list.md)keresse meg és nyissa meg az alkalmazás egyszeri bejelentkezésre vonatkozó oktatóanyagát, majd kövesse az oktatóanyag lépéseit a SaaS-alkalmazás sikeres konfigurálásához.
 
-   Ha nem találja az alkalmazást, tekintse meg az [egyéni alkalmazás dokumentációját](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery). Ez végigvezeti egy olyan alkalmazás hozzáadásán, amely nem az Azure AD-galériában található.
+   Ha nem találja az alkalmazást, tekintse meg az [egyéni alkalmazás dokumentációját](./configure-saml-single-sign-on.md). Ez végigvezeti egy olyan alkalmazás hozzáadásán, amely nem az Azure AD-galériában található.
 
-   Igény szerint a vállalati alkalmazás SAML-jogkivonatában kiállított jogcímeket a [Microsoft útmutatási dokumentációja](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)alapján is használhatja. Gondoskodjon arról, hogy az alkalmazáshoz tartozó SAML-válaszban milyen térképeket kapjon. Ha a konfigurálás során problémák merülnek fel, kövesse az [SSO-integráció hibakeresését ismertető](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)útmutatót.
+   Igény szerint a vállalati alkalmazás SAML-jogkivonatában kiállított jogcímeket a [Microsoft útmutatási dokumentációja](../develop/active-directory-claims-mapping.md)alapján is használhatja. Gondoskodjon arról, hogy az alkalmazáshoz tartozó SAML-válaszban milyen térképeket kapjon. Ha a konfigurálás során problémák merülnek fel, kövesse az [SSO-integráció hibakeresését ismertető](./debug-saml-sso-issues.md)útmutatót.
 
 ### <a name="provide-sso-change-communications-to-end-users"></a>Egyszeri bejelentkezéses változások kommunikációjának biztosítása a végfelhasználók számára
 
@@ -203,7 +203,7 @@ A kommunikációs terv megvalósítása. Győződjön meg arról, hogy a végfel
 
 Az alábbi tesztelési esetek használatával teszteket végezhet a vállalat által birtokolt és a személyes eszközökön, így biztosítva, hogy az SSO-konfigurációk a várt módon működnek. Az alábbi forgatókönyvek azt feltételezik, hogy egy felhasználó egy alkalmazás URL-címére navigál, és a szolgáltató által kezdeményezett hitelesítési folyamaton (SP által kezdeményezett hitelesítési folyamaton) keresztül zajlik.
 
-| Forgatókönyv | A várt eredmény az SP által kezdeményezett hitelesítési folyamathoz felhasználó szerint |
+| Használati eset | A várt eredmény az SP által kezdeményezett hitelesítési folyamathoz felhasználó szerint |
 |----------|---------------------------------------------------|
 | Jelentkezzen be az alkalmazásba az IE-vel a Corpnet-on. | Az integrált Windows-hitelesítés (IWA) további kérések nélkül történik. |
 | Jelentkezzen be az alkalmazásba az IE-ben, miközben az új bejelentkezési kísérlettel Corpnet ki. | Űrlapalapú kérés a AD FS kiszolgálón. A felhasználó sikeresen bejelentkezik, és a böngésző kéri az MFA-t. |
@@ -231,7 +231,7 @@ Ez a szakasz az egyszeri bejelentkezés sikeres kezelésének követelményeit �
 
 ### <a name="required-administrative-roles"></a>Szükséges rendszergazdai szerepkörök
 
-Mindig a legkevesebb engedélyekkel rendelkező szerepkört használja a szükséges feladat végrehajtásához Azure Active Directoryon belül. A Microsoft azt javasolja, [hogy tekintse át az elérhető különböző szerepköröket](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) , és válassza ki a megfelelőt az alkalmazás minden egyes Personának megoldásához. Előfordulhat, hogy bizonyos szerepköröket átmenetileg kell alkalmazni, és el kell távolítani az üzembe helyezés befejeződése után.
+Mindig a legkevesebb engedélyekkel rendelkező szerepkört használja a szükséges feladat végrehajtásához Azure Active Directoryon belül. A Microsoft azt javasolja, [hogy tekintse át az elérhető különböző szerepköröket](../roles/permissions-reference.md) , és válassza ki a megfelelőt az alkalmazás minden egyes Personának megoldásához. Előfordulhat, hogy bizonyos szerepköröket átmenetileg kell alkalmazni, és el kell távolítani az üzembe helyezés befejeződése után.
 
 | Persona| Szerepkörök | Azure AD-szerepkör (ha szükséges) |
 |--------|-------|-----------------------------|
@@ -241,7 +241,7 @@ Mindig a legkevesebb engedélyekkel rendelkező szerepkört használja a szüks�
 | Infrastruktúra-rendszergazdák | Tanúsítvány-átváltási tulajdonos | Globális rendszergazda |
 | Üzleti tulajdonos/érintett fél | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincs |
 
-Javasoljuk, hogy az [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) használatával kezelje a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot nyújtson a felhasználók számára a címtár-jogosultságokkal.
+Javasoljuk, hogy az [Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) használatával kezelje a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot nyújtson a felhasználók számára a címtár-jogosultságokkal.
 
 ### <a name="sso-certificate-lifecycle-management"></a>SSO-tanúsítványok életciklusának kezelése
 
@@ -265,7 +265,7 @@ Az alkalmazáson belüli hitelesítési módszerek rendelkezésre állása hatá
 
 ### <a name="access-management"></a>Hozzáférés-kezelés
 
-Azt javasoljuk, hogy az erőforrásokhoz való hozzáférés kezelésekor méretezhető megközelítést válasszon. A gyakori megközelítések közé tartozik a helyszíni csoportok használata Azure AD Connect használatával történő szinkronizálással, [dinamikus csoportok létrehozása az Azure ad-ben a felhasználói attribútumok alapján](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal), vagy az erőforrás-tulajdonos által kezelt önkiszolgáló csoportok létrehozása az Azure ad [-](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) ben.
+Azt javasoljuk, hogy az erőforrásokhoz való hozzáférés kezelésekor méretezhető megközelítést válasszon. A gyakori megközelítések közé tartozik a helyszíni csoportok használata Azure AD Connect használatával történő szinkronizálással, [dinamikus csoportok létrehozása az Azure ad-ben a felhasználói attribútumok alapján](../enterprise-users/groups-dynamic-membership.md), vagy az erőforrás-tulajdonos által kezelt önkiszolgáló csoportok létrehozása az Azure ad [-](../enterprise-users/groups-self-service-management.md) ben.
 
 ### <a name="monitor-security"></a>Biztonság figyelése
 
@@ -277,52 +277,52 @@ A következő hivatkozások hibaelhárítási forgatókönyveket mutatnak be. El
 
 #### <a name="consent-issues"></a>Beleegyező problémák
 
-- [Váratlan beleegyezett hiba](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-prompt)
+- [Váratlan beleegyezett hiba](./application-sign-in-unexpected-user-consent-prompt.md)
 
-- [Hiba a felhasználói hozzájárulással](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-error)
+- [Hiba a felhasználói hozzájárulással](./application-sign-in-unexpected-user-consent-error.md)
 
 #### <a name="sign-in-issues"></a>Bejelentkezési problémák
 
-- [Problémák az egyéni portálról való bejelentkezéskor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
+- [Problémák az egyéni portálról való bejelentkezéskor](./application-sign-in-other-problem-access-panel.md)
 
-- [Probléma a Saját alkalmazásokból való bejelentkezésnél](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [Probléma a Saját alkalmazásokból való bejelentkezésnél](./application-sign-in-other-problem-access-panel.md)
 
-- [Hiba az alkalmazás bejelentkezési oldalán](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
+- [Hiba az alkalmazás bejelentkezési oldalán](./application-sign-in-problem-application-error.md)
 
-- [Probléma a Microsoft-alkalmazásba való bejelentkezéskor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-first-party-microsoft)
+- [Probléma a Microsoft-alkalmazásba való bejelentkezéskor](./application-sign-in-problem-first-party-microsoft.md)
 
 #### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>Az Azure Application Galleryben felsorolt alkalmazások SSO-problémái
 
-- [Probléma az Azure-beli alkalmazás-katalógusban felsorolt alkalmazások jelszavas bejelentkezési jelszavával](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery) 
+- [Probléma az Azure-beli alkalmazás-katalógusban felsorolt alkalmazások jelszavas bejelentkezési jelszavával](./troubleshoot-password-based-sso.md) 
 
-- [Probléma az Azure Application Galleryben felsorolt alkalmazások összevont egyszeri bejelentkezésével](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-gallery)   
+- [Probléma az Azure Application Galleryben felsorolt alkalmazások összevont egyszeri bejelentkezésével](./application-sign-in-problem-federated-sso-gallery.md)   
 
 #### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>Az Azure Application Galleryben nem szereplő alkalmazások SSO-problémái
 
-- [Probléma a jelszó egyszeri bejelentkezésével az Azure Application Galleryben nem szereplő alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-non-gallery) 
+- [Probléma a jelszó egyszeri bejelentkezésével az Azure Application Galleryben nem szereplő alkalmazásokhoz](./troubleshoot-password-based-sso.md) 
 
-- [Probléma az összevont egyszeri bejelentkezéssel az Azure Application Galleryben nem szereplő alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
+- [Probléma az összevont egyszeri bejelentkezéssel az Azure Application Galleryben nem szereplő alkalmazásokhoz](./application-sign-in-problem-federated-sso-gallery.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-[SAML-alapú SSO hibakeresése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+[SAML-alapú SSO hibakeresése](./debug-saml-sso-issues.md)
 
-[Jogcím-hozzárendelés alkalmazások számára a PowerShell használatával](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
+[Jogcím-hozzárendelés alkalmazások számára a PowerShell használatával](../develop/active-directory-claims-mapping.md)
 
-[SAML-jogkivonatban kiadott jogcímek testreszabása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
+[SAML-jogkivonatban kiadott jogcímek testreszabása](../develop/active-directory-saml-claims-customization.md)
 
-[Egyszeri bejelentkezéses SAML protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
+[Egyszeri bejelentkezéses SAML protokoll](../develop/single-sign-on-saml-protocol.md)
 
-[Egy Sign-Out SAML protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
+[Egy Sign-Out SAML protokoll](../develop/single-sign-out-saml-protocol.md)
 
-[Azure ad B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (külső felhasználóknak, például partnereknek és szállítóknak)
+[Azure ad B2B](../external-identities/what-is-b2b.md) (külső felhasználóknak, például partnereknek és szállítóknak)
 
-[Azure AD-beli feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+[Azure AD-beli feltételes hozzáférés](../conditional-access/overview.md)
 
-[Azure Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+[Azure Identity Protection](../identity-protection/overview-identity-protection.md)
 
-[Egyszeri bejelentkezéses hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+[Egyszeri bejelentkezéses hozzáférés](./what-is-single-sign-on.md)
 
-[Alkalmazás egyszeri bejelentkezésének oktatóanyaga](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+[Alkalmazás egyszeri bejelentkezésének oktatóanyaga](../saas-apps/tutorial-list.md)
 
 [Tanulmány letöltése – egyszeri bejelentkezési telepítési terv](https://aka.ms/SSODeploymentPlan)

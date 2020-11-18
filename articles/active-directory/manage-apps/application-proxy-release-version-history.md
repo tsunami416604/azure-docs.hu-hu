@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8000d07824c27f60dd5d8d6a457521691fe2b7d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210866"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658400"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Application Proxy: verziók kiadásának előzményei
 Ez a cikk a kiadott Azure Active Directory (Azure AD) alkalmazásproxy verzióit és funkcióit sorolja fel. Az Azure AD csapata rendszeresen frissíti az alkalmazásproxy új szolgáltatásait és funkcióit. Az alkalmazásproxy-összekötők automatikusan frissülnek, amikor megjelent egy új verzió. 
@@ -38,7 +38,7 @@ Azure AD Application Proxy-összekötő letöltése |  [Töltse le a legújabb �
 Július 22.2020: Ez a verzió csak a letöltési oldalon keresztül telepíthető. Ennek a verziónak az automatikus frissítési kiadása később jelenik meg.
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
--   Továbbfejlesztett Azure Government felhőalapú környezetek támogatása. A Azure Government-felhőhöz tartozó összekötő megfelelő telepítésének lépéseiért tekintse át az [Előfeltételek](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) és a [telepítés lépéseit](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud).
+-   Továbbfejlesztett Azure Government felhőalapú környezetek támogatása. A Azure Government-felhőhöz tartozó összekötő megfelelő telepítésének lépéseiért tekintse át az [Előfeltételek](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) és a [telepítés lépéseit](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud).
 - Az Távoli asztali szolgáltatások webes ügyfél és az alkalmazásproxy használatának támogatása. További részletekért tekintse meg az [Azure AD Application Proxy távoli asztal közzétételével foglalkozó](application-proxy-integrate-with-remote-desktop-services.md) témakört.
 - Továbbfejlesztett WebSocket-bővítmények egyeztetése. 
 

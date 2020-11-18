@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 7f7f999c145903be5db3b20ab60bd0f5a18778ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e8508d4fceb1e7fb580350c726dd70eeaea31c6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463515"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658876"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Az SAML-alapú egyszeri bejelentkezés hibáinak megoldása Azure Active Directory
-Ha probléma merül fel az alkalmazás konfigurálásakor. Győződjön meg arról, hogy követte az alkalmazáshoz tartozó oktatóanyag összes lépését. Az alkalmazás konfigurációjában az alkalmazás konfigurálásával kapcsolatos dokumentációban talál további tájékoztatást. Azt is megteheti, hogy elérhetővé teszi az [oktatóanyagok listáját az SaaS-alkalmazások Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) -nal való integrálásához, részletes útmutatást nyújtva.
+Ha probléma merül fel az alkalmazás konfigurálásakor. Győződjön meg arról, hogy követte az alkalmazáshoz tartozó oktatóanyag összes lépését. Az alkalmazás konfigurációjában az alkalmazás konfigurálásával kapcsolatos dokumentációban talál további tájékoztatást. Azt is megteheti, hogy elérhetővé teszi az [oktatóanyagok listáját az SaaS-alkalmazások Azure Active Directory](../saas-apps/tutorial-list.md) -nal való integrálásához, részletes útmutatást nyújtva.
 
 ## <a name="cant-add-another-instance-of-the-application"></a>Nem lehet felvenni az alkalmazás egy másik példányát.
 Egy alkalmazás második példányának hozzáadásához a következőket kell tudnia:
@@ -53,7 +53,7 @@ Ha az értékek nem egyeznek az Azure AD-ben előre konfigurált mintákkal. A k
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Hol állítható be a EntityID (felhasználói azonosító) formátuma
 Nem lehet kijelölni azt a EntityID (felhasználóazonosító), amelyet az Azure AD az alkalmazásnak a felhasználó hitelesítése utáni válaszban küld.
 
-Az Azure AD kiválasztja a NameID attribútum (felhasználói azonosító) formátumát a kiválasztott érték vagy az alkalmazás által az SAML-AuthRequest kért formátum alapján. További információért látogasson el az [egyszeri Sign-On SAML-protokollra](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) a NameIDPolicy szakaszban.
+Az Azure AD kiválasztja a NameID attribútum (felhasználói azonosító) formátumát a kiválasztott érték vagy az alkalmazás által az SAML-AuthRequest kért formátum alapján. További információért látogasson el az [egyszeri Sign-On SAML-protokollra](../develop/single-sign-on-saml-protocol.md#authnrequest) a NameIDPolicy szakaszban.
 
 ## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>Nem található az Azure AD-metaadatok a konfiguráció végrehajtásához az alkalmazással
 Az alkalmazás metaadatainak vagy tanúsítványának az Azure AD-ből való letöltéséhez kövesse az alábbi lépéseket:
@@ -70,7 +70,7 @@ Az alkalmazás metaadatainak vagy tanúsítványának az Azure AD-ből való let
 Az Azure AD nem biztosít URL-címet a metaadatok beszerzéséhez. A metaadatokat csak XML-fájlként lehet beolvasni.
 
 ## <a name="customize-saml-claims-sent-to-an-application"></a>Alkalmazásnak eljuttatott SAML-jogcímek testreszabása
-Ha meg szeretné tudni, hogyan szabhatja testre az alkalmazásnak eljuttatott SAML-attribútumok jogcímeit, tekintse meg a következő témakört: [jogcím-hozzárendelés Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
+Ha meg szeretné tudni, hogyan szabhatja testre az alkalmazásnak eljuttatott SAML-attribútumok jogcímeit, tekintse meg a következő témakört: [jogcím-hozzárendelés Azure Active Directory](../develop/active-directory-claims-mapping.md)
 
 ## <a name="next-steps"></a>Következő lépések
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)

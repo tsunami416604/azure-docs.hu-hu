@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42dd979f6e069addc1067d0018390c358e79a7b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c318c539b1c09761ed81e7602808e415fdaf8b80
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764536"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658179"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Távoli hozzáférés engedélyezése a SharePointhoz az Azure AD-alkalmazásproxy segítségével
 
@@ -68,7 +68,7 @@ Ebben a lépésben létrehoz egy alkalmazást az Azure Active Directory-bérlőb
    1. A portálon az alkalmazás lapján válassza az **Egyszeri bejelentkezés** lehetőséget.
    1. Az **Egyszeri bejelentkezési mód** esetében válassza az **Integrált Windows-hitelesítés** lehetőséget.
    1. A **belső alkalmazás SPN** beállítása a korábban megadott értékre. Ebben a példában az érték a következő: `HTTP/sharepoint` .
-   1. A **delegált bejelentkezési azonosító**területen válassza ki a Active Directory erdő konfigurációjának legmegfelelőbb lehetőségét. Ha például egyetlen Active Directory tartománya van az erdőben, válassza **a helyszíni Sam-fiók neve** lehetőséget (az alábbi képernyőképen látható módon). Ha azonban a felhasználók nem ugyanabban a tartományban vannak, mint a SharePoint és az alkalmazásproxy-összekötő kiszolgálók, válassza **a helyszíni egyszerű felhasználónév** lehetőséget (a képernyőképen nem látható).
+   1. A **delegált bejelentkezési azonosító** területen válassza ki a Active Directory erdő konfigurációjának legmegfelelőbb lehetőségét. Ha például egyetlen Active Directory tartománya van az erdőben, válassza **a helyszíni Sam-fiók neve** lehetőséget (az alábbi képernyőképen látható módon). Ha azonban a felhasználók nem ugyanabban a tartományban vannak, mint a SharePoint és az alkalmazásproxy-összekötő kiszolgálók, válassza **a helyszíni egyszerű felhasználónév** lehetőséget (a képernyőképen nem látható).
 
    ![Integrált Windows-hitelesítés konfigurálása egyszeri bejelentkezéshez](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 
@@ -103,7 +103,7 @@ A SharePoint-webalkalmazást Kerberos-kapcsolattal kell konfigurálni, valamint 
        ```
 
     2. Nyissa meg a **SharePoint központi felügyeleti** webhelyet.
-    1. A **Rendszerbeállítások**területen válassza a **másodlagos hozzáférés-leképezések konfigurálása**elemet. Megnyílik a **másodlagos hozzáférés-leképezési gyűjtemény** ablak.
+    1. A **Rendszerbeállítások** területen válassza a **másodlagos hozzáférés-leképezések konfigurálása** elemet. Megnyílik a **másodlagos hozzáférés-leképezési gyűjtemény** ablak.
     1. Szűrje a kijelzőt az új webalkalmazással, és erősítse meg, hogy a következőhöz hasonló jelenik meg:
 
        ![Webalkalmazás másodlagos hozzáférés-leképezései](./media/application-proxy-integrate-with-sharepoint-server/new-webapp-aam.png)
@@ -126,7 +126,7 @@ A SharePoint-webalkalmazást Kerberos-kapcsolattal kell konfigurálni, valamint 
        ```
 
     2. Nyissa meg a **SharePoint központi felügyeleti** webhelyet.
-    1. A **Rendszerbeállítások**területen válassza a **másodlagos hozzáférés-leképezések konfigurálása**elemet. Megnyílik a **másodlagos hozzáférés-leképezési gyűjtemény** ablak.
+    1. A **Rendszerbeállítások** területen válassza a **másodlagos hozzáférés-leképezések konfigurálása** elemet. Megnyílik a **másodlagos hozzáférés-leképezési gyűjtemény** ablak.
     1. Szűrje a kijelzőt a kibővített webalkalmazással, és erősítse meg, hogy a következőhöz hasonló jelenik meg:
 
         ![Kiterjesztett alkalmazás másodlagos hozzáférés-leképezései](./media/application-proxy-integrate-with-sharepoint-server/extend-webapp-aam.png)
@@ -136,8 +136,8 @@ A SharePoint-webalkalmazást Kerberos-kapcsolattal kell konfigurálni, valamint 
 A SharePoint-webalkalmazás alkalmazáskészletét futtató fiók azonosításához és a tartományi fiók biztosításához kövesse az alábbi lépéseket:
 
 1. Nyissa meg a **SharePoint központi felügyeleti** webhelyet.
-1. Lépjen a **Biztonság** elemre, és válassza a **szolgáltatásfiókok konfigurálása**lehetőséget.
-1. Válassza a **webalkalmazás-készlet – YourWebApplicationName**elemet.
+1. Lépjen a **Biztonság** elemre, és válassza a **szolgáltatásfiókok konfigurálása** lehetőséget.
+1. Válassza a **webalkalmazás-készlet – YourWebApplicationName** elemet.
 
    ![A szolgáltatásfiók konfigurálásának lehetőségei](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
 
@@ -159,15 +159,15 @@ Mivel a belső URL-cím HTTPS protokollt () használ, meg kell `https://SharePoi
    > Az önaláírt tanúsítványok csak tesztelési célokra használhatók. Éles környezetekben erősen ajánlott a hitelesítésszolgáltató által kiadott tanúsítványok használata.
 
 1. Nyissa meg a Internet Information Services Manager konzolt.
-1. Bontsa ki a kiszolgálót a fanézetben, bontsa ki a **helyek**csomópontot, válassza ki a **SharePoint-HRE proxy** helyet, és válassza a **kötések**lehetőséget.
-1. Válassza a **https-kötés** lehetőséget, majd válassza a **Szerkesztés**lehetőséget.
+1. Bontsa ki a kiszolgálót a fanézetben, bontsa ki a **helyek** csomópontot, válassza ki a **SharePoint-HRE proxy** helyet, és válassza a **kötések** lehetőséget.
+1. Válassza a **https-kötés** lehetőséget, majd válassza a **Szerkesztés** lehetőséget.
 1. A TLS/SSL-tanúsítvány mezőben válassza a **SharePoint** -tanúsítvány lehetőséget, majd kattintson **az OK gombra**.
 
 Mostantól az Azure AD Application Proxyon kívül is elérheti a SharePoint-webhelyet.
 
 ## <a name="step-3-configure-kerberos-constrained-delegation"></a>3. lépés: a Kerberos által korlátozott delegálás konfigurálása
 
-A felhasználók először az Azure AD-ben, majd a SharePointban az Azure AD proxy-összekötőn keresztül végzik el a hitelesítést. Ahhoz, hogy az összekötő megszerezzen egy Kerberos-tokent az Azure AD-felhasználó nevében, konfigurálnia kell a Kerberos által korlátozott delegálást (KCD) a protokoll-átmenettel. További információ a KCD: a [Kerberos által korlátozott delegálás áttekintése](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj553400(v=ws.11)).
+A felhasználók először az Azure AD-ben, majd a SharePointban az Azure AD proxy-összekötőn keresztül végzik el a hitelesítést. Ahhoz, hogy az összekötő megszerezzen egy Kerberos-tokent az Azure AD-felhasználó nevében, konfigurálnia kell a Kerberos által korlátozott delegálást (KCD) a protokoll-átmenettel. További információ a KCD: a [Kerberos által korlátozott delegálás áttekintése](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj553400(v=ws.11)).
 
 ### <a name="set-the-spn-for-the-sharepoint-service-account"></a>A SharePoint-szolgáltatásfiók SPN-értékének beállítása
 
@@ -176,7 +176,7 @@ Ha a SharePoint-alkalmazáskészlet fiókjának SPN-regisztrációját szeretné
 
 `setspn -S HTTP/sharepoint Contoso\spapppool`
 
-A `Setspn` parancs a Hozzáadás előtt megkeresi az egyszerű szolgáltatásnevet. Ha az egyszerű szolgáltatásnév már létezik, **duplikált SPN-érték** jelenik meg. Ebben az esetben érdemes eltávolítani a meglévő SPN-t, ha az nem a megfelelő alkalmazáskészlet-fiókban van beállítva. A `Setspn` parancs az-L kapcsolóval való futtatásával ellenőrizheti, hogy az egyszerű szolgáltatásnév hozzáadása sikeres volt-e. További információ a parancsról: [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11)).
+A `Setspn` parancs a Hozzáadás előtt megkeresi az egyszerű szolgáltatásnevet. Ha az egyszerű szolgáltatásnév már létezik, **duplikált SPN-érték** jelenik meg. Ebben az esetben érdemes eltávolítani a meglévő SPN-t, ha az nem a megfelelő alkalmazáskészlet-fiókban van beállítva. A `Setspn` parancs az-L kapcsolóval való futtatásával ellenőrizheti, hogy az egyszerű szolgáltatásnév hozzáadása sikeres volt-e. További információ a parancsról: [Setspn](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11)).
 
 ### <a name="make-sure-the-connector-is-trusted-for-delegation-to-the-spn-that-was-added-to-the-sharepoint-application-pool-account"></a>Győződjön meg arról, hogy az összekötő megbízható a SharePoint-alkalmazáskészlethez hozzáadott egyszerű szolgáltatásnév delegálásához
 
@@ -187,8 +187,8 @@ A KCD konfigurálásához hajtsa végre az alábbi lépéseket minden összeköt
 1. Jelentkezzen be tartományi rendszergazdaként egy tartományvezérlőre, majd nyissa meg Active Directory felhasználókat és számítógépeket.
 1. Keresse meg az Azure AD proxy-összekötőt futtató számítógépet. Ebben a példában ez a SharePoint-kiszolgáló.
 1. Kattintson duplán a számítógépre, majd válassza a **Delegálás** lapot.
-1. Győződjön meg arról, hogy a delegálási beállítások úgy vannak beállítva, hogy a **számítógép csak a megadott szolgáltatások delegálására legyen megbízható**. Ezután válassza **a bármely hitelesítési protokoll használata**lehetőséget.
-1. Válassza a **Hozzáadás** gombot, válassza a **felhasználók vagy számítógépek**lehetőséget, és keresse meg a SharePoint-alkalmazáskészlet fiókját. Például: `Contoso\spapppool`.
+1. Győződjön meg arról, hogy a delegálási beállítások úgy vannak beállítva, hogy a **számítógép csak a megadott szolgáltatások delegálására legyen megbízható**. Ezután válassza **a bármely hitelesítési protokoll használata** lehetőséget.
+1. Válassza a **Hozzáadás** gombot, válassza a **felhasználók vagy számítógépek** lehetőséget, és keresse meg a SharePoint-alkalmazáskészlet fiókját. Például: `Contoso\spapppool`.
 1. Az SPN-lista listában válassza ki azt, amelyet korábban hozott létre a szolgáltatásfiók számára.
 1. Kattintson **az OK gombra** , majd kattintson ismét **az OK** gombra a módosítások mentéséhez.
   
@@ -198,9 +198,9 @@ Most már készen áll a SharePointba való bejelentkezésre a külső URL-cím 
 
 ## <a name="troubleshoot-sign-in-errors"></a>Bejelentkezési hibák elhárítása
 
-Ha a helyhez való bejelentkezés nem működik, további információt kaphat az összekötő naplóiban található hibáról: az összekötőt futtató gépről nyissa meg az eseménynaplót, lépjen az **alkalmazások és szolgáltatások naplóba**a  >  **Microsoft**  >  **AadApplicationProxy**-  >  **összekötőt**, és vizsgálja meg a **felügyeleti** naplót.
+Ha a helyhez való bejelentkezés nem működik, további információt kaphat az összekötő naplóiban található hibáról: az összekötőt futtató gépről nyissa meg az eseménynaplót, lépjen az **alkalmazások és szolgáltatások naplóba** a  >  **Microsoft**  >  **AadApplicationProxy**-  >  **összekötőt**, és vizsgálja meg a **felügyeleti** naplót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Egyéni tartományok használata az Azure-ban AD Application Proxy](application-proxy-configure-custom-domain.md)
 * [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)

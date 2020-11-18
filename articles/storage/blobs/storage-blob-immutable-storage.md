@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 11/13/2020
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 54014a0d76130b82788a1ae432e42baec28df2c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39fdde572e269bb4f5648e91bf85539d02236ff6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448343"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658553"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval
 
@@ -59,11 +59,11 @@ Az időalapú adatmegőrzési szabályzatok beállításával és zárolásával
 ## <a name="time-based-retention-policies"></a>Időalapú adatmegőrzési szabályzatok
 
 > [!IMPORTANT]
-> Az időalapú adatmegőrzési szabályzatot *zárolni* kell ahhoz, hogy a blob megfelelő, megváltoztathatatlan (írási és törlési) állapotban legyen a SEC 17a-4 (f) és más szabályozási megfelelőség esetében. Javasoljuk, hogy a szabályzatot ésszerű időn belül, általában 24 óránál rövidebb ideig zárolja. Az alkalmazott időalapú adatmegőrzési szabályzat kezdeti állapota *zárolva*van, így a zárolása előtt tesztelheti a szolgáltatást, és módosíthatja a szabályzatot. Míg a *zárolt* állapot módosíthatatlansági védelmet biztosít, a rövid távú szolgáltatásokra vonatkozó kísérletektől eltérő célra nem ajánlott a *feloldva* állapotot használni. 
+> Az időalapú adatmegőrzési szabályzatot *zárolni* kell ahhoz, hogy a blob megfelelő, megváltoztathatatlan (írási és törlési) állapotban legyen a SEC 17a-4 (f) és más szabályozási megfelelőség esetében. Javasoljuk, hogy a szabályzatot ésszerű időn belül, általában 24 óránál rövidebb ideig zárolja. Az alkalmazott időalapú adatmegőrzési szabályzat kezdeti állapota *zárolva* van, így a zárolása előtt tesztelheti a szolgáltatást, és módosíthatja a szabályzatot. Míg a *zárolt* állapot módosíthatatlansági védelmet biztosít, a rövid távú szolgáltatásokra vonatkozó kísérletektől eltérő célra nem ajánlott a *feloldva* állapotot használni. 
 
 Ha egy tárolón időalapú adatmegőrzési szabályt alkalmaz, a tárolóban lévő összes blob a *tényleges* megőrzési időtartamig nem változtatható állapotban marad. A Blobok tényleges megőrzési időtartama megegyezik a blob **létrehozási ideje** és a felhasználó által megadott megőrzési időtartam közötti különbséggel. Mivel a felhasználóknak lehetőségük van meghosszabbítani az adatmegőrzési időtartamot, a nem módosítható tárolás a felhasználó által legutóbb megadott adatmegőrzési időtartamot fogja használni a tényleges megőrzési időtartam kiszámolásakor.
 
-Tegyük fel például, hogy egy felhasználó egy időalapú adatmegőrzési szabályzatot hoz létre öt év megőrzési időtartammal. A tárolóban meglévő blob, a _testblob1_egy éve jött létre. tehát a _testblob1_ érvényes megőrzési ideje négy év. Amikor új blobot töltenek fel a tárolóba, a _testblob2_ érvényes megőrzési idő a létrehozástól számított öt év a _testblob2_.
+Tegyük fel például, hogy egy felhasználó egy időalapú adatmegőrzési szabályzatot hoz létre öt év megőrzési időtartammal. A tárolóban meglévő blob, a _testblob1_ egy éve jött létre. tehát a _testblob1_ érvényes megőrzési ideje négy év. Amikor új blobot töltenek fel a tárolóba, a _testblob2_ érvényes megőrzési idő a létrehozástól számított öt év a _testblob2_.
 
 A kinyitott időalapú adatmegőrzési szabályzat csak a szolgáltatások tesztelésére ajánlott, és a házirendet zárolni kell ahhoz, hogy meg lehessen felelni a SEC 17a-4 (f) és más szabályozási megfelelőségnek. Az időalapú adatmegőrzési szabályzat zárolása után a szabályzat nem távolítható el, és a tényleges megőrzési időtartam legfeljebb öt nő lehet.
 
@@ -102,17 +102,21 @@ A következő korlátozások érvényesek a jogi részesedésre:
 - A tárolók esetében a szabályzat időtartama alatt legfeljebb 10 jogszabályi szabályzatot tartalmazó napló marad.
 
 ## <a name="scenarios"></a>Forgatókönyvek
+
 A következő táblázat a blob Storage-műveletek azon típusait mutatja be, amelyek a különböző változtathatatlan forgatókönyvek esetében le vannak tiltva. További információkért tekintse meg az [Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) dokumentációját.
 
-|Forgatókönyv  |BLOB állapota  |Megtagadott blob-műveletek  |Tároló és fiók védelme
-|---------|---------|---------|---------|
-|A blob tényleges adatmegőrzési időtartama még nem járt le és/vagy jogi célú visszatartás van érvényben     |Nem módosítható: törlés- és írásvédett         | Helyezze az 1<sup>. blobot, helyezze</sup><sup>az 1.</sup>blokkot, az<sup>1</sup>., a tároló törlése, a blob törlése, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép blob, a növekményes másolási blob, a<sup>2</sup> .         |A tároló törlése megtagadva; A Storage-fiók törlése megtagadva         |
-|Lejárt a tényleges megőrzési időköz a blobon, és nincs beállítva jogi fenntartás    |Csak írásvédett (a törlési műveletek engedélyezettek)         |Helyezze az 1<sup>. blobot, helyezze</sup>az 1<sup>., az</sup><sup>1</sup>. blokkot, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép-blob, a növekményes másolási blob, a<sup>2</sup> . Hozzáfűzés         |A tároló törlése megtagadva, ha legalább 1 blob található a védett tárolóban; A Storage-fiók törlése csak a *zárolt* időalapú házirendek esetében megtagadva         |
-|Nincs alkalmazva féreg-szabályzat (nincs időalapú megőrzési idő, és nincs jogi megtartási címke)     |Változtatható         |Nincs         |Nincs         |
+| Használati eset | BLOB állapota | Megtagadott blob-műveletek | Tároló és fiók védelme |
+|--|--|--|--|
+| A blob tényleges adatmegőrzési időtartama még nem járt le és/vagy jogi célú visszatartás van érvényben | Nem módosítható: törlés- és írásvédett | Helyezze az 1<sup>. blobot, helyezze</sup><sup>az 1.</sup>blokkot, az<sup>1</sup>., a tároló törlése, a blob törlése, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép blob, a növekményes másolási blob, a<sup>2</sup> . | A tároló törlése megtagadva; A Storage-fiók törlése megtagadva |
+| Lejárt a tényleges megőrzési időköz a blobon, és nincs beállítva jogi fenntartás | Csak írásvédett (a törlési műveletek engedélyezettek) | Helyezze az 1<sup>. blobot, helyezze</sup>az 1<sup>., az</sup><sup>1</sup>. blokkot, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép-blob, a növekményes másolási blob, a<sup>2</sup> . Hozzáfűzés | A tároló törlése megtagadva, ha legalább 1 blob található a védett tárolóban; A Storage-fiók törlése csak a *zárolt* időalapú házirendek esetében megtagadva |
+| Nincs alkalmazva féreg-szabályzat (nincs időalapú megőrzési idő, és nincs jogi megtartási címke) | Változtatható | Nincs | Nincs |
 
 <sup>1</sup> a blob szolgáltatás lehetővé teszi, hogy ezek a műveletek egyszer új blobot hozzanak létre. Egy nem módosítható tárolóban lévő blob elérési útban lévő összes további felülírási művelet nem engedélyezett.
 
 <sup>2</sup> a hozzáfűző blokk csak az engedélyezett tulajdonsággal rendelkező időalapú adatmegőrzési házirendek esetében engedélyezett `allowProtectedAppendWrites` . További információ: a [védett hozzáfűző Blobok írási engedélyezése](#allow-protected-append-blobs-writes) szakasz.
+
+> [!IMPORTANT]
+> Bizonyos munkaterhelések, például az [SQL-alapú biztonsági mentés az URL-címre](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url), hozzon létre egy blobot, majd vegyen fel hozzá. Ha a tárolón aktív időalapú adatmegőrzési szabály vagy jogi szabályozás van érvényben, akkor ez a minta nem fog sikerülni.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -168,7 +172,7 @@ Igen. Időalapú adatmegőrzési szabály létrehozásakor a rendszer *zárolt* 
 
 Igen, ha a megfelelőségi követelmények lehetővé teszik a Soft delete engedélyezését. Az [Azure Blob Storage](storage-blob-soft-delete.md) -hoz készült Soft delete egy Storage-fiókban lévő összes tárolóra érvényes, függetlenül a jogi vagy időalapú adatmegőrzési szabályoktól. Javasoljuk, hogy a nem módosítható féreg-házirendek alkalmazása és megerősítése előtt a további védelem érdekében engedélyezze a Soft delete használatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [BLOB Storage-módosíthatatlansági szabályzatok beállítása és kezelése](storage-blob-immutability-policies-manage.md)
 - [Szabályok beállítása a blob-adatkészletek automatikus előállításához és törléséhez az életciklus-kezeléssel](storage-lifecycle-management-concepts.md)

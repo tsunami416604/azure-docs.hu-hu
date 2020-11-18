@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 9c5e57f2eb3c38a7df23052a4b3d33bc5a9675fc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 657221a2acbf592a56cb4659ced2199023bc5e5b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425932"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658791"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>A felhasználók és az entitások viselkedésének elemzésével (UEBA) kapcsolatos fejlett veszélyforrások azonosítása az Azure Sentinelben
 
@@ -88,7 +88,7 @@ Ennek kockázatának csökkentése érdekében győződjön meg arról, hogy az 
 Az Azure Sentinel jelenleg a következő típusú entitásokat azonosítja:
 
 - Felhasználói fiók (fiók)
-- Gazdagép
+- Gazda
 - IP-cím (IP)
 - Kártevő szoftver
 - Fájl
@@ -124,7 +124,7 @@ Az entitások lapjai három részből állnak:
 
 Az idősor az entitások oldalának az Azure Sentinelben való viselkedésének elemzéséhez való hozzájárulásának jelentős részét képezi. Egy olyan történetet mutat be az entitásokkal kapcsolatos eseményekről, amelyek segítenek megérteni az entitás tevékenységeit egy adott időszakon belül.
 
-Kiválaszthatja az **időtartományt** több előre definiált lehetőség közül (például az *elmúlt 24 órában* ), vagy megadhatja bármely egyéni időkeretre. Emellett olyan szűrőket is beállíthat, amelyek korlátozzák az ütemtervben lévő információkat bizonyos típusú eseményekre vagy riasztásokra.
+Kiválaszthatja az **időtartományt** több előre definiált lehetőség közül (például az *elmúlt 24 órában*), vagy megadhatja bármely egyéni időkeretre. Emellett olyan szűrőket is beállíthat, amelyek korlátozzák az ütemtervben lévő információkat bizonyos típusú eseményekre vagy riasztásokra.
 
 Az idősor a következő típusú elemeket tartalmazza:
 
@@ -180,7 +180,7 @@ Az entitások lapjai több használati forgatókönyv részét képezik, és az 
 
 ### <a name="querying-behavior-analytics-data"></a>Viselkedés-elemzési adatbázis lekérdezése
 
-A [KQL](https://docs.microsoft.com/azure/data-explorer/kusto/query/)használatával lekérdezheti a viselkedési elemzési táblázatot.
+A [KQL](/azure/data-explorer/kusto/query/)használatával lekérdezheti a viselkedési elemzési táblázatot.
 
 Ha például egy olyan felhasználó összes olyan esetét szeretné megkeresni, amely nem tudott bejelentkezni egy Azure-erőforrásba, ahol a felhasználó először próbál csatlakozni egy adott országhoz, és az adott országból érkező kapcsolatok még nem gyakoriak a felhasználó társainál, a következő lekérdezést használhatja:
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d6f72231e84650a17850932979b43c21dd045f30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e73f11ec178c067941ee33e02f37c96605460ee0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069323"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658587"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -28,7 +28,7 @@ A hálózati forgalmat a konfigurált tűzfalszabályok irányítják, ha alapé
 
 Ebben az oktatóanyagban egy egyszerűsített VNet hoz létre két alhálózattal az egyszerű üzembe helyezéshez.
 
-Éles környezetekben a [hub és a küllős modell](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) használata ajánlott, ahol a tűzfal a saját VNet van. A munkaterhelés-kiszolgálók egy vagy több alhálózattal azonos régióban lévő, egymással azonos régióba tartozó virtuális hálózatok találhatók.
+Éles környezetekben a [hub és a küllős modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) használata ajánlott, ahol a tűzfal a saját VNet van. A munkaterhelés-kiszolgálók egy vagy több alhálózattal azonos régióban lévő, egymással azonos régióba tartozó virtuális hálózatok találhatók.
 
 * **AzureFirewallSubnet** – ezen az alhálózaton található a tűzfal.
 * **Workload-SN** – ezen az alhálózaton található a számítási feladat kiszolgálója. Ennek az alhálózatnak a hálózati forgalma a tűzfalon halad át.
@@ -56,13 +56,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Először is hozzon létre egy erőforráscsoportot, amely a tűzfal üzembe helyezéséhez szükséges erőforrásokat tartalmazza. Ezután hozzon létre egy VNet, alhálózatot és egy teszt kiszolgálót.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport tartalmazza az oktatóanyag összes erőforrását.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. A Azure Portal menüben válassza az **erőforráscsoportok** lehetőséget, vagy keresse meg és válassza ki az *erőforráscsoportok* lehetőséget bármely oldalon. Ezután válassza a **Hozzáadás** elemet.
-3. Az **erőforráscsoport neve**mezőbe írja be a *test-FW-RG*értéket.
+3. Az **erőforráscsoport neve** mezőbe írja be a *test-FW-RG* értéket.
 4. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 5. Az **Erőforráscsoport helye** beállításnál válasszon ki egy helyet. Az összes létrehozott erőforrásnak azonos helyen kell lennie.
 6. Kattintson a **Létrehozás** gombra.
@@ -74,25 +74,25 @@ A VNet három alhálózatot fog tartalmazni.
 > [!NOTE]
 > A AzureFirewallSubnet-alhálózat mérete/26. További információ az alhálózat méretétől: [Azure Firewall GYIK](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
-1. Válassza a **hálózatkezelés**  >  **virtuális hálózat**lehetőséget.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
+1. Válassza a **hálózatkezelés**  >  **virtuális hálózat** lehetőséget.
 2. Az **Előfizetés** beállításnál válassza ki az előfizetését.
-3. Az **erőforráscsoport**területen válassza a **test-FW-RG**elemet.
+3. Az **erőforráscsoport** területen válassza a **test-FW-RG** elemet.
 4. A **Név** mezőbe írja be a következőt: **Test-FW-VN**.
-5. A **régió**mezőben válassza ki ugyanazt a helyet, amelyet korábban használt.
-6. Válassza a **Tovább: IP-címek**lehetőséget.
-7. **IPv4-címterület**esetén írja be a következőt: **10.0.0.0/16**.
-8. Az **alhálózat**területen válassza az **alapértelmezett**lehetőséget.
+5. A **régió** mezőben válassza ki ugyanazt a helyet, amelyet korábban használt.
+6. Válassza a **Tovább: IP-címek** lehetőséget.
+7. **IPv4-címterület** esetén írja be a következőt: **10.0.0.0/16**.
+8. Az **alhálózat** területen válassza az **alapértelmezett** lehetőséget.
 9. Az **alhálózat neveként** írja be a következőt: **AzureFirewallSubnet**. Ezen az alhálózaton lesz a tűzfal. Az alhálózat neve **kizárólag** AzureFirewallSubnet lehet.
-10. A **címtartomány**mezőbe írja be a következőt: **10.0.1.0/26**.
-11. Kattintson a **Mentés** gombra.
+10. A **címtartomány** mezőbe írja be a következőt: **10.0.1.0/26**.
+11. Válassza a **Mentés** lehetőséget.
 
    Ezután hozzon létre egy alhálózatot a munkaterhelés-kiszolgálóhoz.
 
-1. Válassza az **alhálózat hozzáadása**lehetőséget.
-4. Az **alhálózat neve**mezőbe írja be a **munkaterhelés-SN**értéket.
-5. **Alhálózati címtartomány**esetében írja be a következőt: **10.0.2.0/24**.
-6. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza az **alhálózat hozzáadása** lehetőséget.
+4. Az **alhálózat neve** mezőbe írja be a **munkaterhelés-SN** értéket.
+5. **Alhálózati címtartomány** esetében írja be a következőt: **10.0.2.0/24**.
+6. Válassza a **Hozzáadás** elemet.
 7. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 8. Válassza a **Létrehozás** lehetőséget.
 
@@ -100,8 +100,8 @@ A VNet három alhálózatot fog tartalmazni.
 
 Most hozza létre a munkaterhelés virtuális gépet, és helyezze a **munkaterhelés-SN** alhálózatba.
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
-2. Válassza a **számítás** , majd a **virtuális gép**lehetőséget.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
+2. Válassza a **számítás** , majd a **virtuális gép** lehetőséget.
 3. **Windows Server 2016 Datacenter** a Kiemelt listán.
 4. Adja meg a következő értékeket a virtuális gép számára:
 
@@ -109,27 +109,27 @@ Most hozza létre a munkaterhelés virtuális gépet, és helyezze a **munkaterh
    |---------|---------|
    |Erőforráscsoport     |**Teszt – FW-RG**|
    |Virtuális gép neve     |**SRV-Work**|
-   |Region     |Ugyanaz, mint az előző|
-   |Kép|Windows Server 2019 Datacenter|
+   |Régió     |Ugyanaz, mint az előző|
+   |Rendszerkép|Windows Server 2019 Datacenter|
    |Rendszergazda felhasználóneve     |Adja meg a felhasználónevet|
    |Jelszó     |Írjon be egy jelszót|
 
-4. A **bejövő portszabályok**, **nyilvános bejövő portok**területen válassza a **nincs**lehetőséget.
-6. Fogadja el a többi alapértelmezett értéket, és válassza a **Tovább: lemezek**lehetőséget.
-7. Fogadja el a lemez alapértelmezett értékeit, és válassza a **Tovább: hálózatkezelés**lehetőséget.
+4. A **bejövő portszabályok**, **nyilvános bejövő portok** területen válassza a **nincs** lehetőséget.
+6. Fogadja el a többi alapértelmezett értéket, és válassza a **Tovább: lemezek** lehetőséget.
+7. Fogadja el a lemez alapértelmezett értékeit, és válassza a **Tovább: hálózatkezelés** lehetőséget.
 8. Győződjön meg arról, hogy a **test-FW-vn** a virtuális hálózatra van kiválasztva, és az alhálózat **munkaterhelés-SN**.
-9. A **nyilvános IP-címek**esetében válassza a **nincs**lehetőséget.
-11. Fogadja el a többi alapértelmezett értéket, és válassza a **Tovább: kezelés**lehetőséget.
-12. A rendszerindítási diagnosztika letiltásához válassza a **ki** lehetőséget. Fogadja el a többi alapértelmezett értéket, és válassza a **felülvizsgálat + létrehozás**lehetőséget.
-13. Tekintse át a beállításokat az összefoglalás lapon, majd válassza a **Létrehozás**lehetőséget.
+9. A **nyilvános IP-címek** esetében válassza a **nincs** lehetőséget.
+11. Fogadja el a többi alapértelmezett értéket, és válassza a **Tovább: kezelés** lehetőséget.
+12. A rendszerindítási diagnosztika letiltásához válassza a **ki** lehetőséget. Fogadja el a többi alapértelmezett értéket, és válassza a **felülvizsgálat + létrehozás** lehetőséget.
+13. Tekintse át a beállításokat az összefoglalás lapon, majd válassza a **Létrehozás** lehetőséget.
 
 ## <a name="deploy-the-firewall"></a>A tűzfal üzembe helyezése
 
 Helyezze üzembe a tűzfalat a virtuális hálózaton.
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
-2. Írja be a **tűzfal** kifejezést a keresőmezőbe, majd nyomja le az **ENTER**billentyűt.
-3. Válassza a **tűzfal** lehetőséget, majd válassza a **Létrehozás**lehetőséget.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
+2. Írja be a **tűzfal** kifejezést a keresőmezőbe, majd nyomja le az **ENTER** billentyűt.
+3. Válassza a **tűzfal** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
 4. A **Tűzfal létrehozása** oldalon konfigurálja a tűzfalat a következő táblázatban található értékekkel:
 
    |Beállítás  |Érték  |
@@ -153,45 +153,45 @@ Helyezze üzembe a tűzfalat a virtuális hálózaton.
 A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmezett útvonal áthaladjon a tűzfalon.
 
 1. A Azure Portal menüben válassza a **minden szolgáltatás** lehetőséget, vagy keresse meg és válassza ki az *összes szolgáltatás* elemet bármely oldalon.
-2. A **hálózat**területen válassza az **útválasztási táblák**elemet.
-3. Válassza a **Hozzáadás** lehetőséget.
+2. A **hálózat** területen válassza az **útválasztási táblák** elemet.
+3. Válassza a **Hozzáadás** elemet.
 4. A **Név** mezőbe írja be a következőt: **Firewall-route**.
 5. Az **Előfizetés** beállításnál válassza ki az előfizetését.
-6. Az **erőforráscsoport**területen válassza a **test-FW-RG**elemet.
+6. Az **erőforráscsoport** területen válassza a **test-FW-RG** elemet.
 7. A **Hely** elemnél válassza a korábban használt helyet.
 8. Kattintson a **Létrehozás** gombra.
-9. Válassza a **frissítés**lehetőséget, majd válassza ki a **tűzfal-útvonal** útválasztási táblázatot.
-10. Válassza ki az **alhálózatok** elemet, majd válassza a **hozzárendelés**lehetőséget.
-11. Válassza a **Virtual Network**  >  **test-FW-vn**elemet.
-12. **Alhálózat**esetében válassza a **munkaterhelés-SN**lehetőséget. Győződjön meg arról, hogy csak a **munkaterhelés-SN** alhálózatot választotta ehhez az útvonalhoz, ellenkező esetben a tűzfal nem fog megfelelően működni.
+9. Válassza a **frissítés** lehetőséget, majd válassza ki a **tűzfal-útvonal** útválasztási táblázatot.
+10. Válassza ki az **alhálózatok** elemet, majd válassza a **hozzárendelés** lehetőséget.
+11. Válassza a **Virtual Network**  >  **test-FW-vn** elemet.
+12. **Alhálózat** esetében válassza a **munkaterhelés-SN** lehetőséget. Győződjön meg arról, hogy csak a **munkaterhelés-SN** alhálózatot választotta ehhez az útvonalhoz, ellenkező esetben a tűzfal nem fog megfelelően működni.
 
-13. Válassza az **OK** lehetőséget.
-14. Válassza az **útvonalak** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-15. Az **útvonal neve**mezőbe írja be a következőt: **FW-DG**.
+13. Kattintson az **OK** gombra.
+14. Válassza az **útvonalak** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
+15. Az **útvonal neve** mezőbe írja be a következőt: **FW-DG**.
 16. A **Címelőtag** mezőbe írja be a következőt: **0.0.0.0/0**.
 17. A **Következő ugrás típusa** beállításnál válassza a **Virtuális berendezés** lehetőséget.
 
     Az Azure Firewall valójában egy felügyelt szolgáltatás, de ebben a helyzetben a virtuális berendezés beállítás is használható.
 18. A **Következő ugrás címe** mezőbe írja be a tűzfal magánhálózati IP-címét, amelyet korábban feljegyzett.
-19. Válassza az **OK** lehetőséget.
+19. Kattintson az **OK** gombra.
 
 ## <a name="configure-an-application-rule"></a>Alkalmazásszabály konfigurálása
 
 Ez az alkalmazási szabály, amely lehetővé teszi a kimenő hozzáférést a szolgáltatáshoz `www.google.com` .
 
-1. Nyissa meg a **test-FW-RG**elemet, és válassza ki a **test-FW01** tűzfalat.
-2. A **test-FW01** oldalon a **Beállítások**területen válassza a **szabályok**elemet.
+1. Nyissa meg a **test-FW-RG** elemet, és válassza ki a **test-FW01** tűzfalat.
+2. A **test-FW01** oldalon a **Beállítások** területen válassza a **szabályok** elemet.
 3. Válassza ki az **alkalmazás-szabály gyűjtemény** fület.
-4. Válassza az **alkalmazás-szabály gyűjtemény hozzáadása**lehetőséget.
+4. Válassza az **alkalmazás-szabály gyűjtemény hozzáadása** lehetőséget.
 5. A **Név** mezőbe írja be a következőt: **App-Coll01**.
 6. A **Prioritás** mezőbe írja be a következőt: **200**.
 7. A **Művelet** beállításnál válassza az **Engedélyezés** lehetőséget.
-8. A **szabályok**, **cél teljes tartománynevek** **neve**mezőbe írja be a következőt: **Allow-Google**.
-9. A **forrás típusa**beállításnál válassza az **IP-cím**lehetőséget.
-10. A **forrás**mezőbe írja be a következőt: **10.0.2.0/24**.
+8. A **szabályok**, **cél teljes tartománynevek** **neve** mezőbe írja be a következőt: **Allow-Google**.
+9. A **forrás típusa** beállításnál válassza az **IP-cím** lehetőséget.
+10. A **forrás** mezőbe írja be a következőt: **10.0.2.0/24**.
 11. A **Protokoll:port** mezőbe írja be a következőt: **http, https**.
-12. **Cél teljes tartománynevek**esetén írja be a következőt:**`www.google.com`**
-13. Válassza a **Hozzáadás** lehetőséget.
+12. **Cél teljes tartománynevek** esetén írja be a következőt:**`www.google.com`**
+13. Válassza a **Hozzáadás** elemet.
 
 Az Azure Firewall tartalmaz egy beépített szabálygyűjteményt az infrastruktúra alapértelmezés szerint engedélyezett teljes tartományneveiről. Ezek a teljes tartománynevek csak az adott platformra vonatkoznak, egyéb célra nem használhatók. További információ: [Infrastruktúra FQDN-jei](infrastructure-fqdns.md).
 
@@ -200,38 +200,38 @@ Az Azure Firewall tartalmaz egy beépített szabálygyűjteményt az infrastrukt
 Ez az a hálózatszabály, amely lehetővé teszi a kimenő hozzáférést két IP-címhez az 53-as porton (DNS).
 
 1. Válassza a **hálózati szabályok gyűjteménye** fület.
-2. Válassza a **hálózati szabálygyűjtemény hozzáadása**lehetőséget.
+2. Válassza a **hálózati szabálygyűjtemény hozzáadása** lehetőséget.
 3. A **Név** mezőbe írja be a következőt: **Net-Coll01**.
 4. A **Prioritás** mezőbe írja be a következőt: **200**.
 5. A **Művelet** beállításnál válassza az **Engedélyezés** lehetőséget.
-6. A **szabályok**, **IP-címek**, **név**mezőben írja be a következőt: **Allow-DNS**.
+6. A **szabályok**, **IP-címek**, **név** mezőben írja be a következőt: **Allow-DNS**.
 7. A **Protokoll** beállításnál válassza az **UDP** lehetőséget.
-9. A **forrás típusa**beállításnál válassza az **IP-cím**lehetőséget.
-1. A **forrás**mezőbe írja be a következőt: **10.0.2.0/24**.
-2. A **célhely típusa** beállításnál válassza az **IP-cím**lehetőséget.
-3. A **cél címe**mezőbe írja be a következőt: **209.244.0.3, 209.244.0.4**
+9. A **forrás típusa** beállításnál válassza az **IP-cím** lehetőséget.
+1. A **forrás** mezőbe írja be a következőt: **10.0.2.0/24**.
+2. A **célhely típusa** beállításnál válassza az **IP-cím** lehetőséget.
+3. A **cél címe** mezőbe írja be a következőt: **209.244.0.3, 209.244.0.4**
 
    Ezek a CenturyLink által működtetett nyilvános DNS-kiszolgálók.
 1. A **Célportok** mezőbe írja be a következőt: **53**.
-2. Válassza a **Hozzáadás** lehetőséget.
+2. Válassza a **Hozzáadás** elemet.
 
 ## <a name="configure-a-dnat-rule"></a>DNAT-szabály konfigurálása
 
 Ez a szabály lehetővé teszi egy távoli asztal összekapcsolását a Srv-Work virtuális géppel a tűzfalon keresztül.
 
 1. Válassza ki a **NAT-szabály gyűjtemény** fület.
-2. Válassza a **NAT-szabálygyűjtemény hozzáadása**lehetőséget.
-3. A **név**mezőbe írja be az **RDP**nevet.
+2. Válassza a **NAT-szabálygyűjtemény hozzáadása** lehetőséget.
+3. A **név** mezőbe írja be az **RDP** nevet.
 4. A **Prioritás** mezőbe írja be a következőt: **200**.
-5. A **szabályok**területen a **név**mezőbe írja be az **RDP-NAT**nevet.
+5. A **szabályok** területen a **név** mezőbe írja be az **RDP-NAT** nevet.
 6. A **Protokoll** beállításnál válassza a **TCP** lehetőséget.
-7. A **forrás típusa**beállításnál válassza az **IP-cím**lehetőséget.
-8. A **forrás**mezőbe írja be a következőt: **\*** .
-9. A **cél címe**mezőbe írja be a tűzfal nyilvános IP-címét.
-10. A **célport**mezőbe írja be a következőt: **3389**.
-11. A **lefordított cím**mezőbe írja be az **SRV-Work** magánhálózati IP-címet.
+7. A **forrás típusa** beállításnál válassza az **IP-cím** lehetőséget.
+8. A **forrás** mezőbe írja be a * *\** _ értéket.
+9. A _ * célcím * * mezőben adja meg a tűzfal nyilvános IP-címét.
+10. A **célport** mezőbe írja be a következőt: **3389**.
+11. A **lefordított cím** mezőbe írja be az **SRV-Work** magánhálózati IP-címet.
 12. A **Lefordított port** mezőben adja meg a **3389** értéket.
-13. Válassza a **Hozzáadás** lehetőséget.
+13. Válassza a **Hozzáadás** elemet.
 
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Módosítsa az **Srv-Work** hálózati adapter elsődleges és másodlagos DNS-címét.
@@ -240,10 +240,10 @@ Az oktatóanyag tesztelési célokra konfigurálja a kiszolgáló elsődleges é
 
 1. A Azure Portal menüben válassza az **erőforráscsoportok** lehetőséget, vagy keresse meg és válassza ki az *erőforráscsoportok* lehetőséget bármely oldalon. Válassza ki a **test-FW-RG** erőforráscsoportot.
 2. Válassza ki az **SRV-Work** virtuális gép hálózati adapterét.
-3. A **Beállítások**területen válassza a **DNS-kiszolgálók**elemet.
-4. A **DNS-kiszolgálók**területen válassza az **Egyéni**lehetőséget.
+3. A **Beállítások** területen válassza a **DNS-kiszolgálók** elemet.
+4. A **DNS-kiszolgálók** területen válassza az **Egyéni** lehetőséget.
 5. Írja be a **209.244.0.3** a címet a **DNS-kiszolgáló hozzáadása** szövegmezőbe, és **209.244.0.4** címet a következő szövegmezőbe.
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 7. Indítsa újra az **Srv-Work** virtuális gépet.
 
 ## <a name="test-the-firewall"></a>A tűzfal tesztelése
@@ -252,7 +252,7 @@ Most tesztelje a tűzfalat, és ellenőrizze, hogy az a várt módon működik-e
 
 1. Csatlakoztasson egy távoli asztalt a tűzfal nyilvános IP-címéhez, és jelentkezzen be az **SRV-Work** virtuális gépre. 
 3. Nyissa meg az Internet Explorert, és navigáljon a következő címre: `https://www.google.com`.
-4. **OK**  >  Az Internet Explorer biztonsági riasztások ablakában kattintson az OK**Bezárás** gombra.
+4. **OK**  >  Az Internet Explorer biztonsági riasztások ablakában kattintson az OK **Bezárás** gombra.
 
    Ekkor meg kell jelennie a Google kezdőlapjának.
 
@@ -269,7 +269,7 @@ Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rá szükség, törölje a **Test-FW-RG** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)
+> [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./firewall-diagnostics.md)

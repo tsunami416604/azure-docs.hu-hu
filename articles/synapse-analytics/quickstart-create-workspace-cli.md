@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: a5c9b47bf5d638f3c15416416a435653eeb68505
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 46ab1df1b776bf8dc9d6d917e5394c3efeec0de4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172045"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659386"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása az Azure CLI-vel
 
@@ -22,7 +22,7 @@ Az Azure CLI az Azure parancssori felülete, amely Azure-erőforrások kezelés�
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy szinapszis-munkaterületet az Azure CLI használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,28 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
     > [!IMPORTANT]
     > Az Azure szinapszis-munkaterületnek képesnek kell lennie olvasni és írni a kiválasztott ADLS Gen2 fiókot. Továbbá minden olyan Storage-fiókhoz, amelyet elsődleges Storage-fiókként csatol, a Storage-fiók [létrehozásához](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account) engedélyezni kell a **hierarchikus névteret** a Storage-fiók létrehozása lapon leírtak szerint. 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="install-the-azure-cli-locally"></a>Az Azure CLI helyi telepítése
-
-Ha az Azure CLI helyi telepítését és használatát választja, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
-
-Ha helyileg futtatja az Azure CLI-t, be kell jelentkeznie és hitelesítenie kell magát. Ez a lépés nem szükséges, ha Azure Cloud Shellt használ. Az Azure CLI-be való bejelentkezéshez futtassa a (z) `az login` és a hitelesítést a böngészőablakban:
-
-```azurecli
-az login
-```
-
-Az Azure CLI-vel történő hitelesítéssel kapcsolatos további információkért lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli).
-
-## <a name="install-azure-synapse-extension-for-azure-cli"></a>Az Azure szinapszis bővítmény telepítése az Azure CLI-hez
-
-```azurecli
-az extension add --name synapse
-```
-
-> [!WARNING]
-> Az Azure-beli CLI-bővítmény előzetes verzióban érhető el.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-an-azure-synapse-workspace-using-the-azure-cli"></a>Azure-beli szinapszis-munkaterület létrehozása az Azure CLI használatával
 

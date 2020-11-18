@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: a85656909df5538f9f57e05d79ae768623d7eba6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c8f11f17c9e110509dcbcda291194f9b8d928c50
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289612"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658961"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>CSR létrehozása és egyesítése Key Vault
 
@@ -25,7 +25,15 @@ A tanúsítványokkal kapcsolatos további általános információkért lásd: 
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="adding-certificate-in-key-vault-issued-by-a-non-trusted-ca"></a>Nem megbízható HITELESÍTÉSSZOLGÁLTATÓ által kiadott Key Vault tanúsítvány hozzáadása
+## <a name="adding-certificate-in-key-vault-issued-by-partnered-ca"></a>Tanúsítvány hozzáadása a partneri HITELESÍTÉSSZOLGÁLTATÓ által kiadott Key Vault
+Key Vault partnerek a következő két hitelesítésszolgáltatóval egyszerűsítik a tanúsítványok létrehozását. 
+
+|Szolgáltató|Tanúsítvány típusa|Konfiguráció beállítása  
+|--------------|----------------------|------------------|  
+|DigiCert|A Key Vault OV vagy EV SSL-tanúsítványokat kínál a DigiCert| [Integrációs útmutató](./how-to-integrate-certificate-authority.md)
+|GlobalSign|A Key Vault OV vagy EV SSL-tanúsítványokat kínál a GlobalSign| [Integrációs útmutató](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
+
+## <a name="adding-certificate-in-key-vault-issued-by-non-partnered-ca"></a>Tanúsítvány hozzáadása a nem társ HITELESÍTÉSSZOLGÁLTATÓ által kiadott Key Vaultban
 
 A következő lépések segítséget nyújtanak olyan hitelesítésszolgáltatók létrehozásában, amelyek nem kapcsolódnak Key Vaulthoz (például a GoDaddy nem megbízható Key Vault-HITELESÍTÉSSZOLGÁLTATÓ). 
 

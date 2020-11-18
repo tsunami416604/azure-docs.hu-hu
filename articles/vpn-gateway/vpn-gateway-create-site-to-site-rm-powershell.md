@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: df7bad806fb5af198d0484af93e9fb79cb75e2d5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7de5f125789b0ed3782224024a9ee9c80d359e77
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540898"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659369"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Helyek közötti VPN-kapcsolattal rendelkező virtuális hálózat létrehozása a PowerShell használatával
 
@@ -136,7 +136,7 @@ A helyi hálózati átjáró (LNG) általában a helyszíni helyre vonatkozik. N
 Használja a következő értékeket:
 
 * A *GatewayIPAddress* a helyszíni VPN-eszköz IP-címe.
-* A helyszíni címtér az *AddressPrefix* .
+* A helyszíni címtér az *AddressPrefix*.
 
 Helyi hálózati átjáró hozzáadása egyetlen címelőtaggal:
 
@@ -184,7 +184,7 @@ Hozza létre a virtuális hálózat VPN-átjáróját.
 
 Használja a következő értékeket:
 
-* A helyek közötti konfiguráció *GatewayType* *VPN* . Az átjáró típusa mindig a kiépítendő konfigurációra jellemző. Más átjáró-konfigurációk például -GatewayType ExpressRoute típus alkalmazását igényelhetik.
+* A helyek közötti konfiguráció *GatewayType* *VPN*. Az átjáró típusa mindig a kiépítendő konfigurációra jellemző. Más átjáró-konfigurációk például -GatewayType ExpressRoute típus alkalmazását igényelhetik.
 * A *-VpnType* típus a következők valamelyike lehet: *RouteBased* (egyes dokumentumokban Dinamikus átjáró néven szerepel) vagy *PolicyBased* (egyes dokumentumokban Statikus átjáró néven szerepel). További információk a VPN-átjárótípusokról: [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md).
 * Válassza ki az átjáró használni kívánt termékváltozatát. Egyes termékváltozatok konfigurációs korlátokkal rendelkeznek. További információkért lásd: [Az átjárók termékváltozatai](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Ha hibaüzenetet kap a -GatewaySku paraméterrel kapcsolatban a VPN-átjáró létrehozásakor, győződjön meg arról, hogy telepítette a PowerShell-parancsmagok legújabb verzióját.
 
@@ -212,7 +212,7 @@ A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-es
 
 ## <a name="7-create-the-vpn-connection"></a><a name="CreateConnection"></a>7. a VPN-kapcsolat létrehozása
 
-Ezután hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a VPN-eszköz között. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. A megosztott kulcsnak meg kell egyeznie a VPN-eszköze konfigurálásakor használt értékkel. Vegye figyelembe, hogy helyek közötti kapcsolat esetében a „-ConnectionType” értéke: **IPsec** .
+Ezután hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a VPN-eszköz között. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. A megosztott kulcsnak meg kell egyeznie a VPN-eszköze konfigurálásakor használt értékkel. Vegye figyelembe, hogy helyek közötti kapcsolat esetében a „-ConnectionType” értéke: **IPsec**.
 
 1. Állítsa be a változókat.
    ```azurepowershell-interactive
@@ -261,7 +261,7 @@ Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
 
 ## <a name="next-steps"></a>Következő lépések
 
-*  Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/).
+*  Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](../index.yml).
 * Információk a BGP-ről: [A BGP áttekintése](vpn-gateway-bgp-overview.md) és [A BGP konfigurálása](vpn-gateway-bgp-resource-manager-ps.md).
 * A helyek közötti VPN-kapcsolatok Azure Resource Manager-sablonok használatával történő létrehozásáról további információt a [helyek közötti VPN-kapcsolat létrehozását](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/) ismertető cikkben talál.
 * A virtuális hálózatok közötti VPN-kapcsolatok Azure Resource Manager-sablonok használatával történő létrehozásáról további információt a [HBase-georeplikáció üzembe helyezését](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/) ismertető cikkben talál.

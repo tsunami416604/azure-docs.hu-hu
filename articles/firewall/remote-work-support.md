@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: victorh
-ms.openlocfilehash: 68789d3b8a4be51a381e95d6e6f840331b46b4e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c0e2033ee559af38a6816bdfa611eea86b14dea
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400111"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658315"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Azure Firewall távoli munkahelyi támogatás
 
@@ -28,4 +28,4 @@ A Windows Virtual Desktop egy átfogó asztali és app Virtualization szolgálta
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a [Windows rendszerű virtuális asztali környezetről](https://docs.microsoft.com/azure/virtual-desktop/).
+További információ a [Windows rendszerű virtuális asztali környezetről](../virtual-desktop/index.yml).

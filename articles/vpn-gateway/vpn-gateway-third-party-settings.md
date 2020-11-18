@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: b87340fbb3f94eee106fc5d0d72117d30e331035
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e9544fb73c8599b219ef7a566032adfe5e33d08
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75862713"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658502"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Közösség – a harmadik féltől származó VPN-vagy tűzfal-eszköz beállításai az Azure VPN gatewayhez
 
@@ -26,7 +26,7 @@ Ez a cikk számos javasolt megoldást nyújt az Azure VPN Gateway szolgáltatás
 
 Az alábbi táblázat néhány gyakori eszközt és kapcsolódó súgót sorol fel:
 
-|Product    |Referencia                                                |
+|Termék    |Referencia                                                |
 |-----------|-----------------------------------------------------------|
 |Cisco ASA  |[Közösségi megoldások a Cisco ASA-hez az Azure VPN-en](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
 |Cisco ISR  |[A Közösség által javasolt megoldások az Azure VPN Cisco ISR](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
@@ -41,7 +41,6 @@ Az alábbi táblázat néhány gyakori eszközt és kapcsolódó súgót sorol f
 
 ## <a name="next-step"></a>Következő lépés
 
-[Azure-átjárók beállításai](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
+[Azure-átjárók beállításai](./vpn-gateway-about-vpn-devices.md)
 
-[Ismert kompatibilis eszközök](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
-
+[Ismert kompatibilis eszközök](./vpn-gateway-about-vpn-devices.md)

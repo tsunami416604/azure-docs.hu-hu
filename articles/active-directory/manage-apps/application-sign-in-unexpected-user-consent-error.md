@@ -16,16 +16,16 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 558c6dc24f6d0d17c9a82bbc79f39649f63dc7f4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874543"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658485"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Váratlan hiba történt az alkalmazáshoz való beleegyezett művelet végrehajtásakor
 
-Ez a cikk azokat a hibákat ismerteti, amelyek az alkalmazáshoz való hozzájárulás során fordulhatnak elő. Ha olyan váratlan beleegyezés-kéréseket észlel, amelyek nem tartalmaznak hibaüzeneteket, tekintse meg [Az Azure ad hitelesítési forgatókönyveit](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
+Ez a cikk azokat a hibákat ismerteti, amelyek az alkalmazáshoz való hozzájárulás során fordulhatnak elő. Ha olyan váratlan beleegyezés-kéréseket észlel, amelyek nem tartalmaznak hibaüzeneteket, tekintse meg [Az Azure ad hitelesítési forgatókönyveit](../develop/authentication-vs-authorization.md).
 
 Számos olyan alkalmazás, amely integrálva van Azure Active Directory a működéséhez más erőforrásokhoz való hozzáférésre van szükség. Ha ezek az erőforrások integrálva vannak a Azure Active Directoryba, a hozzáféréshez szükséges engedélyek gyakran a közös engedélyezési keretrendszer használatával is kérhetők. Megjelenik egy hozzájárulási kérdés, amely általában az alkalmazás első használatakor fordul elő, de az alkalmazás egy későbbi használatában is előfordulhat.
 
@@ -90,8 +90,6 @@ A végfelhasználók nem tudnak jóváhagyást adni a kockázatnak kitett alkalm
 
 ## <a name="next-steps"></a>Következő lépések 
 
-[Alkalmazások, engedélyek és beleegyezett Azure Active Directory (v1-végpont)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
+[Alkalmazások, engedélyek és beleegyezett Azure Active Directory (v1-végpont)](../develop/quickstart-register-app.md)<br>
 
-[Hatókörök, engedélyek és beleegyezett a Azure Active Directory (v 2.0-végpont)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
-
-
+[Hatókörök, engedélyek és beleegyezett a Azure Active Directory (v 2.0-végpont)](../develop/v2-permissions-and-consent.md)

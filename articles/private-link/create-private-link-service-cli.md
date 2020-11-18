@@ -7,19 +7,20 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: a2b97bcc9fe902480364ade19efdae863556ac1e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 87fe02aed19ae7e5858715748a2b4c4da87a07b3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629427"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658570"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Privát kapcsolati szolgáltatás létrehozása az Azure CLI-vel
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy privát hivatkozási szolgáltatást az Azure-ban az Azure CLI használatával.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI legújabb verzióját kell használnia. A telepített verziójának megkereséséhez futtassa a parancsot `az --version` . További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
+- Ehhez a cikkhez az Azure CLI legújabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+
 ## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -111,7 +112,7 @@ Ezután bemutatjuk, hogyan képezheti le ezt a szolgáltatást egy másik virtu�
 ## <a name="private-endpoints"></a>Privát végpontok
 
 ### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása 
-Hozzon létre egy virtuális hálózatot az [az Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create)paranccsal. Ez a példa létrehoz egy  *myPEVNet* nevű virtuális hálózatot   az erőforráscsoport nevű *myResourcegroup* : 
+Hozzon létre egy virtuális hálózatot az [az Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create)paranccsal. Ez a példa létrehoz egy  *myPEVNet* nevű virtuális hálózatot   az erőforráscsoport nevű *myResourcegroup*: 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -152,7 +153,7 @@ az network private-endpoint create \
 --location westcentralus 
 ```
 A privát *kapcsolat erőforrás-azonosítóját* a `az network private-link-service show` Private link Service szolgáltatásban szerezheti be. Az azonosító a következőképpen fog kinézni:   
-/subscriptions/subID/resourceGroups/ *resourcegroupname* /Providers/Microsoft.Network/privateLinkServices/ **privatelinkservicename** 
+/subscriptions/subID/resourceGroups/*resourcegroupname*/Providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>Magánhálózati kapcsolati szolgáltatás kapcsolatainak megjelenítése 
  
@@ -160,6 +161,6 @@ Lásd: kapcsolódási kérelmek a Private link Service [-ben az az Network Priva
 ```azurecli-interactive 
 az network private-link-service show --resource-group myResourceGroup --name myPLS 
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Private link Service](private-link-service-overview.md) -ről
  

@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: c3d35940a445b73ecb9285355f36b141c3a151b8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 48fc9f7e021ba5158182344ddfdba3c8eafaf781
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475056"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659216"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Az Elastic Stack telepítése egy Azure-beli virtuális gépen
 
@@ -39,7 +39,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
@@ -211,7 +211,7 @@ A rendszernapló-bejegyzések a terminálon úgy jelennek meg, ahogy a rendszer 
 Szerkessze az `/etc/kibana/kibana.yml` fájlt, és módosítsa a Kibana által figyelt IP-címet, hogy hozzá tudjon férni a böngészőből.
 
 ```bash
-server.host:"0.0.0.0"
+server.host: "0.0.0.0"
 ```
 
 Indítsa el a Kibanát a következő paranccsal:

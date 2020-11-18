@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 629c27602df14c0b35e2063d8db2d0b13bbff99a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b31931af7b8d1442a66333622a23d017ab7fb5a9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635898"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658689"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -72,7 +72,7 @@ Az alábbi útmutató egy olyan Azure-beli folyamat-kiadás beállításához ny
 
 1.  Az [Azure DevOps](https://dev.azure.com/)nyissa meg az adatai-előállítóval konfigurált projektet.
 
-1.  A lap bal oldalán válassza a **folyamatok** , majd a **kiadások** elemet.
+1.  A lap bal oldalán válassza a **folyamatok**, majd a **kiadások** elemet.
 
     ![Folyamatok, kiadások kiválasztása](media/continuous-integration-deployment/continuous-integration-image6.png)
 
@@ -94,19 +94,19 @@ Az alábbi útmutató egy olyan Azure-beli folyamat-kiadás beállításához ny
 
     ![Szakasz nézet](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  Hozzon létre egy új feladatot. Keresse meg az **ARM-sablon központi telepítését** , majd válassza a **Hozzáadás** lehetőséget.
+    b.  Hozzon létre egy új feladatot. Keresse meg az **ARM-sablon központi telepítését**, majd válassza a **Hozzáadás** lehetőséget.
 
     c.  A központi telepítési feladat területen válassza ki az előfizetést, az erőforráscsoportot és a célhelyet a cél adat-előállító számára. Szükség esetén adja meg a hitelesítő adatokat.
 
     d.  A **művelet** listában válassza az **erőforráscsoport létrehozása vagy frissítése** lehetőséget.
 
-    e.  Kattintson a három pont gombra ( **...** ) a **sablon** mező mellett. Tallózással keresse meg a beállított git-tárház közzétételi ágában létrehozott Azure Resource Manager sablont. Keresse meg a fájlt az `ARMTemplateForFactory.json` <FactoryName> adf_publish ág mappájába.
+    e.  Kattintson a három pont gombra (**...**) a **sablon** mező mellett. Tallózással keresse meg a beállított git-tárház közzétételi ágában létrehozott Azure Resource Manager sablont. Keresse meg a fájlt az `ARMTemplateForFactory.json` <FactoryName> adf_publish ág mappájába.
 
     f.  Válassza a **... lehetőséget.** a **sablon paramétereinek** mező mellett válassza ki a paramétereket tartalmazó fájlt. Keresse meg a fájlt az `ARMTemplateParametersForFactory.json` <FactoryName> adf_publish ág mappájába.
 
     :  Válassza a **... lehetőséget.** a **felülírási sablon paraméterei** mező mellett adja meg a cél adatok előállítójának kívánt értékeit. Azure Key Vaultból származó hitelesítő adatok esetén adja meg a titkos kulcs nevét idézőjelek között. Ha például a titkos kód neve cred1, akkor adja meg a **"$ (cred1)"** értéket ehhez az értékhez.
 
-    h. Válassza a **növekményes** lehetőséget a **központi telepítési módhoz** .
+    h. Válassza a **növekményes** lehetőséget a **központi telepítési módhoz**.
 
     > [!WARNING]
     > A teljes üzembe helyezési módban az erőforráscsoporthoz tartozó, de az új Resource Manager-sablonban nem megadott erőforrások **törlődni** fognak. További információkért tekintse meg [Azure Resource Manager telepítési módokat](../azure-resource-manager/templates/deployment-modes.md)
@@ -225,7 +225,7 @@ Egy Resource Manager-sablon exportálásakor Data Factory beolvassa ezt a fájlt
 
 ### <a name="custom-parameter-syntax"></a>Egyéni paraméter szintaxisa
 
-Az alábbi útmutatást követve az egyéni paraméterek fájljának létrehozásakor **arm-template-parameters-definition.js** . A fájl az egyes entitások típusának egy szakaszát tartalmazza: trigger, folyamat, társított szolgáltatás, adatkészlet, integrációs modul és adatfolyam.
+Az alábbi útmutatást követve az egyéni paraméterek fájljának létrehozásakor **arm-template-parameters-definition.js**. A fájl az egyes entitások típusának egy szakaszát tartalmazza: trigger, folyamat, társított szolgáltatás, adatkészlet, integrációs modul és adatfolyam.
 
 * Adja meg a tulajdonság elérési útját a megfelelő entitás típusa mezőben.
 * A tulajdonságnév beállítása `*` azt jelzi, hogy az összes tulajdonságot meg szeretné parametrizálja (csak az első szintre, nem rekurzív módon). Kivételeket is megadhat ehhez a konfigurációhoz.
@@ -633,19 +633,23 @@ Ha a gyárat éles környezetben helyezi üzembe, és egy olyan hibát tapasztal
 
 10.   Vegye fel a módosításokat a gyorsjavításból a fejlesztési ágra, hogy a későbbi kiadások ne tartalmazzanak ugyanazt a hibát.
 
+Tekintse meg az alábbi videót, amely részletesen ismerteti a környezetek gyors javítását ismertető videót. 
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4I7fi]
+
 ## <a name="best-practices-for-cicd"></a>Ajánlott eljárások CI/CD-hez
 
 Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD-folyamattal, amely a változásokat a fejlesztésből teszteli, majd éles környezetbe helyezi, javasoljuk az alábbi ajánlott eljárásokat:
 
--   **Git-integráció** . Csak a fejlesztői adatgyárat konfigurálja git-integrációval. A tesztelés és a gyártás változásai a CI/CD-n keresztül települnek, és nincs szükség git-integrációra.
+-   **Git-integráció**. Csak a fejlesztői adatgyárat konfigurálja git-integrációval. A tesztelés és a gyártás változásai a CI/CD-n keresztül települnek, és nincs szükség git-integrációra.
 
--   **Üzembe helyezés előtti és utáni parancsfájl** . A CI/CD-ben a Resource Manager üzembe helyezési lépése előtt végre kell hajtania bizonyos feladatokat, például az eseményindítók leállítását és újraindítását, valamint a tisztítást végző műveletet. Javasoljuk, hogy a központi telepítési feladat előtt és után használjon PowerShell-parancsfájlokat. További információ: az [aktív eseményindítók frissítése](#updating-active-triggers). A (z) adatfeldolgozó csapata a lap alján található [parancsfájlt adott](#script) meg.
+-   **Üzembe helyezés előtti és utáni parancsfájl**. A CI/CD-ben a Resource Manager üzembe helyezési lépése előtt végre kell hajtania bizonyos feladatokat, például az eseményindítók leállítását és újraindítását, valamint a tisztítást végző műveletet. Javasoljuk, hogy a központi telepítési feladat előtt és után használjon PowerShell-parancsfájlokat. További információ: az [aktív eseményindítók frissítése](#updating-active-triggers). A (z) adatfeldolgozó csapata a lap alján található [parancsfájlt adott](#script) meg.
 
--   **Integrációs modulok és megosztás** . Az integrációs modulok nem változnak gyakran, és a CI/CD minden fázisában hasonlóak. Így Data Factory az integrációs modul azonos nevét és típusát várja a CI/CD minden szakaszában. Ha az integrációs modulokat minden fázisban meg szeretné osztani, érdemes lehet egy Ternáris-gyárat használni, amely csak a megosztott integrációs modulokat tartalmazza. Ezt a megosztott gyárat az összes környezetében használhatja társított Integration Runtime-típusként.
+-   **Integrációs modulok és megosztás**. Az integrációs modulok nem változnak gyakran, és a CI/CD minden fázisában hasonlóak. Így Data Factory az integrációs modul azonos nevét és típusát várja a CI/CD minden szakaszában. Ha az integrációs modulokat minden fázisban meg szeretné osztani, érdemes lehet egy Ternáris-gyárat használni, amely csak a megosztott integrációs modulokat tartalmazza. Ezt a megosztott gyárat az összes környezetében használhatja társított Integration Runtime-típusként.
 
--   **Felügyelt magánhálózati végpont üzembe helyezése** . Ha egy saját végpont már létezik egy gyárban, és olyan ARM-sablont próbál telepíteni, amely azonos nevű, de módosított tulajdonságokkal rendelkező privát végpontot tartalmaz, akkor a telepítés sikertelen lesz. Más szóval a privát végpontok sikeresen üzembe helyezhetők, ha ugyanazokkal a tulajdonságokkal rendelkezik, mint a gyárban már meglévő. Ha bármely tulajdonság eltérő a környezetek között, felülbírálhatja azt a tulajdonság parameterizing, és a telepítés során megadhatja a megfelelő értéket.
+-   **Felügyelt magánhálózati végpont üzembe helyezése**. Ha egy saját végpont már létezik egy gyárban, és olyan ARM-sablont próbál telepíteni, amely azonos nevű, de módosított tulajdonságokkal rendelkező privát végpontot tartalmaz, akkor a telepítés sikertelen lesz. Más szóval a privát végpontok sikeresen üzembe helyezhetők, ha ugyanazokkal a tulajdonságokkal rendelkezik, mint a gyárban már meglévő. Ha bármely tulajdonság eltérő a környezetek között, felülbírálhatja azt a tulajdonság parameterizing, és a telepítés során megadhatja a megfelelő értéket.
 
--   **Key Vault** . Ha olyan társított szolgáltatásokat használ, amelyek kapcsolati adatait Azure Key Vault tárolja, ajánlott külön kulcstárolókat tárolni a különböző környezetekben. Külön jogosultsági szinteket is beállíthat mindegyik kulcstartóhoz. Előfordulhat például, hogy nem szeretné, hogy a csapattagok rendelkezzenek a termelési titkokhoz szükséges engedélyekkel. Ha követi ezt a megközelítést, javasoljuk, hogy az összes fázisban ugyanazokat a titkos neveket tartsa meg. Ha megtartja ugyanazokat a titkos neveket, nem kell parametrizálja minden egyes kapcsolódási karakterláncot a CI/CD-környezetek között, mert az egyetlen dolog, ami megváltoztatja a kulcstároló nevét, amely egy külön paraméter.
+-   **Key Vault**. Ha olyan társított szolgáltatásokat használ, amelyek kapcsolati adatait Azure Key Vault tárolja, ajánlott külön kulcstárolókat tárolni a különböző környezetekben. Külön jogosultsági szinteket is beállíthat mindegyik kulcstartóhoz. Előfordulhat például, hogy nem szeretné, hogy a csapattagok rendelkezzenek a termelési titkokhoz szükséges engedélyekkel. Ha követi ezt a megközelítést, javasoljuk, hogy az összes fázisban ugyanazokat a titkos neveket tartsa meg. Ha megtartja ugyanazokat a titkos neveket, nem kell parametrizálja minden egyes kapcsolódási karakterláncot a CI/CD-környezetek között, mert az egyetlen dolog, ami megváltoztatja a kulcstároló nevét, amely egy külön paraméter.
 
 -  **Erőforrás-elnevezés** Az ARM-sablonok korlátozásai miatt előfordulhat, hogy a telepítés során problémák merülnek fel, ha az erőforrások szóközt tartalmaznak a névben. A Azure Data Factory csapat az erőforrások térköze helyett az "_" vagy a "-" karakterek használatát javasolja. Például "Pipeline_1" lenne egy előnyben részesített név a "folyamat 1" felett.
 

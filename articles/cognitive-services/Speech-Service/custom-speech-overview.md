@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 4f65cc79c972a48f97e794b4c2870c3fb6e68d31
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 6dbe97d615753f0a90c8ba80aa7afa6dafa15eb2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557671"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658468"
 ---
-# <a name="what-is-custom-speech"></a>Mi az Custom Speech?
+# <a name="what-is-custom-speech"></a>Mi az a Custom Speech?
 
 A [Custom SPEECH](https://aka.ms/customspeech) felhasználóifelület-alapú eszközök, amelyek segítségével kiértékelheti és javíthatja a Microsoft beszéd-szöveg pontosságát alkalmazásai és termékei számára. Minden, ami az első lépések elvégzéséhez szükséges, néhány teszt hangfájlt használ. Az alábbi hivatkozásokat követve hozzon létre egy egyéni beszéd – szöveg élményt.
 
@@ -35,7 +35,7 @@ Ez a diagram kiemeli a [Custom Speech portált](https://aka.ms/customspeech)alko
 
 1. A [felismerés minőségének vizsgálata](how-to-custom-speech-inspect-data.md) – a [Custom Speech-portálon](https://speech.microsoft.com/customspeech) visszajátszhatja a feltöltött hangfelvételeket, és megvizsgálhatja a tesztelési adatok beszédfelismerési minőségét. A mennyiségi mérések esetében lásd: [az adatvizsgálat](how-to-custom-speech-inspect-data.md).
 
-1. [Kiértékelheti és javíthatja a pontosságot](how-to-custom-speech-evaluate-data.md) – kiértékelheti és javíthatja a beszéd – szöveg modell pontosságát. A [Custom Speech-portál](https://speech.microsoft.com/customspeech) egy *szó szerinti hibát jelez* , amellyel meghatározható, hogy szükség van-e további képzésre. Ha elégedett a pontossággal, a Speech Service API-jait közvetlenül is használhatja. Ha a pontosságot 5%-20%-os relatív átlagban szeretné növelni, a portálon a **betanítás** lapon további betanítási adatok (például emberi feliratú átiratok és kapcsolódó szövegek) tölthetők fel.
+1. [Kiértékelheti és javíthatja a pontosságot](how-to-custom-speech-evaluate-data.md) – kiértékelheti és javíthatja a beszéd – szöveg modell pontosságát. A [Custom Speech-portál](https://speech.microsoft.com/customspeech) egy *szó szerinti hibát jelez*, amellyel meghatározható, hogy szükség van-e további képzésre. Ha elégedett a pontossággal, a Speech Service API-jait közvetlenül is használhatja. Ha a pontosságot 5%-20%-os relatív átlagban szeretné növelni, a portálon a **betanítás** lapon további betanítási adatok (például emberi feliratú átiratok és kapcsolódó szövegek) tölthetők fel.
 
 1. [Modell betanítása és üzembe helyezése](how-to-custom-speech-train-model.md) – javítsa a beszéd – szöveg modell pontosságát úgy, hogy írásos átiratokat (10 000 órát) és kapcsolódó szöveget (<200 MB) biztosít, valamint a hangteszt adatait. Ez az érték segít a beszéd – szöveg modell betanításában. Ha betanítást, újratesztelést végez, és ha elégedett az eredménnyel, üzembe helyezheti a modellt egy egyéni végponton.
 
@@ -56,26 +56,26 @@ Miután létrehozott egy Azure-fiókot és egy Speech Service-előfizetést, be 
 
 A tartalmak, például az adattípusok, a modellek, a tesztek és a végpontok a [Custom Speech portálon](https://speech.microsoft.com/customspeech)belüli **projektekben** vannak rendszerezve. Minden projekt egy tartományra és országra/nyelvre vonatkozik. Létrehozhat például egy olyan projektet a hívási központok számára, amelyek az angol nyelvet használják a Egyesült Államok.
 
-Az első projekt létrehozásához válassza a **beszéd-szöveg/egyéni beszéd** lehetőséget, majd kattintson az **új projekt** elemre. A projekt létrehozásához kövesse a varázsló utasításait. Miután létrehozott egy projektet, négy lapot kell látnia: **az adatelemzést** , a **tesztelést** , a **betanítást** és az **üzembe helyezést**. Az egyes lapok használatának megismeréséhez használja a [következő lépések](#next-steps) hivatkozásait.
+Az első projekt létrehozásához válassza a **beszéd-szöveg/egyéni beszéd** lehetőséget, majd kattintson az **új projekt** elemre. A projekt létrehozásához kövesse a varázsló utasításait. Miután létrehozott egy projektet, négy lapot kell látnia: **az adatelemzést**, a **tesztelést**, a **betanítást** és az **üzembe helyezést**. Az egyes lapok használatának megismeréséhez használja a [következő lépések](#next-steps) hivatkozásait.
 
 > [!IMPORTANT]
 > A [Custom Speech portált](https://aka.ms/custom-speech) nemrég frissítették! Ha korábban létrehozott, modelleket, teszteket és közzétett végpontokat hozott létre a CRIS.ai-portálon vagy API-kkal, létre kell hoznia egy új projektet az új portálon a régi entitásokhoz való kapcsolódáshoz.
 
 ## <a name="model-lifecycle"></a>Modell életciklusa
 
-Az egyéni beszédfelismerés az **alapmodelleket** és az **Egyéni modelleket** is használja. Minden nyelvhez egy vagy több **alapmodell** tartozik. Általánosságban elmondható, hogy amikor új beszédfelismerési modellt bocsátanak ki a normál beszédfelismerési szolgáltatásba, azt a rendszer új **alapmodellként** is importálja a Custom Speech szolgáltatásba. Minden 3-6 havonta frissülnek, és a régebbi modellek általában kevésbé hasznosak az idő múlásával, mivel a legújabb modell általában lényegesen nagyobb pontossággal rendelkezik.
+Az egyéni beszédfelismerés az **alapmodelleket** és az **Egyéni modelleket** is használja. Minden nyelvhez egy vagy több **alapmodell** tartozik. Általánosságban elmondható, hogy amikor új beszédfelismerési modellt bocsátanak ki a normál beszédfelismerési szolgáltatásba, azt a rendszer új **alapmodellként** is importálja a Custom Speech szolgáltatásba. Általában minden 3-6 havonta frissülnek, a régebbi modellek pedig kevésbé hasznosak az idő múlásával, mivel a legújabb modell általában nagyobb pontossággal rendelkezik.
 
-Ezzel szemben az **egyéni modellek** úgy jönnek létre, hogy egy kiválasztott alapmodellt egy adott felhasználói forgatókönyvhöz igazítanak. Egy adott egyéni modellt sokáig használhat, ha már megérkezett az igényeinek megfelelő időpontban, vagy a további adatokkal időt vesz igénybe. 
+Ezzel szemben az **egyéni modellek** úgy jönnek létre, hogy egy kiválasztott alapmodellt egy adott felhasználói forgatókönyvhöz igazítanak. Előfordulhat, hogy egy adott egyéni modellt is igénybe vehet egy hosszabb ideig, ha az megfelel az igényeinek, de javasoljuk, hogy rendszeres időközönként frissítsen a legújabb alapmodellre, és további adatokkal áttanítsa azokat.
 
 A modell életciklusával kapcsolatos egyéb kulcsfontosságú feltételek a következők:
 
-* **Alkalmazkodás** : alapmodell készítése és testreszabása a tartományhoz/forgatókönyvhöz szöveges adatok és/vagy hangadatok használatával
-* **Dekódolás** : modell használata és beszédfelismerés végrehajtása (hang kódolása szövegbe)
-* **Endpoint (végpont** ): egy alapmodell vagy egy egyéni modell felhasználó-specifikus telepítése, amelyet *csak* egy adott felhasználó elérhet.
+* **Alkalmazkodás**: alapmodell készítése és testreszabása a tartományhoz/forgatókönyvhöz szöveges adatok és/vagy hangadatok használatával
+* **Dekódolás**: modell használata és beszédfelismerés végrehajtása (hang kódolása szövegbe)
+* **Endpoint (végpont**): egy alapmodell vagy egy egyéni modell felhasználó-specifikus telepítése, amelyet *csak* egy adott felhasználó elérhet.
 
 ### <a name="expiration-timeline"></a>Lejárat idővonala
 
-Az alapmodellek változásai az új funkciók hozzáadásához és a teljesítmény javításához a régebbi modellek visszamenőleges kompatibilitásával kapcsolatos problémákat okozhatnak, és az adott modellel megadott modell pontosságát is megfigyelheti egy adott tesztelési adatkészleten. A modellek és végpontok fenntartásával kapcsolatos erőfeszítés kezeléséhez tekintse meg a modell és a végpont lejárati idősorainak következő időpontját.
+Ahogy az új modellek és az új funkciók elérhetővé válnak, és a régebbi, kevésbé pontos modellek kimaradnak, tekintse meg a modell és a végpont lejáratának következő ütemterveit:
 
 **Alapmodellek** 
 
@@ -85,7 +85,7 @@ Az alapmodellek változásai az új funkciók hozzáadásához és a teljesítm�
 
 **Egyéni modellek**
 
-* Dekódolás: a modell létrehozása után 2 évig elérhető. Ez azt jelenti, hogy az egyéni modellt 2 évre (batch/Realtime/tesztelés) használhatja a létrehozás után. 2 év elteltével **újra be kell tanítania a modellt** , mert az alapmodell leggyakrabban az adaptációhoz lesz elavulttá.  
+* Dekódolás: a modell létrehozása után 2 évig elérhető. Ez azt jelenti, hogy az egyéni modellt 2 évre (batch/Realtime/tesztelés) használhatja a létrehozás után. 2 év elteltével **újra be kell tanítania a modellt**, mert az alapmodell leggyakrabban az adaptációhoz lesz elavulttá.  
 * Végpontok: elérhető a dekódolással megegyező idővonalon
 
 Ha egy alapmodell vagy egy egyéni modell lejár, akkor mindig vissza fog térni a **legújabb alapmodell-verzióra**. Így a megvalósítás soha nem szakad meg, de az egyéni modellek érvényességének lejárta után kevésbé pontosak lesznek a *konkrét adatai* . A modell lejáratát a következő helyeken tekintheti meg a Custom Speech-portálon:
@@ -94,7 +94,11 @@ Ha egy alapmodell vagy egy egyéni modell lejár, akkor mindig vissza fog térni
 * Modell betanításának részletei
 * A központi telepítés összegzése
 * Központi telepítés részletei
- 
+
+A lejárati dátumokat a JSON- [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) Válasz tulajdonság alatt található és az egyéni beszédfelismerési API-k segítségével is megtekintheti `deprecationDates` .
+
+Vegye figyelembe, hogy az egyéni beszédfelismerési végponton anélkül frissítheti a modellt, hogy az egyéni beszédfelismerési portál üzembe helyezés szakaszában vagy a Custom Speech API-n keresztül megváltoztatja a végpont által használt modellt.
+
 ## <a name="next-steps"></a>Következő lépések
 
 * [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)

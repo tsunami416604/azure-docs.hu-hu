@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab3b340654fd6d824edef0a33d1ea363a913654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 403fa4cab94ad6149e388b10acccd9d5e7a2b7a8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764587"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658162"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Az alkalmazásproxy-összekötők és-alkalmazások magas rendelkezésre állása és terheléselosztása
 
@@ -39,7 +39,7 @@ Az összekötők a magas rendelkezésre állás elve alapján létesítenek kapc
 
 1. Az ügyféleszközök felhasználója megpróbál hozzáférni egy, az Application proxyn keresztül közzétett helyszíni alkalmazáshoz.
 2. A kérelem egy Azure Load Balanceron keresztül dönti el, hogy melyik alkalmazásproxy-szolgáltatási példánynak kell elvégeznie a kérelmet. Régiónként a kérés elfogadásához több tízezer példány áll rendelkezésre. Ez a módszer segít a forgalom egyenletes elosztásában a szolgáltatási példányok között.
-3. A rendszer elküldi a kérést a [Service Busnak](https://docs.microsoft.com/azure/service-bus-messaging/).
+3. A rendszer elküldi a kérést a [Service Busnak](../../service-bus-messaging/index.yml).
 4. Service Bus a jeleket egy elérhető összekötőhöz. Az összekötő ezután felveszi a kérést a Service Busból.
    - A 2. lépésben a kérelmek különböző alkalmazásproxy-szolgáltatásbeli példányokra mutatnak, így a kapcsolatok nagyobb valószínűséggel lesznek különböző összekötők. Ennek eredményeképpen az összekötők szinte egyenletesen használhatók a csoporton belül.
 5. Az összekötő továbbítja a kérést az alkalmazás háttér-kiszolgálójához. Ezután az alkalmazás visszaküldi a választ az összekötőnek.
@@ -92,10 +92,10 @@ Ez a forgatókönyv bonyolultabb lehet, mivel az ügyfél általában több kapc
 
 A szoftver gyártójának dokumentációjában tájékozódhat a háttérrendszer terheléselosztási követelményeiről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazásproxy engedélyezése](application-proxy-add-on-premises-application.md)
 - [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Feltételes hozzáférés engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
 - [Az alkalmazásproxyval kapcsolatos problémák hibaelhárítása](application-proxy-troubleshoot.md)
-- [Ismerje meg, hogyan támogatja az Azure AD architektúra a magas rendelkezésre állást](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)
+- [Ismerje meg, hogyan támogatja az Azure AD architektúra a magas rendelkezésre állást](../fundamentals/active-directory-architecture.md)

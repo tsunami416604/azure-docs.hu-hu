@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 87ca8591be42e34a52f15913e0ec4058505cc0b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4158bc07373a2d0aa6fb6ceaf2dce62b50bb6bd7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079069"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658366"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Azure Firewall-tesztkörnyezet létrehozása
 
@@ -72,12 +72,11 @@ Ez a szkript az alábbi parancsokkal létrehoz egy erőforráscsoportot, egy vir
 | [Új – AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Egy virtuálisgép-konfigurációt hoz létre. Ebben a konfigurációban olyan információk szerepelnek, mint a virtuális gép neve, az operációs rendszer és a rendszergazdai hitelesítő adatok. A rendszer a virtuális gépek létrehozása során használja ezt a konfigurációt. |
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Virtuális gépet hoz létre. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
-|[New-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)| Új Azure Firewallt hoz létre.|
-|[Get-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/get-azfirewall)|Lekér egy Azure Firewall-objektumot.|
-|[Új – AzFirewallApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule)|Új Azure Firewall alkalmazásszabályt hoz létre.|
-|[Set-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/set-azfirewall)|Változtatásokat hajt végre az Azure Firewall-objektumon.|
+|[New-AzFirewall](/powershell/module/az.network/new-azfirewall)| Új Azure Firewallt hoz létre.|
+|[Get-AzFirewall](/powershell/module/az.network/get-azfirewall)|Lekér egy Azure Firewall-objektumot.|
+|[Új – AzFirewallApplicationRule](/powershell/module/az.network/new-azfirewallapplicationrule)|Új Azure Firewall alkalmazásszabályt hoz létre.|
+|[Set-AzFirewall](/powershell/module/az.network/set-azfirewall)|Változtatásokat hajt végre az Azure Firewall-objektumon.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/).
-

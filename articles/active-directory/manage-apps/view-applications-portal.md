@@ -12,12 +12,12 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.openlocfilehash: a79078977d25c55edfb4ad72bbd4602a073231f6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 281e408ca79697edbee308e15b70a2cf2055b212
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89277935"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658893"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Rövid útmutató: a Azure Active Directory (Azure AD) bérlőt használó alkalmazások listájának megtekintése
 
@@ -39,29 +39,29 @@ Az Azure AD-bérlőben regisztrált alkalmazások a Azure Portal **vállalati al
 A bérlőben regisztrált alkalmazások megtekintése:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
-2. A bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
-3. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások**lehetőséget.
-4. Az **alkalmazás típusa** legördülő menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra. Ekkor egy véletlenszerűen kiválasztott minta jelenik meg a bérlői alkalmazásokból.
+2. A bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
+3. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások** lehetőséget.
+4. Az **alkalmazás típusa** legördülő menüben válassza a **minden alkalmazás** lehetőséget, majd kattintson az **alkalmaz** gombra. Ekkor egy véletlenszerűen kiválasztott minta jelenik meg a bérlői alkalmazásokból.
 5. További alkalmazások megtekintéséhez válassza a lista alján található **továbbiak betöltés** lehetőséget. Ha a bérlő számos alkalmazást tartalmaz, könnyebben kereshet egy adott alkalmazást a lista görgetése helyett. Az adott alkalmazásra vonatkozó keresés a rövid útmutató későbbi részében szerepel.
 
 ## <a name="select-viewing-options"></a>Megtekintési beállítások kiválasztása
 
 Válassza ki a beállításokat a keresett elemek alapján.
 
-1. Az alkalmazásokat az **alkalmazás típusa**, az **alkalmazás állapota**és az **alkalmazás láthatósága**alapján tekintheti meg.
+1. Az alkalmazásokat az **alkalmazás típusa**, az **alkalmazás állapota** és az **alkalmazás láthatósága** alapján tekintheti meg.
 2. Az **Alkalmazás típusa** területen az alábbi beállítások egyikét választhatja ki:
     - **Vállalati alkalmazások** – a nem a Microsoft által fejlesztett alkalmazások megjelenítése.
     - **Microsoft-alkalmazások** – a Microsoft által fejlesztett alkalmazások megjelenítése.
     - **Minden alkalmazás** – a nem a Microsoft által fejlesztett alkalmazások és a Microsoft-alkalmazások együttes megjelenítése.
 3. Az **Alkalmazás állapota** területen a **Bármely**, **Letiltva** vagy **Engedélyezve** lehetőségek közül választhat. A **Bármely** beállítás magában foglalja a letiltott és az engedélyezett alkalmazásokat is.
 4. Az **Alkalmazás láthatósága** területen a **Bármely** vagy a **Rejtett** lehetőségek közül választhat. A **rejtett** beállítás megjeleníti a bérlőben található alkalmazásokat, de a felhasználók számára nem láthatók.
-5. A kívánt beállítások kiválasztása után válassza az **alkalmaz**lehetőséget.
+5. A kívánt beállítások kiválasztása után válassza az **alkalmaz** lehetőséget.
 
 ## <a name="search-for-an-application"></a>Alkalmazás keresése
 
 Egy adott alkalmazás megkeresése:
 
-1. Az **alkalmazás típusa** menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra.
+1. Az **alkalmazás típusa** menüben válassza a **minden alkalmazás** lehetőséget, majd kattintson az **alkalmaz** gombra.
 2. Adja meg a megkeresni kívánt alkalmazás nevét. Ha az alkalmazás hozzá lett adva az Azure AD-bérlőhöz, az megjelenik a keresési eredmények között. Ez a példa azt mutatja, hogy a GitHub még nem lett hozzáadva a bérlői alkalmazásokhoz.
     ![Példa egy olyan alkalmazást mutat be, amely még nem lett hozzáadva a bérlőhöz](media/view-applications-portal/search-for-tenant-application.png)
 3. Próbálkozzon az alkalmazásnév első néhány betűjének beírásával. Ebben a példában az összes olyan alkalmazás látható, amelyek neve a **Sales** sztringgel kezdődik.
@@ -69,14 +69,14 @@ Egy adott alkalmazás megkeresése:
 
 
 > [!TIP]
-> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](/graph/application-saml-sso-configure-api).
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ebben a rövid útmutatóban nem hozott létre új erőforrásokat, ezért nem kell megtisztítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan használhatja az Azure AD-t az alkalmazások identitás-szolgáltatójának használatával.
 > [!div class="nextstepaction"]

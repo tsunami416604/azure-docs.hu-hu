@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 923b83b388b58313e9613f0f8b71f266dcbeb028
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: be5ce5b3eebb2f784469680cf7614df6ca750b55
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282135"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658264"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD Application Proxy-összekötők ismertetése
 
@@ -67,7 +67,7 @@ Nem kell manuálisan törölni a nem használt összekötőket. Amikor egy össz
 
 Az Azure AD automatikus frissítéseket biztosít az összes telepített összekötőhöz. Amíg az alkalmazásproxy Connector Updater szolgáltatás fut, az összekötők automatikusan frissülnek. Ha nem látja a Connector Updater szolgáltatást a kiszolgálón, [újra kell telepítenie az összekötőt](application-proxy-add-on-premises-application.md) a frissítések beszerzéséhez.
 
-Ha nem szeretné, hogy az automatikus frissítés megvárja az összekötőt, manuális frissítést végezhet. Nyissa meg az [összekötő letöltési lapját](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) azon a kiszolgálón, amelyen az összekötő található, és válassza a **Letöltés**lehetőséget. Ez a folyamat elindít egy frissítést a helyi összekötőhöz.
+Ha nem szeretné, hogy az automatikus frissítés megvárja az összekötőt, manuális frissítést végezhet. Nyissa meg az [összekötő letöltési lapját](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) azon a kiszolgálón, amelyen az összekötő található, és válassza a **Letöltés** lehetőséget. Ez a folyamat elindít egy frissítést a helyi összekötőhöz.
 
 Több összekötővel rendelkező bérlők esetében az automatikus frissítés az egyes csoportokban egyszerre egy összekötőt céloz meg, hogy megakadályozza az állásidőt a környezetben.
 
@@ -104,7 +104,7 @@ Fontos, hogy gondoskodjon arról, hogy elegendő kapacitást tervezzen az össze
 > [!NOTE]
 > A 4, 8 és 16 Magos gép közötti maximális TPS nem sok a különbség. A fő különbség a várt késés.
 >
-> Ez a táblázat egy összekötő várt teljesítményére koncentrál, amely a telepített számítógép típusától függ. Ez eltér az alkalmazásproxy szolgáltatás szabályozási korlátaitól, lásd: [szolgáltatás korlátai és korlátozásai](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions).
+> Ez a táblázat egy összekötő várt teljesítményére koncentrál, amely a telepített számítógép típusától függ. Ez eltér az alkalmazásproxy szolgáltatás szabályozási korlátaitól, lásd: [szolgáltatás korlátai és korlátozásai](../enterprise-users/directory-service-limits-restrictions.md).
 
 ## <a name="security-and-networking"></a>Biztonság és hálózatkezelés
 
@@ -155,7 +155,7 @@ A használt tanúsítványok az alkalmazásproxy szolgáltatásra vonatkoznak. A
 
 Az első sikeres tanúsítvány megújítása után az Azure AD Application Proxy Connector Service (hálózati szolgáltatás) nem rendelkezik engedéllyel a régi tanúsítvány eltávolításához a helyi számítógép tárolójából. Ha a tanúsítvány lejárt, vagy a szolgáltatás nem használja többé, akkor azt biztonságosan törölheti.
 
-A tanúsítvány megújításával kapcsolatos problémák elkerülése érdekében győződjön meg arról, hogy az összekötőtől a [dokumentált célhelyek](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) felé irányuló hálózati kommunikáció engedélyezve van.
+A tanúsítvány megújításával kapcsolatos problémák elkerülése érdekében győződjön meg arról, hogy az összekötőtől a [dokumentált célhelyek](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) felé irányuló hálózati kommunikáció engedélyezve van.
 
 Ha egy összekötő több hónapig nem csatlakozik a szolgáltatáshoz, előfordulhat, hogy a tanúsítványa elavult. Ebben az esetben távolítsa el, majd telepítse újra az összekötőt a regisztráció elindításához. A következő PowerShell-parancsokat futtathatja:
 
@@ -180,7 +180,7 @@ Az összekötők a Windows Server webalkalmazás-proxyn alapulnak, így többek 
 
 Az összekötők **rendszergazdai** és **munkamenet** -naplókkal is rendelkeznek. A **rendszergazdai** napló a legfontosabb eseményeket és azok hibáit tartalmazza. A **munkamenet** -napló tartalmazza az összes tranzakciót és a feldolgozás részleteit.
 
-A naplók megjelenítéséhez nyissa meg **Eseménynapló** és lépjen az **alkalmazások és szolgáltatások naplóba**a  >  **Microsoft**  >  **AadApplicationProxy**-  >  **összekötő**. A **munkamenet** naplójának láthatóvá tételéhez válassza a **nézet** menü **elemzési és hibakeresési naplók megjelenítése**parancsát. A **munkamenet** -napló általában hibaelhárításhoz használatos, és alapértelmezés szerint le van tiltva. Lehetővé teszi, hogy megkezdse az események gyűjtését, és letiltja azt, ha már nincs rá szükség.
+A naplók megjelenítéséhez nyissa meg **Eseménynapló** és lépjen az **alkalmazások és szolgáltatások naplóba** a  >  **Microsoft**  >  **AadApplicationProxy**-  >  **összekötő**. A **munkamenet** naplójának láthatóvá tételéhez válassza a **nézet** menü **elemzési és hibakeresési naplók megjelenítése** parancsát. A **munkamenet** -napló általában hibaelhárításhoz használatos, és alapértelmezés szerint le van tiltva. Lehetővé teszi, hogy megkezdse az események gyűjtését, és letiltja azt, ha már nincs rá szükség.
 
 A szolgáltatás állapotát a szolgáltatások ablakban ellenőrizheti. Az összekötő két Windows-szolgáltatásból áll: a tényleges összekötőből és a updaterből. Mindkettőnek minden alkalommal futnia kell.
 

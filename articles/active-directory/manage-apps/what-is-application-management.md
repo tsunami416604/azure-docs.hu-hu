@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abe222ff783032c5d6d19a42bfb3d8aeffc284a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a157396318075522d5b3263c9cf0f749eafc2476
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90604121"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658808"
 ---
 # <a name="what-is-application-management"></a>Mi az alkalmazáskezelés?
 
@@ -57,7 +57,7 @@ Az Azure AD leegyszerűsíti az alkalmazások kezelésének módját azáltal, h
 
 A **nagyvállalati alkalmazásokhoz** és az Azure ad-vel való felügyelethez négy fő típusú alkalmazás adható meg:
 
-- **Azure ad Gallery-alkalmazások** – az Azure ad tartalmaz egy katalógust, amely az Azure ad-vel való egyszeri bejelentkezéshez előre integrált, több ezer alkalmazást tartalmaz. A vállalat által használt alkalmazások egy része valószínűleg megtalálható a katalógusban. [Ismerje meg az alkalmazások integrálásának megtervezését](plan-an-application-integration.md), vagy a [SaaS-alkalmazás oktatóanyagokban](https://docs.microsoft.com/azure/active-directory/saas-apps/)részletes integrációs lépéseket kaphat az egyes alkalmazásokhoz.
+- **Azure ad Gallery-alkalmazások** – az Azure ad tartalmaz egy katalógust, amely az Azure ad-vel való egyszeri bejelentkezéshez előre integrált, több ezer alkalmazást tartalmaz. A vállalat által használt alkalmazások egy része valószínűleg megtalálható a katalógusban. [Ismerje meg az alkalmazások integrálásának megtervezését](plan-an-application-integration.md), vagy a [SaaS-alkalmazás oktatóanyagokban](/azure/active-directory/saas-apps/)részletes integrációs lépéseket kaphat az egyes alkalmazásokhoz.
 
 - Helyszíni **alkalmazások alkalmazásproxy** használatával – az Azure ad Application proxy segítségével a helyszíni webalkalmazásokat az Azure ad-vel integrálva támogathatja az egyszeri bejelentkezést. Ezután a végfelhasználók ugyanúgy férhetnek hozzá a helyszíni webalkalmazásokhoz, mint a Microsoft 365 és más SaaS-alkalmazásokhoz, lásd: [távoli hozzáférés biztosítása helyszíni alkalmazásokhoz az Azure ad alkalmazásproxy használatával](application-proxy.md).
 
@@ -67,7 +67,7 @@ A **nagyvállalati alkalmazásokhoz** és az Azure ad-vel való felügyelethez n
 
 >[!TIP]
 >Az Azure AD-t az alkalmazással is integrálhatja, még akkor is, ha az még nincs előre konfigurálva, és az alkalmazás-katalógusban. Az **Azure ad-t a következők bármelyikével integrálhatja**
-> - Bármely Webhivatkozás vagy alkalmazás, amely a **Felhasználónév és a jelszó mezőt**jeleníti meg.
+> - Bármely Webhivatkozás vagy alkalmazás, amely a **Felhasználónév és a jelszó mezőt** jeleníti meg.
 > - Bármely olyan alkalmazás, amely támogatja az **SAML vagy az OpenID Connect protokollokat**.
 > - Minden olyan alkalmazás, amely támogatja a **tartományok közötti Identitáskezelés-felügyeleti (scim)** szabványt.
 
@@ -91,7 +91,7 @@ Az Azure AD-re történő átállással költségeket takarít meg és megszabad
 
 Az emberi erőforrások célzott alkalmazásai, illetve a felhasználók nagy készletével rendelkező más alkalmazások esetében az alkalmazások kiépítésének automatizálásával automatizálható a felhasználók kiépítésének és megszüntetésének folyamata, lásd: [Mi az Application kiépítés?](../app-provisioning/user-provisioning.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 - [Ismerkedés az alkalmazások integrálásával](plan-an-application-integration.md)

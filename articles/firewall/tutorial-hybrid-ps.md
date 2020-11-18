@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e60c829831bde3b454ab180d1a39ec46cb346963
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069408"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658638"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -48,7 +48,7 @@ Ha az oktatóanyag elvégzése helyett a Azure Portalt szeretné használni, tek
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a cikkhez helyileg kell futtatni a PowerShellt. Telepítenie kell a Azure PowerShell-modult. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
+Ehhez a cikkhez helyileg kell futtatni a PowerShellt. Telepítenie kell a Azure PowerShell-modult. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
 
 Három alapvető követelménynek kell teljesülnie, hogy ez a forgatókönyv megfelelően működjön:
 
@@ -68,9 +68,9 @@ Tekintse meg a jelen cikk [útvonalak létrehozása](#create-the-routes) című 
 >[!NOTE]
 >A közvetlenül összekapcsolt virtuális hálózatok közötti forgalom közvetlenül akkor is átirányítva van, ha egy UDR az alapértelmezett átjáróként való Azure Firewallre mutat. Ha ebben a forgatókönyvben az alhálózatot alhálózati forgalomra szeretné küldeni a tűzfalra, a UDR mindkét alhálózaton explicit módon tartalmaznia kell a célként megadott alhálózat hálózati előtagot.
 
-A kapcsolódó Azure PowerShell dokumentációjának áttekintéséhez tekintse meg a [Azure PowerShell-referenciát](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
+A kapcsolódó Azure PowerShell dokumentációjának áttekintéséhez tekintse meg a [Azure PowerShell-referenciát](/powershell/module/az.network/new-azfirewall).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="declare-the-variables"></a>Változók deklarálása
 
@@ -292,7 +292,7 @@ Hozza létre a helyszíni és a hub közötti virtuális hálózati kapcsolatoka
 
 #### <a name="verify-the-connection"></a>A kapcsolat ellenőrzése
 
-A sikeres kapcsolatok ellenőrzéséhez használja a *Get-AzVirtualNetworkGatewayConnection* parancsmagot a *hibakereséshez*vagy anélkül. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. Ha a rendszer arra kéri, válassza az **A** lehetőséget az összes (**All**) futtatásához. A példában a *-Name* a tesztelni kívánt kapcsolatok nevére utal.
+A sikeres kapcsolatok ellenőrzéséhez használja a *Get-AzVirtualNetworkGatewayConnection* parancsmagot a *hibakereséshez* vagy anélkül. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. Ha a rendszer arra kéri, válassza az **A** lehetőséget az összes (**All**) futtatásához. A példában a *-Name* a tesztelni kívánt kapcsolatok nevére utal.
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1
@@ -496,4 +496,4 @@ A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is haszn
 
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 
-[Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)
+[Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./firewall-diagnostics.md)
