@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: bef6e6c5ef795c192a846700fc046aa20274502d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673398"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841648"
 ---
-# <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Kapcsolódás Azure SQL Database az Azure-Multi-Factor Authentication
+# <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Kapcsolódás Azure SQL Database az Azure AD-vel Multi-Factor Authentication
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Ez a cikk egy C# programot tartalmaz, amely a Azure SQL Databasehoz kapcsolódik. A program interaktív mód hitelesítést használ, amely támogatja az [Azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
+Ez a cikk egy C# programot tartalmaz, amely a Azure SQL Databasehoz kapcsolódik. A program interaktív mód hitelesítést használ, amely támogatja az [Azure AD multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
 
 További információ az SQL-eszközök Multi-Factor Authentication támogatásáról: [Azure Active Directory támogatás a SQL Server Data Toolsban (SSDT)](/sql/ssdt/azure-active-directory).
 
@@ -39,7 +39,7 @@ A .NET-keretrendszer verziójának 4.7.2 kezdődően az Enum [`SqlAuthentication
 
 * Egy párbeszédpanel, amely egy Multi-Factor Authentication ellenőrző kódot kér, amelyet a rendszer a mobiltelefonnal továbbított.
 
-További információ az Azure AD konfigurálásáról a Multi-Factor Authentication megköveteléséhez: [Bevezetés az azure multi-Factor Authentication használatába a felhőben](../../active-directory/authentication/howto-mfa-getstarted.md).
+További információ arról, hogyan konfigurálhatja az Azure AD-t a Multi-Factor Authentication megköveteléséhez: [Bevezetés az Azure ad multi-Factor Authentication a felhőben](../../active-directory/authentication/howto-mfa-getstarted.md).
 
 A párbeszédpanelek képernyőképei a [többtényezős hitelesítés konfigurálása SQL Server Management Studio és az Azure ad-](authentication-mfa-ssms-configure.md)hoz című témakörben találhatók.
 
@@ -56,7 +56,7 @@ A Kezdés előtt létre kell hoznia és elérhetővé kell tennie egy [logikai S
 
 Az Azure AD-hitelesítés használatához a C# programnak Azure AD-alkalmazásként kell regisztrálnia. Egy alkalmazás regisztrálásához egy Azure ad-rendszergazdának vagy egy, az Azure AD- *alkalmazás fejlesztői* szerepkörhöz rendelt felhasználónak kell lennie. A szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [rendszergazdai és nem rendszergazdai szerepkörök kiosztása a felhasználókhoz Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
-Az alkalmazás regisztrációjának elvégzése létrehoz egy alkalmazást, és megjeleníti az **alkalmazás azonosítóját** . A programnak tartalmaznia kell ezt az azonosítót a kapcsolódáshoz.
+Az alkalmazás regisztrációjának elvégzése létrehoz egy alkalmazást, és megjeleníti az **alkalmazás azonosítóját**. A programnak tartalmaznia kell ezt az azonosítót a kapcsolódáshoz.
 
 Az alkalmazáshoz szükséges engedélyek regisztrálása és beállítása:
 
@@ -138,7 +138,7 @@ Futtassa a SSMS ugyanabból a számítógépről, ugyanabban az épületben, aho
 
 ### <a name="verify-azure-active-directory-multi-factor-authentication"></a>Azure Active Directory Multi-Factor Authentication ellenőrzése
 
-Futtassa újra a SSMS, ezúttal a **hitelesítés** **Azure Active Directory-Universal értékre van beállítva az MFA-val** . Ehhez a beállításhoz a 17,5-es vagy újabb SSMS-verzió szükséges.
+Futtassa újra a SSMS, ezúttal a **hitelesítés** **Azure Active Directory-Universal értékre van beállítva az MFA-val**. Ehhez a beállításhoz a 17,5-es vagy újabb SSMS-verzió szükséges.
 
 További információ: [multi-Factor Authentication konfigurálása a SSMS és az Azure ad-hez](authentication-mfa-ssms-configure.md).
 
@@ -152,7 +152,7 @@ További információ: [multi-Factor Authentication konfigurálása a SSMS és a
 
 A példában szereplő C#-program a [*Microsoft. IdentityModel. clients. ActiveDirectory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory) dll-szerelvényre támaszkodik.
 
-A csomag telepítéséhez a Visual Studióban válassza a **Project**  >  **NuGet-csomagok kezelése** lehetőséget. Keresse meg és telepítse a **Microsoft. IdentityModel. clients. ActiveDirectory** .
+A csomag telepítéséhez a Visual Studióban válassza a **Project**  >  **NuGet-csomagok kezelése** lehetőséget. Keresse meg és telepítse a **Microsoft. IdentityModel. clients. ActiveDirectory**.
 
 Ez egy példa a C# forráskódra.
 

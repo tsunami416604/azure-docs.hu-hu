@@ -7,13 +7,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 04/22/2018
 ms.author: zhshang
-ms.custom: mvc
-ms.openlocfilehash: d30804d132eec3c9f324413acd68014d1adaa710
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: ee9f0253f2ec27b4afbbb6c5dc1ff3f5c129fe8a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74158044"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841835"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>SignalR szolgáltatást és GitHub-hitelesítést használó webalkalmazás létrehozása
 
@@ -116,7 +116,7 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 | [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) | Frissíti az üzembehelyezési hitelesítő adatokat. |
 | [az webapp deployment source config-local-git](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) | Beszerez egy URL-címet egy Git-adattárvégponthoz, amely klónozáshoz és leküldéshez használható webalkalmazás üzembe helyezésekor. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

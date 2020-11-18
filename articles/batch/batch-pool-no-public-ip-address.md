@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: fcc0538dfef1581a244ae5fd9a3515be3470026c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09a5632f969117e69e68bbe0df2bfbab9a8a102b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850931"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842135"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Azure Batch-készlet létrehozása nyilvános IP-címek nélkül
 
@@ -25,7 +25,7 @@ Ha korlátozni szeretné ezen csomópontok elérését, és csökkenti a csomóp
 
 > [!IMPORTANT]
 > A nyilvános IP-címek nélküli készletek támogatása a Azure Batch jelenleg nyilvános előzetes verzióban érhető el a következő régiókban: Közép-Franciaország, Kelet-Ázsia, USA nyugati középső régiója, USA déli középső régiója, USA 2. nyugati régiója, USA nyugati régiója, Észak-Európa, USA 2. keleti régiója, USA középső régiója, Nyugat-Kelet-Ausztrália Európa
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ Ha korlátozni szeretné ezen csomópontok elérését, és csökkenti a csomóp
 - **Egy Azure-VNet**. Ha [virtuális hálózatban](batch-virtual-network.md)hozza létre a készletet, kövesse ezeket a követelményeket és konfigurációkat. Egy vagy több alhálózattal rendelkező VNet előkészítéséhez használhatja a Azure Portal, Azure PowerShell, az Azure Command-Line felületét (CLI) vagy más módszert.
   - A virtuális hálózatnak a Batch-fiókkal megegyező előfizetésben és régióban kell lennie.
   - A készlethez meghatározott alhálózatnak elegendő hozzá nem rendelt IP-címmel kell rendelkeznie ahhoz, hogy helyet tudjon adni a készlethez kijelölt számú virtuális gépnek. Ez a szám a készlet `targetDedicatedNodes` és `targetLowPriorityNodes` tulajdonságának összege. Ha az alhálózaton nincs elegendő hozzá nem rendelt IP-cím, akkor a készlet részlegesen lefoglalja a számítási csomópontokat, és átméretezési hiba következik be.
-  - Le kell tiltania a Private link Service és a végpont hálózati házirendjeit. Ezt az Azure CLI használatával végezheti el: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
+  - Le kell tiltania a Private link Service és a végpont hálózati házirendjeit. Ezt az Azure CLI használatával végezheti el: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resouce-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
 
 > [!IMPORTANT]
 > Minden 100 dedikált vagy alacsony prioritású csomópont esetében a Batch egy privát kapcsolati szolgáltatást és egy Load balancert foglal le. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Nagyméretű készletek esetén előfordulhat, hogy egy vagy több ilyen erőforráshoz [kvótát kell emelni](batch-quota-limit.md#increase-a-quota) . Emellett nem kell erőforrás-zárolást alkalmazni a Batch által létrehozott összes erőforrásra, mivel ez megakadályozhatja az erőforrások törlését a felhasználó által kezdeményezett műveletek eredményeképpen, például a készlet törlését vagy a nulla értékre való átméretezést.
@@ -48,13 +48,13 @@ Ha korlátozni szeretné ezen csomópontok elérését, és csökkenti a csomóp
 ## <a name="create-a-pool-without-public-ip-addresses-in-the-azure-portal"></a>Nyilvános IP-címek nélküli készlet létrehozása a Azure Portal
 
 1. Az Azure portálon lépjen Batch-fiókjára.
-1. A bal oldali **Beállítások** ablakban válassza a **készletek**elemet.
-1. A **készletek** ablakban válassza a **Hozzáadás**lehetőséget.
+1. A bal oldali **Beállítások** ablakban válassza a **készletek** elemet.
+1. A **készletek** ablakban válassza a **Hozzáadás** lehetőséget.
 1. A **készlet hozzáadása** ablakban válassza ki a használni kívánt beállítást a **rendszerkép típusa** legördülő listából.
 1. Válassza ki a rendszerképének megfelelő **közzétevőt/ajánlatot/SKU-** t.
-1. Megadhatja a fennmaradó szükséges beállításokat, beleértve a **csomópont méretét**, a **célként kijelölt csomópontokat**és az **alacsony prioritású csomópontokat**, valamint a kívánt választható beállításokat.
+1. Megadhatja a fennmaradó szükséges beállításokat, beleértve a **csomópont méretét**, a **célként kijelölt csomópontokat** és az **alacsony prioritású csomópontokat**, valamint a kívánt választható beállításokat.
 1. Opcionálisan kiválaszthatja a használni kívánt virtuális hálózatot és alhálózatot. A virtuális hálózatnak ugyanabban az erőforráscsoporthoz kell tartoznia, mint a létrehozandó készletnek.
-1. Az **IP-cím kiépítési típusa**területen válassza a **NoPublicIPAddresses**lehetőséget.
+1. Az **IP-cím kiépítési típusa** területen válassza a **NoPublicIPAddresses** lehetőséget.
 
 ![Képernyőfelvétel a készlet hozzáadása képernyőről a kiválasztott NoPublicIPAddresses.](./media/batch-pool-no-public-ip-address/create-pool-without-public-ip-address.png)
 

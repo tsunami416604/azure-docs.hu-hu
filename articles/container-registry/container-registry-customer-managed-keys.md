@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Container Registry titkosítását, valamint a
 ms.topic: article
 ms.date: 09/30/2020
 ms.custom: ''
-ms.openlocfilehash: 6eaae5266277a6a65c7cecaa761b75e3a41ebe87
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ad81a94910cb1ed09634801f8706182e17947225
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940667"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842566"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Beállításjegyzék titkosítása az ügyfél által felügyelt kulccsal
 
@@ -104,7 +104,7 @@ keyvaultID=$(az keyvault show --resource-group <resource-group-name> --name <key
 
 ### <a name="enable-key-vault-access"></a>Key Vault-hozzáférés engedélyezése
 
-Konfiguráljon egy házirendet a Key vaulthoz, hogy az identitás hozzáférhessen. A következő az a kulcstartó [set-Policy][az-keyvault-set-policy] paranccsal megadhatja a korábban létrehozott felügyelt identitás elsődleges azonosítóját, amelyet előzőleg egy környezeti változóban tároltak. Adja meg a **Get**, a **UnwrapKey**és a **wrapKey**kulcs engedélyeit.  
+Konfiguráljon egy házirendet a Key vaulthoz, hogy az identitás hozzáférhessen. A következő az a kulcstartó [set-Policy][az-keyvault-set-policy] paranccsal megadhatja a korábban létrehozott felügyelt identitás elsődleges azonosítóját, amelyet előzőleg egy környezeti változóban tároltak. Adja meg a **Get**, a **UnwrapKey** és a **wrapKey** kulcs engedélyeit.  
 
 ```azurecli
 az keyvault set-policy \
@@ -210,7 +210,7 @@ Az identitás nevét a későbbi lépésekben használhatja.
 
 ### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-A kulcstartó létrehozásának lépéseiért lásd [: gyors üzembe helyezés és a Azure Key Vault titkos kód beolvasása a Azure Portal használatával](../key-vault/secrets/quick-create-portal.md).
+A Key Vault létrehozásának lépéseiért lásd: gyors útmutató [: Azure Key Vault létrehozása a Azure Portal](../key-vault/general/quick-create-portal.md).
 
 Ha az ügyfél által felügyelt kulcshoz kulcstartót hoz létre, az **alapok** lapon engedélyezze a következő védelmi beállításokat: **Soft delete** and **Purge Protection**. Ezek a beállítások segítenek megakadályozni az adatvesztést a véletlen kulcs vagy a kulcstartó törlése miatt.
 
@@ -221,44 +221,44 @@ Ha az ügyfél által felügyelt kulcshoz kulcstartót hoz létre, az **alapok**
 Konfiguráljon egy házirendet a Key vaulthoz, hogy az identitás hozzáférhessen.
 
 1. Navigáljon a kulcstartóhoz.
-1. Válassza a **Beállítások**  >  **hozzáférési szabályzatok > + hozzáférési házirend hozzáadása**lehetőséget.
-1. Válassza a **kulcs engedélyei**lehetőséget, majd a **beolvasás**, a **kicsomagolás** **és a**kicsomagolási kulcs elemet.
+1. Válassza a **Beállítások**  >  **hozzáférési szabályzatok > + hozzáférési házirend hozzáadása** lehetőséget.
+1. Válassza a **kulcs engedélyei** lehetőséget, majd a **beolvasás**, a **kicsomagolás** **és a** kicsomagolási kulcs elemet.
 1. Válassza a **rendszerbiztonsági tag** kiválasztása lehetőséget, és válassza ki a felhasználó által hozzárendelt felügyelt identitás erőforrásának nevét.  
-1. Válassza a **Hozzáadás**, majd a **Mentés**lehetőséget.
+1. Válassza a **Hozzáadás**, majd a **Mentés** lehetőséget.
 
 ![Key Vault hozzáférési szabályzat létrehozása](./media/container-registry-customer-managed-keys/add-key-vault-access-policy.png)
 
  Azt is megteheti, hogy az [Azure RBAC Key Vault](../key-vault/general/rbac-guide.md) (előzetes verzió) használatával rendeli hozzá az identitáshoz a kulcstartó eléréséhez szükséges engedélyeket. Rendelje hozzá például az Key Vault titkosítási szolgáltatás titkosítási szerepkörét az identitáshoz.
 
 1. Navigáljon a kulcstartóhoz.
-1. Válassza a **hozzáférés-vezérlés (iam)**  >  **+** Hozzáadás  >  **szerepkör-hozzárendelés**hozzáadása elemet.
+1. Válassza a **hozzáférés-vezérlés (iam)**  >  **+** Hozzáadás  >  **szerepkör-hozzárendelés** hozzáadása elemet.
 1. A **szerepkör-hozzárendelés hozzáadása** ablakban:
     1. Válassza **Key Vault titkosítási szolgáltatás titkosítása (előzetes verzió)** szerepkört. 
     1. Hozzáférés hozzárendelése a **felhasználóhoz rendelt felügyelt identitáshoz**.
-    1. Válassza ki a felhasználó által hozzárendelt felügyelt identitás erőforrásának nevét, majd válassza a **Mentés**lehetőséget.
+    1. Válassza ki a felhasználó által hozzárendelt felügyelt identitás erőforrásának nevét, majd válassza a **Mentés** lehetőséget.
 
 ### <a name="create-key"></a>Kulcs létrehozása
 
 1. Navigáljon a kulcstartóhoz.
-1. Válassza a **Beállítások**  >  **kulcsok**elemet.
+1. Válassza a **Beállítások**  >  **kulcsok** elemet.
 1. Válassza a **+ Létrehozás/importálás** lehetőséget, és adjon meg egy egyedi nevet a kulcshoz.
-1. Fogadja el a többi alapértelmezett értéket, és válassza a **Létrehozás**lehetőséget.
+1. Fogadja el a többi alapértelmezett értéket, és válassza a **Létrehozás** lehetőséget.
 1. A létrehozás után válassza ki a kulcsot, és jegyezze fel az aktuális kulcs verzióját.
 
 ### <a name="create-azure-container-registry"></a>Azure Container Registry létrehozása
 
-1. Válassza **az erőforrás létrehozása**  >  **tárolók**  >  **Container Registry**elemet.
-1. Az **alapvető beállítások** lapon válasszon ki vagy hozzon létre egy erőforráscsoportot, és adjon meg egy beállításjegyzék-nevet. Az **SKU**területen válassza a **prémium**lehetőséget.
-1. A **titkosítás** lap **ügyfél által felügyelt kulcs**területén válassza az **engedélyezve**lehetőséget.
-1. Az **identitás**területen válassza ki a létrehozott felügyelt identitást.
-1. A **titkosítás**területen válassza **a kiválasztás a Key Vault lehetőséget**.
+1. Válassza **az erőforrás létrehozása**  >  **tárolók**  >  **Container Registry** elemet.
+1. Az **alapvető beállítások** lapon válasszon ki vagy hozzon létre egy erőforráscsoportot, és adjon meg egy beállításjegyzék-nevet. Az **SKU** területen válassza a **prémium** lehetőséget.
+1. A **titkosítás** lap **ügyfél által felügyelt kulcs** területén válassza az **engedélyezve** lehetőséget.
+1. Az **identitás** területen válassza ki a létrehozott felügyelt identitást.
+1. A **titkosítás** területen válassza **a kiválasztás a Key Vault lehetőséget**.
 1. A **válasszon kulcsot Azure Key Vault** ablakban válassza ki az előző szakaszban létrehozott kulcstárolót, kulcsot és verziót.
-1. A **titkosítás** lapon válassza a **felülvizsgálat + létrehozás**elemet.
+1. A **titkosítás** lapon válassza a **felülvizsgálat + létrehozás** elemet.
 1. Válassza a **Létrehozás** lehetőséget a beállításjegyzék-példány telepítéséhez.
 
 ![Tároló-beállításjegyzék létrehozása a Azure Portal](./media/container-registry-customer-managed-keys/create-encrypted-registry.png)
 
-Ha szeretné megtekinteni a beállításjegyzék titkosítási állapotát a portálon, keresse meg a beállításjegyzéket. A **Beállítások**területen válassza a  **titkosítás**lehetőséget.
+Ha szeretné megtekinteni a beállításjegyzék titkosítási állapotát a portálon, keresse meg a beállításjegyzéket. A **Beállítások** területen válassza a  **titkosítás** lehetőséget.
 
 ## <a name="enable-customer-managed-key---template"></a>Ügyfél által felügyelt kulcs – sablon engedélyezése
 
@@ -448,13 +448,13 @@ A beállításjegyzék **titkosítási** beállításaival frissítheti az ügyf
 Például egy új kulcs verziójának létrehozásához és konfigurálásához:
 
 1. A portálon navigáljon a beállításjegyzékhez.
-1. A **Beállítások**területen válassza a **titkosítási**  >  **kulcs módosítása**elemet.
+1. A **Beállítások** területen válassza a **titkosítási**  >  **kulcs módosítása** elemet.
 1. Válassza a **kulcs kiválasztása** lehetőséget.
 
     ![Kulcs elforgatása a Azure Portalban](./media/container-registry-customer-managed-keys/rotate-key.png)
-1. A **válasszon kulcsot Azure Key Vault** ablakban válassza ki a korábban konfigurált kulcstartót és kulcsot, majd a **verzió**területen válassza az **új létrehozása**lehetőséget.
-1. A **kulcs létrehozása** **ablakban válassza a létrehozás,** majd a **Létrehozás**lehetőséget.
-1. Fejezze be a kulcs kijelölését, és válassza a **Mentés**lehetőséget.
+1. A **válasszon kulcsot Azure Key Vault** ablakban válassza ki a korábban konfigurált kulcstartót és kulcsot, majd a **verzió** területen válassza az **új létrehozása** lehetőséget.
+1. A **kulcs létrehozása** **ablakban válassza a létrehozás,** majd a **Létrehozás** lehetőséget.
+1. Fejezze be a kulcs kijelölését, és válassza a **Mentés** lehetőséget.
 
 ## <a name="revoke-key"></a>Kulcs visszavonása
 
@@ -484,32 +484,32 @@ A beállításjegyzék rendszerhez rendelt felügyelt identitását beállíthat
 A beállításjegyzék rendszerhez rendelt identitásának engedélyezése a portálon:
 
 1. A portálon navigáljon a beállításjegyzékhez.
-1. Válassza a **Beállítások**  >   **identitás**lehetőséget.
-1. A **rendszer által hozzárendelve**beállításnál állítsa be **a**következőt: **állapot** . Kattintson a **Mentés** gombra.
+1. Válassza a **Beállítások**  >   **identitás** lehetőséget.
+1. A **rendszer által hozzárendelve** beállításnál állítsa be **a** következőt: **állapot** . Válassza a **Mentés** lehetőséget.
 1. Másolja az identitás **objektum-azonosítóját** .
 
 Az identitás hozzáférésének biztosítása a kulcstartóhoz:
 
 1. Navigáljon a kulcstartóhoz.
-1. Válassza a **Beállítások**  >  **hozzáférési szabályzatok > + hozzáférési házirend hozzáadása**lehetőséget.
-1. Válassza a **kulcs engedélyei**lehetőséget, majd a **beolvasás**, a **kicsomagolás** **és a**kicsomagolási kulcs elemet.
+1. Válassza a **Beállítások**  >  **hozzáférési szabályzatok > + hozzáférési házirend hozzáadása** lehetőséget.
+1. Válassza a **kulcs engedélyei** lehetőséget, majd a **beolvasás**, a **kicsomagolás** **és a** kicsomagolási kulcs elemet.
 1. Válassza a **rendszerbiztonsági tag kiválasztása** lehetőséget, és keresse meg a rendszer által hozzárendelt felügyelt identitáshoz tartozó objektumazonosítót, vagy a beállításjegyzék nevét.  
-1. Válassza a **Hozzáadás**, majd a **Mentés**lehetőséget.
+1. Válassza a **Hozzáadás**, majd a **Mentés** lehetőséget.
 
 A beállításjegyzék titkosítási beállításainak frissítése a személyazonosság használatára:
 
 1. A portálon navigáljon a beállításjegyzékhez.
-1. A **Beállítások**területen válassza a **titkosítási**  >  **kulcs módosítása**elemet.
-1. Az **identitás**területen válassza ki a **rendszer által hozzárendelt**elemet, majd kattintson a **Mentés**gombra.
+1. A **Beállítások** területen válassza a **titkosítási**  >  **kulcs módosítása** elemet.
+1. Az **identitás** területen válassza ki a **rendszer által hozzárendelt** elemet, majd kattintson a **Mentés** gombra.
 
 ### <a name="enable-key-vault-bypass"></a>Key Vault megkerülésének engedélyezése
 
 Key Vault tűzfallal konfigurált kulcstartó eléréséhez a beállításjegyzéknek meg kell kerülnie a tűzfalat. Győződjön meg arról, hogy a Key Vault úgy van konfigurálva, hogy bármely [megbízható szolgáltatás](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)számára engedélyezze a hozzáférést. Azure Container Registry az egyik megbízható szolgáltatás.
 
 1. A portálon navigáljon a kulcstartóhoz.
-1. Válassza a **Beállítások**  >  **hálózatkezelés**lehetőséget.
+1. Válassza a **Beállítások**  >  **hálózatkezelés** lehetőséget.
 1. Virtuális hálózati beállítások megerősítése, frissítése vagy hozzáadása. Részletes lépések: [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/general/network-security.md).
-1. A **tűzfal megkerülésének engedélyezése a Microsoft megbízható szolgáltatások számára**területen válassza az **Igen**lehetőséget. 
+1. A **tűzfal megkerülésének engedélyezése a Microsoft megbízható szolgáltatások számára** területen válassza az **Igen** lehetőséget. 
 
 ### <a name="rotate-the-customer-managed-key"></a>Az ügyfél által felügyelt kulcs elforgatása
 

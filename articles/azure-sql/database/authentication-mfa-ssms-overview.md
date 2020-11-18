@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 3b81572266f6ee5bd90662a98988d41479f399cc
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9afad44bcf67478a81e75c17d0ff8ffc6d8c65aa
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675005"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841129"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-Factor Azure Active Directory hitelesítés használata
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -41,13 +41,13 @@ Két nem interaktív hitelesítési modell létezik az Azure AD-hez, amely szám
 - `Azure Active Directory - Password`
 - `Azure Active Directory - Integrated`
 
-Az Azure Multi-Factor Authenticationt (MFA) is támogató interaktív módszer a következő: 
+Az Azure AD Multi-Factor Authentication (MFA)-t is támogató interaktív módszer a következő: 
 
 - `Azure Active Directory - Universal with MFA`
 
-Az Azure MFA segíti az adatok és alkalmazások védelmét az illetéktelen hozzáférésekkel szemben, miközben a felhasználói igényeknek megfelelő, egyszerű bejelentkezési folyamat használatát teszi lehetővé. Erős hitelesítést biztosít számos egyszerű ellenőrzési lehetőséggel (telefonhívás, szöveges üzenet, PIN-kóddal ellátott intelligens kártyák vagy mobil alkalmazások értesítése), így a felhasználók kiválaszthatják a kívánt módszert. Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti.
+Az Azure AD MFA segít megőrizni az adathozzáférést és az alkalmazásokat, miközben egy egyszerű bejelentkezési folyamatra vonatkozó felhasználói igényeket is kielégít. Erős hitelesítést biztosít számos egyszerű ellenőrzési lehetőséggel (telefonhívás, szöveges üzenet, PIN-kóddal ellátott intelligens kártyák vagy mobil alkalmazások értesítése), így a felhasználók kiválaszthatják a kívánt módszert. Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti.
 
-Az Azure Multi-Factor Authentication leírását itt tekintheti meg: [multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
+Az Azure AD Multi-Factor Authentication leírását lásd: [multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
 A konfigurációs lépésekért lásd: [Azure SQL Database multi-Factor Authentication konfigurálása SQL Server Management studiohoz](authentication-mfa-ssms-configure.md).
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD-tartománynév vagy bérlői azonosító paraméter
@@ -58,7 +58,7 @@ Az univerzális hitelesítéssel hitelesíteni kívánt összes vendég felhaszn
 
 
 1. Nyisson meg egy kapcsolatokat a SSMS-ben. Adja meg a kiszolgáló nevét, és válassza a **Azure Active Directory-Universal beállítást MFA-** hitelesítéssel. Adja meg azt a **felhasználónevet** , amelyhez be szeretné jelentkezni.
-1. Válassza a **Beállítások** mezőt, és lépjen át a **kapcsolat tulajdonságai** lapra. A **Kapcsolódás az adatbázishoz** párbeszédpanelen végezze el az adatbázis párbeszédpaneljét. Ellenőrizze az **ad-tartomány nevét vagy a bérlő azonosítóját** , és adja meg a hitelesítő hatóságot, például a tartománynevet ( **contosotest.onmicrosoft.com** ) vagy a bérlő azonosítójának GUID azonosítóját. 
+1. Válassza a **Beállítások** mezőt, és lépjen át a **kapcsolat tulajdonságai** lapra. A **Kapcsolódás az adatbázishoz** párbeszédpanelen végezze el az adatbázis párbeszédpaneljét. Ellenőrizze az **ad-tartomány nevét vagy a bérlő azonosítóját** , és adja meg a hitelesítő hatóságot, például a tartománynevet (**contosotest.onmicrosoft.com**) vagy a bérlő azonosítójának GUID azonosítóját. 
 
    ![Képernyőfelvétel a kapcsolat tulajdonságai lapról: a Kapcsolódás az adatbázishoz és az AD-tartománynévhez vagy a bérlői AZONOSÍTÓhoz tartozó beállítások.](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
 
@@ -100,4 +100,4 @@ Az adatbázis-felhasználó létrehozása után a felhasználó `steve@gmail.com
 - [BACPAC-fájl importálása egy új adatbázisba](database-import.md)  
 - [Adatbázis exportálása BACPAC-fájlba](database-export.md)  
 - C# interfész [IUniversalAuthProvider interfész](/dotnet/api/microsoft.sqlserver.dac.iuniversalauthprovider)  
-- A **Azure Active Directory-Universal és az MFA-** hitelesítés használatakor a ADAL nyomkövetés a [SSMS 17,3](/sql/ssms/download-sql-server-management-studio-ssms)-es verziójától kezdődően érhető el. Alapértelmezés szerint kikapcsolhatja a ADAL nyomkövetését az **eszközök** , beállítások menü, az **Azure-szolgáltatások** , az **Azure-felhő** , a **ADAL kimeneti ablak nyomkövetési szintje** **lehetőséggel** , majd a **kimenet** lehetőséget a **nézet** menüben engedélyezheti. A Nyomkövetések a kimeneti ablakban érhetők el **Azure Active Directory lehetőség** kiválasztásakor.
+- A **Azure Active Directory-Universal és az MFA-** hitelesítés használatakor a ADAL nyomkövetés a [SSMS 17,3](/sql/ssms/download-sql-server-management-studio-ssms)-es verziójától kezdődően érhető el. Alapértelmezés szerint kikapcsolhatja a ADAL nyomkövetését az **eszközök**, beállítások menü, az **Azure-szolgáltatások**, az **Azure-felhő**, a **ADAL kimeneti ablak nyomkövetési szintje** **lehetőséggel** , majd a **kimenet** lehetőséget a **nézet** menüben engedélyezheti. A Nyomkövetések a kimeneti ablakban érhetők el **Azure Active Directory lehetőség** kiválasztásakor.

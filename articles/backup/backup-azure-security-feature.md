@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentése
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 5a408dc07e83e790a63f8a252d4ed3f84bf66be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c671b1b54b937f518f7179bb6940f31a28a78d4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181680"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841018"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez
 
-A biztonsági problémákkal, például a kártevővel, a ransomware és a behatolással kapcsolatos problémák egyre nagyobbak. Ezek a biztonsági problémák költségesek lehetnek a pénz és az adatmennyiség tekintetében. Az ilyen támadások elleni védelem érdekében Azure Backup mostantól biztonsági funkciókat biztosít a hibrid biztonsági másolatok védelméhez. Ez a cikk bemutatja, hogyan engedélyezheti és használhatja ezeket a szolgáltatásokat Azure Recovery Services-ügynök és-Azure Backup Server használatával. Ezek a lehetőségek a következők:
+A biztonsági problémákkal, például a kártevővel, a ransomware és a behatolással kapcsolatos problémák egyre nagyobbak. Ezek a biztonsági problémák költségesek lehetnek a pénz és az adatmennyiség tekintetében. Az ilyen támadások elleni védelem érdekében Azure Backup mostantól biztonsági funkciókat biztosít a hibrid biztonsági másolatok védelméhez. Ez a cikk bemutatja, hogyan engedélyezheti és használhatja ezeket a szolgáltatásokat Azure Recovery Services-ügynök és-Azure Backup Server használatával. Ezek a funkciók a következők:
 
 - **Megelőzés**. A rendszer egy további hitelesítési réteget ad hozzá, amikor egy kritikus művelet, például a jelszó módosítása történik. Ez az ellenőrzés biztosítja, hogy ezeket a műveleteket csak azok a felhasználók tudják végrehajtani, akik rendelkeznek érvényes Azure-beli hitelesítő adatokkal.
 - **Riasztás**. A rendszer értesítést küld az előfizetés-rendszergazdának, amikor egy kritikus művelet, például a biztonsági mentési adattörlés történik. Ez az e-mail biztosítja, hogy a felhasználó gyorsan értesüljön az ilyen műveletekről.
@@ -35,23 +35,23 @@ A biztonsági problémákkal, például a kártevővel, a ransomware és a behat
 Ha Recovery Services-tárolót hoz létre, az összes biztonsági funkciót használhatja. Ha meglévő tárolóval dolgozik, a következő lépésekkel engedélyezheti a biztonsági funkciókat:
 
 1. Az Azure-beli hitelesítő adataival jelentkezzen be a Azure Portalba.
-2. Válassza a **Tallózás**lehetőséget, és írja be a **Recovery Services**.
+2. Válassza a **Tallózás** lehetőséget, és írja be a **Recovery Services**.
 
     ![Képernyőkép Azure Portal tallózási lehetőségről](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
 
     A Recovery Services-tárolók listája megjelenik. A listából válassza ki a tárolót. Megnyílik a kiválasztott tároló irányítópultja.
-3. A tár alatt megjelenő elemek listájából válassza a **Beállítások**területen a **Tulajdonságok**elemet.
+3. A tár alatt megjelenő elemek listájából válassza a **Beállítások** területen a **Tulajdonságok** elemet.
 
     ![Képernyőkép a Recovery Services tároló lehetőségeiről](./media/backup-azure-security-feature/vault-list-properties.png)
-4. A **biztonsági beállítások**területen válassza a **frissítés**lehetőséget.
+4. A **biztonsági beállítások** területen válassza a **frissítés** lehetőséget.
 
     ![Képernyőkép a Recovery Services tároló tulajdonságairól](./media/backup-azure-security-feature/security-settings-update.png)
 
     A frissítés hivatkozásra kattintva megnyílik a **biztonsági beállítások** ablaktábla, amely összefoglalja a szolgáltatásokat, és lehetővé teszi azok engedélyezését.
-5. A legördülő listából **konfigurálta az azure multi-Factor Authentication?** beállítást, és erősítse meg, hogy engedélyezte-e az [Azure multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md). Ha engedélyezve van, a rendszer arra kéri, hogy végezzen hitelesítést egy másik eszközről (például egy mobiltelefonról), miközben bejelentkezik a Azure Portalba.
+5. A legördülő listában **konfigurálta az Azure ad-multi-Factor Authentication?** beállításnál válassza ki a kívánt értéket, és erősítse meg, hogy engedélyezte-e az [azure ad-multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md). Ha engedélyezve van, a rendszer arra kéri, hogy végezzen hitelesítést egy másik eszközről (például egy mobiltelefonról), miközben bejelentkezik a Azure Portalba.
 
-   Ha kritikus műveleteket végez a biztonsági mentésben, meg kell adnia egy biztonsági PIN-kódot, amely elérhető a Azure Portal. Az Azure Multi-Factor Authentication engedélyezése biztonsági réteget ad. Csak az érvényes Azure-beli hitelesítő adatokkal rendelkező és egy második eszközről hitelesített jogosult felhasználók férhetnek hozzá a Azure Portalhoz.
-6. A biztonsági beállítások mentéséhez válassza az **Engedélyezés** lehetőséget, majd válassza a **Mentés**lehetőséget. Ha az előző lépésben az **Azure multi-Factor Authentication? listában beállított** értéket választotta, válassza ki az **Engedélyezés** lehetőséget.
+   Ha kritikus műveleteket végez a biztonsági mentésben, meg kell adnia egy biztonsági PIN-kódot, amely elérhető a Azure Portal. Az Azure AD Multi-Factor Authentication engedélyezése biztonsági réteget ad. Csak az érvényes Azure-beli hitelesítő adatokkal rendelkező és egy második eszközről hitelesített jogosult felhasználók férhetnek hozzá a Azure Portalhoz.
+6. A biztonsági beállítások mentéséhez válassza az **Engedélyezés** lehetőséget, majd válassza a **Mentés** lehetőséget. Ha az előző lépésben az **Azure AD multi-Factor Authentication?** listában megadott értéket választja, akkor a csak az **Engedélyezés** lehetőséget választhatja.
 
     ![A biztonsági beállítások képernyőképe](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
@@ -88,9 +88,9 @@ Ha további hitelesítési réteget ad hozzá a kritikus műveletekhez, a rendsz
 
 A PIN-kód fogadása:
 
-1. Jelentkezzen be az Azure portálra.
-2. Tallózással keresse meg **Recovery Services**tár  >  **Beállítások**  >  **tulajdonságait**.
-3. A **biztonsági PIN-kód**területen válassza a **készítés**elemet. Ekkor megnyílik egy ablaktábla, amely tartalmazza az Azure Recovery Services Agent felhasználói felületén beírni kívánt PIN-kódot.
+1. Jelentkezzen be az Azure Portalra.
+2. Tallózással keresse meg **Recovery Services** tár  >  **Beállítások**  >  **tulajdonságait**.
+3. A **biztonsági PIN-kód** területen válassza a **készítés** elemet. Ekkor megnyílik egy ablaktábla, amely tartalmazza az Azure Recovery Services Agent felhasználói felületén beírni kívánt PIN-kódot.
     Ez a PIN-kód csak öt percre érvényes, és az adott időszak után automatikusan létrejön.
 
 ### <a name="maintain-a-minimum-retention-range"></a>Minimális megőrzési időtartam fenntartása

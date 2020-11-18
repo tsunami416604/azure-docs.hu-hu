@@ -11,16 +11,16 @@ ms.date: 10/15/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e328caa80a0e63f68f2563bc91a6405341ad064e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c0ab4d367d2ca9fd59c26ce8d36b5f80dcb832c8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102068"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840627"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Multi-Factor Authentication engedélyezése Azure Active Directory B2C
 
-A Azure Active Directory B2C (Azure AD B2C) közvetlenül az [Azure multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) integrálódik, így egy második biztonsági réteget adhat hozzá az alkalmazásaiban való regisztráláshoz és bejelentkezési élményekhez. A többtényezős hitelesítés engedélyezése egyetlen sor kód írása nélkül. Ha már létrehozott egy regisztrációs és bejelentkezési felhasználói folyamatot, továbbra is engedélyezheti a többtényezős hitelesítést.
+A Azure Active Directory B2C (Azure AD B2C) közvetlenül az [Azure multi-Factor Authentication ad](../active-directory/authentication/multi-factor-authentication.md) -vel integrálódik, így egy második biztonsági réteget adhat hozzá az alkalmazásaiban való regisztráláshoz és bejelentkezési élményekhez. A többtényezős hitelesítés engedélyezése egyetlen sor kód írása nélkül. Ha már létrehozott egy regisztrációs és bejelentkezési felhasználói folyamatot, továbbra is engedélyezheti a többtényezős hitelesítést.
 
 Ez a funkció megkönnyíti az alkalmazások számára a következő forgatókönyvek kezelését:
 
@@ -31,11 +31,11 @@ Ez a funkció megkönnyíti az alkalmazások számára a következő forgatókö
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 1. A felső menüben a **könyvtár + előfizetés** szűrő használatával válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza a **felhasználói folyamatok**lehetőséget.
+1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
+1. Válassza a **felhasználói folyamatok** lehetőséget.
 1. Válassza ki azt a felhasználói folyamatot, amelynek engedélyezni szeretné az MFA-t. Például *B2C_1_signinsignup*.
 1. Válassza ki a **Tulajdonságok** elemet.
-1. A **többtényezős hitelesítés** szakaszban válassza ki a kívánt **MFA-módszert**, majd az **MFA-kényszerítés** területen válassza az **Always on vagy a** ** [feltételes](conditional-access-user-flow.md) (ajánlott)** lehetőséget. A feltételes hozzáféréshez hozzon létre egy [feltételes hozzáférési](conditional-access-identity-protection-setup.md) szabályzatot, és határozza meg azokat az alkalmazásokat, amelyekre alkalmazni szeretné a szabályzatot. 
+1. A **többtényezős hitelesítés** szakaszban válassza ki a kívánt **MFA-módszert**, majd az **MFA-kényszerítés** területen válassza az **Always on vagy a** **[feltételes](conditional-access-user-flow.md) (ajánlott)** lehetőséget. A feltételes hozzáféréshez hozzon létre egy [feltételes hozzáférési](conditional-access-identity-protection-setup.md) szabályzatot, és határozza meg azokat az alkalmazásokat, amelyekre alkalmazni szeretné a szabályzatot. 
 1. Kattintson a Mentés gombra. Az MFA mostantól engedélyezve van ennél a felhasználói folyamatnál.
 
 A **felhasználói folyamat futtatásával** ellenőrizheti a felhasználói élményt. Erősítse meg a következő helyzetet:

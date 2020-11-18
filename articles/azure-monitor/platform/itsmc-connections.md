@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: a75dd24769a4f1af018981ffcec279afc2a88b5a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f7980ca7bc6f23c383ea013c2b017b3bd61e2d25
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682418"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842294"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek/-szolgáltatások összekapcsolása IT Service Management-összekötővel
 Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](./itsmc-overview.md).
@@ -41,6 +41,7 @@ Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 - A hibrid kapcsolatok létrehozása és konfigurálása megtörtént. További információ: [a hibrid kapcsolatok konfigurálása](#configure-the-hybrid-connection).
 - A Service Manager támogatott verziói: 2012 R2 vagy 2016.
 - Felhasználói szerepkör:  [speciális kezelő](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10)).
+- A Azure Monitor által elküldett riasztások jelenleg System Center Service Manager incidensekben hozhatók létre.
 
 > [!NOTE]
 > 
@@ -186,7 +187,7 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztathatók 
 Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 - A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#add-it-service-management-connector).
 - ServiceNow támogatott verziók: Orlando, New York, Madrid, London, Kingston, Jakarta, Isztambul, Helsinki, Genf.
-- A Azure Monitor által elküldett riasztások ma a következő elemek egyikének ServiceNow hozhatók létre: események, Incedents vagy riasztások.
+- A Azure Monitor által elküldett riasztások ma a következő elemek egyikének ServiceNow hozhatók létre: események, incidensek vagy riasztások.
 > [!NOTE]
 > A ITSMC csak a szolgáltatás hivatalos SaaS-ajánlatát támogatja. A szolgáltatás privát telepítései jelenleg nem támogatottak. 
 

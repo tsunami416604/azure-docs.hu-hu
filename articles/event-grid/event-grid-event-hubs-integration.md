@@ -3,13 +3,13 @@ title: 'Oktatóanyag: Event Hubs-adatraktárba való küldés az adattárházba 
 description: 'Oktatóanyag: a Azure Event Grid és a Event Hubs használatával végezheti el az adatáttelepítést az Azure szinapszis Analytics szolgáltatásba. Egy Azure-függvény használatával kéri le a rögzítési fájlt.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4fb26bf92e6af1fd9e97f3b9434b4ab5e76316b3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e6dfcac17d79edd417af07179224fdf922906c4e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305279"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841354"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Oktatóanyag: stream big data adattárházba
 Az Azure [Event Grid](overview.md) egy intelligens esemény-útválasztási szolgáltatás, amely lehetővé teszi, hogy az alkalmazásokból és szolgáltatásokból érkező értesítésekre (eseményekre) reagáljon. Például elindíthat egy Azure-függvényt az Azure Blob Storage-ba vagy Azure Data Lake Storageba rögzített Event Hubs-adat feldolgozásához, és áttelepítheti azokat más adattárakba. Ez a [Event Hubs és Event Grid integrációs minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) azt mutatja be, hogyan használhatók a Event Hubs és a Event Grid a blob Storage-ból származó rögzített Event Hubs adatok zökkenőmentes áttelepítésére az Azure szinapszis analyticsbe (korábban SQL Data Warehouse).
@@ -249,7 +249,7 @@ A függvény közzététele után feliratkozhat az eseményre.
     1. Az **esemény-előfizetés részletei** lapon adja meg az előfizetés nevét (például: captureEventSub), majd válassza a **Létrehozás** lehetőséget. 
     2. A **témakör részletei** szakaszban hajtsa végre a következő műveleteket:
         1. Válassza ki **Event Hubs névtereket** a **témakörök típusaihoz**. 
-        2. Válassza ki az Azure-előfizetését.
+        2. Válassza ki Azure-előfizetését.
         2. Válassza ki az Azure-erőforráscsoportot.
         3. Válassza ki a Event Hubs névteret.
     3. Az **események típusai** szakaszban ellenőrizze, hogy a **létrehozott rögzítési fájl** ki van-e jelölve az **eseménytípus szűréséhez**. 

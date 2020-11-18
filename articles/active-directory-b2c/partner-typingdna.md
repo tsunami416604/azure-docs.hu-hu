@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: f7d89942ad5209b854b8df486ad3e59a3976edfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edbc944e77d2483d32574f8044c72fc3d1292e2a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259051"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840434"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Oktatóanyag a TypingDNA konfigurálásához a Azure Active Directory B2C
 
 Ebből az útmutatóból megtudhatja, hogyan integrálhat egy minta online fizetési alkalmazást Azure Active Directory B2C a TypingDNA ALKALMAZÁSsal. A TypingDNA alkalmazás használatával Azure AD B2C [ügyfeleink a PSD2](https://www.typingdna.com/use-cases/sca-strong-customer-authentication) -tranzakció követelményeinek teljesítését a billentyűleütés-dinamika és az ügyfelek erős hitelesítése révén. További információt a TypingDNA [itt](https://www.typingdna.com/)talál.
 
- Azure AD B2C a TypingDNA technológiáit használja a felhasználók begépelési jellemzőinek rögzítéséhez, és az egyes hitelesítések ismeretének megírásához és elemzéséhez. Ez egy olyan védelmi réteget ad hozzá, amely a hitelesítés riskiness és a kockázati szintek kiértékelésével kapcsolatos. Azure AD B2C hivatkozhat más mechanizmusokra, hogy további bizalmat biztosítson a felhasználónak, aki az Azure MFA meghívásával, az e-mailek ellenőrzésének kényszerítésével, vagy bármely más, a forgatókönyvhöz tartozó egyéni logikával való használatra hivatkozik.
+ Azure AD B2C a TypingDNA technológiáit használja a felhasználók begépelési jellemzőinek rögzítéséhez, és az egyes hitelesítések ismeretének megírásához és elemzéséhez. Ez egy olyan védelmi réteget ad hozzá, amely a hitelesítés riskiness és a kockázati szintek kiértékelésével kapcsolatos. Azure AD B2C hivatkozhat más mechanizmusokra, hogy további bizalmat biztosítson a felhasználónak, aki az Azure AD MFA meghívásával, az e-mailek ellenőrzésének kényszerítésével, vagy bármely más, a forgatókönyvhöz tartozó egyéni logikával való használatra hivatkozik.
 
 >[!NOTE]
 > Ez a minta szabályzat a [SocialAndLocalAccountsWithMfa](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccountsWithMfa) Starter Packen alapul.
@@ -113,7 +113,7 @@ Ezeket a küszöbértékeket a használati esethez kell igazítani.
 
 - Miután az API kiértékelte a `net_score` -t, egy logikai jogcímet kell visszaadnia a B2C-nek `promptMFA` .
 
-- A `promptMFA` jogcím az Azure MFA feltételes végrehajtásához szükséges előfeltételen belül használatos.
+- A `promptMFA` jogcím az Azure ad MFA feltételes végrehajtásához szükséges előfeltételen belül használatos.
 
 ```xml
 
@@ -162,7 +162,7 @@ Ezeket a küszöbértékeket a használati esethez kell igazítani.
 2. Cserélje le `apiKey` a és a `apiSecret` [TypingDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) megoldás összes példányát a TypingDNA irányítópultjának hitelesítő adataival
 3. A CORS [vonatkozó követelményeket](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors) követve üzemeltetheti a saját SZOLGÁLTATÓjának HTML-fájljait.
 4. Cserélje le a fájlban lévő és a tartalom-definíciók Tartalomdefinícióban elemeit `api.selfasserted.tdnasignup` `api.selfasserted.tdnasignin` `TrustFrameworkExtensions.xml` a tárolt HTML-fájlok URI-ra.
-5. Hozzon létre egy B2C-szabályzatot a **Azure Portal**Azure ad paneljének identitási élmény keretrendszere területén. Használja a `Generate` kapcsolót, és nevezze el a kulcsot `tdnaHashedId` .
+5. Hozzon létre egy B2C-szabályzatot a **Azure Portal** Azure ad paneljének identitási élmény keretrendszere területén. Használja a `Generate` kapcsolót, és nevezze el a kulcsot `tdnaHashedId` .
 6. Cserélje le a TenantId a szabályzat fájljaiban.
 7. Cserélje le a ServiceURLs az összes TypingDNA REST API technikai profilban (REST-TDNA-VerifyUser, REST-TDNA-SaveUser, REST-TDNA-CheckUser) a [TypingDNA-API-Interface API-](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface)hoz tartozó végponttal.
 8. Töltse fel a [házirend-fájlokat](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/policy) a bérlőbe.
@@ -177,7 +177,7 @@ Ezeket a küszöbértékeket a használati esethez kell igazítani.
 
     b. **Válasz URL-címe** – válassza ki az átirányítási URL-címet
 
-    c. Válassza a **felhasználói folyamat futtatása**lehetőséget.
+    c. Válassza a **felhasználói folyamat futtatása** lehetőséget.
   
 4. Ugorjon a regisztrációs folyamatra, és hozzon létre egy fiókot
 5. Kijelentkezés

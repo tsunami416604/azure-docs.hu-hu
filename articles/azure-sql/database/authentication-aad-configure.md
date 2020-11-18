@@ -5,19 +5,19 @@ description: Megtudhatja, hogyan csatlakozhat a SQL Databasehoz, az SQL felügye
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
+ms.custom: azure-synapse, has-adal-ref, sqldbrb=2, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 99af4d5711c70523053b37e19b08173f32bd117b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a9ef15bf595d84613b5f41a73e5526cb0fe79d5b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675119"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841410"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel
 
@@ -240,7 +240,7 @@ A következő két eljárás bemutatja, hogyan helyezhet üzembe egy Azure Activ
 
 1. A [Azure Portal](https://portal.azure.com/)jobb felső sarokban válassza ki a kapcsolódást a lehetséges aktív könyvtárak listájának legördülő listához. Válassza ki a megfelelő Active Directory alapértelmezett Azure AD-ként. Ez a lépés összekapcsolja az előfizetéshez kapcsolódó Active Directory a kiszolgálóval, és gondoskodik arról, hogy ugyanazt az előfizetést használja az Azure AD és a kiszolgáló számára is.
 
-2. Keresse meg és válassza ki az **SQL Servert** .
+2. Keresse meg és válassza ki az **SQL Servert**.
 
     ![SQL-kiszolgálók keresése és kiválasztása](./media/authentication-aad-configure/search-for-and-select-sql-servers.png)
 
@@ -343,7 +343,7 @@ További információ a CLI-parancsokról: [az SQL Server](/cli/azure/sql/server
 A következő szoftvereket kell telepítenie minden olyan ügyfélszámítógépen, amelyről az alkalmazások vagy a felhasználók az Azure AD-identitások használatával csatlakoznak SQL Database vagy Azure Szinapszishoz:
 
 - A .NET-keretrendszer 4,6-es vagy újabb verziója [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers) .
-- SQL Server ( *ADAL.DLL* ) Azure Active Directory hitelesítési könyvtára. Az alábbi letöltési hivatkozások segítségével telepítheti a *ADAL.DLL* könyvtárat tartalmazó legújabb SSMS, ODBC és OLE DB illesztőprogramot.
+- SQL Server (*ADAL.DLL*) Azure Active Directory hitelesítési könyvtára. Az alábbi letöltési hivatkozások segítségével telepítheti a *ADAL.DLL* könyvtárat tartalmazó legújabb SSMS, ODBC és OLE DB illesztőprogramot.
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
   - [ODBC-illesztő, 17 SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
   - [OLE DB 18. illesztőprogram SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
@@ -406,7 +406,7 @@ A tárolt adatbázis-felhasználók Azure Active Directory identitások alapján
 > A kiszolgáló Azure Active Directory-rendszergazdájának eltávolítása megakadályozza, hogy bármely Azure AD-hitelesítési felhasználó csatlakozzon a kiszolgálóhoz. Ha szükséges, a használhatatlan Azure AD-felhasználókat a SQL Database rendszergazdája manuálisan is elvégezheti.
 
 > [!NOTE]
-> Ha **lejárt a kapcsolat időkorlátja** , előfordulhat, hogy a `TransparentNetworkIPResolution` kapcsolati karakterlánc paraméterét false értékre kell állítania. További információ: [a .NET-keretrendszer 4.6.1-TransparentNetworkIPResolution kapcsolati időtúllépési hibája](/archive/blogs/dataaccesstechnologies/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution).
+> Ha **lejárt a kapcsolat időkorlátja**, előfordulhat, hogy a `TransparentNetworkIPResolution` kapcsolati karakterlánc paraméterét false értékre kell állítania. További információ: [a .NET-keretrendszer 4.6.1-TransparentNetworkIPResolution kapcsolati időtúllépési hibája](/archive/blogs/dataaccesstechnologies/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution).
 
 Amikor létrehoz egy adatbázis-felhasználót, a felhasználó megkapja a **kapcsolódási** engedélyt, és a **nyilvános** szerepkör tagjaként tud csatlakozni az adatbázishoz. Kezdetben csak a felhasználó számára elérhető engedélyek érvényesek a **nyilvános** szerepkörre, vagy bármely olyan Azure ad-csoportnak biztosított engedély, amely tagja a felhasználónak. Miután kiépített egy Azure AD-alapú tárolt adatbázis-felhasználót, a felhasználónak további engedélyeket is megadhat, ugyanúgy, ahogy bármely más típusú felhasználó számára engedélyezi. Általában engedélyeket ad az adatbázis szerepköreinek, és felhasználókat ad hozzá a szerepkörökhöz. További információ: adatbázismotor- [engedélyek alapjai](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). A speciális SQL Database szerepkörökkel kapcsolatos további információkért lásd: [adatbázisok és bejelentkezések kezelése Azure SQL Databaseban](logins-create-manage.md).
 A felügyelt tartományba külső felhasználóként importált összevont tartományi felhasználói fióknak a felügyelt tartományi identitást kell használnia.
@@ -430,7 +430,7 @@ A következő eljárások bemutatják, hogyan csatlakozhat az Azure AD-identitá
 
 Akkor használja ezt a módszert, ha a Windows rendszerbe bejelentkezett egy összevont tartományból származó Azure Active Directory hitelesítő adataival, vagy egy felügyelt tartományba, amely az áteresztő és a jelszó-kivonatoló hitelesítés zökkenőmentes egyszeri bejelentkezésére van konfigurálva. További információ: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés](../../active-directory/hybrid/how-to-connect-sso.md).
 
-1. Indítsa el Management Studio vagy az adateszközöket, és a **Kapcsolódás a kiszolgálóhoz** (vagy a **Kapcsolódás az adatbázis-kezelőhöz** ) párbeszédpanel **hitelesítés** mezőjében válassza a **Azure Active Directory integrált** elemet. Nincs szükség jelszóra, vagy megadható, mert a rendszer a meglévő hitelesítő adatait fogja megjeleníteni a kapcsolatban.
+1. Indítsa el Management Studio vagy az adateszközöket, és a **Kapcsolódás a kiszolgálóhoz** (vagy a **Kapcsolódás az adatbázis-kezelőhöz**) párbeszédpanel **hitelesítés** mezőjében válassza a **Azure Active Directory integrált** elemet. Nincs szükség jelszóra, vagy megadható, mert a rendszer a meglévő hitelesítő adatait fogja megjeleníteni a kapcsolatban.
 
    ![AD integrált hitelesítés kiválasztása][11]
 
@@ -444,7 +444,7 @@ Ezt a módszert akkor használja, ha Azure ad-beli egyszerű névvel csatlakozik
 
 Ezzel a módszerrel hitelesítheti SQL Database vagy az SQL felügyelt példányát az Azure AD felhőalapú identitás-felhasználókkal vagy az Azure AD hibrid identitásokat használó alkalmazásokkal. Ez a módszer támogatja azokat a felhasználókat, akik a Windows hitelesítő adatait szeretnék használni, de a helyi számítógép nincs csatlakoztatva a tartományhoz (például a távelérés használatával). Ebben az esetben a Windows-felhasználó megadhatja a tartományi fiókját és jelszavát, valamint hitelesítheti az adatbázist SQL Database, az SQL felügyelt példányában vagy az Azure Szinapszisban.
 
-1. Indítsa el Management Studio vagy az adateszközöket, és a **Kapcsolódás a kiszolgálóhoz** (vagy a **Kapcsolódás az adatbázis-kezelőhöz** ) párbeszédpanel **hitelesítés** mezőjében válassza a **Azure Active Directory-Password** lehetőséget.
+1. Indítsa el Management Studio vagy az adateszközöket, és a **Kapcsolódás a kiszolgálóhoz** (vagy a **Kapcsolódás az adatbázis-kezelőhöz**) párbeszédpanel **hitelesítés** mezőjében válassza a **Azure Active Directory-Password** lehetőséget.
 
 2. **A Felhasználónév mezőbe írja** be a Azure Active Directory felhasználónevét a **Felhasználónév \@ domain.com** formátumban. A felhasználóneveknek Azure Active Directory vagy egy felügyelt vagy összevont tartományból származó fiókkal kell rendelkezniük, Azure Active Directory.
 

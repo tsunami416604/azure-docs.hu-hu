@@ -12,20 +12,20 @@ ms.date: 07/30/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7a7736602fafb740d1d76fa09fd26da25e4ff9f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06253b571fd71623501c27fd5b0d9d4013727fc2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87481597"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840191"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Felhasználói folyamatok Azure Active Directory B2C
 
-Az alkalmazások leggyakoribb identitási feladatainak beállításához a Azure AD B2C-portál a **felhasználói folyamatok**nevű előre definiált, konfigurálható szabályzatokat tartalmazza. A felhasználói folyamattal meghatározhatja, hogy a felhasználók hogyan használják az alkalmazást, amikor olyan műveleteket végeznek, mint például a bejelentkezés, a regisztráció, a profil szerkesztése vagy a jelszó alaphelyzetbe állítása. A felhasználói folyamatok esetében a következő képességeket szabályozhatja:
+Az alkalmazások leggyakoribb identitási feladatainak beállításához a Azure AD B2C-portál a **felhasználói folyamatok** nevű előre definiált, konfigurálható szabályzatokat tartalmazza. A felhasználói folyamattal meghatározhatja, hogy a felhasználók hogyan használják az alkalmazást, amikor olyan műveleteket végeznek, mint például a bejelentkezés, a regisztráció, a profil szerkesztése vagy a jelszó alaphelyzetbe állítása. A felhasználói folyamatok esetében a következő képességeket szabályozhatja:
 
 - Bejelentkezéshez használt fióktípus, például Facebook-vagy helyi fiókokhoz hasonló közösségi fiókok
 - A fogyasztótól begyűjtött attribútumok, például Utónév, irányítószám és a cipő mérete
-- Azure Multi-Factor Authentication
+- Azure AD-Multi-Factor Authentication
 - A felhasználói felület testreszabása
 - Információ arról, hogy az alkalmazás jogcímeket fogad jogkivonatként
 
@@ -73,7 +73,7 @@ A legtöbb felhasználói folyamat esetében a **javasolt** verzió és a **stan
 >- Az **ajánlott** felhasználói folyamatok a felhasználói folyamatok új előzetes verzióit jelentik. Alaposan tesztelték és egyesítik az örökölt **v2** és a **v 1.1** verzió összes funkcióját. Az új javasolt felhasználói folyamatok továbbra is megmaradnak és frissülnek. Ha áthelyezi ezeket az új ajánlott felhasználói folyamatokat, hozzáférhet a kiadott új funkciókhoz.
 >- A korábban **v1**-ként ismert **általános** felhasználói folyamatok általánosan elérhetők, a termelésre kész felhasználói folyamatok. Ha a felhasználói folyamatok kritikus fontosságúak, és a nagymértékben stabil verzióktól függenek, továbbra is használhatja a normál felhasználói folyamatokat, és felismerheti, hogy ezek a verziók nem lesznek karbantartva és frissítve.
 >
->Az összes korábbi előzetes verziójú felhasználói folyamat (V 1.1 és v2) a 2021-es **augusztus 1-től**az elavult elérési úton van. Ahol csak lehetséges, javasoljuk, hogy a lehető leghamarabb [váltson az új **javasolt** felhasználói folyamatokra](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow) , így mindig kihasználhatja a legújabb funkciókat és frissítéseket.
+>Az összes korábbi előzetes verziójú felhasználói folyamat (V 1.1 és v2) a 2021-es **augusztus 1-től** az elavult elérési úton van. Ahol csak lehetséges, javasoljuk, hogy a lehető leghamarabb [váltson az új **javasolt** felhasználói folyamatokra](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow) , így mindig kihasználhatja a legújabb funkciókat és frissítéseket.
 
 ## <a name="linking-user-flows"></a>Felhasználói folyamatok összekapcsolása
 
@@ -89,6 +89,6 @@ Az e-mail-cím nem garantálható az ilyen esetekben. A bérlői rendszergazda l
 
 A Microsoft Graph API-n keresztül csak a **otherMails** és a **signInNames** tulajdonságok jelennek meg. Az erős hitelesítés részletei tulajdonságban szereplő e-mail-cím nem érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ajánlott felhasználói folyamatok létrehozásához kövesse az [oktatóanyag: felhasználói folyamat létrehozása](tutorial-create-user-flows.md)című témakör utasításait.

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7417e2d39371066a5c5e8576040cbe22e7632043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61471e07dda8fcf0c715dcffe85ad3e39ed8ac3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562876"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840372"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a Azure Active Directory B2C egyéni szabályzatok technikai profiljairól
 
@@ -30,7 +30,7 @@ A technikai profil a következő típusú forgatókönyveket teszi lehetővé:
 
 - [Application Insights](application-insights-technical-profile.md) – az Event-adatok küldése a [Application Insightsnak](../azure-monitor/app/app-insights-overview.md).
 - [Azure Active Directory](active-directory-technical-profile.md) – támogatást nyújt a Azure Active Directory B2C felhasználói felügyelethez.
-- [Azure multi-Factor Authentication](multi-factor-auth-technical-profile.md) – támogatást nyújt a telefonszámoknak az Azure multi-Factor Authentication (MFA) használatával történő ellenőrzéséhez. 
+- [Azure ad multi-Factor Authentication](multi-factor-auth-technical-profile.md) – támogatást nyújt a telefonszámok ellenőrzéséhez az azure ad multi-Factor Authentication (MFA) használatával. 
 - [Jogcím-átalakítás](claims-transformation-technical-profile.md) – hívja meg a kimeneti jogcímek átalakítását a jogcímek értékeinek módosításához, a jogcímek érvényesítéséhez, illetve a kimeneti jogcímek alapértelmezett értékének megadásához.
 - [Azonosító jogkivonat-emlékeztető](id-token-hint.md) – ellenőrzi a `id_token_hint` JWT-jogkivonat aláírását, a kiállító nevét és a jogkivonat célközönségét, és Kinyeri a jogcímet a bejövő jogkivonatból.
 - [JWT jogkivonat kiállítója](jwt-issuer-technical-profile.md) – a függő entitás alkalmazásának visszaadott JWT-tokent bocsát ki.
@@ -54,7 +54,7 @@ A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. A bemene
 1. **Egyszeri bejelentkezéses (SSO) munkamenet-kezelés** – a technikai profil munkamenet-állapotának visszaállítása az [egyszeri bejelentkezéses munkamenet-kezelés](custom-policy-reference-sso.md)használatával.
 1. A bemeneti jogcímek **átalakítása** – a bemeneti [jogcímek átalakításához](claimstransformations.md) tartozó bemeneti jogcímeket a rendszer a jogcím-csomagból használja fel.  A bemeneti jogcímek átalakításának kimeneti jogcímei a következő bemeneti jogcímek átalakításának bemeneti jogcímei lehetnek.
 1. **Bemeneti jogcímek** – a jogcímeket a rendszer a jogcímek táskájában keresi, és a technikai profilhoz használja. Egy [önérvényesített technikai profil](self-asserted-technical-profile.md) például a bemeneti jogcímek használatával előre feltölti a felhasználó által biztosított kimeneti jogcímeket. A REST API műszaki profilok a bemeneti jogcímek használatával küldenek bemeneti paramétereket a REST API végpontnak. A Azure Active Directory a bemeneti jogcímet egyedi azonosítóként használja egy fiók olvasásához, frissítéséhez vagy törléséhez.
-1. **Technikai profil végrehajtása** – a technikai profil a jogcímeket a konfigurált fél számára cseréli. Példa:
+1. **Technikai profil végrehajtása** – a technikai profil a jogcímeket a konfigurált fél számára cseréli. Például:
     - A bejelentkezés befejezéséhez irányítsa át a felhasználót az identitás-szolgáltatóra. A sikeres bejelentkezés után a felhasználó visszatér, és a technikai profil végrehajtása folytatódik.
     - REST API meghívása a paraméterek Szabályzattípushoz való elküldésekor és az információk OutputClaims való visszaszerzése közben.
     - Hozza létre vagy frissítse a felhasználói fiókot.

@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c1b51792c86cfce15fa718040dfcbcc13997ee26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87ea77540e5fcaac0c4231403473d25ebae46aac
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85384957"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840253"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Az egyéni szabályzatok és az Identity Experience Framework Azure AD B2C hibáinak megoldása
 
@@ -29,7 +29,7 @@ Az egyéni házirendek beállításának leggyakoribb hibája az XML-fájl helyt
 
 A kedvenc szerkesztők közül kettő a [Visual Studio Code](https://code.visualstudio.com/) és a [Notepad + +](https://notepad-plus-plus.org/).
 
-Az XML-séma ellenőrzése a hibákat az XML-fájl feltöltése előtt azonosítja. Az [alapszintű csomag](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)gyökérkönyvtárában szerezze be a *TrustFrameworkPolicy_0.3.0.0. xsd*XML Schema Definition fájlt. Ha szeretné megtudni, hogyan használhatja az XSD-sémafájl érvényesítését a szerkesztőben, keresse meg az *XML-eszközöket* és az *XML-érvényesítést* , vagy a szerkesztő dokumentációjában hasonló módon.
+Az XML-séma ellenőrzése a hibákat az XML-fájl feltöltése előtt azonosítja. Az [alapszintű csomag](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)gyökérkönyvtárában szerezze be a *TrustFrameworkPolicy_0.3.0.0. xsd* XML Schema Definition fájlt. Ha szeretné megtudni, hogyan használhatja az XSD-sémafájl érvényesítését a szerkesztőben, keresse meg az *XML-eszközöket* és az *XML-érvényesítést* , vagy a szerkesztő dokumentációjában hasonló módon.
 
 Hasznos lehet az XML-szabályok áttekintése. Azure AD B2C elutasítja az észlelt XML-formázási hibákat. Előfordulhat, hogy a helytelenül formázott XML-üzenetek félrevezető hibaüzeneteket okozhatnak.
 
@@ -64,7 +64,7 @@ Gyakori érvényesítési hibák a következők:
 
 * Az ügyféloldali böngésző és a Azure AD B2C közötti üzenetek cseréjének nyomon követéséhez használja a [hegedűst](https://www.telerik.com/fiddler). Ezzel a megoldással megtekintheti, hogy a felhasználói utazás miért sikertelen a folyamat lépésein.
 
-* **Fejlesztési módban**a [Application Insights](troubleshoot-with-application-insights.md) segítségével nyomon követheti az Identity Experience Framework felhasználói utazásának tevékenységeit. **Fejlesztési módban**megfigyelheti a jogcímek cseréjét az identitási élmény keretrendszere és a technikai profilok által meghatározott különböző jogcím-szolgáltatók között, például az Identitáskezelés, az API-alapú szolgáltatások, a Azure ad B2C felhasználói könyvtár és más szolgáltatások, például az Azure multi-Factor Authentication.
+* **Fejlesztési módban** a [Application Insights](troubleshoot-with-application-insights.md) segítségével nyomon követheti az Identity Experience Framework felhasználói utazásának tevékenységeit. **Fejlesztési módban** megfigyelheti a jogcímek cseréjét az identitási élmény keretrendszere és a technikai profilok által meghatározott különböző jogcímek, például az Identitáskezelés, az API-alapú szolgáltatások, a Azure ad B2C felhasználói könyvtár és más szolgáltatások (például az Azure ad multi-Factor Authentication) között.
 
 ## <a name="recommended-practices"></a>Ajánlott eljárások
 
@@ -74,7 +74,7 @@ Gyakori érvényesítési hibák a következők:
 
 **Kipróbált technikai profilokkal fejlesztheti és tesztelheti a felhasználói utazásokat.** A felhasználói útvonalak előkészítési lépéseinek növekményes módosítása. Fokozatosan hozza létre a kívánt forgatókönyveket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Töltse le az [Active-Directory-B2C-Custom-Policy-starterpack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) . zip archívumot a githubon. Az adattár klónozása is megtehető:
 

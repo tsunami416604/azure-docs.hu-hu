@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c64e01253652ea3b49ad6221f161bb78f499b6ed
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: c38fa77951aaeb5559dc2030f1401a896d7c238d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150538"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841920"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>A Azure Monitor figyelési megoldásai
 
@@ -20,7 +20,7 @@ A Azure Monitor figyelési megoldásai egy adott Azure-alkalmazás vagy-szolgál
 
 ## <a name="use-monitoring-solutions"></a>Monitorozási megoldások használata
 
-Azure Monitor a megoldások **áttekintése** oldal megjeleníti a log Analytics munkaterületre telepített összes megoldás csempéjét. A lap megnyitásához nyissa meg a **Azure monitor** a [Azure Portal](https://ms.portal.azure.com). Az **áttekintések** menüben válassza a **továbbiak** lehetőséget az **áttekintési központ**megnyitásához, majd kattintson **log Analytics munkaterületek**elemre.
+Azure Monitor a megoldások **áttekintése** oldal megjeleníti a log Analytics munkaterületre telepített összes megoldás csempéjét. A lap megnyitásához nyissa meg a **Azure monitor** a [Azure Portal](https://ms.portal.azure.com). Az **áttekintések** menüben válassza a **továbbiak** lehetőséget az **áttekintési központ** megnyitásához, majd kattintson **log Analytics munkaterületek** elemre.
 
 [![Bepillantást biztosító központ](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
@@ -85,7 +85,7 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 
 A Microsoft és partnerei által kínált figyelési megoldások az [Azure piactéren](https://azuremarketplace.microsoft.com)érhetők el. A következő eljárással kereshet az elérhető megoldásokban, és telepítheti őket. Megoldás telepítésekor ki kell választania egy [log Analytics munkaterületet](../platform/manage-access.md) , ahol a megoldás telepítve lesz, és az adatok gyűjtése történik.
 
-1. Az [előfizetéshez tartozó megoldások listájában](#list-installed-monitoring-solutions)kattintson a **Hozzáadás**gombra.
+1. Az [előfizetéshez tartozó megoldások listájában](#list-installed-monitoring-solutions)kattintson a **Hozzáadás** gombra.
 1. Válasszon ki egy megoldást, vagy keressen rá. [A keresési hivatkozáson](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions)keresztül is böngészhet a megoldásokban.
 1. Keresse meg a kívánt figyelési megoldást, és olvassa el a leírását.
 1. A telepítési folyamat elindításához kattintson a **Létrehozás** gombra.
@@ -231,14 +231,14 @@ Ha az Azure Marketplace-en keresztül telepít megoldást, a rendszer a munkater
 A következő eljárással ellenőrizheti, hogy Log Analytics munkaterület és egy Automation-fiók közötti kapcsolat látható-e.
 
 1. Válassza ki az Automation-fiókot a Azure Portal.
-1. Görgessen a menüben a **kapcsolódó erőforrások** szakaszhoz, és válassza a **csatolt munkaterület**lehetőséget.
+1. Görgessen a menüben a **kapcsolódó erőforrások** szakaszhoz, és válassza a **csatolt munkaterület** lehetőséget.
 1. Ha a **munkaterület** egy Automation-fiókhoz van csatolva, akkor ez a lap felsorolja a munkaterületet, amelyhez csatolva van. Ha kijelöli a felsorolt munkaterület nevét, a rendszer átirányítja az adott munkaterület áttekintés lapjára.
 
 ## <a name="remove-a-monitoring-solution"></a>Figyelési megoldás eltávolítása
 
 ### <a name="portal"></a>[Portál](#tab/portal)
 
-Ha a portálon szeretné eltávolítani a telepített megoldásokat, keresse meg a [telepített megoldások listájában](#list-installed-monitoring-solutions). Kattintson a megoldás nevére az összefoglalás oldal megnyitásához, majd kattintson a **Törlés**gombra.
+Ha a portálon szeretné eltávolítani a telepített megoldásokat, keresse meg a [telepített megoldások listájában](#list-installed-monitoring-solutions). Kattintson a megoldás nevére az összefoglalás oldal megnyitásához, majd kattintson a **Törlés** gombra.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

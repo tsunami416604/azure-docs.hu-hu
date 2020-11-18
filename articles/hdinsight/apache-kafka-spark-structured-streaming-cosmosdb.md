@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/18/2019
-ms.openlocfilehash: 20045ce914a340ac36e4df8cbd0df38e872a1d38
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 387eb4f4c73b2103a7461c0d06c4d0e0562ec9db
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487330"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842464"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Spark strukturált adatfolyam használata Apache Kafka és Azure Cosmos DB
 
@@ -66,10 +66,10 @@ Habár az Azure Virtual Network, a Kafka és a Spark-fürtök manuálisan is lé
 
     |Tulajdonság |Érték |
     |---|---|
-    |Előfizetés|Válassza ki az Azure-előfizetését.|
+    |Előfizetés|Válassza ki Azure-előfizetését.|
     |Erőforráscsoport|Hozzon létre egy csoportot, vagy válasszon ki egy meglévőt. Ez a csoport tartalmazza a HDInsight-fürtöt.|
     |Cosmos DB fiók neve|Ezt az értéket használja a Cosmos DB fiók neve. A név csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Hosszának 3-31 karakter közöttinek kell lennie.|
-    |Alap fürt neve|A rendszer ezt az értéket használja a Spark-és Kafka-fürtök alapneveként. A **myhdi** megadása például egy __Spark-myhdi__ nevű Spark-fürtöt és egy **Kafka-myhdi**nevű Kafka-fürtöt hoz létre.|
+    |Alap fürt neve|A rendszer ezt az értéket használja a Spark-és Kafka-fürtök alapneveként. A **myhdi** megadása például egy __Spark-myhdi__ nevű Spark-fürtöt és egy **Kafka-myhdi** nevű Kafka-fürtöt hoz létre.|
     |Fürt verziója|A HDInsight-fürt verziója. Ezt a példát a 3,6-es HDInsight teszteli, és előfordulhat, hogy nem működik más típusú fürtökkel.|
     |Fürt bejelentkezési felhasználóneve|A Spark és a Kafka fürtök rendszergazdai felhasználóneve.|
     |Fürt bejelentkezési jelszava|A Spark-és Kafka-fürtök rendszergazdai felhasználói jelszava.|
@@ -80,7 +80,7 @@ Habár az Azure Virtual Network, a Kafka és a Spark-fürtök manuálisan is lé
 
 1. Olvassa át a **használati feltételeket**, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** lehetőséget.
 
-1. Végül válassza a **vásárlás**lehetőséget. A fürtök, a virtuális hálózat és a Cosmos DB fiók létrehozása akár 45 percet is igénybe vehet.
+1. Végül válassza a **vásárlás** lehetőséget. A fürtök, a virtuális hálózat és a Cosmos DB fiók létrehozása akár 45 percet is igénybe vehet.
 
 ## <a name="create-the-cosmos-db-database-and-collection"></a>A Cosmos DB adatbázis és gyűjtemény létrehozása
 

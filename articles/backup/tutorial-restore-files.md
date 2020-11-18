@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan végezhet fájlszintű helyreállítást egy Az
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cf55b9d64d7d716aee9862b0e1e3e24966629286
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 236b2c2c7799ef6a0df1da2ddded0e689349e222
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746690"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842209"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Fájlok visszaállítása Azure-beli virtuális gépekre
 
@@ -89,7 +89,7 @@ A fájlok visszaállításához az Azure Backup egy, a virtuális gépen futtath
         --output tsv
     ```
 
-2. A helyreállítási pontot a virtuális géphez kapcsoló vagy csatlakoztató szkript beszerzéséhez használja az [az backup restore files mount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-mount-rp) parancsot. A következő példa a *myVM* nevű virtuális gép parancsfájlját szerzi be a *myRecoveryServicesVault* -ben védettként.
+2. A helyreállítási pontot a virtuális géphez kapcsoló vagy csatlakoztató szkript beszerzéséhez használja az [az backup restore files mount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-mount-rp) parancsot. A következő példa a *myVM* nevű virtuális gép parancsfájlját szerzi be a *myRecoveryServicesVault*-ben védettként.
 
     Cserélje le a *myRecoveryPointName* kifejezést az előző paranccsal beszerzett helyreállítási pont nevére:
 
@@ -119,7 +119,7 @@ A fájlok visszaállításához az Azure Backup egy, a virtuális gépen futtath
 Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlakoztathatja a helyreállítási pontot, és visszaállíthatja a fájlokat.
 
 >[!NOTE]
-> [Itt](backup-azure-restore-files-from-vm.md#selecting-the-right-machine-to-run-the-script) tekintheti meg, hogy a folytatás előtt futtathatja-e a parancsfájlt a virtuális gépen.
+> [Itt](backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) tekintheti meg, hogy a folytatás előtt futtathatja-e a parancsfájlt a virtuális gépen.
 
 1. Csatlakozzon a virtuális géphez SSH-val. Cserélje le *publicIpAddress* kifejezést a virtuális gép nyilvános IP-címére az alább látható módon:
 

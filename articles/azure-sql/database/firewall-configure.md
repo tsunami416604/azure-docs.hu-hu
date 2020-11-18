@@ -5,19 +5,19 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 802c126548a6fa7062a262e2f939c9a214480794
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 72af066cbff809521c34bb8db88ab0b3e5092fc4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789641"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841127"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database és az Azure szinapszis IP-tűzfalszabályok
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "92789641"
 Ha egy új kiszolgálót hoz létre Azure SQL Database vagy az Azure szinapszis Analytics *portra beállított mysqlserver* nevű szolgáltatását, például egy kiszolgálói szintű tűzfal blokkolja a kiszolgáló nyilvános végpontjának hozzáférését (amely a *mysqlserver.database.Windows.net* címen érhető el). Az egyszerűség kedvéért a *SQL Database* az SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) használatára is vonatkozik.
 
 > [!IMPORTANT]
-> Ez a cikk *nem* vonatkozik az *Azure SQL felügyelt példányaira* . További információ a hálózati konfigurációról: [az alkalmazás összekötése az Azure SQL felügyelt példányával](../managed-instance/connect-application-instance.md).
+> Ez a cikk *nem* vonatkozik az *Azure SQL felügyelt példányaira*. További információ a hálózati konfigurációról: [az alkalmazás összekötése az Azure SQL felügyelt példányával](../managed-instance/connect-application-instance.md).
 >
 > Az Azure szinapszis csak a kiszolgálói szintű IP-tűzfalszabályok használatát támogatja. Az adatbázis-szintű IP-tűzfalszabályok nem támogatottak.
 
@@ -63,11 +63,11 @@ Az adatbázis szintű IP-tűzfalszabályok használatát javasoljuk, ha lehetsé
 
 *Egy adatbázis felhasználóinak teljesen el kell különíteni egy másik adatbázisból?*
 
-Ha *Igen* , az adatbázis-szintű IP-tűzfalszabályok használatával engedélyezze a hozzáférést. Ez a módszer elkerüli a kiszolgálói szintű IP-tűzfalszabályok használatát, ami lehetővé teszi a tűzfalon keresztüli hozzáférését az összes adatbázishoz. Ez csökkenti a védelem mélységét.
+Ha *Igen*, az adatbázis-szintű IP-tűzfalszabályok használatával engedélyezze a hozzáférést. Ez a módszer elkerüli a kiszolgálói szintű IP-tűzfalszabályok használatát, ami lehetővé teszi a tűzfalon keresztüli hozzáférését az összes adatbázishoz. Ez csökkenti a védelem mélységét.
 
 *Az IP-címekhez tartozó felhasználóknak hozzáférésre van szükségük az összes adatbázishoz?*
 
-Ha *Igen* , a kiszolgálói szintű IP-tűzfalszabályok használatával csökkentse az IP-tűzfalszabályok konfigurálásához szükséges időt.
+Ha *Igen*, a kiszolgálói szintű IP-tűzfalszabályok használatával csökkentse az IP-tűzfalszabályok konfigurálásához szükséges időt.
 
 *Az IP-tűzfalszabályok konfigurálását végző személy vagy csapat csak a Azure Portalon, a PowerShellen vagy a REST APIon keresztül fér hozzá?*
 
@@ -144,7 +144,7 @@ Ha egy kiszolgálói szintű IP-tűzfalszabály beállítását szeretné beáll
 
 #### <a name="from-the-server-overview-page"></a>A kiszolgáló áttekintése lapon
 
-Megnyílik a kiszolgáló Áttekintés lapja. Megjeleníti a teljes kiszolgálónevet (például *mynewserver20170403.database.Windows.net* ), és további konfigurálási lehetőségeket biztosít.
+Megnyílik a kiszolgáló Áttekintés lapja. Megjeleníti a teljes kiszolgálónevet (például *mynewserver20170403.database.Windows.net*), és további konfigurálási lehetőségeket biztosít.
 
 1. Ha ezen a lapon szeretné beállítani a kiszolgálói szintű szabályt, válassza a bal oldalon található **Beállítások** menüből a **tűzfal** lehetőséget.
 
@@ -174,7 +174,7 @@ EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
    @start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
 ```
 
-A kiszolgálói szintű IP-tűzfalszabály törléséhez hajtsa végre az *sp_delete_firewall_rule* tárolt eljárást. A következő példa törli a szabály *ContosoFirewallRule* :
+A kiszolgálói szintű IP-tűzfalszabály törléséhez hajtsa végre az *sp_delete_firewall_rule* tárolt eljárást. A következő példa törli a szabály *ContosoFirewallRule*:
 
 ```sql
 EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'

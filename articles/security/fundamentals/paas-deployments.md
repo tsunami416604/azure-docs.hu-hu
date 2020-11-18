@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0429eec2a84c22f3d998baa4dde4f543d4927f16
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 77a2a32b9a6358c39a14cfe37eeb44f7cb90af0a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695333"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841988"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-környezetek védelme
 
@@ -82,14 +82,14 @@ Az alábbi ajánlott eljárások az identitás peremhálózati kezeléséhez sz�
 **Ajánlott eljárás**: gondoskodjon a virtuális gépek felügyeleti felületének védelméről a hibrid Pásti-és IaaS-szolgáltatásokhoz egy olyan felügyeleti felületen keresztül, amely lehetővé teszi, hogy közvetlenül felügyelje ezeket a virtuális gépeket.   
 **Részletek**: távoli felügyeleti protokollok, például [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)és [PowerShell távelérés](/powershell/module/microsoft.powershell.core/enable-psremoting) használható. Általánosságban azt javasoljuk, hogy ne engedélyezze a közvetlen távoli hozzáférést az internetről érkező virtuális gépekhez.
 
-Ha lehetséges, alternatív megközelítéseket használhat, például virtuális magánhálózatok használatát egy Azure-beli virtuális hálózaton. Ha az alternatív megoldások nem érhetők el, győződjön meg arról, hogy összetett hozzáférési kódok és kétfaktoros hitelesítés (például [Azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)) használata szükséges.
+Ha lehetséges, alternatív megközelítéseket használhat, például virtuális magánhálózatok használatát egy Azure-beli virtuális hálózaton. Ha az alternatív megoldások nem érhetők el, győződjön meg arról, hogy összetett hozzáférési kódok és kétfaktoros hitelesítés (például [Azure AD multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)) használata szükséges.
 
 **Ajánlott eljárás**: erős hitelesítési és engedélyezési platformok használata.   
 **Részletek**: összevont identitások használata az Azure ad-ben egyéni felhasználói tárolók helyett. Összevont identitások használata esetén kihasználhatja a platform-alapú megközelítést, és delegálhatja a meghatalmazott identitások kezelését a partnerei számára. Az összevont identitások megközelítése különösen fontos az alkalmazottak leállításakor, és az információt több identitás-és engedélyezési rendszeren keresztül kell megjeleníteni.
 
 Egyéni kód helyett platform által biztosított hitelesítési és engedélyezési mechanizmusokat használhat. Ennek az az oka, hogy az egyéni hitelesítési kód fejlesztése hibás lehet. A fejlesztők többsége nem rendelkezik biztonsági szakértőkkel, és nem valószínű, hogy tisztában van a finomságokkal, valamint a hitelesítés és az engedélyezés legújabb fejleményeivel. A kereskedelmi kódokat (például a Microsofttól) gyakran széles körű biztonsági felülvizsgálatnak tekintjük.
 
-Használjon kétfaktoros hitelesítést. A kétfaktoros hitelesítés a hitelesítéshez és az engedélyezéshez használt jelenlegi szabvány, mivel elkerüli a Felhasználónév és jelszó típusú hitelesítéssel kapcsolatos biztonsági gyengeségeket. Az Azure felügyeleti (portál/távoli PowerShell) interfészekhez és az ügyfelek felé irányuló szolgáltatásokhoz való hozzáférést az [azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)használatára kell tervezni és konfigurálni.
+Használjon kétfaktoros hitelesítést. A kétfaktoros hitelesítés a hitelesítéshez és az engedélyezéshez használt jelenlegi szabvány, mivel elkerüli a Felhasználónév és jelszó típusú hitelesítéssel kapcsolatos biztonsági gyengeségeket. Az Azure felügyeleti (portál/távoli PowerShell) interfészekhez és az ügyfelek felé irányuló szolgáltatásokhoz való hozzáférést úgy kell megtervezni és konfigurálni, hogy az [Azure AD multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)-t használják.
 
 Használjon szabványos hitelesítési protokollokat, például a OAuth2 és a Kerberost. Ezek a protokollok széles körben áttekintve lettek, és valószínűleg a platform könyvtárainak részeként valósulnak meg a hitelesítéshez és engedélyezéshez.
 

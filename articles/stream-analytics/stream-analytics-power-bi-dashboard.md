@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/16/2020
-ms.openlocfilehash: 6dd855695a155e924f7c46bdb17449c5e6504ca6
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 4e3f31442c5fa645e27a640d8facf86aed20aa75
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745360"
+ms.locfileid: "94842481"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és Power BI: valós idejű elemzési irányítópult az adatfolyam-továbbításhoz
 
@@ -221,7 +221,7 @@ Ebben a konfigurációban az eredeti lekérdezést a következőre módosíthatj
 ```
 
 ### <a name="renew-authorization"></a>Engedélyezés megújítása
-Ha a jelszó megváltozott a feladatok létrehozása vagy utolsó hitelesítése óta, újra kell hitelesítenie Power BI-fiókját. Ha az Azure Multi-Factor Authentication konfigurálva van a Azure Active Directory (Azure AD) bérlőn, akkor két hetente meg kell újítania Power BI engedélyezését. Ha nem újítja meg, olyan tüneteket láthat, mint például a feladatok kimenetének hiánya vagy `Authenticate user error` a műveleti naplók.
+Ha a jelszó megváltozott a feladatok létrehozása vagy utolsó hitelesítése óta, újra kell hitelesítenie Power BI-fiókját. Ha az Azure AD-Multi-Factor Authentication konfigurálva van a Azure Active Directory (Azure AD) bérlőn, akkor két hetente meg kell újítania Power BI engedélyt. Ha nem újítja meg, olyan tüneteket láthat, mint például a feladatok kimenetének hiánya vagy `Authenticate user error` a műveleti naplók.
 
 Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba történik, és a művelet meghiúsul. A probléma megoldásához állítsa le a futó feladatot, és nyissa meg a Power BI kimenetét. Az adatvesztés elkerülése érdekében válassza az **Engedélyezés megújítása** hivatkozást, majd indítsa újra a feladatot az **utolsó leállítási időpontból**.
 

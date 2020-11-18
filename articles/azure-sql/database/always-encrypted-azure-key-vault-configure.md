@@ -5,19 +5,19 @@ keywords: adattitkosítás, titkosítási kulcs, Felhőbeli titkosítás
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 11/02/2020
-ms.openlocfilehash: 45aca00adab8ef5b33a376af34642261c5e73255
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 257abf03994c7006b1c3789174f550515dcd309a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321634"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841461"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Always Encrypted konfigurálása Azure Key Vault használatával 
 
@@ -55,7 +55,7 @@ Az *alkalmazás azonosítójának* és *kulcsának* beszerzéséhez kövesse az 
 
 ## <a name="create-a-key-vault-to-store-your-keys"></a>Key Vault létrehozása a kulcsok tárolásához
 
-Most, hogy az ügyfélalkalmazás konfigurálva van, és rendelkezik az alkalmazás-AZONOSÍTÓval, itt az ideje, hogy létrehoz egy kulcstartót, és konfigurálja annak hozzáférési házirendjét, hogy az alkalmazás hozzáférhessen a tár titkos kulcsaihoz (a Always Encrypted kulcsokhoz). Az új oszlop főkulcsának létrehozásához, valamint a SQL Server Management Studiosal történő titkosítás beállításához a *Létrehozás* , a *lekérés* , a *lista* , a *aláírás* , az *ellenőrzés* , a *wrapKey* és a *unwrapKey* engedélyek szükségesek.
+Most, hogy az ügyfélalkalmazás konfigurálva van, és rendelkezik az alkalmazás-AZONOSÍTÓval, itt az ideje, hogy létrehoz egy kulcstartót, és konfigurálja annak hozzáférési házirendjét, hogy az alkalmazás hozzáférhessen a tár titkos kulcsaihoz (a Always Encrypted kulcsokhoz). Az új oszlop főkulcsának létrehozásához, valamint a SQL Server Management Studiosal történő titkosítás beállításához a *Létrehozás*, a *lekérés*, a *lista*, a *aláírás*, az *ellenőrzés*, a *wrapKey* és a *unwrapKey* engedélyek szükségesek.
 
 A következő szkript futtatásával gyorsan létrehozhat egy kulcstartót. A parancsok részletes ismertetését és a Key Vault létrehozásáról és konfigurálásáról további információt a [Mi az Azure Key Vault?](../../key-vault/general/overview.md)című témakörben talál.
 
@@ -151,7 +151,7 @@ A SSMS olyan varázslót biztosít, amely megkönnyíti a Always Encrypted konfi
 
     ![Képernyőfelvétel: az oszlopok titkosításának kiemelése... menüpont.](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
 
-A Always Encrypted varázsló a következő szakaszokat tartalmazza: **Oszlopok kiválasztása** , **főkulcs konfigurálása** , **ellenőrzés** és **Összefoglalás**.
+A Always Encrypted varázsló a következő szakaszokat tartalmazza: **Oszlopok kiválasztása**, **főkulcs konfigurálása**, **ellenőrzés** és **Összefoglalás**.
 
 ### <a name="column-selection"></a>Oszlop kijelölése
 
@@ -179,7 +179,7 @@ Ez az oktatóanyag bemutatja, hogyan tárolhatók a kulcsok a Azure Key Vaultban
 
 Ezután titkosíthatja az oszlopokat, vagy mentheti a PowerShell-parancsfájlt, hogy később fusson. Ebben az oktatóanyagban válassza a **Folytatás a befejezéshez** lehetőséget, és kattintson a **tovább** gombra.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Ellenőrizze, hogy a beállítások helyesek-e, majd kattintson a **Befejezés** gombra a Always encrypted telepítésének befejezéséhez.
 
@@ -576,7 +576,7 @@ Láthatja, hogy a titkosított oszlopok nem tartalmaznak egyszerű szöveges inf
 
    ![Képernyőkép, amely azt mutatja, hogy a titkosított oszlopok nem tartalmaznak egyszerű szöveges adattípust.](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
-Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges információhoz, először ellenőrizze, hogy a felhasználó rendelkezik-e megfelelő engedélyekkel a Azure Key Vault: *Get* , *unwrapKey* és *ellenőrzés*. Részletes információkért lásd: [oszlopok főkulcsainak létrehozása és tárolása (Always encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
+Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges információhoz, először ellenőrizze, hogy a felhasználó rendelkezik-e megfelelő engedélyekkel a Azure Key Vault: *Get*, *unwrapKey* és *ellenőrzés*. Részletes információkért lásd: [oszlopok főkulcsainak létrehozása és tárolása (Always encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
 Ezután adja hozzá az *oszlop titkosítási beállítás = engedélyezve* paramétert a csatlakozáskor.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ba6ae9262fb0e55c53e1b1421c075e555fae8d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55e5ff2af62c903efeab5c4932eae0c9dc9b535c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87328236"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842311"
 ---
 # <a name="enable-azure-monitor-for-single-virtual-machine-or-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Monitor engedélyezése egyetlen virtuális gép vagy virtuálisgép-méretezési csoport számára a Azure Portal
 Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs egy virtuális gép vagy virtuálisgép-méretezési csoport számára a Azure Portal használatával. Ez az eljárás a következő módon használható:
@@ -27,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs egy vir
 
 ## <a name="enable-azure-monitor-for-vms"></a>Azure Monitor for VMs engedélyezése
 
-A Azure Portal válassza a **virtuális gépek**, a **virtuálisgép-méretezési**csoportok vagy a **gépek – Azure arc** lehetőséget, és válasszon ki egy erőforrást a listából. A menü **figyelés** területén válassza az **eredmények lehetőséget, majd** **engedélyezze**a beállítást. Az alábbi példa egy Azure-beli virtuális gépet mutat be, de a menü hasonló az Azure virtuálisgép-méretezési csoporthoz vagy az Azure-archoz.
+A Azure Portal válassza a **virtuális gépek**, **virtuálisgép-méretezési** csoportok vagy **kiszolgálók – Azure arc** lehetőséget, és válasszon ki egy erőforrást a listából. A menü **figyelés** területén válassza az **eredmények lehetőséget, majd** **engedélyezze** a beállítást. Az alábbi példa egy Azure-beli virtuális gépet mutat be, de a menü hasonló az Azure virtuálisgép-méretezési csoporthoz vagy az Azure-archoz.
 
 ![Virtuális gép Azure Monitor for VMsának engedélyezése](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
@@ -47,7 +47,7 @@ Az állapotüzenetek a konfiguráció elvégzése után kapják meg az üzenetek
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Lásd: [Azure monitor for VMS leképezés használata](vminsights-maps.md) a felderített alkalmazások függőségeinek megtekintéséhez. 
 * Lásd: az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md) a szűk keresztmetszetek, a teljes kihasználtság és a virtuális gép teljesítményének azonosításához.

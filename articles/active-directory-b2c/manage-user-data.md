@@ -11,12 +11,12 @@ ms.date: 05/06/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b7cc772e2a2e44a72af5e47a794c8b0f36aa9786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48c79306d376c2faa1089886881a7b5e9a792c86
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387643"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840544"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Felhasználói adatkezelés Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ A felhasználó objektum-AZONOSÍTÓjának lekéréséhez a legpontosabb módsze
 
 Az alábbi példa az adattörlés lehetséges folyamatát mutatja be:
 
-1. A felhasználó bejelentkezik, és kiválasztja az **adattörlés**lehetőséget.
+1. A felhasználó bejelentkezik, és kiválasztja az **adattörlés** lehetőséget.
 2. Az alkalmazás lehetőséget kínál az alkalmazások törlésére az alkalmazás adminisztrációs részén belül.
 3. Az alkalmazás Azure AD B2C hitelesítését kényszeríti. Azure AD B2C biztosít egy jogkivonatot, amely a felhasználó objektumazonosítóát adja vissza az alkalmazásnak.
 4. Az alkalmazás megkapja a tokent, és az objektumazonosító használatával törli a felhasználói adatelemet a Microsoft Graph API hívásával. A Microsoft Graph API törli a felhasználói adatok számát, és visszaadja az 200-es állapotkódot.
@@ -52,11 +52,11 @@ Azure AD B2C felhasználói adatmennyiség a következőre korlátozódik:
 
 Az exportálási folyamat következő példájában az alkalmazás által elvégezhető lépéseket egy háttérrendszer vagy egy rendszergazdai szerepkörrel rendelkező felhasználó is végrehajthatja a címtárban:
 
-1. A felhasználó bejelentkezik az alkalmazásba. Azure AD B2C szükség esetén kikényszeríti az Azure Multi-Factor Authentication hitelesítését.
+1. A felhasználó bejelentkezik az alkalmazásba. Ha szükséges, Azure AD B2C érvényesíti az Azure AD-Multi-Factor Authentication való hitelesítést.
 2. Az alkalmazás a felhasználói hitelesítő adatok használatával hívja meg az Microsoft Graph API-műveletet a felhasználói attribútumok lekéréséhez. A Microsoft Graph API JSON formátumú attribútumot biztosít. A sémától függően beállíthatja az azonosító token tartalmát úgy, hogy az tartalmazza a felhasználóra vonatkozó összes személyes információt.
 3. Az alkalmazás lekéri a felhasználói naplózási tevékenységet. A Microsoft Graph API biztosítja az eseményre vonatkozó adatértékeket az alkalmazásnak.
 4. Az alkalmazás összesíti az adatokat, és elérhetővé teszi a felhasználó számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználók alkalmazáshoz való hozzáférésének kezelésével kapcsolatos információkért lásd: [felhasználói hozzáférés kezelése](manage-user-access.md).

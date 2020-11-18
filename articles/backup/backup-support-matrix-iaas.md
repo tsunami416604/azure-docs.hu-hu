@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgá
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5988cc7bdc34521bfa75e9f179f88bfbe881b882
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 650c239423db23bcd4329ab38080b82809fa4f09
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925645"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842175"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -27,7 +27,7 @@ Az Azure-beli virtuális gépek biztonsági mentését és visszaállítását a
 
 **Forgatókönyv** | **Biztonsági mentés** | **Ügynök** |**Visszaállítás**
 --- | --- | --- | ---
-Azure-beli virtuális gépek közvetlen biztonsági mentése  | A teljes virtuális gép biztonsági mentése.  | Nincs szükség további ügynökre az Azure-beli virtuális gépen. Azure Backup telepíti és egy bővítményt használ a virtuális gépen futó Azure virtuálisgép- [ügynökhöz](../virtual-machines/extensions/agent-windows.md) . | Visszaállítás a következőképpen:<br/><br/> - **Hozzon létre egy alapszintű virtuális gépet** . Ez akkor hasznos, ha a virtuális gépnek nincs olyan speciális konfigurációja, mint például több IP-cím.<br/><br/> - **Állítsa vissza a virtuális gép lemezét** . Állítsa vissza a lemezt. Ezután csatolja egy meglévő virtuális géphez, vagy hozzon létre egy új virtuális gépet a PowerShell használatával.<br/><br/> - **Cserélje le a virtuális gép lemezét** . Ha egy virtuális gép létezik, és felügyelt lemezeket használ (titkosítatlan), akkor visszaállíthat egy lemezt, és felhasználhatja egy meglévő lemez lecserélésére a virtuális gépen.<br/><br/> - **Adott fájlok vagy mappák visszaállítása** . A virtuális gépek fájljait és mappáit a teljes virtuális gépről nem lehet visszaállítani.
+Azure-beli virtuális gépek közvetlen biztonsági mentése  | A teljes virtuális gép biztonsági mentése.  | Nincs szükség további ügynökre az Azure-beli virtuális gépen. Azure Backup telepíti és egy bővítményt használ a virtuális gépen futó Azure virtuálisgép- [ügynökhöz](../virtual-machines/extensions/agent-windows.md) . | Visszaállítás a következőképpen:<br/><br/> - **Hozzon létre egy alapszintű virtuális gépet**. Ez akkor hasznos, ha a virtuális gépnek nincs olyan speciális konfigurációja, mint például több IP-cím.<br/><br/> - **Állítsa vissza a virtuális gép lemezét**. Állítsa vissza a lemezt. Ezután csatolja egy meglévő virtuális géphez, vagy hozzon létre egy új virtuális gépet a PowerShell használatával.<br/><br/> - **Cserélje le a virtuális gép lemezét**. Ha egy virtuális gép létezik, és felügyelt lemezeket használ (titkosítatlan), akkor visszaállíthat egy lemezt, és felhasználhatja egy meglévő lemez lecserélésére a virtuális gépen.<br/><br/> - **Adott fájlok vagy mappák visszaállítása**. A virtuális gépek fájljait és mappáit a teljes virtuális gépről nem lehet visszaállítani.
 Azure-beli virtuális gépek közvetlen biztonsági mentése (csak Windows)  | Biztonsági másolat készítése adott fájlokról/mappákról/kötetről. | Telepítse az [Azure Recovery Services Agent ügynököt](backup-azure-file-folder-backup-faq.md).<br/><br/> A MARS-ügynököt az Azure virtuálisgép-ügynök biztonsági mentési bővítményével együtt futtathatja a virtuális gép biztonsági mentéséhez a fájl/mappa szintjén. | Adott mappák vagy fájlok visszaállítása.
 Azure-beli virtuális gép biztonsági mentése a Backup Serverbe  | Fájlok/mappák/kötetek biztonsági mentése; rendszerállapot/operációs rendszer nélküli fájlok; alkalmazásadatok a System Center DPM vagy a Microsoft Azure Backup kiszolgálóra (MABS).<br/><br/> A DPM/MABS ezután biztonsági mentést készít a Backup-tárolóba. | Telepítse a DPM/MABS védelmi ügynököt a virtuális gépre. A MARS-ügynök telepítve van a DPM/MABS.| Fájlok/mappák/kötetek visszaállítása; rendszerállapot/operációs rendszer nélküli fájlok; alkalmazásadatok.
 
@@ -109,7 +109,7 @@ Helyreállítási pontok a DPM-vagy MABS-lemezen | 64 fájlkiszolgálók és 448
 
 **Visszaállítás** | **Támogatott**
 --- | ---
-Fájlok visszaállítása operációs rendszerek között | A fájlokat bármely olyan gépen visszaállíthatja, amelynek a biztonsági másolata azonos (vagy kompatibilis) operációs rendszert futtat. Tekintse meg a [kompatibilis operációsrendszer-táblázatot](backup-azure-restore-files-from-vm.md#system-requirements).
+Fájlok visszaállítása operációs rendszerek között | A fájlokat bármely olyan gépen visszaállíthatja, amelynek a biztonsági másolata azonos (vagy kompatibilis) operációs rendszert futtat. Tekintse meg a [kompatibilis operációsrendszer-táblázatot](backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script).
 Fájlok visszaállítása titkosított virtuális gépekről | Nem támogatott.
 Fájlok visszaállítása a hálózatra korlátozott tárolási fiókokból | Nem támogatott.
 A virtuális gépek fájljainak visszaállítása Windows-tárolóhelyek használatával | A visszaállítás nem támogatott ugyanazon a virtuális gépen.<br/><br/> Ehelyett egy kompatibilis virtuális gépen állítsa vissza a fájlokat.
@@ -160,7 +160,7 @@ Adatlemez mérete | Az egyes lemezek mérete legfeljebb 32 TB lehet, és a virtu
 Tárolási típus | Standard HDD, standard SSD, prémium SSD.
 Felügyelt lemezek | Támogatott.
 Titkosított lemezek | Támogatott.<br/><br/> A Azure Disk Encryption használatával engedélyezett Azure virtuális gépek biztonsági mentése (az Azure AD-alkalmazással vagy anélkül).<br/><br/> A titkosított virtuális gépek nem állíthatók helyre a fájl/mappa szintjén. A teljes virtuális gépet helyre kell állítani.<br/><br/> Engedélyezheti a titkosítást a Azure Backup által már védett virtuális gépeken.
-írásgyorsító engedélyezett lemezek | Nem támogatott.<br/><br/> A Azure Backup automatikusan kizárja a lemezeket, amelyeken a írásgyorsító (WA) engedélyezve van a biztonsági mentés során. Mivel nem készít biztonsági mentést, nem állíthatja vissza ezeket a lemezeket a virtuális gép helyreállítási pontjairól. <br><br> **Fontos megjegyzés** : a WA lemezekkel rendelkező virtuális gépeknek internetkapcsolatra van szükségük a sikeres biztonsági mentéshez (annak ellenére, hogy ezek a lemezek ki vannak zárva a biztonsági mentésből.)
+írásgyorsító engedélyezett lemezek | Nem támogatott.<br/><br/> A Azure Backup automatikusan kizárja a lemezeket, amelyeken a írásgyorsító (WA) engedélyezve van a biztonsági mentés során. Mivel nem készít biztonsági mentést, nem állíthatja vissza ezeket a lemezeket a virtuális gép helyreállítási pontjairól. <br><br> **Fontos megjegyzés**: a WA lemezekkel rendelkező virtuális gépeknek internetkapcsolatra van szükségük a sikeres biztonsági mentéshez (annak ellenére, hogy ezek a lemezek ki vannak zárva a biztonsági mentésből.)
 Biztonsági mentés & deduplikált virtuális gépek/lemezek visszaállítása | A Azure Backup nem támogatja a lemásolást. További információkért tekintse meg ezt a [cikket](./backup-support-matrix.md#disk-deduplication-support) <br/> <br/>  -Azure Backup nem távolítja el a virtuális gépeket a Recovery Services-tárolóban <br/> <br/>  – Ha a visszaállítás során a rendszer lemásolja a virtuális gépeket, a fájlok nem állíthatók vissza, mert a tároló nem érti a formátumot. A virtuális gép teljes visszaállítását azonban sikeresen elvégezheti.
 Lemez hozzáadása a védett virtuális géphez | Támogatott.
 Lemez átméretezése védett virtuális gépen | Támogatott.

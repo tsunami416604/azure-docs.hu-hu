@@ -4,15 +4,15 @@ description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Az
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: a7e8183f21ab49fe4662470d30e52977dd89153a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4ab029048b37a4dcb44ef405249dcb9e20de70cf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289910"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841615"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Gyors útmutató: ARM-sablon használata az Azure Signaler szolgáltatás üzembe helyezéséhez
 
@@ -70,9 +70,9 @@ Az **Azure signaler szolgáltatás üzembe helyezése** oldalon:
 
 3. Ha létrehozott egy új erőforráscsoportot, válasszon ki egy **régiót** az erőforráscsoport számára.
 
-4. Ha szeretné, adja meg az Azure Signaler szolgáltatás új **nevét** és **helyét** (például **eastus2** ). Ha nem ad meg nevet, az automatikusan létrejön. Az Azure Signaler szolgáltatás helye megegyezik az erőforráscsoport régiójával, vagy eltérő lehet. Ha nem ad meg helyet, az az erőforráscsoport számára azonos régióra van beállítva.
+4. Ha szeretné, adja meg az Azure Signaler szolgáltatás új **nevét** és **helyét** (például **eastus2**). Ha nem ad meg nevet, az automatikusan létrejön. Az Azure Signaler szolgáltatás helye megegyezik az erőforráscsoport régiójával, vagy eltérő lehet. Ha nem ad meg helyet, az az erőforráscsoport számára azonos régióra van beállítva.
 
-5. Válassza ki **az árképzési szintet** ( **Free_F1** vagy **Standard_S1** ), adja meg a **kapacitást** (a jelző egységek számát), és válassza ki az **alapértelmezett** **szolgáltatási módot** (a szükséges központi kiszolgáló), a **kiszolgáló** nélküli (nem engedélyezi a kiszolgálók kapcsolatát) vagy a **klasszikus** (csak akkor, ha a hub kiszolgálói kapcsolattal rendelkezik). Ezután adja meg, hogy engedélyezi-e a **kapcsolati naplókat** , vagy **engedélyezze az üzenetkezelési naplókat**.
+5. Válassza ki **az árképzési szintet** (**Free_F1** vagy **Standard_S1**), adja meg a **kapacitást** (a jelző egységek számát), és válassza ki az **alapértelmezett** **szolgáltatási módot** (a szükséges központi kiszolgáló), a **kiszolgáló** nélküli (nem engedélyezi a kiszolgálók kapcsolatát) vagy a **klasszikus** (csak akkor, ha a hub kiszolgálói kapcsolattal rendelkezik). Ezután adja meg, hogy engedélyezi-e a **kapcsolati naplókat** , vagy **engedélyezze az üzenetkezelési naplókat**.
 
     > [!NOTE]
     > A **Free_F1** díjszabási szintje esetében a kapacitás 1 egységre van korlátozva.
@@ -92,12 +92,12 @@ Az alábbi kód használatával helyezheti üzembe az Azure Signaler szolgáltat
 
 * Az új Azure Signaler szolgáltatás neve és régiója
 * Egy új erőforráscsoport neve és régiója
-* Az Azure díjszabási szintje ( **Free_F1** vagy **Standard_S1** )
+* Az Azure díjszabási szintje (**Free_F1** vagy **Standard_S1**)
 * A jelző egység kapacitása (1, 2, 5, 10, 20, 50 vagy 100)
   > [!NOTE]
   > A **Free_F1** díjszabási szintje esetében a kapacitás 1 egységre van korlátozva.
 * A szolgáltatási mód: **alapértelmezés** szerint a központi kiszolgáló megkövetelése, **kiszolgáló** nélküli, hogy ne engedélyezze a kiszolgálói kapcsolatokat vagy a **klasszikus** útvonalat a központi kiszolgálókhoz való továbbításhoz, ha a hub kiszolgálói kapcsolatban van
-* A kapcsolatok vagy üzenetküldési naplók engedélyezése ( **igaz** vagy **hamis** )
+* A kapcsolatok vagy üzenetküldési naplók engedélyezése (**igaz** vagy **hamis**)
 
 ```azurepowershell-interactive
 $serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR Service"
@@ -137,12 +137,12 @@ Az alábbi kód használatával helyezheti üzembe az Azure Signaler szolgáltat
 
 * Az új Azure Signaler szolgáltatás neve és régiója
 * Egy új erőforráscsoport neve és régiója
-* Az Azure díjszabási szintje ( **Free_F1** vagy **Standard_S1** )
+* Az Azure díjszabási szintje (**Free_F1** vagy **Standard_S1**)
 * A jelző egység kapacitása (1, 2, 5, 10, 20, 50 vagy 100)
     > [!NOTE]
     > A **Free_F1** díjszabási szintje esetében a kapacitás 1 egységre van korlátozva.
 * A szolgáltatási mód: **alapértelmezés** szerint a központi kiszolgáló megkövetelése, **kiszolgáló** nélküli, hogy ne engedélyezze a kiszolgálói kapcsolatokat vagy a **klasszikus** útvonalat a központi kiszolgálókhoz való továbbításhoz, ha a hub kiszolgálói kapcsolatban van
-* A kapcsolatok vagy üzenetküldési naplók engedélyezése ( **igaz** vagy **hamis** )
+* A kapcsolatok vagy üzenetküldési naplók engedélyezése (**igaz** vagy **hamis**)
 
 ```azurecli-interactive
 read -p "Enter a name for the new Azure SignalR Service: " serviceName &&

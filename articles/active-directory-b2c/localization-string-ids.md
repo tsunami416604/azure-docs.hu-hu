@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 45357092784bd9c8821a81b07ce3c381c4ce7989
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7819c934ab97d597d52d4809c11e5c59fb87c89a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410504"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840668"
 ---
 # <a name="localization-string-ids"></a>Honosítási sztringazonosítók
 
@@ -27,33 +27,44 @@ A **honosítási** elem lehetővé teszi, hogy a felhasználói útvonalakhoz ta
 
 A következő azonosítókat használják egy `api.signuporsignin` , a és az [önérvényesített technikai profilhoz](self-asserted-technical-profile.md)tartozó tartalom-definícióhoz.
 
-| ID (Azonosító) | Alapértelmezett érték |
-| -- | ------------- |
-| **local_intro_email** | Bejelentkezés meglévő fiókkal |
-| **logonIdentifier_email** | E-mail-cím |
-| **requiredField_email** | Adja meg az e-mail-címét |
-| **invalid_email** | Adjon meg egy érvényes e-mail-címet |
-| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' *+/=? ^ _ \` { \| } ~-] + @ [a-Za-z0-9-] + (?: \\ . [ a-zA-Z0-9-] +)*$ |
-| **local_intro_username** | Jelentkezzen be a felhasználónevével |
-| **logonIdentifier_username** | Felhasználónév |
-| **requiredField_username** | Adja meg a felhasználónevét |
-| **alaphelyzetbe állítása** | Jelszó |
-| **requiredField_password** | Adja meg a jelszavát |
-| **invalid_password** | A beírt jelszó nem a várt formátumban van. |
-| **forgotpassword_link** | Elfelejtette a jelszavát? |
-| **createaccount_intro** | Nincs fiókja? |
-| **createaccount_link** | Regisztráljon most |
-| **divider_title** | OR |
-| **cancel_message** | A felhasználó elfelejtette a jelszavát |
-| **button_signin** | Bejelentkezés |
-| **social_intro** | Jelentkezzen be a közösségi fiókjával |
-  **remember_me** |Bejelentkezés megtartása. |
-| **unknown_error** | Hiba történt a bejelentkezés során. Próbálkozzon újra később. |
+| ID (Azonosító) | Alapértelmezett érték | Lapelrendezés verziója |
+| -- | ------------- | ------ |
+| **forgotpassword_link** | Elfelejtette a jelszavát? | `All` |
+| **createaccount_intro** | Nincs fiókja? | `All` |
+| **button_signin** | Bejelentkezés | `All` |
+| **social_intro** | Jelentkezzen be a közösségi fiókjával | `All` |
+| **remember_me** |Bejelentkezés megtartása. | `All` |
+| **unknown_error** | Hiba történt a bejelentkezés során. Próbálkozzon újra később. | `All` |
+| **divider_title** | OR | `All` |
+| **local_intro_email** | Bejelentkezés meglévő fiókkal | `< 2.0.0` |
+| **logonIdentifier_email** | E-mail-cím | `< 2.0.0` |
+| **requiredField_email** | Adja meg az e-mail-címét | `< 2.0.0` |
+| **invalid_email** | Adjon meg egy érvényes e-mail-címet | `< 2.0.0` |
+| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' \* +/=? ^ \_ \` { \| } ~-] + @ [a-Za-z0-9-] + (?: \\ . [ a-zA-Z0-9-] +) \* $ |`< 2.0.0` |
+| **local_intro_username** | Jelentkezzen be a felhasználónevével | `< 2.0.0` |
+| **logonIdentifier_username** | Felhasználónév | `< 2.0.0` |
+| **requiredField_username** | Adja meg a felhasználónevét | `< 2.0.0` |
+| **alaphelyzetbe állítása** | Jelszó | `< 2.0.0` |
+| **requiredField_password** | Adja meg a jelszavát | `< 2.0.0` |
+| **createaccount_link** | Regisztráljon most | `< 2.0.0` |
+| **cancel_message** | A felhasználó elfelejtette a jelszavát | `< 2.0.0` |
+| **invalid_password** | A beírt jelszó nem a várt formátumban van. | `< 2.0.0` |
+| **createaccount_one_link** | Regisztráljon most | `>= 2.0.0` |
+| **createaccount_two_links** | Regisztráció a {0} vagy a {1} | `>= 2.0.0` |
+| **createaccount_three_links** | Regisztráció a {0} , {1} vagy a {2} | `>= 2.0.0` |
+| **local_intro_generic** | Jelentkezzen be a {0} | `>= 2.1.0` |
+| **requiredField_generic** | Adja meg a {0} | `>= 2.1.0` |
+| **invalid_generic** | Adjon meg érvényes értéket {0} | `>= 2.1.1` |
+| **vámtarifaszám** | Bejelentkezés | `>= 2.1.1` |
+
+
+> [!NOTE]
+> * A (z {0} ) értékkel automatikusan kitöltik a helyőrzőket `DisplayName` `ClaimType` . 
+> * A honosítással kapcsolatos információkért `ClaimType` lásd: [regisztráció vagy bejelentkezési példa](#signupsigninexample).
 
 A következő példa a felhasználói felület egyes elemeinek használatát mutatja be a regisztrációs vagy bejelentkezési oldalon:
 
-![Regisztrációs vagy bejelentkezési oldal UX-elemek](./media/localization-string-ids/localization-susi.png)
-
+![Regisztrációs vagy bejelentkezési oldal UX-elemek](./media/localization-string-ids/localization-susi-2.png)
 
 ### <a name="sign-up-or-sign-in-identity-providers"></a>Regisztrációs vagy bejelentkezési identitás-szolgáltatók
 
@@ -95,32 +106,28 @@ Az alábbi példa a Facebook-identitás szolgáltatóját az Arab nyelvre honos�
 | **UserMessageIfUserAccountLocked** | A fiók átmenetileg zárolva van, hogy megakadályozza a jogosulatlan használatot. Próbálkozzon újra később. |
 | **AADRequestsThrottled** | Jelenleg túl sok kérés van. Várjon egy ideig, és próbálkozzon újra. |
 
+<a name="signupsigninexample"></a>
 ### <a name="sign-up-or-sign-in-example"></a>Regisztrációs vagy bejelentkezési példa
 
 ```xml
 <LocalizedResources Id="api.signuporsignin.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="UxElement" StringId="logonIdentifier_email">Email Address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="requiredField_email">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="logonIdentifier_username">Username</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="password">Password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="createaccount_link">Sign up now</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="requiredField_username">Please enter your user name</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="createaccount_intro">Don't have an account?</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="cancel_message">The user has forgotten their password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email Address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="heading">Sign in</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="social_intro">Sign in with your social account</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="local_intro_generic">Sign in with your {0}</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="requiredField_password">Please enter your password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="invalid_password">The password you entered is not in the expected format.</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="local_intro_username">Sign in with your user name</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="local_intro_email">Sign in with your existing account</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="invalid_email">Please enter a valid email address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_generic">Please enter your {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_generic">Please enter a valid {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_one_link">Sign up now</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_two_links">Sign up with {0} or {1}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_three_links">Sign up with {0}, {1}, or {2}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="unknown_error">We are having trouble signing you in. Please try again later.</LocalizedString>
     <!-- Uncomment the remember_me only if the keep me signed in is activated. 
     <LocalizedString ElementType="UxElement" StringId="remember_me">Keep me signed in</LocalizedString> -->
-    <LocalizedString ElementType="UxElement" StringId="email_pattern">^[a-zA-Z0-9.!#$%&amp;’'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$</LocalizedString>
     <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Your password is incorrect.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfPasswordExpired">Your password has expired.</LocalizedString>
@@ -433,9 +440,9 @@ A [Rest-szolgáltatás technikai profiljának](restful-technical-profile.md) hib
 </LocalizedResources>
 ```
 
-## <a name="azure-mfa-error-messages"></a>Azure MFA-hibaüzenetek
+## <a name="azure-ad-mfa-error-messages"></a>Azure AD MFA-hibaüzenetek
 
-Az [Azure MFA technikai profilhoz](multi-factor-auth-technical-profile.md) tartozó hibaüzenetek azonosítói a következők:
+Az [Azure ad MFA technikai profilhoz](multi-factor-auth-technical-profile.md) tartozó hibaüzenetek azonosítói a következők:
 
 | ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
@@ -446,7 +453,7 @@ Az [Azure MFA technikai profilhoz](multi-factor-auth-technical-profile.md) tarto
 |UserMessageIfThrottled | A kérelem szabályozása megtörtént, próbálkozzon újra később.|
 |UserMessageIfWrongCodeEntered|Helytelen kód van megadva, próbálkozzon újra.|
 
-### <a name="azure-mfa-example"></a>Azure MFA-példa
+### <a name="azure-ad-mfa-example"></a>Azure AD MFA-példa
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -536,7 +543,7 @@ A jogcím-átalakítási hibaüzenetek azonosítói a következők:
 </LocalizedResources>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A honosítási példákat a következő cikkekben találja:
 

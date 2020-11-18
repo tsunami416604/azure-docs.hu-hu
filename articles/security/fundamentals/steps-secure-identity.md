@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 4fa5ba935e77055936b2abc4faab49b5d10cb5c0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 4703a76ff0a0b55a438f9f0d164cd7f2d3242a02
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410062"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842022"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -48,7 +48,7 @@ Az ebben a dokumentumban ismertetett javaslatok az Azure AD-bérlő identitás-b
 
 Mielőtt elkezdené ezt a feladatlistát, győződjön meg róla, hogy az ellenőrzőlista elolvasása közben nem sérül. Először gondoskodnia kell a Kiemelt jogosultságú fiókok biztonságáról.
 
-A Kiemelt fiókok felügyeletét befogadó támadók óriási károkat okozhatnak, ezért fontos, hogy először megvédje ezeket a fiókokat. [Azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) engedélyezése és megkövetelése a szervezetben lévő összes rendszergazda számára az [Azure ad-beli biztonsági beállítások](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) vagy a [feltételes hozzáférés](../../active-directory/conditional-access/plan-conditional-access.md)használatával. Ha még nem implementálta az MFA-t, tegye meg most! Ez fontos.
+A Kiemelt fiókok felügyeletét befogadó támadók óriási károkat okozhatnak, ezért fontos, hogy először megvédje ezeket a fiókokat. Az Azure ad [multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) engedélyezése és megkövetelése a szervezetben lévő összes rendszergazda számára az [Azure ad-beli biztonsági beállítások](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) vagy a [feltételes hozzáférés](../../active-directory/conditional-access/plan-conditional-access.md)használatával. Ha még nem implementálta az MFA-t, tegye meg most! Ez fontos.
 
 Minden készlet? Ismerkedjen meg az ellenőrzőlista első lépéseivel.
 
@@ -59,9 +59,9 @@ A legtöbb nagyvállalati biztonsági rést egy olyan fiók okozta, amely a jels
 
 ### <a name="make-sure-your-organization-uses-strong-authentication"></a>Győződjön meg arról, hogy a szervezet erős hitelesítést használ
 
-A kitalált jelszavak gyakorisága, az adathalászás, a kártevő szoftverrel való ellopás vagy az újbóli használat miatt kritikus fontosságú a jelszó visszaállítása valamilyen erős hitelesítő adat használatával – további információ az [Azure multi-Factor Authenticationról](../../active-directory/authentication/concept-mfa-howitworks.md).
+A kitalált jelszavak gyakorisága, az adathalászás, a kártevők ellopása vagy az újbóli használat miatt kritikus fontosságú a jelszó visszaállítása valamilyen erős hitelesítő adat használatával – további információ az [Azure AD multi-Factor Authenticationról](../../active-directory/authentication/concept-mfa-howitworks.md).
 
-Az Identitáskezelés alapvető szintjének egyszerű engedélyezéséhez használhatja az egykattintásos engedélyezést az [Azure ad biztonsági alapértelmezett beállításaival](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md). A biztonsági alapértékek az Azure MFA-t a bérlő összes felhasználója számára kikényszerítik, és blokkolja a régi protokolloktól a bérlőre kiterjedő bejelentkezéseket.
+Az Identitáskezelés alapvető szintjének egyszerű engedélyezéséhez használhatja az egykattintásos engedélyezést az [Azure ad biztonsági alapértelmezett beállításaival](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md). A biztonsági alapértékek az Azure AD MFA-t a bérlő összes felhasználója számára kényszerítik, és blokkolja a régi protokolloktól a bérlőre kiterjedő bejelentkezéseket.
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Indítsa el a gyakran megtámadott jelszavak betiltását, és kapcsolja ki a hagyományos összetettséget és a lejárati szabályokat.
 
@@ -211,7 +211,7 @@ A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez az ö
 
 Nagyra értékeljük, hogy milyen komolyan vesszük a személyazonossági biztonságot, és reméljük, hogy ez a dokumentum hasznos útiterv a szervezete számára biztonságosabb testhelyzethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha segítségre van szüksége a javaslatok megtervezéséhez és üzembe helyezéséhez, tekintse meg az [Azure ad projekt üzembe helyezési terveit](../../active-directory/fundamentals/active-directory-deployment-plans.md) .
 

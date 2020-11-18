@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: f0f9d2affe39eaf74d4c0a537658d655a0c150d7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fe49dce276a15d9d7bc8ddaa5618c0e43dec62e9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789573"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841223"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Új DBA a felhőben – Azure SQL Database kezelése az áttelepítés után
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -101,12 +101,12 @@ A [Azure Security Center](https://azure.microsoft.com/services/security-center/)
 
 A SQL Databaseban két hitelesítési módszer érhető el:
 
-- [Azure Active Directory-hitelesítés](authentication-aad-overview.md)
+- [Azure Active Directory hitelesítés](authentication-aad-overview.md)
 - [SQL-hitelesítés](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 A hagyományos Windows-hitelesítés nem támogatott. Azure Active Directory (Azure AD) egy központi identitás-és hozzáférés-kezelési szolgáltatás. Ezzel kihasználhatja az egyszeri bejelentkezéses hozzáférést (SSO) a szervezet minden munkatársa számára. Ez azt jelenti, hogy a hitelesítő adatok az összes Azure-szolgáltatásban meg vannak osztva az egyszerűbb hitelesítéshez. 
 
-Az Azure AD az [azure multi-Factor Authenticationt](authentication-mfa-ssms-overview.md) támogatja, és [néhány kattintással](../../active-directory/hybrid/how-to-connect-install-express.md) az Azure ad-vel integrálható a Windows Server Active Directory. Az SQL-hitelesítés pontosan úgy működik, ahogy korábban is használta. Adja meg a felhasználónevet és a jelszót, és a felhasználókat egy adott kiszolgálón található adatbázishoz hitelesítheti. Ez lehetővé teszi a SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse) számára, hogy az Azure AD-tartományon belül Multi-Factor Authentication és vendég felhasználói fiókokat is kínáljon. Ha már rendelkezik egy Active Directory helyszíni szolgáltatással, a könyvtárat összevonása a Azure Active Directory segítségével bővítheti a címtárat az Azure-ban.
+Az Azure AD támogatja az [Azure ad multi-Factor Authentication](authentication-mfa-ssms-overview.md) , és [néhány kattintással](../../active-directory/hybrid/how-to-connect-install-express.md) integrálható az Azure ad-vel a Windows Server Active Directory. Az SQL-hitelesítés pontosan úgy működik, ahogy korábban is használta. Adja meg a felhasználónevet és a jelszót, és a felhasználókat egy adott kiszolgálón található adatbázishoz hitelesítheti. Ez lehetővé teszi a SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse) számára, hogy az Azure AD-tartományon belül Multi-Factor Authentication és vendég felhasználói fiókokat is kínáljon. Ha már rendelkezik egy Active Directory helyszíni szolgáltatással, a könyvtárat összevonása a Azure Active Directory segítségével bővítheti a címtárat az Azure-ban.
 
 |**Ha...**|**SQL Database/Azure szinapszis-elemzés**|
 |---|---|
@@ -305,7 +305,7 @@ A SQL Database különböző szolgáltatási szinteket kínál alapszintű, stan
 |---|---|
 |**Basic**|Egy maroknyi felhasználóval és egy olyan adatbázissal, amely nem rendelkezik magas párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel. |
 |**Standard**|A jelentős párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel rendelkező alkalmazások alacsony – közepes i/o-igényekkel párosulnak. |
-|**Prémium**|Számos egyidejű felhasználóval, magas CPU/memóriával és magas i/o-igényű alkalmazásokkal. A magas Egyidejűség, a nagy átviteli sebesség és a késésre érzékeny alkalmazások kihasználhatják a prémium szintet. |
+|**Prémium szintű**|Számos egyidejű felhasználóval, magas CPU/memóriával és magas i/o-igényű alkalmazásokkal. A magas Egyidejűség, a nagy átviteli sebesség és a késésre érzékeny alkalmazások kihasználhatják a prémium szintet. |
 |||
 
 A megfelelő számítási méret biztosításához a "Hogyan a SQL Database teljesítményének és erőforrás-kihasználtságának figyelése" című részében felsorolt módszerek egyikén keresztül figyelheti a lekérdezési és az adatbázis-erőforrás-felhasználást. Ha úgy találja, hogy a lekérdezések/adatbázisok folyamatosan futnak a PROCESSZORon vagy a memórián, stb., érdemes lehet nagyobb számítási méretre méretezni. Hasonlóképpen, ha úgy gondolja, hogy a csúcsidőben még nem használja az erőforrásokat, érdemes megfontolni a méretezést az aktuális számítási mérettől.
@@ -320,11 +320,11 @@ A SQL Database olyan intelligens technikákat használ, amelyek lehetővé teszi
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database-using-the-azure-portal"></a>Hogyan az adatok exportálása és importálása BACPAC-fájlként a SQL Database használatával a Azure Portal
 
-- **Exportálás** : az adatbázis Azure SQL Database BACPAC fájlként is exportálható a Azure Portal
+- **Exportálás**: az adatbázis Azure SQL Database BACPAC fájlként is exportálható a Azure Portal
 
    ![Adatbázis-exportálás](./media/manage-data-after-migrating-to-database/database-export1.png)
 
-- **Importálás** : az BACPAC-fájlként importálhatja az adatait Azure SQL Database adatbázisba a Azure Portal használatával.
+- **Importálás**: az BACPAC-fájlként importálhatja az adatait Azure SQL Database adatbázisba a Azure Portal használatával.
 
    ![adatbázis importálása](./media/manage-data-after-migrating-to-database/import1.png)
 

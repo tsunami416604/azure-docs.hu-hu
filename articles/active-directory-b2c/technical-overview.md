@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80ae79f73a55d5feb1aede7ccc7d3b2b64682a24
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 519e2da902e1121220bcbb28c4cb18a68001293b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364082"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840552"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>A Azure Active Directory B2C technikai és funkcióinak áttekintése
 
@@ -95,13 +95,13 @@ A felhasználói folyamatokat és az egyéni házirendeket a *személyazonosság
 
 ### <a name="user-flow"></a>Felhasználói folyamat
 
-A leggyakoribb identitás-feladatok gyors beállításához a Azure Portal számos előre definiált és konfigurálható szabályzatot tartalmaz, amelyeket *felhasználói folyamatoknak*nevezünk.
+A leggyakoribb identitás-feladatok gyors beállításához a Azure Portal számos előre definiált és konfigurálható szabályzatot tartalmaz, amelyeket *felhasználói folyamatoknak* nevezünk.
 
 A felhasználói folyamatok beállításait, például az alábbi beállításokkal konfigurálhatja az identitások viselkedését az alkalmazásokban:
 
 * A bejelentkezéshez használt fióktípus, például olyan közösségi fiókok, mint például a Facebook vagy a bejelentkezéshez e-mail-címet és jelszót használó helyi fiókok
 * A fogyasztótól begyűjtött attribútumok, például Utónév, postai kód vagy lakhely szerinti ország/régió
-* Azure Multi-Factor Authentication (MFA)
+* Azure AD-Multi-Factor Authentication (MFA)
 * A felhasználói felület testreszabása
 * Jogcímek készlete egy jogkivonatban, amelyet az alkalmazás akkor kap, miután a felhasználó befejezte a felhasználói folyamatot
 * Munkamenet-kezelés

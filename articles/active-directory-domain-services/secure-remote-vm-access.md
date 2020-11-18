@@ -1,6 +1,6 @@
 ---
 title: A virtuális gépek biztonságos elérésének biztosítása a Azure AD Domain Servicesban | Microsoft Docs
-description: Megtudhatja, hogyan biztonságossá teheti a virtuális gépek távoli elérését a hálózati házirend-kiszolgáló (NPS) és az Azure Multi-Factor Authentication használatával, egy Azure Active Directory Domain Services felügyelt tartományban lévő Távoli asztali szolgáltatások-telepítéssel.
+description: Megtudhatja, hogyan biztonságossá teheti a virtuális gépek távoli elérését a hálózati házirend-kiszolgáló (NPS) és az Azure AD Multi-Factor Authentication használatával, egy Azure Active Directory Domain Services felügyelt tartományban lévő Távoli asztali szolgáltatások-telepítéssel.
 services: active-directory-ds
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: 2964ca74a05ccbc61646f8a289fc950b46cdad47
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a08b5bf4fb575f0cd2098b3ef180860bb8fbd6e0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967783"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840236"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Biztonságos távoli hozzáférés a Azure Active Directory Domain Services virtuális gépekhez
 
-A Azure Active Directory Domain Services (Azure AD DS) által felügyelt tartományban futó virtuális gépek (VM-EK) távelérésének biztonságossá tételéhez a Távoli asztali szolgáltatások (RDS) és a hálózati házirend-kiszolgáló (NPS) használható. Az Azure AD DS hitelesíti a felhasználókat az RDS-környezettel való hozzáférés kérése közben. A fokozott biztonság érdekében az Azure Multi-Factor Authentication integrálásával további hitelesítési kéréseket adhat meg a bejelentkezési események során. Az Azure Multi-Factor Authentication egy bővítményt használ a hálózati házirend-kiszolgáló számára a szolgáltatás biztosításához.
+A Azure Active Directory Domain Services (Azure AD DS) által felügyelt tartományban futó virtuális gépek (VM-EK) távelérésének biztonságossá tételéhez a Távoli asztali szolgáltatások (RDS) és a hálózati házirend-kiszolgáló (NPS) használható. Az Azure AD DS hitelesíti a felhasználókat az RDS-környezettel való hozzáférés kérése közben. A fokozott biztonság érdekében az Azure AD-Multi-Factor Authentication integrálásával további hitelesítési kéréseket adhat meg a bejelentkezési események során. Az Azure AD Multi-Factor Authentication egy bővítményt használ a hálózati házirend-kiszolgáló számára a szolgáltatás biztosításához.
 
 > [!IMPORTANT]
 > Az Azure AD DS felügyelt tartományokban lévő virtuális gépekhez való biztonságos kapcsolódás ajánlott módja az Azure Bastion, amely egy teljes körű platformon felügyelt, a virtuális hálózaton belül üzembe helyezhető szolgáltatás. A megerősített gazdagépek biztonságos és zökkenőmentes RDP protokoll (RDP) kapcsolatot biztosítanak a virtuális gépekhez közvetlenül a Azure Portal SSL-en keresztül. Ha egy megerősített gazdagépen keresztül csatlakozik, a virtuális gépeknek nincs szüksége nyilvános IP-címekre, és nem kell hálózati biztonsági csoportokat használnia az RDP eléréséhez a 3389-es TCP-porton.
@@ -28,7 +28,7 @@ A Azure Active Directory Domain Services (Azure AD DS) által felügyelt tartom�
 >
 > További információ: [Mi az az Azure Bastion?][bastion-overview].
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az RDS-t az Azure AD DSban, és igény szerint használhatja az Azure Multi-Factor Authentication NPS bővítményt.
+Ez a cikk bemutatja, hogyan konfigurálhatja az RDS-t az Azure AD DSban, és igény szerint használhatja az Azure AD Multi-Factor Authentication NPS bővítményt.
 
 ![A Távoli asztali szolgáltatások (RDS) áttekintése](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
@@ -66,32 +66,32 @@ A távoli asztali környezet üzembe helyezése számos lépést tartalmaz. A me
 
 A felügyelt tartományba telepített távoli asztali környezettel felügyelheti és használhatja a szolgáltatást, mint a helyszíni AD DS tartománnyal.
 
-## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>A hálózati házirend-kiszolgáló és az Azure MFA NPS-bővítmény üzembe helyezése és konfigurálása
+## <a name="deploy-and-configure-nps-and-the-azure-ad-mfa-nps-extension"></a>A hálózati házirend-kiszolgáló és az Azure AD MFA NPS-bővítmény üzembe helyezése és konfigurálása
 
-Ha szeretné javítani a felhasználói bejelentkezési élmény biztonságát, lehetősége van a távoli asztali környezet integrálására az Azure Multi-Factor Authentication használatával. Ezzel a konfigurációval a felhasználók a bejelentkezés során további kérést kapnak az identitásuk megerősítéséhez.
+Ha szeretné javítani a felhasználói bejelentkezési élmény biztonságát, lehetősége van a távoli asztali környezet integrálására az Azure AD Multi-Factor Authentication használatával. Ezzel a konfigurációval a felhasználók a bejelentkezés során további kérést kapnak az identitásuk megerősítéséhez.
 
-Ennek a képességnek a biztosításához további hálózati házirend-kiszolgáló (NPS) van telepítve a környezetben az Azure Multi-Factor Authentication NPS bővítményével együtt. Ez a bővítmény integrálva van az Azure AD-vel, és visszaküldi a multi-Factor Authentication-kérések állapotát.
+Ennek a képességnek a biztosításához további hálózati házirend-kiszolgáló (NPS) van telepítve a környezetben az Azure AD Multi-Factor Authentication NPS bővítményével együtt. Ez a bővítmény integrálva van az Azure AD-vel, és visszaküldi a multi-Factor Authentication-kérések állapotát.
 
-[Az azure multi-Factor Authentication használatához regisztrálni kell a][user-mfa-registration]felhasználókat, ami további Azure ad-licenceket igényelhet.
+[Az Azure ad multi-Factor Authentication használatához regisztrálni kell a][user-mfa-registration]felhasználókat, ami további Azure ad-licenceket igényelhet.
 
-Az Azure Multi-Factor Authentication Azure-beli AD DS Távoli asztal-környezetbe való integrálásához hozzon létre egy NPS-kiszolgálót, és telepítse a bővítményt:
+Az Azure AD Multi-Factor Authentication Azure AD DS Távoli asztal-környezetbe való integrálásához hozzon létre egy NPS-kiszolgálót, és telepítse a bővítményt:
 
 1. Hozzon létre egy további, a Windows Server 2016-es vagy 2019-es virtuális GÉPET, például a *NPSVM01*-t, amely az Azure AD DS Virtual Network *munkaterhelési* alhálózatához csatlakozik. Csatlakoztassa a virtuális gépet a felügyelt tartományhoz.
 1. Jelentkezzen be a hálózati házirend-kiszolgáló virtuális gépre az *Azure ad DC-rendszergazdák* csoport tagjaként, például *contosoadmin*.
-1. A **Kiszolgálókezelőben**válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget, majd telepítse a *hálózati házirend-és elérési szolgáltatások* szerepkört.
-1. Az [Azure MFA NPS-bővítmény telepítéséhez és konfigurálásához][nps-extension]használja a meglévő útmutató cikket.
+1. A **Kiszolgálókezelőben** válassza a **szerepkörök és szolgáltatások hozzáadása** lehetőséget, majd telepítse a *hálózati házirend-és elérési szolgáltatások* szerepkört.
+1. Az [Azure ad MFA NPS-bővítmény telepítéséhez és konfigurálásához][nps-extension]használja a meglévő útmutató cikket.
 
-Ha telepítette az NPS-kiszolgálót és az Azure Multi-Factor Authentication NPS bővítményt, akkor a következő szakasz segítségével konfigurálja azt a távoli asztali környezettel való használatra.
+Ha a hálózati házirend-kiszolgáló és az Azure AD Multi-Factor Authentication NPS bővítmény telepítve van, végezze el a következő szakaszt a konfigurálásához a távoli asztali környezettel való használatra.
 
-## <a name="integrate-remote-desktop-gateway-and-azure-multi-factor-authentication"></a>A Távoli asztali átjáró és az Azure Multi-Factor Authentication integrálása
+## <a name="integrate-remote-desktop-gateway-and-azure-ad-multi-factor-authentication"></a>Távoli asztali átjáró és az Azure AD integrálása Multi-Factor Authentication
 
-Az Azure Multi-Factor Authentication NPS bővítmény integrálásához a meglévő útmutató cikk használatával [integrálhatja távoli asztali átjáró-infrastruktúráját a hálózati házirend-kiszolgáló (NPS) bővítménnyel és az Azure ad][azure-mfa-nps-integration]-vel.
+Az Azure AD Multi-Factor Authentication NPS bővítmény integrálásához a meglévő útmutató cikk használatával [integrálhatja távoli asztali átjáró-infrastruktúráját a hálózati házirend-kiszolgáló (NPS) bővítménnyel és az Azure ad][azure-mfa-nps-integration]-vel.
 
 A felügyelt tartományhoz való integráláshoz a következő további konfigurációs beállítások szükségesek:
 
 1. Ne [regisztrálja az NPS-kiszolgálót Active Directory-ben][register-nps-ad]. Ez a lépés nem sikerül felügyelt tartományban.
-1. A [hálózati házirend konfigurálásához a 4. lépésben][create-nps-policy]jelölje be a **felhasználói fiók betárcsázási tulajdonságainak figyelmen kívül hagyása**jelölőnégyzetet is.
-1. Ha a Windows Server 2019-et használja a hálózati házirend-kiszolgáló és az Azure Multi-Factor Authentication NPS bővítmény számára, futtassa a következő parancsot a biztonságos csatorna frissítéséhez, hogy a hálózati házirend-kiszolgáló helyesen kommunikáljon:
+1. A [hálózati házirend konfigurálásához a 4. lépésben][create-nps-policy]jelölje be a **felhasználói fiók betárcsázási tulajdonságainak figyelmen kívül hagyása** jelölőnégyzetet is.
+1. Ha a Windows Server 2019-et használja a hálózati házirend-kiszolgáló és az Azure AD Multi-Factor Authentication NPS bővítmény számára, futtassa a következő parancsot a biztonságos csatorna frissítéséhez, hogy a hálózati házirend-kiszolgáló helyesen kommunikáljon:
 
     ```powershell
     sc sidtype IAS unrestricted
@@ -103,7 +103,7 @@ A rendszer a bejelentkezéskor további hitelesítési tényezőt kér a felhasz
 
 További információ az üzembe helyezés rugalmasságának javításáról: [Távoli asztali szolgáltatások magas rendelkezésre állású][rds-high-availability].
 
-A felhasználói bejelentkezés biztonságossá tételével kapcsolatos további információkért tekintse [meg a hogyan működik: Azure multi-Factor Authentication][concepts-mfa].
+A felhasználói bejelentkezés biztonságossá tételével kapcsolatos további információkért tekintse [meg a hogyan működik: Azure AD multi-Factor Authentication][concepts-mfa].
 
 <!-- INTERNAL LINKS -->
 [bastion-overview]: ../bastion/bastion-overview.md
