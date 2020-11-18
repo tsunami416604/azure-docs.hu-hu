@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/20/2020
+ms.date: 11/11/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 7ecccd64921b2d95155318fe91c897725e340b7e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: c68f76e56f49f055466f7332d7751ac468e034d8
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334669"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616739"
 ---
 ::: zone target="docs"
 
@@ -74,11 +74,11 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 
     ![Megosztások hitelesítő adatainak beszerzése SMB-megosztásokhoz](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. Az Access share and copy data (Megosztási és másolási adatok másolása) párbeszédpanelen másolja ki a megosztásnak megfelelő **Username** (Felhasználónév) és **Password** (Jelszó) értékeket. Ha a jelszó különleges karaktereket tartalmaz, tegye idézőjelek közé. Ez után válassza az **OK** gombot.
+2. Az Access share and copy data (Megosztási és másolási adatok másolása) párbeszédpanelen másolja ki a megosztásnak megfelelő **Username** (Felhasználónév) és **Password** (Jelszó) értékeket. Ez után válassza az **OK** gombot.
     
     ![Felhasználónév és jelszó beszerzése egy megosztáshoz](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. A tárfiókjához (a következő példában *utsac1* ) társított megosztások gazdagépről történő eléréséhez nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
+3. A tárfiókjához (a következő példában *utsac1*) társított megosztások gazdagépről történő eléréséhez nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -87,11 +87,11 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
     - Azure-lapblob – `\\10.126.76.138\utSAC1_202006051000_PageBlob`
     - Azure Files – `\\10.126.76.138\utSAC1_202006051000_AzFile`
 
-4. Ha a rendszer kéri, adja meg a megosztás jelszavát. A következő példa bemutatja, hogyan kell csatlakozni egy megosztáshoz a fenti parancs használatával.
+4. Ha a rendszer kéri, adja meg a megosztás jelszavát. Ha a jelszó különleges karaktereket tartalmaz, tegye idézőjelek közé. A következő példa bemutatja, hogyan kell csatlakozni egy megosztáshoz a fenti parancs használatával.
 
     ```
     C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
-    Enter the password for 'testuser1' to connect to '10.126.76.138':
+    Enter the password for 'testuser1' to connect to '10.126.76.138': "ab1c2def$3g45%6h7i&j8kl9012345"
     The command completed successfully.
     ```
 
