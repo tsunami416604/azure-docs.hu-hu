@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a8b013723707c4a3a087a90674227c3d41c5108
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395889"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836937"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identitás-adattárolás a Azure Active Directory európai ügyfelei számára
 Az identitás adatait az Azure AD tárolja földrajzi helyen a szervezete által megadott, a Microsoft Online szolgáltatásra (például Microsoft 365 és az Azure-ra való feliratkozáskor) alapuló címen. További információ a személyazonossági adatok tárolásáról: a Microsoft adatvédelmi központjának hol található az [adatai?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) szakasza.
 
 Az Európai adatközpontokon belül az Azure AD a személyazonossági adatok többségét megtartja az olyan ügyfelek számára, akik európai lakcímet biztosítanak. Ez a dokumentum az Azure AD-szolgáltatások által az Európán kívül tárolt adatokról nyújt információkat.
 
-## <a name="microsoft-azure-multi-factor-authentication"></a>Microsoft Azure Multi-Factor Authentication
+## <a name="microsoft-azure-ad-multi-factor-authentication"></a>Microsoft Azure AD Multi-Factor Authentication
 
-Felhőalapú Azure-Multi-Factor Authentication esetén a hitelesítés a felhasználó legközelebbi adatközpontjában fejeződik be. Az Azure Multi-Factor Authentication-adatközpontok Észak-Amerika, Európában és Ázsia és a Csendes-óceáni térségban léteznek.
+Felhőalapú Azure AD-Multi-Factor Authentication esetén a hitelesítés a felhasználó legközelebbi adatközpontjában fejeződik be. Az Azure AD Multi-Factor Authentication-adatközpontok Észak-Amerika, Európában és Ázsia és a Csendes-óceáni térségban léteznek.
 
 * A többtényezős hitelesítés telefonos hívásokat használ az Egyesült államokbeli adatközpontokból, és a globális szolgáltatók irányítják.
 * A többtényezős hitelesítést az SMS-sel a globális szolgáltatók irányítják.
@@ -34,7 +34,7 @@ Felhőalapú Azure-Multi-Factor Authentication esetén a hitelesítés a felhasz
     * Az eszköz gyártója által meghatározott szolgáltatások, például az Apple leküldéses értesítések, Európán kívül is lehetnek.
 * Az EU-adatközpontokból származó eskü kódokat használó multi-Factor Authentication-kérelmek ellenőrzése az EU-ban történik.
 
-További információ arról, hogy az Azure Multi-Factor Authentication-kiszolgáló (MFA-kiszolgáló) és a felhőalapú Azure MFA milyen felhasználói adatokat gyűjt, lásd: [azure multi-Factor Authentication felhasználói adatok gyűjtése](../authentication/howto-mfa-reporting-datacollection.md).
+További információ arról, hogy az Azure Multi-Factor Authentication-kiszolgáló (MFA-kiszolgáló) és a felhőalapú Azure AD MFA milyen felhasználói adatokat gyűjt, lásd: [azure multi-Factor Authentication felhasználói adatok gyűjtése](../authentication/howto-mfa-reporting-datacollection.md).
 
 ## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Jelszó-alapú egyszeri Sign-On vállalati alkalmazásokhoz
  

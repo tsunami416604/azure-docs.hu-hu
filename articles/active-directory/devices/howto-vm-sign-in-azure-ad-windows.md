@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85bbdff2f7e67434a3e21aaf51af96c1e851eb0d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 134148fa3ea73212d85393cc433d60f7ddeecd17
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740187"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837124"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -146,8 +146,8 @@ Ekkor megjelenik a (z) `provisioningState` `Succeeded` , ha a bővítmény telep
 
 Most, hogy létrehozta a virtuális gépet, konfigurálnia kell az Azure RBAC-szabályzatot annak meghatározásához, hogy ki tud bejelentkezni a virtuális gépre. A VM-bejelentkezés engedélyezéséhez két Azure-szerepkör használható:
 
-- **Virtuális gép rendszergazdai bejelentkezése** : az ehhez a szerepkörhöz hozzárendelt felhasználók rendszergazdai jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
-- **Virtuális gép felhasználói bejelentkezése** : az ehhez a szerepkörhöz hozzárendelt felhasználók rendszeres felhasználói jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
+- **Virtuális gép rendszergazdai bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók rendszergazdai jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
+- **Virtuális gép felhasználói bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók rendszeres felhasználói jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
 
 > [!NOTE]
 > Annak engedélyezéséhez, hogy a felhasználó RDP-en keresztül jelentkezzen be a virtuális GÉPRE, hozzá kell rendelnie a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési szerepkörét. Egy virtuális géphez hozzárendelt tulajdonosi vagy közreműködői szerepkörökkel rendelkező Azure-felhasználó nem jogosult automatikusan a virtuális gépre RDP-kapcsolaton keresztül bejelentkezni. Ez a virtuális gépeket vezérlő személyek, illetve a virtuális gépeket elérő személyek között naplózható elkülönítést biztosít.
@@ -163,8 +163,8 @@ Szerepkör-hozzárendelések konfigurálása az Azure AD-ben engedélyezett Wind
 
 1. Navigáljon az adott virtuális gép áttekintő oldalára
 1. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget a menüpontok közül.
-1. Válassza a **Hozzáadás** , **szerepkör-hozzárendelés hozzáadása** lehetőséget a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához.
-1. A **szerepkör** legördülő listában válasszon ki egy szerepkört, például a **virtuális gép rendszergazdai felhasználónevét** vagy a **virtuális gép felhasználói bejelentkezését** .
+1. Válassza a **Hozzáadás**, **szerepkör-hozzárendelés hozzáadása** lehetőséget a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához.
+1. A **szerepkör** legördülő listában válasszon ki egy szerepkört, például a **virtuális gép rendszergazdai felhasználónevét** vagy a **virtuális gép felhasználói bejelentkezését**.
 1. A **Select (kiválasztás** ) mezőben válasszon ki egy felhasználót, egy csoportot, egy szolgáltatásnevet vagy egy felügyelt identitást. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
 1. A szerepkör hozzárendeléséhez válassza a **Mentés** lehetőséget.
 
@@ -203,7 +203,7 @@ A feltételes hozzáférési szabályzatok, például a többtényezős hiteles�
 > Ha a "többtényezős hitelesítés megkövetelése" lehetőséget használja hozzáférés-vezérlésre az "Azure Windows rendszerű virtuális gép bejelentkezési" alkalmazáshoz való hozzáféréshez, akkor az ügyfél részeként meg kell adnia a többtényezős hitelesítési jogcímet, amely az RDP-munkamenetet az Azure-beli cél Windows rendszerű virtuális gépre indítja. Ezt csak akkor érheti el, ha egy Windows 10-ügyfélen a Windows Hello for Business PIN-kódot vagy biometrikus hitelesítést használja az RDP-ügyféllel. A biometrikus hitelesítés támogatása a Windows 10 1809-es verziójának RDP-ügyfeléhez lett hozzáadva. A Windows Hello for Business hitelesítést használó távoli asztal csak a tanúsítvány-megbízhatósági modellt használó központi telepítések esetén érhető el, és jelenleg nem érhető el a kulcs megbízhatósági modellje számára.
 
 > [!WARNING]
-> Felhasználónkénti engedélyezett/kényszerített Azure-Multi-Factor Authentication nem támogatott a virtuális gép bejelentkezéséhez.
+> Felhasználónkénti engedélyezett/kényszerített Azure AD-Multi-Factor Authentication nem támogatott a virtuális gép bejelentkezéséhez.
 
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Bejelentkezés Azure AD-beli hitelesítő adatokkal egy Windows rendszerű virtuális gépen
 

@@ -16,12 +16,12 @@ ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e794b66341d4e7c478fd526107cc35c7c745fa7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe92f761ac0b16da7c3cc3c69c1fa4b00f4e7579
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85358327"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836359"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory átmenő hitelesítés: technikai mély merülés
 Ez a cikk áttekintést nyújt az Azure Active Directory (Azure AD) átmenő hitelesítésének működéséről. A részletes technikai és biztonsági tudnivalókat lásd a [biztonsági Deep Dive](how-to-connect-pta-security-deep-dive.md) -cikkben.
@@ -43,14 +43,14 @@ Amikor egy felhasználó megpróbál bejelentkezni egy Azure AD által védett a
 8. Az ügynök a normál Windows API-k használatával ellenőrzi a felhasználónevet és a jelszót Active Directoryon, ami hasonló módszer a Active Directory összevonási szolgáltatások (AD FS) (AD FS) által használt rendszerekhez. A Felhasználónév lehet a helyszíni alapértelmezett Felhasználónév, általában `userPrincipalName` vagy más, Azure ad Connect (más néven) konfigurált attribútum `Alternate ID` .
 9. A helyszíni Active Directory tartományvezérlő (DC) kiértékeli a kérést, és visszaadja a megfelelő választ (sikeres, sikertelen, jelszó lejárt vagy felhasználó által zárolt) az ügynöknek.
 10. A hitelesítési ügynök viszont visszaadja ezt a választ az Azure AD-nek.
-11. Az Azure AD kiértékeli a választ, és szükség szerint válaszol a felhasználónak. Például az Azure AD vagy azonnal aláírja a felhasználót, vagy az Azure Multi-Factor Authenticationra vonatkozó kéréseket.
+11. Az Azure AD kiértékeli a választ, és szükség szerint válaszol a felhasználónak. Például az Azure AD vagy azonnal aláírja a felhasználót vagy az Azure AD-Multi-Factor Authenticationra vonatkozó kéréseket.
 12. Ha a felhasználói bejelentkezés sikeres, a felhasználó elérheti az alkalmazást.
 
 A következő ábra az összes összetevőt és a benne foglalt lépéseket szemlélteti:
 
 ![Átmenő hitelesítés](./media/how-to-connect-pta-how-it-works/pta2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Jelenlegi korlátozások](how-to-connect-pta-current-limitations.md): megtudhatja, hogy mely forgatókönyvek támogatottak, és melyek nem.
 - [Gyorskonfigurálás](how-to-connect-pta-quick-start.md): az Azure ad átmenő hitelesítésének megkezdése és futtatása.
 - [Migrálás ad FSról áteresztő hitelesítésre](https://aka.ms/adfstoPTADP) – részletes útmutató a AD FS (vagy más összevonási technológiákból) áttelepített hitelesítéshez.

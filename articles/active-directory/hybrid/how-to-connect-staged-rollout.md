@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24eb7ac7c4490c8d27d141f6417ae157a7a9c65b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2a79ec9a54ae597bc7e9795029dc4292c2c82345
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646576"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836393"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
-A lépcsőzetes bevezetéssel szelektíven tesztelheti a felhasználók csoportjait olyan felhőalapú hitelesítési funkciókkal, mint az Azure Multi-Factor Authentication (MFA), a feltételes hozzáférés, a kiszivárgott hitelesítő adatok identitásának védelme, a személyazonosság szabályozása és mások, a tartományok kivágása előtt.  Ez a cikk bemutatja, hogyan hajthatja végre a kapcsolót. Mielőtt elkezdené a szakaszos bevezetést, érdemes figyelembe vennie a következményeket, ha az alábbi feltételek közül egy vagy több teljesül:
+A lépcsőzetes bevezetéssel szelektíven tesztelheti a felhasználók csoportjait olyan felhőalapú hitelesítési funkciókkal, mint az Azure AD Multi-Factor Authentication (MFA), a feltételes hozzáférés, a kiszivárgott hitelesítő adatok identitásának védelme, a személyazonosság szabályozása és mások, a tartományok kivágása előtt.  Ez a cikk bemutatja, hogyan hajthatja végre a kapcsolót. Mielőtt elkezdené a szakaszos bevezetést, érdemes figyelembe vennie a következményeket, ha az alábbi feltételek közül egy vagy több teljesül:
     
 -  Jelenleg helyszíni Multi-Factor Authentication-kiszolgálót használ. 
 -  Intelligens kártyákat használ a hitelesítéshez. 
@@ -45,7 +45,7 @@ A funkció áttekintéséhez tekintse meg ezt a "Azure Active Directory: mi a sz
 
 -   A Felhőbeli hitelesítésre áttelepített felhasználókhoz szükséges összes bérlői arculatot és feltételes hozzáférési szabályzatot konfigurálta.
 
--   Ha az Azure Multi-Factor Authentication használatát tervezi, javasoljuk, hogy az [önkiszolgáló jelszó-visszaállítás (SSPR) együttes regisztrációját használja, és multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) , hogy a felhasználók egyszer regisztrálják a hitelesítési módszereiket. Megjegyzés: Ha a SSPR-t használja a jelszó alaphelyzetbe állításához vagy a jelszó módosításához a MyProfile oldalon, a szakaszos bevezetéskor Azure AD Connect kell szinkronizálnia az új jelszó-kivonatot, amely akár 2 percet is igénybe vehet.
+-   Ha az Azure AD Multi-Factor Authentication használatát tervezi, javasoljuk, hogy az [önkiszolgáló jelszó-visszaállítás (SSPR) együttes regisztrációját használja, és multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) , hogy a felhasználók egyszer regisztrálják a hitelesítési módszereiket. Megjegyzés: Ha a SSPR-t használja a jelszó alaphelyzetbe állításához vagy a jelszó módosításához a MyProfile oldalon, a szakaszos bevezetéskor Azure AD Connect kell szinkronizálnia az új jelszó-kivonatot, amely akár 2 percet is igénybe vehet.
 
 -   A szakaszos bevezetési funkció használatához globális rendszergazdának kell lennie a bérlőn.
 

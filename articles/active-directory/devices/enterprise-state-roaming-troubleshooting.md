@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e427a68751cc348a7b0024fb01402bd15ca87d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df70891ef090d44769aadbc235273e3193bc780e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705724"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837209"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>A Azure Active Directory Enterprise State Roaming beállításainak hibaelhárítása
 
@@ -76,7 +76,7 @@ Enterprise State Roaming megköveteli, hogy az eszköz regisztrálva legyen az A
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming és Multi-Factor Authentication 
 
-Bizonyos körülmények között a Enterprise State Roaming nem tud szinkronizálni az adatszinkronizálást, ha az Azure Multi-Factor Authentication konfigurálva van. További információ ezekről a jelenségekről: támogatási dokumentum [KB3193683](https://support.microsoft.com/kb/3193683). 
+Bizonyos körülmények között a Enterprise State Roaming az Azure AD-Multi-Factor Authentication konfigurálásakor nem tud szinkronizálni az adatszinkronizálással. További információ ezekről a jelenségekről: támogatási dokumentum [KB3193683](https://support.microsoft.com/kb/3193683). 
 
 **Lehetséges probléma**: Ha az eszköz úgy van konfigurálva, hogy a Azure Active Directory portálon multi-Factor Authentication igényelni, előfordulhat, hogy a Windows 10-es eszközre jelszóval való bejelentkezéskor nem lehet szinkronizálni a beállításokat. Az ilyen típusú Multi-Factor Authentication-konfiguráció egy Azure-beli rendszergazdai fiók megvédésére szolgál. A rendszergazda felhasználók továbbra is tudnak szinkronizálni a Windows 10-es eszközökre való bejelentkezéssel Microsoft Passport for Work PIN-kóddal vagy a Multi-Factor Authentication elvégzésével, miközben más Azure-szolgáltatásokhoz, például Microsoft 365hoz férnek hozzá.
 
@@ -84,7 +84,7 @@ Bizonyos körülmények között a Enterprise State Roaming nem tud szinkronizá
 
 ### <a name="event-viewer"></a>Eseménynapló
 
-A speciális hibaelhárításhoz a Eseménynapló segítségével meghatározott hibák kereshetők. Ezeket az alábbi táblázat ismerteti. Az események a Eseménynapló >- **alkalmazások és-szolgáltatások naplójában**találhatók meg a  >  **Microsoft**  >  **Windows**  >  **SettingSync – Azure-** ban, valamint az alkalmazások és szolgáltatások szinkronizálására szolgáló, az **alkalmazásokkal és szolgáltatásokkal**kapcsolatos problémák a  >  **Microsoft**  >  **Windows**  >  **HRE**.
+A speciális hibaelhárításhoz a Eseménynapló segítségével meghatározott hibák kereshetők. Ezeket az alábbi táblázat ismerteti. Az események a Eseménynapló >- **alkalmazások és-szolgáltatások naplójában** találhatók meg a  >  **Microsoft**  >  **Windows**  >  **SettingSync – Azure-** ban, valamint az alkalmazások és szolgáltatások szinkronizálására szolgáló, az **alkalmazásokkal és szolgáltatásokkal** kapcsolatos problémák a  >  **Microsoft**  >  **Windows**  >  **HRE**.
 
 ## <a name="known-issues"></a>Ismert problémák
 

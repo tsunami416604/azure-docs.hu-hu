@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b883cac7b970488a30116bc06efc8663766629
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5c4301a61a79ab2351c18af0c76cccc3d07dd202
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370202"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836682"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Az Azure AD-vel gyorsan reagálhat a biztonságos identitásokra
 
@@ -38,7 +38,7 @@ Ez az ellenőrzőlista segítséget nyújt a kritikus fontosságú ajánlott mű
 
 Ez az útmutató azt feltételezi, hogy a felhőben csak a hibrid identitások lettek létrehozva az Azure AD-ben. Az azonosító típus kiválasztásával kapcsolatos segítségért tekintse meg a [megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](../hybrid/choose-ad-authn.md) . 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez a ellenőrzőlista egy biztonságos és biztonságos identitás-infrastruktúrára koncentrál, amely lehetővé teszi a felhasználók számára a távoli munkát. Az identitás védelme csak a biztonsági történet részét képezi, az adatok, az alkalmazások és az eszközök védelmét is figyelembe kell venni.
 
@@ -75,7 +75,7 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 
 | Javasolt művelet | Részletek |
 | --- | --- |
-| [Az Azure MFA és a SSPR együttes regisztrációs felületének engedélyezése a felhasználói regisztráció egyszerűsítése érdekében](../authentication/howto-registration-mfa-sspr-combined.md) | Lehetővé teheti a felhasználók számára, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületén regisztráljanak. |
+| [Az Azure AD MFA és a SSPR együttes regisztrációs felületének engedélyezése a felhasználói regisztrációs élmény egyszerűsítése érdekében](../authentication/howto-registration-mfa-sspr-combined.md) | Lehetővé teszi, hogy a felhasználók az Azure AD Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületéről regisztráljon. |
 | [A szervezet MFA-beállításainak konfigurálása](../authentication/howto-mfa-getstarted.md) | Gondoskodjon arról, hogy a fiókok védve legyenek a többtényezős hitelesítéssel |
 | [Új jelszó önkiszolgáló kérésének engedélyezése](../authentication/tutorial-enable-sspr.md) | Ez a funkció csökkenti az ügyfélszolgálati hívásokat és a hatékonyság elvesztését, ha a felhasználó nem tud bejelentkezni az eszközére vagy egy alkalmazásba |
 | [Jelszó-visszaírási implementálása](../authentication/tutorial-enable-sspr-writeback.md) (hibrid identitások használata esetén) | A Felhőbeli jelszavak módosításának engedélyezése a helyi Windows Server Active Directory környezetbe való visszaíráshoz. |
@@ -105,11 +105,11 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 
 | Javasolt művelet | Részletek |
 | --- | --- |
-| [Az Azure MFA és a SSPR együttes regisztrációs felületének engedélyezése a felhasználói regisztráció egyszerűsítése érdekében](../authentication/howto-registration-mfa-sspr-combined.md) | Lehetővé teheti a felhasználók számára, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületén regisztráljanak. |
+| [Az Azure AD MFA és a SSPR együttes regisztrációs felületének engedélyezése a felhasználói regisztrációs élmény egyszerűsítése érdekében](../authentication/howto-registration-mfa-sspr-combined.md) | Lehetővé teszi, hogy a felhasználók az Azure AD Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületéről regisztráljon. |
 | [A szervezet MFA-beállításainak konfigurálása](../authentication/howto-mfa-getstarted.md) | Gondoskodjon arról, hogy a fiókok védve legyenek a többtényezős hitelesítéssel |
 | [Új jelszó önkiszolgáló kérésének engedélyezése](../authentication/tutorial-enable-sspr.md) | Ez a funkció csökkenti az ügyfélszolgálati hívásokat és a hatékonyság elvesztését, ha a felhasználó nem tud bejelentkezni az eszközére vagy egy alkalmazásba |
 | [Jelszó-visszaírási implementálása](../authentication/tutorial-enable-sspr-writeback.md) (hibrid identitások használata esetén) | A Felhőbeli jelszavak módosításának engedélyezése a helyi Windows Server Active Directory környezetbe való visszaíráshoz. |
-| [Identitás-védelmi házirendek engedélyezése az MFA-regisztráció érvényesítéséhez](../identity-protection/howto-identity-protection-configure-mfa-policy.md) | Az Azure Multi-Factor Authentication (MFA) üzembe helyezésének kezelése. |
+| [Identitás-védelmi házirendek engedélyezése az MFA-regisztráció érvényesítéséhez](../identity-protection/howto-identity-protection-configure-mfa-policy.md) | Felügyelheti az Azure AD Multi-Factor Authentication (MFA) üzembe helyezését. |
 | [Identity Protection-felhasználói és bejelentkezési kockázati házirendek engedélyezése](../identity-protection/howto-identity-protection-configure-risk-policies.md) | Engedélyezze az Identity Protection felhasználói és bejelentkezési szabályzatait. Az ajánlott bejelentkezési szabályzat a közepes kockázatú bejelentkezések megcélzása és az MFA megkövetelése. A felhasználói házirendek esetében a jelszó-módosítási műveletet igénylő magas kockázatú felhasználóknak kell megcélozni. |
 | Feltételes hozzáférési szabályzatok létrehozása és engedélyezése | [MFA a rendszergazdák számára a rendszergazdai jogosultságokat hozzárendelő fiókok védelméhez.](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [Örökölt hitelesítési protokollok letiltása az örökölt hitelesítési protokollokkal kapcsolatos megnövekedett kockázat miatt.](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [A többtényezős hitelesítés megkövetelése az Azure-erőforrásokhoz hozzáférő felhasználók többtényezős hitelesítésének megkövetelése az Azure-felügyelethez.](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [Jelszó-kivonat szinkronizálásának engedélyezése](../hybrid/how-to-connect-password-hash-synchronization.md) (hibrid identitások használata esetén) | Redundancia biztosítása a hitelesítéshez és a biztonság növelése (beleértve az intelligens zárolást, az IP-zárolást és a kiszivárgott hitelesítő adatok felderítésének lehetőségét) |

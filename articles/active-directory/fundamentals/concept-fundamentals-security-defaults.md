@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 2c056bd4d5fa9037ce00588269c0da2937ff57ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c26cbf55c1e3883605d4c65659511af20cf02c7f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705333"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836767"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
 A biztonság kezelése nehéz lehet az identitással kapcsolatos gyakori támadásokkal, például a jelszó-spray, a visszajátszás és az adathalászat egyre népszerűbbvé válásával. A biztonsági alapértékek segítségével az előre konfigurált biztonsági beállításokkal könnyebben megvédheti szervezetét ezektől a támadásoktól:
 
-- Az összes felhasználónak regisztrálnia kell az Azure Multi-Factor Authentication.
+- Az összes felhasználónak regisztrálnia kell az Azure AD-Multi-Factor Authentication.
 - A többtényezős hitelesítés végrehajtásának megkövetelése a rendszergazdától.
 - Örökölt hitelesítési protokollok blokkolása.
 - Ha szükséges, a felhasználóknak többtényezős hitelesítést kell végezniük.
@@ -52,13 +52,13 @@ A Microsoft mindenki számára elérhetővé teszi a biztonsági beállításoka
 
 ### <a name="unified-multi-factor-authentication-registration"></a>Egységesített Multi-Factor Authentication regisztráció
 
-A bérlő összes felhasználójának regisztrálnia kell a többtényezős hitelesítés (MFA) számára az Azure Multi-Factor Authentication formájában. A felhasználók 14 napig regisztrálhatnak az Azure Multi-Factor Authenticationra az Microsoft Authenticator alkalmazás használatával. A 14 nap eltelte után a felhasználó nem fog tudni bejelentkezni, amíg be nem fejeződik a regisztráció. A felhasználók 14 napos időszaka az első sikeres interaktív bejelentkezés után kezdődik az alapértelmezett biztonsági beállítások engedélyezése után.
+A bérlő összes felhasználójának regisztrálnia kell a többtényezős hitelesítést (MFA) az Azure AD-Multi-Factor Authentication formájában. A felhasználók 14 napig regisztrálhatnak az Azure AD-Multi-Factor Authenticationre a Microsoft Authenticator alkalmazás használatával. A 14 nap eltelte után a felhasználó nem fog tudni bejelentkezni, amíg be nem fejeződik a regisztráció. A felhasználók 14 napos időszaka az első sikeres interaktív bejelentkezés után kezdődik az alapértelmezett biztonsági beállítások engedélyezése után.
 
 ### <a name="protecting-administrators"></a>A rendszergazdák védelme
 
 A Kiemelt hozzáféréssel rendelkező felhasználók nagyobb hozzáférést biztosítanak a környezethez. Ezeknek a fiókoknak a kihasználása miatt speciális gondossággal kell kezelnie őket. A rendszerjogosultságú fiókok védelmének egyik gyakori módszere a fiók-ellenőrzés erősebb formájának megkövetelése a bejelentkezéshez. Az Azure AD-ben a többtényezős hitelesítés megkövetelésével erősebb fiókokat lehet ellenőrizni.
 
-Az Azure Multi-Factor Authentication-regisztrációt követően a következő kilenc Azure AD-rendszergazdai szerepkörrel kell további hitelesítést végeznie minden bejelentkezéskor:
+Az Azure AD Multi-Factor Authentication való regisztrációt követően a következő kilenc Azure AD-rendszergazdai szerepkörrel kell elvégeznie a további hitelesítést minden alkalommal, amikor bejelentkeznek:
 
 - Globális rendszergazda
 - SharePoint-rendszergazda
@@ -120,22 +120,22 @@ A következő további szempontok a biztonsági Alapértelmezések telepítésé
 
 ### <a name="authentication-methods"></a>Hitelesítési módszerek
 
-Ezek az ingyenes biztonsági alapértékek lehetővé teszik az Azure Multi-Factor Authentication regisztrációját és használatát, és **csak az Microsoft Authenticator alkalmazást használják az értesítések használatával**. A feltételes hozzáférés lehetővé teszi bármely hitelesítési módszer használatát, amelyet a rendszergazda az engedélyezéshez választ.
+Ezek az ingyenes biztonsági beállítások lehetővé teszik az Azure AD-Multi-Factor Authentication regisztrációját és használatát, és **csak az Microsoft Authenticator alkalmazást használják az értesítések használatával**. A feltételes hozzáférés lehetővé teszi bármely hitelesítési módszer használatát, amelyet a rendszergazda az engedélyezéshez választ.
 
-| Módszer | Alapértelmezett biztonsági szabályok | Feltételes hozzáférés |
+| Metódus | Alapértelmezett biztonsági szabályok | Feltételes hozzáférés |
 | --- | --- | --- |
 | Értesítés a Mobile App használatával | X | X |
 | Ellenőrző kód a Mobile App vagy a Hardware tokenből | X * * | X |
 | SMS-üzenet a telefonra |   | X |
 | Telefonos hívás |   | X |
-| Alkalmazásjelszavak. |   | X * * * |
+| Alkalmazásjelszavak. |   | X * * _ |
 
-- * * A felhasználók a Microsoft Authenticator alkalmazásból is használhatnak ellenőrző kódokat, de csak az értesítési lehetőséggel regisztrálhatnak.
-- Az alkalmazás jelszavai csak akkor érhetők el felhasználónkénti MFA-ban, ha az örökölt hitelesítési forgatókönyvek csak a rendszergazdák által engedélyezettek.
+- _ * A felhasználók a Microsoft Authenticator alkalmazásból is használhatnak ellenőrző kódokat, de csak az értesítési lehetőséggel regisztrálhatnak.
+- * * _ Az alkalmazás jelszavai csak akkor érhetők el felhasználónkénti MFA-ban, ha az örökölt hitelesítési forgatókönyvek csak a rendszergazdák által engedélyezettek.
 
 ### <a name="disabled-mfa-status"></a>Letiltott MFA-állapot
 
-Ha a szervezet a felhasználónkénti Azure-Multi-Factor Authentication korábbi felhasználója, ne felébressze, hogy az **engedélyezett** vagy **kényszerített** állapotú felhasználók ne lássák a többtényezős hitelesítés állapota lapot. A **Letiltva** érték a biztonsági alapértékeket vagy a feltételes hozzáférésű Azure-multi-Factor Authenticationt használó felhasználók számára megfelelő állapot.
+Ha a szervezete a felhasználónkénti Azure AD-Multi-Factor Authentication korábbi felhasználója, ne felébressze, hogy a felhasználók nem látják a nem *engedélyezett* vagy **kényszerített** állapotot, ha megtekinti a multi-Factor Auth állapota lapot. A **Letiltva** érték a biztonsági alapértékeket vagy a feltételes hozzáférésű Azure AD-multi-Factor Authentication használó felhasználók számára megfelelő állapot.
 
 ### <a name="conditional-access"></a>Feltételes hozzáférés
 
@@ -149,7 +149,7 @@ Az alábbiakban részletes útmutatók láthatók arról, hogy a feltételes hoz
 - [MFA megkövetelése az Azure-beli felügyelethez](../conditional-access/howto-conditional-access-policy-azure-management.md)
 - [Régi hitelesítési folyamat letiltása](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [MFA megkövetelése minden felhasználótól](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [Azure MFA-regisztráció megkövetelése](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – a prémium szintű Azure AD P2 Azure ad Identity Protection részét igényli.
+- Az [Azure ad MFA-regisztráció megkövetelése](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – a prémium szintű Azure AD P2 Azure ad Identity Protection részét igényli.
 
 ## <a name="enabling-security-defaults"></a>Biztonsági alapértékek engedélyezése
 
@@ -157,9 +157,9 @@ A biztonsági alapértelmezett beállítások engedélyezése a címtárban:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com)   biztonsági rendszergazdaként, feltételes hozzáférésű rendszergazdaként vagy globális rendszergazdaként.
 1. Tallózással keresse meg **Azure Active Directory**   >  **tulajdonságokat**.
-1. Válassza a **biztonsági beállítások kezelése**lehetőséget.
-1. Állítsa a **biztonsági Alapértelmezések engedélyezése** kapcsolót **Igen**értékre.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **biztonsági beállítások kezelése** lehetőséget.
+1. Állítsa a **biztonsági Alapértelmezések engedélyezése** kapcsolót **Igen** értékre.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="disabling-security-defaults"></a>Biztonsági alapértékek letiltása
 
@@ -171,9 +171,9 @@ A biztonsági alapértelmezett beállítások letiltása a címtárban:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com)   biztonsági rendszergazdaként, feltételes hozzáférésű rendszergazdaként vagy globális rendszergazdaként.
 1. Tallózással keresse meg **Azure Active Directory**   >  **tulajdonságokat**.
-1. Válassza a **biztonsági beállítások kezelése**lehetőséget.
-1. Állítsa be a **biztonsági beállítások engedélyezése** beállítást a **nem**értékre.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **biztonsági beállítások kezelése** lehetőséget.
+1. Állítsa be a **biztonsági beállítások engedélyezése** beállítást a **nem** értékre.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

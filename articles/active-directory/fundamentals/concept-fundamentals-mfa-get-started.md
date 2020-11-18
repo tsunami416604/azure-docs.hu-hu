@@ -1,6 +1,6 @@
 ---
-title: Azure-Multi-Factor Authentication a szervezet számára – Azure Active Directory
-description: Ismerje meg az Azure Multi-Factor Authentication elérhető funkcióit a licencelési modellje alapján a szervezet számára
+title: Azure AD-Multi-Factor Authentication a szervezet számára – Azure Active Directory
+description: Ismerje meg az Azure AD Multi-Factor Authentication elérhető funkcióit a licencelési modellje alapján a szervezet számára
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: daveba
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 093d9fdd75b8a4a581faa0708cf97ea67774d734
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 85e7f02f8cbda6218396bf4a9a4654a113b7817c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241718"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836742"
 ---
-# <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>A szervezethez tartozó Azure-Multi-Factor Authentication áttekintése
+# <a name="overview-of-azure-ad-multi-factor-authentication-for-your-organization"></a>A szervezethez tartozó Azure AD-Multi-Factor Authentication áttekintése
 
-Az Azure Multi-Factor Authentication a szervezet tulajdonában lévő licencek alapján több módon is engedélyezhető az Azure Active Directory (AD) felhasználók számára. 
+A szervezet tulajdonában lévő licencek alapján több módon engedélyezheti az Azure AD-Multi-Factor Authentication a Azure Active Directory (AD) felhasználók számára. 
 
 ![A jelek vizsgálata és az MFA betartatása szükség esetén](./media/concept-fundamentals-mfa-get-started/verify-signals-and-perform-mfa-if-required.png)
 
@@ -36,7 +36,7 @@ Az Azure AD ingyenes előnyeit kihasználó ügyfelek [biztonsági alapértékek
 
 A Microsoft 365 rendelkező ügyfeleknek két lehetősége van:
 
-* Az Azure Multi-Factor Authentication az összes felhasználó számára engedélyezve van vagy le van tiltva az összes bejelentkezési esemény esetében. Nincs lehetőség a többtényezős hitelesítés engedélyezésére a felhasználók egy részhalmaza számára, vagy csak bizonyos esetekben. A felügyelet az Office 365-portálon keresztül történik. 
+* Az Azure AD Multi-Factor Authentication az összes felhasználó számára engedélyezve van vagy le van tiltva az összes bejelentkezési esemény esetében. Nincs lehetőség a többtényezős hitelesítés engedélyezésére a felhasználók egy részhalmaza számára, vagy csak bizonyos esetekben. A felügyelet az Office 365-portálon keresztül történik. 
 * A jobb felhasználói élmény érdekében frissítsen prémium szintű Azure AD P1-re vagy P2-re, és használja a feltételes hozzáférést. További információ: biztonságos Microsoft 365 erőforrások a többtényezős hitelesítéssel.
 
 ## <a name="azure-ad-premium-p1"></a>Prémium szintű Azure AD P1
@@ -62,6 +62,6 @@ Biztosítja a legerősebb biztonsági helyzetet és a jobb felhasználói élmé
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az első lépésekhez tekintse meg az oktatóanyagot a [felhasználói bejelentkezési események biztonságossá tételéhez az Azure multi-Factor Authentication](../authentication/tutorial-enable-azure-mfa.md)használatával.
+Első lépésként tekintse meg az oktatóanyagot a [felhasználói bejelentkezési események biztonságossá tételéhez az Azure AD multi-Factor Authentication](../authentication/tutorial-enable-azure-mfa.md).
 
-A licenceléssel kapcsolatos további információkért lásd: [Az Azure multi-Factor Authentication szolgáltatásai és licencei](../authentication/concept-mfa-licensing.md).
+A licenceléssel kapcsolatos további információkért tekintse meg [Az Azure AD multi-Factor Authentication funkcióit és licenceit](../authentication/concept-mfa-licensing.md).

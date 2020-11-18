@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f717e14e5abe62aafffdeef841889ea2458fa8b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5374dc2ef4c736535b218d8cd67521e83a24a40b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413445"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836461"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Hogyan biztosítja az Azure AD a felhőben szabályozott felügyeletet a helyszíni számítási feladatokhoz
 
@@ -39,7 +39,7 @@ Ez a tanulmány a Microsoft hibrid IDaaS vonatkozó stratégiáját ismerteti, �
 
 ## <a name="the-azure-ad-approach-to-cloud-governed-identity-management"></a>Az Azure AD megközelítése a felhőben szabályozott Identitáskezelés kezeléséhez
 
-A szervezeteknek a felhőbe való áttéréshez olyan biztosítékokra van szükségük, amelyek a teljes környezetük felett vannak, és nagyobb biztonságot és nagyobb láthatóságot biztosítanak a tevékenységek, az automatizálás és az proaktív betekintések révén. "A **felhőben szabályozott felügyelet** " azt ismerteti, hogyan kezelik és szabályozzák a szervezetek a felhasználókat, az alkalmazásokat, a csoportokat és az eszközöket a felhőből.
+A szervezeteknek a felhőbe való áttéréshez olyan biztosítékokra van szükségük, amelyek a teljes környezetük felett vannak, és nagyobb biztonságot és nagyobb láthatóságot biztosítanak a tevékenységek, az automatizálás és az proaktív betekintések révén. "A **felhőben szabályozott felügyelet**" azt ismerteti, hogyan kezelik és szabályozzák a szervezetek a felhasználókat, az alkalmazásokat, a csoportokat és az eszközöket a felhőből.
 
 Ebben a modern világban a szervezeteknek az SaaS-alkalmazások elterjedése, valamint az együttműködés és a külső identitások egyre növekvő szerepe miatt nagy léptékű hatékony felügyeletet kell biztosítaniuk. A felhő új kockázati környezete azt jelenti, hogy a szervezetnek rugalmasabbnak kell lennie – egy rosszindulatú személy, aki feltört egy Felhőbeli felhasználót, hatással lehet a Felhőbeli és a helyszíni alkalmazásokra.
 
@@ -89,7 +89,7 @@ Ha egy szervezet készen áll egy AD-integrált alkalmazás felhőbe való áthe
 
 ## <a name="cloud-governed-management-for-on-premises-federation-based-applications"></a>Felhőbe irányított felügyelet a helyszíni összevonási alkalmazások esetében
 
-Egy olyan szervezet számára, amely már használ helyszíni identitás-szolgáltatót, az alkalmazások Azure AD-be való áthelyezésével biztonságosabb és könnyebben kezelhetővé válik az összevonási felügyelet. Az Azure AD lehetővé teszi, hogy az Azure AD feltételes hozzáférés használatával többalkalmazásos hozzáférés-vezérlést, többek között az Azure Multi-Factor Authentication konfigurálja. Az Azure AD több funkciót is támogat, többek között az alkalmazásspecifikus jogkivonat-aláíró tanúsítványokat és a konfigurálható tanúsítvány lejárati dátumát. Ezek a képességek, eszközök és útmutatók lehetővé teszik a szervezetek számára, hogy kivonják a helyszíni identitás-szolgáltatókat. A Microsoft saját informatikai, egy példája miatt 17 987 alkalmazást helyezett át a Microsoft belső Active Directory összevonási szolgáltatások (AD FS) (AD FS) az Azure AD-be.
+Egy olyan szervezet számára, amely már használ helyszíni identitás-szolgáltatót, az alkalmazások Azure AD-be való áthelyezésével biztonságosabb és könnyebben kezelhetővé válik az összevonási felügyelet. Az Azure AD lehetővé teszi, hogy az Azure ad feltételes hozzáférés használatával többalkalmazásos hozzáférés-vezérlést, többek között az Azure AD Multi-Factor Authentication konfigurálja. Az Azure AD több funkciót is támogat, többek között az alkalmazásspecifikus jogkivonat-aláíró tanúsítványokat és a konfigurálható tanúsítvány lejárati dátumát. Ezek a képességek, eszközök és útmutatók lehetővé teszik a szervezetek számára, hogy kivonják a helyszíni identitás-szolgáltatókat. A Microsoft saját informatikai, egy példája miatt 17 987 alkalmazást helyezett át a Microsoft belső Active Directory összevonási szolgáltatások (AD FS) (AD FS) az Azure AD-be.
 
 ![Az Azure AD evolúciója](media/cloud-governed-management-for-on-premises/image5.png)
 
@@ -111,10 +111,10 @@ A szervezetek az olyan technológiákon keresztül automatizálják a hozzáfér
 
 ## <a name="future-directions"></a>Jövőbeli irányok
 
-A hibrid környezetekben a Microsoft stratégiája az olyan üzemelő példányok engedélyezése, amelyekben a **felhő az identitás vezérlő síkja** , valamint a helyszíni címtárak és más Identity rendszerek, például a Active Directory és más helyszíni alkalmazások, amelyek célja a felhasználók hozzáférésének kiépítése. Ez a stratégia továbbra is biztosítja a jogosultságokat, az identitásokat és a hozzáférést a rájuk támaszkodó alkalmazásokban és munkaterhelésekben. Ezen a helyen a szervezetek teljes egészében képesek lesznek a végfelhasználók termelékenységét a felhőből elvinni.
+A hibrid környezetekben a Microsoft stratégiája az olyan üzemelő példányok engedélyezése, amelyekben a **felhő az identitás vezérlő síkja**, valamint a helyszíni címtárak és más Identity rendszerek, például a Active Directory és más helyszíni alkalmazások, amelyek célja a felhasználók hozzáférésének kiépítése. Ez a stratégia továbbra is biztosítja a jogosultságokat, az identitásokat és a hozzáférést a rájuk támaszkodó alkalmazásokban és munkaterhelésekben. Ezen a helyen a szervezetek teljes egészében képesek lesznek a végfelhasználók termelékenységét a felhőből elvinni.
 
 ![Azure AD-architektúra](media/cloud-governed-management-for-on-premises/image6.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az utazás megkezdéséről: az Azure AD üzembehelyezési csomagjai, amely a következő címen található: <https://aka.ms/deploymentplans> . Teljes körű útmutatást nyújtanak Azure Active Directory (Azure AD) képességeinek üzembe helyezéséhez. Az egyes tervek ismertetik az Azure AD-képességek sikeres kiépítéséhez szükséges üzleti értékeket, tervezési szempontokat, kialakítási és üzemeltetési eljárásokat. A Microsoft folyamatosan frissíti az üzembe helyezési terveket az ügyfelek üzembe helyezésével és más visszajelzésekkel kapcsolatos ajánlott eljárásokkal, amikor új képességeket adunk a felhőből az Azure AD-vel való felügyelethez.

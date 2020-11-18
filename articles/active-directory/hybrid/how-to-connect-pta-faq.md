@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6db477a288ef41c2946cd550af6ff87999eff2f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb9d9e7c60344a2a4c538c6d3bf59e337e4569c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461274"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836325"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory átmenő hitelesítés: gyakori kérdések
 
@@ -37,7 +37,7 @@ Az átmenő hitelesítés ingyenes szolgáltatás. Nincs szüksége az Azure AD 
 
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Működik a [feltételes hozzáférés](../conditional-access/overview.md) átmenő hitelesítéssel?
 
-Igen. Az összes feltételes hozzáférési képesség, beleértve az Azure Multi-Factor Authentication is, az átmenő hitelesítéssel dolgozhat.
+Igen. Az összes feltételes hozzáférési képesség, beleértve az Azure AD-Multi-Factor Authentication is, az átmenő hitelesítéssel dolgozhat.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Az áteresztő hitelesítés támogatja a "másodlagos azonosító" nevet a "userPrincipalName" helyett?
 Igen, a bejelentkezés nem UPN-értékkel, például egy másodlagos e-mail-címmel is támogatott az átmenő hitelesítés (PTA) és a jelszó-kivonat szinkronizálása (PHS) esetében. További információ a [Másodlagos bejelentkezési azonosítóról](../authentication/howto-authentication-use-email-signin.md).
@@ -109,7 +109,7 @@ Az egyes áteresztő hitelesítési ügynökök és az Azure AD közötti kommun
 
 Amíg egy átmenő hitelesítési ügynök fut, aktív marad, és folyamatosan kezeli a felhasználói bejelentkezési kérelmeket. Ha el kívánja távolítani a hitelesítési ügynököt, lépjen a **Vezérlőpult – > programok > programok és szolgáltatások elemre** , és távolítsa el mind a **Microsoft Azure ad csatlakozási hitelesítési ügynököt** , mind a **Microsoft Azure ad összekapcsolási ügynök frissítési** programját.
 
-Ha az előző lépés elvégzése után a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com) bejelöli a átmenő hitelesítés panelt, akkor a hitelesítési ügynök **inaktívként**jelenik meg. Ez a _várt_érték. A hitelesítési ügynök 10 nap elteltével automatikusan el lesz dobva a listából.
+Ha az előző lépés elvégzése után a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com) bejelöli a átmenő hitelesítés panelt, akkor a hitelesítési ügynök **inaktívként** jelenik meg. Ez a _várt_ érték. A hitelesítési ügynök 10 nap elteltével automatikusan el lesz dobva a listából.
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Már használom a AD FS az Azure AD-be való bejelentkezéshez. Hogyan váltani átmenő hitelesítésre?
 

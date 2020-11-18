@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ecc23e2969ce4ce26eef7b9a3a485389d08ce0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266782"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837107"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszközkezelés – gyakori kérdések
 
@@ -24,10 +24,10 @@ ms.locfileid: "89266782"
 
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>K: nemrég regisztráltam az eszközt. Miért nem látom az eszközt a felhasználói adatok között a Azure Portal? Vagy a hibrid Azure Active Directory (Azure AD) csatlakoztatott eszközökhöz tartozó N/A-ként jelölt eszköz tulajdonosa
 
-**A:** A hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközök nem jelennek meg a **felhasználói eszközök**területen.
+**A:** A hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközök nem jelennek meg a **felhasználói eszközök** területen.
 Használja a Azure Portal **minden eszköz** nézetét. Használhat egy PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmagot is.
 
-Csak a következő eszközök szerepelnek a **felhasználói eszközök**területen:
+Csak a következő eszközök szerepelnek a **felhasználói eszközök** területen:
 
 - Minden olyan személyes eszköz, amely nem rendelkezik hibrid Azure AD-csatlakozással. 
 - Az összes nem Windows 10 vagy Windows Server 2016 rendszerű eszköz.
@@ -37,7 +37,7 @@ Csak a következő eszközök szerepelnek a **felhasználói eszközök**terüle
 
 ### <a name="q-how-do-i-know-what-the-device-registration-state-of-the-client-is"></a>K: Hogyan tudni, hogy az ügyfél az eszköz regisztrációs állapotát?
 
-**A:** A Azure Portal lépjen a **minden eszköz**elemre. Keresse meg az eszközt az eszköz azonosítója alapján. Tekintse meg az értéket az illesztés típusa oszlopban. Előfordulhat, hogy az eszköz alaphelyzetbe áll vagy alaphelyzetbe áll. Ezért fontos, hogy az eszköz regisztrációs állapotát is ellenőrizzék:
+**A:** A Azure Portal lépjen a **minden eszköz** elemre. Keresse meg az eszközt az eszköz azonosítója alapján. Tekintse meg az értéket az illesztés típusa oszlopban. Előfordulhat, hogy az eszköz alaphelyzetbe áll vagy alaphelyzetbe áll. Ezért fontos, hogy az eszköz regisztrációs állapotát is ellenőrizzék:
 
 - Windows 10 és Windows Server 2016 vagy újabb rendszerű eszközök esetén futtassa a parancsot `dsregcmd.exe /status` .
 - A régebbi verziójú operációsrendszer-verziók esetében futtassa a parancsot `%programFiles%\Microsoft Workplace Join\autoworkplace.exe` .
@@ -51,7 +51,7 @@ Csak a következő eszközök szerepelnek a **felhasználói eszközök**terüle
 
 ### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>K: a Azure Portal felhasználói adatai alatt látható az eszköz rekordja. Az állapotot pedig regisztráltként látom az eszközön. Helyesen állítottam be a feltételes hozzáférés használatát?
 
-**A:** Az eszköz csatlakoztatási állapota, amelyet a **deviceID**mutat, meg kell egyeznie az Azure ad-beli állapottal, és meg kell felelnie a feltételes hozzáférésre vonatkozó értékelési feltételeknek. További információkért lásd: [felügyelt eszközök megkövetelése a Cloud app Accesshez feltételes hozzáféréssel](../conditional-access/require-managed-devices.md).
+**A:** Az eszköz csatlakoztatási állapota, amelyet a **deviceID** mutat, meg kell egyeznie az Azure ad-beli állapottal, és meg kell felelnie a feltételes hozzáférésre vonatkozó értékelési feltételeknek. További információkért lásd: [felügyelt eszközök megkövetelése a Cloud app Accesshez feltételes hozzáféréssel](../conditional-access/require-managed-devices.md).
 
 ---
 
@@ -101,7 +101,7 @@ A műveletek kijavításának menetét alább találja.
       Az Azure AD-ban regisztrált Windows 10-es eszközök esetén hajtsa végre a következő lépéseket:
 
       1. Lépjen a **Beállítások**  >  **fiókok**  >  **hozzáférés munkahelyi vagy iskolai rendszerhez elemre**. 
-      1. Válassza ki a fiókot, és válassza a **Leválasztás**lehetőséget.
+      1. Válassza ki a fiókot, és válassza a **Leválasztás** lehetőséget.
       1. Kattintson a "+ Csatlakoztatás" gombra, és regisztrálja újra az eszközt a bejelentkezési folyamaton keresztül.
 
 ---
@@ -148,7 +148,7 @@ A műveletek kijavításának menetét alább találja.
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>K: Hogyan egy Azure AD-hez csatlakoztatott eszköz helyi csatlakoztatását az eszközön?
 
-**A:** A tiszta Azure AD-hez csatlakoztatott eszközökhöz ellenőrizze, hogy van-e offline helyi rendszergazdai fiókja, vagy hozzon létre egyet. Nem tud bejelentkezni bármilyen Azure AD-felhasználó hitelesítő adataival. Ezután lépjen a **Beállítások**  >  **fiókok**  >  **hozzáférés munkahelyi vagy iskolai**rendszerhez. Válassza ki a fiókját, és válassza a **Leválasztás**lehetőséget. Ha a rendszer kéri, kövesse az utasításokat, és adja meg a helyi rendszergazdai hitelesítő adatokat. Indítsa újra az eszközt a leválasztási folyamat befejezéséhez.
+**A:** A tiszta Azure AD-hez csatlakoztatott eszközökhöz ellenőrizze, hogy van-e offline helyi rendszergazdai fiókja, vagy hozzon létre egyet. Nem tud bejelentkezni bármilyen Azure AD-felhasználó hitelesítő adataival. Ezután lépjen a **Beállítások**  >  **fiókok**  >  **hozzáférés munkahelyi vagy iskolai** rendszerhez. Válassza ki a fiókját, és válassza a **Leválasztás** lehetőséget. Ha a rendszer kéri, kövesse az utasításokat, és adja meg a helyi rendszergazdai hitelesítő adatokat. Indítsa újra az eszközt a leválasztási folyamat befejezéséhez.
 
 ---
 
@@ -198,7 +198,7 @@ Az UPN-módosítások a Windows 10 2004 Update szolgáltatással támogatottak. 
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>K: Miért nem a felhasználók egy része Azure Multi-Factor Authentication kér az Azure AD-hez csatlakoztatott eszközökön?
+### <a name="q-why-dont-some-of-my-users-get-azure-ad-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>K: Miért nem a felhasználók egy része kapja meg az Azure AD-Multi-Factor Authentication az Azure AD-hez csatlakoztatott eszközökön?
 
 **A:** A felhasználók Multi-Factor Authentication használatával csatlakozhatnak vagy regisztrálhatnak egy eszközt az Azure AD-vel. Az eszköz maga is megbízható második tényezővé válik az adott felhasználó számára. Ha ugyanaz a felhasználó bejelentkezik az eszközre, és egy alkalmazáshoz fér hozzá, az Azure AD az eszközt második tényezőnek tekinti. Lehetővé teszi, hogy a felhasználó zökkenőmentesen hozzáférhessen az alkalmazásokhoz további Multi-Factor Authentication kérések nélkül. 
 
@@ -290,8 +290,8 @@ Az UPN-módosítások a Windows 10 2004 Update szolgáltatással támogatottak. 
 ### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>K: Hogyan egy eszközön helyileg eltávolítani egy Azure AD-beli regisztrált állapotot?
 
 **Egy** 
-- A Windows 10 Azure ad-ban regisztrált eszközökhöz lépjen a **Beállítások**  >  **fiókok**  >  **hozzáférés munkahelyi vagy iskolai**rendszerhez. Válassza ki a fiókját, és válassza a **Leválasztás**lehetőséget. Az eszköz regisztrálása felhasználónkénti profil a Windows 10 rendszeren.
-- Az iOS és az Android esetében használhatja a **Microsoft Authenticator Alkalmazásbeállítások**  >  **eszköz regisztrációját** , és válassza az **eszköz regisztrációjának törlése**lehetőséget.
+- A Windows 10 Azure ad-ban regisztrált eszközökhöz lépjen a **Beállítások**  >  **fiókok**  >  **hozzáférés munkahelyi vagy iskolai** rendszerhez. Válassza ki a fiókját, és válassza a **Leválasztás** lehetőséget. Az eszköz regisztrálása felhasználónkénti profil a Windows 10 rendszeren.
+- Az iOS és az Android esetében használhatja a **Microsoft Authenticator Alkalmazásbeállítások**  >  **eszköz regisztrációját** , és válassza az **eszköz regisztrációjának törlése** lehetőséget.
 - MacOS esetén a Microsoft Intune Céges portál alkalmazással törölheti az eszközt a felügyelet alól, és eltávolíthatja a regisztrációt. 
 
 ---

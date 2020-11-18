@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2de3f78b58e10a4fbf65bb00d516448a089f85b6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d5a8fe4192c3778e259ed18239a4198398d8807b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370950"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836835"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Általános üzemeltetési útmutató Azure Active Directory
 
@@ -43,7 +43,7 @@ A Azure Active Directory kezelése a legfontosabb működési feladatok és foly
 | Hibrid naplók monitorozása: továbbító hitelesítési ügynökök | IAM Operations csapat |
 | Hibrid naplók figyelése: Password visszaírási Service | IAM Operations csapat |
 | Hibrid naplók figyelése: helyszíni jelszavas védelmi átjáró | IAM Operations csapat |
-| Hibrid naplók figyelése: Azure MFA NPS-bővítmény (ha alkalmazható) | IAM Operations csapat |
+| Hibrid naplók figyelése: Azure AD MFA NPS-bővítmény (ha alkalmazható) | IAM Operations csapat |
 
 A lista áttekintése során előfordulhat, hogy tulajdonost kell rendelnie olyan feladatokhoz, amelyek nem rendelkeznek tulajdonossal, vagy nem módosítanak tulajdonjogot olyan feladatokhoz, amelyek nem illeszkednek a fenti javaslatokhoz.
 
@@ -86,7 +86,7 @@ A környezet állapotának figyelése során azonnal meg kell felelnie a nagy s�
 
 ### <a name="on-premises-agents-logs"></a>Helyszíni ügynökök naplói
 
-Néhány identitás-és hozzáférés-kezelési szolgáltatás a helyszíni ügynököket igényli a hibrid forgatókönyvek engedélyezéséhez. Ilyenek például a jelszó alaphelyzetbe állítása, az átmenő hitelesítés (PTA ESP), az Azure AD Application Proxy és az Azure MFA NPS-bővítmény. Fontos, hogy az operatív csapat alapkonfigurációja és az összetevők állapotának figyelése az összetevő-ügynök naplófájljainak archiválásával és elemzésével, például System Center Operations Manager vagy SIEM használatával. Ugyanilyen fontos, hogy az INFOSEC-műveleti csapat vagy az ügyfélszolgálat Ismerje meg a hibák elhárításának módját.
+Néhány identitás-és hozzáférés-kezelési szolgáltatás a helyszíni ügynököket igényli a hibrid forgatókönyvek engedélyezéséhez. Ilyenek például a jelszó alaphelyzetbe állítása, az átmenő hitelesítés (PTA ESP), az Azure AD Application Proxy és az Azure AD MFA NPS-bővítmény. Fontos, hogy az operatív csapat alapkonfigurációja és az összetevők állapotának figyelése az összetevő-ügynök naplófájljainak archiválásával és elemzésével, például System Center Operations Manager vagy SIEM használatával. Ugyanilyen fontos, hogy az INFOSEC-műveleti csapat vagy az ügyfélszolgálat Ismerje meg a hibák elhárításának módját.
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>A helyszíni ügynökök a javasolt olvasást naplózzák
 
@@ -94,7 +94,7 @@ Néhány identitás-és hozzáférés-kezelési szolgáltatás a helyszíni ügy
 - [Önkiszolgáló jelszó-visszaállítás hibaelhárítása – Azure Active Directory](../authentication/troubleshoot-sspr.md)
 - [Az Azure AD Application Proxy-összekötők ismertetése](../manage-apps/application-proxy-connectors.md)
 - [Azure AD Connect: átmenő hitelesítés – problémamegoldás](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
-- [Az Azure MFA NPS-bővítményhez tartozó hibakódok megoldása](../authentication/howto-mfa-nps-extension-errors.md)
+- [Az Azure AD MFA NPS-bővítményhez tartozó hibakódok megoldása](../authentication/howto-mfa-nps-extension-errors.md)
 
 ### <a name="on-premises-agents-management"></a>Helyszíni ügynökök kezelése
 
@@ -156,7 +156,7 @@ Az alábbi táblázatból megtudhatja, hogy milyen típusú értesítéseket kü
 
 Szervezetek, amelyek az [Azure ad Smart zárolási](../authentication/concept-sspr-howitworks.md)szolgáltatásból közvetlenül az Azure ad-be való hitelesítéshez konfigurálják az alkalmazásokat. Ha AD FSt használ a Windows Server 2012 R2 rendszerben, implementálja AD FS [extranet zárolási védelmét](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Ha AD FSt használ a Windows Server 2016-es vagy újabb verziójára, implementálja az [extranetes intelligens zárolást](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Legalább azt javasoljuk, hogy engedélyezze az extranet zárolását a helyszíni Active Directory elleni találgatásos támadásokkal szemben. Ha azonban AD FS a Windows 2016-es vagy újabb verziójával, akkor engedélyeznie kell az extranetes intelligens zárolást is, amely segít enyhíteni a [jelszó-szórásos](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) támadásokat.
 
-Ha AD FS csak az Azure AD-összevonás esetében használatos, néhány végpontot ki lehet kapcsolni a támadási felület minimalizálásához. Ha például AD FSt csak az Azure AD-hez használja, akkor a **usernamemixed** és a **windowstransport**számára engedélyezett végpontokon kívül le kell tiltania WS-Trust végpontokat.
+Ha AD FS csak az Azure AD-összevonás esetében használatos, néhány végpontot ki lehet kapcsolni a támadási felület minimalizálásához. Ha például AD FSt csak az Azure AD-hez használja, akkor a **usernamemixed** és a **windowstransport** számára engedélyezett végpontokon kívül le kell tiltania WS-Trust végpontokat.
 
 ### <a name="access-to-machines-with-on-premises-identity-components"></a>A helyszíni identitás-összetevőket tartalmazó gépekhez való hozzáférés
 
@@ -172,7 +172,7 @@ A [réteg modell](/windows-server/identity/securing-privileged-access/securing-p
 
 A tartományvezérlők esetében ugyanúgy zárja be a helyszíni identitás-összetevők, például a Azure AD Connect, a AD FS és az SQL-szolgáltatások elérését.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A biztonságos identitás-infrastruktúrának hét aspektusa van. Ez a lista segít megtalálni azokat a műveleteket, amelyeket el kell végeznie a Azure Active Directory (Azure AD) műveleteinek optimalizálása érdekében.
 

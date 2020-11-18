@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0edda2a01d6b17aebba3fbe4dbf039bf1d2f2c5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1257c783ffeae68bf338b21a5d2f6bba72ea25b3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411116"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836427"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrálás az összevonásból a Azure Active Directory áteresztő hitelesítésre
 
@@ -59,7 +59,7 @@ Két módszer közül választhat, amelyek áttelepíthetők az összevont ident
    > [!NOTE]
    > Jelenleg, ha a Azure AD Connectt a AD FS konfigurálására használta, nem kerülheti el a bérlő összes tartományát, ha a felhasználói bejelentkezést az átmenő hitelesítés unfederating módosítja.
 ‎
-* **Azure ad Connect a PowerShell** -lel. Ezt a módszert csak akkor használhatja, ha a Azure AD Connect használatával eredetileg nem konfigurálta AD FS. Ennél a lehetőségnél továbbra is meg kell változtatnia a felhasználói bejelentkezési módszert a Azure AD Connect varázslón keresztül. Ezzel a beállítással a fő különbség az, hogy a varázsló nem futtatja automatikusan a **set-MsolDomainAuthentication** parancsmagot. Ezzel a beállítással teljes mértékben szabályozhatja, hogy mely tartományok konvertálása és milyen sorrendben történjen.
+* **Azure ad Connect a PowerShell**-lel. Ezt a módszert csak akkor használhatja, ha a Azure AD Connect használatával eredetileg nem konfigurálta AD FS. Ennél a lehetőségnél továbbra is meg kell változtatnia a felhasználói bejelentkezési módszert a Azure AD Connect varázslón keresztül. Ezzel a beállítással a fő különbség az, hogy a varázsló nem futtatja automatikusan a **set-MsolDomainAuthentication** parancsmagot. Ezzel a beállítással teljes mértékben szabályozhatja, hogy mely tartományok konvertálása és milyen sorrendben történjen.
 
 A következő részben ismertetett lépéseket követve megtudhatja, hogy melyik módszert használja.
 
@@ -98,7 +98,7 @@ Példa:
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 ```
 
-Ellenőrizze, hogy vannak-e testreszabott beállítások az összevonási tervezési és telepítési dokumentációhoz. Pontosabban keresse meg a testreszabásokat a **PreferredAuthenticationProtocol** , a **SupportsMfa** és a **PromptLoginBehavior**.
+Ellenőrizze, hogy vannak-e testreszabott beállítások az összevonási tervezési és telepítési dokumentációhoz. Pontosabban keresse meg a testreszabásokat a **PreferredAuthenticationProtocol**, a **SupportsMfa** és a **PromptLoginBehavior**.
 
 További információért lásd a következő cikkeket:
 
@@ -106,9 +106,9 @@ További információért lásd a következő cikkeket:
 * [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
-> Ha a **SupportsMfa** értéke **true (igaz** ), a rendszer helyszíni multi-Factor Authentication megoldást használ egy második tényezős kihívás beadására a felhasználói hitelesítési folyamatba. Ez a beállítás már nem működik az Azure AD-hitelesítési forgatókönyvek esetében. 
+> Ha a **SupportsMfa** értéke **true (igaz**), a rendszer helyszíni multi-Factor Authentication megoldást használ egy második tényezős kihívás beadására a felhasználói hitelesítési folyamatba. Ez a beállítás már nem működik az Azure AD-hitelesítési forgatókönyvek esetében. 
 >
-> Ehelyett az Azure Multi-Factor Authentication felhőalapú szolgáltatásával végezze el ugyanezt a funkciót. A folytatás előtt alaposan értékelje ki a multi-Factor Authentication követelményeit. A tartományok konvertálása előtt meg kell ismernie, hogy miként használható az Azure Multi-Factor Authentication, a licenceléssel kapcsolatos következmények és a felhasználói regisztráció folyamata.
+> Ehelyett az Azure AD Multi-Factor Authentication felhőalapú szolgáltatásával végezze el ugyanezt a funkciót. A folytatás előtt alaposan értékelje ki a multi-Factor Authentication követelményeit. A tartományok konvertálása előtt meg kell ismernie az Azure AD Multi-Factor Authentication használatát, a licenceléssel kapcsolatos szempontokat és a felhasználói regisztráció folyamatát.
 
 #### <a name="back-up-federation-settings"></a>Összevonási beállítások biztonsági mentése
 
@@ -133,7 +133,7 @@ Az összevont identitásról felügyelt identitásra való áttérés előtt tek
 | A AD FS használatát tervezi más alkalmazásokkal (az Azure AD és a Microsoft 365 kivételével). | A tartományok konvertálása után AD FS és Azure AD-t is használhat. Vegye figyelembe a felhasználói élményt. Bizonyos esetekben előfordulhat, hogy a felhasználóknak kétszer kell megadniuk a hitelesítést: egyszer az Azure AD-be (ahol a felhasználó SSO-hozzáférést kap más alkalmazásokhoz, például Microsoft 365), és újra minden olyan alkalmazáshoz, amely továbbra is a függő entitás megbízhatóságának AD FS van kötve. |
 | A AD FS-példánya nagymértékben testre szabható, és a onload.js fájl adott testreszabási beállításaira támaszkodik (például ha megváltoztatta a bejelentkezési folyamatot, hogy a felhasználók csak az egyszerű felhasználónév (UPN) helyett a **sAMAccountName** használják a felhasználónevet, vagy ha a szervezete jelentősen kihasználta a bejelentkezési élményt). Az onload.js fájlt nem lehet duplikálni az Azure AD-ben. | A folytatás előtt ellenőriznie kell, hogy az Azure AD megfelel-e az aktuális testreszabási követelményeknek. További információért és útmutatásért tekintse meg a AD FS branding és a AD FS testreszabása című szakaszt.|
 | AD FS használatával blokkolhatja a hitelesítési ügyfelek korábbi verzióit.| A [feltételes hozzáférés-vezérlés](../conditional-access/concept-conditional-access-conditions.md) és az [Exchange Online ügyfél-hozzáférési szabályok](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules)együttes használatával vegye figyelembe a hitelesítési ügyfelek korábbi verzióit letiltó AD FS vezérlőket. |
-| A felhasználóknak a többtényezős hitelesítést kell végrehajtaniuk a helyszíni multi-Factor Authentication kiszolgálói megoldáson, amikor a felhasználók hitelesítik AD FS.| Felügyelt identitási tartományban a többtényezős hitelesítési kihívás a helyszíni multi-Factor Authentication megoldáson keresztül nem szúrható be a hitelesítési folyamatba. A tartomány átalakítása után azonban használhatja az Azure Multi-Factor Authentication szolgáltatást a többtényezős hitelesítéshez.<br /><br /> Ha a felhasználók jelenleg nem használják az Azure Multi-Factor Authentication-t, egy egyszeri bejelentkezést igénylő felhasználói regisztrációs lépést kell megadnia. Elő kell készítenie és továbbítania kell a tervezett regisztrációt a felhasználók számára. |
+| A felhasználóknak a többtényezős hitelesítést kell végrehajtaniuk a helyszíni multi-Factor Authentication kiszolgálói megoldáson, amikor a felhasználók hitelesítik AD FS.| Felügyelt identitási tartományban a többtényezős hitelesítési kihívás a helyszíni multi-Factor Authentication megoldáson keresztül nem szúrható be a hitelesítési folyamatba. A tartomány átalakítása után azonban használhatja az Azure AD Multi-Factor Authentication szolgáltatást a többtényezős hitelesítéshez.<br /><br /> Ha a felhasználók jelenleg nem használják az Azure AD Multi-Factor Authentication, egy egyszeri bejelentkezést igénylő felhasználói regisztráció lépésre van szükség. Elő kell készítenie és továbbítania kell a tervezett regisztrációt a felhasználók számára. |
 | Jelenleg a AD FS hozzáférés-vezérlési házirendjeit (AuthZ-szabályok) használja a Microsoft 365hoz való hozzáférés szabályozásához.| Érdemes lehet a szabályzatokat az egyenértékű Azure AD [feltételes hozzáférési szabályzatokkal](../conditional-access/overview.md) és az [Exchange Online ügyfél-hozzáférési szabályokkal](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules)helyettesíteni.|
 
 ### <a name="common-ad-fs-customizations"></a>Gyakori AD FS testreszabások
@@ -316,7 +316,7 @@ Először engedélyezze az átmenő hitelesítést:
 6. A **készen áll a konfigurálásra** lapon jelölje be a **szinkronizálási folyamat elindítása a konfiguráció befejeződése** után jelölőnégyzetet. Ezután válassza a **Konfigurálás** lehetőséget.<br />
 
    ![A konfigurálásra kész lapra és a configure (Konfigurálás) gombra megjelenítő képernyőkép](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image18.png)<br />
-   A **configure (Konfigurálás** ) gombra kattintva a következő lépések végezhetők el:
+   A **configure (Konfigurálás**) gombra kattintva a következő lépések végezhetők el:
 
    1. Az első áteresztő hitelesítési ügynök telepítve van.
    2. Az áteresztő funkció engedélyezve van.
@@ -328,7 +328,7 @@ Először engedélyezze az átmenő hitelesítést:
    * Az **átmenő hitelesítés** **engedélyezve** értékre van állítva.
    
    ![Képernyőkép, amely a felhasználói bejelentkezés szakaszban megjelenő beállításokat jeleníti meg.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
-8. Válassza az **átmenő hitelesítés** lehetőséget, és ellenőrizze, hogy az állapot **aktív** -e.<br />
+8. Válassza az **átmenő hitelesítés** lehetőséget, és ellenőrizze, hogy az állapot **aktív**-e.<br />
    
    Ha a hitelesítési ügynök nem aktív, hajtson végre néhány [hibaelhárítási lépést](./tshoot-connect-pass-through-authentication.md) a következő lépésben a tartomány-átalakítási folyamat folytatása előtt. Ha a tartomány konvertálása előtt a hitelesítés leáll, a rendszer az áteresztő hitelesítési ügynökök sikeres telepítése és a Azure Portal **aktív** állapotának ellenőrzése előtt veszélyezteti a hitelesítési kimaradást.
 
@@ -455,7 +455,7 @@ A hibaelhárításhoz bekapcsolhatja a naplózást is.
 
 További információ: [Azure Active Directory átmenő hitelesítés hibáinak megoldása](./tshoot-connect-pass-through-authentication.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg [Azure ad Connect tervezési fogalmakkal](plan-connect-design-concepts.md).
 * Válassza ki a [megfelelő hitelesítést](./choose-ad-authn.md).

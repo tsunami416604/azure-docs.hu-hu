@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb51e8590e2859a9fe8692f79c5b1238ed5a2098
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0112ab53c501d639d3f8e0d09d82ef3a12cb93a8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948181"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837246"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Feltételes hozzáférés hibaelhárítása a What If eszköz használatával
 
 A feltételes hozzáférés [What if eszköze](what-if-tool.md) nagy teljesítményű, amikor megpróbálják megérteni, hogy egy adott házirend miért lett vagy nem lett alkalmazva a felhasználóra adott körülmények között, vagy ha egy házirendet ismert állapotban kellene alkalmazni.
 
-A What if eszköz a **Azure Portal**  >  **Azure Active Directory**  >  **feltételes hozzáférési**  >  **What Ifban**található.
+A What if eszköz a **Azure Portal**  >  **Azure Active Directory**  >  **feltételes hozzáférési**  >  **What Ifban** található.
 
 ![Feltételes hozzáférés What If eszköz alapértelmezett állapotban](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
 
@@ -78,4 +78,4 @@ Ez a teszt kiterjeszthető úgy, hogy más adatpontokat is egyesítse a hatókö
 * [Mit jelent a feltételes hozzáférés?](overview.md)
 * [Mi az az Azure Active Directory Identity Protection?](../identity-protection/overview-identity-protection.md)
 * [Mi az az eszközidentitás?](../devices/overview.md)
-* [Az Azure Multi-Factor Authentication működése](../authentication/concept-mfa-howitworks.md)
+* [A működés módja: Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
