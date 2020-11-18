@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: d6995073ba7d283a30f7580456cd61573752f7cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2d2cda59f23ef0b961ccac60b119996423688e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051389"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682332"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer elosztási módjának konfigurálása
 
@@ -63,8 +63,8 @@ Egy másik használati eset a média feltöltése. Az adatfeltöltés UDP-n kere
 
 A terjesztési mód konfigurációját módosíthatja a portál terheléselosztási szabályának módosításával.
 
-1. Jelentkezzen be a Azure Portalba, és keresse meg a módosítani kívánt terheléselosztó tartalmazó erőforráscsoportot az **erőforráscsoportok**lehetőségre kattintva.
-2. A terheléselosztó áttekintése képernyőn kattintson a **Beállítások**területen található **terheléselosztási szabályok** elemre.
+1. Jelentkezzen be a Azure Portalba, és keresse meg a módosítani kívánt terheléselosztó tartalmazó erőforráscsoportot az **erőforráscsoportok** lehetőségre kattintva.
+2. A terheléselosztó áttekintése képernyőn kattintson a **Beállítások** területen található **terheléselosztási szabályok** elemre.
 3. A terheléselosztási szabályok képernyőn kattintson arra a terheléselosztási szabályra, amelyre módosítani szeretné a terjesztési módot.
 4. A szabály alatt a terjesztési mód módosul a **munkamenet-megőrzés** legördülő lista módosításával.  A következő lehetőségek érhetők el:
     
@@ -72,7 +72,7 @@ A terjesztési mód konfigurációját módosíthatja a portál terheléseloszt�
     * **Ügyfél IP-címe (forrás IP-affinitás 2-rekord)** – azt határozza meg, hogy ugyanazon ügyfél IP-címéről érkező egymást követő kérelmeket ugyanaz a virtuális gép fogja kezelni.
     * **Ügyfél IP-címe és protokollja (forrás IP-affinitás 3 – rekord)** – azt határozza meg, hogy az azonos ügyfél IP-címe és a protokoll kombinációja egymást követő kérelmeket ugyanazzal a virtuális géppel fogja kezelni.
 
-5. Válassza ki a terjesztési módot, majd kattintson a **Mentés**gombra.
+5. Válassza ki a terjesztési módot, majd kattintson a **Mentés** gombra.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -201,6 +201,6 @@ Date: Thu, 16 Oct 2014 22:49:21 GMT
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Az Azure belső Load Balancer áttekintése](load-balancer-internal-overview.md)
+* [Az Azure Load Balancer áttekintése](load-balancer-overview.md)
 * [Ismerkedés az internetre irányuló terheléselosztó konfigurálásával](quickstart-load-balancer-standard-public-powershell.md)
 * [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)

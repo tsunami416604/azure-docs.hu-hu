@@ -3,12 +3,12 @@ title: További információ az Azure Service Fabric
 description: Ismerje meg az Azure Service Fabric legfontosabb alapfogalmait és főbb területeit. A részletes áttekintést nyújt a Service Fabricről és a szolgáltatások létrehozásáról.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 6cbc99b56df18448add47a70b42742aa8dabbeb5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 07b41f10430592e6035bfe0179cb717d0bc5c8b0
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461498"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681737"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Szeretne többet megtudni a Service Fabricról?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  Service Fabric nagy felülettel rendelkezik, és sokat tanulhat.  Ez a cikk áttekintést nyújt a Service Fabricekről, valamint ismerteti az alapvető fogalmakat, programozási modelleket, az alkalmazások életciklusát, a tesztelést, a fürtöket és az állapot-figyelést Olvassa el az [áttekintést](service-fabric-overview.md) , és [Mik azok a szolgáltatások?](service-fabric-overview-microservices.md) a bevezetéshez és a Service Fabric használhatók a-szolgáltatások létrehozásához. Ez a cikk nem tartalmaz átfogó listát, de a Service Fabric összes területének áttekintésére és az első lépéseket ismertető cikkekre mutató hivatkozást tartalmaz. 
@@ -75,7 +75,7 @@ A [Reliable Services](service-fabric-reliable-services-introduction.md) egy egys
 ### <a name="reliable-actors"></a>Reliable Actors
 A Reliable Servicesra épülő, [megbízható színészi](service-fabric-reliable-actors-introduction.md) keretrendszer egy alkalmazási keretrendszer, amely a színész kialakítási mintája alapján implementálja a virtuális színész mintáját. A megbízható szereplők keretrendszere a számítási és az állapot-független egységeket használja az egyszálas végrehajtással. A megbízható Actors keretrendszer beépített kommunikációt biztosít a szereplők számára, és előre beállított állapot-megőrzési és kibővíthető konfigurációkat tartalmaz.
 
-### <a name="aspnet-core"></a>ASP.NET Core
+### <a name="aspnet-core"></a>ASP.NET-mag
 A Service Fabric a webes és API-alkalmazások létrehozásához első osztályú programozási modellként integrálódik a [ASP.net Coreba](service-fabric-reliable-services-communication-aspnetcore.md) .  A ASP.NET Core a Service Fabric kétféleképpen használható:
 
 - Vendég végrehajtható fájlként futtatva. Ez elsősorban a meglévő ASP.NET Core alkalmazások futtatására használatos Service Fabric a kód módosítása nélkül.
@@ -131,7 +131,7 @@ A fürtöket védeni kell annak megakadályozása érdekében, hogy jogosulatlan
 A fürt biztonsági forgatókönyvei a következők:
 * Csomópontok közötti biztonság
 * Az ügyfél és a csomópont közötti biztonság
-* Szerepköralapú hozzáférés-vezérlés (RBAC)
+* Szerepköralapú hozzáférés-vezérlés Service Fabric
 
 További információért olvassa el [a fürt biztonságossá tétele](service-fabric-cluster-security.md)című témakört.
 
@@ -182,7 +182,7 @@ A monitorozás és diagnosztika általános munkafolyamata három lépésből á
 
 Ezen a három területen több termék is elérhető, és mindegyikhez szabadon választhat különböző technológiákat. További információért olvassa el [Az Azure Service Fabric figyelését és diagnosztizálását](service-fabric-diagnostics-overview.md)ismertető témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megismerkedhet egy [azure-beli fürt](service-fabric-cluster-creation-via-portal.md) vagy egy [önálló windowsbeli fürt](service-fabric-cluster-creation-for-windows-server.md) létrehozásával.
 * Próbáljon szolgáltatást létrehozni a [Reliable Services](service-fabric-reliable-services-quick-start.md) vagy a [Reliable Actors](service-fabric-reliable-actors-get-started.md) programozási modellek használatával.
 * Ismerje meg, hogyan [telepíthet át Cloud Servicesról](service-fabric-cloud-services-migration-differences.md).

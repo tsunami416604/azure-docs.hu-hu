@@ -1,19 +1,19 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: data-factory
 author: chez-charlie
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/28/2020
+ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 4cbe179d015c71094e6813666a6fd0cee3e5e3c2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1e8d13e7cf302c486bab291ef6482216122b62a3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92909052"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94680744"
 ---
 Azure Data Factory egy több-bérlős szolgáltatás, amely a következő alapértelmezett korlátokkal rendelkezik, hogy az ügyfél-előfizetések védve legyenek egymás munkaterhelésével szemben. Ha a korlátot az előfizetése maximumán szeretné növelni, forduljon az ügyfélszolgálathoz.
 
@@ -40,6 +40,7 @@ Azure Data Factory egy több-bérlős szolgáltatás, amely a következő alapé
 | A folyamat által futtatott tevékenységek maximális időtúllépése | 7 nap | 7 nap |
 | Bájtok száma objektumként a (<sup>3</sup> .) folyamat objektumaihoz | 200 KB | 200 KB |
 | Bájt/objektum az adatkészlet és a társított szolgáltatási objektumok esetében<sup>3</sup> | 100 KB | 2 000 KB |
+| Bájt/adattartalom minden egyes tevékenységhez<sup>4</sup> . Futtatás | 896 KB | 896 KB |
 | Adatintegrációs egységek<sup>1</sup> /másolási tevékenységének futtatása | 256 | 256 |
 | API-hívások írása | 1200/h | 1200/h<br/><br/> Ezt a korlátot Azure Resource Manager, nem Azure Data Factory. |
 | API-hívások olvasása | 12500/h | 12500/h<br/><br/> Ezt a korlátot Azure Resource Manager, nem Azure Data Factory. |
@@ -60,6 +61,8 @@ Azure Data Factory egy több-bérlős szolgáltatás, amely a következő alapé
 | 3. régió | Közép-Kanada, Kelet-Ázsia, Közép-Németország, Közép-Korea, Egyesült Királyság déli régiója |
 
 <sup>3</sup> a folyamat, az adathalmaz és a társított szolgáltatási objektumok a számítási feladatok logikai csoportosítását jelölik. Ezeknek az objektumoknak a korlátai nem kapcsolódnak a Azure Data Factory használatával áthelyezhető és feldolgozható adatmennyiséghez. Data Factory úgy van kialakítva, hogy az petabájt kezeljen.
+
+<sup>4</sup> az egyes tevékenységekhez tartozó adattartalom magában foglalja a tevékenység konfigurációját, a kapcsolódó adatkészleteket és a társított szolgáltatás (oka) t, ha van ilyen, és a Rendszertulajdonságok egy kis részét a tevékenység típusa szerint generálták. A hasznos adatok méretének korlátozása nem vonatkozik a Azure Data Factorysal áthelyezhető és feldolgozható adatmennyiségre. Ha ezt a korlátot találta, megismerheti a [tüneteket és az ajánlásokat](../articles/data-factory/data-factory-troubleshoot-guide.md#payload-is-too-large) .
 
 ### <a name="version-1"></a>1-es verzió
 

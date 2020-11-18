@@ -4,12 +4,12 @@ description: Ez a cikk áttekintést nyújt az Azure Service Fabric-alkalmazáso
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3968fde0222dcee8047e7490dba78879ab6110e2
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258738"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681686"
 ---
 # <a name="service-fabric-application-resource-model"></a>Alkalmazás-erőforrás modell Service Fabric
 
@@ -50,12 +50,12 @@ Felhasználhat egy meglévő Storage-fiókot, vagy létrehozhat egy új Storage-
 
 ### <a name="configure-your-storage-account"></a>A Storage-fiók konfigurálása
 
-A Storage-fiók létrehozása után létre kell hoznia egy BLOB-tárolót, amelyben az alkalmazások elhelyezhetők. A Azure Portal keresse meg azt az Azure Storage-fiókot, ahol az alkalmazásokat tárolni szeretné. Válassza a **Blobok**  >  **Hozzáadás tároló**elemet. 
+A Storage-fiók létrehozása után létre kell hoznia egy BLOB-tárolót, amelyben az alkalmazások elhelyezhetők. A Azure Portal keresse meg azt az Azure Storage-fiókot, ahol az alkalmazásokat tárolni szeretné. Válassza a **Blobok**  >  **Hozzáadás tároló** elemet. 
 
-A fürtben lévő erőforrások biztonságossá tétele a nyilvános hozzáférési szint **magánjellegűre**állításával lehetséges. A hozzáférést több módon is megadhatja:
+A fürtben lévő erőforrások biztonságossá tétele a nyilvános hozzáférési szint **magánjellegűre** állításával lehetséges. A hozzáférést több módon is megadhatja:
 
 * A blobokhoz és várólistákhoz való hozzáférés engedélyezése [Azure Active Directory](../storage/common/storage-auth-aad-app.md)használatával.
-* Hozzáférés biztosítása az Azure Blob-és üzenetsor-adataihoz [a Azure Portal RBAC](../storage/common/storage-auth-aad-rbac-portal.md)használatával.
+* Hozzáférés biztosítása az Azure Blob-és üzenetsor-adataihoz [az Azure Portal Azure RBAC](../storage/common/storage-auth-aad-rbac-portal.md)használatával.
 * Hozzáférés delegálása [közös hozzáférésű aláírás](/rest/api/storageservices/delegate-access-with-shared-access-signature)használatával.
 
 Az alábbi képernyőképen szereplő példa a Blobok névtelen olvasási hozzáférését használja.
@@ -68,15 +68,15 @@ Az alkalmazások üzembe helyezése előtt a blob Storage-ban kell megadnia az a
 
 Ebben az oktatóanyagban a [szavazási minta alkalmazást](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart)használjuk.
 
-1. A Visual Studióban kattintson a jobb gombbal a **szavazási** projektre, majd válassza a **csomag**elemet.
+1. A Visual Studióban kattintson a jobb gombbal a **szavazási** projektre, majd válassza a **csomag** elemet.
 
    ![Alkalmazáscsomag][PackageApplication]  
-1. Nyissa meg a *.\service-Fabric-DotNet-quickstart\Voting\pkg\Debug* könyvtárat. A tartalom zip-fájlját egy *Voting.zip*nevű fájlba. A *ApplicationManifest.xml* fájlnak a zip-fájlban lévő gyökérkönyvtárban kell lennie.
+1. Nyissa meg a *.\service-Fabric-DotNet-quickstart\Voting\pkg\Debug* könyvtárat. A tartalom zip-fájlját egy *Voting.zip* nevű fájlba. A *ApplicationManifest.xml* fájlnak a zip-fájlban lévő gyökérkönyvtárban kell lennie.
 
    ![Zip-alkalmazás][ZipApplication]  
-1. Nevezze át a fájlt úgy, hogy a. zip kiterjesztését a *. sfpkg*értékre módosítsa.
+1. Nevezze át a fájlt úgy, hogy a. zip kiterjesztését a *. sfpkg* értékre módosítsa.
 
-1. A Azure Portal a Storage-fiókja **alkalmazások** tárolójában válassza a **feltöltés**, majd a **szavazás. sfpkg**feltöltés lehetőséget. 
+1. A Azure Portal a Storage-fiókja **alkalmazások** tárolójában válassza a **feltöltés**, majd a **szavazás. sfpkg** feltöltés lehetőséget. 
 
    ![Alkalmazáscsomag feltöltése][UploadAppPkg]
 
@@ -178,7 +178,7 @@ A Resource Manager alkalmazás-erőforrás modelljével telepített alkalmazás 
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Információk beolvasása az alkalmazás-erőforrás modelljéről:
 

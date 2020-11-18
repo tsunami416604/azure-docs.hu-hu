@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 8df913234be1f3e07677520e41b699fe6d503204
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a80082ac524a4777b3b5ee32d946e9db8ec6e7f5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314503"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681618"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>A Kubernetes web Dashboard elérése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -30,7 +30,7 @@ A Kubernetes-irányítópulttal kapcsolatos további információkért lásd: [K
 
 A dokumentumban részletezett lépések feltételezik, hogy létrehozott egy AK-fürtöt, és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Ha AK-fürtöt kell létrehoznia, tekintse meg a rövid útmutató [: Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI használatával][aks-quickstart]című témakört.
 
-Szüksége lesz az Azure CLI-es vagy újabb verziójára is, amely telepítve van és konfigurálva van. A verzió azonosításához futtassa a következőt:  `az --version` . Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI-es vagy újabb verziójára is, amely telepítve van és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="disable-the-kubernetes-dashboard"></a>A Kubernetes irányítópult letiltása
 
@@ -44,7 +44,7 @@ az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 
 A Kubernetes-irányítópult fürtön való elindításához használja az az [AK Browse][az-aks-browse] parancsot. Ehhez a parancshoz a Kube-Dashboard addon telepítése szükséges a fürtön, amely alapértelmezés szerint a Kubernetes 1,18-nál régebbi verziót futtató fürtökön található.
 
-Az alábbi példa megnyitja az irányítópultot a *myAKSCluster* nevű fürthöz az *myResourceGroup*nevű erőforráscsoport:
+Az alábbi példa megnyitja az irányítópultot a *myAKSCluster* nevű fürthöz az *myResourceGroup* nevű erőforráscsoport:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
@@ -71,7 +71,7 @@ You have the following options to sign in to your cluster's dashboard:
 > 
 > When setting up authentication for the Kubernetes dashboard, it is recommended that you use a token over the default dashboard service account. A token allows each user to use their own permissions. Using the default dashboard service account may allow a user to bypass their own permissions and use the service account instead.
 > 
-> If you do choose to use the default dashboard service account and your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
+> If you do choose to use the default dashboard service account and your AKS cluster uses Kubernetes RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays Kubernetes RBAC access errors. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 >
 > To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command as shown in the following example. **This sample binding does not apply any additional authentication components and may lead to insecure use.**
 >
@@ -79,16 +79,16 @@ You have the following options to sign in to your cluster's dashboard:
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 > 
-> You can now access the Kubernetes dashboard in your RBAC-enabled cluster. To start the Kubernetes dashboard, use the [az aks browse][az-aks-browse] command as detailed in the previous step.
+> You can now access the Kubernetes dashboard in your Kubernetes RBAC-enabled cluster. To start the Kubernetes dashboard, use the [az aks browse][az-aks-browse] command as detailed in the previous step.
 >
-> If your cluster does not use RBAC, it is not recommended to create a *ClusterRoleBinding*.
+> If your cluster does not use Kubernetes RBAC, it is not recommended to create a *ClusterRoleBinding*.
 > 
 > For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
 
 After you choose a method to sign in, the Kubernetes dashboard is displayed. If you chose to use *token* or *skip*, the Kubernetes dashboard will use the permissions of the currently logged in user to access the cluster.
 
 > [!IMPORTANT]
-> If your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. The Kubernetes dashboard does not currently support user-provided credentials to determine the level of access, rather it uses the roles granted to the service account. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
+> If your AKS cluster uses Kubernetes RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays Kubernetes RBAC access errors. The Kubernetes dashboard does not currently support user-provided credentials to determine the level of access, rather it uses the roles granted to the service account. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 > 
 > To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command. The following example shows how to create a sample binding, however, this sample binding does not apply any additional authentication components and may lead to insecure use. The Kubernetes dashboard is open to anyone with access to the URL. Do not expose the Kubernetes dashboard publicly.
 >
@@ -124,7 +124,7 @@ Az Azure AD-t és a nem Azure AD-t használó fürtök esetében a kubeconfig is
 
 **Token használata**
 
-1. **Nem Azure ad-kompatibilis fürt**esetén futtassa `kubectl config view` és másolja a fürt felhasználói fiókjához társított jogkivonatot.
+1. **Nem Azure ad-kompatibilis fürt** esetén futtassa `kubectl config view` és másolja a fürt felhasználói fiókjához társított jogkivonatot.
 1. Illessze be a tokent a bejelentkezés elemre.    
 1. Kattintson a következőre: `Sign In`
 
@@ -149,15 +149,15 @@ Ha szeretné megtudni, hogyan csökkentheti a Kubernetes irányítópultja a fel
 Alkalmazás létrehozásához hajtsa végre a következő lépéseket:
 
 1. Válassza a **Létrehozás** gombot a jobb felső ablakban.
-1. A grafikus varázsló használatához válassza az **alkalmazás létrehozása**lehetőséget.
+1. A grafikus varázsló használatához válassza az **alkalmazás létrehozása** lehetőséget.
 1. Adja meg az üzemelő példány nevét, például *Nginx*
 1. Adja meg a használni kívánt tároló-rendszerkép nevét, például *Nginx: 1.15.5*
-1. Ahhoz, hogy a 80-es port elérhető legyen a webes forgalom számára, létre kell hoznia egy Kubernetes szolgáltatást. A **szolgáltatás**területen válassza a **külső**lehetőséget, majd adja meg a **80** értéket a port és a célport esetében is.
+1. Ahhoz, hogy a 80-es port elérhető legyen a webes forgalom számára, létre kell hoznia egy Kubernetes szolgáltatást. A **szolgáltatás** területen válassza a **külső** lehetőséget, majd adja meg a **80** értéket a port és a célport esetében is.
 1. Ha elkészült, válassza a **telepítés** lehetőséget az alkalmazás létrehozásához.
 
 ![Alkalmazás üzembe helyezése a Kubernetes webes irányítópultján](./media/kubernetes-dashboard/create-app.png)
 
-A Kubernetes szolgáltatáshoz hozzárendelt nyilvános külső IP-címekhez egy-két percet vesz igénybe. A bal oldali méretnél a **felderítés és** terheléselosztás területen válassza a **szolgáltatások**lehetőséget. Az alkalmazás szolgáltatása szerepel a listáján, beleértve a *külső végpontokat*is, ahogy az az alábbi példában is látható:
+A Kubernetes szolgáltatáshoz hozzárendelt nyilvános külső IP-címekhez egy-két percet vesz igénybe. A bal oldali méretnél a **felderítés és** terheléselosztás területen válassza a **szolgáltatások** lehetőséget. Az alkalmazás szolgáltatása szerepel a listáján, beleértve a *külső végpontokat* is, ahogy az az alábbi példában is látható:
 
 ![Szolgáltatások és végpontok listájának megtekintése](./media/kubernetes-dashboard/view-services.png)
 
@@ -181,12 +181,12 @@ Központi telepítés szerkesztése:
 
 1. Válassza a **központi telepítések** lehetőséget a bal oldali menüben, majd válassza ki a *Nginx* -telepítést.
 1. Válassza a **Szerkesztés** lehetőséget a jobb felső navigációs sávon.
-1. Keresse meg az `spec.replica` értéket a következő helyen: 20. sor. Az alkalmazás replikáinak számának növeléséhez módosítsa az értéket *1* és *3*között.
+1. Keresse meg az `spec.replica` értéket a következő helyen: 20. sor. Az alkalmazás replikáinak számának növeléséhez módosítsa az értéket *1* és *3* között.
 1. Ha elkészült, válassza a **frissítés** lehetőséget.
 
 ![A központi telepítés szerkesztése a replikák számának frissítéséhez](./media/kubernetes-dashboard/edit-deployment.png)
 
-Néhány percet vesz igénybe, hogy az új hüvelyek létre legyenek hozva egy replikakészlet-készleten belül. A bal oldali menüben válassza a **replika készletek**lehetőséget, majd válassza ki az *Nginx* -replikát. A hüvelyek listája most már a frissített replikák számát tükrözi, ahogy az a következő példában látható:
+Néhány percet vesz igénybe, hogy az új hüvelyek létre legyenek hozva egy replikakészlet-készleten belül. A bal oldali menüben válassza a **replika készletek** lehetőséget, majd válassza ki az *Nginx* -replikát. A hüvelyek listája most már a frissített replikák számát tükrözi, ahogy az a következő példában látható:
 
 ![A replikakészlet információinak megtekintése](./media/kubernetes-dashboard/view-replica-set.png)
 

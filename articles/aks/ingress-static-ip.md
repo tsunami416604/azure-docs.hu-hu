@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan telepíthet és konfigurálhat egy, az Azure Ku
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 50e3e052915b6bcc1f6dee89f5ed5e2acf13dd78
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: eb58bbe127349aaebed3b1eb00281cf2938c1933
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124356"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681584"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-címmel rendelkező bejövő vezérlő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> A fenti parancsok olyan IP-címet hoznak létre, amely törölve lesz, ha törli az AK-fürtöt. Másik lehetőségként létrehozhat egy olyan IP-címet is egy másik erőforráscsoporthoz, amelyet az AK-fürttől függetlenül kezelhet. Ha egy másik erőforráscsoporthoz hoz létre IP-címet, győződjön meg arról, hogy az AK-fürt által használt szolgáltatásnév delegált engedélyekkel rendelkezik a másik erőforráscsoporthoz, például a *hálózati közreműködőhöz* . További információ: [statikus nyilvános IP-cím és DNS-címke használata az AK-Load Balancer használatával][aks-static-ip].
+> A fenti parancsok olyan IP-címet hoznak létre, amely törölve lesz, ha törli az AK-fürtöt. Másik lehetőségként létrehozhat egy olyan IP-címet is egy másik erőforráscsoporthoz, amelyet az AK-fürttől függetlenül kezelhet. Ha egy másik erőforráscsoporthoz hoz létre IP-címet, győződjön meg arról, hogy az AK-fürt által használt szolgáltatásnév delegált engedélyekkel rendelkezik a másik erőforráscsoporthoz, például a *hálózati közreműködőhöz*. További információ: [statikus nyilvános IP-cím és DNS-címke használata az AK-Load Balancer használatával][aks-static-ip].
 
 Most telepítse az *Nginx-* beléptetési diagramot a Helm szolgáltatással. A magasabb szintű redundancia érdekében az NGINX bejövő forgalmi vezérlő két replikája van telepítve a `--set controller.replicaCount` paraméterrel. Ahhoz, hogy teljes mértékben élvezhesse a bejövő vezérlő replikáit, győződjön meg arról, hogy az AK-fürt több csomópontja van.
 
@@ -62,10 +62,10 @@ Két további paramétert kell átadnia a Helm-kiadáshoz, hogy a bejövő forga
 A bejövő forgalmi vezérlőt egy Linux-csomóponton is ütemezni kell. Windows Server-csomópontok nem futtathatják a bejövő forgalmi vezérlőt. A csomópont-választó `--set nodeSelector` paraméterrel történő meghatározása arra utasítja a Kubernetes ütemezőt, hogy az NGINX bejövő vezérlőt Linux-alapú csomóponton futtassa.
 
 > [!TIP]
-> A következő példa egy Kubernetes névteret hoz létre a bejövő erőforrások *– alapszintű* forgalomhoz. Szükség szerint adja meg a saját környezetének névterét. Ha az AK-fürt nincs engedélyezve RBAC, adja hozzá `--set rbac.create=false` a parancsot a Helm parancshoz.
+> A következő példa egy Kubernetes névteret hoz létre a bejövő erőforrások *– alapszintű* forgalomhoz. Szükség szerint adja meg a saját környezetének névterét. Ha az AK-fürt nincs engedélyezve a Kubernetes RBAC, adja hozzá `--set rbac.create=false` a parancsot a Helm parancshoz.
 
 > [!TIP]
-> Ha engedélyezni szeretné az [ügyfél forrásának IP-megőrzését][client-source-ip] a fürtben lévő tárolók kéréseire, adja hozzá `--set controller.service.externalTrafficPolicy=Local` a parancsot a Helm install parancshoz. Az ügyfél forrásának IP-címét a kérelem fejlécében tárolja a rendszer az *X által továbbított – esetében* . Ha az ügyfél-forrás IP-megtartást engedélyező bejövő vezérlőt használ, a TLS-áteresztő nem fog működni.
+> Ha engedélyezni szeretné az [ügyfél forrásának IP-megőrzését][client-source-ip] a fürtben lévő tárolók kéréseire, adja hozzá `--set controller.service.externalTrafficPolicy=Local` a parancsot a Helm install parancshoz. Az ügyfél forrásának IP-címét a kérelem fejlécében tárolja a rendszer az *X által továbbított – esetében*. Ha az ügyfél-forrás IP-megtartást engedélyező bejövő vezérlőt használ, a TLS-áteresztő nem fog működni.
 
 Frissítse a következő parancsfájlt a bejövő vezérlő **IP-címével** és egy **egyedi névvel** , amelyet a teljes tartománynév előtaghoz használni szeretne.
 
@@ -115,7 +115,7 @@ Az NGINX bejövőforgalom-vezérlő támogatja a TLS-megszakítást. A HTTPS-tan
 > [!NOTE]
 > Ez a cikk a `staging` környezetet használja a titkosításhoz. Éles környezetben az `letsencrypt-prod` `https://acme-v02.api.letsencrypt.org/directory` erőforrás-definíciókban és a Helm-diagram telepítésekor használja a és a-t.
 
-Ha a tanúsítvány-kezelő vezérlőt egy RBAC-kompatibilis fürtön szeretné telepíteni, használja a következő `helm install` parancsot:
+Ha a tanúsítvány-kezelő vezérlőt egy Kubernetes RBAC-kompatibilis fürtön szeretné telepíteni, használja a következő `helm install` parancsot:
 
 ```console
 # Label the cert-manager namespace to disable resource validation
@@ -382,7 +382,7 @@ Most adja hozzá a */Hello-World-Two* elérési útját a teljes tartománynévh
 
 ![Példa két alkalmazásra](media/ingress/app-two.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ez a cikk a beáramlási összetevők, a tanúsítványok és a minta alkalmazások telepítéséhez használható. Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ezek az erőforrások a hüvelyek, a központi telepítések és a szolgáltatások részét képezik. Ezen erőforrások törléséhez törölheti a teljes minta névteret vagy az egyes erőforrásokat.
 
@@ -435,7 +435,7 @@ Törölje a saját maga névterét. Használja a `kubectl delete` parancsot, és
 kubectl delete namespace ingress-basic
 ```
 
-Végezetül távolítsa el a bejövő vezérlőhöz létrehozott statikus nyilvános IP-címet. Adja meg *MC_* fürterőforrás-csoportjának nevét a cikk első lépéseként, például *MC_myResourceGroup_myAKSCluster_eastus* :
+Végezetül távolítsa el a bejövő vezérlőhöz létrehozott statikus nyilvános IP-címet. Adja meg *MC_* fürterőforrás-csoportjának nevét a cikk első lépéseként, például *MC_myResourceGroup_myAKSCluster_eastus*:
 
 ```azurecli-interactive
 az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP

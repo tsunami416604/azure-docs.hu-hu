@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: a89ff56eb9e0f0a29b5b1fed7543c5f718425e51
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a56922c972efeb21c188413522bd05f83b74ca12
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92325999"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681822"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Saját kulcs használata (ügyfél által felügyelt kulcsok) a Media Services
 
@@ -37,9 +37,11 @@ Megadhatja a kulcs nevét és a kulcs verziószámát, vagy csak a kulcs nevét.
 > [!WARNING]
 > Media Services figyeli az ügyfél kulcsának elérését. Ha az ügyfél kulcsa elérhetetlenné válik (például a kulcs törölve lett, vagy a Key Vault törölve lett, vagy a hozzáférési engedély el lett távolítva), Media Services átváltja a fiókot az ügyfél kulcsának elérhetetlenné válása állapotba (ami gyakorlatilag letiltja a fiókot). A fiók azonban törölhető ebben az állapotban. Az egyetlen támogatott művelet a fiók beolvasása, LISTÁZÁSa és törlése; az összes többi kérés (Encoding, streaming stb.) sikertelen lesz, amíg nem állítja vissza a fiók kulcsának elérését.
 
-## <a name="tutorial"></a>Oktatóanyag
-Próbálja ki az oktatóanyagot az [ügyfél által felügyelt kulcsok használatával, vagy használja a saját kulcsát (BYOK) a Media Services](tutorial-byok.md) segítségével, és ismerkedjen meg az ügyfelek által felügyelt kulcsok beállításával és használatával a Poster és az Azure REST API.
+## <a name="tutorials"></a>Oktatóanyagok
+
+- [Az ügyfél által felügyelt kulcsok vagy BYOK használata a Azure Portal használatával Media Services](tutorial-byok-portal.md)
+- [Az ügyfél által felügyelt kulcsokat vagy BYOK Media Services REST API használhatja](tutorial-byok-postman.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Oktatóanyag: ügyfelek által felügyelt kulcsok használata vagy saját kulcs (BYOK) használata Media Services](tutorial-byok.md)
+[A tartalmak Media Services dinamikus titkosítással védhetők](content-protection-overview.md)

@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 97b611c449302c95d4b24c305ce50ee7683e85ea
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c26e2bd27c0c3187768252fd922c31a2cc23d735
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316472"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682088"
 ---
 # <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Kapcsolódás kiszolgáló nélküli SQL-készlethez Power BI Professional használatával
 
@@ -75,7 +75,7 @@ A lekérdezések futtatása előtt létre kell hoznia a hitelesítő adatokat. E
 > [!NOTE]
 > A Storage-fiókhoz való hozzáféréshez hitelesítő adatokat kell létrehoznia. Bár a kiszolgáló nélküli SQL-készlet képes a különböző régiókból származó tárterület elérésére, a Storage és az Azure szinapszis munkaterület az adott régióban jobb teljesítményt nyújt.
 
-Kódrészlet **a népszámlálási adattárolók hitelesítő adatainak létrehozásához** :
+Kódrészlet **a népszámlálási adattárolók hitelesítő adatainak létrehozásához**:
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')

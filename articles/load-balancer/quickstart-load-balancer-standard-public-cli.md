@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: a0903a1da02b1f187e6f12e35fcb4bc05cd82939
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 4da232569a0f490b7fd6c2e50b81be6508ac5933
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516781"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682077"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rövid útmutató: Nyilvános Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
@@ -52,7 +52,7 @@ Hozzon létre egy erőforráscsoportot az [az Group Create](https://docs.microso
 # <a name="standard-sku"></a>[**Standard termékváltozat**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
->A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott. További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)** -ban.
+>A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott. További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
 
 ## <a name="configure-virtual-network"></a>Virtuális hálózat konfigurálása
 
@@ -361,7 +361,7 @@ A rendszer eltávolít egy sikertelen mintavételi vizsgálatot tartalmazó virt
 * A virtuális gépek állapotának figyelése.
 * Elnevezett **myHealthProbe**.
 * **TCP** protokoll.
-* A **80** -es port figyelése.
+* A **80**-es port figyelése.
 
 ```azurecli-interactive
   az network lb probe create \
@@ -467,7 +467,7 @@ Az [az Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/pu
 
 Az [az Network Public-IP előtag létrehozása](https://docs.microsoft.com/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) paranccsal hozzon létre egy nyilvános IP-előtagot a kimenő kapcsolathoz.
 
-A kimenő NAT és a kimenő kapcsolatok skálázásával kapcsolatos további információkért lásd: [kimenő NAT méretezése több IP-címmel](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scale).
+A kimenő NAT és a kimenő kapcsolatok skálázásával kapcsolatos további információkért lásd: [kimenő NAT méretezése több IP-címmel](load-balancer-outbound-connections.md).
 
 #### <a name="public-ip"></a>Nyilvános IP-cím
 
@@ -639,7 +639,7 @@ Adja hozzá a virtuális gépeket a kimenő készlethez az [az Network NIC IP-co
 # <a name="basic-sku"></a>[**Alapszintű termékváltozat**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
->A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott. További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)** -ban.
+>A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott. További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
 
 ## <a name="configure-virtual-network"></a>Virtuális hálózat konfigurálása
 
@@ -959,7 +959,7 @@ A rendszer eltávolít egy sikertelen mintavételi vizsgálatot tartalmazó virt
 * A virtuális gépek állapotának figyelése.
 * Elnevezett **myHealthProbe**.
 * **TCP** protokoll.
-* A **80** -es port figyelése.
+* A **80**-es port figyelése.
 
 ```azurecli-interactive
   az network lb probe create \
@@ -1067,7 +1067,7 @@ Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 ```
 :::image type="content" source="./media/load-balancer-standard-public-cli/running-nodejs-app.png" alt-text="A terheléselosztó tesztelése" border="true":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítsa el az erőforráscsoportot, a Load balancert és az összes kapcsolódó erőforrást.
 

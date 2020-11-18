@@ -7,12 +7,12 @@ author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 2b0078f1aff3ef81ee270f67de0fffddec3abab9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7730146f30487eb5d20f0d3138e9e5ba799daa99
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86255251"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681516"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Ajánlott Kubernetes-eljárások keresése a fürtben
 
@@ -29,7 +29,7 @@ Az Kube-Advisor eszköz jelentést készíthet az erőforrás-kérésekről, val
 
 ## <a name="running-kube-advisor"></a>Kube-Advisor futtatása
 
-Az eszköz [szerepköralapú hozzáférés-vezérléshez (RBAC)](./azure-ad-integration-cli.md)konfigurált fürtön való futtatásához használja a következő parancsokat. Az első parancs létrehoz egy Kubernetes szolgáltatásfiókot. A második parancs futtatja az eszközt az adott szolgáltatásfiókot használó Pod-ban, és a kilépést követően beállítja a pod-t a törléshez. 
+Az eszköz [Kubernetes szerepköralapú hozzáférés-vezérléshez (KUBERNETES RBAC)](./azure-ad-integration-cli.md)konfigurált fürtön való futtatásához használja a következő parancsokat. Az első parancs létrehoz egy Kubernetes szolgáltatásfiókot. A második parancs futtatja az eszközt az adott szolgáltatásfiókot használó Pod-ban, és a kilépést követően beállítja a pod-t a törléshez. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
@@ -37,7 +37,7 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }" --namespace default
 ```
 
-Ha nem használja a RBAC-t, a parancsot a következőképpen futtathatja:
+Ha nem használja a Kubernetes RBAC, a parancsot a következőképpen futtathatja:
 
 ```bash
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never
@@ -59,15 +59,15 @@ Alapértelmezés szerint a pod-specifikációk nincsenek megadva kérelmek vagy 
 
 ## <a name="cleaning-up"></a>A felesleges elemek eltávolítása
 
-Ha a fürtön engedélyezve van a RBAC, a következő paranccsal törölheti az `ClusterRoleBinding` eszközt, miután futtatta azt:
+Ha a fürtön engedélyezve van a Kubernetes RBAC, akkor a következő paranccsal törölheti az `ClusterRoleBinding` eszközt, miután futtatta azt:
 
 ```bash
 kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
-Ha az eszközt olyan fürtön futtatja, amely nem RBAC-kompatibilis, nincs szükség karbantartásra.
+Ha az eszközt olyan fürtön futtatja, amely nem Kubernetes RBAC-kompatibilis, nincs szükség karbantartásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Kubernetes szolgáltatással kapcsolatos problémák elhárítása](troubleshooting.md)
 

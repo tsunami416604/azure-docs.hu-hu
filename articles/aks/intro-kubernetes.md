@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: ee709868cd7e78afbcc480913c4e4c8fd2acf832
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167185"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681550"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -26,11 +26,11 @@ Az első lépésekhez végezze el az AKS rövid útmutatójában leírtakat a [M
 
 ## <a name="access-security-and-monitoring"></a>Hozzáférés, biztonság és monitoring
 
-A jobb biztonság és felügyelet érdekében az AK lehetővé teszi az integrációt a Azure Active Directory és a Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) használatával. A fürtje és az erőforrásai állapotát is monitorozhatja.
+A jobb biztonság és felügyelet érdekében az AK lehetővé teszi az integrációt a Azure Active Directory és a Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) használatával. A fürtje és az erőforrásai állapotát is monitorozhatja.
 
 ### <a name="identity-and-security-management"></a>Identitás és biztonsági felügyelet
 
-Az AKS támogatja a [szerepköralapú hozzáférés-vezérlést (RBAC)][kubernetes-rbac], amellyel korlátozhatja a fürt erőforrásaihoz való hozzáférést. Az RBAC lehetővé teszi a Kubernetes-erőforrások és -névterek hozzáférésének és az ezen erőforrásokhoz tartozó engedélyek felügyeletét. Az AKS-fürtöket az Azure Active Directoryval való integrációhoz is konfigurálhatja. Az Azure AD-integrációval a Kubernetes-hozzáférést a meglévő identitás és csoporttagság alapján lehet konfigurálni. Meglévő Azure AD-felhasználói és -csoportjai kaphatnak hozzáférést az AKS-erőforrásokhoz, amelyeket egy integrált bejelentkezési felületen keresztül érhetnek el.
+A fürt erőforrásaihoz való hozzáférés korlátozásához az AK támogatja a [Kubernetes szerepköralapú hozzáférés-vezérlést (KUBERNETES RBAC)][kubernetes-rbac]. A Kubernetes RBAC lehetővé teszi a Kubernetes erőforrásainak és névterének, valamint az ezekhez tartozó engedélyek hozzáférésének szabályozását. Az AKS-fürtöket az Azure Active Directoryval való integrációhoz is konfigurálhatja. Az Azure AD-integrációval a Kubernetes-hozzáférést a meglévő identitás és csoporttagság alapján lehet konfigurálni. Meglévő Azure AD-felhasználói és -csoportjai kaphatnak hozzáférést az AKS-erőforrásokhoz, amelyeket egy integrált bejelentkezési felületen keresztül érhetnek el.
 
 Az identitással kapcsolatos további információkért lásd: [hozzáférési és identitási beállítások az AK][concepts-identity]-hoz.
 
@@ -116,7 +116,7 @@ Az Azure Kubernetes Service (AKS) CNCF-tanúsítvánnyal rendelkezik, mivel megf
 
 Az Azure Kubernetes Service (AKS) az SOC, az ISO, a PCI DSS és a HIPAA szabványnak is megfelel. További információ: [az Microsoft Azure megfelelőségének áttekintése][compliance-doc].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI gyors útmutatójának segítségével többet tudhat meg az AKS üzembe helyezéséről és felügyeletéről.
 
@@ -146,7 +146,7 @@ Az Azure CLI gyors útmutatójának segítségével többet tudhat meg az AKS ü
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
 [conf-com-node]: ../confidential-computing/confidential-nodes-aks-overview.md

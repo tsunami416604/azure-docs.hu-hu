@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 94ad0a05dafe2c405b1b9cb62242675aa54c4432
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1aba87b2139fb8a7d395fb3180d2074e47310fa9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424309"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661154"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Tudnivalók a VPN Gateway konfigurációs beállításairól
 
@@ -37,7 +37,7 @@ A-GatewayType elérhető értékei a következők:
 * Vpn
 * ExpressRoute
 
-A VPN-átjáróhoz a `-GatewayType` *VPN*szükséges.
+A VPN-átjáróhoz a `-GatewayType` *VPN* szükséges.
 
 Példa:
 
@@ -122,7 +122,7 @@ A virtuális hálózati átjáró létrehozása után a VPN-típus nem módosít
 
 [!INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
-A következő PowerShell-példa az `-VpnType` as *útvonalalapú*adja meg. Egy átjáró létrehozásakor biztosítania kell, hogy -VpnType megfeleljen a konfigurációnak.
+A következő PowerShell-példa az `-VpnType` as *útvonalalapú* adja meg. Egy átjáró létrehozásakor biztosítania kell, hogy -VpnType megfeleljen a konfigurációnak.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
@@ -176,9 +176,9 @@ A REST API-k, a PowerShell-parancsmagok vagy az Azure CLI VPN Gateway konfigurá
 | **Klasszikus** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
-| [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
+| [REST API](/previous-versions/azure/reference/jj154113(v=azure.100)) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | Nem támogatott | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az elérhető kapcsolatok konfigurációjáról: [Tudnivalók a VPN Gatewayról](vpn-gateway-about-vpngateways.md).

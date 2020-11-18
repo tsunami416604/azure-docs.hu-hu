@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63505f470410234f720dd28c29e87c4a2a6d123f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082052"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661137"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Különböző üzemi modellekből származó virtuális hálózatok összekapcsolása a PowerShell-lel
 
@@ -35,7 +35,7 @@ A következő lépések végigvezetik az egyes VNet dinamikus vagy Route-alapú 
 
 ### <a name="prerequisites"></a><a name="pre"></a>Előfeltételek
 
-* Mindkét virtuális hálózatok már létre lett hozva. Ha Resource Manager virtuális hálózatot kell létrehoznia, tekintse meg [az erőforráscsoport és a virtuális hálózat létrehozása](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network)című témakört. Klasszikus virtuális hálózat létrehozásához tekintse meg [a klasszikus VNet létrehozása](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic)című témakört.
+* Mindkét virtuális hálózatok már létre lett hozva. Ha Resource Manager virtuális hálózatot kell létrehoznia, tekintse meg [az erőforráscsoport és a virtuális hálózat létrehozása](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network)című témakört. Klasszikus virtuális hálózat létrehozásához tekintse meg [a klasszikus VNet létrehozása](/previous-versions/azure/virtual-network/create-virtual-network-classic)című témakört.
 * A virtuális hálózatok címtartományok nem fedik egymást egymással, vagy átfedésben vannak más kapcsolatok bármely tartományával, amelyekhez az átjárók csatlakozhatnak.
 * Telepítette a legújabb PowerShell-parancsmagokat. További információért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/) . Győződjön meg arról, hogy a Service Management (SM) és a Resource Manager (RM) parancsmagokat is telepíti. 
 
@@ -90,7 +90,7 @@ Virtual Network átjáró neve = RMGateway <br>
    ```azurepowershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-3. Nyissa meg a letöltött. xml fájlt a szerkesztéshez. A hálózati konfigurációs fájlra példaként tekintse meg a [hálózati konfigurációs sémát](https://msdn.microsoft.com/library/jj157100.aspx).
+3. Nyissa meg a letöltött. xml fájlt a szerkesztéshez. A hálózati konfigurációs fájlra példaként tekintse meg a [hálózati konfigurációs sémát](/previous-versions/azure/reference/jj157100(v=azure.100)).
 
 ### <a name="2-verify-the-gateway-subnet"></a>2. Ellenőrizze az átjáró alhálózatát
 A **VirtualNetworkSites** elemben adjon hozzá egy átjáró-alhálózatot a VNet, ha még nem lett létrehozva. Ha a hálózati konfigurációs fájllal dolgozik, az átjáró-alhálózatnak "GatewaySubnet" névvel kell RENDELKEZNIE, vagy az Azure nem ismeri fel és nem használhatja átjáró-alhálózatként.
@@ -237,7 +237,7 @@ Az előfeltételek feltételezik, hogy már létrehozott egy RM-VNet. Ebben a l�
    -Name gwipconfig -SubnetId $subnet.id `
    -PublicIpAddressId $ipaddress.id
    ```
-7. Hozza létre a Resource Manager-beli virtuális hálózati átjárót a következő parancs futtatásával. A `-VpnType` *útvonalalapú*kell lennie. Az átjáró létrehozása akár 45 percet is igénybe vehet.
+7. Hozza létre a Resource Manager-beli virtuális hálózati átjárót a következő parancs futtatásával. A `-VpnType` *útvonalalapú* kell lennie. Az átjáró létrehozása akár 45 percet is igénybe vehet.
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1 `

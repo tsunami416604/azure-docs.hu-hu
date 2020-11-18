@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan engedélyezheti és tekintheti meg a Kubernetes
 services: container-service
 ms.topic: article
 ms.date: 10/14/2020
-ms.openlocfilehash: 82570606aee294aafe7da5ffaf581b11b6775073
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: a0e58174c38ec19d42f524b9bc94247e05296467
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899939"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682230"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>A Kubernetes főcsomópont-naplóinak engedélyezése és áttekintése az Azure Kubernetes Service-ben (AKS)
 
@@ -17,7 +17,7 @@ Az Azure Kubernetes szolgáltatással (ak) a fő összetevők, például a *Kube
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ehhez a cikkhez egy Azure-fiókban futó meglévő AK-fürtre van szükség. Ha még nem rendelkezik AK-fürttel, hozzon létre egyet az [Azure CLI][cli-quickstart] vagy a [Azure Portal][portal-quickstart]használatával. Azure Monitor naplók a RBAC és a nem RBAC-kompatibilis AK-fürtökkel is működnek.
+Ehhez a cikkhez egy Azure-fiókban futó meglévő AK-fürtre van szükség. Ha még nem rendelkezik AK-fürttel, hozzon létre egyet az [Azure CLI][cli-quickstart] vagy a [Azure Portal][portal-quickstart]használatával. Azure Monitor naplók a Kubernetes RBAC, az Azure RBAC és a nem RBAC engedélyezett AK-fürtökkel is működnek.
 
 ## <a name="enable-resource-logs"></a>Erőforrásnaplók engedélyezése
 
@@ -25,21 +25,21 @@ A több forrásból származó adatok gyűjtésének és áttekintésének megk�
 
 Azure Monitor naplók engedélyezve vannak és kezelhetők a Azure Portal. Ha az AK-fürt Kubernetes fő összetevőinek naplózási gyűjteményét szeretné engedélyezni, nyissa meg a Azure Portal egy böngészőben, és végezze el a következő lépéseket:
 
-1. Válassza ki az AK-fürthöz tartozó erőforráscsoportot, például *myResourceGroup* . Ne válassza ki azt az erőforráscsoportot, amely az egyedi AK-fürterőforrás (például *MC_myResourceGroup_myAKSCluster_eastus* ) tartalmazza.
+1. Válassza ki az AK-fürthöz tartozó erőforráscsoportot, például *myResourceGroup*. Ne válassza ki azt az erőforráscsoportot, amely az egyedi AK-fürterőforrás (például *MC_myResourceGroup_myAKSCluster_eastus*) tartalmazza.
 1. A bal oldali oldalon válassza a **diagnosztikai beállítások** lehetőséget.
-1. Válassza ki az AK-fürtöt, például *myAKSCluster* , majd válassza a **diagnosztikai beállítás hozzáadását** .
-1. Adjon meg egy nevet, például *myAKSClusterLogs* , majd válassza ki a **log Analytics küldésére szolgáló** lehetőséget.
+1. Válassza ki az AK-fürtöt, például *myAKSCluster*, majd válassza a **diagnosztikai beállítás hozzáadását**.
+1. Adjon meg egy nevet, például *myAKSClusterLogs*, majd válassza ki a **log Analytics küldésére szolgáló** lehetőséget.
 1. Válasszon ki egy meglévő munkaterületet, vagy hozzon létre egy újat. Ha létrehoz egy munkaterületet, adja meg a munkaterület nevét, egy erőforráscsoportot és egy helyet.
-1. Az elérhető naplók listájában válassza ki az engedélyezni kívánt naplókat. Ebben a példában engedélyezze a *Kube-audit* és a *Kube-audit-admin* naplókat. A gyakori naplók közé tartozik a *Kube-apiserver* , a *Kube-Controller-Manager* és a *Kube-Scheduler* . Ha Log Analytics munkaterületek engedélyezve vannak, visszaállíthatja és módosíthatja az összegyűjtött naplókat.
+1. Az elérhető naplók listájában válassza ki az engedélyezni kívánt naplókat. Ebben a példában engedélyezze a *Kube-audit* és a *Kube-audit-admin* naplókat. A gyakori naplók közé tartozik a *Kube-apiserver*, a *Kube-Controller-Manager* és a *Kube-Scheduler*. Ha Log Analytics munkaterületek engedélyezve vannak, visszaállíthatja és módosíthatja az összegyűjtött naplókat.
 1. Ha elkészült, válassza a **Mentés** lehetőséget a kiválasztott naplók gyűjtésének engedélyezéséhez.
 
 ## <a name="log-categories"></a>Naplók kategóriái
 
 A Kubernetes által írt bejegyzések mellett a projekt naplóinak bejegyzései is az AK-ból származnak.
 
-A naplók három kategóriába vannak rögzítve: *Kube* , Kube-audit *-Admin* és *Guard* .
+A naplók három kategóriába vannak rögzítve: *Kube*, Kube-audit *-Admin* és *Guard*.
 
-- Az *Kube-naplózási* kategória minden naplózási eseményhez tartalmaz minden naplózási naplót, beleértve a *Get* , a *List* , a *create* , a *Update* , a *delete* , a *patch* és a *post bejegyzést* .
+- Az *Kube-naplózási* kategória minden naplózási eseményhez tartalmaz minden naplózási naplót, beleértve a *Get*, a *List*, a *create*, a *Update*, a *delete*, a *patch* és a *post bejegyzést*.
 - A *Kube-audit-admin* kategória a *Kube* napló kategóriájának egy részhalmaza. *Kube – a naplózási rendszergazda* csökkenti a naplók számát a naplóból a *Get* és a *List* naplózási események kizárásával.
 - Az *őr* kategóriája felügyelt Azure ad-és Azure RBAC-naplózási szolgáltatás. A felügyelt Azure AD: token in esetében a felhasználói adatok kijelentkezése. Azure RBAC esetén: hozzáférési felülvizsgálatok be-és kijelentkezés.
 
@@ -109,7 +109,7 @@ AzureDiagnostics
 | project log_s
 ```
 
-Ebben a példában a lekérdezés az összes létrehozási feladatot megjeleníti a *Kube-audit-adminban* . Valószínűleg sok eredményt adott vissza, a lekérdezés hatókörét az előző lépésben létrehozott NGINX Pod naplófájlok megtekintéséhez, adjon hozzá egy további *Where* utasítást az *Nginx* kereséséhez, ahogy az az alábbi példában is látható.
+Ebben a példában a lekérdezés az összes létrehozási feladatot megjeleníti a *Kube-audit-adminban*. Valószínűleg sok eredményt adott vissza, a lekérdezés hatókörét az előző lépésben létrehozott NGINX Pod naplófájlok megtekintéséhez, adjon hozzá egy további *Where* utasítást az *Nginx* kereséséhez, ahogy az az alábbi példában is látható.
 
 ```
 AzureDiagnostics

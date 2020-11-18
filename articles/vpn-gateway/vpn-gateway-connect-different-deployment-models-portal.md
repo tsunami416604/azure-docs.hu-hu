@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2bcd919629eb03581c35a2090d53e451141d94a4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f307ff9e7d609628bc22374fc5874dcbf993e4c2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487113"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661188"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuális hálózatok összekötése különböző üzemi modellekkel a portál használatával
 
@@ -86,7 +86,7 @@ Ebben a szakaszban a klasszikus VNet, a helyi hálózatot (helyi helyet) és a v
 
 ### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"></a> klasszikus VNet létrehozása
 
-Ha nem rendelkezik klasszikus VNet, és gyakorlatként futtatja ezeket a lépéseket, létrehozhat egy VNet [ehhez a cikkhez](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) , és a fenti [példában](#values) szereplő beállítások értékeit.
+Ha nem rendelkezik klasszikus VNet, és gyakorlatként futtatja ezeket a lépéseket, létrehozhat egy VNet [ehhez a cikkhez](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) , és a fenti [példában](#values) szereplő beállítások értékeit.
 
 Ha már rendelkezik egy VPN-átjáróval rendelkező VNet, ellenőrizze, hogy az átjáró dinamikus-e. Ha statikus, először törölnie kell a VPN-átjárót, mielőtt folytatná [a helyi hely konfigurálását](#local).
 
@@ -101,11 +101,11 @@ Ha már rendelkezik egy VPN-átjáróval rendelkező VNet, ellenőrizze, hogy az
 1. Keresse meg az **összes erőforrást** , és keresse meg a **ClassicVNet** a listában.
 2. Kattintson a menü **Beállítások** szakaszában az **átjáró** elemre, majd a szalagcímre kattintva hozzon létre egy átjárót.
   ![VPN-átjáró konfigurálása](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "VPN-átjáró konfigurálása")
-3. Az **új VPN-kapcsolat** lapon, a **kapcsolat típusa**területen válassza a **helyek közötti**lehetőséget.
-4. **Helyi hely**esetén kattintson a **kötelező beállítások konfigurálása**elemre. Ekkor megnyílik a **helyi webhely** oldal.
+3. Az **új VPN-kapcsolat** lapon, a **kapcsolat típusa** területen válassza a **helyek közötti** lehetőséget.
+4. **Helyi hely** esetén kattintson a **kötelező beállítások konfigurálása** elemre. Ekkor megnyílik a **helyi webhely** oldal.
 5. A **helyi hely** lapon hozzon létre egy nevet, amely a Resource Manager VNet hivatkozik. Például: "RMVNetLocal".
 6. Ha a Resource Manager-VNet VPN-átjárója már rendelkezik nyilvános IP-címmel, használja a **VPN Gateway IP-cím** mező értékét. Ha gyakorlatként hajtja végre ezeket a lépéseket, vagy még nem rendelkezik virtuális hálózati átjáróval a Resource Manager-VNet, létrehozhat egy helyőrző IP-címet. Győződjön meg arról, hogy a helyőrző IP-címe érvényes formátumot használ. Később lecseréli a helyőrző IP-címet a Resource Manager virtuális hálózati átjárójának nyilvános IP-címére.
-7. Az **ügyfél címtartomány mezőben**használja a Resource Manager-VNet virtuális hálózati IP-címeinek [értékeit](#connectoverview) . Ezzel a beállítással adhatja meg a Resource Manager-beli virtuális hálózathoz való átirányításhoz használandó címeket. A példában a 192.168.0.0/16, a RMVNet címtartományt használjuk.
+7. Az **ügyfél címtartomány mezőben** használja a Resource Manager-VNet virtuális hálózati IP-címeinek [értékeit](#connectoverview) . Ezzel a beállítással adhatja meg a Resource Manager-beli virtuális hálózathoz való átirányításhoz használandó címeket. A példában a 192.168.0.0/16, a RMVNet címtartományt használjuk.
 8. Az értékek mentéséhez és az **új VPN-kapcsolat** lapra való visszatéréshez kattintson **az OK** gombra.
 
 ### <a name="3-create-the-virtual-network-gateway"></a><a name="classicgw"></a>3. hozza létre a virtuális hálózati átjárót
@@ -124,7 +124,7 @@ Ha már rendelkezik egy VPN-átjáróval rendelkező VNet, ellenőrizze, hogy az
 
 A virtuális hálózati átjáró létrehozása után megtekintheti az átjáró IP-címét. 
 
-1. Navigáljon a klasszikus VNet, és kattintson az **Áttekintés**elemre.
+1. Navigáljon a klasszikus VNet, és kattintson az **Áttekintés** elemre.
 2. Kattintson a **VPN-kapcsolatok** elemre a VPN-kapcsolatok lap megnyitásához. A VPN-kapcsolatok oldalon megtekintheti a nyilvános IP-címet. Ez a virtuális hálózati átjáróhoz hozzárendelt nyilvános IP-cím. Jegyezze fel az IP-címet. A későbbi lépésekben a Resource Manager helyi hálózati átjáró konfigurációs beállításainak használatával végezheti el. 
 3. Megtekintheti az átjáró kapcsolatainak állapotát. Figyelje meg, hogy a létrehozott helyi hálózati telephely "Csatlakozás" néven jelenik meg. Az állapot a kapcsolatok létrehozása után módosul. Ezt a lapot akkor is lezárhatja, ha befejezte az állapot megtekintését.
 
@@ -184,7 +184,7 @@ A helyi hálózati átjáró megadja a címtartomány és a klasszikus VNet és 
 Ebben a szakaszban lecseréli azt a helyőrző IP-címet, amelyet a helyi hely beállításainak megadásakor használt a Resource Manager VPN Gateway IP-címével. Ez a szakasz a klasszikus (SM) PowerShell-parancsmagokat használja.
 
 1. A Azure Portal navigáljon a klasszikus virtuális hálózathoz.
-2. A virtuális hálózat lapján kattintson az **Áttekintés**elemre.
+2. A virtuális hálózat lapján kattintson az **Áttekintés** elemre.
 3. A **VPN-kapcsolatok** szakaszban kattintson a helyi webhely nevére a grafikában.
 
    ![VPN – kapcsolatok](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-kapcsolatok")
@@ -203,9 +203,9 @@ Ebben a szakaszban lecseréli azt a helyőrző IP-címet, amelyet a helyi hely b
 
 Ezekben a lépésekben a Azure Portal segítségével konfigurálja a (z) Resource Manager-VNet származó kapcsolatokat a klasszikus VNet.
 
-1. A **minden erőforrás**területen keresse meg a helyi hálózati átjárót. A példánkban a helyi hálózati átjáró **ClassicVNetLocal**.
-2. Kattintson a **konfiguráció** elemre, és ellenőrizze, hogy az IP-cím értéke a klasszikus VNET tartozó VPN-átjáró. Szükség esetén frissítse a frissítést, majd kattintson a **Mentés**gombra. Zárja be az oldalt.
-3. Az **összes erőforrás**területen kattintson a helyi hálózati átjáróra.
+1. A **minden erőforrás** területen keresse meg a helyi hálózati átjárót. A példánkban a helyi hálózati átjáró **ClassicVNetLocal**.
+2. Kattintson a **konfiguráció** elemre, és ellenőrizze, hogy az IP-cím értéke a klasszikus VNET tartozó VPN-átjáró. Szükség esetén frissítse a frissítést, majd kattintson a **Mentés** gombra. Zárja be az oldalt.
+3. Az **összes erőforrás** területen kattintson a helyi hálózati átjáróra.
 4. Kattintson a **kapcsolatok** elemre a kapcsolatok lap megnyitásához.
 5. A **kapcsolatok** lapon kattintson a **+** kapcsolat hozzáadásához.
 6. A **kapcsolatok hozzáadása** lapon nevezze el a kapcsolatokat. Például: "RMtoClassic".
