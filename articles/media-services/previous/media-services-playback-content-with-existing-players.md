@@ -3,7 +3,7 @@ title: Meglévő játékosok használata a tartalom lejátszásához – Azure |
 description: Ez a cikk felsorolja azokat a meglévő játékosokat, amelyeket a tartalom lejátszásához használhat.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 7e9fcf89-0fb6-4fa4-96cb-666320684d69
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: d2036fa056932f9bbd2f14b4005fa54321b1a382
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/17/2020
+ms.author: inhenkel
+ms.openlocfilehash: 6085f34c46ab39012500cd42cd8392e65776f773
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095713"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94739808"
 ---
 # <a name="playing-your-content-with-existing-players"></a>A tartalom lejátszása meglévő lejátszókkal
 
@@ -27,7 +27,8 @@ ms.locfileid: "93095713"
 
 A Azure Media Services számos népszerű streaming formátumot támogat, például a Smooth Streaming, a HTTP Live Streaming és az MPEG-Dash formátumot. Ez a témakör egy meglévő, a streamek tesztelésére használható játékost mutat be.
 
-### <a name="the-azure-portal-media-services-content-player"></a>A tartalom lejátszó Azure Portal Media Services
+## <a name="the-azure-portal-media-services-content-player"></a>A tartalom lejátszó Azure Portal Media Services
+
 Az **Azure** Portal egy tartalommal rendelkező lejátszót biztosít, amellyel tesztelheti a videót.
 
 Kattintson a kívánt videóra (Győződjön meg róla, hogy [közzé lett téve](media-services-portal-publish.md)), majd kattintson a portál alján található **Lejátszás** gombra.
@@ -35,8 +36,6 @@ Kattintson a kívánt videóra (Győződjön meg róla, hogy [közzé lett téve
 Vegye figyelembe a következőket:
 
 * A **MEDIA SERVICES CONTENT PLAYER** (Media Services tartalomlejátszó) az alapértelmezett streamvégpontból játssza le a fájlokat. Ha egy nem alapértelmezett streamvégpontból szeretne lejátszani valamit, használjon másik lejátszót. Például [Azure Media Player](https://aka.ms/azuremediaplayer).
-
-![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
 
@@ -55,20 +54,21 @@ A következő formátumok bármelyikében használhatja a [Azure Media Player](h
 
 ### <a name="dash-players"></a>DASH-lejátszók
 
-"https://dashplayer.azurewebsites.net"
+[Dash-lejátszó](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>Egyéb
+
 A HLS URL-címek teszteléséhez használhatja a következőket is:
 
 * **Safari** iOS-eszközön vagy
 * **3IVX HLS-lejátszó** Windows rendszeren.
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
-[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-[AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
+[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

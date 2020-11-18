@@ -6,17 +6,17 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 8/6/2020
-ms.openlocfilehash: 2a130345a755644874b4547a5906101b593664a6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/16/2020
+ms.openlocfilehash: 6dd855695a155e924f7c46bdb17449c5e6504ca6
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123472"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745360"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és Power BI: valós idejű elemzési irányítópult az adatfolyam-továbbításhoz
 
-Azure Stream Analytics lehetővé teszi, hogy kihasználhassa az egyik vezető üzleti intelligencia-eszközt, a [Microsoft Power BIt](https://powerbi.com/). Ebből a cikkből megtudhatja, hogyan hozhat létre az üzleti intelligencia-eszközöket a Azure Stream Analytics feladatok kimenetének Power BI használatával. Azt is megtudhatja, hogyan hozhat létre és használhat valós idejű irányítópultokat.
+Azure Stream Analytics lehetővé teszi, hogy kihasználhassa az egyik vezető üzleti intelligencia-eszközt, a [Microsoft Power BIt](https://powerbi.com/). Ebből a cikkből megtudhatja, hogyan hozhat létre az üzleti intelligencia-eszközöket a Azure Stream Analytics feladatok kimenetének Power BI használatával. Azt is megtudhatja, hogyan hozhat létre és használhat olyan valós idejű irányítópultot, amelyet folyamatosan frissít a Stream Analytics-feladatokkal.
 
 Ez a cikk a Stream Analytics [valós idejű csalások észlelését](stream-analytics-real-time-fraud-detection.md) ismertető oktatóanyagban folytatódik. Ez az oktatóanyagban létrehozott munkafolyamatra épül, és hozzáadja a Power BI kimenetet, hogy megjelenítse a streaming Analytics-feladatok által észlelt csalárd telefonhívásokat. 
 
@@ -64,7 +64,7 @@ A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet a
 Az adatkészlet a következő beállításokkal jön létre:
 
 * **defaultRetentionPolicy: BasicFIFO** – az adatmennyiség FIFO, amely legfeljebb 200 000 sorral rendelkezik.
-* **defaultMode: pushStreaming** – az adatkészlet támogatja a streaming csempéket és a hagyományos, jelentésen alapuló vizualizációkat (más néven leküldéses).
+* **defaultMode: hibrid** – az adatkészlet támogatja a folyamatos átviteli csempéket (más néven leküldéses) és a hagyományos jelentéseken alapuló vizualizációkat. A leküldéses tartalom esetében ebben az esetben az adatok folyamatosan frissülnek a stream Analytics-feladatból, és nem kell ütemezni a Power BI oldalról történő frissítést.
 
 Jelenleg nem hozhat létre más jelzőket tartalmazó adatkészleteket.
 
@@ -148,7 +148,7 @@ A streaming Analytics-feladatok a bejövő adatfolyamban megjelenő csalárd hí
 
     ![Irányítópult létrehozása és név megadása Power BI munkaterületen](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
 
-4. Az ablak tetején kattintson a **csempe hozzáadása** elemre, válassza az **Egyéni adatfolyam** -adatátvitelek lehetőséget, majd kattintson a **tovább** gombra.
+4. Az ablak tetején kattintson a **csempe hozzáadása** elemre, válassza az **Egyéni adatfolyam**-adatátvitelek lehetőséget, majd kattintson a **tovább** gombra.
 
     ![Egyéni folyamatos átviteli adatkészlet csempe Power BI](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
 
@@ -223,7 +223,7 @@ Ebben a konfigurációban az eredeti lekérdezést a következőre módosíthatj
 ### <a name="renew-authorization"></a>Engedélyezés megújítása
 Ha a jelszó megváltozott a feladatok létrehozása vagy utolsó hitelesítése óta, újra kell hitelesítenie Power BI-fiókját. Ha az Azure Multi-Factor Authentication konfigurálva van a Azure Active Directory (Azure AD) bérlőn, akkor két hetente meg kell újítania Power BI engedélyezését. Ha nem újítja meg, olyan tüneteket láthat, mint például a feladatok kimenetének hiánya vagy `Authenticate user error` a műveleti naplók.
 
-Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba történik, és a művelet meghiúsul. A probléma megoldásához állítsa le a futó feladatot, és nyissa meg a Power BI kimenetét. Az adatvesztés elkerülése érdekében válassza az **Engedélyezés megújítása** hivatkozást, majd indítsa újra a feladatot az **utolsó leállítási időpontból** .
+Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba történik, és a művelet meghiúsul. A probléma megoldásához állítsa le a futó feladatot, és nyissa meg a Power BI kimenetét. Az adatvesztés elkerülése érdekében válassza az **Engedélyezés megújítása** hivatkozást, majd indítsa újra a feladatot az **utolsó leállítási időpontból**.
 
 Miután az engedélyezést Power BItel frissítette, egy zöld riasztás jelenik meg az engedélyezési területen, hogy tükrözze a probléma megoldását.
 

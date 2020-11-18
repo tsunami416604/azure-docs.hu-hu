@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 11/06/2020
+ms.date: 11/17/2020
 ms.author: aahi
-ms.openlocfilehash: 0efb278c217ede94f67b47250633622501a24414
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ba51776942ad28fc8d4b0db7dd2d0e162e5322b5
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412544"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743337"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure Cognitive Services Container képcímkék és kibocsátási megjegyzések
 
@@ -150,7 +150,7 @@ A [Custom Speech – szöveg][sp-cstt] tároló rendszerképet a `mcr.microsoft.
 
 Kiadási Megjegyzés a következőhöz `2.6.0-amd64` :
 
-**Szolgáltatások**
+**Funkciók**
 * A phraselist v2 támogatása 
 * A kifejezések listáját a következő területi beállítások támogatják:
     * EN-au
@@ -180,7 +180,7 @@ Vegye figyelembe, hogy a mellékelt kifejezések listája a tároló képének m
 
 Kiadási Megjegyzés a következőhöz `2.5.0-amd64` :
 
-**Szolgáltatások**
+**Funkciók**
 * Egyéni kiejtés támogatása egyéni modelleken
 * Az Azure és az USA kormányzati felhő támogatása
 
@@ -202,7 +202,7 @@ Az [egyéni szöveg-beszéd][sp-ctts] tároló képe a `mcr.microsoft.com` Conta
 
 Kiadási Megjegyzés a következőhöz `1.8.0-amd64` :
 
-**Szolgáltatások**
+**Funkciók**
 * Teljes mértékben áttelepítve a .NET 3,1-es verzióra
 
 | Képcímkék                    | Jegyzetek |
@@ -234,7 +234,7 @@ A beszédfelismerési v 2.5.0-ben a képek az USA-beli *közigazgatási Virginia
 
 Kiadási Megjegyzés a következőhöz `2.6.0-amd64-<locale>` :
 
-**Szolgáltatások**
+**Funkciók**
 * Frissítve a legújabb modellekre, és teljes mértékben migrálva a .NET 3,1-es verzióra
 * A phraselist v2 támogatása
 * A kifejezések listáját a következő területi beállítások támogatják:
@@ -309,7 +309,7 @@ Ehhez a tárolóhoz a következő területi beállítások állnak rendelkezésr
 
 Kiadási Megjegyzés a következőhöz `2.5.0-amd64-<locale>` :
 
-**Szolgáltatások**
+**Funkciók**
 * Az Azure US government Cloud támogatása
 
 **Hibajavítások**
@@ -574,6 +574,39 @@ A [neurális szöveg-beszéd][sp-ntts] tároló képe a `mcr.microsoft.com` Cont
 
 Ehhez a tároló-rendszerképhez a következő címkék érhetők el. Megtalálhatja a címkék teljes listáját is a [MCR](https://mcr.microsoft.com/v2/azure-cognitive-services/speechservices/neural-text-to-speech/tags/list).
 
+
+# <a name="latest-version"></a>[Legújabb verzió](#tab/current)
+
+Kibocsátási megjegyzések a következőhöz `v1.3.0` :
+* A neurális szöveg-beszéd tároló már általánosan elérhető. 
+
+| Képcímkék                                  | Jegyzetek                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `latest`                                    | A tároló képe a `en-US` területi beállítással és a `en-US-AriaNeural` hanggal.      |
+| `1.3.0-amd64-<locale-and-voice>`    | Cserélje le az értékét `<locale>` az alább felsorolt elérhető területi beállítások egyikére. Például: `1.3.0-amd64-en-us-arianeural`. |
+
+
+| v 1.3.0 területi beállítások és hangok           | Jegyzetek                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `de-de-katjaneural`                 | A tároló képe a `de-DE` területi beállítással és a `de-DE-KatjaNeural` hanggal.     |
+| `en-au-natashaneural`               | A tároló képe a `en-AU` területi beállítással és a `en-AU-NatashaNeural` hanggal.   |
+| `en-ca-claraneural`                 | A tároló képe a `en-CA` területi beállítással és a `en-CA-ClaraNeural` hanggal.     |
+| `en-gb-libbyneural`                 | A tároló képe a `en-GB` területi beállítással és a `en-GB-LibbyNeural` hanggal.     |
+| `en-gb-mianeural`                   | A tároló képe a `en-GB` területi beállítással és a `en-GB-MiaNeural` hanggal.       |
+| `en-us-arianeural`                  | A tároló képe a `en-US` területi beállítással és a `en-US-AriaNeural` hanggal.      |
+| `en-us-guyneural`                   | A tároló képe a `en-US` területi beállítással és a `en-US-GuyNeural` hanggal.       |
+| `es-es-elviraneural`                | A tároló képe a `es-ES` területi beállítással és a `es-ES-ElviraNeural` hanggal.    |
+| `es-mx-dalianeural`                 | A tároló képe a `es-MX` területi beállítással és a `es-MX-DaliaNeural` hanggal.     |
+| `fr-ca-sylvieneural`                | A tároló képe a `fr-CA` területi beállítással és a `fr-CA-SylvieNeural` hanggal.    |
+| `fr-fr-deniseneural`                | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-DeniseNeural` hanggal.    |
+| `it-it-elsaneural`                  | A tároló képe a `it-IT` területi beállítással és a `it-IT-ElsaNeural` hanggal.      |
+| `ja-jp-nanamineural`                | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-NanamiNeural` hanggal.    |
+| `ko-kr-sunhineural`                 | A tároló képe a `ko-KR` területi beállítással és a `ko-KR-SunHiNeural` hanggal.     |
+| `pt-br-franciscaneural`             | A tároló képe a `pt-BR` területi beállítással és a `pt-BR-FranciscaNeural` hanggal. |
+| `zh-cn-xiaoxiaoneural`              | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-XiaoxiaoNeural` hanggal.  |
+
+# <a name="previous-version"></a>[Előző verzió](#tab/previous)
+
 | Képcímkék                                  | Jegyzetek                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | A tároló képe a `en-US` területi beállítással és a `en-US-AriaNeural` hanggal.      |
@@ -599,6 +632,8 @@ Ehhez a tároló-rendszerképhez a következő címkék érhetők el. Megtalálh
 | `ko-kr-sunhineural-preview`                 | A tároló képe a `ko-KR` területi beállítással és a `ko-KR-SunHiNeural` hanggal.     |
 | `pt-br-franciscaneural-preview`             | A tároló képe a `pt-BR` területi beállítással és a `pt-BR-FranciscaNeural` hanggal. |
 | `zh-cn-xiaoxiaoneural-preview`              | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-XiaoxiaoNeural` hanggal.  |
+
+---
 
 ## <a name="speech-language-detection"></a>Beszéd nyelvének felismerése
 

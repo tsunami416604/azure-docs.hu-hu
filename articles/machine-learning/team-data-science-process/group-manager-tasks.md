@@ -7,15 +7,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc4262d0190084064103aeabe48bec806213ea7f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7ab6d6511d1e2cec82b321003c9d663249ddcf49
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321220"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94740226"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Csoportos adatelemzési folyamat csoport-kezelő feladatai
 
@@ -53,7 +53,7 @@ Az alábbi oktatóanyag részletesen ismerteti a lépéseket.
    
 1. A feliratkozás párbeszédpanelen nevezze el az Azure DevOps-szervezetet, és fogadja el a gazdagép régiójának hozzárendelését, vagy válasszon egy másik régiót. Ezután válassza a **Folytatás** elemet. 
 
-1. A kezdéshez **a projekt létrehozása** szakaszban adja meg a *GroupCommon* , majd a **projekt létrehozása** elemet. 
+1. A kezdéshez **a projekt létrehozása** szakaszban adja meg a *GroupCommon*, majd a **projekt létrehozása** elemet. 
    
    ![Projekt létrehozása](./media/group-manager-tasks/create-project.png)
 
@@ -65,9 +65,9 @@ Megnyílik az **GroupCommon** projekt **Összefoglaló** lapja. A lap URL-címe 
 
 Az Azure Repos a következő típusú tárházat üzemelteti a csoport számára:
 
-- **Közös adattárak** : általános célú adattárak, amelyekben az adatelemzési egységek több csapata is elfogadhat számos adatelemzési projektet. 
-- **Csapat adattárai** : adatelemző egységen belüli adott csapatokhoz tartozó adattárak. Ezek a Tárházak egyediek a csapat igényeihez, és az adott csapaton belüli több projekthez is használhatók, de nem elég általánosak ahhoz, hogy egy adattudományi egységen belül több csapaton lehessen használni.
-- **Projekt-Tárházak** : adott projektekhez tartozó Tárházak. Előfordulhat, hogy az ilyen adattárak nem elég általánosak a csapaton belüli több projekthez, illetve az adatelemzési egységben lévő más csapatokhoz.
+- **Közös adattárak**: általános célú adattárak, amelyekben az adatelemzési egységek több csapata is elfogadhat számos adatelemzési projektet. 
+- **Csapat adattárai**: adatelemző egységen belüli adott csapatokhoz tartozó adattárak. Ezek a Tárházak egyediek a csapat igényeihez, és az adott csapaton belüli több projekthez is használhatók, de nem elég általánosak ahhoz, hogy egy adattudományi egységen belül több csapaton lehessen használni.
+- **Projekt-Tárházak**: adott projektekhez tartozó Tárházak. Előfordulhat, hogy az ilyen adattárak nem elég általánosak a csapaton belüli több projekthez, illetve az adatelemzési egységben lévő más csapatokhoz.
 
 A csoport közös tárházának beállításához a következőket kell tennie: 
 - Az alapértelmezett **GroupCommon** -tárház átnevezése **GroupProjectTemplate**
@@ -75,7 +75,7 @@ A csoport közös tárházának beállításához a következőket kell tennie:
 
 ### <a name="rename-the-default-project-repository-to-groupprojecttemplate"></a>Az alapértelmezett Project-tárház átnevezése GroupProjectTemplate
 
-Az alapértelmezett **GroupCommon** -projekt tárházának átnevezése az **GroupProjectTemplate** -re:
+Az alapértelmezett **GroupCommon** -projekt tárházának átnevezése az **GroupProjectTemplate**-re:
 
 1. A **GroupCommon** -projekt **összegzése** lapon válassza a **repók** lehetőséget. Ez a művelet a GroupCommon projekt alapértelmezett **GroupCommon** adattárát veszi igénybe, amely jelenleg üres.
    
@@ -87,7 +87,7 @@ Az alapértelmezett **GroupCommon** -projekt tárházának átnevezése az **Gro
    
    ![Válassza a... lehetőséget. majd válassza a tárház átnevezése elemet.](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
    
-1. Az **GroupCommon-tárház átnevezése** felugró ablakban adja meg a *GroupProjectTemplate* , majd válassza az **Átnevezés** lehetőséget. 
+1. Az **GroupCommon-tárház átnevezése** felugró ablakban adja meg a *GroupProjectTemplate*, majd válassza az **Átnevezés** lehetőséget. 
    
    ![Adattár átnevezése](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
 
@@ -101,7 +101,7 @@ A **GroupUtilities** adattár létrehozása:
    
    ![Új tárház kiválasztása](./media/group-manager-tasks/create-grouputilities-repo-1.png)
    
-1. Az **új Tárház létrehozása** párbeszédpanelen válassza a **git** **lehetőséget, írja be a** *GroupUtilities* **nevet az adattár neveként** , majd válassza a **Létrehozás** lehetőséget.
+1. Az **új Tárház létrehozása** párbeszédpanelen válassza a **git** **lehetőséget, írja be a** *GroupUtilities* **nevet az adattár neveként**, majd válassza a **Létrehozás** lehetőséget.
    
    ![GroupUtilities-Tárház létrehozása](./media/group-manager-tasks/create-grouputilities-repo-2.png)
    
@@ -121,13 +121,11 @@ A TDSP-csoport adattárainak importálása:
    
    ![Importálás kiválasztása](./media/group-manager-tasks/import-repo.png)
    
-1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként** , majd a **klónozási URL-cím** mezőbe írja be a *https: \/ /GitHub.com/Azure/Azure-TDSP-ProjectTemplate.git* értéket. Ezután válassza az **Importálás** lehetőséget. A Microsoft TDSP Team ProjectTemplate adattárának tartalmát a rendszer a GroupProjectTemplate adattárba importálja. 
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd a **klónozási URL-cím** mezőbe írja be a *https: \/ /GitHub.com/Azure/Azure-TDSP-ProjectTemplate.git* értéket. Ezután válassza az **Importálás** lehetőséget. A Microsoft TDSP Team ProjectTemplate adattárának tartalmát a rendszer a GroupProjectTemplate adattárba importálja. 
    
    ![Microsoft TDSP-csoport adattárának importálása](./media/group-manager-tasks/import-repo-2.png)
    
 1. A **reposs** oldal tetején válassza a legördülő listát, és válassza ki a **GroupUtilities** -tárházat.
-   
-1. Ismételje meg az importálási folyamatot a Microsoft TDSP Team **Utilities** adattár, a *https: \/ /GitHub.com/Azure/Azure-TDSP-Utilities.git* tartalmának importálásához a **GroupUtilities** adattárba. 
    
 A két csoport összes tárháza már tartalmazza az összes fájlt, kivéve a *. git* könyvtárában lévő fájlokat a Microsoft TDSP csapatának megfelelő tárházában. 
 

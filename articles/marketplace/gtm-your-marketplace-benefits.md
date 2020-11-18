@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/24/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: da3194559ef5ec4c325f7dc15591f57c0d9c38c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad86ebe1ca397004745e75dd279ea0a7cfe8348e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368257"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94746567"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
@@ -26,7 +26,7 @@ A Piactéri juttatások célja, hogy támogassa Önt a növekedés adott fázis�
 
 A program létrehoz egy pozitív visszajelzési ciklust: a növekedés minden szakaszának előnyeit úgy tervezték, hogy a következő szakaszra haladjon, ami lehetővé teszi, hogy az üzleti piactért platformként hasznosítsa a Microsoft ügyfeleinek, a Microsoft mezője és a Microsoft csatornáján keresztül.
 
-Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](determine-your-listing-type.md#choose-a-listing-option).
+Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](determine-your-listing-type.md#available-listing-options-by-offer-type).
 
 A jutalmak csapatának egy tagja fogja felvenni Önnel a kapcsolatot, ha az ajánlata életbe lép, a jogosultsága alapján.
 
@@ -41,17 +41,17 @@ A program előnyeinek részletes ismertetését ebben a [Marketplace jutalmazás
 Az első lépések egyszerűek:
 
 1. Ajánlat közzététele Microsoft AppSource vagy Azure piactéren.
-2. Nyissa meg a [Piactéri jutalmakat](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) a partner Centerben, és válassza **a regisztrálás a Marketplace jutalmazási programban**lehetőséget.
+2. Nyissa meg a [Piactéri jutalmakat](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) a partner Centerben, és válassza **a regisztrálás a Marketplace jutalmazási programban** lehetőséget.
 3. Az értékesítés és a marketing előnyeinek aktiválásához vállalati marketing-kapcsolattartót kell rendelnie. A kapcsolattartó fogja megkapni a további információkat a Marketplace Rewardsszal kapcsolatban.
-4. A marketing kapcsolattartási adatok hozzáadásához vagy frissítéséhez lépjen a Marketplace jutalmazási oldal értékesítés és marketing előnyei lapjának tetejére, majd válassza a **Hozzáadás, frissítés vagy módosítás**lehetőséget.  Ezután tegye a következőket:
-    1. Válasszon egy felhasználót a listáról. Ha a hozzárendelni kívánt felhasználó nem szerepel a listában, hozzáadhat új felhasználókat a **Fiókbeállítások**közül.
+4. A marketing kapcsolattartási adatok hozzáadásához vagy frissítéséhez lépjen a Marketplace jutalmazási oldal értékesítés és marketing előnyei lapjának tetejére, majd válassza a **Hozzáadás, frissítés vagy módosítás** lehetőséget.  Ezután tegye a következőket:
+    1. Válasszon egy felhasználót a listáról. Ha a hozzárendelni kívánt felhasználó nem szerepel a listában, hozzáadhat új felhasználókat a **Fiókbeállítások** közül.
     1. Adjon meg egy e-mail-címet azon felhasználó számára, aki eltér a vállalata partner Center-fiókjához tartozó e-mail-címtől. A marketing-kapcsolattartó megadott e-mail-címére elküldjük a Marketplace Rewards-előnyök kihasználására vonatkozó utasításokat.
     1. Adja meg a kapcsolattartó telefonszámát és az előnyben részesített nyelvet. Miután megadta ezeket az adatokat, válassza a **Felhasználó hozzárendelése** lehetőséget.
     1. A marketing-kapcsolattartó frissítése után válassza az **aktiválás** lehetőséget a használni kívánt előnyhez. Az előny aktiválása után a Rewards csapatának egy tagja fel fogja keresni a kapcsolattartót.
 
 ### <a name="technical-benefits"></a>Műszaki előnyök
 
-1. Technikai támogatási szolgálata a Felhőbeli és a hibrid megoldások előadásainak, tervezésének, üzembe helyezésének és alkalmazás-fejlesztési fázisaiban technikai segítséget kérhet. Ha segítséget szeretne kérni, töltse ki a kérelem űrlapját, majd válassza a **kérelem küldése**lehetőséget.
+1. Technikai támogatási szolgálata a Felhőbeli és a hibrid megoldások előadásainak, tervezésének, üzembe helyezésének és alkalmazás-fejlesztési fázisaiban technikai segítséget kérhet. Ha segítséget szeretne kérni, töltse ki a kérelem űrlapját, majd válassza a **kérelem küldése** lehetőséget.
 2. Az Azure szponzorálási előnyeinek felhasználása e-mailben történik, az előnyök feloldása során.
 
 >[!NOTE]

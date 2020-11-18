@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 855ea936ff91d4c22b0670cd989f91c692c567c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c6399e437fa314aa82e0b41cbf8a170ea3ab72e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502596"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741773"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Virtuális hálózatok összekötése virtuális hálózati kapcsolattal az Azure CLI használatával
 
@@ -31,11 +31,11 @@ A virtuális hálózatok közötti társviszony létesítésével virtuális há
 * Virtuális gép üzembe helyezése mindkét virtuális hálózaton
 * Virtuális gépek közötti kommunikáció
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). 
+- Ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 ## <a name="create-virtual-networks"></a>Virtuális hálózatok létrehozása
 
@@ -45,7 +45,7 @@ A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscs
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. A következő példában létrehozunk egy *myVirtualNetwork1* nevű virtuális hálózatot a *10.0.0.0/16*előtaggal.
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. A következő példában létrehozunk egy *myVirtualNetwork1* nevű virtuális hálózatot a *10.0.0.0/16* előtaggal.
 
 ```azurecli-interactive 
 az network vnet create \
@@ -56,7 +56,7 @@ az network vnet create \
   --subnet-prefix 10.0.0.0/24
 ```
 
-Hozzon létre egy *myVirtualNetwork2* nevű virtuális hálózatot a *10.1.0.0/16*előtaggal:
+Hozzon létre egy *myVirtualNetwork2* nevű virtuális hálózatot a *10.1.0.0/16* előtaggal:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -97,7 +97,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-Az előző parancs végrehajtása után visszaadott kimenetben láthatja, hogy a **PeeringState** *inicializálva*van. A társítás a *kezdeményezett* állapotban marad, amíg létre nem hozza a *myVirtualNetwork2* -ből a *myVirtualNetwork1*-be. Hozzon létre egy társat a *myVirtualNetwork2* -ből a *myVirtualNetwork1*-be. 
+Az előző parancs végrehajtása után visszaadott kimenetben láthatja, hogy a **PeeringState** *inicializálva* van. A társítás a *kezdeményezett* állapotban marad, amíg létre nem hozza a *myVirtualNetwork2* -ből a *myVirtualNetwork1*-be. Hozzon létre egy társat a *myVirtualNetwork2* -ből a *myVirtualNetwork1*-be. 
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -108,7 +108,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-Az előző parancs végrehajtása után visszaadott kimenetben láthatja, hogy a **PeeringState** *csatlakoztatva*van. Az Azure a *myVirtualNetwork1-myVirtualNetwork2* peering társítási állapotát is megváltoztatta a *csatlakozáshoz*. Győződjön meg arról, hogy a *myVirtualNetwork1-myVirtualNetwork2-* társítás társítási állapota az [az Network vnet peering show](/cli/azure/network/vnet/peering)paranccsal *kapcsolódott* .
+Az előző parancs végrehajtása után visszaadott kimenetben láthatja, hogy a **PeeringState** *csatlakoztatva* van. Az Azure a *myVirtualNetwork1-myVirtualNetwork2* peering társítási állapotát is megváltoztatta a *csatlakozáshoz*. Győződjön meg arról, hogy a *myVirtualNetwork1-myVirtualNetwork2-* társítás társítási állapota az [az Network vnet peering show](/cli/azure/network/vnet/peering)paranccsal *kapcsolódott* .
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -118,7 +118,7 @@ az network vnet peering show \
   --query peeringState
 ```
 
-Az egyik virtuális hálózat erőforrásai nem tudnak kommunikálni a másik virtuális hálózatban lévő erőforrásokkal, amíg a **peeringState** mindkét virtuális hálózatban *csatlakoztatva*van. 
+Az egyik virtuális hálózat erőforrásai nem tudnak kommunikálni a másik virtuális hálózatban lévő erőforrásokkal, amíg a **peeringState** mindkét virtuális hálózatban *csatlakoztatva* van. 
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
@@ -196,7 +196,7 @@ Ha már nincs rá szükség, az [az Group delete](/cli/azure/group) paranccsal t
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan csatlakoztathatók a két hálózat ugyanabban az Azure-régióban, virtuális hálózattal. Más [támogatott régiókban](virtual-network-manage-peering.md#cross-region) és [különböző Azure-előfizetésekben](create-peering-different-subscriptions.md#cli) található virtuális hálózatok között is létesíthet társviszonyt, illetve a társviszony létesítésével [küllős hálózati kialakításokat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) is létrehozhat. További információ a virtuális hálózatok közötti társviszony létesítéséről: [Virtuális hálózatok közötti társviszony létesítésének áttekintése](virtual-network-peering-overview.md) és[Virtuális hálózatok közötti társviszonyok kezelése](virtual-network-manage-peering.md).
 

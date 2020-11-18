@@ -1,18 +1,18 @@
 ---
 title: Beépített szabályzat-definíciók a Redis készült Azure cache-hez
 description: Az Azure cache Redis-hez készült beépített szabályzat-definícióit listázza Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: reference
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-reference
-ms.openlocfilehash: aa7ce1e7077b61459ca6c6472e2fb28efd6e5d96
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 849e6667eff1daab7cbebec1fb09928c887d3a38
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319672"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741026"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>A Redis Azure cache beépített definícióinak Azure Policy
 

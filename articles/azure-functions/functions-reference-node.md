@@ -3,14 +3,14 @@ title: JavaScript fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a JavaScript használatával.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b920dc8a31967c9d8e1f05a6101fdfcc7a1304e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d32c63332c530ec05eb9f93661a8f2a0c5d8264c
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628832"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743320"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -18,7 +18,7 @@ Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azur
 
 Express.js, Node.js vagy JavaScript-fejlesztőként, ha még nem ismeri a Azure Functionst, először olvassa el a következő cikkek egyikét:
 
-| Első lépések | Fogalmak| Interaktív tanulás |
+| Első lépések | Alapelvek| Interaktív tanulás |
 | -- | -- | -- | 
 | <ul><li>[Node.js függvény a Visual Studio Code használatával](./create-first-function-vs-code-node.md)</li><li>[Node.js függvény a Terminal/Command parancssorral](./create-first-function-cli-java.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
@@ -325,10 +325,10 @@ Az alapértelmezett szinten kívül a következő naplózási módszerek is elé
 
 | Metódus                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
-| **hiba ( _üzenet_ )**   | Hiba szintű eseményt ír a naplókba.   |
-| **Figyelmeztetés ( _üzenet_ )**    | Figyelmeztetési szintű eseményt ír a naplókba. |
-| **információ ( _üzenet_ )**    | Az adatszintű naplózás vagy az alacsonyabb értékre írja az adatokat.    |
-| **részletes ( _üzenet_ )** | Írás a részletes szintű naplózásba.           |
+| **hiba (_üzenet_)**   | Hiba szintű eseményt ír a naplókba.   |
+| **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szintű eseményt ír a naplókba. |
+| **információ (_üzenet_)**    | Az adatszintű naplózás vagy az alacsonyabb értékre írja az adatokat.    |
+| **részletes (_üzenet_)** | Írás a részletes szintű naplózásba.           |
 
 Az alábbi példa a figyelmeztetési nyomkövetési szinten ugyanazt a naplót írja be az információs szint helyett:
 
@@ -563,21 +563,42 @@ A függvényalkalmazás kétféleképpen telepíthet csomagokat:
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-A függvények, az [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatási kapcsolatok karakterláncai a végrehajtás során környezeti változókként jelennek meg. Ezeket a beállításokat a használatával érheti el `process.env` , ahogy az itt látható a második és a harmadik hívásban, `context.log()` ahol a `AzureWebJobsStorage` és a `WEBSITE_SITE_NAME` környezeti változókat naplózzák:
+Saját környezeti változókat adhat hozzá egy Function-alkalmazáshoz mind a helyi, mind a Felhőbeli környezetekben, mint például az operatív titkok (kapcsolati karakterláncok, kulcsok és végpontok) vagy a környezeti beállítások (például profilkészítési változók). Ezeket a beállításokat a `process.env` függvény kódjában érheti el.
+
+### <a name="in-local-development-environment"></a>Helyi fejlesztési környezetben
+
+Helyileg futtatva a functions projekt tartalmaz egy [ `local.settings.json` fájlt](/functions-run-local.md?tabs=node#local-settings-file), ahol a környezeti változókat az `Values` objektumban tárolja. 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "translatorTextEndPoint": "https://api.cognitive.microsofttranslator.com/",
+    "translatorTextKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "languageWorkers__node__arguments": "--prof"
+  }
+}
+```
+
+### <a name="in-azure-cloud-environment"></a>Az Azure felhőalapú környezetében
+
+Az Azure-ban futtatott Function app lehetővé teszi, hogy az [alkalmazás beállításait](functions-app-settings.md), például a szolgáltatás kapcsolódási karakterláncait használja, és környezeti változókként tegye elérhetővé ezeket a beállításokat a végrehajtás során. 
+
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+### <a name="access-environment-variables-in-code"></a>Környezeti változók elérése a kódban
+
+Az alkalmazás beállításait környezeti változókként használva érheti el `process.env` , ahogy az itt látható a második és a harmadik hívásban, `context.log()` ahol naplózzák a `AzureWebJobsStorage` és a `WEBSITE_SITE_NAME` környezeti változókat:
 
 ```javascript
 module.exports = async function (context, myTimer) {
-    var timeStamp = new Date().toISOString();
 
-    context.log('Node.js timer trigger function ran!', timeStamp);
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
 };
 ```
-
-[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
-
-Helyileg futtatva az Alkalmazásbeállítások beolvasása a Project fájl [local.settings.js](functions-run-local.md#local-settings-file) .
 
 ## <a name="configure-function-entry-point"></a>Függvény belépési pontjának konfigurálása
 
@@ -784,7 +805,7 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

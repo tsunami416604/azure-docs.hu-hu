@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 08/02/2020
-ms.openlocfilehash: 1745a2bf83cb704c8cc73e9d3bf0eba8245329b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/17/2020
+ms.openlocfilehash: 49b7b855a7608b6426d0bda50330dbe1a3b5ced7
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924265"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741569"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Knowledge Store létrehozása REST és Poster használatával
 
@@ -23,7 +23,7 @@ Ebben a cikkben a REST API felület használatával végezheti el, indexelheti �
 
 Miután létrehozta a tudásbázist, megtudhatja, hogyan érheti el a [Storage Explorer](knowledge-store-view-storage-explorer.md) vagy [Power bi](knowledge-store-connect-power-bi.md)használatával a Knowledge Store-t.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!TIP]
 > Ehhez a cikkhez a [Poster Desktop alkalmazást](https://www.getpostman.com/) ajánljuk. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) tartalmaz egy Poster-gyűjteményt, amely tartalmazza az összes kérelmet. 
@@ -61,7 +61,7 @@ A Poster telepítése és beállítása.
 ### <a name="download-and-install-postman"></a>Poster letöltése és telepítése
 
 1. Töltse le a [Poster-gyűjtemény forráskódját](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json).
-1. A **fájl**importálása lehetőség kiválasztásával  >  **Import** importálhatja a forráskódot Poster-ba.
+1. A **fájl** importálása lehetőség kiválasztásával  >  **Import** importálhatja a forráskódot Poster-ba.
 1. Válassza a **gyűjtemények** fület, majd kattintson a **...** (három pont) gombra.
 1. Válassza a **Szerkesztés** elemet. 
    
@@ -85,7 +85,7 @@ Az érték beszerzéséhez `admin-key` nyissa meg az Azure Cognitive Search szol
 | `search-service-name` | Az Azure Cognitive Search szolgáltatás neve. Az URL-cím: `https://{{search-service-name}}.search.windows.net` . | 
 | `skillset-name` | Távozás a **Hotel-Reviews-SS**. | 
 | `storage-account-name` | A tárfiók neve. | 
-| `storage-connection-string` | A Storage-fiók **hozzáférési kulcsok** lapján válassza a **key1**  >  **kapcsolati karakterlánc**lehetőséget. | 
+| `storage-connection-string` | A Storage-fiók **hozzáférési kulcsok** lapján válassza a **key1**  >  **kapcsolati karakterlánc** lehetőséget. | 
 | `storage-container-name` | Távozás a **Hotel-Reviews-** ben. | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Tekintse át a Poster kérelem-gyűjteményét
@@ -341,9 +341,9 @@ Miután beállította a `api-key` és a `Content-type` fejléceket, és ellenőr
 
 ## <a name="run-the-indexer"></a>Az indexelő futtatása 
 
-A Azure Portal nyissa meg az Azure Cognitive Search szolgáltatás **Áttekintés** lapját. Válassza ki az **Indexelő** fület, majd válassza a **Hotels-Reviews-IXR**lehetőséget. Ha az indexelő még nem fut, válassza a **Futtatás**lehetőséget. Előfordulhat, hogy az indexelési feladat bizonyos, a nyelvi felismeréssel kapcsolatos figyelmeztetéseket eredményezhet. Az adatelemzés tartalmaz néhány olyan nyelvet, amely a kognitív képességek által még nem támogatott nyelveken íródott. 
+A Azure Portal nyissa meg az Azure Cognitive Search szolgáltatás **Áttekintés** lapját. Válassza ki az **Indexelő** fület, majd válassza a **Hotels-Reviews-IXR** lehetőséget. Ha az indexelő még nem fut, válassza a **Futtatás** lehetőséget. Előfordulhat, hogy az indexelési feladat bizonyos, a nyelvi felismeréssel kapcsolatos figyelmeztetéseket eredményezhet. Az adatelemzés tartalmaz néhány olyan nyelvet, amely a kognitív képességek által még nem támogatott nyelveken íródott. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy a Cognitive Services és az eredmények egy tudásbázisba való kivetítésével bővíti az adatait, a Storage Explorer vagy a Power BI használatával megismerheti a dúsított adatkészletet.
 

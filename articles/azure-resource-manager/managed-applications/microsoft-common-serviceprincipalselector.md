@@ -1,30 +1,42 @@
 ---
 title: ServicePrincipalSelector FELHASZNÁLÓIFELÜLET-elem
-description: A Azure Portal Microsoft. Common. ServicePrincipalSelector felhasználói felületi elemének ismertetése. Legördülő lista segítségével kiválaszthatja az alkalmazás azonosítóját és a szövegmezőt a jelszó vagy a tanúsítvány ujjlenyomatának beviteléhez.
+description: A Azure Portal Microsoft. Common. ServicePrincipalSelector felhasználói felületi elemének ismertetése. Vezérlőelemet biztosít egy alkalmazás és egy szövegmező számára a jelszó vagy a tanúsítvány ujjlenyomatának beviteléhez.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 11/17/2020
 ms.author: tomfitz
-ms.openlocfilehash: 73b242754bfae53b6df5abd9c2c8dee33b973dad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d41e41f110e927f436b38d6291719c138defa53
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575996"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745762"
 ---
 # <a name="microsoftcommonserviceprincipalselector-ui-element"></a>Microsoft. Common. ServicePrincipalSelector felhasználói felületi elem
 
-Olyan vezérlő, amely lehetővé teszi, hogy a felhasználók kiválasszon egy meglévő szolgáltatásnevet, vagy regisztráljanak egy újat. Ha az **új létrehozása**lehetőséget választja, egy új alkalmazás regisztrálásának lépésein végezheti el. Egy meglévő alkalmazás kiválasztásakor a vezérlő szövegmezőt biztosít a jelszó vagy a tanúsítvány ujjlenyomatának beviteléhez.
+Olyan vezérlő, amely lehetővé teszi, hogy a felhasználók kiválasszon egy meglévő [szolgáltatásnevet](/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) , vagy regisztráljanak egy új alkalmazást. Ha az **új létrehozása** lehetőséget választja, kövesse az új alkalmazás regisztrálásához szükséges lépéseket. Egy meglévő alkalmazás kiválasztásakor a vezérlő szövegmezőt biztosít a jelszó vagy a tanúsítvány ujjlenyomatának beviteléhez.
 
-## <a name="ui-sample"></a>Felhasználói felület mintája
+## <a name="ui-samples"></a>Felhasználói felületi minták
 
-Az alapértelmezett nézetet a tulajdonság értékei határozzák meg `defaultValue` . Ha a `principalId` tulajdonság érvényes globálisan egyedi azonosítót (GUID) tartalmaz, a vezérlő megkeresi az alkalmazás objektum-azonosítóját. Az alapértelmezett érték akkor érvényes, ha a felhasználó nem végez kijelölést a legördülő listából.
+Használhat alapértelmezett alkalmazást, létrehozhat egy új alkalmazást, vagy használhat meglévő alkalmazást is.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-initial.png" alt-text="Microsoft. Common. ServicePrincipalSelector kezdeti nézet":::
+### <a name="use-default-application-or-create-new"></a>Alapértelmezett alkalmazás használata vagy új létrehozása
 
-Ha az **új létrehozása** vagy egy meglévő alkalmazás-azonosító kijelölése a legördülő listából lehetőséget választja, a **Hitelesítés típusa** megjelenik a jelszó vagy a tanúsítvány ujjlenyomatának megadásához a szövegmezőben.
+Az alapértelmezett nézetet a tulajdonság értékei határozzák meg, `defaultValue` az **egyszerű szolgáltatásnév típusa** pedig **új létrehozása**. Ha a `principalId` tulajdonság érvényes globálisan egyedi azonosítót (GUID) tartalmaz, a vezérlő megkeresi az alkalmazást `objectId` . Az alapértelmezett érték akkor érvényes, ha a felhasználó nem végez kijelölést a vezérlőből.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-selection.png" alt-text="Microsoft. Common. ServicePrincipalSelector kezdeti nézet":::
+Ha új alkalmazást szeretne regisztrálni, válassza a **Kijelölés módosítása** lehetőséget, és megjelenik az **alkalmazás regisztrálása** párbeszédpanel. Adja meg a név és a **támogatott fióktípus** **nevet**, majd kattintson a **regisztráció** gombra.
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-default.png" alt-text="Microsoft. Common. ServicePrincipalSelector kezdeti nézet.":::
+
+Miután regisztrált egy új alkalmazást, a **hitelesítési típus** használatával adja meg a jelszó vagy a tanúsítvány ujjlenyomatát.
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-authenticate.png" alt-text="Microsoft. Common. ServicePrincipalSelector hitelesítés.":::
+
+### <a name="use-existing-application"></a>Meglévő alkalmazás használata
+
+Meglévő alkalmazás használatához válassza a **meglévő kijelölése** lehetőséget, majd válassza a **kijelölés elvégzése** lehetőséget. Használja az alkalmazás **kiválasztása** párbeszédpanelt, ahol megkeresheti az alkalmazás nevét. Az eredmények közül válassza ki az alkalmazást, majd a **kiválasztás** gombot. Miután kiválasztott egy alkalmazást, a vezérlő megjeleníti a **hitelesítési típust** a jelszó vagy a tanúsítvány ujjlenyomatának megadásához.
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-existing.png" alt-text="Microsoft. Common. ServicePrincipalSelector válassza a meglévő alkalmazás lehetőséget.":::
 
 ## <a name="schema"></a>Séma
 
@@ -33,14 +45,12 @@ Ha az **új létrehozása** vagy egy meglévő alkalmazás-azonosító kijelöl�
   "name": "ServicePrincipal",
   "type": "Microsoft.Common.ServicePrincipalSelector",
   "label": {
-    "principalId": "App Id",
     "password": "Password",
     "certificateThumbprint": "Certificate thumbprint",
     "authenticationType": "Authentication Type",
     "sectionHeader": "Service Principal"
   },
   "toolTip": {
-    "principalId": "App Id",
     "password": "Password",
     "certificateThumbprint": "Certificate thumbprint",
     "authenticationType": "Authentication Type"
@@ -95,14 +105,12 @@ Az alábbi példa a `Microsoft.Common.ServicePrincipalSelector` vezérlőt szeml
             "name": "ServicePrincipal",
             "type": "Microsoft.Common.ServicePrincipalSelector",
             "label": {
-              "principalId": "App Id",
               "password": "Password",
               "certificateThumbprint": "Certificate thumbprint",
               "authenticationType": "Authentication Type",
               "sectionHeader": "Service Principal"
             },
             "toolTip": {
-              "principalId": "App Id",
               "password": "Password",
               "certificateThumbprint": "Certificate thumbprint",
               "authenticationType": "Authentication Type"
@@ -138,9 +146,9 @@ Az alábbi példa a `Microsoft.Common.ServicePrincipalSelector` vezérlőt szeml
 
 ## <a name="example-output"></a>Példa kimenetre
 
-A a `appId` kiválasztott vagy létrehozott alkalmazás-regisztráció azonosítója. A a `objectId` kiválasztott objectIds konfigurált egyszerű szolgáltatások tömbje.
+A a `appId` kiválasztott vagy létrehozott alkalmazás-regisztráció azonosítója. A a `objectId` kiválasztott alkalmazás-regisztrációhoz konfigurált egyszerű szolgáltatások objektumazonosítók tömbje.
 
-Ha a legördülő listából nem készül kijelölés, a `newOrExisting` tulajdonság értéke **új**:
+Ha a vezérlőből nem készül kijelölés, a `newOrExisting` tulajdonság értéke **új**:
 
 ```json
 {
@@ -165,7 +173,7 @@ Ha a legördülő listából nem készül kijelölés, a `newOrExisting` tulajdo
 }
 ```
 
-Az **új létrehozásakor** vagy egy meglévő alkalmazás azonosítójának kiválasztásakor a `newOrExisting` tulajdonság értéke **meglévő**:
+Ha új vagy meglévő alkalmazást **hoz létre** a vezérlőből, a `newOrExisting` tulajdonság értéke **meglévő**:
 
 ```json
 {

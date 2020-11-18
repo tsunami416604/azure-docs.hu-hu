@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: f7f73efff266e012616ac68d956abd921afaac2a
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: a74dcb3cae74605e747a63f8fbb102404d8cc80e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337423"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741824"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Élő események és élő kimenetek Media Services
 
@@ -38,9 +38,9 @@ Az élő [események](/rest/api/media/liveevents) az élő video-hírcsatornák 
 
 Egy [élő esemény](/rest/api/media/liveevents) lehet egy *átmenő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). A típusok beállítása a [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype)használatával történik a létrehozás során:
 
-* **LiveEventEncodingType. None** : a helyszíni élő kódoló több bitrátás streamet küld. A betöltött adatfolyam további feldolgozás nélkül halad át az élő eseményen. Más néven áteresztő üzemmód.
-* **LiveEventEncodingType. Standard** : a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás adatfolyamot hoz létre. Ha a hozzájárulási hírcsatorna 720p vagy magasabb felbontású, a **Default720p** -készlet 6 feloldási/bitrátás párokat fog kódolni.
-* **LiveEventEncodingType. Premium1080p** : a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás adatfolyamot hoz létre. A Default1080p-készlet meghatározza a feloldási/bitráta párok kimeneti készletét.
+* **LiveEventEncodingType. None**: a helyszíni élő kódoló több bitrátás streamet küld. A betöltött adatfolyam további feldolgozás nélkül halad át az élő eseményen. Más néven áteresztő üzemmód.
+* **LiveEventEncodingType. Standard**: a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás adatfolyamot hoz létre. Ha a hozzájárulási hírcsatorna 720p vagy magasabb felbontású, a **Default720p** -készlet 6 feloldási/bitrátás párokat fog kódolni.
+* **LiveEventEncodingType. Premium1080p**: a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás adatfolyamot hoz létre. A Default1080p-készlet meghatározza a feloldási/bitráta párok kimeneti készletét.
 
 ### <a name="pass-through"></a>Továbbítás
 
@@ -71,7 +71,7 @@ Az élő kódoló kimenetében található felbontásokat és bitrátákat az el
 
 ## <a name="creating-live-events"></a>Élő események létrehozása
 
-### <a name="options"></a>Beállítások
+### <a name="options"></a>Lehetőségek
 
 Élő események létrehozásakor a következő beállításokat adhatja meg:
 
@@ -136,7 +136,7 @@ Kreatív vagy nem kreatív URL-címeket is használhat.
     A hiúság üzemmódot a hardveres szórásos kódolókat használó nagyméretű média-műsorszolgáltatók használják, és nem szeretnék újrakonfigurálni a kódolókat az élő esemény indításakor. Ezek a műsorszolgáltatók olyan prediktív betöltési URL-címet szeretnének használni, amely idővel nem változik.
 
     > [!NOTE]
-    > A Azure Portal a Vanity URL-cím neve " *statikus állomásnév előtagja* ".
+    > A Azure Portal a Vanity URL-cím neve "*statikus állomásnév előtagja*".
 
     Ha ezt a módot az API-ban szeretné megadni, állítsa a következőre `useStaticHostName` `true` : létrehozás időpontja (alapértelmezett érték `false` ). Ha a `useStaticHostname` értéke TRUE (igaz), a `hostnamePrefix` Megadja az állomásnév első részét az élő esemény előnézetéhez, és betölti a végpontokat. Az utolsó állomásnév ezen előtag kombinációja lenne, a Media Service-fiók neve és egy rövid kód a Azure Media Services adatközponthoz.
 
@@ -150,13 +150,13 @@ Kreatív vagy nem kreatív URL-címeket is használhat.
     |---|---|---|
     |REST|[Properties. vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
     |parancssori felület|[--Vanity-URL](/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--Access-Token](/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent.md?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>Élő bemeneti URL-címek elnevezési szabályai
 
 * Az alábbi *véletlenszerű* sztring egy 128 bites hexadecimális szám (amely 32 karakterből áll 0-9-ig és a-f-ig).
-* *hozzáférési jogkivonat* : a Vanity mód használatakor beállított érvényes GUID-karakterlánc. Például: `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
-* *stream neve* : megadja az adott kapcsolatok adatfolyamának nevét. Az adatfolyam-név értékét általában a használt élő kódoló adja hozzá. Az élő kódoló úgy is beállítható, hogy bármilyen nevet használjon a kapcsolódás leírásához, például: "video1_audio1", "video2_audio1", "Stream".
+* *hozzáférési jogkivonat*: a Vanity mód használatakor beállított érvényes GUID-karakterlánc. Például: `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *stream neve*: megadja az adott kapcsolatok adatfolyamának nevét. Az adatfolyam-név értékét általában a használt élő kódoló adja hozzá. Az élő kódoló úgy is beállítható, hogy bármilyen nevet használjon a kapcsolódás leírásához, például: "video1_audio1", "video2_audio1", "Stream".
 
 #### <a name="non-vanity-url"></a>Nem hiúság URL-címe
 
@@ -213,6 +213,6 @@ Tekintse meg a [Gyakori kérdések](frequently-asked-questions.md#live-streaming
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)

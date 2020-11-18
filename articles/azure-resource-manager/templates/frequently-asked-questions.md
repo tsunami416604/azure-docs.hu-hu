@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f4238035a6fccb0addb9a481287b31732bd2662
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333120"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744535"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Az ARM-sablonokkal kapcsolatos gyakori kérdések
 
@@ -68,7 +68,7 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 
 * **Létrehozhatok egy előfizetést egy ARM-sablonban?**
 
-  Még nem, de dolgozunk rajta.
+  Igen, további információ: programozott módon [hozza létre az Azure-előfizetéseket a legújabb API](../../cost-management-billing/manage/programmatically-create-subscription.md)-kkal.
 
 * **Hogyan lehet tesztelni a sablont a telepítés előtt?**
 
@@ -104,13 +104,13 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 
 ## <a name="template-specs"></a>Sablonspecifikációk
 
-* **Hogyan vehetek részt a sablon specifikációinak előzetes kiadásában?**
+* **Hogyan szerezhetem be az első lépéseket a sablon specifikációinak előzetes kiadásával?**
 
-  [Csatlakoztassa a várakozási listát](https://aka.ms/templateSpecsWaitlist) a sablonhoz tartozó specifikációk listájához.
+  Telepítse a PowerShell vagy az Azure CLI legújabb verzióját. Azure PowerShell esetén használja a [5.0.0 vagy újabb verziót](/powershell/azure/install-az-ps). Azure CLI esetén használja az [2.14.2 vagy újabb verziót](/cli/azure/install-azure-cli).
 
 * **Hogyan kapcsolódnak a sablon specifikációi és az Azure-tervrajzok?**
 
-  Az Azure-tervezetek a sablonhoz tartozó specifikációkat használják a megvalósításában az erőforrás erőforrással való lecserélése után `blueprint definition` `template spec` . Áttelepítési útvonalat biztosítunk a terv definíciójának a sablonra való átalakításához, de a terv definíciós API-jai továbbra is támogatottak lesznek. Az erőforrás nem módosult `blueprint assignment` . A tervrajzok felhasználói élményt nyújtanak a szabályozott környezetek létrehozásához az Azure-ban.
+  Az Azure-tervezetek a sablonhoz tartozó specifikációkat használják a megvalósításában az erőforrás erőforrással való lecserélése után `blueprint definition` `template spec` . Áttelepítési útvonalat biztosítunk a terv definíciójának a sablonra való átalakításához, de a terv-definíciós API-k továbbra is támogatottak lesznek. Az erőforrás nem módosult `blueprint assignment` . A tervrajzok felhasználói élményt nyújtanak a szabályozott környezetek létrehozásához az Azure-ban.
 
 * **A sablonhoz tartozó specifikációk felülírják a csatolt sablonokat?**
 

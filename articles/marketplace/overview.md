@@ -1,5 +1,5 @@
 ---
-title: Mi a Microsoft kereskedelmi piactér?
+title: Mit az a Microsoft kereskedelmi piactér?
 description: A Microsoft kereskedelmi piactéren megoldásokat listázó Microsoft-partnereknek nyújtott előnyök és lehetőségek áttekintése.
 author: mingshen-ms
 ms.author: mingshen
@@ -7,14 +7,14 @@ ms.reviewer: dsindona
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: 0b0f290a5f560fa8f6db109422c8790ecef9698e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a559c8613af97251ea6e85ef2a16121a89ffb6ad
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107045"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94739768"
 ---
-# <a name="what-is-the-microsoft-commercial-marketplace"></a>Mi a Microsoft kereskedelmi piactér?
+# <a name="what-is-the-microsoft-commercial-marketplace"></a>Mit az a Microsoft kereskedelmi piactér?
 
 A Microsoft kereskedelmi piactér a független szoftvergyártói partnereinktől származó megoldások katalógusa. A Microsoft Partner Network ISV tagjaként létrehozhat, közzétehet és kezelhet kereskedelmi Marketplace-ajánlatokat a partner Centerben. A megoldásai a saját Microsoft-megoldásaink mellett online áruházakban jelennek meg, és a világ különböző vállalkozásaival, szervezeteivel és kormányzati szerveivel is csatlakozhatnak.
 
@@ -24,7 +24,7 @@ A kereskedelmi piactér több mint 100 országban és régióban érhető el, é
 
 A Microsoft kereskedelmi piactéren két online áruház érhető el: [Microsoft AppSource](https://appsource.microsoft.com/) és az [Azure Marketplace](https://azuremarketplace.microsoft.com/). AZ Microsoft AppSource üzleti megoldásokat és Azure Marketplace-t tartalmaz. A kereskedelmi piactér szoftverei és szolgáltatásai olyan Microsoft-termékekben is megtalálhatók, mint a Microsoft 365, a Dynamics 365, a Microsoft Power platform és az Azure. Az online áruházak és a terméken belüli tapasztalatok havonta több millió potenciális ügyfelet mutatnak be. Minden online áruház különböző forgatókönyveket kínál annak biztosítására, hogy a megoldás vagy szolgáltatás elérhető legyen a megfelelő ügyfelek számára.
 
-Ha kereskedelmi Piactéri ajánlatot hoz létre a partner Centerben, akkor az az ajánlat típusa, a kategóriák és a kiválasztott egyéb beállítások alapján az egyik vagy mindkét online áruházban szerepel. Abban a ritka esetben, ha az ajánlat mindkét online áruház felhasználója számára releváns, akkor mindkettőben megjelenhet. További információ: [Select a Online Store](determine-your-listing-type.md#selecting-an-online-store) és [a vevő útmutatója Microsoft AppSource és az Azure Marketplace](https://aka.ms/MarketplaceBuyerGuide)-en.
+Ha kereskedelmi Piactéri ajánlatot hoz létre a partner Centerben, akkor az az ajánlat típusa, a kategóriák és a kiválasztott egyéb beállítások alapján az egyik vagy mindkét online áruházban szerepel. Abban a ritka esetben, ha az ajánlat mindkét online áruház felhasználója számára releváns, akkor mindkettőben megjelenhet. További információ: [listázási és díjszabási lehetőségek az online áruházban](determine-your-listing-type.md#listing-and-pricing-options-by-online-store) és [a vásárlói útmutató a Microsoft AppSource és az Azure Marketplace](https://aka.ms/MarketplaceBuyerGuide)-en.
 
 ### <a name="microsoft-appsource"></a>Microsoft AppSource
 
@@ -38,11 +38,11 @@ Ha kereskedelmi Piactéri ajánlatot hoz létre a partner Centerben, akkor az az
 
 Az ügyfelek a Microsoft 365, a Dynamics 365, a Power platform és az Azure által kínált AppSource-ajánlatokat is használhatják. Az alábbi példa bemutatja, hogyan érheti el a AppSource beépülő modulokat a Power BI **fájl** menüből.
 
-:::image type="content" source="media/overview/power-bi.png" alt-text="A Microsoft AppSource ajánlati lista lapját mutatja be."::: 
+:::image type="content" source="media/overview/power-bi.png" alt-text="Bemutatja, hogyan érheti el Power BI vizualizációkat a AppSource Power BI fájl menüjében."::: 
 
 Ezzel a beállítással megnyitható egy ablak, ahol az ügyfél név vagy kategória alapján kereshet Power BI beépülő modulokat. 
 
-:::image type="content" source="media/overview/power-bi-apps.png" alt-text="A Microsoft AppSource ajánlati lista lapját mutatja be."::: 
+:::image type="content" source="media/overview/power-bi-apps.png" alt-text="A AppSource beépülő moduljainak listáját jeleníti meg Power BI belülről."::: 
 
 ### <a name="azure-marketplace"></a>Azure Piactér
 
@@ -50,17 +50,17 @@ Az [Azure Marketplace](https://azuremarketplace.microsoft.com/) az Azure-ra ép�
 
 Íme egy példa az ajánlati lista oldalára az Azure Marketplace-en:
 
-:::image type="content" source="media/overview/example-marketplace.png" alt-text="A Microsoft AppSource ajánlati lista lapját mutatja be."::: 
+:::image type="content" source="media/overview/example-marketplace.png" alt-text="Egy ajánlat-listázási oldalt ábrázol az Azure piactéren."::: 
 
 #### <a name="azure-marketplace-in-the-azure-portal"></a>Az Azure Marketplace a Azure Portal
 
 Az Azure-ügyfelek felfedezhetik és üzembe helyezhetik az Azure Marketplace-megoldásokat a [Azure Portal](https://portal.azure.com/) **erőforrás létrehozása** lehetőségével.
 
-:::image type="content" source="media/overview/create-resource.png" alt-text="A Microsoft AppSource ajánlati lista lapját mutatja be."::: 
+:::image type="content" source="media/overview/create-resource.png" alt-text="Az erőforrás létrehozása lehetőség megjelenítése a Azure Portal"::: 
 
 Ezzel a beállítással megnyithatja az Azure Marketplace-t a Azure Portalon belül, ahol megkereshetik a megoldásokat név szerint vagy kategóriánként.
 
-:::image type="content" source="media/overview/search-portal.png" alt-text="A Microsoft AppSource ajánlati lista lapját mutatja be."::: 
+:::image type="content" source="media/overview/search-portal.png" alt-text="Megjeleníti az Azure Marketplace keresési beállításait a Azure Portalon belül"::: 
 
 ## <a name="benefits-of-selling-with-microsoft"></a>A Microsofttal való értékesítés előnyei
 
@@ -80,7 +80,7 @@ A kereskedelmi piactéren alapuló partnerek számos ingyenes technikai, marketi
 
 Ezen előnyök részletesebb megismeréséhez tekintse meg [a kereskedelmi Marketplace előnyeit](gtm-your-marketplace-benefits.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg [a Microsoft kereskedelmi piactérről](/learn/modules/intro-commercial-marketplace/) Microsoft Learnon.
 - A kereskedelmi piactéren való közzététel iránt érdeklődő új Microsoft-partnerekért lásd: [kereskedelmi piactér-fiók létrehozása a partner Centerben](partner-center-portal/create-account.md).

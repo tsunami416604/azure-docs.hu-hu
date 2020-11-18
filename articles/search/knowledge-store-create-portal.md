@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/30/2020
-ms.openlocfilehash: df6da5ce1dcd5213b3e54abe54c087bfdd8480c5
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.date: 11/17/2020
+ms.openlocfilehash: 3225013f09abd326c619b67caf77918889a64859
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379973"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741807"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search Knowledge Store létrehozása a Azure Portal
 
@@ -46,7 +46,7 @@ A következő lépésekben hozzon létre egy BLOB-tárolót az Azure Storage-ban
 
    + Válassza ki a **StorageV2 (általános célú v2)** fiók típusát.
 
-1. Nyissa meg a blob Services lapjait, és hozzon létre egy " *Hotel-Reviews* " nevű tárolót.
+1. Nyissa meg a blob Services lapjait, és hozzon létre egy " *Hotel-Reviews*" nevű tárolót.
 
 1. Kattintson a **Feltöltés** gombra.
 
@@ -109,7 +109,7 @@ A varázsló lépésében egy készségkészlet hoz létre a kognitív képessé
 
 1. Bontsa ki a bővítések **mentése a Knowledge Store-** ba lehetőséget.
 
-1. Válassza ki ezeket az **Azure Table-kivetítéseket** :
+1. Válassza ki ezeket az **Azure Table-kivetítéseket**:
     + **Dokumentumok**
     + **Oldalak**
     + **Legfontosabb kifejezések**

@@ -1,103 +1,156 @@
 ---
-title: A közzétételi lehetőség meghatározása – Microsoft kereskedelmi piactér
-description: Ez a cikk az ajánlatok Microsoft AppSource és az Azure Marketplace-en való közzétételének támogathatósági feltételeit és követelményeit ismerteti.
+title: A listázási lehetőségek bemutatása – Microsoft kereskedelmi piactér
+description: Ez a cikk a Microsoft AppSource és az Azure piactéren közzétett ajánlatok listázási lehetőségeit ismerteti.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 09/04/2020
-ms.openlocfilehash: 17b53d656d0344e4178b3034a972e26d6aa0bc15
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/16/2020
+ms.openlocfilehash: 38f65253791f28d9ae9806bea1264e594b769b19
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94492106"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741909"
 ---
-# <a name="determine-your-publishing-option"></a>A közzétételi beállítások meghatározása
+# <a name="introduction-to-listing-options"></a>A listázási lehetőségek bemutatása
 
-Az ajánlathoz választott közzétételi lehetőség közvetlenül a támogathatósági követelményekkel és a kereskedelmi piactér GTM kapcsolatos előnyökkel is jár. Még ennél is fontosabb, hogy a közzétételi lehetőség és az ajánlat típusa határozza meg, hogy a felhasználók hogyan fognak működni a kereskedelmi Piactéri ajánlatával.
+A kereskedelmi piactér elérhető _listaelem-beállításaival_ számos különböző módon veheti igénybe a potenciális ügyfeleket. Az ajánlat közzététele után az ajánlathoz választott listázási lehetőség (ek) az ajánlat tőzsdei lapjának bal felső sarkában jelenik meg az online áruház (ok) ban. Az alábbi képernyőfelvétel például a Microsoft AppSource online áruházban található ajánlati lista lapot jeleníti meg a **Contact me** és **Test Drive** gombokkal.
 
-Az ajánlat konfigurálásához ismernie kell a legfontosabb kereskedelmi Piactéri fogalmakat: a közzétételi lehetőségeket, az ajánlat típusát és konfigurációját, valamint azokat a listaelemeket, amelyek meghatározzák, hogy az ajánlat hogyan és hol jelenik meg a kereskedelmi piactér online áruházakban.
+:::image type="content" source="./media/listing-options.png" alt-text="Egy ajánlat listázási lapját mutatja be. Megjelenik a kapcsolatfelvétel és a tesztelési meghajtó gomb.":::
 
-Ebben a cikkben a következőkkel ismerkedhet meg:
+## <a name="available-listing-options-by-offer-type"></a>Elérhető listaelem-beállítások az ajánlat típusa szerint
 
-- A megoldás megfelelő online áruházának meghatározása.
-- Az egyes online áruházakban milyen közzétételi lehetőségek és listaelem-beállítások érhetők el.
-- Az egyes közzétételi lehetőségeknél milyen típusú ajánlatok érhetők el.
+Ajánlat típusának létrehozásakor válasszon ki egy vagy több listaelem-beállítást. Ezek a beállítások határozzák meg, hogy az ügyfelek milyen gombokat látnak az online áruházakban az ajánlati lista lapon. A listázási lehetőségek közé tartozik az _ingyenes próbaverzió_, a _Test Drive_, a _Kapcsolatfelvétel_ _és a letöltés._
 
-## <a name="commercial-marketplace-publishing-options"></a>Kereskedelmi piactér közzétételi lehetőségei
+Ebben a táblázatban látható, hogy az egyes ajánlatok milyen listaelemeket biztosítanak.
 
-A következő táblázat a Microsoft AppSource és az Azure piactéren elérhető ajánlatok közzétételi lehetőségeit mutatja be.
+| Csomag típusa | Ingyenes próba | Tesztverzió | Kapcsolatfelvétel | Azonnali letöltés (visszagörgethető) |
+| ------------ | ------------- | ------------- | ------------- | ------------- |
+| Azure-alkalmazás (felügyelt alkalmazás) |   | &#10004; |   | &#10004; |
+| Azure-alkalmazás (megoldás-sablon) |  |  |  |  |
+| Tanácsadási szolgáltatás |  |  | &#10004; |  |
+| Azure-tároló |  |  |  |  |
+| Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; |  |
+| Dynamics 365 Customer engagement & PowerApps | &#10004; | &#10004; | &#10004; |  |
+| A Dynamics 365 for Operations | &#10004; | &#10004; | &#10004; |  |
+| IoT Edge modul |  |  |  |  |
+| Felügyelt szolgáltatás |  |  |  |  |
+| Power BI alkalmazás |  |  |  |  |
+| Azure-beli virtuális gép | &#10004; | &#10004; |  | &#10004; |
+| Szolgáltatott szoftver | &#10004; | &#10004; | &#10004; | &#10004; |
+||||||
 
-|   | **Lista (kapcsolat)**  | **Lista (próbaverzió)**  | **Ingyenes** | **BYOL** | **Tranzakciós**|
-| :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
-| **Virtuális gép** |  |  |  | Azure Piactér |  Azure Piactér |
-| **Azure-alkalmazások (több virtuális gép)** |  |  | Azure Piactér | Azure Piactér | Azure Piactér  |
-| **Tároló képe** |  |  | Azure Piactér | Azure Piactér |   |
-| **IoT Edge modul** |  |  | Azure Piactér | Azure Piactér |   |
-| **Felügyelt szolgáltatások** |  |  |  | Azure Piactér |   |
-| **Tanácsadói szolgáltatások** | Mindkét online áruház |  |  |  |   |
-| **SaaS-alkalmazás** | Mindkét online áruház | Mindkét online áruház | Mindkét online áruház |  | Mindkét online áruház * |
-| **Microsoft 365 alkalmazás** | AppSource | AppSource |  |  | AppSource * *  |
-| **Dynamics 365 bővítmény** |  AppSource | AppSource |  |  |   |
-| **PowerApps** | AppSource |AppSource  |  |  |   |
+### <a name="free-trial"></a>Ingyenes próba
 
-&#42; SaaS-alkalmazás Transact-ajánlatai Microsoft AppSource jelenleg csak bankkártyával rendelkeznek.
+A kereskedelmi piactéren javíthatja a felderíthetőség és automatizálhatja a megoldás próbaverziójának használatát. Ez lehetővé teszi a leendő ügyfelek számára, hogy a szolgáltatás (SaaS), a IaaS vagy a Microsoft alkalmazáson belüli élményét díjmentesen használják az ajánlat típusától függően 30 nap és hat hónap között.
 
-A &#42;&#42; Microsoft 365 ajánlatok díjmentesen telepíthetők, és az SaaS-ajánlaton keresztül licencelési szolgáltatásként is megadhatók. További információ: a [Microsoft kereskedelmi Piactéren keresztül a Microsoft 365-bővítmény bevétele](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+Az ügyfelek az ajánlat lista lapján az _ingyenes próbaverzió_ gombra kattintva kipróbálhatják az ajánlatot. Ha egy adott ajánlaton belül több csomagra is ingyenes próbaverziót ad meg, az ügyfelek egy másik csomagra válthatnak egy ingyenes próbaverzióra, de a próbaidőszak nem indul újra.
 
-## <a name="choose-a-listing-option"></a>Listaelem választása
+A virtuális gépekkel kapcsolatos ajánlatok esetében az ügyfeleknek az Azure-infrastruktúra költségeit kell megfizetniük az ajánlat próbaidőszakos használata esetén. A próbaidőszak lejárta után a rendszer automatikusan felszámítja az ügyfeleket a standard díjszabás alapján, kivéve, ha a próbaidőszak vége előtt lemondják.
 
-A rendelkezésre álló tőzsdei lehetőségek differenciált ügyfél-összevonást biztosítanak, miközben hozzáférést biztosít a vezető megosztási és [kereskedelmi Piactéri előnyökhöz](./gtm-your-marketplace-benefits.md). Jegyezze fel a közzétételi lehetőségnek megfelelő listaelem-beállításokat:
+### <a name="test-drive"></a>Tesztverzió
 
-| **Közzétételi lehetőség**    | **Leírás**  |
-| :------------------- | :-------------------|
-| **Lista** | Az alkalmazás vagy szolgáltatás egyszerű felsorolása, amely lehetővé teszi, hogy a kereskedelmi piactér felhasználója kapcsolatba lépjen Önnel az ügyféllel a **kapcsolattartási** adatok listázása lehetőség használatával. |
-| **Próba** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, és automatizálhatja a megoldás próbaverziójának használatát, így a potenciális felhasználók a vásárlásuk előtt korlátozott ideig ingyenesen használhatják SaaS-, IaaS-vagy Microsoft-alkalmazásbeli élményét. A próbaverziós közzétételi lehetőséghez használt listázási beállítások az **ingyenes próbaverziós** vagy a **Test Drive**. |
-| **BYOL** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, automatizálhatja a megoldás üzembe helyezését, és elvégezheti a pénzügyi tranzakciók külön történő elvégzését. A BYOL-ajánlatok típusai ideálisak a helyszíni és a felhőalapú Migrálás számára. A listázási lehetőség **most már elérhető**.
-| **Tranzakciós** | A Transact-ajánlatokat a kereskedelmi Piactéren keresztül értékesítjük. A Microsoft felelős a számlázásért és a gyűjteményért. A listázási lehetőség **most már elérhető**.|
+Az ügyfelek az ajánlat lista lapján lévő _Test Drive (tesztelési meghajtó_ ) gombbal érhetik el az előre konfigurált környezeteket rögzített számú óráig. További információ a tesztelési meghajtókról: [Mi az a test Drive?](what-is-test-drive.md)
 
-> [!Note]
-> A Transact Publishing lehetőség használatakor fontos megérteni a díjszabást, a számlázást, a számlázást és a kifizetési szempontokat az ajánlat típusának kiválasztása és az ajánlat létrehozása előtt. További információért tekintse át a [kereskedelmi Piactéri Transact-képességeket](./marketplace-commercial-transaction-capabilities-and-considerations.md)ismertető cikket.
+> [!TIP]
+> A tesztelési meghajtó nem azonos az ingyenes próbaverzióval. Tesztelési meghajtót, ingyenes próbaverziót vagy mindkettőt is kipróbálhat. A megoldás a rögzített időszakra is biztosítja ügyfelei számára a megoldást. A tesztvezetés azonban magában foglalja a termék legfontosabb funkcióit és előnyeit is, amelyek valós implementációs forgatókönyvekben jelennek meg.
 
-## <a name="selecting-an-online-store"></a>Online áruház kiválasztása
+### <a name="contact-me"></a>Kapcsolatfelvétel
 
-Minden online áruház az üzleti és informatikai megoldások különböző felhasználói igényeit szolgálja. Az ajánlat típusa, a Transact képességek és a kategória határozza meg az ajánlat közzétételének helyét. A kategóriákat és alkategóriákat a közzétett megoldás típusa alapján rendeli hozzá a rendszer az egyes online áruházakhoz:
+Az alkalmazás vagy szolgáltatás egyszerű felsorolása. A felhasználók az ajánlat lista lapján lévő _Contact me (Kapcsolatfelvétel_ ) gombra kattintva kérhetik, hogy az Ön ajánlatával csatlakozzanak velük.
 
-**Microsoft AppSource** olyan üzleti megoldásokat kínál, mint például az iparági megoldások és a tanácsadási szolgáltatások, a Dynamics 365, a Microsoft 365 és a Power platform.
+### <a name="get-it-now"></a>Letöltés most
 
-Az Azure **Marketplace** az Azure-hoz vagy az Azure-hoz készült informatikai megoldásokat kínál, valamint az ügyfelek Azure-beli használatát felgyorsító tanácsadói szolgáltatásokat.
+Ez a felsorolási lehetőség magában foglalja a Transact-ajánlatokat (előfizetések és felhasználói alapú díjszabás), a saját licencek ajánlatait és a letöltését (ingyenes). A tranzakciós ajánlatokat a kereskedelmi Piactéren keresztül értékesítjük. A Microsoft felelős a számlázásért és a gyűjteményért. Az ügyfelek az azonnali _Letöltés gombot_ használják az ajánlat beszerzéséhez.
 
-Válassza ki azt a kategóriát és alkategóriát, amely a legjobban megfelel a megoldás típusának. Például egy webalkalmazási tűzfal olyan informatikai megoldás, amelyet közzé kell tenni az Azure Marketplace-en a biztonság kategóriában. A szerződéses felügyeleti alkalmazás olyan üzleti megoldás, amelyet közzé kell tenni az értékesítési kategória AppSource. Ha helytelen kategóriát vagy alkategóriát választ, előfordulhat, hogy az ajánlat nem megfelelő online áruházban van közzétéve.
+A letöltés azonnali listázása lehetőség a következő díjszabási lehetőségeket tartalmazza az ajánlat típusától függően:
 
-### <a name="publishing-to-both-online-stores-saas-offers-only"></a>Közzététel mindkét online áruházban (csak SaaS-ajánlatok esetén)
+- Letöltés (ingyenes)
+- Saját licenc használata (BYOL)
+- Előfizetés
+- Használat alapú díjszabás
 
-Az SaaS-ajánlatokat közzéteheti az Azure piactéren vagy a AppSource. Ha az SaaS-ajánlat *az IT* -megoldás (Azure Marketplace) és egy üzleti megoldás (AppSource) is, válasszon ki egy kategóriát és/vagy egy alkategóriát, amely az egyes online áruházakra vonatkozik. Az online áruházakban közzétett ajánlatoknak IT-megoldásként *és* üzleti megoldásként is rendelkezniük kell az értékkel.
+Ebből a táblázatból megtekintheti, hogy mely típusú ajánlatok támogatják a beolvasás most lehetőséggel elérhető további díjszabási lehetőségeket.
 
-> [!IMPORTANT]
-> A [mért számlázással](partner-center-portal/saas-metered-billing.md) rendelkező SaaS-ajánlatok az Azure Marketplace-en és a Azure Portalon keresztül érhetők el. Az SaaS-ajánlatok csak privát csomagokkal érhetők el a Azure Portalon keresztül.
+| Csomag típusa | Letöltés (ingyenes) | BYOL | Előfizetés | Használat alapú díjszabás |
+| ------------ | ------------- | ------------- | ------------- | ------------- |
+| Azure-alkalmazás (felügyelt alkalmazás) |   |   | &#10004; | &#10004; |
+| Azure-alkalmazás (megoldás-sablon) | &#10004; |   |   |   |
+| Tanácsadási szolgáltatás |   |   |   |   |
+| Azure-tároló | &#10004;<sup>1</sup> | &#10004;<sup>1</sup> |   |   |
+| Dynamics 365 Business Central | &#10004; |   |   |   |
+| Dynamics 365 Customer engagement & PowerApps | &#10004; |   |   |   |
+| A Dynamics 365 for Operations | &#10004; |   |   |   |
+| IoT Edge modul | &#10004;<sup>1</sup> | &#10004;<sup>1</sup> |   |   |
+| Felügyelt szolgáltatás |   | &#10004; |   |   |
+| Power BI alkalmazás | &#10004; |   |   |   |
+| Azure-beli virtuális gép |   | &#10004; |   | &#10004;<sup>2</sup> |
+| Szolgáltatott szoftver | &#10004; |   | &#10004; | &#10004; |
+||||||
 
-| Mért számlázás | Nyilvános csomag | Saját csomag | Elérhető itt: |
-|---|---|---|---|
-| Igen             | Igen         | Nem           | Azure Marketplace és Azure Portal |
-| Igen             | Igen         | Yes          | Azure Marketplace és Azure Portal * |
-| Igen             | Nem          | Igen          | Csak Azure Portal |
-| Nem              | Nem          | Igen          | Csak Azure Portal |
+**Jelmagyarázat**
 
-&#42; az ajánlat privát csomagja csak a Azure Portal keresztül érhető el
+<sup>1</sup> a **terv áttekintő** lapjának **díjszabási modell** oszlopában _ingyenes_ vagy _BYOL_ látható, de nem választható.
 
-Például a díjszabással ellátott számlázással és a privát csomaggal (nem nyilvános csomaggal) kapcsolatos ajánlatokat a Azure Portal ügyfelei vásárolják meg. További információ a [Microsoft kereskedelmi piactéren elérhető privát ajánlatokról](private-offers.md).
+<sup>2</sup> óradíjas és havi díj.
 
-### <a name="categories"></a>Kategóriák
+#### <a name="get-it-now-free"></a>Letöltés (ingyenes)
 
-A kategóriák és alkategóriák a megoldás típusa alapján vannak leképezve minden online áruházhoz. Válassza ki a megoldáshoz legjobban illeszkedő kategóriákat és alkategóriákat. Az alábbiak közül választhat:
+Ezzel a listával ingyenesen kínálhatja alkalmazását. Az ügyfelek az _azonnali letöltés_ gombra kattintva vehetik igénybe az ingyenes ajánlatot.
 
-- Legalább egy és legfeljebb két kategória. Kiválaszthat egy elsődleges és egy másodlagos kategóriát is.
-- Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nem választja ki valamelyik alkategóriát, az ajánlat továbbra is felderíthető lesz a kiválasztott kategóriában.
+#### <a name="byol"></a>BYOL
 
-[!INCLUDE [categories and subcategories](./includes/categories.md)]
+A kereskedelmi piactéren javíthatja a felderíthetővé tételét, automatizálhatja a megoldás üzembe helyezését, és elvégezheti a pénzügyi tranzakciót a piactértől elkülönítve. A saját licenc használata (BYOL) listaelem ideális megoldás a helyszíni és a felhőalapú áttelepítéshez. Az ügyfelek az _azonnali letöltés_ gomb használatával vásárolhatják meg az ajánlatot az Ön által előre megvásárolt licenccel.
 
-## <a name="next-steps"></a>További lépések
+#### <a name="subscription"></a>Előfizetés
 
-- A közzétételi lehetőség kiválasztása után tekintse át a [közzétételi útmutatót ajánlat típusa szerint](./publisher-guide-by-offer-type.md).
+A következő típusú ajánlatokra vonatkozó átalány-díjat számíthat:
+
+- Az Azure-alkalmazás (felügyelt alkalmazás) támogatást nyújt a havi előfizetésekhez.
+- A SaaS a havi és éves előfizetéseket is támogatja.
+
+#### <a name="usage-based-pricing"></a>Használat alapú díjszabás
+
+A következő ajánlati típusok támogatják a használaton alapuló díjszabást:
+
+- Az Azure-alkalmazás (felügyelt alkalmazás) kínál támogatást a mért számlázáshoz. További részletekért lásd: [felügyelt alkalmazás mért számlázása](./partner-center-portal/azure-app-metered-billing.md).
+- Az SaaS-ajánlatok a mért számlázást és felhasználónkénti (munkaállomásonkénti) díjszabást is támogatják. A mért számlázással kapcsolatos további információkért lásd: [a kereskedelmi Piactéri mérési szolgáltatással az SaaS díjas számlázása](./partner-center-portal/saas-metered-billing.md).
+- Az Azure-beli virtuális gépek az alapszintű, az alapméretű és a piaci és a alapméret szerinti díjszabással támogatottak. Ezek az árképzési lehetőségek óradíjat és havi számlázást is igénybe vesznek.
+
+A Transact-ajánlat létrehozásakor fontos megérteni a díjszabást, a számlázást, a számlázást és a kifizetési szempontokat az ajánlat típusának kiválasztása és az ajánlat létrehozása előtt. További információ: [kereskedelmi piactér online áruházak](overview.md#commercial-marketplace-online-stores).
+
+## <a name="listing-and-pricing-options-by-online-store"></a>Listázási és díjszabási lehetőségek online áruház szerint
+
+A különböző feltételek alapján megállapítjuk, hogy ajánlata szerepel-e az Azure Marketplace-en, a Microsoft AppSourceon vagy az online áruházakban. További információ a két online áruház közötti különbségekről: [kereskedelmi piactér online áruházak](overview.md#commercial-marketplace-online-stores).
+
+A következő táblázat azokat a lehetőségeket mutatja be, amelyek a különböző ajánlati típusok és bővítmények számára elérhetők, és mely online áruházakban található az ajánlat.
+
+| Ajánlatok típusai és beépülő modulok | Kapcsolatfelvétel | Ingyenes próba | Letöltés (ingyenes) | BYOL | Letöltés (Transact) |
+| ------------ | ------------- | ------------- | ------------- | ------------- | ------------- |
+| Azure-beli virtuális gép |   |   |   | Azure Piactér | Azure Piactér |
+| Azure-alkalmazás |   |   | Azure Piactér | Azure Piactér | Azure Piactér |
+| Azure-tároló  |   |   | Azure Piactér | Azure Piactér |   |
+| IoT Edge modul |   |   | Azure Piactér | Azure Piactér |   |
+| Felügyelt szolgáltatás |   |   |   | Azure Piactér |   |
+| Tanácsadási szolgáltatás | Mindkét online áruház |   |   |   |   |
+| SaaS  | Mindkét online áruház | Mindkét online áruház | Mindkét online áruház |   | Mindkét online áruház &#42; |
+| Microsoft 365 alkalmazás | AppSource | AppSource |   |   | AppSource &#42;&#42; |
+| Dynamics 365 Business Central | AppSource | AppSource |   |   |   |
+| Dynamics 365 az ügyfelek bevonásához & PowerApps | AppSource | AppSource |   |   |   |
+| A Dynamics 365 for Operations | AppSource | AppSource |   |   |   |
+| Power BI alkalmazás |   |   | AppSource |   |   |
+|||||||
+
+&#42; SaaS-ajánlatok a AppSource-ban jelenleg csak bankkártyával rendelkeznek.
+
+A &#42;&#42; Microsoft 365 bővítmények ingyenesen telepíthetők, és egy SaaS-ajánlat használatával is feltölthetők. További információkért tekintse [meg az Office 365-bővítmények a Microsoft kereskedelmi piactéren keresztüli bevételeit ismertető részt](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace.md).
+
+## <a name="marketplace-rewards"></a>Marketplace-jutalmak
+
+A Piactéri jutalmak a választott listaelem alapján különböztethetők meg. További információkért tekintse [meg a kereskedelmi Marketplace előnyeit](gtm-your-marketplace-benefits.md).
+
+## <a name="next-steps"></a>Következő lépések
+
+- A létrehozandó ajánlat típusának kiválasztásához lásd: [közzétételi útmutató ajánlat típusa szerint](./publisher-guide-by-offer-type.md).

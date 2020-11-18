@@ -1,6 +1,6 @@
 ---
-title: Gyors útmutató az adatátalakításhoz leképezési adatfolyam használatával
-description: Ez az oktatóanyag részletes útmutatást nyújt az Azure szinapszis Analytics használatával történő adatátalakításhoz a leképezési adatfolyammal
+title: 'Rövid útmutató: az adatátalakítás leképezési adatfolyam használatával'
+description: Ez az oktatóanyag részletes útmutatást nyújt az Azure szinapszis Analytics használatával történő adatátalakításhoz az adatátviteli folyamattal.
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: makromer
@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/03/2020
-ms.openlocfilehash: 0bf1611dee2b3f7f9a3059e3118ddbf08c00f886
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 207679ad5b508b687c9cad372d144839fcaa501d
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343008"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743847"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>Gyors útmutató: az adatátalakítás a leképezési folyamatokkal
 
-Ebben a rövid útmutatóban az Azure szinapszis Analytics segítségével hozzon létre egy folyamatot, amely átalakítja Azure Data Lake Storage (ADLS) Gen2-forrás adatait egy ADLS Gen2 fogadóba a leképezési adatfolyam használatával. Az ebben a rövid útmutatóban szereplő konfigurációs minta kibontható, ha az adatátalakítást a leképezési adatfolyam használatával végezi el
+Ebben a rövid útmutatóban az Azure szinapszis Analytics használatával olyan folyamatot hoz létre, amely egy Azure Data Lake Storage Gen2 (ADLS Gen2) forrásból származó adatok egy ADLS Gen2 fogadóba való átalakítását használja a leképezési adatfolyam használatával. Az ebben a rövid útmutatóban szereplő konfigurációs minta kibontható, ha az adatátalakítást a leképezési adatfolyam használatával végezi el
 
 Ebben a rövid útmutatóban a következő lépéseket hajtja végre:
 
@@ -29,9 +29,9 @@ Ebben a rövid útmutatóban a következő lépéseket hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés** : Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* **Azure szinapszis-munkaterület** : hozzon létre egy szinapszis-munkaterületet a Azure Portal használatával a gyors útmutató [: szinapszis-munkaterület létrehozása](quickstart-create-workspace.md)című témakör utasításait követve.
-* **Azure Storage-fiók** : ADLS-tárolót használ *forrásként* és fogadóként tárolt *adattárakként* . Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket.
+* **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* **Azure szinapszis-munkaterület**: hozzon létre egy szinapszis-munkaterületet a Azure Portal használatával a gyors útmutató [: szinapszis-munkaterület létrehozása](quickstart-create-workspace.md)című témakör utasításait követve.
+* **Azure Storage-fiók**: ADLS-tárolót használ *forrásként* és fogadóként tárolt *adattárakként* . Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket.
 
     Az oktatóanyagban átalakított fájl MoviesDB.csv, amely [itt](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)található. A fájl GitHubról történő lekéréséhez másolja a tartalmat egy tetszőleges szövegszerkesztőbe, és mentse helyileg a. csv-fájlként. A fájlnak a Storage-fiókba való feltöltéséhez lásd: [Blobok feltöltése a Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). Ez a példa egy "Sample-adat" nevű tárolóra hivatkozik.
 
@@ -39,7 +39,7 @@ Ebben a rövid útmutatóban a következő lépéseket hajtja végre:
 
 Az Azure szinapszis-munkaterület létrehozása után kétféleképpen nyithatja meg a szinapszis Studio alkalmazást:
 
-* Nyissa meg a szinapszis munkaterületet a [Azure Portal](https://ms.portal.azure.com/#home). Az Áttekintés szakasz tetején válassza a **szinapszis Studio elindítása** lehetőséget.
+* Nyissa meg a szinapszis munkaterületet a [Azure Portal](https://ms.portal.azure.com/#home). Válassza a **Megnyitás** lehetőséget a nyílt szinapszis Studio kártyán a kezdeti lépések szakaszban.
 * Nyissa meg az [Azure szinapszis Analytics szolgáltatást](https://web.azuresynapse.net/) , és jelentkezzen be a munkaterületére.
 
 Ebben a rövid útmutatóban példaként használjuk a "adftest2020" nevű munkaterületet. A rendszer automatikusan átirányítja a szinapszis Studio kezdőlapjára.
@@ -58,7 +58,7 @@ A folyamatok egy adott tevékenységek végrehajtásának logikai folyamatát ta
 
 1. Az *áthelyezés és átalakítás* területen a *tevékenységek* ablaktáblán húzza az **adatfolyamot** a folyamat vászonra.
 
-1. Az **adatfolyamatok hozzáadása** lap előugró ablakában válassza az **új adatfolyam** -adatfolyam létrehozása lehetőséget  ->  **Data flow**. Ha elkészült, kattintson **az OK gombra** .
+1. Az **adatfolyamatok hozzáadása** lap előugró ablakában válassza az **új adatfolyam**-adatfolyam létrehozása lehetőséget  ->  **Data flow**. Ha elkészült, kattintson **az OK gombra** .
 
    ![Adatfolyam létrehozása](media/quickstart-data-flow/new-data-flow.png)
 
@@ -185,7 +185,7 @@ A folyamat a közzététel előtt hibakeresést végezhet. Ebben a lépésben az
 Ha ezt követően helyesen követte ezt a rövid útmutatót, a fogadó mappájába írás 83 sort és 2 oszlopot kell tartalmaznia. Az adatait a blob Storage ellenőrzésével ellenőrizheti.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő cikkekkel az Azure szinapszis Analytics támogatásának megismeréséhez:
 

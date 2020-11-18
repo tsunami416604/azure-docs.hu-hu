@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: helyszíni, Docker, tároló
-ms.openlocfilehash: f91d96732c872c6f93ee2de4c5c3eba5fe5ffbc4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ad3f73276a2a965032fd2acf368bce4a0c146632
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412238"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744176"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Docker-tárolók telepítése és futtatása a Speech Service API-khoz 
 
@@ -31,22 +31,22 @@ A Speech-tárolókkal az ügyfelek beszédalapú alkalmazások architektúrájá
 > * Szabványos beszéd – szöveg
 > * Custom Speech – szöveg
 > * Normál szöveg – beszéd
-> 
+> * Neurális szöveg – beszéd
+>
 > A következő Speech-tárolók a lezárt előzetes verzióban érhetők el.
 > * Egyéni szöveg – beszéd
 > * Beszédfelismerési Nyelvfelismerés 
-> * Neurális szöveg – beszéd
 >
 > A beszédfelismerési tárolók használatához online kérelmet kell elküldenie, és azt jóvá kell hagynia. További információért tekintse **meg a kérelem jóváhagyása a tároló futtatása** című szakaszt.
 
-| Tároló | Szolgáltatások | Legutóbbi |
+| Tároló | Funkciók | Legutóbbi |
 |--|--|--|
 | Diktálás | Elemzi az érzelmeket, és átírja a folyamatos valós idejű beszédet vagy a Batch hangfelvételeket közbenső eredményekkel.  | 2.6.0 |
 | Custom Speech – szöveg | A [Custom Speech portál](https://speech.microsoft.com/customspeech)egyéni modelljét használva folyamatos valós idejű beszédet vagy batch-hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.6.0 |
 | Szövegfelolvasás | A szöveget természetes hangú beszédre konvertálja egyszerű szöveges bevitelsel vagy beszéd szintézis Markup Language (SSML) nyelvvel. | 1.8.0 |
 | Egyéni szöveg – beszéd | Ha egyéni modellt használ az [Egyéni hangportálról](https://aka.ms/custom-voice-portal), a szövegeket természetes hangú beszédre alakítja egyszerű szöveges bevitel vagy beszédfelismerési leíró nyelv (SSML) használatával. | 1.8.0 |
 | Beszédfelismerési Nyelvfelismerés | A hangfájlokban elhangzott nyelv észlelése. | 1,0 |
-| Neurális szöveg – beszéd | A mély neurális hálózati technológiával természetes hangú beszédre alakítja át a szöveget, ami lehetővé teszi a természetes szintetizált beszédek használatát. | 1.2.0 |
+| Neurális szöveg – beszéd | A mély neurális hálózati technológiával természetes hangú beszédre alakítja át a szöveget, ami lehetővé teszi a természetes szintetizált beszédek használatát. | 1.3.0 |
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
@@ -54,11 +54,11 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 A Speech containers használata előtt a következő előfeltételek szükségesek:
 
-| Kötelező | Rendeltetés |
+| Kötelező | Cél |
 |--|--|
 | A Docker-motor | A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a** Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br> |
 | A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók lemezképéről, valamint az alapszintű `docker` parancsokról. |
-| Beszédfelismerési erőforrás | A tárolók használatához a következőket kell tennie:<br><br>Egy Azure _Speech_ -erőforrás a társított API-kulcs és végpont URI-azonosító lekéréséhez. Mindkét érték elérhető a Azure Portal **beszédének** áttekintése és a kulcsok oldalain. Mindkettő szükséges a tároló elindításához.<br><br>**{API_KEY}** : a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}** : az **Áttekintés** lapon megadott végpont |
+| Beszédfelismerési erőforrás | A tárolók használatához a következőket kell tennie:<br><br>Egy Azure _Speech_ -erőforrás a társított API-kulcs és végpont URI-azonosító lekéréséhez. Mindkét érték elérhető a Azure Portal **beszédének** áttekintése és a kulcsok oldalain. Mindkettő szükséges a tároló elindításához.<br><br>**{API_KEY}**: a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}**: az **Áttekintés** lapon megadott végpont |
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -107,7 +107,7 @@ Töltse ki és küldje el a [kérelem űrlapját](https://aka.ms/csgate) , hogy 
 
 A Speech tároló lemezképei a következő Container Registry érhetők el.
 
-# <a name="speech-to-text"></a>[Beszéd – szöveg](#tab/stt)
+# <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
 | Tároló | Adattár |
 |-----------|------------|
@@ -119,7 +119,7 @@ A Speech tároló lemezképei a következő Container Registry érhetők el.
 |-----------|------------|
 | Custom Speech – szöveg | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest` |
 
-# <a name="text-to-speech"></a>[Szöveg – beszéd](#tab/tts)
+# <a name="text-to-speech"></a>[Szövegfelolvasás](#tab/tts)
 
 | Tároló | Adattár |
 |-----------|------------|
@@ -152,7 +152,7 @@ A Speech tároló lemezképei a következő Container Registry érhetők el.
 
 ### <a name="docker-pull-for-the-speech-containers"></a>Docker-lekérés a beszédfelismerési tárolók számára
 
-# <a name="speech-to-text"></a>[Beszéd – szöveg](#tab/stt)
+# <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>Docker-lekérés a beszéd-szöveg tárolóhoz
 
@@ -194,7 +194,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-spe
 > [!NOTE]
 > A `locale` és az `voice` Egyéni beszédfelismerési tárolókat a tároló által betöltött egyéni modell határozza meg.
 
-# <a name="text-to-speech"></a>[Szöveg – beszéd](#tab/tts)
+# <a name="text-to-speech"></a>[Szövegfelolvasás](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>Docker-lekérés a szöveg-beszéd tárolóhoz
 
@@ -244,13 +244,13 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-tex
 A (z) kivételével az összes címke `latest` a következő formátumban van, és megkülönbözteti a kis-és nagybetűket:
 
 ```
-<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>
 ```
 
 A következő címke egy példa a formátumra:
 
 ```
-1.2.0-amd64-en-us-arianeural-preview
+1.3.0-amd64-en-us-arianeural
 ```
 
 Az összes támogatott területi beállításhoz és a **neurális szöveg – beszéd** tárolóhoz kapcsolódó hangokért lásd: [neurális szöveg – beszéd képcímkék](../containers/container-image-tags.md#neural-text-to-speech).
@@ -294,7 +294,7 @@ Miután a tároló a [gazdagépen](#the-host-computer)található, a következő
 
 A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A és értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört `{Endpoint_URI}` `{API_Key}` . A [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` parancshoz további példák is elérhetők.
 
-# <a name="speech-to-text"></a>[Beszéd – szöveg](#tab/stt)
+# <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
 A normál *beszéd – szöveg* tároló futtatásához hajtsa végre a következő `docker run` parancsot.
 
@@ -458,7 +458,7 @@ Checking available base model for en-us
 Az egyéni-beszéd-szöveg típusú tárolók v 2.5.0-es verziójának elindításával egyéni kiejtési eredményt kaphat a kimenetben. Mindössze annyit kell tennie, hogy saját egyéni kiejtési szabályok vannak beállítva az egyéni modellben, és a modell csatlakoztatása egyéni beszéd – szöveg típusú tárolóhoz.
 
 
-# <a name="text-to-speech"></a>[Szöveg – beszéd](#tab/tts)
+# <a name="text-to-speech"></a>[Szövegfelolvasás](#tab/tts)
 
 A szabványos *szöveg-beszéd* tároló futtatásához hajtsa végre a következő `docker run` parancsot.
 
@@ -587,7 +587,7 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 > [!NOTE]
 > Ha több tárolót futtat, használjon egyedi portszámot.
 
-| Tárolók | SDK-gazda URL-címe | Protokoll |
+| Containers | SDK-gazda URL-címe | Protokoll |
 |--|--|--|
 | Normál beszéd – szöveg és Custom Speech – szöveg | `ws://localhost:5000` | WS |
 | Szöveg-beszéd (beleértve a standard, az egyéni és a neurális), a beszédfelismerés nyelvének észlelése | `http://localhost:5000` | HTTP |
@@ -749,14 +749,14 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta a beszédfelismerési tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 
 * A Speech négy Linux-tárolót biztosít a Docker számára, és különböző képességeket ágyaz be:
-  * *Beszéd – szöveg*
+  * *Diktálás*
   * *Custom Speech – szöveg*
-  * *Szöveg – beszéd*
+  * *Szövegfelolvasás*
   * *Egyéni szöveg – beszéd*
   * *Neurális szöveg – beszéd*
   * *Beszédfelismerési Nyelvfelismerés*
@@ -768,7 +768,7 @@ Ebben a cikkben megtanulta a beszédfelismerési tárolók letöltésére, telep
 > [!IMPORTANT]
 >  Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett képet vagy szöveget) a Microsoftnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [tárolók konfigurálásának](speech-container-configuration.md) áttekintése konfigurációs beállításokhoz
 * Ismerje meg, hogyan [használhatja a Speech Service-tárolókat a Kubernetes és a Helm használatával](speech-container-howto-on-premises.md)

@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f7770e929e51ee51b09060e4247c5f92b27d1035
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fffb52e333bea1b2be11b127a9eab6656dc1d1f5
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311864"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94740328"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>A csoportos adatelemzési folyamat adatgyűjtési és-megértési szakasza
 
@@ -48,9 +48,7 @@ Ebben a szakaszban három fő feladat foglalkozik:
 Állítsa be, hogy az adatok a forrás helyeiről a célhelyre legyenek áthelyezve az elemzési műveletek, például a képzés és az előrejelzések futtatásához. Az adatok különböző Azure-adatszolgáltatásokkal való áthelyezésével kapcsolatos technikai részletekért lásd: [adatok betöltése tárolási környezetbe elemzés céljából](ingest-data.md). 
 
 ### <a name="explore-the-data"></a>Az adatok feltárása
-A modellek betanítása előtt ki kell alakítania az adatelemzést. A valós adathalmazok gyakran zajosak, hiányoznak az értékek, vagy más eltéréseket tartalmaznak. Az adatösszesítés és a vizualizáció használatával naplózhatja az adatok minőségét, és megadhatja az adatok feldolgozásához szükséges adatokat, mielőtt készen áll a modellezésre. Ez a folyamat gyakran ismétlődő.
-
-A TDSP egy [ideaer](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils)nevű automatizált segédprogramot biztosít az adatmegjelenítéshez és az adatösszegző jelentések előkészítéséhez. Javasoljuk, hogy első lépésként kezdje el az ismereteket, hogy a kezdeti adatfelismerést interaktív módon fejlessze a kódolás nélkül. Ezután egyéni kódot írhat az adatfeltáráshoz és a vizualizációhoz. Az adatok tisztításával kapcsolatos útmutatásért lásd: [feladatok az adatok előkészítéséhez a továbbfejlesztett gépi tanuláshoz](prepare-data.md).  
+A modellek betanítása előtt ki kell alakítania az adatelemzést. A valós adathalmazok gyakran zajosak, hiányoznak az értékek, vagy más eltéréseket tartalmaznak. Az adatösszesítés és a vizualizáció használatával naplózhatja az adatok minőségét, és megadhatja az adatok feldolgozásához szükséges adatokat, mielőtt készen áll a modellezésre. Ez a folyamat gyakran ismétlődő. Az adatok tisztításával kapcsolatos útmutatásért lásd: [feladatok az adatok előkészítéséhez a továbbfejlesztett gépi tanuláshoz](prepare-data.md).  
 
 Miután elégedett a megtisztított adatmennyiség minőségével, a következő lépés az, hogy jobban megértse az adatelemekben rejlő mintákat. Ez az adatelemzés segít a célnak megfelelő prediktív modell kiválasztásában és fejlesztésében. Keresse meg azt a bizonyítékot, hogy az adatok mennyire jól kapcsolódnak a célhoz. Ezután állapítsa meg, hogy van-e elegendő mennyiségű adattal a következő modellezési lépésekkel való előrelépéshez. Ez a folyamat többször is ismétlődő. Előfordulhat, hogy az előző fázisban eredetileg azonosított adatkészletek kibővítéséhez az új adatforrások pontosabb vagy további releváns adatokat kell keresnie. 
 
@@ -66,9 +64,9 @@ Ebben a szakaszban fejleszti az adatfolyamatok megoldási architektúráját. Az
 ## <a name="artifacts"></a>Artifacts
 Ebben a szakaszban a következő termékek szerepelnek:
 
-   * [Adatminőségi jelentés](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Ez a jelentés az adatösszegzéseket, az egyes attribútumok és a cél, a változó rangsorolás és egyéb kapcsolatok közötti kapcsolatokat tartalmazza. A TDSP részeként nyújtott [ideaer](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) eszköz gyorsan létrehozhatja ezt a jelentést bármilyen táblázatos adathalmazon, például egy CSV-fájlban vagy egy kapcsolati táblában. 
-   * **Megoldás-architektúra** : a megoldás architektúrája lehet az adatfolyamatok egy diagramja vagy leírása, amellyel a modell létrehozása után az új adatsorokra vonatkozó pontozási vagy előrejelzések futtathatók. Emellett tartalmazza azt a folyamatot is, amely új adatai alapján újratanítja a modellt. Tárolja a dokumentumot a [projekt](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) könyvtárában a TDSP Directory-struktúra sablonjának használatakor.
-   * **Ellenőrzőpont-döntés** : Mielőtt megkezdené a teljes körű fejlesztést és a modell kialakítását, a projekt újraértékelésével megállapíthatja, hogy a várt érték elegendő-e a folytatáshoz. Előfordulhat például, hogy készen áll a folytatásra, további adatokat kell gyűjtenie, vagy fel kell vennie a projektet, mert az adatok nem léteznek a kérdés megválaszolására.
+   * [Adatminőségi jelentés](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Ez a jelentés az adatösszegzéseket, az egyes attribútumok és a cél, a változó rangsorolás és egyéb kapcsolatok közötti kapcsolatokat tartalmazza. 
+   * **Megoldás-architektúra**: a megoldás architektúrája lehet az adatfolyamatok egy diagramja vagy leírása, amellyel a modell létrehozása után az új adatsorokra vonatkozó pontozási vagy előrejelzések futtathatók. Emellett tartalmazza azt a folyamatot is, amely új adatai alapján újratanítja a modellt. Tárolja a dokumentumot a [projekt](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) könyvtárában a TDSP Directory-struktúra sablonjának használatakor.
+   * **Ellenőrzőpont-döntés**: Mielőtt megkezdené a teljes körű fejlesztést és a modell kialakítását, a projekt újraértékelésével megállapíthatja, hogy a várt érték elegendő-e a folytatáshoz. Előfordulhat például, hogy készen áll a folytatásra, további adatokat kell gyűjtenie, vagy fel kell vennie a projektet, mert az adatok nem léteznek a kérdés megválaszolására.
 
 ## <a name="next-steps"></a>Következő lépések
 

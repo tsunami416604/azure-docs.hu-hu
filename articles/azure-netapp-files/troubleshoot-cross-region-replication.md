@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/16/2020
+ms.date: 11/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 3aaa5d2bc6fdbda0d1db212539c719aa65cae61b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fbb9b054433905d41d0171ab08b4647618be466
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90709017"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745683"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>Régiók közötti replikáció hibaelhárítása
 
@@ -50,6 +50,7 @@ Ez a cikk azokat a hibaüzeneteket és megoldásokat ismerteti, amelyek segíthe
 |-|-|
 |     `Replication   cannot be deleted, mirror state needs to be in status: Broken before deleting`    |     Ellenőrizze, hogy a replikáció megszakadt-e, vagy nincs-e inicializálva és üresjáratban (sikertelen inicializálás).    |
 |     `Cannot delete   source replication`    |     Nem engedélyezett a replikálás törlése a forrás oldalról. Győződjön meg arról, hogy a célhelyről törli a replikálást.    |
+| `Volume with replication cannot be deleted`  |  A kötet törlése előtt törölje a replikálást. Lásd: [replikálások törlése](cross-region-replication-delete.md). Ehhez a művelethez a kötet replikálásának törlése előtt meg kell szüntetnie a társítást. 
 
 ## <a name="errors-resyncing-volume"></a>Hiba történt a kötet újraszinkronizálásakor
 

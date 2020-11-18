@@ -1,28 +1,28 @@
 ---
-title: Műveletcsoportok létrehozása és kezelése az Azure Portalon
+title: Műveleti csoportok létrehozása és kezelése a Azure Portal
 description: Megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
 author: dkamstra
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: cbe3ef7080397b135ea0fb17cd50de9b1ccfdf09
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a5d685e49d941d7b6febbc220cdbfbcb631c4496
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336119"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94746363"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és kezelése az Azure Portalon
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveleti csoportok létrehozása és kezelése a Azure Portal
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
 
 Az egyes műveletek a következő tulajdonságokből állnak:
 
-* **Típus** : az értesítés vagy művelet elvégezve. Ilyenek például a hanghívások, SMS-üzenetek, e-mailek küldése, vagy különböző típusú automatizált műveletek elindítása. Lásd a cikk későbbi részében található típusokat.
-* **Name (név** ): a műveleti csoporton belüli egyedi azonosító.
-* **Részletek** : a megfelelő részletek *típus* szerint változnak.
+* **Típus**: az értesítés vagy művelet elvégezve. Ilyenek például a hanghívások, SMS-üzenetek, e-mailek küldése, vagy különböző típusú automatizált műveletek elindítása. Lásd a cikk későbbi részében található típusokat.
+* **Name (név**): a műveleti csoporton belüli egyedi azonosító.
+* **Részletek**: a megfelelő részletek *típus* szerint változnak.
 
 További információ arról, hogyan használhatók Azure Resource Manager sablonok a műveleti csoportok konfigurálásához: [Action Group Resource Manager-sablonok](./action-groups-create-resource-manager-template.md).
 
@@ -30,7 +30,7 @@ További információ arról, hogyan használhatók Azure Resource Manager sablo
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza a **figyelő** elemet. A **figyelő** ablaktábla egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
 
-1. Válassza a **riasztások** , majd a **műveletek kezelése** lehetőséget.
+1. Válassza a **riasztások**, majd a **műveletek kezelése** lehetőséget.
 
     ![Műveletek kezelése gomb](./media/action-groups/manage-action-groups.png)
     
@@ -40,7 +40,7 @@ További információ arról, hogyan használhatók Azure Resource Manager sablo
 
 ### <a name="configure-basic-action-group-settings"></a>Alapszintű műveleti csoport beállításainak konfigurálása
 
-A **Project details** :
+A **Project details**:
 
 Válassza ki azt az **előfizetést** és **erőforráscsoportot** , amelyben a műveleti csoportot menti.
 
@@ -59,15 +59,15 @@ A **példány részletei** területen:
 
 1. A riasztások indításakor küldendő értesítések listájának megadása. Minden értesítéshez adja meg a következőket:
 
-    a. **Értesítés típusa** : válassza ki az elküldeni kívánt értesítés típusát. Az elérhető lehetőségek:
+    a. **Értesítés típusa**: válassza ki az elküldeni kívánt értesítés típusát. Az elérhető lehetőségek:
       * E-mail-Azure Resource Manager szerepkör – e-mail küldése az egyes előfizetési szintű ARM-szerepkörökhöz rendelt felhasználóknak.
       * E-mail/SMS/leküldés/hang – ezeket az értesítési típusokat megadott címzetteknek küldje el.
     
-    b. **Név** : adjon meg egy egyedi nevet az értesítéshez.
+    b. **Név**: adjon meg egy egyedi nevet az értesítéshez.
 
-    c. **Részletek** : a kiválasztott értesítési típus alapján írjon be egy e-mail-címet, telefonszámot stb.
+    c. **Részletek**: a kiválasztott értesítési típus alapján írjon be egy e-mail-címet, telefonszámot stb.
     
-    d. **Gyakori riasztási séma** : engedélyezheti a [közös riasztási sémát](./alerts-common-schema.md), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
+    d. **Gyakori riasztási séma**: engedélyezheti a [közös riasztási sémát](./alerts-common-schema.md), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
 
     ![Az értesítések lap](./media/action-groups/action-group-2-notifications.png)
     
@@ -77,13 +77,13 @@ A **példány részletei** területen:
 
 1. Megadhatja a riasztások aktiválásakor aktiválható műveletek listáját. Minden művelethez adja meg a következőket:
 
-    a. **Művelettípus** : válassza az Automation Runbook, az Azure Function, a ITSM, a Logic app, a Secure webhook és a webhook elemet.
+    a. **Művelettípus**: válassza az Automation Runbook, az Azure Function, a ITSM, a Logic app, a Secure webhook és a webhook elemet.
     
-    b. **Név** : adjon egyedi nevet a műveletnek.
+    b. **Név**: adjon egyedi nevet a műveletnek.
 
-    c. **Részletek** : a Művelettípus alapján adjon meg egy webhook URI-t, egy Azure-alkalmazást, egy ITSM-kapcsolat vagy egy Automation-runbook. A ITSM művelethez emellett adja meg a **munkaelemet** és a ITSM eszköz által igényelt egyéb mezőket.
+    c. **Részletek**: a Művelettípus alapján adjon meg egy webhook URI-t, egy Azure-alkalmazást, egy ITSM-kapcsolat vagy egy Automation-runbook. A ITSM művelethez emellett adja meg a **munkaelemet** és a ITSM eszköz által igényelt egyéb mezőket.
     
-    d. **Gyakori riasztási séma** : engedélyezheti a [közös riasztási sémát](./alerts-common-schema.md), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
+    d. **Gyakori riasztási séma**: engedélyezheti a [közös riasztási sémát](./alerts-common-schema.md), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
     
     ![A műveletek lap](./media/action-groups/action-group-3-actions.png)
 
@@ -266,22 +266,108 @@ A webhookok feldolgozása a következő szabályok alapján történik
 - A második és a harmadik próbálkozás 30 másodpercet vár a válaszra.
 - Miután a 3 kísérlet a webhook meghívására nem sikerült, a műveleti csoport 15 percig nem fogja hívni a végpontot.
 
-Forrás IP-címtartományok
- - 13.72.19.232
- - 13.106.57.181
- - 13.106.54.3
- - 13.106.54.19
- - 13.106.38.142
- - 13.106.38.148
- - 13.106.57.196
- - 13.106.57.197
- - 52.244.68.117
- - 52.244.65.137
- - 52.183.31.0
- - 52.184.145.166
- - 51.4.138.199
- - 51.5.148.86
- - 51.5.149.19
+Forrás IP-címtartományok:
+
+ - 13.66.60.119/32
+ - 13.66.143.220/30
+ - 13.66.202.14/32
+ - 13.66.248.225/32
+ - 13.66.249.211/32
+ - 13.67.10.124/30
+ - 13.69.109.132/30
+ - 13.71.199.112/30
+ - 13.77.53.216/30
+ - 13.77.172.102/32
+ - 13.77.183.209/32
+ - 13.78.109.156/30
+ - 13.84.49.247/32
+ - 13.84.51.172/32
+ - 13.84.52.58/32
+ - 13.86.221.220/30
+ - 13.106.38.142/32
+ - 13.106.38.148/32
+ - 13.106.54.3/32
+ - 13.106.54.19/32
+ - 13.106.57.181/32
+ - 13.106.57.196/31
+ - 20.38.149.132/30
+ - 20.42.64.36/30
+ - 20.43.121.124/30
+ - 20.44.17.220/30
+ - 20.45.123.236/30
+ - 20.72.27.152/30
+ - 20.150.172.228/30
+ - 20.192.238.124/30
+ - 20.193.202.4/30
+ - 40.68.195.137/32
+ - 40.68.201.58/32
+ - 40.68.201.65/32
+ - 40.68.201.206/32
+ - 40.68.201.211/32
+ - 40.68.204.18/32
+ - 40.115.37.106/32
+ - 40.121.219.215/32
+ - 40.121.221.62/32
+ - 40.121.222.201/32
+ - 40.121.223.186/32
+ - 51.104.9.100/30
+ - 52.183.20.244/32
+ - 52.183.31.0/32
+ - 52.183.94.59/32
+ - 52.184.145.166/32
+ - 191.233.50.4/30
+ - 191.233.207.64/26
+ - 2603:1000:4:402::178/125
+ - 2603:1000:104:402::178/125
+ - 2603:1010:6:402::178/125
+ - 2603:1010:101:402::178/125
+ - 2603:1010:304:402::178/125
+ - 2603:1010:404:402::178/125
+ - 2603:1020:5:402::178/125
+ - 2603:1020:206:402::178/125
+ - 2603:1020:305:402::178/125
+ - 2603:1020:405:402::178/125
+ - 2603:1020:605:402::178/125
+ - 2603:1020:705:402::178/125
+ - 2603:1020:805:402::178/125
+ - 2603:1020:905:402::178/125
+ - 2603:1020: A04:402:: 178/125
+ - 2603:1020: B04:402:: 178/125
+ - 2603:1020: C04:402:: 178/125
+ - 2603:1020: D04:402:: 178/125
+ - 2603:1020: E04:402:: 178/125
+ - 2603:1020: f04:402:: 178/125
+ - 2603:1020:1004:800:: F8/125
+ - 2603:1020:1104:400::178/125
+ - 2603:1030: f:400:: 978/125
+ - 2603:1030:10:402::178/125
+ - 2603:1030:104:402::178/125
+ - 2603:1030:107:400:: F0/125
+ - 2603:1030:210:402::178/125
+ - 2603:1030:40b: 400:: 978/125
+ - 2603:1030:40c: 402:: 178/125
+ - 2603:1030:504:802:: F8/125
+ - 2603:1030:608:402::178/125
+ - 2603:1030:807:402::178/125
+ - 2603:1030: A07:402:: 8f8/125
+ - 2603:1030: B04:402:: 178/125
+ - 2603:1030: C06:400:: 978/125
+ - 2603:1030: F05:402:: 178/125
+ - 2603:1030:1005:402::178/125
+ - 2603:1040:5:402::178/125
+ - 2603:1040:207:402::178/125
+ - 2603:1040:407:402::178/125
+ - 2603:1040:606:402::178/125
+ - 2603:1040:806:402::178/125
+ - 2603:1040:904:402::178/125
+ - 2603:1040: A06:402:: 178/125
+ - 2603:1040: B04:402:: 178/125
+ - 2603:1040: C06:402:: 178/125
+ - 2603:1040: D04:800:: F8/125
+ - 2603:1040: F05:402:: 178/125
+ - 2603:1040:1104:400::178/125
+ - 2603:1050:6:402::178/125
+ - 2603:1050:403:400:: 1f8/125
 
 Ha frissítéseket szeretne kapni ezen IP-címek változásairól, javasoljuk, hogy állítson be egy Service Health riasztást, amely figyeli a műveleti csoportok szolgáltatással kapcsolatos tájékoztató értesítéseket.
 
@@ -314,7 +400,7 @@ A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csopo
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Példa a szolgáltatási címke hozzáadására."border="true":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az [SMS-riasztás viselkedéséről](./alerts-sms-behavior.md).  
 * Ismerkedjen meg [a tevékenység naplójának riasztása webhook sémával](./activity-log-alerts-webhook.md).  
 * További információ a [ITSM-csatolóról](./itsmc-overview.md).

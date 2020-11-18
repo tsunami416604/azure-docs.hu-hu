@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3845c5e5d7cf6bb372744fb3c740c44aa2b94236
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4719bd21bc6299373f9dabfe4733541c6fa27b94
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305607"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94740181"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának modellezési szakasza
 
@@ -41,8 +41,8 @@ Itt látható a TDSP életciklus vizuális ábrázolása:
 ## <a name="how-to-do-it"></a>Útmutató
 Ebben a szakaszban három fő feladat foglalkozik:
 
-  * **Szolgáltatás-mérnöki** : adatszolgáltatások létrehozása a nyers adatokból a modell betanításának elősegítése érdekében.
-  * **Modell betanítása** : keresse meg a modellt, amely a lehető legpontosabban válaszol a sikerességi mérőszámok összehasonlításával.
+  * **Szolgáltatás-mérnöki**: adatszolgáltatások létrehozása a nyers adatokból a modell betanításának elősegítése érdekében.
+  * **Modell betanítása**: keresse meg a modellt, amely a lehető legpontosabban válaszol a sikerességi mérőszámok összehasonlításával.
   * Állapítsa meg, hogy a modell **alkalmas-e a gyártásra.**
 
 ### <a name="feature-engineering"></a>Jellemzőkiemelés
@@ -63,18 +63,16 @@ A modell betanításának folyamata a következő lépéseket tartalmazza:
    * **Határozza meg a "legjobb" megoldást** a kérdés megválaszolásához az alternatív módszerek közötti sikerességi mérőszámok összehasonlításával.
 
 > [!NOTE]
-> A **szivárgás elkerülése** : adatszivárgást okozhat, ha a betanítási adatkészleten kívülről származó adatokkal is rendelkezik, ami lehetővé teszi, hogy a modell vagy a gépi tanulási algoritmus reálisan jó előrejelzéseket készítsen. A szivárgás gyakori oka annak, hogy az adatelemzők miért idegesek, amikor olyan prediktív eredményeket kapnak, amelyek túl jól tűnnek a valóságnak. Ezek a függőségek nehezen észlelhetők. A szivárgás elkerüléséhez az Analysis-adatkészletek kiépítése, a modell létrehozása és az eredmények pontosságának kiértékelése között ismétlődő lépések szükségesek. 
+> A **szivárgás elkerülése**: adatszivárgást okozhat, ha a betanítási adatkészleten kívülről származó adatokkal is rendelkezik, ami lehetővé teszi, hogy a modell vagy a gépi tanulási algoritmus reálisan jó előrejelzéseket készítsen. A szivárgás gyakori oka annak, hogy az adatelemzők miért idegesek, amikor olyan prediktív eredményeket kapnak, amelyek túl jól tűnnek a valóságnak. Ezek a függőségek nehezen észlelhetők. A szivárgás elkerüléséhez az Analysis-adatkészletek kiépítése, a modell létrehozása és az eredmények pontosságának kiértékelése között ismétlődő lépések szükségesek. 
 > 
 > 
-
-Egy [automatizált modellezési és jelentéskészítési eszközt](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) biztosítunk olyan TDSP, amely több algoritmussal és paraméterrel is futtatható egy alapmodell létrehozásához. Emellett olyan alapkonfiguráció-modellezési jelentést is létrehoz, amely összegzi az egyes modellek és paraméterek kombinációjának teljesítményét, beleértve a változó fontosságot is. Ez a folyamat is iterációs, mivel további funkciók mérnöki megoldását is elvégezheti. 
 
 ## <a name="artifacts"></a>Artifacts
 Az ebben a szakaszban bemutatott összetevők a következők:
 
    * [Szolgáltatások készletei](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): a modellezéshez kifejlesztett funkciók leírása az **adatdefiníciós** jelentés **szolgáltatáskészlet-készletek** szakaszában található. A kód mutatóit tartalmazza a funkciók létrehozásához és a szolgáltatás létrehozásának leírásához.
    * [Modell jelentés](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): minden olyan modell esetében, amely minden egyes kísérlethez meg van határozva, egy standard, sablon alapú jelentés készül, amely részletesen ismerteti az egyes kísérletek részleteit.
-   * **Ellenőrzőpont-döntés** : annak kiértékelése, hogy a modell megfelelően működik-e az éles környezetben. Néhány fontos kérdés:
+   * **Ellenőrzőpont-döntés**: annak kiértékelése, hogy a modell megfelelően működik-e az éles környezetben. Néhány fontos kérdés:
      * A modell megfelelő megbízhatósággal válaszol a kérdésre a tesztelési adat miatt? 
      * Érdemes kipróbálnia bármilyen alternatív megközelítést? További adatok gyűjtése, több funkció-mérnöki megoldás vagy más algoritmusok kipróbálása?
 

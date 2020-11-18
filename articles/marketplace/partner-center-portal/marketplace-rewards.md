@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 4d307b2a16262645919423ef89c0d87636639bf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b99ec4158b1df5ab558026c05b9ec1024fb0722e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378712"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94742573"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -21,7 +21,7 @@ A Piactéri jutalmak támogatják a növekedés adott fázisát, kezdve a tudato
 
 A program létrehoz egy pozitív visszajelzési ciklust: a növekedés minden szakaszának előnyei a következő szakaszra mutatnak, ami segít a Microsoft ügyfeleinek, a Microsoft területének és a Microsoft csatornájának fejlesztésében azáltal, hogy platformként hasznosítja a kereskedelmi piactért.
 
-Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](../determine-your-listing-type.md#choose-a-listing-option).
+Az Ön által [felkeresett ajánlat, az ingyenes próbaidőszak vagy a Transact](../determine-your-listing-type.md)funkció alapján differenciált előnyökkel jár.
 
 A jutalmak csapatának egy tagja fogja felvenni Önnel a kapcsolatot, ha az ajánlata életbe lép, a jogosultsága alapján.
 
@@ -38,16 +38,16 @@ A kezdéshez szükséges lépések egyszerűek:
 1. Ajánlat közzététele Microsoft AppSource vagy Azure piactéren.
 1. Az előnyök listájának megtekintéséhez nyissa meg a [Marketplace jutalmak](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) oldalt a partner Centerben, és válassza az **értékesítés és marketing előnyök** lapot.
 1. Az értékesítés és a marketing juttatás aktiválásához először vállalati marketing-kapcsolattartót kell rendelnie. A kapcsolattartó fogja megkapni a további információkat a Marketplace Rewardsszal kapcsolatban.
-1. A marketing kapcsolattartási adatok hozzáadásához vagy frissítéséhez lépjen a Marketplace jutalmazási oldal értékesítés és marketing előnyei lapjának tetejére, majd válassza a **Hozzáadás, frissítés vagy módosítás**lehetőséget.  Ezután tegye a következőket:
+1. A marketing kapcsolattartási adatok hozzáadásához vagy frissítéséhez lépjen a Marketplace jutalmazási oldal értékesítés és marketing előnyei lapjának tetejére, majd válassza a **Hozzáadás, frissítés vagy módosítás** lehetőséget.  Ezután tegye a következőket:
 
-    1. Válasszon egy felhasználót a listáról. Ha a hozzárendelni kívánt felhasználó nem szerepel a listában, hozzáadhat új felhasználókat a **Fiókbeállítások**közül.
+    1. Válasszon egy felhasználót a listáról. Ha a hozzárendelni kívánt felhasználó nem szerepel a listában, hozzáadhat új felhasználókat a **Fiókbeállítások** közül.
     1. Adjon meg egy e-mail-címet azon felhasználó számára, aki eltér a vállalata partner Center-fiókjához tartozó e-mail-címtől. A marketing-kapcsolattartó megadott e-mail-címére elküldjük a Marketplace Rewards-előnyök kihasználására vonatkozó utasításokat.
     1. Adja meg a kapcsolattartó telefonszámát és az előnyben részesített nyelvet. Miután megadta ezeket az adatokat, válassza a **Felhasználó hozzárendelése** lehetőséget.
     1. A marketing-kapcsolattartó frissítése után válassza az **aktiválás** lehetőséget a használni kívánt előnyhez. Az előny aktiválása után a Rewards csapatának egy tagja fel fogja keresni a kapcsolattartót.
 
 ## <a name="technical-benefits"></a>Műszaki előnyök
 
-1. Technikai támogatást kérhet a Felhőbeli és hibrid megoldások értékesítés előtti, tervezési, üzembe helyezési és alkalmazás-fejlesztési fázisaiban. Ha segítséget szeretne kérni, töltse ki a kérelem űrlapját, majd válassza a **kérelem küldése**lehetőséget.
+1. Technikai támogatást kérhet a Felhőbeli és hibrid megoldások értékesítés előtti, tervezési, üzembe helyezési és alkalmazás-fejlesztési fázisaiban. Ha segítséget szeretne kérni, töltse ki a kérelem űrlapját, majd válassza a **kérelem küldése** lehetőséget.
 1. Az Azure szponzorálási előnyeinek felhasználása e-mailben történik, az előnyök feloldása során.
 
 >[!NOTE]
