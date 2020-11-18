@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 55af44f498492136b2ae03c7e23fce3676aa8e22
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0e034ebede39a3fd9046ced9716323d0c7d874df
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747079"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684070"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Oktatóanyag: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
@@ -31,7 +31,7 @@ Ehhez az oktatóanyaghoz az Azure CLI 2.0.53 vagy újabb verzióját kell futtat
 
 ## <a name="create-a-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
 
-Az AK-fürtök használhatják a Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC). Ezekkel a vezérlőkkel a felhasználókhoz rendelt szerepkörök alapján definiálható az erőforrásokhoz való hozzáférés. Az engedélyek kombinálva vannak, ha egy felhasználó több szerepkörhöz van rendelve, és az engedélyek hatóköre egyetlen névtérre vagy a teljes fürtre is kiterjed. Alapértelmezés szerint az Azure CLI automatikusan engedélyezi az RBAC-t az AKS-fürtök létrehozásakor.
+Az AK-fürtök Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC) használhatnak. Ezekkel a vezérlőkkel a felhasználókhoz rendelt szerepkörök alapján definiálható az erőforrásokhoz való hozzáférés. Az engedélyek kombinálva vannak, ha egy felhasználó több szerepkörhöz van rendelve, és az engedélyek hatóköre egyetlen névtérre vagy a teljes fürtre is kiterjed. Alapértelmezés szerint az Azure CLI automatikusan engedélyezi a Kubernetes RBAC, amikor létrehoz egy AK-fürtöt.
 
 AKS-fürtöket az [az aks create][] paranccsal hozhat létre. A következő példában létrehozunk egy *myAKSCluster* nevű fürtöt a *myResourceGroup* nevű erőforráscsoportban. Ez az erőforráscsoport az [előző oktatóanyagban][aks-tutorial-prepare-acr] , a *eastus* régióban lett létrehozva. A következő példa nem ad meg régiót, így az AK-fürt is létrejön az *eastus* régióban. Az AK-ra vonatkozó erőforrás-korlátokkal és a régió rendelkezésre állásával kapcsolatos további információkért lásd: [kvóták, virtuálisgép-méretre vonatkozó korlátozások és régiók rendelkezésre állása az Azure Kubernetes szolgáltatásban (ak)][quotas-skus-regions] .
 
@@ -65,7 +65,7 @@ az aks install-cli
 
 ## <a name="connect-to-cluster-using-kubectl"></a>Csatlakozás fürthöz a kubectl használatával
 
-Az [aks get-credentials][] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. A következő példa a *myAKSCluster* nevű AK-fürt hitelesítő adatait kéri le a *myResourceGroup* :
+Az [aks get-credentials][] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. A következő példa a *myAKSCluster* nevű AK-fürt hitelesítő adatait kéri le a *myResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

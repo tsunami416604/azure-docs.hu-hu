@@ -8,22 +8,18 @@ ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 1efd4baf80c9ba30b1d1ea35390386bc4e7659d3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 661d4ba575eafa4e261a1c92c1112a259b95eac7
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747786"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683591"
 ---
 # <a name="enable-shared-disk"></a>Megosztott lemez engedélyezése
 
 Ez a cikk ismerteti, hogyan engedélyezheti a megosztott lemezek funkciót az Azure Managed Disks szolgáltatásban. Az Azure Shared Disks az Azure Managed Disks új funkciója, amely lehetővé teszi, hogy egyszerre több virtuális géphez (VM) csatolja a felügyelt lemezeket. A felügyelt lemezek több virtuális géphez való csatolásával új vagy meglévő fürtözött alkalmazásokat telepíthet át az Azure-ba. 
 
-Ha olyan felügyelt lemezeken keres elméleti információkat, amelyeken engedélyezve vannak a megosztott lemezek, tekintse meg a következőt:
-
-* Linux esetén: [Azure megosztott lemezek](linux/disks-shared.md)
-
-* Windows esetén: [Azure megosztott lemezek](windows/disks-shared.md)
+Ha olyan felügyelt lemezeken keres elméleti információkat, amelyeken engedélyezve vannak a megosztott lemezek, tekintse meg az Azure-beli [megosztott lemezeket](disks-shared.md).
 
 ## <a name="limitations"></a>Korlátozások
 

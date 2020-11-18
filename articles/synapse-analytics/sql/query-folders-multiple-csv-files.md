@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 424a1ef7a73b5abbdba0d89ededb44cb9efdd116
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9d15d681a114b0f364e8e33adc786b4d0ba7df0e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340988"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684559"
 ---
 # <a name="query-folders-and-multiple-files"></a>Mappák és több fájl lekérdezése  
 
@@ -226,7 +226,7 @@ ORDER BY
 
 ## <a name="multiple-wildcards"></a>Több helyettesítő karakter
 
-Több helyettesítő karaktert is használhat a különböző elérési utak szintjén. Például a korábbi lekérdezések gazdagabbá tehetők csak a 2017 adatokkal rendelkező fájlok olvasására, az összes olyan mappából, amelynél a nevek a *t* értékkel kezdődnek, és az *i* -vel végződik.
+Több helyettesítő karaktert is használhat a különböző elérési utak szintjén. Például a korábbi lekérdezések gazdagabbá tehetők csak a 2017 adatokkal rendelkező fájlok olvasására, az összes olyan mappából, amelynél a nevek a *t* értékkel kezdődnek, és az *i*-vel végződik.
 
 > [!NOTE]
 > Jegyezze fel az elérési út végén található/végét az alábbi lekérdezésben. Egy mappát jelöl. Ha a/ki van hagyva, a lekérdezés a " *t &ast;* " nevű fájlokat fogja megcélozni.
@@ -273,6 +273,6 @@ ORDER BY
 
 Mivel csak egy olyan mappája van, amely megfelel a feltételeknek, a lekérdezés eredménye ugyanaz, mint a [mappában található fájlok olvasási részhalmaza](#read-subset-of-files-in-folder) , és az [összes fájl beolvasása az adott mappából](#read-all-files-from-specific-folder). Összetettebb helyettesítő karakteres használati forgatókönyvek találhatók a [lekérdezési parketta fájljaiban](query-parquet-files.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információt a [lekérdezési fájlok](query-specific-files.md) című cikkben talál.

@@ -1,19 +1,19 @@
 ---
 title: Hibaelhárítási útmutató az Azure SignalR Service-hez
-description: Tanulás
+description: Tudnivalók a gyakori problémák elhárításáról
 author: YanJin
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 5b8360134ace3852fb3c7fbe458ca2572f45b624
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 11ea348a80bc226b6a96bea1e7c023ee9c06b13a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663588"
+ms.locfileid: "94684117"
 ---
-# <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
+# <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Hibaelhárítási útmutató az Azure Signaler szolgáltatás gyakori problémáira
 
 Ez az útmutató hasznos hibaelhárítási útmutatót nyújt az ügyfelek által az elmúlt években teljesített és feloldott gyakori problémák alapján.
 
@@ -347,3 +347,9 @@ Vegyen fel ASP.NET Core egyet például (a ASP.NET egy hasonló):
 
     * [ASP.NET JavaScript-ügyfél](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
 
+## <a name="next-steps"></a>Következő lépések
+
+Ebben az útmutatóban megtanulta, hogyan kezelheti a gyakori problémákat. További általános hibaelhárítási módszereket is megtudhat. 
+
+> [!div class="nextstepaction"]
+> [A kapcsolat és az üzenetek kézbesítésével kapcsolatos problémák elhárítása](./signalr-howto-troubleshoot-method.md)

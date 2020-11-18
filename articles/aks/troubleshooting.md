@@ -4,12 +4,12 @@ description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata sor�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: d15e381baf3abdb77f63b17cbd1d33b24f5d3321
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aefb33325c1a5bf8e94d47106147d4c7c4f0f1ca
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286775"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684168"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -46,7 +46,7 @@ A következő három (3) eset nem megfelelő alhálózati méretet okoz:
    1. Kubenet használata esetén ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb** , mint a `number of buffer nodes needed to upgrade` .
    1. Ha az Azure CNI-t használja, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
    
-   Alapértelmezés szerint az AK-fürtök egy (1) maximális túllépési értéket állítanak be, de ez a frissítési viselkedés testreszabható úgy, hogy [egy csomópont-készlet maximális](upgrade-cluster.md#customize-node-surge-upgrade-preview) túllépését állítja be, ami növeli a frissítés befejezéséhez szükséges elérhető IP-címek számát.
+   Alapértelmezés szerint az AK-fürtök egy (1) maximális túllépési értéket állítanak be, de ez a frissítési viselkedés testreszabható úgy, hogy [egy csomópont-készlet maximális](upgrade-cluster.md#customize-node-surge-upgrade) túllépését állítja be, ami növeli a frissítés befejezéséhez szükséges elérhető IP-címek számát.
 
 1. AK létrehozása vagy AK-Nodepool hozzáadása
    1. Kubenet használata esetén ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb** , mint a `number of nodes requested for the node pool` .
@@ -86,13 +86,13 @@ Az AK-ban a slo és a szolgáltatói szerződéseket (SLA-kat) biztosító magok
 
 Ezek az időtúllépések a letiltott csomópontok közötti belső forgalomhoz kapcsolódnak. Ellenőrizze, hogy nem blokkolja-e a forgalmat, például a fürt csomópontjaihoz tartozó alhálózat [hálózati biztonsági csoportjaival](concepts-security.md#azure-network-security-groups) .
 
-## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Megpróbálom engedélyezni Role-Based Access Controlt (RBAC) egy meglévő fürtön. Hogyan tehetem meg?
+## <a name="im-trying-to-enable-kubernetes-role-based-access-control-kubernetes-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Megpróbálom engedélyezni a Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC) egy meglévő fürtön. Hogyan tehetem meg?
 
-A szerepköralapú hozzáférés-vezérlés (RBAC) a meglévő fürtökön való engedélyezése jelenleg nem támogatott, ezért az új fürtök létrehozásakor be kell állítani. A RBAC alapértelmezés szerint engedélyezve van, ha a parancssori felület, a portál vagy egy API-verziónál újabb verziót használ `2020-03-01` .
+A Kubernetes szerepköralapú hozzáférés-vezérlésének (Kubernetes RBAC) a meglévő fürtökön való engedélyezése jelenleg nem támogatott, ezért az új fürtök létrehozásakor be kell állítani. A Kubernetes RBAC alapértelmezés szerint engedélyezve van, ha a parancssori felületet, a portált vagy egy API-verziót használ `2020-03-01` .
 
-## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Létrehoztam egy olyan fürtöt, amelyen engedélyezve van a RBAC, és most már sok figyelmeztetés jelenik meg a Kubernetes-irányítópulton. A figyelmeztetés nélküli működéshez használt irányítópult. Mit tegyek?
+## <a name="i-created-a-cluster-with-kubernetes-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Létrehoztam egy fürtöt, amelyen engedélyezve van a Kubernetes RBAC, és most már sok figyelmeztetés jelenik meg a Kubernetes-irányítópulton. A figyelmeztetés nélküli működéshez használt irányítópult. Mit tegyek?
 
-A figyelmeztetések oka, hogy a fürtön engedélyezve van a RBAC, és az irányítópulthoz való hozzáférés alapértelmezés szerint korlátozva van. Általánosságban véve ez a megközelítés jó gyakorlat, mert az irányítópultnak a fürt összes felhasználójára vonatkozó alapértelmezett expozíciója biztonsági fenyegetésekhez vezethet. Ha továbbra is engedélyezni szeretné az irányítópultot, kövesse az [ebben a blogbejegyzésben](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)leírt lépéseket.
+A figyelmeztetések oka, hogy a fürtön engedélyezve van a Kubernetes RBAC, és az irányítópulthoz való hozzáférés alapértelmezés szerint korlátozva van. Általánosságban véve ez a megközelítés jó gyakorlat, mert az irányítópultnak a fürt összes felhasználójára vonatkozó alapértelmezett expozíciója biztonsági fenyegetésekhez vezethet. Ha továbbra is engedélyezni szeretné az irányítópultot, kövesse az [ebben a blogbejegyzésben](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)leírt lépéseket.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nem tudok naplókat beolvasni a kubectl-naplók használatával, vagy nem tudok csatlakozni az API-kiszolgálóhoz. "Hiba a kiszolgálóról: hiba a háttérrendszer tárcsázásakor: telefonos TCP...". Mit tegyek?
 
@@ -154,7 +154,7 @@ A megfelelő dokumentum lépéseinek *megkezdése előtt* kövesse az AK-fürt m
 Az elnevezési korlátozásokat az Azure platform és az AK is implementálja. Ha egy erőforrás neve vagy paramétere megszakítja az egyik ilyen korlátozást, a rendszer hibaüzenetet küld, amely megkéri, hogy adjon meg egy másik bemenetet. A következő közös elnevezési irányelvek érvényesek:
 
 * A fürt nevének 1-63 karakterből kell állnia. Az egyetlen megengedett karakter betű, szám, kötőjel és aláhúzás. Az első és az utolsó karakternek betűnek vagy számnak kell lennie.
-* Az AK-csomópont/ *MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. Az automatikusan generált szintaxisának `MC_resourceGroupName_resourceName_AzureRegion` nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát. [A csomópont-erőforráscsoport nevét is testreszabhatja](cluster-configuration.md#custom-resource-group-name)
+* Az AK-csomópont/*MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. Az automatikusan generált szintaxisának `MC_resourceGroupName_resourceName_AzureRegion` nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát. [A csomópont-erőforráscsoport nevét is testreszabhatja](cluster-configuration.md#custom-resource-group-name)
 * A *dnsPrefix* alfanumerikus értékekkel kell kezdődnie és végződnie, és 1-54 karakter közöttinek kell lennie. Az érvényes karakterek alfanumerikus értékeket és kötőjeleket (-) tartalmazhatnak. A *dnsPrefix* nem tartalmazhat speciális karaktereket, például pontot (.).
 * Az AK-csomópontok készletének neve csak kisbetűket tartalmazhat, és 1-11 karakter hosszúnak kell lennie a Linux-csomópontok és a 1-6 karakter Windows-csomópontok számára A névnek betűvel kell kezdődnie, és csak betűket és számokat tartalmazhat.
 * A Linux-csomópontok rendszergazdai felhasználónevét beállító rendszergazda *-username* betűvel kell kezdődnie, és csak betűket, számokat, kötőjeleket és aláhúzásokat tartalmazhat, és legfeljebb 64 karakter hosszú lehet.
@@ -167,7 +167,7 @@ A fürt műveletei korlátozottak, ha egy korábbi művelet még folyamatban van
 
 A fürt állapotának kimenete alapján:
 
-* Ha a fürt bármilyen kiépítési állapotban van, amely nem *sikeres* vagy *sikertelen volt* , várjon, amíg a művelet ( *frissítés/frissítés/létrehozás/méretezés/törlés/áttelepítés* ) be nem fejeződik. Az előző művelet befejeződése után próbálja megismételni a fürt legújabb műveletét.
+* Ha a fürt bármilyen kiépítési állapotban van, amely nem *sikeres* vagy *sikertelen volt*, várjon, amíg a művelet (*frissítés/frissítés/létrehozás/méretezés/törlés/áttelepítés*) be nem fejeződik. Az előző művelet befejeződése után próbálja megismételni a fürt legújabb műveletét.
 
 * Ha a fürtön sikertelen volt a frissítés, kövesse az itt leírt lépéseket, [amelyek a fürt hibás állapotba kerülnek, és a frissítés vagy a skálázás nem fog működni, amíg meg nem történik a javítás](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
 
@@ -365,7 +365,7 @@ Ajánlott beállítások:
 | 1.12.0 – 1.12.1 | 0755 |
 | 1.12.2 és újabb verziók | 0777 |
 
-A csatlakoztatási beállítások a tárolási osztály objektumban adhatók meg. A következő példa a *0777* -es készletet állítja be:
+A csatlakoztatási beállítások a tárolási osztály objektumban adhatók meg. A következő példa a *0777*-es készletet állítja be:
 
 ```yaml
 kind: StorageClass
@@ -388,7 +388,7 @@ parameters:
 Néhány további hasznos *mountOptions* -beállítás:
 
 * a *mfsymlinks* Azure Files csatlakoztatási (CIFS) támogatást nyújt a szimbolikus hivatkozások támogatásához
-* a *nobrl* megakadályozza a bájtos tartomány zárolási kérelmeinek küldését a kiszolgálónak. Erre a beállításra akkor van szükség, ha a CIFS-stílusú kötelező bájtos tartományba tartozó zárolásokkal rendelkező alkalmazások számára szükséges. A legtöbb CIFS-kiszolgáló még nem támogatja a tanácsadói bájtok tartományában lévő zárolások igénylését. Ha nem használ *nobrl* -t, akkor a CIFS-stílusú kötelező bájt-tartomány zárolásával megszakított alkalmazások a következőhöz hasonló hibaüzeneteket eredményezhetnek:
+* a *nobrl* megakadályozza a bájtos tartomány zárolási kérelmeinek küldését a kiszolgálónak. Erre a beállításra akkor van szükség, ha a CIFS-stílusú kötelező bájtos tartományba tartozó zárolásokkal rendelkező alkalmazások számára szükséges. A legtöbb CIFS-kiszolgáló még nem támogatja a tanácsadói bájtok tartományában lévő zárolások igénylését. Ha nem használ *nobrl*-t, akkor a CIFS-stílusú kötelező bájt-tartomány zárolásával megszakított alkalmazások a következőhöz hasonló hibaüzeneteket eredményezhetnek:
     ```console
     Error: SQLITE_BUSY: database is locked
     ```

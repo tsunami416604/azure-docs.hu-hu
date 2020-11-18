@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1af2e741b2ab8a6a0aa6257272798961f5962c43
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 4538654b255aad99ff00477134c9eeb5845e50d6
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167338"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682757"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Az Azure-infrastruktúra előkészítése az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS közös lemezének használatával
 
@@ -165,7 +165,7 @@ ms.locfileid: "92167338"
 Ez a cikk azokat a lépéseket ismerteti, amelyekkel előkészítheti az Azure-infrastruktúrát a magas rendelkezésre állású SAP-ASCS/SCS-példányok Windows feladatátvevő fürtön való telepítésére és konfigurálására egy olyan *fürt megosztott lemezének* használatával, amely az SAP ASCS-példányok fürtözését teszi elérhetővé.
 A *fürt megosztott lemezének* két alternatívája jelenik meg a dokumentációban:
 
-- [Azure megosztott lemezek](../../windows/disks-shared.md)
+- [Azure megosztott lemezek](../../disks-shared.md)
 - A [SIOS DataKeeper cluster Edition](https://us.sios.com/products/datakeeper-cluster/) használatával tükrözött tárhely hozható létre, amely a fürtözött megosztott lemezt szimulálja. 
 
 A bemutatott konfiguráció az [Azure Proximity-elhelyezési csoportjaira (PPG)](./sap-proximity-placement-scenarios.md) támaszkodik az SAP-munkaterhelések optimális hálózati késése érdekében. A dokumentáció nem fedi le az adatbázis rétegét.  
@@ -217,13 +217,13 @@ Az alábbi lista az (A) SCS/ERS Load Balancer konfigurációját mutatja be. Az 
 - Terheléselosztási szabályok
     - Ha standard Load Balancer használ, válassza a hektár portok elemet.
     - Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
-        - 32**Nr** TCP
-        - 36**Nr** TCP
-        - 39**Nr** TCP
-        - 81**Nr** TCP
-        - 5**Nr**13 TCP
-        - 5**Nr**14 TCP
-        - 5**Nr**16 TCP
+        - 32 **Nr** TCP
+        - 36 **Nr** TCP
+        - 39 **Nr** TCP
+        - 81 **Nr** TCP
+        - 5 **Nr** 13 TCP
+        - 5 **Nr** 14 TCP
+        - 5 **Nr** 16 TCP
 
     - Győződjön meg arról, hogy az Üresjárati időkorlát (perc) a 30 értékre van beállítva, és hogy a lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása) engedélyezve van.
 
@@ -237,17 +237,17 @@ Ahogy a sorba helyezni Replication Server 2 (ERS2) is fürtözött, a ERS2 virtu
   A virtuális gépek már hozzá lettek adva a ILB backend-készlethez.  
 
 - második mintavételi port
-    - Port 621**Nr**  
+    - Port 621 **Nr**  
     Hagyja meg az alapértelmezett beállítást a protokoll (TCP), az intervallum (5), a nem Kifogástalan állapot küszöbértéke (2) beállításnál.
 
 - 2. terheléselosztási szabályok
     - Ha standard Load Balancer használ, válassza a hektár portok elemet.
     - Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
-        - 32**Nr** TCP
-        - 33**Nr** TCP
-        - 5**Nr**13 TCP
-        - 5**Nr**14 TCP
-        - 5**Nr**16 TCP
+        - 32 **Nr** TCP
+        - 33 **Nr** TCP
+        - 5 **Nr** 13 TCP
+        - 5 **Nr** 14 TCP
+        - 5 **Nr** 16 TCP
 
     - Győződjön meg arról, hogy az Üresjárati időkorlát (perc) a 30 értékre van beállítva, és hogy a lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása) engedélyezve van.
 
@@ -466,13 +466,13 @@ A SIOS szoftver telepítése előtt hozza létre a DataKeeperSvc tartományi fel
 
    _A SIOS-DataKeeper telepítésének első lapja_
 
-2. A párbeszédpanelen válassza az **Igen**lehetőséget.
+2. A párbeszédpanelen válassza az **Igen** lehetőséget.
 
    ![32. ábra: a DataKeeper értesíti, hogy a szolgáltatás le lesz tiltva][sap-ha-guide-figure-3032]
 
    _A DataKeeper tájékoztatja, hogy a szolgáltatás le lesz tiltva_
 
-3. Javasoljuk, hogy a párbeszédpanelen válassza a **tartomány vagy a kiszolgáló fiók**lehetőséget.
+3. Javasoljuk, hogy a párbeszédpanelen válassza a **tartomány vagy a kiszolgáló fiók** lehetőséget.
 
    ![33. ábra: felhasználó kiválasztása a SIOS DataKeeper][sap-ha-guide-figure-3033]
 
@@ -558,6 +558,6 @@ Miután mindkét csomópontra telepítette a SIOS DataKeeper, indítsa el a konf
    _Feladatátvevőfürt-kezelő megjeleníti a replikált DataKeeper lemezt_
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Telepítse az SAP NetWeaver HA szolgáltatást egy Windows feladatátvevő fürt és egy SAP ASCS/SCS-példány megosztott lemezének használatával][sap-high-availability-installation-wsfc-shared-disk]

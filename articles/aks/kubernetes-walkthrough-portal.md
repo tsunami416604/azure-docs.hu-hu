@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 10/06/2020
 ms.custom: mvc, seo-javascript-october2019, devx-track-azurecli
-ms.openlocfilehash: 30c00b1dfda3e30f047faf0deed7151aaf8c3fae
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 606de7c07f2760ca678563ccf1900fc1bb915c1a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745784"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684882"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése a Azure Portal használatával
 
@@ -36,10 +36,10 @@ Az AKS-fürt létrehozásához hajtsa végre az alábbi lépéseket:
 2. Válassza a **Tárolók** >  **Kubernetes Service** lehetőséget.
 
 3. Az **Alapvető beállítások** lapon konfigurálja az alábbiakat:
-    - **Projekt részletei** : válasszon ki egy Azure- **előfizetést** , majd válasszon ki vagy hozzon létre egy Azure- **erőforráscsoportot** , például *myResourceGroup* .
-    - **Fürt részletei** : adjon meg egy **Kubernetes-fürtöt** , például a *myAKSCluster* nevet. Válasszon **régiót** és **Kubernetes-verziót** az AK-fürthöz.
-    - **Elsődleges csomópont-készlet** : válassza ki a virtuális gép **csomópontjának méretét** az AK-csomópontok számára. A virtuális gép mérete *nem* módosítható, ha egy AK-fürt üzembe helyezése megtörtént.
-            – Válassza ki a fürtbe telepítendő csomópontok számát. Ehhez a rövid útmutatóhoz a **Csomópontok száma** beállítás értékeként adjon meg *1* -et. A csomópontok száma a fürt telepítése után is *módosítható* .
+    - **Projekt részletei**: válasszon ki egy Azure- **előfizetést**, majd válasszon ki vagy hozzon létre egy Azure- **erőforráscsoportot**, például *myResourceGroup*.
+    - **Fürt részletei**: adjon meg egy **Kubernetes-fürtöt**, például a *myAKSCluster* nevet. Válasszon **régiót** és **Kubernetes-verziót** az AK-fürthöz.
+    - **Elsődleges csomópont-készlet**: válassza ki a virtuális gép **csomópontjának méretét** az AK-csomópontok számára. A virtuális gép mérete *nem* módosítható, ha egy AK-fürt üzembe helyezése megtörtént.
+            – Válassza ki a fürtbe telepítendő csomópontok számát. Ehhez a rövid útmutatóhoz a **Csomópontok száma** beállítás értékeként adjon meg *1*-et. A csomópontok száma a fürt telepítése után is *módosítható*.
     
     ![AKS-fürt létrehozása – alapvető adatok megadása](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
@@ -51,13 +51,13 @@ Az AKS-fürt létrehozásához hajtsa végre az alábbi lépéseket:
 
 5. A **Hitelesítés** lapon konfigurálja az alábbiakat:
     - Hozzon létre egy új szolgáltatásnevet úgy, hogy a **Szolgáltatásnév** mezőben meghagyja az **(új) alapértelmezett szolgáltatásnév** értéket. De használhat egy már meglévőt is, ha a *Szolgáltatásnév konfigurálása* lehetőséget választja. Ha meglévőt használ, meg kell adnia az SPN ügyfél-azonosítót és a titkos kulcsot.
-    - Engedélyezze a Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) beállítását. Így részletesebben szabályozhatja az AKS-fürtben üzembe helyezett Kubernetes-erőforrásokhoz való hozzáférést.
+    - Engedélyezze a Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) beállítását. Így részletesebben szabályozhatja az AKS-fürtben üzembe helyezett Kubernetes-erőforrásokhoz való hozzáférést.
 
     Azt is megteheti, hogy az egyszerű szolgáltatásnév helyett felügyelt identitást is használhat. További információért lásd: [felügyelt identitások használata](use-managed-identity.md) .
 
-Alapértelmezés szerint a rendszer *alapszintű* hálózatkezelést használ, a tárolók Azure monitor pedig engedélyezve van. Ha az ellenőrzés véget ért, kattintson az **Áttekintés és létrehozás** , majd a **Létrehozás** lehetőségre.
+Alapértelmezés szerint a rendszer *alapszintű* hálózatkezelést használ, a tárolók Azure monitor pedig engedélyezve van. Ha az ellenőrzés véget ért, kattintson az **Áttekintés és létrehozás**, majd a **Létrehozás** lehetőségre.
 
-Az AKS-fürt létrehozása eltarthat néhány percig. Ha befejeződött a telepítés, kattintson az **erőforrás** megnyitása lehetőségre, vagy keresse meg az AK-beli fürterőforrás-csoportot (például *myResourceGroup* ), és válassza ki az AK-erőforrást, például *myAKSCluster* . Megjelenik az AK-fürt irányítópultja, ahogy az a következő példában látható:
+Az AKS-fürt létrehozása eltarthat néhány percig. Ha befejeződött a telepítés, kattintson az **erőforrás** megnyitása lehetőségre, vagy keresse meg az AK-beli fürterőforrás-csoportot (például *myResourceGroup*), és válassza ki az AK-erőforrást, például *myAKSCluster*. Megjelenik az AK-fürt irányítópultja, ahogy az a következő példában látható:
 
 ![Példa AKS-irányítópult az Azure Portalon](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
@@ -81,7 +81,7 @@ A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kube
 kubectl get nodes
 ```
 
-A következő példakimenet az előző lépésekben létrehozott csomópontot mutatja be. Győződjön meg arról, hogy a csomópont állapota *kész* :
+A következő példakimenet az előző lépésekben létrehozott csomópontot mutatja be. Győződjön meg arról, hogy a csomópont állapota *kész*:
 
 ```output
 NAME                       STATUS    ROLES     AGE       VERSION
@@ -228,7 +228,7 @@ Az Azure vote alkalmazás működés közbeni megtekintéséhez nyisson meg egy 
 
 A fürt létrehozásakor a tárolók Azure Monitor engedélyezve lettek. Ez a monitorozási funkció az AKS-fürt és a fürtön futó podok állapotával kapcsolatos mérőszámokat biztosít.
 
-Az adatok Azure Portalra történő feltöltése eltarthat néhány percig. Az Azure Vote-podok jelenlegi állapotának, üzemidejének és erőforrás-felhasználásának megjelenítéséhez lépjen vissza az AKS-erőforráshoz az Azure Portalon (például *myAKSCluster* ). Az állapotot ezután a következő módon érheti el:
+Az adatok Azure Portalra történő feltöltése eltarthat néhány percig. Az Azure Vote-podok jelenlegi állapotának, üzemidejének és erőforrás-felhasználásának megjelenítéséhez lépjen vissza az AKS-erőforráshoz az Azure Portalon (például *myAKSCluster*). Az állapotot ezután a következő módon érheti el:
 
 1. A bal oldali **figyelés** **területen válassza az** eredmények lehetőséget
 1. Válassza a **+ Szűrő hozzáadása** elemet a képernyő felső részén

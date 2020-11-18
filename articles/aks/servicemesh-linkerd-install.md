@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5b2ec220bbf14a79247ed2c78a0e84f4717fae3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77593723"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684236"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>A Linkerd telepítése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -35,7 +35,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb, RBAC engedélyezve), és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
+A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb, KUBERNETES RBAC engedélyezve), és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
 
 Az összes Linkerd-hüvelyt Linux-csomópontokon kell futtatni – ez a beállítás az alapértelmezett telepítési módszer az alábbiakban részletezett módon, és nem igényel további konfigurálást.
 
@@ -255,7 +255,7 @@ Végül távolítsa el a vezérlő síkot a következőképpen:
 linkerd install --ignore-cluster | kubectl delete -f -
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Linkerd további telepítési és konfigurációs lehetőségeinek megismeréséhez tekintse meg a következő hivatalos Linkerd útmutatót:
 

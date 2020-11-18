@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/02/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 285fa34db3886cf405a3682438a27a17c75d81ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c42e9c31397e9313898d7029366bc8de169d368e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666709"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683828"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>A Istio telepítése és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -35,7 +35,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.16` és újabb, RBAC engedélyezve), és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
+A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.16` és újabb, KUBERNETES RBAC engedélyezve), és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
 
 Győződjön meg arról, hogy elolvasta a [Istio teljesítményére és méretezhetőségére](https://istio.io/docs/concepts/performance-and-scalability/) vonatkozó dokumentációt, és Ismerje meg a Istio futtatásához szükséges további erőforrás-követelményeket az AK-fürtben. Az alapvető és a memóriára vonatkozó követelmények az adott munkaterhelés alapján változhatnak. Válasszon megfelelő számú csomópontot és virtuálisgép-méretet a telepítéshez.
 

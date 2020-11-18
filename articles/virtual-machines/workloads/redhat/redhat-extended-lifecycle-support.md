@@ -1,5 +1,5 @@
 ---
-title: Red Hat Enterprise Linux bővített életciklus-támogatás
+title: Red Hat Enterprise Linux – teljes életciklusra kiterjesztett támogatás
 description: További információ a Red Hat Enterprise Extended Lifecycle támogatásának hozzáadásáról
 author: mathapli
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: e7c9f9b158d01204536712f8024ed098cd7a5037
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 124ff65087887a437e0b82fbd7b1e4c72e4f7b4c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372872"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684355"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) bővített életciklus-támogatás
 Ez a cikk a Red Hat Enterprise-lemezképek kiterjesztett életciklus-támogatásával kapcsolatos információkat tartalmaz:
@@ -40,9 +40,9 @@ A 2020. november 30-án kezdődően a Red Hat Enterprise Linux 6 a karbantartás
 
 #### <a name="what-is-the-process-to-add-extended-life-cycle-support-els-repositories-to-continue-to-receive-software-maintenance-bug-and-security-fixes-and--support-for-red-hat-enterprise-linux-6"></a>Mi a folyamat a kiterjesztett életciklus-támogatási (ELS) Tárházak hozzáadásához, hogy továbbra is megkapja a szoftveres karbantartást (a hibák és a biztonsági javítások), valamint a Red Hat Enterprise Linux 6 támogatását?
 
-Az ELS-ra való regisztráció befejezésének folyamata hamarosan elérhető lesz (legkésőbb 2020. november 15. között).
+Az ELS-ra való regisztráció befejezését követően a befejezési folyamat hamarosan elérhető lesz (legkésőbb 2020 november 30-ig).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-ban elérhető RHEL-lemezképek teljes listájának megtekintéséhez lásd: [Red Hat Enterprise Linux (RHEL) lemezképek az Azure-ban](./redhat-imagelist.md).
 * További információ az Azure Red Hat frissítési infrastruktúráról: [Red Hat frissítési infrastruktúra az igény szerinti RHEL virtuális gépekhez az Azure-ban](./redhat-rhui.md).

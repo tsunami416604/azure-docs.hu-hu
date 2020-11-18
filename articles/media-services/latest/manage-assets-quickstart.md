@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 6b4373efc4979900e676257cc0b2748145165499
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0793c8abee27ca415feba313efb029daf092bec9
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91261413"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683012"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Gyors útmutató: tartalom feltöltése, kódolása és továbbítása a portálon
 
@@ -27,7 +27,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan töltheti fel, kódolhatja é
 * A médiatartalmak Azure-ban való kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot, és fel kell töltenie a kiváló minőségű digitális médiafájlt egy **eszközbe**. 
     
     > [!NOTE]
-    > Ha a videó korábban fel lett töltve a Media Services-fiókba Media Services V3 API-val, vagy a tartalom egy élő kimenet alapján lett létrehozva, akkor nem jelenik meg a **kódolás**, az **elemzés**vagy a **titkosítás** gomb a Azure Portal. Ezeket a feladatokat a Media Services V3 API-k használatával hajthatja végre.
+    > Ha a videó korábban fel lett töltve a Media Services-fiókba Media Services V3 API-val, vagy a tartalom egy élő kimenet alapján lett létrehozva, akkor nem jelenik meg a **kódolás**, az **elemzés** vagy a **titkosítás** gomb a Azure Portal. Ezeket a feladatokat a Media Services V3 API-k használatával hajthatja végre.
 
     Tekintse át a következőket: 
 
@@ -40,7 +40,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan töltheti fel, kódolhatja é
         Jelenleg a Azure Portal használatakor a következőket teheti: létrehoz egy TTML és WebVTT zárt feliratú fájlokat. Az ezekben a formátumokban lévő fájlok használatával a fogyatékkal élők számára elérhetővé teheti a hang-és videofájlokat. A tartalomból kulcsszavakat is kinyerhet.
 
         A videó-és hangfájlokból származó elemzések kinyerését lehetővé tevő széles körű élmény érdekében használja a Media Services v3-es előállítók használatát (lásd a következő [oktatóanyagot: videók elemzése az Media Services v3](analyze-videos-tutorial-with-api.md)használatával). <br/>Ha részletesebb információkra van szüksége, használja a [video Indexer](../video-indexer/index.yml) közvetlenül.    
-* A tartalom feldolgozása után médiatartalmakat is továbbíthat az ügyfelek számára. Ahhoz, hogy a kimeneti eszközön a videók elérhetők legyenek az ügyfelek számára a lejátszáshoz, létre kell hoznia egy **folyamatos átviteli lokátort**. A **folyamatos átviteli lokátor**létrehozásakor meg kell adnia egy **folyamatos átviteli házirendet**. A **folyamatos átviteli szabályzatok** lehetővé teszik a folyamatos átviteli protokollok és a titkosítási beállítások (ha vannak) definiálását a **streaming-lokátorok**számára.
+* A tartalom feldolgozása után médiatartalmakat is továbbíthat az ügyfelek számára. Ahhoz, hogy a kimeneti eszközön a videók elérhetők legyenek az ügyfelek számára a lejátszáshoz, létre kell hoznia egy **folyamatos átviteli lokátort**. A **folyamatos átviteli lokátor** létrehozásakor meg kell adnia egy **folyamatos átviteli házirendet**. A **folyamatos átviteli szabályzatok** lehetővé teszik a folyamatos átviteli protokollok és a titkosítási beállítások (ha vannak) definiálását a **streaming-lokátorok** számára.
     
     Tekintse át
 
@@ -54,7 +54,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan töltheti fel, kódolhatja é
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[Media Services-fiók létrehozása](create-account-howto.md#use-the-azure-portal)
+[Media Services-fiók létrehozása](create-account-howto.md)
 
 ## <a name="upload"></a>Feltöltés
 
@@ -82,9 +82,9 @@ Ha az eszközök ablakra navigál, látni fogja, hogy a kimeneti eszköz hozzá 
 
 ## <a name="monitor-the-job-progress"></a>A feladatok előrehaladásának figyelése
 
-A feladat állapotának megtekintéséhez navigáljon a **feladatok**elemhez. A feladatok általában a következő állapotokon haladnak át: ütemezett, várólistán lévő, feldolgozás, befejezett (végső állapot). Ha a feladat hibát észlelt, a Hiba állapot jelenik meg.
+A feladat állapotának megtekintéséhez navigáljon a **feladatok** elemhez. A feladatok általában a következő állapotokon haladnak át: ütemezett, várólistán lévő, feldolgozás, befejezett (végső állapot). Ha a feladat hibát észlelt, a Hiba állapot jelenik meg.
 
-![status](./media/manage-assets-quickstart/job-status.png)
+![Állapot](./media/manage-assets-quickstart/job-status.png)
 
 ## <a name="publish-and-stream"></a>Közzététel és stream
 
@@ -92,7 +92,7 @@ Egy eszköz közzétételéhez most hozzá kell adnia egy folyamatos átviteli l
 
 ### <a name="streaming-locator"></a>Folyamatos átviteli lokátor 
 
-1. A **folyamatos átviteli lokátor** szakaszban nyomja meg **a + streaming-lokátor hozzáadása**lehetőséget.
+1. A **folyamatos átviteli lokátor** szakaszban nyomja meg **a + streaming-lokátor hozzáadása** lehetőséget.
     Ez közzéteszi az eszközt, és létrehozza a streaming URL-címeket.
 
     > [!NOTE]
@@ -114,6 +114,6 @@ Vagy másolja a streaming URL-címet, és használja azt az ügyfél-lejátszób
 
 Ha szeretné kipróbálni a többi rövid útmutatót, tartsa be a következőt: a létrehozott erőforrásokhoz. Ellenkező esetben lépjen a Azure Portalra, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben futtatta ezt a rövid útmutatót, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A portál használata tartalom titkosításához](encrypt-content-quickstart.md)

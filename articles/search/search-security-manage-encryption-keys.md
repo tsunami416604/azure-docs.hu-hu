@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7f2df005a8d3211ba53aadb16370624c4f530eb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 95ac4ed83a4486665ce378972ea7d6423c2482d5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575866"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682910"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Ügyfél által felügyelt kulcsok konfigurálása az adattitkosításhoz az Azure-ban Cognitive Search
 
@@ -46,7 +46,7 @@ Ha más régiót használ, vagy az augusztus 1. előtt létrehozott szolgáltat�
 Ebben a forgatókönyvben a következő eszközöket és szolgáltatásokat használják.
 
 + Az [Azure Cognitive Search](search-create-service-portal.md) [számlázható](search-sku-tier.md#tiers) szinten (bármely régióban alapszintű vagy újabb).
-+ [Azure Key Vault](../key-vault/secrets/quick-create-portal.md#create-a-vault) ugyanabban az előfizetésben, mint az Azure Cognitive Search. A Key vaultnak engedélyezve kell lennie a helyreállítható **törlési** és **kiürítési védelemmel** .
++ [Azure Key Vault](../key-vault/general/overview.md)a Key Vault a [Azure Portal](../key-vault//general/quick-create-portal.md), az [Azure CLI](../key-vault//general/quick-create-cli.md)vagy a [Azure PowerShell](../key-vault//general/quick-create-powershell.md)használatával hozható létre. ugyanabban az előfizetésben, mint az Azure Cognitive Search. A Key vaultnak engedélyezve kell lennie a helyreállítható **törlési** és **kiürítési védelemmel** .
 + [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md). Ha még nem rendelkezik ilyennel, [állítson be egy új bérlőt](../active-directory/develop/quickstart-create-new-tenant.md).
 
 Olyan keresési alkalmazással kell rendelkeznie, amely létrehozhatja a titkosított objektumot. Ebben a kódban egy Key Vault-kulcsra és Active Directory regisztrációs információra fog hivatkozni. Ez a kód lehet egy működő alkalmazás vagy prototípus-kód, például a [C# kód minta DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK).
@@ -116,7 +116,7 @@ Hagyja ki ezt a lépést, ha már rendelkezik egy kulccsal Azure Key Vaultban.
 
 1. A telepítés elindításához válassza a **Létrehozás** lehetőséget.
 
-1. Jegyezze fel a kulcs azonosítóját, amely a kulcs **értékének URI-ja** , a **kulcs neve** és a **kulcs verziószáma**. Az Azure Cognitive Search-ben titkosított index definiálásához szüksége lesz az azonosítóra.
+1. Jegyezze fel a kulcs azonosítóját, amely a kulcs **értékének URI-ja**, a **kulcs neve** és a **kulcs verziószáma**. Az Azure Cognitive Search-ben titkosított index definiálásához szüksége lesz az azonosítóra.
 
    :::image type="content" source="media/search-manage-encryption-keys/cmk-key-identifier.png" alt-text="Új Key Vault-kulcs létrehozása":::
 
@@ -158,7 +158,7 @@ A hozzáférési engedélyeket bármikor visszavonhatja. A visszavonás után a 
 
    :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="A Key Vault hozzáférési szabályzatának kiválasztása":::
 
-1. A **legfontosabb engedélyek** területen válassza a *beolvasás* , a *kulcs kicsomagolása* és a *becsomagolási kulcs* elemet.
+1. A **legfontosabb engedélyek** területen válassza a *beolvasás*, a *kulcs kicsomagolása* és a *becsomagolási kulcs* elemet.
 
 1. A **titkos engedélyek** területen válassza a *beolvasás* lehetőséget.
 

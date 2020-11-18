@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: d9f25fc419a92d125dffe5c14b9b4c19cd795c6e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 30b09d43cbe510318ac4f48e0655d5483491c215
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318450"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682774"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához
 
@@ -39,7 +39,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg sajá
 
 * Egy olyan Azure Key Vault, amely rendelkezik a helyreállítható **törléssel** , és **nem** törölheti az engedélyezett tulajdonságokat
 
-  További információ ezekről a tulajdonságokról: [Azure Key Vault a Soft-delete áttekintése](../key-vault/general/soft-delete-overview.md) és [az ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md). Ha még nem ismeri a Azure Key Vaultt, megtudhatja, [hogyan hozhat létre kulcstartót](../key-vault/secrets/quick-create-portal.md#create-a-vault) a Azure Portal használatával vagy a [new-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)Azure PowerShell parancs használatával.
+  További információ ezekről a tulajdonságokról: [Azure Key Vault a Soft-delete áttekintése](../key-vault/general/soft-delete-overview.md) és [az ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md). Ha még nem ismeri a [Azure Key Vaultt](../key-vault/general/overview.md), megtudhatja, hogyan hozhat létre kulcstartót a [Azure Portal](../key-vault/general/quick-create-portal.md), az [Azure CLI](../key-vault/general/quick-create-cli.md)vagy a [Azure PowerShell](../key-vault/general/quick-create-powershell.md)használatával.
 
 * A Key vaultban a következő tulajdonság-értékekkel létrehozott kulcs:
 
@@ -203,7 +203,7 @@ Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy]
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg az Azure Key vaultot.
 
-1. A Key Vault menüjében válassza a **hozzáférési szabályzatok**  >  **hozzáférési házirend hozzáadása**lehetőséget, például:
+1. A Key Vault menüjében válassza a **hozzáférési szabályzatok**  >  **hozzáférési házirend hozzáadása** lehetőséget, például:
 
    ![Hozzáférési szabályzat hozzáadása a rendszerhez rendelt felügyelt identitáshoz](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
 
@@ -219,11 +219,11 @@ Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy]
 
       ![Válassza a "kulcskezelő" > "kulcs engedélyei" elemet.](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. Válassza a **tag kiválasztása**lehetőséget, majd a **nincs kiválasztva**lehetőséget. A **résztvevő** ablaktábla megnyitása után keresse meg és válassza ki az ISE elemet a keresőmezőbe. Ha elkészült, válassza a Hozzáadás **lehetőséget**  >  **Add**.
+   1. Válassza a **tag kiválasztása** lehetőséget, majd a **nincs kiválasztva** lehetőséget. A **résztvevő** ablaktábla megnyitása után keresse meg és válassza ki az ISE elemet a keresőmezőbe. Ha elkészült, válassza a Hozzáadás **lehetőséget**  >  **Add**.
 
       ![Válassza ki a rendszerbiztonsági tagként használni kívánt ISE-t](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 
-   1. Ha elkészült a **hozzáférési szabályzatok** ablaktáblával, válassza a **Mentés**lehetőséget.
+   1. Ha elkészült a **hozzáférési szabályzatok** ablaktáblával, válassza a **Mentés** lehetőséget.
 
 További információ: a [hitelesítés Key Vault](../key-vault/general/authentication.md) és [egy Key Vault hozzáférési szabályzat kiosztása](../key-vault/general/assign-access-policy-portal.md).
 

@@ -1,20 +1,20 @@
 ---
-title: Az Azure AD és a RBAC használata fürtökhöz
+title: Az Azure AD és a Kubernetes RBAC használata fürtökhöz
 titleSuffix: Azure Kubernetes Service
-description: Ismerje meg, hogyan használhatja Azure Active Directory csoporttagság használatát a fürterőforrások hozzáférésének korlátozásához szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure Kubernetes szolgáltatásban (ak)
+description: Ismerje meg, hogyan használhatja Azure Active Directory csoporttagság használatát a Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) használatával az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: 2845a091c8a89f22e8892141dd2dad26d6049447
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f49e9f6b4f5aaf58ff055043b52cfe99e3e39f19
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88006842"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684287"
 ---
-# <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>A fürterőforrások hozzáférésének szabályozása szerepköralapú hozzáférés-vezérléssel és Azure Active Directory identitásokkal az Azure Kubernetes szolgáltatásban
+# <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>A fürterőforrások hozzáférésének szabályozása a Kubernetes szerepköralapú hozzáférés-vezérléssel és Azure Active Directory identitásokkal az Azure Kubernetes szolgáltatásban
 
-Az Azure Kubernetes Service (ak) konfigurálható úgy, hogy Azure Active Directory (AD) használatát használja a felhasználói hitelesítéshez. Ebben a konfigurációban egy Azure AD-hitelesítési jogkivonat használatával jelentkezik be egy AK-fürtbe. A Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) is konfigurálhatja a fürt erőforrásaihoz való hozzáférés korlátozásához a felhasználó identitása vagy csoporttagság alapján.
+Az Azure Kubernetes Service (ak) konfigurálható úgy, hogy Azure Active Directory (AD) használatát használja a felhasználói hitelesítéshez. Ebben a konfigurációban egy Azure AD-hitelesítési jogkivonat használatával jelentkezik be egy AK-fürtbe. A Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC) is konfigurálhatja a fürt erőforrásaihoz való hozzáférés korlátozásához a felhasználó identitása vagy csoporttagság alapján.
 
 Ez a cikk bemutatja, hogyan kezelheti az Azure AD-csoporttagság használatával a névterek és a fürt erőforrásaihoz való hozzáférést a Kubernetes RBAC egy AK-fürtben. Például a csoportok és a felhasználók az Azure AD-ben jönnek létre, majd a szerepkörök és a RoleBindings az AK-fürtben jönnek létre, így biztosítva a megfelelő engedélyeket az erőforrások létrehozásához és megtekintéséhez.
 
@@ -44,13 +44,13 @@ AKS_ID=$(az aks show \
     --query id -o tsv)
 ```
 
-Hozza létre az első példa csoportot az Azure AD-ben az alkalmazás fejlesztői számára az az [ad Group Create][az-ad-group-create] paranccsal. A következő példában létrehozunk egy *appdev*nevű csoportot:
+Hozza létre az első példa csoportot az Azure AD-ben az alkalmazás fejlesztői számára az az [ad Group Create][az-ad-group-create] paranccsal. A következő példában létrehozunk egy *appdev* nevű csoportot:
 
 ```azurecli-interactive
 APPDEV_ID=$(az ad group create --display-name appdev --mail-nickname appdev --query objectId -o tsv)
 ```
 
-Most hozzon létre egy Azure-szerepkör-hozzárendelést a *appdev* -csoport számára az az [role hozzárendelés Create][az-role-assignment-create] paranccsal. Ez a hozzárendelés lehetővé teszi, hogy a csoport bármely tagja használja az `kubectl` AK-fürtöket az *Azure Kubernetes Service-fürt felhasználói szerepkörének*megadásával.
+Most hozzon létre egy Azure-szerepkör-hozzárendelést a *appdev* -csoport számára az az [role hozzárendelés Create][az-role-assignment-create] paranccsal. Ez a hozzárendelés lehetővé teszi, hogy a csoport bármely tagja használja az `kubectl` AK-fürtöket az *Azure Kubernetes Service-fürt felhasználói szerepkörének* megadásával.
 
 ```azurecli-interactive
 az role assignment create \
@@ -62,13 +62,13 @@ az role assignment create \
 > [!TIP]
 > Ha hibaüzenetet kap `Principal 35bfec9328bd4d8d9b54dea6dac57b82 does not exist in the directory a5443dcd-cd0e-494d-a387-3039b419f0d5.` , várjon néhány másodpercet, amíg az Azure ad-csoport objektumazonosító át nem terjed a címtárban, majd próbálja megismételni a `az role assignment create` parancsot.
 
-Hozzon létre egy második példa csoportot, amely a *opssre*nevű SREs:
+Hozzon létre egy második példa csoportot, amely a *opssre* nevű SREs:
 
 ```azurecli-interactive
 OPSSRE_ID=$(az ad group create --display-name opssre --mail-nickname opssre --query objectId -o tsv)
 ```
 
-Ismét hozzon létre egy Azure-szerepkör-hozzárendelést a csoport tagjai számára az *Azure Kubernetes Service-fürt felhasználói szerepkörének*megadásához:
+Ismét hozzon létre egy Azure-szerepkör-hozzárendelést a csoport tagjai számára az *Azure Kubernetes Service-fürt felhasználói szerepkörének* megadásához:
 
 ```azurecli-interactive
 az role assignment create \
@@ -79,7 +79,7 @@ az role assignment create \
 
 ## <a name="create-demo-users-in-azure-ad"></a>Bemutató felhasználók létrehozása az Azure AD-ben
 
-Az Azure AD-ben az alkalmazás-fejlesztőknek és a SREs két példával létrehozott csoportoknak köszönhetően két példás felhasználót hozhat létre. A cikk végén található RBAC-integráció teszteléséhez jelentkezzen be az AK-fürtbe ezekkel a fiókokkal.
+Az Azure AD-ben az alkalmazás-fejlesztőknek és a SREs két példával létrehozott csoportoknak köszönhetően két példás felhasználót hozhat létre. A cikk végén a Kubernetes RBAC-integráció teszteléséhez jelentkezzen be az AK-fürtbe ezekkel a fiókokkal.
 
 Hozza létre az első felhasználói fiókot az Azure AD-ben az az [ad User Create][az-ad-user-create] paranccsal.
 
@@ -129,7 +129,7 @@ Hozzon létre egy névteret az AK-fürtben a [kubectl Create Namespace][kubectl-
 kubectl create namespace dev
 ```
 
-A Kubernetes-ben a *szerepkörök* határozzák meg a megadható engedélyeket, és *RoleBindings* azokat a kívánt felhasználókra vagy csoportokra. Ezek a hozzárendelések egy adott névtérre vagy a teljes fürtre is alkalmazhatók. További információ: RBAC- [hitelesítés használata][rbac-authorization].
+A Kubernetes-ben a *szerepkörök* határozzák meg a megadható engedélyeket, és *RoleBindings* azokat a kívánt felhasználókra vagy csoportokra. Ezek a hozzárendelések egy adott névtérre vagy a teljes fürtre is alkalmazhatók. További információ: [a KUBERNETES RBAC-hitelesítés használata][rbac-authorization].
 
 Először hozzon létre egy szerepkört a *fejlesztői* névtérhez. Ez a szerepkör teljes körű engedélyeket biztosít a névtérnek. Éles környezetekben részletesebb engedélyeket adhat meg a különböző felhasználókhoz vagy csoportokhoz.
 
@@ -410,5 +410,5 @@ Az identitás-és erőforrás-vezérléssel kapcsolatos ajánlott eljárásokér
 [az-ad-user-create]: /cli/azure/ad/user#az-ad-user-create
 [az-ad-group-member-add]: /cli/azure/ad/group/member#az-ad-group-member-add
 [az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md

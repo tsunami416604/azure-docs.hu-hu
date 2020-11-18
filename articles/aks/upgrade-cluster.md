@@ -3,13 +3,13 @@ title: Azure Kubernetes Service- (AKS-) fürt frissítése
 description: Ismerje meg, hogyan frissíthet egy Azure Kubernetes-szolgáltatási (ak-) fürtöt a legújabb funkciók és biztonsági frissítések beszerzéséhez.
 services: container-service
 ms.topic: article
-ms.date: 10/21/2020
-ms.openlocfilehash: 046c010cdd811b53ef8ef35624ed41a673af43d3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 11/17/2020
+ms.openlocfilehash: 262905c9f840850795ba9555912e81eca61369d1
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461447"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683233"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service- (AKS-) fürt frissítése
 
@@ -26,7 +26,7 @@ Ehhez a cikkhez az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A ve
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Elérhető AK-fürt frissítésének keresése
 
-A fürthöz elérhető Kubernetes-kiadások vizsgálatához használja az az [AK Get-upgrade][az-aks-get-upgrades] parancsot. Az alábbi példa a *myResourceGroup*nevű erőforráscsoport *myAKSCluster* nevű fürtjében elérhető frissítéseit ellenőrzi:
+A fürthöz elérhető Kubernetes-kiadások vizsgálatához használja az az [AK Get-upgrade][az-aks-get-upgrades] parancsot. Az alábbi példa a *myResourceGroup* nevű erőforráscsoport *myAKSCluster* nevű fürtjében elérhető frissítéseit ellenőrzi:
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
@@ -35,11 +35,11 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 > [!NOTE]
 > Ha egy támogatott AK-fürtöt frissít, a Kubernetes alverzióit nem lehet kihagyni. Például a *1.12. x*  ->  *1.13. x* vagy *1.13. x*  ->  *1.14. x* közötti frissítések engedélyezettek, a *1.12. x*  ->  *1.14. x* azonban nem.
 >
-> A frissítéshez *1.12. x*  ->  *1,14. x*-ről először a *1.12. x*1.13. x verzióról kell frissíteni,  ->  *1.13.x*majd az *1.13. x*  ->  *1.14. x*verziójáról kell frissíteni.
+> A frissítéshez *1.12. x*  ->  *1,14. x*-ről először a *1.12. x* 1.13. x verzióról kell frissíteni,  ->  *1.13.x* majd az *1.13. x*  ->  *1.14. x* verziójáról kell frissíteni.
 >
 > Több verzió kihagyása csak akkor végezhető el, ha nem támogatott verzióról frissít vissza egy támogatott verzióra. Például nem támogatott *1.10. x* – > egy támogatott *1.15. x-et* lehet befejezni.
 
-A következő példa kimenete azt mutatja, hogy a fürt frissíthető a *1.13.9* és a *1.13.10*verzióra:
+A következő példa kimenete azt mutatja, hogy a fürt frissíthető a *1.13.9* és a *1.13.10* verzióra:
 
 ```console
 Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
@@ -51,7 +51,7 @@ Ha nincs elérhető frissítés, a következőket kapja:
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
 
-## <a name="customize-node-surge-upgrade-preview"></a>Csomópont-túlfeszültségek frissítésének testreszabása (előzetes verzió)
+## <a name="customize-node-surge-upgrade"></a>Csomópont-túlfeszültség-frissítés testreszabása
 
 > [!Important]
 > A csomópont-túllépések előfizetési kvótát igényelnek az egyes frissítési műveletekhez szükséges maximális túlfeszültségek számához. Például egy olyan fürt, amely 5 csomópontos készlettel rendelkezik, amelyek mindegyike 4 csomóponttal rendelkezik, összesen 20 csomóponttal rendelkezik. Ha az egyes csomópont-készletek maximális túllépésének értéke 50%, a frissítés befejezéséhez további számítási és IP-kvóta (2 csomópont * 5 készlet) szükséges.
@@ -66,21 +66,7 @@ Az AK egész értékeket és százalékos értéket is elfogad a maximális túl
 
 A frissítés során a maximális túlfeszültség értéke lehet legalább 1, a maximális érték pedig a csomópont csomópontjainak számával egyenlő. Megadhat nagyobb értékeket, de a maximális túlfeszültséghez használt csomópontok maximális száma nem haladhatja meg a készletben lévő csomópontok számát a frissítéskor.
 
-### <a name="set-up-the-preview-feature-for-customizing-node-surge-upgrade"></a>Az előzetes verzió funkciójának beállítása a csomópontok túlfeszültségének testreszabásához
-
-```azurecli-interactive
-# register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "MaxSurgePreview"
-```
-
-A regisztráció több percet is igénybe vehet. A szolgáltatás regisztrálásának ellenőrzéséhez használja az alábbi parancsot:
-
-```azurecli-interactive
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MaxSurgePreview')].{Name:name,State:properties.state}"
-```
-
-Az előzetes verzió ideje alatt a maximális túlterhelésnek az *AK-előnézeti CLI-* bővítményt kell használnia. Használja az az [Extension Add][az-extension-add] parancsot, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
+Amíg a CLI-verzió 2.16.0 +-ra van szüksége, az *AK-előnézet CLI-* bővítménynek kell megadnia a maximális túlfeszültséget. Használja az az [Extension Add][az-extension-add] parancsot, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -107,7 +93,7 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS-fürt frissítése
 
-Az AK-fürt elérhető verzióinak listájával frissítse a frissítést az az [AK upgrade][az-aks-upgrade] paranccsal. A frissítési folyamat során az AK egy új puffer-csomópontot (vagy a [maximálisan](#customize-node-surge-upgrade-preview)megjelenő legtöbb csomópontot) ad hozzá a megadott Kubernetes-verziót futtató fürthöz. Ezután a rendszer a régi csomópontok egyikét [kiüríti, és][kubernetes-drain] leállítja az alkalmazások futtatásának megszakadását (ha a maximális túlfeszültséget használja, és a megadott puffer-csomópontok számával egyszerre több csomópontot is [kiüríti][kubernetes-drain] ). A régi csomópont teljes kiürítése után a rendszer visszaállítja az új verzió megadását, és a következő csomóponthoz tartozó puffer csomópont lesz a frissítésre. Ez a folyamat addig ismétlődik, amíg a fürt összes csomópontja nem frissült. A folyamat végén a rendszer törli az utolsó lecsepegtetett csomópontot, és megtartja a meglévő ügynök-csomópontok számát.
+Az AK-fürt elérhető verzióinak listájával frissítse a frissítést az az [AK upgrade][az-aks-upgrade] paranccsal. A frissítési folyamat során az AK egy új puffer-csomópontot (vagy a [maximálisan](#customize-node-surge-upgrade)megjelenő legtöbb csomópontot) ad hozzá a megadott Kubernetes-verziót futtató fürthöz. Ezután a rendszer a régi csomópontok egyikét [kiüríti, és][kubernetes-drain] leállítja az alkalmazások futtatásának megszakadását (ha a maximális túlfeszültséget használja, és a megadott puffer-csomópontok számával egyszerre több csomópontot is [kiüríti][kubernetes-drain] ). A régi csomópont teljes kiürítése után a rendszer visszaállítja az új verzió megadását, és a következő csomóponthoz tartozó puffer csomópont lesz a frissítésre. Ez a folyamat addig ismétlődik, amíg a fürt összes csomópontja nem frissült. A folyamat végén a rendszer törli az utolsó lecsepegtetett csomópontot, és megtartja a meglévő ügynök-csomópontok számát.
 
 ```azurecli-interactive
 az aks upgrade \
@@ -135,7 +121,7 @@ Name          Location    ResourceGroup    KubernetesVersion    ProvisioningStat
 myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk bemutatta, hogyan frissíthet egy meglévő AK-fürtöt. Az AK-fürtök üzembe helyezésével és kezelésével kapcsolatos további információkért tekintse meg az oktatóanyagokat.
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 2f47ded22209a9d53510c7d0a2f8270096161354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5ad53c0040009e9ed1f28072540b46ce7b0b9a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86244130"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683919"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>A konzul telepítése és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -33,7 +33,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb, RBAC engedélyezve), és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket. Győződjön meg arról, hogy a fürt legalább 3 csomóponttal rendelkezik a Linux-csomópontok készletében.
+A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb, KUBERNETES RBAC engedélyezve), és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket. Győződjön meg arról, hogy a fürt legalább 3 csomóponttal rendelkezik a Linux-csomópontok készletében.
 
 Az utasítások követéséhez és a konzul telepítéséhez a [Helm][helm] szükséges. Javasoljuk, hogy a legújabb stabil verziót megfelelően telepítse és konfigurálja a fürtben. Ha segítségre van szüksége a Helm telepítéséhez, tekintse meg az [AK Helm telepítési útmutatóját][helm-install]. Az összes konzuli hüvelyt is be kell ütemezni a Linux-csomópontokon történő futtatásra.
 
@@ -156,7 +156,7 @@ helm delete --purge consul
 kubectl delete namespace consul
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A konzul további telepítési és konfigurációs lehetőségeinek megismeréséhez tekintse meg a következő hivatalos konzuli cikkeket:
 

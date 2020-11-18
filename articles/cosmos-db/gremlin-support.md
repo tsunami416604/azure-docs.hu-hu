@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 10/13/2020
+ms.date: 11/11/2020
 ms.author: sngun
-ms.openlocfilehash: c1af35b754362a230e77c7a3326de8ddb8a09d62
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a149f0b331a77462aa53b948fedf25dd1331969e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082997"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683624"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB Gremlin Graph támogatás és kompatibilitás az TinkerPop-funkciókkal
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -32,6 +32,7 @@ Az alábbi táblázat az Azure Cosmos DB-n használható népszerű Gremlin-ille
 | [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript a GitHubon](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Gráf létrehozása a Node.js használatával](create-graph-nodejs.md) | 3.3.4 + |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python a GitHubon](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Gráf létrehozása a Python használatával](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP a GitHubon](https://github.com/PommeVerte/gremlin-php) | [Gráf létrehozása a PHP használatával](create-graph-php.md) | 3.1.0 |
+| [Go lang](https://github.com/supplyon/gremcos/) | [Go lang](https://github.com/supplyon/gremcos/) | | Ezt a kódtárat külső közreműködők építették. A Azure Cosmos DB csapat semmilyen támogatást nem nyújt, vagy nem tartja karban a könyvtárat. |
 | [Gremlin-konzol](https://tinkerpop.apache.org/downloads.html) | [TinkerPop dokumentumok](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gráf létrehozása a Gremlin-konzol használatával](create-graph-gremlin-console.md) | 3.2.0 + |
 
 ## <a name="supported-graph-objects"></a>Támogatott Graph-objektumok
@@ -40,7 +41,7 @@ A TinkerPop egy olyan szabvány, amely számos különböző gráftechnológiár
 
 Az alábbi táblázat a TinkerPop azon funkcióit sorolja fel, amelyeket az Azure Cosmos DB megvalósít: 
 
-| Kategória | Azure Cosmos DB-megvalósítás |  Megjegyzések | 
+| Kategória | Azure Cosmos DB-megvalósítás |  Jegyzetek | 
 | --- | --- | --- |
 | Gráffunkciók | Állandóságot és egyidejű hozzáférést biztosít. A tranzakciók támogatására lett tervezve. | A számítógépes módszerek a Spark-összekötőn keresztül valósíthatók meg. |
 | Változófunkciók | A logikai, egész számú, bájt-, dupla, lebegőpontos, hosszú és sztringértékeket támogatja. | Támogatja az egyszerű típusokat, és kompatibilis az összetett típusokkal adatmodellek révén. |
@@ -168,21 +169,21 @@ Az Azure Cosmos DB által biztosított, írásra optimalizált motor alapértelm
 
 ## <a name="behavior-differences"></a>Viselkedési különbségek
 
-* Azure Cosmos DB gráf motorja a * **szélesség-első** _ bejárást futtatja, miközben a TinkerPop Gremlin a mélysége – először. Ez a viselkedés jobb teljesítményt érhet el vízszintesen méretezhető, például Cosmos DB.
+* Azure Cosmos DB gráf motorja a ***szélesség-első** _ bejárást futtatja, miközben a TinkerPop Gremlin a mélysége – először. Ez a viselkedés jobb teljesítményt érhet el vízszintesen méretezhető, például Cosmos DB.
 
 ## <a name="unsupported-features"></a>Nem támogatott funkciók
 
-A _ * **[Gremlin bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)** _ a Graph bejárásokat programozási nyelvének agnosztikus-specifikációja. Cosmos DB gráf még nem támogatja. `GremlinClient.SubmitAsync()`A bejárást szöveges karakterláncként használja és adja át.
+A _ ***[Gremlin bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)** _ a Graph bejárásokat programozási nyelvének agnosztikus-specifikációja. Cosmos DB gráf még nem támogatja. `GremlinClient.SubmitAsync()`A bejárást szöveges karakterláncként használja és adja át.
 
 _ * **`property(set, 'xyz', 1)`** _ a set Cardinals jelenleg nem támogatott. A `property(list, 'xyz', 1)` használható helyette. További információ: [Vertex Properties with TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
 
-_ A * **`match()` Step** _ jelenleg nem érhető el. Ez a lépés deklaratív lekérdezési képességeket biztosít.
+_ A ***`match()` Step** _ jelenleg nem érhető el. Ez a lépés deklaratív lekérdezési képességeket biztosít.
 
-_ * **Az objektumok, mint tulajdonságok,** a csúcspontokon vagy éleken nem támogatottak. A tulajdonságok csak egyszerű típusok vagy tömbök lehetnek.
+_ ***Az objektumok, mint tulajdonságok,** a csúcspontokon vagy éleken nem támogatottak. A tulajdonságok csak egyszerű típusok vagy tömbök lehetnek.
 
-_ * **A tömb tulajdonságainak rendezése** _ `order().by(<array property>)` nem támogatott. A rendezést csak az egyszerű típusok támogatják.
+_ ***A tömb tulajdonságainak rendezése** _ `order().by(<array property>)` nem támogatott. A rendezést csak az egyszerű típusok támogatják.
 
-_ * **Nem PRIMITÍV JSON-típusok** _ nem támogatottak. Használjon `string` , `number` vagy `true` / `false` típusokat. `null` az értékek nem támogatottak. 
+_ ***Nem PRIMITÍV JSON-típusok** _ nem támogatottak. Használjon `string` , `number` vagy `true` / `false` típusokat. `null` az értékek nem támogatottak. 
 
 _ * A **GraphSONv3** _ szerializáló jelenleg nem támogatott. `GraphSONv2`Szerializáló, olvasó és író osztályok használata a kapcsolatok konfigurációjában. A Azure Cosmos DB Gremlin API által visszaadott eredmények formátuma nem egyezik meg a GraphSON formátumával. 
 
@@ -192,7 +193,7 @@ _ **Lambda kifejezések és függvények** jelenleg nem támogatottak. Ez magáb
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 
-_ **Gremlin lekérdezések indexelése a bejárási `.V()` lépésekkel** : jelenleg csak a `.V()` bejárások első hívása fogja használni az indexet az ahhoz csatolt szűrők vagy predikátumok feloldásához. A következő hívások nem fogják megkeresni az indexet, ami növelheti a lekérdezés késését és költségeit.
+_ **Gremlin lekérdezések indexelése a bejárási `.V()` lépésekkel**: jelenleg csak a `.V()` bejárások első hívása fogja használni az indexet az ahhoz csatolt szűrők vagy predikátumok feloldásához. A következő hívások nem fogják megkeresni az indexet, ami növelheti a lekérdezés késését és költségeit.
     
     Assuming default indexing, a typical read Gremlin query that starts with the `.V()` step would use parameters in its attached filtering steps, such as `.has()` or `.where()` to optimize the cost and performance of the query. For example:
 

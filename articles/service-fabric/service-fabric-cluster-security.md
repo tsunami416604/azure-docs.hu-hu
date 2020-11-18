@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Service Fabric-fürtök biztonsági forgatók�
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 8d6f3e94a735a6a8880d726890f1eb7ac346c755
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 642356f08a946cae5d2b2d395aaddd8e4dad27ed
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946195"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682791"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric fürt biztonsági forgatókönyvei
 
@@ -19,7 +19,7 @@ Ez a cikk áttekintést nyújt az Azure-fürtök és önálló fürtök biztons�
 
 * Csomópontok közötti biztonság
 * Az ügyfél és a csomópont közötti biztonság
-* Szerepköralapú hozzáférés-vezérlés (RBAC)
+* Szerepköralapú hozzáférés-vezérlés Service Fabric
 
 ## <a name="node-to-node-security"></a>Csomópontok közötti biztonság
 
@@ -60,7 +60,7 @@ Az Azure-on és a Windows rendszeren futó önálló fürtökön futó fürtök 
 
 Az ügyfél és a csomópont közötti biztonság beállítása a fürt létrehozásakor, vagy a Azure Portal egy Resource Manager-sablon vagy egy önálló JSON-sablon használatával. A tanúsítvány létrehozásához meg kell adnia egy rendszergazdai ügyféltanúsítványt vagy egy felhasználói ügyféltanúsítványt. Az ajánlott eljárás az, hogy a rendszergazdai ügyfél és a felhasználói Ügyféltanúsítványok nem egyeznek meg a [csomópontok közötti biztonsághoz](#node-to-node-security)megadott elsődleges és másodlagos tanúsítványokkal. A fürt tanúsítványainak ugyanazokkal a jogokkal rendelkeznek, mint az ügyfél-rendszergazdai tanúsítványok. Ezeket azonban kizárólag fürtnek kell használni, és nem a rendszergazda felhasználók számára ajánlott biztonsági eljárás.
 
-A felügyeleti tanúsítvány használatával a fürthöz csatlakozó ügyfelek teljes hozzáféréssel rendelkeznek a felügyeleti képességekhez. A fürthöz a csak olvasási jogosultsággal rendelkező felhasználói ügyféltanúsítvány használatával csatlakozó ügyfelek csak olvasási hozzáféréssel rendelkeznek a felügyeleti képességekhez. Ezek a tanúsítványok a cikk későbbi részében ismertetett RBAC használatosak.
+A felügyeleti tanúsítvány használatával a fürthöz csatlakozó ügyfelek teljes hozzáféréssel rendelkeznek a felügyeleti képességekhez. A fürthöz a csak olvasási jogosultsággal rendelkező felhasználói ügyféltanúsítvány használatával csatlakozó ügyfelek csak olvasási hozzáféréssel rendelkeznek a felügyeleti képességekhez. Ezek a tanúsítványok a jelen cikk későbbi részében ismertetett Service Fabric RBAC használatosak.
 
 A következő témakörből megtudhatja, hogyan állíthatja be a tanúsítvány-biztonságot az Azure-fürtben: [fürt beállítása Azure Resource Manager sablon használatával](service-fabric-cluster-creation-via-arm.md).
 
@@ -85,13 +85,13 @@ Az Azure-ban üzemeltetett nyilvános hálózatokban üzembe helyezett Service F
 
 Önálló Windows Server-fürtök esetén a Windows Server 2012 R2 és a Windows Active Directory használata esetén javasoljuk, hogy a Windows-biztonságot csoportosan felügyelt szolgáltatásfiókok használatával használja. Ellenkező esetben használja a Windows-biztonságot Windows-fiókokkal.
 
-## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
+## <a name="service-fabric-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés Service Fabric
 
 A hozzáférés-vezérlés használatával korlátozhatja a hozzáférést bizonyos fürt műveleteihez a különböző felhasználói csoportok esetében. Ez segít a fürt biztonságosabbá tételében. A fürthöz csatlakozó ügyfelek esetében két hozzáférés-vezérlési típus támogatott: rendszergazdai szerepkör és felhasználói szerepkör.
 
 A rendszergazdai szerepkörrel rendelkező felhasználók teljes hozzáféréssel rendelkeznek a felügyeleti képességekhez, beleértve az olvasási és írási képességeket is. A felhasználói szerepkörhöz hozzárendelt felhasználók alapértelmezés szerint csak olvasási hozzáféréssel rendelkeznek a felügyeleti képességekhez (például a lekérdezési képességekhez). Emellett az alkalmazásokat és a szolgáltatásokat is feloldják.
 
-Állítsa be a rendszergazda és a felhasználói ügyfél szerepkört a fürt létrehozásakor. Rendeljen hozzá szerepköröket külön identitások (például tanúsítványok vagy az Azure AD használatával) megadásával az egyes szerepkörök típusaihoz. További információ az alapértelmezett hozzáférés-vezérlési beállításokról és az alapértelmezett beállítások módosításáról: [szerepköralapú Access Control Service Fabric-ügyfelek számára](service-fabric-cluster-security-roles.md).
+Állítsa be a rendszergazda és a felhasználói ügyfél szerepkört a fürt létrehozásakor. Rendeljen hozzá szerepköröket külön identitások (például tanúsítványok vagy az Azure AD használatával) megadásával az egyes szerepkörök típusaihoz. További információ az alapértelmezett hozzáférés-vezérlési beállításokról és az alapértelmezett beállítások módosításáról: [Service Fabric szerepköralapú hozzáférés-vezérlés Service Fabric-ügyfelek](service-fabric-cluster-security-roles.md)számára.
 
 ## <a name="x509-certificates-and-service-fabric"></a>X. 509 tanúsítványok és Service Fabric
 
@@ -121,7 +121,7 @@ Néhány további megfontolandó szempont:
 * A **tulajdonos** mező több értékkel is rendelkezhet. Minden érték előtaggal van ellátva, hogy jelezze az érték típusát. Az inicializálás általában **CN** ( *köznapi név*); például: **cn = www \. contoso.com**.
 * A **Tárgy** mező üres is lehet.
 * Ha az opcionális **tulajdonos alternatív neve** mező fel van töltve, a tanúsítvány köznapi nevével és egy, San-ra vonatkozó bejegyzéssel kell rendelkeznie. Ezek a **DNS-név** értékeiként vannak megadva. Ha meg szeretné tudni, hogyan hozhatók létre a (z) SANs tanúsítvánnyal rendelkező tanúsítványok, tekintse meg [a tulajdonos alternatív nevének hozzáadása biztonságos LDAP-tanúsítványhoz](https://support.microsoft.com/kb/931351)című témakört.
-* A tanúsítvány **rendeltetésszerű felhasználási** célja mezőjének tartalmaznia kell egy megfelelő értéket, például a **kiszolgáló-hitelesítés** vagy az **ügyfél-hitelesítés**értékét.
+* A tanúsítvány **rendeltetésszerű felhasználási** célja mezőjének tartalmaznia kell egy megfelelő értéket, például a **kiszolgáló-hitelesítés** vagy az **ügyfél-hitelesítés** értékét.
 
 ### <a name="application-certificates-optional"></a>Alkalmazás-tanúsítványok (nem kötelező)
 
@@ -141,7 +141,7 @@ Alapértelmezés szerint a fürt tanúsítványa rendszergazdai jogosultságokka
 > [!NOTE]
 > Egy Service Fabric-fürtön lévő összes felügyeleti művelethez kiszolgálói tanúsítványok szükségesek. Az ügyféltanúsítványok nem használhatók felügyelethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fürt létrehozása az Azure-ban Resource Manager-sablon használatával](service-fabric-cluster-creation-via-arm.md)
 * [Fürt létrehozása az Azure Portalon](service-fabric-cluster-creation-via-portal.md)

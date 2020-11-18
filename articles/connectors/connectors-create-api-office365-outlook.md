@@ -1,39 +1,36 @@
 ---
-title: Kapcsolódás az Office 365 Outlookhoz
+title: Integráció az Office 365 Outlookmal
 description: A levelezést, névjegyeket és naptárakat kezelő feladatokat és munkafolyamatokat automatizálhatja az Office 365 Outlookban Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 9b10778e665675e9e033953e2a8b9df16dd636d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9caf69a7f78c7872f0a5f8a2ed07bdc749a29023
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400774"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682995"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>E-mailek, partneradatok és naptárak kezelése az Office 365 Outlookban az Azure Logic Apps használatával
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Office 365 Outlook Connector](/connectors/office365connector/)használatával a logikai alkalmazások létrehozásával automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek a munkahelyi vagy iskolai fiókját kezelik. Automatizálhatja például ezeket a feladatokat:
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Office 365 Outlook Connector](/connectors/office365connector/)használatával a logikai alkalmazások létrehozásával automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek a munkahelyi vagy iskolai fiókját kezelik. Automatizálhatók például a következő feladatok:
 
-* Az e-mailek lekérése, küldése és megválaszolása. 
+* Az e-mailek lekérése, küldése és megválaszolása.
 * Értekezletek ütemezhetnek a naptárban.
-* Névjegyek hozzáadása és szerkesztése. 
+* Névjegyek hozzáadása és szerkesztése.
 
-Bármely eseményindítóval elindíthatja a munkafolyamatot, például amikor új e-mail érkezik, amikor egy naptári elem frissül, vagy ha egy esemény egy különbségi szolgáltatásban (például Salesforce) történik. Használhatja az eseményindító eseményre válaszoló műveleteket, például e-mailek küldését vagy új naptári esemény létrehozását. 
-
-> [!NOTE]
-> Egy vagy fiókhoz tartozó feladatok automatizálásához @outlook.com @hotmail.com használja az [Outlook.com-összekötőt](../connectors/connectors-create-api-outlook.md).
+Bármely eseményindítóval elindíthatja a munkafolyamatot, például amikor új e-mail érkezik, amikor egy naptári elem frissül, vagy ha egy esemény egy különbségi szolgáltatásban (például Salesforce) történik. Használhatja az eseményindító eseményre válaszoló műveleteket, például e-mailek küldését vagy új naptári esemény létrehozását.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Olyan Outlook-fiók, amelyben [munkahelyi vagy iskolai fiókkal](https://www.office.com/)jelentkezik be. Ha rendelkezik @outlook.com vagy @hotmail.com fiókkal, használja helyette az [Outlook.com-összekötőt](../connectors/connectors-create-api-outlook.md) . Ha egy másik felhasználói fiókkal, például egy szolgáltatásfiók-fiókkal szeretne csatlakozni az Outlookhoz, tekintse meg a [Kapcsolódás más fiókok használatával](#connect-using-other-accounts)című témakört.
 
-* [Munkahelyi vagy iskolai fiók](https://www.office.com/)
+* Azure-fiók és -előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* A logikai alkalmazás, amelyhez el szeretné érni munkahelyi vagy iskolai fiókját. Ha a munkafolyamatot Office 365 Outlook-triggerrel szeretné elindítani, [üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség. Ha Office 365 Outlook-műveletet szeretne hozzáadni a munkafolyamathoz, a logikai alkalmazásnak már rendelkeznie kell egy triggerrel.
+* Az a logikai alkalmazás, amelyhez el szeretné érni az Outlook-fiókját. Ha a munkafolyamatot Office 365 Outlook-triggerrel szeretné elindítani, [üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség. Ha Office 365 Outlook-műveletet szeretne hozzáadni a munkafolyamathoz, a logikai alkalmazásnak már rendelkeznie kell egy triggerrel.
 
 ## <a name="add-a-trigger"></a>Eseményindító hozzáadása
 
@@ -41,11 +38,11 @@ Az [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) e
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg az üres logikai alkalmazást a Logic app Designerben.
 
-1. A keresőmezőbe írja be `office 365 outlook` szűrőként a kifejezést. Ez a példa **egy közelgő esemény hamarosan történő megkezdését**választja ki.
+1. A keresőmezőbe írja be `office 365 outlook` szűrőként a kifejezést. Ez a példa **egy közelgő esemény hamarosan történő megkezdését** választja ki.
    
    ![Válassza ki az triggert a logikai alkalmazás indításához](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
-1. Ha a rendszer kéri, hogy jelentkezzen be, adja meg a munkahelyi vagy iskolai hitelesítő adatait, hogy a logikai alkalmazás csatlakozhasson a fiókjához. Ellenkező esetben, ha a hálózat már létezik, adja meg az aktiváló tulajdonságok információit.
+1. Ha nem rendelkezik aktív internetkapcsolattal az Outlook-fiókjával, a rendszer felszólítja, hogy jelentkezzen be, és hozza létre a kapcsolódást. Ha egy másik felhasználói fiókkal, például egy szolgáltatásfiók-fiókkal szeretne csatlakozni az Outlookhoz, tekintse meg a [Kapcsolódás más fiókok használatával](#connect-using-other-accounts)című témakört. Egyéb esetben adja meg az trigger tulajdonságaira vonatkozó adatokat.
 
    > [!NOTE]
    > A szolgáltatás nem jár le a visszavonás előtt, még akkor is, ha módosítja a bejelentkezési hitelesítő adatait. További információ: [konfigurálható jogkivonatok élettartama Azure Active Directoryban](../active-directory/develop/active-directory-configurable-token-lifetimes.md).
@@ -60,7 +57,7 @@ Az [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) e
 
    ![Az trigger gyakoriságának és intervallumának megadása](./media/connectors-create-api-office365-outlook/calendar-settings.png)
 
-1. A tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. A tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 Most adjon hozzá egy műveletet, amely az eseményindító elindítása után fut. Hozzáadhatja például a Twilio- **üzenetküldés** műveletet, amely szöveget küld, ha egy naptári esemény 15 percen belül elindul.
 
@@ -70,15 +67,15 @@ A [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan 
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Ha egy műveletet a munkafolyamat utolsó lépéseként szeretne hozzáadni, válassza az **új lépés**lehetőséget. 
+1. Ha egy műveletet a munkafolyamat utolsó lépéseként szeretne hozzáadni, válassza az **új lépés** lehetőséget. 
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
-1. A keresőmezőbe írja be `office 365 outlook` szűrőként a kifejezést. Ez a példa kiválasztja a **kapcsolat létrehozása**elemet.
+1. A keresőmezőbe írja be `office 365 outlook` szűrőként a kifejezést. Ez a példa kiválasztja a **kapcsolat létrehozása** elemet.
 
    ![Válassza ki a logikai alkalmazásban futtatandó műveletet](./media/connectors-create-api-office365-outlook/office365-actions.png) 
 
-1. Ha a rendszer kéri, hogy jelentkezzen be, adja meg a munkahelyi vagy iskolai hitelesítő adatait, hogy a logikai alkalmazás csatlakozhasson a fiókjához. Ellenkező esetben, ha a kapcsolat már létezik, adja meg a művelet tulajdonságaira vonatkozó információkat.
+1. Ha nem rendelkezik aktív internetkapcsolattal az Outlook-fiókjával, a rendszer felszólítja, hogy jelentkezzen be, és hozza létre a kapcsolódást. Ha egy másik felhasználói fiókkal, például egy szolgáltatásfiók-fiókkal szeretne csatlakozni az Outlookhoz, tekintse meg a [Kapcsolódás más fiókok használatával](#connect-using-other-accounts)című témakört. Egyéb esetben adja meg a művelet tulajdonságainak adatait.
 
    > [!NOTE]
    > A szolgáltatás nem jár le a visszavonás előtt, még akkor is, ha módosítja a bejelentkezési hitelesítő adatait. További információ: [konfigurálható jogkivonatok élettartama Azure Active Directoryban](../active-directory/develop/active-directory-configurable-token-lifetimes.md).
@@ -89,7 +86,29 @@ A [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan 
 
    Ha más elérhető művelet-tulajdonságokat szeretne hozzáadni, válassza ki ezeket a tulajdonságokat az **új paraméter hozzáadása** listáról.
 
-1. A tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. A tervező eszköztárán válassza a **Mentés** lehetőséget.
+
+<a name="connect-using-other-accounts"></a>
+
+## <a name="connect-using-other-accounts"></a>Kapcsolat más fiókok használatával
+
+Ha olyan fiókkal próbál csatlakozni az Outlookhoz, amely az Azure-ba jelenleg be van jelentkezve, akkor előfordulhat, hogy [egyszeri bejelentkezéses (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) hibák jelentkeznek. Ez a probléma akkor fordul elő, ha egy fiókkal jelentkezik be a Azure Portalba, de egy másik fiókot használ a csatlakozás létrehozásához. A Logic app Designer arra vár, hogy az Azure-ba bejelentkezett fiókot használja. A probléma megoldásához a következő lehetőségek közül választhat:
+
+* A másik fiók beállítása **közreműködőként** a logikai alkalmazás erőforráscsoporthoz.
+
+  1. A logikai alkalmazás erőforráscsoport menüjében válassza a **hozzáférés-vezérlés (iam)** lehetőséget. Állítsa be a másik fiókot a **közreműködő** szerepkörrel. További információ: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
+
+  1. Ha bejelentkezett a Azure Portalba munkahelyi vagy iskolai fiókjával, jelentkezzen ki, majd jelentkezzen be újra a másik fiókkal. Most már létrehozhat egy, az Outlookhoz való kapcsolódást a másik fiók használatával.
+
+* Állítsa be a másik fiókot úgy, hogy a munkahelyi vagy iskolai fiókja "Send as" engedélyekkel rendelkezik.
+
+   Ha rendszergazdai jogosultságokkal rendelkezik, a szolgáltatásfiók postaládájában állítsa be a munkahelyi vagy iskolai fiókját a **Send as** vagy **a Send** as engedélyekkel. További információkért lásd: [postaláda-engedélyek megadása egy másik felhasználó számára – rendszergazdai Súgó](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user). Ezután a munkahelyi vagy iskolai fiókkal hozhatja létre a kapcsolatokat. Most olyan eseményindítók vagy műveletek esetén, ahol megadhatja a küldőt, használhatja a szolgáltatásfiók e-mail-címét.
+
+   Például az **e-mailek küldése** művelet opcionális paraméterrel rendelkezik, **a (küldés másként)** lehetőséggel, amelyet hozzáadhat a művelethez, és használhatja a szolgáltatásfiók e-mail-címét feladóként. A paraméter hozzáadásához kövesse az alábbi lépéseket:
+
+   1. Az **E-mail küldése** műveletben nyissa meg a **paraméter hozzáadása** listát, és válassza a **from (küldés másként)** paramétert.
+
+   1. Ha a paraméter megjelenik a műveletben, adja meg a szolgáltatásfiók e-mail-címét.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 

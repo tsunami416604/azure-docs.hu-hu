@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3e68e65a5c2ed73a8fb6d8e5d01c645e05ca5157
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b368048e5ea34ebfc073b1ae239cbb40724ae393
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320715"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684372"
 ---
 # <a name="communication-services-notifications"></a>Kommunikációs szolgáltatások értesítései
 
@@ -36,7 +36,7 @@ További információ az [Azure kommunikációs szolgáltatásokban zajló esem�
 
 Csatlakoztathat egy Azure Notification hub-t a kommunikációs szolgáltatások erőforrásához, hogy automatikusan küldjön leküldéses értesítéseket a felhasználó mobileszközön, amikor bejövő hívást kapnak. Ezeket a leküldéses értesítéseket kell használnia az alkalmazás háttérben való felébresztéséhez és a felhasználói felület megjelenítéséhez, amely lehetővé teszi a felhasználó számára a hívás elfogadását vagy elutasítását. 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Ábra, amely bemutatja, hogyan integrálódik a kommunikációs szolgáltatások a Event Grid.":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Ábra, amely bemutatja, hogyan integrálható a kommunikációs szolgáltatások az Azure Notifications hub szolgáltatással.":::
 
 A kommunikációs szolgáltatások az Azure Notification hub-t áteresztő szolgáltatásként használják a platform-specifikus leküldéses értesítési szolgáltatásokkal való kommunikációhoz a [Direct Send](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API használatával. Ez lehetővé teszi a meglévő Azure Notification hub-erőforrások és-konfigurációk újrafelhasználását, hogy alacsony késésű, megbízható hívási értesítéseket nyújtson az alkalmazásaihoz.
 
@@ -53,7 +53,8 @@ Ha Notification Hubs használatával szeretne leküldéses értesítéseket kül
 Miután konfigurálta az értesítési központot, hozzárendelheti a kommunikációs szolgáltatások erőforrásához úgy, hogy a Azure Resource Manager ügyfelet vagy a Azure Portalon keresztül a hub kapcsolati karakterláncát adja meg. A kapcsolatok karakterláncának "Send" engedélyeket kell tartalmaznia. Javasoljuk, hogy hozzon létre egy másik hozzáférési szabályzatot, és csak az Ön központjának megfelelő engedélyeket küldje el. További információ a [Notification Hubs biztonsági és hozzáférési szabályzatokról](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security)
 
 > [!IMPORTANT]
-> Apple Push Notification Service VOIP-értesítések engedélyezéséhez be kell állítania az értesítési központ nevét az alkalmazáscsomag AZONOSÍTÓjának az utótaggal való megadásához `.voip` . Lásd: [a APNS VoIP használata a Notification Hubson](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
+> Ez csak a jogkivonat-hitelesítési módra vonatkozik. A tanúsítvány-hitelesítési mód jelenleg nem támogatott.  
+A APNS VOIP-értesítések engedélyezéséhez be kell állítania a köteg-azonosító értékét, amikor az értesítési központot úgy konfigurálja, hogy az a utótaggal rendelkező alkalmazáscsomag-azonosító legyen `.voip` . További részletekért tekintse meg a [APNS VoIP használata Notification Hubs használatával](https://docs.microsoft.com/azure/notification-hubs/voip-apns) című témakört.
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Az értesítési központ konfigurálása a Azure Resource Manager ügyfél használatával
 
@@ -73,7 +74,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 A portálon navigáljon az Azure kommunikációs szolgáltatások erőforrásaihoz. A kommunikációs szolgáltatások erőforráson belül válassza a kommunikációs szolgáltatások lap bal oldali menüjének leküldéses értesítések elemét, és kapcsolja össze a korábban kiépített értesítési központot. Itt meg kell adnia a kapcsolódási karakterláncot és az erőforrás-azonosítót:
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Ábra, amely bemutatja, hogyan integrálódik a kommunikációs szolgáltatások a Event Grid.":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="A leküldéses értesítések beállításait megjelenítő képernyőkép az Azure Portalon.":::
 
 > [!NOTE]
 > Ha az Azure Notification hub kapcsolati karakterláncát frissíti, a kommunikációs szolgáltatások erőforrását is frissíteni kell.

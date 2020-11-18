@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan állíthatja be a tároló-naplók val�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4966ab0d64745c36ee53f27ba4063714f18e35da
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6fdd2d0a97357a2126ff37c0840b1f7da2859da5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648106"
+ms.locfileid: "94682672"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) beállításának beállítása
 
@@ -136,7 +136,7 @@ Minden Azure AD-fióknak engedéllyel kell rendelkeznie a megfelelő API-khoz a 
 >[!IMPORTANT]
 >Ha az RBAC-kötést megadó felhasználó ugyanabban az Azure AD-bérlőben található, akkor a userPrincipalName alapján rendeljen engedélyeket. Ha a felhasználó egy másik Azure AD-bérlőben található, a objectId tulajdonság lekérdezése és használata.
 
-Az AK-fürt **ClusterRoleBinding** konfigurálásával kapcsolatos további segítségért lásd: [RBAC-kötés létrehozása](../../aks/azure-ad-integration-cli.md#create-rbac-binding).
+Az AK-fürt **ClusterRoleBinding** konfigurálásával kapcsolatos további segítségért lásd: [Kubernetes RBAC-kötés létrehozása](../../aks/azure-ad-integration-cli.md#create-kubernetes-rbac-binding).
 
 ## <a name="next-steps"></a>Következő lépések
 

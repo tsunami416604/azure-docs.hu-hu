@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 947ecaa2efbfb013f1f3e8203d1c4296b9ca329f
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 645be03df3c8ee2a1451b4bfea0327542c29aa38
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422161"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683114"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Kimenő szabályok Azure Load Balancer
 
@@ -48,7 +48,7 @@ A kimenő szabályok segítségével a következőket vezérelheti:
 
 ## <a name="outbound-rule-definition"></a>Kimenő szabály definíciója
 
-A kimenő szabályok ugyanazt a megszokott szintaxist követik, mint a terheléselosztás és a bejövő NAT- **szabályok: előtér** -  +  **Paraméterek**  +  **háttér-készlete**. 
+A kimenő szabályok ugyanazt a megszokott szintaxist követik, mint a terheléselosztás és a bejövő NAT- **szabályok: előtér**-  +  **Paraméterek**  +  **háttér-készlete**. 
 
 Egy kimenő szabály konfigurálja a kimenő NAT-t a _háttér-készlet által azonosított összes virtuális gép_ számára, hogy a rendszer lefordítsa a _felületet_.  
 
@@ -106,7 +106,7 @@ Ha egy NSG letiltja az állapot-mintavételi kérelmeket a AZURE_LOADBALANCER al
 
 
 * Konfigurálja a kimenő kapcsolatokat egy adott nyilvános IP-cím vagy előtag-készletbe.
-* Módosítsa a [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -portok foglalását.
+* Módosítsa a [SNAT](load-balancer-outbound-connections.md) -portok foglalását.
 * Csak a kimenő engedélyezése.
 * Kimenő NAT csak virtuális gépekhez (nincs bejövő).
 * Kimenő NAT a belső standard Load Balancerhez.
@@ -135,7 +135,7 @@ Eltérő nyilvános IP-cím vagy előtag használata egy terheléselosztási sza
 5. Konfiguráljon egy kimenő szabályt a nyilvános terheléselosztó számára, hogy engedélyezze a kimenő NAT-t a virtuális gépek számára a frontend használatával. Nem ajánlott terheléselosztási szabályt használni a kimenő forgalomhoz, letiltani a kimenő SNAT a terheléselosztási szabályban.
 
 
-### <a name="scenario-2-modify-snat-port-allocation"></a><a name="scenario2out"></a>2. forgatókönyv: a [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -portok foglalásának módosítása
+### <a name="scenario-2-modify-snatport-allocation"></a><a name="scenario2out"></a>2. forgatókönyv: a [SNAT](load-balancer-outbound-connections.md)-portok foglalásának módosítása
 
 
 #### <a name="details"></a>Részletek
@@ -144,19 +144,19 @@ Eltérő nyilvános IP-cím vagy előtag használata egy terheléselosztási sza
 A kimenő szabályok használatával beállíthatja az [automatikus SNAT-portok kiosztását a háttérbeli készlet méretétől függően](load-balancer-outbound-connections.md#preallocatedports). 
 
 
-Ha SNAT kimerültséget tapasztal, növelje az alapértelmezett 1024-as számú [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -portot. 
+Ha SNAT kimerültséget tapasztal, növelje az alapértelmezett 1024-as számú [SNAT](load-balancer-outbound-connections.md)-portot. 
 
 
-A nyilvános IP-címek legfeljebb 64 000 ideiglenes portot vesznek részt. A háttérrendszer-készletben lévő virtuális gépek száma határozza meg az egyes virtuális gépekre terjesztett portok számát. A háttér-készlet egyik virtuális gépe fér hozzá a maximális 64 000-as porthoz. Két virtuális gép esetében legfeljebb 32 000 [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -portot lehet megadni kimenő szabállyal (2x 32 000 = 64 000). 
+A nyilvános IP-címek legfeljebb 64 000 ideiglenes portot vesznek részt. A háttérrendszer-készletben lévő virtuális gépek száma határozza meg az egyes virtuális gépekre terjesztett portok számát. A háttér-készlet egyik virtuális gépe fér hozzá a maximális 64 000-as porthoz. Két virtuális gép esetében legfeljebb 32 000 [SNAT](load-balancer-outbound-connections.md)-portot lehet megadni kimenő szabállyal (2x 32 000 = 64 000). 
 
 
-A kimenő szabályok használatával beállíthatja az alapértelmezés szerint megadott SNAT-portokat. Az alapértelmezett [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -portok közül több vagy kevesebb is adható meg. A kimenő szabályok egy felületéről érkező összes nyilvános IP-cím akár 64 000 ideiglenes portot is felhasználhat [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -portokként való használatra. 
+A kimenő szabályok használatával beállíthatja az alapértelmezés szerint megadott SNAT-portokat. Az alapértelmezett [SNAT](load-balancer-outbound-connections.md)-portok közül több vagy kevesebb is adható meg. A kimenő szabályok egy felületéről érkező összes nyilvános IP-cím akár 64 000 ideiglenes portot is felhasználhat [SNAT](load-balancer-outbound-connections.md)-portokként való használatra. 
 
 
-A Load Balancer 8-nál több [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -portot ad meg. Ha a 8 értékkel nem osztható értéket ad meg, a rendszer elutasítja a konfigurációs műveletet. Az egyes terheléselosztási szabályok és a bejövő NAT-szabályok 8 portot használnak. Ha a terheléselosztás vagy a bejövő NAT-szabály ugyanazon a tartományon osztozik, mint a 8, akkor további portok nem lesznek felhasználva.
+A Load Balancer 8-nál több [SNAT](load-balancer-outbound-connections.md)-portot ad meg. Ha a 8 értékkel nem osztható értéket ad meg, a rendszer elutasítja a konfigurációs műveletet. Az egyes terheléselosztási szabályok és a bejövő NAT-szabályok 8 portot használnak. Ha a terheléselosztás vagy a bejövő NAT-szabály ugyanazon a tartományon osztozik, mint a 8, akkor további portok nem lesznek felhasználva.
 
 
-Ha a nyilvános IP-címek száma alapján több [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -portot próbál meg megadni, a rendszer elutasítja a konfigurációs műveletet. Ha például egy virtuális gépen 10 000 portot ad meg, és a háttérrendszer hét virtuális gépe egyetlen nyilvános IP-címmel rendelkezik, akkor a rendszer elutasítja a konfigurációt. A hét megszorozva a 10 000-as mérettel, amely meghaladja a 64 000-es portot. A forgatókönyv engedélyezéséhez adjon hozzá több nyilvános IP-címet a Kimenő szabály előtérbeli felületéhez. 
+Ha a nyilvános IP-címek száma alapján több [SNAT](load-balancer-outbound-connections.md)-portot próbál meg megadni, a rendszer elutasítja a konfigurációs műveletet. Ha például egy virtuális gépen 10 000 portot ad meg, és a háttérrendszer hét virtuális gépe egyetlen nyilvános IP-címmel rendelkezik, akkor a rendszer elutasítja a konfigurációt. A hét megszorozva a 10 000-as mérettel, amely meghaladja a 64 000-es portot. A forgatókönyv engedélyezéséhez adjon hozzá több nyilvános IP-címet a Kimenő szabály előtérbeli felületéhez. 
 
 
 A portok számának megadásával visszaállíthatja az [alapértelmezett portok kiosztását](load-balancer-outbound-connections.md#preallocatedports) . Az első 50-es virtuálisgép-példány 1024 portot kap, a 51-100-as virtuálisgép-példányok pedig a maximális példányszámig 512-t kapnak. További információ a SNAT alapértelmezett kiosztásáról: [SNAT-portok foglalási táblázata](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
@@ -195,7 +195,7 @@ Ebben a forgatókönyvben: Azure Load Balancer a kimenő szabályok és a Virtua
 
 
 
-A [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -portok méretezéséhez használjon előtagot vagy nyilvános IP-címet. Adja hozzá a kimenő kapcsolatok forrását egy engedélyezési vagy megtagadási listához.
+A [SNAT](load-balancer-outbound-connections.md)-portok méretezéséhez használjon előtagot vagy nyilvános IP-címet. Adja hozzá a kimenő kapcsolatok forrását egy engedélyezési vagy megtagadási listához.
 
 
 
@@ -225,7 +225,7 @@ További információ: [csak kimenő terheléselosztó konfigurálása](https://
 Nyilvános standard Load Balancer használata esetén a megadott automatikus kimenő NAT megfelel a terheléselosztási szabály átviteli protokolljának. 
 
 
-1. Tiltsa le a kimenő [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) a terheléselosztási szabályban. 
+1. Tiltsa le a kimenő [SNAT](load-balancer-outbound-connections.md)a terheléselosztási szabályban. 
 2. Konfiguráljon egy kimenő szabályt ugyanazon a terheléselosztóon.
 3. Használja újra a virtuális gépek által már használt háttér-készletet. 
 4. A Kimenő szabály részeként a "protokoll": "all" érték adható meg. 
@@ -249,7 +249,7 @@ Ha csak a bejövő NAT-szabályok vannak használatban, a rendszer nem biztosít
 - A kimenő kapcsolatok esetében a **rendelkezésre állási csoporton** belüli összes virtuális gépet hozzá kell adni a háttérbeli készlethez. 
 - A **virtuálisgép-méretezési csoporton** belüli összes virtuális gépet a kimenő kapcsolathoz hozzá kell adni a háttérbeli készlethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure standard Load Balancer](load-balancer-overview.md)
 - Tekintse meg a [Azure Load Balancerekkel kapcsolatos gyakori kérdéseket](load-balancer-faqs.md)

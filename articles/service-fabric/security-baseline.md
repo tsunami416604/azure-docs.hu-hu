@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 77ea96b1bd1b1d661bb835e7bb48d58ce4c3e118
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dc66de09a5918b19c60aaa0d3e9ab662876dc31a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309151"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684321"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric Azure biztonsági alapterve
 
@@ -144,7 +144,7 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 **Útmutató**: az Azure Service Fabric-fürthöz kapcsolódó hálózati erőforrások szabványos biztonsági konfigurációinak meghatározása és implementálása. Használjon Azure Policy aliasokat a "Microsoft. ServiceFabric" és a "Microsoft. Network" névterekben egyéni szabályzatok létrehozásához az Azure Service Fabric-fürt hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez.
 
-Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-környezetek kiépítését a főbb környezeti összetevők, például a Azure Resource Manager sablonok, RBAC-vezérlők és házirendek egyetlen tervrajz-definícióban történő csomagolásával. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
+Az Azure-tervrajzok segítségével leegyszerűsítheti a nagyméretű Azure-alapú üzembe helyezéseket, például a Azure Resource Manager sablonokat, az Azure RBAC-vezérlőket és a házirendeket egyetlen terv definíciójában. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
 
 * [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -202,7 +202,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
-Útmutató: az Azure Service Fabric-fürt **Bevezetésével**Azure monitor a fürt által generált biztonsági adatokat összesítve. Lásd: diagnosztikai problémák és megoldások a Service Fabric.
+Útmutató: az Azure Service Fabric-fürt **Bevezetésével** Azure monitor a fürt által generált biztonsági adatokat összesítve. Lásd: diagnosztikai problémák és megoldások a Service Fabric.
 
 * [Azure Monitor naplók konfigurálása Service Fabric-integrációval](./service-fabric-diagnostics-oms-setup.md)
 

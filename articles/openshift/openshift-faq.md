@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c09f741b37e06010a0bfbab40317980793240e29
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816235"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683505"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – gyakori kérdések
 
@@ -127,7 +127,7 @@ További információ: a [Pod elhelyezésének szabályozása](https://docs.open
 
 3,11-fürtök esetén a Docker-rendszerkép beállításjegyzéke elérhető. A Docker-beállításjegyzék elérhető innen: `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` . Azure Container Registry is használhatja.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 ### <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Telepíthetek fürtöt meglévő virtuális hálózatra?
 
@@ -186,13 +186,13 @@ További információkért tekintse meg a fürt verziójának önálló kiépít
 
 ### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Mely UNIX-jogosultságok érhetők el a Masters/infra/app-csomópontok számára a IaaS-ben?
 
-4. x fürtök esetén a csomópont-hozzáférés a fürt – rendszergazda szerepkörön keresztül érhető el. További információ: [RBAC – áttekintés](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+4. x fürtök esetén a csomópont-hozzáférés a fürt – rendszergazda szerepkörön keresztül érhető el. További információ: [KUBERNETES RBAC – áttekintés](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
 
 3,11-fürtök esetében a Node-hozzáférés tiltott.
 
 ### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Milyen OCP-jogosultságokkal rendelkezik? Fürt – rendszergazda? Projekt – rendszergazda?
 
-4. x fürtök esetén a fürt – rendszergazda szerepkör elérhető. További információ: [RBAC – áttekintés](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+4. x fürtök esetén a fürt – rendszergazda szerepkör elérhető. További információ: [KUBERNETES RBAC – áttekintés](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
 
 3,11-fürtök esetében további részletekért tekintse meg a [Fürtfelügyelő áttekintését](https://docs.openshift.com/aro/admin_guide/index.html) .
 

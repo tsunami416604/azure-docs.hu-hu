@@ -5,12 +5,12 @@ description: Ismerje meg az Azure Kubernetes Service-ben (ak) a fürt biztonság
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 9cb51cb0f5b902553bda0b881c8392d74905c4bc
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 9ef019e682511e13af46194d26aec48c1555f70e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073631"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683301"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a fürtök biztonságához és frissítéséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -19,7 +19,7 @@ A fürtök Azure Kubernetes szolgáltatásban (ak) való kezelése során a munk
 Ebből a cikkből megtudhatja, hogyan védheti meg az AK-fürtöt. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Az API Server-hozzáférés biztonságossá tétele Azure Active Directory és szerepköralapú hozzáférés-vezérléssel (RBAC)
+> * Az API Server-hozzáférés biztonságossá tételéhez használja a Azure Active Directory és a Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC)
 > * Biztonságos tároló hozzáférése a csomópont erőforrásaihoz
 > * AK-fürt frissítése a legújabb Kubernetes-verzióra
 > * A csomópontok naprakészen tartása és a biztonsági javítások automatikus alkalmazása
@@ -30,7 +30,7 @@ Az [Azure Kubernetes Services integrációját a Security Center][security-cente
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Biztonságos hozzáférés az API-kiszolgálóhoz és a fürtcsomópontokhöz
 
-**Ajánlott eljárás – útmutató** – a Kubernetes való hozzáférés biztonságossá tétele API-Server az egyik legfontosabb dolog, amit a fürt biztonságossá tételéhez használhat. Integrálja a Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) az API-kiszolgáló elérésének vezérléséhez Azure Active Directory használatával. Ezek a vezérlőelemek lehetővé teszik az ak-nak az Azure-előfizetésekhez való biztonságos hozzáférését.
+**Ajánlott eljárás – útmutató** – a Kubernetes való hozzáférés biztonságossá tétele API-Server az egyik legfontosabb dolog, amit a fürt biztonságossá tételéhez használhat. Integrálja a Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC) az API-kiszolgálóhoz való hozzáférés vezérléséhez Azure Active Directory használatával. Ezek a vezérlőelemek lehetővé teszik az ak-nak az Azure-előfizetésekhez való biztonságos hozzáférését.
 
 A Kubernetes API-kiszolgáló egyetlen kapcsolódási pontot biztosít a fürtökön belüli műveletek végrehajtásához. Az API-kiszolgálóhoz való hozzáférés biztonságossá tételéhez és naplózásához korlátozza a hozzáférést, és adja meg a minimálisan szükséges jogosultsági szintű hozzáférési engedélyeket. Ez a megközelítés nem egyedi a Kubernetes, de különösen fontos, ha az AK-fürt logikailag el van különítve a több-bérlős használatra.
 
@@ -38,11 +38,11 @@ A Azure Active Directory (AD) egy nagyvállalati használatra kész identitáske
 
 ![Azure Active Directory-integráció az AK-fürtökhöz](media/operator-best-practices-cluster-security/aad-integration.png)
 
-Az Kubernetes RBAC és az Azure AD-Integration használatával biztosíthatja az API-kiszolgáló védelmét, és megadhatja a hatókörön belüli erőforrások (például egyetlen névtér) számára szükséges engedélyek minimális számát. Az Azure AD különböző felhasználói vagy csoportjai különböző RBAC szerepköröket biztosíthatnak. Ezek a részletes engedélyek lehetővé teszik az API-kiszolgálóhoz való hozzáférés korlátozását, valamint a végrehajtott műveletek egyértelmű naplózását.
+Az Kubernetes RBAC és az Azure AD-Integration használatával biztosíthatja az API-kiszolgáló védelmét, és megadhatja a hatókörön belüli erőforrások (például egyetlen névtér) számára szükséges engedélyek minimális számát. Az Azure AD különböző felhasználói vagy csoportjai különböző Kubernetes szerepköröket biztosíthatnak. Ezek a részletes engedélyek lehetővé teszik az API-kiszolgálóhoz való hozzáférés korlátozását, valamint a végrehajtott műveletek egyértelmű naplózását.
 
-Az ajánlott eljárás az, ha csoportok használatával biztosít hozzáférést a fájlokhoz és mappákhoz, illetve az egyéni identitásokhoz, az *Azure ad-csoporttagság használatával* a felhasználókat az egyéni *felhasználók*helyett RBAC-szerepkörökhöz kötheti. A felhasználó csoporttagság-változása miatt az AK-fürtön való hozzáférési engedélyeik ennek megfelelően változnak. Ha a felhasználót közvetlenül egy szerepkörhöz köti, a feladat funkciója változhat. Az Azure AD-csoporttagságok frissítése megtörténne, de az AK-fürt engedélyei nem tükrözik ezt. Ebben az esetben a felhasználó a felhasználó által igényelt több engedélyt kap.
+Az ajánlott eljárás az, ha csoportok használatával biztosít hozzáférést a fájlokhoz és mappákhoz, illetve az egyéni identitásokhoz, az *Azure ad-csoporttagság használatával* a felhasználókat az egyéni *felhasználók* helyett Kubernetes-szerepkörökhöz kötheti. A felhasználó csoporttagság-változása miatt az AK-fürtön való hozzáférési engedélyeik ennek megfelelően változnak. Ha a felhasználót közvetlenül egy szerepkörhöz köti, a feladat funkciója változhat. Az Azure AD-csoporttagságok frissítése megtörténne, de az AK-fürt engedélyei nem tükrözik ezt. Ebben az esetben a felhasználó a felhasználó által igényelt több engedélyt kap.
 
-Az Azure AD-integrációval és a RBAC kapcsolatos további információkért lásd: [ajánlott eljárások a hitelesítéshez és engedélyezéshez az AK-ban][aks-best-practices-identity].
+További információ az Azure AD-integrációról, a Kubernetes RBAC és az Azure RBAC: [ajánlott eljárások a hitelesítéshez és engedélyezéshez az AK-ban][aks-best-practices-identity].
 
 ## <a name="secure-container-access-to-resources"></a>Biztonságos tároló hozzáférése az erőforrásokhoz
 
@@ -50,10 +50,10 @@ Az Azure AD-integrációval és a RBAC kapcsolatos további információkért l�
 
 Ugyanúgy, ahogy a lehető legkevesebb jogosultsággal rendelkező felhasználókat vagy csoportokat kell megadnia, a tárolókat csak a szükséges műveletekre és folyamatokra kell korlátozni. A támadás kockázatának csökkentése érdekében ne konfigurálja az olyan alkalmazásokat és tárolókat, amelyek nem igényelnek kiterjesztésű jogosultságokat vagy rendszergazdai hozzáférést. Adja meg például a következőt `allowPrivilegeEscalation: false` : Pod manifest. Ezek a *Pod biztonsági környezetek* a Kubernetes-be vannak építve, és lehetővé teszik további engedélyek megadását, például a felhasználó vagy csoport számára a futtatását, illetve a Linux-képességek elérhetővé tétele érdekében. További ajánlott eljárások: [biztonságos Pod-hozzáférés az erőforrásokhoz][pod-security-contexts].
 
-A tárolók műveleteinek részletesebb szabályozása érdekében a beépített linuxos biztonsági funkciókat, például a *AppArmor* és a *seccompot*is használhatja. Ezek a funkciók a csomópont szintjén vannak meghatározva, majd egy Pod manifest használatával valósíthatók meg. A beépített linuxos biztonsági funkciók csak Linux-csomópontokon és hüvelyeken érhetők el.
+A tárolók műveleteinek részletesebb szabályozása érdekében a beépített linuxos biztonsági funkciókat, például a *AppArmor* és a *seccompot* is használhatja. Ezek a funkciók a csomópont szintjén vannak meghatározva, majd egy Pod manifest használatával valósíthatók meg. A beépített linuxos biztonsági funkciók csak Linux-csomópontokon és hüvelyeken érhetők el.
 
 > [!NOTE]
-> A Kubernetes-környezetek (ak-ban vagy máshol) nem teljesen biztonságosak az ellenséges, több-bérlős használatra. A csomópontok további biztonsági funkciói, például a *AppArmor*, a *seccompot*, a *Pod biztonsági házirendek*, vagy a csomópontok részletes, SZEREPKÖRALAPÚ hozzáférés-vezérlése (RBAC) nehezebbé teszik a kiaknázást. Azonban az ellenséges, több-bérlős számítási feladatok futtatásakor a megfelelő biztonság érdekében a hypervisor az egyetlen biztonsági szint, amelyet megbízhatónak tart. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia.
+> A Kubernetes-környezetek (ak-ban vagy máshol) nem teljesen biztonságosak az ellenséges, több-bérlős használatra. A csomópontok további biztonsági funkciói, például a *AppArmor*, a *seccompot*, a *Pod biztonsági házirendek* vagy a részletes Kubernetes SZEREPKÖRALAPÚ hozzáférés-vezérlés (Kubernetes RBAC) nehezebbé teszik a kihasználat. Azonban az ellenséges, több-bérlős számítási feladatok futtatásakor a megfelelő biztonság érdekében a hypervisor az egyetlen biztonsági szint, amelyet megbízhatónak tart. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia.
 
 ### <a name="app-armor"></a>Alkalmazás-Armor
 
@@ -117,7 +117,7 @@ További információ a AppArmor: [AppArmor-profilok a Kubernetes-ben][k8s-appar
 
 ### <a name="secure-computing"></a>Biztonságos számítástechnika
 
-Míg a AppArmor bármely Linux-alkalmazás esetében működik, a [seccompot (*mp*ure *comp*uting)][seccomp] a folyamat szintjén működik. A seccompot egy Linux kernel biztonsági modul is, és natív módon támogatja az AK-csomópontok által használt Docker-futtatókörnyezet. A seccompot esetében a tárolók által végrehajtható folyamat meghívása korlátozott. Olyan szűrőket hozhat létre, amelyek meghatározzák, hogy milyen műveleteket lehet engedélyezni vagy megtagadni, majd a YAML-jegyzékfájlon belüli megjegyzések használatával társítsa a seccompot-szűrőt. Ez arra az ajánlott eljárásra illeszkedik, hogy csak a tárolót adja meg a minimálisan szükséges engedélyekkel, és nem több.
+Míg a AppArmor bármely Linux-alkalmazás esetében működik, a [seccompot (*mp* ure *comp* uting)][seccomp] a folyamat szintjén működik. A seccompot egy Linux kernel biztonsági modul is, és natív módon támogatja az AK-csomópontok által használt Docker-futtatókörnyezet. A seccompot esetében a tárolók által végrehajtható folyamat meghívása korlátozott. Olyan szűrőket hozhat létre, amelyek meghatározzák, hogy milyen műveleteket lehet engedélyezni vagy megtagadni, majd a YAML-jegyzékfájlon belüli megjegyzések használatával társítsa a seccompot-szűrőt. Ez arra az ajánlott eljárásra illeszkedik, hogy csak a tárolót adja meg a minimálisan szükséges engedélyekkel, és nem több.
 
 A seccompot működés közbeni megtekintéséhez hozzon létre egy szűrőt, amely megakadályozza a fájlok engedélyeinek módosítását. [SSH][aks-ssh] -t egy AK-csomópontra, majd hozzon létre egy */var/lib/kubelet/seccomp/Prevent-chmod* nevű seccompot-szűrőt, és illessze be az alábbi tartalmat:
 

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 23a620f8031335e5a950df96427b11251f0ec042
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 610ab649d64351b0897ef7358cdaf9280fe3ba55
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649313"
+ms.locfileid: "94684919"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -521,7 +521,7 @@ A rendszeradatbázisokat a rendszer nem replikálja a feladatátvételi csoport 
 - A maximális fájlméret `tempdb` nem lehet nagyobb, mint 24 GB általános célú szinten. Üzletileg kritikus szinten a maximális `tempdb` méretet az SQL felügyelt példányának tárolási mérete korlátozza. `Tempdb` a naplófájl mérete általános célú szinten legfeljebb 120 GB lehet. Előfordulhat, hogy egyes lekérdezések hibát jeleznek, ha legalább 24 GB-nál több adatra van szükségük, `tempdb` vagy ha több mint 120 GB adatnaplót hoznak létre.
 - `Tempdb` a mindig 12 adatfájlra van felosztva: 1 elsődleges, más néven Master, adatfájl és 11 nem elsődleges adatfájl. A fájl szerkezete nem módosítható, és az új fájlok nem adhatók hozzá a következőhöz: `tempdb` . 
 - A [memóriára optimalizált `tempdb` metaadatok](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata), egy új SQL Server 2019 memóriabeli adatbázis-szolgáltatás, nem támogatott.
-- A modell adatbázisban létrehozott objektumok nem hozhatók létre automatikusan az `tempdb` újraindítást vagy feladatátvételt követően, mert `tempdb` nem kapják meg a kezdeti objektumok listáját a replikált modell adatbázisából. 
+- A modell adatbázisban létrehozott objektumok nem hozhatók létre automatikusan az `tempdb` újraindítást vagy feladatátvételt követően, mert `tempdb` nem kapják meg a kezdeti objektumok listáját a modell adatbázisából. Az `tempdb` egyes újraindítások vagy feladatátvételek után manuálisan kell létrehoznia az objektumokat.
 
 ### <a name="msdb"></a>MSDB
 

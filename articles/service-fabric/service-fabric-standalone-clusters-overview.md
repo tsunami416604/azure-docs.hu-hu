@@ -3,12 +3,12 @@ title: Önálló Service Fabric-fürtök áttekintése
 description: A Service Fabric-fürtök Windows Serveren és Linuxon futnak, ami azt jelenti, hogy a Windows Servert vagy Linuxot futtató bárhonnan telepítheti és futtathatja Service Fabric alkalmazásokat.
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: c57d1ef6db295400ad986adadb804fb942a723e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3162a3d02510ce8efab6c5bcac0f1fdd2b2539b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841067"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683998"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Önálló fürtök Service Fabric áttekintése
 
@@ -43,10 +43,10 @@ Az ügyféltanúsítványok mellett Azure Active Directory is konfigurálható �
 
 További információért olvassa el az [ügyfél és a csomópont közötti biztonság](service-fabric-cluster-security.md#client-to-node-security)
 
-### <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
+### <a name="service-fabric-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés Service Fabric
 A Service Fabric a hozzáférés-vezérlést is támogatja, hogy korlátozza a hozzáférést bizonyos fürt műveleteihez a különböző felhasználói csoportok esetében. Ez segít a fürt biztonságosabbá tételében. A fürthöz csatlakozó ügyfelek esetében két hozzáférés-vezérlési típus támogatott: rendszergazdai szerepkör és felhasználói szerepkör.  
 
-További információért olvassa el a [szerepköralapú Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)című témakört.
+További információért olvassa el [Service Fabric szerepköralapú hozzáférés-vezérlés](service-fabric-cluster-security.md#service-fabric-role-based-access-control)című témakört.
 
 ## <a name="scaling"></a>Méretezés
 

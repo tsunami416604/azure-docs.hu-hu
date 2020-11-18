@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8a762cfd1ecb4e290417b5d24b0ae75f6e10baf1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3d199ae202cbe99176f3ca5d0ae82ecdeec84ca4
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973700"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684508"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Gyakori kérdések az Azure IaaS virtuálisgép-lemezekről, valamint a felügyelt és nem felügyelt prémium szintű lemezekről
 
@@ -171,7 +171,7 @@ Nem, csak az ultra-lemezek és a prémium szintű SSD által felügyelt lemezek 
 
 **Mely régiók támogatják a megosztott lemezeket?**
 
-A regionális információkhoz tekintse meg a [fogalmi cikket](./linux/disks-shared.md).
+A regionális információkhoz tekintse meg a [fogalmi cikket](disks-shared.md).
 
 **Használhatók-e a megosztott lemezek operációsrendszer-lemezként?**
 
@@ -179,7 +179,7 @@ Nem, a megosztott lemezek csak adatlemezek esetén támogatottak.
 
 **Milyen méretű lemezek támogatják a megosztott lemezeket?**
 
-A támogatott méretekért tekintse meg a [fogalmi cikket](./linux/disks-shared.md).
+A támogatott méretekért tekintse meg a [fogalmi cikket](disks-shared.md).
 
 **Ha van meglévő lemezem, Engedélyezem a megosztott lemezeket?**
 
@@ -210,7 +210,7 @@ Ha nem biztos abban, hogy mit kell beállítania a lemez átviteli sebességéne
 A lemez szabályozásán kívül van egy IO-szabályozás, amely a virtuális gép szintjén lesz kiszabva. Győződjön meg arról, hogy a használt virtuális gép mérete támogatja a lemezeken konfigurált szinteket. A virtuális gép által kiszabott IO-korlátokkal kapcsolatos részletekért lásd: az [Azure-beli virtuális gépek méretei](sizes.md).
 
 **Használhatok gyorsítótárazási szinteket Ultra lemezzel?**
-Nem, az ultra-lemezek nem támogatják a más típusú lemezeken támogatott különböző gyorsítótárazási módszereket. Állítsa a lemezes gyorsítótárazást a **none**értékre.
+Nem, az ultra-lemezek nem támogatják a más típusú lemezeken támogatott különböző gyorsítótárazási módszereket. Állítsa a lemezes gyorsítótárazást a **none** értékre.
 
 **A meglévő virtuális géphez is csatlakoztatok egy ultra-lemezt?**
 Előfordulhat, hogy a virtuális gépnek egy olyan régióban és rendelkezésre állási zónában kell lennie, amely támogatja az ultra-lemezeket. További részletekért lásd: [az ultra Disks szolgáltatás első lépései](disks-enable-ultra-ssd.md) .
@@ -304,7 +304,7 @@ Nem. Azure Site Recovery Azure-ról Azure-ra, Managed Disks elérhető virtuáli
 
 **Áttelepíthetem a virtuális gépeket olyan nem felügyelt lemezekkel, amelyek olyan tárolási fiókokon találhatók, amelyek korábban felügyelt lemezekre lettek titkosítva?**
 
-Yes
+Igen
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks és Storage Service Encryption
 
@@ -342,7 +342,7 @@ Igen. Minden felügyelt pillanatkép és rendszerkép automatikusan titkosítva 
 
 **Átalakíthatók-e a virtuális gépek olyan nem felügyelt lemezekkel, amelyek olyan Storage-fiókokon találhatók, amelyek korábban felügyelt lemezekre lettek titkosítva?**
 
-Yes
+Igen
 
 **Egy felügyelt lemezről exportált virtuális merevlemez vagy egy pillanatkép is titkosítva lesz?**
 

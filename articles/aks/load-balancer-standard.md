@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: b42a952b096f533f916879a11fdb6b6583fa8592
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5da7f2a11be7562313b709a8af72ccd709165cfa
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660355"
+ms.locfileid: "94684202"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Nyilvános standard Load Balancer használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -225,7 +225,7 @@ az aks update \
     --load-balancer-outbound-ports 4000
 ```
 
-Ebben a példában a fürt minden csomópontja számára 4000 lefoglalt kimenő portot, a 7 4000 IP-címmel pedig a *csomópontok száma * 100 csomópont = 400k összes portja < = 448k Total ports = 7 IP-címek * 64 GB-os port/IP*. Ez lehetővé teszi, hogy biztonságosan méretezhető 100-csomópontra, és alapértelmezett frissítési művelettel rendelkezzen. Fontos, hogy elegendő portot foglaljon le a frissítéshez és egyéb műveletekhez szükséges további csomópontokhoz. Az AK alapértelmezett értéke az egyik puffer csomópontja a frissítéshez, ebben a példában ehhez az adott időpontban 4000 szabad port szükséges. MaxSurge- [értékek](upgrade-cluster.md#customize-node-surge-upgrade-preview)használata esetén a maxSurge értékével szorozza meg a kimenő portokat.
+Ebben a példában a fürt minden csomópontja számára 4000 lefoglalt kimenő portot, a 7 4000 IP-címmel pedig a *csomópontok száma * 100 csomópont = 400k összes portja < = 448k Total ports = 7 IP-címek * 64 GB-os port/IP*. Ez lehetővé teszi, hogy biztonságosan méretezhető 100-csomópontra, és alapértelmezett frissítési művelettel rendelkezzen. Fontos, hogy elegendő portot foglaljon le a frissítéshez és egyéb műveletekhez szükséges további csomópontokhoz. Az AK alapértelmezett értéke az egyik puffer csomópontja a frissítéshez, ebben a példában ehhez az adott időpontban 4000 szabad port szükséges. MaxSurge- [értékek](upgrade-cluster.md#customize-node-surge-upgrade)használata esetén a maxSurge értékével szorozza meg a kimenő portokat.
 
 A 100-csomópontok feletti biztonság érdekében további IP-címeket kell hozzáadnia.
 

@@ -2,13 +2,13 @@
 title: Fogalmak – az Azure VMware-megoldás privát felhők monitorozása és javítása
 description: Ismerje meg, hogyan figyeli és javítja az Azure VMware megoldás a VMware ESXi-kiszolgálókat egy Azure VMware-megoldás privát felhőben.
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: bee08304cd14f2aeec6995203638b5a37d9a861c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 11a3c53bff7ce7b67b677977eddb9829f336672d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343904"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684695"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>Azure VMware-megoldás privát felhők monitorozása és javítása
 
@@ -42,4 +42,10 @@ A gazdagép szervizelési folyamata egy új, kifogástalan állapotú csomópont
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg az [Azure VMware megoldás saját Felhőbeli frissítéseit](concepts-upgrades.md).  
+Az alábbi témakörökből megtudhatja, hogyan érdemes többet megtudni:
+
+- [Azure VMware-megoldás saját Felhőbeli frissítései](concepts-upgrades.md)
+- [Azure VMware-megoldás virtuális gépek életciklus-kezelése](lifecycle-management-of-azure-vmware-solution-vms.md)
+- [Az Azure VMware-megoldás virtuális gépei a Azure Security Center integrációval védhetők](azure-security-integration.md)
+- [Azure VMware-megoldás virtuális gépek biztonsági mentése Azure Backup Server](backup-azure-vmware-solution-virtual-machines.md)
+- [A virtuális gépek vész-helyreállításának befejezése Azure VMware-megoldás használatával](disaster-recovery-for-virtual-machines.md)

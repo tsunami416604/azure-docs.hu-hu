@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 69541ec652188bc3826b7829fbc5c182193d6ba9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d66f3099ba225fbdd2bfc3d54db56ffd8ed2c43f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670945"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684032"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligens Útválasztás és Kanári-kiadások használata az Azure Kubernetes Service (Istio) szolgáltatásban (ak)
 
@@ -33,7 +33,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!NOTE]
 > Ez a forgatókönyv a Istio verzióval lett tesztelve `1.3.2` .
 
-A cikkben részletezett lépések feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb, RBAC engedélyezve), és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Emellett a fürtben telepített Istio is szüksége lesz.
+A cikkben részletezett lépések feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb, KUBERNETES RBAC engedélyezve), és létesítettek egy `kubectl` , a fürttel létesített kapcsolatokat. Emellett a fürtben telepített Istio is szüksége lesz.
 
 Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart] -gyors útmutatót, és [telepítse az Istio-t az AK-][istio-install] útmutatóban.
 

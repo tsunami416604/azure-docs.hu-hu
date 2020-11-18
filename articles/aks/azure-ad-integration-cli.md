@@ -6,18 +6,18 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4aa63493bb14db69821ac04db1d2c5a846de7dbe
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612418"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682468"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure Active Directory integrálása az Azure Kubernetes szolgáltatással az Azure CLI használatával (örökölt)
 
-Az Azure Kubernetes Service (ak) konfigurálható úgy, hogy Azure Active Directory (AD) használatát használja a felhasználói hitelesítéshez. Ebben a konfigurációban egy Azure AD-hitelesítési jogkivonat használatával tud bejelentkezni egy AK-fürtbe. A Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) is konfigurálhat a felhasználó identitása vagy a címtár csoporttagság alapján.
+Az Azure Kubernetes Service (ak) konfigurálható úgy, hogy Azure Active Directory (AD) használatát használja a felhasználói hitelesítéshez. Ebben a konfigurációban egy Azure AD-hitelesítési jogkivonat használatával tud bejelentkezni egy AK-fürtbe. A Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC) is konfigurálhat a felhasználó identitása vagy a címtár csoportjának tagsága alapján.
 
-Ez a cikk bemutatja, hogyan hozhatja létre a szükséges Azure AD-összetevőket, hogyan helyezhet üzembe egy Azure AD-kompatibilis fürtöt, és hogyan hozhat létre alapszintű RBAC-szerepkört az AK-fürtben.
+Ez a cikk bemutatja, hogyan hozhatja létre a szükséges Azure AD-összetevőket, hogyan helyezhet üzembe egy Azure AD-kompatibilis fürtöt, és hogyan hozhat létre alapszintű Kubernetes-szerepkört az AK-fürtben.
 
 Az ebben a cikkben használt teljes minta szkripttel kapcsolatban lásd: [Azure CLI-minták – AK-integráció az Azure ad-vel][complete-script].
 
@@ -26,7 +26,7 @@ Az ebben a cikkben használt teljes minta szkripttel kapcsolatban lásd: [Azure 
 
 ## <a name="the-following-limitations-apply"></a>Az alábbi korlátozások érvényesek:
 
-- Az Azure AD-t csak RBAC-kompatibilis fürtön lehet engedélyezni.
+- Az Azure AD-t csak a Kubernetes RBAC-kompatibilis fürtön lehet engedélyezni.
 - Az Azure AD örökölt integrációja csak a fürt létrehozásakor engedélyezhető.
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -35,7 +35,7 @@ Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfig
 
 [https://shell.azure.com](https://shell.azure.com)Nyissa meg a Cloud shellt a böngészőben.
 
-A konzisztencia és a jelen cikkben szereplő parancsok futtatásának elősegítése érdekében hozzon létre egy változót a kívánt AK-fürt nevéhez. A következő példa a *myakscluster*nevet használja:
+A konzisztencia és a jelen cikkben szereplő parancsok futtatásának elősegítése érdekében hozzon létre egy változót a kívánt AK-fürt nevéhez. A következő példa a *myakscluster* nevet használja:
 
 ```console
 aksname="myakscluster"
@@ -164,9 +164,9 @@ Végül szerezze be a fürt rendszergazdai hitelesítő adatait az az az az [AK 
 az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 ```
 
-## <a name="create-rbac-binding"></a>RBAC kötés létrehozása
+## <a name="create-kubernetes-rbac-binding"></a>Kubernetes RBAC-kötés létrehozása
 
-Mielőtt egy Azure Active Directory fiókot lehessen használni az AK-fürthöz, létre kell hoznia egy szerepkör-kötést vagy egy fürt szerepkör-kötést. A *szerepkörök* határozzák meg a megadható engedélyeket, a *kötések* pedig a kívánt felhasználókra vonatkoznak. Ezek a hozzárendelések egy adott névtérre vagy a teljes fürtre is alkalmazhatók. További információ: RBAC- [hitelesítés használata][rbac-authorization].
+Mielőtt egy Azure Active Directory fiókot lehessen használni az AK-fürthöz, létre kell hoznia egy szerepkör-kötést vagy egy fürt szerepkör-kötést. A *szerepkörök* határozzák meg a megadható engedélyeket, a *kötések* pedig a kívánt felhasználókra vonatkoznak. Ezek a hozzárendelések egy adott névtérre vagy a teljes fürtre is alkalmazhatók. További információ: [a KUBERNETES RBAC-hitelesítés használata][rbac-authorization].
 
 Szerezze be az aktuálisan bejelentkezett felhasználó egyszerű felhasználónevét az az ad bejelentkezett [felhasználó által megjelenített][az-ad-signed-in-user-show] parancs használatával. Ez a felhasználói fiók engedélyezve van az Azure AD-integrációhoz a következő lépésben.
 
@@ -175,7 +175,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 ```
 
 > [!IMPORTANT]
-> Ha az RBAC-kötést megadó felhasználó ugyanabban az Azure AD-bérlőben található, akkor a *userPrincipalName*alapján rendeljen engedélyeket. Ha a felhasználó egy másik Azure AD-bérlőben található, a *objectId* tulajdonság lekérdezése és használata.
+> Ha a felhasználó a Kubernetes RBAC-kötést adja meg ugyanahhoz az Azure AD-bérlőhöz, a *userPrincipalName* alapján rendeljen engedélyeket. Ha a felhasználó egy másik Azure AD-bérlőben található, a *objectId* tulajdonság lekérdezése és használata.
 
 Hozzon létre egy nevű YAML-jegyzékfájlt `basic-azure-ad-binding.yaml` , és illessze be a következő tartalmakat. Az utolsó sorban cserélje le a *userPrincipalName_or_objectId*  elemet az előző parancs UPN-vagy objektumazonosító-kimenetével:
 
@@ -247,11 +247,11 @@ error: You must be logged in to the server (Unauthorized)
 * A felhasználó nem tagja több mint 200 csoportnak.
 * Az alkalmazás regisztrálásakor megadott titkos kód megegyezik a használatával konfigurált értékkel `--aad-server-app-secret`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a cikkben látható parancsokat tartalmazó teljes parancsfájl esetében tekintse meg az [Azure ad-integrációs parancsfájlt az AK-minták][complete-script]tárházában.
 
-Ha az Azure AD-felhasználókat és-csoportokat szeretné használni a fürterőforrások elérésének vezérléséhez, tekintse meg a [fürterőforrások hozzáférésének szabályozása szerepköralapú hozzáférés-vezérléssel és az AK-beli Azure ad-identitások használatával című részt][azure-ad-rbac].
+Ha az Azure AD-felhasználókat és-csoportokat szeretné használni a fürterőforrások elérésének vezérléséhez, tekintse meg [a fürt erőforrásaihoz való hozzáférés szabályozása a Kubernetes szerepköralapú hozzáférés-vezérlés és az AK-beli Azure ad-identitások használatával című részt][azure-ad-rbac].
 
 További információ a Kubernetes-fürtök védelméről: [a hozzáférési és identitási beállítások az AK-][rbac-authorization]ban.
 
@@ -281,7 +281,7 @@ Az identitás-és erőforrás-vezérléssel kapcsolatos ajánlott eljárásokér
 [az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [managed-aad]: managed-aad.md

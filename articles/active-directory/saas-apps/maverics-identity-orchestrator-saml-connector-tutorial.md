@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: a9d5988f25b833480c4809ba116c48022566b7a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f4fe368e9a56e5ac4c9dfa2648ce4af15a1b5ac0
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458183"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684423"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés integrálása a Maverics Identity Orchestrator SAML-összekötővel
 
@@ -158,12 +158,12 @@ Az Azure Key Vault a Azure Portal vagy az Azure CLI használatával állítható
 
 **Az Azure Portal használata**
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. [Hozzon létre egy új kulcstartót](../../key-vault/secrets/quick-create-portal.md#create-a-vault).
+1. [Hozzon létre egy új kulcstartót](../../key-vault/general/quick-create-portal.md).
 1. [Adja hozzá a titkos kulcsokat a kulcstartóhoz](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 1. [Alkalmazás regisztrálása az Azure ad](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)-ben.
 1. [Engedélyezze az alkalmazás számára a titkos kód használatát](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 
-**Az Azure CLI használata**
+**Az Azure parancssori felületének használata**
 
 1. Nyissa meg az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t, majd írja be a következő parancsot:
 
@@ -201,11 +201,11 @@ Az Azure Key Vault a Azure Portal vagy az Azure CLI használatával állítható
 
 ## <a name="configure-your-application-in-azure-ad-for-saml-based-sso"></a>Az alkalmazás konfigurálása az Azure AD-ben az SAML-alapú egyszeri bejelentkezéshez
 
-1. Az Azure AD-bérlőben lépjen a **vállalati alkalmazások**elemre, keresse meg a **MAVERICS Identity Orchestrator SAML-összekötőt**, majd jelölje ki.
+1. Az Azure AD-bérlőben lépjen a **vállalati alkalmazások** elemre, keresse meg a **MAVERICS Identity Orchestrator SAML-összekötőt**, majd jelölje ki.
 
 1. A Maverics Identity Orchestrator SAML-összekötő **tulajdonságai** ablaktáblán adja meg a **felhasználó-hozzárendelés szükséges lehetőséget?** a **nem** gombra kattintva engedélyezheti, hogy az alkalmazás működjön az újonnan áttelepített felhasználók számára.
 
-1. Az Maverics Identity Orchestrator SAML-összekötő **Áttekintés** paneljén válassza az **egyszeri bejelentkezés beállítása**lehetőséget, majd válassza az **SAML**lehetőséget.
+1. Az Maverics Identity Orchestrator SAML-összekötő **Áttekintés** paneljén válassza az **egyszeri bejelentkezés beállítása** lehetőséget, majd válassza az **SAML** lehetőséget.
 
 1. A Maverics Identity Orchestrator SAML-összekötő **SAML-alapú bejelentkezési** paneljén szerkessze az **alapszintű SAML-konfigurációt** a **Szerkesztés** (ceruza ikon) gomb kiválasztásával.
 
@@ -219,7 +219,7 @@ Az Azure Key Vault a Azure Portal vagy az Azure CLI használatával állítható
 
 1. Válassza a **Mentés** lehetőséget.
 
-1. Az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** gombot az **alkalmazás-összevonás metaadat-URL-címének**másolásához, majd mentse azt a számítógépre.
+1. Az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** gombot az **alkalmazás-összevonás metaadat-URL-címének** másolásához, majd mentse azt a számítógépre.
 
     ![Képernyőkép az "SAML aláíró tanúsítvány" másolási gombról.](common/copy-metadataurl.png)
 
@@ -281,11 +281,11 @@ Ezt a konfigurációt követve fokozatosan telepítheti át a felhasználókat e
 
 1. A **Maverics Identity Orchestrator SAML-összekötőn | Tanúsítványok & titkok** ablaktáblán válassza ki, `New client secret` majd válassza a lejárat lehetőséget. A **Másolás** gombra kattintva másolja be a titkos kulcsot, és mentse a számítógépre.
 
-1. A **Maverics Identity Orchestrator SAML-összekötőn | API-engedélyek** panel, válassza az **engedély hozzáadása** lehetőséget, majd **a kérelem API-engedélyek** ablaktáblán válassza a **Microsoft Graph** és az **alkalmazás engedélyei**lehetőséget. 
+1. A **Maverics Identity Orchestrator SAML-összekötőn | API-engedélyek** panel, válassza az **engedély hozzáadása** lehetőséget, majd **a kérelem API-engedélyek** ablaktáblán válassza a **Microsoft Graph** és az **alkalmazás engedélyei** lehetőséget. 
 
-1. A következő képernyőn válassza a **User. ReadWrite. All**lehetőséget, majd kattintson az **engedélyek hozzáadása**lehetőségre. 
+1. A következő képernyőn válassza a **User. ReadWrite. All** lehetőséget, majd kattintson az **engedélyek hozzáadása** lehetőségre. 
 
-1. Vissza az **API-engedélyek** ablaktáblán válassza a **rendszergazdai jóváhagyás megadása**lehetőséget.
+1. Vissza az **API-engedélyek** ablaktáblán válassza a **rendszergazdai jóváhagyás megadása** lehetőséget.
 
 ### <a name="configure-the-maverics-identity-orchestrator-saml-connector-yaml-file-for-user-migration"></a>A Maverics Identity Orchestrator SAML-összekötő YAML-fájljának konfigurálása a felhasználók áttelepítéséhez
 

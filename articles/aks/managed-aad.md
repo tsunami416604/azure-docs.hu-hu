@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: fdbef15bb7831fedd7c375d565e0cde10f9b9a9e
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: f229075d0bad4f9522e02e30bdabc1d42bb086cf
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380432"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684185"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AK által felügyelt Azure Active Directory integráció
 
@@ -18,14 +18,14 @@ Az AK által felügyelt Azure AD-integráció az Azure AD integrációs felület
 
 ## <a name="azure-ad-authentication-overview"></a>Az Azure AD-hitelesítés áttekintése
 
-A Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) állíthat be a felhasználó identitása vagy a címtár csoporttagság alapján. Az Azure AD-hitelesítés az OpenID-kapcsolattal rendelkező AK-fürtökhöz van megadva. Az OpenID Connect egy OAuth 2,0 protokollra épülő identitási réteg. Az OpenID Connecttel kapcsolatos további információkért tekintse meg az [ID Connect dokumentációját][open-id-connect].
+A Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC) konfigurálhat a felhasználó identitása vagy a címtár csoportjának tagsága alapján. Az Azure AD-hitelesítés az OpenID-kapcsolattal rendelkező AK-fürtökhöz van megadva. Az OpenID Connect egy OAuth 2,0 protokollra épülő identitási réteg. Az OpenID Connecttel kapcsolatos további információkért tekintse meg az [ID Connect dokumentációját][open-id-connect].
 
 További információ az Azure AD integrációs folyamatáról a [Azure Active Directory Integration Concepts dokumentációjában](concepts-identity.md#azure-active-directory-integration).
 
 ## <a name="limitations"></a>Korlátozások 
 
 * Az AK által felügyelt Azure AD-integráció nem tiltható le.
-* a nem RBAC-kompatibilis fürtök nem támogatottak az AK által felügyelt Azure AD-integrációhoz
+* a nem Kubernetes RBAC-kompatibilis fürtök nem támogatottak az AK által felügyelt Azure AD-integrációhoz
 * Az AK által felügyelt Azure AD-integrációhoz társított Azure AD-bérlő módosítása nem támogatott
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -136,7 +136,7 @@ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster 
 
 ## <a name="enable-aks-managed-azure-ad-integration-on-your-existing-cluster"></a>Az AK által felügyelt Azure AD-integráció engedélyezése a meglévő fürtön
 
-Engedélyezheti az AK által felügyelt Azure AD-integrációt a meglévő RBAC-kompatibilis fürtön. Győződjön meg arról, hogy a felügyeleti csoport megtartja a hozzáférést a fürtön.
+Engedélyezheti az AK által felügyelt Azure AD-integrációt a meglévő Kubernetes RBAC-kompatibilis fürtön. Győződjön meg arról, hogy a felügyeleti csoport megtartja a hozzáférést a fürtön.
 
 ```azurecli-interactive
 az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad --aad-admin-group-object-ids <id-1> [--aad-tenant-id <id>]

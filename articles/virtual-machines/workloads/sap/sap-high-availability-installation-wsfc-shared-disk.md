@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5126ae94d8c751952964aaf4df0736a5e546ff36
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c914afb3a72ccac4753a1942b6c4303850654a2e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963635"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682638"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>SAP NetWeaver HA telepítése Windows feladatátvevő fürtön és megosztott lemezen az Azure-beli SAP ASCS/SCS-példányhoz
 
@@ -147,9 +147,9 @@ ms.locfileid: "91963635"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-Ez a cikk azt ismerteti, hogyan telepíthet és konfigurálhat egy magas rendelkezésre állású SAP-rendszert az Azure-ban egy olyan Windows Server feladatátvevő fürt és fürtözött megosztott lemez használatával, amely egy SAP ASCS/SCS-példány fürtözésére szolgál. A következő témakörben leírtak szerint [: az architektúra-útmutatóban szereplő SAP ASCS/SCS-példányok fürt megosztott lemez használatával történő használata a Windows feladatátvevő fürtön][sap-high-availability-guide-wsfc-shared-disk]a *fürt megosztott lemezének*két alternatívája van:
+Ez a cikk azt ismerteti, hogyan telepíthet és konfigurálhat egy magas rendelkezésre állású SAP-rendszert az Azure-ban egy olyan Windows Server feladatátvevő fürt és fürtözött megosztott lemez használatával, amely egy SAP ASCS/SCS-példány fürtözésére szolgál. A következő témakörben leírtak szerint [: az architektúra-útmutatóban szereplő SAP ASCS/SCS-példányok fürt megosztott lemez használatával történő használata a Windows feladatátvevő fürtön][sap-high-availability-guide-wsfc-shared-disk]a *fürt megosztott lemezének* két alternatívája van:
 
-- [Azure megosztott lemezek](../../windows/disks-shared.md)
+- [Azure megosztott lemezek](../../disks-shared.md)
 - A [SIOS DataKeeper cluster Edition](https://us.sios.com/products/datakeeper-cluster/) használatával tükrözött tárhely hozható létre, amely a fürtözött megosztott lemezt szimulálja. 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -204,7 +204,7 @@ A magas rendelkezésre állású ASCS/SCS-példánnyal rendelkező SAP telepít�
    _Adja meg az SAP ERS2-fürt virtuális neve és a TCP/IP-cím DNS-bejegyzését_
 
 
-3. A virtuális gazdagép neveként hozzárendelt IP-cím megadásához válassza a **DNS-kezelő**  >  **tartomány**lehetőséget.
+3. A virtuális gazdagép neveként hozzárendelt IP-cím megadásához válassza a **DNS-kezelő**  >  **tartomány** lehetőséget.
 
    ![2. ábra: új virtuális név és TCP/IP-cím az SAP ASCS/SCS-fürt konfigurációjához][sap-ha-guide-figure-3047]
 
@@ -250,7 +250,7 @@ A belső terheléselosztó mintavételi funkciójának használatával biztosít
 Ez azonban nem fog működni bizonyos fürtkonfiguráció esetén, mert csak egy példány aktív. A másik példány passzív, és nem fogadja el a számítási feladatok egyikét sem. A mintavételi funkciók segítségével az Azure belső terheléselosztó felismeri, hogy melyik példány aktív, és csak az aktív példányt célozza meg.  
 
 > [!IMPORTANT]
-> Ebben a példában a **ProbePort** a 620**Nr**értékre van állítva. A **00** -as számú SAP ASCS-példány esetében 620**00**. A konfigurációt úgy kell beállítani, hogy az megfeleljen az SAP-példányok számának és az SAP SID-nek.
+> Ebben a példában a **ProbePort** a 620 **Nr** értékre van állítva. A **00** -as számú SAP ASCS-példány esetében 620 **00**. A konfigurációt úgy kell beállítani, hogy az megfeleljen az SAP-példányok számának és az SAP SID-nek.
 
 Mintavételi port hozzáadásához futtassa ezt a PowerShell-modult az egyik fürtözött virtuális gépen:
 

@@ -1,5 +1,5 @@
 ---
-title: RBAC kezelése az Azure-beli Kubernetes
+title: Azure-RBAC kezelése az Azure-beli Kubernetes
 titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan használható az Azure RBAC az Kubernetes-engedélyezéshez az Azure Kubernetes Service (ak) szolgáltatással.
 services: container-service
@@ -7,23 +7,23 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 3f878389f22f3928bc1fc8c89b04353583326da6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346043"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684219"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
 
 Ma már [a Azure Active Directory (Azure ad) és az AK közötti integrált hitelesítést](managed-aad.md)is kihasználhatja. Ha ez a beállítás engedélyezve van, ez az integráció lehetővé teszi, hogy az ügyfelek az Azure AD-felhasználókat,-csoportokat vagy egyszerű szolgáltatásokat használják a Kubernetes-RBAC, [itt](azure-ad-rbac.md)találhat további információt.
-Ezzel a funkcióval a Kubernetes felhasználói identitások és hitelesítő adatok külön kezelhetők. Azonban továbbra is külön kell beállítania és kezelnie az Azure RBAC és a Kubernetes RBAC. A hitelesítéssel, az engedélyezéssel és a RBAC kapcsolatos további információkért lásd [itt](concepts-identity.md).
+Ezzel a funkcióval a Kubernetes felhasználói identitások és hitelesítő adatok külön kezelhetők. Azonban továbbra is külön kell beállítania és kezelnie az Azure RBAC és a Kubernetes RBAC. További információ a hitelesítésről és az RBAC-mel történő engedélyezésről: [itt](concepts-identity.md).
 
 Ez a dokumentum egy olyan új megközelítést mutat be, amely lehetővé teszi az egységes felügyeleti és hozzáférés-vezérlést az Azure-erőforrások, az AK-és a Kubernetes-erőforrások között.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az Azure-ból származó Kubernetes-erőforrások RBAC kezelése lehetővé teszi, hogy az Azure-ban vagy a natív Kubernetes-mechanizmusok használatával kezelhesse a RBAC. Ha ez a beállítás engedélyezve van, az Azure AD-rendszerbiztonsági tag kizárólag az Azure RBAC lesz érvényesítve, míg a normál Kubernetes-felhasználók és-szolgáltatásfiókok a Kubernetes-RBAC által kizárólag érvényesítve vannak. A hitelesítéssel, az engedélyezéssel és a RBAC kapcsolatos további információkért lásd [itt](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview).
+Az Azure-ból származó Kubernetes-erőforrások RBAC kezelése lehetővé teszi, hogy az Azure-ban vagy a natív Kubernetes-mechanizmusok használatával kezelhesse a RBAC. Ha ez a beállítás engedélyezve van, az Azure AD-rendszerbiztonsági tag kizárólag az Azure RBAC lesz érvényesítve, míg a normál Kubernetes-felhasználók és-szolgáltatásfiókok a Kubernetes-RBAC által kizárólag érvényesítve vannak. További információ a hitelesítésről és az RBAC-mel történő engedélyezésről: [itt](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview).
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -272,7 +272,7 @@ az group delete -n MyResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ az AK-hitelesítésről, az engedélyezésről és a RBAC [itt](concepts-identity.md)olvasható.
+- További információ az AK-hitelesítésről, az engedélyezésről, a Kubernetes RBAC és az [Azure RBAC.](concepts-identity.md)
 - További információk az Azure RBAC-ről [itt](../role-based-access-control/overview.md)olvashat.
 - További információ a Kubernetes engedélyezéséhez használható egyéni Azure-szerepkörök részletes meghatározásával kapcsolatos összes műveletről [itt](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)olvashat bővebben.
 

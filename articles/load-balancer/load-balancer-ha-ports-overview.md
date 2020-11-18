@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: b0b19eaa86269feff28c73275e4db4a3d332b3df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f6d5b5ef816127fe5f0c689132326f6157731d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664873"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684410"
 ---
 # <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok – áttekintés
 
@@ -28,7 +28,7 @@ A magas rendelkezésre állású (HA) portok olyan terheléselosztási szabályo
 
 A HA-portok terheléselosztási szabályai segítenek a kritikus forgatókönyvek, például a magas rendelkezésre állás és a virtuális hálózatokon belüli hálózati virtuális berendezések (NVA-EK) méretezése terén. A funkció akkor is segíthet, ha nagy számú portot kell terheléselosztással elválasztani. 
 
-Ha az előtér-portok terheléselosztási szabályait úgy konfigurálja, hogy az előtérbeli és a háttérbeli portok **0-ra** és az **összes**protokollra legyenek beállítva. A belső terheléselosztó erőforrás ezután kiegyenlíti az összes TCP-és UDP-folyamatot, a portszámtól függetlenül.
+Ha az előtér-portok terheléselosztási szabályait úgy konfigurálja, hogy az előtérbeli és a háttérbeli portok **0-ra** és az **összes** protokollra legyenek beállítva. A belső terheléselosztó erőforrás ezután kiegyenlíti az összes TCP-és UDP-folyamatot, a portszámtól függetlenül.
 
 ## <a name="why-use-ha-ports"></a>Miért érdemes a HA portokat használni?
 
@@ -66,7 +66,7 @@ A HA ports szolgáltatás az összes globális Azure-régióban elérhető.
 
 Ez a konfiguráció egy alapszintű, HA portok konfigurálása. A HA-portok terheléselosztási szabályát egyetlen előtér-IP-címen is konfigurálhatja a következő módon:
 1. Standard Load Balancer konfigurálásakor jelölje be a **Ha portok** jelölőnégyzetet az Load Balancer szabály konfigurációjában.
-2. A **lebegőpontos IP**esetében válassza a **Letiltva**lehetőséget.
+2. A **lebegőpontos IP** esetében válassza a **Letiltva** lehetőséget.
 
 Ez a konfiguráció nem engedélyezi más terheléselosztási szabály konfigurálását az aktuális terheléselosztó-erőforráson. Ezen kívül lehetővé teszi a belső terheléselosztó erőforrás-konfigurációjának további konfigurálását is a háttérbeli példányok adott készlete számára.
 
@@ -74,7 +74,7 @@ Egy nyilvános standard Load Balancer azonban a háttérbeli példányokhoz is k
 
 ### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Egyetlen, lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása), HA-portok konfigurálása belső standard Load Balancer
 
-Hasonlóképpen beállíthatja, hogy a terheléselosztó olyan terheléselosztási szabályt használjon, amely egyetlen előtér- **porttal** rendelkezik, ha a **lebegő IP-címet** **engedélyezve**értékre állítja. 
+Hasonlóképpen beállíthatja, hogy a terheléselosztó olyan terheléselosztási szabályt használjon, amely egyetlen előtér- **porttal** rendelkezik, ha a **lebegő IP-címet** **engedélyezve** értékre állítja. 
 
 Ennek a konfigurációnak a használatával további lebegőpontos IP-terheléselosztási szabályokat és/vagy nyilvános Load balancert adhat hozzá. Azonban nem használhat nem lebegőpontos IP-címet, HA a port terheléselosztási konfigurációját ezen a konfiguráción felül.
 
@@ -99,5 +99,4 @@ Ha a forgatókönyve megköveteli, hogy egynél több portot kell konfigurálnia
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Megtudhatja, hogyan konfigurálhat ha portokat a ILB a portálon](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule), a [powershellen](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), a [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)-n vagy a [sablonokon](quickstart-load-balancer-standard-internal-template.md)keresztül.
-- [Tudnivalók a standard Load Balancer](load-balancer-standard-overview.md)
+- [Tudnivalók a standard Load Balancer](load-balancer-overview.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 69c8f9f01241100a81ddd1707dbd226e6bf56c2f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a75dd24769a4f1af018981ffcec279afc2a88b5a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089015"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682418"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek/-szolgáltatások összekapcsolása IT Service Management-összekötővel
 Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](./itsmc-overview.md).
@@ -73,12 +73,12 @@ A System Center Service Manager-példány ITSMC való összekapcsolásához köv
 | **Ügyfél-azonosító**   | Írja be a generált ügyfél-azonosítót (az automatikus parancsfájl használatával) a webalkalmazás hitelesítéséhez. Az automatizált parancsfájlról további információt [itt talál.](./itsmc-service-manager-script.md)|
 | **Ügyfél titka**   | Adja meg az AZONOSÍTÓhoz generált ügyfél-titkot.   |
 | **Adatszinkronizálás**   | Válassza ki azokat a Service Manager munkaelemeket, amelyeket szinkronizálni szeretne a ITSMC-on keresztül.  Ezeket a munkaelemeket a rendszer a Log Analyticsba importálja. **Beállítások:**  Incidensek, módosítási kérelmek.|
-| **Adatszinkronizálási hatókör** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. **Maximális korlát** : 120 nap. |
-| **Új konfigurációs elemek létrehozása a ITSM-megoldásban** | Akkor válassza ezt a lehetőséget, ha a ITSM termékben szeretné létrehozni a konfigurációs elemeket. Ha bejelöli ezt a beállítást, a Log Analytics az érintett CIs-t konfigurációs elemekként (nem létező CIs esetén) hozza létre a támogatott ITSM-rendszeren. **Alapértelmezett** : letiltva. |
+| **Adatszinkronizálási hatókör** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. **Maximális korlát**: 120 nap. |
+| **Új konfigurációs elemek létrehozása a ITSM-megoldásban** | Akkor válassza ezt a lehetőséget, ha a ITSM termékben szeretné létrehozni a konfigurációs elemeket. Ha bejelöli ezt a beállítást, a Log Analytics az érintett CIs-t konfigurációs elemekként (nem létező CIs esetén) hozza létre a támogatott ITSM-rendszeren. **Alapértelmezett**: letiltva. |
 
 ![Service Manager-kapcsolatok](media/itsmc-connections/service-manager-connection.png)
 
-**Sikeres csatlakozás és szinkronizálás** :
+**Sikeres csatlakozás és szinkronizálás**:
 
 - A Service Managerból kiválasztott munkaelemek importálása az Azure **log Analyticsba történik.** A munkaelemek összegzését a IT-szolgáltatásmenedzsmenti csatoló csempén tekintheti meg.
 
@@ -108,13 +108,13 @@ Futtassa a szkriptet a következő szükséges részletek megadásával:
 - A webalkalmazás helynév-előtagja
 - ServiceBus-névtér.
 
-A parancsfájl a megadott névvel hozza létre a webalkalmazást (néhány további sztringtel együtt, hogy egyedivé tegye azt). Létrehozza a **webalkalmazás URL-címét** , az **ügyfél-azonosítót** és az **ügyfél titkos kulcsát** .
+A parancsfájl a megadott névvel hozza létre a webalkalmazást (néhány további sztringtel együtt, hogy egyedivé tegye azt). Létrehozza a **webalkalmazás URL-címét**, az **ügyfél-azonosítót** és az **ügyfél titkos kulcsát**.
 
 Mentse az értékeket, amikor ITSMC-vel létesített kapcsolatokat hoz létre.
 
 **A webalkalmazás telepítésének megkeresése**
 
-1. Lépjen **Azure Portal**  >  **erőforrásokhoz** .
+1. Lépjen **Azure Portal**  >  **erőforrásokhoz**.
 2. Válassza ki a webalkalmazást, majd kattintson a **Beállítások**  >  **alkalmazás beállításai** elemre.
 3. Erősítse meg az alkalmazás parancsfájl használatával történő üzembe helyezésének időpontjában megadott Service Manager-példány adatait.
 
@@ -137,12 +137,12 @@ A következő eljárással konfigurálhatja a hibrid kapcsolatot, amely összeka
 
 6. Írja be a következő értékeket:
 
-   - **Végpont neve** : adja meg az új hibrid kapcsolatok nevét.
-   - **Végpont-gazdagép** : a Service Manager felügyeleti kiszolgáló teljes tartományneve.
-   - **Végpont portja** : Type 5724
-   - **Servicebus névtér** : használjon meglévő Servicebus-névteret, vagy hozzon létre egy újat.
-   - **Hely** : válassza ki a helyet.
-   - **Név** : adjon meg egy nevet a servicebus, ha létrehozza azt.
+   - **Végpont neve**: adja meg az új hibrid kapcsolatok nevét.
+   - **Végpont-gazdagép**: a Service Manager felügyeleti kiszolgáló teljes tartományneve.
+   - **Végpont portja**: Type 5724
+   - **Servicebus névtér**: használjon meglévő Servicebus-névteret, vagy hozzon létre egy újat.
+   - **Hely**: válassza ki a helyet.
+   - **Név**: adjon meg egy nevet a servicebus, ha létrehozza azt.
 
      ![Hibrid kapcsolatok értékei](media/itsmc-connections/itsmc-new-hybrid-connection-values.png)
 6. Kattintson az **OK** gombra a **hibrid kapcsolatok létrehozása** panel bezárásához és a hibrid kapcsolatok létrehozásának megkezdéséhez.
@@ -186,10 +186,11 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztathatók 
 Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 - A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#add-it-service-management-connector).
 - ServiceNow támogatott verziók: Orlando, New York, Madrid, London, Kingston, Jakarta, Isztambul, Helsinki, Genf.
+- A Azure Monitor által elküldett riasztások ma a következő elemek egyikének ServiceNow hozhatók létre: események, Incedents vagy riasztások.
 > [!NOTE]
 > A ITSMC csak a szolgáltatás hivatalos SaaS-ajánlatát támogatja. A szolgáltatás privát telepítései jelenleg nem támogatottak. 
 
-A **ServiceNow-rendszergazdáknak a következőket kell tenniük a ServiceNow-példányban** :
+A **ServiceNow-rendszergazdáknak a következőket kell tenniük a ServiceNow-példányban**:
 - Ügyfél-azonosító és ügyfél-titkos kód előállítása a ServiceNow termékhez. Az ügyfél-azonosító és a titkos kulcs létrehozásával kapcsolatos információkért tekintse meg a szükséges információkat a következő információk alapján:
 
     - [OAuth beállítása az Orlando-hoz](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
@@ -213,7 +214,7 @@ A **ServiceNow-rendszergazdáknak a következőket kell tenniük a ServiceNow-p�
 > ![A SNOW System OAuth definíciója](media/itsmc-connections/snow-system-oauth.png)
 > 3. Kattintson a hozzáférés visszavonása, majd a visszavonás lehetőségre.
 
-- Telepítse a Microsoft Log Analytics Integration (ServiceNow app) felhasználói alkalmazását. [További információ](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+- Telepítse a Microsoft Log Analytics Integration (ServiceNow app) felhasználói alkalmazását. [További információk](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 > [!NOTE]
 > A ITSMC csak a ServiceNow áruházból letöltött Microsoft Log Analytics integrációs szolgáltatáshoz használható hivatalos felhasználói alkalmazást támogatja. A ITSMC nem támogatja a kód betöltését a ServiceNow oldalon vagy a hivatalos ServiceNow-megoldás részét nem képező alkalmazásban. 
 - Integrációs felhasználói szerepkör létrehozása a telepített felhasználói alkalmazáshoz. Az integrációs felhasználói szerepkör létrehozásával kapcsolatos információkat [itt](#create-integration-user-role-in-servicenow-app)találja.
@@ -240,17 +241,17 @@ ServiceNow-kapcsolatok létrehozásához kövesse az alábbi eljárást:
 | **Kapcsolat neve**   | Írja be annak a ServiceNow-példánynak a nevét, amelyhez csatlakozni kíván a ITSMC.  Ezt a nevet később Log Analytics, ha munkaelemeket konfigurál ebben a ITSM/részletes log Analytics nézetben. |
 | **Partner típusa**   | Válassza a **ServiceNow** lehetőséget. |
 | **Felhasználónév**   | Írja be a ServiceNow alkalmazásban létrehozott integrációs felhasználónevet, hogy támogassa a ITSMC való kapcsolódást. További információ: [ServiceNow-alkalmazás felhasználói szerepkör létrehozása](#create-integration-user-role-in-servicenow-app).|
-| **Jelszó**   | Írja be a felhasználónévhez tartozó jelszót. **Megjegyzés** : a felhasználónevet és a jelszót csak a hitelesítési jogkivonatok létrehozásához használja a rendszer, és a ITSMC szolgáltatásban bárhol tárolja őket.  |
+| **Jelszó**   | Írja be a felhasználónévhez tartozó jelszót. **Megjegyzés**: a felhasználónevet és a jelszót csak a hitelesítési jogkivonatok létrehozásához használja a rendszer, és a ITSMC szolgáltatásban bárhol tárolja őket.  |
 | **Kiszolgáló URL-címe**   | Írja be annak az ServiceNow-példánynak az URL-címét, amelyhez csatlakozni szeretne a ITSMC. Az URL-címnek a ". servicenow.com" utótaggal rendelkező, támogatott SaaS-verzióra kell mutatnia.|
 | **Ügyfél-azonosító**   | Írja be a korábban létrehozott OAuth2-hitelesítéshez használni kívánt ügyfél-azonosítót.  További információ az ügyfél-azonosító és a titkos kulcs létrehozásáról:   [OAuth Setup](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
 | **Ügyfél titka**   | Adja meg az AZONOSÍTÓhoz generált ügyfél-titkot.   |
 | **Adatszinkronizálási hatókör**   | Válassza ki azokat a ServiceNow munkaelemeket, amelyeket szinkronizálni szeretne az Azure Log Analytics a ITSMC keresztül.  A kiválasztott értékeket a rendszer a log analyticsbe importálja.   **Beállítások:**  Incidensek és módosítási kérelmek.|
-| **Adatszinkronizálás** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. **Maximális korlát** : 120 nap. |
-| **Új konfigurációs elemek létrehozása a ITSM-megoldásban** | Akkor válassza ezt a lehetőséget, ha a ITSM termékben szeretné létrehozni a konfigurációs elemeket. Ha be van jelölve, a ITSMC létrehozza az érintett CIs-t konfigurációs elemekként (nem létező CIs esetén) a támogatott ITSM-rendszeren. **Alapértelmezett** : letiltva. |
+| **Adatszinkronizálás** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. **Maximális korlát**: 120 nap. |
+| **Új konfigurációs elemek létrehozása a ITSM-megoldásban** | Akkor válassza ezt a lehetőséget, ha a ITSM termékben szeretné létrehozni a konfigurációs elemeket. Ha be van jelölve, a ITSMC létrehozza az érintett CIs-t konfigurációs elemekként (nem létező CIs esetén) a támogatott ITSM-rendszeren. **Alapértelmezett**: letiltva. |
 
 ![ServiceNow-kapcsolatok](media/itsmc-connections/itsm-connection-servicenow-connection-latest.png)
 
-**Sikeres csatlakozás és szinkronizálás** :
+**Sikeres csatlakozás és szinkronizálás**:
 
 - A ServiceNow-példány kiválasztott munkaelemeit az Azure **log Analyticsba** importálja a rendszer. A munkaelemek összegzését a IT-szolgáltatásmenedzsmenti csatoló csempén tekintheti meg.
 
@@ -284,7 +285,7 @@ A felhasználó az alábbi eljárást:
 
 Az újonnan létrehozott felhasználó megjelenik a hozzárendelt alapértelmezett szerepkörökkel.
 
-**Alapértelmezett szerepkörök** :
+**Alapértelmezett szerepkörök**:
 - personalize_choices
 - import_transformer
 -   x_mioms_microsoft. user
@@ -347,12 +348,12 @@ A következő eljárással hozhat létre egy elővance-kapcsolatokat:
 | **Kiszolgáló URL-címe**   | Írja be a ITSMC-hez csatlakozni kívánt Előa-példány URL-címét. |
 | **Ügyfél-azonosító**   | Adja meg az ügyfél-azonosítót a-kiszolgáló hitelesítéséhez, amelyet a elővizsgálati példányban hozott létre.  További információ az ügyfél-AZONOSÍTÓról: [Active Directory-hitelesítés konfigurálása](../../app-service/configure-authentication-provider-aad.md). |
 | **Adatszinkronizálási hatókör**   | Válassza ki a ITSMC-on keresztül szinkronizálni kívánt munkaelemeket az Azure Log Analyticshoz.  Ezeket a munkaelemeket a rendszer a log analyticsbe importálja.   **Beállítások:**   Incidensek, módosítási kérelmek.|
-| **Adatszinkronizálás** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. **Maximális korlát** : 120 nap. |
-| **Új konfigurációs elemek létrehozása a ITSM-megoldásban** | Akkor válassza ezt a lehetőséget, ha a ITSM termékben szeretné létrehozni a konfigurációs elemeket. Ha be van jelölve, a ITSMC létrehozza az érintett CIs-t konfigurációs elemekként (nem létező CIs esetén) a támogatott ITSM-rendszeren. **Alapértelmezett** : letiltva.|
+| **Adatszinkronizálás** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. **Maximális korlát**: 120 nap. |
+| **Új konfigurációs elemek létrehozása a ITSM-megoldásban** | Akkor válassza ezt a lehetőséget, ha a ITSM termékben szeretné létrehozni a konfigurációs elemeket. Ha be van jelölve, a ITSMC létrehozza az érintett CIs-t konfigurációs elemekként (nem létező CIs esetén) a támogatott ITSM-rendszeren. **Alapértelmezett**: letiltva.|
 
 ![Képernyőfelvétel a kapcsolat neve és a partner típusa listáról.](media/itsmc-connections/itsm-connections-provance-latest.png)
 
-**Sikeres csatlakozás és szinkronizálás** :
+**Sikeres csatlakozás és szinkronizálás**:
 
 - A rendszer az Azure **log Analyticsba** importálja a jelen Előa-példány kiválasztott munkaelemeit. A munkaelemek összegzését a IT-szolgáltatásmenedzsmenti csatoló csempén tekintheti meg.
 
@@ -403,13 +404,13 @@ Cherwell-kapcsolatok létrehozásához kövesse az alábbi eljárást:
 | **Kiszolgáló URL-címe**   | Írja be annak a Cherwell-példánynak az URL-címét, amelyhez csatlakozni szeretne a ITSMC. |
 | **Ügyfél-azonosító**   | Adja meg az ügyfél-azonosítót a Cherwell-példányban létrehozott, a kapcsolatok hitelesítéséhez.   |
 | **Adatszinkronizálási hatókör**   | Válassza ki azokat a Cherwell munkaelemeket, amelyeket szinkronizálni szeretne a ITSMC-on keresztül.  Ezeket a munkaelemeket a rendszer a log analyticsbe importálja.   **Beállítások:**  Incidensek, módosítási kérelmek. |
-| **Adatszinkronizálás** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. **Maximális korlát** : 120 nap. |
-| **Új konfigurációs elemek létrehozása a ITSM-megoldásban** | Akkor válassza ezt a lehetőséget, ha a ITSM termékben szeretné létrehozni a konfigurációs elemeket. Ha be van jelölve, a ITSMC létrehozza az érintett CIs-t konfigurációs elemekként (nem létező CIs esetén) a támogatott ITSM-rendszeren. **Alapértelmezett** : letiltva. |
+| **Adatszinkronizálás** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. **Maximális korlát**: 120 nap. |
+| **Új konfigurációs elemek létrehozása a ITSM-megoldásban** | Akkor válassza ezt a lehetőséget, ha a ITSM termékben szeretné létrehozni a konfigurációs elemeket. Ha be van jelölve, a ITSMC létrehozza az érintett CIs-t konfigurációs elemekként (nem létező CIs esetén) a támogatott ITSM-rendszeren. **Alapértelmezett**: letiltva. |
 
 
 ![Megjelenő kapcsolatok](media/itsmc-connections/itsm-connections-cherwell-latest.png)
 
-**Sikeres csatlakozás és szinkronizálás** :
+**Sikeres csatlakozás és szinkronizálás**:
 
 - A Cherwell-példány kiválasztott munkaelemeit az Azure **log Analyticsba** importálja a rendszer. A munkaelemek összegzését a IT-szolgáltatásmenedzsmenti csatoló csempén tekintheti meg.
 
@@ -423,7 +424,7 @@ Az ügyfél-azonosító/-kulcs Cherwell való létrehozásához kövesse az alá
 
 1. Jelentkezzen be a Cherwell-példányba rendszergazdaként.
 2. Kattintson a **Biztonság**  >  **szerkesztése REST API ügyfél beállításai** elemre.
-3. Válassza az **új ügyfél** -  >  **titkos kulcs** létrehozása lehetőséget.
+3. Válassza az **új ügyfél**-  >  **titkos kulcs** létrehozása lehetőséget.
 
     ![Cherwell-felhasználói azonosító](media/itsmc-connections/itsmc-cherwell-client-id.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: 33aed32c30f298fd3432f4cebcc28b9c20974545
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309069"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685172"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Media Services metrikák és diagnosztikai naplók figyelése a Azure Monitor
 
@@ -67,8 +67,8 @@ A következő Media Services [folyamatos átviteli végpontok](/rest/api/media/s
 |Kérelmek|Kérelmek|A folyamatos átviteli végpont által kiszolgált HTTP-kérelmek teljes számát adja meg.|
 |Kimenő forgalom|Kimenő forgalom|Kimenő átviteli végpontok percenkénti bájtjainak száma.|
 |SuccessE2ELatency|A Befejezés végének késése|Az az időtartam, amikor a folyamatos átviteli végpont a válasz utolsó bájtjának küldésére vonatkozó kérést kapott.|
-|Processzorhasználat| A prémium szintű streaming-végpontok CPU-használata. Ezek az adatátviteli végpontok nem érhetők el. |
-|Kimenő sávszélesség | Kimenő forgalom (bit/mp).|
+|Processzorhasználat| | A prémium szintű streaming-végpontok CPU-használata. Ezek az adatátviteli végpontok nem érhetők el. |
+|Kimenő sávszélesség | | Kimenő forgalom (bit/mp).|
 
 ### <a name="metrics-are-useful"></a>A metrikák hasznosak
 

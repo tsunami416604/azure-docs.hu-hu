@@ -3,12 +3,12 @@ title: SAP HANA-adatbázis biztonsági mentése az Azure-ba Azure Backup
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést egy SAP HANA-adatbázisról az Azure-beli virtuális gépekre a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 28c9716bfb2dd0a6ac380d9ffd6dcd7fd5eb4978
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f7957670b3ba98c640ebc53c6427273ca75a4e6d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649439"
+ms.locfileid: "94682849"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -144,7 +144,7 @@ A házirend-beállításokat a következőképpen adhatja meg:
 1. A **Szabályzat neve** lehetőségnél adja meg az új szabályzat nevét.
 
    ![Adja meg a szabályzat nevét](./media/backup-azure-sap-hana-database/policy-name.png)
-2. A **Teljes biztonsági mentés** pontban válassza ki a **Biztonsági mentés gyakorisága**, majd a **Naponta** vagy **Hetente** lehetőséget.
+1. A **Teljes biztonsági mentés** pontban válassza ki a **Biztonsági mentés gyakorisága**, majd a **Naponta** vagy **Hetente** lehetőséget.
    * **Napi**: válassza ki azt az órát és időzónát, amelyben a biztonsági mentési feladatok megkezdődnek.
        * Teljes biztonsági mentést kell futtatnia. Ezt a beállítást nem lehet kikapcsolni.
        * A **Teljes biztonsági mentés** kiválasztásával megtekintheti a szabályzatot.
@@ -153,16 +153,16 @@ A házirend-beállításokat a következőképpen adhatja meg:
 
    ![Biztonsági mentés gyakoriságának kiválasztása](./media/backup-azure-sap-hana-database/backup-frequency.png)
 
-3. A **megőrzési tartomány** területen konfigurálja a teljes biztonsági mentés megőrzési beállításait.
+1. A **megőrzési tartomány** területen konfigurálja a teljes biztonsági mentés megőrzési beállításait.
     * Alapértelmezés szerint minden beállítás ki van választva. Törölje az összes olyan megőrzési időtartamra vonatkozó korlátozást, amelyet nem kíván használni, és állítsa be azokat.
     * A minimális megőrzési idő bármilyen típusú biztonsági mentés esetén (teljes/különbözeti/napló) hét nap.
     * A rendszer a helyreállítási pontokat a megőrzési időtartamuk alapján jelöli megőrzésre. Ha például napi rendszerességű teljes biztonsági mentést választ, a rendszer naponta csak egy teljes biztonsági mentést indít el.
     * Egy adott nap biztonsági másolata a heti megőrzési időtartam és a beállítás alapján van megcímkézve és megtartva.
     * A havi és éves megőrzési időtartamok hasonló módon viselkednek.
 
-4. A **Teljes biztonsági mentési szabályzat** menüben kattintson az **OK** gombra a beállítások elfogadásához.
-5. Válasszon különbözeti **biztonsági másolatot** a különbözeti szabályzat hozzáadásához.
-6. A **Különbözeti biztonsági mentési szabályzat** pontban válassza az **Engedélyezés** lehetőséget, hogy megnyissa a gyakorisági és megőrzési beállításokat.
+1. A **Teljes biztonsági mentési szabályzat** menüben kattintson az **OK** gombra a beállítások elfogadásához.
+1. Válasszon különbözeti **biztonsági másolatot** a különbözeti szabályzat hozzáadásához.
+1. A **Különbözeti biztonsági mentési szabályzat** pontban válassza az **Engedélyezés** lehetőséget, hogy megnyissa a gyakorisági és megőrzési beállításokat.
     * Legfeljebb napi egy különbözeti biztonsági mentést kezdeményezhet.
     * A különbözeti biztonsági mentéseket legfeljebb 180 napig lehet megőrizni. Ha hosszabb megőrzésre van szüksége, akkor teljes biztonsági mentést kell használnia.
 
@@ -170,22 +170,22 @@ A házirend-beállításokat a következőképpen adhatja meg:
 
     > [!NOTE]
     > A növekményes biztonsági mentések mostantól nyilvános előzetes verzióban is támogatottak. Választhatja a napi biztonsági mentés különbözetét vagy növekményét is, de mindkettőt nem.
-7. A **növekményes biztonsági mentési szabályzatban** válassza az **Engedélyezés** lehetőséget a gyakoriság és a megőrzési vezérlők megnyitásához.
+1. A **növekményes biztonsági mentési szabályzatban** válassza az **Engedélyezés** lehetőséget a gyakoriság és a megőrzési vezérlők megnyitásához.
     * Legfeljebb napi egy növekményes biztonsági mentést indíthat.
     * A növekményes biztonsági mentések legfeljebb 180 napig tárolhatók. Ha hosszabb megőrzésre van szüksége, akkor teljes biztonsági mentést kell használnia.
 
     ![Növekményes biztonsági mentési szabályzat](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
 
-7. Kattintson az **OK** gombra, hogy mentse a szabályzatot, és visszatérjen a fő **Biztonsági mentési szabályzat** menübe.
-8. A tranzakciós napló biztonsági mentési szabályzatának hozzáadásához válassza a **napló biztonsági mentése** lehetőséget,
+1. Kattintson az **OK** gombra, hogy mentse a szabályzatot, és visszatérjen a fő **Biztonsági mentési szabályzat** menübe.
+1. A tranzakciós napló biztonsági mentési szabályzatának hozzáadásához válassza a **napló biztonsági mentése** lehetőséget,
     * A **napló biztonsági mentése** területen válassza az **Engedélyezés** lehetőséget.  Ez nem tiltható le, mert a SAP HANA az összes napló biztonsági mentését kezeli.
     * Állítsa be a gyakoriságot és a megőrzési vezérlőket.
 
     > [!NOTE]
     > A biztonsági másolatok naplózása csak a sikeres teljes biztonsági mentés befejezése után kezdi a folyamatot.
 
-9. Kattintson az **OK** gombra, hogy mentse a szabályzatot, és visszatérjen a fő **Biztonsági mentési szabályzat** menübe.
-10. Miután befejezte a biztonsági mentési szabályzat definiálását, kattintson **az OK gombra**.
+1. Kattintson az **OK** gombra, hogy mentse a szabályzatot, és visszatérjen a fő **Biztonsági mentési szabályzat** menübe.
+1. Miután befejezte a biztonsági mentési szabályzat definiálását, kattintson **az OK gombra**.
 
 > [!NOTE]
 > Minden naplózási biztonsági mentés az előző teljes biztonsági mentéshez van láncolva, amely helyreállítási láncot alkot. Ez a teljes biztonsági mentés a legutóbbi napló biztonsági mentésének lejárta után is megmarad. Ez azt jelentheti, hogy a teljes biztonsági mentést egy további időszakra vonatkozóan kell megőrizni, hogy az összes napló helyreállítható legyen. Tegyük fel, hogy egy felhasználó hetente teljes biztonsági mentést, napi különbözeti és 2 órás naplókat tartalmaz. Mindegyiket 30 napig őrzi meg a rendszer. A hetente megteltek azonban csak a következő teljes biztonsági mentés elérhetővé tételével, azaz 30 + 7 nap után törlődnek. A heti teljes biztonsági mentés például november 16-án történik. Az adatmegőrzési szabályzat szerint az IT-t december 16-i-ig kell megőrizni. Az utolsó napló biztonsági mentése ehhez a teljes, november 22-én a következő beütemezett megtelte előtt történik. Amíg a napló nem érhető el a DEC 22nd-ig, a november 16-i teljes nem törölhető. Így a november 16-i Full megmarad december 22-én.

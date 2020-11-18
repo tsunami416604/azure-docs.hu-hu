@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: c37c0e9b914854ff41053526740d3454c5c23f90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b75c85b85674def84d9fcee62549a6458abf9174
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628995"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684840"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> A kimenő kapcsolatok hibáinak elhárítása
 
@@ -63,7 +63,7 @@ A háttér-készletben lévő két virtuális gép esetében például IP-konfig
 Ha felskálázást végez a következő nagyobb háttérrendszer-készlet méretével, előfordulhat, hogy a kimenő kapcsolatok némelyike időtúllépést okoz, ha a lefoglalt portok újra le lesznek foglalva.  Ha csak néhány SNAT-portot használ, a következő nagyobb méretű háttér-készlet méretének horizontális felskálázása lényegtelen.  A meglévő portok felét a rendszer minden alkalommal újra lefoglalja, amikor a következő háttérbeli készletre lép.  Ha nem szeretné, hogy ez megtörténjen, az üzembe helyezést a rétegek méretére kell alakítania.  Vagy ellenőrizze, hogy az alkalmazás képes-e az észlelésre, és szükség esetén próbálkozzon újra.  A TCP-Keepalives segítséget nyújthat az észlelésben, ha a SNAT-portok már nem működnek az újrafoglalás miatt.
 
 ## <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a><a name="idletimeout"></a>A kimenő Üresjárati időkorlát alaphelyzetbe állítása a Keepalives használatával
-A kimenő kapcsolatok 4 perces üresjárati időkorláttal rendelkeznek. Ez az időkorlát a [kimenő szabályokon](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout)keresztül állítható be. A Transport (például TCP Keepalives) vagy az alkalmazás-réteg Keepalives használatával is frissítheti az üresjárati folyamatokat, és szükség esetén visszaállíthatja ezt az üresjárati időkorlátot.  
+A kimenő kapcsolatok 4 perces üresjárati időkorláttal rendelkeznek. Ez az időkorlát a [kimenő szabályokon](outbound-rules.md)keresztül állítható be. A Transport (például TCP Keepalives) vagy az alkalmazás-réteg Keepalives használatával is frissítheti az üresjárati folyamatokat, és szükség esetén visszaállíthatja ezt az üresjárati időkorlátot.  
 
 A TCP-Keepalives használata esetén elegendő a csatlakozás egyik oldalán való engedélyezése. Például elegendő, ha csak a kiszolgáló oldalon engedélyezi őket, hogy alaphelyzetbe állítsa a folyamat üresjárati időzítőjét, és nem szükséges mindkét fél számára a TCP-Keepalives kezdeményezni.  Hasonló fogalmak léteznek az alkalmazási réteghez, beleértve az adatbázis-ügyfél-kiszolgáló konfigurációkat is.  Tekintse meg a kiszolgáló oldalát, hogy milyen lehetőségek léteznek az alkalmazásspecifikus Keepalives.
 
