@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: c189411b13baf2497f0752c15550dd419f88f754
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 0edcdbfec07c032f095cc03eb91be8cf0785b58a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088601"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844846"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Az áramkör-megszakító irányítópultjának használata az Azure Spring Cloud használatával
 
@@ -68,7 +68,7 @@ Hozzáférés a Hystrix-turbinához a böngésző elérési útjával `https://<
 
 ![Hystrix-irányítópult](media/spring-cloud-circuit-breaker/hystrix-dashboard.png)
 
-Másolja a turbina stream URL-címét `https://<SERVICE-NAME>-hystrix-turbine.azuremicroservices.io/turbine.stream?cluster=default` a szövegmezőbe, majd kattintson az **adatfolyam figyelése**lehetőségre.  Ekkor megjelenik az irányítópult. Ha semmi sem jelenik meg a megjelenítőben, nyomja `user-service` meg a végpontokat a streamek létrehozásához.
+Másolja a turbina stream URL-címét `https://<SERVICE-NAME>-hystrix-turbine.azuremicroservices.io/turbine.stream?cluster=default` a szövegmezőbe, majd kattintson az **adatfolyam figyelése** lehetőségre.  Ekkor megjelenik az irányítópult. Ha semmi sem jelenik meg a megjelenítőben, nyomja `user-service` meg a végpontokat a streamek létrehozásához.
 
 ![A Hystrix stream ](media/spring-cloud-circuit-breaker/hystrix-stream.png) mostantól az áramkör-megszakító irányítópultján is kísérletezhet.
 > [!NOTE] 

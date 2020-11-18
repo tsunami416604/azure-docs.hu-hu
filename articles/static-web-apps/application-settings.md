@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-js
-ms.openlocfilehash: c89ccee430d374d9aee58326627ff800f737324b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 00502c97e3fc06972c27cedf565d77b52f558795
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250028"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844812"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Alkalmazásbeállítások konfigurálása az Azure statikus Web Apps előzetes verziójának beállításához
 
@@ -96,7 +96,7 @@ A Azure Portal egy felületet biztosít az Alkalmazásbeállítások létrehozá
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com).
 
-1. A keresési sávban keresse meg és válassza a **statikus Web Apps**elemet.
+1. A keresési sávban keresse meg és válassza a **statikus Web Apps** elemet.
 
 1. Kattintson a **konfiguráció** lehetőségre az oldalsávon.
 
@@ -124,7 +124,7 @@ A megfelelő értékekkel rendelkező JSON-fájlok létrehozásának legegyszer�
    local.settings*.json
    ```
 
-2. Ezután készítsen másolatot a _local.settings.js_ fájlról, és nevezze el _local.settings.properties.jsa_következőn:.
+2. Ezután készítsen másolatot a _local.settings.js_ fájlról, és nevezze el _local.settings.properties.jsa_ következőn:.
 
 3. Az új fájlban távolítsa el az összes többi fájlt a fájlból, kivéve az alkalmazás beállításait, és nevezze át a következőre: `Values` `properties` .
 
@@ -144,7 +144,7 @@ Az Azure CLI-parancshoz a feltöltés futtatásához a fiókhoz tartozó érték
 2. Erőforráscsoport neve
 3. Előfizetés azonosítója
 
-:::image type="content" source="media/application-settings/overview.png" alt-text="Azure statikus Web Apps konfiguráció nézet":::
+:::image type="content" source="media/application-settings/overview.png" alt-text="Az Azure statikus Web Apps áttekintése":::
 
 4. Futtassa a következő parancsot egy terminálról vagy parancssorból. Ügyeljen rá, hogy a, a és az érték helyőrzőit cserélje le az `<YOUR_STATIC_SITE_NAME>` `<YOUR_RESOURCE_GROUP_NAME>` `<YOUR_SUBSCRIPTION_ID>` _áttekintő_ ablak értékeire.
 

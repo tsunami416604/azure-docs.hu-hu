@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: 779330d7881040026f45a031f95f44d770f39a56
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e9eabc73c244526f0ea15b9c72b5377545f662b2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412765"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844863"
 ---
 # <a name="security-management-in-azure"></a>Biztonságkezelés az Azure-ban
 Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Egyes esetekben a felügyeleti feladatkörök ellátását olyan webalapú konzolok használatával végzik, mint például az [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Service Management API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
@@ -112,7 +112,7 @@ A távoli asztali átjáró egy házirendalapú RDP-proxyszolgáltatás, amely k
 * Csatlakoztassa az RD-átjárót ugyanahhoz a [felügyeleti tartományhoz](/previous-versions/windows/it-pro/windows-2000-server/bb727085(v=technet.10)), amelyikhez a felügyeleti munkaállomások is kapcsolódnak. Ez akkor szükséges, ha helyek közötti IPsec VPN-t vagy ExpressRoute-ot használ az Azure AD felé egyirányú bizalmi kapcsolattal rendelkező tartományban, vagy ha összevonja a hitelesítő adatokat a helyszíni AD DS-példánya és az Azure AD között.
 * Állítson be egy [ügyfélkapcsolat-engedélyezési házirendet](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753324(v=ws.11)) úgy, hogy az RD-átjáró ellenőrizze, érvényes-e (a tartományhoz csatlakozó-e) az ügyfélgép neve, és jogosult-e az Azure Portalhoz való hozzáférésre.
 * Használjon IPsec-et az [Azure VPN-hez](https://azure.microsoft.com/documentation/services/vpn-gateway/) annak érdekében, hogy még jobban védje a felügyeleti adatforgalmat a lehallgatástól és a tokenlopástól. Ennek alternatívája lehet az elkülönített internetkapcsolat [Azure ExpressRoute-on](https://azure.microsoft.com/documentation/services/expressroute/) keresztül.
-* Állítson be többtényezős hitelesítést ([Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) használatával) vagy intelligens kártyás hitelesítést az RD-átjárón keresztül bejelentkező rendszergazdák számára.
+* Engedélyezze a többtényezős hitelesítést ( [Azure AD multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)) vagy intelligens kártyás hitelesítést olyan rendszergazdák számára, akik Rd-átjárón keresztül jelentkeznek be.
 * Állítson be forrás [IP-címekre vonatkozó korlátozásokat](https://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) vagy [hálózati biztonsági csoportokat](../../virtual-network/network-security-groups-overview.md) az Azure-ban a megengedett felügyeleti végpontok számának minimalizálása érdekében.
 
 ## <a name="security-guidelines"></a>Biztonsági irányelvek
@@ -206,10 +206,10 @@ A rendszergazdák által a megerősített munkaállomásokon végezhető feladat
 * Titkosítás. Győződjön meg róla, hogy a felügyeleti munkaállomásai rendelkeznek TPM-mel, a [titkosított fájlrendszer](/previous-versions/tn-archive/cc700811(v=technet.10))(EFS) és a BitLocker biztonságosabb üzembe helyezésének érdekében.
 * Irányítás. Az AD DS csoportházirend-objektumok használatával ellenőrzés alatt tarthatja a rendszergazdák összes Windows-felületét, mint például a fájlmegosztást. Terjessze ki a naplózási és megfigyelési folyamatokat a felügyeleti munkaállomásokra. Kövessen nyomon minden rendszergazdai és fejlesztői hozzáférést és tevékenységet.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 A megerősített munkaállomás-konfiguráció Azure-felhőszolgáltatások, virtuális gépek és szolgáltatások felügyeletére való használata segíthet számos olyan kockázatok és fenyegetések elkerülésében, amelyek a kritikus informatikai infrastruktúrák távfelügyeletével járhatnak. Az Azure és a Windows is kínál a kommunikáció, hitelesítés és ügyfélviselkedés védelmére és ellenőrzésére alkalmas mechanizmusokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő források általánosabb információkat kínálnak az Azure-ról és a kapcsolódó Microsoft-szolgáltatásokról, az ebben a dokumentumban bemutatott konkrét elemek mellett:
 
 * [Az emelt szintű hozzáférés biztonságossá tétele](/windows-server/identity/securing-privileged-access/securing-privileged-access) – itt technikai részleteket olvashat az Azure-felügyelethez használt biztonságos felügyeleti munkaállomás tervezéséről és kiépítéséről.

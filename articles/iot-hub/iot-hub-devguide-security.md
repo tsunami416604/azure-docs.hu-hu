@@ -16,12 +16,13 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: 93b692574588396f776c4d62bd24072382ae8471
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+- devx-track-azurecli
+ms.openlocfilehash: 8627681d843d15658882529424375486a4cdb1b9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912140"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845169"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -43,7 +44,7 @@ A IoT Hub-végpontok bármelyikének eléréséhez megfelelő engedélyekkel kel
 
 A következő módokon adhat meg [engedélyeket](#iot-hub-permissions) :
 
-* **IoT hub szintű megosztott hozzáférési szabályzatok** . A közös hozzáférésű szabályzatok bármely [engedély](#iot-hub-permissions)kombinációját megadhatják. Házirendeket adhat meg a [Azure Portalban](https://portal.azure.com), programozott módon, a [IoT hub erőforrás REST API](/rest/api/iothub/iothubresource)-k használatával vagy az az [IoT hub Policy](/cli/azure/iot/hub/policy) CLI használatával. Az újonnan létrehozott IoT hub a következő alapértelmezett házirendekkel rendelkezik:
+* **IoT hub szintű megosztott hozzáférési szabályzatok**. A közös hozzáférésű szabályzatok bármely [engedély](#iot-hub-permissions)kombinációját megadhatják. Házirendeket adhat meg a [Azure Portalban](https://portal.azure.com), programozott módon, a [IoT hub erőforrás REST API](/rest/api/iothub/iothubresource)-k használatával vagy az az [IoT hub Policy](/cli/azure/iot/hub/policy) CLI használatával. Az újonnan létrehozott IoT hub a következő alapértelmezett házirendekkel rendelkezik:
   
   | Megosztott elérési házirend | Engedélyek |
   | -------------------- | ----------- |
@@ -53,7 +54,7 @@ A következő módokon adhat meg [engedélyeket](#iot-hub-permissions) :
   | registryRead | **RegistryRead** engedélyek |
   | registryReadWrite | **RegistryRead** és **RegistryWrite** engedélyek |
 
-* **Eszközönkénti biztonsági hitelesítő adatok** . Minden IoT Hub tartalmaz egy [identitás-beállításjegyzéket](iot-hub-devguide-identity-registry.md) az identitás-beállításjegyzék minden eszközéhez, konfigurálhatja azokat a biztonsági hitelesítő adatokat, amelyek a **DeviceConnect** engedélyeket biztosítják a megfelelő eszköz-végpontokra.
+* **Eszközönkénti biztonsági hitelesítő adatok**. Minden IoT Hub tartalmaz egy [identitás-beállításjegyzéket](iot-hub-devguide-identity-registry.md) az identitás-beállításjegyzék minden eszközéhez, konfigurálhatja azokat a biztonsági hitelesítő adatokat, amelyek a **DeviceConnect** engedélyeket biztosítják a megfelelő eszköz-végpontokra.
 
 Például egy tipikus IoT-megoldásban:
 
@@ -116,7 +117,7 @@ Ha SASL PLAINt használ a AMQP-vel, az IoT hub-hoz csatlakozó ügyfelek egyetle
 
 ## <a name="scope-iot-hub-level-credentials"></a>Hatókör IoT-hub szintű hitelesítő adatai
 
-A IoT hub-szintű biztonsági házirendek hatókörét korlátozott erőforrás-URI-val rendelkező jogkivonatok létrehozásával is elvégezheti. Például az eszközről a felhőbe irányuló üzenetek **/Devices/{deviceId}/messages/Events** való küldésének végpontja. Az IoT hub szintű közös hozzáférési szabályzatot **DeviceConnect** engedélyekkel is elvégezheti olyan token aláírására, amelynek resourceURI a **/Devices/{deviceId}** . Ez a megközelítés olyan jogkivonatot hoz létre, amely csak az eszköz **deviceId** nevében való üzenetküldésre használható.
+A IoT hub-szintű biztonsági házirendek hatókörét korlátozott erőforrás-URI-val rendelkező jogkivonatok létrehozásával is elvégezheti. Például az eszközről a felhőbe irányuló üzenetek **/Devices/{deviceId}/messages/Events** való küldésének végpontja. Az IoT hub szintű közös hozzáférési szabályzatot **DeviceConnect** engedélyekkel is elvégezheti olyan token aláírására, amelynek resourceURI a **/Devices/{deviceId}**. Ez a megközelítés olyan jogkivonatot hoz létre, amely csak az eszköz **deviceId** nevében való üzenetküldésre használható.
 
 Ez a mechanizmus hasonló a [Event Hubs közzétevői házirendhez](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab), és lehetővé teszi az egyéni hitelesítési módszerek megvalósítását.
 
@@ -144,13 +145,13 @@ A várt értékek a következők:
 
 | Érték | Leírás |
 | --- | --- |
-| aláírás |Az űrlap HMAC-SHA256 aláírási karakterlánca: `{URL-encoded-resourceURI} + "\n" + expiry` . **Fontos** : a kulcs dekódolása base64-ből történik, és kulcsként használatos a HMAC-sha256 számítás végrehajtásához. |
+| aláírás |Az űrlap HMAC-SHA256 aláírási karakterlánca: `{URL-encoded-resourceURI} + "\n" + expiry` . **Fontos**: a kulcs dekódolása base64-ből történik, és kulcsként használatos a HMAC-sha256 számítás végrehajtásához. |
 | ResourceURI |A jogkivonattal elérhető végpontok URI-előtagja (szegmens szerint), az IoT hub állomásneve (nincs protokoll). Például: `myHub.azure-devices.net/devices/device1` |
 | lejárta |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
 | {URL-kódolt-resourceURI} |Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása |
 | PolicyName |Annak a megosztott hozzáférési házirendnek a neve, amelyre ez a jogkivonat hivatkozik. Hiányzik, ha a jogkivonat az eszköz beállításjegyzékbeli hitelesítő adataira hivatkozik. |
 
-**Megjegyzés az előtagnál** : az URI-előtagot szegmens és nem karakter alapján számítja ki a rendszer. Például `/a/b` egy előtag, `/a/b/c` de nem `/a/bc` .
+**Megjegyzés az előtagnál**: az URI-előtagot szegmens és nem karakter alapján számítja ki a rendszer. Például `/a/b` egy előtag, `/a/b/c` de nem `/a/bc` .
 
 A következő Node.js kódrészlet egy **generateSasToken** nevű függvényt mutat be, amely kiszámítja a tokent a bemenetekben `resourceUri, signingKey, policyName, expiresInMins` . A következő részek részletesen ismertetik, hogyan inicializálhatja a különböző adatforrásokat a különböző jogkivonat-használati esetekben.
 
@@ -377,11 +378,11 @@ Bármely X. 509 tanúsítvány használatával hitelesítheti az eszközöket Io
 
 A támogatott tanúsítványok a következők:
 
-* **Egy meglévő X. 509 tanúsítvány** . Lehetséges, hogy egy eszközhöz már van társítva X. 509 tanúsítvány. Az eszköz ezt a tanúsítványt használja a IoT Hub való hitelesítéshez. Ujjlenyomattal vagy HITELESÍTÉSSZOLGÁLTATÓI hitelesítéssel is működik. 
+* **Egy meglévő X. 509 tanúsítvány**. Lehetséges, hogy egy eszközhöz már van társítva X. 509 tanúsítvány. Az eszköz ezt a tanúsítványt használja a IoT Hub való hitelesítéshez. Ujjlenyomattal vagy HITELESÍTÉSSZOLGÁLTATÓI hitelesítéssel is működik. 
 
-* **Hitelesítésszolgáltató által aláírt X. 509 tanúsítvány** . Az eszköz azonosításához és a IoT Hub használatával történő hitelesítéséhez használhatja a hitelesítésszolgáltató által létrehozott és aláírt X. 509 tanúsítványt. Ujjlenyomattal vagy HITELESÍTÉSSZOLGÁLTATÓI hitelesítéssel is működik.
+* **Hitelesítésszolgáltató által aláírt X. 509 tanúsítvány**. Az eszköz azonosításához és a IoT Hub használatával történő hitelesítéséhez használhatja a hitelesítésszolgáltató által létrehozott és aláírt X. 509 tanúsítványt. Ujjlenyomattal vagy HITELESÍTÉSSZOLGÁLTATÓI hitelesítéssel is működik.
 
-* **Egy saját maga által létrehozott és önaláírt X-509 tanúsítvány** . Az eszköz gyártója vagy a házon belüli telepítő előállíthatja ezeket a tanúsítványokat, és tárolhatja a megfelelő titkos kulcsot (és tanúsítványt) az eszközön. Erre a célra olyan eszközöket is használhat, mint például az [OpenSSL](https://www.openssl.org/) és a [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) segédprogram. Csak ujjlenyomat-hitelesítéssel működik.
+* **Egy saját maga által létrehozott és önaláírt X-509 tanúsítvány**. Az eszköz gyártója vagy a házon belüli telepítő előállíthatja ezeket a tanúsítványokat, és tárolhatja a megfelelő titkos kulcsot (és tanúsítványt) az eszközön. Erre a célra olyan eszközöket is használhat, mint például az [OpenSSL](https://www.openssl.org/) és a [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) segédprogram. Csak ujjlenyomat-hitelesítéssel működik.
 
 Egy eszköz X. 509 tanúsítványt vagy biztonsági jogkivonatot használhat a hitelesítéshez, de mindkettőt nem. Az X. 509 tanúsítványalapú hitelesítéssel ellenőrizze, hogy van-e olyan stratégia, amely a tanúsítvány átváltását kezeli, ha egy meglévő tanúsítvány lejár.
 

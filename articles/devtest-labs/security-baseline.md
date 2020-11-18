@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 98f6ce7eee799b1baf29782d7eca11d62cf62353
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207291"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843196"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -62,7 +62,7 @@ További információért tekintse át a következő cikkeket:
 **Felelősség:** Ügyfél
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
-***Útmutató:** A Azure Monitor a szervezet megfelelőségi előírásai szerint állítsa be a Azure DevTest Labs példányokhoz társított Log Analytics-munkaterületek naplózásának megőrzési időtartamát.
+**_Útmutató:_* A Azure Monitor a szervezet megfelelőségi előírásai szerint állítsa be a Azure DevTest Labs példányokhoz társított Log Analytics-munkaterületek naplózásának megőrzési időtartamát.
 
 További információ: a [napló megőrzési paramétereinek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) .
 
@@ -175,9 +175,9 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 - [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
 
-**Azure Security Center figyelés:*** igen
+**Azure Security Center figyelés:** _ igen
 
-**Felelősség:** Ügyfél
+_ *Felelősség:** ügyfél
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
@@ -387,7 +387,7 @@ A Microsoft a Azure DevTest Labst támogató mögöttes erőforrásokon hajtja v
 **Felelősség:** Ügyfél
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: a harmadik féltől származó szoftveres javításokat kezelő megoldás telepítése
-***Útmutató:*** Labor-rendszergazdaként a [DevTest Labs](add-artifact-vm.md) -összetevőkkel automatizálhatja a tesztkörnyezet egyéni rendszerképeinek frissítéseit, beleértve a biztonsági javításokat és egyéb frissítéseket is. 
+**_Útmutató:_* a labor-rendszergazdaként a [DevTest Labs](add-artifact-vm.md) -összetevők segítségével automatizálhatja a tesztkörnyezet egyéni rendszerképeinek frissítéseit, beleértve a biztonsági javításokat és az egyéb frissítéseket is. 
 
 További információ a [DevTest Labs Image factoryről](image-factory-create.md), amely egy olyan konfigurációs programkódot használó megoldás, amely rendszeresen készít és forgalmaz képeket automatikusan az összes kívánt konfigurációval. 
 
@@ -396,7 +396,7 @@ Előfizetés-rendszergazdaként használhatja az Azure Update Management megold�
 - [Update Management megoldás az Azure-ban](../automation/update-management/update-mgmt-overview.md)
 - [A virtuális gépek frissítéseinek és javításának kezelése](../automation/update-management/update-mgmt-overview.md)
 
-**Azure Security Center figyelés:** Nem alkalmazható
+_ *Azure Security Center figyelés:** nem alkalmazható
 
 **Felelősség:** Ügyfél
 
@@ -692,7 +692,7 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 
 - [Felügyelt identitás konfigurálása Azure Resource Manager környezetek telepítéséhez a DevTest Labs szolgáltatásban](use-managed-identities-environments.md)
 - [Felügyelt identitás konfigurálása virtuális gépek üzembe helyezéséhez a DevTest Labs szolgáltatásban](enable-managed-identities-lab-vms.md)
-- [Kulcstartó létrehozása](../key-vault/secrets/quick-create-portal.md)
+- [Kulcstartó létrehozása](../key-vault/general/quick-create-portal.md)
 - [Hitelesítés Key Vault](../key-vault/general/authentication.md)
 - [Key Vault hozzáférési szabályzatok kiosztása](../key-vault/general/assign-access-policy-portal.md)
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 0bb5dccfc99a693ec89ed08ac31b77eb16442f73
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5396845e13e94b4d957f42618baaf19c408f559d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129966"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843774"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Privát ajánlatok a Microsoft kereskedelmi piactéren
 
@@ -41,7 +41,7 @@ A *csomagokkal rendelkező új vagy meglévő ajánlatok* esetében a kiadók eg
 
 A Private-csomagok egy ajánlat összetevői, és csak a megtervezett ügyfelek számára láthatók és megvásárolhatóak. A privát csomagok felhasználhatják a nyilvános csomagokhoz már közzétett alaplemezképeket és/vagy ajánlati metaadatokat. Ez a beállítás lehetővé teszi, hogy a kiadók a nyilvános ajánlatok több privát változatát is létrehozzák anélkül, hogy ugyanazon alaprendszerkép több verzióját kellene közzétenniük, és a metaadatokat is el kellene készíteni. A virtuális gépek és az Azure-alkalmazások esetében csak akkor érhető el, ha egy privát csomag nyilvános csomaggal rendelkező alaprendszerképet oszt meg, az ajánlat alaprendszerképének minden módosítása az adott alaprendszerkép használatával lesz propagálva az összes nyilvános és privát csomagra.
 
-Az olyan *új ajánlatok esetében, amelyek csak privát csomagokat foglalnak magukban* , a kiadók az ajánlatokat bármely más ajánlatként hozhatják létre, majd megjelölik magánjellegűként a terveket. Azok az ajánlatok, amelyek csak privát csomagokkal rendelkeznek, nem lesznek felderíthetők vagy elérhetők a Microsoft kereskedelmi piactéren, illetve az ajánlathoz nem társított ügyfelek által [Azure Portal](https://azure.microsoft.com/features/azure-portal/) .
+Az olyan *új ajánlatok esetében, amelyek csak privát csomagokat foglalnak magukban*, a kiadók az ajánlatokat bármely más ajánlatként hozhatják létre, majd megjelölik magánjellegűként a terveket. Azok az ajánlatok, amelyek csak privát csomagokkal rendelkeznek, nem lesznek felderíthetők vagy elérhetők a Microsoft kereskedelmi piactéren, illetve az ajánlathoz nem társított ügyfelek által [Azure Portal](https://azure.microsoft.com/features/azure-portal/) .
 
 >[!NOTE]
 >A csak privát csomagokat tartalmazó ajánlat nem jelenik meg a nyilvános Azure piactéren vagy AppSource.
@@ -51,6 +51,9 @@ Az olyan *új ajánlatok esetében, amelyek csak privát csomagokat foglalnak ma
 A kiadók az új és a meglévő privát ajánlatok esetében is megcélozhatja az ügyfeleket az előfizetés-azonosítók használatával. A virtuális gépet vagy Azure-alkalmazási ajánlatot használó közzétevők egy egyéni Azure-előfizetés-AZONOSÍTÓra korlátozhatja a privát csomag rendelkezésre állását, vagy akár 20 000 Azure-előfizetési azonosítóval rendelkező CSV-t is feltölthet. A SaaS-alkalmazások privát ajánlatának használata során a kiadók hozzárendelhet egy bérlői azonosítót, hogy korlátozzák a privát csomag rendelkezésre állását a manuális vagy CSV-feltöltési módszer használatával.
 
 Az ajánlat minősítése és közzététele után az ügyfelek perceken belül frissíthetik vagy eltávolíthatják a csomagot a privát előfizetések szinkronizálása funkció használatával. Ez a funkció lehetővé teszi a kiadók számára, hogy gyorsan és egyszerűen frissítse azon ügyfelek listáját, amelyekhez a privát csomag az ajánlat hitelesítése vagy közzététele nélkül jelenik meg.
+
+>[!NOTE]
+>Az Azure gov alkalmazhatósága: a (z) magán-ajánlatok (vagy pontosabban: Private-csomagok) elérhetők a gov cloudhoz, mint bármely más ajánlat. Egy csomag az állapotot magánjellegűről nyilvánosra is átválthatja, és fordítva. Az ajánlat elérhetővé tételére használt felhő a partneri központon keresztül konfigurálható. 
 
 ## <a name="deploying-private-offers"></a>Privát ajánlatok üzembe helyezése
 

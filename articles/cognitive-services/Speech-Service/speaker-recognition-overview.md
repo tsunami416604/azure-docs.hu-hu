@@ -12,14 +12,14 @@ ms.date: 09/02/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: hangszórók felismerése, hangvezérelt biometry
-ms.openlocfilehash: 2c5b73b93c22ef27d7b68455f5e1e5108f25c984
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5001ac166b37f3a3852bc14261a5b5d199d778cd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397259"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844566"
 ---
-# <a name="what-is-speaker-recognition"></a>Mi a Speaker Recognition?
+# <a name="what-is-speaker-recognition-preview"></a>Mi az Speaker Recognition (előzetes verzió)?
 
 A Speaker Recognition szolgáltatás olyan algoritmusokat biztosít, amelyek a hangbiometry használatával ellenőrzik és azonosítják a hangszórók egyedi hangjellemzőiket. Speaker Recognition a "ki beszél?" kérdésre válaszol. A hangképzési adatok egyetlen beszélő számára is megadhatók, amely a beszélő hangja egyedi jellemzői alapján létrehoz egy beléptetési profilt. A profilhoz tartozó hangmintákat úgy ellenőrizheti, hogy a beszélő ugyanaz a személy (előadói ellenőrzés), vagy a hangvételi mintákat a regisztrált hangsugárzó-profilok egy *csoportján* keresztül ellenőrzi, hogy az megfelel-e a csoport összes profiljának (a beszélő azonosítása). Ezzel szemben a [beszélő Diarization](batch-transcription.md#speaker-separation-diarization) csoportosítja a hangfelvételek szegmensét egy batch-műveletben.
 
@@ -67,7 +67,7 @@ Akárcsak az összes Cognitive Services erőforrás esetében, a Speaker Recogni
 | Mi a különbség a szövegtől függő és a szövegtől független ellenőrzés között? | A szövegtől függő ellenőrzéshez egy konkrét, a regisztrációhoz és az elismeréshez megadott pass-mondatra van szükség. A szövegtől független ellenőrzéshez a beléptetéshez már több hangminta szükséges, de minden elbeszélhető, beleértve az elismerést is.|
 | Milyen nyelveket támogat a rendszer? | Angol, francia, spanyol, kínai, német, olasz, Japán és portugál |
 | Milyen Azure-régiók támogatottak? | Speaker Recognition egy előzetes verziójú szolgáltatás, amely jelenleg csak az USA nyugati régiójában érhető el.|
-| Milyen hangformátumok támogatottak? | 16 bites monó, 16kHz PCM-kódolású WAV |
+| Melyek a támogatott hangformátumok? | 16 bites monó, 16kHz PCM-kódolású WAV |
 | A válaszok **elfogadása** és **elutasítása** nem pontos, hogyan hangolhatja be a küszöbértéket? | Mivel az optimális küszöbérték nagy mértékben eltér az alkalmazási helyzettől, az API eldönti, hogy az "elfogadás" vagy az "elutasítás" egyszerűen a 0,5 alapértelmezett küszöbértékén alapul-e. A speciális felhasználóknak javasoljuk, hogy bírálják felül az alapértelmezett döntést, és a saját forgatókönyv alapján végezze el az eredmény finomhangolását. |
 | Többször is regisztrálhat egy beszélőt? | Igen, a szövegtől függő ellenőrzéshez akár 50 alkalommal is regisztrálhat egy beszélőt. Szövegtől független ellenőrzés vagy beszélő azonosítása esetén akár 300 másodpercig is regisztrálhat. |
 | Milyen adattárolók tárolódnak az Azure-ban? | A beléptetési hang a szolgáltatásban tárolódik, amíg a hangprofil nem [törlődik](speaker-recognition-basics.md#deleting-voice-profile-enrollments). Az felismerő hangmintákat nem őrzi meg vagy tárolja a rendszer. |

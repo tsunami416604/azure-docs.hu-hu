@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 4c817194bbe0e4cf211992920bad9deb40bf05f4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632209"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844182"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>A csomagok végrehajtásának megoldása a SSIS Integration Runtime-ban
 
@@ -121,14 +121,14 @@ Ez a hiba akkor fordul elő, ha a SSIS Integration Runtime nem fér hozzá az eg
 
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Hibaüzenet: "Microsoft OLE DB-szolgáltató Analysis Serviceshoz. ' HRESULT: 0x80004005 Description: ' COM-hiba: COM-hiba: mscorlib; A kivételt a hívás célja okozta.
 
-Az egyik lehetséges ok az, hogy az Azure Multi-Factor Authentication engedélyezve beállítású Felhasználónév vagy jelszó Azure Analysis Services hitelesítésre van konfigurálva. Ez a hitelesítés nem támogatott a SSIS Integration Runtime-ban. Próbáljon meg egy egyszerű szolgáltatásnevet használni Azure Analysis Services hitelesítéshez:
+Az egyik lehetséges ok az, hogy az Azure AD-Multi-Factor Authentication engedélyezett Felhasználónév vagy jelszó Azure Analysis Services hitelesítésre van konfigurálva. Ez a hitelesítés nem támogatott a SSIS Integration Runtime-ban. Próbáljon meg egy egyszerű szolgáltatásnevet használni Azure Analysis Services hitelesítéshez:
 
 1. Készítsen elő egy egyszerű szolgáltatást az [automatizálás az egyszerű szolgáltatásokkal](../analysis-services/analysis-services-service-principal.md)című témakörben leírtak szerint.
-2. A Csatlakozáskezelőben konfigurálja a **megadott Felhasználónév és jelszó használata** : **AppID** beállítása felhasználónévként és **clientSecret** jelszóként.
+2. A Csatlakozáskezelőben konfigurálja a **megadott Felhasználónév és jelszó használata**: **AppID** beállítása felhasználónévként és **clientSecret** jelszóként.
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Hibaüzenet: "a ADONET forrásának nem sikerült megadnia a (z) {GUID} csatlakozást a következő hibaüzenettel: a bejelentkezés sikertelen volt a (z)" NT AUTHORITY \ Névtelen-bejelentkezés "felhasználónál felügyelt identitás használatakor
 
-Győződjön meg arról, hogy nem konfigurálja a Csatlakozáskezelő hitelesítési módszerét **Active Directory jelszó-hitelesítésre** , ha a *ConnectUsingManagedIdentity* paraméter értéke **true (igaz** ). Ehelyett **SQL-hitelesítésként** is konfigurálható, amelyet a rendszer figyelmen kívül hagy, ha a *ConnectUsingManagedIdentity* be van állítva.
+Győződjön meg arról, hogy nem konfigurálja a Csatlakozáskezelő hitelesítési módszerét **Active Directory jelszó-hitelesítésre** , ha a *ConnectUsingManagedIdentity* paraméter értéke **true (igaz**). Ehelyett **SQL-hitelesítésként** is konfigurálható, amelyet a rendszer figyelmen kívül hagy, ha a *ConnectUsingManagedIdentity* be van állítva.
 
 ### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>Hibaüzenet: "0xC020801F at..., OData forrás [...]: nem lehet felügyelt kapcsolatokat beszerezni a futásidejű kapcsolatkezelő"
 

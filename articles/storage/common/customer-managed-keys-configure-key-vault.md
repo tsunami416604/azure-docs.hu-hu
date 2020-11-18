@@ -1,5 +1,5 @@
 ---
-title: A titkosítás konfigurálása a Azure Key Vaultban tárolt ügyfél által felügyelt kulcsokkal
+title: Titkosítás konfigurálása az Azure Key Vaultban tárolt, ügyfél által kezelt kulcsokkal
 titleSuffix: Azure Storage
 description: A Azure Portal, a PowerShell vagy az Azure CLI használatával megtudhatja, hogyan konfigurálhatja az Azure Storage-titkosítást Azure Key Vaultban tárolt, az ügyfél által felügyelt kulcsokkal.
 services: storage
@@ -10,15 +10,15 @@ ms.date: 09/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 219fe82f16dd9bbc887c9b17b067c706230c63dd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 02661c9c2a581ab21a2ae9dc31e5da95426c0edd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782382"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843383"
 ---
-# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>A titkosítás konfigurálása a Azure Key Vaultban tárolt ügyfél által felügyelt kulcsokkal
+# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Titkosítás konfigurálása az Azure Key Vaultban tárolt, ügyfél által kezelt kulcsokkal
 
 Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókban található. Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további vezérléséhez a saját kulcsait is kezelheti. Az ügyfél által felügyelt kulcsokat Azure Key Vault vagy Key Vault felügyelt hardveres biztonsági modellben (HSM) (előzetes verzió) kell tárolni.
 
@@ -190,7 +190,7 @@ Ha az ügyfél által felügyelt kulcsokat a Azure Portal a kulcs verziójának 
 
 A kulcs megadása után a Azure Portal azt jelzi, hogy a kulcs verziójának automatikus frissítése engedélyezve van, és megjeleníti a jelenleg a titkosításhoz használt kulcs verzióját.
 
-:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="Képernyőfelvétel, amely bemutatja, hogyan engedélyezhető a kiürítési védelem a kulcstartó létrehozásakor":::
+:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="Képernyőfelvétel, amely az engedélyezett kulcs verziójának automatikus frissítését mutatja":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

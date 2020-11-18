@@ -3,13 +3,13 @@ title: Nagy méretű adathalmazok kezelése
 description: Megtudhatja, hogyan kérheti le, formázhatja, lapozhatja és kihagyhatja a nagyméretű adatkészletek rekordjait az Azure Resource Graph használata közben.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.custom: devx-track-csharp
-ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 6054d2cd2cf012c21f451ece87db672897fa0398
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578495"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843349"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Nagyméretű Azure-beli erőforrás-adatkészletek használata
 
@@ -22,9 +22,9 @@ A lekérdezések magas gyakorisággal történő kezelésével kapcsolatos útmu
 Alapértelmezés szerint az erőforrás-gráf korlátozza a lekérdezéseket, hogy csak **100** rekordokat adjanak vissza. Ez a vezérlő védi a felhasználót és a szolgáltatást olyan véletlen lekérdezésektől, amelyek nagy adatkészleteket eredményezhetnek. Ez az esemény leggyakrabban akkor fordul elő, amikor az ügyfél a lekérdezésekkel kísérletezik, és az adott igényeknek megfelelő módon keresi és szűri az erőforrásokat. Ez a vezérlő más, mint a [felső](/azure/kusto/query/topoperator) vagy [Az Azure adatkezelő](/azure/kusto/query/limitoperator) nyelvi operátorok használatának korlátozása az eredmények korlátozásához.
 
 > [!NOTE]
-> **Első**használata esetén ajánlott az eredményeket legalább egy, a (z) vagy értékű oszlop szerint `asc` rendelni `desc` . Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
+> **Első** használata esetén ajánlott az eredményeket legalább egy, a (z) vagy értékű oszlop szerint `asc` rendelni `desc` . Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
 
-Az alapértelmezett korlát felülbírálható az erőforrás-Gráftal való interakció minden módszerén keresztül. Az alábbi példák bemutatják, hogyan módosíthatja az adathalmaz méretének korlátját a _200_értékre:
+Az alapértelmezett korlát felülbírálható az erőforrás-Gráftal való interakció minden módszerén keresztül. Az alábbi példák bemutatják, hogyan módosíthatja az adathalmaz méretének korlátját a _200_ értékre:
 
 ```azurecli-interactive
 az graph query -q "Resources | project name | order by name asc" --first 200 --output table
@@ -34,9 +34,9 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-A [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)a vezérlő **$Top** , és a **QueryRequestOptions**része.
+A [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)a vezérlő **$Top** , és a **QueryRequestOptions** része.
 
-A _legszigorúbb_ vezérlő fog nyerni. Ha például a lekérdezés a **felső** vagy a **korlátot** használja, és az **elsőnél**több rekordot fog eredményezni, akkor a visszaadott maximális rekordok megegyeznek az **elsővel**. Hasonlóképpen, ha a **felső** vagy a **korlát** kisebb, mint az **első**, a visszaadott rekord a **felső** vagy a **korlát**által konfigurált kisebb érték lesz.
+A _legszigorúbb_ vezérlő fog nyerni. Ha például a lekérdezés a **felső** vagy a **korlátot** használja, és az **elsőnél** több rekordot fog eredményezni, akkor a visszaadott maximális rekordok megegyeznek az **elsővel**. Hasonlóképpen, ha a **felső** vagy a **korlát** kisebb, mint az **első**, a visszaadott rekord a **felső** vagy a **korlát** által konfigurált kisebb érték lesz.
 
 Az **első** jelenleg a maximálisan engedélyezett _5000_-as értékkel rendelkezik, amelyet a [lapozófájlok](#paging-results) az _1000_ -as számú rekordok elérésével érnek el egyszerre.
 
@@ -48,7 +48,7 @@ Az **első** jelenleg a maximálisan engedélyezett _5000_-as értékkel rendelk
 A nagyméretű adatkészletek használatának következő lehetősége a **kihagyás** vezérlőelem. Ez a vezérlő lehetővé teszi, hogy a lekérdezés átugorjon vagy kihagyja a megadott számú rekordot, mielőtt visszaadná az eredményeket. A **skip (kihagyás** ) olyan lekérdezések esetében hasznos, amelyek értelmes módon jelenítik meg az eredményeket. Ha a szükséges eredmények a visszaadott adathalmaz végén találhatók, akkor hatékonyabb, ha más rendezési konfigurációt használ, és az eredményeket az adathalmaz elejéről kéri le.
 
 > [!NOTE]
-> Ha a **kihagyást**használja, azt javasoljuk, hogy az eredményeket legalább egy, a vagy a oszlop alapján rendelje `asc` `desc` . Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők. Ha `limit` vagy `take` használatban van a lekérdezésben, a **kihagyás** figyelmen kívül lesz hagyva.
+> Ha a **kihagyást** használja, azt javasoljuk, hogy az eredményeket legalább egy, a vagy a oszlop alapján rendelje `asc` `desc` . Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők. Ha `limit` vagy `take` használatban van a lekérdezésben, a **kihagyás** figyelmen kívül lesz hagyva.
 
 Az alábbi példák azt mutatják be, hogyan lehet kihagyni az első _10_ rekordot, amely a lekérdezés eredményét eredményezi, ehelyett a visszaadott eredményhalmaz 11. rekorddal való megadásával:
 
@@ -60,7 +60,7 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-A [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)a vezérlő **$skip** , és a **QueryRequestOptions**része.
+A [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)a vezérlő **$skip** , és a **QueryRequestOptions** része.
 
 ## <a name="paging-results"></a>Lapozás eredményei
 
@@ -86,7 +86,7 @@ Példaként tekintse meg a [következő oldal lekérdezését](/rest/api/azurere
 
 ## <a name="formatting-results"></a>Formázás eredményei
 
-A Resource Graph-lekérdezések eredményei két formátumban, _tábla_ -és _ObjectArray_érhetők el. A formátum a **resultFormat** paraméterrel van konfigurálva a kérési beállítások részeként. A **resultFormat**alapértelmezett értéke a _táblázat_ formátuma.
+A Resource Graph-lekérdezések eredményei két formátumban, _tábla_ -és _ObjectArray_ érhetők el. A formátum a **resultFormat** paraméterrel van konfigurálva a kérési beállítások részeként. A **resultFormat** alapértelmezett értéke a _táblázat_ formátuma.
 
 Az Azure CLI-ből származó eredmények alapértelmezés szerint a JSON-ben vannak megadva. Az Azure PowerShell alapértelmezés szerint **pscustomobject formájában kapja** , de a parancsmag használatával gyorsan átalakíthatók JSON-ra `ConvertTo-Json` . Más SDK-k esetén a lekérdezés eredményei konfigurálhatók úgy, hogy kiállítsák a _ObjectArray_ formátumot.
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 8dc99cda4128635e619afec5ed725da16bbd81ed
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 5357a1f2d1f042f9dab01edf205926992e4225d0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629886"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843825"
 ---
 # <a name="monitoring-azure-files"></a>Figyelés Azure Files
 
@@ -585,7 +585,7 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 
 5. Kattintson a **műveleti csoport kijelölése** elemre, és adjon hozzá egy műveleti csoportot (E-mail, SMS stb.) a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
 
-6. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét** , **leírását** és **súlyosságát**.
+6. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 
 7. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
 
@@ -617,7 +617,7 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
     > Ha statikus küszöbértéket használ, a metrikai diagram segíthet meghatározni egy ésszerű küszöbértéket, ha a fájlmegosztást jelenleg szabályozzák. Dinamikus küszöbérték használata esetén a metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket.
 
 11. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy **műveleti csoport** (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét** , * * leírását és **súlyosságát**.
+12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, * * leírását és **súlyosságát**.
 13. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-size-is-80-of-capacity"></a>Riasztás létrehozása, ha az Azure-fájlmegosztás mérete a kapacitás 80%-a
@@ -636,7 +636,7 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 8. Adja meg a **küszöbértéket** bájtban megadva. Ha például a fájlmegosztás mérete 100 TiB, és riasztást szeretne kapni, ha a fájlmegosztás mérete a kapacitás 80%-ában van megadva, akkor a küszöbérték értéke 87960930222080.
 9. Adja meg a **riasztási paraméterek** hátralévő részét (az Összesítés részletességét és a kiértékelés gyakoriságát), majd kattintson a **kész** gombra.
 10. Kattintson a műveleti csoport kiválasztása lehetőségre egy műveleti csoport (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-11. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét** , * * leírását és **súlyosságát**.
+11. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, * * leírását és **súlyosságát**.
 12. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-egress-has-exceeded-500-gib-in-a-day"></a>Riasztás létrehozása, ha az Azure-fájlmegosztás kimenő adatforgalmának napja túllépte a 500 GiB-t
@@ -656,10 +656,10 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 9. Kattintson az **összesítési részletesség** legördülő listára, és válassza a **24 óra** lehetőséget.
 10. Válassza ki az **értékelés gyakoriságát** , és **kattintson a kész gombra**.
 11. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy **műveleti csoport** (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét** , * * leírását és **súlyosságát**.
+12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, * * leírását és **súlyosságát**.
 13. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Files monitorozási adathivatkozás](storage-files-monitoring-reference.md)
 - [Azure-erőforrások figyelése Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md)

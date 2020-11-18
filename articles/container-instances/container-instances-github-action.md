@@ -3,13 +3,13 @@ title: Tároló-példány üzembe helyezése a GitHub-művelettel
 description: Hozzon létre egy GitHub-műveletet, amely automatizálja a szükséges lépéseket a tároló lemezképének kiépítéséhez, leküldéséhez és üzembe helyezéséhez Azure Container Instances
 ms.topic: article
 ms.date: 08/20/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: c01075bcb64aa9b91869daba2e995957da74daf4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: 221ecbe5fbe2cdea4105362c43a5765bcc298d46
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019188"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843655"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub-művelet konfigurálása tárolópéldány létrehozásához
 
@@ -45,7 +45,7 @@ Ez a cikk a munkafolyamat beállításának két módját mutatja be:
 
   ![A GitHub Fork (Leágaztatás) gombjának (kiemelve) képernyőképe](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* Győződjön meg arról, hogy a műveletek engedélyezve vannak a tárházban. Navigáljon az elágazó tárházhoz, és válassza a **Beállítások**  >  **műveletek**lehetőséget. A **műveletek engedélyei**területen győződjön meg arról, hogy a **helyi és a harmadik féltől származó műveletek engedélyezése ehhez a tárházhoz** beállítás van kiválasztva.
+* Győződjön meg arról, hogy a műveletek engedélyezve vannak a tárházban. Navigáljon az elágazó tárházhoz, és válassza a **Beállítások**  >  **műveletek** lehetőséget. A **műveletek engedélyei** területen győződjön meg arról, hogy a **helyi és a harmadik féltől származó műveletek engedélyezése ehhez a tárházhoz** beállítás van kiválasztva.
 
 ## <a name="configure-github-workflow"></a>GitHub-munkafolyamat konfigurálása
 
@@ -112,7 +112,7 @@ az role assignment create \
 
 ### <a name="save-credentials-to-github-repo"></a>Hitelesítő adatok mentése a GitHub-tárházba
 
-1. A GitHub felhasználói felületén navigáljon az elágazó tárházhoz, és válassza a **Beállítások**  >  **titkok**lehetőséget. 
+1. A GitHub felhasználói felületén navigáljon az elágazó tárházhoz, és válassza a **Beállítások**  >  **titkok** lehetőséget. 
 
 1. A következő titkok hozzáadásához válassza az **új titok hozzáadása** lehetőséget:
 
@@ -126,10 +126,10 @@ az role assignment create \
 
 ### <a name="create-workflow-file"></a>Munkafolyamat-fájl létrehozása
 
-1. A GitHub felhasználói felületén válassza a **műveletek**  >  **Új munkafolyamat**elemet.
-1. Válassza **a munkafolyamat beállítása saját maga**lehetőséget.
-1. Az **új fájl szerkesztése**területen illessze be a következő YAML-tartalmat a mintakód felülírásához. Fogadja el az alapértelmezett fájlnevet `main.yml` , vagy adja meg a választott fájlnevet.
-1. Válassza a **véglegesítés indítása**lehetőséget, opcionálisan adja meg a véglegesítés rövid és részletes leírását, majd válassza az **új fájl véglegesítés**elemet.
+1. A GitHub felhasználói felületén válassza a **műveletek**  >  **Új munkafolyamat** elemet.
+1. Válassza **a munkafolyamat beállítása saját maga** lehetőséget.
+1. Az **új fájl szerkesztése** területen illessze be a következő YAML-tartalmat a mintakód felülírásához. Fogadja el az alapértelmezett fájlnevet `main.yml` , vagy adja meg a választott fájlnevet.
+1. Válassza a **véglegesítés indítása** lehetőséget, opcionálisan adja meg a véglegesítés rövid és részletes leírását, majd válassza az **új fájl véglegesítés** elemet.
 
 ```yml
 on: [push]
@@ -173,7 +173,7 @@ jobs:
 
 ### <a name="validate-workflow"></a>Munkafolyamat ellenőrzése
 
-A munkafolyamat-fájl véglegesíte után a rendszer elindítja a munkafolyamatot. A munkafolyamat előrehaladásának áttekintéséhez navigáljon a **műveletek**  >  **munkafolyamatok**elemre. 
+A munkafolyamat-fájl véglegesíte után a rendszer elindítja a munkafolyamatot. A munkafolyamat előrehaladásának áttekintéséhez navigáljon a **műveletek**  >  **munkafolyamatok** elemre. 
 
 ![Munkafolyamat-folyamatjelző megtekintése](./media/container-instances-github-action/github-action-progress.png)
 

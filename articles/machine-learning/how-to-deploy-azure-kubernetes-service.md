@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperfq1, deploy
+ms.custom: how-to, contperfq1, deploy, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: b98d3ea69286fe7c23b6c2978b71699ba7eb0e00
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f2ac565b8c6dfce52daeadd20cf3357bc22cd281
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325195"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843808"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 
@@ -154,7 +154,7 @@ Az Azure ML-modellek automatikus skálázását kezelő összetevő a azureml-FE
 > [!IMPORTANT]
 > * Ne **engedélyezze a Kubernetes horizontális Pod autoskálázást (hPa) a modellek üzembe helyezéséhez**. Ez azt eredményezi, hogy a két automatikus skálázási összetevő versenyez egymással. A Azureml-Fe úgy lett kialakítva, hogy az Azure ML által üzembe helyezett modellek automatikusan méretezhetőek legyenek, ahol a HPA-nak ki kell találnia vagy közelítenie kell a modell kihasználtságát egy általános metrika, például a CPU-használat vagy egy egyéni metrika
 > 
-> * **A Azureml-Fe nem méretezi a csomópontok számát egy AK-fürtben** , mert ez váratlan költségmegtakarítást eredményezhet. Ehelyett a **modell replikáinak számát** a fizikai fürt határain belül méretezi. Ha a fürtön belüli csomópontok számát kell méreteznie, manuálisan méretezheti a fürtöt, vagy [konfigurálhatja az AK-fürt automéretezőjét](../aks/cluster-autoscaler.md).
+> * **A Azureml-Fe nem méretezi a csomópontok számát egy AK-fürtben**, mert ez váratlan költségmegtakarítást eredményezhet. Ehelyett a **modell replikáinak számát** a fizikai fürt határain belül méretezi. Ha a fürtön belüli csomópontok számát kell méreteznie, manuálisan méretezheti a fürtöt, vagy [konfigurálhatja az AK-fürt automéretezőjét](../aks/cluster-autoscaler.md).
 
 Az automatikus skálázást `autoscale_target_utilization` `autoscale_min_replicas` a, a és az `autoscale_max_replicas` AK webszolgáltatáshoz tartozó beállítások szabályozzák. Az alábbi példa bemutatja, hogyan engedélyezheti az automatikus skálázást:
 

@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 9afab87e0d7f0e7a9e5c05b36ace1dfc09c9aa9f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548030"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844744"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Az Azure HDInsight kettős titkosítást biztosít a nyugalmi állapotban lévő adatokhoz
 
@@ -71,7 +71,7 @@ Lásd: [felhasználó által hozzárendelt felügyelt identitás létrehozása](
 
 ### <a name="create-azure-key-vault"></a>Azure Key Vault létrehozása
 
-Kulcstartó létrehozása. Lásd: [Azure Key Vault létrehozása](../key-vault/secrets/quick-create-portal.md) adott lépésekhez.
+Kulcstartó létrehozása. Lásd: [Azure Key Vault létrehozása](../key-vault/general/quick-create-portal.md) adott lépésekhez.
 
 A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstartóval, a kulcsokat a Azure Key Vaultba importálhatja. Ne feledje, hogy a kulcstartónak engedélyezve kell lennie az **ideiglenes törlésnek** . A meglévő kulcsok importálásával kapcsolatos további információkért tekintse meg [a kulcsok, titkok és tanúsítványok](../key-vault/general/about-keys-secrets-certificates.md)című témakört.
 
@@ -103,8 +103,8 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
     |Tulajdonság |Leírás|
     |---|---|
-    |Kulcs engedélyei|Válassza a **lekérés** , a **kicsomagolási kulcs** és a **becsomagolási kulcs** lehetőséget.|
-    |Titkos engedélyek|Válassza a **beolvasás** , **beállítás** és **Törlés** lehetőséget.|
+    |Kulcs engedélyei|Válassza a **lekérés**, a **kicsomagolási kulcs** és a **becsomagolási kulcs** lehetőséget.|
+    |Titkos engedélyek|Válassza a **beolvasás**, **beállítás** és **Törlés** lehetőséget.|
     |Rendszerbiztonsági tag kiválasztása|Válassza ki a korábban létrehozott felhasználó által hozzárendelt felügyelt identitást.|
 
     ![A rendszerbiztonsági tag kiválasztása Azure Key Vault hozzáférési házirendhez](./media/disk-encryption/azure-portal-add-access-policy.png)
@@ -121,7 +121,7 @@ Most már készen áll egy új HDInsight-fürt létrehozására. Az ügyfél ál
 
 #### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-A fürt létrehozása során adja meg a teljes **kulcs azonosítóját** , beleértve a kulcs verziószámát is. Például: `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Emellett a felügyelt identitást is hozzá kell rendelnie a fürthöz, és meg kell adnia a kulcs URI-JÁT.
+A fürt létrehozása során adja meg a teljes **kulcs azonosítóját**, beleértve a kulcs verziószámát is. Például: `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Emellett a felügyelt identitást is hozzá kell rendelnie a fürthöz, és meg kell adnia a kulcs URI-JÁT.
 
 ![Új fürt létrehozása](./media/disk-encryption/create-cluster-portal.png)
 
@@ -467,7 +467,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\
 --storage-account MyStorageAccount --encryption-at-host true
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Azure Key Vaultről: [Mi az Azure Key Vault](../key-vault/general/overview.md).
 * [A vállalati biztonság áttekintése az Azure HDInsight-ben](./domain-joined/hdinsight-security-overview.md).

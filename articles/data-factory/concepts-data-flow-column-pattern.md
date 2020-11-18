@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: dab065f4d2b025fa15966d81b66b41acb12c54b3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 11/17/2020
+ms.openlocfilehash: 68c211608cfceedaa9d13a595be6d1e5de17f1d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027125"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845006"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Oszlopok mintáinak használata a leképezési adatfolyamban
 
@@ -23,7 +23,7 @@ Számos leképezési adatfolyam-átalakítás lehetővé teszi a sablon oszlopai
 * Ha a bejövő forrás mezői gyakran változnak, például a szövegfájlokban vagy a NoSQL-adatbázisokban lévő oszlopok módosításának esetére. Ez a forgatókönyv a [séma drift](concepts-data-flow-schema-drift.md)néven ismert.
 * Ha egy gyakori műveletet szeretne végezni az oszlopok nagy csoportjára. Például minden olyan oszlopot, amely "Total" értékkel rendelkezik az oszlop nevében, dupla értékre kívánja feldolgozni.
 
-Az oszlopok mintázata jelenleg a származtatott oszlop, az összesítés, a kiválasztás és a fogadó átalakításban érhető el.
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4Iui1]
 
 ## <a name="column-patterns-in-derived-column-and-aggregate"></a>Oszlopos minták származtatott oszlopban és összesítésben
 
@@ -42,6 +42,12 @@ A fenti oszlop minta minden dupla típusú oszlopra illeszkedik, és egy szárma
 Az egyeztetési feltétel helyességének ellenőrzéséhez ellenőrizheti a **megvizsgálandó** lapon definiált oszlopok kimeneti sémáját, vagy beolvashatja az adatok pillanatképét az **adatelőnézet** lapon. 
 
 ![A képernyőképen a kimeneti séma lap látható.](media/data-flow/columnpattern3.png "Oszlopminták")
+
+### <a name="hierarchical-pattern-matching"></a>Hierarchikus minta egyeztetése
+
+Az összetett hierarchikus struktúrákon belül is létrehozhat mintázatokat. Bontsa ki azt a szakaszt, `Each MoviesStruct that matches` amelyben a rendszer kéri az adatfolyamban található minden egyes hierarchiát. Ezután összeállíthatja a kiválasztott hierarchiában található tulajdonságok megfeleltetési mintáit.
+
+![A képernyőképen a hierarchikus oszlop mintája látható.](media/data-flow/patterns-hierarchy.png "Oszlopok mintái hierarchiákban")
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Szabályon alapuló hozzárendelés a Select és a mosogatóban
 
@@ -77,7 +83,7 @@ A fenti példa a komplex oszlopok összes aloszlopára illeszkedik `a` . `a` ké
 
 ## <a name="pattern-matching-expression-values"></a>Mintázattal egyező kifejezés értékei.
 
-* `$$` az egyes egyezések nevének vagy értékének lefordítása futási időben
+* `$$` az egyes egyezések nevének vagy értékének lefordítása futási időben. Úgy gondolja, `$$` hogy egyenértékű a következővel: `this` .
 * `name` az egyes bejövő oszlopok nevét jelöli
 * `type` az egyes bejövő oszlopok adattípusát jelöli
 * `stream` az egyes adatfolyamokhoz társított nevet vagy a folyamat átalakítását jelöli

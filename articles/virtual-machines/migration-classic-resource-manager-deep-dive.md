@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 233ba17e1ae1b554eff092151ad9f05fd660beb3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e9476b7278cbe64bf90911c3b85a09922a1afbf1
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970010"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843944"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról
 
@@ -48,7 +48,7 @@ Az áttelepítés megkezdése előtt:
 * A migrálást ütemezze munkaidőn kívülre, hogy a migrálás során esetlegesen felmerülő nem várt hibák kezelhetőek legyenek.
 * Töltse le a virtuális gépek aktuális konfigurációját a PowerShell vagy a parancssori felület (CLI) parancsai, illetve REST API-k segítségével, hogy könnyebb legyen az érvényesítés az előkészítési lépés után.
 * Frissítse az automatizálási és operacionalizálási parancsfájlokat a Resource Manager-alapú üzemi modell kezeléséhez az áttelepítés megkezdése előtt. GET műveleteket is használhat, ha az erőforrások már előkészített állapotban vannak.
-* Értékelje ki a klasszikus üzemi modell IaaS-erőforrásain konfigurált Role-Based Access Control (RBAC) házirendeket, és tervezze meg az áttelepítés befejezését követően.
+* Értékelje ki a klasszikus üzemi modell IaaS-erőforrásain konfigurált Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) házirendeket, és tervezze meg az áttelepítés befejezését követően.
 
 Az áttelepítési munkafolyamat a következő:
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperfq2
 ms.date: 10/30/2020
-ms.openlocfilehash: ed2ce13ab10c09dc738e522566742078819e8341
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 4c0d12e4c37476b9ae71962251105ef92aa39120
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148388"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845203"
 ---
 # <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>HDInsight-fürtök konfigurálása Active Directory integrációhoz Enterprise Security Package
 
@@ -50,7 +50,7 @@ Az Azure AD DS használt tartománynévnek 39 karakter vagy kevesebbnek kell len
 
 Dönthet úgy is, hogy csak azokat a csoportokat szinkronizálja, amelyeknek hozzáférésre van szüksége a HDInsight-fürtökhöz. Ezzel a beállítással csak bizonyos csoportok szinkronizálhatók, *hatókörön belüli szinkronizálásnak* nevezzük. Útmutatásért lásd: [hatókörön belüli szinkronizálás konfigurálása az Azure ad-ből a felügyelt tartományba](../../active-directory-domain-services/scoped-synchronization.md).
 
-A biztonságos LDAP engedélyezésekor a tartománynevet a tulajdonos nevében helyezze el. És a tulajdonos alternatív neve a tanúsítványban. Ha a tartományneve *contoso100.onmicrosoft.com* , győződjön meg arról, hogy a pontos név létezik a tanúsítvány tulajdonosának neve és a tulajdonos alternatív neve mezőben. További információ: [biztonságos LDAP konfigurálása Azure AD DS felügyelt tartományhoz](../../active-directory-domain-services/tutorial-configure-ldaps.md).
+A biztonságos LDAP engedélyezésekor a tartománynevet a tulajdonos nevében helyezze el. És a tulajdonos alternatív neve a tanúsítványban. Ha a tartományneve *contoso100.onmicrosoft.com*, győződjön meg arról, hogy a pontos név létezik a tanúsítvány tulajdonosának neve és a tulajdonos alternatív neve mezőben. További információ: [biztonságos LDAP konfigurálása Azure AD DS felügyelt tartományhoz](../../active-directory-domain-services/tutorial-configure-ldaps.md).
 
 A következő példa létrehoz egy önaláírt tanúsítványt. A *contoso100.onmicrosoft.com* tartománynév a `Subject` következő: (tulajdonos neve) és (a `DnsName` tulajdonos alternatív neve).
 
@@ -62,7 +62,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 ```
 
 > [!NOTE]  
-> Csak a bérlői rendszergazdák rendelkeznek az Azure AD DS engedélyezéséhez szükséges jogosultságokkal. Ha a fürt tárterülete Azure Data Lake Storage Gen1 vagy Gen2, le kell tiltania az Azure Multi-Factor Authentication csak azokra a felhasználókra, akiknek egyszerű Kerberos-hitelesítéssel kell elérniük a fürtöt.
+> Csak a bérlői rendszergazdák rendelkeznek az Azure AD DS engedélyezéséhez szükséges jogosultságokkal. Ha a fürt tárterülete Azure Data Lake Storage Gen1 vagy Gen2, le kell tiltania az Azure AD-Multi-Factor Authentication csak olyan felhasználók számára, akiknek egyszerű Kerberos-hitelesítéssel kell hozzáférnie a fürthöz.
 >
 > A [megbízható IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) -címek vagy a [feltételes hozzáférés](../../active-directory/conditional-access/overview.md) használatával letilthatja az egyes felhasználók multi-Factor Authenticationét *csak* akkor, ha a HDInsight-fürt virtuális hálózatának IP-tartományát érik el. Ha feltételes hozzáférést használ, győződjön meg arról, hogy a Active Directory szolgáltatás végpontja engedélyezve van a HDInsight virtuális hálózaton.
 >
@@ -136,11 +136,11 @@ Az ESP engedélyezése után a rendszer automatikusan észleli és ellenőrzi az
 
 Ha ESP-vel rendelkező HDInsight-fürtöt hoz létre, a következő paramétereket kell megadnia:
 
-* **Fürt rendszergazdai felhasználója** : válasszon egy rendszergazdát a fürt számára a szinkronizált Azure AD DS-példányból. A tartományi fióknak már szinkronizálva kell lennie, és elérhetőnek kell lennie az Azure AD DSban.
+* **Fürt rendszergazdai felhasználója**: válasszon egy rendszergazdát a fürt számára a szinkronizált Azure AD DS-példányból. A tartományi fióknak már szinkronizálva kell lennie, és elérhetőnek kell lennie az Azure AD DSban.
 
-* **Fürthöz való hozzáférési csoportok** : azok a biztonsági csoportok, amelyekhez szinkronizálni szeretné a felhasználókat, és amelyek hozzáférhetnek a fürthöz, elérhetőnek kell lenniük az Azure ad DSban. Ilyen például a HiveUsers csoport. További információ: [csoport létrehozása és Tagok hozzáadása Azure Active Directoryban](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+* **Fürthöz való hozzáférési csoportok**: azok a biztonsági csoportok, amelyekhez szinkronizálni szeretné a felhasználókat, és amelyek hozzáférhetnek a fürthöz, elérhetőnek kell lenniük az Azure ad DSban. Ilyen például a HiveUsers csoport. További információ: [csoport létrehozása és Tagok hozzáadása Azure Active Directoryban](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-* **LDAPS URL-cím** : példa `ldaps://contoso.com:636` .
+* **LDAPS URL-cím**: példa `ldaps://contoso.com:636` .
 
 A létrehozott felügyelt identitás kiválasztható a **felhasználó által hozzárendelt felügyelt identitás** legördülő listából, ha új fürtöt hoz létre.
 

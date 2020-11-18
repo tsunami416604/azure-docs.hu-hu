@@ -6,12 +6,12 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 291f1ac093568f50ad6146b70fa1ef69263b7b5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d65a39c1a1d302e565b59db1644af2c08befb6b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85830306"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843162"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Az Azure adatelemzési Virtual Machines
 
@@ -24,7 +24,7 @@ Alapértelmezés szerint a projektek az **ingyenes számítási** szinten futnak
 
 ## <a name="create-a-dsvm-instance"></a>DSVM-példány létrehozása
 
-Új DSVM-példány létrehozásához kövesse az [Ubuntu-Data Science VM létrehozása](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)című témakör utasításait. A díjszabással kapcsolatos további információkért lásd: [Adatelemzési Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
+Új DSVM-példány létrehozásához kövesse az [Ubuntu-Data Science VM létrehozása](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md)című témakör utasításait. A díjszabással kapcsolatos további információkért lásd: [Adatelemzési Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
 ## <a name="connect-to-the-dsvm"></a>Kapcsolódás a DSVM
 
@@ -62,10 +62,10 @@ Amikor egy projekt egy virtuális gépen fut, a fájlok a Jupyter-kiszolgáló g
 Ha több felhasználó osztozik egy DSVM, elkerülheti egymás blokkolását úgy, hogy DSVM-felhasználót hoz létre és használ az egyes notebook-felhasználók számára:
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon a virtuális géphez.
-1. A bal oldali margó **támogatás + hibaelhárítás** területén válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
-1. Adjon meg egy új **felhasználónevet**. A felhasználónévnek kisbetűsnek kell lennie a JupyterHub-vel való használathoz. Adjon meg egy jelszót. Ezután válassza a **frissítés**lehetőséget. (A meglévő felhasználónevek nincsenek hatással.)
+1. A bal oldali margó **támogatás + hibaelhárítás** területén válassza a **jelszó alaphelyzetbe állítása** lehetőséget.
+1. Adjon meg egy új **felhasználónevet**. A felhasználónévnek kisbetűsnek kell lennie a JupyterHub-vel való használathoz. Adjon meg egy jelszót. Ezután válassza a **frissítés** lehetőséget. (A meglévő felhasználónevek nincsenek hatással.)
 1. Ismételje meg az előző lépést a további felhasználók számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az [Azure Adatelemzési Virtual Machines bevezetésének](/azure/machine-learning/data-science-virtual-machine/overview)dsvm.
+További információ az [Azure Adatelemzési Virtual Machines bevezetésének](../machine-learning/data-science-virtual-machine/overview.md)dsvm.

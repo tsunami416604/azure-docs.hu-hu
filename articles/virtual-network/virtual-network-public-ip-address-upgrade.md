@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: blehr
-ms.custom: references_regions
-ms.openlocfilehash: a1bd303390626eaea71e588e325fedbd2d8fa4b9
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.custom: references_regions , devx-track-azurecli
+ms.openlocfilehash: 0c248149694c2bf66b8c94e9c0a29a8f7da9f4e4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353356"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843740"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Nyilvános IP-címek frissítése
 
@@ -98,7 +98,7 @@ A Azure Resource Manager új képességeinek kihasználásához áttelepítheti 
 
 # <a name="reserved-to-basic---powershell"></a>[**Alapszintű – PowerShell számára fenntartva**](#tab/option-migrate-powershell)
 
-Az alábbi példa egy klasszikus Azure Fenntartott IP **myReservedIP** korábbi létrehozását feltételezi a **myResourceGroup** -ben. A Migrálás egy másik előfeltétele annak biztosítása, hogy a Azure Resource Manager előfizetés regisztrálva legyen az áttelepítéshez. Ezt az [oldal](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-ps)3. és 4. lépésében részletesen tárgyaljuk.
+Az alábbi példa egy klasszikus Azure Fenntartott IP **myReservedIP** korábbi létrehozását feltételezi a **myResourceGroup**-ben. A Migrálás egy másik előfeltétele annak biztosítása, hogy a Azure Resource Manager előfizetés regisztrálva legyen az áttelepítéshez. Ezt az [oldal](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-ps)3. és 4. lépésében részletesen tárgyaljuk.
 
 A Fenntartott IP migrálása érdekében hajtsa végre az alábbi parancsokat a PowerShell használatával.  Vegye figyelembe, hogy ha az IP-cím nincs társítva egyetlen szolgáltatáshoz sem (az alatta van egy **myService** nevű szolgáltatás), akkor a lépés kihagyható.
 
@@ -122,7 +122,7 @@ A rendszer létrehoz egy új erőforráscsoportot a Azure Resource Managerben az
 
 # <a name="reserved-to-basic---cli"></a>[**Alapszintű – parancssori felület**](#tab/option-migrate-cli)
 
-Az alábbi példa egy klasszikus Azure Fenntartott IP **myReservedIP** korábbi létrehozását feltételezi a **myResourceGroup** -ben. A Migrálás egy másik előfeltétele annak biztosítása, hogy a Azure Resource Manager előfizetés regisztrálva legyen az áttelepítéshez. Ezt az [oldal](https://docs.microsoft.com/azure/virtual-machines/linux/migration-classic-resource-manager-cli)3. és 4. lépésében részletesen tárgyaljuk.
+Az alábbi példa egy klasszikus Azure Fenntartott IP **myReservedIP** korábbi létrehozását feltételezi a **myResourceGroup**-ben. A Migrálás egy másik előfeltétele annak biztosítása, hogy a Azure Resource Manager előfizetés regisztrálva legyen az áttelepítéshez. Ezt az [oldal](https://docs.microsoft.com/azure/virtual-machines/linux/migration-classic-resource-manager-cli)3. és 4. lépésében részletesen tárgyaljuk.
 
 A Fenntartott IP migrálása érdekében hajtsa végre az alábbi parancsokat az Azure CLI használatával.  Vegye figyelembe, hogy az IP-cím nincs társítva egyetlen szolgáltatáshoz sem (a **myService** és az üzembe helyezési **myDeployment** nevű szolgáltatás), ezt a lépést kihagyhatja.
 
@@ -148,24 +148,14 @@ A rendszer létrehoz egy új erőforráscsoportot a Azure Resource Managerben az
 
 ## <a name="limitations"></a>Korlátozások
 
-* Ez a funkció jelenleg csak a következő régiókban érhető el:<br>
-USA nyugati középső régiója<br>
-USA északi középső régiója<br>
-USA nyugati régiója<br>
-USA 2. nyugati régiója<br>
-Kelet-Norvégia<br>
-Dél-Afrika északi régiója<br>
-USA keleti régiója<br>
-Észak-Európa<br>
-Dél-Korea középső régiója<br>
-Indiai középső régió<br>
-USA 2. keleti régiója<br>
-Észak-Svájc<br>
-Nyugat-India<br>
-Észak-Németország<br>
-Közép-Kanada<br>
-Dél-Franciaország<br>
-Nyugat-India
+* Ez a funkció jelenleg nem érhető el a következő régiókban:<br>
+USA-beli államigazgatás – Virginia<br>
+US DoD – Kelet<br>
+US DoD – Középső régió<br>
+Kelet-Kína<br>
+Kelet-Kína 2<br>
+Észak-Kína<br>
+Észak-Kína 2
 
 * Egy alapszintű nyilvános IP-cím frissítéséhez nem társítható egyetlen Azure-erőforráshoz sem.  A nyilvános IP-címek hozzárendelésével kapcsolatos további információkért tekintse át [ezt a lapot](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) .  Hasonlóképpen, a Fenntartott IP átmigrálása nem rendelhető hozzá semmilyen felhőalapú szolgáltatáshoz.  A fenntartott IP-címek hozzárendelésével kapcsolatos további információkért tekintse át [ezt a lapot](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) .  
 * Az alapszintről standard SKU-ra frissített nyilvános IP-címek továbbra is nem rendelkeznek [rendelkezésre állási zónákkal](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) , ezért nem társíthatók olyan Azure-erőforrásokkal, amelyek akár zónában redundáns, akár nem.  Vegye figyelembe, hogy ez csak a rendelkezésre állási zónákat tartalmazó régiókra vonatkozik.

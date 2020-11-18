@@ -3,12 +3,12 @@ title: Gyakori kérdések – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azure Event Hubs és azok válaszait illetően.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 3b55521c9f90192891b450e3e161607a334c3a00
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 41b010315adaf5a0eca2939b1d42fe4d7c159628
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909709"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843043"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
@@ -59,10 +59,10 @@ Event Hubs teljes mérőszámokat bocsát ki, amelyek a [Azure monitor](../azure
 Az Azure Event Hubs az ügyféladatokat tárolja. Ezeket az adategységeket a Event Hubs egyetlen régióban tárolja automatikusan, így ez a szolgáltatás automatikusan megfelel a régió adattárolási követelményeinek, beleértve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net/)megadott követelményeket is.
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat kell megnyitni a tűzfalon? 
-Az üzenetek küldéséhez és fogadásához a következő protokollokat használhatja Azure Service Bus:
+Az Azure Event Hubs a következő protokollokat használhatja az események küldéséhez és fogadásához:
 
-- AMQP
-- HTTP
+- Advanced Message Queueing Protocol 1,0 (AMQP)
+- 1,1 Hypertext Transfer Protocol TLS-vel (HTTPS)
 - Apache Kafka
 
 Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell nyitni a protokollok Azure Event Hubs-vel való kommunikációhoz való használatához. 
@@ -70,8 +70,21 @@ Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell 
 | Protokoll | Portok | Részletek | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 és 5672 | Lásd: [AMQP protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
-| HTTP, HTTPS | 80, 443 |  |
+| HTTPS | 443 | Ez a port a HTTP/REST API és a AMQP-WebSockets esetében használatos. |
 | Kafka | 9093 | Lásd: [Event Hubs használata a Kafka-alkalmazásokból](event-hubs-for-kafka-ecosystem-overview.md)
+
+A kimenő kommunikációhoz a HTTPS-port szükséges abban az esetben is, ha a AMQP a 5671-as porton keresztül használja, mert több, az ügyfél SDK-k által végrehajtott felügyeleti művelet, valamint a tokenek beszerzése Azure Active Directory (ha használatban van) HTTPS protokollon keresztül 
+
+A hivatalos Azure SDK-k általában az AMQP protokollt használják az események küldésére és fogadására Event Hubsból. A AMQP-over-WebSockets protokoll az 443-as TCP-porton fut, ugyanúgy, mint a HTTP API, de egyébként az egyszerű AMQP eltérően működik. Ez a beállítás nagyobb kezdeti kapcsolati késéssel jár, mert a további kézfogási utak és valamivel nagyobb terhelés a HTTPS-port megosztásához szükséges kompromisszum. Ha ez a mód be van jelölve, a 443-es TCP-port elegendő a kommunikációhoz. A következő lehetőségek lehetővé teszik az egyszerű AMQP vagy a AMQP WebSockets mód kiválasztását:
+
+| Nyelv | Beállítás   |
+| -------- | ----- |
+| .NET     | [EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) tulajdonság a [EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) vagy a [EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) |
+| Java     | [com. microsoft. Azure. eventhubs. EventProcessorClientBuilder. transportType](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) , [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) vagy [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
+| Csomópont  | A [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) rendelkezik egy `webSocketOptions` tulajdonsággal. |
+| Python | [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) [TransportType. Amqp](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) vagy [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) |
+
+
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>Milyen IP-címeket kell engedélyezni?
 Az alábbi lépéseket követve megkeresheti a kapcsolatok engedélyezett listájához hozzáadandó megfelelő IP-címeket:
@@ -148,7 +161,7 @@ security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXX";
 ```
-Megjegyzés: Ha sasl.jaas.config nem támogatott konfiguráció a keretrendszerben, keresse meg a SASL felhasználónevének és jelszavának beállításához használt konfigurációkat, és használja ezeket. Adja meg a felhasználónevet $ConnectionString és a jelszót a Event Hubs-kapcsolódási karakterlánchoz.
+Megjegyzés: Ha sasl.jaas.config nem támogatott konfiguráció a keretrendszerben, keresse meg azokat a konfigurációkat, amelyek segítségével beállítja a SASL felhasználónevét és jelszavát, és használja őket. Adja meg a felhasználónevet $ConnectionString és a jelszót a Event Hubs-kapcsolódási karakterlánchoz.
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Mi a Event Hubs üzenet/esemény mérete?
 Az Event Hubs számára engedélyezett maximális üzenet mérete 1 MB.
@@ -193,9 +206,9 @@ Ha alapszintű vagy standard szintű névteret hoz létre a Azure Portalban, a n
 
 1. Az **Event Bus-névtér** lapon válassza az **új támogatási kérelem** lehetőséget a bal oldali menüben. 
 1. Az **új támogatási kérelem** oldalon hajtsa végre az alábbi lépéseket:
-    1. **Összefoglalva** , néhány Szóval írja le a problémát. 
+    1. **Összefoglalva**, néhány Szóval írja le a problémát. 
     1. A **probléma típusa** beállításnál válassza a **kvóta** lehetőséget. 
-    1. A **probléma altípusa** beállításnál válassza **az átviteli egység növelésének vagy csökkentésének kérelmét** . 
+    1. A **probléma altípusa** beállításnál válassza **az átviteli egység növelésének vagy csökkentésének kérelmét**. 
     
         :::image type="content" source="./media/event-hubs-faq/support-request-throughput-units.png" alt-text="Support request lap":::
 
@@ -229,11 +242,11 @@ Egy támogatási kérelem elküldésével megadhatja, hogy a partíciók száma 
 
 1. Az **Event Bus-névtér** lapon válassza az **új támogatási kérelem** lehetőséget a bal oldali menüben. 
 1. Az **új támogatási kérelem** oldalon hajtsa végre az alábbi lépéseket:
-    1. **Összefoglalva** , néhány Szóval írja le a problémát. 
+    1. **Összefoglalva**, néhány Szóval írja le a problémát. 
     1. A **probléma típusa** beállításnál válassza a **kvóta** lehetőséget. 
     1. A **probléma altípusa** beállításnál válassza **a partíció módosítására vonatkozó kérés** lehetőséget. 
     
-        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="Support request lap":::
+        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="Partíciók számának növekedése":::
 
 A partíciók száma pontosan 40-ra növelhető. Ebben az esetben az adatmennyiséget is növelni kell 40-ra. Ha később úgy dönt, hogy a TU-korlátot a <= 20 értékre csökkenti, a maximális partíciós korlát 32-ra is csökken. 
 
@@ -257,7 +270,7 @@ Az összes tárolt esemény teljes mérete, beleértve az esemény-fejlécek bel
 
 Az Event hub-nak küldött összes esemény számlázandó üzenetnek számít. A *bejövő események* olyan adategységként vannak definiálva, amely kisebb vagy egyenlő, mint 64 kb. A 64 KB-nál kisebb vagy azzal egyenlő események csak egy számlázandó eseménynek tekintendők. Ha az esemény meghaladja a 64 KB-ot, a számlázható események száma az esemény méretétől függően számítja ki a 64 KB-os többszörösét. Az Event hub-nak küldött 8 KB-os esemény például egy eseménynek számít, az Event hub-nak küldött 96 KB-os üzenet pedig két eseménynek számít.
 
-Az Event hub által felhasznált események, valamint a felügyeleti műveletek és a vezérlési hívások, például az ellenőrzőpontok nem számítanak számlázandó beáramlási eseménynek, hanem az átviteli egységre is érvényesek.
+Az Event hub által felhasznált események, valamint a felügyeleti műveletek és a vezérlési hívások, például az ellenőrzőpontok, nem számlázható beáramlási eseménynek számítanak, de az átviteli egységre is felmerülhetnek.
 
 ### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>A felügyelt kapcsolatok díjai a Event Hubsra vonatkoznak?
 

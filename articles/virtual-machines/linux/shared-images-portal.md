@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e65e5478c81a99db7789eab4d532ddd01ffc635a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2661715164cc6aa5f5ff587f2ddf28c0918445d4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307160"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843570"
 ---
 # <a name="create-a-shared-image-gallery-using-the-portal"></a>Megosztott képgyűjtemény létrehozása a portál használatával
 
@@ -23,7 +23,7 @@ A [megosztott képgyűjtemény](shared-image-galleries.md) egyszerűbbé teszi a
 
 A megosztott képkatalógus lehetővé teszi az egyéni virtuálisgép-rendszerképek megosztását a szervezeten belül vagy régiókban, egy Azure AD-bérlőn belül. Válassza ki a megosztani kívánt képeket, mely régiókat szeretné elérhetővé tenni a alkalmazásban, és hogy kivel szeretné megosztani azokat. Több gyűjteményt is létrehozhat, hogy logikailag csoportosítsa a megosztott rendszerképeket. 
 
-A katalógus egy legfelső szintű erőforrás, amely teljes körű szerepköralapú hozzáférés-vezérlést (RBAC) biztosít. A lemezképek telepíthetők, és eldöntheti, hogy az egyes lemezkép-verziókat egy másik Azure-régióba replikálja-e. A katalógus csak felügyelt lemezképekkel működik.
+A gyűjtemény egy legfelső szintű erőforrás, amely teljes körű Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) biztosít. A lemezképek telepíthetők, és eldöntheti, hogy az egyes lemezkép-verziókat egy másik Azure-régióba replikálja-e. A katalógus csak felügyelt lemezképekkel működik.
 
 A megosztott képkatalógus funkció több erőforrástípust is tartalmaz. Ebben a cikkben a következő lépéseket fogjuk használni vagy felépíteni:
 
@@ -47,18 +47,18 @@ A cikkben végzett munka során szükség esetén cserélje le az erőforráscso
 
 ## <a name="create-vms"></a>Virtuális gépek létrehozása 
 
-Most már létrehozhat egy vagy több új virtuális gépet. Ez a példa egy *myVMfromImage*nevű virtuális gépet hoz létre az *USA keleti* adatközpontjának *myResourceGroup* .
+Most már létrehozhat egy vagy több új virtuális gépet. Ez a példa egy *myVMfromImage* nevű virtuális gépet hoz létre az *USA keleti* adatközpontjának *myResourceGroup* .
 
 1. Nyissa meg a rendszerkép definícióját. Az erőforrás-szűrőt használhatja az összes elérhető képdefiníció megjelenítéséhez.
 1. A rendszerkép definíciójának lapján válassza a **virtuális gép létrehozása** elemet az oldal tetején található menüből.
-1. Az **erőforráscsoport**területen válassza az **új létrehozása** lehetőséget, és írja be a *myResourceGroup* nevet.
-1. A **virtuális gép neve**mezőbe írja be a következőt: *myVM*.
-1. A régió területen válassza az *USA keleti* **régiója**lehetőséget.
-1. A **rendelkezésre állási beállítások beállításnál**hagyja meg az alapértelmezett *infrastruktúra-redundancia*hiányát.
+1. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget, és írja be a *myResourceGroup* nevet.
+1. A **virtuális gép neve** mezőbe írja be a következőt: *myVM*.
+1. A régió területen válassza az *USA keleti* **régiója** lehetőséget.
+1. A **rendelkezésre állási beállítások beállításnál** hagyja meg az alapértelmezett *infrastruktúra-redundancia* hiányát.
 1. A **rendszerkép értékét** a rendszer automatikusan kitölti a `latest` rendszerkép verziójával, ha a rendszerkép definíciójának oldaláról indult.
-1. A **méret**beállításnál válassza ki a virtuális gép méretét az elérhető méretek listájából, majd válassza a **kiválasztás**lehetőséget.
-1. A **rendszergazdai fiók**területen, ha a forrás virtuális gép általánosítva lett, adja meg **felhasználónevét** és **nyilvános SSH-kulcsát**. Ha a forrás virtuális gép specializált, ezek a beállítások szürkén jelennek meg, mert a forrás virtuális gépről származó adatokat használják.
-1. Ha engedélyezni szeretné a virtuális gép távoli elérését, a **nyilvános bejövő portok**területen válassza a **kiválasztott portok engedélyezése** lehetőséget, majd válassza az **SSH (22)** lehetőséget a legördülő menüből. Ha nem szeretné engedélyezni a virtuális gép távoli elérését, hagyja a **nincs** kiválasztva lehetőséget a **nyilvános bejövő portokhoz**.
+1. A **méret** beállításnál válassza ki a virtuális gép méretét az elérhető méretek listájából, majd válassza a **kiválasztás** lehetőséget.
+1. A **rendszergazdai fiók** területen, ha a forrás virtuális gép általánosítva lett, adja meg **felhasználónevét** és **nyilvános SSH-kulcsát**. Ha a forrás virtuális gép specializált, ezek a beállítások szürkén jelennek meg, mert a forrás virtuális gépről származó adatokat használják.
+1. Ha engedélyezni szeretné a virtuális gép távoli elérését, a **nyilvános bejövő portok** területen válassza a **kiválasztott portok engedélyezése** lehetőséget, majd válassza az **SSH (22)** lehetőséget a legördülő menüből. Ha nem szeretné engedélyezni a virtuális gép távoli elérését, hagyja a **nincs** kiválasztva lehetőséget a **nyilvános bejövő portokhoz**.
 1. Ha elkészült, kattintson a lap alján található **felülvizsgálat + létrehozás** gombra.
 1. Miután a virtuális gép áthaladt az ellenőrzésen, válassza a **Létrehozás** lehetőséget a lap alján a telepítés elindításához.
 

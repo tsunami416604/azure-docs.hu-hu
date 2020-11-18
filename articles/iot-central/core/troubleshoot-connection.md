@@ -7,13 +7,13 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.custom: device-developer
-ms.openlocfilehash: 6438b938dc007e8d157f6549b3ed164cd2a723e8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: device-developer, devx-track-azurecli
+ms.openlocfilehash: f4f35aed10465fb06460f2818a876444bf989e01
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424465"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843961"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Az eszközön lévő adatok nem jelennek meg az Azure IoT Centralban hiba elhárítása
 
@@ -210,7 +210,7 @@ Ha észlelte a problémát, lehet, hogy frissítenie kell az eszköz belső vez�
 
 Ha úgy döntött, hogy olyan új sablont hoz létre, amely helyesen modellezi az adatmodelleket, telepítse át az eszközöket a régi sablonból az új sablonba. További információ: [eszközök kezelése az Azure IoT Central alkalmazásban](howto-manage-devices.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokon](https://azure.microsoft.com/support/community/)is. Másik lehetőségként egy Azure- [támogatási jegyet](https://portal.azure.com/#create/Microsoft.Support)is megadhat.
 

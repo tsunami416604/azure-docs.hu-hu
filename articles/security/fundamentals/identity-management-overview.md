@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 48d0483247f610a1e8c7491e13ea86883bf8f341
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2c7d51da361816841ff556c1da696a48d2ce6a06
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410368"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843689"
 ---
 # <a name="azure-identity-management-security-overview"></a>Az Azure Identity Management biztonsági áttekintése
 
@@ -79,13 +79,13 @@ További információ:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Az Azure Multi-Factor Authentication olyan hitelesítési módszer, amely több ellenőrzési módszer használatát igényli, és kritikus második biztonsági réteget hoz létre a felhasználói bejelentkezésekhez és tranzakciókra. Multi-Factor Authentication segít megőrizni az adathozzáférést és az alkalmazásokhoz való hozzáférést, miközben a felhasználói igényeket egy egyszerű bejelentkezési folyamaton keresztül teljesíti. Erős hitelesítést biztosít számos ellenőrzési lehetőség használatával: telefonhívások, szöveges üzenetek vagy Mobile apps-értesítések, valamint ellenőrző kódok és külső OAuth-tokenek.
+Az Azure AD Multi-Factor Authentication olyan hitelesítési módszer, amely több ellenőrzési módszer használatát igényli, és kritikus második biztonsági réteget ad hozzá a felhasználói bejelentkezésekhez és tranzakciókra. Multi-Factor Authentication segít megőrizni az adathozzáférést és az alkalmazásokhoz való hozzáférést, miközben a felhasználói igényeket egy egyszerű bejelentkezési folyamaton keresztül teljesíti. Erős hitelesítést biztosít számos ellenőrzési lehetőség használatával: telefonhívások, szöveges üzenetek vagy Mobile apps-értesítések, valamint ellenőrző kódok és külső OAuth-tokenek.
 
 További információ:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Mi az az Azure Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Az Azure Multi-Factor Authentication működése](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Mi az Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Az Azure AD Multi-Factor Authentication működése](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="azure-rbac"></a>Azure RBAC-vel
 
@@ -107,11 +107,11 @@ A nem konzisztens hozzáférési mintákat azonosító biztonsági monitorozási
 
 A Azure Portal a jelentések a következő kategóriákba sorolhatók:
 
-* **Anomália-jelentések** : olyan bejelentkezési eseményeket tartalmaz, amelyeket a rendszer rendellenesnek talált. Célunk, hogy tisztában legyenek az ilyen tevékenységekkel, és lehetővé teszik annak meghatározását, hogy az esemény gyanús-e.
-* **Integrált alkalmazások jelentései** : megtudhatja, hogyan használják a Felhőbeli alkalmazásokat a szervezetében. Az Azure AD több ezer felhőalapú alkalmazással való integrációt biztosít.
-* **Hibajelentések** : a fiókok külső alkalmazásokba való kiosztásakor előforduló hibákat jelzi.
-* **Felhasználó-specifikus jelentések** : az eszköz bejelentkezési tevékenységére vonatkozó információk megjelenítése egy adott felhasználó számára.
-* **Tevékenységnaplók** : az elmúlt 24 órában, az elmúlt 7 napban vagy az elmúlt 30 napban található összes naplózott esemény rekordját tartalmazza, valamint a csoport tevékenységeinek változásait, valamint a jelszó-visszaállítási és a regisztrációs tevékenységet.
+* **Anomália-jelentések**: olyan bejelentkezési eseményeket tartalmaz, amelyeket a rendszer rendellenesnek talált. Célunk, hogy tisztában legyenek az ilyen tevékenységekkel, és lehetővé teszik annak meghatározását, hogy az esemény gyanús-e.
+* **Integrált alkalmazások jelentései**: megtudhatja, hogyan használják a Felhőbeli alkalmazásokat a szervezetében. Az Azure AD több ezer felhőalapú alkalmazással való integrációt biztosít.
+* **Hibajelentések**: a fiókok külső alkalmazásokba való kiosztásakor előforduló hibákat jelzi.
+* **Felhasználó-specifikus jelentések**: az eszköz bejelentkezési tevékenységére vonatkozó információk megjelenítése egy adott felhasználó számára.
+* **Tevékenységnaplók**: az elmúlt 24 órában, az elmúlt 7 napban vagy az elmúlt 30 napban található összes naplózott esemény rekordját tartalmazza, valamint a csoport tevékenységeinek változásait, valamint a jelszó-visszaállítási és a regisztrációs tevékenységet.
 
 További információ:
 

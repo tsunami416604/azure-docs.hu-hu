@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4362b579b7f01570a2b5fd072bf53ad495797cd8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fb91a490083629101470565a630b659c090e071b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783776"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843366"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Az ügyfél által felügyelt kulcsok használata Azure Key Vault importálási/exportálási szolgáltatáshoz
 
@@ -33,7 +33,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
     - [Hozzon létre egy importálási feladatot a fájlokhoz](storage-import-export-data-to-files.md).
     - [Exportálási feladatok létrehozása blobokhoz](storage-import-export-data-from-blobs.md)
 
-2. Rendelkezik egy meglévő Azure Key Vault kulccsal, amelyet a BitLocker-kulcsának védelemmel ellátni használhat. Ha meg szeretné tudni, hogyan hozhat létre kulcstartót a Azure Portal használatával, tekintse meg a következőt [: gyors üzembe helyezés és a titkos kód beolvasása Azure Key Vault a Azure Portal használatával](../../key-vault/secrets/quick-create-portal.md).
+2. Rendelkezik egy meglévő Azure Key Vault kulccsal, amelyet a BitLocker-kulcsának védelemmel ellátni használhat. Ha meg szeretné tudni, hogyan hozhat létre kulcstartót a Azure Portal használatával, tekintse meg a rövid útmutató [: Azure Key Vault létrehozása a Azure Portal használatával](../../key-vault/general/quick-create-portal.md)című témakört.
 
     - A **Soft delete** és a **not Purge** beállítása a meglévő Key Vaultra van beállítva. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve. A tulajdonságok engedélyezéséhez tekintse meg a következő cikkek egyikében a **Soft-delete engedélyezése** és a **kiürítési védelem engedélyezése** című szakaszt:
 
@@ -48,7 +48,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 Az ügyfél által felügyelt kulcs konfigurálása az importálási/exportálási szolgáltatáshoz nem kötelező. Alapértelmezés szerint az importálási/exportálási szolgáltatás a Microsoft által felügyelt kulcs használatával védi a BitLocker-kulcsot. Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kövesse az alábbi lépéseket:
 
 1. Nyissa meg az importálási feladatokhoz tartozó **Áttekintés** panelt.
-2. A jobb oldali panelen válassza a **válassza ki a BitLocker-kulcsok titkosításának módját** .
+2. A jobb oldali panelen válassza a **válassza ki a BitLocker-kulcsok titkosításának módját**.
 
     ![Titkosítási lehetőség kiválasztása](./media/storage-import-export-encryption-key-portal/encryption-key-1.png)
 
@@ -56,7 +56,7 @@ Az ügyfél által felügyelt kulcs konfigurálása az importálási/exportálá
 
     ![BitLocker-kulcs megtekintése](./media/storage-import-export-encryption-key-portal/encryption-key-2.png)
 
-4. Lehetősége van ügyfél által felügyelt kulcs megadására. Miután kiválasztotta az ügyfél által felügyelt kulcsot, **válassza a Key Vault és a kulcs lehetőséget** .
+4. Lehetősége van ügyfél által felügyelt kulcs megadására. Miután kiválasztotta az ügyfél által felügyelt kulcsot, **válassza a Key Vault és a kulcs lehetőséget**.
 
     ![Ügyfél által felügyelt kulcs kiválasztása](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
 

@@ -10,13 +10,13 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6f5eab8f53fb4c9e15606223707292261b4615e0
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 228595bf633ef0545a13abe19308e49da82cf75a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330291"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844012"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Tárfiók replikálási módjának megváltoztatása
 
@@ -125,19 +125,19 @@ Az [Azure-támogatási portálon](https://ms.portal.azure.com/#blade/Microsoft_A
 
 1. Válassza az **új támogatási kérelem** lehetőséget.
 2. A fiókadatok alapján végezze el az **alapvető** tudnivalókat: 
-    - **Probléma típusa** : válassza a **technikai** lehetőséget.
-    - **Szolgáltatás** : válassza **a saját szolgáltatások és a** **Storage-fiókok kezelése** lehetőséget.
-    - **Erőforrás** : válassza ki a ZRS konvertálni kívánt erőforrást.
-3. Válassza a **Tovább** gombot.
+    - **Probléma típusa**: válassza a **technikai** lehetőséget.
+    - **Szolgáltatás**: válassza **a saját szolgáltatások és a** **Storage-fiókok kezelése** lehetőséget.
+    - **Erőforrás**: válassza ki a ZRS konvertálni kívánt erőforrást.
+3. Kattintson a **Tovább** gombra.
 4. A **probléma** szakasz a következő értékeket határozza meg:
-    - **Súlyosság** : hagyja meg az alapértelmezett értéket.
-    - **Probléma típusa** : válassza **Az adatáttelepítés** lehetőséget.
-    - **Kategória** : válassza **az áttelepítés a ZRS** lehetőséget.
-    - **Title** : adjon meg egy leíró címet, például **ZRS fiók áttelepítése**.
-    - **Részletek** : írja be a **részletek mezőbe a** további részleteket, például a (z) [LRS, GRS] \_ régióból a ZRS-be kíván migrálni \_ .
-5. Válassza a **Tovább** gombot.
+    - **Súlyosság**: hagyja meg az alapértelmezett értéket.
+    - **Probléma típusa**: válassza **Az adatáttelepítés** lehetőséget.
+    - **Kategória**: válassza **az áttelepítés a ZRS** lehetőséget.
+    - **Title**: adjon meg egy leíró címet, például **ZRS fiók áttelepítése**.
+    - **Részletek**: írja be a **részletek mezőbe a** további részleteket, például a (z) [LRS, GRS] \_ régióból a ZRS-be kíván migrálni \_ .
+5. Kattintson a **Tovább** gombra.
 6. A kapcsolattartási **adatok** panelen ellenőrizze, hogy helyesek-e a kapcsolattartási adatok.
-7. Válassza a **Létrehozás** lehetőséget.
+7. Kattintson a **Létrehozás** gombra.
 
 A támogatási személy felveszi Önnel a kapcsolatot, és segítséget nyújt a szükséges segítségért.
 
@@ -198,7 +198,7 @@ Ha a Storage-fiókot a GRS-ből a LRS-be telepíti át, akkor nem jár további 
 > [!IMPORTANT]
 > Ha a Storage-fiókját az RA-GRS-ről a GRS vagy a LRS-re telepíti át, akkor ez a fiók az RA-GRS-ként lesz kiszámlázva az RA-tól számított további 30 nap után.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Redundancia az Azure Storage szolgáltatásban](storage-redundancy.md)
 - [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)

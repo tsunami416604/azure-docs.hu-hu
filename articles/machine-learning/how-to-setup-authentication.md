@@ -11,23 +11,23 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: adc0547e36e9cf996a87c2683b4830541b8cd360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7fa6beacf4456145e312494a72dad321dfef3754
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442106"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843927"
 ---
-# <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
+# <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Hitelesítés beállítása az Azure Machine Learning-erőforrásokhoz és -munkafolyamatokhoz
 
 
 Megtudhatja, hogyan állíthatja be a hitelesítést a Azure Machine Learning munkaterületen. A Azure Machine Learning munkaterület hitelesítése a legtöbb esetben __Azure Active Directory__ (Azure ad) alapul. Általánosságban elmondható, hogy három hitelesítési munkafolyamat használható a munkaterülethez való csatlakozáskor:
 
-* __Interaktív__ : a fiókját a Azure Active Directory közvetlenül a hitelesítéshez, vagy a hitelesítéshez használt token beszerzéséhez használja. Az interaktív hitelesítés a _kísérletezés és az ismétlődő fejlesztés_ során használatos. Az interaktív hitelesítés lehetővé teszi az erőforrásokhoz (például webszolgáltatásokhoz) való hozzáférés szabályozását felhasználónkénti alapon.
+* __Interaktív__: a fiókját a Azure Active Directory közvetlenül a hitelesítéshez, vagy a hitelesítéshez használt token beszerzéséhez használja. Az interaktív hitelesítés a _kísérletezés és az ismétlődő fejlesztés_ során használatos. Az interaktív hitelesítés lehetővé teszi az erőforrásokhoz (például webszolgáltatásokhoz) való hozzáférés szabályozását felhasználónkénti alapon.
 
-* __Egyszerű szolgáltatásnév__ : egyszerű szolgáltatásnév-fiókot hoz létre a Azure Active Directoryban, és a hitelesítéshez vagy a jogkivonat lekéréséhez használja azt. Az egyszerű szolgáltatásnév akkor használatos, ha automatikus folyamatra van szükség a szolgáltatásban _való hitelesítéshez_ anélkül, hogy felhasználói beavatkozásra lenne szükség. Például egy folyamatos integrációs és üzembe helyezési parancsfájl, amely a modell minden egyes változásakor betanítja és teszteli a modellt.
+* __Egyszerű szolgáltatásnév__: egyszerű szolgáltatásnév-fiókot hoz létre a Azure Active Directoryban, és a hitelesítéshez vagy a jogkivonat lekéréséhez használja azt. Az egyszerű szolgáltatásnév akkor használatos, ha automatikus folyamatra van szükség a szolgáltatásban _való hitelesítéshez_ anélkül, hogy felhasználói beavatkozásra lenne szükség. Például egy folyamatos integrációs és üzembe helyezési parancsfájl, amely a modell minden egyes változásakor betanítja és teszteli a modellt.
 
-* __Felügyelt identitás__ : ha az Azure Machine learning SDK-t _egy Azure-beli virtuális gépen_ használja, felügyelt identitást biztosíthat az Azure-hoz. Ez a munkafolyamat lehetővé teszi, hogy a virtuális gép a felügyelt identitás használatával kapcsolódjon a munkaterülethez a hitelesítő adatoknak a Python-kódban való tárolása, illetve a felhasználó hitelesítésének megkérdezése nélkül. A Azure Machine Learning számítási fürtök úgy is konfigurálhatók, hogy felügyelt identitást használjanak a munkaterülethez való hozzáféréshez a _modellek betanításakor_.
+* __Felügyelt identitás__: ha az Azure Machine learning SDK-t _egy Azure-beli virtuális gépen_ használja, felügyelt identitást biztosíthat az Azure-hoz. Ez a munkafolyamat lehetővé teszi, hogy a virtuális gép a felügyelt identitás használatával kapcsolódjon a munkaterülethez a hitelesítő adatoknak a Python-kódban való tárolása, illetve a felhasználó hitelesítésének megkérdezése nélkül. A Azure Machine Learning számítási fürtök úgy is konfigurálhatók, hogy felügyelt identitást használjanak a munkaterülethez való hozzáféréshez a _modellek betanításakor_.
 
 > [!IMPORTANT]
 > A használt hitelesítési munkafolyamattól függetlenül az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) az erőforrások számára engedélyezett hozzáférési szint (Engedélyezés) hatókörére szolgál. Előfordulhat például, hogy egy rendszergazda vagy automatizálási folyamat hozzáfér egy számítási példány létrehozásához, de nem használja azt, míg egy adattudós felhasználhatja, de nem törölheti vagy létrehozhatja. További információt a [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md)című témakörben talál.
@@ -141,7 +141,7 @@ Az [Azure parancssori](/cli/azure/install-azure-cli?preserve-view=true&view=azur
 
 1. [Az Azure-erőforrások rendszerhez rendelt felügyelt identitásának engedélyezése a virtuális gépen](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity).
 
-1. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet, majd válassza a __Access Control (iam)__ lehetőséget, __adja hozzá a szerepkör-hozzárendelést__ , majd válassza a __virtuális gép__ lehetőséget a __hozzáférés hozzárendelése__ legördülő listához. Végül válassza ki a virtuális gép identitását.
+1. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet, majd válassza a __Access Control (iam)__ lehetőséget, __adja hozzá a szerepkör-hozzárendelést__, majd válassza a __virtuális gép__ lehetőséget a __hozzáférés hozzárendelése__ legördülő listához. Végül válassza ki a virtuális gép identitását.
 
 1. Válassza ki az identitáshoz rendelni kívánt szerepkört. Például a közreműködő vagy egy egyéni szerepkör. További információ: az [erőforrásokhoz való hozzáférés szabályozása](how-to-assign-roles.md).
 
@@ -154,7 +154,7 @@ További információ: a [felügyelt identitás beállítása a számítási fü
 ## <a name="use-interactive-authentication"></a>Interaktív hitelesítés használata
 
 > [!IMPORTANT]
-> Az interaktív hitelesítés a böngészőt használja, és cookie-kat igényel (beleértve a harmadik féltől származó cookie-kat is). Ha letiltotta a cookie-kat, a következő hibaüzenet jelenhet meg: "nem sikerült bejelentkezni." Ez a hiba akkor is előfordulhat, ha engedélyezte az [Azure multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)szolgáltatást.
+> Az interaktív hitelesítés a böngészőt használja, és cookie-kat igényel (beleértve a harmadik féltől származó cookie-kat is). Ha letiltotta a cookie-kat, a következő hibaüzenet jelenhet meg: "nem sikerült bejelentkezni." Ez a hiba akkor is előfordulhat, ha engedélyezte az [Azure ad-multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md).
 
 A dokumentációban és a mintákban a legtöbb példa interaktív hitelesítést használ. Az SDK használatakor például két függvényhívás van, amely automatikusan rákérdez a felhasználói felületen alapuló hitelesítési folyamatra:
 
@@ -399,8 +399,8 @@ ws = Workspace(subscription_id="your-sub-id",
                 )
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [titkok használata a képzésben](how-to-use-secrets-in-runs.md).
 * [Webszolgáltatásként üzembe helyezett modellek hitelesítésének konfigurálása](how-to-authenticate-web-service.md).
-* [Webszolgáltatásként üzembe helyezett Azure Machine learning modell](how-to-consume-web-service.md)használata.
+* [Azure Machine Learning-modell felhasználása webszolgáltatásként](how-to-consume-web-service.md).

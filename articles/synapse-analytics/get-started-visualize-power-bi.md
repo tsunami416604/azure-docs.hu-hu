@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: business-intelligence
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 64a87df4e4fea9fb29e787ab3420f1a62f41323d
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: b72d083216b7cd0ae7a588bfd721d8981829bfc7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592413"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844367"
 ---
 # <a name="visualize-data-with-power-bi"></a>Adatok megjelenítése Power BI használatával
 
@@ -82,11 +82,7 @@ Power BI munkaterületet az Azure szinapszis-munkaterülethez kapcsolhat. Ez a f
     * A **NYCTaxiWorkspace1**  >  **Power bi-jelentések** területen egy új, **PassengerAnalysis** nevű jelentés szerepel.
 1. Válassza ki a **PassengerAnalysis** jelentést. Megnyílik a jelentés, amely közvetlenül a szinapszis Studióban szerkeszthető.
 
-## <a name="monitor-activities"></a>Tevékenységek monitorozása
 
-1. A szinapszis Studióban nyissa meg a **figyelő** hubot.
-1. Ezen a helyen megtekintheti a munkaterületen zajló összes tevékenység előzményeit, és azokat is, amelyek aktívak.
-1. Ismerkedjen meg a **folyamat futtatásával** , **Apache Spark alkalmazásokkal** és **SQL-kérésekkel** , hogy megtekintse a munkaterületen már elvégzett munkát.
 
 ## <a name="next-steps"></a>Következő lépések
 

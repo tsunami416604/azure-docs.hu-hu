@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9630919b71afd0219a2e82a86e0f89106e8a0ac2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ccfc290df64417bf0504849a83dbe68efcbddefe
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424069"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843706"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps Azure biztonsági alapterve
 
@@ -384,7 +384,7 @@ Ha kódot használ, ne tárolja a jelszavakat a kódban, Ehelyett használja a A
 
 - [Az Logic Apps-beli adatvédelme és-hozzáférés](logic-apps-securing-a-logic-app.md)
 
-- [Titkos kód beállítása és beolvasása Azure Key Vault](../key-vault/secrets/quick-create-portal.md)
+- [Titkos kód beállítása és beolvasása Azure Key Vault](../key-vault/general/quick-create-portal.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -486,7 +486,7 @@ Emellett a logikai alkalmazás minden kérelem végpontja közös hozzáférési
 
 Ha a Logic Apps támogatja a támogatást, a felügyelt identitással könnyedén hozzáférhet az Azure Active Directory (Azure AD) által védett egyéb erőforrásokhoz, és a hitelesítő adatok és a titkos kódok helyett hitelesítheti az identitását. Az Azure kezeli Ön helyett ezt az identitást, és segít biztonságban tartani az Ön hitelesítő adatait, mivel így nincs szükség titkos kulcsok megadására és rendszeres módosítására.
 
-Azure Logic Apps a rendszer által hozzárendelt és felhasználó által hozzárendelt felügyelt identitásokat is támogatja. A logikai alkalmazások rendszer vagy felhasználó által hozzárendelt identitást is használhatnak, amely megosztható a logikai alkalmazások egy csoportján belül. Mindkét típusú identitás azonban nem használható. Jelenleg csak az adott beépített eseményindítók és műveletek támogatják a felügyelt identitásokat, nem felügyelt összekötőket és kapcsolatokat, például:
+Az Azure Logic Apps a rendszer és a felhasználó által hozzárendelt felügyelt identitásokat is támogatja. A logikai alkalmazások rendszer vagy felhasználó által hozzárendelt identitást is használhatnak, amely megosztható a logikai alkalmazások egy csoportján belül. Mindkét típusú identitás azonban nem használható. Jelenleg csak bizonyos beépített triggerek és műveletek támogatják a felügyelt identitásokat, a nem felügyelt összekötőket és kapcsolatokat, például:
 
 -  HTTP
 
@@ -1057,7 +1057,7 @@ Ha integrációs szolgáltatási környezetet (ISE) hoz létre a logikai alkalma
 
 **Útmutató**: a Azure Active Directory (Azure ad) által védett egyéb erőforrások egyszerű elérése és az identitás hitelesítése bejelentkezés nélkül – a logikai alkalmazás a hitelesítő adatok és a titkos kódok helyett felügyelt identitást (korábban Managed Service Identity vagy msi) is használhat. Az Azure kezeli Ön helyett ezt az identitást, és segít biztonságban tartani az Ön hitelesítő adatait, mivel így nincs szükség titkos kulcsok megadására és rendszeres módosítására.
 
-Jelenleg csak az adott beépített eseményindítók és műveletek támogatják a felügyelt identitásokat, nem felügyelt összekötőket és kapcsolatokat, például:
+Jelenleg csak bizonyos beépített triggerek és műveletek támogatják a felügyelt identitásokat, a nem felügyelt összekötőket és kapcsolatokat, például:
 
 - HTTP
 - Azure Functions
@@ -1292,7 +1292,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

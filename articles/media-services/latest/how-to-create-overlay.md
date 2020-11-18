@@ -6,18 +6,19 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 08/31/2020
-ms.openlocfilehash: 6c93408bce8da9f8cd0e4a0d0bab615e2bd362dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 743fe146042c7b52394cc4ee8ced49a0f540e79c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267326"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844284"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>Átfedés létrehozása a Media Encoder Standard használatával
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-A Media Encoder Standard lehetővé teszi egy rendszerkép átfedését egy meglévő videóra. Jelenleg a következő formátumok támogatottak: PNG, jpg, GIF és BMP.
+A Media Encoder Standard a képek, hangfájlok vagy más videók egy másik videóba való átfedését teszi lehetővé. A bemenetnek pontosan egy fájlt kell megadnia. A képfájlt JPG, PNG, GIF vagy BMP formátumban, vagy egy hangfájl (például WAV, MP3, WMA vagy M4A fájl) vagy videofájl formájában is megadhatja.
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +33,7 @@ A Media Encoder Standard lehetővé teszi egy rendszerkép átfedését egy megl
     "AccountName": "",
     "ArmAadAudience": "https://management.core.windows.net/",
     "ArmEndpoint": "https://management.azure.com/",
-    "Region": "",
+    "Location": "",
     "ResourceGroup": "",
     "SubscriptionId": ""
     }

@@ -3,12 +3,12 @@ title: Jupyter Notebook projekt exportálása a Azure Notebooks előzetes verzi�
 description: Jupyter Notebook projekt gyors exportálása.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: 3153247b9d15167ab437d6c46142bbd41f8e4b23
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea16bd61b542217fb6f2d5ba1d926a0bc19d4cce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90030446"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844420"
 ---
 # <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Gyors útmutató: Jupyter Notebook projekt exportálása Azure Notebooks előzetes verzióban
 
@@ -76,10 +76,10 @@ A Azure Machine Learning teljes gépi tanulási platformot biztosít, amely lehe
    ![Munkaterület létrehozása](../machine-learning/media/how-to-manage-workspace/create-workspace.gif)
  
 1. Nyissa meg az [Azure studiót (előzetes verzió)](https://ml.azure.com/).
-1. A bal oldali navigációs sáv használatával válassza a **jegyzetfüzetek**lehetőséget.
+1. A bal oldali navigációs sáv használatával válassza a **jegyzetfüzetek** lehetőséget.
 1. Kattintson a **fájlok feltöltése** gombra, és töltse fel a Azure Notebooksból letöltött projektfájlok fájljait.
 
-Az Azure ML-vel és a Jupyter-jegyzetfüzetek futtatásával kapcsolatos további információkért tekintse át a [dokumentációt](../machine-learning/how-to-run-jupyter-notebooks.md) , vagy próbálja ki [Machine Learning](https://docs.microsoft.com/learn/modules/intro-to-azure-machine-learning-service/) modult Microsoft Learn.
+Az Azure ML-vel és a Jupyter-jegyzetfüzetek futtatásával kapcsolatos további információkért tekintse át a [dokumentációt](../machine-learning/how-to-run-jupyter-notebooks.md) , vagy próbálja ki [Machine Learning](/learn/modules/intro-to-azure-machine-learning-service/) modult Microsoft Learn.
 
 
 ## <a name="use-azure-lab-services"></a>Azure Lab Services használata
@@ -98,7 +98,7 @@ A GitHub lehetővé teszi a jegyzetfüzetek (és más fájlok) tárolását, a n
 1. [Hozzon létre egy GitHub-tárházat](https://help.github.com/github/getting-started-with-github/create-a-repo) a jegyzetfüzetek tárolásához. 
 1. [Adja hozzá a fájljait](https://help.github.com/github/managing-files-in-a-repository/adding-a-file-to-a-repository) a tárházhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tudnivalók a Pythonról a Visual Studio Code-ban](https://code.visualstudio.com/docs/python/python-tutorial)
 - [Tudnivalók a Azure Machine Learning-és Jupyter-jegyzetfüzetekről](../machine-learning/how-to-run-jupyter-notebooks.md)

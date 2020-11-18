@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31219fda04095d48b55165f59c27f3dee85485a9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009256"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843638"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Bérlői és gazdagépi készlet létrehozása a Windows Virtual Desktopban (klasszikus)
 
@@ -99,7 +99,7 @@ A Windows rendszerű virtuális asztal – alkalmazáskészlet sablonjának kié
 
 **2. javítás:** Nyissa meg a GitHub helyét az **új Windowsos virtuális asztali címkészlet létrehozásához és** kiépítéséhez, és kövesse az alábbi utasításokat:
 
-1. Kattintson a jobb gombbal az **üzembe helyezés az Azure** -ba lehetőségre, és válassza a **hivatkozás címe másolása**lehetőséget.
+1. Kattintson a jobb gombbal az **üzembe helyezés az Azure** -ba lehetőségre, és válassza a **hivatkozás címe másolása** lehetőséget.
 2. Nyissa meg a **jegyzettömböt** , és illessze be a hivatkozást.
 3. A # karakter előtt szúrja be a CSP végfelhasználói bérlői nevét.
 4. Nyissa meg az új hivatkozást egy böngészőben, és a Azure Portal betölti a sablont.
@@ -120,7 +120,7 @@ A művelet megkezdése előtt ellenőriznie kell a tevékenység naplóját, hog
 A tevékenység naplójában lévő hiba megtekintéséhez:
 
 1. Lépjen ki az Azure Marketplace aktuális üzembe helyezési ajánlatával.
-2. A felső keresési sávban keresse meg és válassza ki a **műveletnapló**elemet.
+2. A felső keresési sávban keresse meg és válassza ki a **műveletnapló** elemet.
 3. Keressen egy olyan nevű tevékenységet, amelynek az **érvényesítése** **sikertelen** állapotú, és válassza ki a tevékenységet.
 
    > [!div class="mx-imgBorder"]
@@ -168,13 +168,13 @@ Nyers hiba – példa:
 
 **2. javítás:** Lásd a [következő hibát: a tartomány neve nem oldható](troubleshoot-vm-configuration-2019.md#error-domain-name-doesnt-resolve) fel a munkamenet-gazdagép virtuálisgép- [konfigurációjában](troubleshoot-vm-configuration-2019.md).
 
-**3. ok:** A virtuális hálózat (VNET) DNS-konfigurációja **alapértelmezett**értékre van állítva.
+**3. ok:** A virtuális hálózat (VNET) DNS-konfigurációja **alapértelmezett** értékre van állítva.
 
 A probléma megoldásához tegye a következőket:
 
 1. Nyissa meg az Azure Portalt, és lépjen a **Virtual Networks (virtuális hálózatok** ) lapra.
-2. Keresse meg a VNET, majd válassza a **DNS-kiszolgálók**lehetőséget.
-3. A DNS-kiszolgálók menünek a képernyő jobb oldalán kell megjelennie. Az adott menüben válassza az **Egyéni**lehetőséget.
+2. Keresse meg a VNET, majd válassza a **DNS-kiszolgálók** lehetőséget.
+3. A DNS-kiszolgálók menünek a képernyő jobb oldalán kell megjelennie. Az adott menüben válassza az **Egyéni** lehetőséget.
 4. Győződjön meg arról, hogy a DNS-kiszolgálók szerepelnek a tartományvezérlő vagy a Active Directory tartomány egyéni egyeztetése területén. Ha nem látja a DNS-kiszolgálót, akkor adja hozzá az értékét a **DNS-kiszolgáló hozzáadása** mezőben.
 
 ### <a name="error-your-deployment-failedunauthorized"></a>Hiba: Your deployment failed...\Unauthorized (Sikertelen üzembe helyezés...\Jogosulatlan)
@@ -375,7 +375,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Hiba: User requires Azure Multi-Factor Authentication (MFA) (A felhasználó Azure Multi-Factor Authentication- (MFA-) hitelesítése szükséges)
+### <a name="error-user-requires-azure-ad-multi-factor-authentication-mfa"></a>Hiba: a felhasználónak Azure AD Multi-Factor Authentication (MFA) szükséges
 
 > [!div class="mx-imgBorder"]
 > ![A központi telepítés képernyőképe nem sikerült, mert nincs Multi-Factor Authentication (MFA)](../media/MFARequiredError.png)
@@ -386,7 +386,7 @@ Nyers hiba – példa:
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-**OK:** A megadott Windows virtuális asztali bérlői rendszergazdának az Azure Multi-Factor Authentication (MFA) használatára van szüksége a bejelentkezéshez.
+**OK:** A megadott Windows virtuális asztali bérlői rendszergazdának az Azure AD Multi-Factor Authentication (MFA) használatára van szüksége a bejelentkezéshez.
 
 **Javítás:** Hozzon létre egy egyszerű szolgáltatásnevet, és rendeljen hozzá egy szerepkört a Windows rendszerű virtuális asztali bérlőhöz az [oktatóanyag: egyszerű szolgáltatások és szerepkör-hozzárendelések létrehozása a PowerShell](create-service-principal-role-powershell.md)használatával című témakör lépéseit követve. Miután meggyőződött arról, hogy be tud jelentkezni a Windows rendszerű virtuális asztalra az egyszerű szolgáltatással, futtassa újra az Azure Marketplace-ajánlatot vagy a GitHub-Azure Resource Manager sablont attól függően, hogy melyik módszert használja. A metódus helyes paramétereinek megadásához kövesse az alábbi utasításokat.
 

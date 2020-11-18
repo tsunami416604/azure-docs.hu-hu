@@ -6,14 +6,14 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 0fd792684150598449deabd14c0e19f266597bd9
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b2ab22cff7a008cb55c7e3d2170113a2504ff697
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093973"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843672"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud CI/CD GitHub-műveletekkel
 
@@ -49,11 +49,11 @@ A parancsnak egy JSON-objektumot kell kiadnia:
 }
 ```
 
-Ez a példa a [steeltoe mintát használja a githubon](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/steeltoe-sample).  Válassza ki az adattárat, nyissa meg az elágazáshoz tartozó GitHub-adattár lapot, és kattintson a **Beállítások** fülre. Nyissa meg a **titkok** menüt, és válassza az **új titok**elemet:
+Ez a példa a [steeltoe mintát használja a githubon](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/steeltoe-sample).  Válassza ki az adattárat, nyissa meg az elágazáshoz tartozó GitHub-adattár lapot, és kattintson a **Beállítások** fülre. Nyissa meg a **titkok** menüt, és válassza az **új titok** elemet:
 
  ![Új titok hozzáadása](./media/github-actions/actions1.png)
 
-Állítsa be a titkos nevet `AZURE_CREDENTIALS` és annak értékét a *GitHub-tárház beállítása és hitelesítése*fejléc alatt található JSON-karakterláncra.
+Állítsa be a titkos nevet `AZURE_CREDENTIALS` és annak értékét a *GitHub-tárház beállítása és hitelesítése* fejléc alatt található JSON-karakterláncra.
 
  ![Titkos adatértékek beállítása](./media/github-actions/actions2.png)
 
@@ -167,11 +167,11 @@ A parancsnak egy JSON-objektumot kell kiadnia:
 }
 ```
 
-Ez a példa a [PiggyMetrics](https://github.com/Azure-Samples/piggymetrics) mintát használja a githubon.  Elágazás a minta, nyissa meg a GitHub-adattár lapot, és kattintson a **Beállítások** fülre. Nyissa meg a **titkok** menüt, és kattintson **az új titkos kulcs hozzáadása**lehetőségre:
+Ez a példa a [PiggyMetrics](https://github.com/Azure-Samples/piggymetrics) mintát használja a githubon.  Elágazás a minta, nyissa meg a GitHub-adattár lapot, és kattintson a **Beállítások** fülre. Nyissa meg a **titkok** menüt, és kattintson **az új titkos kulcs hozzáadása** lehetőségre:
 
  ![Új titok hozzáadása](./media/github-actions/actions1.png)
 
-Állítsa be a titkos nevet `AZURE_CREDENTIALS` és annak értékét a *GitHub-tárház beállítása és hitelesítése*fejléc alatt található JSON-karakterláncra.
+Állítsa be a titkos nevet `AZURE_CREDENTIALS` és annak értékét a *GitHub-tárház beállítása és hitelesítése* fejléc alatt található JSON-karakterláncra.
 
  ![Titkos adatértékek beállítása](./media/github-actions/actions2.png)
 
@@ -333,7 +333,7 @@ Annak ellenőrzéséhez, hogy engedélyezve van-e a művelet, kattintson a **mű
 
 ![A művelet engedélyezésének ellenőrzése](./media/github-actions/actions3.png)
 
-Ha a művelet hibát jelez, például ha még nem állította be az Azure-beli hitelesítő adatokat, akkor a hiba kijavítása után újrafuttathatja az ellenőrzéseket. A GitHub-adattár lapon kattintson a **műveletek**elemre, jelölje ki az adott munkafolyamat-feladatot, majd kattintson az **ellenőrzések újrafuttatása** gombra az ellenőrzések újrafuttatásához:
+Ha a művelet hibát jelez, például ha még nem állította be az Azure-beli hitelesítő adatokat, akkor a hiba kijavítása után újrafuttathatja az ellenőrzéseket. A GitHub-adattár lapon kattintson a **műveletek** elemre, jelölje ki az adott munkafolyamat-feladatot, majd kattintson az **ellenőrzések újrafuttatása** gombra az ellenőrzések újrafuttatásához:
 
 ![Ellenőrzések újrafuttatása](./media/github-actions/actions4.png)
 

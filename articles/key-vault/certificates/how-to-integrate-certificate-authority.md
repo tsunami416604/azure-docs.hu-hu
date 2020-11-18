@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d36c6e8ebbb86f9027a4822daa4481b5481523c2
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 50f2515cee92ead8018ffaaf4b4574905f8007d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289536"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844505"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
 
@@ -31,9 +31,9 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 Az útmutató végrehajtásához a következő erőforrásokkal kell rendelkeznie.
 * Key Vault. Egy meglévő kulcstartót is használhat, vagy létrehozhat egy újat a következő rövid útmutatók lépéseinek végrehajtásával:
-   - [Kulcstartó létrehozása az Azure CLI-vel](../secrets/quick-create-cli.md)
-   - [Key Vault létrehozása Azure PowerShell](../secrets/quick-create-powershell.md)
-   - [Hozzon létre egy Key vaultot a Azure Portal](../secrets/quick-create-portal.md).
+   - [Kulcstartó létrehozása az Azure CLI-vel](../general/quick-create-cli.md)
+   - [Key Vault létrehozása Azure PowerShell](../general/quick-create-powershell.md)
+   - [Hozzon létre egy Key vaultot a Azure Portal](../general/quick-create-portal.md).
 *   Aktiválni kell a DigiCert CertCentral-fiókot. [Regisztráljon](https://www.digicert.com/account/signup/) a CertCentral-fiókjára.
 *   Rendszergazdai szintű engedélyek a fiókokban.
 
@@ -56,11 +56,11 @@ A fenti információknak a DigiCert CertCentral-fiókból való összegyűjtése
 4.  Válassza a **Hozzáadás** lehetőséget.
  ![hitelesítésszolgáltatók hozzáadása](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  A hitelesítésszolgáltató **létrehozása** képernyőn válassza a következő értékeket:
-    -   **Név** : azonosítható kiállítói név hozzáadása. Példa DigicertCA
-    -   **Szolgáltató** : válassza a DigiCert lehetőséget a menüből.
-    -   **Fiókazonosító** : adja meg a DigiCert CertCentral-FIÓKjának azonosítóját
-    -   **Fiók jelszava** : adja meg a DigiCert CertCentral-fiókjában létrehozott API-kulcsot
-    -   **Szervezet azonosítója** : adja meg a DigiCert CertCentral-fiókból összegyűjtött OrgID 
+    -   **Név**: azonosítható kiállítói név hozzáadása. Példa DigicertCA
+    -   **Szolgáltató**: válassza a DigiCert lehetőséget a menüből.
+    -   **Fiókazonosító**: adja meg a DigiCert CertCentral-FIÓKjának azonosítóját
+    -   **Fiók jelszava**: adja meg a DigiCert CertCentral-fiókjában létrehozott API-kulcsot
+    -   **Szervezet azonosítója**: adja meg a DigiCert CertCentral-fiókból összegyűjtött OrgID 
     -   Kattintson a **Létrehozás** gombra.
    
 6.  Látni fogja, hogy a DigicertCA már hozzá lett adva a hitelesítésszolgáltatók listájában.
@@ -89,7 +89,7 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 A kulcstartó egyedi nevét kell használnia. Itt a "contoso-Vaultname" a Key Vault neve az útmutató során.
 
 - Tár **neve** Contoso – Vaultname.
-- **Erőforráscsoport neve** : ContosoResourceGroup.
+- **Erőforráscsoport neve**: ContosoResourceGroup.
 - **Tartózkodási hely** EastUS.
 
 ```azurepowershell-interactive

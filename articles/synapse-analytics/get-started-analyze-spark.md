@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: a33b702209bf2724098b7a0db907b1b7237ceccf
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 07537e26b169414e3f8ec35cc32945c20f7eb7ce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592617"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843281"
 ---
 # <a name="analyze-with-apache-spark"></a>Elemzés a Apache Spark
 
@@ -60,8 +60,8 @@ A **SQLPOOL1** egy táblájában elérhetők az adatkészletek. Töltse be egy *
 
 1. Nyissa meg az **adatközpontot** , kattintson a jobb gombbal az **adatbázisok** elemre, majd válassza a **frissítés** lehetőséget. Ezeket az adatbázisokat kell látnia:
 
-    - **SQLPOOL1** (dedikált SQL-készlet)
-    - **nyctaxi** (kiszolgáló nélküli Apache Spark készlet)
+    - **SQLPOOL1 (SQL)**
+    - **nyctaxi (Spark)**
 
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>A New York-i taxi-adat elemzése a Spark és a notebook használatával
 
@@ -114,7 +114,7 @@ matplotlib.pyplot.show()
 
 ## <a name="load-data-from-a-spark-table-into-a-dedicated-sql-pool-table"></a>Adatok betöltése a Spark-táblából egy dedikált SQL Pool-táblába
 
-Korábban a dedikált SQL Pool-táblázat **SQLPOOL1. dbo. Trip** fájlját másolta a Spark Table **nyctaxi. Trip** -ba. Ezután a Spark használatával összesítettük az adatokat a Spark Table **nyctaxi. passengercountstats**. Most átmásoljuk a **nyctaxi. passengercountstats** adatait egy dedikált SQL Pool-táblába, amelynek neve **SQLPOOL1. dbo. passengercountstats**.
+Korábban a dedikált SQL Pool-táblázat **SQLPOOL1. dbo. Trip** fájlját másolta a Spark Table **nyctaxi. Trip**-ba. Ezután a Spark használatával összesítettük az adatokat a Spark Table **nyctaxi. passengercountstats**. Most átmásoljuk a **nyctaxi. passengercountstats** adatait egy dedikált SQL Pool-táblába, amelynek neve **SQLPOOL1. dbo. passengercountstats**.
 
 Futtassa a következő cellát a jegyzetfüzetben. Az összesített Spark-táblázatot visszamásolja a dedikált SQL Pool-táblába.
 

@@ -3,12 +3,12 @@ title: Ajánlott biztonsági eljárások
 description: Az Azure Lighthouse használatakor fontos figyelembe venni a biztonságot és a hozzáférés-vezérlést.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 097611837e3bba2d1a44ec521862e03cc467d707
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef2c41cf052e5f79ecf4abf01c8f3fab3dd1de14
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399380"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843723"
 ---
 # <a name="recommended-security-practices"></a>Ajánlott biztonsági eljárások
 
@@ -17,18 +17,18 @@ Az [Azure Lighthouse](../overview.md)használatakor fontos figyelembe venni a bi
 > [!TIP]
 > Ezek az ajánlások a [több bérlőt kezelő vállalatoknak](enterprise.md) is érvényesek az Azure Lighthouse használatával.
 
-## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication szükséges
+## <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD-Multi-Factor Authentication megkövetelése
 
-Az [Azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (más néven kétlépéses ellenőrzés) segít megakadályozni, hogy a támadók több hitelesítési lépés megkövetelésével hozzáférjenek a fiókokhoz. Multi-Factor Authenticationt kell megkövetelni a felügyeleti bérlő összes felhasználója számára, beleértve azokat a felhasználókat is, akik hozzáférhetnek a delegált ügyfelek erőforrásaihoz.
+Az [Azure AD multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (más néven kétlépéses ellenőrzés) segít megakadályozni, hogy a támadók több hitelesítési lépés megkövetelésével hozzáférjenek a fiókokhoz. Multi-Factor Authenticationt kell megkövetelni a felügyeleti bérlő összes felhasználója számára, beleértve azokat a felhasználókat is, akik hozzáférhetnek a delegált ügyfelek erőforrásaihoz.
 
-Javasoljuk, hogy kérje ügyfeleit, hogy az Azure-Multi-Factor Authentication is implementálják a bérlők számára.
+Javasoljuk, hogy kérje ügyfeleit, hogy az Azure AD Multi-Factor Authentication a bérlők számára is megvalósítsák.
 
 ## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Engedélyek társítása csoportokhoz a legalacsonyabb jogosultsági szint elve alapján
 
 A felügyelet egyszerűbbé tételéhez használja a Azure Active Directory (Azure AD) csoportokat az ügyfelek erőforrásainak kezeléséhez szükséges minden szerepkörhöz. Ez lehetővé teszi, hogy az egyes felhasználókat szükség szerint vegye fel vagy távolítsa el a csoportba ahelyett, hogy közvetlenül az egyes felhasználókhoz rendeljen engedélyeket.
 
 > [!IMPORTANT]
-> Az Azure AD-csoport engedélyeinek hozzáadásához a **csoport típusát** **biztonsági**értékre kell állítani. Ez a beállítás a csoport létrehozásakor van kiválasztva. További információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+> Az Azure AD-csoport engedélyeinek hozzáadásához a **csoport típusát** **biztonsági** értékre kell állítani. Ez a beállítás a csoport létrehozásakor van kiválasztva. További információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Az engedélyezési struktúra létrehozásakor ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladat elvégzéséhez szükséges engedélyekkel rendelkezzenek, ami segít csökkenteni a véletlen hibák esélyét.
 
@@ -47,5 +47,5 @@ Ne feledje, hogy ha az [ügyfeleket nyilvános felügyelt szolgáltatáson keres
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az [Azure multi-Factor Authentication üzembe helyezése](../../active-directory/authentication/howto-mfa-getstarted.md).
+- Az [Azure AD multi-Factor Authentication üzembe helyezése](../../active-directory/authentication/howto-mfa-getstarted.md).
 - További információ a [bérlők közötti felügyeleti élményekről](cross-tenant-management-experience.md).

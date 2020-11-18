@@ -3,12 +3,12 @@ title: Az Azure Notebooks előzetes verziójának áttekintése
 description: Futtasson Jupyter jegyzetfüzeteket a felhőben az ingyenes Azure Notebooks előzetes verzió szolgáltatásával, ahol nincs szükség beállításra vagy konfigurációra.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d59faaf85a1fdbad776e954e974bafa300f93d85
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85831403"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845135"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Az Azure Notebooks előzetes verziójának áttekintése
 
@@ -87,7 +87,7 @@ Javasoljuk, hogy a Azure Notebooks előzetes verzió használata az üzleti szem
 
 A Azure Notebooksával kapcsolatos kérdéseiről a [GitHub-adattáron](https://github.com/Microsoft/AzureNotebooks/issues)teheti fel a problémát.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Minta-jegyzetfüzetek megismerése](azure-notebooks-samples.md)
 
@@ -111,4 +111,4 @@ A Azure Notebooksával kapcsolatos kérdéseiről a [GitHub-adattáron](https://
   - [Diavetítés bemutatása](present-jupyter-notebooks-slideshow.md)
   - [Adatfájlok használata](work-with-project-data-files.md)
   - [Adatforrások elérése](access-data-resources-jupyter-notebooks.md)
-  - [Az Azure Machine Learning használata](use-machine-learning-services-jupyter-notebooks.md)
+  - [Az Azure Machine Learning használata](../machine-learning/samples-notebooks.md)

@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
-ms.custom: mvc
-ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 426cf59c9fb9d88039231ed441b2ffc7246716c7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537932"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844437"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Oktatóanyag: PHP (Laravel) és MySQL rugalmas kiszolgálói (előzetes verzió) alkalmazás létrehozása Azure App Service
 
@@ -134,7 +134,7 @@ php artisan serve
 
 Egy böngészőben nyissa meg a `http://localhost:8000` oldalt. Vegyen fel néhány feladatot az oldalon.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP-alapú webalkalmazás az Azure-ban rugalmas kiszolgálóval":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="A PHP sikeresen csatlakozik a MySQL-hez":::
 
 A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
 
@@ -196,7 +196,7 @@ Ebben a lépésben csatlakoztatja a PHP-alkalmazást a MySQL-adatbázishoz, amel
 
 ### <a name="configure-the-database-connection"></a>Az adatbázis-kapcsolat konfigurálása
 
-Az adattár gyökérkönyvtárában, hozzon létre a _. env.production_ fájlt, és másolja bele a következő változókat. Cserélje le a helyőrző _&lt; MySQL-Server-name>_ *DB_HOST* és *DB_USERNAME* .
+Az adattár gyökérkönyvtárában, hozzon létre a _. env.production_ fájlt, és másolja bele a következő változókat. Cserélje le a helyőrző _&lt; MySQL-Server-name>_ *DB_HOST* és *DB_USERNAME*.
 
 ```
 APP_ENV=production
@@ -257,7 +257,7 @@ Nyissa meg a `http://localhost:8000` címet. Ha az oldal hiba nélkül betölt, 
 
 Vegyen fel néhány feladatot az oldalon.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP-alapú webalkalmazás az Azure-ban rugalmas kiszolgálóval":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="A PHP sikeresen csatlakozik az Azure Database for MySQL-hez":::
 
 A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
 
@@ -336,7 +336,7 @@ Ezzel létrehozott egy üres, új webalkalmazást, engedélyezett Git üzemelő 
 
 Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ adhatja meg az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) paranccsal.
 
-Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le a helyőrzők _&lt; alkalmazás neve>_ és a _&lt; mysql-Server-Name>_ .
+Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le a helyőrzők _&lt; alkalmazás neve>_ és a _&lt; mysql-Server-Name>_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 Egy böngészőben keresse fel az `http://<app-name>.azurewebsites.net` címet, és vegyen fel néhány feladatot a listára.
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="PHP-alapú webalkalmazás az Azure-ban rugalmas kiszolgálóval":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="PHP-alapú webalkalmazás az Azure-ban":::
 
 Gratulálunk, egy adatvezérelt PHP-alkalmazást futtat az Azure App Service-ben.
 
@@ -466,7 +466,7 @@ A módosítás helyi adatbázisban való végrehajtásához futtasson Laravel-ad
 php artisan migrate
 ```
 
-A [Laravel elnevezési szabály](https://laravel.com/docs/5.4/eloquent#defining-models) alapján a `Task` modell (lásd: _app/Task.php_ ) leképezése alapértelmezés szerint a `tasks` táblára történik.
+A [Laravel elnevezési szabály](https://laravel.com/docs/5.4/eloquent#defining-models) alapján a `Task` modell (lásd: _app/Task.php_) leképezése alapértelmezés szerint a `tasks` táblára történik.
 
 ### <a name="update-application-logic"></a>Az alkalmazáslogika frissítése
 
@@ -534,7 +534,7 @@ php artisan serve
 
 A feladat állapotváltozásának megtekintéséhez nyissa meg a `http://localhost:8000` címet, és jelölje be a jelölőnégyzetet.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="PHP-alapú webalkalmazás az Azure-ban rugalmas kiszolgálóval":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="A feladathoz hozzáadott jelölőnégyzet":::
 
 A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
 
@@ -556,11 +556,11 @@ git push azure master
 
 A `git push` befejezését követően navigáljon az Azure-alkalmazáshoz, és tesztelje az új funkciókat.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="PHP-alapú webalkalmazás az Azure-ban rugalmas kiszolgálóval":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Az Azure-ban közzétett modell- és adatbázis-módosítások":::
 
 Ha felvett feladatokat, azok megmaradnak az adatbázisban. Az adatséma frissítései érintetlenül hagyják a meglévő adatokat.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha várhatóan nem lesz szüksége ezekre az erőforrásokra a jövőben, törölje az erőforráscsoportot a következő parancs Cloud Shellben történő futtatásával:
 
 ```bash

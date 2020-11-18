@@ -3,12 +3,12 @@ title: Saját kulcs konfigurálása az Azure-Event Hubs inaktív adatok titkosí
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja saját kulcsát az Azure Event Hubs-adatok titkosításához.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f073c42373e75fc1cb34d1c752350f9d2c61872
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537258"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843213"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával
 Az Azure Event Hubs az Azure Storage Service Encryption (Azure SSE) segítségével titkosítja az inaktív adatok titkosítását. Event Hubs az Azure Storage-ra támaszkodik az adattárolásra, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal titkosították a Microsoft által felügyelt kulcsokkal. 
@@ -23,7 +23,7 @@ A BYOK funkció engedélyezése egy egyszeri telepítési folyamat a névtérben
 
 A Azure Key Vault segítségével kezelheti a kulcsokat, és naplózhatja a kulcshasználat. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 
-Ez a cikk bemutatja, hogyan konfigurálhat egy Key vaultot az ügyfél által felügyelt kulcsokkal a Azure Portal használatával. Ha meg szeretné tudni, hogyan hozhat létre kulcstartót a Azure Portal használatával, tekintse meg a következőt [: gyors üzembe helyezés és a titkos kód beolvasása Azure Key Vault a Azure Portal használatával](../key-vault/secrets/quick-create-portal.md).
+Ez a cikk bemutatja, hogyan konfigurálhat egy Key vaultot az ügyfél által felügyelt kulcsokkal a Azure Portal használatával. Ha meg szeretné tudni, hogyan hozhat létre kulcstartót a Azure Portal használatával, tekintse meg a rövid útmutató [: Azure Key Vault létrehozása a Azure Portal használatával](../key-vault/general/quick-create-portal.md)című témakört.
 
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok Azure-Event Hubs való használata megköveteli, hogy a kulcstartó két szükséges tulajdonsággal rendelkezzen. Ezek a következők:  **Soft delete** és **not Purge**. Ezek a tulajdonságok alapértelmezés szerint engedélyezve vannak, amikor új kulcstartót hoz létre a Azure Portal. Ha azonban egy meglévő kulcstartón kell engedélyeznie ezeket a tulajdonságokat, akkor a PowerShellt vagy az Azure CLI-t kell használnia.
@@ -33,7 +33,7 @@ Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kö
 
 1. Navigáljon a dedikált Event Hubs-fürthöz.
 1. Válassza ki azt a névteret, amelyen engedélyezni szeretné a BYOK.
-1. A Event Hubs névtér **Beállítások** lapján válassza a **titkosítás**lehetőséget. 
+1. A Event Hubs névtér **Beállítások** lapján válassza a **titkosítás** lehetőséget. 
 1. Válassza ki az **ügyfél által felügyelt kulcs titkosítását a nyugalmi** állapotban, ahogy az az alábbi képen is látható. 
 
     ![Felhasználó által kezelt kulcs engedélyezése](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -53,7 +53,7 @@ Az ügyfél által felügyelt kulcsok engedélyezése után hozzá kell rendelni
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
     ```
 1. A kulcsok létrehozásához kövesse az alábbi lépéseket:
-    1. Új kulcs létrehozásához válassza a **Létrehozás/importálás** elemet a **kulcsok** menüből a **Beállítások**területen.
+    1. Új kulcs létrehozásához válassza a **Létrehozás/importálás** elemet a **kulcsok** menüből a **Beállítások** területen.
         
         ![A létrehozó/Importálás gomb kiválasztása](./media/configure-customer-managed-key/select-generate-import.png)
     1. Adja **meg a** kívánt nevet a kulcs **létrehozásához** és megadásához.
@@ -62,7 +62,7 @@ Az ügyfél által felügyelt kulcsok engedélyezése után hozzá kell rendelni
     1. Most kiválaszthatja ezt a kulcsot, hogy társítsa a Event Hubs névteret a titkosításhoz a legördülő listából. 
 
         ![Kulcs kiválasztása a Key vaultból](./media/configure-customer-managed-key/select-key-from-key-vault.png)
-    1. Adja meg a kulcs részleteit, és kattintson a **kiválasztás**elemre. Ez lehetővé teszi a névtérben tárolt adatok titkosítását az ügyfél által felügyelt kulccsal. 
+    1. Adja meg a kulcs részleteit, és kattintson a **kiválasztás** elemre. Ez lehetővé teszi a névtérben tárolt adatok titkosítását az ügyfél által felügyelt kulccsal. 
 
 
 ## <a name="rotate-your-encryption-keys"></a>A titkosítási kulcsok elforgatása
@@ -80,14 +80,14 @@ A diagnosztikai naplók beállítása a BYOK-kompatibilis névterekhez megadja a
 Az alábbi lépéseket követve engedélyezheti a naplók számára az ügyfél által felügyelt kulcsokat.
 
 1. A Azure Portal Navigáljon arra a névtérre, amelyen engedélyezve van a BYOK.
-1. A **figyelés**területen válassza a **diagnosztikai beállítások** lehetőséget.
+1. A **figyelés** területen válassza a **diagnosztikai beállítások** lehetőséget.
 
     ![Diagnosztikai beállítások kiválasztása](./media/configure-customer-managed-key/select-diagnostic-settings.png)
-1. Válassza a **+ diagnosztikai beállítások hozzáadása**elemet. 
+1. Válassza a **+ diagnosztikai beállítások hozzáadása** elemet. 
 
     ![Válassza a diagnosztikai beállítás hozzáadása elemet.](./media/configure-customer-managed-key/select-add-diagnostic-setting.png)
 1. Adjon meg egy **nevet** , és válassza ki, hová szeretné továbbítani a naplókat.
-1. Válassza a **CustomerManagedKeyUserLogs** és a **Mentés**lehetőséget. Ez a művelet engedélyezi a BYOK lévő naplókat a névtérben.
+1. Válassza a **CustomerManagedKeyUserLogs** és a **Mentés** lehetőséget. Ez a művelet engedélyezi a BYOK lévő naplókat a névtérben.
 
     ![Válassza az ügyfél által felügyelt kulcs felhasználói naplók lehetőséget](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
 
@@ -140,7 +140,7 @@ Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva. M
 ```
 
 ## <a name="use-resource-manager-template-to-enable-encryption"></a>A titkosítás engedélyezése Resource Manager-sablon használatával
-Ez a szakasz bemutatja, hogyan végezheti el a következő feladatokat **Azure Resource Manager sablonok**használatával. 
+Ez a szakasz bemutatja, hogyan végezheti el a következő feladatokat **Azure Resource Manager sablonok** használatával. 
 
 1. Hozzon létre egy **Event Hubs névteret** egy felügyelt szolgáltatás identitásával.
 2. Hozzon létre egy **kulcstartót** , és adja meg a szolgáltatás identitásának hozzáférését a kulcstartóhoz. 
@@ -263,7 +263,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy felügyelt szolgálta
     
     VAGY    
     
-    Futtassa a következő parancsot egy **meglévő kulcstartó**frissítéséhez. A parancs futtatása előtt határozza meg az erőforráscsoport és a kulcstároló nevének értékét. 
+    Futtassa a következő parancsot egy **meglévő kulcstartó** frissítéséhez. A parancs futtatása előtt határozza meg az erőforráscsoport és a kulcstároló nevének értékét. 
     
     ```powershell
     ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
@@ -400,7 +400,7 @@ Ajánlott eljárásként mindig engedélyezze a naplókat, például az előző 
 
 A következő gyakori hibakódokat kell megkeresnie, amikor a BYOK-titkosítás engedélyezve van.
 
-| Művelet | Hibakód | Eredményül kapott állapot |
+| Műveletek | Hibakód | Eredményül kapott állapot |
 | ------ | ---------- | ----------------------- | 
 | Kicsomagolási/kicsomagolási engedély eltávolítása a kulcstartóból | 403 |    Nem érhető el |
 | HRE-szerepkör tagságának eltávolítása egy olyan HRE, amely a wrap/unwrap engedélyt adta | 403 |  Nem érhető el |
@@ -415,7 +415,7 @@ A következő gyakori hibakódokat kell megkeresnie, amikor a BYOK-titkosítás 
 > [!IMPORTANT]
 > Ha engedélyezni szeretné, hogy a Geo-DR olyan névtérben legyen, amely a BYOK-titkosítást használja, a párosítás másodlagos névterének dedikált fürtben kell lennie, és rendelkeznie kell egy hozzá tartozó, rendszerhez rendelt felügyelt identitással. További információ: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 - [Event Hubs áttekintése](event-hubs-about.md)
 - [Key Vault áttekintése](../key-vault/general/overview.md)

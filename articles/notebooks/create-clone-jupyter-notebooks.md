@@ -3,18 +3,18 @@ title: Jupyter-jegyzetfüzetek létrehozása és klónozása – Azure Notebooks
 description: Azure Notebooks az előzetes verziójú projektek jegyzetfüzetek és kapcsolódó fájlok gyűjteményét kezelik, amelyekkel új vagy klónozást hozhat létre más forrásokból.
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e5930178b7951ff5f701228cee4ea7cb5f0e6da
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86181496"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844386"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Projektek létrehozása és klónozása Azure Notebooks előzetes verzióban
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Azure Notebooks a Jupyter-jegyzetfüzeteket és a kapcsolódó fájlokat a *projektek*nevű logikai csoportba rendezi. Először hozzon létre egy projektet tárolóként, majd hozzon létre vagy klónozott több jegyzetfüzetet egy másik projektfájl mellett egy mappán belül. (Ezt a folyamatot az [oktatóanyag](tutorial-create-run-jupyter-notebook.md)mutatja be.)
+Azure Notebooks a Jupyter-jegyzetfüzeteket és a kapcsolódó fájlokat a *projektek* nevű logikai csoportba rendezi. Először hozzon létre egy projektet tárolóként, majd hozzon létre vagy klónozott több jegyzetfüzetet egy másik projektfájl mellett egy mappán belül. (Ezt a folyamatot az [oktatóanyag](tutorial-create-run-jupyter-notebook.md)mutatja be.)
 
 A projektek metaadatokat és egyéb konfigurációs beállításokat is fenntartanak, amelyek hatással vannak arra a kiszolgálóra, amelyen a jegyzetfüzetek futnak, beleértve az egyéni telepítési lépéseket és a csomagok telepítését. További információ: [projektek kezelése és konfigurálása](configure-manage-azure-notebooks-projects.md).
 
@@ -28,7 +28,7 @@ Az irányítópulton elvégezhető műveletek attól függnek, hogy a felhaszná
 
 | Parancs | Elérhető a következőhöz | Leírás |
 | --- | --- | --- |
-| **Futtassa** | Tulajdonos | Elindítja a Project kiszolgálót, és megnyitja a projekt mappáját a Jupyter. (Gyakrabban navigáljon először a projekt mappájába, majd indítson el egy jegyzetfüzetet innen.) |
+| **Futtatás** | Tulajdonos | Elindítja a Project kiszolgálót, és megnyitja a projekt mappáját a Jupyter. (Gyakrabban navigáljon először a projekt mappájába, majd indítson el egy jegyzetfüzetet innen.) |
 | **Letöltés** | Bárki | A kiválasztott projekt másolatának letöltése ZIP-fájlként. |
 | **Megosztás** | Bárki | Megjeleníti a megosztás felugró ablakát, amelyen keresztül beszerezhet egy URL-címet egy kiválasztott projekthez, megoszthatja a közösségi médiát, e-mailt küldhet az URL-címmel, valamint HTML-vagy Markdown-kódot is beszerezhet a "notebook elindítása" jelvényre (lásd: [indítási jelvény beszerzése](#obtain-a-launch-badge)) az URL-címmel. |
 | **Törlés** | Tulajdonos | Törli a kiválasztott projektet. Ez a művelet nem vonható vissza. |
@@ -55,7 +55,7 @@ Ha nem rendelkezik Azure Notebooks-projekttel, létrehozhat egy hivatkozást, am
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
-Ha az **+ új projekt** parancsot használja, Azure Notebooks megjeleníti az **új projekt létrehozása** előugró ablakban. Ebben az előugró ablakban adja meg a következő adatokat, majd válassza a **Létrehozás**lehetőséget:
+Ha az **+ új projekt** parancsot használja, Azure Notebooks megjeleníti az **új projekt létrehozása** előugró ablakban. Ebben az előugró ablakban adja meg a következő adatokat, majd válassza a **Létrehozás** lehetőséget:
 
 | Mező | Leírás |
 | --- | --- |
@@ -102,7 +102,7 @@ Mivel a projekt-azonosító egy projekt URL-címéhez is tartozik, az ad blocker
 
 ## <a name="import-a-project-from-github"></a>Projekt importálása a GitHubról
 
-A teljes nyilvános GitHub-tárházat könnyedén importálhatja projektként, beleértve az összes adatés *readme.MD* fájlt is. Használja a **GitHub** -tárház feltöltése parancsot, adja meg a következő adatokat az előugró ablakban, majd válassza az **Importálás**lehetőséget:
+A teljes nyilvános GitHub-tárházat könnyedén importálhatja projektként, beleértve az összes adatés *readme.MD* fájlt is. Használja a **GitHub** -tárház feltöltése parancsot, adja meg a következő adatokat az előugró ablakban, majd válassza az **Importálás** lehetőséget:
 
 | Mező | Leírás |
 | --- | --- |
@@ -130,7 +130,7 @@ Projekt klónozása:
 
 1. A **klónozás** gomb kiválasztását követően Azure Notebooks közvetlenül a másolatra navigál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Minta-jegyzetfüzetek megismerése](azure-notebooks-samples.md)
 - [Útmutató: projektek konfigurálása és kezelése](configure-manage-azure-notebooks-projects.md)
@@ -138,4 +138,4 @@ Projekt klónozása:
 - [Útmutató: bemutató megjelenítése](present-jupyter-notebooks-slideshow.md)
 - [Útmutató: az adatfájlok használata](work-with-project-data-files.md)
 - [Útmutató: az adaterőforrások elérése](access-data-resources-jupyter-notebooks.md)
-- [Útmutató: a Azure Machine Learning használata](use-machine-learning-services-jupyter-notebooks.md)
+- [Útmutató: a Azure Machine Learning használata](../machine-learning/samples-notebooks.md)

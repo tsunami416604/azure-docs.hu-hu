@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 026f4f36986fa5fcfad4dac5186e9dc0b0997d72
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 02d9e65f5422b7b12900d051f01c1d6f55e8685b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629410"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844676"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Az Azure File Sync hálózati végpontjainak konfigurálása
 Azure Files és Azure File Sync két fő típusú végpontot biztosít az Azure-fájlmegosztás eléréséhez: 
@@ -39,9 +39,9 @@ Továbbá:
 ## <a name="create-the-private-endpoints"></a>Saját végpontok létrehozása
 Ha egy Azure-erőforráshoz hoz létre privát végpontot, a rendszer a következő erőforrásokat telepíti:
 
-- **Privát végpont** : egy Azure-erőforrás, amely a Storage-fiók vagy a Storage Sync szolgáltatás privát végpontját jelöli. Ezt olyan erőforrásként tekintheti meg, amely összekapcsolja az Azure-erőforrást és egy hálózati adaptert.
-- **Hálózati adapter (NIC)** : a megadott virtuális hálózaton/alhálózaton belüli magánhálózati IP-címet fenntartó hálózati adapter. Ez ugyanaz az erőforrás, amelyet a rendszer a virtuális gépek telepítésekor üzembe helyez, azonban a virtuális géphez való hozzárendelés helyett a magánhálózati végpont tulajdonosa.
-- **Privát DNS-zóna** : Ha korábban még nem telepített privát végpontot ehhez a virtuális hálózathoz, a rendszer új magánhálózati DNS-zónát helyez üzembe a virtuális hálózathoz. A DNS-rekord is létrejön az Azure-erőforráshoz ebben a DNS-zónában. Ha már telepített egy privát végpontot ebben a virtuális hálózaton, az Azure-erőforráshoz tartozó új rekord lesz hozzáadva a meglévő DNS-zónához. A DNS-zónák üzembe helyezése nem kötelező, azonban kifejezetten ajánlott a DNS-kezelés szükséges egyszerűsítése.
+- **Privát végpont**: egy Azure-erőforrás, amely a Storage-fiók vagy a Storage Sync szolgáltatás privát végpontját jelöli. Ezt olyan erőforrásként tekintheti meg, amely összekapcsolja az Azure-erőforrást és egy hálózati adaptert.
+- **Hálózati adapter (NIC)**: a megadott virtuális hálózaton/alhálózaton belüli magánhálózati IP-címet fenntartó hálózati adapter. Ez ugyanaz az erőforrás, amelyet a rendszer a virtuális gépek telepítésekor üzembe helyez, azonban a virtuális géphez való hozzárendelés helyett a magánhálózati végpont tulajdonosa.
+- **Privát DNS-zóna**: Ha korábban még nem telepített privát végpontot ehhez a virtuális hálózathoz, a rendszer új magánhálózati DNS-zónát helyez üzembe a virtuális hálózathoz. A DNS-rekord is létrejön az Azure-erőforráshoz ebben a DNS-zónában. Ha már telepített egy privát végpontot ebben a virtuális hálózaton, az Azure-erőforráshoz tartozó új rekord lesz hozzáadva a meglévő DNS-zónához. A DNS-zónák üzembe helyezése nem kötelező, azonban kifejezetten ajánlott a DNS-kezelés szükséges egyszerűsítése.
 
 > [!Note]  
 > Ez a cikk az Azure nyilvános régióinak, a `core.windows.net` Storage-fiókoknak és `afs.azure.net` a Storage Sync Services DNS-utótagját használja. Ez a kommentár az Azure szuverén felhőkre is vonatkozik, például az Azure US government-felhőre, és csak a megfelelő utótagokat helyettesíti a környezetében.

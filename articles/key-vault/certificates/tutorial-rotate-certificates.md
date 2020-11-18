@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 2d981e902f829eb0fa8283b6a38ae376a780bcc9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 591d71e8cd6af2801540f5a1a41ad88b1f538e81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289739"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844488"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Oktatóanyag: a tanúsítvány automatikus elforgatásának konfigurálása Key Vaultban
 
@@ -41,7 +41,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
-Hozzon létre egy kulcstartót, vagy válassza ki a meglévő tárolót a műveletek végrehajtásához (lásd: [Key Vault létrehozási lépései](../secrets/quick-create-portal.md)). A példában a kulcstároló neve **például a-Vault**.
+Hozzon létre egy Azure Key Vaultt a [Azure Portal](../general/quick-create-portal.md), az [Azure CLI](../general/quick-create-cli.md)vagy a [Azure PowerShell](../general/quick-create-powershell.md)használatával. A példában a kulcstároló neve **például a-Vault**.
 
 ![Kimenet a Key Vault létrehozásának befejeződése után](../media/certificates/tutorial-import-cert/vault-properties.png)
 
@@ -77,8 +77,8 @@ Key Vault automatikusan elforgatja a tanúsítványokat a CAs használatával l�
 1. Válassza a **készítés/importálás** lehetőséget.
 1. A **tanúsítvány létrehozása** képernyőn frissítse a következő értékeket:
 
-   - **Érvényességi időszak** : adja meg az értéket (hónapokban). A rövid élettartamú tanúsítványok létrehozása ajánlott biztonsági eljárás. Alapértelmezés szerint az újonnan létrehozott tanúsítvány érvényességi értéke 12 hónap.
-   - **Élettartam művelet típusa** : válassza ki a tanúsítvány automatikus megújítási és riasztási műveletét, majd frissítse a **százalékos élettartamot** vagy **a lejárat előtti napok számát**. Alapértelmezés szerint a tanúsítvány automatikus megújítása az élettartamának 80%-ában van beállítva. A legördülő menüben válassza az alábbi lehetőségek egyikét.
+   - **Érvényességi időszak**: adja meg az értéket (hónapokban). A rövid élettartamú tanúsítványok létrehozása ajánlott biztonsági eljárás. Alapértelmezés szerint az újonnan létrehozott tanúsítvány érvényességi értéke 12 hónap.
+   - **Élettartam művelet típusa**: válassza ki a tanúsítvány automatikus megújítási és riasztási műveletét, majd frissítse a **százalékos élettartamot** vagy **a lejárat előtti napok számát**. Alapértelmezés szerint a tanúsítvány automatikus megújítása az élettartamának 80%-ában van beállítva. A legördülő menüben válassza az alábbi lehetőségek egyikét.
 
         |  Automatikus megújítás egy adott időpontban| Minden Névjegy küldése egy adott időpontban |
         |-----------|------|
@@ -99,8 +99,8 @@ Key Vault automatikusan elforgatja a tanúsítványokat a CAs használatával l�
 
 1. A **kiállítási szabályzat** képernyőn frissítse a következő értékeket:
 
-   - **Érvényességi időszak** : frissítse az értéket (hónapokban).
-   - **Élettartam művelet típusa** : válassza ki a tanúsítvány automatikus megújítási és riasztási műveletét, majd frissítse a **százalékos élettartamot** vagy a **lejárat előtti napok számát**.
+   - **Érvényességi időszak**: frissítse az értéket (hónapokban).
+   - **Élettartam művelet típusa**: válassza ki a tanúsítvány automatikus megújítási és riasztási műveletét, majd frissítse a **százalékos élettartamot** vagy a **lejárat előtti napok számát**.
 
    ![Tanúsítvány tulajdonságai](../media/certificates/tutorial-rotate-cert/cert-policy-change.png)
 

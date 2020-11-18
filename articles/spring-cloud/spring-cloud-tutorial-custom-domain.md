@@ -6,13 +6,13 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.custom: devx-track-java
-ms.openlocfilehash: ea0887dd1d28bb958b27813df7f4c7a221470bac
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: d06a6eb8b504f2c5dd09de70d79f50a3ed5d89a3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088754"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844727"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Meglévő egyéni tartomány leképezése az Azure Spring Cloud-ra
 
@@ -62,7 +62,7 @@ Hozzon létre egy _mergedcertificate.crt_ nevű fájlt az egyesített tanúsítv
 
 Exportálja az egyesített TLS/SSL-tanúsítványt annak a titkos kulcsnak a használatával, amelyhez a tanúsítványkérelem létrejött.
 
-Ha OpenSSL használatával hozta létre a tanúsítványkérést, akkor létrehozott egy titkoskulcsfájlt. A tanúsítvány PFX-fájlba exportáláshoz futtassa az alábbi parancsot. Cserélje le a helyőrzők _ &lt; titkos kulcs-fájl>_ és az _ &lt; egyesített-Certificate-file>_ a titkos kulcs és az egyesített tanúsítványfájl elérési útjaira.
+Ha OpenSSL használatával hozta létre a tanúsítványkérést, akkor létrehozott egy titkoskulcsfájlt. A tanúsítvány PFX-fájlba exportáláshoz futtassa az alábbi parancsot. Cserélje le a helyőrzők _&lt; titkos kulcs-fájl>_ és az _&lt; egyesített-Certificate-file>_ a titkos kulcs és az egyesített tanúsítványfájl elérési útjaira.
 
 ```bash
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
@@ -77,11 +77,11 @@ A tanúsítvány importálására vonatkozó eljáráshoz a PEM-vagy PFX-kódol�
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
 A tanúsítvány feltöltése a Key vaultba:
 1. Nyissa meg a Key Vault-példányt.
-1. A bal oldali navigációs ablaktáblán kattintson a **tanúsítványok**elemre.
-1. A felső menüben kattintson a **készítés/importálás**elemre.
-1. A **tanúsítvány létrehozása** párbeszédpanel **tanúsítvány létrehozása módjában**válassza a lehetőséget `Import` .
-1. A **tanúsítványfájl feltöltése**területen navigáljon a tanúsítvány helyére, és jelölje ki.
-1. A **jelszó**területen adja meg a tanúsítvány titkos kulcsát.
+1. A bal oldali navigációs ablaktáblán kattintson a **tanúsítványok** elemre.
+1. A felső menüben kattintson a **készítés/importálás** elemre.
+1. A **tanúsítvány létrehozása** párbeszédpanel **tanúsítvány létrehozása módjában** válassza a lehetőséget `Import` .
+1. A **tanúsítványfájl feltöltése** területen navigáljon a tanúsítvány helyére, és jelölje ki.
+1. A **jelszó** területen adja meg a tanúsítvány titkos kulcsát.
 1. Kattintson a **Létrehozás** gombra.
 
     ![1. tanúsítvány importálása](./media/custom-dns-tutorial/import-certificate-a.png)
@@ -98,8 +98,8 @@ az keyvault certificate import --file <path to .pfx file> --name <certificate na
 A tanúsítvány importálása előtt Azure Spring Cloud-hozzáférést kell biztosítania a kulcstartóhoz:
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
 1. Nyissa meg a Key Vault-példányt.
-1. A bal oldali navigációs panelen kattintson a **hozzáférési rendőr**elemre.
-1. A felső menüben kattintson a **hozzáférési szabályzat hozzáadása**elemre.
+1. A bal oldali navigációs panelen kattintson a **hozzáférési rendőr** elemre.
+1. A felső menüben kattintson a **hozzáférési szabályzat hozzáadása** elemre.
 1. Töltse ki az adatokat, és kattintson a **Hozzáadás** gombra, majd **mentse** a hozzáférési rendőrséget.
 
 | Titkos engedély | Tanúsítvány engedélye | Rendszerbiztonsági tag kiválasztása |
@@ -119,12 +119,12 @@ az keyvault set-policy -g <key vault resource group> -n <key vault name>  --obje
 ### <a name="import-certificate-to-azure-spring-cloud"></a>Tanúsítvány importálása az Azure Spring Cloud-ba
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
 1. Lépjen a szolgáltatási példányra. 
-1. Az alkalmazás bal oldali navigációs paneljén válassza a **TLS/SSL-beállítások**lehetőséget.
-1. Ezután kattintson **Key Vault tanúsítvány importálása**elemre.
+1. Az alkalmazás bal oldali navigációs paneljén válassza a **TLS/SSL-beállítások** lehetőséget.
+1. Ezután kattintson **Key Vault tanúsítvány importálása** elemre.
 
     ![Tanúsítvány importálása](./media/custom-dns-tutorial/import-certificate.png)
 
-1. Miután sikeresen importálta a tanúsítványt, megjelenik a **titkos kulcsokra vonatkozó tanúsítványok**listájában.
+1. Miután sikeresen importálta a tanúsítványt, megjelenik a **titkos kulcsokra vonatkozó tanúsítványok** listájában.
 
     ![Titkos kulcs tanúsítványa](./media/custom-dns-tutorial/key-certificates.png)
 
@@ -161,7 +161,7 @@ Ha nem rendelkezik alkalmazással az Azure Spring Cloud-ban, kövesse a rövid �
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
 Ugrás az alkalmazás oldalra.
 
-1. Válassza az **egyéni tartomány**lehetőséget.
+1. Válassza az **egyéni tartomány** lehetőséget.
 2. Ezután **adja hozzá az egyéni tartományt**. 
 
     ![Egyéni tartomány](./media/custom-dns-tutorial/custom-domain.png)
@@ -212,7 +212,7 @@ Az SSL-kötés sikeres hozzáadása után a tartomány állapota biztonságos le
 ## <a name="enforce-https"></a>HTTPS kényszerítése
 Alapértelmezés szerint bárki megtekintheti az alkalmazást HTTP-n keresztül, de az összes HTTP-kérelmet átirányíthatja a HTTPS-portra.
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
-Az alkalmazás lapjának bal oldali navigációs sávján válassza az **egyéni tartomány**lehetőséget. Ezt követően **csak a https**-t állítsa *igaz*értékre.
+Az alkalmazás lapjának bal oldali navigációs sávján válassza az **egyéni tartomány** lehetőséget. Ezt követően **csak a https**-t állítsa *igaz* értékre.
 
 ![3. SSL-kötés hozzáadása](./media/custom-dns-tutorial/enforce-http.png)
 
@@ -223,7 +223,7 @@ az spring-cloud app update -n <app name> --resource-group <resource group name> 
 ---
 Ha a művelet befejeződött, navigáljon az alkalmazására mutató HTTPS URL-címek bármelyikéhez. Vegye figyelembe, hogy a HTTP-URL-címek nem működnek.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 * [Tanúsítvány importálása](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
 * [A Spring Cloud-alkalmazás elindítása az Azure CLI használatával](./spring-cloud-quickstart.md)

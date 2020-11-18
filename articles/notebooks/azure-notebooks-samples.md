@@ -3,12 +3,12 @@ title: Minta Jupyter-jegyzetfüzetek Azure Notebooks előzetes verzióhoz
 description: A minták nagyszerű megoldást nyújtanak az ingyenes Azure Notebooks Cloud Services szolgáltatásban futó Jupyter-jegyzetfüzetek megtapasztalása érdekében.
 ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8282a4047ede7d1344551a052ccf1b0143dae66
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85833995"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845057"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Minta-jegyzetfüzetek felderítése és használata Azure Notebooks előzetes verzióban
 
@@ -31,9 +31,9 @@ Miután azonosította a megtekinteni kívánt jegyzetfüzeteket, néhány részl
 - Fizikai útmutatás a [londoni birodalmi Egyetemen található Physics részlegtől](https://notebooks.azure.com/cvanbreu/libraries)
 - [Azure Machine Learning első lépéseket ismertető minták](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Útmutató: projektek konfigurálása és kezelése](configure-manage-azure-notebooks-projects.md)
 - [Útmutató: az adatfájlok használata](work-with-project-data-files.md)
 - [Útmutató: az adaterőforrások elérése](access-data-resources-jupyter-notebooks.md)
-- [Útmutató: a Azure Machine Learning használata](use-machine-learning-services-jupyter-notebooks.md)
+- [Útmutató: a Azure Machine Learning használata](../machine-learning/samples-notebooks.md)

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 32e79e12eae9997df8163401d2abc5f06bc02fc0
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 739245a8a17c97f3a8081cfee7e7bb31e4135952
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993492"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843978"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-rendszerképek és azok üzembe helyezése Microsoft Azure
 
@@ -110,10 +110,6 @@ Az Oracle-adatbázisok általában nagyobb memóriát és IO-t igényelnek. Emia
 
 Az Oracle-szoftverek és-munkaterhelések helyi rendszerről Microsoft Azureba történő áttelepítésekor az Oracle a licencek mobilitását az Azure-beli [Oracle – gyakori kérdések](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) című szakaszban leírtak szerint
 
-## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application-fürt (Oracle RAC)
-
-Az Oracle Real Application Cluster (Oracle RAC) úgy van kialakítva, hogy az egyetlen csomópont meghibásodását csökkentse a helyszíni, többcsomópontos fürt konfigurációjában. A szolgáltatás két helyszíni technológiára támaszkodik, amelyek nem natívak a Hyper-Scale Cloud Environment-környezetek számára: a hálózat több-Cast és a megosztott lemez. Ha az adatbázis-megoldáshoz Oracle RAC szükséges az Azure-ban, külső gyártótól származó szoftverre van szüksége ezeknek a technológiáknak az engedélyezéséhez. Az Oracle RAC-ról további információt a [FlashGrid SkyCluster oldalon](https://www.flashgrid.io/oracle-rac-in-azure/)talál.
-
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Magas rendelkezésre állás és vész-helyreállítási megfontolások
 
 Ha Oracle-adatbázisokat használ az Azure-ban, az állásidő elkerülése érdekében a magas rendelkezésre állású és vész-helyreállítási megoldás végrehajtásáért felelős.
@@ -140,7 +136,7 @@ Az Oracle és a Microsoft együttműködve a WebLogic-kiszolgálót Azure-beli a
 
 - **A fürtözés csak Enterprise Edition rendszeren támogatott.** A WebLogic-fürtözés csak akkor használható, ha az Oracle WebLogic Server Enterprise kiadását használja. Ne használjon fürtözést Oracle WebLogic Server Standard kiadással.
 - **Az UDP csoportos küldés nem támogatott.** Az Azure támogatja az UDP-címes küldést, de nem csoportos küldést vagy szórást. Az Oracle WebLogic Server képes az Azure UDP egyedi küldési képességeire támaszkodni. Az UDP egyedi küldésre támaszkodó legjobb eredmények érdekében javasoljuk, hogy a WebLogic-fürt mérete statikus legyen, vagy ne legyen több, mint 10 felügyelt kiszolgáló.
-- **Az Oracle WebLogic-kiszolgáló nyilvános és magánhálózati portokat vár a T3-hozzáféréshez (például vállalati JavaBeans használatakor).** Vegyünk például egy többrétegű forgatókönyvet, amelyben a Service Layer (EJB) alkalmazás két vagy több virtuális gépet tartalmazó Oracle WebLogic Server-fürtön fut egy *SLWLS*nevű virtuális hálózatban. Az ügyfél szintje ugyanabban a virtuális hálózatban található egy másik alhálózatban, és egy egyszerű Java-program futtatásával próbálkozik a EJB meghívásával a szolgáltatási rétegben. Mivel a szolgáltatási réteg terheléselosztása szükséges, egy nyilvános terheléselosztási végpontot kell létrehozni az Oracle WebLogic Server-fürtben található virtuális gépekhez. Ha a megadott privát port eltér a nyilvános porttól (például 7006:7008), akkor a következő hiba történik:
+- **Az Oracle WebLogic-kiszolgáló nyilvános és magánhálózati portokat vár a T3-hozzáféréshez (például vállalati JavaBeans használatakor).** Vegyünk például egy többrétegű forgatókönyvet, amelyben a Service Layer (EJB) alkalmazás két vagy több virtuális gépet tartalmazó Oracle WebLogic Server-fürtön fut egy *SLWLS* nevű virtuális hálózatban. Az ügyfél szintje ugyanabban a virtuális hálózatban található egy másik alhálózatban, és egy egyszerű Java-program futtatásával próbálkozik a EJB meghívásával a szolgáltatási rétegben. Mivel a szolgáltatási réteg terheléselosztása szükséges, egy nyilvános terheléselosztási végpontot kell létrehozni az Oracle WebLogic Server-fürtben található virtuális gépekhez. Ha a megadott privát port eltér a nyilvános porttól (például 7006:7008), akkor a következő hiba történik:
 
 ```bash
    [java] javax.naming.CommunicationException [Root exception is java.net.ConnectException: t3://example.cloudapp.net:7006:

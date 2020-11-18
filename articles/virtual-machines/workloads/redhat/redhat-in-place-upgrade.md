@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: beede74134affeb3ee0d4bdd20d5da3b4c5e6eda
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1160bc43db0dc9ec1714b1766c8cadf09660e291
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566622"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844564"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Helyi frissítések Red Hat Enterprise Linux
 
@@ -124,8 +124,8 @@ Consult the pre-upgrade report for details and possible remediation.
 ============================================================
 ```
 **Megoldás**\
-Rendszergazdai hozzáférés engedélyezése a alkalmazásban `/etc/sshd_conf` .
-Ennek oka az, hogy a rendszer nem engedélyezi a root SSH-hozzáférést `/etc/sshd_conf` a "[frissítés előkészítése](#preparations-for-the-upgrade)" című szakaszban leírtak szerint. 
+Rendszergazdai hozzáférés engedélyezése a alkalmazásban `/etc/sshd_config` .
+Ennek oka az, hogy a rendszer nem engedélyezi a root SSH-hozzáférést `/etc/sshd_config` a "[frissítés előkészítése](#preparations-for-the-upgrade)" című szakaszban leírtak szerint. 
 
 ## <a name="next-steps"></a>Következő lépések
 * További információ az [Azure-beli Red Hat-lemezképekről](./redhat-images.md).

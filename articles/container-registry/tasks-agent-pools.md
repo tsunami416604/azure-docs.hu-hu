@@ -3,13 +3,13 @@ title: Dedikált készlet használata feladat-feladatok futtatásához
 description: Hozzon létre egy dedikált számítási készletet (Agent-készletet) a beállításjegyzékben egy Azure Container Registry feladat futtatásához.
 ms.topic: article
 ms.date: 10/12/2020
-ms.custom: references_regions
-ms.openlocfilehash: 86c539c3b34ca0e54d65f15c4d9d01a99f9b31c6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 94956af14aad2b62e6455f443329bcd3232095c0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997276"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844914"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>ACR-feladat futtatása dedikált ügynök-készleten
 
@@ -95,11 +95,11 @@ A Task Agent-készletek a következő Azure-szolgáltatásokhoz való hozzáfér
 
 | Irány | Protokoll | Forrás         | Forrásport | Cél          | Cél port | Használt    |
 |-----------|----------|----------------|-------------|----------------------|-----------|---------|
-| Kimenő  | TCP      | VirtualNetwork | Bármelyik         | AzureKeyVault        | 443       | Alapértelmezett |
-| Kimenő  | TCP      | VirtualNetwork | Bármelyik         | Tárolás              | 443       | Alapértelmezett |
-| Kimenő  | TCP      | VirtualNetwork | Bármelyik         | EventHub             | 443       | Alapértelmezett |
-| Kimenő  | TCP      | VirtualNetwork | Bármelyik         | AzureActiveDirectory | 443       | Alapértelmezett |
-| Kimenő  | TCP      | VirtualNetwork | Bármelyik         | AzureMonitor         | 443       | Alapértelmezett |
+| Kimenő  | TCP      | VirtualNetwork | Bármely         | AzureKeyVault        | 443       | Alapértelmezett |
+| Kimenő  | TCP      | VirtualNetwork | Bármely         | Storage              | 443       | Alapértelmezett |
+| Kimenő  | TCP      | VirtualNetwork | Bármely         | EventHub             | 443       | Alapértelmezett |
+| Kimenő  | TCP      | VirtualNetwork | Bármely         | AzureActiveDirectory | 443       | Alapértelmezett |
+| Kimenő  | TCP      | VirtualNetwork | Bármely         | AzureMonitor         | 443       | Alapértelmezett |
 
 > [!NOTE]
 > Ha a feladatok további erőforrásokat igényelnek a nyilvános internetről, adja hozzá a megfelelő szabályokat. Például további szabályokra van szükség a Docker-létrehozási feladat futtatásához, amely lekéri az alaplemezképeket a Docker hub-ból, vagy visszaállítja a NuGet csomagot.
