@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: d41146b01b6b81804cdba31fbbf2541ba7ae0f03
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: a3c44d667b6baaf16e109dfb88c22c16a1ea2ce1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372375"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697203"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>JSON-Blobok indexelése blob indexelő használatával az Azure-ban Cognitive Search
 
@@ -53,7 +53,7 @@ A keresési szolgáltatás áttekintés lapján [elindíthatja a varázslót](se
 
 + **A kinyerni kívánt adatoknak** *tartalomnak és metaadatoknak* kell lenniük. Ha ezt a lehetőséget választja, a varázsló lekövetkeztet egy index-sémát, és leképezi a mezőket az importáláshoz.
    
-+ Az **elemzési módot** *JSON* -ra, JSON- *tömbre* vagy *JSON-sorra* kell beállítani. 
++ Az **elemzési módot** *JSON*-ra, JSON- *tömbre* vagy *JSON-sorra* kell beállítani. 
 
   A *JSON* minden blobot egyetlen keresési dokumentumként fogalmaz meg, amely független elemként jelenik meg a keresési eredmények között. 
 
@@ -108,7 +108,7 @@ A REST API használatával indexelheti a JSON-blobokat, az Cognitive Search Azur
 
 A szakasz végén található [Rest-mintakód](#rest-example) áttekintésével megtudhatja, hogyan hozhat létre mindhárom objektumot. Ez a szakasz a JSON- [elemzési üzemmódok](#parsing-modes), az [egyes Blobok](#parsing-single-blobs), a [JSON-tömbök](#parsing-arrays)és a [beágyazott tömbök](#nested-json-arrays)részleteit is tartalmazza.
 
-A kód alapú JSON-indexeléshez a [Poster](search-get-started-postman.md) és a REST API használatával hozza létre ezeket az objektumokat:
+A kód alapú JSON-indexeléshez a [Poster vagy a Visual Studio Code](search-get-started-rest.md) és a REST API használatával hozhatja létre ezeket az objektumokat:
 
 + [index](/rest/api/searchservice/create-index)
 + [adatforrás](/rest/api/searchservice/create-data-source)
@@ -126,7 +126,7 @@ Az Azure Blob Storage-ban található JSON-Blobok jellemzően egyetlen JSON-doku
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – bemenetek összegyűjtése a kérelemhez
 
-Minden kérelem esetében meg kell adnia a szolgáltatás nevét és a rendszergazdai kulcsot az Azure Cognitive Search (a POST fejlécben), valamint a blob Storage-hoz tartozó Storage-fiók nevét és kulcsát. A [Poster](search-get-started-postman.md) használatával http-kéréseket küldhet az Azure Cognitive Searchnak.
+Minden kérelem esetében meg kell adnia a szolgáltatás nevét és a rendszergazdai kulcsot az Azure Cognitive Search (a POST fejlécben), valamint a blob Storage-hoz tartozó Storage-fiók nevét és kulcsát. A [webes API-teszt eszköz](search-get-started-rest.md) használatával http-kéréseket küldhet az Azure Cognitive Searchnak.
 
 Másolja a következő négy értéket a Jegyzettömbbe, hogy beillessze őket egy kérelembe:
 

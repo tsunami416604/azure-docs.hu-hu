@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 10c7d4146d61f5b589b29bc8faad5fa8e60a293a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae8fd7f405beb20d516835ccb80b86e769fd0393
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924027"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697084"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Index újraépítése az Azure Cognitive Searchban
 
@@ -91,11 +91,11 @@ Amikor betölti az indexet, az egyes mezők fordított indexe az egyes dokumentu
 
 Az első dokumentum betöltését követően azonnal megkezdheti az index lekérdezését. Ha ismeri a dokumentum AZONOSÍTÓját, a [keresési dokumentum REST API](/rest/api/searchservice/lookup-document) az adott dokumentumot adja vissza. A szélesebb körű teszteléshez várnia kell, amíg az index teljesen be nem töltődik, majd a lekérdezések segítségével ellenőrizze a várt környezetet.
 
-A [Search Explorer](search-explorer.md) vagy egy webes tesztelési eszköz, például a [Poster](search-get-started-postman.md) használatával keresheti a frissített tartalmakat.
+A [Search Explorer](search-explorer.md) vagy egy webes tesztelési eszköz, például a [Poster vagy a Visual Studio Code](search-get-started-rest.md) segítségével keresheti a frissített tartalmat.
 
 Ha hozzáadta vagy átnevezte a mezőt, a [$Select](search-query-odata-select.md) használatával adja vissza a mezőt: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [Az indexelő áttekintése](search-indexer-overview.md)
 + [Nagyméretű adathalmazok indexelése nagy méretekben](search-howto-large-index.md)

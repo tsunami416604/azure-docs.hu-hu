@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 3e35dc35746f08f48150a738b927433065fc1c67
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8ce25780e197c26e0e5b102670e093031e1a2582
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910270"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697662"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase-fürt migrálása egy új verzióra
 
@@ -191,7 +191,7 @@ Az Apache HBase-fürt Azure HDInsight való frissítéséhez hajtsa végre a kö
    hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup**
    ```
     
-1. Jelentkezzen be a Ambari-be az új HDInsight-fürtön. Módosítsa a `fs.defaultFS` HDFS beállítást úgy, hogy az az eredeti fürt által használt tároló nevére mutasson. Ez a beállítás a **HDFS > konfigurációk területen > advanced > Advanced Core-site** .
+1. Jelentkezzen be a Ambari-be az új HDInsight-fürtön. Módosítsa a `fs.defaultFS` HDFS beállítást úgy, hogy az az eredeti fürt által használt tároló nevére mutasson. Ez a beállítás a **HDFS > konfigurációk területen > advanced > Advanced Core-site**.
 
    ![A Ambari-ben kattintson a szolgáltatások > HDFS > konfigurációk > speciális elemre.](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
@@ -223,7 +223,7 @@ Az Apache HBase-fürt Azure HDInsight való frissítéséhez hajtsa végre a kö
    hdfs dfs -cp /hbase-wal-backup/hbasewal hdfs://mycluster/**
    ```
    
-1. Ha a HDInsight 3,6-et 4,0-re frissíti, kövesse az alábbi lépéseket, ellenkező esetben ugorjon a 10. lépésre:
+1. Ha a HDInsight 3,6-et 4,0-re frissíti, kövesse az alábbi lépéseket, ellenkező esetben ugorjon a 13. lépésre:
 
     1. Indítsa újra az összes szükséges szolgáltatást a Ambari-ben a **szolgáltatások**  >  **újraindítása** lehetőség kiválasztásával.
     1. Állítsa le a HBase szolgáltatást.

@@ -2,13 +2,13 @@
 title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: f9e31f902d36cf84fc559337f3c69529cf1c014b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/17/2020
+ms.openlocfilehash: c447a08b4422929f042315370b5888f3db0626e4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949122"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697730"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -56,12 +56,12 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. CognitiveServices | [Cognitive Services](../../cognitive-services/index.yml) |
 | Microsoft. Commerce<sup>1</sup> | Core |
 | Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
-| Microsoft.<sup>1</sup> . felhasználás | [Cost Management](/azure/cost-management/) |
+| Microsoft.<sup>1</sup> . felhasználás | [Költségkezelés](/azure/cost-management/) |
 | Microsoft. ContainerInstance | [Tárolópéldányok](../../container-instances/index.yml) |
 | Microsoft. ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
 | Microsoft. Tárolószolgáltatás | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
-| Microsoft. CostManagement<sup>1</sup> | [Cost Management](/azure/cost-management/) |
-| Microsoft. CostManagementExports | [Cost Management](/azure/cost-management/) |
+| Microsoft. CostManagement<sup>1</sup> | [Költségkezelés](/azure/cost-management/) |
+| Microsoft. CostManagementExports | [Költségkezelés](/azure/cost-management/) |
 | Microsoft. CustomerLockbox | [Ügyfélszéf a Microsoft Azure-hoz](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Azure Custom Providers](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](../../databox/index.yml) |
@@ -85,7 +85,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. segédösszetevője | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft. DigitalTwins | [Azure Digital Twins](../../digital-twins/overview.md) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
-| Microsoft. DomainRegistration | [App Service](../../app-service/index.yml) |
+| Microsoft. DomainRegistration | [APP SERVICE](../../app-service/index.yml) |
 | Microsoft. DynamicsLcs | [Életciklus-szolgáltatások](https://lcs.dynamics.com/Logon/Index ) |
 | Microsoft. EnterpriseKnowledgeGraph | Enterprise Knowledge Graph |
 | Microsoft. EventGrid | [Event Grid](../../event-grid/index.yml) |
@@ -150,8 +150,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. SaaS | Core |
 | Microsoft. Scheduler | [Scheduler](../../scheduler/index.yml) |
 | Microsoft. Search | [Azure Cognitive Search](../../search/index.yml) |
-| Microsoft. Security | [Security Center](../../security-center/index.yml) |
-| Microsoft. SecurityGraph | [Security Center](../../security-center/index.yml) |
+| Microsoft. Security | [Biztonsági központ](../../security-center/index.yml) |
 | Microsoft. SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
 | Microsoft. SerialConsole<sup>1</sup> | [Windows rendszerhez készült Azure soros konzol](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [Szolgáltatásbusz](/azure/service-bus/) |
@@ -162,7 +161,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. SoftwarePlan | Licenc |
 | Microsoft. Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Felügyelt Azure SQL-példány](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
-| Microsoft. SqlVirtualMachine | [SQL Server az Azure Virtual Machines](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
+| Microsoft. SqlVirtualMachine | [SQL Server az Azure Virtual Machines szolgáltatásban](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
 | Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Microsoft. StorageCache | [Azure HPC Cache](../../hpc-cache/index.yml) |
 | Microsoft. StorageSync | [Storage](../../storage/index.yml) |
@@ -174,10 +173,10 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. TimeSeriesInsights | [Azure Time Series Insights](../../time-series-insights/index.yml) |
 | Microsoft. token | Jogkivonat |
 | Microsoft. VirtualMachineImages | [Azure Image Builder](../../virtual-machines/linux/image-builder-overview.md) |
-| Microsoft. VisualStudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
+| Microsoft. VisualStudio | [Azure DevOps](/azure/devops/) |
 | Microsoft. VMware | [Azure VMware Solution](../../azure-vmware/index.yml) |
 | Microsoft. VMwareCloudSimple | [Azure VMware Solution by CloudSimple](../../vmware-cloudsimple/index.md) |
-| Microsoft. VSOnline | [Azure DevOps](/azure/devops/?view=azure-devops) |
+| Microsoft. VSOnline | [Azure DevOps](/azure/devops/) |
 | Microsoft. Web | [APP SERVICE](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
 | Microsoft. WindowsDefenderATP | [Microsoft Defender Advanced Threat Protection](../../security-center/security-center-wdatp.md) |
 | Microsoft. WindowsESU | Bővített biztonsági frissítések |
@@ -186,6 +185,6 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 
 <sup>1</sup> alapértelmezés szerint regisztrálva
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az erőforrás-szolgáltatókkal kapcsolatos további információkért, beleértve az erőforrás-szolgáltatók regisztrálásának módját, tekintse meg az [Azure erőforrás-szolgáltatók és típusok](resource-providers-and-types.md)című témakört.

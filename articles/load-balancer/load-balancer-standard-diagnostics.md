@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 97541a4f8d86b90bf6045fc2a9e5abbe86aee5cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c322620e1d66182937be41bb02d48fd1469f459
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717336"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697560"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
 
 Az Azure standard Load Balancer a következő diagnosztikai képességeket teszi elérhetővé:
 
-* **Többdimenziós mérőszámok és riasztások**: többdimenziós diagnosztikai képességeket biztosít a standard Load Balancer-konfigurációk [Azure monitoron](https://docs.microsoft.com/azure/azure-monitor/overview) keresztül. A standard Load Balancer-erőforrások figyelésére, kezelésére és hibakeresésére van lehetőség.
+* **Többdimenziós mérőszámok és riasztások**: többdimenziós diagnosztikai képességeket biztosít a standard Load Balancer-konfigurációk [Azure monitoron](../azure-monitor/overview.md) keresztül. A standard Load Balancer-erőforrások figyelésére, kezelésére és hibakeresésére van lehetőség.
 
 * **Erőforrás állapota**: a Load Balancer Resource Health állapota a Figyelés területen található Resource Health oldalon érhető el. Ez az automatikus vizsgálat tájékoztatja a Load Balancer erőforrás aktuális rendelkezésre állásáról.
 
@@ -70,7 +70,7 @@ A standard Load Balancer erőforrások metrikáinak megtekintése:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Többdimenziós mérőszámok programozott módon történő beolvasása API-kon keresztül
 
-A többdimenziós metrikák definícióinak és értékeinek beolvasására szolgáló API-útmutatásért lásd: [Azure Monitoring REST API útmutató](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api). Ezek a metrikák csak az "összes metrika" lehetőségen keresztül írhatók a Storage-fiókba. 
+A többdimenziós metrikák definícióinak és értékeinek beolvasására szolgáló API-útmutatásért lásd: [Azure Monitoring REST API útmutató](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Ezek a metrikák csak az "összes metrika" lehetőségen keresztül írhatók a Storage-fiókba. 
 
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Riasztások konfigurálása többdimenziós mérőszámokhoz ###
 
@@ -98,8 +98,8 @@ Az adatelérési út rendelkezésre állási metrikája a régión belüli adate
 
 Az adatelérési út rendelkezésre állásának beolvasása a standard Load Balancer erőforrásaihoz:
 1. Győződjön meg arról, hogy a helyes terheléselosztó erőforrás van kiválasztva. 
-2. A **metrika** legördülő listában válassza ki az **adatelérési út rendelkezésre állása**elemet. 
-3. Az **Összesítés** legördülő listában válassza az **AVG**elemet. 
+2. A **metrika** legördülő listában válassza ki az **adatelérési út rendelkezésre állása** elemet. 
+3. Az **Összesítés** legördülő listában válassza az **AVG** elemet. 
 4. Emellett vegyen fel egy szűrőt a előtérbeli IP-cím vagy a frontend-port számára a szükséges előtér-IP-címmel vagy előtér-porttal rendelkező dimenzióként, majd csoportosítsa őket a kiválasztott dimenzió alapján.
 
 ![VIP-szondázás](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
@@ -138,9 +138,9 @@ A legtöbb forgatókönyv esetében az **átlagot** használja az összesítésh
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>Hogyan a kimenő kapcsolatok statisztikáit? 
 <details>
   <summary>Kibontás</summary>
-A SNAT-kapcsolatok metrika a [kimenő folyamatok](https://aka.ms/lboutbound)sikeres és sikertelen kapcsolatainak mennyiségét írja le.
+A SNAT-kapcsolatok metrika a [kimenő folyamatok](./load-balancer-outbound-connections.md)sikeres és sikertelen kapcsolatainak mennyiségét írja le.
 
-A sikertelen, nullánál nagyobb kapcsolatok mennyisége azt jelzi, hogy SNAT a portok kimerülése. Meg kell vizsgálnia, hogy mi okozza ezeket a hibákat. A SNAT-port kimerülésének jegyzékfájlja sikertelen a [kimenő folyamat](https://aka.ms/lboutbound)létrehozásakor. Tekintse át a kimenő kapcsolatokról szóló cikket, hogy megértsék a munkafolyamatokat és a mechanizmusokat, valamint azt, hogy miként lehet enyhíteni és megtervezni a SNAT-portok kimerülésének elkerülését. 
+A sikertelen, nullánál nagyobb kapcsolatok mennyisége azt jelzi, hogy SNAT a portok kimerülése. Meg kell vizsgálnia, hogy mi okozza ezeket a hibákat. A SNAT-port kimerülésének jegyzékfájlja sikertelen a [kimenő folyamat](./load-balancer-outbound-connections.md)létrehozásakor. Tekintse át a kimenő kapcsolatokról szóló cikket, hogy megértsék a munkafolyamatokat és a mechanizmusokat, valamint azt, hogy miként lehet enyhíteni és megtervezni a SNAT-portok kimerülésének elkerülését. 
 
 A SNAT-kapcsolatok statisztikáinak beolvasása:
 1. Válassza ki a **SNAT-kapcsolatok** metrika típusát és a **Sum** értéket összesítésként. 
@@ -157,7 +157,7 @@ A SNAT-kapcsolatok statisztikáinak beolvasása:
   <summary>Kibontás</summary>
 A használt SNAT-portok mérőszáma nyomon követi, hogy hány SNAT-portot használ a rendszer a kimenő folyamatok fenntartásához. Ez azt jelzi, hogy hány egyedi folyamat jön létre egy internetes forrás és egy olyan háttérbeli virtuális gép vagy virtuálisgép-méretezési csoport között, amely egy terheléselosztó mögött található, és nem rendelkezik nyilvános IP-címmel. A lefoglalt SNAT-portok metrikával használt SNAT-portok számának összehasonlításával megállapíthatja, hogy a szolgáltatás tapasztalható-e, vagy a SNAT kimerülése és az eredményül kapott kimenő folyamat meghibásodása esetén is fennáll-e. 
 
-Ha a mérőszámok a [kimenő folyamat](https://aka.ms/lboutbound) meghibásodásának kockázatát jelzik, hivatkozzon a cikkre, és végezze el a szükséges lépéseket a szolgáltatás állapotának biztosításához.
+Ha a mérőszámok a [kimenő folyamat](./load-balancer-outbound-connections.md) meghibásodásának kockázatát jelzik, hivatkozzon a cikkre, és végezze el a szükséges lépéseket a szolgáltatás állapotának biztosításához.
 
 SNAT-portok használatának és foglalásának megtekintése:
 1. Állítsa be a gráf időösszesítését 1 percre a kívánt adatértékek megjelenítéséhez.
@@ -167,7 +167,7 @@ SNAT-portok használatának és foglalásának megtekintése:
 1. Szűrés egy adott **protokolltípus**, a **háttérbeli IP**-címek és/vagy a **felületi IP**-címek készlete alapján.
 1. A háttér-vagy frontend-példány állapotának figyeléséhez alkalmazza a felosztást. 
     * Megjegyzés: a felosztás csak egyetlen mérőszámot engedélyez egyszerre. 
-1. Ha például egy gépen a TCP-folyamatok SNAT-használatát szeretné figyelni, **átlagosan**összesítve, **háttérbeli IP** -címekkel és a **protokoll típusa**szerinti szűréssel. 
+1. Ha például egy gépen a TCP-folyamatok SNAT-használatát szeretné figyelni, **átlagosan** összesítve, **háttérbeli IP** -címekkel és a **protokoll típusa** szerinti szűréssel. 
 
 ![SNAT kiosztása és használata](./media/load-balancer-standard-diagnostics/snat-usage-and-allocation.png)
 
@@ -181,7 +181,7 @@ SNAT-portok használatának és foglalásának megtekintése:
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Hogyan a szolgáltatáshoz tartozó bejövő/kimenő csatlakozási kísérletek ellenőrzését?
 <details>
   <summary>Kibontás</summary>
-A SYN-csomagok mérőszáma az adott előtérhöz társított TCP SYN-csomagok mennyiségét írja le, amelyek elérkeztek vagy elküldhetők ( [kimenő forgalom](https://aka.ms/lboutbound)esetén). Ez a metrika a szolgáltatáshoz való TCP-kapcsolódási kísérletek megismerésére használható.
+A SYN-csomagok mérőszáma az adott előtérhöz társított TCP SYN-csomagok mennyiségét írja le, amelyek elérkeztek vagy elküldhetők ( [kimenő forgalom](./load-balancer-outbound-connections.md)esetén). Ez a metrika a szolgáltatáshoz való TCP-kapcsolódási kísérletek megismerésére használható.
 
 A legtöbb forgatókönyv **esetében használja az összesítést** .
 
@@ -234,13 +234,13 @@ A diagram lehetővé teszi, hogy az ügyfelek az üzembe helyezést a saját mag
 A standard Load Balancer erőforrások állapotának állapota a meglévő **erőforrás** -állapoton keresztül érhető el a **monitor > Service Health**.
 
 A nyilvános standard Load Balancer erőforrások állapotának megtekintése:
-1. Válassza a **figyelő**  >  **Service Health**elemet.
+1. Válassza a **figyelő**  >  **Service Health** elemet.
 
    ![Figyelő oldal](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
    *Ábra: a Service Health hivatkozás a Azure Monitor*
 
-2. Válassza a **Resource Health**lehetőséget, majd győződjön meg arról, hogy az **előfizetés azonosítója** és az **erőforrástípus = Load Balancer** van kiválasztva.
+2. Válassza a **Resource Health** lehetőséget, majd győződjön meg arról, hogy az **előfizetés azonosítója** és az **erőforrástípus = Load Balancer** van kiválasztva.
 
    ![Erőforrás állapotának állapota](./media/load-balancer-standard-diagnostics/LBHealth3.png)
 
@@ -252,7 +252,7 @@ A nyilvános standard Load Balancer erőforrások állapotának megtekintése:
 
    *Ábra: Load Balancer erőforrás-állapot nézet*
  
-Az általános erőforrás állapotának leírása a [RHC dokumentációjában](https://docs.microsoft.com/azure/service-health/resource-health-overview)érhető el. A Azure Load Balancer meghatározott állapotait az alábbi táblázat tartalmazza: 
+Az általános erőforrás állapotának leírása a [RHC dokumentációjában](../service-health/resource-health-overview.md)érhető el. A Azure Load Balancer meghatározott állapotait az alábbi táblázat tartalmazza: 
 
 | Erőforrás állapotának állapota | Leírás |
 | --- | --- |
@@ -261,9 +261,9 @@ Az általános erőforrás állapotának leírása a [RHC dokumentációjában](
 | Nem érhető el | A standard Load Balancer erőforrás nem kifogástalan állapotú. A DataPath rendelkezésre állási metrikája kevesebb, mint 25%-os állapotot jelentett legalább két percen belül. Jelentős teljesítménybeli hatást vagy a bejövő kapcsolatok elérhetőségének hiányát tapasztalhatja. Előfordulhat, hogy a felhasználó vagy a platform eseményei nem állnak rendelkezésre. [Kövesse az adatelérési út hibaelhárítási útmutatóját] annak megállapításához, hogy vannak-e olyan felhasználó által kezdeményezett események, amelyek befolyásolják a rendelkezésre állást. |
 | Ismeretlen | A standard Load Balancer erőforrás erőforrás-állapotának állapota még nem frissült, vagy nem kapott adatelérési utat az elmúlt 10 percben. Ennek az állapotnak átmenetinek kell lennie, és a megfelelő állapotot fogja tükrözni, amint az adatok beérkeznek. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ a [standard Load Balancerról](load-balancer-standard-overview.md).
-- További információ a [terheléselosztó kimenő kapcsolatáról](https://aka.ms/lboutbound).
-- A [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)megismerése.
-- Ismerje meg a [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) és a [metrikák beolvasását REST API használatával](/rest/api/monitor/metrics/list).
+- További információ a [standard Load Balancerról](./load-balancer-overview.md).
+- További információ a [terheléselosztó kimenő kapcsolatáról](./load-balancer-outbound-connections.md).
+- A [Azure monitor](../azure-monitor/overview.md)megismerése.
+- Ismerje meg a [Azure Monitor REST API](/rest/api/monitor/) és a [metrikák beolvasását REST API használatával](/rest/api/monitor/metrics/list).

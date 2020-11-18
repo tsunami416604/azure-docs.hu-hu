@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 28c3e4ade2c78a1a77ef7263463803e40727ba8f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3f8c288f950f34e1764c50e8eb74a8a73b39b3d7
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315308"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698529"
 ---
 # <a name="azure-load-balancer-algorithm"></a>Azure Load Balancer algoritmus
 
@@ -63,4 +63,4 @@ A Load Balancer közvetlenül nem kommunikál a TCP-vagy UDP-vagy az alkalmazás
 - További információ a [Azure Load Balancerról](load-balancer-overview.md).
 - Tudnivalók az [állapot](load-balancer-custom-probe-overview.md)-mintavételekről.
 - Ismerje meg a [standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md).
-- További információ a [hálózati biztonsági csoportokról](../virtual-network/security-overview.md).
+- További információ a [hálózati biztonsági csoportokról](../virtual-network/network-security-groups-overview.md).

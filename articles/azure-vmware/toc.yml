@@ -44,6 +44,8 @@
       href: concepts-identity.md
     - name: Szerepköralapú hozzáférés-vezérlés
       href: concepts-role-based-access-control.md
+    - name: Magánfelhők monitorozása és javítása
+      href: concepts-monitor-repair-private-cloud.md
     - name: Magánfelhők frissítései
       href: concepts-upgrades.md
 - name: Útmutatók

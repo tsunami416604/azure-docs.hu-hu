@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: bc1e477882f3d065dfe89e8511259732129cec30
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 06dfa65236bf1aa5cfde626c5574ffdf487eb045
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746037"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698359"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Terheléselosztás több IP-konfiguráción az Azure CLI használatával
 
@@ -30,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Load Balancer több IP-cí
 
 A jelen cikkben ismertetett forgatókönyv megvalósításához hajtsa végre a következő lépéseket:
 
-1. [Telepítse és konfigurálja az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t a csatolt cikkben leírt lépéseket követve, és jelentkezzen be az Azure-fiókjába.
+1. [Telepítse és konfigurálja az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t a csatolt cikkben leírt lépéseket követve, és jelentkezzen be az Azure-fiókjába.
 2. [Hozzon létre egy](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) *contosofabrikam* nevű erőforráscsoportot a következő módon:
 
     ```azurecli
@@ -50,7 +50,7 @@ A jelen cikkben ismertetett forgatókönyv megvalósításához hajtsa végre a 
 
     ```
 
-5. [Hozza létre a](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) terheléselosztó nevű *mylb* :
+5. [Hozza létre a](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) terheléselosztó nevű *mylb*:
 
     ```azurecli
     az network lb create --resource-group contosofabrikam --location westcentralus --name mylb
@@ -71,7 +71,7 @@ A jelen cikkben ismertetett forgatókönyv megvalósításához hajtsa végre a 
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp2 --name fabrkamfe
     ```
 
-8. Hozza létre a háttérbeli címkészlet- *contosopool* és *fabrikampool* , [a mintavételi](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)  -  *http* -t és a terheléselosztási szabályokat – *HTTPc* és *HTTPf* :
+8. Hozza létre a háttérbeli címkészlet- *contosopool* és *fabrikampool*, [a mintavételi](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)  -  *http*-t és a terheléselosztási szabályokat – *HTTPc* és *HTTPf*:
 
     ```azurecli
     az network lb address-pool create --resource-group contosofabrikam --lb-name mylb --name contosopool
@@ -97,7 +97,7 @@ A jelen cikkben ismertetett forgatókönyv megvalósításához hajtsa végre a 
     az storage account create --location westcentralus --resource-group contosofabrikam --kind Storage --sku-name GRS mystorageaccount1
     ```
 
-11. [Hozza létre a hálózati adaptereket](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) a VM1 számára, és adjon hozzá egy második IP-konfigurációt, a *VM1-ipconfig2* , és [hozza létre a virtuális gépet a](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-vm) következőképpen:
+11. [Hozza létre a hálózati adaptereket](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) a VM1 számára, és adjon hozzá egy második IP-konfigurációt, a *VM1-ipconfig2*, és [hozza létre a virtuális gépet a](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-vm) következőképpen:
 
     ```azurecli
     az network nic create --resource-group contosofabrikam --location westcentralus --subnet-vnet-name myVnet --subnet-name mySubnet --name VM1Nic1 --ip-config-name NIC1-ipconfig1

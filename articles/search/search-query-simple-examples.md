@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: e2c6f627c69316b8f146d3ac82b8d29801ec3902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 834e4fe8c7b3923f40a07c02c0310200db222308
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740683"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697254"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Egyszerű lekérdezés létrehozása az Azure Cognitive Search
 
@@ -27,7 +27,7 @@ Egy alternatív lekérdezési szintaxis [teljes Lucene](query-lucene-syntax.md),
 
 Az alábbi példákban a [New York OpenData Initiative City](https://nycopendata.socrata.com/) által biztosított adatkészletek alapján elérhető feladatokat tartalmazó NYC-feladatok keresési indexét használjuk. Ezek az adathalmazok nem tekintendők aktuálisnak vagy teljesnek. Az index a Microsoft által biztosított sandbox-szolgáltatáson alapul, ami azt jelenti, hogy a lekérdezések kipróbálásához nincs szükség Azure-előfizetésre vagy Azure-Cognitive Searchra.
 
-A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenértékű eszközre van szükség. További információ: gyors útmutató [: az Azure Cognitive Search REST API közzététele a Poster használatával](search-get-started-postman.md).
+A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenértékű eszközre van szükség. További információ: gyors útmutató [: az Azure Cognitive Search REST API megismerése](search-get-started-rest.md).
 
 ### <a name="set-the-request-header"></a>A kérelem fejlécének beállítása
 
@@ -43,7 +43,7 @@ A kérelem fejlécének megadását követően újra felhasználhatja azt a jele
 
 A kérelem egy GET parancs, amely az Azure Cognitive Search végpontot és a keresési karakterláncot tartalmazó URL-címmel párosítva van.
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Poster-kérelem fejlécének beolvasása" border="false":::
 
 Az URL-összeállítás a következő elemekből áll:
 
@@ -55,7 +55,7 @@ Az URL-összeállítás a következő elemekből áll:
 
 ## <a name="send-your-first-query"></a>Az első lekérdezés elküldése
 
-Ellenőrzési lépésként illessze be a következő kérelmet a GET mezőbe, és kattintson a **Küldés**gombra. Az eredményeket a rendszer részletes JSON-dokumentumként adja vissza. A rendszer a teljes dokumentumot adja vissza, ami lehetővé teszi az összes mező és az összes érték megtekintését.
+Ellenőrzési lépésként illessze be a következő kérelmet a GET mezőbe, és kattintson a **Küldés** gombra. Az eredményeket a rendszer részletes JSON-dokumentumként adja vissza. A rendszer a teljes dokumentumot adja vissza, ami lehetővé teszi az összes mező és az összes érték megtekintését.
 
 Illessze be ezt az URL-címet egy REST-ügyfélbe érvényesítési lépésként, és tekintse meg a dokumentum szerkezetét.
 
@@ -69,7 +69,7 @@ Opcionálisan hozzáadhatja **`$count=true`** az URL-címet a keresési feltéte
 
 ## <a name="how-to-invoke-simple-query-parsing"></a>Egyszerű lekérdezések elemzésének meghívása
 
-Az interaktív lekérdezésekhez nem kell semmit megadnia: az egyszerű érték az alapértelmezett. Ha a Code (kód) beállításnál korábban a **queryType = Full** értéket választotta a teljes lekérdezési szintaxishoz, alaphelyzetbe állíthatja az alapértelmezettet a **queryType = Simple**értékkel.
+Az interaktív lekérdezésekhez nem kell semmit megadnia: az egyszerű érték az alapértelmezett. Ha a Code (kód) beállításnál korábban a **queryType = Full** értéket választotta a teljes lekérdezési szintaxishoz, alaphelyzetbe állíthatja az alapértelmezettet a **queryType = Simple** értékkel.
 
 ## <a name="example-1-field-scoped-query"></a>1. példa: mező hatókörű lekérdezés
 
@@ -97,7 +97,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 A lekérdezésre adott válasznak az alábbi képernyőképhez hasonlóan kell kinéznie.
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Poster-minta válasz" border="false":::
 
 Lehetséges, hogy észrevette a keresési pontszámot a válaszban. 1 egységes pontszám akkor fordul elő, ha nincs rangsor, vagy mert a keresés nem teljes szöveges keresés, vagy nem lett alkalmazva. A feltétel nélküli null kereséshez a sorok tetszőleges sorrendben jönnek vissza. A tényleges feltételek belefoglalásakor a keresési pontszámok jelentős értékekre lesznek kialakítva.
 
@@ -133,7 +133,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 
 Együtt használva a szűrő először a teljes indexre lesz alkalmazva, majd a keresés a szűrő eredményein történik. A szűrők éppen ezért hasznosak a lekérdezés teljesítményének javítására, mivel általuk lecsökkenthető a keresési lekérdezés által feldolgozandó dokumentumok köre.
 
-  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Lekérdezési válasz szűrése" border="false":::
 
 Ha szeretné kipróbálni a Poster használatával a GET paranccsal, illessze be a következő karakterláncot:
 
@@ -167,7 +167,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
       "count": "true"
     }
 ```
-  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Numerikus tartományokhoz tartozó tartomány-szűrő" border="false":::
 
 
 ```http
@@ -181,7 +181,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     }
 ```
 
-  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Tartomány-szűrő a szöveges tartományokhoz" border="false":::
 
 A GET paranccsal is kipróbálhatja ezeket a Poster használatával:
 
@@ -194,7 +194,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ```
 
 > [!NOTE]
-> Az értékek tartományán alapuló aspektus egy gyakori keresési alkalmazásra vonatkozó követelmény. További információt és példákat a szűrők kiépítéséhez a dimenziós navigációs struktúrákhoz a részletes [ *navigáció megvalósítása*című témakör "szűrés tartomány alapján"](search-faceted-navigation.md#filter-based-on-a-range)című szakaszában talál.
+> Az értékek tartományán alapuló aspektus egy gyakori keresési alkalmazásra vonatkozó követelmény. További információt és példákat a szűrők kiépítéséhez a dimenziós navigációs struktúrákhoz a részletes [ *navigáció megvalósítása* című témakör "szűrés tartomány alapján"](search-faceted-navigation.md#filter-based-on-a-range)című szakaszában talál.
 
 ## <a name="example-5-geo-search"></a>5. példa: Geo-keresés
 
@@ -251,14 +251,14 @@ Az alapértelmezett searchMode (any), a 2800-es dokumentumok visszaadása: a tö
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="tetszőleges keresési mód" border="false":::
 
 A searchMode módosítása a `all` feltételek kumulatív hatásának érvényesítésére és egy kisebb eredményhalmaz-21 dokumentum visszaadására, amely a teljes "tűzoltó részleg" kifejezést tartalmazza, és levonva a feladatokat a Metrotech Center-címen.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="összes keresési mód" border="false":::
 
 ## <a name="example-8-structuring-results"></a>8. példa: az eredmények strukturálása
 

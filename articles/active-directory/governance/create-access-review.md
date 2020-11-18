@@ -15,12 +15,12 @@ ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b87af4a08c5a796d96d853ca63e50e335b9731fb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 18f0627b809f56b813052cc763e6ff961f31aa02
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362773"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697135"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Csoportok és alkalmazások hozzáférési felülvizsgálatának létrehozása az Azure AD hozzáférési felülvizsgálatokban
 
@@ -36,6 +36,8 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy vagy több hozzáférési fel�
 
 - Prémium szintű Azure AD P2
 - Globális rendszergazda vagy felhasználói rendszergazda
+- Előnézet Microsoft 365 csoportok erőforrás-tulajdonosai a saját Microsoft 365 csoportokra vonatkozó felülvizsgálatokat hozhatnak létre
+- Előnézet Az Azure AD biztonsági csoportok erőforrás-tulajdonosai a saját Azure AD-beli biztonsági csoportokra vonatkozó felülvizsgálatokat hozhatnak létre
 
 További információkért lásd a [licencekre vonatkozó követelményeket](access-reviews-overview.md#license-requirements).
 
@@ -43,7 +45,7 @@ További információkért lásd a [licencekre vonatkozó követelményeket](acc
 
 1. Jelentkezzen be a Azure Portalba, és nyissa meg az [Identity irányításáért lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-1. A bal oldali menüben kattintson a **hozzáférési felülvizsgálatok**elemre.
+1. A bal oldali menüben kattintson a **hozzáférési felülvizsgálatok** elemre.
 
 1. Új hozzáférési felülvizsgálat létrehozásához kattintson az **új hozzáférés-ellenőrzés** elemre.
 
@@ -57,7 +59,7 @@ További információkért lásd a [licencekre vonatkozó követelményeket](acc
 
     ![Hozzáférési felülvizsgálat létrehozása – kezdési és befejezési dátumok](./media/create-access-review/start-end-dates.png)
 
-1. Ahhoz, hogy a hozzáférési felülvizsgálat ismétlődő legyen, módosítsa a **gyakoriság** beállítását **egy alkalommal** **hetente**, **havonta**, **negyedévente**, **félévente**vagy **évente**. Az **időtartam** csúszka vagy a szövegmező segítségével megadhatja, hogy a rendszer hány napig nyissa meg az ismétlődő adatsorozatok összes felülvizsgálatát a véleményezők számára. Például a havi felülvizsgálathoz beállítható maximális időtartam 27 nap, az átfedő felülvizsgálatok elkerülése érdekében.
+1. Ahhoz, hogy a hozzáférési felülvizsgálat ismétlődő legyen, módosítsa a **gyakoriság** beállítását **egy alkalommal** **hetente**, **havonta**, **negyedévente**, **félévente** vagy **évente**. Az **időtartam** csúszka vagy a szövegmező segítségével megadhatja, hogy a rendszer hány napig nyissa meg az ismétlődő adatsorozatok összes felülvizsgálatát a véleményezők számára. Például a havi felülvizsgálathoz beállítható maximális időtartam 27 nap, az átfedő felülvizsgálatok elkerülése érdekében.
 
 1. A **befejezési** beállítással adhatja meg az ismétlődő hozzáférés-felülvizsgálati sorozat befejezésének módját. A sorozat három módon végződhet: 
     1. Folyamatosan futtatja az értékelést határozatlan ideig
@@ -94,7 +96,7 @@ További információkért lásd a [licencekre vonatkozó követelményeket](acc
 
     A hozzáférési felülvizsgálatok gyűjtését és nyomon követését leegyszerűsítheti a programokba való rendszerezéssel. Az egyes hozzáférési felülvizsgálatok csatolhatók egy programhoz. Ezután amikor jelentést készít egy auditor számára, az adott kezdeményezés hatókörében lévő hozzáférési felülvizsgálatokra koncentrálhat. A programok és a hozzáférés-felülvizsgálati eredmények a globális rendszergazda, a felhasználói rendszergazda, a biztonsági rendszergazda vagy a biztonsági olvasó szerepkör felhasználói számára láthatók.
 
-    A programok listájának megtekintéséhez nyissa meg a hozzáférési felülvizsgálatok lapot, és válassza a **programok**lehetőséget. Ha globális rendszergazdai vagy felhasználói rendszergazdai szerepkörrel rendelkezik, további programokat is létrehozhat. Dönthet például úgy, hogy az egyes megfelelőségi kezdeményezésekhez vagy üzleti célokhoz egy programot használ. Ha már nincs szüksége egy programra, és nem rendelkezik hozzá társított vezérlőkkel, akkor törölheti.
+    A programok listájának megtekintéséhez nyissa meg a hozzáférési felülvizsgálatok lapot, és válassza a **programok** lehetőséget. Ha globális rendszergazdai vagy felhasználói rendszergazdai szerepkörrel rendelkezik, további programokat is létrehozhat. Dönthet például úgy, hogy az egyes megfelelőségi kezdeményezésekhez vagy üzleti célokhoz egy programot használ. Ha már nincs szüksége egy programra, és nem rendelkezik hozzá társított vezérlőkkel, akkor törölheti.
 
 ### <a name="upon-completion-settings"></a>Befejezési beállítások
 
@@ -102,7 +104,7 @@ További információkért lásd a [licencekre vonatkozó követelményeket](acc
 
     ![Hozzáférési felülvizsgálat létrehozása a befejezési beállítások alapján](./media/create-access-review/upon-completion-settings-new.png)
 
-2. Ha azt szeretné, hogy a rendszer automatikusan eltávolítsa a hozzáférést a megtagadott felhasználók számára, állítsa az **eredmények automatikus alkalmazása az erőforrásra** lehetőséget az **engedélyezéshez**. Ha a felülvizsgálat befejeződése után manuálisan szeretné alkalmazni az eredményeket, állítsa a kapcsolót a **Letiltás**lehetőségre.
+2. Ha azt szeretné, hogy a rendszer automatikusan eltávolítsa a hozzáférést a megtagadott felhasználók számára, állítsa az **eredmények automatikus alkalmazása az erőforrásra** lehetőséget az **engedélyezéshez**. Ha a felülvizsgálat befejeződése után manuálisan szeretné alkalmazni az eredményeket, állítsa a kapcsolót a **Letiltás** lehetőségre.
 
 3. Ha a felülvizsgálók nem **válaszolnak** a listára, adja meg, hogy mi történik azon felhasználók esetében, akiket a felülvizsgálati időszakon belül nem tekintenek át a véleményező. Ez a beállítás nem érinti azokat a felhasználókat, akiket manuálisan ellenőriztek a véleményezők. Ha megtagadja a végső felülvizsgáló döntését, a rendszer eltávolítja a felhasználó hozzáférését.
 
@@ -143,7 +145,7 @@ Ha többet szeretne megtudni az olyan vendég felhasználók eltávolítására 
 
 ## <a name="start-the-access-review"></a>A hozzáférési felülvizsgálat elindítása
 
-Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a **Start**gombra. A hozzáférési felülvizsgálat megjelenik a listában az állapotának jelzésével.
+Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a **Start** gombra. A hozzáférési felülvizsgálat megjelenik a listában az állapotának jelzésével.
 
 ![Hozzáférési felülvizsgálatok és azok állapotának listája](./media/create-access-review/access-reviews-list.png)
 

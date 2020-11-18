@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 351503db52e4c62414cd5dcbae1f750032a37eb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eea3c8525d31a3ca551e9cbc7d21d7dde163b5cc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542274"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697985"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management – gyakori kérdések
 Választ kaphat az Azure API Management gyakori kérdéseire, mintáinak és ajánlott eljárásaira.
@@ -71,18 +71,7 @@ Igen, API Management programozott módon felügyelheti a használatával:
 * A [szolgáltatás központi telepítésével](/powershell/module/wds) és a [Service Management](/powershell/azure/servicemanagement/overview) PowerShell-parancsmagokkal.
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Hogyan adhatok hozzá felhasználót a rendszergazdák csoportjához?
-A következőképpen adhat hozzá felhasználókat a rendszergazdák csoporthoz:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Lépjen a frissíteni kívánt API Management-példánnyal rendelkező erőforráscsoporthoz.
-3. A API Management-ben rendelje hozzá az **API Management szolgáltatás közreműködői** szerepkört a felhasználóhoz.
-
-Az újonnan hozzáadott közreműködő mostantól Azure PowerShell [parancsmagokat](/powershell/azure/)is használhat. A következőképpen jelentkezhet be rendszergazdaként:
-
-1. `Connect-AzAccount`Jelentkezzen be a parancsmag használatával.
-2. Állítsa a kontextust arra az előfizetésre, amely a szolgáltatást használja `Set-AzContext -SubscriptionID <subscriptionGUID>` .
-3. Egyszeri bejelentkezési URL-cím beszerzése a használatával `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` .
-4. A felügyeleti portál eléréséhez használja az URL-címet.
+A rendszergazdák csoport egy nem módosítható Rendszercsoport. Az Azure-előfizetés rendszergazdái tagjai ennek a csoportnak. Ehhez a csoporthoz nem adhat hozzá felhasználót. További információért lásd: [csoportok létrehozása és használata a fejlesztői fiókok kezeléséhez az Azure API Managementban](./api-management-howto-create-groups.md) .
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Miért nem érhető el a szabályzat a házirend-szerkesztőben?
 Ha a hozzáadni kívánt szabályzat szürkén vagy árnyékolva jelenik meg a házirend-szerkesztőben, ügyeljen arra, hogy a szabályzat megfelelő hatóköre legyen. Minden házirend-utasítás meghatározott hatókörökben és házirend-szakaszban való használatra készült. A szabályzatok szabályzat-szakaszainak és hatókörének áttekintéséhez tekintse meg a házirend használatáról szóló szakaszt [API Management házirendek](./api-management-policies.md)részben.
@@ -119,7 +108,7 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 #### <a name="direct-api-update-method"></a>Közvetlen API-frissítési módszer ####
 1. Hozzon létre egy [háttérbeli](/rest/api/apimanagement/) entitást API Management használatával.     
 2. Állítsa a **skipCertificateChainValidation** tulajdonságot **true (igaz**) értékre.     
-3. Ha már nem szeretné engedélyezni az önaláírt tanúsítványokat, törölje a háttérbeli entitást, vagy állítsa a **skipCertificateChainValidation** tulajdonságot **hamis**értékre.
+3. Ha már nem szeretné engedélyezni az önaláírt tanúsítványokat, törölje a háttérbeli entitást, vagy állítsa a **skipCertificateChainValidation** tulajdonságot **hamis** értékre.
 
 ### <a name="why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository"></a>Miért jelenik meg hitelesítési hibaüzenet Git-adattár klónozásakor?
 Ha a git hitelesítőadat-kezelőt használja, vagy ha a Visual Studióval próbál meg klónozási tárházat használni, előfordulhat, hogy a Windows hitelesítő adatok párbeszédpanel ismert problémába ütközhet. A párbeszédpanel a jelszó hosszát 127 karakterre korlátozza, és levágja a Microsoft által generált jelszót. Dolgozunk a jelszó lerövidítésén. A git-tárház klónozásához használja a git Basht.

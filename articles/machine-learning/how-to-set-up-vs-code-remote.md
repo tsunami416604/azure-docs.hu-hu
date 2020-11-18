@@ -1,7 +1,7 @@
 ---
 title: Kapcsolódás a számítási példányhoz a Visual Studio Code-ban (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan csatlakozhat egy Azure Machine Learning számítási példányhoz a Visual Studio Code-ban
+description: Megtudhatja, hogyan csatlakozhat egy Azure Machine Learning számítási példányhoz a Visual Studio Code-ban az interaktív Jupyter Notebook és a távoli fejlesztési feladatok futtatásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 09/03/2020
-ms.openlocfilehash: 6ac116b315d4a11b51b37c5b51edf35aa0676713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/16/2020
+ms.openlocfilehash: 2abad31173992a891e908bdbb61c37e905907d69
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708373"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697578"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Kapcsolódás Azure Machine Learning számítási példányhoz a Visual Studio Code-ban (előzetes verzió)
 
@@ -38,7 +38,7 @@ A számítási példányok távoli Jupyter Notebook kiszolgálóként való konf
 Kapcsolódás számítási példányhoz:
 
 1. Nyisson meg egy Jupyter Notebook a Visual Studio Code-ban.
-1. Ha az integrált jegyzetfüzet-élmény betöltődik, válassza a **Jupyter-kiszolgáló**lehetőséget.
+1. Ha az integrált jegyzetfüzet-élmény betöltődik, válassza a **Jupyter-kiszolgáló** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Azure Machine Learning távoli Jupyter notebook-kiszolgáló legördülő menüjének elindítása](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)

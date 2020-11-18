@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 22922972049ec78cc26f4d060fa1981d1f23a3ce
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a1a8df6d503ec5f5bf9c1e739e5ecf6486a85776
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912446"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697420"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
 
@@ -35,7 +35,7 @@ Amikor a külső ügyfelek a háttérbeli virtuális gépeken haladnak végig a 
 
 **Ellenőrzés és megoldás**
 
-A standard szintű ILB **alapértelmezés szerint biztonságosak** . Az alapszintű ILB a *rejtett* nyilvános IP-címen keresztül csatlakozhatnak az internethez. Ez nem recommened az éles számítási feladatokhoz, mivel az IP-cím nem statikus és nem zárolható a NSG keresztül. Ha a közelmúltban áthelyezte az alapszintű ILB egy standard ILB, explicit módon hozzon létre egy nyilvános IP-címet, amely a NSG- [n keresztül](egress-only.md) lezárja az IP-címet. Az alhálózaton [NAT-átjárót](../virtual-network/nat-overview.md) is használhat.
+A standard szintű ILB **alapértelmezés szerint biztonságosak**. Az alapszintű ILB a *rejtett* nyilvános IP-címen keresztül csatlakozhatnak az internethez. Ez nem recommened az éles számítási feladatokhoz, mivel az IP-cím nem statikus és nem zárolható a NSG keresztül. Ha a közelmúltban áthelyezte az alapszintű ILB egy standard ILB, explicit módon hozzon létre egy nyilvános IP-címet, amely a NSG- [n keresztül](egress-only.md) lezárja az IP-címet. Az alhálózaton [NAT-átjárót](../virtual-network/nat-overview.md) is használhat.
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Tünet: a Load Balancer mögötti virtuális gépek nem válaszolnak az állapot-mintavételre
 Ahhoz, hogy a háttér-kiszolgálók részt vegyenek a terheléselosztó készletében, át kell adni a mintavétel-ellenőrzést. További információ az állapot-mintavételekről: Load Balancer mintavételek [ismertetése](load-balancer-custom-probe-overview.md). 
@@ -87,7 +87,7 @@ Ha az összes korábbi ok úgy tűnik, hogy a rendszer megfelelően érvényesí
         - Ha nem figyelhetők meg bejövő csomagok a háttérrendszer-készlet virtuális gépen, akkor potenciálisan hálózati biztonsági csoportok vagy UDR hibás konfiguráció blokkolja a forgalmat. 
         - Ha nem figyelhetők meg kimenő csomagok a háttérrendszer-készlet virtuális gépen, a virtuális gépet ellenőrizni kell a nem kapcsolódó problémák miatt (például az alkalmazás blokkolja a mintavételi portot). 
     - Ellenőrizze, hogy a mintavételi csomagok kényszerítve vannak-e egy másik célra (valószínűleg UDR-beállításokon keresztül) a terheléselosztó elérése előtt. Ez azt eredményezheti, hogy a forgalom soha nem éri el a háttérbeli virtuális gépet. 
-* Módosítsa a mintavételi típust (például HTTP-ről TCP-re), és konfigurálja a megfelelő portot a hálózati biztonsági csoportok ACL-jei és a tűzfalon annak ellenőrzéséhez, hogy a probléma a mintavételi válasz konfigurációjának megfelelően van-e kiválasztva. További információ az állapot-mintavételezési konfigurációról: a végpont terheléselosztási [állapotának mintavételi beállítása](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
+* Módosítsa a mintavételi típust (például HTTP-ről TCP-re), és konfigurálja a megfelelő portot a hálózati biztonsági csoportok ACL-jei és a tűzfalon annak ellenőrzéséhez, hogy a probléma a mintavételi válasz konfigurációjának megfelelően van-e kiválasztva. További információ az állapot-mintavételezési konfigurációról: a végpont terheléselosztási [állapotának mintavételi beállítása](/archive/blogs/mast/endpoint-load-balancing-heath-probe-configuration-details).
 
 ## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Tünet: Load Balancer mögötti virtuális gépek nem válaszolnak a konfigurált adatporton tárolt forgalomra
 
@@ -133,7 +133,7 @@ Ha egy Load Balancer háttérbeli virtuális gépén lévő alkalmazása megpró
 
 Ha egy belső Load Balancer konfigurálva van egy VNet belül, és a résztvevői háttérbe tartozó virtuális gépek egyike megpróbál hozzáférni a belső Load Balancer előtérhöz, a hibák akkor fordulhatnak elő, ha a folyamat a kezdeményező virtuális gépre van leképezve. Ez a forgatókönyv nem támogatott.
 
-**Megoldás** A forgatókönyv feloldásának számos módja van, beleértve a proxy használatát is. Értékelje ki Application Gateway vagy más harmadik féltől származó proxyt (például Nginx vagy HAProxy). További információ a Application Gatewayról: [Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md)
+**Megoldás** A forgatókönyv feloldásának számos módja van, beleértve a proxy használatát is. Értékelje ki Application Gateway vagy más harmadik féltől származó proxyt (például Nginx vagy HAProxy). További információ a Application Gatewayról: [Application Gateway áttekintése](../application-gateway/overview.md)
 
 **Részletek** A belső terheléselosztó nem fordítja le a kimenő kapcsolatokat egy belső Load Balancer elülső végére, mert mindkettő magánhálózati IP-címtartomány részét képezi. A nyilvános terheléselosztó [kimenő kapcsolatokat](load-balancer-outbound-connections.md) biztosít a virtuális hálózaton belüli magánhálózati IP-címekről a nyilvános IP-címekre. A belső terheléselosztó esetében ez a módszer elkerüli a lehetséges SNAT-portok kimerülését egy egyedi belső IP-címtartomány belsejében, ahol a fordítás nem szükséges.
 
@@ -143,7 +143,7 @@ Ha a folyamat önmagára mutat, a kimenő folyamat úgy tűnik, hogy a virtuáli
 
 Ennek a forgatókönyvnek a tünete átmeneti kapcsolati időtúllépés, amikor a folyamat visszatér ugyanarra a háttérre, amely a folyamatból származik. Gyakori megkerülő megoldások közé tartozik a belső Load Balancer mögötti proxy réteg beszúrása, valamint a közvetlen kiszolgáló Return (DSR) stílusú szabályok használata. További információ: [Azure Load Balancer több előtérbeli felülete](load-balancer-multivip-overview.md).
 
-A belső Load Balancer bármely harmadik féltől származó proxyval egyesítheti, vagy használhat belső [Application Gateway](../application-gateway/application-gateway-introduction.md) a proxy forgatókönyvekhez HTTP/HTTPS használatával. Habár a probléma megoldásához nyilvános Load Balancer is használható, az eredményül kapott forgatókönyv a [SNAT kimerülését](load-balancer-outbound-connections.md)eredményezi. Kerülje ezt a második megközelítést, ha körültekintően nem felügyelt.
+A belső Load Balancer bármely harmadik féltől származó proxyval egyesítheti, vagy használhat belső [Application Gateway](../application-gateway/overview.md) a proxy forgatókönyvekhez HTTP/HTTPS használatával. Habár a probléma megoldásához nyilvános Load Balancer is használható, az eredményül kapott forgatókönyv a [SNAT kimerülését](load-balancer-outbound-connections.md)eredményezi. Kerülje ezt a második megközelítést, ha körültekintően nem felügyelt.
 
 ## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>Tünet: nem módosítható a háttér-port egy olyan terheléselosztó meglévő LB-szabályához, amely a háttér-készletben üzembe helyezett virtuálisgép-méretezési csoporttal rendelkezik. 
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Ok: a háttér-port nem módosítható olyan terheléselosztási szabály esetében, amelyet egy, a virtuálisgép-méretezési csoport által hivatkozott Load Balancer számára használ.
@@ -172,4 +172,3 @@ Ha úgy dönt, hogy megnyit egy támogatási esetet, a következő információk
 ## <a name="next-steps"></a>Következő lépések
 
 Ha a fenti lépések nem oldják meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).
-

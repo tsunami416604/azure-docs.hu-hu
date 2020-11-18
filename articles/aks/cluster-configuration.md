@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d93a43a44a9ccff4e7918e556b9d759e270d2f42
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072084"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698070"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS-fürt konfigurálása
 
@@ -46,7 +46,7 @@ Regisztrálja a `UseCustomizedUbuntuPreview` szolgáltatást:
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
@@ -78,27 +78,28 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 
 Ha a Node-készleteket az AK Ubuntu 16,04-lemezképpel szeretné létrehozni, ezt az egyéni címke kihagyásával teheti meg `--aks-custom-headers` .
 
+## <a name="container-runtime-configuration"></a>Tároló futásidejű konfigurációja
 
-## <a name="container-runtime-configuration-preview"></a>Tároló futásidejű konfigurációja (előzetes verzió)
+A Container Runtime olyan szoftver, amely tárolókat hajt végre, és a tároló lemezképeit kezeli egy csomóponton. A futtatókörnyezet segíti az absztrakt el-hívásokat vagy az operációs rendszer (OS) specifikus funkcióit a tárolók Linux vagy Windows rendszeren való futtatásához. Az Kubernetes 1,19-es verziójú csomópont-készleteket és a tároló futtatókörnyezetének nagyobb használatát használó AK-fürtök `containerd` . Az Kubernetes-t használó, a csomópontok előtt a v 1.19-t használó-fürtök a [Moby](https://mobyproject.org/) (felsőbb rétegbeli Docker) tároló-futtatókörnyezetet használják.
 
-A Container Runtime olyan szoftver, amely tárolókat hajt végre, és a tároló lemezképeit kezeli egy csomóponton. A futtatókörnyezet segíti az absztrakt el-hívásokat vagy az operációs rendszer (OS) specifikus funkcióit a tárolók Linux vagy Windows rendszeren való futtatásához. A mai AK jelenleg a [Moby](https://mobyproject.org/) (upstream Docker) szolgáltatást használja tároló-futtatókörnyezetként. 
-    
 ![Docker ICC 1](media/cluster-configuration/docker-cri.png)
 
-[`Containerd`](https://containerd.io/) a egy [OCI](https://opencontainers.org/) (Open Container Initiative) szabványnak megfelelő alapszintű tároló-futtatókörnyezet, amely a szükséges funkciók minimális készletét biztosítja a tárolók végrehajtásához és a lemezképek egy csomóponton való kezeléséhez. A Felhőbeli natív számítási alaprendszer (CNCF) a 2017 márciusában lett [adományozva](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) . A jelenlegi Moby-verzió, amelyet az AK jelenleg használ, és amely a `containerd` fent látható módon épül fel. 
+[`Containerd`](https://containerd.io/) a egy [OCI](https://opencontainers.org/) (Open Container Initiative) szabványnak megfelelő alapszintű tároló-futtatókörnyezet, amely a szükséges funkciók minimális készletét biztosítja a tárolók végrehajtásához és a lemezképek egy csomóponton való kezeléséhez. A Felhőbeli natív számítási alaprendszer (CNCF) a 2017 márciusában lett [adományozva](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) . A jelenlegi Moby-verzió, amelyet az AK már használ, és a `containerd` fent látható módon épül fel.
 
-A tárolón alapuló csomópont-és Node-készletek használata helyett a `dockershim` kubelet közvetlenül az `containerd` ICC (Container Runtime Interface) beépülő modulon keresztül fog kommunikálni, és a DOCKer ICC-implementációhoz képest eltávolítja a folyamat további ugrásait. Így jobb lesz a pod indítási késés és kevesebb erőforrás (CPU és memória) használata.
+A `containerd` -alapú csomópont-és Node-készletekkel a `dockershim` kubelet közvetlenül az `containerd` ICC (Container Runtime Interface) beépülő modulon keresztül fog beszélgetni, így a Docker ICC megvalósításával összehasonlítva eltávolítja a folyamat további ugrásait. Így jobb lesz a pod indítási késés és kevesebb erőforrás (CPU és memória) használata.
 
 Az `containerd` AK-csomópontok használata esetén a pod indítási késése növeli a tároló futtatókörnyezetét, és csökkenti a csomópontok erőforrás-felhasználását. Ezek a Újdonságok olyan új architektúrán keresztül érhetők el, ahol `containerd` a kubelet közvetlenül az ICC beépülő modulon keresztül beszél a Moby/Docker architektúrán kubelet `dockershim` `containerd` , így a folyamat további ugrásokkal is rendelkezik.
 
 ![Docker ICC 2](media/cluster-configuration/containerd-cri.png)
 
-`Containerd` a kubernetes minden egyes, az AK-ban található verziójában működik, és minden, a v 1.10-es kubernetes-verzióban, és támogatja az összes kubernetes-és AK-funkciót.
+`Containerd` a Kubernetes minden egyes, a v 1,19-es verziójában lévő, a Kubernetes-ben elérhető verziójában működik, és támogatja az összes Kubernetes-és AK-funkciót.
 
 > [!IMPORTANT]
-> Miután `containerd` általánosan elérhetővé válik az AK-on, az alapértelmezett és csak az új fürtökön elérhető tároló-futtatókörnyezethez választható lehetőség lesz. A korábbi támogatott verziókon továbbra is használhatja a Moby nodepools és a fürtöket, amíg azok nem támogatják a támogatást. 
+> A Kubernetes v 1,19-es vagy újabb verzióban létrehozott Node-készletekkel rendelkező fürtök a `containerd` tároló futtatókörnyezetéhez. A 1,19-nál kisebb, támogatott Kubernetes-verzióban található `Moby` , a tároló futtatókörnyezetéhez tartozó csomópont-készletekkel rendelkező fürtök, de a rendszer frissíti a `ContainerD` csomópont-készlet Kubernetes verziójának frissítését a v 1.19 vagy újabb verzióra. Továbbra is használhatja `Moby` a csomópont-készleteket és-fürtöket a régebbi támogatott verziókon, amíg azok nem támogatják a támogatást.
 > 
-> Javasoljuk, hogy a munkaterheléseket a `containerd` csomópont-készleteken tesztelje, mielőtt frissítené vagy új fürtöket hozna létre ezzel a tároló-futtatókörnyezettel.
+> Javasoljuk, hogy a munkaterheléseket az AK-beli csomópont-készleteken tesztelje, a `containerD` 1,19-es vagy újabb fürtök használata előtt.
+
+A következő szakasz ismerteti, hogyan használhatja és tesztelheti az AK-t olyan `containerD` fürtökön, amelyek még nem használják a 1,19-es vagy újabb Kubernetes-verziót, vagy amelyeket a szolgáltatás általánosan elérhetővé válása előtt hoztak létre a tároló futásidejű konfigurációjának előzetes verziójának használatával.
 
 ### <a name="use-containerd-as-your-container-runtime-preview"></a>Használat `containerd` tároló-futtatókörnyezetként (előzetes verzió)
 
@@ -124,7 +125,7 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
@@ -193,7 +194,7 @@ Regisztrálja a `Gen2VMPreview` szolgáltatást:
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
@@ -250,7 +251,7 @@ Regisztrálja a `EnableEphemeralOSDiskPreview` szolgáltatást:
 az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"

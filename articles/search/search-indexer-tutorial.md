@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e04c7da40719f77ca478f2ce577688af773f523d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 960657d27be4b9dab9f242428592bbb404a49d86
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399227"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697169"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Oktatóanyag: az Azure SQL-adatainak indexelése a .NET SDK használatával
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag a C# és a [.net SDK](/dotnet/api/overview/azure/search) hasz
 > * Indexelő futtatása az adatgyűjtés indexbe való betöltéséhez
 > * Index lekérdezése ellenőrzési lépésként
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +55,7 @@ Ha meglévő Azure SQL Database erőforrással rendelkezik, a 4. lépéstől kez
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/).
 
-1. **SQL Database**keresése vagy létrehozása. Használhatja az alapértelmezett beállításokat és a legalacsonyabb szintű tarifacsomagot. A kiszolgáló létrehozásának egyik előnye, hogy megadhat egy rendszergazdai felhasználónevet és jelszót, amelyekre egy későbbi lépésben lesz szüksége a táblák létrehozásához és betöltéséhez.
+1. **SQL Database** keresése vagy létrehozása. Használhatja az alapértelmezett beállításokat és a legalacsonyabb szintű tarifacsomagot. A kiszolgáló létrehozásának egyik előnye, hogy megadhat egy rendszergazdai felhasználónevet és jelszót, amelyekre egy későbbi lépésben lesz szüksége a táblák létrehozásához és betöltéséhez.
 
    :::image type="content" source="media/search-indexer-tutorial/indexer-new-sqldb.png" alt-text="Új adatbázis oldal" border="false":::
 
@@ -69,7 +69,7 @@ Ha meglévő Azure SQL Database erőforrással rendelkezik, a 4. lépéstől kez
 
 1. Jelölje ki a fájlt, és kattintson a **Megnyitás** lehetőségre. A szkriptnek az alábbi képernyőfelvételhez hasonlóan kell kinéznie:
 
-   :::image type="content" source="media/search-indexer-tutorial/sql-script.png" alt-text="Új adatbázis oldal" border="false":::
+   :::image type="content" source="media/search-indexer-tutorial/sql-script.png" alt-text="SQL-szkript" border="false":::
 
 1. Kattintson a **Futtatás** gombra a lekérdezés végrehajtásához. Az Eredmények ablaktáblán a „Sikeres lekérdezés” üzenetnek kell megjelennie 3 sorra vonatkozóan.
 
@@ -79,7 +79,7 @@ Ha meglévő Azure SQL Database erőforrással rendelkezik, a 4. lépéstől kez
     SELECT * FROM Hotels
     ```
 
-1. Másolja az adatbázishoz tartozó ADO.NET-kapcsolatok karakterláncát. A **Beállítások**  >  **kapcsolódási karakterláncok**alatt másolja a ADO.net-kapcsolódási karakterláncot az alábbi példához hasonló módon.
+1. Másolja az adatbázishoz tartozó ADO.NET-kapcsolatok karakterláncát. A **Beállítások**  >  **kapcsolódási karakterláncok** alatt másolja a ADO.net-kapcsolódási karakterláncot az alábbi példához hasonló módon.
 
     ```sql
     Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
@@ -97,9 +97,9 @@ Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szü
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-   :::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="Új adatbázis oldal" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" border="false":::
 
 ## <a name="2---set-up-your-environment"></a>2 – a környezet beállítása
 
@@ -145,7 +145,7 @@ A sémák tartalmazhatnak egyéb elemeket is, például keresési pontszámok n�
 
 A fő program logikát tartalmaz az ügyfelek, az indexek, az adatforrások és az indexelő létrehozásához. A kód észleli és törli az azonos nevű meglévő erőforrásokat, azt feltételezve, hogy többször is futtatja ezt a programot.
 
-Az adatforrás-objektum a Azure SQL Database erőforrásokra vonatkozó beállításokkal van konfigurálva, beleértve a [részleges vagy növekményes indexelést](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) is az Azure SQL beépített [változás-észlelési funkcióinak](/sql/relational-databases/track-changes/about-change-tracking-sql-server) kihasználásához. Az Azure SQL-ben a demo Hotels-adatbázis **IsDeleted**nevű "Soft Delete" oszlopot tartalmaz. Ha ez az oszlop igaz értékre van állítva az adatbázisban, az indexelő eltávolítja a megfelelő dokumentumot az Azure Cognitive Search indexből.
+Az adatforrás-objektum a Azure SQL Database erőforrásokra vonatkozó beállításokkal van konfigurálva, beleértve a [részleges vagy növekményes indexelést](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) is az Azure SQL beépített [változás-észlelési funkcióinak](/sql/relational-databases/track-changes/about-change-tracking-sql-server) kihasználásához. Az Azure SQL-ben a demo Hotels-adatbázis **IsDeleted** nevű "Soft Delete" oszlopot tartalmaz. Ha ez az oszlop igaz értékre van állítva az adatbázisban, az indexelő eltávolítja a megfelelő dokumentumot az Azure Cognitive Search indexből.
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -201,7 +201,7 @@ Az indexelő objektum a platform-agnosztikus, ahol a konfiguráció, az ütemez�
 
 A megoldás létrehozásához és futtatásához nyomja le az F5 billentyűt. A program hibakeresési módban lesz végrehajtva. Az egyes műveletek állapota a konzolablakban látható.
 
-   :::image type="content" source="media/search-indexer-tutorial/console-output.png" alt-text="Új adatbázis oldal" border="false":::
+   :::image type="content" source="media/search-indexer-tutorial/console-output.png" alt-text="Konzolkimenet" border="false":::
 
 A kód helyileg fut a Visual Studióban, és csatlakozik a keresési szolgáltatáshoz az Azure-ban, amely összekapcsolja a Azure SQL Database és beolvassa az adatkészletet. Ezzel a sok művelettel több lehetséges meghibásodási pont is van. Ha hibaüzenetet kap, először ellenőrizze az alábbi feltételeket:
 
@@ -215,9 +215,9 @@ A kód helyileg fut a Visual Studióban, és csatlakozik a keresési szolgáltat
 
 A Azure Portal használatával ellenőrizze az objektumok létrehozását, majd a **keresési ablak** használatával kérdezheti le az indexet.
 
-1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon nyissa meg az egyes listákat, és ellenőrizze, hogy létrejött-e az objektum. Az **indexek**, az **Indexelő**és **az adatforrások** "Hotels", "Azure-SQL-indexelő" és "Azure-SQL" lesz.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon nyissa meg az egyes listákat, és ellenőrizze, hogy létrejött-e az objektum. Az **indexek**, az **Indexelő** és **az adatforrások** "Hotels", "Azure-SQL-indexelő" és "Azure-SQL" lesz.
 
-   :::image type="content" source="media/search-indexer-tutorial/tiles-portal.png" alt-text="Új adatbázis oldal" border="false":::
+   :::image type="content" source="media/search-indexer-tutorial/tiles-portal.png" alt-text="Indexelők és adatforrások csempéi" border="false":::
 
 1. Válassza ki a hotelek indexét. A szállodák lapon a **Search Explorer** az első lap. 
 
@@ -225,7 +225,7 @@ A Azure Portal használatával ellenőrizze az objektumok létrehozását, majd 
 
    A rendszer az indexben lévő három bejegyzést JSON-dokumentumként adja vissza. A keresési ablak a dokumentumokat JSON-formátumban adja vissza, így a teljes struktúra megtekinthető.
 
-   :::image type="content" source="media/search-indexer-tutorial/portal-search.png" alt-text="Új adatbázis oldal" border="false":::
+   :::image type="content" source="media/search-indexer-tutorial/portal-search.png" alt-text="Index lekérdezése" border="false":::
    
 1. A következő lépésben adja meg ezt a keresési sztringet: `search=river&$count=true`. 
 
@@ -249,7 +249,7 @@ Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávo
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a SQL Database indexelés alapjait, ismerkedjen meg közelebbről az indexelő konfigurációjában.
 
