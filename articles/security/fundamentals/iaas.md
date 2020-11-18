@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7c68bb9c7a94cf32bd1d9342660a9f0029f5d10d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9b9a83cf71dfa7658c34c3c98f8d12a056adad0c
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410402"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698784"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 Ez a cikk a virtuális gépek és operációs rendszerek ajánlott biztonsági eljárásait ismerteti.
@@ -37,16 +37,16 @@ A virtuális gépek védelmének első lépése annak biztosítása, hogy csak a
 >
 >
 
-**Ajánlott eljárás** : a virtuális gépek hozzáférésének szabályozása.   
-**Részletek** : az [Azure-szabályzatok](../../governance/policy/overview.md) segítségével hozhat létre konvenciókat a szervezet erőforrásaihoz, és létrehozhat testreszabott házirendeket. Alkalmazza ezeket a házirendeket erőforrásokra, például [erőforráscsoportok](../../azure-resource-manager/management/overview.md). Az erőforráscsoporthoz tartozó virtuális gépek öröklik a szabályzatokat.
+**Ajánlott eljárás**: a virtuális gépek hozzáférésének szabályozása.   
+**Részletek**: az [Azure-szabályzatok](../../governance/policy/overview.md) segítségével hozhat létre konvenciókat a szervezet erőforrásaihoz, és létrehozhat testreszabott házirendeket. Alkalmazza ezeket a házirendeket erőforrásokra, például [erőforráscsoportok](../../azure-resource-manager/management/overview.md). Az erőforráscsoporthoz tartozó virtuális gépek öröklik a szabályzatokat.
 
 Ha a cég több előfizetéssel rendelkezik, szüksége lehet egy hatékony módszerre az előfizetések hozzáférésének, szabályzatainak és megfelelőségének kezelésére. Az [Azure felügyeleti csoportjai](../../governance/management-groups/overview.md) az előfizetések feletti szintű hatókört biztosítanak. Az előfizetéseket felügyeleti csoportokba (tárolókban) rendszerezheti, és alkalmazhatja az Ön irányítási feltételeit ezekre a csoportokra. Egy felügyeleti csoportban lévő összes előfizetés automatikusan örökli a csoportra alkalmazott feltételeket. A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától.
 
-**Ajánlott eljárás** : csökkentse a változékonyságot a beállításában és a virtuális gépek üzembe helyezésében.   
-**Részletek** : [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) sablonok használatával erősítse meg az üzembe helyezési lehetőségeket, és könnyebben értelmezheti és leltárba hozhatja a virtuális gépeket a környezetben.
+**Ajánlott eljárás**: csökkentse a változékonyságot a beállításában és a virtuális gépek üzembe helyezésében.   
+**Részletek**: [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) sablonok használatával erősítse meg az üzembe helyezési lehetőségeket, és könnyebben értelmezheti és leltárba hozhatja a virtuális gépeket a környezetben.
 
-**Ajánlott eljárás** : biztonságos privilegizált hozzáférés.   
-**Részletek** : a [legalacsonyabb jogosultsági szintű megközelítés](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) és a beépített Azure-szerepkörök használata lehetővé teszi a felhasználók számára a virtuális gépek elérését és beállítását:
+**Ajánlott eljárás**: biztonságos privilegizált hozzáférés.   
+**Részletek**: a [legalacsonyabb jogosultsági szintű megközelítés](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) és a beépített Azure-szerepkörök használata lehetővé teszi a felhasználók számára a virtuális gépek elérését és beállítását:
 
 - [Virtuális gépek közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): felügyelheti a virtuális gépeket, de nem a virtuális hálózati vagy a Storage-fiókot, amelyhez csatlakoznak.
 - [Klasszikus virtuálisgép-közreműködő](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): felügyelheti a klasszikus üzemi modellel létrehozott virtuális gépeket, de nem a virtuális hálózati vagy a Storage-fiókot, amelyhez a virtuális gépek csatlakoznak.
@@ -74,17 +74,17 @@ A Microsoft antimalware olyan funkciókat tartalmaz, mint a valós idejű védel
 
 Az üzembe helyezéshez és a beépített észlelésekhez (riasztások és incidensek) egyszerűen integrálható a Microsoft antimalware és a partneri megoldások [Azure Security Center](../../security-center/index.yml) használatával.
 
-**Ajánlott eljárás** : kártevők elleni védelemre szolgáló antimalware-megoldás telepítése.   
-**Részletek** : [Microsoft partneri megoldás vagy Microsoft antimalware telepítése](../../security-center/security-center-services.md#supported-endpoint-protection-solutions-)
+**Ajánlott eljárás**: kártevők elleni védelemre szolgáló antimalware-megoldás telepítése.   
+**Részletek**: [Microsoft partneri megoldás vagy Microsoft antimalware telepítése](../../security-center/security-center-services.md#supported-endpoint-protection-solutions-)
 
-**Ajánlott eljárás** : az antimalware-megoldás integrálása a Security Center a védelem állapotának figyelésére.   
-**Részletek** : [az Endpoint Protection hibáinak kezelése a Security Center](../../security-center/security-center-partner-integration.md)
+**Ajánlott eljárás**: az antimalware-megoldás integrálása a Security Center a védelem állapotának figyelésére.   
+**Részletek**: [az Endpoint Protection hibáinak kezelése a Security Center](../../security-center/security-center-partner-integration.md)
 
 ## <a name="manage-your-vm-updates"></a>A virtuális gépek frissítéseinek kezelése
 Az Azure-beli virtuális gépeket, például az összes helyszíni virtuális gépet, a felhasználók felügyelik. Ezekre az Azure nem küldi le a Windows-frissítéseket. A virtuális gép frissítéseit kell kezelnie.
 
-**Ajánlott eljárás** : a virtuális gépek naprakészen tartása.   
-**Részletek** : a Azure Automation [Update Management](../../automation/update-management/overview.md) megoldásával kezelheti az Azure-ban, a helyszíni környezetekben vagy más felhőalapú szolgáltatókban üzembe helyezett Windows-és Linux-számítógépek operációs rendszerének frissítéseit. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
+**Ajánlott eljárás**: a virtuális gépek naprakészen tartása.   
+**Részletek**: a Azure Automation [Update Management](../../automation/update-management/overview.md) megoldásával kezelheti az Azure-ban, a helyszíni környezetekben vagy más felhőalapú szolgáltatókban üzembe helyezett Windows-és Linux-számítógépek operációs rendszerének frissítéseit. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
 
 A Frissítéskezelés által kezelt számítógépek a következő konfigurációk használatával hajtják végre a felméréseket és frissítik az üzemelő példányokat:
 
@@ -95,20 +95,20 @@ A Frissítéskezelés által kezelt számítógépek a következő konfiguráci�
 
 Ha Windows Update használ, hagyja engedélyezve az automatikus Windows Update beállítást.
 
-**Ajánlott eljárás** : Ellenőrizze, hogy a létrehozott rendszerképek tartalmazzák-e a legújabb Windows-frissítések körét.   
-**Részletek** : minden központi telepítés első lépéseként keresse meg és telepítse az összes Windows-frissítést. Ez a mérték különösen fontos az Ön vagy a saját könyvtárából származó rendszerképek telepítésekor. Habár az Azure Marketplace-ről származó rendszerképeket alapértelmezés szerint automatikusan frissíti a rendszer, a nyilvános kiadás után a késési idő (akár néhány hét) is lehet.
+**Ajánlott eljárás**: Ellenőrizze, hogy a létrehozott rendszerképek tartalmazzák-e a legújabb Windows-frissítések körét.   
+**Részletek**: minden központi telepítés első lépéseként keresse meg és telepítse az összes Windows-frissítést. Ez a mérték különösen fontos az Ön vagy a saját könyvtárából származó rendszerképek telepítésekor. Habár az Azure Marketplace-ről származó rendszerképeket alapértelmezés szerint automatikusan frissíti a rendszer, a nyilvános kiadás után a késési idő (akár néhány hét) is lehet.
 
-**Ajánlott eljárás** : rendszeresen telepítse újra a virtuális gépeket az operációs rendszer új verziójának kényszerítéséhez.   
-**Részletek** : megadhatja a virtuális gépet egy [Azure Resource Manager sablonnal](../../azure-resource-manager/templates/template-syntax.md) , hogy könnyen újra üzembe lehessen helyezni. A sablonok használatával a rendszer egy javított és biztonságos virtuális gépet biztosít, amikor szüksége van rá.
+**Ajánlott eljárás**: rendszeresen telepítse újra a virtuális gépeket az operációs rendszer új verziójának kényszerítéséhez.   
+**Részletek**: megadhatja a virtuális gépet egy [Azure Resource Manager sablonnal](../../azure-resource-manager/templates/template-syntax.md) , hogy könnyen újra üzembe lehessen helyezni. A sablonok használatával a rendszer egy javított és biztonságos virtuális gépet biztosít, amikor szüksége van rá.
 
-**Ajánlott eljárás** : a virtuális gépek biztonsági frissítéseinek gyors alkalmazása.   
-**Részletek** : engedélyezze a Azure Security Center (ingyenes szint vagy standard szint) a [hiányzó biztonsági frissítések azonosításához és azok alkalmazásához](../../security-center/asset-inventory.md).
+**Ajánlott eljárás**: a virtuális gépek biztonsági frissítéseinek gyors alkalmazása.   
+**Részletek**: engedélyezze a Azure Security Center (ingyenes szint vagy standard szint) a [hiányzó biztonsági frissítések azonosításához és azok alkalmazásához](../../security-center/asset-inventory.md).
 
-**Ajánlott eljárás** : telepítse a legújabb biztonsági frissítéseket.   
-**Részletek** : az ügyfelek által az Azure-ba áthelyezett első munkaterhelések némelyike Labs-és külső rendszerű rendszerek. Ha az Azure-beli virtuális gépek olyan alkalmazásokat vagy szolgáltatásokat futtatnak, amelyek számára elérhetőnek kell lenniük az interneten, ügyelni kell a javítások megadására. Az operációs rendszeren túli javítás. A partneri alkalmazásokban a nem javított biztonsági rések olyan problémákat okozhatnak, amelyek elkerülhetők, ha a megfelelő javítási felügyelet van érvényben.
+**Ajánlott eljárás**: telepítse a legújabb biztonsági frissítéseket.   
+**Részletek**: az ügyfelek által az Azure-ba áthelyezett első munkaterhelések némelyike Labs-és külső rendszerű rendszerek. Ha az Azure-beli virtuális gépek olyan alkalmazásokat vagy szolgáltatásokat futtatnak, amelyek számára elérhetőnek kell lenniük az interneten, ügyelni kell a javítások megadására. Az operációs rendszeren túli javítás. A partneri alkalmazásokban a nem javított biztonsági rések olyan problémákat okozhatnak, amelyek elkerülhetők, ha a megfelelő javítási felügyelet van érvényben.
 
-**Ajánlott eljárás** : biztonsági mentési megoldás üzembe helyezése és tesztelése.   
-**Részletek** : a biztonsági mentést ugyanúgy kell kezelni, mint bármely más műveletet. Ez az éles környezet részét képező, a felhőre kiterjedő rendszerek esetében igaz.
+**Ajánlott eljárás**: biztonsági mentési megoldás üzembe helyezése és tesztelése.   
+**Részletek**: a biztonsági mentést ugyanúgy kell kezelni, mint bármely más műveletet. Ez az éles környezet részét képező, a felhőre kiterjedő rendszerek esetében igaz.
 
 A teszt-és fejlesztői rendszereknek olyan biztonsági mentési stratégiákat kell követniük, amelyek a felhasználók által a megszokott módon létrehozott visszaállítási képességeket biztosítják a helyszíni környezetek tapasztalatai alapján. Az Azure-ba áthelyezett éles számítási feladatok csak akkor integrálhatók a meglévő biztonsági mentési megoldásokkal, ha lehetséges. Vagy használhatja a [Azure Backup](../../backup/backup-azure-vms-first-look-arm.md) a biztonsági mentési követelmények megoldásához.
 
@@ -151,17 +151,17 @@ A [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) segítségével t
 
 A Azure Disk Encryption használatának ajánlott eljárásai a következők:
 
-**Ajánlott eljárás** : a virtuális gépek titkosításának engedélyezése.   
-**Részletek** : a Azure Disk Encryption létrehozza és írja a kulcstárolóba a titkosítási kulcsokat. A Key vaultban lévő titkosítási kulcsok kezeléséhez Azure AD-hitelesítés szükséges. Hozzon létre egy Azure AD-alkalmazást erre a célra. Hitelesítési célból az ügyfél titkos hitelesítése vagy az [ügyféltanúsítvány-alapú Azure ad-hitelesítés](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)is használható.
+**Ajánlott eljárás**: a virtuális gépek titkosításának engedélyezése.   
+**Részletek**: a Azure Disk Encryption létrehozza és írja a kulcstárolóba a titkosítási kulcsokat. A Key vaultban lévő titkosítási kulcsok kezeléséhez Azure AD-hitelesítés szükséges. Hozzon létre egy Azure AD-alkalmazást erre a célra. Hitelesítési célból az ügyfél titkos hitelesítése vagy az [ügyféltanúsítvány-alapú Azure ad-hitelesítés](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)is használható.
 
-**Ajánlott eljárás** : kulcs titkosítási kulcs (KEK) használata a titkosítási kulcsok további biztonsági rétegéhez. Adjon hozzá egy KEK-t a kulcstartóhoz.   
-**Részletek** : az [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag használatával hozzon létre egy kulcs-titkosítási kulcsot a kulcstartóban. Egy KEK-t is importálhat a helyszíni hardveres biztonsági modulról (HSM) a kulcskezelő szolgáltatáshoz. További információ: [Key Vault dokumentáció](../../key-vault/keys/hsm-protected-keys.md). Ha a kulcs titkosítási kulcsa meg van adva, Azure Disk Encryption ezt a kulcsot használja a titkosítási titok becsomagolásához a Key Vaultba való írás előtt. A kulcs letéti másolatának a helyszíni kulcskezelő HSM-ben való megőrzése további védelmet nyújt a kulcsok véletlen törlésével szemben.
+**Ajánlott eljárás**: kulcs titkosítási kulcs (KEK) használata a titkosítási kulcsok további biztonsági rétegéhez. Adjon hozzá egy KEK-t a kulcstartóhoz.   
+**Részletek**: az [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag használatával hozzon létre egy kulcs-titkosítási kulcsot a kulcstartóban. Egy KEK-t is importálhat a helyszíni hardveres biztonsági modulról (HSM) a kulcskezelő szolgáltatáshoz. További információ: [Key Vault dokumentáció](../../key-vault/keys/hsm-protected-keys.md). Ha a kulcs titkosítási kulcsa meg van adva, Azure Disk Encryption ezt a kulcsot használja a titkosítási titok becsomagolásához a Key Vaultba való írás előtt. A kulcs letéti másolatának a helyszíni kulcskezelő HSM-ben való megőrzése további védelmet nyújt a kulcsok véletlen törlésével szemben.
 
-**Ajánlott eljárás** : készítsen [pillanatképet](../../virtual-machines/windows/snapshot-copy-managed-disk.md) és/vagy biztonsági mentést a lemezek titkosítása előtt. A biztonsági másolatok helyreállítási lehetőséget biztosítanak, ha nem várt hiba történik a titkosítás során.   
-**Részletek** : a felügyelt lemezekkel rendelkező virtuális gépek biztonsági mentést igényelnek a titkosítás megkezdése előtt. A biztonsági mentést követően a **set-AzVMDiskEncryptionExtension** parancsmag használatával titkosíthatja a felügyelt lemezeket a *-skipVmBackup* paraméter megadásával. További információ a titkosított virtuális gépek biztonsági mentéséről és visszaállításáról: [Azure Backup](../../backup/backup-azure-vms-encryption.md) .
+**Ajánlott eljárás**: készítsen [pillanatképet](../../virtual-machines/windows/snapshot-copy-managed-disk.md) és/vagy biztonsági mentést a lemezek titkosítása előtt. A biztonsági másolatok helyreállítási lehetőséget biztosítanak, ha nem várt hiba történik a titkosítás során.   
+**Részletek**: a felügyelt lemezekkel rendelkező virtuális gépek biztonsági mentést igényelnek a titkosítás megkezdése előtt. A biztonsági mentést követően a **set-AzVMDiskEncryptionExtension** parancsmag használatával titkosíthatja a felügyelt lemezeket a *-skipVmBackup* paraméter megadásával. További információ a titkosított virtuális gépek biztonsági mentéséről és visszaállításáról: [Azure Backup](../../backup/backup-azure-vms-encryption.md) .
 
-**Ajánlott eljárás** : annak biztosítása érdekében, hogy a titkosítási titkok ne legyenek régióközi határokon átívelőek, Azure Disk Encryption szükség van a kulcstartóra és a virtuális gépekre, amelyek ugyanabban a régióban találhatók.   
-**Részletek** : hozzon létre és használjon olyan kulcstartót, amely ugyanabban a régióban található, mint a titkosítani kívánt virtuális gép.
+**Ajánlott eljárás**: annak biztosítása érdekében, hogy a titkosítási titkok ne legyenek régióközi határokon átívelőek, Azure Disk Encryption szükség van a kulcstartóra és a virtuális gépekre, amelyek ugyanabban a régióban találhatók.   
+**Részletek**: hozzon létre és használjon olyan kulcstartót, amely ugyanabban a régióban található, mint a titkosítani kívánt virtuális gép.
 
 Azure Disk Encryption alkalmazása esetén a következő üzleti igényeknek is eleget kell tennie:
 
@@ -171,16 +171,16 @@ Azure Disk Encryption alkalmazása esetén a következő üzleti igényeknek is 
 ## <a name="restrict-direct-internet-connectivity"></a>Közvetlen internetkapcsolat korlátozása
 A virtuális gép közvetlen internetkapcsolatának figyelése és korlátozása. A támadók folyamatosan megkeresik a nyilvános Felhőbeli IP-tartományokat a nyílt felügyeleti portok számára, és megkísérlik a közös jelszavakat, valamint az ismert, nem javított biztonsági réseket. Az alábbi táblázat a támadások elleni védelemhez nyújt ajánlott eljárásokat:
 
-**Ajánlott eljárás** : a hálózati Útválasztás és biztonság véletlen expozíciójának megakadályozása.   
-**Részletek** : a RBAC használatával győződjön meg arról, hogy csak a központi hálózati csoport rendelkezik engedéllyel a hálózati erőforrásokhoz.
+**Ajánlott eljárás**: a hálózati Útválasztás és biztonság véletlen expozíciójának megakadályozása.   
+**Részletek**: az Azure RBAC használatával győződjön meg arról, hogy csak a központi hálózati csoport rendelkezik engedéllyel a hálózati erőforrásokhoz.
 
-**Ajánlott eljárás** : azonosítsa és javítsa ki a kitett virtuális gépeket, amelyek engedélyezik a hozzáférést az "any" forrás IP-címről.   
-**Részletek** : Azure Security Center használata. Security Center azt javasolja, hogy az internetre irányuló végpontokon keresztül korlátozza a hozzáférést, ha valamelyik hálózati biztonsági csoport egy vagy több bejövő szabályt tartalmaz, amelyek engedélyezik a hozzáférést az "any" forrás IP-címről. Security Center azt javasolja, hogy szerkessze ezeket a bejövő szabályokat, hogy [korlátozza](../../security-center/security-center-network-recommendations.md) a hozzáférést a forrás IP-címekhez, amelyeknek ténylegesen hozzáférésre van szükségük.
+**Ajánlott eljárás**: azonosítsa és javítsa ki a kitett virtuális gépeket, amelyek engedélyezik a hozzáférést az "any" forrás IP-címről.   
+**Részletek**: Azure Security Center használata. Security Center azt javasolja, hogy az internetre irányuló végpontokon keresztül korlátozza a hozzáférést, ha valamelyik hálózati biztonsági csoport egy vagy több bejövő szabályt tartalmaz, amelyek engedélyezik a hozzáférést az "any" forrás IP-címről. Security Center azt javasolja, hogy szerkessze ezeket a bejövő szabályokat, hogy [korlátozza](../../security-center/security-center-network-recommendations.md) a hozzáférést a forrás IP-címekhez, amelyeknek ténylegesen hozzáférésre van szükségük.
 
-**Ajánlott eljárás** : a felügyeleti portok korlátozása (RDP, SSH).   
-**Részletek** : az igény szerinti [(JIT)](../../security-center/security-center-just-in-time.md) virtuálisgép-hozzáférés lehetővé teszi az Azure-beli virtuális gépek bejövő forgalmának zárolását, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez való csatlakozáshoz, ha szükséges. Ha a JIT engedélyezve van, Security Center a hálózati biztonsági csoport szabályának létrehozásával zárolja az Azure-beli virtuális gépek felé irányuló bejövő forgalmat. Válassza ki a virtuális gépen azokat a portokat, amelyeken a bejövő forgalom le lesz zárva. Ezeket a portokat a JIT-megoldás vezérli.
+**Ajánlott eljárás**: a felügyeleti portok korlátozása (RDP, SSH).   
+**Részletek**: az igény szerinti [(JIT)](../../security-center/security-center-just-in-time.md) virtuálisgép-hozzáférés lehetővé teszi az Azure-beli virtuális gépek bejövő forgalmának zárolását, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez való csatlakozáshoz, ha szükséges. Ha a JIT engedélyezve van, Security Center a hálózati biztonsági csoport szabályának létrehozásával zárolja az Azure-beli virtuális gépek felé irányuló bejövő forgalmat. Válassza ki a virtuális gépen azokat a portokat, amelyeken a bejövő forgalom le lesz zárva. Ezeket a portokat a JIT-megoldás vezérli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
 
 Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:

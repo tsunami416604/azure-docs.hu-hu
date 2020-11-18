@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: e15aab3ebfe82fa97f5716769b5ff9675b4b3dc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01cca2f2233ed5cdfb3003bb44c40f481bcf9bda
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91637271"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699406"
 ---
 # <a name="azure-load-balancer-floating-ip-configuration"></a>Azure Load Balancer úszó IP-konfiguráció
 
@@ -45,4 +45,4 @@ A lebegő IP-címek nélkül az Azure egy hagyományos terheléselosztási IP-c�
 - További információ a [Azure Load Balancerról](load-balancer-overview.md).
 - Tudnivalók az [állapot](load-balancer-custom-probe-overview.md)-mintavételekről.
 - Ismerje meg a [standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md).
-- További információ a [hálózati biztonsági csoportokról](../virtual-network/security-overview.md).
+- További információ a [hálózati biztonsági csoportokról](../virtual-network/network-security-groups-overview.md).

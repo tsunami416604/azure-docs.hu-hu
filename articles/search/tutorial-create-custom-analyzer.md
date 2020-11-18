@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: ac7cee2c1d72b4102fb397aa8093c2d38686fc88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90d60a20bb464936d04662b0b9286bd7aaac9e74
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397266"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700171"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Oktatóanyag: egyéni analizátor létrehozása telefonszámokhoz
 
@@ -51,7 +51,7 @@ A következő lépésben ismernie kell a keresési szolgáltatás nevét és az 
 
 Ezután indítsa el a Poster-t, és importálja a letöltött gyűjteményt az [Azure-Samples/Azure-Search-Poster-Samples](https://github.com/Azure-Samples/azure-search-postman-samples)áruházból.
 
-A gyűjtemény importálásához nyissa meg a **fájlok**  >  **importálása**elemet, majd válassza ki az importálni kívánt gyűjteményi fájlt.
+A gyűjtemény importálásához nyissa meg a **fájlok**  >  **importálása** elemet, majd válassza ki az importálni kívánt gyűjteményi fájlt.
 
 Minden kérelem esetén a következőket kell tennie:
 
@@ -59,9 +59,9 @@ Minden kérelem esetén a következőket kell tennie:
 
 1. Cserélje le a `<YOUR-ADMIN-API-KEY>` kifejezést a keresési szolgáltatás elsődleges vagy másodlagos kulcsára.
 
-  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Poster-kérelem URL-címe és fejléce" border="false":::
+  :::image type="content" source="media/search-get-started-rest/postman-url.png" alt-text="Poster-kérelem URL-címe és fejléce" border="false":::
 
-Ha nem ismeri a Poster-t, olvassa el az [Azure Cognitive Search REST API-k megismerése a Poster használatával](search-get-started-postman.md)című témakört.
+Ha nem ismeri a Poster-t, tekintse meg az [Azure Cognitive Search REST API-k megismerése](search-get-started-rest.md)című témakört.
 
 ## <a name="3---create-an-initial-index"></a>3 – kezdeti index létrehozása
 
@@ -172,7 +172,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
   api-key: <YOUR-ADMIN-API-KEY>  
 ```
 
-A lekérdezés **négy várt eredményből három eredményt** ad vissza, de **két váratlan eredményt**is ad vissza:
+A lekérdezés **négy várt eredményből három eredményt** ad vissza, de **két váratlan eredményt** is ad vissza:
 
 ```json
 {
@@ -208,7 +208,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
   api-key: <YOUR-ADMIN-API-KEY>
 ```
 
-Ez a lekérdezés még rosszabb, csak **a négy helyes egyezés egyikét**adja vissza.
+Ez a lekérdezés még rosszabb, csak **a négy helyes egyezés egyikét** adja vissza.
 
 ```json
 {
@@ -239,11 +239,11 @@ Az elemzők három összetevőből állnak:
 
 Az alábbi ábrán láthatja, hogy a három összetevő hogyan működik együtt, hogy tokenize egy mondatot:
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Poster-kérelem URL-címe és fejléce":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Elemzői folyamat diagramja tokenize":::
 
 Ezeket a jogkivonatokat egy fordított index tárolja, amely lehetővé teszi a gyors, teljes szöveges kereséseket.  Egy fordított index lehetővé teszi a teljes szöveges keresést a lexikális analízis során kinyert összes egyedi kifejezés hozzárendelésével azokon a dokumentumokon, amelyekben azok bekövetkeznek. Az alábbi ábrán egy példa látható:
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Poster-kérelem URL-címe és fejléce":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Példa invertált indexre":::
 
 Az összes keresés megkeresi az invertált indexben tárolt feltételeket. Amikor egy felhasználó kiadja a lekérdezést:
 
@@ -251,7 +251,7 @@ Az összes keresés megkeresi az invertált indexben tárolt feltételeket. Amik
 1. Ekkor a rendszer megkeresi a fordított indexet, és a megfelelő feltételekkel rendelkező dokumentumokat vizsgálja.
 1. Végül a lekért dokumentumokat a [hasonlósági algoritmus](index-ranking-similarity.md)rangsorolja.
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Poster-kérelem URL-címe és fejléce":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Elemzői folyamat rangsorolási hasonlóságának ábrája":::
 
 Ha a lekérdezési feltételek nem egyeznek meg a fordított index feltételeivel, az eredmények nem lesznek visszaadva. Ha többet szeretne megtudni a lekérdezések működéséről, tekintse meg a [teljes szöveges keresésről](search-lucene-query-architecture.md)szóló cikket.
 
@@ -590,7 +590,7 @@ Ha a saját előfizetésében dolgozik, érdemes eltávolítani azokat az erőfo
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre egyéni elemzőt, vessünk egy pillantást az összes olyan szűrőre, tokenizers és elemzőre, amely elérhetővé teszi a gazdag keresési élményt.
 

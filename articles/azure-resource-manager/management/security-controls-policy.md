@@ -1,18 +1,18 @@
 ---
 title: Azure Policy szabályozási megfelelőségi szabályozása Azure Resource Manager
 description: Felsorolja Azure Policy Azure Resource Manager számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: tfitzmac
 ms.author: tomfitz
 ms.service: azure-resource-manager
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 0951398535302ebf6ffb7e9cc728165ee88b9bac
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8471ebcb3e423e3b12bc781c37042116a63a5a1a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319579"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699651"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-resource-manager"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Resource Manager
 

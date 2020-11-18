@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 336f58635465f77c60d04c53bb1893cb60f5f35f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ab87dfdeb18f97265c3bb2f34616c942a345c1e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791222"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698947"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása javában a REST API-k használatával
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "92791222"
 > * [Portál](search-get-started-portal.md)
 > * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
 Hozzon létre egy Java-konzolos alkalmazást, amely a [IntelliJ](https://www.jetbrains.com/idea/), a [Java 11 SDK](/java/azure/jdk/)és az [Azure Cognitive Search REST API](/rest/api/searchservice/)használatával hoz létre, tölt be és kérdez le egy keresési indexet. Ez a cikk részletes útmutatást nyújt az alkalmazás létrehozásához. Azt is megteheti, hogy [letölti és futtatja a teljes alkalmazást](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
@@ -35,7 +35,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 A rövid útmutató összeállításához és teszteléséhez a következő szoftvereket és szolgáltatásokat használtuk:
 
-+ [IntelliJ IDEA](https://www.jetbrains.com/idea/)
++ [IntelliJ ötlet](https://www.jetbrains.com/idea/)
 
 + [Java 11 SDK](/java/azure/jdk/)
 
@@ -67,7 +67,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 1. Válassza a **Maven** lehetőséget.
 1. A **Project SDK** listában válassza ki a Java 11 SDK-t.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Maven-projekt létrehozása" border="false":::
 
 1. A **GroupID** és a **ArtifactId** mezőbe írja be a következőt: `AzureSearchQuickstart` .
 1. Fogadja el a fennmaradó alapértékeket a projekt megnyitásához.
@@ -75,10 +75,10 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 ### <a name="specify-maven-dependencies"></a>Maven-függőségek meghatározása
 
 1. Válassza a **fájl**  >  **beállításai** lehetőséget.
-1. A **Beállítások** ablakban válassza a **Létrehozás, végrehajtás, üzembe helyezés**  >  **eszközök**  >  **Maven** -  >  **Importálás** lehetőséget.
+1. A **Beállítások** ablakban válassza a **Létrehozás, végrehajtás, üzembe helyezés**  >  **eszközök**  >  **Maven**-  >  **Importálás** lehetőséget.
 1. Jelölje be a  **Maven-projektek automatikus importálása** jelölőnégyzetet, majd kattintson az **OK** gombra az ablak bezárásához. A Maven beépülő modulok és egyéb függőségek mostantól automatikusan szinkronizálva lesznek, amikor a következő lépésben frissíti a pom.xml fájlt.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="A Maven importálási lehetőségei a IntelliJ-beállításokban" border="false":::
 
 1. Nyissa meg a pom.xml fájlt, és cserélje le a tartalmát a következő Maven-konfigurációs részletekre. Ezek közé tartoznak az [exec Maven beépülő modulra](https://www.mojohaus.org/exec-maven-plugin/) és egy [JSON Interface API](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) -ra vonatkozó hivatkozások
 
@@ -134,13 +134,13 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 ### <a name="set-up-the-project-structure"></a>A projekt szerkezetének beállítása
 
 1. Válassza a **fájl**  >  **projekt szerkezete** lehetőséget.
-1. Válassza ki a **modulokat** , és bontsa ki a forrás fát a mappa tartalmának eléréséhez `src`  >   `main` .
+1. Válassza ki a **modulokat**, és bontsa ki a forrás fát a mappa tartalmának eléréséhez `src`  >   `main` .
 1. A `src`  >   `main`  >  `java` mappában adja hozzá a `app` és a `service` mappákat. Ehhez válassza ki a `java` mappát, nyomja le az ALT + INSERT billentyűkombinációt, majd adja meg a mappa nevét.
 1. A `src`  >   `main`  > `resources` mappában adja hozzá a `app` és a `service` mappákat.
 
     Ha elkészült, a projekt fájának az alábbi képhez hasonlóan kell kinéznie.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Projekt könyvtárának szerkezete" border="false":::
 
 1. Kattintson az **OK** gombra az ablak bezárásához.
 
@@ -373,10 +373,10 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 1. Ellenőrizze, hogy a projekt a következő szerkezettel rendelkezik-e.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Project Directory-struktúra plusz osztályok" border="false":::
 
 1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java` 
- :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
+ :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Maven-cél végrehajtása: az exec ellenőrzése: Java" border="false":::
 
 A feldolgozás befejezésekor keressen egy sikeres BUILD-üzenetet, amelyet egy nulla (0) kilépési kód követ.
 
@@ -818,7 +818,7 @@ Most, hogy betöltötte a szállodák dokumentumait, létrehozhat keresési lek�
 
     Keresse meg az egyes lekérdezések összegzését és eredményeit. A futtatásnak SIKERESnek kell lennie a BUILD SIKERe üzenettel és egy nulla (0) kilépési kóddal.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 

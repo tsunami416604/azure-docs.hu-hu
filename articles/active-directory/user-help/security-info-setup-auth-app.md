@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 133e6b533a3d87ef519d0f586ea59db1bbce28b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96be79a349478db7d0452cae1ff07ee1c48aaa3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83744484"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700086"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>A Microsoft Authenticator alkalmazás beállítása ellenőrzési módszerként
 
@@ -46,6 +46,11 @@ A biztonsági információ módszereit a kéttényezős biztonsági ellenőrzés
 
 A szervezet beállításaitól függően előfordulhat, hogy egy hitelesítési alkalmazást is használhat a biztonsági adatok egyik módszere. Nem kell a Microsoft Authenticator alkalmazást használnia, és a beállítás során másik alkalmazást is választhat. Ez a cikk azonban az Microsoft Authenticator alkalmazást használja.
 
+>[!Important]
+> Ha a telepítő Microsoft Authenticator alkalmazást 5 különböző eszközön vagy 5 hardveres jogkivonaton, akkor nem lehet beállítani a hatodikat, és a következő hibaüzenet jelenik meg.
+> 
+> **A Microsoft Authenticator nem állítható be, mert már rendelkezik öt hitelesítő alkalmazással vagy hardver jogkivonatokkal. Kérje meg a rendszergazdát, hogy törölje az egyik hitelesítő alkalmazást vagy hardver jogkivonatot.**
+
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás beállítása
 
 1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myaccount.microsoft.com/ lapra.
@@ -56,11 +61,11 @@ A szervezet beállításaitól függően előfordulhat, hogy egy hitelesítési 
 
     ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. A **metódus hozzáadása** lapon válassza a **hitelesítő alkalmazás** lehetőséget a legördülő listából, majd kattintson a **Hozzáadás**gombra.
+3. A **metódus hozzáadása** lapon válassza a **hitelesítő alkalmazás** lehetőséget a legördülő listából, majd kattintson a **Hozzáadás** gombra.
 
     ![A Method Box hozzáadása a hitelesítő alkalmazás kiválasztásával](media/security-info/securityinfo-myprofile-addauthapp.png)
 
-4. Az **alkalmazás beszerzése** lapon válassza a **Letöltés most** lehetőséget, hogy letöltse és telepítse a Microsoft Authenticator alkalmazást a mobileszközön, majd válassza a **tovább**lehetőséget.
+4. Az **alkalmazás beszerzése** lapon válassza a **Letöltés most** lehetőséget, hogy letöltse és telepítse a Microsoft Authenticator alkalmazást a mobileszközön, majd válassza a **tovább** lehetőséget.
 
     További információ az alkalmazás letöltéséről és telepítéséről: [a Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md).
 
@@ -69,18 +74,18 @@ A szervezet beállításaitól függően előfordulhat, hogy egy hitelesítési 
    > [!Note]
    > Ha a Microsoft Authenticator alkalmazástól eltérő hitelesítő alkalmazást szeretne használni, válassza a **másik hitelesítő alkalmazás használata** hivatkozást.
    >
-   > Ha a szervezete lehetővé teszi, hogy egy másik módszert válasszon a hitelesítő alkalmazás mellett, akkor válassza a **másik módszer csatolása**lehetőséget.
+   > Ha a szervezete lehetővé teszi, hogy egy másik módszert válasszon a hitelesítő alkalmazás mellett, akkor válassza a **másik módszer csatolása** lehetőséget.
 
 5. Maradjon a **fiók beállítása** oldalon, miközben beállítja a Microsoft Authenticator alkalmazást a mobileszközön.
 
     ![A hitelesítő alkalmazás oldalának beállítása](media/security-info/securityinfo-myprofile-setupauthapp.png)
 
-6. Nyissa meg a Microsoft Authenticator alkalmazást, jelölje be az értesítések engedélyezését (ha a rendszer kéri), válassza a **fiók hozzáadása** lehetőséget a **Testreszabás és vezérlés** ikonban a jobb felső sarokban, majd válassza a **munkahelyi vagy iskolai fiók**lehetőséget.
+6. Nyissa meg a Microsoft Authenticator alkalmazást, jelölje be az értesítések engedélyezését (ha a rendszer kéri), válassza a **fiók hozzáadása** lehetőséget a **Testreszabás és vezérlés** ikonban a jobb felső sarokban, majd válassza a **munkahelyi vagy iskolai fiók** lehetőséget.
 
     >[!Note]
     >Ha első alkalommal állítja be a Microsoft Authenticator alkalmazást, megkérdezheti, hogy engedélyezi-e az alkalmazásnak a kamera (iOS) elérését, vagy hogy az alkalmazás képeket készítsen, és videót rögzítsen (Android). Az **Engedélyezés lehetőséget** kell választania, hogy a hitelesítő alkalmazás hozzáférhessen a kamerához, hogy a következő lépésben képet készítsen a QR-kódból. Ha nem engedélyezi a kamerát, akkor továbbra is beállíthatja a hitelesítő alkalmazást, de a kód adatait manuálisan kell hozzáadnia. A kód manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
 
-7. Térjen vissza a **fiók beállítása** lapra a számítógépen, majd válassza a **tovább**lehetőséget.
+7. Térjen vissza a **fiók beállítása** lapra a számítógépen, majd válassza a **tovább** lehetőséget.
 
     Megjelenik a **QR-kód vizsgálata** lap.
 
@@ -96,7 +101,7 @@ A szervezet beállításaitól függően előfordulhat, hogy egy hitelesítési 
 
     ![A fiók tesztelése a hitelesítő alkalmazással](media/security-info/securityinfo-myprofile-tryitauthapp.png)
 
-10. Hagyja jóvá az értesítést a Microsoft Authenticator alkalmazásban, majd kattintson a **tovább**gombra.
+10. Hagyja jóvá az értesítést a Microsoft Authenticator alkalmazásban, majd kattintson a **tovább** gombra.
 
      ![Sikeres értesítés, az alkalmazás és a fiók csatlakoztatása](media/security-info/securityinfo-myprofile-successauthapp.png)
 
@@ -117,7 +122,7 @@ Ha már nem szeretné használni a hitelesítő alkalmazást biztonsági inform�
 
 2. A hitelesítő alkalmazás törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. A hitelesítő alkalmazás törlése után a rendszer eltávolítja a biztonsági adatokat, és eltűnik a **biztonsági adatok** lapról. Ha a hitelesítő alkalmazás az alapértelmezett módszer, akkor az alapértelmezett érték egy másik elérhető metódusra változik.
 
-3. Nyissa meg a hitelesítő alkalmazást a mobileszközön, válassza a **fiókok szerkesztése**lehetőséget, majd törölje munkahelyi vagy iskolai fiókját a hitelesítő alkalmazásból.
+3. Nyissa meg a hitelesítő alkalmazást a mobileszközön, válassza a **fiókok szerkesztése** lehetőséget, majd törölje munkahelyi vagy iskolai fiókját a hitelesítő alkalmazásból.
 
     A fiókja teljesen el lett távolítva a hitelesítő alkalmazásból a kétfaktoros ellenőrzés és a jelszó-visszaállítási kérelmek esetében.
 
@@ -156,7 +161,7 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Jelentkezzen be a Microsoft Authenticator alkalmazással, a [Bejelentkezés kétlépéses ellenőrzés vagy biztonsági információ használatával](security-info-setup-signin.md) című szakaszának lépéseit követve.
 

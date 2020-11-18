@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ee28cbffd6f047b4991d29781e0b131a44c7dfae
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 835e4f681d514bb6b92caa5ee076e3794ed59236
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409178"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698818"
 ---
 # <a name="security-control-data-recovery"></a>Biztonsági ellenőrzés: Adathelyreállítás
 
@@ -58,7 +58,7 @@ Győződjön meg arról, hogy a Azure Backupon belül rendszeresen végezhető e
 |--|--|--|
 | 9,4 | 10,4 | Ügyfél |
 
-Helyszíni biztonsági mentéshez az inaktív állapotú adatokat védő titkosítás használható az Azure-ra irányuló biztonsági mentés során megadott jelszóval. Azure-beli virtuális gépek esetén a rendszer Storage Service Encryption (SSE) használatával titkosítja az inaktív adatokat. Szerepköralapú hozzáférés-vezérlés használatával biztosíthatja a biztonsági mentéseket és az ügyfelek által felügyelt kulcsokat.  
+Helyszíni biztonsági mentéshez az inaktív állapotú adatokat védő titkosítás használható az Azure-ra irányuló biztonsági mentés során megadott jelszóval. Azure-beli virtuális gépek esetén a rendszer Storage Service Encryption (SSE) használatával titkosítja az inaktív adatokat. Az Azure szerepköralapú hozzáférés-vezérlés használatával gondoskodhat a biztonsági másolatok és az ügyfelek által felügyelt kulcsok biztonságáról.  
 
 A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekében engedélyezze Soft-Delete és törölje a védelmet a Key Vaultban.  Ha az Azure Storage-t használja a biztonsági másolatok tárolásához, a Soft delete lehetővé teszi az adatok mentését és helyreállítását a Blobok vagy blob-Pillanatképek törlésekor. 
 
@@ -69,6 +69,6 @@ A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekébe
 - [Az Azure Storage-blobok helyreállítható törlése](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a következő biztonsági vezérlőt:  [incidens válasza](security-control-incident-response.md)

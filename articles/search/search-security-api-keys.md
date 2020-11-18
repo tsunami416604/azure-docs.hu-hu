@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 5935bc3f59585b19fc3b45bdfd567bb1f9404234
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0e209e8114d8f1791a00e87894fa12206edcf34e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675585"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700222"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás API-kulcsainak létrehozása és kezelése
 
 A keresési szolgáltatásnak küldött összes kérésnek csak olvashatónak kell lennie `api-key` , amely kifejezetten a szolgáltatáshoz lett létrehozva. A a `api-key` keresési szolgáltatási végponthoz való hozzáférés hitelesítésének egyetlen mechanizmusa, amely minden kérelemben szerepelnie kell. 
 
-+ A [Rest-megoldásokban](search-get-started-postman.md)általában az API-kulcs van megadva a kérelem fejlécében
++ A [Rest-megoldásokban](search-get-started-rest.md)általában az API-kulcs van megadva a kérelem fejlécében
 
 + A [.net-megoldásokban](search-howto-dotnet-sdk.md)a kulcsokat gyakran konfigurációs beállításként kell megadni, majd [AzureKeyCredential](/dotnet/api/azure.azurekeycredential) kell átadni
 
@@ -47,11 +47,11 @@ A keresési szolgáltatás eléréséhez két típusú kulcs használható: admi
 
 A hozzáférési kulcsokat a portálon vagy a [felügyeleti REST API](/rest/api/searchmanagement/)keresztül szerezheti be. További információ: [felügyeleti és lekérdezési API-kulcsok kezelése](search-security-api-keys.md).
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Az előfizetéshez tartozó [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  listázása.
 3. Válassza ki a szolgáltatást, és az Áttekintés lapon kattintson a **Beállítások**  > **kulcsok** elemre a felügyeleti és a lekérdezési kulcsok megtekintéséhez.
 
-   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="Portál lap, beállítások beolvasása, kulcsok szakasz" border="false":::
+   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="Portál lap, beállítások megtekintése, kulcsok szakasz" border="false":::
 
 ## <a name="create-query-keys"></a>Lekérdezési kulcsok létrehozása
 
@@ -59,13 +59,13 @@ A lekérdezési kulcsok csak olvasási hozzáférést biztosítanak a dokumentum
 
 Az ügyfélalkalmazások hozzáférésének és műveleteinek korlátozása elengedhetetlen a szolgáltatásban található keresési eszközök védelméhez. Az ügyfélalkalmazások által létrehozott összes lekérdezéshez mindig használjon egy lekérdezési kulcsot, nem pedig rendszergazdai kulcsot.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Az előfizetéshez tartozó [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  listázása.
 3. Válassza ki a szolgáltatást, és az Áttekintés lapon kattintson a **Beállítások**  > **kulcsok** elemre.
 4. Kattintson a **lekérdezési kulcsok kezelése** lehetőségre.
 5. Használja a szolgáltatáshoz már létrehozott lekérdezési kulcsot, vagy hozzon létre akár 50 új lekérdezési kulcsot. Az alapértelmezett lekérdezési kulcs neve nem, de a kezelhetőséghez további lekérdezési kulcsok is megtekinthetők.
 
-   :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="Portál lap, beállítások beolvasása, kulcsok szakasz" border="false":::
+   :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="Lekérdezési kulcs létrehozása vagy használata" border="false":::
 
 > [!Note]
 > A lekérdezési kulcs használatát bemutató példa a [C# nyelven elérhető Azure Cognitive Search index lekérdezésében](./search-get-started-dotnet.md)található.
@@ -97,7 +97,7 @@ A következő szerepkörök tagjai megtekinthetik és újragenerálják a kulcso
 > [!Note]
 > A keresési eredményeken alapuló, identitás-alapú hozzáféréshez biztonsági szűrőket hozhat létre, amelyek identitás alapján metszik az eredményeket, és eltávolíthatja azokat a dokumentumokat, amelyekhez a kérelmezőnek nincs hozzáférése. További információ: [biztonsági szűrők](search-security-trimming-for-azure-search.md) és [biztonságos a Active Directory](search-security-trimming-for-azure-search-with-aad.md).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [Azure szerepköralapú hozzáférés-vezérlés az Azure-ban Cognitive Search](search-security-rbac.md)
 + [Kezelés a PowerShell-lel](search-manage-powershell.md) 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
-ms.openlocfilehash: 04da4d6466d450d04d7008332e32ea3d59cd0252
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 8d7fde6661a4a133f689016559f010767c662417
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555532"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699746"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
 
@@ -30,7 +30,7 @@ A munkaterület forrás-és célhely-előfizetésének ugyanabban a Azure Active
 
 ## <a name="workspace-move-considerations"></a>A munkaterület áthelyezésével kapcsolatos megfontolások
 - A munkaterületen telepített felügyelt megoldások a Log Analytics munkaterület áthelyezési művelettel lesznek áthelyezve. 
-- A munkaterület kulcsai újra létrejönnek a munkaterület mozgatásával (elsődleges és másodlagos). Ha a munkaterület kulcsa egy tároló, frissítse azokat az új generált kulcsokkal. 
+- A munkaterület-kulcsok (mind az elsődleges, mind a másodlagos) újra létrejönnek a munkaterület-áthelyezési művelettel. Ha a Key vaultban tárolja a munkaterület-kulcsok másolatát, frissítse azokat a munkaterület áthelyezése után létrehozott új kulcsokkal. 
 - A csatlakoztatott ügynökök továbbra is csatlakoztatva maradnak, és az áthelyezés után megőrzik az adatküldést a munkaterületre. 
 - Mivel az áthelyezési művelethez nincs szükség társított szolgáltatásokra a munkaterületen, a kapcsolaton alapuló megoldásokat el kell távolítani a munkaterület áthelyezésének engedélyezéséhez. Olyan megoldások, amelyeket el kell távolítani az Automation-fiók csatolásának megszüntetése előtt:
   - Frissítéskezelés
@@ -60,7 +60,7 @@ A következő eljárással távolíthatja el a megoldásokat a Azure Portal hasz
 
 1. Nyissa meg annak az erőforráscsoportnak a menüjét, amelyre a megoldások telepítve vannak.
 2. Válassza ki az eltávolítandó megoldásokat.
-3. Kattintson az **erőforrások törlése** elemre, majd erősítse meg az eltávolítandó erőforrásokat a **delete (Törlés** ) gombra kattintva.
+3. Kattintson az **erőforrások törlése** elemre, majd erősítse meg az eltávolítandó erőforrásokat a **delete (Törlés**) gombra kattintva.
 
 ![Megoldások törlése](media/move-workspace/delete-solutions.png)
 

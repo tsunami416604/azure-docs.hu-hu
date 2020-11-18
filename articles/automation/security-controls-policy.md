@@ -1,18 +1,18 @@
 ---
 title: Azure Policy szabályozási megfelelőségi szabályozása Azure Automation
 description: Felsorolja Azure Policy Azure Automation számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: mgoedtel
 ms.author: magoedte
 ms.service: automation
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 19d42ef66678376e1419d58abc5a561dcb9a2c6d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6a0374682f7c4b56c81825e03270e289dfdf9c49
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320278"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698717"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-automation"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Automation
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 7b0ea9cc1788065a92e168e41a0c293bb1f4ea9b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9dcb1113bb37cb0f5f65c54ae9d6ca76a88330c1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409357"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698665"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – áttekintés
 
@@ -87,7 +87,7 @@ A [virtuális gép (VM) adatai védelme](../../security-center/security-center-i
 - Lemez titkosításának ellenőrzése.
 - Hálózati támadások.
 
-Security Center [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)használ. A RBAC olyan [beépített szerepköröket](../../role-based-access-control/built-in-roles.md) biztosít, amelyek a felhasználókhoz, csoportokhoz és szolgáltatásokhoz rendelhetők az Azure-ban.
+Security Center [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)használ. Az Azure RBAC olyan [beépített szerepköröket](../../role-based-access-control/built-in-roles.md) biztosít, amelyek a felhasználókhoz, csoportokhoz és szolgáltatásokhoz rendelhetők az Azure-ban.
 
 Security Center megvizsgálja az erőforrások konfigurációját a biztonsági problémák és a biztonsági rések azonosítása érdekében. Security Center az erőforrásokhoz kapcsolódó információkat csak akkor látja, ha a tulajdonos, közreműködő vagy olvasó szerepkörét rendelte hozzá ahhoz az előfizetéshez vagy erőforráscsoporthoz, amelyhez az erőforrás tartozik.
 
@@ -187,7 +187,7 @@ Az érett DevOps-szakemberek az alábbi eljárások közül többet is elfogadna
 - Az [infrastruktúra mint kód (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) olyan gyakorlat, amely lehetővé teszi a hálózatok és virtuális gépek létrehozásának és Teardown automatizálását és érvényesítését, így segítve a biztonságos, stabil alkalmazás-üzemeltetési platformok nyújtását.
 - A [szolgáltatás](https://www.visualstudio.com/learn/what-are-microservices/) architektúrája az üzleti használati esetek kis újrafelhasználható szolgáltatásokra való elkülönítésére szolgál.  Ez az architektúra lehetővé teszi a méretezhetőséget és a hatékonyságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Security and Audit megoldással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

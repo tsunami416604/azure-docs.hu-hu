@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 541aa7da3e804931c1793e455bcbfca83c809dae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fca6b40f4bd871041d14d119eb44e8366d8562ee
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669183"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700460"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>A Standard Load Balancer és a rendelkezésre állási zónák
 
@@ -58,7 +58,7 @@ A frontend IP-címét egyszerre több független infrastruktúra-telepítés is 
 
 ### <a name="zonal"></a>Zónaszintű
 
-Dönthet úgy is, hogy egy olyan előtérben van, amely egyetlen zónában van, amely egy *zónákhoz*tartozik.  Ez a forgatókönyv azt jelenti, hogy a bejövő vagy kimenő folyamatokat egy adott régió egyetlen zónája szolgálja ki.  A frontend a zóna állapotával osztja meg a sorsot.  Az adatelérési útvonalat a rendszer nem érinti a nem az adott zónán kívüli zónák meghibásodása esetén. Az IP-cím rendelkezésre állási zónákban való megjelenítéséhez használhatja a zónákhoz tartozó előtérbeli felületet.  
+Dönthet úgy is, hogy egy olyan előtérben van, amely egyetlen zónában van, amely egy *zónákhoz* tartozik.  Ez a forgatókönyv azt jelenti, hogy a bejövő vagy kimenő folyamatokat egy adott régió egyetlen zónája szolgálja ki.  A frontend a zóna állapotával osztja meg a sorsot.  Az adatelérési útvonalat a rendszer nem érinti a nem az adott zónán kívüli zónák meghibásodása esetén. Az IP-cím rendelkezésre állási zónákban való megjelenítéséhez használhatja a zónákhoz tartozó előtérbeli felületet.  
 
 Ezen kívül az egyes zónákon belüli elosztott terhelésű végpontok esetén közvetlenül a zóna-előtérbeli környezetek használata is támogatott. Ez a konfiguráció lehetővé teszi, hogy zónán belüli elosztott terhelésű végpontok számára elérhetővé tegye a zónák egyedi figyelését. Nyilvános végpontok esetén integrálhatja őket egy DNS terheléselosztási termékkel, például [Traffic Manager](../traffic-manager/traffic-manager-overview.md) , és egyetlen DNS-nevet használhat.
 
@@ -151,11 +151,11 @@ A sikertelenül nem érintett zónák erőforrásai elérhetők lesznek. A szolg
   - Ha egy zóna meghibásodik, a szolgáltatás megérti ezt a hibát, és ha az állapot elveszett, hogyan történik a helyreállítás?
   - Egy zóna visszaadásakor az alkalmazás megérti, hogyan konvergál biztonságos módon?
 
-Tekintse át az [Azure Cloud design-mintákat](https://docs.microsoft.com/azure/architecture/patterns/) az alkalmazás meghibásodási forgatókönyvek rugalmasságának javítása érdekében.
+Tekintse át az [Azure Cloud design-mintákat](/azure/architecture/patterns/) az alkalmazás meghibásodási forgatókönyvek rugalmasságának javítása érdekében.
 
 ## <a name="next-steps"></a>Következő lépések
 - További információ a [Availability Zones](../availability-zones/az-overview.md)
-- További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md)
-- Ismerje meg, hogyan oszthatja meg a [virtuális gépeket egy zónán belül egy olyan standard Load Balancer használatával,](load-balancer-standard-public-zonal-cli.md) amely egy zóna-előtérben található.
-- Megtudhatja, hogyan oszthatja meg a [virtuális gépeket zónák között egy olyan standard Load Balancer használatával, amely zóna nélküli előtérbeli felületet használ](load-balancer-standard-public-zone-redundant-cli.md)
-- Ismerje meg az [Azure Felhőbeli kialakítási mintáit](https://docs.microsoft.com/azure/architecture/patterns/) , amelyekkel javítható az alkalmazás meghibásodási forgatókönyvekhez való rugalmassága.
+- További tudnivalók a [Standard Load Balancerről](./load-balancer-overview.md)
+- Ismerje meg, hogyan oszthatja meg a [virtuális gépeket egy zónán belül egy olyan standard Load Balancer használatával,](./quickstart-load-balancer-standard-public-cli.md) amely egy zóna-előtérben található.
+- Megtudhatja, hogyan oszthatja meg a [virtuális gépeket zónák között egy olyan standard Load Balancer használatával, amely zóna nélküli előtérbeli felületet használ](./quickstart-load-balancer-standard-public-cli.md)
+- Ismerje meg az [Azure Felhőbeli kialakítási mintáit](/azure/architecture/patterns/) , amelyekkel javítható az alkalmazás meghibásodási forgatókönyvekhez való rugalmassága.

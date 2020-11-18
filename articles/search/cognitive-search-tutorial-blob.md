@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: 84defa0704c44bb0ed4564195725f7dd1c42312c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e9d438349f3a080f52050f22a0f991140b3e6b4d
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788060"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699152"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Oktatóanyag: az Azure-Blobok kereshető tartalmának létrehozásához használja a REST és a AI használatát
 
@@ -61,13 +61,13 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. Az alapok lapon a következő elemek szükségesek. Minden más esetében fogadja el az alapértelmezett értékeket.
 
-   + **Erőforráscsoport** . Válasszon ki egy meglévőt, vagy hozzon létre egy újat, de ugyanazt a csoportot használja az összes szolgáltatáshoz, hogy együtt lehessen kezelni őket.
+   + **Erőforráscsoport**. Válasszon ki egy meglévőt, vagy hozzon létre egy újat, de ugyanazt a csoportot használja az összes szolgáltatáshoz, hogy együtt lehessen kezelni őket.
 
-   + **Tárfiók neve** . Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus* . 
+   + **Tárfiók neve**. Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus*. 
 
-   + **Hely** . Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és Cognitive Services használ. Egyetlen hely érvényteleníti A sávszélességgel kapcsolatos díjakat.
+   + **Hely**. Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és Cognitive Services használ. Egyetlen hely érvényteleníti A sávszélességgel kapcsolatos díjakat.
 
-   + **Fiók típusa** . Válassza ki az alapértelmezett *StorageV2 (általános célú v2)* .
+   + **Fiók típusa**. Válassza ki az alapértelmezett *StorageV2 (általános célú v2)*.
 
 1. A szolgáltatás létrehozásához kattintson a **felülvizsgálat + létrehozás** lehetőségre.
 
@@ -75,7 +75,7 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. Kattintson a **Blobok** szolgáltatás elemre.
 
-1. Kattintson a **+ tároló** elemre egy tároló létrehozásához, és nevezze el a *fogaskerék-Search-demo kifejezést* .
+1. Kattintson a **+ tároló** elemre egy tároló létrehozásához, és nevezze el a *fogaskerék-Search-demo kifejezést*.
 
 1. Válassza a *fogaskerék-keresés-bemutató* lehetőséget, majd kattintson a **feltöltés** gombra, és nyissa meg azt a mappát, ahová a letöltött fájlokat mentette. Válassza ki az összes nem képfájlt. 7 fájlnak kell lennie. A feltöltéshez kattintson **az OK** gombra.
 
@@ -121,13 +121,13 @@ Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes k
 
 ## <a name="2---set-up-postman"></a>2 – Poster beállítása
 
-Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt az eszközt, tekintse meg az [Azure Cognitive Search REST API-k a Poster használatával való megismerését](search-get-started-postman.md)ismertető témakört.
+Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt az eszközt, tekintse meg az [Azure Cognitive Search REST API-k megismerése](search-get-started-rest.md)című témakört.
 
-Az oktatóanyagban használt metódusok a **post** , a **put** és a **Get** . A következő módszerekkel hozhat létre négy API-hívást a keresési szolgáltatáshoz: adatforrás, készségkészlet, index és indexelő létrehozása.
+Az oktatóanyagban használt metódusok a **post**, a **put** és a **Get**. A következő módszerekkel hozhat létre négy API-hívást a keresési szolgáltatáshoz: adatforrás, készségkészlet, index és indexelő létrehozása.
 
 A fejlécekben a "Content-Type" értéket állítsa be, `application/json` és állítsa `api-key` az Azure Cognitive Search szolgáltatás felügyeleti API-kulcsára. Miután beállította a fejléceket, használhatja azokat minden kérelemhez ebben a gyakorlatban.
 
-  ![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Poster-kérelem URL-címe és fejléce")
+  ![Poster-kérelem URL-címe és fejléce](media/search-get-started-rest/postman-url.png "Poster-kérelem URL-címe és fejléce")
 
 ## <a name="3---create-the-pipeline"></a>3 – a folyamat létrehozása
 
@@ -514,7 +514,7 @@ A [beépített készségek](cognitive-search-predefined-skills.md) a készségk�
 
 Végül megismerte, hogyan tesztelheti az eredményeket, és hogyan állíthatja alaphelyzetbe a rendszert a későbbi futtatásokhoz. Megtanulta, hogy ha lekérdezéseket futtat az indexen, az a bővített indexelési folyamat által létrehozott kimenetet adja vissza. 
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 

@@ -3,12 +3,12 @@ title: Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet a Windows rendszerhez.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 325b00ac1cc747555d38b4c250709638f5e74d95
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: ea9b40006deefbac2c253082eda4ef2da12149a4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348882"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700678"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 
@@ -202,9 +202,9 @@ A MOF lefordítása után a támogató fájlokat össze kell csomagolni. A kitö
 
 A `New-GuestConfigurationPackage` parancsmag létrehozza a csomagot. A konfigurációhoz szükséges moduloknak elérhetőnek kell lenniük a-ben `$Env:PSModulePath` . A parancsmag paraméterei `New-GuestConfigurationPackage` Windows-tartalom létrehozásakor:
 
-- **Name** : vendég konfigurációs csomag neve.
-- **Konfiguráció** : LEfordított DSC-konfigurációs dokumentum teljes elérési útja.
-- **Elérési út** : kimeneti mappa elérési útja. Ezt a paramétert nem kötelező megadni. Ha nincs megadva, a csomag az aktuális könyvtárban jön létre.
+- **Name**: vendég konfigurációs csomag neve.
+- **Konfiguráció**: LEfordított DSC-konfigurációs dokumentum teljes elérési útja.
+- **Elérési út**: kimeneti mappa elérési útja. Ezt a paramétert nem kötelező megadni. Ha nincs megadva, a csomag az aktuális könyvtárban jön létre.
 
 A következő parancs futtatásával hozzon létre egy csomagot az előző lépésben megadott konfiguráció használatával:
 
@@ -220,9 +220,9 @@ Mivel az ügynök ténylegesen kiértékeli a helyi környezetet, a legtöbb ese
 
 A parancsmag paraméterei `Test-GuestConfigurationPackage` :
 
-- **Név** : a vendég konfigurációs szabályzatának neve.
-- **Paraméter** : szórótábla formátumban megadott házirend-paraméterek.
-- **Elérési út** : a vendég konfigurációs csomag teljes elérési útja.
+- **Név**: a vendég konfigurációs szabályzatának neve.
+- **Paraméter**: szórótábla formátumban megadott házirend-paraméterek.
+- **Elérési út**: a vendég konfigurációs csomag teljes elérési útja.
 
 Futtassa a következő parancsot az előző lépésben létrehozott csomag teszteléséhez:
 
@@ -247,13 +247,13 @@ Miután létrehozta és feltöltötte a vendég konfigurációhoz tartozó egyé
 
 A parancsmag paraméterei `New-GuestConfigurationPolicy` :
 
-- **ContentUri** : nyilvános http (s) URI a vendég konfigurációs tartalomkezelő csomaghoz.
-- **DisplayName** : házirend megjelenítendő neve.
-- **Leírás** : szabályzat leírása.
-- **Paraméter** : szórótábla formátumban megadott házirend-paraméterek.
-- **Verzió** : szabályzat verziója.
-- **Elérési út** : a célhely elérési útja, ahol a szabályzat-definíciók létrejönnek
-- **Platform** : cél platform (Windows/Linux) a vendég konfigurációs házirendhez és a tartalmi csomaghoz.
+- **ContentUri**: nyilvános http (s) URI a vendég konfigurációs tartalomkezelő csomaghoz.
+- **DisplayName**: házirend megjelenítendő neve.
+- **Leírás**: szabályzat leírása.
+- **Paraméter**: szórótábla formátumban megadott házirend-paraméterek.
+- **Verzió**: szabályzat verziója.
+- **Elérési út**: a célhely elérési útja, ahol a szabályzat-definíciók létrejönnek
+- **Platform**: cél platform (Windows/Linux) a vendég konfigurációs házirendhez és a tartalmi csomaghoz.
 - A **címke** egy vagy több címkét rendel hozzá a szabályzat-definícióhoz
 - **Kategória** – a szabályzat-definícióban a kategória metaadatainak mezőjének beállítása
 
@@ -474,10 +474,10 @@ A támogató fájlokat össze kell csomagolni. A kitöltött csomagot a vendég 
 
 A `New-GuestConfigurationPackage` parancsmag létrehozza a csomagot. Harmadik féltől származó tartalom esetén használja a **FilesToInclude** paramétert a csomaghoz tartozó inspec-tartalom hozzáadásához. Nem kell megadnia a **ChefProfilePath** a Linux-csomagokhoz.
 
-- **Name** : vendég konfigurációs csomag neve.
-- **Konfiguráció** : a lefordított konfigurációs dokumentum teljes elérési útja.
-- **Elérési út** : kimeneti mappa elérési útja. Ezt a paramétert nem kötelező megadni. Ha nincs megadva, a csomag az aktuális könyvtárban jön létre.
-- **FilesoInclude** : az inspec-profil teljes elérési útja.
+- **Name**: vendég konfigurációs csomag neve.
+- **Konfiguráció**: a lefordított konfigurációs dokumentum teljes elérési útja.
+- **Elérési út**: kimeneti mappa elérési útja. Ezt a paramétert nem kötelező megadni. Ha nincs megadva, a csomag az aktuális könyvtárban jön létre.
+- **FilesoInclude**: az inspec-profil teljes elérési útja.
 
 A következő parancs futtatásával hozzon létre egy csomagot az előző lépésben megadott konfiguráció használatával:
 
@@ -496,9 +496,9 @@ Ha a szabályzat frissítését szeretné kibocsátani, három, figyelmet igény
 > [!NOTE]
 > A `version` vendég konfiguráció-hozzárendelés tulajdonsága csak a Microsoft által üzemeltetett csomagokat gyakorolja. Az egyéni tartalom verziószámozásának ajánlott eljárása, hogy tartalmazza a verziót a fájl nevében.
 
-- **Verzió** : a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia a jelenleg közzétett verziónál nagyobb verziószámot.
-- **contentUri** : a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia egy URI-t a csomag helyéhez. A fájl nevében szereplő csomag verziószáma biztosítja, hogy a tulajdonság értéke az egyes kiadásokban is megváltozik.
-- **contentHash** : ezt a tulajdonságot a parancsmag automatikusan frissíti `New-GuestConfigurationPolicy` . Ez a csomag által létrehozott kivonatoló érték `New-GuestConfigurationPackage` . A tulajdonságnak megfelelőnek kell lennie a `.zip` közzétett fájlhoz. Ha csak a **contentUri** tulajdonság frissül, a bővítmény nem fogadja el a csomag tartalmát.
+- **Verzió**: a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia a jelenleg közzétett verziónál nagyobb verziószámot.
+- **contentUri**: a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia egy URI-t a csomag helyéhez. A fájl nevében szereplő csomag verziószáma biztosítja, hogy a tulajdonság értéke az egyes kiadásokban is megváltozik.
+- **contentHash**: ezt a tulajdonságot a parancsmag automatikusan frissíti `New-GuestConfigurationPolicy` . Ez a csomag által létrehozott kivonatoló érték `New-GuestConfigurationPackage` . A tulajdonságnak megfelelőnek kell lennie a `.zip` közzétett fájlhoz. Ha csak a **contentUri** tulajdonság frissül, a bővítmény nem fogadja el a csomag tartalmát.
 
 Egy frissített csomag kiadásának legegyszerűbb módja, ha megismétli a jelen cikkben ismertetett folyamatot, és megadja a verziószámot. Ez a folyamat garantálja az összes tulajdonság megfelelő frissítését.
 
@@ -518,8 +518,8 @@ Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindo
 
 A parancsmag paraméterei `Protect-GuestConfigurationPackage` :
 
-- **Elérési út** : a vendég konfigurációs csomag teljes elérési útja.
-- **Tanúsítvány** : kód aláírására szolgáló tanúsítvány a csomag aláírásához. Ez a paraméter csak Windows-tartalmak aláírása esetén támogatott.
+- **Elérési út**: a vendég konfigurációs csomag teljes elérési útja.
+- **Tanúsítvány**: kód aláírására szolgáló tanúsítvány a csomag aláírásához. Ez a paraméter csak Windows-tartalmak aláírása esetén támogatott.
 
 A GuestConfiguration-ügynök elvárja, hogy a tanúsítvány nyilvános kulcsa a Windows rendszerű gépeken és a Linux-gépek elérési útjában legyen jelen a "megbízható legfelső szintű hitelesítésszolgáltatók" szolgáltatásban `/usr/local/share/ca-certificates/extra` . Ahhoz, hogy a csomópont ellenőrizze az aláírt tartalmat, az egyéni házirend alkalmazása előtt telepítse a tanúsítvány nyilvános kulcsát a gépre. Ez a folyamat a virtuális gépen belüli bármely technikával vagy Azure Policy használatával végezhető el. [Itt](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)található egy példa erre a sablonra.
 Az Key Vault hozzáférési szabályzatnak lehetővé kell tennie a számítási erőforrás-szolgáltató számára a tanúsítványok elérését a központi telepítések során. A részletes lépésekért lásd: [Key Vault beállítása virtuális gépekhez a Azure Resource Managerban](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
@@ -532,12 +532,6 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
 A tartalom közzététele után fűzze hozzá a nevet és az értéket tartalmazó címkét az `GuestConfigPolicyCertificateValidation` `enabled` összes olyan virtuális géphez, amelynél szükség van a kód aláírására. Tekintse meg azokat a [mintákat](../samples/built-in-policies.md#tags) , amelyekkel a címkék a Azure Policy használatával méretezhetők. A címke betartása után a parancsmag használatával generált szabályzat-definíció `New-GuestConfigurationPolicy` engedélyezi a követelményt a vendég konfigurációs bővítményen keresztül.
-
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>A vendég-konfigurációs házirend hozzárendeléseinek hibaelhárítása (előzetes verzió)
-
-Egy eszköz előzetes verzióban érhető el, amely segítséget nyújt az Azure Policy vendég konfigurációs hozzárendeléseinek hibaelhárításában. Az eszköz előzetes verzióban érhető el, és közzé lett téve a PowerShell-galéria mint modul neve [vendég konfigurációs hibakereső](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
-
-Az eszköz parancsmagokkal kapcsolatos további információkért használja a PowerShell Get-Help parancsát a beépített útmutatás megjelenítéséhez. Mivel az eszköz gyakori frissítéseket kap, ez a legjobb módszer a legfrissebb információk beszerzésére.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,7 +1,7 @@
 ---
-title: Csatlakozáskezelő előzetes verziójának létrehozása – ARMClient
+title: Csatlakozáskezelő létrehozása – ARMClient
 titleSuffix: Azure Network Watcher
-description: Megtudhatja, hogyan hozhat létre a ARMClient használatával a kapcsolódási figyelőt (előzetes verzió).
+description: Megtudhatja, hogyan hozhat létre ARMClient a kapcsolódási figyelő használatával.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 5a351e550cac9edcc8ce1c54fbe5c57d012ee607
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 929a2feeb53e8903d675644dcb72b422eceb2858
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447666"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699100"
 ---
-# <a name="create-a-connection-monitor-preview-using-the-armclient"></a>Csatlakozáskezelő (előzetes verzió) létrehozása a ARMClient
+# <a name="create-a-connection-monitor-using-the-armclient"></a>ARMClient használatával létesített figyelő létrehozása
 
-Megtudhatja, hogyan hozhat létre kapcsolati figyelőt (előzetes verzió) az erőforrások közötti kommunikáció figyeléséhez a ARMClient használatával. Támogatja a hibrid és az Azure-beli Felhőbeli üzembe helyezést.
+Ismerje meg, hogyan hozhat létre kapcsolati figyelőt az erőforrások közötti kommunikáció figyeléséhez a ARMClient használatával. Támogatja a hibrid és az Azure-beli Felhőbeli üzembe helyezést.
 
 ## <a name="before-you-begin"></a>Előkészületek 
 
-A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolódó figyelőkben a helyszíni és az Azure-beli virtuális gépeket is felveheti forrásként. Ezek a kapcsolati figyelők a végpontokhoz való kapcsolódás figyelésére is használhatók. A végpontok lehetnek az Azure-ban vagy bármely más URL-címen vagy IP-címen.
+A Csatlakozáskezelőben létrehozott kapcsolódó figyelők esetében a helyszíni és az Azure-beli virtuális gépeket is felveheti forrásként. Ezek a kapcsolati figyelők a végpontokhoz való kapcsolódás figyelésére is használhatók. A végpontok lehetnek az Azure-ban vagy bármely más URL-címen vagy IP-címen.
 
-A Csatlakozáskezelő (előzetes verzió) a következő entitásokat tartalmazza:
+A Csatlakozáskezelő a következő entitásokat tartalmazza:
 
 * **Csatlakozáskezelő erőforrás** – régióra jellemző Azure-erőforrás. A következő entitások mindegyike egy Csatlakozáskezelő erőforrás tulajdonságait képezi.
 * **Endpoint (végpont** ) – a kapcsolati ellenőrzésekben részt vevő forrás vagy cél. Ilyen végpontok például az Azure-beli virtuális gépek, a helyszíni ügynökök, az URL-címek és az IP-címek.
@@ -359,7 +359,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 * Végpontok
     * név – az egyes végpontok egyedi neve
-    * resourceId – az Azure-végpontok esetében az erőforrás-azonosító a virtuális gépekhez tartozó Azure Resource Manager erőforrás-AZONOSÍTÓra hivatkozik. Nem Azure-beli végpontok esetén az erőforrás-azonosító a nem Azure-ügynökökhöz kapcsolódó Log Analytics munkaterület Azure Resource Manager-erőforrás-AZONOSÍTÓját jelöli.
+    * resourceId – az Azure-végpontok esetében az erőforrás-azonosító a virtuális gépek Azure Resource Manager erőforrás-AZONOSÍTÓJÁRA hivatkozik. Nem Azure-végpontok esetén az erőforrás-azonosító a nem Azure-ügynökökhöz társított Log Analytics munkaterület Azure Resource Manager erőforrás-AZONOSÍTÓját jelöli.
     * címe – csak akkor alkalmazható, ha nincs megadva erőforrás-azonosító, vagy ha az erőforrás-azonosító Log Analytics munkaterület. Ha Log Analytics erőforrás-AZONOSÍTÓval használja, akkor a figyeléshez használható ügynök teljes tartománynevére utal. Ha erőforrás-azonosító nélkül használja, akkor ez lehet bármely nyilvános végpont URL-címe vagy IP-címe.
     * szűrő – nem Azure-végpontok esetén a szűrő használatával válassza ki az ügynököket Log Analytics munkaterületről, amelyet a rendszer a Csatlakozáskezelő erőforrás figyeléséhez fog használni. Ha a szűrők nincsenek beállítva, akkor a Log Analytics munkaterülethez tartozó összes ügynök használható figyelésre.
         * típus – típus megadása "ügynök címe"
@@ -398,7 +398,7 @@ A hálózati figyelők a következő skálázási korlátokkal rendelkeznek:
 * Maximális források és célhelyek kapcsolatonként: 100
 * A tesztelési konfigurációk maximális száma kapcsolatonként: 20 ARMClient-n keresztül
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg [, hogyan elemezheti a figyelési és riasztási információkat](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts)
 * Útmutató a [hálózatban felmerülő problémák diagnosztizálásához](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network)

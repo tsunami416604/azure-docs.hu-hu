@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0e74b540610d3b6520f4c8e25ca2df7bf628706f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3520cbafc0e9eebfd6057fe92579a45873b25734
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410334"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698756"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure biztonsági felügyeletének és figyelésének áttekintése
 Ez a cikk áttekintést nyújt az Azure által biztosított biztonsági szolgáltatásokról és szolgáltatásokról az Azure Cloud Services és a Virtual Machines felügyeletének és figyelésének támogatásához.
 
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+## <a name="azure-role-based-access-control"></a>Azure-beli szerepköralapú hozzáférés-vezérlés
 
-A Role-Based Access Control (RBAC) részletes hozzáférés-kezelést biztosít az Azure-erőforrásokhoz. A RBAC használatával csak a feladataik elvégzéséhez szükséges hozzáférés mennyiségét adhatja meg a felhasználóknak. A RBAC segítségével biztosíthatja, hogy amikor a felhasználók elhagyják a szervezetet, elvesztik a felhőben lévő erőforrásokhoz való hozzáférést.
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) részletes hozzáférés-kezelést biztosít az Azure-erőforrásokhoz. Az Azure RBAC használatával csak a feladataik elvégzéséhez szükséges hozzáférés mennyiségét adhatja meg a felhasználóknak. Az Azure RBAC segítségével biztosíthatja, hogy amikor a felhasználók elhagyják a szervezetet, elveszítik a felhőben lévő erőforrásokhoz való hozzáférést.
 
 További információ:
 
-* [Active Directory csapat blogja a RBAC-on](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
+* [Active Directory csapat blogja az Azure RBAC](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
 * [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Kártevőirtó

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 46b1cbbd620cf2de8d875927f5745e91fcf608c5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 553cfe0c1a5e7d569c127f23a11f25f4d150b0bc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410045"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700759"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Az Azure-ban elérhető biztonsági szolgáltatások és technológiák
 
@@ -67,7 +67,7 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 |Szolgáltatás|Leírás|
 |------|--------|
-| [Azure &nbsp; - &nbsp; beli szerepköralapú &nbsp; Access Control](../../role-based-access-control/role-assignments-portal.md)|Hozzáférés-vezérlési funkció, amely lehetővé teszi, hogy a felhasználók csak azokat az erőforrásokat férhessenek hozzá, amelyekre a szervezeten belüli szerepköreik alapján van szükségük.  |
+| [Azure &nbsp; szerepköralapú hozzáférés- &nbsp; vezérlés](../../role-based-access-control/role-assignments-portal.md)|Hozzáférés-vezérlési funkció, amely lehetővé teszi, hogy a felhasználók csak azokat az erőforrásokat férhessenek hozzá, amelyekre a szervezeten belüli szerepköreik alapján van szükségük.  |
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|Egy felhőalapú hitelesítési tárház, amely több-bérlős, felhőalapú címtárat és több Identitáskezelés-kezelő szolgáltatást támogat az Azure-on belül.  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|Identitáskezelés-kezelő szolgáltatás, amely lehetővé teszi, hogy az ügyfelek regisztráljanak, jelentkezzenek be és kezeljenek profilokat Azure-alapú alkalmazások használatakor.   |
 | [Azure Active Directory tartományi szolgáltatások](../../active-directory-domain-services/overview.md)| A Active Directory tartományi szolgáltatások felhőalapú és felügyelt verziója. |
@@ -79,7 +79,7 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 | [Azure &nbsp; Backup](../../backup/backup-overview.md)| Azure-alapú szolgáltatás, amely az Azure-felhőben tárolt adatbiztonsági mentésére és helyreállítására szolgál. |
 | [Azure &nbsp; site &nbsp; Recovery](../../site-recovery/site-recovery-overview.md)|Egy online szolgáltatás, amely a fizikai és virtuális gépeken futó munkaterheléseket replikálja egy elsődleges helyről egy másodlagos helyre, hogy a meghibásodás után engedélyezze a szolgáltatások helyreállítását. |
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 |Szolgáltatás|Leírás|
 |------|--------|
 | [Hálózati &nbsp; biztonsági &nbsp; csoportok](../../virtual-network/virtual-network-vnet-plan-design-arm.md)| Egy 5 rekordos hálózati hozzáférés-vezérlési funkció, amely lehetővé teszi vagy megtagadja a döntéseket.  |

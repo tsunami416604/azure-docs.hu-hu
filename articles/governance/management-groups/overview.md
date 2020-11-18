@@ -1,15 +1,15 @@
 ---
 title: Erőforrások rendszerezése felügyeleti csoportokkal – Azure-irányítás
 description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
-ms.date: 09/22/2020
+ms.date: 11/17/2020
 ms.topic: overview
 ms.custom: contperfq1
-ms.openlocfilehash: be3369369f28930fd1ecad295a4dad4d14e75cd3
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: c48361e7f3d67c6d3eec40d5acb47917f7835db5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951876"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699593"
 ---
 # <a name="what-are-azure-management-groups"></a>Mik az Azure-beli felügyeleti csoportok?
 
@@ -150,7 +150,7 @@ A szerepkör-definíciók a felügyeleti csoport hierarchiáján belül bárhol 
 
 Vegyük például a vizualizációk hierarchiájának egy kis szakaszát.
 
-:::image type="complex" source="./media/subtree.png" alt-text="Egy példaként szolgáló felügyeleti csoport hierarchiájának ábrája." border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="A minta felügyeleti csoport hierarchiájának egy részhalmazát ábrázoló diagram." border="false":::
    A diagram a legfelső szintű felügyeleti csoportra összpontosít a gyermek I T és a marketing-felügyeleti csoportokkal. Az I T felügyeleti csoport egyetlen alárendelt felügyeleti csoporttal rendelkezik, és a marketing-felügyeleti csoportnak két ingyenes próbaverziós gyermek előfizetése van.
 :::image-end:::
 
@@ -171,7 +171,11 @@ A felügyeleti csoportok egyéni szerepköreinek használatakor korlátozások v
  - Egy új szerepkör hozzárendelhető hatókörében csak egy felügyeleti csoportot lehet definiálni. Ez a korlátozás azért van érvényben, hogy csökkentse a helyzetek számát, amikor a szerepkör-definíciók és a szerepkör-hozzárendelések le vannak választva. Ez a helyzet akkor fordul elő, ha egy szerepkör-hozzárendeléssel rendelkező előfizetés vagy felügyeleti csoport egy másik szülőhöz kerül, amely nem rendelkezik szerepkör-definícióval.  
  - Az erőforrás-szolgáltatói adatsík műveletei nem definiálhatók a felügyeleti csoport egyéni szerepköreiben. Ez a korlátozás azért van érvényben, mert késési probléma történt az adatközpont erőforrás-szolgáltatóinak frissítésével.
    Ez a késési probléma jelenleg használatban van, és ezek a műveletek le lesznek tiltva a szerepkör-definícióból a kockázatok csökkentése érdekében.
- - A Azure Resource Manager nem ellenőrzi a felügyeleti csoport létezését a szerepkör-definíció hozzárendelhető hatókörében. Ha a rendszer elküld egy elírást vagy helytelen felügyeleti csoport AZONOSÍTÓját, akkor a szerepkör-definíció továbbra is létrejön.  
+ - A Azure Resource Manager nem ellenőrzi a felügyeleti csoport létezését a szerepkör-definíció hozzárendelhető hatókörében. Ha a rendszer elküld egy elírást vagy helytelen felügyeleti csoport AZONOSÍTÓját, akkor a szerepkör-definíció továbbra is létrejön.
+
+> [!IMPORTANT]
+> A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén.
+> Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="moving-management-groups-and-subscriptions"></a>Felügyeleti csoportok és előfizetések áthelyezése 
 
@@ -194,11 +198,11 @@ Ha az előfizetés tulajdonosi szerepköre az aktuális felügyeleti csoporttól
 
 A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../azure-monitor/platform/platform-logs-overview.md). A felügyeleti csoportokkal kapcsolatos minden eseményre ugyanarról a központi helyről kereshet rá, mint más Azure-erőforrások esetében. Például megtekintheti egy adott felügyeleti csoporthoz tartozó összes szerepkör-hozzárendelés vagy szabályzat-hozzárendelés módosításait.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Egy példaként szolgáló felügyeleti csoport hierarchiájának ábrája." border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Képernyőkép a kiválasztott felügyeleti csoporttal kapcsolatos tevékenységi naplókról és műveletekről." border="false":::
 
 Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

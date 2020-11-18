@@ -3,12 +3,12 @@ title: Az Application Insights beállítása a PowerShell segítségével az Azu
 description: Automatizálja a Azure Diagnostics Application Insightsre való konfigurálását.
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.openlocfilehash: 3d0b7d1e8d4a164d517834eae877844d85b9a256
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fd69b90ce6329041f96b8e3173f1f17270f68ee
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320357"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699729"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Azure-Application Insights beállítása a PowerShell használatával Cloud Services
 
@@ -123,8 +123,8 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 ```
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [Azure Cloud Services alkalmazások figyelése az Application Insights segítségével](./cloudservices.md)
 * [Az Azure Diagnostics küldése az Application Insights-ba](../platform/diagnostics-extension-to-application-insights.md)
-* [Riasztások konfigurálásának automatizálása](powershell-alerts.md)
+
 

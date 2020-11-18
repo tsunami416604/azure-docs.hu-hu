@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 443e8c09ea46c0c20b557d77d6ed7bd63db00085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4061a3dbf4dc92d6d412528115d46edc36d20d5e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90058750"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700689"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Az IPv6 használatának áttekintése Azure Load Balancer
 
 
 >[!NOTE] 
->Ezt a tartalmat felváltotta az [IPv6 az Azure VNet – áttekintés](https://docs.microsoft.com/azure/virtual-network/ipv6-overview). Az Azure azt javasolja, hogy az új IPv6-telepítések az Azure Virtual Networks új IPv6-szolgáltatásait használják.
+>Ezt a tartalmat felváltotta az [IPv6 az Azure VNet – áttekintés](../virtual-network/ipv6-overview.md). Az Azure azt javasolja, hogy az új IPv6-telepítések az Azure Virtual Networks új IPv6-szolgáltatásait használják.
 
 >[!NOTE]
->Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. Ez a cikk az Alapszintű Load Balancert ismerteti. További információ a standard Load Balancerről: [standard Load Balancer áttekintése](load-balancer-standard-overview.md).
+>Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. Ez a cikk az Alapszintű Load Balancert ismerteti. További információ a standard Load Balancerről: [standard Load Balancer áttekintése](./load-balancer-overview.md).
 
 Az alapszintű SKU internetkapcsolattal rendelkező terheléselosztó IPv6-cím használatával telepíthető. Az IPv4-kapcsolaton kívül ez a következő képességeket teszi lehetővé:
 
@@ -40,7 +40,7 @@ Az alábbi ábrán a Azure Load Balancer IPv6-funkcióit mutatjuk be.
 
 Az üzembe helyezést követően egy IPv4-vagy IPv6-kompatibilis internetes ügyfél képes kommunikálni az Azure internetre irányuló Load Balancer nyilvános IPv4-vagy IPv6-címeivel (vagy a gazdagépekkel). A terheléselosztó a hálózati címfordítás (NAT) használatával irányítja az IPv6-csomagokat a virtuális gépek magánhálózati IPv6-címeire. Az IPv6-alapú internetes ügyfél nem tud közvetlenül kommunikálni a virtuális gépek IPv6-címeként.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A Azure Resource Manager által üzembe helyezett virtuális gépek natív IPv6-támogatása a következőket biztosítja:
 

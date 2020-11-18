@@ -1,7 +1,7 @@
 ---
-title: Csatlakozáskezelő előzetes verziójának létrehozása – Azure Portal
+title: Csatlakozáskezelő létrehozása – Azure Portal
 titleSuffix: Azure Network Watcher
-description: Ez a cikk azt ismerteti, hogyan lehet figyelőt létrehozni a kapcsolódási figyelő előzetes verziójában a Azure Portal használatával.
+description: Ez a cikk azt ismerteti, hogyan lehet figyelőt létrehozni a kapcsolódási figyelőben a Azure Portal használatával.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 97d20f2b6b7b355ea5c810ad46b084f42b9bd6d1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8c4df64334957a78fcf05c11625335214f8e032a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447701"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699372"
 ---
-# <a name="create-a-monitor-in-connection-monitor-preview-by-using-the-azure-portal"></a>Figyelő létrehozása a Csatlakozáskezelő előzetes verziójában a Azure Portal használatával
+# <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Figyelő létrehozása a Csatlakozáskezelő Azure Portal használatával
 
-Ismerje meg, hogyan figyelheti az erőforrások közötti kommunikációt a Csatlakozáskezelő előzetes verziójának használatával. Ez a cikk azt ismerteti, hogyan lehet figyelőt létrehozni a Azure Portal használatával. A kapcsolódási figyelő támogatja a hibrid és az Azure-beli Felhőbeli üzembe helyezést.
+Ismerje meg, hogyan figyelheti az erőforrások közötti kommunikációt a kapcsolat figyelője használatával. Ez a cikk azt ismerteti, hogyan lehet figyelőt létrehozni a Azure Portal használatával. A kapcsolódási figyelő támogatja a hibrid és az Azure-beli Felhőbeli üzembe helyezést.
 
 ## <a name="before-you-begin"></a>Előkészületek 
 
-A Csatlakozáskezelő előzetes verziójával létrehozott kapcsolódó figyelők esetében a helyszíni és az Azure-beli virtuális gépeket is felveheti forrásként. Ezek a kapcsolati figyelők a végpontokhoz való kapcsolódás figyelésére is használhatók. A végpontok lehetnek az Azure-ban vagy bármely más URL-címen vagy IP-címen.
+A Csatlakozáskezelő használatával létrehozott-figyelővel a helyszíni és az Azure-beli virtuális gépeket is felveheti forrásként. Ezek a kapcsolati figyelők a végpontokhoz való kapcsolódás figyelésére is használhatók. A végpontok lehetnek az Azure-ban vagy bármely más URL-címen vagy IP-címen.
 
 Íme néhány definíció a kezdéshez:
 
@@ -47,25 +47,25 @@ A Csatlakozáskezelő előzetes verziójával létrehozott kapcsolódó figyelő
 
 ## <a name="create-a-connection-monitor"></a>Kapcsolatfigyelő létrehozása
 
-Figyelő létrehozása a kapcsolódási figyelő előzetes verziójában a Azure Portal használatával:
+Figyelő létrehozása a kapcsolódási figyelőben a Azure Portal használatával:
 
 1. A Azure Portal kezdőlapján válassza a **Network Watcher** lehetőséget.
-1. A bal oldali ablaktábla **figyelés** területén válassza a **Csatlakozáskezelő (előzetes verzió)** lehetőséget.
+1. A bal oldali ablaktábla **figyelés** területén válassza a **Csatlakozáskezelő** lehetőséget.
 
-   Ekkor megjelenik az összes, a Csatlakozáskezelő előzetes verziójában létrehozott-figyelő. A klasszikus kapcsolódási figyelőben létrehozott kapcsolódási figyelők megjelenítéséhez nyissa meg a **kapcsolódási figyelő** lapot.
+   Ekkor megjelenik az összes, a Csatlakozáskezelőben létrehozott figyelő. A klasszikus kapcsolódási figyelőben létrehozott kapcsolódási figyelők megjelenítéséhez nyissa meg a **kapcsolódási figyelő** lapot.
 
-   :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Képernyőkép, amely megjeleníti a Csatlakozáskezelő előzetes verziójában létrehozott kapcsolatokat figyelőket.":::
+   :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Képernyőkép, amely megjeleníti a Csatlakozáskezelő szolgáltatásban létrehozott figyelőket.":::
    
     
-1. A **Csatlakozáskezelő (előzetes verzió)** irányítópultján, a bal felső sarokban kattintson a **Létrehozás** elemre.
+1. A **Csatlakozáskezelő** irányítópultjának bal felső sarkában válassza a **Létrehozás** elemet.
 
    
 
 1. Az **alapvető beállítások** lapon adja meg a Csatlakozáskezelő adatait: 
-   * **Csatlakozáskezelő neve** : adja meg a Csatlakozáskezelő nevét. Használja az Azure-erőforrások szabványos elnevezési szabályait.
-   * **Előfizetés** : válasszon egy előfizetést a Csatlakozáskezelő számára.
-   * **Régió** : válasszon régiót a kapcsolatok figyelője számára. Csak az ebben a régióban létrehozott forrás virtuális gépeket lehet kiválasztani.
-   * **Munkaterület konfigurációja** : válasszon ki egy egyéni munkaterületet vagy az alapértelmezett munkaterületet. A munkaterület tárolja a figyelési adatait.
+   * **Csatlakozáskezelő neve**: adja meg a Csatlakozáskezelő nevét. Használja az Azure-erőforrások szabványos elnevezési szabályait.
+   * **Előfizetés**: válasszon egy előfizetést a Csatlakozáskezelő számára.
+   * **Régió**: válasszon régiót a kapcsolatok figyelője számára. Csak az ebben a régióban létrehozott forrás virtuális gépeket lehet kiválasztani.
+   * **Munkaterület konfigurációja**: válasszon ki egy egyéni munkaterületet vagy az alapértelmezett munkaterületet. A munkaterület tárolja a figyelési adatait.
        * Az alapértelmezett munkaterület használatához jelölje be a jelölőnégyzetet. 
        * Egyéni munkaterület kiválasztásához törölje a jelet a jelölőnégyzetből. Ezután válassza ki az előfizetést és a régiót az egyéni munkaterülethez. 
 
@@ -86,13 +86,13 @@ Figyelő létrehozása a kapcsolódási figyelő előzetes verziójában a Azure
 1. A **felülvizsgálat + létrehozás** lapon tekintse át az alapszintű információkat és a tesztelési csoportokat a Csatlakozáskezelő létrehozása előtt. Ha szerkesztenie kell a kapcsolódási figyelőt, a megfelelő lapokra visszalépve megteheti. 
    :::image type="content" source="./media/connection-monitor-2-preview/review-create-cm.png" alt-text="A Csatlakozáskezelő áttekintés + létrehozás lapját bemutató képernyőkép.":::
    > [!NOTE] 
-   > A **felülvizsgálat + létrehozás** lapon a Csatlakozáskezelő előzetes verziójának havi díja látható. Jelenleg a **jelenlegi költség/hónap** oszlop nem számít fel díjat. Ha a kapcsolódási figyelő általánosan elérhetővé válik, ebben az oszlopban a havi díj jelenik meg. 
+   > A **felülvizsgálat + létrehozás** lapon látható a havi díj a csatlakoztatási figyelő szakaszában. Jelenleg a **jelenlegi költség/hónap** oszlop nem számít fel díjat. Ha a kapcsolódási figyelő általánosan elérhetővé válik, ebben az oszlopban a havi díj jelenik meg. 
    > 
-   > Még a Csatlakozáskezelő előzetes verziójának fázisában is Log Analytics a betöltési díjak.
+   > Még a kapcsolatok figyelési fázisa alatt is Log Analytics betöltési díjat.
 
 1. Amikor készen áll a kapcsolódási figyelő létrehozására, a **felülvizsgálat + létrehozás** lap alján válassza a **Létrehozás** lehetőséget.
 
-A Csatlakozáskezelő előzetes verziója létrehozza a figyelő erőforrást a háttérben.
+A Csatlakozáskezelő a háttérben létrehozza a figyelő erőforrást.
 
 ## <a name="create-test-groups-in-a-connection-monitor"></a>Tesztelési csoportok létrehozása egy figyelőben
 
@@ -100,9 +100,9 @@ A-figyelő minden egyes tesztelési csoportja olyan forrásokat és célhelyeket
 
 A Azure Portalban a tesztkörnyezet létrehozásához a következő mezők értékeit kell megadnia:
 
-* **Tesztelési csoport letiltása** : Ha bejelöli ezt a jelölőnégyzetet, letilthatja az összes olyan forrás és cél figyelését, amelyet a tesztelési csoport meghatároz. Ez a beállítás alapértelmezés szerint nincs bejelölve.
-* **Név** : nevezze el a tesztelési csoportot.
-* **Források** : az Azure-beli virtuális gépeket és a helyszíni gépeket forrásként is megadhatja, ha az ügynökök telepítve vannak rajtuk. A forráshoz tartozó ügynök telepítésével kapcsolatos további tudnivalókért lásd: [figyelési ügynökök telepítése](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
+* **Tesztelési csoport letiltása**: Ha bejelöli ezt a jelölőnégyzetet, letilthatja az összes olyan forrás és cél figyelését, amelyet a tesztelési csoport meghatároz. Ez a beállítás alapértelmezés szerint nincs bejelölve.
+* **Név**: nevezze el a tesztelési csoportot.
+* **Források**: az Azure-beli virtuális gépeket és a helyszíni gépeket forrásként is megadhatja, ha az ügynökök telepítve vannak rajtuk. A forráshoz tartozó ügynök telepítésével kapcsolatos további tudnivalókért lásd: [figyelési ügynökök telepítése](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
    * Azure-ügynökök kiválasztásához válassza az **Azure-végpontok** fület. Itt csak a kapcsolódási figyelő létrehozásakor megadott régióhoz kötött virtuális gépek jelennek meg. Alapértelmezés szerint a virtuális gépek a hozzájuk tartozó előfizetésbe vannak csoportosítva. Ezek a csoportok össze vannak csukva. 
    
        Az **előfizetések** szintjéről a hierarchiában lévő többi szintre is lebonthatja a részletezést:
@@ -127,7 +127,7 @@ A Azure Portalban a tesztkörnyezet létrehozásához a következő mezők ért�
    
    * Amikor befejezte a források beállítását, kattintson a **kész** gombra a lap alján. Az alapszintű tulajdonságokat, például a végpont nevét továbbra is szerkesztheti, ha kiválasztja a végpontot a **test Group (tesztelési csoport létrehozása** ) nézetben. 
 
-* **Célhelyek** : az Azure-beli virtuális gépekkel, a helyszíni géppel vagy bármely végponttal (egy nyilvános IP-címmel, URL-lel vagy teljes tartománynévvel) való kapcsolat figyeléséhez célként kell megadnia. Egyetlen tesztelési csoportban Azure-beli virtuális gépeket, helyszíni számítógépeket, Office 365 URL-címeket, Dynamics 365 URL-címeket és egyéni végpontokat adhat hozzá.
+* **Célhelyek**: az Azure-beli virtuális gépekkel, a helyszíni géppel vagy bármely végponttal (egy nyilvános IP-címmel, URL-lel vagy teljes tartománynévvel) való kapcsolat figyeléséhez célként kell megadnia. Egyetlen tesztelési csoportban Azure-beli virtuális gépeket, helyszíni számítógépeket, Office 365 URL-címeket, Dynamics 365 URL-címeket és egyéni végpontokat adhat hozzá.
 
     * Az Azure-beli virtuális gépek célhelyként való kiválasztásához válassza az **Azure-végpontok** fület. Alapértelmezés szerint az Azure-beli virtuális gépek olyan előfizetési hierarchiába vannak csoportosítva, amely abban a régióban van, amelyet a **Csatlakozáskezelő létrehozása** az **alapok** lapon kiválasztott. Módosíthatja a régiót, és kiválaszthatja az Azure-beli virtuális gépeket az új régióból. Ezután az **előfizetések** szintjéről a hierarchia más szintjeire is kibonthat, ugyanúgy, mint a forrás Azure-végpontok beállításakor.
 
@@ -155,18 +155,18 @@ A Azure Portalban a tesztkörnyezet létrehozásához a következő mezők ért�
     * A legutóbb használt végpontok kiválasztásához lépjen a **legutóbbi végpont**   lapra.
     * Amikor befejezte a célhelyek kiválasztását, válassza a **kész** lehetőséget. Az alapszintű tulajdonságokat, például a végpont nevét továbbra is szerkesztheti, ha kiválasztja a végpontot a **test Group (tesztelési csoport létrehozása** ) nézetben. 
 
-* **Tesztelési konfigurációk** : hozzáadhat egy vagy több tesztelési csoportot. Hozzon létre egy új teszt-konfigurációt az **Új konfiguráció** lapon. Vagy adjon meg egy másik tesztelési csoportból származó teszt-konfigurációt a **meglévő kiválasztása** lapról.
+* **Tesztelési konfigurációk**: hozzáadhat egy vagy több tesztelési csoportot. Hozzon létre egy új teszt-konfigurációt az **Új konfiguráció** lapon. Vagy adjon meg egy másik tesztelési csoportból származó teszt-konfigurációt a **meglévő kiválasztása** lapról.
 
-    * **Teszt konfigurációjának neve** : nevezze el a teszt konfigurációját.
-    * **Protokoll** : válassza a **TCP** , az **ICMP** vagy a **http** lehetőséget. A HTTP HTTPS-re való módosításához válassza a **http** protokollt, majd válassza a **443** portot.
-        * **TCP-teszt konfigurációjának létrehozása** : Ez a jelölőnégyzet csak akkor jelenik meg, ha a **protokoll** listában a **http** elemet választja. Jelölje be ezt a jelölőnégyzetet egy olyan tesztelési konfiguráció létrehozásához, amely ugyanazokat a forrásokat és célhelyeket használja, mint amelyeket a konfigurációban máshol adott meg. Az új teszt-konfiguráció neve **\<name of test configuration> _networkTestConfig**.
-        * **Traceroute letiltása** : Ez a jelölőnégyzet akkor érvényes, ha a protokoll TCP vagy ICMP. Jelölje be ezt a jelölőnégyzetet, ha le szeretné állítani, hogy a források felfedjék a topológiát és a hop-by-hop RTT.
-    * **Célport** : megadhatja a kívánt cél portot.
-        * **Figyelés a porton** : Ez a jelölőnégyzet akkor érvényes, ha a protokoll TCP. Jelölje be ezt a jelölőnégyzetet a kiválasztott TCP-port megnyitásához, ha még nincs megnyitva. 
-    * **Tesztelési gyakoriság** : ebben a listában megadhatja, hogy a források milyen gyakran fognak pingelni a protokollon és a megadott porton. 30 másodpercet, 1 percet, 5 percet, 15 percet vagy 30 percet is kiválaszthat. Válassza az **Egyéni** lehetőséget, ha egy másik, 30 másodperc és 30 perc közötti gyakoriságot szeretne megadni. A források a választott érték alapján próbálják meg a célokhoz való kapcsolódást. Ha például 30 másodpercet választ, a források 30 másodpercenként legalább egyszer megkeresik a kapcsolatot a célhoz.
-    * **Sikerességi küszöb** : a következő hálózati paraméterek küszöbértékeit állíthatja be:
-       * Az **ellenőrzések sikertelenek** : állítsa be, hogy az ellenőrzések hány százalékát kell megadnia, ha a források a megadott feltételekkel ellenőrzik a csatlakozást a célhelyekhez. A TCP vagy az ICMP protokoll esetében a sikertelen ellenőrzések százalékaránya a csomagok elvesztésének százalékában adható meg. HTTP protokoll esetén ez az érték a válasz nélküli HTTP-kérelmek százalékos arányát jelöli.
-       * **Oda** -és bekapcsolási idő: állítsa be azt az RTT (ezredmásodpercben), hogy mennyi ideig lehet a forrás csatlakozni a célhoz a tesztelési konfiguráción keresztül.
+    * **Teszt konfigurációjának neve**: nevezze el a teszt konfigurációját.
+    * **Protokoll**: válassza a **TCP**, az **ICMP** vagy a **http** lehetőséget. A HTTP HTTPS-re való módosításához válassza a **http** protokollt, majd válassza a **443** portot.
+        * **TCP-teszt konfigurációjának létrehozása**: Ez a jelölőnégyzet csak akkor jelenik meg, ha a **protokoll** listában a **http** elemet választja. Jelölje be ezt a jelölőnégyzetet egy olyan tesztelési konfiguráció létrehozásához, amely ugyanazokat a forrásokat és célhelyeket használja, mint amelyeket a konfigurációban máshol adott meg. Az új teszt-konfiguráció neve **\<name of test configuration> _networkTestConfig**.
+        * **Traceroute letiltása**: Ez a jelölőnégyzet akkor érvényes, ha a protokoll TCP vagy ICMP. Jelölje be ezt a jelölőnégyzetet, ha le szeretné állítani, hogy a források felfedjék a topológiát és a hop-by-hop RTT.
+    * **Célport**: megadhatja a kívánt cél portot.
+        * **Figyelés a porton**: Ez a jelölőnégyzet akkor érvényes, ha a protokoll TCP. Jelölje be ezt a jelölőnégyzetet a kiválasztott TCP-port megnyitásához, ha még nincs megnyitva. 
+    * **Tesztelési gyakoriság**: ebben a listában megadhatja, hogy a források milyen gyakran fognak pingelni a protokollon és a megadott porton. 30 másodpercet, 1 percet, 5 percet, 15 percet vagy 30 percet is kiválaszthat. Válassza az **Egyéni** lehetőséget, ha egy másik, 30 másodperc és 30 perc közötti gyakoriságot szeretne megadni. A források a választott érték alapján próbálják meg a célokhoz való kapcsolódást. Ha például 30 másodpercet választ, a források 30 másodpercenként legalább egyszer megkeresik a kapcsolatot a célhoz.
+    * **Sikerességi küszöb**: a következő hálózati paraméterek küszöbértékeit állíthatja be:
+       * Az **ellenőrzések sikertelenek**: állítsa be, hogy az ellenőrzések hány százalékát kell megadnia, ha a források a megadott feltételekkel ellenőrzik a csatlakozást a célhelyekhez. A TCP vagy az ICMP protokoll esetében a sikertelen ellenőrzések százalékaránya a csomagok elvesztésének százalékában adható meg. HTTP protokoll esetén ez az érték a válasz nélküli HTTP-kérelmek százalékos arányát jelöli.
+       * **Oda**-és bekapcsolási idő: állítsa be azt az RTT (ezredmásodpercben), hogy mennyi ideig lehet a forrás csatlakozni a célhoz a tesztelési konfiguráción keresztül.
        
    :::image type="content" source="./media/connection-monitor-2-preview/add-test-config.png" alt-text="Képernyőkép, amely bemutatja, hol kell beállítani a tesztelési konfigurációt a kapcsolódási figyelőben.":::
        
@@ -176,17 +176,17 @@ Riasztásokat állíthat be a tesztelési konfigurációkban beállított küsz�
 
 A Azure Portal a riasztások létrehozásához a kapcsolódási figyelőhöz a következő mezők értékeit kell megadnia: 
 
-- **Riasztás létrehozása** : Ha bejelöli ezt a jelölőnégyzetet, a rendszer metrikai riasztást hoz létre Azure monitorban. Ha bejelöli ezt a jelölőnégyzetet, a többi mező is engedélyezve lesz a szerkesztéshez. A riasztásra vonatkozó további díjak a [riasztások díjszabása](https://azure.microsoft.com/pricing/details/monitor/)alapján lesznek érvényesek. 
+- **Riasztás létrehozása**: Ha bejelöli ezt a jelölőnégyzetet, a rendszer metrikai riasztást hoz létre Azure monitorban. Ha bejelöli ezt a jelölőnégyzetet, a többi mező is engedélyezve lesz a szerkesztéshez. A riasztásra vonatkozó további díjak a [riasztások díjszabása](https://azure.microsoft.com/pricing/details/monitor/)alapján lesznek érvényesek. 
 
-- **Hatókör**  >  **Erőforrás**  >  **Hierarchia** : a rendszer automatikusan kitölti ezeket az értékeket az **alapok** lapon megadott értékek alapján.
+- **Hatókör**  >  **Erőforrás**  >  **Hierarchia**: a rendszer automatikusan kitölti ezeket az értékeket az **alapok** lapon megadott értékek alapján.
 
-- **Feltétel neve** : a riasztás a `Test Result(preview)` metrikán jön létre. Ha a figyelő teszt eredménye sikertelen, akkor a riasztási szabály tüzet fog okozni. 
+- **Feltétel neve**: a riasztás a `Test Result(preview)` metrikán jön létre. Ha a figyelő teszt eredménye sikertelen, akkor a riasztási szabály tüzet fog okozni. 
 
-- **Műveleti csoport neve** : közvetlenül is megadhatja az e-mail-címet, vagy létrehozhat riasztásokat a műveleti csoportok használatával. Ha közvetlenül adja meg az e-mail-címét, létrejön egy **NPM E-mail ActionGroup** nevű műveleti csoport. A rendszer hozzáadja az e-mail-azonosítót a műveleti csoporthoz. Ha a műveleti csoportok használata mellett dönt, ki kell választania egy korábban létrehozott műveleti csoportot. A műveleti csoportok létrehozásával kapcsolatos további információkért lásd: [create Action groups in the Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups). A riasztás létrehozása után [kezelheti a riasztásokat](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal). 
+- **Műveleti csoport neve**: közvetlenül is megadhatja az e-mail-címet, vagy létrehozhat riasztásokat a műveleti csoportok használatával. Ha közvetlenül adja meg az e-mail-címét, létrejön egy **NPM E-mail ActionGroup** nevű műveleti csoport. A rendszer hozzáadja az e-mail-azonosítót a műveleti csoporthoz. Ha a műveleti csoportok használata mellett dönt, ki kell választania egy korábban létrehozott műveleti csoportot. A műveleti csoportok létrehozásával kapcsolatos további információkért lásd: [create Action groups in the Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups). A riasztás létrehozása után [kezelheti a riasztásokat](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal). 
 
-- **Riasztási szabály neve** : a Csatlakozáskezelő neve.
+- **Riasztási szabály neve**: a Csatlakozáskezelő neve.
 
-- **Szabály engedélyezése létrehozáskor** : jelölje be ezt a jelölőnégyzetet, ha engedélyezni szeretné a riasztási szabályt a feltétel alapján. Tiltsa le ezt a jelölőnégyzetet, ha engedélyezni szeretné a szabályt anélkül, hogy engedélyezve lenne. 
+- **Szabály engedélyezése létrehozáskor**: jelölje be ezt a jelölőnégyzetet, ha engedélyezni szeretné a riasztási szabályt a feltétel alapján. Tiltsa le ezt a jelölőnégyzetet, ha engedélyezni szeretné a szabályt anélkül, hogy engedélyezve lenne. 
 
 :::image type="content" source="./media/connection-monitor-2-preview/create-alert-filled.png" alt-text="A figyelő riasztás létrehozása lapját megjelenítő képernyőkép.":::
 
@@ -199,7 +199,7 @@ A hálózati figyelők a következő skálázási korlátokkal rendelkeznek:
 * Maximális források és célhelyek kapcsolatonként: 100
 * A tesztelési konfigurációk maximális száma kapcsolatonként: 2 a Azure Portalon keresztül
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg [, hogyan elemezheti a figyelési információkat, és hogyan állíthat be riasztásokat](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts).
 * Ismerje meg [, hogyan diagnosztizálhatja a hálózattal kapcsolatos problémákat](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network).

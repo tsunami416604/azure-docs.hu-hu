@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: 41c90bb58e6ece968f8e2bf211a14e4e4e98211f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a029ee79019c958eaf240a4656c96c6e1848f04d
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910865"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700324"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához ARM-sablon használatával
 
@@ -76,7 +76,7 @@ az deployment group create \
 
 :::image type="content" source="media/quickstart-load-balancer-standard-internal-template/verify-creation.png" alt-text="Felhasználói Azure Portal az erőforrások létrehozásának ellenőrzéséhez." border="true":::
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást.
 
@@ -90,4 +90,4 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

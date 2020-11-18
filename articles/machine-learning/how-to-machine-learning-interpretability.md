@@ -1,7 +1,7 @@
 ---
 title: Modell értelmezése Azure Machine Learningban (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogy a modell miért teszi a jóslatokat az Azure Machine Learning SDK használatával. A képzés során felhasználható, hogy megtudja, hogyan teszi lehetővé a modell előrejelzéseit.
+description: Megtudhatja, hogyan értelmezheti & a gépi tanulási modell előrejelzéseit az Azure Machine Learning Python SDK-val való & következtetések betanítása során.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: f98e18abb8ba06ea632ee9c63c1a726879e825d2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: dff0aeaf84ce87ed728d333cb68aee3a349bc111
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311507"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699389"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Modell értelmezése Azure Machine Learningban (előzetes verzió)
 

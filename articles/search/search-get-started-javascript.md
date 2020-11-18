@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5ccbe1035c5cc73993e069c7683d6b15ae18e21c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 0e1b7aa0eb56d5668b6561b36a0f63e719974573
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795944"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698896"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a JavaScript SDK használatával
 > [!div class="op_single_selector"]
@@ -24,10 +24,10 @@ ms.locfileid: "92795944"
 > * [Portál](search-get-started-portal.md)
 > * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
 
-A [JavaScript/TYPSCRIPT SDK for Azure Cognitive Search](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) használatával létrehozhat egy Node.js alkalmazást a JavaScriptben, amely egy keresési indexet hoz létre, tölt be és kérdez le.
+A [JavaScript/TYPSCRIPT SDK for Azure Cognitive Search](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme) használatával létrehozhat egy Node.js alkalmazást a JavaScriptben, amely egy keresési indexet hoz létre, tölt be és kérdez le.
 
 Ez a cikk bemutatja, hogyan hozhatja létre az alkalmazás lépéseit. Azt is megteheti, hogy [letölti a forráskódot és](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) az adatforrást, és futtatja az alkalmazást a parancssorból.
 
@@ -58,7 +58,7 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
 2. A **Beállítások**  >  **kulcsainál** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó teljes jogosultságokról, ha objektumokat hoz létre vagy töröl. Két felcserélhető elsődleges és másodlagos kulcs van. Bármelyiket használhatja.
 
-   ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
+   ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-rest/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -80,7 +80,7 @@ Először nyissa meg a VS Code és annak [integrált terminálját](https://code
     ```
      Fogadja el az alapértelmezett értékeket, kivéve a licencet, amelyet a "MIT" értékre kell beállítani. 
 
-3. Telepítse `@azure/search-documents` , a [JavaScript/Typscript SDK for Azure Cognitive Search](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest).
+3. Telepítse `@azure/search-documents` , a [JavaScript/Typscript SDK for Azure Cognitive Search](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme).
 
     ```cmd
     npm install @azure/search-documents
@@ -597,7 +597,7 @@ console.log(`HotelId: ${documentResult.HotelId}; HotelName: ${documentResult.Hot
 
 Futtassa a programot a alkalmazással `node index.js` . Az előző lépéseken kívül a rendszer elküldi a lekérdezéseket és a konzolra írt eredményeket.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
