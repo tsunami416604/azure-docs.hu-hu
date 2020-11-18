@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 53deb7dc853de969ad6b6679ee728a3f132b6309
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f3e43a6b72d8de25de3220a9a6ac4e0b3986a467
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759078"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701806"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Gyors útmutató: keresési index létrehozása a Azure.Search.Documents ügyféloldali kódtár használatával
 
@@ -50,9 +50,9 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-2. A **Beállítások**  >  **kulcsainál**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó teljes jogosultságokról, ha objektumokat hoz létre vagy töröl. Két felcserélhető elsődleges és másodlagos kulcs van. Bármelyiket használhatja.
+2. A **Beállítások**  >  **kulcsainál** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó teljes jogosultságokról, ha objektumokat hoz létre vagy töröl. Két felcserélhető elsődleges és másodlagos kulcs van. Bármelyiket használhatja.
 
-   ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
+   ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-rest/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -60,7 +60,7 @@ Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes k
 
 A projekt létrehozása után adja hozzá az ügyféloldali kódtárat. A [Azure.Search.Documents csomag](https://www.nuget.org/packages/Azure.Search.Documents/) egy olyan ügyféloldali függvénytárból áll, amely biztosítja a .net-beli keresési szolgáltatással való együttműködéshez használt összes API-t.
 
-1. Az **eszközök**  >  **NuGet csomagkezelő**területén válassza a **NuGet-csomagok kezelése megoldást..**. lehetőséget. 
+1. Az **eszközök**  >  **NuGet csomagkezelő** területén válassza a **NuGet-csomagok kezelése megoldást..**. lehetőséget. 
 
 1. Kattintson a **Browse** (Tallózás) gombra.
 
@@ -70,7 +70,7 @@ A projekt létrehozása után adja hozzá az ügyféloldali kódtárat. A [Azure
 
 ### <a name="create-a-search-client"></a>Keresési ügyfél létrehozása
 
-1. A **program.cs**módosítsa a névteret, `AzureSearch.SDK.Quickstart.v11` majd adja hozzá a következő `using` irányelveket.
+1. A **program.cs** módosítsa a névteret, `AzureSearch.SDK.Quickstart.v11` majd adja hozzá a következő `using` irányelveket.
 
    ```csharp
    using Azure;
@@ -106,7 +106,7 @@ Ebben a példában a Azure.Search.Documents könyvtár szinkron metódusait hasz
 
 1. Adjon hozzá egy üres osztály-definíciót a projekthez: **Hotel.cs**
 
-1. A **Hotel.cs**határozza meg a szállodai dokumentumok szerkezetét.
+1. A **Hotel.cs** határozza meg a szállodai dokumentumok szerkezetét.
 
     ```csharp
     using System;

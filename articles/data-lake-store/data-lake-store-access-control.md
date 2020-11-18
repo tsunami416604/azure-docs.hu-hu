@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190154"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701449"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1-ben
 
@@ -144,7 +144,7 @@ A tulajdonoscsoportot megváltoztathatja:
 > [!NOTE]
 > A tulajdonoscsoport *nem* változtathatja meg egy fájl vagy mappa ACL-eit.
 >
-> Az 2018-on vagy azt megelőzően létrehozott fiókokhoz a tulajdonos csoportot arra a felhasználóra állították be, aki létrehozta a fiókot az **1. eset**esetén a gyökérmappa esetében.  Egyetlen felhasználói fiók nem érvényes a tulajdonos csoporton keresztüli engedélyek biztosításához, így ez az alapértelmezett beállítás nem biztosít engedélyeket. Ezt az engedélyt egy érvényes felhasználói csoporthoz rendelheti hozzá.
+> Az 2018-on vagy azt megelőzően létrehozott fiókokhoz a tulajdonos csoportot arra a felhasználóra állították be, aki létrehozta a fiókot az **1. eset** esetén a gyökérmappa esetében.  Egyetlen felhasználói fiók nem érvényes a tulajdonos csoporton keresztüli engedélyek biztosításához, így ez az alapértelmezett beállítás nem biztosít engedélyeket. Ezt az engedélyt egy érvényes felhasználói csoporthoz rendelheti hozzá.
 
 
 ## <a name="access-check-algorithm"></a>Hozzáférés-ellenőrzési algoritmus
@@ -194,7 +194,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>A maszk
 
-Ahogy az a hozzáférés-ellenőrzési algoritmusban is látható, a maszk korlátozza a **megnevezett felhasználók**, a **tulajdonos csoport**és a **nevesített csoportok**hozzáférését.  
+Ahogy az a hozzáférés-ellenőrzési algoritmusban is látható, a maszk korlátozza a **megnevezett felhasználók**, a **tulajdonos csoport** és a **nevesített csoportok** hozzáférését.  
 
 > [!NOTE]
 > Új Data Lake Storage Gen1 fiók esetén a gyökérmappa ("/") hozzáférési ACL-jéhez tartozó maszk alapértelmezés szerint RWX.
@@ -216,7 +216,7 @@ Az új fájlok vagy mappák meglévő mappában történő létrehozásakor a sz
 
 ### <a name="umask"></a>umask
 
-Fájl vagy mappa létrehozásakor a rendszer a umask használatával módosítja az alapértelmezett ACL-ek beállítását az alárendelt elemen. a umask egy 9 bites érték a szülő mappákban, amelyek RWX értéket tartalmaznak a **tulajdonos felhasználó**, a **tulajdonos csoport**és a **többi**számára.
+Fájl vagy mappa létrehozásakor a rendszer a umask használatával módosítja az alapértelmezett ACL-ek beállítását az alárendelt elemen. a umask egy 9 bites érték a szülő mappákban, amelyek RWX értéket tartalmaznak a **tulajdonos felhasználó**, a **tulajdonos csoport** és a **többi** számára.
 
 A Azure Data Lake Storage Gen1 umask egy állandó érték, amely a 007-re van állítva. Ez az érték a következőre van lefordítva
 
@@ -280,7 +280,11 @@ Az ACL-ek bejegyzéseinek tárolása olyan GUID azonosítókként történik, am
 
 ### <a name="why-do-i-sometimes-see-guids-in-the-acls-when-im-using-the-azure-portal"></a>Miért látok néha GUID azonosítókat az ACL-eken, amikor az Azure Portalt használom?
 
-Ha a felhasználó már nem létezik az Azure AD-ben, egy GUID lesz látható. Ez általában akkor történik, ha a felhasználó elhagyta a vállalatot, vagy törölve lett a fiókja az Azure AD-ben.
+Ha a felhasználó már nem létezik az Azure AD-ben, egy GUID lesz látható. Ez általában akkor történik, ha a felhasználó elhagyta a vállalatot, vagy törölve lett a fiókja az Azure AD-ben. Győződjön meg arról is, hogy a megfelelő azonosítót használja az ACL-ek beállításához (az alábbi részleteket részletezve).
+
+### <a name="when-using-service-principal-what-id-should-i-use-to-set-acls"></a>Az egyszerű szolgáltatásnév használata esetén milyen azonosítót kell használnia az ACL-ek beállításához?
+
+Az Azure Portalon lépjen a **Azure Active Directory-> vállalati alkalmazások** elemre, és válassza ki az alkalmazást. Az **Áttekintés** lapon meg kell jelennie az objektum azonosítójának, és ezt kell használni, ha ACL-eket adnak hozzá az adateléréshez (és nem az alkalmazás-azonosítóhoz).
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Támogatja Data Lake Storage Gen1 az ACL-ek öröklését?
 
@@ -297,6 +301,6 @@ Nem, az alapértelmezett ACL-ek azonban használhatók a szülő mappán belül 
 * [POSIX ACL Ubuntu rendszeren](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Hozzáférés-vezérlési listákat használó ACL Linux rendszeren](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)

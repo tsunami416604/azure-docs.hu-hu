@@ -1,5 +1,5 @@
 ---
-title: Mi a csoportos adatelemzési folyamat?
+title: Mi az a csoportos adatelemzési folyamat?
 description: Adatelemzési módszert biztosít a prediktív elemzési megoldások és intelligens alkalmazások továbbításához.
 services: machine-learning
 author: marktab
@@ -8,17 +8,17 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: overview
-ms.date: 1/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc9a5e604e6ac52eb0e853725123272ca924fa36
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4a341d33c957af8fe7423bda80f1d34a7f59cdd6
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91362231"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737999"
 ---
-# <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
+# <a name="what-is-the-team-data-science-process"></a>Mi az a csoportos adatelemzési folyamat?
 
 A csoportos adatelemzési folyamat (TDSP) egy agilis, ismétlődő adatelemzési módszer, amely hatékony prediktív elemzési megoldások és intelligens alkalmazások gyors megvalósítása érdekében. A TDSP segít a csapatmunka és a tanulás fejlesztésében azzal, hogy a csapat szerepkörei hogyan működnek együtt a legjobban. A TDSP a Microsoft és más iparági vezetők által ajánlott eljárásokat és struktúrákat tartalmaz, amelyek segítenek az adatelemzési kezdeményezések sikeres megvalósításában. A cél a vállalatok segítése az elemzési programjuk előnyeinek teljes körű megvalósításában.
 
@@ -49,7 +49,7 @@ Az életciklus a projektek jellemzően végrehajtandó főbb szakaszait vázolja
 * **Modellezés**
 * **Üzembe helyezés**
 
-Itt látható a **csoportos adatelemzési folyamat életciklusának**vizuális ábrázolása. 
+Itt látható a **csoportos adatelemzési folyamat életciklusának** vizuális ábrázolása. 
 
 ![A diagramon az adatelemzési életciklus látható, beleértve az üzleti megértést, az adatgyűjtést, a modellezést és az üzembe helyezést.](./media/overview/tdsp-lifecycle2.png) 
 
@@ -100,9 +100,9 @@ Az elemzési és tárolási infrastruktúrát, ahol a nyers és a feldolgozott a
 
 ## <a name="tools-and-utilities-for-project-execution"></a>A projekt végrehajtásához szükséges eszközök és segédprogramok
 
-A legtöbb szervezet folyamatainak bevezetése kihívást jelent. Az adatelemzési folyamat és az életciklus megvalósításához biztosított eszközök csökkentik a korlátokat, és növelhetik az elfogadásuk következetességét. A TDSP az eszközök és parancsfájlok kezdeti készletét kínálja a TDSP a csapaton belüli bevezetésének megkezdéséhez. Emellett segít automatizálni az adatelemzési életciklus általános feladatait, például az adatfeltárást és a kiindulási modellezést. Egy jól definiált struktúra van megadva, hogy a felhasználók közösen használják a megosztott eszközöket és segédprogramokat a csapatuk megosztott kódjának tárházában. Ezeket az erőforrásokat ezután a csapaton vagy a szervezeten belül más projektek is kihasználhatják. A TDSP azt is tervezi, hogy lehetővé tegye az eszközök és segédprogramok teljes Közösséghez való hozzájárulását. Előfordulhat, hogy a TDSP segédprogramok klónozása a [githubról](https://github.com/Azure/Azure-TDSP-Utilities)lehetséges.
+A legtöbb szervezet folyamatainak bevezetése kihívást jelent. Az adatelemzési folyamat és az életciklus megvalósításához biztosított eszközök csökkentik a korlátokat, és növelhetik az elfogadásuk következetességét. A TDSP az eszközök és parancsfájlok kezdeti készletét kínálja a TDSP a csapaton belüli bevezetésének megkezdéséhez. Emellett segít automatizálni az adatelemzési életciklus általános feladatait, például az adatfeltárást és a kiindulási modellezést. Egy jól definiált struktúra van megadva, hogy a felhasználók közösen használják a megosztott eszközöket és segédprogramokat a csapatuk megosztott kódjának tárházában. Ezeket az erőforrásokat ezután a csapaton vagy a szervezeten belül más projektek is kihasználhatják.  A Microsoft a nyílt forráskódú (Python, R, ONNX és Common learning keretrendszerek), valamint a Microsoft saját eszközeinek (AutoML) támogatásán alapuló, széles körű [Azure Machine learning](../index.yml) eszközöket biztosít.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Csoportos adatelemzési folyamat: szerepkörök és feladatok](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Felvázolja a kulcsfontosságú személyzeti szerepköröket és azokhoz kapcsolódó feladatait egy adatelemzési csapat számára, amely egységesíti a folyamatot. 

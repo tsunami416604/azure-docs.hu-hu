@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: aee3f5602d0bd1ff12717d903d662ce4605de61d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ee37ab90910058378172223a3435047346f5fe7c
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683760"
+ms.locfileid: "94701784"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows rendszerű virtuális asztali RDP-Shortpath (előzetes verzió)
 
@@ -176,7 +176,7 @@ Annak ellenőrzéséhez, hogy a kapcsolatok RDP-Shortpath használnak-e, nyissa 
 Annak ellenőrzése, hogy a munkamenet RDP Shortpath-átvitelt használ-e:
 
 1. Kapcsolódjon a virtuális gép asztalához a Windows Virtual Desktop ügyfélprogram használatával.
-2. Indítsa el a Eseménynapló, és nyissa meg a következő csomópontot: **alkalmazások és szolgáltatások naplói > Microsoft > Windows > RemoteDesktopServices-RdpCoreCDV > Operational**
+2. Indítsa el a Eseménynapló, és nyissa meg a következő csomópontot: **alkalmazások és szolgáltatások naplói > Microsoft > Windows > RemoteDesktopServices-RdpCoreCDV > Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV/Operational**
 3. Annak megállapításához, hogy a rendszer RDP Shortpath-átvitelt használ-e, keresse meg a 131-es AZONOSÍTÓJÚ eseményt.
 
 ### <a name="using-log-analytics-to-verify-shortpath-connectivity"></a>Shortpath-kapcsolat ellenőrzése Log Analytics használatával

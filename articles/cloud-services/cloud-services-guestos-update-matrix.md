@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/12/2020
+ms.date: 11/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: b2f66f9d4a96bda323413ac9016f582f5605e6cd
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a5cc0fdf0473cb8ceafd164a34df6f0bd66dd6d3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073325"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737438"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrix
 Naprakész információkat biztosít a Cloud Services legújabb Azure Guest OS-kiadásairól. Ez az információ segít megtervezni a frissítési útvonalat, mielőtt a vendég operációs rendszer le lenne tiltva. Ha úgy konfigurálja a szerepköröket, hogy az *automatikus* vendég operációs rendszer frissítéseit használják az [Azure vendég operációs rendszer frissítési beállításai][Azure Guest OS Update Settings]részében leírtak szerint, nem létfontosságú, hogy elolvassa ezt a lapot.
@@ -41,6 +41,9 @@ Naprakész információkat biztosít a Cloud Services legújabb Azure Guest OS-k
 Nem biztos benne, hogy miként lehet frissíteni a vendég operációs rendszert? Tekintse meg [ezt a][cloud updates] kivételt.
 
 ## <a name="news-updates"></a>Hírek frissítései
+
+###### <a name="november-17-2020"></a>**November 17., 2020**
+A vendég operációs rendszer októberi kiadása megtörtént. 
 
 ###### <a name="october-10-2020"></a>**Október 10., 2020**
 A szeptemberi vendég operációs rendszer megjelent. 
@@ -143,8 +146,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+|  WA-GUEST-OS-6.24 _202010-02 |  November 17., 2020  |  6,26 post  |  
 |  WA-GUEST-OS-6.23 _202009-01  |  Október 10., 2020  |  6,25 post  |  
-|  WA-GUEST-OS-6.22 _202008-02  |  Szeptember 5., 2020  |  6,24 post  |  
+|~~WA-GUEST-OS-6.22 _202008-02~~|  Szeptember 5., 2020  |  November 17., 2020  |  
 |~~WA-GUEST-OS-6.21 _202007-01~~|  Augusztus 17, 2020  |  Október 10., 2020  |  
 |~~WA-GUEST-OS-6.20 _202006-02~~|  Augusztus 10., 2020  |  Szeptember 5., 2020  |  
 |~~WA-GUEST-OS-6.19 _202005-02~~|  2020. június 2.  |  Augusztus 17, 2020  |  
@@ -179,8 +183,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+|  WA-GUEST-OS-5.48 _202010-02  |  November 17., 2020  |  5,50 post  | 
 |  WA-GUEST-OS-5.47 _202009-01  |  Október 10., 2020  |  5,49 post  | 
-|  WA-GUEST-OS-5.46 _202008-02  |  Szeptember 5., 2020  |  5,48 post  |  
+|~~WA-GUEST-OS-5.46 _202008-02~~|  Szeptember 5., 2020  |  November 17., 2020  |  
 |~~WA-GUEST-OS-5.45 _202007-01~~|  Augusztus 17, 2020  |  Október 10., 2020  |  
 |~~WA-GUEST-OS-5.44 _202006-02~~|  Augusztus 10., 2020  |  Szeptember 5., 2020  |  
 |~~WA-GUEST-OS-5.43 _202005-02~~|  2020. június 2.  |  Augusztus 17, 2020  |  
@@ -212,8 +217,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+|  WA-GUEST-OS-4.83 _202010-02  |  November 17., 2020  |  4,85 post  | 
 |  WA-GUEST-OS-4.82 _202009-01  |  Október 10., 2020  |  4,84 post  | 
-|  WA-GUEST-OS-4.81 _202008-02  |  Szeptember 5., 2020  |  4,83 post  | 
+|~~WA-GUEST-OS-4.81 _202008-02~~|  Szeptember 5., 2020  |  November 17., 2020  | 
 |~~WA-GUEST-OS-4.80 _202007-01~~|  Augusztus 17, 2020  |  Október 10., 2020  | 
 |~~WA-GUEST-OS-4.79 _202006-02~~|  Augusztus 10., 2020  |  Szeptember 5., 2020  | 
 |~~WA-GUEST-OS-4.78 _202005-02~~|  2020. június 2.  |  Augusztus 17, 2020  |  
@@ -245,8 +251,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+|  WA-GUEST-OS-3.90 _202010-02  |  November 17., 2020  |  3,92 post  |  
 |  WA-GUEST-OS-3.89 _202009-01  |  Október 10., 2020  |  3,91 post  |  
-|  WA-GUEST-OS-3.88 _202008-02  |  Szeptember 5., 2020  |  3,90 post  |  
+|~~WA-GUEST-OS-3.88 _202008-02~~|  Szeptember 5., 2020  |  November 17., 2020  |  
 |~~WA-GUEST-OS-3.87 _202007-01~~|  Augusztus 17, 2020  |  Október 10., 2020  |  
 |~~WA-GUEST-OS-3.86 _202006-02~~|  Augusztus 10., 2020  |  Szeptember 5., 2020  |  
 |~~WA-GUEST-OS-3.85 _202005-02~~|  2020. június 2.  |  Augusztus 17, 2020  |  
@@ -278,8 +285,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+|  WA-GUEST-OS-2.103 _202010-02  |  November 17., 2020  |  2,105 post  |  
 |  WA-GUEST-OS-2.102 _202009-01  |  Október 10., 2020  |  2,104 post  |  
-|  WA-GUEST-OS-2.101 _202008-02  |  Szeptember 5., 2020  |  2,103 post  |  
+|~~WA-GUEST-OS-2.101 _202008-02~~|  Szeptember 5., 2020  |  November 17., 2020 |    
 |~~WA-GUEST-OS-2.100 _202007-01~~|  Augusztus 17, 2020  |  Október 10., 2020  |  
 |~~WA-GUEST-OS-2.99 _202006-02~~|  Augusztus 10., 2020  | Szeptember 5., 2020  |  
 |~~WA-GUEST-OS-2.98 _202005-02~~|  2020. június 2.  |  Augusztus 17, 2020  |  

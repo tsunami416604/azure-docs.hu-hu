@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 25a3eb671fe01df7334b9beff24425e3b8a1eb90
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3c925d7b7194a1b048dc9ef5e23244f35a29ccab
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317898"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738743"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Név<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Emelt szintű tárolók letiltása a Kubernetes-fürtben](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Ez a szabályzat nem engedélyezi a privilegizált tárolók létrehozását egy Kubernetes-fürtben. Ez a szabályzat általánosan elérhető a Kubernetes Service (ak) szolgáltatáshoz, valamint az AK-motor és az Azure arc-kompatibilis Kubernetes előzetes verziója. A szabályzat használatáról a következő témakörben tájékozódhat: [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |naplózás, megtagadás, letiltva |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |
 |[HTTPS bejövő forgalom betartatása a Kubernetes-fürtben](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |Ez a szabályzat a HTTPS bejövő forgalmat kényszeríti ki egy Kubernetes-fürtben. Ez a szabályzat általánosan elérhető a Kubernetes Service (ak) szolgáltatáshoz, valamint az AK-motor és az Azure arc-kompatibilis Kubernetes előzetes verziója. A szabályzat használatáról a következő témakörben tájékozódhat: [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |naplózás, megtagadás, letiltva |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly.json) |

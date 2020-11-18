@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a1d045e66771026d2b4cf7ad44fd6943d2d407f4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380211"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701602"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -209,8 +209,10 @@ A következő teljes tartománynevek/alkalmazási szabályok szükségesek azon 
 
 | FQDN                                          | Port      | Használat      |
 |-----------------------------------------------|-----------|----------|
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Ez a címe Azure Policy helyes működéséhez használatos. (jelenleg előzetes verzióban érhető el az AK-ban) |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Ez a címe a beépített szabályzatok GitHubról történő lekérésére szolgál a Azure Policy megfelelő működésének biztosítása érdekében. (jelenleg előzetes verzióban érhető el az AK-ban) |
+| **`data.policy.core.windows.net`** | **`HTTPS:443`** | Ez a címe a Kubernetes házirendek lekérésére és a fürt megfelelőségi állapotának a házirend-szolgáltatásba való bejelentésére szolgál. |
+| **`store.policy.core.windows.net`** | **`HTTPS:443`** | Ez a címe a beépített szabályzatok forgalomirányító összetevőinek lekérésére szolgál. |
+| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Ez a címe Azure Policy helyes működéséhez használatos.  |
+| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Ez a címe a beépített szabályzatok GitHubról történő lekérésére szolgál a Azure Policy megfelelő működésének biztosítása érdekében. |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy bővítmény, amely telemetria adatokat küld az Applications-elemzések végpontjának. |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Kimenő forgalom korlátozása az Azure Firewall használatával
@@ -761,7 +763,7 @@ Ekkor meg kell jelennie az AK-szavazati alkalmazásnak. Ebben a példában a tű
 ![A képernyőképen az a K-S szavazási alkalmazás jelenik meg, amely a macskák, a kutyák és az alaphelyzetek, valamint az összesítések gombjaival rendelkezik](media/limit-egress-traffic/aks-vote.png)
 
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az Azure-erőforrások tisztításához törölje az AK-erőforráscsoport törlését.
 

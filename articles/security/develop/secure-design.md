@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e8eab3a1054541b1ef7fc6d2e65089f01f0df3c0
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ad3980db6348867e92664e314326d23b4274abcc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517155"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701568"
 ---
 # <a name="design-secure-applications-on-azure"></a>Biztonságos alkalmazások tervezése az Azure-ban
 Ebben a cikkben a Felhőbeli alkalmazások tervezésekor megfontolandó biztonsági tevékenységeket és vezérlőket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) követelményei és tervezési szakaszaiban figyelembe venni kívánt biztonsági kérdések és fogalmak betanítása, valamint az erőforrások képzése. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások kialakításához használhat.
@@ -217,7 +217,7 @@ Egyéni kód helyett platform által biztosított hitelesítési és engedélyez
 
 A [legalacsonyabb jogosultsági](https://en.wikipedia.org/wiki/Principle_of_least_privilege) szint fogalma azt jelenti, hogy a felhasználóknak a munkájuk elvégzéséhez és a feladatok végrehajtásához szükséges pontos hozzáférési szintű hozzáférésre és felügyeletre van szükségük.
 
-Szeretné, hogy a szoftverfejlesztők tartományi rendszergazdai jogokkal rendelkeznek? Szüksége lenne egy felügyeleti asszisztensnek a személyes számítógépén lévő rendszergazdai ellenőrzésekhez? A szoftverhez való hozzáférés kiértékelése nem különbözik. Ha [szerepköralapú hozzáférés-vezérlést (RBAC)](../../role-based-access-control/overview.md) használ, hogy a felhasználók különböző képességeket és jogosultságokat biztosítanak a felhasználóknak az alkalmazásban, mindenki számára egyáltalán nem fog hozzáférni. Az egyes szerepkörökhöz szükséges hozzáférés korlátozásával korlátozható a biztonsági problémák kockázata.
+Szeretné, hogy a szoftverfejlesztők tartományi rendszergazdai jogokkal rendelkeznek? Szüksége lenne egy felügyeleti asszisztensnek a személyes számítógépén lévő rendszergazdai ellenőrzésekhez? A szoftverhez való hozzáférés kiértékelése nem különbözik. Ha az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) használatával különböző képességeket és szolgáltatói jogosultságokat biztosít a felhasználóknak az alkalmazásban, akkor mindenki számára egyáltalán nem fog hozzáférni. Az egyes szerepkörökhöz szükséges hozzáférés korlátozásával korlátozható a biztonsági problémák kockázata.
 
 Győződjön meg arról, hogy az alkalmazás a [legkevesebb jogosultságot](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) alkalmazza a hozzáférési szokásaik során.
 
@@ -233,7 +233,7 @@ Igény *szerinti (JIT* ) hozzáférés megvalósítása a jogosultságok expozí
 
 ### <a name="require-re-authentication-for-important-transactions"></a>Ismételt hitelesítés megkövetelése fontos tranzakciókhoz
 
-A [helyek közötti kérések hamisítása](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (más néven *XSRF* vagy *CSRF* ) olyan webalkalmazások elleni támadás, amelyekben egy rosszindulatú webalkalmazás befolyásolja az ügyféloldali böngésző és a böngészőt meghatalmazó webalkalmazás közötti interakciót. A helyek közötti kérelmek hamisításával kapcsolatos támadások lehetségesek, mert a böngészők bizonyos típusú hitelesítési jogkivonatokat automatikusan küldenek egy webhelyre irányuló minden kéréssel.
+A [helyek közötti kérések hamisítása](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (más néven *XSRF* vagy *CSRF*) olyan webalkalmazások elleni támadás, amelyekben egy rosszindulatú webalkalmazás befolyásolja az ügyféloldali böngésző és a böngészőt meghatalmazó webalkalmazás közötti interakciót. A helyek közötti kérelmek hamisításával kapcsolatos támadások lehetségesek, mert a böngészők bizonyos típusú hitelesítési jogkivonatokat automatikusan küldenek egy webhelyre irányuló minden kéréssel.
 Ezt a kiaknázási formát is nevezzük *egykattintásos támadásnak* vagy *munkamenet-lovaglásnak* , mivel a támadás kihasználja a felhasználó korábban hitelesített munkamenetét.
 
 Az ilyen típusú támadásokkal szembeni védekezés legjobb módja, ha megkéri a felhasználót, hogy csak a felhasználó tudja biztosítani az összes fontos tranzakciót, például a vásárlást, a fiók inaktiválását vagy a jelszó módosítását. Megkérheti a felhasználót, hogy írja be újra a jelszavát, hajtsa végre a CAPTCHA-t, vagy küldjön be egy titkos jogkivonatot, amely csak a felhasználó számára lenne lehetséges. A leggyakoribb megközelítés a titkos jogkivonat.
@@ -244,7 +244,7 @@ A kulcsok és a hitelesítő adatok elvesztése gyakori probléma. A kulcsok és
 
 A kulcsokat, tanúsítványokat, titkokat és a kapcsolatok karakterláncait mindig a kulcskezelő megoldásba helyezi. Használhat olyan központosított megoldást, amelyben a kulcsok és a titkos kulcsokat hardveres biztonsági modulok (HSM-EK) tárolják. Az Azure a [Azure Key Vault](../../key-vault/general/overview.md)segítségével a felhőben található HSM-t biztosít.
 
-A Key Vault *titkos tároló* : ez egy központi felhőalapú szolgáltatás az alkalmazási titkok tárolásához. Key Vault a bizalmas adatok biztonsága érdekében az alkalmazás titkos adatait egyetlen, központi helyen tárolhatja, és biztonságos hozzáférést, engedélyek vezérlését és hozzáférés-naplózást biztosít.
+A Key Vault *titkos tároló*: ez egy központi felhőalapú szolgáltatás az alkalmazási titkok tárolásához. Key Vault a bizalmas adatok biztonsága érdekében az alkalmazás titkos adatait egyetlen, központi helyen tárolhatja, és biztonságos hozzáférést, engedélyek vezérlését és hozzáférés-naplózást biztosít.
 
 A titkokat *külön* tárolókban tárolja a rendszer. Mindegyik tároló rendelkezik saját konfigurációs és biztonsági házirendekkel a hozzáférés szabályozásához. Az adatokat egy REST APIon vagy egy, a legtöbb programozási nyelvhez elérhető ügyféloldali SDK-n keresztül érheti el.
 

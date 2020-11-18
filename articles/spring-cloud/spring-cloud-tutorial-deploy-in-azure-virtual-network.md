@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 43b28c9f2efc8ffe17e0bf21b1c395d64e89b6a8
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6e2df9168b880e565ea9b70c82c2c0c1b55b4db8
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660015"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737243"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Oktatóanyag: az Azure Spring Cloud üzembe helyezése az Azure Virtual Networkben (VNet Injection)
 
@@ -31,6 +31,7 @@ Regisztrálnia kell az Azure Spring Cloud erőforrás-szolgáltatót a *Microsof
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform
+az provider register --namespace Microsoft.ContainerService
 ```
 ## <a name="virtual-network-requirements"></a>Virtuális hálózati követelmények
 Az Azure Spring Cloud Service-példány üzembe helyezéséhez használt virtuális hálózatnak az alábbi követelményeknek kell megfelelnie:
@@ -154,7 +155,7 @@ Ezek a hálózati erőforrások a fent létrehozott virtuális hálózathoz csat
 
 [Alkalmazás üzembe helyezése az Azure Spring Cloud-ban a VNet](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Az Azure Spring Cloud hibaelhárítása a VNET-ben](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/05-troubleshooting-azure-spring-cloud-in-vnet.md)
 - [Az Azure Spring Cloud VNET való futtatásának felhasználói feladatai](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/06-customer-responsibilities-for-running-azure-spring-cloud-in-vnet.md)

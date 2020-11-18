@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: c066931cece60d14767b86254020ea5ba4bad1be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b563fac9044dccd832aa42c0193eed24cad26754
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88854502"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737914"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Az Azure Red Hat OpenShift 4 támogatási életciklusa
 
@@ -97,12 +97,10 @@ Tekintse meg az alábbi útmutatót a [korábbi Red Hat OpenShift Container plat
 
 |OCP verziója|Felsőbb rétegbeli kiadás|Az Azure Red Hat OpenShift általánosan elérhető|Elhasználódott|
 |-|-|-|-|
-|4.3|2020. február|2020. május|2020. augusztus|
-|4.4|2020. május|2020. augusztus|4,6 GA|
-|4,5|2020. július|Október 2020|4,7 GA
-|4,6|* Korai Q4, 2020|* Késő Q4, 2020|4,8 GA|
-
-\*A _felsőbb rétegbeli kiadási dátum megerősítése folyamatban van._
+|4.3|2020. január|2020. április| 2020. augusztus|
+|4.4|2020. május|2020. július|4,6 GA|
+|4,5|2020. július| 2020. november|4,7 GA
+|4,6|2020. október| December 2020|4,8 GA|
 
 ## <a name="faq"></a>GYIK
 

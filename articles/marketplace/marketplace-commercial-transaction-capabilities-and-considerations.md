@@ -4,27 +4,27 @@ description: Ez a cikk a kereskedelmi Piactéri Transact lehetőség díjszabás
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: c6ce256db907589ace7e77157397257732564fb6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9a975ee863e81a9f542e717d734f12db850f749e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130323"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738322"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
-Ez a cikk a Microsoft kereskedelmi piactér díjszabási, számlázási, számlázási és kifizetési szempontjait ismerteti. 
+Ez a cikk a Microsoft kereskedelmi piactér díjszabási, számlázási, számlázási és kifizetési szempontjait ismerteti.
 
 ## <a name="transactions-by-listing-option"></a>Tranzakciók listázási beállítás szerint
 
-A kiadó vagy a Microsoft felelős a kereskedelmi piactéren található ajánlatokhoz tartozó szoftverlicenc-tranzakciók kezeléséért. Az ajánlathoz választott listázási lehetőség határozza meg, hogy ki felügyeli a tranzakciót. A közzétételi lehetőségek rendelkezésre állásához és magyarázatához tekintse meg [a Listaelem kiválasztása lehetőséget](./determine-your-listing-type.md#choose-a-listing-option) .
+A kiadó vagy a Microsoft felelős a kereskedelmi piactéren található ajánlatokhoz tartozó szoftverlicenc-tranzakciók kezeléséért. Az ajánlathoz választott listázási lehetőség határozza meg, hogy ki felügyeli a tranzakciót. Az egyes közzétételi lehetőségek elérhetőségével és magyarázatával kapcsolatban lásd: [Bevezetés a listaelemek](determine-your-listing-type.md) használatába
 
 ### <a name="contact-me-free-trial-and-byol-options"></a>Kapcsolatfelvétel, ingyenes próbaverzió és BYOL lehetőségek
 
-A kiadók választhatják a _kapcsolatfelvételi_ és az _ingyenes próbaverziót_ , a promóciós és a felhasználói beszerzési lehetőségeket. Egyes ajánlatok esetében a kiadók választhatják a saját licenc használata (BYOL) lehetőséget, amely lehetővé teszi, hogy az ügyfelek az Ön által közvetlenül vásárolt licenccel vásárolják meg az ajánlat előfizetését. Ezekkel a beállításokkal a Microsoft nem vesz részt közvetlenül a kiadó szoftverlicenc-tranzakciójában, és nincs társított tranzakciós díj. 
+A kiadók választhatják a _kapcsolatfelvételi_ és az _ingyenes próbaverziót_, a promóciós és a felhasználói beszerzési lehetőségeket. Egyes ajánlatok esetében a kiadók választhatják a saját licenc használata (BYOL) lehetőséget, amely lehetővé teszi, hogy az ügyfelek az Ön által közvetlenül vásárolt licenccel vásárolják meg az ajánlat előfizetését. Ezekkel a beállításokkal a Microsoft nem vesz részt közvetlenül a kiadó szoftverlicenc-tranzakciójában, és nincs társított tranzakciós díj.
 
 A közzétevők felelősek a szoftverlicenc-tranzakció valamennyi aspektusának támogatásához. Ez magában foglalja a következőket: de nem korlátozódik a rendelésre, a teljesítésre, a mérésre, a számlázásra, a számlázásra, a fizetésre és a gyűjtésre. A kapcsolattartási adatok listázása lehetőséggel a közzétevők az ügyféltől gyűjtött kiadói szoftverlicenc-díjak 100%-át őrzik meg.
 
@@ -84,7 +84,15 @@ A Transact Publishing forgatókönyvek esetében az előfizetéstől függően 3
 
 Az ajánlati típusok és a számlázási modellek használata mellett egy ajánlat értékesítésére is lehetősége van, és az egyeztetett, az ügylet-specifikus díjszabással vagy az egyéni konfigurációkkal is elvégezheti a tranzakciót. Mind a három Transact közzétételi lehetőség támogatja a privát ajánlatokat.
 
-Ez a lehetőség nagyobb vagy alacsonyabb díjszabást tesz lehetővé, mint a nyilvánosan elérhető ajánlat. A privát ajánlatok kedvezményes vagy prémium szintű ajánlathoz adhatók. Egy vagy több ügyfél számára elérhetővé teheti az Azure-előfizetését az ajánlat szintjén.
+Ez a lehetőség nagyobb vagy alacsonyabb díjszabást tesz lehetővé, mint a nyilvánosan elérhető ajánlat. Kedvezményes ajánlatokat vagy prémium szintű ajánlatot is használhat az ajánlathoz. Egy vagy több ügyfél számára elérhetővé teheti a saját Azure-előfizetését az ajánlat szintjén.
+
+### <a name="commercial-marketplace-service-fees"></a>Kereskedelmi Piactéri szolgáltatási díjak
+
+20%-os standard tárolási szolgáltatási díjat számítunk fel, amikor az ügyfelek a kereskedelmi piactéren vásárolják meg a Transact ajánlatot. A díj részleteiért lásd: a [Microsoft kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560)5c. szakasza.
+
+Bizonyos, a kereskedelmi piactéren közzétett Transact-ajánlatok esetén 10%-os csökkentett tárolási szolgáltatási díjat igényelhet. Ahhoz, hogy az ajánlat megfelelő legyen, a Microsoft számára meg kell jelölnie az Azure IP közös értékesítésének incentivized. A jogosultságot az egyes naptári hónapok végét megelőzően legalább öt munkanapon belül teljesíteni kell, hogy megkapják a Marketplace szolgáltatási díját a hónapban.
+
+A Piactéri szolgáltatási díj az Azure IP-incentivized SaaS, virtuális gépek, felügyelt alkalmazások és minden más, a kereskedelmi piactéren elérhetővé tett IaaS-megoldásra vonatkozik. Az egy Microsoft Teams-alkalmazáshoz vagy legalább két Microsoft 365-bővítményhez (Excel, PowerPoint, Word, Outlook és SharePoint) társított fizetős SaaS-ajánlatok a következő kedvezményt kapják meg Microsoft AppSource is.
 
 ### <a name="examples"></a>Példák
 
@@ -143,10 +151,6 @@ Ebben az esetben a Microsoft $100,00-es számlákat küld a szoftverlicenc szám
 |---------|---------|
 |A Microsoft a licencelési díj 80%-ában fizet <br> \* A Microsoft a licencelési díj 90%-át fizet minden minősített SaaS-alkalmazáshoz   |   $80,00/hó <br> \* $90,00/hó    |
 |A Microsoft a licencelési díj 20%-át megtartja <br> \* A Microsoft minden minősített SaaS-alkalmazás esetében megőrzi a licencek költségeit.  |  $20,00/hó <br> \* $10,00     |
-
-### <a name="reduced-service-fee"></a>Csökkentett szolgáltatási díj
-
-A kereskedelmi piactéren közzétett egyes ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a [Microsoft kiadói szerződésben](https://go.microsoft.com/fwlink/?LinkID=699560)leírtak szerint) 10%-ra. Az ajánlat (ok) minősítéséhez az ajánlat (oka) t a Microsoft Azure IP közös értékesítésű incentivized kell megjelölni. A jogosultságot az egyes naptári hónapok végét megelőzően legalább öt munkanapon belül teljesíteni kell, hogy megkapják a Marketplace szolgáltatási díját a hónapban. A Piactéri szolgáltatási díj a kereskedelmi piactéren elérhető Azure IP-incentivized SaaS-, virtuális gépekre, felügyelt alkalmazásokra és bármely más, szakképzett IaaS-ajánlatra vonatkozik. Az egy Microsoft Teams-alkalmazáshoz vagy legalább két Microsoft 365-bővítményhez (Excel, PowerPoint, Word, Outlook és SharePoint) társított fizetős SaaS-ajánlatok a AppSource is megkapják ezt a kedvezményt.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Ügyfél-számlázás, fizetés, Számlázás és gyűjtemények
 

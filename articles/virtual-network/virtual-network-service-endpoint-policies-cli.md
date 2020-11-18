@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 53f10996a7f15e32261f151600163f41df4e58ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a080c3953c48227301052a0bb151c8cba96e515a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666772"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737346"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Az Azure Storage-fiókok kiszűrése az Azure CLI-vel való kezelése virtuális hálózati szolgáltatás végponti házirendjeivel
 
@@ -37,11 +37,11 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * Erősítse meg az engedélyezett Storage-fiókhoz való hozzáférést az alhálózaton.
 * Győződjön meg arról, hogy a hozzáférés meg van tagadva a nem engedélyezett Storage-fiókhoz az alhálózaton.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+- Ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
@@ -66,7 +66,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>Szolgáltatásvégpont engedélyezése 
 
-Ebben a példában a *Microsoft. Storage* szolgáltatáshoz tartozó szolgáltatási végpont jön létre a *privát*alhálózathoz: 
+Ebben a példában a *Microsoft. Storage* szolgáltatáshoz tartozó szolgáltatási végpont jön létre a *privát* alhálózathoz: 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -79,7 +79,7 @@ az network vnet subnet create \
 
 ## <a name="restrict-network-access-for-a-subnet"></a>Alhálózat hálózati hozzáférésének korlátozása
 
-Hozzon létre egy hálózati biztonsági csoportot az [az Network NSG Create](/cli/azure/network/nsg)paranccsal. A következő példa egy *myNsgPrivate*nevű hálózati biztonsági csoportot hoz létre.
+Hozzon létre egy hálózati biztonsági csoportot az [az Network NSG Create](/cli/azure/network/nsg)paranccsal. A következő példa egy *myNsgPrivate* nevű hálózati biztonsági csoportot hoz létre.
 
 ```azurecli-interactive
 az network nsg create \
@@ -335,7 +335,7 @@ Ekkor megjelenik a `user@myVmPrivate:~$` kérdés. Az Azure-fájlmegosztás sike
 
 ### <a name="confirm-access-is-denied-to-storage-account"></a>Tárfiókhoz való hozzáférés letiltásának ellenőrzése
 
-Ugyanabból a VM- *myVmPrivate*hozzon létre egy könyvtárat a csatlakoztatási ponthoz:
+Ugyanabból a VM- *myVmPrivate* hozzon létre egy könyvtárat a csatlakoztatási ponthoz:
 
 ```bash
 sudo mkdir /mnt/MyAzureFileShare2

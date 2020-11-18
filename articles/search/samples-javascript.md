@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 6cd696bf0853b1e6bafc06f2e99b2808970fed25
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6bcdb4a48f71e28514229116c10bd25747b55616
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686723"
+ms.locfileid: "94701823"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>JavaScript-kód minták az Azure Cognitive Search
 
@@ -38,7 +38,7 @@ A Javához készült Azure SDK számos mintát és egy [első lépéseket tartal
 | [indexelők](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  Bemutatja, hogyan hozhat létre, frissíthet, kérhet le, listázhat, állíthat vissza és törölhet [Indexelő](search-indexer-overview.md).|
 | [Készségkészlet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   Bemutatja, hogyan hozhat létre, frissíthet, kérhet le, listázhat és törölhet olyan [szakértelmével](cognitive-search-working-with-skillsets.md) , amelyek indexelő, valamint az indexelés során mesterségesen alapuló dúsítást végeznek. |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | Bemutatja a [szinonimák leképezésének](search-synonyms.md)létrehozását, frissítését, beolvasását, listázását és törlését.  |
-| [Lekérdezések](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | A lekérdezések csak olvashatók. Ez a minta lekérdezés a Microsoft által üzemeltetett nyilvános indexen hajtható végre.  |
+| [Lekérdezések](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | A lekérdezés-végrehajtást a Microsoft által üzemeltetett írásvédett nyilvános indexen mutatja be.  |
 
 ## <a name="typescript-samples"></a>Írógéppel minták
 
@@ -51,7 +51,7 @@ Az SDK emellett olyan írógéppel-példákat is tartalmaz, amelyek az Ön kény
 | [indexelők](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  Bemutatja, hogyan hozhat létre, frissíthet, kérhet le, listázhat, állíthat vissza és törölhet [Indexelő](search-indexer-overview.md).|
 | [Készségkészlet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   Bemutatja, hogyan hozhat létre, frissíthet, kérhet le, listázhat és törölhet olyan [szakértelmével](cognitive-search-working-with-skillsets.md) , amelyek indexelő, valamint az indexelés során mesterségesen alapuló dúsítást végeznek. |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | Bemutatja a [szinonimák leképezésének](search-synonyms.md)létrehozását, frissítését, beolvasását, listázását és törlését.  |
-| [Lekérdezések](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.js) | A lekérdezés-végrehajtást a Microsoft által üzemeltetett írásvédett nyilvános indexen mutatja be.  |
+| [Lekérdezések](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.ts) | A lekérdezés-végrehajtást a Microsoft által üzemeltetett írásvédett nyilvános indexen mutatja be.  |
 
 ## <a name="documentation-samples"></a>Dokumentáció – minták
 
@@ -59,7 +59,7 @@ Az alábbi példákban az [Azure Cognitive Search dokumentációjában](https://
 
 | Példák | Leírás | 
 |---------|-------------|
-| [QuickStart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/Quickstart) | Forráskód a gyors üzembe helyezéshez [: hozzon létre egy keresési indexet a JavaScriptben](search-get-started-javascript.md).  |
+| [QuickStart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | Forráskód a gyors üzembe helyezéshez [: hozzon létre egy keresési indexet a JavaScriptben](search-get-started-javascript.md).  |
 
 ## <a name="standalone-samples"></a>Önálló minták
 

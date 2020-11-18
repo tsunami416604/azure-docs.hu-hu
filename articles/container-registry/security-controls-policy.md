@@ -1,18 +1,18 @@
 ---
 title: Azure Policy szabályozási megfelelőségi szabályozása Azure Container Registry
 description: Felsorolja Azure Policy Azure Container Registry számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 285065bf91ff8d0794ff079913ddfb9d877a2cb4
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 940bc0115d86963d6346d56aed1cefed805ac641
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308274"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701348"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-container-registry"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Container Registry
 

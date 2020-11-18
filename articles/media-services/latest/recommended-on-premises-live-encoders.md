@@ -6,15 +6,15 @@ keywords: kódolás; kódolók; adathordozó
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 08/31/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 3532032f8fd3ac6e673d3913fd13f7f83ae7759e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88de41ae62e3a81fdb51981afe42135649bf34b4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295359"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734310"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Ellenőrzött helyszíni élő adatfolyam-kódolók
 
@@ -22,7 +22,7 @@ ms.locfileid: "89295359"
 
 Azure Media Services egy [élő esemény](/rest/api/media/liveevents) (csatorna) az élő közvetítésre szánt tartalom feldolgozásához szükséges folyamatot jelöli. Az élő esemény két módon fogadja az élő bemeneti adatfolyamokat.
 
-* A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (darabolt MP4) streamet küld az élő eseményre, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményeken. Ezt a metódust **áteresztőnek**nevezzük. Azt javasoljuk, hogy az élő kódoló többszörös átviteli sebességű streameket küldjön egyetlen sávszélességű adatfolyamként egy átmenő élő esemény helyett, hogy az adaptív sávszélességű adatfolyamot továbbítsa az ügyfélnek. 
+* A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (darabolt MP4) streamet küld az élő eseményre, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményeken. Ezt a metódust **áteresztőnek** nevezzük. Azt javasoljuk, hogy az élő kódoló többszörös átviteli sebességű streameket küldjön egyetlen sávszélességű adatfolyamként egy átmenő élő esemény helyett, hogy az adaptív sávszélességű adatfolyamot továbbítsa az ügyfélnek. 
 
     Ha több sávszélességű adatfolyamot használ az átmenő élő eseményhez, szinkronizálni kell a video GOP-méretet és a különböző bitráták videós darabjait, hogy elkerülje a nem várt viselkedést a lejátszási oldalon.
 
@@ -50,6 +50,7 @@ Amikor RTMPS-sel streamel, ellenőrizze a tűzfal és/vagy a proxy beállítása
 > Az RTMP protokollok használata esetén a kódolóknak támogatniuk kell a TLS 1,2-et.
 
 - Adobe Flash Media Live Encoder 3.2
+- [Antix digitális](http://www.antixdigital.com/) StreamZ Live (korábban Imagine Communication SelenioFlex Live)
 - [Blackmagic ATEM mini és ATEM mini PRO](https://www.blackmagicdesign.com/products/atemmini)
 - [Cambria élő 4,3](https://www.capellasystems.net/products/cambria-live/)
 - Elemi élő (2.14.15 és újabb verzió)
@@ -78,11 +79,11 @@ Media Services javasolja a következő élő kódolók egyikének használatát,
 > HTTPS protokollok használata esetén a kódolóknak támogatniuk kell a TLS 1,2-et.
 
 - Ateme TITAN Live
+- [Antix digitális](http://www.antixdigital.com/) StreamZ Live (korábban Imagine Communication SelenioFlex Live)
 - Cisco Digital Media Encoder 2200
 - Elemi élő (a TLS 1,2-követelmény miatti 2.14.15 és újabb verzió)
 - Envivio 4Caster C4 Gen III 
 - [FFmpeg](https://www.ffmpeg.org)
-- Imagine Communications Selenio MCP3
 - Media Excel Hero Live és Hero 4K (UHD/HEVC)
 
 > [!TIP]
@@ -116,7 +117,7 @@ A tartalom lejátszásához a hang-és video streamnek is jelen kell lennie. A c
 > [!IMPORTANT]
 > Tekintse meg a gép fizikai állapotát (CPU/memória/etc) a felhőbe való feltöltéshez, amely processzor-és IO-műveleteket is tartalmaz. Ha módosítja a kódoló bármelyik beállítását, állítsa vissza a csatorna/élő esemény alaphelyzetbe állítását, hogy a módosítás érvénybe lépjen.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 [Élő közvetítés a Media Services v3-val](live-streaming-overview.md)
 

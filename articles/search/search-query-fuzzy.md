@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: faa98f1c52cfe2dd0e19f085f4d33dedb6f01851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac2690a5f18bb58c29b433f4a07e52096bbd268b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934888"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701585"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>A hibás helyesírási hibák és az elírások kijavítása a zavaros kereséssel
 
@@ -73,7 +73,7 @@ Az Azure Cognitive Search a lejárati idő és a távolság (legfeljebb 2) melle
 
 ## <a name="testing-fuzzy-search"></a>Fuzzy Keresés tesztelése
 
-Az egyszerű tesztelés érdekében javasoljuk, hogy a [Search Explorer](search-explorer.md) vagy a [Poster](search-get-started-postman.md) segítségével ismételje meg a lekérdezési kifejezéseket. Mindkét eszköz interaktív, ami azt jelenti, hogy gyorsan elvégezheti egy kifejezés több változatának lépéseit, és kiértékelheti a visszaadott válaszokat.
+Az egyszerű tesztelés érdekében javasoljuk, hogy a [Search Explorer](search-explorer.md) vagy a [Poster](search-get-started-rest.md) segítségével ismételje meg a lekérdezési kifejezéseket. Mindkét eszköz interaktív, ami azt jelenti, hogy gyorsan elvégezheti egy kifejezés több változatának lépéseit, és kiértékelheti a visszaadott válaszokat.
 
 Ha az eredmények nem egyértelműek, a [találatok kiemelése](search-pagination-page-layout.md#hit-highlighting) segít azonosítani a válaszban szereplő egyezést. 
 
@@ -132,7 +132,7 @@ Figyelje meg, hogy ugyanazt a választ adja vissza, de mostantól nem a "speciá
 
 Ennek a kibővített példának a lényege, hogy illusztrálja, hogy a találatok kiemelése nem egyértelmű eredményeket hoz. A rendszer minden esetben ugyanazt a dokumentumot adja vissza. Ha a dokumentumok azonosítóit használta a egyezés ellenőrzéséhez, lehetséges, hogy kihagyta a "speciális" és "SQL" közötti váltást.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [A teljes szöveges keresés működése az Azure Cognitive Searchban (lekérdezési elemzési architektúra)](search-lucene-query-architecture.md)
 + [Keresési ablak](search-explorer.md)

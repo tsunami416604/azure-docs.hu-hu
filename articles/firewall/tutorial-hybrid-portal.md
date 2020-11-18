@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/19/2020
+ms.date: 11/17/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 89a6239a28c66ab24f423c19baf0d329f87b38d5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 78e934a90b8d4e8feccf18a5cada3ec4920e1642
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658604"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734453"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával
 
@@ -88,16 +88,17 @@ Most hozza létre a VNet:
 
 1. Az Azure Portal kezdőlapján válassza az **erőforrás létrehozása** lehetőséget.
 2. A **hálózat** területen válassza a **virtuális hálózat** lehetőséget.
-7. Az **erőforráscsoport** területen válassza az **FW-Hybrid-test** elemet.
+1. Kattintson a **Létrehozás** gombra.
+1. Az **erőforráscsoport** területen válassza az **FW-Hybrid-test** elemet.
 1. A **név** mezőbe írja be a következőt: **VNet-hub**.
-2. Válassza a **Tovább: IP-címek** lehetőséget.
-3. **IPv4-címterület** esetén írja be a következőt: **10.5.0.0/16**.
-6. Az **alhálózat neve** területen válassza az **alapértelmezett** lehetőséget.
-7. a **név** mezőbe írja be a következőt: **AzureFirewallSubnet**. Ezen az alhálózaton lesz a tűzfal. Az alhálózat neve **kizárólag** AzureFirewallSubnet lehet.
-8. A **címtartomány** mezőbe írja be a következőt: **10.5.0.0/26**. 
-9. Válassza a **Mentés** lehetőséget.
-10. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
-11. Válassza a **Létrehozás** lehetőséget.
+1. Válassza a **Tovább: IP-címek** lehetőséget.
+1. **IPv4-címterület** esetén törölje az alapértelmezett címeket, és írja be a következőt: **10.5.0.0/16**.
+1. Az **alhálózat neve** területen válassza az **alhálózat hozzáadása** elemet.
+1. Az **alhálózat neveként** írja be a következőt: **AzureFirewallSubnet**. Ezen az alhálózaton lesz a tűzfal. Az alhálózat neve **kizárólag** AzureFirewallSubnet lehet.
+1. **Alhálózati címtartomány** esetében írja be a következőt: **10.5.0.0/26**. 
+1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-the-spoke-virtual-network"></a>A küllős virtuális hálózat létrehozása
 
@@ -107,11 +108,11 @@ Most hozza létre a VNet:
 1. A **név** mezőbe írja be a **VNet-küllő** értéket.
 2. A régió területen válassza az USA **keleti** **régióját**.
 3. Válassza a **Tovább: IP-címek** lehetőséget.
-4. **IPv4-címterület** esetén írja be a következőt: **10.6.0.0/16**.
-6. Az **alhálózat neve** területen válassza az **alapértelmezett** lehetőséget.
-7. a **név** típusa: **SN – munkaterhelés**.
-8. A **címtartomány** mezőbe írja be a következőt: **10.6.0.0/24**. 
-9. Válassza a **Mentés** lehetőséget.
+4. **IPv4-címterület** esetén törölje az alapértelmezett címeket, és írja be a következőt: **10.6.0.0/16**.
+6. Az **alhálózat neve** területen válassza az **alhálózat hozzáadása** elemet.
+7. Az **alhálózat neveként** írja be a következőt: **SN-munkaterhelés**.
+8. **Alhálózati címtartomány** esetében írja be a következőt: **10.6.0.0/24**. 
+9. Válassza a **Hozzáadás** elemet.
 10. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 11. Válassza a **Létrehozás** lehetőséget.
 
@@ -123,11 +124,11 @@ Most hozza létre a VNet:
 1. A **név** mezőbe írja be a következőt: **VNet-helyszíni**.
 2. A régió területen válassza az USA **keleti** **régióját**.
 3. Válassza a Next (tovább) lehetőséget **: IP-címek**
-4. **IPv4-címterület** esetén írja be a következőt: **192.168.0.0/16**.
-5. Az **alhálózat neve** területen válassza az **alapértelmezett** lehetőséget.
-7. a **név** típusa: **SN-Corp**.
-8. A **Címtartomány** mezőbe írja be a következőt: **192.168.1.0/24**. 
-9. Válassza a **Mentés** lehetőséget.
+4. **IPv4-címterület** esetén törölje az alapértelmezett címeket, és írja be a következőt: **192.168.0.0/16**.
+5. Az **alhálózat neve** területen válassza az **alhálózat hozzáadása** elemet.
+7. Az **alhálózat neveként** írja be a következőt: **SN-Corp**.
+8. **Alhálózati címtartomány** esetében írja be a következőt: **192.168.1.0/24**. 
+9. Válassza a **Hozzáadás** elemet.
 10. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 11. Válassza a **Létrehozás** lehetőséget.
 
@@ -272,21 +273,31 @@ A hub és a küllős virtuális hálózatok most már egyenrangúak.
 1. Nyissa meg az **FW-Hybrid-test** erőforráscsoportot, és válassza ki a **VNet-hub** virtuális hálózatot.
 2. A bal oldali **oszlopban válassza a** társítások lehetőséget.
 3. Válassza a **Hozzáadás** elemet.
-4. A **név** mezőbe írja be a következőt: **HubtoSpoke**.
-5. A **virtuális hálózat** esetében válassza a **VNet – küllő** elemet.
-6. A VNetSpoke-ről VNet-hubhoz való társítás neve mezőbe írja be a következőt: **SpoketoHub**.
-7. Jelölje be az **átjárók átvitelének engedélyezése** jelölőnégyzetet.
-8. Kattintson az **OK** gombra.
+4. **A virtuális hálózat** alatt:
+ 
+   
+   |Beállítás neve  |Érték  |
+   |---------|---------|
+   |Társi kapcsolat neve| HubtoSpoke|
+   |Távoli virtuális hálózatra irányuló forgalom|   Engedélyezés (alapértelmezett)      |
+   |Távoli virtuális hálózatról továbbított forgalom    |   Engedélyezés (alapértelmezett)      |
+   |Virtuális hálózati átjáró     |  A virtuális hálózat átjárójának használata       |
+    
+5. **Távoli virtuális hálózat** alatt:
 
-### <a name="configure-additional-settings-for-the-spoketohub-peering"></a>További beállítások konfigurálása a SpoketoHub-társításhoz
+   |Beállítás neve  |Érték  |
+   |---------|---------|
+   |Társi kapcsolat neve | SpoketoHub|
+   |Virtuális hálózat telepítési modellje| Resource Manager|
+   |Előfizetés|\<your subscription\>|
+   |Virtuális hálózat| VNet-Spoke
+   |Távoli virtuális hálózatra irányuló forgalom     |   Engedélyezés (alapértelmezett)      |
+   |Távoli virtuális hálózatról továbbított forgalom    |   Engedélyezés (alapértelmezett)      |
+   |Virtuális hálózati átjáró     |  A távoli virtuális hálózat átjárójának használata       |
 
-Engedélyeznie kell a **továbbított forgalom engedélyezését** a SpoketoHub-társításon.
+5. Válassza a **Hozzáadás** elemet.
 
-1. Nyissa meg az **FW-Hybrid-test** erőforráscsoportot, és válassza ki a **VNet küllős** virtuális hálózatot.
-2. A bal oldali **oszlopban válassza a** társítások lehetőséget.
-3. Válassza ki a **SpoketoHub** -társítást.
-4. Az **VNet-hub és a VNet közötti továbbított forgalom engedélyezése** beállításnál válassza az **engedélyezve** lehetőséget.
-5. Válassza a **Mentés** lehetőséget.
+   :::image type="content" source="media/tutorial-hybrid-portal/firewall-peering.png" alt-text="Vnet-társítás":::
 
 ## <a name="create-the-routes"></a>Az útvonalak létrehozása
 

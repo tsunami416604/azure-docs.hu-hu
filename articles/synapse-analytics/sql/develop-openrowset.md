@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b08e834233e1ce12392d940cb0ccc0bef7e96158
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 20003a91726e5ccee7f73d85b7c9a9389801e0ad
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337746"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701755"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -84,7 +84,7 @@ OPENROWSET
     FORMAT = 'CSV'
     [ <bulk_options> ] }  
 )  
-WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })  
+WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })  
 [AS] table_alias(column_alias,...n)
  
 <bulk_options> ::=  
@@ -156,7 +156,7 @@ A WITH záradék segítségével megadhatja a fájlokból beolvasni kívánt osz
     > A parketta-fájlokban lévő oszlopnevek megkülönböztetik a kis-és nagybetűket. Ha a (z) nevű oszlopnevet a parketta-fájlban szereplő oszlopnév alapján adja meg, a rendszer NULL értékeket ad vissza ehhez az oszlophoz.
 
 
-column_name = a kimeneti oszlop neve. Ha meg van adni, ez a név felülbírálja a forrásfájl oszlopának nevét.
+column_name = a kimeneti oszlop neve. Ha meg van adni, ez a név felülbírálja a forrásfájl és a JSON-elérési úton megadott oszlopnév nevét, ha van ilyen. Ha json_path nincs megadva, a rendszer automatikusan hozzáadja a "$ .column_name" értéket. A viselkedés json_path argumentumának bejelölése.
 
 column_type = a kimeneti oszlop adattípusa. Az implicit adattípus-konverziót itt fogja megtenni.
 
@@ -171,11 +171,16 @@ WITH (
 )
 ```
 
+json_path = [JSON-elérésiút kifejezése](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) oszlopra vagy beágyazott tulajdonságra. Az alapértelmezett [elérésiút-mód](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) a LAX.
+
+> [!NOTE]
+> A szigorú módú lekérdezés sikertelen lesz, ha a megadott elérési út nem létezik. A LAX mód lekérdezése sikeres lesz, és a JSON Path kifejezés kiértékelése NULL értékre történik.
+
 **\<bulk_options>**
 
 FIELDTERMINATOR = ' field_terminator '
 
-Meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző (" **,** ").
+Meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző ("**,**").
 
 ROWTERMINATOR = ' row_terminator ' '
 
@@ -361,6 +366,32 @@ WITH (
 ) AS [r]
 ```
 
-## <a name="next-steps"></a>További lépések
+### <a name="specify-columns-using-json-paths"></a>Oszlopok megadása JSON-elérési utak használatával
+
+Az alábbi példa bemutatja, hogyan használhatja a [JSON elérésiút-kifejezéseket](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) a with záradékban, és különbséget mutat a szigorú és a LAX elérésiút-módok között: 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    --lax path mode samples
+    [stateName] VARCHAR (50), -- this one works as column name casing is valid - it targets the same column as the next one
+    [stateName_explicit_path] VARCHAR (50) '$.stateName', -- this one works as column name casing is valid
+    [COUNTYNAME] VARCHAR (50), -- STATEname column will contain NULLs only because of wrong casing - it targets the same column as the next one
+    [countyName_explicit_path] VARCHAR (50) '$.COUNTYNAME', -- STATEname column will contain NULLS only because of wrong casing and default path mode being lax
+
+    --strict path mode samples
+    [population] bigint 'strict $.population' -- this one works as column name casing is valid
+    --,[population2] bigint 'strict $.POPULATION' -- this one fails because of wrong casing and strict path mode
+)
+AS [r]
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 További példákat a [lekérdezési adattárolási](query-data-storage.md) útmutatóban talál, amelyből megtudhatja, hogyan használható a `OPENROWSET` [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához. [Ajánlott eljárások](best-practices-sql-on-demand.md) az optimális teljesítmény eléréséhez. Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.

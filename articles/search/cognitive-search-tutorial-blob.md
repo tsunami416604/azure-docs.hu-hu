@@ -7,28 +7,34 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 07/15/2020
-ms.openlocfilehash: e9d438349f3a080f52050f22a0f991140b3e6b4d
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 11/17/2020
+ms.openlocfilehash: 21f0d141567f17c470732088c6a93a2ae7ed3c67
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699152"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738050"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Oktatóanyag: az Azure-Blobok kereshető tartalmának létrehozásához használja a REST és a AI használatát
 
-Ha strukturálatlan szöveget vagy rendszerképeket használ az Azure Blob Storage-ban, egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kinyerheti az adatokat, és létrehozhat olyan új tartalmakat, amelyek hasznosak a teljes szöveges kereséshez és az adatbányászati forgatókönyvekhez. Bár a folyamatok feldolgozhatják a lemezképeket, ez a REST-oktatóanyag a szövegre, a nyelvfelismerés és a természetes nyelvi feldolgozás alkalmazására koncentrál, és új mezőket hoz létre, amelyeket használhat a lekérdezésekben, a dimenziókban és a szűrőkben.
+Ha strukturálatlan szöveget vagy rendszerképeket használ az Azure Blob Storage-ban, egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kinyeri az adatokat, és új tartalmat hoz létre olyan blobokból, amelyek teljes szöveges keresési vagy adatbányászati helyzetekben hasznosak. Bár a folyamatok feldolgozhatják a lemezképeket, ez a REST-oktatóanyag a szövegre, a nyelvfelismerés és a természetes nyelvi feldolgozás alkalmazására koncentrál, és új mezőket hoz létre, amelyeket használhat a lekérdezésekben, a dimenziókban és a szűrőkben.
 
 Ez az oktatóanyag a Poster és a [Search REST API](/rest/api/searchservice/) -k használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
-> * Az Azure Blob Storage-ban teljes dokumentumokkal (strukturálatlan szöveggel), például PDF-, HTML-, DOCX-és PPTX-verziókkal kezdheti meg a használatot.
-> * Definiáljon egy olyan folyamatot, amely kibontja a szöveget, észleli a nyelvet, felismeri az entitásokat, és észleli a legfontosabb kifejezéseket.
-> * Definiáljon egy indexet a kimenet (nyers tartalom, valamint a folyamat által generált név-érték párok) tárolására.
-> * A folyamat végrehajtásával megkezdheti az átalakításokat és az elemzést, valamint az index létrehozását és betöltését.
+> * Szolgáltatások és Poster-gyűjtemények beállítása.
+> * Hozzon létre egy olyan dúsítási folyamatot, amely szöveget, észleli a nyelvet, felismeri az entitásokat, és észleli a legfontosabb kifejezéseket.
+> * Hozzon létre egy indexet a kimenet tárolásához (nyers tartalom, valamint folyamat által generált név-érték párok).
+> * A folyamat végrehajtása átalakítások és elemzések elvégzéséhez, valamint az index betöltéséhez.
 > * A teljes szöveges kereséssel és a részletes lekérdezési szintaxissal megismerheti az eredményeket.
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt nyisson meg egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+
+## <a name="overview"></a>Áttekintés
+
+Ez az oktatóanyag a C# és az Azure Cognitive Search REST API-k használatával hozza létre az adatforrást, az indexet, az indexelő és a készségkészlet. Az Azure Blob Storage-ban a teljes dokumentumokkal (strukturálatlan szöveggel), például a PDF, a HTML, a DOCX és a PPTX használatával, majd egy készségkészlet keresztül futtathatja őket, hogy kinyerje az entitásokat, a kulcsfontosságú kifejezéseket és az egyéb szöveget a tartalmi fájlokban.
+
+Ez a készségkészlet Cognitive Services API-k alapján beépített képességeket használ. A folyamat lépései közé tartozik a nyelvfelismerés szöveg, a fő kifejezés kibontása és az entitások felismerése (szervezetek). A rendszer új adatokat tárol a lekérdezésekben, aspektusokban és szűrőkben használható új mezőkben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,6 +50,8 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt nyisson meg egy [ingy
 1. Nyissa meg ezt a [OneDrive mappát](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) , és a bal felső sarokban kattintson a **Letöltés** elemre a fájlok számítógépre másolásához. 
 
 1. Kattintson a jobb gombbal a zip-fájlra, és válassza az **összes kibontása** lehetőséget. A különböző típusok 14 fájlból állnak. Ehhez a gyakorlathoz a 7-et fogja használni.
+
+Igény szerint a forráskódot, a Poster-gyűjteményt is letöltheti az oktatóanyaghoz. A forráskód a következő címen érhető el: [https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Tutorial](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Tutorial) .
 
 ## <a name="1---create-services"></a>1 – szolgáltatások létrehozása
 
@@ -107,7 +115,7 @@ A harmadik összetevő az Azure Cognitive Search, amelyet [a portálon lehet lé
 
 Ahogy az Azure Blob Storage-hoz, szánjon egy kis időt a hozzáférési kulcs gyűjtésére. Tovább, amikor megkezdi a kérelmek strukturálását, meg kell adnia az egyes kérések hitelesítéséhez használt Endpoint és admin API-kulcsot.
 
-### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Rendszergazdai API-kulcs és URL-cím beszerzése az Azure Cognitive Search
+### <a name="copy-an-admin-api-key-and-url-for-azure-cognitive-search"></a>A felügyeleti API-kulcs és az Azure-beli URL-cím másolása Cognitive Search
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon szerezze be a keresési szolgáltatás nevét. A szolgáltatás nevét a végpont URL-címének áttekintésével ellenőrizheti. Ha a végpont URL-címe volt `https://mydemo.search.windows.net` , a szolgáltatás neve a következő lesz: `mydemo` .
 
@@ -131,7 +139,7 @@ A fejlécekben a "Content-Type" értéket állítsa be, `application/json` és �
 
 ## <a name="3---create-the-pipeline"></a>3 – a folyamat létrehozása
 
-Az Azure Cognitive Searchban az AI-feldolgozás az indexelés (vagy az adatfeldolgozás) során történik. Az útmutató ezen része négy objektumot hoz létre: adatforrás, index definíció, készségkészlet, indexelő. 
+Az Azure Cognitive Searchban a dúsítás az indexelés során (vagy az adatfeldolgozás során történik). Az útmutató ezen része négy objektumot hoz létre: adatforrás, index definíció, készségkészlet, indexelő. 
 
 ### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
 
@@ -350,7 +358,7 @@ Az [Indexelő](/rest/api/searchservice/create-indexer) vezeti a folyamatot. Az e
 
     ```json
     {
-      "name":"cog-search-demo-idxr",    
+      "name":"cog-search-demo-idxr",
       "dataSourceName" : "cog-search-demo-ds",
       "targetIndexName" : "cog-search-demo-idx",
       "skillsetName" : "cog-search-demo-ss",

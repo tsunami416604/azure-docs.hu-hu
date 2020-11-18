@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/13/2020
-ms.openlocfilehash: ac56aab233c9d07ea7e82a4eefc4918746e3bdbe
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 11/17/2020
+ms.openlocfilehash: 730178d974ba95db968332ac669f701486b513bd
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592515"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738526"
 ---
 # <a name="co-sell-partner-engagement"></a>Együttes értékesítési partnerek bevonása
 
@@ -30,7 +30,7 @@ A közös értékesítésre szolgáló program a **szellemi tulajdon (IP) révé
 
 Az **Azure-beli IP-incentivized** állapotot elérő ajánlatok ezen további Piactéri előnyökkel járnak:
 
-- A Piactéri szolgáltatási díj 20%-ról 10%-ra csökken. Ez a kedvezmény a kereskedelmi Piactéren keresztül eladott IaaS vagy SaaS-ajánlatra vonatkozik. További információ: [csökkentett szolgáltatási díj](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) .
+- A Piactéri szolgáltatási díj 20%-ról 10%-ra csökken. Ez a kedvezmény a kereskedelmi Piactéren keresztül eladott IaaS vagy SaaS-ajánlatra vonatkozik. További információ: [kereskedelmi piactér szolgáltatási díjai](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees) .
 - A Cloud Solution Provider (CSP) partnerei 10%-os kedvezményt kapnak a IaaS vagy SaaS-ajánlat értékesítéséhez. További információ a CSP programról a [Cloud Solution Provider programban](cloud-solution-providers.md).
 - Az ajánlat kereskedelmi piactéren keresztüli értékesítései hozzájárulnak az ügyfelek Azure-beli felhasználási kötelezettségeihez. A jogosult ügyfelek a Azure Portal **"Azure Benefit jogosult"** jelöléssel látják el az ajánlatot. További részletekért lásd az [Azure-beli fogyasztási kötelezettségvállalás előnyeit](azure-consumption-commitment-benefit.md).
 - Az **Azure-beli IP-incentivized** vagy **Business Applications közös értékesítésű incentivized** -állapotot elérő ajánlatok a kirakatokban **"előnyben részesített megoldások"** jelvényt kapnak. A jelvény az ajánlat minőségének, teljesítményének és az ügyfelek igényeinek egy adott iparági vertikális vagy megoldási területen való kezelésére való képességének növelését segíti elő. További információ: [Microsoft AppSource és az Azure Marketplace előnyben részesített megoldásai](preferred-solutions.md).
@@ -63,15 +63,15 @@ Az alábbi lépéseket követve közvetlenül a partner Centerben kezdheti meg a
 
     :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="Ez a rendszerkép a közös értékesítés helyét mutatja a Microsoft lapon.":::
 
-1. Adja meg az alapszintű tőzsdei adatokat, amelyek segítségével a Microsoft-értékesítők gyorsan rendezhetik és felfedezhetik az ajánlatot a **Listázás** szakaszban. ( *Kötelező: minden mező.* )
+1. Adja meg az alapszintű tőzsdei adatokat, amelyek segítségével a Microsoft-értékesítők gyorsan rendezhetik és felfedezhetik az ajánlatot a **Listázás** szakaszban. (*Kötelező: minden mező.*)
 
     :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="Ez a képen a közös értékesítés lap Listázás szakasza látható.":::  
 
-1. Adja meg az ajánlat részleteit, és töltse fel a biztosítékokat a **dokumentumok** szakaszban. A Microsoft Sellers ezeket az információkat az ajánlat ajánlása és értékesítése céljából fogja használni. ( *Kötelező: ügyfél One-pager és Customer prezentációs Deck.* )
+1. Adja meg az ajánlat részleteit, és töltse fel a biztosítékokat a **dokumentumok** szakaszban. A Microsoft Sellers ezeket az információkat az ajánlat ajánlása és értékesítése céljából fogja használni. (*Kötelező: ügyfél One-pager és Customer prezentációs Deck.*)
 
     :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Ez a rendszerkép a dokumentumok szakaszt jeleníti meg a közös értékesítés lapon.":::
 
-1. Töltse fel az értékesítési kapcsolattartási adatokat a **névjegyek** szakaszban. Előfordulhat, hogy a Microsoft-értékesítők felhasználhatják ezeket a partnereket az ajánlatával kapcsolatos további információk igényléséhez. ( *Kötelező: kapcsolat minden olyan földrajzi helyhez, ahol az ajánlat elérhetővé válik.* )
+1. Töltse fel az értékesítési kapcsolattartási adatokat a **névjegyek** szakaszban. Előfordulhat, hogy a Microsoft-értékesítők felhasználhatják ezeket a partnereket az ajánlatával kapcsolatos további információk igényléséhez. (*Kötelező: kapcsolat minden olyan földrajzi helyhez, ahol az ajánlat elérhetővé válik.*)
 
     :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Ez a rendszerkép a kapcsolatok szakaszt jeleníti meg a közös értékesítés lapon.":::
 

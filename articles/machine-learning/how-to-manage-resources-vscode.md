@@ -1,7 +1,7 @@
 ---
 title: Erőforrások létrehozása és kezelése VS Code-bővítmény (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Erőforrások létrehozása és kezelése a VS Code bővítménnyel
+description: Megtudhatja, hogyan hozhat létre és kezelhet Azure Machine Learning erőforrásokat a Visual Studio Code Azure Machine Learning használatával.
 services: machine-learning
 author: luisquintanilla
 ms.author: luquinta
@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 09/30/2020
-ms.openlocfilehash: 2e410cbc7813031929ea040b2cc4fb2967b99c1b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: f8eb18b190b72381f1a93575eb39b3d19d8d431b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319358"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701415"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Azure Machine Learning erőforrások kezelése a VS Code bővítménnyel (előzetes verzió)
 
@@ -47,7 +47,7 @@ További információ: [munkaterületek](concept-workspace.md).
 
 A munkaterület létrehozásának alternatív módszerei a következők:
 
-- Nyissa meg a parancs paletta **nézetét > a Command paletta** parancsot, és írja be az **Azure ml: Create Workspace (munkaterület létrehozása** ) szöveget.
+- Nyissa meg a parancs paletta **nézetét > a Command paletta** parancsot, és írja be az **Azure ml: Create Workspace (munkaterület létrehozása**) szöveget.
 - Kattintson a `+` Azure Machine learning nézet tetején található ikonra.
 - Hozzon létre egy új munkaterületet, amikor a rendszer kéri, hogy válasszon ki egy munkaterületet más erőforrások kiépítés során.
 
@@ -56,8 +56,8 @@ A munkaterület létrehozásának alternatív módszerei a következők:
 1. Bontsa ki a munkaterületet tartalmazó előfizetés csomópontot.
 1. Kattintson a jobb gombbal az eltávolítani kívánt munkaterületre.
 1. Válassza ki, hogy el szeretné-e távolítani a következőket:
-    - *Csak a munkaterület* : Ez a beállítás **csak** a munkaterület Azure-erőforrását törli. Az erőforráscsoport, a Storage-fiókok és minden más olyan erőforrás, amelyhez a munkaterület hozzá lett csatolva, még mindig az Azure-ban található.
-    - *Társított erőforrásokkal* : Ez a lehetőség törli a munkaterületet **és** az ahhoz társított összes erőforrást.
+    - *Csak a munkaterület*: Ez a beállítás **csak** a munkaterület Azure-erőforrását törli. Az erőforráscsoport, a Storage-fiókok és minden más olyan erőforrás, amelyhez a munkaterület hozzá lett csatolva, még mindig az Azure-ban található.
+    - *Társított erőforrásokkal*: Ez a lehetőség törli a munkaterületet **és** az ahhoz társított összes erőforrást.
 
 ## <a name="datastores"></a>Adattárak
 
@@ -80,7 +80,7 @@ Munkaterületek létrehozásakor létrejön egy adattár az egyes típusokhoz.
     1. Válassza ki az adattár típusát.
     1. Válassza ki a tárolási erőforrást. Kiválaszthat egy, a munkaterülethez társított tárolási erőforrást, vagy választhat az Azure-előfizetésekben található bármely érvényes tárolási erőforrás közül.
     1. Válassza ki azt a tárolót, ahol az adatai a korábban kiválasztott tárolási erőforráson belül vannak.
-1. A VS Code-ban megjelenik egy konfigurációs fájl. Ha elégedett a konfigurációs fájllal, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát ( **tekintse meg > Command paletta** ), és írja be az **Azure ml: mentés és folytatás** gombot.
+1. A VS Code-ban megjelenik egy konfigurációs fájl. Ha elégedett a konfigurációs fájllal, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: mentés és folytatás** gombot.
 
 ### <a name="manage-a-datastore"></a>Adattár kezelése
 
@@ -96,8 +96,8 @@ Munkaterületek létrehozásakor létrejön egy adattár az egyes típusokhoz.
 
 A bővítmény jelenleg a következő adatkészlet-típusokat támogatja:
 
-- *Táblázatos* : lehetővé teszi, hogy az adatokat egy DataFrame (pandák vagy PySpark) megvalósuljon.
-- *Fájl* : fájl vagy fájl gyűjteménye. Lehetővé teszi fájlok letöltését vagy csatlakoztatását a számítási feladatokhoz.
+- *Táblázatos*: lehetővé teszi, hogy az adatokat egy DataFrame (pandák vagy PySpark) megvalósuljon.
+- *Fájl*: fájl vagy fájl gyűjteménye. Lehetővé teszi fájlok letöltését vagy csatlakoztatását a számítási feladatokhoz.
 
 További információ: [adatkészletek](concept-data.md#datasets)
 
@@ -159,12 +159,12 @@ További információ: [környezetek](concept-environments.md).
 1. A parancssorban:
     1. Adja meg a környezet nevét
     1. Adja meg a környezet konfigurációját:
-        - *Kurátori környezetek* : előre konfigurált környezetek Azure Machine Learningban. A környezet további testreszabásához módosítsa a `dependencies` tulajdonságot a JSON-fájlban. További információ a [kurátori környezetekről](resource-curated-environments.md).
-        - *Conda-függőségek fájlja* : Anaconda-környezetek esetén a környezeti definícióját tartalmazó fájl adható meg.
-        - *Pip-követelmények fájlja* : a pip-környezetekhez meg lehet adni a környezet definícióját tartalmazó fájlt.
-        - *Meglévő Conda-környezet* : Ez a beállítás a helyi számítógép Conda környezeteit keresi, és megpróbál létrehozni egy környezetet a kiválasztott környezetből.
-        - *Egyéni* : saját csatornák és függőségek definiálása
-    1. Megnyílik egy konfigurációs fájl a szerkesztőben. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát ( **tekintse meg > Command paletta** ), és írja be az **Azure ml: mentés és folytatás** gombot.
+        - *Kurátori környezetek*: előre konfigurált környezetek Azure Machine Learningban. A környezet további testreszabásához módosítsa a `dependencies` tulajdonságot a JSON-fájlban. További információ a [kurátori környezetekről](resource-curated-environments.md).
+        - *Conda-függőségek fájlja*: Anaconda-környezetek esetén a környezeti definícióját tartalmazó fájl adható meg.
+        - *Pip-követelmények fájlja*: a pip-környezetekhez meg lehet adni a környezet definícióját tartalmazó fájlt.
+        - *Meglévő Conda-környezet*: Ez a beállítás a helyi számítógép Conda környezeteit keresi, és megpróbál létrehozni egy környezetet a kiválasztott környezetből.
+        - *Egyéni*: saját csatornák és függőségek definiálása
+    1. Megnyílik egy konfigurációs fájl a szerkesztőben. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: mentés és folytatás** gombot.
 
 ### <a name="view-environment-configurations"></a>Környezeti konfigurációk megtekintése
 
@@ -182,7 +182,7 @@ Egy adott környezet függőségeinek és konfigurációinak szerkesztése a bő
 1. Bontsa ki a munkaterületet tartalmazó előfizetés csomópontot.
 1. Bontsa ki a **környezetek** csomópontot a munkaterületen belül.
 1. Kattintson a jobb gombbal a megtekinteni kívánt környezetre, és válassza a **környezet szerkesztése** lehetőséget.
-1. Ha elégedett a konfigurációval, a módosítások elvégzése után válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát ( **tekintse meg > Command paletta** ), és írja be az **Azure ml: Save és Continue** parancsot.
+1. Ha elégedett a konfigurációval, a módosítások elvégzése után válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: Save és Continue** parancsot.
 
 ## <a name="experiments"></a>Kísérletek
 
@@ -307,7 +307,7 @@ További információ: [számítási célok](concept-compute-target.md#train).
 1. Bontsa ki a munkaterületet tartalmazó előfizetés csomópontot.
 1. Bontsa ki a **számítási fürtök** csomópontot a munkaterületen belül.
 1. Kattintson a jobb gombbal a szerkeszteni kívánt számítási feladatokra, majd válassza a **számítás szerkesztése** lehetőséget.
-1. A rendszer a szerkesztőben megnyílik egy konfigurációs fájl a számítási feladatokhoz. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát ( **tekintse meg > Command paletta** ), és írja be az **Azure ml: mentés és folytatás** gombot.
+1. A rendszer a szerkesztőben megnyílik egy konfigurációs fájl a számítási feladatokhoz. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: mentés és folytatás** gombot.
 
 ### <a name="delete-compute"></a>Számítás törlése
 
@@ -327,15 +327,15 @@ Futtatási konfiguráció létrehozása a bővítményben:
     1. Válasszon ki vagy hozzon létre egy új környezetet.
     1. Írja be a futtatni kívánt parancsfájl nevét, vagy nyomja le az **ENTER** billentyűt a böngészőben a helyi számítógépen lévő parancsfájlhoz.
     1. Választható Válassza ki, hogy szeretne-e adathivatkozást létrehozni a betanítási futtatáshoz. Ezzel a művelettel megkérdezi, hogy definiáljon-e egy adatkészletet a futtatási konfigurációban.
-        1. Válasszon az egyik regisztrált adatkészletből, hogy az adatkészlethez tartozó konfigurációs fájl futtatásához a szerkesztőben nyíljon meg. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát ( **tekintse meg > Command paletta** ), és írja be az **Azure ml: mentés és folytatás** gombot.
-    1. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát ( **tekintse meg > Command paletta** ), és írja be az **Azure ml: mentés és folytatás** gombot.
+        1. Válasszon az egyik regisztrált adatkészletből, hogy az adatkészlethez tartozó konfigurációs fájl futtatásához a szerkesztőben nyíljon meg. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: mentés és folytatás** gombot.
+    1. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: mentés és folytatás** gombot.
 
 ### <a name="edit-run-configuration"></a>Futtatási konfiguráció szerkesztése
 
 1. Bontsa ki a munkaterületet tartalmazó előfizetés csomópontot.
 1. Bontsa ki a számítási fürt csomópontot a munkaterület **számítási fürtök** csomópontjában.
 1. Kattintson a jobb gombbal a szerkeszteni kívánt futtatási konfigurációra, majd válassza a **futtatási konfiguráció szerkesztése** lehetőséget.
-1. A szerkesztőben megnyílik a futtatási konfigurációhoz tartozó konfigurációs fájl. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát ( **tekintse meg > Command paletta** ), és írja be az **Azure ml: mentés és folytatás** gombot.
+1. A szerkesztőben megnyílik a futtatási konfigurációhoz tartozó konfigurációs fájl. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: mentés és folytatás** gombot.
 
 ### <a name="delete-run-configuration"></a>Futtatási konfiguráció törlése
 
@@ -357,7 +357,7 @@ További információ: [modellek](concept-azure-machine-learning-architecture.md
     1. Adja meg a modell nevét
     1. Válassza ki, hogy a modell fájl vagy mappa-e.
     1. Keresse meg a modellt a helyi számítógépen.
-    1. Egy konfigurációs fájl a modellhez a szerkesztőben. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát ( **tekintse meg > Command paletta** ), és írja be az **Azure ml: mentés és folytatás** gombot.
+    1. Egy konfigurációs fájl a modellhez a szerkesztőben. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: mentés és folytatás** gombot.
 
 ### <a name="view-model-properties"></a>Modell tulajdonságainak megtekintése
 
@@ -401,7 +401,7 @@ További információ: webszolgáltatás- [végpontok](concept-azure-machine-lea
     1. Adja meg a modell nevét.
     1. Adja meg a modell Pontozásakor futtatandó parancsfájlt.
     1. Adjon meg egy Conda-függőségi fájlt.
-    1. A központi telepítés konfigurációs fájlja megjelenik a szerkesztőben. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát ( **tekintse meg > Command paletta** ), és írja be az **Azure ml: mentés és folytatás** gombot.
+    1. A központi telepítés konfigurációs fájlja megjelenik a szerkesztőben. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: mentés és folytatás** gombot.
 
 > [!NOTE]
 > Azt is megteheti, hogy a jobb gombbal egy regisztrált modellre kattint a *modellek* csomópontban, és kiválasztja a **szolgáltatás telepítése a regisztrált modellből** lehetőséget.
@@ -421,7 +421,7 @@ A központi telepítések létrehozása és törlése mellett megtekintheti és 
 1. Bontsa ki a **végpontok** csomópontot a munkaterületen belül.
 1. Kattintson a jobb gombbal a felügyelni kívánt központi telepítésre:
     - A beállítások szerkesztéséhez válassza a **szolgáltatás szerkesztése** lehetőséget.
-        - A központi telepítés konfigurációs fájlja megjelenik a szerkesztőben. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát ( **tekintse meg > Command paletta** ), és írja be az **Azure ml: mentés és folytatás** gombot.
+        - A központi telepítés konfigurációs fájlja megjelenik a szerkesztőben. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: mentés és folytatás** gombot.
     - A központi telepítés konfigurációs beállításainak megtekintéséhez válassza a **szolgáltatás tulajdonságainak megtekintése** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések

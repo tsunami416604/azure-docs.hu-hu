@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8f1fa07b94072d37cf83320b6c8956d3b412f12
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948640"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701116"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Az Azure Cognitive Search szinonimái
 
@@ -23,7 +23,7 @@ Az Azure Cognitive Searchban a Kibővítés a lekérdezés időpontjában tört�
 
 ## <a name="create-synonyms"></a>Szinonimák létrehozása
 
-A rendszer nem támogatja a szinonimák létrehozására szolgáló portál használatát, de használhatja a REST API vagy a .NET SDK-t is. A REST használatának megkezdéséhez javasoljuk, hogy a [Poster használatával](search-get-started-postman.md) és a kérelmek összeállításával hozzon létre a következő API-t: [szinonima térképek létrehozása](/rest/api/searchservice/create-synonym-map). C#-fejlesztők számára a C# használatával megkezdheti a [szinonimák hozzáadását az Azure-beli kognitív keresésekhez](search-synonyms-tutorial-sdk.md).
+A rendszer nem támogatja a szinonimák létrehozására szolgáló portál használatát, de használhatja a REST API vagy a .NET SDK-t is. A REST használatának megkezdéséhez ajánljuk a [Poster vagy a Visual Studio Code](search-get-started-rest.md) használatát, valamint az API-t használó kérelmek összetételét: [szinonimák létrehozása](/rest/api/searchservice/create-synonym-map). C#-fejlesztők számára a C# használatával megkezdheti a [szinonimák hozzáadását az Azure-beli kognitív keresésekhez](search-synonyms-tutorial-sdk.md).
 
 Ha az [ügyfél által felügyelt kulcsokat](search-security-manage-encryption-keys.md) használja a kiszolgálóoldali titkosításhoz, akkor ezt a védelmet a szinonima Térkép tartalmára is alkalmazhatja.
 

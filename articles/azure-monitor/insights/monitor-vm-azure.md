@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 84db7f58c292cf0a9d01cf90da4b847691f601fb
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 0c1e84695ce40b489fb1005325d501ea241cdaf1
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491630"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738101"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure-beli virtuális gépek figyelése Azure Monitor
 Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Azure-beli virtuális gépek monitorozási adatainak gyűjtésére és elemzésére az állapotuk fenntartása érdekében. A virtuális gépeket a rendelkezésre állás és a teljesítmény figyelésére használhatja Azure Monitor mint bármely [más Azure-erőforrást](monitor-azure-resource.md), de ezek más erőforrásokkal is egyediek, mivel a vendég operációs és a rendszer, valamint a rajta futó munkaterhelések figyelésére is szükség van. 
@@ -86,7 +86,7 @@ A munkaterülethez tartozó konfigurációt közvetlenül a Azure Monitor for VM
 
 ![Munkaterület konfigurálása](media/monitor-vm-azure/workspace-configuration.png)
 
-Válassza a **Speciális beállítások** elemet a munkaterület menüben, majd az **adatok** lehetőséget az adatforrások konfigurálásához. Windows-ügynökök esetében válassza a **Windows-eseménynaplók** lehetőséget, és vegyen fel gyakori eseménynaplókat, például a *rendszert* és az *alkalmazást*. Linux-ügynökök esetében válassza a **syslog** lehetőséget, és adjon hozzá közös létesítményeket (például *Kern* és *Daemon* ). Az elérhető adatforrások listáját és a konfigurálásának részleteit a [Azure monitor ügynök adatforrásaiban](../platform/agent-data-sources.md) találhatja meg. 
+Válassza a **Speciális beállítások** elemet a munkaterület menüben, majd az **adatok** lehetőséget az adatforrások konfigurálásához. Windows-ügynökök esetében válassza a **Windows-eseménynaplók** lehetőséget, és vegyen fel gyakori eseménynaplókat, például a *rendszert* és az *alkalmazást*. Linux-ügynökök esetében válassza a **syslog** lehetőséget, és adjon hozzá közös létesítményeket (például *Kern* és *Daemon*). Az elérhető adatforrások listáját és a konfigurálásának részleteit a [Azure monitor ügynök adatforrásaiban](../platform/agent-data-sources.md) találhatja meg. 
 
 ![Események konfigurálása](media/monitor-vm-azure/configure-events.png)
 
@@ -148,7 +148,7 @@ A metrikák a virtuális gép menüjéből **való megnyitásával** elemezheti 
 
 A virtuális gépek három névteret használnak a metrikák számára:
 
-| Névtér | Description | Követelmény |
+| Névtér | Leírás | Követelmény |
 |:---|:---|:---|
 | Virtuálisgép-gazda | Az összes Azure-beli virtuális gép számára automatikusan összegyűjtött gazdagép-metrikák. A metrikák részletes listája a [Microsoft. számítás/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Automatikusan összegyűjtött konfiguráció nélkül. |
 | Vendég (klasszikus) | A vendég operációs rendszerek és az alkalmazások teljesítményének korlátozott készlete. Elérhető a metrikák Explorerben, de nem más Azure Monitor-funkciók, például a metrikus riasztások.  | A [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) telepítve van. Az adatok beolvasása az Azure Storage-ból történik.  |
@@ -207,7 +207,7 @@ Ha például olyan riasztást szeretne létrehozni, amely ellenőrzi, hogy egy a
 
 ```kusto
 Heartbeat
-| where TimeGenerated < ago(10m)
+| where TimeGenerated > ago(10m)
 | where ResourceGroup == "my-resource-group"
 | summarize max(TimeGenerated) by Computer
 ```
@@ -218,7 +218,7 @@ Ha riasztást szeretne létrehozni, ha túlzott számú sikertelen bejelentkezé
 
 ```kusto
 Event
-| where TimeGenerated < ago(1hr)
+| where TimeGenerated > ago(1hr)
 | where EventID == 4625
 ```
 
@@ -238,7 +238,7 @@ A meglévő Operations Manager funkciókat kibővítő Azure Monitor szolgáltat
 A meglévő Operations Manager felügyeleti csoport Log Analytics munkaterülethez való csatlakoztatásáról további információt a [csatlakozás Operations Manager a Azure monitorhoz](../platform/om-agents.md) című témakörben talál.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan elemezheti Azure Monitor naplókban lévő adatelemzéseket a naplók használatával.](../log-query/get-started-queries.md)
 * [Tudnivalók a riasztásokról Azure Monitor mérőszámokkal és naplókkal.](../platform/alerts-overview.md)

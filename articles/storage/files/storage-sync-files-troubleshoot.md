@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: dd9e67b8cea88421986d4ca9e3545c6dce618672
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: c7405ada800bd5fb9161e9d96bd4c8b0484be620
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94626401"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737013"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -1004,7 +1004,7 @@ if ($fileShare -eq $null) {
 <a id="troubleshoot-rbac"></a>**Győződjön meg arról, Azure File Sync hozzáfér a Storage-fiókhoz.**  
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 1. Kattintson a **hozzáférés-vezérlés (iam)** elemre a bal oldali tartalomjegyzékben.
-1. Kattintson a **szerepkör-hozzárendelések** lapra a Storage-fiókhoz hozzáférő felhasználók és alkalmazások ( *egyszerű szolgáltatásnév* ) listázásához.
+1. Kattintson a **szerepkör-hozzárendelések** lapra a Storage-fiókhoz hozzáférő felhasználók és alkalmazások (*egyszerű szolgáltatásnév*) listázásához.
 1. Ellenőrizze, hogy a **Microsoft. StorageSync** vagy a **hibrid file Sync szolgáltatás** (régi alkalmazás neve) megjelenik-e a listában az **olvasó és az adatelérési** szerepkörrel. 
 
     ![Képernyőkép a hibrid File Sync szolgáltatásnév szolgáltatásról a Storage-fiók hozzáférés-vezérlés lapján](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
@@ -1013,7 +1013,7 @@ if ($fileShare -eq $null) {
 
     - Kattintson a **Hozzáadás** parancsra.
     - A **szerepkör** mezőben válassza ki az **olvasó és az adathozzáférés** lehetőséget.
-    - A **Select (kiválasztás** ) mezőbe írja be a **Microsoft. StorageSync** , válassza ki a szerepkört, majd kattintson a **Save (Mentés** ) gombra.
+    - A **Select (kiválasztás** ) mezőbe írja be a **Microsoft. StorageSync**, válassza ki a szerepkört, majd kattintson a **Save (Mentés**) gombra.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
@@ -1266,7 +1266,24 @@ Ha a kiszolgáló Azure File Syncával kapcsolatos problémákat tapasztal, kezd
 
 Ha a probléma nem oldódik meg, futtassa a AFSDiag eszközt, és küldje el a. zip-fájl kimenetét a további diagnosztizáláshoz rendelt támogatási szakembernek.
 
-A AFSDiag futtatásához hajtsa végre a következő lépéseket:
+A AFSDiag futtatásához hajtsa végre az alábbi lépéseket.
+
+Az ügynök verziójának v11 és újabb verziói esetén:
+1. Nyisson meg egy rendszergazda jogú PowerShell-ablakot, majd futtassa a következő parancsokat (nyomja le az ENTER billentyűt minden parancs után):
+
+    > [!NOTE]
+    >A AFSDiag létrehozza a kimeneti könyvtárat és a hozzá tartozó Temp mappát a naplók gyűjtése előtt, és a végrehajtás után törli a Temp mappát. Adja meg a kimeneti helyet, amely nem tartalmaz adatokat.
+    
+    ```powershell
+    cd "c:\Program Files\Azure\StorageSyncAgent"
+    Import-Module .\afsdiag.ps1
+    Debug-AFS -OutputDirectory C:\output -KernelModeTraceLevel Verbose -UserModeTraceLevel Verbose
+    ```
+
+2. Reprodukálja a problémát. Ha elkészült, adja meg a **D** értéket.
+3. A rendszer a naplókat és nyomkövetési fájlokat tartalmazó. zip-fájlt menti a megadott kimeneti könyvtárba. 
+
+Az ügynök V10-es és korábbi verzióiban:
 1. Hozzon létre egy könyvtárat, amelybe a rendszer menti a AFSDiag kimenetét (például C:\Output).
     > [!NOTE]
     >A AFSDiag a naplófájlok gyűjtése előtt törli a kimeneti könyvtár összes tartalmát. Adja meg a kimeneti helyet, amely nem tartalmaz adatokat.
@@ -1282,6 +1299,7 @@ A AFSDiag futtatásához hajtsa végre a következő lépéseket:
 4. A Azure File Sync felhasználói mód nyomkövetési szintjén adja meg az **1** értéket (kivéve, ha másként van megadva), majd nyomja le az ENTER billentyűt.
 5. Reprodukálja a problémát. Ha elkészült, adja meg a **D** értéket.
 6. A rendszer a naplókat és nyomkövetési fájlokat tartalmazó. zip-fájlt menti a megadott kimeneti könyvtárba.
+
 
 ## <a name="see-also"></a>További információ
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

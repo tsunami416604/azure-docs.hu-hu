@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f501b9f4215b9eeb48aa8bc80d492d55cf940404
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c88aea6aff942cdcf5cbc022df8f07cfe0d4cce
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397385"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701279"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Oktatóanyag: JSON-Blobok indexelése az Azure Storage-ból REST használatával
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag a Poster és a [Search REST API](/rest/api/searchservice/) -k
 > * Indexelő konfigurálása és futtatása a tároló olvasásához és a kereshető tartalom kinyeréséhez az Azure Blob Storage-ból
 > * Keresés az újonnan létrehozott indexben
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,7 +50,7 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 ### <a name="start-with-azure-storage"></a>Első lépések az Azure Storage-ban
 
-1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/) , és kattintson az **+ erőforrás létrehozása**elemre.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/) , és kattintson az **+ erőforrás létrehozása** elemre.
 
 1. Keressen rá a *Storage-fiókra* , és válassza ki a Microsoft Storage-fiók ajánlatát.
 
@@ -76,11 +76,11 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. A tároló létrehozása után nyissa meg, majd válassza a parancssáv **feltöltés** elemét.
 
-   :::image type="content" source="media/search-semi-structured-data/upload-command-bar.png" alt-text="Storage-fiók létrehozása" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/upload-command-bar.png" alt-text="Feltöltés a parancssáv" border="false":::
 
-1. Navigáljon a minta fájlokat tartalmazó mappához. Jelölje ki az összeset, majd kattintson a **feltöltés**elemre.
+1. Navigáljon a minta fájlokat tartalmazó mappához. Jelölje ki az összeset, majd kattintson a **feltöltés** elemre.
 
-   :::image type="content" source="media/search-semi-structured-data/clinicalupload.png" alt-text="Storage-fiók létrehozása" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/clinicalupload.png" alt-text="Fájlok feltöltése" border="false":::
 
 Ha befejeződött a feltöltés, a fájlok a saját almappájukban jelennek meg az adattárolóban.
 
@@ -96,21 +96,21 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="Storage-fiók létrehozása" border="false":::
+:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" border="false":::
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 ## <a name="2---set-up-postman"></a>2 – Poster beállítása
 
-Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt az eszközt, tekintse meg az [Azure Cognitive Search REST API-k a Poster használatával való megismerését](search-get-started-postman.md)ismertető témakört.
+Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt az eszközt, tekintse meg az [Azure Cognitive Search REST API-k megismerése](search-get-started-rest.md)című témakört.
 
 Az oktatóanyag minden hívására vonatkozó kérési metódusok **post** és **Get**. A keresési szolgáltatás három API-hívást hajt végre egy adatforrás, egy index és egy indexelő létrehozásához. Az adatforrás tartalmaz egy, a tárfiókjára irányuló mutatót és a JSON-adatait. A keresési szolgáltatás az adatok betöltésekor hozza létre a kapcsolatot.
 
 A fejlécekben a "Content-Type" értéket állítsa be, `application/json` és állítsa `api-key` az Azure Cognitive Search szolgáltatás felügyeleti API-kulcsára. Miután beállította a fejléceket, használhatja azokat minden kérelemhez ebben a gyakorlatban.
 
-  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Storage-fiók létrehozása" border="false":::
+  :::image type="content" source="media/search-get-started-rest/postman-url.png" alt-text="Poster-kérelem URL-címe és fejléce" border="false":::
 
 Az URI-k API-verziót kell megadni, és minden hívásnak egy **201**-as értéket kell visszaadnia. A JSON-tömbök használatának általánosan elérhető API-verziója a következő: `2020-06-30` .
 
@@ -279,7 +279,7 @@ Az indexelő csatlakozik az adatforráshoz, importálja az adatmennyiséget a c�
 
 Az első dokumentum betöltését követően megkezdheti a keresést.
 
-1. Módosítsa a **lekérdezni**kívánt műveletet.
+1. Módosítsa a **lekérdezni** kívánt műveletet.
 
 1. Állítsa be a hívás URI-JÁT a következőre: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2020-06-30&$count=true` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
@@ -315,11 +315,11 @@ Az első dokumentum betöltését követően megkezdheti a keresést.
 
 1. Adja hozzá a `$select` lekérdezési paramétert az eredmények kevesebb mezőre való korlátozásához: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true` .  Ehhez a lekérdezéshez a 100-es dokumentumok egyeznek, de alapértelmezés szerint az Azure Cognitive Search csak a 50 értéket adja vissza az eredményekben.
 
-   :::image type="content" source="media/search-semi-structured-data/lastquery.png" alt-text="Storage-fiók létrehozása" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/lastquery.png" alt-text="Paraméteres lekérdezés" border="false":::
 
 1. Példa összetettebb lekérdezésre `$filter=MinimumAge ge 30 and MaximumAge lt 75` , amely csak azokat az eredményeket adja vissza, amelyekben a paraméterek minimális értéke nagyobb vagy egyenlő, mint 30, a maximális érték pedig 75. Cserélje le a `$select` kifejezést a `$filter` kifejezésre.
 
-   :::image type="content" source="media/search-semi-structured-data/metadatashort.png" alt-text="Storage-fiók létrehozása" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/metadatashort.png" alt-text="Részben strukturált keresés" border="false":::
 
 A logikai operátorok (és, vagy, nem) és az összehasonlító operátorok (EQ, ne, gt, lt, GE, le) is használhatók. A sztring-összehasonlítások megkülönböztetik a kis- és nagybetűket. További információkat és példákat az [egyszerű lekérdezés létrehozása](search-query-simple-examples.md)című témakörben talál.
 
@@ -344,7 +344,7 @@ Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávo
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri az Azure Blob-indexelés alapjait, ismerkedjen meg részletesebben a JSON-Blobok indexelési konfigurációjával az Azure Storage-ban.
 

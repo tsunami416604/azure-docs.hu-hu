@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 10/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: f9a5197b982958fe0a0ff21c4b442142beb38882
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0062caff7d8d25b263a9b1202f61691c056469af
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422467"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701082"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Mi az az Azure Cognitive Search?
 
@@ -80,7 +80,7 @@ A lekéréses modell a forrásokból származó adatokat lekéri az Azure-ból, 
 
 Az indexek feltöltése után a [keresési lekérdezéseket](search-query-overview.md) a szolgáltatás végpontján [REST API](/rest/api/searchservice/Search-Documents) vagy a [.net SDK](/dotnet/api/azure.search.documents.searchclient.search)-val rendelkező egyszerű HTTP-kérelmek használatával teheti ki.
 
-Lépjen az [első keresőalkalmazás létrehozásához](tutorial-csharp-create-first-app.md) , majd terjesszen fel egy olyan weblapot, amely összegyűjti a felhasználói adatokat, és kezeli az eredményeket. Az [interaktív Rest](search-get-started-postman.md) -hívásokhoz vagy a Azure Portal beépített [keresési Explorerrel](search-explorer.md) is használhatja a meglévő indexek lekérdezéséhez.
+Lépjen az [első keresőalkalmazás létrehozásához](tutorial-csharp-create-first-app.md) , majd terjesszen fel egy olyan weblapot, amely összegyűjti a felhasználói adatokat, és kezeli az eredményeket. Egy meglévő index lekérdezéséhez a [Poster vagy a Visual Studio Code](search-get-started-rest.md)  is használható az interaktív Rest-hívásokhoz vagy a Azure Portal beépített [keresési Explorerben](search-explorer.md) .
 
 ## <a name="how-it-compares"></a>Összehasonlítás más keresési megoldásokkal
 

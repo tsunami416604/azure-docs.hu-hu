@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6dd64ae8b7b7307d7dcd510d1fdb877365c6f36
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8dc2eb898c12e374bc503c5a05f00eb20667443b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675956"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701840"
 ---
 # <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>Gyors útmutató: keresési index létrehozása a régi Microsoft. Azure. Search v10 ügyféloldali kódtár használatával
 
@@ -55,7 +55,7 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
-![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
+![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-rest/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -69,7 +69,7 @@ A [Microsoft. Azure. Search csomag](https://www.nuget.org/packages/Microsoft.Azu
 
 Ehhez a projekthez használja a `Microsoft.Azure.Search` NuGet csomag 10-es verzióját és a legújabb `Microsoft.Extensions.Configuration.Json` NuGet-csomagot.
 
-1. Az **eszközök**  >  **NuGet csomagkezelő** területén válassza a **NuGet-csomagok kezelése megoldást..** . lehetőséget. 
+1. Az **eszközök**  >  **NuGet csomagkezelő** területén válassza a **NuGet-csomagok kezelése megoldást..**. lehetőséget. 
 
 1. Kattintson a **Browse** (Tallózás) gombra.
 
@@ -551,7 +551,7 @@ Az [`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documents
 
     A kimenet ugyanazokat az üzeneteket tartalmazza, mint a korábban, a lekérdezési adatok és eredmények hozzáadásával.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 

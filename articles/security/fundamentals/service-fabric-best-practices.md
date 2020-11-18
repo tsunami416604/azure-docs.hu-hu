@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 93b25e65914ce603b4a969eda7fd7c048704e466
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: a7396c9a29c7d9f69dbe6a9cc5cd085c72ebafde
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410011"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700946"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárásai
 Az alkalmazások Azure-ban való üzembe helyezése gyors, egyszerű és költséghatékony. Mielőtt üzembe helyezné a Felhőbeli alkalmazást éles környezetben, tekintse át az alkalmazásban található biztonságos fürtök megvalósításához szükséges alapvető és ajánlott eljárások listáját.
@@ -60,7 +60,7 @@ A fürt biztonságának különböző technológiákkal történő megvalósít�
 -   Csomópontok közötti biztonság: Ez a forgatókönyv biztosítja a virtuális gépek és a fürtben lévő számítógépek közötti kommunikációt. Ez a biztonsági mód biztosítja, hogy csak azok a számítógépek tárolhatnak alkalmazásokat és szolgáltatásokat a fürtben, amelyek jogosultak a fürthöz való csatlakozásra.
 Ebben az esetben az Azure-on futó fürtök vagy a Windows rendszeren futó önálló fürtök a Windows Server rendszerű számítógépek [tanúsítvány](../../service-fabric/service-fabric-windows-cluster-x509-security.md) -vagy [Windows-biztonsági](../../service-fabric/service-fabric-windows-cluster-windows-security.md) szolgáltatását használhatják.
 -   Ügyfél és csomópont közötti biztonság: Ez a forgatókönyv a Service Fabric-ügyfél és a fürt egyes csomópontjai közötti kommunikációt biztosítja.
--   Role-Based Access Control (RBAC): Ez a forgatókönyv különálló identitásokat (tanúsítványokat, Azure AD-t stb.) használ a fürthöz hozzáférő minden rendszergazda és felhasználói ügyfél szerepkörhöz. A szerepkör-identitásokat a fürt létrehozásakor kell megadnia.
+-   Service Fabric szerepköralapú hozzáférés-vezérlés (Service Fabric RBAC): Ez a forgatókönyv külön identitásokat (tanúsítványokat, Azure AD-t stb.) használ a fürthöz hozzáférő minden rendszergazda és felhasználói ügyfél szerepkörhöz. A szerepkör-identitásokat a fürt létrehozásakor kell megadnia.
 
 >[!NOTE]
 >**Biztonsági javaslat Azure-fürtökhöz:** Az Azure AD biztonsági szolgáltatásával hitelesítheti az ügyfeleket és a tanúsítványokat a csomópontok közötti biztonság érdekében.
@@ -132,7 +132,7 @@ A tanúsítványnak meg kell felelnie az alábbi követelményeknek az SSL/TLS-t
 -   A tanúsítvány tulajdonosának nevének meg kell egyeznie a felhőalapú szolgáltatás eléréséhez használt tartománynévvel.
 
     - Szerezze be a felhőalapú szolgáltatás eléréséhez használandó egyéni tartománynevet.
-    - Tanúsítvány kérése egy HITELESÍTÉSSZOLGÁLTATÓTÓL a szolgáltatás egyéni tartománynevének megfelelő tulajdonos nevével. Ha például az Egyéni tartománynév a __contoso__**. com** , a hitelesítésszolgáltatótól származó tanúsítványnak a tulajdonos neve **. contoso.com** vagy a __www__**. contoso.com** nevet kell tartalmaznia.
+    - Tanúsítvány kérése egy HITELESÍTÉSSZOLGÁLTATÓTÓL a szolgáltatás egyéni tartománynevének megfelelő tulajdonos nevével. Ha például az Egyéni tartománynév a __contoso__**. com**, a hitelesítésszolgáltatótól származó tanúsítványnak a tulajdonos neve **. contoso.com** vagy a __www__**. contoso.com** nevet kell tartalmaznia.
 
     >[!NOTE]
     >Nem szerezhet be SSL/TLS-tanúsítványt a HITELESÍTÉSSZOLGÁLTATÓTÓL a __cloudapp__**.net** -tartományhoz.
@@ -172,11 +172,11 @@ A Key Vault beállításával kapcsolatos további tudnivalókért tekintse meg 
 Miután létrehozta az alkalmazásokat a fürt képviseletére, rendelje hozzá a felhasználókat a Service Fabric által támogatott szerepkörökhöz: csak olvasható és rendszergazda. Ezeket a szerepköröket a Azure Portal használatával rendelheti hozzá.
 
 >[!NOTE]
-> A Service Fabric szerepköreinek használatáról további információt a [szerepköralapú Access Control Service Fabric-ügyfelek](../../service-fabric/service-fabric-cluster-security-roles.md)számára című témakörben talál.
+> További információ a Service Fabric szerepköreinek használatáról: [Service Fabric ügyfelek Service Fabric szerepköralapú hozzáférés-vezérlése](../../service-fabric/service-fabric-cluster-security-roles.md).
 
 Az Azure Service Fabric két hozzáférés-vezérlési típust támogat a Service Fabric- [fürthöz](../../service-fabric/service-fabric-cluster-creation-via-arm.md)csatlakozó ügyfelekhez: rendszergazda és felhasználó. A fürt rendszergazdája a hozzáférés-vezérlés használatával korlátozhatja a hozzáférést bizonyos fürtműveleteket a felhasználók különböző csoportjaihoz. A hozzáférés-vezérlés biztonságosabbá teszi a fürtöt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Service Fabric biztonsági ellenőrzőlista](../../service-fabric/service-fabric-best-practices-security.md)
 - Állítsa be Service Fabric [fejlesztési környezetét](../../service-fabric/service-fabric-get-started.md).

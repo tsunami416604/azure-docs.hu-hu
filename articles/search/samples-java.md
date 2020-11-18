@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: babd40e0e3a3b7a254a8410313c5d4e3bb2832f0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 26e30b42906a3d8d7a3fcdc013537104a85f32fe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686943"
+ms.locfileid: "94701857"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Java-kódok az Azure Cognitive Search
 
@@ -47,5 +47,5 @@ Az alábbi példákban az [Azure Cognitive Search dokumentációjában](https://
 
 | Példák | Leírás | 
 |---------|-------------|
-| [QuickStart](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/Quickstart) | Forráskód a gyors üzembe helyezéshez [: hozzon létre egy keresési indexet](search-get-started-javascript.md). Ez a példa a REST API-kat hívja meg. |
+| [QuickStart](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/quickstart) | Forráskód a gyors üzembe helyezéshez [: hozzon létre egy keresési indexet a javában](search-get-started-java.md). Ez a példa a REST API-kat hívja meg. |
 | [Keresés – Java-indexelő – bemutató](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/search-java-indexer-demo) | Egy Azure Cosmos DB indexelő használatát mutatja be javában. Ez a példa a REST API-kat hívja meg. |

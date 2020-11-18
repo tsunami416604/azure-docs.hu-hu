@@ -15,26 +15,24 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7d4467e557105100fc32940c05fa349722689867
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ec054d55432ad2680314b4ff91a067d37b629d4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88054357"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734327"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Oktatóanyag: NAT-átjáró létrehozása az Azure CLI használatával és a NAT szolgáltatás tesztelése
 
 Ebben az oktatóanyagban létrehoz egy NAT-átjárót az Azure-beli virtuális gépek kimenő kapcsolatának biztosításához. A NAT-átjáró teszteléséhez üzembe kell helyeznie egy forrás-és cél virtuális gépet. Tesztelje a NAT-átjárót úgy, hogy kimenő kapcsolatokat végez a nyilvános IP-címhez. Ezek a kapcsolatok a forrásról a cél virtuális gépre kerülnek. Ez az oktatóanyag a forrás és a cél két különböző virtuális hálózatban való üzembe helyezését végzi el, csak az egyszerűség kedvéért.
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Ezt az oktatóanyagot a Azure Cloud Shell használatával vagy a megfelelő parancsok helyi futtatásával végezheti el.  Ha még nem használta Azure Cloud Shell, [Jelentkezzen be most](https://shell.azure.com).
+- Ehhez a cikkhez az Azure CLI 2.0.71 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-Ha a parancsok helyi futtatását választja, telepítenie kell a CLI-t.  Ehhez az oktatóanyaghoz az Azure CLI 2.0.71 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
-
-
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -79,7 +77,7 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
   - Egy nyilvános IP-címkészlet és egy nyilvános IP-előtag, amelyet a NAT-átjáró erőforrása lefordított kimenő folyamatokhoz használ.
   - Módosítsa az üresjárati időkorlátot az alapértelmezett 4 perctől 10 percre.
 
-Hozzon létre egy globális Azure NAT-átjárót az [az Network NAT Gateway Create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) nevű **myNATgateway**. A parancs a nyilvános IP- **myPublicIP** és a nyilvános IP-előtag **myPublicIPprefix**is használja. A parancs az üresjárati időkorlátot 10 percre is módosítja.
+Hozzon létre egy globális Azure NAT-átjárót az [az Network NAT Gateway Create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) nevű **myNATgateway**. A parancs a nyilvános IP- **myPublicIP** és a nyilvános IP-előtag **myPublicIPprefix** is használja. A parancs az üresjárati időkorlátot 10 percre is módosítja.
 
 ```azurecli-interactive
   az network nat gateway create \
@@ -157,7 +155,7 @@ Mivel a standard nyilvános IP-címek alapértelmezetten "biztonságosak", létr
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>SSH-végpont közzététele a forrásoldali virtuális gépen
 
-Hozzunk létre egy szabályt a NSG a forrás virtuális géphez való SSH-hozzáféréshez. Az [az Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) paranccsal hozzon létre egy **SSH**nevű NSG szabályt. Ez a szabály az erőforráscsoport **MyResourceGroupNAT** **myNSGsource** nevű NSG lesz létrehozva.
+Hozzunk létre egy szabályt a NSG a forrás virtuális géphez való SSH-hozzáféréshez. Az [az Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) paranccsal hozzon létre egy **SSH** nevű NSG szabályt. Ez a szabály az erőforráscsoport **MyResourceGroupNAT** **myNSGsource** nevű NSG lesz létrehozva.
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -250,7 +248,7 @@ A standard nyilvános IP-címek alapértelmezés szerint "biztonságosak", létr
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>SSH-végpont közzététele a cél virtuális gépen
 
-Hozzunk létre egy szabályt a NSG a cél virtuális géphez való SSH-hozzáféréshez. Az [az Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) paranccsal hozzon létre egy **SSH**nevű NSG szabályt. Ez a szabály az erőforráscsoport **MyResourceGroupNAT** **myNSGdestination** nevű NSG lesz létrehozva.
+Hozzunk létre egy szabályt a NSG a cél virtuális géphez való SSH-hozzáféréshez. Az [az Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) paranccsal hozzon létre egy **SSH** nevű NSG szabályt. Ez a szabály az erőforráscsoport **MyResourceGroupNAT** **myNSGdestination** nevű NSG lesz létrehozva.
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -407,7 +405,7 @@ Az 100-kilobájtos fájl beolvasásához használja a curlt.  Cserélje le az **
 curl http://<ip-address-destination>/100k --output /dev/null
 ```
 
-A **Hey**használatával több kérelem is létrehozható. Ismét cserélje le **\<ip-address-destination>** a helyére a korábban másolt cél IP-címet.
+A **Hey** használatával több kérelem is létrehozható. Ismét cserélje le **\<ip-address-destination>** a helyére a korábban másolt cél IP-címet.
 
 ```bash
 hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
@@ -424,7 +422,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
   
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban létrehozott egy NAT-átjárót, létrehozta a forrás és a cél virtuális gépet, majd tesztelte a NAT-átjárót.
 
 Tekintse át a Azure Monitor mérőszámait a NAT szolgáltatás működésének megtekintéséhez. Problémák diagnosztizálása, például az elérhető SNAT-portok erőforrás-kimerülése.  A SNAT-portok erőforrás-kimerülése könnyen kezelhető további nyilvános IP-címek vagy nyilvános IP-előtag-erőforrások hozzáadásával vagy mindkettővel.

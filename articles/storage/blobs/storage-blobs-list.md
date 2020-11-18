@@ -9,12 +9,12 @@ ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0bd2b295e5e4d4d5ea6e25869c8c109ff8bbbf38
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 906df01587201561fbbfea0661d0885864042925
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660763"
+ms.locfileid: "94701313"
 ---
 # <a name="list-blobs-with-net"></a>Blobok listázása .NET-tel
 
@@ -64,6 +64,10 @@ A blob metaadatait az eredményekkel adhatja vissza.
 - Ha a .NET V12 SDK-t használja, akkor a [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) enumerálás **metaadat** értékét kell megadnia.
 
 - Ha a .NET v11 SDK-t használja, akkor a [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) enumerálás **metaadat** értékét kell megadnia. Az Azure Storage tartalmazza az összes visszaadott blob metaadatait, így nem kell meghívnia a kontextus egyik **FetchAttributes** metódusát a blob metaadatainak lekéréséhez.
+
+### <a name="list-blob-versions-or-snapshots"></a>BLOB-verziók vagy-Pillanatképek listázása
+
+Ha a .NET V12-ügyfél függvénytárával szeretné kilistázni a blob-verziókat vagy pillanatképeket, a [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) paramétert a **verzió** vagy a **Pillanatkép** mezővel kell megadni. A verziók és a pillanatképek a legrégebbitől a legújabbig vannak felsorolva. A verziók listázásával kapcsolatos további információkért lásd: [blob-verziók listázása](versioning-enable.md#list-blob-versions).
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>A lapos Listázás és a hierarchikus Listázás
 

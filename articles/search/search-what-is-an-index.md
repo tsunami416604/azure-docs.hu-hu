@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: 3aa4a1917711f8997c282ba577c33e7a7f94472b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa7c06c3bad59bad11fa288631042cca86109706
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932882"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701133"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Alapszintű keresési index létrehozása az Azure-ban Cognitive Search
 
 Az Azure Cognitive Searchban a *keresési index* a teljes szöveges és szűrt lekérdezésekhez használt kereshető tartalmat tárolja. Az indexet egy séma határozza meg, és a szolgáltatásba menti, és az adatimportálás második lépésként történik. 
 
-Az indexek *dokumentumokat*tartalmaznak. Elméletileg a dokumentumok az indexben kereshető adategységek. Előfordulhat, hogy egy kiskereskedő rendelkezik egy dokumentummal az egyes termékekhez, a hírekért felelős szervezet pedig minden cikkhez tartalmaz egy dokumentumot, és így tovább. Ezeket a fogalmakat több ismerős adatbázis-megfelelőnek is feltérképezheti: a *keresési index* egy *táblázatnak*felel meg, a *dokumentumok* pedig nagyjából egyenértékűek egy tábla *soraival* .
+Az indexek *dokumentumokat* tartalmaznak. Elméletileg a dokumentumok az indexben kereshető adategységek. Előfordulhat, hogy egy kiskereskedő rendelkezik egy dokumentummal az egyes termékekhez, a hírekért felelős szervezet pedig minden cikkhez tartalmaz egy dokumentumot, és így tovább. Ezeket a fogalmakat több ismerős adatbázis-megfelelőnek is feltérképezheti: a *keresési index* egy *táblázatnak* felel meg, a *dokumentumok* pedig nagyjából egyenértékűek egy tábla *soraival* .
 
 Az index fizikai szerkezetét a séma határozza meg, a "kereshető" jelölésű mezőkkel, ami az adott mezőhöz létrehozott fordított indexet eredményez. 
 
@@ -59,7 +59,7 @@ Az utolsó index kialakításának megérkezése egy iterációs folyamat. Gyako
 
    ![Index hozzáadása lap, amely az attribútumokat adattípus szerint jeleníti meg](media/search-what-is-an-index//field-definitions.png "Index hozzáadása lap, amely az attribútumokat adattípus szerint jeleníti meg")
 
-1. Töltse le az index sémát a [Get index (REST API)](/rest/api/searchservice/get-index) és egy webes tesztelési eszköz, például a [Poster](search-get-started-postman.md)használatával. Most már rendelkezik az index JSON-ábrázolásával, amelyet a kód számára is adaptálhat.
+1. Töltse le az index sémát a [Get index (REST API)](/rest/api/searchservice/get-index) és egy webes tesztelési eszköz, például a [Poster](search-get-started-rest.md)használatával. Most már rendelkezik az index JSON-ábrázolásával, amelyet a kód számára is adaptálhat.
 
 1. [Töltse be az indexet az adataival](search-what-is-data-import.md). Az Azure Cognitive Search JSON-dokumentumokat fogad el. Az adatok programozott módon történő betöltéséhez használhatja a Poster-t JSON-dokumentumokkal a kérelem hasznos adatai között. Ha az adatai nem könnyen használhatók JSON-ként, ez a lépés a legintenzívebb munkaerő. 
 
@@ -70,7 +70,7 @@ Az utolsó index kialakításának megérkezése egy iterációs folyamat. Gyako
 A fejlesztés során tervezze meg a gyakori újraépítést. Mivel a fizikai struktúrák a szolgáltatásban jönnek létre, az [indexek eldobása és](search-howto-reindex.md) újbóli létrehozása szükséges ahhoz, hogy a legtöbb módosítást egy meglévő mező határozza meg. Érdemes lehet az adatai egy részhalmazával dolgozni az Újraépítés gyorsabb elvégzése érdekében. 
 
 > [!Tip]
-> A portál megközelítése helyett a kód használata ajánlott az indexek tervezéséhez és az adatimportáláshoz. Alternatív megoldásként az olyan eszközök, mint [a Poster és a REST API](search-get-started-postman.md) hasznosak lehetnek a megvalósíthatósági teszteléshez, amikor a fejlesztési projektek még mindig korai fázisban vannak. A kérés törzsében növekményes módosításokat végezhet egy index definíciójában, majd a kérést elküldheti a szolgáltatásnak, hogy egy frissített séma használatával újra létrehozza az indexet.
+> A portál megközelítése helyett a kód használata ajánlott az indexek tervezéséhez és az adatimportáláshoz. Alternatív megoldásként az eszközök, például a [Poster és a Visual Studio Code](search-get-started-rest.md) hasznosak a megvalósíthatósági teszteléshez, amikor a fejlesztési projektek még mindig korai fázisban vannak. A kérés törzsében növekményes módosításokat végezhet egy index definíciójában, majd a kérést elküldheti a szolgáltatásnak, hogy egy frissített séma használatával újra létrehozza az indexet.
 
 ## <a name="index-schema"></a>Index séma
 
@@ -238,7 +238,7 @@ Az alapértelmezett pontozási profil a háttérben működik, hogy kiszámítsa
 
 Az index méretét a feltöltött dokumentumok mérete határozza meg, valamint az indexelési konfiguráció, például a javaslatok belefoglalása, valamint az attribútumok egyéni mezőkhöz való beállítása. 
 
-Az alábbi képernyőfelvételen az attribútumok különböző kombinációinak eredményeként létrejövő indexek tárolási mintáit mutatjuk be. Az index a **Real Estate Sample indexen**alapul, amelyet egyszerűen létrehozhat az adatimportálás varázsló segítségével. Bár az index sémái nem jelennek meg, az attribútumok az index neve alapján következtethető ki. Például a *Realestate-kereshető* index a "kereshető" attribútummal van kiválasztva, és semmi mást sem, a *Realestate* lekérhető indexben a "lekérhető" attribútum van kiválasztva, semmi más, és így tovább.
+Az alábbi képernyőfelvételen az attribútumok különböző kombinációinak eredményeként létrejövő indexek tárolási mintáit mutatjuk be. Az index a **Real Estate Sample indexen** alapul, amelyet egyszerűen létrehozhat az adatimportálás varázsló segítségével. Bár az index sémái nem jelennek meg, az attribútumok az index neve alapján következtethető ki. Például a *Realestate-kereshető* index a "kereshető" attribútummal van kiválasztva, és semmi mást sem, a *Realestate* lekérhető indexben a "lekérhető" attribútum van kiválasztva, semmi más, és így tovább.
 
 ![Index mérete az attribútumok kijelölése alapján](./media/search-what-is-an-index/realestate-index-size.png "Index mérete az attribútumok kijelölése alapján")
 
@@ -249,7 +249,7 @@ A szűrőket és a rendezést támogató indexek a csak teljes szöveges keresé
 > [!Note]
 > A tárolási architektúra az Azure-Cognitive Search megvalósítási részletének minősül, és értesítés nélkül megváltozhat. Nincs garancia arra, hogy a jelenlegi viselkedés továbbra is fennmarad a jövőben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az index-összeállítás megismerésével a portálon folytathatja az első index létrehozását. Javasoljuk, hogy az **adatimportálás** varázslóval Kezdje a *Realestate-US-Sample* vagy a *Hotels-Sample* Hosted adatforrások kiválasztásával.
 

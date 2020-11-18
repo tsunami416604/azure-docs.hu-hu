@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bde95006865a2aab2da4a5d6d27ccccc14d74d12
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8e12a74ee689ba7b013b1c4a6881deac78680be0
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408922"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701048"
 ---
 # <a name="security-control-v2-data-protection"></a>Biztonság-vezérlés v2: Adatvédelem
 
@@ -34,9 +34,9 @@ Az Azure SQL Information Protection használatával segítséget nyújthat az Az
 
 - [Az Azure SQL-adatfelderítés megvalósítása](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-**Felelősség** : megosztott
+**Felelősség**: megosztott
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -50,19 +50,19 @@ Az Azure SQL Information Protection használatával segítséget nyújthat az Az
 |--|--|--|--|
 | DP-2 | 13,2, 2,10 | SC-7, AC-4 |
 
-A bizalmas adatok védelme az Azure szerepköralapú Access Control (Azure RBAC), a hálózati hozzáférés-vezérlés és az Azure-szolgáltatások adott vezérlői (például az SQL-és egyéb adatbázisok titkosítása) használatával történő hozzáférés korlátozásával. 
+A bizalmas adatok védelme az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC), a hálózat-alapú hozzáférés-vezérlés és az Azure-szolgáltatások adott vezérlői (például az SQL és más adatbázisok titkosítása) használatával. 
 
 A konzisztens hozzáférés-vezérlés biztosításához a hozzáférés-vezérlés összes típusát a vállalati szegmentálási stratégiához kell igazítani. A nagyvállalati szegmentálási stratégiát is tájékoztatni kell a bizalmas vagy üzleti szempontból kritikus fontosságú adatok és rendszerek helyéről.
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és védelmet nyújt az ügyfelek adatvesztése és a kitettség ellen. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft néhány alapértelmezett adatvédelmi vezérlőt és képességet alkalmazott.
 
-- [Azure-beli szerepköralapú Access Control (RBAC)](../../role-based-access-control/overview.md)
+- [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)
 
 - [Az ügyfelek adatvédelmének megismerése az Azure-ban](../fundamentals/protection-customer-data.md)
 
-**Felelősség** : megosztott
+**Felelősség**: megosztott
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -88,9 +88,9 @@ Ha az adatveszteség-megelőzés (DLP) megfelelőségéhez szükség van, egy ga
 
 - [Az Azure Storage ATP engedélyezése](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
-**Felelősség** : megosztott
+**Felelősség**: megosztott
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security) 
 
@@ -116,9 +116,9 @@ Alapértelmezés szerint az Azure titkosítást biztosít az Azure-adatközponto
 
 - [Kettős titkosítás az Azure-beli adatforgalomban](../fundamentals/double-encryption.md#data-in-transit)
 
-**Felelősség** : megosztott
+**Felelősség**: megosztott
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -146,9 +146,9 @@ Az Azure alapértelmezés szerint az inaktív adatok titkosítását biztosítja
 
 - [Inaktív adatok az Azure-ban – Rest kettős titkosítás](../fundamentals/double-encryption.md#data-at-rest)
 
-**Felelősség** : megosztott
+**Felelősség**: megosztott
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

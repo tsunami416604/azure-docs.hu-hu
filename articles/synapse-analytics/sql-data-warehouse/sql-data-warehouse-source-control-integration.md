@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 4751f3cf213098873b0c53b15df82f57d155787a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 766837cacb4ef2acf874c2872b347b6d35633faa
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313306"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700997"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Verziókövetés integrálása dedikált SQL-készlethez az Azure szinapszis Analyticsben
 
-Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz-(SSDT-) adatbázis-projekt a verziókövetés használatával.  A verziókövetés integrációja az első lépés a folyamatos integrációs és üzembe helyezési folyamat létrehozásához az Azure szinapszis Analytics dedikált SQL Pool-erőforrásával.
+Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Data Tools (SSDT) adatbázis-projekt a verziókövetés használatával.  A verziókövetés integrációja az első lépés a folyamatos integrációs és üzembe helyezési folyamat létrehozásához az Azure szinapszis Analytics dedikált SQL Pool-erőforrásával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -37,7 +37,7 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz
 
    ![Kapcsolatok kezelése](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Kapcsolatok kezelése")
 
-3. Kapcsolódjon a projekthez a **kapcsolatok kezelése** , majd **a projekthez való csatlakozás** lehetőség kiválasztásával.
+3. Kapcsolódjon a projekthez a **kapcsolatok kezelése**, majd **a projekthez való csatlakozás** lehetőség kiválasztásával.
  ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "Kapcsolódás")
 
 
@@ -85,7 +85,7 @@ A projektek Visual Studióval való összekapcsolásával kapcsolatos további i
 
    ![Ellenőrzés](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Módosítások ellenőrzése")
 
-4. (Nem **kötelező** ) A séma összehasonlításával és a cél adattárház változásainak a SSDT használatával történő frissítésével biztosíthatja, hogy az Azure-tárházban az objektum-definíciók és a helyi adattár tükrözzék az adattárházat.
+4. (Nem **kötelező**) A séma összehasonlításával és a cél adattárház változásainak a SSDT használatával történő frissítésével biztosíthatja, hogy az Azure-tárházban az objektum-definíciók és a helyi adattár tükrözzék az adattárházat.
 
 ## <a name="next-steps"></a>Következő lépések
 

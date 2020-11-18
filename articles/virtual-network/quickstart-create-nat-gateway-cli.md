@@ -15,25 +15,24 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a44a3af7be214aa2ed000eb824b63c0bf7a95aee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4d034aefe59a661bfb0694feba36a669aa274ac
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88054021"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737931"
 ---
 # <a name="create-a-nat-gateway-using-azure-cli"></a>NAT-átjáró létrehozása az Azure CLI-vel
 
 Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Virtual Network NAT szolgáltatást. Létre kell hoznia egy NAT-átjárót, amely kimenő kapcsolatot biztosít az Azure-beli virtuális gépek számára. 
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Ezt az oktatóanyagot a Azure Cloud Shell használatával vagy a megfelelő parancsok helyi futtatásával végezheti el.  Ha még soha nem használta a Azure Cloud Shellt, [Jelentkezzen be most](https://shell.azure.com) , és folytassa a kezdeti beállítással.
-Ha a parancsok helyi futtatását választja, telepítenie kell a CLI-t.  Ehhez az oktatóanyaghoz az Azure CLI 2.0.71 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+- Ehhez a cikkhez az Azure CLI 2.0.71 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -75,7 +74,7 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
   - Egy nyilvános IP-címkészlet és egy nyilvános IP-előtag, amelyet a NAT-átjáró erőforrása lefordított kimenő folyamatokhoz használ.
   - Módosítsa az üresjárati időkorlátot az alapértelmezett 4 perctől 10 percre.
 
-Hozzon létre egy globális Azure NAT-átjárót az [az Network NAT Gateway Create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) nevű **myNATgateway**. A parancs a nyilvános IP- **myPublicIP** és a nyilvános IP-előtag **myPublicIPprefix**is használja. A parancs az üresjárati időkorlátot **10** percre módosítja.
+Hozzon létre egy globális Azure NAT-átjárót az [az Network NAT Gateway Create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) nevű **myNATgateway**. A parancs a nyilvános IP- **myPublicIP** és a nyilvános IP-előtag **myPublicIPprefix** is használja. A parancs az üresjárati időkorlátot **10** percre módosítja.
 
 ```azurecli-interactive
   az network nat gateway create \
@@ -223,7 +222,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
     --name myResourceGroupNAT
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy NAT-átjárót és egy virtuális gépet a használatára. 
 

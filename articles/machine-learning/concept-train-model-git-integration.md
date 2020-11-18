@@ -1,20 +1,20 @@
 ---
 title: Git-integráció a Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan integrálható a Azure Machine Learning egy helyi git-adattárral. Ha a betanítást egy git-tárházból álló helyi könyvtárból küldi el, a rendszer a Futtatás részeként nyomon követi a tárház, az ág és az aktuális véglegesítés adatait.
+description: Ismerje meg, hogyan integrálható a Azure Machine Learning egy helyi git-adattárral, hogy nyomon kövessék a tárházat, az ágakat és az aktuális véglegesítő információkat egy képzési Futtatás részeként.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 03/05/2020
-ms.openlocfilehash: f13773a8e3e78451dfb587e55c40a20d1b4b385c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: 989fc7cb66cf5381d174a3aad12f84f5b055aab8
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324761"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701636"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integráció a Azure Machine Learning
 
@@ -155,7 +155,7 @@ A git-adatokat egy tanítási Futtatás tulajdonságai tárolják. Ezeket az inf
 1. A [Studio portálon](https://ml.azure.com)válassza ki a munkaterületet.
 1. Válassza a __kísérletek__ lehetőséget, majd válassza ki az egyik kísérletet.
 1. Válassza ki a __futtatások száma__ oszlop egyik futtatását.
-1. Válassza a __kimenetek + naplók__ lehetőséget, majd bontsa ki a __naplók__ és a __azureml__ bejegyzéseket. Válassza ki a hivatkozást, amely az __### \_ Azure__ -ban kezdődik.
+1. Válassza a __kimenetek + naplók__ lehetőséget, majd bontsa ki a __naplók__ és a __azureml__ bejegyzéseket. Válassza ki a hivatkozást, amely az __### \_ Azure__-ban kezdődik.
 
 A naplózott információ a következő JSON-hoz hasonló szöveget tartalmaz:
 
