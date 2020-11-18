@@ -1,5 +1,5 @@
 ---
-title: Az Azure MFA NPS-bővítmény konfigurálása – Azure Active Directory
+title: Az Azure AD MFA NPS-bővítmény konfigurálása – Azure Active Directory
 description: A hálózati házirend-kiszolgáló bővítmény telepítése után az alábbi lépéseket követve speciális konfigurációt használhat, például az engedélyezett IP-címek listáját és a UPN-helyettesítést.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,26 +11,26 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a9156f84e5189b38a2c15f257bd6a47ac3db130
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 55c6457ec73c9fe9b39d607f26ffe2a577cc200d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964400"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839046"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Speciális konfigurációs beállítások a Multi-Factor Authentication NPS-bővítményéhez
 
-A hálózati házirend-kiszolgáló (NPS) bővítmény kibővíti a felhőalapú Azure Multi-Factor Authentication funkcióit a helyszíni infrastruktúrába. Ez a cikk feltételezi, hogy már telepítette a bővítményt, és most szeretné tudni, hogyan szabhatja testre a szükséges bővítményt. 
+A hálózati házirend-kiszolgáló (NPS) bővítmény kibővíti a felhőalapú Azure AD Multi-Factor Authentication szolgáltatásokat a helyszíni infrastruktúrába. Ez a cikk feltételezi, hogy már telepítette a bővítményt, és most szeretné tudni, hogyan szabhatja testre a szükséges bővítményt. 
 
 ## <a name="alternate-login-id"></a>Másodlagos bejelentkezési azonosító
 
 Mivel a hálózati házirend-kiszolgáló bővítmény a helyszíni és a Felhőbeli címtárakhoz is csatlakozik, előfordulhat, hogy olyan problémába ütközik, amelyben a helyszíni felhasználónevek (UPN) nem egyeznek a felhőben található nevekkel. A probléma megoldásához használjon alternatív bejelentkezési azonosítókat. 
 
-A hálózati házirend-kiszolgáló bővítményben kijelölhet egy Active Directory attribútumot, amelyet az egyszerű felhasználónév helyett használni szeretne az Azure Multi-Factor Authenticationhoz. Ez lehetővé teszi a helyszíni erőforrások kétlépéses ellenőrzéssel való ellátását a helyszíni egyszerű felhasználónevek módosítása nélkül. 
+A hálózati házirend-kiszolgáló bővítményben kijelölhet egy Active Directory attribútumot, amelyet az egyszerű felhasználónév helyett használhat az Azure AD-Multi-Factor Authenticationhoz. Ez lehetővé teszi a helyszíni erőforrások kétlépéses ellenőrzéssel való ellátását a helyszíni egyszerű felhasználónevek módosítása nélkül. 
 
 Az alternatív bejelentkezési azonosítók konfigurálásához lépjen a (z) elemre, `HKLM\SOFTWARE\Microsoft\AzureMfa` és szerkessze a következő beállításjegyzékbeli értékeket:
 
-| Név | Típus | Alapértelmezett érték | Description |
+| Név | Típus | Alapértelmezett érték | Leírás |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | sztring | Üres | Jelölje ki az egyszerű felhasználónév helyett használni kívánt Active Directory attribútum nevét. Ez az attribútum a AlternateLoginId attribútumként szolgál. Ha a beállításazonosító [érvényes Active Directory attribútumra](/windows/win32/adschema/attributes-all) van beállítva (például E-mail vagy DisplayName), akkor a rendszer az attribútum értékét használja a felhasználó egyszerű felhasználóneve helyett a hitelesítéshez. Ha a beállításazonosító üres vagy nincs konfigurálva, akkor a AlternateLoginId le van tiltva, és a rendszer a felhasználó UPN-azonosítóját használja a hitelesítéshez. |
 | LDAP_FORCE_GLOBAL_CATALOG | boolean | Hamis | Ezzel a jelzővel kényszerítheti a globális katalógus használatát az LDAP-keresésekhez, amikor megkeresi a AlternateLoginId. Konfiguráljon egy tartományvezérlőt globális katalógusként, adja hozzá a AlternateLoginId attribútumot a globális katalógushoz, majd engedélyezze ezt a jelzőt. <br><br> Ha LDAP_LOOKUP_FORESTS konfigurálva van (nem üres), **Ez a jelző igaz értékre van kényszerítve**, a beállításjegyzék-beállítás értékétől függetlenül. Ebben az esetben a hálózati házirend-kiszolgáló bővítménye megköveteli, hogy a globális katalógus minden erdő AlternateLoginId attribútumával legyen konfigurálva. |
@@ -44,7 +44,7 @@ Ha figyelnie kell a kiszolgáló rendelkezésre állását, például ha a terhe
 
 Az IP-címek engedélyezési listájának konfigurálásához nyissa meg `HKLM\SOFTWARE\Microsoft\AzureMfa` a következő beállításértéket, és konfigurálja a beállításjegyzéket:
 
-| Név | Típus | Alapértelmezett érték | Description |
+| Név | Típus | Alapértelmezett érték | Leírás |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | sztring | Üres | Adja meg az IP-címek pontosvesszővel tagolt listáját. Adja meg azoknak a számítógépeknek a IP-címeit, amelyeken a szolgáltatás kérelmek származnak, például a NAS/VPN-kiszolgálótól. Az IP-címtartományok és az alhálózatok nem támogatottak. <br><br> Például: *10.0.0.1; 10.0.0.2; 10.0.0.3*.
 
@@ -55,4 +55,4 @@ Ha egy kérelem olyan IP-címről érkezik, amely létezik a-ben `IP_WHITELIST` 
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Hibaüzenetek által jelzett problémák megszüntetése az Azure Multi-Factor Authentication NPS-bővítményéből](howto-mfa-nps-extension-errors.md)
+[Hibák elhárítása az Azure AD-hez tartozó NPS-bővítményből Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)

@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70777c80cdee99f13050d7cd342f22d59da13d73
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3da7c3afa6b414e3d7df3bb58766d1ab7657dbc4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964110"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838961"
 ---
 # <a name="configure-mfa-server-settings"></a>MFA-kiszolgáló beállításainak konfigurálása
 
 Ez a cikk segítséget nyújt az Azure MFA-kiszolgáló beállításainak kezelésében a Azure Portal.
 
 > [!IMPORTANT]
-> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
+> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure AD-Multi-Factor Authenticationt kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
 
 A következő MFA-kiszolgáló beállításai érhetők el:
 
@@ -41,11 +41,11 @@ Az egyszeri Mellőzés funkció lehetővé teszi, hogy a felhasználó egyetlen 
 Egyszeri Mellőzés létrehozásához hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-1. Keresse meg és válassza ki a **Azure Active Directory**, majd a **biztonsági**  >  **MFA**  >  **egyszeri mellőzése**elemet.
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Keresse meg és válassza ki a **Azure Active Directory**, majd a **biztonsági**  >  **MFA**  >  **egyszeri mellőzése** elemet.
+1. Válassza a **Hozzáadás** elemet.
 1. Ha szükséges, válassza ki a replikálási csoportot a mellőzéshez.
 1. Adja meg a felhasználónevet `username\@domain.com` . Adja meg azt a másodpercet, ameddig a megkerülésnek utolsónak kell lennie, és a Mellőzés oka.
-1. Válassza a **Hozzáadás** lehetőséget. Az időkorlát azonnal érvénybe lép. A felhasználónak be kell jelentkeznie, mielőtt az egyszeri Mellőzés lejár.
+1. Válassza a **Hozzáadás** elemet. Az időkorlát azonnal érvénybe lép. A felhasználónak be kell jelentkeznie, mielőtt az egyszeri Mellőzés lejár.
 
 Ugyanezen az ablakban is megtekintheti az egyszeri mellőzési jelentést.
 
@@ -61,10 +61,10 @@ A gyorsítótárazás elsődlegesen akkor használatos, ha a helyszíni rendszer
 A gyorsítótárazás beállításához hajtsa végre a következő lépéseket:
 
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  **gyorsítótárazási szabályait**.
-1. Válassza a **Hozzáadás** lehetőséget.
-1. Válassza ki a **gyorsítótár típusát** a legördülő listából. Adja meg a **gyorsítótárazási másodpercek**maximális számát.
+1. Válassza a **Hozzáadás** elemet.
+1. Válassza ki a **gyorsítótár típusát** a legördülő listából. Adja meg a **gyorsítótárazási másodpercek** maximális számát.
 1. Ha szükséges, válasszon ki egy hitelesítési típust, és adjon meg egy alkalmazást.
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 ## <a name="next-steps"></a>Következő lépések
 

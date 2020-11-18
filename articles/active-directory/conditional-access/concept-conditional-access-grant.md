@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b763a1cda91886946bba211f589c37940e7c3ae1
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: a779fee89d52442207358cf90c8cf87e7ef221c2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042807"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837651"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -34,7 +34,7 @@ A Block egy hatékony vezérlő, amelyet megfelelő ismeretekkel kell megforgatn
 
 A rendszergazdák dönthetnek úgy, hogy egy vagy több vezérlőt kényszerítenek a hozzáférés engedélyezésekor. Ezek a vezérlőelemek a következő beállításokat tartalmazzák: 
 
-- [Többtényezős hitelesítés megkövetelése (Azure Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
+- [Többtényezős hitelesítés megkövetelése (Azure AD Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
 - [Eszköz megfelelőként való megjelölésének megkövetelése (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [Hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése](../devices/concept-azure-ad-join-hybrid.md)
 - [Jóváhagyott ügyfélalkalmazás megkövetelése](app-based-conditional-access.md)
@@ -50,7 +50,7 @@ Alapértelmezés szerint a feltételes hozzáférés minden kijelölt vezérlőt
 
 ### <a name="require-multi-factor-authentication"></a>Többtényezős hitelesítés megkövetelése
 
-Ha bejelöli ezt a jelölőnégyzetet, a felhasználóknak az Azure Multi-Factor Authentication kell végrehajtaniuk. Az Azure Multi-Factor Authentication telepítésével kapcsolatos további információkért tekintse meg a [felhőalapú Azure multi-Factor Authentication üzembe helyezésének megtervezése](../authentication/howto-mfa-getstarted.md)című cikket.
+Ennek a jelölőnégyzetnek a bejelölése esetén a felhasználóknak az Azure AD-Multi-Factor Authentication kell végrehajtaniuk. Az Azure AD Multi-Factor Authentication telepítésével kapcsolatos további információkért tekintse meg a [felhőalapú Azure ad multi-Factor Authentication üzembe helyezésének megtervezése](../authentication/howto-mfa-getstarted.md)című cikket.
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>Eszköz megfelelőként való megjelölésének megkövetelése
 

@@ -12,12 +12,12 @@ ms.date: 10/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 9090c778771436a4fcf60139f3ee59812051057a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 340f451080f43fab213a3afc69f2adfae83514d7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145616"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837328"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Útmutató: opcionális jogcímek megadása az alkalmazás számára
 
@@ -37,12 +37,12 @@ Míg a választható jogcímek a v 1.0 és a v 2.0 formátumú jogkivonatokban, 
 
 | Fiók típusa               | 1.0-s verziós tokenek | v 2.0-tokenek |
 |----------------------------|-------------|-------------|
-| Személyes Microsoft-fiók | n.a.         | Támogatott   |
+| Személyes Microsoft-fiók | N/A         | Támogatott   |
 | Azure AD-fiók           | Támogatott   | Támogatott   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 és v 2.0 választható jogcímek készlete
 
-Az alábbi listában a használni kívánt alkalmazások alapértelmezett választható jogcímei érhetők el. Ha egyéni opcionális jogcímeket szeretne hozzáadni az alkalmazáshoz, tekintse meg az alábbi [címtárszolgáltatás-bővítményeket](#configuring-directory-extension-optional-claims). Ha jogcímeket ad hozzá a **hozzáférési jogkivonathoz** , a jogcímek az alkalmazáshoz (webes API-hoz *) kért hozzáférési* jogkivonatokra vonatkoznak, az alkalmazás *által* kért jogcímekre nem. Függetlenül attól, hogy az ügyfél hogyan fér hozzá az API-hoz, a megfelelő információ szerepel az API-val való hitelesítéshez használt hozzáférési jogkivonatban.
+Az alábbi listában a használni kívánt alkalmazások alapértelmezett választható jogcímei érhetők el. Ha egyéni opcionális jogcímeket szeretne hozzáadni az alkalmazáshoz, tekintse meg az alábbi [címtárszolgáltatás-bővítményeket](#configuring-directory-extension-optional-claims). Ha jogcímeket ad hozzá a **hozzáférési jogkivonathoz**, a jogcímek az alkalmazáshoz (webes API-hoz *) kért hozzáférési* jogkivonatokra vonatkoznak, az alkalmazás *által* kért jogcímekre nem. Függetlenül attól, hogy az ügyfél hogyan fér hozzá az API-hoz, a megfelelő információ szerepel az API-val való hitelesítéshez használt hozzáférési jogkivonatban.
 
 > [!NOTE]
 > Ezeknek a jogcímeknek a többsége megadható a JWTs for 1.0 és v 2.0 tokenekhez, de nem SAML-tokenekhez, kivéve, ha a jogkivonat típusa oszlopban szerepel. A fogyasztói fiókok a "felhasználói típus" oszlopban megjelölt jogcímek egy részhalmazát támogatják.  A felsorolt jogcímek többsége nem vonatkozik a felhasználói felhasználókra (nem rendelkezik Bérlővel, ezért `tenant_ctry` nem rendelkezik értékkel).
@@ -89,11 +89,11 @@ Ezeket a jogcímeket mindig tartalmazza a v 1.0 Azure AD-jogkivonatok, de a nem 
 
 ### <a name="additional-properties-of-optional-claims"></a>A választható jogcímek további tulajdonságai
 
-Egyes választható jogcímek úgy konfigurálhatók, hogy megváltoztassák a jogcím visszaadásának módját. Ezek a további tulajdonságok többnyire a helyszíni alkalmazások különböző adatelérési elvárásokkal való áttelepítésének megkönnyítésére szolgálnak (például olyan ügyfelek számára, `include_externally_authenticated_upn_without_hash` akik nem kezelhetik a kivonatoló jeleket ( `#` ) az UPN-ben)
+Egyes választható jogcímek úgy konfigurálhatók, hogy megváltoztassák a jogcím visszaadásának módját. Ezeket a további tulajdonságokat többnyire a helyszíni alkalmazások áttelepítésére használják a különböző adatelérési elvárásokkal. Például `include_externally_authenticated_upn_without_hash` segít olyan ügyfelek számára, akik nem kezelhetik a kivonatoló jeleket ( `#` ) az UPN-ben.
 
 **4. táblázat: választható jogcímek konfigurálásának értékei**
 
-| Tulajdonság neve  | További tulajdonságnév | Description |
+| Tulajdonság neve  | További tulajdonságnév | Leírás |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Az SAML-és JWT-válaszokhoz, valamint a 1.0-s és a v 2.0-tokenekhez is használható. |
 |                | `include_externally_authenticated_upn`  | Az erőforrás-bérlőben tárolt vendég UPN-t tartalmazza. Például: `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -115,7 +115,7 @@ Egyes választható jogcímek úgy konfigurálhatók, hogy megváltoztassák a j
 }
 ```
 
-Ez a OptionalClaims objektum azt eredményezi, hogy a rendszer visszaadja az azonosító jogkivonatot az ügyfélnek, hogy tartalmazza a további otthoni Bérlővel és erőforrás-bérlői információkkal rendelkező UPN A `upn` jogcímek csak abban az esetben módosulnak a jogkivonatban, ha a felhasználó a bérlő egyik vendége (amely más identitásszolgáltató használ a hitelesítéshez).
+Ez a OptionalClaims objektum azt eredményezi, hogy a rendszer visszaadja az azonosító jogkivonatot az ügyfélnek, hogy tartalmazza a `upn` további otthoni Bérlővel és erőforrás-bérlői információkkal rendelkező A `upn` jogcímek csak abban az esetben módosulnak a jogkivonatban, ha a felhasználó a bérlő egyik vendége (amely más identitásszolgáltató használ a hitelesítéshez).
 
 ## <a name="configuring-optional-claims"></a>Választható jogcímek konfigurálása
 
@@ -124,7 +124,7 @@ Ez a OptionalClaims objektum azt eredményezi, hogy a rendszer visszaadja az azo
 
 Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület vagy az alkalmazás jegyzékfájlja segítségével konfigurálhatja.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg és válassza ki az **Azure Active Directoryt** .
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** szakaszban válassza a **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában.
 
@@ -178,11 +178,11 @@ Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület va
 
 ### <a name="optionalclaims-type"></a>OptionalClaims típusa
 
-Deklarálja az alkalmazás által kért választható jogcímeket. Egy alkalmazás konfigurálhat választható jogcímeket is, amelyek a biztonsági jogkivonat szolgáltatástól kapott három jogkivonat (azonosító token, hozzáférési jogkivonat, SAML 2 token) mindhárom típusában visszatérhetnek. Az alkalmazás különböző választható jogcímeket konfigurálhat az egyes token-típusokban való visszatéréshez. Az alkalmazás entitás OptionalClaims tulajdonsága egy OptionalClaims objektum.
+Deklarálja az alkalmazás által kért választható jogcímeket. Egy alkalmazás olyan választható jogcímeket is beállíthat, amelyek a biztonsági jogkivonat szolgáltatástól kapott három jogkivonat (azonosító token, hozzáférési jogkivonat, SAML 2 token) mindhárom típusában visszatérhetnek. Az alkalmazás különböző választható jogcímeket konfigurálhat az egyes token-típusokban való visszatéréshez. Az alkalmazás entitás OptionalClaims tulajdonsága egy OptionalClaims objektum.
 
 **5. táblázat: OptionalClaims típusának tulajdonságai**
 
-| Név          | Típus                       | Description                                           |
+| Név          | Típus                       | Leírás                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Gyűjtemény (OptionalClaim) | A JWT azonosító jogkivonatában visszaadott választható jogcímek.     |
 | `accessToken` | Gyűjtemény (OptionalClaim) | Az JWT hozzáférési jogkivonatban visszaadott választható jogcímek. |
@@ -190,12 +190,12 @@ Deklarálja az alkalmazás által kért választható jogcímeket. Egy alkalmaz�
 
 ### <a name="optionalclaim-type"></a>OptionalClaim típusa
 
-Egy alkalmazáshoz vagy egy egyszerű szolgáltatáshoz társított opcionális jogcímet tartalmaz. A [OptionalClaims](/graph/api/resources/optionalclaims?view=graph-rest-1.0) típus IdToken, AccessToken és saml2Token tulajdonsága a OptionalClaim gyűjteménye.
+Egy alkalmazáshoz vagy egy egyszerű szolgáltatáshoz társított opcionális jogcímet tartalmaz. A [OptionalClaims](/graph/api/resources/optionalclaims) típus IdToken, AccessToken és saml2Token tulajdonsága a OptionalClaim gyűjteménye.
 Ha egy adott jogcím támogatja, a OptionalClaim viselkedését a AdditionalProperties mező használatával is módosíthatja.
 
 **6. táblázat: OptionalClaim típusának tulajdonságai**
 
-| Név                   | Típus                    | Description                                                                                                                                                                                                                                                                                                   |
+| Név                   | Típus                    | Leírás                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | A választható jogcím neve.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | A jogcím forrása (Directory-objektum). A bővítmény tulajdonságaiban előre definiált jogcímek és felhasználó által definiált jogcímek találhatók. Ha a forrás értéke null, a jogcím egy előre meghatározott opcionális jogcím. Ha a forrás értéke felhasználó, a Name (név) tulajdonság értéke a felhasználói objektum kiterjesztés tulajdonsága. |
@@ -204,7 +204,7 @@ Ha egy adott jogcím támogatja, a OptionalClaim viselkedését a AdditionalProp
 
 ## <a name="configuring-directory-extension-optional-claims"></a>A címtár-bővítmény választható jogcímeinek konfigurálása
 
-A standard opcionális jogcímek készleten kívül a jogkivonatokat is konfigurálhatja a bővítmények belefoglalásához. További információ: [Microsoft Graph extensionProperty dokumentációja](/graph/api/resources/extensionproperty?view=graph-rest-1.0).
+A standard opcionális jogcímek készleten kívül a jogkivonatokat is konfigurálhatja a bővítmények belefoglalásához. További információ: [Microsoft Graph extensionProperty dokumentációja](/graph/api/resources/extensionproperty).
 
 A sémák és a nyitott bővítmények nem támogatottak a választható jogcímek esetében, csak a AAD-Graph Style Directory-bővítmények. Ez a funkció hasznos lehet az alkalmazás által használható további felhasználói adatok csatolásához – például egy további azonosító vagy fontos konfigurációs beállítás, amelyet a felhasználó beállított. Példaként tekintse meg az oldal alját.
 
@@ -231,24 +231,24 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 
 **Csoportok konfigurálása választható jogcímek a felhasználói felületen keresztül:**
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában található elem kiválasztásával
-1. **Azure Active Directory** kiválasztása a bal oldali menüben
-1. A **kezelés** szakaszban válassza a **Alkalmazásregisztrációk**
-1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában.
+1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
+1. A **kezelés** szakaszban válassza a **Alkalmazásregisztrációk** lehetőséget.
+1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában.
 1. A **kezelés** szakaszban válassza a **jogkivonat-konfiguráció** elemet.
-1. Válassza a **csoportok hozzáadása** lehetőséget
-1. Válassza ki a visszaadni kívánt csoportok típusát ( **biztonsági csoportok** , **címtárbeli szerepkörök** , **az alkalmazáshoz rendelt** **összes csoport** és/vagy csoport). Az **alkalmazás-beállításhoz rendelt csoportok** csak az alkalmazáshoz rendelt csoportokat tartalmazzák. A **minden csoport** beállítás magában foglalja az **SecurityGroup** , a **DirectoryRole** és a **DistributionList** , de **az alkalmazáshoz nem rendelt csoportokat** . 
-1. Nem kötelező: válassza ki az adott jogkivonat-típus tulajdonságait a csoportok jogcím értékének módosításához a helyszíni csoport attribútumain vagy a jogcím típusának a szerepkörre való módosításához.
+1. Válassza a **Csoport hozzáadása jogcímet**.
+1. Válassza ki a visszaadni kívánt csoportok típusát (**biztonsági csoportok**, **címtárbeli szerepkörök**, **az alkalmazáshoz rendelt** **összes csoport** és/vagy csoport). Az **alkalmazás-beállításhoz rendelt csoportok** csak az alkalmazáshoz rendelt csoportokat tartalmazzák. A **minden csoport** beállítás magában foglalja az **SecurityGroup**, a **DirectoryRole** és a **DistributionList**, de **az alkalmazáshoz nem rendelt csoportokat**. 
+1. Nem kötelező: válassza ki az adott jogkivonat-típus tulajdonságait, hogy módosítsa a csoportok jogcím értékét, amely a helyszíni csoport attribútumait tartalmazza, vagy ha módosítani szeretné a jogcím típusát a szerepkörre.
 1. Válassza a **Mentés** lehetőséget.
 
 **Csoportok konfigurálása választható jogcímek az alkalmazás jegyzékfájlján keresztül:**
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában található elem kiválasztásával
-1. **Azure Active Directory** kiválasztása a bal oldali menüben
-1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában
-1. A **kezelés** szakaszban válassza a **jegyzékfájl** elemet.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában.
+1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
+1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában.
+1. A **kezelés** szakaszban válassza a **jegyzékfájl** lehetőséget.
 1. Adja hozzá a következő bejegyzést a jegyzékfájl-szerkesztő használatával:
 
    Az érvényes értékek a következők:
@@ -268,7 +268,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 
 1. Adja meg a csoport neve konfigurációjának választható jogcímeit.
 
-   Ha azt szeretné, hogy a tokenben lévő csoportok megjelenjenek a helyszíni AD-csoport attribútumai a választható jogcímek szakaszban, adja meg, hogy melyik jogkivonat-típust kívánja alkalmazni, a kért választható jogcím nevét és a kívánt további tulajdonságokat.  Több jogkivonat-típus is szerepelhet:
+   Ha azt szeretné, hogy a tokenben lévő csoportok tartalmazzák a helyszíni AD-csoport attribútumait a választható jogcímek szakaszban, adja meg, hogy melyik jogkivonat-típust kívánja alkalmazni, a kérelmezett választható jogcím és a szükséges további tulajdonságok nevét.  Több jogkivonat-típus is szerepelhet:
 
    - a OIDC azonosító token idToken
    - a OAuth hozzáférési token accessToken
@@ -300,7 +300,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
    Egyes alkalmazások a szerepkör-jogcímben szereplő felhasználóra vonatkozó csoportos adatokat igényelnek.  Ha módosítani szeretné a jogcím típusát egy csoport jogcímen egy szerepkör-jogcímre, adja hozzá a "emit_as_roles" értéket a további tulajdonságokhoz.  A csoport értékeit a rendszer a szerepkör-jogcímben fogja kiállítani.
 
    > [!NOTE]
-   > Ha a "emit_as_roles" minden olyan alkalmazási szerepkört használ, amelyet a felhasználóhoz rendeltek, nem jelennek meg a szerepkör-jogcímben
+   > Ha "emit_as_roles" van használatban, a felhasználó által hozzárendelt összes alkalmazás-szerepkör nem jelenik meg a szerepkör-jogcímben.
 
 **Példák:**
 
@@ -363,20 +363,19 @@ Több lehetőség is rendelkezésre áll az alkalmazás identitás-konfiguráci�
 
 - Használhatja a jogkivonat- **konfigurációs** felhasználói felületet (lásd az alábbi példát)
 - Használhatja a **jegyzékfájlt** (lásd az alábbi példát). Olvassa el az [Azure ad Application manifest-dokumentum megismerése című dokumentumot](./reference-app-manifest.md) a jegyzékfájl bevezetésének első lépéseit ismertető dokumentumban.
-- Olyan alkalmazást is írhat, amely a [Microsoft Graph API](/graph/use-the-api?context=graph%2fapi%2f1.0&view=graph-rest-1.0) -t használja az alkalmazás frissítéséhez. A Microsoft Graph API-referenciák útmutatójának [OptionalClaims](/graph/api/resources/optionalclaims?view=graph-rest-1.0) -típusa segíthet a választható jogcímek konfigurálásában.
+- Olyan alkalmazást is írhat, amely a [Microsoft Graph API](/graph/use-the-api) -t használja az alkalmazás frissítéséhez. A Microsoft Graph API-referenciák útmutatójának [OptionalClaims](/graph/api/resources/optionalclaims) -típusa segíthet a választható jogcímek konfigurálásában.
 
 **Példa**
 
 Az alábbi példában a **jogkivonat-konfigurációs** felhasználói felület és a **jegyzékfájl** használatával adhat hozzá opcionális jogcímeket az alkalmazáshoz szánt hozzáféréshez, azonosítóhoz és SAML-jogkivonatokhoz. Különböző választható jogcímek lesznek hozzáadva az egyes tokenekhez, amelyeket az alkalmazás fogadni tud:
 
 - Az azonosító tokenek mostantól a teljes űrlapon () is tartalmazzák az összevont felhasználók egyszerű felhasználónevét `<upn>_<homedomain>#EXT#@<resourcedomain>` .
-- Az alkalmazáshoz tartozó más ügyfelek által igényelt hozzáférési jogkivonatok mostantól tartalmazzák a auth_time jogcímet
+- Az alkalmazáshoz tartozó más ügyfelek által igényelt hozzáférési jogkivonatok mostantól tartalmazzák a auth_time jogcímet.
 - Az SAML-tokenek mostantól tartalmazzák a skypeId Directory sémakezelő bővítményt (ebben a példában az alkalmazáshoz tartozó ab603c56068041afb2f6832e2a17e237). Az SAML-tokenek a Skype ID-t teszik elérhetővé `extension_skypeId` .
 
 **Felhasználói felület konfigurációja:**
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában.
 
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.

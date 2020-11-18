@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85e8cb63cd06027754628dcf61aad0ac72b8233b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6fa06133c7793cd5f7d14ba587f9f50b523b0299
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967018"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838757"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Azure Multi-Factor Authentication-kiszolgáló konfigurálása az AD FS-sel való használathoz Windows Serveren
 
@@ -25,11 +25,11 @@ Ha Active Directory összevonási szolgáltatásokat (AD FS-t) használ, és sze
 Ebben a cikkben azt mutatjuk be, hogyan használja az Azure Multi-Factor Authentication-kiszolgálót az AD FS-sel Windows Server 2012 R2 vagy Windows Server 2016 rendszeren. További információkért olvassa el a [cikket, amely leírja, hogy hogyan biztosítson védelmet a felhőnek és helyszíni erőforrásainak az Azure Multi-Factor Authentication-kiszolgáló és az AD FS 2.0 segítségével](howto-mfaserver-adfs-2.md).
 
 > [!IMPORTANT]
-> Az 2019. július 1-től a Microsoft már nem kínál az MFA-kiszolgálót az új üzemelő példányokhoz. Azok az új ügyfelek, akik a bejelentkezési események során a többtényezős hitelesítést (MFA) szeretnék megkövetelni, felhőalapú Azure-Multi-Factor Authenticationt kell használniuk.
+> Az 2019. július 1-től a Microsoft már nem kínál az MFA-kiszolgálót az új üzemelő példányokhoz. Azok az új ügyfelek, amelyek a bejelentkezési események során a többtényezős hitelesítést (MFA) szeretnék megkövetelni, felhőalapú Azure AD-Multi-Factor Authenticationt kell használniuk.
 >
 > A felhőalapú MFA megismeréséhez tekintse meg a következő [oktatóanyagot: felhasználói bejelentkezési események biztonságossá tétele az Azure multi-Factor Authentication](tutorial-enable-azure-mfa.md)használatával.
 >
-> Ha felhőalapú MFA-t használ, tekintse meg [a felhőalapú erőforrások biztonságossá tétele az Azure multi-Factor Authentication és AD FS](howto-mfa-adfs.md)című témakört.
+> Ha felhőalapú MFA-t használ, tekintse meg [a felhőalapú erőforrások biztonságossá tétele az Azure AD multi-Factor Authentication és a AD FS](howto-mfa-adfs.md)című témakört.
 >
 > Az MFA-kiszolgálót az 2019. július 1. előtt aktivált meglévő ügyfelek letöltik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon előállítják az aktiválási hitelesítő adatokat.
 
@@ -91,7 +91,7 @@ A MultiFactorAuthenticationAdfsAdapter.config fájl szerkesztéséhez kövesse a
 
 1. Állítsa a **UseWebServiceSdk** csomópontot **true** értékre.  
 2. Állítsa a **WebServiceSdkUrl** értékét a Multi-Factor Authentication-webszolgáltatás SDK URL-címére. Például: *https: \/ \/ contoso.com/ \<certificatename> /MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, ahol a a *\<certificatename>* tanúsítvány neve.  
-3. Szerkessze a Register-MultiFactorAuthenticationAdfsAdapter.ps1 szkriptet úgy `-ConfigurationFilePath &lt;path&gt;` , hogy hozzáadja a `Register-AdfsAuthenticationProvider` parancs végéhez, ahol a * &lt; &gt; path* a MultiFactorAuthenticationAdfsAdapter.config fájl teljes elérési útja.
+3. Szerkessze a Register-MultiFactorAuthenticationAdfsAdapter.ps1 szkriptet úgy `-ConfigurationFilePath &lt;path&gt;` , hogy hozzáadja a `Register-AdfsAuthenticationProvider` parancs végéhez, ahol a *&lt; &gt; path* a MultiFactorAuthenticationAdfsAdapter.config fájl teljes elérési útja.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>A Web Service SDK konfigurálása felhasználónévvel és jelszóval
 
@@ -137,7 +137,7 @@ Végezetül futtassa a \Program Files\Multi-Factor Authentication Server\Registe
 A felhőszolgáltatás biztosításához állítson be egy jogcímszabályt, hogy az Active Directory összevonási szolgáltatások a multipleauthn jogcímet adja ki, amikor egy felhasználó sikeresen végez kétlépéses ellenőrzést. Ez a jogcím átkerül az Azure AD-re. Az alábbi eljárás bemutatja ennek lépéseit:
 
 1. Nyissa meg az AD FS felügyeleti konzolt.
-2. A bal oldalon válassza a **függő entitás megbízhatóságai**elemet.
+2. A bal oldalon válassza a **függő entitás megbízhatóságai** elemet.
 3. Kattintson a jobb gombbal a **Microsoft Office 365 Identity platform** elemre, és válassza a **jogcímek szerkesztése... lehetőséget.**
 
    ![Jogcím-szabályok szerkesztése az ADFS-konzolon](./media/howto-mfaserver-adfs-2012/trustedip1.png)

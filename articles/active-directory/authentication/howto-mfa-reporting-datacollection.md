@@ -1,6 +1,6 @@
 ---
-title: Azure MFA felhasználói adatgyűjtés – Azure Active Directory
-description: Milyen információkat használ a felhasználók Azure Multi-Factor Authentication általi hitelesítéséhez?
+title: Azure AD MFA felhasználói adatgyűjtési szolgáltatás – Azure Active Directory
+description: Milyen információkat használ a felhasználók hitelesítéséhez az Azure AD Multi-Factor Authentication?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03ec8eddf55c6b3e90b56501a2e3b657bef6fc8c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ed0d4b754911dda49776379fb318390eae411000
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964196"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839012"
 ---
-# <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication felhasználói adatgyűjtés
+# <a name="azure-ad-multi-factor-authentication-user-data-collection"></a>Azure AD Multi-Factor Authentication felhasználói adatgyűjtés
 
-Ez a dokumentum ismerteti az Azure Multi-Factor Authentication-kiszolgáló (MFA-kiszolgáló) és az Azure MFA (felhőalapú) által gyűjtött felhasználói adatok megkeresését abban az esetben, ha el szeretné távolítani.
+Ez a dokumentum ismerteti, hogyan keresheti meg az Azure Multi-Factor Authentication-kiszolgáló (MFA-kiszolgáló) és az Azure AD MFA (felhőalapú) által gyűjtött felhasználói adatokat abban az esetben, ha el szeretné távolítani.
 
 [!INCLUDE [gdpr-hybrid-note](../../../includes/gdpr-hybrid-note.md)]
 
 ## <a name="information-collected"></a>Összegyűjtött információk
 
-Az MFA-kiszolgáló, az NPS-bővítmény és a Windows Server 2016 Azure MFA AD FS adapter a következő adatokat gyűjti és tárolja 90 napig.
+Az MFA-kiszolgáló, az NPS-bővítmény és a Windows Server 2016 Azure AD MFA AD FS adapter az alábbi adatokat gyűjti és tárolja 90 napig.
 
 Hitelesítési kísérletek (jelentéskészítéshez és hibaelhárításhoz használatos):
 
@@ -70,7 +70,7 @@ Hitelesítési kísérletek (jelentéskészítéshez és hibaelhárításhoz has
 
 Aktiválások (a Microsoft Authenticator Mobile alkalmazásban lévő fiók aktiválását kísérli meg):
 - Felhasználónév
-- Account Name
+- Fiók neve
 - Timestamp
 - Aktivációs kód eredményének beolvasása
 - Sikeres aktiválás
@@ -89,7 +89,7 @@ Blokkok (a blokkolt állapot és a jelentéskészítés megállapításához has
 - Országkód
 - Telefonszám
 - Telefonszám formázva
-- Mellék
+- Kiterjesztés
 - Tiszta bővítmény
 - Blokkolva
 - Blokkolás oka
@@ -109,7 +109,7 @@ Megkerülések (jelentéskészítéshez használatos):
 - Országkód
 - Telefonszám
 - Telefonszám formázva
-- Mellék
+- Kiterjesztés
 - Tiszta bővítmény
 - Mellőzés oka
 - Befejezés időbélyege
@@ -163,26 +163,26 @@ A [Microsoft adatvédelmi portálon](https://portal.azure.com/#blade/Microsoft_A
 
 - Akár 30 napig is eltarthat, amíg a rendszer teljesen el nem távolítja az adatgyűjtést.
 
-## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Adatok összegyűjtése a Windows Server 2016 Azure MFA AD FS adapterről
+## <a name="gather-data-from-windows-server-2016-azure-ad-mfa-ad-fs-adapter"></a>Adatok összegyűjtése a Windows Server 2016 Azure AD MFA AD FS adapterről
 
 Az exportálási kérelem elvégzéséhez használja a [Microsoft adatvédelmi portálját](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) . 
 
 - Az MFA-információk az Exportálás részét képezik, amely órákat vagy napokat is igénybe vehet.
 - Az AD FS nyomkövetési/hibakeresési eseménynaplókban (ha engedélyezve vannak) a Felhasználónév előfordulása az exportálás során megadott információk működésének és ismétlődőnek tekintendő.
 
-## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Adatok törlése a Windows Server 2016 Azure MFA AD FS adapterről
+## <a name="delete-data-from-windows-server-2016-azure-ad-mfa-ad-fs-adapter"></a>Adatok törlése a Windows Server 2016 Azure AD MFA AD FS adapterről
 
 A [Microsoft adatvédelmi portálon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) a fiókhoz tartozó, a felhasználó számára gyűjtött összes MFA Cloud Service-információ törlésére vonatkozó kérést hozhat.
 
 - Akár 30 napig is eltarthat, amíg a rendszer teljesen el nem távolítja az adatgyűjtést.
 
-## <a name="gather-data-for-azure-mfa"></a>Adatok gyűjtése az Azure MFA-hoz
+## <a name="gather-data-for-azure-ad-mfa"></a>Adatok gyűjtése az Azure AD MFA-hoz
 
 Az exportálási kérelem elvégzéséhez használja a [Microsoft adatvédelmi portálját](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) .
 
 - Az MFA-információk az Exportálás részét képezik, amely órákat vagy napokat is igénybe vehet.
 
-## <a name="delete-data-for-azure-mfa"></a>Az Azure MFA-hoz tartozó adattörlés
+## <a name="delete-data-for-azure-ad-mfa"></a>Az Azure AD MFA-hoz tartozó adattörlés
 
 A [Microsoft adatvédelmi portálon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) a fiókhoz tartozó, a felhasználó számára gyűjtött összes MFA Cloud Service-információ törlésére vonatkozó kérést hozhat.
 

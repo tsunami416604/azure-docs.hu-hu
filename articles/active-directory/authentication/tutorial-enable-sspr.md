@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbbf1a6aebf54c7928fe0636262055f37d7f93bd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 59de3123dc991d0314cd9046d83712d17da53d9f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966542"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837821"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Oktatóanyag: a felhasználók számára lehetővé teszi a fiók zárolásának feloldását vagy a jelszavak alaphelyzetbe állítását Azure Active Directory önkiszolgáló jelszó-visszaállítás használatával
 
@@ -48,7 +48,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
 
 ## <a name="enable-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének engedélyezése
 
-Az Azure AD lehetővé teszi, hogy a *nincs*, a *kiválasztott*vagy *az összes* felhasználó számára engedélyezze a SSPR. Ez a részletes képesség lehetővé teszi, hogy a felhasználók egy részhalmazát kiválassza a SSPR-regisztrációs folyamat és a munkafolyamat teszteléséhez. Ha már jól ismeri a folyamatot, és a felhasználók szélesebb körével tud kommunikálni a követelményekkel, kiválaszthat egy felhasználói csoportot a SSPR engedélyezéséhez. Az Azure AD-bérlőben mindenki számára is engedélyezheti a SSPR.
+Az Azure AD lehetővé teszi, hogy a *nincs*, a *kiválasztott* vagy *az összes* felhasználó számára engedélyezze a SSPR. Ez a részletes képesség lehetővé teszi, hogy a felhasználók egy részhalmazát kiválassza a SSPR-regisztrációs folyamat és a munkafolyamat teszteléséhez. Ha már jól ismeri a folyamatot, és a felhasználók szélesebb körével tud kommunikálni a követelményekkel, kiválaszthat egy felhasználói csoportot a SSPR engedélyezéséhez. Az Azure AD-bérlőben mindenki számára is engedélyezheti a SSPR.
 
 > [!NOTE]
 >
@@ -58,18 +58,18 @@ Ebben az oktatóanyagban egy SSPR tartozó felhasználók készletét konfigurá
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) *globális rendszergazdai* jogosultságokkal rendelkező fiókkal.
 1. Keresse meg és válassza ki a **Azure Active Directory**, majd a bal oldali menüben válassza a **jelszó alaphelyzetbe állítása** lehetőséget.
-1. A **Tulajdonságok** lapon, az *önkiszolgáló jelszó-visszaállítás engedélyezése*lehetőségnél válassza a **csoport kiválasztása** lehetőséget.
-1. Keresse meg és válassza ki az Azure AD-csoportot, például *SSPR-test-Group*, majd válassza a *kiválasztás*lehetőséget.
+1. A **Tulajdonságok** lapon, az *önkiszolgáló jelszó-visszaállítás engedélyezése* lehetőségnél válassza a **csoport kiválasztása** lehetőséget.
+1. Keresse meg és válassza ki az Azure AD-csoportot, például *SSPR-test-Group*, majd válassza a *kiválasztás* lehetőséget.
 
     [![Válasszon ki egy csoportot a Azure Portal, hogy engedélyezze az önkiszolgáló jelszó-visszaállítást ](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png)](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
 
-1. A SSPR engedélyezéséhez válassza a **Mentés**lehetőséget.
+1. A SSPR engedélyezéséhez válassza a **Mentés** lehetőséget.
 
 ## <a name="select-authentication-methods-and-registration-options"></a>Hitelesítési módszerek és regisztrációs beállítások kiválasztása
 
 Ha a felhasználóknak fel kell oldaniuk a fiókját, vagy alaphelyzetbe kell állítaniuk a jelszavukat, a rendszer további megerősítő módszert kér. Ez a további hitelesítési tényező gondoskodik arról, hogy csak a jóváhagyott SSPR-események legyenek végrehajtva. Kiválaszthatja, hogy mely hitelesítési módszerek legyenek engedélyezve, a felhasználó által biztosított regisztrációs információk alapján.
 
-1. A bal oldali menüben a **hitelesítési módszerek** lapon állítsa be az *1*értékre való **visszaállításhoz szükséges metódusok számát** .
+1. A bal oldali menüben a **hitelesítési módszerek** lapon állítsa be az *1* értékre való **visszaállításhoz szükséges metódusok számát** .
 
     A biztonság növelése érdekében növelheti a SSPR szükséges hitelesítési módszerek számát.
 
@@ -80,9 +80,9 @@ Ha a felhasználóknak fel kell oldaniuk a fiókját, vagy alaphelyzetbe kell á
     * *E-mail*
     * *Mobiltelefon*
 
-    A további hitelesítési módszerek, például az *irodai telefonos* vagy *biztonsági kérdések*az üzleti igényeknek megfelelően engedélyezhetők.
+    A további hitelesítési módszerek, például az *irodai telefonos* vagy *biztonsági kérdések* az üzleti igényeknek megfelelően engedélyezhetők.
 
-1. A hitelesítési módszerek alkalmazásához válassza a **Mentés**lehetőséget.
+1. A hitelesítési módszerek alkalmazásához válassza a **Mentés** lehetőséget.
 
 Ahhoz, hogy a felhasználók fel tudják oldani a fiókját vagy a jelszó alaphelyzetbe állítását, regisztrálniuk kell a kapcsolattartási adataikat. A kapcsolattartási adatok az előző lépésekben konfigurált különböző hitelesítési módszerekhez használatosak.
 
@@ -92,7 +92,7 @@ A rendszergazda manuálisan megadhatja a kapcsolattartási adatokat, vagy a felh
 1. Fontos, hogy a kapcsolattartási adatok naprakészek maradnak. Ha a kapcsolattartási adatok elavultak egy SSPR esemény elindításakor, előfordulhat, hogy a felhasználó nem tudja feloldani a fiókját, vagy visszaállítja a jelszavát.
 
     **A napok száma, amely előtt a rendszer kéri a felhasználóktól a hitelesítő adataik ismételt megerősítését** értékét állítsa *180*-ra.
-1. A regisztrációs beállítások alkalmazásához válassza a **Mentés**lehetőséget.
+1. A regisztrációs beállítások alkalmazásához válassza a **Mentés** lehetőséget.
 
 ## <a name="configure-notifications-and-customizations"></a>Értesítések és testreszabások konfigurálása
 
@@ -103,13 +103,13 @@ Ha szeretné, hogy a felhasználók tájékoztassanak a fiók tevékenységérő
    * A **Felhasználók értesítése új jelszó kérésekor** beállítást állítsa *Igen* értékre.
    * A **Minden rendszergazda kapjon értesítést, ha más rendszergazdák új jelszót kérnek** beállítást állítsa *Igen* értékre.
 
-1. Az értesítési beállítások alkalmazásához válassza a **Mentés**lehetőséget.
+1. Az értesítési beállítások alkalmazásához válassza a **Mentés** lehetőséget.
 
 Ha a felhasználóknak további segítségre van szüksége a SSPR folyamathoz, testreszabhatja a "Kapcsolatfelvétel a rendszergazdával" hivatkozást. Ez a hivatkozás a SSPR regisztrációs folyamatában használatos, és amikor a felhasználó feloldja a fiókját, vagy visszaállítja a jelszavát. Annak biztosításához, hogy a felhasználók megkapják a szükséges támogatást, kifejezetten ajánlott egyéni segélyszolgálat-e-mailt vagy URL-címet megadni.
 
-1. A **Testreszabás** lapon a bal oldali menüben válassza az *ügyfélszolgálati kapcsolat testreszabása* **Igen**lehetőséget.
+1. A **Testreszabás** lapon a bal oldali menüben válassza az *ügyfélszolgálati kapcsolat testreszabása* **Igen** lehetőséget.
 1. Az **Egyéni segélyszolgálat e-mail-címe vagy URL-** címe mezőben adjon meg egy e-mail-címet vagy egy weblap URL-címét, ahol a felhasználók további segítséget kérhetnek a szervezettől, például: *`https://support.contoso.com/`*
-1. Az egyéni hivatkozás alkalmazásához válassza a **Mentés**lehetőséget.
+1. Az egyéni hivatkozás alkalmazásához válassza a **Mentés** lehetőséget.
 
 ## <a name="test-self-service-password-reset"></a>Önkiszolgáló jelszó-visszaállítás tesztelése
 
@@ -122,13 +122,13 @@ Ha a SSPR engedélyezve és konfigurálva van, tesztelje a SSPR folyamatot egy o
 1. Jelentkezzen be egy nem rendszergazdai jogosultsággal rendelkező felhasználóval, például a *tesztfelhasználó*, és regisztrálja a hitelesítési módszereket a kapcsolattartási adatokhoz.
 1. Ha elkészült, jelölje be a jól látható gombra kattintva **, majd a** böngészőablak bezárásához.
 1. Nyisson meg egy új böngészőablakot InPrivate-vagy inkognitóban-módban, és keresse meg a következőt: [https://aka.ms/sspr](https://aka.ms/sspr) .
-1. Adja meg a nem rendszergazdai felhasználói fiók adatait, például a *tesztfelhasználó*, a CAPTCHA karaktereit, majd kattintson a **tovább**gombra.
+1. Adja meg a nem rendszergazdai felhasználói fiók adatait, például a *tesztfelhasználó*, a CAPTCHA karaktereit, majd kattintson a **tovább** gombra.
 
     ![Adja meg a felhasználói fiók adatait a jelszó alaphelyzetbe állításához](media/tutorial-enable-sspr/password-reset-page.png)
 
 1. A jelszó alaphelyzetbe állításához kövesse az ellenőrzési lépéseket. Ha elkészült, kapnia kell egy e-mailt arról, hogy a jelszó alaphelyzetbe állt.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ebben a sorozatban a következő oktatóanyagban konfigurálhatja a jelszó visszaírási. Ez a szolgáltatás az Azure AD-SSPR visszaadott jelszavakat egy helyszíni AD-környezetbe írja. Ha továbbra is ezt az oktatóanyag-sorozatot szeretné használni a jelszó-visszaírási konfigurálásához, ne tiltsa le a SSPR.
 
@@ -136,8 +136,8 @@ Ha már nem szeretné használni az oktatóanyag részeként konfigurált SSPR f
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keresse meg és válassza ki a **Azure Active Directory**, majd a bal oldali menüben válassza a **jelszó alaphelyzetbe állítása** lehetőséget.
-1. A **Tulajdonságok** lapon, az *önkiszolgáló jelszó-visszaállítás engedélyezése*lehetőségnél válassza a **nincs**lehetőséget.
-1. A SSPR módosításának alkalmazásához válassza a **Mentés**lehetőséget.
+1. A **Tulajdonságok** lapon, az *önkiszolgáló jelszó-visszaállítás engedélyezése* lehetőségnél válassza a **nincs** lehetőséget.
+1. A SSPR módosításának alkalmazásához válassza a **Mentés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -149,4 +149,4 @@ Ebben az oktatóanyagban engedélyezte az Azure AD önkiszolgáló jelszó-vissz
 > * A SSPR folyamat tesztelése felhasználóként
 
 > [!div class="nextstepaction"]
-> [Az Azure Multi-Factor Authentication engedélyezése](./tutorial-enable-azure-mfa.md)
+> [Azure AD-Multi-Factor Authentication engedélyezése](./tutorial-enable-azure-mfa.md)

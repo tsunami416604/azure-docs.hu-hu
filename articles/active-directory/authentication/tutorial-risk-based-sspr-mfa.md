@@ -10,27 +10,27 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d0fcd57a71baec54fbed2dd41a936895ad9a462
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a120e015bd8ca38e32bd8cbef1fd48f4caef8e44
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966576"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837804"
 ---
-# <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Oktatóanyag: kockázati észlelések használata felhasználói bejelentkezésekhez az Azure Multi-Factor Authentication vagy a jelszó módosításainak elindításához
+# <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-ad-multi-factor-authentication-or-password-changes"></a>Oktatóanyag: kockázati észlelések használata felhasználói bejelentkezésekhez az Azure AD Multi-Factor Authentication vagy a jelszó módosításainak elindításához
 
-A felhasználók biztonsága érdekében az Azure Active Directory (Azure AD) kockázatkezelési házirendjeit konfigurálhatja, amelyek automatikusan reagálnak a kockázatos viselkedésekre. Azure AD Identity Protection szabályzatok automatikusan blokkolják a bejelentkezési kísérleteket, vagy további műveleteket igényelnek, például jelszó megváltoztatását vagy az Azure Multi-Factor Authentication kérését. Ezek a szabályzatok a meglévő Azure AD feltételes hozzáférési szabályzatokkal együttműködve további védelmi réteget biztosítanak a szervezet számára. Előfordulhat, hogy a felhasználók nem tudnak kockázatos viselkedést kiváltani ezen házirendek egyikében, de a szervezet védett, ha a biztonság megtámadására tett kísérlet történt.
+A felhasználók biztonsága érdekében az Azure Active Directory (Azure AD) kockázatkezelési házirendjeit konfigurálhatja, amelyek automatikusan reagálnak a kockázatos viselkedésekre. Azure AD Identity Protection szabályzatok automatikusan blokkolják a bejelentkezési kísérleteket, vagy további műveleteket igényelnek, például jelszó megváltoztatását vagy az Azure AD Multi-Factor Authentication megadását. Ezek a szabályzatok a meglévő Azure AD feltételes hozzáférési szabályzatokkal együttműködve további védelmi réteget biztosítanak a szervezet számára. Előfordulhat, hogy a felhasználók nem tudnak kockázatos viselkedést kiváltani ezen házirendek egyikében, de a szervezet védett, ha a biztonság megtámadására tett kísérlet történt.
 
 > [!IMPORTANT]
-> Ez az oktatóanyag egy rendszergazdát mutat be, amely lehetővé teszi a kockázatalapú Azure-Multi-Factor Authentication engedélyezését.
+> Ez az oktatóanyag egy rendszergazdát mutat be a kockázatalapú Azure AD-Multi-Factor Authentication engedélyezéséhez.
 >
-> Ha az IT-csapat nem engedélyezte az Azure Multi-Factor Authentication használatát, vagy ha a bejelentkezés során problémákba lépett, további segítségért forduljon az ügyfélszolgálathoz.
+> Ha az IT-csapat nem engedélyezte az Azure AD-Multi-Factor Authentication használatát, vagy ha a bejelentkezés során problémák merülnek fel, további segítségért forduljon az ügyfélszolgálathoz.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az Azure AD Identity Protection elérhető házirendjeinek megismerése
-> * Az Azure Multi-Factor Authentication regisztrációjának engedélyezése
+> * Az Azure AD Multi-Factor Authentication regisztrációjának engedélyezése
 > * Kockázatalapú jelszómódosítások engedélyezése
 > * Kockázatalapú többtényezős hitelesítés engedélyezése
 > * A felhasználói bejelentkezési kísérletek kockázati alapú házirendjeinek tesztelése
@@ -42,9 +42,9 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
 * Egy működő Azure AD-bérlő, amely legalább egy prémium szintű Azure AD P2 vagy próbaverziós licenccel rendelkezik.
     * Ha szükséges, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Globális rendszergazdai* jogosultságokkal rendelkező fiók.
-* Azure AD konfigurálva az önkiszolgáló jelszó-visszaállításhoz és az Azure Multi-Factor Authentication
+* Az Azure AD konfigurálva van az önkiszolgáló jelszó-visszaállításhoz és az Azure AD-Multi-Factor Authentication
     * Ha szükséges, [fejezze be az oktatóanyagot az Azure ad-SSPR engedélyezéséhez](tutorial-enable-sspr.md).
-    * Ha szükséges, [fejezze be az oktatóanyagot az Azure multi-Factor Authentication engedélyezéséhez](tutorial-enable-azure-mfa.md).
+    * Ha szükséges, [fejezze be az oktatóanyagot az Azure AD multi-Factor Authentication engedélyezéséhez](tutorial-enable-azure-mfa.md).
 
 ## <a name="overview-of-azure-ad-identity-protection"></a>A Azure AD Identity Protection áttekintése
 
@@ -64,26 +64,26 @@ A következő három szabályzat érhető el Azure AD Identity Protectionban a f
 * Felhasználói kockázati szabályzat
     * Azonosítja és válaszol azokra a felhasználói fiókokra, amelyek esetlegesen sérült hitelesítő adatokkal rendelkeznek. Megkérheti a felhasználót, hogy hozzon létre egy új jelszót.
 * Bejelentkezési kockázati házirend
-    * Azonosítja és válaszol a gyanús bejelentkezési kísérletekre. Megkérheti a felhasználót, hogy további ellenőrzési formákat nyújtson az Azure Multi-Factor Authentication használatával.
+    * Azonosítja és válaszol a gyanús bejelentkezési kísérletekre. A felszólítja a felhasználót, hogy az Azure AD Multi-Factor Authentication használatával további ellenőrzési formákat biztosítson.
 * MFA-regisztrációs szabályzat
-    * Ellenőrzi, hogy a felhasználók regisztrálva vannak-e az Azure Multi-Factor Authentication. Ha a bejelentkezési kockázati házirend kéri az MFA-t, a felhasználónak már regisztrálva kell lennie az Azure Multi-Factor Authentication-ban.
+    * Ellenőrzi, hogy a felhasználók regisztrálva vannak-e az Azure AD Multi-Factor Authentication. Ha egy bejelentkezési kockázati házirend kéri az MFA-t, a felhasználónak már regisztrálva kell lennie az Azure AD Multi-Factor Authentication.
 
-Ha engedélyezi a házirend felhasználóját vagy a kockázatkezelési szabályzatot, akkor a kockázati szint küszöbértékét is kiválaszthatja – *alacsony és* *közepes*vagy magasabb, illetve *magas*. Ez a rugalmasság lehetővé teszi, hogy eldöntse, milyen agresszíven szeretné kikényszeríteni a gyanús bejelentkezési eseményekre vonatkozó összes vezérlőt.
+Ha engedélyezi a házirend felhasználóját vagy a kockázatkezelési szabályzatot, akkor a kockázati szint küszöbértékét is kiválaszthatja – *alacsony és* *közepes* vagy magasabb, illetve *magas*. Ez a rugalmasság lehetővé teszi, hogy eldöntse, milyen agresszíven szeretné kikényszeríteni a gyanús bejelentkezési eseményekre vonatkozó összes vezérlőt.
 
 További információ a Azure AD Identity Protectionről: [Mi az Azure ad Identity Protection?](../identity-protection/overview-identity-protection.md)
 
 ## <a name="enable-mfa-registration-policy"></a>MFA regisztrációs szabályzatának engedélyezése
 
-A Azure AD Identity Protection tartalmaz egy alapértelmezett szabályzatot, amely segítséget nyújt az Azure Multi-Factor Authentication regisztrált felhasználói számára. Ha a bejelentkezési események elleni védelemhez további szabályzatokat használ, a felhasználóknak már regisztrálniuk kell az MFA-t. Ha engedélyezi ezt a házirendet, nem igényli, hogy a felhasználók minden egyes bejelentkezéskor MFA-t végezzenek. A szabályzat csak a felhasználó regisztrációs állapotát ellenőrzi, és szükség esetén megkéri őket, hogy előzetesen regisztráljanak.
+Azure AD Identity Protection tartalmaz egy alapértelmezett szabályzatot, amely segítséget nyújt az Azure AD-Multi-Factor Authentication regisztrált felhasználói számára. Ha a bejelentkezési események elleni védelemhez további szabályzatokat használ, a felhasználóknak már regisztrálniuk kell az MFA-t. Ha engedélyezi ezt a házirendet, nem igényli, hogy a felhasználók minden egyes bejelentkezéskor MFA-t végezzenek. A szabályzat csak a felhasználó regisztrációs állapotát ellenőrzi, és szükség esetén megkéri őket, hogy előzetesen regisztráljanak.
 
 Ajánlott engedélyezni az MFA regisztrációs szabályzatát olyan felhasználók számára, akik számára engedélyezni kell a további Azure AD Identity Protection házirendeket. A szabályzat engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdai fiók használatával.
-1. Keresse meg és válassza ki a **Azure Active Directory**, válassza a **Biztonság**lehetőséget, majd a *védelem* menüpont alatt válassza az **Identity Protection**lehetőséget.
+1. Keresse meg és válassza ki a **Azure Active Directory**, válassza a **Biztonság** lehetőséget, majd a *védelem* menüpont alatt válassza az **Identity Protection** lehetőséget.
 1. Válassza ki az **MFA regisztrációs szabályzatot** a bal oldali menüben.
-1. Alapértelmezés szerint a szabályzat *minden felhasználóra*érvényes. Szükség esetén válassza a **hozzárendelések**lehetőséget, majd válassza ki azokat a felhasználókat vagy csoportokat, amelyekre alkalmazni szeretné a szabályzatot.
-1. A *vezérlők*területen válassza a **hozzáférés**lehetőséget. Győződjön meg arról, hogy be van jelölve az *Azure MFA-regisztráció megkövetelése* jelölőnégyzet, majd válassza a **kiválasztás**lehetőséget.
-1. Állítsa be a **szabályzat érvényesítése** beállítást, majd kattintson *a* **Mentés**gombra.
+1. Alapértelmezés szerint a szabályzat *minden felhasználóra* érvényes. Szükség esetén válassza a **hozzárendelések** lehetőséget, majd válassza ki azokat a felhasználókat vagy csoportokat, amelyekre alkalmazni szeretné a szabályzatot.
+1. A *vezérlők* területen válassza a **hozzáférés** lehetőséget. Győződjön meg arról, hogy az *Azure ad MFA-regisztráció megkövetelése* beállítás **be** van jelölve, majd válassza a kiválasztás lehetőséget.
+1. Állítsa be a **szabályzat érvényesítése** beállítást, majd kattintson *a* **Mentés** gombra.
 
     ![Képernyőkép a felhasználóknak az MFA-regisztráció megköveteléséről a Azure Portal](./media/tutorial-risk-based-sspr-mfa/enable-mfa-registration.png)
 
@@ -94,11 +94,11 @@ A Microsoft kutatókkal, a bűnüldözési hatóságokkal, különféle belső b
 A szabályzat engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. Válassza ki a **felhasználói kockázati házirendet** a bal oldali menüben.
-1. Alapértelmezés szerint a szabályzat *minden felhasználóra*érvényes. Szükség esetén válassza a **hozzárendelések**lehetőséget, majd válassza ki azokat a felhasználókat vagy csoportokat, amelyekre alkalmazni szeretné a szabályzatot.
-1. A *feltételek*területen válassza  **a feltételek kiválasztása lehetőséget > válassza ki a kockázati szintet**, majd válassza a *közepes vagy újabb*lehetőséget.
-1. Válassza a **kiválasztás**, majd a **kész**lehetőséget.
-1. A *hozzáférés*területen válassza a **hozzáférés**lehetőséget. Győződjön meg arról, hogy a **hozzáférés engedélyezése** és a *jelszó megkövetelése* beállítás be van jelölve, majd válassza a **kiválasztás**lehetőséget.
-1. Állítsa be a **szabályzat érvényesítése** beállítást, majd kattintson *a* **Mentés**gombra.
+1. Alapértelmezés szerint a szabályzat *minden felhasználóra* érvényes. Szükség esetén válassza a **hozzárendelések** lehetőséget, majd válassza ki azokat a felhasználókat vagy csoportokat, amelyekre alkalmazni szeretné a szabályzatot.
+1. A *feltételek* területen válassza  **a feltételek kiválasztása lehetőséget > válassza ki a kockázati szintet**, majd válassza a *közepes vagy újabb* lehetőséget.
+1. Válassza a **kiválasztás**, majd a **kész** lehetőséget.
+1. A *hozzáférés* területen válassza a **hozzáférés** lehetőséget. Győződjön meg arról, hogy a **hozzáférés engedélyezése** és a *jelszó megkövetelése* beállítás be van jelölve, majd válassza a **kiválasztás** lehetőséget.
+1. Állítsa be a **szabályzat érvényesítése** beállítást, majd kattintson *a* **Mentés** gombra.
 
     ![Képernyőkép a felhasználói kockázati házirend engedélyezéséről a Azure Portal](./media/tutorial-risk-based-sspr-mfa/enable-user-risk-policy.png)
 
@@ -109,11 +109,11 @@ A legtöbb felhasználó rendelkezik egy normál viselkedéssel, amely nyomon k�
 A szabályzat engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. Válassza ki a **bejelentkezési kockázati szabályzatot** a bal oldali menüben.
-1. Alapértelmezés szerint a szabályzat *minden felhasználóra*érvényes. Szükség esetén válassza a **hozzárendelések**lehetőséget, majd válassza ki azokat a felhasználókat vagy csoportokat, amelyekre alkalmazni szeretné a szabályzatot.
-1. A *feltételek*területen válassza  **a feltételek kiválasztása lehetőséget > válassza ki a kockázati szintet**, majd válassza a *közepes vagy újabb*lehetőséget.
-1. Válassza a **kiválasztás**, majd a **kész**lehetőséget.
-1. A *hozzáférés*területen válassza **a vezérlő kiválasztása**lehetőséget. Győződjön meg arról, hogy a **hozzáférés engedélyezése** és a *többtényezős hitelesítés megkövetelése* jelölőnégyzet **be**van jelölve, majd válassza a kiválasztás lehetőséget.
-1. Állítsa be a **szabályzat érvényesítése** beállítást, majd kattintson *a* **Mentés**gombra.
+1. Alapértelmezés szerint a szabályzat *minden felhasználóra* érvényes. Szükség esetén válassza a **hozzárendelések** lehetőséget, majd válassza ki azokat a felhasználókat vagy csoportokat, amelyekre alkalmazni szeretné a szabályzatot.
+1. A *feltételek* területen válassza  **a feltételek kiválasztása lehetőséget > válassza ki a kockázati szintet**, majd válassza a *közepes vagy újabb* lehetőséget.
+1. Válassza a **kiválasztás**, majd a **kész** lehetőséget.
+1. A *hozzáférés* területen válassza **a vezérlő kiválasztása** lehetőséget. Győződjön meg arról, hogy a **hozzáférés engedélyezése** és a *többtényezős hitelesítés megkövetelése* jelölőnégyzet **be** van jelölve, majd válassza a kiválasztás lehetőséget.
+1. Állítsa be a **szabályzat érvényesítése** beállítást, majd kattintson *a* **Mentés** gombra.
 
     ![Képernyőkép a bejelentkezési kockázati szabályzat engedélyezéséről a Azure Portal](./media/tutorial-risk-based-sspr-mfa/enable-sign-in-risk-policy.png)
 
@@ -123,7 +123,7 @@ A legtöbb felhasználói bejelentkezési esemény nem aktiválja az előző lé
 
 Az előző lépésekben létrehozott Azure AD Identity Protection szabályzatok teszteléséhez a kockázatos viselkedés vagy a lehetséges támadások szimulálása szükséges. A tesztek végrehajtásának lépései az érvényesíteni kívánt Azure AD Identity Protection szabályzat alapján változnak. További információ a forgatókönyvekről és a lépésekről: [a kockázati észlelések szimulálása Azure ad Identity Protectionban](../identity-protection/howto-identity-protection-simulate-risk.md).
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha befejezte a tesztelést, és már nem szeretné, hogy engedélyezve legyenek a kockázatalapú házirendek, térjen vissza a letiltani kívánt szabályzatokhoz, és állítsa be a **házirend** *kikapcsolását*.
 
@@ -133,7 +133,7 @@ Ebben az oktatóanyagban engedélyezte a Azure AD Identity Protection kockázata
 
 > [!div class="checklist"]
 > * Az Azure AD Identity Protection elérhető házirendjeinek megismerése
-> * Az Azure Multi-Factor Authentication regisztrációjának engedélyezése
+> * Az Azure AD Multi-Factor Authentication regisztrációjának engedélyezése
 > * Kockázatalapú jelszómódosítások engedélyezése
 > * Kockázatalapú többtényezős hitelesítés engedélyezése
 > * A felhasználói bejelentkezési kísérletek kockázati alapú házirendjeinek tesztelése

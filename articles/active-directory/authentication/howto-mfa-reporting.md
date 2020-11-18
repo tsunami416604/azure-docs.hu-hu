@@ -1,6 +1,6 @@
 ---
-title: Bejelentkezési esemény részletei az Azure Multi-Factor Authentication-Azure Active Directory
-description: Megtudhatja, hogyan tekintheti meg az Azure-Multi-Factor Authentication események és állapotüzenetek bejelentkezési tevékenységeit.
+title: Bejelentkezési esemény részletei az Azure AD Multi-Factor Authentication-Azure Active Directory
+description: Megtudhatja, hogyan tekintheti meg az Azure AD Multi-Factor Authentication eseményeinek és állapotüzenetek bejelentkezési tevékenységeit.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 676b8b6fbb56536ec3a49100f5de1419ac417bb6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6a103f1f518a838e0746d363ee613dd1625b0bd4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964145"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838978"
 ---
-# <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>A bejelentkezések jelentés használata az Azure Multi-Factor Authentication eseményeinek áttekintéséhez
+# <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>A bejelentkezések jelentés használata az Azure AD Multi-Factor Authentication eseményeinek áttekintéséhez
 
-Az Azure Multi-Factor Authentication eseményeinek áttekintéséhez és megismeréséhez használhatja a Azure Active Directory (Azure AD) bejelentkezési jelentését. Ez a jelentés az események hitelesítésének részleteit jeleníti meg, amikor a rendszer megkéri a felhasználót a többtényezős hitelesítésre, és ha bármilyen feltételes hozzáférési szabályzat használatban van. A bejelentkezési jelentéssel kapcsolatos részletes információkért tekintse meg a [bejelentkezési tevékenységek jelentéseinek áttekintése az Azure ad-ben](../reports-monitoring/concept-sign-ins.md)című témakört.
+Az Azure AD Multi-Factor Authentication eseményeinek áttekintéséhez és megismeréséhez használhatja a Azure Active Directory (Azure AD) bejelentkezési jelentését. Ez a jelentés az események hitelesítésének részleteit jeleníti meg, amikor a rendszer megkéri a felhasználót a többtényezős hitelesítésre, és ha bármilyen feltételes hozzáférési szabályzat használatban van. A bejelentkezési jelentéssel kapcsolatos részletes információkért tekintse meg a [bejelentkezési tevékenységek jelentéseinek áttekintése az Azure ad-ben](../reports-monitoring/concept-sign-ins.md)című témakört.
 
 Ez a cikk bemutatja, hogyan tekintheti meg az Azure AD bejelentkezési jelentéseit a Azure Portalban, majd a MSOnline v1 PowerShell-modult.
 
@@ -40,7 +40,7 @@ Ha meg szeretné tekinteni a bejelentkezési tevékenység jelentését a [Azure
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) *globális rendszergazdai* jogosultságokkal rendelkező fiókkal.
 1. Keresse meg és válassza ki a **Azure Active Directory**, majd a bal oldali menüben válassza a **felhasználók** lehetőséget.
-1. A bal oldali menü *tevékenység* területén válassza a **bejelentkezések**lehetőséget.
+1. A bal oldali menü *tevékenység* területén válassza a **bejelentkezések** lehetőséget.
 1. Megjelenik a bejelentkezési események listája, beleértve az állapotot is. Kiválaszthat egy eseményt a további részletek megtekintéséhez.
 
     Az *események részletei* vagy *feltételes hozzáférés* lapján megjelenik az állapotkód, vagy az a házirend, amely az MFA-kérést aktiválta.
@@ -119,36 +119,36 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 Az alábbi táblázat segítséget nyújt az események hibaelhárításához az előző portál lépéseiből vagy a PowerShell-parancsokból származó tevékenységi jelentés letöltött verziójának használatával. Ezek az eredmények nem jelennek meg közvetlenül a Azure Portal.
 
-| Hívás eredménye | Description | Széles Leírás |
+| Hívás eredménye | Leírás | Széles Leírás |
 | --- | --- | --- |
-| SUCCESS_WITH_PIN | PIN-kód megadva | A felhasználó PIN-kódot adott meg. Ha a hitelesítés sikeres volt, akkor a megfelelő PIN-kódot adtak meg. Ha a hitelesítés megtagadva, akkor helytelen PIN-kódot adtak meg, vagy a felhasználó normál módra van beállítva. |
+| SUCCESS_WITH_PIN | PIN-kód megadva | A felhasználó PIN-kódot adott meg.  Ha a hitelesítés sikeres volt, akkor a megfelelő PIN-kódot adtak meg.  Ha a hitelesítés megtagadva, akkor helytelen PIN-kódot adtak meg, vagy a felhasználó normál módra van beállítva. |
 | SUCCESS_NO_PIN | Csak # megadott | Ha a felhasználó PIN módra van beállítva, és a hitelesítés megtagadva, ez azt jelenti, hogy a felhasználó nem adta meg a PIN-kódját, és csak a # értéket adta meg.  Ha a felhasználó szabványos módra van beállítva, és a hitelesítés sikeres, akkor a felhasználó csak a # paramétert adta meg, ami a helyes dolog a standard módban. |
-| SUCCESS_WITH_PIN_BUT_TIMEOUT | A beléptetés után nem kell lenyomni | A felhasználó nem küldött DTMF-számjegyeket, mivel a # nem lett megadva. A beírt egyéb számjegyek nem lesznek elküldve, kivéve, ha a # meg van adva a bejegyzés befejezését jelző karakter. |
-|SUCCESS_NO_PIN_BUT_TIMEOUT | Nincs telefonos bemenet – időtúllépés | A hívást megválaszolták, de nem volt válasz. Ez általában azt jelzi, hogy a hívást a hangposta vette át. |
+| SUCCESS_WITH_PIN_BUT_TIMEOUT | A beléptetés után nem kell lenyomni | A felhasználó nem küldött DTMF-számjegyeket, mivel a # nem lett megadva.  A beírt egyéb számjegyek nem lesznek elküldve, kivéve, ha a # meg van adva a bejegyzés befejezését jelző karakter. |
+|SUCCESS_NO_PIN_BUT_TIMEOUT | Nincs telefonos bemenet – időtúllépés | A hívást megválaszolták, de nem volt válasz.  Ez általában azt jelzi, hogy a hívást a hangposta vette át. |
 | SUCCESS_PIN_EXPIRED | A PIN-kód lejárt és nem változott | A felhasználó PIN-kódja lejárt, és a rendszer megkéri, hogy módosítsa, de a PIN-kód módosítása nem fejeződött be sikeresen. |
 | SUCCESS_USED_CACHE | Használt gyorsítótár | A hitelesítés Multi-Factor Authentication hívás nélkül sikerült, mert egy korábbi sikeres hitelesítés ugyanahhoz a felhasználónévhez a beállított gyorsítótár időkeretén belül történt. |
-| SUCCESS_BYPASSED_AUTH | Kihagyott hitelesítés | A hitelesítés sikeres volt a felhasználó számára kezdeményezett One-Time megkerülés használatával. A mellőzéssel kapcsolatos további részletekért tekintse meg a felhasználói előzmények megkerülő jelentést. |
+| SUCCESS_BYPASSED_AUTH | Kihagyott hitelesítés | A hitelesítés sikeres volt a felhasználó számára kezdeményezett One-Time megkerülés használatával.  A mellőzéssel kapcsolatos további részletekért tekintse meg a felhasználói előzmények megkerülő jelentést. |
 | SUCCESS_USED_IP_BASED_CACHE | Használt IP-alapú gyorsítótár | A hitelesítés Multi-Factor Authentication hívás nélkül sikeres volt, mert az előző sikeres hitelesítés ugyanarra a felhasználónévre, hitelesítési típusra, alkalmazás nevére és IP-re történt a beállított gyorsítótári időkereten belül. |
 | SUCCESS_USED_APP_BASED_CACHE | Alkalmazás-alapú gyorsítótár használatban | A hitelesítés Multi-Factor Authentication hívás nélkül sikeres volt, mert egy korábbi sikeres hitelesítés történt ugyanazzal a felhasználónévvel, hitelesítési típussal és alkalmazás nevével a beállított gyorsítótár időkeretén belül. |
-| SUCCESS_INVALID_INPUT | Érvénytelen telefonos bevitel | A telefonról küldött válasz érvénytelen. Ez lehet egy faxkészülék vagy modem, vagy előfordulhat, hogy a felhasználó a PIN-kód részeként megadta a t. |
-| SUCCESS_USER_BLOCKED | A felhasználó le van tiltva | A felhasználó telefonszáma le van tiltva. A felhasználó egy hitelesítési hívás vagy egy, a Azure Portal használó rendszergazda által kezdeményezett letiltott számot is kezdeményezhet. <br> Megjegyzés: A letiltott szám a csalási riasztások mellékterméke is. |
+| SUCCESS_INVALID_INPUT | Érvénytelen telefonos bevitel | A telefonról küldött válasz érvénytelen.  Ez lehet egy faxkészülék vagy modem, vagy előfordulhat, hogy a felhasználó a PIN-kód részeként megadta a t. |
+| SUCCESS_USER_BLOCKED | A felhasználó le van tiltva | A felhasználó telefonszáma le van tiltva.  A felhasználó egy hitelesítési hívás vagy egy, a Azure Portal használó rendszergazda által kezdeményezett letiltott számot is kezdeményezhet. <br> Megjegyzés: A letiltott szám a csalási riasztások mellékterméke is. |
 | SUCCESS_SMS_AUTHENTICATED | Szöveges üzenet hitelesítve | Kétirányú tesztelési üzenet esetén a felhasználó az egyszeri jelszóval (OTP) vagy az OTP + PIN-kóddal helyesen válaszol. |
-| SUCCESS_SMS_SENT | Szöveges üzenet elküldve | Szöveges üzenet esetén az egyszer használatos jelszót (OTP) tartalmazó szöveges üzenet sikeresen elküldve. A felhasználó a hitelesítés elvégzéséhez megadja az OTP vagy az OTP + PIN kódot az alkalmazásban. |
+| SUCCESS_SMS_SENT | Szöveges üzenet elküldve | Szöveges üzenet esetén az egyszer használatos jelszót (OTP) tartalmazó szöveges üzenet sikeresen elküldve.  A felhasználó a hitelesítés elvégzéséhez megadja az OTP vagy az OTP + PIN kódot az alkalmazásban. |
 | SUCCESS_PHONE_APP_AUTHENTICATED | Mobile App hitelesítve | A felhasználó sikeresen hitelesítve lett a Mobile App használatával. |
 | SUCCESS_OATH_CODE_PENDING | ESKÜ kód függőben | A felhasználót a rendszer az eskü kód megadására kéri, de nem válaszolt. |
 | SUCCESS_OATH_CODE_VERIFIED | ESKÜ kód ellenőrizve | A felhasználó egy érvényes eskü-kódot adott meg, amikor a rendszer kéri. |
 | SUCCESS_FALLBACK_OATH_CODE_VERIFIED | Tartalék eskü kód ellenőrizve | A felhasználó az elsődleges Multi-Factor Authentication metódus használatával megtagadta a hitelesítést, majd érvényes eskü-kódot adott meg a tartalékhoz. |
 | SUCCESS_FALLBACK_SECURITY_QUESTIONS_ANSWERED | Tartalék biztonsági kérdések megválaszolva | A felhasználó az elsődleges Multi-Factor Authentication metódussal megtagadta a hitelesítést, majd a tartalékként való megfelelő biztonsági kérdéseket válaszol. |
-| FAILED_PHONE_BUSY | A hitelesítés már folyamatban van | Multi-Factor Authentication már a felhasználó hitelesítését dolgozza fel. Ezt gyakran a RADIUS-ügyfelek okozzák, amelyek több hitelesítési kérelmet küldenek ugyanazon bejelentkezés során. |
-| CONFIG_ISSUE | A telefon nem érhető el | A rendszer megkísérelte a hívást, de nem helyezhető el vagy nem válaszolt. Ez magában foglalja a foglalt jelet, a gyors foglalt jelet (leválasztva), a Tri-Tone (már nem a szolgáltatásban), az időkorlátot és a csengetést. |
-| FAILED_INVALID_PHONENUMBER | Érvénytelen telefonszám-formátum | A telefonszám formátuma érvénytelen. A telefonszámoknak számnak kell lennie, és 10 számjegyből kell állnia az országkód + 1 (Egyesült Államok & Canada) számára. |
+| FAILED_PHONE_BUSY | A hitelesítés már folyamatban van | Multi-Factor Authentication már a felhasználó hitelesítését dolgozza fel.  Ezt gyakran a RADIUS-ügyfelek okozzák, amelyek több hitelesítési kérelmet küldenek ugyanazon bejelentkezés során. |
+| CONFIG_ISSUE | A telefon nem érhető el | A rendszer megkísérelte a hívást, de nem helyezhető el vagy nem válaszolt.  Ez magában foglalja a foglalt jelet, a gyors foglalt jelet (leválasztva), a Tri-Tone (már nem a szolgáltatásban), az időkorlátot és a csengetést. |
+| FAILED_INVALID_PHONENUMBER | Érvénytelen telefonszám-formátum | A telefonszám formátuma érvénytelen.  A telefonszámoknak számnak kell lennie, és 10 számjegyből kell állnia az országkód + 1 (Egyesült Államok & Canada) számára. |
 | FAILED_USER_HUNGUP_ON_US | A felhasználó letette a telefont | A felhasználó megválaszolta a telefont, de a gombok megnyomása nélkül lefagyott. |
-| FAILED_INVALID_EXTENSION | Érvénytelen bővítmény | A bővítmény érvénytelen karaktereket tartalmaz. Csak számjegyek, vessző, * és # karakter megengedett. A @ előtagot is lehet használni. |
+| FAILED_INVALID_EXTENSION | Érvénytelen bővítmény | A bővítmény érvénytelen karaktereket tartalmaz.  Csak számjegyek, vessző, * és # karakter megengedett.  A @ előtagot is lehet használni. |
 | FAILED_FRAUD_CODE_ENTERED | Csalási kód megadva | A felhasználó megtagadta a csalás jelentését a hívás során, ami egy elutasított hitelesítést és egy letiltott telefonszámot eredményezett.| 
 | FAILED_SERVER_ERROR | A hívás nem helyezhető el | A Multi-Factor Authentication szolgáltatás nem tudta elhelyezni a hívást. |
-| FAILED_SMS_NOT_SENT | Nem lehet elküldeni a szöveges üzenetet | Nem lehet elküldeni a szöveges üzenetet. A hitelesítés megtagadva. |
-| FAILED_SMS_OTP_INCORRECT | Szöveges üzenet, OTP helytelen | A felhasználó helytelen egyszeri jelszót (OTP) adott meg a kapott szöveges üzenetből. A hitelesítés megtagadva. |
-| FAILED_SMS_OTP_PIN_INCORRECT | Szöveges üzenet – OTP + PIN-kód helytelen | A felhasználó helytelen egyszeri jelszót (OTP) és/vagy helytelen felhasználói PIN-kódot adott meg. A hitelesítés megtagadva. |
+| FAILED_SMS_NOT_SENT | Nem lehet elküldeni a szöveges üzenetet | Nem lehet elküldeni a szöveges üzenetet.  A hitelesítés megtagadva. |
+| FAILED_SMS_OTP_INCORRECT | Szöveges üzenet, OTP helytelen | A felhasználó helytelen egyszeri jelszót (OTP) adott meg a kapott szöveges üzenetből.  A hitelesítés megtagadva. |
+| FAILED_SMS_OTP_PIN_INCORRECT | Szöveges üzenet – OTP + PIN-kód helytelen | A felhasználó helytelen egyszeri jelszót (OTP) és/vagy helytelen felhasználói PIN-kódot adott meg.  A hitelesítés megtagadva. |
 | FAILED_SMS_MAX_OTP_RETRY_REACHED | Túllépte a maximális szöveges üzenet egyszeri jelszavas kísérleteit | A felhasználó túllépte az egyszeri jelszavas (OTP) kísérletek maximális számát. |
 | FAILED_PHONE_APP_DENIED | A Mobile App megtagadva | A felhasználó megtagadta a hitelesítést a Mobile alkalmazásban a Megtagadás gomb megnyomásával. |
 | FAILED_PHONE_APP_INVALID_PIN | Érvénytelen a Mobile App PIN-kód | A felhasználó érvénytelen PIN-kódot adott meg a Mobile alkalmazásban végzett hitelesítés során. |
@@ -171,7 +171,7 @@ Az alábbi táblázat segítséget nyújt az események hibaelhárításához az
 
 A következő további információk és jelentések érhetők el az MFA-eseményekhez, beleértve az MFA-kiszolgálókat:
 
-| Jelentés | Hely | Description |
+| Jelentés | Hely | Leírás |
 |:--- |:--- |:--- |
 | Letiltott felhasználói előzmények | Az Azure AD > biztonsági > MFA > a felhasználók blokkolására/feloldására | Megjeleníti a felhasználók blokkolására vagy feloldására irányuló kérelmek előzményeit. |
 | Helyszíni összetevők használata | Azure AD > Security > MFA > tevékenység jelentés | Információt nyújt az MFA-kiszolgáló általános használatáról az NPS-bővítmény, az ADFS és az MFA-kiszolgáló használatával. |

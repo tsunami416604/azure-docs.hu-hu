@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e44cb38435ca86ad7cd4709d5e99f5cf41fcf91
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 20b51cc747d3a24b1437eda988397a2e999f6ab3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366326"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837481"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>A feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -30,7 +30,7 @@ A Azure Active Directory (Azure AD) feltételes hozzáférés (CA) olyan jeleket
 
 A Microsoft a biztonsági [alapértékek](../fundamentals/concept-fundamentals-security-defaults.md) nevű szabványos feltételes házirendeket biztosít, amelyek biztosítják az alapszintű biztonságot. Előfordulhat azonban, hogy a szervezet nagyobb rugalmasságot igényel, mint a biztonsági alapértékek ajánlata. A feltételes hozzáférés segítségével testre szabhatja a biztonsági beállításokat, és részletesebben is testreszabhatja az igényeinek megfelelő új házirendeket.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Tanulás
 
 Mielőtt elkezdené, győződjön meg arról, hogyan működik a [feltételes hozzáférés](overview.md) , és hogy mikor érdemes használni.
 
@@ -73,7 +73,7 @@ A feltételes hozzáférés megismeréséhez a következő erőforrások hasznos
 * [Feltételes hozzáférés üzembe helyezése](https://youtu.be/c_izIRNJNuk)
 * [Hogyan kell kivonni a HITELESÍTÉSSZOLGÁLTATÓI házirendeket a végfelhasználók számára?](https://youtu.be/0_Fze7Zpyvc)
 * [Feltételes hozzáférés eszközvezérlőkkel](https://youtu.be/NcONUf-jeS4)
-* [Feltételes hozzáférés az Azure MFA-val](https://youtu.be/Tbc-SU97G-w)
+* [Feltételes hozzáférés az Azure AD MFA-val](https://youtu.be/Tbc-SU97G-w)
 * [Feltételes hozzáférés Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)
 
 
@@ -105,7 +105,7 @@ Ha az új szabályzatok készen állnak a környezetre, az éles környezet fáz
 ## <a name="understand-ca-policy-components"></a>A HITELESÍTÉSSZOLGÁLTATÓI házirend összetevőinek ismertetése
 A CA-házirendek az IF-then utasítások: Ha egy hozzárendelés teljesül, alkalmazza ezeket a hozzáférési vezérlőket.
 
-A HITELESÍTÉSSZOLGÁLTATÓI házirendek konfigurálásakor a feltételeket *hozzárendeléseknek*nevezzük. A HITELESÍTÉSSZOLGÁLTATÓI házirendek lehetővé teszik, hogy bizonyos hozzárendelések alapján kényszerítse ki a szervezet alkalmazásaihoz való hozzáférés-vezérlést.
+A HITELESÍTÉSSZOLGÁLTATÓI házirendek konfigurálásakor a feltételeket *hozzárendeléseknek* nevezzük. A HITELESÍTÉSSZOLGÁLTATÓI házirendek lehetővé teszik, hogy bizonyos hozzárendelések alapján kényszerítse ki a szervezet alkalmazásaihoz való hozzáférés-vezérlést.
 
 
 További információ: CA- [szabályzat létrehozása](concept-conditional-access-policies.md).
@@ -287,7 +287,7 @@ EM01 – engedélyezés VÉSZHELYZETben: MFA-megszakítás [1/4] – Exchange Sh
 
 ### <a name="exclude-countries-from-which-you-never-expect-a-sign-in"></a>Zárja ki azokat az országokat, amelyekről soha nem vár bejelentkezést.
 
-Az Azure Active Directory lehetővé teszi, hogy [elnevezett helyszíneket](location-condition.md)hozzon létre. Hozzon létre egy elnevezett helyet, amely tartalmazza az összes olyan országot, amelyről soha nem várható a bejelentkezés. Ezután hozzon létre egy szabályzatot minden olyan alkalmazáshoz, amely blokkolja az adott helyről való bejelentkezést. **Győződjön meg arról, hogy a szabályzat alól mentesül a rendszergazdák**számára.
+Az Azure Active Directory lehetővé teszi, hogy [elnevezett helyszíneket](location-condition.md)hozzon létre. Hozzon létre egy elnevezett helyet, amely tartalmazza az összes olyan országot, amelyről soha nem várható a bejelentkezés. Ezután hozzon létre egy szabályzatot minden olyan alkalmazáshoz, amely blokkolja az adott helyről való bejelentkezést. **Győződjön meg arról, hogy a szabályzat alól mentesül a rendszergazdák** számára.
 
 ### <a name="plan-your-policy-deployment"></a>A szabályzat központi telepítésének megtervezése
 

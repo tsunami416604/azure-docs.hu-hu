@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66df1bbe531c072ff5aa2bebe7b197201e6931a2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0b0b34ce55a0896fb804a48779c9c1007c8c340f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077727"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838212"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem tervezése és üzembe helyezése
 
@@ -42,7 +42,7 @@ A naplózási szakaszban számos szervezet úgy találja, hogy a következő hel
 * A felhasználók gyakran nem biztonságos jelszavakat használnak.
 * Tájékoztatniuk kell a felhasználókat a biztonsági kényszerítés közelgő változásáról, a lehetséges hatásokról, valamint a biztonságosabb jelszavak kiválasztásáról.
 
-Az is lehetséges, hogy az erősebb jelszó-érvényesítés a meglévő Active Directory tartományvezérlő üzembe helyezési automatizálásának befolyásolására is használható. Javasoljuk, hogy a naplózási időszak kiértékelése során legalább egy DC-előléptetést és egy tartományvezérlő-lefokozást hajtson végre a probléma elhárítása érdekében. További információkat az következő cikkekben talál:
+Az is lehetséges, hogy az erősebb jelszó-érvényesítés a meglévő Active Directory tartományvezérlő üzembe helyezési automatizálásának befolyásolására is használható. Javasoljuk, hogy a naplózási időszak kiértékelése során legalább egy DC-előléptetést és egy tartományvezérlő-lefokozást hajtson végre a probléma elhárítása érdekében. További információért tekintse át a következő cikkeket:
 
 * [ ANtdsutil.exe nem tudja beállítani a Címtárszolgáltatások helyreállító módjának jelszavát.](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [A tartományvezérlő replikájának előléptetése sikertelen a Címtárszolgáltatások helyreállító módjának jelszava miatt](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
@@ -90,7 +90,7 @@ A következő alapvető követelmények érvényesek:
     * Alapértelmezés szerint az RPC-kiszolgáló portja egy dinamikus RPC-port, de konfigurálható [statikus port használatára](#static)is.
 * Minden olyan gépen, amelyen telepítve van az Azure AD jelszavas védelmi proxy szolgáltatás, hálózati hozzáféréssel kell rendelkeznie a következő végpontokhoz:
 
-    |**Végpont**|**Rendeltetés**|
+    |**Végpont**|**Cél**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Hitelesítési kérelmek|
     |`https://enterpriseregistration.windows.net`|Azure AD jelszavas védelem funkció|
@@ -142,8 +142,8 @@ Az Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatását 
 
 A helyszíni Azure AD jelszavas védelem telepítéséhez két kötelező telepítő szükséges:
 
-* Azure AD Password Protection DC-ügynök ( *AzureADPasswordProtectionDCAgentSetup.msi* )
-* Azure AD jelszavas védelmi proxy ( *AzureADPasswordProtectionProxySetup.exe* )
+* Azure AD Password Protection DC-ügynök (*AzureADPasswordProtectionDCAgentSetup.msi*)
+* Azure AD jelszavas védelmi proxy (*AzureADPasswordProtectionProxySetup.exe*)
 
 Töltse le mindkét telepítőt a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=57071).
 
@@ -201,7 +201,7 @@ Az Azure AD jelszavas védelem proxy szolgáltatásának telepítéséhez hajtsa
 
     Miután ez a parancs egyszer sikeresen bekerült egy Azure AD-beli jelszavas védelmi proxy szolgáltatásra, a további meghívások sikeresek lesznek, de szükségtelenek.
 
-    A `Register-AzureADPasswordProtectionProxy` parancsmag a következő három hitelesítési módot támogatja. Az első két mód támogatja az Azure Multi-Factor Authentication-t, de a harmadik mód nem.
+    A `Register-AzureADPasswordProtectionProxy` parancsmag a következő három hitelesítési módot támogatja. Az első két mód támogatja az Azure AD Multi-Factor Authentication, de a harmadik mód nem.
 
     > [!TIP]
     > Előfordulhat, hogy egy adott Azure-bérlő esetében a parancsmag első futtatásakor észrevehető késleltetési idő van. Ha nem jelent hibát, ne aggódjon ez a késés.
@@ -231,7 +231,7 @@ Az Azure AD jelszavas védelem proxy szolgáltatásának telepítéséhez hajtsa
         ```
 
         > [!NOTE]
-        > Ez a mód meghiúsul, ha az Azure Multi-Factor Authentication szükséges a fiókhoz. Ebben az esetben használja az előző két hitelesítési mód egyikét, vagy használjon egy másik fiókot, amely nem igényel MFA-t.
+        > Ez a mód meghiúsul, ha az Azure AD-Multi-Factor Authentication a fiókja számára szükséges. Ebben az esetben használja az előző két hitelesítési mód egyikét, vagy használjon egy másik fiókot, amely nem igényel MFA-t.
         >
         > Azt is megteheti, hogy az MFA szükséges, ha az Azure-eszköz regisztrációja (amelyet az Azure AD jelszavas védelem keretében használ) úgy van konfigurálva, hogy globálisan megkövetelje az MFA-t. Ennek a követelménynek a megkerülő megoldásához használhat egy másik fiókot, amely támogatja az MFA-t az előző két hitelesítési mód egyikével, vagy átmenetileg kihasználhatja az Azure-eszköz regisztrációjának MFA-követelményét is.
         >
@@ -252,7 +252,7 @@ Az Azure AD jelszavas védelem proxy szolgáltatásának telepítéséhez hajtsa
     
     Ez a lépés erdőn keresztül egyszer fut.
 
-    A `Register-AzureADPasswordProtectionForest` parancsmag a következő három hitelesítési módot támogatja. Az első két mód támogatja az Azure Multi-Factor Authentication-t, de a harmadik mód nem.
+    A `Register-AzureADPasswordProtectionForest` parancsmag a következő három hitelesítési módot támogatja. Az első két mód támogatja az Azure AD Multi-Factor Authentication, de a harmadik mód nem.
 
     > [!TIP]
     > Előfordulhat, hogy egy adott Azure-bérlő esetében a parancsmag első futtatásakor észrevehető késleltetési idő van. Ha nem jelent hibát, ne aggódjon ez a késés.
@@ -282,7 +282,7 @@ Az Azure AD jelszavas védelem proxy szolgáltatásának telepítéséhez hajtsa
         ```
 
         > [!NOTE]
-        > Ez a mód meghiúsul, ha az Azure Multi-Factor Authentication szükséges a fiókhoz. Ebben az esetben használja az előző két hitelesítési mód egyikét, vagy használjon egy másik fiókot, amely nem igényel MFA-t.
+        > Ez a mód meghiúsul, ha az Azure AD-Multi-Factor Authentication a fiókja számára szükséges. Ebben az esetben használja az előző két hitelesítési mód egyikét, vagy használjon egy másik fiókot, amely nem igényel MFA-t.
         >
         > Azt is megteheti, hogy az MFA szükséges, ha az Azure-eszköz regisztrációja (amelyet az Azure AD jelszavas védelem keretében használ) úgy van konfigurálva, hogy globálisan megkövetelje az MFA-t. Ennek a követelménynek a megkerülő megoldásához használhat egy másik fiókot, amely támogatja az MFA-t az előző két hitelesítési mód egyikével, vagy átmenetileg kihasználhatja az Azure-eszköz regisztrációjának MFA-követelményét is.
         >

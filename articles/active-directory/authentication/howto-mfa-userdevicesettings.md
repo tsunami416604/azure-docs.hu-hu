@@ -1,6 +1,6 @@
 ---
-title: Az Azure Multi-Factor Authentication-Azure Active Directory hitelesítési módszereinek kezelése
-description: Ismerje meg, hogyan konfigurálhatja Azure Active Directory Azure-beli felhasználói beállításait Multi-Factor Authentication
+title: Az Azure AD Multi-Factor Authentication-Azure Active Directory hitelesítési módszereinek kezelése
+description: Ismerje meg, hogyan konfigurálhatja Azure Active Directory Azure AD-beli felhasználói beállításait Multi-Factor Authentication
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6309ef6793858051ceaf3c3b33edb9f830b26710
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 1117b5194dae92a8025594ed71fc629670d875cf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378045"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838927"
 ---
-# <a name="manage-user-authentication-methods-for-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication felhasználói hitelesítési módszereinek kezelése
+# <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>Az Azure AD-Multi-Factor Authentication felhasználói hitelesítési módszereinek kezelése
 
 Az Azure AD-felhasználók a kapcsolattartási adatok két különböző készletével rendelkeznek:  
 
 - Nyilvános profil elérhetőségi adatai, amelyek a felhasználói profilban kezelhetők, és a szervezet tagjai számára láthatók. A helyszíni Active Directoryról szinkronizált felhasználók esetében ezeket az információkat a helyszíni Windows Server Active Directory tartományi szolgáltatások kezeli.
 - A hitelesítési módszereket, amelyek mindig magánjellegűek, és csak hitelesítésre használják, beleértve a többtényezős hitelesítést (MFA). A rendszergazdák kezelhetik ezeket a metódusokat a felhasználó hitelesítési módszer paneljén, és a felhasználók a MyAccount biztonsági adatok lapján kezelhetik a módszereiket.
 
-Az Azure Multi-Factor Authentication módszereinek a felhasználókhoz való kezelésekor a hitelesítési rendszergazdák a következőket tehetik: 
+Az Azure AD-Multi-Factor Authentication módszereinek a felhasználókhoz való kezelésekor a hitelesítési rendszergazdák a következőket tehetik: 
 
 1. Hitelesítési módszerek hozzáadása egy adott felhasználóhoz, beleértve az MFA-hoz használt telefonszámokat is.
 1. A felhasználó jelszavának alaphelyzetbe állítása.
@@ -49,7 +49,7 @@ Hitelesítési módszerek hozzáadása felhasználóhoz a Azure Portal használa
 1. Válassza ki azt a felhasználót, akivel hozzá szeretné adni a hitelesítési módszert, és válassza a **hitelesítési módszerek** lehetőséget.  
 1. Az ablak tetején válassza a **+ hitelesítési módszer hozzáadása** elemet.
    1. Válasszon egy metódust (telefonszám vagy e-mail-cím). Az e-mailek az önjelszó visszaállítására használhatók, de a hitelesítés nem lehetséges. Telefonszám hozzáadásakor válasszon egy telefonszámot, és adja meg a telefonszámot érvényes formátumban (például + 1 4255551234).
-   1. Válassza a **Hozzáadás** lehetőséget.
+   1. Válassza a **Hozzáadás** elemet.
 
 > [!NOTE]
 > Az előzetes verzió használata lehetővé teszi a rendszergazdák számára, hogy a felhasználók számára elérhető hitelesítési módszereket adjanak hozzá, míg az eredeti felület csak a telefonos és a másodlagos telefonos módszerek frissítését teszi lehetővé.
@@ -112,10 +112,10 @@ A felhasználók alkalmazási jelszavának törléséhez hajtsa végre a követk
 1. Válassza a **Multi-Factor Authentication** lehetőséget. Előfordulhat, hogy a menüpontra kell görgetni a jobb oldalon. Válassza az alábbi képernyőképet a teljes Azure Portal ablak és a menü helyének megtekintéséhez: [ ![ válassza a multi-Factor Authentication lehetőséget az Azure ad felhasználók ablakában.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Jelölje be a felügyelni kívánt felhasználó vagy felhasználók melletti jelölőnégyzetet. A jobb oldalon megjelenik a gyors lépésre vonatkozó beállítások listája.
 1. Válassza a **felhasználói beállítások kezelése** lehetőséget, majd jelölje be a **kijelölt felhasználók által létrehozott összes meglévő alkalmazás jelszavának törlése** jelölőnégyzetet az alábbi példában látható módon: az ![ összes meglévő alkalmazás jelszavának törlése](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
-1. Válassza a **Mentés** , majd a **Bezárás** lehetőséget.
+1. Válassza a **Mentés**, majd a **Bezárás** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk az egyéni felhasználói beállítások konfigurálását mutatja be. Az Azure Multi-Factor Authentication szolgáltatás általános beállításainak konfigurálásával kapcsolatban lásd: az [azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md).
+Ez a cikk az egyéni felhasználói beállítások konfigurálását mutatja be. Az Azure AD Multi-Factor Authentication szolgáltatási beállításainak általános konfigurálását az [Azure ad multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md)című témakörben tekintheti meg.
 
-Ha a felhasználóknak segítségre van szüksége, tekintse meg az [Azure multi-Factor Authentication felhasználói útmutatóját](../user-help/multi-factor-authentication-end-user-first-time.md).
+Ha a felhasználóknak segítségre van szüksége, tekintse meg az [Azure AD multi-Factor Authentication felhasználói útmutatóját](../user-help/multi-factor-authentication-end-user-first-time.md).

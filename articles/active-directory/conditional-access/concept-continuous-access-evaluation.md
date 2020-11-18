@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ca23c1503b01c1aa9523edc2576599d7b6ab458
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: daa3f3b1687b01005f32cbd2665c84b933c993b8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992806"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837617"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -127,7 +127,7 @@ A következő példában egy feltételes hozzáférési rendszergazda konfigurá
 
 1. Jelentkezzen be a **Azure Portalba** feltételes hozzáférési rendszergazdaként, biztonsági rendszergazdaként vagy globális rendszergazdaként
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **folyamatos hozzáférés kiértékelését**.
-1. Válassza az **előnézet engedélyezése**lehetőséget.
+1. Válassza az **előnézet engedélyezése** lehetőséget.
 
 Ezen a lapon korlátozhatja az előzetes verzióra érvényes felhasználókat és csoportokat.
 
@@ -140,7 +140,7 @@ Ezen a lapon korlátozhatja az előzetes verzióra érvényes felhasználókat �
 A CAE esetében csak az elnevezett IP-alapú, névvel ellátott helyszínekre vonatkozó betekintések találhatók meg. Nem találunk betekintést más helyekre, például [MFA megbízható IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) -címekre vagy ország alapú helyekre. Ha a felhasználó olyan MFA megbízható IP-címről vagy megbízható helyről származik, amely MFA-beli megbízható IP-címeket vagy ország helyét tartalmaz, a CAE nem lesz kikényszerítve, miután a felhasználó áthelyezte a másik helyre. Ezekben az esetekben az azonnali IP-kényszerítési ellenőrzés nélkül adunk ki egy 1 órás CAE-tokent.
 
 > [!IMPORTANT]
-> Ha a helyeket a folyamatos hozzáférés kiértékeléséhez konfigurálja, csak az [IP-alapú feltételes hozzáférési hely feltételét](../conditional-access/location-condition.md#preview-features) használja, és konfigurálja az összes olyan IP-címet, **beleértve az IPv4 és az IPv6**protokollt is, amelyeket az identitás-szolgáltató és az erőforrás-szolgáltató is láthat. Ne használja az Azure Multi-Factor Authentication Service Settings lapon elérhető országbeli elhelyezési feltételeket vagy a megbízható IP-címek funkciót.
+> Ha a helyeket a folyamatos hozzáférés kiértékeléséhez konfigurálja, csak az [IP-alapú feltételes hozzáférési hely feltételét](../conditional-access/location-condition.md#preview-features) használja, és konfigurálja az összes olyan IP-címet, **beleértve az IPv4 és az IPv6** protokollt is, amelyeket az identitás-szolgáltató és az erőforrás-szolgáltató is láthat. Ne használjon az Azure AD Multi-Factor Authentication Szolgáltatásbeállítások lapján elérhető országbeli elhelyezési feltételeket vagy a megbízható IP-címek funkciót.
 
 ### <a name="ip-address-configuration"></a>IP-címkonfiguráció
 

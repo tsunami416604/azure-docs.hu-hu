@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3781a87bde283de3b798f840274db1dd5ea3ac7e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9c1b07534c702e509b2b664fbee585aa2cff69f6
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366496"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837600"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Használati feltételek Azure Active Directory
 
@@ -41,7 +41,7 @@ Az Azure AD használati feltételei a következő képességekkel rendelkeznek:
 - Az alkalmazottak vagy a vendégek elfogadják a használati feltételeket a hozzáférés megkezdése előtt.
 - Az alkalmazottak vagy a vendégek számára a használati feltételek elfogadásának megkövetelése minden eszközön a hozzáférés megkezdése előtt.
 - A használati feltételek elfogadásának megkövetelése az alkalmazottak vagy a vendégek számára ismétlődő ütemterv szerint.
-- Az Azure Multi-Factor Authentication (MFA) biztonsági adatainak regisztrálása előtt az alkalmazottak vagy a vendégek elfogadják a használati feltételeket.
+- Az Azure AD Multi-Factor Authentication (MFA) biztonsági információinak regisztrálása előtt az alkalmazottaknak vagy a vendégeknek el kell fogadniuk az Ön használati feltételeit.
 - Az Azure AD önkiszolgáló jelszó-visszaállítás (SSPR) biztonsági adatainak regisztrálása előtt a használati feltételek elfogadásának megkövetelése az alkalmazottaktól.
 - A szervezet összes felhasználójának általános használati feltételeit mutatjuk be.
 - A használati feltételek egy felhasználói attribútum alapján jelennek meg (pl.: orvosok kontra nővérek, belföldi kontra nemzetközi alkalmazottak [dinamikus csoportjai](../enterprise-users/groups-dynamic-membership.md)).
@@ -82,22 +82,22 @@ Ha véglegesítette a használati feltételeket tartalmazó dokumentumot, a köv
 
 1. A **név** mezőben adja meg a használati feltételek nevét, amelyet a rendszer a Azure Portal fog használni.
 1. A **megjelenítendő név** mezőbe írja be azt a címet, amelyet a felhasználók a bejelentkezéskor látnak.
-1. **Használati feltételek dokumentum**esetén keresse meg a véglegesített használati feltételeket tartalmazó PDF-fájlt, és válassza ki.
+1. **Használati feltételek dokumentum** esetén keresse meg a véglegesített használati feltételeket tartalmazó PDF-fájlt, és válassza ki.
 1. Válassza ki a használati feltételek dokumentumának nyelvét. A nyelvi beállítás lehetővé teszi, hogy több használati feltételt töltsön fel, különböző nyelveken. A használati feltételek végfelhasználó által látott verziója a böngésző beállításaitól függ.
 1. Ha szeretné megkövetelni, hogy a végfelhasználók megtekintsék a használati feltételeket az elfogadásuk előtt, állítsa be **a felhasználók számára a használati feltételek kibontását** **a következőre:.**
-1. Ha meg szeretné követelni, hogy a végfelhasználók elfogadják a használati feltételeit minden olyan eszközön, amelyről hozzáférnek, állítsa be a **felhasználókat, hogy minden eszközön** **a**be legyenek kapcsolva. Ha ez a beállítás engedélyezve van, a felhasználóknak szükségük lehet további alkalmazások telepítésére. További információ: [eszközönkénti használati feltételek](#per-device-terms-of-use).
-1. Ha a használati feltételek érvényességét egy adott időpontban kívánja lejárni, állítsa **le** **a**következőt:. Ha be értékre van állítva, két további ütemezett beállítás jelenik meg.
+1. Ha meg szeretné követelni, hogy a végfelhasználók elfogadják a használati feltételeit minden olyan eszközön, amelyről hozzáférnek, állítsa be a **felhasználókat, hogy minden eszközön** **a** be legyenek kapcsolva. Ha ez a beállítás engedélyezve van, a felhasználóknak szükségük lehet további alkalmazások telepítésére. További információ: [eszközönkénti használati feltételek](#per-device-terms-of-use).
+1. Ha a használati feltételek érvényességét egy adott időpontban kívánja lejárni, állítsa **le** **a** következőt:. Ha be értékre van állítva, két további ütemezett beállítás jelenik meg.
 
    ![Visszalépési beleegyezési beállítások a kezdő dátum, a gyakoriság és az időtartam beállításához](./media/terms-of-use/expire-consents.png)
 
 1. A **lejárati kezdési** és a **gyakorisági** beállításokkal megadhatja a használati feltételek lejáratának ütemtervét. A következő táblázat az eredményeket mutatja be néhány példa:
 
-   | Lejárat kezdete | Frequency | Eredmény |
+   | Lejárat kezdete | Gyakoriság | Eredmény |
    | --- | --- | --- |
-   | Mai dátum  | Havi | A mai naptól kezdve a felhasználóknak el kell fogadniuk a használati feltételeket, majd minden hónapban újra el kell fogadniuk azokat. |
-   | Jövőbeli dátum  | Havi | A mai naptól kezdve a felhasználóknak el kell fogadniuk a használati feltételeket. A jövőbeli dátum esetén a beleegyezések lejárnak, majd minden hónapban újra el kell fogadniuk a felhasználókat.  |
+   | Mai dátum  | Havonta | A mai naptól kezdve a felhasználóknak el kell fogadniuk a használati feltételeket, majd minden hónapban újra el kell fogadniuk azokat. |
+   | Jövőbeli dátum  | Havonta | A mai naptól kezdve a felhasználóknak el kell fogadniuk a használati feltételeket. A jövőbeli dátum esetén a beleegyezések lejárnak, majd minden hónapban újra el kell fogadniuk a felhasználókat.  |
 
-   Ha például úgy állítja be a lejárat napját, hogy az **1** . és a **havi**gyakorisága is megtörténjen, Itt láthatja, hogyan fordulhat elő lejárat két felhasználó esetében:
+   Ha például úgy állítja be a lejárat napját, hogy az **1** . és a **havi** gyakorisága is megtörténjen, Itt láthatja, hogyan fordulhat elő lejárat két felhasználó esetében:
 
    | Felhasználó | Első elfogadás dátuma | Első lejárat dátuma | Második lejárati dátum | Harmadik lejárat dátuma |
    | --- | --- | --- | --- | --- |
@@ -113,7 +113,7 @@ Ha véglegesítette a használati feltételeket tartalmazó dokumentumot, a köv
 
    Az **újbóli elfogadás előtt** a **lejárati** jóváhagyások és az időtartam is használható, de általában az egyiket vagy a másikat kell használnia.
 
-1. A **feltételes hozzáférés**területen a **kikényszerítés feltételes hozzáférési házirend sablonnal** listával válassza ki a sablont a használati feltételek érvénybe léptetéséhez.
+1. A **feltételes hozzáférés** területen a **kikényszerítés feltételes hozzáférési házirend sablonnal** listával válassza ki a sablont a használati feltételek érvénybe léptetéséhez.
 
    ![Egy házirend-sablon kiválasztására szolgáló feltételes hozzáférés legördülő lista](./media/terms-of-use/conditional-access-templates.png)
 
@@ -161,7 +161,7 @@ A használati feltételek panel megjeleníti a feltételeket elfogadó, illetve 
 
 ## <a name="view-azure-ad-audit-logs"></a>Azure AD-naplók megtekintése
 
-Ha további tevékenységet szeretne megtekinteni, az Azure AD használati feltételei naplózási naplókat is tartalmaznak. Minden felhasználó beleegyezik, hogy a naplókban **30 napig**tárolt eseményt indít el. Ezeket a naplókat megtekintheti a portálon, vagy letöltheti egy .csv fájlban.
+Ha további tevékenységet szeretne megtekinteni, az Azure AD használati feltételei naplózási naplókat is tartalmaznak. Minden felhasználó beleegyezik, hogy a naplókban **30 napig** tárolt eseményt indít el. Ezeket a naplókat megtekintheti a portálon, vagy letöltheti egy .csv fájlban.
 
 Az Azure AD-naplók használatának megkezdéséhez kövesse az alábbi eljárást:
 
@@ -202,7 +202,7 @@ A felhasználóknak csak egyszer kell elfogadniuk a használati feltételeket, �
 A felhasználók a következő eljárással tekinthetik meg és tekinthetik meg az általuk elfogadott használati feltételeket.
 
 1. Jelentkezzen be itt: [https://myapps.microsoft.com](https://myapps.microsoft.com).
-1. A jobb felső sarokban kattintson a nevére, és válassza a **profil**lehetőséget.
+1. A jobb felső sarokban kattintson a nevére, és válassza a **profil** lehetőséget.
 
    ![MyApps-hely megnyitása a felhasználó ablaktábláján](./media/terms-of-use/tou14.png)
 
@@ -218,7 +218,7 @@ Szerkesztheti a használati feltételek részleteit, de nem módosíthatja a meg
 
 1. Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a [https://aka.ms/catou](https://aka.ms/catou) címen.
 1. Válassza ki a szerkeszteni kívánt használati feltételeket.
-1. Kattintson a **feltételek szerkesztése**elemre.
+1. Kattintson a **feltételek szerkesztése** elemre.
 1. A használati feltételek szerkesztése panelen módosítsa a nevet, a megjelenítendő nevet, vagy a felhasználókat az értékek kibontásához.
 
    Ha más beállításokat szeretne módosítani, például a PDF-dokumentumot, a felhasználóknak minden eszközhöz meg kell egyezniük, le kell kötnie az elfogadást, az időtartamot az újbóli elfogadás előtt vagy a feltételes hozzáférési szabályzatot, új használati feltételeket kell létrehoznia.
@@ -239,7 +239,7 @@ Az alábbi eljárás a használati feltételek nyelvének hozzáadását ismerte
 
    ![Használati feltételek kiválasztva és a részletek ablaktábla nyelvek lapjának megjelenítése](./media/terms-of-use/languages-tou.png)
 
-1. Kattintson a **nyelv hozzáadása**lehetőségre.
+1. Kattintson a **nyelv hozzáadása** lehetőségre.
 1. A használati feltételek hozzáadása panelen töltse fel a honosított PDF-fájlt, és válassza ki a nyelvet.
 
    ![Használati feltételek nyelvi paneljének hozzáadása a honosított PDF-fájlok feltöltésének lehetőségeivel](./media/terms-of-use/language-add-tou.png)
@@ -348,7 +348,7 @@ Beállíthat egy feltételes hozzáférési szabályzatot a Microsoft Intune bel
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 **K: Hogyan, hogy mikor/ha a felhasználó elfogadta a használati feltételeket?**<br />
-A: a Használati feltételek panelen kattintson az **elfogadva**értékre. Az Accept (elfogadás) tevékenységet az Azure AD-naplókon is megtekintheti vagy keresheti. További információ: a jelentés megtekintése, aki elfogadta és elutasította az [Azure ad-naplókat, és megtekintheti](#view-azure-ad-audit-logs)azokat.
+A: a Használati feltételek panelen kattintson az **elfogadva** értékre. Az Accept (elfogadás) tevékenységet az Azure AD-naplókon is megtekintheti vagy keresheti. További információ: a jelentés megtekintése, aki elfogadta és elutasította az [Azure ad-naplókat, és megtekintheti](#view-azure-ad-audit-logs)azokat.
 
 **K: Mennyi ideig tárolódnak az információk?**<br />
 A: a felhasználó a használati feltételekben foglalt, és a használati feltételek életében elfogadásra váró/visszautasított adatmennyiséget tárolja. Az Azure AD-naplókat 30 napig tároljuk.

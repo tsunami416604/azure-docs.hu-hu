@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d33721a70f0a9d4cfb26516d2f252424cc924f8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 6deb0c005b5ed7daf5b30bea8a65ee70d8b460c5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503810"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837464"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenetek kezelésének konfigurálása feltételes hozzáféréssel
 
@@ -90,7 +90,7 @@ A feltételes hozzáférés prémium szintű Azure AD képesség, és prémium s
 > [!WARNING]
 > Ha a [konfigurálható jogkivonat élettartama](../develop/active-directory-configurable-token-lifetimes.md) funkciót jelenleg nyilvános előzetes verzióban használja, vegye figyelembe, hogy nem támogatott két különböző szabályzat létrehozása ugyanahhoz a felhasználóhoz vagy alkalmazás-kombinációhoz: egyet ezzel a szolgáltatással, és egy másik, konfigurálható jogkivonat-élettartam funkciót. A Microsoft azt tervezi, hogy a hitelesítő jogkivonat élettartama funkciót a frissítés és a munkamenet-jogkivonat élettartama tekintetében kivonja a 2021. január 30-án, majd lecseréli a feltételes hozzáférés hitelesítési munkamenet-kezelési funkciójával.  
 >
-> A bejelentkezési gyakoriság engedélyezése előtt győződjön meg arról, hogy az egyéb újrahitelesítési beállítások le vannak tiltva a bérlőben. Ha a "Remember MFA on Trusted Devices" beállítás engedélyezve van, a bejelentkezési gyakoriság használata előtt tiltsa le a szolgáltatást, mivel a két beállítás együttes használata váratlanul kéri a felhasználókat. Ha többet szeretne megtudni az újrahitelesítéssel kapcsolatos kérésekről és a munkamenetek élettartamáról, tekintse meg az [újrahitelesítéssel kapcsolatos tudnivalókat és az Azure-multi-Factor Authentication munkamenet-élettartamának megismerését](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)ismertető cikket.
+> A bejelentkezési gyakoriság engedélyezése előtt győződjön meg arról, hogy az egyéb újrahitelesítési beállítások le vannak tiltva a bérlőben. Ha a "Remember MFA on Trusted Devices" beállítás engedélyezve van, a bejelentkezési gyakoriság használata előtt tiltsa le a szolgáltatást, mivel a két beállítás együttes használata váratlanul kéri a felhasználókat. Ha többet szeretne megtudni az újrahitelesítéssel kapcsolatos kérésekről és a munkamenetek élettartamáról, tekintse meg az [újrahitelesítéssel kapcsolatos tudnivalókat és az Azure AD multi-Factor Authentication munkamenet-élettartamának megismerését](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)ismertető cikket.
 
 ### <a name="policy-1-sign-in-frequency-control"></a>1. szabályzat: a bejelentkezés gyakoriságának szabályozása
 

@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01751caba2b14f899588deba083a8c59c41d13ba
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 92ac495381f63e01d64c9a3d02777dca37ebb343
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964009"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837991"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Mi az Azure Active Directory hitelesítés?
 
 Az Identity platform egyik fő funkciója a hitelesítő adatok ellenőrzése vagy *hitelesítése*, amikor a felhasználó bejelentkezik egy eszközre, alkalmazásba vagy szolgáltatásba. Azure Active Directory (Azure AD) esetében a hitelesítés több, mint a Felhasználónév és a jelszó ellenőrzése. Az Azure AD-hitelesítés a következő összetevőket tartalmazza, így javíthatja a biztonságot, és csökkentheti az ügyfélszolgálati segítség szükségességét:
 
 * Új jelszó önkiszolgáló kérése
-* Azure Multi-Factor Authentication
+* Azure AD-Multi-Factor Authentication
 * Hibrid integráció a jelszó-változtatások helyi környezetbe való visszaírásához
 * Hibrid integráció egy helyi környezet jelszavas védelmi házirendjeinek betartatásához
 * Jelszó nélküli hitelesítés
@@ -32,7 +32,7 @@ Az Identity platform egyik fő funkciója a hitelesítő adatok ellenőrzése va
 
 Az Azure AD segítségével megvédheti a felhasználók identitását, és egyszerűsítheti a bejelentkezési élményt. Az önkiszolgáló jelszó-visszaállításhoz hasonló funkciók lehetővé teszik a felhasználók számára, hogy bármely eszközről webböngészővel frissítsenek vagy módosítsák a jelszavukat. Ez a funkció különösen akkor hasznos, ha a felhasználó elfelejtette a jelszavát, vagy a fiókja zárolva van. Anélkül, hogy az ügyfélszolgálatnak vagy a rendszergazdának támogatást kellene nyújtania, a felhasználók letilthatják magukat, és folytatják a munkát.
 
-Az Azure Multi-Factor Authentication lehetővé teszi a felhasználók számára, hogy a bejelentkezés során további hitelesítési formát válasszák, például telefonhívást vagy Mobile apps-értesítést. Ez a képesség csökkenti a másodlagos hitelesítés (például a hardver jogkivonata) egyetlen, rögzített formáját. Ha a felhasználó jelenleg nem rendelkezik egy további hitelesítéssel, választhat másik módszert, és folytathatja a munkát.
+Az Azure AD Multi-Factor Authentication lehetővé teszi a felhasználók számára, hogy a bejelentkezés során további hitelesítési formát válasszák, például telefonhívást vagy Mobile apps-értesítést. Ez a képesség csökkenti a másodlagos hitelesítés (például a hardver jogkivonata) egyetlen, rögzített formáját. Ha a felhasználó jelenleg nem rendelkezik egy további hitelesítéssel, választhat másik módszert, és folytathatja a munkát.
 
 ![A bejelentkezési képernyőn használt hitelesítési módszerek](media/concept-authentication-methods/overview-login.png)
 
@@ -50,7 +50,7 @@ Az önkiszolgáló jelszó-visszaállítás a következő esetekben működik:
 
 Amikor egy felhasználó az önkiszolgáló jelszó-visszaállítási szolgáltatással frissíti vagy visszaállítja a jelszavát, a jelszó a helyszíni Active Directory környezetbe is visszaírható. A jelszó visszaírási gondoskodik arról, hogy a felhasználók azonnal használhassák a frissített hitelesítő adataikat a helyszíni eszközök és alkalmazások segítségével.
 
-## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+## <a name="azure-ad-multi-factor-authentication"></a>Azure AD-Multi-Factor Authentication
 
 A többtényezős hitelesítés egy olyan folyamat, amelyben a rendszer a bejelentkezési folyamat során felkéri a felhasználót egy másodlagos azonosításra, például hogy adjon meg egy kódot a mobiltelefonján, vagy végezzen ujjlenyomat-vizsgálatot.
 
@@ -58,13 +58,13 @@ Ha csak jelszó használatával hitelesíti a felhasználót, a támadás nem bi
 
 ![A multi-Factor Authentication különböző formáinak fogalmi képe](./media/concept-mfa-howitworks/methods.png)
 
-Az Azure Multi-Factor Authentication úgy működik, hogy a következő hitelesítési módszerek közül kettő vagy több használatát igényli:
+Az Azure AD Multi-Factor Authentication úgy működik, hogy a következő hitelesítési módszerek közül kettőt vagy többet igényel:
 
 * Amit ismer, általában egy jelszó.
 * Valami, például egy nem könnyen duplikált megbízható eszköz, például telefon vagy hardver kulcsa.
 * A biometrikus adatok például ujjlenyomatok vagy Arcfelismerés.
 
-A felhasználók az önkiszolgáló jelszó-visszaállításhoz és az Azure Multi-Factor Authenticationhoz is regisztrálhatnak, így egyszerűbbé válik a beléptetési élmény. A rendszergazdák meghatározhatják, hogy milyen típusú másodlagos hitelesítést lehet használni. Az Azure Multi-Factor Authentication akkor is megkövetelhető, ha a felhasználók önkiszolgáló jelszó-visszaállítást végeznek a folyamat további biztonságosabbá tételéhez.
+A felhasználók az önkiszolgáló jelszó-visszaállítási és az Azure AD-Multi-Factor Authentication is regisztrálhatják, hogy leegyszerűsítsék a helyszíni élményt. A rendszergazdák meghatározhatják, hogy milyen típusú másodlagos hitelesítést lehet használni. Az Azure AD Multi-Factor Authentication akkor is megkövetelhető, ha a felhasználók önkiszolgáló jelszó-visszaállítást végeznek a folyamat további biztonságosabbá tételéhez.
 
 ## <a name="password-protection"></a>Jelszavas védelem
 
@@ -76,7 +76,7 @@ A hibrid biztonság érdekében a helyi Active Directory környezettel integrál
 
 ## <a name="passwordless-authentication"></a>Jelszó nélküli hitelesítés
 
-Számos környezet esetében a cél a jelszavak használatának megszüntetése a bejelentkezési események részeként. A szolgáltatások, például az Azure Password Protection vagy az Azure Multi-Factor Authentication segítenek a biztonság javításában, de a Felhasználónév és a jelszó a hitelesítés gyenge formája marad, amely megtámadható vagy találgatásos támadásokat okozhat.
+Számos környezet esetében a cél a jelszavak használatának megszüntetése a bejelentkezési események részeként. A szolgáltatások, például az Azure Password Protection vagy az Azure AD Multi-Factor Authentication segítenek a biztonság javításában, de a Felhasználónév és a jelszó a hitelesítés gyenge formája marad, amely megtámadható vagy találgatásos lehet.
 
 ![Biztonság és kényelem a jelszóval nem rendelkező hitelesítési folyamattal](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
@@ -86,11 +86,11 @@ Az Azure AD lehetővé teszi, hogy natív módon hitelesítse a jelszavak nélk�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Első lépésként tekintse meg az önkiszolgáló [jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure multi-Factor Authentication][tutorial-azure-mfa]című oktatóanyagot.
+Az első lépésekhez tekintse meg az [önkiszolgáló jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure ad multi-Factor Authentication][tutorial-azure-mfa]oktatóanyagát.
 
 Az önkiszolgáló jelszó-visszaállítási fogalmakkal kapcsolatos további tudnivalókért tekintse meg az [Azure ad önkiszolgáló jelszó-visszaállítás működéséről][concept-sspr]szóló témakört.
 
-A többtényezős hitelesítési fogalmakkal kapcsolatos további tudnivalókért tekintse meg az [Azure multi-Factor Authentication működését][concept-mfa]ismertető témakört.
+Ha többet szeretne megtudni a többtényezős hitelesítési fogalmakról, tekintse meg az [Azure AD multi-Factor Authentication működését][concept-mfa]ismertető témakört.
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91cb1a0819902d2dfa27718ccfe39b175959a16c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 03a5f355263b80ef2e5e1c829877dc96ca55787a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963839"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837889"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Oktatóanyag: egyéni tiltott jelszavak konfigurálása Azure Active Directory jelszavas védelemhez
 
@@ -66,8 +66,8 @@ Ha engedélyezni szeretné az egyéni tiltott jelszavak listáját, és hozzá s
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) *globális rendszergazdai* jogosultságokkal rendelkező fiókkal.
 1. Keresse meg és válassza ki a **Azure Active Directory**, majd a bal oldali menüben válassza a **Biztonság** elemet.
-1. A **kezelés** menü fejlécében válassza a **hitelesítési módszerek**, majd a **jelszavas védelem**lehetőséget.
-1. Állítsa be az **Egyéni lista kikényszerítés** beállítását *Igen*értékre.
+1. A **kezelés** menü fejlécében válassza a **hitelesítési módszerek**, majd a **jelszavas védelem** lehetőséget.
+1. Állítsa be az **Egyéni lista kikényszerítés** beállítását *Igen* értékre.
 1. Karakterláncokat adhat hozzá az **Egyéni tiltott jelszavak listájához**, soronként egy karakterláncot. A következő megfontolások és korlátozások érvényesek az egyéni tiltott jelszavak listájára:
 
     * Az egyéni tiltott jelszavak listája akár 1000 kifejezést is tartalmazhat.
@@ -79,8 +79,8 @@ Ha engedélyezni szeretné az egyéni tiltott jelszavak listáját, és hozzá s
 
     [![Módosítsa az egyéni tiltott jelszavak listáját a hitelesítési módszerek területen a Azure Portal ](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png)](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
 
-1. Hagyja **meg a Windows Serveren a jelszavas védelem engedélyezése beállítást Active Directory** a *nem*értékre.
-1. Az egyéni tiltott jelszavak és a bejegyzések engedélyezéséhez válassza a **Mentés**lehetőséget.
+1. Hagyja **meg a Windows Serveren a jelszavas védelem engedélyezése beállítást Active Directory** a *nem* értékre.
+1. Az egyéni tiltott jelszavak és a bejegyzések engedélyezéséhez válassza a **Mentés** lehetőséget.
 
 A rendszer az egyéni tiltott jelszavak listájának frissítéséhez több órát is igénybe vehet.
 
@@ -98,21 +98,21 @@ Ha szeretné megtekinteni az egyéni tiltott jelszavak listáját a műveletben,
 
     ![Profil kiválasztása](media/tutorial-configure-custom-password-protection/myapps-profile.png)
 
-1. A **profil** lapon válassza a **jelszó módosítása**lehetőséget.
-1. A **jelszó módosítása** lapon adja meg a meglévő (régi) jelszót. Adjon meg és erősítsen meg egy új jelszót, amely az előző szakaszban meghatározott egyéni tiltott jelszavak listáján szerepel, majd válassza a **Küldés**lehetőséget.
+1. A **profil** lapon válassza a **jelszó módosítása** lehetőséget.
+1. A **jelszó módosítása** lapon adja meg a meglévő (régi) jelszót. Adjon meg és erősítsen meg egy új jelszót, amely az előző szakaszban meghatározott egyéni tiltott jelszavak listáján szerepel, majd válassza a **Küldés** lehetőséget.
 1. A rendszer hibaüzenetet küld, amely azt jelzi, hogy a rendszergazda letiltotta a jelszót, ahogy az az alábbi példában is látható:
 
     ![Hibaüzenet jelenik meg, ha olyan jelszót próbál használni, amely az egyéni tiltott jelszavak listáján szerepel](media/tutorial-configure-custom-password-protection/password-change-error.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nem szeretné használni az oktatóanyag részeként konfigurált egyéni tiltott jelszavak listáját, hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keresse meg és válassza ki a **Azure Active Directory**, majd a bal oldali menüben válassza a **Biztonság** elemet.
-1. A **kezelés** menü fejlécében válassza a **hitelesítési módszerek**, majd a **jelszavas védelem**lehetőséget.
-1. Állítsa be az **Egyéni lista érvényesítésének** lehetőségét a *nem*értékre.
-1. Az egyéni tiltott jelszó konfigurációjának frissítéséhez válassza a **Mentés**lehetőséget.
+1. A **kezelés** menü fejlécében válassza a **hitelesítési módszerek**, majd a **jelszavas védelem** lehetőséget.
+1. Állítsa be az **Egyéni lista érvényesítésének** lehetőségét a *nem* értékre.
+1. Az egyéni tiltott jelszó konfigurációjának frissítéséhez válassza a **Mentés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -124,4 +124,4 @@ Ebben az oktatóanyagban engedélyezte és konfigurálta az egyéni jelszavas v�
 > * Jelszó-módosítások tesztelése tiltott jelszóval
 
 > [!div class="nextstepaction"]
-> [A kockázatalapú Azure Multi-Factor Authentication engedélyezése](./tutorial-enable-azure-mfa.md)
+> [Kockázatalapú Azure AD-Multi-Factor Authentication engedélyezése](./tutorial-enable-azure-mfa.md)

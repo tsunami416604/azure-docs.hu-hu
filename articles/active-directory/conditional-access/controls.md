@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f83d232874a7702598b6ea5fdd458c101e7e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7585c91e42b2d3591532756c1ead9ea60b7035e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266578"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837583"
 ---
 # <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
 
@@ -35,7 +35,7 @@ Az egyéni vezérlő létrehozásának lehetősége a **feltételes hozzáféré
 
 ![Egyéni vezérlők felülete feltételes hozzáféréssel](./media/controls/custom-controls-conditional-access.png)
 
-Az **új egyéni vezérlő**elemre kattintva megnyílik egy panel, amely a vezérlőelem JSON-adataihoz tartozó szövegmezővel rendelkezik.  
+Az **új egyéni vezérlő** elemre kattintva megnyílik egy panel, amely a vezérlőelem JSON-adataihoz tartozó szövegmezővel rendelkezik.  
 
 ![Új egyéni vezérlő](./media/controls/new-custom-controls-conditional-access.png)
 
@@ -53,7 +53,7 @@ Egyéni vezérlő szerkesztéséhez törölnie kell a jelenlegi vezérlőt, és 
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 
-Egyéni vezérlők nem használhatók az Identity Protection automatizálásához, amely megköveteli az Azure Multi-Factor Authentication, az Azure AD önkiszolgáló jelszó-visszaállítását (SSPR), a többtényezős hitelesítési jogcím követelményeit, a szerepköröket a Privileged Identity Managerben (PIM), az Intune-eszközök regisztrálásának részeként, illetve az eszközök Azure AD-be való csatlakoztatásakor.
+Egyéni vezérlők nem használhatók az Identity Protection automatizálásához, amely megköveteli az Azure AD Multi-Factor Authentication, az Azure AD önkiszolgáló jelszó-visszaállítást (SSPR), a többtényezős hitelesítési jogcím követelményeit, a szerepköröket a Privileged Identity Managerben (PIM), az Intune-eszközök regisztrálásának részeként, illetve az eszközök Azure AD-be való csatlakoztatásakor.
 
 ## <a name="next-steps"></a>Következő lépések
 

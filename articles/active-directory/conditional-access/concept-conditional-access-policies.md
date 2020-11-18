@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5361460f7816dd4a3b2b53deecd9d360f98ad1d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 74e4ca34a69b121ce5b92ad52125dc317e3aea43
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145372"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837668"
 ---
 # <a name="building-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
-Ahogy azt a cikk ismerteti, [Mi a feltételes hozzáférés](overview.md), a feltételes hozzáférési szabályzat a **hozzárendelések** és a **hozzáférés-vezérlések**if-then utasítása. A feltételes hozzáférési szabályzatok együttesen, a döntések meghozatalához és a szervezeti szabályzatok betartatásához biztosítanak jeleket.
+Ahogy azt a cikk ismerteti, [Mi a feltételes hozzáférés](overview.md), a feltételes hozzáférési szabályzat a **hozzárendelések** és a **hozzáférés-vezérlések** if-then utasítása. A feltételes hozzáférési szabályzatok együttesen, a döntések meghozatalához és a szervezeti szabályzatok betartatásához biztosítanak jeleket.
 
 Hogyan hozza létre a szervezet ezeket a szabályzatokat? Mi szükséges? Hogyan alkalmazzák?
 
@@ -101,7 +101,7 @@ A hozzáférés letiltása csak azt eredményezi, hogy letiltja a hozzáférést
 
 Az engedélyezési vezérlő egy vagy több vezérlő kényszerítését is elindíthatja. 
 
-- Többtényezős hitelesítés megkövetelése (Azure Multi-Factor Authentication)
+- Többtényezős hitelesítés megkövetelése (Azure AD Multi-Factor Authentication)
 - Eszköz megfelelőként való megjelölésének megkövetelése (Intune)
 - Hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése
 - Jóváhagyott ügyfélalkalmazás megkövetelése
@@ -150,7 +150,7 @@ Az [általános feltételes hozzáférési szabályzatok](concept-conditional-ac
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
 
-[Felhőalapú Azure Multi-Factor Authentication-telepítés megtervezése](../authentication/howto-mfa-getstarted.md)
+[Felhőalapú Azure AD-Multi-Factor Authentication üzembe helyezésének megtervezése](../authentication/howto-mfa-getstarted.md)
 
 [Az eszközök megfelelőségének kezelése az Intune-nal](/intune/device-compliance-get-started)
 

@@ -11,19 +11,19 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0c5093fc1dab69e0502b8ed1efe42fa63f1eb9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363725"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838077"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítás központi telepítésének megtervezése
 
 > [!IMPORTANT]
 > Ez a telepítési terv útmutatást és ajánlott eljárásokat nyújt az Azure AD önkiszolgáló jelszó-visszaállítás (SSPR) üzembe helyezéséhez.
 >
-> **Ha Ön végfelhasználó, és vissza kell kérnie a fiókját, lépjen [https://aka.ms/sspr](https://aka.ms/sspr) a **következőre:.
+> **Ha Ön végfelhasználó, és vissza kell kérnie a fiókját, lépjen [https://aka.ms/sspr](https://aka.ms/sspr) a** következőre:.
 
 Az [önkiszolgáló jelszó-visszaállítás (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) egy Azure Active Directory (ad) szolgáltatás, amely lehetővé teszi a felhasználók számára a jelszavuk visszaállítását anélkül, hogy segítségre lenne felvenni a kapcsolatot az informatikai személyzettel. A felhasználók gyorsan feloldják magukat, és a munka helyétől függetlenül is dolgozhatnak. Azáltal, hogy az alkalmazottak feloldják magukat, a szervezet csökkentheti a nem produktív időt és a magas támogatási költségeket a leggyakoribb jelszóval kapcsolatos problémákhoz.
 
@@ -73,7 +73,7 @@ További információ a díjszabásról: [Azure Active Directory díjszabása](h
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-| Erőforrások| Hivatkozás és leírás |
+| További források| Hivatkozás és leírás |
 | - | - |
 | Videók| [Hatékonyabb informatikai skálázhatóság a felhasználók számára](https://youtu.be/g9RpRnylxS8) 
 | |[Mit jelent az önkiszolgáló jelszóátállítás?](https://youtu.be/hc97Yx5PJiM)|
@@ -115,7 +115,7 @@ A SSPR telepítése előtt dönthet úgy, hogy meghatározza a jelszó-visszaál
 
 A Microsoft azt javasolja, hogy a szervezetek lehetővé tegyék a SSPR és a többtényezős hitelesítés együttes regisztrációs funkciójának használatát. Ha engedélyezi ezt a kombinált regisztrációs élményt, a felhasználóknak csak egyszer kell kiválasztaniuk regisztrációs adataikat mindkét funkció engedélyezéséhez.
 
-A kombinált regisztrációs élmény nem igényli, hogy a szervezetek a SSPR és az Azure Multi-Factor Authentication is engedélyezzék. A kombinált regisztráció jobb felhasználói élményt nyújt a szervezeteknek. További információ: [kombinált biztonsági információk regisztrálása](concept-registration-mfa-sspr-combined.md)
+A kombinált regisztrációs élmény nem igényli, hogy a szervezetek a SSPR és az Azure AD Multi-Factor Authentication is engedélyezzék. A kombinált regisztráció jobb felhasználói élményt nyújt a szervezeteknek. További információ: [kombinált biztonsági információk regisztrálása](concept-registration-mfa-sspr-combined.md)
 
 ## <a name="plan-the-deployment-project"></a>Az üzembe helyezési projekt megtervezése
 
@@ -184,7 +184,7 @@ Megjegyzés: a felhasználónak rendelkeznie kell a [jelszóházirend és a korl
 
 ### <a name="registration-settings"></a>Regisztrációs beállítások
 
-Állítsa be a **felhasználókat, hogy regisztráljanak** az **Igen**értékre való bejelentkezéskor. Ehhez a beállításhoz a felhasználóknak regisztrálniuk kell a bejelentkezéskor, hogy minden felhasználó védve legyen.
+Állítsa be a **felhasználókat, hogy regisztráljanak** az **Igen** értékre való bejelentkezéskor. Ehhez a beállításhoz a felhasználóknak regisztrálniuk kell a bejelentkezéskor, hogy minden felhasználó védve legyen.
 
 Adja meg a **napok számát, mielőtt a felhasználók megkérik a hitelesítési adataik újbóli megerősítését** **90** és **180** nap között, kivéve, ha a szervezetnek rövidebb időre van szüksége üzleti igényekre.
 
@@ -204,8 +204,8 @@ A **jelszó visszaírási** engedélyezve van a [Azure ad Connect](../hybrid/wha
 
 A következő beállításokat javasoljuk:
 
-* Győződjön meg arról, hogy **a helyi ad-beli jelszavak visszaírása** **Igen**értékre van állítva. 
-* Állítsa be a **fiók feloldásának engedélyezése a felhasználók számára anélkül, hogy a jelszó alaphelyzetbe állítása** **Igen**értékű legyen.
+* Győződjön meg arról, hogy **a helyi ad-beli jelszavak visszaírása** **Igen** értékre van állítva. 
+* Állítsa be a **fiók feloldásának engedélyezése a felhasználók számára anélkül, hogy a jelszó alaphelyzetbe állítása** **Igen** értékű legyen.
 
 Alapértelmezés szerint az Azure AD feloldja a fiókokat, amikor a jelszó-visszaállítást végzi.
 
@@ -321,7 +321,7 @@ A regisztrációs és a jelszó-visszaállítási naplók 30 napig érhetők el.
 
 ### <a name="authentication-methods--usage-and-insights"></a>Hitelesítési módszerek – használat és bepillantást
 
-A [használat és](./howto-authentication-methods-usage-insights.md) az adatok segítségével megismerheti, hogy az Azure MFA és a SSPR különböző funkciói milyen hitelesítési módszereket dolgoznak a szervezetben. Ez a jelentéskészítési funkció lehetővé teszi a szervezet számára, hogy megtudja, milyen módszerekkel regisztrálhat, és hogyan használhatja őket.
+A [használat és](./howto-authentication-methods-usage-insights.md) az adatok segítségével megismerheti, hogy az Azure ad MFA és a SSPR szolgáltatáshoz hasonló funkciók hitelesítési módszerei hogyan működnek a szervezetben. Ez a jelentéskészítési funkció lehetővé teszi a szervezet számára, hogy megtudja, milyen módszerekkel regisztrálhat, és hogyan használhatja őket.
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
