@@ -1,6 +1,6 @@
 ---
-title: Az Azure Multi-Factor Authentication áttekintése
-description: Ismerje meg, hogyan segít az Azure Multi-Factor Authentication az adatkezeléshez és az alkalmazásokhoz való hozzáférésben, miközben egy egyszerű bejelentkezési folyamatra vonatkozó felhasználói igényeket is kielégít.
+title: Az Azure AD Multi-Factor Authentication áttekintése
+description: Ismerje meg, hogyan segít az Azure AD Multi-Factor Authentication az adatkezeléshez és az alkalmazásokhoz való hozzáférés biztosításában, miközben egy egyszerű bejelentkezési folyamatra vonatkozó felhasználói igényeket is kielégít.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0353de10a5bd458f8c8274cd8e04168443e792df
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9563ed283229eb6f43d036629cfe8b84fcde25fc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965301"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839879"
 ---
-# <a name="how-it-works-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication működése
+# <a name="how-it-works-azure-ad-multi-factor-authentication"></a>A működés módja: Azure AD Multi-Factor Authentication
 
 A többtényezős hitelesítés egy olyan folyamat, amelyben a rendszer a bejelentkezési folyamat során felkéri a felhasználót egy másodlagos azonosításra, például hogy adjon meg egy kódot a mobiltelefonján, vagy végezzen ujjlenyomat-vizsgálatot.
 
@@ -26,34 +26,34 @@ Ha csak jelszó használatával hitelesíti a felhasználót, a támadás nem bi
 
 ![A multi-Factor Authentication különböző formáinak fogalmi képe](./media/concept-mfa-howitworks/methods.png)
 
-Az Azure Multi-Factor Authentication úgy működik, hogy a következő hitelesítési módszerek közül kettő vagy több használatát igényli:
+Az Azure AD Multi-Factor Authentication úgy működik, hogy a következő hitelesítési módszerek közül kettőt vagy többet igényel:
 
 * Amit ismer, általában egy jelszó.
 * Valami, például egy nem könnyen duplikált megbízható eszköz, például telefon vagy hardver kulcsa.
 * A biometrikus adatok például ujjlenyomatok vagy Arcfelismerés.
 
-A felhasználók az önkiszolgáló jelszó-visszaállításhoz és az Azure Multi-Factor Authenticationhoz is regisztrálhatnak, így egyszerűbbé válik a beléptetési élmény. A rendszergazdák meghatározhatják, hogy milyen típusú másodlagos hitelesítést lehet használni. Az Azure Multi-Factor Authentication akkor is megkövetelhető, ha a felhasználók önkiszolgáló jelszó-visszaállítást végeznek a folyamat további biztonságosabbá tételéhez.
+A felhasználók az önkiszolgáló jelszó-visszaállítási és az Azure AD-Multi-Factor Authentication is regisztrálhatják, hogy leegyszerűsítsék a helyszíni élményt. A rendszergazdák meghatározhatják, hogy milyen típusú másodlagos hitelesítést lehet használni. Az Azure AD Multi-Factor Authentication akkor is megkövetelhető, ha a felhasználók önkiszolgáló jelszó-visszaállítást végeznek a folyamat további biztonságosabbá tételéhez.
 
 ![A bejelentkezési képernyőn használt hitelesítési módszerek](media/concept-authentication-methods/overview-login.png)
 
-Az Azure Multi-Factor Authentication segít az adatkezelésben és az alkalmazásokban való hozzáférésben, miközben a felhasználók egyszerűségét is fenntartja. További biztonságot nyújt a hitelesítés második formáját igényli, és erős hitelesítést tesz lehetővé számos könnyen használható [hitelesítési módszer](concept-authentication-methods.md)segítségével. A rendszergazda által létrehozott konfigurációs döntések alapján előfordulhat, hogy a felhasználók nem tudják feltámadni az MFA-t.
+Az Azure AD Multi-Factor Authentication segít megőrizni az adathozzáférést és az alkalmazásokat, miközben a felhasználók számára egyszerűséget biztosít. További biztonságot nyújt a hitelesítés második formáját igényli, és erős hitelesítést tesz lehetővé számos könnyen használható [hitelesítési módszer](concept-authentication-methods.md)segítségével. A rendszergazda által létrehozott konfigurációs döntések alapján előfordulhat, hogy a felhasználók nem tudják feltámadni az MFA-t.
 
-Alkalmazásait vagy szolgáltatásait nem szükséges módosítania az Azure Multi-Factor Authentication használatához. Az ellenőrzési kérések az Azure AD bejelentkezési eseményének részét képezik, amely szükség esetén automatikusan kéri és dolgozza fel az MFA-feladatot.
+Az alkalmazásoknak vagy szolgáltatásoknak nem kell módosítaniuk az Azure AD-Multi-Factor Authentication használatát. Az ellenőrzési kérések az Azure AD bejelentkezési eseményének részét képezik, amely szükség esetén automatikusan kéri és dolgozza fel az MFA-feladatot.
 
 ## <a name="available-verification-methods"></a>Rendelkezésre álló ellenőrzési módszerek
 
-Amikor egy felhasználó bejelentkezik egy alkalmazásba vagy szolgáltatásba, és egy MFA-kérést kap, a további ellenőrzésük egyik regisztrált formája közül választhat. A rendszergazda megkövetelheti ezeknek az Azure Multi-Factor Authentication ellenőrzési módszereknek a regisztrálását, vagy a felhasználó hozzáférhet a saját [profiljához](https://myprofile.microsoft.com) az ellenőrzési módszerek szerkesztéséhez vagy hozzáadásához.
+Amikor egy felhasználó bejelentkezik egy alkalmazásba vagy szolgáltatásba, és egy MFA-kérést kap, a további ellenőrzésük egyik regisztrált formája közül választhat. A rendszergazda megkövetelheti ezeknek az Azure AD Multi-Factor Authentication ellenőrzési módszereknek a regisztrálását, vagy a felhasználó elérheti a saját [profilját](https://myprofile.microsoft.com) az ellenőrzési módszerek szerkesztéséhez vagy hozzáadásához.
 
-Az Azure Multi-Factor Authentication a következő további ellenőrzési formákat használhatja:
+Az Azure AD Multi-Factor Authentication a következő további ellenőrzési formákat használhatja:
 
 * A Microsoft Authenticator alkalmazás
 * A hardver-token ESKÜje
 * SMS
 * Hanghívás
 
-## <a name="how-to-enable-and-use-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication engedélyezése és használata
+## <a name="how-to-enable-and-use-azure-ad-multi-factor-authentication"></a>Az Azure AD-Multi-Factor Authentication engedélyezése és használata
 
-A felhasználók és csoportok engedélyezhető az Azure Multi-Factor Authentication számára, hogy a bejelentkezési esemény során további ellenőrzésre is rákérdezzenek. A [biztonsági beállítások](../fundamentals/concept-fundamentals-security-defaults.md) minden Azure ad-bérlő számára elérhetők, hogy gyorsan engedélyezzék a Microsoft Authenticator alkalmazás használatát az összes felhasználó számára.
+A felhasználók és csoportok engedélyezhető az Azure AD Multi-Factor Authentication számára, hogy a bejelentkezési esemény során további ellenőrzésre is rákérdezzenek. A [biztonsági beállítások](../fundamentals/concept-fundamentals-security-defaults.md) minden Azure ad-bérlő számára elérhetők, hogy gyorsan engedélyezzék a Microsoft Authenticator alkalmazás használatát az összes felhasználó számára.
 
 Részletesebb szabályozáshoz a [feltételes hozzáférési](../conditional-access/overview.md) szabályzatok az MFA-t igénylő események és alkalmazások definiálására használhatók. Ezek a házirendek lehetővé teszik a rendszeres bejelentkezési eseményeket, ha a felhasználó a vállalati hálózaton vagy egy regisztrált eszközön van, de a távoli vagy a személyes eszközön további ellenőrzési tényezőket kér.
 
@@ -61,9 +61,9 @@ Részletesebb szabályozáshoz a [feltételes hozzáférési](../conditional-acc
 
 ## <a name="next-steps"></a>Következő lépések
 
-A licenceléssel kapcsolatos további tudnivalókért tekintse meg [Az Azure multi-Factor Authentication funkcióit és licenceit](concept-mfa-licensing.md).
+A licenceléssel kapcsolatos további tudnivalókért tekintse meg [Az Azure AD multi-Factor Authentication funkcióit és licenceit](concept-mfa-licensing.md).
 
-Az MFA működés közbeni megjelenítéséhez engedélyezze az Azure Multi-Factor Authenticationt a következő oktatóanyagban a tesztelési felhasználók számára:
+Az MFA működés közbeni megjelenítéséhez engedélyezze az Azure AD Multi-Factor Authentication a következő oktatóanyagban a tesztelési felhasználók csoportjának:
 
 > [!div class="nextstepaction"]
-> [Az Azure Multi-Factor Authentication engedélyezése](./tutorial-enable-azure-mfa.md)
+> [Azure AD-Multi-Factor Authentication engedélyezése](./tutorial-enable-azure-mfa.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05f3d422c9a504a0089290f3c2e1e68d809366ac
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 9da0c00bd8498e3f43d5f8258308fbc010a6a274
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592957"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839522"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
 
@@ -36,7 +36,7 @@ Azok a felhasználók, akik engedélyezték a telefonos bejelentkezést a Micros
 
 Ha jelszó nélküli telefonos bejelentkezést szeretne használni a Microsoft Authenticator alkalmazással, a következő előfeltételek teljesülése szükséges:
 
-- Azure Multi-Factor Authentication, a leküldéses értesítések engedélyezése ellenőrzési módszerként.
+- Az Azure AD Multi-Factor Authentication ellenőrzési módszerként engedélyezett leküldéses értesítésekkel.
 - Az Microsoft Authenticator legújabb verziója iOS 8,0 vagy újabb, vagy Android 6,0 vagy újabb rendszert futtató eszközökön.
 
 > [!NOTE]
@@ -57,7 +57,7 @@ Az Azure AD segítségével kiválaszthatja, hogy mely hitelesítési módszerek
 A jelszó nélküli telefonos bejelentkezés hitelesítési módszerének engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) *globális rendszergazdai* fiókkal.
-1. Keresse meg és válassza ki a *Azure Active Directory* , majd keresse meg a **biztonsági**  >  **hitelesítési módszerek**  >  **hitelesítési módszer házirend (előzetes verzió) lehetőséget.**
+1. Keresse meg és válassza ki a *Azure Active Directory*, majd keresse meg a **biztonsági**  >  **hitelesítési módszerek**  >  **hitelesítési módszer házirend (előzetes verzió) lehetőséget.**
 1. A **jelszó nélküli telefonos bejelentkezés** területen válassza a következő lehetőségeket:
    1. **Engedélyezés** – igen vagy nem
    1. **Cél** – az összes felhasználó vagy a felhasználók kiválasztása
@@ -141,4 +141,4 @@ Az Azure AD-hitelesítéssel és a jelszóval nem rendelkező módszerekkel kapc
 
 - [Ismerje meg, hogyan működik a jelszavas hitelesítés](concept-authentication-passwordless.md)
 - [Tudnivalók az eszközök regisztrálásáról](../devices/overview.md#getting-devices-in-azure-ad)
-- [További tudnivalók az Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+- [További tudnivalók az Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

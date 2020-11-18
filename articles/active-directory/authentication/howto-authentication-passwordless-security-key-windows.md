@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b88b2ca0a420295a7a53608f02923e72045e1c44
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8fba2610b3343744c448e390bc2d713b38da481d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964740"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839471"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a Windows 10-es eszközökre Azure Active Directory (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek 
 
 | Eszköz típusa | Azure AD-hez csatlakoztatva | csatlakozik a Hibrid Azure AD-hez |
 | --- | --- | --- |
-| [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
+| [Azure AD-Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
 | [A kombinált biztonsági információk regisztrációjának előzetes verziója](concept-registration-mfa-sspr-combined.md) | X | X |
 | Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | A WebAuthN a Windows 10 1903-es vagy újabb verzióját igényli | X | X |
@@ -79,8 +79,8 @@ A szervezetek dönthetnek úgy, hogy az alábbi módszerek közül egy vagy töb
 A biztonsági kulcsok Intune használatával történő használatának engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Tallózással **Microsoft Intune**  >  **eszköz beléptetése**Windows-  >  **regisztráció**Windows  >  **Hello for Business**-  >  **Tulajdonságok**.
-1. A **Beállítások**területen állítsa be a **biztonsági kulcsok használata a bejelentkezéshez** **beállítást.**
+1. Tallózással **Microsoft Intune**  >  **eszköz beléptetése** Windows-  >  **regisztráció** Windows  >  **Hello for Business**-  >  **Tulajdonságok**.
+1. A **Beállítások** területen állítsa be a **biztonsági kulcsok használata a bejelentkezéshez** **beállítást.**
 
 A bejelentkezéshez szükséges biztonsági kulcsok konfigurálása nem függ a vállalati Windows Hello konfigurálásának.
 
@@ -89,7 +89,7 @@ A bejelentkezéshez szükséges biztonsági kulcsok konfigurálása nem függ a 
 A hitelesítő adatok szolgáltatójának engedélyezéséhez a következő egyéni beállításokat használhatja az Intune-on keresztül:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Tallózással keresse meg **Microsoft Intune**  >  **eszköz konfigurációs**  >  **profiljainak**  >  **profil létrehozása**lehetőséget.
+1. Tallózással keresse meg **Microsoft Intune**  >  **eszköz konfigurációs**  >  **profiljainak**  >  **profil létrehozása** lehetőséget.
 1. Konfigurálja az új profilt a következő beállításokkal:
    - Név: biztonsági kulcsok Windows Sign-In
    - Leírás: lehetővé teszi, hogy a rendszer a Windows bejelentkezéskor használni kívánt biztonsági kulcsokat használja.
@@ -109,17 +109,17 @@ A hitelesítő adatok szolgáltatójának engedélyezéséhez a következő egy�
 Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telepíthető a funkció engedélyezéséhez. A Windows Configuration Designer alkalmazást a [Microsoft Store](https://www.microsoft.com/p/windows-configuration-designer/9nblggh4tx22)lehet telepíteni. A kiépítési csomag létrehozásához hajtsa végre a következő lépéseket:
 
 1. Indítsa el a Windows Configuration Designer alkalmazást.
-1. Válassza a **fájl**  >  **új projekt**lehetőséget.
-1. Adjon nevet a projektnek, és jegyezze fel a projekt létrehozási útját, majd kattintson a **tovább**gombra.
-1. Hagyja kiválasztva a *kiépítési csomagot* a **kiválasztott projekt-munkafolyamatként** , és válassza a **tovább**lehetőséget.
-1. Válassza ki az *összes Windows asztali kiadás* elemet a **válassza ki a megtekinteni és konfigurálni kívánt beállításokat**, majd kattintson a **tovább**gombra.
+1. Válassza a **fájl**  >  **új projekt** lehetőséget.
+1. Adjon nevet a projektnek, és jegyezze fel a projekt létrehozási útját, majd kattintson a **tovább** gombra.
+1. Hagyja kiválasztva a *kiépítési csomagot* a **kiválasztott projekt-munkafolyamatként** , és válassza a **tovább** lehetőséget.
+1. Válassza ki az *összes Windows asztali kiadás* elemet a **válassza ki a megtekinteni és konfigurálni kívánt beállításokat**, majd kattintson a **tovább** gombra.
 1. Válassza a **Befejezés** lehetőséget.
 1. Az újonnan létrehozott projektben keresse meg a **Futásidejű beállítások**  >  **WindowsHelloForBusiness**  >  **SecurityKeys**  >  **UseSecurityKeyForSignIn**.
-1. Állítsa be a **UseSecurityKeyForSignIn** beállítást *engedélyezve*értékre.
-1. Válassza **Export**ki a  >  **kiépítési csomag** exportálása lehetőséget
-1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a **kiépítési csomag leírása**területen, majd kattintson a **tovább**gombra.
-1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a kiépítési **csomag biztonsági adatainak kiválasztása** területen, majd válassza a **tovább**lehetőséget.
-1. Jegyezze fel, vagy módosítsa a **Build** -ablakok elérési útját a **válassza ki, hová szeretné menteni a kiépítési csomagot** , és válassza a **tovább**lehetőséget.
+1. Állítsa be a **UseSecurityKeyForSignIn** beállítást *engedélyezve* értékre.
+1. Válassza **Export** ki a  >  **kiépítési csomag** exportálása lehetőséget
+1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a **kiépítési csomag leírása** területen, majd kattintson a **tovább** gombra.
+1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a kiépítési **csomag biztonsági adatainak kiválasztása** területen, majd válassza a **tovább** lehetőséget.
+1. Jegyezze fel, vagy módosítsa a **Build** -ablakok elérési útját a **válassza ki, hová szeretné menteni a kiépítési csomagot** , és válassza a **tovább** lehetőséget.
 1. Válassza a **Létrehozás** lehetőséget a kiépítési **csomag összeállítása** lapon.
 1. Mentse a létrehozott két fájlt (*ppkg* és *Cat*) egy olyan helyre, ahol később is alkalmazhatja a gépeket.
 1. A létrehozott kiépítési csomag alkalmazásához tekintse meg a [kiépítési csomag alkalmazása](/windows/configuration/provisioning-packages/provisioning-apply-package)című témakört.
@@ -129,7 +129,7 @@ Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telep
 
 ### <a name="enable-with-group-policy"></a>Engedélyezés Csoportházirend
 
-A **hibrid Azure ad-hez csatlakoztatott eszközökhöz**a szervezetek a következő csoportházirend-beállítást konfigurálhatják, hogy lehetővé tegyék a. biztonsági kulcsos bejelentkezést. A beállítás a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**a  >  **System**  >  **rendszerbejelentkezés**  >  **bekapcsolása a biztonsági kulcs bekapcsolásakor**szakaszban található:
+A **hibrid Azure ad-hez csatlakoztatott eszközökhöz** a szervezetek a következő csoportházirend-beállítást konfigurálhatják, hogy lehetővé tegyék a. biztonsági kulcsos bejelentkezést. A beállítás a **Számítógép konfigurációja**  >  **Felügyeleti sablonok** a  >  **System**  >  **rendszerbejelentkezés**  >  **bekapcsolása a biztonsági kulcs bekapcsolásakor** szakaszban található:
 
 - A házirend **engedélyezésének engedélyezése** lehetővé teszi a felhasználók számára a biztonsági kulcsokkal való bejelentkezést.
 - Ha a házirendet **Letiltva** vagy **nincs konfigurálva** , a felhasználók nem jelentkezhetnek be a biztonsági kulcsokkal.
@@ -164,4 +164,4 @@ Ha meg szeretné osztani a visszajelzéseket, vagy problémákat tapasztal a fun
 
 [További információ az eszközök regisztrálásáról](../devices/overview.md)
 
-[További információ az Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[További információ az Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

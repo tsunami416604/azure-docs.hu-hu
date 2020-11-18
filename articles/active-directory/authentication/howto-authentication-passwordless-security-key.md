@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f99d57e084a6a765b8598ba7f8eebbd7ddb34d74
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7d9c4dff1e4a3ba7c7a2b11311e97eb5e66a1585
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964638"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839301"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ez a dokumentum a biztonsági kulcson alapuló jelszavas hitelesítés engedély
 
 ## <a name="requirements"></a>Követelmények
 
-- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Azure AD-Multi-Factor Authentication](howto-mfa-getstarted.md)
 - A [kombinált biztonsági információk regisztrációjának előzetes](concept-registration-mfa-sspr-combined.md) verziójának engedélyezése
 - Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys)
 - A WebAuthN a Windows 10 1903-es vagy újabb verzióját igényli * *
@@ -52,7 +52,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keresse meg a **Azure Active Directory**  >  **biztonsági**  >  **hitelesítési módszerek**  >  **hitelesítési módszer házirendjét (előzetes verzió)**.
-1. A Method **FIDO2 biztonsági kulcs**alatt válassza a következő beállításokat:
+1. A Method **FIDO2 biztonsági kulcs** alatt válassza a következő beállításokat:
    1. **Engedélyezés** – igen vagy nem
    1. **Cél** – az összes felhasználó vagy a felhasználók kiválasztása
 1. **Mentse** a konfigurációt.
@@ -61,12 +61,12 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 
 1. Lépjen a [https://myprofile.microsoft.com](https://myprofile.microsoft.com) lapra.
 1. Ha még nem tette meg, jelentkezzen be.
-1. Kattintson a **biztonsági adatok**elemre.
-   1. Ha a felhasználónak már van legalább egy Azure Multi-Factor Authentication-metódusa, akkor azonnal regisztrálhatnak egy FIDO2 biztonsági kulcsot.
-   1. Ha nincs legalább egy Azure Multi-Factor Authentication-metódus regisztrálva, hozzá kell adnia egyet.
-1. Adjon hozzá egy FIDO2 biztonsági kulcsot a **metódus hozzáadása** és a **biztonsági kulcs**kiválasztása elemre kattintva.
+1. Kattintson a **biztonsági adatok** elemre.
+   1. Ha a felhasználónak már van legalább egy Azure AD Multi-Factor Authentication-metódusa, akkor azonnal regisztrálhatnak egy FIDO2 biztonsági kulcsot.
+   1. Ha nem rendelkeznek legalább egy Azure AD Multi-Factor Authentication-metódussal, hozzá kell adni egyet.
+1. Adjon hozzá egy FIDO2 biztonsági kulcsot a **metódus hozzáadása** és a **biztonsági kulcs** kiválasztása elemre kattintva.
 1. Válasszon **USB-eszközt** vagy **NFC-eszközt**.
-1. Álljon készen a kulcsra, és válassza a **tovább**lehetőséget.
+1. Álljon készen a kulcsra, és válassza a **tovább** lehetőséget.
 1. Megjelenik egy mező, és megkéri a felhasználót, hogy hozzon létre/adjon meg egy PIN-kódot a biztonsági kulcshoz, majd végezze el a szükséges kézmozdulatot a kulcshoz, vagy a biometrikus vagy az érintést.
 1. A rendszer visszaadja a felhasználót a közös regisztrációs élménynek, és a rendszer arra kéri, hogy adjon meg egy értelmes nevet a kulcs számára, hogy a felhasználó azonosítani tudja, melyik a többhöz. Kattintson a **Tovább** gombra.
 1. A folyamat befejezéséhez kattintson a **kész** gombra.
@@ -105,4 +105,4 @@ Dolgozunk azon funkció támogatásán, amely lehetővé teszi az UPN-változás
 
 [További információ az eszközök regisztrálásáról](../devices/overview.md)
 
-[További információ az Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[További információ az Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication-kérések és-munkamenetek élettartama
-description: Ismerje meg, hogy az Azure Multi-Factor Authentication és a munkamenetek élettartama milyen módon legyen alkalmazva az újrahitelesítéshez.
+title: Azure AD Multi-Factor Authentication promptok és munkamenetek élettartama
+description: Ismerje meg, hogy az Azure AD Multi-Factor Authentication és a munkamenetek élettartama milyen módon legyen alkalmazva az újrahitelesítéshez.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a759d4e686f43133716cc1c40237db74a015210
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 87b30b12e75a583ccee9780f97a6492961365cca
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964944"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839675"
 ---
-# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Újrahitelesítési kérések optimalizálása és az Azure-Multi-Factor Authentication munkamenet-élettartamának megértése
+# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Újrahitelesítéssel kapcsolatos kérések optimalizálása és az Azure AD-munkamenet élettartamának megértése Multi-Factor Authentication
 
 Azure Active Directory (Azure AD) több beállítással rendelkezik, amelyek meghatározzák, hogy a felhasználóknak milyen gyakran kell újrahitelesíteniük magukat. Ez az újrahitelesítés olyan első tényező lehet, mint például a jelszó, a vagy a jelszóval nem rendelkező Microsoft Authenticator vagy a többtényezős hitelesítés (MFA) végrehajtása. Ezeket az újrahitelesítési beállításokat igény szerint konfigurálhatja a saját környezetéhez és a kívánt felhasználói élményhez.
 
@@ -105,25 +105,25 @@ Most, hogy megértette, hogyan működik a különböző beállítások és az a
 A *továbbra is bejelentkezett* lehetőség konfigurálásához vagy ellenőrzéséhez hajtsa végre a következő lépéseket:
 
 1. Az Azure AD-portálon keresse meg és válassza ki a *Azure Active Directory*.
-1. Válassza a **vállalati arculat**lehetőséget, majd az egyes területi beállításoknál válassza a **Megjelenítés lehetőséget, hogy továbbra is bejelentkezve maradjon**.
-1. Válassza az *Igen*, majd a **Mentés**lehetőséget.
+1. Válassza a **vállalati arculat** lehetőséget, majd az egyes területi beállításoknál válassza a **Megjelenítés lehetőséget, hogy továbbra is bejelentkezve maradjon**.
+1. Válassza az *Igen*, majd a **Mentés** lehetőséget.
 
 A többtényezős hitelesítési beállítások megadásához hajtsa végre a következő lépéseket:
 
 1. Az Azure AD-portálon keresse meg és válassza ki a *Azure Active Directory*.
-1. Válassza a **Biztonság**, majd a **MFA**elemet.
-1. A **Konfigurálás**területen válassza a **további felhőalapú MFA-beállítások**lehetőséget.
+1. Válassza a **Biztonság**, majd a **MFA** elemet.
+1. A **Konfigurálás** területen válassza a **további felhőalapú MFA-beállítások** lehetőséget.
 1. A *multi-Factor Authentication szolgáltatás beállításai* lapon görgessen a **többtényezős hitelesítési beállítások megjegyzésre**. A jelölőnégyzet bejelölésének törlésével tiltsa le a beállítást.
 
 A bejelentkezési gyakoriság és az állandó böngésző-munkamenet feltételes hozzáférési szabályzatának konfigurálásához hajtsa végre a következő lépéseket:
 
 1. Az Azure AD-portálon keresse meg és válassza ki a *Azure Active Directory*.
-1. Válassza a **Biztonság**, majd a **feltételes hozzáférés**lehetőséget.
+1. Válassza a **Biztonság**, majd a **feltételes hozzáférés** lehetőséget.
 1. A szabályzatot a jelen cikkben ismertetett ajánlott munkamenet-kezelési beállításokkal konfigurálhatja.
 
 A jogkivonatok élettartamának áttekintéséhez az [Azure ad PowerShell használatával kérdezheti le az Azure ad-szabályzatokat](../develop/configure-token-lifetimes.md#prerequisites). Tiltsa le a meglévő szabályzatokat.
 
-Ha több beállítás van engedélyezve a bérlőben, javasoljuk, hogy az Ön számára elérhető Licencelés alapján frissítse a beállításait. Ha például az Azure AD Premium-licencekkel rendelkezik, csak a *bejelentkezési gyakoriság* és az *állandó böngésző-munkamenet*feltételes hozzáférési szabályzatát kell használnia. Ha Microsoft 365 alkalmazásait vagy az Azure AD ingyenes licenceit, használja a *továbbra is bejelentkezett?* konfigurációt.
+Ha több beállítás van engedélyezve a bérlőben, javasoljuk, hogy az Ön számára elérhető Licencelés alapján frissítse a beállításait. Ha például az Azure AD Premium-licencekkel rendelkezik, csak a *bejelentkezési gyakoriság* és az *állandó böngésző-munkamenet* feltételes hozzáférési szabályzatát kell használnia. Ha Microsoft 365 alkalmazásait vagy az Azure AD ingyenes licenceit, használja a *továbbra is bejelentkezett?* konfigurációt.
 
 Ha engedélyezte a konfigurálható jogkivonat élettartamát, ez a funkció hamarosan el lesz távolítva. Tervezze meg az áttelepítést egy feltételes hozzáférési szabályzatba.
 
@@ -136,4 +136,4 @@ A következő táblázat a licenceken alapuló ajánlásokat foglalja össze:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az első lépésekhez fejezze be az oktatóanyagot a [felhasználói bejelentkezési események biztonságossá tételéhez az azure multi-Factor Authentication-ban](tutorial-enable-azure-mfa.md) , vagy [használjon kockázati észleléseket felhasználói bejelentkezésekhez az Azure-multi-Factor Authentication aktiválásához](tutorial-risk-based-sspr-mfa.md).
+Az első lépésekhez fejezze be az oktatóanyagot a [felhasználói bejelentkezési események biztonságossá tételéhez az Azure ad multi-Factor Authentication](tutorial-enable-azure-mfa.md) , vagy [használjon kockázati észleléseket felhasználói bejelentkezésekhez az azure ad-multi-Factor Authentication](tutorial-risk-based-sspr-mfa.md)kiváltásához.

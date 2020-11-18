@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b308b47ff813237bdf90637334f20ac6b5490a19
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: dbe22a1af8fbf61629fa9df1267416ca3822884b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992820"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840083"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
@@ -44,7 +44,7 @@ A következő lépések bemutatják, hogyan működik a bejelentkezési folyamat
 
 ![A vállalati Windows Hello szolgáltatásban a felhasználói bejelentkezéshez szükséges lépéseket ismertető ábra](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
-1. A felhasználó biometrikus vagy PIN-kód típusú kézmozdulattal jelentkezik be a Windowsba. A kézmozdulat feloldja a vállalati Windows Hello-kulcs zárolását, és elküldjük a Cloud Authentication biztonsági támogatási szolgáltatónak, amelyet a *Felhőbeli AP-szolgáltatónak*nevezünk.
+1. A felhasználó biometrikus vagy PIN-kód típusú kézmozdulattal jelentkezik be a Windowsba. A kézmozdulat feloldja a vállalati Windows Hello-kulcs zárolását, és elküldjük a Cloud Authentication biztonsági támogatási szolgáltatónak, amelyet a *Felhőbeli AP-szolgáltatónak* nevezünk.
 1. A Cloud AP Provider egy egyszer használatos (véletlenszerű, tetszőleges számú) Azure AD-t kér.
 1. Az Azure AD egy egypéldányos értéket ad vissza, amely 5 percig érvényes.
 1. A Felhőbeli AP-szolgáltató aláírja az időpontot a felhasználó titkos kulcsa alapján, és visszaadja az aláírt alkalmi lehetőséget az Azure AD-nek.
@@ -62,7 +62,7 @@ Azt is lehetővé teheti, hogy az alkalmazott telefonja jelszavas hitelesítési
 
 A hitelesítő alkalmazás minden iOS-vagy Android-telefont erős, jelszóval nem rendelkező hitelesítő adatba kapcsol. A felhasználók bármilyen platformra vagy böngészőbe bejelentkezhetnek, ha értesítést küldenek a telefonjára, és a képernyőn megjelenő számot a telefonján megjelenő telefonszámra, majd a biometrikus (érintés vagy arc) vagy a PIN-kód használatával megerősítik. A telepítés részleteiért tekintse meg [a Microsoft Authenticator alkalmazás letöltése és telepítése](../user-help/user-help-auth-app-download-install.md) című témakört.
 
-Az Azure AD-vel való jelszó nélküli bejelentkezés jelenleg előzetes verzióban érhető el a Microsoft Authenticator alkalmazással. Az Microsoft Authenticator alkalmazás használata másodlagos hitelesítéshez az Azure Multi-Factor Authentication, az önkiszolgáló jelszó-visszaállítás (SSPR) vagy az eskü szoftver jogkivonata GA. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Az Azure AD-vel való jelszó nélküli bejelentkezés jelenleg előzetes verzióban érhető el a Microsoft Authenticator alkalmazással. Az Microsoft Authenticator alkalmazás használata másodlagos hitelesítéshez az Azure AD Multi-Factor Authentication, az önkiszolgáló jelszó-visszaállítás (SSPR) vagy az eskü szoftver jogkivonata GA. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A hitelesítő alkalmazással való jelszóval nem rendelkező hitelesítés a vállalati Windows Hello szolgáltatással megegyező alapszintű mintát követi. Ez egy kicsit bonyolultabb, mivel a felhasználó azonosítására van szükség, hogy az Azure AD megtalálja a használt Microsoft Authenticator alkalmazás verzióját:
 
@@ -174,7 +174,7 @@ A három jelszóval nem rendelkező lehetőség közül választhat, hogy a vál
 
 A következő táblázat segítségével kiválaszthatja, hogy melyik módszer fogja támogatni a követelményeket és a felhasználókat.
 
-|Persona|Forgatókönyv|Környezet|Jelszóval nem rendelkező technológia|
+|Persona|Használati eset|Környezet|Jelszóval nem rendelkező technológia|
 |:-|:-|:-|:-|
 |**Felügyelet**|Biztonságos hozzáférés egy eszközhöz felügyeleti feladatokhoz|Hozzárendelt Windows 10-es eszköz|Vállalati Windows Hello és/vagy FIDO2 biztonsági kulcs|
 |**Felügyelet**|Felügyeleti feladatok nem Windows rendszerű eszközökön| Mobil-vagy nem Windows-eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6af2f65aa2e2052a79f4c5cffd7ff4a38a9fc838
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6b5b83d75df734c667c365f20fad2e1f62f997d7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366564"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839709"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory
 
@@ -65,11 +65,11 @@ A bérlőhöz való rendszergazdai hozzáférés zárolásának feloldásához h
 
 A következő hozzáférés-vezérlést a szervezet meglévő feltételes hozzáférési házirendjeiben foglalja bele:
 
-1. Több hitelesítési módszer is kiépíthető minden olyan felhasználó számára, aki különböző kommunikációs csatornákra támaszkodik, például az Microsoft Authenticator alkalmazás (internetalapú), az eskü token (az eszközön generált) és az SMS (telefonos kapcsolat). A következő PowerShell-szkript segít előre azonosítani a felhasználókat, hogy mely további módszerekkel regisztrálhat: [parancsfájl az Azure MFA hitelesítési módszerének elemzéséhez](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
+1. Több hitelesítési módszer is kiépíthető minden olyan felhasználó számára, aki különböző kommunikációs csatornákra támaszkodik, például az Microsoft Authenticator alkalmazás (internetalapú), az eskü token (az eszközön generált) és az SMS (telefonos kapcsolat). A következő PowerShell-szkript segít előre azonosítani a felhasználókat, hogy mely további módszereknek kell regisztrálniuk: [parancsfájl az Azure ad MFA hitelesítési módszerének elemzéséhez](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
 2. A Windows Hello for Business üzembe helyezése Windows 10-es eszközökön az MFA-követelmények közvetlenül az eszköz-bejelentkezésből való kielégítéséhez.
 3. Megbízható eszközöket használhat az [Azure ad Hybrid JOIN](../devices/overview.md) vagy [Microsoft Intune felügyelt eszközökön](/intune/planning-guide)keresztül. A megbízható eszközök növelik a felhasználói élményt, mivel maga a megbízható eszköz is kielégítheti a házirend erős hitelesítési követelményeit, ha a felhasználó nem rendelkezik MFA-kihívással. Az MFA ezt követően új eszköz beléptetéséhez és a nem megbízható eszközökről származó alkalmazások vagy erőforrások eléréséhez szükséges.
 4. Az Azure AD Identity Protection kockázatkezelési házirendjeinek használatával megakadályozhatja a hozzáférést, ha a felhasználó vagy a bejelentkezés veszélyben van a rögzített MFA-szabályzatok helyett.
-5. Ha az Azure MFA NPS-bővítmény használatával védi a VPN-hozzáférést, érdemes lehet egyesítő a VPN-megoldást [SAML-alkalmazásként](../manage-apps/view-applications-portal.md) , és az alább javasolt módon meghatározni az alkalmazás kategóriáját. 
+5. Ha az Azure AD MFA NPS-bővítmény használatával védi a VPN-hozzáférést, érdemes lehet egyesítő a VPN-megoldást [SAML-alkalmazásként](../manage-apps/view-applications-portal.md) , és az alább javasolt módon meghatározni az alkalmazás kategóriáját. 
 
 >[!NOTE]
 > A kockázatalapú házirendekhez [prémium szintű Azure ad P2](https://azure.microsoft.com/pricing/details/active-directory/) licencek szükségesek.
@@ -112,7 +112,7 @@ Másik lehetőségként a szervezet is létrehozhat készenléti házirendeket. 
 
 #### <a name="microsoft-recommendations"></a>Microsoft-javaslatok
 
-A készenléti feltételes hozzáférési szabályzat olyan **biztonsági mentési szabályzat** , amely kihagyja az Azure MFA, a harmadik féltől származó MFA, a kockázatalapú vagy az eszközökön alapuló vezérlőket. A váratlan fennakadások csökkentése érdekében, ha egy készenléti házirend engedélyezve van, a szabályzat csak jelentés módban marad, ha nincs használatban. A rendszergazdák a feltételes hozzáférési adatvizsgálati munkafüzet használatával tudják figyelni a készenléti szabályzatok lehetséges hatásait. Ha a szervezete úgy dönt, hogy aktiválja a készenléti tervet, a rendszergazdák engedélyezhetik a szabályzatot, és letilthatják a normál vezérlőn alapuló házirendeket.
+A készenléti feltételes hozzáférési szabályzat olyan **biztonsági mentési szabályzat** , amely kihagyja az Azure ad MFA, harmadik féltől származó MFA, kockázatalapú vagy eszköz alapú vezérlőket. A váratlan fennakadások csökkentése érdekében, ha egy készenléti házirend engedélyezve van, a szabályzat csak jelentés módban marad, ha nincs használatban. A rendszergazdák a feltételes hozzáférési adatvizsgálati munkafüzet használatával tudják figyelni a készenléti szabályzatok lehetséges hatásait. Ha a szervezete úgy dönt, hogy aktiválja a készenléti tervet, a rendszergazdák engedélyezhetik a szabályzatot, és letilthatják a normál vezérlőn alapuló házirendeket.
 
 >[!IMPORTANT]
 > A felhasználók biztonsági állapotát kényszerítő házirendek letiltása – akár átmenetileg is – csökkenti a biztonsági helyzetét, miközben a készenléti terv teljesül.
@@ -138,7 +138,7 @@ A készenléti szabályzatok elnevezési szabványa a következőképpen fog meg
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-A következő példa: **egy feltételes hitelesítésszolgáltatói szabályzat, amely a kritikus fontosságú együttműködési alkalmazásokhoz való hozzáférést állítja vissza**, egy tipikus vállalati készenléti állapot. Ebben az esetben a szervezet általában MFA-t igényel az összes Exchange Online-és SharePoint Online-hozzáféréshez, és ebben az esetben a megszakadás az ügyfél MFA-szolgáltatója (akár az Azure MFA, a helyszíni MFA-szolgáltató, akár a harmadik féltől származó MFA) esetében is. Ez a házirend csökkenti ezt a kimaradást azáltal, hogy a célzott felhasználók csak akkor férnek hozzá ezekhez az alkalmazásokhoz a megbízható Windows-eszközökről, ha a megbízható vállalati hálózatról érik el az alkalmazást. Emellett kizárja a vészhelyzeti fiókokat és az alapvető rendszergazdákat ezektől a korlátozásoktól. A megcélozott felhasználók ezután hozzáférhetnek az Exchange Online-hoz és a SharePoint Online-hoz, míg más felhasználók továbbra sem férhetnek hozzá az alkalmazásokhoz a leállás miatt. Ehhez a példához meg kell nevezni a hálózati hely **CorpNetwork** és egy biztonsági csoportot a **ContingencyAccess** , egy **CoreAdmins** nevű csoportot az alapvető rendszergazdákkal, valamint egy **EmergencyAccess** nevű csoportot a sürgősségi hozzáférési fiókokkal. A készenléti feltételnek négy házirendre van szüksége a kívánt hozzáférés biztosításához. 
+A következő példa: **egy feltételes hitelesítésszolgáltatói szabályzat, amely a kritikus fontosságú együttműködési alkalmazásokhoz való hozzáférést állítja vissza**, egy tipikus vállalati készenléti állapot. Ebben a forgatókönyvben a szervezet általában MFA-t igényel az összes Exchange Online-és SharePoint Online-hozzáféréshez, és ebben az esetben a megszakadás az ügyfél MFA-szolgáltatója (akár az Azure AD MFA, a helyszíni MFA-szolgáltató, akár a harmadik féltől származó MFA) esetében is leáll. Ez a házirend csökkenti ezt a kimaradást azáltal, hogy a célzott felhasználók csak akkor férnek hozzá ezekhez az alkalmazásokhoz a megbízható Windows-eszközökről, ha a megbízható vállalati hálózatról érik el az alkalmazást. Emellett kizárja a vészhelyzeti fiókokat és az alapvető rendszergazdákat ezektől a korlátozásoktól. A megcélozott felhasználók ezután hozzáférhetnek az Exchange Online-hoz és a SharePoint Online-hoz, míg más felhasználók továbbra sem férhetnek hozzá az alkalmazásokhoz a leállás miatt. Ehhez a példához meg kell nevezni a hálózati hely **CorpNetwork** és egy biztonsági csoportot a **ContingencyAccess** , egy **CoreAdmins** nevű csoportot az alapvető rendszergazdákkal, valamint egy **EmergencyAccess** nevű csoportot a sürgősségi hozzáférési fiókokkal. A készenléti feltételnek négy házirendre van szüksége a kívánt hozzáférés biztosításához. 
 
 **Példa A-készenléti HITELESÍTÉSSZOLGÁLTATÓI szabályzatokra a kritikus fontosságú együttműködési alkalmazások elérésének visszaállításához:**
 
@@ -208,7 +208,7 @@ Aktiválási sorrend:
 
 ### <a name="contingencies-for-user-lockout-from-on-prem-resources-nps-extension"></a>Felhasználói zárolási szolgáltatások helyszíni erőforrásokból (NPS-bővítmény)
 
-Ha az Azure MFA NPS-bővítmény használatával védi a VPN-hozzáférést, érdemes lehet egyesítő a VPN-megoldást [SAML-alkalmazásként](../manage-apps/view-applications-portal.md) , és az alább javasolt módon meghatározni az alkalmazás kategóriáját. 
+Ha az Azure AD MFA NPS-bővítmény használatával védi a VPN-hozzáférést, érdemes lehet egyesítő a VPN-megoldást [SAML-alkalmazásként](../manage-apps/view-applications-portal.md) , és az alább javasolt módon meghatározni az alkalmazás kategóriáját. 
 
 Ha telepítette az Azure AD MFA NPS-bővítményt a helyszíni erőforrások, például a VPN és a Távoli asztali átjáró az MFA-vel való ellátásához, akkor érdemes előre megfontolnia, hogy vészhelyzet esetén ki kell-e kapcsolni az MFA-t.
 
@@ -280,7 +280,7 @@ Ha a szervezet felhasználónkénti MFA örökölt házirendeket használ, akkor
  > Ha kibővíti a megbízható IP-címeket a hozzáférés feloldásához, az IP-címekhez (például lehetetlen utazáshoz vagy ismeretlen helyszínekhez) kapcsolódó kockázati észleléseket nem generálja a rendszer.
 
 >[!NOTE]
- > Az Azure MFA [megbízható IP](./howto-mfa-mfasettings.md) -címeinek konfigurálása csak [prémium szintű Azure ad licenccel](./concept-mfa-licensing.md)lehetséges.
+ > Az Azure AD MFA [megbízható IP](./howto-mfa-mfasettings.md) -címeinek konfigurálása csak [prémium szintű Azure ad licenccel](./concept-mfa-licensing.md)lehetséges.
 
 ## <a name="learn-more"></a>További információ
 

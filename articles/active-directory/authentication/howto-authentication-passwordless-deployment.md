@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f0c19e33ab6f91e69f9c7dbc5bc29fef1fd53bb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0143da9c1961b4123467120210135f7db2c582c8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964876"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839573"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Jelszóval nem rendelkező hitelesítés központi telepítésének megtervezése Azure Active Directory
 
@@ -51,7 +51,7 @@ A Microsoft három, több forgatókönyvre kiterjedő, jelszóval nem rendelkez�
 
 A Microsoft jelszavas hitelesítési módszerei különböző forgatókönyveket tesznek lehetővé. Vegye figyelembe a szervezeti igényeket, előfeltételeket és az egyes hitelesítési módszerek képességeit a jelszóval nem rendelkező hitelesítési stratégia kiválasztásához. Javasoljuk, hogy minden Windows 10-es eszközt használó szervezet a vállalati Windows Hello szolgáltatást használja. Ezután adja hozzá a telefonos bejelentkezést (a Microsoft Authenticator alkalmazással) vagy a biztonsági kulcsokat a további forgatókönyvekhez.
 
-| Forgatókönyv | Telefonos hitelesítés | Biztonsági kulcsok | Vállalati Windows Hello |
+| Használati eset | Telefonos hitelesítés | Biztonsági kulcsok | Vállalati Windows Hello |
 | --- | --- | --- | --- |
 | **Számítógép bejelentkezés**: <br> Hozzárendelt Windows 10-es eszközről | **Nem** | **Igen** <br> Biometrikus kóddal | **Igen**<br>biometrikus felismeréssel és PIN-kóddal |
 | **Számítógép bejelentkezés**: <br> Megosztott Windows 10-es eszközről | **Nem** | **Igen** <br> Biometrikus kóddal  | **Nem** |
@@ -67,9 +67,9 @@ A szervezeteknek a következő előfeltételeknek kell megfelelniük a jelszóva
 
 | Előfeltétel | Hitelesítő alkalmazás | FIDO2 biztonsági kulcsok |
 | --- | --- | --- |
-| Az [Azure multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) együttes regisztrálása](howto-registration-mfa-sspr-combined.md) engedélyezve van | √ | √ |
-| [A felhasználók az Azure multi-Factor Authenticationt is elvégezhetik](howto-mfa-getstarted.md) | √ | √ |
-| [A felhasználók regisztrálva vannak az Azure multi-Factor Authentication és a SSPR számára](howto-registration-mfa-sspr-combined.md) | √ | √ |
+| Az [Azure AD multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) együttes regisztrálása](howto-registration-mfa-sspr-combined.md) engedélyezve van | √ | √ |
+| [A felhasználók elvégezhetik az Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | √ | √ |
+| [A felhasználók regisztrálva vannak az Azure AD Multi-Factor Authentication és a SSPR](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [A felhasználók regisztrálták a mobileszközök Azure Active Directory](../devices/overview.md) | √ |   |
 | Windows 10 1809-es vagy újabb verzió egy támogatott böngészőben, például a Microsoft Edge vagy a Mozilla Firefox használatával <br> (67-es vagy újabb verzió). <br> *A Microsoft natív támogatás esetén a 1903-es vagy újabb verziót javasolja*. |   | √ |
 | Kompatibilis FIDO2 biztonsági kulcsok. Győződjön meg arról, hogy [Microsoft által tesztelt és ellenőrzött](./concept-authentication-passwordless.md) FIDO2 biztonsági eszközt vagy más kompatibilis FIDO2 biztonsági eszközt használ. |   | √ |
@@ -78,11 +78,11 @@ A szervezeteknek a következő előfeltételeknek kell megfelelniük a jelszóva
 
 A Windows Hello előfeltételei nagymértékben függenek attól, hogy helyszíni, hibrid vagy kizárólag felhőalapú konfigurációban végez-e üzembe helyezést. További információkért tekintse meg a [vállalati Windows Hello előfeltételeinek teljes listáját](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD-Multi-Factor Authentication
 
-A felhasználók az Azure multi-Factor Authentication regisztrációs folyamat részeként regisztrálják a jelszóval nem rendelkező metódust. A többtényezős hitelesítés a felhasználónévvel és a jelszóval együtt egy másik regisztrált módszerrel is használható tartalékként, ha bizonyos helyzetekben nem tudják használni a telefonját vagy a biztonsági kulcsát.
+A felhasználók az Azure AD Multi-Factor Authentication regisztrációs folyamat részeként regisztrálják a jelszóval nem rendelkező metódust. A többtényezős hitelesítés a felhasználónévvel és a jelszóval együtt egy másik regisztrált módszerrel is használható tartalékként, ha bizonyos helyzetekben nem tudják használni a telefonját vagy a biztonsági kulcsát.
 
-### <a name="licensing"></a>Licencelés 
+### <a name="licensing"></a>Licencek 
 A jelszó nélküli hitelesítéshez nem kell további díjat fizetni, bár bizonyos előfeltételek esetén prémium előfizetés szükséges. A [Azure Active Directory licencelése lapon](https://azure.microsoft.com/pricing/details/active-directory/)található részletes funkció-és licencelési információk. 
 
 ## <a name="develop-a-plan"></a>Terv kidolgozása
@@ -93,7 +93,7 @@ Vegye figyelembe az üzleti igényeket és az egyes hitelesítési módszerek ha
 
 Az alábbi táblázat a projekt során megvalósítandó használati eseteket ismerteti.
 
-| Terület | Description |
+| Terület | Leírás |
 | --- | --- |
 | **Hozzáférés** | A jelszó nélküli bejelentkezés a vállalati hálózaton belüli vagy kívüli vállalati vagy személyes eszközről érhető el. |
 | **Naplózás** | A használati adatok a rendszergazdák számára a közel valós időben történő naplózáshoz érhetők el. <br> A használati adatokat legalább 29 naponta letölti a vállalati rendszerbe, vagy az SIEM eszközt használja. |
@@ -140,7 +140,7 @@ Minden iOS-vagy Android-telefont erős, jelszó nélküli hitelesítő adatba ka
 
 **AD FS integráció** – ha egy felhasználó engedélyezi a jelszóval nem rendelkező Microsoft Authenticator hitelesítő adatokat, akkor az adott felhasználó számára a hitelesítés jóváhagyás céljából elküld egy értesítést. A hibrid bérlőben lévő felhasználókat a rendszer nem irányítja át az ADFS-be a bejelentkezéshez, kivéve, ha a "jelszó használata helyett" lehetőséget választja. Ez a folyamat megkerüli a helyszíni feltételes hozzáférési szabályzatokat és a továbbított hitelesítési folyamatokat is. Ha azonban *login_hint* van megadva, a rendszer továbbítja a felhasználót az ADFS-nek, és megkerüli a jelszóval nem rendelkező hitelesítő adatok használatára vonatkozó lehetőséget.
 
-**Azure multi-Factor Authentication-kiszolgáló** – a többtényezős hitelesítéshez egy szervezet helyszíni Azure MFA-kiszolgálóján keresztül engedélyező végfelhasználók létrehozhatnak és használhatnak egyszeri jelszó nélküli telefonos bejelentkezési hitelesítő adatokat. Ha a felhasználó a hitelesítő adatokkal rendelkező Microsoft Authenticator több telepítésének (5 vagy több) frissítését kísérli meg, akkor ez a változás hibát eredményezhet.
+A többtényezős hitelesítéshez egy szervezet helyszíni Azure MFA-kiszolgálóján keresztül engedélyező **Azure AD multi-Factor Authentication kiszolgáló** -végfelhasználók egyetlen jelszó nélküli telefonos bejelentkezési hitelesítő adatot hozhatnak létre és használhatnak. Ha a felhasználó a hitelesítő adatokkal rendelkező Microsoft Authenticator több telepítésének (5 vagy több) frissítését kísérli meg, akkor ez a változás hibát eredményezhet.
 
 **Eszköz regisztrálása** – a hitelesítő alkalmazás jelszavas hitelesítésre való használatához regisztrálni kell az eszközt az Azure ad-bérlőben, és nem lehet megosztott eszköz. Az eszközök csak egyetlen bérlőben regisztrálhatók. Ez a korlát azt jelenti, hogy csak egy munkahelyi vagy iskolai fiók támogatott a telefonos bejelentkezéshez a hitelesítő alkalmazás használatával.
 
@@ -243,7 +243,7 @@ Az üzembe helyezés minden egyes fázisában, a forgatókönyvek és az elfogad
 
 Az alábbiakban a Microsoft Authenticator alkalmazással való jelszavas hitelesítésre vonatkozó példákat vizsgáljuk:
 
-| Forgatókönyv | Várt eredmények |
+| Használati eset | Várt eredmények |
 | --- | --- |
 | A felhasználó regisztrálhat Microsoft Authenticator alkalmazást | A felhasználó regisztrálhatja az alkalmazást a aka.ms/mysecurityinfo |
 | A felhasználó engedélyezheti a telefonos bejelentkezést | A munkahelyi fiókhoz konfigurált telefonos bejelentkezés |
@@ -257,7 +257,7 @@ A következő példák tesztelési eseteket biztosítanak a biztonsági kulcsokk
 
 **Jelszó nélküli, Windows 10-es eszközökhöz csatlakozó Azure Active Directory**
 
-| Forgatókönyv | Várt eredmények |
+| Használati eset | Várt eredmények |
 | --- | --- |
 | A felhasználó regisztrálhat FIDO2 eszközt (1809) | A felhasználó regisztrálhat FIDO2-eszközt a beállítások > fiókok > bejelentkezési beállítások > biztonsági kulcs |
 | A felhasználó alaphelyzetbe állíthatja a FIDO2 eszközt (1809) | A felhasználó alaphelyzetbe állíthatja a FIDO2 eszközt gyártó szoftverrel |
@@ -268,7 +268,7 @@ A következő példák tesztelési eseteket biztosítanak a biztonsági kulcsokk
 
 **Jelszó nélküli bejelentkezés az Azure AD web appsbe**
 
-| Forgatókönyv | Várt eredmények |
+| Használati eset | Várt eredmények |
 | --- | --- |
 | A felhasználó regisztrálhat FIDO2-eszközt a aka.ms/mysecurityinfo-on a Microsoft Edge használatával | A regisztrációnak sikeresnek kell lennie |
 | A felhasználó regisztrálhat FIDO2-eszközt a aka.ms/mysecurityinfo-on a Firefox használatával | A regisztrációnak sikeresnek kell lennie |
@@ -280,7 +280,7 @@ A következő példák tesztelési eseteket biztosítanak a biztonsági kulcsokk
 
 Bár a jelszó-alapú hitelesítés egy egyszerű funkció, amely minimális hatással van a végfelhasználók számára, szükséges lehet a visszaállítás.
 
-A visszaállításhoz a rendszergazdának be kell jelentkeznie a Azure Active Directory portálra, ki kell választania a kívánt erős hitelesítési módszereket, és **nem**értékre kell állítani az Engedélyezés lehetőséget. Ez a folyamat kikapcsolja az összes felhasználó jelszavas funkcionalitását.
+A visszaállításhoz a rendszergazdának be kell jelentkeznie a Azure Active Directory portálra, ki kell választania a kívánt erős hitelesítési módszereket, és **nem** értékre kell állítani az Engedélyezés lehetőséget. Ez a folyamat kikapcsolja az összes felhasználó jelszavas funkcionalitását.
 
 Azok a felhasználók, akik már regisztráltak FIDO2 biztonsági eszközöket, a következő bejelentkezéskor a biztonsági eszköz használatára kérik, majd a következő hibaüzenetet látják:
 
@@ -292,7 +292,7 @@ Kövesse az alábbi, a választott módszerhez igazított lépéseket.
 
 ### <a name="required-administrative-roles"></a>Szükséges rendszergazdai szerepkörök
 
-| Azure AD-szerepkör | Description |
+| Azure AD-szerepkör | Leírás |
 | --- | --- |
 | Globális rendszergazda|A legkevésbé magas jogosultsági szintű szerepkör lehetővé tenné a közös regisztrációs élmény megvalósítását. |
 | Hitelesítés rendszergazdája | A minimális jogosultsági szintű szerepkör képes a hitelesítési módszerek megvalósítására és kezelésére. |
@@ -308,7 +308,7 @@ Kövesse a cikk lépéseit, [engedélyezze a jelszó nélküli biztonsági kulcs
 
 ### <a name="troubleshoot-phone-sign-in"></a>Telefonos bejelentkezés – problémamegoldás
 
-| Forgatókönyv | Megoldás |
+| Használati eset | Megoldás |
 | --- | --- |
 | A felhasználó nem tudja végrehajtani a kombinált regisztrációt. | Győződjön meg arról, hogy a [kombinált regisztráció](concept-registration-mfa-sspr-combined.md) engedélyezve van. |
 | A felhasználó nem engedélyezheti a telefonos bejelentkezési hitelesítő alkalmazást. | Győződjön meg arról, hogy a felhasználó hatókörben van az üzembe helyezéshez. |
@@ -316,7 +316,7 @@ Kövesse a cikk lépéseit, [engedélyezze a jelszó nélküli biztonsági kulcs
 
 ### <a name="troubleshoot-security-key-sign-in"></a>A biztonsági kulcs bejelentkezésének hibakeresése
 
-| Forgatókönyv | Megoldás |
+| Használati eset | Megoldás |
 | --- | --- |
 | A felhasználó nem tudja végrehajtani a kombinált regisztrációt. | Győződjön meg arról, hogy a [kombinált regisztráció](concept-registration-mfa-sspr-combined.md) engedélyezve van. |
 | A felhasználó nem adhat hozzá biztonsági kulcsot a [biztonsági beállításokban](https://aka.ms/mysecurityinfo). | Győződjön meg arról, hogy a [biztonsági kulcsok](howto-authentication-passwordless-security-key.md) engedélyezve vannak. |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 078b24e7fc3668e9b5832f0bfa46024db9b33848
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c154952d41db742c4d33899094a49a65fae72f26
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965556"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840100"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Gyakori kérdések az önkiszolgáló jelszó-visszaállítással kapcsolatban
 
@@ -36,12 +36,12 @@ Ez a GYIK a következő szakaszokra oszlik:
 
 * **K: a felhasználók regisztrálhatják a saját jelszó-visszaállítási adataikat?**
 
-  > **V:** Igen. Ha a jelszó alaphelyzetbe állítása engedélyezve van, és licenccel rendelkezik, a felhasználók a jelszó-visszaállítási regisztrációs portálra léphetnek https://aka.ms/ssprsetup) be a hitelesítési adataik regisztrálásához. A felhasználók a hozzáférési panelen is regisztrálhatnak ( https://myapps.microsoft.com) . Ha regisztrálni szeretne a hozzáférési panelen, ki kell választania a profil képét, válassza a **profil**lehetőséget, majd válassza a **jelszó-visszaállítási regisztráció** lehetőséget.
+  > **V:** Igen. Ha a jelszó alaphelyzetbe állítása engedélyezve van, és licenccel rendelkezik, a felhasználók a jelszó-visszaállítási regisztrációs portálra léphetnek https://aka.ms/ssprsetup) be a hitelesítési adataik regisztrálásához. A felhasználók a hozzáférési panelen is regisztrálhatnak ( https://myapps.microsoft.com) . Ha regisztrálni szeretne a hozzáférési panelen, ki kell választania a profil képét, válassza a **profil** lehetőséget, majd válassza a **jelszó-visszaállítási regisztráció** lehetőséget.
   >
-  > Ha engedélyezi a [kombinált regisztrációt](concept-registration-mfa-sspr-combined.md), a felhasználók egyszerre regisztrálhatnak a SSPR és az Azure multi-Factor Authenticationra is.
+  > Ha engedélyezi a [kombinált regisztrációt](concept-registration-mfa-sspr-combined.md), a felhasználók egyszerre regisztrálhatnak a SSPR és az Azure ad multi-Factor Authenticationra is.
 * **K: ha engedélyezem a jelszó-visszaállítást egy csoport számára, és úgy dönt, hogy mindenki számára engedélyezi azt, akkor a felhasználóknak újra regisztrálniuk kell?**
 
-  > **V.:** Nem. Azok a felhasználók, akiknek nincs szükségük a feltöltött hitelesítési adatokra, nem szükségesek az újbóli regisztráláshoz.
+  > **A:** nem. Azok a felhasználók, akiknek nincs szükségük a feltöltött hitelesítési adatokra, nem szükségesek az újbóli regisztráláshoz.
   >
   >
 * **K: a felhasználók nevében Megadhatom a jelszó-visszaállítási adataikat?**
@@ -61,7 +61,7 @@ Ez a GYIK a következő szakaszokra oszlik:
   >
 * **K: a felhasználókat regisztrálni kell a jelszó-visszaállítás használatához?**
 
-  > **V.:** Nem. Ha az nevében elegendő hitelesítési információt határoz meg, a felhasználóknak nem kell regisztrálniuk. A jelszó alaphelyzetbe állítása akkor működik, ha megfelelően formázta a megfelelő mezőkben tárolt adatait a címtárban.
+  > **A:** nem. Ha az nevében elegendő hitelesítési információt határoz meg, a felhasználóknak nem kell regisztrálniuk. A jelszó alaphelyzetbe állítása akkor működik, ha megfelelően formázta a megfelelő mezőkben tárolt adatait a címtárban.
   >
   >
 * **K: szinkronizálhatom vagy Megadhatom a hitelesítő telefont, a hitelesítési e-mail-címet vagy a másodlagos hitelesítési telefonos mezőket a felhasználók nevében?**
@@ -159,7 +159,7 @@ Ez a GYIK a következő szakaszokra oszlik:
   >
 * **K: a felhasználók többször is regisztrálhatják ugyanazt a biztonsági kérdést?**
 
-  > **V.:** Nem. Ha egy felhasználó egy adott kérdést regisztrál, akkor Másodszor nem regisztrálhat erre a kérdésre.
+  > **A:** nem. Ha egy felhasználó egy adott kérdést regisztrál, akkor Másodszor nem regisztrálhat erre a kérdésre.
   >
   >
 * **K: be lehet állítani a regisztrációhoz és az alaphelyzetbe állításhoz szükséges biztonsági kérdések minimális határértékét?**

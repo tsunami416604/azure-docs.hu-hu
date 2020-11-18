@@ -1,6 +1,6 @@
 ---
-title: A SSPR és az Azure Multi-Factor Authentication együttes regisztrálása – Azure Active Directory
-description: Ismerje meg a Azure Active Directory együttes regisztrációs élményét, amely lehetővé teszi a felhasználók számára az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás regisztrálását
+title: A SSPR és az Azure AD Multi-Factor Authentication együttes regisztrálása – Azure Active Directory
+description: Ismerje meg a Azure Active Directory együttes regisztrációs élményét, amely lehetővé teszi a felhasználók számára az Azure AD Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás regisztrálását
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e1036e63b4fdef241350786fa3a246946a9223c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 22f43c5f9848670b9df4b061c5abb6cc30912172
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378006"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839794"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Összevont biztonsági információk regisztrálása Azure Active Directory – áttekintés
 
-A kombinált regisztráció előtt a felhasználók az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszereit külön-külön regisztrálták. Az emberek zavarosak voltak, hogy hasonló módszerek voltak használatban Multi-Factor Authentication és SSPR, de mindkét szolgáltatáshoz regisztrálniuk kellett őket. A kombinált regisztráció révén a felhasználók egyszer regisztrálhatnak, és a Multi-Factor Authentication és a SSPR előnyeit is igénybe vehetik.
+A kombinált regisztráció előtt a felhasználók az Azure AD-Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszereit külön-külön regisztrálták. Az emberek zavarosak voltak, hogy hasonló módszerek voltak használatban Multi-Factor Authentication és SSPR, de mindkét szolgáltatáshoz regisztrálniuk kellett őket. A kombinált regisztráció révén a felhasználók egyszer regisztrálhatnak, és a Multi-Factor Authentication és a SSPR előnyeit is igénybe vehetik.
 
 > [!NOTE]
 > Az Azure AD-bérlők augusztus 2020 15-én kezdődően automatikusan engedélyezve lesznek a kombinált regisztrációhoz.
@@ -51,7 +51,7 @@ Ha egy adott nyelvet szeretne kényszeríteni, hozzáadhat az `?lng=<language>` 
 
 A kombinált regisztráció a következő hitelesítési módszereket és műveleteket támogatja:
 
-| Módszer | Regisztráció | Módosítás | Törlés |
+| Metódus | Regisztráció | Módosítás | Törlés |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
 | Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | Nem | Igen |
@@ -142,8 +142,8 @@ Az a felhasználó, aki korábban beállított legalább egy olyan metódust, am
 
 ## <a name="next-steps"></a>Következő lépések
 
-Első lépésként tekintse meg az oktatóanyagokat az [önkiszolgáló jelszó-visszaállítás engedélyezéséhez](tutorial-enable-sspr.md) és az [Azure-multi-Factor Authentication engedélyezéséhez](tutorial-enable-azure-mfa.md).
+Első lépésként tekintse meg az oktatóanyagokat az [önkiszolgáló jelszó-visszaállítás engedélyezéséhez](tutorial-enable-sspr.md) és az [Azure ad-multi-Factor Authentication engedélyezéséhez](tutorial-enable-azure-mfa.md).
 
 Megtudhatja, hogyan [engedélyezheti a kombinált regisztrációt a bérlőben](howto-registration-mfa-sspr-combined.md) , vagy [kényszerítheti a felhasználókat a hitelesítési módszerek ismételt regisztrálására](howto-mfa-userdevicesettings.md#manage-user-authentication-options).
 
-Áttekintheti az [Azure multi-Factor Authentication és a SSPR elérhető metódusait](concept-authentication-methods.md)is.
+Áttekintheti az [Azure AD multi-Factor Authentication és a SSPR elérhető metódusait](concept-authentication-methods.md)is.

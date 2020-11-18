@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03989e37ac05228dade2fdcda43856e8a5240865
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fe8a916f4c3ce8869b6b487e33dcdecc061f8cbf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964910"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839590"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Hitelesítési módszerek használati &i adatok (előzetes verzió)
 
-A használat & az adatok segítségével megismerheti, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás hogyan működik a szervezetében. Ez a jelentéskészítési funkció lehetővé teszi a szervezet számára, hogy megértse, milyen módszereket regisztrálnak, és hogyan használják őket.
+A használat & az adatok segítségével megismerheti, hogy az Azure AD Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatásokhoz hasonló hitelesítési módszerek hogyan működnek a szervezetben. Ez a jelentéskészítési funkció lehetővé teszi a szervezet számára, hogy megértse, milyen módszereket regisztrálnak, és hogyan használják őket.
 
 ## <a name="permissions-and-licenses"></a>Engedélyek és licencek
 
@@ -31,7 +31,7 @@ A következő szerepkörök használhatják a használatot és az információka
 - Biztonsági rendszergazda
 - Jelentések olvasója
 
-A használat és az információk eléréséhez nincs szükség további licencelésre. Az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási (SSPR) licencelési információk a [Azure Active Directory díjszabási webhelyen](https://azure.microsoft.com/pricing/details/active-directory/)találhatók.
+A használat és az információk eléréséhez nincs szükség további licencelésre. Az Azure AD Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási (SSPR) licencelési információk a [Azure Active Directory díjszabási webhelyen](https://azure.microsoft.com/pricing/details/active-directory/)találhatók.
 
 ## <a name="how-it-works"></a>Működés
 
@@ -61,11 +61,11 @@ A felső, jobb oldali sarokban lévő vezérlőelem használatával módosíthat
 
 ### <a name="registration-details"></a>Regisztráció részletei
 
-Ha a **regisztrált felhasználók**, a **felhasználók**vagy a **felhasználók számára** megfelelő csempék vagy információk lehetőségre kattint, a rendszer a regisztrációs adatokat fogja használni.
+Ha a **regisztrált felhasználók**, a **felhasználók** vagy a **felhasználók számára** megfelelő csempék vagy információk lehetőségre kattint, a rendszer a regisztrációs adatokat fogja használni.
 
 A regisztráció részletei jelentés az alábbi információkat jeleníti meg az egyes felhasználókra vonatkozóan:
 
-- Name
+- Név
 - Felhasználónév
 - Regisztrációs állapot (összes, regisztrált, nincs regisztrálva)
 - Engedélyezett állapot (mind, engedélyezve, nincs engedélyezve)
@@ -80,7 +80,7 @@ Ha a regisztrációra kattint, vagy alaphelyzetbe állítja a diagramokat, a ren
 
 A részletek visszaállítása jelentés az elmúlt 30 nap regisztrációs és alaphelyzetbe állítási eseményeit jeleníti meg, beleértve a következőket:
 
-- Name
+- Név
 - Felhasználónév
 - Szolgáltatás (összes, regisztráció, alaphelyzetbe állítás)
 - Hitelesítési módszer (alkalmazás-értesítés, alkalmazás kódja, telefonhívás, Office-hívás, SMS, E-mail, biztonsági kérdések)
@@ -92,7 +92,7 @@ A lista tetején található vezérlők használatával megkeresheti a felhaszn�
 
 Az ezekben a jelentésekben megjelenő adatszolgáltatások 60 percen belül késleltetve lesznek. Az "utolsó frissítés" mező létezik a Azure Portalban annak azonosításához, hogy milyen közelmúltbeli az adatai.
 
-A használati és adatelemzési adatok nem helyettesítik az Azure-Multi-Factor Authentication tevékenységgel kapcsolatos jelentéseket, illetve az Azure AD bejelentkezési jelentésben szereplő információkat.
+A használati és adatelemzési adatok nem helyettesíti az Azure ad Multi-Factor Authentication tevékenységi jelentéseit vagy az Azure AD bejelentkezési jelentésében található információkat.
 
 A jelentés jelenleg nem szűrhető úgy, hogy kizárja a külső felhasználókat.
 

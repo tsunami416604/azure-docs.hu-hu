@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4da1066166a3384ffb5f0f94599452829faed1b
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 026f45e715f6d442b27cdd0274f029a68330f7ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356586"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839828"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Helytelen jelszavak eltávolítása Azure Active Directory jelszavas védelem használatával
 
@@ -24,7 +24,7 @@ Számos biztonsági útmutatás azt ajánlja, hogy ne használja ugyanazt a jels
 
 Az Azure AD jelszavas védelme esetén az alapértelmezett globális tiltott jelszavak listáját a rendszer automatikusan alkalmazza az Azure AD-bérlő összes felhasználója számára. Saját üzleti és biztonsági igényeinek támogatásához megadhat bejegyzéseket egy egyéni tiltott jelszavak listájában. Ha a felhasználók megváltoztatják vagy alaphelyzetbe állítják a jelszavukat, a rendszer ellenőrzi, hogy az erős jelszavak használata megtörténik-e.
 
-Használjon olyan további szolgáltatásokat, mint az [azure multi-Factor Authentication](concept-mfa-howitworks.md), nem csak az Azure ad jelszavas védelem által kényszerített erős jelszavakat használja. További információ a bejelentkezési események több rétegének használatáról: [a PA $ $Word nem számít](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
+Használjon olyan további szolgáltatásokat, mint az [Azure ad multi-Factor Authentication](concept-mfa-howitworks.md), nem csak az Azure ad jelszavas védelem által kényszerített erős jelszavakat használja. További információ a bejelentkezési események több rétegének használatáról: [a PA $ $Word nem számít](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
 
 > [!IMPORTANT]
 > Ez a fogalmi cikk azt ismerteti, hogyan működik az Azure AD jelszavas védelem a rendszergazda számára. Ha a végfelhasználó már regisztrálva van az önkiszolgáló jelszó-visszaállításhoz, és vissza kell kérnie a fiókját, lépjen a következőre: [https://aka.ms/sspr](https://aka.ms/sspr) .
