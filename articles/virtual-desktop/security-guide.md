@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc39c1e43580c5cf302e85664783dba4509889af
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002293"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842634"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
@@ -70,7 +70,7 @@ A Windows virtuális asztal számos beépített biztonsági vezérlővel rendelk
 
 ### <a name="require-multi-factor-authentication"></a>Többtényezős hitelesítés megkövetelése
 
-A többtényezős hitelesítés megkövetelése a Windows virtuális asztal minden felhasználója és rendszergazdája számára növeli a teljes telepítés biztonságát. További információt [Az Azure multi-Factor Authentication engedélyezése a Windows rendszerű virtuális asztali környezethez](set-up-mfa.md)című témakörben talál.
+A többtényezős hitelesítés megkövetelése a Windows virtuális asztal minden felhasználója és rendszergazdája számára növeli a teljes telepítés biztonságát. További információ: [Az Azure AD multi-Factor Authentication engedélyezése a Windows rendszerű virtuális asztali gépekhez](set-up-mfa.md).
 
 ### <a name="enable-conditional-access"></a>Feltételes hozzáférés engedélyezése
 
@@ -80,7 +80,7 @@ A [feltételes hozzáférés](../active-directory/conditional-access/best-practi
 
 A naplózás engedélyezésével megtekintheti a Windows rendszerű virtuális asztallal kapcsolatos felhasználói és rendszergazdai tevékenységeket. Néhány példa a legfontosabb naplókra:
 
--   [Azure-tevékenység naplója](../azure-monitor/platform/activity-log-collect.md)
+-   [Azure-tevékenységnapló](../azure-monitor/platform/activity-log-collect.md)
 -   [Azure Active Directory tevékenység naplója](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [Munkamenet-gazdagépek](../azure-monitor/platform/agent-windows.md)

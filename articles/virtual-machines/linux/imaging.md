@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 61c21aed76cfaac5621b234b32c90877ef6faa9f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966321"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842617"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Linux-rendszerképek készítése és létrehozása az Azure-ban
 
@@ -37,7 +37,7 @@ Az Azure-lemezképek több operációsrendszer-lemezből és adatlemezből is k�
 
 Az Azure két fő képtípust kínál, általánosítva és specializálva. Az általánosított és specializált kifejezések eredetileg Windows-feltételek, amelyek az Azure-ba migrálva vannak. Ezek a típusok határozzák meg, hogy a platform hogyan fogja kezelni a virtuális gépet, amikor bekapcsolja. Mindkét típushoz előnyök és hátrányok tartoznak, és előfeltételei vannak. Az első lépések előtt tudnia kell, hogy milyen típusú rendszerképekre lesz szüksége. Az alábbi összefoglalja a forgatókönyveket és a szükséges típusokat:
 
-| Forgatókönyv      | Lemezkép típusa  | Tárolási lehetőségek |
+| Használati eset      | Lemezkép típusa  | Tárolási lehetőségek |
 | ------------- |:-------------:| :-------------:| 
 | Hozzon létre egy olyan rendszerképet, amely több virtuális gép általi használatra is konfigurálható, és beállítható az állomásnév, rendszergazdai felhasználó hozzáadása és egyéb feladatok végrehajtása az első rendszerindítás során. | Általánosított | Megosztott képgyűjtemény vagy önálló felügyelt lemezképek |
 | Rendszerkép létrehozása VM-pillanatképből vagy biztonsági másolatból | Specializált |Megosztott képgyűjtemény vagy felügyelt lemez |
@@ -83,7 +83,7 @@ A [megosztott képtárakat](shared-image-galleries.md) a lemezképek nagy lépt�
 - Lemezképek globális replikálása.
 - A könnyebb felügyelet érdekében a rendszerképek verziószámozása és csoportosítása.
 - Az Availability Zonest támogató régiókban található, a zóna redundáns tárolásával (ZRS) rendelkező, magasan elérhető rendszerképek. A ZRS nagyobb rugalmasságot biztosít a zónabeli hibákkal szemben.
-- Megosztás az előfizetések között, és akár Active Directory (AD) bérlők között a RBAC használatával.
+- Az Azure RBAC használatával megoszthatja az előfizetéseket, és akár Active Directory (AD) bérlők között is.
 - Az üzembe helyezések skálázása minden egyes régióban képreplikákkal.
 
 Magas szinten létre kell hoznia egy SIG-t, amely az alábbiakból áll:

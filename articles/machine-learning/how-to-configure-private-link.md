@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: cfa6dcb0b1fc173bdf3612308227b8309491e9fa
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2953f85a5c21cdd670d6e133d09ffacf06f178ef
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312738"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842702"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Private-hivatkozás konfigurálása Azure Machine Learning munkaterülethez
 
@@ -39,7 +39,7 @@ A privát hivatkozást tartalmazó Azure Machine Learning munkaterület nem érh
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Privát végpontot használó munkaterület létrehozása
 
-A következő módszerek egyikével hozzon létre egy olyan munkaterületet, amely privát végpontot használ. Mindkét módszerhez __egy meglévő virtuális hálózat szükséges__ :
+A következő módszerek egyikével hozzon létre egy olyan munkaterületet, amely privát végpontot használ. Mindkét módszerhez __egy meglévő virtuális hálózat szükséges__:
 
 > [!TIP]
 > Ha egy munkaterületet, privát végpontot és virtuális hálózatot szeretne egyszerre létrehozni, tekintse meg a [Azure Resource Manager sablon használata munkaterületek Azure Machine Learninghoz való létrehozásával foglalkozó](how-to-create-workspace-template.md)témakört.

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 09e0b3bbac0bdc1d268aa7f24741aeb12a7d366d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f96365bcdf64d19dc0b894f2f1230233b3137bc7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462581"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842651"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Windows rendszerű virtuális asztali (klasszikus) felügyeleti eszköz üzembe helyezése Azure Resource Manager sablonnal
 
@@ -36,7 +36,7 @@ A következő böngészők kompatibilisek a felügyeleti eszközzel:
 
 A felügyeleti eszköz telepítése előtt szüksége lesz egy Azure Active Directory (Azure AD) felhasználóra az alkalmazások regisztrálásának létrehozásához és a felügyeleti felhasználói felület telepítéséhez. A felhasználónak a következőket kell tennie:
 
-- Az Azure Multi-Factor Authentication (MFA) le van tiltva
+- Az Azure AD Multi-Factor Authentication (MFA) le van tiltva
 - Engedéllyel rendelkezik erőforrások létrehozásához az Azure-előfizetésében
 - Engedéllyel rendelkezik Azure AD-alkalmazás létrehozásához. Kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a felhasználó rendelkezik-e a szükséges engedélyekkel a [szükséges engedélyek](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)utasításait követve.
 
@@ -52,7 +52,7 @@ Az Azure Resource Management-sablon üzembe helyezéséhez kövesse az alábbi u
 2. Helyezze üzembe a sablont az Azure-ban.
     - Ha vállalati előfizetésben végez üzembe helyezést, görgessen le, és válassza **az üzembe helyezés az Azure**-ban lehetőséget.
     - Ha felhőalapú megoldás-szolgáltatói előfizetést használ, kövesse az alábbi utasításokat az Azure-ba történő üzembe helyezéshez:
-        1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása**lehetőséget.
+        1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása** lehetőséget.
         2. Nyisson meg egy szövegszerkesztőt, például a jegyzettömböt, és illessze be a hivatkozást.
         3. Közvetlenül <https://portal.azure.com/> a hashtag (#) után és azt megelőzően adja meg a (z) (@) jelet a bérlői tartománynév után. Íme egy példa a következő formátumra: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/> .
         4. Jelentkezzen be a Azure Portal felhasználóként rendszergazdai/közreműködői engedélyekkel a felhőalapú megoldás-szolgáltató előfizetéséhez.
@@ -60,8 +60,8 @@ Az Azure Resource Management-sablon üzembe helyezéséhez kövesse az alábbi u
 3. A paraméterek megadásakor tegye a következőket:
     - A **isServicePrincipal** paraméternél válassza a **false (hamis**) lehetőséget.
     - A hitelesítő adatok esetében adja meg az Azure AD-beli hitelesítő adatait a multi-Factor Authentication szolgáltatás letiltásával. A rendszer ezeket a hitelesítő adatokat fogja használni az Azure AD-alkalmazás és az Azure-erőforrások létrehozásához. További információért lásd: [mire van szükség a felügyeleti eszköz telepítéséhez](#what-you-need-to-deploy-the-management-tool).
-    - Az **applicationName**esetében használjon egy egyedi nevet az alkalmazás számára, amely regisztrálva lesz a Azure Active Directoryban. Ezt a nevet a rendszer a webalkalmazás URL-címére is felhasználja. Használhatja például a "Apr3UX" nevet.
-4. A paraméterek megadása után fogadja el a használati feltételeket, majd válassza a **vásárlás**lehetőséget.
+    - Az **applicationName** esetében használjon egy egyedi nevet az alkalmazás számára, amely regisztrálva lesz a Azure Active Directoryban. Ezt a nevet a rendszer a webalkalmazás URL-címére is felhasználja. Használhatja például a "Apr3UX" nevet.
+4. A paraméterek megadása után fogadja el a használati feltételeket, majd válassza a **vásárlás** lehetőséget.
 
 ## <a name="provide-consent-for-the-management-tool"></a>Adja meg a felügyeleti eszköz beleegyezikét
 
@@ -78,14 +78,14 @@ Az eszközre való bejelentkezéshez használható felhasználó meghatározás�
 > ![Képernyőkép, amely azt mutatja, hogy a felhasználók megadhatnak-e jóváhagyást az alkalmazásoknak csak a felhasználó számára.](../media/management-ui-user-consent-allowed.png)
 
 - Ha az érték értéke **Igen**, akkor a Azure Active Directory bármely felhasználói fiókjával bejelentkezhet, és csak az adott felhasználó beleegyezett. Ha azonban később egy másik felhasználóval jelentkezik be a felügyeleti eszközre, akkor újra kell végrehajtania ugyanezt a hozzájárulásukat.
-- Ha a **nem**értékre van állítva, akkor a Azure Active Directory globális rendszergazdájaként kell bejelentkeznie, és rendszergazdai jogosultsággal kell rendelkeznie a címtár összes felhasználója számára. Más felhasználók nem fognak megjelenni a jóváhagyásban.
+- Ha a **nem** értékre van állítva, akkor a Azure Active Directory globális rendszergazdájaként kell bejelentkeznie, és rendszergazdai jogosultsággal kell rendelkeznie a címtár összes felhasználója számára. Más felhasználók nem fognak megjelenni a jóváhagyásban.
 
 
 Ha eldöntötte, hogy melyik felhasználót fogja használni a beleegyezikés megadásához, kövesse az alábbi utasításokat az eszköz beleegyezikének biztosításához:
 
 1. Nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és keresse meg a hozzá társított URL-címet. például:  `https://rdmimgmtweb-210520190304.azurewebsites.net` .
 2. Jelentkezzen be a megfelelő Azure Active Directory felhasználói fiókkal.
-3. Ha globális rendszergazdai jogosultsággal rendelkezik, most bejelölheti a **szervezet nevében**való engedélyezéshez szükséges jelölőnégyzetet. Az **elfogadás** lehetőséget választva adja meg a beleegyező értéket.
+3. Ha globális rendszergazdai jogosultsággal rendelkezik, most bejelölheti a **szervezet nevében** való engedélyezéshez szükséges jelölőnégyzetet. Az **elfogadás** lehetőséget választva adja meg a beleegyező értéket.
 
    > [!div class="mx-imgBorder"]
    > ![A felhasználó vagy a rendszergazda által megjelenő teljes körű beleegyezikés oldalra mutató képernyőkép.](../media/management-ui-consent-page.png)

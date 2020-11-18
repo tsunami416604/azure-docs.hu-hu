@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 82220a63cfe470344951e4276bc9eaccd9600428
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8bfe6f07fead700ae71bba1c28ccb13aa700513c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677351"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842770"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Azure Data Lake Storage Gen2 optimalizálása a teljesítményhez
 
@@ -57,7 +57,7 @@ Ha az adat tárolása Data Lake Storage Gen2 történik, a fájl mérete, a fáj
 
 Az elemzési motorok (például a HDInsight és a Azure Data Lake Analytics) általában Egyfájlos terheléssel rendelkeznek. Ha az adatait sok kis fájlként tárolja, ez negatívan befolyásolhatja a teljesítményt. Általánosságban megszervezheti az adatait nagyobb méretű fájlokba a jobb teljesítmény érdekében (a 256 MB-tól a 100 GB méretig). Előfordulhat, hogy egyes motorok és alkalmazások nem képesek hatékonyan feldolgozni a 100 GB nagyobb méretű fájlokat.
 
-Időnként az adatfolyamatok korlátozott mértékben szabályozzák a sok kis fájlból álló nyers adatmennyiséget. Azt javasoljuk, hogy egy "főzési" folyamattal rendelkezzen, amely nagyobb fájlokat generál az alárendelt alkalmazásokhoz.
+Időnként az adatfolyamatok korlátozott mértékben szabályozzák a sok kis fájlból álló nyers adatmennyiséget. Általánosságban elmondható, hogy a rendszernek valamilyen folyamattal kell rendelkeznie ahhoz, hogy kisebb méretű fájlokat lehessen összesíteni a alsóbb rétegbeli alkalmazások általi használatra.
 
 ### <a name="organizing-time-series-data-in-folders"></a>Idősorozat-adattárolás mappákban történő rendszerezése
 
@@ -138,5 +138,5 @@ A fenti általános irányelvek mellett minden alkalmazás különböző paramé
 | [MapReduce a HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>MapReduce. map. Memory</li><li>MapReduce. job. Maps</li><li>MapReduce. csökkentse a memóriát</li><li>MapReduce. job. csökkenti</li></ul> |
 | [Storm on HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>Munkavégző folyamatok száma</li><li>Kiöntő végrehajtó példányainak száma</li><li>A bolt végrehajtó példányainak száma </li><li>Kiöntő feladatok száma</li><li>Bolti feladatok száma</li></ul>|
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [A Azure Data Lake Storage Gen2 áttekintése](data-lake-storage-introduction.md)

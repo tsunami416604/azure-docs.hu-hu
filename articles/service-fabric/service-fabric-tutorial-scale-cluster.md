@@ -3,13 +3,13 @@ title: Service Fabric-fürt skálázása az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan méretezhető egy Service Fabric-fürt az Azure-ban és a-ben, és hogyan tisztítható fel a megmaradt erőforrások.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 7f92ca28afd9d1894867aaa2c18df3a02ee0bd79
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716894"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842685"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt skálázása az Azure-ban
 
@@ -68,7 +68,7 @@ A biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg a fürtöt tartalmazó erőforráscsoportot (**sfclustertutorialgroup**, ha ezt az oktatóanyagot követi). 
 
-2. A bal oldali ablaktáblán válassza a **központi telepítések**lehetőséget, vagy válassza ki a **központi telepítések**területen található hivatkozást. 
+2. A bal oldali ablaktáblán válassza a **központi telepítések** lehetőséget, vagy válassza ki a **központi telepítések** területen található hivatkozást. 
 
 3. Válassza ki a legutóbbi sikeres telepítést a listából.
 
@@ -80,7 +80,7 @@ A be-és kiskálázás, illetve a horizontális skálázás a fürtben lévő cs
 
 ### <a name="update-the-template"></a>A sablon frissítése
 
-[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *parameters.js* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben, és három paramétert kell beállítania a csomópontok számának megadásához az egyes csomópontok esetében: *nt0InstanceCount*, *nt1InstanceCount*és *nt2InstanceCount*.  A *nt1InstanceCount* paraméter például beállítja a példányszámot a második csomópont típusához, és beállítja a társított virtuálisgép-méretezési csoportba tartozó virtuális gépek számát.
+[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *parameters.js* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben, és három paramétert kell beállítania a csomópontok számának megadásához az egyes csomópontok esetében: *nt0InstanceCount*, *nt1InstanceCount* és *nt2InstanceCount*.  A *nt1InstanceCount* paraméter például beállítja a példányszámot a második csomópont típusához, és beállítja a társított virtuálisgép-méretezési csoportba tartozó virtuális gépek számát.
 
 Így a *nt1InstanceCount* értékének frissítésével módosíthatja a csomópontok számát a második csomópont típusában.  Ne feledje, hogy a csomópont-típusok több mint 100 csomópontra nem méretezhetők.  Az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia. Az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
 
