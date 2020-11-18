@@ -35,6 +35,10 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
 - name: Alapelvek
   items:
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: A gyorsítótárazás működése
       href: cdn-how-caching-works.md
     - name: 'Tartalomkézbesítés, Kína'
