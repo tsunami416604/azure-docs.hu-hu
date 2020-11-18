@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 087ee796fbd3c0563b8019a062acab9c7ad80bb1
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 2ffc524c14b9ba281d7e386f7f8c726093f11dbf
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579385"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661018"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Lekérdezés Azure Cosmos DB az Azure-beli kiszolgáló nélküli SQL-készlettel az Azure szinapszis-hivatkozás (előzetes verzió)
 
@@ -25,7 +25,7 @@ Azure Cosmos DB lekérdezéséhez a [OpenRowset](develop-openrowset.md) függvé
 Ebből a cikkből megtudhatja, hogyan írhat lekérdezéseket kiszolgáló nélküli SQL-készlettel, amely az Azure Cosmos DB tárolók adatait fogja lekérdezni, amelyeken engedélyezve van a szinapszis-hivatkozás. Ezután további információt olvashat a kiszolgáló nélküli SQL-készlet nézeteinek létrehozásáról Azure Cosmos DB tárolók között, és összekapcsolhatja őket [az oktatóanyag Power bi](./tutorial-data-analyst.md) modelljeivel. 
 
 > [!IMPORTANT]
-> Ez az oktatóanyag [Azure Cosmos db jól definiált sémával](../../cosmos-db/analytical-store-introduction.md#schema-representation)rendelkező tárolót használ. A kiszolgáló nélküli SQL-készlet lekérdezési élménye [Azure Cosmos db teljes hűségű sémához](#full-fidelity-schema) olyan ideiglenes viselkedés, amely az előzetes visszajelzések alapján módosítva lesz. Ne támaszkodjon a (z `OPENROWSET` ) záradék nélküli Function séma `WITH` használatára, amely teljes körű megbízhatósági sémával rendelkező tárolóból olvas be adatokat, mert a lekérdezési élmény módosítható, és jól definiált sémával van igazítva. Küldjön visszajelzést az [Azure szinapszis Analytics visszajelzési fórumáról](https://feedback.azure.com/forums/307516-azure-synapse-analytics) , vagy lépjen kapcsolatba a [szinapszis link Product csapatával](mailto:cosmosdbsynapselink@microsoft.com) , és küldjön visszajelzést.
+> Ez az oktatóanyag egy [Azure Cosmos db jól definiált sémával](../../cosmos-db/analytical-store-introduction.md#schema-representation)rendelkező tárolót használ. A kiszolgáló nélküli SQL-készlet lekérdezési élménye, amely egy [Azure Cosmos db teljes hűségű séma](#full-fidelity-schema) számára biztosít ideiglenes viselkedést, amely az előzetes visszajelzés alapján változik. Ne használja a függvény eredményhalmaz sémáját anélkül, `OPENROWSET` `WITH` hogy a záradék egy teljes megbízhatósági sémával beolvassa az adatokat egy tárolóból, mert a lekérdezési élmény összhangban van a és a jól definiált séma alapján. Küldje el visszajelzését az [Azure szinapszis Analytics visszajelzési fórumában](https://feedback.azure.com/forums/307516-azure-synapse-analytics) , vagy lépjen kapcsolatba a [szinapszis link Product csapatával](mailto:cosmosdbsynapselink@microsoft.com) a visszajelzések megadásához.
 
 ## <a name="overview"></a>Áttekintés
 

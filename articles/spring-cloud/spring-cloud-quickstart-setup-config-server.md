@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 55e47b09ac4a6256a125a75c8a0f856e867e7c0e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 906aeaf87bfd71202064fae856a86985637985eb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337787"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659539"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Gyors útmutató: az Azure Spring Cloud konfigurációs kiszolgáló beállítása
 
@@ -57,9 +57,19 @@ Az alábbi eljárással állítható be a konfigurációs kiszolgáló a Azure P
 
 2. Az **alapértelmezett adattár** szakaszban állítsa be az **URI** -t "" értékre https://github.com/Azure-Samples/piggymetrics-config .
 
-3. A módosítások mentéséhez válassza az **Alkalmaz** elemet.
+3. Kattintson az **Érvényesítés** elemre.
 
-    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![Navigáljon a konfigurációs kiszolgálóhoz](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+
+4. Ha az ellenőrzés befejeződött, kattintson az **alkalmaz** gombra a módosítások mentéséhez.
+
+    ![A konfigurációs kiszolgáló érvényesítése](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
+
+5. A konfiguráció frissítése néhány percet is igénybe vehet.
+ 
+    ![Konfigurációs kiszolgáló frissítése](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+6. A konfigurálás befejeződése után értesítést kell kapnia.
 
 #### <a name="cli"></a>[Parancssori felület](#tab/Azure-CLI)
 
@@ -98,7 +108,7 @@ Az alábbi eljárás a konfigurációs kiszolgáló beállításainak hibakeres�
 
     [![Asc-portál állapotának állapota ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban olyan Azure-erőforrásokat hozott létre, amelyek továbbra is felhalmozzák a díjakat, ha az előfizetésben maradnak. Ha nem szeretne továbblépni a következő rövid útmutatóra, tekintse meg az [erőforrások tisztítása](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)című témakört. Ellenkező esetben folytassa a következő rövid útmutatóval:
 

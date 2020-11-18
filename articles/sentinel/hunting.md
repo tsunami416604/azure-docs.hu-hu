@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: cceeb1fc9715dfd7b1ac714c424421c51d292757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca483d993290e4d66ba257d4cb5de7fc3c952405
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85552280"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660831"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>A fenyegetések vadászata az Azure Sentinel szolgáltatással
 
@@ -45,7 +45,7 @@ Az Azure Sentinel-vadászattal az alábbi lehetőségek közül választhat:
  
 ## <a name="get-started-hunting"></a>Ismerkedés a vadászattal
 
-1. Az Azure Sentinel-portálon kattintson a **vadászat**gombra.
+1. Az Azure Sentinel-portálon kattintson a **vadászat** gombra.
   ![Az Azure Sentinel vadászatot kezd](media/tutorial-hunting/hunting-start.png)
 
 2. A **vadászati** oldal megnyitásakor az összes vadászati lekérdezés egyetlen táblában jelenik meg. A táblázat felsorolja a Microsoft biztonsági elemzők csapata által írt összes lekérdezést, valamint a létrehozott vagy módosított további lekérdezéseket. Mindegyik lekérdezés leírja, hogy mire vadászik, és milyen típusú adatfeldolgozást futtat. Ezek a sablonok különböző taktikák szerint vannak csoportosítva – a jobb oldali ikonok kategorizálják a fenyegetés típusát, például a kezdeti hozzáférést, az adatmegőrzést és a kiszűrése. Ezeket a vadászati lekérdezési sablonokat bármely mező alapján szűrheti. Bármilyen lekérdezést menthet a Kedvencek közé. Ha egy lekérdezést a Kedvencek közé ment, a lekérdezés automatikusan lefut, amikor a **vadászati** oldal elérhető. Létrehozhatja saját vadászati lekérdezését vagy klónját, és testre is szabhatja a meglévő vadászati lekérdezési sablont. 
@@ -66,7 +66,7 @@ Az Azure Sentinel-vadászattal az alábbi lehetőségek közül választhat:
 
 ## <a name="query-language"></a>Lekérdezés nyelve 
 
-Az Azure Sentinelben való vadászat a Kusto lekérdezési nyelvén alapul. A lekérdezési nyelvre és a támogatott operátorokra vonatkozó további információkért lásd a [lekérdezés nyelvi referenciája](/azure/azure-monitor/log-query/get-started-queries)című témakört.
+Az Azure Sentinelben való vadászat a Kusto lekérdezési nyelvén alapul. A lekérdezési nyelvre és a támogatott operátorokra vonatkozó további információkért lásd a [lekérdezés nyelvi referenciája](../azure-monitor/log-query/get-started-queries.md)című témakört.
 
 ## <a name="public-hunting-query-github-repository"></a>Nyilvános vadászati lekérdezés GitHub-tárháza
 
@@ -86,7 +86,7 @@ A fenti példában Kezdje a Table Name SecurityEvent, és szükség szerint adja
 
 3. Vegyen fel egy szűrőt a parancssori lekérdezésben, hogy csak a cscript.exe példányait tartalmazza.
 
-4. Csak azokat az oszlopokat adja meg, amelyeket szeretne felderíteni, és korlátozza az eredményeket 1000-re, és kattintson a **lekérdezés futtatása**gombra.
+4. Csak azokat az oszlopokat adja meg, amelyeket szeretne felderíteni, és korlátozza az eredményeket 1000-re, és kattintson a **lekérdezés futtatása** gombra.
 5. Kattintson a zöld háromszögre, és futtassa a lekérdezést. Tesztelheti a lekérdezést, és futtathatja a rendellenes viselkedés kereséséhez.
 
 ## <a name="useful-operators"></a>Hasznos operátorok
@@ -121,24 +121,24 @@ Létrehozhat vagy módosíthat egy lekérdezést, és mentheti saját lekérdez�
 
 Hozzon létre egy új vadászati lekérdezést:
 
-1. Kattintson az **Új lekérdezés** elemre, majd válassza a **Mentés**lehetőséget.
-2. Töltse ki az összes üres mezőt, és kattintson a **Mentés**gombra.
+1. Kattintson az **Új lekérdezés** elemre, majd válassza a **Mentés** lehetőséget.
+2. Töltse ki az összes üres mezőt, és kattintson a **Mentés** gombra.
 
    ![Új lekérdezés](./media/tutorial-hunting/new-query.png)
 
 Meglévő vadászati lekérdezés klónozása és módosítása:
 
 1. Válassza ki a vadászati lekérdezést a módosítani kívánt táblázatban.
-2. Válassza ki a módosítani kívánt lekérdezés sorában található három pontot (...), majd válassza a **klónozási lekérdezés**elemet.
+2. Válassza ki a módosítani kívánt lekérdezés sorában található három pontot (...), majd válassza a **klónozási lekérdezés** elemet.
 
    ![klónozási lekérdezés](./media/tutorial-hunting/clone-query.png)
  
 
-3. Módosítsa a lekérdezést, és válassza a **Létrehozás**lehetőséget.
+3. Módosítsa a lekérdezést, és válassza a **Létrehozás** lehetőséget.
 
    ![egyéni lekérdezés](./media/tutorial-hunting/custom-query.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan futtathat egy vadászati vizsgálatot az Azure Sentinel használatával. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
 

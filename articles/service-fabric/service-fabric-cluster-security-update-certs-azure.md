@@ -3,12 +3,12 @@ title: Tanúsítványok kezelése Azure Service Fabric-fürtben
 description: Útmutatás új tanúsítványok hozzáadásához, az átváltási tanúsítványhoz és a tanúsítvány eltávolításához egy Service Fabric-fürtön.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd4440d76bed9d110c13baab9f4e67b3a5c64c0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869745"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660899"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Tanúsítványok hozzáadása és törlése Service Fabric-fürtön az Azure-ban
 Javasoljuk, hogy ismerkedjen meg a Service Fabric X. 509 tanúsítványokkal, és Ismerje meg a [fürt biztonsági forgatókönyveit](service-fabric-cluster-security.md). A folytatás előtt meg kell ismernie, hogy mi a fürt tanúsítványa, és mire használható.
@@ -18,7 +18,7 @@ Az Azure Service Fabric SDK alapértelmezett tanúsítvány-betöltési viselked
 A Service Fabric lehetővé teszi két fürtcsomópont, egy elsődleges és egy másodlagos beállítás megadását, ha a fürt létrehozása során konfigurálja a tanúsítvány biztonságát, az Ügyféltanúsítványok mellett. Tekintse át az [Azure-fürtök portálon keresztüli létrehozását](service-fabric-cluster-creation-via-portal.md) , vagy hozzon létre [egy Azure-fürtöt Azure Resource Manager segítségével](service-fabric-cluster-creation-via-arm.md) a létrehozási idő beállításával kapcsolatos részletekért. Ha csak egy fürtöt ad meg a létrehozás ideje alatt, akkor az elsődleges tanúsítványként lesz használva. A fürt létrehozása után hozzáadhat egy új tanúsítványt másodlagosként.
 
 > [!NOTE]
-> Biztonságos fürt esetén mindig szüksége lesz legalább egy érvényes (nem visszavont és nem lejárt) fürt tanúsítványára (elsődleges vagy másodlagos) (ha nem, a fürt működése leáll). 90 nappal azelőtt, hogy az összes érvényes tanúsítvány eléri a lejáratot, a rendszer figyelmeztetési nyomkövetést és figyelmeztetési állapotot jelző eseményt hoz létre a csomóponton. Jelenleg nincs e-mail-cím vagy más értesítés, amelyet Service Fabric küld el ebben a cikkben. 
+> Biztonságos fürt esetén mindig szüksége lesz legalább egy érvényes (nem visszavont és nem lejárt) fürt tanúsítványára (elsődleges vagy másodlagos) (ha nem, a fürt működése leáll). 90 nappal azelőtt, hogy az összes érvényes tanúsítvány eléri a lejáratot, a rendszer egy figyelmeztetési nyomkövetést és egy figyelmeztetési állapotra vonatkozó eseményt hoz létre a csomóponton. Ezek jelenleg csak az értesítések Service Fabric küldése a tanúsítvány lejáratával kapcsolatban.
 > 
 > 
 
@@ -26,7 +26,7 @@ A Service Fabric lehetővé teszi két fürtcsomópont, egy elsődleges és egy 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>Másodlagos fürthöz tartozó tanúsítvány hozzáadása a portál használatával
-A másodlagos fürt tanúsítványa nem adható hozzá a Azure Portalon keresztül, az Azure PowerShell használatával. A folyamatot a dokumentum későbbi részében ismertetjük.
+A másodlagos fürt tanúsítványa nem adható hozzá a Azure Portalon keresztül; Azure PowerShell használata. A folyamatot a dokumentum későbbi részében ismertetjük.
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>Fürt tanúsítványának eltávolítása a portál használatával
 Biztonságos fürt esetén mindig szüksége lesz legalább egy érvényes (nem visszavont és nem lejárt) tanúsítványra. A legtávolabbi lejárati dátummal üzembe helyezett tanúsítvány használatban lesz, és a rendszer eltávolítja a fürtöt a fürt működésének leállítása érdekében. Győződjön meg arról, hogy csak a lejárt tanúsítvány, vagy egy nem használt tanúsítvány van, amely lejár a leghamarabb.
@@ -208,7 +208,7 @@ Telepítse a sablont az erőforráscsoporthoz. Használja ugyanazt az erőforrá
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
-Íme egy kitöltött példa ugyanarra a powershellre.
+Íme egy kitöltött példa ugyanarra a PowerShellre.
 
 ```powershell
 $ResourceGroup2 = "chackosecure5"

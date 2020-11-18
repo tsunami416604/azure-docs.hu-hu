@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: cc2c40dd0b61f917da86d67188f4b503ca9b9298
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: c8e454f523f081681d359dfd852c5f88d69a99d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579351"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661052"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -35,7 +35,7 @@ from openrowset(
     format = 'parquet') as rows
 ```
 
-Győződjön meg arról, hogy hozzáfér a fájlhoz. Ha a fájlt SAS-kulccsal vagy egyéni Azure-identitással védi, a [kiszolgáló szintű hitelesítő adatokat kell beállítania az SQL-bejelentkezéshez](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
+Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájl SAS-kulccsal vagy egyéni Azure-identitással védett, akkor az SQL-bejelentkezéshez be kell állítania a [kiszolgálói szintű hitelesítő adatokat](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy UTF-8 adatbázis-rendezést használ (például `Latin1_General_100_CI_AS_SC_UTF8` ), mert a parketta-fájlokban lévő karakterlánc-értékek UTF-8 kódolással vannak kódolva.

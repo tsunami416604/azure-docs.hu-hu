@@ -3,12 +3,12 @@ title: Gyakori kérdések – SAP HANA-adatbázisok biztonsági mentése Azure-b
 description: Ebből a cikkből megismerheti a SAP HANA adatbázisok a Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d6012ec064b5ec582896ac3484161a6e25f2bf
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86513506"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659964"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -125,6 +125,43 @@ A jelenleg támogatott visszaállítási típusok megtekintéséhez tekintse meg
 
 Igen, a SLES-on futó HANA-adatbázison aktiválható streaming Backups használatával visszaállíthatja egy RHEL HANA rendszerre, és fordítva. Ez azt jelenti, hogy a rendszer a folyamatos átviteli biztonsági mentést is lehetővé teszi. Azonban győződjön meg arról, hogy a HANA rendszer, amelyet vissza szeretne állítani, és a visszaállításhoz használt HANA-rendszer egyaránt kompatibilis az SAP alapján történő visszaállítással. Tekintse meg SAP HANA Megjegyzés [1642148](https://launchpad.support.sap.com/#/notes/1642148) , hogy mely típusú visszaállítási típusok kompatibilisek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="policy"></a>Szabályzat
+
+### <a name="different-options-available-during-creation-of-a-new-policy-for-sap-hana-backup"></a>A SAP HANA biztonsági mentésére vonatkozó új szabályzat létrehozása során különböző lehetőségek érhetők el
+
+A szabályzat létrehozása előtt törölni kell a RPO és a RTO követelményeit, valamint a kapcsolódó költségeket.
+
+A RPO (helyreállítási pont-célkitűzés) azt jelzi, hogy mennyi adatvesztés van a felhasználó vagy az ügyfél számára. Ezt a napló biztonsági mentési gyakorisága határozza meg. A gyakori naplózási biztonsági másolatok azt jelzik, hogy az alacsonyabb RPO és a Azure Backup szolgáltatás által támogatott minimális érték 15 perc, azaz a napló biztonsági mentési gyakorisága 15 perc vagy magasabb lehet.
+
+RTO (helyreállítási idő – célkitűzés) – azt jelzi, hogy az adatvesztési forgatókönyv után milyen gyorsan kell visszaállítani az adott időpontot az utolsó elérhető időpontra. Ez a HANA által alkalmazott helyreállítási stratégiától függ, amely általában attól függ, hogy hány fájl szükséges a visszaállításhoz. Ez a költségeket is érinti, és az alábbi táblázat segítséget nyújt az összes forgatókönyv és azok következményeinek megismeréséhez.
+
+|Biztonsági mentési szabályzat  |RTO  |Költség  |
+|---------|---------|---------|
+|Napi teljes + naplók     |   A leggyorsabb, mivel csak egy teljes másolási és szükséges naplókra van szükség az időponthoz tartozó visszaállításhoz      |    Costliest beállítás, mivel a teljes másolás naponta történik, így egyre több és több adat gyűlik össze a háttérben, amíg meg nem történik a megőrzési idő   |
+|Hetente teljes + napi különbözet + napló     |   A fentinél lassabban, de az alábbinál gyorsabb, mivel egy teljes másolási és egy különbözeti másolási + naplóra van szükség az időponthoz tartozó visszaállításhoz      |    Kevésbé költséges lehetőség, mivel a napi különbözet általában kisebb, mint a teljes, és a teljes másolat csak hetente egyszer kerül beszámításra      |
+|Hetente teljes + napi növekmény + napló     |  A leglassabb, mivel egy teljes másolási + "n" növekmény + naplóra van szükség az időponthoz tartozó helyreállításhoz       |     A legdrágább lehetőség, mivel a napi növekmény kisebb a különbözetnél, és a teljes másolat csak hetente jelenik meg.    |
+
+> [!NOTE]
+> A fenti lehetőségek a leggyakoribbak, de nem az egyetlen lehetőség. Például az egyik heti teljes biztonsági mentés + különbözet hetente kétszer és naplókban is szerepelhet.
+
+Ezért az RPO és a RTO célkitűzések és a költséghatékonyság alapján választhatják ki a házirend-változatot.
+
+### <a name="impact-of-modifying-a-policy"></a>A szabályzat módosításának következményei
+
+A biztonsági mentési elem házirendjének az 1. házirend (P1) és a 2. házirend (P2) vagy az 1. (P1) szerkesztési szabályra való váltásának következményeit figyelembe véve kell szem előtt tartani.
+
+- Az összes módosítás visszamenőlegesen is érvényben van. A legújabb biztonsági mentési szabályzatot a korábban végrehajtott helyreállítási pontokra is alkalmazza a rendszer. Tegyük fel például, hogy a napi teljes megőrzés 30 nap, a jelenleg aktív házirend szerint pedig 10 helyreállítási pont lett elvégezve. Ha a napi teljes megőrzés 10 napra módosul, akkor az előző pont lejárati idejét is újraszámítja a kezdési idő + 10 nap, és törölheti, ha lejártak.
+- A módosítás hatóköre magában foglalja a biztonsági mentés napját, a biztonsági mentés típusát és a megőrzési időt is. Például: Ha egy házirendet vasárnap teljes egészében módosítanak a vasárnaponként, a rendszer minden korábbi, nem vasárnapi teljes betöltést megjelöl törlésre.
+- A szülő nem törlődik, amíg a gyermek aktív/nem járt le. Minden biztonsági mentési típushoz a jelenleg aktív házirend szerint lejárati idő tartozik. A teljes biztonsági mentési típust azonban szülőként kell tekinteni a következő "különbözeti", "növekményes" és "naplók" számára. A "különbözet" és a "log" nem szülő másnak. A "növekményes" lehet egy szülő a következő "növekményes" értékre. Még ha a "Parent" jelölése törlésre van megjelölve, a rendszer valójában nem törli őket, ha a gyermek "különbségek" vagy "naplók" nem jártak le. Ha például egy házirendet a napi teljes és heti teljes egészében módosítanak a vasárnapra, a rendszer minden korábbi, nem vasárnapi teljes betöltést megjelöl törlésre. De a rendszer valójában nem törli őket, amíg a korábban a nap folyamán elkészített naplók lejárnak. Más szóval a napló legutóbbi időtartama szerint megőrzi őket. A naplók lejárta után a rendszer a naplókat és a teljes betelteket is törli.
+
+Ezeket az alapelveket követve az alábbi táblázatból megismerheti a szabályzatok változásának következményeit.
+
+|Régi házirend/új szabályzat  |Napi teljes és napló  | Hetente betelik + napi különbözet + naplók  |Hetente betelik + napi növekmények + naplók  |
+|---------|---------|---------|---------|
+|Napi teljes és napló     |   -      |    Az előző, a hét napján nem szereplő teljes összeg törlésre van megjelölve, de a napló megőrzési időszaka alatt marad.     |    Az előző, a hét napján nem szereplő teljes összeg törlésre van megjelölve, de a napló megőrzési időszaka alatt marad.     |
+|Hetente betelik + napi különbözet + naplók     |   A rendszer újraszámítja az előző heti teljes adatmegőrzést a legutóbbi szabályzatnak megfelelően. Az előző különbözeteket azonnal törli a rendszer      |    -     |    Az előző különbözeteket azonnal törli a rendszer     |
+|Hetente betelik + napi növekmények + naplók     |     A rendszer újraszámítja az előző heti teljes adatmegőrzést a legutóbbi szabályzatnak megfelelően. Az előző növekményeket azonnal törli a rendszer    |     Az előző növekményeket azonnal törli a rendszer    |    -     |
+
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést](./backup-azure-sap-hana-database.md) az Azure-beli virtuális gépeken futó SAP HANA adatbázisokról.

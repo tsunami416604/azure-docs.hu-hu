@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/01/2020
+ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: b193247fee843796da0cb2fcfc1a874b1a1b72fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00ba711661d69bbaf53ff51fb2cb833d9b1c1ae2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660921"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660423"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box korlátok
 
@@ -28,7 +28,7 @@ Vegye figyelembe ezeket a korlátokat a Microsoft Azure Data Box üzembe helyez�
 - Data Box legfeljebb 500 000 000 fájlt tárolhat az importáláshoz és az exportáláshoz.
 - A Data Box legfeljebb 512 tárolót vagy megosztást támogat a felhőben. A felhasználói megosztáson belüli legfelső szintű könyvtárak tárolók vagy Azure-fájlmegosztás formájában válnak elérhetővé a felhőben. 
 - Data Box a használati kapacitás 80 TB-nál kevesebb lehet, mert ReFS a metaadatokat.
-- Data Box egyszerre legfeljebb 5 ügyfélkapcsolatot támogat egy NFS-megosztáson. 
+- Data Box egyszerre legfeljebb 10 ügyfélkapcsolatot támogat egy NFS-megosztáson.
 
 ## <a name="azure-storage-limits"></a>Azure Storage-korlátok
 

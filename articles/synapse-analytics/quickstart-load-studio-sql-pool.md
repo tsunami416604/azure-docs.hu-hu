@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 05/06/2020
+ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2a4740699d70601591645aa0d3183531a6687be6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3b32e7a1df0dbbf4d43a73f1e3e409a904ab88a3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324942"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660083"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Gyors útmutató: tömeges betöltés a szinapszis SQL-sel
 
@@ -39,7 +39,8 @@ Mostantól egyszerűen, a szinapszis Studióban az alábbi területekre kattintv
 
 ### <a name="steps"></a>Lépések
 
-1. Válassza ki a Storage-fiókot és a fájl vagy mappa betöltését a forrás tárolási hely paneljén: a ![ forrás helyének kiválasztása](./sql/media/bulk-load/bulk-load-source-location.png)
+1. Válassza ki a Storage-fiókot és a betöltéshez használt fájlt vagy mappát a forrás tárolási hely paneljén. A varázsló automatikusan megkísérli a parketta-fájlok észlelését. Ha a Parquet fájltípust nem lehet megerősíteni, a rendszer alapértelmezés szerint tagolt szöveget (CSV) fog használni. 
+   ![Forrás helyének kiválasztása](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. Válassza ki a fájlformátum beállításait, beleértve azt a Storage-fiókot, ahol el szeretné írni az elutasított sorokat (hibakód). Jelenleg csak a CSV-és a parketta-fájlok támogatottak.
 
@@ -47,9 +48,14 @@ Mostantól egyszerűen, a szinapszis Studióban az alábbi területekre kattintv
 
 3. Az "adatok előnézete" lehetőség kiválasztásával megtekintheti, hogy a MÁSOLÁSi utasítás hogyan elemezi a fájlt, hogy segítsen a fájlformátum beállításainak konfigurálásában. Válassza az "adatok előnézete" lehetőséget, amikor módosít egy fájlformátum-beállítást, hogy megtudja, hogyan elemezze a fájlt a frissített beállítással: ![ adatok megtekintése](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
+> [!NOTE]  
+>
+> - Az adatmegjelenítés több karakterből álló lezárókkal nem támogatott a tömeges betöltés varázslóban. A tömeges betöltés varázsló egyetlen oszlopon belül megtekinti az adatmegjelenítést, ha meg van adva egy többkarakteres mező lezáró értéke. 
+> - A több karakterből álló sorok lezáróinak megadása a COPY utasításban támogatott. Ez azonban nem támogatott a tömeges betöltés varázslóban, ahol hiba történik.
+
 4. Válassza ki azt a dedikált SQL-készletet, amelyet a betöltéshez használ, beleértve azt is, hogy a terhelés egy meglévő táblára vagy új táblára vonatkozik-e: a ![ célhely kiválasztása](./sql/media/bulk-load/bulk-load-target-location.png)
 
-5. Válassza az "oszlop-hozzárendelés konfigurálása" lehetőséget, és győződjön meg arról, hogy rendelkezik a megfelelő oszlop-hozzárendeléssel. Az új táblák esetében az oszlop-hozzárendelés konfigurálása kritikus fontosságú a cél oszlop adattípusok frissítéséhez: ![ oszlop-hozzárendelés konfigurálása](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. Válassza az "oszlop-hozzárendelés konfigurálása" lehetőséget, és győződjön meg arról, hogy rendelkezik a megfelelő oszlop-hozzárendeléssel. Megjegyzés: a rendszer automatikusan észleli az oszlopok neveit, ha engedélyezve van az "oszlopfejlécek következtetése". Az új táblák esetében az oszlop-hozzárendelés konfigurálása kritikus fontosságú a cél oszlop adattípusok frissítéséhez: ![ oszlop-hozzárendelés konfigurálása](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
 
 6. Válassza a "parancsfájl megnyitása" lehetőséget, és egy T-SQL-szkriptet fog generálni a MÁSOLÁSi utasítással, amely betöltődik a adattóban: ![ az SQL-szkript megnyitása](./sql/media/bulk-load/bulk-load-target-final-script.png)
 

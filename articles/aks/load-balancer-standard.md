@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan használhatja a nyilvános Load balancert egy standard SKU-val, hogy szolgáltatásai elérhetők legyenek az Azure Kubernetes szolgáltatással (ak).
 services: container-service
 ms.topic: article
-ms.date: 06/14/2020
+ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 51cb79e942b9d92876bd4d0e2cc27bb5ee0337bf
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: b42a952b096f533f916879a11fdb6b6583fa8592
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634871"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660355"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Nyilvános standard Load Balancer használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -87,6 +87,9 @@ A standard SKU nyilvános terheléselosztó használatakor lehetőség van a lé
 * A lefoglalt kimenő portok számának testreszabása a fürt mindegyik csomópontján
 * Az üresjárati kapcsolatok időtúllépési beállításának konfigurálása
 
+> [!IMPORTANT]
+> Egy adott időpontban csak egy kimenő IP-beállítás (felügyelt IP-címek, saját IP-cím vagy IP-előtag) használható.
+
 ### <a name="scale-the-number-of-managed-outbound-public-ips"></a>A felügyelt kimenő nyilvános IP-címek számának skálázása
 
 Azure Load Balancer kimenő kapcsolatot biztosít egy virtuális hálózattól a bejövő adatok mellett. A kimenő szabályok egyszerűvé teszik a nyilvános standard Load Balancer kimenő hálózati címfordításának konfigurálását.
@@ -110,7 +113,7 @@ az aks update \
     --load-balancer-managed-outbound-ip-count 2
 ```
 
-A fenti példa a felügyelt kimenő nyilvános IP-címek számát állítja be a *myResourceGroup* -ben található *myAKSCluster* - *fürt esetében.* 
+A fenti példa a felügyelt kimenő nyilvános IP-címek számát állítja be a *myResourceGroup*-ben található *myAKSCluster* - *fürt esetében.* 
 
 A **`load-balancer-managed-ip-count`** paraméter használatával beállíthatja a felügyelt kimenő nyilvános IP-címek kezdeti számát a fürt létrehozásakor a paraméter hozzáfűzésével **`--load-balancer-managed-outbound-ip-count`** és a kívánt értékre való beállításával. A felügyelt kimenő nyilvános IP-címek alapértelmezett száma 1.
 
@@ -120,10 +123,11 @@ Ha *standard* SKU Load balancert használ, alapértelmezés szerint az Kabai fü
 
 Az AK által létrehozott nyilvános IP-címek egy AK által felügyelt erőforrásnak tekintendők. Ez azt jelenti, hogy a nyilvános IP-cím életciklusát az AK felügyeli, és nem igényel felhasználói beavatkozást közvetlenül a nyilvános IP-erőforráson. Azt is megteheti, hogy a fürt létrehozásakor saját egyéni nyilvános IP-címet vagy nyilvános IP-előtagot rendel hozzá. Az egyéni IP-címek egy meglévő fürt terheléselosztó-tulajdonságain is frissíthetők.
 
-> [!NOTE]
-> Az egyéni nyilvános IP-címeket a felhasználónak kell létrehoznia és birtokolnia. Az AK által létrehozott felügyelt nyilvános IP-címek nem használhatók fel a saját egyéni IP-címének használatára, mivel a felügyeleti ütközéseket okozhatnak.
+A saját nyilvános IP-cím vagy előtag használatára vonatkozó követelmények:
 
-A művelet megkezdése előtt győződjön meg arról, hogy megfelel a kimenő IP-címek vagy a kimenő IP-előtagok konfigurálásához szükséges előfeltételeknek [és megkötéseknek](../virtual-network/public-ip-address-prefix.md#constraints) .
+- Az egyéni nyilvános IP-címeket a felhasználónak kell létrehoznia és birtokolnia. Az AK által létrehozott felügyelt nyilvános IP-címek nem használhatók fel a saját egyéni IP-címének használatára, mivel a felügyeleti ütközéseket okozhatnak.
+- Győződjön meg arról, hogy az AK-fürt identitása (egyszerű szolgáltatásnév vagy felügyelt identitás) rendelkezik a kimenő IP-címek eléréséhez szükséges engedélyekkel. A [szükséges nyilvános IP-engedélyek listájának](kubernetes-service-principal.md#networking)megfelelően.
+- Győződjön meg arról, hogy megfelel a kimenő IP-címek vagy a kimenő IP-előtagok konfigurálásához szükséges előfeltételeknek [és megkötéseknek](../virtual-network/public-ip-address-prefix.md#constraints) .
 
 #### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>A fürt frissítése saját kimenő nyilvános IP-címmel
 
@@ -266,7 +270,7 @@ Ha várhatóan több rövid életű kapcsolatra van szüksége, és nem áll ren
  
 *outboundIPs* \* 64 000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
-Ha például 3 *nodeVMs* van, és 50 000 *desiredAllocatedOutboundPorts* , legalább 3 *outboundIPs* kell lennie. Javasoljuk, hogy a szükségesnél újabb kimenő IP-kapacitást építsen ki. Emellett a fürt automéretezőjét és a csomópont-készlet frissítésének lehetőségét is figyelembe kell vennie a kimenő IP-kapacitás kiszámításakor. A fürt autoskálázása esetében tekintse át az aktuális csomópontok darabszámát és a csomópontok maximális darabszámát, és használja a magasabb értéket. A frissítéshez az összes olyan csomópont-készlethez, amely lehetővé teszi a frissítését, egy további csomópontos virtuális gép számára.
+Ha például 3 *nodeVMs* van, és 50 000 *desiredAllocatedOutboundPorts*, legalább 3 *outboundIPs* kell lennie. Javasoljuk, hogy a szükségesnél újabb kimenő IP-kapacitást építsen ki. Emellett a fürt automéretezőjét és a csomópont-készlet frissítésének lehetőségét is figyelembe kell vennie a kimenő IP-kapacitás kiszámításakor. A fürt autoskálázása esetében tekintse át az aktuális csomópontok darabszámát és a csomópontok maximális darabszámát, és használja a magasabb értéket. A frissítéshez az összes olyan csomópont-készlethez, amely lehetővé teszi a frissítését, egy további csomópontos virtuális gép számára.
 
 - Ha a *IdleTimeoutInMinutes* eltérő értékre állítja be, mint az alapértelmezett 30 perc, akkor vegye figyelembe, hogy a számítási feladatoknak mennyi ideig kell kiadniuk a kimenő kapcsolatokat. Azt is vegye figyelembe, hogy egy *standard* SKU-Load Balancer alapértelmezett időtúllépési értéke 4 perc. Egy olyan *IdleTimeoutInMinutes* -érték, amely pontosabban tükrözi az adott AK-beli munkaterhelést, csökkentheti a SNAT okozta kimerültséget, mivel a kapcsolatok már nincsenek használatban.
 
@@ -377,7 +381,7 @@ A következő korlátozások érvényesek a terheléselosztó és a *szabványos
 * *Standard szintű* Az SKU-terheléselosztó csak a *szabványos* SKU IP-címeket támogatja.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Kubernetes Services szolgáltatásról a [Kubernetes Services dokumentációjában][kubernetes-services].
 

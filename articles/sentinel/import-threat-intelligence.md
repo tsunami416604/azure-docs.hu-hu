@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: 19ad45eec78d53261bf1781808339152c69a0136
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: bde11c8e06891025be96810acf6d87952a3d8d2f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638835"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660780"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Fenyegetésfelderítési adatok importálása az Azure Sentinelbe
 
@@ -44,7 +44,7 @@ Ugyanúgy, mint az Azure Sentinel összes többi esemény-adatkészlete, az adat
 
 ### <a name="adding-threat-indicators-to-azure-sentinel-with-the-threat-intelligence-platforms-data-connector"></a>Fenyegetésekkel kapcsolatos mutatók hozzáadása az Azure Sentinelhez a Threat Intelligence Platforms adatösszekötővel
 
-Számos szervezet használja a fenyegetéseket kezelő platform (TIP) megoldásait különböző forrásokból származó veszélyforrások összevonására, a platformon belüli információk beszerzésére, majd annak kiválasztására, hogy milyen veszélyforrások vonatkoznak a különböző biztonsági megoldásokra, például a hálózati eszközökre, a komplex veszélyforrások elleni védelmi megoldásokra vagy a SIEM-re, például az Azure Sentinel használatára. Ha a szervezete egy integrált TIP-megoldást használ, például a MICSKÓ, a Anomali ThreatStream, a ThreatConnect, a EclecticIQ platform, a ThreatQ veszélyforrások felderítése platform vagy a Palo Alto Networks MineMeld, a **veszélyforrások intelligencia platformok adatösszekötője** lehetővé teszi, hogy a tippet használja a veszélyforrások az Azure sentinelbe való importálására. Mivel az összekötő együttműködik a [Microsoft Graph Security TIINDICATORS API](https://docs.microsoft.com/graph/api/resources/tiindicator) -val, az összekötőt bármely egyéni veszélyforrások elleni intelligencia platform használhatja, hogy kihasználja a tiIndicators API-t az Azure Sentinel (és más Microsoft biztonsági megoldások, például a Defender ATP) számára.
+Számos szervezet használja a fenyegetéseket kezelő platform (TIP) megoldásait különböző forrásokból származó veszélyforrások összevonására, a platformon belüli információk beszerzésére, majd annak kiválasztására, hogy milyen veszélyforrások vonatkoznak a különböző biztonsági megoldásokra, például a hálózati eszközökre, a komplex veszélyforrások elleni védelmi megoldásokra vagy a SIEM-re, például az Azure Sentinel használatára. Ha a szervezete egy integrált TIP-megoldást használ, például a MICSKÓ, a Anomali ThreatStream, a ThreatConnect, a EclecticIQ platform, a ThreatQ veszélyforrások felderítése platform vagy a Palo Alto Networks MineMeld, a **veszélyforrások intelligencia platformok adatösszekötője** lehetővé teszi, hogy a tippet használja a veszélyforrások az Azure sentinelbe való importálására. Mivel az összekötő együttműködik a [Microsoft Graph Security TIINDICATORS API](/graph/api/resources/tiindicator) -val, az összekötőt bármely egyéni veszélyforrások elleni intelligencia platform használhatja, hogy kihasználja a tiIndicators API-t az Azure Sentinel (és más Microsoft biztonsági megoldások, például a Defender ATP) számára.
 
 :::image type="content" source="media/import-threat-intelligence/threat-intel-import-path.png" alt-text="Fenyegetési intelligencia importálási útvonala":::
 
@@ -116,7 +116,7 @@ Most, hogy az alkalmazás regisztrálva van, és engedélyt kapott, az utolsó d
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="Ügyfél titkos kulcsának beolvasása":::
 
-1. Kattintson a **Hozzáadás** gombra, és **Győződjön meg róla, hogy az ügyfél titkos kulcsát másolja** , mert nem tudja újra beolvasni ezt a titkot, ha az oldalról navigál. Erre az értékre szüksége lesz a tipp vagy az egyéni megoldás konfigurálásakor.
+1. Kattintson a **Hozzáadás** gombra, és **Győződjön meg róla, hogy az ügyfél titkos kulcsát másolja**, mert nem tudja újra beolvasni ezt a titkot, ha az oldalról navigál. Erre az értékre szüksége lesz a tipp vagy az egyéni megoldás konfigurálásakor.
 
 #### <a name="input-this-information-into-your-tip-solution-or-custom-application"></a>Adja meg ezt az információt a TIP-megoldásban vagy az egyéni alkalmazásban
 
@@ -285,7 +285,7 @@ Az alábbi lépéseket követve importálhatja a veszélyforrások kijelzőit az
 
 1. Válassza az **adatösszekötők** lehetőséget a menüből, válassza a **veszélyforrások felderítése – TAXII** lehetőséget az összekötők katalógusában, majd kattintson az **összekötő megnyitása lapra** .
 
-1. Adja meg a TAXII-kiszolgáló gyűjteményének **nevét** , az **API-gyökér URL-címét** , a **gyűjtemény azonosítóját** , a **felhasználónevet** (ha szükséges) és a **jelszót** (ha szükséges), majd kattintson a **Hozzáadás** gombra.
+1. Adja meg a TAXII-kiszolgáló gyűjteményének **nevét** , az **API-gyökér URL-címét**, a **gyűjtemény azonosítóját**, a **felhasználónevet** (ha szükséges) és a **jelszót** (ha szükséges), majd kattintson a **Hozzáadás** gombra.
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="TAXII-kiszolgálók konfigurálása":::
  
@@ -336,7 +336,7 @@ A veszélyforrások címkézésével egyszerűen csoportosíthatja őket, így k
 
 Az Azure Sentinelbe bekerült a veszélyforrások mutatói; látta, hogyan tekintheti meg és kezelheti őket; most lássuk, mit tehetnek. A fenyegetési mutatók legfontosabb felhasználási esete az olyan SIEM-megoldások esetében, mint az Azure Sentinel, a Power Analytics-szabályok.  Ezek a mutatókon alapuló szabályok összehasonlítják az adatforrásokból származó nyers eseményeket a fenyegetési mutatók alapján a szervezeten belüli biztonsági fenyegetések észlelése érdekében. Az Azure Sentinel **Analyticsben** olyan elemzési szabályokat hozhat létre, amelyek ütemezett alapon futnak, és biztonsági riasztásokat állítanak elő. A szabályokat a lekérdezések vezérlik, valamint olyan konfigurációkat is, amelyek meghatározzák, hogy a szabály milyen gyakran fusson, milyen típusú lekérdezési eredményeket kell létrehoznia a biztonsági riasztások létrehozásához, valamint a riasztások létrehozásakor elindított automatizált válaszokat.
 
-Habár a teljesen új elemzési szabályokat is létrehozhat, az Azure Sentinel a Microsoft biztonsági mérnökök által létrehozott beépített szabálykészlet-sablonokat is tartalmaz, amelyeket az Ön igényei szerint használhat, vagy módosíthatja. Könnyen azonosíthatja a veszélyforrásokat használó szabályok sablonjait, mivel azok a " **ti Map**..." kezdetű címmel vannak ellátva. Ezek a szabályok ugyanúgy működnek, mint az egyetlen különbség, hogy milyen típusú veszélyforrások vannak használatban (tartomány, e-mail, fájlkivonat, IP-cím vagy URL), és hogy melyik eseménytípus kell egyeznie. Minden sablon felsorolja a szabály működéséhez szükséges szükséges adatforrásokat, így egy pillantással megtekintheti, ha rendelkezik az Azure Sentinel szolgáltatásban már importált szükséges eseményekkel.
+Habár a teljesen új elemzési szabályokat is létrehozhat, az Azure Sentinel a Microsoft biztonsági mérnökök által létrehozott beépített szabálykészlet-sablonokat is tartalmaz, amelyeket az Ön igényei szerint használhat, vagy módosíthatja. Könnyen azonosíthatja a veszélyforrásokat használó szabályok sablonjait, mivel azok a "**ti Map**..." kezdetű címmel vannak ellátva. Ezek a szabályok ugyanúgy működnek, mint az egyetlen különbség, hogy milyen típusú veszélyforrások vannak használatban (tartomány, e-mail, fájlkivonat, IP-cím vagy URL), és hogy melyik eseménytípus kell egyeznie. Minden sablon felsorolja a szabály működéséhez szükséges szükséges adatforrásokat, így egy pillantással megtekintheti, ha rendelkezik az Azure Sentinel szolgáltatásban már importált szükséges eseményekkel.
 
 Vessünk egy pillantást az alábbi sablonok egyikére, és ismerkedjen meg a szabály engedélyezésével és konfigurálásával a biztonsági riasztások létrehozásához az Azure Sentinelbe importált veszélyforrások mutatói alapján. Ebben a példában az **AzureActivity IP-Cím entitás** nevű szabályt használjuk. Ez a szabály minden Azure-beli tevékenységi eseménynek megfelelő IP-cím típusú fenyegetést jelez. Ha egyezést talál, a rendszer **riasztást** hoz létre, valamint a biztonsági operatív csapat által a vizsgálathoz kapcsolódó **incidenst** . Ez az elemzési szabály csak akkor fog működni, ha engedélyezte az egyik vagy mindkét **veszélyforrási intelligencia** adatösszekötőt (a veszélyforrások megjelenítéséhez) és az **Azure Activity** adatösszekötőt (az Azure előfizetési szintű eseményeinek importálásához).
 

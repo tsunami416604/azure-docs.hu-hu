@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 63484361a6d5a331fd9dc646c53627918ce8b246
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: f348a8d8755402d6426f19eabc432f54e3fb8e42
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630549"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659658"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) leképezési sablonjai
 Ez a cikk részletesen ismerteti, hogyan konfigurálhatja az Azure IoT Connectort a gyors egészségügyi együttműködési erőforrásokhoz (FHIR&#174;) * a leképezési sablonok használatával.
@@ -60,7 +60,7 @@ A tartalom hasznos tartalma egy Azure Event hub-üzenet, amely három részből 
 ```
 
 ### <a name="mapping-with-json-path"></a>Leképezés JSON elérési úttal
-A jelenleg támogatott két eszköz tartalmának sablonja JSON-útvonalra támaszkodik a szükséges sablonnal és a kinyert értékekkel egyezően. A JSON-útvonalról további információt [itt](https://goessner.net/articles/JsonPath/)találhat. Mindkét sablon típusa a [JSON .net-implementációt](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm) használja a JSON-elérésiút-kifejezések feloldásához.
+A jelenleg támogatott három eszköz tartalmának sablonja JSON-útvonalon alapul, és mindkettőnek meg kell egyeznie a szükséges sablonnal és a kinyert értékekkel. A JSON-útvonalról további információt [itt](https://goessner.net/articles/JsonPath/)találhat. Mindhárom sablon típusa a [JSON .net-implementációt](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm) használja a JSON-elérésiút-kifejezések feloldásához.
 
 #### <a name="jsonpathcontenttemplate"></a>JsonPathContentTemplate
 A JsonPathContentTemplate lehetővé teszi, hogy az Event hub-üzenetből a JSON elérési úttal való egyezést és kinyerje az értékeket.
@@ -71,8 +71,8 @@ A JsonPathContentTemplate lehetővé teszi, hogy az Event hub-üzenetből a JSON
 |**TypeMatchExpression**|A JSON-elérésiút-kifejezés, amelyet a rendszer kiértékel az Event hub adattartalommal. Ha a rendszer megfelelő JToken talál, a sablon egyezésnek minősül. Az összes további kifejezés kiértékelése a kibontott JToken történik.|`$..[?(@heartRate)]`
 |**TimestampExpression**|A JSON-útvonal kifejezése a mérték OccurenceTimeUtc tartozó időbélyeg értékének kinyeréséhez.|`$.endDate`
 |**DeviceIdExpression**|A JSON-útvonal kifejezése az eszköz azonosítójának kinyeréséhez.|`$.deviceId`
-|**PatientIdExpression**|Nem *kötelező* : a JSON-elérési út kifejezése a beteg azonosítójának kinyeréséhez.|`$.patientId`
-|**EncounterIdExpression**|Nem *kötelező* : a JSON-elérési út kifejezése a találkozási azonosító kinyeréséhez.|`$.encounterId`
+|**PatientIdExpression**|Nem *kötelező*: a JSON-elérési út kifejezése a beteg azonosítójának kinyeréséhez.|`$.patientId`
+|**EncounterIdExpression**|Nem *kötelező*: a JSON-elérési út kifejezése a találkozási azonosító kinyeréséhez.|`$.encounterId`
 |**Értékek []. ValueName**|A következő kifejezés által kinyert értékkel társítandó név. A szükséges érték/összetevő kötésére szolgál a FHIR-leképezési sablonban. |`hr`
 |**Értékek []. ValueExpression**|A JSON-útvonal kifejezése a szükséges érték kinyeréséhez.|`$.heartRate`
 |**Értékek []. Szükséges**|Megköveteli, hogy az érték a hasznos adatokban legyen jelen.  Ha nem található, a rendszer nem hoz létre mérést, és egy InvalidOperationException fog dobni.|`true`
@@ -251,10 +251,12 @@ A JsonPathContentTemplate lehetővé teszi, hogy az Event hub-üzenetből a JSON
     }
 }
 ```
+
 #### <a name="iotjsonpathcontenttemplate"></a>IotJsonPathContentTemplate
+
 A IotJsonPathContentTemplate hasonló a JsonPathContentTemplate, kivéve a DeviceIdExpression és a TimestampExpression-t.
 
-A sablon használatakor a kiértékelt üzenetek az [Azure IoT hub Device SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks)-k használatával lettek elküldve. Ezen SDK-k használatakor az eszköz identitása (feltéve, hogy az Azure IOT hub/Central eszközének azonosítóját a rendszer regisztrálja az termékazonosító a cél FHIR-kiszolgálón), és az üzenet időbélyege ismert. Ha az Azure IoT Hub eszköz SDK-kat használja, de egyéni tulajdonságokat használ az üzenettörzs vagy a mérési időbélyeg számára, akkor továbbra is használhatja a JsonPathContentTemplate.
+A sablon használatakor a rendszer a kiértékelt üzeneteket az Azure [IoT hub Device SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) -k vagy az [Azure IoT Central](../iot-central/core/overview-iot-central.md) [exportálási (örökölt)](../iot-central/core/howto-export-data-legacy.md) funkciójának használatával küldi el. Ezen SDK-k használatakor az eszköz identitása (feltéve, hogy az Azure IOT hub/Central eszközének azonosítóját a rendszer regisztrálja az termékazonosító a cél FHIR-kiszolgálón), és az üzenet időbélyege ismert. Ha az Azure IoT Hub eszköz SDK-kat használja, de egyéni tulajdonságokat használ az üzenettörzs vagy a mérési időbélyeg számára, akkor továbbra is használhatja a JsonPathContentTemplate.
 
 *Megjegyzés: a IotJsonPathContentTemplate használatakor a TypeMatchExpression a teljes üzenetre JToken kell oldania. Tekintse meg az alábbi példákat.* 
 ##### <a name="examples"></a>Példák
@@ -329,6 +331,101 @@ A sablon használatakor a kiértékelt üzenetek az [Azure IoT hub Device SDK](.
             "valueName": "diastolic"
         }
     ]
+}
+```
+
+#### <a name="iotcentraljsonpathcontenttemplate"></a>IotCentralJsonPathContentTemplate
+
+A IotCentralJsonPathContentTemplate emellett nem igényli a DeviceIdExpression és a TimestampExpression használatát, és a kiértékeléskor használt üzeneteket az [Azure IoT Central](../iot-central/core/overview-iot-central.md) [adatexportálási](../iot-central/core/howto-export-data.md) funkciójával küldi el. Ha ezt a funkciót használja, az eszköz identitása (feltéve, hogy az Azure IOT Central eszközének azonosítója regisztrálva van egy termékazonosító a cél FHIR-kiszolgálón), és az üzenet időbélyege ismert. Ha az Azure IoT Central adatexportálási funkcióját használja, de egyéni tulajdonságokat használ az üzenettörzs vagy a mérési időbélyeg számára, akkor továbbra is használhatja a JsonPathContentTemplate.
+
+*Megjegyzés: a IotCentralJsonPathContentTemplate használatakor a TypeMatchExpression a teljes üzenetre JToken kell oldania. Tekintse meg az alábbi példákat.* 
+##### <a name="examples"></a>Példák
+---
+**Pulzusszám**
+
+*Üzenetet*
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "HeartRate": "88",
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
+}
+```
+*Sablon*
+```json
+{
+    "templateType": "IotCentralJsonPathContent",
+    "template": {
+        "typeName": "heartrate",
+        "typeMatchExpression": "$..[?(@telemetry.HeartRate)]",
+        "values": [
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.HeartRate",
+                "valueName": "hr"
+            }
+        ]
+    }
+}
+```
+---
+**Vérnyomás**
+
+*Üzenetet*
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "BloodPressure": {
+            "Diastolic": "87",
+            "Systolic": "123"
+        }
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
+}
+```
+*Sablon*
+```json
+{
+    "templateType": "IotCentralJsonPathContent",
+    "template": {
+        "typeName": "bloodPressure",
+        "typeMatchExpression": "$..[?(@telemetry.BloodPressure.Diastolic && @telemetry.BloodPressure.Systolic)]",
+        "values": [
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.BloodPressure.Diastolic",
+                "valueName": "bp_diastolic"
+            },
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.BloodPressure.Systolic",
+                "valueName": "bp_systolic"
+            }
+        ]
+    }
 }
 ```
 
@@ -560,7 +657,7 @@ A [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableConcept) FHIR ada
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a FHIR (előzetes verzió) Azure IoT-összekötővel kapcsolatos gyakori kérdéseket.
 

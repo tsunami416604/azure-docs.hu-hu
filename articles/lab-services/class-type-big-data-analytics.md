@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 6ae4e658985a3974b311171e83e6243dfc4a1ae9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5eb9cd00350c41645d4427e30a6f25a6c163358c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85444029"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659896"
 ---
 # <a name="set-up-a-lab-for-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Tesztkörnyezet beállítása big data Analitika számára a HortonWorks-adatplatform Docker-telepítésének használatával
 
@@ -24,15 +24,15 @@ A labor egy másik érdekes aspektusa, hogy a HDP-alapú Sandboxot a [Docker](ht
 
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
-A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd. Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért lásd: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).  Használhat meglévő labor-fiókot is.
+A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért lásd: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).  Használhat meglévő labor-fiókot is.
 
 ### <a name="lab-account-settings"></a>Tesztkörnyezet-Fiókbeállítások
 
-Engedélyezze az alábbi táblázatban ismertetett beállításokat a labor-fiókhoz. A Piactéri lemezképek engedélyezésével kapcsolatos további információkért lásd: a [piactér-rendszerképek elérhetővé tétele a labor-készítők](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)számára.
+Engedélyezze az alábbi táblázatban ismertetett beállításokat a labor-fiókhoz. A Piactéri lemezképek engedélyezésével kapcsolatos további információkért lásd: a [piactér-rendszerképek elérhetővé tétele a labor-készítők](./specify-marketplace-images.md)számára.
 
 | Tesztkörnyezet-fiók beállítása | Utasítások |
 | ------------------- | ------------ |
-|Piactéri rendszerkép| Engedélyezze a Windows 10 Pro-rendszerkép használatát a labor-fiókjában.|
+|Marketplace-beli rendszerkép| Engedélyezze a Windows 10 Pro-rendszerkép használatát a labor-fiókjában.|
 
 ### <a name="lab-settings"></a>Tesztkörnyezet beállításai
 
@@ -72,7 +72,7 @@ A Docker-tárolók használatához először telepítenie kell a Docker Desktopo
 1. A Docker memória-konfigurációjának konfigurálásához kövesse a [Windows memóriája](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#memory-for-windows) szakaszának lépéseit.
 
     > [!WARNING]
-    > Ha véletlenül bejelöli a **Windows-tárolók használata Linux-tárolók helyett** lehetőséget a Docker telepítésekor, nem fogja látni a memória konfigurációs beállításait.  Ennek kijavításához váltson Linux-tárolók használatára a [Windows rendszertálca Docker ikonjára kattintva](https://docs.docker.com/docker-for-windows/#docker-settings-dialog). Amikor megnyílik a Docker Desktop menü, válassza a **váltás Linux-tárolók**lehetőséget.
+    > Ha véletlenül bejelöli a **Windows-tárolók használata Linux-tárolók helyett** lehetőséget a Docker telepítésekor, nem fogja látni a memória konfigurációs beállításait.  Ennek kijavításához váltson Linux-tárolók használatára a [Windows rendszertálca Docker ikonjára kattintva](https://docs.docker.com/docker-for-windows/#docker-settings-dialog). Amikor megnyílik a Docker Desktop menü, válassza a **váltás Linux-tárolók** lehetőséget.
  
 ### <a name="deploy-hdp-sandbox"></a>HDP-homokozó üzembe helyezése
 
@@ -89,7 +89,7 @@ Ebben a szakaszban üzembe helyezi a HDP-munkaterületet, majd a böngésző has
     > A HDP legújabb. zip fájljának letöltésekor ügyeljen arra, hogy *ne mentse a* . zip fájlt olyan könyvtár elérési útjába, amely szóközt tartalmaz.
 
     > [!NOTE] 
-    > Ha kivételt kap az üzembe helyezési folyamat során, a **meghajtó nem lett megosztva**, meg kell osztania a C meghajtót a Docker használatával, hogy a HDP Linux-tárolói hozzáférhessenek a helyi Windows-fájlokhoz.  A probléma megoldásához [kattintson a Docker ikonjára a Windows rendszer tálcáján](https://docs.docker.com/docker-for-windows/#docker-settings-dialog) a Docker Desktop menüjének megnyitásához, majd válassza a **Beállítások**lehetőséget.  Amikor megnyílik a **Docker beállításai** párbeszédpanel, válassza az **erőforrások > a fájlmegosztás** elemet, és keresse meg a **C** meghajtót.  Ezután megismételheti a HDP-homokozó üzembe helyezésének lépéseit.
+    > Ha kivételt kap az üzembe helyezési folyamat során, a **meghajtó nem lett megosztva**, meg kell osztania a C meghajtót a Docker használatával, hogy a HDP Linux-tárolói hozzáférhessenek a helyi Windows-fájlokhoz.  A probléma megoldásához [kattintson a Docker ikonjára a Windows rendszer tálcáján](https://docs.docker.com/docker-for-windows/#docker-settings-dialog) a Docker Desktop menüjének megnyitásához, majd válassza a **Beállítások** lehetőséget.  Amikor megnyílik a **Docker beállításai** párbeszédpanel, válassza az **erőforrások > a fájlmegosztás** elemet, és keresse meg a **C** meghajtót.  Ezután megismételheti a HDP-homokozó üzembe helyezésének lépéseit.
 
 1. Amint üzembe helyezi és futtatja a HDP-Homokozóhoz tartozó Docker-tárolókat, a böngésző elindításával és a HDP irányítópultjának megnyitásával [a Cloudera](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page) utasításait követve elérheti a környezetet.
 
@@ -117,7 +117,7 @@ További részletek a díjszabásról: [Azure Lab Services díjszabása](https:/
 
 Ez a cikk végigvezeti a tesztkörnyezet létrehozásához szükséges lépéseken, amelyekkel a Docker-ben üzembe helyezett Hortonworks-adatplatformot használó big data Analytics osztályhoz kell létrehoznia.  Az ehhez az osztályhoz tartozó beállítás a hasonló adatelemzési osztályokhoz használható.  Ez a beállítás más típusú osztályokra is alkalmazható, amelyek a Docker-t használják a telepítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépések közösek a laborok beállításához.
 

@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ebf383c1a904027d3ff5a1864ea9f50e87a5fa8
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0bd2b295e5e4d4d5ea6e25869c8c109ff8bbbf38
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093293"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660763"
 ---
 # <a name="list-blobs-with-net"></a>Blobok listázása .NET-tel
 
@@ -51,11 +51,7 @@ Ezeknek a módszereknek a túlterhelései további beállításokat biztosítana
 
 ### <a name="manage-how-many-results-are-returned"></a>A visszaadott eredmények számának kezelése
 
-Alapértelmezés szerint a listázási művelet egyszerre legfeljebb 5000 eredményt ad vissza, de megadhatja, hogy az egyes listázási műveletek hány eredményt adjanak vissza. A cikkben bemutatott példák bemutatják, hogyan teheti ezt meg.
-
-Ha a listázási művelet több mint 5000 blobot ad vissza, vagy ha az elérhető Blobok száma meghaladja a megadott számot, akkor az Azure Storage egy *folytatási tokent* ad vissza a Blobok listájával. A folytatási token egy átlátszatlan érték, amelyet az Azure Storage következő eredményeinek lekérésére használhat.
-
-A kódban ellenőrizze a folytatási token értékét annak meghatározásához, hogy null értékű-e. Ha a folytatási jogkivonat null értékű, akkor az eredmények halmaza befejeződött. Ha a folytatási jogkivonat nem null értékű, akkor ismét hívja meg a listázási műveletet, és a folytatási tokenben adja meg a következő eredmények beolvasását, amíg a folytatási jogkivonat null nem lesz.
+Alapértelmezés szerint a listázási művelet egyszerre legfeljebb 5000 eredményt ad vissza, de megadhatja, hogy az egyes listázási műveletek hány eredményt adjanak vissza. A cikkben bemutatott példák bemutatják, hogyan adhatók vissza az eredmények a lapokon.
 
 ### <a name="filter-results-with-a-prefix"></a>Eredmények szűrése előtaggal
 
@@ -63,7 +59,7 @@ A Blobok listájának szűréséhez a paraméterhez meg kell adni egy karakterl�
 
 ### <a name="return-metadata"></a>Metaadatok visszaküldése
 
-A blob metaadatait az eredményekkel adhatja vissza. 
+A blob metaadatait az eredményekkel adhatja vissza.
 
 - Ha a .NET V12 SDK-t használja, akkor a [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) enumerálás **metaadat** értékét kell megadnia.
 
@@ -90,6 +86,10 @@ Ha engedélyezte a hierarchikus névtér funkciót a fiókjában, a címtárak n
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
 
 # <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
+Ha a listázási művelet több mint 5000 blobot ad vissza, vagy ha az elérhető Blobok száma meghaladja a megadott számot, akkor az Azure Storage egy *folytatási tokent* ad vissza a Blobok listájával. A folytatási token egy átlátszatlan érték, amelyet az Azure Storage következő eredményeinek lekérésére használhat.
+
+A kódban ellenőrizze a folytatási token értékét annak meghatározásához, hogy null értékű-e. Ha a folytatási jogkivonat null értékű, akkor az eredmények halmaza befejeződött. Ha a folytatási jogkivonat nem null értékű, akkor ismét hívja meg a listázási műveletet, és a folytatási tokenben adja meg a következő eredmények beolvasását, amíg a folytatási jogkivonat null nem lesz.
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -161,7 +161,7 @@ Az alábbi példa felsorolja a megadott tárolóban lévő blobokat egy hierarch
 
 # <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
-A Blobok hierarchikus listázásához állítsa a `useFlatBlobListing` listázási metódus paraméterét **hamis**értékre.
+A Blobok hierarchikus listázásához állítsa a `useFlatBlobListing` listázási metódus paraméterét **hamis** értékre.
 
 Az alábbi példa felsorolja a megadott tárolóban lévő blobokat egy egyszerű lista használatával, egy választható szegmens méretének megadása mellett, és a blob nevét a konzol ablakba írja.
 

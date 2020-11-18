@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: bce381ba4916bc58d2c7acf8d69b323dbdf972aa
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 64a4eb1b473c8944dadea4e1ee4323dfe4e9bcde
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544783"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661120"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Pont – hely kapcsolat konfigurálása VNet a RADIUS-hitelesítés használatával: PowerShell
 
@@ -119,7 +119,7 @@ A következő lépésekben hozzon létre egy erőforráscsoportot és egy virtu�
    ```azurepowershell-interactive
    New-AzResourceGroup -Name "TestRG" -Location "East US"
    ```
-2. Hozza létre a virtuális hálózat alhálózatainak konfigurációit, névként a következő értékeket adja meg: *FrontEnd* , *BackEnd* , illetve *GatewaySubnet* . Ezek az előtagok a deklarált virtuális hálózati címtér részei kell, hogy legyenek.
+2. Hozza létre a virtuális hálózat alhálózatainak konfigurációit, névként a következő értékeket adja meg: *FrontEnd*, *BackEnd*, illetve *GatewaySubnet*. Ezek az előtagok a deklarált virtuális hálózati címtér részei kell, hogy legyenek.
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
@@ -152,7 +152,7 @@ A virtuális hálózati átjáró létrehozása és konfigurálása előtt a RAD
 2. Konfigurálja a VPN-átjárót RADIUS-ügyfélként a RADIUS-kiszolgálón. A RADIUS-ügyfél hozzáadásakor adja meg a létrehozott virtuális hálózati GatewaySubnet. 
 3. A RADIUS-kiszolgáló beállítása után szerezze be a RADIUS-kiszolgáló IP-címét, valamint azt a közös titkot, amelyet a RADIUS-ügyfeleknek a RADIUS-kiszolgálóval való kommunikációhoz használniuk kell. Ha a RADIUS-kiszolgáló az Azure VNet található, használja a RADIUS-kiszolgáló virtuális gép HITELESÍTÉSSZOLGÁLTATÓI IP-címét.
 
-A [hálózati házirend-kiszolgáló (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) című cikk útmutatást nyújt a Windows RADIUS-kiszolgáló (NPS) Active Directory tartományi hitelesítéshez való konfigurálásához.
+A [hálózati házirend-kiszolgáló (NPS)](/windows-server/networking/technologies/nps/nps-top) című cikk útmutatást nyújt a Windows RADIUS-kiszolgáló (NPS) Active Directory tartományi hitelesítéshez való konfigurálásához.
 
 ## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"></a> a VPN-átjáró létrehozása
 
@@ -292,4 +292,4 @@ Ez a gyakori kérdések a RADIUS-hitelesítést használó P2S vonatkoznak
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/). A hálózatok és virtuális gépek ismertetését lásd az [Azure- és Linux-alapú virtuálisgép-hálózatok áttekintésében](../virtual-machines/linux/azure-vm-network-overview.md).
+Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](../index.yml). A hálózatok és virtuális gépek ismertetését lásd az [Azure- és Linux-alapú virtuálisgép-hálózatok áttekintésében](../virtual-machines/network-overview.md).

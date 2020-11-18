@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: e72acb532a33d0b3751bb8ad5051b1a3df4d7514
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 584e1e943f215aa4a69368fb71cb3053b1444a01
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491477"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660219"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -87,7 +87,7 @@ A kereskedelmi piactér az Ügynökség modelljének használatával működik. 
 
 Közzétevőként beállíthatja a szoftveres megoldás használati feltételeit, amelyeket az ügyfeleknek el kell fogadniuk a vásárlási folyamat részeként. A dolgok egyszerűsítése és felgyorsítása érdekében standard szintű szerződést biztosítunk, amelyet a használati feltételekhez is felhasználhat. Ez lehetővé teszi, hogy az ügyfelek egyszer áttekintsék a standard szerződést, jóváhagyják a jogi és vásárlási csapatokat, majd az egyes ajánlatok módosításaira összpontosítanak.
 
-Létrehozhat olyan módosításokat, amelyek az összes ügyfélre érvényesek, vagy a módosításokat bizonyos ügyfelek számára is elvégezheti. A használati feltételek teljes mértékben testre szabhatók, amelyek beírhatók egy szövegmezőbe, vagy egy webhelyre, amely webcímeként fog megjelenni.
+Létrehozhat olyan módosításokat, amelyek az összes ügyfélre érvényesek, vagy a módosításokat bizonyos ügyfelek számára is elvégezheti. A feltételek és kikötések teljes mértékben testre szabhatók, amelyek beírhatók egy szövegmezőbe a partner Centerben.
 
 További információ: [standard szintű szerződés a Microsoft kereskedelmi piactéren](standard-contract.md).
 
@@ -99,10 +99,10 @@ Igen, a Azure Government piactér Azure Government régiókban érhető el, és 
 
 A partneri központ hozzáférését négy releváns szerepkör szabályozza.
 
-- *Kezelő* : engedélyeket biztosít a fiókpartner-felhasználók felügyeletéhez a címtárban, valamint ajánlatokat hozhat létre és frissíthet.
-- *Fejlesztő* : lehetővé teszi, hogy a felhasználó ajánlatokat hozzon létre és frissítsen.
-- *Pénzügyi közreműködő* : engedélyeket biztosít a kifizetési jelentések megtekintésére.
-- *Tulajdonos* : beállíthatja a kifizetési fiókot és az adózási profilt. Az a felhasználó, aki elfogadta a közzétevői szerződést, alapértelmezés szerint a tulajdonos lesz.
+- *Kezelő*: engedélyeket biztosít a fiókpartner-felhasználók felügyeletéhez a címtárban, valamint ajánlatokat hozhat létre és frissíthet.
+- *Fejlesztő*: lehetővé teszi, hogy a felhasználó ajánlatokat hozzon létre és frissítsen.
+- *Pénzügyi közreműködő*: engedélyeket biztosít a kifizetési jelentések megtekintésére.
+- *Tulajdonos*: beállíthatja a kifizetési fiókot és az adózási profilt. Az a felhasználó, aki elfogadta a közzétevői szerződést, alapértelmezés szerint a tulajdonos lesz.
 
 Azure Active Directory (Azure AD) *globális rendszergazdai* engedélyek szükségesek az új felhasználói fiókok létrehozásához vagy a vendég fiókjainak meghívásához az alapul szolgáló könyvtárban. A partner Center az Azure AD-t az Identity modelre alkalmazza, és a szervezet Azure AD-példányát gyakran az IT-vagy biztonsági csapatok felügyelik és ellenőrzik.
 

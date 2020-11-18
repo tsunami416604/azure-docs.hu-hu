@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: dbf0d096827ec1af16e6d38d405709e48175ae89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 908602dff3be2f392bc595f0074db7f95b8936a9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035948"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660984"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítás: Azure pont – hely kapcsolati problémák
 
@@ -35,7 +35,7 @@ Ez a probléma akkor fordul elő, ha az ügyféltanúsítvány hiányzik a **tan
 
 A probléma megoldásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a Tanúsítványkezelőt: kattintson a **Start**gombra, írja be a **számítógép-tanúsítványok kezelése**kifejezést, majd kattintson a keresési eredmény **számítógép-tanúsítványok kezelése** elemére.
+1. Nyissa meg a Tanúsítványkezelőt: kattintson a **Start** gombra, írja be a **számítógép-tanúsítványok kezelése** kifejezést, majd kattintson a keresési eredmény **számítógép-tanúsítványok kezelése** elemére.
 
 2. Győződjön meg arról, hogy a következő tanúsítványok a megfelelő helyen vannak:
 
@@ -71,7 +71,7 @@ A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
 
 1. Telepítse a frissítést.
 
-   | Operációs rendszer verziója | Dátum | Szám/hivatkozás |
+   | Operációs rendszer verziója | Date | Szám/hivatkozás |
    |---|---|---|---|
    | Windows Server 2016<br>Windows 10, 1607-es verzió | 2018. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10, 1703-as verzió | 2018. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
@@ -137,7 +137,7 @@ Ez a probléma helytelen átjáró típusa miatt fordul elő.
 
 ### <a name="solution"></a>Megoldás
 
-A VPN-átjáró típusának **VPN**-nek kell lennie, és a VPN-típusnak **útvonalalapú**kell lennie.
+A VPN-átjáró típusának **VPN**-nek kell lennie, és a VPN-típusnak **útvonalalapú** kell lennie.
 
 ## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>VPN-ügyfél hiba: az Azure VPN egyéni parancsfájlja sikertelen 
 
@@ -168,7 +168,7 @@ Bontsa ki a VPN-ügyfél konfigurációs csomagját, és keresse meg a. cer fáj
 1. Nyissa meg mmc.exe.
 2. Adja hozzá a **tanúsítványok** beépülő modult.
 3. Válassza ki **a helyi számítógép számítógépfiókját.**
-4. Kattintson a jobb gombbal a **megbízható legfelső szintű hitelesítésszolgáltatók** csomópontra. Kattintson a **minden tevékenység**  >  **importálása**lehetőségre, és keresse meg a VPN-ügyfél konfigurációs csomagjából kinyert. cer fájlt.
+4. Kattintson a jobb gombbal a **megbízható legfelső szintű hitelesítésszolgáltatók** csomópontra. Kattintson a **minden tevékenység**  >  **importálása** lehetőségre, és keresse meg a VPN-ügyfél konfigurációs csomagjából kinyert. cer fájlt.
 5. Indítsa újra a számítógépet. 
 6. Próbálja meg telepíteni a VPN-ügyfelet.
 
@@ -298,7 +298,7 @@ Ez a probléma akkor fordulhat elő, ha a VPN-ügyfél nem kapja meg az útvonal
 
 ### <a name="solution"></a>Megoldás
 
-A probléma megoldásához [állítsa alaphelyzetbe az Azure VPN Gatewayt](vpn-gateway-resetgw-classic.md). Annak érdekében, hogy az új útvonalakat használják, a pont – hely VPN-ügyfeleket újra le kell tölteni a virtuális hálózati társítás sikeres konfigurálása után.
+A probléma megoldásához [állítsa alaphelyzetbe az Azure VPN Gatewayt](./reset-gateway.md). Annak érdekében, hogy az új útvonalakat használják, a pont – hely VPN-ügyfeleket újra le kell tölteni a virtuális hálózati társítás sikeres konfigurálása után.
 
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hiba: "a visszavonás funkció nem tudta megnézni a visszavonást, mert a visszavonási kiszolgáló offline állapotban volt. (Hiba 0x80092013) "
 
@@ -335,9 +335,9 @@ A hálózati adapter illesztőprogramja elavult.
 
 A hálózati adapter illesztőprogramjának frissítése:
 
-1. Kattintson a **Start**gombra, írja be a **Eszközkezelő**parancsot, majd válassza ki az eredmények listájából. Ha a rendszer rendszergazdai jelszót vagy megerősítést kér, írja be a jelszót, vagy adja meg a megerősítést.
+1. Kattintson a **Start** gombra, írja be a **Eszközkezelő** parancsot, majd válassza ki az eredmények listájából. Ha a rendszer rendszergazdai jelszót vagy megerősítést kér, írja be a jelszót, vagy adja meg a megerősítést.
 2. A **hálózati adapterek** kategóriájában keresse meg a frissíteni kívánt NIC-t.  
-3. Kattintson duplán az eszköz nevére, válassza az **Illesztőprogram frissítése**lehetőséget, majd válassza a **Keresés automatikusan lehetőséget a frissített illesztőprogram-szoftverekhez**.
+3. Kattintson duplán az eszköz nevére, válassza az **Illesztőprogram frissítése** lehetőséget, majd válassza a **Keresés automatikusan lehetőséget a frissített illesztőprogram-szoftverekhez**.
 4. Ha a Windows nem talál új illesztőprogramot, akkor próbáljon meg egyet az eszköz gyártójának webhelyén, és kövesse az utasításokat.
 5. Indítsa újra a számítógépet, majd próbálja megismételni a műveletet.
 
@@ -362,7 +362,7 @@ Ezt az átjáró helytelen típusának beállítása okozza.
 
 ### <a name="solution"></a>Megoldás
 
-Az Azure VPN Gateway típusának VPN-nek kell lennie, és a VPN-típusnak **útvonalalapú**kell lennie.
+Az Azure VPN Gateway típusának VPN-nek kell lennie, és a VPN-típusnak **útvonalalapú** kell lennie.
 
 ## <a name="vpn-package-installer-doesnt-complete"></a>A VPN-csomag telepítője nem fejeződött be
 
@@ -372,7 +372,7 @@ Ezt a problémát az előző VPN-ügyfél telepítése okozhatta.
 
 ### <a name="solution"></a>Megoldás
 
-Törölje a régi VPN-ügyfél konfigurációs fájljait a **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId> ** -ből, majd futtassa újra a VPN-ügyfél telepítőjét. 
+Törölje a régi VPN-ügyfél konfigurációs fájljait a **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId>** -ből, majd futtassa újra a VPN-ügyfél telepítőjét. 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>A VPN-ügyfél egy kis idő elteltével hibernálja vagy alvó állapotba lép
 

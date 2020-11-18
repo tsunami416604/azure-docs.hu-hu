@@ -3,12 +3,12 @@ title: Azure Lab Services – rendszergazdai útmutató | Microsoft Docs
 description: Ez az útmutató segít a rendszergazdáknak, hogy Azure Lab Services használatával hozzanak létre és kezeljenek labor-fiókokat.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 8670a9d56575dbfb6d3e565ec97191581dc612a8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b1fadc58926b00c75ab888dad86e45b181059a38
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491035"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659845"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – rendszergazdai útmutató
 Az Egyetem Felhőbeli erőforrásait kezelő informatikai rendszergazdák általában felelősek az iskolájuk laboratóriumi fiókjának beállításához. A labor-fiók beállítása után a rendszergazdák és a pedagógusok a labor-fiókban található laborokat hozhatnak létre. Ez a cikk átfogó áttekintést nyújt az érintett Azure-erőforrásokról és a létrehozásához szükséges útmutatóról.
@@ -19,7 +19,7 @@ Az Egyetem Felhőbeli erőforrásait kezelő informatikai rendszergazdák által
 - A labor fiókok, a megosztott képkatalógus és a képverziók az előfizetésen belül találhatók.
 - A labor-fiókját és a megosztott képtárat is megtekintheti ugyanabban az erőforráscsoporthoz. Ebben a diagramban különböző erőforráscsoportok találhatók.
 
-Az architektúrával kapcsolatos további információkért olvassa el a következő cikket: [Labs Architecture alapjai](https://docs.microsoft.com/azure/lab-services/classroom-labs-fundamentals)
+Az architektúrával kapcsolatos további információkért olvassa el a következő cikket: [Labs Architecture alapjai](./classroom-labs-fundamentals.md)
 
 ## <a name="subscription"></a>Előfizetés
 Az Egyetem egy vagy több Azure-előfizetéssel rendelkezik. Az előfizetés segítségével kezelhető a számlázás és a biztonság az összes olyan Azure-resources\services esetében, amelyet a rendszer használ, beleértve a laboratóriumi fiókokat is.
@@ -58,7 +58,7 @@ Az alábbi lista olyan forgatókönyveket mutat be, amelyekben több labor-fiók
 
 - **Elkülönített költségvetés labor-fiókkal**
   
-    Ahelyett, hogy az összes laboratóriumi költséget egyetlen labor-fiókon keresztül kellene jelentenie, egy világosabban elkülönített költségvetést kell használnia. Például létrehozhat labor-fiókokat az egyetemi matematikai részleg, a számítástechnikai részleg és így tovább, hogy elkülönítse a költségvetést a részlegek között.  Ezután megtekintheti az egyes labor-fiókok költségeit [Azure Cost Management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)használatával.
+    Ahelyett, hogy az összes laboratóriumi költséget egyetlen labor-fiókon keresztül kellene jelentenie, egy világosabban elkülönített költségvetést kell használnia. Például létrehozhat labor-fiókokat az egyetemi matematikai részleg, a számítástechnikai részleg és így tovább, hogy elkülönítse a költségvetést a részlegek között.  Ezután megtekintheti az egyes labor-fiókok költségeit [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md)használatával.
 
 - **Kísérleti laborok elkülönítése a active\production Labs-ből**
   
@@ -141,18 +141,18 @@ A laborban található hely a következő tényezők alapján változik:
 
   - **A labor-fiók egy virtuális hálózathoz (VNet) van összemutatva**
   
-    Egy labor-fiók VNet is lehet [,](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) ha ugyanabban a régióban vannak.  Ha egy labor-fiók egy VNet van társítva, a Labs automatikusan létrejön ugyanabban a régióban, mint a labor-fiók és a VNet.
+    Egy labor-fiók VNet is lehet [,](./how-to-connect-peer-virtual-network.md) ha ugyanabban a régióban vannak.  Ha egy labor-fiók egy VNet van társítva, a Labs automatikusan létrejön ugyanabban a régióban, mint a labor-fiók és a VNet.
 
     > [!NOTE]
-    > Ha egy Lab-fiók egy VNet van társítva, akkor a labor- **létrehozó a labor helyének kiválasztására** vonatkozó beállítás le van tiltva. Erről a beállításról további információt a következő cikkben talál: a labor [Creator kiválasztása a tesztkörnyezet helyének kiválasztásához](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location).
+    > Ha egy Lab-fiók egy VNet van társítva, akkor a labor- **létrehozó a labor helyének kiválasztására** vonatkozó beállítás le van tiltva. Erről a beállításról további információt a következő cikkben talál: a labor [Creator kiválasztása a tesztkörnyezet helyének kiválasztásához](./allow-lab-creator-pick-lab-location.md).
     
-  - * * Nincs VNet * *_, és_* a labor-készítők nem választhatják ki a labort location_ *
+  - * * Nincs VNet **_, és_* a labor-készítők nem választhatják ki a labort location_ *
   
-    Ha **nincs VNet** társítva a labor-fiókkal, *és* a [labor-létrehozók **nem** jogosultak a labor helyének kiválasztására](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), a Labs automatikusan létrejön egy olyan régióban, ahol rendelkezésre áll a virtuális gépek kapacitása.  Pontosabban Azure Lab Services keresi a rendelkezésre állást azokban a [régiókban, amelyek a labor-fiókkal megegyező földrajzi területen belül vannak](https://azure.microsoft.com/global-infrastructure/regions).
+    Ha **nincs VNet** társítva a labor-fiókkal, *és* a [labor-létrehozók **nem** jogosultak a labor helyének kiválasztására](./allow-lab-creator-pick-lab-location.md), a Labs automatikusan létrejön egy olyan régióban, ahol rendelkezésre áll a virtuális gépek kapacitása.  Pontosabban Azure Lab Services keresi a rendelkezésre állást azokban a [régiókban, amelyek a labor-fiókkal megegyező földrajzi területen belül vannak](https://azure.microsoft.com/global-infrastructure/regions).
 
   - * * Nincs VNet, és a labor *_-_* készítők választhatják a labort location_ *
        
-    Ha **nincs VNet,** és a labor létrehozói jogosultak [a labor helyének](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)kiválasztására, akkor a labor Creator által kiválasztható helyek a rendelkezésre álló kapacitáson alapulnak.
+    Ha **nincs VNet,** és a labor létrehozói jogosultak [a labor helyének](./allow-lab-creator-pick-lab-location.md)kiválasztására, akkor a labor Creator által kiválasztható helyek a rendelkezésre álló kapacitáson alapulnak.
 
 > [!NOTE]
 > Annak érdekében, hogy elegendő virtuálisgép-kapacitás legyen a régióhoz, fontos, hogy először a labor-fiókon vagy a labor létrehozásakor igényelje a kapacitást.
@@ -169,18 +169,18 @@ Ha a rendszergazdák vagy a labor alkotói létrehoznak egy labort, a következ�
 
 | Méret | Jellemzők | Adatsorozat | Javasolt használat |
 | ---- | ----- | ------ | ------------- |
-| Kicsi| <ul><li>2 mag</li><li>3,5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a legmegfelelőbb a parancssorhoz, a webböngésző megnyitásához, az alacsony forgalmú webkiszolgálók, a kis és közepes adatbázisok eléréséhez. |
-| Közepes | <ul><li>4 mag</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. |
-| Közepes (beágyazott virtualizálás) | <ul><li>4 mag</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez.
-| Nagy | <ul><li>8 mag</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | Ez a méret a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára ajánlott.  Ez a méret támogatja a beágyazott virtualizálás szolgáltatást is. |
-| Nagyméretű (beágyazott virtualizálás) | <ul><li>8 mag</li><li>32 GB RAM</li></ul>  | [Standard_D8s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Ez a méret a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára ajánlott. |
-| Kis GPU (vizualizáció) | <ul><li>6 mag</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. |
-| Kis GPU (számítás) | <ul><li>6 mag</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Ez a méret a nagy számítógépes igényű alkalmazások, például a mesterséges intelligencia és a Deep learning esetében ajánlott. |
-| Közepes GPU (vizualizáció) | <ul><li>12 mag</li><li>112 GB RAM</li></ul>  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. |
+| Kicsi| <ul><li>2 mag</li><li>3,5 GB RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Ez a méret a legmegfelelőbb a parancssorhoz, a webböngésző megnyitásához, az alacsony forgalmú webkiszolgálók, a kis és közepes adatbázisok eléréséhez. |
+| Közepes | <ul><li>4 mag</li><li>7 GB RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. |
+| Közepes (beágyazott virtualizálás) | <ul><li>4 mag</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez.
+| Nagy | <ul><li>8 mag</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | Ez a méret a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára ajánlott.  Ez a méret támogatja a beágyazott virtualizálás szolgáltatást is. |
+| Nagyméretű (beágyazott virtualizálás) | <ul><li>8 mag</li><li>32 GB RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | Ez a méret a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára ajánlott. |
+| Kis GPU (vizualizáció) | <ul><li>6 mag</li><li>56 GB RAM</li>  | [Standard_NV6](../virtual-machines/nv-series.md) | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. |
+| Kis GPU (számítás) | <ul><li>6 mag</li><li>56 GB RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md) |Ez a méret a nagy számítógépes igényű alkalmazások, például a mesterséges intelligencia és a Deep learning esetében ajánlott. |
+| Közepes GPU (vizualizáció) | <ul><li>12 mag</li><li>112 GB RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. |
 
 ## <a name="manage-identity"></a>Identitás kezelése
 
-Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)használatával a következő szerepköröket lehet hozzárendelni a labor-fiókokhoz és a laborokhoz való hozzáféréshez:
+Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)használatával a következő szerepköröket lehet hozzárendelni a labor-fiókokhoz és a laborokhoz való hozzáféréshez:
 
 - **Tesztkörnyezetfiók tulajdonosa**
 
@@ -200,7 +200,7 @@ Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.m
 
 - **Tesztkörnyezet létrehozója**
 
-    Ha labor-fiókon belül szeretne laborokat létrehozni, a pedagógusnak a **labor létrehozói** szerepkör tagjának kell lennie.  Ha egy oktató létrehoz egy labort, a rendszer automatikusan hozzáadja őket a labor tulajdonosaként.  Tekintse meg az oktatóanyagot, amely bemutatja, hogyan [adhat hozzá felhasználót a **labor létrehozói** szerepkörhöz](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role). 
+    Ha labor-fiókon belül szeretne laborokat létrehozni, a pedagógusnak a **labor létrehozói** szerepkör tagjának kell lennie.  Ha egy oktató létrehoz egy labort, a rendszer automatikusan hozzáadja őket a labor tulajdonosaként.  Tekintse meg az oktatóanyagot, amely bemutatja, hogyan [adhat hozzá felhasználót a **labor létrehozói** szerepkörhöz](./tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role). 
 
 - **Laboratóriumi owner\contributor**
   
@@ -217,7 +217,7 @@ Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.m
 Az alábbi tippek segítséget nyújtanak a szerepkörök hozzárendeléséhez:
    - Általában csak a rendszergazdáknak kell tartozniuk a labor-fiók **tulajdonosi** vagy **közreműködői** szerepköreihez; több owner\contributor. is rendelkezhet
    - Ahhoz, hogy a pedagógus új laborokat hozzon létre, és felügyelje a létrehozott laborokat; csak hozzá kell rendelnie a hozzáférést a **labor létrehozói** szerepkörhöz.
-   - Ahhoz, hogy egy oktató képes legyen bizonyos laborok kezelésére, de *nem* lehet új laborokat létrehozni; a **tulajdonosi** vagy **közreműködői** szerepkörhöz hozzá kell rendelnie a hozzáférést a felügyelni kívánt laborokhoz.  Tegyük fel például, hogy egy professzort és egy tanítási asszisztenst is szeretne használni a laborhoz.  Tekintse meg az útmutatót, amely bemutatja, hogyan [adhat hozzá felhasználót tulajdonosként egy laborhoz](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner).
+   - Ahhoz, hogy egy oktató képes legyen bizonyos laborok kezelésére, de *nem* lehet új laborokat létrehozni; a **tulajdonosi** vagy **közreműködői** szerepkörhöz hozzá kell rendelnie a hozzáférést a felügyelni kívánt laborokhoz.  Tegyük fel például, hogy egy professzort és egy tanítási asszisztenst is szeretne használni a laborhoz.  Tekintse meg az útmutatót, amely bemutatja, hogyan [adhat hozzá felhasználót tulajdonosként egy laborhoz](./how-to-add-user-lab-owner.md).
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -266,7 +266,7 @@ Fontos, hogy a labor-fiók rendszergazdája a katalógusból rendszeresen törö
 
 A költségek csökkentése érdekében ne törölje a replikálást meghatározott régiókba (ez a lehetőség a megosztott képtárban található). Előfordulhat, hogy a replikációs módosítások kedvezőtlen hatással lehetnek az Azure Lab szolgáltatásban a megosztott képtárban mentett rendszerképekből származó virtuális gépek közzétételének képességére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A laboratóriumi környezetek beállításának következő lépései.
 
@@ -274,4 +274,3 @@ A laboratóriumi környezetek beállításának következő lépései.
 - [Labor telepítési útmutatója](setup-guide.md)
 - [Cost Management tesztkörnyezetekhez](cost-management-guide.md)
 - [Azure Lab Services használata a csapatokon belül](lab-services-within-teams-overview.md)
-

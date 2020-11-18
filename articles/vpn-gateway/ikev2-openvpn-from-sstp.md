@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: c7f71d24ab516044a0ce48ad40f78bc659268866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59aa6f5560917651d8f60c667145b0953bf72ef5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442168"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660865"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Áttérés az OpenVPN protokollra vagy az SSTP-IKEv2
 
@@ -58,9 +58,9 @@ Ha kívánja, az OpenVPN mellett is engedélyezheti a IKEv2. Az OpenVPN TLS-alap
 
 ![pont – hely kapcsolat](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
 
-Az átjáró konfigurálását követően a meglévő ügyfelek nem fognak tudni csatlakozni, amíg nem [telepíti és nem konfigurálja az OpenVPN-ügyfeleket](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients).
+Az átjáró konfigurálását követően a meglévő ügyfelek nem fognak tudni csatlakozni, amíg nem [telepíti és nem konfigurálja az OpenVPN-ügyfeleket](./vpn-gateway-howto-openvpn-clients.md).
 
-Ha Windows 10 rendszert használ, használhatja a [Windows rendszerhez készült Azure VPN-ügyfelet](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client) is
+Ha Windows 10 rendszert használ, használhatja a [Windows rendszerhez készült Azure VPN-ügyfelet](./openvpn-azure-ad-client.md#to-download-the-azure-vpn-client) is
 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések

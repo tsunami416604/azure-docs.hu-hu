@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fc2f9e5408dd760b48fc63c4021230446fe40de9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3a96a7116c83bf9ea2c3798c335c6cefcbdbc36d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542318"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659488"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight-fürt kezelése – ajánlott eljárások
 
@@ -49,7 +49,7 @@ Ismerje meg a HDInsight-fürtök kezelésének ajánlott eljárásait.
 
 | Hiba | További információ |
 |---|---|
-| Nincs kvóta | Az előfizetésben létrehozható kvóták száma az egyes régiókban. További információ [: kapacitás megtervezése: kvóták](./hdinsight-capacity-planning.md). |
+| Nincs kvóta | Az előfizetéshez az egyes régiókban létrehozható magok száma kvótát használ. További információ [: kapacitás megtervezése: kvóták](./hdinsight-capacity-planning.md). |
 | Nem érhető el több IP-cím | Minden VNet korlátozott számú IP-címmel rendelkezik. HDInsight-fürt létrehozásakor az egyes csomópontok (beleértve a Zookeeper és az átjáró csomópontokat is) a kiosztott IP-címek némelyikét használják. Ha az összes IP-cím használatban van, ezt a hibát fogja tapasztalni.  |
 | A hálózati biztonsági csoport (NSG) szabályai nem teszik lehetővé a HDInsight erőforrás-szolgáltatókkal való kommunikációt | Ha NSG vagy felhasználó által definiált útvonalakat (UDR) használ a HDInsight-fürt bejövő forgalmának vezérlésére, akkor biztosítania kell, hogy a fürt képes legyen kommunikálni a kritikus Azure-beli állapot-és felügyeleti szolgáltatásokkal. További információ: [hálózati biztonsági csoport (NSG) szolgáltatás címkéi az Azure HDInsight](./hdinsight-service-tags.md) |
 | A fürt nevének újbóli használata | Ha olyan fürtöt használ, amelyet korábban használt, akkor a fürt újbóli létrehozása előtt meg kell várnia a percek számát. Ellenkező esetben egy üzenet jelenik meg, amely szerint az erőforrás már létezik. |

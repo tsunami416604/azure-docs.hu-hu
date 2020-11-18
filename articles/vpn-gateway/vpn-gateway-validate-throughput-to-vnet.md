@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: d2347c0688ca58698831019a193d03fe2c6721e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d5b51e8cfbfcb5f771e9da524231f8ddfc40a9e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398507"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660933"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>VPN teljesítményének érvényesítése virtuális hálózaton
 
@@ -119,7 +119,7 @@ Töltse le a [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip).
 1. Az előző lépések elvégzése után hajtsa végre ugyanezen lépéseket a fordított szerepkörökkel, hogy a kiszolgáló-csomópont ekkor az ügyfél csomópontja legyen, és fordítva.
 
 > [!Note]
-> A Iperf nem az egyetlen eszköz. A [NTTTCP egy alternatív megoldás a teszteléshez](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing).
+> A Iperf nem az egyetlen eszköz. A [NTTTCP egy alternatív megoldás a teszteléshez](../virtual-network/virtual-network-bandwidth-testing.md).
 
 ## <a name="test-vms-running-windows"></a>Windows rendszerű virtuális gépek tesztelése
 
@@ -225,7 +225,7 @@ Az ügyfél és a kiszolgáló közötti párhuzamosan gyűjtött csomagok rögz
 
 Még akkor is, ha az előző lépésekkel (iPERF/NTTTCP/etc...) mért összesített átviteli sebesség jó volt, lassú fájl is megjelenhet, ha a Windows Intézőt használja, vagy egy RDP-munkameneten keresztül húzza a fájlt. Ez a probléma általában az alábbi tényezők egyike vagy mindkettő miatt fordul elő:
 
-* A fájlmásolási alkalmazások, például a Windows Intéző és az RDP, nem használnak több szálat a fájlok másolásakor. A jobb teljesítmény érdekében használjon egy többszálas fájlmásolási alkalmazást, például a [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) a fájlok másolását 16 vagy 32 szál használatával. Ha módosítani szeretné a RichCopy található fájlmásolás szálának számát, kattintson a **művelet**  >  **másolási beállítások**fájlmásolás elemre  >  **File copy**.
+* A fájlmásolási alkalmazások, például a Windows Intéző és az RDP, nem használnak több szálat a fájlok másolásakor. A jobb teljesítmény érdekében használjon egy többszálas fájlmásolási alkalmazást, például a [RichCopy](/previous-versions/technet-magazine/dd547088(v=msdn.10)) a fájlok másolását 16 vagy 32 szál használatával. Ha módosítani szeretné a RichCopy található fájlmásolás szálának számát, kattintson a **művelet**  >  **másolási beállítások** fájlmásolás elemre  >  **File copy**.
 
    ![Lassú fájlmásolás esetén felmerülő problémák](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
@@ -233,7 +233,7 @@ Még akkor is, ha az előző lépésekkel (iPERF/NTTTCP/etc...) mért összesít
    > Nem minden alkalmazás működik, és nem minden alkalmazás/folyamat használja az összes szálat. Ha futtatja a tesztet, láthatja, hogy néhány szál üres, és nem biztosít pontos átviteli sebességet.
    > Az alkalmazás fájlátviteli teljesítményének ellenőrzéséhez használja a több szálat, ha az alkalmazás vagy a fájlátvitel optimális átviteli sebességét szeretné megkeresni.
 
-* Nem elegendő a virtuális gép lemezének olvasási/írási sebessége. További információ: [Azure Storage – hibaelhárítás](../storage/common/storage-e2e-troubleshooting.md).
+* Nem elegendő a virtuális gép lemezének olvasási/írási sebessége. További információ: [Azure Storage – hibaelhárítás](/previous-versions/azure/storage/common/storage-e2e-troubleshooting).
 
 ## <a name="on-premises-device-external-facing-interface"></a>Helyszíni eszköz külső felé irányuló felülete
 

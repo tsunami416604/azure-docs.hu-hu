@@ -5,12 +5,12 @@ author: rbest
 ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: 98e04ba6bb1310935c4893a3616dfd68c2e99a55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29f6be5319c5a142ad3ea0d73deb2f95d8cb0d7a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797632"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659726"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Cost Management Azure Lab Services
 
@@ -31,7 +31,7 @@ Előfordulhat, hogy ez a becslés nem jeleníti meg az összes lehetséges költ
 
 ## <a name="analyze-the-previous-months-usage"></a>Az előző havi használat elemzése
 
-A Cost Analysis az előző havi használat áttekintésére szolgál, amely segít meghatározni a laborban történt módosításokat. A korábbi költségek részletezését az [előfizetés költségeinek elemzése](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis)során találja. A Azure Portalban megadhatja az **előfizetéseket** a keresőmezőbe, majd kiválaszthatja az **előfizetések** lehetőséget. 
+A Cost Analysis az előző havi használat áttekintésére szolgál, amely segít meghatározni a laborban történt módosításokat. A korábbi költségek részletezését az [előfizetés költségeinek elemzése](../cost-management-billing/costs/quick-acm-cost-analysis.md)során találja. A Azure Portalban megadhatja az **előfizetéseket** a keresőmezőbe, majd kiválaszthatja az **előfizetések** lehetőséget. 
 
 > [!div class="mx-imgBorder"]
 > ![Képernyőkép, amely megjeleníti a keresőmezőt és az előfizetések lehetőséget.](./media/cost-management-guide/subscription-search.png)
@@ -41,12 +41,12 @@ Válassza ki az áttekinteni kívánt előfizetést.
 > [!div class="mx-imgBorder"]
 > ![Az előfizetés kijelölését bemutató képernyőkép.](./media/cost-management-guide/subscription-select.png)
 
-Válassza a **Cost Analysis** elemet a bal oldali ablaktáblán **Cost Management**alatt.
+Válassza a **Cost Analysis** elemet a bal oldali ablaktáblán **Cost Management** alatt.
 
 > [!div class="mx-imgBorder"]
 > ![A diagram előfizetési költségeit bemutató képernyőkép.](./media/cost-management-guide/subscription-cost-analysis.png)
 
-Ez az irányítópult lehetővé teszi a részletes költségadatok használatát, beleértve a különböző fájltípusok ütemezett exportálásának lehetőségét is. További információ: [Cost Management + számlázás áttekintése](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview).
+Ez az irányítópult lehetővé teszi a részletes költségadatok használatát, beleértve a különböző fájltípusok ütemezett exportálásának lehetőségét is. További információ: [Cost Management + számlázás áttekintése](../cost-management-billing/cost-management-billing-overview.md).
 
 A szűrés erőforrástípus alapján végezhető el. `microsoft.labservices/labaccounts`A használata csak a labor szolgáltatásokhoz kapcsolódó költségeket jeleníti meg.
 
@@ -57,7 +57,7 @@ Az alábbi képernyőképen egy példa a Cost Analysis szolgáltatásra.
 > [!div class="mx-imgBorder"]
 > ![Képernyőkép, amely egy előfizetésre vonatkozó, példaként szolgáló Cost-elemzést mutat be.](./media/cost-management-guide/cost-analysis.png)
 
-Alapértelmezés szerint hat oszlop van: **erőforrás**, **Erőforrás típusa**, **hely**, **erőforráscsoport neve**, **címkék**és **Cost**. Az **erőforrás** oszlop tartalmazza a labor-fiók, a labor neve és a virtuális gép adatait. A labor-fiókot, a labor nevét és az alapértelmezett (második és harmadik sort) tartalmazó sorok a tesztkörnyezet díja. A használt virtuális gépeken a labor-fiókot, a labor nevét, az alapértelmezett és a virtuális gép nevét megjelenítő sorokra vonatkozó költségeket tekinthet meg. 
+Alapértelmezés szerint hat oszlop van: **erőforrás**, **Erőforrás típusa**, **hely**, **erőforráscsoport neve**, **címkék** és **Cost**. Az **erőforrás** oszlop tartalmazza a labor-fiók, a labor neve és a virtuális gép adatait. A labor-fiókot, a labor nevét és az alapértelmezett (második és harmadik sort) tartalmazó sorok a tesztkörnyezet díja. A használt virtuális gépeken a labor-fiókot, a labor nevét, az alapértelmezett és a virtuális gép nevét megjelenítő sorokra vonatkozó költségeket tekinthet meg. 
 
 Ebben a példában az első és a második sor (az **aaalab/dockerlab**-val együtt) hozzáadásával a "aaalab" Lab-fiókban a "dockerlab" labor teljes költsége jelenik meg.
 
@@ -70,7 +70,7 @@ A képkatalógus teljes díjainak megszerzéséhez módosítsa az erőforrás t�
 
 Egyes egyetemek a labor-fiókot és az erőforráscsoportot használták az osztályok elkülönítésének módjaként. Az egyes osztályok saját labor-fiókkal és erőforráscsoporthoz rendelkeznek. 
 
-A Cost Analysis ablaktáblán adjon hozzá egy szűrőt az erőforráscsoport neve alapján az osztály megfelelő erőforráscsoport-nevével. Ezt követően csak az adott osztály költségei lesznek láthatók. Ez lehetővé teszi az osztályok közötti világosabb kiválasztást a költségek megtekintésekor. A Cost Analysis [ütemezett exportálás](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) funkciójának használatával letöltheti az egyes osztályok költségeit külön fájlokban.
+A Cost Analysis ablaktáblán adjon hozzá egy szűrőt az erőforráscsoport neve alapján az osztály megfelelő erőforráscsoport-nevével. Ezt követően csak az adott osztály költségei lesznek láthatók. Ez lehetővé teszi az osztályok közötti világosabb kiválasztást a költségek megtekintésekor. A Cost Analysis [ütemezett exportálás](../cost-management-billing/costs/tutorial-export-acm-data.md) funkciójának használatával letöltheti az egyes osztályok költségeit külön fájlokban.
 
 ## <a name="manage-costs"></a>Költségek kezelése
 
@@ -90,7 +90,7 @@ Ezeket a beállításokat a Lab-fiók szintjén és a labor szintjén is konfigu
 > [!NOTE]
 > Ez a beállítás csak a Windows rendszerű virtuális gépek esetében érhető el.
 
-Ha a **felhasználók leválasztása, ha a virtuális gépek üresjárati** beállítás be van kapcsolva, a felhasználó kapcsolata megszakad a laborban lévő összes gépről, ha a Windows operációs rendszer a munkamenetet üresjáratban tartja (beleértve a sablon virtuális gépeket is). Az [inaktív Windows operációs rendszer definíciója](https://docs.microsoft.com/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state) két feltételt használ: 
+Ha a **felhasználók leválasztása, ha a virtuális gépek üresjárati** beállítás be van kapcsolva, a felhasználó kapcsolata megszakad a laborban lévő összes gépről, ha a Windows operációs rendszer a munkamenetet üresjáratban tartja (beleértve a sablon virtuális gépeket is). Az [inaktív Windows operációs rendszer definíciója](/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state) két feltételt használ: 
 
 * Felhasználói hiányzás: nincs billentyűzet vagy egér bemenet.
 * Erőforrás-felhasználás hiánya: az összes processzor és az összes lemez egy adott százalékban tétlen volt.
@@ -107,7 +107,7 @@ A kapcsolat nélküli Windows rendszerű virtuális gépek automatikus leállít
 Ha például a beállításokat a következőképpen konfigurálja:
  
 * **Felhasználók leválasztása, ha a virtuális gépek üresjáratban vannak**: 15 perccel az inaktív állapot észlelése után.
-* **Virtuális gépek leállítása a felhasználók leválasztása**után: 5 perccel a felhasználó megszakadása után.
+* **Virtuális gépek leállítása a felhasználók leválasztása** után: 5 perccel a felhasználó megszakadása után.
  
 A Windows rendszerű virtuális gépek automatikusan leállnak 20 perccel azután, hogy a felhasználó abbahagyta a használatot. 
  
@@ -122,7 +122,7 @@ A **virtuális gépek leállítása, amikor a felhasználók leválasztása** be
 * Linux esetében az SSH-kapcsolat megszakad.
  
 > [!NOTE]
-> Csak [a Linux adott disztribúciói és verziói](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#supported-linux-distributions) támogatottak.
+> Csak [a Linux adott disztribúciói és verziói](../virtual-machines/extensions/diagnostics-linux.md#supported-linux-distributions) támogatottak.
  
 Megadhatja, hogy mennyi ideig várjon a virtuális gépek a felhasználó újrakapcsolódása előtt az automatikus leállítás előtt. 
 

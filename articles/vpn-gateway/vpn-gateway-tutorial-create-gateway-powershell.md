@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 91004b9cb545275746f75dbd6ad46981fe4b04d5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b70a3fe4884ef209e57fbb954c27aa83486b5c98
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461158"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661001"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Oktatóanyag: VPN-átjáró létrehozása és kezelése a PowerShell-lel
 
@@ -72,7 +72,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Először az erőforráscsoportot kell létrehozni. A következő példában egy *TestRG1* nevű erőforráscsoportot hozunk létre az *USA keleti régiójában*:
 
@@ -133,7 +133,7 @@ Amint az átjáró létrejött, létrehozhat egy kapcsolatot a virtuális háló
 
 ## <a name="view-the-gateway-public-ip-address"></a>Az átjáró nyilvános IP-címének megtekintése
 
-Ha ismeri a nyilvános IP-cím nevét, a [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) használatával jelenítse meg az átjáróhoz rendelt nyilvános IP-címet.
+Ha ismeri a nyilvános IP-cím nevét, a [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) használatával jelenítse meg az átjáróhoz rendelt nyilvános IP-címet.
 
 Ha a munkamenet időkorlátja lejárt, másolja az oktatóanyag elejétől származó általános hálózati paramétereket az új munkamenetbe, majd folytassa a következővel:.
 
@@ -162,11 +162,11 @@ $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 ```
 
-További információ: [VPN-átjáró alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md).
+További információ: [VPN-átjáró alaphelyzetbe állítása](./reset-gateway.md).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a [következő oktatóanyagra](vpn-gateway-tutorial-vpnconnection-powershell.md)készül, érdemes megtartania ezeket az erőforrásokat, mert ezek az előfeltételek.
+Ha a [következő oktatóanyagra](./vpn-gateway-create-site-to-site-rm-powershell.md)készül, érdemes megtartania ezeket az erőforrásokat, mert ezek az előfeltételek.
 
 Ha azonban az átjáró egy prototípus, tesztelés vagy próba-koncepciós telepítés része, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal távolíthatja el az erőforráscsoportot, a VPN-átjárót és az összes kapcsolódó erőforrást.
 
@@ -174,7 +174,7 @@ Ha azonban az átjáró egy prototípus, tesztelés vagy próba-koncepciós tele
 Remove-AzResourceGroup -Name $RG1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a VPN-átjárók létrehozásának és kezelésének alapvető műveleteivel ismerkedett meg, például:
 

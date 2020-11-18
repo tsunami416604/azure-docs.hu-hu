@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e0fc50647e926ea919f70b888f3efc303713fe1e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 43b28c9f2efc8ffe17e0bf21b1c395d64e89b6a8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631189"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660015"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Oktatóanyag: az Azure Spring Cloud üzembe helyezése az Azure Virtual Networkben (VNet Injection)
 
@@ -27,7 +27,7 @@ Az üzembe helyezés a következőket teszi lehetővé:
 * Az Azure Spring Cloud bejövő és kimenő hálózati kommunikációjának szabályozása az ügyfelek számára
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az Azure Spring Cloud erőforrás-szolgáltatót regisztrálnia kell az `Microsoft.AppPlatform` [erőforrás-szolgáltató regisztrálása Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) vagy a következő az CLI-parancs futtatásával:
+Regisztrálnia kell az Azure Spring Cloud erőforrás-szolgáltatót a *Microsoft. AppPlatform* és a *Microsoft. tárolószolgáltatás* utasítás szerint az [erőforrás-szolgáltató regisztrálása a Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) vagy a következő az CLI-parancs futtatásával:
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform
@@ -35,14 +35,14 @@ az provider register --namespace Microsoft.AppPlatform
 ## <a name="virtual-network-requirements"></a>Virtuális hálózati követelmények
 Az Azure Spring Cloud Service-példány üzembe helyezéséhez használt virtuális hálózatnak az alábbi követelményeknek kell megfelelnie:
 
-* **Hely** : a virtuális hálózatnak ugyanazon a helyen kell lennie, mint az Azure Spring Cloud Service-példánynak.
-* **Előfizetés** : a virtuális hálózatnak ugyanabban az előfizetésben kell lennie, mint az Azure Spring Cloud Service-példánnyal.
-* **Alhálózatok** : a virtuális hálózatnak két, Azure Spring Cloud Service-példányhoz dedikált alhálózatot kell tartalmaznia: 
+* **Hely**: a virtuális hálózatnak ugyanazon a helyen kell lennie, mint az Azure Spring Cloud Service-példánynak.
+* **Előfizetés**: a virtuális hálózatnak ugyanabban az előfizetésben kell lennie, mint az Azure Spring Cloud Service-példánnyal.
+* **Alhálózatok**: a virtuális hálózatnak két, Azure Spring Cloud Service-példányhoz dedikált alhálózatot kell tartalmaznia: 
     * Egy a Service Runtime számára
     * Az egyik a Spring boot Service-alkalmazásaihoz. 
     * Az alhálózatok és az Azure Spring Cloud Service-példányok között egy-az-egyhez kapcsolat áll fenn. Minden egyes telepített szolgáltatási példányhoz új alhálózatot kell használnia, és mindegyik alhálózat csak egyetlen szolgáltatási példányt tartalmazhat.
-* **Címterület** : egy CIDR legfeljebb/28 a szolgáltatás futásidejű alhálózata számára, valamint egy másik CIDR-blokk legfeljebb/24 a Spring boot Service-alhálózati alkalmazások alhálózata számára.
-* **Útválasztási táblázat** : az alhálózatok nem rendelkezhetnek meglévő útválasztási táblázattal.
+* **Címterület**: egy CIDR legfeljebb/28 a szolgáltatás futásidejű alhálózata számára, valamint egy másik CIDR-blokk legfeljebb/24 a Spring boot Service-alhálózati alkalmazások alhálózata számára.
+* **Útválasztási táblázat**: az alhálózatok nem rendelkezhetnek meglévő útválasztási táblázattal.
 
 Az alábbi eljárások ismertetik a virtuális hálózat telepítését, amely az Azure Spring Cloud példányát tartalmazza.
 
@@ -57,16 +57,16 @@ Ha már rendelkezik virtuális hálózattal az Azure Spring Cloud Service-péld�
     |-----------------|--------------------------------------------------|
     |Előfizetés     |Válassza ki előfizetését.                         |
     |Erőforráscsoport   |Válassza ki az erőforráscsoportot, vagy hozzon létre egy újat.  |
-    |Name (Név)             |Adja meg az *Azure-Spring-Cloud-vnet*                   |
+    |Név             |Adja meg az *Azure-Spring-Cloud-vnet*                   |
     |Hely         |Válassza ki az **USA keleti** régióját                                |
 
-1. Kattintson a **Tovább gombra: IP-címek >** . 
+1. Kattintson a **Tovább gombra: IP-címek >**. 
  
 1. IPv4-címterület esetén írja be a következőt: 10.1.0.0/16.
 
 1. Válassza az **alhálózat hozzáadása** lehetőséget, majd adja meg a *Service-Runtime-alhálózatot* az alhálózat **neve** és a 10.1.0.0/24 alhálózathoz az **alhálózat-címtartomány** esetében. Ezután kattintson az **Add** (Hozzáadás) gombra.
 
-1. Válassza az **alhálózat hozzáadása** újra lehetőséget, majd adja meg az **alhálózat nevét** és az **alhálózati címtartományt** , például: *alkalmazások – alhálózat* és 10.1.1.0/24.  Kattintson a **Hozzáadás** parancsra.
+1. Válassza az **alhálózat hozzáadása** újra lehetőséget, majd adja meg az **alhálózat nevét** és az **alhálózati címtartományt**, például: *alkalmazások – alhálózat* és 10.1.1.0/24.  Kattintson a **Hozzáadás** parancsra.
 
 1. Kattintson a **Felülvizsgálat + létrehozás** elemre. Hagyja a többi értéket alapértelmezettként, majd kattintson a **Létrehozás** gombra.
 
@@ -82,7 +82,7 @@ Válassza ki a korábban létrehozott *Azure-Spring-Cloud-vnet* virtuális hál�
 
     |Beállítás  |Érték                                             |
     |---------|--------------------------------------------------|
-    |Role     |**Tulajdonos** kiválasztása                                  |
+    |Szerepkör     |**Tulajdonos** kiválasztása                                  |
     |Válassza ezt:   |Adja meg az *Azure Spring Cloud erőforrás-szolgáltatót*      |
 
     Ezután válassza az *Azure Spring Cloud erőforrás-szolgáltató* elemet, majd kattintson a **Mentés** gombra.

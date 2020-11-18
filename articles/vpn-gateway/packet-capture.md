@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: 3be01f6d8e1fb1f6ba541f8d1cb0c92d2a43b0da
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c6aa2b63344ef629d55f5a4efb66e4ee0e55975e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073104"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661035"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>A csomagok rögzítésének konfigurálása a VPN-átjárók számára
 
@@ -318,7 +318,7 @@ Az alábbi JSON-és JSON-sémák az egyes tulajdonságok magyarázatát tartalma
 
 ## <a name="set-up-packet-capture-by-using-powershell"></a>A csomagok rögzítésének beállítása a PowerShell használatával
 
-Az alábbi példák olyan PowerShell-parancsokat mutatnak be, amelyek elindítják és leállítják a csomagok rögzítését. További információ a paraméterek beállításairól: [Start-AzVirtualnetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
+Az alábbi példák olyan PowerShell-parancsokat mutatnak be, amelyek elindítják és leállítják a csomagok rögzítését. További információ a paraméterek beállításairól: [Start-AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>A csomagok rögzítésének elindítása VPN-átjáró esetén
 
@@ -354,7 +354,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 - A csomagok minimális rögzítési időtartama 600 másodperc. Az elérési úton található több összetevő szinkronizálási problémái miatt előfordulhat, hogy rövidebb csomagok rögzítése nem biztosít teljes adatmennyiséget.
 - A csomag-rögzítési adatfájlok PCAP formátumban jönnek létre. A PCAP-fájlok megnyitásához használjon Wireshark vagy más általánosan elérhető alkalmazásokat.
 - A csomagok rögzítése nem támogatott a házirend-alapú átjárók esetében.
-- Ha a `SASurl` paraméter nincs megfelelően konfigurálva, a nyomkövetés sikertelen lehet a tárolási hibákkal. A paraméterek megfelelő létrehozásával kapcsolatos példákért `SASurl` lásd: [stop-AzVirtualNetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture).
+- Ha a `SASurl` paraméter nincs megfelelően konfigurálva, a nyomkövetés sikertelen lehet a tárolási hibákkal. A paraméterek megfelelő létrehozásával kapcsolatos példákért `SASurl` lásd: [stop-AzVirtualNetworkGatewayPacketCapture](/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture).
 
 
 

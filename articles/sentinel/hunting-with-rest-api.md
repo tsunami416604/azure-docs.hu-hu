@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2020
 ms.author: yelevin
-ms.openlocfilehash: ca60b9350171cee55462c9df28915c811e1cfd25
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: cd52f22004bf72f3328d1e6a0d1ec988c2406317
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94377687"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660848"
 ---
 # <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>A vadászati és a livestream-lekérdezések kezelése az Azure Sentinelben REST API használatával
 
 Az Azure Sentinel a Azure Monitor Log Analytics részeként készült, lehetővé teszi Log Analytics "REST API használatát a vadászati és a livestream-lekérdezések kezeléséhez. Ebből a dokumentumból megtudhatja, hogyan hozhat létre és kezelhet vadászati lekérdezéseket a REST API használatával.  Az ily módon létrehozott lekérdezések az Azure Sentinel felhasználói felületén fognak megjelenni.
 
-A [mentett keresések API](https://docs.microsoft.com/rest/api/loganalytics/savedsearches)-val kapcsolatos további részletekért tekintse meg a végleges REST API referenciát.
+A [mentett keresések API](/rest/api/loganalytics/savedsearches)-val kapcsolatos további részletekért tekintse meg a végleges REST API referenciát.
 
 ## <a name="api-examples"></a>API-példák
 
@@ -46,7 +46,7 @@ Az alábbi példákban cserélje le ezeket a helyőrzőket az alábbi táblázat
 
 ### <a name="example-1"></a>1\. példa
 
-Ebből a példából megtudhatja, hogyan hozhat létre vagy frissíthet egy vadászati lekérdezést egy adott Azure Sentinel-munkaterületen.  A livestream-lekérdezések esetében a *"kategória"* kifejezést cserélje le a "Category" kifejezésre a "kategória" kifejezéssel: " *livestream-lekérdezések"* a **kérelem törzsében** : 
+Ebből a példából megtudhatja, hogyan hozhat létre vagy frissíthet egy vadászati lekérdezést egy adott Azure Sentinel-munkaterületen.  A livestream-lekérdezések esetében a *"kategória"* kifejezést cserélje le a "Category" kifejezésre a "kategória" kifejezéssel: " *livestream-lekérdezések"* a **kérelem törzsében**: 
 
 #### <a name="request-header"></a>Kérelem fejléce
 

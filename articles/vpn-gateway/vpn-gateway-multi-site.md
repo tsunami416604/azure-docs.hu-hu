@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: 93916bb1eb92447da45ebae7ccb2e61c5af1dd9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 168bb9e06c73ec27ec1304813023889c9549b8e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441578"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660695"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Helyek közötti kapcsolat hozzáadása egy VNet meglévő VPN Gateway-kapcsolattal (klasszikus)
 
@@ -71,8 +71,8 @@ Ha már van egy helyek közötti VPN dinamikus útválasztási átjáróval, nag
 2. Konfigurálja az új átjárót, és hozza létre a VPN-alagutat. Útmutatásért lásd: [az SKU és a VPN típusának megadása](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Győződjön meg arról, hogy az útválasztási típust "dinamikus"-ként adja meg.
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Ha nem rendelkezik helyek közötti virtuális hálózattal:
-1. Hozza létre a helyek közötti virtuális hálózatot a következő utasítások használatával: [hozzon létre egy Virtual Network helyek közötti VPN-kapcsolattal](vpn-gateway-site-to-site-create.md).  
-2. Konfigurálja a dinamikus útválasztási átjárót a következő utasítások használatával: [VPN Gateway konfigurálása](vpn-gateway-configure-vpn-gateway-mp.md). Ügyeljen arra, hogy a **dinamikus útválasztást** válassza az átjáró típusaként.
+1. Hozza létre a helyek közötti virtuális hálózatot a következő utasítások használatával: [hozzon létre egy Virtual Network helyek közötti VPN-kapcsolattal](./vpn-gateway-howto-site-to-site-classic-portal.md).  
+2. Konfigurálja a dinamikus útválasztási átjárót a következő utasítások használatával: [VPN Gateway konfigurálása](./vpn-gateway-howto-site-to-site-classic-portal.md). Ügyeljen arra, hogy a **dinamikus útválasztást** válassza az átjáró típusaként.
 
 ## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. a hálózati konfigurációs fájl exportálása
 
@@ -174,7 +174,7 @@ Importálja a hálózati konfigurációs fájlt. Ha ezt a fájlt a módosításo
 ## <a name="6-download-keys"></a>6. kulcsok letöltése
 Az új alagutak hozzáadása után a "Get-AzureVNetGatewayKey" PowerShell-parancsmag használatával lekérheti az egyes alagutakhoz tartozó IPsec/IKE előmegosztott kulcsokat.
 
-Példa:
+Például:
 
 ```powershell
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"

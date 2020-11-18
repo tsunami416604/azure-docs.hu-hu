@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 5b3b3fb5e5440fea888654027f4fbf1a68b34141
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 921a8b6c808d4eef2b02ef0580d5b2ea9045366d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252425"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659505"
 ---
 # <a name="ip-groups-in-azure-firewall-policy"></a>Azure Firewall házirendben szereplő IP-csoportok
 
@@ -50,7 +50,7 @@ Az IP-csoportokat a Azure Portal, az Azure CLI vagy a REST API használatával l
 Megtekintheti az IP-csoport összes IP-címét és a hozzá társított szabályokat vagy erőforrásokat. Egy IP-csoport törléséhez először el kell távolítania az IP-csoportot az azt használó erőforrásból.
 
 1. Az IP-címek megtekintéséhez vagy szerkesztéséhez válassza az **IP-címek** lehetőséget a bal oldali ablaktábla **Beállítások** területén.
-2. Egyetlen vagy több IP-cím hozzáadásához válassza az **IP-címek hozzáadása**lehetőséget. Ekkor megnyílik a feltöltés **húzása vagy tallózása** oldal, vagy manuálisan is megadhatja a címeket.
+2. Egyetlen vagy több IP-cím hozzáadásához válassza az **IP-címek hozzáadása** lehetőséget. Ekkor megnyílik a feltöltés **húzása vagy tallózása** oldal, vagy manuálisan is megadhatja a címeket.
 3.    Válassza ki a jobbra lévő három pontot (**..**.) az IP-címek szerkesztéséhez vagy törléséhez. Több IP-cím szerkesztéséhez vagy törléséhez jelölje be a jelölőnégyzeteket, majd kattintson a felül található **Szerkesztés** vagy **Törlés** lehetőségre.
 4. Végül a CSV-fájlformátumban is exportálhatja a fájlt.
 
@@ -72,13 +72,13 @@ Tűzfalon legfeljebb 100 IP-csoport lehet, maximális 5000 egyedi IP-cím vagy I
 
 Az IP-csoportok létrehozásához és kezeléséhez a következő Azure PowerShell parancsmagokat használhatja:
 
-- [New-AzIpGroup](https://docs.microsoft.com/powershell/module/az.network/new-azipgroup?view=azps-3.4.0)
-- [Remove-AzIPGroup](https://docs.microsoft.com/powershell/module/az.network/remove-azipgroup?view=azps-3.4.0)
-- [Get-AzIpGroup](https://docs.microsoft.com/powershell/module/az.network/get-azipgroup?view=azps-3.4.0)
-- [Set-AzIpGroup](https://docs.microsoft.com/powershell/module/az.network/set-azipgroup?view=azps-3.4.0)
-- [Új – AzFirewallPolicyNetworkRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicynetworkrule?view=azps-3.4.0)
-- [Új – AzFirewallPolicyApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicyapplicationrule?view=azps-3.4.0)
-- [Új – AzFirewallPolicyNatRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicynatrule?view=azps-3.4.0)
+- [New-AzIpGroup](/powershell/module/az.network/new-azipgroup?view=azps-3.4.0)
+- [Remove-AzIPGroup](/powershell/module/az.network/remove-azipgroup?view=azps-3.4.0)
+- [Get-AzIpGroup](/powershell/module/az.network/get-azipgroup?view=azps-3.4.0)
+- [Set-AzIpGroup](/powershell/module/az.network/set-azipgroup?view=azps-3.4.0)
+- [Új – AzFirewallPolicyNetworkRule](/powershell/module/az.network/new-azfirewallpolicynetworkrule?view=azps-3.4.0)
+- [Új – AzFirewallPolicyApplicationRule](/powershell/module/az.network/new-azfirewallpolicyapplicationrule?view=azps-3.4.0)
+- [Új – AzFirewallPolicyNatRule](/powershell/module/az.network/new-azfirewallpolicynatrule?view=azps-3.4.0)
 
 ## <a name="next-steps"></a>Következő lépések
 

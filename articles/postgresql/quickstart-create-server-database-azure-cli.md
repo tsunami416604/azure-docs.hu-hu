@@ -8,38 +8,33 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1ddc8c2b9531dd78c1c6746e28b8ff5864af563e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d174e410aaef876dfe97af62750322641de95fd3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331947"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659454"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Gyors útmutató: Azure Database for PostgreSQL-kiszolgáló létrehozása az Azure CLI használatával
 
 Ez a rövid útmutató bemutatja, hogyan használhatja az [Azure CLI](/cli/azure/get-started-with-azure-cli) -parancsokat a [Azure Cloud Shellban](https://shell.azure.com) egy Azure Database for PostgreSQL-kiszolgáló öt perc alatt történő létrehozásához. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-> [!TIP]
-> Érdemes lehet az egyszerűbb az [postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI-parancs használata, amely jelenleg előzetes verzióban érhető el. Próbálja [ki a rövid](./quickstart-create-server-up-azure-cli.md)útmutatót.
+- Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-## <a name="prerequisites"></a>Előfeltételek
-Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verzióját kell futtatnia helyileg. A telepített verziók megtekintéséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+    > [!TIP]
+    >  Érdemes lehet az egyszerűbb az [postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI-parancs használata, amely jelenleg előzetes verzióban érhető el. Próbálja [ki a rövid](./quickstart-create-server-up-azure-cli.md)útmutatót.
 
-Az az [login](/cli/azure/reference-index#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal. 
+- Válassza ki az adott előfizetés-azonosítót a fiókja alatt az az  [Account set](/cli/azure/account) parancs használatával.
 
-```azurecli-interactive
-az login
-```
+    - Jegyezze fel az **ID** értéket az az **login** kimenetből, hogy az a parancs **előfizetés** argumentumának értékeként használja. 
 
-Válassza ki az adott előfizetés-azonosítót a fiókja alatt az az  [Account set](/cli/azure/account) parancs használatával. Jegyezze fel az **ID** értéket az az **login** kimenetből, hogy az a parancs **előfizetés** argumentumának értékeként használja. 
+        ```azurecli
+        az account set --subscription <subscription id>
+        ```
 
-```azurecli
-az account set --subscription <subscription id>
-```
-
-Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](/cli/azure/account#az-account-list)lehetőséget.
+    - Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](/cli/azure/account#az-account-list)lehetőséget.
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
 
@@ -61,9 +56,9 @@ Az előző argumentumok részletei:
 name | mydemoserver | A Azure Database for PostgreSQL-kiszolgálót azonosító egyedi név. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Az értéknek 3 – 63 karaktert kell tartalmaznia. További információ: [Azure Database for PostgreSQL elnevezési szabályok](../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql).
 resource-group | myResourceGroup | Az Azure-erőforráscsoport neve.
 location | westus | A kiszolgáló Azure-beli helye.
-admin-user | myadmin | A rendszergazdai bejelentkezéshez használt Felhasználónév. Nem lehet **azure_superuser** , **Admin** , **Administrator** , **root** , **Guest** vagy **Public**.
+admin-user | myadmin | A rendszergazdai bejelentkezéshez használt Felhasználónév. Nem lehet **azure_superuser**, **Admin**, **Administrator**, **root**, **Guest** vagy **Public**.
 admin-password | *secure password* | A rendszergazda felhasználó jelszava. A következő kategóriák közül legalább a 8 – 128 karaktert kell tartalmaznia: angol nagybetűs karakterek, angol kisbetűk, számok és nem alfanumerikus karakterek.
-sku-name|GP_Gen5_2| A díjszabási csomag és a számítási konfiguráció neve. Kövesse a {díjszabási csomag} { _számítási generáció}_ {virtuális mag} konvenciót a gyorsírásban. További információ: [Azure Database for PostgreSQL díjszabása](https://azure.microsoft.com/pricing/details/postgresql/server/).
+sku-name|GP_Gen5_2| A díjszabási csomag és a számítási konfiguráció neve. Kövesse a {díjszabási csomag} {_számítási generáció}_{virtuális mag} konvenciót a gyorsírásban. További információ: [Azure Database for PostgreSQL díjszabása](https://azure.microsoft.com/pricing/details/postgresql/server/).
 
 >[!IMPORTANT] 
 >- Az alapértelmezett PostgreSQL-verzió a kiszolgálón 9,6. Az összes támogatott verzió megtekintéséhez lásd: [támogatott PostgreSQL főverziók](./concepts-supported-versions.md).
@@ -150,6 +145,6 @@ Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja 
 az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálás és importálás használatával](./howto-migrate-using-export-and-import.md)

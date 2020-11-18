@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: alzam
-ms.openlocfilehash: 09d39acc867124acfd5c3c38d5c26053218972e7
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 7c2c1930b8f801db7f70baa5b713a641606be644
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109102"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661171"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory hitelesítés: VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz
 
@@ -30,7 +30,7 @@ Ezzel a [hivatkozással](https://go.microsoft.com/fwlink/?linkid=2117554) tölth
 
 1. Lépjen a Start menüre, majd válassza a beállítások > adatvédelem > háttérbeli alkalmazások lehetőséget.
 2. A háttérben futó alkalmazások területen győződjön meg arról, hogy **az alkalmazások háttérben való futtatása** be van kapcsolva.
-3. Az válassza ki, hogy mely alkalmazások futhatnak a háttérben, kapcsolja be az Azure VPN-ügyfél beállításait a **be**értékre.
+3. Az válassza ki, hogy mely alkalmazások futhatnak a háttérben, kapcsolja be az Azure VPN-ügyfél beállításait a **be** értékre.
 
   ![engedéllyel](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
@@ -52,7 +52,7 @@ Tanúsítványalapú profillal való munka esetén győződjön meg arról, hogy
 
 Ha van egy működő profilja, és el kell terjesztenie más felhasználóknak, a következő lépésekkel exportálhatja:
 
-1. Jelölje ki az exportálni kívánt VPN-ügyféloldali profilt, majd válassza a **...**, majd az **Exportálás**lehetőséget.
+1. Jelölje ki az exportálni kívánt VPN-ügyféloldali profilt, majd válassza a **...**, majd az **Exportálás** lehetőséget.
 
     ![Képernyőkép, amely az "Azure VPN-ügyfél" lapot mutatja, a kiválasztott három ponttal és az "exportálással" kiemelve.](./media/openvpn-azure-ad-client/export/export1.jpg)
 
@@ -62,15 +62,15 @@ Ha van egy működő profilja, és el kell terjesztenie más felhasználóknak, 
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>Ügyféloldali profil importálása
 
-1. A lapon válassza az **Importálás**lehetőséget.
+1. A lapon válassza az **Importálás** lehetőséget.
 
     ![Képernyőkép, amely megjeleníti a kiválasztott "Hozzáadás" gombot és az "Importálás" műveletet, amely az ablak bal alsó részén van kiemelve.](./media/openvpn-azure-ad-client/import/import1.jpg)
 
-2. Keresse meg a profil XML-fájlját, és jelölje ki. A fájl kijelölése után válassza a **Megnyitás**lehetőséget.
+2. Keresse meg a profil XML-fájlját, és jelölje ki. A fájl kijelölése után válassza a **Megnyitás** lehetőséget.
 
     ![Képernyőfelvétel: a profil x m l fájl van kijelölve.](./media/openvpn-azure-ad-client/import/import2.jpg)
 
-3. Adja meg a profil nevét, majd válassza a **Mentés**lehetőséget.
+3. Adja meg a profil nevét, majd válassza a **Mentés** lehetőséget.
 
     ![Képernyőfelvétel: a "kapcsolatok neve" és a "Mentés" gomb kijelölve.](./media/openvpn-azure-ad-client/import/import3.jpg)
 
@@ -84,7 +84,7 @@ Ha van egy működő profilja, és el kell terjesztenie más felhasználóknak, 
 
 ### <a name="to-delete-a-client-profile"></a><a name="delete"></a>Ügyféloldali profil törlése
 
-1. Válassza ki a törölni kívánt ügyfél-profil melletti ellipsziseket. Ezután válassza az **Eltávolítás**lehetőséget.
+1. Válassza ki a törölni kívánt ügyfél-profil melletti ellipsziseket. Ezután válassza az **Eltávolítás** lehetőséget.
 
     ![Képernyőkép, amely megjeleníti az ellipsziseket és az "Eltávolítás" lehetőséget.](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
@@ -94,11 +94,11 @@ Ha van egy működő profilja, és el kell terjesztenie más felhasználóknak, 
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Kapcsolat létrehozása
 
-1. Az oldalon válassza a **+** , majd a **+ Hozzáadás**elemet.
+1. Az oldalon válassza a **+** , majd a **+ Hozzáadás** elemet.
 
     ![Képernyőkép, amely megjeleníti a "Hozzáadás" gombot.](./media/openvpn-azure-ad-client/create/create1.jpg)
 
-2. Adja meg a kapcsolatok adatait. Ha nem tudja biztosan az értékeket, forduljon a rendszergazdához. Az értékek kitöltése után válassza a **Mentés**lehetőséget.
+2. Adja meg a kapcsolatok adatait. Ha nem tudja biztosan az értékeket, forduljon a rendszergazdához. Az értékek kitöltése után válassza a **Mentés** lehetőséget.
 
     ![Képernyőfelvétel a VPN-kapcsolat tulajdonságainak kiválasztásáról és a "Mentés" gombra kattintva.](./media/openvpn-azure-ad-client/create/create2.jpg)
 
@@ -110,7 +110,7 @@ Ha van egy működő profilja, és el kell terjesztenie más felhasználóknak, 
 
     ![Képernyőkép, amely megjeleníti a kijelölt hitelesítő adatokat és a "Folytatás" gombot.](./media/openvpn-azure-ad-client/create/create4.jpg)
 
-5. A sikeres csatlakozás után az ikon zöldre vált, és a rendszer a **csatlakozást**fogja mondani.
+5. A sikeres csatlakozás után az ikon zöldre vált, és a rendszer a **csatlakozást** fogja mondani.
 
     ![kapcsolat](./media/openvpn-azure-ad-client/create/create5.jpg)
 
@@ -118,7 +118,7 @@ Ha van egy működő profilja, és el kell terjesztenie más felhasználóknak, 
 
 Ezekkel a lépésekkel konfigurálhatja a kapcsolatot úgy, hogy automatikusan kapcsolódjon az Always-on.
 
-1. A VPN-ügyfél kezdőlapján válassza a **VPN-beállítások**lehetőséget.
+1. A VPN-ügyfél kezdőlapján válassza a **VPN-beállítások** lehetőséget.
 
     ![Képernyőfelvétel a VPN-kezdőlapról a "VPN-beállítások" lehetőség kiválasztásával.](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
@@ -136,11 +136,11 @@ Ezekkel a lépésekkel konfigurálhatja a kapcsolatot úgy, hogy automatikusan k
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Kapcsolatok problémáinak diagnosztizálása
 
-1. A kapcsolódási problémák diagnosztizálásához használhatja a **Diagnosztizálás** eszközt. Válassza a **...** elemet a diagnosztizálni kívánt VPN-kapcsolat mellett a menü megjelenítéséhez. Ezután válassza a **Diagnosztizálás**lehetőséget.
+1. A kapcsolódási problémák diagnosztizálásához használhatja a **Diagnosztizálás** eszközt. Válassza a **...** elemet a diagnosztizálni kívánt VPN-kapcsolat mellett a menü megjelenítéséhez. Ezután válassza a **Diagnosztizálás** lehetőséget.
 
     ![Képernyőkép a három pontról és a "kijelöltek diagnosztizálásáról".](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
-2. A **kapcsolatok tulajdonságai** lapon válassza a **diagnosztika futtatása**lehetőséget.
+2. A **kapcsolatok tulajdonságai** lapon válassza a **diagnosztika futtatása** lehetőséget.
 
     ![A "kapcsolatok tulajdonságai" oldalt megjelenítő képernyőkép, amely a "futtatási diagnosztika" elemet mutatja.](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
@@ -160,7 +160,7 @@ Igen, a [KB4577063](https://support.microsoft.com/help/4577063/windows-10-update
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Hogyan DNS-utótagokat hozzáadni a VPN-ügyfélhez?
 
-Megváltoztathatja a letöltött profil XML-fájlját, ** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> ** és hozzáadhatja a címkéket
+Megváltoztathatja a letöltött profil XML-fájlját, **\<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes>** és hozzáadhatja a címkéket
 
 ```
 <azvpnprofile>
@@ -178,7 +178,7 @@ Megváltoztathatja a letöltött profil XML-fájlját, ** \<dnssuffixes> \<dnssu
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>Hogyan egyéni DNS-kiszolgálókat hozzáadni a VPN-ügyfélhez?
 
-Megváltoztathatja a letöltött profil XML-fájlját, ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** és hozzáadhatja a címkéket
+Megváltoztathatja a letöltött profil XML-fájlját, **\<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers>** és hozzáadhatja a címkéket
 
 ```
 <azvpnprofile>
@@ -194,12 +194,12 @@ Megváltoztathatja a letöltött profil XML-fájlját, ** \<dnsservers> \<dnsser
 ```
 
 > [!NOTE]
-> Az OpenVPN Azure AD-ügyfél DNS-névfeloldási házirend-tábla (NRPT) bejegyzéseket használ, ami azt jelenti, hogy a DNS-kiszolgálók nem lesznek felsorolva a kimenetében `ipconfig /all` . A használaton kívüli DNS-beállítások megerősítéséhez tekintse meg a [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps&preserve-view=true) a PowerShellben című részt.
+> Az OpenVPN Azure AD-ügyfél DNS-névfeloldási házirend-tábla (NRPT) bejegyzéseket használ, ami azt jelenti, hogy a DNS-kiszolgálók nem lesznek felsorolva a kimenetében `ipconfig /all` . A használaton kívüli DNS-beállítások megerősítéséhez tekintse meg a [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?preserve-view=true&view=win10-ps) a PowerShellben című részt.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Hogyan egyéni útvonalakat hozzáadni a VPN-ügyfélhez?
 
-Megváltoztathatja a letöltött profil XML-fájlját, ** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> ** és hozzáadhatja a címkéket
+Megváltoztathatja a letöltött profil XML-fájlját, **\<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes>** és hozzáadhatja a címkéket
 
 ```
 <azvpnprofile>
@@ -217,7 +217,7 @@ Megváltoztathatja a letöltött profil XML-fájlját, ** \<includeroutes> \<rou
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>Hogyan blokk (kizárás) útvonalakat a VPN-ügyféltől?
 
-Megváltoztathatja a letöltött profil XML-fájlját, ** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> ** és hozzáadhatja a címkéket
+Megváltoztathatja a letöltött profil XML-fájlját, **\<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes>** és hozzáadhatja a címkéket
 
 ```
 <azvpnprofile>
@@ -243,6 +243,6 @@ azurevpn -i azurevpnconfig.xml
 az importálás kényszerítéséhez használja az **-f** kapcsolót is
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Azure Active Directory-bérlő létrehozása az Azure ad-hitelesítést használó P2S nyitott VPN-kapcsolatokhoz](openvpn-azure-ad-tenant.md).

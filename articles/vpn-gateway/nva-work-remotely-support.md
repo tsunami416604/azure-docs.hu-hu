@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: 4783016e472907392f2d379efa0fed2d90ed21bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beb59674d678ed9c61c9ee0b425da7032794ca64
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595359"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660610"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Távoli munka: hálózati virtuális berendezés (NVA) – megfontolások távoli munkához
 
@@ -30,7 +30,7 @@ Az Azure Marketplace-en az összes jelentős NVA-gyártónak ajánlásokkal kell
 
 - **Egyidejű felhasználók kapacitása és száma** – ez a szám különösen fontos a pont – hely típusú VPN-felhasználók számára, mivel minden csatlakoztatott felhasználó létrehoz egy titkosított (IPSec-vagy SSL VPN-) alagutat.  
 - **Összesített átviteli sebesség** – mi az összesített sávszélesség, amelyeknek meg kell adnia a szükséges felhasználók számát, amelyhez távelérést kell biztosítania.
-- **A virtuálisgép-méretre szüksége lesz** – mindig a NVA-gyártó által ajánlott virtuálisgép-méreteket kell használnia.  Pont – hely típusú VPN esetén, ha sok egyidejű felhasználói kapcsolattal rendelkezik, nagyobb méretű virtuálisgép-méreteket kell használnia, például a [Dv2 és a DSv2 sorozatú](https://docs.microsoft.com/azure/virtual-machines/dv2-dsv2-series "Dv2 és Dsv2 sorozat") virtuális gépeket. Ezek a virtuális gépek általában több vCPU rendelkeznek, és több párhuzamos VPN-munkamenetet kezelhetnek.  Amellett, hogy több virtuális mag van, az Azure-ban nagyobb méretű virtuálisgép-méretek több összesített sávszélesség-kapacitással rendelkeznek, mint a kisebb méretű virtuális gépek mérete.
+- **A virtuálisgép-méretre szüksége lesz** – mindig a NVA-gyártó által ajánlott virtuálisgép-méreteket kell használnia.  Pont – hely típusú VPN esetén, ha sok egyidejű felhasználói kapcsolattal rendelkezik, nagyobb méretű virtuálisgép-méreteket kell használnia, például a [Dv2 és a DSv2 sorozatú](../virtual-machines/dv2-dsv2-series.md "Dv2 és Dsv2 sorozat") virtuális gépeket. Ezek a virtuális gépek általában több vCPU rendelkeznek, és több párhuzamos VPN-munkamenetet kezelhetnek.  Amellett, hogy több virtuális mag van, az Azure-ban nagyobb méretű virtuálisgép-méretek több összesített sávszélesség-kapacitással rendelkeznek, mint a kisebb méretű virtuális gépek mérete.
     > **Fontos:** Minden szállító különböző erőforrásokat használ.  Ha nem törli, hogy a becsült felhasználói terhelésnek milyen méretűnek kell lennie, vegye fel a kapcsolatot közvetlenül a szoftver gyártójával, és kérje meg a javaslatot.
 - **Példányok száma** – ha várhatóan nagy számú felhasználó és kapcsolat van, akkor a NVA-példányok méretének növelését is elérheti.  Vegye fontolóra több virtuálisgép-példány üzembe helyezését.
 - **IPSec VPN és SSL VPN** – az általános IPSec VPN-implementációk jobban teljesítik az SSL VPN-implementációkat.  

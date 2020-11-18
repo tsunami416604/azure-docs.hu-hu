@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 926de9f3fd357cd9d9ca067e4f7beff7d03eec95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55e22ebec5853d6b4f10b53be8e24f4dbebe4e1f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394186"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659777"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Tanúsítványok létrehozása és exportálása pont – hely kapcsolatokhoz a MakeCert használatával
 
@@ -26,7 +26,7 @@ Habár azt javasoljuk, hogy a [Windows 10 PowerShell-lépések](vpn-gateway-cert
 
 A következő lépések bemutatják, hogyan hozhat létre önaláírt tanúsítványt a MakeCert használatával. Ezek a lépések nem üzemelő példány-modellre vonatkoznak. Ezek a Resource Manager és a klasszikus esetében egyaránt érvényesek.
 
-1. Töltse le és telepítse a [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx).
+1. Töltse le és telepítse a [MakeCert](/windows/win32/seccrypto/makecert).
 2. A telepítés után általában a "C:\Program Files (x86) \Windows Kits\10\bin" elérési úton található makecert.exe segédprogramot találhatja meg \<arch> . Bár lehetséges, hogy egy másik helyre telepítették. Nyisson meg egy parancssort rendszergazdaként, és navigáljon a MakeCert segédprogram helyére. A következő példát használhatja a megfelelő helyhez való igazításhoz:
 
    ```cmd

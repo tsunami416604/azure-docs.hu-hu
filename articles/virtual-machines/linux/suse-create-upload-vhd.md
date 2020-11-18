@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f35adcc797e903bb44852e9ba52e1a023f51a0d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292128"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659522"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>SLES- vagy openSUSE-alapú virtuális gép előkészítése az Azure-beli használatra
 
@@ -32,7 +32,7 @@ A [SUSE Studio](https://studioexpress.opensuse.org/) egyszerűen létrehozhatja 
 
 A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BYOS (saját előfizetés) lemezképeket is közzéteszi a SLES címen a [vmdepottal](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf)címen.
 
-## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>SUSE Linux Enterprise Server 11 SP4 előkészítése
+## <a name="prepare-suse-linux-enterprise-server-for-azure"></a>SUSE Linux Enterprise Server előkészítése az Azure-hoz
 1. A Hyper-V kezelőjének középső ablaktábláján válassza ki a virtuális gépet.
 2. Kattintson a **Kapcsolódás** gombra a virtuális gép ablakának megnyitásához.
 3. Regisztrálja a SUSE Linux Enterprise rendszerét, hogy lehetővé tegye a frissítések letöltését és a csomagok telepítését.
@@ -41,57 +41,53 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
     ```console
     # sudo zypper update
     ```
-
-1. Telepítse az Azure Linux-ügynököt a SLES adattárból (SLE11-Public-Cloud-Module):
+    
+5. Az Azure Linux Agent és a Cloud-init telepítése
 
     ```console
+    # SUSEConnect -p sle-module-public-cloud/15.2/x86_64  (SLES 15 SP2)
     # sudo zypper install python-azure-agent
+    # sudo zypper install cloud-init
     ```
 
-1. Ellenőrizze, hogy a waagent "on" értékre van-e állítva a Chkconfig, és ha nem, engedélyezze az automatikus indításhoz:
+6. A waagent & Cloud-init engedélyezése a rendszerindítás elindításához
 
     ```console
     # sudo chkconfig waagent on
+    # systemctl enable cloud-init-local.service
+    # systemctl enable cloud-init.service
+    # systemctl enable cloud-config.service
+    # systemctl enable cloud-final.service
+    # systemctl daemon-reload
+    # cloud-init clean
     ```
 
-7. Ellenőrizze, hogy fut-e a waagent szolgáltatás, és ha nem, indítsa el a következőket: 
+7. A waagent és a Cloud-init konfiguráció frissítése
 
     ```console
-    # sudo service waagent start
+    # sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    # sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+    # sudo sh -c 'printf "datasource:\n  Azure:" > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg'
+    # sudo sh -c 'printf "reporting:\n  logging:\n    type: log\n  telemetry:\n    type: hyperv" > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg'
     ```
 
-8. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez nyissa meg a "/boot/grub/menu.lst" szöveget egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel a következő paramétereket tartalmazza:
+8. Szerkessze a/etc/default/grub fájlt, hogy a konzol naplófájljai a soros portra legyenek küldve, majd frissítse a fő konfigurációs fájlt a GRUB2-mkconfig-o/boot/GRUB2/grub.cfg
 
     ```config-grub
     console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     ```
-
     Ezzel biztosítható, hogy az összes konzol üzenetei az első soros porton legyenek elküldve, amely a hibakeresési problémákkal segíti az Azure-támogatást.
-9. Győződjön meg arról, hogy a/boot/grub/menu.lst és az/etc/fstab is hivatkozik a lemezre a lemez AZONOSÍTÓjának (by-id) helyett az UUID (by-UUID) használatával. 
-   
-    Lemez UUID beolvasása
-
-    ```console
-    # ls /dev/disk/by-uuid/
-    ```
-
-    Ha/dev/disk/by-id/használ, frissítse a/boot/grub/menu.lst és az/etc/fstab-et a megfelelő by-UUID értékkel
-   
-    Módosítás előtt
-   
-    `root=/dev/disk/by-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1`
-   
-    Módosítás után
-   
-    `root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
-
+    
+9. Győződjön meg arról, hogy az/etc/fstab fájl hivatkozik a lemezre az UUID használatával (by-UUID)
+         
 10. Módosítsa a udev-szabályokat úgy, hogy ne generáljon statikus szabályokat az Ethernet-adapter (ek) számára. Ezek a szabályok problémákat okozhatnak a Microsoft Azure vagy Hyper-V-ben lévő virtuális gépek klónozásakor:
 
     ```console
     # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
     # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
     ```
-
+   
 11. Javasoljuk, hogy szerkessze a "/etc/sysconfig/network/DHCP" fájlt, és módosítsa a `DHCLIENT_SET_HOSTNAME` paramétert a következőre:
 
     ```config
@@ -105,7 +101,8 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
     ```
 
-13. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik.  Ez általában az alapértelmezett.
+13. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik. Ez általában az alapértelmezett.
+
 14. Ne hozzon létre lapozófájlt az operációsrendszer-lemezen.
     
     Az Azure Linux-ügynök automatikusan konfigurálhatja a lapozófájlt a virtuális géphez az Azure-ban való üzembe helyezést követően csatlakozó helyi erőforrás lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy *ideiglenes* lemez, és a virtuális gép kiépítésekor kiürítésre kerülhet. Az Azure Linux-ügynök telepítése után (lásd az előző lépést) a/etc/waagent.conf megfelelően módosítsa a következő paramétereket:
@@ -133,7 +130,7 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
 2. Kattintson a **Kapcsolódás** gombra a virtuális gép ablakának megnyitásához.
 3. A rendszerhéjon futtassa a következő parancsot: " `zypper lr` ". Ha a parancs a következőhöz hasonló kimenetet ad vissza, akkor a Tárházak a várt módon lesznek konfigurálva – nincs szükség módosításra (vegye figyelembe, hogy a verziószámok száma változhat):
 
-   | # | Alias                 | Name (Név)                  | Engedélyezve | Frissítés
+   | # | Alias                 | Név                  | Engedélyezve | Frissítés
    | - | :-------------------- | :-------------------- | :------ | :------
    | 1 | Felhő: Tools_13.1      | Felhő: Tools_13.1      | Igen     | Igen
    | 2 | openSUSE_13 openSUSE_13.1_OSS     | openSUSE_13 openSUSE_13.1_OSS     | Igen     | Igen
@@ -225,5 +222,5 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
 
 13. Kattintson a **művelet – > leállítás** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már készen áll a SUSE Linux rendszerű virtuális merevlemez használatára, hogy új virtuális gépeket hozzon létre az Azure-ban. Ha első alkalommal tölti fel a. vhd-fájlt az Azure-ba, tekintse meg a Linux rendszerű [virtuális gép létrehozása egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd)című témakört.

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Az Azure arc-kompatibilis fürtkonfiguráció GitOps használata (előzetes verzió)
 keywords: GitOps, Kubernetes, K8s, Azure, arc, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 1a8839c2463494ba0e165bf9e1a5d22245fac8df
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ce6c754c308d2979db9b1b8eb36e7858e8a91c3c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371256"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659794"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Konfigurációk üzembe helyezése a GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 
@@ -99,7 +99,7 @@ Itt láthatók a--adattár-URL paraméter értékeként támogatott forgatókön
 | Használati eset | Formátum | Leírás |
 | ------------- | ------------- | ------------- |
 | Nyilvános git-tárház | http [s]://Server/repo.git vagy git://server/repo.git   | Nyilvános git-tárház  |
-| Privát git-tárház – SSH – fluxus által létrehozott kulcsok | SSH://[user@] Server/repo. git vagy [user@] Server: repo. git | A Flux által generált nyilvános kulcsot hozzá kell adni a git-szolgáltató felhasználói fiókjához vagy tárházához. További részleteket [itt](#apply-configuration-from-a-private-git-repository) talál. |
+| Privát git-tárház – SSH – fluxus által létrehozott kulcsok | SSH://[user@] Server/repo. git vagy [user@] Server: repo. git | A flow által generált nyilvános kulcsot hozzá kell adni a git-szolgáltató felhasználói fiókjához. Ha a központi telepítés kulcsa felhasználói fiók helyett a tárházba kerül, használja a `git@` következőt: `user@` . További részleteket [itt](#apply-configuration-from-a-private-git-repository) talál. |
 
 Ezeket a forgatókönyveket a Flux támogatja, de a sourceControlConfiguration még nem.
 
@@ -222,16 +222,26 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 3. Válassza ki a privát git-tárházat használó konfigurációt.
 4. A megnyíló helyi ablakban az ablak alján másolja az **adattár nyilvános kulcsát**.
 
-**A nyilvános kulcs hozzáadása üzembe helyezési kulcsként a git-tárházhoz**
+Ha GitHubot használ, használja a következő két lehetőség egyikét:
+
+**1. lehetőség: a nyilvános kulcs hozzáadása a felhasználói fiókhoz**
+
+1. Nyissa meg a GitHubot, kattintson a lap jobb felső sarkában található profil ikonjára.
+2. Kattintson a **Beállítások** elemre.
+3. Kattintson az **SSH és a GPG kulcsok** lehetőségre
+4. Kattintson az **új SSH-kulcs** lehetőségre.
+5. Adja meg a címet
+6. A nyilvános kulcs beillesztése (a környező idézőjelek mínusz)
+7. Kattintson az **SSH-kulcs hozzáadása** lehetőségre.
+
+**2. lehetőség: a nyilvános kulcs hozzáadása üzembe helyezési kulcsként a git-tárházhoz**
 
 1. Nyissa meg a GitHubot, navigáljon a tárházhoz, és válassza a beállítások, majd a **kulcsok telepítése** **lehetőséget**.
-2. Kattintson a **központi telepítés kulcsának hozzáadása** elemre.
+2. Kattintson az **üzembe helyezési kulcs hozzáadása** lehetőségre.
 3. Adja meg a címet
 4. **Írási hozzáférés engedélyezése**
 5. A nyilvános kulcs beillesztése (a környező idézőjelek mínusz)
 6. Kattintson a **Kulcs hozzáadása** lehetőségre.
-
-A kulcsok kezelésével kapcsolatos további információkért tekintse meg a GitHub-dokumentumokat.
 
 **Ha Azure DevOps-tárházat használ, adja hozzá a kulcsot az SSH-kulcsokhoz**
 

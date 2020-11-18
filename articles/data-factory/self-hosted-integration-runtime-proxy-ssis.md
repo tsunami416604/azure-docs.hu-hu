@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 09/09/2020
-ms.openlocfilehash: 867f12b026a56b7cab8530ef30c4a2f2c325f6b1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/15/2020
+ms.openlocfilehash: 48bd32569b7eb7fa09f83f81190bf96baa42fae0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637785"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659981"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Saját üzemeltetésű IR konfigurálása proxyként egy Azure-SSIS IRhoz Azure Data Factory
 
@@ -28,8 +28,8 @@ Ez a cikk azt ismerteti, hogyan futtathat SQL Server Integration Services (SSIS)
 Ezzel a szolgáltatással a helyszíni adataihoz anélkül férhet hozzá, hogy a [virtuális hálózathoz kellene csatlakoztatnia a Azure-SSIS IR](./join-azure-ssis-integration-runtime-virtual-network.md). A funkció akkor hasznos, ha a vállalati hálózat konfigurációja túl összetett, vagy a házirend túlságosan korlátozó ahhoz, hogy beinjektálja a Azure-SSIS IR.
 
 Ez a szolgáltatás a SSIS adatáramlási feladatot két átmeneti feladatba bontja, amikor alkalmazható: 
-* Helyszíni **előkészítési feladat** : Ez a feladat futtatja az adatfolyam-összetevőt, amely egy helyszíni adattárolóhoz csatlakozik a saját üzemeltetésű integrációs modulban. Áthelyezi az adatok a helyszíni adattárból az Azure Blob Storage egy átmeneti területére, vagy fordítva.
-* **Felhő-előkészítési feladat** : Ez a feladat olyan adatfolyam-összetevőt futtat, amely nem kapcsolódik a helyszíni adattárakhoz a Azure-SSIS IR. Az adatok áthelyezése az Azure Blob Storage átmeneti területéről egy felhőalapú adattárba, vagy fordítva.
+* Helyszíni **előkészítési feladat**: Ez a feladat futtatja az adatfolyam-összetevőt, amely egy helyszíni adattárolóhoz csatlakozik a saját üzemeltetésű integrációs modulban. Áthelyezi az adatok a helyszíni adattárból az Azure Blob Storage egy átmeneti területére, vagy fordítva.
+* **Felhő-előkészítési feladat**: Ez a feladat olyan adatfolyam-összetevőt futtat, amely nem kapcsolódik a helyszíni adattárakhoz a Azure-SSIS IR. Az adatok áthelyezése az Azure Blob Storage átmeneti területéről egy felhőalapú adattárba, vagy fordítva.
 
 Ha az adatáramlási feladat a helyszínről a felhőbe helyezi át az adatait, akkor az első és a második előkészítési feladat a helyszíni és a Felhőbeli előkészítési feladatok lesznek. Ha az adatfolyam-tevékenység a felhőből a helyszíni környezetbe helyezi át az adatait, akkor az első és a második előkészítési feladat a Felhőbeli és a helyszíni előkészítési feladatok lesznek. Ha az adatfolyam-feladatnak a helyszíni helyről a helyszíni környezetbe helyezi át az adatait, akkor az első és a második előkészítési feladat is a helyszíni előkészítési feladatok között lesz. Ha az adatfolyam-feladat felhőből a felhőbe helyezi át az adatforgalmat, akkor ez a funkció nem alkalmazható.
 
@@ -43,24 +43,34 @@ Ezután állítsa be a saját üzemeltetésű integrációs modult ugyanabban az
 
 Végül letölti és telepíti a saját üzemeltetésű integrációs modul legújabb verzióját, valamint a további illesztőprogramokat és futtatókörnyezetet a helyszíni gépen vagy az Azure-beli virtuális gépen (VM), a következőképpen:
 - Töltse le és telepítse a [saját](https://www.microsoft.com/download/details.aspx?id=39717)üzemeltetésű integrációs modul legújabb verzióját.
-- Ha objektum-csatolási és beágyazási adatbázis (OLEDB)/Open adatbázis-kapcsolati (ODBC) összekötőket használ a csomagokban, töltse le és telepítse a megfelelő illesztőprogramokat ugyanarra a gépre, ahol a saját üzemeltetésű integrációs modul telepítve van, ha még nem tette meg.  
+- Ha az objektum-csatolási és beágyazási adatbázist (OLEDB), az Open Database Connectivity (ODBC) vagy a ADO.NET-összekötőket használja a csomagokban, töltse le és telepítse a megfelelő illesztőprogramokat ugyanarra a gépre, amelyen a saját üzemeltetésű integrációs modul telepítve van, ha még nem tette volna meg.  
 
   Ha az OLEDB-illesztőprogram korábbi verzióját használja SQL Server (SQL Server Native Client [SQLNCLI]), [töltse le a 64 bites verziót](https://www.microsoft.com/download/details.aspx?id=50402).  
 
   Ha az OLEDB-illesztőprogram legújabb verzióját használja a SQL Serverhoz (MSOLEDBSQL), [töltse le a 64 bites verziót](https://www.microsoft.com/download/details.aspx?id=56730).  
   
-  Ha OLEDB/ODBC-illesztőprogramokat használ más adatbázis-rendszerekhez, például a PostgreSQL-hez, a MySQL-hez, az Oracle-hoz és így tovább, akkor letöltheti a 64 bites verzióit a webhelyükről.
+  Ha az OLEDB/ODBC/ADO. NET-illesztőprogramokat használja más adatbázis-rendszerekhez, például a PostgreSQL-hez, a MySQL-hez, az Oracle-hoz és így tovább, akkor letöltheti a 64 bites verzióit a webhelyükről.
 - Ha még nem tette meg, [töltse le és telepítse a Visual C++ (VC) futtatókörnyezet 64 bites verzióját](https://www.microsoft.com/download/details.aspx?id=40784) ugyanarra a gépre, amelyen a saját üzemeltetésű IR telepítve van.
 
-## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>Az Azure Blob Storage-hoz társított szolgáltatás előkészítése előkészítéshez
+### <a name="enable-windows-authentication-for-on-premises-staging-tasks"></a>Windows-hitelesítés engedélyezése helyszíni előkészítési feladatokhoz
 
-Ha még nem tette meg, hozzon létre egy Azure Blob Storage-társított szolgáltatást ugyanabban az adatgyárban, ahol a Azure-SSIS IR be van állítva. Ehhez tekintse meg [Az Azure-beli adatfeldolgozó-társított szolgáltatás létrehozása](./quickstart-create-data-factory-portal.md#create-a-linked-service)című témakört. Ügyeljen arra, hogy tegye a következőket:
+Ha a saját üzemeltetésű integrációs modul helyszíni előkészítési feladatainak Windows-hitelesítésre van szükségük, [konfigurálja a SSIS-csomagokat, hogy ugyanazt a Windows-hitelesítést használják](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
+
+A helyszíni előkészítési feladatok a saját üzemeltetésű IR-szolgáltatásfiók (alapértelmezés szerint *NT SERVICE\DIAHostService*) szerint lesznek megnyitva, és az adattárak a Windows-hitelesítési fiókkal lesznek elérhetők. Mindkét fiókhoz szükség van bizonyos biztonsági házirendek hozzárendelésére. A saját üzemeltetésű IR-gépen lépjen a **helyi biztonsági házirend**  >  **helyi házirendek**  >  **felhasználói jogok kiosztása** elemre, majd tegye a következőket:
+
+1. Rendeljen hozzá *egy folyamathoz tartozó memória-kvótát* , és *cserélje le a folyamat szintű jogkivonat* -szabályzatokat a saját üzemeltetésű IR-szolgáltatásfiók. Ez automatikusan megtörténik, amikor telepíti a saját üzemeltetésű integrációs modult az alapértelmezett szolgáltatásfiók-fiókkal. Ha nem, akkor manuálisan rendelje hozzá ezeket a házirendeket. Ha más szolgáltatásfiókot használ, ugyanazt a szabályzatot rendeli hozzá.
+
+1. Rendelje hozzá a *bejelentkezést szolgáltatási* házirendként a Windows-hitelesítési fiókhoz.
+
+## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>Az Azure Blob Storage társított szolgáltatás előkészítése átmeneti használatra
+
+Ha még nem tette meg, hozzon létre egy Azure Blob Storage társított szolgáltatást ugyanabban az adatgyárban, ahol a Azure-SSIS IR be van állítva. Ehhez tekintse meg [Az Azure-beli adatfeldolgozó-társított szolgáltatás létrehozása](./quickstart-create-data-factory-portal.md#create-a-linked-service)című témakört. Ügyeljen arra, hogy tegye a következőket:
 - Az **adattár** lapon válassza az **Azure Blob Storage** lehetőséget.  
 - Az **integrációs modulon keresztüli csatlakozáshoz** válassza a **AutoResolveIntegrationRuntime** (nem a Azure-SSIS IR, sem a saját üzemeltetésű IR) beállítást, mert az alapértelmezett Azure IR használatával beolvassa az Azure-Blob Storage hozzáférési hitelesítő adatait.
-- A **hitelesítési módszer** beállításnál válassza a **fiók kulcsa** , **sas URI** vagy **egyszerű szolgáltatásnév** lehetőséget.  
+- A **hitelesítési módszer** beállításnál válassza a **fiók kulcsa**, **sas URI-ja**, **szolgáltatásnév** vagy **felügyelt identitás** lehetőséget.  
 
-    >[!TIP]
-    >Ha az **egyszerű szolgáltatásnév** módszert választja, adja meg az egyszerű szolgáltatásnév számára a *tárolási blob adatközreműködői* szerepkört. További információkért tekintse meg az [Azure Blob Storage-összekötőt](connector-azure-blob-storage.md#linked-service-properties).
+>[!TIP]
+>Ha az **egyszerű szolgáltatásnév** módszert választja, adja meg az egyszerű szolgáltatásnév számára a *tárolási blob adatközreműködői* szerepkört. További információ: [Azure Blob Storage-összekötő](connector-azure-blob-storage.md#linked-service-properties). Ha a **felügyelt identitás** módszerét választja, a megfelelő szerepköröket adja meg az ADF felügyelt identitásának az Azure Blob Storage eléréséhez. További információkért lásd: az [Azure Blob Storage elérése a Azure Active Directory hitelesítéssel az ADF által felügyelt identitással](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
 
 ![Az Azure Blob Storage-hoz társított szolgáltatás előkészítése előkészítéshez](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -129,7 +139,7 @@ Ha olyan új csomagokat tervez meg, amelyek adatáramlási feladatokat tartalmaz
 ![ConnectByProxy tulajdonság engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 Ezt a tulajdonságot akkor is engedélyezheti, ha meglévő csomagokat futtat, anélkül, hogy ezeket manuálisan módosítania kellene.  Két lehetőség érhető el:
-- **A. lehetőség** : Nyissa meg, építse újra, majd telepítse újra a csomagokat tartalmazó projektet a legújabb SSDT, hogy az a Azure-SSIS IR fusson. Ezt követően engedélyezheti a tulajdonságot úgy, hogy az *igaz* értéket adja meg a megfelelő ügyfélkapcsolat-kezelők számára. Ha csomagokat futtat a SSMS-ból, akkor ezek a kapcsolatok a **csomag** előugró ablakának **kapcsolatkezelő** lapján jelennek meg.
+- **A. lehetőség**: Nyissa meg, építse újra, majd telepítse újra a csomagokat tartalmazó projektet a legújabb SSDT, hogy az a Azure-SSIS IR fusson. Ezt követően engedélyezheti a tulajdonságot úgy, hogy az *igaz* értéket adja meg a megfelelő ügyfélkapcsolat-kezelők számára. Ha csomagokat futtat a SSMS-ból, akkor ezek a kapcsolatok a **csomag** előugró ablakának **kapcsolatkezelő** lapján jelennek meg.
 
   ![ConnectByProxy property2 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
@@ -147,19 +157,11 @@ Ezt a tulajdonságot akkor is engedélyezheti, ha meglévő csomagokat futtat, a
 
 ## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>Helyszíni és Felhőbeli előkészítési feladatok hibakeresése
 
-A saját üzemeltetésű integrációs modulban megtalálhatja a futásidejű naplókat a *C:\ProgramData\SSISTelemetry* mappában, valamint a helyszíni előkészítési feladatok végrehajtási naplóit a *C:\ProgramData\SSISTelemetry\ExecutionLog* mappában.  A SSISDB vagy a megadott naplózási elérési utakon megtalálhatja a felhő-előkészítési feladatok végrehajtási naplóit attól függően, hogy a csomagokat a SSISDB tárolja-e, vagy sem. A helyszíni előkészítési feladatok egyedi azonosítói is megtalálhatók a felhőalapú átmeneti feladatok végrehajtási naplóiban. 
+A saját üzemeltetésű integrációs modulban megtalálhatja a futásidejű naplókat a *C:\ProgramData\SSISTelemetry* mappában, valamint a helyszíni előkészítési feladatok végrehajtási naplóit a *C:\ProgramData\SSISTelemetry\ExecutionLog* mappában.  Megtalálhatja a felhő-előkészítési feladatok végrehajtási naplóit a SSISDB, a naplófájlok megadott elérési útját vagy Azure Monitor attól függően, hogy a csomagokat a SSISDB-ben tárolja, engedélyezi [Azure monitor integrációt](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor)stb.). A helyszíni előkészítési feladatok egyedi azonosítói is megtalálhatók a felhőalapú átmeneti feladatok végrehajtási naplóiban. 
 
 ![Az első előkészítési feladat egyedi azonosítója](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
-## <a name="use-windows-authentication-in-on-premises-staging-tasks"></a>Windows-hitelesítés használata helyszíni előkészítési feladatokban
-
-Ha a saját üzemeltetésű integrációs modul helyszíni előkészítési feladatainak Windows-hitelesítésre van szükségük, [konfigurálja a SSIS-csomagokat, hogy ugyanazt a Windows-hitelesítést használják](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
-
-A helyszíni előkészítési feladatok a saját üzemeltetésű IR-szolgáltatásfiók (alapértelmezés szerint *NT SERVICE\DIAHostService* ) szerint lesznek megnyitva, és az adattárak a Windows-hitelesítési fiókkal lesznek elérhetők. Mindkét fiókhoz szükség van bizonyos biztonsági házirendek hozzárendelésére. A saját üzemeltetésű IR-gépen lépjen a **helyi biztonsági házirend**  >  **helyi házirendek**  >  **felhasználói jogok kiosztása** elemre, majd tegye a következőket:
-
-1. Rendeljen hozzá *egy folyamathoz tartozó memória-kvótát* , és *cserélje le a folyamat szintű jogkivonat* -szabályzatokat a saját üzemeltetésű IR-szolgáltatásfiók. Ez automatikusan megtörténik, amikor telepíti a saját üzemeltetésű integrációs modult az alapértelmezett szolgáltatásfiók-fiókkal. Ha nem, akkor manuálisan rendelje hozzá ezeket a házirendeket. Ha más szolgáltatásfiókot használ, ugyanazt a szabályzatot rendeli hozzá.
-
-1. Rendelje hozzá a *bejelentkezést szolgáltatási* házirendként a Windows-hitelesítési fiókhoz.
+Ha felváltotta az ügyfélszolgálati jegyeket, válassza a **naplók küldése** gombot a **diagnosztika** lapon **Microsoft Integration Runtime Configuration Manager** , amely a saját üzemeltetésű IR-re van telepítve, hogy a legutóbbi művelet-végrehajtási naplókat küldjön nekünk a vizsgálathoz.
 
 ## <a name="billing-for-the-on-premises-and-cloud-staging-tasks"></a>A helyszíni és a Felhőbeli előkészítési feladatok számlázása
 
@@ -167,7 +169,25 @@ A saját üzemeltetésű integrációs modulon futó helyszíni átmeneti felada
 
 A Azure-SSIS IR futó felhő-előkészítési feladatokat nem külön számlázjuk, de a futó Azure-SSIS IR a [Azure-SSIS IR árképzési](https://azure.microsoft.com/pricing/details/data-factory/ssis/) cikkben megadott módon kell fizetni.
 
-## <a name="enabling-tls-12"></a>A TLS 1.2 engedélyezése
+## <a name="enable-custom3rd-party-components"></a>Egyéni/harmadik féltől származó összetevők engedélyezése 
+
+Az alábbi utasításokat követve engedélyezheti az egyéni/harmadik féltől származó összetevők számára, hogy a saját üzemeltetésű integrációs modul használatával hozzáférjenek a helyszíni adatközponthoz Azure-SSIS IR számára:
+
+1. Telepítse az egyéni/külső gyártótól származó összetevőket SQL Server 2017 Azure-SSIS IR [standard/expressz egyéni telepítéssel](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
+
+1. Hozza létre a következő DTSPath-beállításkulcsokat a saját üzemeltetésű integrációs modulban, ha azok még nem léteznek: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` és `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` .
+ 
+1. Telepítse az egyéni/külső gyártótól származó összetevőket SQL Server 2017 a saját üzemeltetésű IR-re a fenti DTSPath, és győződjön meg arról, hogy a telepítési folyamat:
+
+   1. A,, `<DTSPath>` és mappákat hozza létre, `<DTSPath>/Connections` `<DTSPath>/PipelineComponents` `<DTSPath>/UpgradeMappings` ha azok még nem léteznek.
+   
+   1. Létrehoz egy saját XML-fájlt a bővítmény-hozzárendelésekhez a `<DTSPath>/UpgradeMappings` mappában.
+   
+   1. A globális szerelvény-gyorsítótárban (GAC) az egyéni/harmadik féltől származó összetevő-szerelvények által hivatkozott összes szerelvényt telepíti.
+
+Íme egy [példa arra a harmadik féltől származó összetevőre](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir) , amely expressz egyéni telepítést és saját üzemeltetésű IR-t használ a Azure-SSIS IRhoz.
+
+## <a name="enforce-tls-12"></a>A TLS 1.2 kényszerítése
 
 Ha erős titkosítást/biztonságosabb hálózati protokollt (TLS 1,2) kell használnia, és le kell tiltania a régebbi SSL/TLS-verziókat a saját üzemeltetésű integrációs modulban, letöltheti és futtathatja a nyilvános előzetes tároló *CustomSetupScript/UserScenarios/TLS 1,2* mappájában található *Main. cmd* parancsfájlt.  A [Azure Storage Explorer](https://storageexplorer.com/)használatával a következő sas URI azonosító megadásával csatlakozhat a nyilvános előzetes tárolóhoz:
 
@@ -175,8 +195,10 @@ Ha erős titkosítást/biztonságosabb hálózati protokollt (TLS 1,2) kell hasz
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-- Jelenleg csak az OLEDB/ODBC/Flat file sources vagy az OLEDB célhelytel rendelkező adatáramlási feladatok támogatottak.
-- Jelenleg csak az Azure Blob Storage-hoz társított, a *fiók kulcsával* , a *közös hozzáférésű aláírás (SAS) URI azonosítóval* vagy a *szolgáltatás egyszerű* hitelesítésével konfigurált szolgáltatások támogatottak.
+- A (z) Hadoop/HDFS/DQS-összetevők kivételével csak a beépített/előre Azure-SSIS IR telepített adatfolyam-összetevők támogatottak, [Azure-SSIS IR a beépített/előre telepített összetevők](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime):.
+- Jelenleg csak a felügyelt kódban (.NET-keretrendszer) írt egyéni/harmadik féltől származó adatfolyam-összetevők támogatottak – a natív kóddal (C++) írt elemek jelenleg nem támogatottak.
+- A változó értékek módosítása a helyszíni és a Felhőbeli előkészítési feladatok esetében jelenleg nem támogatott.
+- Az objektum típusú változó értékének módosítása a helyszíni előkészítési feladatokban nem tükröződik más feladatokban.
 - Az OLEDB-forrás *ParameterMapping* jelenleg nem támogatott. Áthidaló megoldásként használja az *SQL parancsot a változóból* *AccessMode* , és használja a *kifejezést* a változók/paraméterek egy SQL-parancsba való beszúrásához. Példaként tekintse meg a *ParameterMappingSample. dtsx* csomagot, amely a nyilvános előzetes verziójú tároló *SelfHostedIRProxy/korlátozások* mappájában található. A Azure Storage Explorer használatával a fenti SAS URI beírásával csatlakozhat a nyilvános előzetes verziójú tárolóhoz.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 548393353d38082c175cde20eef1e93017cdd31a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: eef78ffefe8fe13e6f160e38a05405a80d6e46f8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94639207"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660950"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows rendszerű virtuális asztali RDP-Shortpath (előzetes verzió)
 
@@ -110,9 +110,9 @@ Az RDP-Shortpath bejövő hálózati forgalmának engedélyezéséhez használja
 
 1. Nyissa meg a Csoportházirend-kezelő konzolt a [fokozott biztonságú Windows Defender-tűzfalon](/windows/security/threat-protection/windows-firewall/open-the-group-policy-management-console-to-windows-firewall-with-advanced-security).
 2. A navigációs ablaktáblán válassza a **Bejövő szabályok** lehetőséget.
-3. Válassza a **művelet** , majd az **új szabály** lehetőséget.
+3. Válassza a **művelet**, majd az **új szabály** lehetőséget.
 4. Az új bejövő szabály varázsló **szabály típusa** lapján válassza az **Egyéni** lehetőséget, majd kattintson a **tovább** gombra.
-5. A **program** lapon válassza ki **a program elérési útját** , és írja be a **következőt** : "% systemroot% \system32\svchost.exe", majd válassza a tovább lehetőséget.
+5. A **program** lapon válassza ki **a program elérési útját**, és írja be a **következőt**: "% systemroot% \system32\svchost.exe", majd válassza a tovább lehetőséget.
 6. A **protokollok és portok** lapon válassza az UDP protokoll típusát. A **helyi porton** válassza a "megadott portok" lehetőséget, és írja be a következőt: 3390.
 7. A **hatókör** lapon megadhatja, hogy a szabály csak az ezen a lapon megadott IP-címekre vonatkozó hálózati forgalomra vonatkozzon. Konfigurálja megfelelően a tervezéshez, majd kattintson a **tovább** gombra.
 8. A **művelet** lapon válassza **a kapcsolat engedélyezése** lehetőséget, majd kattintson a **tovább** gombra.
@@ -151,6 +151,7 @@ Kövesse a [hálózati biztonsági csoport dokumentációját](../virtual-machin
 
 * **Forrás**  -  **Bármely** vagy az az IP-címtartomány, amelyben az ügyfelek tartózkodnak
 * **Forrásport-tartományok** – * *\** _ _ **célhely**  -  **Any**
+* **Célport tartományai**  -  **3390**
 * **Protokoll**  -  **UDP**
 * **Művelet**  -  **Engedélyezés**
 * Szükség esetén módosíthatja a **prioritást**. A prioritás befolyásolja a szabályok alkalmazásának sorrendjét: minél kisebb a numerikus érték, annál korábbi a szabály alkalmazása.
@@ -245,6 +246,11 @@ Egy adott munkamenet-állomás RDP-Shortpath letiltásához a következő Csopor
 1. A munkamenet-gazdagépen futtassa a **gpedit. msc parancsot**.
 2. Navigáljon a **Számítógép konfigurációja > felügyeleti sablonok > Windows-összetevők > Távoli asztali szolgáltatások > távoli asztali kapcsolat gazdagép > kapcsolatok elemre**.
 3. Az **"RDP átviteli protokollok kiválasztása"** beállítás beállítása **csak TCP** értékre
+
+## <a name="feedback"></a>Visszajelzés
+
+Ezt a nyilvános előzetes verziót szeretném hallani a tapasztalatairól!
+* Kérdések, kérések, megjegyzések és egyéb visszajelzések esetén [használja ezt a visszajelzési űrlapot](https://aka.ms/RDPShortpathFeedback).
 
 ## <a name="next-steps"></a>Következő lépések
 

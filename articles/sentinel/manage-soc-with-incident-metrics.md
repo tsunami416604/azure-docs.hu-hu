@@ -15,31 +15,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 9d8d0fc46a463bda31595988d807854ef146d333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 408913fed864ee5f966b96c81afbfee4b2dc8678
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88761720"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660729"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>A SOC hatékonyabb kezelése incidensmetrikákkal
 
 > [!IMPORTANT]
 > Az incidens metrikái szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 > Ezek a funkciók szolgáltatói szerződés nélkül vannak megadva, és nem ajánlottak éles számítási feladatokhoz.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A Security Operations Center (SOC) kezelője számára a csapat teljesítményének méréséhez átfogó hatékonysági mérőszámokkal és mértékekkel kell rendelkeznie. Az incidensek műveleteinek időbeli alakulását számos különböző feltétel, például a súlyosság, a MITRE Tactics, az osztályozási idő, az átlagos megoldási idő és más feltételek alapján érdemes megtekinteni. Az Azure Sentinel mostantól elérhetővé teszi ezeket az adatokkal a Log Analytics új **biztonsági incidens** -tábláját és sémáját, valamint a kapcsolódó **biztonsági műveletek hatékonyságát** tartalmazó munkafüzetet. A csapat teljesítményét az idő múlásával jelenítheti meg, és ezzel a betekintéssel növelheti a hatékonyságot. Saját KQL-lekérdezéseket is írhat és használhat az incidensek táblájára, hogy testreszabott munkafüzeteket hozzon létre, amelyek megfelelnek az adott naplózási igényeknek és KPI-k számára.
 
 ## <a name="use-the-security-incidents-table"></a>A biztonsági incidensek tábla használata
 
-A **biztonsági incidens** tábla az Azure sentinelbe van építve. A **naplókban**a **SecurityInsights** gyűjtemény többi táblájával is megtalálhatja. A Log Analytics bármely más táblájához hasonlóan lekérdezhető.
+A **biztonsági incidens** tábla az Azure sentinelbe van építve. A **naplókban** a **SecurityInsights** gyűjtemény többi táblájával is megtalálhatja. A Log Analytics bármely más táblájához hasonlóan lekérdezhető.
 
 :::image type="content" source="./media/manage-soc-with-incident-metrics/security-incident-table.png" alt-text="Biztonsági incidensek táblázata":::
 
 Minden alkalommal, amikor létrehoz vagy frissít egy incidenst, új naplóbejegyzés kerül a táblába. Így nyomon követheti az incidensek módosításait, és lehetővé teszi a még nagyobb teljesítményű SOC-metrikák használatát, de ennek szem előtt kell lennie, amikor lekérdezéseket készít ehhez a táblához, mivel előfordulhat, hogy el kell távolítania egy incidens ismétlődő bejegyzéseit (a futtatott pontos lekérdezéstől függően). 
 
-Ha például vissza szeretné adni az incidensek száma szerint rendezett összes incidens listáját, de csak az incidensek legutóbbi naplóját szeretné visszaadni, ezt a KQL [Összefoglaló operátor](https://docs.microsoft.com/azure/data-explorer/kusto/query/summarizeoperator) használatával teheti meg az `arg_max()` [összesítési függvénnyel](https://docs.microsoft.com/azure/data-explorer/kusto/query/arg-max-aggfunction):
+Ha például vissza szeretné adni az incidensek száma szerint rendezett összes incidens listáját, de csak az incidensek legutóbbi naplóját szeretné visszaadni, ezt a KQL [Összefoglaló operátor](/azure/data-explorer/kusto/query/summarizeoperator) használatával teheti meg az `arg_max()` [összesítési függvénnyel](/azure/data-explorer/kusto/query/arg-max-aggfunction):
 
 
 ```Kusto
@@ -82,9 +82,9 @@ A **SecurityIncidents** táblázat kiegészítéséhez egy beépített **biztons
 
 Ez az új munkafüzet-sablon az Azure Sentinel navigációs menüjében a **munkafüzetek** lehetőség kiválasztásával, majd a **sablonok** lapon található. Válassza ki a **biztonsági műveletek hatékonyságát** a katalógusból, és kattintson a **mentett munkafüzet megtekintése** és a **sablon megtekintése** gombokra.
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="Biztonsági incidensek táblázata":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="Biztonsági incidensek munkafüzet-gyűjteménye":::
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="Biztonsági incidensek táblázata":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="Biztonsági incidensek munkafüzete kész":::
 
 A sablon használatával saját igényeihez igazított egyéni munkafüzeteket hozhat létre.
 
@@ -92,7 +92,7 @@ A sablon használatával saját igényeihez igazított egyéni munkafüzeteket h
 
 [!INCLUDE [SecurityIncidents schema](../../includes/sentinel-schema-security-incident.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Sentinel megkezdéséhez szüksége lesz egy előfizetésre Microsoft Azure. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 - Ismerje meg, hogyan hozhatja be [adatait az Azure sentinelbe](quickstart-onboard.md), és hogyan tekintheti [meg az adatait és a lehetséges fenyegetéseket](quickstart-get-visibility.md).

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 17c0ba7306ab4cc51fe8bbe3709d5b6bc85fa487
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a891a301d5869603a7d90d28bb9063d7d5bdb1d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344648"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660576"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Saját Machine Learning (ML) bekapcsolása az Azure Sentinelbe
 
@@ -32,7 +32,7 @@ A ML-észlelési modellek alkalmazkodnak az egyes környezetekhez és a felhaszn
 
 ## <a name="what-is-the-bring-your-own-machine-learning-byo-ml-platform"></a>Mi a saját Machine Learning (BYO-ML) platform?
 
-A ML-erőforrásokkal rendelkező és egyedi üzleti igényeknek megfelelő egyéni ML-modelleket használó szervezetek esetében a **byo-ml platformot**kínáljuk. A platform lehetővé teszi a [Azure Databricks](https://docs.microsoft.com/azure/databricks/scenarios/what-is-azure-databricks) / [Apache Spark](http://spark.apache.org/) -környezet és a Jupyter notebookok használatát a ml-környezet létrehozásához. A következő összetevőket tartalmazza:
+A ML-erőforrásokkal rendelkező és egyedi üzleti igényeknek megfelelő egyéni ML-modelleket használó szervezetek esetében a **byo-ml platformot** kínáljuk. A platform lehetővé teszi a [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) / [Apache Spark](http://spark.apache.org/) -környezet és a Jupyter notebookok használatát a ml-környezet létrehozásához. A következő összetevőket tartalmazza:
 
 - egy BYO-ML csomag, amely olyan kódtárakat tartalmaz, amelyek segítenek az adatelérésben és az eredmények visszaküldésében Log Analytics (LA), így az eredmények az észleléssel, a vizsgálattal és a vadászattal is integrálhatók. 
 
@@ -95,7 +95,7 @@ Most, hogy megismerte a BYO-ML platform főbb összetevőit, itt látható egy p
 
 ### <a name="setup-the-databricksspark-environment"></a>A Databricks/Spark-környezet beállítása
 
-Ha még nem rendelkezik ilyennel, a saját Databricks-környezetét kell beállítania. Útmutatásért tekintse meg a [Databricks](https://docs.microsoft.com/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal) gyors üzembe helyezési dokumentumát.
+Ha még nem rendelkezik ilyennel, a saját Databricks-környezetét kell beállítania. Útmutatásért tekintse meg a [Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal) gyors üzembe helyezési dokumentumát.
 
 ### <a name="auto-export-instruction"></a>Automatikus exportálási utasítás
 
@@ -103,7 +103,7 @@ Ha saját adatai alapján szeretne egyéni ML-modelleket létrehozni, exportáln
 
 Ebben a példában az Azure Blob Storage-ban be kell állítania a fájlmegosztás hozzáférési naplójának betanítási adatait. Az adat formátuma a jegyzetfüzetben és a tárakban van dokumentálva.
 
-Az [Azure parancssori felületének (CLI)](https://docs.microsoft.com/cli/azure/monitor/log-analytics)használatával automatikusan exportálhatja log Analytics adatait. 
+Az [Azure parancssori felületének (CLI)](/cli/azure/monitor/log-analytics)használatával automatikusan exportálhatja log Analytics adatait. 
 
 A parancsok futtatásához hozzá kell rendelnie a **közreműködő** szerepkört a log Analytics munkaterületen, a Storage-fiókban és a EventHub-erőforrásban. 
 
@@ -159,13 +159,13 @@ Miután beolvasta a pontozást, a pontozási jegyzetfüzet moduljának használa
 
 Ha a kapcsolódó napló részleteivel együtt szeretné megtekinteni az eredményül kapott eredményeket, térjen vissza az Azure Sentinel-portálra. A **naplók** > egyéni naplókban az eredményeket a **AnomalousResourceAccessResult_CL** táblában (vagy a saját egyéni táblanév) fogja látni. Ezeket az eredményeket használhatja a nyomozási és a vadászati élmény fokozásához.
 
-:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="Machine learning-keretrendszer":::
+:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="rendellenes erőforrás-hozzáférési naplók":::
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>Egyéni elemzési szabály készítése ML-eredményekkel
 
 Miután megerősítette, hogy a ML-eredmények szerepelnek az egyéni naplók táblában, és elégedett a pontszámok hűségével, az eredmények alapján létrehozhat egy észlelést. Nyissa meg az **Analytics szolgáltatást** az Azure Sentinel portálon, és [hozzon létre egy új észlelési szabályt](tutorial-detect-threats-custom.md). Az alábbi példa az észlelés létrehozásához használt lekérdezést mutatja be.
 
-:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="Machine learning-keretrendszer":::
+:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="Egyéni elemzési szabály létrehozása B Y O M L-észlelésekhez":::
 
 ### <a name="view-and-respond-to-incidents"></a>Incidensek megtekintése és reagálás
 Miután beállította az elemzési szabályt az ML-eredmények alapján, ha a lekérdezésben beállított küszöbérték felett van eredmény, akkor az Azure Sentinel **incidensek** lapján létrejön egy incidens. 
