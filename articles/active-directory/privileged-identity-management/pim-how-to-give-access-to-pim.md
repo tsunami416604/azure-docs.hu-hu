@@ -14,19 +14,19 @@ ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fba46ee5632f7411c433e4bba29201c59c552f21
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009562"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835203"
 ---
 # <a name="delegate-access-to-privileged-identity-management"></a>Privileged Identity Managementhoz való hozzáférés delegálása
 
 Privileged Identity Management (PIM) elérésének delegálásához a globális rendszergazda más felhasználókat is hozzárendelhet a Kiemelt szerepkörű rendszergazda szerepkörhöz. Alapértelmezés szerint a biztonsági rendszergazdák és a biztonsági olvasók csak olvasási hozzáféréssel rendelkeznek a Privileged Identity Managementhoz. A Privileged Identity Managementhoz való hozzáférés biztosítása érdekében az első felhasználó hozzárendelheti másokat a **Kiemelt szerepkörű rendszergazda** szerepkörhöz. A Kiemelt szerepkörű rendszergazda szerepkör csak az Azure AD-szerepkörök kezeléséhez szükséges. A Kiemelt szerepkörű rendszergazdai jogosultságok nem szükségesek az Azure-erőforrások beállításainak kezeléséhez.
 
 > [!NOTE]
-> A Privileged Identity Management kezeléséhez Azure Multi-Factor Authentication szükséges. Mivel a Microsoft-fiókok nem regisztrálhatnak az Azure Multi-Factor Authenticationre, a Microsoft-fiókt bejelentkező felhasználók nem férhetnek hozzá a Privileged Identity Managementhoz.
+> A Privileged Identity Management kezeléséhez Azure AD-Multi-Factor Authentication szükséges. Mivel a Microsoft-fiókok nem regisztrálhatnak az Azure AD-Multi-Factor Authenticationra, a Microsoft-fiókba bejelentkező felhasználók nem férhetnek hozzá a Privileged Identity Managementhoz.
 
 Győződjön meg arról, hogy mindig van legalább két felhasználó egy kiemelt szerepkörű rendszergazda szerepkörben, ha az egyik felhasználó ki van zárva, vagy a fiókja törölve lett.
 
@@ -36,9 +36,9 @@ Győződjön meg arról, hogy mindig van legalább két felhasználó egy kiemel
 
 1. Az Azure AD-ben nyissa meg **Privileged Identity Management**.
 
-1. Válassza az **Azure ad-szerepkörök**elemet.
+1. Válassza az **Azure ad-szerepkörök** elemet.
 
-1. Válassza a **szerepkörök**lehetőséget.
+1. Válassza a **szerepkörök** lehetőséget.
 
     ![Azure AD-szerepkörök Privileged Identity Management – szerepkörök](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
 
@@ -52,7 +52,7 @@ Győződjön meg arról, hogy mindig van legalább két felhasználó egy kiemel
 
     ![Kiemelt szerepkörű rendszergazda – tagok kiválasztása](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
 
-1. Válasszon ki egy tagot, majd kattintson a **kiválasztás**elemre.
+1. Válasszon ki egy tagot, majd kattintson a **kiválasztás** elemre.
 
 1. Kattintson az **OK** gombra, hogy a tag jogosult legyen a **Kiemelt szerepkörű rendszergazda** szerepkörre.
 
@@ -74,17 +74,17 @@ Mielőtt eltávolít valakit a Kiemelt szerepkörű rendszergazda szerepkörből
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza az **Azure ad-szerepkörök**elemet.
+1. Válassza az **Azure ad-szerepkörök** elemet.
 
-1. Válassza a **szerepkörök**lehetőséget.
+1. Válassza a **szerepkörök** lehetőséget.
 
 1. Válassza ki a **Kiemelt szerepkörű rendszergazda** szerepkört a tagok lap megnyitásához.
 
-1. Jelölje be az eltávolítani kívánt felhasználó melletti jelölőnégyzetet, majd válassza a **tag eltávolítása**lehetőséget.
+1. Jelölje be az eltávolítani kívánt felhasználó melletti jelölőnégyzetet, majd válassza a **tag eltávolítása** lehetőséget.
 
     ![Kiemelt szerepkörű rendszergazda – tag eltávolítása](./media/pim-how-to-give-access-to-pim/pim-pra-remove-member.png)
 
-1. Ha a rendszer arra kéri, hogy erősítse meg, hogy el kívánja távolítani a tagot a szerepkörből, válassza az **Igen**lehetőséget.
+1. Ha a rendszer arra kéri, hogy erősítse meg, hogy el kívánja távolítani a tagot a szerepkörből, válassza az **Igen** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

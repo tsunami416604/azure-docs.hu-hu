@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ee1561e85e769bf8a82ce96d5ce010eece92a0fa
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: dc301cf7149ad9fcd5bd5c02226afedc4df5e3ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392616"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833095"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Orchestrator megkötések
 
@@ -30,8 +30,8 @@ A következő táblázat példákat mutat be olyan API-kra, amelyeket el kell ke
 
 | API-kategória | Ok | Áthidaló megoldás |
 | ------------ | ------ | ---------- |
-| Dátum és idő  | Az aktuális dátumot vagy időpontot visszaadó API-k determinált, mert a visszaadott érték eltér az egyes visszajátszás esetén. | Használja az `CurrentUtcDateTime` API-t a .net-ben, az API-t a `currentUtcDateTime` JavaScriptben, vagy a Pythonban található API-t, `current_utc_datetime` amely biztonságos a Replay számára. |
-| GUID azonosítók és UUID-ket  | A véletlenszerű GUID vagy UUID értéket visszaadó API-k determinált, mert a generált érték különbözik az egyes visszajátszás esetén. | `NewGuid` `newGuid` Véletlenszerű GUID azonosítók biztonságos létrehozásához használja a .net-ben vagy a JavaScriptben. |
+| Dátum és idő  | Az aktuális dátumot vagy időpontot visszaadó API-k determinált, mert a visszaadott érték eltér az egyes visszajátszás esetén. | Használja a [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) tulajdonságot a .net-ben, az `currentUtcDateTime` API-t a JavaScriptben, vagy a Pythonban található API-t, `current_utc_datetime` amely biztonságos az újrajátszás számára. |
+| GUID azonosítók és UUID-ket  | A véletlenszerű GUID vagy UUID értéket visszaadó API-k determinált, mert a generált érték különbözik az egyes visszajátszás esetén. | Véletlenszerű GUID azonosítók biztonságos létrehozásához használja a [NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) -t a .net-ben vagy `newGuid` a JavaScriptben. |
 | Véletlenszerű számok | A véletlenszerű számokat visszaadó API-k determinált, mert a generált érték különbözik az egyes ismétlésekhez. | Egy tevékenység függvénnyel véletlenszerű számokat adhat vissza egy előkészítési művelethez. A tevékenység-függvények visszatérési értékei mindig biztonságosak a visszajátszás esetén. |
 | Kötések | A bemeneti és kimeneti kötések általában I/O-műveletek, és determinált. A Orchestrator függvénynek nem szabad közvetlenül használnia még a koordináló [ügyfelet](durable-functions-bindings.md#orchestration-client) és az [entitás-ügyfél](durable-functions-bindings.md#entity-client) kötéseit. | Bemeneti és kimeneti kötések használata az ügyfélen vagy a tevékenységi függvényeken belül. |
 | Network (Hálózat) | A hálózati hívások külső rendszereket érintenek, és determinált. | Hálózati hívások létrehozásához használja a Activity functions funkciót. Ha HTTP-hívást kell létrehoznia a Orchestrator függvényből, használhatja a [tartós http API-kat](durable-functions-http-features.md#consuming-http-apis)is. |
@@ -57,7 +57,7 @@ A tartós előkészítést a napok, hónapok, évek vagy akár [örökké](durab
 > [!NOTE]
 > Ez a szakasz a tartós feladatok keretrendszerének belső megvalósítási részleteit ismerteti. Ezen információk ismerete nélkül is használhat tartós függvényeket. Ez csak az újrajátszás viselkedésének megismerésére szolgál.
 
-A Orchestrator függvények biztonságos várakozási feladatait időnként *tartós feladatoknak* nevezzük. A tartós feladatok keretrendszere létrehozza és kezeli ezeket a feladatokat. Ilyenek például a **CallActivityAsync** , a **WaitForExternalEvent** és a **CreateTimer** által visszaadott feladatok a .net Orchestrator függvényekben.
+A Orchestrator függvények biztonságos várakozási feladatait időnként *tartós feladatoknak* nevezzük. A tartós feladatok keretrendszere létrehozza és kezeli ezeket a feladatokat. Ilyenek például a **CallActivityAsync**, a **WaitForExternalEvent** és a **CreateTimer** által visszaadott feladatok a .net Orchestrator függvényekben.
 
 Ezek a tartós feladatok belsőleg kezelhetők a `TaskCompletionSource` .net-objektumok listáján. Az újrajátszás során ezek a feladatok a Orchestrator-kód végrehajtásának részeként jönnek létre. Készen állnak, mert a diszpécser enumerálja a megfelelő előzményi eseményeket.
 
@@ -67,7 +67,7 @@ Ez a szakasz a futásidejű viselkedés leírásában segít megérteni, hogy mi
 
 Ha többet szeretne megtudni arról, hogy a tartós feladat-keretrendszer hogyan hajtja végre a Orchestrator functions szolgáltatást, tekintse [meg a tartós feladat forráskódját a githubon](https://github.com/Azure/durabletask). Különösen lásd: [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) és [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Megtudhatja, hogyan hívhat meg alfolyamatokat](durable-functions-sub-orchestrations.md)

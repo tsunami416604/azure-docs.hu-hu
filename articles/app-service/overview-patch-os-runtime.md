@@ -3,13 +3,13 @@ title: Operációs rendszer és futtatókörnyezet javításának ritmusa
 description: Megtudhatja, hogyan frissíti Azure App Service az operációs rendszer és a futtatókörnyezet frissítéseit, milyen futtatókörnyezeteket és javítási szinteket használ, és hogyan kérheti le a frissítési hirdetményeket.
 ms.topic: article
 ms.date: 02/02/2018
-ms.custom: seodec18
-ms.openlocfilehash: 831ba5f055b70e2f46cb8c6a941c0401df347dd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 31b2d39f5d0d125d2bf23ac72718d9b386b48923
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961516"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833486"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operációs rendszer és futtatókörnyezet javítása Azure App Service
 
@@ -75,7 +75,7 @@ Habár a kritikus operációsrendszer-információk le vannak tiltva a hozzáfé
 
 Az alábbi táblázat bemutatja, hogyan használhatók a Windows és az alkalmazásokat futtató nyelvi futtatókörnyezetek verziói:
 
-| Tájékoztatás | Hol található | 
+| Információ | Hol található | 
 |-|-|
 | Windows-verzió | Lásd: `https://<appname>.scm.azurewebsites.net/Env.cshtml` (a Rendszerinformáció területen) |
 | .NET-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole` alkalmazásban futtassa a következő parancsot a parancssorban: <br>`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"` |

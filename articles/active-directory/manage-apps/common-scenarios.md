@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9699f425b296f1c88162c78b8f86de74303747be
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2b78562bc3590bdf5b15e4061ba23e1284b07c16
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658332"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835492"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Az alkalmazások kezelésének központosítása az Azure AD-vel
 
@@ -62,7 +62,7 @@ Az identitás a biztonság sarokköve. Ha egy identitás biztonsága sérül, hi
 
 |Szolgáltatás  |Leírás| Ajánlás |
 |---------|---------| ---------|
-|Azure MFA|Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. A rendszergazda által jóváhagyott hitelesítési módszerek használatával az Azure MFA segít megőrizni az adataihoz és alkalmazásaihoz való hozzáférést, miközben az egyszerű bejelentkezési folyamat iránti igényt is kielégíti.| Az [MFA engedélyezése](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124) a felhasználók számára.  |
+|Azure AD MFA|Az Azure AD Multi-Factor Authentication (MFA) a Microsoft kétlépéses ellenőrzési megoldása. A rendszergazda által jóváhagyott hitelesítési módszerek használatával az Azure AD MFA segít megőrizni az adataihoz és alkalmazásaihoz való hozzáférést, miközben az egyszerű bejelentkezési folyamat iránti igényt is kielégíti.| Az [MFA engedélyezése](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124) a felhasználók számára.  |
 |Feltételes hozzáférés|A feltételes hozzáféréssel olyan automatizált hozzáférés-vezérlési döntéseket hozhat létre, amelyek a feltételek alapján hozzáférhetnek a felhőalapú alkalmazásokhoz.| Tekintse át az ügyfelek által használt [biztonsági alapértékeket](../fundamentals/concept-fundamentals-security-defaults.md) és [általános házirendeket](../conditional-access/concept-conditional-access-policy-common.md) . | 
 |Identity Protection|Az Identity Protection a Microsoft által az Azure AD-vel, a Microsoft-fiókokkal, a Microsoft-fiókokkal és az Xbox-szal a felhasználók védelme érdekében a Microsoft által beszerzett tapasztalatokat használja. A Microsoft naponta 6 500 000 000 000-as jeleket elemez, hogy azonosítsa és megvédje az ügyfeleket a fenyegetésektől.|Engedélyezze a szolgáltatás által biztosított [alapértelmezett Identity Protection-szabályzatokat](../identity-protection/concept-identity-protection-policies.md) . | 
 

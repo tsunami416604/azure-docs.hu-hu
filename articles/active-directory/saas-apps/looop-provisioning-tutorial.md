@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 889972f7d94ab960354982275d45bdc5d5726d6e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 528003ac482da6f254bf437321c70c389d23844b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356824"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835033"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Looop konfigurálása
 
@@ -85,7 +85,7 @@ Az Azure AD-vel való automatikus Looop konfigurálásához hozzá kell adnia a 
 
     ![Looop az eredmények listájában](common/search-new-app.png)
 
-5. Válassza ki a **Looop (regisztráció)** gombot, amely átirányítja Önt a Looop bejelentkezési oldalára. 
+5. Válassza ki a **Looop (regisztráció)** gombot, amely átirányítja a Looop bejelentkezési oldalára. 
 
     ![Looop OIDC hozzáadása](media/looop-provisioning-tutorial/signup.png)
 
@@ -135,7 +135,23 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található Looop. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Looop felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Looop felhasználói attribútumai](media/looop-provisioning-tutorial/userattributes.png)
+   |Attribútum|Típus|Szűréshez támogatott|
+   |---|---|---|
+   |userName (Felhasználónév)|Sztring|&check;|
+   |active|Logikai|
+   |emails[type eq "work"].value|Sztring|
+   |name.givenName|Sztring|
+   |name.familyName|Sztring|
+   |externalId|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Looop: 2.0: felhasználó: körzet|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Looop: 2.0: felhasználó: custom_1|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Looop: 2.0: felhasználó: custom_2|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Looop: 2.0: felhasználó: custom_3|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Looop: 2.0: felhasználó: részleg|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Looop: 2.0: felhasználó: employee_id|Sztring|
+   |urn: IETF: params: scim: sémák: kiterjesztés: Looop: 2.0: felhasználó: hely|Sztring|
+   |urn: IETF: params: scim: sémák: kiterjesztés: Looop: 2.0: felhasználó: pozíció|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Looop: 2.0: felhasználó: startAt|Sztring|
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a meta Networks-összekötőhöz** lehetőséget.
 
@@ -143,7 +159,12 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 11. Tekintse át az Azure AD-ről a meta Networks-összekötőre szinkronizált csoportosítási attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a meta Networks connectorban lévő csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Looop csoport attribútumai](media/looop-provisioning-tutorial/groupattributes.png)
+    |Attribútum|Típus|Szűréshez támogatott|
+    |---|---|---|
+    |displayName|Sztring|&check;|
+    |tagok|Referencia|
+    |externalId|Sztring|
+
 
 10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
@@ -163,7 +184,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

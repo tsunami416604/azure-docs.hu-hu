@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e483c5cdb7e5acc0677b0d0cf2b41c390eef0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fb23e60539c704dac457ab6e8706ec0cfe350ed9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371562"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835322"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkörök konfigurálása Privileged Identity Management
 
@@ -57,16 +57,16 @@ A szerepkörök beállításainak konfigurálásakor két hozzárendelési időt
 Kiválaszthatja az alábbi *jogosult* hozzárendelések időtartamának beállításait.
 
 - **Állandó jogosult hozzárendelés engedélyezése**: a rendszergazdák állandó jogosult tagságot rendelhetnek hozzá.
-- **Jogosult hozzárendelés lejárta**a következő után: a rendszergazdák megkövetelhetik, hogy minden jogosult hozzárendelés rendelkezzen a megadott kezdési és befejezési dátummal.
+- **Jogosult hozzárendelés lejárta** a következő után: a rendszergazdák megkövetelhetik, hogy minden jogosult hozzárendelés rendelkezzen a megadott kezdési és befejezési dátummal.
 
 Emellett az alábbi *aktív* hozzárendelések időtartamának beállításai közül is választhat:
 
 - **Állandó aktív hozzárendelés engedélyezése**: a rendszergazdák állandó aktív tagságot adhatnak hozzá.
-- **Aktív hozzárendelés lejárta**a következő után: a rendszergazdák megkövetelhetik, hogy az összes aktív hozzárendelés megadott kezdő és záró dátummal rendelkezzen.
+- **Aktív hozzárendelés lejárta** a következő után: a rendszergazdák megkövetelhetik, hogy az összes aktív hozzárendelés megadott kezdő és záró dátummal rendelkezzen.
 
-### <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication szükséges
+### <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD-Multi-Factor Authentication megkövetelése
 
-A Privileged Identity Management két különböző forgatókönyv esetén az Azure Multi-Factor Authentication opcionális kényszerítését teszi lehetővé.
+A Privileged Identity Management két különböző forgatókönyv esetén az Azure AD Multi-Factor Authentication opcionális kényszerítését teszi lehetővé.
 
 - **Multi-Factor Authentication megkövetelése aktív hozzárendeléskor**
 
@@ -74,7 +74,7 @@ A Privileged Identity Management két különböző forgatókönyv esetén az Az
 
 - **Multi-Factor Authentication megkövetelése aktiváláskor**
 
-  Megkövetelheti, hogy egy szerepkörhöz hozzárendelt jogosult felhasználók az aktiválás előtt regisztráljanak az Azure Multi-Factor Authenticationban. Ez a folyamat biztosítja, hogy az aktiválást kérő felhasználó számára ésszerű bizonyosságot biztosítson. Ha ezt a beállítást választja, akkor a kritikus fontosságú szerepkörök védelme olyan helyzetekben, amikor a felhasználói fiók biztonsága sérül. Ha az aktiválás előtt szeretné megkövetelni, hogy egy jogosult tag Azure Multi-Factor Authentication fusson, válassza a **multi-Factor Authentication megkövetelése aktiváláskor** jelölőnégyzetet.
+  Megkövetelheti, hogy egy szerepkörhöz hozzárendelt jogosult felhasználók az aktiválás előtt regisztrálhatnak az Azure AD-Multi-Factor Authenticationba. Ez a folyamat biztosítja, hogy az aktiválást kérő felhasználó számára ésszerű bizonyosságot biztosítson. Ha ezt a beállítást választja, akkor a kritikus fontosságú szerepkörök védelme olyan helyzetekben, amikor a felhasználói fiók biztonsága sérül. Ha az aktiválás előtt szeretné megkövetelni, hogy egy jogosult tag futtassa az Azure AD Multi-Factor Authentication, válassza a **multi-Factor Authentication megkövetelése aktiváláskor** jelölőnégyzetet.
 
 További információ: [multi-Factor Authentication és Privileged Identity Management](pim-how-to-require-mfa.md).
 
@@ -95,7 +95,7 @@ Ha szeretne jóváhagyást kérni egy szerepkör aktiválásához, kövesse az a
 
     ![A beállítások szerkesztéséhez nyissa meg az Azure AD egyéni szerepkörét](./media/azure-ad-custom-roles-configure/select-approvers.png)
 
-1. Válasszon ki legalább egy tagot vagy csoportot, majd kattintson a **kiválasztás**elemre. Legalább egy jóváhagyót ki kell választania. Nincsenek alapértelmezett jóváhagyók. A kiválasztott jóváhagyók listáján megjelennek a kiválasztások.
+1. Válasszon ki legalább egy tagot vagy csoportot, majd kattintson a **kiválasztás** elemre. Legalább egy jóváhagyót ki kell választania. Nincsenek alapértelmezett jóváhagyók. A kiválasztott jóváhagyók listáján megjelennek a kiválasztások.
 1. A szerepkör-beállítások megadása után válassza a **frissítés** lehetőséget a módosítások mentéséhez.
 
 ## <a name="next-steps"></a>Következő lépések

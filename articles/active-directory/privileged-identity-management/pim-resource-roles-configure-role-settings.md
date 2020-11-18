@@ -15,12 +15,12 @@ ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8458fc11f5e836e290c593d3ad4983f44e6abf6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4ded81389fae5954c0e488f634945b4f1c1fe4c8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370372"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834754"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management
 
@@ -40,7 +40,7 @@ Az alábbi lépéseket követve megnyithatja egy Azure-erőforrás szerepkör be
 
     ![Az Azure Resources lap a felügyelhető erőforrások listázása](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-1. Válassza a **szerepkör-beállítások**lehetőséget.
+1. Válassza a **szerepkör-beállítások** lehetőséget.
 
     ![Szerepkör-beállítások lap, amely Azure-erőforrás-szerepköröket listáz](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
@@ -95,7 +95,7 @@ Emellett az alábbi **aktív** hozzárendelések időtartamára vonatkozó lehet
 
 ## <a name="require-multi-factor-authentication"></a>Többtényezős hitelesítés megkövetelése
 
-A Privileged Identity Management két különböző forgatókönyv esetén az Azure Multi-Factor Authentication opcionális kényszerítését teszi lehetővé.
+A Privileged Identity Management két különböző forgatókönyv esetén az Azure AD Multi-Factor Authentication opcionális kényszerítését teszi lehetővé.
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>Multi-Factor Authentication megkövetelése aktív hozzárendeléskor
 
@@ -105,7 +105,7 @@ Annak biztosítása érdekében, hogy az erőforrás-rendszergazda teljesítse a
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Multi-Factor Authentication megkövetelése aktiváláskor
 
-Megkövetelheti, hogy azok a felhasználók, akik jogosultak a szerepkörre, bizonyítani tudják, kik használják az Azure Multi-Factor Authentication az aktiválás előtt. A többtényezős hitelesítés biztosítja, hogy a felhasználó, aki azt mondják, ésszerű bizonyossággal rendelkeznek. A beállítás érvényesítése megvédi a kritikus erőforrásokat olyan helyzetekben, amikor a felhasználói fiók biztonsága sérült.
+Megkövetelheti, hogy azok a felhasználók, akik jogosultak a szerepkörre, bizonyítani tudják, kik használják az Azure AD Multi-Factor Authentication az aktiválás előtt. A többtényezős hitelesítés biztosítja, hogy a felhasználó, aki azt mondják, ésszerű bizonyossággal rendelkeznek. A beállítás érvényesítése megvédi a kritikus erőforrásokat olyan helyzetekben, amikor a felhasználói fiók biztonsága sérült.
 
 Ha a többtényezős hitelesítést az aktiválás előtt szeretné megkövetelni, jelölje be a **multi-Factor Authentication aktiválása az aktiváláskor** jelölőnégyzetet.
 
@@ -129,7 +129,7 @@ Ha szeretne jóváhagyást kérni egy szerepkör aktiválásához, kövesse az a
 
     ![Válassza ki a felhasználó vagy csoport ablaktáblát a jóváhagyók kiválasztásához.](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. Válasszon ki legalább egy felhasználót vagy csoportot, majd kattintson a **kiválasztás**gombra. A felhasználók és csoportok tetszőleges kombinációját felveheti. Legalább egy jóváhagyót ki kell választania. Nincsenek alapértelmezett jóváhagyók.
+1. Válasszon ki legalább egy felhasználót vagy csoportot, majd kattintson a **kiválasztás** gombra. A felhasználók és csoportok tetszőleges kombinációját felveheti. Legalább egy jóváhagyót ki kell választania. Nincsenek alapértelmezett jóváhagyók.
 
     A kiválasztott jóváhagyók listáján megjelennek a kiválasztások.
 

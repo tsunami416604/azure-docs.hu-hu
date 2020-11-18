@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 966d264cc338487dd1a8c04f2efd0825dfccdef0
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 10d93b92f3bb0adfe734ad439079afdfcaa6270e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378754"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834438"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben
 
@@ -33,7 +33,7 @@ Ez a cikk a vészhelyzeti hozzáférési fiókok Azure AD-ben való kezeléséhe
 Előfordulhat, hogy egy szervezetnek a következő helyzetekben vészhelyzeti hozzáférési fiókot kell használnia:
 
 - A felhasználói fiókok összevonása folyamatban van, és az összevonás jelenleg nem érhető el a cella-hálózati szünet vagy az identitás-szolgáltató kimaradása miatt. Ha például az identitás-szolgáltató gazdagépe leállt a környezetben, előfordulhat, hogy a felhasználók nem tudnak bejelentkezni, amikor az Azure AD átirányítja az identitás-szolgáltatóhoz.
-- A rendszergazdák regisztrálva vannak az Azure Multi-Factor Authenticationban, és az összes önálló eszköze nem érhető el, vagy a szolgáltatás nem érhető el. Előfordulhat, hogy a felhasználók nem tudják befejezni Multi-Factor Authentication egy szerepkör aktiválásához. A cella hálózati meghibásodása például megakadályozza, hogy a telefonhívásokat vagy szöveges üzeneteket fogadjon, az eszközre regisztrált két hitelesítési mechanizmust.
+- A rendszergazdák regisztrálva vannak az Azure AD Multi-Factor Authenticationon keresztül, és az összes önálló eszköze nem érhető el, vagy a szolgáltatás nem érhető el. Előfordulhat, hogy a felhasználók nem tudják befejezni Multi-Factor Authentication egy szerepkör aktiválásához. A cella hálózati meghibásodása például megakadályozza, hogy a telefonhívásokat vagy szöveges üzeneteket fogadjon, az eszközre regisztrált két hitelesítési mechanizmust.
 - A legutóbbi globális rendszergazdai hozzáféréssel rendelkező személy elhagyta a szervezetet. Az Azure AD megakadályozza az utolsó globális rendszergazdai fiók törlését, de nem akadályozza meg a fiók törlését vagy letiltását a helyszínen. Előfordulhat, hogy a szervezet nem tudja helyreállítani a fiókot.
 - Előre nem látható körülmények, például a természeti katasztrófák vészhelyzete, amely során a mobiltelefon vagy más hálózat nem érhető el. 
 
@@ -44,7 +44,7 @@ Hozzon létre két vagy több vészhelyzeti hozzáférési fiókot. Ezeknek a fi
 A fiókok konfigurálásakor a következő követelményeknek kell teljesülniük:
 
 - A segélyhívó fiókok nem társíthatók a szervezet egyetlen felhasználójának sem. Győződjön meg arról, hogy a fiókok nincsenek csatlakoztatva az alkalmazottak által biztosított mobil telefonokhoz, az egyes alkalmazottakkal vagy más, az alkalmazottakra vonatkozó hitelesítő adatokkal rendelkező hardveres jogkivonatokhoz. Ez az elővigyázatosság olyan példányokra vonatkozik, amelyekben az egyes alkalmazottak nem érhetők el, ha a hitelesítő adatok szükségesek. Fontos annak biztosítása, hogy a regisztrált eszközök egy ismert, biztonságos helyen legyenek tárolva, amely több módon kommunikál az Azure AD-vel.
-- A vészhelyzeti hozzáférési fiókhoz használt hitelesítési mechanizmusnak eltérőnek kell lennie a többi rendszergazdai fiók által használttól, beleértve az egyéb vészhelyzeti hozzáférési fiókokat is.  Ha például a normál rendszergazdai bejelentkezés a helyszíni MFA-n keresztül történik, akkor az Azure MFA más mechanizmus lenne.  Ha azonban az Azure MFA a rendszergazdai fiókok hitelesítésének elsődleges része, akkor érdemes lehet más megközelítést használni, például ha feltételes hozzáférést használ egy harmadik féltől származó MFA-szolgáltatóhoz egyéni vezérlőkön keresztül.
+- A vészhelyzeti hozzáférési fiókhoz használt hitelesítési mechanizmusnak eltérőnek kell lennie a többi rendszergazdai fiók által használttól, beleértve az egyéb vészhelyzeti hozzáférési fiókokat is.  Ha például a normál rendszergazdai bejelentkezés a helyszíni MFA-n keresztül történik, akkor az Azure AD MFA egy másik mechanizmus lenne.  Ha azonban az Azure AD MFA a rendszergazdai fiókok hitelesítésének elsődleges része, akkor érdemes lehet más megközelítést használni, például ha feltételes hozzáférést használ egy harmadik féltől származó MFA-szolgáltatóhoz egyéni vezérlők segítségével.
 - A használat hiánya miatt az eszköznek vagy a hitelesítő adatnak nem szabad lejárnia, illetve nem lehet az automatikus karbantartás hatóköre.  
 - A vészhelyzeti hozzáférési fiókok esetében a globális rendszergazdai szerepkör-hozzárendelést véglegesen el kell végezni. 
 
@@ -109,7 +109,7 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 
         ![riasztási logika](./media/security-emergency-access/alert-image2.png)
 
-    1. Válassza a **Done** (Kész) lehetőséget. Most már megtekintheti a riasztás becsült havi költségét.
+    1. Válassza a **Kész** lehetőséget. Most már megtekintheti a riasztás becsült havi költségét.
 1. Válassza ki a riasztás által bejelentendő felhasználók műveleti csoportját. Ha létre szeretne hozni egyet, tekintse meg [a műveleti csoport létrehozása](#create-an-action-group)című témakört.
 1. Ha testre szeretné szabni a műveleti csoport tagjainak küldött e-mailes értesítést, a műveletek **testreszabása** területen válassza a műveletek lehetőséget.
 1. A **riasztás részletei** területen adja meg a riasztási szabály nevét, és adjon hozzá egy opcionális leírást.
@@ -131,7 +131,7 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 1. Válassza ki a **műveletet** **e-mail/SMS/leküldés/hangként**.
 1. Válassza a **részletek szerkesztése** lehetőséget a konfigurálni kívánt értesítési módszerek kiválasztásához, majd adja meg a szükséges kapcsolattartási adatokat, majd a részletek mentéséhez kattintson **az OK gombra** .
 1. Adja meg az aktiválni kívánt további műveleteket.
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 ## <a name="validate-accounts-regularly"></a>Fiókok rendszeres ellenőrzése
 

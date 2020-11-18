@@ -12,12 +12,12 @@ ms.date: 03/21/2019
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 6c148e673b8ada549a6543f8f35634aaf29abff0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5ae946f82590f2270719570e4b589d49542ffec8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123948"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833979"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>A My apps portál problémáinak elhárítása
 
@@ -51,7 +51,7 @@ Ha nem sikerül bejelentkeznie a **My apps** portálra, a következőket teheti 
 
 - Győződjön meg arról, hogy a jelszó helyes, és nem járt le. További információ: [a munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md).
 
-- Győződjön meg arról, hogy az ellenőrzési adatok naprakészek és pontosak. További információ: [Mit jelent az Azure multi-Factor Authentication a számomra?](./multi-factor-authentication-end-user-first-time.md) vagy [a biztonsági adatok módszereinek és adatainak módosítása](./security-info-setup-auth-app.md).
+- Győződjön meg arról, hogy az ellenőrzési adatok naprakészek és pontosak. További információ: [Mit jelent az Azure AD multi-Factor Authentication a számomra?](./multi-factor-authentication-end-user-first-time.md) vagy [a biztonsági adatok módszereinek és információinak módosítása](./security-info-setup-auth-app.md).
 
 - Adja hozzá a **My app** Portal URL-címét az **Internet Properties > Security > megbízható helyek** beállításhoz.
 
@@ -75,7 +75,7 @@ Ha **hozzáférés-megtagadási** üzenetet kap az alkalmazásnak az **alkalmaz�
 
 - Győződjön meg arról, hogy a jelszó helyes, és nem járt le. További információ: [a munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md).
 
-- Győződjön meg arról, hogy az ellenőrzési adatok naprakészek és pontosak. További információ: [Mit jelent az Azure multi-Factor Authentication a számomra?](./multi-factor-authentication-end-user-first-time.md) vagy [a biztonsági adatok módszereinek és adatainak módosítása](./security-info-setup-auth-app.md).
+- Győződjön meg arról, hogy az ellenőrzési adatok naprakészek és pontosak. További információ: [Mit jelent az Azure AD multi-Factor Authentication a számomra?](./multi-factor-authentication-end-user-first-time.md) vagy [a biztonsági adatok módszereinek és információinak módosítása](./security-info-setup-auth-app.md).
 
 - Törölje a böngésző gyorsítótárát, és próbálkozzon újra a bejelentkezéssel.
 

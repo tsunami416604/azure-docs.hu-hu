@@ -6,13 +6,13 @@ ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: d624d332fa35bf458e9158e00aaf83ce495b9061
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
+ms.openlocfilehash: ec3929219a6297bd4a3d8d3e0eff93d2ed847ba0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961340"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835220"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
 
@@ -108,7 +108,7 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-A létrehozott webalkalmazás kezeléséhez keresse meg a [Azure Portal](https://portal.azure.com), és válassza a **app Services**lehetőséget. 
+A létrehozott webalkalmazás kezeléséhez keresse meg a [Azure Portal](https://portal.azure.com), és válassza a **app Services** lehetőséget. 
 
 ![Válassza ki a App Services a Azure Portal](./media/quickstart-html/portal0.png)
 
@@ -132,7 +132,7 @@ az group delete --name appsvc_rg_Windows_westeurope
 
 A parancs futtatása egy percig is eltarthat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)

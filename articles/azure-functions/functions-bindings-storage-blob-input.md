@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5a01724bfefd50297182f998b46f99eacca5843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a46c272ee2f7aa2d6621e3dc2db81605ba0363f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325776"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833112"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Az Azure Blob Storage bemeneti kötése Azure Functions
 
@@ -175,6 +175,15 @@ A fájl *function.js* a `queueTrigger` metaadatok tulajdonság használatával a
 
 A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
+A `dataType` tulajdonság határozza meg, hogy melyik kötést használja a rendszer. A következő értékek érhetők el különböző kötési stratégiák támogatásához:
+
+| Kötési érték | Alapértelmezett | Leírás | Példa |
+| --- | --- | --- | --- |
+| `undefined` | Y | Gazdag kötést használ | `def main(input: func.InputStream)` |
+| `string` | N | Általános kötést használ, és a bemeneti típust `string` | `def main(input: str)` |
+| `binary` | N | Általános kötést használ, és a bemeneti blobot `bytes` Python-objektumként adja át | `def main(input: bytes)` |
+
+
 Itt látható a Python-kód:
 
 ```python
@@ -309,6 +318,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |**név** | n/a | A blobot jelölő változó neve a függvény kódjában.|
 |**elérési útja** |**BlobPath** | A blob elérési útja. |
 |**kapcsolat** |**Kapcsolat**| Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó [tárolási kapcsolati karakterláncot](../storage/common/storage-configure-connection-string.md) tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" értékre van állítva `connection` , a functions futtatókörnyezet egy "AzureWebJobsMyStorage" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű alkalmazás-beállításban `AzureWebJobsStorage` .<br><br>A kapcsolatok karakterláncának általános célú Storage-fiókhoz kell tartoznia, nem [csak blob Storage-fiókhoz](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**Adattípus**| n/a | A dinamikusan beírt nyelvek esetében az alapul szolgáló adattípus adható meg. A lehetséges értékek: `string` , `binary` , vagy `stream` . További részletekért tekintse meg az [Eseményindítók és a kötések fogalmait](functions-triggers-bindings.md?tabs=python#trigger-and-binding-definitions). |
 |n/a | **Hozzáférés** | Azt jelzi, hogy olvasás vagy írás történik-e. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -325,7 +335,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A Blobok adataihoz való hozzáférés `context.bindings.<NAME>` `<NAME>` a *function.js*által megadott értéknek felel meg.
+A Blobok adataihoz való hozzáférés `context.bindings.<NAME>` `<NAME>` a *function.js* által megadott értéknek felel meg.
 
 # <a name="python"></a>[Python](#tab/python)
 

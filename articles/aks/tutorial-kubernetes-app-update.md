@@ -4,13 +4,13 @@ description: Ebben az Azure Kubernetes Service-hez (AKS-hez) tartozó oktatóany
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: 6619d7c9f7d2b0cd78f3941ce431e80342b6f563
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: c8401a81a36d86b871df9fc428c393007b97c400
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576438"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833911"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások frissítése az Azure Kubernetes Service-ben (AKS)
 
@@ -145,9 +145,9 @@ kubectl get service azure-vote-front
 
 Most nyisson meg egy helyi webböngészőt a szolgáltatás IP-címére:
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Képernyőkép – a frissített Container-rendszerképre mutató példa a helyi webböngészővel és helyi gazdagéptel megnyitott Azure szavazó alkalmazásra.":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Képernyőkép: a frissített alkalmazás Azure-beli szavazási alkalmazásának megnyitása egy helyi böngészőben.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban frissített egy alkalmazást, és felvetítette ezt a frissítést az AK-fürtbe. Megtanulta végrehajtani az alábbi műveleteket:
 

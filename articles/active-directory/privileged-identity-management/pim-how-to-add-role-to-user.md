@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69884b9e07172e9b25f4c14884be8713da23cbdb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e0e230a975748fe2f737c4b8fe8491887351d387
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369828"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835373"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök kiosztása Privileged Identity Management
 
@@ -47,7 +47,7 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza az **Azure ad-szerepkörök**elemet.
+1. Válassza az **Azure ad-szerepkörök** elemet.
 
 1. Válassza ki a **szerepkörök** elemet az Azure ad-engedélyek szerepköreinek megtekintéséhez.
 
@@ -59,9 +59,9 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
     ![Új hozzárendelés ablaktábla](./media/pim-how-to-add-role-to-user/select-role.png)
 
-1. Válassza ki a hozzárendelni kívánt szerepkört, válassza ki a szerepkörhöz hozzárendelni kívánt tagot, majd kattintson a **tovább**gombra.
+1. Válassza ki a hozzárendelni kívánt szerepkört, válassza ki a szerepkörhöz hozzárendelni kívánt tagot, majd kattintson a **tovább** gombra.
 
-1. A **tagsági beállítások** ablaktábla **hozzárendelés típusa** listájában válassza a **jogosult** vagy az **aktív**lehetőséget.
+1. A **tagsági beállítások** ablaktábla **hozzárendelés típusa** listájában válassza a **jogosult** vagy az **aktív** lehetőséget.
 
     - A **jogosult** hozzárendelésekhez a szerepkör tagjának kell lennie a szerepkör használatára vonatkozó művelet végrehajtásához. A műveletek tartalmazhatják a többtényezős hitelesítés (MFA) ellenőrzését, üzleti indoklást biztosítanak, vagy a kijelölt jóváhagyók jóváhagyását kérik.
 
@@ -87,7 +87,7 @@ Bizonyos szerepkörök esetében a megadott engedélyek hatóköre egyetlen fel�
 
     ![A hozzárendelés hozzáadása parancs akkor érhető el, amikor megnyit egy szerepkört a portálon](./media/pim-how-to-add-role-to-user/add-assignment.png)
 
-1. Válassza a **hozzárendelések hozzáadása**lehetőséget.
+1. Válassza a **hozzárendelések hozzáadása** lehetőséget.
 
     ![Ha egy szerepkör támogatja a hatókört, kiválaszthat egy hatókört.](./media/pim-how-to-add-role-to-user/add-scope.png)
 
@@ -105,7 +105,7 @@ A meglévő szerepkör-hozzárendelések frissítéséhez vagy eltávolításáh
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza az **Azure ad-szerepkörök**elemet.
+1. Válassza az **Azure ad-szerepkörök** elemet.
 
 1. Válassza ki a **szerepköröket** az Azure ad-szerepkörök listájának megtekintéséhez.
 
@@ -127,17 +127,17 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
     ![Azure AD-szerepkörök megnyitása](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
-1. Válassza a **tag hozzáadása** elemet a **felügyelt tagok hozzáadásának**megnyitásához.
+1. Válassza a **tag hozzáadása** elemet a **felügyelt tagok hozzáadásának** megnyitásához.
 
-1. Válassza a **szerepkör kiválasztása**lehetőséget, válassza ki a kezelni kívánt szerepkört, majd válassza a **kiválasztás**lehetőséget.
+1. Válassza a **szerepkör kiválasztása** lehetőséget, válassza ki a kezelni kívánt szerepkört, majd válassza a **kiválasztás** lehetőséget.
 
     ![Szerepkör kiválasztása](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
 
-1. Válassza a **Tagok kiválasztása**lehetőséget, válassza ki a szerepkörhöz hozzárendelni kívánt felhasználókat, majd válassza a **kiválasztás**lehetőséget.
+1. Válassza a **Tagok kiválasztása** lehetőséget, válassza ki a szerepkörhöz hozzárendelni kívánt felhasználókat, majd válassza a **kiválasztás** lehetőséget.
 
     ![Válassza ki a hozzárendelni kívánt felhasználót vagy csoportot](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
-1. A **felügyelt Tagok hozzáadása**lapon kattintson az **OK** gombra a felhasználó szerepkörhöz való hozzáadásához.
+1. A **felügyelt Tagok hozzáadása** lapon kattintson az **OK** gombra a felhasználó szerepkörhöz való hozzáadásához.
 
 1. A szerepkörök listájában válassza ki az imént hozzárendelt szerepkört a tagok listájának megtekintéséhez.
 
@@ -147,7 +147,7 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
 1. Most, hogy a felhasználó jogosult a szerepkörre, tájékoztassa őket arról, hogy a [Privileged Identity Management Azure ad-szerepköreinek aktiválása](pim-how-to-activate-role.md)című témakör utasításai szerint aktiválhatja azt.
 
-    Az aktiválás során a rendszer arra kéri a jogosult rendszergazdákat, hogy regisztráljanak az Azure Multi-Factor Authentication. Ha a felhasználó nem regisztrálhat az MFA-ra, vagy egy Microsoft-fiók (például @outlook.com ) használ, az összes szerepkörében állandónak kell lennie.
+    Az aktiválás során a rendszer arra kéri a jogosult rendszergazdákat, hogy regisztráljanak az Azure AD-Multi-Factor Authentication. Ha a felhasználó nem regisztrálhat az MFA-ra, vagy egy Microsoft-fiók (például @outlook.com ) használ, az összes szerepkörében állandónak kell lennie.
 
 ## <a name="make-a-role-assignment-permanent"></a>Szerepkör-hozzárendelés véglegesvé tétele
 
@@ -155,7 +155,7 @@ Alapértelmezés szerint az új felhasználók csak Azure AD-rendszergazdai szer
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza az **Azure ad-szerepkörök**elemet.
+1. Válassza az **Azure ad-szerepkörök** elemet.
 
 1. Válassza ki a **Members** (Tagok) elemet.
 
@@ -163,11 +163,11 @@ Alapértelmezés szerint az új felhasználók csak Azure AD-rendszergazdai szer
 
 1. Válasszon ki egy olyan **jogosult** szerepkört, amelyet véglegesen szeretne végezni.
 
-1. Válassza a **továbbiak** lehetőséget, majd válassza a **make perm**lehetőséget.
+1. Válassza a **továbbiak** lehetőséget, majd válassza a **make perm** lehetőséget.
 
     ![Szerepkör-hozzárendelés véglegesvé tétele](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
 
-    A szerepkör mostantól **állandóként**van listázva.
+    A szerepkör mostantól **állandóként** van listázva.
 
     ![Állandó módosítású tagok listája](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
 
@@ -179,7 +179,7 @@ A következő lépésekkel távolíthat el egy adott felhasználót egy Azure AD
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza az **Azure ad-szerepkörök**elemet.
+1. Válassza az **Azure ad-szerepkörök** elemet.
 
 1. Válassza ki a **Members** (Tagok) elemet.
 
@@ -187,11 +187,11 @@ A következő lépésekkel távolíthat el egy adott felhasználót egy Azure AD
 
 1. Válassza ki az eltávolítani kívánt szerepkör-hozzárendelést.
 
-1. Válassza a **továbbiak** , majd az **Eltávolítás**lehetőséget.
+1. Válassza a **továbbiak** , majd az **Eltávolítás** lehetőséget.
 
     ![Szerepkör eltávolítása](./media/pim-how-to-add-role-to-user/pim-remove-role.png)
 
-1. A megerősítést kérő üzenetben válassza az **Igen**lehetőséget.
+1. A megerősítést kérő üzenetben válassza az **Igen** lehetőséget.
 
     ![Az Eltávolítás megerősítése](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
@@ -205,7 +205,7 @@ Az alábbi lépéseket követve rendelje hozzá a felhasználói hozzáférés r
 
 1. Jelentkezzen be a Azure Portal globális rendszergazdaként.
 
-1. Válassza **a minden szolgáltatás** , majd az **előfizetések**lehetőséget.
+1. Válassza **a minden szolgáltatás** , majd az **előfizetések** lehetőséget.
 
 1. Válassza ki az előfizetését.
 

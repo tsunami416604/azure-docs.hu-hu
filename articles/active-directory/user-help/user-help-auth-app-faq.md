@@ -12,18 +12,18 @@ ms.topic: end-user-help
 ms.date: 10/20/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 017898249f1ad32a37b7ccd6bce17fe3d32843f3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 65bd5a89d132a575817480d0609109a3f379e969
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480309"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833962"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
 Ez a cikk a Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdésekre ad választ. Ha nem talál választ a kérdésére, lépjen a [Microsoft Authenticator alkalmazás fórumára](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp).
 
-Az Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalmazást, és az Azure Multi-Factor Authentication használata esetén az ajánlott alkalmazás. Az Microsoft Authenticator alkalmazás [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) és [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)rendszerhez érhető el.
+A Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalmazást, és az Azure AD-Multi-Factor Authentication használata esetén az ajánlott alkalmazás. Az Microsoft Authenticator alkalmazás [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) és [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)rendszerhez érhető el.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -96,13 +96,13 @@ Az Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalm
 
 **K**: Miért csak az alkalmazás megnyitásakor kapok értesítéseket? Az alkalmazás bezárásakor nem kapok értesítést.
 
-**A**: Ha értesítést kap, de nem riasztást, még a Ringer-on is, ellenőrizze az alkalmazás beállításait. Győződjön meg arról, hogy az alkalmazás be van kapcsolva a hang használatára, vagy az értesítések vibrálása. Ha egyáltalán nem kap értesítést, ellenőrizze a következő feltételeket:<ul><li>A telefonja nem zavarja vagy nem halk módot? Ezek az üzemmódok megakadályozhatják, hogy az alkalmazások értesítéseket küldjenek.</li><li>Más alkalmazásokból is kaphat értesítéseket? Ha nem, akkor probléma lehet a telefon hálózati kapcsolataival vagy az Android vagy az Apple értesítési csatornával. Megpróbálkozhat a hálózati kapcsolatainak a telefonos beállításokkal való feloldásával. Előfordulhat, hogy a szolgáltatóval kell kommunikálnia az Android-vagy az Apple Notifications-csatornával kapcsolatos segítségért.</li><li>Kaphat-e értesítéseket az alkalmazás egyes fiókjaihoz, de másokat nem? Ha igen, távolítsa el a problémás fiókot az alkalmazásból, adja hozzá újból az értesítéseket, és ellenőrizze, hogy a probléma kijavítva van-e.</li></ul>Ha kipróbálta ezeket a lépéseket, és továbbra is problémába ütközik, javasoljuk, hogy küldje el a naplófájlokat a diagnosztika számára. Nyissa meg az alkalmazást, lépjen a **súgóra**, majd válassza a **naplók küldése**lehetőséget. Ezután nyissa meg a [Microsoft Authenticator alkalmazás fórumot](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) , és mondja el nekünk a megjelenő problémát és a megjelenő lépéseket.
+**A**: Ha értesítést kap, de nem riasztást, még a Ringer-on is, ellenőrizze az alkalmazás beállításait. Győződjön meg arról, hogy az alkalmazás be van kapcsolva a hang használatára, vagy az értesítések vibrálása. Ha egyáltalán nem kap értesítést, ellenőrizze a következő feltételeket:<ul><li>A telefonja nem zavarja vagy nem halk módot? Ezek az üzemmódok megakadályozhatják, hogy az alkalmazások értesítéseket küldjenek.</li><li>Más alkalmazásokból is kaphat értesítéseket? Ha nem, akkor probléma lehet a telefon hálózati kapcsolataival vagy az Android vagy az Apple értesítési csatornával. Megpróbálkozhat a hálózati kapcsolatainak a telefonos beállításokkal való feloldásával. Előfordulhat, hogy a szolgáltatóval kell kommunikálnia az Android-vagy az Apple Notifications-csatornával kapcsolatos segítségért.</li><li>Kaphat-e értesítéseket az alkalmazás egyes fiókjaihoz, de másokat nem? Ha igen, távolítsa el a problémás fiókot az alkalmazásból, adja hozzá újból az értesítéseket, és ellenőrizze, hogy a probléma kijavítva van-e.</li></ul>Ha kipróbálta ezeket a lépéseket, és továbbra is problémába ütközik, javasoljuk, hogy küldje el a naplófájlokat a diagnosztika számára. Nyissa meg az alkalmazást, lépjen a **súgóra**, majd válassza a **naplók küldése** lehetőséget. Ezután nyissa meg a [Microsoft Authenticator alkalmazás fórumot](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) , és mondja el nekünk a megjelenő problémát és a megjelenő lépéseket.
 
 ### <a name="switch-to-push-notifications"></a>Váltás leküldéses értesítésekre
 
 **K**: az alkalmazásban ellenőrző kódokat használok, de Hogyan válthatok le a leküldéses értesítésekre?
 
-**A**: beállíthat értesítéseket munkahelyi vagy iskolai fiókjához (ha a rendszergazda engedélyezi) vagy a személyes Microsoft-fiók. Az értesítések nem működnek a harmadik féltől származó fiókok, például a Google vagy a Facebook esetében.<br>Ha a személyes fiókját át szeretné váltani az értesítésekre, újra regisztrálnia kell az eszközt a fiókkal. Lépjen a **fiók hozzáadása**elemre, válassza a **személyes Microsoft-fiók**lehetőséget, majd jelentkezzen be a felhasználónevével és jelszavával.<br>Munkahelyi vagy iskolai fiókjához a szervezet eldönti, hogy engedélyezi-e az egykattintásos értesítéseket.
+**A**: beállíthat értesítéseket munkahelyi vagy iskolai fiókjához (ha a rendszergazda engedélyezi) vagy a személyes Microsoft-fiók. Az értesítések nem működnek a harmadik féltől származó fiókok, például a Google vagy a Facebook esetében.<br>Ha a személyes fiókját át szeretné váltani az értesítésekre, újra regisztrálnia kell az eszközt a fiókkal. Lépjen a **fiók hozzáadása** elemre, válassza a **személyes Microsoft-fiók** lehetőséget, majd jelentkezzen be a felhasználónevével és jelszavával.<br>Munkahelyi vagy iskolai fiókjához a szervezet eldönti, hogy engedélyezi-e az egykattintásos értesítéseket.
 
 ### <a name="notifications-for-other-accounts"></a>Más fiókok értesítései
 
@@ -120,7 +120,7 @@ Az Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalm
 
 **K**: elvesztettem az eszközt, vagy Áthelyeztem egy új eszközre. Hogyan ügyeljen arra, hogy az értesítések ne folytassanak a régi eszközön?
 
-Válasz **: a**hitelesítő hozzáadása az új eszközhöz nem távolítja el automatikusan az alkalmazást a régi eszközről. Még nem elég a régi eszközről törölni az alkalmazást. Törölnie kell az alkalmazást a régi eszközről, és tájékoztatnia kell a Microsoftot vagy a céget a régi eszköz regisztrációjának törléséről.<ul><li>**Az alkalmazás eltávolítása az eszközről személyes Microsoft-fiók használatával.** Lépjen a [fiók biztonsága](https://account.microsoft.com/security)oldal kétlépéses ellenőrzés területére   , és válassza ki a régi eszköz ellenőrzésének kikapcsolását.</li><li>**Alkalmazás eltávolítása az eszközről munkahelyi vagy iskolai Microsoft-fiók használatával.** A régi eszköz ellenőrzésének kikapcsolásához lépjen a [MyApps-oldal](https://myapps.microsoft.com/) vagy a szervezet egyéni portáljának kétlépéses ellenőrzési területére.</li></ul>
+Válasz **: a** hitelesítő hozzáadása az új eszközhöz nem távolítja el automatikusan az alkalmazást a régi eszközről. Még nem elég a régi eszközről törölni az alkalmazást. Törölnie kell az alkalmazást a régi eszközről, és tájékoztatnia kell a Microsoftot vagy a céget a régi eszköz regisztrációjának törléséről.<ul><li>**Az alkalmazás eltávolítása az eszközről személyes Microsoft-fiók használatával.** Lépjen a [fiók biztonsága](https://account.microsoft.com/security)oldal kétlépéses ellenőrzés területére   , és válassza ki a régi eszköz ellenőrzésének kikapcsolását.</li><li>**Alkalmazás eltávolítása az eszközről munkahelyi vagy iskolai Microsoft-fiók használatával.** A régi eszköz ellenőrzésének kikapcsolásához lépjen a [MyApps-oldal](https://myapps.microsoft.com/) vagy a szervezet egyéni portáljának kétlépéses ellenőrzési területére.</li></ul>
 
 ### <a name="remove-account-from-app"></a>Fiók eltávolítása az alkalmazásból
 
@@ -198,7 +198,7 @@ Válasz **: a**hitelesítő hozzáadása az új eszközhöz nem távolítja el a
 
 **K**: az Apple Watch Companion-alkalmazás összeomlott. Elküldhetem az összeomlási naplókat, hogy meg lehessen vizsgálni?
 
-**A**: először is meg kell győződnie arról, hogy Ön úgy döntött, hogy megosztja az elemzést velünk. Ha Ön Testflighthoz-felhasználó, már regisztrálva van. Ellenkező esetben lépjen a **beállítások > adatvédelem > elemzés** lehetőségre, és válassza az **iPhone megosztása & az elemzés** és a **megosztás az alkalmazások fejlesztői** lehetőségeivel lehetőséget.<br>A regisztrációt követően megpróbálhatja reprodukálni az összeomlást, hogy a rendszer automatikusan elküldje az összeomlási naplókat a vizsgálathoz. Ha azonban nem tudja reprodukálni az összeomlást, manuálisan is átmásolhatja a naplófájlokat, és elküldheti azokat nekünk.<ol><li>Nyissa meg a Watch alkalmazást a telefonján, lépjen a **beállítások > általános**elemre, majd kattintson az **elemzés megtekintése**elemre.</li><li>Keresse meg a megfelelő összeomlást a **settings > Privacy > analytics > Analytics-adatok**területen, majd manuálisan másolja a teljes szöveget.</li><li>Nyissa meg a hitelesítő eszközt a telefonján, és illessze be a vágólapra a **megosztás az alkalmazás-fejlesztők** szövegmezőbe a **naplók küldése** oldalon.</li></ol>
+**A**: először is meg kell győződnie arról, hogy Ön úgy döntött, hogy megosztja az elemzést velünk. Ha Ön Testflighthoz-felhasználó, már regisztrálva van. Ellenkező esetben lépjen a **beállítások > adatvédelem > elemzés** lehetőségre, és válassza az **iPhone megosztása & az elemzés** és a **megosztás az alkalmazások fejlesztői** lehetőségeivel lehetőséget.<br>A regisztrációt követően megpróbálhatja reprodukálni az összeomlást, hogy a rendszer automatikusan elküldje az összeomlási naplókat a vizsgálathoz. Ha azonban nem tudja reprodukálni az összeomlást, manuálisan is átmásolhatja a naplófájlokat, és elküldheti azokat nekünk.<ol><li>Nyissa meg a Watch alkalmazást a telefonján, lépjen a **beállítások > általános** elemre, majd kattintson az **elemzés megtekintése** elemre.</li><li>Keresse meg a megfelelő összeomlást a **settings > Privacy > analytics > Analytics-adatok** területen, majd manuálisan másolja a teljes szöveget.</li><li>Nyissa meg a hitelesítő eszközt a telefonján, és illessze be a vágólapra a **megosztás az alkalmazás-fejlesztők** szövegmezőbe a **naplók küldése** oldalon.</li></ol>
 
 ## <a name="next-steps"></a>Következő lépések
 

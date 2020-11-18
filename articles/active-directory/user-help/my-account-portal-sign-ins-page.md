@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: d9023579b6627e9dab9feac8dfaccd94dc9f5c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a002254995e42fc586b707e3cb373dac66e678ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798125"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834149"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>A legutóbbi bejelentkezési tevékenység megtekintése és keresése a saját bejelentkezési oldalról
 
@@ -46,7 +46,7 @@ A probléma meghatározása előtt győződjön meg arról, hogy nem jelenik meg
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Ha sikertelen bejelentkezést lát
 
-Ha nem sikerül bejelentkeznie, az azt jelentheti, hogy elvégezte a hitelesítő adatok beírását. Azt is jelentheti, hogy egy támadó megpróbálta kitalálni a jelszavát. Ennek a kockázatnak a megválaszolásához nem kell módosítania a jelszavát, de javasoljuk, hogy regisztráljon az Azure Multi-Factor Authentication (MFA) szolgáltatásra. A többtényezős hitelesítéssel akkor is, ha a hacker kitalálta a jelszavát, nem lesz elég a fiók eléréséhez.
+Ha nem sikerül bejelentkeznie, az azt jelentheti, hogy elvégezte a hitelesítő adatok beírását. Azt is jelentheti, hogy egy támadó megpróbálta kitalálni a jelszavát. Ennek a kockázatnak a megválaszolásához nem kell módosítania a jelszavát, de javasoljuk, hogy regisztráljon az Azure AD Multi-Factor Authentication (MFA) szolgáltatásra. A többtényezős hitelesítéssel akkor is, ha a hacker kitalálta a jelszavát, nem lesz elég a fiók eléréséhez.
 
 ![Sikertelen bejelentkezési csempe](media/my-account-portal-sign-ins-page/unsuccessful.png)
 
@@ -68,7 +68,7 @@ A szokatlan tevékenységként megjelölt bejelentkezések az adott tevékenysé
 
 ![Szokatlan bejelentkezési csempe, amely megerősíti, hogy Ön vagy nem kísérelte meg a bejelentkezést](media/my-account-portal-sign-ins-page/this-wasnt-me.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A legutóbbi bejelentkezési tevékenység megtekintése után a következőket teheti:
 

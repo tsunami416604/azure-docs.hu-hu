@@ -3,15 +3,15 @@ title: 'Gyors útmutató: Python-alkalmazás létrehozása Linuxra'
 description: A Azure App Service első lépései Python-alkalmazások Linux-tárolóba való üzembe helyezésével App Service.
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.custom: seo-python-october2019, cli-validate, devx-track-python
+ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: 8fa349d719f93c8efda14556280da9d9b438f630
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: dc4c67437d6cc6d5eea87bf414058a676d7cd8a4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579113"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833689"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linux rendszeren
 
@@ -100,7 +100,7 @@ A minta olyan keretrendszer-specifikus kódot tartalmaz, amelyet az alkalmazás 
 
 ## <a name="deploy-the-sample"></a>A minta üzembe helyezése
 
-Telepítse a kódot a helyi mappájába ( *Python-docs-Hello-World* ) a következő `az webapp up` parancs használatával:
+Telepítse a kódot a helyi mappájába (*Python-docs-Hello-World*) a következő `az webapp up` parancs használatával:
 
 ```azurecli
 az webapp up --sku F1 --name <app-name>
@@ -108,7 +108,7 @@ az webapp up --sku F1 --name <app-name>
 
 - Ha a `az` parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI telepítve van a [kezdeti környezet beállítása](#set-up-your-initial-environment)című témakörben leírtak szerint.
 - Ha a `webapp` parancs nem ismerhető fel, mert az Azure CLI verziója 2.0.80 vagy magasabb. Ha nem, [telepítse a legújabb verziót](/cli/azure/install-azure-cli).
-- Cserélje le a `<app_name>` karaktert az összes Azure-beli egyedi névre ( *érvényes karakterek: `a-z` , `0-9` és `-`* ). Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
+- Cserélje le a `<app_name>` karaktert az összes Azure-beli egyedi névre (*érvényes karakterek: `a-z` , `0-9` és `-`*). Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
 - Az `--sku F1` argumentum a webalkalmazást az ingyenes díjszabási szinten hozza létre. Hagyja ki ezt az argumentumot a gyorsabb prémium szint használatához, amely óradíjat eredményez.
 - Igény szerint megadhatja az argumentumot `--location <location-name>` , ahol az `<location_name>` egy elérhető Azure-régió. Az Azure-fiók számára engedélyezett régiók listáját a parancs futtatásával kérheti le [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
 - Ha a következő hibaüzenet jelenik meg: "nem sikerült automatikusan észlelni az alkalmazás futásidejű veremét", győződjön meg arról, hogy a parancsot a *Python-docs-Hello-World* mappában (lombik) vagy a *Python-docs-Hello-Django* mappában (Django) futtatja, amely tartalmazza a *requirements.txt* fájlt. (Lásd: [az WebApp up (GitHub) szolgáltatással kapcsolatos automatikus észlelési hibák elhárítása](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) .)

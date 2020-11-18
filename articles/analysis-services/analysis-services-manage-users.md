@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 032b63700f2842826de916a8f077975689d56911
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b40be802f30bac8438f10c4ab60e1c196c9f7164
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014902"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833792"
 ---
 # <a name="authentication-and-user-permissions"></a>Hitelesítés és felhasználói engedélyek
 
@@ -32,7 +32,7 @@ Az olyan ügyfélalkalmazások, mint az Excel és a Power BI Desktop, valamint a
 
 Az ügyfélalkalmazás vagy az Ön által használt eszköztől függően a hitelesítés típusa és a bejelentkezés módja eltérő lehet. Az egyes alkalmazások különböző funkciókat is támogatnak a felhőalapú szolgáltatásokhoz, például a Azure Analysis Serviceshoz való csatlakozáshoz.
 
-A Power BI Desktop, a Visual Studio és a SSMS támogatja a Active Directory univerzális hitelesítést, amely az Azure Multi-Factor Authentication (MFA) támogató interaktív metódust is támogatja. Az Azure MFA lehetővé teszi az adathozzáférést és az alkalmazásokhoz való hozzáférést, miközben egyszerű bejelentkezési folyamatot biztosít. Erős hitelesítést biztosít több ellenőrzési lehetőséggel (telefonhívás, szöveges üzenet, PIN-kóddal ellátott intelligens kártya vagy mobil alkalmazás értesítése). Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti. **Az univerzális hitelesítés ajánlott**.
+A Power BI Desktop, a Visual Studio és a SSMS támogatja a Active Directory univerzális hitelesítést, amely az Azure AD Multi-Factor Authentication (MFA) támogató interaktív metódust is támogatja. Az Azure AD MFA segít az adatkezelésben és az alkalmazásokban való hozzáférésben, miközben egyszerű bejelentkezési folyamatot biztosít. Erős hitelesítést biztosít több ellenőrzési lehetőséggel (telefonhívás, szöveges üzenet, PIN-kóddal ellátott intelligens kártya vagy mobil alkalmazás értesítése). Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti. **Az univerzális hitelesítés ajánlott**.
 
 Ha Windows-fiókkal jelentkezik be az Azure-ba, és az univerzális hitelesítés nincs kiválasztva vagy elérhető (Excel), [Active Directory összevonási szolgáltatások (AD FS) (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs) szükséges. Az összevonás, az Azure AD és a Microsoft 365 felhasználók hitelesítése helyszíni hitelesítő adatokkal történik, és hozzáférhet az Azure-erőforrásokhoz.
 
@@ -44,7 +44,7 @@ Azure Analysis Services-kiszolgálók támogatják a [SSMS v 17.1](/sql/ssms/dow
 
 *  Támogatja az Azure B2B vendég felhasználókat, akik bérlőként meghívottak az Azure-ba. Kiszolgálóhoz való kapcsolódáskor a vendég felhasználóknak ki kell választaniuk Active Directory univerzális hitelesítést a kiszolgálóhoz való csatlakozáskor.
 
-*  Támogatja a Multi-Factor Authentication (MFA) használatát. Az Azure MFA számos ellenőrzési lehetőséggel segíti az adatelérést és az alkalmazásokat, valamint a telefonhívást, a szöveges üzenetet, a PIN-kóddal ellátott intelligens kártyákat vagy a Mobile apps-értesítéseket. Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti.
+*  Támogatja a Multi-Factor Authentication (MFA) használatát. Az Azure AD MFA számos ellenőrzési lehetőséggel segíti az adatelérést és az alkalmazásokhoz való hozzáférést: telefonhívást, szöveges üzenetet, intelligens kártyákat PIN-kóddal vagy Mobile apps-értesítéssel. Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti.
 
 ### <a name="visual-studio"></a>Visual Studio
 

@@ -4,18 +4,26 @@ description: Ez a cikk bemutatja, hogyan telepíthet virtuálisgép-bővítmény
 ms.date: 11/06/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 59c984f4adaec2261d1b08748aa5a91c8246418d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: bf0a3e0940efc7e79adbe9f763ffdf34ea690fac
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359115"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833265"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Azure VM-bővítmények engedélyezése az Azure CLI használatával
 
 Ez a cikk bemutatja, hogyan telepítheti és távolíthatja el az Azure arc-kompatibilis kiszolgálók által támogatott Azure-beli virtuálisgép-bővítményeket egy linuxos vagy Windowsos hibrid gépre az Azure CLI használatával.
 
 [!INCLUDE [Azure CLI Prepare your environment](../../../includes/azure-cli-prepare-your-environment.md)]
+
+## <a name="install-the-azure-cli-extension"></a>Az Azure CLI-bővítmény telepítése
+
+A ConnectedMachine parancsok nem az Azure CLI részeként jelennek meg. Mielőtt az Azure CLI-t használja a virtuálisgép-bővítmények az arc-kompatibilis kiszolgálók által kezelt hibrid kiszolgálón való kezeléséhez, be kell töltenie a ConnectedMachine-bővítményt. Futtassa a következő parancsot a lekéréséhez:
+
+```azurecli
+az extension add --name connectedmachine
+```
 
 ## <a name="enable-extension"></a>Bővítmény engedélyezése
 
@@ -74,7 +82,7 @@ Ha például el szeretné távolítani a linuxos Log Analytics virtuálisgép-b�
 az connectedmachine machine-extension delete --machine-name "myMachineName" --name "OmsAgentforLinux" --resource-group "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A virtuálisgép-bővítmények üzembe helyezése, kezelése és eltávolítása a [Azure PowerShell](manage-vm-extensions-powershell.md), a [Azure Portal](manage-vm-extensions-portal.md)vagy a [Azure Resource Manager sablonok](manage-vm-extensions-template.md)használatával végezhető el.
 

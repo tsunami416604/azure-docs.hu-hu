@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69428898ca123bf5b5fa96cf041818cc15f5ac40
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: b0a62aafd8073b5f1a35ba340c48c80f498be2c2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378635"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834455"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -114,7 +114,7 @@ A sürgősségi hozzáférési fiókok segítenek a rendszerjogosultságú hozz�
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>A többtényezős hitelesítés bekapcsolása és az összes többi magas jogosultsági szintű, egyetlen felhasználótól eltérő, nem összevont rendszergazdai fiók regisztrálása
 
-Az Azure Multi-Factor Authentication (MFA) megkövetelése bejelentkezéskor minden olyan felhasználó számára, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange-rendszergazda és SharePoint-rendszergazda. Az útmutató segítségével engedélyezheti a [többtényezős hitelesítés (MFA) használatát a rendszergazdai fiókokhoz](../authentication/howto-mfa-userstates.md) , és gondoskodhat arról, hogy minden felhasználó regisztrálva legyen a következő helyen: [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . További információt a 2. lépés és a útmutató 3. lépése tartalmaz a [Microsoft 365ban található adatokhoz és szolgáltatásokhoz való hozzáférés védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)című témakörben. 
+Az Azure AD Multi-Factor Authentication (MFA) megkövetelése a bejelentkezéskor minden olyan felhasználó számára, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange-rendszergazda és SharePoint-rendszergazda. Az útmutató segítségével engedélyezheti a [többtényezős hitelesítés (MFA) használatát a rendszergazdai fiókokhoz](../authentication/howto-mfa-userstates.md) , és gondoskodhat arról, hogy minden felhasználó regisztrálva legyen a következő helyen: [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . További információt a 2. lépés és a útmutató 3. lépése tartalmaz a [Microsoft 365ban található adatokhoz és szolgáltatásokhoz való hozzáférés védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)című témakörben. 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>2. fázis: a gyakran használt támadások enyhítése
 
@@ -135,7 +135,7 @@ A "saját eszközök használata" és a otthoni házirendek működésének növ
 * Győződjön meg arról, hogy a felügyeleti célokra használt fiókok:
 
   * Munkavégzéshez csatolt e-mail-címek
-  * Az Azure Multi-Factor Authentication vagy a helyszíni MFA használatára van regisztrálva
+  * Regisztrálva van az Azure AD Multi-Factor Authentication vagy a helyszíni MFA használata
 * Kérje meg a felhasználókat, hogy üzleti szempontból indokolják meg a rendszergazdai hozzáférést.
 * Távolítsa el a rendszergazdai hozzáférést azon személyek és szolgáltatások számára, akiknek nincs rá szükségük.
 
@@ -240,7 +240,7 @@ A következő megoldást javasoljuk:
 
 #### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>Az erősebb hitelesítés bevezetésének folytatása minden felhasználó számára
 
-Magas rendelkezésre állású felhasználóknak kell megkövetelni a modern, erős hitelesítést, például az Azure MFA vagy a Windows Hello használatát. A Kiemelt felhasználók többek között a következők:
+Magas rendelkezésre állású felhasználóknak kell megkövetelni a modern, erős hitelesítést, például az Azure AD MFA vagy a Windows Hello használatát. A Kiemelt felhasználók többek között a következők:
 
 * C-Suite vezetők
 * Magas szintű vezetők

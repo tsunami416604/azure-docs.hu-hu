@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ee1734e61ffe59fccf3ad35c1f0c607882f7f40
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1245010ae0b21c5bb8e3ebd93a9fe851d48c858b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659197"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835509"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Alkalmazások áttelepíthetők az Azure AD-be a AD FS alkalmazás-tevékenységi jelentés (előzetes verzió) használatával
 
@@ -76,7 +76,7 @@ A következő táblázat felsorolja a AD FS alkalmazásokon végrehajtott össze
 
 |Eredmény  |Továbbítás/figyelmeztetés/sikertelen  |Leírás  |
 |---------|---------|---------|
-|Test-ADFSRPAdditionalAuthenticationRules <br> A AdditionalAuthentication legalább egy nem áttelepíthető szabályt észlelt a rendszer.       | Továbbítás/figyelmeztetés          | A függő entitásnak szabályokkal kell megkérnie a többtényezős hitelesítést (MFA). Az Azure AD-ba való áttéréshez ezeket a szabályokat feltételes hozzáférési házirendekbe kell lefordítani. Ha helyszíni MFA-t használ, javasoljuk, hogy váltson az Azure MFA-re. [További információ a feltételes hozzáférésről](../authentication/concept-mfa-howitworks.md).        |
+|Test-ADFSRPAdditionalAuthenticationRules <br> A AdditionalAuthentication legalább egy nem áttelepíthető szabályt észlelt a rendszer.       | Továbbítás/figyelmeztetés          | A függő entitásnak szabályokkal kell megkérnie a többtényezős hitelesítést (MFA). Az Azure AD-ba való áttéréshez ezeket a szabályokat feltételes hozzáférési házirendekbe kell lefordítani. Ha helyszíni MFA-t használ, javasoljuk, hogy váltson át az Azure AD MFA-re. [További információ a feltételes hozzáférésről](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> A függő entitás AdditionalWSFedEndpoint értéke TRUE (igaz).       | Sikeres/sikertelen          | A AD FS függő entitása több WS-Fed kiállítási végpontot is lehetővé tesz.Az Azure AD jelenleg csak egyet támogat.Ha van olyan forgatókönyv, ahol ez az eredmény blokkolja az áttelepítést, [tudassa velünk](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
 |Test-ADFSRPAllowedAuthenticationClassReferences <br> A függő entitás beállította a AllowedAuthenticationClassReferences.       | Sikeres/sikertelen          | Ez a beállítás a AD FS lehetővé teszi annak megadását, hogy az alkalmazás úgy legyen konfigurálva, hogy csak bizonyos hitelesítési típusokat engedélyezzen. Javasoljuk, hogy a feltételes hozzáférés használatával elérje ezt a képességet. Ha van olyan forgatókönyv, ahol ez az eredmény blokkolja az áttelepítést, [tudassa velünk](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695672-allow-in-azure-ad-to-specify-certain-authentication).  [További információ a feltételes hozzáférésről](../authentication/concept-mfa-howitworks.md).          |
 |Test-ADFSRPAlwaysRequireAuthentication <br> AlwaysRequireAuthenticationCheckResult      | Sikeres/sikertelen          | Ez a beállítás a AD FS lehetővé teszi annak megadását, hogy az alkalmazás úgy legyen konfigurálva, hogy figyelmen kívül hagyja az SSO-cookie-kat, és **mindig kérdezze** Az Azure AD-ben a feltételes hozzáférési szabályzatok segítségével kezelheti a hitelesítési munkamenetet, így hasonló viselkedést érhet el. [További információ a hitelesítési munkamenetek kezelésének feltételes hozzáféréssel történő konfigurálásáról](../conditional-access/howto-conditional-access-session-lifetime.md).          |

@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98b9a2da11ad32e35704a49cfcf1788f95276dda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: bc5f902d75084d649f211d589e53041f1eb37f0e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393455"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834710"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Mennyi ideig tart az Azure AD Store jelentéskészítési adatai?
 
@@ -63,9 +63,9 @@ A biztonsági jelek esetében a begyűjtési folyamat elindul, amikor bekapcsolj
 
 | Jelentés                 | Azure AD Free | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
 | :--                    | :--           | :--                 | :--                 |
-| Naplók             | 7 nap        | 30 nap             | 30 nap             |
+| Auditnaplók             | 7 nap        | 30 nap             | 30 nap             |
 | Bejelentkezések               | 7 nap        | 30 nap             | 30 nap             |
-| Azure MFA-használat        | 30 nap       | 30 nap             | 30 nap             |
+| Azure AD MFA-használat        | 30 nap       | 30 nap             | 30 nap             |
 
 A naplózási és a bejelentkezési tevékenységek adatai hosszabbak maradnak, mint az alapértelmezett megőrzési időtartam, amelyet a fentiekben ismertetünk, ha Azure Monitor használatával irányítja át az Azure Storage-fiókba. További információ: [Azure ad-naplók archiválása Azure Storage-fiókba](quickstart-azure-monitor-route-logs-to-storage-account.md).
 

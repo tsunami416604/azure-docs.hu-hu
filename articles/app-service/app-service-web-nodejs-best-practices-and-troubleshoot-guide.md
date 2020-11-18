@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d826b80c11b700d753acc18f8d4c626a65510f93
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961890"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833809"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató a Azure App Service Windows rendszerű csomópont-alkalmazásokhoz
 
@@ -121,13 +121,13 @@ A hibakereséssel kapcsolatos további részletekért olvassa el a [Windows rend
 
 Számos alkalmazás szeretne kimenő kapcsolatokat végezni a normál működésük részeként. Ha például egy kérelem érkezik, a Node-alkalmazás szeretne kapcsolatba lépni egy REST API máshol, és néhány információt kap a kérelem feldolgozásához. Http-vagy https-hívások esetén a Keep Alive ügynököt érdemes használni. A agentkeepalive modult használhatja a Keep Alive-ügynökként a kimenő hívások elkészítésekor.
 
-A agentkeepalive modul biztosítja, hogy a szoftvercsatornák újra felhasználhatók legyenek az Azure WebApp virtuális gépén. Az új szoftvercsatorna létrehozása minden kimenő kérelemhez a terhelést az alkalmazáshoz adja. Ha az alkalmazás a kimenő kérelmekhez szoftvercsatornát használ, biztosítja, hogy az alkalmazás ne lépje túl a virtuális gép által lefoglalt maxsocket. A Azure App Servicera vonatkozó javaslat a agentKeepAlive maxsocket értékének beállítása a \* virtuális gépenként megadott node.exe 40 maxsocket/instance 160) összesen (4 példányra).
+A agentkeepalive modul biztosítja, hogy a szoftvercsatornák újra felhasználhatók legyenek az Azure WebApp virtuális gépén. Az új szoftvercsatorna létrehozása minden kimenő kérelemhez a terhelést az alkalmazáshoz adja. Ha az alkalmazás a kimenő kérelmekhez szoftvercsatornát használ, biztosítja, hogy az alkalmazás ne lépje túl a virtuális gép által lefoglalt maxsocket. A Azure App Servicera vonatkozó javaslat a agentKeepAlive maxsocket értékének beállítása a \* virtuális gépenként megadott node.exe 32 maxsocket/instance 128) összesen (4 példányra).
 
 Példa [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) -konfigurációra:
 
 ```nodejs
 let keepaliveAgent = new Agent({
-    maxSockets: 40,
+    maxSockets: 32,
     maxFreeSockets: 10,
     timeout: 60000,
     keepAliveTimeout: 300000

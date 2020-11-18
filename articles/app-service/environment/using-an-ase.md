@@ -6,13 +6,13 @@ ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 1e6bace9652ff68bb4cc28d482016b7e7510154b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 86d0569d95df18924ed47682b75d7491c71d4483
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150191"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833554"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata
 
@@ -23,7 +23,7 @@ Az App Service Environment (beszállítói) Azure App Service központi telepít
 - **Adatbázis**: a környezetet meghatározó információk tárolására szolgál.
 - **Storage**: az ügyfél által közzétett alkalmazások üzemeltetéséhez használatos
 
-Az alkalmazások eléréséhez külső vagy belső virtuális IP-címmel (VIP) is üzembe helyezhető. A külső virtuális IP-vel való üzembe helyezést általában *külső*bevezetésnek nevezik. A belső VIP-alapú telepítést *ILB* -bevezetésnek nevezzük, mivel belső TERHELÉSELOSZTÓ (ILB) használatával működik. További információ a ILB-szolgáltatóról: ILB-betanító [létrehozása és használata][MakeILBASE].
+Az alkalmazások eléréséhez külső vagy belső virtuális IP-címmel (VIP) is üzembe helyezhető. A külső virtuális IP-vel való üzembe helyezést általában *külső* bevezetésnek nevezik. A belső VIP-alapú telepítést *ILB* -bevezetésnek nevezzük, mivel belső TERHELÉSELOSZTÓ (ILB) használatával működik. További információ a ILB-szolgáltatóról: ILB-betanító [létrehozása és használata][MakeILBASE].
 
 ## <a name="create-an-app-in-an-ase"></a>Alkalmazás létrehozása a központban
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik beadással, a [létrehozásához kövesse az App Service Envi
 
 Alkalmazás létrehozása a kiegészítőben:
 
-1. Válassza **az erőforrás létrehozása**  >  **web és mobil**  >  **webalkalmazás**lehetőséget.
+1. Válassza **az erőforrás létrehozása**  >  **web és mobil**  >  **webalkalmazás** lehetőséget.
 
 1. Adja meg az alkalmazás nevét. Ha már kiválasztott egy App Service-csomagot a központhoz, az alkalmazás tartományneve a kiegészítő csomag tartománynevét tükrözi:
 
@@ -50,7 +50,7 @@ Alkalmazás létrehozása a kiegészítőben:
 
 1. Válasszon ki egy meglévő App Service-csomagot a központból, vagy hozzon létre egy újat a következő lépések végrehajtásával:
 
-    a. A Azure Portal bal oldali menüben válassza az **erőforrás létrehozása > webalkalmazás**lehetőséget.
+    a. A Azure Portal bal oldali menüben válassza az **erőforrás létrehozása > webalkalmazás** lehetőséget.
 
     b. Válassza ki az előfizetést.
 
@@ -62,7 +62,7 @@ Alkalmazás létrehozása a kiegészítőben:
 
     f. Válasszon futtatókörnyezetet.
 
-    : Válassza a **Linux** vagy a **Windows**lehetőséget. 
+    : Válassza a **Linux** vagy a **Windows** lehetőséget. 
 
     h. Válassza ki a központot a **régió** legördülő listából. 
 
@@ -74,7 +74,7 @@ Alkalmazás létrehozása a kiegészítőben:
     > A Linux-alkalmazások és a Windows-alkalmazások nem lehetnek ugyanabban a App Servicei csomagban, de ugyanabban a App Service Environmentban lehetnek.
     >
 
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget, győződjön meg arról, hogy az adatok helyesek, majd válassza a **Létrehozás**lehetőséget.
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget, győződjön meg arról, hogy az adatok helyesek, majd válassza a **Létrehozás** lehetőséget.
 
 ## <a name="how-scale-works"></a>A skálázás működése
 
@@ -139,7 +139,7 @@ A DNS konfigurálása Azure DNS privát zónában:
 1. hozzon létre egy olyan rekordot az adott zónában, amely a @-t a ILB IP-címére mutat.
 1. hozzon létre egy olyan rekordot az adott zónában, amely a *. SCM-t a ILB IP-címére mutat.
 
-A szolgáltatói alapértelmezett tartomány utótagjának DNS-beállításai nem korlátozzák, hogy az alkalmazások csak az adott nevek számára legyenek elérhetők. Egyéni tartománynevet az alkalmazások érvényesítése nélkül is beállíthat egy ILB-ben. Ha ezután létre szeretne hozni egy *contoso.net*nevű zónát, ezt megteheti, és rámutathat a ILB IP-címére. Az Egyéni tartománynév az alkalmazásra vonatkozó kérelmek esetében működik, de nem az SCM-helyhez. Az SCM-hely csak a * &lt; AppName &gt; . SCM &lt; -ben érhető el. asename &gt; . appserviceenvironment.net*. 
+A szolgáltatói alapértelmezett tartomány utótagjának DNS-beállításai nem korlátozzák, hogy az alkalmazások csak az adott nevek számára legyenek elérhetők. Egyéni tartománynevet az alkalmazások érvényesítése nélkül is beállíthat egy ILB-ben. Ha ezután létre szeretne hozni egy *contoso.net* nevű zónát, ezt megteheti, és rámutathat a ILB IP-címére. Az Egyéni tartománynév az alkalmazásra vonatkozó kérelmek esetében működik, de nem az SCM-helyhez. Az SCM-hely csak a *&lt; AppName &gt; . SCM &lt; -ben érhető el. asename &gt; . appserviceenvironment.net*. 
 
 A nevű zóna *. &lt; a asename &gt; . appserviceenvironment.net* globálisan egyedi. A 2019. május előtt az ügyfelek megadhatják a ILB beadásának tartományi utótagját. Ha a *. contoso.com* -t szeretné használni a tartománynév-utótaghoz, akkor ezt megteheti, és ez magában foglalja az SCM-helyet. A modellel kapcsolatos kihívások is megtalálhatók; az alapértelmezett SSL-tanúsítvány kezelése, az egyszeri bejelentkezés hiánya az SCM-hellyel, valamint a helyettesítő tanúsítvány használatára vonatkozó követelmény. A ILB-ben használt alapértelmezett tanúsítvány-frissítési folyamat megszakadt, és az alkalmazás újraindítását is okozta. Ezeknek a problémáknak a megoldásához a ILB-bevezetési viselkedés úgy módosult, hogy a szolgáltató neve és a Microsoft tulajdonában lévő utótag alapján egy tartományi utótagot használjon. A ILB-beli beváltási viselkedés változása csak a 2019 májusi ILB-ASE érinti. A meglévő ILB-ASE továbbra is kezelni kell a bevezetési és DNS-konfigurációjuk alapértelmezett tanúsítványát.
 
@@ -159,9 +159,9 @@ A ILB-kiegészítő szolgáltatással a közzétételi végpontok csak a ILB ér
 
 További változtatások nélkül az internetalapú CI-rendszerek (például a GitHub és az Azure DevOps) nem működnek a ILB-vel, mert a közzétételi végpont nem érhető el az interneten. Engedélyezheti a közzétételt az Azure DevOps származó ILB-előállítók számára, ha telepít egy saját üzemeltetésű kiadási ügynököt a virtuális hálózatban, amely tartalmazza a ILB-javítót. Azt is megteheti, hogy olyan CI-rendszer használatát is használja, amely lekéréses modellt, például Dropbox-t használ.
 
-Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Megtekintheti az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén (az **Áttekintés**  >  **alapjai** és a **Tulajdonságok**területen is).
+Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Megtekintheti az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén (az **Áttekintés**  >  **alapjai** és a **Tulajdonságok** területen is).
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 A kiegészítő csomag 1 TB tárterülettel rendelkezik a központhoz tartozó összes alkalmazáshoz. Az elkülönített díjszabási SKU-ban App Service csomag 250 GB-os korláttal rendelkezik. Egy előállítók esetében 250 GB tárterület kerül App Service csomagba az 1 TB-os korlátig. Több App Service terv is lehet, mint négy, de az 1 TB-os korláton túl nincs több tárterület.
 
@@ -184,11 +184,11 @@ Integrálhatja a beAzure Monitort a beépítés az Azure Storage-ba, az Azure Ev
 
 A beléptetés beléptetésének engedélyezése:
 
-1. A portálon lépjen a **diagnosztika beállítások**elemre.
-1. Válassza a **diagnosztikai beállítás hozzáadása**lehetőséget.
+1. A portálon lépjen a **diagnosztika beállítások** elemre.
+1. Válassza a **Diagnosztikai beállítások megadása** lehetőséget.
 1. Adja meg a naplózási integráció nevét.
 1. Válassza ki és konfigurálja a kívánt napló célhelyeit.
-1. Válassza a **AppServiceEnvironmentPlatformLogs**lehetőséget.
+1. Válassza a **AppServiceEnvironmentPlatformLogs** lehetőséget.
 
 ![A beadási diagnosztikai napló beállításai][4]
 
@@ -207,9 +207,9 @@ Ha riasztást szeretne létrehozni a naplókban, kövesse a naplók [létrehozá
 
 ## <a name="upgrade-preference"></a>Frissítési beállítások
 
-Ha több ASE is rendelkezik, érdemes lehet néhány ASE frissíteni, mielőtt mások is. A **üzemeltetési Resource Manager** -objektumon belül megadhatja a **upgradePreference**értékét. A **upgradePreference** beállítását sablon, ARMClient vagy a használatával lehet konfigurálni https://resources.azure.com . A három lehetséges érték a következők:
+Ha több ASE is rendelkezik, érdemes lehet néhány ASE frissíteni, mielőtt mások is. A **üzemeltetési Resource Manager** -objektumon belül megadhatja a **upgradePreference** értékét. A **upgradePreference** beállítását sablon, ARMClient vagy a használatával lehet konfigurálni https://resources.azure.com . A három lehetséges érték a következők:
 
-- **Nincs**: az Azure a beadott kötegben nem fogja frissíteni a Bea-t. Ez az érték az alapértelmezett érték.
+- **Nincs**: az Azure a beadott kötegben nem fogja frissíteni a Bea-t. Ez az alapértelmezett érték.
 - **Korai**: a bevezetés a app Service frissítéseinek első felében lesz frissítve.
 - **Későn**: a bevezetés a app Service frissítéseinek második felében lesz frissítve.
 
@@ -220,7 +220,7 @@ Ha használja https://resources.azure.com , kövesse az alábbi lépéseket a **
 1. Válassza a felül található **írás/írás** elemet.
 1. Válassza a **Szerkesztés** elemet.
 1. Állítsa be a **upgradePreference** a kívánt három érték egyikére.
-1. Válassza a **javítás**lehetőséget.
+1. Válassza a **javítás** lehetőséget.
 
 ![erőforrások Azure com-megjelenítés][5]
 
@@ -250,7 +250,7 @@ A bemutató rendszer törlése:
 
     ![Bemutatás törlése][3]
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 ## <a name="ase-cli"></a>KIEGÉSZÍTŐ PARANCSSORI FELÜLET
 

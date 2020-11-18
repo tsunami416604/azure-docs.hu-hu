@@ -13,17 +13,17 @@ ms.date: 04/02/2017
 ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.openlocfilehash: 51cfe2c448fde8c50f8b846979a4b35fa4be5ec1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f27dd7daf310e425b09db7905ad2f7c37fcff81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056028"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834166"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>Jelentkezzen be a munkahelyi vagy iskolai fiókjába a kétfaktoros ellenőrzési módszer használatával
 
 > [!NOTE]
-> Ennek a cikknek a célja egy tipikus bejelentkezési felület bejárása. Ha segítségre van szüksége a bejelentkezéshez vagy a problémák elhárításához, tekintse meg az [Azure multi-Factor Authenticationával](multi-factor-authentication-end-user-troubleshoot.md)kapcsolatos problémákat.
+> Ennek a cikknek a célja egy tipikus bejelentkezési felület bejárása. Ha segítségre van szüksége a bejelentkezéshez vagy a problémák elhárításához, tekintse meg az [Azure AD multi-Factor Authenticationával](multi-factor-authentication-end-user-troubleshoot.md)kapcsolatos problémákat.
 
 ## <a name="what-will-your-sign-in-experience-be"></a>Mi lesz a bejelentkezési élmény?
 A bejelentkezési élmény attól függően különbözik, hogy mit választ a második tényezőként való használatra: telefonhívás, hitelesítési alkalmazás vagy szövegek. Válassza ki azt a lehetőséget, amely a legjobban leírja, hogy mit csinál:
@@ -83,7 +83,7 @@ Előfordulhat, hogy nem rendelkezik az előnyben részesített ellenőrzési mó
    ![Alternatív módszer használata](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>Következő lépések
-- Ha problémák merülnek fel a kétlépéses ellenőrzéssel való bejelentkezés során, további információhoz juthat az [Azure multi-Factor Authenticationával](multi-factor-authentication-end-user-troubleshoot.md)kapcsolatban.
+- Ha problémák merülnek fel a kétlépéses ellenőrzéssel való bejelentkezés során, további információkat kaphat az [Azure AD multi-Factor Authenticationával](multi-factor-authentication-end-user-troubleshoot.md)kapcsolatban.
 
 - Ismerje meg, hogyan [kezelheti a kétlépéses ellenőrzési beállításokat](multi-factor-authentication-end-user-manage-settings.md).
 
