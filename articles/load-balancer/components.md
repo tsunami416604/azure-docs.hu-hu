@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: d2cd05251e7bf1a0b0ebcd24e6d3d0202f277969
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: bf7a35e8cedbe62aafb29aa6d9dc8fcb42e90b2e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685511"
+ms.locfileid: "94693766"
 ---
 # <a name="azure-load-balancer-components"></a>Összetevők Azure Load Balancer
 
@@ -130,7 +130,7 @@ Az alapszintű Load Balancer nem támogatja a kimenő szabályokat.
 
 ## <a name="limitations"></a>Korlátozások
 
-- További tudnivalók a Load Balancer [korlátairól](https://aka.ms/lblimits) 
+- További tudnivalók a Load Balancer [korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md) 
 - A Load Balancer terheléselosztást és port továbbítást biztosít bizonyos TCP-vagy UDP-protokollokhoz. A terheléselosztási szabályok és a bejövő NAT-szabályok támogatják a TCP és az UDP használatát, de nem más IP-protokollok, beleértve az ICMP-t is.
 - A háttérbeli virtuális gép kimenő folyamata egy belső Load Balancer felületére sikertelen lesz.
 - Egy terheléselosztó-szabály nem terjedhet ki két virtuális hálózatra.  A frontendeknek és a háttérbeli példányoknak ugyanabban a virtuális hálózatban kell lenniük.  
@@ -140,12 +140,12 @@ Az alapszintű Load Balancer nem támogatja a kimenő szabályokat.
 
 - A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozását](quickstart-load-balancer-standard-public-portal.md) ismertető témakört.
 - További információ a [Azure Load Balancerról](load-balancer-overview.md).
-- Tudnivalók a [nyilvános IP-címekről](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
+- Tudnivalók a [nyilvános IP-címekről](../virtual-network/virtual-network-public-ip-address.md)
 - További információ a [magánhálózati IP-címekről](../virtual-network/private-ip-addresses.md)
 - Tudnivalók a [standard Load Balancer és a Availability Zones](load-balancer-standard-availability-zones.md)használatáról.
 - Ismerje meg a [standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md).
 - További információ [a TCP alaphelyzetbe állításáról üresjáratban](load-balancer-tcp-reset.md).
 - További tudnivalók a HA-portok terheléselosztási [szabályaival standard Load Balancer](load-balancer-ha-ports-overview.md).
-- További információ a [hálózati biztonsági csoportokról](../virtual-network/security-overview.md).
-- További információ a [Load Balancer korlátairól](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer).
-- Tudnivalók a [portok továbbításának](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)használatáról.
+- További információ a [hálózati biztonsági csoportokról](../virtual-network/network-security-groups-overview.md).
+- További információ a [Load Balancer korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer).
+- Tudnivalók a [portok továbbításának](./tutorial-load-balancer-port-forwarding-portal.md)használatáról.

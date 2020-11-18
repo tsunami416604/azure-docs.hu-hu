@@ -1,22 +1,22 @@
 ---
 title: Modellek üzembe helyezése egyéni Docker-lemezképpel
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja az egyéni Docker-rendszerképet a Azure Machine Learning-modellek üzembe helyezése során. Míg Azure Machine Learning alapértelmezett alapképet biztosít Önnek, a saját alaprendszerképét is használhatja.
+description: Megtudhatja, hogyan helyezhet üzembe a Azure Machine Learning-modelleket egyéni Docker-alaplemezkép használatával. Míg Azure Machine Learning alapértelmezett alapképet biztosít Önnek, a saját alaprendszerképét is használhatja.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
 ms.reviewer: larryfr
-ms.date: 09/09/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 63089e853be825f9399081f2d39845e22b18ed2a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1ff4d7693a7e493ccb736ab9363fd26c93017c79
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325169"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695350"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 
@@ -216,7 +216,7 @@ Egyéni rendszerkép használatához a következő információk szükségesek:
 
 A Microsoft számos Docker-rendszerképet biztosít egy nyilvánosan elérhető adattáron, amely az ebben a szakaszban ismertetett lépésekkel használható:
 
-| Kép | Leírás |
+| Rendszerkép | Leírás |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning alaprendszerképe |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | A CPU-következtetések ONNX-futtatókörnyezetét tartalmazza |

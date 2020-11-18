@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4cec356b8438952327624e71deebb5e23db281a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 10d9a74306fcdf3fe32db7019ba3b095727da4c0
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787805"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694582"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Frissítés általános célú v2-tárfiókra
 
@@ -27,7 +27,7 @@ Az általános célú, v1-es vagy blob Storage-fiókokból származó általáno
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Nyissa meg a tárfiókot.
 3. A **Beállítások** szakaszban kattintson a **konfiguráció** elemre.
 4. A **Fiók típusa** területen kattintson a **Frissítés** elemre.
@@ -45,7 +45,7 @@ Ha egy általános célú v1-fiókot szeretne egy általános célú v2-fiókra 
 Ezután hívja meg a következő parancsot a fiók frissítéséhez, az erőforráscsoport nevének, a Storage-fiók nevének és a kívánt fiók hozzáférési szintjének a behelyettesítéséhez.
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
+Set-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -78,17 +78,17 @@ Egy v1-es Storage-fiók egy általános célú v2-fiókra való frissítése ing
 
 Az összes tárfiók az egyes blobok szintjén alapuló árképzési modellt alkalmaz a blobtároláshoz. Tárfiókok használatakor az alábbi számlázási szempontok érvényesülnek:
 
-* **Tárolási költségek** : a tárolt adatok mennyisége mellett az adattárolás költsége a tárolási hozzáférési szintjétől függően változhat. A gigabájtonkénti költség csökken, ha a szint ritkábban használt adatokat tárol.
+* **Tárolási költségek**: a tárolt adatok mennyisége mellett az adattárolás költsége a tárolási hozzáférési szintjétől függően változhat. A gigabájtonkénti költség csökken, ha a szint ritkábban használt adatokat tárol.
 
-* **Adathozzáférési költségek** : az adathozzáférési költségek emelkednek, ha a szint ritkábban használt adatokat tárol. A lassú elérésű és az archív tároló hozzáférési rétegében lévő adatok esetében a GB-nál több adatelérési díjat számítunk fel a beolvasáshoz.
+* **Adathozzáférési költségek**: az adathozzáférési költségek emelkednek, ha a szint ritkábban használt adatokat tárol. A lassú elérésű és az archív tároló hozzáférési rétegében lévő adatok esetében a GB-nál több adatelérési díjat számítunk fel a beolvasáshoz.
 
-* **Tranzakciós költségek** : Minden szint esetében tranzakciónkénti díjat kell fizetni, ez emelkedik, ha a szint ritkábban használt adatokat tárol.
+* **Tranzakciós költségek**: Minden szint esetében tranzakciónkénti díjat kell fizetni, ez emelkedik, ha a szint ritkábban használt adatokat tárol.
 
-* **Georeplikációs adatátviteli költségek** : Ez csak a georeplikációval konfigurált fiókok esetében érvényes, beleértve a GRS-t és az RA-GRS-t. A georeplikációs adatátvitel gigabájtonkénti díj ellenében érhető el.
+* **Georeplikációs adatátviteli költségek**: Ez csak a georeplikációval konfigurált fiókok esetében érvényes, beleértve a GRS-t és az RA-GRS-t. A georeplikációs adatátvitel gigabájtonkénti díj ellenében érhető el.
 
-* **Kimenő adatátviteli költségek** : A kimenő adatátvitel (azaz az adott Azure-régióból kivitt adatok) esetében gigabájtalapú sávszélesség-használati díjak lépnek fel, csakúgy, mint az általános célú tárfiókok esetében.
+* **Kimenő adatátviteli költségek**: A kimenő adatátvitel (azaz az adott Azure-régióból kivitt adatok) esetében gigabájtalapú sávszélesség-használati díjak lépnek fel, csakúgy, mint az általános célú tárfiókok esetében.
 
-* **A tárolási hozzáférési szint módosítása** : a fiók tárolási hozzáférési rétegének a lassúról a gyors elérésű értékre való módosítása a Storage-fiókban meglévő összes információ olvasásával egyenlő. Azonban a fiókhoz való hozzáférési szint gyors és lassú elérésű értékre való módosítása az összes adatoknak a ritka rétegbe való írásával egyenlő (csak GPv2-fiókok esetében).
+* **A tárolási hozzáférési szint módosítása**: a fiók tárolási hozzáférési rétegének a lassúról a gyors elérésű értékre való módosítása a Storage-fiókban meglévő összes információ olvasásával egyenlő. Azonban a fiókhoz való hozzáférési szint gyors és lassú elérésű értékre való módosítása az összes adatoknak a ritka rétegbe való írásával egyenlő (csak GPv2-fiókok esetében).
 
 > [!NOTE]
 > A tárfiókok árképzési modelljével kapcsolatos további információért lásd [az Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/) ismertető lapot. A kimenő adatátviteli díjakkal kapcsolatos további információért lásd az [adatátviteli díjszabást](https://azure.microsoft.com/pricing/details/data-transfers/) ismertető lapot.
@@ -145,8 +145,8 @@ A tranzakciók mérőszámának táblájában az adott API-hoz tartozó bejegyz�
 
 A Blob Storage-tárfiókok tranzakciós költségeinek kiszámításához a tranzakciókat három csoportra kell felosztania, mivel ezekhez különböző árak tartoznak.
 
-* Írási tranzakciók, például *„PutBlob”* , *„PutBlock”* , *„PutBlockList”* , *„AppendBlock”* , *„ListBlobs”* , *„ListContainers”* , *„CreateContainer”* , *„SnapshotBlob”* és *„CopyBlob”* .
-* Törlési tranzakciók, például *„DeleteBlob”* és *„DeleteContainer”* .
+* Írási tranzakciók, például *„PutBlob”*, *„PutBlock”*, *„PutBlockList”*, *„AppendBlock”*, *„ListBlobs”*, *„ListContainers”*, *„CreateContainer”*, *„SnapshotBlob”* és *„CopyBlob”*.
+* Törlési tranzakciók, például *„DeleteBlob”* és *„DeleteContainer”*.
 * Minden egyéb tranzakció.
 
 A GPv1-tárfiókok tranzakciós költségeinek becsléséhez összesítenie kell az összes tranzakciót, függetlenül a művelettől és az API-tól.
@@ -159,7 +159,7 @@ A Blob Storage-tárfiókok adat-hozzáférési költségeinek kiszámításához
 
 * A tárfiókból lekért adatok mennyisége a *„TotalEgress”* összegéből becsülhető meg, elsődlegesen a *„GetBlob”* és a *„CopyBlob”* művelet alapján.
 
-* A tárfiókba írt lekért adatok mennyisége a *„TotalIngress”* összegéből becsülhető meg, elsődlegesen a *„PutBlob”* , a *„PutBlock”* , a *„CopyBlob”* és az *„AppendBlock”* művelet alapján.
+* A tárfiókba írt lekért adatok mennyisége a *„TotalIngress”* összegéből becsülhető meg, elsődlegesen a *„PutBlob”*, a *„PutBlock”*, a *„CopyBlob”* és az *„AppendBlock”* művelet alapján.
 
 A Blob Storage-tárfiókok georeplikációs adatátviteli költségei szintén az írt adatok mennyiségének becslése alapján számítható ki GRS- vagy RA-GRS-tárfiókok használata esetében.
 

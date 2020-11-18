@@ -1,23 +1,22 @@
 ---
 title: Tudnivalók Azure Machine Learning környezetekről
 titleSuffix: Azure Machine Learning
-description: Ebből a cikkből megtudhatja, milyen előnyökkel jár a gépi tanulási környezet, amely lehetővé teszi a reprodukálható, auditálható és hordozható gépi tanulási függőségek meghatározását számos számítási cél esetében.
+description: Ismerje meg a gépi tanulási környezeteket, amelyek lehetővé teszik a reprodukálható, auditálható, & hordozható gépi tanulási függőségi definíciókat a különböző számítási célokhoz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
-ms.date: 07/08/2020
-ms.openlocfilehash: 9c554abc8aef89ca353e06c14b04fab2622d2827
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: 78f8d6d216659eaad01d512dd45696dd31035885
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322198"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695384"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Mik azok a Azure Machine Learning környezetek?
-
 
 Azure Machine Learning környezetek a gépi tanulási képzést végző környezet beágyazását jelentik. Megadják a Python-csomagokat, a környezeti változókat és a szoftver beállításait a képzés és a pontozási szkriptek köré. A futtatási időpontokat (Python, Spark vagy Docker) is megadják. A környezetek a Machine Learning munkaterületen belül felügyelt és verzióval rendelkező entitások, amelyek lehetővé teszik a reprodukálható, auditálható és hordozható gépi tanulási munkafolyamatok különböző számítási célokból való átirányítását.
 
@@ -35,7 +34,7 @@ A környezet, a számítási cél és a betanítási parancsfájl együttesen a 
 
 ## <a name="types-of-environments"></a>A környezetek típusai
 
-A környezetek széles körben három kategóriára oszthatók: a *kurátor* , a *felhasználó által felügyelt* és a *rendszer által felügyelt*.
+A környezetek széles körben három kategóriára oszthatók: a *kurátor*, a *felhasználó által felügyelt* és a *rendszer által felügyelt*.
 
 A Azure Machine Learning által biztosított, és a munkaterületen alapértelmezés szerint elérhetővé tett környezetek. A szolgáltatásként való használatra szánt Python-csomagokat és-beállításokat tartalmazó gyűjteményeket tartalmaz, amelyek segítséget nyújtanak a különböző gépi tanulási keretrendszerek megkezdéséhez. Ezek az előre létrehozott környezetek is lehetővé teszik a gyorsabb üzembe helyezési időt. A teljes listát a [kurátori környezetek című cikkben](resource-curated-environments.md)találja.
 

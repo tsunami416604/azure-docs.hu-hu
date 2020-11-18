@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 645be03df3c8ee2a1451b4bfea0327542c29aa38
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 98bc962c0c57716cee9339056b0793bfe4bcb0ea
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683114"
+ms.locfileid: "94694728"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Kimenő szabályok Azure Load Balancer
 
@@ -60,7 +60,7 @@ A frontend által biztosított további IP-címek további 64 000 ideiglenes por
 
 Több IP-cím használata a nagy léptékű forgatókönyvek megtervezéséhez. A kimenő szabályok használatával csökkentheti a [SNAT-kimerültséget](troubleshoot-outbound-connection.md#snatexhaust). 
 
-A [nyilvános IP-előtagot](https://aka.ms/lbpublicipprefix) közvetlenül is használhatja egy kimenő szabállyal. 
+A [nyilvános IP-előtagot](./load-balancer-outbound-connections.md#outboundrules) közvetlenül is használhatja egy kimenő szabállyal. 
 
 A nyilvános IP-előtag növeli az üzemelő példány skálázását. Az előtag hozzáadható az Azure-erőforrásokból származó folyamatok engedélyezési listájához. A Load balancerben konfigurálhatja a előtérbeli IP-konfigurációt a nyilvános IP-cím előtagjaként való hivatkozáshoz.  
 
@@ -74,7 +74,7 @@ A kimenő szabályok egy konfigurációs paramétert biztosítanak a kimenő fol
 
 A terheléselosztó alapértelmezett viselkedése a folyamat csendes eldobása, ha elérte a kimenő üresjárati időkorlátot. A `enableTCPReset` paraméter lehetővé teszi a kiszámítható alkalmazások viselkedését és vezérlését. A paraméter azt határozza meg, hogy a kimenő Üresjárati időkorlát időtúllépése esetén a kétirányú TCP alaphelyzetbe állítás (TCP első) legyen-e. 
 
-Tekintse át az [Üresjárat időkorlátjának TCP-visszaállítását](https://aka.ms/lbtcpreset) , beleértve a régió rendelkezésre állását.
+Tekintse át az [Üresjárat időkorlátjának TCP-visszaállítását](./load-balancer-tcp-reset.md) , beleértve a régió rendelkezésre állását.
 
 ## <a name="securing-and-controlling-outbound-connectivity-explicitly"></a><a name="preventoutbound"></a>A kimenő kapcsolatok biztonságossá tétele és szabályozása explicit módon
 
@@ -91,9 +91,9 @@ A kimenő szabályok konfigurálásának művelete sikertelen lesz, ha megprób�
 >[!IMPORTANT]
 > Ha a paraméter értéke TRUE (igaz), a virtuális gép nem rendelkezik kimenő kapcsolattal, és nem rendelkezik kimenő kapcsolattal.  A virtuális gép vagy az alkalmazás néhány művelete attól függ, hogy a kimenő kapcsolat elérhető-e. Győződjön meg arról, hogy tisztában van a forgatókönyv függőségeivel, és befolyásolta ennek a változásnak a hatását.
 
-Esetenként nem kívánatos, hogy egy virtuális gép kimenő folyamatot hozzon létre. Előfordulhat, hogy egy olyan követelményt kell kezelnie, hogy mely célhelyek kapják meg a kimenő folyamatokat, vagy hogy mely célhelyek kezdenek bejövő forgalmat. [Hálózati biztonsági csoportok](../virtual-network/security-overview.md) használatával kezelheti a virtuális gép által elnyúló célhelyeket. A NSG használatával felügyelheti, hogy mely nyilvános célhelyek indítják el a bejövő folyamatokat.
+Esetenként nem kívánatos, hogy egy virtuális gép kimenő folyamatot hozzon létre. Előfordulhat, hogy egy olyan követelményt kell kezelnie, hogy mely célhelyek kapják meg a kimenő folyamatokat, vagy hogy mely célhelyek kezdenek bejövő forgalmat. [Hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md) használatával kezelheti a virtuális gép által elnyúló célhelyeket. A NSG használatával felügyelheti, hogy mely nyilvános célhelyek indítják el a bejövő folyamatokat.
 
-Ha NSG alkalmaz egy elosztott terhelésű virtuális gépre, ügyeljen a [szolgáltatás-címkékre](../virtual-network/security-overview.md#service-tags) és az [alapértelmezett biztonsági szabályokra](../virtual-network/security-overview.md#default-security-rules). 
+Ha NSG alkalmaz egy elosztott terhelésű virtuális gépre, ügyeljen a [szolgáltatás-címkékre](../virtual-network/network-security-groups-overview.md#service-tags) és az [alapértelmezett biztonsági szabályokra](../virtual-network/network-security-groups-overview.md#default-security-rules). 
 
 Győződjön meg arról, hogy a virtuális gép Azure Load Balancertól származó állapot-mintavételi kérelmeket tud fogadni.
 
@@ -159,7 +159,7 @@ A Load Balancer 8-nál több [SNAT](load-balancer-outbound-connections.md)-porto
 Ha a nyilvános IP-címek száma alapján több [SNAT](load-balancer-outbound-connections.md)-portot próbál meg megadni, a rendszer elutasítja a konfigurációs műveletet. Ha például egy virtuális gépen 10 000 portot ad meg, és a háttérrendszer hét virtuális gépe egyetlen nyilvános IP-címmel rendelkezik, akkor a rendszer elutasítja a konfigurációt. A hét megszorozva a 10 000-as mérettel, amely meghaladja a 64 000-es portot. A forgatókönyv engedélyezéséhez adjon hozzá több nyilvános IP-címet a Kimenő szabály előtérbeli felületéhez. 
 
 
-A portok számának megadásával visszaállíthatja az [alapértelmezett portok kiosztását](load-balancer-outbound-connections.md#preallocatedports) . Az első 50-es virtuálisgép-példány 1024 portot kap, a 51-100-as virtuálisgép-példányok pedig a maximális példányszámig 512-t kapnak. További információ a SNAT alapértelmezett kiosztásáról: [SNAT-portok foglalási táblázata](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
+A portok számának megadásával visszaállíthatja az [alapértelmezett portok kiosztását](load-balancer-outbound-connections.md#preallocatedports) . Az első 50-es virtuálisgép-példány 1024 portot kap, a 51-100-as virtuálisgép-példányok pedig a maximális példányszámig 512-t kapnak. További információ a SNAT alapértelmezett kiosztásáról: [SNAT-portok foglalási táblázata](./load-balancer-outbound-connections.md#preallocatedports).
 
 
 ### <a name="scenario-3-enable-outbound-only"></a><a name="scenario3out"></a>3. forgatókönyv: csak kimenő engedélyezése
@@ -211,7 +211,7 @@ A [SNAT](load-balancer-outbound-connections.md)-portok méretezéséhez használ
 A kimenő kapcsolat nem érhető el a belső standard Load Balancer számára, amíg explicit módon be nem nyilvánították a példányok nyilvános IP-címein vagy Virtual Network NAT-on keresztül, vagy ha a háttér-készlet tagjait csak kimenő terheléselosztó-konfigurációval társítja. 
 
 
-További információ: [csak kimenő terheléselosztó konfigurálása](https://docs.microsoft.com/azure/load-balancer/egress-only).
+További információ: [csak kimenő terheléselosztó konfigurálása](./egress-only.md).
 
 
 
@@ -253,4 +253,3 @@ Ha csak a bejövő NAT-szabályok vannak használatban, a rendszer nem biztosít
 
 - További információ az [Azure standard Load Balancer](load-balancer-overview.md)
 - Tekintse meg a [Azure Load Balancerekkel kapcsolatos gyakori kérdéseket](load-balancer-faqs.md)
-

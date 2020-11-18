@@ -3,12 +3,12 @@ title: Azure-Application Insights automatizálása a PowerShell használatával 
 description: Erőforrások, riasztások és rendelkezésre állási tesztek létrehozása és kezelése a PowerShellben egy Azure Resource Manager sablon használatával.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: b5f3ba12fe8a730ce45e64b896ccc9c32b17b30c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dabb29abe4530307ef5204659297f4675376605
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760903"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694561"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
@@ -431,7 +431,6 @@ Bármilyen más erőforrás létrehozásának automatizálásához hozzon létre
    
     Mindegyik webes teszthez tartozik egy riasztási szabály, ezért mindkettőt másolni kell.
    
-    A metrikák riasztásait is felveheti. [Metrikák nevei](powershell-alerts.md#metric-names)
 5. Szúrja be ezt a sort az egyes erőforrásokban:
    
     `"apiVersion": "2015-05-01",`
@@ -470,7 +469,6 @@ Az Azure-nak szigorú sorrendben kell beállítania az erőforrásokat. A követ
 Egyéb Automation-cikkek:
 
 * [Hozzon létre egy Application Insights erőforrás](./create-new-resource.md#creating-a-resource-automatically) -gyors metódust sablon használata nélkül.
-* [Riasztások beállítása](powershell-alerts.md)
 * [Hozzon létre webes teszteket](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Az Azure Diagnostics küldése az Application Insights-ba](powershell-azure-diagnostics.md)
 * [Kiadási jegyzetek létrehozása](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

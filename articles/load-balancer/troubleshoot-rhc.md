@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcfce06bb158888b56483a73ededd354c229a99b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855249"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696319"
 ---
 # <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>Az erőforrás-állapot, a frontend és a háttérbeli rendelkezésre állási problémák elhárítása 
 
@@ -52,7 +52,7 @@ Tegyük fel, hogy ellenőrizzük az állapot mintavételi állapotát, és megtu
   * Ha ezt a NSG problémát tapasztalja, helyezze át a meglévő engedélyezési szabályt, vagy hozzon létre egy új, magas prioritású szabályt a AzureLoadBalancer-forgalom engedélyezéséhez
 * Keresse meg az operációs rendszert. Győződjön meg arról, hogy a virtuális gépek figyelik a mintavételi portot, és tekintse át az operációs rendszerük tűzfalának szabályait annak biztosítása érdekében, hogy ne blokkolja az IP-168.63.129.16 származó mintavételi forgalmat.
   * Megtekintheti a figyelési portokat a netstat-a Windows-parancssor vagy a netstat-l Linux-terminálon való futtatásával
-* Ne helyezzen tűzfal-NVA virtuális gépet a terheléselosztó backend-készletében, a [felhasználó által megadott útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) használatával irányítsa át a forgalmat a háttérbeli példányokra a tűzfalon keresztül.
+* Ne helyezzen tűzfal-NVA virtuális gépet a terheléselosztó backend-készletében, a [felhasználó által megadott útvonalak](../virtual-network/virtual-networks-udr-overview.md#user-defined) használatával irányítsa át a forgalmat a háttérbeli példányokra a tűzfalon keresztül.
 * Győződjön meg arról, hogy a megfelelő protokollt használja, ha a HTTP használatával próbál meg egy nem HTTP-alkalmazáshoz figyelő portot használni, a mintavétel sikertelen lesz.
 
 Ha már elvégezte ezt az ellenőrzőlistát, és még mindig észlelte az állapot-mintavételi hibákat, előfordulhat, hogy ritka platform-problémák léptek fel a mintavételi szolgáltatásban a példányok esetében. Ebben az esetben az Azure visszatért, és automatikusan riasztást küld a csapatnak, hogy gyorsan megoldja az összes platformmal kapcsolatos problémát.
@@ -61,5 +61,3 @@ Ha már elvégezte ezt az ellenőrzőlistát, és még mindig észlelte az álla
 
 * [További információ a Azure Load Balancer Health mintavételről](load-balancer-custom-probe-overview.md)
 * [További információ a Azure Load Balancer mérőszámokról](load-balancer-standard-diagnostics.md)
-
-

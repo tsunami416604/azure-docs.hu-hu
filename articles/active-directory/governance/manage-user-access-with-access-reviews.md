@@ -16,12 +16,12 @@ ms.date: 06/21/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 001adaff1fed901638276e548ac1d5fdb41bdc53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc12b4cb7e97a0808405baebc64ca83cdb742bf1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87798307"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696948"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -44,7 +44,7 @@ A hozzáférési felülvizsgálatokban egy vagy több felhasználó is szerepelh
 
 2. Döntse el, hogy minden felhasználó a saját hozzáférését vizsgálja-e felül, vagy inkább kijelöl egy vagy több felhasználót a többiek hozzáférésének felülvizsgálatára.
 
-3. Globális rendszergazdaként vagy felhasználói rendszergazdaként nyissa meg az [Identity irányítás lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+3. A következő szerepkörök egyikében: globális rendszergazda, felhasználói rendszergazda vagy (előzetes verzió) az M365 vagy a HRE biztonsági csoport tulajdonosának, amelyről felül kell vizsgálni a csoportot, lépjen az [Identity irányításáért lapra](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
 4. Hozza létre a hozzáférési felülvizsgálatot. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md).
 

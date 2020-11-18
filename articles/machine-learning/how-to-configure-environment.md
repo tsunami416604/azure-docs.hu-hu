@@ -1,22 +1,22 @@
 ---
 title: Python fejlesztői környezet beállítása
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan állíthat be Azure Machine Learning Python-fejlesztési környezetet. Használjon Conda-környezeteket, hozzon létre konfigurációs fájlokat, és konfigurálja saját felhőalapú notebook-kiszolgálóját, a Jupyter notebookokat, az Azure Databricks, az ide, a Code Editort és a Data Science Virtual Machine.
+description: Azure Machine Learning Python fejlesztői környezetek beállítása a Jupyter notebookok, a Visual Studio Code, a Azure Databricks és az adatelemzési Virtual Machines.
 services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 09/30/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 451ad33a9d041635c3f51e323539b423378d02d1
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 03d10f71b585090157eff164cc98246f50608fe1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422900"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695367"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Python-fejlesztési környezet beállítása Azure Machine Learninghoz
 
@@ -43,7 +43,7 @@ Ez a cikk további használati tippeket is tartalmaz a következő eszközökhö
 
 ### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a> Csak helyi és DSVM: munkaterület konfigurációs fájljának létrehozása
 
-A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, hogyan kommunikálhat a Azure Machine Learning munkaterülettel. A fájl neve *config.json* , és a formátuma a következő:
+A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, hogyan kommunikálhat a Azure Machine Learning munkaterülettel. A fájl neve *config.json*, és a formátuma a következő:
 
 ```json
 {
@@ -61,7 +61,7 @@ Hozzon létre egy munkaterület-konfigurációs fájlt az alábbi módszerek egy
 
 * Azure Portal
 
-    **Töltse le a fájlt** : a [Azure Portal](https://ms.portal.azure.com)válassza a  **config.jsletöltése** elemet a munkaterület **Áttekintés** szakaszában.
+    **Töltse le a fájlt**: a [Azure Portal](https://ms.portal.azure.com)válassza a  **config.jsletöltése** elemet a munkaterület **Áttekintés** szakaszában.
 
     ![Azure Portal](./media/how-to-configure-environment/configure.png)
 
@@ -214,7 +214,7 @@ A helyi környezetekhez hasonlóan a Visual Studio Code és a [Azure Machine lea
 További információ: [Adatelemzési Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Azure Machine Learning [modell betanítása](tutorial-train-models-with-aml.md) a MNIST adatkészlettel.
 - Tekintse [meg a Pythonhoz készült Azure Machine learning SDK-referenciát](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py). 

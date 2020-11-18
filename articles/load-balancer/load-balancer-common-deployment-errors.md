@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3899a61e942695fed1e3da5fc543b298a42e24
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84221016"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695554"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Az Azure üzembe helyezésével kapcsolatos gyakori hibák elhárítása Azure Load Balancer
 
@@ -35,11 +35,11 @@ Ez a cikk néhány gyakori Azure Load Balancer telepítési hibát ismertet, és
 |CannotUseInactiveHealthProbe| Nem használhat olyan mintavételt, amelyet a virtuálisgép-méretezési csoport állapotára konfigurált szabályok nem használnak. Győződjön meg arról, hogy a beállított mintavétel aktívan használatban van. |
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| Ugyanahhoz a típushoz (belső, nyilvános) nem tartozhat több terheléselosztó. Legfeljebb egy belső és egy nyilvános Load Balancer lehet. |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | Az alapszintű Load Balancer nem támogatott a több elhelyezést biztosító virtuálisgép-méretezési csoportokban vagy a rendelkezésre állási zóna virtuálisgép-méretezési csoportjában. Ehelyett használja a standard Load Balancer. |
-|MarketplacePurchaseEligibilityFailed | Váltson a megfelelő rendszergazdai fiókra, hogy engedélyezze a vásárlást, mert az előfizetés EA-előfizetés. Erről [itt](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase) olvashat bővebben. |
-|ResourceDeploymentFailure| Ha a terheléselosztó meghibásodott állapotban van, kövesse az alábbi lépéseket a sikertelen állapot visszaállításához:<ol><li>Nyissa meg a t https://resources.azure.com , és jelentkezzen be a Azure Portal hitelesítő adataival.</li><li>Válassza az **írás/írás**lehetőséget.</li><li>A bal oldalon bontsa ki az **előfizetések**elemet, majd bontsa ki az előfizetést a frissítéshez Load Balancer.</li><li>Bontsa ki a **ResourceGroups**csomópontot, majd bontsa ki az erőforráscsoportot a frissítéshez Load Balancer.</li><li>Válassza a **Microsoft. Network**  >  **LoadBalancers**lehetőséget, majd válassza ki a frissíteni kívánt Load Balancer **LoadBalancer_1**.</li><li>A **LoadBalancer_1**megjelenítése lapon válassza a Szerkesztés **beolvasása**elemet  >  **Edit**.</li><li>A **ProvisioningState** értékének frissítése **sikertelen volt** **.**</li><li>Válassza a **PUT** lehetőséget.</li></ol>|
+|MarketplacePurchaseEligibilityFailed | Váltson a megfelelő rendszergazdai fiókra, hogy engedélyezze a vásárlást, mert az előfizetés EA-előfizetés. Erről [itt](../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase) olvashat bővebben. |
+|ResourceDeploymentFailure| Ha a terheléselosztó meghibásodott állapotban van, kövesse az alábbi lépéseket a sikertelen állapot visszaállításához:<ol><li>Nyissa meg a t https://resources.azure.com , és jelentkezzen be a Azure Portal hitelesítő adataival.</li><li>Válassza az **írás/írás** lehetőséget.</li><li>A bal oldalon bontsa ki az **előfizetések** elemet, majd bontsa ki az előfizetést a frissítéshez Load Balancer.</li><li>Bontsa ki a **ResourceGroups** csomópontot, majd bontsa ki az erőforráscsoportot a frissítéshez Load Balancer.</li><li>Válassza a **Microsoft. Network**  >  **LoadBalancers** lehetőséget, majd válassza ki a frissíteni kívánt Load Balancer **LoadBalancer_1**.</li><li>A **LoadBalancer_1** megjelenítése lapon válassza a Szerkesztés **beolvasása** elemet  >  **Edit**.</li><li>A **ProvisioningState** értékének frissítése **sikertelen volt** **.**</li><li>Válassza a **PUT** lehetőséget.</li></ol>|
 |  |  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az Azure Load Balancer [SKU összehasonlító táblázatát](./skus.md)
-* További tudnivalók a [Azure Load Balancer korlátairól](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)
+* További tudnivalók a [Azure Load Balancer korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)

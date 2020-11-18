@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 3d2172f76faecfc8347d7e0ca13fb506817f25de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae4dd8b82e40b46da52a1b1f396569fda1dfea2b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740700"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694626"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>A "teljes" Lucene keresési szintaxis használata (speciális lekérdezések az Azure Cognitive Searchban)
 
@@ -30,7 +30,7 @@ A Lucene-elemző támogatja az összetett lekérdezési szerkezeteket, például
 
 Az alábbi példákban a [New York OpenData Initiative City](https://opendata.cityofnewyork.us/) által biztosított adatkészletek alapján elérhető feladatokat tartalmazó NYC-feladatok keresési indexét használjuk. Ezek az adathalmazok nem tekintendők aktuálisnak vagy teljesnek. Az index a Microsoft által biztosított sandbox-szolgáltatáson alapul, ami azt jelenti, hogy a lekérdezések kipróbálásához nincs szükség Azure-előfizetésre vagy Azure-Cognitive Searchra.
 
-A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenértékű eszközre van szükség. További információ: [Ismerkedés a REST-ügyfelekkel](search-get-started-postman.md).
+A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenértékű eszközre van szükség. További információ: [Ismerkedés a REST-ügyfelekkel](search-get-started-rest.md).
 
 ### <a name="set-the-request-header"></a>A kérelem fejlécének beállítása
 
@@ -46,7 +46,7 @@ A kérelem fejlécének megadását követően újra felhasználhatja azt a jele
 
 A kérelem egy GET parancs, amely az Azure Cognitive Search végpontot és a keresési karakterláncot tartalmazó URL-címmel párosítva van.
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Poster-kérelem fejlécének beolvasása" border="false":::
 
 Az URL-összeállítás a következő elemekből áll:
 
@@ -58,7 +58,7 @@ Az URL-összeállítás a következő elemekből áll:
 
 ## <a name="send-your-first-query"></a>Az első lekérdezés elküldése
 
-Ellenőrzési lépésként illessze be a következő kérelmet a GET mezőbe, és kattintson a **Küldés**gombra. Az eredményeket a rendszer részletes JSON-dokumentumként adja vissza. A rendszer a teljes dokumentumot adja vissza, ami lehetővé teszi az összes mező és az összes érték megtekintését.
+Ellenőrzési lépésként illessze be a következő kérelmet a GET mezőbe, és kattintson a **Küldés** gombra. Az eredményeket a rendszer részletes JSON-dokumentumként adja vissza. A rendszer a teljes dokumentumot adja vissza, ami lehetővé teszi az összes mező és az összes érték megtekintését.
 
 Illessze be ezt az URL-címet egy REST-ügyfélbe érvényesítési lépésként, és tekintse meg a dokumentum szerkezetét.
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  :::image type="content" source="media/search-query-lucene-examples/intrafieldfilter.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/intrafieldfilter.png" alt-text="Poster-minta válaszának keresési kifejezése" border="false":::
 
 A **mezőnév: searchExpression** szintaxissal megadhat egy mezőhöz tartozó keresési műveletet, ahol a keresési kifejezés lehet egyetlen szó vagy kifejezés, vagy egy összetettebb kifejezés zárójelben, opcionálisan logikai operátorokkal. Néhány példa a következőkre:
 
@@ -199,7 +199,7 @@ Ebben a lekérdezésben a "vezető elemző" kifejezéssel rendelkező feladatok 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
-  :::image type="content" source="media/search-query-lucene-examples/proximity-before.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/proximity-before.png" alt-text="Közelségi lekérdezés" border="false":::
 
 Próbálkozzon újra a "vezető elemző" kifejezés közötti szavak eltávolításával. Figyelje meg, hogy a lekérdezés 8 dokumentumot ad vissza, az előző lekérdezés esetében pedig 10.
 
@@ -212,12 +212,12 @@ A kifejezés növelése arra utal, hogy a dokumentum rangsorolása magasabb, ha 
 
 ### <a name="full-urls"></a>Teljes URL-címek
 
-Ebben az "előtt" lekérdezésben keressen feladatokat a *számítógép-elemző* kifejezéssel, és figyelje meg, hogy a *számítógépek és az* *elemzők*között nincs találat, de a *számítógép* -feladatok még a találatok elején vannak.
+Ebben az "előtt" lekérdezésben keressen feladatokat a *számítógép-elemző* kifejezéssel, és figyelje meg, hogy a *számítógépek és az* *elemzők* között nincs találat, de a *számítógép* -feladatok még a találatok elején vannak.
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
-  :::image type="content" source="media/search-query-lucene-examples/termboostingbefore.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/termboostingbefore.png" alt-text="Kiemelési idő" border="false":::
 
 Az "After" lekérdezésben ismételje meg a keresést, ez az idő fokozza az eredményeket az *elemző* kifejezéssel a *számítógép* kifejezése alatt, ha a két szó nem létezik. 
 
@@ -226,7 +226,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ```
 A fenti lekérdezés egy olvasható verziója `search=business_title:computer analyst^2` . Egy működőképes lekérdezés esetén a `^2` kódolása a következőként történik `%5E2` :, ami nehezebben látható.
 
-  :::image type="content" source="media/search-query-lucene-examples/termboostingafter.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/termboostingafter.png" alt-text="Kiemelési időszak" border="false":::
 
 A kifejezés fokozása különbözik az adott pontozási profilokban lévő pontozási profiloktól, és nem adott feltételekkel javítja bizonyos mezőket. A következő példa segít illusztrálni a különbségeket.
 
@@ -253,7 +253,7 @@ Ebben a lekérdezésben keressen olyan feladatokat, amelyek a Senior vagy a Juni
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
-  :::image type="content" source="media/search-query-lucene-examples/regex.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/regex.png" alt-text="Regex-lekérdezés" border="false":::
 
 > [!Note]
 > A regex-lekérdezések [elemzése](./search-lucene-query-architecture.md#stage-2-lexical-analysis)nem történik meg. Az egyetlen, hiányos lekérdezési feltételeken végrehajtott átalakítás lowercasing.
@@ -275,14 +275,14 @@ Ebben a lekérdezésben keressen olyan feladatokat, amelyek tartalmazzák a "PRO
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
-  :::image type="content" source="media/search-query-lucene-examples/wildcard.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/wildcard.png" alt-text="Helyettesítő karakteres lekérdezés" border="false":::
 
 > [!Note]
 > A helyettesítő karakteres lekérdezések [elemzése](./search-lucene-query-architecture.md#stage-2-lexical-analysis)nem történik meg. Az egyetlen, hiányos lekérdezési feltételeken végrehajtott átalakítás lowercasing.
 >
 
 ## <a name="next-steps"></a>Következő lépések
-Próbálja megadni a Lucene lekérdezés-elemzőjét a kódban. A következő hivatkozások ismertetik, hogyan állíthat be keresési lekérdezéseket a .NET-hez és a REST APIhoz. A hivatkozások az alapértelmezett egyszerű szintaxist használják, így a **queryType**megadásához alkalmaznia kell a cikkből megtanult tudnivalókat.
+Próbálja megadni a Lucene lekérdezés-elemzőjét a kódban. A következő hivatkozások ismertetik, hogyan állíthat be keresési lekérdezéseket a .NET-hez és a REST APIhoz. A hivatkozások az alapértelmezett egyszerű szintaxist használják, így a **queryType** megadásához alkalmaznia kell a cikkből megtanult tudnivalókat.
 
 * [Az index lekérdezése a .NET SDK használatával](./search-get-started-dotnet.md)
 * [Az index lekérdezése a REST API használatával](./search-get-started-powershell.md)

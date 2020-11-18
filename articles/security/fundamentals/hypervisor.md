@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
-ms.openlocfilehash: 1f81285e869bd2c65cce29766de0b2bd39a627f6
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 766266edd663b75b893a5883e30bb48eed7bbfdf
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557974"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696115"
 ---
 # <a name="hypervisor-security-on-the-azure-fleet"></a>A hypervisor biztonsága az Azure-flotta esetében
 
@@ -26,7 +26,7 @@ Az Azure hypervisor a következő biztonsági célkitűzéseket tartja szem elő
 | Elkülönítés | A biztonsági szabályzatok nem adják át A virtuális gépek közötti adatátvitelt. Ehhez a korlátozáshoz a Virtual Machine Manager (VMM) és a hardver a memória, az eszközök, a hálózat és a felügyelt erőforrások (például a megőrzött adatmennyiség) elkülönítéséhez szükséges képességekre van szükség. |
 | VMM integritása | A rendszer általános integritásának eléréséhez az egyes hypervisor-összetevők integritása létrejött és karbantartás alatt áll. |
 | Platform integritása | A hypervisor integritása attól függ, hogy a hardver és a szoftver milyen integritású. Bár a hypervisor nem irányítja át a platform integritását, az Azure olyan hardver-és belső vezérlőprogram-mechanizmusokra támaszkodik, mint például a [Cerberus](project-cerberus.md) -lapka a mögöttes platform integritásának védelme és észlelése érdekében. A VMM és a vendégek nem futnak, ha a platform integritása sérült. |
-| Korlátozott hozzáférés | A felügyeleti funkciókat csak a biztonságos kapcsolatokon keresztül csatlakoztatott jogosult rendszergazdák gyakorolhatják. A minimális jogosultság elvét a szerepköralapú hozzáférés-vezérlés (RBAC) mechanizmusai kényszerítik ki. |
+| Korlátozott hozzáférés | A felügyeleti funkciókat csak a biztonságos kapcsolatokon keresztül csatlakoztatott jogosult rendszergazdák gyakorolhatják. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) mechanizmusai a legalacsonyabb jogosultsági szint elvét kényszerítik ki. |
 | Naplózás | Az Azure lehetővé teszi, hogy a naplózási funkció rögzítse és megvédje a rendszeren megjelenő információkat, hogy később is megvizsgálható legyen. |
 
 A Microsoft az Azure Hypervisort és a virtualizációs alrendszer megkeményedésének megközelítését a következő három kategóriába lehet bontani.
@@ -68,8 +68,8 @@ Az összes virtuális gép támadási felülete a fenyegetések modellezése, a 
 ## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a platform integritásának és biztonságának elvégzéséről, olvassa el a következőt:
 
-- [Belső vezérlőprogram biztonsága](firmware.md)
+- [A belső vezérlőprogram biztonsága](firmware.md)
 - [Biztonságos rendszerindítás](secure-boot.md)
 - [Mért rendszerindítás és gazdagép-igazolás](measured-boot-host-attestation.md)
-- [Projekt Cerberus](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Titkosítás inaktív állapotban](encryption-atrest.md)

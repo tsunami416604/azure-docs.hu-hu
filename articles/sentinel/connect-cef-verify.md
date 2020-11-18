@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 8bdc9d588e89f498b973db7d1de299b0b26a3d02
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 974418a1b3c1e7fe93b2f6839c16169e5bd5abc5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655731"
+ms.locfileid: "94696999"
 ---
 # <a name="step-3-validate-connectivity"></a>3. lépés: a kapcsolat ellenőrzése
 
@@ -44,7 +44,7 @@ Vegye figyelembe, hogy körülbelül 20 percet vesz igénybe, amíg a naplók me
 1. Futtassa a következő szkriptet a log továbbítón (a munkaterület AZONOSÍTÓjának alkalmazása a helyőrző helyett) a biztonsági megoldás, a naplózási továbbító és az Azure Sentinel közötti kapcsolat vizsgálatához. Ez a szkript ellenőrzi, hogy a démon figyeli-e a megfelelő portokat, hogy a továbbítás megfelelően van-e konfigurálva, és hogy semmi sem blokkolja a démon és a Log Analytics ügynök közötti kommunikációt. Emellett a "TestCommonEventFormat" nevű ál-üzeneteket is elküldi a végpontok közötti kapcsolat vizsgálatához. <br>
 
     ```bash
-    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
     ```
 
    - Előfordulhat, hogy egy olyan üzenetet kap, amely egy parancs futtatásával kijavít egy problémát a ***számítógép* mező leképezésével**. A részletekért tekintse [meg az érvényesítési parancsfájl magyarázatát](#mapping-command) .
@@ -245,6 +245,7 @@ Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
 ---
 
 ## <a name="next-steps"></a>Következő lépések
+
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a CEF-készülékek az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).

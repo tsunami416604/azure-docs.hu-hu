@@ -3,12 +3,12 @@ title: Tárolórendszerképek importálása
 description: A tároló lemezképeit az Azure API-k használatával importálhatja egy Azure Container registrybe anélkül, hogy a Docker-parancsokat kellene futtatnia.
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 2c99d3c32bf6dad3a1950da56b29f47d2a988161
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3950b9fb24b80db4d9654a615521c0eb82914499
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541577"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695605"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Tároló-lemezképek importálása egy tároló-beállításjegyzékbe
 
@@ -46,7 +46,7 @@ Egy rendszerkép Azure Container registrybe való importálásához az identitá
 
 ### <a name="import-from-docker-hub"></a>Importálás a Docker hub-ból
 
-Például az az [ACR import][az-acr-import] paranccsal importálhatja a multi-Architecture `hello-world:latest` rendszerképet a Docker hub-ból egy *myregistry*nevű beállításjegyzékbe. Mivel a `hello-world` a Docker hub hivatalos rendszerképe, ez a rendszerkép az alapértelmezett `library` tárházban található. Adja meg az adattár nevét és opcionálisan egy címkét a `--source` rendszerkép paraméter értékében. (A képet a jegyzékfájlja alapján is azonosíthatja, a címke alapján, amely a rendszerkép egy adott verzióját garantálja.)
+Például az az [ACR import][az-acr-import] paranccsal importálhatja a multi-Architecture `hello-world:latest` rendszerképet a Docker hub-ból egy *myregistry* nevű beállításjegyzékbe. Mivel a `hello-world` a Docker hub hivatalos rendszerképe, ez a rendszerkép az alapértelmezett `library` tárházban található. Adja meg az adattár nevét és opcionálisan egy címkét a `--source` rendszerkép paraméter értékében. (A képet a jegyzékfájlja alapján is azonosíthatja, a címke alapján, amely a rendszerkép egy adott verzióját garantálja.)
  
 ```azurecli
 az acr import \
@@ -144,7 +144,7 @@ az acr import \
   --source sourceregistry.azurecr.io/sourcerrepo:tag \
   --image targetimage:tag \
   --username <SP_App_ID> \
-  –-password <SP_Passwd>
+  --password <SP_Passwd>
 ```
 
 ## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>Importálás egy Azure Container registryből egy másik AD-bérlőben
@@ -157,7 +157,7 @@ az acr import \
   --source sourceregistry.azurecr.io/sourcerrepo:tag \
   --image targetimage:tag \
   --username <SP_App_ID> \
-  –-password <SP_Passwd>
+  --password <SP_Passwd>
 ```
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>Importálás nem Azure Private Container registryből

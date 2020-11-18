@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: f5ae1f7f84293fdf23b680a407a5a168316f3163
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0429eec2a84c22f3d998baa4dde4f543d4927f16
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94407988"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695333"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-környezetek védelme
 
@@ -73,19 +73,19 @@ A hálózati peremhálózat alapelvei és mintái évtizedek óta rendelkezésre
 
 Az alábbi ajánlott eljárások az identitás peremhálózati kezeléséhez szükségesek.
 
-**Ajánlott eljárás** : a kulcsok és a hitelesítő adatok biztonságossá tétele a Pásti-telepítés biztonságossá tételéhez.   
-**Részletek** : a kulcsok és a hitelesítő adatok elvesztése gyakori probléma. Olyan központosított megoldást használhat, amelyben a kulcsok és a titkos kódok a hardveres biztonsági modulokban (HSM) tárolhatók. [Azure Key Vault](../../key-vault/general/overview.md) védi a kulcsokat és a titkokat a hitelesítő kulcsok, a Storage-fiókok kulcsai, az adattitkosítási kulcsok, a. pfx-fájlok és a jelszavak a HSM által védett kulcsokkal történő titkosításával.
+**Ajánlott eljárás**: a kulcsok és a hitelesítő adatok biztonságossá tétele a Pásti-telepítés biztonságossá tételéhez.   
+**Részletek**: a kulcsok és a hitelesítő adatok elvesztése gyakori probléma. Olyan központosított megoldást használhat, amelyben a kulcsok és a titkos kódok a hardveres biztonsági modulokban (HSM) tárolhatók. [Azure Key Vault](../../key-vault/general/overview.md) védi a kulcsokat és a titkokat a hitelesítő kulcsok, a Storage-fiókok kulcsai, az adattitkosítási kulcsok, a. pfx-fájlok és a jelszavak a HSM által védett kulcsokkal történő titkosításával.
 
-**Ajánlott eljárás** : ne helyezzen el hitelesítő adatokat és egyéb titkokat a forráskódban vagy a githubban.   
-**Részletek** : az egyetlen dolog, ami rosszabb, mint a kulcsok és a hitelesítő adatok elvesztése, hogy jogosulatlan fél hozzáférjen hozzájuk. A támadók kihasználhatják a robot-technológiák előnyeit, hogy megtalálják a kódrészletekben, például a GitHubban tárolt kulcsokat és titkokat. Ne helyezze el a kulcsokat és a titkos kódokat ezekben a nyilvános programkódokban.
+**Ajánlott eljárás**: ne helyezzen el hitelesítő adatokat és egyéb titkokat a forráskódban vagy a githubban.   
+**Részletek**: az egyetlen dolog, ami rosszabb, mint a kulcsok és a hitelesítő adatok elvesztése, hogy jogosulatlan fél hozzáférjen hozzájuk. A támadók kihasználhatják a robot-technológiák előnyeit, hogy megtalálják a kódrészletekben, például a GitHubban tárolt kulcsokat és titkokat. Ne helyezze el a kulcsokat és a titkos kódokat ezekben a nyilvános programkódokban.
 
-**Ajánlott eljárás** : gondoskodjon a virtuális gépek felügyeleti felületének védelméről a hibrid Pásti-és IaaS-szolgáltatásokhoz egy olyan felügyeleti felületen keresztül, amely lehetővé teszi, hogy közvetlenül felügyelje ezeket a virtuális gépeket.   
-**Részletek** : távoli felügyeleti protokollok, például [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)és [PowerShell távelérés](/powershell/module/microsoft.powershell.core/enable-psremoting) használható. Általánosságban azt javasoljuk, hogy ne engedélyezze a közvetlen távoli hozzáférést az internetről érkező virtuális gépekhez.
+**Ajánlott eljárás**: gondoskodjon a virtuális gépek felügyeleti felületének védelméről a hibrid Pásti-és IaaS-szolgáltatásokhoz egy olyan felügyeleti felületen keresztül, amely lehetővé teszi, hogy közvetlenül felügyelje ezeket a virtuális gépeket.   
+**Részletek**: távoli felügyeleti protokollok, például [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)és [PowerShell távelérés](/powershell/module/microsoft.powershell.core/enable-psremoting) használható. Általánosságban azt javasoljuk, hogy ne engedélyezze a közvetlen távoli hozzáférést az internetről érkező virtuális gépekhez.
 
 Ha lehetséges, alternatív megközelítéseket használhat, például virtuális magánhálózatok használatát egy Azure-beli virtuális hálózaton. Ha az alternatív megoldások nem érhetők el, győződjön meg arról, hogy összetett hozzáférési kódok és kétfaktoros hitelesítés (például [Azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)) használata szükséges.
 
-**Ajánlott eljárás** : erős hitelesítési és engedélyezési platformok használata.   
-**Részletek** : összevont identitások használata az Azure ad-ben egyéni felhasználói tárolók helyett. Összevont identitások használata esetén kihasználhatja a platform-alapú megközelítést, és delegálhatja a meghatalmazott identitások kezelését a partnerei számára. Az összevont identitások megközelítése különösen fontos az alkalmazottak leállításakor, és az információt több identitás-és engedélyezési rendszeren keresztül kell megjeleníteni.
+**Ajánlott eljárás**: erős hitelesítési és engedélyezési platformok használata.   
+**Részletek**: összevont identitások használata az Azure ad-ben egyéni felhasználói tárolók helyett. Összevont identitások használata esetén kihasználhatja a platform-alapú megközelítést, és delegálhatja a meghatalmazott identitások kezelését a partnerei számára. Az összevont identitások megközelítése különösen fontos az alkalmazottak leállításakor, és az információt több identitás-és engedélyezési rendszeren keresztül kell megjeleníteni.
 
 Egyéni kód helyett platform által biztosított hitelesítési és engedélyezési mechanizmusokat használhat. Ennek az az oka, hogy az egyéni hitelesítési kód fejlesztése hibás lehet. A fejlesztők többsége nem rendelkezik biztonsági szakértőkkel, és nem valószínű, hogy tisztában van a finomságokkal, valamint a hitelesítés és az engedélyezés legújabb fejleményeivel. A kereskedelmi kódokat (például a Microsofttól) gyakran széles körű biztonsági felülvizsgálatnak tekintjük.
 
@@ -112,20 +112,20 @@ A [Azure app Service](../../app-service/overview.md) egy olyan Pásti-ajánlat, 
 
 A App Service használatának ajánlott eljárásai a következők:
 
-**Ajánlott eljárás** : [hitelesítés Azure Active Directoryon keresztül](../../app-service/overview-authentication-authorization.md).   
-**Részletek** : a App Service OAuth 2,0 szolgáltatást biztosít az identitás-szolgáltató számára. A OAuth 2,0 a webalkalmazások, asztali alkalmazások és mobiltelefonok speciális engedélyezési folyamatainak biztosítása mellett az ügyfelek fejlesztői egyszerűségére koncentrál. Az Azure AD OAuth 2,0-et használ a mobil-és webalkalmazásokhoz való hozzáférés engedélyezéséhez.
+**Ajánlott eljárás**: [hitelesítés Azure Active Directoryon keresztül](../../app-service/overview-authentication-authorization.md).   
+**Részletek**: a App Service OAuth 2,0 szolgáltatást biztosít az identitás-szolgáltató számára. A OAuth 2,0 a webalkalmazások, asztali alkalmazások és mobiltelefonok speciális engedélyezési folyamatainak biztosítása mellett az ügyfelek fejlesztői egyszerűségére koncentrál. Az Azure AD OAuth 2,0-et használ a mobil-és webalkalmazásokhoz való hozzáférés engedélyezéséhez.
 
-**Ajánlott eljárás** : a hozzáférés korlátozása a szükséges ismeret és a legalacsonyabb szintű biztonsági alapelvek alapján.   
-**Részletek** : a hozzáférés korlátozása elengedhetetlen azoknak a szervezeteknek, akik biztonsági házirendeket kívánnak kikényszeríteni az adatok eléréséhez. A RBAC segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy adott hatókörben. A felhasználók alkalmazásokhoz való hozzáférésének biztosításával kapcsolatos további tudnivalókért lásd: Ismerkedés [a hozzáférés-kezeléssel](../../role-based-access-control/overview.md).
+**Ajánlott eljárás**: a hozzáférés korlátozása a szükséges ismeret és a legalacsonyabb szintű biztonsági alapelvek alapján.   
+**Részletek**: a hozzáférés korlátozása elengedhetetlen azoknak a szervezeteknek, akik biztonsági házirendeket kívánnak kikényszeríteni az adatok eléréséhez. Az Azure RBAC segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy adott hatókörben. A felhasználók alkalmazásokhoz való hozzáférésének biztosításával kapcsolatos további tudnivalókért lásd: Ismerkedés [a hozzáférés-kezeléssel](../../role-based-access-control/overview.md).
 
-**Ajánlott eljárás** : a kulcsok védelmének biztosítása.   
-**Részletek** : a Azure Key Vault segít megőrizni a Felhőbeli alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. További információ: [Azure Key Vault](../../key-vault/general/overview.md) . A TLS-tanúsítványok automatikus megújítással történő kezeléséhez Key Vault is használhatja.
+**Ajánlott eljárás**: a kulcsok védelmének biztosítása.   
+**Részletek**: a Azure Key Vault segít megőrizni a Felhőbeli alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. További információ: [Azure Key Vault](../../key-vault/general/overview.md) . A TLS-tanúsítványok automatikus megújítással történő kezeléséhez Key Vault is használhatja.
 
-**Ajánlott eljárás** : a bejövő forrás IP-címeinek korlátozása.   
-**Részletek** : a [app Service Environment](../../app-service/environment/intro.md) virtuális hálózati integrációs funkcióval rendelkezik, amely a bejövő forrás IP-címeinek hálózati biztonsági csoportokon keresztüli korlátozására nyújt segítséget. A virtuális hálózatok lehetővé teszik az Azure-erőforrások olyan nem internetes, irányítható hálózatban való elhelyezését, amellyel a hozzáférését szabályozhatja. További információ: [az alkalmazás integrálása egy Azure-beli virtuális hálózattal](../../app-service/web-sites-integrate-with-vnet.md).
+**Ajánlott eljárás**: a bejövő forrás IP-címeinek korlátozása.   
+**Részletek**: a [app Service Environment](../../app-service/environment/intro.md) virtuális hálózati integrációs funkcióval rendelkezik, amely a bejövő forrás IP-címeinek hálózati biztonsági csoportokon keresztüli korlátozására nyújt segítséget. A virtuális hálózatok lehetővé teszik az Azure-erőforrások olyan nem internetes, irányítható hálózatban való elhelyezését, amellyel a hozzáférését szabályozhatja. További információ: [az alkalmazás integrálása egy Azure-beli virtuális hálózattal](../../app-service/web-sites-integrate-with-vnet.md).
 
-**Ajánlott eljárás** : a app Service környezetek biztonsági állapotának figyelése.   
-**Részletek** : Azure Security Center használata a app Service-környezetek figyeléséhez. Ha a Security Center felismeri a lehetséges biztonsági réseket, [javaslatokat](../../security-center/asset-inventory.md) hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán.
+**Ajánlott eljárás**: a app Service környezetek biztonsági állapotának figyelése.   
+**Részletek**: Azure Security Center használata a app Service-környezetek figyeléséhez. Ha a Security Center felismeri a lehetséges biztonsági réseket, [javaslatokat](../../security-center/asset-inventory.md) hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán.
 
 > [!NOTE]
 > A figyelési App Service előzetes verzióban érhető el, és csak a Security Center [standard szintjére](../../security-center/security-center-pricing.md) használható.
@@ -150,7 +150,7 @@ A biztonsági védelem ellenőrzése olyan fontos, mint bármely más funkció t
 A fuzz Testing metódus a programbeli hibák (hibakódok) megkeresésére, ha helytelenül formázott bemeneti adatokat ad meg az adatok elemzésére és felhasználására szolgáló kezelőfelületekhez (belépési pontokhoz). A [Microsoft biztonsági kockázatok észlelése](https://www.microsoft.com/en-us/security-risk-detection/) egy felhőalapú eszköz, amellyel a szoftverben az Azure-ba történő üzembe helyezése előtt hibákat és egyéb biztonsági réseket kereshet. Az eszköz úgy van kialakítva, hogy a szoftverek központi telepítése előtt elkapjon biztonsági réseket, így nem kell hibát kijavítania, összeomlásokkal foglalkoznia, vagy támadásra reagálni a szoftver felszabadítása után.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben az Azure Pásti üzembe helyezésének és a felhőalapú alkalmazásokhoz ajánlott biztonsági eljárásoknak a biztonsági előnyeire összpontosítunk. Ezután Ismerkedjen meg a javasolt eljárásokkal, amelyekkel az adott Azure-szolgáltatásokkal biztonságossá teheti a Pásti web-és mobil megoldásait. A Azure App Service, a Azure SQL Database és az Azure szinapszis Analytics és az Azure Storage szolgáltatással fogunk kezdeni. Az egyéb Azure-szolgáltatásokra vonatkozó ajánlott eljárásokról szóló cikkek elérhetővé válnak, és az alábbi listán szereplő hivatkozásokat fogjuk megadni:
 
 - [Azure App Service](paas-applications-using-app-services.md)

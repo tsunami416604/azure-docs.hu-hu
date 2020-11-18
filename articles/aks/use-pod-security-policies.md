@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan vezérelheti a pod-felvételeket az Azure Kuber
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: a9f6ead7edea7a3a6240e116d3073ea01fa9f6bb
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 77c618429503caf9aa7bb6abda109504bbf68d71
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900109"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695996"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt biztonságossá tétele a pod biztonsági szabályzatok használatával az Azure Kubernetes szolgáltatásban (ak)
 
 > [!WARNING]
-> **A jelen dokumentumban ismertetett funkció, a pod biztonsági szabályzat (előzetes verzió), az elavult, és a továbbiakban nem lesz elérhető február 1-től 2021** -én, Azure Policy az [AK](use-pod-security-on-azure-policy.md)-hoz. Az Érvénytelenítési dátum az előző dátummal bővült, 2020. október 15-ig.
+> **A jelen dokumentumban ismertetett funkció, a pod biztonsági szabályzat (előzetes verzió), az elavult értékre van állítva, és a továbbiakban nem lesz elérhető a 2021** -es számú [Azure Policy az AK](use-pod-security-on-azure-policy.md)-ban. Az Érvénytelenítési dátum az előző dátummal bővült, 2020. október 15-ig.
 >
 > Miután a pod biztonsági házirend (előzetes verzió) elavult, le kell tiltania a szolgáltatást minden meglévő fürtön az elavult funkcióval a későbbi fürtök frissítéséhez és az Azure-támogatáson belüli tartózkodáshoz.
 >
@@ -315,7 +315,7 @@ psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    R
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Egyéni Pod biztonsági házirend használatának engedélyezése a felhasználói fiók számára
 
-Az előző lépésben létrehozott egy Pod biztonsági szabályzatot, amely elutasítja a privilegizált hozzáférést kérő hüvelyeket. A szabályzat használatának engedélyezéséhez hozzon létre egy *szerepkört* vagy egy *ClusterRole* . Ezt követően rendeljen hozzá egyet ezekhez a szerepkörökhöz egy *RoleBinding* vagy *ClusterRoleBinding* használatával.
+Az előző lépésben létrehozott egy Pod biztonsági szabályzatot, amely elutasítja a privilegizált hozzáférést kérő hüvelyeket. A szabályzat használatának engedélyezéséhez hozzon létre egy *szerepkört* vagy egy *ClusterRole*. Ezt követően rendeljen hozzá egyet ezekhez a szerepkörökhöz egy *RoleBinding* vagy *ClusterRoleBinding* használatával.
 
 Ehhez a példához hozzon létre egy ClusterRole, amely lehetővé teszi az előző lépésben létrehozott *PSP-megtagadás-privilegizált* szabályzat *használatát* . Hozzon létre egy nevű fájlt `psp-deny-privileged-clusterrole.yaml` , és illessze be a következő YAML-jegyzékbe:
 
@@ -375,7 +375,7 @@ Ha az egyéni Pod biztonsági szabályzatot alkalmazta, és a felhasználói fi�
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-A pod sikeresen ütemezve. Ha a [kubectl Get hüvely][kubectl-get] parancs használatával tekinti meg a pod állapotát, a pod a következőket *futtatja* :
+A pod sikeresen ütemezve. Ha a [kubectl Get hüvely][kubectl-get] parancs használatával tekinti meg a pod állapotát, a pod a következőket *futtatja*:
 
 ```
 $ kubectl-nonadminuser get pods
@@ -392,7 +392,7 @@ A [kubectl delete][kubectl-delete] paranccsal törölje az NGINX unprivilegizál
 kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A pod biztonsági szabályzat letiltásához használja újra az az [AK Update][az-aks-update] parancsot. A következő példa letiltja a pod biztonsági házirendet a *myResourceGroup* nevű erőforráscsoport *myAKSCluster* található fürt neve elemnél:
 

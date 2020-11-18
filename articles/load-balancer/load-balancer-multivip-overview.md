@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2e27b168087966701fb53cc8df19d264861257d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c2072d13cab9839a276c0437747d7075918e78a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448112"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696880"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Több előtér Azure Load Balancer
 
 Azure Load Balancer lehetővé teszi, hogy terheléselosztási szolgáltatásokat több porton, több IP-címen vagy mindkettőn. A nyilvános és a belső terheléselosztó-definíciók használatával terheléselosztási folyamatokat helyezhet át a virtuális gépek egy csoportján belül.
 
-Ez a cikk ismerteti a képesség alapjait, a fontos fogalmakat és a megkötéseket. Ha csak egyetlen IP-címen kívánja közzétenni a szolgáltatásokat, a [nyilvános](load-balancer-get-started-internet-portal.md) vagy [belső](load-balancer-get-started-ilb-arm-portal.md) terheléselosztó-konfigurációk egyszerűsített utasításait találhatja meg. Több előtér hozzáadása egyetlen előtér-konfigurációhoz. A cikkben szereplő fogalmak használatával bármikor kiterjesztheti az egyszerűsített konfigurációt.
+Ez a cikk ismerteti a képesség alapjait, a fontos fogalmakat és a megkötéseket. Ha csak egyetlen IP-címen kívánja közzétenni a szolgáltatásokat, a [nyilvános](./quickstart-load-balancer-standard-public-portal.md) vagy [belső](./quickstart-load-balancer-standard-internal-portal.md) terheléselosztó-konfigurációk egyszerűsített utasításait találhatja meg. Több előtér hozzáadása egyetlen előtér-konfigurációhoz. A cikkben szereplő fogalmak használatával bármikor kiterjesztheti az egyszerűsített konfigurációt.
 
 Azure Load Balancer definiálásakor a rendszer egy előtér-és egy háttér-készlet konfigurációját is csatlakoztatja a szabályokhoz. A szabály által hivatkozott állapot-mintavételi módszer segítségével határozható meg, hogy a rendszer hogyan küldje el az új folyamatokat a háttér-készlet egyik csomópontjára. A frontend (más néven VIP) egy 3 rekordból áll, amely egy IP-cím (nyilvános vagy belső), egy átviteli protokoll (UDP vagy TCP) és egy portszám a terheléselosztási szabályból. A háttér-készlet a virtuális gépek IP-konfigurációinak gyűjteménye (a NIC-erőforrás része), amely a Load Balancer háttér-készletre hivatkozik.
 

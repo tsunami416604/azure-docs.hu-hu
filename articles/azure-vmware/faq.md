@@ -4,18 +4,18 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 99e9e53693e42f907250331894f55ed0160f9e30
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 2d71c30d2fb08629674c352ae812d8890463abfe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577515"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695101"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
 Válaszok az Azure VMware megoldással kapcsolatos gyakori kérdésekre.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 #### <a name="what-is-azure-vmware-solution"></a>Mi az az Azure VMware Solution?
 
@@ -253,7 +253,7 @@ A VMware HCX Enterprise Edition (EE) elérhető az Azure VMware-megoldással, am
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Hogyan az Azure VMware-megoldáshoz tartozó gazdagép-kvóta növelését?
 
-A CSP által felügyelt előfizetések esetében az ügyfélnek el kell végeznie a kérést a partnernek, és a partner csapata a Microsofttal együttműködve lekéri az előfizetés kvótájának növelését. 
+A CSP által felügyelt előfizetések esetében az ügyfélnek el kell végeznie a kérést a partnernek, és a partner csapata a Microsofttal együttműködve lekéri az előfizetés kvótájának növelését. További információ: az [Azure VMware-megoldás erőforrásának engedélyezése cikk](enable-azure-vmware-solution.md) a részletekért. 
 
 EA-előfizetések esetén az ügyfélnek ezt az eljárást kell követnie.
 
@@ -299,6 +299,10 @@ Az Azure VMware-megoldási erőforrás létrehozása előtt támogatási jegyet 
 #### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
 
 Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
+
+#### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
+
+No. Currently Azure VMware Solution does not offer multi-tenancy.
 
 
 ## Customer communication

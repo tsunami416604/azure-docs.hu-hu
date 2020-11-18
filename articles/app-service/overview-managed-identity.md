@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 73b09c006b11e7f57dd3833191dd381b7f42a709
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c734c0ceb9c4d5418edc51a2c3ad3c052637ad31
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145837"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696982"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -33,11 +33,11 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. A szokásos módon hozzon létre egy alkalmazást a portálon. Navigáljon a portálon.
 
-2. Ha Function alkalmazást használ, navigáljon a **platform szolgáltatásaihoz** . Más típusú alkalmazások esetén görgessen le a **Beállítások** csoportba a bal oldali navigációs sávon.
+2. Ha Function alkalmazást használ, navigáljon a **platform szolgáltatásaihoz**. Más típusú alkalmazások esetén görgessen le a **Beállítások** csoportba a bal oldali navigációs sávon.
 
 3. Válassza az **identitás** lehetőséget.
 
-4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre** . Kattintson a **Mentés** gombra.
+4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Mentés** gombra.
 
     ![Képernyőfelvétel: az állapot bekapcsolásának helye, majd válassza a mentés lehetőséget.](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
@@ -198,7 +198,7 @@ Először létre kell hoznia egy felhasználó által hozzárendelt identitás-e
 
 2. A szokásos módon hozzon létre egy alkalmazást a portálon. Navigáljon a portálon.
 
-3. Ha Function alkalmazást használ, navigáljon a **platform szolgáltatásaihoz** . Más típusú alkalmazások esetén görgessen le a **Beállítások** csoportba a bal oldali navigációs sávon.
+3. Ha Function alkalmazást használ, navigáljon a **platform szolgáltatásaihoz**. Más típusú alkalmazások esetén görgessen le a **Beállítások** csoportba a bal oldali navigációs sávon.
 
 4. Válassza az **identitás** lehetőséget.
 
@@ -324,7 +324,7 @@ A felügyelt identitású alkalmazások esetében két környezeti változó van
 
 A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat igényelhet. Egy erőforráshoz tartozó jogkivonat lekéréséhez hajtson végre egy HTTP GET kérelmet erre a végpontra, beleértve a következő paramétereket:
 
-> | Paraméter neve    | In     | Description                                                                                                                                                                                                                                                                                                                                |
+> | Paraméter neve    | In     | Leírás                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | erőforrás          | Lekérdezés  | Annak az erőforrásnak az Azure AD erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.    |
 > | api-verzió       | Lekérdezés  | A használni kívánt jogkivonat-API verziója. Használja a "2019-08-01" vagy az újabb verziót (kivéve, ha Linux-használatot használ, amely jelenleg csak a "2017-09-01"-ot kínálja) – lásd a fenti megjegyzést.                                                                                                                                                                                                                                                                 |
@@ -338,14 +338,14 @@ A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonato
 
 A sikeres 200 OK válasz egy JSON-törzset tartalmaz, amely a következő tulajdonságokkal rendelkezik:
 
-> | Tulajdonság neve | Description                                                                                                                                                                                                                                        |
+> | Tulajdonság neve | Leírás                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | A kért hozzáférési jogkivonat. A hívó webszolgáltatás ezt a tokent használhatja a fogadó webszolgáltatáshoz való hitelesítéshez.                                                                                                                               |
 > | client_id     | A használt identitás ügyfél-azonosítója.                                                                                                                                                                                                       |
 > | expires_on    | A TimeSpan, amikor lejár a hozzáférési jogkivonat. A dátum az "1970-01-01T0:0: 0Z UTC" (a jogkivonat jogcímenek felel meg) másodpercben megadott számú másodperc `exp` .                                                                                |
 > | not_before    | A TimeSpan, ha a hozzáférési jogkivonat érvénybe lép, és el lehet fogadni. A dátum az "1970-01-01T0:0: 0Z UTC" (a jogkivonat jogcímenek felel meg) másodpercben megadott számú másodperc `nbf` .                                                      |
 > | erőforrás      | Az erőforráshoz a hozzáférési tokent kérték, amely megfelel a `resource` kérelem lekérdezési karakterlánc paraméterének.                                                                                                                               |
-> | token_type    | Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a FBearer. A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse meg [a OAuth 2,0 engedélyezési keretrendszert: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+> | token_type    | Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a tulajdonos. A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse meg [a OAuth 2,0 engedélyezési keretrendszert: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
 Ez a válasz ugyanaz, mint az [Azure ad szolgáltatás – szolgáltatás hozzáférési jogkivonat-kérelemre adott válasz](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 

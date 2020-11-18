@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 03035f0ddb2499fb922581855878bc061bf57946
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c88a2cf33cf1149a17af4a82dcf2858822f0c6d4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412850"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696149"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Az Azure adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárásai
 Ez a cikk az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárásokat ismerteti.
@@ -45,22 +45,22 @@ Azure Key Vault úgy lett kialakítva, hogy támogassa az alkalmazás kulcsait �
 
 Az alábbiakban a Key Vault használatára vonatkozó ajánlott biztonsági eljárásokat ismertetjük.
 
-**Ajánlott eljárás** : a felhasználókhoz, csoportokhoz és alkalmazásokhoz való hozzáférés biztosítása egy adott hatókörben.   
-**Részletek** : a RBAC előre definiált szerepköreinek használata. Ha például hozzáférést szeretne biztosítani egy felhasználónak a kulcstartók felügyeletéhez, akkor az előre definiált szerepkört [Key Vault](../../role-based-access-control/built-in-roles.md) a felhasználóhoz egy adott hatókörben. A hatókör ebben az esetben egy előfizetés, egy erőforráscsoport vagy csak egy adott kulcstartó. Ha az előre definiált szerepkörök nem felelnek meg az igényeinek, [saját szerepköröket is meghatározhat](../../role-based-access-control/custom-roles.md).
+**Ajánlott eljárás**: a felhasználókhoz, csoportokhoz és alkalmazásokhoz való hozzáférés biztosítása egy adott hatókörben.   
+**Részletek**: az Azure RBAC előre definiált szerepköreinek használata. Ha például hozzáférést szeretne biztosítani egy felhasználónak a kulcstartók felügyeletéhez, akkor az előre definiált szerepkört [Key Vault](../../role-based-access-control/built-in-roles.md) a felhasználóhoz egy adott hatókörben. A hatókör ebben az esetben egy előfizetés, egy erőforráscsoport vagy csak egy adott kulcstartó. Ha az előre definiált szerepkörök nem felelnek meg az igényeinek, [saját szerepköröket is meghatározhat](../../role-based-access-control/custom-roles.md).
 
-**Ajánlott eljárás** : annak szabályozása, hogy mely felhasználók férhetnek hozzá.   
-**Részletek** : a kulcstartóhoz való hozzáférés két különálló felületen, a felügyeleti síkon és az adatsíkon keresztül szabályozható. A felügyeleti sík és az adatsík hozzáférés-vezérlése egymástól függetlenül működik.
+**Ajánlott eljárás**: annak szabályozása, hogy mely felhasználók férhetnek hozzá.   
+**Részletek**: a kulcstartóhoz való hozzáférés két különálló felületen, a felügyeleti síkon és az adatsíkon keresztül szabályozható. A felügyeleti sík és az adatsík hozzáférés-vezérlése egymástól függetlenül működik.
 
-RBAC használatával szabályozhatja, hogy mihez férhetnek hozzá a felhasználók. Ha például egy kulcstartóban szeretné megadni az alkalmazáshoz a kulcsok használatát, csak a Key Vault hozzáférési házirendjének használatával kell megadnia az adatsíkok hozzáférési engedélyeit, és ehhez az alkalmazáshoz nincs szükség felügyeleti síkon való hozzáférésre. Ha viszont azt szeretné, hogy a felhasználó olvasni tudja a tároló tulajdonságait és címkéit, de ne férjen hozzá a kulcsokhoz, titkos kulcsokhoz és tanúsítványokhoz, engedélyezhet ennek a felhasználónak „olvasási” hozzáférést RBAC használatával, de az adatsíkhoz nem szükséges hozzáférést biztosítani.
+Az Azure RBAC segítségével szabályozhatja, hogy mely felhasználók férhetnek hozzá. Ha például egy kulcstartóban szeretné megadni az alkalmazáshoz a kulcsok használatát, csak a Key Vault hozzáférési házirendjének használatával kell megadnia az adatsíkok hozzáférési engedélyeit, és ehhez az alkalmazáshoz nincs szükség felügyeleti síkon való hozzáférésre. Ha azt szeretné, hogy a felhasználók beolvassák a tár tulajdonságait és címkéit, de nem rendelkeznek hozzáféréssel a kulcsokhoz, a titkokhoz vagy a tanúsítványokhoz, a felhasználó számára az Azure RBAC használatával is megadhatja az olvasási hozzáférést, és nincs szükség az adatsíkon való hozzáférésre.
 
-**Ajánlott eljárás** : tanúsítványok tárolása a kulcstartóban. A tanúsítványok nagy értékűek. Rossz kezekben az alkalmazás biztonsága vagy az adatai biztonsága is sérülhet.   
-**Részletek** : Azure Resource Manager a virtuális gépek üzembe helyezésekor biztonságosan telepíthet Azure Key Vault Azure-beli virtuális gépeken tárolt tanúsítványokat. Ha a kulcstartóhoz a megfelelő hozzáférési szabályzatokat állítja be, azt is szabályozhatja, hogy ki férhet hozzá a tanúsítványhoz. Egy másik előnye, hogy az összes tanúsítvány egy helyen kezelhető az Azure Key Vaultban. További információért lásd: [tanúsítványok központi telepítése virtuális gépekre az ügyfél által felügyelt Key Vault](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault) .
+**Ajánlott eljárás**: tanúsítványok tárolása a kulcstartóban. A tanúsítványok nagy értékűek. Rossz kezekben az alkalmazás biztonsága vagy az adatai biztonsága is sérülhet.   
+**Részletek**: Azure Resource Manager a virtuális gépek üzembe helyezésekor biztonságosan telepíthet Azure Key Vault Azure-beli virtuális gépeken tárolt tanúsítványokat. Ha a kulcstartóhoz a megfelelő hozzáférési szabályzatokat állítja be, azt is szabályozhatja, hogy ki férhet hozzá a tanúsítványhoz. Egy másik előnye, hogy az összes tanúsítvány egy helyen kezelhető az Azure Key Vaultban. További információért lásd: [tanúsítványok központi telepítése virtuális gépekre az ügyfél által felügyelt Key Vault](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault) .
 
-**Ajánlott eljárás** : Ügyeljen arra, hogy helyreállítsa a kulcstartók vagy kulcstartó-objektumok törlését.   
-**Részletek** : a kulcstartók vagy a Key Vault-objektumok törlése véletlen vagy rosszindulatú lehet. Engedélyezze a Key Vault visszaállítható törlés funkcióját és a végleges törlés elleni védelmet, elsősorban az olyan kulcsokhoz, amelyek az inaktív adatok védelmére vannak használva. Az ilyen kulcsok törlése az adatvesztéssel egyenértékű, ezért fontos, hogy a törölt kulcstartókat és kulcstartó-objektumokat szükség esetén vissza tudja állítani. Rendszeresen Key Vault helyreállítási műveleteket.
+**Ajánlott eljárás**: Ügyeljen arra, hogy helyreállítsa a kulcstartók vagy kulcstartó-objektumok törlését.   
+**Részletek**: a kulcstartók vagy a Key Vault-objektumok törlése véletlen vagy rosszindulatú lehet. Engedélyezze a Key Vault visszaállítható törlés funkcióját és a végleges törlés elleni védelmet, elsősorban az olyan kulcsokhoz, amelyek az inaktív adatok védelmére vannak használva. Az ilyen kulcsok törlése az adatvesztéssel egyenértékű, ezért fontos, hogy a törölt kulcstartókat és kulcstartó-objektumokat szükség esetén vissza tudja állítani. Rendszeresen Key Vault helyreállítási műveleteket.
 
 > [!NOTE]
-> Ha a kulcstartó felügyeleti síkjához a felhasználónak közreműködői engedélye (RBAC) van, hozzáférést engedélyezhet magának az adatsíkhoz is a kulcstartó-hozzáférési szabályzat beállításával. Azt javasoljuk, hogy szigorúan szabályozzák, hogy kik férjenek hozzá a kulcstartóhoz, így biztosítható, hogy csak a jogosult személyek férhessenek hozzá és kezelhetik a kulcstartókat, a kulcsokat, a titkokat és a tanúsítványokat.
+> Ha a felhasználó közreműködői engedélyekkel (Azure RBAC) rendelkezik egy kulcstároló-felügyeleti síkon, akkor a Key Vault hozzáférési szabályzatának beállításával hozzáférést biztosíthatnak az adatsíkon. Azt javasoljuk, hogy szigorúan szabályozzák, hogy kik férjenek hozzá a kulcstartóhoz, így biztosítható, hogy csak a jogosult személyek férhessenek hozzá és kezelhetik a kulcstartókat, a kulcsokat, a titkokat és a tanúsítványokat.
 >
 >
 
@@ -73,23 +73,23 @@ RBAC használatával szabályozhatja, hogy mihez férhetnek hozzá a felhasznál
 
 Mivel a támadások túlnyomó többsége a végfelhasználót célozza meg, a végpont a támadás egyik elsődleges pontja lesz. A végpontot veszélyeztető támadók a felhasználó hitelesítő adataival férhetnek hozzá a szervezet adataihoz. A legtöbb végponti támadás kihasználja azt a tényt, hogy a felhasználók a helyi munkaállomáson rendszergazdák.
 
-**Ajánlott eljárás** : biztonságos felügyeleti munkaállomás használata a bizalmas fiókok, a feladatok és az adatok védelméhez.   
-**Részletek** : az emelt [szintű hozzáférési munkaállomás](/windows-server/identity/securing-privileged-access/privileged-access-workstations) használatával csökkentheti a munkaállomásokon a támadási felületet. Ezek a biztonságos felügyeleti munkaállomások segíthetnek csökkenteni a támadások némelyikét, és biztosítják, hogy az adatai biztonságban legyenek.
+**Ajánlott eljárás**: biztonságos felügyeleti munkaállomás használata a bizalmas fiókok, a feladatok és az adatok védelméhez.   
+**Részletek**: az emelt [szintű hozzáférési munkaállomás](/windows-server/identity/securing-privileged-access/privileged-access-workstations) használatával csökkentheti a munkaállomásokon a támadási felületet. Ezek a biztonságos felügyeleti munkaállomások segíthetnek csökkenteni a támadások némelyikét, és biztosítják, hogy az adatai biztonságban legyenek.
 
-**Ajánlott eljárás** : az Endpoint Protection biztosítása.   
-**Részletek** : biztonsági szabályzatok betartatása minden olyan eszközön, amely az adatok felhasználására szolgál, függetlenül az adatok helyétől (Felhőbeli vagy helyszíni).
+**Ajánlott eljárás**: az Endpoint Protection biztosítása.   
+**Részletek**: biztonsági szabályzatok betartatása minden olyan eszközön, amely az adatok felhasználására szolgál, függetlenül az adatok helyétől (Felhőbeli vagy helyszíni).
 
 ## <a name="protect-data-at-rest"></a>Az inaktív adatok védelme
 
 Az inaktív [adatok titkosítása](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) az adatvédelem, a megfelelőség és az adatok szuverenitásának kötelező lépése.
 
-**Ajánlott eljárás** : a lemezes titkosítás alkalmazása az adatai védelmére.   
-**Részletek** : [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md)használata. Lehetővé teszi a rendszergazdáknak a Windows-és Linux-IaaS VM-lemezek titkosítását. A lemezes titkosítás ötvözi az iparági szabványnak megfelelő Windows BitLocker szolgáltatást és a Linux dm-crypt funkciót, hogy mennyiségi titkosítást biztosítson az operációs rendszer és az adatlemezek számára.
+**Ajánlott eljárás**: a lemezes titkosítás alkalmazása az adatai védelmére.   
+**Részletek**: [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md)használata. Lehetővé teszi a rendszergazdáknak a Windows-és Linux-IaaS VM-lemezek titkosítását. A lemezes titkosítás ötvözi az iparági szabványnak megfelelő Windows BitLocker szolgáltatást és a Linux dm-crypt funkciót, hogy mennyiségi titkosítást biztosítson az operációs rendszer és az adatlemezek számára.
 
 Az Azure Storage és a Azure SQL Database alapértelmezés szerint titkosítja az inaktív adatok mennyiségét, és számos szolgáltatás lehetőséget biztosít a titkosításra. Az Azure Key Vault használatával szabályozhatja az adatokat elérő és titkosító kulcsokat. [További információért lásd az Azure erőforrás-szolgáltatók titkosítási modell támogatását](encryption-atrest.md#azure-resource-providers-encryption-model-support)ismertető témakört.
 
-**Ajánlott eljárások** : titkosítás használata a jogosulatlan adathozzáféréssel kapcsolatos kockázatok enyhítéséhez.   
-**Részletek** : Titkosítsa a meghajtókat, mielőtt bizalmas adatokat írna rájuk.
+**Ajánlott eljárások**: titkosítás használata a jogosulatlan adathozzáféréssel kapcsolatos kockázatok enyhítéséhez.   
+**Részletek**: Titkosítsa a meghajtókat, mielőtt bizalmas adatokat írna rájuk.
 
 Azok a szervezetek, amelyek nem kényszerítik az adattitkosítást, jobban ki vannak téve az adatok bizalmasságával kapcsolatos problémáknak. Előfordulhat például, hogy a jogosulatlan vagy a szélhámos felhasználók ellopják a feltört fiókokban lévő adatvesztést, vagy jogosulatlan hozzáférést szereznek az adatkódoláshoz. A vállalatoknak azt is bizonyítaniuk kell, hogy szorgalmasak, és a megfelelő biztonsági ellenőrzésekkel javítják az adatbiztonságot az iparági előírásoknak való megfelelés érdekében.
 
@@ -101,17 +101,17 @@ A helyszíni infrastruktúra és az Azure között mozgó adatok esetében céls
 
 Az alábbiakban az Azure VPN Gateway, az SSL/TLS és a HTTPS használatára vonatkozó ajánlott eljárásokat ismertetjük.
 
-**Ajánlott eljárás** : a helyszínen lévő több munkaállomás és egy Azure-beli virtuális hálózat közötti biztonságos hozzáférés.   
-**Részletek** : [helyek közötti VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)használata.
+**Ajánlott eljárás**: a helyszínen lévő több munkaállomás és egy Azure-beli virtuális hálózat közötti biztonságos hozzáférés.   
+**Részletek**: [helyek közötti VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)használata.
 
-**Ajánlott eljárás** : biztonságos hozzáférés a helyszínen található egyes munkaállomásokról egy Azure-beli virtuális hálózatra.   
-**Részletek** : [pont – hely típusú VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)használata.
+**Ajánlott eljárás**: biztonságos hozzáférés a helyszínen található egyes munkaállomásokról egy Azure-beli virtuális hálózatra.   
+**Részletek**: [pont – hely típusú VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)használata.
 
-**Ajánlott eljárás** : nagyobb adatkészletek mozgatása dedikált, nagy sebességű WAN-kapcsolaton keresztül.   
-**Részletek** : a [ExpressRoute](../../expressroute/expressroute-introduction.md)használata. Ha az ExpressRoute használata mellett dönt, az adatokat az alkalmazás szintjén is titkosíthatja az SSL/TLS vagy más protokoll használatával, így fokozhatja a védelmet.
+**Ajánlott eljárás**: nagyobb adatkészletek mozgatása dedikált, nagy sebességű WAN-kapcsolaton keresztül.   
+**Részletek**: a [ExpressRoute](../../expressroute/expressroute-introduction.md)használata. Ha az ExpressRoute használata mellett dönt, az adatokat az alkalmazás szintjén is titkosíthatja az SSL/TLS vagy más protokoll használatával, így fokozhatja a védelmet.
 
-**Ajánlott eljárás** : az Azure Storage szolgáltatással való interakció a Azure Portalon keresztül.   
-**Részletek** : minden tranzakció HTTPS-kapcsolaton keresztül történik. A [storage REST API](/rest/api/storageservices/) a HTTPS protokollon keresztül is használhatja az [Azure Storage](https://azure.microsoft.com/services/storage/)szolgáltatással való kommunikációhoz.
+**Ajánlott eljárás**: az Azure Storage szolgáltatással való interakció a Azure Portalon keresztül.   
+**Részletek**: minden tranzakció HTTPS-kapcsolaton keresztül történik. A [storage REST API](/rest/api/storageservices/) a HTTPS protokollon keresztül is használhatja az [Azure Storage](https://azure.microsoft.com/services/storage/)szolgáltatással való kommunikációhoz.
 
 Azok a szervezetek, amelyek nem védik az adatátviteli adatvédelmet, érzékenyebbek az [ember általi támadásokra, a](/previous-versions/office/skype-server-2010/gg195821(v=ocs.14)) [lehallgatás](/previous-versions/office/skype-server-2010/gg195641(v=ocs.14))és a munkamenet-eltérítésre. Ezek a támadások a bizalmas adatokhoz való hozzáférés első lépései lehetnek.
 
@@ -133,7 +133,7 @@ A következő megoldást javasoljuk:
 
 Az [adatbesorolásra](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) és a fájlokra vonatkozó védelem gyenge szervezetei hajlamosabbak az adatszivárgásra vagy az adatvisszaélésre. A megfelelő fájlkezelővel elemezheti az adatfolyamatokat, hogy betekintést nyerjen a vállalatba, azonosítsa a kockázatos viselkedéseket és javítsa a szükséges intézkedéseket, nyomon követheti a dokumentumokhoz való hozzáférést stb.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
 

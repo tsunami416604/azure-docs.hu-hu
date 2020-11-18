@@ -7,19 +7,19 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: b75c85b85674def84d9fcee62549a6458abf9174
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 516576f4e005cc9fe2303945ecb1a13489908a5d
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684840"
+ms.locfileid: "94696353"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> A kimenő kapcsolatok hibáinak elhárítása
 
 Ez a cikk olyan gyakori problémák megoldását mutatja be, amelyekkel a Azure Load Balancer kimenő kapcsolatai is előfordulhatnak. Az ügyfelek által tapasztalt kimenő kapcsolattal kapcsolatos legtöbb probléma a SNAT-portok kimerülése és a megszakadt csomagok miatti kapcsolati időtúllépések miatt fordul elő. Ez a cikk az egyes problémák enyhítésének lépéseit ismerteti.
 
 ## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a> A SNAT (PAT) portjának kimerülésének kezelése
-A [pathoz](load-balancer-outbound-connections.md) használt [ideiglenes portok](load-balancer-outbound-connections.md) kimeríthető erőforrások, amelyeket az [önálló virtuális gép nyilvános IP-cím nélküli](load-balancer-outbound-connections.md) és [elosztott terhelésű virtuális gép nyilvános IP-cím](load-balancer-outbound-connections.md)nélkül című része ismertet. Az időszakos portok használatát figyelemmel kísérheti, és összehasonlíthatja az aktuális kiosztásával, hogy meghatározza a kockázatát vagy a SNAT kimerülésének megerősítését [az útmutató segítségével](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) .
+A [pathoz](load-balancer-outbound-connections.md) használt [ideiglenes portok](load-balancer-outbound-connections.md) kimeríthető erőforrások, amelyeket az [önálló virtuális gép nyilvános IP-cím nélküli](load-balancer-outbound-connections.md) és [elosztott terhelésű virtuális gép nyilvános IP-cím](load-balancer-outbound-connections.md)nélkül című része ismertet. Az időszakos portok használatát figyelemmel kísérheti, és összehasonlíthatja az aktuális kiosztásával, hogy meghatározza a kockázatát vagy a SNAT kimerülésének megerősítését [az útmutató segítségével](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) .
 
 Ha tudja, hogy több kimenő TCP-vagy UDP-kapcsolatra van szüksége ugyanahhoz a cél IP-címhez és porthoz, és megfigyelheti a sikertelen kimenő kapcsolatokat, vagy ha támogatja a SNAT-portok kimerítését (a [Pat](load-balancer-outbound-connections.md)által használt időszakosan lefoglalt időszakos [portok](load-balancer-outbound-connections.md#preallocatedports) ), számos általános kockázatcsökkentő lehetőség közül választhat. Tekintse át ezeket a beállításokat, és döntse el, hogy mi az elérhető és melyik a legmegfelelőbb a forgatókönyvhöz. Lehetséges, hogy egy vagy több segíthet a forgatókönyv kezelésében.
 

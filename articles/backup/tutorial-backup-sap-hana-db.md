@@ -3,12 +3,12 @@ title: Oktatóanyag – SAP HANA-adatbázisok biztonsági mentése Azure-beli vi
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépen futó SAP HANA-adatbázisokról egy Azure Backup Recovery Services-tárolóra.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 7bb836e92ce35869996725cb63f2d3808b570fa1
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 31a0a773096ec0f69e87bfd4a05f8ba98185e6cf
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684083"
+ms.locfileid: "94695214"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen
 
@@ -227,11 +227,16 @@ A házirend-beállításokat a következőképpen adhatja meg:
    ![Különbözeti biztonsági mentési szabályzat](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >A növekményes biztonsági mentések jelenleg nem támogatottak.
+   >A növekményes biztonsági mentések mostantól nyilvános előzetes verzióban érhetők el. Választhatja a napi biztonsági mentés különbözetét vagy növekményét is, de mindkettőt nem.
    >
+7. A **növekményes biztonsági mentési szabályzatban** válassza az **Engedélyezés** lehetőséget a gyakoriság és a megőrzési vezérlők megnyitásához.
+    * Legfeljebb napi egy növekményes biztonsági mentést indíthat.
+    * A növekményes biztonsági mentések legfeljebb 180 napig tárolhatók. Ha hosszabb megőrzésre van szüksége, akkor teljes biztonsági mentést kell használnia.
 
-7. Kattintson az **OK** gombra, hogy mentse a szabályzatot, és visszatérjen a fő **Biztonsági mentési szabályzat** menübe.
-8. A tranzakciós napló biztonsági mentési szabályzatának hozzáadásához válassza a **napló biztonsági mentése** lehetőséget,
+    ![Növekményes biztonsági mentési szabályzat](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
+
+8. Kattintson az **OK** gombra, hogy mentse a szabályzatot, és visszatérjen a fő **Biztonsági mentési szabályzat** menübe.
+9. A tranzakciós napló biztonsági mentési szabályzatának hozzáadásához válassza a **napló biztonsági mentése** lehetőséget,
    * A **napló biztonsági mentése** alapértelmezés szerint **engedélyezve** van. Ez nem tiltható le, mert SAP HANA kezeli az összes napló biztonsági mentését.
    * A biztonsági mentési ütemtervnek és a megőrzési idő **15 napjának** **2 óra** van beállítva.
 
@@ -241,8 +246,8 @@ A házirend-beállításokat a következőképpen adhatja meg:
    > A naplók biztonsági mentései csak egy sikeres teljes biztonsági mentés befejezése után kezdődnek.
    >
 
-9. Kattintson az **OK** gombra, hogy mentse a szabályzatot, és visszatérjen a fő **Biztonsági mentési szabályzat** menübe.
-10. Miután befejezte a biztonsági mentési szabályzat definiálását, kattintson **az OK gombra**.
+10. Kattintson az **OK** gombra, hogy mentse a szabályzatot, és visszatérjen a fő **Biztonsági mentési szabályzat** menübe.
+11. Miután befejezte a biztonsági mentési szabályzat definiálását, kattintson **az OK gombra**.
 
 Sikeresen konfigurálta a SAP HANA adatbázis (ok) biztonsági mentését (ke) t.
 

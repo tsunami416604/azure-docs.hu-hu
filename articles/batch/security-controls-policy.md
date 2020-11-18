@@ -1,18 +1,18 @@
 ---
 title: Azure Policy szabályozási megfelelőségi szabályozása Azure Batch
 description: Felsorolja Azure Policy Azure Batch számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: JnHs
 ms.author: jenhayes
 ms.service: batch
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: b727169efa6eeac1b06d424eb5c157bcce7c69e4
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f351da484855d2628334a236ed71edd307d52aa6
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315459"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695691"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-batch"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Batch
 

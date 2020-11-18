@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7f925854f4ef09ccc74c0ec1e8fdcca6b71d1437
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8bdf637ab773e90a5eac42bcaa443cf6741db636
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744053"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696013"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Node.js alkalmazás konfigurálása Azure App Servicehoz
 
@@ -85,6 +85,36 @@ Ezzel a beállítással adható meg a használni kívánt Node.js-verzió, a kud
 
 ::: zone-end
 
+## <a name="get-port-number"></a>Portszám beolvasása
+
+Node.js alkalmazásnak meg kell hallgatni a megfelelő portot a bejövő kérések fogadásához.
+
+::: zone pivot="platform-windows"  
+
+A Windows App Serviceban Node.js alkalmazások a [IISNode](https://github.com/Azure/iisnode)szolgáltatásban futnak, és a Node.js alkalmazásnak a változóban megadott portot kell figyelnie `process.env.PORT` . Az alábbi példa bemutatja, hogyan végezheti el egy egyszerű expressz alkalmazásban:
+
+::: zone-end
+
+::: zone pivot="platform-linux"  
+
+App Service beállítja a környezeti változót `PORT` a Node.js tárolóban, és továbbítja a beérkező kéréseket a tárolóba az adott portszámon. A kérések fogadásához az alkalmazásnak a használatával kell figyelnie a portot `process.env.PORT` . Az alábbi példa bemutatja, hogyan végezheti el egy egyszerű expressz alkalmazásban:
+
+::: zone-end
+
+```javascript
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
+```
+
 ::: zone pivot="platform-linux"
 
 ## <a name="customize-build-automation"></a>A Build Automation testreszabása
@@ -94,7 +124,7 @@ Ha a Build Automation használatával git vagy zip csomagok segítségével hely
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `PRE_BUILD_SCRIPT_PATH` .
 1. Futtasson `npm install` jelzők nélkül, amely tartalmazza a NPM `preinstall` és a `postinstall` parancsfájlokat, valamint telepíti is `devDependencies` .
 1. Futtatás `npm run build` , ha a *package.jsa* létrehozási parancsfájl van megadva.
-1. Futtatás `npm run build:azure` , ha Build: Azure-szkript van megadva a *package.json* .
+1. Futtatás `npm run build:azure` , ha Build: Azure-szkript van megadva a *package.json*.
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `POST_BUILD_SCRIPT_PATH` .
 
 > [!NOTE]
@@ -123,7 +153,7 @@ A Node.js tárolók a [PM2](https://pm2.keymetrics.io/), a Production Process Ma
 
 ### <a name="run-custom-command"></a>Egyéni parancs futtatása
 
-App Service elindíthatja az alkalmazást egy egyéni parancs használatával, például egy végrehajtható fájlt (például *Run.sh* ). A futtatásához például `npm run start:prod` futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
+App Service elindíthatja az alkalmazást egy egyéni parancs használatával, például egy végrehajtható fájlt (például *Run.sh*). A futtatásához például `npm run start:prod` futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
@@ -164,7 +194,7 @@ A tároló automatikusan elindítja az alkalmazást a PM-ben, ha a projektben me
 Egyéni indítási fájlt is beállíthat a következő kiterjesztésekkel:
 
 - Egy *. js* -fájl
-- Egy *. JSON* kiterjesztésű [PM2-fájl](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) , *.config.js* , *. YAML* vagy *. YML*
+- Egy *. JSON* kiterjesztésű [PM2-fájl](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) , *.config.js*, *. YAML* vagy *. YML*
 
 Egyéni indítási fájl hozzáadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
 
@@ -227,7 +257,7 @@ npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-A tárház gyökerének most két további fájlja van: *. Deployment* és *Deploy.sh* .
+A tárház gyökerének most két további fájlja van: *. Deployment* és *Deploy.sh*.
 
 Nyissa meg a *Deploy.sh* , és keresse meg az `Deployment` alábbihoz hasonló szakaszt:
 

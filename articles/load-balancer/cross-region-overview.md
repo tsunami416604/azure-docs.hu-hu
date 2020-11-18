@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 898b0d00fcad99a1059e01ad54ce13d192f1227f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 8b2f8e82cac1d26689659286a5a0f81f06fb68ca
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398011"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695061"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Régiók közötti Load Balancer (előzetes verzió)
 
@@ -74,7 +74,7 @@ Az Azure régiók közötti terheléselosztó a földrajzi közelségi terhelés
 
 A regionális terheléselosztó konfigurált terheléselosztási módja arra szolgál, hogy a végső útválasztási döntést hozza, ha több regionális terheléselosztó van használatban a földrajzi közelséghez.
 
-További információ: [Azure Load Balancer elosztási módjának konfigurálása](https://docs.microsoft.com/azure/load-balancer/load-balancer-distribution-mode).
+További információ: [Azure Load Balancer elosztási módjának konfigurálása](./load-balancer-distribution-mode.md).
 
 
 ### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>Egyetlen végpont mögötti vertikális Felskálázási képesség
@@ -84,7 +84,7 @@ Ha a régiók közötti terheléselosztó globális végpontját elérhetővé t
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
 ### <a name="static-ip"></a>Statikus IP-cím
-A régiók közötti Load Balancer statikus nyilvános IP-címmel rendelkezik, amely gondoskodik arról, hogy az IP-cím változatlan maradjon. Ha [többet szeretne](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#allocation-method) megtudni a statikus IP-címekről, tekintse meg a következőt
+A régiók közötti Load Balancer statikus nyilvános IP-címmel rendelkezik, amely gondoskodik arról, hogy az IP-cím változatlan maradjon. Ha [többet szeretne](../virtual-network/public-ip-addresses.md#allocation-method) megtudni a statikus IP-címekről, tekintse meg a következőt
 
 ### <a name="client-ip-preservation"></a>Ügyfél IP-címének megőrzése
 A régiók közötti Load Balancer egy 4. rétegbeli csatlakoztatott hálózati terheléselosztó. Ez a továbbítás megőrzi a csomag eredeti IP-címét.  Az eredeti IP-cím a virtuális gépen futó kód számára érhető el. Ez a megőrzés lehetővé teszi, hogy az IP-címekre vonatkozó logikát alkalmazzon.
@@ -147,7 +147,7 @@ A régiók közötti terheléselosztó a megfelelő regionális terheléseloszt�
 A régión kívüli terheléselosztó a standard Load Balancer [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) -át osztja meg.
 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md) című témakört.
 - További információ a [Azure Load Balancerról](load-balancer-overview.md).

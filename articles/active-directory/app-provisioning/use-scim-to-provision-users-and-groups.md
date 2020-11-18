@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 0ec70963dd7f464ae4e72c3bf79e06ebfb5238fc
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 5e2f323f705a891f06cee1d25779351d02a91572
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616178"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695265"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Oktatóanyag – SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
@@ -154,6 +154,7 @@ Az [SCIM 2,0 protokoll specifikációja](http://www.simplecloud.info/#Specificat
 * Támogatja a felhasználók vagy csoportok lekérdezését [a scim protokoll 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2). szakaszának megfelelően.  Alapértelmezés szerint a felhasználók lekérik a és a által `id` lekérdezett `username` felhasználókat `externalId` , és a csoportokat a által kérdezik le `displayName` .  
 * Támogatja a felhasználó azonosító és kezelő általi lekérdezését az SCIM protokoll 3.4.2. szakaszának megfelelően.  
 * Támogatja a csoportok lekérdezését azonosító és tag szerint, a SCIM protokoll 3.4.2. szakaszának megfelelően.  
+* Támogatja a [excludedAttributes = tagok](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group) szűrőt a csoport erőforrásának LEKÉRDEZÉSEKOR a scim protokoll 3.4.2.5.
 * Elfogad egyetlen tulajdonosi jogkivonatot az Azure AD hitelesítéséhez és engedélyezéséhez az alkalmazáshoz.
 * Támogatja a felhasználó törlését `active=false` és a felhasználó visszaállítását `active=true` (a felhasználói objektumot egy kérelemben kell visszaadnia, függetlenül attól, hogy a felhasználó aktív-e). Az egyetlen alkalommal, amikor a felhasználót nem lehet visszaadni, ha az alkalmazásból nehezen törlődik. 
 
@@ -809,9 +810,9 @@ A HTTPS-vel kapcsolatos további információkért ASP.NET Core használja a kö
 
 A Azure Active Directorytól érkező kérések közé tartozik egy OAuth 2,0 tulajdonosi jogkivonat. A kérelmet fogadó bármely szolgáltatásnak hitelesítenie kell a kiállítót úgy, hogy Azure Active Directory a várt Azure Active Directory bérlőnek.
 
-A jogkivonatban a kibocsátót egy ISS jogcím azonosítja, például: `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"` . Ebben a példában a jogcím értékének alapszintű címe, `https://sts.windows.net` amely a kiállítóként azonosítja Azure Active Directory, míg a relatív cím szegmens, a _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_ , annak a Azure Active Directory bérlőnek az egyedi azonosítója, amelyhez a tokent kiállították.
+A jogkivonatban a kibocsátót egy ISS jogcím azonosítja, például: `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"` . Ebben a példában a jogcím értékének alapszintű címe, `https://sts.windows.net` amely a kiállítóként azonosítja Azure Active Directory, míg a relatív cím szegmens, a _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_, annak a Azure Active Directory bérlőnek az egyedi azonosítója, amelyhez a tokent kiállították.
 
-A jogkivonat célközönsége lesz az alkalmazás sablon-azonosítója a katalógusban, és az egyetlen bérlőben regisztrált összes alkalmazás ugyanazt a `iss` jogcímet fogadhatja a scim-kérelmekkel. Az összes egyéni alkalmazáshoz tartozó _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_ -azonosító. Az Azure AD-létesítési szolgáltatás által generált jogkivonat csak tesztelésre használható. Éles környezetben nem használható.
+A jogkivonat célközönsége lesz az alkalmazás sablon-azonosítója a katalógusban, és az egyetlen bérlőben regisztrált összes alkalmazás ugyanazt a `iss` jogcímet fogadhatja a scim-kérelmekkel. Az összes egyéni alkalmazáshoz tartozó _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_-azonosító. Az Azure AD-létesítési szolgáltatás által generált jogkivonat csak tesztelésre használható. Éles környezetben nem használható.
 
 A mintakód a kérelmeket a Microsoft. AspNetCore. Authentication. JwtBearer csomag használatával hitelesíti. A következő kód azt kényszeríti, hogy a szolgáltatás bármelyik végpontjának küldött kérések hitelesítése egy adott bérlő Azure Active Directory által kiállított tulajdonosi jogkivonatának használatával történik:
 
@@ -1148,7 +1149,7 @@ Az ebben a cikkben ismertetett SCIM-profilt támogató alkalmazások az Azure AD
 7. A **bérlői URL-cím** mezőben adja meg az alkalmazás scim-végpontjának URL-címét. Például: `https://api.contoso.com/scim/`
 8. Ha az SCIM-végpont OAuth-tulajdonosi jogkivonatot igényel az Azure AD-től eltérő kibocsátótól, akkor másolja a szükséges OAuth-tulajdonosi tokent a nem kötelező **titkos jogkivonat** mezőbe. Ha ez a mező üresen marad, az Azure AD az Azure AD-ből kiállított OAuth-tulajdonosi jogkivonatot tartalmaz minden kéréssel. Az Azure AD-t identitás-szolgáltatóként használó alkalmazások ellenőrizhetik ezt az Azure AD-kiállított jogkivonatot. 
    > [!NOTE]
-   > Ez * *_nem_* ajánlott üresen hagyni ezt a mezőt, és az Azure ad által generált tokenre támaszkodhat. Ez a lehetőség elsősorban tesztelési célokra használható.
+   > Ez **_nem_* ajánlott üresen hagyni ezt a mezőt, és az Azure ad által generált tokenre támaszkodhat. Ez a lehetőség elsősorban tesztelési célokra használható.
 9. Válassza a _ *test kapcsolat* lehetőséget, hogy Azure Active Directory próbáljon csatlakozni az scim-végponthoz. Ha a kísérlet sikertelen, a rendszer hibaüzenetet jelenít meg.  
 
     > [!NOTE]

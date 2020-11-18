@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 7d952608a4850b840759e05a99bdd14cbe2a3a81
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1e417563b463d7033072b27bec505d10ef1adb47
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560961"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695741"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Gyors útmutató: Azure-beli bizalmas számítástechnikai virtuális gép üzembe helyezése a Azure Portal
 
@@ -53,14 +53,14 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fi
 
 1. Írja be vagy válassza ki az alábbi értékeket:
 
-   * **Régió** : válassza ki az Ön számára legmegfelelőbb Azure-régiót.
+   * **Régió**: válassza ki az Ön számára legmegfelelőbb Azure-régiót.
 
         > [!NOTE]
         > A bizalmas számítási virtuális gépek csak bizonyos régiókban elérhető speciális hardvereken futnak. A DCsv2-Series virtuális gépek legújabb elérhető régióiért lásd: [elérhető régiók](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
 1. Konfigurálja az operációs rendszer azon rendszerképét, amelyet használni szeretne a virtuális géphez.
 
-    * **Válasszon képet** : ebben az oktatóanyagban válassza az Ubuntu 18,04 LTS lehetőséget. Kiválaszthatja a Windows Server 2019, a Windows Server 2016 vagy a és az Ubuntu 16,04 LTS elemet is. Ha ezt választja, ennek az oktatóanyagnak megfelelően lesz átirányítva.
+    * **Válasszon képet**: ebben az oktatóanyagban válassza az Ubuntu 18,04 LTS lehetőséget. Kiválaszthatja a Windows Server 2019, a Windows Server 2016 vagy a és az Ubuntu 16,04 LTS elemet is. Ha ezt választja, ennek az oktatóanyagnak megfelelően lesz átirányítva.
     
     * **A 2. gen lemezképének váltása: a** bizalmas számítási virtuális gépek csak [2. generációs](../virtual-machines/generation-2.md) lemezképeken futnak. Győződjön meg arról, hogy a kiválasztott rendszerkép egy 2. generációs rendszerkép. Kattintson a **speciális** fülre a virtuális gép konfigurálásakor. Görgessen lefelé, amíg meg nem találja a "VM-generáció" feliratú szakaszt. Válassza a Gen 2 elemet, majd térjen vissza az **alapok** lapra.
     
@@ -70,36 +70,36 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fi
 
         ![Virtuálisgép-generáció](media/quick-create-portal/gen2-virtual-machine.png)
 
-    * **Térjen vissza az alapszintű konfigurációhoz** : lépjen vissza az **alapok** lapra a felső navigációs sávon.
+    * **Térjen vissza az alapszintű konfigurációhoz**: lépjen vissza az **alapok** lapra a felső navigációs sávon.
 
 1. A méret kiválasztása lehetőség kiválasztásával válasszon ki egy olyan virtuális gépet, amely bizalmas számítási képességekkel **rendelkezik.** A virtuális gép mérete választóban kattintson az **összes szűrő törlése** elemre. Válassza a **szűrő hozzáadása** lehetőséget, válassza a **család** lehetőséget a szűrő típusa mezőben, majd válassza a csak **bizalmas számítás** lehetőséget.
 
     ![DCsv2-Series virtuális gépek](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > Meg kell jelennie a méretek **DC1s_v2** , **DC2s_v2** , **DC4s_V2** és **DC8_v2**. Ez az egyetlen olyan virtuálisgép-méret, amely jelenleg támogatja a bizalmas számítástechnikai feladatokat. [További információ](virtual-machine-solutions.md).
+    > Meg kell jelennie a méretek **DC1s_v2**, **DC2s_v2**, **DC4s_V2** és **DC8_v2**. Ez az egyetlen olyan virtuálisgép-méret, amely jelenleg támogatja a bizalmas számítástechnikai feladatokat. [További információk](virtual-machine-solutions.md).
 
 1. Adja meg a következő információkat:
 
-   * **Hitelesítés típusa** : válassza a **nyilvános SSH-kulcs** lehetőséget, ha Linux rendszerű virtuális gépet hoz létre. 
+   * **Hitelesítés típusa**: válassza a **nyilvános SSH-kulcs** lehetőséget, ha Linux rendszerű virtuális gépet hoz létre. 
 
         > [!NOTE]
         > Választhat, hogy a hitelesítéshez egy SSH-s nyilvános kulcsot vagy egy jelszót használ. Az SSH használata biztonságosabb. Az SSH-kulcs létrehozásával kapcsolatban lásd az [SSH-kulcsok az Azure-ban történő létrehozásának lépéseit Linux és Mac rendszeren Linux rendszerű virtuális gépek számára](../virtual-machines/linux/mac-create-ssh-keys.md).
 
-    * **Username (Felhasználónév** ): adja meg a virtuális gép rendszergazdájának nevét.
+    * **Username (Felhasználónév**): adja meg a virtuális gép rendszergazdájának nevét.
 
-    * **Nyilvános SSH-kulcs** : ha szükséges, adja meg az RSA nyilvános kulcsát.
+    * **Nyilvános SSH-kulcs**: ha szükséges, adja meg az RSA nyilvános kulcsát.
     
-    * **Password (jelszó** ): ha szükséges, adja meg a jelszót a hitelesítéshez.
+    * **Password (jelszó**): ha szükséges, adja meg a jelszót a hitelesítéshez.
 
-    * **Nyilvános bejövő portok** : válassza a **kiválasztott portok engedélyezése** lehetőséget, és válassza az **SSH (22)** és a **http (80)** lehetőséget a **nyilvános bejövő portok kiválasztása** listában. Ha Windows rendszerű virtuális gépet telepít, válassza a **http (80)** és az **RDP (3389)** lehetőséget. Ebben a rövid útmutatóban ez a lépés szükséges a virtuális géphez való kapcsolódáshoz és az Open enklávé SDK konfigurációjának befejezéséhez. 
+    * **Nyilvános bejövő portok**: válassza a **kiválasztott portok engedélyezése** lehetőséget, és válassza az **SSH (22)** és a **http (80)** lehetőséget a **nyilvános bejövő portok kiválasztása** listában. Ha Windows rendszerű virtuális gépet telepít, válassza a **http (80)** és az **RDP (3389)** lehetőséget. Ebben a rövid útmutatóban ez a lépés szükséges a virtuális géphez való kapcsolódáshoz és az Open enklávé SDK konfigurációjának befejezéséhez. 
 
      ![Bejövő portok](media/quick-create-portal/inbound-port-virtual-machine.png)
 
 
 1. Módosítsa a **lemezeket a lemezek** lapon.
 
-   * Ha **DC1s_v2** , **DC2s_v2** , **DC4s_V2** virtuális gépet választ, válasszon egy **standard SSD** vagy **prémium SSD** típusú lemezt. 
+   * Ha **DC1s_v2**, **DC2s_v2**, **DC4s_V2** virtuális gépet választ, válasszon egy **standard SSD** vagy **prémium SSD** típusú lemezt. 
    * Ha **DC8_v2** virtuális gépet választott, válassza a **standard SSD** lehetőséget a lemez típusaként.
 
 1. Végezze el a kívánt módosításokat a következő lapokon, vagy tartsa meg az alapértelmezett beállításokat.
@@ -168,7 +168,7 @@ wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add 
 ```bash
 sudo apt update
 sudo apt -y install dkms
-wget https://download.01.org/intel-sgx/sgx-dcap/1.4/linux/distro/ubuntuServer18.04/sgx_linux_x64_driver_1.21.bin -O sgx_linux_x64_driver.bin
+wget https://download.01.org/intel-sgx/sgx-dcap/1.9/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.36.2.bin -O sgx_linux_x64_driver.bin
 chmod +x sgx_linux_x64_driver.bin
 sudo ./sgx_linux_x64_driver.bin
 ```

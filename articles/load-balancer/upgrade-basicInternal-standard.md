@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: a6d2b69b0b498601497c4b33fb6bdfede87002df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59bf5eb22289238633b1f07c29a878bd0a9ae620
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500249"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696166"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure belső Load Balancer frissítése – nincs szükség kimenő kapcsolatok megtételére
-Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/skus#skus).
+Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](./skus.md#skus).
 
 Ez a cikk egy PowerShell-szkriptet vezet be, amely egy standard Load Balancert hoz létre ugyanazzal a konfigurációval, mint az alapszintű Load Balancer, valamint az alapszintű Load Balancerról standard Load Balancerre történő áttelepítést
 
@@ -23,25 +23,25 @@ Ez a cikk egy PowerShell-szkriptet vezet be, amely egy standard Load Balancert h
 
 Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteket végzi el:
 
-* Létrehoz egy szabványos belső SKU Load Balancer a megadott helyen. Vegye figyelembe, hogy a szabványos belső Load Balancer nem biztosít [kimenő kapcsolatokat](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) .
+* Létrehoz egy szabványos belső SKU Load Balancer a megadott helyen. Vegye figyelembe, hogy a szabványos belső Load Balancer nem biztosít [kimenő kapcsolatokat](./load-balancer-outbound-connections.md) .
 * Zökkenőmentesen másolja az alapszintű SKU Load Balancer konfigurációit az újonnan létrehozott standard Load Balancerra.
 * A magánhálózati IP-címek zökkenőmentes mozgatása az alapszintű Load Balancer az újonnan létrehozott standard Load Balancerig.
 * Zökkenőmentesen helyezheti át a virtuális gépeket az alapszintű Load Balancer háttér-készletéből a standard Load Balancer háttér-készletéből.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* A parancsfájl csak a belső Load Balancer frissítését támogatja, ha nincs szükség kimenő kapcsolatok használatára. Ha egyes virtuális gépekhez [Kimenő kapcsolatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) szükségesek, tekintse meg ezt az [oldalt](upgrade-InternalBasic-To-PublicStandard.md) . 
+* A parancsfájl csak a belső Load Balancer frissítését támogatja, ha nincs szükség kimenő kapcsolatok használatára. Ha egyes virtuális gépekhez [Kimenő kapcsolatok](./load-balancer-outbound-connections.md) szükségesek, tekintse meg ezt az [oldalt](upgrade-InternalBasic-To-PublicStandard.md) . 
 * Az alapszintű Load Balancernak ugyanabban az erőforráscsoporthoz kell esnie, mint a háttérbeli virtuális gépeket és a hálózati adaptereket.
 * Ha a standard Load Balancer egy másik régióban lett létrehozva, akkor a régi régióban meglévő virtuális gépeket nem lehet az újonnan létrehozott standard Load Balancerhoz rendelni. A korlátozás megkerüléséhez hozzon létre egy új virtuális gépet az új régióban.
 * Ha a Load Balancer nem rendelkezik előtér-IP-konfigurációval vagy háttér-készlettel, valószínűleg a parancsfájl futtatásakor hiba lépett fel. Győződjön meg arról, hogy nem üresek.
 
 ## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>IP-kiosztási módszer módosítása statikusra a előtér-IP-konfigurációhoz (hagyja figyelmen kívül ezt a lépést, ha már statikus)
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd válassza ki az alapszintű Load Balancer az erőforrások listából.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás** lehetőséget, majd válassza ki az alapszintű Load Balancer az erőforrások listából.
 
-2. A **Beállítások**területen válassza ki a **frontend IP-konfiguráció**elemet, majd válassza ki az első előtér-IP-konfigurációt. 
+2. A **Beállítások** területen válassza ki a **frontend IP-konfiguráció** elemet, majd válassza ki az első előtér-IP-konfigurációt. 
 
-3. A **hozzárendelés**beállításnál válassza a **statikus** lehetőséget.
+3. A **hozzárendelés** beállításnál válassza a **statikus** lehetőséget.
 
 4. Ismételje meg a 3. lépést az alapszintű Load Balancer összes előtérbeli IP-konfigurációjában.
 

@@ -10,18 +10,18 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8c532b2e70fac73ebd86fa52a867d0d15c0e6c02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a260887b169c8feecd304996ea57d1aec46aedc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078605"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696557"
 ---
 # <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Azure PowerShell-mintaszkript: Több webhely terheléselosztása
 
 Ez az Azure PowerShell-mintaszkript olyan két virtuális gépből álló virtuális hálózatot hoz létre, amelyek egy rendelkezésre állási csoport tagjai. A terheléselosztó két különböző IP-cím forgalmát irányítja a két virtuális gépre. A szkript futtatása után telepíthet a webkiszolgáló szoftvert a virtuális gépekre, és több webhelyet is üzemeltethet, mindegyiket a saját IP-címével.
 
-Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](https://docs.microsoft.com/powershell/azure/)található utasítással, majd futtassa a parancsot az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz.
+Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](/powershell/azure/)található utasítással, majd futtassa a parancsot az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -61,8 +61,8 @@ A szkript a következő parancsokat használja egy erőforráscsoport, virtuáli
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Virtuális gépet hoz létre. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/azure/).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/).
 
 További hálózatkezelési PowerShell-példaszkripteket az [Azure-hálózatkezelés áttekintő dokumentációjában](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json) találhat.

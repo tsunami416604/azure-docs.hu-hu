@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 3113216b2d8a7572bcb864819a379de6823ee444
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 90aafad2a17b9535bde29f811e630112ccbd02e3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409875"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696098"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességei
 Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítségével megvédheti adatait, erőforrásait és alkalmazásait a felhőben, és teljesítheti a vállalata biztonsági igényeit.
@@ -156,9 +156,9 @@ A biztonsági irányultságú vállalatoknak arra kell összpontosítaniuk, hogy
 
 ![Biztonságos erőforrás-hozzáférés](./media/technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
-Az RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szüksége van. Ahelyett, hogy az Azure-előfizetésben vagy-erőforrásokban mindenki számára nem korlátozott engedélyeket adna, csak bizonyos műveleteket engedélyezhet. Például a RBAC használatával engedélyezheti, hogy egy alkalmazott kezelhesse a virtuális gépeket egy előfizetésben, míg egy másik SQL-adatbázist is kezelhet ugyanazon az előfizetésen belül.
+Az Azure RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szükségük van. Ahelyett, hogy az Azure-előfizetésben vagy-erőforrásokban mindenki számára nem korlátozott engedélyeket adna, csak bizonyos műveleteket engedélyezhet. Az Azure RBAC használatával például az egyik alkalmazott kezelheti a virtuális gépeket egy előfizetésben, míg egy másik SQL-adatbázist is kezelhet ugyanazon az előfizetésen belül.
 
-![Biztonságos erőforrás-hozzáférés az Azure-ban (RBAC)](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
+![Biztonságos erőforrás-hozzáférés az Azure RBAC](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
 
 ## <a name="data-security-and-encryption"></a>Adatbiztonság és titkosítás
 
@@ -210,7 +210,7 @@ Az [adatbesorolásra](https://download.microsoft.com/download/0/A/3/0A3BE969-85C
 ## <a name="secure-your-application"></a>Az alkalmazás biztonságossá tétele
 Míg az Azure felelős az alkalmazás által futtatott infrastruktúra és platform védelméért, az Ön felelőssége, hogy saját maga is biztonságossá tegye az alkalmazást. Más szóval az alkalmazás kódjának és tartalmának biztonságos módon történő fejlesztését, üzembe helyezését és kezelését kell végeznie. Ennek hiányában az alkalmazás kódja vagy tartalma továbbra is sebezhető lehet a fenyegetésekkel szemben.
 
-### <a name="web-application-firewall"></a>Web application firewall (Webalkalmazási tűzfal)
+### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 A [webalkalmazási tűzfal (WAF)](../../web-application-firewall/ag/ag-overview.md) a [Application Gateway](../../application-gateway/overview.md) szolgáltatása, amely központosított védelmet biztosít a webalkalmazások számára a gyakori biztonsági rések és sebezhetőségek ellen.
 
 A webalkalmazási tűzfal az [alapvető OWASP-szabálykészletek](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0-s vagy 2.2.9-es verzióinak szabályai alapján működik. A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, amelyek az ismert biztonsági réseket használják ki. Az ilyen jellegű támadások között például gyakoriak az SQL-injektálásos és a webhelyek közötti, parancsprogramot alkalmazó támadások. Az ilyen támadások megakadályozása az alkalmazás kódjában kihívást jelenthet, és szigorú felügyeletet, javítást és megfigyelést igényelhet az alkalmazás topológiájának több rétegén. A központosított webalkalmazási tűzfal egyszerűbbé teszi a biztonságfelügyeletet, és segít az alkalmazás-rendszergazdáknak a fenyegetések vagy a behatolások elleni védekezésben. Emellett a WAF-megoldás gyorsabban képes kezelni a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett hogy az egyes webalkalmazások védelmét biztosítaná. A meglévő alkalmazásátjárókat egyszerűen át lehet alakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
@@ -398,7 +398,7 @@ A szolgáltatás az alábbiakat figyeli:
 
 - **A felhasználók és a munkamenetek száma.**
 
-- Windows vagy Linux rendszerű kiszolgálói gépekről származó **teljesítményszámlálók** , például processzor-, memória- és hálózathasználat.
+- Windows vagy Linux rendszerű kiszolgálói gépekről származó **teljesítményszámlálók**, például processzor-, memória- és hálózathasználat.
 
 - Dockerből vagy Azure-ból származó **gazdadiagnosztika**.
 
@@ -422,7 +422,7 @@ A Resource Manager számos előnyt kínál:
 
 - Megadhatja az erőforrások közötti függőségeket, hogy azok a megfelelő sorrendben legyenek telepítve.
 
-- Hozzáférés-vezérlést alkalmazhat az összes szolgáltatásra az erőforráscsoportban, mivel a szerepköralapú hozzáférés-vezérlés (RBAC) natív módon integrálva van a felügyeleti platformba.
+- Hozzáférés-vezérlést alkalmazhat az erőforráscsoport összes szolgáltatására, mivel az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) natív módon integrálva van a felügyeleti platformba.
 
 - Címkékkel láthatja el az erőforrásokat, így logikusan rendszerezhető az előfizetés összes erőforrása.
 
@@ -431,7 +431,7 @@ A Resource Manager számos előnyt kínál:
 > [!Note]
 > A Resource Manager egy új módot kínál a megoldások telepítésére és kezelésére. Ha a korábbi üzemi modellt használta, és szeretne többet megtudni a változásokról, tekintse meg a [Resource Manager-telepítés és a klasszikus üzembe helyezés ismertetése](../../azure-resource-manager/management/deployment-models.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A biztonságról további információt a részletes biztonsági témakörökben talál:
 

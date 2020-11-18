@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: fa2025fa31ac960eb6c61d03bafd582de4f0e55c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3141d9937591467870ee4a88d16a96cbdb24a05b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410577"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696217"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 
@@ -38,7 +38,7 @@ Mindegyik Azure AD-címtár önálló, és el van választva a többi Azure AD-c
 
 ### <a name="azure-tenancy"></a>Azure-bérlet
 
-Az Azure-beli bérlet (Azure-előfizetés) egy "ügyfél/számlázási" kapcsolatra és egy [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)egyedi [bérlőre](../../active-directory/develop/quickstart-create-new-tenant.md) utal. A Microsoft Azure bérlői szintjének elkülönítése az általa kínált Azure Active Directory és [szerepköralapú vezérlők](../../role-based-access-control/overview.md) használatával érhető el. Minden Azure-előfizetés egy Azure Active Directory (AD) címtárral van társítva.
+Az Azure-beli bérlet (Azure-előfizetés) egy "ügyfél/számlázási" kapcsolatra és egy [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)egyedi [bérlőre](../../active-directory/develop/quickstart-create-new-tenant.md) utal. A bérlői szint elkülönítése Microsoft Azure a Azure Active Directory és az [Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md) használatával érhető el. Minden Azure-előfizetés egy Azure Active Directory (AD) címtárral van társítva.
 
 A címtárban lévő felhasználók, csoportok és alkalmazások kezelhetik az Azure-előfizetés erőforrásait. Ezeket a hozzáférési jogosultságokat a Azure Portal, az Azure parancssori eszközök és az Azure felügyeleti API-k használatával rendelheti hozzá. Az Azure AD-bérlők logikailag el vannak különítve a biztonsági határok használatával, így egyetlen ügyfél sem férhet hozzá vagy nem veszélyeztetheti a közös bérlőket, akár rosszindulatúan, akár véletlenül. Az Azure AD olyan "operációs rendszer nélküli" kiszolgálókon fut, amelyek elkülönített hálózati szegmensen vannak elkülönítve, ahol a gazdagép szintű csomagszűrés és a Windows tűzfal blokkolja a nemkívánatos kapcsolatokat és a forgalmat.
 
@@ -52,7 +52,7 @@ A címtárban lévő felhasználók, csoportok és alkalmazások kezelhetik az A
 
 - Az Azure AD szolgáltatást tartalmazó kiszolgálókhoz való fizikai hozzáférés korlátozott, és közvetlen hozzáférés az Azure AD háttérrendszer-rendszereihez.
 
-- Az Azure AD-felhasználók nem férnek hozzá a fizikai eszközökhöz vagy a helyszínekhez, ezért nem lehetséges, hogy megkerüljék a logikai RBAC szabályzatok által jelzett ellenőrzéseket.
+- Az Azure AD-felhasználók nem férnek hozzá a fizikai eszközökhöz vagy a helyszínekhez, ezért nem lehetséges, hogy megkerüljék a logikai Azure RBAC-szabályzatok által jelzett ellenőrzéseket.
 
 Diagnosztikai és karbantartási igények esetén az igény szerinti jogosultságszint-emelést alkalmazó operatív modell szükséges és használatos. A Azure AD Privileged Identity Management (PIM) bevezeti a jogosult rendszergazda fogalmát. a [jogosult rendszergazdáknak](../../active-directory/privileged-identity-management/pim-configure.md) olyan felhasználóknak kell lenniük, akiknek most, de nem minden nap van szükségük privilegizált hozzáférésre. A szerepkör inaktív, amíg a felhasználónak nincs szüksége a hozzáférésre, majd szükség esetén a felhasználó egy aktiválási folyamat teljesítésével válhat aktív rendszergazdává egy előre meghatározott időtartamra.
 
@@ -80,7 +80,7 @@ Az Azure RBAC három alapvető szerepkörrel rendelkezik, amelyek minden erőfor
 
 Az Azure további Azure-szerepkörei lehetővé teszik bizonyos Azure-erőforrások kezelését. Például a Virtuális gépek közreműködője szerepkör virtuális gépek létrehozását és kezelését teszi lehetővé. Nem biztosít számukra hozzáférést az Azure Virtual Network vagy az alhálózathoz, amelyhez a virtuális gép csatlakozik.
 
-A [RBAC beépített szerepkörei](../../role-based-access-control/built-in-roles.md) az Azure-ban elérhető szerepköröket sorolja fel. Meghatározza azokat a műveleteket és hatókört, amelyeket az egyes beépített szerepkörök a felhasználók számára biztosítanak. Ha a saját szerepköröket is meg szeretné határozni még több szabályozáshoz, tekintse meg az [Egyéni szerepkörök létrehozása az Azure RBAC](../../role-based-access-control/custom-roles.md)című témakört.
+Az [Azure beépített szerepkörei](../../role-based-access-control/built-in-roles.md) az Azure-ban elérhető szerepköröket sorolja fel. Meghatározza azokat a műveleteket és hatókört, amelyeket az egyes beépített szerepkörök a felhasználók számára biztosítanak. Ha a saját szerepköröket is meg szeretné határozni még több szabályozáshoz, tekintse meg az [Egyéni szerepkörök létrehozása az Azure RBAC](../../role-based-access-control/custom-roles.md)című témakört.
 
 A Azure Active Directory további képességei a következők:
 

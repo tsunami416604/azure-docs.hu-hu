@@ -10,15 +10,15 @@ ms.service: virtual-machines-windows
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/23/2019
+ms.date: 11/16/2020
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: ac1105f1fce2ac04abfa8a809161580104952917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4891d01c59289afddb244879e042e45b7b7a1aa6
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404901"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695724"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker rendszerindítási hibák egy Azure-beli virtuális gépen
 
@@ -172,11 +172,21 @@ A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépés
             [string] 
             $adTenant
             )
-    # Load ADAL Assemblies. The following script assumes that the Azure PowerShell version you installed is 1.0.0. 
-    $adal = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\1.0.0\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    $adalforms = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\1.0.0\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
+    # Load ADAL Assemblies
+    $adal = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
+    $adalforms = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
+    If ((Test-Path -Path $adal) -and (Test-Path -Path $adalforms)) { 
+
     [System.Reflection.Assembly]::LoadFrom($adal)
     [System.Reflection.Assembly]::LoadFrom($adalforms)
+     }
+     else
+     {
+    $adal="${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
+    $adalforms ="${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Agit pgit ccounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
+    [System.Reflection.Assembly]::LoadFrom($adal)
+    [System.Reflection.Assembly]::LoadFrom($adalforms)
+     }  
 
     # Set well-known client ID for AzurePowerShell
     $clientId = "1950a258-227b-4e31-a9cf-717495945fc2" 
@@ -205,7 +215,8 @@ A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépés
 
     #Get wrapped BEK and place it in JSON object to send to KeyVault REST API
     $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $secretName
-    $wrappedBekSecretBase64 = $keyVaultSecret.SecretValueText
+    $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($keyVaultSecret.SecretValue)
+    $wrappedBekSecretBase64 = [Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
     $jsonObject = @"
     {
     "alg": "RSA-OAEP",
@@ -236,6 +247,10 @@ A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépés
     #Convert base64 string to bytes and write to BEK file
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
+
+    #Delete the key from the memory
+    [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
+    clear-variable -name wrappedBekSecretBase64
     ```
 3. Állítsa be a paramétereket. A szkript feldolgozza a KEK titkát a BEK-kulcs létrehozásához, majd a helyreállítási virtuális gép helyi mappájába menti azt. Ha a parancsfájl futtatásakor hibaüzenetet kap, tekintse meg a [parancsfájl hibaelhárítása](#script-troubleshooting) szakaszt.
 
@@ -283,9 +298,7 @@ A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépés
 
 **Hiba: nem sikerült betölteni a fájlt vagy a szerelvényt**
 
-Ez a hiba azért fordul elő, mert a ADAL-szerelvények elérési útjai helytelenek. Ha az az modul csak az aktuális felhasználóhoz van telepítve, akkor a ADAL szerelvények a következő helyen találhatók: `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` .
-
-`Az.Accounts`A megfelelő elérési utat a mappa keresésével is megkeresheti.
+Ez a hiba azért fordul elő, mert a ADAL-szerelvények elérési útjai helytelenek. A megfelelő elérési út megkereséséhez keresse meg a `Az.Accounts` mappát.
 
 **Hiba: Get-AzKeyVaultSecret vagy Get-AzKeyVaultSecret nem ismerhető fel a parancsmag neveként**
 

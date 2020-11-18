@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfiguráci
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 240f22a076b5f185ebe3028b201b66d187c9bb2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 1e81d1a5157cc5872ba2628c8d6cb408e35ab9c6
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346876"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694242"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Vendégkonfigurációs szabályzatok létrehozása Linux rendszeren
 
@@ -163,10 +163,10 @@ A támogató fájlokat össze kell csomagolni. A kitöltött csomagot a vendég 
 
 A `New-GuestConfigurationPackage` parancsmag létrehozza a csomagot. A parancsmag paraméterei `New-GuestConfigurationPackage` Linux-tartalom létrehozásakor:
 
-- **Name** : vendég konfigurációs csomag neve.
-- **Konfiguráció** : a lefordított konfigurációs dokumentum teljes elérési útja.
-- **Elérési út** : kimeneti mappa elérési útja. Ezt a paramétert nem kötelező megadni. Ha nincs megadva, a csomag az aktuális könyvtárban jön létre.
-- **ChefInspecProfilePath** : az inspec-profil teljes elérési útja. Ez a paraméter csak akkor támogatott, ha tartalmat hoz létre a Linux rendszerű naplózáshoz.
+- **Name**: vendég konfigurációs csomag neve.
+- **Konfiguráció**: a lefordított konfigurációs dokumentum teljes elérési útja.
+- **Elérési út**: kimeneti mappa elérési útja. Ezt a paramétert nem kötelező megadni. Ha nincs megadva, a csomag az aktuális könyvtárban jön létre.
+- **ChefInspecProfilePath**: az inspec-profil teljes elérési útja. Ez a paraméter csak akkor támogatott, ha tartalmat hoz létre a Linux rendszerű naplózáshoz.
 
 A következő parancs futtatásával hozzon létre egy csomagot az előző lépésben megadott konfiguráció használatával:
 
@@ -183,9 +183,9 @@ Mivel az ügynök ténylegesen kiértékeli a helyi környezetet, a legtöbb ese
 
 A parancsmag paraméterei `Test-GuestConfigurationPackage` :
 
-- **Név** : a vendég konfigurációs szabályzatának neve.
-- **Paraméter** : szórótábla formátumban megadott házirend-paraméterek.
-- **Elérési út** : a vendég konfigurációs csomag teljes elérési útja.
+- **Név**: a vendég konfigurációs szabályzatának neve.
+- **Paraméter**: szórótábla formátumban megadott házirend-paraméterek.
+- **Elérési út**: a vendég konfigurációs csomag teljes elérési útja.
 
 Futtassa a következő parancsot az előző lépésben létrehozott csomag teszteléséhez:
 
@@ -210,13 +210,13 @@ Miután létrehozta és feltöltötte a vendég konfigurációhoz tartozó egyé
 
 A parancsmag paraméterei `New-GuestConfigurationPolicy` :
 
-- **ContentUri** : nyilvános http (s) URI a vendég konfigurációs tartalomkezelő csomaghoz.
-- **DisplayName** : házirend megjelenítendő neve.
-- **Leírás** : szabályzat leírása.
-- **Paraméter** : szórótábla formátumban megadott házirend-paraméterek.
-- **Verzió** : szabályzat verziója.
-- **Elérési út** : a célhely elérési útja, ahol a szabályzat-definíciók létrejönnek
-- **Platform** : cél platform (Windows/Linux) a vendég konfigurációs házirendhez és a tartalmi csomaghoz.
+- **ContentUri**: nyilvános http (s) URI a vendég konfigurációs tartalomkezelő csomaghoz.
+- **DisplayName**: házirend megjelenítendő neve.
+- **Leírás**: szabályzat leírása.
+- **Paraméter**: szórótábla formátumban megadott házirend-paraméterek.
+- **Verzió**: szabályzat verziója.
+- **Elérési út**: a célhely elérési útja, ahol a szabályzat-definíciók létrejönnek
+- **Platform**: cél platform (Windows/Linux) a vendég konfigurációs házirendhez és a tartalmi csomaghoz.
 - A **címke** egy vagy több címkét rendel hozzá a szabályzat-definícióhoz
 - **Kategória** – a szabályzat-definícióban a kategória metaadatainak mezőjének beállítása
 
@@ -330,9 +330,9 @@ A házirend-definíció frissítésének kiadásához három, figyelmet igényl�
 > [!NOTE]
 > A `version` vendég konfiguráció-hozzárendelés tulajdonsága csak a Microsoft által üzemeltetett csomagokat gyakorolja. Az egyéni tartalom verziószámozásának ajánlott eljárása, hogy tartalmazza a verziót a fájl nevében.
 
-- **Verzió** : a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia a jelenleg közzétett verziónál nagyobb verziószámot.
-- **contentUri** : a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia egy URI-t a csomag helyéhez. A fájl nevében szereplő csomag verziószáma biztosítja, hogy a tulajdonság értéke az egyes kiadásokban is megváltozik.
-- **contentHash** : ezt a tulajdonságot a parancsmag automatikusan frissíti `New-GuestConfigurationPolicy` . Ez a csomag által létrehozott kivonatoló érték `New-GuestConfigurationPackage` . A tulajdonságnak megfelelőnek kell lennie a `.zip` közzétett fájlhoz. Ha csak a **contentUri** tulajdonság frissül, a bővítmény nem fogadja el a csomag tartalmát.
+- **Verzió**: a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia a jelenleg közzétett verziónál nagyobb verziószámot.
+- **contentUri**: a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia egy URI-t a csomag helyéhez. A fájl nevében szereplő csomag verziószáma biztosítja, hogy a tulajdonság értéke az egyes kiadásokban is megváltozik.
+- **contentHash**: ezt a tulajdonságot a parancsmag automatikusan frissíti `New-GuestConfigurationPolicy` . Ez a csomag által létrehozott kivonatoló érték `New-GuestConfigurationPackage` . A tulajdonságnak megfelelőnek kell lennie a `.zip` közzétett fájlhoz. Ha csak a **contentUri** tulajdonság frissül, a bővítmény nem fogadja el a csomag tartalmát.
 
 Egy frissített csomag kiadásának legegyszerűbb módja, ha megismétli a jelen cikkben ismertetett folyamatot, és megadja a verziószámot. Ez a folyamat garantálja az összes tulajdonság megfelelő frissítését.
 
@@ -375,8 +375,8 @@ Az aláírás-ellenőrzési funkció használatához futtassa a `Protect-GuestCo
 
 A parancsmag paraméterei `Protect-GuestConfigurationPackage` :
 
-- **Elérési út** : a vendég konfigurációs csomag teljes elérési útja.
-- **PublicGpgKeyPath** : nyilvános GPG-kulcs elérési útja. Ez a paraméter csak a Linux-tartalmak aláírása esetén támogatott.
+- **Elérési út**: a vendég konfigurációs csomag teljes elérési útja.
+- **PublicGpgKeyPath**: nyilvános GPG-kulcs elérési útja. Ez a paraméter csak a Linux-tartalmak aláírása esetén támogatott.
 
 A Linux rendszerű gépekhez használható GPG-kulcsok létrehozásának jó referenciája a GitHubon található cikk, [új GPG-kulcs](https://help.github.com/en/articles/generating-a-new-gpg-key)létrehozása.
 
@@ -384,12 +384,6 @@ A GuestConfiguration-ügynök elvárja, hogy a tanúsítvány nyilvános kulcsa 
 Az Key Vault hozzáférési szabályzatnak lehetővé kell tennie a számítási erőforrás-szolgáltató számára a tanúsítványok elérését a központi telepítések során. A részletes lépésekért lásd: [Key Vault beállítása virtuális gépekhez a Azure Resource Managerban](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
 A tartalom közzététele után fűzze hozzá a nevet és az értéket tartalmazó címkét az `GuestConfigPolicyCertificateValidation` `enabled` összes olyan virtuális géphez, amelynél szükség van a kód aláírására. Tekintse meg azokat a [mintákat](../samples/built-in-policies.md#tags) , amelyekkel a címkék a Azure Policy használatával méretezhetők. A címke betartása után a parancsmag használatával generált szabályzat-definíció `New-GuestConfigurationPolicy` engedélyezi a követelményt a vendég konfigurációs bővítményen keresztül.
-
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>A vendég-konfigurációs házirend hozzárendeléseinek hibaelhárítása (előzetes verzió)
-
-Egy eszköz előzetes verzióban érhető el, amely segítséget nyújt az Azure Policy vendég konfigurációs hozzárendeléseinek hibaelhárításában. Az eszköz előzetes verzióban érhető el, és közzé lett téve a PowerShell-galéria mint modul neve [vendég konfigurációs hibakereső](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
-
-Az eszköz parancsmagokkal kapcsolatos további információkért használja a PowerShell Get-Help parancsát a beépített útmutatás megjelenítéséhez. Mivel az eszköz gyakori frissítéseket kap, ez a legjobb módszer a legfrissebb információk beszerzésére.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77c560ffd01fe6d0b93e18b963574136c086fdc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb9bc252c733f3445cbf8b27281c2f455d5f2f36
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783195"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696965"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -41,7 +41,12 @@ További információk a [licencekre vonatkozó követelmények](access-reviews-
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Hozzáférési felülvizsgálat létrehozása és végrehajtása a vendégek számára
 
-Először globális rendszergazdaként vagy felhasználói rendszergazdaként nyissa meg az [Identity irányítás lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) , és győződjön meg arról, hogy a hozzáférési felülvizsgálatok készen állnak a szervezet számára.
+Először hozzá kell rendelnie a következő szerepkörök egyikét:
+- globális rendszergazda
+- Felhasználói rendszergazda
+- Előnézet A M365 vagy a HRE biztonsági csoportjának az áttekinthető csoportjának tulajdonosa
+
+Ezután nyissa meg az [Identity irányítás lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) , és győződjön meg arról, hogy a hozzáférési felülvizsgálatok készen állnak a szervezet számára.
 
 Az Azure AD számos forgatókönyvet tesz lehetővé a vendég felhasználók áttekintéséhez.
 
@@ -117,6 +122,6 @@ Egyes szervezeteknél előfordulhat, hogy a vendégek nem ismerik a csoport tags
 
 5. Távolítsa el a vendég hozzáférést a megtagadott vendégek számára, nem fejezte be a felülvizsgálatot, vagy korábban nem fogadta el a meghívót. Ha a vendégek némelyike olyan kapcsolattartó, aki kiválasztotta a felülvizsgálatban való részvételt, vagy korábban nem fogadtak el meghívót, letilthatja a fiókjaikat a Azure Portal vagy a PowerShell használatával. Ha a vendégnek már nincs szüksége a hozzáférésre, és nem egy partner, akkor a Azure Portal vagy a PowerShell használatával törölheti a felhasználói objektumot a címtárból a vendég felhasználói objektum törléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)

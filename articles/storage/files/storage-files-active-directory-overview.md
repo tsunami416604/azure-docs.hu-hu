@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 93dd73b5a9149474be771537f47b448c5c4d7d8f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 0493b66928d944e251e6fe4abda4f1d3d8fb7e23
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629325"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695894"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítési beállítások áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -34,7 +34,7 @@ Hasznos megérteni az Azure AD tartományi szolgáltatás hitelesítésével kap
 
 -   **Azure Active Directory (Azure AD)**
 
-    Azure Active Directory (Azure AD) a Microsoft több-bérlős felhőalapú címtár-és Identitáskezelés-kezelési szolgáltatása. Az Azure AD egyetlen megoldásban ötvözi az alapvető Directory-szolgáltatásokat, az alkalmazások hozzáférés-kezelését és az identitások védelmét. Az Azure AD-hez csatlakoztatott Windows virtuális gépek (VM-EK) az Azure-fájlmegosztás Azure AD-beli hitelesítő adataival érhetők el. További információ: [Mi az Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
+    Azure Active Directory (Azure AD) a Microsoft több-bérlős felhőalapú címtár-és Identitáskezelés-kezelési szolgáltatása. Az Azure AD egyetlen megoldásban ötvözi az alapvető Directory-szolgáltatásokat, az alkalmazások hozzáférés-kezelését és az identitások védelmét. Az Azure AD-hez csatlakoztatott Windows-alapú virtuális gépek (VM-EK) nem férhetnek hozzá az Azure-fájlmegosztás Azure AD-beli hitelesítő adataival. További információ: [Mi az Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
 -   **Azure Active Directory Domain Services (Azure AD DS)**
 
@@ -144,7 +144,7 @@ Azure Files támogatja az adatok Azure-fájlmegosztásba való másolásakor a c
 ## <a name="pricing"></a>Díjszabás
 A Storage-fiókjában nem található további szolgáltatás, amely lehetővé teszi az identitás-alapú hitelesítés használatát az SMB protokollon keresztül. A díjszabással kapcsolatos további információkért tekintse meg a [Azure Files díjszabását](https://azure.microsoft.com/pricing/details/storage/files/) és a [Azure ad Domain Services díjszabását](https://azure.microsoft.com/pricing/details/active-directory-ds/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az SMB-en keresztüli Azure Files-és identitás-alapú hitelesítéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 
 - [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)

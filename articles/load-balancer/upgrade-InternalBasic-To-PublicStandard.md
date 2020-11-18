@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 225252f2cd47c36de2c7eed4ed1e5dae3ebd81b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1c69f528328d5ff983c7de9d7fad052a7c41285
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078758"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696251"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure belső Load Balancer frissítése – kimenő kapcsolatok szükségesek
-Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/skus#skus). Mivel a standard belső Load Balancer nem biztosít kimenő kapcsolatokat, megoldást biztosítunk a standard nyilvános Load Balancer létrehozására.
+Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](./skus.md#skus). Mivel a standard belső Load Balancer nem biztosít kimenő kapcsolatokat, megoldást biztosítunk a standard nyilvános Load Balancer létrehozására.
 
 A frissítésnek négy szakasza van:
 
@@ -95,30 +95,30 @@ Először ellenőrizze, hogy a parancsfájl sikeresen létrehozott-e egy új sta
   
 Íme néhány forgatókönyv, amely azt ismerteti, hogyan adhat hozzá virtuális gépeket az újonnan létrehozott Standard nyilvános Load Balancer backend-készletéhez, valamint a javaslataikat a következőkhöz:
 
-* **Meglévő virtuális gépek áthelyezése a régi alapszintű nyilvános Load Balancer háttér-készletekből az újonnan létrehozott Standard nyilvános Load Balancer háttér-készletei**között.
+* **Meglévő virtuális gépek áthelyezése a régi alapszintű nyilvános Load Balancer háttér-készletekből az újonnan létrehozott Standard nyilvános Load Balancer háttér-készletei** között.
     1. A rövid útmutatóban szereplő feladatok végrehajtásához jelentkezzen be a [Azure Portalba](https://portal.azure.com).
  
     1. A bal oldali menüben válassza az **összes erőforrás** lehetőséget, majd válassza ki az **újonnan létrehozott Standard Load Balancer** az erőforrás-listából.
    
-    1. A **Beállítások**területen válassza a **háttér-készletek**elemet.
+    1. A **Beállítások** területen válassza a **háttér-készletek** elemet.
    
     1. Válassza ki azt a háttér-készletet, amely megfelel az alapszintű Load Balancer háttér-készletének, válassza ki a következő értéket: 
       - **Virtuális gép**: a legördülő listából válassza ki a virtuális gépeket az alapszintű Load Balancer megfelelő háttérbeli készletéből.
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
     >[!NOTE]
     >A nyilvános IP-címmel rendelkező virtuális gépek esetében először a szabványos IP-címeket kell létrehoznia, ahol az IP-cím nem garantált. A virtuális gépeket az alapszintű IP-címekről társíthatja, és társíthatja őket az újonnan létrehozott szabványos IP-címekkel. Ezt követően az utasításokat követve hozzáadhat virtuális gépeket standard Load Balancer háttérbeli készletéből. 
 
 * **Új virtuális gépek létrehozása az újonnan létrehozott Standard nyilvános Load Balancer háttér-készletekhez való hozzáadásához**.
-    * További információ a virtuális gép létrehozásával és a standard Load Balancerhoz való hozzárendelésével kapcsolatban [itt](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)található.
+    * További információ a virtuális gép létrehozásával és a standard Load Balancerhoz való hozzárendelésével kapcsolatban [itt](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines)található.
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>Kimenő szabály létrehozása a kimenő kapcsolatok számára
 
-Kövesse az [utasításokat](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) egy kimenő szabály létrehozásához, hogy
+Kövesse az [utasításokat](./quickstart-load-balancer-standard-public-powershell.md#create-outbound-rule-configuration) egy kimenő szabály létrehozásához, hogy
 * Adja meg a kimenő NAT-t a semmiből.
 * A meglévő kimenő NAT működésének skálázása és finomhangolása.
 
 ### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>NSG szabályok létrehozása olyan virtuális gépekhez, amelyek nem tudnak kommunikálni az internetről
-Ha azt szeretné, hogy az internetes forgalom ne jusson el a virtuális gépekhez, létrehozhat egy [NSG-szabályt](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) a virtuális gépek hálózati adapterén.
+Ha azt szeretné, hogy az internetes forgalom ne jusson el a virtuális gépekhez, létrehozhat egy [NSG-szabályt](../virtual-network/manage-network-security-group.md) a virtuális gépek hálózati adapterén.
 
 ## <a name="common-questions"></a>Gyakori kérdések
 
@@ -134,6 +134,6 @@ Nem. A Azure PowerShell szkript csak a konfigurációt telepíti át. A tényleg
   
 E-mailt küldhet a szolgáltatásnak slbupgradesupport@microsoft.com , megnyithat egy támogatási esetet az Azure-támogatással, vagy mindkettőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók a standard Load Balancer](load-balancer-overview.md)

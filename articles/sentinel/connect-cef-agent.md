@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 512e5e0140038b27b7ffc9f2affb4a0e5b28b41b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5374871a51586a573e9ab41121f3f2dd95baf876
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655833"
+ms.locfileid: "94695248"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. lépés: a naplózási továbbító üzembe helyezése
 
@@ -51,7 +51,7 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
 1. A **1,2 alatt telepítse a CEF-gyűjtőt a Linux** rendszerű gépre, másolja a **következő szkript futtatásához tartozó hivatkozást a CEF-gyűjtő telepítéséhez és alkalmazásához**, vagy az alábbi szövegből (a munkaterület-azonosító és az elsődleges kulcs alkalmazása a helyőrzők helyett):
 
     ```bash
-    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
     ```
 
 1. A szkript futtatása közben ellenőrizze, hogy nem kap-e hibaüzenetet vagy figyelmeztető üzenetet.
@@ -82,7 +82,7 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
     - Letölti a Log Analytics (OMS) Linux-ügynök telepítési parancsfájlját.
 
         ```bash
-        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
             onboard_agent.sh
         ```
 
@@ -97,7 +97,7 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
     - Letölti a konfigurációt a Log Analytics ügynök GitHub-adattárból.
 
         ```bash
-        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+        wget -O /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
             https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
             omsagent.d/security_events.conf
         ```
@@ -148,7 +148,7 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
     - Letölti a Log Analytics (OMS) Linux-ügynök telepítési parancsfájlját.
 
         ```bash
-        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
             onboard_agent.sh
         ```
 
@@ -163,7 +163,7 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
     - Letölti a konfigurációt a Log Analytics ügynök GitHub-adattárból.
 
         ```bash
-        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+        wget -O /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
             https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
             omsagent.d/security_events.conf
         ```
@@ -208,8 +208,10 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
         ```bash
         sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
+---
 
 ## <a name="next-steps"></a>Következő lépések
+
 Ebből a dokumentumból megtudhatta, hogyan helyezheti üzembe a Log Analytics-ügynököt a CEF-berendezések Azure Sentinelhez való összekapcsolásához. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).

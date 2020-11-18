@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: d57dfd0a496e71c1f0e6ddea839723da35bc5f76
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686242"
+ms.locfileid: "94694881"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>A Azure Load Balancer figyelése és konfigurálása a bepillantást használva
 
@@ -26,7 +26,7 @@ A hálózatokon keresztüli Azure Monitor a funkciók függőségi vizualizáci�
 >Vegye figyelembe, hogy ez a funkció előzetes verzióban érhető el, és a funkcionális függőségi nézet és az előre konfigurált irányítópult is változhat a felhasználói élmény javítása érdekében
 
 >[!IMPORTANT]
->A standard Load Balancer szükséges a metrikák megjelenítéséhez a Load Balancer névtérből az előre konfigurált mérőszámok irányítópultján. Továbbra is láthatja a virtuális gép, a virtuálisgép-méretezési csoport és a figyelő névterek mérőszámait, de javasoljuk, hogy az éles számítási feladatokhoz a [standard szintű verzióra frissítsen](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard) , hogy kihasználhassa az Load Balancer mérőszámok robusztus készletét.
+>A standard Load Balancer szükséges a metrikák megjelenítéséhez a Load Balancer névtérből az előre konfigurált mérőszámok irányítópultján. Továbbra is láthatja a virtuális gép, a virtuálisgép-méretezési csoport és a figyelő névterek mérőszámait, de javasoljuk, hogy az éles számítási feladatokhoz a [standard szintű verzióra frissítsen](./upgrade-basic-standard.md) , hogy kihasználhassa az Load Balancer mérőszámok robusztus készletét.
 
 ## <a name="functional-dependency-view"></a>Funkcionális függőség nézet
 
@@ -40,7 +40,7 @@ A standard Load Balancerek esetében a háttérbeli készlet erőforrásai szín
 
 ## <a name="metrics-dashboard"></a>Metrikai irányítópult
 
-A Load Balancer betekintő paneljén kiválaszthatja a részletesebb mérőszámokat, amelyekkel megtekintheti az előre konfigurált [Azure monitor munkafüzetet](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) , amely a Load Balancer adott szempontjaira vonatkozó mérőszámokat tartalmazó vizualizációkat tartalmaz. Ez az irányítópult a Load Balancer állapotát és a kapcsolódó dokumentációra mutató hivatkozásokat jeleníti meg az oldal tetején.
+A Load Balancer betekintő paneljén kiválaszthatja a részletesebb mérőszámokat, amelyekkel megtekintheti az előre konfigurált [Azure monitor munkafüzetet](../azure-monitor/platform/workbooks-overview.md) , amely a Load Balancer adott szempontjaira vonatkozó mérőszámokat tartalmazó vizualizációkat tartalmaz. Ez az irányítópult a Load Balancer állapotát és a kapcsolódó dokumentációra mutató hivatkozásokat jeleníti meg az oldal tetején.
 
 Első lépésként az Áttekintés lapot mutatjuk be. Navigálhat az elérhető lapokon, amelyek a Load Balancer adott aspektusához tartozó vizualizációkat tartalmaznak. Az egyes lapokhoz tartozó explicit útmutatást az irányítópult alján találhatja meg.
 
@@ -68,16 +68,16 @@ Az adatátvitel lapon áttekintheti a bejövő és kimenő adatátviteli sebess�
 ### <a name="flow-distribution"></a>Folyamateloszlás
 A folyamat terjesztése lapon megtekintheti és kezelheti a háttérbeli példányok által fogadott és gyártott folyamatok számát. A folyamat a bejövő és kimenő forgalom forgalmának arányát és a folyamatok darabszámát, valamint az egyes virtuális gépek és a virtuálisgép-méretezési csoport példányainak fogadására szolgáló hálózati forgalmat jeleníti meg. 
 
-Ezek a nézetek visszajelzést adhatnak arról, hogy a Load Balancer-konfiguráció vagy a forgalmi szokások kiegyensúlyozatlan forgalmat eredményeznek-e. Ha például a munkamenet-affinitás konfigurálva van, és egyetlen ügyfél aránytalanul sok kérést tesz ki. Azt is megtudhatja, hogy a [virtuális](https://docs.microsoft.com/azure/virtual-network/virtual-machine-network-throughput#flow-limits-and-recommendations) gép méretétől függ-e.
+Ezek a nézetek visszajelzést adhatnak arról, hogy a Load Balancer-konfiguráció vagy a forgalmi szokások kiegyensúlyozatlan forgalmat eredményeznek-e. Ha például a munkamenet-affinitás konfigurálva van, és egyetlen ügyfél aránytalanul sok kérést tesz ki. Azt is megtudhatja, hogy a [virtuális](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) gép méretétől függ-e.
 
 ### <a name="connection-monitors"></a>Kapcsolatfigyelők
-A kapcsolati figyelők lapon megtekintheti az összes konfigurált [kapcsolati figyelő](https://docs.microsoft.com/azure/network-watcher/connection-monitor)  globális térképének kerekítési késleltetését. Ezek a vizualizációk hasznos információkat nyújtanak a szigorú késési követelményekkel rendelkező szolgáltatásokhoz. A követelmények teljesítése érdekében további regionális központi telepítéseket kell felvennie, vagy át kell térnie a [régiók közötti](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) terheléselosztási modellre
+A kapcsolati figyelők lapon megtekintheti az összes konfigurált [kapcsolati figyelő](../network-watcher/connection-monitor.md)  globális térképének kerekítési késleltetését. Ezek a vizualizációk hasznos információkat nyújtanak a szigorú késési követelményekkel rendelkező szolgáltatásokhoz. A követelmények teljesítése érdekében további regionális központi telepítéseket kell felvennie, vagy át kell térnie a [régiók közötti](./cross-region-overview.md) terheléselosztási modellre
 
 ### <a name="metric-definitions"></a>Metrikadefiníciók
-A metrika-definíciók lapon a [többdimenziós metrikák című cikkben](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics)látható összes információ szerepel.
+A metrika-definíciók lapon a [többdimenziós metrikák című cikkben](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)látható összes információ szerepel.
 
 ## <a name="next-steps"></a>Következő lépések
 * Tekintse át az irányítópultot, és küldjön visszajelzést az alábbi hivatkozással, ha van valami, ami javítható
-* [Tekintse át a metrikák dokumentációját, amelyből megtudhatja, hogyan számítja ki az egyes metrikákat](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics)
-* [A Load Balancerhoz tartozó kapcsolatok figyelők létrehozása](https://docs.microsoft.com/azure/network-watcher/connection-monitor)
-* [Saját munkafüzetek létrehozásához](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)kattintson a részletes mérőszámok irányítópultjának Szerkesztés gombjára.
+* [Tekintse át a metrikák dokumentációját, amelyből megtudhatja, hogyan számítja ki az egyes metrikákat](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
+* [A Load Balancerhoz tartozó kapcsolatok figyelők létrehozása](../network-watcher/connection-monitor.md)
+* [Saját munkafüzetek létrehozásához](../azure-monitor/platform/workbooks-overview.md)kattintson a részletes mérőszámok irányítópultjának Szerkesztés gombjára.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 97fdf55032e92585d723b54e21079098cdc19636
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 75226f92995794221635ced7ee0e285ac824b6e2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735908"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696863"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Nyilvános Load Balancer létrehozása IPv6-tal az Azure CLI használatával
 
@@ -48,17 +48,17 @@ A következő lépések bemutatják, hogyan hozható létre nyilvános terhelés
 
 Terheléselosztó üzembe helyezéséhez hozza létre és konfigurálja a következő objektumokat:
 
-* **Előtér-IP-konfiguráció** : nyilvános IP-címeket tartalmaz a bejövő hálózati forgalomhoz.
-* **Háttérbeli címkészlet** : hálózati adaptereket (NIC) tartalmaz ahhoz, hogy a virtuális gépek hálózati forgalmat fogadjanak a terheléselosztó számára.
-* **Terheléselosztási szabályok** : olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját képezik le a háttérbeli címkészlet egy portjára.
-* **Bejövő NAT-szabályok** : olyan hálózati címfordítási (NAT) szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját képezik le egy portra a háttérbeli címkészlet adott virtuális gépe számára.
+* **Előtér-IP-konfiguráció**: nyilvános IP-címeket tartalmaz a bejövő hálózati forgalomhoz.
+* **Háttérbeli címkészlet**: hálózati adaptereket (NIC) tartalmaz ahhoz, hogy a virtuális gépek hálózati forgalmat fogadjanak a terheléselosztó számára.
+* **Terheléselosztási szabályok**: olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját képezik le a háttérbeli címkészlet egy portjára.
+* **Bejövő NAT-szabályok**: olyan hálózati címfordítási (NAT) szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját képezik le egy portra a háttérbeli címkészlet adott virtuális gépe számára.
 * **Mintavételek: olyan** állapot-mintavételt tartalmaz, amelyek a virtuálisgép-példányok rendelkezésre állásának vizsgálatára szolgálnak a háttérbeli címkészlet esetében.
 
 ## <a name="set-up-azure-cli"></a>Az Azure CLI beállítása
 
 Ebben a példában az Azure CLI-eszközöket egy PowerShell-parancsablakban futtatja. Az olvashatóság és az újrafelhasználás javítása érdekében a PowerShell parancsfájl-kezelési funkcióit használja, nem az Azure PowerShell-parancsmagokat.
 
-1. [Telepítse és konfigurálja az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t a csatolt cikkben leírt lépéseket követve, és jelentkezzen be az Azure-fiókjába.
+1. [Telepítse és konfigurálja az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t a csatolt cikkben leírt lépéseket követve, és jelentkezzen be az Azure-fiókjába.
 
 2. PowerShell-változók beállítása az Azure CLI-parancsokkal való használathoz:
 
@@ -122,7 +122,7 @@ Ebben a példában az Azure CLI-eszközöket egy PowerShell-parancsablakban futt
     > [!IMPORTANT]
     > A terheléselosztó a nyilvános IP-cím tartományának címkéjét használja teljes tartománynévként (FQDN). Ez a klasszikus üzembe helyezés változása, amely a Cloud Service-nevet használja a terheléselosztó FQDN-ként.
     >
-    > Ebben a példában a teljes tartománynév *contoso09152016.southcentralus.cloudapp.Azure.com* .
+    > Ebben a példában a teljes tartománynév *contoso09152016.southcentralus.cloudapp.Azure.com*.
 
 ## <a name="create-front-end-and-back-end-pools"></a>Előtér-és háttér-készletek létrehozása
 
@@ -284,7 +284,7 @@ Virtuális gépek létrehozásához rendelkeznie kell egy Storage-fiókkal. A te
     ```
 
     > [!WARNING]
-    > Ebben a példában a virtuális gépek felhasználónevét és jelszavát titkosítatlan szövegként használják. Ügyeljen arra, hogy a hitelesítő adatok titkosítatlan módon történő használatakor megfelelő legyen. A hitelesítő adatok PowerShellben való kezelésének biztonságosabb módja: [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) parancsmag.
+    > Ebben a példában a virtuális gépek felhasználónevét és jelszavát titkosítatlan szövegként használják. Ügyeljen arra, hogy a hitelesítő adatok titkosítatlan módon történő használatakor megfelelő legyen. A hitelesítő adatok PowerShellben való kezelésének biztonságosabb módja: [`Get-Credential`](/powershell/module/microsoft.powershell.security/get-credential) parancsmag.
 
 2. A rendelkezésre állási csoport létrehozása:
 
@@ -299,5 +299,3 @@ Virtuális gépek létrehozásához rendelkeznie kell egy Storage-fiókkal. A te
 
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
-
-

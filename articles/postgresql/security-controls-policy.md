@@ -1,18 +1,18 @@
 ---
 title: Azure Policy szabályozási megfelelőségi szabályozása Azure Database for PostgreSQL
 description: Felsorolja Azure Policy Azure Database for PostgreSQL számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: f17ff4d2bb1e52456cf22fc99e2b4a0a5807dd2d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8d52f7b79de657b083680136bff4379326df0325
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312864"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695918"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-postgresql"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Database for PostgreSQL
 

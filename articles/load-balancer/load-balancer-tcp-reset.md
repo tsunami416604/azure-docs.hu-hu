@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: 060048bf786f424d5df6eb8fb4813877acb0fea0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d02b46345af13770f77a7dac452127a665e01fd
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823213"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696744"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer TCP alaphelyzetbe állítása és üresjárati időkorlátja
 
-A [standard Load Balancer](load-balancer-standard-overview.md) használatával kiszámítható alkalmazás-viselkedést hozhat létre a forgatókönyvek esetében, ha engedélyezi a TCP alaphelyzetbe állítását egy adott szabály esetében. Load Balancer alapértelmezett viselkedése a folyamatok csendes eldobása, amikor a folyamat üresjárati időkorlátja eléri a folyamatot.  Ha engedélyezi ezt a funkciót, a Load Balancer a kétirányú TCP-alaphelyzetbe (TCP első csomag) küldi az üresjárati időkorlátot.  Ez tájékoztatni fogja az alkalmazás-végpontokat arról, hogy a kapcsolatok túllépték az időkorlátot, és már nem használható.  Ha szükséges, a végpontok azonnal létrehozhatnak egy új kapcsolatot.
+A [standard Load Balancer](./load-balancer-overview.md) használatával kiszámítható alkalmazás-viselkedést hozhat létre a forgatókönyvek esetében, ha engedélyezi a TCP alaphelyzetbe állítását egy adott szabály esetében. Load Balancer alapértelmezett viselkedése a folyamatok csendes eldobása, amikor a folyamat üresjárati időkorlátja eléri a folyamatot.  Ha engedélyezi ezt a funkciót, a Load Balancer a kétirányú TCP-alaphelyzetbe (TCP első csomag) küldi az üresjárati időkorlátot.  Ez tájékoztatni fogja az alkalmazás-végpontokat arról, hogy a kapcsolatok túllépték az időkorlátot, és már nem használható.  Ha szükséges, a végpontok azonnal létrehozhatnak egy új kapcsolatot.
 
 ![Load Balancer TCP alaphelyzetbe állítása](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
  
 ## <a name="tcp-reset"></a>TCP alaphelyzetbe állítása
 
-Ezt az alapértelmezett viselkedést kell módosítania, és engedélyezni kell a TCP alaphelyzetbe állítását a bejövő NAT-szabályok, a terheléselosztási szabályok és a [Kimenő szabályok](https://aka.ms/lboutboundrules)üresjárati időkorlátján.  Ha engedélyezve van a szabály, a Load Balancer a kétirányú TCP-visszaállítást (TCP első csomagokat) küldi az ügyfél-és a kiszolgálói végpontoknak az összes egyező folyamat üresjárati időkorlátjának időpontjában.
+Ezt az alapértelmezett viselkedést kell módosítania, és engedélyezni kell a TCP alaphelyzetbe állítását a bejövő NAT-szabályok, a terheléselosztási szabályok és a [Kimenő szabályok](./load-balancer-outbound-connections.md#outboundrules)üresjárati időkorlátján.  Ha engedélyezve van a szabály, a Load Balancer a kétirányú TCP-visszaállítást (TCP első csomagokat) küldi az ügyfél-és a kiszolgálói végpontoknak az összes egyező folyamat üresjárati időkorlátjának időpontjában.
 
 Az első TCP-csomagokat fogadó végpontok azonnal lezárták a megfelelő szoftvercsatornát. Ez azonnali értesítést küld a végpontokról, amelyeken a kapcsolat megjelent, és az azonos TCP-kapcsolaton folytatott jövőbeli kommunikáció meghiúsul.  Az alkalmazások kitörölhetik a kapcsolatokat, amikor a szoftvercsatorna lezárult, és szükség esetén újra létrehozza a kapcsolatokat, anélkül, hogy a TCP-kapcsolatra kellene várnia.
 
@@ -48,7 +48,7 @@ Alapértelmezés szerint 4 percre van beállítva. Ha egy inaktivitási időtart
 
 Ha a csatlakozás be van zárva, az ügyfélalkalmazás a következő hibaüzenetet kaphatja: "az alapul szolgáló csatlakozás bezárult: a kiszolgáló lezárta az életben tartani várt kapcsolatokat."
 
-Gyakori eljárás a TCP Keep-Alive használata. Ez a gyakorlat hosszabb ideig tart a kapcsolatok aktív állapotban. További információkért tekintse meg ezeket a [.net-példákat](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Ha a Keep-Alive engedélyezve van, a rendszer a csatlakozáskor inaktivitási időszakokban küld csomagokat. Életben tartási csomagok gondoskodnak arról, hogy az Üresjárati időkorlát értéke ne legyen elérhető, és a kapcsolat hosszabb ideig marad.
+Gyakori eljárás a TCP Keep-Alive használata. Ez a gyakorlat hosszabb ideig tart a kapcsolatok aktív állapotban. További információkért tekintse meg ezeket a [.net-példákat](/dotnet/api/system.net.servicepoint.settcpkeepalive). Ha a Keep-Alive engedélyezve van, a rendszer a csatlakozáskor inaktivitási időszakokban küld csomagokat. Életben tartási csomagok gondoskodnak arról, hogy az Üresjárati időkorlát értéke ne legyen elérhető, és a kapcsolat hosszabb ideig marad.
 
 A beállítás csak a bejövő kapcsolatok esetében működik. A kapcsolat elvesztésének elkerüléséhez konfigurálja a TCP Keep-Alive értéket az Üresjárati időkorlát beállításnál kisebb intervallumra, vagy növelje az Üresjárati időkorlát értékét. Ezen forgatókönyvek támogatásához konfigurálható Üresjárati időkorlát támogatása lett hozzáadva.
 
@@ -63,6 +63,6 @@ A TCP Keep-Alive olyan forgatókönyvek esetén működik, ahol az akkumulátoro
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A [standard Load Balancer](load-balancer-standard-overview.md)megismerése.
-- További információ a [kimenő szabályokról](load-balancer-outbound-rules-overview.md).
+- A [standard Load Balancer](./load-balancer-overview.md)megismerése.
+- További információ a [kimenő szabályokról](./load-balancer-outbound-connections.md#outboundrules).
 - [A TCP első beállítása üresjárati időkorláton](load-balancer-tcp-idle-timeout.md)

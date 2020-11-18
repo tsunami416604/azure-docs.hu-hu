@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 82763842e6145b3883c46bcb9ddb45b7836c3cf2
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 605692d15a08246dd574b0724a550b4543a237a3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241820"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695520"
 ---
 # <a name="load-balancer-health-probes"></a>A Load Balancer állapotmintái
 
@@ -121,7 +121,7 @@ Az alábbi ábrán látható, hogyan fejezheti ki az ilyen típusú mintavételi
 ### <a name="http--https-probe"></a><a name="httpprobe"></a><a name="httpsprobe"></a>HTTP/HTTPS-mintavétel
 
 >[!NOTE]
->A HTTPS-mintavétel csak [standard Load Balancer](load-balancer-standard-overview.md)esetében érhető el.
+>A HTTPS-mintavétel csak [standard Load Balancer](./load-balancer-overview.md)esetében érhető el.
 
 A HTTP-és HTTPS-mintavételek a TCP-mintavételre épülnek, és a megadott elérési úttal rendelkező HTTP GET-t adnak ki. Mindkét mintavételi módszer támogatja a HTTP GET relatív elérési útját. A HTTPS-mintavételek ugyanazok, mint a HTTP-mintavételek Transport Layer Security (TLS, korábbi nevén SSL) burkoló hozzáadásával. Az állapot-mintavétel akkor van megjelölve, ha a példány a 200 HTTP-állapottal válaszol az időtúllépési időszakon belül.  Az állapot mintavétele alapértelmezés szerint 15 másodpercenként megkísérli a beállított állapot mintavételi portjának ellenőrzését. A mintavételi időköz minimális értéke 5 másodperc. Az összes intervallum teljes időtartama nem haladhatja meg a 120 másodpercet.
 
@@ -169,7 +169,7 @@ A Cloud Service szerepkörei (feldolgozói szerepkörök és webes szerepkörök
 
 A vendég ügynök mintavétele ellenőrzi a vendég ügynököt a virtuális gépen belül. Ezután csak akkor figyeli és válaszol a HTTP 200 OK válaszával, ha a példány üzemkész állapotban van. (Más állapotok foglalt, újrahasznosíthatók vagy leállnak.)
 
-További információ: [a Service definition-fájl (csdef) konfigurálása az állapot](https://msdn.microsoft.com/library/azure/ee758710.aspx) -mintavételhez vagy az [első lépések a Cloud Services nyilvános terheléselosztó létrehozásával](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services).
+További információ: [a Service definition-fájl (csdef) konfigurálása az állapot](/previous-versions/azure/reference/ee758710(v=azure.100)) -mintavételhez vagy az [első lépések a Cloud Services nyilvános terheléselosztó létrehozásával](/previous-versions/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services).
 
 Ha a vendég ügynök nem tud válaszolni a http 200 OK értékre, a terheléselosztó nem válaszoló jelöli meg a példányt. Ezután leállítja a folyamatok küldését erre a példányra. A terheléselosztó továbbra is a példányt vizsgálja. 
 
@@ -215,7 +215,7 @@ Ha a háttér-készlet összes példányának összes mintavétele sikertelen, a
 
 A Load Balancer egy elosztott szondázás szolgáltatást használ a belső állapot modelljéhez. A szondázás szolgáltatás minden olyan gazdagépen megtalálható, ahol a virtuális gépek, és igény szerint programozhatók, hogy az ügyfél konfigurációján alapuló rendszerállapot-mintavételek készüljenek. Az állapot mintavételi forgalma közvetlenül az állapot-mintavételt és az ügyfél virtuális gépet létrehozó szondázás szolgáltatás között van. Az összes Load Balancer állapot-mintavétel a forrásként megadott IP-168.63.129.16 származik.  Az IP-címtartomány egy olyan VNet belül használható, amely nem RFC1918 terület.  Globálisan fenntartott Microsoft tulajdonú IP-cím használata csökkenti az IP-címek ütközését a VNet belül használt IP-címtartomány miatt.  Ez az IP-cím minden régióban azonos, és nem változik, és nem biztonsági kockázat, mert csak a belső Azure platform összetevő képes a csomagok forrására ebből az IP-címről. 
 
-A AzureLoadBalancer szolgáltatás címkéje azonosítja ezt a forrás IP-címet a [hálózati biztonsági csoportokban](../virtual-network/security-overview.md) , és alapértelmezés szerint engedélyezi az állapot-mintavételi forgalmat.
+A AzureLoadBalancer szolgáltatás címkéje azonosítja ezt a forrás IP-címet a [hálózati biztonsági csoportokban](../virtual-network/network-security-groups-overview.md) , és alapértelmezés szerint engedélyezi az állapot-mintavételi forgalmat.
 
 Load Balancer Health [-mintavételen kívül a következő műveletek ezt az IP-címet használják](../virtual-network/what-is-ip-address-168-63-129-16.md):
 
@@ -233,15 +233,15 @@ Esetenként hasznos lehet az alkalmazás számára, hogy az állapot-mintavétel
 
 Az UDP-terheléselosztáshoz egyéni állapot-mintavételi jelet kell kiállítani a háttérbeli végpontból, és a megfelelő figyelőhöz tartozó TCP-, HTTP-vagy HTTPS-alapú állapot-mintavételt kell használnia, hogy tükrözze az UDP-alkalmazás állapotát.
 
-Ha a [hektáros portok terheléselosztási szabályait](load-balancer-ha-ports-overview.md) [standard Load Balancerekkel](load-balancer-standard-overview.md)használja, az összes port terheléselosztásra kerül, és egyetlen állapot-mintavételi válasznak kell tükröznie a teljes példány állapotát.
+Ha a [hektáros portok terheléselosztási szabályait](load-balancer-ha-ports-overview.md) [standard Load Balancerekkel](./load-balancer-overview.md)használja, az összes port terheléselosztásra kerül, és egyetlen állapot-mintavételi válasznak kell tükröznie a teljes példány állapotát.
 
 Ne fordítsa le vagy ne vezessen olyan állapotú mintavételt az VNet egy másik példányára, amely megkapja az állapot-mintavételt, mivel ez a konfiguráció lépcsőzetes hibákat eredményezhet a forgatókönyvben.  Vegye figyelembe a következő helyzetet: a külső gyártótól származó készülékek készletét egy Load Balancer erőforrás háttér-készletében helyezi üzembe, amely biztosítja a berendezések méretezését és redundanciát, és az állapot-mintavétel úgy van konfigurálva, hogy mintavételt végezzen a külső gyártótól származó, vagy a berendezés mögött más virtuális gépekre fordított porton.  Ha ugyanazt a portot használja, amellyel lefordítja vagy proxyul kéri a többi virtuális gépre irányuló kéréseket a készülék mögött, akkor a készülék mögötti egyetlen virtuális gépről érkező összes mintavételi válasz megjelöli a berendezést. Ez a konfiguráció a teljes alkalmazási forgatókönyv lépcsőzetes meghibásodását eredményezheti a berendezés mögötti egyetlen háttérbeli végpont eredményeként.  Az trigger lehet egy időszakos mintavételi hiba, amely Load Balancer az eredeti célhely (a berendezés példánya) megjelölését, és a teljes alkalmazás-forgatókönyv letiltását eredményezi. A készülék állapotának mintavétele helyette. A mintavétel kiválasztásával megállapítható, hogy az állapot jelzése a hálózati virtuális berendezések (NVA-) forgatókönyvek esetében fontos szempont-e
 
 Ha nem engedélyezi a mintavétel [forrás IP-címét](#probesource) a tűzfal házirendjeiben, az állapot-mintavétel sikertelen lesz, mert nem tudja elérni a példányát.  A Load Balancer az állapot-mintavételi hiba miatt megjelöli a példányt.  Ez a helytelen konfiguráció a terheléselosztási alkalmazás meghibásodását okozhatja.
 
-Ahhoz, hogy a Load Balancer állapotának mintavétele megtörténjen a példányon, engedélyeznie **kell** ezt az IP-címet bármely Azure-beli [hálózati biztonsági csoportban](../virtual-network/security-overview.md) és helyi tűzfal-házirendben.  Alapértelmezés szerint minden hálózati biztonsági csoport tartalmazza az AzureLoadBalancer az állapot-mintavételi forgalom engedélyezésére szolgáló [szolgáltatási címkét](../virtual-network/security-overview.md#service-tags) .
+Ahhoz, hogy a Load Balancer állapotának mintavétele megtörténjen a példányon, engedélyeznie **kell** ezt az IP-címet bármely Azure-beli [hálózati biztonsági csoportban](../virtual-network/network-security-groups-overview.md) és helyi tűzfal-házirendben.  Alapértelmezés szerint minden hálózati biztonsági csoport tartalmazza az AzureLoadBalancer az állapot-mintavételi forgalom engedélyezésére szolgáló [szolgáltatási címkét](../virtual-network/network-security-groups-overview.md#service-tags) .
 
-Ha szeretné tesztelni az állapot-mintavételi hibát, vagy egy különálló példányt szeretne megjelölni, akkor a [hálózati biztonsági csoportokkal](../virtual-network/security-overview.md) explicit módon blokkolhatja az állapot-mintavételt (a célport vagy a [forrás IP-címét](#probesource)), és szimulálhatja a mintavétel hibáját.
+Ha szeretné tesztelni az állapot-mintavételi hibát, vagy egy különálló példányt szeretne megjelölni, akkor a [hálózati biztonsági csoportokkal](../virtual-network/network-security-groups-overview.md) explicit módon blokkolhatja az állapot-mintavételt (a célport vagy a [forrás IP-címét](#probesource)), és szimulálhatja a mintavétel hibáját.
 
 Ne konfigurálja a VNet a 168.63.129.16-t tartalmazó Microsoft tulajdonú IP-címtartományt.  Az ilyen konfigurációk ütköznek az állapot-mintavétel IP-címével, és a forgatókönyv meghibásodását okozhatja.
 
@@ -251,7 +251,7 @@ Ne engedélyezze a [TCP-időbélyeget](https://tools.ietf.org/html/rfc1323).  A 
 
 ## <a name="monitoring"></a>Figyelés
 
-Mind a nyilvános, mind a belső [standard Load Balancer](load-balancer-standard-overview.md) a végpontok és a háttérbeli végpontok állapotának tesztelési állapota többdimenziós metrikák Azure monitoron keresztül. Ezeket a metrikákat más Azure-szolgáltatások vagy-partneri alkalmazások is felhasználhatják. 
+Mind a nyilvános, mind a belső [standard Load Balancer](./load-balancer-overview.md) a végpontok és a háttérbeli végpontok állapotának tesztelési állapota többdimenziós metrikák Azure monitoron keresztül. Ezeket a metrikákat más Azure-szolgáltatások vagy-partneri alkalmazások is felhasználhatják. 
 
 Az alapszintű nyilvános Load Balancer a háttér-készletek alapján összesíti az állapot mintavételi állapotát Azure Monitor naplókon keresztül.  A belső alapszintű terheléselosztó számára nem érhetők el Azure Monitor naplók.  [Azure monitor naplók](load-balancer-monitor-log.md) használatával megtekintheti a nyilvános terheléselosztó mintavételi állapotának állapotát és a mintavételek darabszámát. A naplózás a Power BI vagy az Azure Operational Insights használatával biztosít statisztikai adatokat a terheléselosztó állapotáról.
 
@@ -262,7 +262,7 @@ Az alapszintű nyilvános Load Balancer a háttér-készletek alapján összesí
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md)
+- További tudnivalók a [Standard Load Balancerről](./load-balancer-overview.md)
 - [Ismerkedés a nyilvános Load Balancer létrehozásával a Resource Managerben a PowerShell használatával](quickstart-load-balancer-standard-public-powershell.md)
-- [REST API az állapot-mintavételhez](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
+- [REST API az állapot-mintavételhez](/rest/api/load-balancer/loadbalancerprobes/)
 - Új állapot-mintavételi képességek kérése [Load Balancer uservoice](https://aka.ms/lbuservoice)

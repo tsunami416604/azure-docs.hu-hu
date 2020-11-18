@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: e4141bc4887a166876d1fc4590b73f382abd0b95
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dca53dc27eacc5c7e04bbf6cb5df82a8e8da0dfc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936673"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694551"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rövid útmutató: Azure Cognitive Search index létrehozása Pythonban Jupyter-jegyzetfüzetek használatával
 
@@ -23,13 +23,13 @@ ms.locfileid: "88936673"
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](./search-get-started-powershell.md)
 > * [C#](./search-get-started-dotnet.md)
-> * [Poster (REST)](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 > * [Portál](search-get-started-portal.md)
 > 
 
 Hozzon létre egy Jupyter-jegyzetfüzetet, amely létrehoz, betölt és lekérdez egy Azure Cognitive Search indexet a Python és az [Azure Cognitive Search REST API](/rest/api/searchservice/)-k használatával. Ez a cikk bemutatja, hogyan hozhat létre egy jegyzetfüzetet lépésről lépésre. Azt is megteheti, hogy [letölti és futtatja a kész Jupyter Python notebookot](https://github.com/Azure-Samples/azure-search-python-samples).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,9 +45,9 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
+![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-rest/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -95,7 +95,7 @@ Ebben a feladatban indítson el egy Jupyter-jegyzetfüzetet, és ellenőrizze, h
 
 Ha nem használja a portált, akkor az adatgyűjtés előtt léteznie kell egy indexnek a szolgáltatáson. Ez a lépés az index [létrehozása REST API](/rest/api/searchservice/create-index) használatával küldi el az indexelési sémát a szolgáltatásnak.
 
-Az index kötelező elemei közé tartozik a név, a mezők gyűjteménye és a kulcs. A mezők gyűjteménye meghatározza a *dokumentumok*szerkezetét. Minden mező rendelkezik egy névvel, típussal és attribútummal, amely meghatározza a mező használatát (például hogy teljes szöveges kereshető, szűrhető vagy kereshető a keresési eredmények között). Egy indexen belül az egyik típusú mezőt `Edm.String` meg kell jelölni a dokumentum-identitás *kulcsaként* .
+Az index kötelező elemei közé tartozik a név, a mezők gyűjteménye és a kulcs. A mezők gyűjteménye meghatározza a *dokumentumok* szerkezetét. Minden mező rendelkezik egy névvel, típussal és attribútummal, amely meghatározza a mező használatát (például hogy teljes szöveges kereshető, szűrhető vagy kereshető a keresési eredmények között). Egy indexen belül az egyik típusú mezőt `Edm.String` meg kell jelölni a dokumentum-identitás *kulcsaként* .
 
 Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíciók szerepelnek. Ez egy nagyobb, más forgatókönyvekben használt [szállodák indexének](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) részhalmaza. Ebben a rövid útmutatóban lerövidítjük.
 
@@ -320,7 +320,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek egyszerűsítése érdekében ez a rövid útmutató a szállodák indexének rövidített verzióját használja. A teljes verziót a további érdekes lekérdezések kipróbálásához is létrehozhatja. A teljes verzió és az összes 50-dokumentum lekéréséhez futtassa az **adatok importálása** varázslót, és válassza a *Hotels-Sample* lehetőséget a beépített mintául szolgáló adatforrásokból.
 

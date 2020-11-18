@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: f165064ed5b0583ebb469c47426a2b6403307971
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4e07285eca0fd10b73b386fcf139cdad5b94ddc2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048355"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696404"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terhelésének elosuztása a rendelkezésre állási zónák között az Azure Portallal
 
@@ -37,7 +37,7 @@ A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a
 
 A rendelkezésre állási zónák a Standard Load Balancerrel való használatáról bővebben a [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md) című cikkben tájékozódhat.
 
-Igény szerint az oktatóanyag az [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) használatával is elvégezhető.
+Igény szerint az oktatóanyag az [Azure CLI](./quickstart-load-balancer-standard-public-cli.md) használatával is elvégezhető.
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
@@ -53,7 +53,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Ha a terheléselosztó létrehozása során létrehoz egy új nyilvános IP-címet, akkor az automatikusan standard termékváltozatként lesz konfigurálva, és automatikusan zónaredundánssá is válik.
 
-1. A képernyő bal felső részén kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Load Balancer**lehetőségre.
+1. A képernyő bal felső részén kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Load Balancer** lehetőségre.
 2. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**:
 
     | Beállítás                 | Érték                                              |
@@ -63,7 +63,7 @@ A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Ha a
     | Név                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
-    | SKU           | Válassza a **standard**lehetőséget.                          |
+    | Termékváltozat           | Válassza a **standard** lehetőséget.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím              | Írja be a *myPublicIP* szöveget a szövegmezőbe.   |
     |A rendelkezésre állási zóna| Válassza ki a **felesleges zónát**.    |
@@ -151,7 +151,7 @@ Hozzon létre virtuális gépeket különböző zónákban (1. zóna, 2. zóna, 
 1. Kattintson a **Minden erőforrás** elemre a bal oldali menüben, majd az erőforrások listájában kattintson a *myResourceGroupLBAZ* erőforráscsoportban található **myVM1** elemre.
 2. Az **Áttekintés** oldalon a **Csatlakozás** gombra kattintva hozzon létre RDP-kapcsolatot a virtuális géppel.
 3. Jelentkezzen be a virtuális gépbe az *azureuser* felhasználónévvel.
-4. A kiszolgáló asztalán navigáljon a **Windows felügyeleti eszközök** > **Windows PowerShell**elemre.
+4. A kiszolgáló asztalán navigáljon a **Windows felügyeleti eszközök** > **Windows PowerShell** elemre.
 5. A PowerShell-ablakban futtassa az alábbi parancsokat az IIS-kiszolgáló telepítéséhez, távolítsa el az alapértelmezett iisstart.htm fájlt, majd adjon hozzá egy új iisstart.htm fájt, amely megjeleníti a virtuális gép nevét:
    ```azurepowershell-interactive
     
@@ -179,7 +179,7 @@ Annak érdekében, hogy a forgalmat el lehessen osztani a virtuális gépek köz
 1. A bal oldali menüben kattintson az **összes erőforrás** elemre, majd az erőforrások listából válassza a **myLoadBalancer** lehetőséget.
 2. A **Beállítások** területen kattintson a **Háttérkészletek** lehetőségre, majd a **Hozzáadás** gombra.
 3. A **Háttérkészlet hozzáadása** oldalon tegye a következőket:
-    - A név mezőbe írja be a *myBackEndPool*nevet a háttérbeli készlet neveként.
+    - A név mezőbe írja be a *myBackEndPool* nevet a háttérbeli készlet neveként.
     - Válassza a **Virtuális hálózat** legördülő menüben a **myVNet** lehetőséget
     - Válassza a **Virtuális gép** legördülő menüben a **myVM1** lehetőséget.
     - Az **IP-cím** esetében a legördülő menüben kattintson a myVM1 IP-címére.
@@ -235,7 +235,7 @@ Ha meg szeretné tekinteni, hogy hogyan osztja el a terheléselosztó a zónák 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Ehhez válassza ki azt az erőforráscsoportot, amely tartalmazza a terheléselosztó elemet, majd válassza a **Törlés**lehetőséget.
+Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Ehhez válassza ki azt az erőforráscsoportot, amely tartalmazza a terheléselosztó elemet, majd válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
