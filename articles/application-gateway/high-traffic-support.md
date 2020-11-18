@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 2c5c017ac0faf443a38fc43dfd27c7e776cb52a0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3854e7f3c19f1724a2df1508c9fa519809e07ba9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683375"
+ms.locfileid: "94658672"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Nagy mennyiségű forgalom támogatása az Application Gatewayben
 
@@ -30,8 +30,6 @@ Tekintse meg a [metrikák dokumentációját](./application-gateway-metrics.md) 
 ### <a name="set-your-instance-count-based-on-your-peak-cpu-usage"></a>A példányok számának beállítása a maximális CPU-használat alapján
 Ha v1 SKU-átjárót használ, beállíthatja, hogy a Application Gateway legfeljebb 32 példányban állítható be a skálázás. Ellenőrizze a Application Gateway CPU-kihasználtságát az elmúlt egy hónapban bármely, 80%-nál nagyobb tüskék esetében, amely a figyeléshez mérőszámként érhető el. Azt javasoljuk, hogy a példányszámot a maximális kihasználtság és a 10 – 20%-os további puffer alapján állítsa be a forgalmi tüskék kiszámításához.
 
-:::image type="content" source="./media/application-gateway-covid-guidelines/v1-cpu-utilization-inline.png" alt-text="V1 CPU-kihasználtsági mérőszámok" lightbox="./media/application-gateway-covid-guidelines/v1-cpu-utilization-exp.png":::
-
 ### <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Használja a v2 SKU-t a v1 protokollon keresztül az automatikus skálázási képességek és a teljesítmény előnyeihez
 A v2 SKU automatikus skálázást biztosít annak biztosításához, hogy a Application Gateway képes legyen a forgalom növekedésére. Emellett további jelentős teljesítménybeli előnyöket is kínál, például az 5x-ös jobb TLS-kiszervezési teljesítményt, a gyorsabb üzembe helyezést és a frissítés időpontját, a zónák redundanciát és egyebeket a V1-hez képest. További információkért lásd a [v2 dokumentációt](./application-gateway-autoscaling-zone-redundant.md) , és tekintse meg a v1 – v2 [áttelepítési dokumentációt](./migrate-v1-v2.md) , amelyből megtudhatja, hogyan telepítheti át meglévő v1 SKU-átjáróit a v2 SKU-ra. 
 
@@ -43,8 +41,6 @@ Application Gateway v2 SKU esetében a maximális példányszámot a 125 maximá
 
 Ügyeljen rá, hogy ellenőrizze az alhálózat méretét és az IP-címek darabszámát az alhálózatban, és a példányok maximális száma alapján állítsa be a példányszámot. Ha az alhálózat nem rendelkezik elegendő lemezterülettel, akkor újra létre kell hoznia az átjárót ugyanabban a vagy a különböző alhálózatban, amely elegendő kapacitással rendelkezik. 
 
-:::image type="content" source="./media/application-gateway-covid-guidelines/v2-autoscaling-max-instances-inline.png" alt-text="V2 automatikus skálázás konfigurálása" lightbox="./media/application-gateway-covid-guidelines/v2-autoscaling-max-instances-exp.png":::
-
 ### <a name="set-your-minimum-instance-count-based-on-your-average-compute-unit-usage"></a>A példányok minimális számának beállítása az átlagos számítási egység használata alapján
 
 Application Gateway v2 SKU esetében az automatikus skálázás 6 – hét percet vesz igénybe a horizontális felskálázáshoz, és további példányok üzembe helyezésére készen áll a forgalom átvételére. Addig is, ha a forgalomban rövid tüskék vannak, előfordulhat, hogy a meglévő Gateway-példányok terhelés alatt állnak, és ez váratlan késést vagy adatvesztést okozhat. 
@@ -52,8 +48,6 @@ Application Gateway v2 SKU esetében az automatikus skálázás 6 – hét perce
 Javasoljuk, hogy a példányok minimális darabszámát optimális szintre állítsa. Ha például 50-példányra van szükség a forgalom a maximális terhelésnél való kezeléséhez, akkor a minimum 25 – 30 érték beállítása jó ötlet, nem pedig <10, így még akkor is, ha kevés a forgalom, a Application Gateway képes lenne kezelni, és elegendő időt biztosítani az automatikus skálázásra a válaszadáshoz és életbe léptetéséhez.
 
 Az elmúlt egy hónapban keresse meg a számítási egység metrikáját. A számítási egység mérőszáma az átjáró CPU-kihasználtságának ábrázolása, és a maximális kihasználtsága 10-re bontva a szükséges példányok minimális számát állíthatja be. Vegye figyelembe, hogy 1 Application Gateway-példány legalább 10 számítási egységet képes kezelni
-
-:::image type="content" source="./media/application-gateway-covid-guidelines/compute-unit-metrics-inline.png" alt-text="V2 számítási egység mérőszámai" lightbox="./media/application-gateway-covid-guidelines/compute-unit-metrics-exp.png":::
 
 ## <a name="manual-scaling-for-application-gateway-v2-sku-standard_v2waf_v2"></a>Manuális skálázás Application Gateway v2 SKU-hoz (Standard_v2/WAF_v2)
 
@@ -85,17 +79,6 @@ Riasztás létrehozása, ha Application Gateway válasz állapota 4xx vagy 5xx. 
 
 Riasztás létrehozása, ha a sikertelen kérelmek mérőszáma átlépi a küszöbértéket. Az átjárót éles környezetben kell megfigyelni a statikus küszöbérték megállapítása vagy a riasztás dinamikus küszöbértékének használata esetén.
 
-### <a name="example-setting-up-an-alert-for-more-than-100-failed-requests-in-the-last-5-minutes"></a>Példa: riasztás beállítása több mint 100 sikertelen kérelemhez az elmúlt 5 percben
-
-Ebből a példából megtudhatja, hogyan állíthatja be Azure Portal a riasztást, ha a sikertelen kérelmek száma az elmúlt 5 percben több mint 100.
-1. Navigáljon a **Application Gateway**.
-2. A bal oldali panelen a **figyelés** lapon válassza a **metrikák** lehetőséget. 
-3. Metrika hozzáadása a **sikertelen kérelmekhez**.
-4. Kattintson az **új riasztási szabály** elemre, és határozza meg a feltételeit és műveleteit
-5. A riasztás létrehozásához és engedélyezéséhez kattintson a **riasztás létrehozása szabály létrehozásához**
-
-:::image type="content" source="./media/application-gateway-covid-guidelines/create-alerts-inline.png" alt-text="V2 riasztások létrehozása" lightbox="./media/application-gateway-covid-guidelines/create-alerts-exp.png":::
-
 ## <a name="alerts-for-application-gateway-v2-sku-standard_v2waf_v2"></a>Riasztások Application Gateway v2 SKU-hoz (Standard_v2/WAF_v2)
 
 ### <a name="alert-if-compute-unit-utilization-crosses-75-of-average-usage"></a>Riasztás, ha a számítási egység kihasználtsága az átlagos használat 75%-át keresztezi 
@@ -108,9 +91,9 @@ Ebből Azure Portal a példából megtudhatja, hogyan állíthatja be a riasztá
 1. Navigáljon a **Application Gateway**.
 2. A bal oldali panelen a **figyelés** lapon válassza a **metrikák** lehetőséget. 
 3. Metrika hozzáadása az **átlagos aktuális számítási egységekhez**. 
+![WAF metrika beállítása](./media/application-gateway-covid-guidelines/waf-setup-metrics.png)
 4. Ha beállította a minimális példányszámot az átlagos CU-használathoz, folytassa a riasztást, ha a minimális példányok 75%-a használatban van. Ha például az átlagos használat 10 ke, állítson be egy riasztást 7,5 ke-ra. Ez riasztást küld, ha a használat növekszik, és időt ad a válaszadásra. Ha úgy gondolja, hogy a forgalom továbbra is fennáll, akkor a minimumot növelheti. 
-
-:::image type="content" source="./media/application-gateway-covid-guidelines/compute-unit-alert-inline.png" alt-text="V2 számítási egység riasztásai" lightbox="./media/application-gateway-covid-guidelines/compute-unit-alert-exp.png":::
+![WAF riasztás beállítása](./media/application-gateway-covid-guidelines/waf-setup-monitoring-alert.png)
 
 > [!NOTE]
 > Beállíthatja, hogy a riasztás alacsonyabb vagy magasabb CU-kihasználtsági arányban történjen, attól függően, hogy mennyire érzékeny a potenciális forgalom.
@@ -139,8 +122,8 @@ Ez a metrika a háttér-kiszolgálóval létesített kapcsolat létesítése és
 
 Ez az az időtartam, amikor a Application Gateway megkapja a HTTP-kérelem első bájtját arra az időre, amikor az utolsó válasz bájtot elküldték az ügyfélnek. Riasztást kell létrehoznia, ha a háttérbeli válasz késése több, mint a szokásostól bizonyos küszöbérték. Ezt beállíthatja például úgy, hogy a rendszer riasztást küldjön, ha a teljes késés a szokásos értéknél több mint 30%-kal nő.
 
-## <a name="set-up-waf-with-geo-filtering-and-bot-protection-to-stop-attacks"></a>WAF beállítása geo-szűréssel és bot-védelemmel a támadások leállításához
-Ha további biztonsági réteget szeretne használni az alkalmazás előtt, használja a Application Gateway WAF_v2 SKU-t a WAF képességekhez. A v2 SKU-t úgy állíthatja be, hogy csak adott ország/régió vagy országok/régiók számára engedélyezze az alkalmazásokhoz való hozzáférést. A WAF egyéni szabály beállításával explicit módon engedélyezheti vagy letilthatja a forgalmat a földrajzi hely alapján. További információ: a [geo-szűrés egyéni szabályok](../web-application-firewall/ag/geomatch-custom-rules.md) és az [egyéni szabályok konfigurálása Application Gateway WAF_v2 SKU-n keresztül a PowerShell használatával](../web-application-firewall/ag/configure-waf-custom-rules.md).
+## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>A WAF beállítása a geofiltering és a bot Protection szolgáltatással a támadások leállításához
+Ha további biztonsági réteget szeretne használni az alkalmazás előtt, használja a Application Gateway WAF_v2 SKU-t a WAF képességekhez. A v2 SKU-t úgy állíthatja be, hogy csak adott ország/régió vagy országok/régiók számára engedélyezze az alkalmazásokhoz való hozzáférést. A WAF egyéni szabály beállításával explicit módon engedélyezheti vagy letilthatja a forgalmat a földrajzi hely alapján. További információ: [geofiltering egyéni szabályok](../web-application-firewall/ag/geomatch-custom-rules.md) és [egyéni szabályok konfigurálása Application Gateway WAF_v2 SKU-n keresztül a PowerShell használatával](../web-application-firewall/ag/configure-waf-custom-rules.md).
 
 Engedélyezze a bot Protectiont az ismert helytelen robotok blokkolásához. Ez csökkenti az alkalmazás felé irányuló forgalom mennyiségét. További információ: [a bot Protection beállítása a set up utasítással](../web-application-firewall/ag/configure-waf-custom-rules.md).
 
