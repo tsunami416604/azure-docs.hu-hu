@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: fa7919f54663387ddef811d02137da6d3ffb9d9b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4e50560d2f090c99d1f354ebbc11ab2357dd61e8
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646627"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874729"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával
 
@@ -155,7 +155,7 @@ Hozzon létre a helyi gépén egy `serialization.json` nevű fájlt, és adja ho
 Ezután futtassa a `az stream-analytics input create` parancsmagot. Ügyeljen arra, hogy a változó értékét cserélje le arra `datasource` az elérési útra, ahol a feladathoz megadott bemeneti DEFINÍCIÓ JSON-fájlját tárolta, valamint a `serialization` változó értékét azzal a útvonallal, ahol a SZERIALIZÁLÁSi JSON-fájlt tárolta.
 
 ```azurecli
-az stream-analytics input create 
+az stream-analytics input create \
     --resource-group streamanalyticsrg 
     --job-name streamanalyticsjob \
     --name asaiotinput \
@@ -191,7 +191,7 @@ Hozzon létre a helyi gépén egy `datasink.json` nevű fájlt, és adja hozzá 
 Ezután futtassa a `az stream-analytics output` parancsmagot. Ne felejtse el lecserélni a változó értékét arra `datasource` az elérési útra, ahol a feladatot a kimenet definíciójának JSON-fájlját tárolja, valamint a `serialization` változó értékét azzal a útvonallal, ahol a SZERIALIZÁLÁSi JSON-fájlt tárolta.
 
 ```azurecli
-az stream-analytics output create 
+az stream-analytics output create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name asabloboutput \
@@ -206,7 +206,7 @@ Vegyen fel egy átalakítási feladatot az az [stream-Analytics Transformation C
 Futtassa a `az stream-analytics transformation create` parancsmagot.
 
 ```azurecli
-az stream-analytics transformation create 
+az stream-analytics transformation create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name Transformation \
@@ -230,7 +230,7 @@ Indítsa el a feladatot az az [stream-Analytics Job Start](/cli/azure/ext/stream
 A következő parancsmag futtatása a `True` kimenetet adja vissza, ha a feladat elindult. A Storage-tárolóban létrejön egy kimeneti mappa, amely az átalakított adatokat tartalmazza.
 
 ```azurecli
-az stream-analytics job start 
+az stream-analytics job start \
     --resource-group streamanalyticsrg \
     --name streamanalyticsjob \
     --output-start-mode JobStartTime

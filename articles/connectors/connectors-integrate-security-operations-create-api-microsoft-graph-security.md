@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 0f121caddc6b629920479a34bef7b284dea117a4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ea861dce23e50bc5fcae50116a3e71793d402f8f
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677495"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873318"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>A biztonsági műveletek Microsoft Graph biztonsági & való integrálásával növelheti a veszélyforrások elleni védelmet Azure Logic Apps
 
@@ -30,7 +30,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Microsoft Grap
 
 A logikai alkalmazás munkafolyamata olyan műveleteket is használhat, amelyek válaszokat kapnak a Microsoft Graph biztonsági összekötőtől, és ezt a kimenetet a munkafolyamat más műveletei számára is elérhetővé teszik. A munkafolyamatban más műveletek is megadhatók a Microsoft Graph biztonsági összekötő műveleteiből származó kimenet használatával. Ha például magas súlyosságú riasztásokat kap a Microsoft Graph biztonsági összekötőn keresztül, az Outlook Connector használatával e-mailben elküldheti ezeket a riasztásokat egy e-mail-üzenetben. 
 
-A Microsoft Graph biztonsággal kapcsolatos további tudnivalókért tekintse meg a [Microsoft Graph biztonsági API áttekintése](/graph/security-concept-overview)című témakört. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a következőt: [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md). Ha Microsoft Flow vagy PowerApps keres, tekintse meg a [Mi az a flow?](https://flow.microsoft.com/) vagy a [Mi a PowerApps?](https://powerapps.microsoft.com/) című témakört.
+A Microsoft Graph biztonsággal kapcsolatos további tudnivalókért tekintse meg a [Microsoft Graph biztonsági API áttekintése](/graph/security-concept-overview)című témakört. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a következőt: [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md). Ha az automatizálást vagy a PowerApps keresi, tekintse meg a [Mi az az automatizálás?](https://flow.microsoft.com/) vagy a mi az a [PowerApps?](https://powerapps.microsoft.com/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -94,7 +94,7 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
    | Tulajdonság | Tulajdonság (JSON) | Kötelező | Típus | Leírás |
    |----------|-----------------|----------|------|-------------|
    | **Intervallum** | `interval` | Igen | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p><p>-Hónap: 1-16 hónap <br>-Nap: 1-500 nap <br>-Óra: 1 – 12000 óra <br>Perc: 1 – 72000 perc <br>-Másodperc: 1 – 9999999 másodperc <p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
-   | **Gyakoriság** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **másodperc** , **perc** , **óra** , **nap** , **hét** vagy **hónap** |
+   | **Gyakoriság** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**, **óra**, **nap**, **hét** vagy **hónap** |
    | **Időzóna** | `timeZone` | Nem | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC-eltolást](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az alkalmazni kívánt időzónát. |
    | **Kezdési idő** | `startTime` | Nem | Sztring | Adja meg a kezdő dátumot és időpontot a következő formátumban: <p><p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ <p>-vagy- <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát <p>Ha például a 2017-es szeptember 18-án, 2:00 PM-nél szeretné, adja meg a "2017-09-18T14:00:00" parancsot, és válasszon ki egy időzónát, például a csendes-óceáni téli időpontot. Vagy a "2017-09-18T14:00:00Z" érték megadásával időzóna nélkül. <p>**Megjegyzés:** Ez a kezdési időpont legfeljebb 49 évvel későbbi, és az [ISO 8601 dátum-idő specifikációt](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell követnie [UTC dátum és idő formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Ha nem ad meg időzónát, a végén fel kell vennie a "Z" betűt szóközök nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. <p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. [*Milyen módon használhatom a kezdő dátumot és időt?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||

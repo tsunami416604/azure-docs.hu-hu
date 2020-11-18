@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 11/09/2020
-ms.openlocfilehash: 62621a36955808ec3f2c796681fe660e6e8524bc
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 11/18/2020
+ms.openlocfilehash: 7bfd951d7cec27e0b8264aaabf9bc3a17875256a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443381"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873522"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -21,11 +21,13 @@ Javasoljuk, hogy a konfiguráció előtt tekintse át [az alábbi korlátozások
 
 ## <a name="customer-managed-key-overview"></a>Ügyfél által felügyelt kulcs áttekintése
 
-A inaktív adatok [titkosítása](../../security/fundamentals/encryption-atrest.md) a szervezetek közös adatvédelmi és biztonsági követelménye. Lehetővé teheti, hogy az Azure teljes mértékben kezelhesse a titkosítást, míg számos különböző lehetőség áll rendelkezésre a titkosítási vagy titkosítási kulcsok szoros kezeléséhez.
+A inaktív adatok [titkosítása](../../security/fundamentals/encryption-atrest.md) a szervezetek közös adatvédelmi és biztonsági követelménye. Lehetővé teheti, hogy az Azure teljes mértékben kezelhesse a titkosítást, míg számos különböző lehetőség áll rendelkezésre a titkosítási és titkosítási kulcsok szoros kezeléséhez.
 
-Azure Monitor biztosítja, hogy az összes adatok és mentett lekérdezések a Microsoft által felügyelt kulcsok (MMK-EK) használatával titkosítva legyenek. A Azure Monitor a saját [Azure Key Vault](../../key-vault/general/overview.md) tárolt és az adattitkosításhoz használt saját kulcsot használó titkosítási lehetőséget is biztosít. A kulcs lehet [szoftveres vagy hardveres HSM-védelemmel ellátott](../../key-vault/general/overview.md). Azure Monitor a titkosítás használata azonos az [Azure Storage-titkosítás](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) működésének módjával.
+Azure Monitor biztosítja, hogy az összes adatok és mentett lekérdezések a Microsoft által felügyelt kulcsok (MMK-EK) használatával titkosítva legyenek. A Azure Monitor a saját [Azure Key Vault](../../key-vault/general/overview.md) tárolt saját kulcs használatával is lehetővé teszi a titkosítást, és lehetővé teszi a vezérlő számára, hogy bármikor visszavonja az adataihoz való hozzáférést. Azure Monitor a titkosítás használata azonos az [Azure Storage-titkosítás](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) működésének módjával.
 
-Az ügyfél által felügyelt kulcsfontosságú képességet dedikált Log Analytics fürtökön továbbítjuk. Lehetővé teszi, hogy az adatai a [Kulcstároló](#customer-lockbox-preview) -vezérlővel védve legyenek, és a vezérlő segítségével bármikor visszavonhatja az adataihoz való hozzáférést. Az elmúlt 14 napban betöltött adatok a hatékony lekérdezési motor működéséhez a gyors gyorsítótárban (SSD-alapú) is megmaradnak. Ezek az [adat a Microsoft](#key-revocation)kulcsaival is titkosítva van, függetlenül az ügyfél által felügyelt kulcs konfigurációjától Dolgozunk arra, hogy a 2021-es első felében Customer-Managed kulccsal titkosított SSD-adatmennyiséget lehessen titkosítani.
+Customer-Managed kulcsot olyan dedikált Log Analytics-fürtökön továbbítják, amelyek magasabb szintű védelmi szintet és irányítást biztosítanak. A dedikált fürtökbe betöltött adat kétszer, a Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsokkal, illetve az infrastruktúra szintjén egyszer, két különböző titkosítási algoritmus és két különböző kulcs használatával titkosítva van. A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) védelmet biztosít olyan esetekben, amikor a titkosítási algoritmusok vagy kulcsok egyike sérül. Ebben az esetben a további titkosítási réteg továbbra is védi az adatait. A dedikált fürt lehetővé teszi, hogy az adatai a [Kulcstároló](#customer-lockbox-preview) -vezérlővel is védve legyenek.
+
+Az elmúlt 14 napban betöltött adatok a hatékony lekérdezési motor működéséhez a gyors gyorsítótárban (SSD-alapú) is megmaradnak. Ezek az [adat a Microsoft](#key-revocation)kulcsaival is titkosítva van, függetlenül az ügyfél által felügyelt kulcs konfigurációjától Dolgozunk arra, hogy a 2021-es első felében Customer-Managed kulccsal titkosított SSD-adatmennyiséget lehessen titkosítani.
 
 A [log Analytics-fürtök díjszabási modellje](./manage-cost-storage.md#log-analytics-dedicated-clusters) a 1000 GB/nap szinten kezdődő kapacitási foglalásokat használja.
 
@@ -74,77 +76,18 @@ Customer-Managed kulcs konfigurálása nem támogatott a Azure Portal és a kié
 
 ### <a name="asynchronous-operations-and-status-check"></a>Aszinkron műveletek és állapot-ellenőrzések
 
-Néhány konfigurációs lépés aszinkron módon fut, mert nem hajthatók végre gyorsan. Ha REST-kérelmeket használ a konfigurációban, a válasz kezdetben a 200-es HTTP-állapotkódot (OK) és az *Azure-AsyncOperation* tulajdonsággal rendelkező fejlécet ad vissza, ha elfogadják:
+Néhány konfigurációs lépés aszinkron módon fut, mert nem hajthatók végre gyorsan. A REST használatakor a válasz kezdetben egy 200-as HTTP-állapotkódot (OK) és egy, az *Azure-AsyncOperation* tulajdonsággal rendelkező fejlécet ad vissza, ha elfogadják:
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
 
-Ezután az aszinkron művelet állapotát úgy tekintheti meg, hogy elküld egy GET kérelmet az *Azure-AsyncOperation* fejléc értékére:
+Az aszinkron művelet állapotát úgy tekintheti meg, hogy egy GET kérelmet küld az *Azure-AsyncOperation* fejléc értékére:
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
-A válasz a művelettel és annak *állapotával* kapcsolatos információkat tartalmaz. A következők egyike lehet:
-
-A művelet folyamatban van
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "InProgress", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-}
-```
-
-A kulcs-azonosító frissítési művelete folyamatban van
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Updating", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-A fürt törlése folyamatban van – ha olyan fürtöt töröl, amely csatolt munkaterülettel rendelkezik, az egyes munkaterületekhez aszinkron módon történik a leválasztási művelet, és a művelet eltarthat egy ideig.
-Ez nem vonatkozik arra az esetre, ha csatolt munkaterületet nem tartalmazó fürtöt töröl – ebben az esetben a fürtöt azonnal törli a rendszer.
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Deleting", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-A művelet befejeződött
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Succeeded", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-Sikertelen művelet
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Failed", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-    "error" : { 
-        "code": "error-code",  
-        "message": "error-message" 
-    }
-}
-```
+A `status` válaszban a következők egyike lehet: "Inprogress", "frissítés", "Törlés", "sikeres" vagy "sikertelen", beleértve a hibakódot.
 
 ### <a name="allowing-subscription"></a>Előfizetés engedélyezése
 
@@ -476,7 +419,7 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
   - *fürt* (alapértelmezett) – a számlázás a fürterőforrás üzemeltetéséhez használt előfizetéshez van hozzárendelve.
   - *munkaterületek* – a számlázás a munkaterületek arányosan üzemelő előfizetésekhez van hozzárendelve.
   
-  Hajtsa végre a [frissítési fürtöt](#update-cluster-with-key-identifier-details) , és adja meg az új billingType értéket. Vegye figyelembe, hogy nem kell megadnia a teljes REST-kérelem törzsét, és tartalmaznia kell a *billingType* :
+  Hajtsa végre a [frissítési fürtöt](#update-cluster-with-key-identifier-details) , és adja meg az új billingType értéket. Vegye figyelembe, hogy nem kell megadnia a teljes REST-kérelem törzsét, és tartalmaznia kell a *billingType*:
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -595,7 +538,7 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
   1. a REST használatakor másolja az Azure-AsyncOperation URL értéket a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
   2. GET kérelem küldése a fürtnek vagy a munkaterületnek, és figyelje meg a választ. A nem összekapcsolt munkaterület például nem rendelkezik a *szolgáltatások* *clusterResourceId* .
 
-- Az ügyfél által felügyelt kulccsal kapcsolatos támogatásért és segítségért használja a Microsoft-partnereit.
+- A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) automatikusan konfigurálva van az október 2020-ből létrehozott fürtök esetében, ha a dupla titkosítás a régióban volt. Ha létrehoz egy fürtöt, és "<régió neve> nem támogatja a fürtök kettős titkosítását", akkor továbbra is létrehozhatja a fürtöt, de a kettős titkosítás le van tiltva. A fürt létrehozása után nem engedélyezhető vagy tiltható le. Fürt létrehozásához, ha a dupla titkosítás nem támogatott a régióban, adja hozzá `"properties": {"isDoubleEncryptionEnabled": false}` a REST-kérelem törzsét.
 
 - Hibaüzenetek
   

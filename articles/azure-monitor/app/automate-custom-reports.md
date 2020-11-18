@@ -4,12 +4,12 @@ description: Egyéni napi/heti/havi jelentések automatizálása Azure Applicati
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f35b7cbde7b719a91b23b19481ab704c445485cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d465666ce5d631a234644d1adc85afcf6e3c1e27
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827729"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873710"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Egyéni jelentések automatizálása Azure Application Insights-beli adatkezeléssel
 
@@ -31,7 +31,7 @@ Minden vállalat egyedi jelentéskészítési igényeivel rendelkezik, például
 
 Programozott módon [lekérdezheti Application Insightsi](https://dev.applicationinsights.io/) adataikat, hogy egyéni jelentéseket készítsenek az ütemterv alapján. A következő lehetőségek segíthetnek a gyors kezdésben:
 
-* [Jelentések automatizálása Microsoft Flow](../platform/logicapp-flow-connector.md)
+* [Jelentések automatizálása a Power automatizálva](../platform/logicapp-flow-connector.md)
 * [Jelentések automatizálása Logic Apps](automate-with-logic-apps.md)
 * A figyelési forgatókönyvben használja a "Application Insights ütemezett kivonatoló" [Azure-függvény](../../azure-functions/functions-create-first-azure-function.md) sablonját. Ez a függvény a SendGrid használatával továbbítja az e-mailt. 
 
@@ -74,9 +74,9 @@ availabilityResults
 
    Az Azure Functions dokumentációjában megtudhatja, hogyan [hozhat létre egy Function-alkalmazást](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)
 
-2. Miután az új függvényalkalmazás befejezte az üzembe helyezést, válassza az **Ugrás az erőforráshoz**lehetőséget.
+2. Miután az új függvényalkalmazás befejezte az üzembe helyezést, válassza az **Ugrás az erőforráshoz** lehetőséget.
 
-3. Válassza az **új függvény**lehetőséget.
+3. Válassza az **új függvény** lehetőséget.
 
    ![Képernyőkép létrehozása új függvény létrehozásához](./media/automate-custom-reports/new-function.png)
 
@@ -87,7 +87,7 @@ availabilityResults
 
    ![Új függvény Application Insights sablon képernyőképe](./media/automate-custom-reports/function-app-04.png)
 
-5. Adjon meg egy megfelelő címzett e-mail-címet a jelentéshez, és válassza a **Létrehozás**lehetőséget.
+5. Adjon meg egy megfelelő címzett e-mail-címet a jelentéshez, és válassza a **Létrehozás** lehetőséget.
 
    ![A Function Settings képernyőképe](./media/automate-custom-reports/scheduled-digest.png)
 
@@ -95,7 +95,7 @@ availabilityResults
 
     ![Az Azure Function alkalmazás beállításainak képernyőképe](./media/automate-custom-reports/config.png)
 
-7. Három új Alkalmazásbeállítások létrehozása megfelelő megfelelő értékekkel, ``AI_APP_ID`` ``AI_APP_KEY`` és ``SendGridAPI`` . Kattintson a **Mentés** gombra.
+7. Három új Alkalmazásbeállítások létrehozása megfelelő megfelelő értékekkel, ``AI_APP_ID`` ``AI_APP_KEY`` és ``SendGridAPI`` . Válassza a **Mentés** lehetőséget.
 
      ![Function Integration Interface – képernyőfelvétel](./media/automate-custom-reports/app-settings.png)
     
@@ -112,7 +112,7 @@ availabilityResults
 
      ![Kimeneti képernyőfelvétel](./media/automate-custom-reports/integrate.png)
 
-9. A **SendGridAPI kulcs alkalmazása beállításnál**válassza ki a **SendGridAPI**újonnan létrehozott alkalmazás-beállításait.
+9. A **SendGridAPI kulcs alkalmazása beállításnál** válassza ki a **SendGridAPI** újonnan létrehozott alkalmazás-beállításait.
 
      ![függvényalkalmazás képernyőkép futtatása](./media/automate-custom-reports/sendgrid-output.png)
 
@@ -132,15 +132,15 @@ Ezek a lépések csak akkor érvényesek, ha még nem rendelkezik konfigurált S
 
      ![SendGrid-erőforrás létrehozása képernyőfelvétel](./media/automate-custom-reports/sendgrid.png)
 
-2. Miután létrehozta a SendGrid-fiókokat, válassza a **kezelés**lehetőséget.
+2. Miután létrehozta a SendGrid-fiókokat, válassza a **kezelés** lehetőséget.
 
      ![A beállítások API-kulcs képernyőképe](./media/automate-custom-reports/sendgrid-manage.png)
 
-3. Ekkor elindul a SendGrid webhelye. Válassza a **Beállítások**  >  **API-kulcsok**elemet.
+3. Ekkor elindul a SendGrid webhelye. Válassza a **Beállítások**  >  **API-kulcsok** elemet.
 
      ![API-kulcs alkalmazásának létrehozása és megtekintése képernyőkép](./media/automate-custom-reports/function-app-15.png)
 
-4. Hozzon létre egy API-kulcsot > válassza a **létrehozás & nézet**lehetőséget. (Tekintse át a SendGrid dokumentációját a korlátozott hozzáférésről annak meghatározásához, hogy az API-kulcs milyen szintű engedélyekkel rendelkezik. A teljes hozzáférés csak példaként van kiválasztva.)
+4. Hozzon létre egy API-kulcsot > válassza a **létrehozás & nézet** lehetőséget. (Tekintse át a SendGrid dokumentációját a korlátozott hozzáférésről annak meghatározásához, hogy az API-kulcs milyen szintű engedélyekkel rendelkezik. A teljes hozzáférés csak példaként van kiválasztva.)
 
    ![Teljes hozzáférés képernyőfelvétele](./media/automate-custom-reports/function-app-16.png)
 

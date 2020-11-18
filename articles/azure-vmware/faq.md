@@ -4,12 +4,12 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 2d71c30d2fb08629674c352ae812d8890463abfe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f2b46b37fc8c773062402c52f2903a7a10acc2c4
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695101"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874712"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -237,7 +237,7 @@ Igen, az ügyfelek egy CSP által felügyelt Azure-előfizetésen belül telepí
 
 A Microsoft támogatást nyújt az Azure VMware-megoldáshoz. Egy [támogatási kérelmet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)is küldhet. 
 
-A CSP által felügyelt előfizetések esetében az első támogatási szintet a megoldás szolgáltatója fogja biztosítani ugyanúgy, mint a CSP más Azure-szolgáltatásokhoz.
+A CSP által felügyelt előfizetések esetében az első támogatási szintet a megoldás szolgáltatója fogja biztosítani, ugyanúgy, mint a CSP más Azure-szolgáltatásokhoz.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Milyen fiókokra van szükségem egy Azure VMware-megoldás saját Felhőbeli létrehozásához?
 
@@ -253,12 +253,12 @@ A VMware HCX Enterprise Edition (EE) elérhető az Azure VMware-megoldással, am
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Hogyan az Azure VMware-megoldáshoz tartozó gazdagép-kvóta növelését?
 
-A CSP által felügyelt előfizetések esetében az ügyfélnek el kell végeznie a kérést a partnernek, és a partner csapata a Microsofttal együttműködve lekéri az előfizetés kvótájának növelését. További információ: az [Azure VMware-megoldás erőforrásának engedélyezése cikk](enable-azure-vmware-solution.md) a részletekért. 
+A CSP által felügyelt előfizetések esetén az ügyfélnek el kell küldenie a kérést a partnernek. A partner csapat ezután a Microsofttal folytatja a kvóta növelését az előfizetéshez. A részletekért lásd: az [Azure VMware-megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md) . 
 
-EA-előfizetések esetén az ügyfélnek ezt az eljárást kell követnie.
+EA-előfizetések esetén kövesse az alábbi eljárást. Először a következőkre lesz szüksége:
 
-* Szüksége lesz egy [Azure nagyvállalati Szerződésra (EA)](../cost-management-billing/manage/ea-portal-agreements.md) a Microsofttal.
-* Egy Azure-előfizetésben Azure-fiókra lesz szüksége.
+* [Azure-nagyvállalati szerződés (EA)](../cost-management-billing/manage/ea-portal-agreements.md) a Microsofttal.
+* Azure-fiók Azure-előfizetésben.
 
 Az Azure VMware-megoldási erőforrás létrehozása előtt támogatási jegyet kell benyújtania a csomópontok lefoglalásához. A kérés megerősítése és a csomópontok lefoglalása akár öt munkanapot is igénybe vesz. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több csomópontot szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie.
 
@@ -298,11 +298,15 @@ Az Azure VMware-megoldási erőforrás létrehozása előtt támogatási jegyet 
 
 #### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
 
-Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
+Yes. CSP can purchase reserved instances for their customers. For more information, see the [Save costs with a reserved instance](reserved-instance.md) article. 
 
 #### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
 
-No. Currently Azure VMware Solution does not offer multi-tenancy.
+No. Currently Azure VMware Solution doesn't offer multi-tenancy.
+
+#### Will traffic between on-premises and Azure VMware Solution over ExpressRoute incur any outbound data transfer charge in the metered data plan?
+
+Traffic in the Azure VMware Solution ExpressRoute circuit isn't metered in any way. Traffic from your ExpressRoute circuit connecting to your on-premises to Azure is charged according to ExpressRoute pricing plans.
 
 
 ## Customer communication

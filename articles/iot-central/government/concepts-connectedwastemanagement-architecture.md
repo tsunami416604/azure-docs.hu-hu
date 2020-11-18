@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9b061a6d3d7d2a6598d8ed7c48428d756db6e97d
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 93a5d17ce5ea5ec60c67604efe5081d2b3425a84
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126275"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873692"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Az összekapcsolt hulladékmonitorozás referenciaarchitektúrája 
 
@@ -39,10 +39,10 @@ A nyílt környezetekben, például a hulladék-tárolókban használt eszközö
 Az Azure IoT Central egy IoT alkalmazási platform, amellyel gyorsan elindíthatja és futtathatja a IoT-megoldását. A megoldásokat a harmadik féltől származó szolgáltatásokkal is kiegészítheti, testreszabhatja és integrálhatja.
 Miután az intelligens vízeszközeit IoT Centralhoz csatlakoztatotta, az eszköz parancsait és vezérlését, figyelését és riasztását, felhasználói felületét beépített RBAC, konfigurálható elemzéseket tartalmazó irányítópultokat és bővíthetőségi lehetőségeket kap. 
 
-## <a name="extensibility-and-integrations"></a>Bővíthetőség és integrációk 
+## <a name="extensibility-and-integrations"></a>Bővíthetőség és integrációk
 Kiterjesztheti a IoT alkalmazást IoT Central és opcionálisan:
-* a IoT-adatok átalakítása és integrálása speciális elemzésekhez, például a gépi tanulási modellek IoT Central alkalmazásból történő folyamatos exportálásával. 
-* a munkafolyamatok automatizálása más rendszerekben a műveletek Microsoft Flow vagy webhookok használatával történő aktiválásával IoT Central alkalmazásból
+* a IoT-adatok átalakítása és integrálása speciális elemzésekhez, például a gépi tanulási modellek IoT Central alkalmazásból történő folyamatos exportálásával.
+* a munkafolyamatok automatizálása más rendszerekben a műveletek automatizálásával vagy webhookok IoT Central alkalmazásból való aktiválásával
 * a programozott módon IoT Central IoT Central API-kon keresztül férhet hozzá a IoT alkalmazáshoz.
 
 ## <a name="business-applications"></a>Üzleti alkalmazások 

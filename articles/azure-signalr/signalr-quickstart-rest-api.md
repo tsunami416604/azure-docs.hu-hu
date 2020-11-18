@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 85cda8458dca4ce24fed9433af1527f49a2393ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 2613f91e8c7f1ad3a05792a9a165f4560c09a637
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150978"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874525"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rövid útmutató: Valós idejű üzenetek szétküldése konzolalkalmazásból
 
@@ -28,17 +28,17 @@ Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azure-fiókjával.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
@@ -51,7 +51,7 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kód 
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
@@ -88,7 +88,7 @@ cd bin/Release/netcoreapp2.1/osx.10.13-x64/
 Serverless server -c "<ConnectionString>" -h <HubName>
 ```
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
 
 ## <a name="run-the-sample-without-publishing"></a>Futtassa a mintát közzététel nélkül
 
@@ -106,7 +106,7 @@ dotnet run -- client <ClientName> -c "<ConnectionString>" -h <HubName>
 
 A `dotnet user-secrets set Azure:SignalR:ConnectionString "<ConnectionString>"` futtatását a minta gyökérkönyvtárában végezheti. Ezután már nem lesz szüksége a `-c "<ConnectionString>"` lehetőségre.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
 
 ## <a name="usage"></a>Használat
 
@@ -122,7 +122,7 @@ broadcast
 
 Több ügyfelet is indíthat különböző ügyfélnevekkel.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
 
 ## <a name="integration-with-third-party-services"></a><a name="usage"> </a> Integráció külső szolgáltatásokkal
 
@@ -139,7 +139,7 @@ Verzió | API-állapot | Ajtó | Specifikusság
 
 Az egyes verziókhoz elérhető API-k listáját az alábbi lista tartalmazza.
 
-API | 1,0 – előzetes verzió | 1.0
+API | 1,0 – előzetes verzió | 1,0
 --- | --- | ---
 [Szétküldés mindenkinek](#broadcast) | **&#x2713;** | **&#x2713;**
 [Szétküldés egy csoportnak](#broadcast-group) | **&#x2713;** | **&#x2713;**
@@ -202,7 +202,7 @@ API-verzió | API HTTP-metódus | URL-cím kérése
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
 
-Válasz állapotkódja | Description
+Válasz állapotkódja | Leírás
 ---|---
 `200` | A felhasználó létezik
 `404` | A felhasználó nem létezik
@@ -252,16 +252,16 @@ API-verzió | API HTTP-metódus | URL-cím kérése
 ---|---|---                             
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
 
-Válasz állapotkódja | Description
+Válasz állapotkódja | Leírás
 ---|---
 `200` | A szolgáltatás jó
 `5xx` | Szolgáltatáshiba
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -269,5 +269,3 @@ Ebben a rövid útmutatóban megtanulta, hogyan használhatja a REST APIt a Sign
 
 > [!div class="nextstepaction"]
 > [Azure Functions fejlesztése az Azure Signaler szolgáltatás kötéseinek használatával](signalr-quickstart-azure-functions-csharp.md)
-
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)

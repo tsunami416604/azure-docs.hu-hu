@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 06a2a5bbe637cd2366dbdf218c0278cd683635df
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c2679be2ca1db9017cbc37219402fa4e1c0666a5
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130034"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874423"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-teljesítési API-k 2-es verziója a kereskedelmi piactéren
 
@@ -28,7 +28,7 @@ A SaaS-előfizetés és a vonatkozó műveletek állapota látható.
 
 ![SaaS-előfizetés életciklusa a piactéren](./media/saas-subscription-lifecycle-api-v2.png)
 
-#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>Megvásárolt, de még nincs aktiválva ( *PendingFulfillmentStart* )
+#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>Megvásárolt, de még nincs aktiválva (*PendingFulfillmentStart*)
 
 Ha egy végfelhasználó (vagy CSP) SaaS-ajánlatot vásárol a piactéren, a közzétevőt értesíteni kell a vásárlásról, hogy új SaaS-fiókot hozzon létre és konfiguráljon a közzétevő oldalán.
 
@@ -82,11 +82,14 @@ Csak aktív előfizetés lehet frissítve. Az előfizetés frissítése közben 
 
 ##### <a name="update-initiated-from-the-marketplace"></a>A piactéren kezdeményezett frissítés
 
-Ebben a folyamatban az ügyfél a M365 felügyeleti központban módosítja az előfizetési tervet vagy a helyek mennyiségét.  
+Ebben a folyamatban az ügyfél a Azure Portal vagy a M365 felügyeleti központban módosítja az előfizetési tervet vagy a helyek mennyiségét.  
 
 1. A frissítés beírása után a Microsoft meghívja a közzétevő webhook URL-címét, amely a partner Center **kapcsolat webhook** mezőjében van konfigurálva, és megfelelő értéket biztosít a *művelethez* és egyéb releváns paraméterekhez.  
 1. A közzétevő oldalának végre kell hajtania a szükséges módosításokat az SaaS szolgáltatásban, és értesítenie kell a Microsoftot a változás befejezésekor, ha meghívja az [Operation API frissítési állapotát](#update-the-status-of-an-operation).
 1. Ha a javítást sikertelen állapottal küldi el a rendszer, akkor a frissítési folyamat nem fejeződik be a Microsoft oldalán.  Az SaaS-előfizetés a meglévő csomaggal és az ülőhelyek mennyiségétől függ.
+
+> [!NOTE]
+> A közzétevőnek meg kell hívnia a javítást az [Operation API állapotának frissítéséhez](#update-the-status-of-an-operation) a hiba/sikeres válasz alapján a webhook értesítésének kézhezvételétől számított *10 másodperces időszakon belül* . Ha a művelet állapota nem érkezik meg 10 másodpercen belül, a módosítási terv *automatikusan sikeres* lesz. 
 
 A piactéren kezdeményezett frissítési forgatókönyv API-hívásainak sorát alább láthatja.
 
@@ -106,7 +109,7 @@ Az API-hívások sorozata a közzétevő-oldal kezdeményezett frissítési forg
 
 ![API-hívások közzétevői oldalon kezdeményezett frissítéshez](./media/saas-update-status-api-v2-calls-publisher-side.png)
 
-#### <a name="suspended-suspended"></a>Felfüggesztve ( *felfüggesztve* )
+#### <a name="suspended-suspended"></a>Felfüggesztve (*felfüggesztve*)
 
 Ez az állapot azt jelzi, hogy a rendszer nem fogadta el az ügyfél SaaS szolgáltatásának fizetését. A közzétevő értesítést kap a SaaS-előfizetések állapotáról a Microsofttól. Az értesítés a *Felfüggesztettre* beállított *Action* paraméterrel rendelkező webhook hívása útján történik.
 
@@ -119,7 +122,7 @@ A Microsoft az előfizetés automatikus megszakítása előtt 30 napos türelmi 
 
 Az előfizetés állapota felfüggesztve állapotra változik a Microsoft oldalon, mielőtt a közzétevő bármilyen műveletet végrehajt. Csak az aktív előfizetéseket lehet felfüggeszteni.
 
-#### <a name="reinstated-suspended"></a>Visszaállítás ( *felfüggesztve* )
+#### <a name="reinstated-suspended"></a>Visszaállítás (*felfüggesztve*)
 
 Az előfizetés visszaállítás alatt áll.
 
@@ -135,7 +138,7 @@ Ha a javítást sikertelen állapottal küldi el, a rendszer nem hajtja végre a
 
 Csak a felfüggesztett előfizetés állítható vissza.  Az SaaS-előfizetés visszaállítását követően az állapota felfüggesztve marad.  A művelet befejezése után az előfizetés állapota aktív lesz.
 
-#### <a name="renewed-subscribed"></a>Megújított ( *előfizetett* )
+#### <a name="renewed-subscribed"></a>Megújított (*előfizetett*)
 
 Az előfizetési időszak végén (egy hónap vagy egy év után) az SaaS-előfizetést a Microsoft automatikusan megújítja.  Az automatikus megújítási beállítás alapértelmezett értéke az összes SaaS-előfizetés esetében *igaz* . Az aktív SaaS-előfizetések továbbra is megújítva lesznek a normál lépésszám használatával. A Microsoft nem értesíti a közzétevőt az Előfizetés megújítása esetén. Az ügyfelek kikapcsolhatják az SaaS-előfizetések automatikus megújítását a M365 felügyeleti portálon vagy a Azure Portalon keresztül.  Ebben az esetben a rendszer az aktuális számlázási időszak végén automatikusan megszakítja az SaaS-előfizetést.  Az ügyfél bármikor megszakíthatja az SaaS-előfizetést.
 
@@ -143,7 +146,7 @@ A rendszer csak az aktív előfizetéseket újítja meg automatikusan.  Az előf
 
 Ha egy fizetési probléma miatt nem sikerül automatikusan megújítani az előfizetést, az előfizetés fel lesz függesztve.  A kiadó értesítést kap.
 
-#### <a name="canceled-unsubscribed"></a>Megszakított ( *leiratkozott* ) 
+#### <a name="canceled-unsubscribed"></a>Megszakított (*leiratkozott*) 
 
 Az előfizetések a közzétevő helyről, Azure Portal vagy M365 felügyeleti központból egy előfizetés lemondásával érik el ezt az állapotot egy explicit ügyfél-vagy CSP-műveletre adott válaszként.  Az előfizetés implicit módon, a díjak fizetése miatt is megszakítható, miután 30 napig felfüggesztett állapotba került.
 
@@ -788,9 +791,9 @@ Kód: 500 belső kiszolgálóhiba. Próbálja megismételni az API-hívást.  Ha
 
 #### <a name="get-operation-status"></a>Művelet állapotának beolvasása
 
-Lehetővé teszi a közzétevő számára a megadott aszinkron művelet állapotának nyomon követését:  **leiratkozás** , **ChangePlan** vagy **ChangeQuantity** .
+Lehetővé teszi a közzétevő számára a megadott aszinkron művelet állapotának nyomon követését:  **leiratkozás**, **ChangePlan** vagy **ChangeQuantity**.
 
-Az ehhez az `operationId` API-híváshoz a **művelet – hely** , a függőben lévő Operations API-hívás beolvasása, vagy `<id>` egy webhook-hívásban kapott paraméterérték értéke olvasható be.
+Az ehhez az `operationId` API-híváshoz a **művelet – hely**, a függőben lévő Operations API-hívás beolvasása, vagy `<id>` egy webhook-hívásban kapott paraméterérték értéke olvasható be.
 
 ##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Get `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -850,7 +853,7 @@ Kód: 500 belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  H
 
 Egy függőben lévő művelet állapotának frissítése, hogy jelezze a művelet sikerességét vagy hibáját a közzétevő oldalán.
 
-Az ehhez az `operationId` API-híváshoz a **művelet – hely** , a függőben lévő Operations API-hívás vagy a `<id>` webhook-hívásban kapott paraméterérték értéke olvasható be.
+Az ehhez az `operationId` API-híváshoz a **művelet – hely**, a függőben lévő Operations API-hívás vagy a `<id>` webhook-hívásban kapott paraméterérték értéke olvasható be.
 
 ##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Javítás `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -962,7 +965,7 @@ Ha a közzétevő készen áll a végpontok közötti tesztelésre:
 
 A vásárlás folyamata az ajánlat közzétételének helyétől függően Azure Portal vagy Microsoft AppSource helyekről indítható el.
 
-A *terv módosítása* , a *mennyiség módosítása* és a *leiratkozási* műveletek tesztelése a közzétevő oldaláról történik.  A Microsoft-oldalról a *leiratkozás* a Azure Portal és a felügyeleti központban is elindítható (a portálon, ahol a Microsoft AppSource megvásárlások vannak kezelve).  A *módosítási mennyiség és a terv* csak a felügyeleti központban indítható el.
+A *terv módosítása*, a *mennyiség módosítása* és a *leiratkozási* műveletek tesztelése a közzétevő oldaláról történik.  A Microsoft-oldalról a *leiratkozás* a Azure Portal és a felügyeleti központban is elindítható (a portálon, ahol a Microsoft AppSource megvásárlások vannak kezelve).  A *módosítási mennyiség és a terv* csak a felügyeleti központban indítható el.
 
 ## <a name="get-support"></a>Támogatás kérése
 

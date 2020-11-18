@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 09/29/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18e90bcfe7238ae998ac677a9d7eebef0ffa8939
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568352"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874253"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Tanúsítványokkal kapcsolatos hibák elhárítása
 
@@ -46,6 +46,7 @@ Az alábbi táblázat a hibákkal és a lehetséges megoldásokkal kapcsolatos g
 | CertificateManagement_MissingServerOid | A tulajdonos nevével rendelkező tanúsítvány {0} nem rendelkezik kiszolgálói hitelesítés OID-vel. Ellenőrizze a tanúsítvány tulajdonságait, és ha szükséges, egy új tanúsítványt.|
 | CertificateManagement_NameMismatch | A tanúsítvány típusa nem egyezik. Várt hatókör: {0} , található {1} . Töltse fel a megfelelő tanúsítványt.|
 | CertificateManagement_NoPrivateKeyPresent | A tulajdonos névvel rendelkező tanúsítvány {0} nem tartalmaz titkos kulcsot. Töltsön fel egy titkos kulccsal rendelkező. pfx-tanúsítványt.|
+| CertificateManagement_NoRSACryptoPrivateKey | A tulajdonos nevű tanúsítvány titkos kulcsa {0} nem érhető el. Győződjön meg arról, hogy támogatott tanúsítványt használ. Csak a Microsoft RSA/Schannel titkosítási szolgáltató támogatott. |
 | CertificateManagement_NotSelfSignedCertificate | A tulajdonos nevű tanúsítvány {0} nem saját aláírású. A főtanúsítványoknak önaláírtnak kell lenniük |
 | CertificateManagement_NotSupportedOnVirtualAppliance | Ez a művelet nem támogatott a virtuális eszközön. Ez a hiba azt jelzi, hogy az aláírás csak a taktikai felhőalapú berendezésben futó Data Box Gateway esetén jelentkezik. Ez a hiba akkor fordul elő, amikor az eszközt a Windows PowerShellen keresztül kezeli.|
 | CertificateManagement_SelfSignedCertificate | A tulajdonos nevű tanúsítvány {0} önaláírt. A megfelelő aláírással rendelkező tanúsítvány feltöltése.|
@@ -57,6 +58,8 @@ Az alábbi táblázat a hibákkal és a lehetséges megoldásokkal kapcsolatos g
 | CertificateImportFailure | Az ujjlenyomattal rendelkező tanúsítvány {0} nem lett importálva a csomóponton {1} . Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
 | CertificateApplyFailure | Az ujjlenyomattal rendelkező tanúsítvány {0} nem lett alkalmazva a csomóponton {1} . Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz.|
 | NodeNotReachable | Nem lehetett érvényesíteni a tanúsítványt {0} . Keresse meg a rendszerhardver és a szoftver állapotát.|
+| HIBAKÓD BEOLVASÁSA | A tanúsítvány titkos kulcsa nem érhető el. Győződjön meg arról, hogy támogatott tanúsítványt használ. Csak a Microsoft RSA/Schannel titkosítási szolgáltató támogatott. |
+
 
 ## <a name="next-steps"></a>Következő lépések
 

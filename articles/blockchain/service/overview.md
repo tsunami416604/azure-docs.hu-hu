@@ -4,12 +4,12 @@ description: Az Azure Blockchain Service áttekintése
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: e82916d7366ad82746d2d3ddfc979264e113619b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc716b475fe85170d595463e0785743591e398c1
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334820"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874559"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Mi az az Azure Blockchain Service?
 
@@ -31,7 +31,7 @@ Az Azure Blockchain szolgáltatás üzembe helyezése az Azure Blockchain bőví
 
 Az Azure Blockchain Service két szolgáltatási szintet kínál: *Alapszintű* és *standard*. Az egyes szintek különböző teljesítményt és képességeket biztosítanak a könnyű fejlesztési és tesztelési feladatoknak a nagy mértékben méretezhető üzemi blockchain való üzembe helyezéséhez. A fogalmak fejlesztéséhez, teszteléséhez és bizonyításához *használja az alapszintű* csomagot. Használja a *standard* szintű üzemi szintű üzembe helyezést. Mindkét réteg tartalmaz legalább egy tranzakciós csomópontot és egy validator csomópontot (alapszintű) vagy két validator csomópontot (standard). 
 
-![Árképzési szintek](./media/overview/pricing-tiers.png)
+![Tarifacsomagok](./media/overview/pricing-tiers.png)
 
 Amellett, hogy két érvényesítő csomópontot is kínál, a *standard* szint két *virtuális mag* biztosít minden tranzakcióhoz és érvényesítő csomóponthoz, míg az alapszintű *csomag* 1 virtuális mag-konfigurációt biztosít.  A tranzakció-és validator-csomópontok 2 virtuális mag kínálva az 1 virtuális mag a kvórum főkönyvéhez rendelhető, míg a fennmaradó 1 virtuális mag más infrastruktúrához kapcsolódó szolgáltatásokhoz is használható, így biztosítva az optimális teljesítményt az éles blockchain-munkaterhelések számára. A díjszabással kapcsolatos további információkért lásd: az [Azure Blockchain Service díjszabása](https://azure.microsoft.com/pricing/details/blockchain-service).
 
@@ -79,7 +79,7 @@ Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szaké
 * [A Microsoft technikai közössége](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-service)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként próbálkozzon egy rövid útmutatóval, vagy további részletekért tekintse meg ezeket az erőforrásokat.
 * [Blockchain-tag létrehozása a Azure Portal használatával](create-member.md) vagy [blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md)

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: ccd070d2d7a6fcccab6d243567dfbe02960cc870
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5185e7d0bd60eec239f1233db7f9789cbefc2c10
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376408"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873539"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
@@ -117,7 +117,7 @@ Annak érdekében, hogy az előrejelzési végpont alkalmazás betöltődik, mé
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keresse meg és válassza ki a QnA Maker erőforrás app Service-t. Ugyanaz a neve, mint a QnA Maker erőforrásnak, de más **típusú** app Service is fog rendelkezni.
 1. Keresse meg a **beállításokat** , majd válassza a **Konfigurálás** lehetőséget.
-1. A konfiguráció ablaktáblán válassza az **általános beállítások** , majd a **mindig bekapcsolva** lehetőséget, **és válassza a be értéket** .
+1. A konfiguráció ablaktáblán válassza az **általános beállítások**, majd a **mindig bekapcsolva** lehetőséget, **és válassza a be értéket** .
 
     > [!div class="mx-imgBorder"]
     > ![A konfiguráció ablaktáblán válassza a * * általános beállítások * * lehetőséget, majd a * * always on * * elemet, és válassza a * * * * elemet az értékként.](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
@@ -133,6 +133,7 @@ A App Service Environment használható QnA Maker app Service üzemeltetéséhez
 2. Tegye elérhetővé az App Service-t, és engedélyezze a QnA Maker rendelkezésre állását:
     * Nyilvánosan elérhető – alapértelmezett
     * DNS-szolgáltatás címkéje: `CognitiveServicesManagement`
+3. Hozzon létre egy QnA Maker kognitív szolgáltatási példányt (Microsoft. CognitiveServices/accounts) Azure Resource Manager használatával, ahol a QnA Maker végpontot App Service Environment értékre kell állítani.
 
 ### <a name="network-isolation-for-app-service"></a>App Service hálózati elkülönítése
 
@@ -143,8 +144,6 @@ QnA Maker kognitív szolgáltatás a szolgáltatás címkéjét használja: `Cog
 * Nyissa meg a App Service erőforrás hálózatkezelés szakaszát, és kattintson a "hozzáférési korlátozás konfigurálása" lehetőségre az IP-címek engedélyezési való hozzáadásához.
 
 Egy automatikus szkripttel is rendelkezünk, hogy megegyezzenek a App Service. A [engedélyezési konfigurálására szolgáló PowerShell-parancsfájlt](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) a githubon találhatja meg. Az előfizetés azonosítóját, az erőforráscsoportot és a tényleges App Service nevet kell megadni parancsfájl-paraméterként. A parancsfájl futtatásakor a rendszer automatikusan hozzáadja az IP-címeket App Service engedélyezési.
-    
-1. Hozzon létre egy QnA Maker kognitív szolgáltatási példányt (Microsoft. CognitiveServices/accounts) Azure Resource Manager használatával, ahol a QnA Maker végpontot App Service Environment értékre kell állítani.
 
 ### <a name="business-continuity-with-traffic-manager"></a>Üzletmenet-folytonosság a Traffic Managerrel
 
@@ -211,7 +210,7 @@ A szerzői kulcsok megtekinthetők és alaphelyzetbe állíthatók a Azure Porta
 
     ![QnA Maker erőforráslista](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
 
-2. Ugrás a **kulcsok** :
+2. Ugrás a **kulcsok**:
 
     ![Előfizetői azonosító](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
@@ -221,7 +220,7 @@ A végpont ugyanabban a régióban található, mint az erőforrás, mert a vég
 
 A végponti kulcsok kezelhetők a [QnA Maker portálról](https://qnamaker.ai).
 
-1. Jelentkezzen be a [QnA Maker portálra](https://qnamaker.ai), nyissa meg a profilt, majd válassza a **szolgáltatás beállításai** :
+1. Jelentkezzen be a [QnA Maker portálra](https://qnamaker.ai), nyissa meg a profilt, majd válassza a **szolgáltatás beállításai**:
 
     ![Végpont kulcsa](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 
@@ -241,7 +240,7 @@ A szerzői kulcsok megtekinthetők és alaphelyzetbe állíthatók a Azure Porta
 
     ![QnA Maker felügyelt (előzetes verzió) erőforrás-lista](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
 
-2. Ugrás a **kulcsok és a végpontra** :
+2. Ugrás a **kulcsok és a végpontra**:
 
     ![QnA Maker felügyelt (előzetes verzió) előfizetési kulcs](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
 
@@ -265,7 +264,7 @@ Jelenleg nem végezhető el az Azure Search SKU helyben történő frissítése.
 
 1. Állítsa vissza az indexeket az eredeti Azure Search-erőforrásból az újat. Tekintse meg a [biztonsági másolat visszaállítási mintájának kódját](https://github.com/pchoudhari/QnAMakerBackupRestore).
 
-1. Az adatvisszaállítást követően nyissa meg az új Azure Search-erőforrást, válassza a **kulcsok** lehetőséget, és jegyezze fel a **nevet** és a **rendszergazdai kulcsot** :
+1. Az adatvisszaállítást követően nyissa meg az új Azure Search-erőforrást, válassza a **kulcsok** lehetőséget, és jegyezze fel a **nevet** és a **rendszergazdai kulcsot**:
 
     ![Azure Search-kulcsok QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
 
@@ -295,7 +294,7 @@ A QnA Maker **app Service** erőforrása a Cognitive Search erőforrást haszná
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg a QnA Maker erőforráshoz társított **app Service** . Mindkettő ugyanazzal a névvel van ellátva.
 
-1. Válassza a **Beállítások** , majd a **konfiguráció** lehetőséget. Ekkor megjelenik a QnA Maker App Service összes meglévő beállítása.
+1. Válassza a **Beállítások**, majd a **konfiguráció** lehetőséget. Ekkor megjelenik a QnA Maker App Service összes meglévő beállítása.
 
     > [!div class="mx-imgBorder"]
     > ![A App Service konfigurációs beállításait bemutató Azure Portal képernyőképe](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
@@ -305,7 +304,7 @@ A QnA Maker **app Service** erőforrása a Cognitive Search erőforrást haszná
     * **AzureSearchAdminKey**
     * **AzureSearchName**
 
-1. Az új beállítások használatához újra kell indítania az App Service-t. Válassza az **Áttekintés** , majd az **Újraindítás** lehetőséget.
+1. Az új beállítások használatához újra kell indítania az App Service-t. Válassza az **Áttekintés**, majd az **Újraindítás** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Képernyőkép a Azure Portal újraindításáról App Service a konfigurációs beállítások módosítása után](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)

@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2afe53ade9106fa5e1ebb9ec43492a86bd9fc213
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1c4cc7f5440aca27be085c238179cd0ab20b226a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127318"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874049"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>A vízminőség-monitorozás referenciaarchitektúrája 
 
@@ -41,10 +41,10 @@ Az intelligens vizes megoldásokban használt eszközök általában alacsony te
 Az Azure IoT Central egy IoT alkalmazási platform, amellyel gyorsan elindíthatja és futtathatja a IoT-megoldását. A megoldásokat a harmadik féltől származó szolgáltatásokkal is kiegészítheti, testreszabhatja és integrálhatja.
 Miután az intelligens vízeszközeit IoT Centralhoz csatlakoztatotta, az eszköz parancsait és vezérlését, figyelését és riasztását, felhasználói felületét beépített RBAC, konfigurálható elemzéseket tartalmazó irányítópultokat és bővíthetőségi lehetőségeket kap. 
 
-## <a name="extensibility-and-integrations"></a>Bővíthetőség és integrációk 
+## <a name="extensibility-and-integrations"></a>Bővíthetőség és integrációk
 Kiterjesztheti a IoT alkalmazást IoT Central és opcionálisan:
 * a IoT-adatok átalakítása és integrálása speciális elemzésekhez, például a gépi tanulási modellek IoT Central alkalmazás folyamatos exportálásával
-* a munkafolyamatok automatizálása más rendszerekben a műveletek Microsoft Flow vagy webhookok használatával történő aktiválásával IoT Central alkalmazásból
+* a munkafolyamatok automatizálása más rendszerekben a műveletek automatizálásával vagy webhookok IoT Central alkalmazásból való aktiválásával
 * a IoT-alkalmazás programozott módon való elérése IoT Central API-kon keresztül IoT Central
 
 ## <a name="business-applications"></a>Üzleti alkalmazások 

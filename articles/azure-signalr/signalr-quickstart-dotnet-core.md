@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: b5a2064e2fd80b895b0e801090c66d7119cf69dd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3cfcf57f455a5c3b17b794acf2ded66ed2285eff
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151016"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873505"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rövid útmutató: csevegési hely létrehozása a Signaler szolgáltatás használatával
 
@@ -32,13 +32,13 @@ Az oktatóanyag kódja letölthető az [AzureSignalR-minták GitHub-adattárjáb
 * Telepítse a [.net Core SDK](https://www.microsoft.com/net/download/windows).
 * Töltse le vagy klónozott [AzureSignalR – minta GitHub-](https://github.com/aspnet/AzureSignalR-samples) tárházat. 
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="create-an-azure-signalr-resource"></a>Azure SignalR-erőforrás létrehozása
 
 [!INCLUDE [azure-signalr-create](../../includes/signalr-create.md)]
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
 
@@ -52,7 +52,7 @@ Ebben a szakaszban a [.net Core parancssori felület (CLI)](/dotnet/core/tools/)
     dotnet new mvc
     ```
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="add-secret-manager-to-the-project"></a>A Secret Manager hozzáadása a projekthez
 
@@ -76,7 +76,7 @@ Ebben a szakaszban a [Secret Manager eszközt](/aspnet/core/security/app-secrets
     </Project>
     ```
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Az Azure SignalR hozzáadása a webalkalmazáshoz
 
@@ -119,7 +119,7 @@ Ebben a szakaszban a [Secret Manager eszközt](/aspnet/core/security/app-secrets
 
     Ha nem küldi el a paramétert a rendszernek `AddAzureSignalR()` , ez a kód a jelző szolgáltatás erőforrás-kapcsolódási karakterláncának alapértelmezett konfigurációs kulcsát használja. Az alapértelmezett konfigurációs kulcs az *Azure: signaler: ConnectionString*.
 
-5. A *Startup.cs*frissítse a `Configure` metódust úgy, hogy a következő kóddal helyettesíti.
+5. A *Startup.cs* frissítse a `Configure` metódust úgy, hogy a következő kóddal helyettesíti.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -172,7 +172,7 @@ A csevegő alkalmazás ügyfél-felhasználói felülete HTML és JavaScript for
 
 Másolja a *CSS/site. css* fájlt a [Samples adattár](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot) *wwwroot* mappájából. Cserélje le a projekt *CSS-vagy site. css-* fájlját a vágólapra.
 
-*index.html*fő kódja:
+*index.html* fő kódja:
 
 Hozzon létre egy új fájlt a *wwwroot* könyvtárban *index.html*, másolja, majd ILLESSZE be az alábbi HTML-fájlt az újonnan létrehozott fájlba:
 
@@ -347,7 +347,7 @@ Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét
     }
     ```
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása
 
@@ -382,7 +382,7 @@ Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét
 
     ![Példa Azure-beli szignáló csoport csevegésére](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -395,15 +395,15 @@ Ha elkészült a gyors üzembe helyezési minta alkalmazással, törölheti az e
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
-A **szűrés név alapján** szövegmezőbe írja be az erőforráscsoport nevét. Ebben a rövid útmutatóban a *SignalRTestResources* nevű erőforráscsoportot használtuk. Az erőforráscsoport az eredmény listán válassza a három pontot (**..**.) > az **erőforráscsoport törlése**elemet.
+A **szűrés név alapján** szövegmezőbe írja be az erőforráscsoport nevét. Ebben a rövid útmutatóban a *SignalRTestResources* nevű erőforráscsoportot használtuk. Az erőforráscsoport az eredmény listán válassza a három pontot (**..**.) > az **erőforráscsoport törlése** elemet.
 
 ![Erőforráscsoport törlésének kiválasztása](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
-A rendszer az erőforráscsoport törlésének megerősítését kéri. Adja meg a megerősíteni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+A rendszer az erőforráscsoport törlésének megerősítését kéri. Adja meg a megerősíteni kívánt erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak erőforrásait.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -411,5 +411,3 @@ Ebben a rövid útmutatóban létrehozott egy új Azure Signal Service-erőforr�
 
 > [!div class="nextstepaction"]
 > [Azure SignalR szolgáltatás – hitelesítés](./signalr-concept-authenticate-oauth.md)
-
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)

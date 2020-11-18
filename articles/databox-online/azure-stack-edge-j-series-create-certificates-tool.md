@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e5cb077868a224620d1a23e1ff1aac9c8d9f095
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891084"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874474"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Tanúsítványok létrehozása a Azure Stack Edge Pro-hoz Azure Stack hub Readiness-ellenőrző eszköz használatával 
 
@@ -42,7 +42,7 @@ Az Azure Stack hub Readiness-ellenőrző eszköz (AzsReadinessChecker) használa
 Az ügyfélszolgálati munkatársak létrehozásához Azure Stack Edge Pro-eszköz telepítéséhez győződjön meg a következőket: 
 
 - Windows 10 vagy Windows Server 2016 vagy újabb rendszert futtató ügyfél. 
-- Letöltötte az Microsoft Azure Stack hub Readiness-ellenőrző eszköz 1.2002.1133.85 a rendszer [PowerShell-Galéria](https://aka.ms/AzsReadinessChecker) . Előfordulhat, hogy keresnie kell erre a csomagra. Csak az eszköz ezen verziója hozhat létre tanúsítványokat Azure Stack Edge Pro-eszközökhöz.
+- Letöltötte a Microsoft Azure Stack hub Readiness-ellenőrző eszközét [a rendszer PowerShell-Galéria](https://aka.ms/AzsReadinessChecker) .
 - A tanúsítványokkal kapcsolatban a következő információk szerepelnek:
   - Eszköz neve
   - Csomópont sorozatszáma
@@ -56,7 +56,7 @@ Az alábbi lépések segítségével készítheti elő az Azure Stack Edge Pro-e
 2. Telepítse az Azure Stack hub Readiness-ellenőrző eszközt. A PowerShell parancssorába írja be a következőt: 
 
     ```azurepowershell
-    Install-Module -Name Microsoft.AzureStack.ReadinessChecker -RequiredVersion 1.2002.1133.85 -Force
+    Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
     A telepített verzió ellenőrzéséhez írja be a következőt:  

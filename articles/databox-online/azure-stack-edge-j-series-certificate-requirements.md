@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de41bd030ea73ac68bfac5fbfbd03ae14cf7980f
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891373"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874236"
 ---
 # <a name="certificate-requirements"></a>Tanúsítványkövetelmények
 
@@ -30,12 +30,13 @@ A tanúsítvány kiállítására vonatkozó követelmények a következők:
 * A tanúsítvány *kiállítója:* mező nem lehet ugyanaz, mint a *kiállító:* mező, kivéve a legfelső szintű hitelesítésszolgáltatói tanúsítványokat.
 
 
-
 ## <a name="certificate-algorithms"></a>Tanúsítvány-algoritmusok
 
 A tanúsítvány-algoritmusoknak az alábbi követelményeknek kell megfelelniük:
 
 * A tanúsítványoknak az RSA-kulcs algoritmusát kell használniuk.
+
+* Csak a Microsoft RSA/Schannel titkosítási szolgáltatóval rendelkező RSA-tanúsítványok támogatottak.
 
 * A tanúsítvány-aláírási algoritmus nem lehet SHA1.
 
@@ -81,6 +82,8 @@ Az Azure Stack Edge Pro-eszközre telepített PFX-tanúsítványoknak az alábbi
 * Az összes tanúsítvány PFX-fájl jelszavának meg kell egyeznie a telepítés időpontjában, ha a Azure Stack Readiness-ellenőrző eszközt használja. További információ: [tanúsítványok létrehozása a Azure stack Edge Pro-hoz Azure stack hub Readiness-ellenőrző eszköz használatával](azure-stack-edge-j-series-create-certificates-tool.md).
 
 * A tanúsítvány PFX-ként megadott jelszavának összetett jelszónak kell lennie. Jegyezze fel ezt a jelszót, mert az központi telepítési paraméterként van használatban.
+
+* Csak RSA-tanúsítványokat használjon a Microsoft RSA/Schannel titkosítási szolgáltatóval.
 
 További információ: PFX- [tanúsítványok exportálása titkos kulccsal](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
 

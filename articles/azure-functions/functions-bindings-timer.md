@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan használhatja az időzítő eseményindítókat
 author: craigshoemaker
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
-ms.date: 09/08/2018
+ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6baebdab06a72d3a4af05b4d2e04bc9eee6acb60
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d9852659801040d64fe4143f024fd52ffec16ee
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833010"
+ms.locfileid: "94874083"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz
 
@@ -299,11 +299,11 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 
 |Típus  |Példa  |Aktiváláskor  |
 |---------|---------|---------|
-|Egy adott érték |<nobr>"0 5 * * * *"</nobr>|óó: 05:00, ahol hh óránként (óránként)|
-|Minden érték ( `*` )|<nobr>"0 * 5 * * *"</nobr>|minden nap 5: PP: 00, ahol a mm az óra minden perce (60-szor a megadott órán belül)|
-|Tartomány ( `-` operátor)|<nobr>"5-7 * * * * * *"</nobr>|óó: PP: 05, óó: PP: 06 és óó: PP: 07, ahol óó: PP percenként minden percben (percenként 3 alkalommal)|
-|Értékek halmaza ( `,` operátor)|<nobr>"5, 8, 10 * * * * * *"</nobr>|óó: PP: 05, óó: PP: 08 és óó: PP: 10, ahol óó: PP percenként minden percben (percenként 3 alkalommal)|
-|Intervallum értéke ( `/` operátor)|<nobr>"0 */5 * * * *"</nobr>|hh: 00:00, óó: 05:00, óó: 10:00, és így tovább a hh: 55:00, ahol hh óránként (12 alkalommal óránként)|
+|Egy adott érték |<nobr>`0 5 * * * *`</nobr>| A nap minden órájában, minden órában 5 percenként |
+|Minden érték ( `*` )|<nobr>`0 * 5 * * *`</nobr>| Óránként percenként, 5 óra |
+|Tartomány ( `-` operátor)|<nobr>`5-7 * * * * *`</nobr>| Percenként háromszor – 5 – 7 percen belül minden nap minden percében |
+|Értékek halmaza ( `,` operátor)|<nobr>`5,8,10 * * * * *`</nobr>| Percenként háromszor – az 5, 8 és 10 másodperc minden nap minden percében |
+|Intervallum értéke ( `/` operátor)|<nobr>`0 */5 * * * *`</nobr>| óránként 12 alkalommal – az egyes napok minden órájában minden ötödik percenként 0. |
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -311,18 +311,18 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 
 Íme néhány példa a Azure Functions időzítő-triggeréhez használható NCRONTAB-kifejezésekre.
 
-|Példa|Aktiváláskor  |
-|---------|---------|
-|`"0 */5 * * * *"`|öt percenként|
-|`"0 0 * * * *"`|egyszer minden óra elején|
-|`"0 0 */2 * * *"`|két óránként egyszer|
-|`"0 0 9-17 * * *"`|óránként, 9 órától 5 óráig|
-|`"0 30 9 * * *"`|minden nap 9:30-kor|
-|`"0 30 9 * * 1-5"`|minden hétköznap 9:30 órakor|
-|`"0 30 9 * Jan Mon"`|Január 9:30 órakor|
+| Példa            | Aktiváláskor                     |
+|--------------------|------------------------------------|
+| `0 */5 * * * *`    | öt percenként            |
+| `0 0 * * * *`      | egyszer minden óra elején      |
+| `0 0 */2 * * *`    | két óránként egyszer               |
+| `0 0 9-17 * * *`   | óránként, 9 órától 5 óráig  |
+| `0 30 9 * * *`     | minden nap 9:30-kor               |
+| `0 30 9 * * 1-5`   | minden hétköznap 9:30 órakor           |
+| `0 30 9 * Jan Mon` | Január 9:30 órakor |
 
 > [!NOTE]
-> A NCRONTAB kifejezéshez **hat mező** formátum szükséges. Az Azure nem támogatja az öt mezőből származó cron-kifejezéseket.
+> A NCRONTAB kifejezésben **hat mező** formátuma szükséges. A hatodik mező pozíciója a kifejezés elejére helyezett másodpercek értéke. Az Azure nem támogatja az öt mezőből származó cron-kifejezéseket.
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB időzónái
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 9b14ba12c9f9b679d1d63008d31825647f42619d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c8b3ab965c5a85bd6f25e5325fdca24026aec787
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318053"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873828"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása és csatolása
 
@@ -54,7 +54,7 @@ A Azure Machine Learning betanított gépi tanulási modelleket telepíthet az A
    
  - Ha a modelleket **GPU** -csomópontokra vagy **FPGA** -csomópontokra (vagy bármely konkrét SKU-ra) szeretné telepíteni, akkor létre kell hoznia egy FÜRTÖt az adott SKU-val. Nem támogatott másodlagos csomópont-készlet létrehozása meglévő fürtben, valamint modellek üzembe helyezése a másodlagos csomópont-készletben.
  
-- Fürt létrehozásakor vagy csatolásakor kiválaszthatja, hogy a fürtöt __fejlesztési-tesztelési__ vagy __éles__ környezetben kívánja-e létrehozni. Ha nem éles környezetben szeretné létrehozni a __fejlesztéshez__ , az __ellenőrzéshez__ és a __teszteléshez__ egy AK-fürtöt, állítsa be a __fürt célját__ a __dev-test__ értékre. Ha nem határozza meg a fürt célját, a rendszer létrehoz egy __éles__ fürtöt. 
+- Fürt létrehozásakor vagy csatolásakor kiválaszthatja, hogy a fürtöt __fejlesztési-tesztelési__ vagy __éles__ környezetben kívánja-e létrehozni. Ha nem éles környezetben szeretné létrehozni a __fejlesztéshez__, az __ellenőrzéshez__ és a __teszteléshez__ egy AK-fürtöt, állítsa be a __fürt célját__ a __dev-test__ értékre. Ha nem határozza meg a fürt célját, a rendszer létrehoz egy __éles__ fürtöt. 
 
     > [!IMPORTANT]
     > A __fejlesztési és tesztelési__ fürtök nem alkalmasak a termelési szint forgalmára, és növelhetik a következtetési időt. A fejlesztési és tesztelési fürtök szintén nem garantálják a hibatűrést.
@@ -124,7 +124,7 @@ Result
 1.16.13
 ```
 
-Ha **programozottan szeretné megtekinteni az elérhető verziókat** , használja a [Container Service ügyfél-lista](/rest/api/container-service/container%20service%20client/listorchestrators) rendszerszervezőket REST API. Az elérhető verziók megkereséséhez tekintse meg a következő bejegyzéseket: `orchestratorType` `Kubernetes` . A társított `orchestrationVersion` bejegyzések tartalmazzák a munkaterülethez csatlakoztatható elérhető **attached** verziókat.
+Ha **programozottan szeretné megtekinteni az elérhető verziókat**, használja a [Container Service ügyfél-lista](/rest/api/container-service/container%20service%20client/listorchestrators) rendszerszervezőket REST API. Az elérhető verziók megkereséséhez tekintse meg a következő bejegyzéseket: `orchestratorType` `Kubernetes` . A társított `orchestrationVersion` bejegyzések tartalmazzák a munkaterülethez csatlakoztatható elérhető **attached** verziókat.
 
 A fürt Azure Machine Learningon keresztüli **létrehozásakor** használt alapértelmezett verzió megkereséséhez keresse meg azt a bejegyzést, ahol `orchestratorType` az a `Kubernetes` és `default` az `true` . A társított `orchestratorVersion` érték az alapértelmezett verzió. A következő JSON-kódrészlet egy példa bejegyzést mutat be:
 
@@ -147,7 +147,7 @@ A fürt Azure Machine Learningon keresztüli **létrehozásakor** használt alap
 
 ## <a name="create-a-new-aks-cluster"></a>Új AK-fürt létrehozása
 
-**Becsült idő** : körülbelül 10 perc.
+**Becsült idő**: körülbelül 10 perc.
 
 Egy AK-fürt létrehozása vagy csatolása egy egyszeri folyamat a munkaterülethez. Ezt a fürtöt több központi telepítéshez is felhasználhatja. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, létre kell hoznia egy új fürtöt, amikor legközelebb telepítenie kell. A munkaterülethez több AK-alapú fürtök is tartozhatnak.
 
@@ -284,7 +284,7 @@ Az AK-fürtök portálon való csatlakoztatásával kapcsolatos információkér
 A fürt munkaterületről való leválasztásához használja az alábbi módszerek egyikét:
 
 > [!WARNING]
-> A gépi tanuláshoz készült Azure Machine Learning Studio, SDK vagy az Azure CLI bővítmény használata az AK-fürtök leválasztásához **nem törli az AK** -fürtöt. A fürt törléséhez lásd: [Az Azure CLI használata az AK-val](../aks/kubernetes-walkthrough.md#delete-the-cluster).
+> A gépi tanuláshoz készült Azure Machine Learning Studio, SDK vagy az Azure CLI bővítmény használata az AK-fürtök leválasztásához **nem törli az AK**-fürtöt. A fürt törléséhez lásd: [Az Azure CLI használata az AK-val](../aks/kubernetes-walkthrough.md#delete-the-cluster).
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -302,9 +302,10 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Azure Machine Learning Studióban válassza ki a __számítás__ , a __következtetési fürtök__ és az eltávolítani kívánt fürtöt. A fürt leválasztásához használja a __leválasztási__ hivatkozást.
+Azure Machine Learning Studióban válassza ki a __számítás__, a __következtetési fürtök__ és az eltávolítani kívánt fürtöt. A fürt leválasztásához használja a __leválasztási__ hivatkozást.
 
 ## <a name="next-steps"></a>Következő lépések
 
+* [Az Azure RBAC használata az Kubernetes-hitelesítéshez](../aks/manage-azure-rbac.md)
 * [Modell üzembe helyezésének módja és helye](how-to-deploy-and-where.md)
 * [Modell üzembe helyezése Azure Kubernetes Service-fürtön](how-to-deploy-azure-kubernetes-service.md)

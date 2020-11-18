@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 6508db654cd27ca4b3844f6037f13fb504173e11
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 3bd4d328c6b0b73a51f325adde988c8f0988ea8a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361165"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873811"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Dedukciós Azure Machine Learning-környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -115,6 +115,8 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 A létrehozási folyamat befejezésekor futtathat következtetéseket vagy modell-pontozást egy virtuális hálózat mögötti AK-fürtön. További információ: [üzembe helyezés az AK](how-to-deploy-and-where.md)-ban.
 
+A Role-Based Access Control Kubernetes való használatával kapcsolatos további információkért lásd: az [Azure RBAC használata a Kubernetes engedélyezéséhez](../aks/manage-azure-rbac.md).
+
 ## <a name="network-contributor-role"></a>Hálózati közreműködő szerepkör
 
 > [!IMPORTANT]
@@ -151,8 +153,8 @@ A belső terheléselosztó az AK-val való használatáról további informáci�
 
 Az AK-fürt és a virtuális hálózat közötti forgalom elkülönítésére két módszer áll rendelkezésre:
 
-* __Privát AK-fürt__ : Ez a módszer az Azure Private-hivatkozást használja a fürttel való kommunikáció biztonságossá tételéhez üzembe helyezési/felügyeleti műveletekhez.
-* __Belső AK-Load Balancer__ : Ez a módszer konfigurálja a végpontot a központi telepítések számára, hogy a virtuális hálózaton belüli magánhálózati IP-címet használjanak.
+* __Privát AK-fürt__: Ez a módszer az Azure Private-hivatkozást használja a fürttel való kommunikáció biztonságossá tételéhez üzembe helyezési/felügyeleti műveletekhez.
+* __Belső AK-Load Balancer__: Ez a módszer konfigurálja a végpontot a központi telepítések számára, hogy a virtuális hálózaton belüli magánhálózati IP-címet használjanak.
 
 > [!WARNING]
 > A belső Load Balancer nem működik a kubenet-t használó AK-fürtökkel. Ha egy belső terheléselosztó és egy privát AK-fürt egyidejű használatát kívánja használni, konfigurálja a privát AK-fürtöt az Azure Container Network Interface (CNI) használatával. További információ: [Az Azure CNI hálózatkezelésének konfigurálása az Azure Kubernetes szolgáltatásban](../aks/configure-azure-cni.md).

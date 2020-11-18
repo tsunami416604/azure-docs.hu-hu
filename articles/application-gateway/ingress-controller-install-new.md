@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 04d8a77cd051823559aba42d5dfc1418e6343ecc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 5e3473a9afefe73fe7b07d3efda1f53675264fc8
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397382"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874627"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Application Gateway beáramlási vezérlő (AGIC) telepítése új Application Gateway használatával
 
@@ -22,7 +22,7 @@ Az alábbi utasítások azt feltételezik, hogy Application Gateway beáramló v
 
 Az alábbi parancssori műveletekhez [Azure Cloud Shell](https://shell.azure.com/) használatát javasoljuk. Indítsa el a rendszerhéjt a shell.azure.com, vagy kattintson a hivatkozásra:
 
-[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)
+[![Indítás beágyazása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)
 
 Másik lehetőségként indítsa el Cloud Shell a Azure Portal a következő ikon használatával:
 
@@ -40,7 +40,7 @@ A [Azure Cloud Shell](https://shell.azure.com/) már rendelkezik az összes szü
 
 Az alábbi lépéseket követve hozzon létre egy Azure Active Directory (HRE) [egyszerű szolgáltatásnév-objektumot](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object). Jegyezze fel a `appId` , `password` , és `objectId` értékeket – ezeket az alábbi lépésekben fogjuk használni.
 
-1. AD egyszerű szolgáltatás létrehozása ([További információ a RBAC](../role-based-access-control/overview.md)):
+1. AD egyszerű szolgáltatás létrehozása ([További információ az Azure RBAC](../role-based-access-control/overview.md)):
     ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
@@ -66,7 +66,7 @@ Az alábbi lépéseket követve hozzon létre egy Azure Active Directory (HRE) [
     }
     EOF
     ```
-    **RBAC** -kompatibilis fürt üzembe helyezéséhez állítsa be a `aksEnableRBAC` mezőt`true`
+    Egy **KUBERNETES RBAC** -kompatibilis fürt üzembe helyezéséhez állítsa be a `aksEnableRBAC` mezőt `true`
 
 ## <a name="deploy-components"></a>Összetevők üzembe helyezése
 Ez a lépés a következő összetevőket adja hozzá az előfizetéséhez:
@@ -131,13 +131,13 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
 A HRE Pod Identity telepítése a fürtre:
 
-   - *RBAC engedélyezve* AK-fürt
+   - *KUBERNETES RBAC engedélyezve* AK-fürt
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
      ```
 
-   - *RBAC letiltva* AK-fürt
+   - *KUBERNETES RBAC letiltva* AK-fürt
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
@@ -148,7 +148,7 @@ A [Helm](../aks/kubernetes-helm.md) a Kubernetes csomagkezelő. A csomag telepí
 
 1. Telepítse a [Helm](../aks/kubernetes-helm.md) -t, és futtassa a következő parancsot a Helm-csomag hozzáadásához `application-gateway-kubernetes-ingress` :
 
-    - *RBAC engedélyezve* AK-fürt
+    - *KUBERNETES RBAC engedélyezve* AK-fürt
 
         ```bash
         kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -156,7 +156,7 @@ A [Helm](../aks/kubernetes-helm.md) a Kubernetes csomagkezelő. A csomag telepí
         helm init --tiller-namespace kube-system --service-account tiller-sa
         ```
 
-    - *RBAC letiltva* AK-fürt
+    - *KUBERNETES RBAC letiltva* AK-fürt
 
         ```bash
         helm init
@@ -228,7 +228,7 @@ A [Helm](../aks/kubernetes-helm.md) a Kubernetes csomagkezelő. A csomag telepí
     #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
     
     ################################################################################
-    # Specify if the cluster is RBAC enabled or not
+    # Specify if the cluster is Kubernetes RBAC enabled or not
     rbac:
         enabled: false # true/false
     

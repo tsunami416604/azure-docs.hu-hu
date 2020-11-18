@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 29c378d40e3a4f92852f433677125a9e8a6d1133
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1a7204fea1a77dbca57ffc7d512f81e46c4d3b5f
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540127"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873393"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning-munkaterületek létrehozása és kezelése 
 
@@ -25,7 +25,7 @@ Az igények változásának vagy az automatizálásra vonatkozó követelmények
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 * Ha a Python SDK-t használja, [telepítse az SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t.
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
@@ -131,8 +131,12 @@ Ha problémája merül fel az előfizetés elérésekor, tekintse [meg a Azure M
    Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
    Erőforráscsoport | Az előfizetés valamelyik meglévő erőforráscsoportját használja, vagy adjon meg egy nevet új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást** használjuk. Meglévő erőforráscsoport használatához *közreműködői* vagy *tulajdonosi* szerepkörre van szükség.  További információ a hozzáférésről: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md).
    Régió | Válassza ki a felhasználókhoz legközelebb eső Azure-régiót, valamint az adatforrásokat a munkaterület létrehozásához.
+   | Tárfiók | A munkaterület alapértelmezett Storage-fiókja. Alapértelmezés szerint a rendszer létrehoz egy újat. |
+   | Key Vault | A munkaterület által használt Azure Key Vault. Alapértelmezés szerint a rendszer létrehoz egy újat. |
+   | Application Insights | A munkaterület Application Insight-példánya. Alapértelmezés szerint a rendszer létrehoz egy újat. |
+   | Container Registry | A munkaterület Azure Container Registry. Alapértelmezés szerint a rendszer _nem_ hoz létre egy újat a munkaterülethez. Ehelyett akkor jön létre, amikor szüksége lesz rá, amikor egy Docker-rendszerképet hoz létre a betanítás vagy az üzembe helyezés során. |
 
-    ![Munkaterület konfigurálása](./media/how-to-manage-workspace/create-workspace-form.png)
+   :::image type="content" source="media/how-to-manage-workspace/create-workspace-form.png" alt-text="Konfigurálja a munkaterületet.":::
 
 1. Ha befejezte a munkaterület konfigurálását, válassza a **felülvizsgálat + létrehozás** lehetőséget. Igény szerint a [hálózatkezelés](#networking) és a [speciális](#advanced) szakaszban is konfigurálhatja a munkaterület további beállításait.
 
@@ -159,7 +163,7 @@ A Azure Machine Learning Python SDK biztosítja a [PrivateEndpointConfig](/pytho
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Az alapértelmezett hálózati konfiguráció egy __nyilvános végpont__ használata, amely a nyilvános interneten érhető el. Ha a munkaterülethez való hozzáférést egy Ön által létrehozott Azure-Virtual Network szeretné korlátozni, válassza a __magánhálózati végpont__ (előzetes verzió) lehetőséget a __kapcsolati módszerként__ , majd a __+ Hozzáadás__ paranccsal konfigurálja a végpontot.   
+1. Az alapértelmezett hálózati konfiguráció egy __nyilvános végpont__ használata, amely a nyilvános interneten érhető el. Ha a munkaterülethez való hozzáférést egy Ön által létrehozott Azure-Virtual Network szeretné korlátozni, válassza a __magánhálózati végpont__ (előzetes verzió) lehetőséget a __kapcsolati módszerként__, majd a __+ Hozzáadás__ paranccsal konfigurálja a végpontot.   
 
    :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Privát végpont kiválasztása":::  
 
@@ -181,7 +185,7 @@ Privát végpont létrehozásakor létrejön egy új, __privatelink.API.azureml.
 
 1. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet tartalmazó erőforráscsoportot. Ezután válassza ki a __privatelink.API.azureml.MS__ nevű saját DNS zóna erőforrást.
 2. A __Beállítások__ területen válassza a __virtuális hálózati kapcsolatok__ elemet.
-3. Válassza a __Hozzáadás__ lehetőséget. A __virtuális hálózat hozzáadása hivatkozás__ lapon adjon meg egy egyedi __hivatkozási nevet__ , majd válassza ki a hozzáadni kívánt __virtuális hálózatot__ . A hálózati kapcsolat hozzáadásához kattintson __az OK gombra__ .
+3. Válassza a __Hozzáadás__ elemet. A __virtuális hálózat hozzáadása hivatkozás__ lapon adjon meg egy egyedi __hivatkozási nevet__, majd válassza ki a hozzáadni kívánt __virtuális hálózatot__ . A hálózati kapcsolat hozzáadásához kattintson __az OK gombra__ .
 
 További információ: [Azure Private Endpoint DNS-konfiguráció](../private-link/private-endpoint-dns.md).
 
@@ -355,7 +359,7 @@ A [Azure Portal](https://portal.azure.com/)a törölni kívánt munkaterület te
 
 ---
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 

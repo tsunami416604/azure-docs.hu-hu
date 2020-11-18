@@ -2,19 +2,19 @@
 title: Linux Python-alkalmazások konfigurálása
 description: Megtudhatja, hogyan konfigurálhatja a webalkalmazásokat futtató Python-tárolót a Azure Portal és az Azure CLI használatával.
 ms.topic: quickstart
-ms.date: 11/06/2020
+ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 9e0e9098959231d4283608e8191081ae2df6737a
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 149f8deb8839b3adce3555300c94b8ebdf587100
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425915"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873845"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
-Ez a cikk leírja, hogyan futtatja [Azure app Service](overview.md) a Python-alkalmazásokat, és hogyan szabhatja testre a app Service viselkedését, ha szükséges. A Python-alkalmazásokat az összes szükséges [pip](https://pypi.org/project/pip/) -modullal telepíteni kell.
+Ez a cikk leírja, hogyan futtatja [Azure app Service](overview.md) a Python-alkalmazásokat, hogyan telepítheti át a meglévő alkalmazásokat az Azure-ba, és hogyan szabhatja testre a app Service viselkedését, ha szükséges. A Python-alkalmazásokat az összes szükséges [pip](https://pypi.org/project/pip/) -modullal telepíteni kell.
 
 A App Service üzembe helyezési motor automatikusan aktiválja a virtuális környezetet, és `pip install -r requirements.txt` a [git-tárház](deploy-local-git.md)vagy egy zip- [csomag](deploy-zip.md)telepítésekor futtatja azt.
 
@@ -24,7 +24,7 @@ A konfiguráláshoz használhatja a [Azure Portal](https://portal.azure.com) vag
 
 - **Azure Portal** használja az alkalmazás **Beállítások**  >  **konfigurációs** lapját az [Azure Portal app Service alkalmazás konfigurálása](configure-common.md)című cikkben leírtak szerint.
 
-- **Azure CLI** : két lehetőség közül választhat.
+- **Azure CLI**: két lehetőség közül választhat.
 
     - Futtassa a parancsokat a [Azure Cloud Shell](../cloud-shell/overview.md).
     - Futtassa a parancsokat helyileg az [Azure CLI](/cli/azure/install-azure-cli)legújabb verziójának telepítésével, majd jelentkezzen be az Azure-ba az [az login](/cli/azure/reference-index#az-login)használatával.
@@ -34,9 +34,9 @@ A konfiguráláshoz használhatja a [Azure Portal](https://portal.azure.com) vag
 
 ## <a name="configure-python-version"></a>Python-verzió konfigurálása
 
-- **Azure Portal** : használja a **konfiguráció** lap **általános beállítások** lapját a Linux-tárolók [általános beállításainak konfigurálása](configure-common.md#configure-general-settings) című témakörben leírtak szerint.
+- **Azure Portal**: használja a **konfiguráció** lap **általános beállítások** lapját a Linux-tárolók [általános beállításainak konfigurálása](configure-common.md#configure-general-settings) című témakörben leírtak szerint.
 
-- **Azure CLI** :
+- **Azure CLI**:
 
     -  Az aktuális Python-verzió megjelenítése az [az WebApp config show paranccsal](/cli/azure/webapp/config#az_webapp_config_show):
     
@@ -68,7 +68,7 @@ A Python nem támogatott verzióját a saját tároló rendszerképének létreh
 App Service a Oryx nevű Build-rendszer a következő lépéseket hajtja végre az alkalmazás git vagy zip-csomagok használatával történő telepítésekor:
 
 1. Ha ezt a beállítást adja meg, futtasson egyéni, előkészítő parancsfájlt `PRE_BUILD_COMMAND` .
-1. A `pip install -r requirements.txt` parancs futtatása. A *requirements.txt* fájlnak jelen kell lennie a projekt gyökérkönyvtárában. Ellenkező esetben a fordítási folyamat a következő hibát jelenti: "nem található a setup.py vagy a requirements.txt; Nem fut a pip telepítése. "
+1. Futtassa a `pip install -r requirements.txt` parancsot. A *requirements.txt* fájlnak jelen kell lennie a projekt gyökérkönyvtárában. Ellenkező esetben a fordítási folyamat a következő hibát jelenti: "nem található a setup.py vagy a requirements.txt; Nem fut a pip telepítése. "
 1. Ha a *Manage.py* a tárház gyökerében található (Django-alkalmazást jelez), futtassa a *Manage.py collectstatic*. Ha azonban ez a `DISABLE_COLLECTSTATIC` beállítás `true` , ez a lépés kimarad.
 1. Ha a beállítás megadja az egyéni létrehozás utáni parancsfájlt, `POST_BUILD_COMMAND`
 
@@ -94,7 +94,31 @@ A Python-alkalmazások Linux rendszeren való futtatásával és a App Serviceá
 > [!NOTE]
 > Mindig relatív elérési utakat használjon az összes előre és post-Build parancsfájlban, mert az a Build-tároló, amelyben a Oryx fut, eltér az alkalmazást futtató futtatókörnyezeti tárolótól. Soha ne támaszkodjon az alkalmazás Project mappájának a tárolón belüli pontos elhelyezésére (például úgy, hogy az a *site/wwwroot* alá van helyezve).
 
-## <a name="production-settings-for-django-apps"></a>Django-alkalmazások üzemi beállításai
+## <a name="migrate-existing-applications-to-azure"></a>Meglévő alkalmazások migrálása az Azure-ba
+
+A meglévő webalkalmazások a következőképpen helyezhetők üzembe az Azure-ban:
+
+1. **Forrás adattár**: a forráskódot egy megfelelő tárházban, például a githubban tarthatja karban, amely lehetővé teszi a folyamatos üzembe helyezést a folyamat későbbi részében.
+    1. A *requirements.txt* -fájlnak a tárház gyökerében kell lennie, app Service a szükséges csomagok automatikus telepítéséhez.    
+
+1. **Adatbázis**: Ha az alkalmazás egy adatbázistól függ, kiépítheti a szükséges erőforrásokat az Azure-ban is. Lásd [: oktatóanyag: Django-webalkalmazás üzembe helyezése PostgreSQL-ben – adatbázis létrehozása](tutorial-python-postgresql-app.md#create-postgres-database-in-azure) egy példához.
+
+1. **App Service-erőforrások**: hozzon létre egy erőforráscsoportot, app Service tervet, és app Service webalkalmazást az alkalmazás üzemeltetéséhez. Ezt egyszerűen megteheti a kód első üzembe helyezésével az Azure CLI `az webapp up` -paranccsal, ahogy az [oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-ben – a kód üzembe helyezése](tutorial-python-postgresql-app.md#deploy-the-code-to-azure-app-service). Cserélje le az erőforráscsoport nevét, App Service tervet, és a webalkalmazást, hogy jobban megfeleljen az alkalmazásnak.
+
+1. **Környezeti változók**: Ha az alkalmazásnak környezeti változókra van szüksége, hozzon létre egyenértékű [app Service Alkalmazásbeállítások](configure-common.md#configure-app-settings). Ezek a App Service beállítások környezeti változókként jelennek meg a kódban, a [hozzáférési környezet változói](#access-app-settings-as-environment-variables)című témakörben leírtak szerint.
+    - Az adatbázis-kapcsolatok például gyakran az ilyen beállításokon keresztül kezelhetők, ahogy az [oktatóanyag: Django-webalkalmazás telepítése PostgreSQL-ben – változók konfigurálása az adatbázis csatlakoztatására című útmutatóban](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database)látható.
+    - Tekintse meg a [Django-alkalmazások üzemi beállításait](#production-settings-for-django-apps) a tipikus Django-alkalmazások adott beállításaihoz.
+
+1. **Alkalmazás indítása**: a cikk későbbi részében tekintse át a [tároló indítási folyamatát](#container-startup-process) , hogy megtudja, hogyan app Service próbálja futtatni az alkalmazást. A App Service alapértelmezés szerint a Gunicorn webkiszolgálót használja, amely képesnek kell lennie az alkalmazás-objektum vagy a *WSGI.py* mappa megkeresésére. Ha szükséges, testre is [szabhatja az indítási parancsot](#customize-startup-command).
+
+1. **Folyamatos üzembe helyezés**: állítsa be a folyamatos üzembe helyezést a folyamatos üzembe [helyezésről Azure app Service](deploy-continuous-deployment.md) ha Azure-folyamatokat vagy kudu üzembe helyezést használ, vagy ha GitHub-műveleteket használ a GitHub-műveletek használatával [történő app Service](deploy-github-actions.md) .
+
+1. **Egyéni műveletek**: az alkalmazást futtató app Service tárolón belüli műveletek végrehajtásához, például a Django-adatbázis áttelepítéséhez, SSH-n [keresztül csatlakozhat a tárolóhoz](configure-linux-open-ssh-session.md). A Django-adatbázis áttelepítésének futtatására példát a következő témakörben talál [: oktatóanyag: Django-webalkalmazás üzembe helyezése PostgreSQL-ben – adatbázis-áttelepítés futtatása](tutorial-python-postgresql-app.md#run-django-database-migrations).
+    - Folyamatos üzembe helyezés esetén ezeket a műveleteket a [Build Automation testreszabása](#customize-build-automation)című szakaszban leírtak szerint végezheti el a létrehozás utáni parancsokkal.
+
+Ezeknek a lépéseknek a végrehajtásával véglegesítheti a forrás-adattár módosításait, és automatikusan telepítheti ezeket a frissítéseket a App Service.
+
+### <a name="production-settings-for-django-apps"></a>Django-alkalmazások üzemi beállításai
 
 Az olyan éles környezetekhez, mint a Azure App Service, a Django-alkalmazásoknak a Django [üzembe helyezési ellenőrzőlistáját](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/) (djangoproject.com) kell követniük.
 
@@ -178,15 +202,15 @@ Ha az alapértelmezett alkalmazás helyett egy telepített alkalmazást szeretne
 
 A cikkben korábban leírtaknak megfelelően a Gunicorn konfigurációs beállításait a *gunicorn.conf.py* -fájlon keresztül is megadhatja a projekt gyökerében, a [Gunicorn-konfiguráció áttekintése](https://docs.gunicorn.org/en/stable/configure.html#configuration-file)című témakörben leírtak szerint.
 
-Ha ez a konfiguráció nem elegendő, a tároló indítási viselkedését beállíthatja úgy, hogy egyéni indítási parancsot vagy több parancsot indít el egy indítási parancsfájlban. Az indítási parancsfájl tetszőleges nevet használhat, például *Startup.sh* , *Startup. cmd* , *startup.txt* stb.
+Ha ez a konfiguráció nem elegendő, a tároló indítási viselkedését beállíthatja úgy, hogy egyéni indítási parancsot vagy több parancsot indít el egy indítási parancsfájlban. Az indítási parancsfájl tetszőleges nevet használhat, például *Startup.sh*, *Startup. cmd*, *startup.txt* stb.
 
 Minden parancsnak relatív elérési utakat kell használnia a projekt gyökérkönyvtárához.
 
 Indítási parancs vagy parancsfájl megadásához:
 
-- **Azure Portal** : válassza ki az alkalmazás **konfiguráció** lapját, majd válassza az **általános beállítások** lehetőséget. Az **indítási parancs** mezőben helyezze el az indítási parancs teljes szövegét vagy az indítási parancsfájl nevét. Ezután kattintson a **Mentés** gombra a módosítások alkalmazásához. Lásd: a Linux-tárolók [általános beállításainak konfigurálása](configure-common.md#configure-general-settings) .
+- **Azure Portal**: válassza ki az alkalmazás **konfiguráció** lapját, majd válassza az **általános beállítások** lehetőséget. Az **indítási parancs** mezőben helyezze el az indítási parancs teljes szövegét vagy az indítási parancsfájl nevét. Ezután kattintson a **Mentés** gombra a módosítások alkalmazásához. Lásd: a Linux-tárolók [általános beállításainak konfigurálása](configure-common.md#configure-general-settings) .
 
-- **Azure CLI** : használja az az [WebApp config set](/cli/azure/webapp/config#az_webapp_config_set) parancsot a `--startup-file` paraméterrel az indítási parancs vagy fájl beállításához:
+- **Azure CLI**: használja az az [WebApp config set](/cli/azure/webapp/config#az_webapp_config_set) parancsot a `--startup-file` paraméterrel az indítási parancs vagy fájl beállításához:
 
     ```azurecli
     az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -198,7 +222,7 @@ App Service figyelmen kívül hagyja az egyéni indítási parancsok vagy fájlo
 
 ### <a name="example-startup-commands"></a>Példa indítási parancsokra
 
-- **Hozzáadott Gunicorn argumentumai** : a következő példa hozzáadja a `--workers=4` -t egy Gunicorn parancssorhoz egy Django-alkalmazás indításához: 
+- **Hozzáadott Gunicorn argumentumai**: a következő példa hozzáadja a `--workers=4` -t egy Gunicorn parancssorhoz egy Django-alkalmazás indításához: 
 
     ```bash
     # <module-path> is the relative path to the folder that contains the module
@@ -208,7 +232,7 @@ App Service figyelmen kívül hagyja az egyéni indítási parancsok vagy fájlo
 
     További információkért lásd: [A Gunicorn futtatása](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-- A **Django éles naplózásának engedélyezése** : adja hozzá a (z) `--access-logfile '-'` és `--error-logfile '-'` argumentumokat a parancssorhoz:
+- A **Django éles naplózásának engedélyezése**: adja hozzá a (z) `--access-logfile '-'` és `--error-logfile '-'` argumentumokat a parancssorhoz:
 
     ```bash    
     # '-' for the log files means stdout for --access-logfile and stderr for --error-logfile.
@@ -219,7 +243,7 @@ App Service figyelmen kívül hagyja az egyéni indítási parancsok vagy fájlo
 
     További információ: Gunicorn- [naplózás](https://docs.gunicorn.org/en/stable/settings.html#logging) (docs.gunicorn.org).
     
-- **Egyéni lombik főmodulja** : alapértelmezés szerint a app Service feltételezi, hogy a lombik-alkalmazás fő modulja a *application.py* vagy a *app.py*. Ha a fő modul más nevet használ, testre kell szabnia az indítási parancsot. Például YF van egy olyan lombik-alkalmazás, amelynek a fő modulja *Hello.py* , és az abban a fájlban található lombik alkalmazás-objektum neve `myapp` , a parancs a következő:
+- **Egyéni lombik főmodulja**: alapértelmezés szerint a app Service feltételezi, hogy a lombik-alkalmazás fő modulja a *application.py* vagy a *app.py*. Ha a fő modul más nevet használ, testre kell szabnia az indítási parancsot. Például YF van egy olyan lombik-alkalmazás, amelynek a fő modulja *Hello.py* , és az abban a fájlban található lombik alkalmazás-objektum neve `myapp` , a parancs a következő:
 
     ```bash
     gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -288,7 +312,7 @@ Ha sikeresen csatlakozott az SSH-munkamenethez, az ablak alján található "SSH
 
 1. A webalkalmazás Azure Portal a bal oldali menüben válassza a **diagnosztizálás és problémák megoldása** lehetőséget.
 1. Válassza ki **a rendelkezésre állást és a teljesítményt**.
-1. Vizsgálja meg az **alkalmazás naplói** , a **tároló összeomlása** és a **tárolókkal kapcsolatos problémák** lehetőségeit, ahol a leggyakoribb problémák jelennek meg.
+1. Vizsgálja meg az **alkalmazás naplói**, a **tároló összeomlása** és a **tárolókkal kapcsolatos problémák** lehetőségeit, ahol a leggyakoribb problémák jelennek meg.
 
 Ezután vizsgálja meg a [telepítési naplókat](#access-deployment-logs) és az [alkalmazás naplófájljait](#access-diagnostic-logs) is a hibaüzenetek esetében. Ezek a naplók gyakran azonosítják az alkalmazások központi telepítésének vagy az alkalmazások indításának megakadályozására szolgáló konkrét problémákat. A Build sikertelen lehet például, ha a *requirements.txt* fájljának helytelen a neve, vagy nincs jelen a projekt gyökérkönyvtárában.
 
@@ -326,7 +350,7 @@ A következő szakaszokban további útmutatást talál az adott problémákkal 
 
 #### <a name="could-not-find-setuppy-or-requirementstxt"></a>Nem található setup.py vagy requirements.txt
 
-- **A log stream a következőt jeleníti meg: "nem található Setup.py vagy requirements.txt; Nem fut a pip telepítése. "** : a Oryx-létrehozási folyamat nem találta a *requirements.txt* fájlt.
+- **A log stream a következőt jeleníti meg: "nem található Setup.py vagy requirements.txt; Nem fut a pip telepítése. "**: a Oryx-létrehozási folyamat nem találta a *requirements.txt* fájlt.
 
     - Csatlakozzon az [SSH](#open-ssh-session-in-browser) -n keresztül a Web App-tárolóhoz, és ellenőrizze, hogy a *requirements.txt* neve helyesen van-e, és létezik-e közvetlenül a *site/wwwroot* alatt. Ha nem létezik, tegye meg a fájlt a tárházban, és tartalmazza a központi telepítés részét képező helyet. Ha egy különálló mappában van, helyezze át a gyökerébe.
 
@@ -334,11 +358,11 @@ A következő szakaszokban további útmutatást talál az adott problémákkal 
 
 - A jelszó **nem jelenik meg az SSH-munkamenetben, ha** a típus: biztonsági okokból az SSH-munkamenet megtartja a beírt jelszót. A karakterek rögzítése folyamatban van, ezért a szokásos módon írja be a jelszót, majd nyomja le az **ENTER** billentyűt a kész gombra.
 
-- **Úgy tűnik, hogy az SSH-munkamenetben lévő parancsok le lesznek vágva** : Előfordulhat, hogy a szerkesztő nem lehet sortörési parancs, de a megfelelő futtatást is el kell végezni.
+- **Úgy tűnik, hogy az SSH-munkamenetben lévő parancsok le lesznek vágva**: Előfordulhat, hogy a szerkesztő nem lehet sortörési parancs, de a megfelelő futtatást is el kell végezni.
 
-- A **statikus eszközök nem jelennek meg a Django alkalmazásban** : Győződjön meg arról, hogy engedélyezte a [whitenoise modult](http://whitenoise.evans.io/en/stable/django.html) .
+- A **statikus eszközök nem jelennek meg a Django alkalmazásban**: Győződjön meg arról, hogy engedélyezte a [whitenoise modult](http://whitenoise.evans.io/en/stable/django.html) .
 
-- **A "végzetes SSL-kapcsolat szükséges" üzenet jelenik meg** : Ellenőrizze, hogy az alkalmazásból milyen felhasználóneveket és jelszavakat lehet elérni az erőforrásokhoz (például adatbázisokhoz).
+- **A "végzetes SSL-kapcsolat szükséges" üzenet jelenik meg**: Ellenőrizze, hogy az alkalmazásból milyen felhasználóneveket és jelszavakat lehet elérni az erőforrásokhoz (például adatbázisokhoz).
 
 ## <a name="next-steps"></a>Következő lépések
 

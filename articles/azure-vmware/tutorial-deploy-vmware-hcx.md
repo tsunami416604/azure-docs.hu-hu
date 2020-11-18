@@ -3,12 +3,12 @@ title: Oktatóanyag – VMware HCX üzembe helyezése és konfigurálása
 description: Ismerje meg, hogyan helyezhet üzembe és konfigurálhat VMware HCX-megoldást az Azure VMware-megoldás privát felhője számára.
 ms.topic: tutorial
 ms.date: 11/23/2020
-ms.openlocfilehash: 5ee5390ef45e71baf3843cadc815de2f7e06bdac
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 35cc87d7f3f1345972a7f27cecaeb96c6fa687dc
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842340"
+ms.locfileid: "94873913"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
 
@@ -88,9 +88,7 @@ Mielőtt telepítené a virtuális berendezést a helyszíni vCenter, le kell t�
 
 1. Válassza az **adminisztrációs**  >  **rendszerfrissítések** lehetőséget, majd a **kérelem letöltési hivatkozását**.
 
-1. Válassza ki azt a lehetőséget, amelyről le szeretné tölteni a VMware HCX-összekötő PETESEJTJEInek fájlját.
-
-   :::image type="content" source="media/tutorial-vmware-hcx/vmware-hcx-download-link.png" alt-text="kérelem letöltési hivatkozása" lightbox="media/tutorial-vmware-hcx/vmware-hcx-download-link.png":::
+1. Válassza ki az Ön által választott lehetőséget a VMware HCX-összekötő PETESEJTJEI fájl letöltéséhez.
 
 ## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>A VMware HCX-összekötő PETESEJTJEInek üzembe helyezése a helyszínen
 
@@ -162,7 +160,7 @@ Miután telepítette a VMware HCX Connector-összekötőt a helyszínen, és eli
    > [!NOTE]
    > Az újraindítás után késleltetést tapasztal, mielőtt a rendszer megkéri a következő lépéssel.
 
-A szolgáltatások újraindítása után a megjelenő képernyőn a vCenter zöld színnel jelenik meg. Mind a vCenter, mind az SSO-nak rendelkeznie kell a megfelelő konfigurációs paraméterekkel, amelyeknek meg kell egyezniük az előző képernyővel.
+A szolgáltatások újraindítása után a megjelenő képernyőn zöld színnel jelenik meg a vCenter. Mind a vCenter, mind az SSO-nak rendelkeznie kell a megfelelő konfigurációs paraméterekkel, amelyeknek meg kell egyezniük az előző képernyővel.
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="Képernyőfelvétel az irányítópultról zöld vCenter állapottal." lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
@@ -179,11 +177,7 @@ A VMware HCX Cloud Managert az adatközpont VMware HCX-összekötője segítség
 
 1. Jelentkezzen be a helyszíni vCenter, és a Home ( **Kezdőlap**) területen válassza a **HCX** lehetőséget.
 
-   :::image type="content" source="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png" alt-text="Képernyőkép a vCenter-ügyfélről a parancsikonok között kiválasztott HCX." lightbox="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png":::
-
 1. Az **infrastruktúra** területen válassza a **hely párosítása** elemet, majd válassza a **Kapcsolódás távoli helyhez** lehetőséget (a képernyő közepén). 
-
-   :::image type="content" source="media/tutorial-vmware-hcx/connect-remote-site.png" alt-text="Képernyőkép a távoli hely létrehozásához szükséges beállításokról." lightbox="media/tutorial-vmware-hcx/connect-remote-site.png":::
 
 1. Adja meg a korábban feljegyzett Azure VMware-megoldás HCX URL-címét vagy IP-címét, az Azure VMware-megoldás cloudadmin \@ vSphere. local felhasználónevet és a jelszót. Ezután válassza a **Csatlakozás** lehetőséget.
 
@@ -224,7 +218,7 @@ Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMwar
 
 ### <a name="create-a-compute-profile"></a>Számítási profil létrehozása
 
-1. Válassza a **számítási profilok**  >  **számítási profil létrehozása** lehetőséget.
+1. Az **infrastruktúra** területen válassza az **összekötő**  >  **számítási profilok**  >  **create számítási profil létrehozása** lehetőséget.
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-create.png" alt-text="Képernyőkép, amely megjeleníti a számítási profil létrehozásának megkezdéséhez szükséges beállításokat." lightbox="media/tutorial-vmware-hcx/compute-profile-create.png":::
 
@@ -347,7 +341,7 @@ Az eljárás teljes körű áttekintéséhez tekintse meg az [Azure VMware-megol
 
 Ha a helyszíni környezetből származó hálózatokat az Azure VMware megoldásba kívánja terjeszteni, kövesse az alábbi lépéseket:
 
-1. A **szolgáltatások** területen válassza a **hálózati kiterjesztés** lehetőséget, majd válassza **a hálózati bővítmény létrehozása** lehetőséget.
+1. A **szolgáltatások** területen válassza a **hálózati bővítmény**  >  **hálózati bővítmény létrehozása** lehetőséget.
 
    :::image type="content" source="media/tutorial-vmware-hcx/create-network-extension.png" alt-text="Képernyőkép, amely a hálózati bővítmény létrehozásának megkezdésére szolgáló beállításokat jeleníti meg." lightbox="media/tutorial-vmware-hcx/create-network-extension.png":::
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: fb1f1d098970927ba04c840e77ec0a0b8d76ca02
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a9ad018980784a1f809ad28a77dacf9f0328fffa
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561318"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873896"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Nagyvállalati biztonság és irányítási Azure Machine Learning
 
@@ -30,8 +30,8 @@ Ha Cloud Service-t használ, az ajánlott eljárás a hozzáférés korlátozás
 
 A Azure Machine Learning erőforrásokhoz való legtöbb hitelesítés a hitelesítéshez Azure Active Directory (Azure AD), az engedélyezéshez pedig szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ. A kivételek a következők:
 
-* __SSH__ : engedélyezheti az SSH-hozzáférést bizonyos számítási erőforrásokhoz, például Azure Machine learning számítási példányhoz. Az SSH-hozzáférés kulcs alapú hitelesítést használ. Az SSH-kulcsok létrehozásával kapcsolatos további információkért lásd: [ssh-kulcsok létrehozása és kezelése](../virtual-machines/linux/create-ssh-keys-detailed.md). További információ az SSH-hozzáférés engedélyezéséről: [Azure Machine learning számítási példány létrehozása és kezelése](how-to-create-manage-compute-instance.md).
-* __Webszolgáltatásként üzembe helyezett modellek: a__ webszolgáltatás központi telepítései a __kulcs__ -vagy __jogkivonat__ -alapú hozzáférés-vezérlést is használhatják. A kulcsok statikus karakterláncok. A tokeneket egy Azure AD-fiók használatával kéri le a rendszer. További információkért lásd: [webszolgáltatásként üzembe helyezett modellek hitelesítésének konfigurálása](how-to-authenticate-web-service.md).
+* __SSH__: engedélyezheti az SSH-hozzáférést bizonyos számítási erőforrásokhoz, például Azure Machine learning számítási példányhoz. Az SSH-hozzáférés kulcs alapú hitelesítést használ. Az SSH-kulcsok létrehozásával kapcsolatos további információkért lásd: [ssh-kulcsok létrehozása és kezelése](../virtual-machines/linux/create-ssh-keys-detailed.md). További információ az SSH-hozzáférés engedélyezéséről: [Azure Machine learning számítási példány létrehozása és kezelése](how-to-create-manage-compute-instance.md).
+* __Webszolgáltatásként üzembe helyezett modellek: a__ webszolgáltatás központi telepítései a __kulcs__ -vagy __jogkivonat__-alapú hozzáférés-vezérlést is használhatják. A kulcsok statikus karakterláncok. A tokeneket egy Azure AD-fiók használatával kéri le a rendszer. További információkért lásd: [webszolgáltatásként üzembe helyezett modellek hitelesítésének konfigurálása](how-to-authenticate-web-service.md).
 
 Azok a szolgáltatások, amelyek Azure Machine Learning, például az Azure adattárolási szolgáltatásaira támaszkodnak, saját hitelesítési és engedélyezési módszerekkel rendelkeznek. A Storage Services-hitelesítéssel kapcsolatos további információkért lásd: [Kapcsolódás a tárolási szolgáltatásokhoz](how-to-access-data.md).
 
@@ -75,6 +75,8 @@ A következő táblázat a főbb Azure Machine Learning-műveleteit és az azoka
 | Webszolgáltatás hívása | ✓ | ✓ | ✓ |
 
 Ha a beépített szerepkörök nem felelnek meg az igényeinek, létrehozhat egyéni szerepköröket is. Az egyéni szerepkörök egy adott munkaterületen belüli összes műveletet vezérlik, például a számítási feladatok létrehozását, a Futtatás elküldését, az adattár regisztrálását vagy a modell üzembe helyezését. Az egyéni szerepkörök olvasási, írási és törlési engedélyekkel rendelkezhetnek a munkaterület különböző erőforrásaihoz, például a fürtökhöz, az adattárolóhoz, a modellekhez és a végpontokhoz. A szerepkört egy adott munkaterület-szinten, egy adott erőforráscsoport-szinten vagy egy adott előfizetési szinten is elérhetővé teheti. További információ: [felhasználók és szerepkörök kezelése Azure Machine learning munkaterületen](how-to-assign-roles.md).
+
+A RBAC és a Kubernetes használatával kapcsolatos további információkért lásd: [Azure Role-Based Access Control Kubernetes engedélyezéséhez](../aks/manage-azure-rbac.md).
 
 > [!IMPORTANT]
 > Azure Machine Learning a többi Azure-szolgáltatástól, például az Azure Blob Storagetól és az Azure Kubernetes servicestől függ. Minden Azure-szolgáltatás saját Azure RBAC-konfigurációval rendelkezik. A hozzáférés-vezérlés kívánt szintjének elérése érdekében előfordulhat, hogy mindkét Azure RBAC-konfigurációt alkalmaznia kell Azure Machine Learning és a Azure Machine Learning használt szolgáltatásokhoz.
@@ -185,8 +187,8 @@ Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyege
 
 A [Azure Policy](../governance/policy/index.yml) egy irányítási eszköz, amely lehetővé teszi, hogy az Azure-erőforrások megfeleljenek a szabályzatoknak. A Azure Machine Learning használatával a következő házirendeket rendelheti hozzá:
 
-* **Ügyfél által felügyelt kulcs** : naplózás vagy betartatás, hogy a munkaterületeknek ügyfél által felügyelt kulcsot kell-e használniuk.
-* **Privát hivatkozás** : annak ellenőrzése, hogy a munkaterületek használnak-e privát végpontot a virtuális hálózattal való kommunikációhoz.
+* **Ügyfél által felügyelt kulcs**: naplózás vagy betartatás, hogy a munkaterületeknek ügyfél által felügyelt kulcsot kell-e használniuk.
+* **Privát hivatkozás**: annak ellenőrzése, hogy a munkaterületek használnak-e privát végpontot a virtuális hálózattal való kommunikációhoz.
 
 A Azure Policyről a [Azure Policy dokumentációjában](../governance/policy/overview.md)talál további információt.
 

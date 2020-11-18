@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dd88f6e8eb2ce95c1aa68c63f3d14a14e079d19
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 9055bb9689895a9b74f3d6b5affa325a3b594d65
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396515"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874678"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -69,7 +69,7 @@ Az ebben a szerepkörben lévő felhasználók létrehozhatnak alkalmazás-regis
 
 ### <a name="authentication-administrator"></a>[Hitelesítés rendszergazdája](#authentication-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók egyes felhasználók számára megadhatják vagy alaphelyzetbe állíthatják a nem jelszavas hitelesítő adatokat, és az összes felhasználó jelszavait módosíthatják. A hitelesítő rendszergazdák megkövetelhetik, hogy a nem rendszergazdák vagy bizonyos szerepkörökhöz rendelt felhasználók újra regisztráljanak a meglévő, nem jelszóval nem rendelkező hitelesítő adatokkal (például MFA vagy...), és visszavonhatók az MFA-t az **eszközön** , amely a következő bejelentkezéskor az MFA-t kéri. Ezek a műveletek csak azokra a felhasználókra vonatkoznak, akik nem rendszergazdák, vagy akik a következő szerepkörök közül egyet vagy többet rendelnek hozzá:
+Az ezzel a szerepkörrel rendelkező felhasználók egyes felhasználók számára megadhatják vagy alaphelyzetbe állíthatják a nem jelszavas hitelesítő adatokat, és az összes felhasználó jelszavait módosíthatják. A hitelesítő rendszergazdák megkövetelhetik, hogy a nem rendszergazdák vagy bizonyos szerepkörökhöz rendelt felhasználók újra regisztráljanak a meglévő, nem jelszóval nem rendelkező hitelesítő adatokkal (például MFA vagy...), és visszavonhatók az MFA-t az **eszközön**, amely a következő bejelentkezéskor az MFA-t kéri. Ezek a műveletek csak azokra a felhasználókra vonatkoznak, akik nem rendszergazdák, vagy akik a következő szerepkörök közül egyet vagy többet rendelnek hozzá:
 
 * Hitelesítés rendszergazdája
 * Directory-olvasók
@@ -80,7 +80,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók egyes felhasználók számá
 Az emelt [szintű hitelesítés rendszergazdai](#privileged-authentication-administrator) szerepköre jogosult az ismételt regisztrációra és a többtényezős hitelesítésre az összes felhasználó számára.
 
 > [!IMPORTANT]
-> Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Ilyenek többek között:
+> Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
 >
 >* Az alkalmazás regisztrálása és a vállalati alkalmazások tulajdonosai, akik kezelhetik a saját alkalmazások hitelesítő adatait. Ezek az alkalmazások jogosultsági szintű engedélyekkel rendelkezhetnek az Azure AD-ben, és másutt nem kapják meg a hitelesítési rendszergazdákat. Ezen az elérési úton a hitelesítési rendszergazda feltételezheti az alkalmazás tulajdonosának identitását, majd az alkalmazás hitelesítő adatainak frissítésével továbbra is feltételezheti a Kiemelt alkalmazások identitását.
 >* Az Azure-előfizetések tulajdonosai, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz vagy az Azure-beli kritikus konfigurációhoz.
@@ -233,7 +233,7 @@ Az ebben a szerepkörben lévő felhasználók beolvashatják a beállításokat
 >- [OneDrive felügyeleti központ](https://admin.onedrive.com/) – a OneDrive felügyeleti központ nem támogatja a globális olvasó szerepkört
 >- [M365 felügyeleti központ](https://admin.microsoft.com/Adminportal/Home#/homepage) – a globális olvasó nem tudja beolvasni az ügyfél kulcstároló-kérelmeit. A M365 felügyeleti központ bal oldali ablaktáblájában nem találja a **Customer kulcstároló-kérelmek** fület a **támogatás** területen.
 >- [Office biztonsági & megfelelőségi központ](https://sip.protection.office.com/homepage) – a globális olvasó nem tudja olvasni az SCC-naplókat, a tartalom keresését vagy a biztonságos pontszám megtekintését.
->- [Teams felügyeleti központ](https://admin.teams.microsoft.com) – a globális olvasó nem tudja beolvasni a **csapatok életciklusát** , az **elemzési & jelentéseket** , az **IP Phone-eszközök kezelését** és az **alkalmazás-katalógust**
+>- [Teams felügyeleti központ](https://admin.teams.microsoft.com) – a globális olvasó nem tudja beolvasni a **csapatok életciklusát**, az **elemzési & jelentéseket**, az **IP Phone-eszközök kezelését** és az **alkalmazás-katalógust**
 >- A [Privileged Access Management (PAM)](/office365/securitycompliance/privileged-access-management-overview) nem támogatja a globális olvasó szerepkört.
 >- [Azure Information Protection](/azure/information-protection/what-is-information-protection) – a globális olvasó csak a [központi jelentéskészítés](/azure/information-protection/reports-aip) esetén támogatott, és ha az Azure ad-szervezet nem az [egyesített címkézési platformon](/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)van.
 >
@@ -260,7 +260,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók módosíthatják a jelszavak
 * Jelentések olvasója
 
 > [!IMPORTANT]
-> Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azokat a személyeket, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belül és kívül is kritikus konfigurációhoz. A felhasználó jelszavának módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Ilyenek többek között:
+> Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azokat a személyeket, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belül és kívül is kritikus konfigurációhoz. A felhasználó jelszavának módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
 >
 >- Az alkalmazás regisztrálása és a vállalati alkalmazások tulajdonosai, akik kezelhetik a saját alkalmazások hitelesítő adatait. Ezek az alkalmazások jogosultsági szintű engedélyekkel rendelkezhetnek az Azure AD-ben, és máshol nem biztosítanak ügyfélszolgálati rendszergazdának. Ezen az elérési úton egy ügyfélszolgálati rendszergazda képes lehet feltételezni az alkalmazás tulajdonosának identitását, majd az alkalmazás hitelesítő adatainak frissítésével tovább feltételezni egy emelt szintű alkalmazás identitását.
 >- Azure-előfizetések tulajdonosai, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz vagy az Azure-beli kritikus konfigurációhoz.
@@ -311,7 +311,7 @@ Az ebben a szerepkörben lévő felhasználók megtekinthetik az üzenetek és a
 
 Ne használja. Ezt a szerepkört a rendszer automatikusan a kereskedelemből rendeli hozzá, és semmilyen más használatra nem javasolt vagy nem támogatott. A részleteket alább találja.
 
-A modern kereskedelmi felhasználói szerepkör lehetővé teszi, hogy bizonyos felhasználók hozzáférhessenek Microsoft 365 felügyeleti központhoz, és megtekintsék a bal oldali navigációs bejegyzéseket a **Kezdőlap** , a **számlázás** és a **támogatás** számára. Az ezeken a területeken elérhető tartalmakat a felhasználók számára a saját maguk vagy a szervezete számára vásárolt termékek kezeléséhez rendelt [kereskedelmi szerepkörök](../../cost-management-billing/manage/understand-mca-roles.md) szabályozzák. Ilyen lehet például a számlák kifizetése, illetve a számlázási fiókokhoz és a számlázási profilokhoz való hozzáférés. 
+A modern kereskedelmi felhasználói szerepkör lehetővé teszi, hogy bizonyos felhasználók hozzáférhessenek Microsoft 365 felügyeleti központhoz, és megtekintsék a bal oldali navigációs bejegyzéseket a **Kezdőlap**, a **számlázás** és a **támogatás** számára. Az ezeken a területeken elérhető tartalmakat a felhasználók számára a saját maguk vagy a szervezete számára vásárolt termékek kezeléséhez rendelt [kereskedelmi szerepkörök](../../cost-management-billing/manage/understand-mca-roles.md) szabályozzák. Ilyen lehet például a számlák kifizetése, illetve a számlázási fiókokhoz és a számlázási profilokhoz való hozzáférés. 
 
 A modern kereskedelmi felhasználói szerepkörrel rendelkező felhasználók általában rendszergazdai jogosultságokkal rendelkeznek más Microsoft vásárlási rendszerekben, de nem rendelkeznek globális rendszergazdai vagy számlázási rendszergazdai szerepkörökkel a felügyeleti központ eléréséhez. 
 
@@ -500,7 +500,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók létrehozhatnak felhasznál�
 | Csak olyan felhasználóknál, akik nem rendszergazdák vagy a következő korlátozott rendszergazdai szerepkörök valamelyikében vannak:<ul><li>Directory-olvasók<li>Csoportok rendszergazdája<li>Vendég meghívója<li>Segélyszolgálat rendszergazdája<li>Üzenetközpont-olvasó<li>Jelszó-rendszergazda<li>Jelentések olvasója<li>Felhasználói rendszergazda|<p>Törlés és visszaállítás</p><p>Letiltás és engedélyezés</p><p>Frissítési tokenek érvénytelenítése</p><p>Az összes felhasználói tulajdonság kezelése, beleértve az egyszerű felhasználónevet</p><p>Új jelszó létrehozása</p><p>Eszköz kulcsainak frissítése</p>|
 
 > [!IMPORTANT]
-> Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azokat a személyeket, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belül és kívül is kritikus konfigurációhoz. A felhasználó jelszavának módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Ilyenek többek között:
+> Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azokat a személyeket, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belül és kívül is kritikus konfigurációhoz. A felhasználó jelszavának módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
 >
 >- Az alkalmazás regisztrálása és a vállalati alkalmazások tulajdonosai, akik kezelhetik a saját alkalmazások hitelesítő adatait. Ezek az alkalmazások jogosultsági szintű engedélyekkel rendelkezhetnek az Azure AD-ben, és máshol nem kapnak felhasználói rendszergazdákat. Ezen az elérési úton a felhasználói rendszergazda feltételezheti az alkalmazás tulajdonosának identitását, majd az alkalmazáshoz tartozó hitelesítő adatok frissítésével továbbra is feltételezheti a Kiemelt alkalmazások identitását.
 >- Az Azure-előfizetések tulajdonosai, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz vagy az Azure-beli kritikus konfigurációhoz.
@@ -1513,7 +1513,7 @@ A Power BI termék összes aspektusát képes kezelni.
 
 ### <a name="power-platform-administrator-permissions"></a>A Power platform rendszergazdai engedélyei
 
-A a Microsoft Dynamics 365, a PowerApps és a Microsoft Flow összes aspektusát képes létrehozni és kezelni. 
+A a Microsoft Dynamics 365, a PowerApps és a Power automatizálás minden aspektusát képes létrehozni és kezelni.
 
 > [!NOTE]
 > Ez a szerepkör a Azure Active Directoryon kívül további engedélyekkel rendelkezik. További információ: a fenti szerepkör leírása.
@@ -1524,7 +1524,7 @@ A a Microsoft Dynamics 365, a PowerApps és a Microsoft Flow összes aspektusát
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése a címtár szintű szolgáltatásokhoz. |
 | Microsoft. dynamics365/allEntities/allTasks | A Dynamics 365 összes aspektusának kezelése. |
-| Microsoft. flow/allEntities/allTasks | Microsoft Flow összes aspektusának kezelése. |
+| Microsoft. flow/allEntities/allTasks | A Power automatizálás minden aspektusának kezelése. |
 | Microsoft. powerApps/allEntities/allTasks | A PowerApps összes aspektusának kezelése. |
 | Microsoft. Office 365. Webportal/allEntities/alap/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Microsoft 365 Service Health olvasása és konfigurálása. |
@@ -1999,7 +1999,7 @@ Korlátozott vendég felhasználó | Nem látható, mert nem használható | NA
 Felhasználó | Nem látható, mert nem használható | NA
 Munkahelyi eszközök csatlakoztatása | Elavult | [Elavult szerepkörök dokumentációja](permissions-reference.md#deprecated-roles)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni arról, hogyan rendeljen hozzá egy felhasználót egy Azure-előfizetés rendszergazdájához, olvassa el az [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) című témakört.
 * Ha többet szeretne megtudni a Microsoft Azure erőforrás-hozzáférés szabályozásáról, tekintse meg [a különböző szerepkörök megismerése](../../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.

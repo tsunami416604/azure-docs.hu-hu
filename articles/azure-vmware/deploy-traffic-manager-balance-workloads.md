@@ -3,12 +3,12 @@ title: Traffic Manager üzembe helyezése az Azure VMware Solution (AVS) számí
 description: Ismerje meg, hogyan integrálhatja a Traffic Managert az Azure VMware-megoldással (AVS) az alkalmazások számítási feladatainak különböző régiókban lévő több végponton való kiegyensúlyozásához.
 ms.topic: how-to
 ms.date: 08/14/2020
-ms.openlocfilehash: 076d9c77d68df3d8acb7b531b3dfbea40fb3cedd
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: ed74bb0dfc533abadd50af32afc06c9cb4106193
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593136"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874282"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Traffic Manager üzembe helyezése az Azure VMware Solution (AVS) számítási feladatok kiegyensúlyozásához
 
@@ -30,7 +30,7 @@ Ahogy az az alábbi ábrán is látható, az Azure Traffic Manager terheléselos
 
 A virtuális hálózaton keresztüli kapcsolat a két AVS Private Cloud region, az USA nyugati régiója és Nyugat-Európa, valamint az USA keleti régiójában található helyszíni kiszolgáló között egy ExpressRoute-átjárót használ.   
 
-![Az Azure VMware-megoldással való Traffic Manager integráció architektúrájának ábrája](media/traffic-manager/traffic-manager-topology.png)
+:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="Az Azure VMware-megoldással való Traffic Manager integráció architektúrájának ábrája" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
  
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -75,7 +75,7 @@ Ebben az esetben egy NSX-T szegmens van konfigurálva az AVS-környezetben, ahol
 
 1. Válassza ki a **szegmenseket** a konfigurált szegmensek megtekintéséhez. Ebben az esetben azt láthatjuk, hogy a contoso-segment1 egy 1. rétegbeli rugalmas útválasztóhoz csatlakozik a contoso-T01 átjáróhoz.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="A NSX-T Manager szegmens profiljait ábrázoló képernyőkép.":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="A NSX-T Manager szegmens profiljait ábrázoló képernyőkép." lightbox="media/traffic-manager/nsx-t-segment-avs.png":::    
 
 2. Válassza az **1. rétegbeli átjárók** lehetőséget az 1. rétegbeli átjárók listájának megtekintéséhez a csatolt szegmensek számával. Válassza ki a contoso-T01 társított szegmenst. Megnyílik egy ablak, amely a réteg-01 útválasztón konfigurált logikai felületet mutatja. Ez átjáróként szolgál a szegmenshez csatlakoztatott háttérbeli készlethez tartozó tag virtuális géphez.
 
@@ -83,7 +83,7 @@ Ebben az esetben egy NSX-T szegmens van konfigurálva az AVS-környezetben, ahol
 
 3. A virtuálisgép-vSphere ügyfélen válassza ki a virtuális gépet a részletek megtekintéséhez. Vegye figyelembe, hogy az IP-címe megegyezik az előző szakasz 3. lépésében szereplővel: 172.29.1.10.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Képernyőfelvétel: a virtuális gép részletei a VSphere-ügyfélen.":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Képernyőfelvétel: a virtuális gép részletei a VSphere-ügyfélen." lightbox="media/traffic-manager/nsx-t-vm-details.png":::    
 
 4. Válassza ki a virtuális gépet, majd kattintson a **műveletek > beállítások szerkesztése** lehetőségre a NSX-T szegmenshez való kapcsolódás ellenőrzéséhez.
 
@@ -103,7 +103,7 @@ Ebben az esetben egy NSX-T szegmens van konfigurálva az AVS-környezetben, ahol
 
 3. Válassza az **Áttekintés** lehetőséget. Másolja az URL-címet a **DNS-név** területen.
 
-   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Képernyőfelvétel: Traffic Manager végpont áttekintése a DNS-név kiemelésével."::: 
+   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Képernyőfelvétel: Traffic Manager végpont áttekintése a DNS-név kiemelésével." lightbox="media/traffic-manager/traffic-manager-endpoints.png"::: 
 
 4. Illessze be a DNS-név URL-címét egy böngészőben. A következő képernyőfelvételen a Nyugat-európai régióra irányított forgalom látható.
 

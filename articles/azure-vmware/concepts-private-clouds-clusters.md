@@ -3,12 +3,12 @@ title: Fogalmak – privát felhők és fürtök
 description: Ismerje meg az Azure VMware Solution szoftver által meghatározott adatközpontok és vSphere-fürtök főbb képességeit.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: daa712a722ca3252a49e4f54e0cc9e42de4ffc73
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0454ade503ce40de46363f65d36a64340219c0b1
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337321"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874015"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás – saját felhő és fürt – fogalmak
 
@@ -59,7 +59,7 @@ Az Azure VMware-megoldás saját felhőalapú fürtjében használt VMware-szoft
 
 A privát felhőben lévő összes új fürt esetében a szoftver verziója megegyezik a jelenleg futó verzióval. Egy előfizetéshez tartozó új privát felhő esetén a szoftveres verem legújabb verziója lesz telepítve.
 
-A frissítéssel kapcsolatos [fogalmakat](concepts-upgrades.md) ismertető cikkben ismertetett, az Azure VMware Solution platform szoftverre vonatkozó általános frissítési szabályzatok és folyamatok találhatók.
+Az általános frissítési szabályzatokat és folyamatokat a [saját Felhőbeli frissítések és verziófrissítések](concepts-upgrades.md)című cikkben ismertetett Azure VMware Solution platform szoftverhez tekintheti meg.
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Gazdagép-karbantartás és életciklus-kezelés
 
@@ -74,7 +74,7 @@ A Microsoft felelős a NSX-T készülékek életciklus-kezelésért, például a
 
 A Private Cloud vCenter és a NSX-T konfigurációk óránkénti biztonsági mentési ütemtervtel rendelkeznek.  A biztonsági mentések három napig tartanak. Ha biztonsági másolatból kell visszaállítani, nyisson meg egy [támogatási kérést](https://rc.portal.azure.com/#create/Microsoft.Support) a Azure Portal a visszaállítás kéréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépés a [Hálózatkezelés és az összekapcsolási fogalmak](concepts-networking.md)megismerése.
 

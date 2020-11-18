@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 244456298e9a85f7cf7a5bdc175f1df5397ca207
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae575aa6544a174a70eb8ea4749566e8660280e2
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662152"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873267"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Az Azure AD Connect és az Azure AD Connect Health telepítési ütemterve
 
@@ -29,7 +29,7 @@ ms.locfileid: "89662152"
 
 Az Azure AD Connect a [Microsoft letöltőközpontból](https://go.microsoft.com/fwlink/?LinkId=615771) tölthető le.
 
-| Megoldás | Forgatókönyv |
+| Megoldás | Használati eset |
 | --- | --- |
 | Előkészületek – [Hardverkövetelmények és előfeltételek](how-to-connect-install-prerequisites.md) |<li>Az Azure AD Connect telepítése előtt végrehajtandó lépések.</li> |
 | [Gyorsbeállítások](how-to-connect-install-express.md) |<li>Ennek a lehetőségnek a használata akkor ajánlott, ha egyerdős AD-vel rendelkezik.</li> <li>Felhasználói bejelentkezés egyetlen jelszóval, jelszó-szinkronizálás segítségével.</li> |
@@ -143,12 +143,12 @@ Az Azure AD Connect Health használatának elkezdéséhez hajtsa végre a követ
 * Győződjön meg róla, hogy [teljesülnek az Azure AD Connect Health követelményei](how-to-connect-health-agent-install.md#requirements).
 * Ismerkedés az Azure AD Connect Health for AD FS használatával
     * [Töltse le az Azure AD Connect Health-ügynököt az AD FS szolgáltatáshoz.](https://go.microsoft.com/fwlink/?LinkID=518973)
-    * [Tekintse meg a telepítési utasításokat](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs).
+    * [Tekintse meg a telepítési utasításokat](how-to-connect-health-agent-install.md#install-the-agent-for-ad-fs).
 * Ismerkedés az Azure AD Connect Health szinkronizálási szolgáltatás használatával
     * [Töltse le, és telepítse az Azure AD Connect legújabb verzióját.](https://go.microsoft.com/fwlink/?linkid=615771) A szinkronizálási állapotügynök az (1.0.9125.0-s verziójú vagy újabb) Azure AD Connect részeként telepíthető.
 * Ismerkedés az Azure AD Connect Health for AD DS használatával
     * [Töltse le a AD DS Azure ad Connect Health Agent ügynököt](https://go.microsoft.com/fwlink/?LinkID=820540).
-    * [Tekintse meg a telepítési utasításokat](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds).
+    * [Tekintse meg a telepítési utasításokat](how-to-connect-health-agent-install.md#install-the-agent-for-azure-ad-ds).
 
 
 ## <a name="azure-ad-connect-health-portal"></a>Az Azure AD Connect Health portál
