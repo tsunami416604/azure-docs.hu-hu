@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 67e1f1dff43939ce7ef279db57bee4b18bd12dc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45393f116149f6cf16763d2d7033f8425df235bf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213953"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832993"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-trigger Azure Functions
 
@@ -20,6 +20,16 @@ A blob Storage-trigger új vagy frissített blob észlelésekor egy függvényt 
 Az Azure Blob Storage-triggerhez általános célú Storage-fiók szükséges. A [hierarchikus névterekkel](../storage/blobs/data-lake-storage-namespace.md) rendelkező Storage v2-fiókok szintén támogatottak. Ha csak blobos fiókot szeretne használni, vagy ha az alkalmazás speciális igényekkel rendelkezik, tekintse át a trigger használatára vonatkozó alternatívákat.
 
 További információ a telepítésről és a konfigurációról: [Áttekintés](./functions-bindings-storage-blob.md).
+
+## <a name="polling"></a>Ciklikus lekérdezés
+
+A lekérdezés hibridként működik a naplók vizsgálata és az időszakos tároló-ellenőrzések futtatása között. A Blobok a 10 000-es csoportokba vannak beolvasva, és az intervallumok közötti folytatási tokent használják.
+
+> [!WARNING]
+> Emellett a [tárolási naplók a "legjobb megoldás" alapon jönnek létre](/rest/api/storageservices/About-Storage-Analytics-Logging) . Nem garantálható, hogy minden esemény rögzítve legyen. Bizonyos körülmények között előfordulhat, hogy a naplók kimaradnak.
+> 
+> Ha gyorsabb vagy megbízhatóbb blob-feldolgozásra van szüksége, érdemes lehet üzenetsor- [üzenetet](../storage/queues/storage-dotnet-how-to-use-queues.md) létrehozni a blob létrehozásakor. Ezután használjon egy [üzenetsor-triggert](functions-bindings-storage-queue.md) a blob-trigger helyett a blob feldolgozásához. Egy másik lehetőség a Event Grid használata; Tekintse meg az oktatóanyagot, amely [automatizálja a feltöltött képek átméretezését Event Grid használatával](../event-grid/resize-images-on-storage-blob-upload-event.md).
+>
 
 ## <a name="alternatives"></a>Alternatív megoldások
 
@@ -297,7 +307,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A Blobok adataihoz való hozzáférés `context.bindings.<NAME>` `<NAME>` a *function.js*által megadott értéknek felel meg.
+A Blobok adataihoz való hozzáférés `context.bindings.<NAME>` `<NAME>` a *function.js* által megadott értéknek felel meg.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -349,7 +359,7 @@ Ha kapcsos zárójeleket szeretne keresni a fájlnevekben, a kapcsos zárójelek
 "path": "images/{{20140101}}-{name}",
 ```
 
-Ha a blob neve * {20140101}-soundfile.mp3*, a `name` függvény kódjában található változó értéke *soundfile.mp3*.
+Ha a blob neve *{20140101}-soundfile.mp3*, a `name` függvény kódjában található változó értéke *soundfile.mp3*.
 
 ## <a name="metadata"></a>Metaadatok
 
@@ -382,11 +392,11 @@ A metaadatok nem érhetők el a javában.
 
 ## <a name="blob-receipts"></a>BLOB-visszaigazolások
 
-A Azure Functions futtatókörnyezet biztosítja, hogy a blob trigger függvény többször is meghívja ugyanazt az új vagy frissített blobot. Annak megállapításához, hogy egy adott blob-verzió feldolgozása megtörtént-e, a *blob-visszaigazolásokat*tart fenn.
+A Azure Functions futtatókörnyezet biztosítja, hogy a blob trigger függvény többször is meghívja ugyanazt az új vagy frissített blobot. Annak megállapításához, hogy egy adott blob-verzió feldolgozása megtörtént-e, a *blob-visszaigazolásokat* tart fenn.
 
 Azure Functions a blob-visszaigazolásokat egy *Azure-webjobs* nevű tárolóban tárolja – az Azure Storage-fiókban lévő gazdagépeket a Function alkalmazáshoz (amelyet az alkalmazás-beállítás határoz meg `AzureWebJobsStorage` ). A blob-visszaigazolás a következő információkat tartalmazhatja:
 
-* Az aktivált függvény ("* &lt; Function alkalmazás neve>*. Funkciók. a * &lt; függvény neve>*", például:" MyFunctionApp. functions. CopyBlob ")
+* Az aktivált függvény ("*&lt; Function alkalmazás neve>*. Funkciók. a *&lt; függvény neve>*", például:" MyFunctionApp. functions. CopyBlob ")
 * A tároló neve
 * A blob típusa ("BlockBlob" vagy "PageBlob")
 * A blob neve
@@ -398,9 +408,9 @@ Egy blob újrafeldolgozásának kényszerítéséhez törölje az adott blobhoz 
 
 Ha egy blob trigger-függvény meghibásodik egy adott blobnál, Azure Functions az újrapróbálkozások alapértelmezés szerint összesen 5 alkalommal működnek.
 
-Ha mind az 5 próbálkozás sikertelen, Azure Functions hozzáadja az üzenetet egy *webjobs-blobtrigger-méreg*nevű Storage-várólistához. Az újrapróbálkozások maximális száma konfigurálható. Ugyanez a MaxDequeueCount-beállítás a blob-kezelő és a méreg üzenetsor-üzenetek kezelésére szolgál. A méreg-Blobok üzenetsor-üzenete egy JSON-objektum, amely a következő tulajdonságokat tartalmazza:
+Ha mind az 5 próbálkozás sikertelen, Azure Functions hozzáadja az üzenetet egy *webjobs-blobtrigger-méreg* nevű Storage-várólistához. Az újrapróbálkozások maximális száma konfigurálható. Ugyanez a MaxDequeueCount-beállítás a blob-kezelő és a méreg üzenetsor-üzenetek kezelésére szolgál. A méreg-Blobok üzenetsor-üzenete egy JSON-objektum, amely a következő tulajdonságokat tartalmazza:
 
-* FunctionId (a Format * &lt; függvény alkalmazásának neve>*. Funkciók. * &lt; függvény neve>*)
+* FunctionId (a Format *&lt; függvény alkalmazásának neve>*. Funkciók. *&lt; függvény neve>*)
 * BlobType ("BlockBlob" vagy "PageBlob")
 * ContainerName
 * BlobName
@@ -413,16 +423,6 @@ A blob-trigger belsőleg használ egy várólistát, így az egyidejű függvén
 [A használati terv az](functions-scale.md#how-the-consumption-and-premium-plans-work) egyik virtuális GÉPEN (VM) lévő function alkalmazást 1,5 GB memóriára korlátozza. A memóriát a párhuzamosan futó és a functions Runtime is használja. Ha egy blob által aktivált függvény a teljes blobot betölti a memóriába, az adott függvény által a Blobok által használt maximális memória 24 * a blob maximális mérete. Például a három blob által aktivált függvényt használó Function alkalmazás, valamint az alapértelmezett beállítások esetében a 3 * 24 = 72 függvény meghívása esetén a virtuális gépek maximális száma.
 
 A JavaScript és a Java függvények a teljes blobot a memóriába töltik be, a C#-függvények pedig a következőhöz kötődnek: `string` vagy `Byte[]` .
-
-## <a name="polling"></a>Ciklikus lekérdezés
-
-A lekérdezés hibridként működik a naplók vizsgálata és az időszakos tároló-ellenőrzések futtatása között. A Blobok a 10 000-es csoportokba vannak beolvasva, és az intervallumok közötti folytatási tokent használják.
-
-> [!WARNING]
-> Emellett a [tárolási naplók a "legjobb megoldás" alapon jönnek létre](/rest/api/storageservices/About-Storage-Analytics-Logging) . Nem garantálható, hogy minden esemény rögzítve legyen. Bizonyos körülmények között előfordulhat, hogy a naplók kimaradnak.
-> 
-> Ha gyorsabb vagy megbízhatóbb blob-feldolgozásra van szüksége, érdemes lehet üzenetsor- [üzenetet](../storage/queues/storage-dotnet-how-to-use-queues.md) létrehozni a blob létrehozásakor. Ezután használjon egy [üzenetsor-triggert](functions-bindings-storage-queue.md) a blob-trigger helyett a blob feldolgozásához. Egy másik lehetőség a Event Grid használata; Tekintse meg az oktatóanyagot, amely [automatizálja a feltöltött képek átméretezését Event Grid használatával](../event-grid/resize-images-on-storage-blob-upload-event.md).
->
 
 ## <a name="next-steps"></a>Következő lépések
 

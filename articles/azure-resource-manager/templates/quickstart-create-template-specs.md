@@ -2,15 +2,15 @@
 title: Sablon létrehozása és üzembe helyezése – spec
 description: Megtudhatja, hogyan hozhat létre egy sablont az ARM-sablon alapján. Ezután telepítse a SPECT egy erőforráscsoporthoz az előfizetésében.
 author: tfitzmac
-ms.date: 11/10/2020
+ms.date: 11/17/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 96ef5796aac1d0ee02e6bbafc40b7d3bcdea4e2f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 8439b1de5a69b3e5bfc22e10f089938da921c1cb
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506362"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747502"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Gyors útmutató: sablon létrehozása és üzembe helyezése specifikáció (előzetes verzió)
 
@@ -21,9 +21,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan csomagolhat egy Azure Resourc
 Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. A használatához regisztrálnia kell [a várakozási listára](https://aka.ms/templateSpecOnboarding).
->
-> Miután jóváhagyta a várakozási listát, megtudhatja, hogyan telepítheti az előnézeti PowerShell-modult és a CLI-modult.
+> A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. A használatához telepítenie kell a PowerShell vagy az Azure CLI legújabb verzióját. Azure PowerShell esetén használja a [5.0.0 vagy újabb verziót](/powershell/azure/install-az-ps). Azure CLI esetén használja az [2.14.2 vagy újabb verziót](/cli/azure/install-azure-cli).
 
 ## <a name="create-template-spec"></a>Sablon létrehozása – spec
 

@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 8f1ea67605be3aee6257c293aea3db617d885645
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3174dbd36d9bb39ce606ec12f88397f795e91526
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370253"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832432"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Azure Blob-adatkezelés és-keresés a blob-index címkékkel (előzetes verzió)
 
@@ -44,7 +44,7 @@ Vegye figyelembe a következő öt blobot a Storage-fiókban:
 - *naplók/2020/01/01/logfile.txt*
 
 
-Ezek a Blobok a *tároló/virtuális mappa/blob neve*előtaggal vannak elválasztva. Az alábbi öt blobon beállíthatja az index címke attribútumát `Project = Contoso` , hogy azok együtt legyenek kategorizálva az aktuális előtag-szervezetük megtartása mellett. Az indexelési címkék hozzáadásával nem kell áthelyeznie az adatok áthelyezését azáltal, hogy az index használatával szűrni és keresni kívánja az adatkeresési lehetőséget.
+Ezek a Blobok a *tároló/virtuális mappa/blob neve* előtaggal vannak elválasztva. Az alábbi öt blobon beállíthatja az index címke attribútumát `Project = Contoso` , hogy azok együtt legyenek kategorizálva az aktuális előtag-szervezetük megtartása mellett. Az indexelési címkék hozzáadásával nem kell áthelyeznie az adatok áthelyezését azáltal, hogy az index használatával szűrni és keresni kívánja az adatkeresési lehetőséget.
 
 ## <a name="setting-blob-index-tags"></a>BLOB-index címkék beállítása
 
@@ -164,7 +164,7 @@ Az `blobIndexMatch` as a as a Rule (szabály) szűrő használata az életciklus
 
 A blob-indexeket beállíthatja úgy, hogy egy életciklus-szabályban beállított önálló szűrőként alkalmazza a címkézett adatműveleteket. Vagy kombinálhatja az előtagot és a blob-indexet is, hogy az megfeleljen az egyes adatkészleteknek. Ha több szűrőt ad meg egy életciklus-szabályban, a logikai és a műveletet alkalmazza. A művelet csak akkor lesz érvényes, ha az *összes* szűrési feltétel egyezik.
 
-A következő minta életciklus-kezelési szabály a *videofiles*nevű tárolóban lévő Blobok blokkolására vonatkozik. A szabály-rétegek csak akkor archiválják az archiválási tárolót, ha az adatok megfelelnek a blob-index címkéi feltételeinek `"Status" == 'Processed' AND "Source" == 'RAW'` .
+A következő minta életciklus-kezelési szabály a *videofiles* nevű tárolóban lévő Blobok blokkolására vonatkozik. A szabály-rétegek csak akkor archiválják az archiválási tárolót, ha az adatok megfelelnek a blob-index címkéi feltételeinek `"Status" == 'Processed' AND "Source" == 'RAW'` .
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -327,6 +327,7 @@ Ez a szakasz a blob-indexek címkék nyilvános előzetes verziójának ismert p
 - Ha a szűrés egyetlen tárolóra van korlátozva, a `@container` csak akkor adható át, ha a szűrő kifejezésben szereplő összes indexelő címke egyenlőségi ellenőrzés (kulcs = érték).
 - Ha a tartomány operátort használja a `AND` feltétellel, akkor csak ugyanazt az index címke kulcsának nevét () kell megadnia `"Age" > '013' AND "Age" < '100'` .
 - A verziószámozás és a blob-index nem támogatott. A blob-index címkéi megmaradnak a verzióknál, de nem jutnak el a blob index motorhoz.
+- Nincs olyan API, amely meghatározza, hogy az indexelési címkék indexelve vannak-e.
 - A fiók feladatátvétele nem támogatott. Előfordulhat, hogy a blob-index nem frissül megfelelően a feladatátvétel után.
 - Az életciklus-kezelés csak a blob-index egyeztetését támogató esélyegyenlőségi ellenőrzéseket támogatja.
 - `Copy Blob` nem másolja a blob-index címkéit a forrás blobból az új cél blobba. A másolási művelet során megadhatja a cél blobra alkalmazni kívánt címkéket.

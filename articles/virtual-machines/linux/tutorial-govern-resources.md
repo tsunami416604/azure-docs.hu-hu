@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – virtuális gépek kezelése a parancssori felülettel
-description: Ebből az oktatóanyagból megtudhatja, hogyan kezelheti az Azure-beli virtuális gépeket az Azure CLI használatával a RBAC, a házirendek, a zárolások és a címkék alkalmazásával.
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure CLI-t Azure-beli virtuális gépek kezelésére az Azure RBAC, a házirendek, a zárolások és a címkék alkalmazásával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 867349a321f2909d8e568be7e482a5517ddb50b9
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 565315ad78a2994f44973c4fdcd4519ab9e03ea8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517954"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831786"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Oktatóanyag: a linuxos virtuális gépek felügyeletének megismerése az Azure CLI-vel
 
@@ -41,7 +41,7 @@ az group create --name myResourceGroup --location "East US"
 
 Az erőforráscsoport jelenleg üres.
 
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+## <a name="azure-role-based-access-control"></a>Azure-beli szerepköralapú hozzáférés-vezérlés
 
 Győződjön meg arról, hogy az intézmény felhasználói megfelelő hozzáférési szinttel rendelkeznek ezekhez az erőforrásokhoz. Nem ajánlott korlátlan hozzáférést nyújtania a felhasználóknak, de fontos biztosítania, hogy el tudják végezni a munkájukat. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) segítségével felügyelheti, hogy mely felhasználók jogosultak meghatározott műveletek végrehajtására egy hatókörben.
 
@@ -63,7 +63,7 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Ha egy hibaüzenetet kap, amely szerint **A \<guid> rendszerbiztonsági tag nem található a címtárban** , az új csoport nem lett az Azure Active Directoryba propagálva. Próbálja meg ismét futtatni a parancsot.
+Ha egy hibaüzenetet kap, amely szerint **A \<guid> rendszerbiztonsági tag nem található a címtárban**, az új csoport nem lett az Azure Active Directoryba propagálva. Próbálja meg ismét futtatni a parancsot.
 
 A folyamatot általában a *Hálózati közreműködő* és a *Tárfiók-közreműködő* szerepkörön is végre kell hajtani, hogy a felhasználók megkapják az üzembe helyezett erőforrások kezeléséhez szükséges jogosultságokat. Ebben a cikkben kihagyhatja ezeket a lépéseket.
 
@@ -202,7 +202,7 @@ az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Mic
 
 [!INCLUDE [Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A zárolt hálózati biztonsági csoport nem törölhető a zárolás eltávolításáig. A zárolás eltávolításához kérje le a zárolások azonosítóit, és adja meg őket az [az lock delete](/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-delete) parancsban:
 

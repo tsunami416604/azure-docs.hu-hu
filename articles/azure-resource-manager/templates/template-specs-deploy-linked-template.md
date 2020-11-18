@@ -2,13 +2,13 @@
 title: Sablon specifikációjának telepítése csatolt sablonként
 description: Megtudhatja, hogyan helyezhet üzembe egy meglévő sablon-SPECT egy csatolt üzemelő példányban.
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: 9755774f79ee4901c8aa691054da749f37756742
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/17/2020
+ms.openlocfilehash: 65ad5767817457133d0fbc34c7735cf52ff2c3f3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321573"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747468"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Oktatóanyag: a sablon specifikációjának központi telepítése csatolt sablonként (előzetes verzió)
 
@@ -19,7 +19,7 @@ Megtudhatja, hogyan helyezhet üzembe egy meglévő [sablon-specifikációt](tem
 Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. A használatához regisztrálnia kell [az előzetes](https://aka.ms/templateSpecOnboarding)verzióra.
+> A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. A használatához telepítenie kell a PowerShell vagy az Azure CLI legújabb verzióját. Azure PowerShell esetén használja a [5.0.0 vagy újabb verziót](/powershell/azure/install-az-ps). Azure CLI esetén használja az [2.14.2 vagy újabb verziót](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-template-spec"></a>Spec sablon létrehozása
 

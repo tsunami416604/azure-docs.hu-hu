@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2020
-ms.openlocfilehash: a8890db90fa9f76b676a5fb944f74a773b00c8cd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 80280702748040e12d1d3d048644e6a16c926256
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737506"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832381"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamban
 
@@ -50,6 +50,7 @@ Az adatforgalom leképezése egy kinyerési, betöltési és átalakítási (ELT
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Felügyelt Azure SQL-példány (előzetes verzió)](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Hive](connector-hive.md#mapping-data-flow-properties) | | -/✓ | 
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
 Az ezekhez az összekötőhöz tartozó beállítások a **forrás beállításai** lapon találhatók. A beállításokkal kapcsolatos információ-és adatfolyam-parancsfájlok példák az összekötő dokumentációjában találhatók.
@@ -64,13 +65,13 @@ Az adatkészlet paramétereinek fejlesztői értékeit a [hibakeresési beállí
 
 ![A forrás beállításai lapot megjelenítő képernyőkép.](media/data-flow/source1.png "A forrás beállításai lapot megjelenítő képernyőkép.")
 
-**Kimeneti adatfolyam neve** : a forrás-átalakítás neve.
+**Kimeneti adatfolyam neve**: a forrás-átalakítás neve.
 
-**Forrás típusa** : válassza ki, hogy egy beágyazott adatkészletet vagy egy meglévő adatkészlet-objektumot szeretne használni.
+**Forrás típusa**: válassza ki, hogy egy beágyazott adatkészletet vagy egy meglévő adatkészlet-objektumot szeretne használni.
 
-**Kapcsolat tesztelése** : Ellenőrizze, hogy az adatfolyam Spark szolgáltatása sikeresen tud-e csatlakozni a forrás adatkészletben használt társított szolgáltatáshoz. A funkció engedélyezéséhez a hibakeresési módot kell bekapcsolni.
+**Kapcsolat tesztelése**: Ellenőrizze, hogy az adatfolyam Spark szolgáltatása sikeresen tud-e csatlakozni a forrás adatkészletben használt társított szolgáltatáshoz. A funkció engedélyezéséhez a hibakeresési módot kell bekapcsolni.
 
-**Séma drift** : a [séma eltolódása](concepts-data-flow-schema-drift.md) Data Factory a rugalmas sémák natív kezelésére az adatfolyamatokban anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait.
+**Séma drift**: a [séma eltolódása](concepts-data-flow-schema-drift.md) Data Factory a rugalmas sémák natív kezelésére az adatfolyamatokban anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait.
 
 * Jelölje be a **séma-drift engedélyezése** jelölőnégyzetet, ha a forrás oszlopai gyakran változnak. Ez a beállítás lehetővé teszi, hogy az összes bejövő forrás mező áthaladjon a fogadóra történő átalakításokon.
 
@@ -78,9 +79,9 @@ Az adatkészlet paramétereinek fejlesztői értékeit a [hibakeresési beállí
 
 **Séma ellenőrzése:** Ha a **séma ellenőrzése** beállítás be van jelölve, az adatfolyam nem fog futni, ha a bejövő forrásadatok nem egyeznek az adatkészlet meghatározott sémájával.
 
-**Sorok kihagyása** : a sorok **kihagyása** mező meghatározza, hogy az adatkészlet elején hány sort kell figyelmen kívül hagyni.
+**Sorok kihagyása**: a sorok **kihagyása** mező meghatározza, hogy az adatkészlet elején hány sort kell figyelmen kívül hagyni.
 
-**Mintavételezés** : engedélyezze a **mintavételezést** a forrásból származó sorok számának korlátozásához. Akkor használja ezt a beállítást, ha hibakeresési célból teszteli vagy felveszi az adatait a forrásból.
+**Mintavételezés**: engedélyezze a **mintavételezést** a forrásból származó sorok számának korlátozásához. Akkor használja ezt a beállítást, ha hibakeresési célból teszteli vagy felveszi az adatait a forrásból.
 
 Ha ellenőrizni szeretné, hogy a forrás megfelelően van-e konfigurálva, kapcsolja be a hibakeresési módot, és olvassa be az adatelőnézett. További információ: [hibakeresési mód](concepts-data-flow-debug-mode.md).
 

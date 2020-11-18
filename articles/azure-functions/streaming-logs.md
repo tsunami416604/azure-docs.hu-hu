@@ -3,13 +3,13 @@ title: Stream-végrehajtási naplók a Azure Functions
 description: 115-145 karakter, beleértve a szóközöket. Ez a kivonat jelenik meg a keresési eredmények között.
 ms.date: 9/1/2020
 ms.topic: how-to
-ms.custom: contperfq2
-ms.openlocfilehash: 61756afb5111da3d5573e967a6ca13f25354aef5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperfq2, devx-track-azurecli
+ms.openlocfilehash: 68b9d567fe0f2959c809a25c3669b9529cf093b8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216096"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832879"
 ---
 # <a name="enable-streaming-execution-logs-in-azure-functions"></a>Adatfolyam-végrehajtási naplók engedélyezése Azure Functions
 
@@ -29,19 +29,19 @@ A portálon mindkét típusú naplózási adatfolyamot megtekintheti.
 
 ### <a name="built-in-log-streaming"></a>Beépített naplóstreamelés
 
-Ha a portálon szeretné megtekinteni a folyamatos átviteli naplókat, válassza a **platform szolgáltatások** fület a Function alkalmazásban. Ezután a **figyelés**területen válassza a **naplózási adatfolyam**lehetőséget.
+Ha a portálon szeretné megtekinteni a folyamatos átviteli naplókat, válassza a **platform szolgáltatások** fület a Function alkalmazásban. Ezután a **figyelés** területen válassza a **naplózási adatfolyam** lehetőséget.
 
 ![Folyamatos átviteli naplók engedélyezése a portálon](./media/functions-monitoring/enable-streaming-logs-portal.png)
 
-Ezzel összekapcsolja az alkalmazást a log streaming szolgáltatáshoz, és az alkalmazás naplói megjelennek az ablakban. Válthat az **alkalmazási naplók** és a **webkiszolgálói naplók**között.  
+Ezzel összekapcsolja az alkalmazást a log streaming szolgáltatáshoz, és az alkalmazás naplói megjelennek az ablakban. Válthat az **alkalmazási naplók** és a **webkiszolgálói naplók** között.  
 
 ![Folyamatos átviteli naplók megtekintése a portálon](./media/functions-monitoring/streaming-logs-window.png)
 
 ### <a name="live-metrics-stream"></a>Élő metrikastream
 
-Az alkalmazás Élő metrikastream megtekintéséhez válassza a Function app **Áttekintés** lapját. Application Insights engedélyezése esetén a **konfigurált szolgáltatások**területen megjelenik egy **Application Insights** -hivatkozás. Ez a hivatkozás az alkalmazás Application Insights lapjára lép.
+Az alkalmazás Élő metrikastream megtekintéséhez válassza a Function app **Áttekintés** lapját. Application Insights engedélyezése esetén a **konfigurált szolgáltatások** területen megjelenik egy **Application Insights** -hivatkozás. Ez a hivatkozás az alkalmazás Application Insights lapjára lép.
 
-A Application Insights területen válassza a **élő metrikastream**lehetőséget. A [mintavételes naplóbejegyzések](configure-monitoring.md#configure-sampling) a **minta telemetria**alatt jelennek meg.
+A Application Insights területen válassza a **élő metrikastream** lehetőséget. A [mintavételes naplóbejegyzések](configure-monitoring.md#configure-sampling) a **minta telemetria** alatt jelennek meg.
 
 ![Élő metrikastream megtekintése a portálon](./media/functions-monitoring/live-metrics-stream.png) 
 

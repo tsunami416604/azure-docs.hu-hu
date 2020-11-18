@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 74669036a40048ca21aae56856981197defe1c35
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a41eb5b38b741f8bdde59f8a4f1e8de2b4767903
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286531"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832772"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>A Key Vault és az Azure Private Link integrálása
 
@@ -44,7 +44,7 @@ Ezután létrehozhat egy új kulcstartót, vagy létesíthet kapcsolatot egy meg
 
 ### <a name="create-a-new-key-vault-and-establish-a-private-link-connection"></a>Új kulcstartó létrehozása és magánhálózati kapcsolat létesítése
 
-Új kulcstartó létrehozásához kövesse a [titkos kód beállítása és lekérése Azure Key Vault használatával](../secrets/quick-create-portal.md) című témakör lépéseit a Azure Portal
+Azure Key Vault az [Azure Portal](../general/quick-create-portal.md), az [Azure CLI](../general/quick-create-cli.md)vagy a [Azure PowerShell](../general/quick-create-powershell.md)használatával hozhat létre.
 
 A Key Vault alapalapjainak konfigurálása után válassza a hálózatkezelés fület, és kövesse az alábbi lépéseket:
 
@@ -270,13 +270,13 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 > [!NOTE]
 > Az előfizetések által engedélyezett privát végpontokkal rendelkező kulcstartók száma állítható korlát. Az alább látható korlát az alapértelmezett korlát. Ha korlátozni szeretné a szolgáltatás korlátozását, küldjön e-mailt a címre akv-privatelink@microsoft.com . Ezeket a kéréseket eseti alapon kell jóváhagyni.
 
-**Díjszabás** : díjszabási információkért tekintse meg az [Azure Private link díjszabását](https://azure.microsoft.com/pricing/details/private-link/).
+**Díjszabás**: díjszabási információkért tekintse meg az [Azure Private link díjszabását](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Korlátozások** : a Azure Key Vault magánhálózati végpontja csak az Azure nyilvános régióiban érhető el.
+**Korlátozások**: a Azure Key Vault magánhálózati végpontja csak az Azure nyilvános régióiban érhető el.
 
-**Privát végpontok maximális száma Key Vault** : 64.
+**Privát végpontok maximális száma Key Vault**: 64.
 
-**A privát végpontok által előfizetett kulcstartók alapértelmezett száma** : 400.
+**A privát végpontok által előfizetett kulcstartók alapértelmezett száma**: 400.
 
 További információ [: Azure Private link Service: korlátozások](../../private-link/private-link-service-overview.md#limitations)
 

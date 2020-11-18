@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 86b5c1dc396a755d898f0c3c332ab59933236afe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0d98f3c61191d5d5b333072682abe740761901f0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747439"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831888"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Gyors útmutató: SSH és RDP engedélyezése IoT Hub-adatfolyamon egy Node.js alkalmazásproxy alkalmazásával (előzetes verzió)
 
@@ -30,13 +30,15 @@ Ebben a rövid útmutatóban engedélyezi, hogy a Secure Shell (SSH) és a RDP p
 
 * [Node.js 10 +](https://nodejs.org).
 
+    A következő parancs használatával ellenőrizheti Node.js aktuális verzióját a fejlesztői gépen:
+
+    ```cmd/sh
+    node --version
+    ```
+
 * [Példa Node.js projektre](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip).
 
-A következő parancs használatával ellenőrizheti Node.js aktuális verzióját a fejlesztői gépen:
-
-```cmd/sh
-node --version
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 A Microsoft Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)támogatja az eszközök adatfolyamait.
 
@@ -47,8 +49,6 @@ A Microsoft Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](ht
 > * USA középső – EUAP
 > * Észak-Európa
 > * Délkelet-Ázsia
-  
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ### <a name="add-azure-iot-extension"></a>Azure IoT-bővítmény hozzáadása
 
@@ -164,7 +164,7 @@ Most használja az RDP-ügyfélalkalmazás használatát, és kapcsolódjon a Se
 
 ![Az RDP-ügyfél a szolgáltatás helyi alkalmazásproxy-alkalmazásához csatlakozik](./media/quickstart-device-streams-proxy-nodejs/rdp-screen-capture.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 

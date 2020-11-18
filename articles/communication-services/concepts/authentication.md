@@ -9,18 +9,18 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 939c36cd62dab4362232aef0da8701b34a88c6ff
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 96e10bc19d59b60824a908c67816a21ca80326d0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202956"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832806"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Hitelesítés az Azure kommunikációs szolgáltatásokban
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Ez a cikk tájékoztatást nyújt az ügyfelek Azure kommunikációs szolgáltatásokhoz való hitelesítéséről *hozzáférési kulcsok* és *felhasználói hozzáférési tokenek*használatával. Az Azure kommunikációs szolgáltatásokkal való kommunikációt minden ügyfélnek hitelesíteni kell.
+Ez a cikk tájékoztatást nyújt az ügyfelek Azure kommunikációs szolgáltatásokhoz való hitelesítéséről *hozzáférési kulcsok* és *felhasználói hozzáférési tokenek* használatával. Az Azure kommunikációs szolgáltatásokkal való kommunikációt minden ügyfélnek hitelesíteni kell.
 
 Az alábbi táblázat ismerteti, hogy az Azure kommunikációs szolgáltatások ügyféloldali kódtárai milyen hitelesítési lehetőségeket támogatnak:
 
@@ -72,11 +72,11 @@ Ha nem használ ügyféloldali kódtárat az Azure kommunikációs szolgáltatá
 
 A felhasználói hozzáférési tokenek lehetővé teszik az ügyfélalkalmazások számára, hogy közvetlenül az Azure kommunikációs szolgáltatásokkal hitelesítsék magukat. Ennek eléréséhez állítson be egy megbízható szolgáltatást, amely hitelesíti az alkalmazás felhasználóit, és kiadja a felhasználói hozzáférési jogkivonatokat a felügyeleti ügyféloldali kódtár használatával. Az architektúrával kapcsolatos szempontokkal kapcsolatos további információkért tekintse meg az [ügyfél és a kiszolgáló architektúra](./client-and-server-architecture.md) fogalmi dokumentációját.
 
-Az `CommunicationClientCredential` osztály tartalmazza azt a logikát, amely a felhasználói hozzáférési jogkivonat hitelesítő adatainak megadására szolgál az ügyféloldali kódtárak számára, és kezeli az életciklusát.
+Az `CommunicationUserCredential` osztály tartalmazza azt a logikát, amely a felhasználói hozzáférési jogkivonat hitelesítő adatainak megadására szolgál az ügyféloldali kódtárak számára, és kezeli az életciklusát.
 
 ### <a name="initialize-the-client-libraries"></a>Az ügyféloldali kódtárak inicializálása
 
-A felhasználói hozzáférési jogkivonat hitelesítését igénylő Azure kommunikációs szolgáltatások ügyféloldali kódtárainak inicializálásához először létre kell hoznia a osztály egy példányát `CommunicationClientCredential` , majd egy API-ügyfél inicializálásához használhatja azt.
+A felhasználói hozzáférési jogkivonat hitelesítését igénylő Azure kommunikációs szolgáltatások ügyféloldali kódtárainak inicializálásához először létre kell hoznia a osztály egy példányát `CommunicationUserCredential` , majd egy API-ügyfél inicializálásához használhatja azt.
 
 A következő kódrészletek bemutatják, hogyan inicializálhatja a csevegési ügyfél függvénytárát felhasználói hozzáférési jogkivonattal:
 

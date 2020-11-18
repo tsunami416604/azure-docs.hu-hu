@@ -2,15 +2,15 @@
 title: A sablon specifikációinak áttekintése
 description: Leírja, hogyan lehet létrehozni a sablon specifikációit, és megoszthatja őket a szervezet más felhasználóival.
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 11/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83d5a210a5af538173ad0ca5e4c718363639c40a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728471"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747400"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager sablon specifikációi (előzetes verzió)
 
@@ -21,7 +21,7 @@ A **Microsoft. Resources/templateSpecs** a sablonhoz tartozó specifikációk t�
 A sablon specifikációjának üzembe helyezéséhez szabványos Azure-eszközöket (például PowerShell, Azure CLI, Azure Portal, REST és más támogatott SDK-kat és ügyfeleket) kell használnia. Ugyanazokat a parancsokat használja, mint a sablonhoz.
 
 > [!NOTE]
-> A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. A használatához regisztrálnia kell [a várakozási listára](https://aka.ms/templateSpecOnboarding).
+> A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. A használatához telepítenie kell a PowerShell vagy az Azure CLI legújabb verzióját. Azure PowerShell esetén használja a [5.0.0 vagy újabb verziót](/powershell/azure/install-az-ps). Azure CLI esetén használja az [2.14.2 vagy újabb verziót](/cli/azure/install-azure-cli).
 
 ## <a name="why-use-template-specs"></a>Miért érdemes használni a sablon specifikációit?
 
@@ -294,7 +294,7 @@ Miután létrehozta a sablon specifikációját, egyszerűen felhasználhatja az
 
 Létrehozhat például egy olyan sablont, amely hálózati erőforrásokat telepít, és egy másik, a tárolási erőforrásokat telepítő specifikációt. Az ARM-sablonokban erre a két sablonra vonatkozó specifikációra lehet hivatkozni, amikor hálózati vagy tárolási erőforrásokat kell konfigurálnia.
 
-A következő példa hasonló a korábbi példához, de a tulajdonsággal hivatkozik a `id` sablonra, és nem a `relativePath` tulajdonságot a helyi sablonhoz való hivatkozáshoz. Használja az `2020-06-01` API-verziót a központi telepítések erőforrásához. A példában a sablon specifikációi egy **templateSpecsRG**nevű erőforráscsoporthoz tartoznak.
+A következő példa hasonló a korábbi példához, de a tulajdonsággal hivatkozik a `id` sablonra, és nem a `relativePath` tulajdonságot a helyi sablonhoz való hivatkozáshoz. Használja az `2020-06-01` API-verziót a központi telepítések erőforrásához. A példában a sablon specifikációi egy **templateSpecsRG** nevű erőforráscsoporthoz tartoznak.
 
 ```json
 {

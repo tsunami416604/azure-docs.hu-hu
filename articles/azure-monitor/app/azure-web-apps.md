@@ -4,12 +4,12 @@ description: Az alkalmazások teljesítményének figyelése az Azure app Servic
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: c78a43f9efb263c08dad21218636f21121b9732c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f46d00f97dab18b0c7c1d4a5742a87308f814e9e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377802"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832898"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -36,7 +36,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 
 ## <a name="enable-agent-based-monitoring"></a>Ügynök alapú figyelés engedélyezése
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="aspnet"></a>[ASP.NET](#tab/net)
 
 > [!NOTE]
 > A APPINSIGHTS_JAVASCRIPT_ENABLED és a urlCompression kombinációja nem támogatott. További információ: a [Hibaelhárítás szakasz](#troubleshooting)magyarázata.
@@ -59,7 +59,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
  
  Az alábbiakban az egyes útvonalakon összegyűjtött adatok összegzése látható:
         
-| Adatok | .NET alapszintű gyűjtemény | .NET ajánlott gyűjtemény |
+| Adatok | ASP.NET alapszintű gyűjtemény | ASP.NET ajánlott gyűjtemény |
 | --- | --- | --- |
 | Processzor-, memória- és I/O-használati trendek hozzáadása |Igen |Igen |
 | Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Igen |
@@ -73,11 +73,11 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 
     * A támogatott adaptív mintavételi telemetria processzor-beállításainak listájáért tekintse meg a [kódot](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs) és a [kapcsolódó dokumentációt](./sampling.md).
 
-# <a name="net-core"></a>[.NET Core](#tab/netcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-A .NET Core következő verziói támogatottak: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0, ASP.NET Core 3,1
+A ASP.NET Core következő verziói támogatottak: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0, ASP.NET Core 3,1
 
-A .NET Core, az önálló üzemelő példányok és a Linux-alapú alkalmazások teljes keretrendszerének megcélzása jelenleg **nem támogatott** az ügynök/bővítmény alapú figyeléssel. (A programkódon keresztüli[manuális](./asp-net-core.md) kialakítás az összes korábbi forgatókönyvben működni fog.)
+A ASP.NET Core, az önálló üzemelő példányok és a Linux-alapú alkalmazások teljes keretrendszerének megcélzása jelenleg **nem támogatott** az ügynök/bővítmény alapú figyeléssel. (A programkódon keresztüli[manuális](./asp-net-core.md) kialakítás az összes korábbi forgatókönyvben működni fog.)
 
 1. Az App Service-hez tartozó Azure Vezérlőpulton **válassza a Application Insights lehetőséget** .
 
@@ -90,7 +90,7 @@ A .NET Core, az önálló üzemelő példányok és a Linux-alapú alkalmazások
 
      ![Webapp kialakítása](./media/azure-web-apps/create-resource-01.png)
 
-2. Miután meghatározta, hogy melyik erőforrást szeretné használni, kiválaszthatja, hogy a Application Insights hogyan gyűjtsön adatokat egy platformon az alkalmazás számára. A .NET Core a ASP.NET Core 2,1, 2,2, 3,0 és 3,1 **ajánlott gyűjteményét** vagy **letiltását** ajánlja.
+2. Miután meghatározta, hogy melyik erőforrást szeretné használni, kiválaszthatja, hogy a Application Insights hogyan gyűjtsön adatokat egy platformon az alkalmazás számára. A ASP.NET Core a ASP.NET Core 2,1, 2,2, 3,0 és 3,1 esetében **ajánlott gyűjteményt** vagy **letiltottot** kínál.
 
     ![Beállítások kiválasztása platformon](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -111,12 +111,12 @@ A Python App Service-alapú webalkalmazások jelenleg nem támogatják az automa
 
 ## <a name="enable-client-side-monitoring"></a>Ügyféloldali figyelés engedélyezése
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="aspnet"></a>[ASP.NET](#tab/net)
 
 Az ügyféloldali figyelés ASP.NET. Az ügyféloldali figyelés engedélyezése:
 
 * **Beállítások** **>** **Konfiguráció**
-   * Az Alkalmazásbeállítások területen hozzon létre egy **új alkalmazás-beállítást** :
+   * Az Alkalmazásbeállítások területen hozzon létre egy **új alkalmazás-beállítást**:
 
      Név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -126,14 +126,14 @@ Az ügyféloldali figyelés ASP.NET. Az ügyféloldali figyelés engedélyezése
 
 Az ügyféloldali figyelés letiltásához távolítsa el a társított kulcs értéke párt az Alkalmazásbeállítások közül, vagy állítsa hamis értékre.
 
-# <a name="net-core"></a>[.NET Core](#tab/netcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-Az ügyféloldali figyelés **alapértelmezés szerint engedélyezve** van a .net Core-alkalmazások számára az **ajánlott gyűjteménysel** , függetlenül attól, hogy szerepel-e az alkalmazás "APPINSIGHTS_JAVASCRIPT_ENABLED" beállítása.
+Az ügyféloldali figyelés **alapértelmezés szerint engedélyezve** van ASP.net Core alkalmazások számára az **ajánlott gyűjteménysel**, függetlenül attól, hogy az alkalmazás "APPINSIGHTS_JAVASCRIPT_ENABLED" beállítása megtalálható-e.
 
 Ha valamilyen oknál fogva le szeretné tiltani az ügyféloldali figyelést:
 
 * **Beállítások** **>** **Konfiguráció**
-   * Az Alkalmazásbeállítások területen hozzon létre egy **új alkalmazás-beállítást** :
+   * Az Alkalmazásbeállítások területen hozzon létre egy **új alkalmazás-beállítást**:
 
      név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -348,7 +348,7 @@ Ha a frissítés a 2.5.1-nél korábbi verzióról történik, ellenőrizze, hog
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Services-on futó .NET-és .NET Core-alapú alkalmazások bővítmény-és ügynök-alapú figyeléséhez.
+Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Services-on futó ASP.NET-és ASP.NET Core-alapú alkalmazások bővítmény-és ügynök-alapú figyeléséhez.
 
 > [!NOTE]
 > A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](./java-in-process-agent.md)vonatkozó irányelveket.
@@ -372,16 +372,31 @@ Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Ser
 
     * Győződjön meg arról, hogy nincsenek bejegyzések a `AppAlreadyInstrumented` , és rendszerhez `AppContainsDiagnosticSourceAssembly` `AppContainsAspNetTelemetryCorrelationAssembly` .
         * Ha bármelyik bejegyzés létezik, távolítsa el a következő csomagokat az alkalmazásból: `Microsoft.ApplicationInsights` , `System.Diagnostics.DiagnosticSource` és `Microsoft.AspNet.TelemetryCorrelation` .
+        * Csak ASP.NET Core alkalmazások esetében: abban az esetben, ha az alkalmazás bármely Application Insights csomagra hivatkozik, például ha korábban már telepítette (vagy megkísérelte az eszközt) az [ASP.net Core SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)-val, akkor a app Service integrációjának engedélyezése nem lép érvénybe, és az adatai nem jelennek meg Application Insightsban. A probléma megoldásához a portálon kapcsolja be az "együttműködés a Application Insights SDK-val" lehetőséget, és a rendszer elkezdi látni az adatApplication Insights 
+        > [!IMPORTANT]
+        > Ez a funkció előzetes verzióban érhető el 
+
+        ![A meglévő alkalmazás beállításának engedélyezése](./media/azure-web-apps/netcore-sdk-interop.png)
+
+        Az adatküldés mostantól kód-alapú megközelítéssel történik, még akkor is, ha Application Insights SDK-t eredetileg használták vagy próbálták használni.
+
+        > [!IMPORTANT]
+        > Ha az alkalmazás a Application Insights SDK-t használta bármilyen telemetria elküldéséhez, akkor az ilyen telemetria le lesz tiltva – vagyis az egyéni telemetria – ha van ilyen, például a Track * () metódusok és az egyéni beállítások (például a mintavétel), le lesznek tiltva. 
+
+
+### <a name="php-and-wordpress-are-not-supported"></a>A PHP és a WordPress nem támogatott
+
+A PHP-és a WordPress-webhelyek nem támogatottak. Jelenleg nincs hivatalosan támogatott SDK/ügynök a számítási feladatok kiszolgálóoldali figyeléséhez. A PHP-vagy WordPress-webhelyen lévő ügyféloldali tranzakciók manuális kiépítéséhez azonban az ügyféloldali JavaScriptet a [JavaScript SDK](./javascript.md)használatával lehet elérni a weblapokon.
 
 Az alábbi táblázat részletesen ismerteti, hogy mit jelentenek ezek az értékek, a kiváltó okok és az ajánlott javítások:
 
 |Probléma értéke|Magyarázat|Javítás
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Ez az érték azt jelzi, hogy a bővítmény azt észlelte, hogy az SDK bizonyos aspektusai már szerepelnek az alkalmazásban, és a szolgáltatás vissza fog térni. Ennek oka lehet a következőre való hivatkozás `System.Diagnostics.DiagnosticSource` ,  `Microsoft.AspNet.TelemetryCorrelation` vagy `Microsoft.ApplicationInsights`  | Távolítsa el a hivatkozásokat. A hivatkozások némelyike alapértelmezés szerint a Visual Studio-sablonokból adódik hozzá, és a Visual Studio régebbi verziói is hozzáadhatnak hivatkozásokat a alkalmazáshoz `Microsoft.ApplicationInsights` .
-|`AppAlreadyInstrumented:true` | Ha az alkalmazás a .NET Core 2,1-es vagy a 2,2-es verzióra vonatkozik, és a [Microsoft. AspNetCore. All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta-csomagra hivatkozik, akkor Application Insights, és a bővítmény vissza fog térni. | A .NET Core 2.1-es és 2.2-es ügyfeleinek [ajánlott](https://github.com/aspnet/Announcements/issues/287) a Microsoft. AspNetCore. app meta-Package használata.|
+|`AppAlreadyInstrumented:true` | Ha az alkalmazás a 2,1-es vagy a 2,2-es ASP.NET Core célozza meg, ez az érték azt jelzi, hogy a bővítmény azt észlelte, hogy az SDK bizonyos aspektusai már szerepelnek az alkalmazásban, és a szolgáltatás vissza fog térni | A .NET Core 2.1-es és 2.2-es ügyfeleinek [ajánlott](https://github.com/aspnet/Announcements/issues/287) a Microsoft. AspNetCore. app meta-Package használata. Emellett kapcsolja be az "együttműködés a Application Insights SDK-val" lehetőséget a portálon (lásd a fenti utasításokat).|
 |`AppAlreadyInstrumented:true` | Ezt az értéket is okozhatja, ha a fenti DLL-eket egy korábbi telepítésből az alkalmazás mappájába helyezi. | Törölje az alkalmazás mappáját, és győződjön meg arról, hogy a DLL-fájlok el lesznek távolítva. Győződjön meg arról, hogy a helyi alkalmazás bin-könyvtára és a App Service wwwroot könyvtára is található. (A App Service webalkalmazás wwwroot könyvtárának megkereséséhez: speciális eszközök (kudu) > hibakeresési konzol > CMD > home\site\wwwroot).
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | Ez az érték azt jelzi, hogy `Microsoft.AspNet.TelemetryCorrelation` a bővítmény az alkalmazásra hivatkozik, és vissza fog térni. | Távolítsa el a hivatkozást.
-|`AppContainsDiagnosticSourceAssembly**:true`|Ez az érték azt jelzi, hogy `System.Diagnostics.DiagnosticSource` a bővítmény az alkalmazásra hivatkozik, és vissza fog térni.| Távolítsa el a hivatkozást.
+|`AppContainsDiagnosticSourceAssembly**:true`|Ez az érték azt jelzi, hogy `System.Diagnostics.DiagnosticSource` a bővítmény az alkalmazásra hivatkozik, és vissza fog térni.| A ASP.NET távolítsa el a hivatkozást. 
 |`IKeyExists:false`|Ez az érték azt jelzi, hogy a kialakítási kulcs nem szerepel a Alkalmazásbeállítás `APPINSIGHTS_INSTRUMENTATIONKEY` . Lehetséges okok: Előfordulhat, hogy a rendszer véletlenül eltávolította az értékeket, elfelejtette az értékek beállítását az Automation-parancsfájlban stb. | Győződjön meg arról, hogy a beállítás szerepel a App Service alkalmazás beállításai között.
 
 ### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>A APPINSIGHTS_JAVASCRIPT_ENABLED és a urlCompression nem támogatott
@@ -397,13 +412,9 @@ A Application Insights ügynökkel/bővítménnyel kapcsolatos legfrissebb infor
 
 ### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>A Web Apps szolgáltatással telepített alapértelmezett webhely nem támogatja az automatikus ügyféloldali figyelést
 
-Amikor létrehoz egy webalkalmazást az `ASP.NET` Azure-ban vagy a Runtimes szolgáltatásban, `.NET Core` app Services egyetlen statikus HTML-oldalt helyez üzembe kezdő webhelyként. A statikus weblap egy .NET-alapú felügyelt kijelzőt is betölt az IIS-ben. Ez lehetővé teszi a kód nélküli kiszolgálóoldali figyelés tesztelését, de nem támogatja az automatikus ügyféloldali figyelést.
+Amikor létrehoz egy webalkalmazást az `ASP.NET` Azure-ban vagy a Runtimes szolgáltatásban, `ASP.NET Core` app Services egyetlen statikus HTML-oldalt helyez üzembe kezdő webhelyként. A statikus weblap egy ASP.NET által felügyelt webes kijelzőt is betölt az IIS-ben. Ez lehetővé teszi a kód nélküli kiszolgálóoldali figyelés tesztelését, de nem támogatja az automatikus ügyféloldali figyelést.
 
 Ha szeretné kipróbálni a kód nélküli kiszolgálót és az ügyféloldali figyelést a ASP.NET vagy ASP.NET Core egy Azure App Services-webalkalmazásban, javasoljuk, hogy kövesse az [ASP.net Core-webalkalmazás létrehozásához](../../app-service/quickstart-dotnetcore.md) és a [ASP.NET-keretrendszer webalkalmazás létrehozásához](../../app-service/quickstart-dotnet-framework.md) szükséges hivatalos útmutatókat, majd kövesse az aktuális cikkben található utasításokat a figyelés engedélyezéséhez.
-
-### <a name="php-and-wordpress-are-not-supported"></a>A PHP és a WordPress nem támogatott
-
-A PHP-és a WordPress-webhelyek nem támogatottak. Jelenleg nincs hivatalosan támogatott SDK/ügynök a számítási feladatok kiszolgálóoldali figyeléséhez. A PHP-vagy WordPress-webhelyen lévő ügyféloldali tranzakciók manuális kiépítéséhez azonban az ügyféloldali JavaScriptet a [JavaScript SDK](./javascript.md)használatával lehet elérni a weblapokon.
 
 ### <a name="connection-string-and-instrumentation-key"></a>A kapcsolatok karakterlánca és a kialakítási kulcsa
 

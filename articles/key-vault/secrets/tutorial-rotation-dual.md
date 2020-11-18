@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 5da31d45e068f414c8afa38bcb46cdf1f790a9e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a061cf493fba99c518448acd9c4bf4bd5949eb98
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843277"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831821"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>A titkos kulcs rotációjának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
@@ -44,11 +44,11 @@ Ha nem rendelkezik meglévő Key Vault-és Storage-fiókkal, akkor az alábbi te
 
 [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget. Nevezze el a csoport **akvrotation** , és kattintson **az OK**gombra.
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
+1. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget. Nevezze el a csoport **akvrotation** , és kattintson **az OK** gombra.
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget.
 1. Kattintson a **Létrehozás** elemre.
 
-    ![Erőforráscsoport létrehozása](../media/secrets/rotation-dual/dual-rotation-1.png)
+    ![Hozzon létre egy erőforráscsoportot](../media/secrets/rotation-dual/dual-rotation-1.png)
 
 Most már rendelkezik egy kulcstartóval és két Storage-fiókkal. A telepítőt az Azure CLI-ben ellenőrizheti a következő parancs futtatásával:
 
@@ -67,8 +67,6 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 ```
 
 ## <a name="create-and-deploy-storage-account-key-rotation-function"></a>Storage-fiók kulcsának rotációs függvényének létrehozása és üzembe helyezése
-> [!IMPORTANT]
-> Az alábbi sablonhoz az Key Vault, az Azure Storage-fiók és az Azure-függvénynek ugyanabban az erőforráscsoporthoz kell esnie
 
 Ezután hozzon létre egy, a rendszer által felügyelt identitással rendelkező Function alkalmazást a többi szükséges összetevőn kívül, és telepítse a Storage-fiók kulcsának rotációs funkcióit
 
@@ -84,14 +82,16 @@ A Function app rotációs funkciója megköveteli ezeket az összetevőket és k
 
    [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
-1. Az **erőforráscsoport** listában válassza a **akvrotation**lehetőséget.
-1. A **Storage-fiók neve**mezőbe írja be a Storage-fiók nevét a forgatni kívánt elérési kulcsokkal.
-1. A **Key Vault neve**mezőbe írja be a Key Vault nevét
-1. A **Függvényalkalmazás neve**mezőbe írja be a Function alkalmazás nevét.
-1. A **titok neve**mezőbe írja be a titkos kulcs nevét, ahol a hozzáférési kulcsok tárolása történik
-1. A tárház **URL-címében**írja be a következőt: függvény kód GitHub helye ( **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** )
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
-1. Kattintson a **Létrehozás** elemre.
+1. Az **erőforráscsoport** listában válassza a **akvrotation** lehetőséget.
+1. A **Storage-fiókhoz tartozó RG** mezőben adja meg az erőforráscsoport nevét, ahol a Storage-fiók létezik. Tartsa meg az alapértelmezett **[resourceGroup (). name]** értéket, ha a Storage-fiók már létezik ugyanabban az erőforráscsoportban, ahol a Key rotációs funkciót üzembe helyezi.
+1. A **Storage-fiók neve** mezőben adja meg a Storage-fiók nevét, az elforgatni kívánt elérési kulcsokkal.
+1. **Key Vault RG** mezőben adja meg az erőforráscsoport nevét, ahol a kulcstartó létezik. Tartsa meg az alapértelmezett **[resourceGroup (). name]** értéket, ha a kulcstartó már létezik ugyanabban az erőforráscsoportban, ahol a Key rotációs funkciót üzembe helyezi.
+1. A **Key Vault neve** mezőben adja meg a kulcstároló nevét.
+1. A **Függvényalkalmazás neve** mezőben adja meg a Function alkalmazás nevét.
+1. A **titkos kulcs neve** mezőben adjon meg egy titkos nevet a hozzáférési kulcsok tárolásához.
+1. A tárház **URL-címe** mezőben adja meg a GitHub-hely () függvény kódját **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** .
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
    ![Az első Storage-fiók áttekintése és létrehozása](../media/secrets/rotation-dual/dual-rotation-2.png)
 
@@ -158,12 +158,12 @@ A meglévő függvények elforgatásához további Storage-fiókok kulcsainak ho
 
    [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json)
 
-1. Az **erőforráscsoport** listában válassza a **akvrotation**lehetőséget.
-1. A **Storage-fiók neve**mezőbe írja be a Storage-fiók nevét a forgatni kívánt elérési kulcsokkal.
-1. A **Key Vault neve**mezőbe írja be a Key Vault nevét
-1. A **Függvényalkalmazás neve**mezőbe írja be a Function alkalmazás nevét.
-1. A **titok neve**mezőbe írja be a titkos kulcs nevét, ahol a hozzáférési kulcsok tárolása történik
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
+1. Az **erőforráscsoport** listában válassza a **akvrotation** lehetőséget.
+1. A **Storage-fiók neve** mezőbe írja be a Storage-fiók nevét a forgatni kívánt elérési kulcsokkal.
+1. A **Key Vault neve** mezőbe írja be a Key Vault nevét
+1. A **Függvényalkalmazás neve** mezőbe írja be a Function alkalmazás nevét.
+1. A **titok neve** mezőbe írja be a titkos kulcs nevét, ahol a hozzáférési kulcsok tárolása történik
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget.
 1. Kattintson a **Létrehozás** elemre.
 
    ![A második Storage-fiók áttekintése és létrehozása](../media/secrets/rotation-dual/dual-rotation-7.png)
@@ -205,7 +205,7 @@ az storage account keys list -n akvrotationstorage
 - [Tárfiók](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 - Áttekintés: [Key Vault figyelése Azure Event Grid](../general/event-grid-overview.md)
 - Útmutató: az [első függvény létrehozása a Azure Portalban](../../azure-functions/functions-create-first-azure-function.md)
 - Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](../general/event-grid-logicapps.md)

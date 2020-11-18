@@ -3,12 +3,12 @@ title: host.jsAzure Functions 1. x esetén
 description: Dokumentáció a v1 futtatókörnyezettel rendelkező fájl Azure Functions host.jsához.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 32848c725d5c99e3814e86447d604839502054c0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 588ab6723015f34d15e4a46ec4f7324302b13b81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167720"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832823"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.jsAzure Functions 1. x esetén
 
@@ -93,7 +93,8 @@ Az alábbi minta- *host.jsa* fájlokban minden lehetséges beállítás meg van 
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     },
     "singleton": {
       "lockPeriod": "00:00:15",
@@ -250,7 +251,7 @@ A [ILogger](functions-dotnet-class-library.md#ilogger) objektum vagy a [Context.
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |categoryFilter|n/a|Meghatározza a kategória szerinti szűrést| 
-|defaultLevel|Tájékoztatás|A tömbben nem megadott kategóriákhoz `categoryLevels` küldje el a naplókat ezen a szinten és Application Insights.| 
+|defaultLevel|Információ|A tömbben nem megadott kategóriákhoz `categoryLevels` küldje el a naplókat ezen a szinten és Application Insights.| 
 |categoryLevels|n/a|Kategóriákból álló tömb, amely meghatározza, hogy az egyes kategóriákhoz Application Insights milyen minimális naplózási szint legyen elküldve. Az itt megadott kategória az összes olyan kategóriát szabályozza, amely ugyanazzal az értékkel kezdődik, és a hosszabb értékek elsőbbséget élveznek. Az előző példában *host.js* fájlon az összes olyan kategória, amely a "host. aggregator" kifejezéssel kezdődik `Information` . Az összes többi olyan kategória, amely a "host" kifejezéssel kezdődik, például "Host.Executor", jelentkezzen be `Error` szinten.| 
 
 ## <a name="queues"></a>üzenetsorok
@@ -286,6 +287,7 @@ A [SendGrind kimeneti kötésének](functions-bindings-sendgrid.md) konfiguráci
     "sendGrid": {
         "from": "Contoso Group <admin@contoso.com>"
     }
+}    
 ```
 
 |Tulajdonság  |Alapértelmezett | Leírás |
@@ -301,7 +303,8 @@ A [SendGrind kimeneti kötésének](functions-bindings-sendgrid.md) konfiguráci
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     }
 }
 ```
@@ -310,7 +313,8 @@ A [SendGrind kimeneti kötésének](functions-bindings-sendgrid.md) konfiguráci
 |---------|---------|---------| 
 |maxConcurrentCalls|16|Az üzenet-szivattyú által kezdeményezett visszahívás egyidejű hívásának maximális száma. Alapértelmezés szerint a függvények futtatókörnyezete egyszerre több üzenetet dolgoz fel. Ha úgy szeretné irányítani a futtatókörnyezetet, hogy egyszerre csak egyetlen üzenetsor vagy témakörbeli üzenetet dolgozza fel, állítsa `maxConcurrentCalls` az 1 értékre. | 
 |prefetchCount|n/a|Az alapul szolgáló MessageReceiver által használt alapértelmezett PrefetchCount.| 
-|autoRenewTimeout|00:05:00|Az a maximális időtartam, amelyen belül az üzenet zárolása automatikusan meg lesz újítva.| 
+|autoRenewTimeout|00:05:00|Az a maximális időtartam, amelyen belül az üzenet zárolása automatikusan meg lesz újítva.|
+|Automatikus kiegészítés|true|Igaz értéke esetén az trigger automatikusan végrehajtja az üzenet feldolgozását a művelet sikeres végrehajtásakor. Hamis érték esetén a függvény feladata az üzenet befejezése a visszatérés előtt.|
 
 ## <a name="singleton"></a>Singleton
 
@@ -366,7 +370,7 @@ A módosításokat figyelő [megosztott kód-címtárak](functions-reference-csh
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató a host.jsfájl frissítéséhez](functions-reference.md#fileupdate)

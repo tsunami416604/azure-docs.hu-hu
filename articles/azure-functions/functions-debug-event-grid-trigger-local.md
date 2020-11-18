@@ -1,16 +1,16 @@
 ---
 title: Azure Functions Event Grid helyi hibakeresés
-description: Ismerkedjen meg a Event Grid esemény által aktivált Azure-függvények hibakeresésével
+description: Ismerkedjen meg a Event Grid esemény által aktivált helyi hibakeresési Azure Functions
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: fdd046a855c4e2114e96e7911a928165f808710c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be05d237d2799404c3fd8b5733464e23eeb49aa3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530544"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833061"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Az Azure Function Event Grid helyi hibakeresést indít
 
@@ -24,9 +24,9 @@ Ez a cikk bemutatja, hogyan lehet hibakeresést végezni egy helyi függvényben
 
 ## <a name="create-a-new-function"></a>Új függvény létrehozása
 
-Nyissa meg a Function alkalmazást a Visual Studióban, majd kattintson a jobb gombbal a projekt nevére a Megoldáskezelő, majd kattintson a **> új Azure-függvény hozzáadása**lehetőségre.
+Nyissa meg a Function alkalmazást a Visual Studióban, majd kattintson a jobb gombbal a projekt nevére a Megoldáskezelő, majd kattintson a **> új Azure-függvény hozzáadása** lehetőségre.
 
-Az *új Azure-függvény* ablakban válassza ki **Event Grid triggert** , majd kattintson **az OK**gombra.
+Az *új Azure-függvény* ablakban válassza ki **Event Grid triggert** , majd kattintson **az OK** gombra.
 
 ![Új függvény létrehozása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-function.png)
 
@@ -62,7 +62,7 @@ Nyissa meg a Azure Portal, és navigáljon egy Storage-fiókhoz, és kattintson 
 
 ![Storage-fiók eseményének hozzáadása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-Az *események* ablakban kattintson az **esemény-előfizetés** gombra. Az *esemény-előfizetés* ablakban kattintson a *végpont típusa* legördülő menüre, és válassza a **web Hook**elemet.
+Az *események* ablakban kattintson az **esemény-előfizetés** gombra. Az *esemény-előfizetés* ablakban kattintson a *végpont típusa* legördülő menüre, és válassza a **web Hook** elemet.
 
 ![Előfizetés típusának kiválasztása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
@@ -70,16 +70,16 @@ A végpont típusának konfigurálása után kattintson a végpont **kiválaszt�
 
 ![Végpont típusának kiválasztása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
-Az *előfizetői végpont* értéke három különböző értékből áll. Az előtag a *ngrok*által generált HTTPS URL-cím. Az URL-cím hátralévő része a függvény kódlapja fájljában található URL-címről származik, és a függvény neve a végén van hozzáadva. A függvény kódjának URL-címétől kezdve a *ngrok* URL-címe `http://localhost:7071` és a függvény neve lecserélve `{functionname}` .
+Az *előfizetői végpont* értéke három különböző értékből áll. Az előtag a *ngrok* által generált HTTPS URL-cím. Az URL-cím hátralévő része a függvény kódlapja fájljában található URL-címről származik, és a függvény neve a végén van hozzáadva. A függvény kódjának URL-címétől kezdve a *ngrok* URL-címe `http://localhost:7071` és a függvény neve lecserélve `{functionname}` .
 
 A következő képernyőképen a végső URL-cím jelenik meg:
 
 ![Végpont kiválasztása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint-selection.png)
 
-Miután megadta a megfelelő értéket, kattintson a **kijelölés megerősítése**gombra.
+Miután megadta a megfelelő értéket, kattintson a **kijelölés megerősítése** gombra.
 
 > [!IMPORTANT]
-> A *ngrok*minden indításakor újra LÉTREJÖN a HTTPS URL-cím, és megváltozik az érték. Ezért minden alkalommal létre kell hoznia egy új esemény-előfizetést, amikor a *ngrok*-on keresztül teszi elérhetővé az Azure-t.
+> A *ngrok* minden indításakor újra LÉTREJÖN a HTTPS URL-cím, és megváltozik az érték. Ezért minden alkalommal létre kell hoznia egy új esemény-előfizetést, amikor a *ngrok*-on keresztül teszi elérhetővé az Azure-t.
 
 ## <a name="upload-a-file"></a>Fájl feltöltése
 
@@ -88,7 +88,7 @@ Most feltölthet egy fájlt a Storage-fiókjába, hogy elindítson egy Event Gri
 Nyissa meg [Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) , és kapcsolódjon a Storage-fiókjához. 
 
 - **Blob-tárolók** kibontása 
-- Kattintson a jobb gombbal, majd válassza a **blob-tároló létrehozása**lehetőséget.
+- Kattintson a jobb gombbal, majd válassza a **blob-tároló létrehozása** lehetőséget.
 - A tároló **tesztelésének** neve
 - Válassza ki a *teszt* tárolót
 - Kattintson a **feltöltés** gombra

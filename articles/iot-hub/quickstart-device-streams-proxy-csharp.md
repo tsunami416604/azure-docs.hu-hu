@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 3e53937122b8721aff5db435ac447b686ea16643
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: adf0f42b34a4bd7e5df2d2994408dbc175c5e01b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748681"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831922"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Gyors útmutató: az SSH és az RDP engedélyezése IoT Hub-adatfolyamon C#-alkalmazásproxy alkalmazásával (előzetes verzió)
 
@@ -43,9 +43,7 @@ Az alábbi ábra azt szemlélteti, hogy az eszköz helyi és helyi proxy alkalma
 > [!NOTE]
 > Az adatfolyamként küldött SSH-forgalmat az IoT hub streaming-végpontja továbbítja, nem közvetlenül a szolgáltatás és az eszköz között. További információ: az [IOT hub-adatfolyamok használatának előnyei](iot-hub-device-streams-overview.md#benefits).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,28 +56,21 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 * Az ebben a rövid útmutatóban futtatott két minta alkalmazás C# nyelven íródott. A fejlesztői gépen szükség van a .NET Core SDK 2.1.0 vagy újabb verzióra.
 
-  A [.net-ről több platformra](https://www.microsoft.com/net/download/all)is letöltheti a .net Core SDK.
+    A [.net-ről több platformra](https://www.microsoft.com/net/download/all)is letöltheti a .net Core SDK.
 
-* A következő parancs használatával ellenőrizze a C# aktuális verzióját a fejlesztői gépen:
+    A következő parancs használatával ellenőrizze a C# aktuális verzióját a fejlesztői gépen:
 
     ```
     dotnet --version
     ```
 
-* Futtassa az alábbi parancsot az Azure CLI-hez készült Azure IoT-bővítmény az Cloud Shell-példányhoz való hozzáadásához. Az IOT bővítmény hozzáadja az Azure CLI-hez IoT Hub, IoT Edge és IoT eszközök kiépítési szolgáltatásának (DPS) specifikus parancsait.
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
 * [Töltse le az Azure IoT C#-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip), és bontsa ki a zip-archívumot.
 
 * A felhasználó hitelesítéséhez használt eszközön (Windows vagy Linux) érvényes felhasználói fiók és hitelesítő adat.
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -195,7 +186,7 @@ Konzol kimenete a szolgáltatás oldalán (a szolgáltatás helyi proxy alkalmaz
 
 ![Szolgáltatás – helyi proxy alkalmazás kimenete](./media/quickstart-device-streams-proxy-csharp/service-console-output.png)
 
-Konzol kimenete az eszköz helyi alkalmazásproxy-alkalmazásához, amely az SSH démonhoz csatlakozik *IP_address: 22* :
+Konzol kimenete az eszköz helyi alkalmazásproxy-alkalmazásához, amely az SSH démonhoz csatlakozik *IP_address: 22*:
 
 ![Eszköz helyi proxy alkalmazás kimenete](./media/quickstart-device-streams-proxy-csharp/device-console-output.png)
 
@@ -262,7 +253,7 @@ Most használja az RDP-ügyfélalkalmazás használatát, és kapcsolódjon a Se
 
 ![Az RDP csatlakozik a Service-local alkalmazásproxy-alkalmazáshoz](./media/quickstart-device-streams-proxy-csharp/rdp-screen-capture.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 

@@ -3,13 +3,13 @@ title: API Management integrálása az Azure Service Fabricával
 description: Megtudhatja, hogyan kezdheti meg gyorsan az Azure API Managementét, és hogyan irányíthatja át a forgalmat a Service Fabric háttérbeli szolgáltatásával.
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.custom: mvc
-ms.openlocfilehash: 40f8c53394292a85f6fd032e445d79ed82e2d4e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 61a13d80fd67751d77bc77199fa433143ad92048
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260248"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831685"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>API Management integrálása az Azure Service Fabricával
 
@@ -136,7 +136,7 @@ A [Microsoft.ApiManagement/service/apis](/azure/templates/microsoft.apimanagemen
 * A **name** (név) egyedi és leíró nevet biztosít az API-nak, például: „service-fabric-app”. A fejlesztői és közzétevői portálon jelenik meg.
 * A **serviceUrl** (szolgáltatás URL-címe) az API-t alkalmazó HTTP-szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket. A Service Fabric-háttérrendszerek esetében ez az URL-érték nem használható. Itt bármilyen érték megadható. Ehhez a cikkhez például "http: \/ /servicefabric".
 * A **path** (útvonal) értéke az API Management szolgáltatás kiindulási URL-címéhez lesz hozzáfűzve. A kiindulási URL-cím egy API Management-szolgáltatáspéldány által üzemeltetett mindegyik API esetében megegyezik. Az API Management az API-kat az utótag alapján különbözteti meg, ezért az utótagnak egy adott közzétevő minden API-ja esetében egyedinek kell lennie.
-* A **protocols** (protokollok) határozza meg, mely protokollok révén lehet hozzáférni az API-hoz. Ebben a cikkben a **http** és a **https**lista szerepel.
+* A **protocols** (protokollok) határozza meg, mely protokollok révén lehet hozzáférni az API-hoz. Ebben a cikkben a **http** és a **https** lista szerepel.
 * A **path** (útvonal) az API utótagja. Ehhez a cikkhez használja a "SajátPr" kifejezést.
 
 ### <a name="microsoftapimanagementserviceapisoperations"></a>Microsoft.ApiManagement/service/apis/operations
@@ -289,7 +289,7 @@ ResourceGroupName="sfclustertutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [API Management](../api-management/import-and-publish.md)használatáról.
 

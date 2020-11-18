@@ -10,18 +10,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 4fb62ec8d3a6fa97fe6db5b146ba58d3ad66b1b4
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.custom: how-to, devx-track-python, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: fa1b19ef4ece3011c97c3158d54edd1d39efc09d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441987"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832636"
 ---
-# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Azure Machine Learning-modell felhasználása webszolgáltatásként
+# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása
 
 
-Azure Machine Learning modell webszolgáltatásként való üzembe helyezése REST API végpontot hoz létre. Adatokat küldhet ennek a végpontnak, és megkaphatja a modell által visszaküldött előrejelzést. Ebből a dokumentumból megtudhatja, hogyan hozhat létre ügyfeleket a webszolgáltatáshoz a C#, a go, a Java és a Python használatával.
+Ha egy Azure Machine Learning-modellt webszolgáltatásként helyez üzembe, létrejön egy REST API-végpont. Adatokat küldhet ennek a végpontnak, és megkaphatja a modell által visszaküldött előrejelzést. Ebből a dokumentumból megtudhatja, hogyan hozhat létre ügyfeleket a webszolgáltatáshoz a C#, a go, a Java és a Python használatával.
 
 Webszolgáltatást akkor hozhat létre, ha a helyi környezetbe, Azure Container Instancesba, Azure Kubernetes szolgáltatásba vagy mezőre programozható Gate tömbökbe (FPGA) helyezi üzembe a modellt. A webszolgáltatáshoz való hozzáféréshez használt URI-t a [Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-val kéri le. Ha a hitelesítés engedélyezve van, az SDK használatával is beolvashatja a hitelesítési kulcsokat vagy jogkivonatokat.
 
@@ -85,7 +85,7 @@ az ml service show -n <service-name>
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Azure Machine Learning studióból válassza a __végpontok__ , a __valós idejű végpontok__ , majd a végpont nevét. A végpont részleteit a REST- __végpont__ mező tartalmazza a pontozási URI-t. A __hencegés URI__ -ja tartalmazza a HENCEGő URI-t.
+Azure Machine Learning studióból válassza a __végpontok__, a __valós idejű végpontok__, majd a végpont nevét. A végpont részleteit a REST- __végpont__ mező tartalmazza a pontozási URI-t. A __hencegés URI__ -ja tartalmazza a HENCEGő URI-t.
 
 ---
 
@@ -679,6 +679,6 @@ Ha olyan webszolgáltatást szeretne előállítani, amelyet a Power BIban való
 
 A webszolgáltatás az üzembe helyezése után a Power BI-adatfolyamokból használható. [Megtudhatja, hogyan használhat Azure Machine learning webszolgáltatást Power BIból](/power-bi/service-machine-learning-integration).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Python és a Deep learning modellek valós idejű pontozására szolgáló hivatkozási architektúra megtekintéséhez nyissa meg az [Azure Architecture centert](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

@@ -4,17 +4,16 @@ description: Megtudhatja, hogyan konfigurálhat egy fogadó transzformációt a 
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
-manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/02/2020
-ms.openlocfilehash: 2e26028c47e8c96f8c1adabc468ee6f03e3cb19c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.date: 11/17/2020
+ms.openlocfilehash: d45f5d5d1d61372ed959334519aa865c22d70748
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427292"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832483"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Fogadó átalakítás a leképezési adatfolyamban
 
@@ -65,13 +64,9 @@ A következő videó számos különböző fogadó lehetőséget ismertet a szö
 
 ![A fogadó beállításait bemutató képernyőkép.](media/data-flow/sink-settings.png "A fogadó beállításait bemutató képernyőkép.")
 
-**Séma drift** : a [séma eltolódása](concepts-data-flow-schema-drift.md) Data Factory a rugalmas sémák natív kezelésére az adatfolyamatokban anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait. Engedélyezze a séma eltolásának engedélyezése **lehetőséget** , hogy további oszlopokat írjon a fogadó adatsémában definiált elemek fölé.
+**Séma drift**: a [séma eltolódása](concepts-data-flow-schema-drift.md) Data Factory a rugalmas sémák natív kezelésére az adatfolyamatokban anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait. Engedélyezze a séma eltolásának engedélyezése **lehetőséget** , hogy további oszlopokat írjon a fogadó adatsémában definiált elemek fölé.
 
-**Séma ellenőrzése** : Ha a séma ellenőrzése beállítás be van jelölve, az adatfolyam sikertelen lesz, ha a bejövő forrás sémájának bármely oszlopa nem található a forrás kivetítésben, vagy ha az adattípusok nem egyeznek. Ezzel a beállítással kényszerítheti ki, hogy a forrásadatok megfelelnek a megadott leképezési szerződésnek. Az adatbázis-forrás forgatókönyvekben hasznos lehet az oszlopnevek vagy típusok megváltozásának jelzésére.
-
-**Tempdb használata:** Alapértelmezés szerint a Data Factory globális ideiglenes táblázatot fog használni az adattároláshoz a betöltési folyamat részeként. Azt is megteheti, hogy kijelöli a "TempDB használata" lehetőséget, és ehelyett megkérdezi Data Factory, hogy az ideiglenes tároló táblát egy olyan felhasználói adatbázisban tárolja, amely a fogadóhoz használt adatbázisban található.
-
-![Ideiglenes adatbázis használata](media/data-flow/tempdb.png "Ideiglenes adatbázis használata")
+**Séma ellenőrzése**: Ha a séma ellenőrzése beállítás be van jelölve, az adatfolyam sikertelen lesz, ha a bejövő forrás sémájának bármely oszlopa nem található a forrás kivetítésben, vagy ha az adattípusok nem egyeznek. Ezzel a beállítással kényszerítheti ki, hogy a forrásadatok megfelelnek a megadott leképezési szerződésnek. Az adatbázis-forrás forgatókönyvekben hasznos lehet az oszlopnevek vagy típusok megváltozásának jelzésére.
 
 ## <a name="cache-sink"></a>Gyorsítótár fogadója
 
@@ -109,9 +104,14 @@ Alapértelmezés szerint az determinált sorrendben több mosogatóba történik
 
 ![Egyéni fogadó rendelés](media/data-flow/cache-2.png "Egyéni fogadó rendelés")
 
+## <a name="error-row-handling"></a>Hibát tartalmazó sorok kezelése
+
+Az adatbázisba való íráskor bizonyos sorok nem hajthatók végre, mert a cél által meghatározott korlátozások vannak megadva. Alapértelmezés szerint az adatfolyamatok futtatása meghiúsul az első hiba esetén. Bizonyos összekötők esetében dönthet úgy, hogy **folytatja a hibát** , amely lehetővé teszi az adatfolyam befejeződését, még akkor is, ha az egyes sorok hibákkal rendelkeznek. Ez a funkció jelenleg csak Azure SQL Databaseban érhető el. További információ: [Az Azure SQL dB-ben a hibajelentések feldolgozása](connector-azure-sql-database.md#error-row-handling).
+
 ## <a name="data-preview-in-sink"></a>Az adatelőnézet a fogadóban
 
 Amikor egy hibakeresési fürtön beolvas egy előnézetet, a rendszer nem írja le az adatait a fogadóba. Egy pillanatkép arról, hogy az adatok milyen módon lesznek visszaadva, de semmi sem kerül a célhelyre. Az adatok a fogadóba való írásának teszteléséhez futtasson egy folyamat-hibakeresést a folyamat vásznon.
 
 ## <a name="next-steps"></a>Következő lépések
+
 Most, hogy létrehozta az adatfolyamatot, adjon hozzá egy [adatfolyam-tevékenységet a folyamathoz](concepts-data-flow-overview.md).

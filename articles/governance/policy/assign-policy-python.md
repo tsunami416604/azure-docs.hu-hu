@@ -3,13 +3,13 @@ title: 'Rövid útmutató: új szabályzat-hozzárendelés a Pythonban'
 description: Ebben a rövid útmutatóban a Python használatával hozzon létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: b2bbe38ce979dd12694908240a6adab317332a35
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: aa67b3a2bae2beb62daa6e64871411ee760f802b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074090"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832197"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a Python használatával
 
@@ -92,7 +92,7 @@ print(policyAssignment)
 Az előző parancsok a következő információkat használják:
 
 Hozzárendelés részletei:
-- **DISPLAY_NAME** – a házirend-hozzárendelés megjelenítendő neve. Ebben az esetben a _virtuális gépek naplózása felügyelt lemezek hozzárendelése nélkül_történik.
+- **DISPLAY_NAME** – a házirend-hozzárendelés megjelenítendő neve. Ebben az esetben a _virtuális gépek naplózása felügyelt lemezek hozzárendelése nélkül_ történik.
 - **policy_definition_id** – a házirend-definíció elérési útja, amely alapján létrehozza a hozzárendelést. Ebben az esetben ez a házirend-definíciós _virtuális gépek azonosítója, amelyek nem használnak felügyelt lemezeket_. Ebben a példában a házirend-definíció beépített, és az elérési út nem tartalmaz felügyeleti csoportot vagy előfizetési adatokat.
 - **hatókör** – a hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrásokat vagy erőforrásokat kíván érvényesíteni. Egy felügyeleti csoportból egy adott erőforrásra terjedhet. Ügyeljen arra, hogy a `{scope}` következő minták egyikét cserélje le:
   - Felügyeleti csoport: `/providers/Microsoft.Management/managementGroups/{managementGroup}`

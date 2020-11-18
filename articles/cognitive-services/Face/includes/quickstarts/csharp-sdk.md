@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 44c1e55d60fb35ba510d99535c50c7919b29253e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 1299cbf1b837315a1a95c8a2ec2e4ed0706d959c
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925035"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816866"
 ---
 Ismerkedés az Arcfelismerés szolgáltatással a .NET-hez készült Face ügyféloldali kódtár használatával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -50,7 +50,7 @@ Miután létrehozott egy új projektet, telepítse az ügyféloldali kódtárat 
 
 #### <a name="cli"></a>[Parancssori felület](#tab/cli)
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `face-quickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs* . 
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `face-quickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*. 
 
 ```console
 dotnet new console -n face-quickstart
@@ -152,7 +152,7 @@ Hozzon létre egy új metódust az arcok észleléséhez. A `DetectFaceExtract` 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect)]
 
 > [!TIP]
-> A helyi rendszerképben is felderítheti az arcokat. Tekintse meg a [IFaceOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ifaceoperations?view=azure-dotnet) metódusokat, például a **DetectWithStreamAsync** .
+> A helyi rendszerképben is felderítheti az arcokat. Tekintse meg a [IFaceOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ifaceoperations?view=azure-dotnet) metódusokat, például a **DetectWithStreamAsync**.
 
 ### <a name="display-detected-face-data"></a>Észlelt Arcfelismerés
 
@@ -184,7 +184,7 @@ A következő kód a megfeleltetés részleteit jeleníti meg a konzolon:
 
 ## <a name="identify-a-face"></a>Arc azonosítása
 
-Az azonosítási művelet egy személy (vagy több személy) képét veszi igénybe, és megkeresi a rendszerképben lévő egyes arcok identitását (Arcfelismerés-keresés). Összehasonlítja az észlelt elemeket egy **PersonGroup** , egy olyan, a különböző **személy** objektumokat tartalmazó adatbázissal, amelyek az arc funkciói ismertek. Az azonosítási művelet végrehajtásához először létre kell hoznia és be kell tanítania egy **PersonGroup**
+Az azonosítási művelet egy személy (vagy több személy) képét veszi igénybe, és megkeresi a rendszerképben lévő egyes arcok identitását (Arcfelismerés-keresés). Összehasonlítja az észlelt elemeket egy **PersonGroup**, egy olyan, a különböző **személy** objektumokat tartalmazó adatbázissal, amelyek az arc funkciói ismertek. Az azonosítási művelet végrehajtásához először létre kell hoznia és be kell tanítania egy **PersonGroup**
 
 ### <a name="create-a-person-group"></a>Személy csoport létrehozása
 
@@ -205,7 +205,7 @@ Ezután adja hozzá a következő kódot egy **személy** objektum létrehozás�
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_create)]
 
 > [!TIP]
-> Helyi rendszerképekből is létrehozhat **PersonGroup** . Tekintse meg a [IPersonGroupPerson](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ipersongroupperson?view=azure-dotnet) metódusokat, például a **AddFaceFromStreamAsync** .
+> Helyi rendszerképekből is létrehozhat **PersonGroup** . Tekintse meg a [IPersonGroupPerson](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ipersongroupperson?view=azure-dotnet) metódusokat, például a **AddFaceFromStreamAsync**.
 
 ### <a name="train-the-persongroup"></a>A PersonGroup betanítása
 
@@ -213,11 +213,14 @@ Miután kibontotta az adatokból a képeket, és azokat különböző **személy
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_train)]
 
+> [!TIP]
+> A Face API a természetben statikus, előre elkészített modelleken fut (a modell teljesítménye nem visszafejlődés meg és nem lesz fejlesztve, mivel a szolgáltatás fut). A modell által előállított eredmények megváltozhatnak, ha a Microsoft frissíti a modell hátterét anélkül, hogy teljesen új modellre kellene migrálni. A modell újabb verziójának kihasználása érdekében áttaníthatja a **PersonGroup**, és megadhatja az újabb modellt ugyanazon beléptetési képpel rendelkező paraméterként.
+
 Most már készen áll arra, hogy az ellenőrzési, azonosítási vagy csoportosítási műveletekben felhasználja ezt a **személy** csoportot és a hozzá tartozó **személyeket** .
 
 ### <a name="identify-faces"></a>Arcok azonosítása
 
-A következő kód a forrás képét veszi fel, és létrehozza a rendszerképben észlelt összes arc listáját. Ezek az arcok lesznek azonosítva a **PersonGroup** .
+A következő kód a forrás képét veszi fel, és létrehozza a rendszerképben észlelt összes arc listáját. Ezek az arcok lesznek azonosítva a **PersonGroup**.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify_sources)]
 
@@ -241,7 +244,7 @@ dotnet run
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 

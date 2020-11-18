@@ -2,13 +2,13 @@
 title: Sablon létrehozása a csatolt sablonokkal
 description: Útmutató sablon létrehozásához csatolt sablonokkal.
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: b1862789ede4a9d2ab8c57bdb913c449a560dc58
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/17/2020
+ms.openlocfilehash: d86b46a88dde7ebffea81cdeb8dc184dd275c0da
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321598"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747434"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Oktatóanyag: spec sablon létrehozása csatolt sablonokkal (előzetes verzió)
 
@@ -19,7 +19,7 @@ Megtudhatja, hogyan hozhat létre egy [sablon-SPECT](template-specs.md) egy fő 
 Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. A használatához regisztrálnia kell [az előzetes](https://aka.ms/templateSpecOnboarding)verzióra.
+> A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. A használatához telepítenie kell a PowerShell vagy az Azure CLI legújabb verzióját. Azure PowerShell esetén használja a [5.0.0 vagy újabb verziót](/powershell/azure/install-az-ps). Azure CLI esetén használja az [2.14.2 vagy újabb verziót](/cli/azure/install-azure-cli).
 
 ## <a name="create-linked-templates"></a>Hivatkozott sablonok létrehozása
 
@@ -27,7 +27,7 @@ Hozza létre a fő sablont és a csatolt sablont.
 
 Sablon csatolásához vegyen fel egy [központi telepítési erőforrást](/azure/templates/microsoft.resources/deployments) a fő sablonba. A `templateLink` tulajdonságban a fölérendelt sablon elérési útjának megfelelően határozza meg a csatolt sablon relatív elérési útját.
 
-A csatolt sablon neve **linkedTemplate.json** , és a fő sablon tárolási útvonalán található **összetevők nevű** almappában tárolódik.  A következő értékek egyikét használhatja a relativePath:
+A csatolt sablon neve **linkedTemplate.json**, és a fő sablon tárolási útvonalán található **összetevők nevű** almappában tárolódik.  A következő értékek egyikét használhatja a relativePath:
 
 - `./artifacts/linkedTemplate.json`
 - `/artifacts/linkedTemplate.json`

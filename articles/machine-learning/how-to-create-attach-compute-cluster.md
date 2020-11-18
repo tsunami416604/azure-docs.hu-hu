@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ce80c6bbd3e4a5154e80317c3918776c771e67fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0bbf70016dc9b93120b3158e8954c336095ea211
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318213"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832687"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning számítási fürt létrehozása
 
@@ -60,7 +60,7 @@ A számítási fürtök biztonságos módon futtathatják a feladatokat egy [vir
 
 ## <a name="create"></a>Létrehozás
 
-**Becsült idő** : körülbelül 5 perc.
+**Becsült idő**: körülbelül 5 perc.
 
 Azure Machine Learning a számítások újra felhasználhatók a futtatások között. A számítás a munkaterület más felhasználóival is megoszthatók, és a futtatások között megmaradnak, automatikusan felfelé vagy lefelé skálázást, a csomópontok száma és a fürtön beállított max_nodes alapján. A min_nodes beállítás szabályozza a rendelkezésre álló minimális csomópontokat.
 
@@ -74,8 +74,8 @@ A számítási műveletek nem a használat során nulla csomópontra vannak lebo
 
 Állandó Azure Machine Learning számítási erőforrás Pythonban való létrehozásához válassza a **vm_size** és **max_nodes** tulajdonságokat. A Azure Machine Learning ezután az intelligens alapértelmezett értékeket használja a többi tulajdonsághoz. 
     
-* **vm_size** : a Azure Machine learning számítás által létrehozott csomópontok virtuálisgép-családja.
-* **max_nodes** : azon csomópontok maximális száma, amelyeknek az autoskálázása Azure Machine learning számítási feladatok futtatásakor.
+* **vm_size**: a Azure Machine learning számítás által létrehozott csomópontok virtuálisgép-családja.
+* **max_nodes**: azon csomópontok maximális száma, amelyeknek az autoskálázása Azure Machine learning számítási feladatok futtatásakor.
 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]

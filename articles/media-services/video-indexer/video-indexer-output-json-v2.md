@@ -8,18 +8,18 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050862"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831566"
 ---
 # <a name="examine-the-video-indexer-output"></a>Vizsgálja meg a Video Indexer kimenetét
 
-Ha egy videó indexelve van, Video Indexer poduces a megadott videó-felismerés részleteit tartalmazó JSON-tartalmat. Az elemzések a következők: átiratok, felismerése, arcok, témakörök, blokkok stb. Az egyes betekintési típusok olyan időtartomány-példányokat tartalmaznak, amelyek azt mutatják be, hogy mikor jelenik meg a videóban. 
+Ha egy videó indexelve van, Video Indexer létrehozza a megadott videó-felismerés részleteit tartalmazó JSON-tartalmat. Az elemzések a következők: átiratok, felismerése, arcok, témakörök, blokkok stb. Az egyes betekintési típusok olyan időtartomány-példányokat tartalmaznak, amelyek azt mutatják be, hogy mikor jelenik meg a videóban. 
 
 A videó összefoglaló adatait a [video Indexer](https://www.videoindexer.ai/) webhelyén található videó **Lejátszás** gombjára kattintva vizuálisan megvizsgálhatja. 
 
@@ -187,6 +187,7 @@ Az arcok rendelkezhetnek AZONOSÍTÓval, névvel, miniatűrvel, egyéb metaadato
 |textualContentModeration|A [textualContentModeration](#textualcontentmoderation) betekintést nyújt.|
 |érzelmeket| Az [érzelmek](#emotions) betekintése.|
 |témakörök|A [témakörök](#topics) betekintést nyújtanak.|
+|hangszórók|A [hangszórók](#speakers) betekintést nyernek.|
 
 Példa:
 
@@ -222,36 +223,45 @@ esetben|A blokk időtartományait tartalmazó lista.|
 |---|---|
 |id|A sor azonosítója.|
 |szöveg|Maga a átirat.|
+|megbízhatóság|A átirat pontosságának megbízhatósága.|
+|speakerId|A beszélő azonosítója.|
 |language|A átirat nyelve. Az olyan átiratok támogatását célozza, ahol az egyes sorok más nyelven is rendelkezhetnek.|
 |esetben|Az időtartományok listája, ahol ez a sor megjelent. Ha a példány átirat, akkor csak 1 példánya lesz.|
 
 Példa:
 
 ```json
-"transcript": [
+"transcript":[
 {
-    "id": 0,
-    "text": "Hi I'm Doug from office.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    }
-    ]
+  "id":1,
+  "text":"Well, good morning everyone and welcome to",
+  "confidence":0.8839,
+  "speakerId":1,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
 },
 {
-    "id": 1,
-    "text": "I have a guest. It's Michelle.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:02.7200000",
-        "end": "00:00:03.9600000"
-    }
-    ]
-}
-] 
+  "id":2,
+  "text":"ignite 2016. Your mission at Microsoft is to empower every",
+  "confidence":0.8944,
+  "speakerId":2,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
 ```
 
 #### <a name="ocr"></a>OCR
@@ -827,6 +837,42 @@ Video Indexer a fő témaköröket a átiratokból származtatja. Ha lehetséges
 . . .
 ```
 
+#### <a name="speakers"></a>hangszórók
+
+|Név|Leírás|
+|---|---|
+|id|A hangszóró azonosítója.|
+|name|A beszélő neve "Speaker #" formában, *<number>* például: "speaker #1".|
+|esetben |Azon időtartományok listája, amelyekben ez a beszélő megjelent.|
+
+```json
+"speakers":[
+{
+  "id":1,
+  "name":"Speaker #1",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
+},
+{
+  "id":2,
+  "name":"Speaker #2",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
+` ` `
+```
 ## <a name="next-steps"></a>Következő lépések
 
 [Video Indexer fejlesztői portál](https://api-portal.videoindexer.ai)

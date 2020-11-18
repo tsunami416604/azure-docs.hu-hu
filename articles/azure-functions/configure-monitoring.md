@@ -3,13 +3,13 @@ title: Azure Functions figyelésének konfigurálása
 description: Megtudhatja, hogyan csatlakoztatható a Function app Application Insights a figyeléshez, és hogyan konfigurálhatja az adatgyűjtést.
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.custom: contperfq2
-ms.openlocfilehash: 50705eeedf9c985a053600a8c0b27c823231e9a3
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperfq2, devx-track-azurecli
+ms.openlocfilehash: f5b1b00c534abf1e7f82d2aca69dd4763b40d5ad
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217184"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833078"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>A Azure Functions figyelésének konfigurálása
 
@@ -140,7 +140,7 @@ A naplózási szint beállításával `None` megakadályozhatja, hogy a naplók 
 
 ## <a name="configure-the-aggregator"></a>A gyűjtő konfigurálása
 
-Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a függvények végrehajtásával kapcsolatos adatokat egy adott időszakban. Az alapértelmezett időtartam 30 másodperc vagy 1 000 fut, amelyik előbb eléri a értéket. Ezt a beállítást a fájl [host.js] is konfigurálhatja.  Íme egy példa:
+Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a függvények végrehajtásával kapcsolatos adatokat egy adott időszakban. Az alapértelmezett időtartam 30 másodperc vagy 1 000 fut, amelyik előbb eléri a értéket. Ezt a beállítást a fájl [host.js] is konfigurálhatja.  Bemutatunk egy példát:
 
 ```json
 {
@@ -153,7 +153,7 @@ Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a fü
 
 ## <a name="configure-sampling"></a>Mintavételezés konfigurálása
 
-Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.md) funkciót, amely képes arra, hogy túl sok telemetria-adatmennyiséget állítson elő a befejezett végrehajtásokon a maximális terhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, Application Insights véletlenszerűen figyelmen kívül hagyja a bejövő végrehajtások némelyikét. A másodpercenkénti végrehajtások maximális számának alapértelmezett beállítása 20 (öt az 1. x verzióban). A mintavételezésthost.js- [ on](./functions-host-json.md#applicationinsights)is konfigurálhatja.  Íme egy példa:
+Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.md) funkciót, amely képes arra, hogy túl sok telemetria-adatmennyiséget állítson elő a befejezett végrehajtásokon a maximális terhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, Application Insights véletlenszerűen figyelmen kívül hagyja a bejövő végrehajtások némelyikét. A másodpercenkénti végrehajtások maximális számának alapértelmezett beállítása 20 (öt az 1. x verzióban). A mintavételezésthost.js- [ on](./functions-host-json.md#applicationinsights)is konfigurálhatja.  Bemutatunk egy példát:
 
 # <a name="v2x"></a>[v2. x +](#tab/v2)
 
@@ -228,7 +228,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 ## <a name="enable-application-insights-integration"></a>Application Insights-integráció engedélyezése
 
-Ahhoz, hogy egy Function alkalmazás adatküldést Application Insights, ismernie kell egy Application Insights erőforrás rendszerállapot-kulcsát. A kulcsnak egy **APPINSIGHTS_INSTRUMENTATIONKEY**nevű alkalmazás-beállításban kell lennie.
+Ahhoz, hogy egy Function alkalmazás adatküldést Application Insights, ismernie kell egy Application Insights erőforrás rendszerállapot-kulcsát. A kulcsnak egy **APPINSIGHTS_INSTRUMENTATIONKEY** nevű alkalmazás-beállításban kell lennie.
 
 Ha a [Azure Portal](functions-create-first-azure-function.md)hozza létre a Function alkalmazást, a parancssorból [Azure functions Core Tools](functions-create-first-azure-function-azure-cli.md)vagy [Visual Studio Code](functions-create-first-function-vs-code.md)használatával, Application Insights az integráció alapértelmezés szerint engedélyezve van. A Application Insights erőforrás neve megegyezik a Function alkalmazás nevével, és az ugyanabban a régióban vagy a legközelebbi régióban jön létre.
 
@@ -238,14 +238,14 @@ A létrehozandó Application Insights-erőforrás áttekintéséhez válassza ki
 
 ![Application Insights engedélyezése a Function app létrehozásakor](media/functions-monitoring/enable-ai-new-function-app.png)
 
-Ha a **Létrehozás**lehetőséget választja, a rendszer létrehoz egy Application Insights erőforrást a Function alkalmazással, amely a `APPINSIGHTS_INSTRUMENTATIONKEY` set in Application settings (alkalmazás beállításai) beállítással rendelkezik. Minden készen áll.
+Ha a **Létrehozás** lehetőséget választja, a rendszer létrehoz egy Application Insights erőforrást a Function alkalmazással, amely a `APPINSIGHTS_INSTRUMENTATIONKEY` set in Application settings (alkalmazás beállításai) beállítással rendelkezik. Minden készen áll.
 
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>Hozzáadás meglévő Function-alkalmazáshoz 
 
 Ha nem hoztak létre Application Insights erőforrásokat a Function alkalmazással, a következő lépésekkel hozhatja létre az erőforrást. Ezután hozzáadhatja a kialakítási kulcsot az adott erőforrásból a Function [alkalmazásban](functions-how-to-use-azure-function-app-settings.md#settings) .
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a **Function app**elemet, majd válassza ki a Function alkalmazást. 
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a **Function app** elemet, majd válassza ki a Function alkalmazást. 
 
 1. Válassza ki az ablak tetején található **Az Application Insights nincs konfigurálva** szalagot. Ha nem látja ezt a szalagcímet, előfordulhat, hogy az alkalmazás már Application Insights engedélyezve van.
 
@@ -258,13 +258,13 @@ Ha nem hoztak létre Application Insights erőforrásokat a Function alkalmazás
     | **Új erőforrásnév** | Egyedi alkalmazásnév | A legegyszerűbb, ha a függvényalkalmazás nevét használja, amelynek egyedinek kell lennie az előfizetésben. | 
     | **Hely** | Nyugat-Európa | Ha lehetséges, használja a függvényalkalmazás [régióját](https://azure.microsoft.com/regions/) vagy egy ahhoz közeli régiót. |
 
-    :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="Az Application Insights engedélyezése a portálon":::
+    :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="Application Insights-erőforrás létrehozása":::
 
 1. Kattintson az **Alkalmaz** gombra. 
 
    Az Application Insights-erőforrás ugyanabban az erőforráscsoportban és előfizetésben jön létre, ahol a függvényalkalmazás található. Az erőforrás létrehozása utána zárja be az Application Insights ablakát.
 
-1. A Function alkalmazásban válassza a **Konfigurálás** lehetőséget a **Beállítások**területen, majd válassza az **Alkalmazásbeállítások**lehetőséget. Ha az `APPINSIGHTS_INSTRUMENTATIONKEY` nevű beállítás megjelenik, akkor engedélyezve van az Application Insights-integráció az Azure-ban futó függvényalkalmazáshoz. Ha valamilyen okból kifolyólag ez a beállítás nem létezik, adja hozzá a Application Insights rendszerállapot-kulcs értékeként.
+1. A Function alkalmazásban válassza a **Konfigurálás** lehetőséget a **Beállítások** területen, majd válassza az **Alkalmazásbeállítások** lehetőséget. Ha az `APPINSIGHTS_INSTRUMENTATIONKEY` nevű beállítás megjelenik, akkor engedélyezve van az Application Insights-integráció az Azure-ban futó függvényalkalmazáshoz. Ha valamilyen okból kifolyólag ez a beállítás nem létezik, adja hozzá a Application Insights rendszerállapot-kulcs értékeként.
 
 > [!NOTE]
 > A függvények korábbi verziói beépített figyelést használnak, ami már nem ajánlott. Ha egy ilyen Function alkalmazáshoz Application Insights integrációt engedélyez, le kell [tiltania a beépített naplózást](#disable-built-in-logging)is.  

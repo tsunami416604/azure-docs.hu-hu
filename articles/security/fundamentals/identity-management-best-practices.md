@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 886597e5490acb94f43d840dc5a3d22092e45849
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698760"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832602"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások
 
@@ -157,7 +157,7 @@ Ha több Bérlővel rendelkezik, vagy engedélyezni szeretné a felhasználók s
 
 Javasoljuk, hogy az összes felhasználóra vonatkozóan kétlépéses ellenőrzést igényeljen. Ebbe beletartozik a szervezet rendszergazdái és más tagjai, akik jelentős hatással lehetnek a fiókjuk biztonságára (például pénzügyi tisztviselők).
 
-Több lehetőség is van a kétlépéses ellenőrzés megkövetelésére. A legjobb megoldás az Ön által futtatott céloktól, az Azure AD-kiadástól és a licencelési programtól függ. Tekintse meg, [hogyan kell kétlépéses ellenőrzést megkövetelni a felhasználók](../../active-directory/authentication/howto-mfa-userstates.md) számára a legjobb megoldás meghatározásához. A licencekkel és a díjszabással kapcsolatos további információkért tekintse meg az [Azure ad](https://azure.microsoft.com/pricing/details/active-directory/) és az [Azure multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) díjszabási oldalát.
+Több lehetőség is van a kétlépéses ellenőrzés megkövetelésére. A legjobb megoldás az Ön által futtatott céloktól, az Azure AD-kiadástól és a licencelési programtól függ. Tekintse meg, [hogyan kell kétlépéses ellenőrzést megkövetelni a felhasználók](../../active-directory/authentication/howto-mfa-userstates.md) számára a legjobb megoldás meghatározásához. A licencekkel és a díjszabással kapcsolatos további információkért tekintse meg az [Azure ad](https://azure.microsoft.com/pricing/details/active-directory/) és az [Azure ad multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) díjszabási oldalát.
 
 A kétlépéses ellenőrzés engedélyezésének lehetőségei és előnyei a következők:
 
@@ -170,14 +170,14 @@ A kétlépéses ellenőrzés engedélyezésének lehetőségei és előnyei a k�
 Ez a módszer minden licencelési szinten elérhető, de nem keverhető a meglévő feltételes hozzáférési szabályzatokkal. További információt az [Azure ad biztonsági alapértelmezései](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) című témakörben talál.
 
 **2. lehetőség**: [a multi-Factor Authentication engedélyezése a felhasználói állapot módosításával](../../active-directory/authentication/howto-mfa-userstates.md).   
-**Előnyök**: Ez a hagyományos módszer a kétlépéses ellenőrzés megkövetelésére. [Az azure multi-Factor Authentication a felhőben és az azure multi-Factor Authentication-kiszolgáló](../../active-directory/authentication/concept-mfa-howitworks.md)is működik. Ennek a módszernek a használatával a felhasználóknak kétlépéses ellenőrzést kell végezniük minden alkalommal, amikor bejelentkeznek, és felülbírálják a feltételes hozzáférési szabályzatokat.
+**Előnyök**: Ez a hagyományos módszer a kétlépéses ellenőrzés megkövetelésére. [Az Azure AD multi-Factor Authentication a felhőben és az azure multi-Factor Authentication-kiszolgáló](../../active-directory/authentication/concept-mfa-howitworks.md)is működik. Ennek a módszernek a használatával a felhasználóknak kétlépéses ellenőrzést kell végezniük minden alkalommal, amikor bejelentkeznek, és felülbírálják a feltételes hozzáférési szabályzatokat.
 
-Annak megállapításához, hogy hol kell engedélyezni a Multi-Factor Authenticationt, tekintse meg a [szervezetem számára legmegfelelőbb Azure MFA-verziót](../../active-directory/authentication/concept-mfa-howitworks.md).
+Annak megállapításához, hogy a Multi-Factor Authenticationt engedélyezni kell-e, az [Azure ad MFA melyik verziója a legmegfelelőbb a szervezetem számára?](../../active-directory/authentication/concept-mfa-howitworks.md).
 
 **3. lehetőség**: [a multi-Factor Authentication engedélyezése feltételes hozzáférési házirenddel](../../active-directory/authentication/howto-mfa-getstarted.md).
 **Előnyök**: Ez a beállítás lehetővé teszi, hogy a [feltételes hozzáférés](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)használatával megkérdezze a kétlépéses ellenőrzést az adott körülmények között. A konkrét feltételek különböző helyekről, nem megbízható eszközökről vagy kockázatos alkalmazásokból is lehetnek felhasználói bejelentkezésre. Meghatározott feltételek meghatározása, amelyekben kétlépéses ellenőrzésre van szükség, így elkerülhető a felhasználók folyamatos rákérdezése, ami kellemetlen felhasználói élmény lehet.
 
-Ez a legrugalmasabb módszer a felhasználók kétlépéses ellenőrzésének engedélyezésére. A feltételes hozzáférési szabályzat engedélyezése csak a felhőben működő Azure-Multi-Factor Authentication működik, és az Azure AD prémium funkciója. Erről a módszerről a [felhőalapú Azure-multi-Factor Authentication üzembe helyezése című](../../active-directory/authentication/howto-mfa-getstarted.md)témakörben talál további információt.
+Ez a legrugalmasabb módszer a felhasználók kétlépéses ellenőrzésének engedélyezésére. A feltételes hozzáférési szabályzat engedélyezése csak a felhőben található Azure AD-Multi-Factor Authentication működik, és az Azure AD prémium funkciója. Ezzel a módszerrel kapcsolatban további információkat talál a [felhőalapú Azure ad-multi-Factor Authentication üzembe helyezése című](../../active-directory/authentication/howto-mfa-getstarted.md)témakörben.
 
 **4. lehetőség**: engedélyezze a multi-Factor Authentication feltételes hozzáférési házirendekkel a [kockázatalapú feltételes hozzáférési szabályzatok](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md)kiértékelésével.   
 **Előnyök**: Ez a beállítás a következőket teszi lehetővé:
@@ -269,7 +269,7 @@ A következő összefoglalja az [Azure ad-ben az emelt szintű hozzáférés biz
 **Ajánlott eljárás**: az összes kritikus rendszergazdai fiók jelszó nélküli (előnyben részesített) vagy Multi-Factor Authentication megkövetelésének megkövetelése.
 **Részletek**: a [Microsoft Authenticator alkalmazás](../../active-directory/authentication/howto-authentication-passwordless-phone.md) használatával jelszó nélkül JELENTKEZHET be bármely Azure ad-fiókba. A [vállalati Windows Hello-hez](/windows/security/identity-protection/hello-for-business/hello-identity-verification)hasonlóan a Microsoft Authenticator a kulcs-alapú hitelesítés használatával engedélyezi az eszközhöz kötött felhasználói hitelesítő adatokat, és biometrikus hitelesítést vagy PIN-kódot használ.
 
-Az Azure Multi-Factor Authentication bejelentkezni az összes olyan felhasználóra, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange Online-rendszergazda és SharePoint Online-rendszergazda. Engedélyezze [a rendszergazdai fiókok multi-Factor Authenticationét](../../active-directory/authentication/howto-mfa-userstates.md) , és győződjön meg arról, hogy a rendszergazdai fiók felhasználóinak regisztrálva vannak.
+Az Azure AD Multi-Factor Authentication bejelentkezéskor minden olyan felhasználóhoz, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange Online-rendszergazda és SharePoint Online-rendszergazda. Engedélyezze [a rendszergazdai fiókok multi-Factor Authenticationét](../../active-directory/authentication/howto-mfa-userstates.md) , és győződjön meg arról, hogy a rendszergazdai fiók felhasználóinak regisztrálva vannak.
 
 **Ajánlott eljárás**: a kritikus rendszergazdai fiókok esetében olyan rendszergazdai munkaállomás szükséges, amelyben a termelési feladatok nem engedélyezettek (például a böngészés és az e-mail-cím). Ez biztosítja a rendszergazdai fiókokat a böngészést és e-mailt használó támadási vektorokból, és jelentősen csökkenti a jelentős incidensek kockázatát.
 **Részletek**: rendszergazdai munkaállomás használata. Válassza ki a munkaállomás biztonságának szintjét:

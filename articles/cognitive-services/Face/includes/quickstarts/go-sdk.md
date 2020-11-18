@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 8dee3d9c91ac2b4fe97ada6069591f8f474c8c24
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 65f7af56e7f0042b8d4c312d17641a537f5fd908
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92924977"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816731"
 ---
 Ismerkedjen meg az arc-felismeréssel a Face ügyféloldali kódtár for go használatával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -126,7 +126,7 @@ Adja hozzá a következő kódot a **Main** metódushoz. Ez a kód egy távoli m
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_detect)]
 
 > [!TIP]
-> A helyi rendszerképben is felderítheti az arcokat. Tekintse meg az [ügyfél](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client) módszereit, például a **DetectWithStream** .
+> A helyi rendszerképben is felderítheti az arcokat. Tekintse meg az [ügyfél](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client) módszereit, például a **DetectWithStream**.
 
 ### <a name="display-detected-face-data"></a>Észlelt Arcfelismerés
 
@@ -186,7 +186,7 @@ A következő kód a lemezképeket az előtagjaik alapján rendezi, észleli az 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pgp_assign)]
 
 > [!TIP]
-> Az URL-cím által hivatkozott távoli rendszerképekből is létrehozhat **PersonGroup** . Tekintse meg a [PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient) metódusokat, például a **AddFaceFromURL** .
+> Az URL-cím által hivatkozott távoli rendszerképekből is létrehozhat **PersonGroup** . Tekintse meg a [PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient) metódusokat, például a **AddFaceFromURL**.
 
 ### <a name="train-persongroup"></a>PersonGroup betanítása
 
@@ -194,9 +194,12 @@ Az arcok hozzárendelése után betanítja a **PersonGroup** , hogy képes legye
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pg_train)]
 
+> [!TIP]
+> A Face API a természetben statikus, előre elkészített modelleken fut (a modell teljesítménye nem visszafejlődés meg és nem lesz fejlesztve, mivel a szolgáltatás fut). A modell által előállított eredmények megváltozhatnak, ha a Microsoft frissíti a modell hátterét anélkül, hogy teljesen új modellre kellene migrálni. A modell újabb verziójának kihasználása érdekében áttaníthatja a **PersonGroup**, és megadhatja az újabb modellt ugyanazon beléptetési képpel rendelkező paraméterként.
+
 ## <a name="identify-a-face"></a>Arc azonosítása
 
-Az azonosítási művelet egy személy (vagy több személy) képét veszi igénybe, és megkeresi a rendszerképben lévő egyes arcok identitását (Arcfelismerés-keresés). Összehasonlítja az észlelt elemeket egy **PersonGroup** , egy olyan, a különböző **személy** objektumokat tartalmazó adatbázissal, amelyek az arc funkciói ismertek.
+Az azonosítási művelet egy személy (vagy több személy) képét veszi igénybe, és megkeresi a rendszerképben lévő egyes arcok identitását (Arcfelismerés-keresés). Összehasonlítja az észlelt elemeket egy **PersonGroup**, egy olyan, a különböző **személy** objektumokat tartalmazó adatbázissal, amelyek az arc funkciói ismertek.
 
 > [!IMPORTANT]
 > A példa futtatásához először futtatnia kell a kódot [egy személy csoport létrehozása és betanítása csoportban](#create-and-train-a-person-group).
@@ -258,7 +261,7 @@ Futtassa az Arcfelismerés alkalmazást az alkalmazás könyvtárából az `go r
 go run sample-app.go
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
