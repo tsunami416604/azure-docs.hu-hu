@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 2e5c588db6f372a50b2a80afd8a2a023ece34502
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 235c5c19c9a6e587106b3fd41691a3f775caa84f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203620"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656615"
 ---
 # <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: SAML-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben
 
@@ -43,7 +43,7 @@ Miután befejezte az alkalmazás hozzáadását az Azure AD-bérlőhöz, megjele
 
 Egyszeri bejelentkezés beállítása egy alkalmazáshoz:
 
-1. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki azt az alkalmazást, amelyet be szeretne állítani az egyszeri bejelentkezéshez.
+1. Az Azure AD-portálon válassza a **vállalati alkalmazások** lehetőséget. Ezután keresse meg és válassza ki azt az alkalmazást, amelyet be szeretne állítani az egyszeri bejelentkezéshez.
 1. A **kezelés** szakaszban válassza az **egyszeri bejelentkezés** lehetőséget az **egyszeri bejelentkezési** ablaktábla szerkesztéshez való megnyitásához.
 
     > [!IMPORTANT]
@@ -53,17 +53,17 @@ Egyszeri bejelentkezés beállítása egy alkalmazáshoz:
 
 1. Válassza az **SAML** lehetőséget az SSO-konfiguráció lap megnyitásához. Ebben a példában az egyszeri bejelentkezéshez konfigurált alkalmazás GitHub. Miután beállította a GitHubot, a felhasználók bejelentkezhetnek a GitHubra az Azure AD-bérlőben lévő hitelesítő adataik használatával.
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="A képernyőképen az Azure AD portál egyszeri bejelentkezési konfiguráció lapja látható.":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="Képernyőfelvétel: az egyszeri bejelentkezési konfiguráció oldal a GitHubon.":::
 
-1. Az Azure AD az SAML-alapú SSO használatára való konfigurálásának folyamata az alkalmazástól függően változhat. Van egy hivatkozás a GitHub útmutatására. Az egyéb alkalmazásokhoz kapcsolódó útmutatókért lásd: [útmutatók az SaaS-alkalmazások integrálásához a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/)használatával.
+1. Az Azure AD az SAML-alapú SSO használatára való konfigurálásának folyamata az alkalmazástól függően változhat. Van egy hivatkozás a GitHub útmutatására. Az egyéb alkalmazásokhoz kapcsolódó útmutatókért lásd: [útmutatók az SaaS-alkalmazások integrálásához a Azure Active Directory](/azure/active-directory/saas-apps/)használatával.
 1. Az alkalmazáshoz tartozó egyszeri bejelentkezés beállításához kövesse az útmutatót. Számos alkalmazás rendelkezik konkrét előfizetési követelményekkel az egyszeri bejelentkezés működéséhez. A GitHub például nagyvállalati előfizetést igényel.
     > [!TIP]
     > További információ az SAML konfigurációs lehetőségeiről: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-saml-single-sign-on.md).
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="A képernyőképen az Azure AD portál egyszeri bejelentkezési konfiguráció lapja látható.":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Képernyőfelvétel: az egyszeri bejelentkezés lehetősége a GitHub díjszabási oldalának vállalati előfizetésében.":::
 
 > [!TIP]
-> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](/graph/application-saml-sso-configure-api).
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

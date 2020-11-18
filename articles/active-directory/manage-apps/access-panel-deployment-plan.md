@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: cc36fccf84807621b8b3a186979ccfd000fe48f3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8e345b27fdb2604c0c3264d6935cb9cff8aeec9c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372480"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656734"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése
 
@@ -54,10 +54,10 @@ A **robusztus naplózás és használat nyomon követését teszi lehetővé**: 
 
 Az alkalmazások ingyenesek, és nem igényelnek alapszintű licencet. A címtárban lévő objektumok száma és a telepíteni kívánt további funkciók azonban további licenceket igényelhetnek. A licencelési követelményekkel rendelkező gyakori Azure AD-forgatókönyvek a következő biztonsági funkciókat tartalmazzák:
 
-* [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
-* [Csoport alapú tagság](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-* [Új jelszó önkiszolgáló kérése](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
-* [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+* [Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Csoport alapú tagság](../fundamentals/active-directory-manage-groups.md)
+* [Új jelszó önkiszolgáló kérése](../authentication/tutorial-enable-sspr.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
 
 Tekintse [meg az Azure ad teljes licencelési útmutatóját](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -65,8 +65,8 @@ Tekintse [meg az Azure ad teljes licencelési útmutatóját](https://azure.micr
 
 A projekt megkezdése előtt végezze el a következő előfeltételeket:
 
-* [Alkalmazás egyszeri bejelentkezésének integrálása](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
-* [Azure AD-felhasználó és-csoport infrastruktúrájának kezelése](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
+* [Alkalmazás egyszeri bejelentkezésének integrálása](./plan-sso-deployment.md)
+* [Azure AD-felhasználó és-csoport infrastruktúrájának kezelése](../fundamentals/active-directory-manage-groups.md)
 
 ## <a name="plan-azure-ad-my-apps-deployment"></a>Az Azure AD saját alkalmazások üzembe helyezésének megtervezése
 
@@ -74,8 +74,8 @@ Az alábbi táblázat a saját alkalmazások központi telepítésének legfonto
 
 | Terület| Leírás |
 | - | - |
-| Hozzáférés| A saját alkalmazások portál a vállalati hálózaton belüli vállalati és személyes eszközökről érhető el. |
-|Hozzáférés | A saját alkalmazások portál a vállalati hálózaton kívüli vállalati eszközökről is elérhető. |
+| Access| A saját alkalmazások portál a vállalati hálózaton belüli vállalati és személyes eszközökről érhető el. |
+|Access | A saját alkalmazások portál a vállalati hálózaton kívüli vállalati eszközökről is elérhető. |
 | Naplózás| A használati adatok legalább 29 naponta letöltődnek a vállalati rendszerbe. |
 | Szabályozás| Az Azure AD-hez csatlakoztatott alkalmazások és csoportok felhasználói hozzárendeléseinek életciklusa definiálva és figyelve van. |
 | Biztonság| Az erőforrásokhoz való hozzáférést felhasználói és csoportos hozzárendelések segítségével szabályozhatja. Csak a jogosult felhasználók kezelhetik az erőforrás-hozzáférést. |
@@ -166,23 +166,23 @@ A saját alkalmazások oldalával kapcsolatos legjobb megoldásként kezdje az �
 
 Használjon összevont egyszeri bejelentkezést az Azure AD-vel (OpenID Connect/SAML), ha egy alkalmazás támogatja azt a jelszó-alapú egyszeri bejelentkezés és az ADFS helyett.
 
-Az SaaS-alkalmazások üzembe helyezésével és konfigurálásával kapcsolatos további információkért lásd a [SaaS SSO telepítési tervét](https://aka.ms/deploymentplans/sso).
+Az SaaS-alkalmazások üzembe helyezésével és konfigurálásával kapcsolatos további információkért lásd a [SaaS SSO telepítési tervét](./plan-sso-deployment.md).
 
 #### <a name="plan-to-deploy-the-my-apps-browser-extension"></a>A My apps Browser bővítmény üzembe helyezésének megtervezése
 
-Amikor a felhasználók bejelentkeznek a jelszó-alapú SSO-alkalmazásokba, telepíteniük és használniuk kell a saját alkalmazások biztonságos bejelentkezési bővítményét. A bővítmény végrehajt egy parancsfájlt, amely továbbítja a jelszót az alkalmazás bejelentkezési űrlapjára. A rendszer felkéri a felhasználókat, hogy telepítse a bővítményt, amikor először elindítja a jelszó-alapú SSO-alkalmazást. A bővítménysel kapcsolatos további információkért tekintse meg a jelen dokumentációban az [alkalmazások böngésző bővítményének telepítését](access-panel-extension-problem-installing.md)ismertető témakört.
+Amikor a felhasználók bejelentkeznek a jelszó-alapú SSO-alkalmazásokba, telepíteniük és használniuk kell a saját alkalmazások biztonságos bejelentkezési bővítményét. A bővítmény végrehajt egy parancsfájlt, amely továbbítja a jelszót az alkalmazás bejelentkezési űrlapjára. A rendszer felkéri a felhasználókat, hogy telepítse a bővítményt, amikor először elindítja a jelszó-alapú SSO-alkalmazást. A bővítménysel kapcsolatos további információkért tekintse meg a jelen dokumentációban az [alkalmazások böngésző bővítményének telepítését]()ismertető témakört.
 
-Ha a jelszó-alapú SSO-alkalmazásokat integrálni kell, meg kell határoznia azt a mechanizmust, amellyel a bővítményt a [támogatott böngészőkkel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)nagy méretben helyezheti üzembe. A lehetőségek a következők:
+Ha a jelszó-alapú SSO-alkalmazásokat integrálni kell, meg kell határoznia azt a mechanizmust, amellyel a bővítményt a [támogatott böngészőkkel](../user-help/my-apps-portal-end-user-access.md)nagy méretben helyezheti üzembe. A lehetőségek a következők:
 
-* [Csoportházirend az Internet Explorerben](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-* [Configuration Manager az Internet Explorerben](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-* [A Chrome, a Firefox, a Microsoft Edge vagy az IE felhasználó által vezérelt letöltése és konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+* [Csoportházirend az Internet Explorerben]()
+* [Configuration Manager az Internet Explorerben](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [A Chrome, a Firefox, a Microsoft Edge vagy az IE felhasználó által vezérelt letöltése és konfigurálása](../user-help/my-apps-portal-end-user-access.md)
 
 Azok a felhasználók, akik nem használnak jelszó-alapú SSO-alkalmazásokat, a bővítmény előnyeit is kihasználhatják. Ezek az előnyök többek között lehetővé teszi bármely alkalmazás indítását a keresősáv használatával, a legutóbb használt alkalmazások elérésének megkeresését, valamint a saját alkalmazások lapra mutató hivatkozást.
 
 #### <a name="plan-for-mobile-access"></a>Mobil hozzáférés tervezése
 
-Az Intune-szabályzattal (Microsoft Edge vagy Intune Managed Browser) védett böngésző szükséges a jelszó-alapú egyszeri bejelentkezést használó mobil felhasználók számára. A szabályzattal védett böngészők lehetővé teszik az alkalmazás számára mentett jelszó átvitelét. A Microsoft Edge vagy a Managed Browser webes adatvédelmi funkciókat biztosít. Az iOS-és Android-eszközökön használhatja a Microsoft Edge vállalati forgatókönyveket is. A Microsoft Edge ugyanazokat a felügyeleti forgatókönyveket támogatja, mint a Intune Managed Browser és javítja a felhasználói élményt. További információ: [webes elérés kezelése Microsoft Intune szabályzattal védett böngésző használatával](https://docs.microsoft.com/intune/app-configuration-managed-browser).
+Az Intune-szabályzattal (Microsoft Edge vagy Intune Managed Browser) védett böngésző szükséges a jelszó-alapú egyszeri bejelentkezést használó mobil felhasználók számára. A szabályzattal védett böngészők lehetővé teszik az alkalmazás számára mentett jelszó átvitelét. A Microsoft Edge vagy a Managed Browser webes adatvédelmi funkciókat biztosít. Az iOS-és Android-eszközökön használhatja a Microsoft Edge vállalati forgatókönyveket is. A Microsoft Edge ugyanazokat a felügyeleti forgatókönyveket támogatja, mint a Intune Managed Browser és javítja a felhasználói élményt. További információ: [webes elérés kezelése Microsoft Intune szabályzattal védett böngésző használatával](/intune/app-configuration-managed-browser).
 
 ## <a name="plan-your-my-apps-deployment"></a>Saját alkalmazások üzembe helyezésének megtervezése
 
@@ -248,7 +248,7 @@ Naplózási, jelentéskészítési és vész-helyreállítási biztonsági máso
 
 Miután az alkalmazás be lett állítva az SSO-ra, a csoportok hozzá vannak rendelve. A hozzárendelt csoportokban lévő felhasználók hozzáférhetnek majd az alkalmazáshoz a saját alkalmazások és a Microsoft 365 app Launcher szolgáltatásban.
 
-Lásd: [felhasználók és csoportok társítása egy alkalmazáshoz Active Directory-ben](methods-for-assigning-users-and-groups.md).
+Lásd: [felhasználók és csoportok társítása egy alkalmazáshoz Active Directory-ben](./assign-user-or-group-access-portal.md).
 
 Ha tesztelés vagy üzembe helyezés során szeretné felvenni a csoportokat, de még nem engedélyezi az alkalmazások használatát a saját alkalmazásokban, tekintse meg az [alkalmazás elrejtése a felhasználói felületről Azure Active Directoryban](hide-application-from-user-portal.md)című témakört.
 
@@ -294,7 +294,7 @@ A következő teszteket a vállalati tulajdonú eszközökkel és a személyes e
 
 ### <a name="rollback-steps"></a>Visszaállítási lépések
 
-Fontos megtervezni, hogy mi a teendő, ha a központi telepítés nem a tervezett módon történik. Ha az egyszeri bejelentkezés konfigurálása nem sikerül az üzembe helyezés során, meg kell ismernie az [egyszeri bejelentkezés hibáinak elhárítását](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso) és a felhasználókra gyakorolt hatás csökkentését. Szélsőséges körülmények között előfordulhat, hogy vissza kell [állítania az egyszeri bejelentkezést](../manage-apps/plan-sso-deployment.md#rollback-process).
+Fontos megtervezni, hogy mi a teendő, ha a központi telepítés nem a tervezett módon történik. Ha az egyszeri bejelentkezés konfigurálása nem sikerül az üzembe helyezés során, meg kell ismernie az [egyszeri bejelentkezés hibáinak elhárítását](../hybrid/tshoot-connect-sso.md) és a felhasználókra gyakorolt hatás csökkentését. Szélsőséges körülmények között előfordulhat, hogy vissza kell [állítania az egyszeri bejelentkezést](../manage-apps/plan-sso-deployment.md#rollback-process).
 
 
 ## <a name="manage-your-implementation"></a>A megvalósítás kezelése
@@ -312,4 +312,4 @@ A legkevesebb Kiemelt szerepkörrel hajtson végre egy szükséges feladatot a A
 A [Privileged Identity Management](../privileged-identity-management/pim-configure.md) segítségével kezelheti a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot biztosítson a címtár-jogosultságokkal rendelkező felhasználók számára.
 
 ## <a name="next-steps"></a>Következő lépések
-[Az Azure Multi-Factor Authentication üzembe helyezésének megtervezése](https://aka.ms/deploymentplans/mfa)
+[Az Azure Multi-Factor Authentication üzembe helyezésének megtervezése](../authentication/howto-mfa-getstarted.md)

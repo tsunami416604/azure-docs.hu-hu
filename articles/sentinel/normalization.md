@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 0c6129a24e6ed083114971df5f254eca54924400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9d2cd48e3b686614f7361d2007f6f8183c2361e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90939813"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657023"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalizálás az Azure Sentinelben
 
@@ -58,7 +58,7 @@ Ha többet szeretne megtudni az OSSEM-entitás struktúrájáról, látogasson e
 
 ### <a name="how-the-normalized-schemas-are-implemented-in-azure-sentinel"></a>A normalizált sémák megvalósítása az Azure Sentinelben
 
-A OSSEM CIM Azure Sentinel-ben történő megvalósítása során a OSSEM-Log Analytics ábrázolást a táblázatos ábrázolásra tervezjük, függetlenül attól, hogy ez egy beépített tábla-e, vagy olyan lekérdezési idejű elemzők vagy függvények használatával hozták létre, amelyek a jelen ábrázoláshoz meglévő adatokat képeznek le. A táblázatos ábrázoláshoz összefűzjük a OSSEM és az attribútumok nevét, és azokat egymáshoz rendeljük egyetlen oszlop neveként. Egy MD5 attribútumot tartalmazó kivonatoló entitást tartalmazó forrásoldali entitás például a következő Log Analytics oszlopként lesz implementálva: SrcFileHashMd5. (A OSSEM alapértelmezés szerint *snake_case* használ, míg az Azure Sentinel és a log Analytics *PascalCase*használ. A OSSEM ilyen oszlop src_file_hash_md5.)
+A OSSEM CIM Azure Sentinel-ben történő megvalósítása során a OSSEM-Log Analytics ábrázolást a táblázatos ábrázolásra tervezjük, függetlenül attól, hogy ez egy beépített tábla-e, vagy olyan lekérdezési idejű elemzők vagy függvények használatával hozták létre, amelyek a jelen ábrázoláshoz meglévő adatokat képeznek le. A táblázatos ábrázoláshoz összefűzjük a OSSEM és az attribútumok nevét, és azokat egymáshoz rendeljük egyetlen oszlop neveként. Egy MD5 attribútumot tartalmazó kivonatoló entitást tartalmazó forrásoldali entitás például a következő Log Analytics oszlopként lesz implementálva: SrcFileHashMd5. (A OSSEM alapértelmezés szerint *snake_case* használ, míg az Azure Sentinel és a log Analytics *PascalCase* használ. A OSSEM ilyen oszlop src_file_hash_md5.)
 
 Az Azure Sentinel implementációjában további egyéni mezők is előfordulhatnak, mivel a platformra vonatkozó követelmények és az Azure Sentinel-ügyfelekre jellemző használati esetek Log Analytics.
 
@@ -84,7 +84,7 @@ Az elérhető lekérdezési idő elemzői az Azure Sentinel [hivatalos GitHub-t�
 
 1. Másolja a megfelelő elemzői tartalmat a fenti GitHub-hivatkozáson található megfelelő KQL-fájlból a vágólapra.
 
-1. Az Azure Sentinel-portálon nyissa meg a naplók lapot, és illessze be a KQL fájl tartalmát a naplók képernyőre, majd kattintson a **Mentés**gombra.
+1. Az Azure Sentinel-portálon nyissa meg a naplók lapot, és illessze be a KQL fájl tartalmát a naplók képernyőre, majd kattintson a **Mentés** gombra.
 
     :::image type="content" source="./media/normalization/install-new-parser.png" alt-text="Új elemző telepítése":::
 
@@ -97,7 +97,7 @@ Az elérhető lekérdezési idő elemzői az Azure Sentinel [hivatalos GitHub-t�
 
     1. **Kategória**: választhat egy meglévő kategóriát, vagy létrehozhat új kategóriát (például *NormalizedNetworkSessionsParsers*).
     
-        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="Új elemző telepítése":::
+        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="Az elemző mentése":::
 
 Az elemzők megfelelő használatához telepítenie kell az üres hálózati séma-elemzőt is (amely üres táblázatos nézetet hoz létre az összes hálózati munkamenet-séma mezőiről) és a hálózati meta-elemzőt (amely összekapcsolja az összes engedélyezett elemzőt, hogy egyetlen nézetet hozzon létre a hálózati séma különböző forrásaiból származó adatokból). A két elemző telepítése hasonló módon történik a fenti lépésekben.
 
@@ -107,11 +107,15 @@ A lekérdezési függvények mentésekor szükség lehet a lekérdezési tallóz
 
 Ha engedélyezve van, a meta-elemző segítségével lekérdezheti az összes jelenleg engedélyezett elemző egyesített nézetét. Ehhez nyissa meg a Sentinel-naplók lapot, és kérdezze le a meta-elemzőt:
 
-:::image type="content" source="./media/normalization/query-parser.png" alt-text="Új elemző telepítése" gombra kattintva a meta-elemzőt vagy az egyes elemzőket is elérheti a Query Explorer használatával a Sentinel naplók oldalon:
+:::image type="content" source="./media/normalization/query-parser.png" alt-text="Az elemző lekérdezése":::
+ 
+A "Query Explorer" gombra kattintva a meta-elemzőt vagy az egyes elemzőket is elérheti a Query Explorer használatával a Sentinel naplók oldalon:
 
-:::image type="content" source="./media/normalization/query-explorer.png" alt-text="Új elemző telepítése" mappát (vagy az elemzők létrehozásakor kiválasztott kategória nevét):
+:::image type="content" source="./media/normalization/query-explorer.png" alt-text="Lekérdezési tallózó":::
 
-:::image type="content" source="./media/normalization/find-parser.png" alt-text="Új elemző telepítése":::
+A jobb oldali ablaktáblán bontsa ki a "mentett lekérdezések" szakaszt, és keresse meg a "NormalizedNetworkParsers" mappát (vagy az elemzők létrehozásakor kiválasztott kategória nevét):
+
+:::image type="content" source="./media/normalization/find-parser.png" alt-text="Elemző keresése":::
 
 Az egyes elemzők lehetőségre kattintva megtekintheti az általa használt mögöttes függvényt, és futtathatja (vagy közvetlenül az aliasával érheti el). Vegye figyelembe, hogy egyes elemzők a normalizált mezők számára is megőrzik az eredeti mezőket a kényelem érdekében. Ezt egyszerűen szerkesztheti az elemző lekérdezésében.
 
@@ -120,13 +124,15 @@ Az egyes elemzők lehetőségre kattintva megtekintheti az általa használt mö
 Ismételje meg a fenti lépéseket (az elemző megkeresése a Query Explorerben), kattintson a megfelelő elemzőre, és tekintse meg a funkció megvalósítását.
 Dönthet például úgy, hogy szerkeszti a meta-elemzőt az egyes elemzők hozzáadásához vagy eltávolításához.
 
-:::image type="content" source="./media/normalization/customize-parser.png" alt-text="Új elemző telepítése" gombot:
+:::image type="content" source="./media/normalization/customize-parser.png" alt-text="Az elemző testreszabása":::
+ 
+Ha a függvény módosult, kattintson ismét a Save (Mentés) gombra, és használja ugyanazt a nevet, aliast és kategóriát. A rendszer megnyit egy felülbírálási párbeszédpanelt – nyomja meg az "OK" gombot:
 
-:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Új elemző telepítése":::
+:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="biztos vagy benne":::
 
 #### <a name="additional-information"></a>További információ
 
-További információ a [mentett lekérdezésekről](../azure-monitor/log-query/saved-queries.md) (a lekérdezési idő elemzői megvalósításáról) log Analytics.
+További információ a [mentett lekérdezésekről](../azure-monitor/log-query/example-queries.md) (a lekérdezési idő elemzői megvalósításáról) log Analytics.
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 16a53c440bc818a65175cf6a4a92cd007349e3b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f90ccbc98dac957fcb9fb81cd24c7ae6c9ac664
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421339"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657550"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>VPN-átjáróval történő adatátvitel konfigurálása virtuális hálózatok közötti társviszony létesítéséhez
 
@@ -60,11 +60,11 @@ A virtuális hálózatok közötti társviszony létrehozásához használt fió
 |Virtuális hálózat|Üzembehelyezési modell|Szerepkör|Engedélyek|
 |---|---|---|---|
 |Hub-RM|Resource Manager|[Hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|N.A.|
+| |Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|N/A|
 |Spoke-Classic|Resource Manager|[Hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
-További információ a [beépített szerepkörökről](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) és a bizonyos engedélyek [egyéni szerepkörökhöz](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) való hozzárendeléséről (csak Resource Manager esetében).
+További információ a [beépített szerepkörökről](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) és a bizonyos engedélyek [egyéni szerepkörökhöz](../role-based-access-control/custom-roles.md?toc=%252fazure%252fvirtual-network%252ftoc.json) való hozzárendeléséről (csak Resource Manager esetében).
 
 ## <a name="resource-manager-to-resource-manager-peering-with-gateway-transit"></a>Resource Manager és Resource Manager közötti társviszony-létesítés átjáróval történő átvitellel
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 2f90a7c954fc8930f69dfee3e7b56b394225405a
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 512e5e0140038b27b7ffc9f2affb4a0e5b28b41b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516737"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655833"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. lépés: a naplózási továbbító üzembe helyezése
 
@@ -48,7 +48,7 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
  
 1. Az Azure Sentinel navigációs menüjében kattintson az **adatösszekötők** elemre. Az összekötők listájában kattintson a **Common Event Format (CEF)** csempére, majd a jobb alsó sarokban található **összekötő megnyitása lap** gombra. 
 
-1. A **1,2 alatt telepítse a CEF-gyűjtőt a Linux** rendszerű gépre, másolja a **következő szkript futtatásához tartozó hivatkozást a CEF-gyűjtő telepítéséhez és alkalmazásához** , vagy az alábbi szövegből (a munkaterület-azonosító és az elsődleges kulcs alkalmazása a helyőrzők helyett):
+1. A **1,2 alatt telepítse a CEF-gyűjtőt a Linux** rendszerű gépre, másolja a **következő szkript futtatásához tartozó hivatkozást a CEF-gyűjtő telepítéséhez és alkalmazásához**, vagy az alábbi szövegből (a munkaterület-azonosító és az elsődleges kulcs alkalmazása a helyőrzők helyett):
 
     ```bash
     sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
@@ -212,5 +212,4 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
 ## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan helyezheti üzembe a Log Analytics-ügynököt a CEF-berendezések Azure Sentinelhez való összekapcsolásához. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
-
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).

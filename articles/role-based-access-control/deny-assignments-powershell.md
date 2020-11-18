@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 648de447a08e593af28d11a3be206a2cfee80902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cf379b051ba42be2d7df7d288f07cdc2a0002a1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790092"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657635"
 ---
 # <a name="list-azure-deny-assignments-using-azure-powershell"></a>Azure-beli megtagadási hozzárendelések listázása Azure PowerShell használatával
 
@@ -32,7 +32,7 @@ Az [Azure-megtagadási hozzárendelések](deny-assignments.md) letiltják a felh
 A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a következőket kell tennie:
 
 - `Microsoft.Authorization/denyAssignments/read`a legtöbb [Azure beépített szerepkör](built-in-roles.md) részét képező engedély
-- [PowerShell Azure Cloud Shell](/azure/cloud-shell/overview) vagy [Azure PowerShell](/powershell/azure/install-az-ps)
+- [PowerShell Azure Cloud Shell](../cloud-shell/overview.md) vagy [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-deny-assignments"></a>Megtagadás-hozzárendelések felsorolása
 
@@ -123,7 +123,7 @@ Get-AzDenyAssignment -Scope /subscriptions/<subscription_id>
 PS C:\> Get-AzDenyAssignment -Scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure deny-hozzárendelések ismertetése](deny-assignments.md)
 - [Azure-beli megtagadási hozzárendelések listázása a Azure Portal használatával](deny-assignments-portal.md)

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 499d184d373b896ba7bffcf990693ef5e6ac466b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a77ee3c4301d278f98b571402514663dcfc9ca52
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88032424"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657924"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>A titkosítási követelmények és az Azure VPN-átjárók
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálhatja az Azure VPN Gatewayt úgy, hog
 
 ## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>Tudnivalók az Azure VPN-kapcsolatok IKEv1 és IKEv2
 
-Az alapszintű SKU-hoz csak az alapszintű SKU-IKEv1 és a IKEv2-kapcsolat engedélyezett Az alapszintű SKU-ok csak 1 kapcsolódást és más korlátozásokat, például teljesítményeket biztosítanak, az olyan örökölt eszközöket használó ügyfelek, amelyek csak a IKEv1 protokollok használatát támogatják, korlátozott tapasztalattal rendelkeznek. Az IKEv1 protokollt használó ügyfelek felhasználói élményének fokozása érdekében mostantól engedélyezhető a IKEv1-kapcsolat az összes VPN Gateway-SKU esetében, az alapszintű SKU kivételével. További információ: [VPN Gateway SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku)-i.
+Az alapszintű SKU-hoz csak az alapszintű SKU-IKEv1 és a IKEv2-kapcsolat engedélyezett Az alapszintű SKU-ok csak 1 kapcsolódást és más korlátozásokat, például teljesítményeket biztosítanak, az olyan örökölt eszközöket használó ügyfelek, amelyek csak a IKEv1 protokollok használatát támogatják, korlátozott tapasztalattal rendelkeznek. Az IKEv1 protokollt használó ügyfelek felhasználói élményének fokozása érdekében mostantól engedélyezhető a IKEv1-kapcsolat az összes VPN Gateway-SKU esetében, az alapszintű SKU kivételével. További információ: [VPN Gateway SKU](./vpn-gateway-about-vpn-gateway-settings.md#gwsku)-i.
 
 ![Azure VPN Gateway IKEv1 és IKEv2 kapcsolatok](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 9ff70e7c05ca8de49f560fba3d59f0609785b8c4
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 9ac4aa9e93ac296913d7a62e83b182d673015bae
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636775"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655969"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Azure Stack hub-beli virtuális gépek összekötése az Azure Sentinel szolgáltatással
 
@@ -34,8 +34,8 @@ Azure Stack hub-gépek összekapcsolását követően válassza ki az irányít�
 
 Adja hozzá a **Azure monitor, a frissítés és a konfiguráció kezelése** virtuálisgép-bővítményt az Azure stack hub-on futó virtuális gépekhez. 
 
-1. Az új böngésző lapon jelentkezzen be [Azure stack hub-portálra](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal).
-2. Nyissa meg a **virtuális gépek** lapot, és válassza ki azt a virtuális gépet, amelyet az Azure Sentinel használatával szeretne védelemmel ellátni. A virtuális gépek Azure Stack hub-on való létrehozásával kapcsolatos információkért lásd: [Windows Server rendszerű virtuális gép létrehozása az Azure stack hub Portalon](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) vagy [Linux Server rendszerű virtuális gép létrehozása az Azure stack hub portál használatával](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal).
+1. Az új böngésző lapon jelentkezzen be [Azure stack hub-portálra](/azure-stack/user/azure-stack-use-portal#access-the-portal).
+2. Nyissa meg a **virtuális gépek** lapot, és válassza ki azt a virtuális gépet, amelyet az Azure Sentinel használatával szeretne védelemmel ellátni. A virtuális gépek Azure Stack hub-on való létrehozásával kapcsolatos információkért lásd: [Windows Server rendszerű virtuális gép létrehozása az Azure stack hub Portalon](/azure-stack/user/azure-stack-quick-windows-portal) vagy [Linux Server rendszerű virtuális gép létrehozása az Azure stack hub portál használatával](/azure-stack/user/azure-stack-quick-linux-portal).
 3. Válassza a **Bővítmények** lehetőséget. Megjelenik a virtuális gépen telepített virtuálisgép-bővítmények listája.
 4. Kattintson a **Hozzáadás** fülre. Megnyílik az **új erőforrás** menü panel, és megjeleníti az elérhető virtuálisgép-bővítmények listáját. 
 5. Válassza ki a **Azure monitor, a frissítés és a konfiguráció kezelése** bővítményt, és kattintson a **Létrehozás** gombra. Megnyílik a **telepítési bővítmény** konfigurálása ablak.
@@ -65,7 +65,7 @@ A bővítmény eltávolítása:
 3. Válassza a **bővítmények** lehetőséget, majd a **Microsoft. EnterpriseCloud. monitoring** kiterjesztést.
 4. Kattintson az **Eltávolítás** gombra, és erősítse meg a kijelölést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).

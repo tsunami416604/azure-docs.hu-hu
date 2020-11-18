@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: df3ae57652737acc2b23cda75ace361f0bb40340
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 68299bae559d25155dda04a58aa1e4826a188b7f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518185"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657839"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN Gateway Azure biztonsági alapterve
 
@@ -32,7 +32,7 @@ Ha szeretné megtekinteni, hogyan VPN Gateway teljes mértékben leképezni az A
 
 - [Biztonsági konfigurációval rendelkező NSG létrehozása](../virtual-network/tutorial-filter-network-traffic.md) 
 
-- [Route-alapú VPN-átjáró létrehozása a Azure Portal használatával](create-routebased-vpn-gateway-portal.md)
+- [Route-alapú VPN-átjáró létrehozása a Azure Portal használatával](./tutorial-create-gateway-portal.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -66,7 +66,7 @@ Az Azure-tervrajzok segítségével leegyszerűsítheti a nagyméretű Azure-kö
 
 - [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Azure Policy minták a hálózatkezeléshez](/azure/governance/policy/samples/#network) 
+- [Azure Policy minták a hálózatkezeléshez](../governance/policy/samples/built-in-policies.md#network) 
 
 - [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
@@ -78,7 +78,7 @@ Az Azure-tervrajzok segítségével leegyszerűsítheti a nagyméretű Azure-kö
 
 **Útmutató**: az Azure-tevékenység naplójának használata az erőforrás-konfigurációk figyelésére és a virtuális hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat a Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a VPN-átjáróval kapcsolatos kritikus erőforrásokra vált.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log-view)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -140,7 +140,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics lekérdezések első lépései](../azure-monitor/log-query/get-started-portal.md) 
+- [Log Analytics lekérdezések első lépései](../azure-monitor/log-query/log-analytics-tutorial.md) 
 
 - [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
 
@@ -180,9 +180,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfel
 
 **Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi az Azure-erőforrásokhoz való hozzáférés kezelését a szerepkör-hozzárendeléseken keresztül. Ezeket a szerepköröket hozzárendelheti a felhasználókhoz, a csoportok egyszerű szolgáltatásaihoz és a felügyelt identitásokhoz. Bizonyos erőforrásokhoz előre definiált beépített szerepkörök tartoznak, és ezeket a szerepköröket az Azure CLI-vel, a Azure PowerShellsal vagy a Azure Portal eszközzel leltározott vagy lekérdezheti.
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center figyelés**: igen
 
@@ -194,7 +194,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfel
 
 Azure AD Privileged Identity Management és Azure Resource Manager használatával is engedélyezheti az igény szerinti hozzáférést. 
 
-- [További információ a Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [További információ a Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center figyelés**: igen
 
@@ -238,7 +238,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: Azure Active Directory biztonsági jelentések és figyelés használata a környezetben előforduló gyanús vagy nem biztonságos tevékenységek észlelésére. A Azure Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
 
-- [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -270,7 +270,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure AD identitás-és hozzáférési felülvizsgálatok segítségével hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá. 
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/) 
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml) 
 
 - [Az Azure AD-identitás és a hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -284,7 +284,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat. 
 
-- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -294,7 +294,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a Azure ad Identity Protection funkcióinak használatával konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget. 
 
-- [Az Azure AD kockázatos bejelentkezések megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Az Azure AD kockázatos bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
@@ -312,11 +312,11 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a VPN-átjárók dedikált virtuálisgép-példányokkal rendelkeznek minden ügyfél virtuális hálózathoz. Az elkülönítés megvalósítása különálló virtuális hálózatok, előfizetések és felügyeleti csoportok használatával az egyes biztonsági tartományokhoz, például a környezeti típusokhoz és az adatérzékeny szintekhez. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével szabályozhatja.
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -412,9 +412,9 @@ A virtuális hálózatban lévő megfelelő erőforrásokra vonatkozó ajánlás
 
 - [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure CLI VPN-átjáróhoz](https://docs.microsoft.com/cli/azure/network/vnet-gateway?view=azure-cli-latest)
+- [Azure CLI VPN-átjáróhoz](/cli/azure/network/vnet-gateway?view=azure-cli-latest)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -426,7 +426,7 @@ A virtuális hálózatban lévő megfelelő erőforrásokra vonatkozó ajánlás
 
 **Útmutató**: címkék alkalmazása a VPN Gateway erőforrásokra, hogy logikailag szervezze őket egy meghatározott besorolás szerint.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -436,11 +436,11 @@ A virtuális hálózatban lévő megfelelő erőforrásokra vonatkozó ajánlás
 
 **Útmutató**: a címkézés, a felügyeleti csoportok és az elkülönített előfizetések használata, ha szükséges, VPN Gateway erőforrások rendszerezéséhez és nyomon követéséhez. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen. 
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription) 
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md) 
 
-- [Felügyeleti csoportok létrehozása](/azure/governance/management-groups/create) 
+- [Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md) 
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -468,7 +468,7 @@ Emellett az Azure Resource Graph segítségével lekérdezheti és felderítheti
 
 - [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure Policy minta – beépített virtuális hálózatok](/azure/virtual-network/policy-samples)
+- [Azure Policy minta – beépített virtuális hálózatok](../virtual-network/policy-reference.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -494,9 +494,9 @@ Emellett az Azure Resource Graph segítségével lekérdezheti és felderítheti
 
 - [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
-- [Azure Policy minta – beépített virtuális hálózatok](/azure/virtual-network/policy-samples)
+- [Azure Policy minta – beépített virtuális hálózatok](../virtual-network/policy-reference.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -524,11 +524,11 @@ A Azure Resource Manager lehetővé teszi a sablon exportálását Java script O
 
 Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure Security Center javaslatokat is alkalmazhat.
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy minta – beépített virtuális hálózatok](/azure/virtual-network/policy-samples)
+- [Azure Policy minta – beépített virtuális hálózatok](../virtual-network/policy-reference.md)
 
 - [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -550,7 +550,7 @@ Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure 
 
 - [Azure Resource Manager-sablonminták virtuális hálózathoz](../virtual-network/template-samples.md)
 
-- [Azure Policy minta – beépített virtuális hálózatok](/azure/virtual-network/policy-samples)
+- [Azure Policy minta – beépített virtuális hálózatok](../virtual-network/policy-reference.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -560,7 +560,7 @@ Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure 
 
 **Útmutató**: az Azure DevOps használatával biztonságosan tárolhatók és kezelhetők a kódok, például az egyéni Azure Policy-definíciók, Azure Resource Manager sablonok és a kívánt állapotú konfigurációs parancsfájlok. Az Azure DevOps felügyelt erőforrásainak eléréséhez engedélyeket adhat meg vagy tagadhat meg bizonyos felhasználók, beépített biztonsági csoportok vagy Azure Active Directory (Azure AD) által meghatározott csoportok számára, ha az integrálva van az Azure DevOps, vagy Active Directory, ha a TFS integrálva van. 
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops) 
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops) 
 
 - [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -586,7 +586,7 @@ Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure 
 
 - [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy minta – beépített virtuális hálózatok](/azure/virtual-network/policy-samples)
+- [Azure Policy minta – beépített virtuális hálózatok](../virtual-network/policy-reference.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -674,7 +674,7 @@ Az Azure AD használata ajánlott, mert lehetővé teszi a felügyelt identitás
 
 - [Erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
-- [Key Vault-kulcsok visszaállítása az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center figyelés**: igen
 
@@ -684,11 +684,11 @@ Az Azure AD használata ajánlott, mert lehetővé teszi a felügyelt identitás
 
 **Útmutató**: az Azure DevOps használatával biztonságosan tárolhatók és kezelhetők a kódok, például az egyéni Azure Policy-definíciók és a Azure Resource Manager-sablonok. Az Azure DevOps felügyelt erőforrásainak védelme érdekében engedélyeket adhat meg vagy tagadhat meg bizonyos felhasználók, beépített biztonsági csoportok vagy Azure Active Directory (Azure AD) által meghatározott csoportok számára, ha az Azure DevOps van integrálva.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 - [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-- [Az Azure Storage-blobok helyreállítható törlése](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Az Azure Storage-blobok helyreállítható törlése](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -720,7 +720,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md) 
 
-- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -786,5 +786,5 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
+- További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

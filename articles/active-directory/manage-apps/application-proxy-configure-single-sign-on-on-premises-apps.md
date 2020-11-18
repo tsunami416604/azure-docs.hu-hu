@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90838b0b613c043ae41a71c76b5e9023d21df3a6
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: e7d51aa7e75d7e94d1c2ac66d7edb92a3ef9395b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025850"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657465"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy használatával
 
@@ -52,7 +52,7 @@ Az alábbi protokollok a szolgáltató által kezdeményezett (SP által kezdem�
 6. Adjon hozzá legalább egy felhasználót az alkalmazáshoz, és győződjön meg arról, hogy a teszt fiók hozzáfér az alkalmazáshoz. Ha csatlakozik a vállalati hálózathoz, a tesztelési fiók használatával ellenőrizheti, hogy van-e egyszeri bejelentkezés az alkalmazásba. 
 
    > [!NOTE]
-   > Az alkalmazásproxy beállítása után visszatérhet és frissítheti az SAML **-Válasz URL-címét** .
+   > Az alkalmazásproxy beállítása után visszatérhet és frissítheti az SAML **-Válasz URL-címét**.
 
 ## <a name="publish-the-on-premises-application-with-application-proxy"></a>A helyszíni alkalmazás közzététele az Application proxyval
 
@@ -72,7 +72,7 @@ A helyszíni alkalmazásokhoz való egyszeri bejelentkezés biztosítása előtt
 
 1. Ha az alkalmazás továbbra is meg van nyitva a Azure Portalban, válassza az **egyszeri bejelentkezés** lehetőséget. 
 
-2. Az **egyszeres Sign-On beállítása SAML** használatával lapon lépjen az **alapszintű SAML-konfiguráció** fejlécére, és válassza ki annak **szerkesztési** ikonját (egy ceruza). Győződjön meg arról, hogy az alkalmazásproxy-ban konfigurált **külső URL** -cím fel van töltve az **azonosító** , a **Válasz URL-cím** és a **kijelentkezési URL-cím** mezőkbe. Ezek az URL-címek szükségesek ahhoz, hogy az alkalmazásproxy megfelelően működjön. 
+2. Az **egyszeres Sign-On beállítása SAML** használatával lapon lépjen az **alapszintű SAML-konfiguráció** fejlécére, és válassza ki annak **szerkesztési** ikonját (egy ceruza). Győződjön meg arról, hogy az alkalmazásproxy-ban konfigurált **külső URL** -cím fel van töltve az **azonosító**, a **Válasz URL-cím** és a **kijelentkezési URL-cím** mezőkbe. Ezek az URL-címek szükségesek ahhoz, hogy az alkalmazásproxy megfelelően működjön. 
 
 3. Szerkessze a korábban konfigurált **Válasz URL-címet** , hogy a tartomány elérhető legyen az interneten az alkalmazásproxy használatával. Ha például a **külső URL** -cím `https://contosotravel-f128.msappproxy.net` , és az eredeti **Válasz URL-címe** `https://contosotravel.com/acs` , akkor frissítenie kell az eredeti **Válasz URL-címét** a következőre: `https://contosotravel-f128.msappproxy.net/acs` .
 
@@ -97,5 +97,5 @@ Az összes lépés elvégzése után az alkalmazásnak futnia kell. Az alkalmaz�
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Hogyan biztosítja az Azure AD Application Proxy az egyszeri bejelentkezést?](application-proxy-single-sign-on.md)
+- [Hogyan biztosítja az Azure AD Application Proxy az egyszeri bejelentkezést?](./what-is-single-sign-on.md)
 - [Alkalmazásproxyval kapcsolatos hibaelhárítás](application-proxy-troubleshoot.md)

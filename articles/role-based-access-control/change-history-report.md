@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 0ad60e72300e381b57deb00f3db010e69a006441
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 4ccd668fb6afa6787fadeda6ed92ebd954e2b892
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742934"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657805"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Az Azure RBAC változásaival kapcsolatos tevékenységek naplóinak megtekintése
 
@@ -48,7 +48,7 @@ A portálon a tevékenység naplója több szűrőt tartalmaz. Az Azure RBAC-hez
 | Eseménykategória | <ul><li>Adminisztratív</li></ul> |
 | Művelet | <ul><li>Szerepkör-hozzárendelés létrehozása</li><li>Szerepkör-hozzárendelés törlése</li><li>Egyéni szerepkör-definíció létrehozása vagy frissítése</li><li>Egyéni szerepkör-definíció törlése</li></ul> |
 
-További információ a tevékenységi naplókról: [tevékenység-naplók megtekintése az erőforrásokon végzett műveletek figyeléséhez](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+További információ a tevékenységi naplókról: [tevékenység-naplók megtekintése az erőforrásokon végzett műveletek figyeléséhez](../azure-resource-manager/management/view-activity-logs.md?toc=%252fazure%252fmonitoring-and-diagnostics%252ftoc.json).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -122,7 +122,7 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-[Azure monitor a naplók](../log-analytics/log-analytics-overview.md) egy másik eszköz, amellyel összegyűjtheti és elemezheti az Azure RBAC módosításait az összes Azure-erőforráshoz. Azure Monitor naplók előnyei a következők:
+[Azure monitor a naplók](../azure-monitor/log-query/log-query-overview.md) egy másik eszköz, amellyel összegyűjtheti és elemezheti az Azure RBAC módosításait az összes Azure-erőforráshoz. Azure Monitor naplók előnyei a következők:
 
 - Összetett lekérdezések és logika írása
 - Integrálás riasztásokkal, Power BIekkel és egyéb eszközökkel
@@ -133,13 +133,13 @@ Az első lépésekhez a következő alapvető lépések szükségesek:
 
 1. [Log Analytics munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md).
 
-1. [Konfigurálja a Activity log Analytics megoldást](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution) a munkaterületre.
+1. [Konfigurálja a Activity log Analytics megoldást](../azure-monitor/platform/activity-log.md#activity-log-analytics-monitoring-solution) a munkaterületre.
 
-1. [Tekintse meg a tevékenységek naplóit](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution). A Activity Log Analytics megoldás áttekintő oldalának gyors eléréséhez kattintson a **naplók** lehetőségre.
+1. [Tekintse meg a tevékenységek naplóit](../azure-monitor/platform/activity-log.md#activity-log-analytics-monitoring-solution). A Activity Log Analytics megoldás áttekintő oldalának gyors eléréséhez kattintson a **naplók** lehetőségre.
 
    ![Azure Monitor naplók lehetőség a portálon](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Igény szerint a [Azure Monitor log Analytics](../azure-monitor/log-query/get-started-portal.md) is használhatja a naplók lekérdezéséhez és megtekintéséhez. További információ: Ismerkedés [a Azure monitor log lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md).
+1. Igény szerint a [Azure Monitor log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) is használhatja a naplók lekérdezéséhez és megtekintéséhez. További információ: Ismerkedés [a Azure monitor log lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md).
 
 A következő egy lekérdezés, amely a célként megadott erőforrás-szolgáltató által szervezett új szerepkör-hozzárendeléseket adja vissza:
 
@@ -162,5 +162,5 @@ AzureActivity
 ![Tevékenységek naplói a speciális elemzési portál használatával – képernyőfelvétel](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Következő lépések
-* [Események megtekintése a tevékenységnaplóban](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Előfizetési tevékenységek monitorozása az Azure-tevékenységnaplóval](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
+* [Események megtekintése a tevékenységnaplóban](../azure-resource-manager/management/view-activity-logs.md?toc=%252fazure%252fmonitoring-and-diagnostics%252ftoc.json)
+* [Előfizetési tevékenységek monitorozása az Azure-tevékenységnaplóval](../azure-monitor/platform/platform-logs-overview.md)

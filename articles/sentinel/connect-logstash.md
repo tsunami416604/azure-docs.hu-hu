@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 7fe47289dcc6b6d6af4d13b36b5c3b1dae3baaf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 247abafd7abec38e43794b76268ee52538aee508
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89664221"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655680"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Adatforrások az Azure Sentinelhez való összekapcsolásához használja a Logstash-t
 
 > [!IMPORTANT]
-> A Logstash kimeneti beépülő modullal történő adatfeldolgozás jelenleg nyilvános előzetes verzióban érhető el. Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A Logstash kimeneti beépülő modullal történő adatfeldolgozás jelenleg nyilvános előzetes verzióban érhető el. Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az Azure Sentinel új kimeneti beépülő moduljának használata a **Logstash adatgyűjtő motorhoz**mostantól bármilyen típusú naplót küldhet a Logstash-en keresztül közvetlenül az azure Sentinel Log Analytics munkaterületére. A rendszer elküldi a naplókat egy egyéni táblába, amelyet a kimeneti beépülő modullal fog meghatározni.
+Az Azure Sentinel új kimeneti beépülő moduljának használata a **Logstash adatgyűjtő motorhoz** mostantól bármilyen típusú naplót küldhet a Logstash-en keresztül közvetlenül az azure Sentinel Log Analytics munkaterületére. A rendszer elküldi a naplókat egy egyéni táblába, amelyet a kimeneti beépülő modullal fog meghatározni.
 
 Ha többet szeretne megtudni a Logstash-adatgyűjtési motor használatáról, tekintse meg a [Logstash használatának első lépéseit](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html)ismertető témakört.
 
@@ -48,8 +48,8 @@ A Logstash motor három összetevőből áll:
 
 A Logstash készült Azure Sentinel kimeneti beépülő modul JSON formátumú adatokat küld a Log Analytics munkaterületre a Log Analytics HTTP-adatgyűjtő REST API használatával. Az adatgyűjtés egyéni naplókba történik.
 
-- További információ a [Log Analytics Rest APIról](https://docs.microsoft.com/rest/api/loganalytics/create-request).
-- További információ az [Egyéni naplókról](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-custom-logs).
+- További információ a [Log Analytics Rest APIról](/rest/api/loganalytics/create-request).
+- További információ az [Egyéni naplókról](../azure-monitor/platform/data-sources-custom-logs.md).
 
 ## <a name="deploy-the-azure-sentinel-output-plugin-in-logstash"></a>Az Azure Sentinel kimeneti beépülő modul üzembe helyezése a Logstash-ben
 
@@ -57,7 +57,7 @@ A Logstash készült Azure Sentinel kimeneti beépülő modul JSON formátumú a
 
 Az Azure Sentinel kimeneti beépülő modulja elérhető a Logstash gyűjteményben.
 
-- A ***Microsoft-Logstash-output-Azure-loganalytics*** beépülő modul telepítéséhez kövesse a Logstash [használata beépülő](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) modullal című dokumentumot.
+- A *_Microsoft-Logstash-output-Azure-loganalytics_* _ beépülő modul telepítéséhez kövesse a Logstash című cikkben található utasításokat a [plugins](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) -dokumentummal.
    
 - Ha a Logstash-rendszer nem rendelkezik internet-hozzáféréssel, kövesse a Logstash [Offline beépülő moduljának felügyeleti](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) dokumentumának utasításait az offline beépülő modul előkészítéséhez és használatához. (Ehhez szüksége lesz egy másik Logstash rendszer létrehozására internet-hozzáféréssel.)
 
@@ -67,9 +67,9 @@ Használja a konfigurációs [fájl Logstash struktúrájában](https://www.elas
 
 | Mező neve | Adattípus | Leírás |
 |----------------|---------------|-----------------|
-| `workspace_id` | sztring | Adja meg a munkaterület AZONOSÍTÓjának GUID azonosítóját. * |
+| `workspace_id` | sztring | Adja meg a munkaterület AZONOSÍTÓjának GUID azonosítóját. _ |
 | `workspace_key` | sztring | Adja meg a munkaterület elsődleges kulcsának GUID azonosítóját. * |
-| `custom_log_table_name` | sztring | Állítsa be annak a táblának a nevét, amelybe a rendszer betölti a naplókat. Kimeneti beépülő modulok esetében csak egy Táblanév lehet konfigurálni. A naplófájl az Azure Sentinelben a **naplók**területen jelenik meg, az **egyéni naplók** kategória **tábláiban** , `_CL` utótaggal. |
+| `custom_log_table_name` | sztring | Állítsa be annak a táblának a nevét, amelybe a rendszer betölti a naplókat. Kimeneti beépülő modulok esetében csak egy Táblanév lehet konfigurálni. A naplófájl az Azure Sentinelben a **naplók** területen jelenik meg, az **egyéni naplók** kategória **tábláiban** , `_CL` utótaggal. |
 | `endpoint` | sztring | Nem kötelező kitölteni. Alapértelmezés szerint ez a Log Analytics végpont. Ez a mező egy alternatív végpont beállítására használható. |
 | `time_generated_field` | sztring | Nem kötelező kitölteni. Ez a tulajdonság felülbírálja Log Analytics alapértelmezett **TimeGenerated** mezőjét. Adja meg az adatforrás timestamp mezőjének nevét. A mezőben szereplő értékeknek meg kell felelniük az ISO 8601 formátumának ( `YYYY-MM-DDThh:mm:ssZ` ) |
 | `key_names` | array | Adja meg Log Analytics kimeneti séma mezőinek listáját. Minden listaelemet szimpla idézőjelek között kell megadni, és az elemeket vesszővel kell elválasztani, a teljes listát pedig szögletes zárójelek közé kell foglalni. Lásd az alábbi példát. |
@@ -77,7 +77,7 @@ Használja a konfigurációs [fájl Logstash struktúrájában](https://www.elas
     | `amount_resizing` | boolean | Igaz vagy hamis. Engedélyezheti vagy letilthatja az automatikus skálázási mechanizmust, amely a fogadott naplófájlok mennyisége alapján módosítja az üzenet pufferének méretét. |
 | `max_items` | szám | Nem kötelező kitölteni. Csak akkor érvényes `amount_resizing` , ha a "false" értékre van állítva. A használatával megadhatja a határértéket az üzenet pufferének méretétől (a rekordokban). Az alapértelmezett érték 2000.  |
 
-\* A munkaterület-azonosítót és az elsődleges kulcsot a munkaterület-erőforrásban, az **ügynökök kezelése**területen találja.
+\* A munkaterület-azonosítót és az elsődleges kulcsot a munkaterület-erőforrásban, az **ügynökök kezelése** területen találja.
 
 #### <a name="sample-configurations"></a>Minta konfiguráció
 
@@ -156,13 +156,13 @@ Használja a konfigurációs [fájl Logstash struktúrájában](https://www.elas
 
 1. Ellenőrizze, hogy az üzenetek elküldése a kimeneti beépülő modulba történik-e.
 
-1. Az Azure Sentinel navigációs menüjében kattintson a **naplók**elemre. A **táblák** fejléc alatt bontsa ki az **egyéni naplók** kategóriát. Keresse meg és kattintson a megadott tábla nevére ( `_CL` utótaggal) a konfigurációban.
+1. Az Azure Sentinel navigációs menüjében kattintson a **naplók** elemre. A **táblák** fejléc alatt bontsa ki az **egyéni naplók** kategóriát. Keresse meg és kattintson a megadott tábla nevére ( `_CL` utótaggal) a konfigurációban.
 
    :::image type="content" source="./media/connect-logstash/logstash-custom-logs-menu.png" alt-text="Képernyőkép a naplófájlok egyéni naplóiról.":::
 
 1. A tábla rekordjainak megjelenítéséhez a tábla nevét a séma alapján kérdezheti le.
 
-   :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="Képernyőkép a naplófájlok egyéni naplóiról.":::
+   :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="Képernyőkép: a napló egyéni naplók lekérdezését rejti el.":::
 
 ## <a name="monitor-output-plugin-audit-logs"></a>A kimeneti beépülő modul naplófájljainak figyelése
 

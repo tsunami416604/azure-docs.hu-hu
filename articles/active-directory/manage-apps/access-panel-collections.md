@@ -14,19 +14,19 @@ ms.date: 02/10/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f520141d36726e94dc8d49d7e5aa95bb35d5484
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 967ac34ddb736f58f66639181cdf10e4aaa8ffab
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85956236"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656785"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Gyűjtemények létrehozása a Saját alkalmazások portálon
 
 A felhasználók a saját alkalmazások portálon tekinthetik meg és indíthatják el azokat a felhőalapú alkalmazásokat, amelyekhez hozzáféréssel rendelkeznek. Alapértelmezés szerint az összes felhasználó számára elérhető alkalmazás egyetlen oldalon van felsorolva. Ha prémium szintű Azure AD P1 vagy P2 licenccel rendelkezik a felhasználók számára, hogy jobban meg tudja szervezni ezt a lapot, létrehozhat gyűjteményeket. A Gyűjtemény segítségével csoportosíthatja a kapcsolódó alkalmazásokat (például feladat-szerepkör, feladat vagy projekt), és külön lapon jelenítheti meg őket. A gyűjtemény lényegében egy szűrőt alkalmaz a felhasználók által már elérhető alkalmazásokra, így a felhasználó csak azokat az alkalmazásokat látja, amelyeket a gyűjteményhez rendeltek.
 
 > [!NOTE]
-> Ez a cikk azt ismerteti, hogyan engedélyezheti és hozhat létre gyűjteményeket a rendszergazda. További információ a végfelhasználók számára a saját alkalmazások portál és gyűjtemények használatáról: a [gyűjtemények elérése és használata](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
+> Ez a cikk azt ismerteti, hogyan engedélyezheti és hozhat létre gyűjteményeket a rendszergazda. További információ a végfelhasználók számára a saját alkalmazások portál és gyűjtemények használatáról: a [gyűjtemények elérése és használata](../user-help/my-applications-portal-workspaces.md).
 
 ## <a name="enable-the-latest-my-apps-features"></a>A legújabb saját alkalmazások funkcióinak engedélyezése
 
@@ -34,9 +34,9 @@ A felhasználók a saját alkalmazások portálon tekinthetik meg és indíthatj
 
 2. Lépjen **Azure Active Directory**  >  **felhasználói beállítások menüpontra**.
 
-3. A **felhasználói**szolgáltatások előzetesei területen válassza a **felhasználói szolgáltatás előnézeti beállításainak kezelése**lehetőséget.
+3. A **felhasználói** szolgáltatások előzetesei területen válassza a **felhasználói szolgáltatás előnézeti beállításainak kezelése** lehetőséget.
 
-4. A **felhasználók a saját alkalmazások előnézeti funkcióit használhatják**a következő lehetőségek közül:
+4. A **felhasználók a saját alkalmazások előnézeti funkcióit használhatják** a következő lehetőségek közül:
    * **Kiválasztott** – egy adott csoport funkcióinak engedélyezése. A **csoport kiválasztása** lehetőség kiválasztásával válassza ki azt a csoportot, amelyhez engedélyezni kívánja a szolgáltatásokat.  
    * **All** – engedélyezi az összes felhasználó funkcióit.
 
@@ -51,25 +51,25 @@ Gyűjtemény létrehozásához rendelkeznie kell egy prémium szintű Azure AD P
 
 2. Nyissa meg **Azure Active Directory**  >  **vállalati alkalmazásokat**.
 
-3. A **kezelés**területen válassza a **gyűjtemények**elemet.
+3. A **kezelés** területen válassza a **gyűjtemények** elemet.
 
-4. Válassza az **új gyűjtemény**lehetőséget. Az **új gyűjtemény** lapon adja meg a gyűjtemény **nevét** (azt javasoljuk, hogy ne használja a "Collection" nevet a névben. Ezután adjon meg egy **leírást**.
+4. Válassza az **új gyűjtemény** lehetőséget. Az **új gyűjtemény** lapon adja meg a gyűjtemény **nevét** (azt javasoljuk, hogy ne használja a "Collection" nevet a névben. Ezután adjon meg egy **leírást**.
 
    ![Új gyűjtemény lap](media/acces-panel-collections/new-collection.png)
 
-5. Válassza az **alkalmazások** fület. Válassza az **+ alkalmazás hozzáadása**lehetőséget, majd az **Alkalmazások hozzáadása** oldalon válassza ki az összes olyan alkalmazást, amelyet hozzá szeretne adni a gyűjteményhez, vagy használja a **keresőmezőt** az alkalmazások kereséséhez.
+5. Válassza az **alkalmazások** fület. Válassza az **+ alkalmazás hozzáadása** lehetőséget, majd az **Alkalmazások hozzáadása** oldalon válassza ki az összes olyan alkalmazást, amelyet hozzá szeretne adni a gyűjteményhez, vagy használja a **keresőmezőt** az alkalmazások kereséséhez.
 
    ![Alkalmazás hozzáadása a gyűjteményhez](media/acces-panel-collections/add-applications.png)
 
-6. Ha elkészült az alkalmazások hozzáadásával, válassza a **Hozzáadás**lehetőséget. Megjelenik a kiválasztott alkalmazások listája. A felfelé mutató nyíl használatával módosíthatja a listában szereplő alkalmazások sorrendjét. Ha lejjebb szeretné helyezni az alkalmazást, vagy törölni szeretné a gyűjteményből, válassza a **továbbiak** menüt (**...**).
+6. Ha elkészült az alkalmazások hozzáadásával, válassza a **Hozzáadás** lehetőséget. Megjelenik a kiválasztott alkalmazások listája. A felfelé mutató nyíl használatával módosíthatja a listában szereplő alkalmazások sorrendjét. Ha lejjebb szeretné helyezni az alkalmazást, vagy törölni szeretné a gyűjteményből, válassza a **továbbiak** menüt (**...**).
 
-7. Válassza a **tulajdonosok** lapot. Válassza a **+ felhasználók és csoportok hozzáadása**lehetőséget, majd a **felhasználók és csoportok hozzáadása** lapon válassza ki azokat a felhasználókat vagy csoportokat, amelyekhez hozzá szeretné rendelni a tulajdonost. Ha végzett a felhasználók és csoportok kijelölésével, válassza a **kiválasztás**lehetőséget.
+7. Válassza a **tulajdonosok** lapot. Válassza a **+ felhasználók és csoportok hozzáadása** lehetőséget, majd a **felhasználók és csoportok hozzáadása** lapon válassza ki azokat a felhasználókat vagy csoportokat, amelyekhez hozzá szeretné rendelni a tulajdonost. Ha végzett a felhasználók és csoportok kijelölésével, válassza a **kiválasztás** lehetőséget.
 
-9. Válassza a **felhasználók és csoportok** lapot. Válassza a **+ felhasználók és csoportok hozzáadása**lehetőséget, majd a **felhasználók és csoportok hozzáadása** lapon válassza ki azokat a felhasználókat vagy csoportokat, amelyekhez hozzá szeretné rendelni a gyűjteményt. Vagy használja a **keresőmezőt** a felhasználók vagy csoportok kereséséhez. Ha végzett a felhasználók és csoportok kijelölésével, válassza a **kiválasztás**lehetőséget.
+9. Válassza a **felhasználók és csoportok** lapot. Válassza a **+ felhasználók és csoportok hozzáadása** lehetőséget, majd a **felhasználók és csoportok hozzáadása** lapon válassza ki azokat a felhasználókat vagy csoportokat, amelyekhez hozzá szeretné rendelni a gyűjteményt. Vagy használja a **keresőmezőt** a felhasználók vagy csoportok kereséséhez. Ha végzett a felhasználók és csoportok kijelölésével, válassza a **kiválasztás** lehetőséget.
 
    ![Felhasználók és csoportok hozzáadása](media/acces-panel-collections/add-users-and-groups.png)
 
-11. Válassza a **felülvizsgálat + létrehozás**lehetőséget. Megjelenik az új gyűjtemény tulajdonságai.
+11. Válassza a **felülvizsgálat + létrehozás** lehetőséget. Megjelenik az új gyűjtemény tulajdonságai.
 
 
 ## <a name="view-audit-logs"></a>Auditnaplók megtekintése
@@ -83,7 +83,7 @@ A naplók rögzítik az alkalmazás-gyűjtemények műveleteit, beleértve a gy�
 * Önkiszolgáló alkalmazás hozzáadása (végfelhasználó)
 * Önkiszolgáló alkalmazás törlése (végfelhasználó)
 
-A naplókat a [Azure Portal](https://portal.azure.com) **Azure Active Directory**vállalati alkalmazások naplóinak kiválasztásával érheti el  >  **Enterprise Applications**  >  **Audit logs** a tevékenység szakaszban. A **szolgáltatás**területen válassza **a saját alkalmazások**lehetőséget.
+A naplókat a [Azure Portal](https://portal.azure.com) **Azure Active Directory** vállalati alkalmazások naplóinak kiválasztásával érheti el  >  **Enterprise Applications**  >  **Audit logs** a tevékenység szakaszban. A **szolgáltatás** területen válassza **a saját alkalmazások** lehetőséget.
 
 ## <a name="get-support-for-my-account-pages"></a>Fiókhoz tartozó lapok támogatásának beolvasása
 
@@ -95,5 +95,5 @@ Ha támogatási kérelmet kell benyújtania az Azure AD-fiók vagy az Office-fi�
 
 * Az **Office "Fiókom"** oldalával kapcsolatos problémák esetén nyisson meg egy támogatási kérést a Microsoft 365 felügyeleti központban. Lépjen a **Microsoft 365 felügyeleti központ**  >  **támogatási szolgálatához**. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A Azure Active Directory alkalmazások végfelhasználói élményei](end-user-experiences.md)

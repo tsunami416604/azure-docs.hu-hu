@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 7babe23426cafe01cadc7a5557f91896aa9bbae4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 0b7fee330f93097b561714ecc938eaf3fee8f2b5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108201"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657329"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor
 
@@ -39,7 +39,7 @@ Ha egy összekötő telepítése nem sikerül, a kiváltó ok általában az al�
 
 **Cél:** Ellenőrizze, hogy az összekötő számítógép tud-e csatlakozni az alkalmazásproxy regisztrációs végponthoz, valamint a Microsoft bejelentkezési lapjához.
 
-1.  Az összekötő-kiszolgálón futtassa a port tesztet a [Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) vagy más port tesztelési eszköz használatával annak ellenőrzéséhez, hogy a 443-es és a 80-es portok nyitva vannak-e.
+1.  Az összekötő-kiszolgálón futtassa a port tesztet a [Telnet](/windows-server/administration/windows-commands/telnet) vagy más port tesztelési eszköz használatával annak ellenőrzéséhez, hogy a 443-es és a 80-es portok nyitva vannak-e.
 
 2.  Ha a portok bármelyike nem sikeres, ellenőrizze, hogy a tűzfal vagy a háttér-proxy hozzáfér-e a szükséges tartományokhoz és portokhoz. lásd: a helyszíni [környezet előkészítése](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
@@ -77,8 +77,8 @@ Ellenőrizze az aktuális ügyféltanúsítvány ujjlenyomatát. A tanúsítván
 A lehetséges **IsInUserStore** értékek értéke **igaz** és **hamis**. Az **igaz** érték azt jelenti, hogy az automatikusan megújított tanúsítványt a hálózati szolgáltatás felhasználói tanúsítványtárolójának személyes tárolójában tárolja a rendszer. A **false** érték azt jelenti, hogy az ügyféltanúsítvány a Register-AppProxyConnector parancs által kezdeményezett telepítés vagy regisztráció során lett létrehozva, és a rendszer a helyi gép tanúsítványtárolójának személyes tárolójában tárolja.
 
 Ha az érték **true (igaz**), kövesse az alábbi lépéseket a tanúsítvány ellenőrzéséhez:
-1. [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools) letöltése
-2. Bontsa ki a [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) a csomagból, és futtassa a **PsExec-i-u "NT AUTHORITY \ szolgáltatás" cmd.exe** egy rendszergazda jogú parancssorból.
+1. [PsTools.zip](/sysinternals/downloads/pstools) letöltése
+2. Bontsa ki a [PsExec](/sysinternals/downloads/psexec) a csomagból, és futtassa a **PsExec-i-u "NT AUTHORITY \ szolgáltatás" cmd.exe** egy rendszergazda jogú parancssorból.
 3. Futtassa a **certmgr. msc fájlt** az újonnan megjelenő parancssorban
 4. A felügyeleti konzolon bontsa ki a személyes tárolót, és kattintson a tanúsítványok elemre.
 5. A **connectorregistrationca.msappproxy.net** által kiállított tanúsítvány megkeresése
@@ -101,7 +101,7 @@ Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
 
-Az Register-AppProxyConnector paranccsal kapcsolatos további tudnivalókért tekintse meg [a felügyelet nélküli telepítési parancsfájl létrehozása az Azure ad Application proxy-összekötőhöz](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell) című témakört.
+Az Register-AppProxyConnector paranccsal kapcsolatos további tudnivalókért tekintse meg [a felügyelet nélküli telepítési parancsfájl létrehozása az Azure ad Application proxy-összekötőhöz](./application-proxy-register-connector-powershell.md) című témakört.
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Ellenőrizze, hogy a rendszergazda az összekötő telepítéséhez használt-e
 
@@ -113,5 +113,5 @@ Csatlakozhat, `https://login.microsoftonline.com` és ugyanazokat a hitelesítő
 
 Válassza ki a felhasználói fiókot, majd a "címtárbeli szerepkör" lehetőséget az eredményül kapott menüben. Győződjön meg arról, hogy a kiválasztott szerepkör az "Application Administrator". Ha nem fér hozzá a fenti lépésekhez tartozó lapokhoz, nem rendelkezik a szükséges szerepkörrel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)

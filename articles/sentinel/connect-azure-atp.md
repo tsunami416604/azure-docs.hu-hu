@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 319e0d29ef297f2a675128d498820a2d5b8ac42e
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b0cafcbc9fa6f0fcb31f44b44dfbe4fc3e10c17d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579521"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656071"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Adatok összekapcsolása a Microsoft Defender identitásával (korábbi nevén az Azure Advanced Threat Protection)
 
@@ -27,7 +27,7 @@ ms.locfileid: "94579521"
 > A Microsoft Defender for Identity adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
 > Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Egyetlen kattintással továbbíthatja a [Microsoft Defender for Identity](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) naplóit az Azure sentinelbe.
+Egyetlen kattintással továbbíthatja a [Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp) naplóit az Azure sentinelbe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +36,7 @@ Egyetlen kattintással továbbíthatja a [Microsoft Defender for Identity](https
 
 ## <a name="connect-to-microsoft-defender-for-identity"></a>Kapcsolódás a Microsoft Defenderhez az identitáshoz
 
-Győződjön meg arról, hogy a Microsoft Defender for Identity Preview verziója engedélyezve van a [hálózaton](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1).
+Győződjön meg arról, hogy a Microsoft Defender for Identity Preview verziója engedélyezve van a [hálózaton](/azure-advanced-threat-protection/install-atp-step1).
 Ha a Microsoft Defender for Identity üzembe helyezését és az adatok betöltését végzi, a gyanús riasztások könnyen továbbíthatók az Azure Sentinel szolgáltatásba. Akár 24 óráig is eltarthat, amíg a riasztások elkezdik a folyamatos átvitelt az Azure Sentinel szolgáltatásba.
 
 
@@ -57,4 +57,3 @@ Ha a Microsoft Defender for Identity üzembe helyezését és az adatok betölt�
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Microsoft Defender for Identity az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
-

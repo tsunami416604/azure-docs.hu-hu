@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
-ms.openlocfilehash: d9d9da9cd01b4bb9b3cabcf069990cd3cbd38d38
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e2bcdf947db60fb50b44abba9d6a224768840b28
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92429316"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656139"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>Oktatóanyag: virtuális központ biztonságossá tétele Azure PowerShell használatával
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 - PowerShell 7
 
-   Ehhez az oktatóanyaghoz a Azure PowerShell helyileg kell futtatni a PowerShell 7-es verziójában. A PowerShell 7 telepítéséhez lásd: [áttelepítés a Windows powershell 5,1](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7)-ből a PowerShell 7-re.
+   Ehhez az oktatóanyaghoz a Azure PowerShell helyileg kell futtatni a PowerShell 7-es verziójában. A PowerShell 7 telepítéséhez lásd: [áttelepítés a Windows powershell 5,1](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7)-ből a PowerShell 7-re.
 - Az az. Network Version 3.2.0
 
     Ha az az. Network Version 3.4.0 vagy újabb verzióval rendelkezik, a jelen oktatóanyagban szereplő parancsok némelyikének használatára kell visszalépést végeznie. Az az. Network modul verzióját a paranccsal lehet megtekinteni `Get-InstalledModule -Name Az.Network` . Az az. Network modul eltávolításához futtassa a parancsot `Uninstall-Module -name az.network` . Az az. Network 3.2.0-modul telepítéséhez futtassa a parancsot `Install-Module az.network -RequiredVersion 3.2.0 -force` .
@@ -277,7 +277,7 @@ A tesztkörnyezet törléséhez távolítsa el az erőforráscsoportot az össze
 Remove-AzResourceGroup -Name $RG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a megbízható biztonsági partnerekről](trusted-security-partners.md)

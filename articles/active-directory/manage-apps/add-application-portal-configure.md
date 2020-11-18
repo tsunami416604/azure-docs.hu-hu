@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 50c1cd62f52583a005e6e7fe8fb29ee8eafd1af9
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 18e40d0e62a69954b0e3c1e5770a71c8b0bcba8b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044462"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656683"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás tulajdonságainak konfigurálása a Azure Active Directory (Azure AD) bérlőben
 
@@ -39,7 +39,7 @@ Amikor befejezi az alkalmazás hozzáadását az Azure AD-bérlőhöz, megjeleni
 
 Az alkalmazás tulajdonságainak szerkesztése:
 
-1. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
+1. Az Azure AD-portálon válassza a **vállalati alkalmazások** lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
 2. A **kezelés** szakaszban válassza a **Tulajdonságok** lehetőséget a **Tulajdonságok** ablaktábla szerkesztéshez való megnyitásához.
 3. Szánjon egy kis időt az elérhető lehetőségek megismerésére. Az elérhető lehetőségek attól függnek, hogy az alkalmazás hogyan integrálódik az Azure AD-vel. Az SAML-alapú egyszeri bejelentkezést használó alkalmazások például olyan mezőkkel rendelkeznek, mint például a *felhasználói hozzáférési URL-cím* , míg egy OIDC-alapú egyszeri bejelentkezést használó alkalmazás nem fog megjelenni. Azt is vegye figyelembe, hogy a **Azure Active Directory > Alkalmazásregisztrációk** használatával hozzáadott alkalmazások alapértelmezett OIDC-alapú alkalmazások. Míg a **Azure Active Directory > vállalati alkalmazások** által hozzáadott alkalmazások számos egyszeri bejelentkezési szabványt használhatnak. Minden alkalmazás tartalmazni fog mezőket a konfiguráláshoz, amikor megjelenik egy alkalmazás és használható. Ezek a mezők a következők:
     - **Engedélyezve van a felhasználók számára a bejelentkezés?** meghatározza, hogy be tud-e jelentkezni az alkalmazáshoz hozzárendelt felhasználók.
@@ -62,17 +62,17 @@ Az alkalmazás tulajdonságainak szerkesztése:
     | Nem  | Nem  | Igen | A hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
     | Nem  | Nem  | Nem  | A hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
 
-4. Ha elkészült, válassza a **Mentés**lehetőséget.
+4. Ha elkészült, válassza a **Mentés** lehetőséget.
 
 ## <a name="use-a-custom-logo"></a>Egyéni embléma használata
 
 Egyéni embléma használata:
 
 1. Hozzon létre egy 215-es, 215 képpont-os emblémát, és mentse. png formátumban.
-2. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
+2. Az Azure AD-portálon válassza a **vállalati alkalmazások** lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
 3. A **kezelés** szakaszban válassza a **Tulajdonságok** lehetőséget a **Tulajdonságok** ablaktábla szerkesztéshez való megnyitásához. 
 4. Válassza ki az ikont az embléma feltöltéséhez.
-5. Ha elkészült, válassza a **Mentés**lehetőséget.
+5. Ha elkészült, válassza a **Mentés** lehetőséget.
 
     ![Képernyőkép a tulajdonságok képernyőről, amely bemutatja, hogyan módosíthatja az emblémát.](media/add-application-portal/change-logo.png)
 
@@ -81,15 +81,15 @@ Egyéni embléma használata:
 
 
 > [!TIP]
-> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](/graph/application-saml-sso-configure-api).
 
 ## <a name="add-notes"></a>Megjegyzések hozzáadása
 
 A megjegyzések mezővel az alkalmazás Azure AD-ben való kezeléséhez kapcsolódó információkat adhat hozzá. A Notes egy ingyenes szövegmező, amelynek maximális mérete 1024 karakter.
 
-1. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
+1. Az Azure AD-portálon válassza a **vállalati alkalmazások** lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
 2. A **kezelés** szakaszban válassza a **Tulajdonságok** lehetőséget a **Tulajdonságok** ablaktábla szerkesztéshez való megnyitásához.
-3. Frissítse a Megjegyzések mezőt, majd válassza a **Mentés**lehetőséget.
+3. Frissítse a Megjegyzések mezőt, majd válassza a **Mentés** lehetőséget.
 
     ![Képernyőfelvétel a tulajdonságok képernyőről, amely bemutatja, hogyan módosíthatja a megjegyzéseket](media/add-application-portal/notes-application.png)
 

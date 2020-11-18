@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 2946590cbb4c5e8f495a1f6ee4aac65929cd4d0e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fd81e5f87aaf4a28676b79863df60b71707849e9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91305739"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656513"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás hozzáadása a Azure Active Directory (Azure AD) bérlőhöz
 
@@ -42,11 +42,11 @@ Ha alkalmazást szeretne hozzáadni az Azure AD-bérlőhöz, a következőkre le
 
 Alkalmazás hozzáadása az Azure AD-bérlőhöz:
 
-1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
-2. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások**lehetőséget. Megnyílik a **minden alkalmazás** panel, és az Azure ad-bérlőben található alkalmazások véletlenszerű mintája jelenik meg.
-3. A **vállalati alkalmazások** ablaktáblán válassza az **új alkalmazás**lehetőséget. 
+1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
+2. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások** lehetőséget. Megnyílik a **minden alkalmazás** panel, és az Azure ad-bérlőben található alkalmazások véletlenszerű mintája jelenik meg.
+3. A **vállalati alkalmazások** ablaktáblán válassza az **új alkalmazás** lehetőséget. 
     ![Válassza az új alkalmazás lehetőséget, ha egy katalógus-alkalmazást szeretne hozzáadni a bérlőhöz](media/add-application-portal/new-application.png)
-4. Váltson az új katalógus előzetes verziójára: az **alkalmazás hozzáadása lap**tetején található szalagcímen válassza ki azt a hivatkozást, amely az **új és továbbfejlesztett alkalmazás-katalógus kipróbálásához kattintson ide**.
+4. Váltson az új katalógus előzetes verziójára: az **alkalmazás hozzáadása lap** tetején található szalagcímen válassza ki azt a hivatkozást, amely az **új és továbbfejlesztett alkalmazás-katalógus kipróbálásához kattintson ide**.
 5. Megnyílik a **Tallózás Azure ad-katalógus (előzetes verzió)** panel, amelyen a Felhőbeli platformok, a helyszíni alkalmazások és a Kiemelt alkalmazások csempéi láthatók. A **Kiemelt alkalmazások** szakaszban felsorolt alkalmazások rendelkeznek ikonokkal, amelyek azt jelzik, hogy támogatják-e az összevont egyszeri bejelentkezést (SSO) és a létesítést. 
     ![Alkalmazás keresése név vagy kategória szerint](media/add-application-portal/browse-gallery.png)
 6. Böngészhet a katalógusban a hozzáadni kívánt alkalmazáshoz, vagy megkeresheti az alkalmazást úgy, hogy beírja a nevét a keresőmezőbe. Ezután válassza ki az alkalmazást az eredmények közül. 
@@ -54,11 +54,11 @@ Alkalmazás hozzáadása az Azure AD-bérlőhöz:
 
     :::image type="content" source="media/add-application-portal/sso-types.png" alt-text="A képernyőképen az SSO-típusok választója látható." lightbox="media/add-application-portal/sso-types.png":::
 
-    - Ha az alkalmazás fejlesztője a **OIDC standardot** használta az egyszeri bejelentkezéshez, válassza a **regisztráció**lehetőséget. Megjelenik egy telepítési oldal. Ezután nyissa meg a rövid útmutatót a OIDC-alapú egyszeri bejelentkezés beállításához.
-    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="A képernyőképen az SSO-típusok választója látható.":::
+    - Ha az alkalmazás fejlesztője a **OIDC standardot** használta az egyszeri bejelentkezéshez, válassza a **regisztráció** lehetőséget. Megjelenik egy telepítési oldal. Ezután nyissa meg a rövid útmutatót a OIDC-alapú egyszeri bejelentkezés beállításához.
+    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="A képernyőképen egy OIDC-alapú SSO-alkalmazás hozzáadása látható.":::
 
-    - Ha az alkalmazás fejlesztője az SAML- **szabványt** használta az egyszeri bejelentkezéshez, válassza a **Létrehozás**lehetőséget. Megjelenik az első lépések lap, amelyen a beállításokkal konfigurálhatja az alkalmazást a vállalat számára. Az űrlapon szerkesztheti az alkalmazás nevét, hogy megfeleljen a szervezet igényeinek. Ezután nyissa meg a rövid útmutatót az SAML-alapú egyszeri bejelentkezés beállításához.
-    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="A képernyőképen az SSO-típusok választója látható.":::
+    - Ha az alkalmazás fejlesztője az SAML- **szabványt** használta az egyszeri bejelentkezéshez, válassza a **Létrehozás** lehetőséget. Megjelenik az első lépések lap, amelyen a beállításokkal konfigurálhatja az alkalmazást a vállalat számára. Az űrlapon szerkesztheti az alkalmazás nevét, hogy megfeleljen a szervezet igényeinek. Ezután nyissa meg a rövid útmutatót az SAML-alapú egyszeri bejelentkezés beállításához.
+    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="A képernyőfelvételen egy SAML-alapú SSO-alkalmazás hozzáadása látható.":::
 
 
 > [!IMPORTANT]
@@ -69,13 +69,13 @@ Ha a keresett alkalmazás nem szerepel a katalógusban, akkor kiválaszthatja a 
 Elkészült egy alkalmazás hozzáadásával. A következő rövid útmutató bemutatja, hogyan módosíthatja az emblémát, és szerkesztheti az alkalmazás egyéb tulajdonságait.
 
 > [!TIP]
-> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](/graph/application-saml-sso-configure-api).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja a gyors üzembe helyezési sorozatot, akkor érdemes lehet törölni az alkalmazást a tesztelési bérlő törléséhez. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan konfigurálhat egy alkalmazást.
 > [!div class="nextstepaction"]

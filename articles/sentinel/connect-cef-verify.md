@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: f0c38e72231fb343cb9b27def520f73d923a70f6
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 8bdc9d588e89f498b973db7d1de299b0b26a3d02
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515710"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655731"
 ---
 # <a name="step-3-validate-connectivity"></a>3. lépés: a kapcsolat ellenőrzése
 
@@ -247,6 +247,5 @@ Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
 ## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a CEF-készülékek az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).
 - Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
-

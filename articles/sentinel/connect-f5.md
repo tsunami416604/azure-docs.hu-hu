@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 63e20467750e9a4b0c85de33180d4fa51831e59b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a0f0e01827c48518f2eb1fba062e9e6536d9df
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85555422"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655697"
 ---
 # <a name="connect-f5-asm-to-azure-sentinel"></a>Az F5 ASM és az Azure Sentinel összekötése
 
@@ -29,8 +29,8 @@ Ez a cikk azt ismerteti, hogyan használható az F5 ASM adatösszekötő az F5 A
 ## <a name="configure-your-f5-asm-to-send-cef-messages"></a>Az F5 ASM beállítása CEF üzenetek küldéséhez
 
 1. A távoli naplózás beállításához kövesse az [alkalmazás-biztonsági események naplózása az F5](https://techdocs.f5.com/kb/en-us/products/big-ip_asm/manuals/product/asm-implementations-11-5-0/12.html) -ben című témakör utasításait az alábbi irányelvek alapján:
-   - Állítsa a **távoli tárterület típusát** **CEF**értékre.
-   - Állítsa a **protokollt** a **TCP**értékre.
+   - Állítsa a **távoli tárterület típusát** **CEF** értékre.
+   - Állítsa a **protokollt** a **TCP** értékre.
    - Állítsa be az **IP-címet** a syslog-kiszolgáló IP-címére.
    - Állítsa a **portszámot** **514**-re, vagy azt a portot, amelyet az ügynöknek használnia kell.
    - Beállíthatja a **lekérdezési karakterlánc maximális méretét** az ügynökben beállított méretre.
@@ -40,9 +40,8 @@ Ez a cikk azt ismerteti, hogyan használható az F5 ASM adatösszekötő az F5 A
 1. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható az F5 ASM az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).
 - Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
-

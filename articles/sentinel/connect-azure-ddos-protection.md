@@ -9,32 +9,32 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e8e44f69965af1987bd5f023644d966b3caf1c77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5d98a834ed4f87fb95a13e666967a7b2d80975d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505850"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656054"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>Adatok összekapcsolásának Azure DDoS Protection
 
 > [!IMPORTANT]
 > Az Azure Sentinel Azure DDoS Protection adatösszekötője jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az elosztott szolgáltatásmegtagadási (DDoS) támadások megpróbálnak kimeríteni egy alkalmazás erőforrásait, így az alkalmazás nem érhető el a legitim felhasználók számára. A DDoS-támadások bármilyen, az interneten keresztül nyilvánosan elérhető végpontot megcélozhatnak. Az [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md)az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva robusztus védelmet nyújt a DDOS-támadások ellen. Azure DDoS Protection naplókat összekapcsolhatja az Azure Sentinel szolgáltatással, így megtekintheti a munkafüzetek naplófájljait, felhasználhatja egyéni riasztások létrehozásához és a vizsgálatok javítására. 
+Az elosztott szolgáltatásmegtagadási (DDoS) támadások megpróbálnak kimeríteni egy alkalmazás erőforrásait, így az alkalmazás nem érhető el a legitim felhasználók számára. A DDoS-támadások bármilyen, az interneten keresztül nyilvánosan elérhető végpontot megcélozhatnak. Az [Azure DDoS Protection](../ddos-protection/ddos-protection-overview.md)az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva robusztus védelmet nyújt a DDOS-támadások ellen. Azure DDoS Protection naplókat összekapcsolhatja az Azure Sentinel szolgáltatással, így megtekintheti a munkafüzetek naplófájljait, felhasználhatja egyéni riasztások létrehozásához és a vizsgálatok javítására. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Olvasási és írási engedélyekkel kell rendelkeznie az Azure Sentinel munkaterületen.
 
-- Rendelkeznie kell egy konfigurált [Azure DDoS standard Protection-csomaggal](../virtual-network/manage-ddos-protection.md#create-a-ddos-protection-plan).
+- Rendelkeznie kell egy konfigurált [Azure DDoS standard Protection-csomaggal](../ddos-protection/manage-ddos-protection.md#create-a-ddos-protection-plan).
 
-- Rendelkeznie kell egy konfigurált [virtuális hálózattal, amelyen engedélyezve van az Azure DDoS standard](../virtual-network/manage-ddos-protection.md#enable-ddos-for-a-new-virtual-network).
+- Rendelkeznie kell egy konfigurált [virtuális hálózattal, amelyen engedélyezve van az Azure DDoS standard](../ddos-protection/manage-ddos-protection.md#enable-ddos-protection-for-a-new-virtual-network).
 
 ## <a name="connect-to-azure-ddos-protection"></a>Kapcsolódás Azure DDoS Protectionhoz
     
-1. Az Azure Sentinel navigációs menüjében válassza az **adatösszekötők**lehetőséget.
+1. Az Azure Sentinel navigációs menüjében válassza az **adatösszekötők** lehetőséget.
 
 1. Válassza a **Azure DDoS Protection** lehetőséget az adatösszekötők katalógusában, majd az előnézet ablaktáblán válassza az **összekötő megnyitása lapot** .
 
@@ -42,14 +42,14 @@ Az elosztott szolgáltatásmegtagadási (DDoS) támadások megpróbálnak kimer�
 
     1. Válassza a **diagnosztikai beállítások megnyitása >** hivatkozást, és válasszon egy **nyilvános IP-cím** erőforrást a listából.
 
-    1. Válassza a **+ diagnosztikai beállítások hozzáadása**elemet.
+    1. Válassza a **+ diagnosztikai beállítások hozzáadása** elemet.
 
     1. A **diagnosztikai beállítások** képernyőn:
        - Adjon meg egy nevet a  **diagnosztikai beállítás neve** mezőben.
 
        - Jelölje be a **küldés log Analyticsra** jelölőnégyzetet. Alatta két új mező jelenik meg. Válassza ki a megfelelő **előfizetést** és **log Analytics munkaterületet** (ahol az Azure Sentinel található).
 
-       - Megjelölheti azoknak a szabályoknak a jelölőnégyzeteit, amelyek naplóit be szeretné állítani. Javasoljuk, hogy a **DDoSProtectionNotifications**, a **DDoSMitigationFlowLogs**és a **DDoSMitigationReports**.
+       - Megjelölheti azoknak a szabályoknak a jelölőnégyzeteit, amelyek naplóit be szeretné állítani. Javasoljuk, hogy a **DDoSProtectionNotifications**, a **DDoSMitigationFlowLogs** és a **DDoSMitigationReports**.
 
     1. Kattintson a képernyő felső részén található **Mentés** gombra. Ismételje meg ezt a folyamatot minden olyan további tűzfalnál (nyilvános IP-cím), amelyhez engedélyezte a DDoS Protection szolgáltatást.
 

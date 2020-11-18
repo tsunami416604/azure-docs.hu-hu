@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: fd08e6cc953f9d8526174fc96dd4e4d1dc9063f5
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 4b34477a40530a0e6f26b59dd9707c019418b2a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517971"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655850"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A külső megoldás összekötése a közös esemény formátumával
 
@@ -94,5 +94,4 @@ Ebből a dokumentumból megtudhatta, hogy az Azure Sentinel hogyan gyűjt CEF-na
 
 Ha többet szeretne megtudni arról, hogy mi a teendő az Azure Sentinelben összegyűjtött adatokkal, tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
-
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).

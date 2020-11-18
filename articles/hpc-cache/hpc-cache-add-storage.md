@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: c1edbaf394a4abd36e47843a6f419eb9d62f08d7
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b2497a49703ab675bde50c7845995c92de32f376
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340308"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657176"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -56,14 +56,14 @@ Kattintson a **tárolási cél hozzáadása** gombra.
 Azure Blob-tároló definiálásához adja meg ezt az információt.
 
 * **Tárolási cél neve** – adjon meg egy nevet, amely azonosítja ezt a tárolási célt az Azure HPC cache-ben.
-* **Cél típusa** – válassza a **blob**lehetőséget.
+* **Cél típusa** – válassza a **blob** lehetőséget.
 * **Storage-fiók** – válassza ki a használni kívánt fiókot.
 
   Engedélyeznie kell a gyorsítótár-példányt a Storage-fiók eléréséhez a [hozzáférési Szerepkörök hozzáadása](#add-the-access-control-roles-to-your-account)című témakörben leírtak szerint.
 
   A használható Storage-fiókkal kapcsolatos információkért olvassa el a [blob Storage-követelmények](hpc-cache-prerequisites.md#blob-storage-requirements)című témakört.
 
-* **Storage-tároló** – jelölje ki a cél blob-tárolóját, vagy kattintson az **új létrehozása**gombra.
+* **Storage-tároló** – jelölje ki a cél blob-tárolóját, vagy kattintson az **új létrehozása** gombra.
 
   ![képernyőkép a párbeszédpanelről az új tárolóhoz tartozó név és hozzáférési szint (Private) megadásához](media/add-blob-new-container.png)
 
@@ -84,7 +84,7 @@ Az Azure-szerepkörök hozzáadásának lépései:
 
 1. Nyissa meg a Storage-fiókhoz tartozó **hozzáférés-vezérlés (iam)** lapot. (A **tároló hozzáadása** lapon lévő hivatkozás automatikusan megnyitja ezt a lapot a kiválasztott fiókhoz.)
 
-1. Kattintson a **+** lap tetején található elemre, majd válassza a **szerepkör-hozzárendelés hozzáadása**lehetőséget.
+1. Kattintson a **+** lap tetején található elemre, majd válassza a **szerepkör-hozzárendelés hozzáadása** lehetőséget.
 
 1. Válassza ki a "Storage-fiók közreműködője" szerepkört a listából.
 
@@ -103,9 +103,9 @@ Az Azure-szerepkörök hozzáadásának lépései:
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
-
 ### <a name="prerequisite-storage-account-access"></a>Előfeltétel: a Storage-fiók elérése
+
+[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
 
 BLOB Storage-cél hozzáadása előtt győződjön meg arról, hogy a gyorsítótár megfelelő szerepkörrel rendelkezik a Storage-fiók eléréséhez, és hogy a tűzfalbeállítások lehetővé teszik a tárolási cél létrehozását.
 
@@ -185,9 +185,9 @@ Ez a táblázat a használati modell eltéréseit foglalja össze:
 
 | Használati modell                   | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| Súlyos, ritka írások olvasása | Olvasás         | Soha                 | Nincsenek                     |
+| Súlyos, ritka írások olvasása | Olvasás         | Soha                 | Nincs                     |
 | 15%-nál nagyobb írások       | Olvasás/írás   | Soha                 | 1 óra                   |
-| Az ügyfelek megkerülik a gyorsítótárat      | Olvasás         | 30 másodperc            | Nincsenek                     |
+| Az ügyfelek megkerülik a gyorsítótárat      | Olvasás         | 30 másodperc            | Nincs                     |
 
 ### <a name="create-an-nfs-storage-target"></a>NFS-tárolási cél létrehozása
 
@@ -207,7 +207,7 @@ Adja meg ezt az információt egy NFS-alapú tárolási cél számára:
 
 * **Tárolási cél neve** – adjon meg egy nevet, amely azonosítja ezt a tárolási célt az Azure HPC cache-ben.
 
-* **Cél típusa** – válassza az **NFS**lehetőséget.
+* **Cél típusa** – válassza az **NFS** lehetőséget.
 
 * **Állomásnév** – adja meg az NFS-tárolási rendszer IP-címét vagy teljesen minősített tartománynevét. (Csak akkor használjon tartománynevet, ha a gyorsítótár egy olyan DNS-kiszolgálóhoz fér hozzá, amely fel tudja oldani a nevet.)
 
@@ -217,7 +217,7 @@ Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
 
 A tárolási cél létrehozásához használja az Azure CLI-parancsot az [HPC-cache NFS-Storage-Target Add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) paranccsal.
 
@@ -293,7 +293,7 @@ A gyorsítótárhoz már definiált tárolási célok megjelenítéséhez haszn�
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Azure Portal nyissa meg a gyorsítótár-példányt, és kattintson a **tárolási célok**elemre, amely a bal oldali oldalsávon a beállítások fejléc alatt található. A tárolási célok lap felsorolja az összes meglévő célt és vezérlőelemet a hozzáadáshoz vagy a törléshez.
+A Azure Portal nyissa meg a gyorsítótár-példányt, és kattintson a **tárolási célok** elemre, amely a bal oldali oldalsávon a beállítások fejléc alatt található. A tárolási célok lap felsorolja az összes meglévő célt és vezérlőelemet a hozzáadáshoz vagy a törléshez.
 
 Kattintson a tárolási cél nevére a Részletek lap megnyitásához.
 
@@ -301,7 +301,7 @@ További információért olvassa el a [tárolási célok szerkesztése](hpc-cac
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
 
 Használja az az [HPC-cache Storage-Target List](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) kapcsolót a gyorsítótár meglévő tárolási céljainak megjelenítéséhez. Adja meg a gyorsítótár nevét és az erőforráscsoportot (kivéve, ha globálisan beállította).
 

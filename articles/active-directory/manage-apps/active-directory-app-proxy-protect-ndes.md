@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: a385a339122197b7055ef6f54b8e37edea8eae4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0682115727068c928418d97fbf92ed32897c39d4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88078937"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656751"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integráció az Azure AD Application Proxy hálózati eszközök tanúsítványigénylési szolgáltatásának (NDES) kiszolgálóján
 
@@ -26,7 +26,7 @@ Azure Active Directory (AD) alkalmazásproxy lehetővé teszi alkalmazások köz
 
 Ha még nem ismeri az Azure AD Application Proxyt, és többet szeretne megtudni, tekintse [meg a helyszíni alkalmazások távoli elérését az Azure-on keresztül ad Application proxy](application-proxy.md).
 
-Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati sávszélességet és kiszolgálói infrastruktúrát biztosít az elosztott szolgáltatásmegtagadási (DDOS) támadásokkal és a kiváló rendelkezésre állással szembeni jobb védelem érdekében. Emellett nincs szükség a külső tűzfal portjainak megnyitására a helyszíni hálózathoz, és nincs szükség DMZ-kiszolgálóra. Minden forgalom bejövő. A kimenő portok teljes listája: [oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez az alkalmazásproxy használatával Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment).
+Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati sávszélességet és kiszolgálói infrastruktúrát biztosít az elosztott szolgáltatásmegtagadási (DDOS) támadásokkal és a kiváló rendelkezésre állással szembeni jobb védelem érdekében. Emellett nincs szükség a külső tűzfal portjainak megnyitására a helyszíni hálózathoz, és nincs szükség DMZ-kiszolgálóra. Minden forgalom bejövő. A kimenő portok teljes listája: [oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez az alkalmazásproxy használatával Azure Active Directory](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
 > Az Azure AD Application Proxy egy olyan szolgáltatás, amely csak akkor érhető el, ha a Azure Active Directory prémium vagy alapszintű kiadásait használja. További információ: [Azure Active Directory díjszabása](https://azure.microsoft.com/pricing/details/active-directory/). 
 > Ha nagyvállalati mobilitási csomag (EMS) licenccel rendelkezik, jogosult a megoldás használatára.
@@ -36,13 +36,13 @@ Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati s
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az alkalmazásproxy-t használó címtár alkalmazás-rendszergazdájaként. Ha például a bérlő tartománya contoso.com, akkor a rendszergazdának admin@contoso.com vagy más rendszergazdai aliasnak kell lennie az adott tartományban.
 1. Válassza ki a felhasználónevét a jobb felső sarokban. Ellenőrizze, hogy be van-e jelentkezve az alkalmazásproxy-t használó könyvtárba. Ha módosítania kell a címtárakat, válassza a **váltás könyvtárat** , és válasszon egy, az alkalmazásproxy-t használó könyvtárat.
-1. A bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
-1. A **kezelés**területen válassza a **alkalmazásproxy**elemet.
-1. Válassza az **összekötő szolgáltatás letöltése**lehetőséget.
+1. A bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
+1. A **kezelés** területen válassza a **alkalmazásproxy** elemet.
+1. Válassza az **összekötő szolgáltatás letöltése** lehetőséget.
 
     ![Az összekötő szolgáltatás letöltése a szolgáltatási feltételek megtekintéséhez](./media/active-directory-app-proxy-protect-ndes/application-proxy-download-connector-service.png)
 
-1. Olvassa el a szolgáltatási feltételeket. Ha elkészült, válassza a **feltételek elfogadása & Letöltés**lehetőséget.
+1. Olvassa el a szolgáltatási feltételeket. Ha elkészült, válassza a **feltételek elfogadása & Letöltés** lehetőséget.
 1. Másolja az Azure AD Application Proxy Connector telepítési fájlt a NDES-kiszolgálóra. 
    > Az összekötőt a vállalati hálózaton belüli bármely kiszolgálóra is telepítheti a NDES elérésével. Nem kell telepítenie a NDES-kiszolgálóra.
 1. Futtassa a telepítőfájlt, például *AADApplicationProxyConnectorInstaller.exe*. A szoftverlicenc-szerződés elfogadása.
@@ -57,7 +57,7 @@ Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati s
    * Ha az Internet Explorer fokozott biztonsági beállításai be vannak kapcsolva azon a kiszolgálón, amelyen az összekötőt telepíti, előfordulhat, hogy a regisztrációs képernyő blokkolva van. A hozzáférés engedélyezéséhez kövesse a hibaüzenet utasításait, vagy kapcsolja ki az Internet Explorer fokozott biztonságát a telepítési folyamat során.
    * Ha az összekötő regisztrálása meghiúsul, tekintse meg az [alkalmazásproxy hibaelhárítása](application-proxy-troubleshoot.md)című témakört.
 1. A beállítás végén megjelenik egy Megjegyzés a kimenő proxyval rendelkező környezetekhez. Ha úgy szeretné konfigurálni az Azure AD Application Proxy-összekötőt, hogy a kimenő proxyn keresztül működjön, futtassa a megadott parancsfájlt, például: `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1` .
-1. Az Azure Portal alkalmazásproxy lapján az új összekötő *aktív*állapotú, az alábbi példában látható módon jelenik meg:
+1. Az Azure Portal alkalmazásproxy lapján az új összekötő *aktív* állapotú, az alábbi példában látható módon jelenik meg:
 
     ![Az új Azure AD Application Proxy-összekötő, amely aktívként jelenik meg a Azure Portal](./media/active-directory-app-proxy-protect-ndes/connected-app-proxy.png)
 
@@ -66,17 +66,17 @@ Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati s
 
 1. A sikeres telepítés után térjen vissza a Azure Portal.
 
-1. Válassza a **vállalati alkalmazások**lehetőséget.
+1. Válassza a **vállalati alkalmazások** lehetőséget.
 
    ![Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](./media/active-directory-app-proxy-protect-ndes/azure-active-directory-enterprise-applications.png)
 
-1. Válassza az **+ új alkalmazás**lehetőséget, majd válassza **a helyszíni alkalmazás**lehetőséget. 
+1. Válassza az **+ új alkalmazás** lehetőséget, majd válassza **a helyszíni alkalmazás** lehetőséget. 
 
-1. A **saját helyszíni alkalmazás hozzáadása**területen konfigurálja a következő mezőket:
+1. A **saját helyszíni alkalmazás hozzáadása** területen konfigurálja a következő mezőket:
 
    * **Név**: adja meg az alkalmazás nevét.
    * **Belső URL-cím**: adja meg annak a NDES-kiszolgálónak a belső URL-címét/teljes tartománynevét, amelyre az összekötőt telepítette.
-   * **Előzetes hitelesítés**: válassza az **átadó**lehetőséget. Az előhitelesítés bármilyen formáját nem lehet használni. A tanúsítványigénylésekhez használt protokoll (SCEP) nem biztosít ilyen beállítást.
+   * **Előzetes hitelesítés**: válassza az **átadó** lehetőséget. Az előhitelesítés bármilyen formáját nem lehet használni. A tanúsítványigénylésekhez használt protokoll (SCEP) nem biztosít ilyen beállítást.
    * Másolja a megadott **külső URL-címet** a vágólapra.
 
 1. Az alkalmazás mentéséhez válassza a **+ Hozzáadás** lehetőséget.
@@ -96,4 +96,4 @@ Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati s
 
 ## <a name="next-steps"></a>Következő lépések
 
-A NDES-mel integrált Azure-AD Application Proxy alkalmazások közzétételét teszik elérhetővé a felhasználók számára. További információ: [alkalmazások közzététele az Azure ad Application proxy használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application).
+A NDES-mel integrált Azure-AD Application Proxy alkalmazások közzétételét teszik elérhetővé a felhasználók számára. További információ: [alkalmazások közzététele az Azure ad Application proxy használatával](./application-proxy-add-on-premises-application.md).

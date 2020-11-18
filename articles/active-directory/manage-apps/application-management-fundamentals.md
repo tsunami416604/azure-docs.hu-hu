@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d32728c1f388e9013b922d1f60d30e65d350bbc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f5aaf4bbff4c093872228d647d3850667fb9777
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642435"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656407"
 ---
 # <a name="application-management-best-practices"></a>Alkalmazások kezelése – ajánlott eljárások
 
@@ -30,7 +30,7 @@ Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz az alkalmazások A
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>A Cloud app és az egyszeri bejelentkezés javaslatai
 | Ajánlás | Megjegyzések |
 | --- | --- |
-| Az Azure AD Application Gallery for Apps szolgáltatás megtekintése  | Az Azure AD olyan katalógussal rendelkezik, amely több ezer előre integrált alkalmazást tartalmaz, amelyek engedélyezve vannak a vállalati egyszeri bejelentkezéssel (SSO). Az alkalmazásspecifikus beállítási útmutatóért tekintse meg az [SaaS-alkalmazás oktatóanyagok listáját](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/).  | 
+| Az Azure AD Application Gallery for Apps szolgáltatás megtekintése  | Az Azure AD olyan katalógussal rendelkezik, amely több ezer előre integrált alkalmazást tartalmaz, amelyek engedélyezve vannak a vállalati egyszeri bejelentkezéssel (SSO). Az alkalmazásspecifikus beállítási útmutatóért tekintse meg az [SaaS-alkalmazás oktatóanyagok listáját](../saas-apps/tutorial-list.md).  | 
 | Összevont SAML-alapú egyszeri bejelentkezés használata  | Ha egy alkalmazás támogatja azt, akkor használjon összevont, SAML-alapú egyszeri bejelentkezést az Azure AD-vel a jelszó-alapú egyszeri bejelentkezés és az ADFS helyett.  | 
 | Az SHA-256 használata tanúsítvány-aláíráshoz  | Az Azure AD alapértelmezés szerint az SHA-256 algoritmust használja az SAML-válasz aláírásához. Az SHA-256 használata, ha az alkalmazáshoz SHA-1 szükséges (lásd: [tanúsítvány-aláírási beállítások](certificate-signing-options.md) és [alkalmazás-bejelentkezési probléma](application-sign-in-problem-application-error.md).)  | 
 | Felhasználói hozzárendelés megkövetelése  | Alapértelmezés szerint a felhasználók nem férhetnek hozzá a vállalati alkalmazásokhoz. Ha azonban az alkalmazás szerepköröket tesz elérhetővé, vagy ha azt szeretné, hogy az alkalmazás megjelenjen a felhasználó saját alkalmazásaiban, felhasználói hozzárendelés szükséges. (Lásd: [fejlesztői útmutató az alkalmazások integrálásához](developer-guidance-for-integrating-applications.md).)  | 
@@ -41,7 +41,7 @@ Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz az alkalmazások A
 ## <a name="provisioning-recommendations"></a>Kiépítési javaslatok
 | Ajánlás | Megjegyzések |
 | --- | --- |
-| Oktatóanyagok használata a felhőalapú alkalmazásokkal való kiépítés beállításához | Tekintse meg az [SaaS-alkalmazás oktatóanyagok listáját](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) , amely részletes útmutatást nyújt a hozzáadni kívánt Gallery-alkalmazás kiépítés konfigurálásához. |
+| Oktatóanyagok használata a felhőalapú alkalmazásokkal való kiépítés beállításához | Tekintse meg az [SaaS-alkalmazás oktatóanyagok listáját](../saas-apps/tutorial-list.md) , amely részletes útmutatást nyújt a hozzáadni kívánt Gallery-alkalmazás kiépítés konfigurálásához. |
 | A kiépítési naplók (előzetes verzió) használata az állapot figyeléséhez | A [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) részletezik a kiépítési szolgáltatás által végrehajtott összes műveletet, beleértve az egyes felhasználók állapotát is. |
 | Terjesztési csoport társítása a kiépítési értesítő e-mailhez | A kiépítési szolgáltatás által küldött kritikus riasztások láthatóságának növeléséhez rendeljen hozzá egy terjesztési csoportot az értesítő e-mailekhez beállításhoz. |
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2020
 ms.author: yelevin
-ms.openlocfilehash: 161e2d424611661619b99ecac3515aac6a8464e0
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 7d52b76601a617f62ae5b10fa38841ef2608bf49
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428660"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656990"
 ---
 # <a name="monitor-the-health-of-your-data-connectors-with-this-azure-sentinel-workbook"></a>Az adatösszekötők állapotának figyelése az Azure Sentinel-munkafüzettel
 
@@ -42,12 +42,12 @@ A munkafüzet három Többlapos szakaszt tartalmaz:
 
 1. Az **Áttekintés** lapon a kiválasztott munkaterületen lévő adatfeldolgozás általános állapota látható: mennyiségi mértékek, EPS-díjak és utolsó naplózott idő.
 
-1. Az **adatgyűjtési rendellenességek** lapon az adatgyűjtési folyamat, tábla és adatforrás által észlelt rendellenességek észlelhetők. Az egyes lapok rendellenességeket mutatnak be egy adott táblára vonatkozóan (az **általános** lapon táblázatok gyűjteménye szerepel). A rendellenességek kiszámítása a **series_decompose_anomalies ()** függvénnyel történik, amely egy **anomália pontszámot** ad vissza. [További információ erről a függvényről](https://docs.microsoft.com/azure/data-explorer/kusto/query/series-decompose-anomaliesfunction?WT.mc_id=Portal-fx). A következő paraméterek megadásával értékelje ki a függvényt:
+1. Az **adatgyűjtési rendellenességek** lapon az adatgyűjtési folyamat, tábla és adatforrás által észlelt rendellenességek észlelhetők. Az egyes lapok rendellenességeket mutatnak be egy adott táblára vonatkozóan (az **általános** lapon táblázatok gyűjteménye szerepel). A rendellenességek kiszámítása a **series_decompose_anomalies ()** függvénnyel történik, amely egy **anomália pontszámot** ad vissza. [További információk erről a függvényről](/azure/data-explorer/kusto/query/series-decompose-anomaliesfunction?WT.mc_id=Portal-fx). A következő paraméterek megadásával értékelje ki a függvényt:
 
-    - **AnomaliesTimeRange** : ez az időválasztó csak az adatgyűjtési anomáliák nézetre vonatkozik.
-    - **SampleInterval** : az az időintervallum, amelyben az adatmintavételezés a megadott időtartományban történik. Az anomália pontszám kiszámítása csak az utolsó intervallum adatértékén történik.
-    - **PositiveAlertThreshold** : ez az érték határozza meg a pozitív anomália pontszám küszöbértékét. Decimális értékeket fogad el.
-    - **NegativeAlertThreshold** : ez az érték határozza meg a negatív anomália pontszám küszöbértékét. Decimális értékeket fogad el.
+    - **AnomaliesTimeRange**: Ez az időválasztó kizárólag az adatgyűjtési anomáliák nézetéhez használható.
+    - **SampleInterval**: Az adatok mintavételezésének időintervalluma az adott időtartományban. Az anomália-pontszám kiszámítása csak az utolsó intervallum adataira vonatkozóan történik.
+    - **PositiveAlertThreshold**: Ez az érték határozza meg az anomália-pontszám pozitív küszöbértékét. Decimális értékeket fogad el.
+    - **NegativeAlertThreshold**: Ez az érték határozza meg az anomália-pontszám negatív küszöbértékét. Decimális értékeket fogad el.
 
         :::image type="content" source="media/monitor-data-connector-health/data-health-workbook-2.png" alt-text="adatösszekötő állapot-figyelési munkafüzetének rendellenességei lap" lightbox="media/monitor-data-connector-health/data-health-workbook-2.png":::
 

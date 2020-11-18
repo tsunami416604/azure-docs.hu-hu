@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: a88696ba69fdf53f5c7e15d174b126d69f4230ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7701fc6d90fd9ebc7ec29f0ffdd7d050c58c036c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85555437"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655663"
 ---
 # <a name="connect-your-domain-name-server"></a>A tartománynév-kiszolgáló összekötése
 
 > [!IMPORTANT]
 > A DNS-adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A Windows rendszeren futó összes DNS-kiszolgálót összekapcsolhatja az Azure Sentinel szolgáltatással. Ezt úgy teheti meg, hogy egy ügynököt telepít a DNS-gépre. A DNS-naplók használatával biztonsági, teljesítménybeli és működés közbeni elemzéseket nyerhet a szervezet DNS-infrastruktúrájában azáltal, hogy összegyűjti, elemzi és korrelálja a DNS-kiszolgálókkal kapcsolatos elemzési és naplózási naplókat és egyéb kapcsolódó adatait.
 
@@ -46,26 +46,26 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 | [Windows-ügynökök](../azure-monitor/platform/agent-windows.md) | Igen | A megoldás DNS-információkat gyűjt a Windows-ügynököktől. |
 | [Linux-ügynökök](../azure-monitor/learn/quick-collect-linux-computer.md) | Nem | A megoldás nem gyűjt DNS-adatokat a közvetlen Linux-ügynököktől. |
 | [System Center Operations Manage felügyeleti csoport](../azure-monitor/platform/om-agents.md) | Igen | A megoldás a DNS-információkat a csatlakoztatott Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
-| [Azure Storage-fiók](../azure-monitor/platform/collect-azure-metrics-logs.md) | Nem | A megoldás nem használja az Azure Storage-t. |
+| [Azure Storage-fiók](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) | Nem | A megoldás nem használja az Azure Storage-t. |
 
 ### <a name="data-collection-details"></a>Adatgyűjtés részletei
 
-A megoldás a DNS-leltár és a DNS-eseményekkel kapcsolatos adatokat gyűjti azokról a DNS-kiszolgálókról, amelyeken a Log Analytics-ügynök telepítve van. A rendszer a leltárral kapcsolatos adatokat, például a DNS-kiszolgálók, zónák és erőforrásrekordok számát gyűjti össze a DNS PowerShell-parancsmagok futtatásával. Az Adatfrissítés két naponként történik. Az eseményekkel kapcsolatos adatokat a rendszer valós időben gyűjti a továbbfejlesztett DNS-naplózás és diagnosztika által biztosított [analitikai és naplózási naplókból](https://technet.microsoft.com/library/dn800669.aspx#enhanc) a Windows Server 2012 R2 rendszerben.
+A megoldás a DNS-leltár és a DNS-eseményekkel kapcsolatos adatokat gyűjti azokról a DNS-kiszolgálókról, amelyeken a Log Analytics-ügynök telepítve van. A rendszer a leltárral kapcsolatos adatokat, például a DNS-kiszolgálók, zónák és erőforrásrekordok számát gyűjti össze a DNS PowerShell-parancsmagok futtatásával. Az Adatfrissítés két naponként történik. Az eseményekkel kapcsolatos adatokat a rendszer valós időben gyűjti a továbbfejlesztett DNS-naplózás és diagnosztika által biztosított [analitikai és naplózási naplókból](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc) a Windows Server 2012 R2 rendszerben.
 
 
 ## <a name="connect-your-dns-appliance"></a>A DNS-berendezés összekötése
 
 1. Az Azure Sentinel portálon válassza az **adatösszekötők** lehetőséget, és válassza a **DNS (előzetes verzió)** csempét.
 1. Ha a DNS-gépek az Azure-ban vannak:
-    1. Kattintson **az ügynök telepítése az Azure Windows rendszerű virtuális gépen**elemre.
+    1. Kattintson **az ügynök telepítése az Azure Windows rendszerű virtuális gépen** elemre.
     1. A **virtuális gépek** listájában válassza ki azt a DNS-gépet, amelyet az Azure sentinelbe szeretne továbbítani. Győződjön meg arról, hogy ez egy Windows rendszerű virtuális gép.
-    1. A virtuális gép megnyíló ablakában kattintson a **kapcsolat**elemre.  
+    1. A virtuális gép megnyíló ablakában kattintson a **kapcsolat** elemre.  
     1. A **DNS-összekötő** ablakban kattintson az **Engedélyezés** elemre. 
 
 2. Ha a DNS-számítógép nem Azure-beli virtuális gép:
-    1. Kattintson **az ügynök telepítése nem Azure-beli gépekre**elemre.
+    1. Kattintson **az ügynök telepítése nem Azure-beli gépekre** elemre.
     1. A **közvetlen ügynök** ablakban válassza a Windows- **ügynök letöltése (64 bites)** vagy a **windows-ügynök letöltése (32 bit)** lehetőséget.
-    1. Telepítse az ügynököt a DNS-gépre. Másolja a **munkaterület-azonosítót**, az **elsődleges kulcsot**és a **másodlagos kulcsot** , és használja őket, ha a telepítés során a rendszer kéri.
+    1. Telepítse az ügynököt a DNS-gépre. Másolja a **munkaterület-azonosítót**, az **elsődleges kulcsot** és a **másodlagos kulcsot** , és használja őket, ha a telepítés során a rendszer kéri.
 
 3. Ha a DNS-naplókhoz a Log Analytics vonatkozó sémát szeretné használni, keresse meg a **DnsEvents**.
 
@@ -76,13 +76,13 @@ A Log Analyticsban keresse meg a séma **DnsEvents** , és győződjön meg arr�
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha a keresési lekérdezések nem jelennek meg az Azure Sentinelben, kövesse az alábbi lépéseket, hogy a lekérdezések megfelelően jelenjenek meg:
-1. Kapcsolja be a [DNS Analytics naplókat a kiszolgálókon](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)).
+1. Kapcsolja be a [DNS Analytics naplókat a kiszolgálókon](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)).
 2. Győződjön meg arról, hogy a DNSEvents megjelenik a Log Analytics gyűjtemény listájában.
 3. [Azure DNS Analytics](../azure-monitor/insights/dns-analytics.md)bekapcsolása.
-4. Azure DNS Analytics szolgáltatásban a **konfiguráció**területen módosítsa a beállításokat, mentse, majd állítsa vissza, ha szükséges, majd mentse újra.
+4. Azure DNS Analytics szolgáltatásban a **konfiguráció** területen módosítsa a beállításokat, mentse, majd állítsa vissza, ha szükséges, majd mentse újra.
 5. Győződjön meg arról, Azure DNS analitika, hogy a lekérdezések most megjelenjenek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a helyi DNS-készülékek az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).

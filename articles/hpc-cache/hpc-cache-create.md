@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 867cfa1321106c24354b29ea803a4fb914a6778d
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 77bd5e3b7a258ef83e5de4ec645ea70578fb9dfb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341380"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657091"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC-gyorsítótár létrehozása
 
@@ -29,9 +29,9 @@ Az alábbi képre kattintva megtekintheti a gyorsítótár létrehozásának és
 
 ![képernyőkép a Project details lapról Azure Portal](media/hpc-cache-create-basics.png)
 
-A **projekt részletei**területen válassza ki azt az előfizetést és erőforráscsoportot, amely a gyorsítótárat fogja tárolni.
+A **projekt részletei** területen válassza ki azt az előfizetést és erőforráscsoportot, amely a gyorsítótárat fogja tárolni.
 
-A **szolgáltatás részletei**területen adja meg a gyorsítótár nevét és a többi attribútumot:
+A **szolgáltatás részletei** területen adja meg a gyorsítótár nevét és a többi attribútumot:
 
 * Hely – válasszon egy [támogatott régiót](hpc-cache-overview.md#region-availability).
 * Virtuális hálózat – választhat egy meglévőt, vagy létrehozhat egy új virtuális hálózatot.
@@ -85,7 +85,7 @@ A **címkék** lapon hozzáadhat erőforrás- [CÍMKÉKET](../azure-resource-man
 
 ## <a name="finish-creating-the-cache"></a>A gyorsítótár létrehozásának befejezése
 
-Az új gyorsítótár konfigurálása után kattintson a **felülvizsgálat + létrehozás** fülre. A portál ellenőrzi a beállításokat, és lehetővé teszi a lehetőségek áttekintését. Ha minden helyes, kattintson a **Létrehozás**gombra.
+Az új gyorsítótár konfigurálása után kattintson a **felülvizsgálat + létrehozás** fülre. A portál ellenőrzi a beállításokat, és lehetővé teszi a lehetőségek áttekintését. Ha minden helyes, kattintson a **Létrehozás** gombra.
 
 A gyorsítótár létrehozása körülbelül 10 percet vesz igénybe. A folyamat nyomon követhető a Azure Portal értesítések paneljén.
 
@@ -102,10 +102,10 @@ A létrehozás befejeződése után egy értesítés jelenik meg az új Azure HP
 
 ## <a name="create-the-cache-with-azure-cli"></a>A gyorsítótár létrehozása az Azure CLI-vel
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
 
 > [!NOTE]
-> Az Azure CLI jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja az Azure Portalt.
+> Az Azure CLI jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja a Azure Portal.
 
 Hozzon létre egy új Azure HPC-gyorsítótárat az az [HPC-cache Create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) paranccsal.
 
@@ -208,7 +208,7 @@ Install-Module -Name Az.HPCCache
 ## <a name="create-the-cache-with-azure-powershell"></a>A gyorsítótár létrehozása Azure PowerShell
 
 > [!NOTE]
-> Azure PowerShell jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja az Azure Portalt.
+> Azure PowerShell jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja a Azure Portal.
 
 Új Azure HPC-gyorsítótár létrehozásához használja a [New-AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) parancsmagot.
 

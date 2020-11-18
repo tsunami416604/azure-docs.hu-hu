@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: b8c12048283cb8cc4220cb325762b272cde4a68f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 10cc97692e43cb46bd26597317b7f05ae6e19f83
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "92541315"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657193"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Helyek közötti kapcsolat létrehozása az Azure Portalon
 
@@ -141,12 +141,12 @@ Hozzáadhat további kapcsolatokat, feltéve, hogy a címterek nincsenek egymás
 1. Ha a helyek közötti beállítással kapcsolódik, és még nem hozott létre helyi hálózati átjárót ahhoz a helyhez, amelyhez csatlakozni szeretne, létrehozhat egy újat.
 1. Adja meg a használni kívánt megosztott kulcsot, majd kattintson az **OK** gombra a kapcsolódás létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Információk a BGP-ről: [A BGP áttekintése](vpn-gateway-bgp-overview.md) és [A BGP konfigurálása](vpn-gateway-bgp-resource-manager-ps.md).
 * További információ a kényszerített bújtatásról: [Tudnivalók a kényszerített](vpn-gateway-forced-tunneling-rm.md)bújtatásról.
 * Információk a magas rendelkezésre állású aktív-aktív kapcsolatokról: [Magas rendelkezésre állású kapcsolatok létesítmények, illetve virtuális hálózatok között](vpn-gateway-highlyavailable.md).
-* Információ egy virtuális hálózatban lévő erőforrásokra irányuló hálózati forgalom korlátozásáról: [Hálózati biztonság](../virtual-network/security-overview.md).
+* Információ egy virtuális hálózatban lévő erőforrásokra irányuló hálózati forgalom korlátozásáról: [Hálózati biztonság](../virtual-network/network-security-groups-overview.md).
 * Információ arról, hogyan irányítja az Azure az Azure, a helyszíni és az internetes erőforrások közötti forgalom útválasztását: [Virtuális hálózat forgalmának útválasztása](../virtual-network/virtual-networks-udr-overview.md).
 * A helyek közötti VPN-kapcsolat Azure Resource Manager sablonnal történő létrehozásával kapcsolatos információkért lásd: helyek közötti [VPN-kapcsolat létrehozása](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/).
 * A VNet-VNet VPN-kapcsolat Azure Resource Manager sablonnal történő létrehozásával kapcsolatos információkért lásd: [HBase földrajzi replikálásának telepítése](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/).

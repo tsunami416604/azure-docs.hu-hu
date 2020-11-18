@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7680c7ad4b2c5c8b8c1c13fb2344575659eda140
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 346536f5797841a850ef97dc4667110eafa721a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91892821"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656956"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Helyek közötti kapcsolat létrehozása az Azure Portal használatával (klasszikus)
 
@@ -73,9 +73,9 @@ Amikor helyek közötti használatra hoz létre virtuális hálózatot, gondosko
 
 A helyi hely általában a használat helyszínét jelenti. Tartalmazza azon VPN-eszköz IP-címét, amelyhez kapcsolatot szeretne létesíteni, valamint azokat az IP-címtartományokat, amelyek a VPN-átjárón keresztül a VPN-eszközre lesznek irányítva.
 
-1. A VNet lapjának **Beállítások**területén válassza a **helyek közötti kapcsolatok**lehetőséget.
-1. A helyek közötti kapcsolatok lapon válassza a **+ Hozzáadás**lehetőséget.
-1. A **VPN-kapcsolat és-átjáró konfigurálása** lapon a **kapcsolat típusa**beállításnál hagyja kiválasztva a **helyek** közötti beállítást. Ehhez a gyakorlathoz a [példában szereplő értékek](#values) és a saját értékek kombinációját kell használnia.
+1. A VNet lapjának **Beállítások** területén válassza a **helyek közötti kapcsolatok** lehetőséget.
+1. A helyek közötti kapcsolatok lapon válassza a **+ Hozzáadás** lehetőséget.
+1. A **VPN-kapcsolat és-átjáró konfigurálása** lapon a **kapcsolat típusa** beállításnál hagyja kiválasztva a **helyek** közötti beállítást. Ehhez a gyakorlathoz a [példában szereplő értékek](#values) és a saját értékek kombinációját kell használnia.
 
    * **VPN-átjáró IP-címe**: Ez a helyszíni hálózaton található VPN-eszköz nyilvános IP-címe. A VPN-eszköznek nyilvános IPv4 IP-címmel kell rendelkeznie. Adjon meg egy érvényes nyilvános IP-címet azon VPN-eszköznek, amelyhez csatlakozni kíván. Az Azure-nak elérhetőnek kell lennie. Ha nem ismeri a VPN-eszköz IP-címét, használhat egy helyőrző értéket (érvényes nyilvános IP-cím formátumban), amelyet később módosíthat.
 
@@ -135,7 +135,7 @@ Ha nem tud csatlakozni, tekintse át a **Hibaelhárítás** című szakaszt a ta
 
 ## <a name="how-to-reset-a-vpn-gateway"></a><a name="reset"></a>VPN-átjáró alaphelyzetbe állítása
 
-Az Azure VPN Gateway alaphelyzetbe állítása akkor hasznos, ha egy vagy több helyek közötti VPN-alagúton elveszíti a létesítmények közötti VPN-kapcsolatot. Ebben az esetben a helyszíni VPN-eszközei megfelelően működnek, de nem tudnak Ipsec-alagutakat létesíteni az Azure VPN Gateway átjárókkal. A lépéseket lásd: [VPN Gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md#resetclassic).
+Az Azure VPN Gateway alaphelyzetbe állítása akkor hasznos, ha egy vagy több helyek közötti VPN-alagúton elveszíti a létesítmények közötti VPN-kapcsolatot. Ebben az esetben a helyszíni VPN-eszközei megfelelően működnek, de nem tudnak Ipsec-alagutakat létesíteni az Azure VPN Gateway átjárókkal. A lépéseket lásd: [VPN Gateway alaphelyzetbe állítása](./reset-gateway.md#resetclassic).
 
 ## <a name="how-to-change-a-gateway-sku"></a><a name="changesku"></a>Az átjárók termékváltozatainak módosítása
 
@@ -143,5 +143,5 @@ Az átjárók SKU-jának módosításának lépéseiért lásd: [ÁTJÁRÓ SKU-j
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/).
+* Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](../index.yml).
 * Információk a kényszerített bújtatásról: [Információk a kényszerített bújtatásról](vpn-gateway-about-forced-tunneling.md).

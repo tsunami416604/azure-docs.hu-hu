@@ -9,16 +9,16 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: yelevin
-ms.openlocfilehash: 8f21b415ef36442d6ac1aac518cd1327f70b8927
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c554f3582e67622a5a1739c9e410328c902d491b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88263985"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655901"
 ---
 # <a name="connect-data-from-azure-web-application-firewall-waf"></a>Adatok összekapcsolása az Azure Web Application Firewall (WAF) szolgáltatással
 
-A webalkalmazások egyre inkább a gyakran ismert biztonsági réseket kihasználó rosszindulatú támadásokra irányulnak. Az Azure webalkalmazási tűzfal (WAF) lehetővé teszi a webalkalmazások központosított védelmét a gyakori támadásokkal és fenyegetésekkel szemben, például a kódok injektálásával és a helyek közötti parancsfájlkezeléssel. Az Azure WAF üzembe helyezhető az [azure Application Gateway](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview) szolgáltatáson, az [Azure bejárati](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview) szolgáltatásán, valamint egy [Azure Content Delivery Network (CDN)](https://docs.microsoft.com/azure/web-application-firewall/cdn/cdn-overview) WAF-szabályzaton keresztül (ez utóbbi jelenleg nyilvános előzetes verzióban érhető el).
+A webalkalmazások egyre inkább a gyakran ismert biztonsági réseket kihasználó rosszindulatú támadásokra irányulnak. Az Azure webalkalmazási tűzfal (WAF) lehetővé teszi a webalkalmazások központosított védelmét a gyakori támadásokkal és fenyegetésekkel szemben, például a kódok injektálásával és a helyek közötti parancsfájlkezeléssel. Az Azure WAF üzembe helyezhető az [azure Application Gateway](../web-application-firewall/ag/ag-overview.md) szolgáltatáson, az [Azure bejárati](../web-application-firewall/afds/afds-overview.md) szolgáltatásán, valamint egy [Azure Content Delivery Network (CDN)](../web-application-firewall/cdn/cdn-overview.md) WAF-szabályzaton keresztül (ez utóbbi jelenleg nyilvános előzetes verzióban érhető el).
 Az Azure WAF-naplókat az Azure Sentinelhez is összekapcsolhatja, így megtekintheti a munkafüzetekben tárolt naplófájlokat, egyéni riasztásokat hozhat létre, és beépítheti azt a vizsgálat javítására.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -29,13 +29,13 @@ Az Azure WAF-naplókat az Azure Sentinelhez is összekapcsolhatja, így megtekin
 
 ### <a name="instructions-tab"></a>Utasítások lap
 
-1. Az Azure Sentinel navigációs menüjében válassza az **adatösszekötők**lehetőséget.
+1. Az Azure Sentinel navigációs menüjében válassza az **adatösszekötők** lehetőséget.
 
 1. Válassza az **Azure webalkalmazási tűzfal (WAF)** lehetőséget az adatösszekötők gyűjteményből, majd az előnézet ablaktáblán válassza az **összekötő lap megnyitása** lehetőséget.
 
 1. Válassza ki annak a WAF-erőforrásnak a típusát, amelynek a naplóit csatlakoztatni kívánja – **nyissa meg Application Gateway erőforrás->**, **nyissa meg az előtérben található erőforrás >** vagy **nyissa meg Content Delivery Network (CDN) WAF házirendet >** – és egyszer az erőforráslista képernyőjén válasszon egy WAF-erőforrást a listából.
 
-    1. A WAF-erőforrás navigációs menüjében válassza a **diagnosztikai beállítások**elemet.
+    1. A WAF-erőforrás navigációs menüjében válassza a **diagnosztikai beállítások** elemet.
 
     1. Válassza a **+ diagnosztikai beállítások hozzáadása** elemet a lista alján.
 
@@ -52,13 +52,13 @@ Az Azure WAF-naplókat az Azure Sentinelhez is összekapcsolhatja, így megtekin
         | CDN WAF szabályzat      | WebApplicationFirewallLogs |
         |
 
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="next-steps-tab"></a>Következő lépések lap
 
 - Tekintse meg az Azure **webalkalmazási tűzfal** adatösszekötőjét tartalmazó ajánlott munkafüzetek, lekérdezési minták és elemzési szabályok sablonjait, hogy betekintést kapjon az Azure WAF-naplózási adataiba.
 
-- Az Azure WAF- **Adatnaplókban**való lekérdezéséhez írja be a **AzureDiagnostics** értéket a lekérdezési ablakba.
+- Az Azure WAF- **Adatnaplókban** való lekérdezéséhez írja be a **AzureDiagnostics** értéket a lekérdezési ablakba.
 
 > [!NOTE]
 >

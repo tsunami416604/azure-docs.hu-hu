@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 090e3f93d025fe87ad5b89a98193574595f3d632
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a39b6973767b72e69a82750ab8d0d487c733eda0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614580"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657108"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Az összesített névtér beállítása
 
@@ -57,7 +57,7 @@ A Azure Portal töltse be a **névtér** -beállítások lapot. Ezen a lapon adh
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
 
 Az Azure CLI használatakor a tárolási cél létrehozásakor hozzá kell adnia egy névtér elérési útját. További részletekért olvassa el az [új Azure Blob Storage-tároló hozzáadása](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target) című leírást.
 
@@ -119,7 +119,7 @@ Adja meg ezeket az értékeket az egyes névterek elérési útjához:
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
 
 Az Azure CLI használatakor hozzá kell adnia legalább egy névtér elérési útját a tárolási cél létrehozásakor. További részletekért olvassa el az [új NFS-tárolási cél hozzáadása](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) című leírást.
 

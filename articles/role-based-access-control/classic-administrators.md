@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dc8a23d8cdb923f86d581d1af2967112d226c847
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d61d49fdd90f1f916141ca636e2c2a4dbe0b9bcd
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370627"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657739"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
@@ -44,11 +44,11 @@ Ez a cikk azt ismerteti, hogyan lehet hozzáadni vagy módosítani a Co-Administ
 
     ![A klasszikus rendszergazdákat megnyitó képernyőkép](./media/classic-administrators/classic-administrators.png)
 
-1. Kattintson a **Hozzáadás**  >  a**társ-rendszergazda** hozzáadásához elemre a közös rendszergazdák hozzáadása panel megnyitásához.
+1. Kattintson a **Hozzáadás**  >  a **társ-rendszergazda** hozzáadásához elemre a közös rendszergazdák hozzáadása panel megnyitásához.
 
     Ha a társ-rendszergazda hozzáadása lehetőség le van tiltva, akkor nem rendelkezik a megfelelő engedélyekkel.
 
-1. Válassza ki a hozzáadni kívánt felhasználót, és kattintson a **Hozzáadás**gombra.
+1. Válassza ki a hozzáadni kívánt felhasználót, és kattintson a **Hozzáadás** gombra.
 
     ![A társ-rendszergazda hozzáadására szolgáló képernyőkép](./media/classic-administrators/add-coadmin.png)
 
@@ -58,7 +58,7 @@ Ha egy vendég felhasználót szeretne hozzáadni a társ-rendszergazdaként, k�
 
 - A vendég felhasználónak rendelkeznie kell egy jelenléttel a címtárban. Ez azt jelenti, hogy a felhasználó megkapta a címtárat, és elfogadta a meghívást.
 
-Ha további információt szeretne arról, hogyan adhat hozzá egy vendég felhasználót a címtárhoz, tekintse meg [a Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal-ben](../active-directory/b2b/add-users-administrator.md)című témakört.
+Ha további információt szeretne arról, hogyan adhat hozzá egy vendég felhasználót a címtárhoz, tekintse meg [a Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal-ben](../active-directory/external-identities/add-users-administrator.md)című témakört.
 
 ### <a name="differences-for-guest-users"></a>A vendég felhasználói közötti különbségek
 
@@ -91,7 +91,7 @@ A felhasználók és a vendég felhasználók összevetésével kapcsolatos info
 
 1. Kattintson az **Eltávolítás** elemre.
 
-1. A megjelenő üzenetablakban kattintson az **Igen**gombra.
+1. A megjelenő üzenetablakban kattintson az **Igen** gombra.
 
     ![A társ-rendszergazda eltávolítására szolgáló képernyőkép](./media/classic-administrators/remove-coadmin.png)
 
@@ -109,7 +109,7 @@ Kövesse az alábbi lépéseket a szolgáltatás-rendszergazda módosításához
 
 1. Kattintson egy előfizetésre.
 
-1. A jobb oldalon kattintson az **előfizetés részleteinek szerkesztése**elemre.
+1. A jobb oldalon kattintson az **előfizetés részleteinek szerkesztése** elemre.
 
     ![Képernyőfelvétel: az előfizetés szerkesztése gomb megjelenítése az Account Centerben](./media/classic-administrators/editsub.png)
 
