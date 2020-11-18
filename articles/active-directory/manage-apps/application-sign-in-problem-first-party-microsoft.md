@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8942a55d880132313e1cdac6bfc025e0b153b410
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57deed9d7fb178ba1cdc8d6e954d751752532de4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707951"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654405"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problémák a Microsoft-alkalmazásba való bejelentkezéskor
 
@@ -31,9 +31,9 @@ A felhasználók három fő módon érhetik el a Microsoft által közzétett al
 
 -   A Microsoft 365 vagy más fizetős csomag alkalmazásaiban a felhasználók közvetlenül a felhasználói fiókjához vagy a csoport alapú licenc-hozzárendelési képességgel rendelkező csoporton keresztül kapnak hozzáférést a **licenc-hozzárendelésen** keresztül.
 
--   Azon alkalmazások esetében, amelyeket a Microsoft vagy harmadik fél szabadon tesz közzé mindenki számára, a felhasználók a **felhasználói engedélyeken**keresztül kaphatnak hozzáférést. Ez azt jelenti, hogy az alkalmazásba bejelentkeznek az Azure AD munkahelyi vagy iskolai fiókjával, és lehetővé teszik, hogy a fiókja korlátozott mennyiségű adathalmazhoz hozzáférjen.
+-   Azon alkalmazások esetében, amelyeket a Microsoft vagy harmadik fél szabadon tesz közzé mindenki számára, a felhasználók a **felhasználói engedélyeken** keresztül kaphatnak hozzáférést. Ez azt jelenti, hogy az alkalmazásba bejelentkeznek az Azure AD munkahelyi vagy iskolai fiókjával, és lehetővé teszik, hogy a fiókja korlátozott mennyiségű adathalmazhoz hozzáférjen.
 
--   Az olyan alkalmazások esetében, amelyeket a Microsoft vagy harmadik fél szabadon tesz közzé mindenki számára, a felhasználók **rendszergazdai engedélyen**keresztül is kaphatnak hozzáférést. Ez azt jelenti, hogy a rendszergazda azt állapította meg, hogy az alkalmazást mindenki használhatja a szervezeten belül, így egy globális rendszergazdai fiókkal jelentkezik be az alkalmazásba, és hozzáférést biztosít mindenki számára a szervezeten belül.
+-   Az olyan alkalmazások esetében, amelyeket a Microsoft vagy harmadik fél szabadon tesz közzé mindenki számára, a felhasználók **rendszergazdai engedélyen** keresztül is kaphatnak hozzáférést. Ez azt jelenti, hogy a rendszergazda azt állapította meg, hogy az alkalmazást mindenki használhatja a szervezeten belül, így egy globális rendszergazdai fiókkal jelentkezik be az alkalmazásba, és hozzáférést biztosít mindenki számára a szervezeten belül.
 
 A probléma elhárításához kezdje az [általános problémás területekkel, amelyekkel megtekintheti az alkalmazáshoz való hozzáférést](#general-problem-areas-with-application-access-to-consider) , és elolvashatja a bemutató: lépések a Microsoft-alkalmazásokhoz való hozzáférés hibaelhárítására szolgáló lépéseket a részletek beszerzéséhez.
 
@@ -63,7 +63,7 @@ A következő gyakori problémákkal találkozhat, amikor a felhasználók nem t
 
   * Győződjön meg arról, hogy a felhasználó fiókja **engedélyezve** van a bejelentkezésekhez. [Felhasználói fiók állapotának megkeresése](#problems-with-the-users-account)
 
-  * Győződjön meg arról, hogy a felhasználó **jelszava nem járt le vagy nem felejtette el.** [A felhasználó jelszavának](#reset-a-users-password) alaphelyzetbe állítása vagy az önkiszolgáló [jelszó-visszaállítás engedélyezése](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+  * Győződjön meg arról, hogy a felhasználó **jelszava nem járt le vagy nem felejtette el.** [A felhasználó jelszavának](#reset-a-users-password) alaphelyzetbe állítása vagy az önkiszolgáló [jelszó-visszaállítás engedélyezése](../authentication/tutorial-enable-sspr.md)
 
   * Győződjön meg arról, hogy **multi-Factor Authentication** nem blokkolja a felhasználói hozzáférést. [A felhasználó többtényezős hitelesítési állapotának megtekintése](#check-a-users-multi-factor-authentication-status) vagy [a felhasználó hitelesítési kapcsolattartási adatainak megkeresése](#check-a-users-authentication-contact-info)
 
@@ -75,17 +75,17 @@ A következő gyakori problémákkal találkozhat, amikor a felhasználók nem t
 
   * Győződjön meg arról, hogy a felhasználó vagy **licenc van hozzárendelve.** [Felhasználóhoz rendelt licencek](#check-a-users-assigned-licenses) megtekintése vagy [a csoport hozzárendelt licencének bejelölése](#check-a-groups-assigned-licenses)
 
-  * Ha a licenc **egy** **statikus csoporthoz**van rendelve, győződjön meg arról, hogy a **felhasználó tagja** ennek a csoportnak. [Felhasználó csoport-tagságának keresése](#check-a-users-group-memberships)
+  * Ha a licenc **egy** **statikus csoporthoz** van rendelve, győződjön meg arról, hogy a **felhasználó tagja** ennek a csoportnak. [Felhasználó csoport-tagságának keresése](#check-a-users-group-memberships)
 
-  * Ha a licenc **egy** **dinamikus csoporthoz**van rendelve, győződjön meg arról, hogy a **dinamikus csoport szabálya helyesen van beállítva**. [Dinamikus csoport tagsági feltételeinek bejelölése](#check-a-dynamic-groups-membership-criteria)
+  * Ha a licenc **egy** **dinamikus csoporthoz** van rendelve, győződjön meg arról, hogy a **dinamikus csoport szabálya helyesen van beállítva**. [Dinamikus csoport tagsági feltételeinek bejelölése](#check-a-dynamic-groups-membership-criteria)
 
-  * Ha a licenc **egy** **dinamikus csoporthoz**van rendelve, győződjön meg arról, hogy a dinamikus csoport **befejezte a tagság feldolgozását** , és hogy a **felhasználó tagja** (ez eltarthat egy ideig). [Felhasználó csoport-tagságának keresése](#check-a-users-group-memberships)
+  * Ha a licenc **egy** **dinamikus csoporthoz** van rendelve, győződjön meg arról, hogy a dinamikus csoport **befejezte a tagság feldolgozását** , és hogy a **felhasználó tagja** (ez eltarthat egy ideig). [Felhasználó csoport-tagságának keresése](#check-a-users-group-memberships)
 
   *  Ha ellenőrzi, hogy a licenc hozzá van-e rendelve, győződjön meg arról, hogy a licenc **nem járt le**.
 
   *  Győződjön meg arról, hogy a licenc az elérni **kívánt alkalmazáshoz szükséges** .
 
-- A **Microsoft** **licenccel nem rendelkező Microsoft-alkalmazásokhoz**néhány további dolgot is meg kell néznie:
+- A **Microsoft** **licenccel nem rendelkező Microsoft-alkalmazásokhoz** néhány további dolgot is meg kell néznie:
 
   * Ha az alkalmazás **felhasználói szintű engedélyeket** kér (például "hozzáférés a felhasználó postaládájához"), győződjön meg arról, hogy a felhasználó bejelentkezett az alkalmazásba, és elvégezte a **felhasználói szintű** belefoglalási műveletet, amely lehetővé teszi az alkalmazás számára az adatelérést.
 
@@ -125,7 +125,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy van-e felhasználó fiókja
 
 4.  a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5.  kattintson **a minden felhasználó**elemre.
+5.  kattintson **a minden felhasználó** elemre.
 
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **kattintson a** kijelölni kívánt sorra.
 
@@ -143,13 +143,13 @@ A felhasználó fiókja állapotának megtekintéséhez kövesse az alábbi lép
 
 4.  a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5.  kattintson **a minden felhasználó**elemre.
+5.  kattintson **a minden felhasználó** elemre.
 
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **kattintson a** kijelölni kívánt sorra.
 
-7.  kattintson a **profil**elemre.
+7.  kattintson a **profil** elemre.
 
-8.  A **Beállítások** területen győződjön meg arról, hogy a **Letiltás tiltása** beállítás **nem**értékre van állítva.
+8.  A **Beállítások** területen győződjön meg arról, hogy a **Letiltás tiltása** beállítás **nem** értékre van állítva.
 
 ### <a name="reset-a-users-password"></a>Felhasználó jelszavának alaphelyzetbe állítása
 
@@ -163,7 +163,7 @@ A felhasználó jelszavának alaphelyzetbe állításához kövesse az alábbi l
 
 4.  a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5.  kattintson **a minden felhasználó**elemre.
+5.  kattintson **a minden felhasználó** elemre.
 
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **kattintson a** kijelölni kívánt sorra.
 
@@ -179,9 +179,9 @@ A felhasználó jelszavának alaphelyzetbe állításához kövesse az alábbi l
 
 Az önkiszolgáló jelszó-visszaállítás engedélyezéséhez kövesse az alábbi telepítési lépéseket:
 
--   [A Azure Active Directory jelszavának alaphelyzetbe állításának engedélyezése a felhasználók számára](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [A Azure Active Directory jelszavának alaphelyzetbe állításának engedélyezése a felhasználók számára](../authentication/tutorial-enable-sspr.md)
 
--   [Az Active Directory helyszíni jelszavak alaphelyzetbe állításának vagy módosításának engedélyezése a felhasználók számára](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Az Active Directory helyszíni jelszavak alaphelyzetbe állításának vagy módosításának engedélyezése a felhasználók számára](../authentication/tutorial-enable-sspr.md)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>A felhasználó többtényezős hitelesítési állapotának keresése
 
@@ -195,7 +195,7 @@ A felhasználó többtényezős hitelesítési állapotának megtekintéséhez k
 
 4. a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5. kattintson **a minden felhasználó**elemre.
+5. kattintson **a minden felhasználó** elemre.
 
 6. kattintson a panel tetején található **multi-Factor Authentication** gombra.
 
@@ -203,7 +203,7 @@ A felhasználó többtényezős hitelesítési állapotának megtekintéséhez k
 
 8. Keresse meg a felhasználót a felhasználók listájában keresés, szűrés vagy rendezés alapján.
 
-9. Válassza ki a felhasználót a felhasználók listájából, és **engedélyezze**, **Tiltsa le**vagy **kényszerítse** ki a többtényezős hitelesítést igény szerint.
+9. Válassza ki a felhasználót a felhasználók listájából, és **engedélyezze**, **Tiltsa le** vagy **kényszerítse** ki a többtényezős hitelesítést igény szerint.
 
    * **Megjegyzés**: Ha egy felhasználó **kényszerített** állapotban van, beállíthatja, hogy ideiglenesen **letiltsa** őket, hogy visszalépjenek a fiókjába. Ha ismét bejelentkeznek, a következő bejelentkezéskor **újra meg** lehet változtatni az állapotukat, hogy újra regisztrálni tudják a kapcsolattartási adatokat. Azt is megteheti, hogy a [felhasználó hitelesítési kapcsolattartási adatainak ellenőrzése](#check-a-users-authentication-contact-info) lapon található lépéseket követve ellenőrizheti vagy beállítja ezeket az adatokat.
 
@@ -219,11 +219,11 @@ A többtényezős hitelesítéshez, a feltételes hozzáféréshez, az Identitá
 
 4.  a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5.  kattintson **a minden felhasználó**elemre.
+5.  kattintson **a minden felhasználó** elemre.
 
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **kattintson a** kijelölni kívánt sorra.
 
-7.  kattintson a **profil**elemre.
+7.  kattintson a **profil** elemre.
 
 8.  Görgessen le a **hitelesítési kapcsolattartási adatokhoz**.
 
@@ -241,7 +241,7 @@ A felhasználók csoporttagságok vizsgálatához kövesse az alábbi lépéseke
 
 4.  a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5.  kattintson **a minden felhasználó**elemre.
+5.  kattintson **a minden felhasználó** elemre.
 
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **kattintson a** kijelölni kívánt sorra.
 
@@ -259,7 +259,7 @@ A felhasználóhoz hozzárendelt licencek vizsgálatához kövesse az alábbi l�
 
 4.  a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5.  kattintson **a minden felhasználó**elemre.
+5.  kattintson **a minden felhasználó** elemre.
 
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **kattintson a** kijelölni kívánt sorra.
 
@@ -277,7 +277,7 @@ Ha licencet szeretne hozzárendelni egy felhasználóhoz, kövesse az alábbi l�
 
 4.  a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5.  kattintson **a minden felhasználó**elemre.
+5.  kattintson **a minden felhasználó** elemre.
 
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **kattintson a** kijelölni kívánt sorra.
 
@@ -317,7 +317,7 @@ A csoport tagságának vizsgálatához kövesse az alábbi lépéseket:
 
 4.  a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5.  kattintson **a minden csoport**elemre.
+5.  kattintson **a minden csoport** elemre.
 
 6.  **Keresse** meg az Önt érdeklő csoportot, és **kattintson a** kijelölni kívánt sorra.
 
@@ -335,7 +335,7 @@ A dinamikus csoport tagsági feltételeinek vizsgálatához kövesse az alábbi 
 
 4.  a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5.  kattintson **a minden csoport**elemre.
+5.  kattintson **a minden csoport** elemre.
 
 6.  **Keresse** meg az Önt érdeklő csoportot, és **kattintson a** kijelölni kívánt sorra.
 
@@ -355,7 +355,7 @@ A csoporthoz hozzárendelt licencek vizsgálatához kövesse az alábbi lépése
 
 4.  a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5.  kattintson **a minden csoport**elemre.
+5.  kattintson **a minden csoport** elemre.
 
 6.  **Keresse** meg az Önt érdeklő csoportot, és **kattintson a** kijelölni kívánt sorra.
 
@@ -373,7 +373,7 @@ A csoporthoz hozzárendelt licencek újrafeldolgozásához kövesse az alábbi l
 
 4. a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5. kattintson **a minden csoport**elemre.
+5. kattintson **a minden csoport** elemre.
 
 6. **Keresse** meg az Önt érdeklő csoportot, és **kattintson a** kijelölni kívánt sorra.
 
@@ -398,7 +398,7 @@ A licencek csoporthoz rendeléséhez kövesse az alábbi lépéseket:
 
 4. a navigációs menüben kattintson a **felhasználók és csoportok** elemre.
 
-5. kattintson **a minden csoport**elemre.
+5. kattintson **a minden csoport** elemre.
 
 6. **Keresse** meg az Önt érdeklő csoportot, és **kattintson a** kijelölni kívánt sorra.
 
@@ -454,7 +454,7 @@ Egyetlen alkalmazás jelenleg konfigurált feltételes hozzáférési házirendj
 
 4.  a navigációs menüben kattintson a **vállalati alkalmazások** elemre.
 
-5.  kattintson **a minden alkalmazás**elemre.
+5.  kattintson **a minden alkalmazás** elemre.
 
 6.  Keresse meg az Önt érdeklő alkalmazást, vagy a felhasználó megpróbál bejelentkezni az alkalmazás megjelenítendő neve vagy az alkalmazás azonosítója szerint.
 
@@ -508,26 +508,25 @@ Az alkalmazás hozzáférése blokkolható, mert nem történt meg a megfelelő 
 
 -   Minden olyan nyitott AZONOSÍTÓval rendelkező, kapcsolattal rendelkező alkalmazás, amely engedélyeket kér, az alkalmazás bejelentkezési képernyőjén való navigálás felhasználói szintű beleegyezést biztosít az alkalmazásnak a bejelentkezett felhasználó számára.
 
--   Ha ezt programozott módon szeretné elvégezni, tekintse meg az [egyéni felhasználói engedély kérése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent)című részt.
+-   Ha ezt programozott módon szeretné elvégezni, tekintse meg az [egyéni felhasználói engedély kérése](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent)című részt.
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Rendszergazdai szintű beleegyező művelet végrehajtása bármely alkalmazáshoz
 
--   **Csak a v1-es alkalmazási modellel fejlesztett alkalmazások**esetében kényszerítheti ezt a rendszergazdai szintű hozzájárulást, ha az alkalmazás bejelentkezési URL-címének végéhez hozzáadja a "**? prompt = rendszergazdai \_ jóváhagyás" kifejezést**.
+-   **Csak a v1-es alkalmazási modellel fejlesztett alkalmazások** esetében kényszerítheti ezt a rendszergazdai szintű hozzájárulást, ha az alkalmazás bejelentkezési URL-címének végéhez hozzáadja a "**? prompt = rendszergazdai \_ jóváhagyás" kifejezést**.
 
--   A **v2-alkalmazási modellel fejlesztett bármely alkalmazás**esetében kényszerítheti ezt a rendszergazdai szintű beleegyező jogosultságot, ha az **engedélyek kérése a címtár-rendszergazda** számára című részben található utasításokat követve a [rendszergazdai engedélyezési végpontot használja](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   A **v2-alkalmazási modellel fejlesztett bármely alkalmazás** esetében kényszerítheti ezt a rendszergazdai szintű beleegyező jogosultságot, ha az **engedélyek kérése a címtár-rendszergazda** számára című részben található utasításokat követve a [rendszergazdai engedélyezési végpontot használja](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Rendszergazdai szintű engedély végrehajtása egyetlen bérlős alkalmazáshoz
 
 -   Az olyan **egybérlős alkalmazások** esetében, amelyek engedélyeket kérnek (például a szervezeten belül fejlesztenek vagy azok tulajdonosai), az összes felhasználó nevében elvégezheti a **rendszergazdai szintű jóváhagyást** , ha globális rendszergazdaként jelentkezik be, majd az **engedélyek megadása** gombra kattint az **alkalmazás beállításjegyzékének tetején – &gt; minden alkalmazás – &gt; válassza ki az alkalmazáshoz &gt; szükséges engedélyek** ablaktáblát.
 
--   A **v1 vagy v2 alkalmazás modelljével fejlesztett alkalmazások**esetében kényszerítheti ezt a rendszergazdai szintű beleegyező jogosultságot, ha az **engedélyek kérése a címtár-rendszergazda** számára című részben található utasításokat követve a [rendszergazdai engedélyezési végpontot használja](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   A **v1 vagy v2 alkalmazás modelljével fejlesztett alkalmazások** esetében kényszerítheti ezt a rendszergazdai szintű beleegyező jogosultságot, ha az **engedélyek kérése a címtár-rendszergazda** számára című részben található utasításokat követve a [rendszergazdai engedélyezési végpontot használja](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Rendszergazdai szintű engedély végrehajtása több-bérlős alkalmazáshoz
 
 -   Olyan **több-bérlős alkalmazások** esetében, amelyek engedélyeket kérnek (például egy harmadik féltől származó alkalmazás, vagy a Microsoft, fejleszt), **rendszergazdai szintű beleegyező** műveletet hajthat végre. Jelentkezzen be globális rendszergazdaként, és kattintson az **engedélyek megadása** gombra a **vállalati alkalmazások – minden alkalmazás területen, és &gt; &gt; válassza ki az alkalmazás- &gt; engedélyek** panelt (hamarosan elérhető).
 
--   Ezt a rendszergazdai szintű beleegyező jogosultságot arra is kényszerítheti, hogy a rendszergazdai [engedélyezési végpont használatával](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)adja meg az **engedélyek kérése egy címtár-rendszergazda** szakasz utasításait.
+-   Ezt a rendszergazdai szintű beleegyező jogosultságot arra is kényszerítheti, hogy a rendszergazdai [engedélyezési végpont használatával](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)adja meg az **engedélyek kérése egy címtár-rendszergazda** szakasz utasításait.
 
 ## <a name="next-steps"></a>Következő lépések
-[A rendszergazdai engedélyezési végpont használata](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
-
+[A rendszergazdai engedélyezési végpont használata](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)

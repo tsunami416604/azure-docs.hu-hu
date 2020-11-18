@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 68ccd21af585d853592ab8cce24f251d810a4160
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 773cf5cc6755a4f094eb676992364eea07a795ea
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90889211"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654660"
 ---
 # <a name="what-is-azure-sentinel"></a>Mi az Azure Sentinel?
 
@@ -29,11 +29,11 @@ A Microsoft Azure Sentinel egy skálázható, Felhőbeli natív, **biztonsági i
 
 Az Azure Sentinel az egész vállalatra kiterjedő, az egyre kifinomultabb támadásokkal, a riasztások számával és a hosszú felbontású időkeretekkel kapcsolatos stressz enyhítése.
 
-- Minden felhasználó, eszköz, alkalmazás és infrastruktúra, a helyszínen és több felhőben is **gyűjthet adatokat a felhőben** . 
+- Minden felhasználó, eszköz, alkalmazás és infrastruktúra, a helyszínen és több felhőben is **gyűjthet adatokat a felhőben** . 
 
-- A **korábban nem észlelt fenyegetések észlelése**és a téves pozitív állapotok csökkentése a Microsoft Analytics és a páratlan veszélyforrások elleni intelligenciával. 
+- A **korábban nem észlelt fenyegetések észlelése** és a téves pozitív állapotok csökkentése a Microsoft Analytics és a páratlan veszélyforrások elleni intelligenciával. 
 
-- **Megvizsgálhatja a fenyegetéseket a mesterséges intelligenciával**, és nagy mennyiségű gyanús tevékenységet is felhasználhat, és a Microsoftnál is kihasználhatja a számítógépes biztonsági munkát. 
+- **Megvizsgálhatja a fenyegetéseket a mesterséges intelligenciával**, és nagy mennyiségű gyanús tevékenységet is felhasználhat, és a Microsoftnál is kihasználhatja a számítógépes biztonsági munkát. 
 
 - Az **incidensekre való gyors reagálás** a közös feladatok beépített összehangolása és automatizálása révén.
 
@@ -51,7 +51,7 @@ Az Azure Sentinelhez először a [biztonsági forrásokhoz kell csatlakoznia](co
 
 ## <a name="workbooks"></a>Munkafüzetek
 
-Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md)az   Azure sentinelhez, az Azure Sentinel-integrációval Azure monitor munkafüzetek használatával figyelheti az adatait, amely sokoldalúan használható az egyéni munkafüzetek létrehozásához. Habár a munkafüzetek másképpen jelennek meg az Azure Sentinelben, hasznos lehet megtekinteni, hogyan [hozhat létre interaktív jelentéseket Azure monitor-munkafüzetek](../azure-monitor/platform/workbooks-overview.md)használatával. Az Azure Sentinel lehetővé teszi, hogy egyéni munkafüzeteket hozzon létre az adatai között, és a beépített munkafüzet-sablonokkal is lehetővé teszi, hogy az adatforrások összekapcsolását követően gyorsan szerezzen információt az adatelemzésről.
+Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) az Azure sentinelhez, az Azure Sentinel-integrációval Azure monitor munkafüzetek használatával figyelheti az adatait, amely sokoldalúan használható az egyéni munkafüzetek létrehozásához. Habár a munkafüzetek másképpen jelennek meg az Azure Sentinelben, hasznos lehet megtekinteni, hogyan [hozhat létre interaktív jelentéseket Azure monitor-munkafüzetek](../azure-monitor/platform/workbooks-overview.md)használatával. Az Azure Sentinel lehetővé teszi, hogy egyéni munkafüzeteket hozzon létre az adatai között, és a beépített munkafüzet-sablonokkal is lehetővé teszi, hogy az adatforrások összekapcsolását követően gyorsan szerezzen információt az adatelemzésről.
 
 ![Irányítópultok](./media/tutorial-monitor-data/access-workbooks.png)
 
@@ -64,7 +64,7 @@ A zaj csökkentése és a riasztások számának csökkentése érdekében az Az
 
 ## <a name="security-automation--orchestration"></a>Biztonsági automatizálás &
 
-Automatizálhatja gyakori feladatait, és [leegyszerűsítheti a biztonsági](tutorial-respond-threats-playbook.md) előkészítést olyan forgatókönyvekkel, amelyek integrálva vannak az Azure-szolgáltatásokkal, valamint a meglévő eszközökkel. A Azure Logic Apps alapjaira épülő Azure Sentinel automatizálási és összehangoló megoldása olyan jól bővíthető architektúrát biztosít, amely lehetővé teszi a skálázható automatizálást új technológiák és fenyegetések megjelenése mellett. Ha Azure Logic Apps segítségével szeretne forgatókönyveket felépíteni, a beépített forgatókönyvek gyűjteménye közül választhat. Ezek közé tartoznak a 200-as és az Azure functions szolgáltatásokhoz [csatlakozó összekötők](https://docs.microsoft.com/azure/connectors/apis-list) . Az összekötők lehetővé teszik, hogy bármilyen egyéni logikát alkalmazzon a Code, a ServiceNow, a JIRA, a zendesk, a HTTP-kérelmek, a Microsoft Teams, a Slack, a Windows Defender ATP és a Cloud App Security használatával.
+Automatizálhatja gyakori feladatait, és [leegyszerűsítheti a biztonsági](tutorial-respond-threats-playbook.md) előkészítést olyan forgatókönyvekkel, amelyek integrálva vannak az Azure-szolgáltatásokkal, valamint a meglévő eszközökkel. A Azure Logic Apps alapjaira épülő Azure Sentinel automatizálási és összehangoló megoldása olyan jól bővíthető architektúrát biztosít, amely lehetővé teszi a skálázható automatizálást új technológiák és fenyegetések megjelenése mellett. Ha Azure Logic Apps segítségével szeretne forgatókönyveket felépíteni, a beépített forgatókönyvek gyűjteménye közül választhat. Ezek közé tartoznak a 200-as és az Azure functions szolgáltatásokhoz [csatlakozó összekötők](../connectors/apis-list.md) . Az összekötők lehetővé teszik, hogy bármilyen egyéni logikát alkalmazzon a Code, a ServiceNow, a JIRA, a zendesk, a HTTP-kérelmek, a Microsoft Teams, a Slack, a Windows Defender ATP és a Cloud App Security használatával.
 
 Ha például a ServiceNow jegyrendszer használatát használja, a Azure Logic Apps segítségével automatizálhatja a munkafolyamatokat, és minden alkalommal megnyithat egy jegyet a ServiceNow-ben egy adott esemény észlelésekor.
 
@@ -90,7 +90,7 @@ Az Azure Sentinel-Közösség hatékony erőforrás a fenyegetések észlelésé
 
 ![A felhasználói Közösség megismerése](./media/overview/community.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Sentinel megkezdéséhez szüksége lesz egy előfizetésre Microsoft Azure. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 - Ismerje meg, hogyan hozhatja be [adatait az Azure sentinelbe](quickstart-onboard.md), és hogyan tekintheti [meg az adatait és a lehetséges fenyegetéseket](quickstart-get-visibility.md).

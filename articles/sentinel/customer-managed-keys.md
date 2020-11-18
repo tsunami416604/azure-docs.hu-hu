@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: ecb4203c822f5b72068e11d0ad4b988d294aab0d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: bd85936c86656a8ae59a04ccdf53a62bd852368f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427054"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655272"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Az Azure Sentinel ügyfél által felügyelt kulcsának beállítása
 
@@ -59,7 +59,7 @@ A CMK kiépítéséhez kövesse az alábbi lépéseket:
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>1. lépés: Azure Key Vault létrehozása és a kulcs tárolása
 
-1.  [Hozzon létre Azure Key Vault erőforrást](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal), majd hozza létre vagy importálja az adattitkosításhoz használandó kulcsot.
+1.  [Hozzon létre Azure Key Vault erőforrást](/azure-stack/user/azure-stack-key-vault-manage-portal), majd hozza létre vagy importálja az adattitkosításhoz használandó kulcsot.
     > [!NOTE]
     >  A kulcs és a hozzáférés biztosításához a Azure Key Vault helyreállítható kell konfigurálni.
 
@@ -132,6 +132,5 @@ Ha ugyanazt a kulcsot használja az Azure Sentinel-ben és a Log Analytics-ben, 
 ## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan állíthat be egy ügyfél által felügyelt kulcsot az Azure Sentinelben. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).
 - Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
-

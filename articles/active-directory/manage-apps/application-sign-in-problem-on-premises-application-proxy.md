@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29aa4eb0bc40f0b2b960c49cf7b17dc62d92b0ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7abf61d6b10e22a434c42097bf42183c7b39e352
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85367716"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654949"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problémák a helyszíni alkalmazásba való bejelentkezéskor az Azure AD alkalmazásproxy használatával
 
@@ -48,7 +48,7 @@ Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémá
 ## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>Probléma lépett fel az alkalmazásomhoz való háttér-hitelesítés beállításakor
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * [Nem tudom, hogy kell konfigurálni a Kerberos általi korlátozott delegálást](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-  * [Nem tudom, hogy kell konfigurálni az alkalmazást a PingAccess segítségével ](application-proxy-back-end-ping-access-how-to.md)
+  * [Nem tudom, hogy kell konfigurálni az alkalmazást a PingAccess segítségével ](/azure/active-directory/manage-apps/application-proxy-ping-access-publishing-guide)
 
 ## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>Probléma lépett fel az alkalmazásomba történő bejelentkezés során
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
@@ -58,5 +58,5 @@ Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémá
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * [Problémát tapasztalok az alkalmazásproxy-ügynök összekötője telepítésekor](application-proxy-connector-installation-problem.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Helyszíni alkalmazások biztonságos távoli elérése](application-proxy.md)

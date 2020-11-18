@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 180490dc79554efa072311e9a2b7f5df348b432b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0812716ab9d952969ccfc14fc0a1e833fae1c9e1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014239"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653793"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -145,7 +145,7 @@ A Azure Monitor felé irányuló forgalom a Microsoft peering ExpressRoute áram
 Az ügynök számítógépének Vezérlőpultján válassza a **biztonsági & beállítások**, * * Microsoft monitoring Agent lehetőséget. Az **Azure log Analytics (OMS)** lapon a zöld pipa ikon megerősíti, hogy az ügynök képes kommunikálni a Azure monitorokkal. A sárga figyelmeztető ikon azt jelzi, hogy az ügynök problémába ütközik. Ennek egyik gyakori oka, hogy a **Microsoft monitoring Agent** szolgáltatás leállt. A Service Control Manager használatával indítsa újra a szolgáltatást.
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Hogyan leállítani a Log Analytics-ügynököt a Azure Monitorsal folytatott kommunikációhoz?
-Log Analytics közvetlenül csatlakozó ügynökökhöz nyissa meg a Vezérlőpultot, és válassza a **biztonsági & beállítások**, majd a **Microsoft monitoring Agent**lehetőséget. Az **Azure log Analytics (OMS)** lapon távolítsa el a felsorolt munkaterületeket. A System Center Operations Manager távolítsa el a számítógépet a Log Analytics felügyelt számítógépek listából. Operations Manager frissíti az ügynök konfigurációját, hogy a továbbiakban ne jelentsen Log Analytics. 
+Log Analytics közvetlenül csatlakozó ügynökökhöz nyissa meg a Vezérlőpultot, és válassza a **biztonsági & beállítások**, majd a **Microsoft monitoring Agent** lehetőséget. Az **Azure log Analytics (OMS)** lapon távolítsa el a felsorolt munkaterületeket. A System Center Operations Manager távolítsa el a számítógépet a Log Analytics felügyelt számítógépek listából. Operations Manager frissíti az ügynök konfigurációját, hogy a továbbiakban ne jelentsen Log Analytics. 
 
 ### <a name="how-much-data-is-sent-per-agent"></a>Mennyibe kerül az adatküldés/ügynök?
 Az ügynökök által elküldett adatok mennyisége a következőktől függ:
@@ -177,7 +177,7 @@ A következő témakörben ismertetett lépéseket követve értesülhet arról,
 - **Riasztási feltételek** 
    - **Jel neve**: *egyéni naplók keresése*
    - **Keresési lekérdezés**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-   - **Riasztási logika**: az *eredmények száma*, a **Condition** **küszöbértéknél** *nagyobb*érték **alapján** *0*
+   - **Riasztási logika**: az *eredmények száma*, a **Condition** **küszöbértéknél** *nagyobb* érték **alapján** *0*
    - **Értékelés alapja**: **időtartam (percben)** *30*, **gyakoriság (perc)** *10*
 - **Riasztás részleteinek megadása** 
    - **Név**: *az adatgyűjtés leállt*
@@ -267,7 +267,7 @@ A részletek a projekt típusától függenek. Webalkalmazások esetén:
 Tekintse meg az SDK [kibocsátási megjegyzéseit](app/release-notes.md) , amelyek megfelelnek az adott alkalmazás típusának.
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Hogyan változtathatom meg, hogy a projekt melyik Azure-erőforráshoz küld adatokat?
-A Megoldáskezelő kattintson a jobb gombbal, `ApplicationInsights.config` majd válassza a **frissítés Application Insights**lehetőséget. Az Azure-ban egy meglévő vagy új erőforráshoz is elküldheti az adott adatforrást. A frissítési varázsló módosítja a kialakítási kulcsot ApplicationInsights.configban, amely meghatározza, hogy a kiszolgáló SDK hogyan küldje el az adatokat. Ha kijelöli az "összes frissítése" lehetőséget, akkor az azt is megváltoztatja, hogy a kulcs hol jelenik meg a weblapok között.
+A Megoldáskezelő kattintson a jobb gombbal, `ApplicationInsights.config` majd válassza a **frissítés Application Insights** lehetőséget. Az Azure-ban egy meglévő vagy új erőforráshoz is elküldheti az adott adatforrást. A frissítési varázsló módosítja a kialakítási kulcsot ApplicationInsights.configban, amely meghatározza, hogy a kiszolgáló SDK hogyan küldje el az adatokat. Ha kijelöli az "összes frissítése" lehetőséget, akkor az azt is megváltoztatja, hogy a kulcs hol jelenik meg a weblapok között.
 
 ### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Használhatom `providers('Microsoft.Insights', 'components').apiVersions[0]` a Azure Resource Manager üzembe helyezéseit?
 
@@ -405,7 +405,7 @@ A meglévő Application Insights erőforrások egyik régióból a másikba val�
 2. Hozza létre újra az új erőforrás eredeti erőforrásához tartozó összes egyedi testreszabást.
 3. Módosítsa az alkalmazást úgy, hogy az új régió-erőforrás kialakítási [kulcsát](app/create-new-resource.md#copy-the-instrumentation-key) vagy a [kapcsolódási karakterláncot](app/sdk-connection-string.md)használja.  
 4. Ellenőrizze, hogy minden továbbra is a várt módon működik-e az új Application Insights erőforrással. 
-5. Ezen a ponton törölheti az eredeti erőforrást, amely az **összes korábbi adatvesztést**eredményezi. Vagy megtarthatja az eredeti erőforrást az adatmegőrzési beállítások időtartamára visszamenőleges jelentéskészítés céljából.
+5. Ezen a ponton törölheti az eredeti erőforrást, amely az **összes korábbi adatvesztést** eredményezi. Vagy megtarthatja az eredeti erőforrást az adatmegőrzési beállítások időtartamára visszamenőleges jelentéskészítés céljából.
 
 Az új régióban az erőforráshoz gyakran manuálisan újra létre kell hozni vagy frissíteni kell az egyedi testreszabásokat, amelyek azonban nem korlátozódnak a következőkre:
 
@@ -674,7 +674,7 @@ A tárolók Azure Monitor támogatja az Azure-ban üzemeltetett, AK-motor (korá
 
 ### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Miért nem láthatók a Log Analytics munkaterület adatai?
 
-Ha a Log Analytics munkaterületen nem tud adatokat látni a mindennapi időpontokban, előfordulhat, hogy elérte az alapértelmezett 500 MB-os korlátot, vagy a naponta begyűjthető adatok mennyiségének szabályozására megadott napi korlátot. Ha a napi korlát teljesül, az adatgyűjtés csak a következő napon leáll, és folytatja a műveletet. Tekintse át az adatfelhasználást, és frissítsen egy másik díjszabási csomagra a várt használati szokások alapján: az [adatok használatának és költségének naplózása](platform/manage-cost-storage.md). 
+Ha az adatok minden nap egy adott időpontban nem jelennek meg a Log Analytics-munkaterületen, előfordulhat, hogy elérte az alapértelmezett 500 MB-os vagy a naponta gyűjthető adatok mennyiségének szabályozására szolgáló napi korlátot. Ha elérte a napi korlátot, az adatgyűjtés leáll, és csak a következő napon folytatódik. Tekintse át az adatfelhasználást, és frissítsen egy másik díjszabási csomagra a várt használati szokások alapján: az [adatok használatának és költségének naplózása](platform/manage-cost-storage.md). 
 
 ### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>Mik a ContainerInventory táblában megadott tárolók állapotai?
 
@@ -690,7 +690,7 @@ A tároló-figyelési megoldás nem támogatja a RBAC, de a tárolók esetében 
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Hogyan lehetővé teszi a naplók gyűjtését a Kube-System névtérben a Helm használatával?
 
-Alapértelmezés szerint le van tiltva a Kube-rendszernévtérben lévő tárolók naplójának gyűjteménye. A omsagent egy környezeti változó beállításával engedélyezhető a naplók gyűjteménye. További információ: [Azure monitor for containers](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers) GitHub oldal. 
+Alapértelmezés szerint le van tiltva a Kube-rendszernévtérben lévő tárolók naplójának gyűjteménye. A omsagent egy környezeti változó beállításával engedélyezhető a naplók gyűjteménye. További információ: [Azure monitor for containers](https://aka.ms/azuremonitor-containers-helm-chart) GitHub oldal. 
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Hogyan frissíteni a omsagent a legújabb kiadású verzióra?
 

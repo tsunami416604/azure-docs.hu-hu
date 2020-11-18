@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: e9e892ae08c65ee5c5008bbdc1b419d8dec30183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 756c245fe06ae81545a125dd98f30fb27fdff2dd
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935663"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655579"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Adatok összekötése Microsoft 365 Defender-ből az Azure Sentinelbe
 
@@ -27,15 +27,15 @@ ms.locfileid: "90935663"
 >
 > **Microsoft 365 Defender** korábbi nevén **Microsoft Threat Protection** vagy **MTP**.
 >
-> **A Microsoft Defender for Endpoint** korábban a **Microsoft Defender komplex veszélyforrások elleni védelmi** vagy **MDATP**néven ismert.
+> **A Microsoft Defender for Endpoint** korábban a **Microsoft Defender komplex veszélyforrások elleni védelmi** vagy **MDATP** néven ismert.
 >
 > Előfordulhat, hogy a régi nevek még mindig használatban vannak egy adott időszakban.
 
 ## <a name="background"></a>Háttér
 
-Az új [Microsoft 365 Defender](https://docs.microsoft.com/microsoft-365/security/mtp/microsoft-threat-protection) -összekötő lehetővé teszi a **speciális vadászati** naplók továbbítását – a nyers események adattípusait – Microsoft 365 Defenderből az Azure sentinelbe. 
+Az új [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection) -összekötő lehetővé teszi a **speciális vadászati** naplók továbbítását – a nyers események adattípusait – Microsoft 365 Defenderből az Azure sentinelbe. 
 
-A [Microsoft Defender for Endpoint (MDATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) a Microsoft 365 Defender biztonsági esernyőbe való integrálásával mostantól összegyűjtheti a Microsoft Defender a végpontok [speciális vadászati](https://aka.ms/mdatpAH) eseményeit az Microsoft 365 Defender-összekötő használatával, és közvetlenül az Azure Sentinel munkaterületen található új, célra épülő táblákba továbbíthatja őket. Ezek a táblák a Microsoft 365 Defender portálon használt sémára épülnek, így teljes körű hozzáférést biztosít a speciális vadászati naplók teljes készletéhez, és lehetővé teszi a következőket:
+A [Microsoft Defender for Endpoint (MDATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) a Microsoft 365 Defender biztonsági esernyőbe való integrálásával mostantól összegyűjtheti a Microsoft Defender a végpontok [speciális vadászati](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview) eseményeit az Microsoft 365 Defender-összekötő használatával, és közvetlenül az Azure Sentinel munkaterületen található új, célra épülő táblákba továbbíthatja őket. Ezek a táblák a Microsoft 365 Defender portálon használt sémára épülnek, így teljes körű hozzáférést biztosít a speciális vadászati naplók teljes készletéhez, és lehetővé teszi a következőket:
 
 - A meglévő Microsoft Defender ATP Advanced Hunting-lekérdezéseket egyszerűen átmásolhatja az Azure Sentinelbe.
 
@@ -45,11 +45,11 @@ A [Microsoft Defender for Endpoint (MDATP)](https://docs.microsoft.com/windows/s
 
 > [!IMPORTANT]
 >
-> A Microsoft 365 Defender-összekötő jelenleg nyilvános előzetes verzióban érhető el. Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A Microsoft 365 Defender-összekötő jelenleg nyilvános előzetes verzióban érhető el. Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Érvényes licenccel kell rendelkeznie a Microsoft Defender for Endpoint szolgáltatáshoz, a [Microsoft Defender beállítása végpont üzembe helyezése](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)című témakörben leírtak szerint. 
+- Érvényes licenccel kell rendelkeznie a Microsoft Defender for Endpoint szolgáltatáshoz, a [Microsoft Defender beállítása végpont üzembe helyezése](/windows/security/threat-protection/microsoft-defender-atp/licensing)című témakörben leírtak szerint. 
 
 - A felhasználónak hozzá kell rendelnie a globális rendszergazdai szerepkört a bérlőn (Azure Active Directory).
 
@@ -57,7 +57,7 @@ A [Microsoft Defender for Endpoint (MDATP)](https://docs.microsoft.com/windows/s
 
 Ha a Microsoft Defender for Endpoint üzembe helyezését és az adataik betöltését végzi, az eseménynaplók könnyen továbbíthatók az Azure Sentinel szolgáltatásba.
 
-1. Az Azure Sentinelben válassza az **adatösszekötők**lehetőséget, válassza **Microsoft 365 Defender (előzetes verzió)** elemet a katalógusból, és válassza az **összekötő lap megnyitása**lehetőséget.
+1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, válassza **Microsoft 365 Defender (előzetes verzió)** elemet a katalógusból, és válassza az **összekötő lap megnyitása** lehetőséget.
 
 1. A következő típusú események gyűjthetők a kapcsolódó speciális vadászati táblákból. A gyűjteni kívánt eseménytípus jelölőnégyzetének megjelölése:
 
@@ -74,7 +74,7 @@ Ha a Microsoft Defender for Endpoint üzembe helyezését és az adataik betölt
     | További események típusai | DeviceEvents |
     |
 
-1. Kattintson a **módosítások alkalmazása**lehetőségre. 
+1. Kattintson a **módosítások alkalmazása** lehetőségre. 
 
 1. A Log Analytics speciális vadászati tábláinak lekérdezéséhez írja be a tábla nevét a fenti listából a lekérdezési ablakban.
 
@@ -101,4 +101,4 @@ A **következő lépések** lapon talál néhány, a tartalmazott példákat tar
 ## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan szerezheti be a Microsoft Defenderből származó nyers események adatait az Azure Sentinel-be a Microsoft 365 Defender Connector használatával. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).

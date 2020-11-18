@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: afa1d958e054a769ea0f19b82afdf55a94c3d0cf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3a7d750caed297dfa364e2f1ef176ee19ad35480
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309718"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654206"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Nagy teljesítményű kiszolgálás a Triton inferenc Serverrel (előzetes verzió) 
 
@@ -47,7 +47,7 @@ Mielőtt a Tritont a saját modelljére próbálja használni, fontos tisztában
 
 * Több [Gunicorn](https://gunicorn.org/) -feldolgozó is megkezdi a bejövő kérések egyidejű kezelését.
 * Ezek a dolgozók az előfeldolgozást, a modell meghívását és a feldolgozás utáni folyamatokat kezelik. 
-* A következtetési kérelmek a __pontozási URI__ -t használják. Például: `https://myserevice.azureml.net/score`.
+* A következtetési kérelmek a __pontozási URI__-t használják. Például: `https://myserevice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Normál, nem Triton, üzembe helyezési architektúra diagramja":::
 
@@ -66,7 +66,11 @@ A Triton a modell üzembe helyezéséhez használt munkafolyamat a következő:
 1. Ellenőrizze, hogy küldhet-e kéréseket a Triton által üzembe helyezett modellbe.
 1. A Triton-specifikus kód beépítése a pénzmosás-alapú üzembe helyezésbe.
 
-## <a name="optional-define-a-model-config-file"></a>Választható Modell konfigurációs fájljának definiálása
+## <a name="verify-that-triton-can-serve-your-model"></a>Annak ellenőrzése, hogy a Triton képes-e a modell kiszolgálására
+
+Először kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a Triton-következtetési kiszolgáló képes-e a modell kiszolgálására.
+
+### <a name="optional-define-a-model-config-file"></a>Választható Modell konfigurációs fájljának definiálása
 
 A modell konfigurációs fájlja azt mutatja be, hogy a Triton hány bemenetet vár, és hogy milyen dimenziók lesznek a bemenetek. A konfigurációs fájl létrehozásával kapcsolatos további információkért lásd: [modell konfigurálása](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_configuration.html) az NVIDIA dokumentációjában.
 
@@ -75,7 +79,7 @@ A modell konfigurációs fájlja azt mutatja be, hogy a Triton hány bemenetet v
 > 
 > További információ erről a lehetőségről: [generált modell konfigurálása](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_configuration.html#generated-model-configuration) az NVIDIA dokumentációjában.
 
-## <a name="directory-structure"></a>Könyvtár szerkezete
+### <a name="use-the-correct-directory-structure"></a>A megfelelő címtár-struktúra használata
 
 Azure Machine Learning-alapú modell regisztrálása esetén egyéni fájlokat vagy címtár-struktúrát is regisztrálhat. A Triton használatához a modell regisztrációjának olyan címtár-struktúrára kell mutatnia, amely tartalmazza a nevű könyvtárat `triton` . Ennek a könyvtárnak a általános szerkezete a következő:
 
@@ -93,7 +97,7 @@ models
 > [!IMPORTANT]
 > Ez a címtár-struktúra a Triton-modell tárháza, és a modell (ek) hoz való együttműködéshez szükséges. További információ: [Triton Model repositorys](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_repository.html) az NVIDIA dokumentációjában.
 
-## <a name="test-with-triton-and-docker"></a>Tesztelés a Triton és a Docker révén
+### <a name="test-with-triton-and-docker"></a>Tesztelés a Triton és a Docker révén
 
 Ha tesztelni szeretné a modelljét, hogy az a Triton használatával fusson, használhatja a Docker-t. Az alábbi parancsok lekérik a Triton-tárolót a helyi számítógépre, majd elindítják a Triton-kiszolgálót:
 
@@ -146,7 +150,7 @@ Az alapszintű állapot-ellenőrzések után létrehozhat egy ügyfelet, amely a
 
 A Triton a Docker használatával történő futtatásával kapcsolatos további információkért lásd: a [Triton futtatása egy GPU-val rendelkező rendszeren](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/run.html#running-triton-on-a-system-with-a-gpu) , valamint a [Triton futtatása GPU nélküli rendszeren](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/run.html#running-triton-on-a-system-without-a-gpu).
 
-## <a name="register-your-model"></a>A modell regisztrálása
+### <a name="register-your-model"></a>A modell regisztrálása
 
 Most, hogy ellenőrizte, hogy a modell a Triton-rel működik, regisztrálja Azure Machine Learning-mel. A modell regisztrálása a Azure Machine Learning munkaterületen tárolja a modell fájljait, és a Python SDK-val és az Azure CLI-vel való üzembe helyezéskor használatos.
 
@@ -176,9 +180,9 @@ az ml model register --model-path='triton' \
 
 <a id="processing"></a>
 
-## <a name="add-pre-and-post-processing"></a>Előzetes és utólagos feldolgozás hozzáadása
+## <a name="verify-you-can-call-into-your-model"></a>Annak ellenőrzése, hogy hívható-e a modellbe
 
-Miután ellenőrizte, hogy a webszolgáltatás működik-e, megadhatja az előzetes és a feldolgozás utáni kódot egy _bejegyzési parancsfájl_ definiálásával. A fájl neve `score.py` . A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [bejegyzési parancsfájl definiálása](how-to-deploy-and-where.md#define-an-entry-script).
+Miután meggyőződött róla, hogy a Triton képes kiszolgálni a modellt, az előzetes és a feldolgozás utáni kódokat a _bejegyzési parancsfájl_ definiálásával adhatja hozzá. A fájl neve `score.py` . A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [bejegyzési parancsfájl definiálása](how-to-deploy-and-where.md#define-an-entry-script).
 
 A két fő lépés egy Triton HTTP-ügyfél inicializálása a `init()` metódusban, valamint az ügyfélnek a függvényben való meghívása `run()` .
 

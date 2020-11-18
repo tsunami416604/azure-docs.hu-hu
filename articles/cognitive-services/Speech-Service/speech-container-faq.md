@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b13a6944290f58f5ede239dee60610d67fff8b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e4a6d9180d2a9949cebc40cf30edffac73ef9d0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918468"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653538"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Speech Service-tárolók – gyakori kérdések (GYIK)
 
@@ -43,7 +43,7 @@ Emellett a [speciális vektoros kiterjesztésű (AVX2)](speech-container-howto.m
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-Végezetül megadhatja, hogy hány dekódert szeretne egy *adott* tárolóban a változó használatával `DECODER MAX_COUNT` . Tehát alapvetően az SKU-t kell kezdenie (CPU/memória), és javaslatot teszünk arra, hogyan érheti el a legjobbat. A jó kiindulási pont a gazdagépek ajánlott erőforrás-specifikációit jelöli.
+Megadhatja, hogy hány dekódert szeretne egy *adott* tárolóban a `DECODER MAX_COUNT` változó használatával. Tehát alapvetően az SKU-t kell kezdenie (CPU/memória), és javaslatot teszünk arra, hogyan érheti el a legjobbat. A jó kiindulási pont a gazdagépek ajánlott erőforrás-specifikációit jelöli.
 
 <br>
 </details>
@@ -419,7 +419,7 @@ Hány egyidejű kérelem fog egy 4 magos, 4 GB RAM-ot kezelni? Ha például az 5
 |-----------------------|---------------------|---------------------|
 | Egyéni szöveg – beszéd | 1 mag, 2 GB memória | 2 mag, 3 GB memória |
 
-***
+**_
 
 - Minden mag legalább 2,6 GHz-es vagy gyorsabb lehet.
 - A fájlok esetében a szabályozás a Speech SDK-ban lesz, 2x-ben (az első 5 másodperc nem szabályozható).
@@ -438,7 +438,7 @@ A 1000 óra/24 óra kezeléséhez például megpróbálta beállítani a 3-4 vir
 <b>Támogatja a beszédfelismerési tároló a központozást?</b>
 </summary>
 
-**Válasz:** A helyszíni tárolóban elérhető a nagybetűs (ITN). A központozás nyelvtől függ, és egyes nyelvek esetében nem támogatott, beleértve a kínai és a japán nyelvet is.
+_ *Válasz:** a helyszíni tárolóban elérhető a nagybetűs (ITN). A központozás nyelvtől függ, és egyes nyelvek esetében nem támogatott, beleértve a kínai és a japán nyelvet is.
 
 A meglévő tárolók esetében implicit és alapszintű központozási *támogatást biztosítunk* , de alapértelmezés szerint ez a `off` beállítás. Ez azt jelenti, hogy a karaktert lekérheti a `.` példában, nem pedig a `。` karaktert. Ennek az implicit logikának az engedélyezéséhez példát mutatunk arra, hogyan teheti ezt meg a Pythonban a Speech SDK használatával (más nyelveken is hasonló lenne):
 
@@ -480,6 +480,16 @@ Content-Length: 0
 
 **Válasz:** Nem támogatjuk a REST APIt a beszéd-szöveg tárolóban, csak a Speech SDK-n keresztül támogatjuk a websocketeket. Mindig tekintse meg a hivatalos dokumentációt, lásd: [lekérdezés-előrejelzési végpontok](speech-container-howto.md#query-the-containers-prediction-endpoint).
 
+<br>
+</details>
+
+
+<details>
+<summary>
+<b> Miért nem root felhasználóként fut a tároló? Milyen problémák merülhetnek fel?</b>
+</summary>
+
+**Válasz:** Vegye figyelembe, hogy a tárolóban lévő alapértelmezett felhasználó nem root felhasználó. Ez védelmet biztosít a tárolón elkerülő folyamatokkal szemben, és a gazdagép csomópontján megszerezheti a megnövekvő engedélyeket. Alapértelmezés szerint egyes platformokon, például a OpenShift-tároló platformon már ezt a tárolókat egy tetszőlegesen hozzárendelt felhasználói azonosító használatával futtathatja. Ezekhez a platformokhoz a nem gyökérszintű felhasználónak engedélyre van szüksége az írást igénylő, külsőleg leképezett kötetre való íráshoz. Például egy naplózási mappa vagy egy egyéni modell letöltési mappája.
 <br>
 </details>
 

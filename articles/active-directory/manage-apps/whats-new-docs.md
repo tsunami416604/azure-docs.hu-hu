@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 7c011c55728db53f0c64ac063c3372a610ef8f2f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 10861438334bc804d1b1e4b9a669280f7e09ffde
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542456"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654009"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
@@ -70,7 +70,7 @@ ms.locfileid: "94542456"
 - [Mi az az egyszeri bejelentkezés (SSO)?](what-is-single-sign-on.md)
 - [A Azure Active Directoryban lévő, nem megfelelő jogosultságokkal rendelkező vagy gyanús alkalmazásokra vonatkozó teendők](manage-application-permissions.md)
 - [Gyors útmutató: alkalmazás tulajdonságainak konfigurálása a Azure Active Directory (Azure AD) bérlőben](add-application-portal-configure.md)
-- [SAML-alapú SSO-alkalmazások konfigurációjának automatizálása Microsoft Graph API-val](application-saml-sso-configure-api.md)
+- [SAML-alapú SSO-alkalmazások konfigurációjának automatizálása Microsoft Graph API-val](/graph/application-saml-sso-configure-api)
 
 
 ## <a name="july-2020"></a>2020. július

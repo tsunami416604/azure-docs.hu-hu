@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: d23ef7b78f5e97ee8a82f46794f37f3baf05ca49
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b72530868b2b12e5f95e79be6ad5a2d7ce170b62
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427660"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654677"
 ---
 # <a name="configure-permission-classifications"></a>Engedélyosztályozások konfigurálása
 
@@ -35,7 +35,7 @@ Jelenleg csak az "alacsony hatású" engedélyek besorolása támogatott. Csak a
 Az alábbi lépéseket követve osztályozhatja az engedélyeket a Azure Portal használatával:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator--company-administrator), [alkalmazás-rendszergazdaként](../roles/permissions-reference.md#application-administrator)vagy [Felhőbeli alkalmazás-rendszergazdaként](../roles/permissions-reference.md#cloud-application-administrator)
-1. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**  >  **hozzájárulása és engedélyek**  >  **besorolása**lehetőséget.
+1. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**  >  **hozzájárulása és engedélyek**  >  **besorolása** lehetőséget.
 1. Válassza az **engedélyek hozzáadása** lehetőséget, hogy egy másik engedélyt "alacsony hatásként" minősítse.
 1. Válassza ki az API-t, majd válassza ki a delegált engedélyeket (ka) t.
 
@@ -45,7 +45,7 @@ Ebben a példában az egyszeri bejelentkezéshez minimálisan szükséges enged�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Az engedélyek besorolásához használhatja a legújabb Azure AD PowerShell előzetes [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)-modult is. Az engedélyek besorolása az API **ServicePrincipal** objektumán van konfigurálva, amely közzéteszi az engedélyeket.
+Az engedélyek besorolásához használhatja a legújabb Azure AD PowerShell előzetes [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)-modult is. Az engedélyek besorolása az API **ServicePrincipal** objektumán van konfigurálva, amely közzéteszi az engedélyeket.
 
 #### <a name="list-the-current-permission-classifications-for-an-api"></a>Egy API aktuális engedélyezési besorolásának listázása
 
@@ -115,7 +115,7 @@ Az engedélyek besorolásához használhatja a legújabb Azure AD PowerShell el�
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók:
 
@@ -123,7 +123,7 @@ További tudnivalók:
 * [Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
 * [Megtudhatja, hogyan kezelheti az alkalmazásokra vonatkozó beleegyezett, és hogyan értékelheti a hozzájárulásukat](manage-consent-requests.md)
 * [Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz](grant-admin-consent.md)
-* [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/active-directory-v2-scopes.md)
+* [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/v2-permissions-and-consent.md)
 
 Segítség kérése vagy válaszok keresése a kérdéseire:
 * [Azure AD a StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

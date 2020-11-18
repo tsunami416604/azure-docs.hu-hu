@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 08/28/2020
-ms.openlocfilehash: c64112e30bdaf0da2218177bd2737c3ebe688b0c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/16/2020
+ms.openlocfilehash: 35856a0d414e288fcd184164733e9430a6bee296
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675298"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653742"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -97,14 +97,17 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 
 - **Automatikus feladatátvételi szabályzat**
 
-  Alapértelmezés szerint a feladatátvételi csoport automatikus feladatátvételi házirenddel van konfigurálva. Az Azure elindítja a feladatátvételt a hiba észlelése után, és a türelmi időszak lejárt. A rendszernek ellenőriznie kell, hogy a kiesést nem lehet enyhíteni a beépített [magas rendelkezésre állású infrastruktúra](high-availability-sla.md) által a hatás skálázása miatt. Ha az alkalmazásból szeretné vezérelni a feladatátvételi munkafolyamatot, kikapcsolhatja az automatikus feladatátvételt.
+  Alapértelmezés szerint a feladatátvételi csoport automatikus feladatátvételi házirenddel van konfigurálva. Az Azure elindítja a feladatátvételt a hiba észlelése után, és a türelmi időszak lejárt. A rendszernek ellenőriznie kell, hogy a kiesést nem lehet enyhíteni a beépített [magas rendelkezésre állású infrastruktúra](high-availability-sla.md) által a hatás skálázása miatt. Ha a feladatátvételi munkafolyamatot az alkalmazásból vagy manuálisan szeretné vezérelni, akkor kikapcsolhatja az automatikus feladatátvételt.
   
   > [!NOTE]
   > Mivel a leállás skálázásának ellenőrzése és az, hogy milyen gyorsan lehet enyhíteni az operatív csapat által végzett emberi műveleteket, a türelmi időszak nem állítható be egy óra alatt. Ez a korlátozás a feladatátvételi csoport összes adatbázisára vonatkozik, az adatszinkronizálási állapotuktól függetlenül.
 
 - **Csak olvasási feladatátvételi szabályzat**
 
-  Alapértelmezés szerint a csak olvasási figyelő feladatátvétele le van tiltva. Gondoskodik arról, hogy az elsődleges teljesítmény ne legyen hatással a másodlagos kapcsolat nélküli állapotra. Ez azonban azt is jelenti, hogy a csak olvasási munkamenetek nem fognak tudni csatlakozni, amíg a másodlagos helyre nem kerül. Ha nem tudja elviselni az állásidőt a csak olvasási munkamenetek esetében, és az OK, hogy az elsődlegest csak olvasási és olvasási írási forgalom esetén használja, az elsődleges erőforrás potenciális teljesítményének romlása érdekében engedélyezheti a feladatátvételt a csak olvasási figyelő számára a tulajdonság konfigurálásával `AllowReadOnlyFailoverToPrimary` . Ebben az esetben a csak olvasási forgalom automatikusan átirányítva lesz az elsődlegesre, ha a másodlagos nem érhető el.
+  Alapértelmezés szerint a csak olvasási figyelő feladatátvétele le van tiltva. Gondoskodik arról, hogy az elsődleges teljesítmény ne legyen hatással a másodlagos kapcsolat nélküli állapotra. Ez azonban azt is jelenti, hogy a csak olvasási munkamenetek nem fognak tudni csatlakozni, amíg a másodlagos helyre nem kerül. Ha nem tudja elviselni az állásidőt a csak olvasási munkamenetek esetében, és az elsődlegest is használhatja mind a írásvédett, mind az írási és olvasási forgalomhoz, akkor a tulajdonság konfigurálásával engedélyezheti a feladatátvételt a csak olvasási figyelő számára `AllowReadOnlyFailoverToPrimary` . Ebben az esetben a csak olvasási forgalom automatikusan átirányítva lesz az elsődlegesre, ha a másodlagos nem érhető el.
+
+  > [!NOTE]
+  > A `AllowReadOnlyFailoverToPrimary` tulajdonság csak akkor érvényes, ha az automatikus feladatátvételi házirend engedélyezve van, és az Azure egy automatikus feladatátvételt váltott ki. Ebben az esetben, ha a tulajdonság értéke TRUE (igaz), az új elsődleges az írási és olvasási munkameneteket is fogja szolgálni.
 
 - **Tervezett feladatátvétel**
 
@@ -120,7 +123,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 
 - **Manuális feladatátvétel**
 
-  A feladatátvételt manuálisan is kezdeményezheti az automatikus feladatátvételi konfigurációtól függetlenül. Ha az automatikus feladatátvételi házirend nincs konfigurálva, a feladatátvételi csoportban lévő adatbázisok másodlagosra történő helyreállításához manuális feladatátvétel szükséges. Kényszerített vagy felhasználóbarát feladatátvételt is kezdeményezhet (teljes adatszinkronizálással). Az utóbbit az elsődlegesnek a másodlagos régióba való áthelyezésére lehet használni. A feladatátvétel befejezésekor a rendszer automatikusan frissíti a DNS-rekordokat, hogy biztosítsa az új elsődleges kapcsolat elérését
+  A feladatátvételt manuálisan is kezdeményezheti az automatikus feladatátvételi konfigurációtól függetlenül. Ha az automatikus feladatátvételi házirend nincs konfigurálva, a feladatátvételi csoportban lévő adatbázisok másodlagosra történő helyreállításához manuális feladatátvétel szükséges. Kényszerített vagy felhasználóbarát feladatátvételt is kezdeményezhet (teljes adatszinkronizálással). Az utóbbit az elsődlegesnek a másodlagos régióba való áthelyezésére lehet használni. A feladatátvétel befejezésekor a rendszer automatikusan frissíti a DNS-rekordokat, hogy biztosítsa az új elsődleges kapcsolat elérését.
 
 - **Türelmi időszak adatvesztéssel**
 
@@ -128,7 +131,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 
 - **Több feladatátvételi csoport**
 
-  Több feladatátvételi csoportot is beállíthat ugyanahhoz a pár kiszolgálóhoz a feladatátvételi skála szabályozása érdekében. A csoportok egymástól függetlenül hajtják végre a feladatátvételt. Ha a több-bérlős alkalmazás rugalmas készleteket használ, ezt a képességet használhatja az egyes készletekben lévő elsődleges és másodlagos adatbázisok összekeveréséhez. Így csökkentheti a leállás hatását a bérlők felére.
+  Több feladatátvételi csoportot is beállíthat ugyanahhoz a kiszolgálóhoz a feladatátvételi hatókör szabályozása érdekében. A csoportok egymástól függetlenül hajtják végre a feladatátvételt. Ha a több-bérlős alkalmazás rugalmas készleteket használ, ezt a képességet használhatja az egyes készletekben lévő elsődleges és másodlagos adatbázisok összekeveréséhez. Így csökkentheti a leállás hatását a bérlők felére.
 
   > [!NOTE]
   > Az SQL felügyelt példánya nem támogat több feladatátvételi csoportot.
@@ -173,7 +176,7 @@ OLTP műveletek végrehajtásakor használja `<fog-name>.database.windows.net` a
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>Írásvédett munkaterheléshez csak olvasási figyelő használata
 
-Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Csak olvasási munkamenetek esetén használja `<fog-name>.secondary.database.windows.net` a kiszolgáló URL-címét, a kapcsolat pedig automatikusan a másodlagosra lesz irányítva. Azt is javasoljuk, hogy a használatával adja meg a következőt: `ApplicationIntent=ReadOnly` . Ha biztosítani szeretné, hogy a csak olvasási feladatok újrakapcsolódjanak a feladatátvétel után, vagy ha a másodlagos kiszolgáló offline állapotba kerül, győződjön meg arról, hogy a `AllowReadOnlyFailoverToPrimary` feladatátvételi házirend tulajdonsága konfigurálva van.
+Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Csak olvasási munkamenetek esetén használja `<fog-name>.secondary.database.windows.net` a kiszolgáló URL-címét, a kapcsolat pedig automatikusan a másodlagosra lesz irányítva. Azt is javasoljuk, hogy a használatával adja meg a következőt: `ApplicationIntent=ReadOnly` .
 
 ### <a name="preparing-for-performance-degradation"></a>A teljesítmény romlásának előkészítése
 
@@ -264,20 +267,20 @@ OLTP műveletek végrehajtásakor használja `<fog-name>.zone_id.database.window
 Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Ha közvetlenül a földrajzilag replikált másodlagoshoz szeretne csatlakozni, használja `<fog-name>.secondary.<zone_id>.database.windows.net` a kiszolgáló URL-címét, és a kapcsolat közvetlenül a földrajzilag replikált másodlagosra történik.
 
 > [!NOTE]
-> Bizonyos szolgáltatási rétegekben a SQL Database támogatja a csak olvasható [replikák](read-scale-out.md) használatát, hogy csak egy írásvédett replikát és a `ApplicationIntent=ReadOnly` paramétert használja a kapcsolódási karakterláncban. Ha georeplikált másodlagos példányt konfigurált, ezzel a képességgel csatlakozhat egy írásvédett replikához az elsődleges helyen vagy a georeplikált helyen is.
+> A prémium, üzletileg kritikus és nagy kapacitású szolgáltatási rétegekben a SQL Database támogatja a [csak olvasható replikák](read-scale-out.md) használatát a csak olvasási jogosultsággal rendelkező lekérdezési feladatok futtatásához egy vagy több írásvédett replika kapacitásával, a `ApplicationIntent=ReadOnly` kapcsolódási karakterlánc paraméterének használatával. Ha georeplikált másodlagos példányt konfigurált, ezzel a képességgel csatlakozhat egy írásvédett replikához az elsődleges helyen vagy a georeplikált helyen is.
 >
-> - Az elsődleges helyen található írásvédett replikához való kapcsolódáshoz használja a következőt: `<fog-name>.<zone_id>.database.windows.net` .
-> - A másodlagos helyen található írásvédett replikához való kapcsolódáshoz használja a következőt: `<fog-name>.secondary.<zone_id>.database.windows.net` .
+> - Az elsődleges helyen található írásvédett replikához való kapcsolódáshoz használja a és a `ApplicationIntent=ReadOnly` lehetőséget `<fog-name>.<zone_id>.database.windows.net` .
+> - Ha a másodlagos helyen lévő írásvédett replikához szeretne csatlakozni, használja a és a következőt: `ApplicationIntent=ReadOnly` `<fog-name>.secondary.<zone_id>.database.windows.net` .
 
 ### <a name="preparing-for-performance-degradation"></a>A teljesítmény romlásának előkészítése
 
-Egy tipikus Azure-alkalmazás több Azure-szolgáltatást használ, és több összetevőből áll. A feladatátvételi csoport automatikus feladatátvétele az Azure SQL-összetevők állapotán alapul. Előfordulhat, hogy a leállás nem érinti az elsődleges régió többi Azure-szolgáltatását, és ezek összetevői továbbra is elérhetők lesznek az adott régióban. Ha az elsődleges adatbázisok a DR régióra váltanak, a függő összetevők közötti késés megnövekszik. Ha el szeretné kerülni az alkalmazás teljesítményének nagyobb késleltetését, győződjön meg arról, hogy az alkalmazás összes összetevőjének redundancia van a DR régióban, és kövesse ezeket a [hálózati biztonsági irányelveket](#failover-groups-and-network-security).
+Egy tipikus Azure-alkalmazás több Azure-szolgáltatást használ, és több összetevőből áll. A feladatátvételi csoport automatikus feladatátvétele az Azure SQL-összetevők állapotán alapul. Előfordulhat, hogy a leállás nem érinti az elsődleges régió többi Azure-szolgáltatását, és ezek összetevői továbbra is elérhetők lesznek az adott régióban. Ha az elsődleges adatbázisok a másodlagos régióra váltanak, a függő összetevők közötti késés megnövekszik. Ha el szeretné kerülni az alkalmazás teljesítményének nagyobb késleltetését, győződjön meg arról, hogy az alkalmazás összes összetevőjének redundancia a másodlagos régióban, és az alkalmazás-összetevők feladatátvétele az adatbázissal együtt történik. A konfigurációs időpontban kövesse a [hálózati biztonsági irányelveket](#failover-groups-and-network-security) a másodlagos régióban található adatbázishoz való kapcsolódás biztosításához.
 
 ### <a name="preparing-for-data-loss"></a>Adatvesztés előkészítése
 
-Ha a rendszer áramszünetet észlel, akkor a rendszer egy írható és olvasható feladatátvételt indít el, ha nulla adatvesztés áll fenn a legjobb tudomásuk szerint. Ellenkező esetben a által megadott időszakra vár. Ellenkező esetben a által megadott időszakra vár `GracePeriodWithDataLossHours` . Ha meg van adva `GracePeriodWithDataLossHours` , fel kell készülnie az adatvesztésre. Általánosságban elmondható, hogy az Azure továbbra is rendelkezésre áll. Ha nem engedheti meg az adatvesztést, ügyeljen arra, hogy a GracePeriodWithDataLossHours megfelelően nagy számú, például 24 óráig állítsa be.
+Ha a rendszer áramszünetet észlel, akkor a rendszer egy írható és olvasható feladatátvételt indít el, ha nulla adatvesztés áll fenn a legjobb tudomásuk szerint. Ellenkező esetben a feladatátvétel a megadott időszakra van késleltetve `GracePeriodWithDataLossHours` . Ha meg van adva `GracePeriodWithDataLossHours` , fel kell készülnie az adatvesztésre. Általánosságban elmondható, hogy az Azure továbbra is rendelkezésre áll. Ha nem engedheti meg az adatvesztést, ügyeljen arra, hogy a GracePeriodWithDataLossHours megfelelően nagy számra, például 24 órára állítsa be, vagy tiltsa le az automatikus feladatátvételt.
 
-Az írható-olvasható figyelő DNS-frissítése a feladatátvétel megkezdése után azonnal megtörténik. Ez a művelet nem eredményez adatvesztést. Az adatbázis-szerepkörök váltásának folyamata azonban normál körülmények között akár 5 percet is igénybe vehet. Amíg a művelet be nem fejeződik, az új elsődleges példány egyes adatbázisai továbbra is írásvédettek maradnak. Ha a feladatátvételt a PowerShell használatával kezdeményezik, a teljes művelet szinkronban van. Ha a Azure Portal használatával kezdeményezik, akkor a felhasználói felület a befejezési állapotot jelzi. Ha a REST API használatával kezdeményezik, a végrehajtás figyeléséhez használja a standard Azure Resource Manager lekérdezési mechanizmusát.
+Az írható-olvasható figyelő DNS-frissítése a feladatátvétel megkezdése után azonnal megtörténik. Ez a művelet nem eredményez adatvesztést. Az adatbázis-szerepkörök váltásának folyamata azonban normál körülmények között akár 5 percet is igénybe vehet. Amíg a művelet be nem fejeződik, az új elsődleges példány egyes adatbázisai továbbra is írásvédettek maradnak. Ha a feladatátvételt a PowerShell használatával kezdeményezik, az elsődleges replika szerepkör átváltására szolgáló művelet szinkron jellegű. Ha a Azure Portal használatával kezdeményezik, akkor a felhasználói felület a befejezési állapotot jelzi. Ha a REST API használatával kezdeményezik, a végrehajtás figyeléséhez használja a standard Azure Resource Manager lekérdezési mechanizmusát.
 
 > [!IMPORTANT]
 > A manuális csoport feladatátvételével visszahelyezheti az elsődleges helyre az elsődleges helyet. Ha a feladatátvételt okozó leállás le lett csökkentve, az elsődleges adatbázisokat az eredeti helyre helyezheti át. Ehhez el kell indítania a csoport manuális feladatátvételét.

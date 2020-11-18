@@ -1,5 +1,5 @@
 ---
-title: Parancs frissítése az ügyfélalkalmazás alapján
+title: Parancsok frissítése az ügyfélalkalmazásból
 titleSuffix: Azure Cognitive Services
 description: parancs frissítése az ügyfélalkalmazás alapján
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: 290f9ee9c23071ac56b1ff0c65ddc03decbc7344
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1bffb09d0f49bbd0059e8a528d67bfe215f0650d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94571185"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654347"
 ---
 # <a name="update-a-command-from-the-client"></a>Parancs frissítése az ügyfélről
 
@@ -121,19 +121,32 @@ Gondoljon például arra a forgatókönyvre, amelyben el szeretné küldeni az e
 A forgatókönyv teszteléséhez hozzon létre egy új parancsot az aktuális alkalmazásban.
 1. Hozzon létre egy új, GetDeviceInfo nevű parancsot.
 1. Vegyen fel egy példa mondatot az "eszköz adatainak beolvasása" kifejezésre.
-1. A befejezési szabály "kész" részében adjon hozzá egy beszédes válasz küldése műveletet.
+1. A befejezési szabály "kész" részében adjon hozzá egy beszédfelismerési válasz küldése műveletet, amely tartalmazza a clientContext attribútumait.
     > ![Beszédfelismerési válasz küldése a kontextussal](media/custom-commands/send-speech-response-context.png)
-1. Az alkalmazás mentése és betanítása.
-1. Tesztelje az alkalmazást.
+1. Az alkalmazás mentése, betanítása és tesztelése.
+1. A tesztelési ablakban egy tevékenység elküldésével frissítheti az ügyfél környezetét.
+    > ```json
+    >{
+    >   "type": "event",
+    >   "name": "RemoteUpdate",
+    >   "value": {
+    >     "clientContext": {
+    >       "deviceId": "12345",
+    >       "deviceName": "My device"
+    >     },
+    >     "processTurn": false
+    >   }
+    >}
+    > ```
+1. Küldje el az "eszköz adatainak beolvasása" szöveget.
     > ![Ügyfél-környezeti tevékenység küldése](media/custom-commands/send-client-context-activity.png)
 
 Jegyezze fel néhány dolgot.
 1. Ezt a tevékenységet csak egyszer kell elküldeni (ideális esetben közvetlenül a kapcsolódás megkezdése után).
-1. Összetett objektumokat használhat a ClientContext.
-1. A ClientContext a beszédfelismerési válaszok, a tevékenységek küldésére és a webes végpontok meghívására használhatja.
-
+1. Összetett objektumokat használhat a clientContext.
+1. A clientContext a beszédfelismerési válaszok, a tevékenységek küldésére és a webes végpontok meghívására használhatja.
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Parancs frissítése webes végpontról](./how-to-custom-commands-update-command-from-web-endpoint.md)
+> [Parancsok frissítése webes végpontról](./how-to-custom-commands-update-command-from-web-endpoint.md)

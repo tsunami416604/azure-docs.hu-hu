@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7105597ec34e804c2f2b85b01feb4824d63005c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63b1d7f95711017feba52cad97f05128d83734da
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578121"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655170"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>Intune-profil létrehozása VPN-ügyféloldali profilok üzembe helyezéséhez
 
@@ -35,7 +35,7 @@ A következő lépésekben egy minta XML-t használunk az Intune egyéni OMA-URI
 * Automatikus bejelentkezés
 * A megbízható hálózat észlelése engedélyezve.
 
-Más támogatott lehetőségekért tekintse meg a [VPNV2 CSP](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp) -t ismertető cikket.
+Más támogatott lehetőségekért tekintse meg a [VPNV2 CSP](/windows/client-management/mdm/vpnv2-csp) -t ismertető cikket.
 
 1. Töltse le a VPN-profilt a Azure Portalból, és bontsa ki a *azurevpnconfig.xml* fájlt a csomagból.
 1. Másolja és illessze be az alábbi szöveget egy új szövegszerkesztőbe.
@@ -66,28 +66,28 @@ Más támogatott lehetőségekért tekintse meg a [VPNV2 CSP](https://docs.micro
 
 Ebben a szakaszban egy Microsoft Intune-profilt hoz létre egyéni beállításokkal.
 
-1. Jelentkezzen be az Intune-ba, és navigáljon az **eszközök-> konfigurációs profilokhoz**. Válassza a **+ profil létrehozása**lehetőséget.
+1. Jelentkezzen be az Intune-ba, és navigáljon az **eszközök-> konfigurációs profilokhoz**. Válassza a **+ profil létrehozása** lehetőséget.
 
    :::image type="content" source="./media/create-profile-intune/configuration-profile.png" alt-text="Konfigurációs profilok":::
-1. A **platform**területen válassza a **Windows 10 és újabb**lehetőséget. A **profil**lapon válassza az **Egyéni**lehetőséget. Ezután kattintson a **Létrehozás** elemre.
-1. Adja meg a profil nevét és leírását, majd kattintson a **tovább**gombra.
-1. A **konfigurációs beállítások** lapon válassza a **Hozzáadás**lehetőséget.
+1. A **platform** területen válassza a **Windows 10 és újabb** lehetőséget. A **profil** lapon válassza az **Egyéni** lehetőséget. Ezután kattintson a **Létrehozás** elemre.
+1. Adja meg a profil nevét és leírását, majd kattintson a **tovább** gombra.
+1. A **konfigurációs beállítások** lapon válassza a **Hozzáadás** lehetőséget.
 
     * **Név:** Adja meg a konfiguráció nevét.
     * **Leírás:** Nem kötelező leírás.
-    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (ez az információ a <name> </name> címke azurevpnconfig.xml fájljában található).
+    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (ez az információ a <name></name> címke azurevpnconfig.xml fájljában található).
     * **Adattípus:** Karakterlánc (XML-fájl).
 
-   Jelölje ki a mappa ikont, és válassza ki az [XML-](#xml) lépések 6. lépésében mentett fájlt. Válassza a **Hozzáadás** lehetőséget.
+   Jelölje ki a mappa ikont, és válassza ki az [XML-](#xml) lépések 6. lépésében mentett fájlt. Válassza a **Hozzáadás** elemet.
 
-   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="Konfigurációs profilok" lightbox="./media/create-profile-intune/configuration-settings.png":::
+   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="Konfigurációs beállítások" lightbox="./media/create-profile-intune/configuration-settings.png":::
 1. Kattintson a **Tovább** gombra.
-1. A **hozzárendelések**alatt válassza ki azt a csoportot, amelyhez el szeretné küldeni a konfigurációt. Ezután válassza a **tovább**lehetőséget.
-1. Az alkalmazhatósági szabályok megadása nem kötelező. Szükség esetén adjon meg minden szabályt, majd kattintson a **tovább**gombra.
-1. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.
+1. A **hozzárendelések** alatt válassza ki azt a csoportot, amelyhez el szeretné küldeni a konfigurációt. Ezután válassza a **tovább** lehetőséget.
+1. Az alkalmazhatósági szabályok megadása nem kötelező. Szükség esetén adjon meg minden szabályt, majd kattintson a **tovább** gombra.
+1. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás** lehetőséget.
 
-    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Konfigurációs profilok":::
-1. Az egyéni profil létrehozása megtörtént. A profil üzembe helyezésének Microsoft Intune lépéseiért lásd: [felhasználói és eszköz profilok társítása](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign).
+    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Profil létrehozása":::
+1. Az egyéni profil létrehozása megtörtént. A profil üzembe helyezésének Microsoft Intune lépéseiért lásd: [felhasználói és eszköz profilok társítása](/mem/intune/configuration/device-profile-assign).
  
 ## <a name="next-steps"></a>Következő lépések
 

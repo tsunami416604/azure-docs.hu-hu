@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8f528c6be68258400cb3e29582943f1d657c557d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71eda40abd38b4885b8e88085e338667b608902f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069272"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655136"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Oktatóanyag: a bejövő internetes forgalom szűrése Azure Firewall DNAT a Azure Portal használatával
 
-Az Azure Firewall DNAT (Destination Network Address Translation, célhálózati címfordítás) funkciójának konfigurálásával lefordíthatja és szűrheti az alhálózatokra bejövő internetes forgalmat. A DNAT konfigurálásakor a NAT-szabálygyűjtemény művelete **DNAT**értékre van állítva. A NAT-szabálygyűjtemény minden szabálya használható arra, hogy lefordítsa a tűzfal nyilvános IP-címét és portját egy magánhálózati IP-címre és portra. A DNAT-szabályok implicit módon hozzáadnak egy kapcsolódó hálózati szabályt a lefordított adatforgalom engedélyezéséhez. Ezt a viselkedést felülírhatja, ha explicit módon hozzáad egy hálózatiszabály-készletet, amely megtagadja azokat a szabályokat, amelyek a lefordított adatforgalomhoz tartoznak. Az Azure Firewall szabályfeldolgozási logikájával kapcsolatos további információkért tekintse meg az [Azure Firewall szabályfeldolgozási logikájával](rule-processing.md) kapcsolatos cikket.
+Az Azure Firewall DNAT (Destination Network Address Translation, célhálózati címfordítás) funkciójának konfigurálásával lefordíthatja és szűrheti az alhálózatokra bejövő internetes forgalmat. A DNAT konfigurálásakor a NAT-szabálygyűjtemény művelete **DNAT** értékre van állítva. A NAT-szabálygyűjtemény minden szabálya használható arra, hogy lefordítsa a tűzfal nyilvános IP-címét és portját egy magánhálózati IP-címre és portra. A DNAT-szabályok implicit módon hozzáadnak egy kapcsolódó hálózati szabályt a lefordított adatforgalom engedélyezéséhez. Ezt a viselkedést felülírhatja, ha explicit módon hozzáad egy hálózatiszabály-készletet, amely megtagadja azokat a szabályokat, amelyek a lefordított adatforgalomhoz tartoznak. Az Azure Firewall szabályfeldolgozási logikájával kapcsolatos további információkért tekintse meg az [Azure Firewall szabályfeldolgozási logikájával](rule-processing.md) kapcsolatos cikket.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -30,14 +30,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-2. A Azure Portal kezdőlapon válassza az **erőforráscsoportok**, majd a **Hozzáadás**lehetőséget.
+2. A Azure Portal kezdőlapon válassza az **erőforráscsoportok**, majd a **Hozzáadás** lehetőséget.
 3. Az **Erőforráscsoport neve** mezőbe írja be a következőt: **RG-DNAT-Test**.
 4. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 5. Az **Erőforráscsoport helye** beállításnál válasszon ki egy helyet. Minden ezután létrehozott erőforrásnak ugyanezen a helyen kell lennie.
@@ -54,9 +54,9 @@ Először hozza létre a virtuális hálózatokat, és társítsa őket.
 
 ### <a name="create-the-hub-vnet"></a>A központi virtuális hálózat létrehozása
 
-1. A Azure Portal kezdőlapon válassza a **minden szolgáltatás**lehetőséget.
-2. A **hálózat**területen válassza a **virtuális hálózatok**lehetőséget.
-3. Válassza a **Hozzáadás** lehetőséget.
+1. A Azure Portal kezdőlapon válassza a **minden szolgáltatás** lehetőséget.
+2. A **hálózat** területen válassza a **virtuális hálózatok** lehetőséget.
+3. Válassza a **Hozzáadás** elemet.
 4. A **Név** mezőbe írja be a következőt: **VN-Hub**.
 5. A **Címtér** mezőbe írja be a következőt: **10.0.0.0/16**.
 6. Az **Előfizetés** beállításnál válassza ki az előfizetését.
@@ -68,14 +68,14 @@ Először hozza létre a virtuális hálózatokat, és társítsa őket.
      > [!NOTE]
      > A AzureFirewallSubnet-alhálózat mérete/26. További információ az alhálózat méretétől: [Azure Firewall GYIK](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
-10. A **címtartomány**mezőbe írja be a következőt: **10.0.1.0/26**.
-11. Használja a többi alapértelmezett beállítást, majd kattintson a **Létrehozás**gombra.
+10. A **címtartomány** mezőbe írja be a következőt: **10.0.1.0/26**.
+11. Használja a többi alapértelmezett beállítást, majd kattintson a **Létrehozás** gombra.
 
 ### <a name="create-a-spoke-vnet"></a>Küllő virtuális hálózat létrehozása
 
-1. A Azure Portal kezdőlapon válassza a **minden szolgáltatás**lehetőséget.
-2. A **hálózat**területen válassza a **virtuális hálózatok**lehetőséget.
-3. Válassza a **Hozzáadás** lehetőséget.
+1. A Azure Portal kezdőlapon válassza a **minden szolgáltatás** lehetőséget.
+2. A **hálózat** területen válassza a **virtuális hálózatok** lehetőséget.
+3. Válassza a **Hozzáadás** elemet.
 4. A **Név** mezőbe írja be a következőt: **VN-Spoke**.
 5. A **Címtér** mezőbe írja be a következőt: **192.168.0.0/16**.
 6. Az **Előfizetés** beállításnál válassza ki az előfizetését.
@@ -85,64 +85,64 @@ Először hozza létre a virtuális hálózatokat, és társítsa őket.
 
     Ezen az alhálózaton lesz a kiszolgáló.
 10. A **Címtartomány** mezőbe írja be a következőt: **192.168.1.0/24**.
-11. Használja a többi alapértelmezett beállítást, majd kattintson a **Létrehozás**gombra.
+11. Használja a többi alapértelmezett beállítást, majd kattintson a **Létrehozás** gombra.
 
 ### <a name="peer-the-vnets"></a>A virtuális hálózatok társítása
 
 Most társítsa a két virtuális hálózatot.
 
 1. Válassza ki a **vn-hub** virtuális hálózatot.
-2. A **Beállítások** **területen válassza a**társítások lehetőséget.
-3. Válassza a **Hozzáadás** lehetőséget.
+2. A **Beállítások** **területen válassza a** társítások lehetőséget.
+3. Válassza a **Hozzáadás** elemet.
 4. Írja be a **társ-HubSpoke** **nevet a VN-Hubról a vn-küllőre**.
 5. A virtuális hálózatnál válassza a **VN-Spoke** lehetőséget.
 6. Írja be a **társ-SpokeHub** **nevet a VN-Spoke és a vn-hub között**.
-7. A **VN-Spokeról a vn-hub-ra való továbbított forgalom engedélyezéséhez** válassza az **engedélyezve**lehetőséget.
-8. Válassza az **OK** lehetőséget.
+7. A **VN-Spokeról a vn-hub-ra való továbbított forgalom engedélyezéséhez** válassza az **engedélyezve** lehetőséget.
+8. Kattintson az **OK** gombra.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
 Hozzon létre egy virtuális gépet a számítási feladat futtatásához, és helyezze el az **SN-Workload** alhálózaton.
 
 1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet.
-2. A **népszerű**területen válassza a **Windows Server 2016 Datacenter**elemet.
+2. A **népszerű** területen válassza a **Windows Server 2016 Datacenter** elemet.
 
-**Alapvető beállítások**
+**Alapbeállítások**
 
 1. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 1. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata**, majd az **RG-DNAT-Test** lehetőséget.
-1. A **virtuális gép neve**mezőbe írja be az **SRV-munkaterhelés**nevet.
-1. A **régió**mezőben válassza ki ugyanazt a helyet, amelyet korábban használt.
+1. A **virtuális gép neve** mezőbe írja be az **SRV-munkaterhelés** nevet.
+1. A **régió** mezőben válassza ki ugyanazt a helyet, amelyet korábban használt.
 1. Adjon meg egy felhasználónevet és jelszót.
-1. Válassza a **Tovább: lemezek**lehetőséget.
+1. Válassza a **Tovább: lemezek** lehetőséget.
 
 **Lemezek**
 1. Válassza a **Tovább: Hálózatkezelés** lehetőséget.
 
 **Hálózat**
 
-1. **Virtuális hálózat**esetén válassza a **vn-küllő**elemet.
+1. **Virtuális hálózat** esetén válassza a **vn-küllő** elemet.
 2. Az **Alhálózat** mezőnél válassza az **SN-Workload** lehetőséget.
 3. A **nyilvános IP-cím** beállításnál válassza a **nincs lehetőséget**.
-4. **Nyilvános bejövő portok**esetében válassza a **nincs**lehetőséget. 
-2. Hagyja meg a többi alapértelmezett beállítást, és válassza a **Tovább: kezelés**lehetőséget.
+4. **Nyilvános bejövő portok** esetében válassza a **nincs** lehetőséget. 
+2. Hagyja meg a többi alapértelmezett beállítást, és válassza a **Tovább: kezelés** lehetőséget.
 
 **Felügyelet**
 
-1. **Rendszerindítási diagnosztika**esetén válassza a **ki**lehetőséget.
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
+1. **Rendszerindítási diagnosztika** esetén válassza a **ki** lehetőséget.
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
 **Felülvizsgálat + létrehozás**
 
-Tekintse át az összegzést, majd kattintson a **Létrehozás**gombra. Ez eltarthat néhány percig.
+Tekintse át az összegzést, majd kattintson a **Létrehozás** gombra. Ez eltarthat néhány percig.
 
-Az üzembe helyezés befejeztével jegyezze fel a virtuális gép magánhálózati IP-címét. Ezt később a tűzfal konfigurálása során használjuk majd. Válassza ki a virtuális gép nevét, és a **Beállítások**területen válassza a **hálózatkezelés** lehetőséget a magánhálózati IP-cím megkereséséhez.
+Az üzembe helyezés befejeztével jegyezze fel a virtuális gép magánhálózati IP-címét. Ezt később a tűzfal konfigurálása során használjuk majd. Válassza ki a virtuális gép nevét, és a **Beállítások** területen válassza a **hálózatkezelés** lehetőséget a magánhálózati IP-cím megkereséséhez.
 
 ## <a name="deploy-the-firewall"></a>A tűzfal üzembe helyezése
 
-1. A portál kezdőlapján válassza az **erőforrás létrehozása**lehetőséget.
-2. Válassza a **hálózatkezelés**lehetőséget, majd a **Kiemelt**beállításnál válassza **az összes**megjelenítése lehetőséget.
-3. Válassza a **tűzfal**, majd a **Létrehozás**lehetőséget. 
+1. A portál kezdőlapján válassza az **erőforrás létrehozása** lehetőséget.
+2. Válassza a **hálózatkezelés** lehetőséget, majd a **Kiemelt** beállításnál válassza **az összes** megjelenítése lehetőséget.
+3. Válassza a **tűzfal**, majd a **Létrehozás** lehetőséget. 
 4. A **Tűzfal létrehozása** oldalon konfigurálja a tűzfalat a következő táblázatban található értékekkel:
 
    |Beállítás  |Érték  |
@@ -165,33 +165,33 @@ Az üzembe helyezés befejeztével jegyezze fel a virtuális gép magánhálóza
 
 Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmezett útvonal áthaladjon a tűzfalon.
 
-1. A Azure Portal kezdőlapon válassza a **minden szolgáltatás**lehetőséget.
-2. A **hálózat**területen válassza az **útválasztási táblák**elemet.
-3. Válassza a **Hozzáadás** lehetőséget.
+1. A Azure Portal kezdőlapon válassza a **minden szolgáltatás** lehetőséget.
+2. A **hálózat** területen válassza az **útválasztási táblák** elemet.
+3. Válassza a **Hozzáadás** elemet.
 4. A **Név** mezőbe írja be a következőt: **RT-FWroute**.
 5. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 6. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata**, majd az **RG-DNAT-Test** lehetőséget.
 7. A **Hely** elemnél válassza a korábban használt helyet.
 8. Kattintson a **Létrehozás** gombra.
-9. Válassza a **frissítés**lehetőséget, majd válassza ki az **RT-FWroute** útválasztási táblázatot.
-10. Válassza ki az **alhálózatok**elemet, majd válassza a **hozzárendelés**lehetőséget.
-11. Válassza a **virtuális hálózat**lehetőséget, majd válassza a **vn-küllő**elemet.
+9. Válassza a **frissítés** lehetőséget, majd válassza ki az **RT-FWroute** útválasztási táblázatot.
+10. Válassza ki az **alhálózatok** elemet, majd válassza a **hozzárendelés** lehetőséget.
+11. Válassza a **virtuális hálózat** lehetőséget, majd válassza a **vn-küllő** elemet.
 12. Az **Alhálózat** mezőnél válassza az **SN-Workload** lehetőséget.
-13. Válassza az **OK** lehetőséget.
-14. Válassza az **útvonalak**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+13. Kattintson az **OK** gombra.
+14. Válassza az **útvonalak** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 15. Az **Útvonal neve** mezőbe írja be következőt: **FW-DG**.
 16. A **Címelőtag** mezőbe írja be a következőt: **0.0.0.0/0**.
 17. A **Következő ugrás típusa** beállításnál válassza a **Virtuális berendezés** lehetőséget.
 
     Az Azure Firewall valójában egy felügyelt szolgáltatás, de ebben a helyzetben a virtuális berendezés beállítás is használható.
 18. A **Következő ugrás címe** mezőbe írja be a tűzfal magánhálózati IP-címét, amelyet korábban feljegyzett.
-19. Válassza az **OK** lehetőséget.
+19. Kattintson az **OK** gombra.
 
 ## <a name="configure-a-nat-rule"></a>NAT-szabály konfigurálása
 
-1. Nyissa meg a **RG-DNAT-test**elemet, és válassza ki az **FW-DNAT-test** tűzfalat. 
-2. Az **FW-DNAT-test** oldalon a **Beállítások**területen válassza a **szabályok**elemet. 
-3. Válassza a **NAT-szabálygyűjtemény hozzáadása**lehetőséget. 
+1. Nyissa meg a **RG-DNAT-test** elemet, és válassza ki az **FW-DNAT-test** tűzfalat. 
+2. Az **FW-DNAT-test** oldalon a **Beállítások** területen válassza a **szabályok** elemet. 
+3. Válassza a **NAT-szabálygyűjtemény hozzáadása** lehetőséget. 
 4. A **Név** mezőbe írja be a következőt: **RC-DNAT-01**. 
 5. A **Prioritás** mezőbe írja be a következőt: **200**. 
 6. A **Szabályok** területen a **Név** mezőbe írja be a következőt: **RL-01**.
@@ -201,7 +201,7 @@ Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelme
 10. A **Célportok** mezőbe írja be a következőt: **3389**. 
 11. A **Lefordított cím** mezőbe írja be az Srv-Workload virtuális gép magánhálózati IP-címét. 
 12. A **Lefordított port** mezőben adja meg a **3389** értéket. 
-13. Válassza a **Hozzáadás** lehetőséget. 
+13. Válassza a **Hozzáadás** elemet. 
 
 ## <a name="test-the-firewall"></a>A tűzfal tesztelése
 
@@ -226,4 +226,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)
+> [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./firewall-diagnostics.md)

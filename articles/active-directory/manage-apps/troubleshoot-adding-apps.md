@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: e9e97aec66d99d149320938540c48b9ad68eaf0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 714cbb06506cc3e0dffe74007712d9cbad072284
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90068030"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655068"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Alkalmazások Azure Active Directory való hozzáadásával vagy eltávolításával kapcsolatos gyakori problémák elhárítása
 Ebből a cikkből megtudhatja, hogy az emberek milyen gyakori problémákkal szembesülnek az alkalmazások Azure Active Directory való hozzáadásakor vagy eltávolításakor.
@@ -31,9 +31,9 @@ Időnként átmeneti problémák, hálózati problémák vagy hiba miatt az alka
 Ha **a** **Hozzáadás** gombra kattintva hibát tapasztal, **hibaüzenet** jelenik meg. Ha további információra van szüksége a hibáról, és többet szeretne megtudni a támogatási szakemberrel kapcsolatban, további információt a következő témakörben talál: a [portál értesítési adatainak megtekintése](#how-to-see-the-details-of-a-portal-notification) című szakasz lépéseit követve.
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nem tudom, hogyan kell beállítani az alkalmazást a hozzáadásom után
-Ha segítségre van szüksége az alkalmazások megismeréséhez, tekintse át az SaaS-alkalmazások Azure Active Directory cikkekkel való [integrálására szolgáló oktatóanyagok listáját](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) .
+Ha segítségre van szüksége az alkalmazások megismeréséhez, tekintse át az SaaS-alkalmazások Azure Active Directory cikkekkel való [integrálására szolgáló oktatóanyagok listáját](../saas-apps/tutorial-list.md) .
 
-Ezen kívül az [Azure ad Applications dokumentumtára](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) segítséget nyújt az Azure ad-vel való egyszeri bejelentkezésről és annak működéséről.
+Ezen kívül az [Azure ad Applications dokumentumtára](./what-is-application-management.md) segítséget nyújt az Azure ad-vel való egyszeri bejelentkezésről és annak működéséről.
 
 ## <a name="i-want-to-delete-an-application-but-the-delete-button-is-disabled"></a>Törölni szeretném az alkalmazást, de a törlés gomb le van tiltva
 
@@ -43,7 +43,7 @@ A törlés gomb a következő esetekben le lesz tiltva:
 
 - A Microsoft-alkalmazások esetében nem fogja tudni törölni azokat a felhasználói felületen a szerepkörtől függetlenül.
 
-- Felügyelt identitásnak megfelelő servicePrincipals. A felügyelt identitások egyszerű szolgáltatása nem törölhető a vállalati alkalmazások panelen. Az Azure-erőforrást kell megadnia a kezeléséhez. További információ a [felügyelt identitásról](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+- Felügyelt identitásnak megfelelő servicePrincipals. A felügyelt identitások egyszerű szolgáltatása nem törölhető a vállalati alkalmazások panelen. Az Azure-erőforrást kell megadnia a kezeléséhez. További információ a [felügyelt identitásról](../managed-identities-azure-resources/overview.md)
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>Portál értesítés részleteinek megtekintése
 Az alábbi lépéseket követve megtekintheti a portál összes értesítésének részleteit:
@@ -56,7 +56,7 @@ Az alábbi lépéseket követve megtekintheti a portál összes értesítéséne
 6.  A **másolási hiba** szövegmező jobb oldalán lévő **Másolás ikonra** kattintva másolja az összes értesítési részletet egy támogatási vagy termékcsoport-mérnök általi megosztásra.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Segítség kérése támogatási szakembernek értesítési adatok küldésével
-Fontos, hogy **az alább felsorolt részleteket** egy támogatási szakemberrel ossza meg, ha segítségre van szüksége, így gyorsan elvégezheti a segítségét. A **másolási hiba** szövegmező jobb oldalán található **képernyőképet** vagy a **másolási hiba ikont**válassza ki.
+Fontos, hogy **az alább felsorolt részleteket** egy támogatási szakemberrel ossza meg, ha segítségre van szüksége, így gyorsan elvégezheti a segítségét. A **másolási hiba** szövegmező jobb oldalán található **képernyőképet** vagy a **másolási hiba ikont** válassza ki.
 
 ## <a name="notification-details-explained"></a>Értesítés részletei – magyarázat
 Az értesítésekkel kapcsolatos további információkért tekintse meg az alábbi leírásokat.

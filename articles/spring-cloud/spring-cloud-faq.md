@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f034cd07b481f9d72cb3f753b30e1779bf672ac2
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: a8180088e5a0db613d5f04106fe102f58594bf72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491936"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655051"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
@@ -93,6 +93,21 @@ Jelenleg három szolgáltatás támogatott:
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Megtekinthetem, hozzáadhatom vagy áthelyezhetem az állandó köteteket az alkalmazásaim belsejében?
 
 Igen.
+
+### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Hány kimenő nyilvános IP-cím van az Azure Spring Cloud-példányon?
+
+A kimenő nyilvános IP-címek száma a rétegektől és más tényezőktől függően változhat. 
+
+| Azure Spring Cloud-példány típusa | Kimenő nyilvános IP-címek alapértelmezett száma |
+| -------------------------------- | ---------------------------------------------- |
+| Alapszintű példányok             | 1                                              |
+| Standard szintű példányok          | 2                                              |
+| VNet injekciós példányok         | 1                                              |
+
+
+### <a name="can-i-increase-the-number-of-outbound-public-ip-addresses"></a>Megnövelhető a kimenő nyilvános IP-címek száma?
+
+Igen, megnyithat egy [támogatási jegyet](https://azure.microsoft.com/support/faq/)  , amely további kimenő nyilvános IP-címeket kér le.
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Ha törölek vagy Áthelyezek egy Azure Spring Cloud Service-példányt, akkor a bővítmény erőforrásai is törlődnek vagy áthelyezhetők?
 
@@ -209,6 +224,6 @@ Nincs hatással a felhasználói élményre, az Eureka-ügyfél szívverési és
 Ennek a résznek a tökéletesítését fogjuk kijavítani, és ezt a hibát a felhasználói alkalmazások rövid időn belül el kell kerülniük.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további kérdései vannak, tekintse meg az [Azure Spring Cloud hibaelhárítási útmutatóját](spring-cloud-troubleshoot.md).

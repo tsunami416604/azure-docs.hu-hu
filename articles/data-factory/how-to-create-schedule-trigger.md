@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 0f147a317b16a4a581fad18bd48dbd38059e9a8c
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: a6f53d6ce41085b2348857ccb5b45c06132d6a99
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146070"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655459"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Folyamat ütemezett futtatását futtató trigger létrehozása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -42,31 +42,31 @@ Létrehozhat egy **ütemezett triggert** egy folyamat rendszeres időközönkén
 
     ![Új eseményindító menü](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
 
-1. Az **Eseményindítók hozzáadása** lapon válassza az **eseményindító kiválasztása...** , majd az **+ új** lehetőséget. 
+1. Az **Eseményindítók hozzáadása** lapon válassza az **eseményindító kiválasztása...**, majd az **+ új** lehetőséget. 
 
     ![Eseményindítók hozzáadása – új eseményindító](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
 
 1. Az **új trigger** oldalon hajtsa végre a következő lépéseket: 
 
-    1. Ellenőrizze, hogy be van-e jelölve az **ütemterv** a **típushoz** .
+    1. Ellenőrizze, hogy be van-e jelölve az **ütemterv** a **típushoz**.
     1. A **kezdő dátumhoz tartozó trigger kezdő időpontjának** és dátumának megadása. Alapértelmezés szerint az egyezményes világidő (UTC) szerint az aktuális dátum/idő értékre van állítva.
-    1. Itt adhatja meg azt az időzónát, amelyben a trigger létre lesz hozva. Az időzóna beállítása a **kezdő dátumra** , a **befejezési dátumra** és az **ütemezett végrehajtási** időpontokra lesz érvényes a speciális ismétlődési beállításokban. Az időzóna-beállítás módosítása nem fogja automatikusan módosítani a kezdő dátumot. Győződjön meg arról, hogy a kezdő dátum helyes a megadott időzónában
+    1. Itt adhatja meg azt az időzónát, amelyben a trigger létre lesz hozva. Az időzóna beállítása a **kezdő dátumra**, a **befejezési dátumra** és az **ütemezett végrehajtási** időpontokra lesz érvényes a speciális ismétlődési beállításokban. Az időzóna-beállítás módosítása nem fogja automatikusan módosítani a kezdő dátumot. Győződjön meg arról, hogy a kezdő dátum helyes a megadott időzónában. Vegye figyelembe, hogy az eseményindító ütemezett végrehajtási ideje a kezdő dátum után fog megjelenni (Győződjön meg róla, hogy a kezdési dátum a 1minute kisebb, mint a végrehajtás időpontjában, a folyamat a következő ismétlődéskor aktiválódik). 
 
         > [!NOTE]
         > A nyári időszámítást megfigyelő időzónák esetében az aktiválási idő automatikusan igazodik az év kétszeri változásához. Ha ki szeretné kapcsolni a nyári mentési változást, válasszon olyan időzónát, amely nem figyeli a nyári időmegtakarítást, például: UTC
 
     1. Az eseményindító **ismétlődésének** megadása. Válassza ki az egyik értéket a legördülő listából (percenként, óránként, naponta, hetente és havonta). Adja meg a szorzót a szövegmezőben. Ha például azt szeretné, hogy a trigger 15 percenként egyszer fusson, válassza a **percenként** lehetőséget, majd a szövegmezőbe írja be a **15** értéket. 
-    1. A befejezési dátum időpontjának megadásához válassza a **befejezési dátum megadása** lehetőséget, majd adja meg _a végződik_ lehetőséget, majd kattintson **az OK gombra** . Minden egyes folyamatfuttatás költséggel jár. Ha teszteli, érdemes lehet biztosítani, hogy a folyamat csak néhány alkalommal induljon el. Arról is győződjön meg, hogy elegendő idő áll rendelkezésre a folyamat futtatásához a közzététel időpontja és a befejezés időpontja között. Az eseményindító csak a Data Factoryban való közzététel után lesz aktív, a felhasználói felületen történő mentéskor még nem.
+    1. A befejezési dátum időpontjának megadásához válassza a **befejezési dátum megadása** lehetőséget, majd adja meg _a végződik_ lehetőséget, majd kattintson **az OK gombra**. Minden egyes folyamatfuttatás költséggel jár. Ha teszteli, érdemes lehet biztosítani, hogy a folyamat csak néhány alkalommal induljon el. Arról is győződjön meg, hogy elegendő idő áll rendelkezésre a folyamat futtatásához a közzététel időpontja és a befejezés időpontja között. Az eseményindító csak a Data Factoryban való közzététel után lesz aktív, a felhasználói felületen történő mentéskor még nem.
 
         ![Eseményindító-beállítások](./media/how-to-create-schedule-trigger/trigger-settings-01.png)
 
         ![Trigger beállításai a befejezési dátumhoz](./media/how-to-create-schedule-trigger/trigger-settings-02.png)
 
-1. Az **új trigger** ablakban válassza az **Igen** lehetőséget az **aktivált** lehetőségnél, majd kattintson az **OK gombra** . Ezt a jelölőnégyzetet követve inaktiválhatja az triggert később. 
+1. Az **új trigger** ablakban válassza az **Igen** lehetőséget az **aktivált** lehetőségnél, majd kattintson az **OK gombra**. Ezt a jelölőnégyzetet követve inaktiválhatja az triggert később. 
 
     ![Eseményindító-beállítások – Tovább gomb](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
 
-1. Az **új trigger** ablakban tekintse át a figyelmeztető üzenetet, majd kattintson az **OK gombra** .
+1. Az **új trigger** ablakban tekintse át a figyelmeztető üzenetet, majd kattintson az **OK gombra**.
 
     ![Eseményindító-beállítások – Befejezés gomb](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
 
@@ -129,12 +129,12 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure PowerShellt az ü
     - A **befejezési** elem a **kezdő** elem értéke után egy óra. Ennek megfelelően a trigger 15 percet, 30 percet és 45 percet futtat a kezdési időpont után. Ne felejtse el frissíteni a kezdési időpontot az aktuális UTC-időpontra, a befejezési időt pedig egy órával a kezdési időpontig. 
 
         > [!IMPORTANT]
-        > Az UTC időzóna esetében az időpontnak és a befejezésnek a következő formátumot kell követnie: "éééé-hh-NNTóó: PP: mm **Z** ", míg más időzónák esetében a kezdő időpont és a befejezési idő a "éééé-hh-NNTóó: PP: SS". 
+        > Az UTC időzóna esetében az időpontnak és a befejezésnek a következő formátumot kell követnie: "éééé-hh-NNTóó: PP: mm **Z**", míg más időzónák esetében a kezdő időpont és a befejezési idő a "éééé-hh-NNTóó: PP: SS". 
         > 
         > ISO 8601 standard, a _Z_ utótag, amely az időbélyeget a DateTime értékre (UTC), az időzónát pedig használhatatlanná teszi. Amíg az UTC-időzóna esetében hiányzik a _Z_ utótag, az _aktiváláskor_ hibaüzenetet fog eredményezni.
 
     - Az trigger a **Adfv2QuickStartPipeline** folyamathoz van társítva. Több folyamat egy triggerrel való hozzárendeléséhez vegyen fel további **pipelineReference** szakaszt.
-    - A rövid útmutatóban szereplő folyamat két **paramétert** használ: **inputPath** és **outputPath** . Ezen paraméterek értékeit a triggerből adja át.
+    - A rövid útmutatóban szereplő folyamat két **paramétert** használ: **inputPath** és **outputPath**. Ezen paraméterek értékeit a triggerből adja át.
 
 1. Hozzon létre egy triggert a **set-AzDataFactoryV2Trigger** parancsmag használatával:
 
@@ -287,7 +287,7 @@ Az trigger futtatásának és a folyamat futtatásának figyeléséhez a Azure P
 Trigger létrehozásához használhat Azure Resource Manager sablont. Részletes útmutatásért lásd: Azure-beli [adatelőállító létrehozása Resource Manager-sablonnal](quickstart-create-data-factory-resource-manager-template.md).  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>A trigger indítási idejének átadása egy folyamatnak
-Az 1. verzió Azure Data Factory támogatja a particionált információk olvasását vagy írását a rendszerváltozók használatával: **SliceStart** , **SliceEnd** , **WindowStart** és **WindowEnd** . A Azure Data Factory aktuális verziójában ezt a viselkedést egy folyamat paraméter használatával érheti el. Az trigger indítási időpontja és ütemezett időpontja a folyamat paraméterének értékeként van beállítva. A következő példában az trigger ütemezett ideje a folyamat **scheduledRunTime** paraméterének értékeként lesz átadva:
+Az 1. verzió Azure Data Factory támogatja a particionált információk olvasását vagy írását a rendszerváltozók használatával: **SliceStart**, **SliceEnd**, **WindowStart** és **WindowEnd**. A Azure Data Factory aktuális verziójában ezt a viselkedést egy folyamat paraméter használatával érheti el. Az trigger indítási időpontja és ütemezett időpontja a folyamat paraméterének értékeként van beállítva. A következő példában az trigger ütemezett ideje a folyamat **scheduledRunTime** paraméterének értékeként lesz átadva:
 
 ```json
 "parameters": {
@@ -349,18 +349,18 @@ A következő JSON-definíció bemutatja, hogyan hozhat létre ütemezési és i
 ### <a name="schema-overview"></a>A séma áttekintése
 Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval kapcsolatos ismétlődés és ütemezés fő sémaelemeiről:
 
-| JSON-tulajdonság | Description |
+| JSON-tulajdonság | Leírás |
 |:--- |:--- |
 | **startTime** | Dátum-idő érték. Egyszerű ütemezések esetében a **startTime** tulajdonság értéke az első előfordulásra vonatkozik. Összetett ütemezéseknél az eseményindító nem indul korábban a megadott **startTime** értéknél. <br> UTC időzóna esetén a formátum a `'yyyy-MM-ddTHH:mm:ssZ'` következő:, más időzóna esetén pedig a Format érték `'yyyy-MM-ddTHH:mm:ss'` . |
 | **endTime** | Az eseményindító záró dátuma és időpontja. Az eseményindító nem lesz végrehajtva a megadott záró dátum és idő után. A tulajdonság értéke nem lehet múltbéli időpont. Ez a tulajdonság nem kötelező.  <br> UTC időzóna esetén a formátum a `'yyyy-MM-ddTHH:mm:ssZ'` következő:, más időzóna esetén pedig a Format érték `'yyyy-MM-ddTHH:mm:ss'` . |
 | **timeZone** | Az az időzóna, amelyben a trigger létrejött. Ez a beállítás a kezdési, a **befejezési** és az **ütemezett** időpontot **befolyásolja.** Tekintse meg [a támogatott időzóna listáját](#time-zone-option) |
-| **megismétlődésének** | Az eseményindítóhoz tartozó ismétlődési szabályokat megadó recurrence objektum. A recurrence objektum a **frequency** , **interval** , **endTime** , **count** és **schedule** elemeket támogatja. Recurrence objektum meghatározásakor a **frequency** elem megadása kötelező. A recurrence objektum többi elemének megadása nem kötelező. |
+| **megismétlődésének** | Az eseményindítóhoz tartozó ismétlődési szabályokat megadó recurrence objektum. A recurrence objektum a **frequency**, **interval**, **endTime**, **count** és **schedule** elemeket támogatja. Recurrence objektum meghatározásakor a **frequency** elem megadása kötelező. A recurrence objektum többi elemének megadása nem kötelező. |
 | **frekvencia** | Az eseményindító ismétlődésének gyakorisági egysége. A támogatott értékek például: „minute”, „hour”, „day”, „week”, és „month” (percenként, óránként, naponta, hetente és havonta). |
 | **időköz** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Ha például az **interval** 3, a **frequency** pedig „week”, az eseményindító 3 hetente ismétlődik. |
 | **menetrend** | Az eseményindító ismétlődési ütemezése. Egy megadott **frequency** értékkel rendelkező eseményindító az ismétlődést az ismétlődési ütemezés alapján módosítja. A **schedule** tulajdonságban az ismétlődéshez tartozó módosítások szerepelnek, amelyek alapjául a percek, órák, a hét napja, a hónap napjai és a hét száma szolgál.
 
 > [!IMPORTANT]
-> Az UTC időzóna esetében az időpontnak és a befejezésnek a következő formátumot kell követnie: "éééé-hh-NNTóó: PP: mm **Z** ", míg más időzónák esetében a kezdő időpont és a befejezési idő a "éééé-hh-NNTóó: PP: SS". 
+> Az UTC időzóna esetében az időpontnak és a befejezésnek a következő formátumot kell követnie: "éééé-hh-NNTóó: PP: mm **Z**", míg más időzónák esetében a kezdő időpont és a befejezési idő a "éééé-hh-NNTóó: PP: SS". 
 > 
 > ISO 8601 standard, a _Z_ utótag, amely az időbélyeget a DateTime értékre (UTC), az időzónát pedig használhatatlanná teszi. Amíg az UTC-időzóna esetében hiányzik a _Z_ utótag, az _aktiváláskor_ hibaüzenetet fog eredményezni.
 
@@ -368,12 +368,12 @@ Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval 
 
 | JSON-tulajdonság | Típus | Kötelező | Alapértelmezett érték | Érvényes értékek | Példa |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Sztring | Yes | Nincsenek | ISO-8601 dátum-idők | UTC időzóna esetén `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> egyéb időzóna esetén `"2013-01-09T09:30:00-08:00"` |
-| **timeZone** | Sztring | Yes | Nincsenek | [Időzóna-értékek](#time-zone-option)  | `"UTC"` |
-| **megismétlődésének** | Objektum | Yes | Nincsenek | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **időköz** | Szám | No | 1 | 1–1000 | `"interval":10` |
-| **endTime** | Sztring | Yes | Nincsenek | Egy jövőbeli időpontot jelölő dátum-idő érték. | UTC időzóna esetén `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> egyéb időzóna esetén `"endTime" : "2013-02-09T09:30:00-08:00"`|
-| **menetrend** | Objektum | No | Nincsenek | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | Sztring | Igen | Nincs | ISO-8601 dátum-idők | UTC időzóna esetén `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> egyéb időzóna esetén `"2013-01-09T09:30:00-08:00"` |
+| **timeZone** | Sztring | Igen | Nincs | [Időzóna-értékek](#time-zone-option)  | `"UTC"` |
+| **megismétlődésének** | Objektum | Igen | Nincs | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **időköz** | Szám | Nem | 1 | 1–1000 | `"interval":10` |
+| **endTime** | Sztring | Igen | Nincs | Egy jövőbeli időpontot jelölő dátum-idő érték. | UTC időzóna esetén `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> egyéb időzóna esetén `"endTime" : "2013-02-09T09:30:00-08:00"`|
+| **menetrend** | Objektum | Nem | Nincs | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="time-zone-option"></a>Időzóna-beállítás
 
@@ -381,14 +381,14 @@ Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval 
 
 | Időzóna | UTC-eltolás (nem napfényes mentés) | timeZone értéke | A nyári mentés megtartása | Időbélyegző formátuma |
 | :--- | :--- | :--- | :--- | :--- |
-| Egyezményes világidő | 0 | `UTC` | No | `'yyyy-MM-ddTHH:mm:ssZ'`|
-| Csendes-óceáni idő (PT) | -8 | `Pacific Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Központi idő (CT) | -6 | `Central Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Keleti idő (ET) | -5 | `Eastern Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Greenwichi középidő (GMT) | 0 | `GMT Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Közép-európai téli idő | +1 | `W. Europe Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Indiai téli idő (IST) | + 5:30 | `India Standard Time` | No | `'yyyy-MM-ddTHH:mm:ss'` |
-| Kínai téli idő | + 8 | `China Standard Time` | No | `'yyyy-MM-ddTHH:mm:ss'` |
+| Egyezményes világidő | 0 | `UTC` | Nem | `'yyyy-MM-ddTHH:mm:ssZ'`|
+| Csendes-óceáni idő (PT) | -8 | `Pacific Standard Time` | Igen | `'yyyy-MM-ddTHH:mm:ss'` |
+| Központi idő (CT) | -6 | `Central Standard Time` | Igen | `'yyyy-MM-ddTHH:mm:ss'` |
+| Keleti idő (ET) | -5 | `Eastern Standard Time` | Igen | `'yyyy-MM-ddTHH:mm:ss'` |
+| Greenwichi középidő (GMT) | 0 | `GMT Standard Time` | Igen | `'yyyy-MM-ddTHH:mm:ss'` |
+| Közép-európai téli idő | +1 | `W. Europe Standard Time` | Igen | `'yyyy-MM-ddTHH:mm:ss'` |
+| Indiai téli idő (IST) | + 5:30 | `India Standard Time` | Nem | `'yyyy-MM-ddTHH:mm:ss'` |
+| Kínai téli idő | + 8 | `China Standard Time` | Nem | `'yyyy-MM-ddTHH:mm:ss'` |
 
 Ez a lista nem teljes. Az időzóna-beállítások teljes listáját a Data Factory portál trigger- [létrehozási lapján](#data-factory-ui) tekintheti meg
 
@@ -418,7 +418,7 @@ Ha több **schedule** elem is meg van adva, a kiértékelési sorrend a legnagyo
 A következő táblázat részletesen ismerteti a **schedule** elemeit:
 
 
-| JSON-elem | Description | Érvényes értékek |
+| JSON-elem | Leírás | Érvényes értékek |
 |:--- |:--- |:--- |
 | **perc** | Az óra azon perce, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul>
 | **óra** | A nap azon órái, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul> |
@@ -432,14 +432,14 @@ Ez a szakasz az ismétlődésütemezésekre mutat példákat, és a **schedule**
 
 Ez a példa azt feltételezi, hogy az **interval** értéke 1, és hogy a **frequency** értéke helyes, az ütemezés meghatározása szerint. Nem lehet például a **frequency** értéke „day”, ha a **schedule** objektum „monthDays” értékre lett módosítva. Ez és az ehhez hasonló korlátozások az előző szakaszban található táblázatban szerepelnek.
 
-| Példa | Description |
+| Példa | Leírás |
 |:--- |:--- |
 | `{"hours":[5]}` | Minden nap 05:00-kor fut le. |
 | `{"minutes":[15], "hours":[5]}` | Minden nap 05:15-kor fut le. |
 | `{"minutes":[15], "hours":[5,17]}` | Minden nap 05:15-kor és 17:15-kor fut le. |
 | `{"minutes":[15,45], "hours":[5,17]}` | Minden nap 05:15-kor, 05:45-kor, 17:15-kor és 17:45-kor fut le. |
 | `{"minutes":[0,15,30,45]}` | 15 percenként fut le. |
-| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` | Óránként fut le. Ez az eseményindító óránként fut le. A perceket a **startTime** értéke szabályozza, ha az érték meg van adva. Ha az érték nincs megadva, akkor a perceket a létrehozás ideje szabályozza. Ha például a kezdés időpontja vagy a létrehozás időpontja (amelyik alkalmazható) 12:25, akkor az eseményindító 00:25-kor, 01:25-kor, 02:25-kor stb. fut le, végül pedig 23:25-kor.<br/><br/>Ez az ütemterv egyenértékű az "Hour **" értékkel** rendelkező, az 1. **intervallum** értékkel rendelkező triggerrel, és nincs **ütemterv** .  Ez az ütemezés különböző **frequency** és **interval** értékekkel használható egyéb eseményindítók létrehozásához. Ha például a **Frequency** értéke "Month", az ütemterv csak havonta egyszer fut, nem pedig minden nap, amikor a **Frequency** értéke "Day". |
+| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` | Óránként fut le. Ez az eseményindító óránként fut le. A perceket a **startTime** értéke szabályozza, ha az érték meg van adva. Ha az érték nincs megadva, akkor a perceket a létrehozás ideje szabályozza. Ha például a kezdés időpontja vagy a létrehozás időpontja (amelyik alkalmazható) 12:25, akkor az eseményindító 00:25-kor, 01:25-kor, 02:25-kor stb. fut le, végül pedig 23:25-kor.<br/><br/>Ez az ütemterv egyenértékű az "Hour **" értékkel** rendelkező, az 1. **intervallum** értékkel rendelkező triggerrel, és nincs **ütemterv**.  Ez az ütemezés különböző **frequency** és **interval** értékekkel használható egyéb eseményindítók létrehozásához. Ha például a **Frequency** értéke "Month", az ütemterv csak havonta egyszer fut, nem pedig minden nap, amikor a **Frequency** értéke "Day". |
 | `{"minutes":[0]}` | Minden óra kezdetén fut le. Ez az eseményindító minden óra kezdetén fut le, 00:00-kor, 01:00-kor, 02:00-kor és így tovább.<br/><br/>Ez az ütemezés megegyezik egy olyan eseményindítóval, amely „hour” **frequency** értékkel és nulla perc **startTime** értékkel rendelkezik, vagy nincs **schedule** érték, de a **frequency** értéke „day”. Ha a **frequency** értéke „week” vagy „month”, az ütemezés csak egy héten egyszer vagy egy hónapban egyszer fut le. |
 | `{"minutes":[15]}` | Minden óra 15. percében fut le. Ez az eseményindító minden óra 15. percében fut le, 00:15-kor, 01:15-kor, 02:15-kor és így tovább, egészen 23:15-ig. |
 | `{"hours":[17], "weekDays":["saturday"]}` | Minden héten szombaton, 17:00-kor fut le. |
