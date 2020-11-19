@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 258908ed1118b0463e8c824cd8c699fb460dfff2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a9f8fdda1bc853057f3eb858e85b938357397cd
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947263"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886114"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/dotnet/).
 - Az operációs rendszerhez tartozó legújabb [.net Core ügyféloldali kódtár](https://dotnet.microsoft.com/download/dotnet-core) .
-- Szerezze be a [.net Identity Client Library](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)legújabb verzióját.
+- Szerezze be a [.net Identity Client Library](/dotnet/api/azure.identity?view=azure-dotnet)legújabb verzióját.
 - Szerezze be a [.net Management ügyféloldali kódtár](../../concepts/sdk-options.md)legújabb verzióját.
 
 ## <a name="installing-the-client-library"></a>Az ügyféloldali kódtár telepítése
@@ -44,13 +44,13 @@ Az Azure kommunikációs szolgáltatásokkal való kommunikációhoz először h
 
 ### <a name="option-1-managed-identity"></a>1. lehetőség: felügyelt identitás
 
-Ha a kód Azure-szolgáltatásként fut, a hitelesítés legegyszerűbb módja, ha felügyelt identitást szeretne beszerezni az Azure-ból. További információ a [felügyelt identitásokról](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Ha a kód Azure-szolgáltatásként fut, a hitelesítés legegyszerűbb módja, ha felügyelt identitást szeretne beszerezni az Azure-ból. További információ a [felügyelt identitásokról](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-[Felügyelt identitásokat támogató Azure-szolgáltatások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+[Felügyelt identitásokat támogató Azure-szolgáltatások](../../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
-[Felügyelt identitások használata App Service és Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+[Felügyelt identitások használata App Service és Azure Functions](../../../app-service/overview-managed-identity.md?tabs=dotnet)
 
-#### <a name="system-assigned-managed-identity"></a>[Rendszer által hozzárendelt felügyelt identitás](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
+#### <a name="system-assigned-managed-identity"></a>[Rendszer által hozzárendelt felügyelt identitás](../../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
 
 ```csharp
 using Azure.Identity;
@@ -62,7 +62,7 @@ var subscriptionId = "AZURE_SUBSCRIPTION_ID";
 var acsClient = new CommunicationManagementClient(subscriptionId, new ManagedIdentityCredential());
 ```
 
-#### <a name="user-assigned-managed-identity"></a>[Felhasználó által hozzárendelt felügyelt identitás](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)
+#### <a name="user-assigned-managed-identity"></a>[Felhasználó által hozzárendelt felügyelt identitás](../../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity)
 
 A létrehozott felügyelt identitás ClientId explicit módon át kell adni `ManagedIdentityCredential` .
 
@@ -79,7 +79,7 @@ var acsClient = new CommunicationManagementClient(subscriptionId, managedIdentit
 
 ### <a name="option-2-service-principal"></a>2. lehetőség: egyszerű szolgáltatásnév
 
-Felügyelt identitás használata helyett érdemes lehet az Azure-ban hitelesíteni az Ön által felügyelt egyszerű szolgáltatásnév használatával. További tudnivalókat az [egyszerű szolgáltatásnév létrehozásával és kezelésével](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)kapcsolatos dokumentációban talál Azure Active Directory.
+Felügyelt identitás használata helyett érdemes lehet az Azure-ban hitelesíteni az Ön által felügyelt egyszerű szolgáltatásnév használatával. További tudnivalókat az [egyszerű szolgáltatásnév létrehozásával és kezelésével](../../../active-directory/develop/howto-create-service-principal-portal.md)kapcsolatos dokumentációban talál Azure Active Directory.
 
 Miután létrehozta a szolgáltatásnevet, a következő információkat kell összegyűjtenie a Azure Portalből:
 
@@ -121,7 +121,7 @@ Most, hogy hitelesítve van, használhatja a felügyeleti ügyfelet, hogy API-h�
 
 A következő példák mindegyike esetében a kommunikációs szolgáltatások erőforrásai egy meglévő erőforráscsoporthoz vannak rendelve.
 
-Ha létre kell hoznia egy erőforráscsoportot, ezt a [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) vagy a [Azure Resource Manager ügyféloldali kódtár](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)használatával teheti meg.
+Ha létre kell hoznia egy erőforráscsoportot, ezt a [Azure Portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) vagy a [Azure Resource Manager ügyféloldali kódtár](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)használatával teheti meg.
 
 ### <a name="create-and-manage-a-communication-services-resource"></a>Kommunikációs szolgáltatások erőforrásának létrehozása és kezelése
 

@@ -13,12 +13,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
-ms.openlocfilehash: 3d95ad4aa100b0a185bde015dfe34d747fc77ec9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 095ea62ee992fa12fc80f715f9e63725e9930595
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322602"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886209"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>A kétfaktoros hitelesítéssel és a munkahelyi vagy iskolai fiókkal kapcsolatos gyakori problémák
 
@@ -74,6 +74,7 @@ Az ellenőrző kód nem érkezik gyakori probléma. A probléma általában a mo
 
 Próbálja ki! | Útmutató információk
 --------- | ------------
+A Microsoft hitelesítő alkalmazás vagy az ellenőrző kódok használata | A bejelentkezéskor a "elérte a határértéket az ellenőrző hívások esetében" vagy "a szöveges ellenőrző kódok korlátozása" hibaüzenetet kapta. <br/><br/>A Microsoft egy rövid időn belül korlátozza az ugyanazon felhasználó által végrehajtott ismétlődő hitelesítési kísérleteket. Ez a korlátozás nem vonatkozik a Microsoft Authenticatorra vagy az ellenőrző kódra. Ha elérte ezeket a korlátokat, használhatja a hitelesítő alkalmazást, az ellenőrző kódot, vagy próbáljon meg néhány perc múlva újra bejelentkezni.
 Mobil eszköz újraindítása | Előfordulhat, hogy az eszköz csak a frissítésre van szüksége. Az eszköz újraindításakor az összes háttérbeli folyamat és szolgáltatás véget ér. Az újraindítás az eszköz alapvető összetevőit is leállítja. Az eszköz újraindításakor bármely szolgáltatás vagy összetevő frissül.
 Ellenőrizze, hogy helyesek-e a biztonsági adatok | Győződjön meg arról, hogy a biztonsági ellenőrzési módszer adatai pontosak, különösen a telefonszámok. Ha helytelen telefonszámot helyez üzembe, az összes riasztás nem megfelelő számú. Szerencsére a felhasználó nem fog tudni bármit megtenni a riasztásokkal, de nem segít bejelentkezni a fiókjába. Az adatok helyességének biztosításához tekintse meg a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md) című cikket.
 Ellenőrizze, hogy be vannak-e kapcsolva az értesítések | Győződjön meg arról, hogy a mobileszköz értesítések bekapcsolva. Győződjön meg arról, hogy a következő értesítési módok engedélyezettek: <br/><br/> &bull; Telefonhívások <br/> &bull; A hitelesítési alkalmazás <br/> &bull; Szöveges üzenetküldési alkalmazás <br/><br/> Győződjön meg arról, hogy ezek a módok olyan riasztást hoznak létre, amely _látható_ az eszközön.

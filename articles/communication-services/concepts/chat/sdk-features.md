@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3b66c962758afc28da3c6be938c13d768c4f2572
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b239cf6d253c1c2d2e36d213e92e0b218add3f8c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91666143"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94885988"
 ---
 # <a name="chat-client-library-overview"></a>A csevegési ügyfélkódtár áttekintése
 
@@ -50,11 +50,11 @@ A következő lista a kommunikációs szolgáltatások csevegési ügyféloldali
 |                    | Értesítés küldése, ha egy másik csevegési szál tagja begépel                                                             | ✔️   | ❌    | ❌    | ❌  |
 |                    | Értesítés küldése, ha egy másik tag beolvasott egy üzenetet (olvasási visszaigazolás) a csevegési szálban                               | ✔️   | ❌    | ❌    | ❌  |
 | Események             | Event Grid használata a csevegési szálakkal kapcsolatos felhasználói tevékenységre való előfizetéshez és az egyéni értesítési szolgáltatások és az üzleti logika integrálásához     | ✔️   | ✔️  | ✔️    | ✔️  |
-| Nyomon követés        | Használat figyelése az elküldött üzenetek tekintetében                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
+| Figyelés        | Használat figyelése az elküldött üzenetek tekintetében                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Az alkalmazás által végzett API-kérelmek minőségének és állapotának, valamint a riasztások a portálon keresztüli konfigurálásának monitorozása                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
-|További funkciók | A [Cognitive Services API-k](https://docs.microsoft.com/azure/cognitive-services/) és a csevegő ügyféloldali kódtár használatával is lehetővé teszi az intelligens funkciók – *nyelvi fordítás & a beérkező üzenet hangulati elemzését egy ügyfélen, a szöveg átalakítását egy üzenet összeállításához, miközben a tag beszél stb.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+|További funkciók | A [Cognitive Services API-k](../../../cognitive-services/index.yml) és a csevegő ügyféloldali kódtár használatával is lehetővé teszi az intelligens funkciók – *nyelvi fordítás & a beérkező üzenet hangulati elemzését egy ügyfélen, a szöveg átalakítását egy üzenet összeállításához, miközben a tag beszél stb.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a csevegéssel](../../quickstarts/chat/get-started.md)

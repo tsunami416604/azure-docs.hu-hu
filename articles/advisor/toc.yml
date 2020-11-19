@@ -13,6 +13,10 @@
         - name: ARM-sablon
           displayName: Resource Manager
           href: advisor-alerts-arm.md
+- name: Alapelvek
+  items:
+    - name: Biztonsági alapkonfiguráció
+      href: security-baseline.md
 - name: Oktatóanyagok
   items:
     - name: Bevezetés az Advisor használatába

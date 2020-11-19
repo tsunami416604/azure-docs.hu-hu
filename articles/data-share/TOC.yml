@@ -25,6 +25,10 @@
       displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: Alapelvek
   items:
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Az Azure Data Share terminológiája
       href: terminology.md
     - name: Szerepkörök és követelmények

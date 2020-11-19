@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: c85624d9eced3130a1c7b99943095688beee62bd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 63cc4448034b6a2ae2d74f4a2d9a0a62296678cf
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93417588"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886481"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Tervezett karbantartási értesítések Azure Database for MySQL – egyetlen kiszolgálón
 
@@ -21,7 +21,7 @@ Megtudhatja, hogyan készítheti elő a tervezett karbantartási eseményeket a 
 
 A Azure Database for MySQL szolgáltatás a mögöttes hardver, operációs rendszer és adatbázismotor automatizált javítását végzi. A javítás új szolgáltatás-funkciókat, biztonságot és szoftverfrissítéseket tartalmaz. A MySQL-motor esetében az alverziók frissítése automatikusan megtörténik, és a javítási ciklus részeként szerepel. Nincs szükség felhasználói műveletre vagy konfigurációs beállításra a javításhoz. A javítást széles körben tesztelik, és a biztonságos üzembe helyezési eljárások használatával végezhető el.
 
-A tervezett karbantartás karbantartási időszak, ha ezek a szolgáltatások egy adott Azure-régióban lévő kiszolgálókra vannak telepítve. A tervezett karbantartás során létrejön egy értesítési esemény, amely tájékoztatja a felhasználókat, ha a szolgáltatás frissítését a kiszolgálókat üzemeltető Azure-régióban helyezik üzembe. A két tervezett karbantartás közötti minimális időtartam 30 nap. Értesítést kap a következő karbantartási időszak 72 órával előre.
+A tervezett karbantartás karbantartási időszak, ha ezek a szolgáltatások egy adott Azure-régióban lévő kiszolgálókra vannak telepítve. A tervezett karbantartás során a rendszer létrehoz egy értesítési eseményt, amely tájékoztatja az ügyfeleket, hogy mikor megy végbe a szolgáltatásfrissítés üzembe helyezése abban az Azure-régióban, amelyben a kiszolgálóik találhatók. A két tervezett karbantartás közötti minimális időtartam 30 nap. A következő karbantartási időszakról 72 órával korábban értesítést kap.
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>Tervezett karbantartás – időtartam és az ügyfelek hatása
 
@@ -48,7 +48,7 @@ Megtekintheti a tervezett karbantartási értesítést Azure Portal vagy konfigu
 
 1. A [Azure Portal](https://portal.azure.com)válassza a **Service Health** lehetőséget.
 2. **Tervezett karbantartás** lap kiválasztása
-3. Válassza ki az **előfizetést** , a **régiót** és a **szolgáltatást** , amelynek a tervezett karbantartási értesítését ellenőriznie szeretné. 
+3. Válassza ki az **előfizetést**, a **régiót** és a **szolgáltatást** , amelynek a tervezett karbantartási értesítését ellenőriznie szeretné. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Tervezett karbantartási értesítés fogadása
 
@@ -56,7 +56,7 @@ Megtekintheti a tervezett karbantartási értesítést Azure Portal vagy konfigu
 2. A **riasztások** szakaszban válassza az **állapot riasztások** lehetőséget.
 3. Válassza a **+ szolgáltatás állapotára vonatkozó riasztás hozzáadása** lehetőséget, és töltse ki a mezőket.
 4. Töltse ki a kötelező mezőket. 
-5. Válassza ki az **esemény típusát** , válassza a **tervezett karbantartás** lehetőséget, vagy **válassza az összes lehetőséget** .
+5. Válassza ki az **esemény típusát**, válassza a **tervezett karbantartás** lehetőséget, vagy **válassza az összes lehetőséget** .
 6. A **műveleti csoportok** azt határozzák meg, hogyan szeretné fogadni a riasztást (e-mail küldése, logikai alkalmazás elindítása stb.)  
 7. Győződjön meg arról, hogy az engedélyezés szabály a létrehozáskor Igen értékre van állítva.
 8. Válassza a riasztási **szabály létrehozása** lehetőséget a riasztás befejezéséhez
@@ -76,9 +76,9 @@ Nem, az összes Azure-régió javítás alatt áll a telepítési Wise-ablak id�
 Egy átmeneti hiba (más néven átmeneti hiba) egy olyan hiba, amely magát a megoldást fogja megoldani. [Átmeneti hibák](./concepts-connectivity.md#transient-errors) merülhetnek fel a karbantartás során. Az események többségét a rendszer automatikusan csökkenti a 60 másodpercnél kisebb mértékben. Az átmeneti hibákat az [újrapróbálkozási logikával](./concepts-connectivity.md#handling-transient-errors)kell kezelni.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ha bármilyen kérdése vagy javaslata van a Azure Database for MySQL használatáról, küldjön e-mailt a Azure Database for MySQL csapatának a következő címen: *AskAzureDBforMySQL@service.microsoft.com* .
+- Ha bármilyen kérdése vagy javaslata van a Azure Database for MySQL használatáról, küldjön e-mailt a Azure Database for MySQL csapatának a következő címen: **AskAzureDBforMySQL@service.microsoft.com** .
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-on-metric.md) című témakörben tekintheti meg.
 - [Azure Database for MySQL – egyetlen kiszolgáló kapcsolódási problémáinak elhárítása](howto-troubleshoot-common-connection-issues.md)
 - [Átmeneti hibák kezelése és hatékony kapcsolódás Azure Database for MySQL – egyetlen kiszolgálóhoz](concepts-connectivity.md)

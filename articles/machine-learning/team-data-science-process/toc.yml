@@ -64,10 +64,6 @@
       href: walkthroughs-sql-server.md
     - name: T-SQL és Python az Azure Synapse Analyticsszel
       href: walkthroughs-sql-data-warehouse.md
-- name: Segédprogramok és eszközök
-  items:
-    - name: Adatfeltárási és -modellezési segédprogramok (GitHub)
-      href: 'https://github.com/Azure/Azure-TDSP-Utilities'
 - name: Képzés
   items:
     - name: Adatszakértők számára

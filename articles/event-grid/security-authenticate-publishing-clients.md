@@ -4,12 +4,12 @@ description: Ez a cikk különböző módszereket ismertet az ügyfelek közzét
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d38d4ffc868d442980cda576ea158704231f9efb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c415b7e1bb6bd7a2116da82c7d8f1de205009d0
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856330"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886260"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>Közzétételi ügyfelek hitelesítése (Azure Event Grid)
 Ez a cikk a **hozzáférési kulcs** vagy a **közös hozzáférésű aláírás (SAS)** token használatával Azure Event Grid témaköröket vagy tartományokat közzétevő ügyfelek hitelesítésével kapcsolatos információkat tartalmaz. A SAS-token használatát javasoljuk, de a kulcsos hitelesítés egyszerű programozást biztosít, és számos meglévő webhook-közzétevővel kompatibilis.  
@@ -82,7 +82,7 @@ def generate_sas_token(uri, key, expiry=3600):
 ```
 
 ### <a name="using-aeg-sas-token-header"></a>Az AEG-sas-token fejléc használata
-Íme egy példa arra, hogy az SAS-tokent a fejléc értékeként adja át `aeg-sas-toke` . 
+Íme egy példa arra, hogy az SAS-tokent a fejléc értékeként adja át `aeg-sas-token` . 
 
 ```http
 aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevents&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d

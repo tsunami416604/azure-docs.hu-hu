@@ -10,18 +10,18 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: 8b606108d0e33ba1dd49e37c0f407b0caa350f6b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a93ac3b5d988be33c0f27726a75b1006f990d1da
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667503"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886107"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Gyors útmutató: kommunikációs szolgáltatások erőforrásainak létrehozása és kezelése
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommunikációs szolgáltatások erőforrásának kiépítési folyamatával. A kommunikációs szolgáltatások erőforrásai a Azure Portalon vagy a .NET Management ügyféloldali kódtáran keresztül is kiterjeszthetők. A felügyeleti ügyféloldali kódtár segítségével létrehozhatja, konfigurálhatja, frissítheti és törölheti az erőforrásait és felületeit [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview), az Azure üzembe helyezési és felügyeleti szolgáltatásával. Az ügyféloldali kódtárakban elérhető összes funkció elérhető a Azure Portal. 
+Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommunikációs szolgáltatások erőforrásának kiépítési folyamatával. A kommunikációs szolgáltatások erőforrásai a Azure Portalon vagy a .NET Management ügyféloldali kódtáran keresztül is kiterjeszthetők. A felügyeleti ügyféloldali kódtár segítségével létrehozhatja, konfigurálhatja, frissítheti és törölheti az erőforrásait és felületeit [Azure Resource Manager](../../azure-resource-manager/management/overview.md), az Azure üzembe helyezési és felügyeleti szolgáltatásával. Az ügyféloldali kódtárakban elérhető összes funkció elérhető a Azure Portal. 
 
 > [!WARNING]
 > Vegye figyelembe, hogy a kommunikációs szolgáltatások elérhetősége a nyilvános előzetes verzióban az USA földrajzára korlátozódik. Azt is vegye figyelembe, hogy a kommunikációs erőforrások nem vihetők át másik előfizetésre a nyilvános előzetes verzió során.
@@ -47,8 +47,8 @@ A kommunikációs szolgáltatások erőforráshoz való navigálás után válas
 A kommunikációs szolgáltatások ügyféloldali kódtárai a kapcsolati karakterláncokat használják a kommunikációs szolgáltatásokhoz intézett kérések engedélyezésére. A következő több lehetőség áll rendelkezésre a kapcsolatok karakterláncának tárolásához:
 
 * Az asztalon vagy eszközön futó alkalmazás a kapcsolati karakterláncot egy **app.config** vagy **web.config** fájlban tárolja. Adja hozzá a kapcsolódási karakterláncot a **appSettings** szakaszhoz ezekben a fájlokban.
-* Egy Azure App Service futó alkalmazás a [app Service alkalmazás beállításaiban](https://docs.microsoft.com/azure/app-service/configure-common)tárolhatja a kapcsolatok karakterláncát. Adja hozzá a kapcsolódási karakterláncot a portál Alkalmazásbeállítások lapján található **kapcsolódási karakterláncok** szakaszhoz.
-* A [Azure Key Vaultban](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)tárolhatók a kapcsolatok karakterláncai.
+* Egy Azure App Service futó alkalmazás a [app Service alkalmazás beállításaiban](../../app-service/configure-common.md)tárolhatja a kapcsolatok karakterláncát. Adja hozzá a kapcsolódási karakterláncot a portál Alkalmazásbeállítások lapján található **kapcsolódási karakterláncok** szakaszhoz.
+* A [Azure Key Vaultban](../../data-factory/store-credentials-in-key-vault.md)tárolhatók a kapcsolatok karakterláncai.
 * Ha helyileg futtatja az alkalmazást, érdemes lehet a kapcsolódási karakterláncot egy környezeti változóban tárolni.
 
 ### <a name="store-your-connection-string-in-an-environment-variable"></a>A kapcsolatok karakterláncának tárolása környezeti változóban
@@ -93,7 +93,7 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 
 Ha az erőforrás törlése után bármilyen telefonszáma van rendelve az erőforráshoz, a telefonszámok automatikusan kikerülnek az erőforrásból egy időben. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta a következőket:
 

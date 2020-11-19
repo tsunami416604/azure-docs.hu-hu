@@ -114,8 +114,8 @@
           href: overview-authentication-authorization.md
         - name: Az operációs rendszer és a futtatókörnyezet javítása
           href: overview-patch-os-runtime.md
-        - name: Beépített biztonsági vezérlők
-          href: app-service-security-controls.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
