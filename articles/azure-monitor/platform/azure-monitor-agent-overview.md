@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 466851ce04a047f3edabcf33b45dba9cab0db20e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 76f541a45c56669d17103f16997f3d036955b773
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132703"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919682"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor-ügynök áttekintése (előzetes verzió)
 A Azure Monitor ügynök (AMA) figyeli a virtuális gépek vendég operációs rendszerének figyelési adatait, és a Azure Monitor számára biztosítja azt. Ez a cikk áttekintést nyújt a Azure Monitor-ügynökről, beleértve a telepítésének módját és az adatgyűjtés konfigurálását.
@@ -76,9 +76,9 @@ A következő táblázat felsorolja, hogy milyen típusú adatok gyűjthetők ö
 
 A Azure Monitor ügynök adatokat küld Azure Monitor metrikák vagy egy Log Analytics munkaterületre, amely támogatja Azure Monitor naplókat.
 
-| Adatforrás | Célhelyek | Description |
+| Adatforrás | Célhelyek | Leírás |
 |:---|:---|:---|
-| Teljesítmény        | Azure Monitor metrikák<br>Log Analytics-munkaterület | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
+| Teljesítmény        | Azure Monitor-metrikák<br>Log Analytics-munkaterület | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
 | Windows-eseménynaplók | Log Analytics-munkaterület | A Windows eseménynaplózási rendszernek eljuttatott információk. |
 | Rendszernapló             | Log Analytics-munkaterület | A Linux-eseménynaplózási rendszernek eljuttatott információk. |
 
@@ -101,7 +101,7 @@ A Azure Monitor ügynök Azure-beli virtuálisgép- [bővítményként](../../vi
 |:---|:---|:---|
 | Publisher | Microsoft. Azure. monitor  | Microsoft. Azure. monitor |
 | Típus      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1.0 | 1.5 |
+| TypeHandlerVersion  | 1,0 | 1.5 |
 
 Telepítse a Azure Monitor-ügynököt a virtuálisgép-ügynökök telepítésének bármely módszerével, beleértve az alábbiakat a PowerShell vagy a parancssori felület használatával. Azt is megteheti, hogy telepítheti az ügynököt, és az Azure-előfizetésben lévő virtuális gépeken is konfigurálhatja az adatgyűjtést a portálon az [adatgyűjtés konfigurálása a Azure monitor ügynökhöz (előzetes verzió)](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal)című szakaszban ismertetett eljárással.
 
@@ -134,7 +134,7 @@ az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Mo
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
 
 ```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
+Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus -TypeHandlerVersion 1.5
 ```
 ---
 

@@ -3,12 +3,12 @@ title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
 description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezéseknek a használatát, kiértékelheti a [*] aliast, és hozzáfűzheti az elemeket Azure Policy definíciós szabályokkal.
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 92339a6da4fd2061d66935cc8d04428c69822862
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 60044d4a599c14088ea923a6a14cb46543646995
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323225"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920457"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
@@ -28,7 +28,7 @@ Ez a cikk a Azure Policy egyes használatát ismerteti, és számos példát tar
 ### <a name="define-a-parameter-array"></a>Paraméter-tömb definiálása
 
 A paraméter tömbként való meghatározása lehetővé teszi a szabályzat rugalmasságát, ha egynél több értékre van szükség.
-Ez a szabályzat-definíció lehetővé teszi, hogy a **allowedLocations** paraméter egyetlen helye legyen, és az alapértelmezett érték a _eastus2_ :
+Ez a szabályzat-definíció lehetővé teszi, hogy a **allowedLocations** paraméter egyetlen helye legyen, és az alapértelmezett érték a _eastus2_:
 
 ```json
 "parameters": {
@@ -44,7 +44,7 @@ Ez a szabályzat-definíció lehetővé teszi, hogy a **allowedLocations** param
 }
 ```
 
-A **Type** _karakterlánc_ volt, csak egy érték állítható be a szabályzat kiosztásakor. Ha ez a szabályzat hozzá van rendelve, a hatókörben lévő erőforrások csak egyetlen Azure-régión belül engedélyezettek. A legtöbb szabályzat-definíciónak lehetővé kell tennie a jóváhagyott beállítások listáját, például a _eastus2_ , a _eastus_ és a _westus2_ engedélyezését.
+A **Type** _karakterlánc_ volt, csak egy érték állítható be a szabályzat kiosztásakor. Ha ez a szabályzat hozzá van rendelve, a hatókörben lévő erőforrások csak egyetlen Azure-régión belül engedélyezettek. A legtöbb szabályzat-definíciónak lehetővé kell tennie a jóváhagyott beállítások listáját, például a _eastus2_, a _eastus_ és a _westus2_ engedélyezését.
 
 Ha a házirend-definíciót több beállítás engedélyezéséhez szeretné létrehozni, használja a _tömb_ **típusát**. Ugyanezt a szabályzatot a következőképpen lehet újraírni:
 
@@ -75,7 +75,7 @@ Ez az új paraméter-definíció egynél több értéket vesz igénybe a szabál
 
 ### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Értékek átadása egy paraméter-tömbnek a hozzárendelés során
 
-Ha a házirendet a Azure Portalon keresztül rendeli hozzá, a _tömb_ **típusú** paraméterek egyetlen szövegmezőként jelennek meg. A tipp a "use; az értékek elkülönítéséhez. (pl.: London; New York) ". Ha át szeretné adni a _eastus2_ , a _eastus_ és a _westus2_ engedélyezett tárolási értékeit a paraméternek, használja a következő karakterláncot:
+Ha a házirendet a Azure Portalon keresztül rendeli hozzá, a _tömb_ **típusú** paraméterek egyetlen szövegmezőként jelennek meg. A tipp a "use; az értékek elkülönítéséhez. (pl.: London; New York) ". Ha át szeretné adni a _eastus2_, a _eastus_ és a _westus2_ engedélyezett tárolási értékeit a paraméternek, használja a következő karakterláncot:
 
 `eastus2;eastus;westus2`
 
@@ -95,13 +95,13 @@ A paraméter értékének formátuma eltérő az Azure CLI, Azure PowerShell vag
 
 Ha ezt a sztringet az egyes SDK-kal szeretné használni, használja a következő parancsokat:
 
-- Azure CLI: parancs [az Policy hozzárendelés-létrehozás](/cli/azure/policy/assignment#az-policy-assignment-create) paraméter **-paraméterekkel**
+- Azure CLI: parancs [az Policy hozzárendelés-létrehozás](/cli/azure/policy/assignment#az_policy_assignment_create) paraméter **-paraméterekkel**
 - Azure PowerShell: parancsmag [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) paraméterrel **PolicyParameter**
 - REST API: a _put_ [create](/rest/api/resources/policyassignments/create) művelet a kérelem törzsének részeként a **Tulajdonságok. Parameters** tulajdonság értékeként
 
 ## <a name="array-conditions"></a>Tömb feltételei
 
-A (z) és a _array_ (z) paraméterrel a (z) és a (z) rendszerhez használható [szabályra vonatkozó szabályok](../concepts/definition-structure.md#conditions) érvényesek 
+A (z) és a _array_(z) paraméterrel a (z) és a (z) rendszerhez használható [szabályra vonatkozó szabályok](../concepts/definition-structure.md#conditions) érvényesek 
  **type** `in` `notIn` . Példaként a következő házirend-definíciót használja `equals` :
 
 ```json
@@ -311,7 +311,7 @@ Ez a viselkedés beágyazott tömbökkel is működik. Például a következő `
 }
 ```
 
-A ereje a `count` `where` feltételben van. Ha meg van adva, Azure Policy enumerálja a tömb tagjait, és kiértékeli a feltételt, és megszámolja, hogy hány tömb tagja értékeli ki a rendszer `true` . Pontosabban, a `where` feltétel kiértékelésének minden iterációjában Azure Policy kiválaszt egy tömbbeli tagot * **i** _-t, és kiértékeli az erőforrás tartalmát a (z `where` ) * állapottal szemben, _Ha * *_i_*_ az a array_ * tagja. Az egyes iterációkban csak egy tömbös tag érhető el, így összetett feltételeket alkalmazhat az egyes tömb tagjain.
+A ereje a `count` `where` feltételben van. Ha meg van adva, Azure Policy enumerálja a tömb tagjait, és kiértékeli a feltételt, és megszámolja, hogy hány tömb tagja értékeli ki a rendszer `true` . Pontosabban, a `where` feltétel kiértékelésének minden iterációjában Azure Policy kiválaszt egy tömbbeli tagot ***i** _-t, és kiértékeli az erőforrás tartalmát a (z `where` ) * állapottal szemben, _Ha **_i_*_ az a array_ * tagja. Az egyes iterációkban csak egy tömbös tag érhető el, így összetett feltételeket alkalmazhat az egyes tömb tagjain.
 
 Példa:
 ```json
@@ -424,7 +424,7 @@ A `field()` függvények a `where` következő fogalmakon alapuló módon viselk
 1. `field()` a tömb Aliasokra hivatkozó függvények a kijelölt értékekkel rendelkező tömböt adnak vissza.
 1. Ha a feltételben a megszámolt tömb aliasára hivatkozik, a függvény egy olyan `where` gyűjteményt ad vissza, amely egyetlen, az aktuális iterációban kiértékelt értékkel rendelkező tömbből van kiválasztva.
 
-Ez azt jelenti, hogy amikor a feltételben lévő függvénnyel hivatkozik a megszámolt tömbre, a függvény egy olyan `field()` `where` **tömböt ad vissza, amely egyetlen taggal** rendelkezik. Habár ez nem lehet intuitív, összhangban van azzal a gondolattal, hogy a Array aliasok mindig a kiválasztott tulajdonságok gyűjteményét adják vissza. Például:
+Ez azt jelenti, hogy amikor a feltételben lévő függvénnyel hivatkozik a megszámolt tömbre, a függvény egy olyan `field()` `where` **tömböt ad vissza, amely egyetlen taggal** rendelkezik. Habár ez nem lehet intuitív, összhangban van azzal a gondolattal, hogy a Array aliasok mindig a kiválasztott tulajdonságok gyűjteményét adják vissza. Bemutatunk egy példát:
 
 ```json
 {

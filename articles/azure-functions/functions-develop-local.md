@@ -1,14 +1,14 @@
 ---
-title: Az Azure functions fejlesztése és futtatása helyileg
-description: Megtudhatja, hogyan teheti meg az Azure functions szolgáltatást a helyi számítógépen, mielőtt futtatja őket a Azure Functionson.
+title: Azure Functions helyi fejlesztése és futtatása
+description: Megtudhatja, hogyan végezheti el a Azure Functions kódolását és tesztelését a helyi számítógépen, mielőtt a Azure Functions futtatja őket.
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: e8af075f39cf25e39e5098d3c6aa27cac9018d2f
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: c011dff9f43de59d3f08445a7bbd5387b27563ad
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422943"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920032"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Az Azure Functions helyi kódolása és tesztelése
 
@@ -29,7 +29,7 @@ A funkciók helyi számítógépen való fejlesztésének módja a [nyelvi](supp
 
 A helyi fejlesztési környezetek mindegyike lehetővé teszi a Function app-projektek létrehozását és az előre definiált függvények sablonjait új függvények létrehozásához. Mindegyik a legfontosabb eszközöket használja, így a saját gépén lévő valós functions-futtatókörnyezettel ugyanúgy tesztelheti és hibakeresést végezhet, mint bármely más alkalmazás esetében. A Function app-projektet bármelyik környezetből az Azure-ba is közzéteheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + További információ a lefordított C# függvények helyi fejlesztéséről a Visual Studio 2019 használatával: [Azure functions fejlesztése a Visual Studióval](functions-develop-vs.md).
 + Ha többet szeretne megtudni a függvények helyi fejlesztéséről Mac, Linux vagy Windows rendszerű számítógépeken a VS Code használatával, olvassa el a [Azure functions telepítése a vs Code-ból](/azure/developer/javascript/tutorial-vscode-serverless-node-01)című témakört.

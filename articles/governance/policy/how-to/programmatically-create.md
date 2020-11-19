@@ -3,12 +3,12 @@ title: Szabályzatok létrehozása programozott módon
 description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet szabályzatokat az Azure CLI-vel, a Azure PowerShelltal és a REST APIokkal Azure Policy.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 2bf2b1864331fd785ecdd70be4af79be01f1e5e0
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491800"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920015"
 ---
 # <a name="programmatically-create-policies"></a>Szabályzatok létrehozása programozott módon
 
@@ -203,7 +203,7 @@ Házirend-definíció létrehozásához kövesse az alábbi eljárást:
    ```
 
    A parancs létrehoz egy naplózási fiók nevű házirend-definíciót a _nyilvános hálózatokhoz_.
-   További információ a használható egyéb paraméterekről: [az Policy definition Create](/cli/azure/policy/definition#az-policy-definition-create).
+   További információ a használható egyéb paraméterekről: [az Policy definition Create](/cli/azure/policy/definition#az_policy_definition_create).
 
    Ha a hely paramétereinek megadása nélkül hívja meg őket, az `az policy definition creation` alapértelmezett érték a házirend-definíció mentése a munkamenetek környezetének kiválasztott előfizetésében. Ha a definíciót másik helyre szeretné menteni, használja a következő paramétereket:
 
@@ -237,7 +237,7 @@ Az Ön által létrehozott szabályzat-definíció AZONOSÍTÓjának a következ
 
 Az erőforrás-házirendek Azure CLI-vel való kezelésével kapcsolatos további információkért lásd: [Azure CLI erőforrás-házirendek](/cli/azure/policy).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A cikkben szereplő parancsokkal és lekérdezésekkel kapcsolatos további információkért tekintse át a következő cikkeket.
 

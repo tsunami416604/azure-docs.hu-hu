@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/11/2020
+ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 4b4c02efffb39e88a01c35d3c818930a0f6fd9cf
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8a1c789759f1119a6170fffc2c70874cd9a32fde
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069755"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919683"
 ---
 # <a name="known-issues-application-provisioning"></a>Ismert problémák: az alkalmazás kiépítés
 Ismert problémák az alkalmazások kiépítés közbeni használatáról. A UserVoice-on futó alkalmazás-kiépítési szolgáltatással kapcsolatban az [Azure ad Application UserVoice](https://aka.ms/appprovisioningfeaturerequest)című témakörben talál visszajelzést. Szorosan Figyeljük a UserVoice, így javíthatjuk a szolgáltatást. 
@@ -86,6 +86,9 @@ A kiépítés `enabled = off` vagy a Leállítás megszakadása esetén az aktu�
 
 Ha egy csoport hatókörben van, és egy tag kívül esik a hatókörön, a rendszer kiépíti a csoportot. A hatókörön kívüli felhasználó nem lesz kiépítve. Ha a tag visszatér a hatókörbe, a szolgáltatás nem ismeri fel azonnal a változást. A kiépítés újraindítása a probléma megoldásához vezet. Javasoljuk, hogy a szolgáltatás rendszeres újraindítása után ellenőrizze, hogy az összes felhasználó megfelelően van-e kiépítve.  
 
+**A kezelő nincs kiépítve**
+
+Ha a felhasználó és a felettesük is a kiépítés hatókörében van, akkor a szolgáltatás kiépíti a felhasználót, majd frissíti a kezelőt. Ha azonban a felhasználó a hatókörén belül van, és a felettes nem a hatókörön kívül esik, a felhasználót a felettesi hivatkozás nélkül fogjuk kiépíteni. Ha a felettes hatókörbe kerül, a kezelői hivatkozás addig nem frissül, amíg újra nem indítja az üzembe helyezést, és a szolgáltatás újra kiértékeli az összes felhasználót. 
 
 ## <a name="next-steps"></a>Következő lépések
 - [Az üzembe helyezés menete](how-provisioning-works.md)

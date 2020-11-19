@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 61313a1790fe51cb26168622cc871076c40bb511
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1c9ae694fefcede599331d5d57a298bda4739f53
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887433"
+ms.locfileid: "94920525"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Tervezett karbantartási értesítés Azure Database for MariaDB
 
@@ -78,7 +78,7 @@ Egy átmeneti hiba (más néven átmeneti hiba) egy olyan hiba, amely magát a m
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha bármilyen kérdése vagy javaslata van a Azure Database for MariaDB használatáról, küldjön e-mailt a Azure Database for MariaDB csapatának **AskAzureDBforMariaDB@service.microsoft.com**
+- Ha bármilyen kérdése vagy javaslata van a Azure Database for MariaDB használatáról, küldjön e-mailt a Azure Database for MariaDB csapatának AskAzureDBforMariaDB@service.microsoft.com
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-metric.md) című témakörben tekintheti meg.
 - [Az Azure Database for MariaDB-hez való csatlakozás hibáinak elhárítása](howto-troubleshoot-common-connection-issues.md)
 - [Átmeneti hibák kezelése és hatékony kapcsolódás Azure Database for MariaDB](concepts-connectivity.md)

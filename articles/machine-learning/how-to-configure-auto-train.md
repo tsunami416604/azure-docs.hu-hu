@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: b49b9f710a98495342687c4ce1dc702078b27246
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f4546433f5bd20e2f001d6d868d8adfb4b9bf8c0
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535333"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920372"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
@@ -103,7 +103,7 @@ Ha nem ad meg explicit módon a `validation_data` vagy a `n_cross_validation` pa
 |Betanítási &nbsp; &nbsp; adatméret| Érvényesítési módszer |
 |---|-----|
 |**Nagyobb, &nbsp; mint &nbsp; 20 000 &nbsp; sor**| A betanítási/érvényesítési adatfelosztást alkalmazza a rendszer. Az alapértelmezett érték a kezdeti betanítási adatkészlet 10%-át adja meg az érvényesítési készletként. Ezt az ellenőrzési készletet pedig a metrikák számításához használja a rendszer.
-|**Kisebb, &nbsp; mint &nbsp; 20 000 &nbsp; sor**| A rendszer több ellenőrzési módszert alkalmaz. A kidobások alapértelmezett száma a sorok számától függ. <br> **Ha az adatkészlet kevesebb mint 1 000 sor, a** rendszer 10 karámot használ. <br> **Ha a sorok 1 000 és 20 000 között vannak** , akkor három hajtogatás van használatban.
+|**Kisebb, &nbsp; mint &nbsp; 20 000 &nbsp; sor**| A rendszer több ellenőrzési módszert alkalmaz. A kidobások alapértelmezett száma a sorok számától függ. <br> **Ha az adatkészlet kevesebb mint 1 000 sor, a** rendszer 10 karámot használ. <br> **Ha a sorok 1 000 és 20 000 között vannak**, akkor három hajtogatás van használatban.
 
 Jelenleg a modell kiértékeléséhez meg kell adnia a saját **tesztelési adatait** . Ha például a modell kiértékeléséhez saját tesztelési adatait szeretné bemutatni, tekintse meg a [Jupyter-jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb) **tesztelési** szakaszát.
 
@@ -130,26 +130,24 @@ Néhány példa:
 1. A besorolási kísérlet az elsődleges metrika és a kísérlet időkorlátja alapján AUC súlyozottan 30 percre van beállítva, a két kereszt-ellenőrzési hajtogatás pedig 2.
 
    ```python
-       automl_classifier=AutoMLConfig(
-       task='classification',
-       primary_metric='AUC_weighted',
-       experiment_timeout_minutes=30,
-       blocked_models=['XGBoostClassifier'],
-       training_data=train_data,
-       label_column_name=label,
-       n_cross_validations=2)
+       automl_classifier=AutoMLConfig(task='classification',
+                                      primary_metric='AUC_weighted',
+                                      experiment_timeout_minutes=30,
+                                      blocked_models=['XGBoostClassifier'],
+                                      training_data=train_data,
+                                      label_column_name=label,
+                                      n_cross_validations=2)
    ```
 1. Az alábbi példa egy olyan regressziós kísérlet, amely 60 perc után fejeződik be, és öt ellenőrző kereszttel rendelkezik.
 
    ```python
-      automl_regressor = AutoMLConfig(
-      task='regression',
-      experiment_timeout_minutes=60,
-      allowed_models=['KNN'],
-      primary_metric='r2_score',
-      training_data=train_data,
-      label_column_name=label,
-      n_cross_validations=5)
+      automl_regressor = AutoMLConfig(task='regression',
+                                      experiment_timeout_minutes=60,
+                                      allowed_models=['KNN'],
+                                      primary_metric='r2_score',
+                                      training_data=train_data,
+                                      label_column_name=label,
+                                      n_cross_validations=5)
    ```
 
 
@@ -301,6 +299,18 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
+<a name="exit"></a> 
+
+### <a name="exit-criteria"></a>Kilépési feltételek
+
+A AutoMLConfig megadhat néhány lehetőséget a kísérlet befejezéséhez.
+
+|Feltételek| leírás
+|----|----
+Nincsenek &nbsp; feltételek | Ha nem ad meg kilépési paramétereket, a kísérlet addig folytatódik, amíg az elsődleges metrika nem végez további előrehaladást.
+&nbsp; &nbsp; Hosszú &nbsp; &nbsp; idő után| A `experiment_timeout_minutes` beállítások segítségével megadhatja, hogy a kísérlet hány perc elteltével fusson tovább. <br><br> Ha el szeretné kerülni az időtúllépési kísérletek elkerülését, legalább 15 percet vagy 60 percet is igénybe vehet, ha az oszlop mérete meghaladja a 10 000 000-es sorszámot.
+&nbsp;Elérte A &nbsp; pontszámot &nbsp; &nbsp;| `experiment_exit_score`A használata a kísérlet befejezése után a megadott elsődleges metrikai pontszám elérésekor.
+
 ## <a name="run-experiment"></a>Kísérlet futtatása
 
 Az automatikus ML esetében hozzon létre egy `Experiment` objektumot, amely egy megnevezett objektum, amely a `Workspace` kísérletek futtatására szolgál.
@@ -327,17 +337,15 @@ run = experiment.submit(automl_config, show_output=True)
 >A függőségek először egy új gépre települnek.  A kimenet megjelenítése előtt akár 10 percet is igénybe vehet.
 >A `show_output` beállítás `True` hatására a rendszer kimenet jelenik meg a konzolon.
 
- <a name="exit"></a> 
+### <a name="multiple-child-runs-on-clusters"></a>Több gyermek fut a fürtökön
 
-### <a name="exit-criteria"></a>Kilépési feltételek
+Az automatizált ML-kísérletek alárendelt futtatása olyan fürtön végezhető el, amely már futtat egy másik kísérletet. Az időzítés azonban attól függ, hogy a fürt hány csomópontja van, és ha ezek a csomópontok egy másik kísérlet futtatására is használhatók.
 
-A kísérlet befejezéséhez több lehetőség is megadható.
+A fürt minden csomópontja önálló virtuális gépnek (VM) működik, amely egyetlen betanítási futtatást képes végrehajtani. automatizált ML esetén a gyermek futtatását jelenti. Ha az összes csomópont foglalt, az új kísérlet várólistára kerül. Ha azonban ingyenes csomópontok vannak, az új kísérlet automatikusan futtatja az automatikus ML-t a rendelkezésre álló csomópontokon/virtuális gépeken.
 
-|Feltételek| leírás
-|----|----
-Nincsenek &nbsp; feltételek | Ha nem ad meg kilépési paramétereket, a kísérlet addig folytatódik, amíg az elsődleges metrika nem végez további előrehaladást.
-&nbsp; &nbsp; Hosszú &nbsp; &nbsp; idő után| A `experiment_timeout_minutes` beállítások segítségével megadhatja, hogy a kísérlet hány perc elteltével fusson tovább. <br><br> Ha el szeretné kerülni az időtúllépési kísérletek elkerülését, legalább 15 percet vagy 60 percet is igénybe vehet, ha az oszlop mérete meghaladja a 10 000 000-es sorszámot.
-&nbsp;Elérte A &nbsp; pontszámot &nbsp; &nbsp;| `experiment_exit_score`A használata a kísérlet befejezése után a megadott elsődleges metrikai pontszám elérésekor.
+A gyermekek futtatásának kezeléséhez és a végrehajtásuk elvégzéséhez javasoljuk, hogy kísérletezzen egy dedikált fürtöt, és egyezzen a `max_concurrent_iterations` fürt csomópontjainak számával. Így a fürt összes csomópontját egyszerre kell használni az egyidejű alárendelt futtatások/ismétlések számával.
+
+Konfigurálás  `max_concurrent_iterations` az `AutoMLConfig` objektumban. Ha nincs konfigurálva, a rendszer alapértelmezés szerint csak egy egyidejű alárendelt futtatási/iterációs kísérletet engedélyez.  
 
 ## <a name="explore-models-and-metrics"></a>Modellek és mérőszámok megismerése
 
@@ -348,7 +356,7 @@ Lásd: az [automatizált gépi tanulási kísérlet eredményeinek kiértékelé
 A featurization összegzéséhez és az adott modellhez hozzáadott funkciók megismeréséhez lásd: [featurization átlátszósága](how-to-configure-auto-features.md#featurization-transparency). 
 
 > [!NOTE]
-> Az automatizált ML-algoritmusok olyan véletlenszerű adatmennyiséget alkalmaznak, amely kisebb eltérést okozhat az ajánlott modellek végső mérőszámok pontszámában, például a pontosságban. Az automatizált ML olyan adatokra is végrehajt műveleteket, mint például a vonat-teszt felosztása, a vonat-ellenőrzés felosztása vagy a kereszt-érvényesítés, ha szükséges. Tehát ha egy kísérletet ugyanazzal a konfigurációs beállításokkal és az elsődleges metrikával többször is futtat, akkor valószínű, hogy az egyes kísérleteknél a végső metrikák pontszáma a következő tényezők miatt fog megjelenni. 
+> A (z) automatizált ML-algoritmusok olyan véletlenszerű adatmennyiséget alkalmaznak, amely kisebb eltérést okozhat az ajánlott modell végleges mérőszámok pontszámában, például a pontosságban. Az automatizált ML olyan adatokra is végrehajt műveleteket, mint például a vonat-teszt felosztása, a vonat-ellenőrzés felosztása vagy a kereszt-érvényesítés, ha szükséges. Tehát ha egy kísérletet ugyanazzal a konfigurációs beállításokkal és az elsődleges metrikával többször is futtat, akkor valószínű, hogy az egyes kísérleteknél a végső metrikák pontszáma a következő tényezők miatt fog megjelenni. 
 
 ## <a name="register-and-deploy-models"></a>Modellek regisztrálása és üzembe helyezése
 

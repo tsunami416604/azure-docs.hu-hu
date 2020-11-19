@@ -4,12 +4,12 @@ description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történ
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: cb8306da4022ea1819e2da32a2f513c83bed309f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 685b84f1e628ea67689d3de8bf64c9641edba6fc
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309371"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920508"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 
@@ -67,7 +67,7 @@ A bérlő azonosítója azonosítja azt az Azure AD-bérlőt, amely hitelesíté
 
 1. A Azure Portal válassza ki a Active Directory.
 1. Válassza ki a **Tulajdonságok** elemet.
-1. Másolja a **címtár-azonosítóhoz**megadott GUID értéket. Ezt az értéket a bérlői AZONOSÍTÓnak is nevezik.
+1. Másolja a **címtár-azonosítóhoz** megadott GUID értéket. Ezt az értéket a bérlői AZONOSÍTÓnak is nevezik.
 
 ![Képernyőkép a Azure Portal található címtár-AZONOSÍTÓról.](./media/batch-aad-auth/aad-directory-id.png)
 
@@ -77,15 +77,15 @@ Az integrált hitelesítéssel történő hitelesítéshez meg kell adnia az alk
 
 Miután regisztrálta az alkalmazást, kövesse az alábbi lépéseket a Azure Portal, hogy hozzáférést biztosítson a Batch szolgáltatáshoz:
 
-1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget, majd válassza az **alkalmazás-regisztrációk**lehetőséget.
+1. A Azure Portal válassza a **minden szolgáltatás** lehetőséget, majd válassza az **alkalmazás-regisztrációk** lehetőséget.
 1. Keresse meg az alkalmazás nevét az alkalmazások regisztrációinak listájában.
-1. Válassza ki az alkalmazást, és válassza az **API-engedélyek**lehetőséget.
-1. Az **API-engedélyek** szakaszban válassza az **engedély hozzáadása**elemet.
-1. Az **API kiválasztása lapon**keressen rá a Batch API kifejezésre. Keressen rá az egyes sztringekre, addig amíg meg nem találja az API-t:
+1. Válassza ki az alkalmazást, és válassza az **API-engedélyek** lehetőséget.
+1. Az **API-engedélyek** szakaszban válassza az **engedély hozzáadása** elemet.
+1. Az **API kiválasztása lapon** keressen rá a Batch API kifejezésre. Keressen rá az egyes sztringekre, addig amíg meg nem találja az API-t:
     1. **Microsoft Azure Batch**
     1. A **ddbf3205-c6bd-46ae-8127-60eb93363864** a Batch API azonosítója.
-1. Miután megtalálta a Batch API-t, jelölje ki, majd válassza a **kiválasztás**lehetőséget.
-1. Az **engedélyek kiválasztása**területen jelölje be a **hozzáférés Azure batch szolgáltatás** melletti jelölőnégyzetet, majd válassza az **engedélyek hozzáadása**elemet.
+1. Miután megtalálta a Batch API-t, jelölje ki, majd válassza a **kiválasztás** lehetőséget.
+1. Az **engedélyek kiválasztása** területen jelölje be a **hozzáférés Azure batch szolgáltatás** melletti jelölőnégyzetet, majd válassza az **engedélyek hozzáadása** elemet.
 
 Az **API-engedélyek** szakasz azt mutatja, hogy az Azure ad-alkalmazás a Microsoft Graph és a Batch szolgáltatás API-ját is elérheti. Az Azure AD-vel való első regisztráláskor az engedélyek Microsoft Graph automatikusan megadhatók.
 
@@ -102,9 +102,9 @@ Ha az alkalmazás egy egyszerű szolgáltatással végzi a hitelesítést, az az
 
 Hajtsa végre a következő lépéseket az Azure Portalon:
 
-1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Válassza az **alkalmazás-regisztrációk**lehetőséget.
+1. A Azure Portal válassza a **minden szolgáltatás** lehetőséget. Válassza az **alkalmazás-regisztrációk** lehetőséget.
 1. Válassza ki az alkalmazást az alkalmazás-regisztrációk listájából.
-1. Válassza ki az alkalmazást, majd válassza a **tanúsítványok & Secrets**elemet. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka**elemet.
+1. Válassza ki az alkalmazást, majd válassza a **tanúsítványok & Secrets** elemet. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka** elemet.
 1. Titkos kód létrehozásához adja meg a titok leírását. Ezután válasszon ki egy évet, két évet vagy nincs lejáratot a titkos kulcshoz.
 1. A titok létrehozásához és megjelenítéséhez válassza a **Hozzáadás** lehetőséget. Másolja a titkos értéket egy biztonságos helyre, mivel az oldal elhagyása után többé nem fog tudni hozzáférni.
 
@@ -117,7 +117,7 @@ Az egyszerű szolgáltatással történő hitelesítéshez Azure-RBAC kell rende
 1. Válassza ki a **szerepkör-hozzárendelések** lapot.
 1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
 1. A **szerepkör** legördülő listából válassza ki az alkalmazás *közreműködő* vagy *olvasó* szerepkörét. További információ ezekről a szerepkörökről: [Az Azure szerepköralapú hozzáférés-vezérlésének első lépései a Azure Portal](../role-based-access-control/overview.md).
-1. A **Select (kiválasztás** ) mezőben adja meg az alkalmazás nevét. Válassza ki az alkalmazást a listából, majd válassza a **Mentés**lehetőséget.
+1. A **Select (kiválasztás** ) mezőben adja meg az alkalmazás nevét. Válassza ki az alkalmazást a listából, majd válassza a **Mentés** lehetőséget.
 
 Az alkalmazásnak ekkor meg kell jelennie a hozzáférés-vezérlési beállításaiban egy hozzárendelt Azure-szerepkörrel.
 
@@ -193,7 +193,7 @@ A bérlő azonosítója azonosítja azt az Azure AD-bérlőt, amely hitelesíté
 
 1. A Azure Portal válassza ki a Active Directory.
 1. Válassza ki a **Tulajdonságok** elemet.
-1. Másolja a **címtár-azonosítóhoz**megadott GUID értéket. Ezt az értéket a bérlői AZONOSÍTÓnak is nevezik.
+1. Másolja a **címtár-azonosítóhoz** megadott GUID értéket. Ezt az értéket a bérlői AZONOSÍTÓnak is nevezik.
 
 ![A könyvtár AZONOSÍTÓjának másolása](./media/batch-aad-auth/aad-directory-id.png)
 
@@ -268,13 +268,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 Állítson össze egy **BatchTokenCredentials** objektumot, amely a delegált paraméterként veszi át. A hitelesítő adatok használatával nyisson meg egy **BatchClient** objektumot. Ezt a **BatchClient** -objektumot használhatja a következő műveletekhez a Batch szolgáltatásban:
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```
@@ -336,13 +336,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 Állítson össze egy **BatchTokenCredentials** objektumot, amely a delegált paraméterként veszi át. A hitelesítő adatok használatával nyisson meg egy **BatchClient** objektumot. Ezután használja a **BatchClient** objektumot a következő műveletekhez a Batch szolgáltatáshoz:
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```

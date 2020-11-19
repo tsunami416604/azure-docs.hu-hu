@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan exportálhat Azure Policy erőforrásokat a Git
 ms.date: 10/29/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c16ceed755cab3228b8f9e401f486a0629f3a60d
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 923b063244f6f47def1c3e6a63d6e4d6b3b88083
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025714"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919565"
 ---
 # <a name="export-azure-policy-resources"></a>Azure Policy-erőforrások exportálása
 
@@ -23,16 +23,16 @@ A házirend-definíció Azure Portalból való exportálásához kövesse az al�
 
 1. A Azure Policy lap bal oldalán válassza a **definíciók** lehetőséget.
 
-1. Használja a **definíciók exportálása** gombot, vagy válasszon egy házirend-definíció sorában található három pontot, majd válassza az **Exportálás definícióját** .
+1. Használja a **definíciók exportálása** gombot, vagy válasszon egy házirend-definíció sorában található három pontot, majd válassza az **Exportálás definícióját**.
 
 1. Válassza a **Bejelentkezés a GitHub** gombbal lehetőséget. Ha még nem hitelesítette a GitHubot, hogy engedélyezze Azure Policy az erőforrás exportálását, tekintse át a megnyíló új ablakban a [GitHub-műveletre](https://github.com/features/actions) vonatkozó igényeket, és válassza a **AzureGitHubActions engedélyezése** lehetőséget az exportálási folyamat folytatásához. Ha elkészült, az új ablak saját bezárása.
 
 1. Az **alapvető** beállítások lapon adja meg a következő beállításokat, majd válassza a **házirendek** lapot vagy a **Tovább: házirendek** gombot az oldal alján.
 
-   - **Adattár szűrője** : állítsa a saját _Tárházak_ lehetőségre, hogy csak az Ön tulajdonában lévő adattárakat, illetve az _összes tárházat_ lássuk, hogy a GitHub-művelethez való hozzáférése megtörténjen.
-   - **Adattár** : állítsa be azt a tárházat, amelybe exportálni szeretné a Azure Policy erőforrásokat.
-   - **Ág** : az ág beállítása a tárházban. Az alapértelmezetttől eltérő ág használata jó módszer a frissítések érvényesítésére, mielőtt a forráskódba összevonja őket.
-   - **Könyvtár** : a _legfelső szintű mappa_ , amelybe exportálni szeretné a Azure Policy erőforrásokat. A könyvtár alatti almappákat a rendszer az exportált erőforrások alapján hozza létre.
+   - **Adattár szűrője**: állítsa a saját _Tárházak_ lehetőségre, hogy csak az Ön tulajdonában lévő adattárakat, illetve az _összes tárházat_ lássuk, hogy a GitHub-művelethez való hozzáférése megtörténjen.
+   - **Adattár**: állítsa be azt a tárházat, amelybe exportálni szeretné a Azure Policy erőforrásokat.
+   - **Ág**: az ág beállítása a tárházban. Az alapértelmezetttől eltérő ág használata jó módszer a frissítések érvényesítésére, mielőtt a forráskódba összevonja őket.
+   - **Könyvtár**: a _legfelső szintű mappa_ , amelybe exportálni szeretné a Azure Policy erőforrásokat. A könyvtár alatti almappákat a rendszer az exportált erőforrások alapján hozza létre.
 
 1. A **házirendek** lapon állítsa be a keresési hatókört úgy, hogy kijelöli a három pontot, és kiválasztja a felügyeleti csoportok, előfizetések vagy erőforráscsoportok kombinációját.
    
@@ -63,9 +63,9 @@ A Azure Policy-erőforrások a kiválasztott GitHub-adattár és a _gyökér szi
 
 Azure Policy definíciók, kezdeményezések és hozzárendelések mindegyike JSON-ként exportálható az [Azure CLI](/cli/azure/install-azure-cli)használatával. Ezek a parancsok egy **Name** paraméterrel határozzák meg, hogy melyik objektum kapja meg a JSON-t. A **Name** tulajdonság gyakran _GUID_ , és nem az objektum **DisplayName** .
 
-- Definíció – [az Policy definition show](/cli/azure/policy/definition#az-policy-definition-show)
-- Kezdeményezés – [az Policy set-definition show](/cli/azure/policy/set-definition#az-policy-set-definition-show)
-- Hozzárendelés – [az Policy-hozzárendelés megjelenítése](/cli/azure/policy/assignment#az-policy-assignment-show)
+- Definíció – [az Policy definition show](/cli/azure/policy/definition#az_policy_definition_show)
+- Kezdeményezés – [az Policy set-definition show](/cli/azure/policy/set-definition#az_policy_set_definition_show)
+- Hozzárendelés – [az Policy-hozzárendelés megjelenítése](/cli/azure/policy/assignment#az_policy_assignment_show)
 
 Íme egy példa arra, hogyan történik a JSON beszerzése egy _VirtualMachineStorage_ **nevű** szabályzat-definícióhoz:
 

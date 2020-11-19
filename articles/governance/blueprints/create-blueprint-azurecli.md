@@ -3,12 +3,12 @@ title: 'Rövid útmutató: terv létrehozása az Azure CLI-vel'
 description: Ebben a rövid útmutatóban Azure-tervezeteket használ az összetevők létrehozásához, definiálásához és üzembe helyezéséhez az Azure CLI használatával.
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 790e23897a24ea06565572163b8226af88e0bb7c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 88ccd3fe6271a79d201007954e7997b68d2dc69b
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057960"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920559"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Gyors útmutató: Azure Blueprint megadása és hozzárendelése az Azure CLI-vel
 
@@ -116,9 +116,9 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
      > [!NOTE]
      > A terv definícióinak importálásakor használja a filename _blueprint.js_ .
-     > Ezt a fájlnevet a [terv importálásának](/cli/azure/ext/blueprint/blueprint#ext-blueprint-az-blueprint-import)meghívásakor használja a rendszer.
+     > Ezt a fájlnevet a [terv importálásának](/cli/azure/ext/blueprint/blueprint#ext_blueprint_az_blueprint_import)meghívásakor használja a rendszer.
 
-     A terv objektum alapértelmezés szerint az alapértelmezett előfizetésben jön létre. A felügyeleti csoport megadásához használja a **managementgroup**paramétert. Az előfizetés megadásához használja a paraméter- **előfizetést**.
+     A terv objektum alapértelmezés szerint az alapértelmezett előfizetésben jön létre. A felügyeleti csoport megadásához használja a **managementgroup** paramétert. Az előfizetés megadásához használja a paraméter- **előfizetést**.
 
 1. Adja hozzá a tárolási összetevőkhöz tartozó erőforráscsoportot a definícióhoz.
 

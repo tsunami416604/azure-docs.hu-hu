@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289783"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919930"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Információk az Azure Key Vault-tanúsítványokról
 
@@ -44,8 +44,17 @@ Key Vault-tanúsítvány létrehozásakor a megcímezhető titkos kulcsból a PF
 
 A címezhető kulcs nagyobb jelentőséggel bír a nem exportálható KV-tanúsítványok esetén. A megcímezhető KV-kulcs műveletei a KV tanúsítvány létrehozásához használt KV-os tanúsítvány-házirend *kulcshasználat* mezőjéből vannak leképezve.  
 
+A tanúsítványok által támogatott kulcspár típusa
+
  - Támogatott főtípusok: az RSA, az RSA-HSM, az EC, az EC-HSM, a TOT ( [itt](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)felsorolva) csak az RSA, az EC esetében engedélyezett. A HSM-kulcsok nem exportálhatók.
 
+|Kulcs típusa|Névjegy|Biztonság|
+|--|--|--|
+|**RSA**| "Szoftveres védelemmel ellátott" RSA-kulcs|FIPS 140-2 1. szint|
+|**RSA – HSM**| "HSM-védelemmel ellátott" RSA-kulcs (csak prémium SKU)|FIPS 140-2 2. szint HSM|
+|**EC**| "Szoftveres védelemmel ellátott" elliptikus görbe kulcsa|FIPS 140-2 1. szint|
+|**EC – HSM**| "HSM-védelemmel ellátott" elliptikus görbe kulcsa (csak prémium SKU)|FIPS 140-2 2. szint HSM|
+|||
 
 ## <a name="certificate-attributes-and-tags"></a>Tanúsítvány attribútumai és címkéi
 
@@ -57,14 +66,14 @@ A tanúsítvány attribútumai a megcímezhető kulcs és titkos kód attribútu
 
 A Key Vault tanúsítványa a következő tulajdonságokkal rendelkezik:  
 
--   *engedélyezve* : logikai, nem kötelező, az alapértelmezett érték **true (igaz** ). Megadható annak jelzése, hogy a tanúsítvány adatai titkos fájlként, vagy kulcsként működnek-e. A *NBF* és az *exp* együttes használata esetén is használatos, ha a *NBF* és az *exp* közötti művelet történik, és csak akkor lesz engedélyezve, ha a beállítás értéke TRUE (igaz). A *NBF* és az *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva.  
+-   *engedélyezve*: logikai, nem kötelező, az alapértelmezett érték **true (igaz**). Megadható annak jelzése, hogy a tanúsítvány adatai titkos fájlként, vagy kulcsként működnek-e. A *NBF* és az *exp* együttes használata esetén is használatos, ha a *NBF* és az *exp* közötti művelet történik, és csak akkor lesz engedélyezve, ha a beállítás értéke TRUE (igaz). A *NBF* és az *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva.  
 
 A válaszban további írásvédett attribútumok is szerepelnek:
 
--   *Létrehozva* : IntDate: azt jelzi, hogy mikor jött létre a tanúsítvány ezen verziója.  
--   *frissítve* : IntDate: azt jelzi, hogy a tanúsítvány ezen verziója frissítve lett-e.  
--   *exp* : IntDate: az x509-tanúsítvány lejárati dátumának értékét tartalmazza.  
--   *NBF* : IntDate: a x509-tanúsítvány dátumának értékét tartalmazza.  
+-   *Létrehozva*: IntDate: azt jelzi, hogy mikor jött létre a tanúsítvány ezen verziója.  
+-   *frissítve*: IntDate: azt jelzi, hogy a tanúsítvány ezen verziója frissítve lett-e.  
+-   *exp*: IntDate: az x509-tanúsítvány lejárati dátumának értékét tartalmazza.  
+-   *NBF*: IntDate: a x509-tanúsítvány dátumának értékét tartalmazza.  
 
 > [!Note] 
 > Ha egy Key Vault-tanúsítvány lejár, az ahhoz tartozó címezhető kulcs és titkos kulcs nem fog működni.  
@@ -103,14 +112,14 @@ A következő táblázat a x509-használati szabályzat hozzárendelését mutat
 
 |**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment|titkosítás, visszafejtés| N/A |
-|DecipherOnly|visszafejteni| N/A  |
+|DataEncipherment|titkosítás, visszafejtés| N.A. |
+|DecipherOnly|visszafejteni| N.A.  |
 |DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|EncipherOnly|encrypt| N/A |
-|KeyCertSign|aláírás, ellenőrzés|N/A|
+|EncipherOnly|encrypt| N.A. |
+|KeyCertSign|aláírás, ellenőrzés|N.A.|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N/A |
-|crlsign|aláírás, ellenőrzés| N/A |
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N.A. |
+|crlsign|aláírás, ellenőrzés| N.A. |
 
 ## <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 

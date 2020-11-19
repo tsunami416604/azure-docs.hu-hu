@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: adac986cfa1a975ced7ef579c088ed2739778bf5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1813da8a8a812eeded235d71c351ec352c42707c
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841807"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920083"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -117,7 +117,11 @@ Ha úgy állította be a Storage-fiókot, hogy az engedélyezze a hozzáférést
 ### <a name="create-or-update-data-export-rule"></a>Adatexportálási szabály létrehozása vagy frissítése
 Az adatexportálási szabály a táblák egy adott célhelyére exportálandó adatmennyiséget határozza meg. Minden célhoz létrehozhat egy szabályt.
 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 Az alábbi CLI-paranccsal megtekintheti a munkaterületen lévő táblákat. Ez segíthet a kívánt táblák másolásában és az adatexportálási szabályban való felvételében.
+
 ```azurecli
 az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
 ```
@@ -133,6 +137,8 @@ A következő parancs használatával hozzon létre egy adatexportálási szabá
 ```azurecli
 az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 Az alábbi kérelem használatával hozzon létre egy adatexportálási szabályt a REST API használatával. A kérelemnek tulajdonosi jogkivonat-engedélyezést és Content Type Application/JSON-t kell használnia.
 
@@ -193,26 +199,38 @@ Az alábbi példa egy Event hub REST-kérelmére szolgál, ahol az Event hub nev
   }
 }
 ```
+---
 
 ## <a name="view-data-export-configuration"></a>Adatexportálási konfiguráció megtekintése
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 Az alábbi parancs használatával megtekintheti az adatexportálási szabály konfigurációját a parancssori felület használatával.
 
 ```azurecli
 az monitor log-analytics workspace data-export show --resource-group resourceGroupName --workspace-name workspaceName --name ruleName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 Az alábbi kérelem használatával megtekintheti az adatexportálási szabály konfigurációját a REST API használatával. A kérelemnek tulajdonosi jogkivonat-hitelesítést kell használnia.
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+---
 
 ## <a name="disable-an-export-rule"></a>Exportálási szabály letiltása
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 Az exportálási szabályok letilthatók, így leállíthatja az exportálást, ha nem kell megtartania az adott időszakra vonatkozó adatmegőrzési időt, például ha a teszt végrehajtása folyamatban van. Használja az alábbi parancsot egy adatexportálási szabály letiltásához a parancssori felület használatával.
 
 ```azurecli
 az monitor log-analytics workspace data-export update --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --enable false
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 Az alábbi kérelem használatával tilthatja le az adatexportálási szabályt a REST API használatával. A kérelemnek tulajdonosi jogkivonat-hitelesítést kell használnia.
 
@@ -234,32 +252,45 @@ Content-type: application/json
     }
 }
 ```
+---
 
 ## <a name="delete-an-export-rule"></a>Exportálási szabály törlése
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 Az alábbi parancs használatával törölhet egy adatexportálási szabályt a parancssori felület használatával.
 
 ```azurecli
 az monitor log-analytics workspace data-export delete --resource-group resourceGroupName --workspace-name workspaceName --name ruleName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 Az alábbi kérelem használatával törölheti az adatexportálási szabályt a REST API használatával. A kérelemnek tulajdonosi jogkivonat-hitelesítést kell használnia.
 
 ```rest
 DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>A munkaterület összes adatexportálási szabályának megtekintése
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 A következő parancs használatával tekintheti meg a munkaterület összes adatexportálási szabályát a parancssori felület használatával.
 
 ```azurecli
 az monitor log-analytics workspace data-export list --resource-group resourceGroupName --workspace-name workspaceName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 A következő kérelem használatával megtekintheti a munkaterület összes adatexportálási szabályát a REST API használatával. A kérelemnek tulajdonosi jogkivonat-hitelesítést kell használnia.
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports?api-version=2020-08-01
 ```
+---
 
 ## <a name="unsupported-tables"></a>Nem támogatott táblák
 Ha az adatexportálási szabály nem támogatott táblát tartalmaz, akkor a konfiguráció sikeres lesz, de a rendszer nem exportálja az adott táblára vonatkozó adatvesztést. Ha a tábla később támogatott, akkor a rendszer az adott időpontban exportálja az adatforrásokat.

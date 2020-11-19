@@ -4,12 +4,12 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: f83413bc54164107b8e8a4e6010f8a826a5fe327
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c9a8b5f9e02cc76789755bf81d309826de1459c5
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888419"
+ms.locfileid: "94920593"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -237,7 +237,7 @@ Igen, az ügyfelek egy CSP által felügyelt Azure-előfizetésen belül telepí
 
 A Microsoft támogatást nyújt az Azure VMware-megoldáshoz. Egy [támogatási kérelmet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)is küldhet. 
 
-A CSP által felügyelt előfizetések esetében az első támogatási szintet a megoldás szolgáltatója fogja biztosítani, ugyanúgy, mint a CSP más Azure-szolgáltatásokhoz.
+A CSP által felügyelt előfizetések esetében a megoldás szolgáltatója az első támogatási szintet ugyanúgy biztosítja, mint a CSP más Azure-szolgáltatásokhoz.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Milyen fiókokra van szükségem egy Azure VMware-megoldás saját Felhőbeli létrehozásához?
 
@@ -247,9 +247,9 @@ Egy Azure-előfizetésben Azure-fiókra lesz szüksége.
 
 A Microsoft és a Red hat olyan integrált, közösen elhelyezett támogatási csapattal rendelkezik, amely egységes kapcsolattartási pontot biztosít az Azure platformon futó Red Hat-ökoszisztémák számára.  A Red Hat Enterprise Linux-vel dolgozó egyéb Azure platform-szolgáltatásokhoz hasonlóan az Azure VMware megoldás a Felhőbeli hozzáférés és az integrált támogatás égisze alá tartozik, és a Red Hat Enterprise Linux támogatott az Azure VMware-megoldáson belüli futtatásához.
 
-#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Elérhető a VMware HCX Enterprise Edition, és ha igen, Mennyibe kerül?
+#### <a name="is-vmware-hcx-enterprise-available-and-if-so-how-much-does-it-cost"></a>Elérhető a VMware HCX Enterprise, és ha igen, Mennyibe kerül?
 
-A VMware HCX Enterprise Edition (EE) elérhető az Azure VMware-megoldással, amely *előzetes* funkcióként vagy szolgáltatásként érhető el. Habár az Azure VMware-megoldáshoz készült VMware HCX EE előzetes verzióban érhető el, ingyenes funkció vagy szolgáltatás, és az előzetes verziójú szolgáltatási feltételek és kikötések érvényesek. Miután a VMware HCX EE szolgáltatás elérhetővé válik, 30 napos értesítést kap arról, hogy a számlázás átvált. Kikapcsolhatja vagy letilthatja a szolgáltatást.
+A VMware HCX Enterprise Azure VMware-megoldásként érhető el *előzetes* verziójú funkcióként vagy szolgáltatásként. Habár a VMware HCX Enterprise for Azure VMware megoldás előzetes verzióban érhető el, ez egy ingyenes funkció/szolgáltatás, és az előzetes verziójú szolgáltatási feltételek és kikötések érvényesek. Miután a VMware HCX Enterprise Service-t elvégezte, egy 30 napos értesítést kap arról, hogy a számlázás átvált. Kikapcsolhatja vagy letilthatja a szolgáltatást.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Hogyan az Azure VMware-megoldáshoz tartozó gazdagép-kvóta növelését?
 
@@ -260,8 +260,7 @@ EA-előfizetések esetén kövesse az alábbi eljárást. Először a következ�
 * [Azure-nagyvállalati szerződés (EA)](../cost-management-billing/manage/ea-portal-agreements.md) a Microsofttal.
 * Azure-fiók Azure-előfizetésben.
 
-Az Azure VMware-megoldási erőforrás létrehozása előtt támogatási jegyet kell benyújtania a csomópontok lefoglalásához. A kérés megerősítése és a csomópontok lefoglalása akár öt munkanapot is igénybe vesz. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több csomópontot szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie.
-
+Az Azure VMware-megoldási erőforrás létrehozása előtt küldjön be egy támogatási jegyet a csomópontok lefoglalásához. A kérés megerősítése és a csomópontok lefoglalása akár öt munkanapot is igénybe vesz. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több csomópontot szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie.
 
 1. A Azure Portal a Súgó és **támogatás** területen hozzon létre egy **[új támogatási kérést](https://rc.portal.azure.com/#create/Microsoft.Support)** , és adja meg a következő információkat a jegyhez:
    - **Probléma típusa:** Technikai

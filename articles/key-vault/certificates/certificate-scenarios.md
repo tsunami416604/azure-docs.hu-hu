@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9c1a08161dafa500e9cab2038621c2329cfe6d27
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286892"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920440"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Bevezetés a Key Vault-tanúsítványok használatába
 A következő forgatókönyvek felvázolják az Key Vault tanúsítványkezelő szolgáltatásának számos elsődleges használatát, beleértve az első tanúsítvány a kulcstartóban való létrehozásához szükséges további lépéseket.
@@ -113,7 +113,6 @@ A AKV 2 PEM-alapú formátumot támogat. Egyesítheti az egyetlen PKCS # 8 kódo
 
 -----A TANÚSÍTVÁNY----------A ZÁRÓ TANÚSÍTVÁNY MEGKEZDÉSE-----
 
-Jelenleg nem támogatottak az EC-kulcsok PEM formátumban.
 
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Tanúsítvány létrehozása olyan HITELESÍTÉSSZOLGÁLTATÓval, amely nem partneri kapcsolatban áll a Key Vault  
  Ez a módszer lehetővé teszi a más CAs-k használatát, mint a Key Vault partneri szolgáltatói, ami azt jelenti, hogy a szervezete egy tetszőleges HITELESÍTÉSSZOLGÁLTATÓval működik.  

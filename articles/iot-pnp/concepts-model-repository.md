@@ -3,16 +3,16 @@ title: Az eszköz modell-tárházával kapcsolatos fogalmak ismertetése | Micro
 description: Megoldás fejlesztőként vagy informatikai szakemberként megismerheti az eszköz modell tárházának alapvető fogalmait.
 author: rido-min
 ms.author: rmpablos
-ms.date: 09/30/2020
+ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4e15ef5256c1552fc8ab7fb9bd84f15bb3433834
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: b567efe2541bb33c905def73bb78398799b4ed69
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131360"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920542"
 ---
 # <a name="device-model-repository"></a>Eszköz modell tárháza
 
@@ -30,7 +30,7 @@ A Microsoft a következő tulajdonságokkal rendelkező nyilvános DMR üzemelte
 
 ## <a name="custom-device-model-repository"></a>Egyéni eszköz modell tárháza
 
-Az egyéni DMR létrehozásához használhatja ugyanazt a DMR-mintát bármilyen adathordozón, például a helyi fájlrendszerben vagy az egyéni HTTP-webkiszolgálókon is. Az egyéni DMR ugyanúgy kérhet le eszközöket, mint a nyilvános DMR, így egyszerűen megváltoztathatja a DMR eléréséhez használt alap URL-címet.
+Ugyanazt a DMR mintát használva egyéni DMR hozhat létre bármely tárolóeszközben, például helyi fájlrendszerben vagy egyéni HTTP-webkiszolgálókban. Az egyéni DMR ugyanúgy kérhet le eszközöket, mint a nyilvános DMR, ha módosítja a DMR eléréséhez használt alap URL-címet.
 
 > [!NOTE]
 > A Microsoft eszközöket biztosít a nyilvános DMR lévő eszközök modelljeinek ellenőrzéséhez. Ezeket az eszközöket egyéni adattárakban is felhasználhatja.
@@ -47,9 +47,9 @@ A mappákban található összes felület `dtmi` a nyilvános végpontról is el
 
 ### <a name="resolve-models"></a>Modellek feloldása
 
-Ezen felületek programozott eléréséhez át kell alakítania egy DTMI egy relatív elérési útra, amelynek segítségével lekérdezheti a nyilvános végpontot. A következő mintakód bemutatja, hogyan teheti meg ezt:
+Ezen felületek programozott eléréséhez át kell alakítania egy DTMI egy relatív elérési útra, amelynek segítségével lekérdezheti a nyilvános végpontot.
 
-DTMI átalakítása abszolút elérési útra a függvényt használjuk a következővel `DtmiToPath` `IsValidDtmi` :
+A DTMI abszolút elérési útra való átalakításához használja a következő `DtmiToPath` függvényt `IsValidDtmi` :
 
 ```cs
 static string DtmiToPath(string dtmi)
@@ -87,45 +87,80 @@ string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 
 1. A nyilvános GitHub-tárház elágazása: [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models) .
 1. Az elágazó tárház klónozása. Opcionálisan létrehozhat egy új ágat, hogy a módosítások elszigetelve maradjanak a `main` fiókirodában.
-1. Adja hozzá az új felületeket a `dtmi` mappához a mappa/fájlnév konvenció használatával. Lásd: [Add-Model](#add-model) eszköz.
-1. Ellenőrizze az eszköz modelljeit helyileg a [parancsfájlok használatával a változások érvényesítése](#validate-files) szakaszban.
+1. Adja hozzá az új felületeket a `dtmi` mappához a mappa/fájlnév konvenció használatával. További információ: [modell importálása a `dtmi/` mappába](#import-a-model-to-the-dtmi-folder).
+1. Ellenőrizze a modelleket helyileg az `dmr-client` eszköz használatával. További információ: [modellek ellenőrzése](#validate-models).
 1. Véglegesítse a módosításokat helyileg, és küldje el az elágazásba.
 1. Az elágazásból hozzon létre egy lekéréses kérelmet, amely az ágat célozza meg `main` . Lásd: [probléma létrehozása vagy lekéréses kérelmekre](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request) vonatkozó dokumentumok.
 1. Tekintse át a [pull-kérelmekre vonatkozó követelményeket](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md).
 
-A lekéréses kérelem elindít egy sorozatú GitHub-műveletet, amely érvényesíti az új elküldött felületeket, és gondoskodik arról, hogy a lekéréses kérelem megfeleljen az összes ellenőrzésnek.
+A lekéréses kérelem elindít egy olyan GitHub-műveletet, amely érvényesíti az elküldött adaptereket, és gondoskodik arról, hogy a lekéréses kérelem megfeleljen az összes követelménynek.
 
 A Microsoft három munkanapon belül minden ellenőrzés után válaszol egy lekéréses kérelemre.
 
-### <a name="add-model"></a>modell hozzáadása
+### <a name="dmr-client-tools"></a>`dmr-client` eszközök
 
-A következő lépések bemutatják, hogyan segíti az add-model.js-szkript az új felület hozzáadását. A parancsfájl futtatásához Node.js szükséges:
+A modellek a PR-ellenőrzések során történő ellenőrzéséhez használt eszközök a DTDL felületek helyi hozzáadására és ellenőrzésére is használhatók.
 
-1. A parancssorban navigáljon a helyi git-tárházhoz.
-1. Az `npm install` parancs futtatása
-1. Az `npm run add-model <path-to-file-to-add>` parancs futtatása
+> [!NOTE]
+> Ehhez az eszközhöz a [.net SDK](https://dotnet.microsoft.com/download) 3,1-es vagy újabb verziójára van szükség.
 
-Tekintse meg a konzol kimenetét a hibaüzenetek megtekintéséhez.
+### <a name="install-dmr-client"></a>Telepítése `dmr-client`
 
-### <a name="local-validation"></a>Helyi ellenőrzés
+```bash
+curl -L https://aka.ms/install-dmr-client-linux | bash
+```
 
-A lekéréses kérelem elküldése előtt helyileg is futtathatja az ellenőrzési ellenőrzéseket, hogy segítsen a problémák előzetes diagnosztizálásában.
+```powershell
+iwr https://aka.ms/install-dmr-client-windows -UseBasicParsing | iex
+```
 
-#### <a name="validate-files"></a>érvényesítés – fájlok
+### <a name="import-a-model-to-the-dtmi-folder"></a>Modell importálása a `dtmi/` mappába
 
-`npm run validate-files <file1.json> <file2.json>` ellenőrzi, hogy a fájl elérési útja megfelel-e a várt mappának és fájlneveknek.
+Ha a modell már a JSON-fájlokban van tárolva, a parancs használatával a `dmr-client import` `dtmi/` megfelelő fájlnevekkel adhatja hozzá a mappához:
 
-#### <a name="validate-ids"></a>azonosítók ellenőrzése
+```bash
+# from the local repo root folder
+dmr-client import --model-file "MyThermostat.json"
+```
 
-`npm run validate-ids <file1.json> <file2.json>` ellenőrzi, hogy a dokumentumban meghatározott összes azonosító ugyanazt a gyökeret használja-e, mint a fő azonosító.
+> [!TIP]
+> A `--local-repo` argumentum használatával megadhatja a helyi tárház gyökérmappa-mappáját.
 
-#### <a name="validate-deps"></a>ellenőrzés – Deps
+### <a name="validate-models"></a>Modellek ellenőrzése
 
-`npm run validate-deps <file1.json> <file2.json>` ellenőrzi, hogy az összes függőség elérhető-e a `dtmi` mappában.
+A modelleket a `dmr-client validate` paranccsal ellenőrizheti:
 
-#### <a name="validate-models"></a>ellenőrzés – modellek
+```bash
+dmr-client validate --model-file ./my/model/file.json
+```
 
-A [DTDL ellenőrzési minta](https://github.com/Azure-Samples/DTDL-Validator) futtatásával ellenőrizheti az eszközök modelljeit helyileg.
+> [!NOTE]
+> Az érvényesítés a legújabb DTDL-elemző verziót használja annak biztosítására, hogy az összes csatoló kompatibilis legyen a DTDL nyelvi specifikációval.
+
+A külső függőségek érvényesítéséhez a helyi tárházban léteznie kell. A modellek érvényesítéséhez használja a `--repo` kapcsolót a `local` `remote` függőségek feloldására szolgáló vagy mappa megadásához:
+
+```bash
+# from the repo root folder
+dmr-client validate --model-file ./my/model/file.json --repo .
+```
+
+### <a name="strict-validation"></a>Szigorú érvényesítés
+
+A DMR további [követelményeket](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)is tartalmaz, a `stict` jelölővel ellenőrizheti a modelljét:
+
+```bash
+dmr-client validate --model-file ./my/model/file.json --repo . --strict true
+```
+
+Győződjön meg arról, hogy a konzol kimenete bármilyen hibaüzenetet tartalmaz.
+
+### <a name="export-models"></a>Modellek exportálása
+
+A modelleket egy adott tárházból (helyi vagy távoli) egyetlen fájlba lehet exportálni egy JSON-tömb használatával:
+
+```bash
+dmr-client export --dtmi "dtmi:com:example:TemperatureController;1" -o TemperatureController.expanded.json
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -4,12 +4,12 @@ description: Ebben a rövid útmutatóban az Azure CLI használatával hozzon l�
 ms.date: 08/31/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f07ae46c95f9ab9cc1ad973204ac5c50320fdf46
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 54d7afbaa4bfe2799ca0d68927394a38d9845c53
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89237275"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920661"
 ---
 # <a name="quickstart-create-a-management-group-with-the-azure-cli"></a>Gyors útmutató: felügyeleti csoport létrehozása az Azure CLI-vel
 
@@ -29,7 +29,7 @@ A címtárban létrehozott első felügyeleti csoport akár 15 percet is igényb
 
 ### <a name="create-in-the-azure-cli"></a>Létrehozás az Azure CLI-ben
 
-Az Azure CLI esetében használja az az [Account Management-Group Create](/cli/azure/account/management-group#az-account-management-group-create) parancsot egy új felügyeleti csoport létrehozásához. Ebben a példában a felügyeleti csoport **neve** _contoso_.
+Az Azure CLI esetében használja az az [Account Management-Group Create](/cli/azure/account/management-group#az_account_management_group_create) parancsot egy új felügyeleti csoport létrehozásához. Ebben a példában a felügyeleti csoport **neve** _contoso_.
 
 ```azurecli-interactive
 az account management-group create --name 'Contoso'
@@ -51,13 +51,13 @@ az account management-group create --name 'ContosoSubGroup' --parent 'Contoso'
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A fent létrehozott felügyeleti csoport eltávolításához használja az az [Account Management-Group delete](/cli/azure/account/management-group#az-account-management-group-delete) parancsot:
+A fent létrehozott felügyeleti csoport eltávolításához használja az az [Account Management-Group delete](/cli/azure/account/management-group#az_account_management_group_delete) parancsot:
 
 ```azurecli-interactive
 az account management-group delete --name 'Contoso'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy felügyeleti csoportot az erőforrás-hierarchia rendszerezéséhez. A felügyeleti csoport rendelkezhet előfizetésekkel vagy más felügyeleti csoportokkal.
 

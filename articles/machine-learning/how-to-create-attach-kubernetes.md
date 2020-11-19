@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: c8b3ab965c5a85bd6f25e5325fdca24026aec787
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 0f2b9476c9b8c0b5164bfbf29d65d260340effe4
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873828"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919760"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása és csatolása
 
@@ -43,6 +43,8 @@ A Azure Machine Learning betanított gépi tanulási modelleket telepíthet az A
 - Ha egy AK-fürtöt **csatlakoztat** , amelynek [engedélyezett IP-tartománya engedélyezve van az API-kiszolgáló eléréséhez](../aks/api-server-authorized-ip-ranges.md), engedélyezze a pénzmosás-vezérlési sík IP-tartományait az AK-fürthöz. A pénzmosás-vezérlési sík a párosított régiókban van üzembe helyezve, és következtetéseket helyez üzembe az AK-fürtön. Az API-kiszolgálóhoz való hozzáférés nélkül a következtetések nélküli hüvelyek nem helyezhetők üzembe. A [párosított régiók](../best-practices-availability-paired-regions.md) [IP-tartományait](https://www.microsoft.com/download/confirmation.aspx?id=56519) is használhatja, ha egy AK-fürtben engedélyezi az IP-tartományokat.
 
     A jóváhagyott IP-címtartományok csak standard Load Balancer esetén működnek.
+
+- AK-fürt **csatolásakor** a Azure Machine learning munkaterülethez tartozó Azure-előfizetésben kell lennie.
 
 - Ha privát AK-fürtöt szeretne használni (az Azure Private link használatával), először létre kell hoznia a fürtöt, majd **csatolnia** kell a munkaterülethez. További információt a [privát Azure Kubernetes Service-fürt létrehozása](../aks/private-clusters.md)című témakörben talál.
 
