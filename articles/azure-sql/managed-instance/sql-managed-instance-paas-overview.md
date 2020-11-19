@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 211ce85fdbf918171ecfc7964bbcdfa2ef245990
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 83f38797e406ff7e62503f59ef979b9ce4f07f97
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790712"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917936"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Mi az az Azure SQL felügyelt példánya?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ Az alábbi ábra az SQL felügyelt példányának főbb funkcióit vázolja fel:
 
 ![A legfontosabb jellemzők](./media/sql-managed-instance-paas-overview/key-features.png)
 
-Az Azure SQL felügyelt példánya olyan ügyfelek számára készült, akik nagy mennyiségű alkalmazást kívánnak áttelepíteni egy helyszíni vagy IaaS, önálló vagy független szoftvergyártó által biztosított környezetből egy teljes körűen felügyelt, kihelyezett Felhőbeli környezetbe, a lehető legkevesebb migrációs erőfeszítéssel. A teljes mértékben automatizált [Azure-adatáttelepítési szolgáltatással](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)az ügyfelek megemelik és áthelyezhetik meglévő SQL Server-példányát az SQL felügyelt példányára, amely a SQL Serverekkel való kompatibilitást és a natív VNet-támogatással rendelkező vásárlói példányok elkülönítését biztosítja  A frissítési garanciával lehetősége van arra, hogy az SQL felügyelt példányain a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával, kedvezményes díjszabással cserélje le. A felügyelt SQL-példány a legjobb áttelepítési cél a felhőben olyan SQL Server-példányok esetén, amelyek magas biztonságot és sokoldalú programozható felületet igényelnek.
+Az Azure SQL felügyelt példánya olyan ügyfelek számára készült, akik nagy mennyiségű alkalmazást kívánnak áttelepíteni egy helyszíni vagy IaaS, önálló vagy független szoftvergyártó által biztosított környezetből egy teljes körűen felügyelt, kihelyezett Felhőbeli környezetbe, a lehető legkevesebb migrációs erőfeszítéssel. A teljes mértékben automatizált [Azure-adatáttelepítési szolgáltatással](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)az ügyfelek megemelik és áthelyezhetik meglévő SQL Server-példányát az SQL felügyelt példányára, amely a SQL Serverekkel való kompatibilitást és a natív VNet-támogatással rendelkező vásárlói példányok elkülönítését biztosítja Az áttelepítési lehetőségekkel és eszközökkel kapcsolatos további információkért lásd [: áttelepítési Áttekintés: SQL Server az Azure SQL felügyelt példányára](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md).</br> A frissítési garanciával lehetősége van arra, hogy az SQL felügyelt példányain a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával, kedvezményes díjszabással cserélje le. A felügyelt SQL-példány a legjobb áttelepítési cél a felhőben olyan SQL Server-példányok esetén, amelyek magas biztonságot és sokoldalú programozható felületet igényelnek.
 
 ## <a name="key-features-and-capabilities"></a>Főbb funkciók és képességek
 
@@ -85,8 +85,8 @@ További információk a hardveres generációk közötti különbségről az [S
 
 A felügyelt SQL-példány két szolgáltatási rétegben érhető el:
 
-- **Általános célú** : olyan alkalmazásokhoz tervezve, amelyek jellemzően teljesítménybeli és I/O-késleltetési követelményekkel rendelkeznek.
-- **Üzleti szempontból kritikus** : az alacsony I/O-késési követelményekkel rendelkező alkalmazások számára lett kialakítva, és minimális hatással van a mögöttes karbantartási műveletekre a munkaterhelés esetében.
+- **Általános célú**: olyan alkalmazásokhoz tervezve, amelyek jellemzően teljesítménybeli és I/O-késleltetési követelményekkel rendelkeznek.
+- **Üzleti szempontból kritikus**: az alacsony I/O-késési követelményekkel rendelkező alkalmazások számára lett kialakítva, és minimális hatással van a mögöttes karbantartási műveletekre a munkaterhelés esetében.
 
 Mindkét szolgáltatási szinten 99,99%-os rendelkezésre állást garantálunk, és lehetővé teszi a tárolási méret és a számítási kapacitás egymástól független kiválasztását. További információ az Azure SQL felügyelt példány magas rendelkezésre állású architektúrával kapcsolatban: [magas rendelkezésre állás és Azure SQL felügyelt példány](../database/high-availability-sla.md).
 
@@ -156,9 +156,9 @@ A titkosított adatbázisok SQL felügyelt példányra történő áttelepítés
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory-integráció
 
-Az SQL felügyelt példánya támogatja a hagyományos SQL Server adatbázismotor-bejelentkezéseket és az Azure AD-vel integrált bejelentkezéseket. Az Azure AD-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) ( **nyilvános előzetes** verzió) a helyszíni adatbázis-bejelentkezések Azure-beli felhőalapú verziója, amelyet a helyszíni környezetben használ. Az Azure AD-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) lehetővé teszik, hogy az Azure AD-bérlőből származó felhasználókat és csoportokat az igaz példányra kiterjedő rendszerbiztonsági tagként adja meg, amely képes bármely példány szintű művelet végrehajtására, beleértve az azonos felügyelt példányon belüli adatbázis-lekérdezéseket is.
+Az SQL felügyelt példánya támogatja a hagyományos SQL Server adatbázismotor-bejelentkezéseket és az Azure AD-vel integrált bejelentkezéseket. Az Azure AD-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) (**nyilvános előzetes** verzió) a helyszíni adatbázis-bejelentkezések Azure-beli felhőalapú verziója, amelyet a helyszíni környezetben használ. Az Azure AD-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) lehetővé teszik, hogy az Azure AD-bérlőből származó felhasználókat és csoportokat az igaz példányra kiterjedő rendszerbiztonsági tagként adja meg, amely képes bármely példány szintű művelet végrehajtására, beleértve az azonos felügyelt példányon belüli adatbázis-lekérdezéseket is.
 
-Új szintaxist vezetünk be az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) létrehozásához **a külső szolgáltatótól** . A szintaxissal kapcsolatos további információkért tekintse meg a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Bejelentkezés létrehozása</a>című témakört, és tekintse át a [Azure Active Directory-rendszergazda létesítése az SQL felügyelt példányhoz](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) című cikket.
+Új szintaxist vezetünk be az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) létrehozásához **a külső szolgáltatótól**. A szintaxissal kapcsolatos további információkért tekintse meg a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Bejelentkezés létrehozása</a>című témakört, és tekintse át a [Azure Active Directory-rendszergazda létesítése az SQL felügyelt példányhoz](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) című cikket.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 
@@ -168,10 +168,10 @@ Az SQL felügyelt példányai lehetővé teszik az adatbázis-felhasználók és
 
 Az SQL felügyelt példányának hitelesítése arra utal, hogy a felhasználók hogyan igazolják identitásukat az adatbázishoz való csatlakozáskor. A felügyelt SQL-példány két típusú hitelesítést támogat:  
 
-- **SQL-hitelesítés** :
+- **SQL-hitelesítés**:
 
   Ez a hitelesítési módszer egy felhasználónevet és egy jelszót használ.
-- **Azure Active Directory hitelesítés** :
+- **Azure Active Directory hitelesítés**:
 
   Ez a hitelesítési módszer Azure Active Directory által felügyelt identitásokat használ, és felügyelt és integrált tartományok esetén támogatott. [Amikor csak lehet](/sql/relational-databases/security/choose-an-authentication-mode), használja az Active Directory-hitelesítést (beépített biztonság).
 
@@ -181,14 +181,14 @@ Az engedélyezés arra utal, hogy a felhasználók mit tehetnek egy adatbázisba
 
 ## <a name="database-migration"></a>Adatbázis-migrálás
 
-Az SQL felügyelt példánya a helyszíni vagy IaaS adatbázis-megvalósításokból származó tömeges adatbázis-áttelepítés felhasználói forgatókönyveit célozza meg. Az SQL felügyelt példánya több adatbázis-áttelepítési lehetőséget is támogat:
+Az SQL felügyelt példánya a helyszíni vagy IaaS adatbázis-megvalósításokból származó tömeges adatbázis-áttelepítés felhasználói forgatókönyveit célozza meg. Az SQL felügyelt példánya több, az áttelepítési útmutatókban tárgyalt adatbázis-áttelepítési lehetőséget is támogat. További információkért lásd [: áttelepítési Áttekintés: SQL Server az Azure SQL felügyelt példányáról](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md) .
 
 ### <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás  
 
 Az áttelepítési módszer az SQL-alapú biztonsági mentéseket használja az Azure Blob Storage-ba. Az Azure Storage-blobokban tárolt biztonsági másolatok közvetlenül visszaállíthatók egy felügyelt példányra a [T-SQL Restore parancs](/sql/t-sql/statements/restore-statements-transact-sql?preserve-view=true&view=azuresqldb-mi-current)használatával.
 
 - A Wide World Importers – standard adatbázis biztonságimásolat-fájljának visszaállítását bemutató rövid útmutató: [biztonságimásolat-fájl visszaállítása felügyelt példányra](restore-sample-database-quickstart.md). Ez a rövid útmutató azt mutatja be, hogy fel kell töltenie egy biztonságimásolat-fájlt az Azure Blob Storage-ba, és biztonságossá kell tennie egy közös hozzáférés-aláírási (SAS-) kulcs használatával.
-- További információ az URL-címről való visszaállításról: [NATÍV visszaállítás az URL-](migrate-to-instance-from-sql-server.md#native-restore-from-url)címről.
+- További információ az URL-címről való visszaállításról: [NATÍV visszaállítás az URL-](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md#backup-and-restore)címről.
 
 > [!IMPORTANT]
 > Felügyelt példányról származó biztonsági másolatok csak egy másik felügyelt példányra állíthatók vissza. Nem állíthatók vissza SQL Server példányra vagy Azure SQL Database.

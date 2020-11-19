@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 10/05/2020
+ms.date: 10/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3e43a6b72d8de25de3220a9a6ac4e0b3986a467
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f82254915ffedf97f945be79be0de827a956af45
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701806"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916610"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Gyors útmutató: keresési index létrehozása a Azure.Search.Documents ügyféloldali kódtár használatával
 
@@ -38,6 +38,8 @@ A Kezdés előtt a következő eszközökkel és szolgáltatásokkal rendelkezhe
 
 + [Azure.Search.Documents NuGet csomag](https://www.nuget.org/packages/Azure.Search.Documents/)
 
+A .NET-hez készült Azure SDK megfelel a .net [Standard 2,0](/dotnet/standard/net-standard#net-implementation-support)-nek, ami a .NET-keretrendszer 4.6.1-es és a .net Core 2,0-as minimális követelmény.
+
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
 Állítsa össze a szolgáltatás kapcsolódási adatait, majd indítsa el a Visual studiót, és hozzon létre egy új, a .NET Core-on futtatható konzolablak-projektet.
@@ -58,15 +60,9 @@ Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes k
 
 ### <a name="install-the-nuget-package"></a>A NuGet-csomag telepítése
 
-A projekt létrehozása után adja hozzá az ügyféloldali kódtárat. A [Azure.Search.Documents csomag](https://www.nuget.org/packages/Azure.Search.Documents/) egy olyan ügyféloldali függvénytárból áll, amely biztosítja a .net-beli keresési szolgáltatással való együttműködéshez használt összes API-t.
-
-1. Az **eszközök**  >  **NuGet csomagkezelő** területén válassza a **NuGet-csomagok kezelése megoldást..**. lehetőséget. 
-
-1. Kattintson a **Browse** (Tallózás) gombra.
+1. A Visual Studióban hozzon létre egy új projektet a C#-hoz készült Console app (.NET Core) sablonnal.
 
 1. Keresse meg `Azure.Search.Documents` és válassza ki a 11,0-es vagy újabb verziót.
-
-1. A jobb oldalon kattintson a **telepítés** gombra a szerelvény projekthez és megoldáshoz való hozzáadásához.
 
 ### <a name="create-a-search-client"></a>Keresési ügyfél létrehozása
 
@@ -134,9 +130,20 @@ Ebben a példában a Azure.Search.Documents könyvtár szinkron metódusait hasz
     }
     ```
 
-1. A **program.cs**-ben hozzon létre egy [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) objektumot, majd hívja meg a [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) metódust, hogy kifejezze az indexet a keresési szolgáltatásban.
+1. A **program.cs**-ben hozzon létre egy [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) objektumot a  [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) metódus meghívásával `SearchIndexClient` .
 
-   ```csharp
+    ```csharp
+    private static void CreateIndex(string indexName, SearchIndexClient indexClient)
+    {
+        FieldBuilder fieldBuilder = new FieldBuilder();
+        var searchFields = fieldBuilder.Build(typeof(Hotel));
+        var definition = new SearchIndex(indexName, searchFields);
+
+        indexClient.CreateOrUpdateIndex(definition);
+    }
+    ```
+
+   <!-- ```csharp
     // Define an index schema using SearchIndex
     // Create the index using SearchIndexClient
     SearchIndex index = new SearchIndex(indexName)
@@ -153,7 +160,7 @@ Ebben a példában a Azure.Search.Documents könyvtár szinkron metódusait hasz
 
     Console.WriteLine("{0}", "Creating index...\n");
     idxclient.CreateIndex(index);
-   ```
+   ``` -->
 
 A mező attribútumai határozzák meg, hogyan használják az alkalmazásokban. Az `IsFilterable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amely támogatja a szűrési kifejezést.
 
@@ -194,7 +201,7 @@ Dokumentumok feltöltésekor [IndexDocumentsBatch](/dotnet/api/azure.search.docu
 
     Miután elvégezte a [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) objektum inicializálását, a [SearchClient](/dotnet/api/azure.search.documents.searchclient) objektum [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments) meghívásával elküldheti az indexbe.
 
-1. Mivel ez egy olyan konzolos alkalmazás, amely egymás után futtatja az összes parancsot, adjon meg egy 2 másodperces várakozási időt az indexelés és a lekérdezések között.
+1. Mivel ez egy olyan konzolos alkalmazás, amely egymás után futtatja az összes parancsot, adjon hozzá egy 2 másodperces késleltetést.
 
     ```csharp
     // Wait 2 seconds for indexing to complete before starting queries (for demo and console-app purposes only)
@@ -206,7 +213,7 @@ Dokumentumok feltöltésekor [IndexDocumentsBatch](/dotnet/api/azure.search.docu
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-A lekérdezési eredményeket az első dokumentum indexelése után azonnal lekérheti, de az index tényleges tesztelésének meg kell várnia, amíg az összes dokumentum indexelve van.
+Lekérdezési eredményeket kaphat, amint az első dokumentum indexelve van, de a megfelelő teszteléshez várjon, amíg az összes dokumentum indexelve van.
 
 Ez a szakasz két funkciót tartalmaz: a lekérdezési logikát és az eredményeket. Lekérdezésekhez használja a [keresési](/dotnet/api/azure.search.documents.searchclient.search) módszert. Ez a metódus a keresési szöveget (a lekérdezési karakterláncot) és egyéb [beállításokat](/dotnet/api/azure.search.documents.searchoptions)is végrehajtja.
 
@@ -292,14 +299,6 @@ A keresések és a szűrők a [SearchClient. Search](/dotnet/api/azure.search.do
 Nyomja le az F5 billentyűt az alkalmazás újraépítéséhez és a program teljes körű futtatásához. 
 
 A kimenet magában foglalja a [Console. WriteLine](/dotnet/api/system.console.writeline)és a lekérdezési adatok és eredmények hozzáadásával kapcsolatos üzeneteket.
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
-
-A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
-
-Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
 ## <a name="next-steps"></a>Következő lépések
 

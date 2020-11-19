@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 0dc55f4d77fde48590b1fbf206ed988e8fb9ec0e
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: a02fa7d9f656ed3b6e61aab1f42e2a3ffca131a7
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490270"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917256"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Bevezetés a kiépített átviteli sebességbe Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -65,7 +65,7 @@ A kiosztott átviteli sebességgel rendelkező adatbázisban létrehozott össze
 
 Ha egy logikai partíció munkaterhelése több, mint az adott logikai partícióhoz lefoglalt átviteli sebesség, a műveletek díja korlátozott. A ráta korlátozása esetén növelheti a teljes adatbázis átviteli sebességét, vagy próbálja megismételni a műveletet. További információ a particionálásról: [logikai partíciók](partitioning-overview.md).
 
-A megosztott átviteli sebességű adatbázisokban lévő tárolók között megoszlik az adott adatbázishoz lefoglalt átviteli sebesség (RU/s). Az adatbázisban legfeljebb négy, legalább 400 RU/s átviteli sebességű tároló lehet. A standard (manuális) kiépített átviteli sebességnél az első négy után minden új tárolóhoz további 100 RU/s szükséges. Ha például egy megosztott átviteli sebességű adatbázis nyolc tárolóval rendelkezik, az adatbázis esetében a minimális átviteli sebesség 800 RU/s lesz. Az autoscale kiépített átviteli sebességével akár 25 tárolót is beállíthat egy olyan adatbázisban, amelyben az autoscale Max 4000 RU/s (a 400-4000 RU/s közötti skálán).
+A megosztott átviteli sebességű adatbázisokban lévő tárolók között megoszlik az adott adatbázishoz lefoglalt átviteli sebesség (RU/s). A standard (manuális) kiépített átviteli sebesség esetében akár 25 tárolót is használhat, amelyek legalább 400 RU/s értékkel rendelkeznek az adatbázison. Az autoscale kiépített átviteli sebességével akár 25 tárolót is beállíthat egy olyan adatbázisban, amelyben az autoscale Max 4000 RU/s (a 400-4000 RU/s közötti skálán).
 
 > [!NOTE]
 > Február 2020-án egy olyan módosítást vezettünk be, amely lehetővé teszi, hogy legfeljebb 25 tárolót helyezzen el egy megosztott átviteli sebességű adatbázisban, ami jobb lehetővé teszi az átviteli sebesség megosztását a tárolók között. Az első 25 tároló után csak akkor adhat hozzá több tárolót az adatbázishoz, ha [dedikált átviteli sebességgel lett kiépítve](#set-throughput-on-a-database-and-a-container), amely elkülönül az adatbázis megosztott átviteli sebességével.<br>
@@ -80,11 +80,11 @@ Ha a számítási feladatok egy adatbázisban lévő összes gyűjtemény törl�
 A két modellt kombinálhatja. Az adatátviteli sebesség az adatbázison és a tárolón is engedélyezett. Az alábbi példa bemutatja, hogyan lehet a standard (manuális) kiosztott átviteli sebességet kiépíteni egy Azure Cosmos-adatbázison és egy tárolón:
 
 * Létrehozhat egy *Z* nevű Azure Cosmos-adatbázist a standard (manuális) kiépített átviteli sebességgel a *"K"* RUs használatával. 
-* Ezután hozzon létre öt tárolót a-adatbázison *belül a,* *B* , *C* , *D* és *E* névvel. A B tároló létrehozásakor ügyeljen arra, hogy engedélyezze a **tároló beállítás dedikált átviteli sebességét** , és explicit módon konfigurálja a *"P"* kiépített átviteli sebességét ezen a tárolón. A megosztott és a dedikált átviteli sebességet csak az adatbázis és a tároló létrehozásakor lehet konfigurálni. 
+* Ezután hozzon létre öt tárolót a-adatbázison *belül a,* *B*, *C*, *D* és *E* névvel. A B tároló létrehozásakor ügyeljen arra, hogy engedélyezze a **tároló beállítás dedikált átviteli sebességét** , és explicit módon konfigurálja a *"P"* kiépített átviteli sebességét ezen a tárolón. A megosztott és a dedikált átviteli sebességet csak az adatbázis és a tároló létrehozásakor lehet konfigurálni. 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Az átviteli sebesség beállítása a tároló szintjén":::
 
-* A *"K"* RUs-átviteli sebesség az *a* , *C* , *D* és *E* négy tárolóban van megosztva. Az *a* , a *C* , a *D* vagy az *E* által elérhető átviteli sebesség pontos mennyisége változó. Az egyes tárolók átviteli sebességéhez nem tartoznak SLA-k.
+* A *"K"* RUs-átviteli sebesség az *a*, *C*, *D* és *E* négy tárolóban van megosztva. Az *a*, a *C*, a *D* vagy az *E* által elérhető átviteli sebesség pontos mennyisége változó. Az egyes tárolók átviteli sebességéhez nem tartoznak SLA-k.
 * A *B* nevű tároló garantált, hogy minden alkalommal megkapja a *"P"* RUs átviteli sebességét. Ez a SLA-k által támogatott.
 
 > [!NOTE]
@@ -111,7 +111,6 @@ A tényleges RU/mp a fiók konfigurációjától függően változhat. De által
 * 400 RU/s 
 * Az aktuális tárterület (GB * 10 RU/s) (kivéve, ha a tároló vagy az adatbázis több mint 1 TB-ot tartalmaz, tekintse meg a [nagy tárterületet/alacsony átviteli sebességű programot](#high-storage-low-throughput-program))
 * Az adatbázison vagy a tárolón/100-ben kiépített legmagasabb RU/s
-* Tárolók száma * 100 RU/s (csak megosztott átviteli sebességű adatbázis esetén)
 
 ### <a name="changing-the-provisioned-throughput"></a>A kiosztott átviteli sebesség módosítása
 
@@ -120,9 +119,9 @@ A tárolók vagy adatbázisok kiépített átviteli sebessége a Azure Portal va
 * A [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) a .net SDK-ban található.
 * [CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) a Java SDK-ban.
 
-Ha **csökkenti a kiépített átviteli sebességet** , a [minimálisra](#current-provisioned-throughput)teheti ezt meg.
+Ha **csökkenti a kiépített átviteli sebességet**, a [minimálisra](#current-provisioned-throughput)teheti ezt meg.
 
-Ha **növeli a kiépített átviteli sebességet** , az idő nagy részében a művelet azonnal megtörténik. Vannak azonban olyan esetek, amikor a művelet hosszabb időt vehet igénybe, mivel a rendszerfeladatok kiépítik a szükséges erőforrásokat. Ebben az esetben a kiépített átviteli sebesség módosítására tett kísérlet, miközben a művelet folyamatban van, egy HTTP 423-választ fog eredményezni, amely elmagyarázza, hogy egy másik skálázási művelet folyamatban van.
+Ha **növeli a kiépített átviteli sebességet**, az idő nagy részében a művelet azonnal megtörténik. Vannak azonban olyan esetek, amikor a művelet hosszabb időt vehet igénybe, mivel a rendszerfeladatok kiépítik a szükséges erőforrásokat. Ebben az esetben a kiépített átviteli sebesség módosítására tett kísérlet, miközben a művelet folyamatban van, egy HTTP 423-választ fog eredményezni, amely elmagyarázza, hogy egy másik skálázási művelet folyamatban van.
 
 > [!NOTE]
 > Ha olyan nagy mennyiségű betöltési munkaterhelést tervez, amely nagy növekedést igényel a kiépített átviteli sebességben, vegye figyelembe, hogy a skálázási művelet nem rendelkezik SLA-val, és az előző bekezdésben említettek szerint hosszú időt vehet igénybe, ha a növekedés nagy. Érdemes előre megtervezni a méretezést, és megkezdeni a skálázást a munkaterhelés elindítása előtt, és az alábbi módszerekkel végezheti el a folyamatot.
@@ -147,15 +146,15 @@ Ez a táblázat a kiépítési standard (manuális) átviteli sebességének ös
 
 |**Paraméter**  |**Standard (manuális) átviteli sebesség egy adatbázison**  |**Standard (manuális) átviteli sebesség egy tárolón**|**Átviteli sebesség egy adatbázison** | **Átviteli sebesség egy tárolón**|
 |---------|---------|---------|---------|---------|
-|Belépési pont (minimum RU/s) |400 RU/s. Az első négy tároló után minden további tárolóhoz legalább 100 RU/s szükséges</li> |400| 400 – 4000 RU/s közötti autoskálázás. Legfeljebb 25 tároló lehet, amely nem rendelkezik minimum/s/s értékkel</li> | 400 – 4000 RU/s közötti autoskálázás.|
-|Legalább RU/s/tároló|100|400|--|400 – 4000 RU/s közötti autoskálázás|
+|Belépési pont (minimum RU/s) |400 RU/s. Legfeljebb 25 tárolót tartalmazhat, és a tárolók minimális száma: RU/s.</li> |400| 400 – 4000 RU/s közötti autoskálázás. Legfeljebb 25 tárolót tartalmazhat, és a tárolók minimális száma: RU/s.</li> | 400 – 4000 RU/s közötti autoskálázás.|
+|Legalább RU/s/tároló|--|400|--|400 – 4000 RU/s közötti autoskálázás|
 |Maximális RUs|Korlátlan, az adatbázison.|Korlátlan, a tárolón.|Korlátlan, az adatbázison.|Korlátlan, a tárolón.
 |Egy adott tárolóhoz rendelt vagy elérhető RUs|Nincs garancia. Az adott tárolóhoz rendelt RUs a tulajdonságoktól függ. A tulajdonságok választhatják a tárolók partíciós kulcsait, amelyek osztoznak az átviteli sebességen, a munkaterhelés eloszlásán és a tárolók számánál. |A tárolón konfigurált összes RUs kizárólag a tároló számára van fenntartva.|Nincs garancia. Az adott tárolóhoz rendelt RUs a tulajdonságoktól függ. A tulajdonságok választhatják a tárolók partíciós kulcsait, amelyek osztoznak az átviteli sebességen, a munkaterhelés eloszlásán és a tárolók számánál. |A tárolón konfigurált összes RUs kizárólag a tároló számára van fenntartva.|
 |Tároló maximális tárterülete|Korlátlan.|Korlátlan|Korlátlan|Korlátlan|
 |Egy tároló logikai partíciójának maximális átviteli sebessége|10K RU/s|10K RU/s|10K RU/s|10K RU/s|
 |Tárolók logikai partícióinak maximális tárterülete (adatsorok és indexek)|20 GB|20 GB|20 GB|20 GB|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [logikai partíciókhoz](partitioning-overview.md).
 * Ismerje meg, hogyan hozhat [létre standard (manuális) Azure Cosmos-tárolón](how-to-provision-container-throughput.md).

@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése erőforráscsoportok számára
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni egy Azure Resource Manager sablonban. Bemutatja, hogyan célozhat meg egynél több erőforráscsoportot.
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: fd211641d7fcc02a1db154053597497583b21ae5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/18/2020
+ms.openlocfilehash: 5e33f0d505759944ccaf2233aa122b6ab701c91f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681541"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917426"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>Erőforráscsoportok üzembe helyezése ARM-sablonokkal
 
@@ -83,6 +83,8 @@ Egy erőforráscsoport telepítésekor az erőforrásokat az alábbiakra lehet t
 
 * a cél erőforráscsoport a műveletből
 * más erőforráscsoportok ugyanabban az előfizetésben vagy más előfizetésben
+* bármely előfizetés a bérlőn
+* az erőforráscsoport bérlője
 * a [bővítmény erőforrásai](scope-extension-resources.md) alkalmazhatók az erőforrásokra
 
 A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
@@ -95,6 +97,8 @@ Ha erőforrásokat szeretne telepíteni a cél erőforrásra, adja hozzá ezeket
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-rg.json" highlight="5":::
 
+Példa sablonra: [üzembe helyezés a cél erőforráscsoporthoz](#deploy-to-target-resource-group).
+
 ### <a name="scope-to-resource-group-in-same-subscription"></a>Hatókör az erőforráscsoporthoz ugyanahhoz az előfizetéshez
 
 Ha az erőforrásokat egy másik erőforráscsoporthoz szeretné telepíteni ugyanabban az előfizetésben, adjon hozzá egy beágyazott központi telepítést, és vegye fel a `resourceGroup` tulajdonságot. Ha nem határozza meg az előfizetés-azonosítót vagy az erőforráscsoportot, a rendszer az előfizetést és az erőforráscsoportot használja a fölérendelt sablonból. Az összes erőforráscsoport léteznie kell az üzemelő példány futtatása előtt.
@@ -103,13 +107,43 @@ A következő példában a beágyazott telepítés a nevű erőforráscsoportot 
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/same-sub-to-resource-group.json" highlight="9,13":::
 
+Példa a sablonra: [üzembe helyezés több erőforráscsoporthoz](#deploy-to-multiple-resource-groups).
+
 ### <a name="scope-to-resource-group-in-different-subscription"></a>Hatókör az erőforráscsoporthoz eltérő előfizetésben
 
 Ha egy másik előfizetésben lévő erőforráscsoporthoz szeretne erőforrásokat telepíteni, adjon hozzá egy beágyazott központi telepítést, és adja meg a `subscriptionId` és a `resourceGroup` tulajdonságokat. A következő példában a beágyazott telepítés a nevű erőforráscsoportot célozza meg `demoResourceGroup` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/different-sub-to-resource-group.json" highlight="9,10,14":::
 
-## <a name="cross-resource-groups"></a>Több erőforráscsoport
+Példa a sablonra: [üzembe helyezés több erőforráscsoporthoz](#deploy-to-multiple-resource-groups).
+
+### <a name="scope-to-subscription"></a>Hatókör az előfizetéshez
+
+Ha erőforrásokat szeretne üzembe helyezni egy előfizetésben, adjon hozzá egy beágyazott központi telepítést, és adja meg a `subscriptionId` tulajdonságot. Az előfizetés lehet a célként megadott erőforráscsoport előfizetése vagy a bérlő bármely más előfizetése. Állítsa be a beágyazott üzemelő `location` példány tulajdonságát is.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-subscription.json" highlight="9,10,14":::
+
+Példa sablonra: [erőforráscsoport létrehozása](#create-resource-group).
+
+### <a name="scope-to-tenant"></a>Hatókör a bérlőre
+
+A bérlőhöz erőforrásokat is létrehozhat, ha a beállítást a értékre állítja `scope` `/` . A sablont telepítő felhasználónak rendelkeznie kell a [bérlőn való üzembe helyezéshez szükséges hozzáféréssel](deploy-to-tenant.md#required-access).
+
+A és a beállítással beágyazott központi telepítést is használhat `scope` `location` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-tenant.json" highlight="9,10,14":::
+
+A hatókört `/` bizonyos erőforrástípusok, például a felügyeleti csoportok esetében is beállíthatja.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-create-mg.json" highlight="12,15":::
+
+## <a name="deploy-to-target-resource-group"></a>Üzembe helyezés a cél erőforráscsoporthoz
+
+Ha erőforrásokat szeretne telepíteni a cél erőforráscsoporthoz, adja meg ezeket az erőforrásokat a sablon **erőforrások** szakaszában. A következő sablon létrehoz egy Storage-fiókot a telepítési műveletben megadott erőforráscsoporthoz.
+
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
+
+## <a name="deploy-to-multiple-resource-groups"></a>Üzembe helyezés több erőforráscsoporthoz
 
 Egyetlen ARM-sablonban több erőforráscsoporthoz is üzembe helyezhető. Egy olyan erőforráscsoport célzásához, amely nem azonos a fölérendelt sablon nevével, használjon [beágyazott vagy csatolt sablont](linked-templates.md). A központi telepítési erőforrástípus mezőben adja meg az előfizetés-azonosító és az erőforráscsoport azon értékeit, amelyekre a beágyazott sablont telepíteni szeretné. Az erőforráscsoportok különböző előfizetésekben találhatók.
 
@@ -126,7 +160,7 @@ Az előző sablon teszteléséhez és az eredmények megtekintéséhez használj
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ha két tárolási fiókot kíván üzembe helyezni két erőforráscsoporthoz ugyanabban az **előfizetésben** , használja a következőt:
+Ha két tárolási fiókot kíván üzembe helyezni két erőforráscsoporthoz ugyanabban az **előfizetésben**, használja a következőt:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -152,10 +186,10 @@ $secondRG = "secondarygroup"
 $firstSub = "<first-subscription-id>"
 $secondSub = "<second-subscription-id>"
 
-Select-AzSubscription -Subscription $secondSub
+Set-AzContext -Subscription $secondSub
 New-AzResourceGroup -Name $secondRG -Location eastus
 
-Select-AzSubscription -Subscription $firstSub
+Set-AzContext -Subscription $firstSub
 New-AzResourceGroup -Name $firstRG -Location southcentralus
 
 New-AzResourceGroupDeployment `
@@ -169,7 +203,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ha két tárolási fiókot kíván üzembe helyezni két erőforráscsoporthoz ugyanabban az **előfizetésben** , használja a következőt:
+Ha két tárolási fiókot kíván üzembe helyezni két erőforráscsoporthoz ugyanabban az **előfizetésben**, használja a következőt:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -207,6 +241,76 @@ az deployment group create \
 ```
 
 ---
+
+## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
+
+Egy erőforráscsoport-telepítésből átválthat egy előfizetés szintjére, és létrehozhat egy erőforráscsoportot. A következő sablon egy Storage-fiókot telepít a cél erőforráscsoporthoz, és létrehoz egy új erőforráscsoportot a megadott előfizetésben.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storagePrefix": {
+            "type": "string",
+            "maxLength": 11
+        },
+        "newResourceGroupName": {
+            "type": "string"
+        },
+        "nestedSubscriptionID": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "variables": {
+        "storageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[variables('storageName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "demoSubDeployment",
+            "location": "westus",
+            "subscriptionId": "[parameters('nestedSubscriptionID')]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Resources/resourceGroups",
+                            "apiVersion": "2020-06-01",
+                            "name": "[parameters('newResourceGroupName')]",
+                            "location": "[parameters('location')]",
+                            "properties": {}
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -2,13 +2,13 @@
 title: Azure Service Bus metrikák a Azure Monitorban | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Service Bus entitások (várólisták, témakörök és előfizetések) figyelésére.
 ms.topic: article
-ms.date: 09/30/2020
-ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 1f8bd9484bf2a2106818da1d6e4ef21e937d2ac3
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598135"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916882"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor Azure Service Bus metrikák
 
@@ -31,7 +31,7 @@ A metrikák a [Azure Portalban](https://portal.azure.com)is megfigyelhetők. Az 
 
 ![Képernyőkép a Azure Portal figyelő-metrikák (előzetes verzió) lapján.][1]
 
-A metrikákat közvetlenül a névtér használatával is elérheti. Ehhez válassza ki a névteret, majd kattintson a **metrikák**elemre. Az entitás hatókörére szűrt metrikák megjelenítéséhez válassza ki az entitást, majd kattintson a **metrikák**elemre.
+A metrikákat közvetlenül a névtér használatával is elérheti. Ehhez válassza ki a névteret, majd válassza a **metrikák** lehetőséget. Az entitás hatókörére szűrt metrikák megjelenítéséhez válassza ki az entitást, majd válassza a **metrikák** lehetőséget.
 
 ![A figyelő-metrikák (előzetes verzió) oldalának képernyőképe az entitás hatókörére szűrve.][2]
 
@@ -41,7 +41,7 @@ A dimenziókat támogató metrikák esetében a kívánt dimenzió értékkel ke
 
 A Azure Monitor metrikáit és riasztásait riasztási alapon számítjuk fel. Ezeket a díjakat a portálon elérhetővé kell tenniük a riasztás beállítása és mentése előtt. 
 
-A metrikák adatait tartalmazó további megoldásokat közvetlenül ezek a megoldások számlázzák. Ha például az Azure Storage-ba számít, ha egy Azure Storage-fiókba archiválja a metrikákat. A Log Analytics számlázása akkor is történik, ha a metrikák adatait a speciális elemzéshez Log Analyticsre továbbítják.
+A metrikák adatait tartalmazó további megoldásokat közvetlenül ezek a megoldások számlázzák. Ha például az Azure Storage-ba számít, akkor a metrikák adatait egy Azure Storage-fiókba archiválja. a Log Analytics számlázása akkor is történik, ha a metrikák adatait a speciális elemzéshez Log Analyticsre továbbítják.
 
 A következő mérőszámok áttekintést nyújtanak a szolgáltatás állapotáról. 
 
@@ -58,8 +58,8 @@ Megszámolja az adatok és a felügyeleti műveleti kérelmek számát.
 | ------------------- | ----------------- |
 | Bejövő kérelmek| A Service Bus szolgáltatásnak megadott időszakon keresztül küldött kérések száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 |Sikeres kérelmek|A Service Bus szolgáltatásnak adott időszakon keresztül végrehajtott sikeres kérelmek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
-|Kiszolgálói hibák|A Service Bus szolgáltatás hibája miatt nem feldolgozott kérelmek száma egy adott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
-|Felhasználói hibák (lásd a következő szakaszt)|A megadott időszakban felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
+|Kiszolgálói hibák|A nem feldolgozott kérelmek száma a Service Bus szolgáltatásban egy adott időszakra vonatkozó hiba miatt.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
+|Felhasználói hibák (lásd a következő szakaszt)|A megadott időszakra vonatkozó felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 |Szabályozott kérelmek|A lekért kérelmek száma, mert túllépte a használatot.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 
 ### <a name="user-errors"></a>Felhasználói hibák
@@ -80,20 +80,18 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 | Aktív üzenetek| Üzenetsor vagy témakör aktív üzeneteinek száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Dimenzió: entitás neve |
 | Kézbesítetlen üzenetek| Egy várólistában vagy témakörben lévő kézbesítetlen üzenetek száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/>Dimenzió: entitás neve |
 | Ütemezett üzenetek| Az üzenetsor/témakör ütemezett üzeneteinek száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag  <br/> Dimenzió: entitás neve |
+| Befejezett üzenetek| Az üzenetsor/témakörben befejezett üzenetek száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Dimenzió: entitás neve |
+| Elhagyott üzenetek| Várólistán vagy témakörben elhagyott üzenetek száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Dimenzió: entitás neve |
 | Méret | Egy entitás (Üzenetsor vagy témakör) mérete bájtban kifejezve. <br/><br/>Egység: darabszám <br/>Összesítés típusa: átlag <br/>Dimenzió: entitás neve | 
 
 > [!NOTE]
-> A következő metrikák értékei az időponthoz tartozó értékek. Előfordulhat, hogy az adott időpontot követően azonnal felhasznált bejövő üzenetek nem jelennek meg ezekben a metrikákban. 
-> - Üzenetek
-> - Aktív üzenetek 
-> - Kézbesítetlen üzenetek 
-> - Ütemezett üzenetek 
+> Az üzenetek, az aktív, a kézbesítetlen, az ütemezett, a befejezett és a megszakított üzenetek értékei az időponthoz tartozó értékek. Előfordulhat, hogy az adott időpontot követően azonnal felhasznált bejövő üzenetek nem jelennek meg ezekben a metrikákban. 
 
 ## <a name="connection-metrics"></a>Kapcsolatok metrikái
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Aktív kapcsolatok|A névtérben található aktív kapcsolatok száma, valamint a névtér entitása. A metrika értéke egy adott időponthoz tartozó érték. Azok a kapcsolatok, amelyek közvetlenül az adott időpontot követően aktívak voltak, nem tükröződnek a metrikában.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
+|Aktív kapcsolatok|Az aktív kapcsolatok száma a névtérben és a névtérben lévő entitásokban. A metrika értéke egy adott időponthoz tartozó érték. Azok a kapcsolatok, amelyek közvetlenül az adott időpontot követően aktívak voltak, nem tükröződnek a metrikában.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 |Megnyitott kapcsolatok |A nyitott kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 |Lezárt kapcsolatok |A lezárt kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 
@@ -121,17 +119,17 @@ A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támoga
 
 ## <a name="set-up-alerts-on-metrics"></a>Riasztások beállítása mérőszámokon
 
-1. A **Service Bus névtér** **mérőszámok** lapján válassza a **riasztások beállítása**lehetőséget. 
+1. A **Service Bus névtér** **mérőszámok** lapján válassza a **riasztások beállítása** lehetőséget. 
 
     ![Metrikák lap – riasztások beállítása menü](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
 2. Jelölje ki a **cél kiválasztása** lehetőséget, majd hajtsa végre a következő műveleteket az **erőforrás kiválasztása** oldalon: 
     1. Válassza ki **Service Bus névtereket** a **szűrés erőforrástípus** mezőben. 
     2. Válassza ki az előfizetését a **szűrés előfizetés alapján** mezőben.
     3. Válassza ki a **Service Bus-névteret** a listából. 
-    4. Válassza a **Done** (Kész) lehetőséget. 
+    4. Válassza a **Kész** lehetőséget. 
     
         ![Névtér kiválasztása](./media/service-bus-metrics-azure-monitor/select-namespace.png)
-1. Válassza a **feltétel hozzáadása**lehetőséget, és hajtsa végre a következő műveleteket a **jel logikai beállítása** lapon:
+1. Válassza a **feltétel hozzáadása** lehetőséget, és hajtsa végre a következő műveleteket a **jel logikai beállítása** lapon:
     1. Válasszon **mérőszámokat** a **jel típusához**. 
     2. Válasszon ki egy jelet. Például: **szolgáltatási hibák**. 
 
@@ -139,16 +137,16 @@ A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támoga
     1. Válasszon **nagyobbat** a **feltételnél**.
     2. Válassza az **összeg** lehetőséget az **idő összesítéséhez**. 
     3. Adja meg az **5** értéket a **küszöbértékhez**. 
-    4. Válassza a **Done** (Kész) lehetőséget.    
+    4. Válassza a **Kész** lehetőséget.    
 
         ![Feltétel meghatározása](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
-1. A **szabály létrehozása** lapon bontsa ki a **riasztás részleteinek meghatározása**elemet, majd hajtsa végre a következő műveleteket:
+1. A **szabály létrehozása** lapon bontsa ki a **riasztás részleteinek meghatározása** elemet, majd hajtsa végre a következő műveleteket:
     1. Adja meg a riasztás **nevét** . 
     2. Adja meg a riasztás **leírását** .
     3. Válassza ki a riasztás **súlyosságát** . 
 
         ![Képernyőkép a szabály létrehozása lapról. A riasztás részleteinek meghatározása kibontva, a riasztási szabály nevének, leírásának és súlyosságának mezői pedig ki vannak emelve.](./media/service-bus-metrics-azure-monitor/alert-details.png)
-1. A **szabály létrehozása** lapon bontsa ki **a műveleti csoport definiálása**elemet, válassza az **új műveleti csoport**lehetőséget, majd hajtsa végre a következő műveleteket a **műveleti csoport hozzáadása lapon**. 
+1. A **szabály létrehozása** lapon bontsa ki **a műveleti csoport definiálása** elemet, válassza az **új műveleti csoport** lehetőséget, majd hajtsa végre a következő műveleteket a **műveleti csoport hozzáadása lapon**. 
     1. Adja meg a műveleti csoport nevét.
     2. Adja meg a műveleti csoport rövid nevét. 
     3. Válassza ki előfizetését. 
@@ -157,13 +155,13 @@ A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támoga
     6. Válassza az **e-mail/SMS/leküldés/hang** lehetőséget a **Művelettípus mezőben**. 
     7. Válassza a **Részletek szerkesztése** lehetőséget. 
     8. Az **e-mail/SMS/leküldés/hang** oldalon hajtsa végre a következő műveleteket:
-        1. Válassza az **e-mail**lehetőséget. 
+        1. Válassza az **e-mail** lehetőséget. 
         2. Adja meg az **e-mail-címet**. 
         3. Kattintson az **OK** gombra.
 
             ![A műveleti csoport hozzáadása lap képernyőképe. Az "e-mail küldése" nevű művelet a csoportba kerülő e-mail-/SMS/push/Voice típusú művelettel.](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. A **műveleti csoport hozzáadása** lapon kattintson **az OK gombra**. 
-1. A **szabály létrehozása** lapon válassza a **riasztási szabály létrehozása**lehetőséget. 
+1. A **szabály létrehozása** lapon válassza a **riasztási szabály létrehozása** lehetőséget. 
 
     ![Riasztási szabály létrehozása gomb](./media/service-bus-metrics-azure-monitor/create-alert-rule.png)
 

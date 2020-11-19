@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: fabfdce72202f79e2ac5bad08d124df7ce2de542
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 5e3fbd1868cc1216cb7b9d02b2aa8e690af33952
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592583"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917681"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>A Storage-fiókban tárolt adatelemzés
 
@@ -41,6 +41,8 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 ```
 
 ### <a name="analyze-data-in-a-storage-account"></a>A Storage-fiókban tárolt adatelemzés
+
+A munkaterület alapértelmezett ADLS Gen2 fiókjában lévő adatait elemezheti, vagy egy ADLS Gen2-vagy blob Storage-fiókot a munkaterülethez társíthat "**Manage**" > "**társított szolgáltatások**" > "**New**" (az alábbi lépések az elsődleges ADLS Gen2 fiókra vonatkoznak).
 
 1. A szinapszis Studióban nyissa meg **az** adatközpontot, majd kattintson a **csatolt** elemre.
 1. Nyissa meg a **Storage accounts**  >  **sajátmunkaterület (Primary-contosolake)**.

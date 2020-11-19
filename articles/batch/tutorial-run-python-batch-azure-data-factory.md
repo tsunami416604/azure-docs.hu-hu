@@ -1,18 +1,18 @@
 ---
-title: Python-parancsfájlok futtatása Data Factory
-description: Oktatóanyag – megtudhatja, hogyan futtathat Python-parancsfájlokat egy folyamat részeként a Azure Batch használatával Azure Data Factory segítségével.
-author: mammask
+title: Oktatóanyag – Python-parancsfájlok futtatása Data Factory használatával
+description: Megtudhatja, hogyan futtathat Python-parancsfájlokat egy folyamat részeként a Azure Batch használatával Azure Data Factory.
+author: pkshultz
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 08/12/2020
-ms.author: komammas
+ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: c66c14d42c3d14fc4171f6fdfaf2e7f75a531507
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 7752bc3f768aec7a3e98fb1813c4194f81fb9dfb
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886906"
+ms.locfileid: "94917630"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Oktatóanyag: Python-parancsfájlok futtatása Azure Data Factory használatával Azure Batch
 
@@ -155,6 +155,5 @@ Ez az oktatóanyag egy példát mutat be, amely azt tanította, hogyan futtathat
 A Azure Data Factoryról további információt a következő témakörben talál:
 
 > [!div class="nextstepaction"]
-> [Azure Data Factory](../data-factory/introduction.md) 
->  [Folyamatok és tevékenységek](../data-factory/concepts-pipelines-activities.md) 
->  [Egyéni tevékenységek](../data-factory/transform-data-using-dotnet-custom-activity.md)
+> [Azure Data Factory áttekintése](../data-factory/introduction.md)
+

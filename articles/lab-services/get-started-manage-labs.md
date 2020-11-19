@@ -2,52 +2,27 @@
 title: Ismerkedés a Azure Lab Services
 description: Ez a cikk bemutatja, hogyan kezdheti meg a Azure Lab Services használatát.
 ms.topic: article
-ms.date: 10/02/2020
-ms.openlocfilehash: 33e052931b0c3bd1bb1434b7eeefeed7a2a7ceab
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.date: 11/18/2020
+ms.openlocfilehash: bdc4f4af06d70a1798e7409b78f6b47530ddd7f4
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380199"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917103"
 ---
 # <a name="get-started-with-lab-services"></a>Ismerkedés a labor Services szolgáltatással 
 
-Tanulóként a Azure Lab Services segítségével hozzáférhet az iparági szabványnak megfelelő szoftverekhez, amelyek a virtuális gépekre (VM) vonatkozó tanulmányi programokhoz szükségesek. 
+Azure Lab Services a diákok és a tanárok számára közvetlenül a saját számítógépeiről biztosít hozzáférést a Virtual Computer Labs szolgáltatáshoz.
 
-A tanároknak ismerniük kell, hogyan tanítják meg a tanulók számára, hogy a Azure Lab Servicest használják az útmutatóban az egy-az-egy tanuló által kiadott hardveren.
+A tanároknak ismerniük kell, hogyan tanítják meg a diákokat és a szülőket, hogy a laboratóriumi szolgáltatásokat a tanulók egy-az-egyhez által kiadott hardver használatával használják. Ennek eredményeképpen a tanulók számára elérhetővé válik az iparági szabványnak megfelelő szoftver, amely a Virtual Machines (VM) használatával végzett tanulmányi programokhoz szükséges. 
 
-Ez a cikk a tanulók számára a Azure Lab Services használatához való hozzáféréshez, kezeléséhez és a diákok megtanításához való használatáról nyújt információt.
+A virtuális gép virtuális számítógépként működő virtuális környezet. A virtuális gépek saját processzorral, memóriával és tárterülettel rendelkeznek. A virtuális gépek helyettesíthetik a valódi gépet, és hozzáférést biztosíthatnak a felhasználóknak az operációs rendszerekhez és a szoftverekhez anélkül, hogy azokat a saját eszközén kellene megadniuk. A Azure Lab Services eszközzel a tanulók hozzáférhetnek a virtuális gépekhez, és megkereshetik azokat, és a munkatársak kezelhetik a Virtual Computer Labs szolgáltatást. 
 
-## <a name="overview"></a>Áttekintés
+Ez a cikk tájékoztatást nyújt a tanulók és a szülők számára a Azure Lab Services használatához való hozzáféréshez, kezeléséhez és megtanításához.
 
-Mi az a virtuális gép, és hogyan működnek?
+## <a name="key-concepts"></a>Fő fogalmak
 
-A virtuális gép (VM) olyan virtuális környezet, amely virtuális számítógépként működik. A virtuális gépek saját processzorral, memóriával és tárterülettel rendelkeznek. A virtuális gépek helyettesíthetik a valódi gépet, és hozzáférést biztosíthatnak a felhasználóknak az operációs rendszerekhez és a szoftverekhez anélkül, hogy azokat a saját eszközén kellene megadniuk. A Azure Lab Services eszközzel a tanulók hozzáférhetnek a virtuális gépekhez, és megkereshetik azokat, és a munkatársak kezelhetik a Virtual Computer Labs szolgáltatást. 
-
-További információ: [tantermi Labs létrehozása és kezelése](how-to-manage-classroom-labs.md).
-
-## <a name="lab-dashboards"></a>Labor-irányítópultok
-
-A Azure Lab Services osztálytermi laborokhoz tartozó irányítópultok egy adott labor különböző szempontjait, például a virtuális gép adatait, a hozzárendelt és a nem hozzárendelt virtuális gépek számát, a regisztrált és a nem regisztrált felhasználók számát, valamint a labor-ütemtervekkel kapcsolatos információkat tartalmaznak. 
-
-> [!NOTE]
-> Noha az irányítópult és a [Azure Lab Services webhely](https://labs.azure.com/) legtöbb felügyeleti aspektusa látható lesz a tanárok számára, a szerepkörre vonatkozó engedélyek befolyásolhatják az irányítópult bizonyos feltételeinek módosítását. Ha probléma merül fel az adott labor beállításakor, forduljon a TÁBLAKIFEJEZÉSEK-rendszergazdához.
-
-:::image type="content" source="./media/use-dashboard/dashboard.png" alt-text="a Azure Lab Services portál":::
-
-1. Navigáljon a [Azure Lab Services webhelyére](https://labs.azure.com/), és jelentkezzen be.
-1. Válassza ki a labort.
-1. Ekkor megjelenik egy **irányítópult** az ablak bal oldalán. Kattintson az **irányítópultra** , és az irányítópulton több csempét fog látni.
-1. A **költségek & a számlázási** csempén a sablonok, a virtuálisgép-készletek, a felhasználók és az ütemtervek csempéi is vannak, amelyek lehetővé teszik a szempontok módosítását és további részletek megtekintését az osztályterem laborban.
-
-    1. Sablon – leírja a sablon létrehozásának és utolsó közzétételének dátumát. 
-    1. Virtuálisgép-készlet – a hozzárendelt és a hozzá nem rendelt virtuális gépek száma.
-    1. Felhasználók – a laborhoz hozzáadott regisztrált felhasználók és felhasználók száma, de nincs regisztrálva.
-    1. Ütemezések – megjeleníti a labor közelgő ütemezett eseményeit, valamint egy hivatkozást a további események megtekintéséhez.
-
-További információ: [az irányítópult használata](use-dashboard.md).
-
-## <a name="quota-hours"></a>Kvóta órája
+### <a name="quota-hours"></a>Kvóta órája
 
 A tanulók az ütemezett osztályok ideje alatt bármikor hozzáférhetnek a virtuális gépekhez, anélkül, hogy ez a kvóta órája lenne. A kvóta órája a teljes félévre van beállítva, és meghatározza, hogy a tanulók hány óra alatt használhatják a virtuális gépet a rendszeresen ütemezett osztályon kívül.
 
@@ -57,17 +32,42 @@ További információt a [kvóta beállítása](how-to-configure-student-usage.m
 
 ### <a name="automatic-shut-down"></a>Automatikus leállítás
 
-A költségek csökkentése és a tanulók kvótájának megtakarítása érdekében az automatikus leállítások engedélyezve lesznek a laborban. Az automatikus leállítások kikapcsolják a virtuális gépeket egy tétlenségi idő után (nincs egér vagy billentyűzet bemenet). Az automatikus leállítások két lépésben működnek, először a tanulók a virtuális gép leválasztása után egy ideig inaktivitás után le lesznek választva. Ezen a ponton a virtuális gép továbbra is **fut** , és a tanulók képesek csatlakozni. A leválasztást követően egy másik inaktivitási időszak után a virtuális gép le fog állni.
+A költségek megtartása és a tanulók kvótájának eltakarítása érdekében az automatikus leállítások engedélyezve vannak a laborokban. Az automatikus leállítások kikapcsolják a virtuális gépeket egy tétlenségi idő után (nincs egér vagy billentyűzet bemenet). Az automatikus leállítások két lépésben működnek, először a tanulók a virtuális gép leválasztása után egy ideig inaktivitás után le lesznek választva. Ezen a ponton a virtuális gép továbbra is **fut** , és a tanulók képesek csatlakozni. A leválasztást követően egy másik inaktivitási időszak után a virtuális gép le fog állni.
 
-Az automatikus leállítások fontos költségmegtakarítási eszköznek minősülnek, azonban a tanulók számára kihívást jelentenek a munkájuk megtakarítása és a nagyméretű projektfájlok megjelenítése tekintetében. Ha a tanulók gyakran le vannak választva, vagy túl gyorsan kikapcsolják a virtuális gépeket. Lépjen kapcsolatba a TÁBLAKIFEJEZÉSEK rendszergazdájával. 
+Az automatikus leállítások fontos költségmegtakarítási eszköznek minősülnek, azonban a tanulók számára kihívást jelentenek a munkájuk megtakarítása és a nagyméretű projektfájlok megjelenítése tekintetében. Ha a tanulók gyakran le vannak választva, vagy túl gyorsan kikapcsolják a virtuális gépeket, forduljon a TÁBLAKIFEJEZÉSEK-rendszergazdához. 
 
 További információ: [virtuális gépek automatikus leállításának beállítása labor-fiókhoz](how-to-configure-lab-accounts.md).
 
-## <a name="managing-virtual-machines"></a>Virtuális gépek kezelése
+### <a name="managing-virtual-machines"></a>Virtuális gépek kezelése
 
 A labor kezelése lehetővé teszi a tanárok számára, hogy a laboratóriumi kapacitást (a tanulók számára elérhető virtuális gépek számát) és a virtuális gépek manuális indítását, leállítását vagy alaphelyzetbe állítását vezérelje. a tanárok a virtuális gépekhez is csatlakozhatnak a tanulói felület, a fájlok elérése és a szoftverekkel vagy a virtuális géppel kapcsolatos hibák elhárítása érdekében.
 
-A virtuális gépek kezelése során a legfontosabb megjegyezni, hogy a gép bármikor **fut** , és akkor is költségekkel jár, ha senki sem csatlakozik a virtuális géphez.
+A virtuális gépek kezelése során a legfontosabb megjegyezni, hogy a gép bármikor **fut**. a költségek akkor is felmerülnek, ha senki sem csatlakozik a virtuális géphez.
+
+## <a name="lab-dashboards"></a>Labor-irányítópultok
+
+### <a name="overview"></a>Áttekintés
+
+A Azure Lab Services osztálytermi laborokhoz tartozó irányítópultok egy adott labor különböző szempontjait, például a virtuális gép adatait, a hozzárendelt és a nem hozzárendelt virtuális gépek számát, a regisztrált és a nem regisztrált felhasználók számát, valamint a labor-ütemtervekkel kapcsolatos információkat tartalmaznak. 
+
+> [!NOTE]
+> Noha az irányítópult és a [Azure Lab Services webhely](https://labs.azure.com/) legtöbb felügyeleti aspektusa látható lesz a tanárok számára, a szerepkörre vonatkozó engedélyek befolyásolhatják az irányítópult bizonyos feltételeinek módosítását. Ha probléma merül fel az adott labor beállításakor, forduljon a TÁBLAKIFEJEZÉSEK-rendszergazdához.
+
+:::image type="content" source="./media/use-dashboard/dashboard.png" alt-text="a Azure Lab Services portál":::
+
+### <a name="examine-a-dashboard"></a>Irányítópult vizsgálata
+
+1. Navigáljon a [Azure Lab Services webhelyére](https://labs.azure.com/), és jelentkezzen be.
+1. Válassza ki a labort.
+1. Ekkor megjelenik egy **irányítópult** az ablak bal oldalán. Kattintson az **irányítópultra** , és az irányítópulton több csempét fog látni.
+1. A **költségek & a számlázási** csempén a sablonok, a virtuálisgép-készletek, a felhasználók és az ütemtervek csempéi is vannak, amelyek lehetővé teszik a szempontok módosítását és további részletek megtekintését az osztályterem laborban.
+
+    * Sablon – leírja a sablon létrehozásának és utolsó közzétételének dátumát. 
+    * Virtuálisgép-készlet – a hozzárendelt és a hozzá nem rendelt virtuális gépek száma.
+    * Felhasználók – a laborhoz hozzáadott regisztrált felhasználók és felhasználók száma, de nincs regisztrálva.
+    * Ütemezések – megjeleníti a labor közelgő ütemezett eseményeit, valamint egy hivatkozást a további események megtekintéséhez.
+
+További információ: [az irányítópult használata](use-dashboard.md).
 
 ### <a name="manually-starting-vms"></a>Virtuális gépek manuális elindítása
 
@@ -98,7 +98,7 @@ Ha egy tanuló nehézségekbe ütközik a virtuális géphez való csatlakozás 
     > [!NOTE]
     > A tanulói virtuális gépek bekapcsolása nem befolyásolja a tanulóra vonatkozó kvótát. A felhasználók kvótái a felhasználó számára az ütemezett osztály időpontján kívül elérhető labor-órák számát határozzák meg.
 
-### <a name="connect-to-virtual-machines"></a>Kapcsolódás Virtual Machineshoz
+### <a name="connect-to-vms"></a>Kapcsolódás virtuális gépekhez
 
 A tanárok képesek csatlakozni a tanulói virtuális géphez, amíg be van kapcsolva, és a tanuló nem csatlakozik a virtuális géphez. A virtuális géphez való csatlakozással hozzáférhet a virtuális gépen található helyi fájlokhoz, és segítséget nyújthat a tanulóknak a problémák elhárításában.
 
@@ -107,7 +107,7 @@ A tanárok képesek csatlakozni a tanulói virtuális géphez, amíg be van kapc
 
 :::image type="content" source="./media/how-to-set-virtual-machine-passwords/connect-student-vm.png" alt-text="Kapcsolódás tanulói virtuális géphez gomb":::
 
-## <a name="add-and-manage-lab-users"></a>Tesztkörnyezeti felhasználók létrehozása és felügyelete
+## <a name="manage-users-in-a-lab"></a>Tesztkörnyezetben lévő felhasználók kezelése
 
 A tanárok hozzáadhatnak tanuló felhasználókat a laborhoz, és megfigyelheti az óránkénti kvótákat. 
 
@@ -123,7 +123,7 @@ A tanárok hozzáadhatnak tanuló felhasználókat a laborhoz, és megfigyelheti
     :::image type="content" source="./media/get-started-manage-labs/add-students.png" alt-text="Tanulók felvétele a laborba":::
 1. A felhasználók listája mostantól az e-mailekkel, az állapottal, a meghívóval és a kvóta órájával frissül.
 
-    Ha a tanulók egy laborhoz vannak regisztrálva, a nevüket a rendszer az MPS könyvtár első és utolsó neveivel frissíti.
+    Ha a tanulók egy laborhoz vannak regisztrálva, a nevüket a rendszer az első és az utolsó névvel frissíti Azure Active Directory.
 
     > [!NOTE]
     > A hozzáférés korlátozása beállítás bekapcsolva értékre vált a felhasználók számára. Ez azt jelenti, hogy csak a listán szereplő felhasználók regisztrálhatnak a laborba az Ön által küldött regisztrációs hivatkozás használatával.
@@ -144,7 +144,7 @@ Hozzáadhat felhasználókat úgy is, hogy feltölt egy CSV-fájlt, amely tartal
 
 ### <a name="register-users"></a>Felhasználók regisztrálása
 
-Miután hozzáadta a felhasználókat a laborhoz, regisztrálnia kell a virtuális gépek eléréséhez. Ezt úgy teheti meg, hogy meghívja a felhasználókat az Azure Web Services portálról, amely a laborhoz tartozó regisztrációs hivatkozást tartalmazó e-mailt fog küldeni. Vagy másolhatja és beillesztheti a regisztrációs hivatkozást egy e-mailbe, vagy a tanulókkal folytatott kommunikáció egyéb formáját.
+Miután hozzáadta a felhasználókat a laborhoz, regisztrálnia kell a virtuális gépek eléréséhez. Ezt úgy teheti meg, hogy meghívja a felhasználókat a portálról, amely a laborhoz tartozó regisztrációs hivatkozást tartalmazó e-mailt fog küldeni. Vagy másolhatja és beillesztheti a regisztrációs hivatkozást egy e-mailbe, vagy a tanulókkal folytatott kommunikáció egyéb formáját.
 
 1. A **felhasználók** lapon válasszon ki egy tanulót vagy több tanulót a listában.
 
@@ -164,7 +164,7 @@ Miután hozzáadta a felhasználókat a laborhoz, regisztrálnia kell a virtuál
     
     :::image type="content" source="./media/get-started-manage-labs/user-registration.png" alt-text="Felhasználói regisztráció küldése":::
 
-Miután megkérte a felhasználókat a Azure Portal vagy megosztotta a hivatkozást, nyomon követheti, hogy mely felhasználók regisztrálása sikeresen megtörtént a **felhasználók** lapon az **állapot** oszlopban. 
+Miután megkérte a felhasználókat, vagy megosztotta a hivatkozást, megfigyelheti, hogy mely felhasználók regisztrálása sikeresen megtörtént a **felhasználók** lapon az **állapot** oszlopban. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

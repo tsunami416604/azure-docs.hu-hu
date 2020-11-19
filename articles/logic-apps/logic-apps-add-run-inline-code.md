@@ -5,29 +5,33 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 11/19/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f339ae4ff1ea90929ce7811efe002f5860f7b47d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 589420d96a3a6dfcc1c17a1b204765022b1ce412
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269335"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916644"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Kódrészletek hozzáadása és futtatása beágyazott kód használatával Azure Logic Apps
 
 Ha egy kódrészletet szeretne futtatni a logikai alkalmazásban, akkor a logikai alkalmazás munkafolyamatának lépéseként hozzáadhatja a beépített **beágyazott kód** műveletet. Ez a művelet akkor működik a legjobban, ha olyan kódot szeretne futtatni, amely megfelel ennek a forgatókönyvnek:
 
 * A JavaScriptben fut. Hamarosan további nyelvek érkeznek.
+
 * A futás öt másodperc vagy kevesebb idő alatt fejeződik be.
+
 * Legfeljebb 50 MB méretű adatkezelést tesz elérhetővé.
+
 * Nem szükséges a [ **változók** műveletekkel](../logic-apps/logic-apps-create-variables-store-values.md)dolgozni, amelyek még nem támogatottak.
-* A Node.js 8.11.1 verzióját használja. További információ: [standard beépített objektumok](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects). 
+
+* A Node.js 8.11.1 verzióját használja. További információ: [standard beépített objektumok](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects).
 
   > [!NOTE]
   > `require()`Ezt a függvényt nem támogatja a **beágyazott kód** művelet a JavaScript futtatásához.
 
-Ez a művelet futtatja a kódrészletet, és visszaadja az adott kódrészlet kimenetét az **eredmény**nevű tokennek, amelyet a logikai alkalmazás későbbi műveleteiben használhat. Olyan esetekben, amikor egy függvényt szeretne létrehozni a kódhoz, próbálkozzon [egy Azure-függvény létrehozásával és meghívásával](../logic-apps/logic-apps-azure-functions.md) a logikai alkalmazásban.
+Ez a művelet futtatja a kódrészletet, és visszaadja az adott kódrészlet kimenetét az **eredmény** nevű tokennek, amelyet a logikai alkalmazás későbbi műveleteiben használhat. Olyan esetekben, amikor egy függvényt szeretne létrehozni a kódhoz, próbálkozzon [egy Azure-függvény létrehozásával és meghívásával](../logic-apps/logic-apps-azure-functions.md) a logikai alkalmazásban.
 
 Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail érkezik egy munkahelyi vagy iskolai fiókba. A kódrészlet kibontja és visszaadja az e-mail törzsében megjelenő e-mail-címeket.
 
@@ -41,7 +45,7 @@ Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail ér
 
    A jelen témakörben található példa logikai alkalmazás ezt az Office 365 Outlook triggert használja: **új e-mail érkezésekor**
 
-* A logikai alkalmazáshoz társított [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , amely a logikai alkalmazáshoz van társítva. Ha nem szeretne integrációs fiókot létrehozni vagy használni, hozzon létre egy logikai alkalmazást a Azure Portal az új **logikai alkalmazás (előzetes verzió)** erőforrástípus vagy a Visual Studio Code-ban az új [Azure Logic apps előnézet bővítmény](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)használatával.
 
   > [!NOTE]
   > Győződjön meg arról, hogy olyan integrációs fiókot használ, amely megfelelő a használati esethez vagy forgatókönyvhöz. A [szabad szintű](../logic-apps/logic-apps-pricing.md#integration-accounts) integrációs fiókok esetében például csak a feltáró forgatókönyvek és a számítási feladatok, a nem éles környezetek, a használat és az átviteli sebesség korlátozott, és nem támogatott a szolgáltatói szerződés (SLA). Más szinteken költségek is merülnek fel, azonban SLA-támogatással, nagyobb átviteli sebességgel és magasabb korlátokkal rendelkeznek. További információ az integrációs fiók [szintjeiről](../logic-apps/logic-apps-pricing.md#integration-accounts), [díjszabásáról](https://azure.microsoft.com/pricing/details/logic-apps/)és [korlátairól](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
@@ -52,15 +56,15 @@ Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail ér
 
 1. A tervezőben adja hozzá a **beágyazott kód** műveletet a logikai alkalmazás munkafolyamatában a kívánt helyen.
 
-   * A munkafolyamat végén található művelet hozzáadásához válassza az **új lépés**lehetőséget.
+   * A munkafolyamat végén található művelet hozzáadásához válassza az **új lépés** lehetőséget.
 
-   * A meglévő lépések közötti művelet hozzáadásához vigye az egérmutatót a lépéseket összekötő nyíl fölé. Válassza a pluszjelet ( **+** ), és válassza a **művelet hozzáadása**lehetőséget.
+   * A meglévő lépések közötti művelet hozzáadásához vigye az egérmutatót a lépéseket összekötő nyíl fölé. Válassza a pluszjelet ( **+** ), és válassza a **művelet hozzáadása** lehetőséget.
 
    Ez a példa hozzáadja a **beágyazott kód** műveletet az Office 365 Outlook trigger alatt.
 
    ![Új lépés hozzáadása](./media/logic-apps-add-run-inline-code/add-new-step.png)
 
-1. A **válasszon műveletet**területen a keresőmezőbe írja be a "beágyazott kód" kifejezést a szűrőként. A műveletek listából válassza a következő műveletet: **JavaScript-kód végrehajtása**
+1. A **válasszon műveletet** területen a keresőmezőbe írja be a "beágyazott kód" kifejezést a szűrőként. A műveletek listából válassza a következő műveletet: **JavaScript-kód végrehajtása**
 
    ![Válassza a "JavaScript-kód végrehajtása" lehetőséget](./media/logic-apps-add-run-inline-code/select-inline-code-action.png)
 
@@ -68,13 +72,13 @@ Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail ér
 
    ![Beágyazott kód művelet alapértelmezett mintakód](./media/logic-apps-add-run-inline-code/inline-code-action-default.png)
 
-1. A **Code (kód** ) mezőben törölje a mintakódt, és adja meg a futtatni kívánt kódot. Olyan kódot írhat, amelyet egy metódusba szeretne helyezni, de nem definiálja a metódus aláírását. 
+1. A **Code (kód** ) mezőben törölje a mintakódt, és adja meg a futtatni kívánt kódot. Olyan kódot írhat, amelyet egy metódusba szeretne helyezni, de nem definiálja a metódus aláírását.
 
    Egy felismert kulcsszó beírásakor megjelenik az automatikus kiegészítés lista, amely az elérhető kulcsszavak közül választhat, például:
 
    ![Kulcsszavak automatikus kiegészítési listája](./media/logic-apps-add-run-inline-code/auto-complete.png)
 
-   Ez a példa a kódrészletet először egy olyan változót hoz létre, amely egy *reguláris kifejezést*tárol, amely meghatározza a bemeneti szövegben egyeztetendő mintát. A kód Ezután létrehoz egy változót, amely az e-mail-törzs adatait az triggerből tárolja.
+   Ez a példa a kódrészletet először egy olyan változót hoz létre, amely egy *reguláris kifejezést* tárol, amely meghatározza a bemeneti szövegben egyeztetendő mintát. A kód Ezután létrehoz egy változót, amely az e-mail-törzs adatait az triggerből tárolja.
 
    ![Változók létrehozása](./media/logic-apps-add-run-inline-code/save-email-body-variable.png)
 
@@ -84,8 +88,7 @@ Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail ér
 
    ![Eredmény kiválasztása](./media/logic-apps-add-run-inline-code/inline-code-example-select-outputs.png)
 
-   A **kód** mezőben a kódrészlet a írásvédett `workflowContext` objektumot bemenetként használhatja. Ez az objektum olyan altulajdonságokkal rendelkezik, amelyek lehetővé tennék a kód elérését a munkafolyamatban lévő trigger és előző műveletek eredményeihez.
-   További információ: a jelen témakör későbbi részében található, az [trigger és a művelet eredményének ismertetése a kódban](#workflowcontext).
+   A **kód** mezőben a kódrészlet a írásvédett `workflowContext` objektumot bemenetként használhatja. Ez az objektum olyan altulajdonságokkal rendelkezik, amelyek lehetővé tennék a kód elérését a munkafolyamatban lévő trigger és előző műveletek eredményeihez. További információ: a jelen témakör későbbi részében található, az [trigger és a művelet eredményének ismertetése a kódban](#workflowcontext).
 
    > [!NOTE]
    >
@@ -97,8 +100,7 @@ Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail ér
    > `// Incorrect`</br>
    > `workflowContext.actions.my.action.name.body`
 
-   A beágyazott kód művelethez nem szükséges `return` utasítás, de az eredmények egy `return` utasításból az **eredmény** -tokenen keresztül is elérhetők a későbbi műveletekben. 
-   Például a kódrészlet visszaadja az eredményt a függvény meghívásával `match()` , amely megkeresi az e-mail-szövegtörzsben szereplő egyezéseket a reguláris kifejezéssel. Az **összeállítás** művelet az **eredmény** -token használatával hivatkozik a beágyazott kód művelet eredményeire, és egyetlen eredményt hoz létre.
+   A beágyazott kód művelethez nem szükséges `return` utasítás, de az eredmények egy `return` utasításból az **eredmény** -tokenen keresztül is elérhetők a későbbi műveletekben. Például a kódrészlet visszaadja az eredményt a függvény meghívásával `match()` , amely megkeresi az e-mail-szövegtörzsben szereplő egyezéseket a reguláris kifejezéssel. Az **összeállítás** művelet az **eredmény** -token használatával hivatkozik a beágyazott kód művelet eredményeire, és egyetlen eredményt hoz létre.
 
    ![Befejezett logikai alkalmazás](./media/logic-apps-add-run-inline-code/inline-code-complete-example.png)
 
@@ -229,15 +231,15 @@ A paraméterek hozzáadásához nyissa meg az **új paraméter hozzáadása** li
 
 ### <a name="include-trigger-results"></a>Trigger eredményeinek belefoglalása
 
-Ha az **Eseményindítók**lehetőséget választja, a rendszer megkérdezi, hogy az eseményindító eredményeit is tartalmazza-e.
+Ha az **Eseményindítók** lehetőséget választja, a rendszer megkérdezi, hogy az eseményindító eredményeit is tartalmazza-e.
 
-* Az **trigger** listából válassza az **Igen**lehetőséget.
+* Az **trigger** listából válassza az **Igen** lehetőséget.
 
 <a name="action-results"></a>
 
 ### <a name="include-action-results"></a>Művelet eredményeinek belefoglalása
 
-Ha a **műveletek**lehetőséget választja, a rendszer kéri, hogy adja meg a hozzáadni kívánt műveleteket. A műveletek hozzáadásának megkezdése előtt azonban szüksége lesz a logikai alkalmazás alapjául szolgáló munkafolyamat-definícióban megjelenő művelet nevének verziójára.
+Ha a **műveletek** lehetőséget választja, a rendszer kéri, hogy adja meg a hozzáadni kívánt műveleteket. A műveletek hozzáadásának megkezdése előtt azonban szüksége lesz a logikai alkalmazás alapjául szolgáló munkafolyamat-definícióban megjelenő művelet nevének verziójára.
 
 * Ez a funkció nem támogatja a változókat, a hurkokat és az iterációs indexeket.
 
@@ -247,19 +249,19 @@ Ha a **műveletek**lehetőséget választja, a rendszer kéri, hogy adja meg a h
 
   `My.Action.Name`
 
-1. A tervező eszköztárán kattintson a **kód nézet**elemre, és keressen rá a `actions` művelet nevére a (z) attribútumon belül.
+1. A tervező eszköztárán kattintson a **kód nézet** elemre, és keressen rá a `actions` művelet nevére a (z) attribútumon belül.
 
    Például `Send_approval_email_` a **jóváhagyás küldése e-mailben** művelet JSON-neve.
 
    ![Művelet nevének keresése a JSON-ban](./media/logic-apps-add-run-inline-code/find-action-name-json.png)
 
-1. A Tervező nézetre való visszatéréshez a kód nézet eszköztárán válassza a **tervező**lehetőséget.
+1. A Tervező nézetre való visszatéréshez a kód nézet eszköztárán válassza a **tervező** lehetőséget.
 
 1. Az első művelet hozzáadásához a **műveletek elem – 1** mezőben adja meg a művelet JSON-nevét.
 
    ![Első művelet megadása](./media/logic-apps-add-run-inline-code/add-action-parameter.png)
 
-1. Egy másik művelet hozzáadásához válassza az **új elem hozzáadása**lehetőséget.
+1. Egy másik művelet hozzáadásához válassza az **új elem hozzáadása** lehetőséget.
 
 ## <a name="reference"></a>Referencia
 

@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 11/15/2020
-ms.openlocfilehash: 48bd32569b7eb7fa09f83f81190bf96baa42fae0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.date: 11/19/2020
+ms.openlocfilehash: a79055a77ec73ce2b267bb4f16fa91f37e22ea75
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659981"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916780"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Saját üzemeltetésű IR konfigurálása proxyként egy Azure-SSIS IRhoz Azure Data Factory
 
@@ -175,8 +175,10 @@ Az alábbi utasításokat követve engedélyezheti az egyéni/harmadik féltől 
 
 1. Telepítse az egyéni/külső gyártótól származó összetevőket SQL Server 2017 Azure-SSIS IR [standard/expressz egyéni telepítéssel](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
 
-1. Hozza létre a következő DTSPath-beállításkulcsokat a saját üzemeltetésű integrációs modulban, ha azok még nem léteznek: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` és `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` .
- 
+1. Hozza létre a következő DTSPath-beállításkulcsokat a saját üzemeltetésű integrációs modulban, ha még nem léteznek:
+   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` beállításban a `C:\Program Files\Microsoft SQL Server\140\DTS\`
+   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` beállításban a `C:\Program Files (x86)\Microsoft SQL Server\140\DTS\`
+   
 1. Telepítse az egyéni/külső gyártótól származó összetevőket SQL Server 2017 a saját üzemeltetésű IR-re a fenti DTSPath, és győződjön meg arról, hogy a telepítési folyamat:
 
    1. A,, `<DTSPath>` és mappákat hozza létre, `<DTSPath>/Connections` `<DTSPath>/PipelineComponents` `<DTSPath>/UpgradeMappings` ha azok még nem léteznek.
@@ -185,7 +187,7 @@ Az alábbi utasításokat követve engedélyezheti az egyéni/harmadik féltől 
    
    1. A globális szerelvény-gyorsítótárban (GAC) az egyéni/harmadik féltől származó összetevő-szerelvények által hivatkozott összes szerelvényt telepíti.
 
-Íme egy [példa arra a harmadik féltől származó összetevőre](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir) , amely expressz egyéni telepítést és saját üzemeltetésű IR-t használ a Azure-SSIS IRhoz.
+Íme néhány példa a partnereinktől, a [Theobald szoftver](https://kb.theobald-software.com/xtract-is/XIS-for-Azure-SHIR) -és [Aecorsoft](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir), akik kiigazították az összetevőket, hogy az expressz egyéni telepítőt és a saját üzemeltetésű integrációs modult használják a Azure-SSIS IR számára.
 
 ## <a name="enforce-tls-12"></a>A TLS 1.2 kényszerítése
 

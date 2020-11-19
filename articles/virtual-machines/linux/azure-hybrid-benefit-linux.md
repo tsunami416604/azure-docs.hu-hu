@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: a26a618d4f1bd9900136561d95c21c1ecbaadfaa
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516441"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916474"
 ---
-# <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Nyilvános előzetes verzió: Azure Hybrid Benefit – hogyan vonatkozik a Linux Virtual Machines
+# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure Hybrid Benefit – hogyan vonatkozik Linux Virtual Machines
 
 ## <a name="overview"></a>Áttekintés
 
 A Azure Hybrid Benefit lehetővé teszi a helyszíni Red Hat Enterprise Linux (RHEL) és a SUSE Linux Enterprise Server (SLES) virtuális gépek (VM-EK) Azure-ba történő áttelepítését a saját, korábban már meglévő Red hat vagy SUSE szoftveres előfizetéssel. Ezzel a kedvezménysel csak a virtuális gép infrastrukturális költségeiért kell fizetnie, mert a RHEL vagy a SLES előfizetése fedezi a szoftver díját. Az előnyök az összes RHEL és SLES piactéren elvégzett (TB) lemezképre érvényesek.
 
 > [!IMPORTANT]
-> A Linux rendszerű virtuális gépek Azure Hybrid Benefit jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A Linux rendszerű virtuális gépek Azure Hybrid Benefit most már nyilvánosak
+
 
 ## <a name="benefit-description"></a>Juttatás leírása
 
@@ -44,12 +44,6 @@ Azure Hybrid Benefit az összes RHEL és SLES Marketplace TB-lemezképhez elérh
 A fenntartott példányok, a dedikált gazdagépek és az SQL Hybrid előnyök nem jogosultak a Azure Hybrid Benefit használatára, ha már használja a Linux rendszerű virtuális gépek előnyeit.
 
 ## <a name="how-to-get-started"></a>Első lépések
-
-Azure Hybrid Benefit jelenleg a Linux rendszerű virtuális gépek előzetes verziójának fázisában van. Ha hozzáfér az előzetes verzióhoz, az Azure CLI használatával engedélyezheti az előnyt.
-
-### <a name="public-preview"></a>Nyilvános előzetes verzió
-
-A Azure Hybrid Benefit (Linux esetében) már nyilvános előzetes verzióban érhető el. Az alábbi lépéseket követve engedélyezheti a Red Hat és a SUSE rendszerű disztribúciók előnyeit. 
 
 ### <a name="red-hat-customers"></a>Red Hat-ügyfelek
 

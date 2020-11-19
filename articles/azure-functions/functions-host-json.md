@@ -3,12 +3,12 @@ title: host.jsAzure Functions 2. x esetén
 description: A v2 futtatókörnyezettel rendelkező fájl Azure Functions host.jsdokumentációja.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: aaea37b100d6fadd271f48490628b38cba6cf822
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: c12a9244cdc1a76f678578e281532c73bc9385ba
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377122"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917239"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x és újabb verziók – host.json referencia 
 
@@ -150,7 +150,7 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 > [!NOTE]
 > A napló mintavételezése miatt előfordulhat, hogy egyes végrehajtások nem jelennek meg a Application Insights figyelő paneljén. A naplók mintavételezésének elkerüléséhez adja hozzá `excludedTypes: "Request"` a értéket a következőhöz: `samplingSettings` .
 
-| Tulajdonság | Alapértelmezett | Description |
+| Tulajdonság | Alapértelmezett | Leírás |
 | --------- | --------- | --------- | 
 | samplingSettings | n/a | Lásd: [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | enableLiveMetrics | true | Élő metrikák gyűjtésének engedélyezése. |
@@ -162,7 +162,9 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
-|Tulajdonság | Alapértelmezett | Description |
+További információ ezekről a beállításokról: [mintavétel Application Insightsban](../azure-monitor/app/sampling.md). 
+
+|Tulajdonság | Alapértelmezett | Leírás |
 | --------- | --------- | --------- | 
 | isEnabled | true | Engedélyezheti vagy letilthatja a mintavételezést. | 
 | maxTelemetryItemsPerSecond | 20 | Az egyes kiszolgálók gazdagépén másodpercenként naplózott telemetria-elemek megcélzott száma. Ha az alkalmazás számos gazdagépen fut, csökkentse ezt az értéket, hogy az a forgalom teljes célján belül maradjon. | 
@@ -178,7 +180,7 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. httpAutoCollectionOptions
 
-|Tulajdonság | Alapértelmezett | Description |
+|Tulajdonság | Alapértelmezett | Leírás |
 | --------- | --------- | --------- | 
 | enableHttpTriggerExtendedInfoCollection | true | Engedélyezheti vagy letilthatja a http-eseményindítók kiterjesztett HTTP-kérelmi információit: bejövő kérelmek korrelációs fejlécei, többtényezős kulcsok támogatása, HTTP-metódus, elérési út és válasz. |
 | enableW3CDistributedTracing | true | Engedélyezheti vagy letilthatja a W3C elosztott nyomkövetési protokoll támogatását (és bekapcsolja az örökölt korrelációs sémát). Alapértelmezés szerint engedélyezve `enableHttpTriggerExtendedInfoCollection` , ha igaz. Ha `enableHttpTriggerExtendedInfoCollection` a értéke false (hamis), ez a jelző csak a kimenő kérelmekre vonatkozik, nem a bejövő kérelmekre. |
@@ -188,7 +190,7 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 
 A pillanatképekkel kapcsolatos további információkért tekintse meg a [.NET-alkalmazásokban előforduló kivételek hibakeresését](../azure-monitor/app/snapshot-debugger.md) ismertető témakört, valamint a [Application Insights Snapshot Debugger vagy Pillanatképek megtekintését engedélyező problémákat](../azure-monitor/app/snapshot-debugger-troubleshoot.md)
 
-|Tulajdonság | Alapértelmezett | Description |
+|Tulajdonság | Alapértelmezett | Leírás |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | A Application Insights Snapshot Debugger szolgáltatáshoz való kapcsolódáshoz használt végpont. Ha NULL, a rendszer egy alapértelmezett végpontot használ. |
 | captureSnapshotMemoryWeight | 0,5 | A folyamat aktuális memória-méretéhez megadott súlyozás, ha a rendszer ellenőrzi, hogy van-e elég memória a pillanatkép elvégzéséhez. A várt érték nagyobb, mint 0 megfelelő tört (0 < CaptureSnapshotMemoryWeight < 1). |
@@ -280,7 +282,7 @@ A [gazdagép állapotának figyelésére](https://github.com/Azure/azure-webjobs
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |engedélyezve|true|Megadja, hogy engedélyezve van-e a szolgáltatás. | 
 |healthCheckInterval|10 másodperc|Az időszakos háttér állapotának ellenőrzése közötti időtartam. | 
@@ -312,7 +314,7 @@ A Function alkalmazás naplózási viselkedését szabályozza, beleértve a App
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Meghatározza, hogy a fájlok naplózása milyen szintű legyen engedélyezve.  A lehetőségek a következők:, `never` `always` `debugOnly` . |
 |Naplózási szint|n/a|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x és újabb verziók esetében kövesse a naplózási kategória szűrésének ASP.NET Core elrendezését. Ezzel a beállítással szűrheti az adott függvények naplózását. További információ: [naplózási szűrés](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering) a ASP.net Core dokumentációjában. |
@@ -335,7 +337,7 @@ Ez a beállítás a [naplózás](#logging)gyermeke. A konzol naplózását vezé
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |isEnabled|hamis|Engedélyezheti vagy letilthatja a konzol naplózását.| 
 
@@ -369,7 +371,7 @@ Az [újrapróbálkozási házirend](./functions-bindings-error-pages.md#retry-po
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |stratégia|null|Kötelező. A használt újrapróbálkozási stratégia. Az érvényes értékek a következők: `fixedDelay` vagy `exponentialBackoff` .|
 |Maxretrycount csak|null|Kötelező. Az újrapróbálkozások maximális száma egy függvény végrehajtásakor. `-1` azt jelenti, hogy határozatlan ideig próbálkozik.|
@@ -401,7 +403,7 @@ Az egyszeri zárolási viselkedés konfigurációs beállításai. További info
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Az az időszak, ameddig a rendszer a működési szintet zárolja. A zárolások automatikus megújítása.| 
 |listenerLockPeriod|00:01:00|A figyelő zárolásának időtartama.| 

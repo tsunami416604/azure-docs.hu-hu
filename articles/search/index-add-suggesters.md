@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 11/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 498934c01970b296c1491e7ccd36ad947324306a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e90c1d1cfa02f63a2b5115124dee2a9da68e2f3f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445336"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917273"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Javaslat létrehozása az automatikus kiegészítés és a javasolt eredmények lekérdezésben való engedélyezéséhez
 
-Az Azure Cognitive Searchban a "keresés a típusban" beállítás egy [keresési indexhez](search-what-is-an-index.md)hozzáadott, **javaslattal** rendelkező konstruktoron keresztül érhető el. A javaslat két szolgáltatást támogat: az *automatikus kiegészítést* , amely egy teljes kifejezéssel rendelkező lekérdezés részleges bemenetét fejezi be, és *javaslatokat* tesz arra, hogy egy adott egyezésre kattintson. Az automatikus kiegészítés létrehoz egy lekérdezést. A javaslatok megfelelő dokumentumot hoznak létre.
+Az Azure Cognitive Searchban a "keresés a típusban" beállítás egy [keresési indexhez](search-what-is-an-index.md)hozzáadott, **javaslattal** rendelkező konstruktoron keresztül érhető el. A javaslat két szolgáltatást támogat: az *automatikus kiegészítést*, amely egy teljes kifejezéssel rendelkező lekérdezés részleges bemenetét fejezi be, és *javaslatokat* tesz arra, hogy egy adott egyezésre kattintson. Az automatikus kiegészítés létrehoz egy lekérdezést. A javaslatok megfelelő dokumentumot hoznak létre.
 
 A következő képernyőkép az [első alkalmazás létrehozása a C#-ban](tutorial-csharp-type-ahead-and-suggestions.md) című ábrán látható. Az automatikus kiegészítés egy lehetséges kifejezést is felhasznál, amely a "tw"-t "a" értékkel fejezi ki. A javaslatok a mini keresési eredmények, ahol a Hotel neve a megfelelő szállodai keresési dokumentumot jelöli az indexből. A javaslatok esetében bármilyen olyan mezőt felvehet, amely leíró információkat biztosít.
 
@@ -54,7 +54,7 @@ Az automatikus kiegészítés kihasználja a mezők nagyobb készletének előny
 
 A javaslatok azonban jobb eredményeket eredményeznek, ha a kiválasztott mező szelektív. Ne feledje, hogy a javaslat egy keresési dokumentum proxyja, ezért olyan mezőket szeretne használni, amelyek a legjobban egyetlen eredményt képviselnek. Azok a nevek, címek vagy más egyedi mezők, amelyek megkülönböztetik a többszörös egyezések közül a legmegfelelőbbet. Ha a mezők ismétlődő értékekből állnak, a javaslatok azonos eredményekből állnak, és a felhasználók nem tudják, melyikre kattintanak.
 
-Ahhoz, hogy mindkét keresési típust kielégítse, adja hozzá az automatikus kiegészítéshez szükséges összes mezőt, majd **$Select** , **$Top** , **$Filter** és **searchFields** használatával irányítsa a javaslatok eredményeit.
+Ahhoz, hogy mindkét keresési típust kielégítse, adja hozzá az automatikus kiegészítéshez szükséges összes mezőt, majd **$Select**, **$Top**, **$Filter** és **searchFields** használatával irányítsa a javaslatok eredményeit.
 
 ### <a name="choose-analyzers"></a>Elemzők kiválasztása
 
@@ -120,20 +120,20 @@ A REST API adjon hozzá javaslatokat a [create index](/rest/api/searchservice/cr
 A C# nyelvben Definiáljon egy [SearchSuggester objektumot](/dotnet/api/azure.search.documents.indexes.models.searchsuggester). `Suggesters` egy gyűjtemény egy SearchIndex objektumon, de csak egyetlen elemből áll. 
 
 ```csharp
-private static void CreateIndex(string indexName, SearchIndexClient indexClient)
+private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
 {
-    FieldBuilder fieldBuilder = new FieldBuilder();
-    var searchFields = fieldBuilder.Build(typeof(Hotel));
+    var definition = new SearchIndex()
+    {
+        FieldBuilder builder = new FieldBuilder();
+        Fields = builder.Build(typeof(Hotel);
+        Suggesters = new List<Suggester>() {new Suggester()
+            {
+                Name = "sg",
+                SourceFields = new string[] { "HotelName", "Category" }
+            }}
+    }
 
-    //var suggester = new SearchSuggester("sg", sourceFields = "HotelName", "Category");
-
-    var definition = new SearchIndex(indexName, searchFields);
-
-    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category"});
-
-    definition.Suggesters.Add(suggester);
-
-    indexClient.CreateOrUpdateIndex(definition);
+    await indexClient.CreateIndexAsync(definition);
 }
 ```
 
@@ -172,7 +172,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 + [Hozza létre első alkalmazását C# nyelven (3. lecke – keresési típus hozzáadása)](tutorial-csharp-type-ahead-and-suggestions.md) minta bemutatja a javasolt lekérdezéseket, az automatikus kiegészítést és a sokoldalú navigációt. Ez a mintakód egy sandbox Azure Cognitive Search Service-ben fut, és egy előre betöltött Hotel-indexet használ egy már létrehozott javaslattal, így mindössze annyit kell tennie, hogy az alkalmazás futtatásához nyomja le az F5 billentyűt. Nincs szükség előfizetésre vagy bejelentkezésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kérelmek létrehozásával kapcsolatban a következő cikkből tájékozódhat.
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5a646f7f42a2af8dcf15f7b7b2cd700e159fe88d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734395"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917545"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>SaaS-ajánlat tervezése a kereskedelmi piactéren
 
@@ -104,7 +104,26 @@ A CRM-kapcsolatok bármikor hozzáadhatók vagy módosíthatók az ajánlat lét
 
 ## <a name="selecting-an-online-store"></a>Online áruház kiválasztása
 
-Ha egy SaaS-ajánlatot tesz közzé, az Microsoft AppSource, az Azure Marketplace-en vagy mindkettőn jelenik meg. Minden online áruház egyedi ügyfél-követelményeket szolgál ki. Az AppSource üzleti megoldásokhoz, az Azure Marketplace pedig informatikai megoldásokhoz használható. Az ajánlat típusa, a Transact képességek és a kategóriák határozzák meg az ajánlat közzétételének helyét. A kategóriák és alkategóriák a megoldás típusa alapján vannak leképezve minden online áruházhoz. Az online áruházak által támogatott listaelem-beállításokkal kapcsolatos részletes információkért tekintse meg az [online áruház listázási és díjszabási lehetőségeit](determine-your-listing-type.md#listing-and-pricing-options-by-online-store). A kategóriákkal és alkategóriákkal kapcsolatos további információkért lásd: [kategóriák és alkategóriák a kereskedelmi piactéren](categories.md).
+Ha egy SaaS-ajánlatot tesz közzé, az Microsoft AppSource, az Azure Marketplace-en vagy mindkettőn jelenik meg. Minden online áruház egyedi ügyfél-követelményeket szolgál ki. Az AppSource üzleti megoldásokhoz, az Azure Marketplace pedig informatikai megoldásokhoz használható. Az ajánlat típusa, a Transact képességek és a kategóriák határozzák meg az ajánlat közzétételének helyét. A kategóriák és alkategóriák a megoldás típusa alapján vannak leképezve minden online áruházhoz. 
+
+Ha az SaaS-ajánlat *az IT* -megoldás (Azure Marketplace) és egy üzleti megoldás (AppSource) is, válasszon ki egy kategóriát és egy alkategóriát az egyes online áruházakhoz. Az online áruházakban közzétett ajánlatoknak IT-megoldásként *és* üzleti megoldásként is rendelkezniük kell az értékkel.
+
+> [!IMPORTANT]
+> A [mért számlázással](partner-center-portal/saas-metered-billing.md) rendelkező SaaS-ajánlatok az Azure Marketplace-en és a Azure Portalon keresztül érhetők el. Az SaaS-ajánlatok csak privát csomagokkal érhetők el a Azure Portalon keresztül.
+
+| Mért számlázás | Nyilvános csomag | Saját csomag | Elérhető itt: |
+|---|---|---|---|
+| Igen             | Igen         | Nem           | Azure Marketplace és Azure Portal |
+| Igen             | Igen         | Igen          | Azure Marketplace és Azure Portal * |
+| Igen             | Nem          | Igen          | Csak Azure Portal |
+| Nem              | Nem          | Igen          | Csak Azure Portal |
+|||||
+
+&#42; az ajánlat privát csomagja csak a Azure Portal keresztül érhető el
+
+Például a díjszabással ellátott számlázással és a privát csomaggal (nem nyilvános csomaggal) kapcsolatos ajánlatokat a Azure Portal ügyfelei vásárolják meg. További információ a [Microsoft kereskedelmi piactéren elérhető privát ajánlatokról](private-offers.md).
+
+Az online áruházak által támogatott listaelem-beállításokkal kapcsolatos részletes információkért tekintse meg az [online áruház listázási és díjszabási lehetőségeit](determine-your-listing-type.md#listing-and-pricing-options-by-online-store). A kategóriákkal és alkategóriákkal kapcsolatos további információkért lásd: [kategóriák és alkategóriák a kereskedelmi piactéren](categories.md).
 
 ## <a name="legal-contracts"></a>Jogi szerződések
 
@@ -130,7 +149,7 @@ Amikor [új SaaS-ajánlatot hoz létre](create-new-saas-offer.md) a partner Cent
 5. Használati feltételek
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
-8. Összefoglalás
+8. Összegzés
 9. Leírás
 10. Képernyőképek/videók
 11. Dokumentumok

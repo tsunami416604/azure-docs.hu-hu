@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: cac14687c6193d58069240529955e69fc680b2e8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 503d3d5ed9b099e01a88ee40ef80e88105beb340
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491817"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917732"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,26 +41,48 @@ Az átviteli sebességet tároló szinten vagy adatbázis-szinten is kiépíthet
 > [!NOTE]
 > Ha többet szeretne megtudni a tárolási vagy átviteli sebességre vonatkozó magasabb korlátot igénylő munkaterhelések kezelésével kapcsolatos ajánlott eljárásokról, olvassa el [a szintetikus partíciós kulcs létrehozása](synthetic-partition-keys.md)című témakört.
 
-A Cosmos-tárolónak (vagy a megosztott átviteli sebességű adatbázisnak) legalább 400 RU/s-nek kell lennie. Ahogy a tároló növekszik, a minimálisan támogatott átviteli sebesség az alábbi tényezőktől függ:
+### <a name="minimum-throughput-limits"></a>Minimális átviteli sebesség korlátai
 
-* A tárolón már üzembe helyezett maximális átviteli sebesség. Ha például az átviteli sebesség 50 000 RU/s értékre nőtt, akkor a lehető legalacsonyabb kiépített átviteli sebesség a következő lesz: 500 RU/s.
-* Az aktuális tárterület GB-ban a tárolóban. Ha például a tároló 100 GB tárhellyel rendelkezik, akkor a lehető legalacsonyabb kiépített átviteli sebesség a következő lesz: 1000 RU/s. **Megjegyzés:** ha a tároló vagy az adatbázis több mint 1 TB adatmennyiséget tartalmaz, előfordulhat, hogy a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" program](set-throughput.md#high-storage-low-throughput-program)használatára.
-* A megosztott átviteli sebességű adatbázis minimális átviteli sebessége a megosztott átviteli sebességű adatbázisban korábban létrehozott tárolók teljes számától függ, a tárolók esetében 100 RU/s. Ha például öt tárolót hozott létre egy megosztott átviteli sebességű adatbázisban, az átviteli sebességnek legalább 500 RU/s méretűnek kell lennie.
+A Cosmos-tárolónak (vagy a megosztott átviteli sebességű adatbázisnak) legalább 400 RU/s-nek kell lennie. Ahogy a tároló növekszik, Cosmos DB minimális átviteli sebességre van szükség annak biztosításához, hogy az adatbázis vagy a tároló elegendő erőforrással rendelkezik a műveleteihez.
 
 A tárolók vagy adatbázisok aktuális és minimális átviteli sebessége a Azure Portal vagy az SDK-k alapján kérhető le. További információkért lásd: [átviteli sebesség tárolók és adatbázisok](set-throughput.md)számára. 
 
-> [!NOTE]
-> Bizonyos esetekben előfordulhat, hogy az átviteli sebesség kevesebb, mint 10%. Az API használatával szerezze be a minimálisan szükséges RUs/tárolót.
+A tényleges RU/mp a fiók konfigurációjától függően változhat. [Azure monitor metrikák](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) használatával megtekintheti az erőforráson kiépített átviteli sebesség (ru/s) és tárterület előzményeit. 
+
+#### <a name="minimum-throughput-on-container"></a>Minimális átviteli sebesség a tárolón 
+
+A manuális átviteli sebességű tárolók minimális átviteli sebességének becsléséhez keresse meg a maximális értéket:
+
+* 400 RU/s 
+* Aktuális tárterület (GB * 10 RU/s)
+* A tárolón/100-ben kiépített legmagasabb RU/s
+
+Példa: tegyük fel, hogy rendelkezik egy 400 RU/s és 0 GB tárhelytel kiépített tárolóval. Növelje az átviteli sebességet 50 000 RU/s értékre, és 20 GB adat importálását. A minimális RU/s most `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 ru/s. Az idő múlásával a tárterület 200 GB-ra nő. A minimális RU/s most `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 ru/s. 
+
+**Megjegyzés:** ha a tároló vagy az adatbázis több mint 1 TB adatmennyiséget tartalmaz, előfordulhat, hogy a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" program](set-throughput.md#high-storage-low-throughput-program)használatára.
+
+#### <a name="minimum-throughput-on-shared-throughput-database"></a>Minimális átviteli sebesség a megosztott átviteli sebességű adatbázison 
+A megosztott átviteli sebességű adatbázis manuális átviteli sebességgel szükséges minimális átviteli sebességének becsléséhez keresse meg a maximális értéket:
+
+* 400 RU/s 
+* Aktuális tárterület (GB * 10 RU/s)
+* Az adatbázison/100-ben kiépített legmagasabb RU/s
+* 400 + MAX (tárolók száma-25, 0) * 100 RU/s
+
+Példa: tegyük fel, hogy rendelkezik egy, a 400 RU/s, 15 GB tárterülettel és 10 tárolóval kiépített adatbázissal. A minimális RU/s érték `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Ha az adatbázisban 30 tároló található, a minimális RU/s érték `400 + MAX(30 - 5, 0) * 100 RU/s` = 900 ru/s. 
+
+**Megjegyzés:** ha a tároló vagy az adatbázis több mint 1 TB adatmennyiséget tartalmaz, előfordulhat, hogy a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" program](set-throughput.md#high-storage-low-throughput-program)használatára.
 
 Összefoglalva: itt vannak a minimálisan kiépített RU-korlátok. 
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Minimális RUs/tároló ([dedikált teljesítményű kiépített mód](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimális RUs/adatbázis ([megosztott teljesítményű kiépített mód](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Egy megosztott átviteli sebességű adatbázisban lévő minimális RUs/tároló | 100 |
+| Minimális RUs/tároló ([dedikált teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimális RUs/adatbázis ([megosztott teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 400 RU/s az első 25 tárolóhoz. További 100 RU/s az egyes tárolók esetében. |
 
-A Cosmos DB az SDK-k vagy a portál használatával támogatja a tárolók vagy adatbázisok rugalmas skálázását. Az egyes tárolók a minimális és a maximális érték között 10 – 100-szeres skálán belül, szinkronban és azonnal méretezhetők. Ha a kért átviteli sebesség kívül esik a tartományon, a skálázás aszinkron módon történik. Az aszinkron skálázás perctől akár órákig is eltarthat, a tárolóban kért átviteli sebességtől és az adattároló méretétől függően.  
+A Cosmos DB az SDK-k vagy a portál használatával támogatja az átviteli sebesség (RU/s) programozott méretezését tároló vagy adatbázis alapján.    
+
+Az aktuális RU/s kiépített és erőforrás-beállításoktól függően az egyes erőforrások szinkron módon és azonnal méretezhetők a minimális RU/s között, és legfeljebb 100x a minimum RU/s értékig. Ha a kért átviteli sebesség kívül esik a tartományon, a skálázás aszinkron módon történik. Az aszinkron skálázás perctől akár órákig is eltarthat, a tárolóban kért átviteli sebességtől és az adattároló méretétől függően.  
 
 ### <a name="serverless"></a>Kiszolgáló nélküli
 
@@ -172,9 +194,9 @@ Azure Cosmos DB az egyes fiókok rendszermetaadatainak karbantartását. Ez a me
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-|Gyűjtemény maximális létrehozási sebessége percenként| 5|
-|Adatbázis maximális létrehozási sebessége percenként|   5|
-|Maximális kiosztott átviteli sebesség percenkénti frissítése| 5|
+|Gyűjtemény maximális létrehozási sebessége percenként|    5|
+|Adatbázis maximális létrehozási sebessége percenként|    5|
+|Maximális kiosztott átviteli sebesség percenkénti frissítése|    5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Az autoscale kiépített átviteli sebességre vonatkozó korlátok
 
@@ -248,7 +270,7 @@ A következő táblázat felsorolja az [ingyenes szintű fiókok Azure Cosmos db
 
   A fentiek mellett a [fiókra vonatkozó korlátok](#per-account-limits) az ingyenes szintű fiókok esetében is érvényesek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Cosmos DB alapvető fogalmak [globális eloszlásáról](distribute-data-globally.md) , [particionálásáról](partitioning-overview.md) és kiosztott [átviteli sebességéről](request-units.md).
 

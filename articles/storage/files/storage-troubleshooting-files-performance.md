@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 6e4eb37477a335ae93b9982692c238d05c81000b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a49dbdace01396656c3114df0bc0d4589aff57c1
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660287"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916491"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Az Azure file shares teljesítményével kapcsolatos problémák elhárítása
 
@@ -196,7 +196,7 @@ A többcsatornás SMB konfigurációs beállításainak legutóbbi módosítása
 
 ### <a name="cause"></a>Ok  
 
-A fájlmegosztás nagy számú fájl-változási értesítése jelentős késést okozhat. Ez általában a részletesen beágyazott címtár-struktúrával rendelkező fájlmegosztás során futtatott webhelyekkel történik. Egy tipikus forgatókönyv az IIS által üzemeltetett webalkalmazás, amelyben az alapértelmezett konfigurációban az egyes könyvtárakra vonatkozóan a fájl módosítására vonatkozó értesítés van beállítva. Az SMB-ügyfél által regisztrált megosztás minden változása (ReadDirectoryChangesW) leküldéses értesítéseket küld a fájlszolgáltatásoktől az ügyfélnek, amely a rendszererőforrásokat veszi igénybe, és a változások számával romlik a probléma. Ez megoszthatja a megosztás szabályozását, és így magasabb ügyféloldali késést eredményezhet. 
+A fájlmegosztás nagy számú fájl-változási értesítése jelentős késést okozhat. Ez általában a részletesen beágyazott címtár-struktúrával rendelkező fájlmegosztás során futtatott webhelyekkel történik. Egy tipikus forgatókönyv az IIS által üzemeltetett webalkalmazás, amelyben az alapértelmezett konfigurációban az egyes könyvtárakra vonatkozóan a fájl módosítására vonatkozó értesítés van beállítva. Az SMB-ügyfél által regisztrált megosztás minden változása ([ReadDirectoryChangesW](https://docs.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) leküldéses értesítéseket küld a fájlszolgáltatásoktől az ügyfélnek, amely a rendszererőforrásokat veszi igénybe, és a változások számával romlik a probléma. Ez megoszthatja a megosztás szabályozását, és így magasabb ügyféloldali késést eredményezhet. 
 
 A megerősítéshez használhatja az Azure-mérőszámokat a portálon – 
 
@@ -213,10 +213,8 @@ A megerősítéshez használhatja az Azure-mérőszámokat a portálon –
     - Frissítse az IIS munkavégző folyamat (W3WP) lekérdezési intervallumát 0 értékre a `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` beállításjegyzékben, és indítsa újra a W3wp-folyamatot. Ennek a beállításnak a megismeréséhez tekintse meg az [IIS számos részében használt általános beállításkulcsokat](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp).
 - Növelje a fájl módosítási értesítésének lekérdezési időközét a kötet csökkentése érdekében.
     - Módosítsa a W3WP munkavégző folyamat lekérdezési intervallumát magasabb értékre (például 10mins vagy 30mins) a követelmény alapján. Állítsa be a `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` [beállításjegyzékbe](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp) , és indítsa újra a W3wp-folyamatot.
-- Ha a webhely leképezett fizikai könyvtára beágyazott címtár-struktúrával rendelkezik, megpróbálhatja korlátozni a fájl módosítási értesítésének hatókörét az értesítési kötet csökkentése érdekében.
-    - Alapértelmezés szerint az IIS Web.config fájlokból származó konfigurációt használ abban a fizikai könyvtárban, amelyhez a virtuális könyvtár le van képezve, valamint az adott fizikai könyvtárban található bármely alárendelt könyvtárban. Ha nem kívánja Web.config fájlokat használni a gyermek címtárakban, akkor a allowSubDirConfig attribútumnál a FALSE értéket kell megadnia a virtuális könyvtárban. További részleteket [itt](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories)találhat. 
-
-Állítsa be az IIS virtuális könyvtár "allowSubDirConfig" beállítását a Web.Config hamis értékre a leképezett fizikai alárendelt könyvtárak hatókörből való kizárásához.  
+- Ha a webhely leképezett fizikai könyvtára beágyazott címtár-struktúrával rendelkezik, megpróbálhatja korlátozni a fájl módosítási értesítésének hatókörét az értesítési kötet csökkentése érdekében. Alapértelmezés szerint az IIS Web.config fájlokból származó konfigurációt használ abban a fizikai könyvtárban, amelyhez a virtuális könyvtár le van képezve, valamint az adott fizikai könyvtárban található bármely alárendelt könyvtárban. Ha nem kívánja Web.config fájlokat használni a gyermek címtárakban, akkor a allowSubDirConfig attribútumnál a FALSE értéket kell megadnia a virtuális könyvtárban. További részleteket [itt](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories)találhat. 
+    - Állítsa be az IIS virtuális könyvtár "allowSubDirConfig" beállítását a Web.Config *hamis* értékre a leképezett fizikai alárendelt könyvtárak hatókörből való kizárásához.  
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Riasztás létrehozása a fájlmegosztás szabályozása esetén
 
@@ -286,7 +284,7 @@ Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, t
 
 Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 - [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)  
 - [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)  
 - [Gyakori kérdések az Azure Files-szal kapcsolatban](storage-files-faq.md)

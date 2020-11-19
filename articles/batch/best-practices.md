@@ -1,18 +1,18 @@
 ---
 title: Ajánlott eljárások
-description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch megoldás fejlesztéséhez.
-ms.date: 08/12/2020
+description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch-megoldások fejlesztéséhez.
+ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: dff6668050e45d9179cd985aa10670b56afe5377
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a799aa7de19b9d5b0b8e085252cb172efebd05dc
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913228"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916865"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
-Ez a cikk bemutatja az ajánlott eljárásokat a Azure Batch szolgáltatás hatékony és hatékony használatához, a Batch használatával való valós idejű felhasználói élmény alapján. Ebből a cikkből megtudhatja, hogyan hozhatja ki a buktatókat, a lehetséges teljesítménnyel kapcsolatos problémákat és a mintázatot a Batch szolgáltatás fejlesztésekor és használatakor.
+Ez a cikk az ajánlott eljárások és hasznos tippek gyűjteményét tárgyalja a Azure Batch szolgáltatás hatékony használatához, a Batch használatával kapcsolatos valós tapasztalatok alapján. Ezek a tippek segíthetnek a teljesítmény növelésében és a Azure Batch-megoldásokban felhasználható buktatók elkerülésében.
 
 ## <a name="pools"></a>Készletek
 
@@ -20,7 +20,7 @@ A [készletek](nodes-and-pools.md#pools) a Batch szolgáltatásban a feladatok v
 
 ### <a name="pool-configuration-and-naming"></a>Készlet konfigurációja és elnevezése
 
-- **Készlet lefoglalási módja** Batch-fiók létrehozásakor választhat két készlet kiosztási módja közül: **Batch szolgáltatás** vagy **felhasználói előfizetés** . A legtöbb esetben az alapértelmezett batch szolgáltatás módot kell használnia, amelyben a készletek a Batch által felügyelt előfizetésekben a színfalak mögött vannak lefoglalva. A szintén választható „Felhasználói előfizetés” mód esetében a Batch virtuális gépei és egyéb erőforrásai közvetlenül az előfizetésben jönnek létre egy készlet létrehozásakor. A felhasználói előfizetési fiókok elsődlegesen a fontos, de a forgatókönyvek kis részhalmazának engedélyezésére használatosak. A felhasználói előfizetési móddal kapcsolatos további információkért tekintse meg a [felhasználói előfizetés üzemmódjának további konfigurációját](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+- **Készlet lefoglalási módja** Batch-fiók létrehozásakor választhat két készlet kiosztási módja közül: **Batch szolgáltatás** vagy **felhasználói előfizetés**. A legtöbb esetben az alapértelmezett batch szolgáltatás módot kell használnia, amelyben a készletek a Batch által felügyelt előfizetésekben a színfalak mögött vannak lefoglalva. A szintén választható „Felhasználói előfizetés” mód esetében a Batch virtuális gépei és egyéb erőforrásai közvetlenül az előfizetésben jönnek létre egy készlet létrehozásakor. A felhasználói előfizetési fiókok elsődlegesen a fontos, de a forgatókönyvek kis részhalmazának engedélyezésére használatosak. A felhasználói előfizetési móddal kapcsolatos további információkért tekintse meg a [felhasználói előfizetés üzemmódjának további konfigurációját](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
 - **Vegye figyelembe a feladat és a feladat futási idejét a készlet hozzárendelésének meghatározásakor.**
     Ha a feladatok elsősorban rövid ideig futó tevékenységekből állnak, és a tevékenységek várható összesített száma kicsi, így a feladat teljes várható futási ideje nem hosszú, ne foglaljon le új készletet az egyes feladatokhoz. A csomópontok lefoglalási ideje csökkenti a feladatok futási idejét.
@@ -41,7 +41,7 @@ A [készletek](nodes-and-pools.md#pools) a Batch szolgáltatásban a feladatok v
 A készlet élettartama eltérő lehet a készlet-konfigurációra alkalmazott foglalási és beállítási módtól függően. A készletek tetszőleges időtartammal rendelkezhetnek, és a készletben lévő számítási csomópontok száma bármikor megadható. Az Ön felelőssége, hogy a készletben lévő számítási csomópontokat explicit módon, vagy a szolgáltatás által biztosított szolgáltatások (az autoscale vagy az autopool) segítségével kezelje.
 
 - **A készletek frissen tartása.**
-    A készleteket a [csomópontok legújabb frissítéseinek és hibajavításának](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)biztosítása érdekében minden hónapban nulla értékűre kell méreteznie. A készlet nem kapja meg a csomópont-ügynök frissítéseit, kivéve, ha újból létrehozták, vagy 0 számítási csomópontra méretezi át őket. A készlet újbóli létrehozása vagy átméretezése előtt javasoljuk, hogy [a csomópontok szakaszban](#nodes) ismertetett módon letöltse a csomóponti ügynökök naplóit a hibakereséshez.
+    Méretezze át a készleteket néhány havonta nulla értékre, hogy meggyőződjön arról, hogy a [csomópont-ügynök legújabb frissítései és](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)hibajavításai megtalálhatók. A készlet nem kapja meg a csomópont-ügynök frissítéseit, kivéve, ha újból létrehozták, vagy 0 számítási csomópontra méretezi át őket. A készlet újbóli létrehozása vagy átméretezése előtt javasoljuk, hogy [a csomópontok szakaszban](#nodes) ismertetett módon letöltse a csomóponti ügynökök naplóit a hibakereséshez.
 
 - **Készlet ismételt létrehozása** Hasonló megjegyzés esetén nem ajánlott napi rendszerességgel törölni és újból létrehozni a készleteket. Ehelyett hozzon létre egy új készletet, és frissítse a meglévő feladatokat, hogy az új készletre mutasson. Miután az összes feladatot áthelyezte az új készletbe, törölje a régi készletet.
 
@@ -67,7 +67,7 @@ A készleteket az Azure Marketplace-en közzétett harmadik féltől származó 
 
 ### <a name="azure-region-dependency"></a>Azure region-függőség
 
-Azt javasoljuk, hogy ne függjön egyetlen Azure-régiótól, ha időérzékeny vagy éles számítási feladattal rendelkezik. Ritkán előfordul, hogy olyan problémák merülnek fel, amelyek befolyásolhatják a teljes régiót. Ha például a feldolgozásnak egy adott időpontban kell kezdődnie, érdemes lehet a készletet az elsődleges régióban is felmérni a *kezdési időpont előtt* . Ha a készlet skálázása meghiúsul, visszatérhet egy készlet egy biztonsági mentési régióban (vagy régiókban) való méretezésére. A különböző régiókban lévő több fiókból álló készletek egy kész, könnyen hozzáférhető biztonsági mentést biztosítanak, ha egy másik készlettel valamilyen hiba történik. További információ: [az alkalmazás megtervezése a magas rendelkezésre állás érdekében](high-availability-disaster-recovery.md).
+Azt javasoljuk, hogy ne függjön egyetlen Azure-régiótól, ha időérzékeny vagy éles számítási feladattal rendelkezik. Ritkán előfordul, hogy olyan problémák merülnek fel, amelyek befolyásolhatják a teljes régiót. Ha például a feldolgozásnak egy adott időpontban kell kezdődnie, érdemes lehet a készletet az elsődleges régióban is felmérni a *kezdési időpont előtt*. Ha a készlet skálázása meghiúsul, visszatérhet egy készlet egy biztonsági mentési régióban (vagy régiókban) való méretezésére. A különböző régiókban lévő több fiókból álló készletek egy kész, könnyen hozzáférhető biztonsági mentést biztosítanak, ha egy másik készlettel valamilyen hiba történik. További információ: [az alkalmazás megtervezése a magas rendelkezésre állás érdekében](high-availability-disaster-recovery.md).
 
 ## <a name="jobs"></a>Feladatok
 
@@ -175,7 +175,7 @@ A Resource Managerrel és a sablonokkal kapcsolatos további információkért t
 
 ## <a name="connectivity"></a>Kapcsolatok
 
-Tekintse át a következő útmutatást, amikor a Batch-megoldások kapcsolatát fontolgatja.
+Tekintse át a Batch-megoldások kapcsolódásával kapcsolatos alábbi útmutatást.
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Hálózati biztonsági csoportok (NSG) és felhasználó által megadott útvonalak (UDR)
 
@@ -198,6 +198,10 @@ Győződjön meg arról, hogy a Batch szolgáltatás ügyfelei megfelelő újrap
 
 A Batch-készletekben lévő virtuális gépek jellemzően nyilvános IP-címeken keresztül érhetők el, amelyek megváltoztathatják a készlet élettartamát. Ez megnehezítheti az adatbázisok vagy más, bizonyos IP-címekhez való hozzáférést korlátozó külső szolgáltatás kezelését. Annak biztosítása érdekében, hogy a készletben lévő nyilvános IP-címek ne változzon meg váratlanul, létrehozhat egy készletet, amely az Ön által vezérelt statikus nyilvános IP-címek készletét használja. További információ: Azure Batch- [készlet létrehozása a megadott nyilvános IP-címekkel](create-pool-public-ip.md).
 
+### <a name="testing-connectivity-with-cloud-services-configuration"></a>Kapcsolat tesztelése Cloud Services konfigurációval
+
+Nem használhatja a szokásos "ping"/ICMP protokollt a Cloud Services szolgáltatással, mert az ICMP protokoll használata nem engedélyezett az Azure Load balancerben. További információ: [kapcsolat és hálózatkezelés az Azure Cloud Serviceshoz](../cloud-services/cloud-services-connectivity-and-networking-faq.md#can-i-ping-a-cloud-service).
+
 ## <a name="batch-node-underlying-dependencies"></a>A Batch-csomópont mögöttes függőségei
 
 A Batch-megoldások tervezésekor vegye figyelembe a következő függőségeket és korlátozásokat.
@@ -206,12 +210,12 @@ A Batch-megoldások tervezésekor vegye figyelembe a következő függőségeket
 
 Azure Batch létrehozza és kezeli a virtuális gépen lévő felhasználókat és csoportokat, amelyek nem módosíthatók. Ezek a következők:
 
-#### <a name="windows"></a>Windows
+Windows:
 
 - Egy **PoolNonAdmin** nevű felhasználó
 - **WATaskCommon** nevű felhasználói csoport
 
-#### <a name="linux"></a>Linux
+Linux:
 
 - Egy **_azbatch** nevű felhasználó
 
@@ -220,3 +224,9 @@ Azure Batch létrehozza és kezeli a virtuális gépen lévő felhasználókat �
 A Batch aktívan megpróbálja törölni azt a munkakönyvtárat, amelyen a feladatok futnak, miután a megőrzési idő lejár. A címtáron kívül írt fájlok [a saját felelőssége,](#manage-task-lifetime) hogy elkerülje a lemezterület kitöltését.
 
 A munkakönyvtár automatikus tisztítása le lesz tiltva, ha a Windows rendszerű szolgáltatást futtat a startTask Working Directory szolgáltatásból, mert a mappa még használatban van. Ennek hatására csökken a teljesítmény. Ennek a megoldásnak a kijavításához módosítsa a szolgáltatás könyvtárát egy különálló, a Batch által nem kezelt könyvtárba.
+
+## <a name="next-steps"></a>Következő lépések
+
+- [Hozzon létre egy Azure batch fiókot a Azure Portal használatával](batch-account-create-portal.md).
+- Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
+- Ismerje meg az [alapértelmezett Azure batch kvótákat, korlátozásokat és korlátozásokat, valamint a kvóta növelésének módját](batch-quota-limit.md).

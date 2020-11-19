@@ -5,25 +5,25 @@ author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 84336051fc3d653fbe73f650f2fc2badb2ec58da
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 10c9b165041f0a4a1f09511f17bef3629353c3b2
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148932"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917528"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid erőforrások hálózati biztonsága
 Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Event Grid használatával: 
 
 - Szolgáltatás-címkék a kimenő forgalomhoz
-- IP-tűzfalszabályok a bejövő forgalomhoz (előzetes verzió)
+- IP-tűzfalszabályok bejövő forgalomra vonatkozó szabályai
 - Magánhálózati végpontok a bejövő forgalomhoz
 
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét. A szolgáltatás címkével kapcsolatos további információkért lásd: [szolgáltatási címkék áttekintése](../virtual-network/service-tags-overview.md).
 
-A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/network-security-groups-overview.md#security-rules)   vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például **AzureEventGrid**) megadásával a szabály megfelelő *forrás*   vagy *cél*   mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
+A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/network-security-groups-overview.md#security-rules) vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például **AzureEventGrid**) megadásával a szabály megfelelő *forrás* vagy *cél* mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
 
 | Szolgáltatáscímke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|
@@ -45,7 +45,7 @@ A [privát végpontok](../private-link/private-endpoint-overview.md) lehetővé 
 A Event Grid erőforráshoz tartozó privát végpontok használata lehetővé teszi a következőket:
 
 - Biztonságos hozzáférést biztosíthat a témakörhöz vagy tartományhoz egy VNet a Microsoft gerinc hálózatán keresztül, a nyilvános internettel szemben.
-- Biztonságos csatlakozás a VNet csatlakozó helyszíni hálózatokról VPN vagy Expressroute használatával.
+- Biztonságos csatlakozás a VNet csatlakozó helyszíni hálózatokból VPN vagy expressz útvonalakon, privát társak használatával.
 
 Ha a VNet egy témakörhöz vagy tartományhoz hoz létre privát végpontot, a jóváhagyásra vonatkozó kérést küld a rendszer az erőforrás tulajdonosának. Ha a privát végpont létrehozását kérő felhasználó az erőforrás tulajdonosa is, akkor a rendszer ezt a jóváhagyási kérést automatikusan jóváhagyja. Ellenkező esetben a rendszer a jóváhagyás előtt **függő** állapotba kerül. A VNet lévő alkalmazások zökkenőmentesen csatlakozhatnak a Event Grid szolgáltatáshoz a magánhálózati végponton keresztül, ugyanazokkal a kapcsolati karakterláncokkal és engedélyezési mechanizmusokkal, amelyeket egyébként használni fognak. Az erőforrás-tulajdonosok a Azure Portal erőforráshoz tartozó **magánhálózati végpontok** lapon kezelhetik a belefoglalt kérelmeket és a privát végpontokat.
 
@@ -83,12 +83,12 @@ A következő táblázat ismerteti a magánhálózati végponti kapcsolatok kül
 
 | Kapcsolatok állapota   |  Sikeres közzététel (igen/nem) |
 | ------------------ | -------------------------------|
-| Approved           | Yes                            |
-| Elutasítva           | No                             |
-| Függőben            | No                             |
-| Leválasztott       | No                             |
+| Approved           | Igen                            |
+| Elutasítva           | Nem                             |
+| Függőben            | Nem                             |
+| Leválasztott       | Nem                             |
 
-Ahhoz, hogy a közzététel sikeres legyen, **jóvá**kell hagyni a privát végponti kapcsolatok állapotát. Ha a rendszer visszautasítja a kapcsolatokat, a Azure Portal használatával nem lehet jóváhagyni. Az egyetlen lehetőség, hogy törölje a kapcsolódást, és hozzon létre egy újat.
+Ahhoz, hogy a közzététel sikeres legyen, **jóvá** kell hagyni a privát végponti kapcsolatok állapotát. Ha a rendszer visszautasítja a kapcsolatokat, a Azure Portal használatával nem lehet jóváhagyni. Az egyetlen lehetőség, hogy törölje a kapcsolódást, és hozzon létre egy újat.
 
 ## <a name="pricing-and-quotas"></a>Díjszabás és kvóták
 A **privát végpontok** a Event Grid alapszintű és prémium szintű csomagjaiban is elérhetők. Event Grid lehetővé teszi, hogy a rendszer akár 64 privát végponti kapcsolatot hozzon létre egy témakör vagy tartomány alapján. 

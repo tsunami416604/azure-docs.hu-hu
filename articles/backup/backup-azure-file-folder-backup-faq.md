@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) ügynök – gyakori kérdések
 description: A fájlok és mappák Azure Backupsal történő biztonsági mentésével kapcsolatos gyakori kérdéseket tárgyalja.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 9fb9e3993d6f56833e43a4d451c0865b7fd732d3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172516"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917358"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Gyakori kérdések – Microsoft Azure Recovery Services (MARS) ügynök
 
@@ -22,7 +22,7 @@ A Windows Server-gépek, a System Center DPM és a Microsoft Azure Backup-kiszol
 
 ### <a name="where-can-i-download-the-vault-credentials-file"></a>Honnan tölthetők le a tároló hitelesítő adatainak fájlja?
 
-A Azure Portal navigáljon a tár **tulajdonságaihoz** . A **biztonsági másolat hitelesítő adatai**területen jelölje be a jelölőnégyzetet a **legújabb Recovery Services ügynök használatával**. Válassza a **Letöltés** lehetőséget.
+A Azure Portal navigáljon a tár **tulajdonságaihoz** . A **biztonsági másolat hitelesítő adatai** területen jelölje be a jelölőnégyzetet a **legújabb Recovery Services ügynök használatával**. Válassza a **Letöltés** lehetőséget.
 
 ![Hitelesítő adatok letöltése](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 
@@ -71,6 +71,10 @@ Igen. A MARS-ügynök a deduplikált adatmennyiséget a normál adatértékre ko
 ### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>Rendszergazdai engedélyekre van szükségem a MARS-ügynök telepítéséhez és konfigurálásához?
 
 Igen, a Mars-ügynök telepítése és a biztonsági másolatok konfigurációja a MARS-konzolon a felhasználónak helyi rendszergazdának kell lennie a védett kiszolgálón.
+
+### <a name="what-is-the-impact-on-mars-agent-backups-of-transferring-the-vault-subscription-to-a-different-azure-ad-directory"></a>Milyen hatással van a MARS-ügynök biztonsági mentésére a tár-előfizetés másik Azure AD-címtárba való átvitele során?
+
+Az Azure AD-címtár módosítása nem lesz hatással a MARS-ügynök biztonsági mentésére. 
 
 ## <a name="manage-backups"></a>Biztonsági másolatok kezelése
 
@@ -194,7 +198,7 @@ Ha ugyanazzal a jelszóval rendelkezik (amelyet a regisztráció során megadott
 
 | Eredeti gép | Jelszót | Elérhető beállítások |
 | --- | --- | --- |
-| Elveszett |Elérhető |A MARS-ügynököt telepítheti és regisztrálhatja egy másik gépen ugyanazzal a jelszóval, amelyet az eredeti gép regisztrálása során adott meg. **Recovery Option**  >  A visszaállítás végrehajtásához válasszon**másik helyet** a helyreállítási lehetőség számára. További információkért tekintse meg [ezt a cikket](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Elveszett |Elérhető |A MARS-ügynököt telepítheti és regisztrálhatja egy másik gépen ugyanazzal a jelszóval, amelyet az eredeti gép regisztrálása során adott meg. **Recovery Option**  >  A visszaállítás végrehajtásához válasszon **másik helyet** a helyreállítási lehetőség számára. További információkért tekintse meg [ezt a cikket](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Elveszett |Elveszett |Nem lehet helyreállítani az adatokat, vagy az adatok nem érhetők el |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>A biztonsági mentési feladatok végrehajtása sikertelen volt, vagy hosszú ideje nem fut. Megtartom a megőrzési időszakot. Továbbra is visszaállíthatók?

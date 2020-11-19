@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: df4faf367951402914abb03285498e0da6f3105f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9a2bda0a526c307ae17d8415f6f24423ddf51b63
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337676"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917766"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID Broker (HIB)
 
@@ -138,7 +138,26 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 
 A Beeline és a Livy használata esetén az [itt](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) megadott példákkal is követheti az ügyfelet a OAuth használatára és a fürthöz való kapcsolódásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="faq"></a>GYIK
+### <a name="what-app-is-created-by-hdinsight-in-aad"></a>Milyen alkalmazást hoz létre a HDInsight a HRE-ben?
+Minden egyes fürthöz egy harmadik féltől származó alkalmazás lesz regisztrálva a HRE-ben a fürt URI-ja, mint a identifierUri (például https://clustername.azurehdinsight.net ).
+
+### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>A felhasználók miért kérik a hozzájárulásukat a HIB-kompatibilis fürtök használata előtt?
+A HRE-ben minden harmadik féltől származó alkalmazáshoz beleegyezett, mielőtt hitelesíteni tudja a felhasználókat vagy az adatelérést.
+
+### <a name="can-the-consent-be-approved-programatically"></a>Jóvá lehet-e hagyni a jóváhagyást programozott módon?
+A Microsoft Graph API lehetővé teszi a beleegyezikés automatizálását: az [API dokumentációja](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) , amely automatizálja a beleegyezik, a következőt:
+
+* Regisztráljon egy alkalmazást, és adja meg az Application. ReadWrite. All engedélyeket az alkalmazáshoz, hogy hozzáférjen Microsoft Graph
+* Miután létrehozta a fürtöt, az azonosító URI alapján kérdezi le a fürtöt.
+* Az alkalmazáshoz tartozó engedély regisztrálása
+
+Ha a fürt törölve lett, a HDInsight törli az alkalmazást, és nincs szükség semmilyen beleegyező adattörlésre.
+
+ 
+
+
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürt konfigurálása Enterprise Security Package használatával Azure Active Directory Domain Services](apache-domain-joined-configure-using-azure-adds.md)
 * [Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása](../hdinsight-sync-aad-users-to-cluster.md)

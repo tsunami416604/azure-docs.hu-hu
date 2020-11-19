@@ -5,17 +5,17 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 0559a9b763d273579373bb57922606f14ff6e6db
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ab13e02c9154dbfc1bd28872f1bd6f993019a604
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94574155"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915406"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy működő [kommunikációs szolgáltatás, amely meghívja az alkalmazást](../getting-started-with-calling.md).
-- [Csapatok üzembe helyezése](https://docs.microsoft.com/deployoffice/teams-install).
+- [Csapatok üzembe helyezése](/deployoffice/teams-install).
 
 ## <a name="enable-teams-interoperability"></a>Csoportok együttműködésének engedélyezése
 
@@ -98,7 +98,7 @@ meetingButton.addEventListener("click", () => {
 
 ## <a name="get-the-meeting-context"></a>Az értekezlet kontextusának beolvasása
 
-A csapatok kontextusa a Graph API-k használatával kérhető le. Ez részletesen szerepel a [Graph dokumentációjában](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?view=graph-rest-beta&tabs=http).
+A csapatok kontextusa a Graph API-k használatával kérhető le. Ez részletesen szerepel a [Graph dokumentációjában](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
 
 A Meeting **Meeting-értekezlet** URL-címéből is beolvashatja a szükséges értekezletek adatait.
 
@@ -115,4 +115,3 @@ Nyissa meg a böngészőt, és navigáljon a gombra http://localhost:8080/ . A k
 :::image type="content" source="../media/javascript/calling-javascript-app.png" alt-text="Képernyőkép a befejezett JavaScript-alkalmazásról.":::
 
 Szúrja be a csapatok kontextusát a szövegmezőbe, majd nyomja meg a *Csatlakozás* a csapatok között lehetőséget a Teams Meeting szolgáltatáshoz való csatlakozáshoz a kommunikációs szolgáltatások alkalmazásából.
-

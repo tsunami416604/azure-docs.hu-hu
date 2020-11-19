@@ -1,135 +1,143 @@
 ---
 title: Red Hat Enterprise Linux lemezképek helyben történő frissítése az Azure-ban
-description: A Red Hat Enterprise 7. x lemezképekről a legújabb 8. x verzióra történő helyszíni frissítés végrehajtásához szükséges lépések megkeresése
+description: Ismerje meg, hogyan végezheti el a Red Hat Enterprise 7. x lemezképek helyben történő frissítését a legújabb 8. x verzióra.
 author: mathapli
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 1160bc43db0dc9ec1714b1766c8cadf09660e291
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 04a83687161c390d86e1a9b40d33f10cdd6a47d5
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844564"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916678"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Helyi frissítések Red Hat Enterprise Linux
 
-Ez a cikk lépésről lépésre bemutatja, hogyan végezheti el a helyben történő frissítését Red Hat Enterprise Linux 7-ről Red Hat Enterprise Linux 8-ra az Azure-beli "Leapp" segédprogram használatával. A helyben történő frissítés során a meglévő RHEL 7 operációs rendszert a RHEL 8 verzió váltja fel.
+Ez a cikk útmutatást nyújt arról, hogyan végezheti el a helyben történő frissítését Red Hat Enterprise Linux (RHEL) 7-es verzióról Red Hat Enterprise Linux 8-ra. Az útmutató az eszközt használja az `leapp` Azure-ban. A helyben történő frissítés során a meglévő RHEL 7 operációs rendszert a RHEL 8 verziója váltja fel.
 
 >[!Note] 
-> Az Red Hat Enterprise Linux-ajánlatok SQL Server nem támogatják az Azure-ban történő helyszíni frissítést.
+> A SQL Server on Red Hat Enterprise Linux kínálata nem támogatja az Azure-ban végzett helyi frissítést.
 
 ## <a name="what-to-expect-during-the-upgrade"></a>Mire számíthat a frissítés során
-A rendszer a frissítés során néhányszor újraindítja a rendszerindítást, és a szokásos módon történik. Az utolsó újraindítás a virtuális gépet a RHEL 8 legújabb másodlagos kiadására frissíti. 
+A frissítés során a rendszer néhányszor újraindul. A végső újraindítás a virtuális gépet a RHEL 8 legújabb másodlagos kiadására frissíti. 
 
-A frissítési folyamat akár 20 perctől akár több óráig is eltarthat, ez számos tényezőtől függ, például a virtuális gép méretétől és a rendszerre telepített csomagok számától.
+A frissítési folyamat 20 perctől akár 2 óráig is eltarthat. A teljes idő számos tényezőtől függ, például a virtuális gép méretétől és a rendszerre telepített csomagok számától.
 
-## <a name="preparations-for-the-upgrade"></a>Felkészülés a frissítésre
-A Red Hat és az Azure által hivatalosan ajánlott módszer a helyszíni frissítés, amely lehetővé teszi, hogy az ügyfelek a rendszerét a következő főverzióra frissítse. A frissítés elvégzése előtt néhány dolgot érdemes figyelembe vennie. 
+## <a name="preparations"></a>Előkészítések
+A Red Hat és az Azure ajánlott helyi frissítéssel áttérni a rendszerre a következő főverzióra. 
+
+A frissítés megkezdése előtt vegye figyelembe a következő szempontokat. 
 
 >[!Important] 
-> A frissítés elvégzése előtt készítsen pillanatképet a rendszerképről.
+> A frissítés megkezdése előtt készítsen pillanatképet a rendszerképről.
 
->[!NOTE]
-> A cikkben szereplő parancsokat a root fiók használatával kell futtatni.
+* Győződjön meg arról, hogy a legújabb RHEL 7 verziót használja. Jelenleg a legújabb verzió a RHEL 7,9. Ha zárolt verziót használ, és nem tud frissíteni a RHEL 7,9-re, akkor kövesse az [alábbi lépéseket a nem EUs (bővített frissítés támogatása) adattárra való váltáshoz](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock).
 
-* Győződjön meg arról, hogy a legújabb RHEL 7 verziót használja, amely jelenleg a RHEL 7,9. Ha zárolt verziót használ, és nem tud frissíteni a RHEL 7,9-re, az [itt leírt lépéseket követve válthat egy nem EUs adattárra](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock).
+* Futtassa a következő parancsot a frissítés vizsgálatához, és ellenőrizze, hogy a rendszer sikeresen befejeződik-e. A parancsnak */var/log/leapp/leapp-report.txt* fájlt kell előállítania. Ez a fájl ismerteti a folyamatot, mi történik, és hogy lehetséges-e a frissítés.
 
-* Futtassa az alábbi parancsot, hogy megtudja, hogyan zajlik a frissítés, és ha a művelet befejeződik. A parancsnak létre kell hoznia egy fájlt a "/var/log/leapp/leapp-report.txt" alatt, amely ismerteti a folyamatot, és azt, hogy mi történik, és ha a frissítés lehetséges vagy sem
+    >[!NOTE]
+    > A jelen cikkben szereplő parancsok futtatásához használja a root fiókot. 
+
     ```bash
     leapp preupgrade --no-rhsm
     ```
-* Győződjön meg arról, hogy a soros konzol működik, mivel ez lehetővé teszi a figyelést a frissítési folyamat során.
+* Győződjön meg arról, hogy a soros konzol működik. A frissítési folyamat során ezt a konzolt fogja használni a figyeléshez.
 
-* SSH-beli rendszergazdai hozzáférés engedélyezése a-ben `/etc/ssh/sshd_config`
-    1. Nyissa meg az `/etc/ssh/sshd_config` fájlt
-    1. A "#PermitRootLogin igen" kifejezés keresése
-    1. A "#" eltávolítása a Megjegyzés törléséhez
+* SSH-gyökér hozzáférésének engedélyezése a */etc/ssh/-sshd_configban*:
+    1. Nyissa meg a */etc/ssh/sshd_config* fájlt.
+    1. Keressen a `#PermitRootLogin yes` kifejezésre.
+    1. Távolítsa el a `#` sztringet () a karakterlánc megjegyzésének törléséhez.
 
-## <a name="steps-for-performing-the-upgrade"></a>A frissítés végrehajtásának lépései
+## <a name="upgrade-steps"></a>Frissítési lépések
 
-Végezze el figyelmesen ezeket a lépéseket. Javasoljuk, hogy az éles példányok előtt próbálja megismételni a frissítést a tesztelési gépen.
+Kövesse ezeket a lépéseket körültekintően. Javasoljuk, hogy az éles példányok kipróbálása előtt próbálja meg a frissítést a tesztelési gépen.
 
-1. Telepítsen egy yum-frissítést a legújabb ügyfél-csomagok beolvasásához.
+1. `yum`A legújabb ügyfél-csomagok beolvasásához végezze el a frissítést.
     ```bash
     yum update -y
     ```
 
-1. Telepítse a leapp-Client-Package csomagot.
+1. Telepítse a programot `leapp-client-package` .
     ```bash
     yum install leapp-rhui-azure
     ```
     
-1. Használja a leapp-Data. tar. gz fájlt repomap.csv és pes-events.jsa [RedHat portálon](https://access.redhat.com/articles/3664871), és csomagolja ki őket. 
-    1. Töltse le a fájlt.
-    1. Bontsa ki a tartalmat, és távolítsa el a fájlt a következő parancs használatával:
+1. A [Red Hat portálon](https://access.redhat.com/articles/3664871)szerezze be a *repomap.csv* és *pes-events.jst* tartalmazó *leapp-Data. tar. gz* fájlt. Bontsa ki a *leapp-Data. tar. gz* fájlt.
+    1. Töltse le a *leapp-Data. tar. gz* fájlt.
+    1. Bontsa ki a tartalmat, és távolítsa el a fájlt. Használja az alábbi parancsot:
     ```bash
     tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
     ```
 
-1. Adja hozzá a "Answers" fájlt a következőhöz: "Leapp".
+1. Adjon hozzá egy `answers` fájlt a következőhöz: `leapp` .
     ```bash
     leapp answer --section remove_pam_pkcs11_module_check.confirm=True --add
     ``` 
 
-1. A "Leapp" frissítés végrehajtása.
+1. Indítsa el a frissítést.
     ```bash
     leapp upgrade --no-rhsm
     ```
-1.  A `leapp upgrade` parancs sikeres befejezése után a folyamat befejezéséhez manuálisan indítsa újra a rendszerét. A rendszer újraindul néhány alkalommal, amikor nem lesz elérhető. Figyelje meg a folyamatot a soros konzol használatával.
+1.  A `leapp upgrade` parancs sikeres befejeződése után manuálisan indítsa újra a rendszert a folyamat befejezéséhez. A rendszer nem érhető el, mert újraindul néhányszor. Figyelje meg a folyamatot a soros konzol használatával.
 
 1.  Ellenőrizze, hogy a frissítés sikeresen befejeződött-e.
     ```bash
     uname -a && cat /etc/redhat-release
     ```
 
-1. A frissítés befejeződése után távolítsa el a root SSH-hozzáférést.
-    1. Nyissa meg az `/etc/ssh/sshd_config` fájlt
-    1. A "#PermitRootLogin igen" kifejezés keresése
-    1. A "#" Megjegyzés hozzáadása a következőhöz:
+1. A frissítés befejeződése után távolítsa el a root SSH-hozzáférést:
+    1. Nyissa meg a */etc/ssh/sshd_config* fájlt.
+    1. Keressen a `#PermitRootLogin yes` kifejezésre.
+    1. Írjon be egy számot ( `#` ) a karakterlánc megjegyzéséhez.
 
-1. Az sshd szolgáltatás újraindítása a módosítások érvénybe léptetéséhez
+1. Indítsa újra az SSHD szolgáltatást a módosítások alkalmazásához.
     ```bash
     systemctl restart sshd
     ```
+## <a name="common-problems"></a>Gyakori problémák
 
-## <a name="common-issues"></a>Gyakori problémák
-Ezek a leggyakoribb példányok, amelyek a vagy a `leapp preupgrade` `leapp upgrade` folyamat sikertelenek lehetnek.
+A következő hibák gyakran történnek, ha a `leapp preupgrade` folyamat meghiúsul, vagy a `leapp upgrade` folyamat meghiúsul:
 
-**Hiba: nem találhatók egyezések a következő letiltott plugin-mintákhoz**
-```plaintext
-STDERR:
-No matches found for the following disabled plugin patterns: subscription-manager
-Warning: Packages marked by Leapp for upgrade not found in repositories metadata: gpg-pubkey
-```
-**Megoldás**\
-Tiltsa le az előfizetés-kezelő beépülő modult a fájl szerkesztésével `/etc/yum/pluginconf.d/subscription-manager.conf` és az Engedélyezve értékre való módosítással `enabled=0` .
+* **Hiba**: a következő letiltott beépülő modulok esetében nem találhatók egyezések.
 
-Ezt az okozza, hogy az előfizetés-kezelő yum beépülő modulja engedélyezve van, ami nem használatos TB virtuális gépekhez.
+    ```plaintext
+    STDERR:
+    No matches found for the following disabled plugin patterns: subscription-manager
+    Warning: Packages marked by Leapp for upgrade not found in repositories metadata: gpg-pubkey
+    ```
 
-**Hiba: lehetséges problémák a távoli bejelentkezéssel a root használatával** A `leapp preupgrade` hiba a következő hibával meghiúsulhat:
-```structured-text
-============================================================
-                     UPGRADE INHIBITED
-============================================================
+    **Megoldás**: tiltsa le az előfizetés-kezelő beépülő modult. Tiltsa le a fájlt a */etc/yum/pluginconf.d/Subscription-Manager.conf* szerkesztésével, és váltson a következőre: `enabled` `enabled=0` .
 
-Upgrade has been inhibited due to the following problems:
-    1. Inhibitor: Possible problems with remote login using root account
-Consult the pre-upgrade report for details and possible remediation.
+    Ez a hiba akkor fordul elő, ha az engedélyezett előfizetés-kezelő `yum` beépülő modul nem használatos `PAYG` virtuális gépekhez.
 
-============================================================
-                     UPGRADE INHIBITED
-============================================================
-```
-**Megoldás**\
-Rendszergazdai hozzáférés engedélyezése a alkalmazásban `/etc/sshd_config` .
-Ennek oka az, hogy a rendszer nem engedélyezi a root SSH-hozzáférést `/etc/sshd_config` a "[frissítés előkészítése](#preparations-for-the-upgrade)" című szakaszban leírtak szerint. 
+* **Hiba**: lehetséges problémák a távoli bejelentkezéssel a root használatával.
+
+    Ez a hiba akkor fordulhat elő, ha sikertelen a következő `leapp preupgrade` :
+
+    ```structured-text
+    ============================================================
+                         UPGRADE INHIBITED
+    ============================================================
+    
+    Upgrade has been inhibited due to the following problems:
+        1. Inhibitor: Possible problems with remote login using root account
+    Consult the pre-upgrade report for details and possible remediation.
+    
+    ============================================================
+                         UPGRADE INHIBITED
+    ============================================================
+    ```
+    **Megoldás**: engedélyezze a legfelső szintű hozzáférést a */etc/sshd_config*.
+
+    Ez a hiba akkor fordul elő, ha a root SSH-hozzáférés nincs engedélyezve a */etc/sshd_configban*. További információt a jelen cikk [előkészületek](#preparations) című szakaszában talál. 
+
 
 ## <a name="next-steps"></a>Következő lépések
-* További információ az [Azure-beli Red Hat-lemezképekről](./redhat-images.md).
+* További információ [Az Azure-beli Red Hat-lemezképekről](./redhat-images.md).
 * További információ a [Red Hat frissítési infrastruktúráról](./redhat-rhui.md).
 * További információ a [RHEL BYOS ajánlatáról](./byos.md).
-* A Red Hat helyszíni frissítési folyamataival kapcsolatos információk a Red Hat dokumentációjában találhatók, a [RHEL 7-ről a RHEL 8-ra való frissítéssel](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/upgrading_from_rhel_7_to_rhel_8/index)
-* A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.
+* A Red Hat helyszíni frissítési folyamataival kapcsolatos további információkért lásd: a Red Hat dokumentációjában a [RHEL 7 és a RHEL 8 közötti frissítés](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/upgrading_from_rhel_7_to_rhel_8/index) .
+* Ha többet szeretne megtudni a Red Hat támogatási szabályzatáról a RHEL összes verziójára vonatkozóan, tekintse meg az [Red Hat Enterprise Linux életciklusát](https://access.redhat.com/support/policy/updates/errata) a Red Hat dokumentációjában.

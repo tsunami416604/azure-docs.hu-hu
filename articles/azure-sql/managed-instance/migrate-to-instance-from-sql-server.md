@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 7e7775f289e0221862d11c585ae85a5b0bc6cc27
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2761b97e595f5e11b00e75cd778ee269b12bfcae
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788550"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917800"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server példány áttelepítése az Azure SQL felügyelt példányára
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Ebből a cikkből megtudhatja, hogyan telepíthet át egy SQL Server 2005-es vagy újabb verziójú példányt az [Azure SQL felügyelt példányára](sql-managed-instance-paas-overview.md). Az önálló adatbázisra vagy rugalmas készletre való áttelepítéssel kapcsolatos információkért lásd: [áttelepítés SQL Databasera](../database/migrate-to-database-from-sql-server.md). A más platformokról való áttelepítéssel kapcsolatos információkért lásd: az [Azure Database áttelepítési útmutatója](https://datamigration.microsoft.com/).
+Ebből a cikkből megtudhatja, hogyan telepíthet át egy SQL Server 2005-es vagy újabb verziójú példányt az [Azure SQL felügyelt példányára](sql-managed-instance-paas-overview.md). Az önálló adatbázisra vagy rugalmas készletre való áttelepítéssel kapcsolatos információkért tekintse meg a [Migrálás áttekintése: SQL Server SQL Database](../migration-guides/database/sql-server-to-sql-database-overview.md). A más platformokról való áttelepítéssel és az eszközök és beállítások útmutatásával kapcsolatos további információkért lásd: [áttelepítés az Azure SQL](../migration-guides/index.yml)szolgáltatásba.
 
 > [!NOTE]
 > Ha gyorsan szeretné elindítani és kipróbálni az Azure SQL felügyelt példányát, érdemes lehet ezen oldal helyett a gyors üzembe [helyezési útmutatót](quickstart-content-reference-guide.md) használni.
