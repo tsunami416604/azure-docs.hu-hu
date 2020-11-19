@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6b8145666ab92432d01b2f039685afe5534f0958
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043585"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888640"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionális elérhetőség és adattárolási hely
 
@@ -37,13 +37,13 @@ A kommunikációs szolgáltatási adatmennyiség két kategóriába sorolhatók:
 
 ### <a name="identities"></a>Identitások
 
-Az Azure kommunikációs szolgáltatások megőrzik az identitások könyvtárát, és a [DeleteIdentity](https://docs.microsoft.com/rest/api/communication/communicationidentity/delete) API használatával távolítják el azokat. Az identitás törlésével visszavonja az összes társított hozzáférési jogkivonatot, és törölni fogja a csevegési üzeneteiket. Az identitás eltávolításával kapcsolatos további információkért [tekintse meg ezt a lapot](../quickstarts/access-tokens.md).
+Az Azure kommunikációs szolgáltatások megőrzik az identitások könyvtárát, és a [DeleteIdentity](/rest/api/communication/communicationidentity/delete) API használatával távolítják el azokat. Az identitás törlésével visszavonja az összes társított hozzáférési jogkivonatot, és törölni fogja a csevegési üzeneteiket. Az identitás eltávolításával kapcsolatos további információkért [tekintse meg ezt a lapot](../quickstarts/access-tokens.md).
 
 - DeleteIdentity
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-A kommunikációs szolgáltatásokkal rendelkező Azure Portal vagy Azure Resource Manager API-k használatával személyes adatai is létrehozhatók. [Ezen a lapon megtudhatja, hogyan kezelheti Azure Resource Manager rendszerekben tárolt személyes információkat.](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-manager-personal-data)
+A kommunikációs szolgáltatásokkal rendelkező Azure Portal vagy Azure Resource Manager API-k használatával személyes adatai is létrehozhatók. [Ezen a lapon megtudhatja, hogyan kezelheti Azure Resource Manager rendszerekben tárolt személyes információkat.](../../azure-resource-manager/management/resource-manager-personal-data.md)
 
 ### <a name="telephone-number-management"></a>Telefonos szám kezelése
 
@@ -52,7 +52,7 @@ Az Azure kommunikációs szolgáltatások fenntartják a kommunikációs szolgá
 
 ### <a name="chat"></a>Csevegés
 
-A csevegési szálak és üzenetek csak explicit törlés után maradnak meg. A rendszer 30 nap után automatikusan törli A teljesen üresjáratban lévő szálat. Üzenetek beolvasása, listázása, frissítése és törlése [csevegési API](https://docs.microsoft.com/rest/api/communication/chat/deletechatmessage/deletechatmessage) -k használatával.
+A csevegési szálak és üzenetek csak explicit törlés után maradnak meg. A rendszer 30 nap után automatikusan törli A teljesen üresjáratban lévő szálat. Üzenetek beolvasása, listázása, frissítése és törlése [csevegési API](/rest/api/communication/chat/deletechatmessage/deletechatmessage) -k használatával.
 
 - `Get Thread`
 - `Get Message`
@@ -73,10 +73,10 @@ A szolgáltatás elmúló módon dolgozza fel a hang-és video-kommunikációt, 
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor és Log Analytics
 
-Az Azure kommunikációs szolgáltatások a szolgáltatás működési állapotának és kihasználtságának megértéséhez Azure Monitor naplózási adataiba kerülnek. Ezek a naplók a kommunikációs szolgáltatás identitásait és telefonszámait tartalmazzák. A potenciálisan személyes adatértékek törléséhez [használja ezeket az eljárásokat a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt). Előfordulhat, hogy [az Azure monitor alapértelmezett megőrzési időtartamát](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)is be szeretné állítani.
+Az Azure kommunikációs szolgáltatások a szolgáltatás működési állapotának és kihasználtságának megértéséhez Azure Monitor naplózási adataiba kerülnek. Ezek a naplók a kommunikációs szolgáltatás identitásait és telefonszámait tartalmazzák. A potenciálisan személyes adatértékek törléséhez [használja ezeket az eljárásokat a Azure monitor](../../azure-monitor/platform/personal-data-mgmt.md). Előfordulhat, hogy [az Azure monitor alapértelmezett megőrzési időtartamát](../../azure-monitor/platform/manage-cost-storage.md)is be szeretné állítani.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
-- [Azure-beli adattulajdonosi kérelmek a GDPR és a CCPA](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure?view=o365-worldwide&preserve-view=true)
-- [Microsoft Adatvédelmi központ](https://www.microsoft.com/trust-center/privacy/data-location)
+- [Azure-beli adattulajdonosi kérelmek a GDPR és a CCPA](/microsoft-365/compliance/gdpr-dsr-azure?preserve-view=true&view=o365-worldwide)
+- [Microsoft adatvédelmi központ](https://www.microsoft.com/trust-center/privacy/data-location)
 - [Azure interaktív Térkép – hol található a vásárlói adataim?](https://azuredatacentermap.azurewebsites.net/)

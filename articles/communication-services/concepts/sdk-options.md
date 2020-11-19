@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: c294079663630e71581f08227fbdb9ae4640cab5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f26f3e6e80bf854ff4f57503aa43de2558f07a1e
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102425"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888555"
 ---
 # <a name="client-libraries-and-rest-apis"></a>Ügyfélkódtárak és REST API-k
 
@@ -31,7 +31,7 @@ Az Azure kommunikációs szolgáltatások funkcióit koncepcionálisan hat terü
 | Felügyelet         | REST | Megnyitás               | Azure. Communication. Administration  | A felhasználók, a hozzáférési tokenek és a telefonszámok kezelése, a szabványoknak megfelelő kábítás és a kiszolgálók kiosztása |
 | Csevegés                   | PIHENÉS saját jelzéssel | Megnyitás zárt forrású jelző csomaggal    | Azure. Communication. chat            | Valós idejű szöveg-alapú csevegés hozzáadása az alkalmazásokhoz  |
 | SMS                    | REST | Megnyitás              | Azure. Communication. SMS             | SMS-üzenetek küldése és fogadása |
-| Hívó                | Saját szállítás | Zárt |Azure. Communication. Calling         | A hang-, videó-, képernyő-megosztási és egyéb valós idejű adatkommunikációs képességek kihasználása          |
+| Hívó                | Saját szállítás | Lezárt |Azure. Communication. Calling         | A hang-, videó-, képernyő-megosztási és egyéb valós idejű adatkommunikációs képességek kihasználása          |
 
 Vegye figyelembe, hogy a Azure Resource Manager, a felügyelet és az SMS ügyféloldali kódtára a szolgáltatás-integrációra koncentrál, és sok esetben biztonsági probléma merül fel, ha a funkciókat végfelhasználói alkalmazásokba integrálja. A gyakori és a csevegési ügyféloldali kódtárak alkalmasak a szolgáltatás-és ügyfélalkalmazások számára. A hívó ügyféloldali kódtár ügyfélalkalmazások számára készült. A szolgáltatási forgatókönyvekre összpontosító ügyféloldali függvénytár fejlesztés alatt áll.
 
@@ -42,7 +42,7 @@ Az egyes ügyféloldali függvénytár-csomagok közzétételi helyei alább lá
 | Terület           | JavaScript | .NET | Python | Java SE | iOS | Android | Egyéb                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [Ugrás a GitHubon keresztül](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
-| Közös         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | N.A.      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
+| Közös         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | N/A      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
 | Felügyelet | [npm](https://www.npmjs.com/package/@azure/communication-administration)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Administration)    | [PyPi](https://pypi.org/project/azure-communication-administration/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-administration)   | -              | -              | -                            |
 | Csevegés           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
 | SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Sms)    | [PyPi](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
@@ -50,7 +50,7 @@ Az egyes ügyféloldali függvénytár-csomagok közzétételi helyei alább lá
 | Referenciadokumentáció     | [docs](https://azure.github.io/azure-sdk-for-js/communication.html)         | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [docs](http://azure.github.io/azure-sdk-for-java/communication.html)     | (Obj-C) ✔️     | ✔️            | -                              |
 ## <a name="rest-apis"></a>REST API-k
 
-A kommunikációs szolgáltatások API-jai a [docs.microsoft.com](https://docs.microsoft.com/rest/api/azure/)egyéb Azure REST API-jai mellett is dokumentálva vannak. A dokumentációból megtudhatja, hogyan strukturálhatja HTTP-üzeneteit, és útmutatást nyújt a Poster használatához. Ez a dokumentáció a [githubon](https://github.com/Azure/azure-rest-api-specs)is elérhető a hencegés formátumában.
+A kommunikációs szolgáltatások API-jai a [docs.microsoft.com](/rest/api/azure/)egyéb Azure REST API-jai mellett is dokumentálva vannak. A dokumentációból megtudhatja, hogyan strukturálhatja HTTP-üzeneteit, és útmutatást nyújt a Poster használatához. Ez a dokumentáció a [githubon](https://github.com/Azure/azure-rest-api-specs)is elérhető a hencegés formátumában.
 
 ## <a name="additional-support-details"></a>További támogatási információk
 
@@ -81,7 +81,7 @@ Támogatás a .NET Core 2,0-on keresztül:
 ## <a name="api-stability-expectations"></a>API-stabilitási elvárások 
 
 > [!IMPORTANT]
-> Ez a szakasz útmutatást nyújt a REST API-kkal és az ügyfél-kódtárak **stabil**jelöléssel. A előzetes kiadást, előzetes verziót vagy bétaverziót jelölt API-k **értesítés nélkül**módosíthatók vagy elavulttá válhatnak. Az Azure kommunikációs szolgáltatás jelenleg **nyilvános előzetes**verzióban érhető el, az API-k pedig ilyenként vannak megjelölve.
+> Ez a szakasz útmutatást nyújt a REST API-kkal és az ügyfél-kódtárak **stabil** jelöléssel. A előzetes kiadást, előzetes verziót vagy bétaverziót jelölt API-k **értesítés nélkül** módosíthatók vagy elavulttá válhatnak. Az Azure kommunikációs szolgáltatás jelenleg **nyilvános előzetes** verzióban érhető el, az API-k pedig ilyenként vannak megjelölve.
 
 A jövőben előfordulhat, hogy kivonják a kommunikációs szolgáltatások ügyféloldali kódtárainak verzióit, és a REST API-k és a kiadott ügyféloldali kódtárak feltörési változásait is bevezetjük. Az Azure kommunikációs szolgáltatásai *általában* két támogatási szabályzatot követnek a szolgáltatási verziók kivonásához:
 
@@ -98,7 +98,7 @@ Az API-k futtatása előtt 3 év figyelmeztetést kap, és a v25-ra való friss�
 
 Előfordulhat, hogy frissítenie kell a Called Client Library v 2.05 verziójára a v 2.05 kiadásának 12 hónapon belül. Ez az összetevő egyszerű helyettesítése a kód módosítása nélkül, mert a v 2.05 a v2 főverzióban van, és nem változik a változások megszakítása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse meg a következő ügyféloldali függvénytár-áttekintéseket:
 

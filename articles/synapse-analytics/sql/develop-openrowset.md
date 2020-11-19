@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20003a91726e5ccee7f73d85b7c9a9389801e0ad
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 2458b5f3f0c0091bb6ec24e62a1d5614e4e1ecd8
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701755"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888589"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -225,6 +225,9 @@ CSV-elemző 2,0-es verziójának sajátosságai:
 - A sorok maximális méretének korlátja 8 MB.
 - A következő beállítások nem támogatottak: DATA_COMPRESSION.
 - Az idézőjelek közé tartozó üres karakterlánc ("") üres sztringként van értelmezve.
+- A dátum adattípusának támogatott formátuma: éééé-hh-nn
+- Az időadattípus támogatott formátuma: óó: PP: SS [. frakcionált másodperc]
+- Támogatott formátum a DATETIME2 adattípushoz: éééé-hh-nn óó: PP: SS [. frakcionált másodperc]
 
 HEADER_ROW = {TRUE | HAMIS
 

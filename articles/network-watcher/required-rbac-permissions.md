@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: 5e048729aa1d37a63678451525f8f37612c8c464
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9a5bd6dff05fe39d62e5bf5f897bc61936686bb7
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426753"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887229"
 ---
 # <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Az Azure szerepköralapú hozzáférés-vezérlési engedélyei a Network Watcher képességek használatához
 
@@ -90,6 +90,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi
 | Művelet                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/topológia/művelet                   | Topológia beolvasása                                                   |
+| Microsoft. Network/networkWatchers/topológia/olvasás                     | Lásd fent                                                  |
 
 ## <a name="reachability-report"></a>Elérhetőségi jelentés
 

@@ -3,18 +3,18 @@ title: Biztonsági műveletek integrálása és kezelése & Microsoft Graph bizt
 description: Javítsa az alkalmazás veszélyforrások elleni védelmét, észlelését és válaszát Microsoft Graph biztonsági & Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: preetikr
+author: ecfan
 ms.author: preetikr
 ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: ea861dce23e50bc5fcae50116a3e71793d402f8f
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873318"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888538"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>A biztonsági műveletek Microsoft Graph biztonsági & való integrálásával növelheti a veszélyforrások elleni védelmet Azure Logic Apps
 
@@ -30,7 +30,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Microsoft Grap
 
 A logikai alkalmazás munkafolyamata olyan műveleteket is használhat, amelyek válaszokat kapnak a Microsoft Graph biztonsági összekötőtől, és ezt a kimenetet a munkafolyamat más műveletei számára is elérhetővé teszik. A munkafolyamatban más műveletek is megadhatók a Microsoft Graph biztonsági összekötő műveleteiből származó kimenet használatával. Ha például magas súlyosságú riasztásokat kap a Microsoft Graph biztonsági összekötőn keresztül, az Outlook Connector használatával e-mailben elküldheti ezeket a riasztásokat egy e-mail-üzenetben. 
 
-A Microsoft Graph biztonsággal kapcsolatos további tudnivalókért tekintse meg a [Microsoft Graph biztonsági API áttekintése](/graph/security-concept-overview)című témakört. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a következőt: [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md). Ha az automatizálást vagy a PowerApps keresi, tekintse meg a [Mi az az automatizálás?](https://flow.microsoft.com/) vagy a mi az a [PowerApps?](https://powerapps.microsoft.com/)
+A Microsoft Graph biztonsággal kapcsolatos további tudnivalókért tekintse meg a [Microsoft Graph biztonsági API áttekintése](/graph/security-concept-overview)című témakört. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a következőt: [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md). Ha az automatizálást vagy a PowerApps keresi, olvassa el a [Mi az a Power automatizál?](https://flow.microsoft.com/) vagy a mi az a [Power apps?](https://powerapps.microsoft.com/) című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

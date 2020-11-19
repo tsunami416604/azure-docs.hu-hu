@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fb577947942ffce640f91daf0050f6796f93222b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d4b6fc296ae41667d271e243e9aca9b594e4a5b6
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91311665"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886702"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Első lépések – A webes forgalom irányítása az Azure Application Gateway szolgáltatással – Azure CLI
 
@@ -24,14 +24,11 @@ Az Application Gateway az alkalmazás webes forgalmát egy háttér-készlet ado
 
 A rövid útmutató [Azure PowerShell](quick-create-powershell.md) vagy a [Azure Portal](quick-create-portal.md)használatával is elvégezhető.
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Azure CLI-verzió 2.0.4 vagy újabb verziója](/cli/azure/install-azure-cli) (ha helyileg futtatja az Azure CLI-t).
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-
+- Ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -77,7 +74,7 @@ A háttérrendszer rendelkezhet hálózati adapterekkel, virtuálisgép-méretez
 
 Telepítse az NGINX webkiszolgálót a virtuális gépeken annak ellenőrzéséhez, hogy az Application Gateway sikeresen létrejött-e. Egy Cloud-init konfigurációs fájllal telepítheti az NGINX-et, és futtathat egy "„Helló világ!” alkalmazás" Node.js alkalmazást Linux rendszerű virtuális gépen. A Cloud-init szolgáltatással kapcsolatos további információkért lásd: [Cloud-init támogatás az Azure-beli virtuális gépekhez](../virtual-machines/linux/using-cloud-init.md).
 
-A Azure Cloud Shell másolja és illessze be a következő konfigurációt egy *cloud-init.txt*nevű fájlba. Adja meg a *szerkesztő cloud-init.txt* a fájl létrehozásához.
+A Azure Cloud Shell másolja és illessze be a következő konfigurációt egy *cloud-init.txt* nevű fájlba. Adja meg a *szerkesztő cloud-init.txt* a fájl létrehozásához.
 
 ```yaml
 #cloud-config
@@ -165,9 +162,9 @@ Az Azure az Application Gateway létrehozásához akár 30 percet is igénybe ve
 
 - **appGatewayBackendPool**: a háttér- **készletek** lapon található. Meghatározza a szükséges háttérrendszer-készletet.
 - **appGatewayBackendHttpSettings**: a http- **Beállítások** lapon található. Azt határozza meg, hogy az Application Gateway a 80-es portot és a HTTP protokollt használja a kommunikációhoz.
-- **appGatewayHttpListener**: a **figyelők oldalon**található. Meghatározza a **appGatewayBackendPool**társított alapértelmezett figyelőt.
+- **appGatewayHttpListener**: a **figyelők oldalon** található. Meghatározza a **appGatewayBackendPool** társított alapértelmezett figyelőt.
 - **appGatewayFrontendIP**: az ELŐTÉRI **IP-konfigurációk** lapon található. A *myAGPublicIPAddress* a **appGatewayHttpListener**-hez rendeli hozzá.
-- **rule1**: a **szabályok** lapon található. Meghatározza a **appGatewayHttpListener**társított alapértelmezett útválasztási szabályt.
+- **rule1**: a **szabályok** lapon található. Meghatározza a **appGatewayHttpListener** társított alapértelmezett útválasztási szabályt.
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
@@ -195,7 +192,7 @@ Ha már nincs szüksége az Application Gateway használatával létrehozott er�
 az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes forgalom kezelése Application Gatewayjel az Azure CLI segítségével](./tutorial-manage-web-traffic-cli.md)

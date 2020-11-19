@@ -1,19 +1,19 @@
 ---
-title: Log Analytics-ügynök telepítése Linux rendszerű számítógépekre
+title: Log Analytics-ügynök telepítése Linux rendszerű számítógépeken
 description: Ez a cikk azt ismerteti, hogyan csatlakoztathatók a más felhőben vagy a helyszínen üzemeltetett Linux rendszerű számítógépek a Log Analytics Azure Monitor-ügynökkel a Linux rendszerhez.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 8b9fac51b5bdab20d7b082945ee594ac76c3e52a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e1dbf5e20aa206189397cab26e9b867f4942e1d5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332501"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886838"
 ---
-# <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-ügynök telepítése Linux rendszerű számítógépekre
+# <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-ügynök telepítése Linux rendszerű számítógépeken
 Ez a cikk részletesen ismerteti a Log Analytics-ügynök Linux rendszerű számítógépekre történő telepítését a következő módszerekkel:
 
 * [Telepítse a Linux-ügynököt](#install-the-agent-using-wrapper-script) a githubon üzemeltetett burkoló parancsfájl használatával. Ez az ajánlott módszer az ügynök telepítésére és frissítésére, ha a számítógép közvetlenül vagy egy proxykiszolgálón keresztül kapcsolódik az internethez.
@@ -30,13 +30,17 @@ A Log Analytics-ügynök által támogatott Linux-disztribúciók listáját [Az
 
 >[!NOTE]
 >Az OpenSSL 1.1.0 csak x86_x64 platformokon (64-bites) és 1. x-nél korábbi OpenSSL-platformon támogatott.
->
+
+>[!NOTE]
+>A Log Analytics Linux-ügynök tárolókban való futtatása nem támogatott. Ha meg kell figyelnie a tárolókat, használja a [tároló-figyelési megoldást](../insights/containers.md) a Docker-gazdagépekhez vagy [Azure monitor a Kubernetes tárolók](../insights/container-insights-overview.md) számára.
+
 A 2018 augusztusa után kiadott verzióktól kezdve a következő módosításokat végezjük a támogatási modellen:  
 
 * Csak a kiszolgálói verziók támogatottak, nem az ügyfél.  
 * Koncentráljon az [Azure Linux által támogatott disztribúciók](../../virtual-machines/linux/endorsed-distros.md)bármelyikére. Vegye figyelembe, hogy az Azure Linux új disztribúciója/verziója esetében némi késéssel rendelkezik, és a Log Analytics Linux-ügynök támogatja.
 * Minden másodlagos kiadás a felsorolt főbb verziók esetében támogatott.
-* Nem támogatottak azok a verziók, amelyek átadták a gyártó támogatásának befejezési dátumát.  
+* Nem támogatottak azok a verziók, amelyek átadták a gyártó támogatásának befejezési dátumát.
+* Csak a VM-lemezképek támogatása; a tárolók, még azok is, amelyek a hivatalos distro kiadói lemezképből származnak, nem támogatottak.
 * Az AMI új verziói nem támogatottak.  
 * Az alapértelmezés szerint csak az SSL 1. x verziót futtató verziók támogatottak.
 
@@ -222,7 +226,7 @@ Az ügynök 20 másodpercenként próbálkozik a feltöltéssel. Ha ez nem siker
 Az alapértelmezett gyorsítótár mérete 10 MB, de a [omsagent. conf fájlban](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf)is módosítható.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Windows és Linux rendszerhez készült log Analytics ügynök felügyeletét és karbantartását](agent-manage.md) , hogy megtudja, hogyan lehet újrakonfigurálni, frissíteni vagy eltávolítani az ügynököt a virtuális gépről.
 

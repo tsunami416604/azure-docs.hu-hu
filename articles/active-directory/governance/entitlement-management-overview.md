@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 24e514208683d540f08818020238090583a1bc42
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ecc25af19694c0befdd24b041807e2067db4f13b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362467"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886940"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
@@ -66,7 +66,7 @@ Elolvashatja a [gyakori forgatókönyveket](entitlement-management-scenarios.md)
 
 ## <a name="what-are-access-packages-and-what-resources-can-i-manage-with-them"></a>Mik azok a hozzáférési csomagok, és milyen erőforrásokat kezelhetek velük?
 
-A jogosultságok kezelése az Azure AD-be egy *hozzáférési csomag*fogalmát mutatja be. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelynek hozzáférését a felhasználónak egy projekten kell dolgoznia, vagy a feladat elvégzéséhez. A hozzáférési csomagok a belső alkalmazottak és a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak.
+A jogosultságok kezelése az Azure AD-be egy *hozzáférési csomag* fogalmát mutatja be. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelynek hozzáférését a felhasználónak egy projekten kell dolgoznia, vagy a feladat elvégzéséhez. A hozzáférési csomagok a belső alkalmazottak és a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak.
 
  A felhasználók a jogosultsági felügyelethez való hozzáférését a következő típusú erőforrásokkal kezelheti:
 
@@ -85,7 +85,7 @@ Az Azure AD biztonsági csoportjaira vagy Microsoft 365 csoportokra támaszkodó
 
 Egy hozzáférési csomaggal a rendszergazda vagy a delegált hozzáférés-kezelő csomag felsorolja az erőforrásokat (csoportokat, alkalmazásokat és helyeket), valamint azokat a szerepköröket, amelyekre a felhasználóknak szüksége van az adott erőforrásokhoz.
 
-A hozzáférési csomagok egy vagy több *szabályzatot*is tartalmaznak. A szabályzatok a hozzáférési csomaghoz való hozzárendelés szabályait vagy guardrails határozzák meg. Az egyes szabályzatok segítségével biztosítható, hogy csak a megfelelő felhasználók férhessenek hozzá a hozzáféréshez, hogy a kérelmük jóváhagyók legyenek, valamint hogy az erőforrásokhoz való hozzáférésük időkorlátos legyen, és ha nincs megújítva, lejár.
+A hozzáférési csomagok egy vagy több *szabályzatot* is tartalmaznak. A szabályzatok a hozzáférési csomaghoz való hozzárendelés szabályait vagy guardrails határozzák meg. Az egyes szabályzatok segítségével biztosítható, hogy csak a megfelelő felhasználók férhessenek hozzá a hozzáféréshez, hogy a kérelmük jóváhagyók legyenek, valamint hogy az erőforrásokhoz való hozzáférésük időkorlátos legyen, és ha nincs megújítva, lejár.
 
 ![Hozzáférési csomag és szabályzatok](./media/entitlement-management-overview/elm-overview-access-package.png)
 
@@ -113,13 +113,13 @@ A hozzáférési csomagok nem helyettesítik más mechanizmusokat a hozzáféré
 
 ## <a name="how-do-i-delegate-access"></a>Hogyan delegálja a hozzáférést?
 
- A hozzáférési csomagok a *katalógusok*nevű tárolókban vannak meghatározva.  Egyetlen katalógussal is rendelkezhet az összes hozzáférési csomaghoz, vagy kijelölhet egyéni személyeket saját katalógusok létrehozásához. A rendszergazdák bármilyen katalógusba hozzáadhatnak erőforrásokat, de a nem rendszergazda csak katalógusba veheti fel a saját erőforrásaikat. A katalógus tulajdonosa más felhasználókat is hozzáadhat a katalógus-tulajdonosként, vagy a hozzáférési csomag kezelői.  Ezeket a forgatókönyveket az [Azure ad-jogosultságok felügyeletének delegálása és szerepkörei](entitlement-management-delegate.md)című cikk ismerteti.
+ A hozzáférési csomagok a *katalógusok* nevű tárolókban vannak meghatározva.  Egyetlen katalógussal is rendelkezhet az összes hozzáférési csomaghoz, vagy kijelölhet egyéni személyeket saját katalógusok létrehozásához. A rendszergazdák bármilyen katalógusba hozzáadhatnak erőforrásokat, de a nem rendszergazda csak katalógusba veheti fel a saját erőforrásaikat. A katalógus tulajdonosa más felhasználókat is hozzáadhat a katalógus-tulajdonosként, vagy a hozzáférési csomag kezelői.  Ezeket a forgatókönyveket az [Azure ad-jogosultságok felügyeletének delegálása és szerepkörei](entitlement-management-delegate.md)című cikk ismerteti.
 
 ## <a name="summary-of-terminology"></a>Terminológia összefoglalása
 
 A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez tekintse át a következő feltételek listáját.
 
-| Időszak | Leírás |
+| Kifejezés | Leírás |
 | --- | --- |
 | hozzáférési csomag | Egy csoport vagy projekt által igényelt erőforrás-csomag, amely szabályzatokkal van szabályozva. Egy hozzáférési csomag mindig szerepel a katalógusban. Hozzon létre egy új hozzáférési csomagot egy olyan forgatókönyvhöz, amelyben a felhasználóknak hozzáférést kell kérniük.  |
 | hozzáférési kérelem | Egy hozzáférési csomag erőforrásaihoz való hozzáférésre vonatkozó kérelem. A kérések általában egy jóváhagyási munkafolyamaton keresztül mennek keresztül.  Ha jóváhagyják, a kérelmező felhasználó hozzáférési csomagbeli hozzárendelést kap. |
@@ -144,17 +144,22 @@ A speciális felhők, például az Azure Germany és az Azure China 21Vianet jel
 Győződjön meg arról, hogy a címtár legalább annyi prémium szintű Azure AD P2-licenctel rendelkezik, mint a következők:
 
 - Azok a felhasználók **, akik hozzáférési csomagot igényelhetnek** .
-- Egy hozzáférési csomagot kérő tag és vendég felhasználók.
-- Egy hozzáférési csomagra vonatkozó kérelmeket jóváhagyó tagok és vendég felhasználók.
-- Azon tagok és vendég felhasználók, akik közvetlen hozzárendeléssel rendelkeznek egy hozzáférési csomaghoz.
+- Egy hozzáférési csomagot <u>kérő</u> tag és vendég felhasználók.
+- Egy hozzáférési csomagra vonatkozó <u>kérelmeket jóváhagyó</u> tagok és vendég felhasználók.
+- Azok a felhasználók, akik egy hozzáférési csomag <u>hozzárendeléseit vizsgálják felül</u> . 
+- Azon tagok és vendég felhasználók, akik <u>közvetlen hozzárendeléssel</u> rendelkeznek egy hozzáférési csomaghoz.
+
+A vendég felhasználói számára a licencelési igények a használt [licencelési modelltől](../external-identities/external-identities-pricing.md) függenek. Az alábbi vendég felhasználói tevékenységek azonban prémium szintű Azure AD P2-használatnak tekintendők:
+- A hozzáférési csomagot <u>kérő</u> vendég felhasználók. 
+- A hozzáférési csomagra vonatkozó <u>kérelmeket jóváhagyó</u> vendég felhasználók.
+- A hozzáférési csomag <u>hozzárendeléseit áttekintő</u> vendég felhasználók.
+- Olyan vendég felhasználók, akik <u>közvetlen hozzárendeléssel</u> rendelkeznek egy hozzáférési csomaghoz. 
 
 Prémium szintű Azure AD P2-licencek **nem** szükségesek a következő feladatokhoz:
 
 - A globális rendszergazdai szerepkörrel rendelkező felhasználók számára nem szükséges licencek a kezdeti katalógusok, a hozzáférési csomagok és a házirendek beállítására, valamint a felügyeleti feladatok más felhasználóknak való delegálására.
 - Nem szükségesek licencek olyan felhasználók számára, akik delegáltak felügyeleti feladatokat, például a katalógus létrehozóját, a katalógus tulajdonosát és a hozzáférés csomagkezelő kezelőjét.
 - Nincs szükség licencre azon vendégek számára **, akik hozzáférési csomagokat igényelhetnek** , de **nem** igényelnek hozzáférési csomagot.
-
-Az Azure AD külső identitások (vendég felhasználó) díjszabása a havi aktív felhasználók (MAU) alapján történik, amely a naptári hónapon belül a hitelesítési tevékenységgel rendelkező egyedi felhasználók száma. Ez a modell a 1:5 arányú számlázási modellt váltja fel, amely legfeljebb öt vendéget engedélyez a bérlő minden prémium szintű Azure AD licence számára. Ha a bérlő egy előfizetéshez van csatolva, és külső identitási funkciókat használ a vendég felhasználókkal való együttműködésre, akkor a MAU-alapú számlázási modell alapján automatikusan számlázunk. További információ: az [Azure ad külső identitások](../external-identities/external-identities-pricing.md)számlázási modellje.
 
 További információ a licencekről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md).
 
@@ -170,4 +175,4 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: az első hozzáférési csomag létrehozása](entitlement-management-access-package-first.md)
-- [Gyakori helyzetek](entitlement-management-scenarios.md)
+- [Gyakori forgatókönyvek](entitlement-management-scenarios.md)

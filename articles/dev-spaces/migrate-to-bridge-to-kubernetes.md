@@ -5,12 +5,12 @@ ms.date: 10/21/2020
 ms.topic: conceptual
 description: Az Azure dev Spaces és a Kubernetes közötti áttelepítési folyamat ismertetése
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, híd a Kubernetes-hoz
-ms.openlocfilehash: 7a7642d986d8490c5d0dc3c413e658b21b010798
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d48814df30c17f9b51d8642efa0960a26bbd24f4
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895256"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888521"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrálás a Bridge to Kubernetesre
 
@@ -85,7 +85,7 @@ A Kubernetes-hez készült Bridge rugalmasan együttműködik a Kubernetes-ben f
 1. Ha a Visual studiót használja, frissítse a Visual Studio IDE-t a 16,7-es vagy újabb verzióra, és telepítse a hidat a Kubernetes bővítményre a [Visual Studio piactérről][vs-marketplace]. Ha Visual Studio Code-ot használ, telepítse a [hidat a Kubernetes bővítményre][vsc-marketplace].
 1. Tiltsa le az Azure dev Spaces-vezérlőt az Azure Portal vagy az [Azure dev Spaces CLI][azds-delete]használatával.
 1. [Azure Cloud Shell](https://shell.azure.com)használata. Vagy Mac, Linux vagy Windows rendszerű számítógépeken, amelyeken bash van telepítve, nyisson meg egy bash shell parancssort. Győződjön meg arról, hogy a következő eszközök érhetők el a parancssori környezetben: Azure CLI, Docker, kubectl, Curl, Tar és gunzip.
-1. Hozzon létre egy tároló-beállításjegyzéket, vagy használjon egy meglévőt. Létrehozhat egy tároló-beállításjegyzéket az Azure-ban [Azure Container Registry](../container-registry/index.yml) vagy a [Docker hub](https://hub.docker.com/)használatával. Azure Cloud Shell használatakor a Docker-rendszerképek üzemeltetése csak Azure Container Registry érhető el.
+1. Hozzon létre egy tároló-beállításjegyzéket, vagy használjon egy meglévőt. Létrehozhat egy tároló-beállításjegyzéket az Azure-ban [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) vagy a [Docker hub](https://hub.docker.com/)használatával. Azure Cloud Shell használatakor a Docker-rendszerképek üzemeltetése csak Azure Container Registry érhető el.
 1. Futtassa az áttelepítési parancsfájlt az Azure dev Spaces-eszközök Kubernetes-eszközökre való átalakításához. A szkript létrehoz egy új rendszerképet, amely kompatibilis a Bridge Kubernetes, feltölti a kijelölt beállításjegyzékbe, majd a [Helm](https://helm.sh) használatával frissíti a fürtöt a lemezképpel. Meg kell adnia az erőforráscsoportot, az AK-fürt nevét, valamint egy tároló-beállításjegyzéket. Az itt látható egyéb parancssori kapcsolók is elérhetők:
 
    ```azure-cli

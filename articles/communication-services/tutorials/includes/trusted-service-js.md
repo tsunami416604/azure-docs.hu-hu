@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: d4ef8baa123f805d380b14fa24abff65903cb41d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daf2d675bbbee324769b6e1e8d8d34587d37c72f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947094"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886623"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ További információkért tekintse meg az [ügyféloldali architektúra](../../
 
 ### <a name="azure-functions-set-up"></a>Azure Functions beállítása
 
-Először állítsa be az Azure-függvény alapszintű szerkezetét. A beállítás részletes útmutatója itt található: [függvény létrehozása a Visual Studio Code használatával](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)
+Először állítsa be az Azure-függvény alapszintű szerkezetét. A beállítás részletes útmutatója itt található: [függvény létrehozása a Visual Studio Code használatával](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript)
 
 Az Azure-függvény a következő konfigurációt igényli:
 
@@ -46,7 +46,7 @@ Az Azure-függvény a következő konfigurációt igényli:
 - Engedélyezési szint: névtelen (ez később is átkapcsolható, ha egy másik hitelesítési modellt szeretne megadni)
 - Függvény neve: felhasználó által definiált
 
-Miután követte a fenti konfigurációval [Azure functions utasításokat](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript) , egy, a függvényt tartalmazó fájllal kell rendelkeznie a Visual Studio Code-ban az Azure-függvényhez tartozó projekttel `index.js` . A fájlon belüli kódnak a következőnek kell lennie:
+Miután követte a fenti konfigurációval [Azure functions utasításokat](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript) , egy, a függvényt tartalmazó fájllal kell rendelkeznie a Visual Studio Code-ban az Azure-függvényhez tartozó projekttel `index.js` . A fájlon belüli kódnak a következőnek kell lennie:
 
 ```javascript
 
@@ -128,15 +128,15 @@ A meglévő kommunikációs szolgáltatások esetében `CommunicationUser` kihag
 
 ## <a name="test-the-azure-function"></a>Az Azure-függvény tesztelése
 
-Futtassa az Azure-függvényt helyileg a használatával `F5` . Ez a művelet helyileg inicializálja az Azure-függvényt, és az alábbi módon teszi elérhetővé: `http://localhost:7071/api/FUNCTION_NAME` . További dokumentáció a [helyi futtatásról](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#run-the-function-locally)
+Futtassa az Azure-függvényt helyileg a használatával `F5` . Ez a művelet helyileg inicializálja az Azure-függvényt, és az alábbi módon teszi elérhetővé: `http://localhost:7071/api/FUNCTION_NAME` . További dokumentáció a [helyi futtatásról](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-locally)
 
 Nyissa meg az URL-címet a böngészőjében, és meg kell jelennie a válasz törzsének a kommunikációs felhasználói azonosítóval, a tokenrel és a token lejáratával.
 
-:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="A megbízható szolgáltatás architektúrájának diagramja":::
+:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Képernyőfelvétel: a létrehozott Azure-függvényre mutató válasz.":::
 
 ## <a name="deploy-the-function-to-azure"></a>A függvény üzembe helyezése az Azure-ban
 
-Az Azure-függvény üzembe helyezéséhez kövesse [az útmutató lépésről lépésre](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#sign-in-to-azure)
+Az Azure-függvény üzembe helyezéséhez kövesse [az útmutató lépésről lépésre](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#sign-in-to-azure)
 
 Általában a következőkre lesz szüksége:
 1. Bejelentkezés az Azure-ba a Visual studióból
@@ -151,4 +151,4 @@ Az Azure-függvény futtatása az URL-cím használatával `http://<function-app
 
 Az URL-cím megkereséséhez kattintson a jobb gombbal a függvényre a Visual Studio Code-ban, és másolja a függvény URL-címét.
 
-További információ az [Azure-függvény futtatásáról](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#run-the-function-in-azure)
+További információ az [Azure-függvény futtatásáról](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-in-azure)

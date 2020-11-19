@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás erőforrásának engedélyezése
 description: Megtudhatja, hogyan küldhet be támogatási kérést az Azure VMware-megoldási erőforrásának engedélyezéséhez. További csomópontokat is igényelhet a meglévő Azure VMware-megoldás privát felhőben.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: c9c31d8ffbf62a511f4f2ab19f995b6bc0ee0ca4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8e1b891559cb2d01adc9fdf834ef3c9714fe1233
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695146"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888436"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Az Azure VMware megoldás erőforrásának engedélyezése
 Megtudhatja, hogyan küldhet be támogatási kérést az [Azure VMware-megoldási](introduction.md) erőforrásának engedélyezéséhez. További csomópontokat is igényelhet a meglévő Azure VMware-megoldás privát felhőben.
@@ -78,7 +78,7 @@ A CSP-nek a [Microsoft partner centert](https://partner.microsoft.com) kell hasz
 
 1. Tekintse át és fejezze be az Azure-csomag előfizetésének általános beállítását az ügyfél számára. További információt a [Microsoft partner Center dokumentációjában](https://docs.microsoft.com/partner-center/azure-plan-manage)talál.
 
-Miután konfigurálta az Azure-csomagot, és a szükséges RBAC engedélyek CSP-ként vannak konfigurálva, a Microsofttal engedélyezheti az Azure-csomag előfizetésének kvótáját. Hozzáférési Azure Portal a partner Centertől a (z) (AOBO) eljárásban a **rendszergazda** használatával.
+Miután konfigurálta az Azure-csomagot és a szükséges vSphere-RBAC engedélyeket a CSP-ként, a Microsofttal engedélyezheti az Azure-csomag előfizetésének kvótáját. Hozzáférési Azure Portal a partner Centertől a (z) (AOBO) eljárásban a **rendszergazda** használatával.
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com).
 

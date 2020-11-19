@@ -1,16 +1,16 @@
 ---
-title: Fogalmak – szerepköralapú hozzáférés-vezérlés (RBAC)
-description: Ismerje meg az Azure VMware-megoldás szerepköralapú hozzáférés-vezérlésének főbb képességeit
+title: Fogalmak – vSphere szerepköralapú hozzáférés-vezérlés (vSphere RBAC)
+description: Ismerje meg az Azure VMware-megoldás vSphere szerepköralapú hozzáférés-vezérlésének főbb képességeit
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 6e1864fdfe397325a7c5ba601b625bcc1776174c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fbd5b48ce30a6612c45ebd97f08812efd29c50b3
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535486"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888402"
 ---
-# <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure VMware-megoldáshoz
+# <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>vSphere szerepköralapú hozzáférés-vezérlés (vSphere RBAC) Azure-beli VMware-megoldáshoz
 
 Az Azure VMware megoldásban a vCenter beépített helyi felhasználó nevű cloudadmin, és a beépített CloudAdmin szerepkörhöz van rendelve. A helyi cloudadmin-felhasználó a felhasználók beállítására szolgál az AD-ben. Általánosságban elmondható, hogy a CloudAdmin szerepkör a saját felhőben hozza létre és kezeli a munkaterheléseket. Az Azure VMware megoldásban a CloudAdmin szerepkör olyan vCenter-jogosultságokkal rendelkezik, amelyek eltérnek a többi VMware Cloud-megoldástól.     
 

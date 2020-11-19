@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 67c701946eedf85176b3d14b09d3e723c4c74285
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072118"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888725"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Események feldolgozása az Azure kommunikációs szolgáltatásokban
 
@@ -22,13 +22,13 @@ ms.locfileid: "92072118"
 
 Az Azure kommunikációs szolgáltatásai megbízható, méretezhető és biztonságos módon biztosítják a valós idejű események bejelentésének [Azure Event Gridét](https://azure.microsoft.com/services/event-grid/) . Ennek a cikknek a célja, hogy segítséget nyújtson az alkalmazások konfigurálásában a kommunikációs szolgáltatások eseményeinek figyeléséhez. Előfordulhat például, hogy frissíteni szeretne egy adatbázist, létre kell hoznia egy munkaelemet, és leküldéses értesítést kell küldenie, amikor egy SMS-üzenetet kap a kommunikációs szolgáltatások erőforrásához társított telefonszám.
 
-A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi és előfizetési modellt használ. A Event Grid beépített támogatást nyújt az Azure-szolgáltatások, például a [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) és a [Azure Logic apps](https://docs.microsoft.com/azure/azure-functions/functions-overview)számára. A webhookok használatával az események riasztásait nem Azure-szolgáltatásokhoz is kézbesítheti. A Event Grid által támogatott eseménykezelők teljes listájáért tekintse [meg a Azure Event Grid bemutatása](https://docs.microsoft.com/azure/event-grid/overview)című témakört.
+A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi és előfizetési modellt használ. A Event Grid beépített támogatást nyújt az Azure-szolgáltatások, például a [Azure functions](../../azure-functions/functions-overview.md) és a [Azure Logic apps](../../azure-functions/functions-overview.md)számára. A webhookok használatával az események riasztásait nem Azure-szolgáltatásokhoz is kézbesítheti. A Event Grid által támogatott eseménykezelők teljes listájáért tekintse [meg a Azure Event Grid bemutatása](../../event-grid/overview.md)című témakört.
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="Azure Event Grid esemény modelljét bemutató diagram.":::
 
 ## <a name="events-types"></a>Események típusai
 
-Az Event Grid [esemény-előfizetések](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek. 
+Az Event Grid [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek. 
 
 Az Azure kommunikációs szolgáltatás a következő típusú eseményeket bocsátja ki:
 
@@ -50,7 +50,7 @@ A Azure Portal vagy az Azure CLI segítségével előfizethet a kommunikációs 
 
 ## <a name="event-subjects"></a>Esemény tárgya
 
-A `subject` kommunikációs szolgáltatások összes eseményének mezője azonosítja azt a felhasználót, telefonszámot vagy entitást, amelyet az esemény céloz. Az egyszerű [Event Grid szűrés](https://docs.microsoft.com/azure/event-grid/event-filtering)lehetővé teszi az általános előtagok használatát.
+A `subject` kommunikációs szolgáltatások összes eseményének mezője azonosítja azt a felhasználót, telefonszámot vagy entitást, amelyet az esemény céloz. Az egyszerű [Event Grid szűrés](../../event-grid/event-filtering.md)lehetővé teszi az általános előtagok használatát.
 
 | Tulajdonos előtagja                              | Kommunikációs szolgáltatás entitása |
 | ------------------------------------------- | ---------------------------- |
@@ -351,6 +351,6 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A Azure Event Grid bemutatása: [Mi az Event Grid?](https://docs.microsoft.com/azure/event-grid/overview)
-* Azure Event Grid fogalmak bevezetését lásd: [fogalmak a Event Gridban?](https://docs.microsoft.com/azure/event-grid/concepts)
-* A Azure Event Grid SystemTopics bemutatása: [rendszertémakörök Azure Event Grid?](https://docs.microsoft.com/azure/event-grid/system-topics)
+* A Azure Event Grid bemutatása: [Mi az Event Grid?](../../event-grid/overview.md)
+* Azure Event Grid fogalmak bevezetését lásd: [fogalmak a Event Gridban?](../../event-grid/concepts.md)
+* A Azure Event Grid SystemTopics bemutatása: [rendszertémakörök Azure Event Grid?](../../event-grid/system-topics.md)

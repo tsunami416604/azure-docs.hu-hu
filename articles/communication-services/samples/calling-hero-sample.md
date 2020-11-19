@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 799c46ad2715e1edd3d2fba24a8350fd2608d3d8
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: c872c2a2799eee3ae9e39653b0046b70ca5d7e8b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233933"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887535"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Ismerkedés a csoport meghívása Hero-mintával
 
@@ -38,19 +38,21 @@ A mintában ügyféloldali alkalmazás és kiszolgálóoldali alkalmazás is tal
 
 A minta így néz ki:
 
-:::image type="content" source="./media/calling/landing-page.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel&quot;:::
+:::image type="content" source="./media/calling/landing-page.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel":::
 
-Ha a &quot;hívás indítása" gombra kattint, a webalkalmazás beolvas egy felhasználói hozzáférési jogkivonatot a kiszolgálóoldali alkalmazásból. Ezt a tokent ezután az ügyfélalkalmazás Azure kommunikációs szolgáltatásokhoz való összekapcsolására használják. A jogkivonat lekérése után a rendszer felszólítja a használni kívánt kamera és mikrofon megadására. Az eszközöket letilthatja/engedélyezheti a váltási vezérlőkkel:
+Ha a "hívás indítása" gombra kattint, a webalkalmazás beolvas egy felhasználói hozzáférési jogkivonatot a kiszolgálóoldali alkalmazásból. Ezt a tokent ezután az ügyfélalkalmazás Azure kommunikációs szolgáltatásokhoz való összekapcsolására használják. A jogkivonat lekérése után a rendszer felszólítja a használni kívánt kamera és mikrofon megadására. Az eszközöket letilthatja/engedélyezheti a váltási vezérlőkkel:
 
-:::image type="content" source="./media/calling/pre-call.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel&quot;:::
-
-Ha a &quot;hívás indítása":::
+:::image type="content" source="./media/calling/pre-call.png" alt-text="A minta alkalmazás előhívási képernyőjét ábrázoló képernyőfelvétel.":::
 
 A megjelenítendő név és az eszközök konfigurálása után csatlakozhat a hívási munkamenethez. Most megjelenik a fő hívási vászon, ahol a legfontosabb hívási élmény él.
 
-:::image type="content" source="./media/calling/main-app.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel&quot;:::
+:::image type="content" source="./media/calling/main-app.png" alt-text="A minta alkalmazás fő képernyőjét ábrázoló képernyőfelvétel.":::
 
-Ha a &quot;hívás indítása" használatával lehet elhagyni. A résztvevők oldali sáv megjeleníti a résztvevők listáját, valamint egy hivatkozást, amely további felhasználókat hívhat meg a csevegéshez. A beállítások oldal sáv lehetővé teszi a mikrofon és a kamera beállításainak konfigurálását.
+A fő hívó képernyő összetevői:
+
+1. **Media Gallery**: az a fő szakasz, ahol a résztvevők megjelennek. Ha a résztvevő kamerája engedélyezve van, a videó hírcsatornája itt jelenik meg. Minden résztvevő rendelkezik egy egyéni csempével, amely megjeleníti a megjelenítendő nevüket és a video streamet (ha van ilyen)
+2. **Fejléc**: ez az a hely, ahol az elsődleges hívási vezérlők a beállítások és a résztvevő oldali sáv váltására, a videó bekapcsolására és a kikapcsolására, a megosztási képernyőre és a hívás elhagyása.
+3. **Oldalsó sáv**: ebben az esetben a rendszer megjeleníti a résztvevők és a beállítások adatait, ha a fejlécben lévő vezérlők használatával váltanak ki. Az összetevőt a jobb felső sarokban található "X" használatával lehet elhagyni. A résztvevők oldali sáv megjeleníti a résztvevők listáját, valamint egy hivatkozást, amely további felhasználókat hívhat meg a csevegéshez. A beállítások oldal sáv lehetővé teszi a mikrofon és a kamera beállításainak konfigurálását.
 
 Az alábbiakban további információkat talál a minta beállításához szükséges előfeltételekről és lépésekről.
 
@@ -103,7 +105,7 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
-További információkat az következő cikkekben talál:
+További információért tekintse át a következő cikkeket:
 
 - Ismerkedjen meg [a hívó ügyféloldali kódtár használatával](../quickstarts/voice-video-calling/calling-client-samples.md)
 - További információ a [hívás működéséről](../concepts/voice-video-calling/about-call-types.md)
@@ -114,4 +116,4 @@ További információkat az következő cikkekben talál:
 - [Redux](https://redux.js.org/) – ügyféloldali állapot kezelése
 - [FluentUI](https://aka.ms/fluent-ui) – Microsoft powered UI Library
 - [Reagálás](https://reactjs.org/) – függvénytár a felhasználói felületek létrehozásához
-- [ASP.net Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) -keretrendszer webalkalmazások létrehozásához
+- [ASP.net Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) -keretrendszer webalkalmazások létrehozásához

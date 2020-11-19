@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: aad4cdfe38ee9dd7530cb8ebe21cded18cb0a1ec
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: d8afa769c90c5cf9450343cda1a65809062468fb
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128662"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888691"
 ---
 # <a name="communication-services-logs"></a>Kommunikációs szolgáltatások naplói
 
@@ -22,7 +22,7 @@ Az Azure kommunikációs szolgáltatás olyan naplózási funkciókat kínál, a
 
 ## <a name="enable-diagnostic-logs-in-your-resource"></a>Diagnosztikai naplók engedélyezése az erőforrásban
 
-A naplózás alapértelmezés szerint ki van kapcsolva egy erőforrás létrehozásakor. A naplózás engedélyezéséhez navigáljon a **diagnosztikai beállítások** panelre a **figyelés** szakasz erőforrás menüjében. Ezután kattintson a **diagnosztikai beállítások hozzáadása**lehetőségre.
+A naplózás alapértelmezés szerint ki van kapcsolva egy erőforrás létrehozásakor. A naplózás engedélyezéséhez navigáljon a **diagnosztikai beállítások** panelre a **figyelés** szakasz erőforrás menüjében. Ezután kattintson a **diagnosztikai beállítások hozzáadása** lehetőségre.
 
 Ezután válassza ki a kívánt archiválási célt. Jelenleg a Storage-fiókokat és a Log Analytics is támogatja archiválási célként. Miután kiválasztotta a rögzíteni kívánt naplók típusát, mentse a diagnosztikai beállításokat.
  
@@ -30,7 +30,7 @@ Az új beállítások körülbelül tíz percet vesznek érvénybe. A naplók a 
 
 :::image type="content" source="./media/diagnostic-settings.png" alt-text="Az ACS diagnosztikai beállításainak beállításai.":::
 
-A diagnosztika konfigurálásával kapcsolatos további információkért tekintse meg az [Azure-erőforrások naplóinak](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview)áttekintése című témakört.
+A diagnosztika konfigurálásával kapcsolatos további információkért tekintse meg az [Azure-erőforrások naplóinak](../../azure-monitor/platform/platform-logs-overview.md)áttekintése című témakört.
 
 ## <a name="resource-log-categories"></a>Erőforrás-naplók kategóriái
 

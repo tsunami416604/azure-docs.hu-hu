@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ae69f49d37a210dd9fa1bfeedeca6c1b461e20
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85368107"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888861"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Gyors útmutató: egyéni szolgáltató létrehozása és egyéni erőforrások üzembe helyezése
 
@@ -23,8 +23,11 @@ Ebben a rövid útmutatóban létrehoz egy saját erőforrás-szolgáltatót, é
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-- Az [Egyéni szolgáltatók](/cli/azure/ext/custom-providers/custom-providers/resource-provider) parancsaihoz bővítmény szükséges. További információ: [bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
-- Az Azure CLI-példák `az rest` a `REST` kérelmekhez használhatók. További információ: [az Rest](/cli/azure/reference-index#az-rest).
+Készítse elő a környezetet az Azure CLI-hez.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Az Azure CLI-példák `az rest` a `REST` kérelmekhez használhatók. További információ: [az Rest](/cli/azure/reference-index#az-rest).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -33,8 +36,6 @@ Ebben a rövid útmutatóban létrehoz egy saját erőforrás-szolgáltatót, é
 - A **ARMClient** telepítése után a következő beírásával jelenítheti meg a használati adatokat egy PowerShell-parancssorból: `armclient.exe` . Vagy nyissa meg a [ARMClient wikit](https://github.com/projectkudu/ARMClient/wiki).
 
 ---
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-custom-provider"></a>Egyéni szolgáltató üzembe helyezése
 
@@ -86,7 +87,7 @@ A megoldás a Azure Portal is üzembe helyezhető. Válassza az **üzembe helyez
 
 ## <a name="view-custom-provider-and-resource"></a>Egyéni szolgáltató és erőforrás megtekintése
 
-A portálon az egyéni szolgáltató egy rejtett erőforrástípus. Az erőforrás-szolgáltató üzembe helyezésének megerősítéséhez navigáljon az erőforráscsoporthoz. Válassza a **rejtett típusok megjelenítésének**lehetőségét.
+A portálon az egyéni szolgáltató egy rejtett erőforrástípus. Az erőforrás-szolgáltató üzembe helyezésének megerősítéséhez navigáljon az erőforráscsoporthoz. Válassza a **rejtett típusok megjelenítésének** lehetőségét.
 
 ![Rejtett erőforrástípusok megjelenítése](./media/create-custom-provider/show-hidden.png)
 
@@ -361,7 +362,7 @@ A `delete` parancs felszólítja, és csak az egyéni erőforrás-szolgáltatót
 az custom-providers resource-provider delete --resource-group $rgName --name $funcName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyéni szolgáltatók bevezetését a következő cikk ismerteti:
 

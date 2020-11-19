@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: dd042b28035b5e9a4b18041d6c1a81f77cfd4ea7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 092b95845ed033ac0705e325fc6535739088848f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86527404"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888793"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Az Azure-beli virtuálisgép-méretezési csoportokkal végzett automatikus skálázás áttekintése
 Az Azure virtuálisgép-méretezési csoport automatikusan növelheti vagy csökkentheti az alkalmazást futtató virtuálisgép-példányok számát. Ez az automatizált és rugalmas viselkedés csökkenti a felügyeleti terhelést az alkalmazás teljesítményének monitorozásához és optimalizálásához. Olyan szabályokat hozhat létre, amelyek meghatározzák a pozitív felhasználói élmény elfogadható teljesítményét. Ha ezek a meghatározott küszöbértékek teljesülnek, az automatikusan méretezhető szabályok végrehajtják a méretezési csoport kapacitásának módosítását. Az eseményeket úgy is ütemezhet, hogy rögzített időpontokban automatikusan növelje vagy csökkentse a méretezési csoport kapacitását. Ez a cikk áttekintést nyújt arról, hogy mely teljesítménymutatók érhetők el, és hogy milyen műveletek hajthatók végre.
@@ -22,6 +22,9 @@ Az Azure virtuálisgép-méretezési csoport automatikusan növelheti vagy csök
 
 ## <a name="benefits-of-autoscale"></a>Az autoscale előnyei
 Az alkalmazás növekvő igényeivel párhuzamosan a méretezési csoportban lévő virtuálisgép-példányok terhelése is nő. Ha a megnövekedett terhelés állandó, nem csak pillanatnyi igény, akkor megadhatja, hogy az automatikus skálázási szabály növelje meg a virtuálisgép-példányok számát a méretezési csoportban.
+
+> [!NOTE]
+> A méretezési csoport automatikus példány-javításának használatakor a méretezési csoport példányainak maximális száma 200 lehet. További információ az [automatikus példányok javításáról](./virtual-machine-scale-sets-automatic-instance-repairs.md).
 
 Ezen virtuálisgép-példányok létrehozását és az alkalmazások telepítését követően a méretezési csoport megkezdi a forgalom elosztását közöttük a terheléselosztón keresztül. A figyelni kívánt mérőszámokat, például a PROCESSZORt vagy a memóriát, az alkalmazás terhelésének meg kell felelnie egy adott küszöbértéknek, valamint a méretezési csoportba felvenni kívánt virtuálisgép-példányok számának szabályozása.
 
@@ -85,7 +88,7 @@ Az autoskálázási szabályok akkor aktiválódnak, ha a metrikák összevetés
 |--------------------------|
 | Nagyobb, mint             |
 | Nagyobb vagy egyenlő |
-| Kisebb, mint                |
+| Kisebb                |
 | Kisebb vagy egyenlő    |
 | Egyenlő                 |
 | Nem egyenlő             |
@@ -128,14 +131,14 @@ Az alábbi példák olyan forgatókönyveket mutatnak be, amelyek hasznosak lehe
 - Ha marketing-, előléptetési vagy üdülési értékesítésre van szükség, automatikusan méretezheti a virtuálisgép-példányok számát a várt ügyfél-igény előtt. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi eszközök egyikével hozhat létre olyan autoskálázási szabályokat, amelyek gazdagép-alapú metrikákat használnak:
 
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure-sablon](tutorial-autoscale-template.md)
 
-Ez az Áttekintés részletesen ismerteti, hogyan használhatók az autoskálázási szabályok horizontális skálázásra, illetve a méretezési csoport virtuálisgép-példányai *számának* növelésére és csökkentésére. A virtuálisgép-példány *méretének*növeléséhez vagy csökkentéséhez függőlegesen is méretezheti a méretezést. További információkért lásd: [vertikális autoskálázás virtuális gépi méretezési csoportokkal](virtual-machine-scale-sets-vertical-scale-reprovision.md).
+Ez az Áttekintés részletesen ismerteti, hogyan használhatók az autoskálázási szabályok horizontális skálázásra, illetve a méretezési csoport virtuálisgép-példányai *számának* növelésére és csökkentésére. A virtuálisgép-példány *méretének* növeléséhez vagy csökkentéséhez függőlegesen is méretezheti a méretezést. További információkért lásd: [vertikális autoskálázás virtuális gépi méretezési csoportokkal](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
 A virtuálisgép-példányok kezelésével kapcsolatos információkért lásd: [virtuálisgép-méretezési csoportok kezelése Azure PowerShellokkal](./virtual-machine-scale-sets-manage-powershell.md).
 

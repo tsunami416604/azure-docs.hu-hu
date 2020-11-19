@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 3be1d404d0cac7f9e5c9b1c2f7350cf05c5fe794
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0bbb18a82de508f79cd2fd5dde58c1cf33520950
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358116"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887399"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
@@ -31,7 +31,7 @@ Ehhez a következőket kell tennie:
 
 Az alacsony kódú felhasználói élményért tekintse meg a következő [oktatóanyagot:](tutorial-automated-ml-forecast.md) az automatikus gépi tanulással kapcsolatos előrejelzési igények az automatikus gépi tanulással a [Azure Machine learning Studióban](https://ml.azure.com/).
 
-A klasszikus idősorozat-módszerekkel ellentétben az automatikus ML-ben a múltbeli idősorozat-értékek "Pivotal", hogy további dimenziókat regressor a többi előrejelzővel együtt. Ez a megközelítés több kontextusbeli változót is magában foglal, és a képzés során egymáshoz fűződő kapcsolatukat. Mivel több tényező is befolyásolhatja az előrejelzést, ez a módszer jól illeszkedik a valós előrejelzési forgatókönyvekhez. Például az értékesítések előrejelzése, a múltbeli trendek, az árfolyam és az ár interakciója együttesen hajtja végre az értékesítés eredményét. 
+A klasszikus idősorozat-módszerekkel ellentétben az automatikus ML-ben a múltbeli idősorozat-értékek "Pivotal", hogy további dimenziókat regressor a többi előrejelzővel együtt. Ez a megközelítés több kontextusbeli változót is magában foglal, és a képzés során egymáshoz fűződő kapcsolatukat. Mivel több tényező is befolyásolhatja az előrejelzést, ez a módszer jól illeszkedik a valós előrejelzési forgatókönyvekhez. Például az értékesítések előrejelzése, a korábbi trendek, az árfolyamok és az ár közötti interakciók, amelyek mindegyike közösen irányítja az értékesítés eredményét. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,7 +46,7 @@ Ehhez a cikkhez szükséges,
 Az előrejelzési regressziós feladattípus és a regressziós feladattípus közötti legfontosabb különbség a AutoML belül, beleértve az adatok egy érvényes idősorozatot jelölő funkcióját is. A rendszeres idősorozatok jól definiált és konzisztens gyakorisággal rendelkeznek, és minden mintavételi ponton egy értékkel rendelkeznek, amely folyamatos időtartományban van. 
 
 Vegye figyelembe a fájl következő pillanatképét `sample.csv` .
-Ez az adathalmaz egy olyan vállalat napi értékesítési adatkészlete, amely két különböző üzlettel (A és B) rendelkezik. 
+Ez az adathalmaz egy olyan vállalat napi értékesítési adatkészlete, amely két különböző üzlettel, A és B-vel rendelkezik. 
 
 Emellett vannak funkciók a következőhöz:
 
@@ -131,14 +131,14 @@ Az automatizált gépi tanulás automatikusan különböző modelleket és algor
 Modellek| Leírás | Előnyök
 ----|----|---
 Próféta (előzetes verzió)|A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A modell kihasználása érdekében telepítse helyileg a használatával `pip install fbprophet` . | Pontos & gyors, robusztus a kiugró értékek, a hiányzó adatmennyiségek és az idősorozat drámai változásai.
-Automatikus ARIMA (előzetes verzió)|Az automatikusan újradegresszív, integrált mozgóátlag (ARIMA) a legjobbat hajtja végre, ha az adatok állomáson vannak. Ez azt jelenti, hogy a statisztikai tulajdonságok, például a középérték és a variancia állandó a teljes készleten. Ha például egy érme tükrözését hajtja végre, akkor a fejek beszerzésének valószínűsége 50%, függetlenül attól, hogy a mai, a holnapi vagy a jövő évi tükrözést szeretné-e megtekinteni.| Kiválóan használható a univariate sorozatokhoz, mivel a korábbi értékeket a jövőbeli értékek előrejelzésére használjuk.
+Automatikus ARIMA (előzetes verzió)|Az automatikusan újradegresszív, integrált mozgóátlag (ARIMA) a legjobbat hajtja végre, ha az adatok állomáson vannak. Ez azt jelenti, hogy a statisztikai tulajdonságok, például a középérték és a variancia állandó a teljes készleten. Ha például egy érme tükrözését hajtja végre, akkor a fejek megszerzésének valószínűsége 50% lesz, függetlenül attól, hogy a mai, a holnapi vagy a következő évre fordít-e.| Kiválóan használható a univariate sorozatokhoz, mivel a korábbi értékeket a jövőbeli értékek előrejelzésére használjuk.
 ForecastTCN (előzetes verzió)| A ForecastTCN egy olyan neurális hálózati modell, amely a legigényesebb előrejelzési feladatok kezelésére, a nem lineáris helyi és globális trendek rögzítésére szolgál az adatokban, valamint az idősorozatok közötti kapcsolatokat.|Képes az adathalmazok összetett trendjeinek kihasználása és a nagy adatkészletek rugalmas méretezésére.
 
 ### <a name="configuration-settings"></a>Konfigurációs beállítások
 
 A regressziós problémákhoz hasonlóan szabványos betanítási paramétereket is definiálhat, például a feladattípust, az ismétlések számát, a betanítási adatok számát és az eltérő érvényességi értéket. Az előrejelzési feladatokhoz további paramétereket kell megadni, amelyek hatással vannak a kísérletre. 
 
-A következő táblázat összefoglalja ezeket a további paramétereket. Tekintse meg a szintaxis kialakítási mintáit ismertető [dokumentációt](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) .
+A következő táblázat összefoglalja ezeket a további paramétereket. A szintaxis kialakítási mintáit a [ForecastingParameter osztály dokumentációjában](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) találja.
 
 | Paraméter &nbsp; neve | Leírás | Kötelező |
 |-------|-------|-------|
@@ -149,11 +149,11 @@ A következő táblázat összefoglalja ezeket a további paramétereket. Tekint
 |`target_lags`|A megcélzott értékeket az adatok gyakorisága alapján késleltető sorok száma. A lag listaként vagy egyetlen egész számként jelenik meg. A késést akkor kell használni, ha a független változók és a függő változó közötti kapcsolat alapértelmezés szerint nem felel meg egymásnak. ||
 |`feature_lags`| A rendszer automatikusan eldönti a lag funkcióit, ha `target_lags` be van állítva, és `feature_lags` be van állítva `auto` . A szolgáltatás lekésésének engedélyezése segíthet a pontosság növelésében. A funkció alapértelmezés szerint le van tiltva. ||
 |`target_rolling_window_size`|*n* korábbi időszakok, amelyeket az előre jelzett értékek előállítására használhat, <= betanítási készlet mérete. Ha nincs megadva, az *n* a teljes betanítási készlet mérete. Akkor válassza ezt a paramétert, ha csak bizonyos mennyiségű előzményt szeretne figyelembe venni a modell betanításakor. További információ a [cél gördülő ablak összesítéséről](#target-rolling-window-aggregation).||
-|`short_series_handling`| Lehetővé teszi a rövid idősorozatok kezelését, hogy elkerülje a nem megfelelő adatmennyiséget a betanítás során. A rövid adatsorozat-kezelő alapértelmezés szerint True (igaz) értékre van állítva.|
+|`short_series_handling_config`| Lehetővé teszi a rövid idősorozatok kezelését, hogy elkerülje a nem megfelelő adatmennyiséget a betanítás során. A rövid adatsorozatok kezelője alapértelmezés szerint be van állítva `auto` . További információ a [rövid adatsorozatok kezelésére](#short-series-handling).|
 
 
 A következő kód, 
-* Kihasználja az `ForecastingParameters` osztályt, hogy meghatározza az előrejelzési paramétereket a kísérlet betanításához
+* Kihasználja az [`ForecastingParameters`](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) osztályt, hogy meghatározza az előrejelzési paramétereket a kísérlet betanításához
 * Beállítja a `time_column_name` értékét az `day_datetime` adatkészlet mezőjére. 
 * A paramétert adja meg a következőhöz: `time_series_id_column_names` `"store"` . Ez biztosítja, hogy az **adatsorozatok két különálló csoportja** legyen létrehozva. egyet az A és A B áruházhoz.
 * A 50 értékre állítja a `forecast_horizon` teljes tesztelési készlet előrejelzését. 
@@ -164,13 +164,12 @@ A következő kód,
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
-forecasting_parameters = ForecastingParameters(
-    time_column_name='day_datetime', 
-    forecast_horizon=50,
-    time_series_id_column_names=["store"],
-    target_lags='auto',
-    target_rolling_window_size=10
-)
+forecasting_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                               forecast_horizon=50,
+                                               time_series_id_column_names=["store"],
+                                               target_lags='auto',
+                                               target_rolling_window_size=10)
+                                              
 ```
 
 Ezeket a `forecasting_parameters` rendszer a szabványos `AutoMLConfig` objektumba továbbítja a `forecasting` feladat típusa, az elsődleges metrika, a kilépési feltételek és a betanítási adatok mellett. 
@@ -190,7 +189,7 @@ automl_config = AutoMLConfig(task='forecasting',
                              n_cross_validations=5,
                              enable_ensembling=False,
                              verbosity=logging.INFO,
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 
 ### <a name="featurization-steps"></a>Featurization lépések
@@ -226,12 +225,16 @@ Az SDK-val való featurizations testreszabásához adja meg az `"featurization":
 
 ```python
 featurization_config = FeaturizationConfig()
+
 # `logQuantity` is a leaky feature, so we remove it.
 featurization_config.drop_columns = ['logQuantitity']
+
 # Force the CPWVOL5 feature to be of numeric type.
 featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+
 # Fill missing values in the target column, Quantity, with zeroes.
 featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+
 # Fill mising values in the `INCOME` column with median value.
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
@@ -260,7 +263,7 @@ A Deep learning engedélyezéséhez állítsa be az `enable_dnn=True` `AutoMLCon
 automl_config = AutoMLConfig(task='forecasting',
                              enable_dnn=True,
                              ...
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 > [!Warning]
 > Ha az SDK-val létrehozott kísérletek DNN engedélyezi, a [legjobb modell magyarázata](how-to-machine-learning-interpretability-automl.md) le van tiltva.
@@ -279,6 +282,35 @@ A táblázat megjeleníti a funkciók mérnöki felépítésének eredményét, 
 ![cél gördülő ablak](./media/how-to-auto-train-forecast/target-roll.svg)
 
 Tekintse meg a [cél gördülő ablak összesítési funkcióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)kihasználó Python-kód példáját.
+
+### <a name="short-series-handling"></a>Rövid adatsorozat-kezelő
+
+Az automatizált ML egy **rövid** adatsorozatot vesz figyelembe, ha nincs elegendő adatpont a modell fejlesztésének betanítási és ellenőrzési fázisának végrehajtásához. Az adatpontok száma minden kísérlet esetében változik, és a max_horizontól, a több ellenőrzési osztástól, valamint a modell lookback hosszától függ, azaz az idősorozat-funkciók létrehozásához szükséges előzmények maximális száma. A pontos számításhoz tekintse meg a [short_series_handling_config dokumentációját](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
+
+Az automatikus ML az `short_series_handling_config` objektumban található paraméterrel alapértelmezés szerint rövid adatsorozat-kezelést nyújt `ForecastingParameters` . 
+
+A rövid adatsorozatok kezelésére a `freq` paramétert is meg kell adni. Az alapértelmezett viselkedés módosításához `short_series_handling_config = auto` frissítse a `short_series_handling_config` paramétert az `ForecastingParameter` objektumban.  
+
+```python
+from azureml.automl.core.forecasting_parameters import ForecastingParameters
+
+forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                            forecast_horizon=50,
+                                            short_series_handling_config='auto',
+                                            freq = 50
+                                            target_lags='auto')
+```
+Az alábbi táblázat a rendelkezésre álló beállításait foglalja össze `short_series_handling_config` .
+ 
+|Beállítás|Leírás
+|---|---
+|`auto`| A rövid adatsorozatok kezelésére vonatkozó alapértelmezett viselkedés a következő: <li> *Ha az összes adatsorozat rövid*, a pad az adategységeket. <br> <li> *Ha nem minden adatsor rövid*, dobja el a rövid sorozatot. 
+|`pad`| Ha `short_series_handling_config = pad` a, akkor az automatikus ml a megtalált egyes rövid adatsorokhoz hozzáadja a próbabábu értékeit. Az alábbi táblázat felsorolja az oszlop típusait, valamint azt, hogy mire vannak feltöltve: <li>NaNs rendelkező objektumok oszlopai <li> Numerikus oszlopok 0 <li> Logikai/logikai oszlopok hamis értékkel <li> A célként megadott oszlop véletlenszerű értékekkel van feltöltve, és az értéke nulla, a szórás pedig 1. 
+|`drop`| Ha `short_series_handling_config = drop` a, akkor az automatikus ml elveszi a rövid sorozatot, és nem lesz használatban képzésre vagy előrejelzésre. A sorozathoz tartozó előrejelzések a NaN által visszaadott értéket adják vissza.
+|`None`| Egy adatsorozat nem párnázott vagy nem lett elvetve
+
+>[!WARNING]
+>A kitöltés hatással lehet az eredményül kapott modell pontosságára, mivel a mesterséges adatok bevezetését csak a múltbeli képzések lekérése okozta hibák nélkül. <br> <br> Ha az adatsorozatok közül sok rövid, akkor előfordulhat, hogy bizonyos hatással van a magyarázó eredményekre
 
 ## <a name="run-the-experiment"></a>Kísérlet futtatása 
 

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 2ce6959cf025d2e29f0ee3dfb3b29b3eaf5d4221
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 61313a1790fe51cb26168622cc871076c40bb511
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490832"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887433"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Tervezett karbantartási értesítés Azure Database for MariaDB
 
@@ -21,7 +21,7 @@ Megtudhatja, hogyan készítheti elő a tervezett karbantartási eseményeket a 
 
 A Azure Database for MariaDB szolgáltatás a mögöttes hardver, operációs rendszer és adatbázismotor automatizált javítását végzi. A javítás új szolgáltatás-funkciókat, biztonságot és szoftverfrissítéseket tartalmaz. A MariaDB motor esetében az alverziók frissítése automatikusan megtörténik, és a javítási ciklus részét képezi. Nincs szükség felhasználói műveletre vagy konfigurációs beállításra a javításhoz. A javítást széles körben tesztelik, és a biztonságos üzembe helyezési eljárások használatával végezhető el.
 
-A tervezett karbantartás karbantartási időszak, ha ezek a szolgáltatások egy adott Azure-régióban lévő kiszolgálókra vannak telepítve. A tervezett karbantartás során létrejön egy értesítési esemény, amely tájékoztatja a felhasználókat, ha a szolgáltatás frissítését a kiszolgálókat üzemeltető Azure-régióban helyezik üzembe. A két tervezett karbantartás közötti minimális időtartam 30 nap. Értesítést kap a következő karbantartási időszak 72 órával előre.
+A tervezett karbantartás karbantartási időszak, ha ezek a szolgáltatások egy adott Azure-régióban lévő kiszolgálókra vannak telepítve. A tervezett karbantartás során a rendszer létrehoz egy értesítési eseményt, amely tájékoztatja az ügyfeleket, hogy mikor megy végbe a szolgáltatásfrissítés üzembe helyezése abban az Azure-régióban, amelyben a kiszolgálóik találhatók. A két tervezett karbantartás közötti minimális időtartam 30 nap. A következő karbantartási időszakról 72 órával korábban értesítést kap.
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>Tervezett karbantartás – időtartam és az ügyfelek hatása
 
@@ -46,14 +46,14 @@ Megtekintheti a tervezett karbantartási értesítést Azure Portal vagy konfigu
 
 ### <a name="check-planned-maintenance-notification-from-azure-portal"></a>Az Azure Portal tervezett karbantartási értesítésének keresése
 
-1. A [Azure Portal](https://portal.azure.com)válassza a **Service Health**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)válassza a **Service Health** lehetőséget.
 2. **Tervezett karbantartás** lap kiválasztása
 3. Válassza ki az **előfizetést**, * * régiót és **szolgáltatást** , amelyre vonatkozóan meg szeretné adni a tervezett karbantartási értesítést. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Tervezett karbantartási értesítés fogadása
 
-1. A [portálon](https://portal.azure.com)válassza a **Service Health**lehetőséget.
-2. A **riasztások** szakaszban válassza az **állapot riasztások**lehetőséget.
+1. A [portálon](https://portal.azure.com)válassza a **Service Health** lehetőséget.
+2. A **riasztások** szakaszban válassza az **állapot riasztások** lehetőséget.
 3. Válassza a **+ szolgáltatás állapotára vonatkozó riasztás hozzáadása** lehetőséget, és töltse ki a mezőket.
 4. Töltse ki a kötelező mezőket. 
 5. Válassza ki az **esemény típusát**, válassza a **tervezett karbantartás** lehetőséget, vagy **válassza az összes lehetőséget** .
@@ -61,7 +61,7 @@ Megtekintheti a tervezett karbantartási értesítést Azure Portal vagy konfigu
 7. Győződjön meg arról, hogy az engedélyezés szabály a létrehozáskor Igen értékre van állítva.
 8. Válassza a riasztási **szabály létrehozása** lehetőséget a riasztás befejezéséhez
 
-A **szolgáltatás állapotára vonatkozó riasztások**létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications.md).
+A **szolgáltatás állapotára vonatkozó riasztások** létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications.md).
 
 ## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Törölhetem vagy elhalasztom a tervezett karbantartást?
 
@@ -78,7 +78,7 @@ Egy átmeneti hiba (más néven átmeneti hiba) egy olyan hiba, amely magát a m
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha bármilyen kérdése vagy javaslata van a Azure Database for MariaDB használatáról, küldjön e-mailt a Azure Database for MariaDB csapatának a következő címen: *AskAzureDBforMySQL@service.microsoft.com* .
+- Ha bármilyen kérdése vagy javaslata van a Azure Database for MariaDB használatáról, küldjön e-mailt a Azure Database for MariaDB csapatának **AskAzureDBforMariaDB@service.microsoft.com**
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-metric.md) című témakörben tekintheti meg.
 - [Az Azure Database for MariaDB-hez való csatlakozás hibáinak elhárítása](howto-troubleshoot-common-connection-issues.md)
 - [Átmeneti hibák kezelése és hatékony kapcsolódás Azure Database for MariaDB](concepts-connectivity.md)

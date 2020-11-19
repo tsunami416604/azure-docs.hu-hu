@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: aaf803d463e03f2de7814fed4b20a0b4312fa1ef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f1acc44a80d5ef70145997698a928e6f9ce0d48
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148831"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888878"
 ---
 # <a name="what-is-azure-iot-hub"></a>Mi az Azure IoT Hub?
 
@@ -119,6 +119,12 @@ Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, a
 * [Azure-előfizetési szolgáltatás korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [Az IoT Hub szabályozása és Ön](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
+
+## <a name="iot-hub-on-azure-stack-hub-preview"></a>IoT Hub az Azure Stack hub-on (előzetes verzió)
+
+A IoT Hub on Azure Stack hub (előzetes verzió) lehetővé teszi hibrid IoT-megoldások létrehozását. A IoT Hub felügyelt szolgáltatás, amely központi üzenetsorként működik a IoT-alkalmazás és az általa kezelt eszközök közötti kétirányú kommunikációhoz. A IoT Hub on Azure Stack hub segítségével IoT-megoldásokat hozhat létre a IoT-eszközök és a helyszíni megoldások közötti megbízható és biztonságos kommunikációval.
+
+A nyilvános előzetes verzióban a IoT Hub on Azure Stack hub ingyenes. További információ: [IoT Hub Azure stack hub – áttekintés](/azure-stack/operator/iot-hub-rp-overview).
 
 ## <a name="next-steps"></a>Következő lépések
 

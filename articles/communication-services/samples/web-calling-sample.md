@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e6fc3441fac5fe037e9a268d26012761d1fece70
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8faa6533ba4dc7fad61c045278c5504c5f78d900
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92463255"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888963"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Ismerkedés a webes hívási mintával
 
@@ -37,7 +37,7 @@ Ha a [web Calling minta](https://github.com/Azure-Samples/communication-services
 
 :::image type="content" source="./media/web-calling-tutorial-page-1.png" alt-text="Webes hívási oktatóanyag 1" lightbox="./media/web-calling-tutorial-page-1.png":::
 
-:::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Webes hívási oktatóanyag 1" lightbox="./media/web-calling-tutorial-page-2.png":::
+:::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Webes hívási oktatóanyag 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
 
 ## <a name="user-provisioning-and-sdk-initialization"></a>A felhasználók üzembe helyezése és az SDK inicializálása 
@@ -52,29 +52,29 @@ Kattintson a "kód megjelenítése" gombra a saját megoldásában használható
 
 Az SDK inicializálása után a következőket kell látnia:
 
-:::image type="content" source="./media/user-provisioning.png" alt-text="Webes hívási oktatóanyag 1" lightbox="./media/user-provisioning.png":::
+:::image type="content" source="./media/user-provisioning.png" alt-text="Felhasználók regisztrálása" lightbox="./media/user-provisioning.png":::
 
 Most már készen áll arra, hogy megkezdje a hívások küldését a kommunikációs szolgáltatások erőforrásaival!
 
 ## <a name="placing-and-receiving-calls"></a>Hívások elhelyezése és fogadása
 
-A kommunikációs szolgáltatások web Calling SDK lehetővé teszi a **1:1**, **1: N**és a **csoportos** hívás használatát.
+A kommunikációs szolgáltatások web Calling SDK lehetővé teszi a **1:1**, **1: N** és a **csoportos** hívás használatát.
 
 1:1 vagy 1: N kimenő hívások esetén több kommunikációs szolgáltatás felhasználói identitást is megadhat a vesszővel tagolt értékek használatával történő híváshoz. Megadhat hagyományos (PSTN-) telefonszámokat is, amelyeket vesszővel tagolt értékek használatával hívhat meg. 
 
 A PSTN-telefonszámok hívásakor adja meg az alternatív hívó AZONOSÍTÓját. A kimenő hívások elhelyezéséhez kattintson a hívás elhelyezése gombra:
 
-:::image type="content" source="./media/place-a-call.png" alt-text="Webes hívási oktatóanyag 1" lightbox="./media/place-a-call.png":::
+:::image type="content" source="./media/place-a-call.png" alt-text="Hívás elhelyezése" lightbox="./media/place-a-call.png":::
 
 Egy csoportos híváshoz való csatlakozáshoz adja meg a hívást azonosító GUID azonosítót, és kattintson a "csatlakozás csoport" gombra:
 
-:::image type="content" source="./media/join-a-group-call.png" alt-text="Webes hívási oktatóanyag 1" lightbox="./media/join-a-group-call.png":::
+:::image type="content" source="./media/join-a-group-call.png" alt-text="Csatlakozás csoportos híváshoz" lightbox="./media/join-a-group-call.png":::
 
 A "kód megjelenítése" gombra kattintva megtekintheti a hívások elhelyezésére, fogadására és a csoportos hívások csatlakoztatására szolgáló mintakód.
 
 Egy aktív hívás a következőképpen néz ki:
 
-:::image type="content" source="./media/group-call.png" alt-text="Webes hívási oktatóanyag 1" lightbox="./media/group-call.png":::
+:::image type="content" source="./media/group-call.png" alt-text="Csoportos hívás" lightbox="./media/group-call.png":::
 
 Ez a minta kódrészleteket is biztosít a következő képességekhez:
 
@@ -86,7 +86,7 @@ Ez a minta kódrészleteket is biztosít a következő képességekhez:
   - Ha egy adott résztvevőt szeretne eltávolítani a hívásból, kattintson a résztvevő eltávolítása elemre a résztvevő névsorában
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
@@ -95,7 +95,7 @@ További információért tekintse át a következő cikkeket:
 
 - Ismerkedjen meg [a hívó ügyféloldali kódtár használatával](../quickstarts/voice-video-calling/calling-client-samples.md)
 - További információ a [hívás működéséről](../concepts/voice-video-calling/about-call-types.md)
-- Az [API-referenciák dokumentációjának](https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js) áttekintése
+- Az [API-referenciák dokumentációjának](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js) áttekintése
 
 ## <a name="additional-reading"></a>További információ
 
@@ -103,4 +103,4 @@ További információért tekintse át a következő cikkeket:
 - [Redux](https://redux.js.org/) – ügyféloldali állapot kezelése
 - [FluentUI](https://aka.ms/fluent-ui) – Microsoft powered UI Library
 - [Reagálás](https://reactjs.org/) – függvénytár a felhasználói felületek létrehozásához
-- [ASP.net Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) -keretrendszer webalkalmazások létrehozásához
+- [ASP.net Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) -keretrendszer webalkalmazások létrehozásához

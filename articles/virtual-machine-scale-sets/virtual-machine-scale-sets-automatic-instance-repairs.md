@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 383895f2cb5983abd68bfca67d2c8361ee094ea1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ae508754775d4eb622d8e91ef58eb0d6e1c45692
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744844"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889014"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Példányok automatikus javítása az Azure-beli virtuális gépek méretezési csoportjaiban
 
@@ -36,9 +36,9 @@ A példányok automatikus javításának engedélyezése előtt gondoskodjon arr
 
 A "nem megfelelő" állapotú példányok esetén a méretezési csoport automatikusan kijavítja az automatikus javításokat. Győződjön meg arról, hogy az alkalmazás végpontja megfelelően van konfigurálva az automatikus javítási házirend engedélyezése előtt, hogy elkerülje a nem kívánt példányok javítását, a végpontot pedig konfigurálja.
 
-**Önálló elhelyezési csoport engedélyezése**
+**A méretezési csoport példányainak maximális száma**
 
-Ez a funkció jelenleg csak egyetlen elhelyezési csoportként telepített méretezési csoportok esetében érhető el. A *singlePlacementGroup* tulajdonságot *igaz* értékre kell állítani a méretezési csoport automatikus példány-javítási funkciójának használatához. További információ az [elhelyezési csoportokról](./virtual-machine-scale-sets-placement-groups.md#placement-groups).
+Ez a funkció jelenleg csak a legfeljebb 200 példányú méretezési csoportokhoz érhető el. A méretezési csoport egyetlen elhelyezési csoportként vagy több elhelyezési csoportként is telepíthető, azonban a példányszám nem lehet 200-nál nagyobb, ha a méretezési csoport automatikus példányának javítása engedélyezve van.
 
 **API-verzió**
 
@@ -68,7 +68,7 @@ Ha egy példány állapot-módosítási művelettel halad át a méretezési cso
 
 A virtuálisgép-méretezési csoportok lehetővé teszik, hogy szükség esetén ideiglenesen felfüggessze az automatikus példányok javításait. A virtuálisgép-méretezési csoport *orchestrationServices* tulajdonsága alatt az automatikus javítások *serviceState* az automatikus javítás aktuális állapotát jeleníti meg. Ha egy méretezési csoport automatikus javításokra van beállítva, a *serviceState* paraméter értéke *fut* értékre van állítva. Ha az automatikus javítás fel van függesztve egy méretezési csoportra, a *serviceState* paraméter *felfüggesztve* értékre van állítva. Ha a *automaticRepairsPolicy* definiálva van egy méretezési csoport, de az automatikus javítás funkció nincs engedélyezve, akkor a *ServiceState* paraméter *nem fut* értékre van állítva.
 
-Ha egy méretezési csoport nem kifogástalan állapotának cseréjéhez újonnan létrehozott példányok továbbra is kifogástalan állapotban maradnak, még a javítási műveletek ismételt végrehajtása után is, akkor a platform biztonsági intézkedése frissíti a *serviceState* az automatikus javítások *felfüggesztéséhez* . Újra folytathatja az automatikus javításokat úgy, hogy a *serviceState* értékének megadásával *futtatja* az automatikus javításokat. Részletes utasítások a méretezési csoport [automatikus javítási szabályzatának megtekintési és frissítési állapotának megtekintése és frissítése](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) című szakaszban olvashatók. 
+Ha egy méretezési csoport nem kifogástalan állapotának cseréjéhez újonnan létrehozott példányok továbbra is kifogástalan állapotban maradnak, még a javítási műveletek ismételt végrehajtása után is, akkor a platform biztonsági intézkedése frissíti a *serviceState* az automatikus javítások *felfüggesztéséhez*. Újra folytathatja az automatikus javításokat úgy, hogy a *serviceState* értékének megadásával *futtatja* az automatikus javításokat. Részletes utasítások a méretezési csoport [automatikus javítási szabályzatának megtekintési és frissítési állapotának megtekintése és frissítése](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) című szakaszban olvashatók. 
 
 Az automatikus példány javításának folyamata a következőképpen működik:
 
@@ -96,7 +96,7 @@ Ezzel a rövid útmutató [sablonnal](https://github.com/Azure/azure-quickstart-
  
 Az alábbi lépésekkel engedélyezheti az automatikus javítási szabályzatot új méretezési csoport létrehozásakor.
  
-1. Nyissa meg a **virtuálisgép-méretezési csoportokat** .
+1. Nyissa meg a **virtuálisgép-méretezési csoportokat**.
 1. Válassza a **+ Hozzáadás** lehetőséget egy új méretezési csoport létrehozásához.
 1. Lépjen a **Health (állapot** ) lapra. 
 1. Keresse meg az **állapot** szakaszt.

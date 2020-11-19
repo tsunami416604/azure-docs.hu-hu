@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ff3e7fee87661fb89ba930b7368bd54e71ad57bf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357623"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886787"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Hibaelhárítás az Azure kommunikációs szolgáltatásokban
 
@@ -23,16 +23,16 @@ Ez a dokumentum segítséget nyújt a kommunikációs szolgáltatási megoldásb
 
 Javasoljuk, hogy a fejlesztők a kommunikációs szolgáltatások [GitHub-tárházában](https://github.com/Azure/communication)felmerülő problémákkal kapcsolatos kérdéseket, javaslatokat és problémákat jelentsenek. További fórumok a következők:
 
-* [Microsoft Q&A](https://docs.microsoft.com/answers/questions/topics/single/101418.html)
+* [Microsoft Q&A](/answers/questions/topics/single/101418.html)
 * [StackOverflow](https://stackoverflow.com/questions/tagged/azure+communication)
 
 Az Azure-előfizetések [támogatási](https://azure.microsoft.com/support/plans/) csomagjától függően közvetlenül a [Azure Portal](https://azure.microsoft.com/support/create-ticket/)is benyújthatja a támogatási jegyet.
 
 Bizonyos típusú problémák elhárítása érdekében a következő információk bármelyikét kérheti:
 
-* **MS-CV-azonosító** : ez az azonosító a hívások és üzenetek hibakereséséhez használatos. 
-* **Call ID** : ez az azonosító a kommunikációs szolgáltatások hívásainak azonosítására szolgál.
-* **SMS-üzenet azonosítója** : ez az azonosító az SMS-üzenetek azonosítására szolgál.
+* **MS-CV-azonosító**: ez az azonosító a hívások és üzenetek hibakereséséhez használatos. 
+* **Call ID**: ez az azonosító a kommunikációs szolgáltatások hívásainak azonosítására szolgál.
+* **SMS-üzenet azonosítója**: ez az azonosító az SMS-üzenetek azonosítására szolgál.
 * **Hívásnaplók: ezek** a naplók részletes információkat tartalmaznak, amelyek a hívási és hálózati problémák megoldásához használhatók.
 
 

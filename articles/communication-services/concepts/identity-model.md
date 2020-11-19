@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f172bfcb6e4f11520eb9082052968626efe6fecb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dd2ffacb176ed3733acba8699d4e870b15dd3c42
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651243"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888708"
 ---
 # <a name="identity-model"></a>Identitásmodell
 
@@ -83,6 +83,6 @@ Ha a hozzáférési jogkivonatokat egy tárolóba gyorsítótárazza, javasoljuk
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A hozzáférési tokenek kezelésének bemutatása: [hozzáférési tokenek létrehozása és kezelése](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
-* A hitelesítés bevezetését lásd: [hitelesítés az Azure kommunikációs szolgáltatásokban](https://docs.microsoft.com/azure/communication-services/concepts/authentication).
-* Az adattárolással és az adatvédelemmel kapcsolatos bevezetésért lásd: a [régió rendelkezésre állása és az adatok tartózkodási](https://docs.microsoft.com/azure/communication-services/concepts/privacy)helye.
+* A hozzáférési tokenek kezelésének bemutatása: [hozzáférési tokenek létrehozása és kezelése](../quickstarts/access-tokens.md).
+* A hitelesítés bevezetését lásd: [hitelesítés az Azure kommunikációs szolgáltatásokban](./authentication.md).
+* Az adattárolással és az adatvédelemmel kapcsolatos bevezetésért lásd: a [régió rendelkezésre állása és az adatok tartózkodási](./privacy.md)helye.

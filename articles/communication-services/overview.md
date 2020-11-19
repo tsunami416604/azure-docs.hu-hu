@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1c79ffb02df4a64b2c506ef0863d9bb2da06db53
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d680df0ec5e18cca4d7a42edf45dbd6a50be1472
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91303369"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888606"
 ---
 # <a name="what-is-azure-communication-services"></a>Az Azure Communication Services bemutatása
 
@@ -36,7 +36,7 @@ A kommunikációs szolgáltatásokat hang-, videó-, szöveg-és adatkommunikác
 
 A vegyes forgatókönyvek támogatottak. A kommunikációs szolgáltatások alkalmazásai például a böngészőkből és a hagyományos telefonos eszközökből származó felhasználókkal is rendelkezhetnek. A kommunikációs szolgáltatások a Azure Bot Service használatával is kombinálhatók a robot által vezérelt interaktív hangválasztó (IVR) rendszerek létrehozásához.
 
-## <a name="common-scenarios"></a>Gyakori helyzetek
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
 Az alábbi források nagyszerű kiindulópontot jelentenek, ha most ismerkedik az Azure kommunikációs szolgáltatásokkal:
 <br>
@@ -77,9 +77,9 @@ Az alábbi források segítséget nyújtanak az Azure kommunikációs szolgálta
 
 Két másik Microsoft kommunikációs termék közül választhat, amelyek a kommunikációs szolgáltatásokkal közvetlenül nem működnek együtt:
 
- - [Microsoft Graph a felhőalapú kommunikációs API](https://docs.microsoft.com/graph/cloud-communications-concept-overview) -k lehetővé teszik a szervezetek számára, hogy a M365-licencekkel Azure Active Directory felhasználókhoz kötött kommunikációs élményt hozzanak létre. Ez ideális a Azure Active Directoryhoz kötött alkalmazások számára, illetve a termelékenységi tapasztalatok kibővítésére a Microsoft Teams szolgáltatásban. Emellett API-k is létrehozhatnak alkalmazásokat és testreszabásokat a [csapatok felhasználói felületén belül.](https://docs.microsoft.com/microsoftteams/platform/?view=msteams-client-js-latest&preserve-view=true)
+ - [Microsoft Graph a felhőalapú kommunikációs API](/graph/cloud-communications-concept-overview) -k lehetővé teszik a szervezetek számára, hogy a M365-licencekkel Azure Active Directory felhasználókhoz kötött kommunikációs élményt hozzanak létre. Ez ideális a Azure Active Directoryhoz kötött alkalmazások számára, illetve a termelékenységi tapasztalatok kibővítésére a Microsoft Teams szolgáltatásban. Emellett API-k is létrehozhatnak alkalmazásokat és testreszabásokat a [csapatok felhasználói felületén belül.](/microsoftteams/platform/?preserve-view=true&view=msteams-client-js-latest)
 
- - Az [Azure PlayFab fél](https://docs.microsoft.com/gaming/playfab/features/multiplayer/networking/) leegyszerűsíti az alacsony késésű csevegés és az adatkommunikáció hozzáadását a játékokhoz. A kommunikációs szolgáltatásokkal rendelkező Power Gaming chat-és hálózatkezelési rendszerek esetében a PlayFab egy testre szabott lehetőség, és az Xbox-on is ingyenes.
+ - Az [Azure PlayFab fél](/gaming/playfab/features/multiplayer/networking/) leegyszerűsíti az alacsony késésű csevegés és az adatkommunikáció hozzáadását a játékokhoz. A kommunikációs szolgáltatásokkal rendelkező Power Gaming chat-és hálózatkezelési rendszerek esetében a PlayFab egy testre szabott lehetőség, és az Xbox-on is ingyenes.
 
 
 ## <a name="next-steps"></a>Következő lépések

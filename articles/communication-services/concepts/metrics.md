@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b8d74f86fc9c3d2cc020628f67c36d8d67973fff
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 25c7016f6639df46a9279ef9a9aab2736efd4f95
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128653"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888657"
 ---
 # <a name="metrics-overview"></a>A metrikák áttekintése
 
-Az Azure kommunikációs szolgáltatásai jelenleg a csevegéshez és az SMS-hez biztosítanak mérőszámokat. Az [Azure Metrikaböngésző](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) felhasználható a saját diagramok ábrázolására, a metrikai értékek rendellenességének kivizsgálására, valamint az API-forgalom megismerésére a csevegési és SMS-kérések által kibocsátható mérőszámok használatával.
+Az Azure kommunikációs szolgáltatásai jelenleg a csevegéshez és az SMS-hez biztosítanak mérőszámokat. Az [Azure Metrikaböngésző](../../azure-monitor/platform/metrics-getting-started.md) felhasználható a saját diagramok ábrázolására, a metrikai értékek rendellenességének kivizsgálására, valamint az API-forgalom megismerésére a csevegési és SMS-kérések által kibocsátható mérőszámok használatával.
 
 ## <a name="where-to-find-metrics"></a>Hol találhatók a metrikák
 
@@ -30,7 +30,7 @@ A kommunikációs szolgáltatások metrikáján két típusú kérelem szerepel:
 
 A csevegési és SMS API-kérelmek metrikája három olyan dimenziót tartalmaz, amelyeket a metrikák adatai szűrésére használhat. Ezek a méretek összevonhatók az `Count` összesítési típussal, és támogatják az összes szabványos Azure-összesítési idősorozatot, beleértve a következőket:,, `Sum` `Average` `Min` és `Max` .
 
-További információ a támogatott összesítési típusokról és az idősorozatok összesítéséről [Az Azure speciális funkciói találhatók Metrikaböngésző](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#changing-aggregation)
+További információ a támogatott összesítési típusokról és az idősorozatok összesítéséről [Az Azure speciális funkciói találhatók Metrikaböngésző](../../azure-monitor/platform/metrics-charts.md#changing-aggregation)
 
 - **Művelet** – az ACS-csevegési átjárón hívható összes művelet vagy útvonal.
 - **Állapotkód** – az állapotkód válasza a kérelem után elküldve.
@@ -60,9 +60,9 @@ A következő műveletek érhetők el a csevegési API-kérelmek metrikáján:
 | AddChatThreadParticipants     | Szál tagokat szúr be egy szálba. Ha a tagok már léteznek, a változás nem történik meg. |
 | RemoveChatThreadParticipant   | Tag eltávolítása egy szálból. |
 
-:::image type="content" source="./media/chat-metric.png" alt-text="Csevegési API-kérelem metrikája.&quot;:::
+:::image type="content" source="./media/chat-metric.png" alt-text="Csevegési API-kérelem metrikája.":::
 
-Ha egy olyan műveletre vonatkozó kérés érkezik, amely nem ismerhető fel, &quot;rossz útvonal" értékű választ fog kapni.
+Ha egy olyan műveletre vonatkozó kérés érkezik, amely nem ismerhető fel, "rossz útvonal" értékű választ fog kapni.
 
 ### <a name="sms-api-requests"></a>SMS API-kérelmek
 
@@ -75,10 +75,8 @@ Az SMS API-kérelmek metrikái a következő műveletek érhetők el:
 | SMSMessagesReceived      | SMS-üzenetek beolvasása. |
 
 
-:::image type="content" source="./media/sms-metric.png" alt-text="Csevegési API-kérelem metrikája.&quot;:::
-
-Ha egy olyan műveletre vonatkozó kérés érkezik, amely nem ismerhető fel, &quot;rossz útvonal":::
+:::image type="content" source="./media/sms-metric.png" alt-text="SMS API-kérelem metrikája":::
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ az [adatplatform-mérőszámokról](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)
+- További információ az [adatplatform-mérőszámokról](../../azure-monitor/platform/data-platform-metrics.md)

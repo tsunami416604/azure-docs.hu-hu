@@ -1,15 +1,15 @@
 ---
 title: 'Gyors útmutató: felügyeleti csoport létrehozása JavaScript-sel'
 description: Ebben a rövid útmutatóban a JavaScript használatával hozzon létre egy felügyeleti csoportot, amely erőforrás-hierarchiába rendezi az erőforrásokat.
-ms.date: 09/30/2020
+ms.date: 11/18/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 965e4b8f81a26cab8f6e34cab3e51d6a97f5a6a6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c1b800f150cebacf8d17785feb1bded5189f1574
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676230"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886600"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>Gyors útmutató: felügyeleti csoport létrehozása JavaScript-sel
 
@@ -71,7 +71,7 @@ Annak engedélyezéséhez, hogy a JavaScript lekérdezze az Azure Resource Graph
        const createMG = async () => {
           const credentials = await authenticator.interactiveLogin();
           const client = new managementGroups.ManagementGroupsAPI(credentials);
-          const result = await client.createOrUpdate(
+          const result = await client.managementGroups.createOrUpdate(
              groupId: argv.groupID,
              {
                  displayName: argv.displayName
@@ -90,7 +90,7 @@ Annak engedélyezéséhez, hogy a JavaScript lekérdezze az Azure Resource Graph
    node index.js --groupID "<NEW_MG_GROUP_ID>" --displayName "<NEW_MG_FRIENDLY_NAME>"
    ```
 
-   Ügyeljen arra, hogy az egyes jogkivonat- `<>` helyőrzőket cserélje le a _felügyeleti csoport azonosítóját_ és a _felügyeleti csoport rövid nevét_ .
+   Ügyeljen arra, hogy az egyes jogkivonat- `<>` helyőrzőket cserélje le a _felügyeleti csoport azonosítóját_ és a _felügyeleti csoport rövid nevét_.
 
    Ahogy a parancsfájl megkísérli a hitelesítést, az alábbi üzenethez hasonló üzenet jelenik meg a terminálon:
 
@@ -100,7 +100,7 @@ Annak engedélyezéséhez, hogy a JavaScript lekérdezze az Azure Resource Graph
 
 A felügyeleti csoport létrehozásának eredménye kimenet a konzolon.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha el szeretné távolítani a telepített kódtárakat az alkalmazásból, futtassa a következő parancsot.
 

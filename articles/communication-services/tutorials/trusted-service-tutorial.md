@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cffe2ef77f2b832c55ef17823163cd6580f31504
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d4fdef6406bfa2e64456f14778cc136735070656
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947102"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886642"
 ---
 # <a name="build-a-trusted-authentication-service-using-azure-functions"></a>Megbízható hitelesítési szolgáltatás létrehozása az Azure Functions használatával
 
@@ -24,9 +24,9 @@ ms.locfileid: "90947102"
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információk az [Azure kommunikációs szolgáltatás erőforrásainak tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources) és az [Azure functions-erőforrások tisztításáról](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?#clean-up-resources).
+Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információk az [Azure kommunikációs szolgáltatás erőforrásainak tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources) és az [Azure functions-erőforrások tisztításáról](../../azure-functions/create-first-function-vs-code-csharp.md#clean-up-resources).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hanghívás hozzáadása az alkalmazáshoz](../quickstarts/voice-video-calling/getting-started-with-calling.md)

@@ -89,14 +89,9 @@
     - name: Jupyter-notebookok
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Példa adattárra
-      displayName: 'example, examples, jupyter, python, notebook, github'
-      href: 'https://github.com/Azure/azureml-examples'
     - name: Tervezői példák és adathalmazok
       displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
-    - name: Teljes körű MLOps-példák
-      href: 'https://github.com/microsoft/MLOps'
     - name: Open Datasets (nyilvános)
       href: ../open-datasets/samples.md?context=azure%252fmachine-learning%252fcontext%252fml-context
 - name: Alapelvek

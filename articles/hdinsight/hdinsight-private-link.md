@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 3c6bee570312009af5fbdf42a018ad2b387662d9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 66c9a3afb91aaff448d6eadc86175d8515be766c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422297"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889082"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight-fürtök biztonságossá tétele és elkülönítése privát kapcsolattal (előzetes verzió)
 
@@ -86,7 +86,8 @@ Az alábbi képen egy példa látható a fürt olyan virtuális hálózatról va
 
 :::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="Privát kapcsolati architektúra ábrája":::
 
-## <a name="arm-template-properties"></a>ARM-sablon tulajdonságai
+## <a name="how-to-create-clusters"></a>Fürtök létrehozása
+### <a name="use-arm-template-properties"></a>ARM-sablon tulajdonságainak használata
 
 A következő JSON-kódrészlet tartalmazza az ARM-sablonban konfigurálni kívánt két hálózati tulajdonságot egy privát HDInsight-fürt létrehozásához.
 
@@ -99,7 +100,14 @@ networkProperties: {
 
 A HDInsight nagyvállalati biztonsági funkcióival, beleértve a privát hivatkozásokat is, a [HDInsight Enterprise biztonsági sablon](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)című témakörben talál teljes sablont.
 
-## <a name="next-steps"></a>További lépések
+### <a name="use-azure-powershell"></a>Az Azure PowerShell használata
+
+A PowerShell használatához tekintse meg [a példát.](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)
+
+### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
+Az Azure CLI használatához tekintse meg a [következő példát:](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples).
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Enterprise Security Package az Azure HDInsight](enterprise-security-package.md)
 * [A vállalati biztonsági általános információk és irányelvek az Azure HDInsight](./domain-joined/general-guidelines.md)

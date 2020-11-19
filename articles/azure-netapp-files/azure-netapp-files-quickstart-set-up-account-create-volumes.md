@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 70441c3a1953fa1b6ebd69ef9cdb324d6cc04a5b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e31a1cef427062723adf4b45bd47cd8009630128
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336452"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888810"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása
 
@@ -32,8 +32,6 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 > [!IMPORTANT]
 > Hozzáférést kell biztosítania a Azure NetApp Files szolgáltatáshoz. Ha hozzáférést szeretne kérni a szolgáltatáshoz, tekintse meg a [Azure NetApp Files várólista-beküldési lapot](https://aka.ms/azurenetappfiles).  A folytatás előtt meg kell várnia a hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ---
 
@@ -64,6 +62,10 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
     ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Készítse elő a környezetet az Azure CLI-hez.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
@@ -176,7 +178,7 @@ A következő kódrészlet azt mutatja be, hogyan hozható létre NetApp-fiók e
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A Azure NetApp Files-kezelés panelen válassza ki a NetApp-fiókját ( **myaccount1** ).
+1. A Azure NetApp Files-kezelés panelen válassza ki a NetApp-fiókját (**myaccount1**).
 
     ![NetApp-fiók kiválasztása](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)
 
@@ -260,7 +262,7 @@ A következő kódrészlet azt mutatja be, hogyan hozhat létre kapacitási kés
 
 3. A kötet létrehozása ablakban adja meg a kötet adatait:
    1. A kötet neveként adja meg a **myvol1** .
-   2. Válassza ki a kapacitási készletet ( **mypool1** ).
+   2. Válassza ki a kapacitási készletet (**mypool1**).
    3. Használja a kvóta alapértelmezett értékét.
    4. A virtuális hálózat területen kattintson az **új létrehozása** lehetőségre egy új Azure-beli virtuális hálózat (vnet) létrehozásához.  Ezután adja meg a következő információkat:
        * Adja meg a **myvnet1** nevet a vnet neveként.
@@ -269,7 +271,7 @@ A következő kódrészlet azt mutatja be, hogyan hozhat létre kapacitási kés
        * Az alhálózati címtartomány megadása, például 10.7.0.0/24. A dedikált alhálózatot nem lehet más erőforrásokkal megosztani.
        * Válassza a **Microsoft. NetApp/kötetek** lehetőséget az alhálózati delegáláshoz.
        * A vnet létrehozásához kattintson **az OK** gombra.
-   5. Az alhálózat területen jelölje ki az újonnan létrehozott vnet ( **myvnet1** ) delegált alhálózatként.
+   5. Az alhálózat területen jelölje ki az újonnan létrehozott vnet (**myvnet1**) delegált alhálózatként.
 
       ![Kötet ablak létrehozása](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)
 
@@ -278,7 +280,7 @@ A következő kódrészlet azt mutatja be, hogyan hozhat létre kapacitási kés
 4. Kattintson a **protokoll** elemre, majd hajtsa végre a következő műveleteket:
     * Válassza az **NFS** lehetőséget a kötethez tartozó protokoll típusaként.
     * Adja meg a **myfilepath1** a kötet exportálási elérési útjának létrehozásához használt fájl elérési útjaként.
-    * Válassza ki a kötet NFS-verzióját ( **NFSv3** vagy **nfsv 4.1** ).
+    * Válassza ki a kötet NFS-verzióját (**NFSv3** vagy **nfsv 4.1**).
       Lásd az NFS-verziók [szempontjait](azure-netapp-files-create-volumes.md#considerations) és [ajánlott eljárásait](azure-netapp-files-create-volumes.md#best-practice) .
 
     ![Az NFS protokoll megadása a gyors üzembe helyezéshez](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
@@ -460,7 +462,7 @@ Az erőforráscsoport törléséhez használja a Azure Portal, a PowerShellt vag
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure NetApp Files tárhely-hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 315dfcb10b11278401d6cc0abd42b40b5f55f72a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6efcadf85816bb6aa014893bb9b20476a0701990
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968361"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886753"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>A helyszíni Azure AD-beli jelszavas védelmi környezetek naplófájljainak figyelése és áttekintése
 
@@ -66,15 +66,19 @@ A kulcs jelszava – az érvényesítéssel kapcsolatos események a következő
 
 | Esemény |Jelszó módosítása |Jelszó beállítva|
 | --- | :---: | :---: |
-|Pass |10014 |10015|
+|Sikeres |10014 |10015|
 |Sikertelen (az ügyfél jelszavas házirendje miatt)| 10016, 30002| 10017, 30003|
 |Sikertelen (a Microsoft jelszavas házirend miatt)| 10016, 30004| 10017, 30005|
 |Sikertelen (a Microsoft és az ügyfél jelszavas házirendjének együttese miatt)| 10016, 30026| 10017, 30027|
+|Sikertelen (Felhasználónév miatt)| 10016, 30021| 10017, 30022|
 |Csak naplózási pass (sikertelen ügyfél-jelszavas házirend)| 10024, 30008| 10025, 30007|
 |Csak naplózási pass (sikertelen volt a Microsoft jelszavas házirendje)| 10024, 30010| 10025, 30009|
 |Csak naplózási pass (a Microsoft és az ügyfél jelszavas házirendjeit nem sikerült egyesíteni)| 10024, 30028| 10025, 30029|
+|Csak naplózási pass (a Felhasználónév miatt sikertelen volt)| 10016, 30024| 10017, 30023|
 
 A fenti táblázatban a "kombinált házirendek" kifejezésre hivatkozó esetek olyan helyzetekben fordulnak elő, amikor egy felhasználó jelszava legalább egy jogkivonatot tartalmaz a Microsoft által tiltott jelszavak listájáról és az ügyfél által tiltott jelszavak listájáról.
+
+A fenti táblázatban a "Felhasználónév" kifejezésre hivatkozó esetek olyan helyzetekre utalnak, amikor a felhasználó jelszava megtalálható a felhasználó fiókjának nevével és/vagy a felhasználó egy felhasználóbarát nevével. Bármelyik forgatókönyv hatására a rendszer elutasítja a felhasználó jelszavát, ha a házirend kényszerített értékre van állítva, vagy ha a házirend naplózási módban van.
 
 Ha a rendszer egyszerre több eseményt naplóz, mindkét eseményt explicit módon társítja ugyanahhoz a CorrelationId.
 
@@ -234,9 +238,9 @@ A szöveges naplózás alapértelmezés szerint le van tiltva. Az érték érvé
 
 ## <a name="dc-agent-performance-monitoring"></a>DC-ügynök teljesítményének figyelése
 
-A DC Agent szolgáltatás szoftvere egy **Azure ad jelszavas védelem**nevű teljesítményszámláló objektumot telepít. Jelenleg a következő teljesítményszámláló-számlálók érhetők el:
+A DC Agent szolgáltatás szoftvere egy **Azure ad jelszavas védelem** nevű teljesítményszámláló objektumot telepít. Jelenleg a következő teljesítményszámláló-számlálók érhetők el:
 
-|Teljesítményszámláló neve | Description|
+|Teljesítményszámláló neve | Leírás|
 | --- | --- |
 |Feldolgozott jelszavak |Ez a számláló a legutóbbi újraindítás óta feldolgozott (elfogadott vagy visszautasított) jelszavak teljes számát jeleníti meg.|
 |Elfogadott jelszavak |Ez a számláló a legutóbbi újraindítás óta elfogadott jelszavak teljes számát jeleníti meg.|

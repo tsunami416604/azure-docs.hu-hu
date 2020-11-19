@@ -12,15 +12,15 @@ ms.workload: multiple
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 11/18/2020
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 63bfb7c92e77c4059a46a83b76b3818fcb6d63be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d48add78eb73ba1aea248e95ddc5ebc0900ee000
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090210"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888334"
 ---
 # <a name="supported-devices"></a>Támogatott eszközök
 
@@ -33,7 +33,7 @@ Ha egy mobileszközön szeretné felügyelni az Azure-erőforrásokat, próbálj
 Javasoljuk, hogy használja az operációs rendszerével kompatibilis böngésző legújabb verzióját. A következő böngészők támogatottak:
 
 * Microsoft Edge (legújabb verzió)
-* Internet Explorer 11
+* Internet Explorer 11 (2021. március 31-ig támogatott)
 * Safari (csak Mac, legújabb verzió)
 * Chrome (legújabb verzió)
 * Firefox (legújabb verzió)

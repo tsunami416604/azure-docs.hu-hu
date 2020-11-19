@@ -4,12 +4,12 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: f2b46b37fc8c773062402c52f2903a7a10acc2c4
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: f83413bc54164107b8e8a4e6010f8a826a5fe327
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874712"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888419"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -218,7 +218,7 @@ CloudAdmin-csoport jogosultságokkal fog rendelkezni. További információ: [ho
 
 #### <a name="what-privileges-and-permissions-will-i-have-on-the-nsx-t-manager"></a>Milyen jogosultságokkal és engedélyekkel rendelkezem a NSX-T kezelőn?
 
-A NSX-T teljes körű rendszergazdai jogosultságokkal rendelkezik, és a szerepköralapú hozzáférés-vezérlést ugyanúgy kezelheti, mint a helyszíni NSX-T adatközpontot. További információ: [hozzáférés és identitás fogalmai](concepts-identity.md).
+A NSX-T teljes körű rendszergazdai jogosultságokkal fog rendelkezni, és a vSphere szerepköralapú hozzáférés-vezérlést is képes kezelni, mint a helyszíni NSX-T adatközpontot. További információ: [hozzáférés és identitás fogalmai](concepts-identity.md).
 
 > [!NOTE]
 > A rendszer létrehoz egy T0-útválasztót, és konfigurálja a saját felhőalapú telepítés részeként. A logikai útválasztó vagy a NSX-T peremhálózati virtuális gépek bármely módosítása hatással lehet a privát felhőhöz való kapcsolódásra.

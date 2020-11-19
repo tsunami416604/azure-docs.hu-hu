@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fc757e1310369c48de24c0cc9253c668ca27495c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677410"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888572"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Ismerkedés a Group chat Hero-mintával
 
@@ -40,25 +40,21 @@ A mintában ügyféloldali alkalmazás és kiszolgálóoldali alkalmazás is tal
 
 A minta így néz ki:
 
-:::image type="content" source="./media/chat/landing-page.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel&quot;:::
+:::image type="content" source="./media/chat/landing-page.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel":::
 
-A &quot;csevegés indítása" gomb megnyomásakor a webalkalmazás a kiszolgálóoldali alkalmazásból lekéri a felhasználói hozzáférési tokent. Ezt a tokent ezután az ügyfélalkalmazás Azure kommunikációs szolgáltatásokhoz való összekapcsolására használják. A jogkivonat lekérése után meg kell adnia a nevét és a Emoji, amely a csevegésben fog megjelenni. 
+A "csevegés indítása" gomb megnyomásakor a webalkalmazás a kiszolgálóoldali alkalmazásból lekéri a felhasználói hozzáférési tokent. Ezt a tokent ezután az ügyfélalkalmazás Azure kommunikációs szolgáltatásokhoz való összekapcsolására használják. A jogkivonat lekérése után meg kell adnia a nevét és a Emoji, amely a csevegésben fog megjelenni. 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel&quot;:::
-
-A &quot;csevegés indítása":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="Az alkalmazás csevegés előtti képernyőjét ábrázoló képernyőkép.":::
 
 A megjelenítendő név és a Emoji beállítása után csatlakozhat a csevegési munkamenethez. Most megjelenik a fő csevegési vászon, ahol az alapvető csevegési élmény él.
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel&quot;:::
-
-A &quot;csevegés indítása":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="A minta alkalmazás fő képernyőjét bemutató képernyőkép.":::
 
 A fő csevegési képernyő összetevői:
 
-- **Fő csevegési felület** : ez az alapvető csevegési élmény, amellyel a felhasználók küldhetnek és kaphatnak üzeneteket. Üzenetek küldéséhez használhatja a beviteli körzetet, és nyomja le az ENTER billentyűt (vagy használja a Küldés gombot). A fogadott csevegési üzeneteket a küldő a helyes névvel és Emoji kategorizálja. A csevegési terület két típusú értesítést fog látni: 1) értesítéseket írhat be, amikor a felhasználó begépeli és 2) az üzenetek küldésére és olvasására vonatkozó értesítéseket.
-- **Fejléc** : ez az a hely, ahol a felhasználó látni fogja a csevegési szál címét, valamint a résztvevő és a beállítások oldalsó sávjának a vezérlését, valamint a csevegési munkamenetből való kilépéshez szükséges vezérlőket.
-- **Oldalsó sáv** : ebben az esetben a rendszer a fejlécben szereplő vezérlők használatával jeleníti meg a résztvevőket és a beállítási információkat. A résztvevők oldalsó sáv tartalmazza a csevegés résztvevőinek listáját, valamint egy hivatkozást, amely meghívja a résztvevőket a csevegési munkamenetbe. A beállítások oldal sáv lehetővé teszi a csevegési szál címének konfigurálását. 
+- **Fő csevegési felület**: ez az alapvető csevegési élmény, amellyel a felhasználók küldhetnek és kaphatnak üzeneteket. Üzenetek küldéséhez használhatja a beviteli körzetet, és nyomja le az ENTER billentyűt (vagy használja a Küldés gombot). A fogadott csevegési üzeneteket a küldő a helyes névvel és Emoji kategorizálja. A csevegési terület két típusú értesítést fog látni: 1) értesítéseket írhat be, amikor a felhasználó begépeli és 2) az üzenetek küldésére és olvasására vonatkozó értesítéseket.
+- **Fejléc**: ez az a hely, ahol a felhasználó látni fogja a csevegési szál címét, valamint a résztvevő és a beállítások oldalsó sávjának a vezérlését, valamint a csevegési munkamenetből való kilépéshez szükséges vezérlőket.
+- **Oldalsó sáv**: ebben az esetben a rendszer a fejlécben szereplő vezérlők használatával jeleníti meg a résztvevőket és a beállítási információkat. A résztvevők oldalsó sáv tartalmazza a csevegés résztvevőinek listáját, valamint egy hivatkozást, amely meghívja a résztvevőket a csevegési munkamenetbe. A beállítások oldal sáv lehetővé teszi a csevegési szál címének konfigurálását. 
 
 Az alábbiakban további információkat talál a minta beállításához szükséges előfeltételekről és lépésekről.
 
@@ -102,7 +98,7 @@ A mintát helyileg is tesztelheti úgy, hogy több böngészős munkamenetet nyi
 2. Hozzon létre egy új közzétételi profilt, és válassza ki az Azure-előfizetését.
 3. A közzététel előtt adja hozzá a (z `Edit App Service Settings` ) és a (z), és adja meg a `ResourceConnectionString` (z) kulcsot, és adja meg a (appsettings.json) értéket a (z) értékként.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources).
 
@@ -111,7 +107,7 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
-További információkat az következő cikkekben talál:
+További információért tekintse át a következő cikkeket:
 
 - Tudnivalók a [csevegési fogalmakról](../concepts/chat/concepts.md)
 - Ismerkedjen meg a [csevegő ügyféloldali függvénytárával](../concepts/chat/sdk-features.md)
@@ -122,4 +118,4 @@ További információkat az következő cikkekben talál:
 - [Redux](https://redux.js.org/) – ügyféloldali állapot kezelése
 - [FluentUI](https://aka.ms/fluent-ui) – Microsoft powered UI Library
 - [Reagálás](https://reactjs.org/) – függvénytár a felhasználói felületek létrehozásához
-- [ASP.net Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) -keretrendszer webalkalmazások létrehozásához
+- [ASP.net Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) -keretrendszer webalkalmazások létrehozásához

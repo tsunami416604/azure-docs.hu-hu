@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás üzembe helyezésének megtervezése
 description: Ez a cikk egy Azure VMware-megoldás üzembe helyezési munkafolyamatát ismerteti.  A végeredmény egy olyan környezet, amely készen áll a virtuális gép (VM) létrehozására és áttelepítésére.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: a8ebd5bd4a9e553e24fbe528a4f6654bd4a1dee4
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 08a15e6f8cad4068415cec3353544829f2218fb0
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873335"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888980"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Az Azure VMware-megoldás üzembe helyezésének megtervezése
 
@@ -92,14 +92,6 @@ Ne feledje, hogy:
 
 - Ha a helyi hálózatok kibővítését tervezi, ezeknek a hálózatoknak csatlakozniuk kell egy [vSphere elosztott kapcsolóhoz (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) a helyszíni VMware-környezetben.  
 - Ha a hálózat (ok) [vSphere standard kapcsolón](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html)szeretné kiterjeszteni az élő hálózatot, akkor nem bővíthetők.
-
-## <a name="expressroute-global-reach-peering-network"></a>ExpressRoute Global Reach társ hálózat
-
-Azonosítson egy `/29` CIDR, amely a ExpressRoute Global REACH a társításhoz szükséges. Ne feledje, hogy a létrehozott IP-szegmenseknek egyedinek kell lenniük az Azure VMware-megoldásban és a helyszíni lábnyomban. Az ebben a szegmensben lévő IP-címeket a rendszer a ExpressRoute minden egyes végén használja Global Reach kapcsolattal az Azure VMware Solution ExpressRoute áramkört a helyszíni ExpressRoute-áramkörhöz csatlakoztatni. 
-
-**Példa:** 10.1.0.0/29
-
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="ExpressRoute Global Reach-társítási hálózat azonosítása" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure-Virtual Network az Azure VMware-megoldás csatlakoztatásához
 
