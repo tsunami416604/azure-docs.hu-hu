@@ -65,6 +65,8 @@
       href: use-editor-create-project.md
     - name: Widgetek beágyazása az alkalmazásba
       href: video-indexer-embed-widgets.md
+    - name: A Video Indexer nagy léptékű használatának szempontjai
+      href: considerations-when-use-at-scale.md
     - name: Vészhelyreállítás
       href: video-indexer-disaster-recovery.md
     - name: Tartalommodellek testreszabása

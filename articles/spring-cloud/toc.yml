@@ -81,6 +81,8 @@
           href: spring-cloud-howto-start-stop-delete.md
         - name: Állandó tárolók használata
           href: spring-cloud-howto-persistent-storage.md
+        - name: Nyilvános kimenő IP-címek azonosítása
+          href: spring-cloud-howto-outbound-public-ip.md
     - name: Figyelés
       items:
         - name: Elosztott nyomkövetés és az App Insights
@@ -121,7 +123,7 @@
           href: spring-cloud-howto-self-diagnose-solve.md
         - name: Hibaelhárítási útmutató
           href: spring-cloud-troubleshoot.md
-    - name: Migrate (Áttelepítés)
+    - name: Migrálás
       items:
         - name: Spring Cloud
           href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-cloud'

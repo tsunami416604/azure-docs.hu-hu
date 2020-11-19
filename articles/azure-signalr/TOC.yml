@@ -98,6 +98,12 @@
           href: signalr-howto-diagnostic-logs.md
         - name: Megfelelőség naplózása az Azure Policyval
           href: signalr-howto-azure-policy.md
+    - name: Hibaelhárítás
+      items:
+        - name: Hibaelhárítási útmutatók
+          href: signalr-howto-troubleshoot-guide.md
+        - name: Hibaelhárítási módszerek
+          href: signalr-howto-troubleshoot-method.md
 - name: Referencia
   items:
     - name: Azure CLI

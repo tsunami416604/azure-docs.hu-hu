@@ -139,6 +139,8 @@
       href: ../../container-instances/security-baseline.md
     - name: A Container Registry biztonsági alapkonfigurációja
       href: ../../container-registry/security-baseline.md
+    - name: A Content Delivery Network biztonsági alapkonfigurációja
+      href: ../../cdn/security-baseline.md
     - name: A Cosmos DB biztonsági alapkonfigurációja
       href: ../../cosmos-db/security-baseline.md
     - name: A Cost Management biztonsági alapkonfigurációja

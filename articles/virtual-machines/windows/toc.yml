@@ -330,7 +330,9 @@
         - name: Lemezek biztonsági mentése és vészhelyreállítása
           href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Megosztott lemezek
-          href: disks-shared.md
+          href: ../disks-shared.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Lemezteljesítmény-szintek
+          href: ../disks-change-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Rövid élettartamú operációsrendszer-lemezek
           href: ../ephemeral-os-disks.md
     - name: Hálózat
@@ -886,8 +888,10 @@
               href: attach-disk-ps.md
             - name: Azure Portal
               href: attach-managed-disk-portal.md
-        - name: Lemezszint módosítása
+        - name: Lemezszint módosítása – PowerShell/parancssori felület
           href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Lemezszint módosítása – Portal
+          href: ../disks-performance-tiers-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Lemez leválasztása
           href: detach-disk.md
         - name: Lemezek üzembe helyezése ARM-sablonnal

@@ -28,7 +28,7 @@
       href: network-watcher-nsg-flow-logging-portal.md
 - name: Alapelvek
   items:
-    - name: Kapcsolatfigyelő (előzetes verzió)
+    - name: Kapcsolatfigyelő
       href: connection-monitor-overview.md
     - name: Virtuális gép hálózati forgalmi problémáinak diagnosztizálása
       href: network-watcher-ip-flow-verify-overview.md
@@ -58,7 +58,7 @@
   items:
     - name: A Network Watcher konfigurálása
       href: network-watcher-create.md
-    - name: Kapcsolatfigyelő létrehozása (előzetes verzió)
+    - name: Kapcsolatfigyelő létrehozása
       items:
         - name: Az Azure Portal használata
           href: connection-monitor-create-using-portal.md
@@ -66,11 +66,11 @@
           href: connection-monitor-create-using-template.md
         - name: A PowerShell használata
           href: connection-monitor-create-using-powershell.md
-    - name: Migrálás a kapcsolatfigyelőbe (előzetes verzió)
+    - name: Migrálás a kapcsolatfigyelőbe
       items:
         - name: A hálózati teljesítményfigyelőből
           href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
-        - name: A kapcsolatfigyelőből
+        - name: A kapcsolatfigyelőből (klasszikus)
           href: migrate-to-connection-monitor-preview-from-connection-monitor.md
     - name: A virtuális gép hálózati problémáinak diagnosztizálása
       items:

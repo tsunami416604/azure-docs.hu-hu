@@ -68,8 +68,8 @@
       items:
         - name: Egy távoli fájl kódolása és streamelése REST használatával
           href: stream-files-tutorial-with-rest.md
-        - name: Felhasználó által kezelt kulcsok Media Services szolgáltatással
-          href: tutorial-byok.md
+        - name: Felhasználó által kezelt kulcsok REST API-val
+          href: tutorial-byok-postman.md
     - name: parancssori felület
       items:
         - name: Egy távoli fájl kódolása és streamelése parancssori felület használatával
@@ -80,6 +80,8 @@
           href: stream-files-nodejs-quickstart.md
     - name: Azure Portal
       items:
+        - name: Felhasználó által kezelt kulcsok vagy BYOK-oktatóanyag
+          href: tutorial-byok-portal.md
         - name: AMS-események tárolása az Azure Log Analyticsben
           href: tutorial-events-log-analytics.md
 - name: Példák
@@ -102,6 +104,11 @@
         - name: Tárfiók
           href: storage-account-concept.md
           displayName: Storage side encryption
+        - name: Felügyelt identitások és Media Services
+          displayName: content protection
+          href: concept-managed-identities.md
+        - name: Felhasználó által kezelt kulcsok
+          href: concept-use-customer-managed-keys-byok.md
     - name: Objektumok
       items:
         - name: Objektumok
@@ -178,8 +185,6 @@
         - name: Dinamikus titkosítás és kulcskézbesítés
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
-        - name: Felhasználó által kezelt kulcsok
-          href: concept-use-customer-managed-keys-byok.md
         - name: Több DRM-es rendszerek tervezése
           displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md

@@ -287,6 +287,10 @@
           items:
             - name: MySQL-kiszolgáló leállítása/indítása
               href: how-to-stop-start-server.md
+        - name: Főverzió-frissítés
+          items:
+            - name: Főverzió-frissítés
+              href: how-to-major-version-upgrade.md
         - name: Tárterület automatikus növelése
           items:
             - name: Azure Portal

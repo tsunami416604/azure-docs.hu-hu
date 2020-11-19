@@ -3,6 +3,8 @@
   items:
     - name: Tudnivalók az App Service-környezetekről
       href: intro.md
+    - name: App Service-környezet v3 (előzetes verzió)
+      href: overview.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -10,11 +12,13 @@
       href: create-external-ase.md
     - name: Belső ASE létrehozása
       href: create-ilb-ase.md
+    - name: ASE v3 létrehozása (előzetes verzió)
+      href: creation.md
 - name: Oktatóanyagok
   items:
     - name: Integrálás WAF-fal
       href: app-service-app-service-environment-web-application-firewall.md
-    - name: TLS konfigurálása
+    - name: ASE – egyéni beállítások
       href: app-service-app-service-environment-custom-settings.md
 - name: Példák
   items:
@@ -28,12 +32,12 @@
       href: network-info.md
     - name: Földrajzilag elosztott skálázás
       href: app-service-app-service-environment-geo-distributed-scale.md
-    - name: ASEv1
-      href: app-service-app-service-environment-intro.md
     - name: Diagnosztika
       href: ../overview-diagnostics.md
     - name: Tanúsítványok
       href: certificates.md
+    - name: ASE v3 (előzetes verzió) – hálózatkezelés
+      href: networking.md
 - name: Útmutatók
   items:
     - name: ASE használata
@@ -48,12 +52,16 @@
       href: firewall-integration.md
     - name: Zónaredundancia
       href: zone-redundancy.md
+    - name: ASE v3 használata (előzetes verzió)
+      href: using.md
 - name: Referencia
   items:
     - name: Felügyeleti címek
       href: management-addresses.md
     - name: Az ASEv1 dokumentációja
       items:
+        - name: ASEv1
+          href: app-service-app-service-environment-intro.md
         - name: ASEv1 létrehozása
           href: app-service-web-how-to-create-an-app-service-environment.md
         - name: ASEv1 konfigurálása

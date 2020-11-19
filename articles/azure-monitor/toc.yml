@@ -944,14 +944,28 @@
           href: insights/vminsights-maps.md
         - name: Teljesítmény figyelése
           href: insights/vminsights-performance.md
-        - name: Módosítások figyelése
-          href: insights/vminsights-change-analysis.md
+        - name: Vendég állapotának monitorozása (előzetes verzió)
+          items:
+            - name: Áttekintés
+              href: insights/vminsights-health-overview.md
+            - name: Engedélyezés
+              href: insights/vminsights-health-enable.md
+            - name: Riasztások
+              href: insights/vminsights-health-alerts.md
+            - name: Figyelők konfigurálása a portálon
+              href: insights/vminsights-health-configure.md
+            - name: Figyelők konfigurálása nagy mennyiségben
+              href: insights/vminsights-health-configure-dcr.md
+            - name: Hibaelhárítás
+              href: insights/vminsights-health-troubleshoot.md
         - name: Adatelemzés naplólekérdezésekkel
           href: insights/vminsights-log-search.md
+        - name: Teljesítmény figyelése
+          href: insights/vminsights-alerts.md
+        - name: Módosítások figyelése
+          href: insights/vminsights-change-analysis.md
         - name: Adatok megjelenítése munkafüzetekben
           href: insights/vminsights-workbooks.md
-        - name: Riasztási szabályok létrehozása
-          href: insights/vminsights-alerts.md
         - name: Monitorozás letiltása
           href: insights/vminsights-optout.md
     - name: Azure Monitor tárolókhoz
