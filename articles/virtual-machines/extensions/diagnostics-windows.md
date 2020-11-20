@@ -8,17 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 3b46ae07d4bbbcd02b9880a394b72c790553f95c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9561f96dafd936244831cff2ed05cda4d915d27d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837023"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955973"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>A Azure Diagnostics engedélyezése a PowerShell használatával a Windows rendszerű virtuális gépeken
 
@@ -58,7 +59,7 @@ Ha a diagnosztikai bővítmény engedélyezve van egy virtuális gépen, az aktu
 Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 ```
 
-A parancsmag *PublicSettings*ad vissza, amely tartalmazza a diagnosztika konfigurációját. Kétféle konfiguráció támogatott, a WadCfg és a xmlCfg. A WadCfg a JSON-konfiguráció, a xmlCfg pedig Base64 kódolású formátumú XML-konfiguráció. Az XML-fájl olvasásához dekódolni kell.
+A parancsmag *PublicSettings* ad vissza, amely tartalmazza a diagnosztika konfigurációját. Kétféle konfiguráció támogatott, a WadCfg és a xmlCfg. A WadCfg a JSON-konfiguráció, a xmlCfg pedig Base64 kódolású formátumú XML-konfiguráció. Az XML-fájl olvasásához dekódolni kell.
 
 ```azurepowershell
 $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
@@ -97,7 +98,7 @@ A konfigurációt frissíteni kell, hogy tartalmazza a következőket:
 
 * A **metrikák** elem *resourceID* attribútumát frissíteni kell a virtuális gép erőforrás-azonosítójával.
   
-  * Az erőforrás-azonosító a következő mintával állítható össze: "a virtuális gép/Subscriptions/{*előfizetés-azonosítója*a VM-szel}/resourceGroups/{a virtuális gép resourcegroup-*neve*}*"/Providers/Microsoft.Compute/virtualMachines/{.*
+  * Az erőforrás-azonosító a következő mintával állítható össze: "a virtuális gép/Subscriptions/{*előfizetés-azonosítója* a VM-szel}/resourceGroups/{a virtuális gép resourcegroup-*neve*}*"/Providers/Microsoft.Compute/virtualMachines/{.*
   * Ha például a virtuális gépet futtató előfizetés előfizetés-azonosítója **11111111-1111-1111-1111-111111111111**, az erőforráscsoport neve **MyResourceGroup**, a virtuális gép neve pedig **MyWindowsVM**, a *resourceID* értéke pedig a következő lesz:
     
       ```xml

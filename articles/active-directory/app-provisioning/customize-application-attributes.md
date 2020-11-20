@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 42ec826ab95363c2599be541fe451473be5ca08d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f65fb37a4cc6640bc998af1c56e7852cccaba234
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441953"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955517"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Oktatóanyag – a felhasználó-kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -202,7 +202,7 @@ Az alábbi lépésekkel szerepköröket hozhat létre az alkalmazáshoz. Vegye f
   - **Megfontolandó dolgok**
     - Győződjön meg arról, hogy a rendszer nem rendel hozzá több szerepkört a felhasználóhoz. Nem garantáljuk, hogy melyik szerepkört kell kiépíteni.
     
-  - **Példa kimenetre** 
+  - **Példa kérésre (POST)** 
 
    ```json
     {
@@ -226,6 +226,21 @@ Az alábbi lépésekkel szerepköröket hozhat létre az alkalmazáshoz. Vegye f
    }
    ```
   
+  - **Példa kimenetre (javítás)** 
+    
+   ```
+   "Operations": [
+   {
+   "op": "Add",
+   "path": "roles",
+   "value": [
+   {
+   "value": "{\"id\":\"06b07648-ecfe-589f-9d2f-6325724a46ee\",\"value\":\"25\",\"displayName\":\"Role1234\"}"
+   }
+   ]
+   ```  
+A javítás és a POST kérelem formátuma eltérő. Annak biztosítása érdekében, hogy a POST és a PATCH ugyanolyan formátumban legyen elküldve, használhatja az [itt](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior)ismertetett funkció jelzőjét. 
+
 - **AppRoleAssignmentsComplex** 
   - **Mikor kell használni:** A AppRoleAssignmentsComplex kifejezés használatával több szerepkört is kiépítheti egy felhasználó számára. 
   - **Konfigurálás:** Szerkessze a fentiekben ismertetett támogatott attribútumok listáját, és adjon hozzá egy új attribútumot a szerepkörökhöz: 
@@ -318,7 +333,7 @@ Ha ezt a beállítást választja, a kiépítési szolgáltatás futása közben
 - A szerepkör attribútumot általában egy kifejezéssel kell leképezni, nem közvetlen hozzárendelést. A szerepkör-hozzárendeléssel kapcsolatos további részletekért lásd a fenti szakaszt. 
 - Noha letilthatja a csoportokat a leképezésekről, a felhasználók letiltása nem támogatott. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A felhasználók üzembe helyezésének és megszüntetésének automatizálása az SaaS-alkalmazásokban](user-provisioning.md)
 - [Kifejezések írása attribútum-leképezésekhez](functions-for-customizing-application-data.md)

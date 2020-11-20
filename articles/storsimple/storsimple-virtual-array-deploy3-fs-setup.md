@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05447db97311fb78707079528e0570b3fd42df59
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 244fdbf7cb723fe85e0987d176a13242f0bff064
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977578"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956823"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – beállítás fájlkiszolgáló használatával Azure Portal
 ![A virtuális tömb üzembe helyezéséhez szükséges lépéseket bemutató ábra. A harmadik lépés első része fájlkiszolgálóként van beállítva, és ki van emelve.](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 Ez a cikk a kezdeti beállítás végrehajtását, a StorSimple-fájlkiszolgáló regisztrálását, az eszköz telepítésének befejezését, valamint az SMB-megosztások létrehozását és kapcsolódását ismerteti. Ez a telepítési oktatóanyagok sorozatának utolsó cikke, amely a virtuális tömb fájlkiszolgáló vagy iSCSI-kiszolgáló általi teljes üzembe helyezéséhez szükséges.
 
-A telepítés és a konfigurálás folyamata körülbelül 10 percet vesz igénybe. A cikkben szereplő információk csak a StorSimple virtuális tömb üzembe helyezésére vonatkoznak. A StorSimple 8000 Series-eszközök üzembe helyezéséhez keresse fel a következőt: [a StorSimple 8000 Series eszköz üzembe helyezése a 2. frissítést futtató eszközön](storsimple-deployment-walkthrough-u2.md).
+A telepítés és a konfigurálás folyamata körülbelül 10 percet vesz igénybe. A cikkben szereplő információk csak a StorSimple virtuális tömb üzembe helyezésére vonatkoznak. A StorSimple 8000 Series-eszközök üzembe helyezéséhez keresse fel a következőt: [a StorSimple 8000 Series eszköz üzembe helyezése a 2. frissítést futtató eszközön](./storsimple-8000-deployment-walkthrough-u2.md).
 
 ## <a name="setup-prerequisites"></a>Telepítési előfeltételek
 A StorSimple virtuális tömb konfigurálása és beállítása előtt győződjön meg az alábbiakról:
@@ -49,13 +49,13 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
    
    `https://<ip-address of network interface>`
    
-   Használja az előző lépésben feljegyzett kapcsolatok URL-címét. Megjelenik egy hibaüzenet, amely azt jelzi, hogy probléma van a webhely biztonsági tanúsítványával. Kattintson **a folytatás erre a weblapra**gombra.
+   Használja az előző lépésben feljegyzett kapcsolatok URL-címét. Megjelenik egy hibaüzenet, amely azt jelzi, hogy probléma van a webhely biztonsági tanúsítványával. Kattintson **a folytatás erre a weblapra** gombra.
    
    ![A biztonsági tanúsítvány problémáját jelentő böngészőablak képernyőképe. Két hivatkozás látható, egyet a webhelyhez és egyet a felhasználó kezdőlapján.](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
-2. Jelentkezzen be a virtuális tömb webes felhasználói felületére **StorSimpleAdmin**néven. Adja meg a 3. lépésben módosított eszköz-rendszergazdai jelszót. a virtuális tömb elindítása a [StorSimple virtuális tömb kiépítése a Hyper-V-](storsimple-virtual-array-deploy2-provision-hyperv.md) ben vagy a [StorSimple virtuális tömb kiépítése a VMware](storsimple-virtual-array-deploy2-provision-vmware.md)-ben.
+2. Jelentkezzen be a virtuális tömb webes felhasználói felületére **StorSimpleAdmin** néven. Adja meg a 3. lépésben módosított eszköz-rendszergazdai jelszót. a virtuális tömb elindítása a [StorSimple virtuális tömb kiépítése a Hyper-V-](storsimple-virtual-array-deploy2-provision-hyperv.md) ben vagy a [StorSimple virtuális tömb kiépítése a VMware](storsimple-virtual-array-deploy2-provision-vmware.md)-ben.
    
    ![Képernyőkép a StorSimple bejelentkezési oldaláról. A StorSimpleAdmin-Felhasználónév látható, és a jelszó mező meghatározatlan karakterrel van kitöltve.](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
-3. A **kezdőlapra** kerül. Ez a lap a virtuális tömb konfigurálásához és a StorSimple Eszközkezelő szolgáltatásban való regisztrálásához szükséges különböző beállításokat ismerteti. A **hálózati beállítások**, a **webproxy beállításai**és az **időbeállítások** megadása nem kötelező. Az egyetlen szükséges beállítás az **eszközbeállítások** és a **felhő beállításai**.
+3. A **kezdőlapra** kerül. Ez a lap a virtuális tömb konfigurálásához és a StorSimple Eszközkezelő szolgáltatásban való regisztrálásához szükséges különböző beállításokat ismerteti. A **hálózati beállítások**, a **webproxy beállításai** és az **időbeállítások** megadása nem kötelező. Az egyetlen szükséges beállítás az **eszközbeállítások** és a **felhő beállításai**.
    
    ![Képernyőkép a kezdőlapról. A szöveg azt jelzi, hogy az eszköz nincs konfigurálva. A különféle típusú beállításokra mutató hivatkozások láthatók.](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
 4. A hálózati **adapterek** **hálózati beállítások** lapján a 0. adat automatikusan be lesz állítva. Az IP-címek automatikus beszerzéséhez minden hálózati adapter alapértelmezés szerint be van állítva. Ezért a rendszer automatikusan hozzárendel egy IP-címet, egy alhálózatot és egy átjárót (az IPv4 és az IPv6 esetében egyaránt).
@@ -63,7 +63,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
    ![Képernyőkép a hálózati beállítások lapról, amely a Internet Protocol különböző verzióihoz konfigurált IP-címeket tartalmazza.](./media/storsimple-virtual-array-deploy3-fs-setup/image5.png)
    
    Ha egynél több hálózati adaptert adott hozzá az eszköz kiépítés során, itt konfigurálhatja őket. Megjegyzés: a hálózati adaptert IPv4-ként vagy IPv4-ként vagy IPv6-ként is konfigurálhatja. Az IPv6-konfigurációk nem támogatottak.
-5. A DNS-kiszolgálókat azért kell használni, mert amikor az eszköz megpróbál kommunikálni a felhőalapú tárolási szolgáltatóktól, vagy ha fájlkiszolgálóként van konfigurálva, akkor az eszköz név szerinti feloldására van szükség. A **hálózati beállítások** lapon a **DNS-kiszolgálók**területen:
+5. A DNS-kiszolgálókat azért kell használni, mert amikor az eszköz megpróbál kommunikálni a felhőalapú tárolási szolgáltatóktól, vagy ha fájlkiszolgálóként van konfigurálva, akkor az eszköz név szerinti feloldására van szükség. A **hálózati beállítások** lapon a **DNS-kiszolgálók** területen:
    
    1. A rendszer automatikusan konfigurálja az elsődleges és másodlagos DNS-kiszolgálót. Ha statikus IP-címek konfigurálását választja, megadhatja a DNS-kiszolgálókat. A magas rendelkezésre állás érdekében javasoljuk, hogy állítson be egy elsődleges és egy másodlagos DNS-kiszolgálót.
    2. Kattintson az **alkalmaz** gombra a hálózati beállítások alkalmazásához és ellenőrzéséhez.
@@ -91,8 +91,8 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
    A **webproxy** oldalon:
    
    1. Adja meg a **webproxy URL** -címét a következő formátumban: *http:// &lt; Host-IP-cím vagy FQDN &gt; :P ORT száma*. Vegye figyelembe, hogy a HTTPS URL-címek nem támogatottak.
-   2. A **hitelesítést** a **Basic** vagy a **none**értékre kell beállítani.
-   3. Ha hitelesítést használ, meg kell adnia egy **felhasználónevet** és egy **jelszót**is.
+   2. A **hitelesítést** a **Basic** vagy a **none** értékre kell beállítani.
+   3. Ha hitelesítést használ, meg kell adnia egy **felhasználónevet** és egy **jelszót** is.
    4. Kattintson az **Alkalmaz** gombra. Ez a művelet érvényesíti és alkalmazza a konfigurált webproxy-beállításokat.
 10. (Opcionálisan) konfigurálhatja az eszköz időbeállítását, például az időzónát és az elsődleges és másodlagos NTP-kiszolgálókat. Az NTP-kiszolgálókra azért van szükség, mert az eszköznek szinkronizálnia kell az időt ahhoz, hogy hitelesíteni lehessen a felhőalapú szolgáltatóktól.
     
@@ -107,7 +107,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
 11. Adja meg az eszközhöz tartozó felhő beállításait. Ebben a lépésben elvégzi a helyi eszköz konfigurációját, majd regisztrálja az eszközt a StorSimple Eszközkezelő szolgáltatásával.
     
     1. Adja meg a **szolgáltatás regisztrációs kulcsát** , amelyet a [2. lépésben kapott: a StorSimple Virtual Array szolgáltatás regisztrációs kulcsának beszerzése](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) .
-    2. Ha az első eszköz regisztrálva van ezzel a szolgáltatással, akkor a **szolgáltatás adattitkosítási kulcsa**jelenik meg. Másolja ki ezt a kulcsot, és mentse egy biztonságos helyre. Erre a kulcsra a szolgáltatás regisztrációs kulcsának használatakor van szükség további eszközök regisztrálásához a StorSimple Eszközkezelő szolgáltatással. 
+    2. Ha az első eszköz regisztrálva van ezzel a szolgáltatással, akkor a **szolgáltatás adattitkosítási kulcsa** jelenik meg. Másolja ki ezt a kulcsot, és mentse egy biztonságos helyre. Erre a kulcsra a szolgáltatás regisztrációs kulcsának használatakor van szükség további eszközök regisztrálásához a StorSimple Eszközkezelő szolgáltatással. 
        
        Ha nem ez az első eszköz, amelyet a szolgáltatással regisztrál, meg kell adnia a szolgáltatás adattitkosítási kulcsát. További információt a [szolgáltatás adattitkosítási kulcsának](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) beszerzése a helyi webes felhasználói felületen című témakörben talál.
     3. Kattintson a **Regisztrálás** parancsra. Ekkor a rendszer újraindítja az eszközt. Előfordulhat, hogy várnia kell 2-3 percet, mielőtt az eszköz regisztrálása sikeresen megtörtént. Az eszköz újraindítása után megnyílik a bejelentkezési oldal.
@@ -134,11 +134,11 @@ A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következ
    
    1. A fájlkiszolgáló neve automatikusan ki lesz töltve.
     
-   2. Győződjön meg arról, hogy a Felhőbeli tároló titkosítása **engedélyezve**van. Ez a szolgáltatás titkosítja a felhőbe küldendő összes adathalmazt. 
+   2. Győződjön meg arról, hogy a Felhőbeli tároló titkosítása **engedélyezve** van. Ez a szolgáltatás titkosítja a felhőbe küldendő összes adathalmazt. 
     
    3. A titkosításhoz a felhasználó által definiált kulccsal a 256 bites AES-kulcsok használatosak. Adjon meg egy 32 karakterből álló kulcsot, majd írja be újra a kulcsot a megerősítéshez. A kulcs rögzítése egy kulcskezelő alkalmazásban későbbi használatra.
     
-   4. Kattintson a **kötelező beállítások konfigurálása** elemre a Storage-fiók hitelesítő adatainak megadásához az eszközzel való használathoz. Kattintson az **új hozzáadása** lehetőségre, ha nincsenek konfigurálva a Storage-fiók hitelesítő adatai. **Győződjön meg arról, hogy a használt Storage-fiók támogatja a Blobok blokkolását. Az oldal Blobok nem támogatottak.** További információ a [blobok és az oldal Blobok blokkokról](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+   4. Kattintson a **kötelező beállítások konfigurálása** elemre a Storage-fiók hitelesítő adatainak megadásához az eszközzel való használathoz. Kattintson az **új hozzáadása** lehetőségre, ha nincsenek konfigurálva a Storage-fiók hitelesítő adatai. **Győződjön meg arról, hogy a használt Storage-fiók támogatja a Blobok blokkolását. Az oldal Blobok nem támogatottak.** További információ a [blobok és az oldal Blobok blokkokról](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
    
       ![3. fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. A **Storage-fiók hitelesítő adatainak hozzáadása** panelen tegye a következőket: 
@@ -163,7 +163,7 @@ A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következ
    
    ![Fájlkiszolgáló 5b konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
    
-   Az eszköz állapota szintén **online**állapotra vált.
+   Az eszköz állapota szintén **online** állapotra vált.
    
    ![Fájlkiszolgáló 5c konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
    
@@ -173,7 +173,7 @@ A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következ
 Megosztás létrehozásához hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure.com/).
 
 #### <a name="to-create-a-share"></a>Megosztás létrehozása
-1. Válassza ki az előző lépésben konfigurált fájlkiszolgáló-eszközt, és kattintson a **..** . (vagy a jobb gombbal) elemre. A helyi menüben válassza a **megosztás hozzáadása**elemet. Azt is megteheti, hogy a **+ megosztás hozzáadása** lehetőségre kattint az eszköz parancssáv-sávján.
+1. Válassza ki az előző lépésben konfigurált fájlkiszolgáló-eszközt, és kattintson a **..** . (vagy a jobb gombbal) elemre. A helyi menüben válassza a **megosztás hozzáadása** elemet. Azt is megteheti, hogy a **+ megosztás hozzáadása** lehetőségre kattint az eszköz parancssáv-sávján.
    
    ![Megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs15m.png)
 2. Adja meg a következő megosztási beállításokat:
@@ -213,4 +213,3 @@ Ekkor csatlakoznia kell egy vagy több, az előző lépésben létrehozott megos
 
 ## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan használhatja a helyi webes felhasználói felületet a [StorSimple virtuális tömb felügyeletére](storsimple-ova-web-ui-admin.md).
-

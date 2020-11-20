@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: a951bc07c4a8ed42b1c116332d13674656bbaafd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eaa320e79f1d595303c6d9fe1399df12cb6c52b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75646795"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954409"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>Mi az a privát Azure DNS zóna?
 
@@ -25,14 +25,14 @@ Engedélyezheti az [automatikus regisztrálás](./private-dns-autoregistration.m
 
 ## <a name="limits"></a>Korlátok
 
-Ha szeretné megismerni, hogy hány privát DNS-zóna hozható létre egy előfizetésben, és hány rekordhalmaz támogatott a privát DNS-zónában, tekintse meg a [Azure DNS határértékeket](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
+Ha szeretné megismerni, hogy hány privát DNS-zóna hozható létre egy előfizetésben, és hány rekordhalmaz támogatott a privát DNS-zónában, tekintse meg a [Azure DNS határértékeket](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)
 
 ## <a name="restrictions"></a>Korlátozások
 
 * Az egycímkével ellátott privát DNS-zónák nem támogatottak. A privát DNS-zónának két vagy több címkével kell rendelkeznie. Például a contoso.com két címkéje van, és egy pont választja el egymástól. A privát DNS-zónák legfeljebb 34 címkével rendelkezhetnek.
 * A zóna-delegálások (NS-rekordok) nem hozhatók létre egy privát DNS-zónában. Ha gyermektartomány használatát kívánja használni, közvetlenül is létrehozhatja a tartományt magánhálózati DNS-zónáként, és összekapcsolhatja azt a virtuális hálózattal anélkül, hogy a szülő zónából névszerver-delegálást kellene beállítania.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan hozhat létre saját zónát Azure DNSban [Azure PowerShell](./private-dns-getstarted-powershell.md) vagy az [Azure CLI](./private-dns-getstarted-cli.md)használatával.
 

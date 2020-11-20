@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5c49a46dfcd97f5feb43b0b910476ef3ad6f402a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c7f4ab92e4cce3937a933fec97008c281a0eae
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742247"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954120"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>A StorSimple virtuális tömbben lévő megosztások vagy kötetek biztonsági mentése
 
@@ -28,7 +28,7 @@ ms.locfileid: "91742247"
 
 A StorSimple Virtual Array egy olyan hibrid felhőalapú tároló, amely egy fájlkiszolgáló vagy egy iSCSI-kiszolgálóként konfigurálható helyszíni virtuális eszköz. A virtuális tömb lehetővé teszi, hogy a felhasználó ütemezett és manuális biztonsági másolatokat hozzon létre az eszközön található összes megosztásról vagy kötetről. Ha fájlkiszolgálóként van konfigurálva, akkor az elemszintű helyreállítást is lehetővé teszi. Ez az oktatóanyag leírja, hogyan hozhat létre ütemezett és manuális biztonsági mentést, és hogyan végezhet elemszintű helyreállítást a törölt fájlok virtuális tömbön való visszaállításához.
 
-Ez az oktatóanyag csak a StorSimple virtuális tömbökre vonatkozik. Az 8000 sorozattal kapcsolatos információkért látogasson el a [biztonsági másolat létrehozása a 8000 Series eszközhöz](storsimple-manage-backup-policies-u2.md) című témakörben.
+Ez az oktatóanyag csak a StorSimple virtuális tömbökre vonatkozik. Az 8000 sorozattal kapcsolatos információkért látogasson el a [biztonsági másolat létrehozása a 8000 Series eszközhöz](./storsimple-8000-manage-backup-policies-u2.md) című témakörben.
 
 ## <a name="back-up-shares-and-volumes"></a>Megosztások és kötetek biztonsági mentése
 
@@ -46,11 +46,11 @@ A StorSimple Virtual Array egy alapértelmezett biztonsági mentési szabályzat
 
 #### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>Az alapértelmezett biztonsági mentési szabályzat kezdő időpontjának módosítása
 
-1. Válassza az **eszközök**lehetőséget. Ekkor megjelenik a StorSimple Eszközkezelő szolgáltatásban regisztrált eszközök listája. 
+1. Válassza az **eszközök** lehetőséget. Ekkor megjelenik a StorSimple Eszközkezelő szolgáltatásban regisztrált eszközök listája. 
    
     ![Navigáljon az eszközökhöz](./media/storsimple-virtual-array-backup/changebuschedule1.png)
 
-2. Válassza ki, majd kattintson az eszközre. Ekkor megjelenik a **Settings (beállítások** ) panel. Lépjen a **> biztonsági mentési szabályzatok kezelése**című lépésre.
+2. Válassza ki, majd kattintson az eszközre. Ekkor megjelenik a **Settings (beállítások** ) panel. Lépjen a **> biztonsági mentési szabályzatok kezelése** című lépésre.
    
     ![eszköz kiválasztása](./media/storsimple-virtual-array-backup/changebuschedule2.png)
 
@@ -66,11 +66,11 @@ Az ütemezett biztonsági mentések mellett bármikor manuálisan (igény szerin
 
 #### <a name="to-create-a-manual-backup"></a>Manuális biztonsági mentés létrehozása
 
-1. Válassza az **eszközök**lehetőséget. Válassza ki az eszközt, majd kattintson a jobb gombbal a kijelölt sor jobb szélén található **...** lehetőségre. A helyi menüben válassza a **biztonsági másolat**készítése lehetőséget.
+1. Válassza az **eszközök** lehetőséget. Válassza ki az eszközt, majd kattintson a jobb gombbal a kijelölt sor jobb szélén található **...** lehetőségre. A helyi menüben válassza a **biztonsági másolat** készítése lehetőséget.
    
     ![a biztonsági másolat készítéséhez navigáljon](./media/storsimple-virtual-array-backup/takebackup1m.png)
 
-2. A **biztonsági mentés** készítése panelen kattintson a **biztonsági mentés**készítése elemre. Ez a szolgáltatás a fájlkiszolgálón lévő összes megosztást vagy az iSCSI-kiszolgálón lévő összes kötetet biztonsági másolatot készíti. 
+2. A **biztonsági mentés** készítése panelen kattintson a **biztonsági mentés** készítése elemre. Ez a szolgáltatás a fájlkiszolgálón lévő összes megosztást vagy az iSCSI-kiszolgálón lévő összes kötetet biztonsági másolatot készíti. 
    
     ![biztonsági mentés indítása](./media/storsimple-virtual-array-backup/takebackup2m.png)
    
@@ -95,12 +95,12 @@ A meglévő biztonsági másolatok megtekintéséhez hajtsa végre a következő
 
 #### <a name="to-view-existing-backups"></a>Meglévő biztonsági másolatok megtekintése
 
-1. Lépjen az **eszközök** panelre. Válassza ki, majd kattintson az eszközre. A **Beállítások** panelen lépjen a **felügyelet > biztonsági mentési katalógus**elemre.
+1. Lépjen az **eszközök** panelre. Válassza ki, majd kattintson az eszközre. A **Beállítások** panelen lépjen a **felügyelet > biztonsági mentési katalógus** elemre.
    
     ![Navigáljon a biztonsági mentési katalógushoz](./media/storsimple-virtual-array-backup/viewbackups1.png)
 2. A szűréshez használandó következő feltételek megadása:
    
-   - **Időtartomány** – lehet az **elmúlt 1 óra**, az **elmúlt 24 óra**, az **elmúlt 7 nap**, az **elmúlt 30 nap**, az **elmúlt év**és az **Egyéni dátum**.
+   - **Időtartomány** – lehet az **elmúlt 1 óra**, az **elmúlt 24 óra**, az **elmúlt 7 nap**, az **elmúlt 30 nap**, az **elmúlt év** és az **Egyéni dátum**.
     
    - **Eszközök** – válassza ki a StorSimple Eszközkezelő szolgáltatásban regisztrált fájlkiszolgálók vagy iSCSI-kiszolgálók listáját.
    
@@ -115,4 +115,3 @@ A meglévő biztonsági másolatok megtekintéséhez hajtsa végre a következő
 ## <a name="next-steps"></a>Következő lépések
 
 További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).
-

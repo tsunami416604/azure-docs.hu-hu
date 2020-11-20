@@ -5,16 +5,17 @@ services: virtual-machines-linux
 author: axayjo
 manager: gwallace
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 0ae6366acf270d762b1c15563bfec1b2eb2a1b8d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ffbafb76fd2c6dd06a88bfd79746557889039cd6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421073"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956024"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Metrikák és naplók figyelése a Linux diagnosztikai bővítmény használatával
 
@@ -23,7 +24,7 @@ Ez a dokumentum a Linux diagnosztikai bővítmény 3,0-es és újabb verzióját
 > [!IMPORTANT]
 > A 2,3-es és régebbi verzióval kapcsolatos információkért tekintse meg [ezt a dokumentumot](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 A Linux diagnosztikai bővítmény segítségével a felhasználók figyelheti Microsoft Azure-on futó Linux rendszerű virtuális gépek állapotát. A következő képességekkel rendelkezik:
 
@@ -71,7 +72,7 @@ Támogatott disztribúciók és verziók:
 ### <a name="prerequisites"></a>Előfeltételek
 
 * Az **Azure Linux Agent 2.2.0-es vagy újabb verziója**. A legtöbb Azure-beli virtuális gép Linux-katalógusa tartalmaz 2.2.7 vagy újabb verziót. A futtatásával erősítse meg a `/usr/sbin/waagent -version` virtuális gépre telepített verziót. Ha a virtuális gép a vendég ügynök egy régebbi verzióját futtatja, a frissítéshez kövesse az [alábbi utasításokat](./update-linux-agent.md) .
-* **Azure CLI** -vel. [Állítsa be az Azure CLI](/cli/azure/install-azure-cli) -környezetet a gépen.
+* **Azure CLI**-vel. [Állítsa be az Azure CLI](/cli/azure/install-azure-cli) -környezetet a gépen.
 * A wget parancs, ha még nem tette meg: Futtatás `sudo apt-get install wget` .
 * Meglévő Azure-előfizetés és meglévő általános célú Storage-fiók az adattároláshoz.  Az általános célú Storage-fiókok támogatják a Table Storage-t, amelyhez szükség van.  A blob Storage-fiók nem fog működni.
 * Python 2
@@ -604,7 +605,7 @@ TransfersPerSecond | Olvasási vagy írási műveletek másodpercenként
 
 A rendszer az összes fájlrendszer összesített értékeit a beállítással szerezheti be `"condition": "IsAggregate=True"` . Az adott csatlakoztatott fájlrendszer, például a "/mnt" értékeit a beállítással lehet beolvasni `"condition": 'Name="/mnt"'` . 
 
-**Megjegyzés** : Ha a JSON helyett az Azure Portalt használja, a megfelelő feltétel mező űrlap a name = '/mnt '.
+**Megjegyzés**: Ha a JSON helyett az Azure Portalt használja, a megfelelő feltétel mező űrlap a name = '/mnt '.
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>beépített metrikák a lemez osztályhoz
 
@@ -820,7 +821,7 @@ A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azu
 
 A EventHubs-végponton közzétett üzenetek felhasználásának megismeréséhez tekintse meg a vonatkozó [EventHubs dokumentációját](../../event-hubs/event-hubs-about.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Metrikai riasztások létrehozása [Azure monitorban](../../azure-monitor/platform/alerts-classic-portal.md) a begyűjtött mérőszámokhoz.
 * [Figyelési diagramok](../../azure-monitor/platform/data-platform.md) létrehozása a mérőszámokhoz.

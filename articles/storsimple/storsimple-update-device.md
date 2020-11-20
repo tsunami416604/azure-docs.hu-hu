@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: dec354767875d91c6062cdfbb0009e857dbe2636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: faf06775b78c5a7c90cea000ac0a1eb768107ef4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056551"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956840"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>A StorSimple 8000 Series eszköz frissítése
 > [!NOTE]
-> A StorSimple klasszikus portálja elavult. A StorSimple-eszközkezelők automatikusan átkerülnek az új Azure Portalra az elavulási ütemezésnek megfelelően. Erről az áthelyezésről kapni fog egy e-mailt és egy Portal-értesítést. Ez a dokumentum hamarosan el lesz távolítva. Ha kérdései vannak az áthelyezéssel kapcsolatban, tekintse meg a [Gyakori kérdések: Váltás az Azure Portalra](storsimple-8000-move-azure-portal-faq.md) szakaszt.
+> A StorSimple klasszikus portálja elavult. A StorSimple-eszközkezelők automatikusan átkerülnek az új Azure Portalra az elavulási ütemezésnek megfelelően. Erről az áthelyezésről kapni fog egy e-mailt és egy Portal-értesítést. Ez a dokumentum hamarosan el lesz távolítva. Ha kérdései vannak az áthelyezéssel kapcsolatban, tekintse meg a [Gyakori kérdések: Váltás az Azure Portalra](./index.yml) szakaszt.
 
 ## <a name="overview"></a>Áttekintés
 A StorSimple-frissítések funkció lehetővé teszi a StorSimple-eszköz naprakészen tartását. A frissítési típustól függően a klasszikus Azure portálon vagy a Windows PowerShell felületén keresztül is alkalmazhat frissítéseket az eszközre. Ez az oktatóanyag ismerteti a frissítési típusokat és azok telepítésének módját.
@@ -120,6 +120,5 @@ A következő eljárások azt ismertetik, hogyan használhatók a Windows PowerS
 Ha egy eszköz visszaáll a gyári beállításokra, akkor az összes frissítés elvész. A gyári beállítások visszaállítása után az eszköz regisztrálása és konfigurálása után manuálisan kell telepítenie a frissítéseket a klasszikus Azure portálon és/vagy Windows PowerShell StorSimple-bővítménye. A gyári beállítások visszaállításával kapcsolatos további információkért lásd: [az eszköz visszaállítása a gyári alapértékekre](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
 
 ## <a name="next-steps"></a>Következő lépések
-* További információ a [StorSimple-eszköz felügyeletének Windows PowerShell StorSimple-bővítménye használatáról](storsimple-windows-powershell-administration.md).
-* További információ [a StorSimple Manager szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-manager-service-administration.md).
-
+* További információ a [StorSimple-eszköz felügyeletének Windows PowerShell StorSimple-bővítménye használatáról](./storsimple-8000-windows-powershell-administration.md).
+* További információ [a StorSimple Manager szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](./storsimple-8000-manager-service-administration.md).

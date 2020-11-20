@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: 2a030d9ca5422e12856dcb81b29f8327e684c97e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6b6649d03da319171b24baa24983972bf270679
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528653"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954545"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Az Azure IoT Hub Device Provisioning Service automatikus kiépítés használata a MXChip-IoT fejlesztői készlet regisztrálásához IoT Hub
 
@@ -30,9 +30,9 @@ A [MXChip IoT fejlesztői készlet](https://aka.ms/iot-devkit) egy all-in-One Ar
 
 Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következő feladatokat:
 
-* Konfigurálja a fejlesztői készlet Wi-Fiét, és készítse elő a fejlesztési környezetet a "fejlesztési környezet előkészítése" című szakaszban ismertetett lépéseket a [IoT fejlesztői készlet AZ3166 az Azure IoT hub a felhőben](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started#prepare-the-development-environment)című szakaszának lépéseit követve.
+* Konfigurálja a fejlesztői készlet Wi-Fiét, és készítse elő a fejlesztési környezetet a "fejlesztési környezet előkészítése" című szakaszban ismertetett lépéseket a [IoT fejlesztői készlet AZ3166 az Azure IoT hub a felhőben](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment)című szakaszának lépéseit követve.
 * Frissítsen a legújabb belső vezérlőprogram-re (1.3.0 vagy újabb verzióra) az [Update fejlesztői készlet belső vezérlőprogram](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) -oktatóanyagával.
-* Hozzon létre és csatoljon egy IoT Hubt egy eszköz kiépítési szolgáltatásának példányával a [IoT hub Device Provisioning Service beállítása a Azure Portal](/azure/iot-dps/quick-setup-auto-provision)használatával című rész lépéseit követve.
+* Hozzon létre és csatoljon egy IoT Hubt egy eszköz kiépítési szolgáltatásának példányával a [IoT hub Device Provisioning Service beállítása a Azure Portal](./quick-setup-auto-provision.md)használatával című rész lépéseit követve.
 
 ## <a name="open-sample-project"></a>Minta projekt megnyitása
 
@@ -40,7 +40,7 @@ Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következ
 
 1. Kattintson a `F1` parancs palettájának megnyitásához, írja be a parancsot, majd válassza az **Azure IoT Device Workbench: Megnyitás példák..**. lehetőséget. Ezután válassza a **IoT fejlesztői készlet** lehetőséget.
 
-1. A IoT Workbench-példák oldalon keresse meg az **eszközök regisztrációja a DPS-vel** és kattintson a **minta megnyitása**lehetőségre. Ezután kiválasztja a mintakód letöltésének alapértelmezett elérési útját.
+1. A IoT Workbench-példák oldalon keresse meg az **eszközök regisztrációja a DPS-vel** és kattintson a **minta megnyitása** lehetőségre. Ezután kiválasztja a mintakód letöltésének alapértelmezett elérési útját.
     ![Minta megnyitása](media/how-to-connect-mxchip-iot-devkit/open-sample.png)
 
 ## <a name="save-a-unique-device-secret-on-device-security-storage"></a>Egyedi eszköz titkos kulcsának mentése az eszköz biztonsági tárolóján
@@ -74,23 +74,23 @@ FRISSÍTÉSI mentése a fejlesztői készlet:
 
 ## <a name="update-the-global-device-endpoint-and-id-scope"></a>A globális eszköz végpontjának és AZONOSÍTÓjának hatókörének frissítése
 
-Az eszköz kódjában meg kell adnia az [eszköz kiépítési végpontját](/azure/iot-dps/concepts-service#device-provisioning-endpoint) és az azonosító hatókörét a bérlő elkülönítésének biztosításához.
+Az eszköz kódjában meg kell adnia az [eszköz kiépítési végpontját](./concepts-service.md#device-provisioning-endpoint) és az azonosító hatókörét a bérlő elkülönítésének biztosításához.
 
 1. A Azure Portal válassza ki az eszköz kiépítési szolgáltatásának **Áttekintés** paneljét, és jegyezze fel a **globális eszköz végpontját** és az **azonosító hatókörének** értékeit.
   ![Eszköz kiépítési szolgáltatás globális végpontja és azonosító hatóköre](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
 
-1. Nyissa meg a **DevKitDPS. Ino**programot. Keresse meg és `[Global Device Endpoint]` cserélje `[ID Scope]` le az imént feljegyzett értékeket.
+1. Nyissa meg a **DevKitDPS. Ino** programot. Keresse meg és `[Global Device Endpoint]` cserélje `[ID Scope]` le az imént feljegyzett értékeket.
   ![Eszköz kiépítési szolgáltatásának végpontja](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
 
 1. Töltse ki a `registrationId` változót a kódban. Csak alfanumerikus, kisbetűs és kötőjel kombináció megengedett, amely legfeljebb 128 karakterből állhat. Az értéket is fel kell jegyezni.
   ![Regisztrációs azonosító](media/how-to-connect-mxchip-iot-devkit/registration-id.png)
 
-1. Kattintson `F1` , írja be és válassza ki az **Azure IoT Device Workbench: eszköz kódjának feltöltése**elemet. Elindítja a kód fordítását és feltöltését a fejlesztői készlet.
+1. Kattintson `F1` , írja be és válassza ki az **Azure IoT Device Workbench: eszköz kódjának feltöltése** elemet. Elindítja a kód fordítását és feltöltését a fejlesztői készlet.
   ![Eszköz feltöltése](media/how-to-connect-mxchip-iot-devkit/device-upload.png)
 
 ## <a name="generate-x509-certificate"></a>X. 509 tanúsítvány előállítása
 
-A minta által használt [igazolási mechanizmus](/azure/iot-dps/concepts-device#attestation-mechanism) X. 509 tanúsítvány. A létrehozásához egy segédprogramot kell használnia.
+A minta által használt [igazolási mechanizmus](./concepts-service.md#attestation-mechanism) X. 509 tanúsítvány. A létrehozásához egy segédprogramot kell használnia.
 
 1. A VS Code-ban kattintson a elemre `F1` , írja be a parancsot, majd válassza az **új terminál megnyitása** lehetőséget a terminálablak megnyitásához.
 
@@ -104,7 +104,7 @@ A minta által használt [igazolási mechanizmus](/azure/iot-dps/concepts-device
 
 ## <a name="create-a-device-enrollment-entry"></a>Eszközregisztrációs bejegyzés létrehozása
 
-1. A Azure Portal nyissa meg az eszköz üzembe helyezése szolgáltatást, navigáljon a regisztrációk kezelése szakaszhoz, és kattintson az **Egyéni regisztráció hozzáadása**lehetőségre.
+1. A Azure Portal nyissa meg az eszköz üzembe helyezése szolgáltatást, navigáljon a regisztrációk kezelése szakaszhoz, és kattintson az **Egyéni regisztráció hozzáadása** lehetőségre.
   ![Egyéni regisztráció hozzáadása](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
 
 1. Kattintson a fájl ikonra az **elsődleges tanúsítvány. PEM vagy. cer fájl** mellett, hogy feltöltse a `.pem` létrehozott fájlt.
@@ -141,4 +141,3 @@ Ebben az oktatóanyagban megtanulta, hogyan regisztrálhat egy eszközt biztons�
 > * Ellenőrizze, hogy az eszköz regisztrálva van-e.
 
 Megtudhatja, hogyan [hozhat létre és helyezhet üzembe szimulált eszközt](./quick-create-simulated-device.md).
-

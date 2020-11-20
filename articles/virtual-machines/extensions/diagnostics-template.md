@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 8cde8fe7-977b-43d2-be74-ad46dc946058
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31f690277675650323763a7bc6872ad736f5776c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181f226a4d7aa37ffd8c667db4736a96450e2be5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837006"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955956"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Figyelés és diagnosztika használata Windows rendszerű virtuális gépekkel és Azure Resource Manager-sablonokkal
 A Azure Diagnostics bővítmény a Windows-alapú Azure-beli virtuális gépek monitorozási és diagnosztikai funkcióit biztosítja. Ezeket a képességeket a virtuális gépen engedélyezheti, ha a bővítményt a Azure Resource Manager sablon részeként is engedélyezi. A virtuálisgép-sablonok részét képező bővítményekkel kapcsolatos további információkért lásd: [Azure Resource Manager sablonok létrehozása VM-bővítményekkel](../windows/template-description.md#extensions) . Ez a cikk azt ismerteti, hogyan adhatja hozzá a Azure Diagnostics bővítményt egy Windows rendszerű virtuálisgép-sablonhoz.  
@@ -62,7 +63,7 @@ Egy egyszerű Resource Manager-alapú virtuális gép esetében adja hozzá a b�
 ]
 ```
 
-Egy másik gyakori szabály, hogy hozzáadja a bővítmény konfigurációját a sablon gyökérszintű erőforrások csomópontján ahelyett, hogy a virtuális gép erőforrásai csomópont alatt kellene meghatároznia. Ezzel a módszerrel explicit módon meg kell adnia a kiterjesztés és a virtuális gép közötti hierarchikus kapcsolatot a *név* és a *típus* értékével. Példa: 
+Egy másik gyakori szabály, hogy hozzáadja a bővítmény konfigurációját a sablon gyökérszintű erőforrások csomópontján ahelyett, hogy a virtuális gép erőforrásai csomópont alatt kellene meghatároznia. Ezzel a módszerrel explicit módon meg kell adnia a kiterjesztés és a virtuális gép közötti hierarchikus kapcsolatot a *név* és a *típus* értékével. Például: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -79,7 +80,7 @@ A *Name (név* ) tulajdonság értéke használható az erőforráscsoport kiter
 
 A *typeHandlerVersion* meghatározza a használni kívánt bővítmény verzióját. A *autoUpgradeMinorVersion* alverziójának **true** értékre állításával biztosíthatja, hogy a bővítmény legújabb, másodlagos verziója elérhető legyen. Erősen ajánlott mindig a *autoUpgradeMinorVersion* beállítani, hogy mindig **igaz** legyen, hogy mindig a legújabb elérhető diagnosztikai bővítményt használja az új funkciókkal és hibajavításokkal. 
 
-A *Settings (beállítások* ) elem a bővítmény konfigurációs tulajdonságait tartalmazza, amely beállítható és olvasható a bővítményből (más néven nyilvános konfiguráció). A *xmlcfg* tulajdonság a diagnosztikai naplók, a teljesítményszámlálók stb. XML-alapú konfigurációját tartalmazza, amelyeket a diagnosztika ügynöke gyűjt. Az XML-sémával kapcsolatos további információkért tekintse meg a [diagnosztika konfigurációs sémáját](../../azure-monitor/platform/diagnostics-extension-schema-windows.md) . Az általános gyakorlat az, hogy a tényleges XML-konfigurációt változóként tárolja a Azure Resource Manager sablonban, majd összefűzi és base64 kódolja őket a *xmlcfg*értékének beállításához. Tekintse meg a [diagnosztikai konfigurációs változók](#diagnostics-configuration-variables) című szakaszt, és Ismerje meg, hogyan tárolhatja az XML-változókat. A *storageAccount* tulajdonság annak a Storage-fióknak a nevét adja meg, amelybe a diagnosztikai adatait át szeretné adni. 
+A *Settings (beállítások* ) elem a bővítmény konfigurációs tulajdonságait tartalmazza, amely beállítható és olvasható a bővítményből (más néven nyilvános konfiguráció). A *xmlcfg* tulajdonság a diagnosztikai naplók, a teljesítményszámlálók stb. XML-alapú konfigurációját tartalmazza, amelyeket a diagnosztika ügynöke gyűjt. Az XML-sémával kapcsolatos további információkért tekintse meg a [diagnosztika konfigurációs sémáját](../../azure-monitor/platform/diagnostics-extension-schema-windows.md) . Az általános gyakorlat az, hogy a tényleges XML-konfigurációt változóként tárolja a Azure Resource Manager sablonban, majd összefűzi és base64 kódolja őket a *xmlcfg* értékének beállításához. Tekintse meg a [diagnosztikai konfigurációs változók](#diagnostics-configuration-variables) című szakaszt, és Ismerje meg, hogyan tárolhatja az XML-változókat. A *storageAccount* tulajdonság annak a Storage-fióknak a nevét adja meg, amelybe a diagnosztikai adatait át szeretné adni. 
 
 A *protectedsettingsfromkeyvault* (más néven privát konfiguráció) tulajdonságai megadhatók, de a beállítás után nem olvasható vissza. A *protectedsettingsfromkeyvault* csak írható természete lehetővé teszi a titkos kulcsok, például a diagnosztikai adatok írására szolgáló Storage-fiók kulcsának tárolására.    
 

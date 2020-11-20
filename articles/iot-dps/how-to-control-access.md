@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3a374dae89ddf22d33bc44cafd9db3b4b6a9e6fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 024dbf6518748a4048873de4eb54a53f9d9a6362
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336820"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954324"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Az Azure IoT Hub Device Provisioning Service hozzáférés-vezérlése
 
@@ -178,7 +178,7 @@ A következő témakörök további információkat nyújtanak a IoT-eszközök 
 
 A következő táblázat felsorolja azokat az engedélyeket, amelyek segítségével szabályozhatja a IoT-eszközök kiépítési szolgáltatásának elérését.
 
-| Engedély | Jegyzetek |
+| Engedély | Megjegyzések |
 | --- | --- |
 | **ServiceConfig** |Hozzáférést biztosít a szolgáltatás konfigurációinak módosításához. <br/>Ezt az engedélyt a háttérbeli Cloud Services használja. |
 | **EnrollmentRead** |Olvasási hozzáférést biztosít az eszközök regisztrálásához és a beléptetési csoportokhoz. <br/>Ezt az engedélyt a háttérbeli Cloud Services használja. |
@@ -192,4 +192,4 @@ A következő táblázat felsorolja azokat az engedélyeket, amelyek segítség�
 [lnk-sdks]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-management-portal]: https://portal.azure.com
 [lnk-azure-resource-manager]: ../azure-resource-manager/management/overview.md
-[lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iot-dps/
+[lnk-resource-provider-apis]: /rest/api/iot-dps/

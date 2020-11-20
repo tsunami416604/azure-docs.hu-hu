@@ -8,17 +8,18 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e38fcd069fa6a3e8582dcd96b2bd0b4074986de7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511160"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955803"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>A kívánt állapot konfigurációs bővítménye Azure Resource Manager-sablonokkal
 
@@ -81,7 +82,7 @@ További információ: [VirtualMachineExtension osztály](/dotnet/api/microsoft.
 ## <a name="template-example-for-windows-virtual-machine-scale-sets"></a>Példa sablonra a Windows rendszerű virtuálisgép-méretezési csoportokhoz
 
 A virtuálisgép-méretezési csoport csomópontja tartalmaz egy **VirtualMachineProfile, extensionProfile** attribútummal rendelkező **Properties** szakaszt.
-A **bővítmények**területen adja meg a DSC-bővítmény részleteit.
+A **bővítmények** területen adja meg a DSC-bővítmény részleteit.
 
 A DSC-bővítmény örökli az alapértelmezett bővítmény tulajdonságait.
 További információ: [VirtualMachineScaleSetExtension osztály](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet).
@@ -179,7 +180,7 @@ Az alapértelmezett konfigurációs parancsfájlhoz elérhető argumentumok list
 
 | Tulajdonság neve | Típus | Leírás |
 | --- | --- | --- |
-| Settings. wmfVersion |sztring |A Windows Management Framework (WMF) azon verzióját adja meg, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot a **legújabbra** állítja, a a WMF legújabb verzióját telepíti. Jelenleg a tulajdonság egyetlen lehetséges értéke **4,0**, **5,0**, **5,1**és **Latest**. Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a **legújabb**. |
+| Settings. wmfVersion |sztring |A Windows Management Framework (WMF) azon verzióját adja meg, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot a **legújabbra** állítja, a a WMF legújabb verzióját telepíti. Jelenleg a tulajdonság egyetlen lehetséges értéke **4,0**, **5,0**, **5,1** és **Latest**. Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a **legújabb**. |
 | settings.configszülő. URL |sztring |Azt az URL-címet adja meg, amelyből le szeretné tölteni a DSC Configuration. zip fájlt. Ha a megadott URL-címnek szüksége van egy SAS-tokenre a hozzáféréshez, állítsa a **protectedSettings.configurationUrlSasToken** tulajdonságot az SAS-token értékére. Ez a tulajdonság akkor szükséges, ha **settings.configszülő. script** vagy **settings.configszülő. Function** van definiálva. Ha nem adott meg értéket ezekhez a tulajdonságokhoz, a bővítmény meghívja az alapértelmezett konfigurációs parancsfájlt a Location Configuration Manager (LCD) metaadatainak beállításához, és meg kell adni az argumentumokat. |
 | settings.configszülő. script |sztring |A DSC-konfiguráció definícióját tartalmazó parancsfájl fájlnevét adja meg. A szkriptnek a **settings.configszülő. URL** tulajdonság által megadott URL-címről letöltött. zip fájl gyökérkönyvtárában kell lennie. Ez a tulajdonság akkor szükséges, ha **settings.configszülő. URL** vagy **settings.configszülő. script** van definiálva. Ha nem adott meg értéket ezekhez a tulajdonságokhoz, a bővítmény meghívja az alapértelmezett konfigurációs parancsfájlt, amely az LCD-metaadatokat állítja be, és az argumentumokat meg kell adni. |
 | settings.configszülő. Function |sztring |Megadja a DSC-konfiguráció nevét. A nevű konfigurációnak szerepelnie kell a parancsfájlban, amely **settings.configszülő. script** definiál. Ez a tulajdonság akkor szükséges, ha **settings.configszülő. URL** vagy **settings.configszülő. Function** van definiálva. Ha nem adott meg értéket ezekhez a tulajdonságokhoz, a bővítmény meghívja az alapértelmezett konfigurációs parancsfájlt, amely az LCD-metaadatokat állítja be, és az argumentumokat meg kell adni. |
@@ -201,7 +202,7 @@ A DSC-bővítmény alapértelmezett konfigurációs parancsfájlja csak az aláb
 | protectedSettings.configurationArguments. RegistrationKey |PSCredential |Kötelező tulajdonság. Meghatározza azt a kulcsot, amelyet egy csomóponthoz használ a Azure Automation szolgáltatásban egy PowerShell hitelesítőadat-objektum jelszavaként való regisztráláshoz. Ez az érték automatikusan felderíthető az Automation-fiók **listkeys műveletének beolvasása** metódusának használatával.  Lásd a [példát](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments. RegistrationUrl |sztring |Kötelező tulajdonság. Megadja annak az Automation-végpontnak az URL-címét, amelyben a csomópont megpróbál regisztrálni. Ez az érték automatikusan felderíthető az Automation-fiókra vonatkozó **hivatkozási** módszer használatával. |
 | settings.configurationArguments. NodeConfigurationName |sztring |Kötelező tulajdonság. Megadja az Automation-fiók csomópont-konfigurációját a csomóponthoz való hozzárendeléshez. |
-| settings.configurationArguments.ConfigurationMode |sztring |Megadja az LCD/ChipOnGlas üzemmódot. Az érvényes beállítások a következők: **ApplyOnly**, **ApplyandMonitor**és **ApplyandAutoCorrect**.  Az alapértelmezett érték a **ApplyandMonitor**. |
+| settings.configurationArguments.ConfigurationMode |sztring |Megadja az LCD/ChipOnGlas üzemmódot. Az érvényes beállítások a következők: **ApplyOnly**, **ApplyandMonitor** és **ApplyandAutoCorrect**.  Az alapértelmezett érték a **ApplyandMonitor**. |
 | settings.configurationArguments. RefreshFrequencyMins | UInt32 | Meghatározza, hogy az LCD-eszköz milyen gyakran próbálkozzon az Automation-fiókkal a frissítésekhez.  Az alapértelmezett érték **30**.  A minimális érték **15**. |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | UInt32 | Azt határozza meg, hogy az LCD/ChipOnGlas milyen gyakran ellenőrizze az aktuális konfigurációt. Az alapértelmezett érték **15**. A minimális érték **15**. |
 | settings.configurationArguments. RebootNodeIfNeeded | boolean | Meghatározza, hogy a csomópontok automatikusan újraindulnak-e, ha egy DSC-művelet kéri. Az alapértelmezett érték **false (hamis**). |
@@ -294,7 +295,7 @@ A következő példa lekéri a **RegistrationUrl** és a **RegistrationKey** az 
 
 ## <a name="update-from-a-previous-format"></a>Frissítés korábbi formátumból
 
-A bővítmény korábbi formátumában (és a **ModulesUrl**, **ModuleSource**, **ModuleVersion**, **ConfigurationFunction**, **SasToken**vagy **Properties**) lévő beállítások automatikusan alkalmazkodnak a bővítmény aktuális formátumához.
+A bővítmény korábbi formátumában (és a **ModulesUrl**, **ModuleSource**, **ModuleVersion**, **ConfigurationFunction**, **SasToken** vagy **Properties**) lévő beállítások automatikusan alkalmazkodnak a bővítmény aktuális formátumához.
 Ugyanúgy futnak, mint korábban.
 
 Az alábbi séma azt mutatja be, hogy az előző beállítások séma milyen módon nézett ki:
@@ -393,7 +394,7 @@ Győződjön meg arról, hogy az összes URL-cím a bővítmény által a távol
 
 **Probléma**: a *ConfigurationArguments* tulajdonság nem oldható fel **kivonatoló tábla** objektumra.
 
-**Megoldás**: a *ConfigurationArguments* tulajdonságot **kivonatoló táblázatként**adja meg.
+**Megoldás**: a *ConfigurationArguments* tulajdonságot **kivonatoló táblázatként** adja meg.
 Kövesse az előző példákban megadott formátumot. Tekintse meg az idézőjeleket, a vesszőket és a kapcsos zárójeleket.
 
 ### <a name="duplicate-configurationarguments"></a>Ismétlődő ConfigurationArguments
@@ -425,7 +426,7 @@ A "" duplikált argumentumok találhatók {0} a nyilvános és a védett configu
 - Adja meg a hiányzó tulajdonságot.
 - Távolítsa el a hiányzó tulajdonságot igénylő tulajdonságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [, hogyan használhatja a virtuálisgép-méretezési csoportokat az Azure DSC bővítménnyel](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md).
 - További információ a [DSC biztonságos hitelesítőadat-kezeléséről](dsc-credentials.md).

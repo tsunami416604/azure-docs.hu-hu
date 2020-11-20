@@ -7,13 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c5346858aa119f11ef34916b24c70c966286ab86
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 91ef218abc51cbdf079fd9e1baa8eb2b907087df
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089043"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954205"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Az Azure Spring Cloud-problémák gyakori problémáinak elhárítása
 
@@ -21,7 +20,6 @@ Ez a cikk útmutatást nyújt az Azure Spring Cloud Development-problémák mego
 
 ## <a name="availability-performance-and-application-issues"></a>Rendelkezésre állással, teljesítménnyel és alkalmazásokkal kapcsolatos problémák
 
-::: zone pivot="programming-language-java"
 ### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>Az alkalmazás nem indítható el (például a végpont nem csatlakoztatható, vagy egy 502 értéket ad vissza néhány újrapróbálkozás után)
 
 Exportálja a naplókat az Azure Log Analyticsba. A rugós alkalmazások naplóihoz tartozó tábla neve *AppPlatformLogsforSpring*. További információ: [naplók és mérőszámok elemzése diagnosztikai beállításokkal](diagnostic-services.md).
@@ -38,21 +36,21 @@ A szolgáltatási kötések az alkalmazás indítási hibáját is okozhatják. 
 
 > "Java. SQL. SQLException: a kiszolgáló időzóna-értéke" egyezményes világidő "nem ismerhető fel, vagy egynél több időzónát jelöl."
 
-A hiba elhárításához lépjen a MySQL- `server parameters` példányhoz, és módosítsa az értéket a `time_zone` *rendszerről* a *+ 0:00*értékre.
+A hiba elhárításához lépjen a MySQL- `server parameters` példányhoz, és módosítsa az értéket a `time_zone` *rendszerről* a *+ 0:00* értékre.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Az alkalmazás összeomlik, vagy váratlan hibát ad vissza
 
 Az alkalmazások összeomlásának hibakereséséhez először ellenőrizze az alkalmazás futási állapotát és felderítési állapotát. Ehhez nyissa meg a Azure Portal _alkalmazás-kezelés_ elemét, és győződjön meg arról, hogy az összes alkalmazás állapota _fut_ és _fel van állítva_.
 
-* Ha az állapot _fut_ , de a felderítési állapot nem áll _fenn, lépjen_a ["saját alkalmazás nem regisztrálható"](#my-application-cant-be-registered) szakaszra.
+* Ha az állapot _fut_ , de a felderítési állapot nem áll _fenn, lépjen_ a ["saját alkalmazás nem regisztrálható"](#my-application-cant-be-registered) szakaszra.
 
 * Ha a felderítés állapota _fel van állítva_, a metrikák elemre kattintva ellenőrizze az alkalmazás állapotát. Vizsgálja meg a következő metrikákat:
 
 
   - `TomcatErrorCount` (_tomcat. Global. Error_): az összes Spring Application-kivételt itt számoljuk el. Ha ez a szám nagy, nyissa meg az Azure Log Analytics az alkalmazás naplófájljainak vizsgálatához.
 
-  - `AppMemoryMax` (_JVM. Memory. max_): az alkalmazás számára rendelkezésre álló memória maximális mennyisége. Lehet, hogy az összeg nem definiált, vagy idővel változhat, ha meg van adva. Ha meg van adva, a felhasznált és az előjegyzett memória mennyisége mindig kisebb vagy egyenlő, mint Max. Előfordulhat azonban, hogy egy memória kiosztása egy `OutOfMemoryError` üzenettel meghiúsul, ha a foglalás a használt memóriát úgy próbálja megjavítani, hogy az *> véglegesítése*során is felhasználja, még akkor is, ha *<= Max* még mindig igaz. Ilyen esetben próbálja meg a maximális halom méretének növelését a `-Xmx` paraméter használatával.
+  - `AppMemoryMax` (_JVM. Memory. max_): az alkalmazás számára rendelkezésre álló memória maximális mennyisége. Lehet, hogy az összeg nem definiált, vagy idővel változhat, ha meg van adva. Ha meg van adva, a felhasznált és az előjegyzett memória mennyisége mindig kisebb vagy egyenlő, mint Max. Előfordulhat azonban, hogy egy memória kiosztása egy `OutOfMemoryError` üzenettel meghiúsul, ha a foglalás a használt memóriát úgy próbálja megjavítani, hogy az *> véglegesítése* során is felhasználja, még akkor is, ha *<= Max* még mindig igaz. Ilyen esetben próbálja meg a maximális halom méretének növelését a `-Xmx` paraméter használatával.
 
   - `AppMemoryUsed` (_JVM. Memory. használt_): az alkalmazás által jelenleg használt memória mennyisége bájtban kifejezve. A normál betöltésű Java-alkalmazások esetében ez a metrika egy *fűrészfog* mintát alkot, ahol a memóriahasználat folyamatosan nő és csökken, és hirtelen leesik, majd a mintázat ismétlődik. Ez a metrikai sorozat a Java virtuális gépen belüli adatgyűjtési művelet miatt következik be, ahol a gyűjtési műveletek a fűrészfog mintában lévő cseppeket jelölik.
     
@@ -69,7 +67,6 @@ Az alkalmazások összeomlásának hibakereséséhez először ellenőrizze az a
 
 
 Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/get-started-portal.md)című témakört.
-::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Az alkalmazás CPU- vagy memóriahasználata magas
 
@@ -79,9 +76,9 @@ Ha az alkalmazás magas CPU-vagy memóriahasználat-használatot tapasztal, az e
 
 A következő esetekben érdemes megállapítani, hogy melyik helyzet érvényes:
 
-1. Lépjen a **metrikák**elemre, majd válassza ki a **szolgáltatás CPU-kihasználtságának százalékos arányát** vagy a **használt szolgáltatási memóriát**.
+1. Lépjen a **metrikák** elemre, majd válassza ki a **szolgáltatás CPU-kihasználtságának százalékos arányát** vagy a **használt szolgáltatási memóriát**.
 2. Adjon hozzá egy **app =** filtert a figyelni kívánt alkalmazás megadásához.
-3. A metrikák felosztása **példány**szerint.
+3. A metrikák felosztása **példány** szerint.
 
 Ha az *összes példány* magas CPU-vagy memóriahasználat-használatot tapasztal, ki kell bővíteni az alkalmazást, vagy fel kell mérnie a processzor vagy a memória használatát. További információ: [oktatóanyag: alkalmazások méretezése az Azure Spring Cloud-ban](spring-cloud-tutorial-scale-manual.md).
 
@@ -93,7 +90,6 @@ Ha minden példány fut, lépjen az Azure Log Analyticsra az alkalmazás naplóf
 
 Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/get-started-portal.md)című témakört. A naplókat a [Kusto lekérdezési nyelv](/azure/kusto/query/)használatával kérdezheti le.
 
-::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Ellenőrzőlista a Spring-alkalmazás üzembe helyezéséhez az Azure Spring Cloud-ban
 
 Az alkalmazás előkészítése előtt győződjön meg arról, hogy az megfelel a következő feltételeknek:
@@ -105,7 +101,6 @@ Az alkalmazás előkészítése előtt győződjön meg arról, hogy az megfelel
 * A JVM paraméterei a várt értékekkel rendelkeznek.
 * Javasoljuk, hogy tiltsa le vagy távolítsa el a beágyazott _konfigurációs kiszolgálót_ és a _Spring Service Registry_ Servicest az alkalmazáscsomag alapján.
 * Ha vannak _szolgáltatáskötéssel_ kötni kívánt Azure-erőforrások, ellenőrizze, hogy a célerőforrások működnek-e.
-::: zone-end
 
 ## <a name="configuration-and-management"></a>Konfigurálás és felügyelet
 
@@ -124,7 +119,6 @@ Ha az Azure Spring Cloud Service-példányt a Resource Manager-sablonnal szeretn
 
 A rendszer az Azure Spring Cloud Service-példány nevét fogja használni a (z) altartomány nevének megadásához `azureapps.io` , így a telepítés sikertelen lesz, ha a név ütközik egy meglévővel. Előfordulhat, hogy további részleteket talál a tevékenység naplóiban.
 
-::: zone pivot="programming-language-java"
 ### <a name="i-cant-deploy-a-net-core-app"></a>Nem tudok .NET Core-alkalmazást üzembe helyezni
 
 A .NET Core Steeltoe alkalmazáshoz nem tölthet fel *. zip* fájlt a Azure Portal vagy a Resource Manager-sablon használatával.
@@ -132,9 +126,7 @@ A .NET Core Steeltoe alkalmazáshoz nem tölthet fel *. zip* fájlt a Azure Port
 Az alkalmazáscsomag [Azure CLI](/cli/azure/get-started-with-azure-cli)-vel történő telepítésekor az Azure CLI rendszeresen lekérdezi a telepítési folyamatot, és végül megjeleníti a központi telepítés eredményét.
 
 Győződjön meg arról, hogy az alkalmazás a megfelelő *. zip* -fájlformátumban van csomagolva. Ha nem megfelelően van csomagolva, a folyamat nem válaszol, vagy hibaüzenet jelenik meg.
-::: zone-end
 
-::: zone pivot="programming-language-java"
 ### <a name="i-cant-deploy-a-jar-package"></a>Nem tudok telepíteni egy JAR-csomagot
 
 A Java Archive file (JAR)/Source csomag nem tölthető fel a Azure Portal vagy a Resource Manager-sablon használatával.
@@ -232,7 +224,6 @@ Ellenőrizze, hogy a `spring-boot-actuator` függőség engedélyezve van-e az a
 ```
 
 Ha az alkalmazás naplói archiválható egy Storage-fiókba, de az Azure Log Analyticsba nem küldték, ellenőrizze, hogy [helyesen állította-e be a munkaterületet](../azure-monitor/learn/quick-create-workspace.md). Ha az Azure Log Analytics ingyenes szintjét használja, vegye figyelembe, hogy [az ingyenes szint nem biztosít szolgáltatói szerződést (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
-::: zone-end
 
 ## <a name="next-steps"></a>Következő lépések
 

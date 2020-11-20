@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
-ms.openlocfilehash: a27c4519024d6d3d2f3852534619b5f8c2bb5e43
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 85b681cbeb1b06784529e321c9e907ab2bdecb73
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489608"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954647"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Metrikák és riasztások Azure DNS
 A Azure DNS olyan DNS-tartományok üzemeltetési szolgáltatása, amelyek névfeloldást biztosítanak a Microsoft Azure-infrastruktúra használatával. Ez a cikk a Azure DNS szolgáltatás metrikáit és riasztásait ismerteti.
@@ -47,7 +47,7 @@ A metrika megtekintéséhez válassza a metrikák (előzetes verzió) Explorer f
 *Ábra: Azure DNS lekérdezési kötetek mérőszámai*
 
 ### <a name="record-set-count"></a>Rekordok készletének száma
-A rekordhalmazok *száma metrika a* DNS-zóna Azure DNSban lévő rekordhalmazok számát jeleníti meg. A zónában definiált összes rekordhalmaz számít. A mértékegység a darabszám, az Összesítés pedig a rekordhalmazok maximális száma. A metrika megtekintéséhez válassza a **metrikák (előzetes verzió)** Explorer felületét a Azure Portal **figyelés** lapján. Válassza ki a DNS-zónát az **erőforrás** legördülő menüből, válassza a **rekordok száma** mérőszámot, majd válassza a **Max** elemet az **Összesítés**elemnél. További információ a Metrikaböngészői élményről és a diagramokról: [Azure Monitor Metrikaböngésző](../azure-monitor/platform/metrics-charts.md). 
+A rekordhalmazok *száma metrika a* DNS-zóna Azure DNSban lévő rekordhalmazok számát jeleníti meg. A zónában definiált összes rekordhalmaz számít. A mértékegység a darabszám, az Összesítés pedig a rekordhalmazok maximális száma. A metrika megtekintéséhez válassza a **metrikák (előzetes verzió)** Explorer felületét a Azure Portal **figyelés** lapján. Válassza ki a DNS-zónát az **erőforrás** legördülő menüből, válassza a **rekordok száma** mérőszámot, majd válassza a **Max** elemet az **Összesítés** elemnél. További információ a Metrikaböngészői élményről és a diagramokról: [Azure Monitor Metrikaböngésző](../azure-monitor/platform/metrics-charts.md). 
 
 ![Rekordok készletének száma](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
@@ -62,7 +62,7 @@ A rekordhalmaz *kapacitás-kihasználtsági* mérőszáma Azure DNS a DNS-zóná
 *Ábra: Azure DNS rekordazonosító kapacitás kihasználtsági metrikái*
 
 ## <a name="alerts-in-azure-dns"></a>Riasztások Azure DNS
-A Azure Monitor lehetővé teszi az elérhető metrikai értékek elleni riasztás lehetőségét. A DNS-metrikák a riasztások új konfigurációs felületén érhetők el. A [Azure monitor riasztások dokumentációjában](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)részletesen leírtak szerint kiválaszthatja a DNS-zónát erőforrásként, kiválaszthatja a metrikai jel típusát, valamint konfigurálhatja a riasztási logikát és egyéb paramétereket, például az **időtartamot** és a **gyakoriságot**. A riasztási feltétel teljesülése esetén tovább definiálhat egy [műveleti csoportot](../azure-monitor/platform/action-groups.md) , amely a riasztást a kiválasztott műveleteken keresztül továbbítja. A Azure Monitor metrikákkal kapcsolatos riasztások konfigurálásával kapcsolatos további információkért lásd: [riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
+A Azure Monitor lehetővé teszi az elérhető metrikai értékek elleni riasztás lehetőségét. A DNS-metrikák a riasztások új konfigurációs felületén érhetők el. A [Azure monitor riasztások dokumentációjában](../azure-monitor/platform/alerts-metric.md)részletesen leírtak szerint kiválaszthatja a DNS-zónát erőforrásként, kiválaszthatja a metrikai jel típusát, valamint konfigurálhatja a riasztási logikát és egyéb paramétereket, például az **időtartamot** és a **gyakoriságot**. A riasztási feltétel teljesülése esetén tovább definiálhat egy [műveleti csoportot](../azure-monitor/platform/action-groups.md) , amely a riasztást a kiválasztott műveleteken keresztül továbbítja. A Azure Monitor metrikákkal kapcsolatos riasztások konfigurálásával kapcsolatos további információkért lásd: [riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/platform/alerts-metric.md). 
 
 ## <a name="next-steps"></a>Következő lépések
 - További információ a [Azure DNSról](dns-overview.md).

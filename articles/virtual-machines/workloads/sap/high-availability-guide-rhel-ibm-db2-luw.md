@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: d613da4d9abdfe22fc20f1b74da41e4a65cbff33
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: be455de2a1f8aebc7327af4741e0652a4be76665
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151575"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956432"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux Serveren
 
@@ -33,7 +34,7 @@ A támogatott IBM DB2-verziók 10,5-es és újabb verziójúak, az SAP Note [192
 
 A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket és dokumentációt:
 
-| SAP-Megjegyzés | Description |
+| SAP-Megjegyzés | Leírás |
 | --- | --- |
 | [1928533] | SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] | SAP az Azure-on: támogatási előfeltételek |
@@ -144,7 +145,7 @@ Győződjön meg arról, hogy a kiválasztott operációs rendszer támogatja az
 
 ## <a name="create-the-pacemaker-cluster"></a>A pacemaker-fürt létrehozása
     
-Ha alapszintű pacemaker-fürtöt szeretne létrehozni ehhez az IBM DB2-kiszolgálóhoz, tekintse [meg a pacemaker beállítása Red Hat Enterprise Linux az Azure-ban][rhel-pcs-azr]című témakört. 
+Ha alapszintű pacemaker-fürtöt szeretne létrehozni ehhez az IBM DB2-kiszolgálóhoz, tekintse [meg a pacemaker beállítása Red Hat Enterprise Linux az Azure-ban][rhel-pcs-azr]című témakört. 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>Az IBM DB2-LUW és az SAP-környezet telepítése
 
@@ -197,9 +198,9 @@ Az előző paramétereket a kezdeti feladatátvételi/átvételi tesztelés alap
    
 > [!NOTE]
 > Az Azure-hoz és a Pacemakerhez kapcsolódó telepítéshez és konfiguráláshoz: az SAP Software kiépítési kezelőjén keresztüli telepítési eljárás során egyértelmű kérdés van az IBM DB2 LUW magas rendelkezésre állásáról:
->+ Ne válassza az **IBM DB2-pureScale**lehetőséget.
->+ Ne válassza **a többplatformos IBM Tivoli System Automation telepítése**lehetőséget.
->+ Ne válassza a **fürt konfigurációs fájljainak előállítása**lehetőséget.
+>+ Ne válassza az **IBM DB2-pureScale** lehetőséget.
+>+ Ne válassza **a többplatformos IBM Tivoli System Automation telepítése** lehetőséget.
+>+ Ne válassza a **fürt konfigurációs fájljainak előállítása** lehetőséget.
 >![SAP-SWPM – DB2 HA-beállítások](./media/high-availability-guide-rhel-ibm-db2-luw/swpm-db2ha-opt.png)
 
 
@@ -337,7 +338,7 @@ A következő elemek előtaggal vannak ellátva:
 
 **[A]** a pacemaker konfigurálásának előfeltételei:
 1. Állítsa le mindkét adatbázis-kiszolgálót a db2stop-mel rendelkező User DB2- \<sid> vel.
-1. A/bin/ksh-re vonatkozó rendszerhéj \<sid> -környezet */bin/ksh*módosítása:
+1. A/bin/ksh-re vonatkozó rendszerhéj \<sid> -környezet */bin/ksh* módosítása:
 <pre><code># Install korn shell:
 sudo yum install ksh
 # Change users shell:
@@ -409,11 +410,11 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
 1. Előtér-IP-címkészlet létrehozása:
 
-   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza a előtéri **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza a előtéri **IP-készlet** lehetőséget, majd kattintson a **Hozzáadás** gombra.
 
    b. Adja meg az új előtér-IP-készlet nevét (például **DB2-kapcsolatok**).
 
-   c. Állítsa a **hozzárendelést** **statikus**értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
+   c. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
 
    d. Válassza az **OK** lehetőséget.
 
@@ -421,11 +422,11 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
 1. Háttérbeli készlet létrehozása:
 
-   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza ki a **háttér-készletek**elemet, majd kattintson a **Hozzáadás**gombra.
+   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza ki a **háttér-készletek** elemet, majd kattintson a **Hozzáadás** gombra.
 
    b. Adja meg az új háttér-készlet nevét (például **DB2-backend**).
 
-   c. Válassza **a virtuális gép hozzáadása**lehetőséget.
+   c. Válassza **a virtuális gép hozzáadása** lehetőséget.
 
    d. Válassza ki a rendelkezésre állási készletet, vagy az előző lépésben létrehozott IBM DB2-adatbázist futtató virtuális gépeket.
 
@@ -435,17 +436,17 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
 1. Állapot mintavételének létrehozása:
 
-   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
+   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás** gombra.
 
    b. Adja meg az új állapot-mintavétel nevét (például **DB2-HP**).
 
-   c. Válassza a **TCP** lehetőséget a protokoll és a **62500**-es port közül. Tartsa meg az **intervallum** értékét **5**értékre, és tartsa meg a nem kifogástalan **állapot küszöbértékét** **2**értékre.
+   c. Válassza a **TCP** lehetőséget a protokoll és a **62500**-es port közül. Tartsa meg az **intervallum** értékét **5** értékre, és tartsa meg a nem kifogástalan **állapot küszöbértékét** **2** értékre.
 
    d. Válassza az **OK** lehetőséget.
 
 1. Hozza létre a terheléselosztási szabályokat:
 
-   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza a terheléselosztási **szabályok**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza a terheléselosztási **szabályok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
 
    b. Adja meg az új Load Balancer szabály nevét (például **DB2-SID**).
 
@@ -491,13 +492,13 @@ A J2EE konfigurációs eszköz használatával megvizsgálhatja vagy frissíthet
     
     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
     
-1. A bal oldali keretben válassza a **biztonsági tároló**elemet.
+1. A bal oldali keretben válassza a **biztonsági tároló** elemet.
 1. A jobb oldali keretben válassza ki a kulcsot `jdbc/pool/\<SAPSID>/url` .
 1. Módosítsa az állomásnév nevét a JDBC URL-címében a virtuális állomásnévre.
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
     
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 1. A módosítások mentéséhez válassza a bal felső sarokban található lemez ikont.
 1. A konfigurációs eszköz bezárásához.
 1. Indítsa újra a Java-példányt.
@@ -509,7 +510,7 @@ A naplózási archiválást csak az elsődleges adatbázis hajtja végre. Ha meg
 
 Javasoljuk, hogy olyan közös NFS-megosztást vagy GlusterFS állítson be, amelyben mindkét csomópontból a naplók íródnak. Az NFS-megosztásnak vagy-GlusterFS nagyon elérhetőnek kell lennie. 
 
-Használhatja a meglévő, magasan elérhető NFS-megosztásokat vagy GlusterFS a szállításokhoz vagy a profilok címtárához. További információkért lásd:
+Használhatja a meglévő, magasan elérhető NFS-megosztásokat vagy GlusterFS a szállításokhoz vagy a profilok címtárához. További információ:
 
 - [Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez][glusterfs] 
 - [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez Red Hat Enterprise Linuxon Azure NetApp Files SAP-alkalmazásokhoz][anf-rhel]
@@ -616,8 +617,8 @@ sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 </code></pre>
 
 - **számítógépek erőforrásának mozgatása \<res_name> <host> :** megkötéseket hoz létre, és problémákat okozhat az átvétel során
-- **számítógépek erőforrásának \<res_name> törlése **: törli a hely megkötéseit
-- **számítógépek erőforrás- \<res_name> karbantartása **: törli az erőforrás összes hibáját
+- **számítógépek erőforrásának \<res_name> törlése**: törli a hely megkötéseit
+- **számítógépek erőforrás- \<res_name> karbantartása**: törli az erőforrás összes hibáját
 
 ### <a name="test-a-manual-takeover"></a>Manuális átvétel tesztelése
 

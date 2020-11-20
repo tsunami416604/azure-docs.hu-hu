@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24eb03069689d6dc89d8e237e0e65c71af6c6173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 509a3ac383cebd91821e9c4b872c253ab3b0a947
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184720"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956194"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Vészhelyreállítás és az eszköz feladatátvétele a StorSimple Virtual Arrayhez az Azure Portalon keresztül
 
 ## <a name="overview"></a>Áttekintés
 Ez a cikk a Microsoft Azure StorSimple virtuális tömb vész-helyreállítási folyamatát ismerteti, beleértve a további virtuális tömbök feladatátvételének részletes lépéseit. A feladatátvétel lehetővé teszi az adatok áthelyezését az adatközpontban lévő *forrásoldali* eszközről egy *céleszköz* . Előfordulhat, hogy a célként megadott eszköz ugyanabban vagy egy másik földrajzi helyen található. Az eszköz feladatátvétele a teljes eszközre irányul. A feladatátvétel során a forrás eszköz Felhőbeli adatai megváltoztatják a célként megadott eszköz tulajdonjogát.
 
-Ez a cikk csak a StorSimple virtuális tömbökre vonatkozik. Az 8000 sorozatú eszközök feladatátvételéhez nyissa meg a [StorSimple eszköz feladatátvételi és vész-helyreállítási](storsimple-device-failover-disaster-recovery.md)eszközét.
+Ez a cikk csak a StorSimple virtuális tömbökre vonatkozik. Az 8000 sorozatú eszközök feladatátvételéhez nyissa meg a [StorSimple eszköz feladatátvételi és vész-helyreállítási](./storsimple-8000-device-failover-disaster-recovery.md)eszközét.
 
 ## <a name="what-is-disaster-recovery-and-device-failover"></a>Mi az a vész-helyreállítás és az eszköz feladatátvétele?
 
-Vész-helyreállítási (DR) forgatókönyv esetén az elsődleges eszköz működése leáll. Ebben a forgatókönyvben a hibás eszközhöz társított Felhőbeli adatmennyiséget át lehet helyezni egy másik eszközre. Használhatja az elsődleges eszközt *forrásként* , és megadhat egy másik eszközt *célként*. Ezt a folyamatot *feladatátvételnek*nevezzük. A feladatátvétel során a forrásként szolgáló eszköz minden kötete vagy megosztása, valamint a cél eszközre kerül át. Az Adatszűrés nem engedélyezett.
+Vész-helyreállítási (DR) forgatókönyv esetén az elsődleges eszköz működése leáll. Ebben a forgatókönyvben a hibás eszközhöz társított Felhőbeli adatmennyiséget át lehet helyezni egy másik eszközre. Használhatja az elsődleges eszközt *forrásként* , és megadhat egy másik eszközt *célként*. Ezt a folyamatot *feladatátvételnek* nevezzük. A feladatátvétel során a forrásként szolgáló eszköz minden kötete vagy megosztása, valamint a cél eszközre kerül át. Az Adatszűrés nem engedélyezett.
 
 A DR teljes eszköz-visszaállításként van modellezve a Heat Map-alapú rétegek és nyomon követés használatával. A hő-Térkép úgy van meghatározva, hogy az olvasási és írási mintákon alapuló hő értéket rendel hozzájuk az adattípushoz. Ez a Heat Map ezután a legalacsonyabb hő-adattömböket először a felhőbe tömöríti, miközben a nagy teljesítményű (leggyakrabban használt) adattömböket a helyi szinten tartja. DR alatt a StorSimple a meleg térképet használja a felhőből származó adatok visszaállításához és helyreállításához. Az eszköz beolvassa az összes kötetet/megosztást az utolsó legutóbbi biztonsági mentésben (a belső meghatározás szerint), és visszaállítja a biztonsági másolatból a visszaállítást. A virtuális tömb a teljes DR folyamatot dolgozza fel.
 
@@ -110,26 +110,26 @@ A következő lépések végrehajtásával állíthatja vissza az eszközt egy c
    
     2. Válassza a **beállítások > > megosztások kezelése** (vagy a **beállítások > a > kötetek kezelése) lehetőséget**. 
    
-    3. Válasszon ki egy megosztást/kötetet, kattintson a jobb gombbal, majd válassza az **Offline**állapotba állítás lehetőséget. 
+    3. Válasszon ki egy megosztást/kötetet, kattintson a jobb gombbal, majd válassza az **Offline** állapotba állítás lehetőséget. 
    
     4. Ha a rendszer megerősítést kér, tekintse **meg a megosztás offline állapotba helyezésének következményeit.** 
    
-    5. Kattintson az **offline állapotba**állítás elemre.
+    5. Kattintson az **offline állapotba** állítás elemre.
 
 3. A StorSimple Eszközkezelő szolgáltatásban nyissa meg a **felügyeleti > eszközöket**. Az **eszközök** panelen válassza ki a forrás eszközét, és kattintson rá.
 
-4. Az **eszköz irányítópult** paneljén kattintson az **inaktiválás**elemre.
+4. Az **eszköz irányítópult** paneljén kattintson az **inaktiválás** elemre.
 
-5. Az **inaktiválás** panelen a rendszer megerősítést kér. Az eszköz inaktiválása olyan *állandó* folyamat, amely nem vonható vissza. Azt is emlékezteti, hogy a megosztásokat/köteteket offline állapotba helyezi a gazdagépen. A megerősítéshez írja be az eszköz nevét, majd kattintson az **inaktiválás**elemre.
+5. Az **inaktiválás** panelen a rendszer megerősítést kér. Az eszköz inaktiválása olyan *állandó* folyamat, amely nem vonható vissza. Azt is emlékezteti, hogy a megosztásokat/köteteket offline állapotba helyezi a gazdagépen. A megerősítéshez írja be az eszköz nevét, majd kattintson az **inaktiválás** elemre.
    
     ![Képernyőkép az Inaktiválás panelről. Az eszköz neve mező ki van töltve, és az Inaktiválás gomb ki van emelve.](./media/storsimple-virtual-array-failover-dr/failover1.png)
 6. Az Inaktiválás elindul. Az Inaktiválás sikeres befejeződése után értesítést fog kapni.
    
     ![Képernyőkép a folyamatjelzőről, amely azt jelzi, hogy az eszköz inaktiválva van.](./media/storsimple-virtual-array-failover-dr/failover2.png)
-7. Az eszközök lapon az eszköz állapota mostantól **inaktiváltra**vált.
+7. Az eszközök lapon az eszköz állapota mostantól **inaktiváltra** vált.
     ![Képernyőfelvétel az eszközök lapról. A deaktivált eszköz tulajdonságai megjelennek, beleértve az inaktivált állapotú állapotot is.](./media/storsimple-virtual-array-failover-dr/failover3.png)
 8. Az **eszközök** panelen válassza ki a feladatátvételhez a deaktivált forrásoldali eszközt, és kattintson rá. 
-9. Az **eszköz irányítópult** paneljén kattintson a **feladatátvétel**elemre. 
+9. Az **eszköz irányítópult** paneljén kattintson a **feladatátvétel** elemre. 
 10. A **feladatátvételi eszköz** panelen tegye a következőket:
     
     1. A forrásoldali eszköz mező automatikusan ki van töltve. Jegyezze fel a forrásoldali eszköz teljes adatméretét. Az adatméretnek kisebbnek kell lennie, mint a megcélzott eszköz rendelkezésre álló kapacitása. Tekintse át a forrás eszközhöz társított adatokat, például az eszköz nevét, a teljes kapacitást és a feladatátvételi megosztások nevét.
@@ -138,7 +138,7 @@ A következő lépések végrehajtásával állíthatja vissza az eszközt egy c
 
     3. Győződjön meg arról, hogy **megértettem, hogy ez a művelet feladatátvételt hajt végre a célként megadott eszközön**. 
 
-    4. Kattintson a **feladatátvétel**elemre.
+    4. Kattintson a **feladatátvétel** elemre.
     
         ![Képernyőfelvétel: a feladatátvételi eszköz panelje, a forrás és a cél eszköz kitöltésével, a beállítás be van jelölve, az átadott feladatátvétel gomb kiemelve.](./media/storsimple-virtual-array-failover-dr/failover4.png)
 11. A feladatátvételi feladatok elindítják és értesítést kapnak. A feladatátvétel figyeléséhez nyissa meg az **eszközök > feladatok** lehetőséget.
@@ -181,4 +181,3 @@ Ha vannak olyan StorSimple-eszközök, amelyek közvetlenül a katasztrófa elő
 ## <a name="next-steps"></a>Következő lépések
 
 Tudjon meg többet arról, hogyan [felügyelheti a StorSimple virtuális tömböt a helyi webes felhasználói felület használatával](storsimple-ova-web-ui-admin.md).
-

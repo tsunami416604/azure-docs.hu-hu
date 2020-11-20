@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 900273ec48c71e6f88d28bccff6f1e2abd412c1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17ada83f6fa1b57f8dd72d591b6625f25e9a2388
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079574"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955854"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Az Azure Desired State Configuration-bővítménykezelő bemutatása
 
@@ -48,7 +49,7 @@ Ez az útmutató a következő fogalmak ismeretét feltételezi:
 
 - **Configuration**: egy DSC-konfigurációs dokumentum.
 - **Csomópont**: a DSC-konfiguráció célja. Ebben a dokumentumban a *csomópont* mindig egy Azure-beli virtuális gépre hivatkozik.
-- **Konfigurációs**adatfájl: olyan. psd1-fájl, amely egy konfiguráció környezeti adattal rendelkezik.
+- **Konfigurációs** adatfájl: olyan. psd1-fájl, amely egy konfiguráció környezeti adattal rendelkezik.
 
 ## <a name="architecture"></a>Architektúra
 
@@ -108,7 +109,7 @@ A **Remove-AzVMDscExtension** parancsmag egy adott virtuális gépről eltávol�
 A Resource Manager DSC bővítmény parancsmagokkal kapcsolatos fontos információk:
 
 - Azure Resource Manager parancsmagok szinkronban vannak.
-- Az *ResourceGroupName*, a *VMName*, a *ArchiveStorageAccountName*, a *Version*és a *Location* paraméterek mindegyike kötelező.
+- Az *ResourceGroupName*, a *VMName*, a *ArchiveStorageAccountName*, a *Version* és a *Location* paraméterek mindegyike kötelező.
 - A *ArchiveResourceGroupName* egy opcionális paraméter. Ezt a paramétert akkor adhatja meg, ha a Storage-fiók egy másik erőforráscsoporthoz tartozik, mint ahol a virtuális gép létre lett hozva.
 - Az automatikus **frissítés** kapcsoló használatával automatikusan frissítheti a bővítmény kezelőjét a legújabb verzióra, ha az elérhető. Ez a paraméter azt eredményezheti, hogy a virtuális gépen újraindul a WMF új verziója.
 
@@ -178,7 +179,7 @@ A DSC beállítása a portálon:
 
 1. Nyissa meg a virtuális gépet.
 2. A **BEÁLLÍTÁSOK** területen válassza a **Bővítmények** elemet.
-3. Az új létrehozott oldalon válassza a **+ Hozzáadás**lehetőséget, majd válassza a **PowerShell kívánt állapotának konfigurálása**lehetőséget.
+3. Az új létrehozott oldalon válassza a **+ Hozzáadás** lehetőséget, majd válassza a **PowerShell kívánt állapotának konfigurálása** lehetőséget.
 4. Kattintson a **Létrehozás** gombra a kiegészítő információ lap alján.
 
 A portál a következő adatokat gyűjti össze:

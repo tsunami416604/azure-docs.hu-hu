@@ -15,19 +15,19 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e20048c4cb4de2be6fe36be100b472f0b8ee73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a5ba4b27ae19999237edb75c50db36ef57a10f1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459963"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956687"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>A StorSimple 8000 Series-eszközre vonatkozó 1,2-es kibocsátási megjegyzések frissítése
 
 ## <a name="overview"></a>Áttekintés
 A következő kibocsátási megjegyzések ismertetik az új funkciókat, és azonosítják a StorSimple 8000 Series Update 1,2-es verziójának kritikus megnyitási problémáit. Emellett tartalmazzák a jelen kiadásban található StorSimple szoftver, illesztőprogram és lemez belső vezérlőprogram-frissítéseinek listáját is. 
 
-Az 1,2-es frissítés bármely StorSimple-eszközön (GA), a 0,1-es frissítésen, a 0,2-as verzión vagy az 0,3 szoftver frissítésén is alkalmazható. Az 1,2-es frissítés nem érhető el, ha az eszközön az 1. frissítés vagy a 1,1-es frissítés fut. Ha az eszközön a kiadás (GA) fut, [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-contact-microsoft-support.md) , és segítse a frissítés telepítését.
+Az 1,2-es frissítés bármely StorSimple-eszközön (GA), a 0,1-es frissítésen, a 0,2-as verzión vagy az 0,3 szoftver frissítésén is alkalmazható. Az 1,2-es frissítés nem érhető el, ha az eszközön az 1. frissítés vagy a 1,1-es frissítés fut. Ha az eszközön a kiadás (GA) fut, [forduljon a Microsoft ügyfélszolgálatahoz](./storsimple-8000-contact-microsoft-support.md) , és segítse a frissítés telepítését.
 
 A következő táblázat az 1., 1,1-es és 1,2-es frissítésekhez tartozó eszközök szoftvereit sorolja fel.
 
@@ -37,11 +37,11 @@ A következő táblázat az 1., 1,1-es és 1,2-es frissítésekhez tartozó eszk
 | 1.1-es frissítés |6.3.9600.17521 |
 | 1,0-es frissítés |6.3.9600.17491 |
 
-Mielőtt telepítené a frissítést a StorSimple-megoldásban, tekintse át a kibocsátási megjegyzésekben található információkat. További információ: a 1,2-es [frissítés telepítése a StorSimple-eszközön](storsimple-install-update-1.md). 
+Mielőtt telepítené a frissítést a StorSimple-megoldásban, tekintse át a kibocsátási megjegyzésekben található információkat. További információ: a 1,2-es [frissítés telepítése a StorSimple-eszközön](./storsimple-8000-install-update-5.md). 
 
 > [!IMPORTANT]
 > * A frissítés telepítése körülbelül 5-10 órát vesz igénybe (beleértve a Windows-frissítéseket is). 
-> * Az 1,2-es frissítés szoftverrel, LSI-illesztőprogrammal és lemezes belső vezérlőprogram-frissítésekkel rendelkezik. A telepítéséhez kövesse az 1,2-es [frissítés telepítése a StorSimple-eszközön](storsimple-install-update-1.md)című témakör utasításait.
+> * Az 1,2-es frissítés szoftverrel, LSI-illesztőprogrammal és lemezes belső vezérlőprogram-frissítésekkel rendelkezik. A telepítéséhez kövesse az 1,2-es [frissítés telepítése a StorSimple-eszközön](./storsimple-8000-install-update-5.md)című témakör utasításait.
 > * Az új kiadások esetében előfordulhat, hogy a frissítések nem jelennek meg azonnal, mert a frissítések fokozatos bevezetését hajtjuk végre. Frissítéseket kereshet néhány nap múlva, mivel ezek hamarosan elérhetők lesznek.
 > 
 > 
@@ -55,16 +55,16 @@ Ezek a funkciók először az 1. frissítéssel lettek közzétéve, amelyet kor
   * **Az 8000 sorozatú berendezések továbbfejlesztett funkciói**, például több készülék hatékony központosított felügyelete StorSimple Manager szolgáltatáson keresztül, jobb minőségű hardver-és frissített belső vezérlőprogram, virtuális berendezések, adatmobilitás és szolgáltatások a jövőbeli ütemtervekben.
     
     Az [áttelepítési útmutatóból](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b) megtudhatja, hogyan telepíthet át egy StorSimple 5000-7000-sorozatot egy 8000 sorozatú eszközre. 
-* **Rendelkezésre állás a Azure Government portálon** – a StorSimple mostantól elérhető a Azure Government portálon. Lásd: [StorSimple-eszköz üzembe helyezése a Azure Government portálon](storsimple-deployment-walkthrough-gov.md).
+* **Rendelkezésre állás a Azure Government portálon** – a StorSimple mostantól elérhető a Azure Government portálon. Lásd: [StorSimple-eszköz üzembe helyezése a Azure Government portálon](./index.yml).
 * **Más felhőalapú szolgáltatók támogatása** – a további támogatott felhőalapú szolgáltatók az Amazon S3, az Amazon S3 és az RR, a HP és a OpenStack (bétaverzió).
-* **Frissítés a legújabb Storage API** -khoz – ezzel a kiadással a StorSimple frissítve lett a legújabb Azure Storage Service API-kra. Az 1. frissítést (kiadás, 0,1, 0,2 és 0,3) futtató StorSimple 8000 sorozatú eszközök az Azure Storage szolgáltatás API-jai korábbi verzióját használják, mint az 2009. A [Storage Service-verziók eltávolításával kapcsolatos](https://docs.microsoft.com/archive/blogs/windowsazurestorage/microsoft-azure-storage-service-version-removal-update-extension-to-2016), 2016. augusztus 1-től a frissített közleményben leírtak szerint ezek az API-k elavultak lesznek. Fontos, hogy a StorSimple 8000 sorozat 1. frissítését a 2016. augusztus 1. előtt alkalmazza. Ha ezt nem teszi meg, a StorSimple-eszközök nem fognak megfelelően működni.
+* **Frissítés a legújabb Storage API** -khoz – ezzel a kiadással a StorSimple frissítve lett a legújabb Azure Storage Service API-kra. Az 1. frissítést (kiadás, 0,1, 0,2 és 0,3) futtató StorSimple 8000 sorozatú eszközök az Azure Storage szolgáltatás API-jai korábbi verzióját használják, mint az 2009. A [Storage Service-verziók eltávolításával kapcsolatos](/archive/blogs/windowsazurestorage/microsoft-azure-storage-service-version-removal-update-extension-to-2016), 2016. augusztus 1-től a frissített közleményben leírtak szerint ezek az API-k elavultak lesznek. Fontos, hogy a StorSimple 8000 sorozat 1. frissítését a 2016. augusztus 1. előtt alkalmazza. Ha ezt nem teszi meg, a StorSimple-eszközök nem fognak megfelelően működni.
 * A **zóna redundáns tárolási (ZRS) támogatása** – a Storage API-k legújabb verziójára való frissítéssel a StorSimple 8000 sorozat a helyileg redundáns tárolás (LRS) és a Geo-redundáns tárolás (GRS) mellett a zóna redundáns tárolását (ZRS) is támogatja. Tekintse meg ezt a [cikket az Azure Storage redundancia-beállításairól](../storage/common/storage-redundancy.md) a ZRS részleteinek megtekintéséhez.
-* **Továbbfejlesztett kezdeti üzembe helyezési és frissítési élmény** – ebben a kiadásban a telepítési és frissítési folyamatokat továbbfejlesztettük. Ha a hálózati konfiguráció és a tűzfal beállításai helytelenek, a telepítő varázslón keresztüli telepítés megnövelhető a felhasználó számára. További diagnosztikai parancsmagok is rendelkezésre állnak, amelyek segítenek az eszköz hálózatkezelésének hibaelhárításában. A hibaelhárításhoz használt új diagnosztikai parancsmagokkal kapcsolatos további információkért tekintse meg a [központi telepítés hibaelhárítása című cikket](storsimple-troubleshoot-deployment.md) .
+* **Továbbfejlesztett kezdeti üzembe helyezési és frissítési élmény** – ebben a kiadásban a telepítési és frissítési folyamatokat továbbfejlesztettük. Ha a hálózati konfiguráció és a tűzfal beállításai helytelenek, a telepítő varázslón keresztüli telepítés megnövelhető a felhasználó számára. További diagnosztikai parancsmagok is rendelkezésre állnak, amelyek segítenek az eszköz hálózatkezelésének hibaelhárításában. A hibaelhárításhoz használt új diagnosztikai parancsmagokkal kapcsolatos további információkért tekintse meg a [központi telepítés hibaelhárítása című cikket](./storsimple-8000-troubleshoot-deployment.md) .
 
 ## <a name="issues-fixed-in-update-12"></a>Az 1,2-es frissítésben rögzített problémák
 Az alábbi táblázat a 1,2-es, 1,1-es és 1-es frissítésekben rögzített problémák összegzését tartalmazza.    
 
-| Nem. | Szolgáltatás | Probléma | Javítás folyamatban | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
+| Nem. | Funkció | Probléma | Javítás folyamatban | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell StorSimple-bővítménye |Amikor a felhasználó a Windows PowerShell StorSimple-bővítménye használatával távolról fér hozzá a StorSimple-eszközhöz, majd elindította a telepítővarázslót, összeomlás történt, amint az adatok 0 IP-címet adtak meg. Ez a hiba már meg van javítva az 1. frissítésben. |1. frissítés |Igen |Igen |
 | 2 |Gyári beállítások visszaállítása |Egyes esetekben a gyári beállítások visszaállítását követően a StorSimple-eszköz beragadt, és a következő üzenet jelenik meg: **visszaállítás a gyári állapotba (8. fázis)**. Ez akkor történt, ha a CTRL + C billentyűkombinációt lenyomva, miközben a parancsmag folyamatban volt. Ez a hiba már kijavítva van. |1. frissítés |Igen |Nem |
@@ -82,14 +82,14 @@ Az alábbi táblázat a 1,2-es, 1,1-es és 1-es frissítésekben rögzített pro
 ## <a name="known-issues-in-update-12"></a>Az 1,2-es frissítés ismert problémái
 A következő táblázat az ebben a kiadásban található ismert problémák összegzését tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma | Megjegyzések/Áthidaló megoldás | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
+| Nem. | Funkció | Probléma | Megjegyzések/Áthidaló megoldás | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Lemez kvóruma |Ritka esetekben, ha egy 8600-es eszköz EBOD-borításában lévő lemezek többsége le van választva, ami nem a lemez kvórumát eredményezi, akkor a tárolási készlet offline állapotba kerül. Offline állapotban marad, még akkor is, ha a lemezek újra vannak csatlakoztatva. |Az eszközt újra kell indítani. Ha a probléma továbbra is fennáll, forduljon Microsoft ügyfélszolgálata a következő lépésekhez. |Igen |Nem |
 | 2 |Helytelen vezérlő-azonosító |A vezérlő cseréjének végrehajtásakor a vezérlő 0 vezérlőként jelenhet meg. A vezérlő cseréjekor, amikor a rendszerkép betöltődik a társ csomópontból, a vezérlő azonosítója kezdetben megjelenhet a társ-vezérlő AZONOSÍTÓJAként. Ritka esetekben ez a viselkedés a rendszer újraindítása után is megjelenhet. |Nincs szükség felhasználói beavatkozásra. Ez a helyzet a vezérlő cseréjének befejeződése után maga is megoldódik. |Igen |Nem |
 | 3 |Tárfiókok |Ha a Storage szolgáltatással törli a Storage-fiókot, a rendszer nem támogatott forgatókönyvet használ. Ez olyan helyzetet eredményez, amelyben a felhasználói adatszolgáltatások nem kérhetők le. |Igen |Igen | |
 | 4 |Eszköz feladatátvétele |Egy adott forrásoldali eszközről a különböző cél eszközökre irányuló mennyiségi tárolók több feladatátvétele nem támogatott. Az eszköz feladatátvétele egyetlen elhalt eszközről több eszközre teszi a kötet tárolóját az első sikertelenül átesett eszközön az adatok tulajdonjogának elvesztésével. Ilyen feladatátvétel után ezek a mennyiségi tárolók a klasszikus Azure-portálon megtekintve eltérően jelennek meg vagy viselkednek. | |Igen |Nem |
 | 5 |Telepítés |A SharePoint rendszerhez készült StorSimple-adapter során meg kell adnia egy eszköz IP-címét ahhoz, hogy a telepítés sikeresen befejeződik. | |Igen |Nem |
-| 6 |Webproxy |Ha a webproxy konfigurációja HTTPS protokollt használ a megadott protokollként, az eszközről a szolgáltatásra irányuló kommunikáció hatással lesz, és az eszköz offline állapotba kerül. A támogatási csomagok a folyamat során is létrejönnek, és jelentős erőforrásokat fogyasztanak az eszközön. |Győződjön meg arról, hogy a webproxy URL-címe HTTP protokollt használ a megadott protokollként. További információ: [Configure web proxy for your device](storsimple-configure-web-proxy.md) (Webproxy beállítása az eszközhöz). |Igen |Nem |
+| 6 |Webproxy |Ha a webproxy konfigurációja HTTPS protokollt használ a megadott protokollként, az eszközről a szolgáltatásra irányuló kommunikáció hatással lesz, és az eszköz offline állapotba kerül. A támogatási csomagok a folyamat során is létrejönnek, és jelentős erőforrásokat fogyasztanak az eszközön. |Győződjön meg arról, hogy a webproxy URL-címe HTTP protokollt használ a megadott protokollként. További információ: [Configure web proxy for your device](./storsimple-8000-configure-web-proxy.md) (Webproxy beállítása az eszközhöz). |Igen |Nem |
 | 7 |Webproxy |Ha a webproxyt egy regisztrált eszközön konfigurálja és engedélyezi, akkor újra kell indítania az aktív vezérlőt az eszközön. | |Igen |Nem |
 | 8 |Magas Felhőbeli késés és magas I/O-munkaterhelés |Ha a StorSimple-eszköz nagyon magas Felhőbeli késések (másodpercek sorrendje) és magas I/O-munkaterhelések kombinációját tapasztalja, az eszközök mennyisége csökkentett teljesítményű állapotba kerül, és az I/O-művelet meghiúsulhat az "eszköz nem üzemkész" hiba miatt. |Ennek a helyzetnek a helyreállításához manuálisan kell újraindítani az eszközöket, vagy feladatátvételt kell végrehajtani az eszközön. |Igen |Nem |
 | 9 |Azure PowerShell |Ha a **Get-&#124; AzureStorSimpleStorageAccountCredential StorSimple parancsmagot használja Select-Object – első 1 – várja** meg az első objektum kiválasztását, hogy új **volumecontainer tárhoz való** objektumot hozzon létre, a parancsmag az összes objektumot visszaadja. |Zárja be a parancsmagot zárójelben a következő módon: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object – első 1 – várakozás** |Igen |Igen |
@@ -112,5 +112,4 @@ Ez a kiadás frissíti az illesztőprogramot és a lemez belső vezérlőprogram
 Ez a frissítés nem alkalmazható a virtuális eszközre. Új virtuális eszközöket kell létrehozni. 
 
 ## <a name="next-steps"></a>Következő lépések
-* [Telepítse az 1,2-es frissítést az eszközön](storsimple-install-update-1.md).
-
+* [Telepítse az 1,2-es frissítést az eszközön](./storsimple-8000-install-update-5.md).

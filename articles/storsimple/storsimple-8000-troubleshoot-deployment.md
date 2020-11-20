@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 5806266955eafab8c3c8c99695ff82736de92e9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 600934e2d46c1a84a83fa1290db13b3d0d1508f4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187064"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956891"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple-eszközök üzembe helyezésével kapcsolatos problémák elhárítása
 ## <a name="overview"></a>Áttekintés
@@ -46,12 +46,12 @@ A következő részekben a StorSimple-eszköz első konfigurálásakor felmerül
 ## <a name="first-time-setup-wizard-process"></a>A telepítővarázsló első lépéseinek folyamata
 Az alábbi lépések összefoglalják a telepítővarázsló folyamatát. Részletes telepítési információk: helyszíni [StorSimple-eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md).
 
-1. Futtassa a [Meghívási-hcssetupwizard parancsmagot](https://technet.microsoft.com/library/dn688135.aspx) parancsmagot a telepítővarázsló elindításához, amely végigvezeti Önt a hátralévő lépéseken. 
+1. Futtassa a [Meghívási-hcssetupwizard parancsmagot](/previous-versions/windows/powershell-scripting/dn688135(v=wps.630)) parancsmagot a telepítővarázsló elindításához, amely végigvezeti Önt a hátralévő lépéseken. 
 2. A hálózat konfigurálása: a telepítővarázsló lehetővé teszi a hálózati beállítások konfigurálását a StorSimple-eszközön lévő 0 hálózati adapterhez. Ezek a beállítások a következők:
-   * Virtuális IP-cím (VIP), alhálózati maszk és átjáró – a [set-HcsNetInterface](https://technet.microsoft.com/library/dn688161.aspx) parancsmag a háttérben fut. Konfigurálja az IP-címet, az alhálózati maszkot és az átjárót a StorSimple-eszközön található adat0 hálózati adapterhez.
-   * Elsődleges DNS-kiszolgáló – a [set-HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) parancsmag a háttérben fut. Konfigurálja a StorSimple-megoldás DNS-beállításait.
-   * NTP-kiszolgáló – a [set-HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) parancsmag a háttérben fut. Konfigurálja az NTP-kiszolgáló beállításait a StorSimple-megoldáshoz.
-   * Opcionális webes proxy – a [set-HcsWebProxy](https://technet.microsoft.com/library/dn688154.aspx) parancsmag a háttérben fut. Beállítja és engedélyezi a StorSimple-megoldás webproxy-konfigurációját.
+   * Virtuális IP-cím (VIP), alhálózati maszk és átjáró – a [set-HcsNetInterface](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630)) parancsmag a háttérben fut. Konfigurálja az IP-címet, az alhálózati maszkot és az átjárót a StorSimple-eszközön található adat0 hálózati adapterhez.
+   * Elsődleges DNS-kiszolgáló – a [set-HcsDnsClientServerAddress](/previous-versions/windows/powershell-scripting/dn688172(v=wps.630)) parancsmag a háttérben fut. Konfigurálja a StorSimple-megoldás DNS-beállításait.
+   * NTP-kiszolgáló – a [set-HcsNtpClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) parancsmag a háttérben fut. Konfigurálja az NTP-kiszolgáló beállításait a StorSimple-megoldáshoz.
+   * Opcionális webes proxy – a [set-HcsWebProxy](/previous-versions/windows/powershell-scripting/dn688154(v=wps.630)) parancsmag a háttérben fut. Beállítja és engedélyezi a StorSimple-megoldás webproxy-konfigurációját.
 3. A jelszó beállítása: a következő lépés az eszköz rendszergazdai jelszavának beállítása.
    Az eszköz rendszergazdai jelszava az eszközre való bejelentkezéshez használható. Az eszköz alapértelmezett jelszava: **Password1**.
         
@@ -157,7 +157,7 @@ A támogatási csomag tartalmazza az összes olyan naplót, amely segítséget n
    2. A **műveletek** ablaktáblán kattintson a **mentett napló megnyitása** lehetőségre, és mutasson a naplófájlok etvx/ETW formátumban (a támogatási csomag) elemre. Most már megtekintheti a fájlt. A fájl megnyitása után kattintson a jobb gombbal, és mentse a fájlt szövegként.
       
       > [!IMPORTANT]
-      > A **Get-WinEvent** parancsmag használatával is megnyithatja ezeket a fájlokat a Windows PowerShellben. További információ: [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx) a Windows PowerShell-parancsmagok dokumentációjában.
+      > A **Get-WinEvent** parancsmag használatával is megnyithatja ezeket a fájlokat a Windows PowerShellben. További információ: [Get-WinEvent](/powershell/module/microsoft.powershell.diagnostics/get-winevent) a Windows PowerShell-parancsmagok dokumentációjában.
      
 5. Ha a naplók Eseménynaplóban nyílnak meg, keresse meg a következő naplókat, amelyek az eszköz konfigurációjával kapcsolatos problémákat tartalmaznak:
    
@@ -185,11 +185,11 @@ Amikor a hálózati adaptereket konfigurálja egy első alkalommal üzemelő esz
 2. Használja a parancsmag kimenetét `Get-NetAdapter` és a következő irányelveket a hálózati adapter állapotának megismeréséhez.
    
    * Ha a csatoló állapota Kifogástalan, és engedélyezve van, a **előtérillesztő ifindex** **állapot jelenik meg.**
-   * Ha az illesztőfelület kifogástalan állapotú, de nincs fizikailag csatlakoztatva (hálózati kábel), a **előtérillesztő ifindex** **letiltottként**jelenik meg.
-   * Ha az illesztőfelület kifogástalan, de nincs engedélyezve, a **előtérillesztő ifindex** állapota **NotPresent**lesz látható.
+   * Ha az illesztőfelület kifogástalan állapotú, de nincs fizikailag csatlakoztatva (hálózati kábel), a **előtérillesztő ifindex** **letiltottként** jelenik meg.
+   * Ha az illesztőfelület kifogástalan, de nincs engedélyezve, a **előtérillesztő ifindex** állapota **NotPresent** lesz látható.
    * Ha az illesztőfelület nem létezik, akkor nem jelenik meg a listában. A StorSimple Eszközkezelő szolgáltatás felhasználói felülete továbbra is hibás állapotban jeleníti meg ezt az illesztőfelületet.
 
-A parancsmag használatáról további információt a [Get-NetAdapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) című témakörben olvashat a Windows PowerShell-parancsmagok dokumentációjában.
+A parancsmag használatáról további információt a [Get-NetAdapter](/powershell/module/netadapter/get-netadapter?view=win10-ps) című témakörben olvashat a Windows PowerShell-parancsmagok dokumentációjában.
 
 A következő részekben a parancsmag kimenetének mintái láthatók `Get-NetAdapter` .
 
@@ -284,7 +284,7 @@ Használja a `Test-HcsmConnection` parancsmagot olyan eszközhöz, amely már cs
    * ErrorCode. CiSDeviceDecommissioned – ez azt jelzi, hogy az eszköz inaktiválva van.
    * ErrorCode. DeviceNotReady – jelzi, hogy az eszköz karbantartási módban van.
    * ErrorCode. DeviceNotReady – ez azt jelenti, hogy az eszköz nem online állapotú.
-3. Ellenőrizze, hogy fut-e a StorSimple Eszközkezelő szolgáltatás (használja a [Get-ClusterResource](https://technet.microsoft.com/library/ee461004.aspx) parancsmagot). Ha a szolgáltatás nem fut, a következő hibák jelenhetnek meg:
+3. Ellenőrizze, hogy fut-e a StorSimple Eszközkezelő szolgáltatás (használja a [Get-ClusterResource](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee461004(v=technet.10)) parancsmagot). Ha a szolgáltatás nem fut, a következő hibák jelenhetnek meg:
    
    * ErrorCode. CiSApplianceAgentNotOnline
    * ErrorCode. CisPowershellScriptHcsError – ez azt jelzi, hogy kivétel történt a Get-ClusterResource futtatásakor.
@@ -308,7 +308,7 @@ Használja a `Test-HcsmConnection` parancsmagot olyan eszközhöz, amely már cs
 
 A CiSCommandletLog0Curr. errlog és a CiSAgentsvc0Curr. errlog naplófájlok további információkat fognak tartalmazni, például a kivétel részleteit.
 
-További információ a parancsmag használatáról: [test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx) a Windows PowerShell-dokumentációban.
+További információ a parancsmag használatáról: [test-HcsmConnection](/previous-versions/windows/powershell-scripting/dn715782(v=wps.630)) a Windows PowerShell-dokumentációban.
 
 > [!IMPORTANT]
 > Ezt a parancsmagot az aktív és a passzív vezérlőhöz is futtathatja.
@@ -548,10 +548,10 @@ A hibát a következők bármelyike okozhatja:
 8. Tekintse meg a naplókat. [A hibaelhárításhoz keresse fel a támogatási csomagokat és az eszközök naplóit](#support-packages-and-device-logs-available-for-troubleshooting).
 9. Ha a fenti lépések nem oldják meg a problémát, [kérje a Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) segítségét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Megtudhatja, hogyan használhatja a diagnosztikai eszközt a StorSimple-eszközök hibakereséséhez](storsimple-8000-diagnostics.md).
 
 <!--Link references-->
 
-[1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
-[2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx 
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd379547(v=ws.10)
+[2]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd392266(v=ws.10)

@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
-ms.openlocfilehash: e6b8708edeeb4b3b69dab82265d13db2a4c22e08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41699625b7062daa005e6908ce9e4249dd86f1fa
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87051658"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956398"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez
 
@@ -43,7 +44,7 @@ ms.locfileid: "87051658"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 
 Ez a cikk leírja, hogyan telepítheti a virtuális gépeket, konfigurálhatja a virtuális gépeket, valamint telepítheti a GlusterFS-fürtöt, amely egy magasan elérhető SAP-rendszer megosztott adattárolására használható.
-Ez az útmutató a két SAP-rendszer, a NW1 és a NW2 által használt GlusterFS beállítását ismerteti. A példában szereplő erőforrások nevei (például a virtuális gépek, a virtuális hálózatok) feltételezik, hogy az [SAP fájlkiszolgáló sablont][template-file-server] használta a **glust**erőforrás-előtaggal.
+Ez az útmutató a két SAP-rendszer, a NW1 és a NW2 által használt GlusterFS beállítását ismerteti. A példában szereplő erőforrások nevei (például a virtuális gépek, a virtuális hálózatok) feltételezik, hogy az [SAP fájlkiszolgáló sablont][template-file-server] használta a **glust** erőforrás-előtaggal.
 
 Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat
 
@@ -98,7 +99,7 @@ Az összes szükséges erőforrás üzembe helyezéséhez használhatja a github
    4. Rendszergazdai Felhasználónév, rendszergazdai jelszó vagy SSH-kulcs  
       Létrejön egy új felhasználó, amely használható a gépre való bejelentkezéshez.
    5. Alhálózat azonosítója  
-      Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az/Subscriptions/** &lt; előfizetés &gt; -azonosítója**/ResourceGroups/** &lt; &gt; **** &lt; &gt; **nevű erőforráscsoport neve/Providers/Microsoft.Network/virtualNetworks/virtuális hálózat neve/Subnets/** &lt; alhálózat neve &gt; **
+      Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az/Subscriptions/**&lt; előfizetés &gt; -azonosítója**/ResourceGroups/**&lt; &gt;****&lt; &gt;** nevű erőforráscsoport neve/Providers/Microsoft.Network/virtualNetworks/virtuális hálózat neve/Subnets/**&lt; alhálózat neve &gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
 
@@ -348,7 +349,7 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
    sudo gluster volume start <b>NW2</b>-aers
    </code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az SAP-ASCS és-adatbázis telepítése](high-availability-guide-rhel.md)
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]

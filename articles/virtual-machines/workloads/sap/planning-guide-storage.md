@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ed99145a2d3860849c4a8117a93a9a0f24d227c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1cd6f5f7865d18461ac7a635530e9aabfde380a6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540926"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955412"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-tárolótípusok SAP számítási feladathoz
 Az Azure számos különböző tárolási típussal rendelkezik, amelyek nagy mértékben különböznek a képességek, a teljesítmény, a késés és az árak között. A tárolási típusok némelyike nem, vagy kizárólag SAP-forgatókönyvekhez használható. Míg számos Azure-beli tárolási típus jól használható vagy speciális SAP-munkaterhelési forgatókönyvekhez van optimalizálva. Különösen a SAP HANA esetében egyes Azure-beli tárolási típusok minősítést kaptak a SAP HANAval való használathoz. Ebben a dokumentumban a különböző típusú tárolásokat vesszük át, és leírjuk a képességeiket és a használhatóságát az SAP-munkaterhelésekkel és az SAP-összetevőkkel.
@@ -273,7 +274,7 @@ A ANF-tároló további beépített funkciója:
 - ANF-kötetek klónozása pillanatképekről
 - Kötetek visszaállítása pillanatképekről (snap-REVERT)
 
-**Összefoglalás** : Azure NETAPP Files egy HANA Certified kis késésű tároló, amely lehetővé teszi az NFS-és SMB-kötetek vagy-megosztások üzembe helyezését. A tároló három különböző szolgáltatási szintet tartalmaz, amelyek különböző átviteli sebességet és IOPS biztosítanak lineáris módon a köteten. A ANF-tároló lehetővé teszi SAP HANA kibővíthető forgatókönyvek üzembe helyezését készenléti csomóponttal. A tárterület a/sapmnt vagy az SAP globális átviteli címtár számára szükséges fájlmegosztás biztosítására alkalmas. A ANF-tároló a natív NetApp-funkcióként elérhető funkcionalitási rendelkezésre állást biztosít.  
+**Összefoglalás**: Azure NETAPP Files egy HANA Certified kis késésű tároló, amely lehetővé teszi az NFS-és SMB-kötetek vagy-megosztások üzembe helyezését. A tároló három különböző szolgáltatási szintet tartalmaz, amelyek különböző átviteli sebességet és IOPS biztosítanak lineáris módon a köteten. A ANF-tároló lehetővé teszi SAP HANA kibővíthető forgatókönyvek üzembe helyezését készenléti csomóponttal. A tárterület a/sapmnt vagy az SAP globális átviteli címtár számára szükséges fájlmegosztás biztosítására alkalmas. A ANF-tároló a natív NetApp-funkcióként elérhető funkcionalitási rendelkezésre állást biztosít.  
 
 
 

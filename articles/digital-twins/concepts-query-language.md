@@ -4,23 +4,83 @@ titleSuffix: Azure Digital Twins
 description: Ismerje meg az Azure digitális Twins lekérdezési nyelvének alapjait.
 author: baanders
 ms.author: baanders
-ms.date: 3/26/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d656f19f6f4030025ff1393c3e5017466b3333fd
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.custom: contperfq2
+ms.openlocfilehash: 89e95b0c56ce5603096fb1ac9af74cb0ad53ee6b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044394"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955225"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Az Azure Digital Twins lekérdezési nyelvének ismertetése
 
-Ne felejtse el, hogy az Azure Digital Twins középpontja a **digitális ikrekből** és **kapcsolatokból**kialakított [**Twin gráf**](concepts-twins-graph.md). Ez a gráf lekérdezhető a digitális ikrek és a benne található kapcsolatok adatainak lekérdezéséhez. Ezek a lekérdezések egy egyéni SQL-szerű lekérdezési nyelven íródnak, amelyet az **Azure digitális Twins lekérdezési nyelvének**nevezünk.
+Ne felejtse el, hogy az Azure Digital Twins középpontja a digitális ikrekből és kapcsolatokból kialakított [Twin gráf](concepts-twins-graph.md). 
 
-Ha egy ügyfélalkalmazás számára szeretne lekérdezést küldeni a szolgáltatásnak, az Azure Digital Twins [**lekérdezési API**](/dotnet/api/azure.digitaltwins.core.digitaltwinsclient.query?view=azure-dotnet-preview)-ját fogja használni. Ez lehetővé teszi, hogy a fejlesztők írási lekérdezéseket és szűrőket alkalmazzanak a digitális ikrek készletének megkereséséhez a Twin gráfban, valamint az Azure digitális Twins forgatókönyvével kapcsolatos további információkat.
+Ez a gráf lekérdezhető a digitális ikrek és a benne található kapcsolatok adatainak lekérdezéséhez. Ezek a lekérdezések egy egyéni SQL-szerű lekérdezési nyelven íródnak, amelyet az **Azure digitális Twins lekérdezési nyelvének** nevezünk. Ez hasonló a [IoT hub lekérdezési nyelvhez](../iot-hub/iot-hub-devguide-query-language.md) , amely számos hasonló funkcióval rendelkezik.
 
-[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
+Ez a cikk a lekérdezés nyelvének és képességeinek alapjait ismerteti. A lekérdezési szintaxissal és a lekérdezési kérelmek futtatásával kapcsolatos részletesebb példákat a [*útmutató: a Twin gráf lekérdezése*](how-to-query-graph.md)című témakörben talál.
+
+## <a name="about-the-queries"></a>Tudnivalók a lekérdezésekről
+
+Az Azure digitális Twins lekérdezési nyelvével lekérheti a digitális ikreket a saját...
+* tulajdonságok (a [címke tulajdonságaival](how-to-use-tags.md)együtt)
+* modellek
+* kapcsolatok
+  - a kapcsolatok tulajdonságai
+
+Ha egy ügyfélalkalmazás számára szeretne lekérdezést küldeni a szolgáltatásnak, az Azure Digital Twins [**lekérdezési API**](/rest/api/digital-twins/dataplane/query)-ját fogja használni. Az API használatának egyik módja az Azure Digital Twins-hoz készült [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) -k egyike.
+
+## <a name="reference-expressions-and-conditions"></a>Hivatkozás: kifejezések és kikötések
+
+Ez a szakasz azokat a kezelőket és funkciókat ismerteti, amelyek elérhetők az Azure Digital Twins-lekérdezések írásához. A szolgáltatások használatát szemléltető lekérdezések például a következő témakörben olvashatók [*: útmutató: a Twin gráf lekérdezése*](how-to-query-graph.md).
+
+> [!NOTE]
+> Az Azure Digital Twins összes lekérdezési művelete megkülönbözteti a kis-és nagybetűket, ezért ügyeljen arra, hogy a modellekben definiált pontos neveket használja. Ha a tulajdonságok neve hibásan van megadva vagy helytelenül van megadva, az eredményhalmaz üres, és nem ad vissza hibát.
+
+### <a name="operators"></a>Operátorok
+
+A következő operátorok támogatottak:
+
+| Family (Család) | Operátorok |
+| --- | --- |
+| Logikai |`AND`, `OR`, `NOT` |
+| Összehasonlítás | `=`, `!=`, `<`, `>`, `<=`, `>=` |
+| Contains | `IN`, `NIN` |
+
+### <a name="functions"></a>Függvények
+
+A következő típusú ellenőrzési és öntési függvények támogatottak:
+
+| Függvény | Leírás |
+| -------- | ----------- |
+| `IS_DEFINED` | Egy logikai értéket ad vissza, amely azt jelzi, hogy a tulajdonsághoz hozzá van-e rendelve érték. Ez csak akkor támogatott, ha az érték egy egyszerű típus. Az egyszerű típusok például a következők: string, Boolean, numerikus vagy `null` . `DateTime`, az Objektumtípusok és a tömbök nem támogatottak. |
+| `IS_OF_MODEL` | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott iker megfelel-e a megadott modell típusának. |
+| `IS_BOOL` | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa logikai. |
+| `IS_NUMBER` | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa szám-e. |
+| `IS_STRING` | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa sztring-e. |
+| `IS_NULL` | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa NULL-e. |
+| `IS_PRIMITIVE` | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa primitív (karakterlánc, logikai, numerikus vagy `null` ). |
+| `IS_OBJECT` | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa JSON-objektum-e. |
+
+A következő karakterlánc-függvények támogatottak:
+
+| Függvény | Leírás |
+| -------- | ----------- |
+| `STARTSWITH(x, y)` | Olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc-kifejezés a másodikval kezdődik-e. |
+| `ENDSWITH(x, y)` | Egy olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc kifejezése a másodperctel végződik-e |
+
+## <a name="query-limitations"></a>Lekérdezési korlátozások
+
+Ez a szakasz a lekérdezési nyelv korlátozásait ismerteti.
+
+* Időzítés: akár 10 másodperces késés is előfordulhat, mielőtt a példányban történt változások megjelennek a lekérdezésekben. Ha például olyan műveletet hajt végre, mint az ikrek létrehozása vagy törlése a DigitalTwins API-val, akkor előfordulhat, hogy az eredmény nem jelenik meg azonnal a lekérdezési API-kérelmekben. A rövid ideig tartó várakozásnak elegendőnek kell lennie a feloldáshoz.
+* Az utasítás nem támogatja az allekérdezéseket `FROM` .
+* `OUTER JOIN` a szemantika nem támogatott, ami azt jelenti, hogy ha a kapcsolat nulla rangú, akkor a rendszer a teljes "sort" kizárja a kimeneti eredményhalmaz alapján.
+* A gráf bejárási mélysége `JOIN` lekérdezési szintenként legfeljebb öt szintre van korlátozva.
+* A műveletek forrása `JOIN` korlátozott: a lekérdezésnek deklarálnia kell azokat az ikreket, amelyeken a lekérdezés elindul.
 
 ## <a name="next-steps"></a>Következő lépések
 

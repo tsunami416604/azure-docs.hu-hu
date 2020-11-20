@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 7e42fb43fee4d3f8097b7ac530056d948e3f98c8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 044a8c119c8a881983a7e2bab08c0a670bc3bf0f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486191"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956296"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz
 
@@ -221,7 +222,7 @@ Az ebben a szakaszban szereplő utasítások csak akkor használhatók, ha Azure
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** ellenőrzés `nfs4_disable_idmapping` . Értékeként az **Y**értéknek kell lennie. A-t tartalmazó könyvtár-struktúra létrehozásához `nfs4_disable_idmapping` hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
+4. **[A]** ellenőrzés `nfs4_disable_idmapping` . Értékeként az **Y** értéknek kell lennie. A-t tartalmazó könyvtár-struktúra létrehozásához `nfs4_disable_idmapping` hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -261,13 +262,13 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
       1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket és azok IP-címeit.
       1. Kattintson az Add (Hozzáadás) parancsra
    1. Az állapot-mintavételek létrehozása
-      1. A ASCS 620**00** portja
+      1. A ASCS 620 **00** portja
          1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új állapotadatok (például az **állapot) nevét. QAS. ASCS**)
-         1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
+         1. Válassza a TCP protokollt, a 620 **00** portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
          1. Kattintson az OK gombra
-      1. Port 621**01** ASCS-eseknél
-            * A "c" alatt a fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a ERS számára (például 621**01** és **Health. QAS. ERS**)
+      1. Port 621 **01** ASCS-eseknél
+            * A "c" alatt a fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a ERS számára (például 621 **01** és **Health. QAS. ERS**)
    1. Terheléselosztási szabályok
       1. Háttérbeli készlet létrehozása a ASCS
          1. Nyissa meg a Load balancert, válassza a terheléselosztási szabályok elemet, majd kattintson a Hozzáadás gombra.
@@ -295,15 +296,15 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
       1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket.
       1. Kattintson az OK gombra
    1. Az állapot-mintavételek létrehozása
-      1. A ASCS 620**00** portja
+      1. A ASCS 620 **00** portja
          1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új állapotadatok (például az **állapot) nevét. QAS. ASCS**)
-         1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
+         1. Válassza a TCP protokollt, a 620 **00** portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
          1. Kattintson az OK gombra
-      1. Port 621**01** ASCS-eseknél
-            * A "c" alatt a fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a ERS számára (például 621**01** és **Health. QAS. ERS**)
+      1. Port 621 **01** ASCS-eseknél
+            * A "c" alatt a fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a ERS számára (például 621 **01** és **Health. QAS. ERS**)
    1. Terheléselosztási szabályok
-      1. 32**00** TCP a ASCS
+      1. 32 **00** TCP a ASCS
          1. Nyissa meg a Load balancert, válassza a terheléselosztási szabályok elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új terheléselosztó szabály nevét (például **LB. QAS. ASCS. 3200**)
          1. Válassza ki a korábban létrehozott ASCS, háttér-készlet és állapot-mintavételi felület IP-címét (például a **frontendet). QAS. ASCS**)
@@ -312,9 +313,9 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
          1. Kattintson az OK gombra
       1. További portok a ASCS
-         * Ismételje meg a fenti lépéseket a "d" alatt a 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 és TCP ASCS
+         * Ismételje meg a fenti lépéseket a "d" alatt a 36 **00**, 39 **00**, 81 **00**, 5 **00** 13, 5 **00** 14, 5 **00** 16 és TCP ASCS
       1. További portok a ASCS-ESEK számára
-         * Ismételje meg a fenti lépéseket a "d" alatt a 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 és TCP ASCS-eseknél.
+         * Ismételje meg a fenti lépéseket a "d" alatt a 32 **01**, 33 **01**, 5 **01** 13, 5 **01** 14, 5 **01** 16 és TCP ASCS-eseknél.
 
       
       > [!IMPORTANT]
@@ -324,7 +325,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
       > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
       > [!IMPORTANT]
-      > Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0**értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
+      > Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0** értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
 
@@ -340,9 +341,9 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    </code></pre>
 
    > [!NOTE]
-   > A gazdagép nevében található kötőjel használatával kapcsolatos ismert probléma az **SAP-SUSE-cluster-Connector**csomag **3.1.1** -es verziójában van meghatározva. Győződjön meg arról, hogy a csomag SAP-SUSE-cluster-Connector legalább 3.1.1-es verzióját használja, ha a fürt csomópontjait használja az állomásnévben. Ellenkező esetben a fürt nem fog működni. 
+   > A gazdagép nevében található kötőjel használatával kapcsolatos ismert probléma az **SAP-SUSE-cluster-Connector** csomag **3.1.1** -es verziójában van meghatározva. Győződjön meg arról, hogy a csomag SAP-SUSE-cluster-Connector legalább 3.1.1-es verzióját használja, ha a fürt csomópontjait használja az állomásnévben. Ellenkező esetben a fürt nem fog működni. 
 
-   Győződjön meg arról, hogy az SAP SUSE-fürt összekötő új verzióját telepítette. A régit hívták sap_suse_cluster_connector és az újat **SAP-SUSE-cluster-Connector**néven nevezzük.
+   Győződjön meg arról, hogy az SAP SUSE-fürt összekötő új verzióját telepítette. A régit hívták sap_suse_cluster_connector és az újat **SAP-SUSE-cluster-Connector** néven nevezzük.
 
    <pre><code>sudo zypper info sap-suse-cluster-connector
    
@@ -560,7 +561,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
 
-   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**QAS**/ASCS**00**-ben, próbálja meg beállítani a ASCS**00**  mappa tulajdonosát és csoportját, és próbálkozzon újra. 
+   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**QAS**/ASCS **00**-ben, próbálja meg beállítani a ASCS **00**  mappa tulajdonosát és csoportját, és próbálkozzon újra. 
 
    <pre><code>
    chown <b>qas</b>adm /usr/sap/<b>QAS</b>/ASCS<b>00</b>
@@ -625,7 +626,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    > [!NOTE]
    > Használja az SWPM SP 20 PL 05-es vagy újabb verzióját. Az alacsonyabb verziók nem tudják megfelelően beállítani az engedélyeket, és a telepítés sikertelen lesz.
 
-   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**QAS**/ERS**01**-ben, próbálja meg beállítani az ERS**01** mappa tulajdonosát és csoportját, és próbálkozzon újra.
+   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**QAS**/ERS **01**-ben, próbálja meg beállítani az ERS **01** mappa tulajdonosát és csoportját, és próbálkozzon újra.
 
    <pre><code>
    chown qasadm /usr/sap/<b>QAS</b>/ERS<b>01</b>
@@ -974,7 +975,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
      DATABASE: <b>QAS</b>
    </code></pre>
 
-   A kimenet azt mutatja, hogy az alapértelmezett bejegyzés IP-címe a virtuális gépre mutat, nem pedig a terheléselosztó IP-címére. Ezt a bejegyzést úgy kell módosítani, hogy a terheléselosztó virtuális állomásneve mutasson. Ügyeljen arra, hogy ugyanazt a portot használja (a fenti kimenetben**30313** ) és az adatbázis nevét (a fenti kimenet**QAS** )!
+   A kimenet azt mutatja, hogy az alapértelmezett bejegyzés IP-címe a virtuális gépre mutat, nem pedig a terheléselosztó IP-címére. Ezt a bejegyzést úgy kell módosítani, hogy a terheléselosztó virtuális állomásneve mutasson. Ügyeljen arra, hogy ugyanazt a portot használja (a fenti kimenetben **30313** ) és az adatbázis nevét (a fenti kimenet **QAS** )!
 
    <pre><code>
    su - <b>qas</b>adm
