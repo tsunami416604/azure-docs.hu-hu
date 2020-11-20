@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 47733f4b141b0064e966d0c083fd6414405f65f9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e2f5528fde977520dc0aa0215a480a40ef8f1e7d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095543"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989615"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Rövid útmutató: Azure DDoS Protection standard létrehozása és konfigurálása az Azure CLI-vel
 
@@ -39,7 +39,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat.
 
-Erőforráscsoport létrehozásához használja [az az Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true)paranccsal. Ebben a példában az erőforráscsoport _MyResourceGroup_ nevet fogjuk használni, és az _USA keleti_ régióját használjuk:
+Erőforráscsoport létrehozásához használja [az az Group Create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create)paranccsal. Ebben a példában az erőforráscsoport _MyResourceGroup_ nevet fogjuk használni, és az _USA keleti_ régióját használjuk:
 
 ```azurecli-interactive
 az group create \
@@ -107,11 +107,11 @@ az network ddos-protection show \
 
 Ellenőrizze, hogy a parancs visszaadja-e a DDoS Protection-terv helyes részleteit.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A következő oktatóanyagban megtarthatja az erőforrásait. Ha már nincs rá szükség, törölje a _MyResourceGroup_ erőforráscsoportot. Az erőforráscsoport törlésekor a DDoS elleni védelmi tervet és az ahhoz kapcsolódó összes erőforrást is törli. 
 
-Az erőforráscsoport törléséhez használja az [az Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true):
+Az erőforráscsoport törléséhez használja az [az Group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az_group_delete):
 
 ```azurecli-interactive
 az group delete \

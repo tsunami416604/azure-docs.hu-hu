@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: a133cdb72e304a254305833b9ae6e8a7ebe30ab3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 211ef9571b5a126686b4583330dc0f80863fd47e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540008"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992046"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Adattitkosítás Azure Machine Learning
 
@@ -129,6 +129,12 @@ Minden virtuális gép helyi ideiglenes lemezzel is rendelkezik az operációs r
 ### <a name="azure-databricks"></a>Azure Databricks
 
 Azure Databricks használható Azure Machine Learning folyamatokban. Alapértelmezés szerint a Azure Databricks által használt Databricks fájlrendszer (DBFS) Microsoft által felügyelt kulccsal van titkosítva. Az ügyfél által felügyelt kulcsok használatára Azure Databricks konfigurálását lásd: az [ügyfél által felügyelt kulcsok konfigurálása az alapértelmezett (root) DBFS](/azure/databricks/security/customer-managed-keys-dbfs).
+
+### <a name="microsoft-generated-data"></a>Microsoft által generált adatszolgáltatások
+
+Ha olyan szolgáltatásokat használ, mint például az automatizált Machine Learning, a Microsoft átmeneti, előre feldolgozott adatfeldolgozást eredményezhet több modell betanításához. Ezeket az adatait a munkaterület egy adattárában tárolja, amely lehetővé teszi a hozzáférés-vezérlés és a titkosítás megfelelő betartatását.
+
+Érdemes lehet titkosítani az [üzembe helyezett végpontból naplózott diagnosztikai adatokat](how-to-enable-app-insights.md) az Azure Application Insights-példányba.
 
 ## <a name="encryption-in-transit"></a>Titkosítás az átvitel során
 

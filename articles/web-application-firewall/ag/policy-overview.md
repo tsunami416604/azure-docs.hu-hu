@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 11/19/2020
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: 9fb8bf689e2767f681994258c4d2c51be41d6c68
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952131"
+ms.locfileid: "94990125"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Az Azure webalkalmazási tűzfal (WAF) szabályzatának áttekintése
 
@@ -41,9 +41,9 @@ Tegyük fel, hogy az Application Gateway esetében érvényben van egy globális
 
 Az URI szintjének még részletesebb testreszabásához WAF szabályzatot rendelhet hozzá elérésiút-alapú szabállyal. Ha vannak olyan lapok, amelyek különböző házirendeket igényelnek egy adott helyen, akkor módosíthatja a WAF szabályzatot, amely csak egy adott URI-t érint. Ez egy fizetési vagy bejelentkezési oldalra, vagy bármely más olyan URI-ra vonatkozhat, amely még konkrétabb WAF-házirendet igényel, mint a WAF mögött található többi hely.
 
-A WAF-házirendekhez hasonlóan a pontosabb házirendek felülbírálják a kevésbé specifikuskat. Ez azt jelenti, hogy egy URL-elérésiút-térképhez tartozó URI-szabályzat felülbírálja a fölötte lévő vagy a globális WAF szabályzatot.
+A WAF-házirendekhez hasonlóan a konkrétabb házirendek felülbírálják a kevésbé specifikuskat. Ez azt jelenti, hogy egy URL-elérésiút-térképhez tartozó URI-szabályzat felülbírálja a fölötte lévő vagy a globális WAF szabályzatot.
 
-## <a name="example"></a>Példa
+### <a name="example"></a>Példa
 
 Tegyük fel, hogy három hellyel rendelkezik: a contoso.com, a fabrikam.com és a adatum.com az Application Gateway mögött. Azt szeretné, hogy a WAF mind a három helyre legyen alkalmazva, de a adatum.com-mel kell felvennie a biztonságot, mert az ügyfelek meglátogatják, böngészhetik és vásárolhatják meg a termékeket.
 

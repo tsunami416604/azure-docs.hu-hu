@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: c7a94a24bd825249859ff699ab82ce4d3ae8fce1
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b309ce01595e2e62bea7f78ae728d83bc7d9b9be
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842243"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992165"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>A közös biztonsági követelmények kezelése a Azure SQL Database és az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -107,12 +107,12 @@ A központi Identitáskezelés a következő előnyöket kínálja:
 > [!NOTE]
 >
 > - Az Azure AD-hitelesítés az Azure SQL-naplókban van rögzítve, de nem az Azure AD bejelentkezési naplóiban.
-> - Az Azure-ban megadott RBAC engedélyek nem vonatkoznak Azure SQL Database vagy SQL felügyelt példányra vonatkozó engedélyekre. Ezeket az engedélyeket manuálisan kell létrehozni/leképezni a meglévő SQL-engedélyek használatával.
+> - Az Azure-ban megadott Azure RBAC engedélyek nem vonatkoznak Azure SQL Database vagy SQL felügyelt példány engedélyeire. Ezeket az engedélyeket manuálisan kell létrehozni/leképezni a meglévő SQL-engedélyek használatával.
 > - Az Azure AD-hitelesítésnek szüksége van az internethez vagy a felhasználó által megadott útvonalon (UDR) keresztül egy virtuális hálózatra.
 > - Az Azure AD hozzáférési jogkivonat gyorsítótárazva van az ügyféloldali oldalon, és az élettartama a jogkivonat konfigurációjától függ. Tekintse meg a következő cikket: [konfigurálható jogkivonat élettartama Azure Active Directory](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)
 > - Az Azure AD-hitelesítési problémák elhárításával kapcsolatos útmutatásért tekintse meg a következő blogot: az [Azure ad hibaelhárítása](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991).
 
-### <a name="azure-ad-multi-factor-authentication"></a>Azure AD-Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD többtényezős hitelesítés
 
 > Megemlítve: OSA Practice #2, ISO Access Control (AC)
 

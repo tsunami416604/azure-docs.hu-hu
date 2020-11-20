@@ -1,16 +1,16 @@
 ---
 title: Az Azure Kubernetes Service (ak) megfelelőségi szabályozásának Azure Policy
 description: Felsorolja Azure Policy az Azure Kubernetes Service (ak) szolgáltatáshoz elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 13fc6e177248794eddd64e2a406980d59e2d37d2
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: b3c25c80c9ed4ce8c3184a562eafa5550aeb6d8d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697816"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989752"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) megfelelőségi szabályozásának Azure Policy
 

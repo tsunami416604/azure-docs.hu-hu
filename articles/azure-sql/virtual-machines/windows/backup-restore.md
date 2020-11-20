@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: a386ea5149b36a4e82b4c935e2373f505c6c83cf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: db270224a753f815a2d94e6a1fa79ebbedf49278
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789879"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991570"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>SQL Server biztonsági mentése és visszaállítása Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ A cikk első része áttekintést nyújt a rendelkezésre álló biztonsági men
 
 Az alábbi táblázat az Azure-beli virtuális gépek SQL Serverának különböző biztonsági mentési és visszaállítási lehetőségeiről nyújt információkat:
 
-| Stratégia | SQL-verziók | Leírás |
+| Stratégia | SQL-verziók | Description |
 |---|---|---|
 | [Automatikus biztonsági mentés](#automated) | 2014<br/> 2016<br/> 2017 | Az automatikus biztonsági mentés lehetővé teszi a SQL Server VM összes adatbázisának rendszeres biztonsági mentését. A biztonsági mentések tárolása az Azure Storage-ban akár 30 napig is eltartható. A SQL Server 2016-es verziójától kezdve az automatizált Backup v2 további lehetőségeket kínál, például a manuális ütemezés konfigurálását, valamint a teljes és naplózott biztonsági másolatok gyakoriságát. |
 | [Azure Backup SQL-alapú virtuális gépekhez](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | A Azure Backup nagyvállalati szintű biztonsági mentési képességet biztosít a SQL Server Azure-beli virtuális gépeken. Ezzel a szolgáltatással központilag kezelheti a biztonsági mentéseket több kiszolgáló és több ezer adatbázis között. Az adatbázisok visszaállíthatók egy adott időpontban a portálon. Testreszabható adatmegőrzési szabályzatot kínál, amely évekig képes biztonsági mentéseket fenntartani. |
@@ -55,23 +55,23 @@ Egy adatbázis visszaállításához meg kell keresnie a szükséges biztonsági
 
 Az SQL virtuális gépek automatikus biztonsági mentésének konfigurálásával kapcsolatos további információkért tekintse meg a következő cikkek egyikét:
 
-- **SQL Server 2016/2017** : [automatizált Backup v2 az Azure](automated-backup.md) -hoz Virtual machines
-- **SQL Server 2014** : [SQL Server 2014 automatikus biztonsági mentése Virtual Machines](automated-backup-sql-2014.md)
+- **SQL Server 2016/2017**: [automatizált Backup v2 az Azure](automated-backup.md) -hoz Virtual machines
+- **SQL Server 2014**: [SQL Server 2014 automatikus biztonsági mentése Virtual Machines](automated-backup-sql-2014.md)
 
 ## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a> Azure Backup SQL virtuális gépekhez
 
 A [Azure Backup](../../../backup/index.yml) nagyvállalati szintű biztonsági mentési képességet biztosít a SQL Server Azure-beli virtuális gépeken. Az összes biztonsági mentést egy Recovery Services tárolóban tárolják és kezelik. A megoldás számos előnnyel jár, különösen a vállalatok számára:
 
-- **Zéró infrastruktúra biztonsági mentése** : a biztonsági mentési kiszolgálókat és a tárolóhelyeket nem kell kezelnie.
-- **Scale** : számos SQL-virtuális gép és több ezer adatbázis védelmének biztosítása.
+- **Zéró infrastruktúra biztonsági mentése**: a biztonsági mentési kiszolgálókat és a tárolóhelyeket nem kell kezelnie.
+- **Scale**: számos SQL-virtuális gép és több ezer adatbázis védelmének biztosítása.
 - **Utólagos elszámolás: ez** a funkció Azure Backup által biztosított külön szolgáltatás, de az összes Azure-szolgáltatáshoz hasonlóan csak a ténylegesen használt funkciókért kell fizetnie.
-- **Központi felügyelet és monitorozás** : központilag kezelheti az összes biztonsági mentést, beleértve a Azure Backup által támogatott egyéb munkaterheléseket az Azure egyetlen irányítópultján.
-- **Házirend által vezérelt biztonsági mentés és megőrzés** : szabványos biztonsági mentési szabályzatok létrehozása a rendszeres biztonsági mentésekhez. Adatmegőrzési szabályzatokat hozhat létre a biztonsági mentések évekig történő fenntartásához.
-- **Az SQL always on szolgáltatás támogatása** : a SQL Server always on Configuration és a biztonsági mentési rendelkezésre állási csoport biztonsági mentési preferenciájának észlelése és biztosítása.
-- **15 perces helyreállítási időkorlát (RPO)** : az SQL-tranzakciós naplók biztonsági másolatainak beállítása 15 percenként.
-- **Időponthoz tartozó visszaállítás** : a portál használatával állíthatja helyre az adatbázisokat egy adott időpontra anélkül, hogy manuálisan kellene visszaállítani a több teljes, differenciált és naplózott biztonsági mentést.
-- **Összevont e-mail-riasztások** : az összevont e-mail-értesítések konfigurálása bármilyen hiba esetén.
-- **Szerepköralapú hozzáférés-vezérlés** : határozza meg, hogy kik kezelhetik a biztonsági mentési és visszaállítási műveleteket a portálon keresztül.
+- **Központi felügyelet és monitorozás**: központilag kezelheti az összes biztonsági mentést, beleértve a Azure Backup által támogatott egyéb munkaterheléseket az Azure egyetlen irányítópultján.
+- **Házirend által vezérelt biztonsági mentés és megőrzés**: szabványos biztonsági mentési szabályzatok létrehozása a rendszeres biztonsági mentésekhez. Adatmegőrzési szabályzatokat hozhat létre a biztonsági mentések évekig történő fenntartásához.
+- **Az SQL always on szolgáltatás támogatása**: a SQL Server always on Configuration és a biztonsági mentési rendelkezésre állási csoport biztonsági mentési preferenciájának észlelése és biztosítása.
+- **15 perces helyreállítási időkorlát (RPO)**: az SQL-tranzakciós naplók biztonsági másolatainak beállítása 15 percenként.
+- **Időponthoz tartozó visszaállítás**: a portál használatával állíthatja helyre az adatbázisokat egy adott időpontra anélkül, hogy manuálisan kellene visszaállítani a több teljes, differenciált és naplózott biztonsági mentést.
+- **Összevont e-mail-riasztások**: az összevont e-mail-értesítések konfigurálása bármilyen hiba esetén.
+- **Azure szerepköralapú hozzáférés-vezérlés**: határozza meg, hogy kik kezelhetik a biztonsági mentési és visszaállítási műveleteket a portálon keresztül.
 
 Az alábbi videóban gyorsan áttekintheti, hogyan működik együtt a bemutatóval:
 
@@ -108,9 +108,9 @@ A SQL Server 2012 SP1 CU2 kezdve a biztonsági mentést és visszaállítást k�
 
 További információkért tekintse meg az alábbi cikkek egyikét a SQL Server verziója alapján:
 
-- **SQL Server 2016/2017** : [SQL Server biztonsági mentés az URL-címre](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
-- **SQL Server 2014** : [SQL Server 2014 biztonsági mentés az URL-címre](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
-- **SQL Server 2012** : [SQL Server 2012 biztonsági mentés az URL-címre](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
+- **SQL Server 2016/2017**: [SQL Server biztonsági mentés az URL-címre](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
+- **SQL Server 2014**: [SQL Server 2014 biztonsági mentés az URL-címre](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
+- **SQL Server 2012**: [SQL Server 2012 biztonsági mentés az URL-címre](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
 
 ### <a name="managed-backup"></a>Felügyelt biztonsági mentés
 

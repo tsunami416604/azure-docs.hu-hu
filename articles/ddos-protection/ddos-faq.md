@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 871ededce1db5e4c3179c187fc46a828cd157456
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 6c475971f604c951280d0351d593cd5d96879d31
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886277"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992403"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection standard gyakori kérdések
 
@@ -29,7 +29,7 @@ Az elosztott szolgáltatásmegtagadás vagy a DDoS olyan típusú támadás, ame
 A standard szintű, az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva a DDoS-támadások elleni védelem érdekében fejlett DDoS-elhárítási funkciókat biztosít. Azure DDoS Protection A rendszer automatikusan hangolja az adott Azure-erőforrások védelmére egy virtuális hálózaton. A védelem egyszerűen engedélyezhető bármely új vagy meglévő virtuális hálózaton, és nem igényel alkalmazás-vagy erőforrás-módosítást. Az alapszintű szolgáltatás számos előnnyel jár, beleértve a naplózást, a riasztásokat és a telemetria is. További részletekért tekintse meg [Azure DDoS Protection standard áttekintést](ddos-protection-overview.md) . 
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Mi a védelem a szolgáltatási rétegben (7. réteg)?
-Az ügyfelek [Application Gateway WAF SKU](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview) -val együtt használhatják a Azure DDoS Protection szolgáltatást a védelemre a hálózati rétegben (3. és 4. réteg, Azure DDoS Protection szolgáltatás által kínált) és az alkalmazási rétegben (7. réteg, Application Gateway WAF SKU által felkínálva).
+Az ügyfelek [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md) -val együtt használhatják a Azure DDoS Protection szolgáltatást a védelemre a hálózati rétegben (3. és 4. réteg, Azure DDoS Protection szolgáltatás által kínált) és az alkalmazási rétegben (7. réteg, Application Gateway WAF SKU által felkínálva).
 
 ## <a name="are-services-unsafe-in-azure-without-the-service"></a>A szolgáltatások nem biztonságosak az Azure-ban a szolgáltatás nélkül?
 Az Azure-on futó szolgáltatásokat Azure DDoS Protection alapszintű védelemmel látja el, amely az Azure infrastruktúrájának védelmére van érvényben. Azonban az infrastruktúrát védő védelem jóval magasabb, mint a legtöbb alkalmazás kapacitása, és nem biztosít telemetria vagy riasztást, így ha a platform ártalmatlannak tekinti a forgalmi kötetet, akkor az azt fogadó alkalmazás számára is pusztító lehet. 
@@ -64,6 +64,3 @@ Lásd: [tesztelés szimulációk használatával](test-through-simulations.md).
 ## <a name="how-long-does-it-take-for-the-metrics-to-load-on-portal"></a>Mennyi ideig tart a mérőszámok betöltése a portálon?
 A metrikák 5 percen belül láthatók a portálon. Ha az erőforrás támadás alatt áll, a további metrikák a portálon 5-7 percen belül megjelennek. 
     
-
-
-

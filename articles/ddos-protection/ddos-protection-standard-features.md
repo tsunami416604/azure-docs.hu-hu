@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 133a27d8aef6c9df16ffcabfb4fac6c118665890
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: b3f903b69cebd22e870f7ccd5923e6f08455dff3
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905384"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992386"
 ---
-# <a name="azure-ddos-protection-standard-features"></a>Azure DDoS Protection standard funkciók
+# <a name="azure-ddos-protection-standard-features"></a>Az Azure DDoS Protection Standard szolgáltatásai
 
 A következő részekben a Azure DDoS Protection standard szolgáltatás fő funkcióit vázoljuk.
 
@@ -48,13 +48,13 @@ A Azure DDoS Protection alapszintű szolgáltatás segíti az ügyfeleket, és m
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS Protection telemetria, figyelés és riasztások
 
-DDoS Protection a standard szintű telemetria a DDoS-támadás idejére [Azure Monitorn](/azure/azure-monitor/overview) keresztül teszi elérhetővé. A riasztásokat konfigurálhatja a DDoS Protection által használt Azure Monitor metrikák bármelyikéhez. A splunk (Azure Event Hubs), a Azure Monitor naplók és az Azure Storage szolgáltatással integrálhatja a naplózást a Azure Monitor Diagnostics felületén keresztül a speciális elemzésekhez.
+DDoS Protection a standard szintű telemetria a DDoS-támadás idejére [Azure Monitorn](../azure-monitor/overview.md) keresztül teszi elérhetővé. A riasztásokat konfigurálhatja a DDoS Protection által használt Azure Monitor metrikák bármelyikéhez. A splunk (Azure Event Hubs), a Azure Monitor naplók és az Azure Storage szolgáltatással integrálhatja a naplózást a Azure Monitor Diagnostics felületén keresztül a speciális elemzésekhez.
 
 ### <a name="ddos-mitigation-policies"></a>DDoS-mérséklési szabályzatok
 
 A Azure Portal válassza a **Monitor**  >  **metrikák** figyelése elemet. A **metrikák** ablaktáblán válassza ki az erőforráscsoportot, válasszon ki egy **nyilvános IP-cím** típusú erőforrás-típust, és válassza ki az Azure nyilvános IP-címét. A DDoS-metrikák az **elérhető metrikák** ablaktáblán láthatók.
 
-DDoS Protection a standard három, a védett erőforrás minden nyilvános IP-címéhez (TCP SYN, TCP és UDP) tartozó, a DDoS-t engedélyező virtuális hálózatban található, három alapszintű kockázatcsökkentő szabályzatot alkalmaz. A szabályzat küszöbértékeit úgy tekintheti meg, ha kiválasztja a metrika **bejövő csomagjait a DDoS-mérséklés elindításához** .
+DDoS Protection a standard három, a védett erőforrás minden nyilvános IP-címéhez (TCP SYN, TCP és UDP) tartozó, a DDoS-t engedélyező virtuális hálózatban található, három alapszintű kockázatcsökkentő szabályzatot alkalmaz. A szabályzat küszöbértékeit úgy tekintheti meg, ha kiválasztja a metrika **bejövő csomagjait a DDoS-mérséklés elindításához**.
 
 ![Elérhető metrikák és mérőszámok diagramja](./media/ddos-best-practices/image-7.png)
 
@@ -72,7 +72,7 @@ További információ: [Azure DDoS Protection standard kezelése a Azure Portal 
 
 ## <a name="web-application-firewall-for-resource-attacks"></a>Webalkalmazási tűzfal erőforrás-támadásokhoz
 
-Az alkalmazási rétegben az erőforrás-támadásokra adott esetben egy webalkalmazási tűzfalat (WAF) kell konfigurálnia a webalkalmazások biztonságossá tételéhez. A WAF ellenőrzi a bejövő webes forgalmat, hogy blokkolja az SQL-injektálásokat, a helyközi parancsfájlkezelést, a DDoS-t és a 7. rétegbeli támadásokat. Az Azure a [Application Gateway funkciójának](/azure/application-gateway/application-gateway-web-application-firewall-overview) köszönhetően lehetővé teszi a webalkalmazások központosított védelmét a gyakori támadások és biztonsági rések révén. Az Azure-partnerek további WAF ajánlatokat is biztosítanak, amelyek az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)-en keresztül megfelelőbbek lehetnek az igényeihez.
+Az alkalmazási rétegben az erőforrás-támadásokra adott esetben egy webalkalmazási tűzfalat (WAF) kell konfigurálnia a webalkalmazások biztonságossá tételéhez. A WAF ellenőrzi a bejövő webes forgalmat, hogy blokkolja az SQL-injektálásokat, a helyközi parancsfájlkezelést, a DDoS-t és a 7. rétegbeli támadásokat. Az Azure a [Application Gateway funkciójának](../web-application-firewall/ag/ag-overview.md) köszönhetően lehetővé teszi a webalkalmazások központosított védelmét a gyakori támadások és biztonsági rések révén. Az Azure-partnerek további WAF ajánlatokat is biztosítanak, amelyek az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)-en keresztül megfelelőbbek lehetnek az igényeihez.
 
 Még a webalkalmazási tűzfalak is hajlamosak a térfogatmérő és az állami kimerültség elleni támadásokra. Javasoljuk, hogy a WAF virtuális hálózatban engedélyezze a DDoS Protection standard használatát a térfogatáram-és protokoll-támadások elleni védelem érdekében. További információ: [DDoS Protection hivatkozási architektúrák](ddos-protection-reference-architectures.md) szakasz.
 

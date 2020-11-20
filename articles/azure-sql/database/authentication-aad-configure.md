@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: a9ef15bf595d84613b5f41a73e5526cb0fe79d5b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c5caf48dd4e2860ec5f4815eb38629ad66391a2c
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841410"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990108"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel
 
@@ -105,7 +105,7 @@ Az SQL felügyelt példány Azure AD olvasási engedélyének az Azure Portal ha
 
 7. Az Azure AD-rendszergazda lapon keressen rá egy felhasználóra, válassza ki a felhasználót vagy csoportot, majd válassza a **kiválasztás** lehetőséget.
 
-   A Active Directory felügyeleti oldal megjeleníti a Active Directory összes tagját és csoportját. A nem kiválasztható felhasználók vagy csoportok nem választhatók ki, mert nem támogatottak az Azure AD-rendszergazdák. Tekintse meg a támogatott rendszergazdák listáját az [Azure ad-funkciókban és korlátozásokban](authentication-aad-overview.md#azure-ad-features-and-limitations). A szerepköralapú hozzáférés-vezérlés (RBAC) csak a Azure Portalra vonatkozik, és nincs propagálva SQL Database, SQL felügyelt példány vagy Azure szinapszis számára.
+   A Active Directory felügyeleti oldal megjeleníti a Active Directory összes tagját és csoportját. A nem kiválasztható felhasználók vagy csoportok nem választhatók ki, mert nem támogatottak az Azure AD-rendszergazdák. Tekintse meg a támogatott rendszergazdák listáját az [Azure ad-funkciókban és korlátozásokban](authentication-aad-overview.md#azure-ad-features-and-limitations). Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) csak a Azure Portalra vonatkozik, és nincs propagálva SQL Database, SQL felügyelt példány vagy Azure szinapszis számára.
 
     ![Azure Active Directory adminisztrátor hozzáadása](./media/authentication-aad-configure/add-azure-active-directory-admin.png)
 
@@ -190,7 +190,7 @@ Az Azure AD-rendszergazda kiépítéséhez hajtsa végre a következő Azure Pow
 
 Az SQL felügyelt példányához az Azure AD-rendszergazda üzembe helyezéséhez és kezeléséhez használt parancsmagok az alábbi táblázatban láthatók:
 
-| Parancsmag neve | Leírás |
+| Parancsmag neve | Description |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Kiépít egy Azure AD-rendszergazdát a jelenlegi előfizetésben található SQL felügyelt példányhoz. (Az aktuális előfizetésből kell származnia)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Eltávolít egy Azure AD-rendszergazdát az SQL által felügyelt példányhoz az aktuális előfizetésben. |
@@ -253,7 +253,7 @@ A következő két eljárás bemutatja, hogyan helyezhet üzembe egy Azure Activ
 
     ![SQL Servers set Active Directory admin](./media/authentication-aad-configure/sql-servers-set-active-directory-admin.png)  
 
-5. A rendszergazda **hozzáadása** lapon keressen rá egy felhasználóra, válassza ki a felhasználót vagy csoportot, majd válassza a **kiválasztás** lehetőséget. (A Active Directory felügyeleti oldal megjeleníti a Active Directory összes tagját és csoportját. A nem kiválasztható felhasználók vagy csoportok nem választhatók ki, mert nem támogatottak az Azure AD-rendszergazdák. (Tekintse meg a támogatott rendszergazdák listáját az **Azure ad-szolgáltatások és-korlátozások** című szakaszban [Azure Active Directory hitelesítés használata a SQL Database vagy az Azure szinapszis használatával történő hitelesítéshez](authentication-aad-overview.md).) A szerepköralapú hozzáférés-vezérlés (RBAC) csak a portálra vonatkozik, és nincs propagálva a SQL Server.
+5. A rendszergazda **hozzáadása** lapon keressen rá egy felhasználóra, válassza ki a felhasználót vagy csoportot, majd válassza a **kiválasztás** lehetőséget. (A Active Directory felügyeleti oldal megjeleníti a Active Directory összes tagját és csoportját. A nem kiválasztható felhasználók vagy csoportok nem választhatók ki, mert nem támogatottak az Azure AD-rendszergazdák. (Tekintse meg a támogatott rendszergazdák listáját az **Azure ad-szolgáltatások és-korlátozások** című szakaszban [Azure Active Directory hitelesítés használata a SQL Database vagy az Azure szinapszis használatával történő hitelesítéshez](authentication-aad-overview.md).) Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) csak a portálra vonatkozik, és nem terjed ki SQL Serverra.
 
     ![Azure Active Directory rendszergazda kiválasztása](./media/authentication-aad-configure/select-azure-active-directory-admin.png)  
 
@@ -279,7 +279,7 @@ A PowerShell-parancsmagok futtatásához Azure PowerShell kell telepítenie és 
 
 Az Azure AD-rendszergazdák üzembe helyezéséhez és kezeléséhez használt parancsmagok a SQL Database és az Azure szinapszis számára:
 
-| Parancsmag neve | Leírás |
+| Parancsmag neve | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Kiépít egy Azure Active Directory rendszergazdát a SQL Database vagy az Azure szinapszis-t üzemeltető kiszolgáló számára. (Az aktuális előfizetésből kell származnia) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Eltávolít egy Azure Active Directory rendszergazdát a SQL Database vagy az Azure szinapszis-t futtató kiszolgáló számára.|

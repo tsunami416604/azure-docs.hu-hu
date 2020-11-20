@@ -1,5 +1,5 @@
 ---
-title: A DDoS-reagálási stratégia összetevői
+title: A DDoS-válaszstratégiák összetevői
 description: Megtudhatja, hogyan használhatja a Azure DDoS Protection standardot a DDoS-támadásokra való reagálásra.
 services: ddos-protection
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 23822ce5b311dc479824128d66bc18a15473862d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a80f03ee82e8d1216353482dc867402adcf7d09
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905314"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992233"
 ---
-# <a name="components-of-a-ddos-response-strategy"></a>A DDoS-reagálási stratégia összetevői
+# <a name="components-of-a-ddos-response-strategy"></a>A DDoS-válaszstratégiák összetevői
 
 Az Azure-erőforrásokra irányuló DDoS-támadások általában minimális beavatkozást igényelnek a felhasználói szempontból. A DDoS-megoldásnak az incidensekre való reagálási stratégia részeként való beépítésével továbbra is csökkentheti az üzleti folytonosságra gyakorolt hatást.
 
@@ -44,9 +44,9 @@ Fontos, hogy a kockázat hatókörét a DDoS-támadásoktól folyamatosan megér
 
 - A szolgáltatásom aktív/aktív a több régióban feladatátvételsel?
 
-Fontos, hogy tisztában legyen az alkalmazások normál viselkedésével, és felkészüljön a működésre, ha az alkalmazás a DDoS-támadás során nem a várt módon működik. Olyan figyelőket kell konfigurálnia az üzleti szempontból kritikus fontosságú alkalmazásokhoz, amelyek az ügyfél viselkedését utánozzák Az alkalmazás állapotának megállapításához tekintse meg a [monitorozási és diagnosztikai ajánlott eljárásokat](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) .
+Fontos, hogy tisztában legyen az alkalmazások normál viselkedésével, és felkészüljön a működésre, ha az alkalmazás a DDoS-támadás során nem a várt módon működik. Olyan figyelőket kell konfigurálnia az üzleti szempontból kritikus fontosságú alkalmazásokhoz, amelyek az ügyfél viselkedését utánozzák Az alkalmazás állapotának megállapításához tekintse meg a [monitorozási és diagnosztikai ajánlott eljárásokat](/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) .
 
-Az [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) egy bővíthető Application Performance Management-(APM-) szolgáltatás több platformon futó webes fejlesztőknek. Az élő webalkalmazás figyeléséhez használja a Application Insights. Automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket. Olyan elemzési eszközöket tartalmaz, amelyekkel diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók milyen műveleteket hajtanak végre az alkalmazással. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
+Az [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) egy bővíthető Application Performance Management-(APM-) szolgáltatás több platformon futó webes fejlesztőknek. Az élő webalkalmazás figyeléséhez használja a Application Insights. Automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket. Olyan elemzési eszközöket tartalmaz, amelyekkel diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók milyen műveleteket hajtanak végre az alkalmazással. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
 
 ## <a name="customer-ddos-response-team"></a>Ügyfél DDoS-válasz csapata
 
@@ -56,7 +56,7 @@ Javasoljuk, hogy a szimulációs gyakorlatokat a szolgáltatás rendelkezésre �
 
 ## <a name="alerts-during-an-attack"></a>Riasztások támadás közben
 
-Azure DDoS Protection standard azonosítja és csökkenti a DDoS-támadásokat felhasználói beavatkozás nélkül. Ha értesítést szeretne kapni, ha a védett nyilvános IP-címek esetében aktív megoldás van érvényben, beállíthatja, hogy a [metrika a](telemetry-monitoring-alerting.md) DDoS-támadás alatt legyen, **vagy nem** . Dönthet úgy, hogy riasztásokat hoz létre a többi DDoS mérőszámhoz a támadás méretezésének, az eldobott forgalomnak és egyéb részleteknek a megismeréséhez.
+Azure DDoS Protection standard azonosítja és csökkenti a DDoS-támadásokat felhasználói beavatkozás nélkül. Ha értesítést szeretne kapni, ha a védett nyilvános IP-címek esetében aktív megoldás van érvényben, beállíthatja, hogy a [metrika a](telemetry-monitoring-alerting.md) DDoS-támadás alatt legyen, **vagy nem**. Dönthet úgy, hogy riasztásokat hoz létre a többi DDoS mérőszámhoz a támadás méretezésének, az eldobott forgalomnak és egyéb részleteknek a megismeréséhez.
 
 ### <a name="when-to-contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 

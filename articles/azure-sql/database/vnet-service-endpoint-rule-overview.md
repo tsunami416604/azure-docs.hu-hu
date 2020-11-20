@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5c5276f11da687f14630bafd007532d172ef3737
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325005"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990805"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuális hálózati szolgáltatási végpontok és szabályok használata a Azure SQL Database-kiszolgálókon
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -55,7 +55,7 @@ A biztonsági szerepkörök elkülönítése Virtual Network szolgáltatási vé
 - **Hálózati rendszergazda:** &nbsp; Kapcsolja be a végpontot.
 - **Adatbázis-rendszergazda:** &nbsp; Frissítse a hozzáférés-vezérlési listát (ACL), hogy hozzáadja a megadott alhálózatot a kiszolgálóhoz.
 
-*RBAC alternatíva:*
+*Azure RBAC alternatíva:*
 
 A hálózati rendszergazda és az adatbázis-rendszergazda szerepkörének több funkciója van, mint amennyi a virtuális hálózati szabályok kezeléséhez szükséges. A képességeinek csak egy részhalmazára van szükség.
 
@@ -89,7 +89,7 @@ Azure SQL Database esetében a virtuális hálózati szabályok funkció a köve
 
 Ha Azure SQL Database szolgáltatási végpontokat használ, tekintse át a következő szempontokat:
 
-- **Azure SQL Database nyilvános IP-címekre való kimenő forgalom szükséges** : hálózati biztonsági csoportokat (NSG) kell megnyitni ahhoz, hogy a kapcsolat lehetővé váljon a Azure SQL Database IP-címek számára. Ezt a Azure SQL Database NSG- [szolgáltatásának címkéi](../../virtual-network/network-security-groups-overview.md#service-tags) segítségével teheti meg.
+- **Azure SQL Database nyilvános IP-címekre való kimenő forgalom szükséges**: hálózati biztonsági csoportokat (NSG) kell megnyitni ahhoz, hogy a kapcsolat lehetővé váljon a Azure SQL Database IP-címek számára. Ezt a Azure SQL Database NSG- [szolgáltatásának címkéi](../../virtual-network/network-security-groups-overview.md#service-tags) segítségével teheti meg.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -192,7 +192,7 @@ A 40914-es kapcsolati hiba a Azure Portal tűzfal ablaktábláján megadott *vir
 
 ### <a name="error-40914"></a>40914-es hiba
 
-*Üzenet szövege:* Nem nyitható meg a bejelentkezés által kért " *[Server-Name]* " kiszolgáló. Az ügyfél nem jogosult a kiszolgálóhoz való hozzáférésre.
+*Üzenet szövege:* Nem nyitható meg a bejelentkezés által kért "*[Server-Name]*" kiszolgáló. Az ügyfél nem jogosult a kiszolgálóhoz való hozzáférésre.
 
 *Hiba leírása:* Az ügyfél olyan alhálózatban található, amely virtuális hálózati kiszolgáló-végpontokkal rendelkezik. A kiszolgálónak azonban nincs olyan virtuális hálózati szabálya, amely engedélyezi az alhálózatnak az adatbázissal való kommunikációt.
 

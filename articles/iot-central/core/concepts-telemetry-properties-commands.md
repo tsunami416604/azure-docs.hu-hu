@@ -3,17 +3,17 @@ title: Telemetria-, tulajdonság-és parancssori adattartalom az Azure IoT Centr
 description: Az Azure IoT Central-sablonjai lehetővé teszik az eszközök telemetria, tulajdonságainak és parancsainak megadását. Megtudhatja, hogy az eszközök milyen formátumban cserélhetik az IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/12/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 9e5288bb177d5827f05003e4561bc79240a71b59
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427876"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989547"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetria, tulajdonságok és parancsok hasznos adatai
 
@@ -29,12 +29,12 @@ Ez a cikk azt ismerteti, hogy az eszközök fejlesztői számára milyen JSON-ad
 
 A cikk nem írja le az összes lehetséges telemetria, tulajdonságot és a parancs hasznos adatait, de a példák az összes típusú kulcsot bemutatják.
 
-Mindegyik példa egy olyan kódrészletet mutat be az eszköz-képesség modelljéből (DCM), amely meghatározza a típust és a JSON-adattartalomot, hogy az eszköz hogyan működjön együtt a IoT Central alkalmazással.
+Mindegyik példa egy olyan kódrészletet mutat be az eszköz modelljéből, amely meghatározza a típust és a JSON-adattartalomot annak szemléltetésére, hogy az eszköz hogyan működjön együtt a IoT Central alkalmazással.
 
 > [!NOTE]
-> IoT Central fogadja el az érvényes JSON-t, de csak vizualizációk esetében használható, ha az megfelel a DCM definíciójának. A definíciónak nem megfelelő adatexportálást a következő témakörben tekintheti meg: [IoT-információk exportálása célhelyekre az Azure-ban](howto-export-data.md).
+> IoT Central fogadja el az érvényes JSON-t, de csak vizualizációk esetében használható, ha az megfelel az eszköz modelljében szereplő definíciónak. A definíciónak nem megfelelő adatexportálást a következő témakörben tekintheti meg: [IoT-információk exportálása célhelyekre az Azure-ban](howto-export-data.md).
 
-A DCM-et definiáló JSON-fájl a [Digital Twin Definition Language (DTDL) v1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md)protokollt használja. Ez a specifikáció tartalmazza a `@id` tulajdonság formátumának definícióját.
+Az eszköz modelljét definiáló JSON-fájl a [Digital Twin Definition Language (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)protokollt használja.
 
 A használatban lévő hasznos adattartalmakat bemutató minta-eszközhöz tekintse meg az [ügyfélalkalmazás létrehozása és csatlakoztatása azure IoT Central alkalmazáshoz (Node.js)](tutorial-connect-device-nodejs.md) című témakört, és [hozzon létre és csatlakoztasson egy ügyfélalkalmazás-alkalmazást az Azure IoT Central Application (Python)](tutorial-connect-device-python.md) oktatóanyagokhoz.
 
@@ -56,11 +56,10 @@ IoT Central segítségével megtekintheti a nyers adatokat, amelyeket az eszköz
 
 Ez a szakasz olyan primitív telemetria-típusokra mutat be példákat, amelyeket az eszköz egy IoT Central alkalmazásnak közvetít.
 
-A DCM következő kódrészlete a telemetria definícióját mutatja `boolean` be:
+Az eszköz modelljének következő kódrészlete a telemetria definícióját mutatja `boolean` be:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "BooleanTelemetry"
@@ -76,11 +75,10 @@ Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elkül
 { "BooleanTelemetry": true }
 ```
 
-A DCM következő kódrészlete a telemetria definícióját mutatja `string` be:
+Az eszköz modelljének következő kódrészlete a telemetria definícióját mutatja `string` be:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "StringTelemetry"
@@ -96,11 +94,10 @@ Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elkül
 { "StringTelemetry": "A string value - could be a URL" }
 ```
 
-A DCM következő kódrészlete egy telemetria-típus definícióját mutatja `integer` be:
+Az eszköz modelljének következő kódrészlete egy telemetria definícióját mutatja `integer` be:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "IntegerTelemetry"
@@ -117,11 +114,10 @@ Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elkül
 { "IntegerTelemetry": 23 }
 ```
 
-A DCM következő kódrészlete a telemetria definícióját mutatja `double` be:
+Az eszköz modelljének következő kódrészlete a telemetria definícióját mutatja `double` be:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DoubleTelemetry"
@@ -137,11 +133,10 @@ Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elkül
 { "DoubleTelemetry": 56.78 }
 ```
 
-A DCM következő kódrészlete a telemetria definícióját mutatja `dateTime` be:
+Az eszköz modelljének következő kódrészlete a telemetria definícióját mutatja `dateTime` be:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DateTimeTelemetry"
@@ -151,17 +146,16 @@ A DCM következő kódrészlete a telemetria definícióját mutatja `dateTime` 
 }
 ```
 
-Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elküldeni a telemetria `DateTime` : ISO 8061-kompatibilisnek kell lennie:
+Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elküldeni a telemetria `DateTime` : ISO 8061 formátumúnak kell lennie:
 
 ```json
 { "DateTimeTelemetry": "2020-08-30T19:16:13.853Z" }
 ```
 
-A DCM következő kódrészlete a telemetria definícióját mutatja `duration` be:
+Az eszköz modelljének következő kódrészlete a telemetria definícióját mutatja `duration` be:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DurationTelemetry"
@@ -171,7 +165,7 @@ A DCM következő kódrészlete a telemetria definícióját mutatja `duration` 
 }
 ```
 
-Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elküldeni a telemetria: az időtartamnak ISO 8601 időtartamnak megfelelőnek kell lennie:
+Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elküldeni a telemetria: az időtartamnak ISO 8601 formátumúnak kell lennie:
 
 ```json
 { "DurationTelemetry": "PT10H24M6.169083011336625S" }
@@ -181,11 +175,10 @@ Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elkül
 
 Ez a szakasz olyan összetett telemetria-típusokra mutat be példákat, amelyeket az eszköz egy IoT Central alkalmazásnak közvetít.
 
-A DCM következő kódrészlete a telemetria definícióját mutatja `geopoint` be:
+Az eszköz modelljének következő kódrészlete a telemetria definícióját mutatja `geopoint` be:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "GeopointTelemetry"
@@ -207,18 +200,16 @@ Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elkül
 }
 ```
 
-A DCM következő kódrészlete egy telemetria-típus definícióját mutatja `Enum` be:
+Az eszköz modelljének következő kódrészlete egy telemetria definícióját mutatja `Enum` be:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "EnumTelemetry"
   },
   "name": "EnumTelemetry",
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -226,8 +217,6 @@ A DCM következő kódrészlete egy telemetria-típus definícióját mutatja `E
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -235,8 +224,6 @@ A DCM következő kódrészlete egy telemetria-típus definícióját mutatja `E
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -244,8 +231,6 @@ A DCM következő kódrészlete egy telemetria-típus definícióját mutatja `E
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -263,26 +248,22 @@ Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elkül
 { "EnumTelemetry": 1 }
 ```
 
-A DCM következő kódrészlete egy telemetria-típus definícióját mutatja `Object` be. Ennek az objektumnak három típusa van `dateTime` `integer` `Enum` :
+Az eszköz modelljében az alábbi kódrészlet egy telemetria-típus definícióját mutatja be `Object` . Ennek az objektumnak három típusa van `dateTime` `integer` `Enum` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "ObjectTelemetry"
   },
   "name": "ObjectTelemetry",
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property1"
         },
@@ -290,8 +271,6 @@ A DCM következő kódrészlete egy telemetria-típus definícióját mutatja `O
         "schema": "dateTime"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property2"
         },
@@ -299,14 +278,11 @@ A DCM következő kódrészlete egy telemetria-típus definícióját mutatja `O
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property3"
         },
         "name": "Property3",
         "schema": {
-          "@id": "<element id>",
           "@type": "Enum",
           "displayName": {
             "en": "Enum"
@@ -314,8 +290,6 @@ A DCM következő kódrészlete egy telemetria-típus definícióját mutatja `O
           "valueSchema": "integer",
           "enumValues": [
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item1"
               },
@@ -323,8 +297,6 @@ A DCM következő kódrészlete egy telemetria-típus definícióját mutatja `O
               "name": "Item1"
             },
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item2"
               },
@@ -332,8 +304,6 @@ A DCM következő kódrészlete egy telemetria-típus definícióját mutatja `O
               "name": "Item2"
             },
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item3"
               },
@@ -360,11 +330,10 @@ Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elkül
 }
 ```
 
-A DCM következő kódrészlete a telemetria definícióját mutatja `vector` be:
+Az eszköz modelljének következő kódrészlete a telemetria definícióját mutatja `vector` be:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "VectorTelemetry"
@@ -390,14 +359,13 @@ Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elkül
 
 Ez a szakasz példákat mutat be azokra a telemetria eseményekre és állapotokra, amelyeket az eszköz egy IoT Central alkalmazásnak küld.
 
-A DCM következő kódrészlete egy eseménytípus definícióját mutatja be `integer` :
+Az eszköz modelljének következő kódrészlete az eseménytípus definícióját mutatja be `integer` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": [
     "Telemetry",
-    "SemanticType/Event"
+    "Event"
   ],
   "displayName": {
     "en": "IntegerEvent"
@@ -413,27 +381,23 @@ Az eszköz ügyfelének az alábbi példához hasonló JSON-ként kell elkülden
 { "IntegerEvent": 74 }
 ```
 
-A DCM következő kódrészlete az `integer` állapot típusának definícióját mutatja be:
+Az eszköz modelljének következő kódrészlete az állapot definícióját mutatja `integer` be:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": [
     "Telemetry",
-    "SemanticType/State"
+    "State"
   ],
   "displayName": {
     "en": "IntegerState"
   },
   "name": "IntegerState",
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level1"
         },
@@ -441,8 +405,6 @@ A DCM következő kódrészlete az `integer` állapot típusának definíciójá
         "name": "Level1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level2"
         },
@@ -450,8 +412,6 @@ A DCM következő kódrészlete az `integer` állapot típusának definíciójá
         "name": "Level2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level3"
         },
@@ -478,17 +438,17 @@ Az eszköz ügyfelének az alábbi példához hasonló JSON-ként kell elkülden
 
 Ez a szakasz azokat a primitív tulajdonságokat mutatja be, amelyeket az eszköz egy IoT Central alkalmazásnak küld.
 
-A DCM következő kódrészlete a tulajdonságok típusának definícióját mutatja be `boolean` :
+Az eszköz modelljének következő kódrészlete egy tulajdonság definícióját mutatja be `boolean` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "BooleanProperty"
   },
   "name": "BooleanProperty",
-  "schema": "boolean"
+  "schema": "boolean",
+  "writable": false
 }
 ```
 
@@ -498,17 +458,17 @@ Az eszköz ügyfelének egy JSON-adattartalmat kell küldenie, amely a következ
 { "BooleanProperty": false }
 ```
 
-A DCM következő kódrészlete a tulajdonságok típusának definícióját mutatja be `boolean` :
+Az eszköz modelljének következő kódrészlete egy tulajdonság definícióját mutatja be `boolean` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "LongProperty"
   },
   "name": "LongProperty",
-  "schema": "long"
+  "schema": "long",
+  "writable": false
 }
 ```
 
@@ -518,17 +478,17 @@ Az eszköz ügyfelének egy JSON-adattartalmat kell küldenie, amely a következ
 { "LongProperty": 439 }
 ```
 
-A DCM következő kódrészlete a tulajdonságok típusának definícióját mutatja be `date` :
+Az eszköz modelljének következő kódrészlete egy tulajdonság definícióját mutatja be `date` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "DateProperty"
   },
   "name": "DateProperty",
-  "schema": "date"
+  "schema": "date",
+  "writable": false
 }
 ```
 
@@ -538,17 +498,17 @@ Az eszköz ügyfelének egy JSON-adattartalmat kell küldenie, amely a következ
 { "DateProperty": "2020-05-17" }
 ```
 
-A DCM következő kódrészlete a tulajdonságok típusának definícióját mutatja be `duration` :
+Az eszköz modelljének következő kódrészlete egy tulajdonság definícióját mutatja be `duration` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "DurationProperty"
   },
   "name": "DurationProperty",
-  "schema": "duration"
+  "schema": "duration",
+  "writable": false
 }
 ```
 
@@ -558,17 +518,17 @@ Az eszköz ügyfelének olyan JSON-adattartalomot kell küldenie, amely a követ
 { "DurationProperty": "PT10H24M6.169083011336625S" }
 ```
 
-A DCM következő kódrészlete a tulajdonságok típusának definícióját mutatja be `float` :
+Az eszköz modelljének következő kódrészlete egy tulajdonság definícióját mutatja be `float` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "FloatProperty"
   },
   "name": "FloatProperty",
-  "schema": "float"
+  "schema": "float",
+  "writable": false
 }
 ```
 
@@ -578,17 +538,17 @@ Az eszköz ügyfelének egy JSON-adattartalmat kell küldenie, amely a következ
 { "FloatProperty": 1.9 }
 ```
 
-A DCM következő kódrészlete a tulajdonságok típusának definícióját mutatja be `string` :
+Az eszköz modelljének következő kódrészlete egy tulajdonság definícióját mutatja be `string` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "StringProperty"
   },
   "name": "StringProperty",
-  "schema": "string"
+  "schema": "string",
+  "writable": false
 }
 ```
 
@@ -602,17 +562,17 @@ Az eszköz ügyfelének egy JSON-adattartalmat kell küldenie, amely a következ
 
 Ez a szakasz olyan összetett tulajdonságokat mutat be, amelyeket az eszköz egy IoT Central alkalmazásnak küld.
 
-A DCM következő kódrészlete a tulajdonságok típusának definícióját mutatja be `geopoint` :
+Az eszköz modelljének következő kódrészlete egy tulajdonság definícióját mutatja be `geopoint` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "GeopointProperty"
   },
   "name": "GeopointProperty",
-  "schema": "geopoint"
+  "schema": "geopoint",
+  "writable": false
 }
 ```
 
@@ -628,18 +588,17 @@ Az eszköz ügyfelének egy JSON-adattartalmat kell küldenie, amely a következ
 }
 ```
 
-A DCM következő kódrészlete a tulajdonságok típusának definícióját mutatja be `Enum` :
+Az eszköz modelljének következő kódrészlete egy tulajdonság definícióját mutatja be `Enum` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "EnumProperty"
   },
   "name": "EnumProperty",
+  "writable": false,
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -647,8 +606,6 @@ A DCM következő kódrészlete a tulajdonságok típusának definícióját mut
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -656,8 +613,6 @@ A DCM következő kódrészlete a tulajdonságok típusának definícióját mut
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -665,8 +620,6 @@ A DCM következő kódrészlete a tulajdonságok típusának definícióját mut
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -684,26 +637,23 @@ Az eszköz ügyfelének egy JSON-adattartalmat kell küldenie, amely a következ
 { "EnumProperty": 1 }
 ```
 
-A DCM következő kódrészlete a tulajdonságok típusának definícióját jeleníti meg `Object` . Ez az objektum két típusú mezőt tartalmaz `string` `integer` :
+Az eszköz modelljében az alábbi kódrészlet mutatja a `Object` Tulajdonságok típusának definícióját. Ez az objektum két típusú mezőt tartalmaz `string` `integer` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "ObjectProperty"
   },
   "name": "ObjectProperty",
+  "writable": false,
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field1"
         },
@@ -711,8 +661,6 @@ A DCM következő kódrészlete a tulajdonságok típusának definícióját jel
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field2"
         },
@@ -735,17 +683,17 @@ Az eszköz ügyfelének egy JSON-adattartalmat kell küldenie, amely a következ
 }
 ```
 
-A DCM következő kódrészlete a tulajdonságok típusának definícióját mutatja be `vector` :
+Az eszköz modelljének következő kódrészlete egy tulajdonság definícióját mutatja be `vector` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "VectorProperty"
   },
   "name": "VectorProperty",
-  "schema": "vector"
+  "schema": "vector",
+  "writable": false
 }
 ```
 
@@ -769,7 +717,7 @@ IoT Central az eszköztől az írható tulajdonságok frissítéseire választ v
 
 `ac` egy numerikus mező, amely az alábbi táblázatban szereplő értékeket használja:
 
-| Érték | Címke | Leírás |
+| Érték | Címke | Description |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202`  vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben van vagy folyamatban van |
@@ -780,11 +728,10 @@ IoT Central az eszköztől az írható tulajdonságok frissítéseire választ v
 
 `ad` egy paraméter-karakterlánc leírása.
 
-A DCM következő kódrészlete egy írható tulajdonság definícióját mutatja `string` be:
+Az eszköz modelljében az alábbi kódrészlet egy írható tulajdonság definícióját mutatja `string` be:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "StringPropertyWritable"
@@ -816,11 +763,10 @@ Az eszköznek a következő JSON-adattartalomot kell elküldenie IoT Central a f
 }
 ```
 
-A DCM következő kódrészlete egy írható tulajdonság definícióját mutatja `Enum` be:
+Az eszköz modelljében az alábbi kódrészlet egy írható tulajdonság definícióját mutatja `Enum` be:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "EnumPropertyWritable"
@@ -828,7 +774,6 @@ A DCM következő kódrészlete egy írható tulajdonság definícióját mutatj
   "name": "EnumPropertyWritable",
   "writable": true,
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -836,8 +781,6 @@ A DCM következő kódrészlete egy írható tulajdonság definícióját mutatj
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -845,8 +788,6 @@ A DCM következő kódrészlete egy írható tulajdonság definícióját mutatj
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -854,8 +795,6 @@ A DCM következő kódrészlete egy írható tulajdonság definícióját mutatj
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -890,36 +829,30 @@ Az eszköznek a következő JSON-adattartalomot kell elküldenie IoT Central a f
 
 ## <a name="commands"></a>Parancsok
 
-### <a name="synchronous-command-types"></a>Szinkron parancsok típusai
+> [!NOTE]
+> A IoT Central webes felhasználói felületén kiválaszthatja a **várólistát, ha** a parancshoz offline lehetőség van. Ez a beállítás nem áll rendelkezésre, ha az eszköz sablonból exportál egy modellt vagy felületet.
 
-A DCM következő kódrészlete egy olyan szinkron parancs definícióját mutatja be, amely nem rendelkezik paraméterekkel, és nem várja, hogy az eszköz semmit ne ad vissza:
+Az eszköz modelljének következő kódrészlete egy olyan parancs definícióját jeleníti meg, amely nem rendelkezik paraméterekkel, és nem várta, hogy az eszköz semmit nem ad vissza:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "displayName": {
-    "en": "SynchronousCommandBasic"
+    "en": "CommandBasic"
   },
-  "name": "SynchronousCommandBasic"
+  "name": "CommandBasic"
 }
 ```
 
 Az eszköz üres adattartalmat kap a kérelemben, és a válaszban egy `200` http-válasz kódjával üres adattartalmat ad vissza.
 
-A DCM következő kódrészlete egy egész számú paraméterrel rendelkező szinkron parancs definícióját jeleníti meg, amely arra vár, hogy az eszköz egész értéket ad vissza:
+Az eszköz modelljében az alábbi kódrészlet egy Integer paraméterrel rendelkező parancs definícióját jeleníti meg, amely arra vár, hogy az eszköz egész értéket ad vissza:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
@@ -927,8 +860,7 @@ A DCM következő kódrészlete egy egész számú paraméterrel rendelkező szi
     "schema": "integer"
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
@@ -936,39 +868,32 @@ A DCM következő kódrészlete egy egész számú paraméterrel rendelkező szi
     "schema": "integer"
   },
   "displayName": {
-    "en": "SynchronousCommandSimple"
+    "en": "CommandSimple"
   },
-  "name": "SynchronousCommandSimple"
+  "name": "CommandSimple"
 }
 ```
 
 Az eszköz egész értéket kap a kérelem adattartalmaként. Az eszköznek egész értéket kell visszaadnia, amelynek a válasza a `200` http-válasz kódját adja vissza.
 
-A DCM következő kódrészlete egy objektum-paraméterrel rendelkező szinkron parancs definícióját mutatja be, amely arra vár, hogy az eszköz egy objektumot ad vissza. Ebben a példában mindkét objektum egész és sztring mezőket tartalmaz:
+Az eszköz modelljének következő kódrészlete egy olyan parancs definícióját mutatja be, amely egy Object paraméterrel rendelkezik, és amely arra vár, hogy az eszköz visszaad egy objektumot. Ebben a példában mindkét objektum egész és sztring mezőket tartalmaz:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
     "name": "RequestParam",
     "schema": {
-      "@id": "<element id>",
       "@type": "Object",
       "displayName": {
         "en": "Object"
       },
       "fields": [
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field1"
           },
@@ -976,8 +901,6 @@ A DCM következő kódrészlete egy objektum-paraméterrel rendelkező szinkron 
           "schema": "integer"
         },
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field2"
           },
@@ -988,22 +911,18 @@ A DCM következő kódrészlete egy objektum-paraméterrel rendelkező szinkron 
     }
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
     "name": "ResponseParam",
     "schema": {
-      "@id": "<element id>",
       "@type": "Object",
       "displayName": {
         "en": "Object"
       },
       "fields": [
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field1"
           },
@@ -1011,8 +930,6 @@ A DCM következő kódrészlete egy objektum-paraméterrel rendelkező szinkron 
           "schema": "integer"
         },
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field2"
           },
@@ -1023,9 +940,9 @@ A DCM következő kódrészlete egy objektum-paraméterrel rendelkező szinkron 
     }
   },
   "displayName": {
-    "en": "SynchronousCommandComplex"
+    "en": "CommandComplex"
   },
-  "name": "SynchronousCommandComplex"
+  "name": "CommandComplex"
 }
 ```
 
@@ -1041,19 +958,15 @@ Az alábbi kódrészlet egy, az eszközről küldött válasz-adattartalmat muta
 { "Field1": 87, "Field2": "Another string value" }
 ```
 
-### <a name="asynchronous-command-types"></a>Aszinkron parancsok típusai
+### <a name="long-running-commands"></a>Hosszú ideig futó parancsok
 
-A DCM következő kódrészlete egy aszinkron parancs definícióját mutatja be. A parancs egy Integer paraméterrel rendelkezik, és az eszköz egy egész értéket ad vissza:
+Az eszköz modelljének következő kódrészlete egy parancs definícióját jeleníti meg. A parancs egy Integer paraméterrel rendelkezik, és az eszköz egy egész értéket ad vissza:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "asynchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
@@ -1061,8 +974,7 @@ A DCM következő kódrészlete egy aszinkron parancs definícióját mutatja be
     "schema": "integer"
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
@@ -1070,24 +982,24 @@ A DCM következő kódrészlete egy aszinkron parancs definícióját mutatja be
     "schema": "integer"
   },
   "displayName": {
-    "en": "AsynchronousCommandSimple"
+    "en": "LongRunningCommandSimple"
   },
-  "name": "AsynchronousCommandSimple"
+  "name": "LongRunningCommandSimple"
 }
 ```
 
-Az eszköz egész értéket kap a kérelem adattartalmaként. Az eszköznek üres válasz-adattartalmat kell visszaadnia egy `202` http-válasz kódjával, amely jelzi, hogy az eszköz elfogadta az aszinkron feldolgozásra irányuló kérelmet.
+Az eszköz egész értéket kap a kérelem adattartalmaként. Ha az eszköznek időre van szüksége a parancs feldolgozásához, az `202` eszköznek egy http-válasz kódját kell visszaadnia, amely jelzi, hogy az eszköz elfogadta a feldolgozásra vonatkozó kérést.
 
 Amikor az eszköz befejezte a kérelem feldolgozását, a következő példához hasonló tulajdonságot kell küldenie az IoT Centralnak. A tulajdonság nevének meg kell egyeznie a parancs nevével:
 
 ```json
 {
-  "AsynchronousCommandSimple": {
+  "LongRunningCommandSimple": {
     "value": 87
   }
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az eszközök sablonjait, a következő lépésekből megtudhatja, hogyan regisztrálhat [Az Azure IoT Centralhoz](./concepts-get-connected.md) , és hogyan regisztrálja az eszközöket a IoT Central, és hogy miként IoT Central biztonságossá teszi az eszköz kapcsolatait.

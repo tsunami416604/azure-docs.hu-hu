@@ -1,94 +1,61 @@
 ---
 title: Az Azure Functions áttekintése
-description: Megtudhatja, hogyan optimalizálhat aszinkron számítási feladatokat percek alatt az Azure Functions használatával.
-author: mattchenderson
+description: Ismerje meg, hogyan segíthetnek a Azure Functions méretezhető kiszolgáló nélküli alkalmazások létrehozásában.
+author: craigshoemaker
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
-ms.date: 01/16/2020
+ms.date: 11/20/2020
+ms.author: cshoe
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 0583b68df603b04d47ac6104f0cf127b3c4bedd0
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 31518f2e340aa4f59099e51f4b7b4e76e7366bd1
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173724"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990677"
 ---
-# <a name="an-introduction-to-azure-functions"></a>Az Azure Functions bemutatása
+# <a name="introduction-to-azure-functions"></a>Az Azure Functions bemutatása
 
-Azure Functions lehetővé teszi, hogy kisebb kódrészleteket ("functions") futtasson anélkül, hogy az alkalmazás-infrastruktúrával kellene foglalkoznia. A Azure Functions segítségével a felhőalapú infrastruktúra biztosítja az alkalmazásnak a nagy léptékű futtatásához szükséges naprakész kiszolgálókat.
+Gyakran olyan rendszereket hozunk létre, amelyek kritikus események sorozatára reagálnak. Legyen szó webes API-k létrehozásáról, az adatbázis-változásokra való reagálásról, a IoT-adatfolyamok feldolgozásáról vagy az üzenetsor kezeléséről – minden alkalmazásnak szüksége van egy kód futtatására, mivel ezek az események történnek.
 
-Egy függvényt egy adott típusú esemény "aktivál". A [támogatott eseményindítók](./functions-triggers-bindings.md) például az adatváltozások megválaszolására, az üzenetek megválaszolására, az ütemezett futtatásra vagy egy HTTP-kérelem eredményére reagálnak.
+Ennek a szükségletnek a kielégítése érdekében Azure Functions "igény szerinti számítást" biztosít – és két jelentős módon.
 
-Bár a kódok közvetlenül a számtalan szolgáltatással szemben is lehetnek, a más szolgáltatásokkal való integrációt a kötések segítségével egyszerűsítjük. A kötések lehetővé teszi, [hogy az Azure és a harmadik féltől származó szolgáltatások széles köréhez férhet hozzá](./functions-triggers-bindings.md).
+Első lépésként a Azure Functions lehetővé teszi, hogy a rendszerek logikáját könnyen elérhető kódrészletbe implementálja. Ezeket a kódrészleteket "functions"-nek nevezzük. A különböző függvények bármikor futtathatók, ha a kritikus eseményekre kell válaszolnia.
 
-## <a name="features"></a>Szolgáltatások
+Másodszor, ahogy a kérelmek száma nő, Azure Functions megfelel az igénynek annyi erőforrást és függvényt, mint amennyi szükséges, de csak szükség esetén. A kérelmek bukása esetén minden további erőforrás és alkalmazás-példány automatikusan kiesik.
 
-A Azure Functions főbb funkciói a következők:
+Honnan származnak az összes számítási erőforrás? A Azure Functions az alkalmazás igényének kielégítése érdekében annyi [vagy kevés számítási erőforrást biztosít](./functions-scale.md) , amennyire csak szüksége van.
 
-- **Kiszolgáló nélküli alkalmazások**: a függvények lehetővé teszik [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli alkalmazások fejlesztését Microsoft Azureon.
+A számítási erőforrások igény szerinti biztosítása a [kiszolgáló nélküli számítástechnika](https://azure.microsoft.com/solutions/serverless/) lényege Azure Functionsban.
 
-- **Nyelv kiválasztása**: a függvények a [C#, a Java, a JavaScript, a Python és a PowerShell](supported-languages.md)használatával választhatók.
+## <a name="scenarios"></a>Forgatókönyvek
 
-- **Díjköteles díjszabási modell**: csak a kód futtatásával töltött idő után kell fizetnie. Tekintse meg a Használatalapú futtatási csomag lehetőséget a [díjszabás szakaszban](#pricing).  
+Számos esetben a függvények a [Cloud Services egy tömbjét integrálják](./functions-triggers-bindings.md) a funkciókban gazdag implementációk biztosításához.
 
-- **Saját függőségek**használata: a függvények támogatják a NuGet és a NPM, és hozzáférést biztosítanak kedvenc könyvtáraihoz.
+Az alábbiakban gyakoriak, _de nem teljes körűen_ a Azure functions forgatókönyvek.
 
-- **Integrált biztonság**: a http által aktivált függvények védelme olyan OAuth-szolgáltatókkal, mint például a Azure Active Directory, a Facebook, a Google, a Twitter és a Microsoft-fiók.
+| Ha szeretné... | Ezután... |
+| --- | --- |
+| **Webes API létrehozása** | Végpont implementálása a webalkalmazásokhoz a [http-trigger](./functions-bindings-http-webhook.md) használatával |
+| **Fájlfeltöltés feldolgozása** | Kód futtatása a [blob Storage](./functions-bindings-storage-blob.md) -beli fájlok feltöltésekor vagy módosításakor |
+| **Kiszolgáló nélküli munkafolyamat létrehozása** | Függvények egy sorozatának láncolása [tartós függvények](./durable-functions-overview.md) használatával |
+| **Válaszadás az adatbázis változásaira** | Egyéni logika futtatása dokumentum létrehozásakor vagy frissítésekor [Cosmos db](./functions-bindings-cosmosdb-v2.md) |
+| **Ütemezett feladatok futtatása** | Kód végrehajtása a [beállított időpontokban](./functions-bindings-timer.md) |
+| **Megbízható üzenetsor-rendszerek létrehozása** | Üzenetek várólistáinak feldolgozása [Queue Storage](./functions-bindings-storage-queue.md), [Service Bus](./functions-bindings-service-bus.md)vagy [Event Hubs](./functions-bindings-event-hubs.md) használatával |
+| **IoT adatfolyamok elemzése** | [IoT-eszközök adatainak](./functions-bindings-event-iot.md) összegyűjtése és feldolgozása |
+| **Az adatfeldolgozás valós időben** | A [functions és a Signal R](./functions-bindings-signalr-service.md) használatával válaszolhat az adatokra a pillanatban |
 
-- **Egyszerűsített integráció**: egyszerűen integrálható az Azure-szolgáltatásokkal és a szolgáltatott szoftveres (SaaS) ajánlatokkal.
+A függvények összeállításakor a következő lehetőségek és erőforrások érhetők el:
 
-- **Rugalmas fejlesztés**: a folyamatos integráció beállítása és a kód üzembe helyezése a [GitHub](../app-service/scripts/cli-continuous-deployment-github.md), az [Azure DevOps Services](../app-service/scripts/cli-continuous-deployment-vsts.md)és más [támogatott fejlesztői eszközök](../app-service/deploy-local-git.md)segítségével.
+- **Használja az Ön által választott nyelvet**: Write functions in [C#, Java, JavaScript, PowerShell vagy Python](./supported-languages.md), vagy használjon [Egyéni kezelőt](./functions-custom-handlers.md) , hogy gyakorlatilag bármilyen más nyelvet használjon.
 
-- **Állapot-nyilvántartó kiszolgáló nélküli architektúra**: kiszolgáló nélküli alkalmazások összehangolása [Durable Functionsokkal](durable/durable-functions-overview.md).
+- Az **üzembe helyezés automatizálása**: a külső folyamatok eszközön alapuló megközelítése révén [számtalan üzembe helyezési lehetőség](./functions-deployment-technologies.md) áll rendelkezésre.
 
-- **Nyílt forráskódú**: a functions futtatókörnyezet nyílt forráskódú, és [elérhető a githubon](https://github.com/azure/azure-webjobs-sdk-script).
+- **Függvények hibakeresése**: a [figyelési eszközök](./functions-monitoring.md) és a [tesztelési stratégiák](./functions-test-a-function.md) segítségével betekintést nyerhet az alkalmazásaiba.
 
-## <a name="what-can-i-do-with-functions"></a>Mire használhatom a Functions szolgáltatást?
-
-A functions nagyszerű megoldás a tömeges adatok feldolgozására, a rendszerek integrálására, az internetes IoT, valamint az egyszerű API-k és a mikro-szolgáltatások létrehozására.
-
-Többek között a következő főbb forgatókönyvekkel kezdheti el a lépéseket:
-
-- **Http**: kód futtatása http- [kérelmek](functions-create-first-azure-function.md) alapján
-
-- **Időzítő**: kód ütemezett [futtatása az előre meghatározott időpontokban](./functions-create-scheduled-function.md)
-
-- **Azure Cosmos db**: [új és módosított Azure Cosmos db dokumentumok](./functions-create-cosmos-db-triggered-function.md) feldolgozása
-
-- **Blob Storage**: [új és módosított Azure Storage-Blobok](./functions-create-storage-blob-triggered-function.md) feldolgozása
-
-- **Üzenetsor-tárolás**: válaszadás az [Azure Storage üzenetsor üzeneteire](./functions-create-storage-queue-triggered-function.md)
-
-- **Event Grid**: válaszadás [Azure Event Grid eseményekre előfizetések és szűrők használatával](../event-grid/resize-images-on-storage-blob-upload-event.md)
-
-- **Event hub**: válaszadás [nagy mennyiségű Azure Event hub-eseményre](./functions-bindings-event-hubs.md)
-
-- **Service Bus üzenetsor**: Kapcsolódás más Azure-vagy helyszíni szolgáltatásokhoz a [Service Bus üzenetsor üzeneteinek megválaszolásával](./functions-bindings-service-bus.md)
-
-- **Service Bus témakör**: más Azure-szolgáltatások vagy helyszíni szolgáltatások összekapcsolása az [Service Bus témakör üzeneteinek megválaszolásával](./functions-bindings-service-bus.md)
-
-## <a name="how-much-does-functions-cost"></a><a name="pricing"></a>Mennyibe kerül a Functions szolgáltatás használata?
-
-Azure Functions háromféle díjszabási csomaggal rendelkezik. Válassza azt, amelyik leginkább megfelel az igényeinek:
-
-- **Felhasználási terv**: az Azure biztosítja az összes szükséges számítási erőforrást. Nem kell aggódnia az erőforrás-kezeléssel kapcsolatban, és csak a kód futási idejéért kell fizetnie.
-
-- **Prémium csomag**: megadhatja az előre bemelegítő példányok számát, amelyek mindig online állapotban vannak, és azonnal válaszolnak. A függvény futtatásakor az Azure minden további szükséges számítási erőforrást biztosít. A folyamatosan üzemelő, előre bemelegítő példányok és az Azure-ban használt további példányok kell fizetnie.
-
-- **App Service terv**: a függvények futtatása ugyanúgy, mint a webalkalmazások. Ha a többi alkalmazáshoz App Service használ, a függvények külön díj nélkül is futtathatók ugyanazon a csomagon.
-
-További információt a szolgáltatási csomagokról [az Azure Functions szolgáltatási csomagok áttekintésében](functions-scale.md) talál. Az árképzés további részleteiért lásd [a Functions díjszabási oldalát](https://azure.microsoft.com/pricing/details/functions/).
+- **Rugalmas díjszabási lehetőségek**: a [használati csomaggal csak a függvények](./pricing.md) futása után kell fizetnie, a [prémium](./pricing.md) és [app Service](./pricing.md) csomagok pedig speciális igényekhez nyújtanak szolgáltatásokat.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az első Azure-függvény létrehozása](functions-create-first-function-vs-code.md)  
-  Ismerkedjen meg a [Visual Studio Code](functions-create-first-function-vs-code.md), a [parancssor](functions-create-first-azure-function-azure-cli.md)használatával, vagy használja a [Azure Portal](functions-create-first-azure-function.md).
-
-- [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)  
-  Részletesebb műszaki információkat tartalmaz az Azure Functions futtatókörnyezettel kapcsolatban, valamint segédanyagokat függvények kódolásához, illetve eseményindítók és kötések meghatározásához.
-
-- [Az Azure Functions méretezése](functions-scale.md)  
-  Az Azure Functions szolgáltatáshoz elérhető szolgáltatáscsomagokat ismerteti, köztük a Használatalapú futtatási csomagot, és segít a megfelelő csomag kiválasztásában.
-
-- [További információ az Azure App Service szolgáltatásról](../app-service/overview.md)  
-  Az Azure Functions az Azure App Service használatával biztosítja az olyan alapvető funkciókat, mint az üzembe helyezések, a környezeti változók és a diagnosztika.
+> [!div class="nextstepaction"]
+> [Ismerkedés a leckék, minták és interaktív oktatóanyagok használatával](./functions-get-started.md)

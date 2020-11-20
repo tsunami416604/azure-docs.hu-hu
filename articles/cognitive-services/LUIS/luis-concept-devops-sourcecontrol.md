@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e49b713aca23c0373fa71d772ef7567372abe456
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309506"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990567"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps eljárások a LUIS számára
 
@@ -54,11 +54,11 @@ A LUIS-alkalmazás `.lu` formátumba való mentéséhez és a verziókövetés a
 
 > [!TIP]
 > Ha a LUIS-alkalmazás JSON-exportálásával dolgozik, a [botbuilder témakörben-Tools Luis CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS)használatával [átalakíthatja a LUDown](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert) . Ezzel a `--sort` beállítással biztosíthatja, hogy a szándékok és a hosszúságú kimondott szöveg betűrendben legyenek rendezve.  
-> Vegye figyelembe, hogy a **. ** A Luis-portálba épített Lu-exportálási képesség már rendezi a kimenetet.
+> Vegye figyelembe, hogy a **.** A Luis-portálba épített Lu-exportálási képesség már rendezi a kimenetet.
 
 ### <a name="build-the-luis-app-from-source"></a>A LUIS-alkalmazás létrehozása a forrástól
 
-Egy LUIS-alkalmazás esetében a *forrásból való kiépítéshez* [egy új Luis-alkalmazás verziójának létrehozásához a `.lu` forrás importálásával](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) , [a verzió betanításához](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) és a[közzétételéhez](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app). Ezt a LUIS portálon vagy a parancssorban teheti meg:
+Egy LUIS-alkalmazás esetében a *forrásból való kiépítéshez* [egy új Luis-alkalmazás verziójának létrehozásához a `.lu` forrás importálásával](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) , [a verzió betanításához](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) és a [közzétételéhez](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app). Ezt a LUIS portálon vagy a parancssorban teheti meg:
 
 - A LUIS portál használatával [importálhatja az alkalmazás `.lu` verzióját](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) a forrás vezérlőelemből, és [betaníthatja](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) és [közzéteheti](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app) az alkalmazást.
 
@@ -74,7 +74,7 @@ A LUIS-alkalmazás következő típusú fájljait kell fenntartani a verzióköv
 
 - A teszteléshez használt [Batch](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-file-format) -hosszúságú kimondott szöveg (és várt eredmények)
 
-### <a name="credentialsand-keys-are-not-checked-in"></a>A hitelesítő adatok és kulcsok nincsenek bejelölve
+### <a name="credentials-and-keys-are-not-checked-in"></a>A hitelesítő adatok és kulcsok nincsenek bejelölve
 
 Ne foglalja bele az előfizetési kulcsokat vagy a hasonló bizalmas értékeket a tárházba bejelentkező fájlokba, ahol azok jogosulatlan személyek számára is láthatóvá válnak. A bejelentkezni kívánt kulcsoknak és egyéb értékeknek a következőket kell megelőzniük:
 

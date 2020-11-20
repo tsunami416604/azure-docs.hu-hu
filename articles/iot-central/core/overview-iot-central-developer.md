@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 39ce436cd59447b2b6f8d9f88deaab80b00dd639
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 82818c8db326889079948cd2b32b2ed0be6ab50d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812352"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990754"
 ---
 # <a name="iot-central-device-development-overview"></a>Az IoT Central-eszközfejlesztés áttekintése
 
@@ -45,7 +45,7 @@ Az átjáró-eszköz egy vagy több alsóbb rétegbeli eszközt kezel, amely a I
 
 ### <a name="edge-device"></a>Peremhálózati eszköz
 
-Az Edge-eszköz közvetlenül csatlakozik IoT Centralhoz, de közvetítőként működik más, _levélként_ismert eszközökhöz. Az Edge-eszközök általában közel vannak azon Leaf-eszközökhöz, amelyek közvetítőként működnek. A peremhálózati eszközöket használó forgatókönyvek a következők:
+Az Edge-eszköz közvetlenül csatlakozik IoT Centralhoz, de közvetítőként működik más, _levélként_ ismert eszközökhöz. Az Edge-eszközök általában közel vannak azon Leaf-eszközökhöz, amelyek közvetítőként működnek. A peremhálózati eszközöket használó forgatókönyvek a következők:
 
 - Olyan eszközök engedélyezése, amelyek nem tudnak közvetlenül kapcsolódni IoT Centralhoz a peremhálózati eszközön való kapcsolódáshoz. Előfordulhat például, hogy egy levél eszköz Bluetooth-kapcsolattal csatlakozik a peremhálózati eszközhöz, majd az interneten keresztül csatlakozik a IoT Centralhoz.
 - A IoT Centralbe való elküldése előtt összesített telemetria. Ez a megközelítés segít csökkenteni az adatok IoT Centralba való küldésének költségeit.
@@ -72,7 +72,7 @@ További információért lásd: [Csatlakozás az Azure IoT Centralhoz](./concep
 
 ### <a name="security"></a>Biztonság
 
-Az eszköz és a IoT Central alkalmazás közötti kapcsolat a [megosztott hozzáférési aláírások](./concepts-get-connected.md#connect-devices-at-scale-using-sas) vagy az iparági szabványnak megfelelő [X. 509 tanúsítványok](./concepts-get-connected.md#connect-devices-using-x509-certificates)használatával biztosítható.
+Az eszköz és a IoT Central alkalmazás közötti kapcsolat a [megosztott hozzáférési aláírások](./concepts-get-connected.md#sas-group-enrollment) vagy az iparági szabványnak megfelelő [X. 509 tanúsítványok](./concepts-get-connected.md#x509-group-enrollment)használatával biztosítható.
 
 ### <a name="communication-protocols"></a>Kommunikációs protokollok
 
@@ -80,12 +80,58 @@ Azok a kommunikációs protokollok, amelyeket az eszköz használhat a IoT Centr
 
 ## <a name="implement-the-device"></a>Az eszköz implementálása
 
+Az IoT Central-eszköz sablonja olyan _modellt_ tartalmaz, amely meghatározza az adott típusú eszköz viselkedését. A viselkedések közé tartoznak a telemetria, a tulajdonságok és a parancsok.
+
+> [!TIP]
+> A modellt IoT Central [digitális Twins Definition Language (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl) JSON-fájlként exportálhatja.
+
+Mindegyik modellhez egyedi _eszköz – Twin Model-azonosító_ (DTMI) tartozik, például: `dtmi:com:example:Thermostat;1` . Amikor egy eszköz csatlakozik a IoT Centralhoz, elküldi az általa megvalósított modell DTMI. A IoT Central ezután társíthatja az eszközhöz a megfelelő sablont.
+
+A [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) olyan konvenciókat határoz meg, amelyeket az eszköznek követnie kell a DTDL-modell megvalósításakor.
+
+Az [Azure IoT Device SDK](#languages-and-sdks) -k támogatják a IoT Plug and Play konvenciókat.
+
+### <a name="device-model"></a>Eszközmodell
+
+Az eszköz modellje a [DTDL](https://github.com/Azure/opendigitaltwins-dtdl)használatával van definiálva. Ez a nyelv lehetővé teszi, hogy meghatározza a következőket:
+
+- Az eszköz által küldött telemetria. A definíció tartalmazza a telemetria nevét és adattípusát. Egy eszköz például a hőmérséklet telemetria küldi el dupla értékként.
+- Az eszköz által a IoT Centralra jelentett tulajdonságok. A tulajdonságok definíciója tartalmazza a nevét és az adattípust. Egy eszköz például logikai értékként jelenti egy szelep állapotát.
+- Az eszköz által a IoT Centraltól fogadott tulajdonságok. Lehetőség van arra is, hogy egy tulajdonságot írhatóként jelölhet meg. A IoT Central például a célként megadott hőmérsékletet dupla értékre küldi egy eszköznek.
+- Az eszköz által válaszoló parancsok. A definíció tartalmazza a parancs nevét, valamint a paraméterek nevét és adattípusát. Egy eszköz például egy újraindítási parancsra válaszol, amely meghatározza, hogy hány másodpercig kell várni az újraindítás előtt.
+
+A DTDL-modell lehet _nem összetevő_ vagy _többösszetevős_ modell:
+
+- Nem-összetevő modell: egy egyszerű modell nem használ beágyazott vagy lépcsőzetes összetevőket. Az összes telemetria, tulajdonság és parancs egyetlen _alapértelmezett összetevőt_ határoz meg. Példaként tekintse meg a [termosztát](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) modelljét.
+- Több összetevőből álló modell. Összetettebb modell, amely két vagy több összetevőt tartalmaz. Ezek az összetevők egyetlen alapértelmezett összetevőt tartalmaznak, valamint egy vagy több további beágyazott összetevőt. Példaként tekintse meg a [hőmérséklet-vezérlő](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) modelljét.
+
+További információ: [IoT Plug and Play Components in models](../../iot-pnp/concepts-components.md)
+
+### <a name="conventions"></a>Konvenciók
+
+Az eszközöknek a IoT Plug and Play konvenciókat kell követniük, amikor az IoT Centralsal végeznek adatcserét. A konvenciók a következők:
+
+- Küldje el a DTMI, amikor csatlakozik IoT Centralhoz.
+- Megfelelően formázott JSON-adattartalom és metaadatok küldése IoT Centralra.
+- Megfelelően válaszoljon az írható tulajdonságokra és parancsokra IoT Centralból.
+- Kövesse az összetevő-parancsok elnevezési konvencióit.
+
+> [!NOTE]
+> A IoT Central jelenleg nem támogatja teljes mértékben a DTDL- **tömb** és a **térinformatikai** adattípusok használatát.
+
+Ha többet szeretne megtudni arról, hogy a JSON-üzenetek milyen formátumúak a IoT Centralsal való kommunikációhoz, tekintse meg a következőt: [telemetria, Property és Command hasznos](concepts-telemetry-properties-commands.md)adatok.
+
+Ha többet szeretne megtudni a IoT Plug and Play konvenciókkal kapcsolatban, tekintse meg a következő témakört: [IoT Plug and Play Conventions](../../iot-pnp/concepts-convention.md).
+
+### <a name="device-sdks"></a>Eszköz SDK-k
+
 Az eszköz működésének megvalósításához használja az [Azure IoT Device SDK](#languages-and-sdks) -k egyikét. A kódnak a következőket kell tennie:
 
 - Regisztrálja az eszközt a DPS-vel, és használja a DPS-ből származó információkat a IoT Central alkalmazás belső IoT hubhoz való kapcsolódáshoz.
-- Küldje el a telemetria a IoT Central az eszköz sablonjának formátumában. A IoT Central az eszköz sablonjának használatával határozza meg, hogyan használja a telemetria a vizualizációk és az elemzések számára.
-- Az eszköz és a IoT Central közötti tulajdonságértékek szinkronizálása. Az eszköz sablonja megadja a tulajdonságokat és az adattípusokat, így a IoT Central megjelenítheti az információkat.
-- A parancsokhoz tartozó parancssori kezelők implementálása az eszköz sablonjában adható meg. Az eszköz sablonja megadja az eszköz által használandó parancsokat és paramétereket.
+- Bejelenti az eszköz által megvalósított modell DTMI.
+- Küldje el a telemetria az eszköz modellje által megadott formátumban. IoT Central a modell használatával határozza meg, hogyan használható a telemetria a vizualizációk és az elemzések számára.
+- Az eszköz és a IoT Central közötti tulajdonságértékek szinkronizálása. A modell megadja a tulajdonságokat és az adattípusokat, hogy a IoT Central megjelenjenek az adatok.
+- A modellben megadott parancsokhoz tartozó parancssori kezelők implementálása. A modell megadja az eszköz által használandó parancsokat és paramétereket.
 
 További információ az eszközök sablonjainak szerepköréről: Mik az [eszközök sablonjai?](./concepts-device-templates.md).
 

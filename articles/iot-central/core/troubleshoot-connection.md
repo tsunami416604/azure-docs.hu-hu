@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: f4f35aed10465fb06460f2818a876444bf989e01
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2bbf400840c968587de3a0a0951d28c7c35b210f
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843961"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990890"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Az eszközön lévő adatok nem jelennek meg az Azure IoT Centralban hiba elhárítása
 
@@ -130,12 +130,12 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Eszköz kiépítési állapota | Leírás | Lehetséges enyhítés |
+| Eszköz kiépítési állapota | Description | Lehetséges enyhítés |
 | - | - | - |
-| Kiépítve | Nincs azonnal felismerhető probléma. | N/A |
+| Kiépítve | Nincs azonnal felismerhető probléma. | N.A. |
 | Regisztrálva | Az eszköz még nem csatlakozott IoT Centralhoz. | A kapcsolódási problémák ellenőrzése az eszköz naplófájljaiban. |
 | Blokkolva | Az eszköz nem csatlakozik IoT Centralhoz. | Az eszköz le van tiltva a IoT Central alkalmazáshoz való csatlakozáskor. Oldja fel az eszköz zárolását IoT Central, majd próbálkozzon újra. További információ: [eszközök letiltása](concepts-get-connected.md#device-status-values). |
-| Jóvá nem hagyott | Az eszköz nincs jóváhagyva. | Az eszköz nincs jóváhagyva a IoT Central alkalmazáshoz való kapcsolódáshoz. Hagyja jóvá IoT Central az eszközt, és próbálkozzon újra. További információ: [eszközök jóváhagyása](concepts-get-connected.md#connect-without-registering-devices) |
+| Jóvá nem hagyott | Az eszköz nincs jóváhagyva. | Az eszköz nincs jóváhagyva a IoT Central alkalmazáshoz való kapcsolódáshoz. Hagyja jóvá IoT Central az eszközt, és próbálkozzon újra. További információ: [eszközök jóváhagyása](concepts-get-connected.md#device-registration) |
 | Nincs társítva | Az eszköz nincs társítva egy eszköz sablonnal. | Társítsa az eszközt egy eszköz sablonnal, hogy IoT Central tudja, hogyan kell elemezni az adatelemzést. |
 
 További információ az [Eszközállapot-kódokról](concepts-get-connected.md#device-status-values).
@@ -150,7 +150,7 @@ Az alábbi táblázatokban a gyakori hibakódok és a kockázatcsökkentő lehet
 
 Ha a hitelesítési folyamattal kapcsolatos problémákat látja:
 
-| Hibakód | Leírás | Lehetséges enyhítés |
+| Hibakód | Description | Lehetséges enyhítés |
 | - | - | - |
 | 400 | A kérelem törzse érvénytelen. Például nem lehet elemezni, vagy az objektumot nem lehet érvényesíteni. | Győződjön meg arról, hogy a megfelelő kérés törzsét küldi el az igazolási folyamat részeként, vagy használjon egy eszköz SDK-t. |
 | 401 | Az engedélyezési jogkivonat nem érvényesíthető. Például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | Győződjön meg arról, hogy az eszköz rendelkezik a megfelelő hitelesítő adatokkal. |

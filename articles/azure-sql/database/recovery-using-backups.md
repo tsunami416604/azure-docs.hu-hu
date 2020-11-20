@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 415c9fdcbf0e8bfecaa48b8199702d4159bc32d9
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 138cd03989008aa4fbd7d6ca3e06aff94fa76e33
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629189"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989445"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Helyreállítás automatikus adatbázis-biztonsági másolatokkal – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ Egyetlen előfizetés esetében az egyidejű visszaállítási kérelmek száma 
 Nincs beépített módszer a teljes kiszolgáló visszaállítására. A feladat végrehajtásával kapcsolatos példát a [Azure SQL Database: teljes kiszolgáló helyreállítása](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)című témakörben talál.
 
 > [!IMPORTANT]
-> Az automatizált biztonsági másolatok használatával történő helyreállításhoz a SQL Server közreműködő szerepkör vagy az SQL felügyelt példány közreműködői szerepkör (a helyreállítási célhelytől függően) tagjának kell lennie az előfizetésben, vagy az előfizetés tulajdonosának kell lennie. További információt a [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)című témakörben talál. A helyreállítást a Azure Portal, a PowerShell vagy a REST API használatával végezheti el. A Transact-SQL nem használható.
+> Az automatizált biztonsági másolatok használatával történő helyreállításhoz a SQL Server közreműködő szerepkör vagy az SQL felügyelt példány közreműködői szerepkör (a helyreállítási célhelytől függően) tagjának kell lennie az előfizetésben, vagy az előfizetés tulajdonosának kell lennie. További információt az [Azure RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)című témakörben talál. A helyreállítást a Azure Portal, a PowerShell vagy a REST API használatával végezheti el. A Transact-SQL nem használható.
 
 ## <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 
@@ -253,11 +253,11 @@ Az adatbázis az Azure CLI használatával történő visszaállításához lás
 
 A felügyelt példányok adatbázisának az Azure CLI használatával történő visszaállításához lásd [az az SQL MidB Restore](/cli/azure/sql/midb#az-sql-midb-restore).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az automatikus biztonsági mentések védik az adatbázisokat a felhasználók és alkalmazások hibáiból, a véletlen adatbázis-törlésből és a hosszan tartó kimaradásokból. Ez a beépített képesség minden szolgáltatási réteghez és számítási mérethez elérhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az üzletmenet folytonossága – áttekintés](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 - [Automatikus biztonsági mentések SQL Database](automated-backups-overview.md)

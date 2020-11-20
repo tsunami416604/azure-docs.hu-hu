@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 50dd5cf9a51ebcc6b2df188838ef2910afcd224d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 8b213755aeed1590df3d1f5e91f44796c13c7711
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905504"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991774"
 ---
 # <a name="types-of-ddos-attacks-overview"></a>A DDoS-támadások típusai – áttekintés
 
 DDoS Protection a standard a következő típusú támadásokat csökkentheti:
 
-- **Térfogatos támadások** : ezek a támadások jelentős mennyiségű látszólag megbízható forgalommal árasztják el a hálózati réteget. Ilyenek például az UDP-árvizek, az erősítési árvizek és más hamisítási csomagok. DDoS Protection standard az Azure globális hálózati skálázásával automatikusan felhasználhatja ezeket a lehetséges több gigabájtos támadásokat.
-- **Protokollok elleni támadások** : ezek a támadások a 3. rétegbeli és a 4. rétegbeli protokollkészlet gyengeségének kihasználásával elérhetetlenné teszik a célt. Ilyenek például a SYN FLOOD támadások, a reflexiós támadások és más protokollok elleni támadások. A DDoS Protection standard csökkenti ezeket a támadásokat, megkülönbözteti a kártékony és a legitim forgalmat, az ügyféllel való interakcióval és a rosszindulatú forgalom blokkolásával. 
-- **Erőforrás (alkalmazás) rétegbeli támadások** : ezek a támadások a webalkalmazási csomagokat célozzák meg a gazdagépek közötti adatátvitel megzavarásához. Ilyenek például a HTTP protokoll megsértései, az SQL-injektálás, a helyek közötti parancsfájlkezelés és a 7. rétegbeli támadások. Használjon webalkalmazási tűzfalat, például az Azure [Application Gateway webalkalmazási tűzfalat](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), valamint DDoS Protection standardot a támadások elleni védelem biztosításához. Az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)-en a harmadik féltől származó webalkalmazási tűzfalak is elérhetők.
+- **Térfogatos támadások**: ezek a támadások jelentős mennyiségű látszólag megbízható forgalommal árasztják el a hálózati réteget. Ilyenek például az UDP-árvizek, az erősítési árvizek és más hamisítási csomagok. DDoS Protection standard az Azure globális hálózati skálázásával automatikusan felhasználhatja ezeket a lehetséges több gigabájtos támadásokat.
+- **Protokollok elleni támadások**: ezek a támadások a 3. rétegbeli és a 4. rétegbeli protokollkészlet gyengeségének kihasználásával elérhetetlenné teszik a célt. Ilyenek például a SYN FLOOD támadások, a reflexiós támadások és más protokollok elleni támadások. A DDoS Protection standard csökkenti ezeket a támadásokat, megkülönbözteti a kártékony és a legitim forgalmat, az ügyféllel való interakcióval és a rosszindulatú forgalom blokkolásával. 
+- **Erőforrás (alkalmazás) rétegbeli támadások**: ezek a támadások a webalkalmazási csomagokat célozzák meg a gazdagépek közötti adatátvitel megzavarásához. Ilyenek például a HTTP protokoll megsértései, az SQL-injektálás, a helyek közötti parancsfájlkezelés és a 7. rétegbeli támadások. Használjon webalkalmazási tűzfalat, például az Azure [Application Gateway webalkalmazási tűzfalat](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), valamint DDoS Protection standardot a támadások elleni védelem biztosításához. Az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)-en a harmadik féltől származó webalkalmazási tűzfalak is elérhetők.
 
 ## <a name="azure-ddos-protection-standard"></a>Azure DDoS Protection Standard
 

@@ -1,6 +1,6 @@
 ---
 title: Azure DDoS Protection standard áttekintése
-description: Ismerje meg, hogy a Azure DDoS Protection standard hogyan kombinálható az alkalmazás-tervezési ajánlott eljárásokkal, és védelmet nyújt a DDoS-támadások ellen.
+description: Ismerje meg, hogy az Azure DDoS Protection Standard a DDoS-támadások elleni védelem érdekében hogyan kombinálható az alkalmazástervezés ajánlott eljárásaival.
 services: virtual-network
 documentationcenter: na
 author: yitoh
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: a8d8a41b5d527833ef071275d90cf9102cec47f7
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e3ded2fc286117da1438b0bb28298632532c4329
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905463"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992539"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Az Azure DDoS Protection Standard áttekintése
 
@@ -38,10 +38,10 @@ Az Azure DDoS Protection nem tárolja az ügyféladatokat.
 - **Adaptív hangolás:** Az intelligens forgalmi profilkészítés az idő múlásával megtanulja az alkalmazás forgalmát, és kiválasztja és frissíti a szolgáltatás számára legmegfelelőbb profilt. A profil a forgalmi változások időbeli változásával változik.
 - **Többrétegű védelem:** Teljes verem DDoS-védelmet biztosít a webalkalmazási tűzfallal való használat során.
 - **Széleskörű kockázatcsökkentő skála:** Több mint 60 különböző támadási típust lehet mérsékelni, globális kapacitással, hogy védelmet nyújtson a legnagyobb ismert DDoS-támadásokkal szemben.
-- **Támadási elemzés:** A támadás során öt percenkénti lépésekben részletes jelentéseket kaphat, és a támadás befejezése után teljes összefoglalás is elérhető. A stream-elhárítási folyamat naplóit az [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection) vagy egy offline biztonsági információ-és ESEMÉNYKEZELŐ (SIEM) rendszer ismerteti a támadás során a közel valós idejű figyeléshez.
+- **Támadási elemzés:** A támadás során öt percenkénti lépésekben részletes jelentéseket kaphat, és a támadás befejezése után teljes összefoglalás is elérhető. A stream-elhárítási folyamat naplóit az [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md) vagy egy offline biztonsági információ-és ESEMÉNYKEZELŐ (SIEM) rendszer ismerteti a támadás során a közel valós idejű figyeléshez.
 - **Támadási metrikák:** Az egyes támadások összesített metrikái a Azure Monitoron keresztül érhetők el.
 - **Támadási riasztások:** A riasztások a támadás indításakor és leállításakor, valamint a támadás időtartamán keresztül konfigurálhatók a beépített támadási metrikák használatával. A riasztások integrálva vannak az operatív szoftverbe, például Microsoft Azure a monitorozási naplók, a splunk, az Azure Storage, az E-mail és a Azure Portal.
-- **DDoS gyors válasz** : a DDoS Protection Rapid Response (DRR) csapatának segítségére van a támadás kivizsgálásához és elemzéséhez. További információ: [DDoS gyors válasz](ddos-rapid-response.md).
+- **DDoS gyors válasz**: a DDoS Protection Rapid Response (DRR) csapatának segítségére van a támadás kivizsgálásához és elemzéséhez. További információ: [DDoS gyors válasz](ddos-rapid-response.md).
 - **Cost garancia:** Adatátviteli és alkalmazás-kibővített szolgáltatási kreditek a dokumentált DDoS-támadásokhoz.
 
 ## <a name="pricing"></a>Díjszabás

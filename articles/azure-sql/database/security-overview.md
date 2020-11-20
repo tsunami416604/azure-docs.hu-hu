@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: 1485f06af2bb3c4912df3e34cb23c409b7db3dc2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780359"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989190"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>A Azure SQL Database és az SQL felügyelt példányának biztonsági képességeinek áttekintése
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -41,22 +41,22 @@ A [virtuális hálózati szolgáltatás végpontok](../../virtual-network/virtua
 A [virtuális hálózati szabályok](vnet-service-endpoint-rule-overview.md) lehetővé teszik, hogy a Azure SQL Database csak a virtuális hálózaton belüli kijelölt alhálózatokból továbbított kommunikációt fogadják.
 
 > [!NOTE]
-> A tűzfalszabályok hozzáférésének szabályozása *nem* vonatkozik az **SQL felügyelt példányára** . További információ a szükséges hálózati konfigurációról: [Csatlakozás felügyelt példányhoz](../managed-instance/connect-application-instance.md)
+> A tűzfalszabályok hozzáférésének szabályozása *nem* vonatkozik az **SQL felügyelt példányára**. További információ a szükséges hálózati konfigurációról: [Csatlakozás felügyelt példányhoz](../managed-instance/connect-application-instance.md)
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 
 > [!IMPORTANT]
-> Az adatbázisok és kiszolgálók Azure-beli kezelését a portál felhasználói fiókjának szerepkör-hozzárendelései vezérlik. További információ erről a cikkről: [szerepköralapú hozzáférés-vezérlés a Azure Portal](../../role-based-access-control/overview.md).
+> Az adatbázisok és kiszolgálók Azure-beli kezelését a portál felhasználói fiókjának szerepkör-hozzárendelései vezérlik. Erről a cikkről a [Azure Portal Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)című részében olvashat bővebben.
 
 ### <a name="authentication"></a>Hitelesítés
 
 A hitelesítés az a folyamat, amellyel a felhasználó igazolni kívánja. A Azure SQL Database és az SQL felügyelt példánya két hitelesítési típust támogat:
 
-- **SQL-hitelesítés** :
+- **SQL-hitelesítés**:
 
     Az SQL-hitelesítés a felhasználó hitelesítésére utal Azure SQL Database vagy Azure SQL felügyelt példányhoz való csatlakozáskor Felhasználónév és jelszó használatával. A kiszolgáló létrehozásakor meg kell adni egy felhasználónévvel és jelszóval rendelkező **kiszolgáló-rendszergazdai** bejelentkezést. Ezeknek a hitelesítő adatoknak a használatával a **kiszolgáló rendszergazdája** a kiszolgálón vagy a példányon található adatbázis-tulajdonosként hitelesítheti magát. Ezt követően további SQL-bejelentkezéseket és felhasználókat hozhat létre a kiszolgáló rendszergazdája, amely lehetővé teszi a felhasználók számára a Felhasználónév és a jelszó használatával történő kapcsolódást.
 
-- **Azure Active Directory hitelesítés** :
+- **Azure Active Directory hitelesítés**:
 
     Azure Active Directory hitelesítés a [Azure SQL Databasehoz](sql-database-paas-overview.md), az [Azure SQL felügyelt példányához](../managed-instance/sql-managed-instance-paas-overview.md) és az [Azure szinapszis analyticshez](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) való csatlakozás mechanizmusa az Azure Active Directory (Azure ad) identitások használatával. Az Azure AD-hitelesítés lehetővé teszi, hogy a rendszergazdák központilag kezeljék az adatbázis-felhasználók identitásait és engedélyeit, valamint egy központi helyen lévő többi Azure-szolgáltatást. Ez magában foglalja a jelszó-tárolás minimalizálása és a központosított jelszó-rotációs házirendek használatát.
 
@@ -65,7 +65,7 @@ A hitelesítés az a folyamat, amellyel a felhasználó igazolni kívánja. A Az
     Az elérhető további Azure AD-hitelesítési lehetőségek a SQL Server Management Studio-kapcsolatokhoz [Active Directory univerzális hitelesítés,](authentication-mfa-ssms-overview.md) például [multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) és [feltételes hozzáférés](conditional-access-configure.md).
 
 > [!IMPORTANT]
-> Az adatbázisok és kiszolgálók Azure-beli kezelését a portál felhasználói fiókjának szerepkör-hozzárendelései vezérlik. További információ erről a cikkről: [szerepköralapú hozzáférés-vezérlés Azure Portalban](../../role-based-access-control/overview.md). A tűzfalszabályok hozzáférésének szabályozása *nem* vonatkozik az **SQL felügyelt példányára** . Ha további információkra van szüksége a hálózati konfigurációval kapcsolatban, tekintse meg a következő cikket a [felügyelt példányhoz való csatlakozásról](../managed-instance/connect-application-instance.md) .
+> Az adatbázisok és kiszolgálók Azure-beli kezelését a portál felhasználói fiókjának szerepkör-hozzárendelései vezérlik. Erről a cikkről a [Azure Portal Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)című témakörében olvashat bővebben. A tűzfalszabályok hozzáférésének szabályozása *nem* vonatkozik az **SQL felügyelt példányára**. Ha további információkra van szüksége a hálózati konfigurációval kapcsolatban, tekintse meg a következő cikket a [felügyelt példányhoz való csatlakozásról](../managed-instance/connect-application-instance.md) .
 
 ## <a name="authorization"></a>Engedélyezés
 
@@ -130,7 +130,7 @@ A [Always encrypted](/sql/relational-databases/security/encryption/always-encryp
 
 ![A dinamikus adatmaszkolást ábrázoló diagram. Az üzleti alkalmazások adatokat küldenek egy SQL-adatbázisba, amely elfedi az adatokat, mielőtt visszaküldi azt az üzleti alkalmazásnak.](./media/security-overview/azure-database-ddm.png)
 
-A dinamikus adatmaszkolás korlátozza a bizalmas adatokkal való érintkezést azáltal, hogy a nem Kiemelt felhasználók számára maszkolást végez. A dinamikus adatmaszkolás automatikusan felfedi a Azure SQL Database és az SQL felügyelt példányában előforduló potenciálisan bizalmas adatokat, és gyakorlati ajánlásokat biztosít ezen mezők maszkolásához, az alkalmazás rétegének minimális hatásával. Rejtjelezi a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja. További információ: Ismerkedés [a SQL Database és az SQL felügyelt példányának dinamikus adatmaszkolásával](dynamic-data-masking-overview.md).
+A dinamikus adatmaszkolás csökkenti a bizalmas adatok kitettségét azzal, hogy nem jogosult felhasználókhoz maszkolja őket. A dinamikus adatmaszkolás automatikusan felfedi a Azure SQL Database és az SQL felügyelt példányában előforduló potenciálisan bizalmas adatokat, és gyakorlati ajánlásokat biztosít ezen mezők maszkolásához, az alkalmazás rétegének minimális hatásával. Rejtjelezi a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja. További információ: Ismerkedés [a SQL Database és az SQL felügyelt példányának dinamikus adatmaszkolásával](dynamic-data-masking-overview.md).
 
 ## <a name="security-management"></a>Biztonsági felügyelet
 

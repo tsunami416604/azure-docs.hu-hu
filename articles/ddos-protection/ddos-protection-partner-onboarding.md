@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 70793b585a11da2eccb43fd6cf47053774f1e991
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 4cc0fd970f9adc26f5fdb024f501dcb0edf77bde
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905404"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992420"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Partnerkapcsolat a Azure DDoS Protection standard csomaggal
 Ez a cikk a Azure DDoS Protection szabvány által engedélyezett partneri lehetőségeket ismerteti. Ez a cikk úgy lett kialakítva, hogy segítse a termék-kezelőket és az üzleti fejlesztési szerepköröket a befektetési útvonalak megismerésében, és betekintést nyújt a partneri értékek kiosztására.
@@ -77,8 +77,8 @@ A következő lépések szükségesek ahhoz, hogy a partnerek a Azure DDoS Prote
 
 - [Azure DDoS Protection termék lapja](https://azure.microsoft.com/services/ddos-protection/)
 - [Azure DDoS Protection dokumentáció](ddos-protection-overview.md)
-- [Azure DDoS Protection API-hivatkozás](https://docs.microsoft.com/rest/api/virtualnetwork/ddosprotectionplans)
-- [Azure Virtual Network API-dokumentáció](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks)
+- [Azure DDoS Protection API-hivatkozás](/rest/api/virtualnetwork/ddosprotectionplans)
+- [Azure Virtual Network API-dokumentáció](/rest/api/virtualnetwork/virtualnetworks)
 
 ### <a name="get-help"></a>Segítség kérése
 

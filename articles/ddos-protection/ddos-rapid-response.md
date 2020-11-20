@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 36e61c8d1e0e41fd981f5483eff1f30814b22b92
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 3655b117b641a6179bd6539aaf3f75af07f21a1a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905323"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992369"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS – gyors reagálás
 
@@ -51,7 +51,7 @@ A DRR csak akkor folytassa, ha:
 
 A DRR követi a Azure Rapid Response támogatási modellt. A gyors reagálással kapcsolatos további információkért tekintse meg a [támogatás hatókörét és a válaszadást](https://azure.microsoft.com/en-us/support/plans/response/) ismertető témakört.
 
-További információért olvassa el a [DDoS Protection standard dokumentációt](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+További információért olvassa el a [DDoS Protection standard dokumentációt](./ddos-protection-overview.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

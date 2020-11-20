@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 10b10309e438bab3c99cb2ed7202eaa272d24abe
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: dec2c845780b62e9a595c73504037142c511c0e6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905443"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989411"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>DDoS Protection csomagok kezelése: engedélyek és korlátozások
 
@@ -30,14 +30,14 @@ A DDoS elleni védelmi terv különböző régiókban és előfizetésekben műk
 
 A DDoS elleni védelmi tervekkel való együttműködéshez a fiókját hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkörhöz, amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Művelet                                            | Name                                     |
+| Műveletek                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/ddosProtectionPlans/READ        | DDoS Protection-csomag beolvasása              |
 | Microsoft. Network/ddosProtectionPlans/Write       | DDoS elleni védelmi terv létrehozása vagy frissítése  |
 | Microsoft. Network/ddosProtectionPlans/delete      | DDoS elleni védelmi terv törlése            |
 | Microsoft. Network/ddosProtectionPlans/csatlakozás/művelet | A DDoS elleni védelmi terv csatlakoztatása              |
 
-Ha engedélyezni szeretné a DDoS Protectiont egy virtuális hálózat számára, a fióknak hozzá kell rendelnie a [virtuális hálózatok megfelelő műveleteit](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#permissions)is.
+Ha engedélyezni szeretné a DDoS Protectiont egy virtuális hálózat számára, a fióknak hozzá kell rendelnie a [virtuális hálózatok megfelelő műveleteit](../virtual-network/manage-virtual-network.md#permissions)is.
 
 ## <a name="azure-policy"></a>Azure Policy
 
@@ -51,4 +51,4 @@ Azon ügyfelek esetében, akik különböző előfizetésekkel rendelkeznek, és
 Ha szeretné megtudni, hogyan tekintheti meg és konfigurálhatja a DDoS elleni védelmi terv telemetria, folytassa az oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
-> [A DDoS Protection telemetria megtekintése és konfigurálása](telemetry-monitoring-alerting.md)
+> [DDoS Protection-telemetria megtekintése és konfigurálása](telemetry-monitoring-alerting.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: c2af331304decd7955892ef4911d1644518f57b8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 33d837f63fca2062ec930fcf0d64ee01ea822c99
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427885"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989530"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>X. 509 tanúsítvánnyal rendelkező eszközök csatlakoztatása a IoT Central alkalmazáshoz készült Node.js eszközoldali SDK-val
 
@@ -55,7 +55,7 @@ Ebben a szakaszban egy X. 509 tanúsítvány használatával csatlakozik egy oly
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
-    node create_test_cert.js device mytestdevice mytestrootcert
+    node create_test_cert.js device sample-device-01 mytestrootcert
     ```
 
     > [!TIP]
@@ -71,11 +71,11 @@ fájlnév | tartalmát
 
 ## <a name="create-a-group-enrollment"></a>Csoportos regisztráció létrehozása
 
-1. Nyissa meg IoT Central alkalmazást, és a bal oldali ablaktáblában navigáljon a **felügyelet**  elemre, és válassza az **eszköz-kapcsolódás**lehetőséget.
+1. Nyissa meg IoT Central alkalmazást, és a bal oldali ablaktáblában navigáljon a **felügyelet**  elemre, és válassza az **eszköz-kapcsolódás** lehetőséget.
 
-1. Válassza a **+ beléptetési csoport létrehozása**lehetőséget, és hozzon létre egy új, _MyX509Group_ nevű regisztrációs csoportot tanúsítványok igazolási típusával **(X. 509)**.
+1. Válassza a **+ beléptetési csoport létrehozása** lehetőséget, és hozzon létre egy új, _MyX509Group_ nevű regisztrációs csoportot tanúsítványok igazolási típusával **(X. 509)**.
 
-1. Nyissa meg a létrehozott beléptetési csoportot, és válassza az **elsődleges kezelése**lehetőséget.
+1. Nyissa meg a létrehozott beléptetési csoportot, és válassza az **elsődleges kezelése** lehetőséget.
 
 1. Válassza a fájl lehetőséget, és töltse fel a korábban létrehozott _mytestrootcert_cert. PEM_ nevű főtanúsítvány-fájlt:
 
@@ -91,61 +91,70 @@ fájlnév | tartalmát
 
     ![Ellenőrzött tanúsítvány](./media/how-to-connect-devices-x509/verified.png)
 
-Mostantól az elsődleges főtanúsítványból származtatott X. 509 tanúsítvánnyal rendelkező eszközöket is összekapcsolhat. A beléptetési csoport mentése után jegyezze fel az azonosító hatókörét.
+Mostantól az elsődleges főtanúsítványból származtatott X. 509 tanúsítvánnyal rendelkező eszközöket is összekapcsolhat.
+
+A beléptetési csoport mentése után jegyezze fel az azonosító hatókörét.
 
 ## <a name="run-sample-device-code"></a>Minta eszköz kódjának futtatása
 
-1. Az Azure IoT Central alkalmazásban válassza az **eszközök**lehetőséget, és hozzon létre egy új eszközt a _mytestdevice_ , mint a **környezeti érzékelő** eszközének **azonosítóját** .
+1. Másolja a **sampleDevice01_key. PEM** és **sampleDevice01_cert. PEM** fájlokat az _Azure-IOT-SDK-Node/Device/Samples/PnP_ mappába, amely tartalmazza a **simple_thermostat.js** alkalmazást. Ezt az alkalmazást az [eszköz csatlakoztatása (Node.js) oktatóanyag](./tutorial-connect-device-nodejs.md)befejezése után használta.
 
-1. Másolja a _mytestdevice_key. PEM_ és a _mytestdevice_cert. pem_ fájlokat a _environmentalSensor.js_ alkalmazást tartalmazó mappába. Ezt az alkalmazást az [eszköz csatlakoztatása (Node.js) oktatóanyag](./tutorial-connect-device-nodejs.md)befejezése után hozta létre.
-
-1. Navigáljon a environmentalSensor.js alkalmazást tartalmazó mappához, és futtassa a következő parancsot az X. 509 csomag telepítéséhez:
+1. Navigáljon az _Azure-IOT-SDK-Node/Device/Samples/PnP_ mappára, amely tartalmazza a **simple_thermostat.js** alkalmazást, és futtassa a következő parancsot az X. 509 csomag telepítéséhez:
 
     ```cmd/sh
     npm install azure-iot-security-x509 --save
     ```
 
-1. Szerkessze a **environmentalSensor.js** fájlt.
-    - Cserélje le az `idScope` értéket az **azonosító hatókörre** , amelyet korábban jegyzett készített.
-    - `registrationId`Az értéket cserélje le a értékre `mytestdevice` .
+1. Nyissa meg a **simple_thermostat.js** fájlt egy szövegszerkesztőben.
 
-1. Szerkessze az `require` utasításokat a következőképpen:
+1. Szerkessze az `require` utasításokat, hogy az tartalmazza a következőket:
 
     ```javascript
-    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
-    var Client = require('azure-iot-device').Client;
-    var Message = require('azure-iot-device').Message;
-    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
-    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
-    var fs = require('fs');
-    var X509Security = require('azure-iot-security-x509').X509Security;
+    const fs = require('fs');
+    const X509Security = require('azure-iot-security-x509').X509Security;
     ```
 
-1. Szerkessze az ügyfelet létrehozó szakaszt a következőképpen:
+1. Adja hozzá a következő négy sort a "DPS kapcsolódási adatok" szakaszhoz a változó inicializálásához `deviceCert` :
 
     ```javascript
-    var provisioningHost = 'global.azure-devices-provisioning.net';
-    var deviceCert = {
-      cert: fs.readFileSync('mytestdevice_cert.pem').toString(),
-      key: fs.readFileSync('mytestdevice_key.pem').toString()
+    const deviceCert = {
+      cert: fs.readFileSync(process.env.IOTHUB_DEVICE_X509_CERT).toString(),
+      key: fs.readFileSync(process.env.IOTHUB_DEVICE_X509_KEY).toString()
     };
-    var provisioningSecurityClient = new X509Security(registrationId, deviceCert);
-    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
-    var hubClient;
     ```
 
-1. A következő lépésekkel módosíthatja a kapcsolatokat megnyitó szakaszt:
+1. Szerkessze az `provisionDevice` ügyfelet létrehozó függvényt úgy, hogy lecseréli az első sort a következőre:
 
-   ```javascript
-    var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';x509=true';
-    hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
-    hubClient.setOptions(deviceCert);
+    ```javascript
+    var provSecurityClient = new X509Security(registrationId, deviceCert);
     ```
+
+1. Ugyanebben a függvényben módosítsa a változót a következőképpen beállító sort `deviceConnectionString` :
+
+    ```javascript
+    deviceConnectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';x509=true';
+    ```
+
+1. A `main` függvényben adja hozzá a következő sort a meghívása után `Client.fromConnectionString` :
+
+    ```javascript
+    client.setOptions(deviceCert);
+    ```
+
+1. A rendszerhéj-környezetben állítsa be a következő két környezeti változót:
+
+    ```cmd/sh
+    set IOTHUB_DEVICE_X509_CERT=sampleDevice01_cert.pem
+    set IOTHUB_DEVICE_X509_KEY=sampleDevice01_key.pem
+    ```
+
+    > [!TIP]
+    > A többi szükséges környezeti változót akkor kell beállítania, amikor végrehajtotta az [ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazáshoz](./tutorial-connect-device-nodejs.md) oktatóanyagot.
 
 1. Futtassa a szkriptet, és győződjön meg róla, hogy az eszközt sikeresen kiosztották:
 
     ```cmd/sh
-    node environmentalSensor.js
+    node simple_thermostat.js
     ```
 
     Azt is ellenőrizheti, hogy a telemetria megjelenik-e az irányítópulton.
@@ -170,9 +179,9 @@ Hozzon létre egy önaláírt X. 509 eszköz-tanúsítványt a szkript futtatás
 
 ## <a name="create-individual-enrollment"></a>Egyéni regisztráció létrehozása
 
-1. Az Azure IoT Central alkalmazásban válassza az **eszközök**lehetőséget, majd hozzon létre egy **Device ID** új eszközt az _mytestselfcertprimary_ a környezeti érzékelő eszköz sablonjában. Jegyezze fel az **azonosító hatókörét**, amelyet később használni fog.
+1. Az Azure IoT Central alkalmazásban válassza az **eszközök** lehetőséget, és hozzon létre egy új eszközt az **eszköz azonosítójával** a _mytestselfcertprimary_ a termosztát-eszköz sablonjában. Jegyezze fel az **azonosító hatókörét**, amelyet később használni fog.
 
-1. Nyissa meg a létrehozott eszközt, és válassza a **Csatlakoztatás**lehetőséget.
+1. Nyissa meg a létrehozott eszközt, és válassza a **Csatlakoztatás** lehetőséget.
 
 1. Válassza az **Egyéni regisztrációk** a **csatlakozási módszer** és a **tanúsítványok (X. 509)** lehetőséget a következő mechanizmusként:
 
@@ -180,7 +189,7 @@ Hozzon létre egy önaláírt X. 509 eszköz-tanúsítványt a szkript futtatás
 
 1. Válassza a fájl lehetőséget az elsődleges területen, és töltse fel a korábban létrehozott _mytestselfcertprimary_cert. PEM_ nevű tanúsítványfájl-fájlt.
 
-1. Válassza a fájl lehetőséget a másodlagos tanúsítványhoz, és töltse fel a _mytestselfcertsecondary_cert. PEM_ nevű tanúsítványfájl-fájlt. Ezután válassza a **Mentés**lehetőséget:
+1. Válassza a fájl lehetőséget a másodlagos tanúsítványhoz, és töltse fel a _mytestselfcertsecondary_cert. PEM_ nevű tanúsítványfájl-fájlt. Ezután válassza a **Mentés** lehetőséget:
 
     ![Egyéni beléptetési tanúsítvány feltöltése](./media/how-to-connect-devices-x509/individual-enrollment.png)
 
@@ -188,19 +197,15 @@ Az eszköz most már X. 509 tanúsítvánnyal lett kiépítve.
 
 ## <a name="run-a-sample-individual-enrollment-device"></a>Minta egyéni beléptetési eszköz futtatása
 
-1. Másolja a _mytestselfcertprimary_key. PEM_ és a _mytestselfcertprimary_cert. pem_ fájlokat a environmentalSensor.js alkalmazást tartalmazó mappába. Ezt az alkalmazást az [eszköz csatlakoztatása (Node.js) oktatóanyag](./tutorial-connect-device-nodejs.md)befejezése után hozta létre.
+1. Másolja a _mytestselfcertprimary_key. PEM_ és _mytestselfcertprimary_cert. PEM_ fájlokat az _Azure-IOT-SDK-Node/Device/Samples/PnP_ mappába, amely tartalmazza a **simple_thermostat.js** alkalmazást. Ezt az alkalmazást az [eszköz csatlakoztatása (Node.js) oktatóanyag](./tutorial-connect-device-nodejs.md)befejezése után használta.
 
-1. Szerkessze a **environmentalSensor.js** fájlt az alábbiak szerint, és mentse.
-    - Cserélje le az `idScope` értéket az **azonosító hatókörre** , amelyet korábban jegyzett készített.
-    - `registrationId`Az értéket cserélje le a értékre `mytestselfcertprimary` .
-    - A **var deviceCert** a következőképpen cserélje le:
+1. Módosítsa a következő módon használt környezeti változókat:
 
-        ```javascript
-        var deviceCert = {
-        cert: fs.readFileSync('mytestselfcertprimary_cert.pem').toString(),
-        key: fs.readFileSync('mytestselfcertprimary_key.pem').toString()
-        };
-        ```
+    ```cmd/sh
+    set IOTHUB_DEVICE_DPS_DEVICE_ID=mytestselfcertprimary
+    set IOTHUB_DEVICE_X509_CERT=mytestselfcertprimary_cert.pem
+    set IOTHUB_DEVICE_X509_KEY=mytestselfcertprimary_key.pem
+    ```
 
 1. Futtassa a szkriptet, és győződjön meg róla, hogy az eszközt sikeresen kiosztották:
 
@@ -214,6 +219,6 @@ Az eszköz most már X. 509 tanúsítvánnyal lett kiépítve.
 
 A fenti lépéseket a _mytestselfcertsecondary_ -tanúsítványhoz is megismételheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan csatlakoztathatók az eszközök az X. 509 tanúsítványokkal, a javasolt következő lépés az [eszköz kapcsolatának figyelése az Azure CLI használatával](howto-monitor-devices-azure-cli.md)

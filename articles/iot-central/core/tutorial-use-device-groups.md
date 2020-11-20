@@ -3,17 +3,16 @@ title: Oktatóanyag – erőforráscsoportok használata az Azure IoT Central al
 description: Oktatóanyag – kezelőként megtudhatja, hogyan használhatja az telemetria az Azure IoT Central-alkalmazás eszközeiből származó eszközök elemzéséhez.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 11/16/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-manager: peterpfr
-ms.openlocfilehash: 3192a9f121d4380a3e681747596fc91997662bf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c26afc9cf9630f6d26ddc76759393a6ea1a8696
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967939"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990273"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>Oktatóanyag: eszköz-csoportok használata az eszközök telemetria elemzéséhez
 
@@ -29,17 +28,18 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, hajtsa végre az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md) és [egy szimulált eszköz hozzáadása a IoT Central alkalmazás](./quick-create-simulated-device.md) -gyors útmutatóhoz a **MXChip IoT fejlesztői készlet** -sablon létrehozásához.
+Mielőtt elkezdené, hajtsa végre az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md) és [egy szimulált eszköz hozzáadása a IoT Central alkalmazás](./quick-create-simulated-device.md) -gyors útmutatóhoz az **érzékelő vezérlő** -eszköz sablonjának létrehozásához.
 
 ## <a name="create-simulated-devices"></a>Szimulált eszközök létrehozása
 
-Az eszközcsoport létrehozása előtt adjon hozzá legalább öt szimulált eszközt a **MXChip IoT fejlesztői készlet** -sablonhoz az oktatóanyagban való használathoz:
+Mielőtt létrehoz egy eszközcsoport-csoportot, adjon hozzá legalább öt szimulált eszközt az oktatóanyagban használni kívánt **Sensor Controller** -sablon alapján:
 
-![Öt szimulált érzékelő eszköz](./media/tutorial-use-device-groups/simulated-devices.png)
+
+:::image type="content" source="media/tutorial-use-device-groups/simulated-devices.png" alt-text="Képernyőfelvétel, amely öt szimulált érzékelő vezérlő eszközt mutat":::
 
 Négy szimulált érzékelő eszköz esetében használja az **eszköz kezelése** nézetet az ügyfél nevének a *contoso*-ba történő beállításához:
 
-![Ügyfél nevének beállítása a contoso-ra](./media/tutorial-use-device-groups/customer-name.png)
+:::image type="content" source="media/tutorial-use-device-groups/customer-name.png" alt-text="Képernyőkép, amely bemutatja, hogyan állíthatja be az ügyfél neve Cloud Property":::
 
 ## <a name="create-a-device-group"></a>Eszközcsoport létrehozása
 
@@ -47,20 +47,18 @@ Eszközcsoport létrehozása:
 
 1. Válassza ki az eszközcsoport **elemet a bal** oldali ablaktáblán.
 
-1. Válassza a **+** következőket:
+1. Válassza a **+ Új** lehetőséget.
 
-    ![Új eszközcsoport](media/tutorial-use-device-groups/image1.png)
+1. Nevezze el az eszköz csoport *contoso-eszközeit*. Leírást is hozzáadhat a szolgáltatáshoz. Az eszközcsoport csak egyetlen eszköz sablonból származó eszközöket tartalmazhat. Válassza ki a csoporthoz használni kívánt **Sensor Controller** -sablont.
 
-1. Adja meg az eszköz csoportjának a *contoso-eszközök*nevet. Leírást is hozzáadhat a szolgáltatáshoz. Az eszközcsoport csak egyetlen eszköz sablonból származó eszközöket tartalmazhat. Válassza ki a csoporthoz használni kívánt **MXChip-IoT fejlesztői készlet** .
-
-1. Ha úgy szeretné testre szabni az erőforráscsoportot, hogy csak a **contosohoz**tartozó eszközöket tartalmazza, válassza a **+ szűrő**lehetőséget. Válassza ki az **ügyfél neve** tulajdonságot, az **Equals** összehasonlító operátort és a **contoso** értéket. Több szűrőt és eszközt is hozzáadhat, amelyek megfelelnek az **összes** szűrési feltételnek az eszköz csoportban. Az Ön által létrehozott eszközcsoport mindenki számára elérhető, aki hozzáfér az alkalmazáshoz, így bárki megtekintheti, módosíthatja vagy törölheti az eszköz csoportját:
-
-    ![Eszközcsoport-lekérdezés](media/tutorial-use-device-groups/image2.png)
+1. Ha úgy szeretné testre szabni az erőforráscsoportot, hogy csak a **contosohoz** tartozó eszközöket tartalmazza, válassza a **+ szűrő** lehetőséget. Válassza ki az **ügyfél neve** tulajdonságot, az **Equals** összehasonlító operátort és a **contoso** értéket. Több szűrőt és eszközt is hozzáadhat, amelyek megfelelnek az **összes** szűrési feltételnek az eszköz csoportban. Az Ön által létrehozott eszközcsoport mindenki számára elérhető, aki hozzáfér az alkalmazáshoz, így bárki megtekintheti, módosíthatja vagy törölheti az eszközt.
 
     > [!TIP]
     > Az eszközcsoport dinamikus lekérdezés. Minden alkalommal, amikor megtekinti az eszközök listáját, lehet, hogy a listában különböző eszközök szerepelnek. A lista attól függ, hogy mely eszközök felelnek meg a lekérdezés feltételeinek.
 
 1. Válassza a **Mentés** elemet.
+
+:::image type="content" source="media/tutorial-use-device-groups/device-group-query.png" alt-text="Az eszközcsoport lekérdezési konfigurációját megjelenítő képernyőkép":::
 
 > [!NOTE]
 > Azure IoT Edge eszközök esetében válassza ki Azure IoT Edge sablonokat az eszközcsoport létrehozásához.
@@ -75,17 +73,17 @@ Eszközcsoport telemetria elemzése:
 
 1. Válassza ki a **contoso-eszközök** létrehozott csoportját. Ezután adja hozzá a **hőmérséklet** és a **páratartalom** telemetria típusát:
 
-    ![Elemzés létrehozása](./media/tutorial-use-device-groups/create-analysis.png)
+    :::image type="content" source="media/tutorial-use-device-groups/create-analysis.png" alt-text="Az elemzéshez kiválasztott telemetria-típusokat megjelenítő képernyőkép":::
 
-    Az összesítési típus kiválasztásához használja a telemetria-típusok melletti fogaskerék ikonokat. Az alapértelmezett érték az **átlag**. Az összesített adatmegjelenítés módjának megváltoztatásához használja a **felosztási** lehetőséget. Ha például az eszköz AZONOSÍTÓját választja, akkor az **elemzés**lehetőség kiválasztásakor megjelenik az egyes eszközökre vonatkozó ábra.
+    Az összesítési típus kiválasztásához használja a telemetria-típusok melletti fogaskerék ikonokat. Az alapértelmezett érték az **átlag**. A **Group By** paranccsal módosíthatja az összesített adatokat. Ha például az eszköz AZONOSÍTÓját választja, akkor az **elemzés** lehetőség kiválasztásakor megjelenik az egyes eszközökre vonatkozó ábra.
 
 1. Az átlagos telemetria-értékek megtekintéséhez válassza az **elemzés** lehetőséget:
 
-    ![Elemzés megtekintése](./media/tutorial-use-device-groups/view-analysis.png)
+    :::image type="content" source="media/tutorial-use-device-groups/view-analysis.png" alt-text="Az összes contoso-eszköz átlagos értékeit megjelenítő képernyőkép":::
 
     Testreszabhatja a nézetet, megváltoztathatja a megjelenített időszakot, és exportálhatja az adategységeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan használhatja az eszközök csoportjait az Azure IoT Central-alkalmazásban, itt látható a következő lépés:
 

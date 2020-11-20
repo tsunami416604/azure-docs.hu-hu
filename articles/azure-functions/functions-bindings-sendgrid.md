@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 32734ff9df2e55d24789742cd49984d8da212a17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3d09ec4c4ab578a87f0d983c0f243bee2a84597
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212191"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991230"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-kötések Azure Functions
 
@@ -41,6 +41,7 @@ Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat 
 
 ```cs
 using SendGrid.Helpers.Mail;
+using System.Text.Json;
 
 ...
 
@@ -49,7 +50,7 @@ public static void Run(
     [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
     [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] out SendGridMessage message)
 {
-var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+var emailObject = JsonSerializer.Deserialize<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
 
 message = new SendGridMessage();
 message.AddTo(emailObject.To);
@@ -71,15 +72,16 @@ public class OutgoingEmail
 
 ```cs
 using SendGrid.Helpers.Mail;
+using System.Text.Json;
 
 ...
 
 [FunctionName("SendEmail")]
-public static async void Run(
+public static async Task Run(
  [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
  [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] IAsyncCollector<SendGridMessage> messageCollector)
 {
- var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+ var emailObject = JsonSerializer.Deserialize<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
 
  var message = new SendGridMessage();
  message.AddTo(emailObject.To);
@@ -189,7 +191,7 @@ Itt látható a JavaScript-kód:
 ```javascript
 module.exports = function (context, input) {
     var message = {
-         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
+         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
         from: { email: "sender@contoso.com" },
         subject: "Azure news",
         content: [{
@@ -204,7 +206,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa egy HTTP által aktivált függvényt mutat be, amely a SendGrid kötés használatával küld e-mailt. A kötési konfigurációban alapértelmezett értékeket adhat meg. Például a *Feladó* e-mail-címe *function.js*be van állítva. 
+Az alábbi példa egy HTTP által aktivált függvényt mutat be, amely a SendGrid kötés használatával küld e-mailt. A kötési konfigurációban alapértelmezett értékeket adhat meg. Például a *Feladó* e-mail-címe *function.js* be van állítva. 
 
 ```json
 {
@@ -355,16 +357,16 @@ A [SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/ma
 
 A következő táblázat felsorolja a  *function.js* fájlon és az `SendGrid` attribútumon/jegyzeten elérhető kötési konfigurációs tulajdonságokat.
 
-| *function.jsa* tulajdonságon | Attribútum/Megjegyzés tulajdonság | Leírás | Választható |
+| *function.jsa* tulajdonságon | Attribútum/Megjegyzés tulajdonság | Description | Választható |
 |--------------------------|-------------------------------|-------------|----------|
-| típus |n/a| Értékre kell állítani `sendGrid` .| Nem |
-| irány |n/a| Értékre kell állítani `out` .| Nem |
-| name |n/a| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték akkor van, `$return` Ha csak egy visszatérési érték van. | Nem |
-| apiKey | ApiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| Nem |
-| a következőre:| Művelet | A címzett e-mail-címe. | Igen |
-| a| Forrás | A feladó e-mail-címe. |  Igen |
-| tulajdonos| Tárgy | Az e-mail tárgya. | Igen |
-| szöveg| Szöveg | Az e-mail tartalma. | Igen |
+| típus |n/a| Értékre kell állítani `sendGrid` .| No |
+| irány |n/a| Értékre kell állítani `out` .| No |
+| name |n/a| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték akkor van, `$return` Ha csak egy visszatérési érték van. | No |
+| apiKey | ApiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| No |
+| a következőre:| Művelet | A címzett e-mail-címe. | Yes |
+| a| Forrás | A feladó e-mail-címe. |  Yes |
+| tulajdonos| Tárgy | Az e-mail tárgya. | Yes |
+| szöveg| Szöveg | Az e-mail tartalma. | Yes |
 
 A választható tulajdonságok rendelkezhetnek a kötésben definiált alapértelmezett értékekkel, és akár programozott módon is hozzáadhatók vagy felülbíráltak.
 
@@ -390,7 +392,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```  
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------| 
 |a|n/a|A küldő e-mail-címe az összes függvényen belül.| 
 

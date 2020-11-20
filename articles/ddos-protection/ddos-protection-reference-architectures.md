@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 3371b9cc0848e387c0150ca9aa7e7a971cecba1a
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e5472620fe9b07d152a5325b0654044cb1505fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905394"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992437"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS Protection hivatkozási architektúrák
 
-DDoS Protection standard a [virtuális hálózatban üzembe helyezett szolgáltatásokhoz](/azure/virtual-network/virtual-network-for-azure-services)lett tervezve. Más szolgáltatások esetében az alapértelmezett DDoS Protection alapszintű szolgáltatás érvényes. A következő hivatkozási architektúrákat forgatókönyvek rendezik, és az architektúra mintázatai együtt vannak csoportosítva.
+DDoS Protection standard a [virtuális hálózatban üzembe helyezett szolgáltatásokhoz](../virtual-network/virtual-network-for-azure-services.md)lett tervezve. Más szolgáltatások esetében az alapértelmezett DDoS Protection alapszintű szolgáltatás érvényes. A következő hivatkozási architektúrákat forgatókönyvek rendezik, és az architektúra mintázatai együtt vannak csoportosítva.
 
 ## <a name="virtual-machine-windowslinux-workloads"></a>Virtuális gépek (Windows/Linux) számítási feladatok
 
@@ -54,7 +54,7 @@ A készenléti régió feladatátvételi forgatókönyvekhez van beállítva.
 
 Az Azure Traffic Manager a bejövő kérelmeket a régiók egyik régiójában Application Gateway irányítja. A normál működés során a a kérelmeket az aktív régióban lévő Application Gatewayra irányítja. Ha a régió elérhetetlenné válik, Traffic Manager átadja a feladatátvételt a készenléti régióban lévő Application Gatewaynak.
 
-Az internetről a webalkalmazás felé irányuló összes forgalom a [Application Gateway nyilvános IP-címére](/azure/application-gateway/application-gateway-web-app-overview) van irányítva Traffic Manager használatával. Ebben az esetben az App Service (webalkalmazás) nem közvetlenül a külső felé irányul, és Application Gateway védi. 
+Az internetről a webalkalmazás felé irányuló összes forgalom a [Application Gateway nyilvános IP-címére](../application-gateway/application-gateway-web-app-overview.md) van irányítva Traffic Manager használatával. Ebben az esetben az App Service (webalkalmazás) nem közvetlenül a külső felé irányul, és Application Gateway védi. 
 
 Javasoljuk, hogy konfigurálja a Application Gateway WAF SKU-t (megakadályozza a módot) a 7. rétegbeli (HTTP/HTTPS/WebSocket) támadások elleni védelemhez. Emellett a webalkalmazások úgy vannak konfigurálva, hogy [csak a Application Gateway IP-címről érkező forgalmat fogadják el](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/) .
 
@@ -64,7 +64,7 @@ A hivatkozási architektúrával kapcsolatos további információkért tekintse
 
 ### <a name="hdinsight-on-azure"></a>HDInsight az Azure-ban
 
-Ez a hivatkozási architektúra egy [Azure HDInsight-fürt](/azure/hdinsight/)DDoS Protection szabványának konfigurálását mutatja be. Győződjön meg arról, hogy a HDInsight-fürt egy virtuális hálózathoz van csatolva, és hogy a DDoS Protection engedélyezve van a virtuális hálózaton.
+Ez a hivatkozási architektúra egy [Azure HDInsight-fürt](../hdinsight/index.yml)DDoS Protection szabványának konfigurálását mutatja be. Győződjön meg arról, hogy a HDInsight-fürt egy virtuális hálózathoz van csatolva, és hogy a DDoS Protection engedélyezve van a virtuális hálózaton.
 
 !["HDInsight" és "speciális beállítások" ablaktábla virtuális hálózati beállításokkal](./media/ddos-best-practices/image-12.png)
 
@@ -72,7 +72,7 @@ Ez a hivatkozási architektúra egy [Azure HDInsight-fürt](/azure/hdinsight/)DD
 
 Ebben az architektúrában az internetről érkező HDInsight-fürtre irányuló forgalmat a rendszer a HDInsight Gateway Load Balancerhez társított nyilvános IP-címhez irányítja. Az átjáró terheléselosztó ezt követően közvetlenül a főcsomópontokra vagy a feldolgozó csomópontokra küldi a forgalmat. Mivel DDoS Protection a standard engedélyezve van a HDInsight virtuális hálózaton, a virtuális hálózat összes nyilvános IP-címe lekéri a DDoS Protectiont a 3. és a 4. rétegben. Ez a hivatkozási architektúra kombinálható az N szintű és a többrégiós hivatkozási architektúrával is.
 
-További információ erről a hivatkozási architektúráról: az [Azure-HDInsight kiterjesztése azure Virtual Network](/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) -dokumentáció használatával.
+További információ erről a hivatkozási architektúráról: az [Azure-HDInsight kiterjesztése azure Virtual Network](../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -dokumentáció használatával.
 
 
 > [!NOTE]
